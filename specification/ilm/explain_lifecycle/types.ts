@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Phase } from '@ilm/_types/Phase'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { IndexName, Name, VersionNumber } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
+import { Phase } from '@ilm/_types/Phase'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class LifecycleExplainManaged {
   action?: Name

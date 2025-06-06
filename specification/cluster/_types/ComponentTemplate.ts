@@ -17,12 +17,13 @@
  * under the License.
  */
 
-import { AliasDefinition } from '@indices/_types/AliasDefinition'
-import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
-import { IndexSettings } from '@indices/_types/IndexSettings'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { AliasDefinition } from '@indices/_types/AliasDefinition'
+import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
+import { DataStreamOptionsTemplate } from '@indices/_types/DataStreamOptions'
+import { IndexSettings } from '@indices/_types/IndexSettings'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class ComponentTemplate {
   name: Name
@@ -52,4 +53,9 @@ export class ComponentTemplateSummary {
    * @availability serverless stability=stable
    */
   lifecycle?: DataStreamLifecycleWithRollover
+  /**
+   * @availability stack since=8.19.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  data_stream_options?: DataStreamOptionsTemplate | null
 }

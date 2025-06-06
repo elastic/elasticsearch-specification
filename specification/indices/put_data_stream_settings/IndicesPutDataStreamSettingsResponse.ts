@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { IndexSettings } from '@indices/_types/IndexSettings'
 import { IndexName } from '@_types/common'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 
 export class Response {
   /** @codegen_name data_stream_settings_results */

@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
-import { IndexSettings } from '@indices/_types/IndexSettings'
 import {
   DataStreamName,
   Field,
@@ -29,6 +27,8 @@ import {
   Uuid
 } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 
 enum ManagedBy {
   ilm = 'Index Lifecycle Management',

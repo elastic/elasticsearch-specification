@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { InferenceEndpointInfo } from '@inference/_types/Services'
+import { InferenceEndpointInfoAzureAIStudio } from '@inference/_types/Services'
 
 export class Response {
   /** @codegen_name endpoint_info */
-  body: InferenceEndpointInfo
+  body: InferenceEndpointInfoAzureAIStudio
 }

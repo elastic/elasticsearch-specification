@@ -18,8 +18,8 @@
  */
 
 import { CharFilter } from '@_types/analysis/char_filters'
-import { Tokenizer } from '@_types/analysis/tokenizers'
 import { TokenFilter } from '@_types/analysis/token_filters'
+import { Tokenizer } from '@_types/analysis/tokenizers'
 import { RequestBase } from '@_types/Base'
 import { Field, IndexName } from '@_types/common'
 import { TextToAnalyze } from './types'
