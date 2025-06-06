@@ -1,4 +1,0 @@
-lang: Curl
-# label:
-source: |
-  curl -I "localhost:9200/my-index-000001/_doc/0?pretty"
