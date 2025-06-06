@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
@@ -27,6 +26,7 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * Check for a document source.

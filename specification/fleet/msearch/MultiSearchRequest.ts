@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { RequestItem } from '@global/msearch/types'
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
@@ -26,6 +25,7 @@ import {
   SearchType
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
+import { RequestItem } from '@global/msearch/types'
 import { Checkpoint } from '../_types/Checkpoints'
 
 /**

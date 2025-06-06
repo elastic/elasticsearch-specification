@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { LicenseStatus, LicenseType } from '@license/_types/License'
 import { Uuid } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
+import { LicenseStatus, LicenseType } from '@license/_types/License'
 
 export class LicenseInformation {
   expiry_date?: DateTime

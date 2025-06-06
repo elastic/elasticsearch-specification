@@ -10,6 +10,7 @@ members = [
 [workspace.dependencies]
 anyhow = "1"
 arcstr = "1"
+argh = "0.1"
 clap = "4"
 console_error_panic_hook = "0.1"
 convert_case = "0.6"

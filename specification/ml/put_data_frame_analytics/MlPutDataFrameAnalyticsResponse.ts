@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { Id, Metadata, VersionString } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { EpochTime, UnitMillis } from '@_types/Time'
 import { DataframeAnalyticsAuthorization } from '@ml/_types/Authorization'
 import {
   DataframeAnalysisAnalyzedFields,
@@ -24,9 +27,6 @@ import {
   DataframeAnalyticsDestination,
   DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
-import { Id, Metadata, VersionString } from '@_types/common'
-import { integer } from '@_types/Numeric'
-import { EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {
