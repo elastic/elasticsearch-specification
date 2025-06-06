@@ -1434,7 +1434,7 @@ export interface SearchFieldSuggester {
 
 export interface SearchHighlight extends SearchHighlightBase {
   encoder?: SearchHighlighterEncoder
-  fields: Record<Field, SearchHighlightField>
+  fields: Partial<Record<Field, SearchHighlightField>> | Partial<Record<Field, SearchHighlightField>>[]
 }
 
 export interface SearchHighlightBase {
@@ -2769,7 +2769,7 @@ export interface RuleRetriever extends RetrieverBase {
 
 export type ScalarValue = long | double | string | boolean | null
 
-export type ScoreNormalizer = 'none' | 'minmax'
+export type ScoreNormalizer = 'none' | 'minmax' | 'l2_norm'
 
 export interface ScoreSort {
   order?: SortOrder
@@ -6856,7 +6856,7 @@ export interface QueryDslUntypedRangeQuery extends QueryDslRangeQueryBase<any> {
 }
 
 export interface QueryDslWeightedTokensQuery extends QueryDslQueryBase {
-  tokens: Record<string, float>
+  tokens: Partial<Record<string, float>>[]
   pruning_config?: QueryDslTokenPruningConfig
 }
 

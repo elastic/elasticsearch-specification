@@ -31796,10 +31796,27 @@
                 "$ref": "#/components/schemas/_global.search._types.HighlighterEncoder"
               },
               "fields": {
-                "type": "object",
-                "additionalProperties": {
-                  "$ref": "#/components/schemas/_global.search._types.HighlightField"
-                }
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/_global.search._types.HighlightField"
+                    },
+                    "minProperties": 1,
+                    "maxProperties": 1
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/components/schemas/_global.search._types.HighlightField"
+                      },
+                      "minProperties": 1,
+                      "maxProperties": 1
+                    }
+                  }
+                ]
               }
             },
             "required": [
@@ -32648,7 +32665,8 @@
         "type": "string",
         "enum": [
           "none",
-          "minmax"
+          "minmax",
+          "l2_norm"
         ]
       },
       "_types.PinnedRetriever": {
@@ -35319,9 +35337,14 @@
             "properties": {
               "tokens": {
                 "description": "The tokens representing this query",
-                "type": "object",
-                "additionalProperties": {
-                  "type": "number"
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "number"
+                  },
+                  "minProperties": 1,
+                  "maxProperties": 1
                 }
               },
               "pruning_config": {
