@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { Explanation } from '@global/explain/types'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   Fields,
@@ -34,6 +31,9 @@ import { double, integer, long } from '@_types/Numeric'
 import { FieldAndFormat } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { Sort, SortResults } from '@_types/sort'
+import { Explanation } from '@global/explain/types'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { FieldCollapse } from './FieldCollapse'
 import { Highlight } from './highlighting'
 import { SourceConfig } from './SourceFilter'

@@ -17,11 +17,6 @@
  * under the License.
  */
 
-import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
-import { Datafeed, DatafeedConfig } from '@ml/_types/Datafeed'
-import { ModelPlotConfig } from '@ml/_types/ModelPlot'
-import { CustomSettings } from '@ml/_types/Settings'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Id, IndexName, TaskId, VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import {
@@ -30,6 +25,11 @@ import {
   DurationValue,
   UnitFloatMillis
 } from '@_types/Time'
+import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
+import { Datafeed, DatafeedConfig } from '@ml/_types/Datafeed'
+import { ModelPlotConfig } from '@ml/_types/ModelPlot'
+import { CustomSettings } from '@ml/_types/Settings'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { DiscoveryNodeCompact } from './DiscoveryNode'
 import { ModelSizeStats } from './Model'
 
