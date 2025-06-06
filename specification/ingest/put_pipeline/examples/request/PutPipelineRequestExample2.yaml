@@ -1,5 +1,5 @@
 summary: Create an ingest pipeline with metadata.
-# method_request: PUT /_ingest/pipeline/my-pipeline-id
+method_request: PUT /_ingest/pipeline/my-pipeline-id
 description: You can use the `_meta` parameter to add arbitrary metadata to a pipeline.
 # type: request
 value:

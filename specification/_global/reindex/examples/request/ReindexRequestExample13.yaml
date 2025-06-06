@@ -1,5 +1,5 @@
 summary: Reindex from remote on Elastic Cloud
-# method_request: POST _reindex
+method_request: POST _reindex
 description: >
   When using Elastic Cloud, you can run `POST _reindex` and authenticate against a remote cluster with an API key.
 # type: request

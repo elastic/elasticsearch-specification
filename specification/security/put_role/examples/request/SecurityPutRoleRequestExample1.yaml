@@ -1,5 +1,5 @@
 summary: Role example 1
-# method_request: POST /_security/role/my_admin_role
+method_request: POST /_security/role/my_admin_role
 description: Run `POST /_security/role/my_admin_role` to create a role.
 # type: request
 value: |-

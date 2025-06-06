@@ -1,4 +1,5 @@
 # summary:
+method_request: POST /my-index-000001/_delete_by_query
 description: A successful response from `POST /my-index-000001/_delete_by_query`.
 # type: response
 # response_code:

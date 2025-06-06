@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST /_security/cross_cluster/api_key
+method_request: POST /_security/cross_cluster/api_key
 description: >
   Run `POST /_security/cross_cluster/api_key` to create a cross-cluster API key.
 # type: request

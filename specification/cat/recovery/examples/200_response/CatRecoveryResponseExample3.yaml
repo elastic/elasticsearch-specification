@@ -1,4 +1,5 @@
 summary: A snapshot recovery
+method_request: GET _cat/recovery?v=true&h=i,s,t,ty,st,rep,snap,f,fp,b,bp&format=json
 description: >
   A successful response from `GET _cat/recovery?v=true&h=i,s,t,ty,st,rep,snap,f,fp,b,bp&format=json`.
   You can restore backups of an index using the snapshot and restore API.

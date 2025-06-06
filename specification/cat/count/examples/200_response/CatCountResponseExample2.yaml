@@ -1,4 +1,5 @@
 summary: All data streams and indices count
+method_request: GET /_cat/count?v=true&format=json
 description: >
   A successful response from `GET /_cat/count?v=true&format=json`.
   It retrieves the document count for all data streams and indices in the cluster.

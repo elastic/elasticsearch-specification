@@ -1,4 +1,5 @@
 summary: Multiple fields data
+method_request: GET /_cat/fielddata?v=true
 description: >
   A successful response from `GET /_cat/fielddata/body,soul?v=true&format=json`.
   You can specify a comma-separated list of fields in the request body or URL path.

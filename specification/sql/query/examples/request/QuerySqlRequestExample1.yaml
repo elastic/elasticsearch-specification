@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST _sql?format=txt
+method_request: POST _sql?format=txt
 description: Run `POST _sql?format=txt` to get results for an SQL search.
 # type: request
 value:
