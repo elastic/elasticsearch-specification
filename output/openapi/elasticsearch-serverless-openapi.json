@@ -27352,7 +27352,15 @@
           },
           "reason": {
             "description": "A human-readable explanation of the error, in English.",
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "stack_trace": {
             "description": "The server stack trace. Present only if the `error_trace=true` parameter was sent with the request.",
@@ -30045,7 +30053,7 @@
           {
             "type": "object",
             "properties": {
-              "geogrid": {
+              "geotile": {
                 "$ref": "#/components/schemas/_types.GeoTile"
               },
               "geohash": {
@@ -30722,6 +30730,12 @@
               "prefix": {
                 "$ref": "#/components/schemas/_types.query_dsl.IntervalsPrefix"
               },
+              "range": {
+                "$ref": "#/components/schemas/_types.query_dsl.IntervalsRange"
+              },
+              "regexp": {
+                "$ref": "#/components/schemas/_types.query_dsl.IntervalsRegexp"
+              },
               "wildcard": {
                 "$ref": "#/components/schemas/_types.query_dsl.IntervalsWildcard"
               }
@@ -30774,6 +30788,12 @@
           },
           "prefix": {
             "$ref": "#/components/schemas/_types.query_dsl.IntervalsPrefix"
+          },
+          "range": {
+            "$ref": "#/components/schemas/_types.query_dsl.IntervalsRange"
+          },
+          "regexp": {
+            "$ref": "#/components/schemas/_types.query_dsl.IntervalsRegexp"
           },
           "wildcard": {
             "$ref": "#/components/schemas/_types.query_dsl.IntervalsWildcard"
@@ -30911,6 +30931,53 @@
         },
         "required": [
           "prefix"
+        ]
+      },
+      "_types.query_dsl.IntervalsRange": {
+        "type": "object",
+        "properties": {
+          "analyzer": {
+            "description": "Analyzer used to analyze the `prefix`.",
+            "type": "string"
+          },
+          "gte": {
+            "description": "Lower term, either gte or gt must be provided.",
+            "type": "string"
+          },
+          "gt": {
+            "description": "Lower term, either gte or gt must be provided.",
+            "type": "string"
+          },
+          "lte": {
+            "description": "Upper term, either lte or lt must be provided.",
+            "type": "string"
+          },
+          "lt": {
+            "description": "Upper term, either lte or lt must be provided.",
+            "type": "string"
+          },
+          "use_field": {
+            "$ref": "#/components/schemas/_types.Field"
+          }
+        }
+      },
+      "_types.query_dsl.IntervalsRegexp": {
+        "type": "object",
+        "properties": {
+          "analyzer": {
+            "description": "Analyzer used to analyze the `prefix`.",
+            "type": "string"
+          },
+          "pattern": {
+            "description": "Regex pattern.",
+            "type": "string"
+          },
+          "use_field": {
+            "$ref": "#/components/schemas/_types.Field"
+          }
+        },
+        "required": [
+          "pattern"
         ]
       },
       "_types.query_dsl.IntervalsWildcard": {
@@ -32298,10 +32365,20 @@
                 "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
               },
               "ruleset_ids": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.Id"
-                }
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Id"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types.Id"
+                    }
+                  }
+                ]
+              },
+              "ruleset_id": {
+                "type": "string"
               },
               "match_criteria": {
                 "type": "object"
@@ -32309,7 +32386,6 @@
             },
             "required": [
               "organic",
-              "ruleset_ids",
               "match_criteria"
             ]
           }
@@ -59308,6 +59384,15 @@
           },
           "rule": {
             "$ref": "#/components/schemas/_types.RuleRetriever"
+          },
+          "rescorer": {
+            "$ref": "#/components/schemas/_types.RescorerRetriever"
+          },
+          "linear": {
+            "$ref": "#/components/schemas/_types.LinearRetriever"
+          },
+          "pinned": {
+            "$ref": "#/components/schemas/_types.PinnedRetriever"
           }
         },
         "minProperties": 1,
@@ -59361,6 +59446,10 @@
           "min_score": {
             "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
             "type": "number"
+          },
+          "_name": {
+            "description": "Retriever name.",
+            "type": "string"
           }
         }
       },
@@ -59480,10 +59569,17 @@
             "properties": {
               "ruleset_ids": {
                 "description": "The ruleset IDs containing the rules this retriever is evaluating against.",
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.Id"
-                }
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Id"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types.Id"
+                    }
+                  }
+                ]
               },
               "match_criteria": {
                 "description": "The match criteria that will determine if a rule in the provided rulesets should be applied.",
@@ -59503,6 +59599,137 @@
               "retriever"
             ]
           }
+        ]
+      },
+      "_types.RescorerRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retriever": {
+                "$ref": "#/components/schemas/_types.RetrieverContainer"
+              },
+              "rescore": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.Rescore"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_global.search._types.Rescore"
+                    }
+                  }
+                ]
+              }
+            },
+            "required": [
+              "retriever",
+              "rescore"
+            ]
+          }
+        ]
+      },
+      "_types.LinearRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retrievers": {
+                "description": "Inner retrievers.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.InnerRetriever"
+                }
+              },
+              "rank_window_size": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "rank_window_size"
+            ]
+          }
+        ]
+      },
+      "_types.InnerRetriever": {
+        "type": "object",
+        "properties": {
+          "retriever": {
+            "$ref": "#/components/schemas/_types.RetrieverContainer"
+          },
+          "weight": {
+            "type": "number"
+          },
+          "normalizer": {
+            "$ref": "#/components/schemas/_types.ScoreNormalizer"
+          }
+        },
+        "required": [
+          "retriever",
+          "weight",
+          "normalizer"
+        ]
+      },
+      "_types.ScoreNormalizer": {
+        "type": "string",
+        "enum": [
+          "none",
+          "minmax"
+        ]
+      },
+      "_types.PinnedRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retriever": {
+                "$ref": "#/components/schemas/_types.RetrieverContainer"
+              },
+              "ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "docs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.SpecifiedDocument"
+                }
+              },
+              "rank_window_size": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "retriever",
+              "rank_window_size"
+            ]
+          }
+        ]
+      },
+      "_types.SpecifiedDocument": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "$ref": "#/components/schemas/_types.IndexName"
+          },
+          "id": {
+            "$ref": "#/components/schemas/_types.Id"
+          }
+        },
+        "required": [
+          "id"
         ]
       },
       "search_application._types.SearchApplication": {
