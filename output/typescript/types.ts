@@ -13456,9 +13456,79 @@ export interface InferenceInferenceEndpointInfoAlibabaCloudAI extends InferenceI
   task_type: InferenceTaskTypeAlibabaCloudAI
 }
 
+export interface InferenceInferenceEndpointInfoAmazonBedrock extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeAmazonBedrock
+}
+
+export interface InferenceInferenceEndpointInfoAnthropic extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeAnthropic
+}
+
+export interface InferenceInferenceEndpointInfoAzureAIStudio extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeAzureAIStudio
+}
+
+export interface InferenceInferenceEndpointInfoAzureOpenAI extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeAzureOpenAI
+}
+
+export interface InferenceInferenceEndpointInfoCohere extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeCohere
+}
+
+export interface InferenceInferenceEndpointInfoELSER extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeELSER
+}
+
+export interface InferenceInferenceEndpointInfoElasticsearch extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeElasticsearch
+}
+
+export interface InferenceInferenceEndpointInfoGoogleAIStudio extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeGoogleAIStudio
+}
+
+export interface InferenceInferenceEndpointInfoGoogleVertexAI extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeGoogleVertexAI
+}
+
+export interface InferenceInferenceEndpointInfoHuggingFace extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeHuggingFace
+}
+
 export interface InferenceInferenceEndpointInfoJinaAi extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeJinaAi
+}
+
+export interface InferenceInferenceEndpointInfoMistral extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeMistral
+}
+
+export interface InferenceInferenceEndpointInfoOpenAI extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeOpenAI
+}
+
+export interface InferenceInferenceEndpointInfoVoyageAI extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeVoyageAI
+}
+
+export interface InferenceInferenceEndpointInfoWatsonx extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeWatsonx
 }
 
 export interface InferenceInferenceResult {
@@ -13571,7 +13641,35 @@ export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank'
 
 export type InferenceTaskTypeAlibabaCloudAI = 'text_embedding' | 'rerank' | 'completion' | 'sparse_embedding'
 
+export type InferenceTaskTypeAmazonBedrock = 'text_embedding' | 'completion'
+
+export type InferenceTaskTypeAnthropic = 'completion'
+
+export type InferenceTaskTypeAzureAIStudio = 'text_embedding' | 'completion'
+
+export type InferenceTaskTypeAzureOpenAI = 'text_embedding' | 'completion'
+
+export type InferenceTaskTypeCohere = 'text_embedding' | 'rerank' | 'completion'
+
+export type InferenceTaskTypeELSER = 'sparse_embedding'
+
+export type InferenceTaskTypeElasticsearch = 'sparse_embedding' | 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
+
+export type InferenceTaskTypeGoogleVertexAI = 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeHuggingFace = 'text_embedding'
+
 export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeMistral = 'text_embedding'
+
+export type InferenceTaskTypeOpenAI = 'text_embedding' | 'chat_completion' | 'completion'
+
+export type InferenceTaskTypeVoyageAI = 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeWatsonx = 'text_embedding'
 
 export interface InferenceTextEmbeddingByteResult {
   embedding: InferenceDenseByteVector
@@ -13710,7 +13808,7 @@ export interface InferencePutAmazonbedrockRequest extends RequestBase {
   }
 }
 
-export type InferencePutAmazonbedrockResponse = InferenceInferenceEndpointInfo
+export type InferencePutAmazonbedrockResponse = InferenceInferenceEndpointInfoAmazonBedrock
 
 export interface InferencePutAnthropicRequest extends RequestBase {
   task_type: InferenceAnthropicTaskType
@@ -13723,7 +13821,7 @@ export interface InferencePutAnthropicRequest extends RequestBase {
   }
 }
 
-export type InferencePutAnthropicResponse = InferenceInferenceEndpointInfo
+export type InferencePutAnthropicResponse = InferenceInferenceEndpointInfoAnthropic
 
 export interface InferencePutAzureaistudioRequest extends RequestBase {
   task_type: InferenceAzureAiStudioTaskType
@@ -13736,7 +13834,7 @@ export interface InferencePutAzureaistudioRequest extends RequestBase {
   }
 }
 
-export type InferencePutAzureaistudioResponse = InferenceInferenceEndpointInfo
+export type InferencePutAzureaistudioResponse = InferenceInferenceEndpointInfoAzureAIStudio
 
 export interface InferencePutAzureopenaiRequest extends RequestBase {
   task_type: InferenceAzureOpenAITaskType
@@ -13749,7 +13847,7 @@ export interface InferencePutAzureopenaiRequest extends RequestBase {
   }
 }
 
-export type InferencePutAzureopenaiResponse = InferenceInferenceEndpointInfo
+export type InferencePutAzureopenaiResponse = InferenceInferenceEndpointInfoAzureOpenAI
 
 export interface InferencePutCohereRequest extends RequestBase {
   task_type: InferenceCohereTaskType
@@ -13762,7 +13860,7 @@ export interface InferencePutCohereRequest extends RequestBase {
   }
 }
 
-export type InferencePutCohereResponse = InferenceInferenceEndpointInfo
+export type InferencePutCohereResponse = InferenceInferenceEndpointInfoCohere
 
 export interface InferencePutElasticsearchRequest extends RequestBase {
   task_type: InferenceElasticsearchTaskType
@@ -13775,7 +13873,7 @@ export interface InferencePutElasticsearchRequest extends RequestBase {
   }
 }
 
-export type InferencePutElasticsearchResponse = InferenceInferenceEndpointInfo
+export type InferencePutElasticsearchResponse = InferenceInferenceEndpointInfoElasticsearch
 
 export interface InferencePutElserRequest extends RequestBase {
   task_type: InferenceElserTaskType
@@ -13787,7 +13885,7 @@ export interface InferencePutElserRequest extends RequestBase {
   }
 }
 
-export type InferencePutElserResponse = InferenceInferenceEndpointInfo
+export type InferencePutElserResponse = InferenceInferenceEndpointInfoELSER
 
 export interface InferencePutGoogleaistudioRequest extends RequestBase {
   task_type: InferenceGoogleAiStudioTaskType
@@ -13799,7 +13897,7 @@ export interface InferencePutGoogleaistudioRequest extends RequestBase {
   }
 }
 
-export type InferencePutGoogleaistudioResponse = InferenceInferenceEndpointInfo
+export type InferencePutGoogleaistudioResponse = InferenceInferenceEndpointInfoGoogleAIStudio
 
 export interface InferencePutGooglevertexaiRequest extends RequestBase {
   task_type: InferenceGoogleVertexAITaskType
@@ -13812,7 +13910,7 @@ export interface InferencePutGooglevertexaiRequest extends RequestBase {
   }
 }
 
-export type InferencePutGooglevertexaiResponse = InferenceInferenceEndpointInfo
+export type InferencePutGooglevertexaiResponse = InferenceInferenceEndpointInfoGoogleVertexAI
 
 export interface InferencePutHuggingFaceRequest extends RequestBase {
   task_type: InferenceHuggingFaceTaskType
@@ -13824,7 +13922,7 @@ export interface InferencePutHuggingFaceRequest extends RequestBase {
   }
 }
 
-export type InferencePutHuggingFaceResponse = InferenceInferenceEndpointInfo
+export type InferencePutHuggingFaceResponse = InferenceInferenceEndpointInfoHuggingFace
 
 export interface InferencePutJinaaiRequest extends RequestBase {
   task_type: InferenceJinaAITaskType
@@ -13849,7 +13947,7 @@ export interface InferencePutMistralRequest extends RequestBase {
   }
 }
 
-export type InferencePutMistralResponse = InferenceInferenceEndpointInfo
+export type InferencePutMistralResponse = InferenceInferenceEndpointInfoMistral
 
 export interface InferencePutOpenaiRequest extends RequestBase {
   task_type: InferenceOpenAITaskType
@@ -13862,7 +13960,7 @@ export interface InferencePutOpenaiRequest extends RequestBase {
   }
 }
 
-export type InferencePutOpenaiResponse = InferenceInferenceEndpointInfo
+export type InferencePutOpenaiResponse = InferenceInferenceEndpointInfoOpenAI
 
 export interface InferencePutVoyageaiRequest extends RequestBase {
   task_type: InferenceVoyageAITaskType
@@ -13875,7 +13973,7 @@ export interface InferencePutVoyageaiRequest extends RequestBase {
   }
 }
 
-export type InferencePutVoyageaiResponse = InferenceInferenceEndpointInfo
+export type InferencePutVoyageaiResponse = InferenceInferenceEndpointInfoVoyageAI
 
 export interface InferencePutWatsonxRequest extends RequestBase {
   task_type: InferenceWatsonxTaskType
@@ -13886,7 +13984,7 @@ export interface InferencePutWatsonxRequest extends RequestBase {
   }
 }
 
-export type InferencePutWatsonxResponse = InferenceInferenceEndpointInfo
+export type InferencePutWatsonxResponse = InferenceInferenceEndpointInfoWatsonx
 
 export interface InferenceRerankRequest extends RequestBase {
   inference_id: Id
