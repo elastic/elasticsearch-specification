@@ -78,7 +78,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_async_search/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\n"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -175,7 +181,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_async_search/status/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\n"
+          }
+        ]
       }
     },
     "/_async_search": {
@@ -325,7 +337,13 @@
             "$ref": "#/components/responses/async_search.submit-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /sales*/_async_search?size=0\n{\n  \"sort\": [\n    { \"date\": { \"order\": \"asc\" } }\n  ],\n  \"aggs\": {\n    \"sale_date\": {\n      \"date_histogram\": {\n        \"field\": \"date\",\n        \"calendar_interval\": \"1d\"\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_async_search": {
@@ -478,7 +496,13 @@
             "$ref": "#/components/responses/async_search.submit-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /sales*/_async_search?size=0\n{\n  \"sort\": [\n    { \"date\": { \"order\": \"asc\" } }\n  ],\n  \"aggs\": {\n    \"sale_date\": {\n      \"date_histogram\": {\n        \"field\": \"date\",\n        \"calendar_interval\": \"1d\"\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_bulk": {
@@ -535,7 +559,13 @@
             "$ref": "#/components/responses/bulk-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _bulk\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n{ \"delete\" : { \"_index\" : \"test\", \"_id\" : \"2\" } }\n{ \"create\" : { \"_index\" : \"test\", \"_id\" : \"3\" } }\n{ \"field1\" : \"value3\" }\n{ \"update\" : {\"_id\" : \"1\", \"_index\" : \"test\"} }\n{ \"doc\" : {\"field2\" : \"value2\"} }"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -590,7 +620,13 @@
             "$ref": "#/components/responses/bulk-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _bulk\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n{ \"delete\" : { \"_index\" : \"test\", \"_id\" : \"2\" } }\n{ \"create\" : { \"_index\" : \"test\", \"_id\" : \"3\" } }\n{ \"field1\" : \"value3\" }\n{ \"update\" : {\"_id\" : \"1\", \"_index\" : \"test\"} }\n{ \"doc\" : {\"field2\" : \"value2\"} }"
+          }
+        ]
       }
     },
     "/{index}/_bulk": {
@@ -650,7 +686,13 @@
             "$ref": "#/components/responses/bulk-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _bulk\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n{ \"delete\" : { \"_index\" : \"test\", \"_id\" : \"2\" } }\n{ \"create\" : { \"_index\" : \"test\", \"_id\" : \"3\" } }\n{ \"field1\" : \"value3\" }\n{ \"update\" : {\"_id\" : \"1\", \"_index\" : \"test\"} }\n{ \"doc\" : {\"field2\" : \"value2\"} }"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -708,7 +750,13 @@
             "$ref": "#/components/responses/bulk-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _bulk\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n{ \"delete\" : { \"_index\" : \"test\", \"_id\" : \"2\" } }\n{ \"create\" : { \"_index\" : \"test\", \"_id\" : \"3\" } }\n{ \"field1\" : \"value3\" }\n{ \"update\" : {\"_id\" : \"1\", \"_index\" : \"test\"} }\n{ \"doc\" : {\"field2\" : \"value2\"} }"
+          }
+        ]
       }
     },
     "/_cat/aliases": {
@@ -738,7 +786,13 @@
             "$ref": "#/components/responses/cat.aliases-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _cat/aliases?format=json&v=true\n"
+          }
+        ]
       }
     },
     "/_cat/aliases/{name}": {
@@ -771,7 +825,13 @@
             "$ref": "#/components/responses/cat.aliases-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _cat/aliases?format=json&v=true\n"
+          }
+        ]
       }
     },
     "/_cat/component_templates": {
@@ -801,7 +861,13 @@
             "$ref": "#/components/responses/cat.component_templates-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _cat/component_templates/my-template-*?v=true&s=name&format=json\n"
+          }
+        ]
       }
     },
     "/_cat/component_templates/{name}": {
@@ -834,7 +900,13 @@
             "$ref": "#/components/responses/cat.component_templates-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _cat/component_templates/my-template-*?v=true&s=name&format=json\n"
+          }
+        ]
       }
     },
     "/_cat/count": {
@@ -858,7 +930,13 @@
             "$ref": "#/components/responses/cat.count-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_cat/count/my-index-000001?v=true&format=json\n"
+          }
+        ]
       }
     },
     "/_cat/count/{index}": {
@@ -885,7 +963,13 @@
             "$ref": "#/components/responses/cat.count-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_cat/count/my-index-000001?v=true&format=json\n"
+          }
+        ]
       }
     },
     "/_cat": {
@@ -953,7 +1037,13 @@
             "$ref": "#/components/responses/cat.indices-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_cat/indices/my-index-*?v=true&s=index&format=json\n"
+          }
+        ]
       }
     },
     "/_cat/indices/{index}": {
@@ -1001,7 +1091,13 @@
             "$ref": "#/components/responses/cat.indices-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_cat/indices/my-index-*?v=true&s=index&format=json\n"
+          }
+        ]
       }
     },
     "/_cat/ml/data_frame/analytics": {
@@ -1034,7 +1130,13 @@
             "$ref": "#/components/responses/cat.ml_data_frame_analytics-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _cat/ml/data_frame/analytics?v=true&format=json\n"
+          }
+        ]
       }
     },
     "/_cat/ml/data_frame/analytics/{id}": {
@@ -1070,7 +1172,13 @@
             "$ref": "#/components/responses/cat.ml_data_frame_analytics-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _cat/ml/data_frame/analytics?v=true&format=json\n"
+          }
+        ]
       }
     },
     "/_cat/ml/datafeeds": {
@@ -1100,7 +1208,13 @@
             "$ref": "#/components/responses/cat.ml_datafeeds-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _cat/ml/datafeeds?v=true&format=json\n"
+          }
+        ]
       }
     },
     "/_cat/ml/datafeeds/{datafeed_id}": {
@@ -1133,7 +1247,13 @@
             "$ref": "#/components/responses/cat.ml_datafeeds-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _cat/ml/datafeeds?v=true&format=json\n"
+          }
+        ]
       }
     },
     "/_cat/ml/anomaly_detectors": {
@@ -1166,7 +1286,13 @@
             "$ref": "#/components/responses/cat.ml_jobs-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _cat/ml/anomaly_detectors?h=id,s,dpr,mb&v=true&format=json\n"
+          }
+        ]
       }
     },
     "/_cat/ml/anomaly_detectors/{job_id}": {
@@ -1202,7 +1328,13 @@
             "$ref": "#/components/responses/cat.ml_jobs-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _cat/ml/anomaly_detectors?h=id,s,dpr,mb&v=true&format=json\n"
+          }
+        ]
       }
     },
     "/_cat/ml/trained_models": {
@@ -1241,7 +1373,13 @@
             "$ref": "#/components/responses/cat.ml_trained_models-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _cat/ml/trained_models?v=true&format=json\n"
+          }
+        ]
       }
     },
     "/_cat/ml/trained_models/{model_id}": {
@@ -1283,7 +1421,13 @@
             "$ref": "#/components/responses/cat.ml_trained_models-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _cat/ml/trained_models?v=true&format=json\n"
+          }
+        ]
       }
     },
     "/_cat/transforms": {
@@ -1319,7 +1463,13 @@
             "$ref": "#/components/responses/cat.transforms-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_cat/transforms?v=true&format=json\n"
+          }
+        ]
       }
     },
     "/_cat/transforms/{transform_id}": {
@@ -1358,7 +1508,13 @@
             "$ref": "#/components/responses/cat.transforms-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_cat/transforms?v=true&format=json\n"
+          }
+        ]
       }
     },
     "/_search/scroll": {
@@ -1391,7 +1547,13 @@
             "$ref": "#/components/responses/scroll-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_search/scroll\n{\n  \"scroll_id\" : \"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -1422,7 +1584,13 @@
             "$ref": "#/components/responses/scroll-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_search/scroll\n{\n  \"scroll_id\" : \"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -1442,7 +1610,13 @@
             "$ref": "#/components/responses/clear_scroll-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_search/scroll\n{\n  \"scroll_id\": \"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"\n}"
+          }
+        ]
       }
     },
     "/_search/scroll/{scroll_id}": {
@@ -1478,7 +1652,13 @@
             "$ref": "#/components/responses/scroll-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_search/scroll\n{\n  \"scroll_id\" : \"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -1512,7 +1692,13 @@
             "$ref": "#/components/responses/scroll-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_search/scroll\n{\n  \"scroll_id\" : \"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -1537,7 +1723,13 @@
             "$ref": "#/components/responses/clear_scroll-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_search/scroll\n{\n  \"scroll_id\": \"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"\n}"
+          }
+        ]
       }
     },
     "/_pit": {
@@ -1603,7 +1795,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_pit\n{\n  \"id\": \"46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==\"\n}"
+          }
+        ]
       }
     },
     "/_component_template/{name}": {
@@ -1664,7 +1862,13 @@
             "$ref": "#/components/responses/cluster.put_component_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _component_template/template_1\n{\n  \"template\": null,\n  \"settings\": {\n    \"number_of_shards\": 1\n  },\n  \"mappings\": {\n    \"_source\": {\n      \"enabled\": false\n    },\n    \"properties\": {\n      \"host_name\": {\n        \"type\": \"keyword\"\n      },\n      \"created_at\": {\n        \"type\": \"date\",\n        \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -1692,7 +1896,13 @@
             "$ref": "#/components/responses/cluster.put_component_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _component_template/template_1\n{\n  \"template\": null,\n  \"settings\": {\n    \"number_of_shards\": 1\n  },\n  \"mappings\": {\n    \"_source\": {\n      \"enabled\": false\n    },\n    \"properties\": {\n      \"host_name\": {\n        \"type\": \"keyword\"\n      },\n      \"created_at\": {\n        \"type\": \"date\",\n        \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -2001,7 +2211,13 @@
             "$ref": "#/components/responses/connector.put-200"
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _connector/my-connector\n{\n  \"index_name\": \"search-google-drive\",\n  \"name\": \"My Connector\",\n  \"service_type\": \"google_drive\"\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -2186,7 +2402,13 @@
             "$ref": "#/components/responses/connector.put-200"
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _connector/my-connector\n{\n  \"index_name\": \"search-google-drive\",\n  \"name\": \"My Connector\",\n  \"service_type\": \"google_drive\"\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -2524,7 +2746,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _connector/_sync_job\n{\n  \"id\": \"connector-id\",\n  \"job_type\": \"full\",\n  \"trigger_method\": \"on_demand\"\n}"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_filtering/_activate": {
@@ -2640,7 +2868,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _connector/my-connector/_api_key_id\n{\n    \"api_key_id\": \"my-api-key-id\",\n    \"api_key_secret_id\": \"my-connector-secret-id\"\n}"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_configuration": {
@@ -2718,7 +2952,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _connector/my-spo-connector/_configuration\n{\n    \"values\": {\n        \"tenant_id\": \"my-tenant-id\",\n        \"tenant_name\": \"my-sharepoint-site\",\n        \"client_id\": \"foo\",\n        \"secret_value\": \"bar\",\n        \"site_collections\": \"*\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_error": {
@@ -2797,7 +3037,13 @@
             }
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _connector/my-connector/_error\n{\n    \"error\": \"Houston, we have a problem!\"\n}"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_filtering": {
@@ -2881,7 +3127,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _connector/my-g-drive-connector/_filtering\n{\n    \"rules\": [\n         {\n            \"field\": \"file_extension\",\n            \"id\": \"exclude-txt-files\",\n            \"order\": 0,\n            \"policy\": \"exclude\",\n            \"rule\": \"equals\",\n            \"value\": \"txt\"\n        },\n        {\n            \"field\": \"_\",\n            \"id\": \"DEFAULT\",\n            \"order\": 1,\n            \"policy\": \"include\",\n            \"rule\": \"regex\",\n            \"value\": \".*\"\n        }\n    ]\n}"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_filtering/_validation": {
@@ -3022,7 +3274,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _connector/my-connector/_index_name\n{\n    \"index_name\": \"data-from-my-google-drive\"\n}"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_name": {
@@ -3093,7 +3351,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _connector/my-connector/_name\n{\n    \"name\": \"Custom connector\",\n    \"description\": \"This is my customized connector\"\n}"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_native": {
@@ -3226,7 +3490,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _connector/my-connector/_pipeline\n{\n    \"pipeline\": {\n        \"extract_binary_content\": true,\n        \"name\": \"my-connector-pipeline\",\n        \"reduce_whitespace\": true,\n        \"run_ml_inference\": true\n    }\n}"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_scheduling": {
@@ -3300,7 +3570,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _connector/my-connector/_scheduling\n{\n    \"scheduling\": {\n        \"access_control\": {\n            \"enabled\": true,\n            \"interval\": \"0 10 0 * * ?\"\n        },\n        \"full\": {\n            \"enabled\": true,\n            \"interval\": \"0 20 0 * * ?\"\n        },\n        \"incremental\": {\n            \"enabled\": false,\n            \"interval\": \"0 30 0 * * ?\"\n        }\n    }\n}"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_service_type": {
@@ -3371,7 +3647,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _connector/my-connector/_service_type\n{\n    \"service_type\": \"sharepoint_online\"\n}"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_status": {
@@ -3442,7 +3724,13 @@
             }
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _connector/my-connector/_status\n{\n    \"status\": \"needs_configuration\"\n}"
+          }
+        ]
       }
     },
     "/_count": {
@@ -3505,7 +3793,13 @@
             "$ref": "#/components/responses/count-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_count\n{\n  \"query\" : {\n    \"term\" : { \"user.id\" : \"kimchy\" }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -3566,7 +3860,13 @@
             "$ref": "#/components/responses/count-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_count\n{\n  \"query\" : {\n    \"term\" : { \"user.id\" : \"kimchy\" }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_count": {
@@ -3632,7 +3932,13 @@
             "$ref": "#/components/responses/count-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_count\n{\n  \"query\" : {\n    \"term\" : { \"user.id\" : \"kimchy\" }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -3696,7 +4002,13 @@
             "$ref": "#/components/responses/count-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_count\n{\n  \"query\" : {\n    \"term\" : { \"user.id\" : \"kimchy\" }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_create/{id}": {
@@ -3765,7 +4077,13 @@
             "$ref": "#/components/responses/create-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT my-index-000001/_create/1\n{\n  \"@timestamp\": \"2099-11-15T13:12:00\",\n  \"message\": \"GET /search HTTP/1.1 200 1070000\",\n  \"user\": {\n    \"id\": \"kimchy\"\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -3832,7 +4150,13 @@
             "$ref": "#/components/responses/create-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT my-index-000001/_create/1\n{\n  \"@timestamp\": \"2099-11-15T13:12:00\",\n  \"message\": \"GET /search HTTP/1.1 200 1070000\",\n  \"user\": {\n    \"id\": \"kimchy\"\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_doc/{id}": {
@@ -3996,7 +4320,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_doc/0\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -4060,7 +4390,13 @@
             "$ref": "#/components/responses/index-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-000001/_doc/\n{\n  \"@timestamp\": \"2099-11-15T13:12:00\",\n  \"message\": \"GET /search HTTP/1.1 200 1070000\",\n  \"user\": {\n    \"id\": \"kimchy\"\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -4124,7 +4460,13 @@
             "$ref": "#/components/responses/index-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-000001/_doc/\n{\n  \"@timestamp\": \"2099-11-15T13:12:00\",\n  \"message\": \"GET /search HTTP/1.1 200 1070000\",\n  \"user\": {\n    \"id\": \"kimchy\"\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -4255,7 +4597,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /my-index-000001/_doc/1\n"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -4839,7 +5187,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /my-index-000001,my-index-000002/_delete_by_query\n{\n  \"query\": {\n    \"match_all\": {}\n  }\n}"
+          }
+        ]
       }
     },
     "/_scripts/{id}": {
@@ -4934,7 +5288,13 @@
             "$ref": "#/components/responses/put_script-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _scripts/my-search-template\n{\n  \"script\": {\n    \"lang\": \"mustache\",\n    \"source\": {\n      \"query\": {\n        \"match\": {\n          \"message\": \"{{query_string}}\"\n        }\n      },\n      \"from\": \"{{from}}\",\n      \"size\": \"{{size}}\"\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -4968,7 +5328,13 @@
             "$ref": "#/components/responses/put_script-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _scripts/my-search-template\n{\n  \"script\": {\n    \"lang\": \"mustache\",\n    \"source\": {\n      \"query\": {\n        \"match\": {\n          \"message\": \"{{query_string}}\"\n        }\n      },\n      \"from\": \"{{from}}\",\n      \"size\": \"{{size}}\"\n    }\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5451,7 +5817,13 @@
             "$ref": "#/components/responses/eql.search-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-data-stream/_eql/search\n{\n  \"query\": \"\"\"\n    process where (process.name == \"cmd.exe\" and process.pid != 2013)\n  \"\"\"\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -5500,7 +5872,13 @@
             "$ref": "#/components/responses/eql.search-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-data-stream/_eql/search\n{\n  \"query\": \"\"\"\n    process where (process.name == \"cmd.exe\" and process.pid != 2013)\n  \"\"\"\n}"
+          }
+        ]
       }
     },
     "/_query/queries/{id}": {
@@ -5733,7 +6111,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_query\n{\n  \"query\": \"\"\"\n    FROM library,remote-*:library\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\n    | STATS MAX(page_count) BY year\n    | SORT year\n    | LIMIT 5\n  \"\"\",\n  \"include_ccs_metadata\": true\n}"
+          }
+        ]
       }
     },
     "/{index}/_source/{id}": {
@@ -6080,7 +6464,13 @@
             "$ref": "#/components/responses/explain-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_explain/0\n{\n  \"query\" : {\n    \"match\" : { \"message\" : \"elasticsearch\" }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6141,7 +6531,13 @@
             "$ref": "#/components/responses/explain-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_explain/0\n{\n  \"query\" : {\n    \"match\" : { \"message\" : \"elasticsearch\" }\n  }\n}"
+          }
+        ]
       }
     },
     "/_field_caps": {
@@ -6186,7 +6582,13 @@
             "$ref": "#/components/responses/field_caps-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-*/_field_caps?fields=rating\n{\n  \"index_filter\": {\n    \"range\": {\n      \"@timestamp\": {\n        \"gte\": \"2018\"\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6229,7 +6631,13 @@
             "$ref": "#/components/responses/field_caps-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-*/_field_caps?fields=rating\n{\n  \"index_filter\": {\n    \"range\": {\n      \"@timestamp\": {\n        \"gte\": \"2018\"\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_field_caps": {
@@ -6277,7 +6685,13 @@
             "$ref": "#/components/responses/field_caps-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-*/_field_caps?fields=rating\n{\n  \"index_filter\": {\n    \"range\": {\n      \"@timestamp\": {\n        \"gte\": \"2018\"\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6323,7 +6737,13 @@
             "$ref": "#/components/responses/field_caps-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-*/_field_caps?fields=rating\n{\n  \"index_filter\": {\n    \"range\": {\n      \"@timestamp\": {\n        \"gte\": \"2018\"\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_graph/explore": {
@@ -6356,7 +6776,13 @@
             "$ref": "#/components/responses/graph.explore-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST clicklogs/_graph/explore\n{\n  \"query\": {\n    \"match\": {\n      \"query.raw\": \"midi\"\n    }\n  },\n  \"vertices\": [\n    {\n      \"field\": \"product\"\n    }\n  ],\n  \"connections\": {\n    \"vertices\": [\n      {\n        \"field\": \"query.raw\"\n      }\n    ]\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6387,7 +6813,13 @@
             "$ref": "#/components/responses/graph.explore-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST clicklogs/_graph/explore\n{\n  \"query\": {\n    \"match\": {\n      \"query.raw\": \"midi\"\n    }\n  },\n  \"vertices\": [\n    {\n      \"field\": \"product\"\n    }\n  ],\n  \"connections\": {\n    \"vertices\": [\n      {\n        \"field\": \"query.raw\"\n      }\n    ]\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_doc": {
@@ -6450,7 +6882,13 @@
             "$ref": "#/components/responses/index-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-000001/_doc/\n{\n  \"@timestamp\": \"2099-11-15T13:12:00\",\n  \"message\": \"GET /search HTTP/1.1 200 1070000\",\n  \"user\": {\n    \"id\": \"kimchy\"\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_block/{block}": {
@@ -6572,7 +7010,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /my-index-000001/_block/write\n"
+          }
+        ]
       }
     },
     "/_analyze": {
@@ -6599,7 +7043,13 @@
             "$ref": "#/components/responses/indices.analyze-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_analyze\n{\n  \"analyzer\": \"standard\",\n  \"text\": \"this is a test\"\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6624,7 +7074,13 @@
             "$ref": "#/components/responses/indices.analyze-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_analyze\n{\n  \"analyzer\": \"standard\",\n  \"text\": \"this is a test\"\n}"
+          }
+        ]
       }
     },
     "/{index}/_analyze": {
@@ -6654,7 +7110,13 @@
             "$ref": "#/components/responses/indices.analyze-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_analyze\n{\n  \"analyzer\": \"standard\",\n  \"text\": \"this is a test\"\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6682,7 +7144,13 @@
             "$ref": "#/components/responses/indices.analyze-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_analyze\n{\n  \"analyzer\": \"standard\",\n  \"text\": \"this is a test\"\n}"
+          }
+        ]
       }
     },
     "/{index}": {
@@ -6922,7 +7390,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /my-index-000001\n{\n  \"settings\": {\n    \"number_of_shards\": 3,\n    \"number_of_replicas\": 2\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -7304,7 +7778,13 @@
             "$ref": "#/components/responses/indices.put_alias-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _aliases\n{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"my-data-stream\",\n        \"alias\": \"my-alias\"\n      }\n    }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -7335,7 +7815,13 @@
             "$ref": "#/components/responses/indices.put_alias-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _aliases\n{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"my-data-stream\",\n        \"alias\": \"my-alias\"\n      }\n    }\n  ]\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -7430,7 +7916,13 @@
             "$ref": "#/components/responses/indices.put_alias-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _aliases\n{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"my-data-stream\",\n        \"alias\": \"my-alias\"\n      }\n    }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -7461,7 +7953,13 @@
             "$ref": "#/components/responses/indices.put_alias-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _aliases\n{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"my-data-stream\",\n        \"alias\": \"my-alias\"\n      }\n    }\n  ]\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -7553,7 +8051,13 @@
             "$ref": "#/components/responses/indices.put_index_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /_index_template/template_1\n{\n  \"index_patterns\" : [\"template*\"],\n  \"priority\" : 1,\n  \"template\": {\n    \"settings\" : {\n      \"number_of_shards\" : 2\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -7584,7 +8088,13 @@
             "$ref": "#/components/responses/indices.put_index_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /_index_template/template_1\n{\n  \"index_patterns\" : [\"template*\"],\n  \"priority\" : 1,\n  \"template\": {\n    \"settings\" : {\n      \"number_of_shards\" : 2\n    }\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -7841,7 +8351,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET .ds-metrics-2023.03.22-000001/_lifecycle/explain\n"
+          }
+        ]
       }
     },
     "/_alias": {
@@ -7987,7 +8503,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_data_stream/{name}/_lifecycle?human&pretty\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -8089,7 +8611,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _data_stream/my-data-stream/_lifecycle\n{\n  \"data_retention\": \"7d\"\n}"
+          }
+        ]
       }
     },
     "/_data_stream": {
@@ -8406,7 +8934,13 @@
             "$ref": "#/components/responses/indices.put_mapping-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /my-index-000001/_mapping\n{\n  \"properties\": {\n    \"user\": {\n      \"properties\": {\n        \"name\": {\n          \"type\": \"keyword\"\n        }\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -8449,7 +8983,13 @@
             "$ref": "#/components/responses/indices.put_mapping-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /my-index-000001/_mapping\n{\n  \"properties\": {\n    \"user\": {\n      \"properties\": {\n        \"name\": {\n          \"type\": \"keyword\"\n        }\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_settings": {
@@ -8534,7 +9074,13 @@
             "$ref": "#/components/responses/indices.put_settings-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /my-index-000001/_settings\n{\n  \"index\" : {\n    \"number_of_replicas\" : 2\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_settings": {
@@ -8625,7 +9171,13 @@
             "$ref": "#/components/responses/indices.put_settings-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /my-index-000001/_settings\n{\n  \"index\" : {\n    \"number_of_replicas\" : 2\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_settings/{name}": {
@@ -9020,7 +9572,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_resolve/index/f*,remoteCluster1:bar*?expand_wildcards=all\n"
+          }
+        ]
       }
     },
     "/{alias}/_rollover": {
@@ -9059,7 +9617,13 @@
             "$ref": "#/components/responses/indices.rollover-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-data-stream/_rollover\n{\n  \"conditions\": {\n    \"max_age\": \"7d\",\n    \"max_docs\": 1000,\n    \"max_primary_shard_size\": \"50gb\",\n    \"max_primary_shard_docs\": \"2000\"\n  }\n}"
+          }
+        ]
       }
     },
     "/{alias}/_rollover/{new_index}": {
@@ -9101,7 +9665,13 @@
             "$ref": "#/components/responses/indices.rollover-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-data-stream/_rollover\n{\n  \"conditions\": {\n    \"max_age\": \"7d\",\n    \"max_docs\": 1000,\n    \"max_primary_shard_size\": \"50gb\",\n    \"max_primary_shard_docs\": \"2000\"\n  }\n}"
+          }
+        ]
       }
     },
     "/_index_template/_simulate_index/{name}": {
@@ -9197,7 +9767,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_index_template/_simulate_index/my-index-000001\n"
+          }
+        ]
       }
     },
     "/_index_template/_simulate": {
@@ -9230,7 +9806,13 @@
             "$ref": "#/components/responses/indices.simulate_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_index_template/_simulate\n{\n  \"index_patterns\": [\"my-index-*\"],\n  \"composed_of\": [\"ct2\"],\n  \"priority\": 10,\n  \"template\": {\n    \"settings\": {\n      \"index.number_of_replicas\": 1\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_index_template/_simulate/{name}": {
@@ -9266,7 +9848,13 @@
             "$ref": "#/components/responses/indices.simulate_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_index_template/_simulate\n{\n  \"index_patterns\": [\"my-index-*\"],\n  \"composed_of\": [\"ct2\"],\n  \"priority\": 10,\n  \"template\": {\n    \"settings\": {\n      \"index.number_of_replicas\": 1\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_aliases": {
@@ -9639,7 +10227,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _inference/chat_completion/openai-completion/_stream\n{\n  \"model\": \"gpt-4o\",\n  \"messages\": [\n      {\n          \"role\": \"user\",\n          \"content\": \"What is Elastic?\"\n      }\n  ]\n}"
+          }
+        ]
       }
     },
     "/_inference/completion/{inference_id}": {
@@ -9729,7 +10323,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _inference/completion/openai_chat_completions\n{\n  \"input\": \"What is Elastic?\"\n}"
+          }
+        ]
       }
     },
     "/_inference/{inference_id}": {
@@ -10034,7 +10634,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/completion/alibabacloud_ai_search_completion\n{\n    \"service\": \"alibabacloud-ai-search\",\n    \"service_settings\": {\n        \"host\" : \"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\n        \"api_key\": \"AlibabaCloud-API-Key\",\n        \"service_id\": \"ops-qwen-turbo\",\n        \"workspace\" : \"default\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{amazonbedrock_inference_id}": {
@@ -10120,7 +10726,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/amazon_bedrock_embeddings\n{\n    \"service\": \"amazonbedrock\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"provider\": \"amazontitan\",\n        \"model\": \"amazon.titan-embed-text-v2:0\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{anthropic_inference_id}": {
@@ -10200,7 +10812,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/completion/anthropic_completion\n{\n    \"service\": \"anthropic\",\n    \"service_settings\": {\n        \"api_key\": \"Anthropic-Api-Key\",\n        \"model_id\": \"Model-ID\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 1024\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{azureaistudio_inference_id}": {
@@ -10286,7 +10904,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/azure_ai_studio_embeddings\n{\n    \"service\": \"azureaistudio\",\n    \"service_settings\": {\n        \"api_key\": \"Azure-AI-Studio-API-key\",\n        \"target\": \"Target-Uri\",\n        \"provider\": \"openai\",\n        \"endpoint_type\": \"token\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{azureopenai_inference_id}": {
@@ -10372,7 +10996,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/azure_openai_embeddings\n{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_key\": \"Api-Key\",\n        \"resource_name\": \"Resource-name\",\n        \"deployment_id\": \"Deployment-id\",\n        \"api_version\": \"2024-02-01\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{cohere_inference_id}": {
@@ -10458,7 +11088,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/cohere-embeddings\n{\n    \"service\": \"cohere\",\n    \"service_settings\": {\n        \"api_key\": \"Cohere-Api-key\",\n        \"model_id\": \"embed-english-light-v3.0\",\n        \"embedding_type\": \"byte\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{elasticsearch_inference_id}": {
@@ -10570,7 +11206,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/sparse_embedding/my-elser-model\n{\n    \"service\": \"elasticsearch\",\n    \"service_settings\": {\n        \"adaptive_allocations\": { \n        \"enabled\": true,\n        \"min_number_of_allocations\": 1,\n        \"max_number_of_allocations\": 4\n        },\n        \"num_threads\": 1,\n        \"model_id\": \".elser_model_2\" \n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{elser_inference_id}": {
@@ -10660,7 +11302,13 @@
           }
         },
         "deprecated": true,
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/sparse_embedding/my-elser-model\n{\n    \"service\": \"elser\",\n    \"service_settings\": {\n        \"num_allocations\": 1,\n        \"num_threads\": 1\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{googleaistudio_inference_id}": {
@@ -10738,7 +11386,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/completion/google_ai_studio_completion\n{\n    \"service\": \"googleaistudio\",\n    \"service_settings\": {\n        \"api_key\": \"api-key\",\n        \"model_id\": \"model-id\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{googlevertexai_inference_id}": {
@@ -10824,7 +11478,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/google_vertex_ai_embeddingss\n{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"service_account_json\": \"service-account-json\",\n        \"model_id\": \"model-id\",\n        \"location\": \"location\",\n        \"project_id\": \"project-id\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{huggingface_inference_id}": {
@@ -10902,7 +11562,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/hugging-face-embeddings\n{\n    \"service\": \"hugging_face\",\n    \"service_settings\": {\n        \"api_key\": \"hugging-face-access-token\", \n        \"url\": \"url-endpoint\" \n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{jinaai_inference_id}": {
@@ -10988,7 +11654,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/jinaai-embeddings\n{\n    \"service\": \"jinaai\",\n    \"service_settings\": {\n        \"model_id\": \"jina-embeddings-v3\",\n        \"api_key\": \"JinaAi-Api-key\"\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{mistral_inference_id}": {
@@ -11065,7 +11737,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/mistral-embeddings-test\n{\n  \"service\": \"mistral\",\n  \"service_settings\": {\n    \"api_key\": \"Mistral-API-Key\",\n    \"model\": \"mistral-embed\" \n  }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{openai_inference_id}": {
@@ -11151,7 +11829,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/openai-embeddings\n{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"text-embedding-3-small\",\n        \"dimensions\": 128\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{voyageai_inference_id}": {
@@ -11237,7 +11921,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/openai-embeddings\n{\n    \"service\": \"voyageai\",\n    \"service_settings\": {\n        \"model_id\": \"voyage-3-large\",\n        \"dimensions\": 512\n    }\n}"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{watsonx_inference_id}": {
@@ -11311,7 +12001,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/text_embedding/watsonx-embeddings\n{\n  \"service\": \"watsonxai\",\n  \"service_settings\": {\n      \"api_key\": \"Watsonx-API-Key\", \n      \"url\": \"Wastonx-URL\", \n      \"model_id\": \"ibm/slate-30m-english-rtrvr\",\n      \"project_id\": \"IBM-Cloud-ID\", \n      \"api_version\": \"2024-03-14\"\n  }\n}"
+          }
+        ]
       }
     },
     "/_inference/rerank/{inference_id}": {
@@ -11406,7 +12102,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _inference/rerank/cohere_rerank\n{\n  \"input\": [\"luke\", \"like\", \"leia\", \"chewy\",\"r2d2\", \"star\", \"wars\"],\n  \"query\": \"star wars main character\"\n}"
+          }
+        ]
       }
     },
     "/_inference/sparse_embedding/{inference_id}": {
@@ -11496,7 +12198,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _inference/sparse_embedding/my-elser-model\n{\n  \"input\": \"The sky above the port was the color of television tuned to a dead channel.\"\n}"
+          }
+        ]
       }
     },
     "/_inference/text_embedding/{inference_id}": {
@@ -11586,7 +12294,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _inference/text_embedding/my-cohere-endpoint\n{\n  \"input\": \"The sky above the port was the color of television tuned to a dead channel.\",\n  \"task_settings\": {\n    \"input_type\": \"ingest\"\n  }\n}"
+          }
+        ]
       }
     },
     "/": {
@@ -11639,7 +12353,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /\n"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -11804,7 +12524,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _ingest/pipeline/my-pipeline-id\n{\n  \"description\" : \"My optional pipeline description\",\n  \"processors\" : [\n    {\n      \"set\" : {\n        \"description\" : \"My optional processor description\",\n        \"field\": \"my-keyword-field\",\n        \"value\": \"foo\"\n      }\n    }\n  ]\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -11949,7 +12675,13 @@
             "$ref": "#/components/responses/ingest.simulate-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_ingest/pipeline/_simulate\n{\n  \"pipeline\" :\n  {\n    \"description\": \"_description\",\n    \"processors\": [\n      {\n        \"set\" : {\n          \"field\" : \"field2\",\n          \"value\" : \"_value\"\n        }\n      }\n    ]\n  },\n  \"docs\": [\n    {\n      \"_index\": \"index\",\n      \"_id\": \"id\",\n      \"_source\": {\n        \"foo\": \"bar\"\n      }\n    },\n    {\n      \"_index\": \"index\",\n      \"_id\": \"id\",\n      \"_source\": {\n        \"foo\": \"rab\"\n      }\n    }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -11971,7 +12703,13 @@
             "$ref": "#/components/responses/ingest.simulate-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_ingest/pipeline/_simulate\n{\n  \"pipeline\" :\n  {\n    \"description\": \"_description\",\n    \"processors\": [\n      {\n        \"set\" : {\n          \"field\" : \"field2\",\n          \"value\" : \"_value\"\n        }\n      }\n    ]\n  },\n  \"docs\": [\n    {\n      \"_index\": \"index\",\n      \"_id\": \"id\",\n      \"_source\": {\n        \"foo\": \"bar\"\n      }\n    },\n    {\n      \"_index\": \"index\",\n      \"_id\": \"id\",\n      \"_source\": {\n        \"foo\": \"rab\"\n      }\n    }\n  ]\n}"
+          }
+        ]
       }
     },
     "/_ingest/pipeline/{id}/_simulate": {
@@ -11998,7 +12736,13 @@
             "$ref": "#/components/responses/ingest.simulate-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_ingest/pipeline/_simulate\n{\n  \"pipeline\" :\n  {\n    \"description\": \"_description\",\n    \"processors\": [\n      {\n        \"set\" : {\n          \"field\" : \"field2\",\n          \"value\" : \"_value\"\n        }\n      }\n    ]\n  },\n  \"docs\": [\n    {\n      \"_index\": \"index\",\n      \"_id\": \"id\",\n      \"_source\": {\n        \"foo\": \"bar\"\n      }\n    },\n    {\n      \"_index\": \"index\",\n      \"_id\": \"id\",\n      \"_source\": {\n        \"foo\": \"rab\"\n      }\n    }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -12023,7 +12767,13 @@
             "$ref": "#/components/responses/ingest.simulate-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_ingest/pipeline/_simulate\n{\n  \"pipeline\" :\n  {\n    \"description\": \"_description\",\n    \"processors\": [\n      {\n        \"set\" : {\n          \"field\" : \"field2\",\n          \"value\" : \"_value\"\n        }\n      }\n    ]\n  },\n  \"docs\": [\n    {\n      \"_index\": \"index\",\n      \"_id\": \"id\",\n      \"_source\": {\n        \"foo\": \"bar\"\n      }\n    },\n    {\n      \"_index\": \"index\",\n      \"_id\": \"id\",\n      \"_source\": {\n        \"foo\": \"rab\"\n      }\n    }\n  ]\n}"
+          }
+        ]
       }
     },
     "/_license": {
@@ -12082,7 +12832,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_license\n"
+          }
+        ]
       }
     },
     "/_logstash/pipeline/{id}": {
@@ -12106,7 +12862,13 @@
             "$ref": "#/components/responses/logstash.get_pipeline-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _logstash/pipeline/my_pipeline\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -12156,7 +12918,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _logstash/pipeline/my_pipeline\n{\n  \"description\": \"Sample pipeline for illustration purposes\",\n  \"last_modified\": \"2021-01-02T02:50:51.250Z\",\n  \"pipeline_metadata\": {\n    \"type\": \"logstash_pipeline\",\n    \"version\": 1\n  },\n  \"username\": \"elastic\",\n  \"pipeline\": \"input {}\\\\n filter { grok {} }\\\\n output {}\",\n  \"pipeline_settings\": {\n    \"pipeline.workers\": 1,\n    \"pipeline.batch.size\": 125,\n    \"pipeline.batch.delay\": 50,\n    \"queue.type\": \"memory\",\n    \"queue.max_bytes\": \"1gb\",\n    \"queue.checkpoint.writes\": 1024\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -12208,7 +12976,13 @@
             "$ref": "#/components/responses/logstash.get_pipeline-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _logstash/pipeline/my_pipeline\n"
+          }
+        ]
       }
     },
     "/_mget": {
@@ -12253,7 +13027,13 @@
             "$ref": "#/components/responses/mget-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_mget\n{\n  \"docs\": [\n    {\n      \"_id\": \"1\"\n    },\n    {\n      \"_id\": \"2\"\n    }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -12296,7 +13076,13 @@
             "$ref": "#/components/responses/mget-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_mget\n{\n  \"docs\": [\n    {\n      \"_id\": \"1\"\n    },\n    {\n      \"_id\": \"2\"\n    }\n  ]\n}"
+          }
+        ]
       }
     },
     "/{index}/_mget": {
@@ -12344,7 +13130,13 @@
             "$ref": "#/components/responses/mget-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_mget\n{\n  \"docs\": [\n    {\n      \"_id\": \"1\"\n    },\n    {\n      \"_id\": \"2\"\n    }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -12390,7 +13182,13 @@
             "$ref": "#/components/responses/mget-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_mget\n{\n  \"docs\": [\n    {\n      \"_id\": \"1\"\n    },\n    {\n      \"_id\": \"2\"\n    }\n  ]\n}"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_close": {
@@ -14223,7 +15021,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/anomaly_detectors/_estimate_model_memory\n{\n  \"analysis_config\": {\n    \"bucket_span\": \"5m\",\n    \"detectors\": [\n      {\n        \"function\": \"sum\",\n        \"field_name\": \"bytes\",\n        \"by_field_name\": \"status\",\n        \"partition_field_name\": \"app\"\n      }\n    ],\n    \"influencers\": [\n      \"source_ip\",\n      \"dest_ip\"\n    ]\n  },\n  \"overall_cardinality\": {\n    \"status\": 10,\n    \"app\": 50\n  },\n  \"max_bucket_cardinality\": {\n    \"source_ip\": 300,\n    \"dest_ip\": 30\n  }\n}"
+          }
+        ]
       }
     },
     "/_ml/data_frame/_evaluate": {
@@ -14326,7 +15130,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/data_frame/_evaluate\n{\n  \"index\": \"animal_classification\",\n  \"evaluation\": {\n    \"classification\": {\n      \"actual_field\": \"animal_class\",\n      \"predicted_field\": \"ml.animal_class_prediction\",\n      \"metrics\": {\n        \"multiclass_confusion_matrix\": {}\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_flush": {
@@ -17138,7 +17948,13 @@
             "$ref": "#/components/responses/msearch_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_msearch/template\n{ }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -17175,7 +17991,13 @@
             "$ref": "#/components/responses/msearch_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_msearch/template\n{ }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}"
+          }
+        ]
       }
     },
     "/{index}/_msearch/template": {
@@ -17217,7 +18039,13 @@
             "$ref": "#/components/responses/msearch_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_msearch/template\n{ }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -17257,7 +18085,13 @@
             "$ref": "#/components/responses/msearch_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_msearch/template\n{ }\n{ \"id\": \"my-search-template\", \"params\": { \"query_string\": \"hello world\", \"from\": 0, \"size\": 10 }}\n{ }\n{ \"id\": \"my-other-search-template\", \"params\": { \"query_type\": \"match_all\" }}"
+          }
+        ]
       }
     },
     "/_mtermvectors": {
@@ -17314,7 +18148,13 @@
             "$ref": "#/components/responses/mtermvectors-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /my-index-000001/_mtermvectors\n{\n  \"docs\": [\n      {\n        \"_id\": \"2\",\n        \"fields\": [\n            \"message\"\n        ],\n        \"term_statistics\": true\n      },\n      {\n        \"_id\": \"1\"\n      }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -17369,7 +18209,13 @@
             "$ref": "#/components/responses/mtermvectors-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /my-index-000001/_mtermvectors\n{\n  \"docs\": [\n      {\n        \"_id\": \"2\",\n        \"fields\": [\n            \"message\"\n        ],\n        \"term_statistics\": true\n      },\n      {\n        \"_id\": \"1\"\n      }\n  ]\n}"
+          }
+        ]
       }
     },
     "/{index}/_mtermvectors": {
@@ -17429,7 +18275,13 @@
             "$ref": "#/components/responses/mtermvectors-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /my-index-000001/_mtermvectors\n{\n  \"docs\": [\n      {\n        \"_id\": \"2\",\n        \"fields\": [\n            \"message\"\n        ],\n        \"term_statistics\": true\n      },\n      {\n        \"_id\": \"1\"\n      }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -17487,7 +18339,13 @@
             "$ref": "#/components/responses/mtermvectors-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /my-index-000001/_mtermvectors\n{\n  \"docs\": [\n      {\n        \"_id\": \"2\",\n        \"fields\": [\n            \"message\"\n        ],\n        \"term_statistics\": true\n      },\n      {\n        \"_id\": \"1\"\n      }\n  ]\n}"
+          }
+        ]
       }
     },
     "/{index}/_pit": {
@@ -17626,7 +18484,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /my-index-000001/_pit?keep_alive=1m&allow_partial_search_results=true\n"
+          }
+        ]
       }
     },
     "/_scripts/{id}/{context}": {
@@ -17665,7 +18529,13 @@
             "$ref": "#/components/responses/put_script-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _scripts/my-search-template\n{\n  \"script\": {\n    \"lang\": \"mustache\",\n    \"source\": {\n      \"query\": {\n        \"match\": {\n          \"message\": \"{{query_string}}\"\n        }\n      },\n      \"from\": \"{{from}}\",\n      \"size\": \"{{size}}\"\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -17702,7 +18572,13 @@
             "$ref": "#/components/responses/put_script-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _scripts/my-search-template\n{\n  \"script\": {\n    \"lang\": \"mustache\",\n    \"source\": {\n      \"query\": {\n        \"match\": {\n          \"message\": \"{{query_string}}\"\n        }\n      },\n      \"from\": \"{{from}}\",\n      \"size\": \"{{size}}\"\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_query_rules/{ruleset_id}/_rule/{rule_id}": {
@@ -17758,7 +18634,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _query_rules/my-ruleset/_rule/my-rule1\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -17857,7 +18739,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _query_rules/my-ruleset/_test\n{\n  \"match_criteria\": {\n    \"query_string\": \"puggles\"\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -17944,7 +18832,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _query_rules/my-ruleset/\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -18023,7 +18917,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _query_rules/my-ruleset\n{\n    \"rules\": [\n        {\n            \"rule_id\": \"my-rule1\",\n            \"type\": \"pinned\",\n            \"criteria\": [\n                {\n                    \"type\": \"contains\",\n                    \"metadata\": \"user_query\",\n                    \"values\": [ \"pugs\", \"puggles\" ]\n                },\n                {\n                    \"type\": \"exact\",\n                    \"metadata\": \"user_country\",\n                    \"values\": [ \"us\" ]\n                }\n            ],\n            \"actions\": {\n                \"ids\": [\n                    \"id1\",\n                    \"id2\"\n                ]\n            }\n        },\n        {\n            \"rule_id\": \"my-rule2\",\n            \"type\": \"pinned\",\n            \"criteria\": [\n                {\n                    \"type\": \"fuzzy\",\n                    \"metadata\": \"user_query\",\n                    \"values\": [ \"rescue dogs\" ]\n                }\n            ],\n            \"actions\": {\n                \"docs\": [\n                    {\n                        \"_index\": \"index1\",\n                        \"_id\": \"id3\"\n                    },\n                    {\n                        \"_index\": \"index2\",\n                        \"_id\": \"id4\"\n                    }\n                ]\n            }\n        }\n    ]\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -18123,7 +19023,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _query_rules/?from=0&size=3\n"
+          }
+        ]
       }
     },
     "/_query_rules/{ruleset_id}/_test": {
@@ -18208,7 +19114,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _query_rules/my-ruleset\n{\n    \"rules\": [\n        {\n            \"rule_id\": \"my-rule1\",\n            \"type\": \"pinned\",\n            \"criteria\": [\n                {\n                    \"type\": \"contains\",\n                    \"metadata\": \"user_query\",\n                    \"values\": [ \"pugs\", \"puggles\" ]\n                },\n                {\n                    \"type\": \"exact\",\n                    \"metadata\": \"user_country\",\n                    \"values\": [ \"us\" ]\n                }\n            ],\n            \"actions\": {\n                \"ids\": [\n                    \"id1\",\n                    \"id2\"\n                ]\n            }\n        },\n        {\n            \"rule_id\": \"my-rule2\",\n            \"type\": \"pinned\",\n            \"criteria\": [\n                {\n                    \"type\": \"fuzzy\",\n                    \"metadata\": \"user_query\",\n                    \"values\": [ \"rescue dogs\" ]\n                }\n            ],\n            \"actions\": {\n                \"docs\": [\n                    {\n                        \"_index\": \"index1\",\n                        \"_id\": \"id3\"\n                    },\n                    {\n                        \"_index\": \"index2\",\n                        \"_id\": \"id4\"\n                    }\n                ]\n            }\n        }\n    ]\n}"
+          }
+        ]
       }
     },
     "/_rank_eval": {
@@ -18612,7 +19524,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _reindex\n{\n  \"source\": {\n    \"index\": [\"my-index-000001\", \"my-index-000002\"]\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000002\"\n  }\n}"
+          }
+        ]
       }
     },
     "/_render/template": {
@@ -18631,7 +19549,13 @@
             "$ref": "#/components/responses/render_search_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _render/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 20,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -18648,7 +19572,13 @@
             "$ref": "#/components/responses/render_search_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _render/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 20,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       }
     },
     "/_render/template/{id}": {
@@ -18672,7 +19602,13 @@
             "$ref": "#/components/responses/render_search_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _render/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 20,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -18694,7 +19630,13 @@
             "$ref": "#/components/responses/render_search_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _render/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 20,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       }
     },
     "/_scripts/painless/_execute": {
@@ -18713,7 +19655,13 @@
             "$ref": "#/components/responses/scripts_painless_execute-200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_scripts/painless/_execute\n{\n  \"script\": {\n    \"source\": \"params.count / params.total\",\n    \"params\": {\n      \"count\": 100.0,\n      \"total\": 1000.0\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -18730,7 +19678,13 @@
             "$ref": "#/components/responses/scripts_painless_execute-200"
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_scripts/painless/_execute\n{\n  \"script\": {\n    \"source\": \"params.count / params.total\",\n    \"params\": {\n      \"count\": 100.0,\n      \"total\": 1000.0\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_search": {
@@ -18883,7 +19837,13 @@
             "$ref": "#/components/responses/search-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_search?from=40&size=20\n{\n  \"query\": {\n    \"term\": {\n      \"user.id\": \"kimchy\"\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19034,7 +19994,13 @@
             "$ref": "#/components/responses/search-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_search?from=40&size=20\n{\n  \"query\": {\n    \"term\": {\n      \"user.id\": \"kimchy\"\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_search": {
@@ -19190,7 +20156,13 @@
             "$ref": "#/components/responses/search-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_search?from=40&size=20\n{\n  \"query\": {\n    \"term\": {\n      \"user.id\": \"kimchy\"\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19344,7 +20316,13 @@
             "$ref": "#/components/responses/search-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_search?from=40&size=20\n{\n  \"query\": {\n    \"term\": {\n      \"user.id\": \"kimchy\"\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_application/search_application/{name}": {
@@ -19385,7 +20363,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _application/search_application/my-app/\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -19452,7 +20436,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _application/search_application/my-app\n{\n  \"indices\": [ \"index1\", \"index2\" ],\n  \"template\": {\n    \"script\": {\n      \"source\": {\n        \"query\": {\n          \"query_string\": {\n            \"query\": \"{{query_string}}\",\n            \"default_field\": \"{{default_field}}\"\n          }\n        }\n      },\n      \"params\": {\n        \"query_string\": \"*\",\n        \"default_field\": \"*\"\n      }\n    },\n    \"dictionary\": {\n      \"properties\": {\n        \"query_string\": {\n          \"type\": \"string\"\n        },\n        \"default_field\": {\n          \"type\": \"string\",\n          \"enum\": [\n            \"title\",\n            \"description\"\n          ]\n        },\n        \"additionalProperties\": false\n      },\n      \"required\": [\n        \"query_string\"\n      ]\n    }\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -19507,7 +20497,13 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _application/analytics/my*\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -19592,7 +20588,13 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _application/analytics/my*\n"
+          }
+        ]
       }
     },
     "/_application/search_application": {
@@ -19668,7 +20670,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _application/search_application?from=0&size=3&q=app*\n"
+          }
+        ]
       }
     },
     "/_application/search_application/{name}/_search": {
@@ -19695,7 +20703,13 @@
             "$ref": "#/components/responses/search_application.search-200"
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _application/search_application/my-app/_search\n{\n  \"params\": {\n    \"query_string\": \"my first query\",\n    \"text_fields\": [\n      {\"name\": \"title\", \"boost\": 5},\n      {\"name\": \"description\", \"boost\": 1}\n    ]\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19720,7 +20734,13 @@
             "$ref": "#/components/responses/search_application.search-200"
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _application/search_application/my-app/_search\n{\n  \"params\": {\n    \"query_string\": \"my first query\",\n    \"text_fields\": [\n      {\"name\": \"title\", \"boost\": 5},\n      {\"name\": \"description\", \"boost\": 1}\n    ]\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_mvt/{field}/{zoom}/{x}/{y}": {
@@ -19780,7 +20800,13 @@
             "$ref": "#/components/responses/search_mvt-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET museums/_mvt/location/13/4207/2692\n{\n  \"grid_agg\": \"geotile\",\n  \"grid_precision\": 2,\n  \"fields\": [\n    \"name\",\n    \"price\"\n  ],\n  \"query\": {\n    \"term\": {\n      \"included\": true\n    }\n  },\n  \"aggs\": {\n    \"min_price\": {\n      \"min\": {\n        \"field\": \"price\"\n      }\n    },\n    \"max_price\": {\n      \"max\": {\n        \"field\": \"price\"\n      }\n    },\n    \"avg_price\": {\n      \"avg\": {\n        \"field\": \"price\"\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19838,7 +20864,13 @@
             "$ref": "#/components/responses/search_mvt-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET museums/_mvt/location/13/4207/2692\n{\n  \"grid_agg\": \"geotile\",\n  \"grid_precision\": 2,\n  \"fields\": [\n    \"name\",\n    \"price\"\n  ],\n  \"query\": {\n    \"term\": {\n      \"included\": true\n    }\n  },\n  \"aggs\": {\n    \"min_price\": {\n      \"min\": {\n        \"field\": \"price\"\n      }\n    },\n    \"max_price\": {\n      \"max\": {\n        \"field\": \"price\"\n      }\n    },\n    \"avg_price\": {\n      \"avg\": {\n        \"field\": \"price\"\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_search/template": {
@@ -19900,7 +20932,13 @@
             "$ref": "#/components/responses/search_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_search/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 0,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19960,7 +20998,13 @@
             "$ref": "#/components/responses/search_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_search/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 0,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_search/template": {
@@ -20025,7 +21069,13 @@
             "$ref": "#/components/responses/search_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_search/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 0,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20088,7 +21138,13 @@
             "$ref": "#/components/responses/search_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index/_search/template\n{\n  \"id\": \"my-search-template\",\n  \"params\": {\n    \"query_string\": \"hello world\",\n    \"from\": 0,\n    \"size\": 10\n  }\n}"
+          }
+        ]
       }
     },
     "/_security/_authenticate": {
@@ -20180,7 +21236,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/_authenticate\n"
+          }
+        ]
       }
     },
     "/_security/api_key": {
@@ -20308,7 +21370,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/api_key?id=VuaCfGcBCdbkQm-e5aOx&with_limited_by=true\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -20333,7 +21401,13 @@
             "$ref": "#/components/responses/security.create_api_key-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_security/api_key\n{\n  \"name\": \"my-api-key\",\n  \"expiration\": \"1d\",   \n  \"role_descriptors\": { \n    \"role-a\": {\n      \"cluster\": [\"all\"],\n      \"indices\": [\n        {\n          \"names\": [\"index-a*\"],\n          \"privileges\": [\"read\"]\n        }\n      ]\n    },\n    \"role-b\": {\n      \"cluster\": [\"all\"],\n      \"indices\": [\n        {\n          \"names\": [\"index-b*\"],\n          \"privileges\": [\"all\"]\n        }\n      ]\n    }\n  },\n  \"metadata\": {\n    \"application\": \"my-application\",\n    \"environment\": {\n      \"level\": 1,\n      \"trusted\": true,\n      \"tags\": [\"dev\", \"staging\"]\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20358,7 +21432,13 @@
             "$ref": "#/components/responses/security.create_api_key-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_security/api_key\n{\n  \"name\": \"my-api-key\",\n  \"expiration\": \"1d\",   \n  \"role_descriptors\": { \n    \"role-a\": {\n      \"cluster\": [\"all\"],\n      \"indices\": [\n        {\n          \"names\": [\"index-a*\"],\n          \"privileges\": [\"read\"]\n        }\n      ]\n    },\n    \"role-b\": {\n      \"cluster\": [\"all\"],\n      \"indices\": [\n        {\n          \"names\": [\"index-b*\"],\n          \"privileges\": [\"all\"]\n        }\n      ]\n    }\n  },\n  \"metadata\": {\n    \"application\": \"my-application\",\n    \"environment\": {\n      \"level\": 1,\n      \"trusted\": true,\n      \"tags\": [\"dev\", \"staging\"]\n    }\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -20485,7 +21565,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_security/api_key\n{\n  \"ids\" : [ \"VuaCfGcBCdbkQm-e5aOx\" ]\n}"
+          }
+        ]
       }
     },
     "/_security/role/{name}": {
@@ -20506,7 +21592,13 @@
             "$ref": "#/components/responses/security.get_role-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/role/my_admin_role\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -20534,7 +21626,13 @@
             "$ref": "#/components/responses/security.put_role-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_security/role/my_admin_role\n{\n  \"description\": \"Grants full access to all management features within the cluster.\",\n  \"cluster\": [\"all\"],\n  \"indices\": [\n    {\n      \"names\": [ \"index1\", \"index2\" ],\n      \"privileges\": [\"all\"],\n      \"field_security\" : { // optional\n        \"grant\" : [ \"title\", \"body\" ]\n      },\n      \"query\": \"{\\\"match\\\": {\\\"title\\\": \\\"foo\\\"}}\" // optional\n    }\n  ],\n  \"applications\": [\n    {\n      \"application\": \"myapp\",\n      \"privileges\": [ \"admin\", \"read\" ],\n      \"resources\": [ \"*\" ]\n    }\n  ],\n  \"run_as\": [ \"other_user\" ], // optional\n  \"metadata\" : { // optional\n    \"version\" : 1\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20562,7 +21660,13 @@
             "$ref": "#/components/responses/security.put_role-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_security/role/my_admin_role\n{\n  \"description\": \"Grants full access to all management features within the cluster.\",\n  \"cluster\": [\"all\"],\n  \"indices\": [\n    {\n      \"names\": [ \"index1\", \"index2\" ],\n      \"privileges\": [\"all\"],\n      \"field_security\" : { // optional\n        \"grant\" : [ \"title\", \"body\" ]\n      },\n      \"query\": \"{\\\"match\\\": {\\\"title\\\": \\\"foo\\\"}}\" // optional\n    }\n  ],\n  \"applications\": [\n    {\n      \"application\": \"myapp\",\n      \"privileges\": [ \"admin\", \"read\" ],\n      \"resources\": [ \"*\" ]\n    }\n  ],\n  \"run_as\": [ \"other_user\" ], // optional\n  \"metadata\" : { // optional\n    \"version\" : 1\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -20621,7 +21725,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_security/role/my_admin_role\n"
+          }
+        ]
       }
     },
     "/_security/privilege/_builtin": {
@@ -20673,7 +21783,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/privilege/_builtin\n"
+          }
+        ]
       }
     },
     "/_security/role": {
@@ -20689,7 +21805,13 @@
             "$ref": "#/components/responses/security.get_role-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/role/my_admin_role\n"
+          }
+        ]
       }
     },
     "/_security/user/_has_privileges": {
@@ -20711,7 +21833,13 @@
             "$ref": "#/components/responses/security.has_privileges-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/user/_has_privileges\n{\n  \"cluster\": [ \"monitor\", \"manage\" ],\n  \"index\" : [\n    {\n      \"names\": [ \"suppliers\", \"products\" ],\n      \"privileges\": [ \"read\" ]\n    },\n    {\n      \"names\": [ \"inventory\" ],\n      \"privileges\" : [ \"read\", \"write\" ]\n    }\n  ],\n  \"application\": [\n    {\n      \"application\": \"inventory_manager\",\n      \"privileges\" : [ \"read\", \"data:write/inventory\" ],\n      \"resources\" : [ \"product/1852563\" ]\n    }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20731,7 +21859,13 @@
             "$ref": "#/components/responses/security.has_privileges-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/user/_has_privileges\n{\n  \"cluster\": [ \"monitor\", \"manage\" ],\n  \"index\" : [\n    {\n      \"names\": [ \"suppliers\", \"products\" ],\n      \"privileges\": [ \"read\" ]\n    },\n    {\n      \"names\": [ \"inventory\" ],\n      \"privileges\" : [ \"read\", \"write\" ]\n    }\n  ],\n  \"application\": [\n    {\n      \"application\": \"inventory_manager\",\n      \"privileges\" : [ \"read\", \"data:write/inventory\" ],\n      \"resources\" : [ \"product/1852563\" ]\n    }\n  ]\n}"
+          }
+        ]
       }
     },
     "/_security/user/{user}/_has_privileges": {
@@ -20758,7 +21892,13 @@
             "$ref": "#/components/responses/security.has_privileges-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/user/_has_privileges\n{\n  \"cluster\": [ \"monitor\", \"manage\" ],\n  \"index\" : [\n    {\n      \"names\": [ \"suppliers\", \"products\" ],\n      \"privileges\": [ \"read\" ]\n    },\n    {\n      \"names\": [ \"inventory\" ],\n      \"privileges\" : [ \"read\", \"write\" ]\n    }\n  ],\n  \"application\": [\n    {\n      \"application\": \"inventory_manager\",\n      \"privileges\" : [ \"read\", \"data:write/inventory\" ],\n      \"resources\" : [ \"product/1852563\" ]\n    }\n  ]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20783,7 +21923,13 @@
             "$ref": "#/components/responses/security.has_privileges-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/user/_has_privileges\n{\n  \"cluster\": [ \"monitor\", \"manage\" ],\n  \"index\" : [\n    {\n      \"names\": [ \"suppliers\", \"products\" ],\n      \"privileges\": [ \"read\" ]\n    },\n    {\n      \"names\": [ \"inventory\" ],\n      \"privileges\" : [ \"read\", \"write\" ]\n    }\n  ],\n  \"application\": [\n    {\n      \"application\": \"inventory_manager\",\n      \"privileges\" : [ \"read\", \"data:write/inventory\" ],\n      \"resources\" : [ \"product/1852563\" ]\n    }\n  ]\n}"
+          }
+        ]
       }
     },
     "/_security/_query/api_key": {
@@ -20813,7 +21959,13 @@
             "$ref": "#/components/responses/security.query_api_keys-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/_query/api_key?with_limited_by=true\n{\n  \"query\": {\n    \"ids\": {\n      \"values\": [\n        \"VuaCfGcBCdbkQm-e5aOx\"\n      ]\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20841,7 +21993,13 @@
             "$ref": "#/components/responses/security.query_api_keys-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_security/_query/api_key?with_limited_by=true\n{\n  \"query\": {\n    \"ids\": {\n      \"values\": [\n        \"VuaCfGcBCdbkQm-e5aOx\"\n      ]\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_security/_query/role": {
@@ -20860,7 +22018,13 @@
             "$ref": "#/components/responses/security.query_role-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_security/_query/role\n{\n    \"sort\": [\"name\"]\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20877,7 +22041,13 @@
             "$ref": "#/components/responses/security.query_role-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST /_security/_query/role\n{\n    \"sort\": [\"name\"]\n}"
+          }
+        ]
       }
     },
     "/_security/api_key/{id}": {
@@ -20965,7 +22135,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx\n{\n  \"role_descriptors\": {\n    \"role-a\": {\n      \"indices\": [\n        {\n          \"names\": [\"*\"],\n          \"privileges\": [\"write\"]\n        }\n      ]\n    }\n  },\n  \"metadata\": {\n    \"environment\": {\n      \"level\": 2,\n      \"trusted\": true,\n      \"tags\": [\"production\"]\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_sql/close": {
@@ -21020,7 +22196,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _sql/close\n{\n  \"cursor\": \"sDXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAAEWYUpOYklQMHhRUEtld3RsNnFtYU1hQQ==:BAFmBGRhdGUBZgVsaWtlcwFzB21lc3NhZ2UBZgR1c2Vy9f///w8=\"\n}"
+          }
+        ]
       }
     },
     "/_sql/async/delete/{id}": {
@@ -21259,7 +22441,13 @@
             "$ref": "#/components/responses/sql.query-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _sql?format=txt\n{\n  \"query\": \"SELECT * FROM library ORDER BY page_count DESC LIMIT 5\"\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21281,7 +22469,13 @@
             "$ref": "#/components/responses/sql.query-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _sql?format=txt\n{\n  \"query\": \"SELECT * FROM library ORDER BY page_count DESC LIMIT 5\"\n}"
+          }
+        ]
       }
     },
     "/_sql/translate": {
@@ -21300,7 +22494,13 @@
             "$ref": "#/components/responses/sql.translate-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _sql/translate\n{\n  \"query\": \"SELECT * FROM library ORDER BY page_count DESC\",\n  \"fetch_size\": 10\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21317,7 +22517,13 @@
             "$ref": "#/components/responses/sql.translate-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _sql/translate\n{\n  \"query\": \"SELECT * FROM library ORDER BY page_count DESC\",\n  \"fetch_size\": 10\n}"
+          }
+        ]
       }
     },
     "/_synonyms/{id}": {
@@ -21395,7 +22601,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _synonyms/my-synonyms-set\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -21556,7 +22768,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _synonyms/my-synonyms-set/test-1\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -21632,7 +22850,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _synonyms/my-synonyms-set/test-1\n{\n  \"synonyms\": \"hello, hi, howdy\"\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -21683,7 +22907,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _synonyms/my-synonyms-set/test-1\n"
+          }
+        ]
       }
     },
     "/_synonyms": {
@@ -21751,7 +22981,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _synonyms\n"
+          }
+        ]
       }
     },
     "/_tasks/{task_id}": {
@@ -21837,7 +23073,13 @@
             }
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _tasks?actions=cluster:*\n"
+          }
+        ]
       }
     },
     "/{index}/_terms_enum": {
@@ -21861,7 +23103,13 @@
             "$ref": "#/components/responses/terms_enum-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST stackoverflow/_terms_enum\n{\n    \"field\" : \"tags\",\n    \"string\" : \"kiba\"\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21883,7 +23131,13 @@
             "$ref": "#/components/responses/terms_enum-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST stackoverflow/_terms_enum\n{\n    \"field\" : \"tags\",\n    \"string\" : \"kiba\"\n}"
+          }
+        ]
       }
     },
     "/{index}/_termvectors/{id}": {
@@ -21943,7 +23197,13 @@
             "$ref": "#/components/responses/termvectors-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_termvectors/1\n{\n  \"fields\" : [\"text\"],\n  \"offsets\" : true,\n  \"payloads\" : true,\n  \"positions\" : true,\n  \"term_statistics\" : true,\n  \"field_statistics\" : true\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -22001,7 +23261,13 @@
             "$ref": "#/components/responses/termvectors-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_termvectors/1\n{\n  \"fields\" : [\"text\"],\n  \"offsets\" : true,\n  \"payloads\" : true,\n  \"positions\" : true,\n  \"term_statistics\" : true,\n  \"field_statistics\" : true\n}"
+          }
+        ]
       }
     },
     "/{index}/_termvectors": {
@@ -22058,7 +23324,13 @@
             "$ref": "#/components/responses/termvectors-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_termvectors/1\n{\n  \"fields\" : [\"text\"],\n  \"offsets\" : true,\n  \"payloads\" : true,\n  \"positions\" : true,\n  \"term_statistics\" : true,\n  \"field_statistics\" : true\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -22113,7 +23385,13 @@
             "$ref": "#/components/responses/termvectors-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_termvectors/1\n{\n  \"fields\" : [\"text\"],\n  \"offsets\" : true,\n  \"payloads\" : true,\n  \"positions\" : true,\n  \"term_statistics\" : true,\n  \"field_statistics\" : true\n}"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}": {
@@ -22265,7 +23543,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _transform/ecommerce_transform1\n{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\",\n    \"query\": {\n      \"term\": {\n        \"geoip.continent_name\": {\n          \"value\": \"Asia\"\n        }\n      }\n    }\n  },\n  \"pivot\": {\n    \"group_by\": {\n      \"customer_id\": {\n        \"terms\": {\n          \"field\": \"customer_id\",\n          \"missing_bucket\": true\n        }\n      }\n    },\n    \"aggregations\": {\n      \"max_price\": {\n        \"max\": {\n          \"field\": \"taxful_total_price\"\n        }\n      }\n    }\n  },\n  \"description\": \"Maximum priced ecommerce data by customer_id in Asia\",\n  \"dest\": {\n    \"index\": \"kibana_sample_data_ecommerce_transform1\",\n    \"pipeline\": \"add_timestamp_pipeline\"\n  },\n  \"frequency\": \"5m\",\n  \"sync\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"delay\": \"60s\"\n    }\n  },\n  \"retention_policy\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"max_age\": \"30d\"\n    }\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -22488,7 +23772,13 @@
             "$ref": "#/components/responses/transform.preview_transform-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _transform/_preview\n{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\"\n  },\n  \"pivot\": {\n    \"group_by\": {\n      \"customer_id\": {\n        \"terms\": {\n          \"field\": \"customer_id\",\n          \"missing_bucket\": true\n        }\n      }\n    },\n    \"aggregations\": {\n      \"max_price\": {\n        \"max\": {\n          \"field\": \"taxful_total_price\"\n        }\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -22513,7 +23803,13 @@
             "$ref": "#/components/responses/transform.preview_transform-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _transform/_preview\n{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\"\n  },\n  \"pivot\": {\n    \"group_by\": {\n      \"customer_id\": {\n        \"terms\": {\n          \"field\": \"customer_id\",\n          \"missing_bucket\": true\n        }\n      }\n    },\n    \"aggregations\": {\n      \"max_price\": {\n        \"max\": {\n          \"field\": \"taxful_total_price\"\n        }\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_transform/_preview": {
@@ -22537,7 +23833,13 @@
             "$ref": "#/components/responses/transform.preview_transform-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _transform/_preview\n{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\"\n  },\n  \"pivot\": {\n    \"group_by\": {\n      \"customer_id\": {\n        \"terms\": {\n          \"field\": \"customer_id\",\n          \"missing_bucket\": true\n        }\n      }\n    },\n    \"aggregations\": {\n      \"max_price\": {\n        \"max\": {\n          \"field\": \"taxful_total_price\"\n        }\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -22559,7 +23861,13 @@
             "$ref": "#/components/responses/transform.preview_transform-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _transform/_preview\n{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\"\n  },\n  \"pivot\": {\n    \"group_by\": {\n      \"customer_id\": {\n        \"terms\": {\n          \"field\": \"customer_id\",\n          \"missing_bucket\": true\n        }\n      }\n    },\n    \"aggregations\": {\n      \"max_price\": {\n        \"max\": {\n          \"field\": \"taxful_total_price\"\n        }\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_reset": {
@@ -22994,7 +24302,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _transform/simple-kibana-ecomm-pivot/_update\n{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\",\n    \"query\": {\n      \"term\": {\n        \"geoip.continent_name\": {\n          \"value\": \"Asia\"\n        }\n      }\n    }\n  },\n  \"pivot\": {\n    \"group_by\": {\n      \"customer_id\": {\n        \"terms\": {\n          \"field\": \"customer_id\",\n          \"missing_bucket\": true\n        }\n      }\n    },\n    \"aggregations\": {\n      \"max_price\": {\n        \"max\": {\n          \"field\": \"taxful_total_price\"\n        }\n      }\n    }\n  },\n  \"description\": \"Maximum priced ecommerce data by customer_id in Asia\",\n  \"dest\": {\n    \"index\": \"kibana_sample_data_ecommerce_transform1\",\n    \"pipeline\": \"add_timestamp_pipeline\"\n  },\n  \"frequency\": \"5m\",\n  \"sync\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"delay\": \"60s\"\n    }\n  },\n  \"retention_policy\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"max_age\": \"30d\"\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_update/{id}": {
@@ -23273,7 +24587,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST test/_update/1\n{\n  \"script\" : {\n    \"source\": \"ctx._source.counter += params.count\",\n    \"lang\": \"painless\",\n    \"params\" : {\n      \"count\" : 4\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_update_by_query": {
@@ -23736,7 +25056,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST my-index-000001/_update_by_query?conflicts=proceed\n{\n  \"query\": { \n    \"term\": {\n      \"user.id\": \"kimchy\"\n    }\n  }\n}"
+          }
+        ]
       }
     }
   },
