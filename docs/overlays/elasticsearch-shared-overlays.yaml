@@ -915,10 +915,6 @@ actions:
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations.RandomSamplerAggregation']"
-    description: Add x-model
-    update:
-      x-model: true
   - target: "$.components['schemas']['_types.aggregations.RareTermsAggregation']"
     description: Add x-model
     update:

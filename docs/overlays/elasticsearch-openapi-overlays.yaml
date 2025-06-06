@@ -61,3 +61,8 @@ actions:
         - apiKeyAuth: []
         - basicAuth: []
         - bearerAuth: []
+# Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
+  - target: "$.components['schemas']['_types.aggregations.RandomSamplerAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
