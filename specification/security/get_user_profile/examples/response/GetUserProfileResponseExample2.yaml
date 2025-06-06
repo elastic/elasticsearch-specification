@@ -1,4 +1,5 @@
 summary: Profile details for a UUID and data key
+method_request: GET /_security/profile/u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0?data=app1.key1
 description: >
   A successful response from `GET /_security/profile/u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0?data=app1.key1`.
 # type: response

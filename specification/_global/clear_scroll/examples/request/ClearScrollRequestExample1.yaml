@@ -1,5 +1,5 @@
 # summary:
-# method_request: DELETE /_search/scroll
+method_request: DELETE /_search/scroll
 description: Run `DELETE /_search/scroll` to clear the search context and results for a scrolling search.
 # type: request
 value: |-

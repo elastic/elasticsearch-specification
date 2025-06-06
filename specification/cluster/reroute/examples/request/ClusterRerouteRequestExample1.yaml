@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST /_cluster/reroute?metric=none
+method_request: POST /_cluster/reroute?metric=none
 description: Run `POST /_cluster/reroute?metric=none` to changes the allocation of shards in a cluster.
 # type: request
 value: |-

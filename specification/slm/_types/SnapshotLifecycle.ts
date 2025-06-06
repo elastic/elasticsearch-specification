@@ -149,3 +149,11 @@ export class Invocation {
   snapshot_name: Name
   time: DateTime
 }
+
+export class SnapshotPolicyStats {
+  policy: string
+  snapshots_taken: long
+  snapshots_failed: long
+  snapshots_deleted: long
+  snapshot_deletion_failures: long
+}

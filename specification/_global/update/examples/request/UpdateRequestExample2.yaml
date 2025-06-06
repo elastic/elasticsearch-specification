@@ -1,5 +1,5 @@
 summary: Add a tag with a script
-# method_request: POST test/_update/1
+method_request: POST test/_update/1
 description: >
   Run `POST test/_update/1` to use a script to add a tag to a list of tags.
   In this example, it is just a list, so the tag is added even it exists.

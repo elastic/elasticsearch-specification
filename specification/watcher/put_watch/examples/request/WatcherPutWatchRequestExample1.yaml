@@ -1,5 +1,5 @@
 # summary:
-# method_request: PUT _watcher/watch/my-watch
+method_request: PUT _watcher/watch/my-watch
 description: >
   Run `PUT _watcher/watch/my-watch` add a watch.
   The watch schedule triggers every minute.

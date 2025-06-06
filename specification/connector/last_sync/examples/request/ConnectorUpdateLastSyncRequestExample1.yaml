@@ -1,5 +1,5 @@
 # summary: connector/apis/update-connector-last-sync-api.asciidoc:115
-# method_request: PUT _connector/my-connector/_last_sync
+method_request: PUT _connector/my-connector/_last_sync
 # description: ''
 # type: request
 value:

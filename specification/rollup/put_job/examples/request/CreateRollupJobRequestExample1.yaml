@@ -1,5 +1,5 @@
 # summary:
-# method_request: PUT _rollup/job/sensor
+method_request: PUT _rollup/job/sensor
 description: >
   Run `PUT _rollup/job/sensor` to create a rollup job that targets the `sensor-*` index pattern.
   This configuration enables date histograms to be used on the `timestamp` field and terms aggregations to be used on the `node` field.

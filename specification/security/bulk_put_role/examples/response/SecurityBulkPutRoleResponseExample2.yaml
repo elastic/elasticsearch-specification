@@ -1,4 +1,5 @@
 summary: A partially successful response
+method_request: POST /_security/role
 description: >
   A partially successful response from `POST /_security/role`.
   Errors are handled individually for each role create or update, thus the API allows partial success.

@@ -1,5 +1,5 @@
 summary: Prepare with a realm
-# method_request: POST /_security/saml/prepare
+method_request: POST /_security/saml/prepare
 description: >
   Run `POST /_security/saml/prepare` to generate a SAML authentication request for the SAML realm named `saml1`.
 # type: request

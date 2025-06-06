@@ -1,4 +1,5 @@
 # summary:
+method_request: POST _text_structure/find_structure
 description: A successful response from `POST _text_structure/find_structure`.
 # type: response
 # response_code: ''

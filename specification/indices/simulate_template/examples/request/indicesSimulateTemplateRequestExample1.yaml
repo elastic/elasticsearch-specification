@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST /_index_template/_simulate
+method_request: POST /_index_template/_simulate
 description: >
   To see what settings will be applied by a template before you add it to the cluster, you can pass a template configuration in the request body.
   The specified template is used for the simulation if it has a higher priority than existing templates.

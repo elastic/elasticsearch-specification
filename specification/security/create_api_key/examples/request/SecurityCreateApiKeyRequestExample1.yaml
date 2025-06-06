@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST /_security/api_key
+method_request: POST /_security/api_key
 description: >
   Run `POST /_security/api_key` to create an API key.
   If `expiration` is not provided, the API keys do not expire.

@@ -1,4 +1,5 @@
 # summary:
+method_request: GET /_security/enroll/kibana
 description: A successful response from `GET /_security/enroll/kibana`.
 # type: response
 # response_code:

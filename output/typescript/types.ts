@@ -1434,7 +1434,7 @@ export interface SearchFieldSuggester {
 
 export interface SearchHighlight extends SearchHighlightBase {
   encoder?: SearchHighlighterEncoder
-  fields: Record<Field, SearchHighlightField>
+  fields: Partial<Record<Field, SearchHighlightField>> | Partial<Record<Field, SearchHighlightField>>[]
 }
 
 export interface SearchHighlightBase {
@@ -2305,7 +2305,7 @@ export type EpochTime<Unit = unknown> = Unit
 
 export interface ErrorCauseKeys {
   type: string
-  reason?: string
+  reason?: string | null
   stack_trace?: string
   caused_by?: ErrorCause
   root_cause?: ErrorCause[]
@@ -2488,6 +2488,12 @@ export interface InlineGetKeys<TDocument = unknown> {
 export type InlineGet<TDocument = unknown> = InlineGetKeys<TDocument>
   & { [property: string]: any }
 
+export interface InnerRetriever {
+  retriever: RetrieverContainer
+  weight: float
+  normalizer: ScoreNormalizer
+}
+
 export type Ip = string
 
 export interface KnnQuery extends QueryDslQueryBase {
@@ -2532,6 +2538,11 @@ export interface LatLonGeoLocation {
 export type Level = 'cluster' | 'indices' | 'shards'
 
 export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
+
+export interface LinearRetriever extends RetrieverBase {
+  retrievers?: InnerRetriever[]
+  rank_window_size: integer
+}
 
 export type MapboxVectorTiles = ArrayBuffer
 
@@ -2621,6 +2632,13 @@ export type Password = string
 
 export type Percentage = string | float
 
+export interface PinnedRetriever extends RetrieverBase {
+  retriever: RetrieverContainer
+  ids?: string[]
+  docs?: SpecifiedDocument[]
+  rank_window_size: integer
+}
+
 export type PipelineName = string
 
 export interface PluginStats {
@@ -2706,6 +2724,11 @@ export interface RescoreVector {
   oversample: float
 }
 
+export interface RescorerRetriever extends RetrieverBase {
+  retriever: RetrieverContainer
+  rescore: SearchRescore | SearchRescore[]
+}
+
 export type Result = 'created' | 'updated' | 'deleted' | 'not_found' | 'noop'
 
 export interface Retries {
@@ -2716,6 +2739,7 @@ export interface Retries {
 export interface RetrieverBase {
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   min_score?: float
+  _name?: string
 }
 
 export interface RetrieverContainer {
@@ -2724,6 +2748,9 @@ export interface RetrieverContainer {
   rrf?: RRFRetriever
   text_similarity_reranker?: TextSimilarityReranker
   rule?: RuleRetriever
+  rescorer?: RescorerRetriever
+  linear?: LinearRetriever
+  pinned?: PinnedRetriever
 }
 
 export type Routing = string
@@ -2734,13 +2761,15 @@ export interface RrfRank {
 }
 
 export interface RuleRetriever extends RetrieverBase {
-  ruleset_ids: Id[]
+  ruleset_ids: Id | Id[]
   match_criteria: any
   retriever: RetrieverContainer
   rank_window_size?: integer
 }
 
 export type ScalarValue = long | double | string | boolean | null
+
+export type ScoreNormalizer = 'none' | 'minmax' | 'l2_norm'
 
 export interface ScoreSort {
   order?: SortOrder
@@ -2891,6 +2920,11 @@ export type SortOptions = SortOptionsKeys
 export type SortOrder = 'asc' | 'desc'
 
 export type SortResults = FieldValue[]
+
+export interface SpecifiedDocument {
+  index?: IndexName
+  id: Id
+}
 
 export interface StandardRetriever extends RetrieverBase {
   query?: QueryDslQueryContainer
@@ -6180,7 +6214,7 @@ export type QueryDslGeoDistanceQuery = QueryDslGeoDistanceQueryKeys
 export type QueryDslGeoExecution = 'memory' | 'indexed'
 
 export interface QueryDslGeoGridQuery extends QueryDslQueryBase {
-  geogrid?: GeoTile
+  geotile?: GeoTile
   geohash?: GeoHash
   geohex?: GeoHexCell
 }
@@ -6250,6 +6284,8 @@ export interface QueryDslIntervalsContainer {
   fuzzy?: QueryDslIntervalsFuzzy
   match?: QueryDslIntervalsMatch
   prefix?: QueryDslIntervalsPrefix
+  range?: QueryDslIntervalsRange
+  regexp?: QueryDslIntervalsRegexp
   wildcard?: QueryDslIntervalsWildcard
 }
 
@@ -6295,7 +6331,24 @@ export interface QueryDslIntervalsQuery extends QueryDslQueryBase {
   fuzzy?: QueryDslIntervalsFuzzy
   match?: QueryDslIntervalsMatch
   prefix?: QueryDslIntervalsPrefix
+  range?: QueryDslIntervalsRange
+  regexp?: QueryDslIntervalsRegexp
   wildcard?: QueryDslIntervalsWildcard
+}
+
+export interface QueryDslIntervalsRange {
+  analyzer?: string
+  gte?: string
+  gt?: string
+  lte?: string
+  lt?: string
+  use_field?: Field
+}
+
+export interface QueryDslIntervalsRegexp {
+  analyzer?: string
+  pattern: string
+  use_field?: Field
 }
 
 export interface QueryDslIntervalsWildcard {
@@ -6615,7 +6668,8 @@ export interface QueryDslRegexpQuery extends QueryDslQueryBase {
 
 export interface QueryDslRuleQuery extends QueryDslQueryBase {
   organic: QueryDslQueryContainer
-  ruleset_ids: Id[]
+  ruleset_ids?: Id | Id[]
+  ruleset_id?: string
   match_criteria: any
 }
 
@@ -6802,7 +6856,7 @@ export interface QueryDslUntypedRangeQuery extends QueryDslRangeQueryBase<any> {
 }
 
 export interface QueryDslWeightedTokensQuery extends QueryDslQueryBase {
-  tokens: Record<string, float>
+  tokens: Partial<Record<string, float>>[]
   pruning_config?: QueryDslTokenPruningConfig
 }
 
@@ -20654,6 +20708,14 @@ export interface SlmSnapshotLifecycle {
   stats: SlmStatistics
 }
 
+export interface SlmSnapshotPolicyStats {
+  policy: string
+  snapshots_taken: long
+  snapshots_failed: long
+  snapshots_deleted: long
+  snapshot_deletion_failures: long
+}
+
 export interface SlmStatistics {
   retention_deletion_time?: Duration
   retention_deletion_time_millis?: DurationValue<UnitMillis>
@@ -20719,7 +20781,7 @@ export interface SlmGetStatsResponse {
   total_snapshot_deletion_failures: long
   total_snapshots_failed: long
   total_snapshots_taken: long
-  policy_stats: string[]
+  policy_stats: SlmSnapshotPolicyStats[]
 }
 
 export interface SlmGetStatusRequest extends RequestBase {

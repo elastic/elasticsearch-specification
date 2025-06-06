@@ -1,6 +1,6 @@
 # summary:
 description: Run `PUT _inference/completion/anthropic_completion` to create an inference endpoint that performs a completion task.
-# method_request: "PUT _inference/completion/anthropic_completion"
+method_request: 'PUT _inference/completion/anthropic_completion'
 # type: "request"
 value: |-
   {
