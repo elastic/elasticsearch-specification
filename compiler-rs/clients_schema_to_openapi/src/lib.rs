@@ -149,7 +149,7 @@ fn info(model: &IndexedModel) -> openapiv3::Info {
     }
 }
 
-pub fn availability_as_extensions(availabilities: &Option<Availabilities>) -> IndexMap<String, serde_json::Value> {
+pub fn availability_as_extensions(availabilities: &Option<Availabilities>, name: &String) -> IndexMap<String, serde_json::Value> {
     let mut result = IndexMap::new();
 
     if let Some(avails) = availabilities {
@@ -173,6 +173,17 @@ pub fn availability_as_extensions(availabilities: &Option<Availabilities>) -> In
             }
         }
     }
-
+    
+    if !name.is_empty() {
+        match name.split_once('.') {
+            Some((ns, nm)) => {
+                result.insert("api.name".to_string(), serde_json::Value::String(nm.to_string()));
+                result.insert("namespace".to_string(), serde_json::Value::String(ns.to_string()));
+                return result
+            },
+            _ => ()
+        };
+        result.insert("namespace".to_string(), serde_json::Value::String(name.to_string()));
+    }
     result
 }

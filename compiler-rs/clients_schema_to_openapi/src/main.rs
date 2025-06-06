@@ -38,3 +38,26 @@ fn main() -> anyhow::Result<()> {
     serde_json::to_writer_pretty(File::create(&output)?, &openapi)?;
     Ok(())
 }
+
+
+#[cfg(test)]
+mod tests {
+    use clients_schema_to_openapi::cli::SchemaFlavor::Stack;
+    use super::*;
+
+    #[test]
+    fn test_stack() -> anyhow::Result<()> {
+        let cli = Cli {
+            schema: "../../output/schema/schema.json".into(),
+            flavor: Stack,
+            lift_enum_descriptions: false,
+            output: "../../output/openapi/elasticsearch-openapi.json".into(),
+            namespace: vec![],
+        };
+        let schema = IndexedModel::from_reader(File::open(&cli.schema)?)?;
+        let output = cli.output.clone();
+        let openapi = clients_schema_to_openapi::convert_schema(schema, cli.into())?;
+        serde_json::to_writer_pretty(File::create(&output)?, &openapi)?;
+        Ok(())
+    }
+}

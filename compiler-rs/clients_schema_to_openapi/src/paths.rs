@@ -274,7 +274,7 @@ pub fn add_endpoint(
             deprecated: endpoint.deprecation.is_some(),
             security: None,
             servers: vec![],
-            extensions: crate::availability_as_extensions(&endpoint.availability),
+            extensions: crate::availability_as_extensions(&endpoint.availability, &endpoint.name),
         };
 
 
