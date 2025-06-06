@@ -19,7 +19,7 @@
 
 import { long } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
-import {SnapshotPolicyStats} from "@slm/_types/SnapshotLifecycle";
+import { SnapshotPolicyStats } from '@slm/_types/SnapshotLifecycle'
 
 export class Response {
   body: {
