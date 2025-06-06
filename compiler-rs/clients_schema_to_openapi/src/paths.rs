@@ -256,7 +256,7 @@ pub fn add_endpoint(
         let sum_desc = split_summary_desc(&endpoint.description);
 
         // add the x-state extension for availability
-        let mut extensions = crate::availability_as_extensions(&endpoint.availability);
+        let mut extensions = crate::availability_as_extensions(&endpoint.availability, flavor);
 
         // add the x-codeSamples extension
         let mut code_samples = vec![];
