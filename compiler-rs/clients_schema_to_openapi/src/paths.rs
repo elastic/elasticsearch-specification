@@ -23,6 +23,7 @@ use clients_schema::{Privileges, Property};
 use indexmap::IndexMap;
 use indexmap::indexmap;
 use icu_segmenter::SentenceSegmenter;
+use itertools::Itertools;
 use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
     RequestBody, Response, Responses, StatusCode, Example
@@ -322,7 +323,7 @@ pub fn add_endpoint(
             deprecated: endpoint.deprecation.is_some(),
             security: None,
             servers: vec![],
-            extensions: crate::availability_as_extensions(&endpoint.availability),
+            extensions
         };
 
 
@@ -454,15 +455,17 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
 fn add_privileges(privileges: &Option<Privileges>) -> Option<String>{
     if let Some(privs) = privileges {
         let mut result = "\n ##Required authorization\n".to_string();
-        if privs.index.len()>0 {
-            result = result + "* Index privileges: " + &privs.index.iter()
-                .map(|a| {"`".to_string() + a + "`"})
-                .collect::<Vec<String>>().join(",");
+        if !privs.index.is_empty() {
+            result += "* Index privileges: ";
+            result += &privs.index.iter()
+                .map(|a| format!("`{a}`"))
+                .join(",");
         }
-        if privs.cluster.len()>0 {
-            result = result + " * Cluster privileges: " + &privs.cluster.iter()
-                .map(|a| {"`".to_string() + a + "`"})
-                .collect::<Vec<String>>().join(",");
+        if !privs.cluster.is_empty() {
+            result += "* Cluster privileges: ";
+            result += &privs.cluster.iter()
+                .map(|a| format!("`{a}`"))
+                .join(",");
         }
         return Some(result)
     }
