@@ -149,7 +149,7 @@ fn info(model: &IndexedModel) -> openapiv3::Info {
     }
 }
 
-pub fn extensions(availabilities: &Option<Availabilities>) -> IndexMap<String, serde_json::Value> {
+pub fn availability_as_extensions(availabilities: &Option<Availabilities>) -> IndexMap<String, serde_json::Value> {
     let mut result = IndexMap::new();
 
     if let Some(avails) = availabilities {
