@@ -173,6 +173,5 @@ pub fn availability_as_extensions(availabilities: &Option<Availabilities>) -> In
             }
         }
     }
-
     result
 }
