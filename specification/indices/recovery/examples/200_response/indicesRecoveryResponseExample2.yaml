@@ -1,5 +1,6 @@
 summary: Get detailed recovery information
 # indices/recovery.asciidoc:358
+method_request: GET _recovery?human&detailed=true
 description: >
   A successful response from `GET _recovery?human&detailed=true`.
   The response includes a listing of any physical files recovered and their sizes.

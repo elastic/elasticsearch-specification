@@ -1,4 +1,5 @@
 summary: Get a key by ID
+method_request: GET /_security/api_key?id=VuaCfGcBCdbkQm-e5aOx&with_limited_by=true
 description: A successful response from `GET /_security/api_key?id=VuaCfGcBCdbkQm-e5aOx&with_limited_by=true`.
 # type: response
 # response_code:

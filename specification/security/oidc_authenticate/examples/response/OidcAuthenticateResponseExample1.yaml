@@ -1,4 +1,5 @@
 # summary:
+method_request: POST /_security/oidc/authenticate
 description: >
   A successful response from `POST /_security/oidc/authenticate`.
   It contains the access and refresh tokens that were generated, the token duration (in seconds), and the type.

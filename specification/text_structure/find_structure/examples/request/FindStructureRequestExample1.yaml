@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST _text_structure/find_structure
+method_request: POST _text_structure/find_structure
 description: Run `POST _text_structure/find_structure` to analyze newline-delimited JSON text.
 # type: request
 value:

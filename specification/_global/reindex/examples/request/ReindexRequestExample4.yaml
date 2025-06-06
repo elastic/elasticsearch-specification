@@ -1,5 +1,5 @@
 summary: Routing
-# method_request: POST _reindex
+method_request: POST _reindex
 description: >
   By default if reindex sees a document with routing then the routing is preserved unless it's changed by the script.
   You can set `routing` on the `dest` request to change this behavior.

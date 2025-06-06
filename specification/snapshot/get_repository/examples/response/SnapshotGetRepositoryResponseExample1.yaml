@@ -1,4 +1,5 @@
 # summary:
+method_request: GET /_snapshot/my_repository
 description: A successful response from `GET /_snapshot/my_repository`.
 # type: response
 # response_code: ''

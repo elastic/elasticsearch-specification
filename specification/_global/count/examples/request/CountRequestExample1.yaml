@@ -1,5 +1,5 @@
 # summary:
-# method_request: GET /my-index-000001/_count
+method_request: GET /my-index-000001/_count
 description: >
   Run `GET /my-index-000001/_count?q=user:kimchy`.
   Alternatively, run `GET /my-index-000001/_count` with the same query in the request body.

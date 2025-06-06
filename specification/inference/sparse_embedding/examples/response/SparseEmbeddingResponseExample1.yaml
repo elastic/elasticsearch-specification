@@ -1,4 +1,5 @@
 summary: Sparse embedding task
+method_request: POST _inference/sparse_embedding/my-elser-model
 description: >
   An abbreviated response from `POST _inference/sparse_embedding/my-elser-model`.
 # type: "response"

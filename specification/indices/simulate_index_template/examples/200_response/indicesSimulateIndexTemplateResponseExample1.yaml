@@ -1,4 +1,5 @@
 # summary: indices/simulate-index.asciidoc:188
+method_request: POST /_index_template/_simulate_index/my-index-000001
 description: A successful response from `POST /_index_template/_simulate_index/my-index-000001`.
 # type: response
 # response_code: 200

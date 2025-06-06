@@ -1,5 +1,5 @@
 summary: Sequence query
-# method_request: GET /my-data-stream/_eql/search
+method_request: GET /my-data-stream/_eql/search
 description: >
   Run `GET /my-data-stream/_eql/search` to search for a sequence of events.
   The sequence starts with an event with an `event.category` of `file`, a `file.name` of `cmd.exe`, and a `process.pid` other than `2013`.

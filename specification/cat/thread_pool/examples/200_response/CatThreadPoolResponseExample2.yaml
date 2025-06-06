@@ -1,4 +1,5 @@
 summary: Explicit columns
+method_request: GET /_cat/thread_pool/generic?v=true&h=id,name,active,rejected,completed&format=json
 description: >
   A successful response from `GET /_cat/thread_pool/generic?v=true&h=id,name,active,rejected,completed&format=json`.
   It returns the `id`, `name`, `active`, `rejected`, and `completed` columns.

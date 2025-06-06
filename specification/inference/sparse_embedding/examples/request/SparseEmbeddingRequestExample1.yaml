@@ -1,6 +1,6 @@
 summary: Sparse embedding task
 description: Run `POST _inference/sparse_embedding/my-elser-model` to perform sparse embedding on the example sentence.
-# method_request: "POST _inference/sparse_embedding/my-elser-model"
+method_request: 'POST _inference/sparse_embedding/my-elser-model'
 # type: "request"
 value: |-
   {

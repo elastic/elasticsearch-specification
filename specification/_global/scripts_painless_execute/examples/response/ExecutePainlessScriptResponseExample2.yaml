@@ -1,4 +1,5 @@
 summary: Filter context
+method_request: POST /_scripts/painless/_execute
 description: A successful response from `POST /_scripts/painless/_execute` with a `filter` context.
 # type: response
 # response_code: ''
