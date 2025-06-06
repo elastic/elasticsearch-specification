@@ -87,7 +87,8 @@ export class InnerRetriever {
 
 export enum ScoreNormalizer {
   none,
-  minmax
+  minmax,
+  l2_norm
 }
 
 export class SpecifiedDocument {
