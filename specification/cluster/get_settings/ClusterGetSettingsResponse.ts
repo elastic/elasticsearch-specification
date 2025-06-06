@@ -22,8 +22,11 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response {
   body: {
+    /** The settings that persist after the cluster restarts. */
     persistent: Dictionary<string, UserDefinedValue>
+    /** The settings that do not persist after the cluster restarts. */
     transient: Dictionary<string, UserDefinedValue>
+    /** The default setting values. */
     defaults?: Dictionary<string, UserDefinedValue>
   }
 }
