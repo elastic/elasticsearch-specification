@@ -1,5 +1,5 @@
 # summary:
-# method_request: GET my-index/_msearch/template
+method_request: GET my-index/_msearch/template
 description: Run `GET my-index/_msearch/template` to run multiple templated searches.
 # type: "request"
 value: |-

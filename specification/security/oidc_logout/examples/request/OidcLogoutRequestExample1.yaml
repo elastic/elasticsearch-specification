@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST /_security/oidc/logout
+method_request: POST /_security/oidc/logout
 description: Run `POST /_security/oidc/logout` to perform the logout.
 # type: request
 value: |-

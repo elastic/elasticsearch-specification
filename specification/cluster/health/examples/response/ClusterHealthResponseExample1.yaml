@@ -1,4 +1,5 @@
 # summary:
+method_request: GET _cluster/health
 description: >
   A successful response from `GET _cluster/health`.
   It is the health status of a quiet single node cluster with a single index with one shard and one replica.

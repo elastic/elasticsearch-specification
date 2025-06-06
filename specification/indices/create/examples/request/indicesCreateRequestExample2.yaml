@@ -1,5 +1,5 @@
 summary: Create an index with mappings.
-# method_request: PUT /test
+method_request: PUT /test
 description: You can provide mapping definitions in the create index API requests.
 # type: request
 value:

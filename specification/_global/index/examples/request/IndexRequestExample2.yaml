@@ -1,5 +1,5 @@
 summary: Define document IDs
-# method_request: PUT my-index-000001/_doc/1
+method_request: PUT my-index-000001/_doc/1
 description: >
   Run `PUT my-index-000001/_doc/1` to insert a JSON document into the `my-index-000001` index with an `_id` of 1.
 # type: request

@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST _transform/simple-kibana-ecomm-pivot/_update
+method_request: POST _transform/simple-kibana-ecomm-pivot/_update
 description: Run `POST _transform/simple-kibana-ecomm-pivot/_update` to update a transform that uses the pivot method.
 # type: request
 value:

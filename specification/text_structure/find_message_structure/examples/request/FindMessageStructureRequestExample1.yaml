@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST _text_structure/find_message_structure
+method_request: POST _text_structure/find_message_structure
 description: >
   Run `POST _text_structure/find_message_structure` to analyze Elasticsearch log files.
 # type: request

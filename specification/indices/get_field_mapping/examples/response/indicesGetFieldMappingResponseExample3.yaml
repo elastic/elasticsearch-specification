@@ -1,5 +1,6 @@
 summary: Wildcards
 # indices/get-field-mapping.asciidoc:173
+method_request: GET publications/_mapping/field/a*
 description: >
   A successful response from `GET publications/_mapping/field/a*`.
 # type: response

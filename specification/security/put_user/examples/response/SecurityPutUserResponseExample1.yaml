@@ -1,4 +1,5 @@
 # summary:
+method_request: POST /_security/user/jacknich
 description: >
   A successful response from `POST /_security/user/jacknich`.
   When an existing user is updated, `created` is set to `false`.

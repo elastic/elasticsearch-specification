@@ -1,4 +1,5 @@
 summary: Default columns
+method_request: GET /_cat/nodeattrs?v=true&format=json
 description: >
   A successful response from `GET /_cat/nodeattrs?v=true&format=json`.
   The `node`, `host`, and `ip` columns provide basic information about each node.

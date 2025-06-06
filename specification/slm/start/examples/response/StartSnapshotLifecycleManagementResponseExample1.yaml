@@ -1,4 +1,5 @@
 # summary:
+method_request: POST _slm/start
 description: A successful response from `POST _slm/start`.
 # type: response
 # response_code: ''

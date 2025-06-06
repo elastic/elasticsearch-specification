@@ -1,4 +1,5 @@
 # summary:
+method_request: POST _rollup/job/sensor/_start
 description: A successful response from `POST _rollup/job/sensor/_start`.
 # type: response
 # response_code: ''
