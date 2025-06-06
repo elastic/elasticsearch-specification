@@ -1,4 +1,5 @@
 summary: Return stored term vectors
+method_request: GET /my-index-000001/_termvectors/1
 description: A successful response from `GET /my-index-000001/_termvectors/1`.
 # type: response
 # response_code: ''

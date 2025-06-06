@@ -1,4 +1,5 @@
 # summary:
+method_request: GET _synonyms
 description: A successful response from `GET _synonyms`.
 # type: response
 # response_code: ''

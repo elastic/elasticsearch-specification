@@ -1,4 +1,5 @@
 # summary:
+method_request: GET /_ssl/certificates
 description: >
   A successful response from `GET /_ssl/certificates`, which provides information about the certificates on a single node of Elasticsearch.
 # type: response

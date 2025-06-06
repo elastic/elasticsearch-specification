@@ -1,5 +1,5 @@
 summary: Bulk updates
-# method_request: POST _bulk
+method_request: POST _bulk
 description: >
   When you run `POST _bulk` and use the `update` action, you can use `retry_on_conflict` as a field in the action itself (not in the extra payload line) to specify how many times an update should be retried in the case of a version conflict.
 # type: request

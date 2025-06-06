@@ -1,5 +1,5 @@
 summary: Search slicing
-# method_request: GET /_search
+method_request: GET /_search
 description: >
   When paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently.
   The result from running the first `GET /_search` request returns documents belonging to the first slice (`id: 0`).

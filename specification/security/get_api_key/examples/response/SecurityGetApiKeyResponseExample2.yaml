@@ -1,4 +1,5 @@
 summary: Get all keys for a user
+method_request: GET /_security/api_key?username=myuser&realm_name=native1
 description: >
   A successful response from `GET /_security/api_key?username=myuser&realm_name=native1`.
   The response contains all API keys for the user `myuser` in the `native1` realm.

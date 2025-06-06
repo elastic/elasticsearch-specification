@@ -1,6 +1,6 @@
 summary: A completion task
 description: Run `PUT _inference/completion/amazon_bedrock_completion` to create an inference endpoint to perform a completion task.
-# method_request: "PUT _inference/completion/amazon_bedrock_completion"
+method_request: 'PUT _inference/completion/amazon_bedrock_completion'
 # type: "request"
 value: |-
   {

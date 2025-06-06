@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST /_query
+method_request: POST /_query
 description: Run `POST /_query` to get results for an ES|QL query.
 # type: request
 value: |-

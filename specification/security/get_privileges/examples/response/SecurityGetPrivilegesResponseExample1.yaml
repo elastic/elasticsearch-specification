@@ -1,4 +1,5 @@
 # summary:
+method_request: GET /_security/privilege/myapp/read
 description: >
   A successful response from `GET /_security/privilege/myapp/read`.
   The response contains information about the `read` privilege for the `app01` application.
