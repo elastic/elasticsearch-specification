@@ -23,6 +23,7 @@ use clients_schema::{Privileges, Property};
 use indexmap::IndexMap;
 use indexmap::indexmap;
 use icu_segmenter::SentenceSegmenter;
+use itertools::Itertools;
 use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
     RequestBody, Response, Responses, StatusCode, Example
@@ -293,6 +294,8 @@ pub fn add_endpoint(
         if !code_samples.is_empty() {
             extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
         }
+        let mut ext_availability = crate::availability_as_extensions(&endpoint.availability);
+        extensions.append(&mut ext_availability);
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
@@ -317,7 +320,7 @@ pub fn add_endpoint(
             deprecated: endpoint.deprecation.is_some(),
             security: None,
             servers: vec![],
-            extensions: crate::availability_as_extensions(&endpoint.availability),
+            extensions
         };
 
 
@@ -449,15 +452,17 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
 fn add_privileges(privileges: &Option<Privileges>) -> Option<String>{
     if let Some(privs) = privileges {
         let mut result = "\n ##Required authorization\n".to_string();
-        if privs.index.len()>0 {
-            result = result + "* Index privileges: " + &privs.index.iter()
-                .map(|a| {"`".to_string() + a + "`"})
-                .collect::<Vec<String>>().join(",");
+        if !privs.index.is_empty() {
+            result += "* Index privileges: ";
+            result += &privs.index.iter()
+                .map(|a| format!("`{a}`"))
+                .join(",");
         }
-        if privs.cluster.len()>0 {
-            result = result + " * Cluster privileges: " + &privs.cluster.iter()
-                .map(|a| {"`".to_string() + a + "`"})
-                .collect::<Vec<String>>().join(",");
+        if !privs.cluster.is_empty() {
+            result += "* Cluster privileges: ";
+            result += &privs.cluster.iter()
+                .map(|a| format!("`{a}`"))
+                .join(",");
         }
         return Some(result)
     }
