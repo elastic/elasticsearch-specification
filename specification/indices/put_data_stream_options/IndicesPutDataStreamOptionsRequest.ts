@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DataStreamFailureStore } from '@indices/_types/DataStreamFailureStore'
 import { RequestBase } from '@_types/Base'
 import { DataStreamNames, ExpandWildcards } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { DataStreamFailureStore } from '@indices/_types/DataStreamFailureStore'
 
 /**
  * Update data stream options.

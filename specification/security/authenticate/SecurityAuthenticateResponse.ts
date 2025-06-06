@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RealmInfo } from '@security/_types/RealmInfo'
 import { Id, Metadata, Name, Username } from '@_types/common'
+import { RealmInfo } from '@security/_types/RealmInfo'
 import { Token } from './types'
 
 export class Response {
