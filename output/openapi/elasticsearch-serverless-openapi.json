@@ -4718,7 +4718,13 @@
               "application/json": {}
             }
           }
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "HEAD my-index-000001/_doc/0\n"
+          }
+        ]
       }
     },
     "/{index}/_delete_by_query": {
