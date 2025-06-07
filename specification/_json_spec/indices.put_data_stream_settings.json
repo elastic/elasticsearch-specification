@@ -31,13 +31,11 @@
       },
       "timeout": {
         "type": "time",
-        "description": "Period to wait for a response",
-        "default": "30s"
+        "description": "Period to wait for a response"
       },
       "master_timeout": {
         "type": "time",
-        "description": "Period to wait for a connection to the master node",
-        "default": "30s"
+        "description": "Period to wait for a connection to the master node"
       }
     },
     "body": {
