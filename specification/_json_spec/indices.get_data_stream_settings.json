@@ -26,8 +26,7 @@
     "params": {
       "master_timeout": {
         "type": "time",
-        "description": "Period to wait for a connection to the master node",
-        "default": "30s"
+        "description": "Period to wait for a connection to the master node"
       }
     }
   }
