@@ -20544,6 +20544,14 @@ export interface SlmSnapshotLifecycle {
   stats: SlmStatistics
 }
 
+export interface SlmSnapshotPolicyStats {
+  policy: string
+  snapshots_taken: long
+  snapshots_failed: long
+  snapshots_deleted: long
+  snapshot_deletion_failures: long
+}
+
 export interface SlmStatistics {
   retention_deletion_time?: Duration
   retention_deletion_time_millis?: DurationValue<UnitMillis>
@@ -20609,7 +20617,7 @@ export interface SlmGetStatsResponse {
   total_snapshot_deletion_failures: long
   total_snapshots_failed: long
   total_snapshots_taken: long
-  policy_stats: string[]
+  policy_stats: SlmSnapshotPolicyStats[]
 }
 
 export interface SlmGetStatusRequest extends RequestBase {
