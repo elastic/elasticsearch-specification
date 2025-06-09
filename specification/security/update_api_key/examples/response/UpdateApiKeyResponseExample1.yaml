@@ -1,4 +1,5 @@
 summary: Update role and metadata
+method_request: PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx
 description: >
   A successful response from `PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx`.
   The API key's effective permissions after the update will be the intersection of the supplied role descriptors and the owner user's permissions.

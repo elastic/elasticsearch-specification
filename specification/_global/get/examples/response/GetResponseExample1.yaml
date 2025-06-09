@@ -1,4 +1,5 @@
 summary: Get a document
+method_request: GET my-index-000001/_doc/0
 description: >
   A successful response from `GET my-index-000001/_doc/0`.
   It retrieves the JSON document with the `_id` 0 from the `my-index-000001` index.

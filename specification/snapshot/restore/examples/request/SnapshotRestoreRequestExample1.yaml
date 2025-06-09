@@ -1,5 +1,5 @@
 summary: Restore with rename pattern
-# method_request: POST /_snapshot/my_repository/snapshot_2/_restore?wait_for_completion=true
+method_request: POST /_snapshot/my_repository/snapshot_2/_restore?wait_for_completion=true
 description: >
   Run `POST /_snapshot/my_repository/snapshot_2/_restore?wait_for_completion=true`.
   It restores `index_1` and `index_2` from `snapshot_2`.

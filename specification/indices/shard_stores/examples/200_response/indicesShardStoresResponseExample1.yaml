@@ -1,4 +1,5 @@
 # summary:
+method_request: GET /_shard_stores?status=green
 description: >
   An abbreviated response from `GET /_shard_stores?status=green`.
 # type: response

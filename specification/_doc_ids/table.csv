@@ -307,6 +307,7 @@ indices-exists,https://www.elastic.co/docs/api/doc/elasticsearch/operation/opera
 indices-flush,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-flush
 indices-forcemerge,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge
 indices-get-alias,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-alias
+indices-get-data-stream-settings,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream-settings
 indices-get-field-mapping,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping
 indices-get-index,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get
 indices-get-mapping,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping
@@ -314,6 +315,7 @@ indices-get-settings,https://www.elastic.co/docs/api/doc/elasticsearch/operation
 indices-get-template,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-index-template
 indices-get-template-v1,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-template
 indices-open-close,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-open
+indices-put-data-stream-settings,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-stream-settings
 indices-put-mapping,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping
 indices-recovery,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-recovery
 indices-refresh,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh

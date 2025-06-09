@@ -1,4 +1,5 @@
 # summary:
+method_request: GET /_cat/pending_tasks?v=trueh=insertOrder,timeInQueue,priority,source&format=json
 description: >
   A successful response from `GET /_cat/pending_tasks?v=trueh=insertOrder,timeInQueue,priority,source&format=json`.
 # type: response

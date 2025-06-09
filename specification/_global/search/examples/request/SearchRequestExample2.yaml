@@ -1,5 +1,5 @@
 summary: A point in time search
-# method_request: POST /_search
+method_request: POST /_search
 description: >
   Run `POST /_search` to run a point in time search.
   The `id` parameter tells Elasticsearch to run the request using contexts from this open point in time.

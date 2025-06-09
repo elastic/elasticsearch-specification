@@ -1,5 +1,5 @@
 summary: A Google Cloud Storage repository
-# method_request: PUT _snapshot/my_gcs_repository
+method_request: PUT _snapshot/my_gcs_repository
 description: Run `PUT /_snapshot/my_gcs_repository` to create or update a Google Cloud Storage snapshot repository.
 # type: request
 value:

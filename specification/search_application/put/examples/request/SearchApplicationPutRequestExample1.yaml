@@ -1,5 +1,5 @@
 # summary: search-application/apis/put-search-application.asciidoc:148
-# method_request: PUT _application/search_application/my-app
+method_request: PUT _application/search_application/my-app
 description: >
   Run `PUT _application/search_application/my-app` to create or update a search application called `my-app`. When the  dictionary parameter is specified, the search application search API will perform the following parameter validation: it accepts only the `query_string` and `default_field` parameters; it verifies that `query_string` and `default_field` are both strings; it accepts `default_field` only if it takes the values title or description. If the parameters are not valid, the search application search API will return an error.
 # type: request

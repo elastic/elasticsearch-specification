@@ -1,4 +1,5 @@
 # summary:
+method_request: GET /_segments
 description: >
   An abbreviated response from `GET /_segments`.
 # type: response
