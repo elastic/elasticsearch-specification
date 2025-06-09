@@ -42,7 +42,8 @@ export interface Request extends RequestBase {
   path_parts: {
     /**
      * Comma-separated list of node IDs or names used to limit returned information.
-     * All the nodes selective options are explained [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes).
+     * For more information about the nodes selective options, refer to the node specification documentation.
+     * @ext_doc_id cluster-nodes
      */
     node_id: NodeIds
   }
