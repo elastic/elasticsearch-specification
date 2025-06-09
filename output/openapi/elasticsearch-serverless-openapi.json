@@ -52119,7 +52119,7 @@
             "type": "string"
           },
           "model_id": {
-            "description": "The name of the HuggingFace model to use for the inference task.\nFor `completion` and `chat_completion` tasks, this field is optional but may be required for certain models — particularly when using serverless inference endpoints.\nFor the `text_embedding` task, this field should not be included or the request will result fail.",
+            "description": "The name of the HuggingFace model to use for the inference task.\nFor `completion` and `chat_completion` tasks, this field is optional but may be required for certain models — particularly when using serverless inference endpoints.\nFor the `text_embedding` task, this field should not be included. Otherwise, the request will fail.",
             "type": "string"
           }
         },
