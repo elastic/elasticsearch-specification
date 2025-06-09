@@ -264,7 +264,7 @@ pub struct Availability {
     pub visibility: Option<Visibility>,
 }
 
-/// The availability of an
+/// The availability of an endpoint, field or parameter
 pub type Availabilities = IndexMap<Flavor, Availability>;
 
 pub trait AvailabilityFilter: Fn(&Option<Availabilities>) -> bool {}
@@ -494,6 +494,7 @@ impl TypeDefinition {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SchemaExample {
     pub summary: Option<String>,
+    pub method_request: Option<String>,
     pub description: Option<String>,
     pub value: Option<String>,
     pub external_value: Option<String>,

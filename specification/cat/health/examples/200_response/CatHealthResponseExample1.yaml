@@ -1,4 +1,5 @@
 # summary:
+method_request: GET /_cat/health?v=true&format=json
 description: >
   A successful response from `GET /_cat/health?v=true&format=json`.
   By default, it returns `HH:MM:SS` and Unix epoch timestamps.

@@ -1,4 +1,5 @@
 # summary:
+method_request: POST _query_rules/my-ruleset/_test
 description: A successful response from `POST _query_rules/my-ruleset/_test`.
 # type: response
 # response_code: ''

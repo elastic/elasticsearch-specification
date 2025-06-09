@@ -1,4 +1,5 @@
 summary: Classification example 2
+method_request: POST _ml/data_frame/_evaluate
 description: >
   A succesful response from `POST _ml/data_frame/_evaluate` to evaluate a classification analysis job with the AUC ROC metrics for an annotated index.
 # type: response

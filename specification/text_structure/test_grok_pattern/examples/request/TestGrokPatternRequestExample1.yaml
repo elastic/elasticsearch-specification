@@ -1,5 +1,5 @@
 # summary:
-# method_request: GET _text_structure/test_grok_pattern
+method_request: GET _text_structure/test_grok_pattern
 description: Run `GET _text_structure/test_grok_pattern` to test a Grok pattern.
 # type: request
 value:

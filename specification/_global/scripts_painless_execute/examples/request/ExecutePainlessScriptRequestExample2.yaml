@@ -1,5 +1,5 @@
 summary: Filter context
-# method_request: POST /_scripts/painless/_execute
+method_request: POST /_scripts/painless/_execute
 description: >
   Run `POST /_scripts/painless/_execute` with a `filter` context.
   It treats scripts as if they were run inside a script query.

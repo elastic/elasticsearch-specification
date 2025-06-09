@@ -1,4 +1,5 @@
 # summary:
+method_request: GET _query_rules/?from=0&size=3
 description: A successful response from `GET _query_rules/?from=0&size=3`.
 # type: response
 # response_code: ''

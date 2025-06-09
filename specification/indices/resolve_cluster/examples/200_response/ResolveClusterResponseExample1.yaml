@@ -1,4 +1,5 @@
 summary: Resolve with wildcards
+method_request: GET /_resolve/cluster/my-index*,clust*:my-index*
 description: >
   A successful response from `GET /_resolve/cluster/my-index*,clust*:my-index*`.
   Each cluster has its own response section. The cluster you sent the request to is labelled as "(local)".

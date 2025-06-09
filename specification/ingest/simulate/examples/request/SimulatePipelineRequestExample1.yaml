@@ -1,5 +1,5 @@
 summary: Run an ingest pipeline against a set of provided documents.
-# method_request: POST /_ingest/pipeline/_simulate
+method_request: POST /_ingest/pipeline/_simulate
 description: You can specify the used pipeline either in the request body or as a path parameter.
 # type: request
 value:

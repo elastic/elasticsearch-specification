@@ -1,6 +1,6 @@
 summary: A rerank task
 description: Run `PUT _inference/rerank/alibabacloud_ai_search_rerank` to create an inference endpoint that performs a rerank task.
-# method_request: "PUT _inference/rerank/alibabacloud_ai_search_rerank"
+method_request: 'PUT _inference/rerank/alibabacloud_ai_search_rerank'
 # type: "request"
 value: |-
   {

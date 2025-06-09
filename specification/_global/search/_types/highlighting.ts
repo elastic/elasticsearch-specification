@@ -20,7 +20,7 @@
 import { Field, Fields } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export enum BoundaryScanner {
@@ -151,7 +151,9 @@ export class HighlightBase {
 
 export class Highlight extends HighlightBase {
   encoder?: HighlighterEncoder
-  fields: Dictionary<Field, HighlightField>
+  fields:
+    | SingleKeyDictionary<Field, HighlightField>
+    | SingleKeyDictionary<Field, HighlightField>[]
 }
 
 export enum HighlighterEncoder {

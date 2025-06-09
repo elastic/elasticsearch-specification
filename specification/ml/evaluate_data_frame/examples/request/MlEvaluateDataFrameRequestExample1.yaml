@@ -1,5 +1,5 @@
 summary: Classification example 1
-# method_request: POST _ml/data_frame/_evaluate
+method_request: POST _ml/data_frame/_evaluate
 description: >
   Run `POST _ml/data_frame/_evaluate` to evaluate a a classification job for an annotated index.
   The `actual_field` contains the ground truth for classification.

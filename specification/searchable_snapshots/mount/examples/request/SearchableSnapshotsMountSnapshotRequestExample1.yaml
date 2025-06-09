@@ -1,5 +1,5 @@
 summary:
-# method_request: POST /_snapshot/my_repository/my_snapshot/_mount?wait_for_completion=true
+method_request: POST /_snapshot/my_repository/my_snapshot/_mount?wait_for_completion=true
 description: >
   Run `POST /_snapshot/my_repository/my_snapshot/_mount?wait_for_completion=true` to mount the index `my_docs` from an existing snapshot named `my_snapshot` stored in `my_repository` as a new index `docs`.
 # type: request

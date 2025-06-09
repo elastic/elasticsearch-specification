@@ -1,5 +1,5 @@
 summary: Templated roles for groups
-# method_request: POST /_security/role_mapping/mapping6
+method_request: POST /_security/role_mapping/mapping6
 description: >
   Run `POST /_security/role_mapping/mapping6` for rare cases when the names of your groups may be an exact match for the names of your Elasticsearch roles.
   This can be the case when your SAML Identity Provider includes its own "group mapping" feature and can be configured to release Elasticsearch role names in the user's SAML attributes.

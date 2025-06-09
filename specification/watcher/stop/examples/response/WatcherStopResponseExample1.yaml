@@ -1,4 +1,5 @@
 # summary: ''
+method_request: POST _watcher/_stop
 description: A successful response from `POST _watcher/_stop`.
 # type: response
 # response_code: 200

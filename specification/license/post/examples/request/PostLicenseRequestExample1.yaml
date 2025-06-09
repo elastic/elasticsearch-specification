@@ -1,5 +1,5 @@
 # summary: licensing/update-license.asciidoc:63
-# method_request: PUT _license
+method_request: PUT _license
 description: >
   Run `PUT _license` to update to a basic license. NOTE: These values are invalid; you must substitute the appropriate contents from your license file.
 # type: request
