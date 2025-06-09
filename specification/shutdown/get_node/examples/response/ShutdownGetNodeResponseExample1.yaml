@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown
 description: >
   Get the status of shutdown preparations with `GET /_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown`.
   The response shows information about the shutdown preparations, including the status of shard migration, task migration, and plugin cleanup

@@ -1,5 +1,4 @@
 # summary:
-method_request: GET _rollup/data/sensor-*
 description: >
   A successful response from `GET _rollup/data/sensor-*` for a rollup job that targets the index pattern `sensor-*`.
   The response contains the rollup job ID, the index that holds the rolled data, and the index pattern that the job was targeting.

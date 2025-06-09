@@ -1,5 +1,4 @@
 summary: A single data stream or index
-method_request: GET _cat/shards?format=json
 description: >
   A successful response from `GET _cat/shards?format=json`.
 # type: response

@@ -1,5 +1,4 @@
 summary: Query roles by description
-method_request: POST /_security/_query/role
 description: >
   A successful response from `POST /_security/_query/role`.
 # type: response

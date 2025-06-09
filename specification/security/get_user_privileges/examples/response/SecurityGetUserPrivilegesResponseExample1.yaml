@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /_security/user/_privileges
 description: A successful response from `GET /_security/user/_privileges`.
 # type: response
 # response_code:

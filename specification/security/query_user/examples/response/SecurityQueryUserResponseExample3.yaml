@@ -1,5 +1,4 @@
 summary: Query all users
-method_request: GET /_security/_query/user
 description: >
   A successful response from `GET /_security/_query/user`, which lists all users.
   It returns a JSON structure that contains the information retrieved from one or more users.

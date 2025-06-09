@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /_cat/indices/my-index-*?v=true&s=index&format=json
 description: >
   A successful response from `GET /_cat/indices/my-index-*?v=true&s=index&format=json`.
 # type: response

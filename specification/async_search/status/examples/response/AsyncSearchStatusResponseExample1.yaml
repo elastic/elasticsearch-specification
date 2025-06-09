@@ -1,5 +1,4 @@
 summary: An active async search
-method_request: GET /_async_search/status/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=
 description: A succesful response from `GET /_async_search/status/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=`, which retrieves the status of a previously submitted async search without the results.
 # type: response
 # response_code: 200

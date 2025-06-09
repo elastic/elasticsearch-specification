@@ -1,5 +1,4 @@
 summary: A client_credentials grant type example
-method_request: POST /_security/oauth2/token
 description: A successful response from `POST /_security/oauth2/token`.
 # type: response
 # response_code:
