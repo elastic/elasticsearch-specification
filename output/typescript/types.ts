@@ -13573,7 +13573,7 @@ export interface InferenceMistralServiceSettings {
 
 export type InferenceMistralServiceType = 'mistral'
 
-export type InferenceMistralTaskType = 'text_embedding'
+export type InferenceMistralTaskType = 'text_embedding' | 'completion' | 'chat_completion'
 
 export interface InferenceOpenAIServiceSettings {
   api_key: string
