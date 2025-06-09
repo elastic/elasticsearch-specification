@@ -19,24 +19,26 @@ use std::collections::HashMap;
 use std::fmt::Write;
 
 use anyhow::{anyhow, bail};
-use clients_schema::Property;
+use clients_schema::{Privileges, Property};
 use indexmap::IndexMap;
 use indexmap::indexmap;
 use icu_segmenter::SentenceSegmenter;
+use itertools::Itertools;
 use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
     RequestBody, Response, Responses, StatusCode, Example
 };
+use serde_json::Value;
 use clients_schema::SchemaExample;
-
 use crate::components::TypesAndComponents;
+use crate::convert_availabilities;
 
 /// Add an endpoint to the OpenAPI schema. This will result in the addition of a number of elements to the
 /// openapi schema's `paths` and `components` sections.
 pub fn add_endpoint(
     endpoint: &clients_schema::Endpoint,
     tac: &mut TypesAndComponents,
-    out: &mut Paths,
+    out: &mut Paths
 ) -> anyhow::Result<()> {
     if endpoint.request.is_none() {
         // tracing::warn!("Endpoint {} is missing a request -- ignored", &endpoint.name);
@@ -60,6 +62,8 @@ pub fn add_endpoint(
     let request = tac.model.get_request(endpoint.request.as_ref().unwrap())?;
 
     fn parameter_data(prop: &Property, in_path: bool, tac: &mut TypesAndComponents) -> anyhow::Result<ParameterData> {
+        let mut extensions: IndexMap<String,Value> = Default::default();
+        convert_availabilities(&prop.availability, &tac.config.flavor, &mut extensions);
         Ok(ParameterData {
             name: prop.name.clone(),
             description: tac.property_description(prop)?,
@@ -250,9 +254,16 @@ pub fn add_endpoint(
         parameters.append(&mut query_params.clone());
 
         let sum_desc = split_summary_desc(&endpoint.description);
+        
+        let privilege_desc = add_privileges(&endpoint.privileges);
+        
+        let full_desc = match (sum_desc.description, privilege_desc) {
+            (Some(a), Some(b)) => Some(a+ &b),
+            (opt_a, opt_b) => opt_a.or(opt_b)
+        };
 
         // add the x-state extension for availability
-        let mut extensions = crate::availability_as_extensions(&endpoint.availability);
+        let mut extensions = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
 
         // add the x-codeSamples extension
         let mut code_samples = vec![];
@@ -286,6 +297,8 @@ pub fn add_endpoint(
         if !code_samples.is_empty() {
             extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
         }
+        let mut ext_availability = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
+        extensions.append(&mut ext_availability);
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
@@ -295,7 +308,7 @@ pub fn add_endpoint(
                 vec![namespace.to_string()]
             },
             summary: sum_desc.summary,
-            description: sum_desc.description,
+            description: full_desc,
             external_docs: tac.convert_external_docs(endpoint),
             // external_docs: None, // Need values that differ from client purposes
             operation_id: None, // set in clone_operation below with operation_counter
@@ -310,7 +323,7 @@ pub fn add_endpoint(
             deprecated: endpoint.deprecation.is_some(),
             security: None,
             servers: vec![],
-            extensions,
+            extensions
         };
 
 
@@ -437,6 +450,26 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
         summary:  Some(String::from(first_line.trim().strip_suffix('.').unwrap_or(first_line))),
         description: if !rest.is_empty() {Some(String::from(rest.trim()))} else {None}
     }
+}
+
+fn add_privileges(privileges: &Option<Privileges>) -> Option<String>{
+    if let Some(privs) = privileges {
+        let mut result = "\n ##Required authorization\n".to_string();
+        if !privs.index.is_empty() {
+            result += "* Index privileges: ";
+            result += &privs.index.iter()
+                .map(|a| format!("`{a}`"))
+                .join(",");
+        }
+        if !privs.cluster.is_empty() {
+            result += "* Cluster privileges: ";
+            result += &privs.cluster.iter()
+                .map(|a| format!("`{a}`"))
+                .join(",");
+        }
+        return Some(result)
+    }
+    None
 }
 
 #[derive(PartialEq,Debug)]
