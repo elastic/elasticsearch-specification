@@ -203,7 +203,6 @@ eql-missing-events,https://www.elastic.co/docs/reference/query-languages/eql/eql
 eql-syntax,https://www.elastic.co/docs/reference/query-languages/eql/eql-syntax
 eql,https://www.elastic.co/docs/explore-analyze/query-filter/languages/eql
 esql,https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql
-es-settings,https://www.elastic.co/docs/deploy-manage/stack-settings#es-settings
 esql-async-query,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query
 esql-async-query-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-delete
 esql-async-query-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-get
@@ -854,6 +853,7 @@ sql-rest-format,https://www.elastic.co/docs/explore-analyze/query-filter/languag
 sql-search-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query
 sql-spec,https://www.elastic.co/docs/reference/query-languages/sql/sql-spec
 sql-translate-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-translate
+stack-settings,https://www.elastic.co/docs/deploy-manage/stack-settings
 start-basic,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-post-start-basic
 start-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-data-frame-analytics
 start-trained-model-deployment,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment
