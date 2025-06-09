@@ -1836,7 +1836,7 @@
           {
             "in": "path",
             "name": "target",
-            "description": "Limits the information returned to the specific target. Supports a comma-separated list, such as http,ingest.\n\nSupported values include: `_all`, `http`, `ingest`, `thread_pool`, `script`\n\n",
+            "description": "Limits the information returned to the specific target. Supports a comma-separated list, such as http,ingest.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -2386,7 +2386,7 @@
           {
             "in": "query",
             "name": "job_type",
-            "description": "A comma-separated list of job types to fetch the sync jobs for\n\nSupported values include: `full`, `incremental`, `access_control`\n\n",
+            "description": "A comma-separated list of job types to fetch the sync jobs for",
             "deprecated": false,
             "schema": {
               "oneOf": [
@@ -3920,7 +3920,7 @@
           {
             "in": "query",
             "name": "version_type",
-            "description": "The version type.\n\nSupported values include:\n  - `internal`: Use internal versioning that starts at 1 and increments with each update or delete.\n  - `external`: Only index the document if the specified version is strictly higher than the version of the stored document or if there is no existing document.\n  - `external_gte`: Only index the document if the specified version is equal or higher than the version of the stored document or if there is no existing document.\nNOTE: The `external_gte` version type is meant for special use cases and should be used with care.\nIf used incorrectly, it can result in loss of data.\n  - `force`: This option is deprecated because it can cause primary and replica shards to diverge.\n\n",
+            "description": "The version type.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.VersionType"
@@ -4177,7 +4177,7 @@
           {
             "in": "query",
             "name": "version_type",
-            "description": "The version type.\n\nSupported values include:\n  - `internal`: Use internal versioning that starts at 1 and increments with each update or delete.\n  - `external`: Only index the document if the specified version is strictly higher than the version of the stored document or if there is no existing document.\n  - `external_gte`: Only index the document if the specified version is equal or higher than the version of the stored document or if there is no existing document.\nNOTE: The `external_gte` version type is meant for special use cases and should be used with care.\nIf used incorrectly, it can result in loss of data.\n  - `force`: This option is deprecated because it can cause primary and replica shards to diverge.\n\n",
+            "description": "The version type.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.VersionType"
@@ -4337,7 +4337,7 @@
           {
             "in": "query",
             "name": "version_type",
-            "description": "The version type.\n\nSupported values include:\n  - `internal`: Use internal versioning that starts at 1 and increments with each update or delete.\n  - `external`: Only index the document if the specified version is strictly higher than the version of the stored document or if there is no existing document.\n  - `external_gte`: Only index the document if the specified version is equal or higher than the version of the stored document or if there is no existing document.\nNOTE: The `external_gte` version type is meant for special use cases and should be used with care.\nIf used incorrectly, it can result in loss of data.\n  - `force`: This option is deprecated because it can cause primary and replica shards to diverge.\n\n",
+            "description": "The version type.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.VersionType"
@@ -4408,7 +4408,7 @@
           {
             "in": "query",
             "name": "conflicts",
-            "description": "What to do if delete by query hits version conflicts: `abort` or `proceed`.\n\nSupported values include:\n  - `abort`: Stop reindexing if there are conflicts.\n  - `proceed`: Continue reindexing even if there are conflicts.\n\n",
+            "description": "What to do if delete by query hits version conflicts: `abort` or `proceed`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Conflicts"
@@ -4438,7 +4438,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -4578,7 +4578,7 @@
           {
             "in": "query",
             "name": "search_type",
-            "description": "The type of the search operation.\nAvailable options include `query_then_fetch` and `dfs_query_then_fetch`.\n\nSupported values include:\n  - `query_then_fetch`: Documents are scored using local term and document frequencies for the shard. This is usually faster but less accurate.\n  - `dfs_query_then_fetch`: Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate.\n\n",
+            "description": "The type of the search operation.\nAvailable options include `query_then_fetch` and `dfs_query_then_fetch`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.SearchType"
@@ -5771,7 +5771,7 @@
           {
             "in": "query",
             "name": "version_type",
-            "description": "The version type.\n\nSupported values include:\n  - `internal`: Use internal versioning that starts at 1 and increments with each update or delete.\n  - `external`: Only index the document if the specified version is strictly higher than the version of the stored document or if there is no existing document.\n  - `external_gte`: Only index the document if the specified version is equal or higher than the version of the stored document or if there is no existing document.\nNOTE: The `external_gte` version type is meant for special use cases and should be used with care.\nIf used incorrectly, it can result in loss of data.\n  - `force`: This option is deprecated because it can cause primary and replica shards to diverge.\n\n",
+            "description": "The version type.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.VersionType"
@@ -5908,7 +5908,7 @@
           {
             "in": "query",
             "name": "version_type",
-            "description": "The version type.\n\nSupported values include:\n  - `internal`: Use internal versioning that starts at 1 and increments with each update or delete.\n  - `external`: Only index the document if the specified version is strictly higher than the version of the stored document or if there is no existing document.\n  - `external_gte`: Only index the document if the specified version is equal or higher than the version of the stored document or if there is no existing document.\nNOTE: The `external_gte` version type is meant for special use cases and should be used with care.\nIf used incorrectly, it can result in loss of data.\n  - `force`: This option is deprecated because it can cause primary and replica shards to diverge.\n\n",
+            "description": "The version type.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.VersionType"
@@ -6378,7 +6378,7 @@
           {
             "in": "path",
             "name": "block",
-            "description": "The block type to add to the index.\n\nSupported values include:\n  - `metadata`: Disable metadata changes, such as closing the index.\n  - `read`: Disable read operations.\n  - `read_only`: Disable write operations and metadata changes.\n  - `write`: Disable write operations. However, metadata changes are still allowed.\n\n",
+            "description": "The block type to add to the index.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -6399,7 +6399,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -6616,7 +6616,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Type of index that wildcard expressions can match. If the request can target data streams, this argument\ndetermines whether wildcard expressions match hidden data streams. Supports comma-separated values,\nsuch as open,hidden.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "Type of index that wildcard expressions can match. If the request can target data streams, this argument\ndetermines whether wildcard expressions match hidden data streams. Supports comma-separated values,\nsuch as open,hidden.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -6676,7 +6676,7 @@
           {
             "in": "query",
             "name": "features",
-            "description": "Return only information on specified index features\n\nSupported values include: `aliases`, `mappings`, `settings`\n\n",
+            "description": "Return only information on specified index features",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/indices.get.Features"
@@ -6852,7 +6852,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -6935,7 +6935,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -7111,7 +7111,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Type of data stream that wildcard patterns can match. Supports comma-separated values,such as `open,hidden`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "Type of data stream that wildcard patterns can match. Supports comma-separated values,such as `open,hidden`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -7446,7 +7446,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -7527,7 +7527,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `hidden`, `open`, `closed`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `hidden`, `open`, `closed`, `none`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -7629,7 +7629,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Whether wildcard expressions should get expanded to open or closed indices (default: open)\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "Whether wildcard expressions should get expanded to open or closed indices (default: open)",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -8862,7 +8862,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -13047,7 +13047,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines\nwhether wildcard expressions match hidden data streams. Supports comma-separated values.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines\nwhether wildcard expressions match hidden data streams. Supports comma-separated values.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -13470,7 +13470,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines\nwhether wildcard expressions match hidden data streams. Supports comma-separated values. Valid values are:\n\n* `all`: Match any data stream or index, including hidden ones.\n* `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n* `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or both.\n* `none`: Wildcard patterns are not accepted.\n* `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines\nwhether wildcard expressions match hidden data streams. Supports comma-separated values. Valid values are:\n\n* `all`: Match any data stream or index, including hidden ones.\n* `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n* `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or both.\n* `none`: Wildcard patterns are not accepted.\n* `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -15808,7 +15808,7 @@
           {
             "in": "query",
             "name": "wait_for",
-            "description": "Specifies the allocation status to wait for before returning.\n\nSupported values include:\n  - `started`: The trained model is started on at least one node.\n  - `starting`: Trained model deployment is starting but it is not yet deployed on any nodes.\n  - `fully_allocated`: Trained model deployment has started on all valid nodes.\n\n",
+            "description": "Specifies the allocation status to wait for before returning.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/ml._types.DeploymentAllocationState"
@@ -16233,7 +16233,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines\nwhether wildcard expressions match hidden data streams. Supports comma-separated values. Valid values are:\n\n* `all`: Match any data stream or index, including hidden ones.\n* `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n* `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or both.\n* `none`: Wildcard patterns are not accepted.\n* `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines\nwhether wildcard expressions match hidden data streams. Supports comma-separated values. Valid values are:\n\n* `all`: Match any data stream or index, including hidden ones.\n* `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n* `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or both.\n* `none`: Wildcard patterns are not accepted.\n* `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -17452,7 +17452,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`. Valid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`. Valid values are: `all`, `open`, `closed`, `hidden`, `none`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -22989,7 +22989,7 @@
           {
             "in": "query",
             "name": "conflicts",
-            "description": "The preferred behavior when update by query hits version conflicts: `abort` or `proceed`.\n\nSupported values include:\n  - `abort`: Stop reindexing if there are conflicts.\n  - `proceed`: Continue reindexing even if there are conflicts.\n\n",
+            "description": "The preferred behavior when update by query hits version conflicts: `abort` or `proceed`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Conflicts"
@@ -23019,7 +23019,7 @@
           {
             "in": "query",
             "name": "expand_wildcards",
-            "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+            "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -23169,7 +23169,7 @@
           {
             "in": "query",
             "name": "search_type",
-            "description": "The type of the search operation. Available options include `query_then_fetch` and `dfs_query_then_fetch`.\n\nSupported values include:\n  - `query_then_fetch`: Documents are scored using local term and document frequencies for the shard. This is usually faster but less accurate.\n  - `dfs_query_then_fetch`: Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate.\n\n",
+            "description": "The type of the search operation. Available options include `query_then_fetch` and `dfs_query_then_fetch`.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.SearchType"
@@ -38757,7 +38757,6 @@
             "$ref": "#/components/schemas/_types.Fields"
           },
           "order": {
-            "description": "\n\nSupported values include: `asc` (or `ASC`), `desc` (or `DESC`)\n\n",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/indices._types.SegmentSortOrder"
@@ -38771,7 +38770,6 @@
             ]
           },
           "mode": {
-            "description": "\n\nSupported values include: `min` (or `MIN`), `max` (or `MAX`)\n\n",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/indices._types.SegmentSortMode"
@@ -38785,7 +38783,6 @@
             ]
           },
           "missing": {
-            "description": "\n\nSupported values include: `_last`, `_first`\n\n",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/indices._types.SegmentSortMissing"
@@ -43055,7 +43052,6 @@
                 "$ref": "#/components/schemas/_types.analysis.PhoneticEncoder"
               },
               "languageset": {
-                "description": "\n\nSupported values include: `any`, `common`, `cyrillic`, `english`, `french`, `german`, `hebrew`, `hungarian`, `polish`, `romanian`, `russian`, `spanish`\n\n",
                 "oneOf": [
                   {
                     "$ref": "#/components/schemas/_types.analysis.PhoneticLanguage"
@@ -53983,7 +53979,7 @@
         "type": "object",
         "properties": {
           "actions": {
-            "description": "The set of actions to be triggered when the rule applies. If more than one action is specified the effects of all actions are combined.\n\nSupported values include:\n  - `skip_result`: The result will not be created. Unless you also specify `skip_model_update`, the model will be updated as usual with the corresponding series value.\n  - `skip_model_update`: The value for that series will not be used to update the model. Unless you also specify `skip_result`, the results will be created as usual. This action is suitable when certain values are expected to be consistently anomalous and they affect the model in a way that negatively impacts the rest of the results.\n\n",
+            "description": "The set of actions to be triggered when the rule applies. If more than one action is specified the effects of all actions are combined.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ml._types.RuleAction"
@@ -63453,7 +63449,7 @@
       "async_search.submit-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -63552,7 +63548,7 @@
       "async_search.submit-search_type": {
         "in": "query",
         "name": "search_type",
-        "description": "Search operation type\n\nSupported values include:\n  - `query_then_fetch`: Documents are scored using local term and document frequencies for the shard. This is usually faster but less accurate.\n  - `dfs_query_then_fetch`: Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate.\n\n",
+        "description": "Search operation type",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.SearchType"
@@ -63595,7 +63591,7 @@
       "async_search.submit-suggest_mode": {
         "in": "query",
         "name": "suggest_mode",
-        "description": "Specify suggest mode\n\nSupported values include:\n  - `missing`: Only generate suggestions for terms that are not in the shard.\n  - `popular`: Only suggest terms that occur in more docs on the shard than the original term.\n  - `always`: Suggest any matching suggestions based on terms in the suggest text.\n\n",
+        "description": "Specify suggest mode",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.SuggestMode"
@@ -63947,7 +63943,7 @@
       "cat.aliases-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -64080,7 +64076,7 @@
       "cat.indices-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "The type of index that wildcard patterns can match.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "The type of index that wildcard patterns can match.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -64090,7 +64086,7 @@
       "cat.indices-health": {
         "in": "query",
         "name": "health",
-        "description": "The health status used to limit returned indices. By default, the response includes indices of any health status.\n\nSupported values include:\n  - `green` (or `GREEN`): All shards are assigned.\n  - `yellow` (or `YELLOW`): All primary shards are assigned, but one or more replica shards are unassigned. If a node in the cluster fails, some data could be unavailable until that node is repaired.\n  - `red` (or `RED`): One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.\n\n",
+        "description": "The health status used to limit returned indices. By default, the response includes indices of any health status.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.HealthStatus"
@@ -64191,7 +64187,7 @@
       "cat.ml_data_frame_analytics-h": {
         "in": "query",
         "name": "h",
-        "description": "Comma-separated list of column names to display.\n\nSupported values include:\n  - `assignment_explanation` (or `ae`): Contains messages relating to the selection of a node.\n  - `create_time` (or `ct`, `createTime`): The time when the data frame analytics job was created.\n  - `description` (or `d`): A description of a job.\n  - `dest_index` (or `di`, `destIndex`): Name of the destination index.\n  - `failure_reason` (or `fr`, `failureReason`): Contains messages about the reason why a data frame analytics job failed.\n  - `id`: Identifier for the data frame analytics job.\n  - `model_memory_limit` (or `mml`, `modelMemoryLimit`): The approximate maximum amount of memory resources that are permitted for\nthe data frame analytics job.\n  - `node.address` (or `na`, `nodeAddress`): The network address of the node that the data frame analytics job is\nassigned to.\n  - `node.ephemeral_id` (or `ne`, `nodeEphemeralId`): The ephemeral ID of the node that the data frame analytics job is assigned\nto.\n  - `node.id` (or `ni`, `nodeId`): The unique identifier of the node that the data frame analytics job is\nassigned to.\n  - `node.name` (or `nn`, `nodeName`): The name of the node that the data frame analytics job is assigned to.\n  - `progress` (or `p`): The progress report of the data frame analytics job by phase.\n  - `source_index` (or `si`, `sourceIndex`): Name of the source index.\n  - `state` (or `s`): Current state of the data frame analytics job.\n  - `type` (or `t`): The type of analysis that the data frame analytics job performs.\n  - `version` (or `v`): The Elasticsearch version number in which the data frame analytics job was\ncreated.\n\n",
+        "description": "Comma-separated list of column names to display.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/cat._types.CatDfaColumns"
@@ -64201,7 +64197,7 @@
       "cat.ml_data_frame_analytics-s": {
         "in": "query",
         "name": "s",
-        "description": "Comma-separated list of column names or column aliases used to sort the\nresponse.\n\nSupported values include:\n  - `assignment_explanation` (or `ae`): Contains messages relating to the selection of a node.\n  - `create_time` (or `ct`, `createTime`): The time when the data frame analytics job was created.\n  - `description` (or `d`): A description of a job.\n  - `dest_index` (or `di`, `destIndex`): Name of the destination index.\n  - `failure_reason` (or `fr`, `failureReason`): Contains messages about the reason why a data frame analytics job failed.\n  - `id`: Identifier for the data frame analytics job.\n  - `model_memory_limit` (or `mml`, `modelMemoryLimit`): The approximate maximum amount of memory resources that are permitted for\nthe data frame analytics job.\n  - `node.address` (or `na`, `nodeAddress`): The network address of the node that the data frame analytics job is\nassigned to.\n  - `node.ephemeral_id` (or `ne`, `nodeEphemeralId`): The ephemeral ID of the node that the data frame analytics job is assigned\nto.\n  - `node.id` (or `ni`, `nodeId`): The unique identifier of the node that the data frame analytics job is\nassigned to.\n  - `node.name` (or `nn`, `nodeName`): The name of the node that the data frame analytics job is assigned to.\n  - `progress` (or `p`): The progress report of the data frame analytics job by phase.\n  - `source_index` (or `si`, `sourceIndex`): Name of the source index.\n  - `state` (or `s`): Current state of the data frame analytics job.\n  - `type` (or `t`): The type of analysis that the data frame analytics job performs.\n  - `version` (or `v`): The Elasticsearch version number in which the data frame analytics job was\ncreated.\n\n",
+        "description": "Comma-separated list of column names or column aliases used to sort the\nresponse.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/cat._types.CatDfaColumns"
@@ -64242,7 +64238,7 @@
       "cat.ml_datafeeds-h": {
         "in": "query",
         "name": "h",
-        "description": "Comma-separated list of column names to display.\n\nSupported values include:\n  - `ae` (or `assignment_explanation`): For started datafeeds only, contains messages relating to the selection of\na node.\n  - `bc` (or `buckets.count`, `bucketsCount`): The number of buckets processed.\n  - `id`: A numerical character string that uniquely identifies the datafeed.\n  - `na` (or `node.address`, `nodeAddress`): For started datafeeds only, the network address of the node where the\ndatafeed is started.\n  - `ne` (or `node.ephemeral_id`, `nodeEphemeralId`): For started datafeeds only, the ephemeral ID of the node where the\ndatafeed is started.\n  - `ni` (or `node.id`, `nodeId`): For started datafeeds only, the unique identifier of the node where the\ndatafeed is started.\n  - `nn` (or `node.name`, `nodeName`): For started datafeeds only, the name of the node where the datafeed is\nstarted.\n  - `sba` (or `search.bucket_avg`, `searchBucketAvg`): The average search time per bucket, in milliseconds.\n  - `sc` (or `search.count`, `searchCount`): The number of searches run by the datafeed.\n  - `seah` (or `search.exp_avg_hour`, `searchExpAvgHour`): The exponential average search time per hour, in milliseconds.\n  - `st` (or `search.time`, `searchTime`): The total time the datafeed spent searching, in milliseconds.\n  - `s` (or `state`): The status of the datafeed: `starting`, `started`, `stopping`, or `stopped`.\nIf `starting`, the datafeed has been requested to start but has not yet\nstarted. If `started`, the datafeed is actively receiving data. If\n`stopping`, the datafeed has been requested to stop gracefully and is\ncompleting its final action. If `stopped`, the datafeed is stopped and will\nnot receive data until it is re-started.\n\n",
+        "description": "Comma-separated list of column names to display.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/cat._types.CatDatafeedColumns"
@@ -64252,7 +64248,7 @@
       "cat.ml_datafeeds-s": {
         "in": "query",
         "name": "s",
-        "description": "Comma-separated list of column names or column aliases used to sort the response.\n\nSupported values include:\n  - `ae` (or `assignment_explanation`): For started datafeeds only, contains messages relating to the selection of\na node.\n  - `bc` (or `buckets.count`, `bucketsCount`): The number of buckets processed.\n  - `id`: A numerical character string that uniquely identifies the datafeed.\n  - `na` (or `node.address`, `nodeAddress`): For started datafeeds only, the network address of the node where the\ndatafeed is started.\n  - `ne` (or `node.ephemeral_id`, `nodeEphemeralId`): For started datafeeds only, the ephemeral ID of the node where the\ndatafeed is started.\n  - `ni` (or `node.id`, `nodeId`): For started datafeeds only, the unique identifier of the node where the\ndatafeed is started.\n  - `nn` (or `node.name`, `nodeName`): For started datafeeds only, the name of the node where the datafeed is\nstarted.\n  - `sba` (or `search.bucket_avg`, `searchBucketAvg`): The average search time per bucket, in milliseconds.\n  - `sc` (or `search.count`, `searchCount`): The number of searches run by the datafeed.\n  - `seah` (or `search.exp_avg_hour`, `searchExpAvgHour`): The exponential average search time per hour, in milliseconds.\n  - `st` (or `search.time`, `searchTime`): The total time the datafeed spent searching, in milliseconds.\n  - `s` (or `state`): The status of the datafeed: `starting`, `started`, `stopping`, or `stopped`.\nIf `starting`, the datafeed has been requested to start but has not yet\nstarted. If `started`, the datafeed is actively receiving data. If\n`stopping`, the datafeed has been requested to stop gracefully and is\ncompleting its final action. If `stopped`, the datafeed is stopped and will\nnot receive data until it is re-started.\n\n",
+        "description": "Comma-separated list of column names or column aliases used to sort the response.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/cat._types.CatDatafeedColumns"
@@ -64303,7 +64299,7 @@
       "cat.ml_jobs-h": {
         "in": "query",
         "name": "h",
-        "description": "Comma-separated list of column names to display.\n\nSupported values include:\n  - `assignment_explanation` (or `ae`): For open anomaly detection jobs only, contains messages relating to the\nselection of a node to run the job.\n  - `buckets.count` (or `bc`, `bucketsCount`): The number of bucket results produced by the job.\n  - `buckets.time.exp_avg` (or `btea`, `bucketsTimeExpAvg`): Exponential moving average of all bucket processing times, in milliseconds.\n  - `buckets.time.exp_avg_hour` (or `bteah`, `bucketsTimeExpAvgHour`): Exponentially-weighted moving average of bucket processing times calculated\nin a 1 hour time window, in milliseconds.\n  - `buckets.time.max` (or `btmax`, `bucketsTimeMax`): Maximum among all bucket processing times, in milliseconds.\n  - `buckets.time.min` (or `btmin`, `bucketsTimeMin`): Minimum among all bucket processing times, in milliseconds.\n  - `buckets.time.total` (or `btt`, `bucketsTimeTotal`): Sum of all bucket processing times, in milliseconds.\n  - `data.buckets` (or `db`, `dataBuckets`): The number of buckets processed.\n  - `data.earliest_record` (or `der`, `dataEarliestRecord`): The timestamp of the earliest chronologically input document.\n  - `data.empty_buckets` (or `deb`, `dataEmptyBuckets`): The number of buckets which did not contain any data.\n  - `data.input_bytes` (or `dib`, `dataInputBytes`): The number of bytes of input data posted to the anomaly detection job.\n  - `data.input_fields` (or `dif`, `dataInputFields`): The total number of fields in input documents posted to the anomaly\ndetection job. This count includes fields that are not used in the analysis.\nHowever, be aware that if you are using a datafeed, it extracts only the\nrequired fields from the documents it retrieves before posting them to the job.\n  - `data.input_records` (or `dir`, `dataInputRecords`): The number of input documents posted to the anomaly detection job.\n  - `data.invalid_dates` (or `did`, `dataInvalidDates`): The number of input documents with either a missing date field or a date\nthat could not be parsed.\n  - `data.last` (or `dl`, `dataLast`): The timestamp at which data was last analyzed, according to server time.\n  - `data.last_empty_bucket` (or `dleb`, `dataLastEmptyBucket`): The timestamp of the last bucket that did not contain any data.\n  - `data.last_sparse_bucket` (or `dlsb`, `dataLastSparseBucket`): The timestamp of the last bucket that was considered sparse.\n  - `data.latest_record` (or `dlr`, `dataLatestRecord`): The timestamp of the latest chronologically input document.\n  - `data.missing_fields` (or `dmf`, `dataMissingFields`): The number of input documents that are missing a field that the anomaly\ndetection job is configured to analyze. Input documents with missing fields\nare still processed because it is possible that not all fields are missing.\n  - `data.out_of_order_timestamps` (or `doot`, `dataOutOfOrderTimestamps`): The number of input documents that have a timestamp chronologically\npreceding the start of the current anomaly detection bucket offset by the\nlatency window. This information is applicable only when you provide data\nto the anomaly detection job by using the post data API. These out of order\ndocuments are discarded, since jobs require time series data to be in\nascending chronological order.\n  - `data.processed_fields` (or `dpf`, `dataProcessedFields`): The total number of fields in all the documents that have been processed by\nthe anomaly detection job. Only fields that are specified in the detector\nconfiguration object contribute to this count. The timestamp is not\nincluded in this count.\n  - `data.processed_records` (or `dpr`, `dataProcessedRecords`): The number of input documents that have been processed by the anomaly\ndetection job. This value includes documents with missing fields, since\nthey are nonetheless analyzed. If you use datafeeds and have aggregations\nin your search query, the processed record count is the number of\naggregation results processed, not the number of Elasticsearch documents.\n  - `data.sparse_buckets` (or `dsb`, `dataSparseBuckets`): The number of buckets that contained few data points compared to the\nexpected number of data points.\n  - `forecasts.memory.avg` (or `fmavg`, `forecastsMemoryAvg`): The average memory usage in bytes for forecasts related to the anomaly\ndetection job.\n  - `forecasts.memory.max` (or `fmmax`, `forecastsMemoryMax`): The maximum memory usage in bytes for forecasts related to the anomaly\ndetection job.\n  - `forecasts.memory.min` (or `fmmin`, `forecastsMemoryMin`): The minimum memory usage in bytes for forecasts related to the anomaly\ndetection job.\n  - `forecasts.memory.total` (or `fmt`, `forecastsMemoryTotal`): The total memory usage in bytes for forecasts related to the anomaly\ndetection job.\n  - `forecasts.records.avg` (or `fravg`, `forecastsRecordsAvg`): The average number of `m`odel_forecast` documents written for forecasts\nrelated to the anomaly detection job.\n  - `forecasts.records.max` (or `frmax`, `forecastsRecordsMax`): The maximum number of `model_forecast` documents written for forecasts\nrelated to the anomaly detection job.\n  - `forecasts.records.min` (or `frmin`, `forecastsRecordsMin`): The minimum number of `model_forecast` documents written for forecasts\nrelated to the anomaly detection job.\n  - `forecasts.records.total` (or `frt`, `forecastsRecordsTotal`): The total number of `model_forecast` documents written for forecasts\nrelated to the anomaly detection job.\n  - `forecasts.time.avg` (or `ftavg`, `forecastsTimeAvg`): The average runtime in milliseconds for forecasts related to the anomaly\ndetection job.\n  - `forecasts.time.max` (or `ftmax`, `forecastsTimeMax`): The maximum runtime in milliseconds for forecasts related to the anomaly\ndetection job.\n  - `forecasts.time.min` (or `ftmin`, `forecastsTimeMin`): The minimum runtime in milliseconds for forecasts related to the anomaly\ndetection job.\n  - `forecasts.time.total` (or `ftt`, `forecastsTimeTotal`): The total runtime in milliseconds for forecasts related to the anomaly\ndetection job.\n  - `forecasts.total` (or `ft`, `forecastsTotal`): The number of individual forecasts currently available for the job.\n  - `id`: Identifier for the anomaly detection job.\n  - `model.bucket_allocation_failures` (or `mbaf`, `modelBucketAllocationFailures`): The number of buckets for which new entities in incoming data were not\nprocessed due to insufficient model memory.\n  - `model.by_fields` (or `mbf`, `modelByFields`): The number of by field values that were analyzed by the models. This value\nis cumulative for all detectors in the job.\n  - `model.bytes` (or `mb`, `modelBytes`): The number of bytes of memory used by the models. This is the maximum value\nsince the last time the model was persisted. If the job is closed, this\nvalue indicates the latest size.\n  - `model.bytes_exceeded` (or `mbe`, `modelBytesExceeded`): The number of bytes over the high limit for memory usage at the last\nallocation failure.\n  - `model.categorization_status` (or `mcs`, `modelCategorizationStatus`): The status of categorization for the job: `ok` or `warn`. If `ok`,\ncategorization is performing acceptably well (or not being used at all). If\n`warn`, categorization is detecting a distribution of categories that\nsuggests the input data is inappropriate for categorization. Problems could\nbe that there is only one category, more than 90% of categories are rare,\nthe number of categories is greater than 50% of the number of categorized\ndocuments, there are no frequently matched categories, or more than 50% of\ncategories are dead.\n  - `model.categorized_doc_count` (or `mcdc`, `modelCategorizedDocCount`): The number of documents that have had a field categorized.\n  - `model.dead_category_count` (or `mdcc`, `modelDeadCategoryCount`): The number of categories created by categorization that will never be\nassigned again because another category’s definition makes it a superset of\nthe dead category. Dead categories are a side effect of the way\ncategorization has no prior training.\n  - `model.failed_category_count` (or `mdcc`, `modelFailedCategoryCount`): The number of times that categorization wanted to create a new category but\ncouldn’t because the job had hit its model memory limit. This count does\nnot track which specific categories failed to be created. Therefore, you\ncannot use this value to determine the number of unique categories that\nwere missed.\n  - `model.frequent_category_count` (or `mfcc`, `modelFrequentCategoryCount`): The number of categories that match more than 1% of categorized documents.\n  - `model.log_time` (or `mlt`, `modelLogTime`): The timestamp when the model stats were gathered, according to server time.\n  - `model.memory_limit` (or `mml`, `modelMemoryLimit`): The timestamp when the model stats were gathered, according to server time.\n  - `model.memory_status` (or `mms`, `modelMemoryStatus`): The status of the mathematical models: `ok`, `soft_limit`, or `hard_limit`.\nIf `ok`, the models stayed below the configured value. If `soft_limit`, the\nmodels used more than 60% of the configured memory limit and older unused\nmodels will be pruned to free up space. Additionally, in categorization jobs\nno further category examples will be stored. If `hard_limit`, the models\nused more space than the configured memory limit. As a result, not all\nincoming data was processed.\n  - `model.over_fields` (or `mof`, `modelOverFields`): The number of over field values that were analyzed by the models. This\nvalue is cumulative for all detectors in the job.\n  - `model.partition_fields` (or `mpf`, `modelPartitionFields`): The number of partition field values that were analyzed by the models. This\nvalue is cumulative for all detectors in the job.\n  - `model.rare_category_count` (or `mrcc`, `modelRareCategoryCount`): The number of categories that match just one categorized document.\n  - `model.timestamp` (or `mt`, `modelTimestamp`): The timestamp of the last record when the model stats were gathered.\n  - `model.total_category_count` (or `mtcc`, `modelTotalCategoryCount`): The number of categories created by categorization.\n  - `node.address` (or `na`, `nodeAddress`): The network address of the node that runs the job. This information is\navailable only for open jobs.\n  - `node.ephemeral_id` (or `ne`, `nodeEphemeralId`): The ephemeral ID of the node that runs the job. This information is\navailable only for open jobs.\n  - `node.id` (or `ni`, `nodeId`): The unique identifier of the node that runs the job. This information is\navailable only for open jobs.\n  - `node.name` (or `nn`, `nodeName`): The name of the node that runs the job. This information is available only\nfor open jobs.\n  - `opened_time` (or `ot`): For open jobs only, the elapsed time for which the job has been open.\n  - `state` (or `s`): The status of the anomaly detection job: `closed`, `closing`, `failed`,\n`opened`, or `opening`. If `closed`, the job finished successfully with its\nmodel state persisted. The job must be opened before it can accept further\ndata. If `closing`, the job close action is in progress and has not yet\ncompleted. A closing job cannot accept further data. If `failed`, the job\ndid not finish successfully due to an error. This situation can occur due\nto invalid input data, a fatal error occurring during the analysis, or an\nexternal interaction such as the process being killed by the Linux out of\nmemory (OOM) killer. If the job had irrevocably failed, it must be force\nclosed and then deleted. If the datafeed can be corrected, the job can be\nclosed and then re-opened. If `opened`, the job is available to receive and\nprocess data. If `opening`, the job open action is in progress and has not\nyet completed.\n\n",
+        "description": "Comma-separated list of column names to display.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/cat._types.CatAnonalyDetectorColumns"
@@ -64313,7 +64309,7 @@
       "cat.ml_jobs-s": {
         "in": "query",
         "name": "s",
-        "description": "Comma-separated list of column names or column aliases used to sort the response.\n\nSupported values include:\n  - `assignment_explanation` (or `ae`): For open anomaly detection jobs only, contains messages relating to the\nselection of a node to run the job.\n  - `buckets.count` (or `bc`, `bucketsCount`): The number of bucket results produced by the job.\n  - `buckets.time.exp_avg` (or `btea`, `bucketsTimeExpAvg`): Exponential moving average of all bucket processing times, in milliseconds.\n  - `buckets.time.exp_avg_hour` (or `bteah`, `bucketsTimeExpAvgHour`): Exponentially-weighted moving average of bucket processing times calculated\nin a 1 hour time window, in milliseconds.\n  - `buckets.time.max` (or `btmax`, `bucketsTimeMax`): Maximum among all bucket processing times, in milliseconds.\n  - `buckets.time.min` (or `btmin`, `bucketsTimeMin`): Minimum among all bucket processing times, in milliseconds.\n  - `buckets.time.total` (or `btt`, `bucketsTimeTotal`): Sum of all bucket processing times, in milliseconds.\n  - `data.buckets` (or `db`, `dataBuckets`): The number of buckets processed.\n  - `data.earliest_record` (or `der`, `dataEarliestRecord`): The timestamp of the earliest chronologically input document.\n  - `data.empty_buckets` (or `deb`, `dataEmptyBuckets`): The number of buckets which did not contain any data.\n  - `data.input_bytes` (or `dib`, `dataInputBytes`): The number of bytes of input data posted to the anomaly detection job.\n  - `data.input_fields` (or `dif`, `dataInputFields`): The total number of fields in input documents posted to the anomaly\ndetection job. This count includes fields that are not used in the analysis.\nHowever, be aware that if you are using a datafeed, it extracts only the\nrequired fields from the documents it retrieves before posting them to the job.\n  - `data.input_records` (or `dir`, `dataInputRecords`): The number of input documents posted to the anomaly detection job.\n  - `data.invalid_dates` (or `did`, `dataInvalidDates`): The number of input documents with either a missing date field or a date\nthat could not be parsed.\n  - `data.last` (or `dl`, `dataLast`): The timestamp at which data was last analyzed, according to server time.\n  - `data.last_empty_bucket` (or `dleb`, `dataLastEmptyBucket`): The timestamp of the last bucket that did not contain any data.\n  - `data.last_sparse_bucket` (or `dlsb`, `dataLastSparseBucket`): The timestamp of the last bucket that was considered sparse.\n  - `data.latest_record` (or `dlr`, `dataLatestRecord`): The timestamp of the latest chronologically input document.\n  - `data.missing_fields` (or `dmf`, `dataMissingFields`): The number of input documents that are missing a field that the anomaly\ndetection job is configured to analyze. Input documents with missing fields\nare still processed because it is possible that not all fields are missing.\n  - `data.out_of_order_timestamps` (or `doot`, `dataOutOfOrderTimestamps`): The number of input documents that have a timestamp chronologically\npreceding the start of the current anomaly detection bucket offset by the\nlatency window. This information is applicable only when you provide data\nto the anomaly detection job by using the post data API. These out of order\ndocuments are discarded, since jobs require time series data to be in\nascending chronological order.\n  - `data.processed_fields` (or `dpf`, `dataProcessedFields`): The total number of fields in all the documents that have been processed by\nthe anomaly detection job. Only fields that are specified in the detector\nconfiguration object contribute to this count. The timestamp is not\nincluded in this count.\n  - `data.processed_records` (or `dpr`, `dataProcessedRecords`): The number of input documents that have been processed by the anomaly\ndetection job. This value includes documents with missing fields, since\nthey are nonetheless analyzed. If you use datafeeds and have aggregations\nin your search query, the processed record count is the number of\naggregation results processed, not the number of Elasticsearch documents.\n  - `data.sparse_buckets` (or `dsb`, `dataSparseBuckets`): The number of buckets that contained few data points compared to the\nexpected number of data points.\n  - `forecasts.memory.avg` (or `fmavg`, `forecastsMemoryAvg`): The average memory usage in bytes for forecasts related to the anomaly\ndetection job.\n  - `forecasts.memory.max` (or `fmmax`, `forecastsMemoryMax`): The maximum memory usage in bytes for forecasts related to the anomaly\ndetection job.\n  - `forecasts.memory.min` (or `fmmin`, `forecastsMemoryMin`): The minimum memory usage in bytes for forecasts related to the anomaly\ndetection job.\n  - `forecasts.memory.total` (or `fmt`, `forecastsMemoryTotal`): The total memory usage in bytes for forecasts related to the anomaly\ndetection job.\n  - `forecasts.records.avg` (or `fravg`, `forecastsRecordsAvg`): The average number of `m`odel_forecast` documents written for forecasts\nrelated to the anomaly detection job.\n  - `forecasts.records.max` (or `frmax`, `forecastsRecordsMax`): The maximum number of `model_forecast` documents written for forecasts\nrelated to the anomaly detection job.\n  - `forecasts.records.min` (or `frmin`, `forecastsRecordsMin`): The minimum number of `model_forecast` documents written for forecasts\nrelated to the anomaly detection job.\n  - `forecasts.records.total` (or `frt`, `forecastsRecordsTotal`): The total number of `model_forecast` documents written for forecasts\nrelated to the anomaly detection job.\n  - `forecasts.time.avg` (or `ftavg`, `forecastsTimeAvg`): The average runtime in milliseconds for forecasts related to the anomaly\ndetection job.\n  - `forecasts.time.max` (or `ftmax`, `forecastsTimeMax`): The maximum runtime in milliseconds for forecasts related to the anomaly\ndetection job.\n  - `forecasts.time.min` (or `ftmin`, `forecastsTimeMin`): The minimum runtime in milliseconds for forecasts related to the anomaly\ndetection job.\n  - `forecasts.time.total` (or `ftt`, `forecastsTimeTotal`): The total runtime in milliseconds for forecasts related to the anomaly\ndetection job.\n  - `forecasts.total` (or `ft`, `forecastsTotal`): The number of individual forecasts currently available for the job.\n  - `id`: Identifier for the anomaly detection job.\n  - `model.bucket_allocation_failures` (or `mbaf`, `modelBucketAllocationFailures`): The number of buckets for which new entities in incoming data were not\nprocessed due to insufficient model memory.\n  - `model.by_fields` (or `mbf`, `modelByFields`): The number of by field values that were analyzed by the models. This value\nis cumulative for all detectors in the job.\n  - `model.bytes` (or `mb`, `modelBytes`): The number of bytes of memory used by the models. This is the maximum value\nsince the last time the model was persisted. If the job is closed, this\nvalue indicates the latest size.\n  - `model.bytes_exceeded` (or `mbe`, `modelBytesExceeded`): The number of bytes over the high limit for memory usage at the last\nallocation failure.\n  - `model.categorization_status` (or `mcs`, `modelCategorizationStatus`): The status of categorization for the job: `ok` or `warn`. If `ok`,\ncategorization is performing acceptably well (or not being used at all). If\n`warn`, categorization is detecting a distribution of categories that\nsuggests the input data is inappropriate for categorization. Problems could\nbe that there is only one category, more than 90% of categories are rare,\nthe number of categories is greater than 50% of the number of categorized\ndocuments, there are no frequently matched categories, or more than 50% of\ncategories are dead.\n  - `model.categorized_doc_count` (or `mcdc`, `modelCategorizedDocCount`): The number of documents that have had a field categorized.\n  - `model.dead_category_count` (or `mdcc`, `modelDeadCategoryCount`): The number of categories created by categorization that will never be\nassigned again because another category’s definition makes it a superset of\nthe dead category. Dead categories are a side effect of the way\ncategorization has no prior training.\n  - `model.failed_category_count` (or `mdcc`, `modelFailedCategoryCount`): The number of times that categorization wanted to create a new category but\ncouldn’t because the job had hit its model memory limit. This count does\nnot track which specific categories failed to be created. Therefore, you\ncannot use this value to determine the number of unique categories that\nwere missed.\n  - `model.frequent_category_count` (or `mfcc`, `modelFrequentCategoryCount`): The number of categories that match more than 1% of categorized documents.\n  - `model.log_time` (or `mlt`, `modelLogTime`): The timestamp when the model stats were gathered, according to server time.\n  - `model.memory_limit` (or `mml`, `modelMemoryLimit`): The timestamp when the model stats were gathered, according to server time.\n  - `model.memory_status` (or `mms`, `modelMemoryStatus`): The status of the mathematical models: `ok`, `soft_limit`, or `hard_limit`.\nIf `ok`, the models stayed below the configured value. If `soft_limit`, the\nmodels used more than 60% of the configured memory limit and older unused\nmodels will be pruned to free up space. Additionally, in categorization jobs\nno further category examples will be stored. If `hard_limit`, the models\nused more space than the configured memory limit. As a result, not all\nincoming data was processed.\n  - `model.over_fields` (or `mof`, `modelOverFields`): The number of over field values that were analyzed by the models. This\nvalue is cumulative for all detectors in the job.\n  - `model.partition_fields` (or `mpf`, `modelPartitionFields`): The number of partition field values that were analyzed by the models. This\nvalue is cumulative for all detectors in the job.\n  - `model.rare_category_count` (or `mrcc`, `modelRareCategoryCount`): The number of categories that match just one categorized document.\n  - `model.timestamp` (or `mt`, `modelTimestamp`): The timestamp of the last record when the model stats were gathered.\n  - `model.total_category_count` (or `mtcc`, `modelTotalCategoryCount`): The number of categories created by categorization.\n  - `node.address` (or `na`, `nodeAddress`): The network address of the node that runs the job. This information is\navailable only for open jobs.\n  - `node.ephemeral_id` (or `ne`, `nodeEphemeralId`): The ephemeral ID of the node that runs the job. This information is\navailable only for open jobs.\n  - `node.id` (or `ni`, `nodeId`): The unique identifier of the node that runs the job. This information is\navailable only for open jobs.\n  - `node.name` (or `nn`, `nodeName`): The name of the node that runs the job. This information is available only\nfor open jobs.\n  - `opened_time` (or `ot`): For open jobs only, the elapsed time for which the job has been open.\n  - `state` (or `s`): The status of the anomaly detection job: `closed`, `closing`, `failed`,\n`opened`, or `opening`. If `closed`, the job finished successfully with its\nmodel state persisted. The job must be opened before it can accept further\ndata. If `closing`, the job close action is in progress and has not yet\ncompleted. A closing job cannot accept further data. If `failed`, the job\ndid not finish successfully due to an error. This situation can occur due\nto invalid input data, a fatal error occurring during the analysis, or an\nexternal interaction such as the process being killed by the Linux out of\nmemory (OOM) killer. If the job had irrevocably failed, it must be force\nclosed and then deleted. If the datafeed can be corrected, the job can be\nclosed and then re-opened. If `opened`, the job is available to receive and\nprocess data. If `opening`, the job open action is in progress and has not\nyet completed.\n\n",
+        "description": "Comma-separated list of column names or column aliases used to sort the response.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/cat._types.CatAnonalyDetectorColumns"
@@ -64364,7 +64360,7 @@
       "cat.ml_trained_models-h": {
         "in": "query",
         "name": "h",
-        "description": "A comma-separated list of column names to display.\n\nSupported values include:\n  - `create_time` (or `ct`): The time when the trained model was created.\n  - `created_by` (or `c`, `createdBy`): Information on the creator of the trained model.\n  - `data_frame_analytics_id` (or `df`, `dataFrameAnalytics`, `dfid`): Identifier for the data frame analytics job that created the model. Only\ndisplayed if it is still available.\n  - `description` (or `d`): The description of the trained model.\n  - `heap_size` (or `hs`, `modelHeapSize`): The estimated heap size to keep the trained model in memory.\n  - `id`: Identifier for the trained model.\n  - `ingest.count` (or `ic`, `ingestCount`): The total number of documents that are processed by the model.\n  - `ingest.current` (or `icurr`, `ingestCurrent`): The total number of document that are currently being handled by the\ntrained model.\n  - `ingest.failed` (or `if`, `ingestFailed`): The total number of failed ingest attempts with the trained model.\n  - `ingest.pipelines` (or `ip`, `ingestPipelines`): The total number of ingest pipelines that are referencing the trained\nmodel.\n  - `ingest.time` (or `it`, `ingestTime`): The total time that is spent processing documents with the trained model.\n  - `license` (or `l`): The license level of the trained model.\n  - `operations` (or `o`, `modelOperations`): The estimated number of operations to use the trained model. This number\nhelps measuring the computational complexity of the model.\n  - `version` (or `v`): The Elasticsearch version number in which the trained model was created.\n\n",
+        "description": "A comma-separated list of column names to display.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/cat._types.CatTrainedModelsColumns"
@@ -64374,7 +64370,7 @@
       "cat.ml_trained_models-s": {
         "in": "query",
         "name": "s",
-        "description": "A comma-separated list of column names or aliases used to sort the response.\n\nSupported values include:\n  - `create_time` (or `ct`): The time when the trained model was created.\n  - `created_by` (or `c`, `createdBy`): Information on the creator of the trained model.\n  - `data_frame_analytics_id` (or `df`, `dataFrameAnalytics`, `dfid`): Identifier for the data frame analytics job that created the model. Only\ndisplayed if it is still available.\n  - `description` (or `d`): The description of the trained model.\n  - `heap_size` (or `hs`, `modelHeapSize`): The estimated heap size to keep the trained model in memory.\n  - `id`: Identifier for the trained model.\n  - `ingest.count` (or `ic`, `ingestCount`): The total number of documents that are processed by the model.\n  - `ingest.current` (or `icurr`, `ingestCurrent`): The total number of document that are currently being handled by the\ntrained model.\n  - `ingest.failed` (or `if`, `ingestFailed`): The total number of failed ingest attempts with the trained model.\n  - `ingest.pipelines` (or `ip`, `ingestPipelines`): The total number of ingest pipelines that are referencing the trained\nmodel.\n  - `ingest.time` (or `it`, `ingestTime`): The total time that is spent processing documents with the trained model.\n  - `license` (or `l`): The license level of the trained model.\n  - `operations` (or `o`, `modelOperations`): The estimated number of operations to use the trained model. This number\nhelps measuring the computational complexity of the model.\n  - `version` (or `v`): The Elasticsearch version number in which the trained model was created.\n\n",
+        "description": "A comma-separated list of column names or aliases used to sort the response.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/cat._types.CatTrainedModelsColumns"
@@ -64445,7 +64441,7 @@
       "cat.transforms-h": {
         "in": "query",
         "name": "h",
-        "description": "Comma-separated list of column names to display.\n\nSupported values include:\n  - `changes_last_detection_time` (or `cldt`): The timestamp when changes were last detected in the source indices.\n  - `checkpoint` (or `cp`): The sequence number for the checkpoint.\n  - `checkpoint_duration_time_exp_avg` (or `cdtea`, `checkpointTimeExpAvg`): Exponential moving average of the duration of the checkpoint, in\nmilliseconds.\n  - `checkpoint_progress` (or `c`, `checkpointProgress`): The progress of the next checkpoint that is currently in progress.\n  - `create_time` (or `ct`, `createTime`): The time the transform was created.\n  - `delete_time` (or `dtime`): The amount of time spent deleting, in milliseconds.\n  - `description` (or `d`): The description of the transform.\n  - `dest_index` (or `di`, `destIndex`): The destination index for the transform. The mappings of the destination\nindex are deduced based on the source fields when possible. If alternate\nmappings are required, use the Create index API prior to starting the\ntransform.\n  - `documents_deleted` (or `docd`): The number of documents that have been deleted from the destination index\ndue to the retention policy for this transform.\n  - `documents_indexed` (or `doci`): The number of documents that have been indexed into the destination index\nfor the transform.\n  - `docs_per_second` (or `dps`): Specifies a limit on the number of input documents per second. This setting\nthrottles the transform by adding a wait time between search requests. The\ndefault value is `null`, which disables throttling.\n  - `documents_processed` (or `docp`): The number of documents that have been processed from the source index of\nthe transform.\n  - `frequency` (or `f`): The interval between checks for changes in the source indices when the\ntransform is running continuously. Also determines the retry interval in\nthe event of transient failures while the transform is searching or\nindexing. The minimum value is `1s` and the maximum is `1h`. The default\nvalue is `1m`.\n  - `id`: Identifier for the transform.\n  - `index_failure` (or `if`): The number of indexing failures.\n  - `index_time` (or `itime`): The amount of time spent indexing, in milliseconds.\n  - `index_total` (or `it`): The number of index operations.\n  - `indexed_documents_exp_avg` (or `idea`): Exponential moving average of the number of new documents that have been\nindexed.\n  - `last_search_time` (or `lst`, `lastSearchTime`): The timestamp of the last search in the source indices. This field is only\nshown if the transform is running.\n  - `max_page_search_size` (or `mpsz`): Defines the initial page size to use for the composite aggregation for each\ncheckpoint. If circuit breaker exceptions occur, the page size is\ndynamically adjusted to a lower value. The minimum value is `10` and the\nmaximum is `65,536`. The default value is `500`.\n  - `pages_processed` (or `pp`): The number of search or bulk index operations processed. Documents are\nprocessed in batches instead of individually.\n  - `pipeline` (or `p`): The unique identifier for an ingest pipeline.\n  - `processed_documents_exp_avg` (or `pdea`): Exponential moving average of the number of documents that have been\nprocessed.\n  - `processing_time` (or `pt`): The amount of time spent processing results, in milliseconds.\n  - `reason` (or `r`): If a transform has a `failed` state, this property provides details about\nthe reason for the failure.\n  - `search_failure` (or `sf`): The number of search failures.\n  - `search_time` (or `stime`): The amount of time spent searching, in milliseconds.\n  - `search_total` (or `st`): The number of search operations on the source index for the transform.\n  - `source_index` (or `si`, `sourceIndex`): The source indices for the transform. It can be a single index, an index\npattern (for example, `\"my-index-*\"`), an array of indices (for example,\n`[\"my-index-000001\", \"my-index-000002\"]`), or an array of index patterns\n(for example, `[\"my-index-*\", \"my-other-index-*\"]`. For remote indices use\nthe syntax `\"remote_name:index_name\"`. If any indices are in remote\nclusters then the master node and at least one transform node must have the\n`remote_cluster_client` node role.\n  - `state` (or `s`): The status of the transform, which can be one of the following values:\n\n* `aborting`: The transform is aborting.\n* `failed`: The transform failed. For more information about the failure,\ncheck the reason field.\n* `indexing`: The transform is actively processing data and creating new\ndocuments.\n* `started`: The transform is running but not actively indexing data.\n* `stopped`: The transform is stopped.\n* `stopping`: The transform is stopping.\n  - `transform_type` (or `tt`): Indicates the type of transform: `batch` or `continuous`.\n  - `trigger_count` (or `tc`): The number of times the transform has been triggered by the scheduler. For\nexample, the scheduler triggers the transform indexer to check for updates\nor ingest new data at an interval specified in the `frequency` property.\n  - `version` (or `v`): The version of Elasticsearch that existed on the node when the transform\nwas created.\n\n",
+        "description": "Comma-separated list of column names to display.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/cat._types.CatTransformColumns"
@@ -64455,7 +64451,7 @@
       "cat.transforms-s": {
         "in": "query",
         "name": "s",
-        "description": "Comma-separated list of column names or column aliases used to sort the response.\n\nSupported values include:\n  - `changes_last_detection_time` (or `cldt`): The timestamp when changes were last detected in the source indices.\n  - `checkpoint` (or `cp`): The sequence number for the checkpoint.\n  - `checkpoint_duration_time_exp_avg` (or `cdtea`, `checkpointTimeExpAvg`): Exponential moving average of the duration of the checkpoint, in\nmilliseconds.\n  - `checkpoint_progress` (or `c`, `checkpointProgress`): The progress of the next checkpoint that is currently in progress.\n  - `create_time` (or `ct`, `createTime`): The time the transform was created.\n  - `delete_time` (or `dtime`): The amount of time spent deleting, in milliseconds.\n  - `description` (or `d`): The description of the transform.\n  - `dest_index` (or `di`, `destIndex`): The destination index for the transform. The mappings of the destination\nindex are deduced based on the source fields when possible. If alternate\nmappings are required, use the Create index API prior to starting the\ntransform.\n  - `documents_deleted` (or `docd`): The number of documents that have been deleted from the destination index\ndue to the retention policy for this transform.\n  - `documents_indexed` (or `doci`): The number of documents that have been indexed into the destination index\nfor the transform.\n  - `docs_per_second` (or `dps`): Specifies a limit on the number of input documents per second. This setting\nthrottles the transform by adding a wait time between search requests. The\ndefault value is `null`, which disables throttling.\n  - `documents_processed` (or `docp`): The number of documents that have been processed from the source index of\nthe transform.\n  - `frequency` (or `f`): The interval between checks for changes in the source indices when the\ntransform is running continuously. Also determines the retry interval in\nthe event of transient failures while the transform is searching or\nindexing. The minimum value is `1s` and the maximum is `1h`. The default\nvalue is `1m`.\n  - `id`: Identifier for the transform.\n  - `index_failure` (or `if`): The number of indexing failures.\n  - `index_time` (or `itime`): The amount of time spent indexing, in milliseconds.\n  - `index_total` (or `it`): The number of index operations.\n  - `indexed_documents_exp_avg` (or `idea`): Exponential moving average of the number of new documents that have been\nindexed.\n  - `last_search_time` (or `lst`, `lastSearchTime`): The timestamp of the last search in the source indices. This field is only\nshown if the transform is running.\n  - `max_page_search_size` (or `mpsz`): Defines the initial page size to use for the composite aggregation for each\ncheckpoint. If circuit breaker exceptions occur, the page size is\ndynamically adjusted to a lower value. The minimum value is `10` and the\nmaximum is `65,536`. The default value is `500`.\n  - `pages_processed` (or `pp`): The number of search or bulk index operations processed. Documents are\nprocessed in batches instead of individually.\n  - `pipeline` (or `p`): The unique identifier for an ingest pipeline.\n  - `processed_documents_exp_avg` (or `pdea`): Exponential moving average of the number of documents that have been\nprocessed.\n  - `processing_time` (or `pt`): The amount of time spent processing results, in milliseconds.\n  - `reason` (or `r`): If a transform has a `failed` state, this property provides details about\nthe reason for the failure.\n  - `search_failure` (or `sf`): The number of search failures.\n  - `search_time` (or `stime`): The amount of time spent searching, in milliseconds.\n  - `search_total` (or `st`): The number of search operations on the source index for the transform.\n  - `source_index` (or `si`, `sourceIndex`): The source indices for the transform. It can be a single index, an index\npattern (for example, `\"my-index-*\"`), an array of indices (for example,\n`[\"my-index-000001\", \"my-index-000002\"]`), or an array of index patterns\n(for example, `[\"my-index-*\", \"my-other-index-*\"]`. For remote indices use\nthe syntax `\"remote_name:index_name\"`. If any indices are in remote\nclusters then the master node and at least one transform node must have the\n`remote_cluster_client` node role.\n  - `state` (or `s`): The status of the transform, which can be one of the following values:\n\n* `aborting`: The transform is aborting.\n* `failed`: The transform failed. For more information about the failure,\ncheck the reason field.\n* `indexing`: The transform is actively processing data and creating new\ndocuments.\n* `started`: The transform is running but not actively indexing data.\n* `stopped`: The transform is stopped.\n* `stopping`: The transform is stopping.\n  - `transform_type` (or `tt`): Indicates the type of transform: `batch` or `continuous`.\n  - `trigger_count` (or `tc`): The number of times the transform has been triggered by the scheduler. For\nexample, the scheduler triggers the transform indexer to check for updates\nor ingest new data at an interval specified in the `frequency` property.\n  - `version` (or `v`): The version of Elasticsearch that existed on the node when the transform\nwas created.\n\n",
+        "description": "Comma-separated list of column names or column aliases used to sort the response.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/cat._types.CatTransformColumns"
@@ -64650,7 +64646,7 @@
       "count-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -64792,7 +64788,7 @@
       "create-op_type": {
         "in": "query",
         "name": "op_type",
-        "description": "Set to `create` to only index the document if it does not already exist (put if absent).\nIf a document with the specified `_id` already exists, the indexing operation will fail.\nThe behavior is the same as using the `<index>/_create` endpoint.\nIf a document ID is specified, this paramater defaults to `index`.\nOtherwise, it defaults to `create`.\nIf the request targets a data stream, an `op_type` of `create` is required.\n\nSupported values include:\n  - `index`: Overwrite any documents that already exist.\n  - `create`: Only index documents that do not already exist.\n\n",
+        "description": "Set to `create` to only index the document if it does not already exist (put if absent).\nIf a document with the specified `_id` already exists, the indexing operation will fail.\nThe behavior is the same as using the `<index>/_create` endpoint.\nIf a document ID is specified, this paramater defaults to `index`.\nOtherwise, it defaults to `create`.\nIf the request targets a data stream, an `op_type` of `create` is required.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.OpType"
@@ -64872,7 +64868,7 @@
       "create-version_type": {
         "in": "query",
         "name": "version_type",
-        "description": "The version type.\n\nSupported values include:\n  - `internal`: Use internal versioning that starts at 1 and increments with each update or delete.\n  - `external`: Only index the document if the specified version is strictly higher than the version of the stored document or if there is no existing document.\n  - `external_gte`: Only index the document if the specified version is equal or higher than the version of the stored document or if there is no existing document.\nNOTE: The `external_gte` version type is meant for special use cases and should be used with care.\nIf used incorrectly, it can result in loss of data.\n  - `force`: This option is deprecated because it can cause primary and replica shards to diverge.\n\n",
+        "description": "The version type.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.VersionType"
@@ -64953,7 +64949,6 @@
       "eql.search-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -65166,7 +65161,7 @@
       "field_caps-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "The type of index that wildcard patterns can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values, such as `open,hidden`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "The type of index that wildcard patterns can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values, such as `open,hidden`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -65322,7 +65317,7 @@
       "index-op_type": {
         "in": "query",
         "name": "op_type",
-        "description": "Set to `create` to only index the document if it does not already exist (put if absent).\nIf a document with the specified `_id` already exists, the indexing operation will fail.\nThe behavior is the same as using the `<index>/_create` endpoint.\nIf a document ID is specified, this paramater defaults to `index`.\nOtherwise, it defaults to `create`.\nIf the request targets a data stream, an `op_type` of `create` is required.\n\nSupported values include:\n  - `index`: Overwrite any documents that already exist.\n  - `create`: Only index documents that do not already exist.\n\n",
+        "description": "Set to `create` to only index the document if it does not already exist (put if absent).\nIf a document with the specified `_id` already exists, the indexing operation will fail.\nThe behavior is the same as using the `<index>/_create` endpoint.\nIf a document ID is specified, this paramater defaults to `index`.\nOtherwise, it defaults to `create`.\nIf the request targets a data stream, an `op_type` of `create` is required.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.OpType"
@@ -65382,7 +65377,7 @@
       "index-version_type": {
         "in": "query",
         "name": "version_type",
-        "description": "The version type.\n\nSupported values include:\n  - `internal`: Use internal versioning that starts at 1 and increments with each update or delete.\n  - `external`: Only index the document if the specified version is strictly higher than the version of the stored document or if there is no existing document.\n  - `external_gte`: Only index the document if the specified version is equal or higher than the version of the stored document or if there is no existing document.\nNOTE: The `external_gte` version type is meant for special use cases and should be used with care.\nIf used incorrectly, it can result in loss of data.\n  - `force`: This option is deprecated because it can cause primary and replica shards to diverge.\n\n",
+        "description": "The version type.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.VersionType"
@@ -65444,7 +65439,7 @@
       "indices.data_streams_stats-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -65528,7 +65523,7 @@
       "indices.exists_alias-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -65590,7 +65585,7 @@
       "indices.get_alias-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -65631,7 +65626,7 @@
       "indices.get_data_stream-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -65743,7 +65738,7 @@
       "indices.get_mapping-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -65815,7 +65810,7 @@
       "indices.get_settings-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -65979,7 +65974,7 @@
       "indices.put_mapping-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -66050,7 +66045,7 @@
       "indices.put_settings-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Type of index that wildcard patterns can match. If the request can target\ndata streams, this argument determines whether wildcard expressions match\nhidden data streams. Supports comma-separated values, such as\n`open,hidden`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "Type of index that wildcard patterns can match. If the request can target\ndata streams, this argument determines whether wildcard expressions match\nhidden data streams. Supports comma-separated values, such as\n`open,hidden`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -66192,7 +66187,7 @@
       "indices.refresh-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -66406,7 +66401,7 @@
       "indices.validate_query-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -67145,7 +67140,7 @@
       "ml.get_trained_models-include": {
         "in": "query",
         "name": "include",
-        "description": "A comma delimited string of optional fields to include in the response\nbody.\n\nSupported values include:\n  - `definition`: Includes the model definition.\n  - `feature_importance_baseline`: Includes the baseline for feature importance values.\n  - `hyperparameters`: Includes the information about hyperparameters used to train the model.\nThis information consists of the value, the absolute and relative\nimportance of the hyperparameter as well as an indicator of whether it was\nspecified by the user or tuned during hyperparameter optimization.\n  - `total_feature_importance`: Includes the total feature importance for the training data set. The\nbaseline and total feature importance values are returned in the metadata\nfield in the response body.\n  - `definition_status`: Includes the model definition status.\n\n",
+        "description": "A comma delimited string of optional fields to include in the response\nbody.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/ml._types.Include"
@@ -67330,7 +67325,7 @@
       "msearch-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Type of index that wildcard expressions can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "Type of index that wildcard expressions can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -67420,7 +67415,7 @@
       "msearch-search_type": {
         "in": "query",
         "name": "search_type",
-        "description": "Indicates whether global term and document frequencies should be used when scoring returned documents.\n\nSupported values include:\n  - `query_then_fetch`: Documents are scored using local term and document frequencies for the shard. This is usually faster but less accurate.\n  - `dfs_query_then_fetch`: Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate.\n\n",
+        "description": "Indicates whether global term and document frequencies should be used when scoring returned documents.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.SearchType"
@@ -67471,7 +67466,7 @@
       "msearch_template-search_type": {
         "in": "query",
         "name": "search_type",
-        "description": "The type of the search operation.\n\nSupported values include:\n  - `query_then_fetch`: Documents are scored using local term and document frequencies for the shard. This is usually faster but less accurate.\n  - `dfs_query_then_fetch`: Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate.\n\n",
+        "description": "The type of the search operation.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.SearchType"
@@ -67625,7 +67620,7 @@
       "mtermvectors-version_type": {
         "in": "query",
         "name": "version_type",
-        "description": "The version type.\n\nSupported values include:\n  - `internal`: Use internal versioning that starts at 1 and increments with each update or delete.\n  - `external`: Only index the document if the specified version is strictly higher than the version of the stored document or if there is no existing document.\n  - `external_gte`: Only index the document if the specified version is equal or higher than the version of the stored document or if there is no existing document.\nNOTE: The `external_gte` version type is meant for special use cases and should be used with care.\nIf used incorrectly, it can result in loss of data.\n  - `force`: This option is deprecated because it can cause primary and replica shards to diverge.\n\n",
+        "description": "The version type.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.VersionType"
@@ -67708,7 +67703,7 @@
       "rank_eval-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -67891,7 +67886,7 @@
       "search-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values such as `open,hidden`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values such as `open,hidden`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -68021,7 +68016,7 @@
       "search-search_type": {
         "in": "query",
         "name": "search_type",
-        "description": "Indicates how distributed term frequencies are calculated for relevance scoring.\n\nSupported values include:\n  - `query_then_fetch`: Documents are scored using local term and document frequencies for the shard. This is usually faster but less accurate.\n  - `dfs_query_then_fetch`: Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate.\n\n",
+        "description": "Indicates how distributed term frequencies are calculated for relevance scoring.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.SearchType"
@@ -68064,7 +68059,7 @@
       "search-suggest_mode": {
         "in": "query",
         "name": "suggest_mode",
-        "description": "The suggest mode.\nThis parameter can be used only when the `suggest_field` and `suggest_text` query string parameters are specified.\n\nSupported values include:\n  - `missing`: Only generate suggestions for terms that are not in the shard.\n  - `popular`: Only suggest terms that occur in more docs on the shard than the original term.\n  - `always`: Suggest any matching suggestions based on terms in the suggest text.\n\n",
+        "description": "The suggest mode.\nThis parameter can be used only when the `suggest_field` and `suggest_text` query string parameters are specified.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.SuggestMode"
@@ -68445,7 +68440,7 @@
       "search_template-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.\n\nSupported values include:\n  - `all`: Match any data stream or index, including hidden ones.\n  - `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.\n  - `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n  - `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or `both`.\n  - `none`: Wildcard expressions are not accepted.\n\n",
+        "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -68525,7 +68520,7 @@
       "search_template-search_type": {
         "in": "query",
         "name": "search_type",
-        "description": "The type of the search operation.\n\nSupported values include:\n  - `query_then_fetch`: Documents are scored using local term and document frequencies for the shard. This is usually faster but less accurate.\n  - `dfs_query_then_fetch`: Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate.\n\n",
+        "description": "The type of the search operation.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.SearchType"
@@ -68749,7 +68744,7 @@
       "termvectors-version_type": {
         "in": "query",
         "name": "version_type",
-        "description": "The version type.\n\nSupported values include:\n  - `internal`: Use internal versioning that starts at 1 and increments with each update or delete.\n  - `external`: Only index the document if the specified version is strictly higher than the version of the stored document or if there is no existing document.\n  - `external_gte`: Only index the document if the specified version is equal or higher than the version of the stored document or if there is no existing document.\nNOTE: The `external_gte` version type is meant for special use cases and should be used with care.\nIf used incorrectly, it can result in loss of data.\n  - `force`: This option is deprecated because it can cause primary and replica shards to diverge.\n\n",
+        "description": "The version type.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.VersionType"
