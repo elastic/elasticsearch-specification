@@ -45,7 +45,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-update-settings
- * @ext_doc_id stack-settings
+ * @ext_doc_id es-settings
  */
 export interface Request extends RequestBase {
   urls: [
