@@ -13666,11 +13666,12 @@ export interface InferenceHuggingFaceServiceSettings {
   api_key: string
   rate_limit?: InferenceRateLimitSetting
   url: string
+  model_id?: string
 }
 
 export type InferenceHuggingFaceServiceType = 'hugging_face'
 
-export type InferenceHuggingFaceTaskType = 'text_embedding'
+export type InferenceHuggingFaceTaskType = 'chat_completion' | 'completion' | 'text_embedding'
 
 export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
@@ -13899,7 +13900,7 @@ export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
 export type InferenceTaskTypeGoogleVertexAI = 'text_embedding' | 'rerank'
 
-export type InferenceTaskTypeHuggingFace = 'text_embedding'
+export type InferenceTaskTypeHuggingFace = 'text_embedding' | 'chat_completion' | 'completion'
 
 export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
 
