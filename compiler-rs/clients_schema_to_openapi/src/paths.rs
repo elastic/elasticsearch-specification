@@ -19,7 +19,7 @@ use std::collections::HashMap;
 use std::fmt::Write;
 
 use anyhow::{anyhow, bail};
-use clients_schema::{Flavor, Property};
+use clients_schema::{Property};
 use indexmap::IndexMap;
 use indexmap::indexmap;
 use icu_segmenter::SentenceSegmenter;
@@ -37,8 +37,7 @@ use crate::convert_availabilities;
 pub fn add_endpoint(
     endpoint: &clients_schema::Endpoint,
     tac: &mut TypesAndComponents,
-    out: &mut Paths,
-    flavor: &Option<Flavor>
+    out: &mut Paths
 ) -> anyhow::Result<()> {
     if endpoint.request.is_none() {
         // tracing::warn!("Endpoint {} is missing a request -- ignored", &endpoint.name);
@@ -256,7 +255,7 @@ pub fn add_endpoint(
         let sum_desc = split_summary_desc(&endpoint.description);
 
         // add the x-state extension for availability
-        let mut extensions = crate::availability_as_extensions(&endpoint.availability, flavor);
+        let mut extensions = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
 
         // add the x-codeSamples extension
         let mut code_samples = vec![];
@@ -290,7 +289,7 @@ pub fn add_endpoint(
         if !code_samples.is_empty() {
             extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
         }
-        let mut ext_availability = crate::availability_as_extensions(&endpoint.availability, flavor);
+        let mut ext_availability = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
         extensions.append(&mut ext_availability);
 
         // Create the operation, it will be repeated if we have several methods

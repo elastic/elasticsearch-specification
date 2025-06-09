@@ -104,7 +104,7 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration) -> 
                 continue;
             }
         }
-        paths::add_endpoint(endpoint, &mut tac, &mut openapi.paths, &config.flavor)?;
+        paths::add_endpoint(endpoint, &mut tac, &mut openapi.paths)?;
     }
 
     // // Sort maps to ensure output stability
@@ -164,19 +164,19 @@ pub fn convert_availabilities(availabilities: &Option<Availabilities>, flavor: &
                 let stab = stability.clone().unwrap_or(Stability::Stable);
                 let mut since_str = "".to_string();
                 if let Some(since) = since {
-                    since_str = "; Added in ".to_string() + since;
+                    since_str = format!("; Added in {since}");
                 }
                 match stab {
                     Stability::Beta => {
-                        let beta_since = "Beta".to_string() + &since_str;
+                        let beta_since = format!("Beta{since_str}");
                         result.insert("x-state".to_string(), Value::String(beta_since));
                     }
                     Stability::Experimental => {
-                        let exp_since = "Technical preview".to_string() + &since_str;
+                        let exp_since = format!("Technical preview{since_str}");
                         result.insert("x-state".to_string(), Value::String(exp_since));
                     }
-                    Stability::Stable => {
-                        let stable_since = "Generally available".to_string() + &since_str;
+                    Stability::Stable => { 
+                        let stable_since = format!("Generally available{since_str}");
                         result.insert("x-state".to_string(), Value::String(stable_since));
                     }
                 }
