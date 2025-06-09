@@ -1,0 +1,7 @@
+method_request: GET _ml/anomaly_detectors/high_sum_total_sales/results/influencers
+description: An example body for a `GET _ml/anomaly_detectors/high_sum_total_sales/results/influencers` request.
+value: |-
+  {
+    "sort": "influencer_score",
+    "desc": true
+  }

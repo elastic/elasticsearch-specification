@@ -1,0 +1,1 @@
+method_request: POST _data_stream/_migrate/my-time-series-data
