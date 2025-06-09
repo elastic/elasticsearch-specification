@@ -850,6 +850,7 @@ sql-rest-format,https://www.elastic.co/docs/explore-analyze/query-filter/languag
 sql-search-api,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-sql-query
 sql-spec,https://www.elastic.co/docs/reference/query-languages/sql/sql-spec
 sql-translate-api,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-sql-translate
+stack-settings,https://www.elastic.co/docs/deploy-manage/stack-settings
 start-basic,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-license-post-start-basic
 start-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-ml-start-data-frame-analytics
 start-trained-model-deployment,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-ml-start-trained-model-deployment
