@@ -4324,7 +4324,7 @@
         "x-codeSamples": [
           {
             "lang": "Console",
-            "source": "GET my-index-000001/_doc/0\n"
+            "source": "GET my-index-000001/_doc/1?stored_fields=tags,counter\n"
           }
         ]
       },
@@ -21581,7 +21581,7 @@
         "x-codeSamples": [
           {
             "lang": "Console",
-            "source": "GET /_security/api_key?id=VuaCfGcBCdbkQm-e5aOx&with_limited_by=true\n"
+            "source": "GET /_security/api_key?username=myuser&realm_name=native1\n"
           }
         ]
       },
@@ -22889,7 +22889,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _synonyms/my-synonyms-set\n"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -23285,7 +23291,7 @@
         "x-codeSamples": [
           {
             "lang": "Console",
-            "source": "GET _tasks?actions=cluster:*\n"
+            "source": "GET _tasks?detailed=true&actions=*/delete/byquery\n"
           }
         ]
       }
