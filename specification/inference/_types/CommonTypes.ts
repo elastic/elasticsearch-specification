@@ -1012,7 +1012,7 @@ export class MistralServiceSettings {
   max_input_tokens?: integer
   /**
    * The name of the model to use for the inference task.
-   * Refer to the Mistral models documentation for the list of available text embedding models.
+   * Refer to the Mistral models documentation for the list of available models.
    * @ext_doc_id mistral-api-models
    */
   model: string
@@ -1024,7 +1024,9 @@ export class MistralServiceSettings {
 }
 
 export enum MistralTaskType {
-  text_embedding
+  text_embedding,
+  completion,
+  chat_completion
 }
 
 export enum MistralServiceType {

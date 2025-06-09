@@ -11842,13 +11842,13 @@
           "inference"
         ],
         "summary": "Create a Mistral inference endpoint",
-        "description": "Creates an inference endpoint to perform an inference task with the `mistral` service.\n ##Required authorization\n* Cluster privileges: `manage_inference`",
+        "description": "Create an inference endpoint to perform an inference task with the `mistral` service.\n ##Required authorization\n* Cluster privileges: `manage_inference`",
         "operationId": "inference-put-mistral",
         "parameters": [
           {
             "in": "path",
             "name": "task_type",
-            "description": "The task type.\nThe only valid task type for the model to perform is `text_embedding`.",
+            "description": "The type of the inference task that the model will perform.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -54257,7 +54257,9 @@
       "inference._types.MistralTaskType": {
         "type": "string",
         "enum": [
-          "text_embedding"
+          "text_embedding",
+          "completion",
+          "chat_completion"
         ]
       },
       "inference._types.MistralServiceType": {
@@ -54284,7 +54286,7 @@
             "externalDocs": {
               "url": "https://docs.mistral.ai/getting-started/models/"
             },
-            "description": "The name of the model to use for the inference task.\nRefer to the Mistral models documentation for the list of available text embedding models.",
+            "description": "The name of the model to use for the inference task.\nRefer to the Mistral models documentation for the list of available models.",
             "type": "string"
           },
           "rate_limit": {
@@ -54322,7 +54324,9 @@
       "inference._types.TaskTypeMistral": {
         "type": "string",
         "enum": [
-          "text_embedding"
+          "text_embedding",
+          "chat_completion",
+          "completion"
         ]
       },
       "inference._types.OpenAITaskType": {
