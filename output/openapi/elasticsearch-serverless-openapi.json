@@ -11706,6 +11706,9 @@
                   },
                   "service_settings": {
                     "$ref": "#/components/schemas/inference._types.HuggingFaceServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference._types.HuggingFaceTaskSettings"
                   }
                 },
                 "required": [
@@ -54143,6 +54146,19 @@
           "api_key",
           "url"
         ]
+      },
+      "inference._types.HuggingFaceTaskSettings": {
+        "type": "object",
+        "properties": {
+          "return_documents": {
+            "description": "For a `rerank` task, return doc text within the results.",
+            "type": "boolean"
+          },
+          "top_n": {
+            "description": "For a `rerank` task, the number of most relevant documents to return.\nIt defaults to the number of the documents.",
+            "type": "number"
+          }
+        }
       },
       "inference._types.InferenceEndpointInfoHuggingFace": {
         "allOf": [

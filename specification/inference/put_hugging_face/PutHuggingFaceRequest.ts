@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 import {
   HuggingFaceServiceSettings,
   HuggingFaceServiceType,
+  HuggingFaceTaskSettings,
   HuggingFaceTaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
@@ -103,5 +104,10 @@ export interface Request extends RequestBase {
      * Settings used to install the inference model. These settings are specific to the `hugging_face` service.
      */
     service_settings: HuggingFaceServiceSettings
+    /**
+     * Settings to configure the inference task.
+     * These settings are specific to the task type you specified.
+     */
+    task_settings?: HuggingFaceTaskSettings
   }
 }
