@@ -8855,7 +8855,8 @@
               }
             }
           }
-        }
+        },
+        "x-state": "Generally available"
       },
       "put": {
         "tags": [
@@ -8963,7 +8964,8 @@
               }
             }
           }
-        }
+        },
+        "x-state": "Generally available"
       }
     },
     "/_index_template": {
