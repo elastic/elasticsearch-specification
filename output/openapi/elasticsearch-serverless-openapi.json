@@ -5338,7 +5338,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _scripts/my-search-template\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -5472,7 +5478,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _scripts/my-search-template\n"
+          }
+        ]
       }
     },
     "/_enrich/policy/{name}": {
@@ -5552,7 +5564,7 @@
                 }
               },
               "examples": {
-                "EnrichPut_PolicyExample1": {
+                "EnrichPutPolicyExample1": {
                   "description": "An example body for a `PUT /_enrich/policy/postal_policy` request.",
                   "value": "{\n  \"geo_match\": {\n    \"indices\": \"postal_codes\",\n    \"match_field\": \"location\",\n    \"enrich_fields\": [ \"location\", \"postal_code\" ]\n  }\n}"
                 }
@@ -6405,7 +6417,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_source/1\n"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -6539,7 +6557,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "HEAD my-index-000001/_source/1\n"
+          }
+        ]
       }
     },
     "/{index}/_explain/{id}": {
@@ -9811,7 +9835,7 @@
                 ]
               },
               "examples": {
-                "IndicesModify_Data_StreamExample1": {
+                "IndicesModifyDataStreamExample1": {
                   "description": "An example body for a `POST _data_stream/_modify` request.",
                   "value": "{\n  \"actions\": [\n    {\n      \"remove_backing_index\": {\n        \"data_stream\": \"my-data-stream\",\n        \"index\": \".ds-my-data-stream-2023.07.26-000001\"\n      }\n    },\n    {\n      \"add_backing_index\": {\n        \"data_stream\": \"my-data-stream\",\n        \"index\": \".ds-my-data-stream-2023.07.26-000001-downsample\"\n      }\n    }\n  ]\n}"
                 }
@@ -10400,7 +10424,7 @@
                 }
               },
               "examples": {
-                "IndicesUpdate_AliasesExample1": {
+                "IndicesUpdateAliasesExample1": {
                   "description": "An example body for a `POST _aliases` request.",
                   "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"logs-nginx.access-prod\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
                 }
@@ -14408,7 +14432,7 @@
                 ]
               },
               "examples": {
-                "MlPut_Data_Frame_AnalyticsExample1": {
+                "MlPutDataFrameAnalyticsExample1": {
                   "description": "An example body for a `PUT _ml/data_frame/analytics/model-flight-delays-pre` request.",
                   "value": "{\n  \"source\": {\n    \"index\": [\n      \"kibana_sample_data_flights\" <1>\n    ],\n    \"query\": { <2>\n      \"range\": {\n        \"DistanceKilometers\": {\n          \"gt\": 0\n        }\n      }\n    },\n    \"_source\": { <3>\n      \"includes\": [],\n      \"excludes\": [\n        \"FlightDelay\",\n        \"FlightDelayType\"\n      ]\n    }\n  },\n  \"dest\": { <4>\n    \"index\": \"df-flight-delays\",\n    \"results_field\": \"ml-results\"\n  },\n  \"analysis\": {\n  \"regression\": {\n    \"dependent_variable\": \"FlightDelayMin\",\n    \"training_percent\": 90\n    }\n  },\n  \"analyzed_fields\": { <5>\n    \"includes\": [],\n    \"excludes\": [\n      \"FlightNum\"\n    ]\n  },\n  \"model_memory_limit\": \"100mb\"\n}"
                 }
@@ -14709,7 +14733,7 @@
                 }
               },
               "examples": {
-                "MlPut_DatafeedExample1": {
+                "MlPutDatafeedExample1": {
                   "description": "An example body for a `PUT _ml/datafeeds/datafeed-test-job?pretty` request.",
                   "value": "{\n  \"indices\": [\n    \"kibana_sample_data_logs\"\n  ],\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        {\n          \"match_all\": {}\n        }\n      ]\n    }\n  },\n  \"job_id\": \"test-job\"\n}"
                 }
@@ -14932,7 +14956,7 @@
                 }
               },
               "examples": {
-                "MlPut_FilterExample1": {
+                "MlPutFilterExample1": {
                   "description": "An example body for a `PUT _ml/filters/safe_domains` request.",
                   "value": "{\n  \"description\": \"A list of safe domains\",\n  \"items\": [\"*.google.com\", \"wikipedia.org\"]\n}"
                 }
@@ -16005,7 +16029,7 @@
                 }
               },
               "examples": {
-                "MlFlush_JobExample1": {
+                "MlFlushJobExample1": {
                   "description": "An example body for a `POST _ml/anomaly_detectors/low_request_rate/_flush` request.",
                   "value": "{\n  \"calc_interim\": true\n}"
                 }
@@ -16192,7 +16216,7 @@
                 ]
               },
               "examples": {
-                "MlPost_Calendar_EventsExample1": {
+                "MlPostCalendarEventsExample1": {
                   "description": "An example body for a `POST _ml/calendars/planned-outages/events` request.",
                   "value": "{\n  \"events\" : [\n    {\"description\": \"event 1\", \"start_time\": 1513641600000, \"end_time\": 1513728000000},\n    {\"description\": \"event 2\", \"start_time\": 1513814400000, \"end_time\": 1513900800000},\n    {\"description\": \"event 3\", \"start_time\": 1514160000000, \"end_time\": 1514246400000}\n  ]\n}"
                 }
@@ -16881,7 +16905,7 @@
                 ]
               },
               "examples": {
-                "MlInfer_Trained_ModelExample1": {
+                "MlInferTrainedModelExample1": {
                   "description": "An example body for a `POST _ml/trained_models/lang_ident_model_1/_infer` request.",
                   "value": "{\n  \"docs\":[{\"text\": \"The fool doth think he is wise, but the wise man knows himself to be a fool.\"}]\n}"
                 }
@@ -17304,7 +17328,7 @@
                 ]
               },
               "examples": {
-                "MlPut_Trained_Model_Definition_PartExample1": {
+                "MlPutTrainedModelDefinitionPartExample1": {
                   "description": "An example body for a `PUT _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/definition/0` request.",
                   "value": "{\n    \"definition\": \"...\",\n    \"total_definition_length\": 265632637,\n    \"total_parts\": 64\n}"
                 }
@@ -17390,7 +17414,7 @@
                 ]
               },
               "examples": {
-                "MlPut_Trained_Model_VocabularyExample1": {
+                "MlPutTrainedModelVocabularyExample1": {
                   "description": "An example body for a `PUT _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/vocabulary` request.",
                   "value": "{\n  \"vocabulary\": [\n    \"[PAD]\",\n    \"[unused0]\",\n    ...\n  ]\n}"
                 }
@@ -17615,7 +17639,7 @@
                 }
               },
               "examples": {
-                "MlStart_DatafeedExample1": {
+                "MlStartDatafeedExample1": {
                   "description": "An example body for a `POST _ml/datafeeds/datafeed-low_request_rate/_start` request.",
                   "value": "{\n  \"start\": \"2019-04-07T18:22:16Z\"\n}"
                 }
@@ -17942,7 +17966,7 @@
                 }
               },
               "examples": {
-                "MlStop_DatafeedExample1": {
+                "MlStopDatafeedExample1": {
                   "description": "An example body for a `POST _ml/datafeeds/datafeed-low_request_rate/_stop` request.",
                   "value": "{\n  \"timeout\": \"30s\"\n}"
                 }
@@ -18095,7 +18119,7 @@
                 }
               },
               "examples": {
-                "MlUpdate_Data_Frame_AnalyticsExample1": {
+                "MlUpdateDataFrameAnalyticsExample1": {
                   "description": "An example body for a `POST _ml/data_frame/analytics/loganalytics/_update` request.",
                   "value": "{\n  \"model_memory_limit\": \"200mb\"\n}"
                 }
@@ -18297,7 +18321,7 @@
                 }
               },
               "examples": {
-                "MlUpdate_DatafeedExample1": {
+                "MlUpdateDatafeedExample1": {
                   "description": "An example body for a `POST _ml/datafeeds/datafeed-test-job/_update` request.",
                   "value": "{\n  \"query\": {\n    \"term\": {\n      \"geo.src\": \"US\"\n    }\n  }\n}"
                 }
@@ -18440,7 +18464,7 @@
                 }
               },
               "examples": {
-                "MlUpdate_FilterExample1": {
+                "MlUpdateFilterExample1": {
                   "description": "An example body for a `POST _ml/filters/safe_domains/_update` request.",
                   "value": "{\n  \"description\": \"Updated list of domains\",\n  \"add_items\": [\"*.myorg.com\"],\n  \"remove_items\": [\"wikipedia.org\"]\n}"
                 }
@@ -18585,7 +18609,7 @@
                 }
               },
               "examples": {
-                "MlUpdate_JobExample1": {
+                "MlUpdateJobExample1": {
                   "description": "An example body for a `POST _ml/anomaly_detectors/low_request_rate/_update` request.",
                   "value": "{\n  \"description\":\"An updated job\",\n  \"detectors\": {\n    \"detector_index\": 0,\n    \"description\": \"An updated detector description\"\n  },\n  \"groups\": [\"kibana_sample_data\",\"kibana_sample_web_logs\"],\n  \"model_plot_config\": {\n    \"enabled\": true\n  },\n  \"renormalization_window_days\": 30,\n  \"background_persist_interval\": \"2h\",\n  \"model_snapshot_retention_days\": 7,\n  \"results_retention_days\": 60\n}"
                 }
@@ -18746,7 +18770,7 @@
                 }
               },
               "examples": {
-                "MlUpdate_Trained_Model_DeploymentExample1": {
+                "MlUpdateTrainedModelDeploymentExample1": {
                   "description": "An example body for a `POST _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/deployment/_update` request.",
                   "value": "{\n  \"number_of_allocations\": 4\n}"
                 }
@@ -18840,7 +18864,13 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_msearch\n{ }\n{\"query\" : {\"match\" : { \"message\": \"this is a test\"}}}\n{\"index\": \"my-index-000002\"}\n{\"query\" : {\"match_all\" : {}}}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -18898,7 +18928,13 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_msearch\n{ }\n{\"query\" : {\"match\" : { \"message\": \"this is a test\"}}}\n{\"index\": \"my-index-000002\"}\n{\"query\" : {\"match_all\" : {}}}"
+          }
+        ]
       }
     },
     "/{index}/_msearch": {
@@ -18961,7 +18997,13 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_msearch\n{ }\n{\"query\" : {\"match\" : { \"message\": \"this is a test\"}}}\n{\"index\": \"my-index-000002\"}\n{\"query\" : {\"match_all\" : {}}}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19022,7 +19064,13 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_msearch\n{ }\n{\"query\" : {\"match\" : { \"message\": \"this is a test\"}}}\n{\"index\": \"my-index-000002\"}\n{\"query\" : {\"match_all\" : {}}}"
+          }
+        ]
       }
     },
     "/_msearch/template": {
@@ -20278,7 +20326,13 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_rank_eval\n{\n  \"requests\": [\n    {\n      \"id\": \"JFK query\",\n      \"request\": { \"query\": { \"match_all\": {} } },\n      \"ratings\": []\n    } ],\n  \"metric\": {\n    \"precision\": {\n      \"k\": 20,\n      \"relevant_rating_threshold\": 1,\n      \"ignore_unlabeled\": false\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20309,7 +20363,13 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_rank_eval\n{\n  \"requests\": [\n    {\n      \"id\": \"JFK query\",\n      \"request\": { \"query\": { \"match_all\": {} } },\n      \"ratings\": []\n    } ],\n  \"metric\": {\n    \"precision\": {\n      \"k\": 20,\n      \"relevant_rating_threshold\": 1,\n      \"ignore_unlabeled\": false\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_rank_eval": {
@@ -20345,7 +20405,13 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_rank_eval\n{\n  \"requests\": [\n    {\n      \"id\": \"JFK query\",\n      \"request\": { \"query\": { \"match_all\": {} } },\n      \"ratings\": []\n    } ],\n  \"metric\": {\n    \"precision\": {\n      \"k\": 20,\n      \"relevant_rating_threshold\": 1,\n      \"ignore_unlabeled\": false\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20379,7 +20445,13 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_rank_eval\n{\n  \"requests\": [\n    {\n      \"id\": \"JFK query\",\n      \"request\": { \"query\": { \"match_all\": {} } },\n      \"ratings\": []\n    } ],\n  \"metric\": {\n    \"precision\": {\n      \"k\": 20,\n      \"relevant_rating_threshold\": 1,\n      \"ignore_unlabeled\": false\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_reindex": {
@@ -73719,7 +73791,7 @@
               }
             },
             "examples": {
-              "MlGet_Overall_BucketsExample1": {
+              "MlGetOverallBucketsExample1": {
                 "description": "An example body for a `GET _ml/anomaly_detectors/job-*/results/overall_buckets` request.",
                 "value": "{\n  \"overall_score\": 80,\n  \"start\": \"1403532000000\"\n}"
               }
@@ -73739,7 +73811,7 @@
               }
             },
             "examples": {
-              "MlPreview_Data_Frame_AnalyticsExample1": {
+              "MlPreviewDataFrameAnalyticsExample1": {
                 "description": "An example body for a `POST _ml/data_frame/analytics/_preview` request.",
                 "value": "{\n  \"config\": {\n    \"source\": {\n      \"index\": \"houses_sold_last_10_yrs\"\n    },\n    \"analysis\": {\n      \"regression\": {\n        \"dependent_variable\": \"price\"\n      }\n    }\n  }\n}"
               }
@@ -73771,6 +73843,12 @@
               "type": "array",
               "items": {
                 "$ref": "#/components/schemas/_global.msearch.RequestItem"
+              }
+            },
+            "examples": {
+              "MsearchRequestExample1": {
+                "description": "An example body for a `GET my-index-000001/_msearch` request.",
+                "value": "{ }\n{\"query\" : {\"match\" : { \"message\": \"this is a test\"}}}\n{\"index\": \"my-index-000002\"}\n{\"query\" : {\"match_all\" : {}}}"
               }
             }
           }
@@ -73888,6 +73966,12 @@
               "required": [
                 "requests"
               ]
+            },
+            "examples": {
+              "RankEvalRequestExample1": {
+                "description": "An example body for a `GET /my-index-000001/_rank_eval` request.",
+                "value": "{\n  \"requests\": [\n    {\n      \"id\": \"JFK query\",\n      \"request\": { \"query\": { \"match_all\": {} } },\n      \"ratings\": []\n    } ],\n  \"metric\": {\n    \"precision\": {\n      \"k\": 20,\n      \"relevant_rating_threshold\": 1,\n      \"ignore_unlabeled\": false\n    }\n  }\n}"
+              }
             }
           }
         },

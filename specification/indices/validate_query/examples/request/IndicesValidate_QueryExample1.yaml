@@ -1,1 +1,0 @@
-method_request: GET my-index-000001/_validate/query?q=user.id:kimchy
