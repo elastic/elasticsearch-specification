@@ -45,6 +45,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-update-settings
+ * @ext_doc_id stack-settings
  */
 export interface Request extends RequestBase {
   urls: [
@@ -61,7 +62,9 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
   body: {
+    /** The settings that persist after the cluster restarts. */
     persistent?: Dictionary<string, UserDefinedValue>
+    /** The settings that do not persist after the cluster restarts. */
     transient?: Dictionary<string, UserDefinedValue>
   }
 }
