@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DatabaseConfiguration } from '@ingest/_types/Database'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { EpochTime, UnitMillis } from '@_types/Time'
+import { DatabaseConfiguration } from '@ingest/_types/Database'
 
 export class Response {
   body: { databases: DatabaseConfigurationMetadata[] }

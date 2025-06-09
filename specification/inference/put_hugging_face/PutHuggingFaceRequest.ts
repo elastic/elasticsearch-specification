@@ -17,25 +17,28 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 import {
   HuggingFaceServiceSettings,
   HuggingFaceServiceType,
   HuggingFaceTaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
 
 /**
  * Create a Hugging Face inference endpoint.
  *
  * Create an inference endpoint to perform an inference task with the `hugging_face` service.
+ * Supported tasks include: `text_embedding`, `completion`, and `chat_completion`.
  *
- * You must first create an inference endpoint on the Hugging Face endpoint page to get an endpoint URL.
- * Select the model you want to use on the new endpoint creation page (for example `intfloat/e5-small-v2`), then select the sentence embeddings task under the advanced configuration section.
- * Create the endpoint and copy the URL after the endpoint initialization has been finished.
- *
- * The following models are recommended for the Hugging Face service:
+ * To configure the endpoint, first visit the Hugging Face Inference Endpoints page and create a new endpoint.
+ * Select a model that supports the task you intend to use.
+
+ * For Elastic's `text_embedding` task:
+ * The selected model must support the `Sentence Embeddings` task. On the new endpoint creation page, select the `Sentence Embeddings` task under the `Advanced Configuration` section.
+ * After the endpoint has initialized, copy the generated endpoint URL.
+ * Recommended models for `text_embedding` task:
  *
  * * `all-MiniLM-L6-v2`
  * * `all-MiniLM-L12-v2`
@@ -44,6 +47,15 @@ import { Id } from '@_types/common'
  * * `e5-small-v2`
  * * `multilingual-e5-base`
  * * `multilingual-e5-small`
+ *
+ * For Elastic's `chat_completion` and `completion` tasks:
+ * The selected model must support the `Text Generation` task and expose OpenAI API. HuggingFace supports both serverless and dedicated endpoints for `Text Generation`. When creating dedicated endpoint select the `Text Generation` task.
+ * After the endpoint is initialized (for dedicated) or ready (for serverless), ensure it supports the OpenAI API and includes `/v1/chat/completions` part in URL. Then, copy the full endpoint URL for use.
+ * Recommended models for `chat_completion` and `completion` tasks:
+ *
+ * * `Mistral-7B-Instruct-v0.2`
+ * * `QwQ-32B`
+ * * `Phi-3-mini-128k-instruct`
  *
  * For Elastic's `rerank` task:
  * The selected model must support the `sentence-ranking` task and expose OpenAI API.

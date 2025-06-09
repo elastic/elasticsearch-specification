@@ -1,4 +1,5 @@
 # summary:
+method_request: DELETE /_security/api_key
 description: >
   A successful response from `DELETE /_security/api_key`.
 # type: response

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexSettings } from '@indices/_types/IndexSettings'
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * Create an index from a source index.

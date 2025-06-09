@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import {
   Buckets,
   CardinalityAggregate,
@@ -59,6 +58,7 @@ import {
   TermsQuery,
   WildcardQuery
 } from '@_types/query_dsl/term'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 /**
  * @variants container

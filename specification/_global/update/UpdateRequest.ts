@@ -17,10 +17,6 @@
  * under the License.
  */
 
-import {
-  SourceConfig,
-  SourceConfigParam
-} from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
@@ -34,6 +30,10 @@ import {
 import { integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
+import {
+  SourceConfig,
+  SourceConfigParam
+} from '@global/search/_types/SourceFilter'
 
 /**
  * Update a document.

@@ -1,4 +1,5 @@
 # summary:
+method_request: PUT _inference/sparse_embedding/use_existing_deployment
 description: >
   A successful response from `PUT _inference/sparse_embedding/use_existing_deployment`. It contains the model ID and the threads and allocations settings from the model deployment.
 # type: "response"

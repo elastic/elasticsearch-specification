@@ -1,4 +1,5 @@
 # summary:
+method_request: GET /_security/role/my_admin_role
 description: >
   A successful response from `GET /_security/role/my_admin_role`.
   The response contains information about the `my_admin_role` role in the native realm.

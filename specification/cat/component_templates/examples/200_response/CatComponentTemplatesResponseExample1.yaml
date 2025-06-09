@@ -1,4 +1,5 @@
 # summary:
+method_request: GET _cat/component_templates/my-template-*?v=true&s=name&format=json
 description: >
   A successful response from `GET _cat/component_templates/my-template-*?v=true&s=name&format=json`.
 # type: response

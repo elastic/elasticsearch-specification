@@ -1,5 +1,5 @@
 summary: Query users with multiple conditions
-# method_request: POST /_security/_query/user
+method_request: POST /_security/_query/user
 description: >
   Run `POST /_security/_query/user`.
   Use a `bool` query to issue complex logical conditions:

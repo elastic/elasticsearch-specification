@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST clicklogs/_graph/explore
+method_request: POST clicklogs/_graph/explore
 description: >
   Run `POST clicklogs/_graph/explore` for a basic exploration
   An initial graph explore query typically begins with a query to identify strongly related terms.

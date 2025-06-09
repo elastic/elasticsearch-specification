@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { UserProfileId } from '@security/_types/UserProfile'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { ErrorCause } from '@_types/Errors'
 import { long } from '@_types/Numeric'
+import { UserProfileId } from '@security/_types/UserProfile'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class GetUserProfileErrors {
   count: long

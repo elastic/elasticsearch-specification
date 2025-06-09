@@ -17,14 +17,14 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 import {
   GoogleAiServiceType,
   GoogleAiStudioServiceSettings,
   GoogleAiStudioTaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
 
 /**
  * Create an Google AI Studio inference endpoint.

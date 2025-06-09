@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { long } from '@_types/Numeric'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { long } from '@_types/Numeric'
 
 export class AnalyzeDetail {
   analyzer?: AnalyzerDetail

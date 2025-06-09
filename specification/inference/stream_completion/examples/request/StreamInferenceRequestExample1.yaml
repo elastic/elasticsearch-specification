@@ -1,6 +1,6 @@
 summary: Perform a completion task
 description: Run `POST _inference/completion/openai-completion/_stream` to perform a completion on the example question with streaming.
-# method_request: "POST _inference/completion/openai-completion/_stream"
+method_request: 'POST _inference/completion/openai-completion/_stream'
 # type: "request"
 value:
   input: 'What is Elastic?'

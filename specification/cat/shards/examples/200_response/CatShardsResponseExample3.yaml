@@ -1,4 +1,5 @@
 summary: A relocating shard
+method_request: GET _cat/shards?format=json
 description: >
   A successful response from `GET _cat/shards?format=json`.
   The `RELOCATING` value in the `state` column indicates the index shard is relocating.

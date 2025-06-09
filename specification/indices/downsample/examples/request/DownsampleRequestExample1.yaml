@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST /my-time-series-index/_downsample/my-downsampled-time-series-index
+method_request: POST /my-time-series-index/_downsample/my-downsampled-time-series-index
 # description: ''
 # type: request
 value:

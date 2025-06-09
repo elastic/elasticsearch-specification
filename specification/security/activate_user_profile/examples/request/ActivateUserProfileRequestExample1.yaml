@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST /_security/profile/_activate
+method_request: POST /_security/profile/_activate
 description: >
   Run `POST /_security/profile/_activate` to activate a user profile.
 # type: request

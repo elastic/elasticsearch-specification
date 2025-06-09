@@ -1,4 +1,5 @@
 summary: Successful response
+method_request: GET .ds-metrics-2023.03.22-000001/_lifecycle/explain
 description: >
   A successful response from `GET .ds-metrics-2023.03.22-000001/_lifecycle/explain`, which retrieves  the lifecycle status for a data stream backing index. If the index is managed by a data stream lifecycle, the API will show the `managed_by_lifecycle` field set to `true` and the rest of the response will contain information about the lifecycle execution status for this index.
 # type: response

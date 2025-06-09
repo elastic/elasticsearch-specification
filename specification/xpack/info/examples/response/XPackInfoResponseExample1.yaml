@@ -1,4 +1,5 @@
 # summary:
+method_request: GET /_xpack
 description: A successful response from `GET /_xpack`.
 # type: response
 # response_code: 200

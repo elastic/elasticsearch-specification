@@ -1,4 +1,5 @@
 summary: Classification example 1
+method_request: POST _ml/data_frame/_evaluate
 description: >
   A succesful response from `POST _ml/data_frame/_evaluate` to evaluate a classification analysis job for an annotated index.
   The `actual_class` contains the name of the class the analysis tried to predict.

@@ -1,4 +1,5 @@
 # summary:
+method_request: POST /_index_template/_simulate
 description: >
   A successful response from `POST /_index_template/_simulate` with a template configuration in the request body.
   The response shows any overlapping templates with a lower priority.
