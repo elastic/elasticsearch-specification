@@ -203,6 +203,7 @@ eql-sequences,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/e
 eql-missing-events,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html#eql-missing-events
 eql-syntax,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql-syntax.html
 eql,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/eql.html
+es-settings,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/settings.html
 esql,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql.html
 esql-async-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-async-query-api.html
 esql-async-query-delete,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/esql-async-query-delete-api.html
