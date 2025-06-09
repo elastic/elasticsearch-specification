@@ -90,7 +90,9 @@ export enum TaskTypeHuggingFace {
 }
 
 export enum TaskTypeMistral {
-  text_embedding
+  text_embedding,
+  chat_completion,
+  completion
 }
 
 export enum TaskTypeOpenAI {
