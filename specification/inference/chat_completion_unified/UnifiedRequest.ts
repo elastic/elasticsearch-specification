@@ -30,7 +30,7 @@ import { RequestChatCompletion } from '@inference/_types/CommonTypes'
  * NOTE: The `chat_completion` task type is only available within the _stream API and only supports streaming.
  * The Chat completion inference API and the Stream inference API differ in their response structure and capabilities.
  * The Chat completion inference API provides more comprehensive customization options through more fields and function calling support.
- * If you use the `openai` service or the `elastic` service, use the Chat completion inference API.
+ * If you use the `openai`, `hugging_face` or the `elastic` service, use the Chat completion inference API.
  * @rest_spec_name inference.chat_completion_unified
  * @availability stack since=8.18.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
