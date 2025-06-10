@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /follower_index/_ccr/stats
 description: A successful response from `GET /follower_index/_ccr/stats`, which retrieves follower stats.
 # type: response
 # response_code: 200

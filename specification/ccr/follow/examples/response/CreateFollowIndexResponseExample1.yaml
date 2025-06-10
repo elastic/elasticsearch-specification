@@ -1,5 +1,4 @@
 # summary:
-method_request: PUT /follower_index/_ccr/follow?wait_for_active_shards=1
 description: A successful response from `PUT /follower_index/_ccr/follow?wait_for_active_shards=1`.
 # type: 'response',
 # response_code: 200,

@@ -1,5 +1,4 @@
 summary: Get details about a delete by query
-method_request: GET _tasks?detailed=true&actions=*/delete/byquery
 description: >
   A successful response from `GET _tasks?detailed=true&actions=*/delete/byquery`, which gets the status of a delete by query operation.
   The `status` object contains the actual status.

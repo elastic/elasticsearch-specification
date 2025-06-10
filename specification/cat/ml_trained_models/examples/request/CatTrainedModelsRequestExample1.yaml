@@ -1,0 +1,1 @@
+method_request: GET _cat/ml/trained_models?v=true&format=json

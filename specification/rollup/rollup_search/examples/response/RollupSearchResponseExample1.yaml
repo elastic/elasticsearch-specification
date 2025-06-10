@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /sensor_rollup/_rollup_search
 description: >
   An abbreviated response from `GET /sensor_rollup/_rollup_search` with a `max` aggregation on a `temperature` field.
   The response provides some metadata about the request (`took`, `_shards`), the search hits (which is always empty for rollup searches), and the aggregation response.

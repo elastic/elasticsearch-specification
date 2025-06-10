@@ -1,5 +1,4 @@
 summary: Explicit columns
-method_request: GET /_cat/nodeattrs?v=true&h=name,pid,attr,value
 description: >
   A successful response from `GET /_cat/nodeattrs?v=true&h=name,pid,attr,value`.
   It returns the `name`, `pid`, `attr`, and `value` columns.

@@ -1,0 +1,6 @@
+method_request: POST _ml/anomaly_detectors/low_request_rate/_forecast
+description: An example body for a `POST _ml/anomaly_detectors/low_request_rate/_forecast` request.
+value: |-
+  {
+    "duration": "10d"
+  }

@@ -1,5 +1,4 @@
 summary: Text embedding task
-method_request: POST _inference/text_embedding/my-cohere-endpoint
 description: >
   An abbreviated response from `POST _inference/text_embedding/my-cohere-endpoint`.
 # type: "response"
