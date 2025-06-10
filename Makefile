@@ -9,6 +9,7 @@ validate-no-cache: ## Validate a given endpoint request or response without loca
 
 generate:	  ## Generate the output spec
 	@echo ">> generating the spec .."
+	@make generate-language-examples
 	@npm run generate-schema --prefix compiler -- --spec ../specification/ --output ../output/
 	@npm run start --prefix typescript-generator
 
