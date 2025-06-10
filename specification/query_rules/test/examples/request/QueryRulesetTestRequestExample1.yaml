@@ -1,5 +1,5 @@
 # summary:
-# method_request: PUT _query_rules/my-ruleset
+method_request: PUT _query_rules/my-ruleset
 description: >
   Run `PUT _query_rules/my-ruleset` to create a new query ruleset.
   Two rules are associated with `my-ruleset`.

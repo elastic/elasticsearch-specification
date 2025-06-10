@@ -1,4 +1,5 @@
 summary: Query users with multiple conditions
+method_request: POST /_security/_query/user
 description: >
   A successful response from `POST /_security/_query/user` that uses a `bool` query to issue complex logical conditions and uses `from`, `size`, and `sort` to help paginate the result.
   The sort value is `username`.

@@ -1,5 +1,5 @@
 summary: Classification example 2
-# method_request: POST _ml/data_frame/_evaluate
+method_request: POST _ml/data_frame/_evaluate
 description: >
   Run `POST _ml/data_frame/_evaluate` to evaluate a classification job with AUC ROC metrics for an annotated index.
   The `actual_field` contains the ground truth value for the actual animal classification. This is required in order to evaluate results.

@@ -1,4 +1,5 @@
 # summary:
+method_request: POST stackoverflow/_terms_enum
 description: A successful response from `POST stackoverflow/_terms_enum`.
 # type: "response",
 # response_code: 200,

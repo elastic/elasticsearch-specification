@@ -1,0 +1,32 @@
+summary: Get data stream settings on a data stream
+description: >
+  This is a response to `GET /_data_stream/my-data-stream/_settings` where my-data-stream that has two settings set. The
+  `effective_settings` field shows additional settings that are pulled from its template.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "data_streams": [
+      {
+        "name": "my-data-stream",
+        "settings": {
+          "index": {
+            "lifecycle": {
+              "name": "new-test-policy"
+            },
+            "number_of_shards": "11"
+          }
+        },
+        "effective_settings": {
+          "index": {
+            "lifecycle": {
+              "name": "new-test-policy"
+            },
+            "mode": "standard",
+            "number_of_shards": "11",
+            "number_of_replicas": "0"
+          }
+        }
+      }
+    ]
+  }

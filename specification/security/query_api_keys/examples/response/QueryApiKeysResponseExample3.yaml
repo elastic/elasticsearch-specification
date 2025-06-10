@@ -1,4 +1,5 @@
 summary: Query all API keys
+method_request: GET /_security/_query/api_key
 description: >
   A successful response from `GET /_security/_query/api_key`.
   It includes the role descriptors that are assigned to each API key when it was created or last updated.

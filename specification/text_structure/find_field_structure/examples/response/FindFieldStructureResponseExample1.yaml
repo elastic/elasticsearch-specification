@@ -1,4 +1,5 @@
 # summary:
+method_request: GET _text_structure/find_field_structure?index=test-logs&field=message
 description: A successful response from `GET _text_structure/find_field_structure?index=test-logs&field=message`.
 # type: response
 # response_code: ''

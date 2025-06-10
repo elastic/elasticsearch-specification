@@ -1,5 +1,5 @@
 summary: Regression example 1
-# method_request: POST _ml/data_frame/_evaluate
+method_request: POST _ml/data_frame/_evaluate
 description: >
   Run `POST _ml/data_frame/_evaluate` to evaluate the testing error of a regression job for an annotated index.
   The term query in the body limits evaluation to be performed on the test split only.

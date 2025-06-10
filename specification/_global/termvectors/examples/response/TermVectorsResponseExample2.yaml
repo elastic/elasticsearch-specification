@@ -1,4 +1,5 @@
 summary: Per-field analyzer
+method_request: GET /my-index-000001/_termvectors
 description: A successful response from `GET /my-index-000001/_termvectors` with `per_field_analyzer` in the request body.
 # type: response
 # response_code: ''

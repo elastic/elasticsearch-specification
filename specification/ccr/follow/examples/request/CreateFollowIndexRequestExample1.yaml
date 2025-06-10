@@ -1,5 +1,5 @@
 # summary: "Create a follower index named `follower_index`."
-# method_request: "PUT /follower_index/_ccr/follow?wait_for_active_shards=1"
+method_request: 'PUT /follower_index/_ccr/follow?wait_for_active_shards=1'
 description: Run `PUT /follower_index/_ccr/follow?wait_for_active_shards=1` to create a follower index named `follower_index`.
 # type: "request"
 value: |-

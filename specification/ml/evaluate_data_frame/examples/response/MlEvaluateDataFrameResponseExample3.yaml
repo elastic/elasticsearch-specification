@@ -1,4 +1,5 @@
 summary: Outlier detection
+method_request: POST _ml/data_frame/_evaluate
 description: A successful response from `POST _ml/data_frame/_evaluate` to evaluate an outlier detection job.
 # type: response
 # response_code: 200

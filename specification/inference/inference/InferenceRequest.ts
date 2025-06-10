@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { TaskSettings } from '@inference/_types/Services'
-import { TaskType } from '@inference/_types/TaskType'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { TaskSettings } from '@inference/_types/Services'
+import { TaskType } from '@inference/_types/TaskType'
 
 /**
  * Perform inference on the service.

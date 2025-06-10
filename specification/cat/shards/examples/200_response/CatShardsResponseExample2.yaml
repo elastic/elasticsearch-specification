@@ -1,4 +1,5 @@
 summary: A wildcard pattern
+method_request: GET _cat/shards/my-index-*?format=json
 description: >
   A successful response from `GET _cat/shards/my-index-*?format=json`.
   It returns information for any data streams or indices beginning with `my-index-`.
