@@ -1,1 +1,28 @@
 method_request: GET /_security/privilege/myapp/read
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.get_privileges(
+          application="myapp",
+          name="read",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.getPrivileges({
+        application: "myapp",
+        name: "read",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.get_privileges(
+        application: "myapp",
+        name: "read"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->getPrivileges([
+          "application" => "myapp",
+          "name" => "read",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_security/privilege/myapp/read"'

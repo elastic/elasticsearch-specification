@@ -2,4 +2,53 @@
 method_request: PUT _connector/my-spo-connector/_configuration
 # description: ''
 # type: request
-value: "{\n    \"values\": {\n        \"secret_value\": \"foo-bar\"\n    }\n}"
+value: "{
+
+  \    \"values\": {
+
+  \        \"secret_value\": \"foo-bar\"
+
+  \    }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.update_configuration(
+          connector_id="my-spo-connector",
+          values={
+              "secret_value": "foo-bar"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.updateConfiguration({
+        connector_id: "my-spo-connector",
+        values: {
+          secret_value: "foo-bar",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.update_configuration(
+        connector_id: "my-spo-connector",
+        body: {
+          "values": {
+            "secret_value": "foo-bar"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->updateConfiguration([
+          "connector_id" => "my-spo-connector",
+          "body" => [
+              "values" => [
+                  "secret_value" => "foo-bar",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"values":{"secret_value":"foo-bar"}}'' "http://localhost:9200/_connector/my-spo-connector/_configuration"'

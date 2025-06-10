@@ -2,6 +2,84 @@ summary: Create a template
 method_request: PUT /_index_template/template_1
 # description: ''
 # type: request
-value:
-  "{\n  \"index_patterns\" : [\"template*\"],\n  \"priority\" : 1,\n  \"template\"\
-  : {\n    \"settings\" : {\n      \"number_of_shards\" : 2\n    }\n  }\n}"
+value: "{
+
+  \  \"index_patterns\" : [\"template*\"],
+
+  \  \"priority\" : 1,
+
+  \  \"template\": {
+
+  \    \"settings\" : {
+
+  \      \"number_of_shards\" : 2
+
+  \    }
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.put_index_template(
+          name="template_1",
+          index_patterns=[
+              "template*"
+          ],
+          priority=1,
+          template={
+              "settings": {
+                  "number_of_shards": 2
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.putIndexTemplate({
+        name: "template_1",
+        index_patterns: ["template*"],
+        priority: 1,
+        template: {
+          settings: {
+            number_of_shards: 2,
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.put_index_template(
+        name: "template_1",
+        body: {
+          "index_patterns": [
+            "template*"
+          ],
+          "priority": 1,
+          "template": {
+            "settings": {
+              "number_of_shards": 2
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->putIndexTemplate([
+          "name" => "template_1",
+          "body" => [
+              "index_patterns" => array(
+                  "template*",
+              ),
+              "priority" => 1,
+              "template" => [
+                  "settings" => [
+                      "number_of_shards" => 2,
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"index_patterns":["template*"],"priority":1,"template":{"settings":{"number_of_shards":2}}}''
+      "http://localhost:9200/_index_template/template_1"'

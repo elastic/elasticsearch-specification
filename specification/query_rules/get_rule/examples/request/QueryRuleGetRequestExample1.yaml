@@ -1,1 +1,28 @@
 method_request: GET _query_rules/my-ruleset/_rule/my-rule1
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.query_rules.get_rule(
+          ruleset_id="my-ruleset",
+          rule_id="my-rule1",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.queryRules.getRule({
+        ruleset_id: "my-ruleset",
+        rule_id: "my-rule1",
+      });
+  - language: Ruby
+    code: |-
+      response = client.query_rules.get_rule(
+        ruleset_id: "my-ruleset",
+        rule_id: "my-rule1"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->queryRules()->getRule([
+          "ruleset_id" => "my-ruleset",
+          "rule_id" => "my-rule1",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_query_rules/my-ruleset/_rule/my-rule1"'

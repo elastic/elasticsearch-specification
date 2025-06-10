@@ -1,1 +1,12 @@
 method_request: GET /_migration/deprecations
+alternatives:
+  - language: Python
+    code: resp = client.migration.deprecations()
+  - language: JavaScript
+    code: const response = await client.migration.deprecations();
+  - language: Ruby
+    code: response = client.migration.deprecations
+  - language: PHP
+    code: $resp = $client->migration()->deprecations();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_migration/deprecations"'

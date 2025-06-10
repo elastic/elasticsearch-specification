@@ -1,1 +1,29 @@
 method_request: DELETE _ml/anomaly_detectors/total-requests/_forecast/_all
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.delete_forecast(
+          job_id="total-requests",
+          forecast_id="_all",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.deleteForecast({
+        job_id: "total-requests",
+        forecast_id: "_all",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.delete_forecast(
+        job_id: "total-requests",
+        forecast_id: "_all"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->deleteForecast([
+          "job_id" => "total-requests",
+          "forecast_id" => "_all",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "http://localhost:9200/_ml/anomaly_detectors/total-requests/_forecast/_all"'

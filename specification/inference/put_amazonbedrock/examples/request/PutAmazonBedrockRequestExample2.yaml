@@ -10,3 +10,61 @@ value: |-
           "model_id": "gpt-3.5-turbo"
       }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="completion",
+          inference_id="openai-completion",
+          inference_config={
+              "service": "openai",
+              "service_settings": {
+                  "api_key": "OpenAI-API-Key",
+                  "model_id": "gpt-3.5-turbo"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "completion",
+        inference_id: "openai-completion",
+        inference_config: {
+          service: "openai",
+          service_settings: {
+            api_key: "OpenAI-API-Key",
+            model_id: "gpt-3.5-turbo",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "completion",
+        inference_id: "openai-completion",
+        body: {
+          "service": "openai",
+          "service_settings": {
+            "api_key": "OpenAI-API-Key",
+            "model_id": "gpt-3.5-turbo"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "completion",
+          "inference_id" => "openai-completion",
+          "body" => [
+              "service" => "openai",
+              "service_settings" => [
+                  "api_key" => "OpenAI-API-Key",
+                  "model_id" => "gpt-3.5-turbo",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"service":"openai","service_settings":{"api_key":"OpenAI-API-Key","model_id":"gpt-3.5-turbo"}}''
+      "http://localhost:9200/_inference/completion/openai-completion"'

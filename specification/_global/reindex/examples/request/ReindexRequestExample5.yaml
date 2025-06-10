@@ -2,6 +2,74 @@ summary: Ingest pipelines
 method_request: POST _reindex
 description: Run `POST _reindex` and use the ingest pipelines feature.
 # type: request
-value:
-  "{\n  \"source\": {\n    \"index\": \"source\"\n  },\n  \"dest\": {\n    \"\
-  index\": \"dest\",\n    \"pipeline\": \"some_ingest_pipeline\"\n  }\n}"
+value: "{
+
+  \  \"source\": {
+
+  \    \"index\": \"source\"
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"dest\",
+
+  \    \"pipeline\": \"some_ingest_pipeline\"
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.reindex(
+          source={
+              "index": "source"
+          },
+          dest={
+              "index": "dest",
+              "pipeline": "some_ingest_pipeline"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.reindex({
+        source: {
+          index: "source",
+        },
+        dest: {
+          index: "dest",
+          pipeline: "some_ingest_pipeline",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.reindex(
+        body: {
+          "source": {
+            "index": "source"
+          },
+          "dest": {
+            "index": "dest",
+            "pipeline": "some_ingest_pipeline"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->reindex([
+          "body" => [
+              "source" => [
+                  "index" => "source",
+              ],
+              "dest" => [
+                  "index" => "dest",
+                  "pipeline" => "some_ingest_pipeline",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"source":{"index":"source"},"dest":{"index":"dest","pipeline":"some_ingest_pipeline"}}''
+      "http://localhost:9200/_reindex"'

@@ -1,1 +1,12 @@
 method_request: GET /_license
+alternatives:
+  - language: Python
+    code: resp = client.license.get()
+  - language: JavaScript
+    code: const response = await client.license.get();
+  - language: Ruby
+    code: response = client.license.get
+  - language: PHP
+    code: $resp = $client->license()->get();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_license"'

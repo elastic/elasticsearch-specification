@@ -1,1 +1,29 @@
 method_request: GET /_security/api_key?username=myuser&realm_name=native1
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.get_api_key(
+          username="myuser",
+          realm_name="native1",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.getApiKey({
+        username: "myuser",
+        realm_name: "native1",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.get_api_key(
+        username: "myuser",
+        realm_name: "native1"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->getApiKey([
+          "username" => "myuser",
+          "realm_name" => "native1",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "http://localhost:9200/_security/api_key?username=myuser&realm_name=native1"'

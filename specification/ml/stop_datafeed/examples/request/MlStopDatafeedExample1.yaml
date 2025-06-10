@@ -4,3 +4,36 @@ value: |-
   {
     "timeout": "30s"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.stop_datafeed(
+          datafeed_id="datafeed-low_request_rate",
+          timeout="30s",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.stopDatafeed({
+        datafeed_id: "datafeed-low_request_rate",
+        timeout: "30s",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.stop_datafeed(
+        datafeed_id: "datafeed-low_request_rate",
+        body: {
+          "timeout": "30s"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->stopDatafeed([
+          "datafeed_id" => "datafeed-low_request_rate",
+          "body" => [
+              "timeout" => "30s",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"timeout":"30s"}''
+      "http://localhost:9200/_ml/datafeeds/datafeed-low_request_rate/_stop"'

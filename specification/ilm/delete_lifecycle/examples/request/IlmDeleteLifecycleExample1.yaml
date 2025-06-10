@@ -1,1 +1,24 @@
 method_request: DELETE _ilm/policy/my_policy
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ilm.delete_lifecycle(
+          name="my_policy",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ilm.deleteLifecycle({
+        name: "my_policy",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ilm.delete_lifecycle(
+        policy: "my_policy"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ilm()->deleteLifecycle([
+          "policy" => "my_policy",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_ilm/policy/my_policy"'

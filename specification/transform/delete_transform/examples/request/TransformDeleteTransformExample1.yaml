@@ -1,1 +1,24 @@
 method_request: DELETE _transform/ecommerce_transform
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.transform.delete_transform(
+          transform_id="ecommerce_transform",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.transform.deleteTransform({
+        transform_id: "ecommerce_transform",
+      });
+  - language: Ruby
+    code: |-
+      response = client.transform.delete_transform(
+        transform_id: "ecommerce_transform"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->transform()->deleteTransform([
+          "transform_id" => "ecommerce_transform",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_transform/ecommerce_transform"'

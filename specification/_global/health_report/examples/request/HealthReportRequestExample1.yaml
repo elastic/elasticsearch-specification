@@ -1,1 +1,12 @@
 method_request: GET _health_report
+alternatives:
+  - language: Python
+    code: resp = client.health_report()
+  - language: JavaScript
+    code: const response = await client.healthReport();
+  - language: Ruby
+    code: response = client.health_report
+  - language: PHP
+    code: $resp = $client->healthReport();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_health_report"'

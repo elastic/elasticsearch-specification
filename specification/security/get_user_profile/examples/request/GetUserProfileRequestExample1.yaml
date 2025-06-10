@@ -1,1 +1,25 @@
 method_request: GET /_security/profile/u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.get_user_profile(
+          uid="u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.getUserProfile({
+        uid: "u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.get_user_profile(
+        uid: "u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->getUserProfile([
+          "uid" => "u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "http://localhost:9200/_security/profile/u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0"'

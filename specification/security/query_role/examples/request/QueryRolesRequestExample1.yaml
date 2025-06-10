@@ -6,3 +6,38 @@ value: |-
   {
       "sort": ["name"]
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.query_role(
+          sort=[
+              "name"
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.queryRole({
+        sort: ["name"],
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.query_role(
+        body: {
+          "sort": [
+            "name"
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->queryRole([
+          "body" => [
+              "sort" => array(
+                  "name",
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"sort":["name"]}''
+      "http://localhost:9200/_security/_query/role"'

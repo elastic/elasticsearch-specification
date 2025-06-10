@@ -1,1 +1,28 @@
 method_request: GET _lifecycle/stats?human&pretty
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.get_data_lifecycle_stats(
+          human=True,
+          pretty=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.getDataLifecycleStats({
+        human: "true",
+        pretty: "true",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.get_data_lifecycle_stats(
+        human: "true",
+        pretty: "true"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->getDataLifecycleStats([
+          "human" => "true",
+          "pretty" => "true",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_lifecycle/stats?human&pretty"'

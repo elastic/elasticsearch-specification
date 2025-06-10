@@ -1,5 +1,5 @@
 summary: Create an index template
-# method_request: PUT _template/template_1
+method_request: PUT _template/template_1
 # description: ''
 # type: request
 value:
@@ -17,3 +17,115 @@ value:
     created_at:
       type: date
       format: 'EEE MMM dd HH:mm:ss Z yyyy'
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.put_template(
+          name="template_1",
+          index_patterns=[
+              "te*",
+              "bar*"
+          ],
+          settings={
+              "number_of_shards": 1
+          },
+          mappings={
+              "_source": {
+                  "enabled": False
+              }
+          },
+          properties={
+              "host_name": {
+                  "type": "keyword"
+              },
+              "created_at": {
+                  "type": "date",
+                  "format": "EEE MMM dd HH:mm:ss Z yyyy"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.putTemplate({
+        name: "template_1",
+        index_patterns: ["te*", "bar*"],
+        settings: {
+          number_of_shards: 1,
+        },
+        mappings: {
+          _source: {
+            enabled: false,
+          },
+        },
+        properties: {
+          host_name: {
+            type: "keyword",
+          },
+          created_at: {
+            type: "date",
+            format: "EEE MMM dd HH:mm:ss Z yyyy",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.put_template(
+        name: "template_1",
+        body: {
+          "index_patterns": [
+            "te*",
+            "bar*"
+          ],
+          "settings": {
+            "number_of_shards": 1
+          },
+          "mappings": {
+            "_source": {
+              "enabled": false
+            }
+          },
+          "properties": {
+            "host_name": {
+              "type": "keyword"
+            },
+            "created_at": {
+              "type": "date",
+              "format": "EEE MMM dd HH:mm:ss Z yyyy"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->putTemplate([
+          "name" => "template_1",
+          "body" => [
+              "index_patterns" => array(
+                  "te*",
+                  "bar*",
+              ),
+              "settings" => [
+                  "number_of_shards" => 1,
+              ],
+              "mappings" => [
+                  "_source" => [
+                      "enabled" => false,
+                  ],
+              ],
+              "properties" => [
+                  "host_name" => [
+                      "type" => "keyword",
+                  ],
+                  "created_at" => [
+                      "type" => "date",
+                      "format" => "EEE MMM dd HH:mm:ss Z yyyy",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"index_patterns\":[\"te*\",\"bar*\"],\"settings\":{\"number_of_shards\":1},\"mappings\":{\"_source\":{\"enabled\":false}},\
+      \"properties\":{\"host_name\":{\"type\":\"keyword\"},\"created_at\":{\"type\":\"date\",\"format\":\"EEE MMM dd HH:mm:ss Z
+      yyyy\"}}}' \"http://localhost:9200/_template/template_1\""

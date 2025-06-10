@@ -1,1 +1,29 @@
 method_request: PUT /_enrich/policy/my-policy/_execute?wait_for_completion=false
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.enrich.execute_policy(
+          name="my-policy",
+          wait_for_completion=False,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.enrich.executePolicy({
+        name: "my-policy",
+        wait_for_completion: "false",
+      });
+  - language: Ruby
+    code: |-
+      response = client.enrich.execute_policy(
+        name: "my-policy",
+        wait_for_completion: "false"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->enrich()->executePolicy([
+          "name" => "my-policy",
+          "wait_for_completion" => "false",
+      ]);
+  - language: curl
+    code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "http://localhost:9200/_enrich/policy/my-policy/_execute?wait_for_completion=false"'

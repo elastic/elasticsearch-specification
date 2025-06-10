@@ -12,3 +12,82 @@ value: |-
       }
     ]
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.put_role(
+          name="cli_or_drivers_minimal",
+          cluster=[
+              "cluster:monitor/main"
+          ],
+          indices=[
+              {
+                  "names": [
+                      "test"
+                  ],
+                  "privileges": [
+                      "read",
+                      "indices:admin/get"
+                  ]
+              }
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.putRole({
+        name: "cli_or_drivers_minimal",
+        cluster: ["cluster:monitor/main"],
+        indices: [
+          {
+            names: ["test"],
+            privileges: ["read", "indices:admin/get"],
+          },
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.put_role(
+        name: "cli_or_drivers_minimal",
+        body: {
+          "cluster": [
+            "cluster:monitor/main"
+          ],
+          "indices": [
+            {
+              "names": [
+                "test"
+              ],
+              "privileges": [
+                "read",
+                "indices:admin/get"
+              ]
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->putRole([
+          "name" => "cli_or_drivers_minimal",
+          "body" => [
+              "cluster" => array(
+                  "cluster:monitor/main",
+              ),
+              "indices" => array(
+                  [
+                      "names" => array(
+                          "test",
+                      ),
+                      "privileges" => array(
+                          "read",
+                          "indices:admin/get",
+                      ),
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"cluster\":[\"cluster:monitor/main\"],\"indices\":[{\"names\":[\"test\"],\"privileges\":[\"read\",\"indices:admin/get\"]}]\
+      }' \"http://localhost:9200/_security/role/cli_or_drivers_minimal\""

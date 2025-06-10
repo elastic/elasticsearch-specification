@@ -32,3 +32,217 @@ value:
     time:
       field: order_date
       max_age: 30d
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.transform.put_transform(
+          transform_id="ecommerce_transform1",
+          source={
+              "index": "kibana_sample_data_ecommerce",
+              "query": {
+                  "term": {
+                      "geoip.continent_name": {
+                          "value": "Asia"
+                      }
+                  }
+              }
+          },
+          pivot={
+              "group_by": {
+                  "customer_id": {
+                      "terms": {
+                          "field": "customer_id",
+                          "missing_bucket": True
+                      }
+                  }
+              },
+              "aggregations": {
+                  "max_price": {
+                      "max": {
+                          "field": "taxful_total_price"
+                      }
+                  }
+              }
+          },
+          description="Maximum priced ecommerce data by customer_id in Asia",
+          dest={
+              "index": "kibana_sample_data_ecommerce_transform1",
+              "pipeline": "add_timestamp_pipeline"
+          },
+          frequency="5m",
+          sync={
+              "time": {
+                  "field": "order_date",
+                  "delay": "60s"
+              }
+          },
+          retention_policy={
+              "time": {
+                  "field": "order_date",
+                  "max_age": "30d"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.transform.putTransform({
+        transform_id: "ecommerce_transform1",
+        source: {
+          index: "kibana_sample_data_ecommerce",
+          query: {
+            term: {
+              "geoip.continent_name": {
+                value: "Asia",
+              },
+            },
+          },
+        },
+        pivot: {
+          group_by: {
+            customer_id: {
+              terms: {
+                field: "customer_id",
+                missing_bucket: true,
+              },
+            },
+          },
+          aggregations: {
+            max_price: {
+              max: {
+                field: "taxful_total_price",
+              },
+            },
+          },
+        },
+        description: "Maximum priced ecommerce data by customer_id in Asia",
+        dest: {
+          index: "kibana_sample_data_ecommerce_transform1",
+          pipeline: "add_timestamp_pipeline",
+        },
+        frequency: "5m",
+        sync: {
+          time: {
+            field: "order_date",
+            delay: "60s",
+          },
+        },
+        retention_policy: {
+          time: {
+            field: "order_date",
+            max_age: "30d",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.transform.put_transform(
+        transform_id: "ecommerce_transform1",
+        body: {
+          "source": {
+            "index": "kibana_sample_data_ecommerce",
+            "query": {
+              "term": {
+                "geoip.continent_name": {
+                  "value": "Asia"
+                }
+              }
+            }
+          },
+          "pivot": {
+            "group_by": {
+              "customer_id": {
+                "terms": {
+                  "field": "customer_id",
+                  "missing_bucket": true
+                }
+              }
+            },
+            "aggregations": {
+              "max_price": {
+                "max": {
+                  "field": "taxful_total_price"
+                }
+              }
+            }
+          },
+          "description": "Maximum priced ecommerce data by customer_id in Asia",
+          "dest": {
+            "index": "kibana_sample_data_ecommerce_transform1",
+            "pipeline": "add_timestamp_pipeline"
+          },
+          "frequency": "5m",
+          "sync": {
+            "time": {
+              "field": "order_date",
+              "delay": "60s"
+            }
+          },
+          "retention_policy": {
+            "time": {
+              "field": "order_date",
+              "max_age": "30d"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->transform()->putTransform([
+          "transform_id" => "ecommerce_transform1",
+          "body" => [
+              "source" => [
+                  "index" => "kibana_sample_data_ecommerce",
+                  "query" => [
+                      "term" => [
+                          "geoip.continent_name" => [
+                              "value" => "Asia",
+                          ],
+                      ],
+                  ],
+              ],
+              "pivot" => [
+                  "group_by" => [
+                      "customer_id" => [
+                          "terms" => [
+                              "field" => "customer_id",
+                              "missing_bucket" => true,
+                          ],
+                      ],
+                  ],
+                  "aggregations" => [
+                      "max_price" => [
+                          "max" => [
+                              "field" => "taxful_total_price",
+                          ],
+                      ],
+                  ],
+              ],
+              "description" => "Maximum priced ecommerce data by customer_id in Asia",
+              "dest" => [
+                  "index" => "kibana_sample_data_ecommerce_transform1",
+                  "pipeline" => "add_timestamp_pipeline",
+              ],
+              "frequency" => "5m",
+              "sync" => [
+                  "time" => [
+                      "field" => "order_date",
+                      "delay" => "60s",
+                  ],
+              ],
+              "retention_policy" => [
+                  "time" => [
+                      "field" => "order_date",
+                      "max_age" => "30d",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"source\":{\"index\":\"kibana_sample_data_ecommerce\",\"query\":{\"term\":{\"geoip.continent_name\":{\"value\":\"Asia\"}}}\
+      },\"pivot\":{\"group_by\":{\"customer_id\":{\"terms\":{\"field\":\"customer_id\",\"missing_bucket\":true}}},\"aggregations\":{\
+      \"max_price\":{\"max\":{\"field\":\"taxful_total_price\"}}}},\"description\":\"Maximum priced ecommerce data by customer_id in
+      Asia\",\"dest\":{\"index\":\"kibana_sample_data_ecommerce_transform1\",\"pipeline\":\"add_timestamp_pipeline\"},\"frequency\":\
+      \"5m\",\"sync\":{\"time\":{\"field\":\"order_date\",\"delay\":\"60s\"}},\"retention_policy\":{\"time\":{\"field\":\"order_date\
+      \",\"max_age\":\"30d\"}}}' \"http://localhost:9200/_transform/ecommerce_transform1\""

@@ -1,9 +1,9 @@
 summary: Create a policy with intevals
 method_request: PUT /_slm/policy/hourly-snapshots
 description: >
-  Run `PUT /_slm/policy/hourly-snapshots` to create a lifecycle policy that uses interval scheduling.
-  It creates a snapshot once every hour.
-  The first snapshot will be created one hour after the policy is modified, with subsequent snapshots every hour afterward.
+  Run `PUT /_slm/policy/hourly-snapshots` to create a lifecycle policy that uses interval scheduling. It creates a snapshot once
+  every hour. The first snapshot will be created one hour after the policy is modified, with subsequent snapshots every hour
+  afterward.
 # type: request
 value: |-
   {
@@ -14,3 +14,66 @@ value: |-
       "indices": ["data-*", "important"]
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.slm.put_lifecycle(
+          policy_id="hourly-snapshots",
+          schedule="1h",
+          name="<hourly-snap-{now/d}>",
+          repository="my_repository",
+          config={
+              "indices": [
+                  "data-*",
+                  "important"
+              ]
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.slm.putLifecycle({
+        policy_id: "hourly-snapshots",
+        schedule: "1h",
+        name: "<hourly-snap-{now/d}>",
+        repository: "my_repository",
+        config: {
+          indices: ["data-*", "important"],
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.slm.put_lifecycle(
+        policy_id: "hourly-snapshots",
+        body: {
+          "schedule": "1h",
+          "name": "<hourly-snap-{now/d}>",
+          "repository": "my_repository",
+          "config": {
+            "indices": [
+              "data-*",
+              "important"
+            ]
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->slm()->putLifecycle([
+          "policy_id" => "hourly-snapshots",
+          "body" => [
+              "schedule" => "1h",
+              "name" => "<hourly-snap-{now/d}>",
+              "repository" => "my_repository",
+              "config" => [
+                  "indices" => array(
+                      "data-*",
+                      "important",
+                  ),
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"schedule\":\"1h\",\"name\":\"<hourly-snap-{now/d}>\",\"repository\":\"my_repository\",\"config\":{\"indices\":[\"data-*\",\
+      \"important\"]}}' \"http://localhost:9200/_slm/policy/hourly-snapshots\""

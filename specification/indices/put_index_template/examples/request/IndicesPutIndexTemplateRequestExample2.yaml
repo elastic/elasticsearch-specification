@@ -18,3 +18,112 @@ value:
             user.id: kimchy
         routing: shard-1
       '{index}-alias': {}
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.put_index_template(
+          name="template_1",
+          index_patterns=[
+              "template*"
+          ],
+          template={
+              "settings": {
+                  "number_of_shards": 1
+              },
+              "aliases": {
+                  "alias1": {},
+                  "alias2": {
+                      "filter": {
+                          "term": {
+                              "user.id": "kimchy"
+                          }
+                      },
+                      "routing": "shard-1"
+                  },
+                  "{index}-alias": {}
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.putIndexTemplate({
+        name: "template_1",
+        index_patterns: ["template*"],
+        template: {
+          settings: {
+            number_of_shards: 1,
+          },
+          aliases: {
+            alias1: {},
+            alias2: {
+              filter: {
+                term: {
+                  "user.id": "kimchy",
+                },
+              },
+              routing: "shard-1",
+            },
+            "{index}-alias": {},
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.put_index_template(
+        name: "template_1",
+        body: {
+          "index_patterns": [
+            "template*"
+          ],
+          "template": {
+            "settings": {
+              "number_of_shards": 1
+            },
+            "aliases": {
+              "alias1": {},
+              "alias2": {
+                "filter": {
+                  "term": {
+                    "user.id": "kimchy"
+                  }
+                },
+                "routing": "shard-1"
+              },
+              "{index}-alias": {}
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->putIndexTemplate([
+          "name" => "template_1",
+          "body" => [
+              "index_patterns" => array(
+                  "template*",
+              ),
+              "template" => [
+                  "settings" => [
+                      "number_of_shards" => 1,
+                  ],
+                  "aliases" => [
+                      "alias1" => new ArrayObject([]),
+                      "alias2" => [
+                          "filter" => [
+                              "term" => [
+                                  "user.id" => "kimchy",
+                              ],
+                          ],
+                          "routing" => "shard-1",
+                      ],
+                      "{index}-alias" => new ArrayObject([]),
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"index_patterns\":[\"template*\"],\"template\":{\"settings\":{\"number_of_shards\":1},\"aliases\":{\"alias1\":{},\"alias2\
+      \":{\"filter\":{\"term\":{\"user.id\":\"kimchy\"}},\"routing\":\"shard-1\"},\"{index}-alias\":{}}}}'
+      \"http://localhost:9200/_index_template/template_1\""

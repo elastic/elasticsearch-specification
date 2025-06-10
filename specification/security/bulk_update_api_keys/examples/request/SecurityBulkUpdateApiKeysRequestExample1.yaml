@@ -1,4 +1,5 @@
 # summary:
+method_request: POST /_security/api_key/_bulk_update
 description: Assign new role descriptors and metadata and update the expiration time for two API keys.
 # type": "response",
 # response_code": 200,
@@ -20,3 +21,133 @@ value:
       tags:
         - production
   expiration: 30d
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.bulk_update_api_keys(
+          ids=[
+              "VuaCfGcBCdbkQm-e5aOx",
+              "H3_AhoIBA9hmeQJdg7ij"
+          ],
+          role_descriptors={
+              "role-a": {
+                  "indices": [
+                      {
+                          "names": [
+                              "*"
+                          ],
+                          "privileges": [
+                              "write"
+                          ]
+                      }
+                  ]
+              }
+          },
+          metadata={
+              "environment": {
+                  "level": 2,
+                  "trusted": True,
+                  "tags": [
+                      "production"
+                  ]
+              }
+          },
+          expiration="30d",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.bulkUpdateApiKeys({
+        ids: ["VuaCfGcBCdbkQm-e5aOx", "H3_AhoIBA9hmeQJdg7ij"],
+        role_descriptors: {
+          "role-a": {
+            indices: [
+              {
+                names: ["*"],
+                privileges: ["write"],
+              },
+            ],
+          },
+        },
+        metadata: {
+          environment: {
+            level: 2,
+            trusted: true,
+            tags: ["production"],
+          },
+        },
+        expiration: "30d",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.bulk_update_api_keys(
+        body: {
+          "ids": [
+            "VuaCfGcBCdbkQm-e5aOx",
+            "H3_AhoIBA9hmeQJdg7ij"
+          ],
+          "role_descriptors": {
+            "role-a": {
+              "indices": [
+                {
+                  "names": [
+                    "*"
+                  ],
+                  "privileges": [
+                    "write"
+                  ]
+                }
+              ]
+            }
+          },
+          "metadata": {
+            "environment": {
+              "level": 2,
+              "trusted": true,
+              "tags": [
+                "production"
+              ]
+            }
+          },
+          "expiration": "30d"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->bulkUpdateApiKeys([
+          "body" => [
+              "ids" => array(
+                  "VuaCfGcBCdbkQm-e5aOx",
+                  "H3_AhoIBA9hmeQJdg7ij",
+              ),
+              "role_descriptors" => [
+                  "role-a" => [
+                      "indices" => array(
+                          [
+                              "names" => array(
+                                  "*",
+                              ),
+                              "privileges" => array(
+                                  "write",
+                              ),
+                          ],
+                      ),
+                  ],
+              ],
+              "metadata" => [
+                  "environment" => [
+                      "level" => 2,
+                      "trusted" => true,
+                      "tags" => array(
+                          "production",
+                      ),
+                  ],
+              ],
+              "expiration" => "30d",
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"ids\":[\"VuaCfGcBCdbkQm-e5aOx\",\"H3_AhoIBA9hmeQJdg7ij\"],\"role_descriptors\":{\"role-a\":{\"indices\":[{\"names\":[\"*\
+      \"],\"privileges\":[\"write\"]}]}},\"metadata\":{\"environment\":{\"level\":2,\"trusted\":true,\"tags\":[\"production\"]}},\"\
+      expiration\":\"30d\"}' \"http://localhost:9200/_security/api_key/_bulk_update\""

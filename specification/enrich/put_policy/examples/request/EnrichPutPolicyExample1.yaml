@@ -8,3 +8,62 @@ value: |-
       "enrich_fields": [ "location", "postal_code" ]
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.enrich.put_policy(
+          name="postal_policy",
+          geo_match={
+              "indices": "postal_codes",
+              "match_field": "location",
+              "enrich_fields": [
+                  "location",
+                  "postal_code"
+              ]
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.enrich.putPolicy({
+        name: "postal_policy",
+        geo_match: {
+          indices: "postal_codes",
+          match_field: "location",
+          enrich_fields: ["location", "postal_code"],
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.enrich.put_policy(
+        name: "postal_policy",
+        body: {
+          "geo_match": {
+            "indices": "postal_codes",
+            "match_field": "location",
+            "enrich_fields": [
+              "location",
+              "postal_code"
+            ]
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->enrich()->putPolicy([
+          "name" => "postal_policy",
+          "body" => [
+              "geo_match" => [
+                  "indices" => "postal_codes",
+                  "match_field" => "location",
+                  "enrich_fields" => array(
+                      "location",
+                      "postal_code",
+                  ),
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"geo_match":{"indices":"postal_codes","match_field":"location","enrich_fields":["location","postal_code"]}}''
+      "http://localhost:9200/_enrich/policy/postal_policy"'

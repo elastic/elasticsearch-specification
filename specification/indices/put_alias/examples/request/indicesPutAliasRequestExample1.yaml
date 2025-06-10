@@ -2,4 +2,79 @@
 method_request: POST _aliases
 # description: ''
 # type: request
-value: "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"my-data-stream\",\n        \"alias\": \"my-alias\"\n      }\n    }\n  ]\n}"
+value: "{
+
+  \  \"actions\": [
+
+  \    {
+
+  \      \"add\": {
+
+  \        \"index\": \"my-data-stream\",
+
+  \        \"alias\": \"my-alias\"
+
+  \      }
+
+  \    }
+
+  \  ]
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.update_aliases(
+          actions=[
+              {
+                  "add": {
+                      "index": "my-data-stream",
+                      "alias": "my-alias"
+                  }
+              }
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.updateAliases({
+        actions: [
+          {
+            add: {
+              index: "my-data-stream",
+              alias: "my-alias",
+            },
+          },
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.update_aliases(
+        body: {
+          "actions": [
+            {
+              "add": {
+                "index": "my-data-stream",
+                "alias": "my-alias"
+              }
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->updateAliases([
+          "body" => [
+              "actions" => array(
+                  [
+                      "add" => [
+                          "index" => "my-data-stream",
+                          "alias" => "my-alias",
+                      ],
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"actions":[{"add":{"index":"my-data-stream","alias":"my-alias"}}]}'' "http://localhost:9200/_aliases"'

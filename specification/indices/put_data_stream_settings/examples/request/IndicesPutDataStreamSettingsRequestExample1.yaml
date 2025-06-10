@@ -8,3 +8,45 @@ value: |-
     "index.lifecycle.name" : "new-test-policy",
     "index.number_of_shards": 11
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.put_data_stream_settings(
+          name="my-data-stream",
+          settings={
+              "index.lifecycle.name": "new-test-policy",
+              "index.number_of_shards": 11
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.putDataStreamSettings({
+        name: "my-data-stream",
+        settings: {
+          "index.lifecycle.name": "new-test-policy",
+          "index.number_of_shards": 11,
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.put_data_stream_settings(
+        name: "my-data-stream",
+        body: {
+          "index.lifecycle.name": "new-test-policy",
+          "index.number_of_shards": 11
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->putDataStreamSettings([
+          "name" => "my-data-stream",
+          "body" => [
+              "index.lifecycle.name" => "new-test-policy",
+              "index.number_of_shards" => 11,
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"index.lifecycle.name":"new-test-policy","index.number_of_shards":11}''
+      "http://localhost:9200/_data_stream/my-data-stream/_settings"'

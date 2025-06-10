@@ -7,3 +7,65 @@ value: |-
       },
       "mode": "upgrade"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.perform_request(
+          "POST",
+          "/_migration/reindex",
+          headers={"Content-Type": "application/json"},
+          body={
+              "source": {
+                  "index": "my-data-stream"
+              },
+              "mode": "upgrade"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.transport.request({
+        method: "POST",
+        path: "/_migration/reindex",
+        body: {
+          source: {
+            index: "my-data-stream",
+          },
+          mode: "upgrade",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.perform_request(
+        "POST",
+        "/_migration/reindex",
+        {},
+        {
+          "source": {
+            "index": "my-data-stream"
+          },
+          "mode": "upgrade"
+        },
+        { "Content-Type": "application/json" },
+      )
+  - language: PHP
+    code: |-
+      $requestFactory = Psr17FactoryDiscovery::findRequestFactory();
+      $streamFactory = Psr17FactoryDiscovery::findStreamFactory();
+      $request = $requestFactory->createRequest(
+          "POST",
+          "/_migration/reindex",
+      );
+      $request = $request->withHeader("Content-Type", "application/json");
+      $request = $request->withBody($streamFactory->createStream(
+          json_encode([
+              "source" => [
+                  "index" => "my-data-stream",
+              ],
+              "mode" => "upgrade",
+          ]),
+      ));
+      $resp = $client->sendRequest($request);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"source":{"index":"my-data-stream"},"mode":"upgrade"}'' "http://localhost:9200/_migration/reindex"'

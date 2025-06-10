@@ -1,1 +1,24 @@
 method_request: GET /_shard_stores?status=green
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.shard_stores(
+          status="green",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.shardStores({
+        status: "green",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.shard_stores(
+        status: "green"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->shardStores([
+          "status" => "green",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_shard_stores?status=green"'

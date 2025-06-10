@@ -3,4 +3,46 @@ method_request: POST test/_update/1
 description: >
   Run `POST test/_update/1` to use a script to remove a subfield from an object field.
 # type: request
-value: "{\n  \"script\": \"ctx._source['my-object'].remove('my-subfield')\"\n}"
+value: "{
+
+  \  \"script\": \"ctx._source['my-object'].remove('my-subfield')\"
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.update(
+          index="test",
+          id="1",
+          script="ctx._source['my-object'].remove('my-subfield')",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.update({
+        index: "test",
+        id: 1,
+        script: "ctx._source['my-object'].remove('my-subfield')",
+      });
+  - language: Ruby
+    code: |-
+      response = client.update(
+        index: "test",
+        id: "1",
+        body: {
+          "script": "ctx._source['my-object'].remove('my-subfield')"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->update([
+          "index" => "test",
+          "id" => "1",
+          "body" => [
+              "script" => "ctx._source['my-object'].remove('my-subfield')",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"script":"ctx._source[''"''"''my-object''"''"''].remove(''"''"''my-subfield''"''"'')"}''
+      "http://localhost:9200/test/_update/1"'

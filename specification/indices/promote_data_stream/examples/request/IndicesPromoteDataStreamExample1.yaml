@@ -1,1 +1,24 @@
 method_request: POST /_data_stream/_promote/my-data-stream
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.promote_data_stream(
+          name="my-data-stream",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.promoteDataStream({
+        name: "my-data-stream",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.promote_data_stream(
+        name: "my-data-stream"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->promoteDataStream([
+          "name" => "my-data-stream",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_data_stream/_promote/my-data-stream"'

@@ -1,1 +1,28 @@
 method_request: GET _tasks?actions=*search&detailed
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.tasks.list(
+          actions="*search",
+          detailed=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.tasks.list({
+        actions: "*search",
+        detailed: "true",
+      });
+  - language: Ruby
+    code: |-
+      response = client.tasks.list(
+        actions: "*search",
+        detailed: "true"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->tasks()->list([
+          "actions" => "*search",
+          "detailed" => "true",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_tasks?actions=*search&detailed"'

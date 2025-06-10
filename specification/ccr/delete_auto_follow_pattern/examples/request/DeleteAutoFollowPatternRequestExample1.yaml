@@ -1,1 +1,24 @@
 method_request: DELETE /_ccr/auto_follow/my_auto_follow_pattern
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ccr.delete_auto_follow_pattern(
+          name="my_auto_follow_pattern",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ccr.deleteAutoFollowPattern({
+        name: "my_auto_follow_pattern",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ccr.delete_auto_follow_pattern(
+        name: "my_auto_follow_pattern"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ccr()->deleteAutoFollowPattern([
+          "name" => "my_auto_follow_pattern",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_ccr/auto_follow/my_auto_follow_pattern"'

@@ -1,9 +1,8 @@
 # summary:
 method_request: POST /_security/api_key
 description: >
-  Run `POST /_security/api_key` to create an API key.
-  If `expiration` is not provided, the API keys do not expire.
-  If `role_descriptors` is not provided, the permissions of the authenticated user are applied.
+  Run `POST /_security/api_key` to create an API key. If `expiration` is not provided, the API keys do not expire. If
+  `role_descriptors` is not provided, the permissions of the authenticated user are applied.
 # type: request
 value: |-
   {
@@ -38,3 +37,196 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.create_api_key(
+          name="my-api-key",
+          expiration="1d",
+          role_descriptors={
+              "role-a": {
+                  "cluster": [
+                      "all"
+                  ],
+                  "indices": [
+                      {
+                          "names": [
+                              "index-a*"
+                          ],
+                          "privileges": [
+                              "read"
+                          ]
+                      }
+                  ]
+              },
+              "role-b": {
+                  "cluster": [
+                      "all"
+                  ],
+                  "indices": [
+                      {
+                          "names": [
+                              "index-b*"
+                          ],
+                          "privileges": [
+                              "all"
+                          ]
+                      }
+                  ]
+              }
+          },
+          metadata={
+              "application": "my-application",
+              "environment": {
+                  "level": 1,
+                  "trusted": True,
+                  "tags": [
+                      "dev",
+                      "staging"
+                  ]
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.createApiKey({
+        name: "my-api-key",
+        expiration: "1d",
+        role_descriptors: {
+          "role-a": {
+            cluster: ["all"],
+            indices: [
+              {
+                names: ["index-a*"],
+                privileges: ["read"],
+              },
+            ],
+          },
+          "role-b": {
+            cluster: ["all"],
+            indices: [
+              {
+                names: ["index-b*"],
+                privileges: ["all"],
+              },
+            ],
+          },
+        },
+        metadata: {
+          application: "my-application",
+          environment: {
+            level: 1,
+            trusted: true,
+            tags: ["dev", "staging"],
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.create_api_key(
+        body: {
+          "name": "my-api-key",
+          "expiration": "1d",
+          "role_descriptors": {
+            "role-a": {
+              "cluster": [
+                "all"
+              ],
+              "indices": [
+                {
+                  "names": [
+                    "index-a*"
+                  ],
+                  "privileges": [
+                    "read"
+                  ]
+                }
+              ]
+            },
+            "role-b": {
+              "cluster": [
+                "all"
+              ],
+              "indices": [
+                {
+                  "names": [
+                    "index-b*"
+                  ],
+                  "privileges": [
+                    "all"
+                  ]
+                }
+              ]
+            }
+          },
+          "metadata": {
+            "application": "my-application",
+            "environment": {
+              "level": 1,
+              "trusted": true,
+              "tags": [
+                "dev",
+                "staging"
+              ]
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->createApiKey([
+          "body" => [
+              "name" => "my-api-key",
+              "expiration" => "1d",
+              "role_descriptors" => [
+                  "role-a" => [
+                      "cluster" => array(
+                          "all",
+                      ),
+                      "indices" => array(
+                          [
+                              "names" => array(
+                                  "index-a*",
+                              ),
+                              "privileges" => array(
+                                  "read",
+                              ),
+                          ],
+                      ),
+                  ],
+                  "role-b" => [
+                      "cluster" => array(
+                          "all",
+                      ),
+                      "indices" => array(
+                          [
+                              "names" => array(
+                                  "index-b*",
+                              ),
+                              "privileges" => array(
+                                  "all",
+                              ),
+                          ],
+                      ),
+                  ],
+              ],
+              "metadata" => [
+                  "application" => "my-application",
+                  "environment" => [
+                      "level" => 1,
+                      "trusted" => true,
+                      "tags" => array(
+                          "dev",
+                          "staging",
+                      ),
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"name\":\"my-api-key\",\"expiration\":\"1d\",\"role_descriptors\":{\"role-a\":{\"cluster\":[\"all\"],\"indices\":[{\"names\
+      \":[\"index-a*\"],\"privileges\":[\"read\"]}]},\"role-b\":{\"cluster\":[\"all\"],\"indices\":[{\"names\":[\"index-b*\"],\"pri\
+      vileges\":[\"all\"]}]}},\"metadata\":{\"application\":\"my-application\",\"environment\":{\"level\":1,\"trusted\":true,\"tags\
+      \":[\"dev\",\"staging\"]}}}' \"http://localhost:9200/_security/api_key\""

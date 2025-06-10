@@ -1,1 +1,29 @@
 method_request: GET /_resolve/index/f*,remoteCluster1:bar*?expand_wildcards=all
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.resolve_index(
+          name="f*,remoteCluster1:bar*",
+          expand_wildcards="all",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.resolveIndex({
+        name: "f*,remoteCluster1:bar*",
+        expand_wildcards: "all",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.resolve_index(
+        name: "f*,remoteCluster1:bar*",
+        expand_wildcards: "all"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->resolveIndex([
+          "name" => "f*,remoteCluster1:bar*",
+          "expand_wildcards" => "all",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "http://localhost:9200/_resolve/index/f*,remoteCluster1:bar*?expand_wildcards=all"'

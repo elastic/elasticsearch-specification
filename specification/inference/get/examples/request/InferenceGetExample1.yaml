@@ -1,1 +1,28 @@
 method_request: GET _inference/sparse_embedding/my-elser-model
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.get(
+          task_type="sparse_embedding",
+          inference_id="my-elser-model",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.get({
+        task_type: "sparse_embedding",
+        inference_id: "my-elser-model",
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.get(
+        task_type: "sparse_embedding",
+        inference_id: "my-elser-model"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->get([
+          "task_type" => "sparse_embedding",
+          "inference_id" => "my-elser-model",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_inference/sparse_embedding/my-elser-model"'

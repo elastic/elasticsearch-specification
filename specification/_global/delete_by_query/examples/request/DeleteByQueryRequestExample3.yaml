@@ -17,3 +17,77 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.delete_by_query(
+          index="my-index-000001",
+          slice={
+              "id": 0,
+              "max": 2
+          },
+          query={
+              "range": {
+                  "http.response.bytes": {
+                      "lt": 2000000
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.deleteByQuery({
+        index: "my-index-000001",
+        slice: {
+          id: 0,
+          max: 2,
+        },
+        query: {
+          range: {
+            "http.response.bytes": {
+              lt: 2000000,
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.delete_by_query(
+        index: "my-index-000001",
+        body: {
+          "slice": {
+            "id": 0,
+            "max": 2
+          },
+          "query": {
+            "range": {
+              "http.response.bytes": {
+                "lt": 2000000
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->deleteByQuery([
+          "index" => "my-index-000001",
+          "body" => [
+              "slice" => [
+                  "id" => 0,
+                  "max" => 2,
+              ],
+              "query" => [
+                  "range" => [
+                      "http.response.bytes" => [
+                          "lt" => 2000000,
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"slice":{"id":0,"max":2},"query":{"range":{"http.response.bytes":{"lt":2000000}}}}''
+      "http://localhost:9200/my-index-000001/_delete_by_query"'

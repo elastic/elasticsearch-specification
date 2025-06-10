@@ -2,6 +2,59 @@ summary: Create an index.
 method_request: PUT /my-index-000001
 description: This request specifies the `number_of_shards` and `number_of_replicas`.
 # type: request
-value:
-  "{\n  \"settings\": {\n    \"number_of_shards\": 3,\n    \"number_of_replicas\"\
-  : 2\n  }\n}"
+value: "{
+
+  \  \"settings\": {
+
+  \    \"number_of_shards\": 3,
+
+  \    \"number_of_replicas\": 2
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.create(
+          index="my-index-000001",
+          settings={
+              "number_of_shards": 3,
+              "number_of_replicas": 2
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.create({
+        index: "my-index-000001",
+        settings: {
+          number_of_shards: 3,
+          number_of_replicas: 2,
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.create(
+        index: "my-index-000001",
+        body: {
+          "settings": {
+            "number_of_shards": 3,
+            "number_of_replicas": 2
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->create([
+          "index" => "my-index-000001",
+          "body" => [
+              "settings" => [
+                  "number_of_shards" => 3,
+                  "number_of_replicas" => 2,
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"settings":{"number_of_shards":3,"number_of_replicas":2}}'' "http://localhost:9200/my-index-000001"'

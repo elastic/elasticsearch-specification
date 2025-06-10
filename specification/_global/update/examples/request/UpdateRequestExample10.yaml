@@ -1,11 +1,105 @@
 summary: Scripted upsert
 method_request: POST test/_update/1
 description: >
-  Run `POST test/_update/1` to perform a scripted upsert.
-  When `scripted_upsert` is `true`, the script runs whether or not the document exists.
+  Run `POST test/_update/1` to perform a scripted upsert. When `scripted_upsert` is `true`, the script runs whether or not the
+  document exists.
 # type: request
-value:
-  "{\n  \"scripted_upsert\": true,\n  \"script\": {\n    \"source\": \"\"\"\n\
-  \      if ( ctx.op == 'create' ) {\n        ctx._source.counter = params.count\n\
-  \      } else {\n        ctx._source.counter += params.count\n      }\n    \"\"\"\
-  ,\n    \"params\": {\n      \"count\": 4\n    }\n  },\n  \"upsert\": {}\n}"
+value: "{
+
+  \  \"scripted_upsert\": true,
+
+  \  \"script\": {
+
+  \    \"source\": \"\"\"
+
+  \      if ( ctx.op == 'create' ) {
+
+  \        ctx._source.counter = params.count
+
+  \      } else {
+
+  \        ctx._source.counter += params.count
+
+  \      }
+
+  \    \"\"\",
+
+  \    \"params\": {
+
+  \      \"count\": 4
+
+  \    }
+
+  \  },
+
+  \  \"upsert\": {}
+
+  }"
+alternatives:
+  - language: Python
+    code: >-
+      resp = client.update(
+          index="test",
+          id="1",
+          scripted_upsert=True,
+          script={
+              "source": "\n      if ( ctx.op == 'create' ) {\n        ctx._source.counter = params.count\n      } else {\n        ctx._source.counter += params.count\n      }\n    ",
+              "params": {
+                  "count": 4
+              }
+          },
+          upsert={},
+      )
+  - language: JavaScript
+    code: >-
+      const response = await client.update({
+        index: "test",
+        id: 1,
+        scripted_upsert: true,
+        script: {
+          source:
+            "\n      if ( ctx.op == 'create' ) {\n        ctx._source.counter = params.count\n      } else {\n        ctx._source.counter += params.count\n      }\n    ",
+          params: {
+            count: 4,
+          },
+        },
+        upsert: {},
+      });
+  - language: Ruby
+    code: >-
+      response = client.update(
+        index: "test",
+        id: "1",
+        body: {
+          "scripted_upsert": true,
+          "script": {
+            "source": "\n      if ( ctx.op == 'create' ) {\n        ctx._source.counter = params.count\n      } else {\n        ctx._source.counter += params.count\n      }\n    ",
+            "params": {
+              "count": 4
+            }
+          },
+          "upsert": {}
+        }
+      )
+  - language: PHP
+    code: >-
+      $resp = $client->update([
+          "index" => "test",
+          "id" => "1",
+          "body" => [
+              "scripted_upsert" => true,
+              "script" => [
+                  "source" => "\n      if ( ctx.op == 'create' ) {\n        ctx._source.counter = params.count\n      } else {\n        ctx._source.counter += params.count\n      }\n    ",
+                  "params" => [
+                      "count" => 4,
+                  ],
+              ],
+              "upsert" => new ArrayObject([]),
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"scripted_upsert\":true,\"script\":{\"source\":\"\\n      if ( ctx.op == '\"'\"'create'\"'\"' )
+      {\\n        ctx._source.counter = params.count\\n      } else {\\n        ctx._source.counter +=
+      params.count\\n      }\\n    \",\"params\":{\"count\":4}},\"upsert\":{}}' \"http://localhost:9200/test/_update/1\""

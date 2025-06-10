@@ -14,3 +14,77 @@ value: |-
           "return_documents": true
       }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="rerank",
+          inference_id="jinaai-rerank",
+          inference_config={
+              "service": "jinaai",
+              "service_settings": {
+                  "api_key": "JinaAI-Api-key",
+                  "model_id": "jina-reranker-v2-base-multilingual"
+              },
+              "task_settings": {
+                  "top_n": 10,
+                  "return_documents": True
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "rerank",
+        inference_id: "jinaai-rerank",
+        inference_config: {
+          service: "jinaai",
+          service_settings: {
+            api_key: "JinaAI-Api-key",
+            model_id: "jina-reranker-v2-base-multilingual",
+          },
+          task_settings: {
+            top_n: 10,
+            return_documents: true,
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "rerank",
+        inference_id: "jinaai-rerank",
+        body: {
+          "service": "jinaai",
+          "service_settings": {
+            "api_key": "JinaAI-Api-key",
+            "model_id": "jina-reranker-v2-base-multilingual"
+          },
+          "task_settings": {
+            "top_n": 10,
+            "return_documents": true
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "rerank",
+          "inference_id" => "jinaai-rerank",
+          "body" => [
+              "service" => "jinaai",
+              "service_settings" => [
+                  "api_key" => "JinaAI-Api-key",
+                  "model_id" => "jina-reranker-v2-base-multilingual",
+              ],
+              "task_settings" => [
+                  "top_n" => 10,
+                  "return_documents" => true,
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"service\":\"jinaai\",\"service_settings\":{\"api_key\":\"JinaAI-Api-key\",\"model_id\":\"jina-reranker-v2-base-multilingu\
+      al\"},\"task_settings\":{\"top_n\":10,\"return_documents\":true}}' \"http://localhost:9200/_inference/rerank/jinaai-rerank\""

@@ -17,3 +17,113 @@ value:
     time:
       field: order_date
       delay: 60s
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.transform.put_transform(
+          transform_id="ecommerce_transform2",
+          source={
+              "index": "kibana_sample_data_ecommerce"
+          },
+          latest={
+              "unique_key": [
+                  "customer_id"
+              ],
+              "sort": "order_date"
+          },
+          description="Latest order for each customer",
+          dest={
+              "index": "kibana_sample_data_ecommerce_transform2"
+          },
+          frequency="5m",
+          sync={
+              "time": {
+                  "field": "order_date",
+                  "delay": "60s"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.transform.putTransform({
+        transform_id: "ecommerce_transform2",
+        source: {
+          index: "kibana_sample_data_ecommerce",
+        },
+        latest: {
+          unique_key: ["customer_id"],
+          sort: "order_date",
+        },
+        description: "Latest order for each customer",
+        dest: {
+          index: "kibana_sample_data_ecommerce_transform2",
+        },
+        frequency: "5m",
+        sync: {
+          time: {
+            field: "order_date",
+            delay: "60s",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.transform.put_transform(
+        transform_id: "ecommerce_transform2",
+        body: {
+          "source": {
+            "index": "kibana_sample_data_ecommerce"
+          },
+          "latest": {
+            "unique_key": [
+              "customer_id"
+            ],
+            "sort": "order_date"
+          },
+          "description": "Latest order for each customer",
+          "dest": {
+            "index": "kibana_sample_data_ecommerce_transform2"
+          },
+          "frequency": "5m",
+          "sync": {
+            "time": {
+              "field": "order_date",
+              "delay": "60s"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->transform()->putTransform([
+          "transform_id" => "ecommerce_transform2",
+          "body" => [
+              "source" => [
+                  "index" => "kibana_sample_data_ecommerce",
+              ],
+              "latest" => [
+                  "unique_key" => array(
+                      "customer_id",
+                  ),
+                  "sort" => "order_date",
+              ],
+              "description" => "Latest order for each customer",
+              "dest" => [
+                  "index" => "kibana_sample_data_ecommerce_transform2",
+              ],
+              "frequency" => "5m",
+              "sync" => [
+                  "time" => [
+                      "field" => "order_date",
+                      "delay" => "60s",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"source\":{\"index\":\"kibana_sample_data_ecommerce\"},\"latest\":{\"unique_key\":[\"customer_id\"],\"sort\":\"order_date\
+      \"},\"description\":\"Latest order for each
+      customer\",\"dest\":{\"index\":\"kibana_sample_data_ecommerce_transform2\"},\"frequency\":\"5m\",\"sync\":{\"time\":{\"field\
+      \":\"order_date\",\"delay\":\"60s\"}}}' \"http://localhost:9200/_transform/ecommerce_transform2\""

@@ -1,5 +1,7 @@
 summary: A chat completion task
-description: Run `POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion on the example question with streaming.
+description:
+  Run `POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion on the example question
+  with streaming.
 method_request: 'POST _inference/chat_completion/openai-completion/_stream'
 # type: "request"
 value: |-
@@ -12,3 +14,65 @@ value: |-
         }
     ]
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.chat_completion_unified(
+          inference_id="openai-completion",
+          chat_completion_request={
+              "model": "gpt-4o",
+              "messages": [
+                  {
+                      "role": "user",
+                      "content": "What is Elastic?"
+                  }
+              ]
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.chatCompletionUnified({
+        inference_id: "openai-completion",
+        chat_completion_request: {
+          model: "gpt-4o",
+          messages: [
+            {
+              role: "user",
+              content: "What is Elastic?",
+            },
+          ],
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.chat_completion_unified(
+        inference_id: "openai-completion",
+        body: {
+          "model": "gpt-4o",
+          "messages": [
+            {
+              "role": "user",
+              "content": "What is Elastic?"
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->chatCompletionUnified([
+          "inference_id" => "openai-completion",
+          "body" => [
+              "model" => "gpt-4o",
+              "messages" => array(
+                  [
+                      "role" => "user",
+                      "content" => "What is Elastic?",
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"model":"gpt-4o","messages":[{"role":"user","content":"What is Elastic?"}]}''
+      "http://localhost:9200/_inference/chat_completion/openai-completion/_stream"'

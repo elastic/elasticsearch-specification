@@ -1,1 +1,24 @@
 method_request: GET /_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.shutdown.get_node(
+          node_id="USpTGYaBSIKbgSUJR2Z9lg",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.shutdown.getNode({
+        node_id: "USpTGYaBSIKbgSUJR2Z9lg",
+      });
+  - language: Ruby
+    code: |-
+      response = client.shutdown.get_node(
+        node_id: "USpTGYaBSIKbgSUJR2Z9lg"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->shutdown()->getNode([
+          "node_id" => "USpTGYaBSIKbgSUJR2Z9lg",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown"'

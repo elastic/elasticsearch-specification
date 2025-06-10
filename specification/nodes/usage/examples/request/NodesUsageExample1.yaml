@@ -1,1 +1,12 @@
 method_request: GET _nodes/usage
+alternatives:
+  - language: Python
+    code: resp = client.nodes.usage()
+  - language: JavaScript
+    code: const response = await client.nodes.usage();
+  - language: Ruby
+    code: response = client.nodes.usage
+  - language: PHP
+    code: $resp = $client->nodes()->usage();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_nodes/usage"'

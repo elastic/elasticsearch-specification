@@ -10,3 +10,49 @@ value: |-
       "action2" : "skip"
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.watcher.execute_watch(
+          id="my_watch",
+          action_modes={
+              "action1": "force_simulate",
+              "action2": "skip"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.watcher.executeWatch({
+        id: "my_watch",
+        action_modes: {
+          action1: "force_simulate",
+          action2: "skip",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.watcher.execute_watch(
+        id: "my_watch",
+        body: {
+          "action_modes": {
+            "action1": "force_simulate",
+            "action2": "skip"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->watcher()->executeWatch([
+          "id" => "my_watch",
+          "body" => [
+              "action_modes" => [
+                  "action1" => "force_simulate",
+                  "action2" => "skip",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"action_modes":{"action1":"force_simulate","action2":"skip"}}''
+      "http://localhost:9200/_watcher/watch/my_watch/_execute"'

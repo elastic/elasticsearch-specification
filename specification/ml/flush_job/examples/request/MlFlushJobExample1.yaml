@@ -4,3 +4,36 @@ value: |-
   {
     "calc_interim": true
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.flush_job(
+          job_id="low_request_rate",
+          calc_interim=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.flushJob({
+        job_id: "low_request_rate",
+        calc_interim: true,
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.flush_job(
+        job_id: "low_request_rate",
+        body: {
+          "calc_interim": true
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->flushJob([
+          "job_id" => "low_request_rate",
+          "body" => [
+              "calc_interim" => true,
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"calc_interim":true}''
+      "http://localhost:9200/_ml/anomaly_detectors/low_request_rate/_flush"'

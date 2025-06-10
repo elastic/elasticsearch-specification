@@ -2,4 +2,57 @@ summary: Change a dynamic index setting
 method_request: PUT /my-index-000001/_settings
 # description: ''
 # type: request
-value: "{\n  \"index\" : {\n    \"number_of_replicas\" : 2\n  }\n}"
+value: "{
+
+  \  \"index\" : {
+
+  \    \"number_of_replicas\" : 2
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.put_settings(
+          index="my-index-000001",
+          settings={
+              "index": {
+                  "number_of_replicas": 2
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.putSettings({
+        index: "my-index-000001",
+        settings: {
+          index: {
+            number_of_replicas: 2,
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.put_settings(
+        index: "my-index-000001",
+        body: {
+          "index": {
+            "number_of_replicas": 2
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->putSettings([
+          "index" => "my-index-000001",
+          "body" => [
+              "index" => [
+                  "number_of_replicas" => 2,
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"index":{"number_of_replicas":2}}'' "http://localhost:9200/my-index-000001/_settings"'

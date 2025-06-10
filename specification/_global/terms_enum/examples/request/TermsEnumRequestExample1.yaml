@@ -7,3 +7,40 @@ value: |-
       "field" : "tags",
       "string" : "kiba"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.terms_enum(
+          index="stackoverflow",
+          field="tags",
+          string="kiba",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.termsEnum({
+        index: "stackoverflow",
+        field: "tags",
+        string: "kiba",
+      });
+  - language: Ruby
+    code: |-
+      response = client.terms_enum(
+        index: "stackoverflow",
+        body: {
+          "field": "tags",
+          "string": "kiba"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->termsEnum([
+          "index" => "stackoverflow",
+          "body" => [
+              "field" => "tags",
+              "string" => "kiba",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"field":"tags","string":"kiba"}'' "http://localhost:9200/stackoverflow/_terms_enum"'

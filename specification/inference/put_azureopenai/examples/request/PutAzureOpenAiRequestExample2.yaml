@@ -12,3 +12,70 @@ value: |-
           "api_version": "2024-02-01"
       }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="completion",
+          inference_id="azure_openai_completion",
+          inference_config={
+              "service": "azureopenai",
+              "service_settings": {
+                  "api_key": "Api-Key",
+                  "resource_name": "Resource-name",
+                  "deployment_id": "Deployment-id",
+                  "api_version": "2024-02-01"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "completion",
+        inference_id: "azure_openai_completion",
+        inference_config: {
+          service: "azureopenai",
+          service_settings: {
+            api_key: "Api-Key",
+            resource_name: "Resource-name",
+            deployment_id: "Deployment-id",
+            api_version: "2024-02-01",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "completion",
+        inference_id: "azure_openai_completion",
+        body: {
+          "service": "azureopenai",
+          "service_settings": {
+            "api_key": "Api-Key",
+            "resource_name": "Resource-name",
+            "deployment_id": "Deployment-id",
+            "api_version": "2024-02-01"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "completion",
+          "inference_id" => "azure_openai_completion",
+          "body" => [
+              "service" => "azureopenai",
+              "service_settings" => [
+                  "api_key" => "Api-Key",
+                  "resource_name" => "Resource-name",
+                  "deployment_id" => "Deployment-id",
+                  "api_version" => "2024-02-01",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"service\":\"azureopenai\",\"service_settings\":{\"api_key\":\"Api-Key\",\"resource_name\":\"Resource-name\",\"deployment_\
+      id\":\"Deployment-id\",\"api_version\":\"2024-02-01\"}}'
+      \"http://localhost:9200/_inference/completion/azure_openai_completion\""

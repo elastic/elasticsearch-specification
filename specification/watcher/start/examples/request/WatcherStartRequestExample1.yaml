@@ -1,1 +1,12 @@
 method_request: POST _watcher/_start
+alternatives:
+  - language: Python
+    code: resp = client.watcher.start()
+  - language: JavaScript
+    code: const response = await client.watcher.start();
+  - language: Ruby
+    code: response = client.watcher.start
+  - language: PHP
+    code: $resp = $client->watcher()->start();
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_watcher/_start"'

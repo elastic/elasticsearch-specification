@@ -1,1 +1,24 @@
 method_request: HEAD /_template/template_1
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.exists_template(
+          name="template_1",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.existsTemplate({
+        name: "template_1",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.exists_template(
+        name: "template_1"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->existsTemplate([
+          "name" => "template_1",
+      ]);
+  - language: curl
+    code: 'curl --head -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_template/template_1"'

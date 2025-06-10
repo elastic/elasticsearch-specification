@@ -1,10 +1,43 @@
 summary: Remove permissions
 method_request: PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx
 description: >
-  Run `PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx` to remove the API key's previously assigned permissions.
-  It will inherit the owner user's full permissions.
+  Run `PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx` to remove the API key's previously assigned permissions. It will inherit the
+  owner user's full permissions.
 # type: request
 value: |-
   {
     "role_descriptors": {}
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.update_api_key(
+          id="VuaCfGcBCdbkQm-e5aOx",
+          role_descriptors={},
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.updateApiKey({
+        id: "VuaCfGcBCdbkQm-e5aOx",
+        role_descriptors: {},
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.update_api_key(
+        id: "VuaCfGcBCdbkQm-e5aOx",
+        body: {
+          "role_descriptors": {}
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->updateApiKey([
+          "id" => "VuaCfGcBCdbkQm-e5aOx",
+          "body" => [
+              "role_descriptors" => new ArrayObject([]),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"role_descriptors":{}}'' "http://localhost:9200/_security/api_key/VuaCfGcBCdbkQm-e5aOx"'

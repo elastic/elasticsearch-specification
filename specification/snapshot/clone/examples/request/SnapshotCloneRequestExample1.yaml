@@ -1,5 +1,52 @@
 # summary:
 method_request: PUT /_snapshot/my_repository/source_snapshot/_clone/target_snapshot
-description: Run `PUT /_snapshot/my_repository/source_snapshot/_clone/target_snapshot` to clone the `source_snapshot` into a new `target_snapshot`.
+description:
+  Run `PUT /_snapshot/my_repository/source_snapshot/_clone/target_snapshot` to clone the `source_snapshot` into a new
+  `target_snapshot`.
 # type: request
-value: "{\n  \"indices\": \"index_a,index_b\"\n}"
+value: "{
+
+  \  \"indices\": \"index_a,index_b\"
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.snapshot.clone(
+          repository="my_repository",
+          snapshot="source_snapshot",
+          target_snapshot="target_snapshot",
+          indices="index_a,index_b",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.snapshot.clone({
+        repository: "my_repository",
+        snapshot: "source_snapshot",
+        target_snapshot: "target_snapshot",
+        indices: "index_a,index_b",
+      });
+  - language: Ruby
+    code: |-
+      response = client.snapshot.clone(
+        repository: "my_repository",
+        snapshot: "source_snapshot",
+        target_snapshot: "target_snapshot",
+        body: {
+          "indices": "index_a,index_b"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->snapshot()->clone([
+          "repository" => "my_repository",
+          "snapshot" => "source_snapshot",
+          "target_snapshot" => "target_snapshot",
+          "body" => [
+              "indices" => "index_a,index_b",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"indices":"index_a,index_b"}'' "http://localhost:9200/_snapshot/my_repository/source_snapshot/_clone/target_snapshot"'

@@ -1,9 +1,8 @@
 summary: Run a watch inline
 method_request: POST _watcher/watch/_execute
 description: >
-  Run `POST _watcher/watch/_execute` to run a watch inline.
-  All other settings for this API still apply when inlining a watch.
-  In this example, while the inline watch defines a compare condition, during the execution this condition will be ignored.
+  Run `POST _watcher/watch/_execute` to run a watch inline. All other settings for this API still apply when inlining a watch. In
+  this example, while the inline watch defines a compare condition, during the execution this condition will be ignored.
 # type: request
 value: |-
   {
@@ -33,3 +32,177 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.watcher.execute_watch(
+          watch={
+              "trigger": {
+                  "schedule": {
+                      "interval": "10s"
+                  }
+              },
+              "input": {
+                  "search": {
+                      "request": {
+                          "indices": [
+                              "logs"
+                          ],
+                          "body": {
+                              "query": {
+                                  "match": {
+                                      "message": "error"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "condition": {
+                  "compare": {
+                      "ctx.payload.hits.total": {
+                          "gt": 0
+                      }
+                  }
+              },
+              "actions": {
+                  "log_error": {
+                      "logging": {
+                          "text": "Found {{ctx.payload.hits.total}} errors in the logs"
+                      }
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.watcher.executeWatch({
+        watch: {
+          trigger: {
+            schedule: {
+              interval: "10s",
+            },
+          },
+          input: {
+            search: {
+              request: {
+                indices: ["logs"],
+                body: {
+                  query: {
+                    match: {
+                      message: "error",
+                    },
+                  },
+                },
+              },
+            },
+          },
+          condition: {
+            compare: {
+              "ctx.payload.hits.total": {
+                gt: 0,
+              },
+            },
+          },
+          actions: {
+            log_error: {
+              logging: {
+                text: "Found {{ctx.payload.hits.total}} errors in the logs",
+              },
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.watcher.execute_watch(
+        body: {
+          "watch": {
+            "trigger": {
+              "schedule": {
+                "interval": "10s"
+              }
+            },
+            "input": {
+              "search": {
+                "request": {
+                  "indices": [
+                    "logs"
+                  ],
+                  "body": {
+                    "query": {
+                      "match": {
+                        "message": "error"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "condition": {
+              "compare": {
+                "ctx.payload.hits.total": {
+                  "gt": 0
+                }
+              }
+            },
+            "actions": {
+              "log_error": {
+                "logging": {
+                  "text": "Found {{ctx.payload.hits.total}} errors in the logs"
+                }
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->watcher()->executeWatch([
+          "body" => [
+              "watch" => [
+                  "trigger" => [
+                      "schedule" => [
+                          "interval" => "10s",
+                      ],
+                  ],
+                  "input" => [
+                      "search" => [
+                          "request" => [
+                              "indices" => array(
+                                  "logs",
+                              ),
+                              "body" => [
+                                  "query" => [
+                                      "match" => [
+                                          "message" => "error",
+                                      ],
+                                  ],
+                              ],
+                          ],
+                      ],
+                  ],
+                  "condition" => [
+                      "compare" => [
+                          "ctx.payload.hits.total" => [
+                              "gt" => 0,
+                          ],
+                      ],
+                  ],
+                  "actions" => [
+                      "log_error" => [
+                          "logging" => [
+                              "text" => "Found {{ctx.payload.hits.total}} errors in the logs",
+                          ],
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"watch\":{\"trigger\":{\"schedule\":{\"interval\":\"10s\"}},\"input\":{\"search\":{\"request\":{\"indices\":[\"logs\"],\"b\
+      ody\":{\"query\":{\"match\":{\"message\":\"error\"}}}}}},\"condition\":{\"compare\":{\"ctx.payload.hits.total\":{\"gt\":0}}},\
+      \"actions\":{\"log_error\":{\"logging\":{\"text\":\"Found {{ctx.payload.hits.total}} errors in the logs\"}}}}}'
+      \"http://localhost:9200/_watcher/watch/_execute\""

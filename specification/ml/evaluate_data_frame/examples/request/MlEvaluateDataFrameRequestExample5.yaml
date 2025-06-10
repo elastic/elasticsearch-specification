@@ -1,10 +1,9 @@
 summary: Regression example 2
 method_request: POST _ml/data_frame/_evaluate
 description: >
-  Run `POST _ml/data_frame/_evaluate` to evaluate the training error of a regression job for an annotated index.
-  The term query in the body limits evaluation to be performed on the training split only.
-  The `actual_field` contains the ground truth for house prices.
-  The `predicted_field` contains the house price calculated by the regression analysis.
+  Run `POST _ml/data_frame/_evaluate` to evaluate the training error of a regression job for an annotated index. The term query in
+  the body limits evaluation to be performed on the training split only. The `actual_field` contains the ground truth for house
+  prices. The `predicted_field` contains the house price calculated by the regression analysis.
 # type: request
 value:
   index: house_price_predictions
@@ -21,3 +20,110 @@ value:
         mse: {}
         msle: {}
         huber: {}
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.evaluate_data_frame(
+          index="house_price_predictions",
+          query={
+              "term": {
+                  "ml.is_training": {
+                      "value": True
+                  }
+              }
+          },
+          evaluation={
+              "regression": {
+                  "actual_field": "price",
+                  "predicted_field": "ml.price_prediction",
+                  "metrics": {
+                      "r_squared": {},
+                      "mse": {},
+                      "msle": {},
+                      "huber": {}
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.evaluateDataFrame({
+        index: "house_price_predictions",
+        query: {
+          term: {
+            "ml.is_training": {
+              value: true,
+            },
+          },
+        },
+        evaluation: {
+          regression: {
+            actual_field: "price",
+            predicted_field: "ml.price_prediction",
+            metrics: {
+              r_squared: {},
+              mse: {},
+              msle: {},
+              huber: {},
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.evaluate_data_frame(
+        body: {
+          "index": "house_price_predictions",
+          "query": {
+            "term": {
+              "ml.is_training": {
+                "value": true
+              }
+            }
+          },
+          "evaluation": {
+            "regression": {
+              "actual_field": "price",
+              "predicted_field": "ml.price_prediction",
+              "metrics": {
+                "r_squared": {},
+                "mse": {},
+                "msle": {},
+                "huber": {}
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->evaluateDataFrame([
+          "body" => [
+              "index" => "house_price_predictions",
+              "query" => [
+                  "term" => [
+                      "ml.is_training" => [
+                          "value" => true,
+                      ],
+                  ],
+              ],
+              "evaluation" => [
+                  "regression" => [
+                      "actual_field" => "price",
+                      "predicted_field" => "ml.price_prediction",
+                      "metrics" => [
+                          "r_squared" => new ArrayObject([]),
+                          "mse" => new ArrayObject([]),
+                          "msle" => new ArrayObject([]),
+                          "huber" => new ArrayObject([]),
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"index\":\"house_price_predictions\",\"query\":{\"term\":{\"ml.is_training\":{\"value\":true}}},\"evaluation\":{\"regressi\
+      on\":{\"actual_field\":\"price\",\"predicted_field\":\"ml.price_prediction\",\"metrics\":{\"r_squared\":{},\"mse\":{},\"msle\
+      \":{},\"huber\":{}}}}}' \"http://localhost:9200/_ml/data_frame/_evaluate\""

@@ -9,3 +9,57 @@ value:
     outlier_detection:
       actual_field: is_outlier
       predicted_probability_field: ml.outlier_score
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.evaluate_data_frame(
+          index="my_analytics_dest_index",
+          evaluation={
+              "outlier_detection": {
+                  "actual_field": "is_outlier",
+                  "predicted_probability_field": "ml.outlier_score"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.evaluateDataFrame({
+        index: "my_analytics_dest_index",
+        evaluation: {
+          outlier_detection: {
+            actual_field: "is_outlier",
+            predicted_probability_field: "ml.outlier_score",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.evaluate_data_frame(
+        body: {
+          "index": "my_analytics_dest_index",
+          "evaluation": {
+            "outlier_detection": {
+              "actual_field": "is_outlier",
+              "predicted_probability_field": "ml.outlier_score"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->evaluateDataFrame([
+          "body" => [
+              "index" => "my_analytics_dest_index",
+              "evaluation" => [
+                  "outlier_detection" => [
+                      "actual_field" => "is_outlier",
+                      "predicted_probability_field" => "ml.outlier_score",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"index\":\"my_analytics_dest_index\",\"evaluation\":{\"outlier_detection\":{\"actual_field\":\"is_outlier\",\"predicted_pr\
+      obability_field\":\"ml.outlier_score\"}}}' \"http://localhost:9200/_ml/data_frame/_evaluate\""

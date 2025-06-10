@@ -10,3 +10,61 @@ value: |-
           "project_id": "project-id"
       }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="rerank",
+          inference_id="google_vertex_ai_rerank",
+          inference_config={
+              "service": "googlevertexai",
+              "service_settings": {
+                  "service_account_json": "service-account-json",
+                  "project_id": "project-id"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "rerank",
+        inference_id: "google_vertex_ai_rerank",
+        inference_config: {
+          service: "googlevertexai",
+          service_settings: {
+            service_account_json: "service-account-json",
+            project_id: "project-id",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "rerank",
+        inference_id: "google_vertex_ai_rerank",
+        body: {
+          "service": "googlevertexai",
+          "service_settings": {
+            "service_account_json": "service-account-json",
+            "project_id": "project-id"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "rerank",
+          "inference_id" => "google_vertex_ai_rerank",
+          "body" => [
+              "service" => "googlevertexai",
+              "service_settings" => [
+                  "service_account_json" => "service-account-json",
+                  "project_id" => "project-id",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"service\":\"googlevertexai\",\"service_settings\":{\"service_account_json\":\"service-account-json\",\"project_id\":\"pro\
+      ject-id\"}}' \"http://localhost:9200/_inference/rerank/google_vertex_ai_rerank\""

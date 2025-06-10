@@ -1,1 +1,24 @@
 method_request: GET _connector/_sync_job/my-connector-sync-job
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.sync_job_get(
+          connector_sync_job_id="my-connector-sync-job",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.syncJobGet({
+        connector_sync_job_id: "my-connector-sync-job",
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.sync_job_get(
+        connector_sync_job_id: "my-connector-sync-job"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->syncJobGet([
+          "connector_sync_job_id" => "my-connector-sync-job",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_connector/_sync_job/my-connector-sync-job"'

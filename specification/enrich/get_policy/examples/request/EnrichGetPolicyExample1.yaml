@@ -1,1 +1,24 @@
 method_request: GET /_enrich/policy/my-policy
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.enrich.get_policy(
+          name="my-policy",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.enrich.getPolicy({
+        name: "my-policy",
+      });
+  - language: Ruby
+    code: |-
+      response = client.enrich.get_policy(
+        name: "my-policy"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->enrich()->getPolicy([
+          "name" => "my-policy",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_enrich/policy/my-policy"'

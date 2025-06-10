@@ -1,1 +1,12 @@
 method_request: GET /_security/user/_privileges
+alternatives:
+  - language: Python
+    code: resp = client.security.get_user_privileges()
+  - language: JavaScript
+    code: const response = await client.security.getUserPrivileges();
+  - language: Ruby
+    code: response = client.security.get_user_privileges
+  - language: PHP
+    code: $resp = $client->security()->getUserPrivileges();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_security/user/_privileges"'

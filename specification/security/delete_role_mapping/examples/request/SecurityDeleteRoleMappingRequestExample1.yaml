@@ -1,1 +1,24 @@
 method_request: DELETE /_security/role_mapping/mapping1
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.delete_role_mapping(
+          name="mapping1",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.deleteRoleMapping({
+        name: "mapping1",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.delete_role_mapping(
+        name: "mapping1"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->deleteRoleMapping([
+          "name" => "mapping1",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_security/role_mapping/mapping1"'

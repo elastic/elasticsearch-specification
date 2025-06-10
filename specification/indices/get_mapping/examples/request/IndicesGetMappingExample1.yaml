@@ -1,1 +1,24 @@
 method_request: GET /books/_mapping
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.get_mapping(
+          index="books",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.getMapping({
+        index: "books",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.get_mapping(
+        index: "books"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->getMapping([
+          "index" => "books",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/books/_mapping"'

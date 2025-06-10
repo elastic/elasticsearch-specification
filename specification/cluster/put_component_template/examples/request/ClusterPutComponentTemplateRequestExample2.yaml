@@ -1,8 +1,8 @@
 summary: Create a template with aliases
 method_request: PUT _component_template/template_1
 description: >
-  You can include index aliases in a component template.
-  During index creation, the `{index}` placeholder in the alias name will be replaced with the actual index name that the template gets applied to.
+  You can include index aliases in a component template. During index creation, the `{index}` placeholder in the alias name will be
+  replaced with the actual index name that the template gets applied to.
 # type: request
 value:
   template:
@@ -16,3 +16,97 @@ value:
           user.id: kimchy
       routing: shard-1
     '{index}-alias': {}
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cluster.put_component_template(
+          name="template_1",
+          template=None,
+          settings={
+              "number_of_shards": 1
+          },
+          aliases={
+              "alias1": {},
+              "alias2": {
+                  "filter": {
+                      "term": {
+                          "user.id": "kimchy"
+                      }
+                  },
+                  "routing": "shard-1"
+              },
+              "{index}-alias": {}
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cluster.putComponentTemplate({
+        name: "template_1",
+        template: null,
+        settings: {
+          number_of_shards: 1,
+        },
+        aliases: {
+          alias1: {},
+          alias2: {
+            filter: {
+              term: {
+                "user.id": "kimchy",
+              },
+            },
+            routing: "shard-1",
+          },
+          "{index}-alias": {},
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.cluster.put_component_template(
+        name: "template_1",
+        body: {
+          "template": nil,
+          "settings": {
+            "number_of_shards": 1
+          },
+          "aliases": {
+            "alias1": {},
+            "alias2": {
+              "filter": {
+                "term": {
+                  "user.id": "kimchy"
+                }
+              },
+              "routing": "shard-1"
+            },
+            "{index}-alias": {}
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cluster()->putComponentTemplate([
+          "name" => "template_1",
+          "body" => [
+              "template" => null,
+              "settings" => [
+                  "number_of_shards" => 1,
+              ],
+              "aliases" => [
+                  "alias1" => new ArrayObject([]),
+                  "alias2" => [
+                      "filter" => [
+                          "term" => [
+                              "user.id" => "kimchy",
+                          ],
+                      ],
+                      "routing" => "shard-1",
+                  ],
+                  "{index}-alias" => new ArrayObject([]),
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"template\":null,\"settings\":{\"number_of_shards\":1},\"aliases\":{\"alias1\":{},\"alias2\":{\"filter\":{\"term\":{\"user\
+      .id\":\"kimchy\"}},\"routing\":\"shard-1\"},\"{index}-alias\":{}}}' \"http://localhost:9200/_component_template/template_1\""

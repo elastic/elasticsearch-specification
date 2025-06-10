@@ -8,3 +8,40 @@ value: |-
       "indices.recovery.max_bytes_per_sec" : "50mb"
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cluster.put_settings(
+          persistent={
+              "indices.recovery.max_bytes_per_sec": "50mb"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cluster.putSettings({
+        persistent: {
+          "indices.recovery.max_bytes_per_sec": "50mb",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.cluster.put_settings(
+        body: {
+          "persistent": {
+            "indices.recovery.max_bytes_per_sec": "50mb"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cluster()->putSettings([
+          "body" => [
+              "persistent" => [
+                  "indices.recovery.max_bytes_per_sec" => "50mb",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"persistent":{"indices.recovery.max_bytes_per_sec":"50mb"}}'' "http://localhost:9200/_cluster/settings"'

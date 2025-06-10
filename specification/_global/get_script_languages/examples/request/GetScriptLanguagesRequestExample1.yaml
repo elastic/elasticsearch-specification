@@ -1,1 +1,12 @@
 method_request: GET _script_language
+alternatives:
+  - language: Python
+    code: resp = client.get_script_languages()
+  - language: JavaScript
+    code: const response = await client.getScriptLanguages();
+  - language: Ruby
+    code: response = client.get_script_languages
+  - language: PHP
+    code: $resp = $client->getScriptLanguages();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_script_language"'

@@ -1,9 +1,39 @@
 summary: A client_credentials grant type example
 method_request: POST /_security/oauth2/token
 description: >
-  Run `POST /_security/oauth2/token` to obtain a token using the `client_credentials` grant type, which simply creates a token as the authenticated user.
+  Run `POST /_security/oauth2/token` to obtain a token using the `client_credentials` grant type, which simply creates a token as
+  the authenticated user.
 # type: request
 value: |-
   {
     "grant_type" : "client_credentials"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.get_token(
+          grant_type="client_credentials",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.getToken({
+        grant_type: "client_credentials",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.get_token(
+        body: {
+          "grant_type": "client_credentials"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->getToken([
+          "body" => [
+              "grant_type" => "client_credentials",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"grant_type":"client_credentials"}'' "http://localhost:9200/_security/oauth2/token"'

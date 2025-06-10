@@ -18,3 +18,81 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.put_script(
+          id="my-search-template",
+          script={
+              "lang": "mustache",
+              "source": {
+                  "query": {
+                      "match": {
+                          "message": "{{query_string}}"
+                      }
+                  },
+                  "from": "{{from}}",
+                  "size": "{{size}}"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.putScript({
+        id: "my-search-template",
+        script: {
+          lang: "mustache",
+          source: {
+            query: {
+              match: {
+                message: "{{query_string}}",
+              },
+            },
+            from: "{{from}}",
+            size: "{{size}}",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.put_script(
+        id: "my-search-template",
+        body: {
+          "script": {
+            "lang": "mustache",
+            "source": {
+              "query": {
+                "match": {
+                  "message": "{{query_string}}"
+                }
+              },
+              "from": "{{from}}",
+              "size": "{{size}}"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->putScript([
+          "id" => "my-search-template",
+          "body" => [
+              "script" => [
+                  "lang" => "mustache",
+                  "source" => [
+                      "query" => [
+                          "match" => [
+                              "message" => "{{query_string}}",
+                          ],
+                      ],
+                      "from" => "{{from}}",
+                      "size" => "{{size}}",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"script\":{\"lang\":\"mustache\",\"source\":{\"query\":{\"match\":{\"message\":\"{{query_string}}\"}},\"from\":\"{{from}}\
+      \",\"size\":\"{{size}}\"}}}' \"http://localhost:9200/_scripts/my-search-template\""

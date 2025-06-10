@@ -8,3 +8,44 @@ value: |-
       "match_all": {}
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.delete_by_query(
+          index="my-index-000001,my-index-000002",
+          query={
+              "match_all": {}
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.deleteByQuery({
+        index: "my-index-000001,my-index-000002",
+        query: {
+          match_all: {},
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.delete_by_query(
+        index: "my-index-000001,my-index-000002",
+        body: {
+          "query": {
+            "match_all": {}
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->deleteByQuery([
+          "index" => "my-index-000001,my-index-000002",
+          "body" => [
+              "query" => [
+                  "match_all" => new ArrayObject([]),
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"query":{"match_all":{}}}'' "http://localhost:9200/my-index-000001,my-index-000002/_delete_by_query"'

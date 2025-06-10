@@ -1,1 +1,24 @@
 method_request: POST /_security/privilege/myapp/_clear_cache
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.clear_cached_privileges(
+          application="myapp",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.clearCachedPrivileges({
+        application: "myapp",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.clear_cached_privileges(
+        application: "myapp"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->clearCachedPrivileges([
+          "application" => "myapp",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_security/privilege/myapp/_clear_cache"'

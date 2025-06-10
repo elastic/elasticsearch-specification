@@ -39,3 +39,175 @@ value: |-
     },
     "model_memory_limit": "100mb"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.put_data_frame_analytics(
+          id="model-flight-delays-pre",
+          source={
+              "index": [
+                  "kibana_sample_data_flights"
+              ],
+              "query": {
+                  "range": {
+                      "DistanceKilometers": {
+                          "gt": 0
+                      }
+                  }
+              },
+              "_source": {
+                  "includes": [],
+                  "excludes": [
+                      "FlightDelay",
+                      "FlightDelayType"
+                  ]
+              }
+          },
+          dest={
+              "index": "df-flight-delays",
+              "results_field": "ml-results"
+          },
+          analysis={
+              "regression": {
+                  "dependent_variable": "FlightDelayMin",
+                  "training_percent": 90
+              }
+          },
+          analyzed_fields={
+              "includes": [],
+              "excludes": [
+                  "FlightNum"
+              ]
+          },
+          model_memory_limit="100mb",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.putDataFrameAnalytics({
+        id: "model-flight-delays-pre",
+        source: {
+          index: ["kibana_sample_data_flights"],
+          query: {
+            range: {
+              DistanceKilometers: {
+                gt: 0,
+              },
+            },
+          },
+          _source: {
+            includes: [],
+            excludes: ["FlightDelay", "FlightDelayType"],
+          },
+        },
+        dest: {
+          index: "df-flight-delays",
+          results_field: "ml-results",
+        },
+        analysis: {
+          regression: {
+            dependent_variable: "FlightDelayMin",
+            training_percent: 90,
+          },
+        },
+        analyzed_fields: {
+          includes: [],
+          excludes: ["FlightNum"],
+        },
+        model_memory_limit: "100mb",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.put_data_frame_analytics(
+        id: "model-flight-delays-pre",
+        body: {
+          "source": {
+            "index": [
+              "kibana_sample_data_flights"
+            ],
+            "query": {
+              "range": {
+                "DistanceKilometers": {
+                  "gt": 0
+                }
+              }
+            },
+            "_source": {
+              "includes": [],
+              "excludes": [
+                "FlightDelay",
+                "FlightDelayType"
+              ]
+            }
+          },
+          "dest": {
+            "index": "df-flight-delays",
+            "results_field": "ml-results"
+          },
+          "analysis": {
+            "regression": {
+              "dependent_variable": "FlightDelayMin",
+              "training_percent": 90
+            }
+          },
+          "analyzed_fields": {
+            "includes": [],
+            "excludes": [
+              "FlightNum"
+            ]
+          },
+          "model_memory_limit": "100mb"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->putDataFrameAnalytics([
+          "id" => "model-flight-delays-pre",
+          "body" => [
+              "source" => [
+                  "index" => array(
+                      "kibana_sample_data_flights",
+                  ),
+                  "query" => [
+                      "range" => [
+                          "DistanceKilometers" => [
+                              "gt" => 0,
+                          ],
+                      ],
+                  ],
+                  "_source" => [
+                      "includes" => array(
+                      ),
+                      "excludes" => array(
+                          "FlightDelay",
+                          "FlightDelayType",
+                      ),
+                  ],
+              ],
+              "dest" => [
+                  "index" => "df-flight-delays",
+                  "results_field" => "ml-results",
+              ],
+              "analysis" => [
+                  "regression" => [
+                      "dependent_variable" => "FlightDelayMin",
+                      "training_percent" => 90,
+                  ],
+              ],
+              "analyzed_fields" => [
+                  "includes" => array(
+                  ),
+                  "excludes" => array(
+                      "FlightNum",
+                  ),
+              ],
+              "model_memory_limit" => "100mb",
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"source\":{\"index\":[\"kibana_sample_data_flights\"],\"query\":{\"range\":{\"DistanceKilometers\":{\"gt\":0}}},\"_source\
+      \":{\"includes\":[],\"excludes\":[\"FlightDelay\",\"FlightDelayType\"]}},\"dest\":{\"index\":\"df-flight-delays\",\"results_f\
+      ield\":\"ml-results\"},\"analysis\":{\"regression\":{\"dependent_variable\":\"FlightDelayMin\",\"training_percent\":90}},\"an\
+      alyzed_fields\":{\"includes\":[],\"excludes\":[\"FlightNum\"]},\"model_memory_limit\":\"100mb\"}'
+      \"http://localhost:9200/_ml/data_frame/analytics/model-flight-delays-pre\""

@@ -1,1 +1,24 @@
 method_request: GET /sensor_rollup/_rollup/data
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.rollup.get_rollup_index_caps(
+          index="sensor_rollup",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.rollup.getRollupIndexCaps({
+        index: "sensor_rollup",
+      });
+  - language: Ruby
+    code: |-
+      response = client.rollup.get_rollup_index_caps(
+        index: "sensor_rollup"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->rollup()->getRollupIndexCaps([
+          "index" => "sensor_rollup",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/sensor_rollup/_rollup/data"'

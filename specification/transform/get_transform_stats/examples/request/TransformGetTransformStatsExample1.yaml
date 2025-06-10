@@ -1,1 +1,25 @@
 method_request: GET _transform/ecommerce-customer-transform/_stats
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.transform.get_transform_stats(
+          transform_id="ecommerce-customer-transform",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.transform.getTransformStats({
+        transform_id: "ecommerce-customer-transform",
+      });
+  - language: Ruby
+    code: |-
+      response = client.transform.get_transform_stats(
+        transform_id: "ecommerce-customer-transform"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->transform()->getTransformStats([
+          "transform_id" => "ecommerce-customer-transform",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "http://localhost:9200/_transform/ecommerce-customer-transform/_stats"'

@@ -1,1 +1,24 @@
 method_request: GET _connector/my-connector-id
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.get(
+          connector_id="my-connector-id",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.get({
+        connector_id: "my-connector-id",
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.get(
+        connector_id: "my-connector-id"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->get([
+          "connector_id" => "my-connector-id",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_connector/my-connector-id"'
