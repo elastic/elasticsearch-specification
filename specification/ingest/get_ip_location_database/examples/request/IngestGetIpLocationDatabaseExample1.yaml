@@ -1,0 +1,1 @@
+method_request: GET /_ingest/ip_location/database/my-database-id

@@ -1,0 +1,8 @@
+method_request: PUT _inference/my-inference-endpoint/_update
+description: An example body for a `PUT _inference/my-inference-endpoint/_update` request.
+value: |-
+  {
+   "service_settings": {
+     "api_key": "<API_KEY>"
+   }
+  }

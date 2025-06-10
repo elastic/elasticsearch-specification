@@ -1,5 +1,4 @@
 # summary:
-method_request: GET museums/_mvt/location/13/4207/2692
 description: >
   A successful response from `GET museums/_mvt/location/13/4207/2692`.
   It returns results as a binary vector tile.

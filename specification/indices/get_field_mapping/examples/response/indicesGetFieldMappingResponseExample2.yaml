@@ -1,6 +1,5 @@
 summary: Multiple field mappings
 # indices/get-field-mapping.asciidoc:137
-method_request: GET publications/_mapping/field/author.id,abstract,name
 description: >
   A successful response from `GET publications/_mapping/field/author.id,abstract,name`.
   The get field mapping API also supports wildcard notation.

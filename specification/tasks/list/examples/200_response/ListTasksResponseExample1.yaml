@@ -1,5 +1,4 @@
 # summary:
-method_request: GET _tasks?actions=*search&detailed
 description: >
   A successful response from `GET _tasks?actions=*search&detailed`
   The `detailed` parameter affects the `description` field, which contains human readable text that identifies the particular request that the task is performing.

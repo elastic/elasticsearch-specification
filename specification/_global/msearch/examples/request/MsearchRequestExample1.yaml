@@ -1,0 +1,7 @@
+method_request: GET my-index-000001/_msearch
+description: An example body for a `GET my-index-000001/_msearch` request.
+value: |-
+  { }
+  {"query" : {"match" : { "message": "this is a test"}}}
+  {"index": "my-index-000002"}
+  {"query" : {"match_all" : {}}}

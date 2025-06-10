@@ -1,0 +1,1 @@
+method_request: GET _cat/recovery?v=true&format=json

@@ -1,5 +1,4 @@
 # summary:
-method_request: POST /_security/oidc/logout
 description: A successful response from `POST /_security/oidc/logout`, which contains the URI pointing to the End Session Endpoint of the OpenID Connect Provider with all the parameters of the Logout Request as HTTP GET parameters.
 # type: response
 # response_code:

@@ -1,5 +1,4 @@
 summary: Get cluster actions
-method_request: GET _tasks?actions=cluster:*
 description: >
   A successful response from `GET _tasks?actions=cluster:*`, which retrieves all cluster-related tasks.
 # type: response

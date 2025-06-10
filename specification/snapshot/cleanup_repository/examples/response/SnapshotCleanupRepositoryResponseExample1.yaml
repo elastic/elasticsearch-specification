@@ -1,5 +1,4 @@
 # summary:
-method_request: POST /_snapshot/my_repository/_cleanup
 description: A successful response from `POST /_snapshot/my_repository/_cleanup`.
 # type: response
 # response_code: ''

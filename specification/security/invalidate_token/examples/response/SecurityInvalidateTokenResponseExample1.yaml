@@ -1,5 +1,4 @@
 # summary:
-method_request: DELETE /_security/oauth2/token
 description: >
   A partially successful response from `DELETE /_security/oauth2/token`.
   The response includes the number of the tokens that were invalidated, the number of errors that were encountered when invalidating the tokens, and details about these errors.

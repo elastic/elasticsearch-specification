@@ -1,0 +1,8 @@
+method_request: POST
+description: An example body for a `POST` request.
+value: |-
+  _ml/anomaly_detectors/it_ops_new_logs/model_snapshots/1491852978/_update
+  {
+    "description": "Snapshot 1",
+    "retain": true
+  }

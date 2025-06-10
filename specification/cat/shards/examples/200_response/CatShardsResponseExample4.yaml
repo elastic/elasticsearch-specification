@@ -1,5 +1,4 @@
 summary: Shard states
-method_request: GET _cat/shards?format=json
 description: >
   A successful response from `GET _cat/shards?format=json`.
   Before a shard is available for use, it goes through an `INITIALIZING` state.

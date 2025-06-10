@@ -1,5 +1,4 @@
 # summary: ''
-method_request: POST /my-index-000001/_disk_usage?run_expensive_tasks=true
 description: An abbreviated response from `POST /my-index-000001/_disk_usage?run_expensive_tasks=true`.
 # type: response
 # response_code: 200

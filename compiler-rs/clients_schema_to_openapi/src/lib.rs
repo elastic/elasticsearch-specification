@@ -23,15 +23,24 @@ pub mod cli;
 
 use indexmap::IndexMap;
 
-use clients_schema::{Availabilities, Flavor, IndexedModel, Stability, Visibility};
+use clients_schema::{Availabilities, Availability, Flavor, IndexedModel, Stability, Visibility};
 use openapiv3::{Components, OpenAPI};
+use serde_json::Value;
 use clients_schema::transform::ExpandConfig;
 use crate::components::TypesAndComponents;
 
 pub struct Configuration {
     pub flavor: Option<Flavor>,
     pub namespaces: Option<Vec<String>>,
+
+    /// If a property value is an enumeration, the description of possible values will be copied in the
+    /// property's description (also works for arrays of enums).
     pub lift_enum_descriptions: bool,
+
+    /// Will output endpoints having multiple paths into a single operation. The operation's path will
+    /// be the longest one (with values for all optional parameters), and the other paths will be added
+    /// at the beginning of the operation's description.
+    pub merge_multipath_endpoints: bool,
 }
 
 /// Convert an API model into an OpenAPI v3 schema, optionally filtered for a given flavor
@@ -149,30 +158,37 @@ fn info(model: &IndexedModel) -> openapiv3::Info {
     }
 }
 
-pub fn availability_as_extensions(availabilities: &Option<Availabilities>) -> IndexMap<String, serde_json::Value> {
+pub fn availability_as_extensions(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>) -> IndexMap<String, serde_json::Value> {
     let mut result = IndexMap::new();
+    convert_availabilities(availabilities, flavor, &mut result);
+    result
+}
 
+pub fn convert_availabilities(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>, result: &mut IndexMap<String, Value>) {
     if let Some(avails) = availabilities {
-        // We may have several availabilities, but since generally exists only on stateful (stack)
-        for (_, availability) in avails {
-            if let Some(stability) = &availability.stability {
-                match stability {
+        if let Some(flav) = flavor {
+            if let Some(availability) = avails.get(flav) {
+                let Availability {since,stability,..} = &availability;
+                let stab = stability.clone().unwrap_or(Stability::Stable);
+                let mut since_str = "".to_string();
+                if let Some(since) = since {
+                    since_str = format!("; Added in {since}");
+                }
+                match stab {
                     Stability::Beta => {
-                        result.insert("x-beta".to_string(), serde_json::Value::Bool(true));
+                        let beta_since = format!("Beta{since_str}");
+                        result.insert("x-state".to_string(), Value::String(beta_since));
                     }
                     Stability::Experimental => {
-                        result.insert("x-state".to_string(), serde_json::Value::String("Technical preview".to_string()));
+                        let exp_since = format!("Technical preview{since_str}");
+                        result.insert("x-state".to_string(), Value::String(exp_since));
                     }
-                    Stability::Stable => {
-                        if let Some(since) = &availability.since {
-                            let stable_since = "Added in ".to_string() + since;
-                            result.insert("x-state".to_string(), serde_json::Value::String(stable_since));
-                        }
+                    Stability::Stable => { 
+                        let stable_since = format!("Generally available{since_str}");
+                        result.insert("x-state".to_string(), Value::String(stable_since));
                     }
                 }
             }
         }
     }
-
-    result
 }

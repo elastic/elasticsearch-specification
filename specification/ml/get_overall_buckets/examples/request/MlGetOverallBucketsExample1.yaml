@@ -1,0 +1,7 @@
+method_request: GET _ml/anomaly_detectors/job-*/results/overall_buckets
+description: An example body for a `GET _ml/anomaly_detectors/job-*/results/overall_buckets` request.
+value: |-
+  {
+    "overall_score": 80,
+    "start": "1403532000000"
+  }

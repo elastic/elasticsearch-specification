@@ -1,0 +1,10 @@
+method_request: PUT _inference/rerank/my-rerank-model
+description: An example body for a `PUT _inference/rerank/my-rerank-model` request.
+value: |-
+  {
+   "service": "cohere",
+   "service_settings": {
+     "model_id": "rerank-english-v3.0",
+     "api_key": "{{COHERE_API_KEY}}"
+   }
+  }

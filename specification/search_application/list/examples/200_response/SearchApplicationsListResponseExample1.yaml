@@ -1,5 +1,4 @@
 # summary: search-application/apis/list-search-applications.asciidoc:108
-method_request: GET _application/search_application?from=0&size=3&q=app*
 description: A succesful response from `GET _application/search_application?from=0&size=3&q=app*` returns the first three search applications whose names start with `app`.
 # type: response
 # response_code: 200

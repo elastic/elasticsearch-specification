@@ -1,5 +1,4 @@
 # summary:
-method_request: DELETE _watcher/watch/my_watch
 description: A successful response from `DELETE _watcher/watch/my_watch`.
 # type: response
 # response_code: 200

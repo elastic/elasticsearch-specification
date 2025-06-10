@@ -1,5 +1,4 @@
 summary: Profile details for a UUID
-method_request: GET /_security/profile/u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0
 description: >
   A successful response from `GET /_security/profile/u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0`.
   By default, no content is returned in the `data` field.

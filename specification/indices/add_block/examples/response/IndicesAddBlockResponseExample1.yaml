@@ -1,5 +1,4 @@
 # summary: ''
-method_request: PUT /my-index-000001/_block/write
 description: A successful response from `PUT /my-index-000001/_block/write`, which adds an index block to an index.'
 # type: response
 # response_code: 200

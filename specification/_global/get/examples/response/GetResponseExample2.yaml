@@ -1,5 +1,4 @@
 summary: Get stored fields
-method_request: GET my-index-000001/_doc/1?stored_fields=tags,counter
 description: >
   A successful response from `GET my-index-000001/_doc/1?stored_fields=tags,counter`, which retrieves a set of stored fields.
   Field values fetched from the document itself are always returned as an array.

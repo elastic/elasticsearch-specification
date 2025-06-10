@@ -1,5 +1,4 @@
 summary: Single data stream or index count
-method_request: GET /_cat/count/my-index-000001?v=true&format=json
 description: >
   A successful response from `GET /_cat/count/my-index-000001?v=true&format=json`.
   It retrieves the document count for the `my-index-000001` data stream or index.

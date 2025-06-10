@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /_security/saml/metadata/saml1
 description: >
   A successful response from `GET /_security/saml/metadata/saml1`.
   It contains the SAML metadata that was generated for the SAML realm as an XML string.

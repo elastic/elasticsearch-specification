@@ -1,0 +1,7 @@
+method_request: GET _ml/anomaly_detectors/low_request_rate/results/buckets
+description: An example body for a `GET _ml/anomaly_detectors/low_request_rate/results/buckets` request.
+value: |-
+  {
+    "anomaly_score": 80,
+    "start": "1454530200001"
+  }

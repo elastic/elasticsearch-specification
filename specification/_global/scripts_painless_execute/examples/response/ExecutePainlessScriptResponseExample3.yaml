@@ -1,5 +1,4 @@
 summary: Score context
-method_request: POST /_scripts/painless/_execute
 description: A successful response from `POST /_scripts/painless/_execute` with a `score` context.
 # type: response
 # response_code: ''

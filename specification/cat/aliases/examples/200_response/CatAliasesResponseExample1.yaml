@@ -1,5 +1,4 @@
 # summary:
-method_request: GET _cat/aliases?format=json&v=true
 description: >
   A successful response from `GET _cat/aliases?format=json&v=true`.
   This response shows that `alias2` has configured a filter and `alias3` and `alias4` have routing configurations.

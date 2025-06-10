@@ -1,0 +1,1 @@
+method_request: PUT _security/user/logstash_system/_enable

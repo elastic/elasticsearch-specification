@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /_security/user/_has_privileges
 description: A successful response from `GET /_security/user/_has_privileges`, which lists the privileges for the `rdeniro` user.
 # type: response
 # response_code:

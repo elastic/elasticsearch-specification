@@ -1,5 +1,4 @@
 # summary:
-method_request: PUT /_snapshot/my_repository/snapshot_2?wait_for_completion=true
 description: A successful response from `PUT /_snapshot/my_repository/snapshot_2?wait_for_completion=true`.
 # type: response
 # response_code: ''

@@ -1,5 +1,4 @@
 summary: A response with errors
-method_request: DELETE /_security/role
 description: >
   A partially successful response from `DELETE /_security/role`.
   If part of a request fails or is invalid, the response includes `errors`.

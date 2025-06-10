@@ -1,5 +1,4 @@
 summary: 'A successful response for retrieving the current autoscaling capacity.'
-method_request: GET /_autoscaling/capacity
 description: 'This may be a response to `GET /_autoscaling/capacity`.'
 # type: "response"
 # response_code: 200
