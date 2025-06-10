@@ -180,6 +180,12 @@ fn info(model: &IndexedModel) -> openapiv3::Info {
     }
 }
 
+pub fn product_as_extensions(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>) -> IndexMap<String, serde_json::Value> {
+    let mut result = IndexMap::new();
+    convert_availabilities(availabilities, flavor, &mut result);
+    result
+}
+
 pub fn availability_as_extensions(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>) -> IndexMap<String, serde_json::Value> {
     let mut result = IndexMap::new();
     convert_availabilities(availabilities, flavor, &mut result);
