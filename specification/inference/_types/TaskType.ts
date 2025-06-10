@@ -109,5 +109,7 @@ export enum TaskTypeVoyageAI {
 }
 
 export enum TaskTypeWatsonx {
-  text_embedding
+  text_embedding,
+  chat_completion,
+  completion
 }
