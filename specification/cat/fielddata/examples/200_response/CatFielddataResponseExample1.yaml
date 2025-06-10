@@ -1,5 +1,4 @@
 summary: Single field data
-method_request: GET /_cat/fielddata?v=true&fields=body&format=json
 description: >
   A successful response from `GET /_cat/fielddata?v=true&fields=body&format=json`.
   You can specify an individual field in the request body or URL path.

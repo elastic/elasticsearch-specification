@@ -1,5 +1,4 @@
 # summary:
-method_request: DELETE _synonyms/my-synonyms-set/test-1
 description: >
   A successful response from `DELETE _synonyms/my-synonyms-set/test-1`.
   All analyzers using this synonyms set will be reloaded automatically to reflect the rule being deleted.

@@ -144,14 +144,16 @@ pub fn add_endpoint(
                 // }
             };
 
-            let openapi_example = Example {
-                value: example,
-                description: schema_example.description.clone(),
-                summary: schema_example.summary.clone(),
-                external_value: None,
-                extensions: Default::default(),
-            };
-            openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
+            if example.is_some() {
+                let openapi_example = Example {
+                    value: example,
+                    description: schema_example.description.clone(),
+                    summary: schema_example.summary.clone(),
+                    external_value: None,
+                    extensions: Default::default(),
+                };
+                openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
+            }
         }
         openapi_examples
     }
@@ -326,21 +328,6 @@ pub fn add_endpoint(
                         "lang": "Console",
                         "source": request_line + "\n" + request_body.as_str(),
                     }));
-                }
-            }
-        }
-        if code_samples.is_empty() {
-            // if there are no example requests we look for example responses
-            // this can only happen for examples that do not have a request body
-            if let Some(examples) = response_def.examples.clone() {
-                if let Some((_, example)) = examples.first() {
-                    let request_line = example.method_request.clone().unwrap_or(String::from(""));
-                    if !request_line.is_empty() {
-                        code_samples.push(serde_json::json!({
-                            "lang": "Console",
-                            "source": request_line + "\n",
-                        }));
-                    }
                 }
             }
         }

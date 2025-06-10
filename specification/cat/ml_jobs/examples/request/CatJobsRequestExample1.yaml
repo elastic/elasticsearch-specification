@@ -1,0 +1,1 @@
+method_request: GET _cat/ml/anomaly_detectors?h=id,s,dpr,mb&v=true&format=json

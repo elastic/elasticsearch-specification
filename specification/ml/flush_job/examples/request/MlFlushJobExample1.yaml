@@ -1,0 +1,6 @@
+method_request: POST _ml/anomaly_detectors/low_request_rate/_flush
+description: An example body for a `POST _ml/anomaly_detectors/low_request_rate/_flush` request.
+value: |-
+  {
+    "calc_interim": true
+  }

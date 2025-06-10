@@ -1,5 +1,4 @@
 summary: Rerank task
-method_request: POST _inference/rerank/cohere_rerank
 description: >
   A successful response from `POST _inference/rerank/cohere_rerank`.
 # type: "response"

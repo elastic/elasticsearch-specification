@@ -1,5 +1,4 @@
 summary: A successful response
-method_request: DELETE /_security/role
 description: A successful response from `DELETE /_security/role`.
 # type: response
 # response_code:
