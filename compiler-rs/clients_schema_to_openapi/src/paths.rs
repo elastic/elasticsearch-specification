@@ -371,8 +371,7 @@ pub fn add_endpoint(
         if !code_samples.is_empty() {
             extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
         }
-        let mut ext_availability = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
-        extensions.append(&mut ext_availability);
+        extensions.append(&mut crate::product_meta_as_extensions(namespace));
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {

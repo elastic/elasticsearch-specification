@@ -180,13 +180,22 @@ fn info(model: &IndexedModel) -> openapiv3::Info {
     }
 }
 
-pub fn product_as_extensions(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>) -> IndexMap<String, serde_json::Value> {
+pub fn product_meta_as_extensions(namespace: &str) -> IndexMap<String, Value> {
     let mut result = IndexMap::new();
-    convert_availabilities(availabilities, flavor, &mut result);
+    let additional_namespace = match namespace {
+        "inference" => { ", machine-learning"}
+        "ml" => { ", machine-learning"} 
+        "fleet" => { ", fleet"}
+        "logstash" => { ", logstash"}
+        &_ => { ""}
+    };
+    
+    let product_str = format!("elasticsearch{additional_namespace}");
+    result.insert("x-product-feature".to_string(), Value::String(product_str));
     result
 }
 
-pub fn availability_as_extensions(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>) -> IndexMap<String, serde_json::Value> {
+pub fn availability_as_extensions(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>) -> IndexMap<String, Value> {
     let mut result = IndexMap::new();
     convert_availabilities(availabilities, flavor, &mut result);
     result
