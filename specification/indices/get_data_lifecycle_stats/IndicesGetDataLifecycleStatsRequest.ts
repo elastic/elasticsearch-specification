@@ -27,6 +27,7 @@ import { RequestBase } from '@_types/Base'
  * @cluster_privileges monitor
  * @doc_tag data stream
  * @doc_id data-stream-lifecycle-stats
+ * @ext_doc_id data-stream-lifecycle
  */
 export interface Request extends RequestBase {
   urls: [
