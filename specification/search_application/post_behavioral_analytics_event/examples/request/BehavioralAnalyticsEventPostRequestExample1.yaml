@@ -1,5 +1,5 @@
 # summary: behavioral-analytics/apis/post-analytics-collection-event.asciidoc:69
-# method_request: POST _application/analytics/my_analytics_collection/event/search_click
+method_request: POST _application/analytics/my_analytics_collection/event/search_click
 description: Run `POST _application/analytics/my_analytics_collection/event/search_click` to send a `search_click` event to an analytics collection called `my_analytics_collection`.
 # type: request
 value:

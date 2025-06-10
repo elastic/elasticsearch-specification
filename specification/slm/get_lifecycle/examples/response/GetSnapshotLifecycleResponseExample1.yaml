@@ -1,4 +1,5 @@
 summary:
+method_request: GET _slm/policy/daily-snapshots?human
 description: A successful response from `GET _slm/policy/daily-snapshots?human`.
 # type: response
 # response_code: ''

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RoleDescriptor } from '@security/_types/RoleDescriptor'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata, Name } from '@_types/common'
 import { DurationLarge } from '@_types/Time'
+import { RoleDescriptor } from '@security/_types/RoleDescriptor'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class GrantApiKey {
   name: Name

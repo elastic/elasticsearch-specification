@@ -1,5 +1,5 @@
 summary: Create an ingest pipeline.
-# method_request: PUT _ingest/pipeline/my-pipeline-id
+method_request: PUT _ingest/pipeline/my-pipeline-id
 # description: ''
 # type: request
 value:

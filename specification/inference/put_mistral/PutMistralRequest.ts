@@ -17,14 +17,14 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 import {
   MistralServiceSettings,
   MistralServiceType,
   MistralTaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
 
 /**
  * Create a Mistral inference endpoint.
@@ -45,8 +45,7 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * The task type.
-     * The only valid task type for the model to perform is `text_embedding`.
+     * The type of the inference task that the model will perform.
      */
     task_type: MistralTaskType
     /**

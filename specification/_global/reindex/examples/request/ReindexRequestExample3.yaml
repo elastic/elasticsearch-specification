@@ -1,5 +1,5 @@
 summary: Automatic slicing
-# method_request: POST _reindex?slices=5&refresh
+method_request: POST _reindex?slices=5&refresh
 description: >
   Run `POST _reindex?slices=5&refresh` to automatically parallelize using sliced scroll to slice on `_id`.
   The `slices` parameter specifies the number of slices to use.

@@ -1,5 +1,5 @@
 summary: Terms filtering
-# method_request: GET /imdb/_termvectorss
+method_request: GET /imdb/_termvectorss
 description: >
   Run `GET /imdb/_termvectors` to filter the terms returned based on their tf-idf scores.
   It returns the three most "interesting" keywords from the artificial document having the given "plot" field value.

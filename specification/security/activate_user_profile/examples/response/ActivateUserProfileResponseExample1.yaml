@@ -1,4 +1,5 @@
 # summary:
+method_request: POST /_security/profile/_activate
 description: A successful response from `POST /_security/profile/_activate`.
 # type: response
 # response_code:

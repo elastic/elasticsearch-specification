@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST _sql/close
+method_request: POST _sql/close
 description: Run `POST _sql/close` to clear an SQL search cursor.
 # type: request
 value:

@@ -1,5 +1,5 @@
 summary: Update index analysis
-# method_request: 'POST /my-index-000001/_close
+method_request: POST /my-index-000001/_close
 description: To add an analyzer, you must close the index, define the analyzer, then reopen the index.
 # type: request
 value:

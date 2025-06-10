@@ -1,5 +1,5 @@
 summary: Query API keys with pagination
-# method_request: GET /_security/_query/api_key
+method_request: GET /_security/_query/api_key
 description: >
   Run `GET /_security/_query/api_key`.
   Use a `bool` query to issue complex logical conditions and use `from`, `size`, and `sort` to help paginate the result.

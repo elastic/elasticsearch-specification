@@ -1,5 +1,5 @@
 summary: Add a privilege
-# method_request: PUT /_security/privilege
+method_request: PUT /_security/privilege
 description: >
   Run `PUT /_security/privilege` to add a single application privilege.
   The wildcard (`*`) means that this privilege grants access to all actions that start with `data:read/`.

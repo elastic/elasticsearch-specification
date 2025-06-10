@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 import {
   AmazonBedrockServiceSettings,
   AmazonBedrockServiceType,
@@ -24,8 +26,6 @@ import {
   AmazonBedrockTaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
 
 /**
  * Create an Amazon Bedrock inference endpoint.

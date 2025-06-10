@@ -1,4 +1,5 @@
 summary: Explicit columns
+method_request: GET /_cat/nodes?v=true&h=id,ip,port,v,m&format=json
 description: >
   A successful response from `GET /_cat/nodes?v=true&h=id,ip,port,v,m&format=json`.
   It returns the `id`, `ip`, `port`, `v` (version), and `m` (master) columns.

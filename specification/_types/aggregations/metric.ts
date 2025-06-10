@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { Highlight } from '@global/search/_types/highlighting'
-import { SourceConfig } from '@global/search/_types/SourceFilter'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields } from '@_types/common'
 import { GeoLocation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script, ScriptField } from '@_types/Scripting'
 import { Sort, SortOrder } from '@_types/sort'
+import { Highlight } from '@global/search/_types/highlighting'
+import { SourceConfig } from '@global/search/_types/SourceFilter'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Aggregation } from './Aggregation'
 import { Missing } from './AggregationContainer'
 import { CalendarInterval } from './bucket'

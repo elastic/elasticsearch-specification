@@ -1,5 +1,5 @@
 summary: Filter source fields
-# method_request: "GET /_mget"
+method_request: 'GET /_mget'
 description: >
   Run `GET /_mget`.
   This request sets `_source` to `false` for document 1 to exclude the source entirely.
