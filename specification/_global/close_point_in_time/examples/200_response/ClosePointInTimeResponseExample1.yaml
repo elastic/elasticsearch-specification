@@ -1,5 +1,4 @@
 # summary:
-method_request: DELETE /_pit
 description: A successful response from `DELETE /_pit`.
 # type: response
 # response_code: 200

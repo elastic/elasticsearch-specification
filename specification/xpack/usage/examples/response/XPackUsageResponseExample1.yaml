@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /_xpack/usage
 description: An abbreviated response from `GET /_xpack/usage`.
 # type: response
 # response_code: 200

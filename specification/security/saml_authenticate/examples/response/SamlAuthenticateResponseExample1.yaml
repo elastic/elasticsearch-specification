@@ -1,5 +1,4 @@
 # summary:
-method_request: POST /_security/saml/authenticate
 description: A successful response from `POST /_security/saml/authenticate`.
 # type: response
 # response_code:

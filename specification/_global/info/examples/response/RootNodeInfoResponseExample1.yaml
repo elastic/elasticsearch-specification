@@ -1,5 +1,4 @@
 # summary: ''
-method_request: GET /
 description: A successful response from `GET /`s.
 # type: response
 # response_code: 200

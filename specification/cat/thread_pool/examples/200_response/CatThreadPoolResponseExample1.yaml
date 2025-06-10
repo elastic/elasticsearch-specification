@@ -1,5 +1,4 @@
 summary: Default columns
-method_request: GET /_cat/thread_pool?format=json
 description: >
   A successful response from `GET /_cat/thread_pool?format=json`.
 # type: response

@@ -1,5 +1,4 @@
 # summary:
-method_request: PUT /_security/cross_cluster/api_key/VuaCfGcBCdbkQm-e5aOx
 description: >
   A successful response from `PUT /_security/cross_cluster/api_key/VuaCfGcBCdbkQm-e5aOx` that indicates that the API key was updated.
 # type: response

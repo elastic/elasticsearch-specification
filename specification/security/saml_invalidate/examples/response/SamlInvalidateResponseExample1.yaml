@@ -1,5 +1,4 @@
 # summary:
-method_request: POST /_security/saml/invalidate
 description: A successful response from `POST /_security/saml/invalidate`.
 # type: response
 # response_code:

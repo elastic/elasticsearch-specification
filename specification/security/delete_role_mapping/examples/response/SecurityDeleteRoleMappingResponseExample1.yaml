@@ -1,5 +1,4 @@
 # summary:
-method_request: DELETE /_security/role_mapping/mapping1
 description: >
   A successful response from `DELETE /_security/role_mapping/mapping1`.
   If the mapping is successfully deleted, `found` is `true`.

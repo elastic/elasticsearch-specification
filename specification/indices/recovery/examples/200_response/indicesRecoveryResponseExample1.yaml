@@ -1,5 +1,4 @@
 summary: Get segment information
-method_request: GET /_recovery?human
 description: >
   A successful response from `GET /_recovery?human`, which gets information about ongoing and completed shard recoveries for all data streams and indices in a cluster.
   This example includes information about a single index recovering a single shard.

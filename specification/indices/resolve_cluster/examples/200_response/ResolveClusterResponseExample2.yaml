@@ -1,6 +1,5 @@
 summary: Identify search problems
 # indices/resolve-cluster.asciidoc:213
-method_request: GET /_resolve/cluster/not-present,clust*:my-index*,oldcluster:*?ignore_unavailable=false&timeout=5s
 description: >
   A successful response from `GET /_resolve/cluster/not-present,clust*:my-index*,oldcluster:*?ignore_unavailable=false&timeout=5s`.
   This type of request can be used to identify potential problems with your cross-cluster search.

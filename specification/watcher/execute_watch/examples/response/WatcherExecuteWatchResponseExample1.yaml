@@ -1,5 +1,4 @@
 # summary:
-method_request: POST _watcher/watch/my_watch/_execute
 description: >
   A successful response from `POST _watcher/watch/my_watch/_execute`.
 # type: response
