@@ -177,13 +177,13 @@ pub fn availability_as_extensions(availabilities: &Option<Availabilities>, name:
     if !name.is_empty() {
         match name.split_once('.') {
             Some((ns, nm)) => {
-                result.insert("api.name".to_string(), serde_json::Value::String(nm.to_string()));
-                result.insert("namespace".to_string(), serde_json::Value::String(ns.to_string()));
+                result.insert("x-api-name".to_string(), serde_json::Value::String(nm.to_string()));
+                result.insert("x-namespace".to_string(), serde_json::Value::String(ns.to_string()));
                 return result
             },
             _ => ()
         };
-        result.insert("namespace".to_string(), serde_json::Value::String(name.to_string()));
+        result.insert("x-api-name".to_string(), serde_json::Value::String(name.to_string()));
     }
     result
 }
