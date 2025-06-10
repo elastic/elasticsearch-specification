@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /my-index-000001/_explain/0
 description: A successful response from `GET /my-index-000001/_explain/0`.
 # type: response
 # response_code: 200

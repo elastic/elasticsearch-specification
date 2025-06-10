@@ -118,7 +118,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_async_search/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\n"
+          }
+        ]
       }
     },
     "/_async_search/status/{id}": {
@@ -1834,7 +1840,13 @@
             "$ref": "#/components/responses/cluster.get_component_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_component_template/template_1\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -1956,7 +1968,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _component_template/template_1\n"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -2036,7 +2054,13 @@
             "$ref": "#/components/responses/cluster.get_component_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_component_template/template_1\n"
+          }
+        ]
       }
     },
     "/_info/{target}": {
@@ -2095,7 +2119,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_info/_all\n"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_check_in": {
@@ -2144,7 +2174,13 @@
             }
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _connector/my-connector/_check_in\n"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}": {
@@ -2190,7 +2226,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _connector/my-connector-id\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -2276,7 +2318,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _connector/my-connector-id&delete_sync_jobs=true\n"
+          }
+        ]
       }
     },
     "/_connector": {
@@ -2386,7 +2434,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _connector\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -2514,7 +2568,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _connector/_sync_job/my-connector-sync-job-id/_cancel\n"
+          }
+        ]
       }
     },
     "/_connector/_sync_job/{connector_sync_job_id}": {
@@ -2549,7 +2609,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _connector/_sync_job/my-connector-sync-job\n"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -2588,7 +2654,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _connector/_sync_job/my-connector-sync-job-id\n"
+          }
+        ]
       }
     },
     "/_connector/_sync_job": {
@@ -2688,7 +2760,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _connector/_sync_job?connector_id=my-connector-id&size=1\n"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -4324,7 +4402,7 @@
         "x-codeSamples": [
           {
             "lang": "Console",
-            "source": "GET my-index-000001/_doc/0\n"
+            "source": "GET my-index-000001/_doc/1?stored_fields=tags,counter\n"
           }
         ]
       },
@@ -4744,7 +4822,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "HEAD my-index-000001/_doc/0\n"
+          }
+        ]
       }
     },
     "/{index}/_delete_by_query": {
@@ -5254,7 +5338,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _scripts/my-search-template\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -5388,7 +5478,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _scripts/my-search-template\n"
+          }
+        ]
       }
     },
     "/_enrich/policy/{name}": {
@@ -5412,7 +5508,13 @@
             "$ref": "#/components/responses/enrich.get_policy-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_enrich/policy/my-policy\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -5460,6 +5562,12 @@
                     "$ref": "#/components/schemas/enrich._types.Policy"
                   }
                 }
+              },
+              "examples": {
+                "EnrichPutPolicyExample1": {
+                  "description": "An example body for a `PUT /_enrich/policy/postal_policy` request.",
+                  "value": "{\n  \"geo_match\": {\n    \"indices\": \"postal_codes\",\n    \"match_field\": \"location\",\n    \"enrich_fields\": [ \"location\", \"postal_code\" ]\n  }\n}"
+                }
               }
             }
           },
@@ -5477,7 +5585,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /_enrich/policy/postal_policy\n{\n  \"geo_match\": {\n    \"indices\": \"postal_codes\",\n    \"match_field\": \"location\",\n    \"enrich_fields\": [ \"location\", \"postal_code\" ]\n  }\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5521,7 +5635,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_enrich/policy/my-policy\n"
+          }
+        ]
       }
     },
     "/_enrich/policy/{name}/_execute": {
@@ -5585,7 +5705,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /_enrich/policy/my-policy/_execute?wait_for_completion=false\n"
+          }
+        ]
       }
     },
     "/_enrich/policy": {
@@ -5606,7 +5732,13 @@
             "$ref": "#/components/responses/enrich.get_policy-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_enrich/policy/my-policy\n"
+          }
+        ]
       }
     },
     "/_eql/search/{id}": {
@@ -5662,7 +5794,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=?wait_for_completion_timeout=2s\n"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5696,7 +5834,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=\n"
+          }
+        ]
       }
     },
     "/_eql/search/status/{id}": {
@@ -5766,7 +5910,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_eql/search/status/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=\n"
+          }
+        ]
       }
     },
     "/{index}/_eql/search": {
@@ -6267,7 +6417,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_source/1\n"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -6401,7 +6557,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "HEAD my-index-000001/_source/1\n"
+          }
+        ]
       }
     },
     "/{index}/_explain/{id}": {
@@ -7269,7 +7431,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -7480,7 +7648,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /books\n"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -7570,7 +7744,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "HEAD my-data-stream\n"
+          }
+        ]
       }
     },
     "/_data_stream/{name}": {
@@ -7603,7 +7783,13 @@
             "$ref": "#/components/responses/indices.get_data_stream-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _data_stream/my-data-stream\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -7657,7 +7843,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _data_stream/logs-foo-bar\n"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -7711,7 +7903,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _data_stream/my-data-stream\n"
+          }
+        ]
       }
     },
     "/{index}/_alias/{name}": {
@@ -7747,7 +7945,13 @@
             "$ref": "#/components/responses/indices.get_alias-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _alias\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -7849,7 +8053,13 @@
             "$ref": "#/components/responses/indices.delete_alias-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE my-data-stream/_alias/my-alias\n"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -7883,7 +8093,13 @@
             "$ref": "#/components/responses/indices.exists_alias-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "HEAD _alias/my-alias\n"
+          }
+        ]
       }
     },
     "/{index}/_aliases/{name}": {
@@ -7987,7 +8203,13 @@
             "$ref": "#/components/responses/indices.delete_alias-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE my-data-stream/_alias/my-alias\n"
+          }
+        ]
       }
     },
     "/_index_template/{name}": {
@@ -8020,7 +8242,13 @@
             "$ref": "#/components/responses/indices.get_index_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -8148,7 +8376,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_index_template/my-index-template\n"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -8241,7 +8475,13 @@
             "$ref": "#/components/responses/indices.get_alias-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _alias\n"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -8272,7 +8512,13 @@
             "$ref": "#/components/responses/indices.exists_alias-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "HEAD _alias/my-alias\n"
+          }
+        ]
       }
     },
     "/{index}/_lifecycle/explain": {
@@ -8387,7 +8633,13 @@
             "$ref": "#/components/responses/indices.get_alias-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _alias\n"
+          }
+        ]
       }
     },
     "/{index}/_alias": {
@@ -8420,7 +8672,13 @@
             "$ref": "#/components/responses/indices.get_alias-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _alias\n"
+          }
+        ]
       }
     },
     "/_data_stream/{name}/_lifecycle": {
@@ -8647,7 +8905,13 @@
             "$ref": "#/components/responses/indices.get_data_stream-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _data_stream/my-data-stream\n"
+          }
+        ]
       }
     },
     "/_data_stream/{name}/_options": {
@@ -8995,7 +9259,13 @@
             "$ref": "#/components/responses/indices.get_index_template-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream\n"
+          }
+        ]
       }
     },
     "/_mapping": {
@@ -9028,7 +9298,13 @@
             "$ref": "#/components/responses/indices.get_mapping-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /books/_mapping\n"
+          }
+        ]
       }
     },
     "/{index}/_mapping": {
@@ -9064,7 +9340,13 @@
             "$ref": "#/components/responses/indices.get_mapping-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /books/_mapping\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -9201,7 +9483,13 @@
             "$ref": "#/components/responses/indices.get_settings-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -9295,7 +9583,13 @@
             "$ref": "#/components/responses/indices.get_settings-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -9395,7 +9689,13 @@
             "$ref": "#/components/responses/indices.get_settings-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog\n"
+          }
+        ]
       }
     },
     "/_settings/{name}": {
@@ -9437,7 +9737,13 @@
             "$ref": "#/components/responses/indices.get_settings-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog\n"
+          }
+        ]
       }
     },
     "/_data_stream/_migrate/{name}": {
@@ -9493,7 +9799,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _data_stream/_migrate/my-time-series-data\n"
+          }
+        ]
       }
     },
     "/_data_stream/_modify": {
@@ -9521,6 +9833,12 @@
                 "required": [
                   "actions"
                 ]
+              },
+              "examples": {
+                "IndicesModifyDataStreamExample1": {
+                  "description": "An example body for a `POST _data_stream/_modify` request.",
+                  "value": "{\n  \"actions\": [\n    {\n      \"remove_backing_index\": {\n        \"data_stream\": \"my-data-stream\",\n        \"index\": \".ds-my-data-stream-2023.07.26-000001\"\n      }\n    },\n    {\n      \"add_backing_index\": {\n        \"data_stream\": \"my-data-stream\",\n        \"index\": \".ds-my-data-stream-2023.07.26-000001-downsample\"\n      }\n    }\n  ]\n}"
+                }
               }
             }
           },
@@ -9538,7 +9856,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _data_stream/_modify\n{\n  \"actions\": [\n    {\n      \"remove_backing_index\": {\n        \"data_stream\": \"my-data-stream\",\n        \"index\": \".ds-my-data-stream-2023.07.26-000001\"\n      }\n    },\n    {\n      \"add_backing_index\": {\n        \"data_stream\": \"my-data-stream\",\n        \"index\": \".ds-my-data-stream-2023.07.26-000001-downsample\"\n      }\n    }\n  ]\n}"
+          }
+        ]
       }
     },
     "/_refresh": {
@@ -9565,7 +9889,13 @@
             "$ref": "#/components/responses/indices.refresh-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _refresh\n"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -9590,7 +9920,13 @@
             "$ref": "#/components/responses/indices.refresh-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _refresh\n"
+          }
+        ]
       }
     },
     "/{index}/_refresh": {
@@ -9620,7 +9956,13 @@
             "$ref": "#/components/responses/indices.refresh-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _refresh\n"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -9648,7 +9990,13 @@
             "$ref": "#/components/responses/indices.refresh-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _refresh\n"
+          }
+        ]
       }
     },
     "/_resolve/index/{name}": {
@@ -10074,6 +10422,12 @@
                     }
                   }
                 }
+              },
+              "examples": {
+                "IndicesUpdateAliasesExample1": {
+                  "description": "An example body for a `POST _aliases` request.",
+                  "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"logs-nginx.access-prod\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+                }
               }
             }
           },
@@ -10091,7 +10445,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _aliases\n{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"logs-nginx.access-prod\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+          }
+        ]
       }
     },
     "/_validate/query": {
@@ -10148,7 +10508,13 @@
             "$ref": "#/components/responses/indices.validate_query-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_validate/query?q=user.id:kimchy\n"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -10203,7 +10569,13 @@
             "$ref": "#/components/responses/indices.validate_query-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_validate/query?q=user.id:kimchy\n"
+          }
+        ]
       }
     },
     "/{index}/_validate/query": {
@@ -10263,7 +10635,13 @@
             "$ref": "#/components/responses/indices.validate_query-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_validate/query?q=user.id:kimchy\n"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -10321,7 +10699,13 @@
             "$ref": "#/components/responses/indices.validate_query-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_validate/query?q=user.id:kimchy\n"
+          }
+        ]
       }
     },
     "/_inference/chat_completion/{inference_id}/_stream": {
@@ -10522,7 +10906,13 @@
             "$ref": "#/components/responses/inference.get-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _inference/sparse_embedding/my-elser-model\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -10544,7 +10934,13 @@
             "$ref": "#/components/responses/inference.put-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/rerank/my-rerank-model\n{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -10593,7 +10989,13 @@
             "$ref": "#/components/responses/inference.delete-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_inference/sparse_embedding/my-elser-model\n"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{inference_id}": {
@@ -10616,7 +11018,13 @@
             "$ref": "#/components/responses/inference.get-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _inference/sparse_embedding/my-elser-model\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -10641,7 +11049,13 @@
             "$ref": "#/components/responses/inference.put-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _inference/rerank/my-rerank-model\n{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -10696,7 +11110,13 @@
             "$ref": "#/components/responses/inference.delete-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_inference/sparse_embedding/my-elser-model\n"
+          }
+        ]
       }
     },
     "/_inference": {
@@ -10711,7 +11131,13 @@
             "$ref": "#/components/responses/inference.get-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _inference/sparse_embedding/my-elser-model\n"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{alibabacloud_inference_id}": {
@@ -12580,7 +13006,13 @@
             "$ref": "#/components/responses/ingest.get_pipeline-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_ingest/pipeline/my-pipeline-id\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -12761,7 +13193,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE /_ingest/pipeline/my-pipeline-id\n"
+          }
+        ]
       }
     },
     "/_ingest/pipeline": {
@@ -12788,7 +13226,13 @@
             "$ref": "#/components/responses/ingest.get_pipeline-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_ingest/pipeline/my-pipeline-id\n"
+          }
+        ]
       }
     },
     "/_ingest/processor/grok": {
@@ -12825,7 +13269,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ingest/processor/grok\n"
+          }
+        ]
       }
     },
     "/_ingest/pipeline/_simulate": {
@@ -13131,7 +13581,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _logstash/pipeline/my_pipeline\n"
+          }
+        ]
       }
     },
     "/_logstash/pipeline": {
@@ -13464,7 +13920,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/anomaly_detectors/low_request_rate/_close\n"
+          }
+        ]
       }
     },
     "/_ml/calendars/{calendar_id}": {
@@ -13494,7 +13956,13 @@
             "$ref": "#/components/responses/ml.get_calendars-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/calendars/planned-outages\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -13566,7 +14034,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _ml/calendars/planned-outages\n"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -13594,7 +14068,13 @@
             "$ref": "#/components/responses/ml.get_calendars-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/calendars/planned-outages\n"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -13634,7 +14114,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _ml/calendars/planned-outages\n"
+          }
+        ]
       }
     },
     "/_ml/calendars/{calendar_id}/events/{event_id}": {
@@ -13686,7 +14172,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _ml/calendars/planned-outages/events/LS8LJGEBMTCMA-qz49st\n"
+          }
+        ]
       }
     },
     "/_ml/calendars/{calendar_id}/jobs/{job_id}": {
@@ -13749,7 +14241,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _ml/calendars/planned-outages/jobs/total-requests\n"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -13816,7 +14314,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _ml/calendars/planned-outages/jobs/total-requests\n"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/{id}": {
@@ -13849,7 +14353,13 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/data_frame/analytics/loganalytics\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -13920,6 +14430,12 @@
                   "dest",
                   "source"
                 ]
+              },
+              "examples": {
+                "MlPutDataFrameAnalyticsExample1": {
+                  "description": "An example body for a `PUT _ml/data_frame/analytics/model-flight-delays-pre` request.",
+                  "value": "{\n  \"source\": {\n    \"index\": [\n      \"kibana_sample_data_flights\" <1>\n    ],\n    \"query\": { <2>\n      \"range\": {\n        \"DistanceKilometers\": {\n          \"gt\": 0\n        }\n      }\n    },\n    \"_source\": { <3>\n      \"includes\": [],\n      \"excludes\": [\n        \"FlightDelay\",\n        \"FlightDelayType\"\n      ]\n    }\n  },\n  \"dest\": { <4>\n    \"index\": \"df-flight-delays\",\n    \"results_field\": \"ml-results\"\n  },\n  \"analysis\": {\n  \"regression\": {\n    \"dependent_variable\": \"FlightDelayMin\",\n    \"training_percent\": 90\n    }\n  },\n  \"analyzed_fields\": { <5>\n    \"includes\": [],\n    \"excludes\": [\n      \"FlightNum\"\n    ]\n  },\n  \"model_memory_limit\": \"100mb\"\n}"
+                }
               }
             }
           },
@@ -13989,7 +14505,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _ml/data_frame/analytics/model-flight-delays-pre\n{\n  \"source\": {\n    \"index\": [\n      \"kibana_sample_data_flights\" <1>\n    ],\n    \"query\": { <2>\n      \"range\": {\n        \"DistanceKilometers\": {\n          \"gt\": 0\n        }\n      }\n    },\n    \"_source\": { <3>\n      \"includes\": [],\n      \"excludes\": [\n        \"FlightDelay\",\n        \"FlightDelayType\"\n      ]\n    }\n  },\n  \"dest\": { <4>\n    \"index\": \"df-flight-delays\",\n    \"results_field\": \"ml-results\"\n  },\n  \"analysis\": {\n  \"regression\": {\n    \"dependent_variable\": \"FlightDelayMin\",\n    \"training_percent\": 90\n    }\n  },\n  \"analyzed_fields\": { <5>\n    \"includes\": [],\n    \"excludes\": [\n      \"FlightNum\"\n    ]\n  },\n  \"model_memory_limit\": \"100mb\"\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -14049,7 +14571,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _ml/data_frame/analytics/loganalytics\n"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/{datafeed_id}": {
@@ -14076,7 +14604,13 @@
             "$ref": "#/components/responses/ml.get_datafeeds-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/datafeeds/datafeed-high_sum_total_sales\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -14197,6 +14731,12 @@
                     "$ref": "#/components/schemas/_types.HttpHeaders"
                   }
                 }
+              },
+              "examples": {
+                "MlPutDatafeedExample1": {
+                  "description": "An example body for a `PUT _ml/datafeeds/datafeed-test-job?pretty` request.",
+                  "value": "{\n  \"indices\": [\n    \"kibana_sample_data_logs\"\n  ],\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        {\n          \"match_all\": {}\n        }\n      ]\n    }\n  },\n  \"job_id\": \"test-job\"\n}"
+                }
               }
             }
           },
@@ -14279,7 +14819,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _ml/datafeeds/datafeed-test-job?pretty\n{\n  \"indices\": [\n    \"kibana_sample_data_logs\"\n  ],\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        {\n          \"match_all\": {}\n        }\n      ]\n    }\n  },\n  \"job_id\": \"test-job\"\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -14329,7 +14875,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _ml/datafeeds/datafeed-total-requests\n"
+          }
+        ]
       }
     },
     "/_ml/filters/{filter_id}": {
@@ -14356,7 +14908,13 @@
             "$ref": "#/components/responses/ml.get_filters-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/filters/safe_domains\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -14396,6 +14954,12 @@
                     }
                   }
                 }
+              },
+              "examples": {
+                "MlPutFilterExample1": {
+                  "description": "An example body for a `PUT _ml/filters/safe_domains` request.",
+                  "value": "{\n  \"description\": \"A list of safe domains\",\n  \"items\": [\"*.google.com\", \"wikipedia.org\"]\n}"
+                }
               }
             }
           },
@@ -14432,7 +14996,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _ml/filters/safe_domains\n{\n  \"description\": \"A list of safe domains\",\n  \"items\": [\"*.google.com\", \"wikipedia.org\"]\n}"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -14472,7 +15042,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _ml/filters/safe_domains\n"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}": {
@@ -14499,7 +15075,13 @@
             "$ref": "#/components/responses/ml.get_jobs-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/anomaly_detectors/high_sum_total_sales\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -14813,7 +15395,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _ml/anomaly_detectors/total-requests\n"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}": {
@@ -14855,7 +15443,13 @@
             "$ref": "#/components/responses/ml.get_trained_models-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/trained_models/\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -15023,7 +15617,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _ml/trained_models/regression-job-one-1574775307356\n"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/model_aliases/{model_alias}": {
@@ -15080,7 +15680,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _ml/trained_models/flight-delay-prediction-1574775339910/model_aliases/flight_delay_model\n"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -15131,7 +15737,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _ml/trained_models/flight-delay-prediction-1574775339910/model_aliases/flight_delay_model\n"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/_estimate_model_memory": {
@@ -15415,6 +16027,12 @@
                     "$ref": "#/components/schemas/_types.DateTime"
                   }
                 }
+              },
+              "examples": {
+                "MlFlushJobExample1": {
+                  "description": "An example body for a `POST _ml/anomaly_detectors/low_request_rate/_flush` request.",
+                  "value": "{\n  \"calc_interim\": true\n}"
+                }
               }
             }
           }
@@ -15444,7 +16062,13 @@
           }
         },
         "deprecated": true,
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/anomaly_detectors/low_request_rate/_flush\n{\n  \"calc_interim\": true\n}"
+          }
+        ]
       }
     },
     "/_ml/calendars/{calendar_id}/events": {
@@ -15545,7 +16169,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/calendars/planned-outages/events\n"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -15584,6 +16214,12 @@
                 "required": [
                   "events"
                 ]
+              },
+              "examples": {
+                "MlPostCalendarEventsExample1": {
+                  "description": "An example body for a `POST _ml/calendars/planned-outages/events` request.",
+                  "value": "{\n  \"events\" : [\n    {\"description\": \"event 1\", \"start_time\": 1513641600000, \"end_time\": 1513728000000},\n    {\"description\": \"event 2\", \"start_time\": 1513814400000, \"end_time\": 1513900800000},\n    {\"description\": \"event 3\", \"start_time\": 1514160000000, \"end_time\": 1514246400000}\n  ]\n}"
+                }
               }
             }
           },
@@ -15612,7 +16248,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/calendars/planned-outages/events\n{\n  \"events\" : [\n    {\"description\": \"event 1\", \"start_time\": 1513641600000, \"end_time\": 1513728000000},\n    {\"description\": \"event 2\", \"start_time\": 1513814400000, \"end_time\": 1513900800000},\n    {\"description\": \"event 3\", \"start_time\": 1514160000000, \"end_time\": 1514246400000}\n  ]\n}"
+          }
+        ]
       }
     },
     "/_ml/calendars": {
@@ -15639,7 +16281,13 @@
             "$ref": "#/components/responses/ml.get_calendars-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/calendars/planned-outages\n"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -15664,7 +16312,13 @@
             "$ref": "#/components/responses/ml.get_calendars-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/calendars/planned-outages\n"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics": {
@@ -15694,7 +16348,13 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/data_frame/analytics/loganalytics\n"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/_stats": {
@@ -15724,7 +16384,13 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics_stats-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/data_frame/analytics/weblog-outliers/_stats\n"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/{id}/_stats": {
@@ -15757,7 +16423,13 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics_stats-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/data_frame/analytics/weblog-outliers/_stats\n"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_stats": {
@@ -15781,7 +16453,13 @@
             "$ref": "#/components/responses/ml.get_datafeed_stats-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/datafeeds/datafeed-high_sum_total_sales/_stats\n"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/_stats": {
@@ -15802,7 +16480,13 @@
             "$ref": "#/components/responses/ml.get_datafeed_stats-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/datafeeds/datafeed-high_sum_total_sales/_stats\n"
+          }
+        ]
       }
     },
     "/_ml/datafeeds": {
@@ -15826,7 +16510,13 @@
             "$ref": "#/components/responses/ml.get_datafeeds-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/datafeeds/datafeed-high_sum_total_sales\n"
+          }
+        ]
       }
     },
     "/_ml/filters": {
@@ -15850,7 +16540,13 @@
             "$ref": "#/components/responses/ml.get_filters-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/filters/safe_domains\n"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/_stats": {
@@ -15871,7 +16567,13 @@
             "$ref": "#/components/responses/ml.get_job_stats-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/anomaly_detectors/low_request_rate/_stats\n"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_stats": {
@@ -15895,7 +16597,13 @@
             "$ref": "#/components/responses/ml.get_job_stats-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/anomaly_detectors/low_request_rate/_stats\n"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors": {
@@ -15919,7 +16627,13 @@
             "$ref": "#/components/responses/ml.get_jobs-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/anomaly_detectors/high_sum_total_sales\n"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/overall_buckets": {
@@ -15964,7 +16678,13 @@
             "$ref": "#/components/responses/ml.get_overall_buckets-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/anomaly_detectors/job-*/results/overall_buckets\n{\n  \"overall_score\": 80,\n  \"start\": \"1403532000000\"\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16007,7 +16727,13 @@
             "$ref": "#/components/responses/ml.get_overall_buckets-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/anomaly_detectors/job-*/results/overall_buckets\n{\n  \"overall_score\": 80,\n  \"start\": \"1403532000000\"\n}"
+          }
+        ]
       }
     },
     "/_ml/trained_models": {
@@ -16046,7 +16772,13 @@
             "$ref": "#/components/responses/ml.get_trained_models-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/trained_models/\n"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/_stats": {
@@ -16076,7 +16808,13 @@
             "$ref": "#/components/responses/ml.get_trained_models_stats-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/trained_models/_stats\n"
+          }
+        ]
       }
     },
     "/_ml/trained_models/_stats": {
@@ -16103,7 +16841,13 @@
             "$ref": "#/components/responses/ml.get_trained_models_stats-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/trained_models/_stats\n"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/_infer": {
@@ -16159,6 +16903,12 @@
                 "required": [
                   "docs"
                 ]
+              },
+              "examples": {
+                "MlInferTrainedModelExample1": {
+                  "description": "An example body for a `POST _ml/trained_models/lang_ident_model_1/_infer` request.",
+                  "value": "{\n  \"docs\":[{\"text\": \"The fool doth think he is wise, but the wise man knows himself to be a fool.\"}]\n}"
+                }
               }
             }
           },
@@ -16187,7 +16937,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/trained_models/lang_ident_model_1/_infer\n{\n  \"docs\":[{\"text\": \"The fool doth think he is wise, but the wise man knows himself to be a fool.\"}]\n}"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_open": {
@@ -16290,7 +17046,13 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/data_frame/analytics/_preview\n{\n  \"config\": {\n    \"source\": {\n      \"index\": \"houses_sold_last_10_yrs\"\n    },\n    \"analysis\": {\n      \"regression\": {\n        \"dependent_variable\": \"price\"\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16307,7 +17069,13 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/data_frame/analytics/_preview\n{\n  \"config\": {\n    \"source\": {\n      \"index\": \"houses_sold_last_10_yrs\"\n    },\n    \"analysis\": {\n      \"regression\": {\n        \"dependent_variable\": \"price\"\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/{id}/_preview": {
@@ -16331,7 +17099,13 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/data_frame/analytics/_preview\n{\n  \"config\": {\n    \"source\": {\n      \"index\": \"houses_sold_last_10_yrs\"\n    },\n    \"analysis\": {\n      \"regression\": {\n        \"dependent_variable\": \"price\"\n      }\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16353,7 +17127,13 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/data_frame/analytics/_preview\n{\n  \"config\": {\n    \"source\": {\n      \"index\": \"houses_sold_last_10_yrs\"\n    },\n    \"analysis\": {\n      \"regression\": {\n        \"dependent_variable\": \"price\"\n      }\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_preview": {
@@ -16383,7 +17163,13 @@
             "$ref": "#/components/responses/ml.preview_datafeed-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/datafeeds/datafeed-high_sum_total_sales/_preview\n"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16411,7 +17197,13 @@
             "$ref": "#/components/responses/ml.preview_datafeed-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/datafeeds/datafeed-high_sum_total_sales/_preview\n"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/_preview": {
@@ -16438,7 +17230,13 @@
             "$ref": "#/components/responses/ml.preview_datafeed-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/datafeeds/datafeed-high_sum_total_sales/_preview\n"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16463,7 +17261,13 @@
             "$ref": "#/components/responses/ml.preview_datafeed-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _ml/datafeeds/datafeed-high_sum_total_sales/_preview\n"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/definition/{part}": {
@@ -16522,6 +17326,12 @@
                   "total_definition_length",
                   "total_parts"
                 ]
+              },
+              "examples": {
+                "MlPutTrainedModelDefinitionPartExample1": {
+                  "description": "An example body for a `PUT _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/definition/0` request.",
+                  "value": "{\n    \"definition\": \"...\",\n    \"total_definition_length\": 265632637,\n    \"total_parts\": 64\n}"
+                }
               }
             }
           },
@@ -16539,7 +17349,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/definition/0\n{\n    \"definition\": \"...\",\n    \"total_definition_length\": 265632637,\n    \"total_parts\": 64\n}"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/vocabulary": {
@@ -16596,6 +17412,12 @@
                 "required": [
                   "vocabulary"
                 ]
+              },
+              "examples": {
+                "MlPutTrainedModelVocabularyExample1": {
+                  "description": "An example body for a `PUT _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/vocabulary` request.",
+                  "value": "{\n  \"vocabulary\": [\n    \"[PAD]\",\n    \"[unused0]\",\n    ...\n  ]\n}"
+                }
               }
             }
           },
@@ -16613,7 +17435,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/vocabulary\n{\n  \"vocabulary\": [\n    \"[PAD]\",\n    \"[unused0]\",\n    ...\n  ]\n}"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_reset": {
@@ -16669,7 +17497,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/anomaly_detectors/total-requests/_reset\n"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/{id}/_start": {
@@ -16727,7 +17561,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/data_frame/analytics/loganalytics/_start\n"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_start": {
@@ -16797,6 +17637,12 @@
                     "$ref": "#/components/schemas/_types.Duration"
                   }
                 }
+              },
+              "examples": {
+                "MlStartDatafeedExample1": {
+                  "description": "An example body for a `POST _ml/datafeeds/datafeed-low_request_rate/_start` request.",
+                  "value": "{\n  \"start\": \"2019-04-07T18:22:16Z\"\n}"
+                }
               }
             }
           }
@@ -16826,7 +17672,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/datafeeds/datafeed-low_request_rate/_start\n{\n  \"start\": \"2019-04-07T18:22:16Z\"\n}"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_start": {
@@ -16954,7 +17806,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/deployment/_start?wait_for=started&timeout=1m\n"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/{id}/_stop": {
@@ -17028,7 +17886,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/data_frame/analytics/loganalytics/_stop\n"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_stop": {
@@ -17100,6 +17964,12 @@
                     "$ref": "#/components/schemas/_types.Duration"
                   }
                 }
+              },
+              "examples": {
+                "MlStopDatafeedExample1": {
+                  "description": "An example body for a `POST _ml/datafeeds/datafeed-low_request_rate/_stop` request.",
+                  "value": "{\n  \"timeout\": \"30s\"\n}"
+                }
               }
             }
           }
@@ -17124,7 +17994,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/datafeeds/datafeed-low_request_rate/_stop\n{\n  \"timeout\": \"30s\"\n}"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_stop": {
@@ -17188,7 +18064,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/trained_models/my_model_for_search/deployment/_stop\n"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/{id}/_update": {
@@ -17234,6 +18116,12 @@
                     "description": "Specifies whether this job can start when there is insufficient machine\nlearning node capacity for it to be immediately assigned to a node.",
                     "type": "boolean"
                   }
+                }
+              },
+              "examples": {
+                "MlUpdateDataFrameAnalyticsExample1": {
+                  "description": "An example body for a `POST _ml/data_frame/analytics/loganalytics/_update` request.",
+                  "value": "{\n  \"model_memory_limit\": \"200mb\"\n}"
                 }
               }
             }
@@ -17301,7 +18189,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/data_frame/analytics/loganalytics/_update\n{\n  \"model_memory_limit\": \"200mb\"\n}"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_update": {
@@ -17425,6 +18319,12 @@
                     "type": "number"
                   }
                 }
+              },
+              "examples": {
+                "MlUpdateDatafeedExample1": {
+                  "description": "An example body for a `POST _ml/datafeeds/datafeed-test-job/_update` request.",
+                  "value": "{\n  \"query\": {\n    \"term\": {\n      \"geo.src\": \"US\"\n    }\n  }\n}"
+                }
               }
             }
           },
@@ -17507,7 +18407,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/datafeeds/datafeed-test-job/_update\n{\n  \"query\": {\n    \"term\": {\n      \"geo.src\": \"US\"\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_ml/filters/{filter_id}/_update": {
@@ -17556,6 +18462,12 @@
                     }
                   }
                 }
+              },
+              "examples": {
+                "MlUpdateFilterExample1": {
+                  "description": "An example body for a `POST _ml/filters/safe_domains/_update` request.",
+                  "value": "{\n  \"description\": \"Updated list of domains\",\n  \"add_items\": [\"*.myorg.com\"],\n  \"remove_items\": [\"wikipedia.org\"]\n}"
+                }
               }
             }
           },
@@ -17592,7 +18504,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/filters/safe_domains/_update\n{\n  \"description\": \"Updated list of domains\",\n  \"add_items\": [\"*.myorg.com\"],\n  \"remove_items\": [\"wikipedia.org\"]\n}"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_update": {
@@ -17688,6 +18606,12 @@
                   "per_partition_categorization": {
                     "$ref": "#/components/schemas/ml._types.PerPartitionCategorization"
                   }
+                }
+              },
+              "examples": {
+                "MlUpdateJobExample1": {
+                  "description": "An example body for a `POST _ml/anomaly_detectors/low_request_rate/_update` request.",
+                  "value": "{\n  \"description\":\"An updated job\",\n  \"detectors\": {\n    \"detector_index\": 0,\n    \"description\": \"An updated detector description\"\n  },\n  \"groups\": [\"kibana_sample_data\",\"kibana_sample_web_logs\"],\n  \"model_plot_config\": {\n    \"enabled\": true\n  },\n  \"renormalization_window_days\": 30,\n  \"background_persist_interval\": \"2h\",\n  \"model_snapshot_retention_days\": 7,\n  \"results_retention_days\": 60\n}"
                 }
               }
             }
@@ -17790,7 +18714,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/anomaly_detectors/low_request_rate/_update\n{\n  \"description\":\"An updated job\",\n  \"detectors\": {\n    \"detector_index\": 0,\n    \"description\": \"An updated detector description\"\n  },\n  \"groups\": [\"kibana_sample_data\",\"kibana_sample_web_logs\"],\n  \"model_plot_config\": {\n    \"enabled\": true\n  },\n  \"renormalization_window_days\": 30,\n  \"background_persist_interval\": \"2h\",\n  \"model_snapshot_retention_days\": 7,\n  \"results_retention_days\": 60\n}"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_update": {
@@ -17838,6 +18768,12 @@
                     "$ref": "#/components/schemas/ml._types.AdaptiveAllocationsSettings"
                   }
                 }
+              },
+              "examples": {
+                "MlUpdateTrainedModelDeploymentExample1": {
+                  "description": "An example body for a `POST _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/deployment/_update` request.",
+                  "value": "{\n  \"number_of_allocations\": 4\n}"
+                }
               }
             }
           }
@@ -17862,7 +18798,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/deployment/_update\n{\n  \"number_of_allocations\": 4\n}"
+          }
+        ]
       }
     },
     "/_msearch": {
@@ -17922,7 +18864,13 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_msearch\n{ }\n{\"query\" : {\"match\" : { \"message\": \"this is a test\"}}}\n{\"index\": \"my-index-000002\"}\n{\"query\" : {\"match_all\" : {}}}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -17980,7 +18928,13 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_msearch\n{ }\n{\"query\" : {\"match\" : { \"message\": \"this is a test\"}}}\n{\"index\": \"my-index-000002\"}\n{\"query\" : {\"match_all\" : {}}}"
+          }
+        ]
       }
     },
     "/{index}/_msearch": {
@@ -18043,7 +18997,13 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_msearch\n{ }\n{\"query\" : {\"match\" : { \"message\": \"this is a test\"}}}\n{\"index\": \"my-index-000002\"}\n{\"query\" : {\"match_all\" : {}}}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -18104,7 +19064,13 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET my-index-000001/_msearch\n{ }\n{\"query\" : {\"match\" : { \"message\": \"this is a test\"}}}\n{\"index\": \"my-index-000002\"}\n{\"query\" : {\"match_all\" : {}}}"
+          }
+        ]
       }
     },
     "/_msearch/template": {
@@ -18985,7 +19951,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _query_rules/my-ruleset/_rule/my-rule1\n"
+          }
+        ]
       }
     },
     "/_query_rules/{ruleset_id}": {
@@ -19152,7 +20124,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _query_rules/my-ruleset/\n"
+          }
+        ]
       }
     },
     "/_query_rules": {
@@ -19348,7 +20326,13 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_rank_eval\n{\n  \"requests\": [\n    {\n      \"id\": \"JFK query\",\n      \"request\": { \"query\": { \"match_all\": {} } },\n      \"ratings\": []\n    } ],\n  \"metric\": {\n    \"precision\": {\n      \"k\": 20,\n      \"relevant_rating_threshold\": 1,\n      \"ignore_unlabeled\": false\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19379,7 +20363,13 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_rank_eval\n{\n  \"requests\": [\n    {\n      \"id\": \"JFK query\",\n      \"request\": { \"query\": { \"match_all\": {} } },\n      \"ratings\": []\n    } ],\n  \"metric\": {\n    \"precision\": {\n      \"k\": 20,\n      \"relevant_rating_threshold\": 1,\n      \"ignore_unlabeled\": false\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/{index}/_rank_eval": {
@@ -19415,7 +20405,13 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_rank_eval\n{\n  \"requests\": [\n    {\n      \"id\": \"JFK query\",\n      \"request\": { \"query\": { \"match_all\": {} } },\n      \"ratings\": []\n    } ],\n  \"metric\": {\n    \"precision\": {\n      \"k\": 20,\n      \"relevant_rating_threshold\": 1,\n      \"ignore_unlabeled\": false\n    }\n  }\n}"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19449,7 +20445,13 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /my-index-000001/_rank_eval\n{\n  \"requests\": [\n    {\n      \"id\": \"JFK query\",\n      \"request\": { \"query\": { \"match_all\": {} } },\n      \"ratings\": []\n    } ],\n  \"metric\": {\n    \"precision\": {\n      \"k\": 20,\n      \"relevant_rating_threshold\": 1,\n      \"ignore_unlabeled\": false\n    }\n  }\n}"
+          }
+        ]
       }
     },
     "/_reindex": {
@@ -20673,7 +21675,13 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _application/search_application/my-app/\n"
+          }
+        ]
       }
     },
     "/_application/analytics/{name}": {
@@ -20734,7 +21742,13 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _application/analytics/my_analytics_collection\n"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -20769,7 +21783,13 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _application/analytics/my_analytics_collection/\n"
+          }
+        ]
       }
     },
     "/_application/analytics": {
@@ -21575,7 +22595,7 @@
         "x-codeSamples": [
           {
             "lang": "Console",
-            "source": "GET /_security/api_key?id=VuaCfGcBCdbkQm-e5aOx&with_limited_by=true\n"
+            "source": "GET /_security/api_key?username=myuser&realm_name=native1\n"
           }
         ]
       },
@@ -22439,7 +23459,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _sql/async/delete/FmdMX2pIang3UWhLRU5QS0lqdlppYncaMUpYQ05oSkpTc3kwZ21EdC1tbFJXQToxOTI=\n"
+          }
+        ]
       }
     },
     "/_sql/async/{id}": {
@@ -22552,7 +23578,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _sql/async/FnR0TDhyWUVmUmVtWXRWZER4MXZiNFEad2F5UDk2ZVdTVHV1S0xDUy00SklUdzozMTU=?wait_for_completion_timeout=2s&format=json\n"
+          }
+        ]
       }
     },
     "/_sql/async/status/{id}": {
@@ -22618,7 +23650,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _sql/async/status/FnR0TDhyWUVmUmVtWXRWZER4MXZiNFEad2F5UDk2ZVdTVHV1S0xDUy00SklUdzozMTU=\n"
+          }
+        ]
       }
     },
     "/_sql": {
@@ -22883,7 +23921,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT _synonyms/my-synonyms-set\n"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -22917,7 +23961,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _synonyms/my-synonyms-set\n"
+          }
+        ]
       }
     },
     "/_synonyms/{set_id}/{rule_id}": {
@@ -23279,7 +24329,7 @@
         "x-codeSamples": [
           {
             "lang": "Console",
-            "source": "GET _tasks?actions=cluster:*\n"
+            "source": "GET _tasks?detailed=true&actions=*/delete/byquery\n"
           }
         ]
       }
@@ -23626,7 +24676,13 @@
             "$ref": "#/components/responses/transform.get_transform-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _transform?size=10\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -23821,7 +24877,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "DELETE _transform/ecommerce_transform\n"
+          }
+        ]
       }
     },
     "/_transform": {
@@ -23851,7 +24913,13 @@
             "$ref": "#/components/responses/transform.get_transform-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _transform?size=10\n"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_stats": {
@@ -23948,7 +25016,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET _transform/ecommerce-customer-transform/_stats\n"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_preview": {
@@ -24132,7 +25206,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _transform/ecommerce_transform/_reset\n"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_schedule_now": {
@@ -24184,7 +25264,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _transform/ecommerce_transform/_schedule_now\n"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_start": {
@@ -24246,7 +25332,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _transform/ecommerce-customer-transform/_start\n"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_stop": {
@@ -24338,7 +25430,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "POST _transform/ecommerce_transform/_stop\n"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_update": {
@@ -72551,6 +73649,12 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+            },
+            "examples": {
+              "InferencePutExample1": {
+                "description": "An example body for a `PUT _inference/rerank/my-rerank-model` request.",
+                "value": "{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n }\n}"
+              }
             }
           }
         },
@@ -72685,6 +73789,12 @@
                   "type": "number"
                 }
               }
+            },
+            "examples": {
+              "MlGetOverallBucketsExample1": {
+                "description": "An example body for a `GET _ml/anomaly_detectors/job-*/results/overall_buckets` request.",
+                "value": "{\n  \"overall_score\": 80,\n  \"start\": \"1403532000000\"\n}"
+              }
             }
           }
         }
@@ -72698,6 +73808,12 @@
                 "config": {
                   "$ref": "#/components/schemas/ml.preview_data_frame_analytics.DataframePreviewConfig"
                 }
+              }
+            },
+            "examples": {
+              "MlPreviewDataFrameAnalyticsExample1": {
+                "description": "An example body for a `POST _ml/data_frame/analytics/_preview` request.",
+                "value": "{\n  \"config\": {\n    \"source\": {\n      \"index\": \"houses_sold_last_10_yrs\"\n    },\n    \"analysis\": {\n      \"regression\": {\n        \"dependent_variable\": \"price\"\n      }\n    }\n  }\n}"
               }
             }
           }
@@ -72727,6 +73843,12 @@
               "type": "array",
               "items": {
                 "$ref": "#/components/schemas/_global.msearch.RequestItem"
+              }
+            },
+            "examples": {
+              "MsearchRequestExample1": {
+                "description": "An example body for a `GET my-index-000001/_msearch` request.",
+                "value": "{ }\n{\"query\" : {\"match\" : { \"message\": \"this is a test\"}}}\n{\"index\": \"my-index-000002\"}\n{\"query\" : {\"match_all\" : {}}}"
               }
             }
           }
@@ -72844,6 +73966,12 @@
               "required": [
                 "requests"
               ]
+            },
+            "examples": {
+              "RankEvalRequestExample1": {
+                "description": "An example body for a `GET /my-index-000001/_rank_eval` request.",
+                "value": "{\n  \"requests\": [\n    {\n      \"id\": \"JFK query\",\n      \"request\": { \"query\": { \"match_all\": {} } },\n      \"ratings\": []\n    } ],\n  \"metric\": {\n    \"precision\": {\n      \"k\": 20,\n      \"relevant_rating_threshold\": 1,\n      \"ignore_unlabeled\": false\n    }\n  }\n}"
+              }
             }
           }
         },

@@ -1,5 +1,4 @@
 # summary:
-method_request: DELETE /_security/privilege/myapp/read
 description: >
   A successful response from `DELETE /_security/privilege/myapp/read`.
   If the privilege is successfully deleted, `found` is set to `true`.

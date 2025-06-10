@@ -1,5 +1,4 @@
 # summary:
-method_request: POST /_security/saml/logout
 description: A successful response from `POST /_security/saml/logout`.
 # type: response
 # response_code:

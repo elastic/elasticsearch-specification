@@ -1,5 +1,4 @@
 # summary: licensing/get-license.asciidoc:61
-method_request: GET /_license
 description: A successful response from `GET /_license`.
 # type: response
 # response_code: ''

@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /_cat/plugins?v=true&s=component&h=name,component,version,description&format=json
 description: >
   A successful response from `GET /_cat/plugins?v=true&s=component&h=name,component,version,description&format=json`.
 # type: response

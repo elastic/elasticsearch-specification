@@ -1,6 +1,5 @@
 summary: Get two fields
 # type: "response"
-method_request: GET _field_caps?fields=rating,title
 description: >
   A successful response from `GET _field_caps?fields=rating,title`.
   The field `rating` is defined as a long in `index1` and `index2` and as a `keyword` in `index3` and `index4`.

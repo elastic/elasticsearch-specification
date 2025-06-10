@@ -1,5 +1,4 @@
 summary: No ongoing recoveries
-method_request: GET _cat/recovery?v=true&format=json
 description: >
   A successful response from `GET _cat/recovery?v=true&format=json`.
   In this example, the source and target nodes are the same because the recovery type is `store`, meaning they were read from local storage on node start.
