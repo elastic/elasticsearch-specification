@@ -8,7 +8,7 @@ publish = false
 clients_schema = {path="../clients_schema"}
 
 serde_json = { workspace = true }
-serde_ignored = { workspace = true }
+itertools = { workspace = true }
 icu_segmenter = { workspace = true }
 openapiv3 = { workspace = true }
 anyhow = { workspace = true }
