@@ -10790,9 +10790,6 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
   delimiter?: string
   drop_null_columns?: boolean
   format?: EsqlQueryEsqlFormat
-  keep_alive?: Duration
-  keep_on_completion?: boolean
-  wait_for_completion_timeout?: Duration
   body?: {
     columnar?: boolean
     filter?: QueryDslQueryContainer
