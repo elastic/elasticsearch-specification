@@ -4,7 +4,6 @@ description: >
   `effective_settings` field shows additional settings that are pulled from its template.
 # type: response
 # response_code: 200
-method_request: GET /_data_stream/my-data-stream/_settings
 value: |-
   {
     "data_streams": [

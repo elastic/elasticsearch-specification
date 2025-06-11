@@ -25,7 +25,7 @@ import { Duration } from '@_types/Time'
  *
  * By default, it returns only settings that have been explicitly defined.
  * @rest_spec_name cluster.get_settings
- * @availability stack since=9.1.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor
  * @doc_id cluster-get-settings

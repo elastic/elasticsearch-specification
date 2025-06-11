@@ -5,7 +5,7 @@ description: >
   reports that the setting was not successfully applied to that index.
 # type: response
 # response_code: 200
-method_request: PUT /_data_stream/my-data-stream/_settings
+# method_request: PUT /_data_stream/my-data-stream/_settings
 value: |-
   {
     "data_streams": [
