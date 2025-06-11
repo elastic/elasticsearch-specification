@@ -32,6 +32,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-allocation-explain
+ * @ext_doc_id cluster-allocation-explain-examples
  * @doc_tag cluster
  */
 export interface Request extends RequestBase {
