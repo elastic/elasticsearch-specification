@@ -55206,6 +55206,7 @@
           "chat_completion",
           "completion",
           "rerank",
+          "sparse_embedding",
           "text_embedding"
         ]
       },
@@ -55284,9 +55285,11 @@
       "inference._types.TaskTypeHuggingFace": {
         "type": "string",
         "enum": [
-          "text_embedding",
           "chat_completion",
-          "completion"
+          "completion",
+          "rerank",
+          "sparse_embedding",
+          "text_embedding"
         ]
       },
       "inference._types.JinaAITaskType": {
