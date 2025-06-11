@@ -5,7 +5,6 @@ description: >
   the write index on rollover. The setting `index.lifecycle.name` is applied to the data stream and all backing indices.
 # type: response
 # response_code: 200
-# method_request: PUT /_data_stream/my-data-stream/_settings
 value: |-
   {
     "data_streams": [
