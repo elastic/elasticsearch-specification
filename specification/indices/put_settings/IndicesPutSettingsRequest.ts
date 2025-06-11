@@ -31,6 +31,8 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
  * The list of per-index settings that can be updated dynamically on live indices can be found in index settings documentation.
  * To preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.
  *
+ * For performance optimization during bulk indexing, you can disable the refresh interval.
+ * Refer to the linked documentation for an example.
  *  There are multiple valid ways to represent index settings in the request body. You can specify only the setting, for example:
  *
  * ```
@@ -75,12 +77,15 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
  * This affects searches and any new data added to the stream after the rollover.
  * However, it does not affect the data stream's backing indices or their existing data.
  * To change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.
+ * Refer to the linked documentation for step-by-step examples of updating analyzers on existing indices.
  * @rest_spec_name indices.put_settings
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage
  * @doc_id indices-update-settings
  * @ext_doc_id index-settings
+ * @ext_doc_id indices-refresh-disable
+ * @ext_doc_id analyzer-update-existing
  */
 export interface Request extends RequestBase {
   urls: [
