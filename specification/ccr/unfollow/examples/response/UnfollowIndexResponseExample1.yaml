@@ -1,5 +1,4 @@
 # summary:
-method_request: POST /follower_index/_ccr/unfollow
 description: A successful response from `POST /follower_index/_ccr/unfollow`.
 # type: response
 # response_code: 200

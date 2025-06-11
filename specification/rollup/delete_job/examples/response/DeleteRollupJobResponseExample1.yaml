@@ -1,5 +1,4 @@
 # summary:
-method_request: DELETE _rollup/job/sensor
 description: A successful response from `DELETE _rollup/job/sensor`.
 # type: response
 # response_code: ''

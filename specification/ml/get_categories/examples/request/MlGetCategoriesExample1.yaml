@@ -1,0 +1,8 @@
+method_request: GET _ml/anomaly_detectors/esxi_log/results/categories
+description: An example body for a `GET _ml/anomaly_detectors/esxi_log/results/categories` request.
+value: |-
+  {
+    "page":{
+      "size": 1
+    }
+  }

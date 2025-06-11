@@ -1,5 +1,4 @@
 # summary:
-method_request: POST /_slm/policy/daily-snapshots/_execute
 description: >
   Run `POST /_slm/policy/daily-snapshots/_execute` to take an immediate snapshot according to the `daily-snapshots` policy.
 # type: response

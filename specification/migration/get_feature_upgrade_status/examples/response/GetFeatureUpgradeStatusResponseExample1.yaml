@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /_migration/system_features
 description: A successful response from `GET /_migration/system_features`.
 # type: response
 # response_code: ''

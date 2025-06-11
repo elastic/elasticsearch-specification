@@ -148,14 +148,16 @@ pub fn add_endpoint(
                 // }
             };
 
-            let openapi_example = Example {
-                value: example,
-                description: schema_example.description.clone(),
-                summary: schema_example.summary.clone(),
-                external_value: None,
-                extensions: Default::default(),
-            };
-            openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
+            if example.is_some() {
+                let openapi_example = Example {
+                    value: example,
+                    description: schema_example.description.clone(),
+                    summary: schema_example.summary.clone(),
+                    external_value: None,
+                    extensions: Default::default(),
+                };
+                openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
+            }
         }
         openapi_examples
     }
@@ -340,21 +342,6 @@ pub fn add_endpoint(
                 }
             }
         }
-        if code_samples.is_empty() {
-            // if there are no example requests we look for example responses
-            // this can only happen for examples that do not have a request body
-            if let Some(examples) = response_def.examples.clone() {
-                if let Some((_, example)) = examples.first() {
-                    let request_line = example.method_request.clone().unwrap_or(String::from(""));
-                    if !request_line.is_empty() {
-                        code_samples.push(serde_json::json!({
-                            "lang": "Console",
-                            "source": request_line + "\n",
-                        }));
-                    }
-                }
-            }
-        }
         if !code_samples.is_empty() {
             extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
         }
@@ -515,7 +502,7 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
 
 fn add_privileges(privileges: &Option<Privileges>) -> Option<String>{
     if let Some(privs) = privileges {
-        let mut result = "\n ##Required authorization\n".to_string();
+        let mut result = "\n\n ## Required authorization\n".to_string();
         if !privs.index.is_empty() {
             result += "* Index privileges: ";
             result += &privs.index.iter()

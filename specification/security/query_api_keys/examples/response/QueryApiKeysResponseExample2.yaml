@@ -1,5 +1,4 @@
 summary: Query API keys with pagination
-method_request: GET /_security/_query/api_key
 description: >
   An abbreviated response from `GET /_security/_query/api_key` that contains a list of matched API keys along with their sort values.
   The first sort value is creation time, which is displayed in `date_time` format.

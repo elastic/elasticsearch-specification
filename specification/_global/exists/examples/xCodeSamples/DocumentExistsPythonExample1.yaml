@@ -1,8 +1,0 @@
-lang: Python
-# label:
-source: |
-  resp = client.exists(
-    index="my-index-000001",
-    id="0",
-  )
-  print(resp)

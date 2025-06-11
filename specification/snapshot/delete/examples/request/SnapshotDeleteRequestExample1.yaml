@@ -1,0 +1,1 @@
+method_request: DELETE /_snapshot/my_repository/snapshot_2,snapshot_3
