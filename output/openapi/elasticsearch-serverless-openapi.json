@@ -9120,7 +9120,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_data_stream/my-data-stream/_settings\n"
+          }
+        ]
       },
       "put": {
         "tags": [
