@@ -41,7 +41,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * * Google AI Studio (`completion`, `text_embedding`)
  * * Google Vertex AI (`rerank`, `text_embedding`)
  * * Hugging Face (`text_embedding`)
- * * Mistral (`text_embedding`)
+ * * Mistral (`chat_completion`, `completion`, `text_embedding`)
  * * OpenAI (`chat_completion`, `completion`, `text_embedding`)
  * * VoyageAI (`text_embedding`, `rerank`)
  * * Watsonx inference integration (`text_embedding`)
