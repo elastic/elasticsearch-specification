@@ -502,18 +502,20 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
 
 fn add_privileges(privileges: &Option<Privileges>) -> Option<String>{
     if let Some(privs) = privileges {
-        let mut result = "\n\n ## Required authorization\n".to_string();
+        let mut result = "\n\n## Required authorization\n\n".to_string();
         if !privs.index.is_empty() {
             result += "* Index privileges: ";
             result += &privs.index.iter()
                 .map(|a| format!("`{a}`"))
                 .join(",");
+            result += "\n";
         }
         if !privs.cluster.is_empty() {
             result += "* Cluster privileges: ";
             result += &privs.cluster.iter()
                 .map(|a| format!("`{a}`"))
                 .join(",");
+            result += "\n";
         }
         return Some(result)
     }
