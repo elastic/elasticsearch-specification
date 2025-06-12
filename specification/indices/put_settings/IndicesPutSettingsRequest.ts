@@ -33,7 +33,7 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
  *
  * For performance optimization during bulk indexing, you can disable the refresh interval.
  * Refer to [disable refresh interval](https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval) for an example.
- *  There are multiple valid ways to represent index settings in the request body. You can specify only the setting, for example:
+ * There are multiple valid ways to represent index settings in the request body. You can specify only the setting, for example:
  *
  * ```
  * {
