@@ -148,14 +148,16 @@ pub fn add_endpoint(
                 // }
             };
 
-            let openapi_example = Example {
-                value: example,
-                description: schema_example.description.clone(),
-                summary: schema_example.summary.clone(),
-                external_value: None,
-                extensions: Default::default(),
-            };
-            openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
+            if example.is_some() {
+                let openapi_example = Example {
+                    value: example,
+                    description: schema_example.description.clone(),
+                    summary: schema_example.summary.clone(),
+                    external_value: None,
+                    extensions: Default::default(),
+                };
+                openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
+            }
         }
         openapi_examples
     }
@@ -233,9 +235,27 @@ pub fn add_endpoint(
     };
 
     //---- Merge multipath endpoints if asked for
+
+    let operation_id: String = endpoint
+        .name
+        .chars()
+        .map(|x| match x {
+            '_' | '.' => '-',
+            _ => x,
+        })
+        .collect();
+
     let mut new_endpoint: clients_schema::Endpoint;
 
     let endpoint = if is_multipath && tac.config.merge_multipath_endpoints {
+
+        // Add redirects for operations that would have been generated otherwise
+        if let Some(ref mut map) = &mut tac.redirects {
+            for i in 1..endpoint.urls.len() {
+                map.insert(format!("{operation_id}-{i}"), operation_id.clone());
+            }
+        }
+
         new_endpoint = endpoint.clone();
         let endpoint = &mut new_endpoint;
 
@@ -315,9 +335,9 @@ pub fn add_endpoint(
         parameters.append(&mut query_params.clone());
 
         let sum_desc = split_summary_desc(&endpoint.description);
-        
+
         let privilege_desc = add_privileges(&endpoint.privileges);
-        
+
         let full_desc = match (sum_desc.description, privilege_desc) {
             (Some(a), Some(b)) => Some(a+ &b),
             (opt_a, opt_b) => opt_a.or(opt_b)
@@ -337,21 +357,6 @@ pub fn add_endpoint(
                         "lang": "Console",
                         "source": request_line + "\n" + request_body.as_str(),
                     }));
-                }
-            }
-        }
-        if code_samples.is_empty() {
-            // if there are no example requests we look for example responses
-            // this can only happen for examples that do not have a request body
-            if let Some(examples) = response_def.examples.clone() {
-                if let Some((_, example)) = examples.first() {
-                    let request_line = example.method_request.clone().unwrap_or(String::from(""));
-                    if !request_line.is_empty() {
-                        code_samples.push(serde_json::json!({
-                            "lang": "Console",
-                            "source": request_line + "\n",
-                        }));
-                    }
                 }
             }
         }
@@ -452,14 +457,7 @@ pub fn add_endpoint(
             };
 
             let mut operation = operation.clone();
-            let mut operation_id: String = endpoint
-                .name
-                .chars()
-                .map(|x| match x {
-                    '_' | '.' => '-',
-                    _ => x,
-                })
-                .collect();
+            let mut operation_id = operation_id.clone();
             if operation_counter != 0 {
                 write!(&mut operation_id, "-{}", operation_counter)?;
             }
@@ -515,18 +513,20 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
 
 fn add_privileges(privileges: &Option<Privileges>) -> Option<String>{
     if let Some(privs) = privileges {
-        let mut result = "\n ##Required authorization\n".to_string();
+        let mut result = "\n\n## Required authorization\n\n".to_string();
         if !privs.index.is_empty() {
             result += "* Index privileges: ";
             result += &privs.index.iter()
                 .map(|a| format!("`{a}`"))
                 .join(",");
+            result += "\n";
         }
         if !privs.cluster.is_empty() {
             result += "* Cluster privileges: ";
             result += &privs.cluster.iter()
                 .map(|a| format!("`{a}`"))
                 .join(",");
+            result += "\n";
         }
         return Some(result)
     }

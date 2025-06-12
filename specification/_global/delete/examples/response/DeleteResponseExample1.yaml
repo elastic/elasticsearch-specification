@@ -1,5 +1,4 @@
 # summary:
-method_request: DELETE /my-index-000001/_doc/1
 description: A successful response from `DELETE /my-index-000001/_doc/1`, which deletes the JSON document 1 from the `my-index-000001` index.
 # type: response
 # response_code: ''

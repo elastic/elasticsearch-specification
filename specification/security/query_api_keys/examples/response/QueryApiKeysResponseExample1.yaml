@@ -1,5 +1,4 @@
 summary: Query API keys by ID
-method_request: GET /_security/_query/api_key?with_limited_by=true
 description: >
   A successful response from `GET /_security/_query/api_key?with_limited_by=true`.
   The `limited_by` details are the owner user's permissions associated with the API key.

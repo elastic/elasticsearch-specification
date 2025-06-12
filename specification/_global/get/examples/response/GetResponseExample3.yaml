@@ -1,5 +1,4 @@
 summary: Get metadata fields
-method_request: GET my-index-000001/_doc/2?routing=user1&stored_fields=tags,counter
 description: >
   A successful response from `GET my-index-000001/_doc/2?routing=user1&stored_fields=tags,counter`, which retrieves the `_routing` metadata field.
 # type: response

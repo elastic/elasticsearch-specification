@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /my-index-000001/_search_shards
 description: An abbreviated response from `GET /my-index-000001/_search_shards`.
 # type: response
 # response_code: 200

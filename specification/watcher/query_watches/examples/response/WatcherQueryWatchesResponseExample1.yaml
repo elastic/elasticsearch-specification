@@ -1,5 +1,4 @@
 # summary: ''
-method_request: GET /_watcher/_query/watches
 description: A successful response from `GET /_watcher/_query/watches`.
 # type: response
 # response_code: 200
