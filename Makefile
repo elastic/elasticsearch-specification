@@ -54,7 +54,6 @@ transform-to-openapi: ## Generate the OpenAPI definition from the compiled schem
 
 transform-to-openapi-for-docs: ## Generate the OpenAPI definition tailored for API docs generation
 	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor stack --lift-enum-descriptions --merge-multipath-endpoints --multipath-redirects --output output/openapi/elasticsearch-openapi-docs.json
-	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor serverless --lift-enum-descriptions --merge-multipath-endpoints --multipath-redirects --output output/openapi/elasticsearch-serverless-openapi-docs.json
 
 filter-for-serverless: ## Generate the serverless version from the compiled schema
 	@npm run --prefix compiler filter-by-availability -- --serverless --visibility=public --input ../output/schema/schema.json --output ../output/output/openapi/elasticsearch-serverless-openapi.json
@@ -63,13 +62,9 @@ dump-routes: ## Create a new schema with all generics expanded
 	@npm run dump-routes --prefix compiler
 
 overlay-docs: ## Apply overlays to OpenAPI documents
-	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi.json" "docs/overlays/elasticsearch-serverless-openapi-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi.tmp1.json"
-	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi.tmp1.json" "docs/overlays/elasticsearch-shared-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi.tmp2.json"
-	@npx @redocly/cli bundle output/openapi/elasticsearch-serverless-openapi.tmp2.json --ext json -o output/openapi/elasticsearch-serverless-openapi.examples.json
 	@npx bump overlay "output/openapi/elasticsearch-openapi.json" "docs/overlays/elasticsearch-openapi-overlays.yaml" > "output/openapi/elasticsearch-openapi.tmp1.json"
 	@npx bump overlay "output/openapi/elasticsearch-openapi.tmp1.json" "docs/overlays/elasticsearch-shared-overlays.yaml" > "output/openapi/elasticsearch-openapi.tmp2.json"
 	@npx @redocly/cli bundle output/openapi/elasticsearch-openapi.tmp2.json --ext json -o output/openapi/elasticsearch-openapi.examples.json
-	rm output/openapi/elasticsearch-serverless-openapi.tmp*.json
 	rm output/openapi/elasticsearch-openapi.tmp*.json
 
 lint-docs: ## Lint the OpenAPI documents after overlays
@@ -77,9 +72,6 @@ lint-docs: ## Lint the OpenAPI documents after overlays
 
 lint-docs-stateful: ## Lint only the elasticsearch-openapi.examples.json file
 	@npx @redocly/cli lint "output/openapi/elasticsearch-openapi.examples.json" --config "docs/linters/redocly.yaml" --format stylish --max-problems 500
-
-lint-docs-serverless: ## Lint only the serverless OpenAPI document after overlays
-	@npx @redocly/cli lint "output/openapi/elasticsearch-serverless-openapi.examples.json" --config "docs/linters/redocly.yaml" --format stylish --max-problems 500
 
 contrib: | generate license-check spec-format-fix transform-to-openapi filter-for-serverless lint-docs ## Pre contribution target
 
