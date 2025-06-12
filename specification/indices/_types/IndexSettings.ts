@@ -70,7 +70,6 @@ export class RetentionLease {
 /**
  * @doc_id index-modules-settings
  * @ext_doc_id index-settings
- * @ext_doc_id analyzer-update-existing
  * @behavior_meta AdditionalProperties fieldname=other_settings description="Additional settings not covered in this type."
  */
 export class IndexSettings
@@ -126,6 +125,8 @@ export class IndexSettings
   max_refresh_listeners?: integer
   /**
    * Settings to define analyzers, tokenizers, token filters and character filters.
+   * Refer to the linked documentation for step-by-step examples of updating analyzers on existing indices.
+   * @ext_doc_id analyzer-update-existing
    */
   analyze?: SettingsAnalyze
   highlight?: SettingsHighlight
