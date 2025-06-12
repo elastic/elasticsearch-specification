@@ -38,7 +38,8 @@ use crate::convert_availabilities;
 pub fn add_endpoint(
     endpoint: &clients_schema::Endpoint,
     tac: &mut TypesAndComponents,
-    out: &mut Paths
+    out: &mut Paths,
+    product_meta: &IndexMap<String,String>
 ) -> anyhow::Result<()> {
     if endpoint.request.is_none() {
         // tracing::warn!("Endpoint {} is missing a request -- ignored", &endpoint.name);
@@ -371,7 +372,7 @@ pub fn add_endpoint(
         if !code_samples.is_empty() {
             extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
         }
-        extensions.append(&mut crate::product_meta_as_extensions(namespace));
+        extensions.append(&mut crate::product_meta_as_extensions(namespace, product_meta));
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
