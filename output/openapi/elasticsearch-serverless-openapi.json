@@ -10919,7 +10919,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Mistral (`text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -11031,7 +11031,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Mistral (`text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -11248,7 +11248,7 @@
           "inference"
         ],
         "summary": "Create an Amazon Bedrock inference endpoint",
-        "description": "Creates an inference endpoint to perform an inference task with the `amazonbedrock` service.\n\n>info\n> You need to provide the access and secret keys only once, during the inference model creation. The get inference API does not retrieve your access or secret keys. After creating the inference model, you cannot change the associated key pairs. If you want to use a different access and secret key pair, delete the inference model and recreate it with the same name and the updated keys.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "Create an inference endpoint to perform an inference task with the `amazonbedrock` service.\n\n>info\n> You need to provide the access and secret keys only once, during the inference model creation. The get inference API does not retrieve your access or secret keys. After creating the inference model, you cannot change the associated key pairs. If you want to use a different access and secret key pair, delete the inference model and recreate it with the same name and the updated keys.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-amazonbedrock",
         "parameters": [
           {
@@ -53820,7 +53820,7 @@
             "$ref": "#/components/schemas/inference._types.CompletionToolType"
           },
           "tools": {
-            "description": "A list of tools that the model can call.",
+            "description": "A list of tools that the model can call.\nExample:\n```\n{\n  \"tools\": [\n      {\n          \"type\": \"function\",\n          \"function\": {\n              \"name\": \"get_price_of_item\",\n              \"description\": \"Get the current price of an item\",\n              \"parameters\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                      \"item\": {\n                          \"id\": \"12345\"\n                      },\n                      \"unit\": {\n                          \"type\": \"currency\"\n                      }\n                  }\n              }\n          }\n      }\n  ]\n}\n```",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/inference._types.CompletionTool"
@@ -53842,14 +53842,14 @@
             "$ref": "#/components/schemas/inference._types.MessageContent"
           },
           "role": {
-            "description": "The role of the message author.",
+            "description": "The role of the message author. Valid values are `user`, `assistant`, `system`, and `tool`.",
             "type": "string"
           },
           "tool_call_id": {
             "$ref": "#/components/schemas/_types.Id"
           },
           "tool_calls": {
-            "description": "The tool calls generated by the model.",
+            "description": "Only for `assistant` role messages. The tool calls generated by the model. If it's specified, the `content` field is optional.\nExample:\n```\n{\n  \"tool_calls\": [\n      {\n          \"id\": \"call_KcAjWtAww20AihPHphUh46Gd\",\n          \"type\": \"function\",\n          \"function\": {\n              \"name\": \"get_current_weather\",\n              \"arguments\": \"{\\\"location\\\":\\\"Boston, MA\\\"}\"\n          }\n      }\n  ]\n}\n```",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/inference._types.ToolCall"
@@ -55206,7 +55206,6 @@
           "chat_completion",
           "completion",
           "rerank",
-          "sparse_embedding",
           "text_embedding"
         ]
       },
@@ -55288,7 +55287,6 @@
           "chat_completion",
           "completion",
           "rerank",
-          "sparse_embedding",
           "text_embedding"
         ]
       },

@@ -13675,7 +13675,7 @@ export interface InferenceHuggingFaceTaskSettings {
   top_n?: integer
 }
 
-export type InferenceHuggingFaceTaskType = 'chat_completion' | 'completion' | 'rerank' | 'sparse_embedding' | 'text_embedding'
+export type InferenceHuggingFaceTaskType = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
@@ -13904,7 +13904,7 @@ export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
 export type InferenceTaskTypeGoogleVertexAI = 'text_embedding' | 'rerank'
 
-export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'sparse_embedding' | 'text_embedding'
+export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
 

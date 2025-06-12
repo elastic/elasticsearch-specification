@@ -89,7 +89,6 @@ export enum TaskTypeHuggingFace {
   chat_completion,
   completion,
   rerank,
-  sparse_embedding,
   text_embedding
 }
 
