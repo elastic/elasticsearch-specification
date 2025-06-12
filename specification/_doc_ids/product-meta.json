@@ -1,0 +1,6 @@
+{
+  "fleet" : "fleet",
+  "inference" : "machine-learning",
+  "logstash" : "logstash",
+  "ml" : "machine-learning"
+}
