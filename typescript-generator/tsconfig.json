@@ -15,8 +15,7 @@
     "removeComments": true,
     "noLib": false,
     "preserveConstEnums": true,
-    "sourceMap": true,
-    "suppressImplicitAnyIndexErrors": true
+    "sourceMap": true
   },
   "compileOnSave": true,
   "buildOnSave": true,
