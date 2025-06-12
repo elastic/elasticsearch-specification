@@ -26959,6 +26959,7 @@
         ]
       },
       "_types.aggregations.SumAggregate": {
+        "description": "Sum aggregation result. `value` is always present and is zero if there were no values to process.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.SingleMetricAggregateBase"
@@ -26979,6 +26980,7 @@
         ]
       },
       "_types.aggregations.WeightedAvgAggregate": {
+        "description": "Weighted average aggregation result. `value` is missing if the weight was set to zero.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.SingleMetricAggregateBase"
@@ -26989,6 +26991,7 @@
         ]
       },
       "_types.aggregations.ValueCountAggregate": {
+        "description": "Value count aggregation result. `value` is always present.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.SingleMetricAggregateBase"
@@ -27048,6 +27051,7 @@
         ]
       },
       "_types.aggregations.StatsAggregate": {
+        "description": "Statistics aggregation result. `min`, `max` and `avg` are missing if there were no values to process\n(`count` is zero).",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
@@ -27601,6 +27605,7 @@
         ]
       },
       "_types.aggregations.MultiBucketBase": {
+        "description": "Base type for multi-bucket aggregation results that can hold sub-aggregations results.",
         "type": "object",
         "properties": {
           "doc_count": {
@@ -27791,6 +27796,7 @@
         ]
       },
       "_types.aggregations.StringTermsAggregate": {
+        "description": "Result of a `terms` aggregation when the field is a string.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.TermsAggregateBaseStringTermsBucket"
@@ -27908,6 +27914,7 @@
         ]
       },
       "_types.aggregations.LongTermsAggregate": {
+        "description": "Result of a `terms` aggregation when the field is some kind of whole number like a integer, long, or a date.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.TermsAggregateBaseLongTermsBucket"
@@ -27992,6 +27999,7 @@
         ]
       },
       "_types.aggregations.DoubleTermsAggregate": {
+        "description": "Result of a `terms` aggregation when the field is some kind of decimal number like a float, double, or distance.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.TermsAggregateBaseDoubleTermsBucket"
@@ -28076,6 +28084,7 @@
         ]
       },
       "_types.aggregations.UnmappedTermsAggregate": {
+        "description": "Result of a `terms` aggregation when the field is unmapped. `buckets` is always empty.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.TermsAggregateBaseVoid"
@@ -28143,6 +28152,7 @@
         "type": "object"
       },
       "_types.aggregations.LongRareTermsAggregate": {
+        "description": "Result of the `rare_terms` aggregation when the field is some kind of whole number like a integer, long, or a date.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.MultiBucketAggregateBaseLongRareTermsBucket"
@@ -28209,6 +28219,7 @@
         ]
       },
       "_types.aggregations.StringRareTermsAggregate": {
+        "description": "Result of the `rare_terms` aggregation when the field is a string.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.MultiBucketAggregateBaseStringRareTermsBucket"
@@ -28272,6 +28283,7 @@
         ]
       },
       "_types.aggregations.UnmappedRareTermsAggregate": {
+        "description": "Result of a `rare_terms` aggregation when the field is unmapped. `buckets` is always empty.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.MultiBucketAggregateBaseVoid"
@@ -28382,6 +28394,7 @@
         ]
       },
       "_types.aggregations.SingleBucketAggregateBase": {
+        "description": "Base type for single-bucket aggregation results that can hold sub-aggregations results.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
@@ -28750,6 +28763,7 @@
         ]
       },
       "_types.aggregations.DateRangeAggregate": {
+        "description": "Result of a `date_range` aggregation. Same format as a for a `range` aggregation: `from` and `to`\nin `buckets` are milliseconds since the Epoch, represented as a floating point number.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.RangeAggregate"
@@ -28760,6 +28774,7 @@
         ]
       },
       "_types.aggregations.GeoDistanceAggregate": {
+        "description": "Result of a `geo_distance` aggregation. The unit for `from` and `to` is meters by default.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.RangeAggregate"
@@ -29215,6 +29230,7 @@
         ]
       },
       "_types.aggregations.UnmappedSignificantTermsAggregate": {
+        "description": "Result of the `significant_terms` aggregation on an unmapped field. `buckets` is always empty.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.SignificantTermsAggregateBaseVoid"
@@ -30095,6 +30111,7 @@
         ]
       },
       "_types.aggregations.CumulativeCardinalityAggregate": {
+        "description": "Result of the `cumulative_cardinality` aggregation",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
@@ -30211,6 +30228,7 @@
         ]
       },
       "_types.GeoLine": {
+        "description": "A GeoJson GeoLine.",
         "type": "object",
         "properties": {
           "type": {
@@ -30374,6 +30392,7 @@
         ]
       },
       "_types.ErrorCause": {
+        "description": "Cause and details about a request failure. This class defines the properties common to all error types.\nAdditional details are also provided, that depend on the error type.",
         "type": "object",
         "properties": {
           "type": {
@@ -33209,6 +33228,7 @@
         "type": "string"
       },
       "_types.query_dsl.FieldAndFormat": {
+        "description": "A reference to a field with formatting instructions on how to return the value",
         "type": "object",
         "properties": {
           "field": {
@@ -36868,6 +36888,7 @@
         ]
       },
       "_types.aggregations.BucketAggregationBase": {
+        "description": "Base type for bucket aggregations. These aggregations also accept sub-aggregations.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.Aggregation"
@@ -37136,6 +37157,7 @@
         ]
       },
       "_types.aggregations.BucketKsAggregation": {
+        "description": "A sibling pipeline aggregation which executes a two sample Kolmogorov–Smirnov test (referred\nto as a \"K-S test\" from now on) against a provided distribution, and the distribution implied\nby the documents counts in the configured sibling aggregation. Specifically, for some metric,\nassuming that the percentile intervals of the metric are known beforehand or have been computed\nby an aggregation, then one would use range aggregation for the sibling to compute the p-value\nof the distribution difference between the metric and the restriction of that metric to a subset\nof the documents. A natural use case is if the sibling aggregation range aggregation nested in a\nterms aggregation, in which case one compares the overall distribution of metric to its restriction\nto each term.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.BucketPathAggregation"
@@ -37166,6 +37188,7 @@
         ]
       },
       "_types.aggregations.BucketCorrelationAggregation": {
+        "description": "A sibling pipeline aggregation which executes a correlation function on the configured sibling multi-bucket aggregation.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.BucketPathAggregation"
@@ -37265,6 +37288,7 @@
         ]
       },
       "_types.aggregations.CategorizeTextAggregation": {
+        "description": "A multi-bucket aggregation that groups semi-structured text into buckets. Each text\nfield is re-analyzed using a custom analyzer. The resulting tokens are then categorized\ncreating buckets of similarly formatted text values. This aggregation works best with machine\ngenerated text like system logs. Only the first 100 analyzed tokens are used to categorize the text.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.Aggregation"
@@ -38594,6 +38618,7 @@
         ]
       },
       "_types.EmptyObject": {
+        "description": "For empty Class assignments",
         "type": "object"
       },
       "_types.aggregations.MovingAverageAggregationBase": {
@@ -47592,6 +47617,7 @@
         ]
       },
       "indices._types.MappingLimitSettings": {
+        "description": "Mapping Limit Settings",
         "type": "object",
         "properties": {
           "coerce": {
@@ -48605,6 +48631,7 @@
         ]
       },
       "_types.mapping.MatchOnlyTextProperty": {
+        "description": "A variant of text that trades scoring and efficiency of positional queries for space efficiency. This field\neffectively stores data the same way as a text field that only indexes documents (index_options: docs) and\ndisables norms (norms: false). Term queries perform as fast if not faster as on text fields, however queries\nthat need positions such as the match_phrase query perform slower as they need to look at the _source document\nto verify whether a phrase matches. All queries return constant scores that are equal to 1.0.",
         "type": "object",
         "properties": {
           "type": {
@@ -49662,6 +49689,7 @@
         ]
       },
       "_types.mapping.GeoShapeProperty": {
+        "description": "The `geo_shape` data type facilitates the indexing of and searching with arbitrary geo shapes such as rectangles\nand polygons.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.mapping.DocValuesPropertyBase"
@@ -49751,6 +49779,7 @@
         ]
       },
       "_types.mapping.ShapeProperty": {
+        "description": "The `shape` data type facilitates the indexing of and searching with arbitrary `x, y` cartesian shapes such as\nrectangles and polygons.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.mapping.DocValuesPropertyBase"
@@ -50399,6 +50428,7 @@
         }
       },
       "indices._types.DataStreamLifecycleWithRollover": {
+        "description": "Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,\nif asked.",
         "allOf": [
           {
             "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
@@ -50449,6 +50479,7 @@
         }
       },
       "indices._types.DataStreamLifecycle": {
+        "description": "Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
         "type": "object",
         "properties": {
           "data_retention": {
@@ -50505,6 +50536,7 @@
         ]
       },
       "indices._types.DataStreamOptionsTemplate": {
+        "description": "Data stream options template contains the same information as DataStreamOptions but allows them to be set explicitly to null.",
         "type": "object",
         "properties": {
           "failure_store": {
@@ -50521,6 +50553,7 @@
         }
       },
       "indices._types.DataStreamFailureStoreTemplate": {
+        "description": "Template equivalent of DataStreamFailureStore that allows nullable values.",
         "type": "object",
         "properties": {
           "enabled": {
@@ -50550,6 +50583,7 @@
         }
       },
       "indices._types.FailureStoreLifecycleTemplate": {
+        "description": "Template equivalent of FailureStoreLifecycle that allows nullable values.",
         "type": "object",
         "properties": {
           "data_retention": {
@@ -53181,6 +53215,7 @@
         ]
       },
       "indices._types.DataStreamOptions": {
+        "description": "Data stream options contain the configuration of data stream level features for a given data stream, for example,\nthe failure store configuration.",
         "type": "object",
         "properties": {
           "failure_store": {
@@ -53189,6 +53224,7 @@
         }
       },
       "indices._types.DataStreamFailureStore": {
+        "description": "Data stream failure store contains the configuration of the failure store for a given data stream.",
         "type": "object",
         "properties": {
           "enabled": {
@@ -53201,6 +53237,7 @@
         }
       },
       "indices._types.FailureStoreLifecycle": {
+        "description": "The failure store lifecycle configures the data stream lifecycle configuration for failure indices.",
         "type": "object",
         "properties": {
           "data_retention": {
@@ -53837,6 +53874,7 @@
         ]
       },
       "inference._types.Message": {
+        "description": "An object representing part of the conversation.",
         "type": "object",
         "properties": {
           "content": {
@@ -53875,6 +53913,7 @@
         ]
       },
       "inference._types.ContentObject": {
+        "description": "An object style representation of a single portion of a conversation.",
         "type": "object",
         "properties": {
           "text": {
@@ -53892,6 +53931,7 @@
         ]
       },
       "inference._types.ToolCall": {
+        "description": "A tool call generated by the model.",
         "type": "object",
         "properties": {
           "id": {
@@ -53912,6 +53952,7 @@
         ]
       },
       "inference._types.ToolCallFunction": {
+        "description": "The function that the model called.",
         "type": "object",
         "properties": {
           "arguments": {
@@ -53939,6 +53980,7 @@
         ]
       },
       "inference._types.CompletionToolChoice": {
+        "description": "Controls which tool is called by the model.",
         "type": "object",
         "properties": {
           "type": {
@@ -53955,6 +53997,7 @@
         ]
       },
       "inference._types.CompletionToolChoiceFunction": {
+        "description": "The tool choice function.",
         "type": "object",
         "properties": {
           "name": {
@@ -53967,6 +54010,7 @@
         ]
       },
       "inference._types.CompletionTool": {
+        "description": "A list of tools that the model can call.",
         "type": "object",
         "properties": {
           "type": {
@@ -53983,6 +54027,7 @@
         ]
       },
       "inference._types.CompletionToolFunction": {
+        "description": "The completion tool function definition.",
         "type": "object",
         "properties": {
           "description": {
@@ -54013,6 +54058,7 @@
         "type": "object"
       },
       "inference._types.CompletionInferenceResult": {
+        "description": "Defines the completion result.",
         "type": "object",
         "properties": {
           "completion": {
@@ -54027,6 +54073,7 @@
         ]
       },
       "inference._types.CompletionResult": {
+        "description": "The completion result object",
         "type": "object",
         "properties": {
           "result": {
@@ -54048,6 +54095,7 @@
         ]
       },
       "inference._types.DeleteInferenceEndpointResult": {
+        "description": "Acknowledged response. For dry_run, contains the list of pipelines which reference the inference endpoint",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
@@ -54069,6 +54117,7 @@
         ]
       },
       "inference._types.InferenceEndpointInfo": {
+        "description": "Represents an inference endpoint as returned by the GET API",
         "allOf": [
           {
             "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
@@ -54092,6 +54141,7 @@
         ]
       },
       "inference._types.InferenceEndpoint": {
+        "description": "Configuration options when storing the inference endpoint",
         "type": "object",
         "properties": {
           "chunking_settings": {
@@ -54114,6 +54164,7 @@
         ]
       },
       "inference._types.InferenceChunkingSettings": {
+        "description": "Chunking configuration object",
         "type": "object",
         "properties": {
           "max_chunk_size": {
@@ -54182,6 +54233,7 @@
         "maxProperties": 1
       },
       "inference._types.TextEmbeddingByteResult": {
+        "description": "The text embedding result object for byte representation",
         "type": "object",
         "properties": {
           "embedding": {
@@ -54200,6 +54252,7 @@
         }
       },
       "inference._types.TextEmbeddingResult": {
+        "description": "The text embedding result object",
         "type": "object",
         "properties": {
           "embedding": {
@@ -54236,6 +54289,7 @@
         }
       },
       "inference._types.RankedDocument": {
+        "description": "The rerank result object representing a single ranked document\nid: the original index of the document in the request\nrelevance_score: the relevance_score of the document relative to the query\ntext: Optional, the text of the document, if requested",
         "type": "object",
         "properties": {
           "index": {
@@ -54302,6 +54356,7 @@
         ]
       },
       "inference._types.RateLimitSetting": {
+        "description": "This setting helps to minimize the number of rate limit errors returned from the service.",
         "type": "object",
         "properties": {
           "requests_per_minute": {
@@ -55726,6 +55781,7 @@
         ]
       },
       "inference._types.RerankedInferenceResult": {
+        "description": "Defines the response for a rerank request.",
         "type": "object",
         "properties": {
           "rerank": {
@@ -55740,6 +55796,7 @@
         ]
       },
       "inference._types.SparseEmbeddingInferenceResult": {
+        "description": "The response format for the sparse embedding request.",
         "type": "object",
         "properties": {
           "sparse_embedding": {
@@ -57708,6 +57765,7 @@
         }
       },
       "ingest._types.DocumentSimulation": {
+        "description": "The simulated document, with optional metadata.",
         "type": "object",
         "properties": {
           "_id": {
@@ -59849,6 +59907,7 @@
         ]
       },
       "_types.IndicesOptions": {
+        "description": "Controls how to deal with unavailable concrete indices (closed or missing), how wildcard expressions are expanded\nto actual indices (all, closed or open indices) and how to deal with wildcard expressions that resolve to no indices.",
         "type": "object",
         "properties": {
           "allow_no_indices": {
@@ -60565,6 +60624,7 @@
         "maxProperties": 1
       },
       "ml._types.TextClassificationInferenceOptions": {
+        "description": "Text classification configuration options",
         "type": "object",
         "properties": {
           "num_top_classes": {
@@ -60614,6 +60674,7 @@
         "maxProperties": 1
       },
       "ml._types.NlpBertTokenizationConfig": {
+        "description": "BERT and MPNet tokenization configuration options",
         "allOf": [
           {
             "$ref": "#/components/schemas/ml._types.CommonTokenizationConfig"
@@ -60656,6 +60717,7 @@
         ]
       },
       "ml._types.NlpRobertaTokenizationConfig": {
+        "description": "RoBERTa tokenization configuration options",
         "allOf": [
           {
             "$ref": "#/components/schemas/ml._types.CommonTokenizationConfig"
@@ -60693,6 +60755,7 @@
         ]
       },
       "ml._types.ZeroShotClassificationInferenceOptions": {
+        "description": "Zero shot classification configuration options",
         "type": "object",
         "properties": {
           "tokenization": {
@@ -60730,6 +60793,7 @@
         ]
       },
       "ml._types.FillMaskInferenceOptions": {
+        "description": "Fill mask inference options",
         "type": "object",
         "properties": {
           "mask_token": {
@@ -60807,6 +60871,7 @@
         ]
       },
       "ml._types.NerInferenceOptions": {
+        "description": "Named entity recognition options",
         "type": "object",
         "properties": {
           "tokenization": {
@@ -60829,6 +60894,7 @@
         }
       },
       "ml._types.PassThroughInferenceOptions": {
+        "description": "Pass through configuration options",
         "type": "object",
         "properties": {
           "tokenization": {
@@ -60844,6 +60910,7 @@
         }
       },
       "ml._types.TextEmbeddingInferenceOptions": {
+        "description": "Text embedding inference options",
         "type": "object",
         "properties": {
           "embedding_size": {
@@ -60866,6 +60933,7 @@
         ]
       },
       "ml._types.TextExpansionInferenceOptions": {
+        "description": "Text expansion inference options",
         "type": "object",
         "properties": {
           "tokenization": {
@@ -60884,6 +60952,7 @@
         ]
       },
       "ml._types.QuestionAnsweringInferenceOptions": {
+        "description": "Question answering inference options",
         "type": "object",
         "properties": {
           "num_top_classes": {
@@ -62494,6 +62563,7 @@
         ]
       },
       "_global.msearch.MultisearchHeader": {
+        "description": "Contains parameters used to limit or change the subsequent search body request.",
         "type": "object",
         "properties": {
           "allow_no_indices": {
@@ -62642,6 +62712,7 @@
         ]
       },
       "_types.ErrorResponseBase": {
+        "description": "The response returned by Elasticsearch when request execution did not succeed.",
         "type": "object",
         "properties": {
           "error": {
@@ -63144,6 +63215,7 @@
         }
       },
       "_global.rank_eval.RankEvalMetricPrecision": {
+        "description": "Precision at K (P@k)",
         "allOf": [
           {
             "$ref": "#/components/schemas/_global.rank_eval.RankEvalMetricRatingTreshold"
@@ -63185,6 +63257,7 @@
         }
       },
       "_global.rank_eval.RankEvalMetricRecall": {
+        "description": "Recall at K (R@k)",
         "allOf": [
           {
             "$ref": "#/components/schemas/_global.rank_eval.RankEvalMetricRatingTreshold"
@@ -63195,6 +63268,7 @@
         ]
       },
       "_global.rank_eval.RankEvalMetricMeanReciprocalRank": {
+        "description": "Mean Reciprocal Rank",
         "allOf": [
           {
             "$ref": "#/components/schemas/_global.rank_eval.RankEvalMetricRatingTreshold"
@@ -63205,6 +63279,7 @@
         ]
       },
       "_global.rank_eval.RankEvalMetricDiscountedCumulativeGain": {
+        "description": "Discounted cumulative gain (DCG)",
         "allOf": [
           {
             "$ref": "#/components/schemas/_global.rank_eval.RankEvalMetricBase"
@@ -63221,6 +63296,7 @@
         ]
       },
       "_global.rank_eval.RankEvalMetricExpectedReciprocalRank": {
+        "description": "Expected Reciprocal Rank (ERR)",
         "allOf": [
           {
             "$ref": "#/components/schemas/_global.rank_eval.RankEvalMetricBase"
@@ -64898,6 +64974,7 @@
         ]
       },
       "transform._types.Settings": {
+        "description": "The source of the data for the transform.",
         "type": "object",
         "properties": {
           "align_checkpoints": {
