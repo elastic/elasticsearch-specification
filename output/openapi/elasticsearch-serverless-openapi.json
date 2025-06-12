@@ -9132,7 +9132,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_data_stream/my-data-stream/_settings\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -9241,7 +9247,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /_data_stream/my-data-stream/_settings\n{\n  \"index.lifecycle.name\" : \"new-test-policy\",\n  \"index.number_of_shards\": 11\n}"
+          }
+        ]
       }
     },
     "/_index_template": {
