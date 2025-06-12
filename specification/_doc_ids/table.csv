@@ -87,6 +87,7 @@ clear-repositories-metering-archive-api,https://www.elastic.co/docs/api/doc/elas
 clear-scroll-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-clear-scroll
 clear-trained-model,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-clear-trained-model-deployment-cache
 cluster-allocation-explain,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain
+cluster-allocation-explain-examples,https://www.elastic.co/docs/troubleshoot/elasticsearch/cluster-allocation-api-examples
 cluster-get-settings,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings
 cluster-health,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health
 cluster-info,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-info
