@@ -232,9 +232,27 @@ pub fn add_endpoint(
     };
 
     //---- Merge multipath endpoints if asked for
+
+    let operation_id: String = endpoint
+        .name
+        .chars()
+        .map(|x| match x {
+            '_' | '.' => '-',
+            _ => x,
+        })
+        .collect();
+
     let mut new_endpoint: clients_schema::Endpoint;
 
     let endpoint = if is_multipath && tac.config.merge_multipath_endpoints {
+
+        // Add redirects for operations that would have been generated otherwise
+        if let Some(ref mut map) = &mut tac.redirects {
+            for i in 1..endpoint.urls.len() {
+                map.insert(format!("{operation_id}-{i}"), operation_id.clone());
+            }
+        }
+
         new_endpoint = endpoint.clone();
         let endpoint = &mut new_endpoint;
 
@@ -314,9 +332,9 @@ pub fn add_endpoint(
         parameters.append(&mut query_params.clone());
 
         let sum_desc = split_summary_desc(&endpoint.description);
-        
+
         let privilege_desc = add_privileges(&endpoint.privileges);
-        
+
         let full_desc = match (sum_desc.description, privilege_desc) {
             (Some(a), Some(b)) => Some(a+ &b),
             (opt_a, opt_b) => opt_a.or(opt_b)
@@ -434,14 +452,7 @@ pub fn add_endpoint(
             };
 
             let mut operation = operation.clone();
-            let mut operation_id: String = endpoint
-                .name
-                .chars()
-                .map(|x| match x {
-                    '_' | '.' => '-',
-                    _ => x,
-                })
-                .collect();
+            let mut operation_id = operation_id.clone();
             if operation_counter != 0 {
                 write!(&mut operation_id, "-{}", operation_counter)?;
             }
