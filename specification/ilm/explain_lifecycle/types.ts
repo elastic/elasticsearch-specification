@@ -49,6 +49,7 @@ export class LifecycleExplainManaged {
   phase_execution?: LifecycleExplainPhaseExecution
   /* `index_creation_date` as a duration */
   time_since_index_creation?: Duration
+  skip: boolean
 }
 
 export class LifecycleExplainUnmanaged {
