@@ -517,7 +517,10 @@
           "document"
         ],
         "summary": "Bulk index or delete documents",
-        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.",
+        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval"
+        },
         "operationId": "bulk-1",
         "parameters": [
           {
@@ -578,7 +581,10 @@
           "document"
         ],
         "summary": "Bulk index or delete documents",
-        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.",
+        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval"
+        },
         "operationId": "bulk",
         "parameters": [
           {
@@ -641,7 +647,10 @@
           "document"
         ],
         "summary": "Bulk index or delete documents",
-        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.",
+        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval"
+        },
         "operationId": "bulk-3",
         "parameters": [
           {
@@ -705,7 +714,10 @@
           "document"
         ],
         "summary": "Bulk index or delete documents",
-        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.",
+        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval"
+        },
         "operationId": "bulk-2",
         "parameters": [
           {
@@ -9120,7 +9132,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "GET /_data_stream/my-data-stream/_settings\n"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -9229,7 +9247,13 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-codeSamples": [
+          {
+            "lang": "Console",
+            "source": "PUT /_data_stream/my-data-stream/_settings\n{\n  \"index.lifecycle.name\" : \"new-test-policy\",\n  \"index.number_of_shards\": 11\n}"
+          }
+        ]
       }
     },
     "/_index_template": {
@@ -9496,7 +9520,7 @@
           "indices"
         ],
         "summary": "Update index settings",
-        "description": "Changes dynamic index settings in real time.\nFor data streams, index setting changes are applied to all backing indices by default.\n\nTo revert a setting to the default value, use a null value.\nThe list of per-index settings that can be updated dynamically on live indices can be found in index settings documentation.\nTo preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.\n\n There are multiple valid ways to represent index settings in the request body. You can specify only the setting, for example:\n\n```\n{\n  \"number_of_replicas\": 1\n}\n```\n\nOr you can use an `index` setting object:\n```\n{\n  \"index\": {\n    \"number_of_replicas\": 1\n  }\n}\n```\n\nOr you can use dot annotation:\n```\n{\n  \"index.number_of_replicas\": 1\n}\n```\n\nOr you can embed any of the aforementioned options in a `settings` object. For example:\n\n```\n{\n  \"settings\": {\n    \"index\": {\n      \"number_of_replicas\": 1\n    }\n  }\n}\n```\n\nNOTE: You can only define new analyzers on closed indices.\nTo add an analyzer, you must close the index, define the analyzer, and reopen the index.\nYou cannot close the write index of a data stream.\nTo update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.\nThen roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.\nThis affects searches and any new data added to the stream after the rollover.\nHowever, it does not affect the data stream's backing indices or their existing data.\nTo change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "description": "Changes dynamic index settings in real time.\nFor data streams, index setting changes are applied to all backing indices by default.\n\nTo revert a setting to the default value, use a null value.\nThe list of per-index settings that can be updated dynamically on live indices can be found in index settings documentation.\nTo preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.\n\nFor performance optimization during bulk indexing, you can disable the refresh interval.\nRefer to [disable refresh interval](https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval) for an example.\nThere are multiple valid ways to represent index settings in the request body. You can specify only the setting, for example:\n\n```\n{\n  \"number_of_replicas\": 1\n}\n```\n\nOr you can use an `index` setting object:\n```\n{\n  \"index\": {\n    \"number_of_replicas\": 1\n  }\n}\n```\n\nOr you can use dot annotation:\n```\n{\n  \"index.number_of_replicas\": 1\n}\n```\n\nOr you can embed any of the aforementioned options in a `settings` object. For example:\n\n```\n{\n  \"settings\": {\n    \"index\": {\n      \"number_of_replicas\": 1\n    }\n  }\n}\n```\n\nNOTE: You can only define new analyzers on closed indices.\nTo add an analyzer, you must close the index, define the analyzer, and reopen the index.\nYou cannot close the write index of a data stream.\nTo update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.\nThen roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.\nThis affects searches and any new data added to the stream after the rollover.\nHowever, it does not affect the data stream's backing indices or their existing data.\nTo change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.\nRefer to [updating analyzers on existing indices](https://www.elastic.co/docs/manage-data/data-store/text-analysis/specify-an-analyzer#update-analyzers-on-existing-indices) for step-by-step examples.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/reference/elasticsearch/index-settings/"
         },
@@ -9596,7 +9620,7 @@
           "indices"
         ],
         "summary": "Update index settings",
-        "description": "Changes dynamic index settings in real time.\nFor data streams, index setting changes are applied to all backing indices by default.\n\nTo revert a setting to the default value, use a null value.\nThe list of per-index settings that can be updated dynamically on live indices can be found in index settings documentation.\nTo preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.\n\n There are multiple valid ways to represent index settings in the request body. You can specify only the setting, for example:\n\n```\n{\n  \"number_of_replicas\": 1\n}\n```\n\nOr you can use an `index` setting object:\n```\n{\n  \"index\": {\n    \"number_of_replicas\": 1\n  }\n}\n```\n\nOr you can use dot annotation:\n```\n{\n  \"index.number_of_replicas\": 1\n}\n```\n\nOr you can embed any of the aforementioned options in a `settings` object. For example:\n\n```\n{\n  \"settings\": {\n    \"index\": {\n      \"number_of_replicas\": 1\n    }\n  }\n}\n```\n\nNOTE: You can only define new analyzers on closed indices.\nTo add an analyzer, you must close the index, define the analyzer, and reopen the index.\nYou cannot close the write index of a data stream.\nTo update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.\nThen roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.\nThis affects searches and any new data added to the stream after the rollover.\nHowever, it does not affect the data stream's backing indices or their existing data.\nTo change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "description": "Changes dynamic index settings in real time.\nFor data streams, index setting changes are applied to all backing indices by default.\n\nTo revert a setting to the default value, use a null value.\nThe list of per-index settings that can be updated dynamically on live indices can be found in index settings documentation.\nTo preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.\n\nFor performance optimization during bulk indexing, you can disable the refresh interval.\nRefer to [disable refresh interval](https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval) for an example.\nThere are multiple valid ways to represent index settings in the request body. You can specify only the setting, for example:\n\n```\n{\n  \"number_of_replicas\": 1\n}\n```\n\nOr you can use an `index` setting object:\n```\n{\n  \"index\": {\n    \"number_of_replicas\": 1\n  }\n}\n```\n\nOr you can use dot annotation:\n```\n{\n  \"index.number_of_replicas\": 1\n}\n```\n\nOr you can embed any of the aforementioned options in a `settings` object. For example:\n\n```\n{\n  \"settings\": {\n    \"index\": {\n      \"number_of_replicas\": 1\n    }\n  }\n}\n```\n\nNOTE: You can only define new analyzers on closed indices.\nTo add an analyzer, you must close the index, define the analyzer, and reopen the index.\nYou cannot close the write index of a data stream.\nTo update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.\nThen roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.\nThis affects searches and any new data added to the stream after the rollover.\nHowever, it does not affect the data stream's backing indices or their existing data.\nTo change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.\nRefer to [updating analyzers on existing indices](https://www.elastic.co/docs/manage-data/data-store/text-analysis/specify-an-analyzer#update-analyzers-on-existing-indices) for step-by-step examples.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/reference/elasticsearch/index-settings/"
         },
@@ -12549,7 +12573,7 @@
           {
             "in": "path",
             "name": "task_type",
-            "description": "The task type.\nThe only valid task type for the model to perform is `text_embedding`.",
+            "description": "The type of the inference task that the model will perform.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -24426,7 +24450,10 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.\nRefer to the linked documentation for detailed examples of how to use this API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/term-vectors-examples"
+        },
         "operationId": "termvectors",
         "parameters": [
           {
@@ -24490,7 +24517,10 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.\nRefer to the linked documentation for detailed examples of how to use this API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/term-vectors-examples"
+        },
         "operationId": "termvectors-1",
         "parameters": [
           {
@@ -24556,7 +24586,10 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.\nRefer to the linked documentation for detailed examples of how to use this API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/term-vectors-examples"
+        },
         "operationId": "termvectors-2",
         "parameters": [
           {
@@ -24617,7 +24650,10 @@
           "document"
         ],
         "summary": "Get term vector information",
-        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "description": "Get information and statistics about terms in the fields of a particular document.\n\nYou can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.\nYou can specify the fields you are interested in through the `fields` parameter or by adding the fields to the request body.\nFor example:\n\n```\nGET /my-index-000001/_termvectors/1?fields=message\n```\n\nFields can be specified using wildcards, similar to the multi match query.\n\nTerm vectors are real-time by default, not near real-time.\nThis can be changed by setting `realtime` parameter to `false`.\n\nYou can request three types of values: _term information_, _term statistics_, and _field statistics_.\nBy default, all term information and field statistics are returned for all fields but term statistics are excluded.\n\n**Term information**\n\n* term frequency in the field (always returned)\n* term positions (`positions: true`)\n* start and end offsets (`offsets: true`)\n* term payloads (`payloads: true`), as base64 encoded bytes\n\nIf the requested information wasn't stored in the index, it will be computed on the fly if possible.\nAdditionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.\n\n> warn\n> Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.\n\n**Behaviour**\n\nThe term and field statistics are not accurate.\nDeleted documents are not taken into account.\nThe information is only retrieved for the shard the requested document resides in.\nThe term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.\nBy default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.\nUse `routing` only to hit a particular shard.\nRefer to the linked documentation for detailed examples of how to use this API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/term-vectors-examples"
+        },
         "operationId": "termvectors-3",
         "parameters": [
           {
@@ -26951,6 +26987,7 @@
         ]
       },
       "_types.aggregations.SumAggregate": {
+        "description": "Sum aggregation result. `value` is always present and is zero if there were no values to process.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.SingleMetricAggregateBase"
@@ -26971,6 +27008,7 @@
         ]
       },
       "_types.aggregations.WeightedAvgAggregate": {
+        "description": "Weighted average aggregation result. `value` is missing if the weight was set to zero.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.SingleMetricAggregateBase"
@@ -26981,6 +27019,7 @@
         ]
       },
       "_types.aggregations.ValueCountAggregate": {
+        "description": "Value count aggregation result. `value` is always present.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.SingleMetricAggregateBase"
@@ -27040,6 +27079,7 @@
         ]
       },
       "_types.aggregations.StatsAggregate": {
+        "description": "Statistics aggregation result. `min`, `max` and `avg` are missing if there were no values to process\n(`count` is zero).",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
@@ -27593,6 +27633,7 @@
         ]
       },
       "_types.aggregations.MultiBucketBase": {
+        "description": "Base type for multi-bucket aggregation results that can hold sub-aggregations results.",
         "type": "object",
         "properties": {
           "doc_count": {
@@ -27783,6 +27824,7 @@
         ]
       },
       "_types.aggregations.StringTermsAggregate": {
+        "description": "Result of a `terms` aggregation when the field is a string.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.TermsAggregateBaseStringTermsBucket"
@@ -27900,6 +27942,7 @@
         ]
       },
       "_types.aggregations.LongTermsAggregate": {
+        "description": "Result of a `terms` aggregation when the field is some kind of whole number like a integer, long, or a date.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.TermsAggregateBaseLongTermsBucket"
@@ -27984,6 +28027,7 @@
         ]
       },
       "_types.aggregations.DoubleTermsAggregate": {
+        "description": "Result of a `terms` aggregation when the field is some kind of decimal number like a float, double, or distance.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.TermsAggregateBaseDoubleTermsBucket"
@@ -28068,6 +28112,7 @@
         ]
       },
       "_types.aggregations.UnmappedTermsAggregate": {
+        "description": "Result of a `terms` aggregation when the field is unmapped. `buckets` is always empty.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.TermsAggregateBaseVoid"
@@ -28135,6 +28180,7 @@
         "type": "object"
       },
       "_types.aggregations.LongRareTermsAggregate": {
+        "description": "Result of the `rare_terms` aggregation when the field is some kind of whole number like a integer, long, or a date.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.MultiBucketAggregateBaseLongRareTermsBucket"
@@ -28201,6 +28247,7 @@
         ]
       },
       "_types.aggregations.StringRareTermsAggregate": {
+        "description": "Result of the `rare_terms` aggregation when the field is a string.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.MultiBucketAggregateBaseStringRareTermsBucket"
@@ -28264,6 +28311,7 @@
         ]
       },
       "_types.aggregations.UnmappedRareTermsAggregate": {
+        "description": "Result of a `rare_terms` aggregation when the field is unmapped. `buckets` is always empty.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.MultiBucketAggregateBaseVoid"
@@ -28374,6 +28422,7 @@
         ]
       },
       "_types.aggregations.SingleBucketAggregateBase": {
+        "description": "Base type for single-bucket aggregation results that can hold sub-aggregations results.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
@@ -28742,6 +28791,7 @@
         ]
       },
       "_types.aggregations.DateRangeAggregate": {
+        "description": "Result of a `date_range` aggregation. Same format as a for a `range` aggregation: `from` and `to`\nin `buckets` are milliseconds since the Epoch, represented as a floating point number.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.RangeAggregate"
@@ -28752,6 +28802,7 @@
         ]
       },
       "_types.aggregations.GeoDistanceAggregate": {
+        "description": "Result of a `geo_distance` aggregation. The unit for `from` and `to` is meters by default.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.RangeAggregate"
@@ -29207,6 +29258,7 @@
         ]
       },
       "_types.aggregations.UnmappedSignificantTermsAggregate": {
+        "description": "Result of the `significant_terms` aggregation on an unmapped field. `buckets` is always empty.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.SignificantTermsAggregateBaseVoid"
@@ -30087,6 +30139,7 @@
         ]
       },
       "_types.aggregations.CumulativeCardinalityAggregate": {
+        "description": "Result of the `cumulative_cardinality` aggregation",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
@@ -30203,6 +30256,7 @@
         ]
       },
       "_types.GeoLine": {
+        "description": "A GeoJson GeoLine.",
         "type": "object",
         "properties": {
           "type": {
@@ -30366,6 +30420,7 @@
         ]
       },
       "_types.ErrorCause": {
+        "description": "Cause and details about a request failure. This class defines the properties common to all error types.\nAdditional details are also provided, that depend on the error type.",
         "type": "object",
         "properties": {
           "type": {
@@ -33201,6 +33256,7 @@
         "type": "string"
       },
       "_types.query_dsl.FieldAndFormat": {
+        "description": "A reference to a field with formatting instructions on how to return the value",
         "type": "object",
         "properties": {
           "field": {
@@ -33605,6 +33661,10 @@
       "_global.search._types.SourceFilter": {
         "type": "object",
         "properties": {
+          "exclude_vectors": {
+            "description": "If `true`, vector fields are excluded from the returned source.\n\nThis option takes precedence over `includes`: any vector field will\nremain excluded even if it matches an `includes` rule.",
+            "type": "boolean"
+          },
           "excludes": {
             "$ref": "#/components/schemas/_types.Fields"
           },
@@ -36860,6 +36920,7 @@
         ]
       },
       "_types.aggregations.BucketAggregationBase": {
+        "description": "Base type for bucket aggregations. These aggregations also accept sub-aggregations.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.Aggregation"
@@ -37128,6 +37189,7 @@
         ]
       },
       "_types.aggregations.BucketKsAggregation": {
+        "description": "A sibling pipeline aggregation which executes a two sample Kolmogorov–Smirnov test (referred\nto as a \"K-S test\" from now on) against a provided distribution, and the distribution implied\nby the documents counts in the configured sibling aggregation. Specifically, for some metric,\nassuming that the percentile intervals of the metric are known beforehand or have been computed\nby an aggregation, then one would use range aggregation for the sibling to compute the p-value\nof the distribution difference between the metric and the restriction of that metric to a subset\nof the documents. A natural use case is if the sibling aggregation range aggregation nested in a\nterms aggregation, in which case one compares the overall distribution of metric to its restriction\nto each term.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.BucketPathAggregation"
@@ -37158,6 +37220,7 @@
         ]
       },
       "_types.aggregations.BucketCorrelationAggregation": {
+        "description": "A sibling pipeline aggregation which executes a correlation function on the configured sibling multi-bucket aggregation.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.BucketPathAggregation"
@@ -37257,6 +37320,7 @@
         ]
       },
       "_types.aggregations.CategorizeTextAggregation": {
+        "description": "A multi-bucket aggregation that groups semi-structured text into buckets. Each text\nfield is re-analyzed using a custom analyzer. The resulting tokens are then categorized\ncreating buckets of similarly formatted text values. This aggregation works best with machine\ngenerated text like system logs. Only the first 100 analyzed tokens are used to categorize the text.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.Aggregation"
@@ -38586,6 +38650,7 @@
         ]
       },
       "_types.EmptyObject": {
+        "description": "For empty Class assignments",
         "type": "object"
       },
       "_types.aggregations.MovingAverageAggregationBase": {
@@ -47584,6 +47649,7 @@
         ]
       },
       "indices._types.MappingLimitSettings": {
+        "description": "Mapping Limit Settings",
         "type": "object",
         "properties": {
           "coerce": {
@@ -48597,6 +48663,7 @@
         ]
       },
       "_types.mapping.MatchOnlyTextProperty": {
+        "description": "A variant of text that trades scoring and efficiency of positional queries for space efficiency. This field\neffectively stores data the same way as a text field that only indexes documents (index_options: docs) and\ndisables norms (norms: false). Term queries perform as fast if not faster as on text fields, however queries\nthat need positions such as the match_phrase query perform slower as they need to look at the _source document\nto verify whether a phrase matches. All queries return constant scores that are equal to 1.0.",
         "type": "object",
         "properties": {
           "type": {
@@ -49654,6 +49721,7 @@
         ]
       },
       "_types.mapping.GeoShapeProperty": {
+        "description": "The `geo_shape` data type facilitates the indexing of and searching with arbitrary geo shapes such as rectangles\nand polygons.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.mapping.DocValuesPropertyBase"
@@ -49743,6 +49811,7 @@
         ]
       },
       "_types.mapping.ShapeProperty": {
+        "description": "The `shape` data type facilitates the indexing of and searching with arbitrary `x, y` cartesian shapes such as\nrectangles and polygons.",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.mapping.DocValuesPropertyBase"
@@ -50391,6 +50460,7 @@
         }
       },
       "indices._types.DataStreamLifecycleWithRollover": {
+        "description": "Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,\nif asked.",
         "allOf": [
           {
             "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
@@ -50441,6 +50511,7 @@
         }
       },
       "indices._types.DataStreamLifecycle": {
+        "description": "Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
         "type": "object",
         "properties": {
           "data_retention": {
@@ -50497,6 +50568,7 @@
         ]
       },
       "indices._types.DataStreamOptionsTemplate": {
+        "description": "Data stream options template contains the same information as DataStreamOptions but allows them to be set explicitly to null.",
         "type": "object",
         "properties": {
           "failure_store": {
@@ -50513,6 +50585,7 @@
         }
       },
       "indices._types.DataStreamFailureStoreTemplate": {
+        "description": "Template equivalent of DataStreamFailureStore that allows nullable values.",
         "type": "object",
         "properties": {
           "enabled": {
@@ -50542,6 +50615,7 @@
         }
       },
       "indices._types.FailureStoreLifecycleTemplate": {
+        "description": "Template equivalent of FailureStoreLifecycle that allows nullable values.",
         "type": "object",
         "properties": {
           "data_retention": {
@@ -51883,14 +51957,7 @@
         ]
       },
       "_types.TaskId": {
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "number"
-          }
-        ]
+        "type": "string"
       },
       "enrich.execute_policy.ExecuteEnrichPolicyStatus": {
         "type": "object",
@@ -53180,6 +53247,7 @@
         ]
       },
       "indices._types.DataStreamOptions": {
+        "description": "Data stream options contain the configuration of data stream level features for a given data stream, for example,\nthe failure store configuration.",
         "type": "object",
         "properties": {
           "failure_store": {
@@ -53188,6 +53256,7 @@
         }
       },
       "indices._types.DataStreamFailureStore": {
+        "description": "Data stream failure store contains the configuration of the failure store for a given data stream.",
         "type": "object",
         "properties": {
           "enabled": {
@@ -53200,6 +53269,7 @@
         }
       },
       "indices._types.FailureStoreLifecycle": {
+        "description": "The failure store lifecycle configures the data stream lifecycle configuration for failure indices.",
         "type": "object",
         "properties": {
           "data_retention": {
@@ -53836,6 +53906,7 @@
         ]
       },
       "inference._types.Message": {
+        "description": "An object representing part of the conversation.",
         "type": "object",
         "properties": {
           "content": {
@@ -53874,6 +53945,7 @@
         ]
       },
       "inference._types.ContentObject": {
+        "description": "An object style representation of a single portion of a conversation.",
         "type": "object",
         "properties": {
           "text": {
@@ -53891,6 +53963,7 @@
         ]
       },
       "inference._types.ToolCall": {
+        "description": "A tool call generated by the model.",
         "type": "object",
         "properties": {
           "id": {
@@ -53911,6 +53984,7 @@
         ]
       },
       "inference._types.ToolCallFunction": {
+        "description": "The function that the model called.",
         "type": "object",
         "properties": {
           "arguments": {
@@ -53938,6 +54012,7 @@
         ]
       },
       "inference._types.CompletionToolChoice": {
+        "description": "Controls which tool is called by the model.",
         "type": "object",
         "properties": {
           "type": {
@@ -53954,6 +54029,7 @@
         ]
       },
       "inference._types.CompletionToolChoiceFunction": {
+        "description": "The tool choice function.",
         "type": "object",
         "properties": {
           "name": {
@@ -53966,6 +54042,7 @@
         ]
       },
       "inference._types.CompletionTool": {
+        "description": "A list of tools that the model can call.",
         "type": "object",
         "properties": {
           "type": {
@@ -53982,6 +54059,7 @@
         ]
       },
       "inference._types.CompletionToolFunction": {
+        "description": "The completion tool function definition.",
         "type": "object",
         "properties": {
           "description": {
@@ -54012,6 +54090,7 @@
         "type": "object"
       },
       "inference._types.CompletionInferenceResult": {
+        "description": "Defines the completion result.",
         "type": "object",
         "properties": {
           "completion": {
@@ -54026,6 +54105,7 @@
         ]
       },
       "inference._types.CompletionResult": {
+        "description": "The completion result object",
         "type": "object",
         "properties": {
           "result": {
@@ -54047,6 +54127,7 @@
         ]
       },
       "inference._types.DeleteInferenceEndpointResult": {
+        "description": "Acknowledged response. For dry_run, contains the list of pipelines which reference the inference endpoint",
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
@@ -54068,6 +54149,7 @@
         ]
       },
       "inference._types.InferenceEndpointInfo": {
+        "description": "Represents an inference endpoint as returned by the GET API",
         "allOf": [
           {
             "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
@@ -54091,6 +54173,7 @@
         ]
       },
       "inference._types.InferenceEndpoint": {
+        "description": "Configuration options when storing the inference endpoint",
         "type": "object",
         "properties": {
           "chunking_settings": {
@@ -54113,6 +54196,7 @@
         ]
       },
       "inference._types.InferenceChunkingSettings": {
+        "description": "Chunking configuration object",
         "type": "object",
         "properties": {
           "max_chunk_size": {
@@ -54181,6 +54265,7 @@
         "maxProperties": 1
       },
       "inference._types.TextEmbeddingByteResult": {
+        "description": "The text embedding result object for byte representation",
         "type": "object",
         "properties": {
           "embedding": {
@@ -54199,6 +54284,7 @@
         }
       },
       "inference._types.TextEmbeddingResult": {
+        "description": "The text embedding result object",
         "type": "object",
         "properties": {
           "embedding": {
@@ -54235,6 +54321,7 @@
         }
       },
       "inference._types.RankedDocument": {
+        "description": "The rerank result object representing a single ranked document\nid: the original index of the document in the request\nrelevance_score: the relevance_score of the document relative to the query\ntext: Optional, the text of the document, if requested",
         "type": "object",
         "properties": {
           "index": {
@@ -54301,6 +54388,7 @@
         ]
       },
       "inference._types.RateLimitSetting": {
+        "description": "This setting helps to minimize the number of rate limit errors returned from the service.",
         "type": "object",
         "properties": {
           "requests_per_minute": {
@@ -55657,7 +55745,9 @@
       "inference._types.WatsonxTaskType": {
         "type": "string",
         "enum": [
-          "text_embedding"
+          "text_embedding",
+          "chat_completion",
+          "completion"
         ]
       },
       "inference._types.WatsonxServiceType": {
@@ -55687,7 +55777,7 @@
             "externalDocs": {
               "url": "https://www.ibm.com/products/watsonx-ai/foundation-models"
             },
-            "description": "The name of the model to use for the inference task.\nRefer to the IBM Embedding Models section in the Watsonx documentation for the list of available text embedding models.",
+            "description": "The name of the model to use for the inference task.\nRefer to the IBM Embedding Models section in the Watsonx documentation for the list of available text embedding models.\nRefer to the IBM library - Foundation models in Watsonx.ai.",
             "type": "string"
           },
           "project_id": {
@@ -55736,10 +55826,13 @@
       "inference._types.TaskTypeWatsonx": {
         "type": "string",
         "enum": [
-          "text_embedding"
+          "text_embedding",
+          "chat_completion",
+          "completion"
         ]
       },
       "inference._types.RerankedInferenceResult": {
+        "description": "Defines the response for a rerank request.",
         "type": "object",
         "properties": {
           "rerank": {
@@ -55754,6 +55847,7 @@
         ]
       },
       "inference._types.SparseEmbeddingInferenceResult": {
+        "description": "The response format for the sparse embedding request.",
         "type": "object",
         "properties": {
           "sparse_embedding": {
@@ -57722,6 +57816,7 @@
         }
       },
       "ingest._types.DocumentSimulation": {
+        "description": "The simulated document, with optional metadata.",
         "type": "object",
         "properties": {
           "_id": {
@@ -59863,6 +59958,7 @@
         ]
       },
       "_types.IndicesOptions": {
+        "description": "Controls how to deal with unavailable concrete indices (closed or missing), how wildcard expressions are expanded\nto actual indices (all, closed or open indices) and how to deal with wildcard expressions that resolve to no indices.",
         "type": "object",
         "properties": {
           "allow_no_indices": {
@@ -60579,6 +60675,7 @@
         "maxProperties": 1
       },
       "ml._types.TextClassificationInferenceOptions": {
+        "description": "Text classification configuration options",
         "type": "object",
         "properties": {
           "num_top_classes": {
@@ -60628,6 +60725,7 @@
         "maxProperties": 1
       },
       "ml._types.NlpBertTokenizationConfig": {
+        "description": "BERT and MPNet tokenization configuration options",
         "allOf": [
           {
             "$ref": "#/components/schemas/ml._types.CommonTokenizationConfig"
@@ -60670,6 +60768,7 @@
         ]
       },
       "ml._types.NlpRobertaTokenizationConfig": {
+        "description": "RoBERTa tokenization configuration options",
         "allOf": [
           {
             "$ref": "#/components/schemas/ml._types.CommonTokenizationConfig"
@@ -60707,6 +60806,7 @@
         ]
       },
       "ml._types.ZeroShotClassificationInferenceOptions": {
+        "description": "Zero shot classification configuration options",
         "type": "object",
         "properties": {
           "tokenization": {
@@ -60744,6 +60844,7 @@
         ]
       },
       "ml._types.FillMaskInferenceOptions": {
+        "description": "Fill mask inference options",
         "type": "object",
         "properties": {
           "mask_token": {
@@ -60821,6 +60922,7 @@
         ]
       },
       "ml._types.NerInferenceOptions": {
+        "description": "Named entity recognition options",
         "type": "object",
         "properties": {
           "tokenization": {
@@ -60843,6 +60945,7 @@
         }
       },
       "ml._types.PassThroughInferenceOptions": {
+        "description": "Pass through configuration options",
         "type": "object",
         "properties": {
           "tokenization": {
@@ -60858,6 +60961,7 @@
         }
       },
       "ml._types.TextEmbeddingInferenceOptions": {
+        "description": "Text embedding inference options",
         "type": "object",
         "properties": {
           "embedding_size": {
@@ -60880,6 +60984,7 @@
         ]
       },
       "ml._types.TextExpansionInferenceOptions": {
+        "description": "Text expansion inference options",
         "type": "object",
         "properties": {
           "tokenization": {
@@ -60898,6 +61003,7 @@
         ]
       },
       "ml._types.QuestionAnsweringInferenceOptions": {
+        "description": "Question answering inference options",
         "type": "object",
         "properties": {
           "num_top_classes": {
@@ -62508,6 +62614,7 @@
         ]
       },
       "_global.msearch.MultisearchHeader": {
+        "description": "Contains parameters used to limit or change the subsequent search body request.",
         "type": "object",
         "properties": {
           "allow_no_indices": {
@@ -62656,6 +62763,7 @@
         ]
       },
       "_types.ErrorResponseBase": {
+        "description": "The response returned by Elasticsearch when request execution did not succeed.",
         "type": "object",
         "properties": {
           "error": {
@@ -63158,6 +63266,7 @@
         }
       },
       "_global.rank_eval.RankEvalMetricPrecision": {
+        "description": "Precision at K (P@k)",
         "allOf": [
           {
             "$ref": "#/components/schemas/_global.rank_eval.RankEvalMetricRatingTreshold"
@@ -63199,6 +63308,7 @@
         }
       },
       "_global.rank_eval.RankEvalMetricRecall": {
+        "description": "Recall at K (R@k)",
         "allOf": [
           {
             "$ref": "#/components/schemas/_global.rank_eval.RankEvalMetricRatingTreshold"
@@ -63209,6 +63319,7 @@
         ]
       },
       "_global.rank_eval.RankEvalMetricMeanReciprocalRank": {
+        "description": "Mean Reciprocal Rank",
         "allOf": [
           {
             "$ref": "#/components/schemas/_global.rank_eval.RankEvalMetricRatingTreshold"
@@ -63219,6 +63330,7 @@
         ]
       },
       "_global.rank_eval.RankEvalMetricDiscountedCumulativeGain": {
+        "description": "Discounted cumulative gain (DCG)",
         "allOf": [
           {
             "$ref": "#/components/schemas/_global.rank_eval.RankEvalMetricBase"
@@ -63235,6 +63347,7 @@
         ]
       },
       "_global.rank_eval.RankEvalMetricExpectedReciprocalRank": {
+        "description": "Expected Reciprocal Rank (ERR)",
         "allOf": [
           {
             "$ref": "#/components/schemas/_global.rank_eval.RankEvalMetricBase"
@@ -64912,6 +65025,7 @@
         ]
       },
       "transform._types.Settings": {
+        "description": "The source of the data for the transform.",
         "type": "object",
         "properties": {
           "align_checkpoints": {

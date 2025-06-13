@@ -1268,6 +1268,7 @@ export class WatsonxServiceSettings {
   /**
    * The name of the model to use for the inference task.
    * Refer to the IBM Embedding Models section in the Watsonx documentation for the list of available text embedding models.
+   * Refer to the IBM library - Foundation models in Watsonx.ai.
    * @ext_doc_id watsonx-api-models
    */
   model_id: string
@@ -1287,7 +1288,9 @@ export class WatsonxServiceSettings {
 }
 
 export enum WatsonxTaskType {
-  text_embedding
+  text_embedding,
+  chat_completion,
+  completion
 }
 
 export enum WatsonxServiceType {

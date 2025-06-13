@@ -1760,6 +1760,7 @@ export type SearchSourceConfig = boolean | SearchSourceFilter | Fields
 export type SearchSourceConfigParam = boolean | Fields
 
 export interface SearchSourceFilter {
+  exclude_vectors?: boolean
   excludes?: Fields
   exclude?: Fields
   includes?: Fields
@@ -2962,7 +2963,7 @@ export interface TaskFailure {
   reason: ErrorCause
 }
 
-export type TaskId = string | integer
+export type TaskId = string
 
 export interface TextEmbedding {
   model_id: string
@@ -11278,6 +11279,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   step_time_millis?: EpochTime<UnitMillis>
   phase_execution?: IlmExplainLifecycleLifecycleExplainPhaseExecution
   time_since_index_creation?: Duration
+  skip: boolean
 }
 
 export interface IlmExplainLifecycleLifecycleExplainPhaseExecution {
@@ -13914,7 +13916,7 @@ export type InferenceTaskTypeOpenAI = 'text_embedding' | 'chat_completion' | 'co
 
 export type InferenceTaskTypeVoyageAI = 'text_embedding' | 'rerank'
 
-export type InferenceTaskTypeWatsonx = 'text_embedding'
+export type InferenceTaskTypeWatsonx = 'text_embedding' | 'chat_completion' | 'completion'
 
 export interface InferenceTextEmbeddingByteResult {
   embedding: InferenceDenseByteVector
@@ -13970,7 +13972,7 @@ export interface InferenceWatsonxServiceSettings {
 
 export type InferenceWatsonxServiceType = 'watsonxai'
 
-export type InferenceWatsonxTaskType = 'text_embedding'
+export type InferenceWatsonxTaskType = 'text_embedding' | 'chat_completion' | 'completion'
 
 export interface InferenceChatCompletionUnifiedRequest extends RequestBase {
   inference_id: Id
