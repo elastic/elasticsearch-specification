@@ -33,6 +33,7 @@ export default defineConfig({
   rules: {
     'es-spec-validator/single-key-dictionary-key-is-string': 'error',
     'es-spec-validator/dictionary-key-is-string': 'error',
+    'es-spec-validator/no-native-types': 'error',
     'es-spec-validator/invalid-node-types': 'warn'
   }
 })
