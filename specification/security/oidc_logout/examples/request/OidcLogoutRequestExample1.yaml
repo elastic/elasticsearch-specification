@@ -7,3 +7,38 @@ value: |-
     "token" : "dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==",
     "refresh_token": "vLBPvmAB6KvwvJZr27cS"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.oidc_logout(
+          token="dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==",
+          refresh_token="vLBPvmAB6KvwvJZr27cS",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.oidcLogout({
+        token:
+          "dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==",
+        refresh_token: "vLBPvmAB6KvwvJZr27cS",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.oidc_logout(
+        body: {
+          "token": "dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==",
+          "refresh_token": "vLBPvmAB6KvwvJZr27cS"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->oidcLogout([
+          "body" => [
+              "token" => "dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==",
+              "refresh_token" => "vLBPvmAB6KvwvJZr27cS",
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"token\":\"dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==\",\"re\
+      fresh_token\":\"vLBPvmAB6KvwvJZr27cS\"}' \"$ELASTICSEARCH_URL/_security/oidc/logout\""

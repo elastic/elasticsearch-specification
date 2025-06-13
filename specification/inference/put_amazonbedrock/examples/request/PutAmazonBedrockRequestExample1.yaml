@@ -13,3 +13,74 @@ value: |-
           "model": "amazon.titan-embed-text-v2:0"
       }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="text_embedding",
+          inference_id="amazon_bedrock_embeddings",
+          inference_config={
+              "service": "amazonbedrock",
+              "service_settings": {
+                  "access_key": "AWS-access-key",
+                  "secret_key": "AWS-secret-key",
+                  "region": "us-east-1",
+                  "provider": "amazontitan",
+                  "model": "amazon.titan-embed-text-v2:0"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "text_embedding",
+        inference_id: "amazon_bedrock_embeddings",
+        inference_config: {
+          service: "amazonbedrock",
+          service_settings: {
+            access_key: "AWS-access-key",
+            secret_key: "AWS-secret-key",
+            region: "us-east-1",
+            provider: "amazontitan",
+            model: "amazon.titan-embed-text-v2:0",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "text_embedding",
+        inference_id: "amazon_bedrock_embeddings",
+        body: {
+          "service": "amazonbedrock",
+          "service_settings": {
+            "access_key": "AWS-access-key",
+            "secret_key": "AWS-secret-key",
+            "region": "us-east-1",
+            "provider": "amazontitan",
+            "model": "amazon.titan-embed-text-v2:0"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "text_embedding",
+          "inference_id" => "amazon_bedrock_embeddings",
+          "body" => [
+              "service" => "amazonbedrock",
+              "service_settings" => [
+                  "access_key" => "AWS-access-key",
+                  "secret_key" => "AWS-secret-key",
+                  "region" => "us-east-1",
+                  "provider" => "amazontitan",
+                  "model" => "amazon.titan-embed-text-v2:0",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"service\":\"amazonbedrock\",\"service_settings\":{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"r\
+      egion\":\"us-east-1\",\"provider\":\"amazontitan\",\"model\":\"amazon.titan-embed-text-v2:0\"}}'
+      \"$ELASTICSEARCH_URL/_inference/text_embedding/amazon_bedrock_embeddings\""

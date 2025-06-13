@@ -2,7 +2,78 @@
 method_request: PUT _connector/my-spo-connector/_configuration
 # description: ''
 # type: request
-value:
-  "{\n    \"values\": {\n        \"tenant_id\": \"my-tenant-id\",\n        \"\
-  tenant_name\": \"my-sharepoint-site\",\n        \"client_id\": \"foo\",\n      \
-  \  \"secret_value\": \"bar\",\n        \"site_collections\": \"*\"\n    }\n}"
+value: "{
+
+  \    \"values\": {
+
+  \        \"tenant_id\": \"my-tenant-id\",
+
+  \        \"tenant_name\": \"my-sharepoint-site\",
+
+  \        \"client_id\": \"foo\",
+
+  \        \"secret_value\": \"bar\",
+
+  \        \"site_collections\": \"*\"
+
+  \    }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.update_configuration(
+          connector_id="my-spo-connector",
+          values={
+              "tenant_id": "my-tenant-id",
+              "tenant_name": "my-sharepoint-site",
+              "client_id": "foo",
+              "secret_value": "bar",
+              "site_collections": "*"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.updateConfiguration({
+        connector_id: "my-spo-connector",
+        values: {
+          tenant_id: "my-tenant-id",
+          tenant_name: "my-sharepoint-site",
+          client_id: "foo",
+          secret_value: "bar",
+          site_collections: "*",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.update_configuration(
+        connector_id: "my-spo-connector",
+        body: {
+          "values": {
+            "tenant_id": "my-tenant-id",
+            "tenant_name": "my-sharepoint-site",
+            "client_id": "foo",
+            "secret_value": "bar",
+            "site_collections": "*"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->updateConfiguration([
+          "connector_id" => "my-spo-connector",
+          "body" => [
+              "values" => [
+                  "tenant_id" => "my-tenant-id",
+                  "tenant_name" => "my-sharepoint-site",
+                  "client_id" => "foo",
+                  "secret_value" => "bar",
+                  "site_collections" => "*",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"values\":{\"tenant_id\":\"my-tenant-id\",\"tenant_name\":\"my-sharepoint-site\",\"client_id\":\"foo\",\"secret_value\":\"\
+      bar\",\"site_collections\":\"*\"}}' \"$ELASTICSEARCH_URL/_connector/my-spo-connector/_configuration\""

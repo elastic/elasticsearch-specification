@@ -9,6 +9,7 @@ validate-no-cache: ## Validate a given endpoint request or response without loca
 
 generate:	  ## Generate the output spec
 	@echo ">> generating the spec .."
+	@make generate-language-examples
 	@npm run generate-schema --prefix compiler -- --spec ../specification/ --output ../output/
 	@npm run start --prefix typescript-generator
 
@@ -43,6 +44,7 @@ setup:	## Install dependencies for contrib target
 	@npm install --prefix validator
 	@npm install --prefix specification
 	@npm install @redocly/cli
+	@npm install --prefix docs/examples
 
 clean-dep:	## Clean npm dependencies
 	@rm -rf compiler/node_modules
@@ -74,6 +76,10 @@ overlay-docs: ## Apply overlays to OpenAPI documents
 	@npx @redocly/cli bundle output/openapi/elasticsearch-openapi.tmp2.json --ext json -o output/openapi/elasticsearch-openapi.examples.json
 	rm output/openapi/elasticsearch-serverless-openapi.tmp*.json
 	rm output/openapi/elasticsearch-openapi.tmp*.json
+
+generate-language-examples:
+	@node docs/examples/generate-language-examples.js
+	@npm run format:fix-examples --prefix compiler
 
 lint-docs: ## Lint the OpenAPI documents after overlays
 	@npx @redocly/cli lint "output/openapi/elasticsearch-*.json" --config "docs/linters/redocly.yaml" --format stylish --max-problems 500

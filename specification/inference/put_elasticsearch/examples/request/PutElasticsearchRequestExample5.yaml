@@ -1,5 +1,8 @@
 summary: Adaptive allocation
-description: Run `PUT _inference/text_embedding/my-e5-model` to create an inference endpoint that performs a `text_embedding` task and to configure adaptive allocations. The API request will automatically download the E5 model if it isn't already downloaded and then deploy the model.
+description:
+  Run `PUT _inference/text_embedding/my-e5-model` to create an inference endpoint that performs a `text_embedding` task
+  and to configure adaptive allocations. The API request will automatically download the E5 model if it isn't already downloaded and
+  then deploy the model.
 method_request: 'PUT _inference/text_embedding/my-e5-model'
 # type: "request"
 value: |-
@@ -15,3 +18,82 @@ value: |-
           "model_id": ".multilingual-e5-small"
       }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="text_embedding",
+          inference_id="my-e5-model",
+          inference_config={
+              "service": "elasticsearch",
+              "service_settings": {
+                  "adaptive_allocations": {
+                      "enabled": True,
+                      "min_number_of_allocations": 3,
+                      "max_number_of_allocations": 10
+                  },
+                  "num_threads": 1,
+                  "model_id": ".multilingual-e5-small"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "text_embedding",
+        inference_id: "my-e5-model",
+        inference_config: {
+          service: "elasticsearch",
+          service_settings: {
+            adaptive_allocations: {
+              enabled: true,
+              min_number_of_allocations: 3,
+              max_number_of_allocations: 10,
+            },
+            num_threads: 1,
+            model_id: ".multilingual-e5-small",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "text_embedding",
+        inference_id: "my-e5-model",
+        body: {
+          "service": "elasticsearch",
+          "service_settings": {
+            "adaptive_allocations": {
+              "enabled": true,
+              "min_number_of_allocations": 3,
+              "max_number_of_allocations": 10
+            },
+            "num_threads": 1,
+            "model_id": ".multilingual-e5-small"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "text_embedding",
+          "inference_id" => "my-e5-model",
+          "body" => [
+              "service" => "elasticsearch",
+              "service_settings" => [
+                  "adaptive_allocations" => [
+                      "enabled" => true,
+                      "min_number_of_allocations" => 3,
+                      "max_number_of_allocations" => 10,
+                  ],
+                  "num_threads" => 1,
+                  "model_id" => ".multilingual-e5-small",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"service\":\"elasticsearch\",\"service_settings\":{\"adaptive_allocations\":{\"enabled\":true,\"min_number_of_allocations\
+      \":3,\"max_number_of_allocations\":10},\"num_threads\":1,\"model_id\":\".multilingual-e5-small\"}}'
+      \"$ELASTICSEARCH_URL/_inference/text_embedding/my-e5-model\""

@@ -1,10 +1,86 @@
 summary: Reindex selected fields
 method_request: POST _reindex
 description: >
-  You can use source filtering to reindex a subset of the fields in the original documents.
-  For example, run `POST _reindex` the reindex only the `user.id` and `_doc` fields of each document.
+  You can use source filtering to reindex a subset of the fields in the original documents. For example, run `POST _reindex` the
+  reindex only the `user.id` and `_doc` fields of each document.
 # type: request
-value:
-  "{\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"_source\":\
-  \ [\"user.id\", \"_doc\"]\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\
-  \n  }\n}"
+value: "{
+
+  \  \"source\": {
+
+  \    \"index\": \"my-index-000001\",
+
+  \    \"_source\": [\"user.id\", \"_doc\"]
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"my-new-index-000001\"
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.reindex(
+          source={
+              "index": "my-index-000001",
+              "_source": [
+                  "user.id",
+                  "_doc"
+              ]
+          },
+          dest={
+              "index": "my-new-index-000001"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.reindex({
+        source: {
+          index: "my-index-000001",
+          _source: ["user.id", "_doc"],
+        },
+        dest: {
+          index: "my-new-index-000001",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.reindex(
+        body: {
+          "source": {
+            "index": "my-index-000001",
+            "_source": [
+              "user.id",
+              "_doc"
+            ]
+          },
+          "dest": {
+            "index": "my-new-index-000001"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->reindex([
+          "body" => [
+              "source" => [
+                  "index" => "my-index-000001",
+                  "_source" => array(
+                      "user.id",
+                      "_doc",
+                  ),
+              ],
+              "dest" => [
+                  "index" => "my-new-index-000001",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"source":{"index":"my-index-000001","_source":["user.id","_doc"]},"dest":{"index":"my-new-index-000001"}}''
+      "$ELASTICSEARCH_URL/_reindex"'

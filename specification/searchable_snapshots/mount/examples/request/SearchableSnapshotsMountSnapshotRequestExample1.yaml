@@ -1,9 +1,89 @@
 summary:
 method_request: POST /_snapshot/my_repository/my_snapshot/_mount?wait_for_completion=true
 description: >
-  Run `POST /_snapshot/my_repository/my_snapshot/_mount?wait_for_completion=true` to mount the index `my_docs` from an existing snapshot named `my_snapshot` stored in `my_repository` as a new index `docs`.
+  Run `POST /_snapshot/my_repository/my_snapshot/_mount?wait_for_completion=true` to mount the index `my_docs` from an existing
+  snapshot named `my_snapshot` stored in `my_repository` as a new index `docs`.
 # type: request
-value:
-  "{\n  \"index\": \"my_docs\",\n  \"renamed_index\": \"docs\",\n  \"index_settings\"\
-  : {\n    \"index.number_of_replicas\": 0\n  },\n  \"ignore_index_settings\": [ \"\
-  index.refresh_interval\" ]\n}"
+value: "{
+
+  \  \"index\": \"my_docs\",
+
+  \  \"renamed_index\": \"docs\",
+
+  \  \"index_settings\": {
+
+  \    \"index.number_of_replicas\": 0
+
+  \  },
+
+  \  \"ignore_index_settings\": [ \"index.refresh_interval\" ]
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.searchable_snapshots.mount(
+          repository="my_repository",
+          snapshot="my_snapshot",
+          wait_for_completion=True,
+          index="my_docs",
+          renamed_index="docs",
+          index_settings={
+              "index.number_of_replicas": 0
+          },
+          ignore_index_settings=[
+              "index.refresh_interval"
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.searchableSnapshots.mount({
+        repository: "my_repository",
+        snapshot: "my_snapshot",
+        wait_for_completion: "true",
+        index: "my_docs",
+        renamed_index: "docs",
+        index_settings: {
+          "index.number_of_replicas": 0,
+        },
+        ignore_index_settings: ["index.refresh_interval"],
+      });
+  - language: Ruby
+    code: |-
+      response = client.searchable_snapshots.mount(
+        repository: "my_repository",
+        snapshot: "my_snapshot",
+        wait_for_completion: "true",
+        body: {
+          "index": "my_docs",
+          "renamed_index": "docs",
+          "index_settings": {
+            "index.number_of_replicas": 0
+          },
+          "ignore_index_settings": [
+            "index.refresh_interval"
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->searchableSnapshots()->mount([
+          "repository" => "my_repository",
+          "snapshot" => "my_snapshot",
+          "wait_for_completion" => "true",
+          "body" => [
+              "index" => "my_docs",
+              "renamed_index" => "docs",
+              "index_settings" => [
+                  "index.number_of_replicas" => 0,
+              ],
+              "ignore_index_settings" => array(
+                  "index.refresh_interval",
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"index\":\"my_docs\",\"renamed_index\":\"docs\",\"index_settings\":{\"index.number_of_replicas\":0},\"ignore_index_settings\
+      \":[\"index.refresh_interval\"]}' \"$ELASTICSEARCH_URL/_snapshot/my_repository/my_snapshot/_mount?wait_for_completion=true\""

@@ -1,1 +1,12 @@
 method_request: GET _ingest/geoip/stats
+alternatives:
+  - language: Python
+    code: resp = client.ingest.geo_ip_stats()
+  - language: JavaScript
+    code: const response = await client.ingest.geoIpStats();
+  - language: Ruby
+    code: response = client.ingest.geo_ip_stats
+  - language: PHP
+    code: $resp = $client->ingest()->geoIpStats();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ingest/geoip/stats"'

@@ -1,5 +1,7 @@
 summary: A chat completion task with tool_calls
-description: Run `POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion using an Assistant message with `tool_calls`.
+description:
+  Run `POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion using an Assistant message
+  with `tool_calls`.
 method_request: 'POST _inference/chat_completion/openai-completion/_stream'
 # type: "request"
 value: |-
@@ -26,3 +28,124 @@ value: |-
         }
     ]
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.chat_completion_unified(
+          inference_id="openai-completion",
+          chat_completion_request={
+              "messages": [
+                  {
+                      "role": "assistant",
+                      "content": "Let's find out what the weather is",
+                      "tool_calls": [
+                          {
+                              "id": "call_KcAjWtAww20AihPHphUh46Gd",
+                              "type": "function",
+                              "function": {
+                                  "name": "get_current_weather",
+                                  "arguments": "{\"location\":\"Boston, MA\"}"
+                              }
+                          }
+                      ]
+                  },
+                  {
+                      "role": "tool",
+                      "content": "The weather is cold",
+                      "tool_call_id": "call_KcAjWtAww20AihPHphUh46Gd"
+                  }
+              ]
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.chatCompletionUnified({
+        inference_id: "openai-completion",
+        chat_completion_request: {
+          messages: [
+            {
+              role: "assistant",
+              content: "Let's find out what the weather is",
+              tool_calls: [
+                {
+                  id: "call_KcAjWtAww20AihPHphUh46Gd",
+                  type: "function",
+                  function: {
+                    name: "get_current_weather",
+                    arguments: '{"location":"Boston, MA"}',
+                  },
+                },
+              ],
+            },
+            {
+              role: "tool",
+              content: "The weather is cold",
+              tool_call_id: "call_KcAjWtAww20AihPHphUh46Gd",
+            },
+          ],
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.chat_completion_unified(
+        inference_id: "openai-completion",
+        body: {
+          "messages": [
+            {
+              "role": "assistant",
+              "content": "Let's find out what the weather is",
+              "tool_calls": [
+                {
+                  "id": "call_KcAjWtAww20AihPHphUh46Gd",
+                  "type": "function",
+                  "function": {
+                    "name": "get_current_weather",
+                    "arguments": "{\"location\":\"Boston, MA\"}"
+                  }
+                }
+              ]
+            },
+            {
+              "role": "tool",
+              "content": "The weather is cold",
+              "tool_call_id": "call_KcAjWtAww20AihPHphUh46Gd"
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->chatCompletionUnified([
+          "inference_id" => "openai-completion",
+          "body" => [
+              "messages" => array(
+                  [
+                      "role" => "assistant",
+                      "content" => "Let's find out what the weather is",
+                      "tool_calls" => array(
+                          [
+                              "id" => "call_KcAjWtAww20AihPHphUh46Gd",
+                              "type" => "function",
+                              "function" => [
+                                  "name" => "get_current_weather",
+                                  "arguments" => "{\"location\":\"Boston, MA\"}",
+                              ],
+                          ],
+                      ),
+                  ],
+                  [
+                      "role" => "tool",
+                      "content" => "The weather is cold",
+                      "tool_call_id" => "call_KcAjWtAww20AihPHphUh46Gd",
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"messages\":[{\"role\":\"assistant\",\"content\":\"Let'\"'\"'s find out what the weather
+      is\",\"tool_calls\":[{\"id\":\"call_KcAjWtAww20AihPHphUh46Gd\",\"type\":\"function\",\"function\":{\"name\":\"get_current_wea\
+      ther\",\"arguments\":\"{\\\"location\\\":\\\"Boston, MA\\\"}\"}}]},{\"role\":\"tool\",\"content\":\"The weather is
+      cold\",\"tool_call_id\":\"call_KcAjWtAww20AihPHphUh46Gd\"}]}'
+      \"$ELASTICSEARCH_URL/_inference/chat_completion/openai-completion/_stream\""

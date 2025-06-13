@@ -1,1 +1,12 @@
 method_request: GET _alias
+alternatives:
+  - language: Python
+    code: resp = client.indices.get_alias()
+  - language: JavaScript
+    code: const response = await client.indices.getAlias();
+  - language: Ruby
+    code: response = client.indices.get_alias
+  - language: PHP
+    code: $resp = $client->indices()->getAlias();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_alias"'

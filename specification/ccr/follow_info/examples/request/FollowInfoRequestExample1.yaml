@@ -1,1 +1,24 @@
 method_request: GET /follower_index/_ccr/info
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ccr.follow_info(
+          index="follower_index",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ccr.followInfo({
+        index: "follower_index",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ccr.follow_info(
+        index: "follower_index"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ccr()->followInfo([
+          "index" => "follower_index",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/follower_index/_ccr/info"'

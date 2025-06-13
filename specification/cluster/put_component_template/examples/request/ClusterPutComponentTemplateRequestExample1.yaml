@@ -15,3 +15,106 @@ value:
       created_at:
         type: date
         format: 'EEE MMM dd HH:mm:ss Z yyyy'
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cluster.put_component_template(
+          name="template_1",
+          template=None,
+          settings={
+              "number_of_shards": 1
+          },
+          mappings={
+              "_source": {
+                  "enabled": False
+              },
+              "properties": {
+                  "host_name": {
+                      "type": "keyword"
+                  },
+                  "created_at": {
+                      "type": "date",
+                      "format": "EEE MMM dd HH:mm:ss Z yyyy"
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cluster.putComponentTemplate({
+        name: "template_1",
+        template: null,
+        settings: {
+          number_of_shards: 1,
+        },
+        mappings: {
+          _source: {
+            enabled: false,
+          },
+          properties: {
+            host_name: {
+              type: "keyword",
+            },
+            created_at: {
+              type: "date",
+              format: "EEE MMM dd HH:mm:ss Z yyyy",
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.cluster.put_component_template(
+        name: "template_1",
+        body: {
+          "template": nil,
+          "settings": {
+            "number_of_shards": 1
+          },
+          "mappings": {
+            "_source": {
+              "enabled": false
+            },
+            "properties": {
+              "host_name": {
+                "type": "keyword"
+              },
+              "created_at": {
+                "type": "date",
+                "format": "EEE MMM dd HH:mm:ss Z yyyy"
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cluster()->putComponentTemplate([
+          "name" => "template_1",
+          "body" => [
+              "template" => null,
+              "settings" => [
+                  "number_of_shards" => 1,
+              ],
+              "mappings" => [
+                  "_source" => [
+                      "enabled" => false,
+                  ],
+                  "properties" => [
+                      "host_name" => [
+                          "type" => "keyword",
+                      ],
+                      "created_at" => [
+                          "type" => "date",
+                          "format" => "EEE MMM dd HH:mm:ss Z yyyy",
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"template\":null,\"settings\":{\"number_of_shards\":1},\"mappings\":{\"_source\":{\"enabled\":false},\"properties\":{\"hos\
+      t_name\":{\"type\":\"keyword\"},\"created_at\":{\"type\":\"date\",\"format\":\"EEE MMM dd HH:mm:ss Z yyyy\"}}}}'
+      \"$ELASTICSEARCH_URL/_component_template/template_1\""
