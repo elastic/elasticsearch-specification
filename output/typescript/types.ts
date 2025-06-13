@@ -13911,7 +13911,7 @@ export type InferenceTaskTypeOpenAI = 'text_embedding' | 'chat_completion' | 'co
 
 export type InferenceTaskTypeVoyageAI = 'text_embedding' | 'rerank'
 
-export type InferenceTaskTypeWatsonx = 'text_embedding'
+export type InferenceTaskTypeWatsonx = 'text_embedding' | 'chat_completion' | 'completion'
 
 export interface InferenceTextEmbeddingByteResult {
   embedding: InferenceDenseByteVector
@@ -13967,7 +13967,7 @@ export interface InferenceWatsonxServiceSettings {
 
 export type InferenceWatsonxServiceType = 'watsonxai'
 
-export type InferenceWatsonxTaskType = 'text_embedding'
+export type InferenceWatsonxTaskType = 'text_embedding' | 'chat_completion' | 'completion'
 
 export interface InferenceChatCompletionUnifiedRequest extends RequestBase {
   inference_id: Id
