@@ -20,12 +20,14 @@ import { ESLintUtils } from '@typescript-eslint/utils';
 
 const createRule = ESLintUtils.RuleCreator(name => `https://example.com/rule/${name}`)
 
+const TYPES_TO_AVOID = ['Record', 'Partial', 'Required', 'Pick', 'Omit'];
+
 export default createRule({
   name: 'no-native-types',
   create(context) {
     return {
       TSTypeReference(node) {
-        if (node.typeName.name === 'Record' || node.typeName.name === 'Map' ) {
+        if (TYPES_TO_AVOID.includes(node.typeName.name)) {
           context.report({ node, messageId: 'stringKey' })
         }
       },
