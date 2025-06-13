@@ -1,1 +1,24 @@
 method_request: GET _synonyms/my-synonyms-set
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.synonyms.get_synonym(
+          id="my-synonyms-set",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.synonyms.getSynonym({
+        id: "my-synonyms-set",
+      });
+  - language: Ruby
+    code: |-
+      response = client.synonyms.get_synonym(
+        id: "my-synonyms-set"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->synonyms()->getSynonym([
+          "id" => "my-synonyms-set",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_synonyms/my-synonyms-set"'

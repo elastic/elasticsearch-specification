@@ -1,1 +1,25 @@
 method_request: GET /_cluster/settings?filter_path=persistent.cluster.remote
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cluster.get_settings(
+          filter_path="persistent.cluster.remote",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cluster.getSettings({
+        filter_path: "persistent.cluster.remote",
+      });
+  - language: Ruby
+    code: |-
+      response = client.cluster.get_settings(
+        filter_path: "persistent.cluster.remote"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cluster()->getSettings([
+          "filter_path" => "persistent.cluster.remote",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_cluster/settings?filter_path=persistent.cluster.remote"'

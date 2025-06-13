@@ -1,1 +1,28 @@
 method_request: GET /_cat/nodeattrs?v=true&format=json
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cat.nodeattrs(
+          v=True,
+          format="json",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cat.nodeattrs({
+        v: "true",
+        format: "json",
+      });
+  - language: Ruby
+    code: |-
+      response = client.cat.nodeattrs(
+        v: "true",
+        format: "json"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cat()->nodeattrs([
+          "v" => "true",
+          "format" => "json",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_cat/nodeattrs?v=true&format=json"'

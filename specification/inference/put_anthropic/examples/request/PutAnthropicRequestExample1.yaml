@@ -13,3 +13,73 @@ value: |-
           "max_tokens": 1024
       }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="completion",
+          inference_id="anthropic_completion",
+          inference_config={
+              "service": "anthropic",
+              "service_settings": {
+                  "api_key": "Anthropic-Api-Key",
+                  "model_id": "Model-ID"
+              },
+              "task_settings": {
+                  "max_tokens": 1024
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "completion",
+        inference_id: "anthropic_completion",
+        inference_config: {
+          service: "anthropic",
+          service_settings: {
+            api_key: "Anthropic-Api-Key",
+            model_id: "Model-ID",
+          },
+          task_settings: {
+            max_tokens: 1024,
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "completion",
+        inference_id: "anthropic_completion",
+        body: {
+          "service": "anthropic",
+          "service_settings": {
+            "api_key": "Anthropic-Api-Key",
+            "model_id": "Model-ID"
+          },
+          "task_settings": {
+            "max_tokens": 1024
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "completion",
+          "inference_id" => "anthropic_completion",
+          "body" => [
+              "service" => "anthropic",
+              "service_settings" => [
+                  "api_key" => "Anthropic-Api-Key",
+                  "model_id" => "Model-ID",
+              ],
+              "task_settings" => [
+                  "max_tokens" => 1024,
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"service\":\"anthropic\",\"service_settings\":{\"api_key\":\"Anthropic-Api-Key\",\"model_id\":\"Model-ID\"},\"task_settings\
+      \":{\"max_tokens\":1024}}' \"$ELASTICSEARCH_URL/_inference/completion/anthropic_completion\""

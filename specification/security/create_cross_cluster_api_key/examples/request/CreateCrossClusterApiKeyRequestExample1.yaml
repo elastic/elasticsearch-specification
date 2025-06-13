@@ -28,3 +28,140 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.create_cross_cluster_api_key(
+          name="my-cross-cluster-api-key",
+          expiration="1d",
+          access={
+              "search": [
+                  {
+                      "names": [
+                          "logs*"
+                      ]
+                  }
+              ],
+              "replication": [
+                  {
+                      "names": [
+                          "archive*"
+                      ]
+                  }
+              ]
+          },
+          metadata={
+              "description": "phase one",
+              "environment": {
+                  "level": 1,
+                  "trusted": True,
+                  "tags": [
+                      "dev",
+                      "staging"
+                  ]
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.createCrossClusterApiKey({
+        name: "my-cross-cluster-api-key",
+        expiration: "1d",
+        access: {
+          search: [
+            {
+              names: ["logs*"],
+            },
+          ],
+          replication: [
+            {
+              names: ["archive*"],
+            },
+          ],
+        },
+        metadata: {
+          description: "phase one",
+          environment: {
+            level: 1,
+            trusted: true,
+            tags: ["dev", "staging"],
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.create_cross_cluster_api_key(
+        body: {
+          "name": "my-cross-cluster-api-key",
+          "expiration": "1d",
+          "access": {
+            "search": [
+              {
+                "names": [
+                  "logs*"
+                ]
+              }
+            ],
+            "replication": [
+              {
+                "names": [
+                  "archive*"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "description": "phase one",
+            "environment": {
+              "level": 1,
+              "trusted": true,
+              "tags": [
+                "dev",
+                "staging"
+              ]
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->createCrossClusterApiKey([
+          "body" => [
+              "name" => "my-cross-cluster-api-key",
+              "expiration" => "1d",
+              "access" => [
+                  "search" => array(
+                      [
+                          "names" => array(
+                              "logs*",
+                          ),
+                      ],
+                  ),
+                  "replication" => array(
+                      [
+                          "names" => array(
+                              "archive*",
+                          ),
+                      ],
+                  ),
+              ],
+              "metadata" => [
+                  "description" => "phase one",
+                  "environment" => [
+                      "level" => 1,
+                      "trusted" => true,
+                      "tags" => array(
+                          "dev",
+                          "staging",
+                      ),
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"name\":\"my-cross-cluster-api-key\",\"expiration\":\"1d\",\"access\":{\"search\":[{\"names\":[\"logs*\"]}],\"replication\
+      \":[{\"names\":[\"archive*\"]}]},\"metadata\":{\"description\":\"phase
+      one\",\"environment\":{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}}}'
+      \"$ELASTICSEARCH_URL/_security/cross_cluster/api_key\""

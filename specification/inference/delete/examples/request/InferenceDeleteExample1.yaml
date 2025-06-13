@@ -1,1 +1,28 @@
 method_request: DELETE /_inference/sparse_embedding/my-elser-model
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.delete(
+          task_type="sparse_embedding",
+          inference_id="my-elser-model",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.delete({
+        task_type: "sparse_embedding",
+        inference_id: "my-elser-model",
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.delete(
+        task_type: "sparse_embedding",
+        inference_id: "my-elser-model"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->delete([
+          "task_type" => "sparse_embedding",
+          "inference_id" => "my-elser-model",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model"'

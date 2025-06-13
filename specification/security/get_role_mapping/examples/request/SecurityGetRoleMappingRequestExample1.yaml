@@ -1,1 +1,24 @@
 method_request: GET /_security/role_mapping/mapping1
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.get_role_mapping(
+          name="mapping1",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.getRoleMapping({
+        name: "mapping1",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.get_role_mapping(
+        name: "mapping1"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->getRoleMapping([
+          "name" => "mapping1",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/role_mapping/mapping1"'

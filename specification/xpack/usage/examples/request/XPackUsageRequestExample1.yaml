@@ -1,1 +1,12 @@
 method_request: GET /_xpack/usage
+alternatives:
+  - language: Python
+    code: resp = client.xpack.usage()
+  - language: JavaScript
+    code: const response = await client.xpack.usage();
+  - language: Ruby
+    code: response = client.xpack.usage
+  - language: PHP
+    code: $resp = $client->xpack()->usage();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_xpack/usage"'

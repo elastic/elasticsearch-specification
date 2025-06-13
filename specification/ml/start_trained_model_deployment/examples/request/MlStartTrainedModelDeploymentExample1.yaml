@@ -1,1 +1,33 @@
 method_request: POST _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/deployment/_start?wait_for=started&timeout=1m
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.start_trained_model_deployment(
+          model_id="elastic__distilbert-base-uncased-finetuned-conll03-english",
+          wait_for="started",
+          timeout="1m",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.startTrainedModelDeployment({
+        model_id: "elastic__distilbert-base-uncased-finetuned-conll03-english",
+        wait_for: "started",
+        timeout: "1m",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.start_trained_model_deployment(
+        model_id: "elastic__distilbert-base-uncased-finetuned-conll03-english",
+        wait_for: "started",
+        timeout: "1m"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->startTrainedModelDeployment([
+          "model_id" => "elastic__distilbert-base-uncased-finetuned-conll03-english",
+          "wait_for" => "started",
+          "timeout" => "1m",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/deployment/_start?wait_for=started&timeout=1m"'
