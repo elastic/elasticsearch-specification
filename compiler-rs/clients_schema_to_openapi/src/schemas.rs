@@ -363,6 +363,10 @@ impl<'a> TypesAndComponents<'a> {
                 _ => bail!("Unknown behavior {}", &bh.typ),
             }
         }
+
+        // description
+        schema.schema_data.description = itf.base.description.clone();
+
         Ok(schema)
     }
 
