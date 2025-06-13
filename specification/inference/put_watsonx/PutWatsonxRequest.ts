@@ -46,8 +46,7 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * The task type.
-     * The only valid task type for the model to perform is `text_embedding`.
+     * The type of the inference task that the model will perform.
      */
     task_type: WatsonxTaskType
     /**

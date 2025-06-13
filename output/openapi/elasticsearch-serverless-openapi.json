@@ -11278,7 +11278,7 @@
           {
             "in": "path",
             "name": "task_type",
-            "description": "The task type.\nThe only valid task type for the model to perform is `text_embedding`.",
+            "description": "The type of the inference task that the model will perform.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -52262,7 +52262,9 @@
       "inference._types.WatsonxTaskType": {
         "type": "string",
         "enum": [
-          "text_embedding"
+          "text_embedding",
+          "chat_completion",
+          "completion"
         ]
       },
       "inference._types.WatsonxServiceType": {
@@ -52292,7 +52294,7 @@
             "externalDocs": {
               "url": "https://www.ibm.com/products/watsonx-ai/foundation-models"
             },
-            "description": "The name of the model to use for the inference task.\nRefer to the IBM Embedding Models section in the Watsonx documentation for the list of available text embedding models.",
+            "description": "The name of the model to use for the inference task.\nRefer to the IBM Embedding Models section in the Watsonx documentation for the list of available text embedding models.\nRefer to the IBM library - Foundation models in Watsonx.ai.",
             "type": "string"
           },
           "project_id": {
