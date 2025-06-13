@@ -60,6 +60,13 @@ Follow the steps to generate the JSON representation, then:
 ```
 # Generate the OpenAPI representation
 $ make transform-to-openapi
+```
+
+To generate the JSON representation that is used for documentation purposes, the commands are different:
+
+```
+# Generate the OpenAPI files
+$ make transform-to-openapi-for-docs
 
 # Apply fixes
 $ make overlay-docs
