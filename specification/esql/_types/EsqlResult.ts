@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { FieldValue, Id, IndexName, NodeId } from '@_types/common'
+import { FieldValue, IndexName, NodeId } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
 import { DurationValue, UnitMillis } from '@_types/Time'
@@ -67,6 +67,7 @@ export class EsqlClusterDetails {
   indices: string
   took?: DurationValue<UnitMillis>
   _shards?: EsqlShardInfo
+  failures?: EsqlShardFailure[]
 }
 
 export enum EsqlClusterStatus {
@@ -82,12 +83,11 @@ export class EsqlShardInfo {
   successful?: integer
   skipped?: integer
   failed?: integer
-  failures?: EsqlShardFailure[]
 }
 
 export class EsqlShardFailure {
-  shard: Id
-  index: IndexName
+  shard: integer
+  index: IndexName | null
   node?: NodeId
   reason: ErrorCause
 }

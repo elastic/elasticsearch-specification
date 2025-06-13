@@ -60192,6 +60192,12 @@
           },
           "_shards": {
             "$ref": "#/components/schemas/esql._types.EsqlShardInfo"
+          },
+          "failures": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types.EsqlShardFailure"
+            }
           }
         },
         "required": [
@@ -60223,12 +60229,6 @@
           },
           "failed": {
             "type": "number"
-          },
-          "failures": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/esql._types.EsqlShardFailure"
-            }
           }
         },
         "required": [
@@ -60239,10 +60239,18 @@
         "type": "object",
         "properties": {
           "shard": {
-            "$ref": "#/components/schemas/_types.Id"
+            "type": "number"
           },
           "index": {
-            "$ref": "#/components/schemas/_types.IndexName"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.IndexName"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           },
           "node": {
             "$ref": "#/components/schemas/_types.NodeId"
