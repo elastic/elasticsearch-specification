@@ -43,4 +43,4 @@ alternatives:
   - language: curl
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"normalizer":"my_normalizer","text":"BaR"}'' "http://localhost:9200/analyze_sample/_analyze"'
+      ''{"normalizer":"my_normalizer","text":"BaR"}'' "$ELASTICSEARCH_URL/analyze_sample/_analyze"'

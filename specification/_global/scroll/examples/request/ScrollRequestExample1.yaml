@@ -34,5 +34,4 @@ alternatives:
   - language: curl
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ=="}''
-      "http://localhost:9200/_search/scroll"'
+      ''{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ=="}'' "$ELASTICSEARCH_URL/_search/scroll"'

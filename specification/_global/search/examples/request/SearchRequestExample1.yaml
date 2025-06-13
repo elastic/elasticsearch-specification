@@ -67,4 +67,4 @@ alternatives:
   - language: curl
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"query":{"term":{"user.id":"kimchy"}}}'' "http://localhost:9200/my-index-000001/_search?from=40&size=20"'
+      ''{"query":{"term":{"user.id":"kimchy"}}}'' "$ELASTICSEARCH_URL/my-index-000001/_search?from=40&size=20"'

@@ -25,4 +25,4 @@ alternatives:
           "rule_id" => "test-1",
       ]);
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_synonyms/my-synonyms-set/test-1"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_synonyms/my-synonyms-set/test-1"'

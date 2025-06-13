@@ -55,4 +55,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"index":{"number_of_replicas":2}}'' "http://localhost:9200/my-index-000001/_settings"'
+      ''{"index":{"number_of_replicas":2}}'' "$ELASTICSEARCH_URL/my-index-000001/_settings"'

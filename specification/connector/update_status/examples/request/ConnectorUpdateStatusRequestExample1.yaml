@@ -39,4 +39,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"status":"needs_configuration"}'' "http://localhost:9200/_connector/my-connector/_status"'
+      ''{"status":"needs_configuration"}'' "$ELASTICSEARCH_URL/_connector/my-connector/_status"'

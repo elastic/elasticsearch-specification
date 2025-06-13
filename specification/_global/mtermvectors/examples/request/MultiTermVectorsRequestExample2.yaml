@@ -68,4 +68,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"ids":["1","2"],"fields":["message"],"term_statistics":true}''
-      "http://localhost:9200/my-index-000001/_mtermvectors"'
+      "$ELASTICSEARCH_URL/my-index-000001/_mtermvectors"'

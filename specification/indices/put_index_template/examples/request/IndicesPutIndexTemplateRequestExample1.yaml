@@ -82,4 +82,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"index_patterns":["template*"],"priority":1,"template":{"settings":{"number_of_shards":2}}}''
-      "http://localhost:9200/_index_template/template_1"'
+      "$ELASTICSEARCH_URL/_index_template/template_1"'

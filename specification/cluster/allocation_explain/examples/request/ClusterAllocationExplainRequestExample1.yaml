@@ -50,4 +50,4 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"index":"my-index-000001","shard":0,"primary":false,"current_node":"my-node"}''
-      "http://localhost:9200/_cluster/allocation/explain"'
+      "$ELASTICSEARCH_URL/_cluster/allocation/explain"'

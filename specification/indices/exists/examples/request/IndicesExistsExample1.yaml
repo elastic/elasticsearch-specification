@@ -21,4 +21,4 @@ alternatives:
           "index" => "my-data-stream",
       ]);
   - language: curl
-    code: 'curl --head -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/my-data-stream"'
+    code: 'curl --head -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-data-stream"'

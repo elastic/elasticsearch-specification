@@ -113,4 +113,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"roles\":[\"ldap-example-user\"],\"enabled\":true,\"rules\":{\"all\":[{\"field\":{\"dn\":\"*,ou=subtree,dc=example,dc=com\
-      \"}},{\"field\":{\"realm.name\":\"ldap1\"}}]}}' \"http://localhost:9200/_security/role_mapping/mapping7\""
+      \"}},{\"field\":{\"realm.name\":\"ldap1\"}}]}}' \"$ELASTICSEARCH_URL/_security/role_mapping/mapping7\""

@@ -21,4 +21,4 @@ alternatives:
           "id" => "my-search-template",
       ]);
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_scripts/my-search-template"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_scripts/my-search-template"'

@@ -215,4 +215,4 @@ alternatives:
       search\":{\"query\":\"search
       term\",\"results\":{\"items\":[{\"document\":{\"id\":\"123\",\"index\":\"products\"}}],\"total_results\":10},\"sort\":{\"name\
       \":\"relevance\"},\"search_application\":\"website\"},\"document\":{\"id\":\"123\",\"index\":\"products\"}}'
-      \"http://localhost:9200/_application/analytics/my_analytics_collection/event/search_click\""
+      \"$ELASTICSEARCH_URL/_application/analytics/my_analytics_collection/event/search_click\""

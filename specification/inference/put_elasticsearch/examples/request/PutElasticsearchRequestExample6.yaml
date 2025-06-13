@@ -64,4 +64,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"elasticsearch","service_settings":{"deployment_id":".elser_model_2"}}''
-      "http://localhost:9200/_inference/sparse_embedding/use_existing_deployment"'
+      "$ELASTICSEARCH_URL/_inference/sparse_embedding/use_existing_deployment"'

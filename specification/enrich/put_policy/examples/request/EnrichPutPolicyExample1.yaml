@@ -66,4 +66,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"geo_match":{"indices":"postal_codes","match_field":"location","enrich_fields":["location","postal_code"]}}''
-      "http://localhost:9200/_enrich/policy/postal_policy"'
+      "$ELASTICSEARCH_URL/_enrich/policy/postal_policy"'

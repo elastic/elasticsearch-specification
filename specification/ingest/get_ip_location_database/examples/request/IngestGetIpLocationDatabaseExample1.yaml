@@ -21,4 +21,4 @@ alternatives:
           "id" => "my-database-id",
       ]);
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_ingest/ip_location/database/my-database-id"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ingest/ip_location/database/my-database-id"'

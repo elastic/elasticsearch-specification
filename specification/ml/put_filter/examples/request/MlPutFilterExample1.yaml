@@ -50,4 +50,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"description":"A list
-      of safe domains","items":["*.google.com","wikipedia.org"]}'' "http://localhost:9200/_ml/filters/safe_domains"'
+      of safe domains","items":["*.google.com","wikipedia.org"]}'' "$ELASTICSEARCH_URL/_ml/filters/safe_domains"'

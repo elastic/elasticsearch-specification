@@ -21,4 +21,4 @@ alternatives:
           "realms" => "default_file",
       ]);
   - language: curl
-    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_security/realm/default_file/_clear_cache"'
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/realm/default_file/_clear_cache"'

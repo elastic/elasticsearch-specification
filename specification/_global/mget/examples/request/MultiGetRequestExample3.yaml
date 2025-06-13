@@ -109,4 +109,4 @@ alternatives:
     code:
       "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"docs\":[{\"_index\":\"test\",\"_id\":\"1\",\"stored_fields\":[\"field1\",\"field2\"]},{\"_index\":\"test\",\"_id\":\"2\",\
-      \"stored_fields\":[\"field3\",\"field4\"]}]}' \"http://localhost:9200/_mget\""
+      \"stored_fields\":[\"field3\",\"field4\"]}]}' \"$ELASTICSEARCH_URL/_mget\""

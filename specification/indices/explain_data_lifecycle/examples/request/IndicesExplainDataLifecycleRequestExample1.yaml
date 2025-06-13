@@ -21,5 +21,4 @@ alternatives:
           "index" => ".ds-metrics-2023.03.22-000001",
       ]);
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/.ds-metrics-2023.03.22-000001/_lifecycle/explain"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/.ds-metrics-2023.03.22-000001/_lifecycle/explain"'

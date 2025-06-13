@@ -138,4 +138,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"remote_indices\":[{\"clusters\":[\"my_remote\"],\"names\":[\"logs*\"],\"privileges\":[\"read\",\"read_cross_cluster\",\"v\
       iew_index_metadata\"]}],\"remote_cluster\":[{\"clusters\":[\"my_remote\"],\"privileges\":[\"monitor_stats\"]}]}'
-      \"http://localhost:9200/_security/role/only_remote_access_role\""
+      \"$ELASTICSEARCH_URL/_security/role/only_remote_access_role\""

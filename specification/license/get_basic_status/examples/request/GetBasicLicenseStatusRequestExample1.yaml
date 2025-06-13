@@ -9,4 +9,4 @@ alternatives:
   - language: PHP
     code: $resp = $client->license()->getBasicStatus();
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_license/basic_status"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_license/basic_status"'

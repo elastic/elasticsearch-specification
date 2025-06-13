@@ -9,4 +9,4 @@ alternatives:
   - language: PHP
     code: $resp = $client->slm()->executeRetention();
   - language: curl
-    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_slm/_execute_retention"'
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_slm/_execute_retention"'

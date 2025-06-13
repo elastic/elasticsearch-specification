@@ -75,4 +75,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"_shards\":{\"total\":2,\"successful\":2,\"failed\":0},\"reload_details\":[{\"index\":\"my-index-000001\",\"reloaded_analy\
       zers\":[\"my_synonyms\"],\"reloaded_node_ids\":[\"mfdqTXn_T7SGr2Ho2KT8uw\"]}]}'
-      \"http://localhost:9200/my-index-000001/_reload_search_analyzers\""
+      \"$ELASTICSEARCH_URL/my-index-000001/_reload_search_analyzers\""

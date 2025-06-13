@@ -214,4 +214,4 @@ alternatives:
       price of a
       item\",\"parameters\":{\"type\":\"object\",\"properties\":{\"item\":{\"id\":\"123\"}}}}}],\"tool_choice\":{\"type\":\"function\
       \",\"function\":{\"name\":\"get_current_price\"}}}'
-      \"http://localhost:9200/_inference/chat_completion/openai-completion/_stream\""
+      \"$ELASTICSEARCH_URL/_inference/chat_completion/openai-completion/_stream\""

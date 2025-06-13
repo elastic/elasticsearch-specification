@@ -21,5 +21,4 @@ alternatives:
           "name" => "my_auto_follow_pattern",
       ]);
   - language: curl
-    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_ccr/auto_follow/my_auto_follow_pattern/pause"'
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ccr/auto_follow/my_auto_follow_pattern/pause"'

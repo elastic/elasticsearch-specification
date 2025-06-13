@@ -28,4 +28,4 @@ alternatives:
       );
       $resp = $client->sendRequest($request);
   - language: curl
-    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_create_from/my-index/my-new-index"'
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_create_from/my-index/my-new-index"'

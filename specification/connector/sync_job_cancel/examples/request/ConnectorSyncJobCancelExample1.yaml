@@ -22,4 +22,4 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_connector/_sync_job/my-connector-sync-job-id/_cancel"'
+      "$ELASTICSEARCH_URL/_connector/_sync_job/my-connector-sync-job-id/_cancel"'

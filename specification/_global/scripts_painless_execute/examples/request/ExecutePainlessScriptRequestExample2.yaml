@@ -99,4 +99,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"script\":{\"source\":\"doc['\"'\"'field'\"'\"'].value.length() <=
       params.max_length\",\"params\":{\"max_length\":4}},\"context\":\"filter\",\"context_setup\":{\"index\":\"my-index-000001\",\"\
-      document\":{\"field\":\"four\"}}}' \"http://localhost:9200/_scripts/painless/_execute\""
+      document\":{\"field\":\"four\"}}}' \"$ELASTICSEARCH_URL/_scripts/painless/_execute\""

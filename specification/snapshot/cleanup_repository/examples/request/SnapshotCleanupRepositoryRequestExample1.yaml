@@ -21,4 +21,4 @@ alternatives:
           "repository" => "my_repository",
       ]);
   - language: curl
-    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_snapshot/my_repository/_cleanup"'
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_snapshot/my_repository/_cleanup"'

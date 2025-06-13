@@ -52,4 +52,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"index_name":"search-google-drive","name":"My Connector","service_type":"google_drive"}''
-      "http://localhost:9200/_connector/my-connector"'
+      "$ELASTICSEARCH_URL/_connector/my-connector"'

@@ -94,4 +94,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"downsampling":[{"after":"1d","fixed_interval":"10m"},{"after":"7d","fixed_interval":"1d"}]}''
-      "http://localhost:9200/_data_stream/my-weather-sensor-data-stream/_lifecycle"'
+      "$ELASTICSEARCH_URL/_data_stream/my-weather-sensor-data-stream/_lifecycle"'

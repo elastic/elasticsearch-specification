@@ -214,4 +214,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"roles\":[\"superuser\"],\"enabled\":true,\"rules\":{\"all\":[{\"any\":[{\"field\":{\"dn\":\"*,ou=admin,dc=example,dc=com\
       \"}},{\"field\":{\"username\":[\"es-admin\",\"es-system\"]}}]},{\"field\":{\"groups\":\"cn=people,dc=example,dc=com\"}},{\"ex\
-      cept\":{\"field\":{\"metadata.terminated_date\":null}}}]}}' \"http://localhost:9200/_security/role_mapping/mapping8\""
+      cept\":{\"field\":{\"metadata.terminated_date\":null}}}]}}' \"$ELASTICSEARCH_URL/_security/role_mapping/mapping8\""

@@ -164,4 +164,4 @@ alternatives:
       '{\"name\":\"my-cross-cluster-api-key\",\"expiration\":\"1d\",\"access\":{\"search\":[{\"names\":[\"logs*\"]}],\"replication\
       \":[{\"names\":[\"archive*\"]}]},\"metadata\":{\"description\":\"phase
       one\",\"environment\":{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}}}'
-      \"http://localhost:9200/_security/cross_cluster/api_key\""
+      \"$ELASTICSEARCH_URL/_security/cross_cluster/api_key\""

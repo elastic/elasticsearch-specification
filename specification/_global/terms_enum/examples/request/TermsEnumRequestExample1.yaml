@@ -43,4 +43,4 @@ alternatives:
   - language: curl
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"field":"tags","string":"kiba"}'' "http://localhost:9200/stackoverflow/_terms_enum"'
+      ''{"field":"tags","string":"kiba"}'' "$ELASTICSEARCH_URL/stackoverflow/_terms_enum"'

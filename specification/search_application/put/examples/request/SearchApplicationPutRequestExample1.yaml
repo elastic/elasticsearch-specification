@@ -260,4 +260,4 @@ alternatives:
       string}}\",\"default_field\":\"{{default_field}}\"}}},\"params\":{\"query_string\":\"*\",\"default_field\":\"*\"}},\"dictiona\
       ry\":{\"properties\":{\"query_string\":{\"type\":\"string\"},\"default_field\":{\"type\":\"string\",\"enum\":[\"title\",\"des\
       cription\"]},\"additionalProperties\":false},\"required\":[\"query_string\"]}}}'
-      \"http://localhost:9200/_application/search_application/my-app\""
+      \"$ELASTICSEARCH_URL/_application/search_application/my-app\""

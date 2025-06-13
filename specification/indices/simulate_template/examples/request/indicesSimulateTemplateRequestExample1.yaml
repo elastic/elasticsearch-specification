@@ -92,4 +92,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"index_patterns\":[\"my-index-*\"],\"composed_of\":[\"ct2\"],\"priority\":10,\"template\":{\"settings\":{\"index.number_of\
-      _replicas\":1}}}' \"http://localhost:9200/_index_template/_simulate\""
+      _replicas\":1}}}' \"$ELASTICSEARCH_URL/_index_template/_simulate\""

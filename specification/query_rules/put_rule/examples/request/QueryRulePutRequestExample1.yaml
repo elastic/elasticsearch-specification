@@ -46,4 +46,4 @@ alternatives:
   - language: curl
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"match_criteria":{"query_string":"puggles"}}'' "http://localhost:9200/_query_rules/my-ruleset/_test"'
+      ''{"match_criteria":{"query_string":"puggles"}}'' "$ELASTICSEARCH_URL/_query_rules/my-ruleset/_test"'

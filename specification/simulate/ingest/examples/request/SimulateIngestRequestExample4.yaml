@@ -332,4 +332,4 @@ alternatives:
       \":true,\"properties\":{\"field3\":{\"type\":\"keyword\"}}},\"settings\":{\"index\":{\"default_pipeline\":\"my-pipeline\"}}}}\
       },\"index_template_substitutions\":{\"my-index-template\":{\"index_patterns\":[\"my-index-*\"],\"composed_of\":[\"component_t\
       emplate_1\",\"component_template_2\"]}},\"mapping_addition\":{\"dynamic\":\"strict\",\"properties\":{\"foo\":{\"type\":\"keyw\
-      ord\"}}}}' \"http://localhost:9200/_ingest/_simulate\""
+      ord\"}}}}' \"$ELASTICSEARCH_URL/_ingest/_simulate\""

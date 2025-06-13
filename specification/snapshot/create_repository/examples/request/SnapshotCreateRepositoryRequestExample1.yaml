@@ -61,4 +61,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"type":"fs","settings":{"location":"my_backup_location"}}'' "http://localhost:9200/_snapshot/my_repository"'
+      ''{"type":"fs","settings":{"location":"my_backup_location"}}'' "$ELASTICSEARCH_URL/_snapshot/my_repository"'

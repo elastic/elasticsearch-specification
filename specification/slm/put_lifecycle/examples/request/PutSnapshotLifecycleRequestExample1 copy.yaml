@@ -126,4 +126,4 @@ alternatives:
       *
       ?\",\"name\":\"<daily-snap-{now/d}>\",\"repository\":\"my_repository\",\"config\":{\"indices\":[\"data-*\",\"important\"],\"i\
       gnore_unavailable\":false,\"include_global_state\":false},\"retention\":{\"expire_after\":\"30d\",\"min_count\":5,\"max_count\
-      \":50}}' \"http://localhost:9200/_slm/policy/daily-snapshots\""
+      \":50}}' \"$ELASTICSEARCH_URL/_slm/policy/daily-snapshots\""

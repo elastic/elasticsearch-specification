@@ -55,4 +55,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"action_modes":{"action1":"force_simulate","action2":"skip"}}''
-      "http://localhost:9200/_watcher/watch/my_watch/_execute"'
+      "$ELASTICSEARCH_URL/_watcher/watch/my_watch/_execute"'

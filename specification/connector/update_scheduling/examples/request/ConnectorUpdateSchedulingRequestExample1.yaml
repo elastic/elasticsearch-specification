@@ -119,4 +119,4 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"scheduling":{"access_control":{"enabled":true,"interval":"0 10 0 * *
       ?"},"full":{"enabled":true,"interval":"0 20 0 * * ?"},"incremental":{"enabled":false,"interval":"0 30 0 * *
-      ?"}}}'' "http://localhost:9200/_connector/my-connector/_scheduling"'
+      ?"}}}'' "$ELASTICSEARCH_URL/_connector/my-connector/_scheduling"'

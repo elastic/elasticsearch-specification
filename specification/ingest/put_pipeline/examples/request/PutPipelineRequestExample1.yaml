@@ -94,4 +94,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"description":"My
       optional pipeline description","processors":[{"set":{"description":"My optional processor
-      description","field":"my-keyword-field","value":"foo"}}]}'' "http://localhost:9200/_ingest/pipeline/my-pipeline-id"'
+      description","field":"my-keyword-field","value":"foo"}}]}'' "$ELASTICSEARCH_URL/_ingest/pipeline/my-pipeline-id"'

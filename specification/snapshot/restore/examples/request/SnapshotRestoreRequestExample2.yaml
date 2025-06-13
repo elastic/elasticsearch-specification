@@ -35,4 +35,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"indices":"index_1"}'' "http://localhost:9200/_cluster/settings"'
+      ''{"indices":"index_1"}'' "$ELASTICSEARCH_URL/_cluster/settings"'

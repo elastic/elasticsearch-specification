@@ -72,4 +72,4 @@ alternatives:
     code:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"cohere\",\"service_settings\":{\"api_key\":\"Cohere-Api-key\",\"model_id\":\"embed-english-light-v3.0\",\"emb\
-      edding_type\":\"byte\"}}' \"http://localhost:9200/_inference/text_embedding/cohere-embeddings\""
+      edding_type\":\"byte\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/cohere-embeddings\""

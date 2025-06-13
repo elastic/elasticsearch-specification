@@ -32,4 +32,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"index.auto_expand_replicas":"0-4"}'' "http://localhost:9200/_watcher/settings"'
+      ''{"index.auto_expand_replicas":"0-4"}'' "$ELASTICSEARCH_URL/_watcher/settings"'

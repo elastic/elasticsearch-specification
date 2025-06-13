@@ -62,4 +62,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"index\":\"my_analytics_dest_index\",\"evaluation\":{\"outlier_detection\":{\"actual_field\":\"is_outlier\",\"predicted_pr\
-      obability_field\":\"ml.outlier_score\"}}}' \"http://localhost:9200/_ml/data_frame/_evaluate\""
+      obability_field\":\"ml.outlier_score\"}}}' \"$ELASTICSEARCH_URL/_ml/data_frame/_evaluate\""

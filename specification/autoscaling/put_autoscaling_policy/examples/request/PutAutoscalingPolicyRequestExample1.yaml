@@ -64,4 +64,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"roles":[],"deciders":{"fixed":{}}}'' "http://localhost:9200/_autoscaling/policy/<name>"'
+      ''{"roles":[],"deciders":{"fixed":{}}}'' "$ELASTICSEARCH_URL/_autoscaling/policy/<name>"'

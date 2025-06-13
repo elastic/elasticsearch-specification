@@ -95,4 +95,4 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"advanced_snippet":{"value":[{"tables":["users","orders"],"query":"SELECT users.id AS id, orders.order_id AS
       order_id FROM users JOIN orders ON users.id = orders.user_id"}]}}''
-      "http://localhost:9200/_connector/my-sql-connector/_filtering"'
+      "$ELASTICSEARCH_URL/_connector/my-sql-connector/_filtering"'

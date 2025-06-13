@@ -54,4 +54,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"realm\":\"saml1\",\"ids\":[\"_1c368075e0b3...\"],\"query_string\":\"SAMLResponse=fZHLasMwEEVbfb1bf...&SigAlg=http%3A%2F%2\
       Fwww.w3.org%2F2000%2F09%2Fxmldsig%23rsa-sha1&Signature=CuCmFn%2BLqnaZGZJqK...\"}'
-      \"http://localhost:9200/_security/saml/complete_logout\""
+      \"$ELASTICSEARCH_URL/_security/saml/complete_logout\""

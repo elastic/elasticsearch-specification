@@ -191,4 +191,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"query\":{\"bool\":{\"must\":[{\"wildcard\":{\"email\":\"*example.com\"}},{\"term\":{\"enabled\":true}}],\"filter\":[{\"wi\
       ldcard\":{\"roles\":\"*other*\"}}]}},\"from\":1,\"size\":2,\"sort\":[{\"username\":{\"order\":\"desc\"}}]}'
-      \"http://localhost:9200/_security/_query/user\""
+      \"$ELASTICSEARCH_URL/_security/_query/user\""

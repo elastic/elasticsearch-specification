@@ -21,4 +21,4 @@ alternatives:
           "index" => "sensor_rollup",
       ]);
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/sensor_rollup/_rollup/data"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/sensor_rollup/_rollup/data"'

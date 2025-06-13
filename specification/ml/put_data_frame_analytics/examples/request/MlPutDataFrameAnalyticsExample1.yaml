@@ -210,4 +210,4 @@ alternatives:
       \":{\"includes\":[],\"excludes\":[\"FlightDelay\",\"FlightDelayType\"]}},\"dest\":{\"index\":\"df-flight-delays\",\"results_f\
       ield\":\"ml-results\"},\"analysis\":{\"regression\":{\"dependent_variable\":\"FlightDelayMin\",\"training_percent\":90}},\"an\
       alyzed_fields\":{\"includes\":[],\"excludes\":[\"FlightNum\"]},\"model_memory_limit\":\"100mb\"}'
-      \"http://localhost:9200/_ml/data_frame/analytics/model-flight-delays-pre\""
+      \"$ELASTICSEARCH_URL/_ml/data_frame/analytics/model-flight-delays-pre\""

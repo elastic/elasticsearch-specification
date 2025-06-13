@@ -36,4 +36,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"worker_hostname":"some-machine"}'' "http://localhost:9200/_connector/_sync_job/my-connector-sync-job-id/_claim"'
+      ''{"worker_hostname":"some-machine"}'' "$ELASTICSEARCH_URL/_connector/_sync_job/my-connector-sync-job-id/_claim"'

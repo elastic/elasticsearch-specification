@@ -205,4 +205,4 @@ alternatives:
       '{\"watch\":{\"trigger\":{\"schedule\":{\"interval\":\"10s\"}},\"input\":{\"search\":{\"request\":{\"indices\":[\"logs\"],\"b\
       ody\":{\"query\":{\"match\":{\"message\":\"error\"}}}}}},\"condition\":{\"compare\":{\"ctx.payload.hits.total\":{\"gt\":0}}},\
       \"actions\":{\"log_error\":{\"logging\":{\"text\":\"Found {{ctx.payload.hits.total}} errors in the logs\"}}}}}'
-      \"http://localhost:9200/_watcher/watch/_execute\""
+      \"$ELASTICSEARCH_URL/_watcher/watch/_execute\""

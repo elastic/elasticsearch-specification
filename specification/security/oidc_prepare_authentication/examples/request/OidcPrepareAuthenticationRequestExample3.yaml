@@ -42,4 +42,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"iss":"http://127.0.0.1:8080","login_hint":"this_is_an_opaque_string"}''
-      "http://localhost:9200/_security/oidc/prepare"'
+      "$ELASTICSEARCH_URL/_security/oidc/prepare"'

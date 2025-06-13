@@ -83,4 +83,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"index\":\"animal_classification\",\"evaluation\":{\"classification\":{\"actual_field\":\"animal_class\",\"metrics\":{\"au\
-      c_roc\":{\"class_name\":\"dog\"}}}}}' \"http://localhost:9200/_ml/data_frame/_evaluate\""
+      c_roc\":{\"class_name\":\"dog\"}}}}}' \"$ELASTICSEARCH_URL/_ml/data_frame/_evaluate\""

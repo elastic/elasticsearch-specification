@@ -64,4 +64,4 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"tokenizer":"keyword","filter":["lowercase"],"char_filter":["html_strip"],"text":"this is a test</b>"}''
-      "http://localhost:9200/_analyze"'
+      "$ELASTICSEARCH_URL/_analyze"'

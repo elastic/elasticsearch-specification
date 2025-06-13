@@ -46,4 +46,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"api_key_id":"my-api-key-id","api_key_secret_id":"my-connector-secret-id"}''
-      "http://localhost:9200/_connector/my-connector/_api_key_id"'
+      "$ELASTICSEARCH_URL/_connector/my-connector/_api_key_id"'

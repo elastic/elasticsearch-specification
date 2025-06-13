@@ -59,4 +59,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"script":{"source":"ctx._source[''"''"''extra''"''"''] = ''"''"''test''"''"''"}}''
-      "http://localhost:9200/my-index-000001/_update_by_query?refresh&slices=5"'
+      "$ELASTICSEARCH_URL/my-index-000001/_update_by_query?refresh&slices=5"'

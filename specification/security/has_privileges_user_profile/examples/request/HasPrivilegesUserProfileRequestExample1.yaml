@@ -217,4 +217,4 @@ alternatives:
       not-exist_0\"],\"privileges\":{\"cluster\":[\"monitor\",\"create_snapshot\",\"manage_ml\"],\"index\":[{\"names\":[\"suppliers\
       \",\"products\"],\"privileges\":[\"create_doc\"]},{\"names\":[\"inventory\"],\"privileges\":[\"read\",\"write\"]}],\"applicat\
       ion\":[{\"application\":\"inventory_manager\",\"privileges\":[\"read\",\"data:write/inventory\"],\"resources\":[\"product/185\
-      2563\"]}]}}' \"http://localhost:9200/_security/profile/_has_privileges\""
+      2563\"]}]}}' \"$ELASTICSEARCH_URL/_security/profile/_has_privileges\""

@@ -69,4 +69,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"voyageai","service_settings":{"model_id":"voyage-3-large","dimensions":512}}''
-      "http://localhost:9200/_inference/text_embedding/openai-embeddings"'
+      "$ELASTICSEARCH_URL/_inference/text_embedding/openai-embeddings"'

@@ -43,4 +43,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"synonyms":"hello,
-      hi, howdy"}'' "http://localhost:9200/_synonyms/my-synonyms-set/test-1"'
+      hi, howdy"}'' "$ELASTICSEARCH_URL/_synonyms/my-synonyms-set/test-1"'

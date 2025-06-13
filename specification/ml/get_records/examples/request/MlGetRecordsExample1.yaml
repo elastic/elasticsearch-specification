@@ -47,4 +47,4 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"sort":"record_score","desc":true,"start":"1454944100000"}''
-      "http://localhost:9200/_ml/anomaly_detectors/low_request_rate/results/records"'
+      "$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/results/records"'

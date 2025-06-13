@@ -419,4 +419,4 @@ alternatives:
       dex1\"],\"privileges\":[\"read\"],\"field_security\":{\"grant\":[\"title\",\"body\"]},\"query\":\"{\\\"match\\\":
       {\\\"title\\\":
       \\\"foo\\\"}}\"}],\"applications\":[{\"application\":\"myapp\",\"privileges\":[\"admin\",\"read\"],\"resources\":[\"*\"]}],\"\
-      run_as\":[\"other_user\"],\"metadata\":{\"version\":1}}}}' \"http://localhost:9200/_security/role\""
+      run_as\":[\"other_user\"],\"metadata\":{\"version\":1}}}}' \"$ELASTICSEARCH_URL/_security/role\""

@@ -38,4 +38,4 @@ alternatives:
   - language: curl
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"input":"What is
-      Elastic?"}'' "http://localhost:9200/_inference/completion/openai_chat_completions"'
+      Elastic?"}'' "$ELASTICSEARCH_URL/_inference/completion/openai_chat_completions"'

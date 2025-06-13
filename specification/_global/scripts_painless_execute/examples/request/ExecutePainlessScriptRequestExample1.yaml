@@ -68,4 +68,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"script":{"source":"params.count / params.total","params":{"count":100,"total":1000}}}''
-      "http://localhost:9200/_scripts/painless/_execute"'
+      "$ELASTICSEARCH_URL/_scripts/painless/_execute"'

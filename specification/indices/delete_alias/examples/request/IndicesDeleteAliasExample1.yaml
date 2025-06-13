@@ -25,4 +25,4 @@ alternatives:
           "name" => "my-alias",
       ]);
   - language: curl
-    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/my-data-stream/_alias/my-alias"'
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-data-stream/_alias/my-alias"'

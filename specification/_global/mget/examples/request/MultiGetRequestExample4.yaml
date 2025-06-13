@@ -92,4 +92,4 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"docs":[{"_index":"test","_id":"1","routing":"key2"},{"_index":"test","_id":"2"}]}''
-      "http://localhost:9200/_mget?routing=key1"'
+      "$ELASTICSEARCH_URL/_mget?routing=key1"'

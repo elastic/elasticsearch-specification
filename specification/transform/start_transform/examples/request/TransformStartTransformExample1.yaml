@@ -21,5 +21,4 @@ alternatives:
           "transform_id" => "ecommerce-customer-transform",
       ]);
   - language: curl
-    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_transform/ecommerce-customer-transform/_start"'
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_transform/ecommerce-customer-transform/_start"'

@@ -130,4 +130,4 @@ alternatives:
     code:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"features\":{\"document_level_security\":{\"enabled\":true},\"incremental_sync\":{\"enabled\":true},\"sync_rules\":{\"adva\
-      nced\":{\"enabled\":false},\"basic\":{\"enabled\":true}}}}' \"http://localhost:9200/_connector/my-connector/_features\""
+      nced\":{\"enabled\":false},\"basic\":{\"enabled\":true}}}}' \"$ELASTICSEARCH_URL/_connector/my-connector/_features\""

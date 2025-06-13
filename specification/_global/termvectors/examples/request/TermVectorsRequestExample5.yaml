@@ -56,4 +56,4 @@ alternatives:
   - language: curl
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"doc":{"fullname":"John Doe","text":"test test test"}}'' "http://localhost:9200/my-index-000001/_termvectors"'
+      ''{"doc":{"fullname":"John Doe","text":"test test test"}}'' "$ELASTICSEARCH_URL/my-index-000001/_termvectors"'

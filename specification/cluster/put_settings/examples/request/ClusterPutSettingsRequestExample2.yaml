@@ -50,4 +50,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"persistent":{"action.auto_create_index":"my-index-000001,index10,-index1*,+ind*"}}''
-      "http://localhost:9200/_cluster/settings"'
+      "$ELASTICSEARCH_URL/_cluster/settings"'

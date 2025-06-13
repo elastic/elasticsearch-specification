@@ -46,4 +46,4 @@ alternatives:
   - language: curl
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"page":{"size":1}}''
-      "http://localhost:9200/_ml/anomaly_detectors/esxi_log/results/categories"'
+      "$ELASTICSEARCH_URL/_ml/anomaly_detectors/esxi_log/results/categories"'

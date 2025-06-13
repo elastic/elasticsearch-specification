@@ -21,5 +21,4 @@ alternatives:
           "job_id" => "low_request_rate",
       ]);
   - language: curl
-    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_ml/anomaly_detectors/low_request_rate/_close"'
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_close"'

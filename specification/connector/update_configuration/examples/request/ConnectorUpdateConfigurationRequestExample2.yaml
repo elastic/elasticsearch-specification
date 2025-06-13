@@ -51,4 +51,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"values":{"secret_value":"foo-bar"}}'' "http://localhost:9200/_connector/my-spo-connector/_configuration"'
+      ''{"values":{"secret_value":"foo-bar"}}'' "$ELASTICSEARCH_URL/_connector/my-spo-connector/_configuration"'

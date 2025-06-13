@@ -110,4 +110,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"max_docs\":10,\"source\":{\"index\":\"my-index-000001\",\"query\":{\"function_score\":{\"random_score\":{},\"min_score\":\
-      0.9}}},\"dest\":{\"index\":\"my-new-index-000001\"}}' \"http://localhost:9200/_reindex\""
+      0.9}}},\"dest\":{\"index\":\"my-new-index-000001\"}}' \"$ELASTICSEARCH_URL/_reindex\""

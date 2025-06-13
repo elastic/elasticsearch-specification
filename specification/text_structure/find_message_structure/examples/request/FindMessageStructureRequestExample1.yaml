@@ -201,4 +201,4 @@ alternatives:
       [default=40mb, read=0b, write=0b, max=0b]","[2024-03-05T10:52:47,787][INFO ][o.e.d.DiscoveryModule    ] [laptop] using
       discovery type [multi-node] and seed hosts providers [settings]","[2024-03-05T10:52:49,188][INFO
       ][o.e.n.Node               ] [laptop] initialized","[2024-03-05T10:52:49,199][INFO ][o.e.n.Node               ] [laptop]
-      starting ..."]}'' "http://localhost:9200/_text_structure/find_message_structure"'
+      starting ..."]}'' "$ELASTICSEARCH_URL/_text_structure/find_message_structure"'

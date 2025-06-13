@@ -86,5 +86,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"index\":\"my_docs\",\"renamed_index\":\"docs\",\"index_settings\":{\"index.number_of_replicas\":0},\"ignore_index_settings\
-      \":[\"index.refresh_interval\"]}'
-      \"http://localhost:9200/_snapshot/my_repository/my_snapshot/_mount?wait_for_completion=true\""
+      \":[\"index.refresh_interval\"]}' \"$ELASTICSEARCH_URL/_snapshot/my_repository/my_snapshot/_mount?wait_for_completion=true\""

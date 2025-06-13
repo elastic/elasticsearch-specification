@@ -122,4 +122,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"sort\":[{\"date\":{\"order\":\"asc\"}}],\"aggs\":{\"sale_date\":{\"date_histogram\":{\"field\":\"date\",\"calendar_interv\
-      al\":\"1d\"}}}}' \"http://localhost:9200/sales*/_async_search?size=0\""
+      al\":\"1d\"}}}}' \"$ELASTICSEARCH_URL/sales*/_async_search?size=0\""

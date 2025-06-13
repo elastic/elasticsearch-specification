@@ -60,4 +60,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"id":"my-search-template","params":{"query_string":"hello world","from":20,"size":10}}''
-      "http://localhost:9200/_render/template"'
+      "$ELASTICSEARCH_URL/_render/template"'

@@ -82,4 +82,4 @@ alternatives:
     code:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"anthropic\",\"service_settings\":{\"api_key\":\"Anthropic-Api-Key\",\"model_id\":\"Model-ID\"},\"task_settings\
-      \":{\"max_tokens\":1024}}' \"http://localhost:9200/_inference/completion/anthropic_completion\""
+      \":{\"max_tokens\":1024}}' \"$ELASTICSEARCH_URL/_inference/completion/anthropic_completion\""

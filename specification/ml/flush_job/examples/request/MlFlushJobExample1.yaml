@@ -36,4 +36,4 @@ alternatives:
   - language: curl
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"calc_interim":true}''
-      "http://localhost:9200/_ml/anomaly_detectors/low_request_rate/_flush"'
+      "$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_flush"'

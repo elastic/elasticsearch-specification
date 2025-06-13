@@ -262,4 +262,4 @@ alternatives:
       '{\"query\":{\"bool\":{\"must\":[{\"prefix\":{\"name\":\"app1-key-\"}},{\"term\":{\"invalidated\":\"false\"}}],\"must_not\":[{\
       \"term\":{\"name\":\"app1-key-01\"}}],\"filter\":[{\"wildcard\":{\"username\":\"org-*-user\"}},{\"term\":{\"metadata.environm\
       ent\":\"production\"}}]}},\"from\":20,\"size\":10,\"sort\":[{\"creation\":{\"order\":\"desc\",\"format\":\"date_time\"}},\"na\
-      me\"]}' \"http://localhost:9200/_security/_query/api_key\""
+      me\"]}' \"$ELASTICSEARCH_URL/_security/_query/api_key\""

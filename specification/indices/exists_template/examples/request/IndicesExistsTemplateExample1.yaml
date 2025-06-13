@@ -21,4 +21,4 @@ alternatives:
           "name" => "template_1",
       ]);
   - language: curl
-    code: 'curl --head -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_template/template_1"'
+    code: 'curl --head -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_template/template_1"'

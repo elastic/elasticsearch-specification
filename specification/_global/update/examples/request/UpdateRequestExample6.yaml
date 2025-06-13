@@ -45,4 +45,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"script":"ctx._source[''"''"''my-object''"''"''].remove(''"''"''my-subfield''"''"'')"}''
-      "http://localhost:9200/test/_update/1"'
+      "$ELASTICSEARCH_URL/test/_update/1"'

@@ -51,4 +51,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"definition":"...","total_definition_length":265632637,"total_parts":64}''
-      "http://localhost:9200/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/definition/0"'
+      "$ELASTICSEARCH_URL/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/definition/0"'

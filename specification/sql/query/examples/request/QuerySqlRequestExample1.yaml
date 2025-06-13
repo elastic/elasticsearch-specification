@@ -39,4 +39,4 @@ alternatives:
   - language: curl
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"query":"SELECT *
-      FROM library ORDER BY page_count DESC LIMIT 5"}'' "http://localhost:9200/_sql?format=txt"'
+      FROM library ORDER BY page_count DESC LIMIT 5"}'' "$ELASTICSEARCH_URL/_sql?format=txt"'

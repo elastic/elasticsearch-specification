@@ -80,4 +80,4 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"alibabacloud-ai-search\",\"service_settings\":{\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-text\
       -sparse-embedding-001\",\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"workspace\":\"default\"}}'
-      \"http://localhost:9200/_inference/sparse_embedding/alibabacloud_ai_search_sparse\""
+      \"$ELASTICSEARCH_URL/_inference/sparse_embedding/alibabacloud_ai_search_sparse\""

@@ -67,4 +67,4 @@ alternatives:
     code:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"googlevertexai\",\"service_settings\":{\"service_account_json\":\"service-account-json\",\"project_id\":\"pro\
-      ject-id\"}}' \"http://localhost:9200/_inference/rerank/google_vertex_ai_rerank\""
+      ject-id\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/google_vertex_ai_rerank\""

@@ -85,4 +85,4 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"indices\":\"index_1,index_2\",\"ignore_unavailable\":true,\"include_global_state\":false,\"metadata\":{\"taken_by\":\"use\
       r123\",\"taken_because\":\"backup before upgrading\"}}'
-      \"http://localhost:9200/_snapshot/my_repository/snapshot_2?wait_for_completion=true\""
+      \"$ELASTICSEARCH_URL/_snapshot/my_repository/snapshot_2?wait_for_completion=true\""

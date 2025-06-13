@@ -204,4 +204,4 @@ alternatives:
       cluster.\",\"cluster\":[\"all\"],\"indices\":[{\"names\":[\"index1\",\"index2\"],\"privileges\":[\"all\"],\"field_security\":{\
       \"grant\":[\"title\",\"body\"]},\"query\":\"{\\\"match\\\": {\\\"title\\\":
       \\\"foo\\\"}}\"}],\"applications\":[{\"application\":\"myapp\",\"privileges\":[\"admin\",\"read\"],\"resources\":[\"*\"]}],\"\
-      run_as\":[\"other_user\"],\"metadata\":{\"version\":1}}' \"http://localhost:9200/_security/role/my_admin_role\""
+      run_as\":[\"other_user\"],\"metadata\":{\"version\":1}}' \"$ELASTICSEARCH_URL/_security/role/my_admin_role\""

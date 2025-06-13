@@ -124,4 +124,4 @@ alternatives:
     code:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"app01\":{\"read\":{\"actions\":[\"action:login\",\"data:read/*\"]},\"write\":{\"actions\":[\"action:login\",\"data:write/*\
-      \"]}},\"app02\":{\"all\":{\"actions\":[\"*\"]}}}' \"http://localhost:9200/_security/privilege\""
+      \"]}},\"app02\":{\"all\":{\"actions\":[\"*\"]}}}' \"$ELASTICSEARCH_URL/_security/privilege\""

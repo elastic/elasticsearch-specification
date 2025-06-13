@@ -49,4 +49,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"indices":"index_a,index_b"}'' "http://localhost:9200/_snapshot/my_repository/source_snapshot/_clone/target_snapshot"'
+      ''{"indices":"index_a,index_b"}'' "$ELASTICSEARCH_URL/_snapshot/my_repository/source_snapshot/_clone/target_snapshot"'

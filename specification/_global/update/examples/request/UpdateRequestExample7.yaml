@@ -83,4 +83,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"script":{"source":"if (ctx._source.tags.contains(params.tag)) { ctx.op = ''"''"''delete''"''"'' } else { ctx.op =
-      ''"''"''noop''"''"'' }","lang":"painless","params":{"tag":"green"}}}'' "http://localhost:9200/test/_update/1"'
+      ''"''"''noop''"''"'' }","lang":"painless","params":{"tag":"green"}}}'' "$ELASTICSEARCH_URL/test/_update/1"'

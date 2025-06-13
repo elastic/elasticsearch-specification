@@ -116,4 +116,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"commands\":[{\"move\":{\"index\":\"test\",\"shard\":0,\"from_node\":\"node1\",\"to_node\":\"node2\"}},{\"allocate_replica\
-      \":{\"index\":\"test\",\"shard\":1,\"node\":\"node3\"}}]}' \"http://localhost:9200/_cluster/reroute?metric=none\""
+      \":{\"index\":\"test\",\"shard\":1,\"node\":\"node3\"}}]}' \"$ELASTICSEARCH_URL/_cluster/reroute?metric=none\""

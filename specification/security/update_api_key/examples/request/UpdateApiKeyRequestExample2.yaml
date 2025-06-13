@@ -40,4 +40,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"role_descriptors":{}}'' "http://localhost:9200/_security/api_key/VuaCfGcBCdbkQm-e5aOx"'
+      ''{"role_descriptors":{}}'' "$ELASTICSEARCH_URL/_security/api_key/VuaCfGcBCdbkQm-e5aOx"'

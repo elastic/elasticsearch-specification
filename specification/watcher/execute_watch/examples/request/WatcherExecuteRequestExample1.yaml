@@ -99,4 +99,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"trigger_data\":{\"triggered_time\":\"now\",\"scheduled_time\":\"now\"},\"alternative_input\":{\"foo\":\"bar\"},\"ignore_c\
       ondition\":true,\"action_modes\":{\"my-action\":\"force_simulate\"},\"record_execution\":true}'
-      \"http://localhost:9200/_watcher/watch/my_watch/_execute\""
+      \"$ELASTICSEARCH_URL/_watcher/watch/my_watch/_execute\""

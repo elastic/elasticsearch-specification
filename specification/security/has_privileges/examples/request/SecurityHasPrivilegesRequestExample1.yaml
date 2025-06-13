@@ -178,4 +178,4 @@ alternatives:
       '{\"cluster\":[\"monitor\",\"manage\"],\"index\":[{\"names\":[\"suppliers\",\"products\"],\"privileges\":[\"read\"]},{\"names\
       \":[\"inventory\"],\"privileges\":[\"read\",\"write\"]}],\"application\":[{\"application\":\"inventory_manager\",\"privileges\
       \":[\"read\",\"data:write/inventory\"],\"resources\":[\"product/1852563\"]}]}'
-      \"http://localhost:9200/_security/user/_has_privileges\""
+      \"$ELASTICSEARCH_URL/_security/user/_has_privileges\""

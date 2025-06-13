@@ -104,4 +104,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"docs\":[{\"_id\":123,\"_index\":\"my-index\",\"_source\":{\"foo\":\"bar\"}},{\"_id\":456,\"_index\":\"my-index\",\"_source\
-      \":{\"foo\":\"rab\"}}]}' \"http://localhost:9200/_ingest/_simulate\""
+      \":{\"foo\":\"rab\"}}]}' \"$ELASTICSEARCH_URL/_ingest/_simulate\""

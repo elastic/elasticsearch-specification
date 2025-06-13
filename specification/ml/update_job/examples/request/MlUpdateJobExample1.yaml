@@ -108,4 +108,4 @@ alternatives:
       updated job\",\"detectors\":{\"detector_index\":0,\"description\":\"An updated detector
       description\"},\"groups\":[\"kibana_sample_data\",\"kibana_sample_web_logs\"],\"model_plot_config\":{\"enabled\":true},\"reno\
       rmalization_window_days\":30,\"background_persist_interval\":\"2h\",\"model_snapshot_retention_days\":7,\"results_retention_d\
-      ays\":60}' \"http://localhost:9200/_ml/anomaly_detectors/low_request_rate/_update\""
+      ays\":60}' \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_update\""

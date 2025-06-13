@@ -44,4 +44,4 @@ alternatives:
     code:
       "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"query\":\"\\n    process where (process.name == \\\"cmd.exe\\\" and process.pid != 2013)\\n  \"}'
-      \"http://localhost:9200/my-data-stream/_eql/search\""
+      \"$ELASTICSEARCH_URL/my-data-stream/_eql/search\""

@@ -62,4 +62,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"type":"url","settings":{"url":"file:/mount/backups/my_fs_backup_location"}}''
-      "http://localhost:9200/_snapshot/my_read_only_url_repository"'
+      "$ELASTICSEARCH_URL/_snapshot/my_read_only_url_repository"'

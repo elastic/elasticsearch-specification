@@ -50,4 +50,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"service_settings":{"api_key":"<API_KEY>"}}'' "http://localhost:9200/_inference/my-inference-endpoint/_update"'
+      ''{"service_settings":{"api_key":"<API_KEY>"}}'' "$ELASTICSEARCH_URL/_inference/my-inference-endpoint/_update"'

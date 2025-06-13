@@ -21,4 +21,4 @@ alternatives:
           "name" => "mapping1",
       ]);
   - language: curl
-    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_security/role_mapping/mapping1"'
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/role_mapping/mapping1"'

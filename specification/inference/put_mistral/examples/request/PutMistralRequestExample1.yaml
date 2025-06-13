@@ -69,4 +69,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"mistral","service_settings":{"api_key":"Mistral-API-Key","model":"mistral-embed"}}''
-      "http://localhost:9200/_inference/text_embedding/mistral-embeddings-test"'
+      "$ELASTICSEARCH_URL/_inference/text_embedding/mistral-embeddings-test"'

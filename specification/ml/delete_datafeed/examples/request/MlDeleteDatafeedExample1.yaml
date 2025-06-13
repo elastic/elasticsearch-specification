@@ -21,4 +21,4 @@ alternatives:
           "datafeed_id" => "datafeed-total-requests",
       ]);
   - language: curl
-    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_ml/datafeeds/datafeed-total-requests"'
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-total-requests"'

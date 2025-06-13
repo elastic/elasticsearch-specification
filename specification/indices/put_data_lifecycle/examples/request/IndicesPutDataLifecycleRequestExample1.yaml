@@ -35,4 +35,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"data_retention":"7d"}'' "http://localhost:9200/_data_stream/my-data-stream/_lifecycle"'
+      ''{"data_retention":"7d"}'' "$ELASTICSEARCH_URL/_data_stream/my-data-stream/_lifecycle"'

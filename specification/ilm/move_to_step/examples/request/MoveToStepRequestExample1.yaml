@@ -85,4 +85,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"current_step\":{\"phase\":\"new\",\"action\":\"complete\",\"name\":\"complete\"},\"next_step\":{\"phase\":\"warm\",\"acti\
-      on\":\"forcemerge\",\"name\":\"forcemerge\"}}' \"http://localhost:9200/_ilm/move/my-index-000001\""
+      on\":\"forcemerge\",\"name\":\"forcemerge\"}}' \"$ELASTICSEARCH_URL/_ilm/move/my-index-000001\""

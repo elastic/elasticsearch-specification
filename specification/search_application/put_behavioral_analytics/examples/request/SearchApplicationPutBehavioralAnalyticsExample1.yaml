@@ -21,5 +21,4 @@ alternatives:
           "name" => "my_analytics_collection",
       ]);
   - language: curl
-    code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_application/analytics/my_analytics_collection"'
+    code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_application/analytics/my_analytics_collection"'

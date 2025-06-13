@@ -273,4 +273,4 @@ alternatives:
       esponse\":404}},\"filter\":{\"range\":{\"@timestamp\":{\"from\":\"{{ctx.trigger.scheduled_time}}||-5m\",\"to\":\"{{ctx.trigge\
       r.triggered_time}}\"}}}}}}}}},\"condition\":{\"compare\":{\"ctx.payload.hits.total\":{\"gt\":0}}},\"actions\":{\"email_admin\
       \":{\"email\":{\"to\":\"admin@domain.host.com\",\"subject\":\"404 recently encountered\"}}}}'
-      \"http://localhost:9200/_watcher/watch/my-watch\""
+      \"$ELASTICSEARCH_URL/_watcher/watch/my-watch\""

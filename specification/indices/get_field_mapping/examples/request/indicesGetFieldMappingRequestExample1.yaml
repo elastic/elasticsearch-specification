@@ -25,4 +25,4 @@ alternatives:
           "fields" => "title",
       ]);
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/publications/_mapping/field/title"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/publications/_mapping/field/title"'

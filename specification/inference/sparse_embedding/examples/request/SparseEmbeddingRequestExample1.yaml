@@ -40,4 +40,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"input":"The sky
       above the port was the color of television tuned to a dead channel."}''
-      "http://localhost:9200/_inference/sparse_embedding/my-elser-model"'
+      "$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model"'

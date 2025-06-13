@@ -68,4 +68,4 @@ alternatives:
   - language: curl
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"source":{"index":"my-data-stream"},"mode":"upgrade"}'' "http://localhost:9200/_migration/reindex"'
+      ''{"source":{"index":"my-data-stream"},"mode":"upgrade"}'' "$ELASTICSEARCH_URL/_migration/reindex"'

@@ -25,4 +25,4 @@ alternatives:
           "size" => "3",
       ]);
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_query_rules/?from=0&size=3"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_query_rules/?from=0&size=3"'

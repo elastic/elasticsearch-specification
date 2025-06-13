@@ -64,4 +64,4 @@ alternatives:
   - language: curl
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"query":{"term":{"name":{"value":"application-key-1"}}}}'' "http://localhost:9200/_security/_query/api_key"'
+      ''{"query":{"term":{"name":{"value":"application-key-1"}}}}'' "$ELASTICSEARCH_URL/_security/_query/api_key"'

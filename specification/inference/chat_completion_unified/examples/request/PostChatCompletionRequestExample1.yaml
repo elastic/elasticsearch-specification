@@ -75,4 +75,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"model":"gpt-4o","messages":[{"role":"user","content":"What is Elastic?"}]}''
-      "http://localhost:9200/_inference/chat_completion/openai-completion/_stream"'
+      "$ELASTICSEARCH_URL/_inference/chat_completion/openai-completion/_stream"'

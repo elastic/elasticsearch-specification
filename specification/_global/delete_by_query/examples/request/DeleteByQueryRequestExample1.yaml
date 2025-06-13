@@ -48,4 +48,4 @@ alternatives:
   - language: curl
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"query":{"match_all":{}}}'' "http://localhost:9200/my-index-000001,my-index-000002/_delete_by_query"'
+      ''{"query":{"match_all":{}}}'' "$ELASTICSEARCH_URL/my-index-000001,my-index-000002/_delete_by_query"'

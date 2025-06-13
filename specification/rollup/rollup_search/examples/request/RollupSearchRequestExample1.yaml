@@ -82,4 +82,4 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"size":0,"aggregations":{"max_temperature":{"max":{"field":"temperature"}}}}''
-      "http://localhost:9200/sensor_rollup/_rollup_search"'
+      "$ELASTICSEARCH_URL/sensor_rollup/_rollup_search"'

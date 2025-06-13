@@ -62,4 +62,4 @@ alternatives:
   - language: curl
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"query":{"match":{"message":"elasticsearch"}}}'' "http://localhost:9200/my-index-000001/_explain/0"'
+      ''{"query":{"match":{"message":"elasticsearch"}}}'' "$ELASTICSEARCH_URL/my-index-000001/_explain/0"'

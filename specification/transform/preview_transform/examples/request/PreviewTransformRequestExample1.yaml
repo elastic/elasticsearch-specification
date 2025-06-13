@@ -121,4 +121,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"source\":{\"index\":\"kibana_sample_data_ecommerce\"},\"pivot\":{\"group_by\":{\"customer_id\":{\"terms\":{\"field\":\"cu\
       stomer_id\",\"missing_bucket\":true}}},\"aggregations\":{\"max_price\":{\"max\":{\"field\":\"taxful_total_price\"}}}}}'
-      \"http://localhost:9200/_transform/_preview\""
+      \"$ELASTICSEARCH_URL/_transform/_preview\""

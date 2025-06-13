@@ -39,4 +39,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"service_type":"sharepoint_online"}'' "http://localhost:9200/_connector/my-connector/_service_type"'
+      ''{"service_type":"sharepoint_online"}'' "$ELASTICSEARCH_URL/_connector/my-connector/_service_type"'

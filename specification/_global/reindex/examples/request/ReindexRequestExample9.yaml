@@ -86,4 +86,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"source\":{\"index\":\"my-index-000001\"},\"dest\":{\"index\":\"my-new-index-000001\"},\"script\":{\"source\":\"ctx._sourc\
-      e.tag = ctx._source.remove(\\\"flag\\\")\"}}' \"http://localhost:9200/_reindex\""
+      e.tag = ctx._source.remove(\\\"flag\\\")\"}}' \"$ELASTICSEARCH_URL/_reindex\""

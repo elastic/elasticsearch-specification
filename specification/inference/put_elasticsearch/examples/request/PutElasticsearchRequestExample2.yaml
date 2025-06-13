@@ -97,4 +97,4 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"elasticsearch\",\"service_settings\":{\"model_id\":\".rerank-v1\",\"num_threads\":1,\"adaptive_allocations\":{\
       \"enabled\":true,\"min_number_of_allocations\":1,\"max_number_of_allocations\":4}}}'
-      \"http://localhost:9200/_inference/rerank/my-elastic-rerank\""
+      \"$ELASTICSEARCH_URL/_inference/rerank/my-elastic-rerank\""

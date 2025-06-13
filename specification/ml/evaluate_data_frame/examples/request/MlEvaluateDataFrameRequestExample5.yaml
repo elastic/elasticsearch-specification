@@ -126,4 +126,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"index\":\"house_price_predictions\",\"query\":{\"term\":{\"ml.is_training\":{\"value\":true}}},\"evaluation\":{\"regressi\
       on\":{\"actual_field\":\"price\",\"predicted_field\":\"ml.price_prediction\",\"metrics\":{\"r_squared\":{},\"mse\":{},\"msle\
-      \":{},\"huber\":{}}}}}' \"http://localhost:9200/_ml/data_frame/_evaluate\""
+      \":{},\"huber\":{}}}}}' \"$ELASTICSEARCH_URL/_ml/data_frame/_evaluate\""

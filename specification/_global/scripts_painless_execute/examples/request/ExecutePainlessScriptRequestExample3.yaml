@@ -98,4 +98,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"script\":{\"source\":\"doc['\"'\"'rank'\"'\"'].value /
       params.max_rank\",\"params\":{\"max_rank\":5}},\"context\":\"score\",\"context_setup\":{\"index\":\"my-index-000001\",\"docum\
-      ent\":{\"rank\":4}}}' \"http://localhost:9200/_scripts/painless/_execute\""
+      ent\":{\"rank\":4}}}' \"$ELASTICSEARCH_URL/_scripts/painless/_execute\""

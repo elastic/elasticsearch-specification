@@ -55,4 +55,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"redirect_uri\":\"https://oidc-kibana.elastic.co:5603/api/security/oidc/callback?code=jtI3Ntt8v3_XvcLzCFGq&state=4dbrihtIA\
       t3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I\",\"state\":\"4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I\",\"nonce\":\"WaBPH0KqPVdG5HHdSx\
-      PRjfoZbXMCicm5v1OiAj0DUFM\",\"realm\":\"oidc1\"}' \"http://localhost:9200/_security/oidc/authenticate\""
+      PRjfoZbXMCicm5v1OiAj0DUFM\",\"realm\":\"oidc1\"}' \"$ELASTICSEARCH_URL/_security/oidc/authenticate\""

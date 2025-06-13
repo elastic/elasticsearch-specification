@@ -9,4 +9,4 @@ alternatives:
   - language: PHP
     code: $resp = $client->features()->resetFeatures();
   - language: curl
-    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_features/_reset"'
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_features/_reset"'

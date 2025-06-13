@@ -201,4 +201,4 @@ alternatives:
       '{\"docs\":[{\"_index\":\"my-index\",\"_id\":\"123\",\"_source\":{\"foo\":\"foo\"}},{\"_index\":\"my-index\",\"_id\":\"456\",\
       \"_source\":{\"bar\":\"rab\"}}],\"component_template_substitutions\":{\"my-mappings_template\":{\"template\":{\"mappings\":{\
       \"dynamic\":\"strict\",\"properties\":{\"foo\":{\"type\":\"keyword\"},\"bar\":{\"type\":\"keyword\"}}}}}}}'
-      \"http://localhost:9200/_ingest/_simulate\""
+      \"$ELASTICSEARCH_URL/_ingest/_simulate\""

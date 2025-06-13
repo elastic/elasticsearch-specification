@@ -245,4 +245,4 @@ alternatives:
       \"max_price\":{\"max\":{\"field\":\"taxful_total_price\"}}}},\"description\":\"Maximum priced ecommerce data by customer_id in
       Asia\",\"dest\":{\"index\":\"kibana_sample_data_ecommerce_transform1\",\"pipeline\":\"add_timestamp_pipeline\"},\"frequency\":\
       \"5m\",\"sync\":{\"time\":{\"field\":\"order_date\",\"delay\":\"60s\"}},\"retention_policy\":{\"time\":{\"field\":\"order_date\
-      \",\"max_age\":\"30d\"}}}' \"http://localhost:9200/_transform/ecommerce_transform1\""
+      \",\"max_age\":\"30d\"}}}' \"$ELASTICSEARCH_URL/_transform/ecommerce_transform1\""

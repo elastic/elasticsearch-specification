@@ -21,4 +21,4 @@ alternatives:
           "policy_id" => "daily-snapshots",
       ]);
   - language: curl
-    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_slm/policy/daily-snapshots"'
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_slm/policy/daily-snapshots"'

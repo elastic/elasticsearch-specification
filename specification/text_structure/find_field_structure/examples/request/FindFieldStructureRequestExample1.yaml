@@ -26,4 +26,4 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_text_structure/find_field_structure?index=test-logs&field=message"'
+      "$ELASTICSEARCH_URL/_text_structure/find_field_structure?index=test-logs&field=message"'

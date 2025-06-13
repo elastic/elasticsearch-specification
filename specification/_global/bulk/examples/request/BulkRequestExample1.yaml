@@ -185,4 +185,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '[{\"index\":{\"_index\":\"test\",\"_id\":\"1\"}},{\"field1\":\"value1\"},{\"delete\":{\"_index\":\"test\",\"_id\":\"2\"}},{\
       \"create\":{\"_index\":\"test\",\"_id\":\"3\"}},{\"field1\":\"value3\"},{\"update\":{\"_id\":\"1\",\"_index\":\"test\"}},{\"d\
-      oc\":{\"field2\":\"value2\"}}]' \"http://localhost:9200/_bulk\""
+      oc\":{\"field2\":\"value2\"}}]' \"$ELASTICSEARCH_URL/_bulk\""

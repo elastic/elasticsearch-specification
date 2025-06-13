@@ -124,4 +124,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"query\":{\"match\":{\"query.raw\":\"midi\"}},\"vertices\":[{\"field\":\"product\"}],\"connections\":{\"vertices\":[{\"fie\
-      ld\":\"query.raw\"}]}}' \"http://localhost:9200/clicklogs/_graph/explore\""
+      ld\":\"query.raw\"}]}}' \"$ELASTICSEARCH_URL/clicklogs/_graph/explore\""

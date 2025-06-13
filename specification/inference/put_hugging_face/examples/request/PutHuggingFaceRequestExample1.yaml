@@ -69,4 +69,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"hugging_face","service_settings":{"api_key":"hugging-face-access-token","url":"url-endpoint"}}''
-      "http://localhost:9200/_inference/text_embedding/hugging-face-embeddings"'
+      "$ELASTICSEARCH_URL/_inference/text_embedding/hugging-face-embeddings"'

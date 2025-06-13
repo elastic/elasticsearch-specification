@@ -115,4 +115,4 @@ alternatives:
       ng\",\"last_deleted_document_count\":42,\"last_incremental_sync_scheduled_at\":\"2023-11-09T15:13:08.231Z\",\"last_indexed_do\
       cument_count\":42,\"last_sync_error\":\"Houston, we have a
       problem!\",\"last_sync_scheduled_at\":\"2024-11-09T15:13:08.231Z\",\"last_sync_status\":\"completed\",\"last_synced\":\"2024-\
-      11-09T15:13:08.231Z\"}' \"http://localhost:9200/_connector/my-connector/_last_sync\""
+      11-09T15:13:08.231Z\"}' \"$ELASTICSEARCH_URL/_connector/my-connector/_last_sync\""

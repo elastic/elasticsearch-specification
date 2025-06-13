@@ -69,4 +69,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"elser","service_settings":{"num_allocations":1,"num_threads":1}}''
-      "http://localhost:9200/_inference/sparse_embedding/my-elser-model"'
+      "$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model"'

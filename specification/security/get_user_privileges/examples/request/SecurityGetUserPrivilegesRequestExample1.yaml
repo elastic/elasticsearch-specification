@@ -9,4 +9,4 @@ alternatives:
   - language: PHP
     code: $resp = $client->security()->getUserPrivileges();
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_security/user/_privileges"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/user/_privileges"'

@@ -70,4 +70,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"scheduling":{"full":{"enabled":true,"interval":"0 10 0 * * ?"}}}''
-      "http://localhost:9200/_connector/my-connector/_scheduling"'
+      "$ELASTICSEARCH_URL/_connector/my-connector/_scheduling"'

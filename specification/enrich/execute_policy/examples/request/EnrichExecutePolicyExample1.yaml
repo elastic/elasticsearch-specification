@@ -26,4 +26,4 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_enrich/policy/my-policy/_execute?wait_for_completion=false"'
+      "$ELASTICSEARCH_URL/_enrich/policy/my-policy/_execute?wait_for_completion=false"'

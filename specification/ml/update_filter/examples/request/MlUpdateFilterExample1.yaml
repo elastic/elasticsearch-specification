@@ -59,4 +59,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"description":"Updated list of domains","add_items":["*.myorg.com"],"remove_items":["wikipedia.org"]}''
-      "http://localhost:9200/_ml/filters/safe_domains/_update"'
+      "$ELASTICSEARCH_URL/_ml/filters/safe_domains/_update"'

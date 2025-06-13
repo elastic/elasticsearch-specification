@@ -76,4 +76,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"source":{"index":"my-index-000001"},"dest":{"index":"my-new-index-000001"}}''
-      "http://localhost:9200/_reindex?slices=5&refresh"'
+      "$ELASTICSEARCH_URL/_reindex?slices=5&refresh"'

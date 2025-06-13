@@ -84,4 +84,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"aliases":{"alias_1":{},"alias_2":{"filter":{"term":{"user.id":"kimchy"}},"routing":"shard-1"}}}''
-      "http://localhost:9200/test"'
+      "$ELASTICSEARCH_URL/test"'

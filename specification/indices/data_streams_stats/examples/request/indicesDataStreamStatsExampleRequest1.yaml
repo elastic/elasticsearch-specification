@@ -21,4 +21,4 @@ alternatives:
           "name" => "my-index-000001",
       ]);
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_data_stream/my-index-000001/_stats"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_data_stream/my-index-000001/_stats"'

@@ -39,4 +39,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"index_name":"data-from-my-google-drive"}'' "http://localhost:9200/_connector/my-connector/_index_name"'
+      ''{"index_name":"data-from-my-google-drive"}'' "$ELASTICSEARCH_URL/_connector/my-connector/_index_name"'

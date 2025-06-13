@@ -128,4 +128,4 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"index_patterns\":[\"te*\",\"bar*\"],\"settings\":{\"number_of_shards\":1},\"mappings\":{\"_source\":{\"enabled\":false}},\
       \"properties\":{\"host_name\":{\"type\":\"keyword\"},\"created_at\":{\"type\":\"date\",\"format\":\"EEE MMM dd HH:mm:ss Z
-      yyyy\"}}}' \"http://localhost:9200/_template/template_1\""
+      yyyy\"}}}' \"$ELASTICSEARCH_URL/_template/template_1\""

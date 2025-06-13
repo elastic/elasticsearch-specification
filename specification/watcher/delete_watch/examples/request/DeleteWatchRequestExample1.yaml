@@ -21,4 +21,4 @@ alternatives:
           "id" => "my_watch",
       ]);
   - language: curl
-    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_watcher/watch/my_watch"'
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_watcher/watch/my_watch"'

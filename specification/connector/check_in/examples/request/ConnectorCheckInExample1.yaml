@@ -21,4 +21,4 @@ alternatives:
           "connector_id" => "my-connector",
       ]);
   - language: curl
-    code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_connector/my-connector/_check_in"'
+    code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_connector/my-connector/_check_in"'

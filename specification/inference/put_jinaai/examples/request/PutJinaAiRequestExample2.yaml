@@ -87,4 +87,4 @@ alternatives:
     code:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"jinaai\",\"service_settings\":{\"api_key\":\"JinaAI-Api-key\",\"model_id\":\"jina-reranker-v2-base-multilingu\
-      al\"},\"task_settings\":{\"top_n\":10,\"return_documents\":true}}' \"http://localhost:9200/_inference/rerank/jinaai-rerank\""
+      al\"},\"task_settings\":{\"top_n\":10,\"return_documents\":true}}' \"$ELASTICSEARCH_URL/_inference/rerank/jinaai-rerank\""

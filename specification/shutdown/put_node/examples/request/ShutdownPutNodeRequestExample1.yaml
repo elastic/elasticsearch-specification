@@ -54,4 +54,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"type":"restart","reason":"Demonstrating how the node shutdown API works","allocation_delay":"20m"}''
-      "http://localhost:9200/_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown"'
+      "$ELASTICSEARCH_URL/_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown"'

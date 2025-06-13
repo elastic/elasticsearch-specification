@@ -9,4 +9,4 @@ alternatives:
   - language: PHP
     code: $resp = $client->autoscaling()->getAutoscalingCapacity();
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_autoscaling/capacity"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_autoscaling/capacity"'

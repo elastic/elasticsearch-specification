@@ -103,4 +103,4 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"params":{"query_string":"my first
       query","text_fields":[{"name":"title","boost":5},{"name":"description","boost":1}]}}''
-      "http://localhost:9200/_application/search_application/my-app/_search"'
+      "$ELASTICSEARCH_URL/_application/search_application/my-app/_search"'

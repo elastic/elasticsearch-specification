@@ -56,4 +56,4 @@ alternatives:
   - language: curl
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"query":{"term":{"geo.src":"US"}}}'' "http://localhost:9200/_ml/datafeeds/datafeed-test-job/_update"'
+      ''{"query":{"term":{"geo.src":"US"}}}'' "$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-test-job/_update"'

@@ -75,4 +75,4 @@ alternatives:
     code:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"security\":{\"index.auto_expand_replicas\":\"0-all\"},\"security-tokens\":{\"index.auto_expand_replicas\":\"0-all\"},\"se\
-      curity-profile\":{\"index.auto_expand_replicas\":\"0-all\"}}' \"http://localhost:9200/_security/settings\""
+      curity-profile\":{\"index.auto_expand_replicas\":\"0-all\"}}' \"$ELASTICSEARCH_URL/_security/settings\""

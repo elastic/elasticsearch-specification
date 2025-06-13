@@ -90,4 +90,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"slice":{"id":0,"max":2},"query":{"range":{"http.response.bytes":{"lt":2000000}}}}''
-      "http://localhost:9200/my-index-000001/_delete_by_query"'
+      "$ELASTICSEARCH_URL/my-index-000001/_delete_by_query"'

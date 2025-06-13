@@ -45,4 +45,4 @@ alternatives:
   - language: curl
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"name":"Custom
-      connector","description":"This is my customized connector"}'' "http://localhost:9200/_connector/my-connector/_name"'
+      connector","description":"This is my customized connector"}'' "$ELASTICSEARCH_URL/_connector/my-connector/_name"'

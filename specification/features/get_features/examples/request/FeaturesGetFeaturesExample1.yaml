@@ -9,4 +9,4 @@ alternatives:
   - language: PHP
     code: $resp = $client->features()->getFeatures();
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_features"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_features"'

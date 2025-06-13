@@ -21,5 +21,4 @@ alternatives:
           "name" => "my-index-000001",
       ]);
   - language: curl
-    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_index_template/_simulate_index/my-index-000001"'
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_index_template/_simulate_index/my-index-000001"'

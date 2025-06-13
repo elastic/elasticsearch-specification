@@ -65,4 +65,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"@timestamp":"2099-11-15T13:12:00","message":"GET /search HTTP/1.1 200 1070000","user":{"id":"kimchy"}}''
-      "http://localhost:9200/my-index-000001/_doc/"'
+      "$ELASTICSEARCH_URL/my-index-000001/_doc/"'

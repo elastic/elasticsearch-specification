@@ -25,5 +25,4 @@ alternatives:
           "format" => "json",
       ]);
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_cat/ml/data_frame/analytics?v=true&format=json"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_cat/ml/data_frame/analytics?v=true&format=json"'

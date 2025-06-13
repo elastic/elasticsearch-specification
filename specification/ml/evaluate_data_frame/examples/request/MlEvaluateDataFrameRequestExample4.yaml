@@ -161,4 +161,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"index\":\"house_price_predictions\",\"query\":{\"bool\":{\"filter\":[{\"term\":{\"ml.is_training\":false}}]}},\"evaluation\
       \":{\"regression\":{\"actual_field\":\"price\",\"predicted_field\":\"ml.price_prediction\",\"metrics\":{\"r_squared\":{},\"mse\
-      \":{},\"msle\":{\"offset\":10},\"huber\":{\"delta\":1.5}}}}}' \"http://localhost:9200/_ml/data_frame/_evaluate\""
+      \":{},\"msle\":{\"offset\":10},\"huber\":{\"delta\":1.5}}}}}' \"$ELASTICSEARCH_URL/_ml/data_frame/_evaluate\""

@@ -83,4 +83,4 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"watsonxai\",\"service_settings\":{\"api_key\":\"Watsonx-API-Key\",\"url\":\"Wastonx-URL\",\"model_id\":\"ibm/\
       slate-30m-english-rtrvr\",\"project_id\":\"IBM-Cloud-ID\",\"api_version\":\"2024-03-14\"}}'
-      \"http://localhost:9200/_inference/text_embedding/watsonx-embeddings\""
+      \"$ELASTICSEARCH_URL/_inference/text_embedding/watsonx-embeddings\""

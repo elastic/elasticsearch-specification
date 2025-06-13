@@ -137,4 +137,4 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"description":"My
       optional pipeline description","processors":[{"set":{"description":"My optional processor
       description","field":"my-keyword-field","value":"foo"}}],"_meta":{"reason":"set my-keyword-field to
-      foo","serialization":{"class":"MyPipeline","id":10}}}'' "http://localhost:9200/_ingest/pipeline/my-pipeline-id"'
+      foo","serialization":{"class":"MyPipeline","id":10}}}'' "$ELASTICSEARCH_URL/_ingest/pipeline/my-pipeline-id"'

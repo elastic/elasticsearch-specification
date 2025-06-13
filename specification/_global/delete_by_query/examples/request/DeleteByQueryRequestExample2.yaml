@@ -63,4 +63,4 @@ alternatives:
   - language: curl
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"query":{"term":{"user.id":"kimchy"}},"max_docs":1}'' "http://localhost:9200/my-index-000001/_delete_by_query"'
+      ''{"query":{"term":{"user.id":"kimchy"}},"max_docs":1}'' "$ELASTICSEARCH_URL/my-index-000001/_delete_by_query"'

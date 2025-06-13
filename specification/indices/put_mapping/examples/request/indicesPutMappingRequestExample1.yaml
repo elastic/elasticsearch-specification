@@ -76,4 +76,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"properties":{"user":{"properties":{"name":{"type":"keyword"}}}}}''
-      "http://localhost:9200/my-index-000001/_mapping"'
+      "$ELASTICSEARCH_URL/my-index-000001/_mapping"'

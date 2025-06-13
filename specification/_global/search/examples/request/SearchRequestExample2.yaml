@@ -84,4 +84,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"size\":100,\"query\":{\"match\":{\"title\":\"elasticsearch\"}},\"pit\":{\"id\":\"46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAA\
       ACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_g\
-      AAAAA==\",\"keep_alive\":\"1m\"}}' \"http://localhost:9200/_search\""
+      AAAAA==\",\"keep_alive\":\"1m\"}}' \"$ELASTICSEARCH_URL/_search\""

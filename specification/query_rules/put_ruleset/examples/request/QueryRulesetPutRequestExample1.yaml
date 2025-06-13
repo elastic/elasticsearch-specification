@@ -342,4 +342,4 @@ alternatives:
       \":[\"id1\",\"id2\"]}},{\"rule_id\":\"my-rule2\",\"type\":\"pinned\",\"criteria\":[{\"type\":\"fuzzy\",\"metadata\":\"user_qu\
       ery\",\"values\":[\"rescue
       dogs\"]}],\"actions\":{\"docs\":[{\"_index\":\"index1\",\"_id\":\"id3\"},{\"_index\":\"index2\",\"_id\":\"id4\"}]}}]}'
-      \"http://localhost:9200/_query_rules/my-ruleset\""
+      \"$ELASTICSEARCH_URL/_query_rules/my-ruleset\""

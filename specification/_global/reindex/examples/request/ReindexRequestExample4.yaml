@@ -105,4 +105,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"source\":{\"index\":\"source\",\"query\":{\"match\":{\"company\":\"cat\"}}},\"dest\":{\"index\":\"dest\",\"routing\":\"=c\
-      at\"}}' \"http://localhost:9200/_reindex\""
+      at\"}}' \"$ELASTICSEARCH_URL/_reindex\""

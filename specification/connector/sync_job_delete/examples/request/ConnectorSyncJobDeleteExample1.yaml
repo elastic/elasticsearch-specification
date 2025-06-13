@@ -21,5 +21,4 @@ alternatives:
           "connector_sync_job_id" => "my-connector-sync-job-id",
       ]);
   - language: curl
-    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_connector/_sync_job/my-connector-sync-job-id"'
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_connector/_sync_job/my-connector-sync-job-id"'

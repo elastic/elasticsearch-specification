@@ -22,4 +22,4 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_cluster/settings?filter_path=persistent.cluster.remote"'
+      "$ELASTICSEARCH_URL/_cluster/settings?filter_path=persistent.cluster.remote"'

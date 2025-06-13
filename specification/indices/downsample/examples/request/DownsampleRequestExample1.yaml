@@ -44,4 +44,4 @@ alternatives:
   - language: curl
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"fixed_interval":"1d"}'' "http://localhost:9200/my-time-series-index/_downsample/my-downsampled-time-series-index"'
+      ''{"fixed_interval":"1d"}'' "$ELASTICSEARCH_URL/my-time-series-index/_downsample/my-downsampled-time-series-index"'

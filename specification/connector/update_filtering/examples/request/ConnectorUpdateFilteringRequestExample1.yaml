@@ -143,4 +143,4 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"rules\":[{\"field\":\"file_extension\",\"id\":\"exclude-txt-files\",\"order\":0,\"policy\":\"exclude\",\"rule\":\"equals\
       \",\"value\":\"txt\"},{\"field\":\"_\",\"id\":\"DEFAULT\",\"order\":1,\"policy\":\"include\",\"rule\":\"regex\",\"value\":\".*\
-      \"}]}' \"http://localhost:9200/_connector/my-g-drive-connector/_filtering\""
+      \"}]}' \"$ELASTICSEARCH_URL/_connector/my-g-drive-connector/_filtering\""

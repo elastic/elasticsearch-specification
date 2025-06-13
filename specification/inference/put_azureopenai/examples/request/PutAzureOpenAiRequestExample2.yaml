@@ -77,5 +77,4 @@ alternatives:
     code:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"azureopenai\",\"service_settings\":{\"api_key\":\"Api-Key\",\"resource_name\":\"Resource-name\",\"deployment_\
-      id\":\"Deployment-id\",\"api_version\":\"2024-02-01\"}}'
-      \"http://localhost:9200/_inference/completion/azure_openai_completion\""
+      id\":\"Deployment-id\",\"api_version\":\"2024-02-01\"}}' \"$ELASTICSEARCH_URL/_inference/completion/azure_openai_completion\""

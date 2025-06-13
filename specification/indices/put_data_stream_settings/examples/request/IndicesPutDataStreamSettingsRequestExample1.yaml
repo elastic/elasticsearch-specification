@@ -49,4 +49,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"index.lifecycle.name":"new-test-policy","index.number_of_shards":11}''
-      "http://localhost:9200/_data_stream/my-data-stream/_settings"'
+      "$ELASTICSEARCH_URL/_data_stream/my-data-stream/_settings"'

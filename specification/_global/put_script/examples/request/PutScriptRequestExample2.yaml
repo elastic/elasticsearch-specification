@@ -55,4 +55,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"script":{"lang":"painless","source":"Math.log(_score * 2) + params[''"''"''my_modifier''"''"'']"}}''
-      "http://localhost:9200/_scripts/my-stored-script"'
+      "$ELASTICSEARCH_URL/_scripts/my-stored-script"'

@@ -29,4 +29,4 @@ alternatives:
           "format" => "json",
       ]);
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_cat/count/my-index-000001?v=true&format=json"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_cat/count/my-index-000001?v=true&format=json"'

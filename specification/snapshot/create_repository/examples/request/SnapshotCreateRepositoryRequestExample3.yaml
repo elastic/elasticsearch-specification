@@ -68,4 +68,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"type":"gcs","settings":{"bucket":"my_other_bucket","base_path":"dev"}}''
-      "http://localhost:9200/_snapshot/my_gcs_repository"'
+      "$ELASTICSEARCH_URL/_snapshot/my_gcs_repository"'

@@ -65,4 +65,4 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"id":"my-search-template","params":{"query_string":"hello world","from":0,"size":10}}''
-      "http://localhost:9200/my-index/_search/template"'
+      "$ELASTICSEARCH_URL/my-index/_search/template"'

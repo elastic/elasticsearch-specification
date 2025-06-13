@@ -67,4 +67,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"grant_type\":\"password\",\"username\":\"test_admin\",\"password\":\"x-pack-test-password\",\"run_as\":\"test_user\",\"ap\
-      i_key\":{\"name\":\"another-api-key\"}}' \"http://localhost:9200/_security/api_key/grant\""
+      i_key\":{\"name\":\"another-api-key\"}}' \"$ELASTICSEARCH_URL/_security/api_key/grant\""

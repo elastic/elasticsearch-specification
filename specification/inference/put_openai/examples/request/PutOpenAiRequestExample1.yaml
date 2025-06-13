@@ -74,4 +74,4 @@ alternatives:
     code:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"openai\",\"service_settings\":{\"api_key\":\"OpenAI-API-Key\",\"model_id\":\"text-embedding-3-small\",\"dimen\
-      sions\":128}}' \"http://localhost:9200/_inference/text_embedding/openai-embeddings\""
+      sions\":128}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/openai-embeddings\""

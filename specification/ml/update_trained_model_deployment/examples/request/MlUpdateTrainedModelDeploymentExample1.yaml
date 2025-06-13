@@ -38,4 +38,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"number_of_allocations":4}''
-      "http://localhost:9200/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/deployment/_update"'
+      "$ELASTICSEARCH_URL/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/deployment/_update"'

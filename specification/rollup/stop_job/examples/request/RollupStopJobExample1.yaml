@@ -30,4 +30,4 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_rollup/job/sensor/_stop?wait_for_completion=true&timeout=10s"'
+      "$ELASTICSEARCH_URL/_rollup/job/sensor/_stop?wait_for_completion=true&timeout=10s"'

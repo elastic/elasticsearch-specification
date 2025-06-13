@@ -21,4 +21,4 @@ alternatives:
           "name" => "logs-foo-bar",
       ]);
   - language: curl
-    code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_data_stream/logs-foo-bar"'
+    code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_data_stream/logs-foo-bar"'

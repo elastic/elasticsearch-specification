@@ -102,5 +102,4 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"docs":[{"_index":"my-index-000001","doc":{"message":"test test
-      test"}},{"_index":"my-index-000001","doc":{"message":"Another test ..."}}]}''
-      "http://localhost:9200/_mtermvectors"'
+      test"}},{"_index":"my-index-000001","doc":{"message":"Another test ..."}}]}'' "$ELASTICSEARCH_URL/_mtermvectors"'

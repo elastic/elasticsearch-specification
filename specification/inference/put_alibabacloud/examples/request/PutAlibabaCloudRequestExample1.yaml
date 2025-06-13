@@ -78,4 +78,4 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"alibabacloud-ai-search\",\"service_settings\":{\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyunc\
       s.com\",\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-qwen-turbo\",\"workspace\":\"default\"}}'
-      \"http://localhost:9200/_inference/completion/alibabacloud_ai_search_completion\""
+      \"$ELASTICSEARCH_URL/_inference/completion/alibabacloud_ai_search_completion\""

@@ -21,4 +21,4 @@ alternatives:
           "id" => "my_pipeline",
       ]);
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_logstash/pipeline/my_pipeline"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_logstash/pipeline/my_pipeline"'

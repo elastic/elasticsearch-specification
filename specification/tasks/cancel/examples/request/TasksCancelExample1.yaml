@@ -21,4 +21,4 @@ alternatives:
           "task_id" => "<task_id>",
       ]);
   - language: curl
-    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_tasks/<task_id>/_cancel"'
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_tasks/<task_id>/_cancel"'

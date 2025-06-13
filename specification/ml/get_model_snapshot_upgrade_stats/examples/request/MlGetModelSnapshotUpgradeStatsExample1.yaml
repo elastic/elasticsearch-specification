@@ -26,4 +26,4 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_ml/anomaly_detectors/low_request_rate/model_snapshots/_all/_upgrade/_stats"'
+      "$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/model_snapshots/_all/_upgrade/_stats"'

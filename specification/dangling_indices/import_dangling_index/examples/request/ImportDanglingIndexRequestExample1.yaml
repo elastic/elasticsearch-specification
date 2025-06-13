@@ -26,4 +26,4 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_dangling/zmM4e0JtBkeUjiHD-MihPQ?accept_data_loss=true"'
+      "$ELASTICSEARCH_URL/_dangling/zmM4e0JtBkeUjiHD-MihPQ?accept_data_loss=true"'

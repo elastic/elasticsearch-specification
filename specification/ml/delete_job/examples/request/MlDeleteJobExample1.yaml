@@ -21,4 +21,4 @@ alternatives:
           "job_id" => "total-requests",
       ]);
   - language: curl
-    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_ml/anomaly_detectors/total-requests"'
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/anomaly_detectors/total-requests"'

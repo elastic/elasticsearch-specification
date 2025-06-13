@@ -70,4 +70,4 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"tokenizer":"standard","filter":["snowball"],"text":"detailed
-      output","explain":true,"attributes":["keyword"]}'' "http://localhost:9200/_analyze"'
+      output","explain":true,"attributes":["keyword"]}'' "$ELASTICSEARCH_URL/_analyze"'

@@ -128,4 +128,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"source\":{\"remote\":{\"host\":\"http://otherhost:9200\",\"username\":\"user\",\"password\":\"pass\"},\"index\":\"my-inde\
       x-000001\",\"query\":{\"match\":{\"test\":\"data\"}}},\"dest\":{\"index\":\"my-new-index-000001\"}}'
-      \"http://localhost:9200/_reindex\""
+      \"$ELASTICSEARCH_URL/_reindex\""

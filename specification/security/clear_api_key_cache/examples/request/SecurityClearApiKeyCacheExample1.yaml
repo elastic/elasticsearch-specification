@@ -22,4 +22,4 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_security/api_key/yVGMr3QByxdh1MSaicYx/_clear_cache"'
+      "$ELASTICSEARCH_URL/_security/api_key/yVGMr3QByxdh1MSaicYx/_clear_cache"'

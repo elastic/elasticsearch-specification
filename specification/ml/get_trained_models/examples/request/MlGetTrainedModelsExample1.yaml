@@ -9,4 +9,4 @@ alternatives:
   - language: PHP
     code: $resp = $client->ml()->getTrainedModels();
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_ml/trained_models/"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/trained_models/"'

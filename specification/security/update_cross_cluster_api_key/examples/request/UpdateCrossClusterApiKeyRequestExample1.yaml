@@ -92,4 +92,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"access":{"replication":[{"names":["archive"]}]},"metadata":{"application":"replication"}}''
-      "http://localhost:9200/_security/cross_cluster/api_key/VuaCfGcBCdbkQm-e5aOx"'
+      "$ELASTICSEARCH_URL/_security/cross_cluster/api_key/VuaCfGcBCdbkQm-e5aOx"'

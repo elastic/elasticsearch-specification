@@ -80,4 +80,4 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"googlevertexai\",\"service_settings\":{\"service_account_json\":\"service-account-json\",\"model_id\":\"model\
       -id\",\"location\":\"location\",\"project_id\":\"project-id\"}}'
-      \"http://localhost:9200/_inference/text_embedding/google_vertex_ai_embeddingss\""
+      \"$ELASTICSEARCH_URL/_inference/text_embedding/google_vertex_ai_embeddingss\""

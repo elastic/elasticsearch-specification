@@ -79,5 +79,4 @@ alternatives:
     code:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"azureaistudio\",\"service_settings\":{\"api_key\":\"Azure-AI-Studio-API-key\",\"target\":\"Target-Uri\",\"pro\
-      vider\":\"openai\",\"endpoint_type\":\"token\"}}'
-      \"http://localhost:9200/_inference/text_embedding/azure_ai_studio_embeddings\""
+      vider\":\"openai\",\"endpoint_type\":\"token\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/azure_ai_studio_embeddings\""

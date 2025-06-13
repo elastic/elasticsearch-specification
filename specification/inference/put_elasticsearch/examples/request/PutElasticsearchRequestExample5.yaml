@@ -96,4 +96,4 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"elasticsearch\",\"service_settings\":{\"adaptive_allocations\":{\"enabled\":true,\"min_number_of_allocations\
       \":3,\"max_number_of_allocations\":10},\"num_threads\":1,\"model_id\":\".multilingual-e5-small\"}}'
-      \"http://localhost:9200/_inference/text_embedding/my-e5-model\""
+      \"$ELASTICSEARCH_URL/_inference/text_embedding/my-e5-model\""

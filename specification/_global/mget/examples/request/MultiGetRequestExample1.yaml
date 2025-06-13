@@ -75,4 +75,4 @@ alternatives:
   - language: curl
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"docs":[{"_id":"1"},{"_id":"2"}]}'' "http://localhost:9200/my-index-000001/_mget"'
+      ''{"docs":[{"_id":"1"},{"_id":"2"}]}'' "$ELASTICSEARCH_URL/my-index-000001/_mget"'

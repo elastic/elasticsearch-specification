@@ -76,4 +76,4 @@ alternatives:
     code:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"values\":{\"tenant_id\":\"my-tenant-id\",\"tenant_name\":\"my-sharepoint-site\",\"client_id\":\"foo\",\"secret_value\":\"\
-      bar\",\"site_collections\":\"*\"}}' \"http://localhost:9200/_connector/my-spo-connector/_configuration\""
+      bar\",\"site_collections\":\"*\"}}' \"$ELASTICSEARCH_URL/_connector/my-spo-connector/_configuration\""

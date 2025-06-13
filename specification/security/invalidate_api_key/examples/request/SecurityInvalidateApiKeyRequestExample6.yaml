@@ -39,4 +39,4 @@ alternatives:
   - language: curl
     code:
       'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"username":"myuser","realm_name":"native1"}'' "http://localhost:9200/_security/api_key"'
+      ''{"username":"myuser","realm_name":"native1"}'' "$ELASTICSEARCH_URL/_security/api_key"'

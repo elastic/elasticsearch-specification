@@ -195,4 +195,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"pipeline\":{\"description\":\"_description\",\"processors\":[{\"set\":{\"field\":\"field2\",\"value\":\"_value\"}}]},\"do\
       cs\":[{\"_index\":\"index\",\"_id\":\"id\",\"_source\":{\"foo\":\"bar\"}},{\"_index\":\"index\",\"_id\":\"id\",\"_source\":{\
-      \"foo\":\"rab\"}}]}' \"http://localhost:9200/_ingest/pipeline/_simulate\""
+      \"foo\":\"rab\"}}]}' \"$ELASTICSEARCH_URL/_ingest/pipeline/_simulate\""

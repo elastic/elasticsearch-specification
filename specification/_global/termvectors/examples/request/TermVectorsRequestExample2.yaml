@@ -83,4 +83,4 @@ alternatives:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"doc":{"fullname":"John Doe","text":"test test
       test"},"fields":["fullname"],"per_field_analyzer":{"fullname":"keyword"}}''
-      "http://localhost:9200/my-index-000001/_termvectors"'
+      "$ELASTICSEARCH_URL/my-index-000001/_termvectors"'

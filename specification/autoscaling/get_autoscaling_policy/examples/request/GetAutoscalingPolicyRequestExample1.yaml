@@ -21,4 +21,4 @@ alternatives:
           "name" => "my_autoscaling_policy",
       ]);
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_autoscaling/policy/my_autoscaling_policy"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_autoscaling/policy/my_autoscaling_policy"'

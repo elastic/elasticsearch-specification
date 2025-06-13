@@ -82,4 +82,4 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"indices\":\"index_1,index_2\",\"ignore_unavailable\":true,\"include_global_state\":false,\"rename_pattern\":\"index_(.+)\
       \",\"rename_replacement\":\"restored_index_$1\",\"include_aliases\":false}'
-      \"http://localhost:9200/_snapshot/my_repository/snapshot_2/_restore?wait_for_completion=true\""
+      \"$ELASTICSEARCH_URL/_snapshot/my_repository/snapshot_2/_restore?wait_for_completion=true\""

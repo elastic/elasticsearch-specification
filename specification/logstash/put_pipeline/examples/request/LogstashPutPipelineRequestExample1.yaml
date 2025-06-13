@@ -117,5 +117,4 @@ alternatives:
       purposes\",\"last_modified\":\"2021-01-02T02:50:51.250Z\",\"pipeline_metadata\":{\"type\":\"logstash_pipeline\",\"version\":1\
       },\"username\":\"elastic\",\"pipeline\":\"input {}\\\\n filter { grok {} }\\\\n output
       {}\",\"pipeline_settings\":{\"pipeline.workers\":1,\"pipeline.batch.size\":125,\"pipeline.batch.delay\":50,\"queue.type\":\"m\
-      emory\",\"queue.max_bytes\":\"1gb\",\"queue.checkpoint.writes\":1024}}'
-      \"http://localhost:9200/_logstash/pipeline/my_pipeline\""
+      emory\",\"queue.max_bytes\":\"1gb\",\"queue.checkpoint.writes\":1024}}' \"$ELASTICSEARCH_URL/_logstash/pipeline/my_pipeline\""

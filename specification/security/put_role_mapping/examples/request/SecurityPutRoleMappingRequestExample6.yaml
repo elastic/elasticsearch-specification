@@ -111,4 +111,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"role_templates\":[{\"template\":{\"source\":\"{{#tojson}}groups{{/tojson}}\"},\"format\":\"json\"}],\"rules\":{\"field\":{\
-      \"realm.name\":\"saml1\"}},\"enabled\":true}' \"http://localhost:9200/_security/role_mapping/mapping6\""
+      \"realm.name\":\"saml1\"}},\"enabled\":true}' \"$ELASTICSEARCH_URL/_security/role_mapping/mapping6\""

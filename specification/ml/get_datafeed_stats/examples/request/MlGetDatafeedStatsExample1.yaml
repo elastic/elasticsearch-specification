@@ -22,4 +22,4 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_ml/datafeeds/datafeed-high_sum_total_sales/_stats"'
+      "$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-high_sum_total_sales/_stats"'

@@ -90,4 +90,4 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"settings":{"number_of_shards":1},"mappings":{"properties":{"field1":{"type":"text"}}}}''
-      "http://localhost:9200/test"'
+      "$ELASTICSEARCH_URL/test"'

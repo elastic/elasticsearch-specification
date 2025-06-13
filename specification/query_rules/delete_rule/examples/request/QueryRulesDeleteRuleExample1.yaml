@@ -25,4 +25,4 @@ alternatives:
           "rule_id" => "my-rule1",
       ]);
   - language: curl
-    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_query_rules/my-ruleset/_rule/my-rule1"'
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_query_rules/my-ruleset/_rule/my-rule1"'

@@ -9,4 +9,4 @@ alternatives:
   - language: PHP
     code: $resp = $client->ingest()->processorGrok();
   - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_ingest/processor/grok"'
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ingest/processor/grok"'

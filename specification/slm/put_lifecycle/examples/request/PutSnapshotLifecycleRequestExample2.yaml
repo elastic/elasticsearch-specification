@@ -76,4 +76,4 @@ alternatives:
     code:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"schedule\":\"1h\",\"name\":\"<hourly-snap-{now/d}>\",\"repository\":\"my_repository\",\"config\":{\"indices\":[\"data-*\",\
-      \"important\"]}}' \"http://localhost:9200/_slm/policy/hourly-snapshots\""
+      \"important\"]}}' \"$ELASTICSEARCH_URL/_slm/policy/hourly-snapshots\""

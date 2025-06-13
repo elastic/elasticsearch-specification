@@ -116,4 +116,4 @@ alternatives:
     code:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"rules\":{\"field\":{\"realm.name\":\"cloud-saml\"}},\"role_templates\":[{\"template\":{\"source\":\"saml_user\"}},{\"temp\
-      late\":{\"source\":\"_user_{{username}}\"}}],\"enabled\":true}' \"http://localhost:9200/_security/role_mapping/mapping9\""
+      late\":{\"source\":\"_user_{{username}}\"}}],\"enabled\":true}' \"$ELASTICSEARCH_URL/_security/role_mapping/mapping9\""

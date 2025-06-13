@@ -119,4 +119,4 @@ alternatives:
       "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"requests\":[{\"id\":\"JFK
       query\",\"request\":{\"query\":{\"match_all\":{}}},\"ratings\":[]}],\"metric\":{\"precision\":{\"k\":20,\"relevant_rating_thr\
-      eshold\":1,\"ignore_unlabeled\":false}}}' \"http://localhost:9200/my-index-000001/_rank_eval\""
+      eshold\":1,\"ignore_unlabeled\":false}}}' \"$ELASTICSEARCH_URL/my-index-000001/_rank_eval\""

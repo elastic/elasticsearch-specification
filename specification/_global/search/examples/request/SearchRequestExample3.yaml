@@ -95,4 +95,4 @@ alternatives:
       "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"slice\":{\"id\":0,\"max\":2},\"query\":{\"match\":{\"message\":\"foo\"}},\"pit\":{\"id\":\"46ToAwMDaWR5BXV1aWQyKwZub2RlXz\
       MAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXR\
-      jaF9hbGw_gAAAAA==\"}}' \"http://localhost:9200/_search\""
+      jaF9hbGw_gAAAAA==\"}}' \"$ELASTICSEARCH_URL/_search\""

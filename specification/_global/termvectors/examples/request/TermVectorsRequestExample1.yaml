@@ -75,4 +75,4 @@ alternatives:
     code:
       "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"fields\":[\"text\"],\"offsets\":true,\"payloads\":true,\"positions\":true,\"term_statistics\":true,\"field_statistics\":t\
-      rue}' \"http://localhost:9200/my-index-000001/_termvectors/1\""
+      rue}' \"$ELASTICSEARCH_URL/my-index-000001/_termvectors/1\""

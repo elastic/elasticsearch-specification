@@ -25,5 +25,4 @@ alternatives:
           "snapshot" => "snapshot_2,snapshot_3",
       ]);
   - language: curl
-    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY"
-      "http://localhost:9200/_snapshot/my_repository/snapshot_2,snapshot_3"'
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_snapshot/my_repository/snapshot_2,snapshot_3"'

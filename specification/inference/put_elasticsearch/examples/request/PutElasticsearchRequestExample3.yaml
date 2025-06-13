@@ -75,4 +75,4 @@ alternatives:
     code:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"elasticsearch\",\"service_settings\":{\"num_allocations\":1,\"num_threads\":1,\"model_id\":\".multilingual-e5\
-      -small\"}}' \"http://localhost:9200/_inference/text_embedding/my-e5-model\""
+      -small\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-e5-model\""

@@ -21,4 +21,4 @@ alternatives:
           "enabled" => "true",
       ]);
   - language: curl
-    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "http://localhost:9200/_ml/set_upgrade_mode?enabled=true"'
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/set_upgrade_mode?enabled=true"'
