@@ -1,5 +1,4 @@
 # summary:
-method_request: PUT /_security/privilege
 description: >
   A successful response from `PUT /_security/privilege`.
   The `created` property indicates whether the privileges have been created or updated.

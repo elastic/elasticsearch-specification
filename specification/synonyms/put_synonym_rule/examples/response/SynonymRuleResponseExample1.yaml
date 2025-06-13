@@ -1,5 +1,4 @@
 # summary:
-method_request: PUT _synonyms/my-synonyms-set/test-1
 description: >
   A successful response from `PUT _synonyms/my-synonyms-set/test-1`.
 

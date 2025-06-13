@@ -1,0 +1,6 @@
+method_request: GET _ml/anomaly_detectors/high_sum_total_sales/model_snapshots
+description: An example body for a `GET _ml/anomaly_detectors/high_sum_total_sales/model_snapshots` request.
+value: |-
+  {
+    "start": "1575402236000"
+  }

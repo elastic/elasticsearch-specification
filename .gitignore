@@ -70,3 +70,5 @@ output/openapi/elasticsearch-serverless-openapi-docs.tmp*.json
 output/openapi/elasticsearch-serverless-openapi-docs-final.json
 output/openapi/elasticsearch-openapi-docs.tmp*.json
 output/openapi/elasticsearch-openapi-docs-final.json
+output/openapi/elasticsearch-serverless-openapi-docs.json
+output/openapi/elasticsearch-openapi-docs.json

@@ -1,5 +1,4 @@
 summary: A response with not_found roles
-method_request: DELETE /_security/role
 description: >
   A partially successful response from `DELETE /_security/role`.
   If a role cannot be found, it appears in the `not_found` list in the response.

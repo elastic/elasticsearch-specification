@@ -1,5 +1,5 @@
 summary: Change a data stream setting
-# method_request: PUT /_data_stream/my-data-stream/_settings
+method_request: PUT /_data_stream/my-data-stream/_settings
 description: >
   This is a request to change two settings on a data stream.
 # type: request

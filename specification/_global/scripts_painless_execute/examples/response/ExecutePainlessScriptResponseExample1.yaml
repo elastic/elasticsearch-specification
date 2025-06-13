@@ -1,5 +1,4 @@
 summary: Test context
-method_request: POST /_scripts/painless/_execute
 description: A successful response from `POST /_scripts/painless/_execute` with a `painless_test` context.
 # type: response
 # response_code: ''

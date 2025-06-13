@@ -1,0 +1,1 @@
+method_request: GET _cat/ml/datafeeds?v=true&format=json

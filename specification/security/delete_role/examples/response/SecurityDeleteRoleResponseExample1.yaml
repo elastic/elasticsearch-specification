@@ -1,5 +1,4 @@
 # summary:
-method_request: DELETE /_security/role/my_admin_role
 description: >
   A successful response from `DELETE /_security/role/my_admin_role`.
   If the role is successfully deleted, `found` is set to `true`.

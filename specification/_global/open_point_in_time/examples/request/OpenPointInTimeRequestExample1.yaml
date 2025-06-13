@@ -1,0 +1,1 @@
+method_request: POST /my-index-000001/_pit?keep_alive=1m&allow_partial_search_results=true

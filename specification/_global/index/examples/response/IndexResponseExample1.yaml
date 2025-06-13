@@ -1,5 +1,4 @@
 summary: Automate document IDs
-method_request: POST my-index-000001/_doc/
 description: A successful response from `POST my-index-000001/_doc/`, which contains an automated document ID.
 # type: response
 # response_code: 200

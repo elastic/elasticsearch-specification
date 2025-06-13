@@ -1,5 +1,4 @@
 # summary:
-method_request: GET _cat/ml/trained_models?v=true&format=json
 description: A successful response from `GET _cat/ml/trained_models?v=true&format=json`.
 # type: response
 # response_code: ''

@@ -1,0 +1,6 @@
+method_request: POST _ml/datafeeds/datafeed-low_request_rate/_stop
+description: An example body for a `POST _ml/datafeeds/datafeed-low_request_rate/_stop` request.
+value: |-
+  {
+    "timeout": "30s"
+  }

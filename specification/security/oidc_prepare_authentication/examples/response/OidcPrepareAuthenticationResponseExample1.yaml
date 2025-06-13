@@ -1,5 +1,4 @@
 # summary:
-method_request: POST /_security/oidc/prepare
 description: >
   A successful response from `POST /_security/oidc/prepare`.
   It contains the URI pointing to the Authorization Endpoint of the OpenID Connect Provider with all the parameters of the Authentication Request as HTTP GET parameters.

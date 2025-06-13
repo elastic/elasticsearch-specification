@@ -1,5 +1,4 @@
 # summary:
-method_request: POST /_security/saml/prepare
 description: A successful response from `POST /_security/saml/prepare`.
 # type: response
 # response_code:

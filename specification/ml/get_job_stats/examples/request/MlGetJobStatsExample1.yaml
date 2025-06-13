@@ -1,0 +1,1 @@
+method_request: GET _ml/anomaly_detectors/low_request_rate/_stats

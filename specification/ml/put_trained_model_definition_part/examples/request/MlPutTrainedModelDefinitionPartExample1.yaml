@@ -1,0 +1,8 @@
+method_request: PUT _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/definition/0
+description: An example body for a `PUT _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/definition/0` request.
+value: |-
+  {
+      "definition": "...",
+      "total_definition_length": 265632637,
+      "total_parts": 64
+  }

@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /_security/privilege/_builtin
 description: A successful response from `GET /_security/privilege/_builtin`.
 # type: response
 # response_code:

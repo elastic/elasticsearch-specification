@@ -16,7 +16,6 @@
     "noLib": false,
     "preserveConstEnums": true,
     "sourceMap": false,
-    "suppressImplicitAnyIndexErrors": true,
     "strictPropertyInitialization": false
   },
   "compileOnSave": true,

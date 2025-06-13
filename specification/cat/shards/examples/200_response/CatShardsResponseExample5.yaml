@@ -1,5 +1,4 @@
 summary: Reasons for unassigned shards
-method_request: GET _cat/shards?h=index,shard,prirep,state,unassigned.reason&format=json
 description: >
   A successful response from `GET _cat/shards?h=index,shard,prirep,state,unassigned.reason&format=json`.
   It includes the `unassigned.reason` column, which indicates why a shard is unassigned.

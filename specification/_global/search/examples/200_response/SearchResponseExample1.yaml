@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /my-index-000001/_search?from=40&size=20
 description: >
   An abbreviated response from `GET /my-index-000001/_search?from=40&size=20` with a simple term query.
 # type: response

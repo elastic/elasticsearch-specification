@@ -31,6 +31,22 @@ pub struct Cli {
     /// merge endpoints with multiple paths into a single OpenAPI operation [default = false]
     #[argh(switch)]
     pub merge_multipath_endpoints: bool,
+
+    /// output a redirection map when merging multipath endpoints
+    #[argh(switch)]
+    pub multipath_redirects: bool,
+}
+
+impl Cli {
+    pub fn redirect_path(&self, output: &PathBuf) -> Option<String> {
+        if self.multipath_redirects {
+            let path = output.to_string_lossy();
+            let path = path.rsplit_once('.').unwrap().0;
+            Some(format!("{}.redirects.csv", path))
+        } else {
+            None
+        }
+    }
 }
 
 use derive_more::FromStr;
@@ -57,6 +73,7 @@ impl From<Cli> for Configuration {
             flavor,
             lift_enum_descriptions: cli.lift_enum_descriptions,
             merge_multipath_endpoints: cli.merge_multipath_endpoints,
+            multipath_redirects: cli.multipath_redirects,
             namespaces: if cli.namespace.is_empty() {
                 None
             } else {

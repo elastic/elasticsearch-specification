@@ -60,7 +60,7 @@ export interface CommonQueryParameters {
   /**
    * When set to `true` will return statistics in a format suitable for humans.
    * For example `"exists_time": "1h"` for humans and
-   * `"eixsts_time_in_millis": 3600000` for computers. When disabled the human
+   * `"exists_time_in_millis": 3600000` for computers. When disabled the human
    * readable values will be omitted. This makes sense for responses being consumed
    * only by machines.
    * @server_default false

@@ -1,0 +1,6 @@
+method_request: POST _ml/data_frame/analytics/loganalytics/_update
+description: An example body for a `POST _ml/data_frame/analytics/loganalytics/_update` request.
+value: |-
+  {
+    "model_memory_limit": "200mb"
+  }

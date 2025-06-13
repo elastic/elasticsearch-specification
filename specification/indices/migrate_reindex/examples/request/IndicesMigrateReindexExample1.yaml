@@ -1,0 +1,9 @@
+method_request: POST _migration/reindex
+description: An example body for a `POST _migration/reindex` request.
+value: |-
+  {
+      "source": {
+          "index": "my-data-stream"
+      },
+      "mode": "upgrade"
+  }

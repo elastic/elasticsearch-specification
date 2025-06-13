@@ -1,5 +1,4 @@
 # summary:
-method_request: POST /_security/profile/_has_privileges
 description: >
   A response from `POST /_security/profile/_has_privileges` that indicates only one of the three users has all the privileges and one of them is not found.
 # type: response

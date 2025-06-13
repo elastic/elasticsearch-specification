@@ -1,5 +1,4 @@
 summary: Filter for failed operations
-method_request: POST /_bulk?filter_path=items.*.error
 description: >
   An example response from `POST /_bulk?filter_path=items.*.error`, which returns only information about failed operations.
 # type: response
