@@ -33613,6 +33613,10 @@
       "_global.search._types.SourceFilter": {
         "type": "object",
         "properties": {
+          "exclude_vectors": {
+            "description": "If `true`, vector fields are excluded from the returned source.\n\nThis option takes precedence over `includes`: any vector field will\nremain excluded even if it matches an `includes` rule.",
+            "type": "boolean"
+          },
           "excludes": {
             "$ref": "#/components/schemas/_types.Fields"
           },
