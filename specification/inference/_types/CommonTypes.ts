@@ -979,9 +979,22 @@ export class HuggingFaceServiceSettings {
   model_id?: string
 }
 
+export class HuggingFaceTaskSettings {
+  /**
+   * For a `rerank` task, return doc text within the results.
+   */
+  return_documents?: boolean
+  /**
+   * For a `rerank` task, the number of most relevant documents to return.
+   * It defaults to the number of the documents.
+   */
+  top_n?: integer
+}
+
 export enum HuggingFaceTaskType {
   chat_completion,
   completion,
+  rerank,
   text_embedding
 }
 

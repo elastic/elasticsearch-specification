@@ -13672,7 +13672,12 @@ export interface InferenceHuggingFaceServiceSettings {
 
 export type InferenceHuggingFaceServiceType = 'hugging_face'
 
-export type InferenceHuggingFaceTaskType = 'chat_completion' | 'completion' | 'text_embedding'
+export interface InferenceHuggingFaceTaskSettings {
+  return_documents?: boolean
+  top_n?: integer
+}
+
+export type InferenceHuggingFaceTaskType = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
@@ -13901,7 +13906,7 @@ export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
 export type InferenceTaskTypeGoogleVertexAI = 'text_embedding' | 'rerank'
 
-export type InferenceTaskTypeHuggingFace = 'text_embedding' | 'chat_completion' | 'completion'
+export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
 
@@ -14162,6 +14167,7 @@ export interface InferencePutHuggingFaceRequest extends RequestBase {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceHuggingFaceServiceType
     service_settings: InferenceHuggingFaceServiceSettings
+    task_settings?: InferenceHuggingFaceTaskSettings
   }
 }
 

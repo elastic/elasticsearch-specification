@@ -40,7 +40,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * * ELSER (`sparse_embedding`)
  * * Google AI Studio (`completion`, `text_embedding`)
  * * Google Vertex AI (`rerank`, `text_embedding`)
- * * Hugging Face (`chat_completion`, `completion`, `text_embedding`)
+ * * Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)
  * * Mistral (`chat_completion`, `completion`, `text_embedding`)
  * * OpenAI (`chat_completion`, `completion`, `text_embedding`)
  * * VoyageAI (`text_embedding`, `rerank`)
