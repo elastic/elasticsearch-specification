@@ -393,7 +393,7 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
     let segmenter = SentenceSegmenter::new();
 
     let breakpoints: Vec<usize> = segmenter
-        .segment_str(&desc)
+        .segment_str(desc)
         .collect();
 
     if breakpoints.len()<2{

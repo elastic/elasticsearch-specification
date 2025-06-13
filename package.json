@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "transform-to-openapi": "npm run transform-to-openapi --prefix compiler --"
+  },
   "dependencies": {
     "@redocly/cli": "^1.34.3",
     "@stoplight/spectral-cli": "^6.14.2"
