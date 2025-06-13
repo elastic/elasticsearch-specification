@@ -1,1 +1,31 @@
 method_request: POST _create_from/my-index/my-new-index
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.perform_request(
+          "POST",
+          "/_create_from/my-index/my-new-index",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.transport.request({
+        method: "POST",
+        path: "/_create_from/my-index/my-new-index",
+      });
+  - language: Ruby
+    code: |-
+      response = client.perform_request(
+        "POST",
+        "/_create_from/my-index/my-new-index",
+        {},
+      )
+  - language: PHP
+    code: |-
+      $requestFactory = Psr17FactoryDiscovery::findRequestFactory();
+      $request = $requestFactory->createRequest(
+          "POST",
+          "/_create_from/my-index/my-new-index",
+      );
+      $resp = $client->sendRequest($request);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_create_from/my-index/my-new-index"'

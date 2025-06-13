@@ -1,1 +1,24 @@
 method_request: POST _watcher/watch/my_watch/_ack
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.watcher.ack_watch(
+          watch_id="my_watch",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.watcher.ackWatch({
+        watch_id: "my_watch",
+      });
+  - language: Ruby
+    code: |-
+      response = client.watcher.ack_watch(
+        watch_id: "my_watch"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->watcher()->ackWatch([
+          "watch_id" => "my_watch",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_watcher/watch/my_watch/_ack"'

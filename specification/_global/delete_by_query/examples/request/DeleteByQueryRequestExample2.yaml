@@ -11,3 +11,56 @@ value: |-
     },
     "max_docs": 1
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.delete_by_query(
+          index="my-index-000001",
+          query={
+              "term": {
+                  "user.id": "kimchy"
+              }
+          },
+          max_docs=1,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.deleteByQuery({
+        index: "my-index-000001",
+        query: {
+          term: {
+            "user.id": "kimchy",
+          },
+        },
+        max_docs: 1,
+      });
+  - language: Ruby
+    code: |-
+      response = client.delete_by_query(
+        index: "my-index-000001",
+        body: {
+          "query": {
+            "term": {
+              "user.id": "kimchy"
+            }
+          },
+          "max_docs": 1
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->deleteByQuery([
+          "index" => "my-index-000001",
+          "body" => [
+              "query" => [
+                  "term" => [
+                      "user.id" => "kimchy",
+                  ],
+              ],
+              "max_docs" => 1,
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"query":{"term":{"user.id":"kimchy"}},"max_docs":1}'' "$ELASTICSEARCH_URL/my-index-000001/_delete_by_query"'

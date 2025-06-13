@@ -1,1 +1,33 @@
 method_request: GET _all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.get_settings(
+          index="_all",
+          expand_wildcards="all",
+          filter_path="*.settings.index.*.slowlog",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.getSettings({
+        index: "_all",
+        expand_wildcards: "all",
+        filter_path: "*.settings.index.*.slowlog",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.get_settings(
+        index: "_all",
+        expand_wildcards: "all",
+        filter_path: "*.settings.index.*.slowlog"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->getSettings([
+          "index" => "_all",
+          "expand_wildcards" => "all",
+          "filter_path" => "*.settings.index.*.slowlog",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog"'

@@ -355,6 +355,14 @@ pub fn add_endpoint(
                         "source": request_line + "\n" + request_body.as_str(),
                     }));
                 }
+                if let Some(alternatives) = example.alternatives.clone() {
+                    for alternative in alternatives.iter() {
+                        code_samples.push(serde_json::json!({
+                            "lang": alternative.language,
+                            "source": alternative.code.as_str(),
+                        }));
+                    }
+                }
             }
         }
         if !code_samples.is_empty() {

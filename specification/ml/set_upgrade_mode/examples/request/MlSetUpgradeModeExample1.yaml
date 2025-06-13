@@ -1,1 +1,24 @@
 method_request: POST _ml/set_upgrade_mode?enabled=true
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.set_upgrade_mode(
+          enabled=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.setUpgradeMode({
+        enabled: "true",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.set_upgrade_mode(
+        enabled: "true"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->setUpgradeMode([
+          "enabled" => "true",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/set_upgrade_mode?enabled=true"'

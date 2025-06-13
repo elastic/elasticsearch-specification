@@ -1,1 +1,29 @@
 method_request: GET /_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=?wait_for_completion_timeout=2s
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.eql.get(
+          id="FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=",
+          wait_for_completion_timeout="2s",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.eql.get({
+        id: "FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=",
+        wait_for_completion_timeout: "2s",
+      });
+  - language: Ruby
+    code: |-
+      response = client.eql.get(
+        id: "FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=",
+        wait_for_completion_timeout: "2s"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->eql()->get([
+          "id" => "FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=",
+          "wait_for_completion_timeout" => "2s",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=?wait_for_completion_timeout=2s"'

@@ -6,3 +6,45 @@ value: |-
     "desc": true,
     "start": "1454944100000"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.get_records(
+          job_id="low_request_rate",
+          sort="record_score",
+          desc=True,
+          start="1454944100000",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.getRecords({
+        job_id: "low_request_rate",
+        sort: "record_score",
+        desc: true,
+        start: 1454944100000,
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.get_records(
+        job_id: "low_request_rate",
+        body: {
+          "sort": "record_score",
+          "desc": true,
+          "start": "1454944100000"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->getRecords([
+          "job_id" => "low_request_rate",
+          "body" => [
+              "sort" => "record_score",
+              "desc" => true,
+              "start" => "1454944100000",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"sort":"record_score","desc":true,"start":"1454944100000"}''
+      "$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/results/records"'

@@ -4,3 +4,36 @@ method_request: 'POST _inference/completion/openai-completion/_stream'
 # type: "request"
 value:
   input: 'What is Elastic?'
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.stream_completion(
+          inference_id="openai-completion",
+          input="What is Elastic?",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.streamCompletion({
+        inference_id: "openai-completion",
+        input: "What is Elastic?",
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.stream_completion(
+        inference_id: "openai-completion",
+        body: {
+          "input": "What is Elastic?"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->streamCompletion([
+          "inference_id" => "openai-completion",
+          "body" => [
+              "input" => "What is Elastic?",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"input":"What is
+      Elastic?"}'' "$ELASTICSEARCH_URL/_inference/completion/openai-completion/_stream"'
