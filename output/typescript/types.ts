@@ -11203,6 +11203,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   step_time_millis?: EpochTime<UnitMillis>
   phase_execution?: IlmExplainLifecycleLifecycleExplainPhaseExecution
   time_since_index_creation?: Duration
+  skip: boolean
 }
 
 export interface IlmExplainLifecycleLifecycleExplainPhaseExecution {
