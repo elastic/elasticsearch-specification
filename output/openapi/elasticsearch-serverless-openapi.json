@@ -51891,14 +51891,7 @@
         ]
       },
       "_types.TaskId": {
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "number"
-          }
-        ]
+        "type": "string"
       },
       "enrich.execute_policy.ExecuteEnrichPolicyStatus": {
         "type": "object",

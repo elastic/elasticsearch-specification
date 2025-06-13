@@ -2962,7 +2962,7 @@ export interface TaskFailure {
   reason: ErrorCause
 }
 
-export type TaskId = string | integer
+export type TaskId = string
 
 export interface TextEmbedding {
   model_id: string
