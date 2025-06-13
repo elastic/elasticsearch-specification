@@ -1,1 +1,24 @@
 method_request: POST _data_stream/_migrate/my-time-series-data
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.migrate_to_data_stream(
+          name="my-time-series-data",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.migrateToDataStream({
+        name: "my-time-series-data",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.migrate_to_data_stream(
+        name: "my-time-series-data"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->migrateToDataStream([
+          "name" => "my-time-series-data",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_data_stream/_migrate/my-time-series-data"'

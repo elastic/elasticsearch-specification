@@ -15,3 +15,75 @@ value: |-
     "max_retry_delay" : "10s",
     "read_poll_timeout" : "30s"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ccr.resume_follow(
+          index="follower_index",
+          max_read_request_operation_count=1024,
+          max_outstanding_read_requests=16,
+          max_read_request_size="1024k",
+          max_write_request_operation_count=32768,
+          max_write_request_size="16k",
+          max_outstanding_write_requests=8,
+          max_write_buffer_count=512,
+          max_write_buffer_size="512k",
+          max_retry_delay="10s",
+          read_poll_timeout="30s",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ccr.resumeFollow({
+        index: "follower_index",
+        max_read_request_operation_count: 1024,
+        max_outstanding_read_requests: 16,
+        max_read_request_size: "1024k",
+        max_write_request_operation_count: 32768,
+        max_write_request_size: "16k",
+        max_outstanding_write_requests: 8,
+        max_write_buffer_count: 512,
+        max_write_buffer_size: "512k",
+        max_retry_delay: "10s",
+        read_poll_timeout: "30s",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ccr.resume_follow(
+        index: "follower_index",
+        body: {
+          "max_read_request_operation_count": 1024,
+          "max_outstanding_read_requests": 16,
+          "max_read_request_size": "1024k",
+          "max_write_request_operation_count": 32768,
+          "max_write_request_size": "16k",
+          "max_outstanding_write_requests": 8,
+          "max_write_buffer_count": 512,
+          "max_write_buffer_size": "512k",
+          "max_retry_delay": "10s",
+          "read_poll_timeout": "30s"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ccr()->resumeFollow([
+          "index" => "follower_index",
+          "body" => [
+              "max_read_request_operation_count" => 1024,
+              "max_outstanding_read_requests" => 16,
+              "max_read_request_size" => "1024k",
+              "max_write_request_operation_count" => 32768,
+              "max_write_request_size" => "16k",
+              "max_outstanding_write_requests" => 8,
+              "max_write_buffer_count" => 512,
+              "max_write_buffer_size" => "512k",
+              "max_retry_delay" => "10s",
+              "read_poll_timeout" => "30s",
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"max_read_request_operation_count\":1024,\"max_outstanding_read_requests\":16,\"max_read_request_size\":\"1024k\",\"max_wr\
+      ite_request_operation_count\":32768,\"max_write_request_size\":\"16k\",\"max_outstanding_write_requests\":8,\"max_write_buffe\
+      r_count\":512,\"max_write_buffer_size\":\"512k\",\"max_retry_delay\":\"10s\",\"read_poll_timeout\":\"30s\"}'
+      \"$ELASTICSEARCH_URL/follower_index/_ccr/resume_follow\""

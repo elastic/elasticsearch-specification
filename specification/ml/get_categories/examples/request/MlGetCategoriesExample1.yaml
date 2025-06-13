@@ -6,3 +6,44 @@ value: |-
       "size": 1
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.get_categories(
+          job_id="esxi_log",
+          page={
+              "size": 1
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.getCategories({
+        job_id: "esxi_log",
+        page: {
+          size: 1,
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.get_categories(
+        job_id: "esxi_log",
+        body: {
+          "page": {
+            "size": 1
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->getCategories([
+          "job_id" => "esxi_log",
+          "body" => [
+              "page" => [
+                  "size" => 1,
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"page":{"size":1}}''
+      "$ELASTICSEARCH_URL/_ml/anomaly_detectors/esxi_log/results/categories"'

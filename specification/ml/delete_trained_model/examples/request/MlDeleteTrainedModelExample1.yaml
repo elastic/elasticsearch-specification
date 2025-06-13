@@ -1,1 +1,25 @@
 method_request: DELETE _ml/trained_models/regression-job-one-1574775307356
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.delete_trained_model(
+          model_id="regression-job-one-1574775307356",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.deleteTrainedModel({
+        model_id: "regression-job-one-1574775307356",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.delete_trained_model(
+        model_id: "regression-job-one-1574775307356"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->deleteTrainedModel([
+          "model_id" => "regression-job-one-1574775307356",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_ml/trained_models/regression-job-one-1574775307356"'

@@ -14,3 +14,43 @@ value: |-
     "wait_for_completion_timeout": "2s",
     "include_ccs_metadata": true
   }
+alternatives:
+  - language: Python
+    code: >-
+      resp = client.esql.async_query(
+          query="\n    FROM library,remote-*:library\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\n    | STATS MAX(page_count) BY year\n    | SORT year\n    | LIMIT 5\n  ",
+          wait_for_completion_timeout="2s",
+          include_ccs_metadata=True,
+      )
+  - language: JavaScript
+    code: >-
+      const response = await client.esql.asyncQuery({
+        query:
+          "\n    FROM library,remote-*:library\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\n    | STATS MAX(page_count) BY year\n    | SORT year\n    | LIMIT 5\n  ",
+        wait_for_completion_timeout: "2s",
+        include_ccs_metadata: true,
+      });
+  - language: Ruby
+    code: >-
+      response = client.esql.async_query(
+        body: {
+          "query": "\n    FROM library,remote-*:library\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\n    | STATS MAX(page_count) BY year\n    | SORT year\n    | LIMIT 5\n  ",
+          "wait_for_completion_timeout": "2s",
+          "include_ccs_metadata": true
+        }
+      )
+  - language: PHP
+    code: >-
+      $resp = $client->esql()->asyncQuery([
+          "body" => [
+              "query" => "\n    FROM library,remote-*:library\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\n    | STATS MAX(page_count) BY year\n    | SORT year\n    | LIMIT 5\n  ",
+              "wait_for_completion_timeout" => "2s",
+              "include_ccs_metadata" => true,
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":\"\\n    FROM
+      library,remote-*:library\\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\\n    | STATS MAX(page_count) BY year\\n    |
+      SORT year\\n    | LIMIT 5\\n  \",\"wait_for_completion_timeout\":\"2s\",\"include_ccs_metadata\":true}'
+      \"$ELASTICSEARCH_URL/_query/async\""

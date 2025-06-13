@@ -1,10 +1,11 @@
 summary: A setting with multiple patterns
 method_request: PUT /_cluster/settings
 description: >
-  PUT `/_cluster/settings` to update the `action.auto_create_index` setting.
-  The setting accepts a comma-separated list of patterns that you want to allow or you can prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked.
-  In this example, the auto-creation of indices called `my-index-000001` or `index10` is allowed, the creation of indices that match the pattern `index1*` is blocked, and the creation of any other indices that match the `ind*` pattern is allowed.
-  Patterns are matched in the order specified.
+  PUT `/_cluster/settings` to update the `action.auto_create_index` setting. The setting accepts a comma-separated list of patterns
+  that you want to allow or you can prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked. In this
+  example, the auto-creation of indices called `my-index-000001` or `index10` is allowed, the creation of indices that match the
+  pattern `index1*` is blocked, and the creation of any other indices that match the `ind*` pattern is allowed. Patterns are matched
+  in the order specified.
 # type: request
 value: |-
   {
@@ -12,3 +13,41 @@ value: |-
       "action.auto_create_index": "my-index-000001,index10,-index1*,+ind*" 
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cluster.put_settings(
+          persistent={
+              "action.auto_create_index": "my-index-000001,index10,-index1*,+ind*"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cluster.putSettings({
+        persistent: {
+          "action.auto_create_index": "my-index-000001,index10,-index1*,+ind*",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.cluster.put_settings(
+        body: {
+          "persistent": {
+            "action.auto_create_index": "my-index-000001,index10,-index1*,+ind*"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cluster()->putSettings([
+          "body" => [
+              "persistent" => [
+                  "action.auto_create_index" => "my-index-000001,index10,-index1*,+ind*",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"persistent":{"action.auto_create_index":"my-index-000001,index10,-index1*,+ind*"}}''
+      "$ELASTICSEARCH_URL/_cluster/settings"'

@@ -1,8 +1,8 @@
 summary: Automatic slicing
 method_request: POST my-index-000001/_delete_by_query?refresh&slices=5
 description: >
-  Run `POST my-index-000001/_delete_by_query?refresh&slices=5` to let delete by query automatically parallelize using sliced scroll to slice on `_id`.
-  The `slices` query parameter value specifies the number of slices to use.
+  Run `POST my-index-000001/_delete_by_query?refresh&slices=5` to let delete by query automatically parallelize using sliced scroll
+  to slice on `_id`. The `slices` query parameter value specifies the number of slices to use.
 # type: request
 value: |-
   {
@@ -14,3 +14,69 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.delete_by_query(
+          index="my-index-000001",
+          refresh=True,
+          slices="5",
+          query={
+              "range": {
+                  "http.response.bytes": {
+                      "lt": 2000000
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.deleteByQuery({
+        index: "my-index-000001",
+        refresh: "true",
+        slices: 5,
+        query: {
+          range: {
+            "http.response.bytes": {
+              lt: 2000000,
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.delete_by_query(
+        index: "my-index-000001",
+        refresh: "true",
+        slices: "5",
+        body: {
+          "query": {
+            "range": {
+              "http.response.bytes": {
+                "lt": 2000000
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->deleteByQuery([
+          "index" => "my-index-000001",
+          "refresh" => "true",
+          "slices" => "5",
+          "body" => [
+              "query" => [
+                  "range" => [
+                      "http.response.bytes" => [
+                          "lt" => 2000000,
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"query":{"range":{"http.response.bytes":{"lt":2000000}}}}''
+      "$ELASTICSEARCH_URL/my-index-000001/_delete_by_query?refresh&slices=5"'

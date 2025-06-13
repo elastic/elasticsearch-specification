@@ -1,1 +1,28 @@
 method_request: GET publications/_mapping/field/title
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.get_field_mapping(
+          index="publications",
+          fields="title",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.getFieldMapping({
+        index: "publications",
+        fields: "title",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.get_field_mapping(
+        index: "publications",
+        fields: "title"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->getFieldMapping([
+          "index" => "publications",
+          "fields" => "title",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/publications/_mapping/field/title"'

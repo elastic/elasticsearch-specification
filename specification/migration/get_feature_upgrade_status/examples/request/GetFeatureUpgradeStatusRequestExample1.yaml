@@ -1,1 +1,12 @@
 method_request: GET /_migration/system_features
+alternatives:
+  - language: Python
+    code: resp = client.migration.get_feature_upgrade_status()
+  - language: JavaScript
+    code: const response = await client.migration.getFeatureUpgradeStatus();
+  - language: Ruby
+    code: response = client.migration.get_feature_upgrade_status
+  - language: PHP
+    code: $resp = $client->migration()->getFeatureUpgradeStatus();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_migration/system_features"'

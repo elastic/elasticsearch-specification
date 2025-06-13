@@ -3,3 +3,36 @@ method_request: PUT _connector/_sync_job/my-connector-sync-job/_error
 # description: ''
 # type: request
 value: "{\n    \"error\": \"some-error\"\n}"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.sync_job_error(
+          connector_sync_job_id="my-connector-sync-job",
+          error="some-error",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.syncJobError({
+        connector_sync_job_id: "my-connector-sync-job",
+        error: "some-error",
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.sync_job_error(
+        connector_sync_job_id: "my-connector-sync-job",
+        body: {
+          "error": "some-error"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->syncJobError([
+          "connector_sync_job_id" => "my-connector-sync-job",
+          "body" => [
+              "error" => "some-error",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"error":"some-error"}'' "$ELASTICSEARCH_URL/_connector/_sync_job/my-connector-sync-job/_error"'

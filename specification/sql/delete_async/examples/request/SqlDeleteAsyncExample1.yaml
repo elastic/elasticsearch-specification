@@ -1,1 +1,25 @@
 method_request: DELETE _sql/async/delete/FmdMX2pIang3UWhLRU5QS0lqdlppYncaMUpYQ05oSkpTc3kwZ21EdC1tbFJXQToxOTI=
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.sql.delete_async(
+          id="FmdMX2pIang3UWhLRU5QS0lqdlppYncaMUpYQ05oSkpTc3kwZ21EdC1tbFJXQToxOTI=",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.sql.deleteAsync({
+        id: "FmdMX2pIang3UWhLRU5QS0lqdlppYncaMUpYQ05oSkpTc3kwZ21EdC1tbFJXQToxOTI=",
+      });
+  - language: Ruby
+    code: |-
+      response = client.sql.delete_async(
+        id: "FmdMX2pIang3UWhLRU5QS0lqdlppYncaMUpYQ05oSkpTc3kwZ21EdC1tbFJXQToxOTI="
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->sql()->deleteAsync([
+          "id" => "FmdMX2pIang3UWhLRU5QS0lqdlppYncaMUpYQ05oSkpTc3kwZ21EdC1tbFJXQToxOTI=",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_sql/async/delete/FmdMX2pIang3UWhLRU5QS0lqdlppYncaMUpYQ05oSkpTc3kwZ21EdC1tbFJXQToxOTI="'

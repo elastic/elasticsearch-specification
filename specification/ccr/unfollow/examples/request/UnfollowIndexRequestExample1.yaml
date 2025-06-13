@@ -1,1 +1,24 @@
 method_request: POST /follower_index/_ccr/unfollow
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ccr.unfollow(
+          index="follower_index",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ccr.unfollow({
+        index: "follower_index",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ccr.unfollow(
+        index: "follower_index"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ccr()->unfollow([
+          "index" => "follower_index",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/follower_index/_ccr/unfollow"'

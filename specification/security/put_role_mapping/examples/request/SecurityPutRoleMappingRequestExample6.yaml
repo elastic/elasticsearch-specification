@@ -1,15 +1,17 @@
 summary: Templated roles for groups
 method_request: POST /_security/role_mapping/mapping6
 description: >
-  Run `POST /_security/role_mapping/mapping6` for rare cases when the names of your groups may be an exact match for the names of your Elasticsearch roles.
-  This can be the case when your SAML Identity Provider includes its own "group mapping" feature and can be configured to release Elasticsearch role names in the user's SAML attributes.
-  In these cases it is possible to use a template that treats the group names as role names.
+  Run `POST /_security/role_mapping/mapping6` for rare cases when the names of your groups may be an exact match for the names of
+  your Elasticsearch roles. This can be the case when your SAML Identity Provider includes its own "group mapping" feature and can
+  be configured to release Elasticsearch role names in the user's SAML attributes. In these cases it is possible to use a template
+  that treats the group names as role names.
 
-  NOTE: This should only be done if you intend to define roles for all of the provided groups. 
-  Mapping a user to a large number of unnecessary or undefined roles is inefficient and can have a negative effect on system performance.
-  If you only need to map a subset of the groups, you should do it by using explicit mappings.
+  NOTE: This should only be done if you intend to define roles for all of the provided groups.  Mapping a user to a large number of
+  unnecessary or undefined roles is inefficient and can have a negative effect on system performance. If you only need to map a
+  subset of the groups, you should do it by using explicit mappings.
 
-  The `tojson` mustache function is used to convert the list of group names into a valid JSON array. Because the template produces a JSON array, the `format` must be set to `json`.
+  The `tojson` mustache function is used to convert the list of group names into a valid JSON array. Because the template produces a
+  JSON array, the `format` must be set to `json`.
 # type: request
 value: |-
   {
@@ -24,3 +26,89 @@ value: |-
     },
     "enabled": true
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.put_role_mapping(
+          name="mapping6",
+          role_templates=[
+              {
+                  "template": {
+                      "source": "{{#tojson}}groups{{/tojson}}"
+                  },
+                  "format": "json"
+              }
+          ],
+          rules={
+              "field": {
+                  "realm.name": "saml1"
+              }
+          },
+          enabled=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.putRoleMapping({
+        name: "mapping6",
+        role_templates: [
+          {
+            template: {
+              source: "{{#tojson}}groups{{/tojson}}",
+            },
+            format: "json",
+          },
+        ],
+        rules: {
+          field: {
+            "realm.name": "saml1",
+          },
+        },
+        enabled: true,
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.put_role_mapping(
+        name: "mapping6",
+        body: {
+          "role_templates": [
+            {
+              "template": {
+                "source": "{{#tojson}}groups{{/tojson}}"
+              },
+              "format": "json"
+            }
+          ],
+          "rules": {
+            "field": {
+              "realm.name": "saml1"
+            }
+          },
+          "enabled": true
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->putRoleMapping([
+          "name" => "mapping6",
+          "body" => [
+              "role_templates" => array(
+                  [
+                      "template" => [
+                          "source" => "{{#tojson}}groups{{/tojson}}",
+                      ],
+                      "format" => "json",
+                  ],
+              ),
+              "rules" => [
+                  "field" => [
+                      "realm.name" => "saml1",
+                  ],
+              ],
+              "enabled" => true,
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"role_templates\":[{\"template\":{\"source\":\"{{#tojson}}groups{{/tojson}}\"},\"format\":\"json\"}],\"rules\":{\"field\":{\
+      \"realm.name\":\"saml1\"}},\"enabled\":true}' \"$ELASTICSEARCH_URL/_security/role_mapping/mapping6\""

@@ -2,6 +2,84 @@
 method_request: GET /sensor_rollup/_rollup_search
 description: Search rolled up data stored in `sensor_rollup` with `GET /sensor_rollup/_rollup_search`
 # type: request
-value:
-  "{\n  \"size\": 0,\n  \"aggregations\": {\n    \"max_temperature\": {\n   \
-  \   \"max\": {\n        \"field\": \"temperature\"\n      }\n    }\n  }\n}"
+value: "{
+
+  \  \"size\": 0,
+
+  \  \"aggregations\": {
+
+  \    \"max_temperature\": {
+
+  \      \"max\": {
+
+  \        \"field\": \"temperature\"
+
+  \      }
+
+  \    }
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.rollup.rollup_search(
+          index="sensor_rollup",
+          size=0,
+          aggregations={
+              "max_temperature": {
+                  "max": {
+                      "field": "temperature"
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.rollup.rollupSearch({
+        index: "sensor_rollup",
+        size: 0,
+        aggregations: {
+          max_temperature: {
+            max: {
+              field: "temperature",
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.rollup.rollup_search(
+        index: "sensor_rollup",
+        body: {
+          "size": 0,
+          "aggregations": {
+            "max_temperature": {
+              "max": {
+                "field": "temperature"
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->rollup()->rollupSearch([
+          "index" => "sensor_rollup",
+          "body" => [
+              "size" => 0,
+              "aggregations" => [
+                  "max_temperature" => [
+                      "max" => [
+                          "field" => "temperature",
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"size":0,"aggregations":{"max_temperature":{"max":{"field":"temperature"}}}}''
+      "$ELASTICSEARCH_URL/sensor_rollup/_rollup_search"'

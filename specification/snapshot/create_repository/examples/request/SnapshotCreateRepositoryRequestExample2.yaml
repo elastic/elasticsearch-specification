@@ -2,6 +2,63 @@ summary: An Azure repository
 method_request: PUT _snapshot/my_backup
 description: Run `PUT /_snapshot/my_repository` to create or update an Azure snapshot repository.
 # type: request
-value:
-  "{\n  \"type\": \"azure\",\n  \"settings\": {\n    \"client\": \"secondary\"\
-  \n  }\n}"
+value: "{
+
+  \  \"type\": \"azure\",
+
+  \  \"settings\": {
+
+  \    \"client\": \"secondary\"
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.snapshot.create_repository(
+          name="my_backup",
+          repository={
+              "type": "azure",
+              "settings": {
+                  "client": "secondary"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.snapshot.createRepository({
+        name: "my_backup",
+        repository: {
+          type: "azure",
+          settings: {
+            client: "secondary",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.snapshot.create_repository(
+        repository: "my_backup",
+        body: {
+          "type": "azure",
+          "settings": {
+            "client": "secondary"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->snapshot()->createRepository([
+          "repository" => "my_backup",
+          "body" => [
+              "type" => "azure",
+              "settings" => [
+                  "client" => "secondary",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"type":"azure","settings":{"client":"secondary"}}'' "$ELASTICSEARCH_URL/_snapshot/my_backup"'
