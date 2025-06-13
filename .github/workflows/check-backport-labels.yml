@@ -31,7 +31,7 @@ jobs:
           backport_regex="^backport ([0-9])+\.([0-9]+|x)$"
 
           echo "::group::Available Labels"
-          echo "skip-backport"
+          echo "backport:skip"
 
           for label in "${all_labels[@]}"; do
             if [[ "${label}" =~ ${backport_regex} ]]; then
@@ -56,7 +56,7 @@ jobs:
           echo "::group::Detected Labels"
 
           for pr_label in "${pr_labels[@]}"; do
-            if [ "${pr_label}" = "skip-backport" ]; then
+            if [ "${pr_label}" = "backport:skip" ]; then
               has_skip_backport_label=true
               echo "${pr_label}"
               continue
@@ -84,14 +84,14 @@ jobs:
           echo "::endgroup::"
 
           if [ "${has_skip_backport_label}" = true ] && [ "${has_backport_label}" = true ]; then
-            echo "::error::The 'skip-backport' not be used in combination with another backport"\
+            echo "::error::The 'backport:skip' not be used in combination with another backport"\
                   "label."
             exit 1
           fi
 
           if [ "${has_skip_backport_label}" != true ] && [ "${has_backport_label}" != true ]; then
             echo "::error::No backport label found. Please add at least one of the"\
-                  "'backport {major}.{minor|x}' labels or use 'skip-backport',"\
+                  "'backport {major}.{minor|x}' labels or use 'backport:skip',"\
                   "if this PR should not be backported."
             exit 1
           fi

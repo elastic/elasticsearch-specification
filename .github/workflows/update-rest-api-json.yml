@@ -49,7 +49,7 @@ jobs:
           title: Update rest-api-spec ${{ matrix.branch }}
           body: 'As titled.'
           commit-message: 'Update rest-api-spec'
-          labels: specification,skip-backport
+          labels: specification,backport:skip
           delete-branch: true
           reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo,pquentin,swallez,technige
           branch: automated/rest-api-spec-update-${{ matrix.branch }}
