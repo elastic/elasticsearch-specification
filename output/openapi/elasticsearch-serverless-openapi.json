@@ -9667,7 +9667,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n ##Required authorization\n* Cluster privileges: `manage_inference`",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n ##Required authorization\n* Cluster privileges: `manage_inference`",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -9761,7 +9761,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n ##Required authorization\n* Cluster privileges: `manage_inference`",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n ##Required authorization\n* Cluster privileges: `manage_inference`",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -10744,7 +10744,7 @@
           "inference"
         ],
         "summary": "Create a Hugging Face inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `hugging_face` service.\nSupported tasks include: `text_embedding`, `completion`, and `chat_completion`.\n\nTo configure the endpoint, first visit the Hugging Face Inference Endpoints page and create a new endpoint.\nSelect a model that supports the task you intend to use.\n\nFor Elastic's `text_embedding` task:\nThe selected model must support the `Sentence Embeddings` task. On the new endpoint creation page, select the `Sentence Embeddings` task under the `Advanced Configuration` section.\nAfter the endpoint has initialized, copy the generated endpoint URL.\nRecommended models for `text_embedding` task:\n\n* `all-MiniLM-L6-v2`\n* `all-MiniLM-L12-v2`\n* `all-mpnet-base-v2`\n* `e5-base-v2`\n* `e5-small-v2`\n* `multilingual-e5-base`\n* `multilingual-e5-small`\n\nFor Elastic's `chat_completion` and `completion` tasks:\nThe selected model must support the `Text Generation` task and expose OpenAI API. HuggingFace supports both serverless and dedicated endpoints for `Text Generation`. When creating dedicated endpoint select the `Text Generation` task.\nAfter the endpoint is initialized (for dedicated) or ready (for serverless), ensure it supports the OpenAI API and includes `/v1/chat/completions` part in URL. Then, copy the full endpoint URL for use.\nRecommended models for `chat_completion` and `completion` tasks:\n\n* `Mistral-7B-Instruct-v0.2`\n* `QwQ-32B`\n* `Phi-3-mini-128k-instruct`\n ##Required authorization\n* Cluster privileges: `manage_inference`",
+        "description": "Create an inference endpoint to perform an inference task with the `hugging_face` service.\nSupported tasks include: `text_embedding`, `completion`, and `chat_completion`.\n\nTo configure the endpoint, first visit the Hugging Face Inference Endpoints page and create a new endpoint.\nSelect a model that supports the task you intend to use.\n\nFor Elastic's `text_embedding` task:\nThe selected model must support the `Sentence Embeddings` task. On the new endpoint creation page, select the `Sentence Embeddings` task under the `Advanced Configuration` section.\nAfter the endpoint has initialized, copy the generated endpoint URL.\nRecommended models for `text_embedding` task:\n\n* `all-MiniLM-L6-v2`\n* `all-MiniLM-L12-v2`\n* `all-mpnet-base-v2`\n* `e5-base-v2`\n* `e5-small-v2`\n* `multilingual-e5-base`\n* `multilingual-e5-small`\n\nFor Elastic's `chat_completion` and `completion` tasks:\nThe selected model must support the `Text Generation` task and expose OpenAI API. HuggingFace supports both serverless and dedicated endpoints for `Text Generation`. When creating dedicated endpoint select the `Text Generation` task.\nAfter the endpoint is initialized (for dedicated) or ready (for serverless), ensure it supports the OpenAI API and includes `/v1/chat/completions` part in URL. Then, copy the full endpoint URL for use.\nRecommended models for `chat_completion` and `completion` tasks:\n\n* `Mistral-7B-Instruct-v0.2`\n* `QwQ-32B`\n* `Phi-3-mini-128k-instruct`\n\nFor Elastic's `rerank` task:\nThe selected model must support the `sentence-ranking` task and expose OpenAI API.\nHuggingFace supports only dedicated (not serverless) endpoints for `Rerank` so far.\nAfter the endpoint is initialized, copy the full endpoint URL for use.\nTested models for `rerank` task:\n\n* `bge-reranker-base`\n* `jina-reranker-v1-turbo-en-GGUF`\n ##Required authorization\n* Cluster privileges: `manage_inference`",
         "operationId": "inference-put-hugging-face",
         "parameters": [
           {
@@ -10784,6 +10784,9 @@
                   },
                   "service_settings": {
                     "$ref": "#/components/schemas/inference._types.HuggingFaceServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference._types.HuggingFaceTaskSettings"
                   }
                 },
                 "required": [
@@ -10796,6 +10799,11 @@
                   "summary": "A text embedding task",
                   "description": "Run `PUT _inference/text_embedding/hugging-face-embeddings` to create an inference endpoint that performs a `text_embedding` task type.",
                   "value": "{\n    \"service\": \"hugging_face\",\n    \"service_settings\": {\n        \"api_key\": \"hugging-face-access-token\", \n        \"url\": \"url-endpoint\" \n    }\n}"
+                },
+                "PutHuggingFaceRequestExample2": {
+                  "summary": "A rerank task",
+                  "description": "Run `PUT _inference/rerank/hugging-face-rerank` to create an inference endpoint that performs a `rerank` task type.",
+                  "value": "{\n    \"service\": \"hugging_face\",\n    \"service_settings\": {\n        \"api_key\": \"hugging-face-access-token\", \n        \"url\": \"url-endpoint\" \n    },\n    \"task_settings\": {\n        \"return_documents\": true,\n        \"top_n\": 3\n    }\n}"
                 }
               }
             }
@@ -11294,6 +11302,16 @@
                   "summary": "Rerank task",
                   "description": "Run `POST _inference/rerank/cohere_rerank` to perform reranking on the example input.",
                   "value": "{\n  \"input\": [\"luke\", \"like\", \"leia\", \"chewy\",\"r2d2\", \"star\", \"wars\"],\n  \"query\": \"star wars main character\"\n}"
+                },
+                "RerankRequestExample2": {
+                  "summary": "Rerank task",
+                  "description": "Run `POST _inference/rerank/bge-reranker-base-mkn` to perform reranking on the example input via Hugging Face",
+                  "value": "{\n  \"input\": [\"luke\", \"like\", \"leia\", \"chewy\",\"r2d2\", \"star\", \"wars\"],\n  \"query\": \"star wars main character\",\n  \"return_documents\": false,\n  \"top_n\": 2\n}"
+                },
+                "RerankRequestExample3": {
+                  "summary": "Rerank task",
+                  "description": "Run `POST _inference/rerank/bge-reranker-base-mkn` to perform reranking on the example input via Hugging Face",
+                  "value": "{\n  \"input\": [\"luke\", \"like\", \"leia\", \"chewy\",\"r2d2\", \"star\", \"wars\"],\n  \"query\": \"star wars main character\",\n  \"return_documents\": true,\n  \"top_n\": 3\n}"
                 }
               }
             }
@@ -11312,6 +11330,16 @@
                     "summary": "Rerank task",
                     "description": "A successful response from `POST _inference/rerank/cohere_rerank`.\n",
                     "value": "{\n  \"rerank\": [\n    {\n      \"index\": \"2\",\n      \"relevance_score\": \"0.011597361\",\n      \"text\": \"leia\"\n    },\n    {\n      \"index\": \"0\",\n      \"relevance_score\": \"0.006338922\",\n      \"text\": \"luke\"\n    },\n    {\n      \"index\": \"5\",\n      \"relevance_score\": \"0.0016166499\",\n      \"text\": \"star\"\n    },\n    {\n      \"index\": \"4\",\n      \"relevance_score\": \"0.0011695103\",\n      \"text\": \"r2d2\"\n    },\n    {\n      \"index\": \"1\",\n      \"relevance_score\": \"5.614787E-4\",\n      \"text\": \"like\"\n    },\n    {\n      \"index\": \"6\",\n      \"relevance_score\": \"3.7850367E-4\",\n      \"text\": \"wars\"\n    },\n    {\n      \"index\": \"3\",\n      \"relevance_score\": \"1.2508839E-5\",\n      \"text\": \"chewy\"\n    }\n  ]\n}"
+                  },
+                  "RerankResponseExample2": {
+                    "summary": "Rerank task",
+                    "description": "A successful response from `POST _inference/rerank/bge-reranker-base-mkn`.\n",
+                    "value": "{\n  \"rerank\": [\n    {\n      \"index\": 6,\n      \"relevance_score\": 0.50955844\n    },\n    {\n      \"index\": 5,\n      \"relevance_score\": 0.084341794\n    }\n  ]\n}"
+                  },
+                  "RerankResponseExample3": {
+                    "summary": "Rerank task",
+                    "description": "A successful response from `POST _inference/rerank/bge-reranker-base-mkn`.\n",
+                    "value": "{\n  \"rerank\": [\n    {\n      \"index\": 6,\n      \"relevance_score\": 0.50955844,\n      \"text\": \"wars\"\n    },\n    {\n      \"index\": 5,\n      \"relevance_score\": 0.084341794,\n      \"text\": \"star\"\n    },\n    {\n      \"index\": 3,\n      \"relevance_score\": 0.004520818,\n      \"text\": \"chewy\"\n    }\n  ]\n}"
                   }
                 }
               }
@@ -51143,6 +51171,7 @@
         "enum": [
           "chat_completion",
           "completion",
+          "rerank",
           "text_embedding"
         ]
       },
@@ -51181,6 +51210,19 @@
           "api_key",
           "url"
         ]
+      },
+      "inference._types.HuggingFaceTaskSettings": {
+        "type": "object",
+        "properties": {
+          "return_documents": {
+            "description": "For a `rerank` task, return doc text within the results.",
+            "type": "boolean"
+          },
+          "top_n": {
+            "description": "For a `rerank` task, the number of most relevant documents to return.\nIt defaults to the number of the documents.",
+            "type": "number"
+          }
+        }
       },
       "inference._types.JinaAITaskType": {
         "type": "string",
