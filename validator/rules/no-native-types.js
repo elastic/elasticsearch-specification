@@ -16,16 +16,31 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import singleKeyDict from './rules/single-key-dictionary-key-is-string.js'
-import dict from './rules/dictionary-key-is-string.js'
-import noNativeTypes from './rules/no-native-types.js'
-import invalidNodeTypes from './rules/invalid-node-types.js'
+import { ESLintUtils } from '@typescript-eslint/utils';
 
-export default {
-  rules: {
-    'single-key-dictionary-key-is-string': singleKeyDict,
-    'dictionary-key-is-string': dict,
-    'no-native-types': noNativeTypes,
-    'invalid-node-types': invalidNodeTypes,
-  }
-}
+const createRule = ESLintUtils.RuleCreator(name => `https://example.com/rule/${name}`)
+
+const TYPES_TO_AVOID = ['Record', 'Partial', 'Required', 'Pick', 'Omit'];
+
+export default createRule({
+  name: 'no-native-types',
+  create(context) {
+    return {
+      TSTypeReference(node) {
+        if (TYPES_TO_AVOID.includes(node.typeName.name)) {
+          context.report({ node, messageId: 'stringKey' })
+        }
+      },
+    }
+  },
+  meta: {
+    docs: {
+      description: 'Typescript native types not allowed, use aliases',
+    },
+    messages: {
+      stringKey: "Typescript native types not allowed, use aliases"
+    },
+    type: 'suggestion',
+  },
+  defaultOptions: []
+})
