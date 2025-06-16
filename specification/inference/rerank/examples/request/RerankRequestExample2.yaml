@@ -9,6 +9,14 @@ value: |-
     "return_documents": false,
     "top_n": 2
   }
+alternative_java:
+  - language: java
+    code: |
+      client.inference().rerank(r -> r
+      	.inferenceId("bge-reranker-base-mkn")
+      	.input(List.of("luke","like","leia","chewy","r2d2","star","wars"))
+      	.query("star wars main character")
+      );
 alternatives:
   - language: Python
     code: |-
@@ -79,11 +87,3 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"input":["luke","like","leia","chewy","r2d2","star","wars"],"query":"star wars main
       character","return_documents":false,"top_n":2}'' "$ELASTICSEARCH_URL/_inference/rerank/bge-reranker-base-mkn"'
-alternative_java:
-  - language: java
-    code: |
-      client.inference().rerank(r -> r
-      	.inferenceId("bge-reranker-base-mkn")
-      	.input(List.of("luke","like","leia","chewy","r2d2","star","wars"))
-      	.query("star wars main character")
-      );

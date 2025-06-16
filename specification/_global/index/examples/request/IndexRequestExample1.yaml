@@ -12,6 +12,13 @@ value: |-
       "id": "kimchy"
     }
   }
+alternative_java:
+  - language: java
+    code: >
+      client.index(i -> i
+      	.index("my-index-000001")
+      	.document(JsonData.fromJson("{\"@timestamp\":\"2099-11-15T13:12:00\",\"message\":\"GET /search HTTP/1.1 200 1070000\",\"user\":{\"id\":\"kimchy\"}}"))
+      );
 alternatives:
   - language: Python
     code: |-
@@ -66,10 +73,3 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"@timestamp":"2099-11-15T13:12:00","message":"GET /search HTTP/1.1 200 1070000","user":{"id":"kimchy"}}''
       "$ELASTICSEARCH_URL/my-index-000001/_doc/"'
-alternative_java:
-  - language: java
-    code: >
-      client.index(i -> i
-      	.index("my-index-000001")
-      	.document(JsonData.fromJson("{\"@timestamp\":\"2099-11-15T13:12:00\",\"message\":\"GET /search HTTP/1.1 200 1070000\",\"user\":{\"id\":\"kimchy\"}}"))
-      );

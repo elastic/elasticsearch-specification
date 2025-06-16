@@ -11,6 +11,15 @@ value: "{
   \  \"service_type\": \"google_drive\"
 
   }"
+alternative_java:
+  - language: java
+    code: |
+      client.connector().put(p -> p
+      	.connectorId("my-connector")
+      	.indexName("search-google-drive")
+      	.name("My Connector")
+      	.serviceType("google_drive")
+      );
 alternatives:
   - language: Python
     code: |-
@@ -53,12 +62,3 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"index_name":"search-google-drive","name":"My Connector","service_type":"google_drive"}''
       "$ELASTICSEARCH_URL/_connector/my-connector"'
-alternative_java:
-  - language: java
-    code: |
-      client.connector().put(p -> p
-      	.connectorId("my-connector")
-      	.indexName("search-google-drive")
-      	.name("My Connector")
-      	.serviceType("google_drive")
-      );

@@ -1,4 +1,8 @@
 method_request: GET _ilm/status
+alternative_java:
+  - language: java
+    code: |
+      client.ilm().getStatus();
 alternatives:
   - language: Python
     code: resp = client.ilm.get_status()
@@ -10,7 +14,3 @@ alternatives:
     code: $resp = $client->ilm()->getStatus();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ilm/status"'
-alternative_java:
-  - language: java
-    code: |
-      client.ilm().getStatus();

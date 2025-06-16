@@ -23,6 +23,36 @@ value:
           offset: 10
         huber:
           delta: 1.5
+alternative_java:
+  - language: java
+    code: |
+      client.ml().evaluateDataFrame(e -> e
+      	.evaluation(ev -> ev
+      		.regression(r -> r
+      			.actualField("price")
+      			.predictedField("ml.price_prediction")
+      			.metrics(m -> m
+      				.msle(ms -> ms
+      					.offset(10.0D)
+      				)
+      				.huber(h -> h
+      					.delta(1.5D)
+      				)
+      			)
+      		)
+      	)
+      	.index("house_price_predictions")
+      	.query(q -> q
+      		.bool(b -> b
+      			.filter(f -> f
+      				.term(t -> t
+      					.field("ml.is_training")
+      					.value(FieldValue.of(false))
+      				)
+      			)
+      		)
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -162,33 +192,3 @@ alternatives:
       '{\"index\":\"house_price_predictions\",\"query\":{\"bool\":{\"filter\":[{\"term\":{\"ml.is_training\":false}}]}},\"evaluation\
       \":{\"regression\":{\"actual_field\":\"price\",\"predicted_field\":\"ml.price_prediction\",\"metrics\":{\"r_squared\":{},\"mse\
       \":{},\"msle\":{\"offset\":10},\"huber\":{\"delta\":1.5}}}}}' \"$ELASTICSEARCH_URL/_ml/data_frame/_evaluate\""
-alternative_java:
-  - language: java
-    code: |
-      client.ml().evaluateDataFrame(e -> e
-      	.evaluation(ev -> ev
-      		.regression(r -> r
-      			.actualField("price")
-      			.predictedField("ml.price_prediction")
-      			.metrics(m -> m
-      				.msle(ms -> ms
-      					.offset(10.0D)
-      				)
-      				.huber(h -> h
-      					.delta(1.5D)
-      				)
-      			)
-      		)
-      	)
-      	.index("house_price_predictions")
-      	.query(q -> q
-      		.bool(b -> b
-      			.filter(f -> f
-      				.term(t -> t
-      					.field("ml.is_training")
-      					.value(FieldValue.of(false))
-      				)
-      			)
-      		)
-      	)
-      );

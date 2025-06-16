@@ -26,6 +26,24 @@ value: |-
     },
     "enabled": true
   }
+alternative_java:
+  - language: java
+    code: |
+      client.security().putRoleMapping(p -> p
+      	.enabled(true)
+      	.name("mapping6")
+      	.roleTemplates(r -> r
+      		.format(TemplateFormat.Json)
+      		.template(t -> t
+      			.source(s -> s
+      				.scriptString("{{#tojson}}groups{{/tojson}}")
+      			)
+      		)
+      	)
+      	.rules(ru -> ru
+      		.field(NamedValue.of("realm.name",List.of(FieldValue.of("saml1"))))
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -112,21 +130,3 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"role_templates\":[{\"template\":{\"source\":\"{{#tojson}}groups{{/tojson}}\"},\"format\":\"json\"}],\"rules\":{\"field\":{\
       \"realm.name\":\"saml1\"}},\"enabled\":true}' \"$ELASTICSEARCH_URL/_security/role_mapping/mapping6\""
-alternative_java:
-  - language: java
-    code: |
-      client.security().putRoleMapping(p -> p
-      	.enabled(true)
-      	.name("mapping6")
-      	.roleTemplates(r -> r
-      		.format(TemplateFormat.Json)
-      		.template(t -> t
-      			.source(s -> s
-      				.scriptString("{{#tojson}}groups{{/tojson}}")
-      			)
-      		)
-      	)
-      	.rules(ru -> ru
-      		.field(NamedValue.of("realm.name",List.of(FieldValue.of("saml1"))))
-      	)
-      );

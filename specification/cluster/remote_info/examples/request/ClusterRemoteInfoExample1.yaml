@@ -1,4 +1,8 @@
 method_request: GET /_remote/info
+alternative_java:
+  - language: java
+    code: |
+      client.cluster().remoteInfo();
 alternatives:
   - language: Python
     code: resp = client.cluster.remote_info()
@@ -10,7 +14,3 @@ alternatives:
     code: $resp = $client->cluster()->remoteInfo();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_remote/info"'
-alternative_java:
-  - language: java
-    code: |
-      client.cluster().remoteInfo();

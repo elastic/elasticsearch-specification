@@ -1,4 +1,8 @@
 method_request: GET _script_context
+alternative_java:
+  - language: java
+    code: |
+      client.getScriptContext();
 alternatives:
   - language: Python
     code: resp = client.get_script_context()
@@ -10,7 +14,3 @@ alternatives:
     code: $resp = $client->getScriptContext();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_script_context"'
-alternative_java:
-  - language: java
-    code: |
-      client.getScriptContext();

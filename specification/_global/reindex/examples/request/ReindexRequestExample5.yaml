@@ -19,6 +19,18 @@ value: "{
   \  }
 
   }"
+alternative_java:
+  - language: java
+    code: |
+      client.reindex(r -> r
+      	.dest(d -> d
+      		.index("dest")
+      		.pipeline("some_ingest_pipeline")
+      	)
+      	.source(s -> s
+      		.index("source")
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -73,15 +85,3 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"source":{"index":"source"},"dest":{"index":"dest","pipeline":"some_ingest_pipeline"}}''
       "$ELASTICSEARCH_URL/_reindex"'
-alternative_java:
-  - language: java
-    code: |
-      client.reindex(r -> r
-      	.dest(d -> d
-      		.index("dest")
-      		.pipeline("some_ingest_pipeline")
-      	)
-      	.source(s -> s
-      		.index("source")
-      	)
-      );

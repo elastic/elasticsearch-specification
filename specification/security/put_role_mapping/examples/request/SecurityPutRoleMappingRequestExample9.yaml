@@ -15,6 +15,27 @@ value: |-
     ],
     "enabled": true
   }
+alternative_java:
+  - language: java
+    code: |
+      client.security().putRoleMapping(p -> p
+      	.enabled(true)
+      	.name("mapping9")
+      	.roleTemplates(List.of(RoleTemplate.of(r -> r
+      			.template(t -> t
+      				.source(s -> s
+      					.scriptString("saml_user")
+      				)
+      			)),RoleTemplate.of(ro -> ro
+      			.template(t -> t
+      				.source(s -> s
+      					.scriptString("_user_{{username}}")
+      				)
+      			))))
+      	.rules(ru -> ru
+      		.field(NamedValue.of("realm.name",List.of(FieldValue.of("cloud-saml"))))
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -117,24 +138,3 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"rules\":{\"field\":{\"realm.name\":\"cloud-saml\"}},\"role_templates\":[{\"template\":{\"source\":\"saml_user\"}},{\"temp\
       late\":{\"source\":\"_user_{{username}}\"}}],\"enabled\":true}' \"$ELASTICSEARCH_URL/_security/role_mapping/mapping9\""
-alternative_java:
-  - language: java
-    code: |
-      client.security().putRoleMapping(p -> p
-      	.enabled(true)
-      	.name("mapping9")
-      	.roleTemplates(List.of(RoleTemplate.of(r -> r
-      			.template(t -> t
-      				.source(s -> s
-      					.scriptString("saml_user")
-      				)
-      			)),RoleTemplate.of(ro -> ro
-      			.template(t -> t
-      				.source(s -> s
-      					.scriptString("_user_{{username}}")
-      				)
-      			))))
-      	.rules(ru -> ru
-      		.field(NamedValue.of("realm.name",List.of(FieldValue.of("cloud-saml"))))
-      	)
-      );

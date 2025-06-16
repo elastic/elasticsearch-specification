@@ -86,8 +86,6 @@ async function generateLanguages(example) {
     doc.add(doc.createPair('alternative_java', data.alternative_java));
   }
 
-  doc.delete('alternatives');
-  doc.add(doc.createPair('alternatives', data.alternatives));
   await fs.promises.writeFile(example, doc.toString({lineWidth: 132}));
 }
 

@@ -6,6 +6,13 @@ value: |-
   {
     "input": "What is Elastic?"
   }
+alternative_java:
+  - language: java
+    code: |
+      client.inference().completion(c -> c
+      	.inferenceId("openai_chat_completions")
+      	.input("What is Elastic?")
+      );
 alternatives:
   - language: Python
     code: |-
@@ -39,10 +46,3 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"input":"What is
       Elastic?"}'' "$ELASTICSEARCH_URL/_inference/completion/openai_chat_completions"'
-alternative_java:
-  - language: java
-    code: |
-      client.inference().completion(c -> c
-      	.inferenceId("openai_chat_completions")
-      	.input("What is Elastic?")
-      );

@@ -20,6 +20,28 @@ value:
         mse: {}
         msle: {}
         huber: {}
+alternative_java:
+  - language: java
+    code: |
+      client.ml().evaluateDataFrame(e -> e
+      	.evaluation(ev -> ev
+      		.regression(r -> r
+      			.actualField("price")
+      			.predictedField("ml.price_prediction")
+      			.metrics(m -> m
+      				.msle(ms -> ms)
+      				.huber(h -> h)
+      			)
+      		)
+      	)
+      	.index("house_price_predictions")
+      	.query(q -> q
+      		.term(t -> t
+      			.field("ml.is_training")
+      			.value(FieldValue.of(true))
+      		)
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -127,25 +149,3 @@ alternatives:
       '{\"index\":\"house_price_predictions\",\"query\":{\"term\":{\"ml.is_training\":{\"value\":true}}},\"evaluation\":{\"regressi\
       on\":{\"actual_field\":\"price\",\"predicted_field\":\"ml.price_prediction\",\"metrics\":{\"r_squared\":{},\"mse\":{},\"msle\
       \":{},\"huber\":{}}}}}' \"$ELASTICSEARCH_URL/_ml/data_frame/_evaluate\""
-alternative_java:
-  - language: java
-    code: |
-      client.ml().evaluateDataFrame(e -> e
-      	.evaluation(ev -> ev
-      		.regression(r -> r
-      			.actualField("price")
-      			.predictedField("ml.price_prediction")
-      			.metrics(m -> m
-      				.msle(ms -> ms)
-      				.huber(h -> h)
-      			)
-      		)
-      	)
-      	.index("house_price_predictions")
-      	.query(q -> q
-      		.term(t -> t
-      			.field("ml.is_training")
-      			.value(FieldValue.of(true))
-      		)
-      	)
-      );

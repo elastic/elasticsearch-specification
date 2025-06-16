@@ -1,4 +1,10 @@
 method_request: POST _ml/anomaly_detectors/low_request_rate/_close
+alternative_java:
+  - language: java
+    code: |
+      client.ml().closeJob(c -> c
+      	.jobId("low_request_rate")
+      );
 alternatives:
   - language: Python
     code: |-
@@ -22,9 +28,3 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_close"'
-alternative_java:
-  - language: java
-    code: |
-      client.ml().closeJob(c -> c
-      	.jobId("low_request_rate")
-      );

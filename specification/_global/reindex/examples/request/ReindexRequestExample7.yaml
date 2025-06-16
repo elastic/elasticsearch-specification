@@ -21,6 +21,18 @@ value: "{
   \  }
 
   }"
+alternative_java:
+  - language: java
+    code: |
+      client.reindex(r -> r
+      	.dest(d -> d
+      		.index("my-new-index-000001")
+      	)
+      	.maxDocs(1L)
+      	.source(s -> s
+      		.index("my-index-000001")
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -75,15 +87,3 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"max_docs":1,"source":{"index":"my-index-000001"},"dest":{"index":"my-new-index-000001"}}''
       "$ELASTICSEARCH_URL/_reindex"'
-alternative_java:
-  - language: java
-    code: |
-      client.reindex(r -> r
-      	.dest(d -> d
-      		.index("my-new-index-000001")
-      	)
-      	.maxDocs(1L)
-      	.source(s -> s
-      		.index("my-index-000001")
-      	)
-      );

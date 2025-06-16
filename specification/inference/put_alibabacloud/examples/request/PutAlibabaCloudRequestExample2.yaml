@@ -12,6 +12,17 @@ value: |-
           "workspace": "default"
       }
   }
+alternative_java:
+  - language: java
+    code: >
+      client.inference().put(p -> p
+      	.inferenceId("alibabacloud_ai_search_rerank")
+      	.taskType(TaskType.Rerank)
+      	.inferenceConfig(i -> i
+      		.service("alibabacloud-ai-search")
+      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-bge-reranker-larger\",\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"workspace\":\"default\"}"))
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -79,14 +90,3 @@ alternatives:
       '{\"service\":\"alibabacloud-ai-search\",\"service_settings\":{\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-bge-\
       reranker-larger\",\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"workspace\":\"default\"}}'
       \"$ELASTICSEARCH_URL/_inference/rerank/alibabacloud_ai_search_rerank\""
-alternative_java:
-  - language: java
-    code: >
-      client.inference().put(p -> p
-      	.inferenceId("alibabacloud_ai_search_rerank")
-      	.taskType(TaskType.Rerank)
-      	.inferenceConfig(i -> i
-      		.service("alibabacloud-ai-search")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-bge-reranker-larger\",\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"workspace\":\"default\"}"))
-      	)
-      );

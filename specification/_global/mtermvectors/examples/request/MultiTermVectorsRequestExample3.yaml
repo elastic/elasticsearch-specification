@@ -21,6 +21,16 @@ value: |-
         }
     ]
   }
+alternative_java:
+  - language: java
+    code: |
+      client.mtermvectors(m -> m
+      	.docs(List.of(MultiTermVectorsOperation.of(mu -> mu
+      			.index("my-index-000001")
+      			.doc(JsonData.fromJson("{\"message\":\"test test test\"}"))),MultiTermVectorsOperation.of(mu -> mu
+      			.index("my-index-000001")
+      			.doc(JsonData.fromJson("{\"message\":\"Another test ...\"}")))))
+      );
 alternatives:
   - language: Python
     code: |-
@@ -103,13 +113,3 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"docs":[{"_index":"my-index-000001","doc":{"message":"test test
       test"}},{"_index":"my-index-000001","doc":{"message":"Another test ..."}}]}'' "$ELASTICSEARCH_URL/_mtermvectors"'
-alternative_java:
-  - language: java
-    code: |
-      client.mtermvectors(m -> m
-      	.docs(List.of(MultiTermVectorsOperation.of(mu -> mu
-      			.index("my-index-000001")
-      			.doc(JsonData.fromJson("{\"message\":\"test test test\"}"))),MultiTermVectorsOperation.of(mu -> mu
-      			.index("my-index-000001")
-      			.doc(JsonData.fromJson("{\"message\":\"Another test ...\"}")))))
-      );

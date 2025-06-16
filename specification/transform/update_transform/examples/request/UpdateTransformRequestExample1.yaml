@@ -32,6 +32,45 @@ value:
     time:
       field: order_date
       max_age: 30d
+alternative_java:
+  - language: java
+    code: |
+      client.transform().updateTransform(u -> u
+      	.description("Maximum priced ecommerce data by customer_id in Asia")
+      	.dest(d -> d
+      		.index("kibana_sample_data_ecommerce_transform1")
+      		.pipeline("add_timestamp_pipeline")
+      	)
+      	.frequency(f -> f
+      		.time("5m")
+      	)
+      	.retentionPolicy(r -> r
+      		.time(t -> t
+      			.field("order_date")
+      			.maxAge(m -> m
+      				.time("30d")
+      			)
+      		)
+      	)
+      	.source(s -> s
+      		.index("kibana_sample_data_ecommerce")
+      		.query(q -> q
+      			.term(te -> te
+      				.field("geoip.continent_name")
+      				.value(FieldValue.of("Asia"))
+      			)
+      		)
+      	)
+      	.sync(sy -> sy
+      		.time(ti -> ti
+      			.delay(d -> d
+      				.time("60s")
+      			)
+      			.field("order_date")
+      		)
+      	)
+      	.transformId("simple-kibana-ecomm-pivot")
+      );
 alternatives:
   - language: Python
     code: |-
@@ -246,42 +285,3 @@ alternatives:
       Asia\",\"dest\":{\"index\":\"kibana_sample_data_ecommerce_transform1\",\"pipeline\":\"add_timestamp_pipeline\"},\"frequency\":\
       \"5m\",\"sync\":{\"time\":{\"field\":\"order_date\",\"delay\":\"60s\"}},\"retention_policy\":{\"time\":{\"field\":\"order_date\
       \",\"max_age\":\"30d\"}}}' \"$ELASTICSEARCH_URL/_transform/simple-kibana-ecomm-pivot/_update\""
-alternative_java:
-  - language: java
-    code: |
-      client.transform().updateTransform(u -> u
-      	.description("Maximum priced ecommerce data by customer_id in Asia")
-      	.dest(d -> d
-      		.index("kibana_sample_data_ecommerce_transform1")
-      		.pipeline("add_timestamp_pipeline")
-      	)
-      	.frequency(f -> f
-      		.time("5m")
-      	)
-      	.retentionPolicy(r -> r
-      		.time(t -> t
-      			.field("order_date")
-      			.maxAge(m -> m
-      				.time("30d")
-      			)
-      		)
-      	)
-      	.source(s -> s
-      		.index("kibana_sample_data_ecommerce")
-      		.query(q -> q
-      			.term(te -> te
-      				.field("geoip.continent_name")
-      				.value(FieldValue.of("Asia"))
-      			)
-      		)
-      	)
-      	.sync(sy -> sy
-      		.time(ti -> ti
-      			.delay(d -> d
-      				.time("60s")
-      			)
-      			.field("order_date")
-      		)
-      	)
-      	.transformId("simple-kibana-ecomm-pivot")
-      );

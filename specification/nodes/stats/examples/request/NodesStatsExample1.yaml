@@ -1,4 +1,7 @@
 method_request: GET _nodes/stats/process?filter_path=**.max_file_descriptors
+alternative_java:
+  - language: java
+    code: "\n"
 alternatives:
   - language: Python
     code: |-
@@ -27,6 +30,3 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_nodes/stats/process?filter_path=**.max_file_descriptors"'
-alternative_java:
-  - language: java
-    code: "\n"

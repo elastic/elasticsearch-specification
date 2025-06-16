@@ -11,6 +11,19 @@ value:
       properties:
         name:
           type: keyword
+alternative_java:
+  - language: java
+    code: |
+      client.indices().putMapping(p -> p
+      	.index("my-index-000001")
+      	.properties("user", pr -> pr
+      		.object(o -> o
+      			.properties("name", pro -> pro
+      				.keyword(k -> k)
+      			)
+      		)
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -77,16 +90,3 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"properties":{"user":{"properties":{"name":{"type":"keyword"}}}}}''
       "$ELASTICSEARCH_URL/my-index-000001/_mapping"'
-alternative_java:
-  - language: java
-    code: |
-      client.indices().putMapping(p -> p
-      	.index("my-index-000001")
-      	.properties("user", pr -> pr
-      		.object(o -> o
-      			.properties("name", pro -> pro
-      				.keyword(k -> k)
-      			)
-      		)
-      	)
-      );

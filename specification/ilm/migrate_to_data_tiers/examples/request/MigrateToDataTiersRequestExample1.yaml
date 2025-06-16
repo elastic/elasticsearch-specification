@@ -10,6 +10,13 @@ value: |-
     "legacy_template_to_delete": "global-template",
     "node_attribute": "custom_attribute_name"
   }
+alternative_java:
+  - language: java
+    code: |
+      client.ilm().migrateToDataTiers(m -> m
+      	.legacyTemplateToDelete("global-template")
+      	.nodeAttribute("custom_attribute_name")
+      );
 alternatives:
   - language: Python
     code: |-
@@ -44,10 +51,3 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"legacy_template_to_delete":"global-template","node_attribute":"custom_attribute_name"}''
       "$ELASTICSEARCH_URL/_ilm/migrate_to_data_tiers"'
-alternative_java:
-  - language: java
-    code: |
-      client.ilm().migrateToDataTiers(m -> m
-      	.legacyTemplateToDelete("global-template")
-      	.nodeAttribute("custom_attribute_name")
-      );

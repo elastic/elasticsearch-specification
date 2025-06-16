@@ -12,6 +12,17 @@ value: |-
           "url": "url-endpoint" 
       }
   }
+alternative_java:
+  - language: java
+    code: |
+      client.inference().put(p -> p
+      	.inferenceId("hugging-face-embeddings")
+      	.taskType(TaskType.TextEmbedding)
+      	.inferenceConfig(i -> i
+      		.service("hugging_face")
+      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"hugging-face-access-token\",\"url\":\"url-endpoint\"}"))
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -70,14 +81,3 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"hugging_face","service_settings":{"api_key":"hugging-face-access-token","url":"url-endpoint"}}''
       "$ELASTICSEARCH_URL/_inference/text_embedding/hugging-face-embeddings"'
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("hugging-face-embeddings")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("hugging_face")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"hugging-face-access-token\",\"url\":\"url-endpoint\"}"))
-      	)
-      );

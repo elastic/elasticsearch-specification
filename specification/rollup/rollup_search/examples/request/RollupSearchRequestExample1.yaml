@@ -21,6 +21,18 @@ value: "{
   \  }
 
   }"
+alternative_java:
+  - language: java
+    code: |
+      client.rollup().rollupSearch(r -> r
+      	.aggregations("max_temperature", a -> a
+      		.max(m -> m
+      			.field("temperature")
+      		)
+      	)
+      	.index("sensor_rollup")
+      	.size(0)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -83,15 +95,3 @@ alternatives:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"size":0,"aggregations":{"max_temperature":{"max":{"field":"temperature"}}}}''
       "$ELASTICSEARCH_URL/sensor_rollup/_rollup_search"'
-alternative_java:
-  - language: java
-    code: |
-      client.rollup().rollupSearch(r -> r
-      	.aggregations("max_temperature", a -> a
-      		.max(m -> m
-      			.field("temperature")
-      		)
-      	)
-      	.index("sensor_rollup")
-      	.size(0)
-      );

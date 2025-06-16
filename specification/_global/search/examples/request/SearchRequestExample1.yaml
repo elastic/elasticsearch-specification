@@ -11,6 +11,20 @@ value: |-
       }
     }
   }
+alternative_java:
+  - language: java
+    code: |
+      client.search(s -> s
+      	.from(40)
+      	.index("my-index-000001")
+      	.query(q -> q
+      		.term(t -> t
+      			.field("user.id")
+      			.value(FieldValue.of("kimchy"))
+      		)
+      	)
+      	.size(20)
+      ,Void.class);
 alternatives:
   - language: Python
     code: |-
@@ -68,17 +82,3 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"query":{"term":{"user.id":"kimchy"}}}'' "$ELASTICSEARCH_URL/my-index-000001/_search?from=40&size=20"'
-alternative_java:
-  - language: java
-    code: |
-      client.search(s -> s
-      	.from(40)
-      	.index("my-index-000001")
-      	.query(q -> q
-      		.term(t -> t
-      			.field("user.id")
-      			.value(FieldValue.of("kimchy"))
-      		)
-      	)
-      	.size(20)
-      ,Void.class);

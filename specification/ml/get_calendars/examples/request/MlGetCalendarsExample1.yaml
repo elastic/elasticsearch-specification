@@ -1,4 +1,10 @@
 method_request: GET _ml/calendars/planned-outages
+alternative_java:
+  - language: java
+    code: |
+      client.ml().getCalendars(g -> g
+      	.calendarId("planned-outages")
+      );
 alternatives:
   - language: Python
     code: |-
@@ -22,9 +28,3 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/calendars/planned-outages"'
-alternative_java:
-  - language: java
-    code: |
-      client.ml().getCalendars(g -> g
-      	.calendarId("planned-outages")
-      );

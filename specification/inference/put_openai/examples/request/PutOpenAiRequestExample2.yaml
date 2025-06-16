@@ -13,6 +13,17 @@ value: |-
           "model": "amazon.titan-text-premier-v1:0"
       }
   }
+alternative_java:
+  - language: java
+    code: >
+      client.inference().put(p -> p
+      	.inferenceId("amazon_bedrock_completion")
+      	.taskType(TaskType.Completion)
+      	.inferenceConfig(i -> i
+      		.service("amazonbedrock")
+      		.serviceSettings(JsonData.fromJson("{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"provider\":\"amazontitan\",\"model\":\"amazon.titan-text-premier-v1:0\"}"))
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -84,14 +95,3 @@ alternatives:
       '{\"service\":\"amazonbedrock\",\"service_settings\":{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"r\
       egion\":\"us-east-1\",\"provider\":\"amazontitan\",\"model\":\"amazon.titan-text-premier-v1:0\"}}'
       \"$ELASTICSEARCH_URL/_inference/completion/amazon_bedrock_completion\""
-alternative_java:
-  - language: java
-    code: >
-      client.inference().put(p -> p
-      	.inferenceId("amazon_bedrock_completion")
-      	.taskType(TaskType.Completion)
-      	.inferenceConfig(i -> i
-      		.service("amazonbedrock")
-      		.serviceSettings(JsonData.fromJson("{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"provider\":\"amazontitan\",\"model\":\"amazon.titan-text-premier-v1:0\"}"))
-      	)
-      );
