@@ -39,9 +39,12 @@ fn main() -> anyhow::Result<()> {
     let redirect_path = cli.redirect_path(&cli.output);
     let openapi = clients_schema_to_openapi::convert_schema(schema, cli.into(), product_meta)?;
     serde_json::to_writer_pretty(File::create(&output)?, &openapi.openapi)?;
+    serde_json::to_writer_pretty(File::create(&output)?, &openapi.openapi)?;
+
     if let Some(redirects) = openapi.redirects {
         let path = redirect_path.unwrap();
-    }
         std::fs::write(path, &redirects)?;
+    }
+
     Ok(())
 }
