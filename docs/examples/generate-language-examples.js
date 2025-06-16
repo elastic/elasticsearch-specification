@@ -83,6 +83,7 @@ async function generateLanguages(example) {
       language: "java",
       code: stdout,
     });
+    doc.delete('alternative_java');
     doc.add(doc.createPair('alternative_java', data.alternative_java));
   }
 
