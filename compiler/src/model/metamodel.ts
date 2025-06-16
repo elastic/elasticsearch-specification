@@ -287,6 +287,8 @@ export class Example {
   external_value?: string
   /** An array of alternatives for this example in other languages */
   alternatives?: ExampleAlternative[]
+  /** An array of alternatives for this example specifically for java */
+  alternative_java?: ExampleAlternative
 }
 
 /**
