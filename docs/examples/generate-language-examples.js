@@ -72,15 +72,15 @@ async function generateLanguages(example) {
   let args = [];
   args.push(JSON.stringify(javaReqs));
 
-  const { status, output, stderr } = await java.run(args);
+  const { status, stdout, stderr } = await java.run(args);
   if (status) {
     console.log(stderr);
     console.log(JSON.stringify(javaReqs));
     return stderr;
   }
-  data.alternatives.push({
+  data.alternative_java.push({
       language: "java",
-      code: output,
+      code: stdout,
   });
 
   doc.delete('alternatives');
