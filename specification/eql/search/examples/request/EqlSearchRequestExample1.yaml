@@ -14,10 +14,8 @@ alternative_java:
   - language: java
     code: |
       client.eql().search(s -> s
-      	.index("my-data-stream")
-      	.query("
-          process where (process.name == "cmd.exe" and process.pid != 2013)
-        ")
+          .index("my-data-stream")
+          .query(" process where (process.name == \"cmd.exe\" and process.pid != 2013) ")
       );
 alternatives:
   - language: Python

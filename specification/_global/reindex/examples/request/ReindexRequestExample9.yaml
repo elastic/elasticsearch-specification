@@ -34,7 +34,7 @@ alternative_java:
       	)
       	.script(s -> s
       		.source(so -> so
-      			.scriptString("ctx._source.tag = ctx._source.remove("flag")")
+      			.scriptString("ctx._source.tag = ctx._source.remove(\"flag\")")
       		)
       	)
       	.source(so -> so

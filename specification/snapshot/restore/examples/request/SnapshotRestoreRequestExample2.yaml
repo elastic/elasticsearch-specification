@@ -10,8 +10,7 @@ value:
 alternative_java:
   - language: java
     code: |
-      client.cluster().putSettings(p -> p)
-      );
+      client.cluster().putSettings();
 alternatives:
   - language: Python
     code: |-

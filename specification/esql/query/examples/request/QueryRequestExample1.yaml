@@ -17,14 +17,8 @@ alternative_java:
   - language: java
     code: |
       client.esql().query(q -> q
-      	.includeCcsMetadata(true)
-      	.query("
-          FROM library,remote-*:library
-          | EVAL year = DATE_TRUNC(1 YEARS, release_date)
-          | STATS MAX(page_count) BY year
-          | SORT year
-          | LIMIT 5
-        ")
+          .includeCcsMetadata(true)
+          .query(" FROM library,remote-*:library | EVAL year = DATE_TRUNC(1 YEARS, release_date) | STATS MAX(page_count) BY year | SORT year | LIMIT 5 ")
       );
 alternatives:
   - language: Python
