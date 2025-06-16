@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-use std::path::{PathBuf, MAIN_SEPARATOR_STR};
+use std::path::{PathBuf};
 use argh::FromArgs;
 use clients_schema::{IndexedModel};
 use wasm_bindgen::prelude::*;
@@ -66,7 +66,7 @@ pub fn convert0(cli: Cli, cwd: Option<String>) -> anyhow::Result<()> {
     let schema = IndexedModel::from_reader(json.as_bytes())?;
     
     let product_meta_path = match cwd {
-        Some(ref cwd) => format!("{cwd}{MAIN_SEPARATOR_STR}specification/_doc_ids/product-meta.json"),
+        Some(ref cwd) => format!("{cwd}/specification/_doc_ids/product-meta.json"),
         None => "specification/_doc_ids/product-meta.json".to_string(),
     };
     let json_product_map = node_fs::read_file_sync_to_string(&product_meta_path, "utf8");
