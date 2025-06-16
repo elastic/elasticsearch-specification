@@ -506,6 +506,7 @@ pub struct SchemaExample {
     pub value: Option<String>,
     pub external_value: Option<String>,
     pub alternatives: Option<Vec<ExampleAlternative>>,
+    pub alternative_java: Option<ExampleAlternative>,
 }
 
 /// Common attributes for all type definitions
