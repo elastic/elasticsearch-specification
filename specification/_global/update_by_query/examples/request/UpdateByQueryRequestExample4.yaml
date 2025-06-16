@@ -10,6 +10,21 @@ value: |-
       "source": "ctx._source['extra'] = 'test'"
     }
   }
+alternative_java:
+  - language: java
+    code: |
+      client.updateByQuery(u -> u
+      	.index("my-index-000001")
+      	.refresh(true)
+      	.script(s -> s
+      		.source(so -> so
+      			.scriptString("ctx._source['extra'] = 'test'")
+      		)
+      	)
+      	.slices(sl -> sl
+      		.value(5)
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -60,18 +75,3 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"script":{"source":"ctx._source[''"''"''extra''"''"''] = ''"''"''test''"''"''"}}''
       "$ELASTICSEARCH_URL/my-index-000001/_update_by_query?refresh&slices=5"'
-alternative_java:
-  - language: java
-    code: |
-      client.updateByQuery(u -> u
-      	.index("my-index-000001")
-      	.refresh(true)
-      	.script(s -> s
-      		.source(so -> so
-      			.scriptString("ctx._source['extra'] = 'test'")
-      		)
-      	)
-      	.slices(sl -> sl
-      		.value(5)
-      	)
-      );

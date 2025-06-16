@@ -1,4 +1,8 @@
 method_request: GET _script_language
+alternative_java:
+  - language: java
+    code: |
+      client.getScriptLanguages();
 alternatives:
   - language: Python
     code: resp = client.get_script_languages()
@@ -10,7 +14,3 @@ alternatives:
     code: $resp = $client->getScriptLanguages();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_script_language"'
-alternative_java:
-  - language: java
-    code: |
-      client.getScriptLanguages();

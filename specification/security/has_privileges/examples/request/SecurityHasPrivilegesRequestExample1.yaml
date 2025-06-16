@@ -25,6 +25,22 @@ value: |-
       }
     ]
   }
+alternative_java:
+  - language: java
+    code: |
+      client.security().hasPrivileges(h -> h
+      	.application(a -> a
+      		.application("inventory_manager")
+      		.privileges(List.of("read","data:write/inventory"))
+      		.resources("product/1852563")
+      	)
+      	.cluster(List.of("monitor","manage"))
+      	.index(List.of(IndexPrivilegesCheck.of(i -> i
+      			.names(List.of("suppliers","products"))
+      			.privileges("read")),IndexPrivilegesCheck.of(i -> i
+      			.names("inventory")
+      			.privileges(List.of("read","write")))))
+      );
 alternatives:
   - language: Python
     code: |-
@@ -179,19 +195,3 @@ alternatives:
       \":[\"inventory\"],\"privileges\":[\"read\",\"write\"]}],\"application\":[{\"application\":\"inventory_manager\",\"privileges\
       \":[\"read\",\"data:write/inventory\"],\"resources\":[\"product/1852563\"]}]}'
       \"$ELASTICSEARCH_URL/_security/user/_has_privileges\""
-alternative_java:
-  - language: java
-    code: |
-      client.security().hasPrivileges(h -> h
-      	.application(a -> a
-      		.application("inventory_manager")
-      		.privileges(List.of("read","data:write/inventory"))
-      		.resources("product/1852563")
-      	)
-      	.cluster(List.of("monitor","manage"))
-      	.index(List.of(IndexPrivilegesCheck.of(i -> i
-      			.names(List.of("suppliers","products"))
-      			.privileges("read")),IndexPrivilegesCheck.of(i -> i
-      			.names("inventory")
-      			.privileges(List.of("read","write")))))
-      );

@@ -7,6 +7,14 @@ value: "{
   \  \"synonyms\": \"hello, hi, howdy\"
 
   }"
+alternative_java:
+  - language: java
+    code: |
+      client.synonyms().putSynonymRule(p -> p
+      	.ruleId("test-1")
+      	.setId("my-synonyms-set")
+      	.synonyms("hello, hi, howdy")
+      );
 alternatives:
   - language: Python
     code: |-
@@ -44,11 +52,3 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"synonyms":"hello,
       hi, howdy"}'' "$ELASTICSEARCH_URL/_synonyms/my-synonyms-set/test-1"'
-alternative_java:
-  - language: java
-    code: |
-      client.synonyms().putSynonymRule(p -> p
-      	.ruleId("test-1")
-      	.setId("my-synonyms-set")
-      	.synonyms("hello, hi, howdy")
-      );

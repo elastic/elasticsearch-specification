@@ -38,6 +38,28 @@ value: "{
   \  }
 
   }"
+alternative_java:
+  - language: java
+    code: |
+      client.reindex(r -> r
+      	.dest(d -> d
+      		.index("my-new-index-000001")
+      	)
+      	.source(s -> s
+      		.index("my-index-000001")
+      		.query(q -> q
+      			.match(m -> m
+      				.field("test")
+      				.query(FieldValue.of("data"))
+      			)
+      		)
+      		.remote(re -> re
+      			.host("http://otherhost:9200")
+      			.username("user")
+      			.password("pass")
+      		)
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -129,25 +151,3 @@ alternatives:
       '{\"source\":{\"remote\":{\"host\":\"http://otherhost:9200\",\"username\":\"user\",\"password\":\"pass\"},\"index\":\"my-inde\
       x-000001\",\"query\":{\"match\":{\"test\":\"data\"}}},\"dest\":{\"index\":\"my-new-index-000001\"}}'
       \"$ELASTICSEARCH_URL/_reindex\""
-alternative_java:
-  - language: java
-    code: |
-      client.reindex(r -> r
-      	.dest(d -> d
-      		.index("my-new-index-000001")
-      	)
-      	.source(s -> s
-      		.index("my-index-000001")
-      		.query(q -> q
-      			.match(m -> m
-      				.field("test")
-      				.query(FieldValue.of("data"))
-      			)
-      		)
-      		.remote(re -> re
-      			.host("http://otherhost:9200")
-      			.username("user")
-      			.password("pass")
-      		)
-      	)
-      );

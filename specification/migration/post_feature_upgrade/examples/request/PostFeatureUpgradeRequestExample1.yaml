@@ -1,4 +1,8 @@
 method_request: POST /_migration/system_features
+alternative_java:
+  - language: java
+    code: |
+      client.migration().postFeatureUpgrade();
 alternatives:
   - language: Python
     code: resp = client.migration.post_feature_upgrade()
@@ -10,7 +14,3 @@ alternatives:
     code: $resp = $client->migration()->postFeatureUpgrade();
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_migration/system_features"'
-alternative_java:
-  - language: java
-    code: |
-      client.migration().postFeatureUpgrade();

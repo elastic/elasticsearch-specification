@@ -11,6 +11,17 @@ value: "{
   \  }
 
   }"
+alternative_java:
+  - language: java
+    code: |
+      client.indices().putSettings(p -> p
+      	.index("my-index-000001")
+      	.settings(s -> s
+      		.index(i -> i
+      			.numberOfReplicas("2")
+      		)
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -56,14 +67,3 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"index":{"number_of_replicas":2}}'' "$ELASTICSEARCH_URL/my-index-000001/_settings"'
-alternative_java:
-  - language: java
-    code: |
-      client.indices().putSettings(p -> p
-      	.index("my-index-000001")
-      	.settings(s -> s
-      		.index(i -> i
-      			.numberOfReplicas("2")
-      		)
-      	)
-      );

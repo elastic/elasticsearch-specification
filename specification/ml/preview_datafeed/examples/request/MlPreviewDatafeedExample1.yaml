@@ -1,4 +1,10 @@
 method_request: GET _ml/datafeeds/datafeed-high_sum_total_sales/_preview
+alternative_java:
+  - language: java
+    code: |
+      client.ml().previewDatafeed(p -> p
+      	.datafeedId("datafeed-high_sum_total_sales")
+      );
 alternatives:
   - language: Python
     code: |-
@@ -23,9 +29,3 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-high_sum_total_sales/_preview"'
-alternative_java:
-  - language: java
-    code: |
-      client.ml().previewDatafeed(p -> p
-      	.datafeedId("datafeed-high_sum_total_sales")
-      );

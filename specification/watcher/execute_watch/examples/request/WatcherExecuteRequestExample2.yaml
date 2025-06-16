@@ -10,6 +10,13 @@ value: |-
       "action2" : "skip"
     }
   }
+alternative_java:
+  - language: java
+    code: |
+      client.watcher().executeWatch(e -> e
+      	.actionModes(Map.of("action1", ActionExecutionMode.ForceSimulate,"action2", ActionExecutionMode.Skip))
+      	.id("my_watch")
+      );
 alternatives:
   - language: Python
     code: |-
@@ -56,10 +63,3 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"action_modes":{"action1":"force_simulate","action2":"skip"}}''
       "$ELASTICSEARCH_URL/_watcher/watch/my_watch/_execute"'
-alternative_java:
-  - language: java
-    code: |
-      client.watcher().executeWatch(e -> e
-      	.actionModes(Map.of("action1", ActionExecutionMode.ForceSimulate,"action2", ActionExecutionMode.Skip))
-      	.id("my_watch")
-      );

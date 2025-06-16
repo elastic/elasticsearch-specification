@@ -17,6 +17,18 @@ value: "{
   \    }
 
   }"
+alternative_java:
+  - language: java
+    code: |
+      client.connector().updatePipeline(u -> u
+      	.connectorId("my-connector")
+      	.pipeline(p -> p
+      		.extractBinaryContent(true)
+      		.name("my-connector-pipeline")
+      		.reduceWhitespace(true)
+      		.runMlInference(true)
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -71,15 +83,3 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"pipeline\":{\"extract_binary_content\":true,\"name\":\"my-connector-pipeline\",\"reduce_whitespace\":true,\"run_ml_infere\
       nce\":true}}' \"$ELASTICSEARCH_URL/_connector/my-connector/_pipeline\""
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updatePipeline(u -> u
-      	.connectorId("my-connector")
-      	.pipeline(p -> p
-      		.extractBinaryContent(true)
-      		.name("my-connector-pipeline")
-      		.reduceWhitespace(true)
-      		.runMlInference(true)
-      	)
-      );

@@ -10,6 +10,18 @@ value: |-
       "source": "Math.log(_score * 2) + params['my_modifier']"
     }
   }
+alternative_java:
+  - language: java
+    code: |
+      client.putScript(p -> p
+      	.id("my-stored-script")
+      	.script(s -> s
+      		.lang("painless")
+      		.source(so -> so
+      			.scriptString("Math.log(_score * 2) + params['my_modifier']")
+      		)
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -56,15 +68,3 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"script":{"lang":"painless","source":"Math.log(_score * 2) + params[''"''"''my_modifier''"''"'']"}}''
       "$ELASTICSEARCH_URL/_scripts/my-stored-script"'
-alternative_java:
-  - language: java
-    code: |
-      client.putScript(p -> p
-      	.id("my-stored-script")
-      	.script(s -> s
-      		.lang("painless")
-      		.source(so -> so
-      			.scriptString("Math.log(_score * 2) + params['my_modifier']")
-      		)
-      	)
-      );

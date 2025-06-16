@@ -37,6 +37,28 @@ value: "{
   \  }
 
   }"
+alternative_java:
+  - language: java
+    code: |
+      client.connector().updateFeatures(u -> u
+      	.connectorId("my-connector")
+      	.features(f -> f
+      		.documentLevelSecurity(d -> d
+      			.enabled(true)
+      		)
+      		.incrementalSync(i -> i
+      			.enabled(true)
+      		)
+      		.syncRules(s -> s
+      			.advanced(a -> a
+      				.enabled(false)
+      			)
+      			.basic(b -> b
+      				.enabled(true)
+      			)
+      		)
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -131,25 +153,3 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"features\":{\"document_level_security\":{\"enabled\":true},\"incremental_sync\":{\"enabled\":true},\"sync_rules\":{\"adva\
       nced\":{\"enabled\":false},\"basic\":{\"enabled\":true}}}}' \"$ELASTICSEARCH_URL/_connector/my-connector/_features\""
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateFeatures(u -> u
-      	.connectorId("my-connector")
-      	.features(f -> f
-      		.documentLevelSecurity(d -> d
-      			.enabled(true)
-      		)
-      		.incrementalSync(i -> i
-      			.enabled(true)
-      		)
-      		.syncRules(s -> s
-      			.advanced(a -> a
-      				.enabled(false)
-      			)
-      			.basic(b -> b
-      				.enabled(true)
-      			)
-      		)
-      	)
-      );

@@ -1,4 +1,8 @@
 method_request: GET /_security/enroll/kibana
+alternative_java:
+  - language: java
+    code: |
+      client.security().enrollKibana();
 alternatives:
   - language: Python
     code: resp = client.security.enroll_kibana()
@@ -10,7 +14,3 @@ alternatives:
     code: $resp = $client->security()->enrollKibana();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/enroll/kibana"'
-alternative_java:
-  - language: java
-    code: |
-      client.security().enrollKibana();

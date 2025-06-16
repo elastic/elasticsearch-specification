@@ -11,6 +11,13 @@ value: "{
   \    }
 
   }"
+alternative_java:
+  - language: java
+    code: |
+      client.connector().updateConfiguration(u -> u
+      	.connectorId("my-spo-connector")
+      	.values("secret_value", JsonData.fromJson("\"foo-bar\""))
+      );
 alternatives:
   - language: Python
     code: |-
@@ -52,10 +59,3 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"values":{"secret_value":"foo-bar"}}'' "$ELASTICSEARCH_URL/_connector/my-spo-connector/_configuration"'
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateConfiguration(u -> u
-      	.connectorId("my-spo-connector")
-      	.values("secret_value", JsonData.fromJson("\"foo-bar\""))
-      );

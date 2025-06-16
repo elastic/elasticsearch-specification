@@ -14,6 +14,17 @@ value: |-
         [ process where stringContains(process.executable, "regsvr32") ]
     """
   }
+alternative_java:
+  - language: java
+    code: |
+      client.eql().search(s -> s
+      	.index("my-data-stream")
+      	.query("
+          sequence by process.pid
+            [ file where file.name == "cmd.exe" and process.pid != 2013 ]
+            [ process where stringContains(process.executable, "regsvr32") ]
+        ")
+      );
 alternatives:
   - language: Python
     code: >-
@@ -50,14 +61,3 @@ alternatives:
       '{\"query\":\"\\n    sequence by process.pid\\n      [ file where file.name == \\\"cmd.exe\\\" and process.pid != 2013
       ]\\n      [ process where stringContains(process.executable, \\\"regsvr32\\\") ]\\n  \"}'
       \"$ELASTICSEARCH_URL/my-data-stream/_eql/search\""
-alternative_java:
-  - language: java
-    code: |
-      client.eql().search(s -> s
-      	.index("my-data-stream")
-      	.query("
-          sequence by process.pid
-            [ file where file.name == "cmd.exe" and process.pid != 2013 ]
-            [ process where stringContains(process.executable, "regsvr32") ]
-        ")
-      );

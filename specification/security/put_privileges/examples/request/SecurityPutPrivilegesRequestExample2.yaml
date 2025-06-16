@@ -19,6 +19,15 @@ value: |-
       }
     }
   }
+alternative_java:
+  - language: java
+    code: |
+      client.security().putPrivileges(p -> p
+      	.privileges(Map.of("app02", "all", pr -> pr
+      		.actions("*"),"app01", Map.of("read", Actions.of(a -> a
+      			.actions(List.of("action:login","data:read/*"))),"write", Actions.of(a -> a
+      			.actions(List.of("action:login","data:write/*"))))))
+      );
 alternatives:
   - language: Python
     code: |-
@@ -125,12 +134,3 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"app01\":{\"read\":{\"actions\":[\"action:login\",\"data:read/*\"]},\"write\":{\"actions\":[\"action:login\",\"data:write/*\
       \"]}},\"app02\":{\"all\":{\"actions\":[\"*\"]}}}' \"$ELASTICSEARCH_URL/_security/privilege\""
-alternative_java:
-  - language: java
-    code: |
-      client.security().putPrivileges(p -> p
-      	.privileges(Map.of("app02", "all", pr -> pr
-      		.actions("*"),"app01", Map.of("read", Actions.of(a -> a
-      			.actions(List.of("action:login","data:read/*"))),"write", Actions.of(a -> a
-      			.actions(List.of("action:login","data:write/*"))))))
-      );

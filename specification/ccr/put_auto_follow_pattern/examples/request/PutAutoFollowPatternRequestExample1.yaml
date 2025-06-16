@@ -44,6 +44,30 @@ value: "{
   \  \"read_poll_timeout\" : \"30s\"
 
   }"
+alternative_java:
+  - language: java
+    code: |
+      client.ccr().putAutoFollowPattern(p -> p
+      	.followIndexPattern("{{leader_index}}-follower")
+      	.leaderIndexPatterns("leader_index*")
+      	.maxOutstandingReadRequests(16)
+      	.maxOutstandingWriteRequests(8)
+      	.maxReadRequestOperationCount(1024)
+      	.maxReadRequestSize("1024k")
+      	.maxRetryDelay(m -> m
+      		.time("10s")
+      	)
+      	.maxWriteBufferCount(512)
+      	.maxWriteBufferSize("512k")
+      	.maxWriteRequestOperationCount(32768)
+      	.maxWriteRequestSize("16k")
+      	.name("my_auto_follow_pattern")
+      	.readPollTimeout(r -> r
+      		.time("30s")
+      	)
+      	.remoteCluster("remote_cluster")
+      	.settings("index.number_of_replicas", JsonData.fromJson("0"))
+      );
 alternatives:
   - language: Python
     code: |-
@@ -147,27 +171,3 @@ alternatives:
       d_requests\":16,\"max_read_request_size\":\"1024k\",\"max_write_request_operation_count\":32768,\"max_write_request_size\":\"\
       16k\",\"max_outstanding_write_requests\":8,\"max_write_buffer_count\":512,\"max_write_buffer_size\":\"512k\",\"max_retry_delay\
       \":\"10s\",\"read_poll_timeout\":\"30s\"}' \"$ELASTICSEARCH_URL/_ccr/auto_follow/my_auto_follow_pattern\""
-alternative_java:
-  - language: java
-    code: |
-      client.ccr().putAutoFollowPattern(p -> p
-      	.followIndexPattern("{{leader_index}}-follower")
-      	.leaderIndexPatterns("leader_index*")
-      	.maxOutstandingReadRequests(16)
-      	.maxOutstandingWriteRequests(8)
-      	.maxReadRequestOperationCount(1024)
-      	.maxReadRequestSize("1024k")
-      	.maxRetryDelay(m -> m
-      		.time("10s")
-      	)
-      	.maxWriteBufferCount(512)
-      	.maxWriteBufferSize("512k")
-      	.maxWriteRequestOperationCount(32768)
-      	.maxWriteRequestSize("16k")
-      	.name("my_auto_follow_pattern")
-      	.readPollTimeout(r -> r
-      		.time("30s")
-      	)
-      	.remoteCluster("remote_cluster")
-      	.settings("index.number_of_replicas", JsonData.fromJson("0"))
-      );

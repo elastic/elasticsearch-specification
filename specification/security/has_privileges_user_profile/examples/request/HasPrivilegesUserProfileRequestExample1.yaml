@@ -32,6 +32,25 @@ value: |-
       ]
     }
   }
+alternative_java:
+  - language: java
+    code: >
+      client.security().hasPrivilegesUserProfile(h -> h
+      	.privileges(p -> p
+      		.application(a -> a
+      			.application("inventory_manager")
+      			.privileges(List.of("read","data:write/inventory"))
+      			.resources("product/1852563")
+      		)
+      		.cluster(List.of("monitor","create_snapshot","manage_ml"))
+      		.index(List.of(IndexPrivilegesCheck.of(i -> i
+      				.names(List.of("suppliers","products"))
+      				.privileges("create_doc")),IndexPrivilegesCheck.of(i -> i
+      				.names("inventory")
+      				.privileges(List.of("read","write")))))
+      	)
+      	.uids(List.of("u_LQPnxDxEjIH0GOUoFkZr5Y57YUwSkL9Joiq-g4OCbPc_0","u_rzRnxDgEHIH0GOUoFkZr5Y27YUwSk19Joiq=g4OCxxB_1","u_does-not-exist_0"))
+      );
 alternatives:
   - language: Python
     code: |-
@@ -218,22 +237,3 @@ alternatives:
       \",\"products\"],\"privileges\":[\"create_doc\"]},{\"names\":[\"inventory\"],\"privileges\":[\"read\",\"write\"]}],\"applicat\
       ion\":[{\"application\":\"inventory_manager\",\"privileges\":[\"read\",\"data:write/inventory\"],\"resources\":[\"product/185\
       2563\"]}]}}' \"$ELASTICSEARCH_URL/_security/profile/_has_privileges\""
-alternative_java:
-  - language: java
-    code: >
-      client.security().hasPrivilegesUserProfile(h -> h
-      	.privileges(p -> p
-      		.application(a -> a
-      			.application("inventory_manager")
-      			.privileges(List.of("read","data:write/inventory"))
-      			.resources("product/1852563")
-      		)
-      		.cluster(List.of("monitor","create_snapshot","manage_ml"))
-      		.index(List.of(IndexPrivilegesCheck.of(i -> i
-      				.names(List.of("suppliers","products"))
-      				.privileges("create_doc")),IndexPrivilegesCheck.of(i -> i
-      				.names("inventory")
-      				.privileges(List.of("read","write")))))
-      	)
-      	.uids(List.of("u_LQPnxDxEjIH0GOUoFkZr5Y57YUwSkL9Joiq-g4OCbPc_0","u_rzRnxDgEHIH0GOUoFkZr5Y27YUwSk19Joiq=g4OCxxB_1","u_does-not-exist_0"))
-      );

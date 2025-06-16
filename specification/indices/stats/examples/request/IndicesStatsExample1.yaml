@@ -1,4 +1,7 @@
 method_request: GET _stats/fielddata?human&fields=my_join_field#question
+alternative_java:
+  - language: java
+    code: "\n"
 alternatives:
   - language: Python
     code: |-
@@ -31,6 +34,3 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_stats/fielddata?human&fields=my_join_field#question"'
-alternative_java:
-  - language: java
-    code: "\n"

@@ -13,6 +13,19 @@ value: "{
   \  }
 
   }"
+alternative_java:
+  - language: java
+    code: |
+      client.snapshot().createRepository(c -> c
+      	.name("my_backup")
+      	.repository(r -> r
+      		.azure(a -> a
+      			.settings(s -> s
+      				.client("secondary")
+      			)
+      		)
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -62,16 +75,3 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"type":"azure","settings":{"client":"secondary"}}'' "$ELASTICSEARCH_URL/_snapshot/my_backup"'
-alternative_java:
-  - language: java
-    code: |
-      client.snapshot().createRepository(c -> c
-      	.name("my_backup")
-      	.repository(r -> r
-      		.azure(a -> a
-      			.settings(s -> s
-      				.client("secondary")
-      			)
-      		)
-      	)
-      );

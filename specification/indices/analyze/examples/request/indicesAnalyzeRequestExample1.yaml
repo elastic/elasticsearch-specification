@@ -5,6 +5,13 @@ description: You can apply any of the built-in analyzers to the text string with
 value:
   analyzer: standard
   text: this is a test
+alternative_java:
+  - language: java
+    code: |
+      client.indices().analyze(a -> a
+      	.analyzer("standard")
+      	.text("this is a test")
+      );
 alternatives:
   - language: Python
     code: |-
@@ -38,10 +45,3 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"analyzer":"standard","text":"this is a test"}'' "$ELASTICSEARCH_URL/_analyze"'
-alternative_java:
-  - language: java
-    code: |
-      client.indices().analyze(a -> a
-      	.analyzer("standard")
-      	.text("this is a test")
-      );

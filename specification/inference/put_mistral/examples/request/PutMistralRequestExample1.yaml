@@ -12,6 +12,17 @@ value: |-
       "model": "mistral-embed" 
     }
   }
+alternative_java:
+  - language: java
+    code: |
+      client.inference().put(p -> p
+      	.inferenceId("mistral-embeddings-test")
+      	.taskType(TaskType.TextEmbedding)
+      	.inferenceConfig(i -> i
+      		.service("mistral")
+      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"Mistral-API-Key\",\"model\":\"mistral-embed\"}"))
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -70,14 +81,3 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"mistral","service_settings":{"api_key":"Mistral-API-Key","model":"mistral-embed"}}''
       "$ELASTICSEARCH_URL/_inference/text_embedding/mistral-embeddings-test"'
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("mistral-embeddings-test")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("mistral")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"Mistral-API-Key\",\"model\":\"mistral-embed\"}"))
-      	)
-      );

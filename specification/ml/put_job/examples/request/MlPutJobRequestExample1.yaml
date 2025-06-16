@@ -30,6 +30,53 @@ value:
         script:
           source: "emit(doc['timestamp'].value.getHour());"
     datafeed_id: datafeed-test-job1
+alternative_java:
+  - language: java
+    code: |
+      client.ml().putJob(p -> p
+      	.analysisConfig(a -> a
+      		.bucketSpan(b -> b
+      			.time("15m")
+      		)
+      		.detectors(d -> d
+      			.detectorDescription("Sum of bytes")
+      			.fieldName("bytes")
+      			.function("sum")
+      		)
+      	)
+      	.analysisLimits(an -> an
+      		.modelMemoryLimit("11MB")
+      	)
+      	.dataDescription(d -> d
+      		.timeField("timestamp")
+      		.timeFormat("epoch_ms")
+      	)
+      	.datafeedConfig(d -> d
+      		.datafeedId("datafeed-test-job1")
+      		.indices("kibana_sample_data_logs")
+      		.query(q -> q
+      			.bool(b -> b
+      				.must(m -> m
+      					.matchAll(ma -> ma)
+      				)
+      			)
+      		)
+      		.runtimeMappings("hour_of_day", r -> r
+      			.script(s -> s
+      				.source(so -> so
+      					.scriptString("emit(doc['timestamp'].value.getHour());")
+      				)
+      			)
+      			.type(RuntimeFieldType.Long)
+      		)
+      	)
+      	.jobId("job-01")
+      	.modelPlotConfig(m -> m
+      		.annotationsEnabled(true)
+      		.enabled(true)
+      	)
+      	.resultsIndexName("test-job1")
+      );
 alternatives:
   - language: Python
     code: |-
@@ -243,50 +290,3 @@ alternatives:
       \"bool\":{\"must\":[{\"match_all\":{}}]}},\"runtime_mappings\":{\"hour_of_day\":{\"type\":\"long\",\"script\":{\"source\":\"e\
       mit(doc['\"'\"'timestamp'\"'\"'].value.getHour());\"}}},\"datafeed_id\":\"datafeed-test-job1\"}}'
       \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/job-01\""
-alternative_java:
-  - language: java
-    code: |
-      client.ml().putJob(p -> p
-      	.analysisConfig(a -> a
-      		.bucketSpan(b -> b
-      			.time("15m")
-      		)
-      		.detectors(d -> d
-      			.detectorDescription("Sum of bytes")
-      			.fieldName("bytes")
-      			.function("sum")
-      		)
-      	)
-      	.analysisLimits(an -> an
-      		.modelMemoryLimit("11MB")
-      	)
-      	.dataDescription(d -> d
-      		.timeField("timestamp")
-      		.timeFormat("epoch_ms")
-      	)
-      	.datafeedConfig(d -> d
-      		.datafeedId("datafeed-test-job1")
-      		.indices("kibana_sample_data_logs")
-      		.query(q -> q
-      			.bool(b -> b
-      				.must(m -> m
-      					.matchAll(ma -> ma)
-      				)
-      			)
-      		)
-      		.runtimeMappings("hour_of_day", r -> r
-      			.script(s -> s
-      				.source(so -> so
-      					.scriptString("emit(doc['timestamp'].value.getHour());")
-      				)
-      			)
-      			.type(RuntimeFieldType.Long)
-      		)
-      	)
-      	.jobId("job-01")
-      	.modelPlotConfig(m -> m
-      		.annotationsEnabled(true)
-      		.enabled(true)
-      	)
-      	.resultsIndexName("test-job1")
-      );

@@ -16,6 +16,24 @@ value: |-
       }
     }
   }
+alternative_java:
+  - language: java
+    code: |
+      client.updateByQuery(u -> u
+      	.index("my-index-000001")
+      	.query(q -> q
+      		.term(t -> t
+      			.field("user.id")
+      			.value(FieldValue.of("kimchy"))
+      		)
+      	)
+      	.script(s -> s
+      		.source(so -> so
+      			.scriptString("ctx._source.count++")
+      		)
+      		.lang("painless")
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -82,21 +100,3 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"script":{"source":"ctx._source.count++","lang":"painless"},"query":{"term":{"user.id":"kimchy"}}}''
       "$ELASTICSEARCH_URL/my-index-000001/_update_by_query"'
-alternative_java:
-  - language: java
-    code: |
-      client.updateByQuery(u -> u
-      	.index("my-index-000001")
-      	.query(q -> q
-      		.term(t -> t
-      			.field("user.id")
-      			.value(FieldValue.of("kimchy"))
-      		)
-      	)
-      	.script(s -> s
-      		.source(so -> so
-      			.scriptString("ctx._source.count++")
-      		)
-      		.lang("painless")
-      	)
-      );

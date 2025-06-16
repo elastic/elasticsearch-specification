@@ -8,6 +8,19 @@ value: |-
       "total_document_count": 2000,
       "last_seen": "2023-01-02T10:00:00Z"
   }
+alternative_java:
+  - language: java
+    code: |
+      client.connector().syncJobUpdateStats(s -> s
+      	.connectorSyncJobId("my-connector-sync-job")
+      	.deletedDocumentCount(10L)
+      	.indexedDocumentCount(20L)
+      	.indexedDocumentVolume(1000L)
+      	.lastSeen(l -> l
+      		.time("2023-01-02T10:00:00Z")
+      	)
+      	.totalDocumentCount(2000)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -58,16 +71,3 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"deleted_document_count\":10,\"indexed_document_count\":20,\"indexed_document_volume\":1000,\"total_document_count\":2000,\
       \"last_seen\":\"2023-01-02T10:00:00Z\"}' \"$ELASTICSEARCH_URL/_connector/_sync_job/my-connector-sync-job/_stats\""
-alternative_java:
-  - language: java
-    code: |
-      client.connector().syncJobUpdateStats(s -> s
-      	.connectorSyncJobId("my-connector-sync-job")
-      	.deletedDocumentCount(10L)
-      	.indexedDocumentCount(20L)
-      	.indexedDocumentVolume(1000L)
-      	.lastSeen(l -> l
-      		.time("2023-01-02T10:00:00Z")
-      	)
-      	.totalDocumentCount(2000)
-      );

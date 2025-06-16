@@ -15,6 +15,17 @@ value: |-
       }
     }
   }
+alternative_java:
+  - language: java
+    code: |
+      client.scriptsPainlessExecute(s -> s
+      	.script(sc -> sc
+      		.source(so -> so
+      			.scriptString("params.count / params.total")
+      		)
+      		.params(Map.of("total", JsonData.fromJson("1000"),"count", JsonData.fromJson("100")))
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -69,14 +80,3 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"script":{"source":"params.count / params.total","params":{"count":100,"total":1000}}}''
       "$ELASTICSEARCH_URL/_scripts/painless/_execute"'
-alternative_java:
-  - language: java
-    code: |
-      client.scriptsPainlessExecute(s -> s
-      	.script(sc -> sc
-      		.source(so -> so
-      			.scriptString("params.count / params.total")
-      		)
-      		.params(Map.of("total", JsonData.fromJson("1000"),"count", JsonData.fromJson("100")))
-      	)
-      );

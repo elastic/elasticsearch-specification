@@ -61,6 +61,27 @@ value: "{
   \  ]
 
   }"
+alternative_java:
+  - language: java
+    code: |
+      client.ingest().simulate(s -> s
+      	.docs(List.of(Document.of(d -> d
+      			.id("id")
+      			.index("index")
+      			.source(JsonData.fromJson("{\"foo\":\"bar\"}"))),Document.of(d -> d
+      			.id("id")
+      			.index("index")
+      			.source(JsonData.fromJson("{\"foo\":\"rab\"}")))))
+      	.pipeline(p -> p
+      		.description("_description")
+      		.processors(pr -> pr
+      			.set(se -> se
+      				.field("field2")
+      				.value(JsonData.fromJson("\"_value\""))
+      			)
+      		)
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -196,24 +217,3 @@ alternatives:
       '{\"pipeline\":{\"description\":\"_description\",\"processors\":[{\"set\":{\"field\":\"field2\",\"value\":\"_value\"}}]},\"do\
       cs\":[{\"_index\":\"index\",\"_id\":\"id\",\"_source\":{\"foo\":\"bar\"}},{\"_index\":\"index\",\"_id\":\"id\",\"_source\":{\
       \"foo\":\"rab\"}}]}' \"$ELASTICSEARCH_URL/_ingest/pipeline/_simulate\""
-alternative_java:
-  - language: java
-    code: |
-      client.ingest().simulate(s -> s
-      	.docs(List.of(Document.of(d -> d
-      			.id("id")
-      			.index("index")
-      			.source(JsonData.fromJson("{\"foo\":\"bar\"}"))),Document.of(d -> d
-      			.id("id")
-      			.index("index")
-      			.source(JsonData.fromJson("{\"foo\":\"rab\"}")))))
-      	.pipeline(p -> p
-      		.description("_description")
-      		.processors(pr -> pr
-      			.set(se -> se
-      				.field("field2")
-      				.value(JsonData.fromJson("\"_value\""))
-      			)
-      		)
-      	)
-      );

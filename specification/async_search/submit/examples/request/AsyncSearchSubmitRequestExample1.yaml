@@ -29,6 +29,25 @@ value: "{
   \  }
 
   }"
+alternative_java:
+  - language: java
+    code: |
+      client.asyncSearch().submit(s -> s
+      	.aggregations("sale_date", a -> a
+      		.dateHistogram(d -> d
+      			.calendarInterval(CalendarInterval.Day)
+      			.field("date")
+      		)
+      	)
+      	.index("sales*")
+      	.size(0)
+      	.sort(so -> so
+      		.field(f -> f
+      			.field("date")
+      			.order(SortOrder.Asc)
+      		)
+      	)
+      ,Void.class);
 alternatives:
   - language: Python
     code: |-
@@ -123,22 +142,3 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"sort\":[{\"date\":{\"order\":\"asc\"}}],\"aggs\":{\"sale_date\":{\"date_histogram\":{\"field\":\"date\",\"calendar_interv\
       al\":\"1d\"}}}}' \"$ELASTICSEARCH_URL/sales*/_async_search?size=0\""
-alternative_java:
-  - language: java
-    code: |
-      client.asyncSearch().submit(s -> s
-      	.aggregations("sale_date", a -> a
-      		.dateHistogram(d -> d
-      			.calendarInterval(CalendarInterval.Day)
-      			.field("date")
-      		)
-      	)
-      	.index("sales*")
-      	.size(0)
-      	.sort(so -> so
-      		.field(f -> f
-      			.field("date")
-      			.order(SortOrder.Asc)
-      		)
-      	)
-      ,Void.class);

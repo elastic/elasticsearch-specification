@@ -14,6 +14,17 @@ value: |-
           "workspace": "default"
       }
   }
+alternative_java:
+  - language: java
+    code: >
+      client.inference().put(p -> p
+      	.inferenceId("alibabacloud_ai_search_embeddings")
+      	.taskType(TaskType.TextEmbedding)
+      	.inferenceConfig(i -> i
+      		.service("alibabacloud-ai-search")
+      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-text-embedding-001\",\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"workspace\":\"default\"}"))
+      	)
+      );
 alternatives:
   - language: Python
     code: |-
@@ -81,14 +92,3 @@ alternatives:
       '{\"service\":\"alibabacloud-ai-search\",\"service_settings\":{\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-text\
       -embedding-001\",\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"workspace\":\"default\"}}'
       \"$ELASTICSEARCH_URL/_inference/text_embedding/alibabacloud_ai_search_embeddings\""
-alternative_java:
-  - language: java
-    code: >
-      client.inference().put(p -> p
-      	.inferenceId("alibabacloud_ai_search_embeddings")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("alibabacloud-ai-search")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-text-embedding-001\",\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"workspace\":\"default\"}"))
-      	)
-      );
