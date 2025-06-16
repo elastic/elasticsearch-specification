@@ -52,7 +52,7 @@ pub struct OpenApiConversion {
 }
 
 /// Convert an API model into an OpenAPI v3 schema, optionally filtered for a given flavor
-pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_meta: IndexMap<String,String>) -> anyhow::Result<OpenAPI> {
+pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_meta: IndexMap<String,String>) -> anyhow::Result<OpenApiConversion> {
     // Expand generics
     schema = clients_schema::transform::expand_generics(schema, ExpandConfig::default())?;
 
@@ -82,7 +82,7 @@ pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_m
 /// Note: there are ways to represent [generics in JSON Schema], but its unlikely that tooling will understand it.
 ///
 /// [generics in JSON Schema]: https://json-schema.org/blog/posts/dynamicref-and-generics
-pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, product_meta: &IndexMap<String,String>) -> anyhow::Result<OpenAPI> {
+pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, product_meta: &IndexMap<String,String>) -> anyhow::Result<OpenApiConversion> {
     let mut openapi = OpenAPI {
         openapi: "3.0.3".into(),
         info: info(model),

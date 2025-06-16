@@ -11895,7 +11895,6 @@
           }
         },
         "x-state": "Generally available",
-<<<<<<< HEAD
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -11921,10 +11920,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_data_stream/my-data-stream/_settings\""
           }
-        ]
-=======
+        ],
         "x-product-feature": "elasticsearch"
->>>>>>> 27c144c68 (preview implementation)
       },
       "put": {
         "tags": [
@@ -12034,7 +12031,6 @@
           }
         },
         "x-state": "Generally available",
-<<<<<<< HEAD
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12060,10 +12056,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index.lifecycle.name\":\"new-test-policy\",\"index.number_of_shards\":11}' \"$ELASTICSEARCH_URL/_data_stream/my-data-stream/_settings\""
           }
-        ]
-=======
+        ],
         "x-product-feature": "elasticsearch"
->>>>>>> 27c144c68 (preview implementation)
       }
     },
     "/_index_template": {
@@ -20138,7 +20132,6 @@
           }
         },
         "x-state": "Generally available",
-<<<<<<< HEAD
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20164,10 +20157,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"analysis_config\":{\"bucket_span\":\"15m\",\"detectors\":[{\"detector_description\":\"Sum of bytes\",\"function\":\"sum\",\"field_name\":\"bytes\"}]},\"data_description\":{\"time_field\":\"timestamp\",\"time_format\":\"epoch_ms\"},\"analysis_limits\":{\"model_memory_limit\":\"11MB\"},\"model_plot_config\":{\"enabled\":true,\"annotations_enabled\":true},\"results_index_name\":\"test-job1\",\"datafeed_config\":{\"indices\":[\"kibana_sample_data_logs\"],\"query\":{\"bool\":{\"must\":[{\"match_all\":{}}]}},\"runtime_mappings\":{\"hour_of_day\":{\"type\":\"long\",\"script\":{\"source\":\"emit(doc['\"'\"'timestamp'\"'\"'].value.getHour());\"}}},\"datafeed_id\":\"datafeed-test-job1\"}}' \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/job-01\""
           }
-        ]
-=======
+        ],
         "x-product-feature": "elasticsearch, machine-learning"
->>>>>>> 27c144c68 (preview implementation)
       },
       "delete": {
         "tags": [
@@ -22465,7 +22456,6 @@
           }
         },
         "x-state": "Generally available",
-<<<<<<< HEAD
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -22491,10 +22481,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"timeout\":\"35m\"}' \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/job-01/_open\""
           }
-        ]
-=======
+        ],
         "x-product-feature": "elasticsearch, machine-learning"
->>>>>>> 27c144c68 (preview implementation)
       }
     },
     "/_ml/data_frame/analytics/_preview": {
