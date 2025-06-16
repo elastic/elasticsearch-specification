@@ -26,3 +26,7 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_lifecycle/stats?human&pretty"'
+alternative_java:
+  - language: java
+    code: |
+      client.indices().getDataLifecycleStats();

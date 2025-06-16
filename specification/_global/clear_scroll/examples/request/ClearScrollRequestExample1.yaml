@@ -35,3 +35,9 @@ alternatives:
     code:
       'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ=="}'' "$ELASTICSEARCH_URL/_search/scroll"'
+alternative_java:
+  - language: java
+    code: |
+      client.clearScroll(c -> c
+      	.scrollId("DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==")
+      );

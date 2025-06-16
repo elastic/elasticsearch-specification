@@ -45,3 +45,12 @@ alternatives:
       "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"query\":\"\\n    process where (process.name == \\\"cmd.exe\\\" and process.pid != 2013)\\n  \"}'
       \"$ELASTICSEARCH_URL/my-data-stream/_eql/search\""
+alternative_java:
+  - language: java
+    code: |
+      client.eql().search(s -> s
+      	.index("my-data-stream")
+      	.query("
+          process where (process.name == "cmd.exe" and process.pid != 2013)
+        ")
+      );

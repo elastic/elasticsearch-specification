@@ -45,3 +45,15 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"script":"ctx._source.new_field = ''"''"''value_of_new_field''"''"''"}'' "$ELASTICSEARCH_URL/test/_update/1"'
+alternative_java:
+  - language: java
+    code: |
+      client.update(u -> u
+      	.id("1")
+      	.index("test")
+      	.script(s -> s
+      		.source(so -> so
+      			.scriptString("ctx._source.new_field = 'value_of_new_field'")
+      		)
+      	)
+      ,Void.class);

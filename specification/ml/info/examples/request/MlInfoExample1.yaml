@@ -10,3 +10,7 @@ alternatives:
     code: $resp = $client->ml()->info();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/info"'
+alternative_java:
+  - language: java
+    code: |
+      client.ml().info();

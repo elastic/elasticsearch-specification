@@ -40,3 +40,10 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"query":"SELECT *
       FROM library ORDER BY page_count DESC LIMIT 5"}'' "$ELASTICSEARCH_URL/_sql?format=txt"'
+alternative_java:
+  - language: java
+    code: |
+      client.sql().query(q -> q
+      	.format(SqlFormat.Txt)
+      	.query("SELECT * FROM library ORDER BY page_count DESC LIMIT 5")
+      );

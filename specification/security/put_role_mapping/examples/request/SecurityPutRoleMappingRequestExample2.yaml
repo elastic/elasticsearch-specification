@@ -87,3 +87,14 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"roles":["user","admin"],"enabled":true,"rules":{"field":{"username":["esadmin01","esadmin02"]}}}''
       "$ELASTICSEARCH_URL/_security/role_mapping/mapping2"'
+alternative_java:
+  - language: java
+    code: |
+      client.security().putRoleMapping(p -> p
+      	.enabled(true)
+      	.name("mapping2")
+      	.roles(List.of("user","admin"))
+      	.rules(r -> r
+      		.field(NamedValue.of("username",List.of(FieldValue.of("esadmin01"),FieldValue.of("esadmin02"))))
+      	)
+      );

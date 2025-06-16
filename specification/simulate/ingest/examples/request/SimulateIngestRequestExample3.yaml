@@ -202,3 +202,27 @@ alternatives:
       \"_source\":{\"bar\":\"rab\"}}],\"component_template_substitutions\":{\"my-mappings_template\":{\"template\":{\"mappings\":{\
       \"dynamic\":\"strict\",\"properties\":{\"foo\":{\"type\":\"keyword\"},\"bar\":{\"type\":\"keyword\"}}}}}}}'
       \"$ELASTICSEARCH_URL/_ingest/_simulate\""
+alternative_java:
+  - language: java
+    code: |
+      client.simulate().ingest(i -> i
+      	.componentTemplateSubstitutions("my-mappings_template", c -> c
+      		.template(t -> t
+      			.mappings(m -> m
+      				.dynamic(DynamicMapping.Strict)
+      				.properties(Map.of("bar", Property.of(p -> p
+      						.keyword(k -> k
+      					)),"foo", Property.of(pr -> pr
+      						.keyword(k -> k
+      					))))
+      			)
+      		)
+      	)
+      	.docs(List.of(Document.of(d -> d
+      			.id("123")
+      			.index("my-index")
+      			.source(JsonData.fromJson("{\"foo\":\"foo\"}"))),Document.of(d -> d
+      			.id("456")
+      			.index("my-index")
+      			.source(JsonData.fromJson("{\"bar\":\"rab\"}")))))
+      );

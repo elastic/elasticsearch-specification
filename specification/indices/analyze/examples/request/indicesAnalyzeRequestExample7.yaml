@@ -71,3 +71,17 @@ alternatives:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"tokenizer":"standard","filter":["snowball"],"text":"detailed
       output","explain":true,"attributes":["keyword"]}'' "$ELASTICSEARCH_URL/_analyze"'
+alternative_java:
+  - language: java
+    code: |
+      client.indices().analyze(a -> a
+      	.attributes("keyword")
+      	.explain(true)
+      	.filter(f -> f
+      		.name("snowball")
+      	)
+      	.text("detailed output")
+      	.tokenizer(t -> t
+      		.name("standard")
+      	)
+      );

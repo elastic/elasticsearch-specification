@@ -10,3 +10,7 @@ alternatives:
     code: $resp = $client->license()->getBasicStatus();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_license/basic_status"'
+alternative_java:
+  - language: java
+    code: |
+      client.license().getBasicStatus();

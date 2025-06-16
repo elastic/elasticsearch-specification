@@ -37,3 +37,10 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"calc_interim":true}''
       "$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_flush"'
+alternative_java:
+  - language: java
+    code: |
+      client.ml().flushJob(f -> f
+      	.calcInterim(true)
+      	.jobId("low_request_rate")
+      );

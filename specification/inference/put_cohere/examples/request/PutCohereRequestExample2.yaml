@@ -88,3 +88,15 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"cohere\",\"service_settings\":{\"api_key\":\"Cohere-API-key\",\"model_id\":\"rerank-english-v3.0\"},\"task_se\
       ttings\":{\"top_n\":10,\"return_documents\":true}}' \"$ELASTICSEARCH_URL/_inference/rerank/cohere-rerank\""
+alternative_java:
+  - language: java
+    code: |
+      client.inference().put(p -> p
+      	.inferenceId("cohere-rerank")
+      	.taskType(TaskType.Rerank)
+      	.inferenceConfig(i -> i
+      		.service("cohere")
+      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"Cohere-API-key\",\"model_id\":\"rerank-english-v3.0\"}"))
+      		.taskSettings(JsonData.fromJson("{\"top_n\":10,\"return_documents\":true}"))
+      	)
+      );

@@ -100,3 +100,6 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"indices":["kibana_sample_data_logs"],"query":{"bool":{"must":[{"match_all":{}}]}},"job_id":"test-job"}''
       "$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-test-job?pretty"'
+alternative_java:
+  - language: java
+    code: "\n"

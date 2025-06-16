@@ -215,3 +215,26 @@ alternatives:
       '{\"roles\":[\"superuser\"],\"enabled\":true,\"rules\":{\"all\":[{\"any\":[{\"field\":{\"dn\":\"*,ou=admin,dc=example,dc=com\
       \"}},{\"field\":{\"username\":[\"es-admin\",\"es-system\"]}}]},{\"field\":{\"groups\":\"cn=people,dc=example,dc=com\"}},{\"ex\
       cept\":{\"field\":{\"metadata.terminated_date\":null}}}]}}' \"$ELASTICSEARCH_URL/_security/role_mapping/mapping8\""
+alternative_java:
+  - language: java
+    code: |
+      client.security().putRoleMapping(p -> p
+      	.enabled(true)
+      	.name("mapping8")
+      	.roles("superuser")
+      	.rules(r -> r
+      		.all(List.of(RoleMappingRule.of(ro -> ro
+      				.any(List.of(RoleMappingRule.of(rol -> rol
+      						.field(NamedValue.of("dn",List.of(FieldValue.of("*,ou=admin,dc=example,dc=com"))
+      					)),RoleMappingRule.of(role -> role
+      						.field(NamedValue.of("username",List.of(FieldValue.of("es-admin"),FieldValue.of("es-system"))
+      					)))
+      			)),RoleMappingRule.of(roleM -> roleM
+      				.field(NamedValue.of("groups",List.of(FieldValue.of("cn=people,dc=example,dc=com"))
+      			)),RoleMappingRule.of(roleMa -> roleMa
+      				.except(e -> e
+      					.field(NamedValue.of("metadata.terminated_date",List.of(FieldValue.of(null))
+      				)
+      			))))
+      	)
+      );

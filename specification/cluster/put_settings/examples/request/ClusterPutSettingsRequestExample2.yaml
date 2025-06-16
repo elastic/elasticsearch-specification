@@ -51,3 +51,9 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"persistent":{"action.auto_create_index":"my-index-000001,index10,-index1*,+ind*"}}''
       "$ELASTICSEARCH_URL/_cluster/settings"'
+alternative_java:
+  - language: java
+    code: |
+      client.cluster().putSettings(p -> p
+      	.persistent("action.auto_create_index", JsonData.fromJson("\"my-index-000001,index10,-index1*,+ind*\""))
+      );

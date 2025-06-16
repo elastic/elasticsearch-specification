@@ -58,3 +58,11 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"input":"The sky
       above the port was the color of television tuned to a dead channel.","task_settings":{"input_type":"ingest"}}''
       "$ELASTICSEARCH_URL/_inference/text_embedding/my-cohere-endpoint"'
+alternative_java:
+  - language: java
+    code: |
+      client.inference().textEmbedding(t -> t
+      	.inferenceId("my-cohere-endpoint")
+      	.input("The sky above the port was the color of television tuned to a dead channel.")
+      	.taskSettings(JsonData.fromJson("{\"input_type\":\"ingest\"}"))
+      );

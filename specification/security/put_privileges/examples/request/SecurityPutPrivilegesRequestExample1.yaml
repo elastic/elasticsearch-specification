@@ -90,3 +90,12 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"myapp":{"read":{"actions":["data:read/*","action:login"],"metadata":{"description":"Read access to
       myapp"}}}}'' "$ELASTICSEARCH_URL/_security/privilege"'
+alternative_java:
+  - language: java
+    code: |
+      client.security().putPrivileges(p -> p
+      	.privileges("myapp", "read", pr -> pr
+      		.actions(List.of("data:read/*","action:login"))
+      		.metadata("description", JsonData.fromJson("\"Read access to myapp\""))
+      	)
+      );

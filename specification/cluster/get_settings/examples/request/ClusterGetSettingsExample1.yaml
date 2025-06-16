@@ -23,3 +23,6 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_cluster/settings?filter_path=persistent.cluster.remote"'
+alternative_java:
+  - language: java
+    code: "\n"

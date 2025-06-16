@@ -68,3 +68,14 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"openai","service_settings":{"api_key":"OpenAI-API-Key","model_id":"gpt-3.5-turbo"}}''
       "$ELASTICSEARCH_URL/_inference/completion/openai-completion"'
+alternative_java:
+  - language: java
+    code: |
+      client.inference().put(p -> p
+      	.inferenceId("openai-completion")
+      	.taskType(TaskType.Completion)
+      	.inferenceConfig(i -> i
+      		.service("openai")
+      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"OpenAI-API-Key\",\"model_id\":\"gpt-3.5-turbo\"}"))
+      	)
+      );

@@ -83,3 +83,16 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"index_patterns":["template*"],"priority":1,"template":{"settings":{"number_of_shards":2}}}''
       "$ELASTICSEARCH_URL/_index_template/template_1"'
+alternative_java:
+  - language: java
+    code: |
+      client.indices().putIndexTemplate(p -> p
+      	.indexPatterns("template*")
+      	.name("template_1")
+      	.priority(1L)
+      	.template(t -> t
+      		.settings(s -> s
+      			.numberOfShards("2")
+      		)
+      	)
+      );

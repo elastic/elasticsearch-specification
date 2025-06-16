@@ -76,3 +76,16 @@ alternatives:
       "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"fields\":[\"text\"],\"offsets\":true,\"payloads\":true,\"positions\":true,\"term_statistics\":true,\"field_statistics\":t\
       rue}' \"$ELASTICSEARCH_URL/my-index-000001/_termvectors/1\""
+alternative_java:
+  - language: java
+    code: |
+      client.termvectors(t -> t
+      	.fieldStatistics(true)
+      	.fields("text")
+      	.id("1")
+      	.index("my-index-000001")
+      	.offsets(true)
+      	.payloads(true)
+      	.positions(true)
+      	.termStatistics(true)
+      );

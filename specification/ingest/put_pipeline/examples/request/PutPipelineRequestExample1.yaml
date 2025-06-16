@@ -95,3 +95,17 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"description":"My
       optional pipeline description","processors":[{"set":{"description":"My optional processor
       description","field":"my-keyword-field","value":"foo"}}]}'' "$ELASTICSEARCH_URL/_ingest/pipeline/my-pipeline-id"'
+alternative_java:
+  - language: java
+    code: |
+      client.ingest().putPipeline(p -> p
+      	.description("My optional pipeline description")
+      	.id("my-pipeline-id")
+      	.processors(pr -> pr
+      		.set(s -> s
+      			.field("my-keyword-field")
+      			.value(JsonData.fromJson("\"foo\""))
+      			.description("My optional processor description")
+      		)
+      	)
+      );

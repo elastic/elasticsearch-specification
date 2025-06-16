@@ -78,3 +78,14 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"azureopenai\",\"service_settings\":{\"api_key\":\"Api-Key\",\"resource_name\":\"Resource-name\",\"deployment_\
       id\":\"Deployment-id\",\"api_version\":\"2024-02-01\"}}' \"$ELASTICSEARCH_URL/_inference/completion/azure_openai_completion\""
+alternative_java:
+  - language: java
+    code: >
+      client.inference().put(p -> p
+      	.inferenceId("azure_openai_completion")
+      	.taskType(TaskType.Completion)
+      	.inferenceConfig(i -> i
+      		.service("azureopenai")
+      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"Api-Key\",\"resource_name\":\"Resource-name\",\"deployment_id\":\"Deployment-id\",\"api_version\":\"2024-02-01\"}"))
+      	)
+      );

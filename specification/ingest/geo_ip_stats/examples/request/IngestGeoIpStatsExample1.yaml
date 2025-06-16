@@ -10,3 +10,7 @@ alternatives:
     code: $resp = $client->ingest()->geoIpStats();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ingest/geoip/stats"'
+alternative_java:
+  - language: java
+    code: |
+      client.ingest().geoIpStats();

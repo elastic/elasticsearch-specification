@@ -58,3 +58,13 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"settings":{"number_of_shards":3,"number_of_replicas":2}}'' "$ELASTICSEARCH_URL/my-index-000001"'
+alternative_java:
+  - language: java
+    code: |
+      client.indices().create(c -> c
+      	.index("my-index-000001")
+      	.settings(s -> s
+      		.numberOfShards("3")
+      		.numberOfReplicas("2")
+      	)
+      );

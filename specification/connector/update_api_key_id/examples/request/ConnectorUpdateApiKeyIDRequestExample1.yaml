@@ -47,3 +47,11 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"api_key_id":"my-api-key-id","api_key_secret_id":"my-connector-secret-id"}''
       "$ELASTICSEARCH_URL/_connector/my-connector/_api_key_id"'
+alternative_java:
+  - language: java
+    code: |
+      client.connector().updateApiKeyId(u -> u
+      	.apiKeyId("my-api-key-id")
+      	.apiKeySecretId("my-connector-secret-id")
+      	.connectorId("my-connector")
+      );

@@ -49,3 +49,11 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"id":"connector-id","job_type":"full","trigger_method":"on_demand"}''
       "$ELASTICSEARCH_URL/_connector/_sync_job"'
+alternative_java:
+  - language: java
+    code: |
+      client.connector().syncJobPost(s -> s
+      	.id("connector-id")
+      	.jobType(SyncJobType.Full)
+      	.triggerMethod(SyncJobTriggerMethod.OnDemand)
+      );

@@ -48,3 +48,12 @@ alternatives:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"sort":"record_score","desc":true,"start":"1454944100000"}''
       "$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/results/records"'
+alternative_java:
+  - language: java
+    code: |
+      client.ml().getRecords(g -> g
+      	.desc(true)
+      	.jobId("low_request_rate")
+      	.sort("record_score")
+      	.start(DateTime.of("1454944100000"))
+      );

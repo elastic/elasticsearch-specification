@@ -127,3 +127,24 @@ alternatives:
       ?\",\"name\":\"<daily-snap-{now/d}>\",\"repository\":\"my_repository\",\"config\":{\"indices\":[\"data-*\",\"important\"],\"i\
       gnore_unavailable\":false,\"include_global_state\":false},\"retention\":{\"expire_after\":\"30d\",\"min_count\":5,\"max_count\
       \":50}}' \"$ELASTICSEARCH_URL/_slm/policy/daily-snapshots\""
+alternative_java:
+  - language: java
+    code: |
+      client.slm().putLifecycle(p -> p
+      	.config(c -> c
+      		.ignoreUnavailable(false)
+      		.indices(List.of("data-*","important"))
+      		.includeGlobalState(false)
+      	)
+      	.name("<daily-snap-{now/d}>")
+      	.policyId("daily-snapshots")
+      	.repository("my_repository")
+      	.retention(r -> r
+      		.expireAfter(e -> e
+      			.time("30d")
+      		)
+      		.maxCount(50)
+      		.minCount(5)
+      	)
+      	.schedule("0 30 1 * * ?")
+      );

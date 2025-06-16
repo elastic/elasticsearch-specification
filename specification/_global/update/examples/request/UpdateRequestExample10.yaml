@@ -103,3 +103,24 @@ alternatives:
       '{\"scripted_upsert\":true,\"script\":{\"source\":\"\\n      if ( ctx.op == '\"'\"'create'\"'\"' )
       {\\n        ctx._source.counter = params.count\\n      } else {\\n        ctx._source.counter +=
       params.count\\n      }\\n    \",\"params\":{\"count\":4}},\"upsert\":{}}' \"$ELASTICSEARCH_URL/test/_update/1\""
+alternative_java:
+  - language: java
+    code: |
+      client.update(u -> u
+      	.id("1")
+      	.index("test")
+      	.script(s -> s
+      		.source(so -> so
+      			.scriptString("
+            if ( ctx.op == 'create' ) {
+              ctx._source.counter = params.count
+            } else {
+              ctx._source.counter += params.count
+            }
+          ")
+      		)
+      		.params("count", JsonData.fromJson("4"))
+      	)
+      	.scriptedUpsert(true)
+      	.upsert(JsonData.fromJson("{}"))
+      ,Void.class);

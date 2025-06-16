@@ -76,3 +76,11 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"security\":{\"index.auto_expand_replicas\":\"0-all\"},\"security-tokens\":{\"index.auto_expand_replicas\":\"0-all\"},\"se\
       curity-profile\":{\"index.auto_expand_replicas\":\"0-all\"}}' \"$ELASTICSEARCH_URL/_security/settings\""
+alternative_java:
+  - language: java
+    code: |
+      client.security().updateSettings(u -> u
+      	.security(s -> s)
+      	.securityProfile(s -> s)
+      	.securityTokens(s -> s)
+      );

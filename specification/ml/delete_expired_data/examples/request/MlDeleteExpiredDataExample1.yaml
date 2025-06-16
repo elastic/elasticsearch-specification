@@ -22,3 +22,11 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/_delete_expired_data?timeout=1h"'
+alternative_java:
+  - language: java
+    code: |
+      client.ml().deleteExpiredData(d -> d
+      	.timeout(t -> t
+      		.offset(1)
+      	)
+      );

@@ -54,3 +54,10 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"docs":[{"text":"The fool doth think he is wise, but the wise man knows himself to be a fool."}]}''
       "$ELASTICSEARCH_URL/_ml/trained_models/lang_ident_model_1/_infer"'
+alternative_java:
+  - language: java
+    code: |
+      client.ml().inferTrainedModel(i -> i
+      	.docs("text", JsonData.fromJson("\"The fool doth think he is wise, but the wise man knows himself to be a fool.\""))
+      	.modelId("lang_ident_model_1")
+      );

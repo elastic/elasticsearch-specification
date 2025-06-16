@@ -63,3 +63,15 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"index\":\"my_analytics_dest_index\",\"evaluation\":{\"outlier_detection\":{\"actual_field\":\"is_outlier\",\"predicted_pr\
       obability_field\":\"ml.outlier_score\"}}}' \"$ELASTICSEARCH_URL/_ml/data_frame/_evaluate\""
+alternative_java:
+  - language: java
+    code: |
+      client.ml().evaluateDataFrame(e -> e
+      	.evaluation(ev -> ev
+      		.outlierDetection(o -> o
+      			.actualField("is_outlier")
+      			.predictedProbabilityField("ml.outlier_score")
+      		)
+      	)
+      	.index("my_analytics_dest_index")
+      );

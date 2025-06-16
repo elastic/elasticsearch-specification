@@ -80,3 +80,14 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"azureaistudio\",\"service_settings\":{\"api_key\":\"Azure-AI-Studio-API-key\",\"target\":\"Target-Uri\",\"pro\
       vider\":\"openai\",\"endpoint_type\":\"token\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/azure_ai_studio_embeddings\""
+alternative_java:
+  - language: java
+    code: >
+      client.inference().put(p -> p
+      	.inferenceId("azure_ai_studio_embeddings")
+      	.taskType(TaskType.TextEmbedding)
+      	.inferenceConfig(i -> i
+      		.service("azureaistudio")
+      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"Azure-AI-Studio-API-key\",\"target\":\"Target-Uri\",\"provider\":\"openai\",\"endpoint_type\":\"token\"}"))
+      	)
+      );

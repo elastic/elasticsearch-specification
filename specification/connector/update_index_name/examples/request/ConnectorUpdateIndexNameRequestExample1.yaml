@@ -40,3 +40,10 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"index_name":"data-from-my-google-drive"}'' "$ELASTICSEARCH_URL/_connector/my-connector/_index_name"'
+alternative_java:
+  - language: java
+    code: |
+      client.connector().updateIndexName(u -> u
+      	.connectorId("my-connector")
+      	.indexName("data-from-my-google-drive")
+      );

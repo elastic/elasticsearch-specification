@@ -120,3 +120,24 @@ alternatives:
       '{\"requests\":[{\"id\":\"JFK
       query\",\"request\":{\"query\":{\"match_all\":{}}},\"ratings\":[]}],\"metric\":{\"precision\":{\"k\":20,\"relevant_rating_thr\
       eshold\":1,\"ignore_unlabeled\":false}}}' \"$ELASTICSEARCH_URL/my-index-000001/_rank_eval\""
+alternative_java:
+  - language: java
+    code: |
+      client.rankEval(r -> r
+      	.index("my-index-000001")
+      	.metric(m -> m
+      		.precision(p -> p
+      			.ignoreUnlabeled(false)
+      			.relevantRatingThreshold(1)
+      			.k(20)
+      		)
+      	)
+      	.requests(re -> re
+      		.id("JFK query")
+      		.request(req -> req
+      			.query(q -> q
+      				.matchAll(m -> m)
+      			)
+      		)
+      	)
+      );

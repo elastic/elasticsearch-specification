@@ -70,3 +70,14 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"elser","service_settings":{"num_allocations":1,"num_threads":1}}''
       "$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model"'
+alternative_java:
+  - language: java
+    code: |
+      client.inference().put(p -> p
+      	.inferenceId("my-elser-model")
+      	.taskType(TaskType.SparseEmbedding)
+      	.inferenceConfig(i -> i
+      		.service("elser")
+      		.serviceSettings(JsonData.fromJson("{\"num_allocations\":1,\"num_threads\":1}"))
+      	)
+      );
