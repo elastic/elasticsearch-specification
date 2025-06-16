@@ -41,25 +41,6 @@ value: "{
   \    ]
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateFiltering(u -> u
-      	.connectorId("my-g-drive-connector")
-      	.rules(List.of(FilteringRule.of(f -> f
-      			.field("file_extension")
-      			.id("exclude-txt-files")
-      			.order(0)
-      			.policy(FilteringPolicy.Exclude)
-      			.rule(FilteringRuleRule.Equals)
-      			.value("txt")),FilteringRule.of(f -> f
-      			.field("_")
-      			.id("DEFAULT")
-      			.order(1)
-      			.policy(FilteringPolicy.Include)
-      			.rule(FilteringRuleRule.Regex)
-      			.value(".*"))))
-      );
 alternatives:
   - language: Python
     code: |-
@@ -163,3 +144,22 @@ alternatives:
       '{\"rules\":[{\"field\":\"file_extension\",\"id\":\"exclude-txt-files\",\"order\":0,\"policy\":\"exclude\",\"rule\":\"equals\
       \",\"value\":\"txt\"},{\"field\":\"_\",\"id\":\"DEFAULT\",\"order\":1,\"policy\":\"include\",\"rule\":\"regex\",\"value\":\".*\
       \"}]}' \"$ELASTICSEARCH_URL/_connector/my-g-drive-connector/_filtering\""
+alternative_java:
+  - language: java
+    code: |
+      client.connector().updateFiltering(u -> u
+      	.connectorId("my-g-drive-connector")
+      	.rules(List.of(FilteringRule.of(f -> f
+      			.field("file_extension")
+      			.id("exclude-txt-files")
+      			.order(0)
+      			.policy(FilteringPolicy.Exclude)
+      			.rule(FilteringRuleRule.Equals)
+      			.value("txt")),FilteringRule.of(f -> f
+      			.field("_")
+      			.id("DEFAULT")
+      			.order(1)
+      			.policy(FilteringPolicy.Include)
+      			.rule(FilteringRuleRule.Regex)
+      			.value(".*"))))
+      );

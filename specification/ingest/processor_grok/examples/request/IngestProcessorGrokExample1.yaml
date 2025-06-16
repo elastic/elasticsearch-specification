@@ -1,8 +1,4 @@
 method_request: GET _ingest/processor/grok
-alternative_java:
-  - language: java
-    code: |
-      client.ingest().processorGrok();
 alternatives:
   - language: Python
     code: resp = client.ingest.processor_grok()
@@ -14,3 +10,7 @@ alternatives:
     code: $resp = $client->ingest()->processorGrok();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ingest/processor/grok"'
+alternative_java:
+  - language: java
+    code: |
+      client.ingest().processorGrok();

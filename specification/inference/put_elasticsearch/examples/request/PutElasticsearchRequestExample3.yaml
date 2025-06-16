@@ -14,17 +14,6 @@ value: |-
           "model_id": ".multilingual-e5-small" 
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("my-e5-model")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("elasticsearch")
-      		.serviceSettings(JsonData.fromJson("{\"num_allocations\":1,\"num_threads\":1,\"model_id\":\".multilingual-e5-small\"}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -87,3 +76,14 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"elasticsearch\",\"service_settings\":{\"num_allocations\":1,\"num_threads\":1,\"model_id\":\".multilingual-e5\
       -small\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-e5-model\""
+alternative_java:
+  - language: java
+    code: |
+      client.inference().put(p -> p
+      	.inferenceId("my-e5-model")
+      	.taskType(TaskType.TextEmbedding)
+      	.inferenceConfig(i -> i
+      		.service("elasticsearch")
+      		.serviceSettings(JsonData.fromJson("{\"num_allocations\":1,\"num_threads\":1,\"model_id\":\".multilingual-e5-small\"}"))
+      	)
+      );

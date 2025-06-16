@@ -12,17 +12,6 @@ value: |-
       }
     ]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().putRole(p -> p
-      	.cluster("cluster:monitor/main")
-      	.indices(i -> i
-      		.names("test")
-      		.privileges(List.of("read","indices:admin/get"))
-      	)
-      	.name("cli_or_drivers_minimal")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -102,3 +91,14 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"cluster\":[\"cluster:monitor/main\"],\"indices\":[{\"names\":[\"test\"],\"privileges\":[\"read\",\"indices:admin/get\"]}]\
       }' \"$ELASTICSEARCH_URL/_security/role/cli_or_drivers_minimal\""
+alternative_java:
+  - language: java
+    code: |
+      client.security().putRole(p -> p
+      	.cluster("cluster:monitor/main")
+      	.indices(i -> i
+      		.names("test")
+      		.privileges(List.of("read","indices:admin/get"))
+      	)
+      	.name("cli_or_drivers_minimal")
+      );

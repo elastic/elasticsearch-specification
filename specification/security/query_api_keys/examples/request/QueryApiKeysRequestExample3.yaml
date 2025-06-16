@@ -12,17 +12,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().queryApiKeys(q -> q
-      	.query(qu -> qu
-      		.term(t -> t
-      			.field("name")
-      			.value(FieldValue.of("application-key-1"))
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -76,3 +65,14 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"query":{"term":{"name":{"value":"application-key-1"}}}}'' "$ELASTICSEARCH_URL/_security/_query/api_key"'
+alternative_java:
+  - language: java
+    code: |
+      client.security().queryApiKeys(q -> q
+      	.query(qu -> qu
+      		.term(t -> t
+      			.field("name")
+      			.value(FieldValue.of("application-key-1"))
+      		)
+      	)
+      );

@@ -20,20 +20,6 @@ value: "{
   \  \"include_aliases\": false
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.snapshot().restore(r -> r
-      	.ignoreUnavailable(true)
-      	.includeAliases(false)
-      	.includeGlobalState(false)
-      	.indices("index_1,index_2")
-      	.renamePattern("index_(.+)")
-      	.renameReplacement("restored_index_$1")
-      	.repository("my_repository")
-      	.snapshot("snapshot_2")
-      	.waitForCompletion(true)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -97,3 +83,17 @@ alternatives:
       '{\"indices\":\"index_1,index_2\",\"ignore_unavailable\":true,\"include_global_state\":false,\"rename_pattern\":\"index_(.+)\
       \",\"rename_replacement\":\"restored_index_$1\",\"include_aliases\":false}'
       \"$ELASTICSEARCH_URL/_snapshot/my_repository/snapshot_2/_restore?wait_for_completion=true\""
+alternative_java:
+  - language: java
+    code: |
+      client.snapshot().restore(r -> r
+      	.ignoreUnavailable(true)
+      	.includeAliases(false)
+      	.includeGlobalState(false)
+      	.indices("index_1,index_2")
+      	.renamePattern("index_(.+)")
+      	.renameReplacement("restored_index_$1")
+      	.repository("my_repository")
+      	.snapshot("snapshot_2")
+      	.waitForCompletion(true)
+      );

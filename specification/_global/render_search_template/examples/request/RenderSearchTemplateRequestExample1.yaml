@@ -11,13 +11,6 @@ value: |-
       "size": 10
     }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.renderSearchTemplate(r -> r
-      	.id("my-search-template")
-      	.params(Map.of("size", JsonData.fromJson("10"),"from", JsonData.fromJson("20"),"query_string", JsonData.fromJson("\"hello world\"")))
-      );
 alternatives:
   - language: Python
     code: |-
@@ -68,3 +61,10 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"id":"my-search-template","params":{"query_string":"hello world","from":20,"size":10}}''
       "$ELASTICSEARCH_URL/_render/template"'
+alternative_java:
+  - language: java
+    code: >
+      client.renderSearchTemplate(r -> r
+      	.id("my-search-template")
+      	.params(Map.of("size", JsonData.fromJson("10"),"from", JsonData.fromJson("20"),"query_string", JsonData.fromJson("\"hello world\"")))
+      );

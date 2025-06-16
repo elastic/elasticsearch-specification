@@ -14,18 +14,6 @@ value: |-
       "version" : 1
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().putRoleMapping(p -> p
-      	.enabled(true)
-      	.metadata("version", JsonData.fromJson("1"))
-      	.name("mapping1")
-      	.roles("user")
-      	.rules(r -> r
-      		.field(NamedValue.of("username",List.of(FieldValue.of("*"))))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -102,3 +90,15 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"roles":["user"],"enabled":true,"rules":{"field":{"username":"*"}},"metadata":{"version":1}}''
       "$ELASTICSEARCH_URL/_security/role_mapping/mapping1"'
+alternative_java:
+  - language: java
+    code: |
+      client.security().putRoleMapping(p -> p
+      	.enabled(true)
+      	.metadata("version", JsonData.fromJson("1"))
+      	.name("mapping1")
+      	.roles("user")
+      	.rules(r -> r
+      		.field(NamedValue.of("username",List.of(FieldValue.of("*"))))
+      	)
+      );

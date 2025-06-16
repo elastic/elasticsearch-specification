@@ -13,19 +13,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.snapshot().createRepository(c -> c
-      	.name("my_repository")
-      	.repository(r -> r
-      		.fs(f -> f
-      			.settings(s -> s
-      				.location("my_backup_location")
-      			)
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -75,3 +62,16 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"type":"fs","settings":{"location":"my_backup_location"}}'' "$ELASTICSEARCH_URL/_snapshot/my_repository"'
+alternative_java:
+  - language: java
+    code: |
+      client.snapshot().createRepository(c -> c
+      	.name("my_repository")
+      	.repository(r -> r
+      		.fs(f -> f
+      			.settings(s -> s
+      				.location("my_backup_location")
+      			)
+      		)
+      	)
+      );

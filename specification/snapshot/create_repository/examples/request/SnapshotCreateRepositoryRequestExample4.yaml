@@ -13,19 +13,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.snapshot().createRepository(c -> c
-      	.name("my_s3_repository")
-      	.repository(r -> r
-      		.s3(s -> s
-      			.settings(se -> se
-      				.bucket("my-bucket")
-      			)
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -75,3 +62,16 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"type":"s3","settings":{"bucket":"my-bucket"}}'' "$ELASTICSEARCH_URL/_snapshot/my_s3_repository"'
+alternative_java:
+  - language: java
+    code: |
+      client.snapshot().createRepository(c -> c
+      	.name("my_s3_repository")
+      	.repository(r -> r
+      		.s3(s -> s
+      			.settings(se -> se
+      				.bucket("my-bucket")
+      			)
+      		)
+      	)
+      );

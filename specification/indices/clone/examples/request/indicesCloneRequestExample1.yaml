@@ -19,15 +19,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.indices().clone(c -> c
-      	.aliases("my_search_indices", a -> a)
-      	.index("my_source_index")
-      	.settings("index.number_of_shards", JsonData.fromJson("5"))
-      	.target("my_target_index")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -86,3 +77,12 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"settings":{"index.number_of_shards":5},"aliases":{"my_search_indices":{}}}''
       "$ELASTICSEARCH_URL/my_source_index/_clone/my_target_index"'
+alternative_java:
+  - language: java
+    code: |
+      client.indices().clone(c -> c
+      	.aliases("my_search_indices", a -> a)
+      	.index("my_source_index")
+      	.settings("index.number_of_shards", JsonData.fromJson("5"))
+      	.target("my_target_index")
+      );

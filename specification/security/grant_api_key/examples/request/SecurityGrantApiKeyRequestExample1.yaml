@@ -41,32 +41,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.security().grantApiKey(g -> g
-      	.apiKey(a -> a
-      		.name("my-api-key")
-      		.expiration(e -> e
-      			.time("1d")
-      		)
-      		.roleDescriptors(Map.of("role-b", RoleDescriptor.of(r -> r
-      				.cluster("all")
-      				.indices(i -> i
-      					.names("index-b*")
-      					.privileges("all")
-      				)),"role-a", RoleDescriptor.of(r -> r
-      				.cluster("all")
-      				.indices(i -> i
-      					.names("index-a*")
-      					.privileges("read")
-      				))))
-      		.metadata(Map.of("environment", JsonData.fromJson("{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}"),"application", JsonData.fromJson("\"my-application\"")))
-      	)
-      	.grantType(ApiKeyGrantType.Password)
-      	.password("x-pack-test-password")
-      	.username("test_admin")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -281,3 +255,29 @@ alternatives:
       \"privileges\":[\"read\"]}]},\"role-b\":{\"cluster\":[\"all\"],\"indices\":[{\"names\":[\"index-b*\"],\"privileges\":[\"all\"\
       ]}]}},\"metadata\":{\"application\":\"my-application\",\"environment\":{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"stag\
       ing\"]}}}}' \"$ELASTICSEARCH_URL/_security/api_key/grant\""
+alternative_java:
+  - language: java
+    code: >
+      client.security().grantApiKey(g -> g
+      	.apiKey(a -> a
+      		.name("my-api-key")
+      		.expiration(e -> e
+      			.time("1d")
+      		)
+      		.roleDescriptors(Map.of("role-b", RoleDescriptor.of(r -> r
+      				.cluster("all")
+      				.indices(i -> i
+      					.names("index-b*")
+      					.privileges("all")
+      				)),"role-a", RoleDescriptor.of(r -> r
+      				.cluster("all")
+      				.indices(i -> i
+      					.names("index-a*")
+      					.privileges("read")
+      				))))
+      		.metadata(Map.of("environment", JsonData.fromJson("{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}"),"application", JsonData.fromJson("\"my-application\"")))
+      	)
+      	.grantType(ApiKeyGrantType.Password)
+      	.password("x-pack-test-password")
+      	.username("test_admin")
+      );

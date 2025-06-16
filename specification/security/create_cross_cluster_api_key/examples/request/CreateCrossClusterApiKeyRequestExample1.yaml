@@ -28,24 +28,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.security().createCrossClusterApiKey(c -> c
-      	.access(a -> a
-      		.replication(r -> r
-      			.names("archive*")
-      		)
-      		.search(s -> s
-      			.names("logs*")
-      		)
-      	)
-      	.expiration(e -> e
-      		.time("1d")
-      	)
-      	.metadata(Map.of("environment", JsonData.fromJson("{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}"),"description", JsonData.fromJson("\"phase one\"")))
-      	.name("my-cross-cluster-api-key")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -183,3 +165,21 @@ alternatives:
       \":[{\"names\":[\"archive*\"]}]},\"metadata\":{\"description\":\"phase
       one\",\"environment\":{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}}}'
       \"$ELASTICSEARCH_URL/_security/cross_cluster/api_key\""
+alternative_java:
+  - language: java
+    code: >
+      client.security().createCrossClusterApiKey(c -> c
+      	.access(a -> a
+      		.replication(r -> r
+      			.names("archive*")
+      		)
+      		.search(s -> s
+      			.names("logs*")
+      		)
+      	)
+      	.expiration(e -> e
+      		.time("1d")
+      	)
+      	.metadata(Map.of("environment", JsonData.fromJson("{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}"),"description", JsonData.fromJson("\"phase one\"")))
+      	.name("my-cross-cluster-api-key")
+      );

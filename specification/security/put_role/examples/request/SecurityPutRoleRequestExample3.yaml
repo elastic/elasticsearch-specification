@@ -20,21 +20,6 @@ value: |-
       }
     ]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().putRole(p -> p
-      	.name("only_remote_access_role")
-      	.remoteCluster(r -> r
-      		.clusters("my_remote")
-      		.privileges(RemoteClusterPrivilege.MonitorStats)
-      	)
-      	.remoteIndices(r -> r
-      		.clusters("my_remote")
-      		.names("logs*")
-      		.privileges(List.of("read","read_cross_cluster","view_index_metadata"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -154,3 +139,18 @@ alternatives:
       '{\"remote_indices\":[{\"clusters\":[\"my_remote\"],\"names\":[\"logs*\"],\"privileges\":[\"read\",\"read_cross_cluster\",\"v\
       iew_index_metadata\"]}],\"remote_cluster\":[{\"clusters\":[\"my_remote\"],\"privileges\":[\"monitor_stats\"]}]}'
       \"$ELASTICSEARCH_URL/_security/role/only_remote_access_role\""
+alternative_java:
+  - language: java
+    code: |
+      client.security().putRole(p -> p
+      	.name("only_remote_access_role")
+      	.remoteCluster(r -> r
+      		.clusters("my_remote")
+      		.privileges(RemoteClusterPrivilege.MonitorStats)
+      	)
+      	.remoteIndices(r -> r
+      		.clusters("my_remote")
+      		.names("logs*")
+      		.privileges(List.of("read","read_cross_cluster","view_index_metadata"))
+      	)
+      );

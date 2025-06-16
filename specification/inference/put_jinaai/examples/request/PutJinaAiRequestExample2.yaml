@@ -14,18 +14,6 @@ value: |-
           "return_documents": true
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("jinaai-rerank")
-      	.taskType(TaskType.Rerank)
-      	.inferenceConfig(i -> i
-      		.service("jinaai")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"JinaAI-Api-key\",\"model_id\":\"jina-reranker-v2-base-multilingual\"}"))
-      		.taskSettings(JsonData.fromJson("{\"top_n\":10,\"return_documents\":true}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -100,3 +88,15 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"jinaai\",\"service_settings\":{\"api_key\":\"JinaAI-Api-key\",\"model_id\":\"jina-reranker-v2-base-multilingu\
       al\"},\"task_settings\":{\"top_n\":10,\"return_documents\":true}}' \"$ELASTICSEARCH_URL/_inference/rerank/jinaai-rerank\""
+alternative_java:
+  - language: java
+    code: |
+      client.inference().put(p -> p
+      	.inferenceId("jinaai-rerank")
+      	.taskType(TaskType.Rerank)
+      	.inferenceConfig(i -> i
+      		.service("jinaai")
+      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"JinaAI-Api-key\",\"model_id\":\"jina-reranker-v2-base-multilingual\"}"))
+      		.taskSettings(JsonData.fromJson("{\"top_n\":10,\"return_documents\":true}"))
+      	)
+      );

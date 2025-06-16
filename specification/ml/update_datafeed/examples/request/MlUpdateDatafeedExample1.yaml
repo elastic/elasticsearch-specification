@@ -8,18 +8,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().updateDatafeed(u -> u
-      	.datafeedId("datafeed-test-job")
-      	.query(q -> q
-      		.term(t -> t
-      			.field("geo.src")
-      			.value(FieldValue.of("US"))
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -69,3 +57,15 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"query":{"term":{"geo.src":"US"}}}'' "$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-test-job/_update"'
+alternative_java:
+  - language: java
+    code: |
+      client.ml().updateDatafeed(u -> u
+      	.datafeedId("datafeed-test-job")
+      	.query(q -> q
+      		.term(t -> t
+      			.field("geo.src")
+      			.value(FieldValue.of("US"))
+      		)
+      	)
+      );

@@ -1,7 +1,4 @@
 method_request: GET _slm/policy/daily-snapshots?human
-alternative_java:
-  - language: java
-    code: "\n"
 alternatives:
   - language: Python
     code: |-
@@ -29,3 +26,6 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_slm/policy/daily-snapshots?human"'
+alternative_java:
+  - language: java
+    code: "\n"

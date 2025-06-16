@@ -18,18 +18,6 @@ value: |-
       }
     ]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.mget(m -> m
-      	.docs(List.of(MultiGetOperation.of(mu -> mu
-      			.id("1")
-      			.index("test")
-      			.storedFields(List.of("field1","field2"))),MultiGetOperation.of(mu -> mu
-      			.id("2")
-      			.index("test")
-      			.storedFields(List.of("field3","field4")))))
-      );
 alternatives:
   - language: Python
     code: |-
@@ -122,3 +110,15 @@ alternatives:
       "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"docs\":[{\"_index\":\"test\",\"_id\":\"1\",\"stored_fields\":[\"field1\",\"field2\"]},{\"_index\":\"test\",\"_id\":\"2\",\
       \"stored_fields\":[\"field3\",\"field4\"]}]}' \"$ELASTICSEARCH_URL/_mget\""
+alternative_java:
+  - language: java
+    code: |
+      client.mget(m -> m
+      	.docs(List.of(MultiGetOperation.of(mu -> mu
+      			.id("1")
+      			.index("test")
+      			.storedFields(List.of("field1","field2"))),MultiGetOperation.of(mu -> mu
+      			.id("2")
+      			.index("test")
+      			.storedFields(List.of("field3","field4")))))
+      );

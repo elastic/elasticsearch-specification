@@ -6,12 +6,6 @@ value: |-
   {
     "secure_settings_password": "keystore-password"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.nodes().reloadSecureSettings(r -> r
-      	.secureSettingsPassword("keystore-password")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -41,3 +35,9 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"secure_settings_password":"keystore-password"}'' "$ELASTICSEARCH_URL/_nodes/reload_secure_settings"'
+alternative_java:
+  - language: java
+    code: |
+      client.nodes().reloadSecureSettings(r -> r
+      	.secureSettingsPassword("keystore-password")
+      );

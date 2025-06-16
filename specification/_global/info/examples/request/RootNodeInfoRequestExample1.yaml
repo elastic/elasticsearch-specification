@@ -1,8 +1,4 @@
 method_request: GET /
-alternative_java:
-  - language: java
-    code: |
-      client.info();
 alternatives:
   - language: Python
     code: resp = client.info()
@@ -14,3 +10,7 @@ alternatives:
     code: $resp = $client->info();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/"'
+alternative_java:
+  - language: java
+    code: |
+      client.info();

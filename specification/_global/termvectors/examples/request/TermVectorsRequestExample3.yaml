@@ -20,22 +20,6 @@ value: |-
       "min_doc_freq": 1
     }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.termvectors(t -> t
-      	.doc(JsonData.fromJson("{\"plot\":\"When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil.\"}"))
-      	.fieldStatistics(true)
-      	.filter(f -> f
-      		.maxNumTerms(3)
-      		.minDocFreq(1)
-      		.minTermFreq(1)
-      	)
-      	.index("imdb")
-      	.offsets(false)
-      	.positions(false)
-      	.termStatistics(true)
-      );
 alternatives:
   - language: Python
     code: >-
@@ -116,3 +100,19 @@ alternatives:
       to use its technology to fight against
       evil.\"},\"term_statistics\":true,\"field_statistics\":true,\"positions\":false,\"offsets\":false,\"filter\":{\"max_num_terms\
       \":3,\"min_term_freq\":1,\"min_doc_freq\":1}}' \"$ELASTICSEARCH_URL/imdb/_termvectors\""
+alternative_java:
+  - language: java
+    code: >
+      client.termvectors(t -> t
+      	.doc(JsonData.fromJson("{\"plot\":\"When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil.\"}"))
+      	.fieldStatistics(true)
+      	.filter(f -> f
+      		.maxNumTerms(3)
+      		.minDocFreq(1)
+      		.minTermFreq(1)
+      	)
+      	.index("imdb")
+      	.offsets(false)
+      	.positions(false)
+      	.termStatistics(true)
+      );

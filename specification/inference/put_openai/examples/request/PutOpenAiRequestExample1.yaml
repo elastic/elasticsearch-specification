@@ -13,17 +13,6 @@ value: |-
           "dimensions": 128
       }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.inference().put(p -> p
-      	.inferenceId("openai-embeddings")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("openai")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"OpenAI-API-Key\",\"model_id\":\"text-embedding-3-small\",\"dimensions\":128}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -86,3 +75,14 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"openai\",\"service_settings\":{\"api_key\":\"OpenAI-API-Key\",\"model_id\":\"text-embedding-3-small\",\"dimen\
       sions\":128}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/openai-embeddings\""
+alternative_java:
+  - language: java
+    code: >
+      client.inference().put(p -> p
+      	.inferenceId("openai-embeddings")
+      	.taskType(TaskType.TextEmbedding)
+      	.inferenceConfig(i -> i
+      		.service("openai")
+      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"OpenAI-API-Key\",\"model_id\":\"text-embedding-3-small\",\"dimensions\":128}"))
+      	)
+      );

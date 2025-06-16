@@ -17,34 +17,6 @@ value:
     time:
       field: order_date
       delay: 60s
-alternative_java:
-  - language: java
-    code: |
-      client.transform().putTransform(p -> p
-      	.description("Latest order for each customer")
-      	.dest(d -> d
-      		.index("kibana_sample_data_ecommerce_transform2")
-      	)
-      	.frequency(f -> f
-      		.time("5m")
-      	)
-      	.latest(l -> l
-      		.sort("order_date")
-      		.uniqueKey("customer_id")
-      	)
-      	.source(s -> s
-      		.index("kibana_sample_data_ecommerce")
-      	)
-      	.sync(s -> s
-      		.time(t -> t
-      			.delay(d -> d
-      				.time("60s")
-      			)
-      			.field("order_date")
-      		)
-      	)
-      	.transformId("ecommerce_transform2")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -155,3 +127,31 @@ alternatives:
       \"},\"description\":\"Latest order for each
       customer\",\"dest\":{\"index\":\"kibana_sample_data_ecommerce_transform2\"},\"frequency\":\"5m\",\"sync\":{\"time\":{\"field\
       \":\"order_date\",\"delay\":\"60s\"}}}' \"$ELASTICSEARCH_URL/_transform/ecommerce_transform2\""
+alternative_java:
+  - language: java
+    code: |
+      client.transform().putTransform(p -> p
+      	.description("Latest order for each customer")
+      	.dest(d -> d
+      		.index("kibana_sample_data_ecommerce_transform2")
+      	)
+      	.frequency(f -> f
+      		.time("5m")
+      	)
+      	.latest(l -> l
+      		.sort("order_date")
+      		.uniqueKey("customer_id")
+      	)
+      	.source(s -> s
+      		.index("kibana_sample_data_ecommerce")
+      	)
+      	.sync(s -> s
+      		.time(t -> t
+      			.delay(d -> d
+      				.time("60s")
+      			)
+      			.field("order_date")
+      		)
+      	)
+      	.transformId("ecommerce_transform2")
+      );

@@ -18,17 +18,6 @@ value: |-
           "model_id": ".multilingual-e5-small"
       }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.inference().put(p -> p
-      	.inferenceId("my-e5-model")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("elasticsearch")
-      		.serviceSettings(JsonData.fromJson("{\"adaptive_allocations\":{\"enabled\":true,\"min_number_of_allocations\":3,\"max_number_of_allocations\":10},\"num_threads\":1,\"model_id\":\".multilingual-e5-small\"}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -108,3 +97,14 @@ alternatives:
       '{\"service\":\"elasticsearch\",\"service_settings\":{\"adaptive_allocations\":{\"enabled\":true,\"min_number_of_allocations\
       \":3,\"max_number_of_allocations\":10},\"num_threads\":1,\"model_id\":\".multilingual-e5-small\"}}'
       \"$ELASTICSEARCH_URL/_inference/text_embedding/my-e5-model\""
+alternative_java:
+  - language: java
+    code: >
+      client.inference().put(p -> p
+      	.inferenceId("my-e5-model")
+      	.taskType(TaskType.TextEmbedding)
+      	.inferenceConfig(i -> i
+      		.service("elasticsearch")
+      		.serviceSettings(JsonData.fromJson("{\"adaptive_allocations\":{\"enabled\":true,\"min_number_of_allocations\":3,\"max_number_of_allocations\":10},\"num_threads\":1,\"model_id\":\".multilingual-e5-small\"}"))
+      	)
+      );

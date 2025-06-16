@@ -11,17 +11,6 @@ value: |-
       }
     ]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.indices().updateAliases(u -> u
-      	.actions(a -> a
-      		.add(ad -> ad
-      			.alias("logs")
-      			.index("logs-nginx.access-prod")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -79,3 +68,14 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"actions":[{"add":{"index":"logs-nginx.access-prod","alias":"logs"}}]}'' "$ELASTICSEARCH_URL/_aliases"'
+alternative_java:
+  - language: java
+    code: |
+      client.indices().updateAliases(u -> u
+      	.actions(a -> a
+      		.add(ad -> ad
+      			.alias("logs")
+      			.index("logs-nginx.access-prod")
+      		)
+      	)
+      );

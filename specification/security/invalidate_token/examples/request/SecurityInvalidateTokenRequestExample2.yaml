@@ -7,12 +7,6 @@ value: |-
   {
     "refresh_token" : "vLBPvmAB6KvwvJZr27cS"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().invalidateToken(i -> i
-      	.refreshToken("vLBPvmAB6KvwvJZr27cS")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -42,3 +36,9 @@ alternatives:
     code:
       'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"refresh_token":"vLBPvmAB6KvwvJZr27cS"}'' "$ELASTICSEARCH_URL/_security/oauth2/token"'
+alternative_java:
+  - language: java
+    code: |
+      client.security().invalidateToken(i -> i
+      	.refreshToken("vLBPvmAB6KvwvJZr27cS")
+      );

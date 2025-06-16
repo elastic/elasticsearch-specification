@@ -7,14 +7,6 @@ description:
 value:
   field: obj1.field1
   text: this is a test
-alternative_java:
-  - language: java
-    code: |
-      client.indices().analyze(a -> a
-      	.field("obj1.field1")
-      	.index("analyze_sample")
-      	.text("this is a test")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -52,3 +44,11 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"field":"obj1.field1","text":"this is a test"}'' "$ELASTICSEARCH_URL/analyze_sample/_analyze"'
+alternative_java:
+  - language: java
+    code: |
+      client.indices().analyze(a -> a
+      	.field("obj1.field1")
+      	.index("analyze_sample")
+      	.text("this is a test")
+      );

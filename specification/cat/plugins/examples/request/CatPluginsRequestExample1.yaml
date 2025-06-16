@@ -1,8 +1,4 @@
 method_request: GET /_cat/plugins?v=true&s=component&h=name,component,version,description&format=json
-alternative_java:
-  - language: java
-    code: |
-      client.cat().plugins();
 alternatives:
   - language: Python
     code: |-
@@ -39,3 +35,7 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_cat/plugins?v=true&s=component&h=name,component,version,description&format=json"'
+alternative_java:
+  - language: java
+    code: |
+      client.cat().plugins();

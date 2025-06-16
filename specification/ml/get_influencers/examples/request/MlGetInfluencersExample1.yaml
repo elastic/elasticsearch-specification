@@ -5,12 +5,6 @@ value: |-
     "sort": "influencer_score",
     "desc": true
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().getInfluencers(g -> g
-      	.jobId("high_sum_total_sales")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -49,3 +43,9 @@ alternatives:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"sort":"influencer_score","desc":true}''
       "$ELASTICSEARCH_URL/_ml/anomaly_detectors/high_sum_total_sales/results/influencers"'
+alternative_java:
+  - language: java
+    code: |
+      client.ml().getInfluencers(g -> g
+      	.jobId("high_sum_total_sales")
+      );

@@ -14,24 +14,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.deleteByQuery(d -> d
-      	.index("my-index-000001")
-      	.query(q -> q
-      		.range(r -> r
-      			.untyped(u -> u
-      				.field("http.response.bytes")
-      				.lt(JsonData.fromJson("2000000"))
-      			)
-      		)
-      	)
-      	.refresh(true)
-      	.slices(s -> s
-      		.value(5)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -98,3 +80,21 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"query":{"range":{"http.response.bytes":{"lt":2000000}}}}''
       "$ELASTICSEARCH_URL/my-index-000001/_delete_by_query?refresh&slices=5"'
+alternative_java:
+  - language: java
+    code: |
+      client.deleteByQuery(d -> d
+      	.index("my-index-000001")
+      	.query(q -> q
+      		.range(r -> r
+      			.untyped(u -> u
+      				.field("http.response.bytes")
+      				.lt(JsonData.fromJson("2000000"))
+      			)
+      		)
+      	)
+      	.refresh(true)
+      	.slices(s -> s
+      		.value(5)
+      	)
+      );

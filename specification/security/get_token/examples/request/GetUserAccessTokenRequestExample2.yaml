@@ -11,14 +11,6 @@ value: |-
     "username" : "test_admin",
     "password" : "x-pack-test-password"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().getToken(g -> g
-      	.grantType(AccessTokenGrantType.Password)
-      	.password("x-pack-test-password")
-      	.username("test_admin")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -57,3 +49,11 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"grant_type":"password","username":"test_admin","password":"x-pack-test-password"}''
       "$ELASTICSEARCH_URL/_security/oauth2/token"'
+alternative_java:
+  - language: java
+    code: |
+      client.security().getToken(g -> g
+      	.grantType(AccessTokenGrantType.Password)
+      	.password("x-pack-test-password")
+      	.username("test_admin")
+      );

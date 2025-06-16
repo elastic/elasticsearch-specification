@@ -4,13 +4,6 @@ value: |-
   {
     "start": "1575402236000"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().getModelSnapshots(g -> g
-      	.jobId("high_sum_total_sales")
-      	.start(DateTime.of("1575402236000"))
-      );
 alternatives:
   - language: Python
     code: |-
@@ -44,3 +37,10 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"start":"1575402236000"}'' "$ELASTICSEARCH_URL/_ml/anomaly_detectors/high_sum_total_sales/model_snapshots"'
+alternative_java:
+  - language: java
+    code: |
+      client.ml().getModelSnapshots(g -> g
+      	.jobId("high_sum_total_sales")
+      	.start(DateTime.of("1575402236000"))
+      );

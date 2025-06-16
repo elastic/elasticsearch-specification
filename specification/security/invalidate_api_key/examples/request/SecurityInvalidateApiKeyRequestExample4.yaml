@@ -6,12 +6,6 @@ value: |-
   {
     "username" : "myuser"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().invalidateApiKey(i -> i
-      	.username("myuser")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -41,3 +35,9 @@ alternatives:
     code:
       'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"username":"myuser"}'' "$ELASTICSEARCH_URL/_security/api_key"'
+alternative_java:
+  - language: java
+    code: |
+      client.security().invalidateApiKey(i -> i
+      	.username("myuser")
+      );

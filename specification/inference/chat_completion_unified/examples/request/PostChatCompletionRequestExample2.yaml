@@ -28,32 +28,6 @@ value: |-
         }
     ]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().chatCompletionUnified(c -> c
-      	.inferenceId("openai-completion")
-      	.chatCompletionRequest(ch -> ch
-      		.messages(List.of(Message.of(m -> m
-      				.content(co -> co
-      					.string("Let's find out what the weather is")
-      				)
-      				.role("assistant")
-      				.toolCalls(t -> t
-      					.id("call_KcAjWtAww20AihPHphUh46Gd")
-      					.function(f -> f
-      						.arguments("{"location":"Boston, MA"}")
-      						.name("get_current_weather")
-      					)
-      					.type("function")
-      				)),Message.of(me -> me
-      				.content(co -> co
-      					.string("The weather is cold")
-      				)
-      				.role("tool")
-      				.toolCallId("call_KcAjWtAww20AihPHphUh46Gd"))))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -175,3 +149,29 @@ alternatives:
       ther\",\"arguments\":\"{\\\"location\\\":\\\"Boston, MA\\\"}\"}}]},{\"role\":\"tool\",\"content\":\"The weather is
       cold\",\"tool_call_id\":\"call_KcAjWtAww20AihPHphUh46Gd\"}]}'
       \"$ELASTICSEARCH_URL/_inference/chat_completion/openai-completion/_stream\""
+alternative_java:
+  - language: java
+    code: |
+      client.inference().chatCompletionUnified(c -> c
+      	.inferenceId("openai-completion")
+      	.chatCompletionRequest(ch -> ch
+      		.messages(List.of(Message.of(m -> m
+      				.content(co -> co
+      					.string("Let's find out what the weather is")
+      				)
+      				.role("assistant")
+      				.toolCalls(t -> t
+      					.id("call_KcAjWtAww20AihPHphUh46Gd")
+      					.function(f -> f
+      						.arguments("{"location":"Boston, MA"}")
+      						.name("get_current_weather")
+      					)
+      					.type("function")
+      				)),Message.of(me -> me
+      				.content(co -> co
+      					.string("The weather is cold")
+      				)
+      				.role("tool")
+      				.toolCallId("call_KcAjWtAww20AihPHphUh46Gd"))))
+      	)
+      );

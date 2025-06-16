@@ -13,17 +13,6 @@ value: |-
           "model_id": "msmarco-MiniLM-L12-cos-v5" 
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("my-msmarco-minilm-model")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("elasticsearch")
-      		.serviceSettings(JsonData.fromJson("{\"num_allocations\":1,\"num_threads\":1,\"model_id\":\"msmarco-MiniLM-L12-cos-v5\"}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -86,3 +75,14 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"elasticsearch\",\"service_settings\":{\"num_allocations\":1,\"num_threads\":1,\"model_id\":\"msmarco-MiniLM-L\
       12-cos-v5\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-msmarco-minilm-model\""
+alternative_java:
+  - language: java
+    code: |
+      client.inference().put(p -> p
+      	.inferenceId("my-msmarco-minilm-model")
+      	.taskType(TaskType.TextEmbedding)
+      	.inferenceConfig(i -> i
+      		.service("elasticsearch")
+      		.serviceSettings(JsonData.fromJson("{\"num_allocations\":1,\"num_threads\":1,\"model_id\":\"msmarco-MiniLM-L12-cos-v5\"}"))
+      	)
+      );

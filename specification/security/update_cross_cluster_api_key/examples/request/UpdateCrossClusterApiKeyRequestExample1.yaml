@@ -17,18 +17,6 @@ value: |-
       "application": "replication"
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().updateCrossClusterApiKey(u -> u
-      	.access(a -> a
-      		.replication(r -> r
-      			.names("archive")
-      		)
-      	)
-      	.id("VuaCfGcBCdbkQm-e5aOx")
-      	.metadata("application", JsonData.fromJson("\"replication\""))
-      );
 alternatives:
   - language: Python
     code: |-
@@ -105,3 +93,15 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"access":{"replication":[{"names":["archive"]}]},"metadata":{"application":"replication"}}''
       "$ELASTICSEARCH_URL/_security/cross_cluster/api_key/VuaCfGcBCdbkQm-e5aOx"'
+alternative_java:
+  - language: java
+    code: |
+      client.security().updateCrossClusterApiKey(u -> u
+      	.access(a -> a
+      		.replication(r -> r
+      			.names("archive")
+      		)
+      	)
+      	.id("VuaCfGcBCdbkQm-e5aOx")
+      	.metadata("application", JsonData.fromJson("\"replication\""))
+      );

@@ -33,26 +33,6 @@ value: "{
   \    }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateScheduling(u -> u
-      	.connectorId("my-connector")
-      	.scheduling(s -> s
-      		.accessControl(a -> a
-      			.enabled(true)
-      			.interval("0 10 0 * * ?")
-      		)
-      		.full(f -> f
-      			.enabled(true)
-      			.interval("0 20 0 * * ?")
-      		)
-      		.incremental(i -> i
-      			.enabled(false)
-      			.interval("0 30 0 * * ?")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -140,3 +120,23 @@ alternatives:
       ''{"scheduling":{"access_control":{"enabled":true,"interval":"0 10 0 * *
       ?"},"full":{"enabled":true,"interval":"0 20 0 * * ?"},"incremental":{"enabled":false,"interval":"0 30 0 * *
       ?"}}}'' "$ELASTICSEARCH_URL/_connector/my-connector/_scheduling"'
+alternative_java:
+  - language: java
+    code: |
+      client.connector().updateScheduling(u -> u
+      	.connectorId("my-connector")
+      	.scheduling(s -> s
+      		.accessControl(a -> a
+      			.enabled(true)
+      			.interval("0 10 0 * * ?")
+      		)
+      		.full(f -> f
+      			.enabled(true)
+      			.interval("0 20 0 * * ?")
+      		)
+      		.incremental(i -> i
+      			.enabled(false)
+      			.interval("0 30 0 * * ?")
+      		)
+      	)
+      );

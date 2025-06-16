@@ -14,21 +14,6 @@ value: |-
       ]
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().putRoleMapping(p -> p
-      	.enabled(true)
-      	.name("mapping7")
-      	.roles("ldap-example-user")
-      	.rules(r -> r
-      		.all(List.of(RoleMappingRule.of(ro -> ro
-      				.field(NamedValue.of("dn",List.of(FieldValue.of("*,ou=subtree,dc=example,dc=com"))
-      			)),RoleMappingRule.of(rol -> rol
-      				.field(NamedValue.of("realm.name",List.of(FieldValue.of("ldap1"))
-      			))))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -129,3 +114,18 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"roles\":[\"ldap-example-user\"],\"enabled\":true,\"rules\":{\"all\":[{\"field\":{\"dn\":\"*,ou=subtree,dc=example,dc=com\
       \"}},{\"field\":{\"realm.name\":\"ldap1\"}}]}}' \"$ELASTICSEARCH_URL/_security/role_mapping/mapping7\""
+alternative_java:
+  - language: java
+    code: |
+      client.security().putRoleMapping(p -> p
+      	.enabled(true)
+      	.name("mapping7")
+      	.roles("ldap-example-user")
+      	.rules(r -> r
+      		.all(List.of(RoleMappingRule.of(ro -> ro
+      				.field(NamedValue.of("dn",List.of(FieldValue.of("*,ou=subtree,dc=example,dc=com"))
+      			)),RoleMappingRule.of(rol -> rol
+      				.field(NamedValue.of("realm.name",List.of(FieldValue.of("ldap1"))
+      			))))
+      	)
+      );

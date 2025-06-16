@@ -23,15 +23,6 @@ value: "{
   \    }
 
   }"
-alternative_java:
-  - language: java
-    code: >
-      client.connector().updateFiltering(u -> u
-      	.advancedSnippet(a -> a
-      		.value(JsonData.fromJson("[{\"tables\":[\"users\",\"orders\"],\"query\":\"SELECT users.id AS id, orders.order_id AS order_id FROM users JOIN orders ON users.id = orders.user_id\"}]"))
-      	)
-      	.connectorId("my-sql-connector")
-      );
 alternatives:
   - language: Python
     code: >-
@@ -105,3 +96,12 @@ alternatives:
       ''{"advanced_snippet":{"value":[{"tables":["users","orders"],"query":"SELECT users.id AS id, orders.order_id AS
       order_id FROM users JOIN orders ON users.id = orders.user_id"}]}}''
       "$ELASTICSEARCH_URL/_connector/my-sql-connector/_filtering"'
+alternative_java:
+  - language: java
+    code: >
+      client.connector().updateFiltering(u -> u
+      	.advancedSnippet(a -> a
+      		.value(JsonData.fromJson("[{\"tables\":[\"users\",\"orders\"],\"query\":\"SELECT users.id AS id, orders.order_id AS order_id FROM users JOIN orders ON users.id = orders.user_id\"}]"))
+      	)
+      	.connectorId("my-sql-connector")
+      );

@@ -6,15 +6,6 @@ value: |-
       "size": 1
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().getCategories(g -> g
-      	.jobId("esxi_log")
-      	.page(p -> p
-      		.size(1)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -56,3 +47,12 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"page":{"size":1}}''
       "$ELASTICSEARCH_URL/_ml/anomaly_detectors/esxi_log/results/categories"'
+alternative_java:
+  - language: java
+    code: |
+      client.ml().getCategories(g -> g
+      	.jobId("esxi_log")
+      	.page(p -> p
+      		.size(1)
+      	)
+      );

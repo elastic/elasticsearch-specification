@@ -9,13 +9,6 @@ value: "{
   \  \"fetch_size\": 10
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.sql().translate(t -> t
-      	.fetchSize(10)
-      	.query("SELECT * FROM library ORDER BY page_count DESC")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -49,3 +42,10 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"query":"SELECT *
       FROM library ORDER BY page_count DESC","fetch_size":10}'' "$ELASTICSEARCH_URL/_sql/translate"'
+alternative_java:
+  - language: java
+    code: |
+      client.sql().translate(t -> t
+      	.fetchSize(10)
+      	.query("SELECT * FROM library ORDER BY page_count DESC")
+      );

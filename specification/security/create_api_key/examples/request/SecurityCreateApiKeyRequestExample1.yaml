@@ -37,27 +37,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.security().createApiKey(c -> c
-      	.expiration(e -> e
-      		.time("1d")
-      	)
-      	.metadata(Map.of("environment", JsonData.fromJson("{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}"),"application", JsonData.fromJson("\"my-application\"")))
-      	.name("my-api-key")
-      	.roleDescriptors(Map.of("role-b", RoleDescriptor.of(r -> r
-      			.cluster("all")
-      			.indices(i -> i
-      				.names("index-b*")
-      				.privileges("all")
-      			)),"role-a", RoleDescriptor.of(r -> r
-      			.cluster("all")
-      			.indices(i -> i
-      				.names("index-a*")
-      				.privileges("read")
-      			))))
-      );
 alternatives:
   - language: Python
     code: |-
@@ -251,3 +230,24 @@ alternatives:
       \":[\"index-a*\"],\"privileges\":[\"read\"]}]},\"role-b\":{\"cluster\":[\"all\"],\"indices\":[{\"names\":[\"index-b*\"],\"pri\
       vileges\":[\"all\"]}]}},\"metadata\":{\"application\":\"my-application\",\"environment\":{\"level\":1,\"trusted\":true,\"tags\
       \":[\"dev\",\"staging\"]}}}' \"$ELASTICSEARCH_URL/_security/api_key\""
+alternative_java:
+  - language: java
+    code: >
+      client.security().createApiKey(c -> c
+      	.expiration(e -> e
+      		.time("1d")
+      	)
+      	.metadata(Map.of("environment", JsonData.fromJson("{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}"),"application", JsonData.fromJson("\"my-application\"")))
+      	.name("my-api-key")
+      	.roleDescriptors(Map.of("role-b", RoleDescriptor.of(r -> r
+      			.cluster("all")
+      			.indices(i -> i
+      				.names("index-b*")
+      				.privileges("all")
+      			)),"role-a", RoleDescriptor.of(r -> r
+      			.cluster("all")
+      			.indices(i -> i
+      				.names("index-a*")
+      				.privileges("read")
+      			))))
+      );

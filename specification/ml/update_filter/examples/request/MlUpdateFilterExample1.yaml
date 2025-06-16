@@ -6,15 +6,6 @@ value: |-
     "add_items": ["*.myorg.com"],
     "remove_items": ["wikipedia.org"]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().updateFilter(u -> u
-      	.addItems("*.myorg.com")
-      	.description("Updated list of domains")
-      	.filterId("safe_domains")
-      	.removeItems("wikipedia.org")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -69,3 +60,12 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"description":"Updated list of domains","add_items":["*.myorg.com"],"remove_items":["wikipedia.org"]}''
       "$ELASTICSEARCH_URL/_ml/filters/safe_domains/_update"'
+alternative_java:
+  - language: java
+    code: |
+      client.ml().updateFilter(u -> u
+      	.addItems("*.myorg.com")
+      	.description("Updated list of domains")
+      	.filterId("safe_domains")
+      	.removeItems("wikipedia.org")
+      );

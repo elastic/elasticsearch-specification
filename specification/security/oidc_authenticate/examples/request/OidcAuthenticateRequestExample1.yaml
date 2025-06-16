@@ -12,15 +12,6 @@ value: |-
     "nonce" : "WaBPH0KqPVdG5HHdSxPRjfoZbXMCicm5v1OiAj0DUFM",
     "realm" : "oidc1"
   }
-alternative_java:
-  - language: java
-    code: >
-      client.security().oidcAuthenticate(o -> o
-      	.nonce("WaBPH0KqPVdG5HHdSxPRjfoZbXMCicm5v1OiAj0DUFM")
-      	.realm("oidc1")
-      	.redirectUri("https://oidc-kibana.elastic.co:5603/api/security/oidc/callback?code=jtI3Ntt8v3_XvcLzCFGq&state=4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I")
-      	.state("4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I")
-      );
 alternatives:
   - language: Python
     code: >-
@@ -65,3 +56,12 @@ alternatives:
       '{\"redirect_uri\":\"https://oidc-kibana.elastic.co:5603/api/security/oidc/callback?code=jtI3Ntt8v3_XvcLzCFGq&state=4dbrihtIA\
       t3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I\",\"state\":\"4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I\",\"nonce\":\"WaBPH0KqPVdG5HHdSx\
       PRjfoZbXMCicm5v1OiAj0DUFM\",\"realm\":\"oidc1\"}' \"$ELASTICSEARCH_URL/_security/oidc/authenticate\""
+alternative_java:
+  - language: java
+    code: >
+      client.security().oidcAuthenticate(o -> o
+      	.nonce("WaBPH0KqPVdG5HHdSxPRjfoZbXMCicm5v1OiAj0DUFM")
+      	.realm("oidc1")
+      	.redirectUri("https://oidc-kibana.elastic.co:5603/api/security/oidc/callback?code=jtI3Ntt8v3_XvcLzCFGq&state=4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I")
+      	.state("4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I")
+      );

@@ -18,26 +18,6 @@ value:
             user.id: kimchy
         routing: shard-1
       '{index}-alias': {}
-alternative_java:
-  - language: java
-    code: |
-      client.indices().putIndexTemplate(p -> p
-      	.indexPatterns("template*")
-      	.name("template_1")
-      	.template(t -> t
-      		.aliases(Map.of("alias1", Alias.of(a -> a),"{index}-alias", Alias.of(a -> a),"alias2", Alias.of(a -> a
-      				.filter(f -> f
-      					.term(te -> te
-      						.field("user.id")
-      						.value(FieldValue.of("kimchy"))
-      					)
-      				)
-      				.routing("shard-1"))))
-      		.settings(s -> s
-      			.numberOfShards("1")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -147,3 +127,23 @@ alternatives:
       '{\"index_patterns\":[\"template*\"],\"template\":{\"settings\":{\"number_of_shards\":1},\"aliases\":{\"alias1\":{},\"alias2\
       \":{\"filter\":{\"term\":{\"user.id\":\"kimchy\"}},\"routing\":\"shard-1\"},\"{index}-alias\":{}}}}'
       \"$ELASTICSEARCH_URL/_index_template/template_1\""
+alternative_java:
+  - language: java
+    code: |
+      client.indices().putIndexTemplate(p -> p
+      	.indexPatterns("template*")
+      	.name("template_1")
+      	.template(t -> t
+      		.aliases(Map.of("alias1", Alias.of(a -> a),"{index}-alias", Alias.of(a -> a),"alias2", Alias.of(a -> a
+      				.filter(f -> f
+      					.term(te -> te
+      						.field("user.id")
+      						.value(FieldValue.of("kimchy"))
+      					)
+      				)
+      				.routing("shard-1"))))
+      		.settings(s -> s
+      			.numberOfShards("1")
+      		)
+      	)
+      );

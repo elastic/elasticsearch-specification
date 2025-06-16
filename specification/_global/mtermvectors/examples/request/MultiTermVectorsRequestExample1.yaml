@@ -19,17 +19,6 @@ value: |-
         }
     ]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.mtermvectors(m -> m
-      	.docs(List.of(MultiTermVectorsOperation.of(mu -> mu
-      			.id("2")
-      			.fields("message")
-      			.termStatistics(true)),MultiTermVectorsOperation.of(mu -> mu
-      			.id("1"))))
-      	.index("my-index-000001")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -106,3 +95,14 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"docs":[{"_id":"2","fields":["message"],"term_statistics":true},{"_id":"1"}]}''
       "$ELASTICSEARCH_URL/my-index-000001/_mtermvectors"'
+alternative_java:
+  - language: java
+    code: |
+      client.mtermvectors(m -> m
+      	.docs(List.of(MultiTermVectorsOperation.of(mu -> mu
+      			.id("2")
+      			.fields("message")
+      			.termStatistics(true)),MultiTermVectorsOperation.of(mu -> mu
+      			.id("1"))))
+      	.index("my-index-000001")
+      );

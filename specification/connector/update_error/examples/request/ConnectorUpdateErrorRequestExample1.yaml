@@ -7,13 +7,6 @@ value: "{
   \    \"error\": \"Houston, we have a problem!\"
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateError(u -> u
-      	.connectorId("my-connector")
-      	.error("Houston, we have a problem!")
-      );
 alternatives:
   - language: Python
     code: |-
@@ -47,3 +40,10 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"error":"Houston, we
       have a problem!"}'' "$ELASTICSEARCH_URL/_connector/my-connector/_error"'
+alternative_java:
+  - language: java
+    code: |
+      client.connector().updateError(u -> u
+      	.connectorId("my-connector")
+      	.error("Houston, we have a problem!")
+      );

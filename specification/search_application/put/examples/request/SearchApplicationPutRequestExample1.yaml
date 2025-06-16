@@ -80,30 +80,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.searchApplication().put(p -> p
-      	.name("my-app")
-      	.searchApplication(s -> s
-      		.indices(List.of("index1","index2"))
-      		.template(t -> t
-      			.script(sc -> sc
-      				.source(so -> so
-      					.scriptTemplate(scr -> scr
-      						.query(q -> q
-      							.queryString(qu -> qu
-      								.defaultField("{{default_field}}")
-      								.query("{{query_string}}")
-      							)
-      						)
-      					)
-      				)
-      				.params(Map.of("default_field", JsonData.fromJson("\"*\""),"query_string", JsonData.fromJson("\"*\"")))
-      			)
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -285,3 +261,27 @@ alternatives:
       ry\":{\"properties\":{\"query_string\":{\"type\":\"string\"},\"default_field\":{\"type\":\"string\",\"enum\":[\"title\",\"des\
       cription\"]},\"additionalProperties\":false},\"required\":[\"query_string\"]}}}'
       \"$ELASTICSEARCH_URL/_application/search_application/my-app\""
+alternative_java:
+  - language: java
+    code: |
+      client.searchApplication().put(p -> p
+      	.name("my-app")
+      	.searchApplication(s -> s
+      		.indices(List.of("index1","index2"))
+      		.template(t -> t
+      			.script(sc -> sc
+      				.source(so -> so
+      					.scriptTemplate(scr -> scr
+      						.query(q -> q
+      							.queryString(qu -> qu
+      								.defaultField("{{default_field}}")
+      								.query("{{query_string}}")
+      							)
+      						)
+      					)
+      				)
+      				.params(Map.of("default_field", JsonData.fromJson("\"*\""),"query_string", JsonData.fromJson("\"*\"")))
+      			)
+      		)
+      	)
+      );

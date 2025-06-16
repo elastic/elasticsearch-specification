@@ -1,14 +1,4 @@
 method_request: POST _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/deployment/_start?wait_for=started&timeout=1m
-alternative_java:
-  - language: java
-    code: |
-      client.ml().startTrainedModelDeployment(s -> s
-      	.modelId("elastic__distilbert-base-uncased-finetuned-conll03-english")
-      	.timeout(t -> t
-      		.offset(1)
-      	)
-      	.waitFor(DeploymentAllocationState.Started)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -41,3 +31,13 @@ alternatives:
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/deployment/_start?wait_for=started&timeout=1m"'
+alternative_java:
+  - language: java
+    code: |
+      client.ml().startTrainedModelDeployment(s -> s
+      	.modelId("elastic__distilbert-base-uncased-finetuned-conll03-english")
+      	.timeout(t -> t
+      		.offset(1)
+      	)
+      	.waitFor(DeploymentAllocationState.Started)
+      );

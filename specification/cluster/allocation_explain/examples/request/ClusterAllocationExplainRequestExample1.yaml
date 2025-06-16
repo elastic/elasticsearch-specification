@@ -9,15 +9,6 @@ value: |-
     "primary": false,
     "current_node": "my-node"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.cluster().allocationExplain(a -> a
-      	.currentNode("my-node")
-      	.index("my-index-000001")
-      	.primary(false)
-      	.shard(0)
-      );
 alternatives:
   - language: Python
     code: |-
@@ -60,3 +51,12 @@ alternatives:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"index":"my-index-000001","shard":0,"primary":false,"current_node":"my-node"}''
       "$ELASTICSEARCH_URL/_cluster/allocation/explain"'
+alternative_java:
+  - language: java
+    code: |
+      client.cluster().allocationExplain(a -> a
+      	.currentNode("my-node")
+      	.index("my-index-000001")
+      	.primary(false)
+      	.shard(0)
+      );

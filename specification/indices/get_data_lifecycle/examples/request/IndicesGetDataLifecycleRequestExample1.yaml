@@ -1,7 +1,4 @@
 method_request: GET /_data_stream/{name}/_lifecycle?human&pretty
-alternative_java:
-  - language: java
-    code: "\n"
 alternatives:
   - language: Python
     code: |-
@@ -33,3 +30,6 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_data_stream/%7Bname%7D/_lifecycle?human&pretty"'
+alternative_java:
+  - language: java
+    code: "\n"

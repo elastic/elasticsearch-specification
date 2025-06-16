@@ -18,24 +18,6 @@ value: |-
         "keep_alive": "1m"  
       }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.search(s -> s
-      	.pit(p -> p
-      		.id("46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==")
-      		.keepAlive(k -> k
-      			.time("1m")
-      		)
-      	)
-      	.query(q -> q
-      		.match(m -> m
-      			.field("title")
-      			.query(FieldValue.of("elasticsearch"))
-      		)
-      	)
-      	.size(100)
-      ,Void.class);
 alternatives:
   - language: Python
     code: >-
@@ -103,3 +85,21 @@ alternatives:
       '{\"size\":100,\"query\":{\"match\":{\"title\":\"elasticsearch\"}},\"pit\":{\"id\":\"46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAA\
       ACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_g\
       AAAAA==\",\"keep_alive\":\"1m\"}}' \"$ELASTICSEARCH_URL/_search\""
+alternative_java:
+  - language: java
+    code: >
+      client.search(s -> s
+      	.pit(p -> p
+      		.id("46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==")
+      		.keepAlive(k -> k
+      			.time("1m")
+      		)
+      	)
+      	.query(q -> q
+      		.match(m -> m
+      			.field("title")
+      			.query(FieldValue.of("elasticsearch"))
+      		)
+      	)
+      	.size(100)
+      ,Void.class);
