@@ -78,7 +78,7 @@
             }
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -138,7 +138,7 @@
             }
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -227,7 +227,7 @@
             }
           }
         },
-        "x-state": "Added in 7.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -403,7 +403,7 @@
             "$ref": "#/components/responses/async_search.submit-200"
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -582,7 +582,7 @@
             "$ref": "#/components/responses/async_search.submit-200"
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -668,6 +668,7 @@
             "$ref": "#/components/responses/bulk-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -751,6 +752,7 @@
             "$ref": "#/components/responses/bulk-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -839,6 +841,7 @@
             "$ref": "#/components/responses/bulk-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -925,6 +928,7 @@
             "$ref": "#/components/responses/bulk-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -980,6 +984,7 @@
             "$ref": "#/components/responses/cat.aliases-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1038,6 +1043,7 @@
             "$ref": "#/components/responses/cat.aliases-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1093,7 +1099,7 @@
             "$ref": "#/components/responses/cat.component_templates-200"
           }
         },
-        "x-state": "Added in 5.1.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1152,7 +1158,7 @@
             "$ref": "#/components/responses/cat.component_templates-200"
           }
         },
-        "x-state": "Added in 5.1.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1202,6 +1208,7 @@
             "$ref": "#/components/responses/cat.count-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1254,6 +1261,7 @@
             "$ref": "#/components/responses/cat.count-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1301,7 +1309,8 @@
               }
             }
           }
-        }
+        },
+        "x-state": "Generally available"
       }
     },
     "/_cat/indices": {
@@ -1346,6 +1355,7 @@
             "$ref": "#/components/responses/cat.indices-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1419,6 +1429,7 @@
             "$ref": "#/components/responses/cat.indices-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1477,7 +1488,7 @@
             "$ref": "#/components/responses/cat.ml_data_frame_analytics-200"
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1539,7 +1550,7 @@
             "$ref": "#/components/responses/cat.ml_data_frame_analytics-200"
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1595,7 +1606,7 @@
             "$ref": "#/components/responses/cat.ml_datafeeds-200"
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1654,7 +1665,7 @@
             "$ref": "#/components/responses/cat.ml_datafeeds-200"
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1713,7 +1724,7 @@
             "$ref": "#/components/responses/cat.ml_jobs-200"
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1775,7 +1786,7 @@
             "$ref": "#/components/responses/cat.ml_jobs-200"
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1840,7 +1851,7 @@
             "$ref": "#/components/responses/cat.ml_trained_models-200"
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1908,7 +1919,7 @@
             "$ref": "#/components/responses/cat.ml_trained_models-200"
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -1970,7 +1981,7 @@
             "$ref": "#/components/responses/cat.transforms-200"
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -2035,7 +2046,7 @@
             "$ref": "#/components/responses/cat.transforms-200"
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -2094,6 +2105,7 @@
             "$ref": "#/components/responses/scroll-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -2150,6 +2162,7 @@
             "$ref": "#/components/responses/scroll-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -2195,6 +2208,7 @@
             "$ref": "#/components/responses/clear_scroll-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -2256,6 +2270,7 @@
             "$ref": "#/components/responses/scroll-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -2315,6 +2330,7 @@
             "$ref": "#/components/responses/scroll-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -2365,6 +2381,7 @@
             "$ref": "#/components/responses/clear_scroll-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -2456,7 +2473,7 @@
             }
           }
         },
-        "x-state": "Added in 7.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -2515,7 +2532,7 @@
             "$ref": "#/components/responses/cluster.get_component_template-200"
           }
         },
-        "x-state": "Added in 7.8.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -2569,7 +2586,7 @@
             "$ref": "#/components/responses/cluster.put_component_template-200"
           }
         },
-        "x-state": "Added in 7.8.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -2623,7 +2640,7 @@
             "$ref": "#/components/responses/cluster.put_component_template-200"
           }
         },
-        "x-state": "Added in 7.8.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -2703,7 +2720,7 @@
             }
           }
         },
-        "x-state": "Added in 7.8.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -2779,7 +2796,7 @@
             }
           }
         },
-        "x-state": "Added in 7.8.0"
+        "x-state": "Generally available"
       }
     },
     "/_component_template": {
@@ -2809,7 +2826,7 @@
             "$ref": "#/components/responses/cluster.get_component_template-200"
           }
         },
-        "x-state": "Added in 7.8.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -2894,7 +2911,7 @@
             }
           }
         },
-        "x-state": "Added in 8.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -3041,7 +3058,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -3088,7 +3105,7 @@
             "$ref": "#/components/responses/connector.put-200"
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -3173,7 +3190,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -3309,7 +3326,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -3351,7 +3368,7 @@
             "$ref": "#/components/responses/connector.put-200"
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -3439,7 +3456,7 @@
             }
           }
         },
-        "x-beta": true
+        "x-state": "Beta"
       }
     },
     "/_connector/_sync_job/{connector_sync_job_id}/_cancel": {
@@ -3483,7 +3500,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -3544,7 +3561,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -3609,7 +3626,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -3735,7 +3752,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -3819,7 +3836,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -3961,7 +3978,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -4065,7 +4082,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -4280,7 +4297,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -4447,7 +4464,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -4544,7 +4561,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -4631,7 +4648,7 @@
             }
           }
         },
-        "x-beta": true
+        "x-state": "Beta"
       }
     },
     "/_connector/{connector_id}/_pipeline": {
@@ -4703,7 +4720,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -4803,7 +4820,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -4900,7 +4917,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -5086,6 +5103,7 @@
             "$ref": "#/components/responses/count-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -5172,6 +5190,7 @@
             "$ref": "#/components/responses/count-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -5263,6 +5282,7 @@
             "$ref": "#/components/responses/count-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -5352,6 +5372,7 @@
             "$ref": "#/components/responses/count-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -5446,7 +5467,7 @@
             "$ref": "#/components/responses/create-200"
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -5539,7 +5560,7 @@
             "$ref": "#/components/responses/create-200"
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -5729,6 +5750,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -5818,6 +5840,7 @@
             "$ref": "#/components/responses/index-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -5907,6 +5930,7 @@
             "$ref": "#/components/responses/index-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -6063,6 +6087,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -6229,6 +6254,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -6697,7 +6723,7 @@
             }
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -6784,6 +6810,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -6843,6 +6870,7 @@
             "$ref": "#/components/responses/put_script-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -6902,6 +6930,7 @@
             "$ref": "#/components/responses/put_script-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -6981,6 +7010,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -7030,7 +7060,7 @@
             "$ref": "#/components/responses/enrich.get_policy-200"
           }
         },
-        "x-state": "Added in 7.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -7127,7 +7157,7 @@
             }
           }
         },
-        "x-state": "Added in 7.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -7197,7 +7227,7 @@
             }
           }
         },
-        "x-state": "Added in 7.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -7287,7 +7317,7 @@
             }
           }
         },
-        "x-state": "Added in 7.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -7334,7 +7364,7 @@
             "$ref": "#/components/responses/enrich.get_policy-200"
           }
         },
-        "x-state": "Added in 7.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -7416,7 +7446,7 @@
             }
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -7476,7 +7506,7 @@
             }
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -7572,7 +7602,7 @@
             }
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -7649,7 +7679,7 @@
             "$ref": "#/components/responses/eql.search-200"
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -7724,7 +7754,7 @@
             "$ref": "#/components/responses/eql.search-200"
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -7868,6 +7898,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -8043,6 +8074,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -8202,7 +8234,7 @@
             }
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -8291,6 +8323,7 @@
             "$ref": "#/components/responses/explain-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -8377,6 +8410,7 @@
             "$ref": "#/components/responses/explain-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -8447,7 +8481,7 @@
             "$ref": "#/components/responses/field_caps-200"
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -8516,7 +8550,7 @@
             "$ref": "#/components/responses/field_caps-200"
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -8590,7 +8624,7 @@
             "$ref": "#/components/responses/field_caps-200"
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -8662,7 +8696,7 @@
             "$ref": "#/components/responses/field_caps-200"
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -8721,6 +8755,7 @@
             "$ref": "#/components/responses/graph.explore-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -8777,6 +8812,7 @@
             "$ref": "#/components/responses/graph.explore-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -8865,6 +8901,7 @@
             "$ref": "#/components/responses/index-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -9012,7 +9049,7 @@
             }
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -9065,6 +9102,7 @@
             "$ref": "#/components/responses/indices.analyze-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -9115,6 +9153,7 @@
             "$ref": "#/components/responses/indices.analyze-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -9170,6 +9209,7 @@
             "$ref": "#/components/responses/indices.analyze-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -9223,6 +9263,7 @@
             "$ref": "#/components/responses/indices.analyze-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -9367,6 +9408,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -9513,6 +9555,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -9622,6 +9665,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -9737,6 +9781,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -9795,7 +9840,7 @@
             "$ref": "#/components/responses/indices.get_data_stream-200"
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -9875,7 +9920,7 @@
             }
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -9955,7 +10000,7 @@
             }
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10017,6 +10062,7 @@
             "$ref": "#/components/responses/indices.get_alias-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10073,6 +10119,7 @@
             "$ref": "#/components/responses/indices.put_alias-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10129,6 +10176,7 @@
             "$ref": "#/components/responses/indices.put_alias-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10182,6 +10230,7 @@
             "$ref": "#/components/responses/indices.delete_alias-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10241,6 +10290,7 @@
             "$ref": "#/components/responses/indices.exists_alias-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10299,6 +10349,7 @@
             "$ref": "#/components/responses/indices.put_alias-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10355,6 +10406,7 @@
             "$ref": "#/components/responses/indices.put_alias-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10408,6 +10460,7 @@
             "$ref": "#/components/responses/indices.delete_alias-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10466,7 +10519,7 @@
             "$ref": "#/components/responses/indices.get_index_template-200"
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10523,7 +10576,7 @@
             "$ref": "#/components/responses/indices.put_index_template-200"
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10580,7 +10633,7 @@
             "$ref": "#/components/responses/indices.put_index_template-200"
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10660,7 +10713,7 @@
             }
           }
         },
-        "x-state": "Added in 7.8.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10745,7 +10798,8 @@
               "application/json": {}
             }
           }
-        }
+        },
+        "x-state": "Generally available"
       }
     },
     "/_alias/{name}": {
@@ -10778,6 +10832,7 @@
             "$ref": "#/components/responses/indices.get_alias-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10834,6 +10889,7 @@
             "$ref": "#/components/responses/indices.exists_alias-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10938,7 +10994,7 @@
             }
           }
         },
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -10994,6 +11050,7 @@
             "$ref": "#/components/responses/indices.get_alias-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -11052,6 +11109,7 @@
             "$ref": "#/components/responses/indices.get_alias-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -11160,7 +11218,7 @@
             }
           }
         },
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -11288,7 +11346,7 @@
             }
           }
         },
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -11344,7 +11402,7 @@
             "$ref": "#/components/responses/indices.get_data_stream-200"
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -11400,7 +11458,7 @@
             "$ref": "#/components/responses/indices.get_index_template-200"
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -11459,6 +11517,7 @@
             "$ref": "#/components/responses/indices.get_mapping-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -11520,6 +11579,7 @@
             "$ref": "#/components/responses/indices.get_mapping-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -11588,6 +11648,7 @@
             "$ref": "#/components/responses/indices.put_mapping-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -11656,6 +11717,7 @@
             "$ref": "#/components/responses/indices.put_mapping-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -11720,6 +11782,7 @@
             "$ref": "#/components/responses/indices.get_settings-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -11791,6 +11854,7 @@
             "$ref": "#/components/responses/indices.put_settings-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -11858,6 +11922,7 @@
             "$ref": "#/components/responses/indices.get_settings-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -11932,6 +11997,7 @@
             "$ref": "#/components/responses/indices.put_settings-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12002,6 +12068,7 @@
             "$ref": "#/components/responses/indices.get_settings-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12069,6 +12136,7 @@
             "$ref": "#/components/responses/indices.get_settings-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12150,7 +12218,7 @@
             }
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12227,7 +12295,7 @@
             }
           }
         },
-        "x-state": "Added in 7.16.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12280,6 +12348,7 @@
             "$ref": "#/components/responses/indices.refresh-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12330,6 +12399,7 @@
             "$ref": "#/components/responses/indices.refresh-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12385,6 +12455,7 @@
             "$ref": "#/components/responses/indices.refresh-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12438,6 +12509,7 @@
             "$ref": "#/components/responses/indices.refresh-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12560,7 +12632,7 @@
             }
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12625,7 +12697,7 @@
             "$ref": "#/components/responses/indices.rollover-200"
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12693,7 +12765,7 @@
             "$ref": "#/components/responses/indices.rollover-200"
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12815,7 +12887,7 @@
             }
           }
         },
-        "x-state": "Added in 7.9.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12874,6 +12946,7 @@
             "$ref": "#/components/responses/indices.simulate_template-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -12935,6 +13008,7 @@
             "$ref": "#/components/responses/indices.simulate_template-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -13030,7 +13104,7 @@
             }
           }
         },
-        "x-state": "Added in 1.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -13113,7 +13187,7 @@
             "$ref": "#/components/responses/indices.validate_query-200"
           }
         },
-        "x-state": "Added in 1.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -13194,7 +13268,7 @@
             "$ref": "#/components/responses/indices.validate_query-200"
           }
         },
-        "x-state": "Added in 1.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -13280,7 +13354,7 @@
             "$ref": "#/components/responses/indices.validate_query-200"
           }
         },
-        "x-state": "Added in 1.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -13364,7 +13438,7 @@
             "$ref": "#/components/responses/indices.validate_query-200"
           }
         },
-        "x-state": "Added in 1.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -13469,7 +13543,7 @@
             }
           }
         },
-        "x-state": "Added in 8.18.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -13585,7 +13659,7 @@
             }
           }
         },
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -13631,7 +13705,7 @@
             "$ref": "#/components/responses/inference.get-200"
           }
         },
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -13679,7 +13753,7 @@
             "$ref": "#/components/responses/inference.put-200"
           }
         },
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -13730,7 +13804,7 @@
             "$ref": "#/components/responses/inference.inference-200"
           }
         },
-        "x-state": "Added in 8.11.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -13754,7 +13828,7 @@
             "$ref": "#/components/responses/inference.delete-200"
           }
         },
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -13803,7 +13877,7 @@
             "$ref": "#/components/responses/inference.get-200"
           }
         },
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -13854,7 +13928,7 @@
             "$ref": "#/components/responses/inference.put-200"
           }
         },
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -13908,7 +13982,7 @@
             "$ref": "#/components/responses/inference.inference-200"
           }
         },
-        "x-state": "Added in 8.11.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -13935,7 +14009,7 @@
             "$ref": "#/components/responses/inference.delete-200"
           }
         },
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -13976,7 +14050,7 @@
             "$ref": "#/components/responses/inference.get-200"
           }
         },
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -14098,7 +14172,7 @@
             }
           }
         },
-        "x-state": "Added in 8.16.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -14210,7 +14284,7 @@
             }
           }
         },
-        "x-state": "Added in 8.12.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -14316,7 +14390,7 @@
             }
           }
         },
-        "x-state": "Added in 8.16.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -14428,7 +14502,7 @@
             }
           }
         },
-        "x-state": "Added in 8.14.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -14540,7 +14614,7 @@
             }
           }
         },
-        "x-state": "Added in 8.14.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -14652,7 +14726,7 @@
             }
           }
         },
-        "x-state": "Added in 8.13.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -14790,7 +14864,7 @@
             }
           }
         },
-        "x-state": "Added in 8.13.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -14906,7 +14980,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -15010,7 +15084,7 @@
             }
           }
         },
-        "x-state": "Added in 8.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -15122,7 +15196,7 @@
             }
           }
         },
-        "x-state": "Added in 8.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -15226,7 +15300,7 @@
             }
           }
         },
-        "x-state": "Added in 8.12.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -15338,7 +15412,7 @@
             }
           }
         },
-        "x-state": "Added in 8.18.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -15441,7 +15515,7 @@
             }
           }
         },
-        "x-state": "Added in 8.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -15553,7 +15627,7 @@
             }
           }
         },
-        "x-state": "Added in 8.12.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -15665,7 +15739,7 @@
             }
           }
         },
-        "x-state": "Added in 8.19.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -15765,7 +15839,7 @@
             }
           }
         },
-        "x-state": "Added in 8.16.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -15887,7 +15961,7 @@
             }
           }
         },
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -16003,7 +16077,7 @@
             }
           }
         },
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -16119,7 +16193,7 @@
             }
           }
         },
-        "x-state": "Added in 8.11.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -16198,6 +16272,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -16239,7 +16314,8 @@
               "application/json": {}
             }
           }
-        }
+        },
+        "x-state": "Generally available"
       }
     },
     "/_ingest/pipeline/{id}": {
@@ -16269,7 +16345,7 @@
             "$ref": "#/components/responses/ingest.get_pipeline-200"
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -16413,7 +16489,7 @@
             }
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -16496,7 +16572,7 @@
             }
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -16549,7 +16625,7 @@
             "$ref": "#/components/responses/ingest.get_pipeline-200"
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -16612,7 +16688,7 @@
             }
           }
         },
-        "x-state": "Added in 6.1.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -16662,7 +16738,7 @@
             "$ref": "#/components/responses/ingest.simulate-200"
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -16710,7 +16786,7 @@
             "$ref": "#/components/responses/ingest.simulate-200"
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -16763,7 +16839,7 @@
             "$ref": "#/components/responses/ingest.simulate-200"
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -16814,7 +16890,7 @@
             "$ref": "#/components/responses/ingest.simulate-200"
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -16899,6 +16975,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -16948,7 +17025,7 @@
             "$ref": "#/components/responses/logstash.get_pipeline-200"
           }
         },
-        "x-state": "Added in 7.12.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -17024,7 +17101,7 @@
             }
           }
         },
-        "x-state": "Added in 7.12.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -17083,7 +17160,7 @@
             }
           }
         },
-        "x-state": "Added in 7.12.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -17128,7 +17205,7 @@
             "$ref": "#/components/responses/logstash.get_pipeline-200"
           }
         },
-        "x-state": "Added in 7.12.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -17199,7 +17276,7 @@
             "$ref": "#/components/responses/mget-200"
           }
         },
-        "x-state": "Added in 1.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -17268,7 +17345,7 @@
             "$ref": "#/components/responses/mget-200"
           }
         },
-        "x-state": "Added in 1.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -17342,7 +17419,7 @@
             "$ref": "#/components/responses/mget-200"
           }
         },
-        "x-state": "Added in 1.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -17414,7 +17491,7 @@
             "$ref": "#/components/responses/mget-200"
           }
         },
-        "x-state": "Added in 1.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -17542,7 +17619,7 @@
             }
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -17598,7 +17675,7 @@
             "$ref": "#/components/responses/ml.get_calendars-200"
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -17696,7 +17773,7 @@
             }
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -17750,7 +17827,7 @@
             "$ref": "#/components/responses/ml.get_calendars-200"
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -17816,7 +17893,7 @@
             }
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -17894,7 +17971,7 @@
             }
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -17983,7 +18060,7 @@
             }
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -18076,7 +18153,7 @@
             }
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -18135,7 +18212,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics-200"
           }
         },
-        "x-state": "Added in 7.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -18307,7 +18384,7 @@
             }
           }
         },
-        "x-state": "Added in 7.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -18393,7 +18470,7 @@
             }
           }
         },
-        "x-state": "Added in 7.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -18446,7 +18523,7 @@
             "$ref": "#/components/responses/ml.get_datafeeds-200"
           }
         },
-        "x-state": "Added in 5.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -18681,7 +18758,7 @@
             }
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -18757,7 +18834,7 @@
             }
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -18810,7 +18887,7 @@
             "$ref": "#/components/responses/ml.get_filters-200"
           }
         },
-        "x-state": "Added in 5.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -18918,7 +18995,7 @@
             }
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -18984,7 +19061,7 @@
             }
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -19037,7 +19114,7 @@
             "$ref": "#/components/responses/ml.get_jobs-200"
           }
         },
-        "x-state": "Added in 5.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -19301,7 +19378,7 @@
             }
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -19403,7 +19480,7 @@
             }
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -19471,7 +19548,7 @@
             "$ref": "#/components/responses/ml.get_trained_models-200"
           }
         },
-        "x-state": "Added in 7.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -19605,7 +19682,7 @@
             }
           }
         },
-        "x-state": "Added in 7.10.0"
+        "x-state": "Generally available"
       },
       "delete": {
         "tags": [
@@ -19665,7 +19742,7 @@
             }
           }
         },
-        "x-state": "Added in 7.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -19748,7 +19825,7 @@
             }
           }
         },
-        "x-state": "Added in 7.13.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -19825,7 +19902,7 @@
             }
           }
         },
-        "x-state": "Added in 7.13.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -19923,7 +20000,7 @@
             }
           }
         },
-        "x-state": "Added in 7.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20052,7 +20129,7 @@
             }
           }
         },
-        "x-state": "Added in 7.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20209,7 +20286,7 @@
             }
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20336,7 +20413,7 @@
             }
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20435,7 +20512,7 @@
             }
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20488,7 +20565,7 @@
             "$ref": "#/components/responses/ml.get_calendars-200"
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20539,7 +20616,7 @@
             "$ref": "#/components/responses/ml.get_calendars-200"
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20595,7 +20672,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics-200"
           }
         },
-        "x-state": "Added in 7.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20651,7 +20728,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics_stats-200"
           }
         },
-        "x-state": "Added in 7.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20710,7 +20787,7 @@
             "$ref": "#/components/responses/ml.get_data_frame_analytics_stats-200"
           }
         },
-        "x-state": "Added in 7.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20760,7 +20837,7 @@
             "$ref": "#/components/responses/ml.get_datafeed_stats-200"
           }
         },
-        "x-state": "Added in 5.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20807,7 +20884,7 @@
             "$ref": "#/components/responses/ml.get_datafeed_stats-200"
           }
         },
-        "x-state": "Added in 5.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20857,7 +20934,7 @@
             "$ref": "#/components/responses/ml.get_datafeeds-200"
           }
         },
-        "x-state": "Added in 5.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20907,7 +20984,7 @@
             "$ref": "#/components/responses/ml.get_filters-200"
           }
         },
-        "x-state": "Added in 5.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -20954,7 +21031,7 @@
             "$ref": "#/components/responses/ml.get_job_stats-200"
           }
         },
-        "x-state": "Added in 5.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21004,7 +21081,7 @@
             "$ref": "#/components/responses/ml.get_job_stats-200"
           }
         },
-        "x-state": "Added in 5.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21054,7 +21131,7 @@
             "$ref": "#/components/responses/ml.get_jobs-200"
           }
         },
-        "x-state": "Added in 5.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21125,7 +21202,7 @@
             "$ref": "#/components/responses/ml.get_overall_buckets-200"
           }
         },
-        "x-state": "Added in 6.1.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21194,7 +21271,7 @@
             "$ref": "#/components/responses/ml.get_overall_buckets-200"
           }
         },
-        "x-state": "Added in 6.1.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21259,7 +21336,7 @@
             "$ref": "#/components/responses/ml.get_trained_models-200"
           }
         },
-        "x-state": "Added in 7.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21315,7 +21392,7 @@
             "$ref": "#/components/responses/ml.get_trained_models_stats-200"
           }
         },
-        "x-state": "Added in 7.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21368,7 +21445,7 @@
             "$ref": "#/components/responses/ml.get_trained_models_stats-200"
           }
         },
-        "x-state": "Added in 7.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21484,7 +21561,7 @@
             }
           }
         },
-        "x-state": "Added in 8.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21594,7 +21671,7 @@
             }
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21639,7 +21716,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics-200"
           }
         },
-        "x-state": "Added in 7.13.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21682,7 +21759,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics-200"
           }
         },
-        "x-state": "Added in 7.13.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21732,7 +21809,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics-200"
           }
         },
-        "x-state": "Added in 7.13.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21780,7 +21857,7 @@
             "$ref": "#/components/responses/ml.preview_data_frame_analytics-200"
           }
         },
-        "x-state": "Added in 7.13.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21836,7 +21913,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed-200"
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21890,7 +21967,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed-200"
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21943,7 +22020,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed-200"
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -21994,7 +22071,7 @@
             "$ref": "#/components/responses/ml.preview_datafeed-200"
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -22102,7 +22179,7 @@
             }
           }
         },
-        "x-state": "Added in 8.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -22167,6 +22244,7 @@
                   },
                   "merges": {
                     "description": "The optional model merges if required by the tokenizer.",
+                    "x-state": "Generally available",
                     "type": "array",
                     "items": {
                       "type": "string"
@@ -22174,6 +22252,7 @@
                   },
                   "scores": {
                     "description": "The optional vocabulary value scores if required by the tokenizer.",
+                    "x-state": "Generally available",
                     "type": "array",
                     "items": {
                       "type": "number"
@@ -22206,7 +22285,7 @@
             }
           }
         },
-        "x-state": "Added in 8.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -22288,7 +22367,7 @@
             }
           }
         },
-        "x-state": "Added in 7.14.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -22372,7 +22451,7 @@
             }
           }
         },
-        "x-state": "Added in 7.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -22503,7 +22582,7 @@
             }
           }
         },
-        "x-state": "Added in 5.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -22657,7 +22736,7 @@
             }
           }
         },
-        "x-state": "Added in 8.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -22757,7 +22836,7 @@
             }
           }
         },
-        "x-state": "Added in 7.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -22885,7 +22964,7 @@
             }
           }
         },
-        "x-state": "Added in 5.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -22975,7 +23054,7 @@
             }
           }
         },
-        "x-state": "Added in 8.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -23120,7 +23199,7 @@
             }
           }
         },
-        "x-state": "Added in 7.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -23358,7 +23437,7 @@
             }
           }
         },
-        "x-state": "Added in 6.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -23475,7 +23554,7 @@
             }
           }
         },
-        "x-state": "Added in 6.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -23705,7 +23784,7 @@
             }
           }
         },
-        "x-state": "Added in 5.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -23809,8 +23888,7 @@
             }
           }
         },
-        "x-beta": true,
-        "x-state": "Added in 8.6.0",
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -23896,7 +23974,7 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Added in 1.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -23980,7 +24058,7 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Added in 1.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -24069,7 +24147,7 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Added in 1.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -24156,7 +24234,7 @@
             "$ref": "#/components/responses/msearch-200"
           }
         },
-        "x-state": "Added in 1.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -24221,7 +24299,7 @@
             "$ref": "#/components/responses/msearch_template-200"
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -24284,7 +24362,7 @@
             "$ref": "#/components/responses/msearch_template-200"
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -24352,7 +24430,7 @@
             "$ref": "#/components/responses/msearch_template-200"
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -24418,7 +24496,7 @@
             "$ref": "#/components/responses/msearch_template-200"
           }
         },
-        "x-state": "Added in 5.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -24501,6 +24579,7 @@
             "$ref": "#/components/responses/mtermvectors-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -24581,6 +24660,7 @@
             "$ref": "#/components/responses/mtermvectors-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -24666,6 +24746,7 @@
             "$ref": "#/components/responses/mtermvectors-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -24749,6 +24830,7 @@
             "$ref": "#/components/responses/mtermvectors-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -24913,7 +24995,7 @@
             }
           }
         },
-        "x-state": "Added in 7.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -24978,6 +25060,7 @@
             "$ref": "#/components/responses/put_script-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -25040,6 +25123,7 @@
             "$ref": "#/components/responses/put_script-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -25121,7 +25205,7 @@
             }
           }
         },
-        "x-state": "Added in 8.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -25246,7 +25330,7 @@
             }
           }
         },
-        "x-state": "Added in 8.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -25317,7 +25401,7 @@
             }
           }
         },
-        "x-state": "Added in 8.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -25385,7 +25469,7 @@
             }
           }
         },
-        "x-state": "Added in 8.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -25490,7 +25574,7 @@
             }
           }
         },
-        "x-state": "Added in 8.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -25550,7 +25634,7 @@
             }
           }
         },
-        "x-state": "Added in 8.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -25642,7 +25726,7 @@
             }
           }
         },
-        "x-state": "Added in 8.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -25753,7 +25837,7 @@
             }
           }
         },
-        "x-state": "Added in 8.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -25812,7 +25896,7 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -25869,7 +25953,7 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -25931,7 +26015,7 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -25991,7 +26075,7 @@
             "$ref": "#/components/responses/rank_eval-200"
           }
         },
-        "x-state": "Added in 6.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -26287,7 +26371,7 @@
             }
           }
         },
-        "x-state": "Added in 2.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -26332,6 +26416,7 @@
             "$ref": "#/components/responses/render_search_template-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -26374,6 +26459,7 @@
             "$ref": "#/components/responses/render_search_template-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -26423,6 +26509,7 @@
             "$ref": "#/components/responses/render_search_template-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -26470,6 +26557,7 @@
             "$ref": "#/components/responses/render_search_template-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -26736,6 +26824,7 @@
             "$ref": "#/components/responses/search-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -26912,6 +27001,7 @@
             "$ref": "#/components/responses/search-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -27093,6 +27183,7 @@
             "$ref": "#/components/responses/search-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -27272,6 +27363,7 @@
             "$ref": "#/components/responses/search-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -27339,7 +27431,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -27433,7 +27525,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -27493,7 +27585,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -27805,7 +27897,7 @@
             }
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -27858,7 +27950,7 @@
             "$ref": "#/components/responses/search_application.search-200"
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -27909,7 +28001,7 @@
             "$ref": "#/components/responses/search_application.search-200"
           }
         },
-        "x-beta": true,
+        "x-state": "Beta",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -27995,7 +28087,7 @@
             "$ref": "#/components/responses/search_mvt-200"
           }
         },
-        "x-state": "Added in 7.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -28079,7 +28171,7 @@
             "$ref": "#/components/responses/search_mvt-200"
           }
         },
-        "x-state": "Added in 7.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -28168,7 +28260,7 @@
             "$ref": "#/components/responses/search_template-200"
           }
         },
-        "x-state": "Added in 2.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -28255,7 +28347,7 @@
             "$ref": "#/components/responses/search_template-200"
           }
         },
-        "x-state": "Added in 2.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -28347,7 +28439,7 @@
             "$ref": "#/components/responses/search_template-200"
           }
         },
-        "x-state": "Added in 2.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -28437,7 +28529,7 @@
             "$ref": "#/components/responses/search_template-200"
           }
         },
-        "x-state": "Added in 2.0.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -28555,7 +28647,7 @@
             }
           }
         },
-        "x-state": "Added in 5.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -28709,7 +28801,7 @@
             }
           }
         },
-        "x-state": "Added in 6.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -28760,7 +28852,7 @@
             "$ref": "#/components/responses/security.create_api_key-200"
           }
         },
-        "x-state": "Added in 6.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -28811,7 +28903,7 @@
             "$ref": "#/components/responses/security.create_api_key-200"
           }
         },
-        "x-state": "Added in 6.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -28964,7 +29056,7 @@
             }
           }
         },
-        "x-state": "Added in 6.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29011,6 +29103,7 @@
             "$ref": "#/components/responses/security.get_role-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29064,6 +29157,7 @@
             "$ref": "#/components/responses/security.put_role-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29117,6 +29211,7 @@
             "$ref": "#/components/responses/security.put_role-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29201,6 +29296,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29278,7 +29374,7 @@
             }
           }
         },
-        "x-state": "Added in 7.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29320,6 +29416,7 @@
             "$ref": "#/components/responses/security.get_role-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29367,7 +29464,7 @@
             "$ref": "#/components/responses/security.has_privileges-200"
           }
         },
-        "x-state": "Added in 6.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29413,7 +29510,7 @@
             "$ref": "#/components/responses/security.has_privileges-200"
           }
         },
-        "x-state": "Added in 6.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29466,7 +29563,7 @@
             "$ref": "#/components/responses/security.has_privileges-200"
           }
         },
-        "x-state": "Added in 6.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29517,7 +29614,7 @@
             "$ref": "#/components/responses/security.has_privileges-200"
           }
         },
-        "x-state": "Added in 6.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29573,7 +29670,7 @@
             "$ref": "#/components/responses/security.query_api_keys-200"
           }
         },
-        "x-state": "Added in 7.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29627,7 +29724,7 @@
             "$ref": "#/components/responses/security.query_api_keys-200"
           }
         },
-        "x-state": "Added in 7.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29672,7 +29769,7 @@
             "$ref": "#/components/responses/security.query_role-200"
           }
         },
-        "x-state": "Added in 8.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29715,7 +29812,7 @@
             "$ref": "#/components/responses/security.query_role-200"
           }
         },
-        "x-state": "Added in 8.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29829,7 +29926,7 @@
             }
           }
         },
-        "x-state": "Added in 8.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29910,7 +30007,7 @@
             }
           }
         },
-        "x-state": "Added in 6.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -29972,7 +30069,7 @@
             }
           }
         },
-        "x-state": "Added in 7.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -30111,7 +30208,7 @@
             }
           }
         },
-        "x-state": "Added in 7.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -30203,7 +30300,7 @@
             }
           }
         },
-        "x-state": "Added in 7.15.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -30253,7 +30350,7 @@
             "$ref": "#/components/responses/sql.query-200"
           }
         },
-        "x-state": "Added in 6.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -30301,7 +30398,7 @@
             "$ref": "#/components/responses/sql.query-200"
           }
         },
-        "x-state": "Added in 6.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -30346,7 +30443,7 @@
             "$ref": "#/components/responses/sql.translate-200"
           }
         },
-        "x-state": "Added in 6.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -30389,7 +30486,7 @@
             "$ref": "#/components/responses/sql.translate-200"
           }
         },
-        "x-state": "Added in 6.3.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -30494,7 +30591,7 @@
             }
           }
         },
-        "x-state": "Added in 8.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -30595,7 +30692,7 @@
             }
           }
         },
-        "x-state": "Added in 8.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -30655,7 +30752,7 @@
             }
           }
         },
-        "x-state": "Added in 8.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -30734,7 +30831,7 @@
             }
           }
         },
-        "x-state": "Added in 8.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -30836,7 +30933,7 @@
             }
           }
         },
-        "x-state": "Added in 8.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -30913,7 +31010,7 @@
             }
           }
         },
-        "x-state": "Added in 8.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -31007,7 +31104,7 @@
             }
           }
         },
-        "x-state": "Added in 8.10.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -31169,7 +31266,7 @@
             "$ref": "#/components/responses/terms_enum-200"
           }
         },
-        "x-state": "Added in 7.14.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -31217,7 +31314,7 @@
             "$ref": "#/components/responses/terms_enum-200"
           }
         },
-        "x-state": "Added in 7.14.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -31306,6 +31403,7 @@
             "$ref": "#/components/responses/termvectors-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -31392,6 +31490,7 @@
             "$ref": "#/components/responses/termvectors-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -31477,6 +31576,7 @@
             "$ref": "#/components/responses/termvectors-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -31560,6 +31660,7 @@
             "$ref": "#/components/responses/termvectors-200"
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -31618,7 +31719,7 @@
             "$ref": "#/components/responses/transform.get_transform-200"
           }
         },
-        "x-state": "Added in 7.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -31763,7 +31864,7 @@
             }
           }
         },
-        "x-state": "Added in 7.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -31859,7 +31960,7 @@
             }
           }
         },
-        "x-state": "Added in 7.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -31915,7 +32016,7 @@
             "$ref": "#/components/responses/transform.get_transform-200"
           }
         },
-        "x-state": "Added in 7.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -32038,7 +32139,7 @@
             }
           }
         },
-        "x-state": "Added in 7.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -32091,7 +32192,7 @@
             "$ref": "#/components/responses/transform.preview_transform-200"
           }
         },
-        "x-state": "Added in 7.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -32142,7 +32243,7 @@
             "$ref": "#/components/responses/transform.preview_transform-200"
           }
         },
-        "x-state": "Added in 7.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -32192,7 +32293,7 @@
             "$ref": "#/components/responses/transform.preview_transform-200"
           }
         },
-        "x-state": "Added in 7.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -32240,7 +32341,7 @@
             "$ref": "#/components/responses/transform.preview_transform-200"
           }
         },
-        "x-state": "Added in 7.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -32328,7 +32429,7 @@
             }
           }
         },
-        "x-state": "Added in 8.1.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -32406,7 +32507,7 @@
             }
           }
         },
-        "x-state": "Added in 8.7.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -32494,7 +32595,7 @@
             }
           }
         },
-        "x-state": "Added in 7.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -32612,7 +32713,7 @@
             }
           }
         },
-        "x-state": "Added in 7.5.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -32805,7 +32906,7 @@
             }
           }
         },
-        "x-state": "Added in 7.2.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -33110,6 +33211,7 @@
             }
           }
         },
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -33598,7 +33700,7 @@
             }
           }
         },
-        "x-state": "Added in 2.4.0",
+        "x-state": "Generally available",
         "x-codeSamples": [
           {
             "lang": "Console",
@@ -39435,6 +39537,7 @@
               "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-text-expansion-query"
             },
             "description": "Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.",
+            "x-state": "Generally available",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.query_dsl.TextExpansionQuery"
@@ -39448,6 +39551,7 @@
               "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-weighted-tokens-query"
             },
             "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
+            "x-state": "Generally available",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.query_dsl.WeightedTokensQuery"
@@ -40233,6 +40337,7 @@
               "url": "https://www.elastic.co/docs/solutions/search/vector/knn#approximate-knn"
             },
             "description": "The approximate kNN search to run.",
+            "x-state": "Generally available",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/_types.KnnSearch"
@@ -42880,6 +42985,7 @@
               },
               "case_insensitive": {
                 "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nDefault is `false` which means the case sensitivity of matching depends on the underlying field’s mapping.",
+                "x-state": "Generally available",
                 "type": "boolean"
               }
             },
@@ -43319,6 +43425,7 @@
             "properties": {
               "case_insensitive": {
                 "description": "Allows case insensitive matching of the regular expression value with the indexed field values when set to `true`.\nWhen `false`, case sensitivity of matching depends on the underlying field’s mapping.",
+                "x-state": "Generally available",
                 "type": "boolean"
               },
               "flags": {
@@ -43916,6 +44023,7 @@
               },
               "case_insensitive": {
                 "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nWhen `false`, the case sensitivity of matching depends on the underlying field’s mapping.",
+                "x-state": "Generally available",
                 "type": "boolean"
               }
             },
@@ -44028,6 +44136,7 @@
             "properties": {
               "case_insensitive": {
                 "description": "Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field’s mapping.",
+                "x-state": "Generally available",
                 "type": "boolean"
               },
               "rewrite": {
@@ -47539,7 +47648,7 @@
           },
           "dataset.size": {
             "description": "total size of dataset (including the cache for partially mounted indices)",
-            "x-state": "Added in 8.11.0",
+            "x-state": "Generally available",
             "oneOf": [
               {
                 "type": "string"
@@ -48889,6 +48998,7 @@
             "type": "string"
           },
           "type": {
+            "x-state": "Generally available",
             "type": "string"
           }
         }
@@ -56106,6 +56216,7 @@
                 ]
               },
               "null_value": {
+                "x-state": "Generally available",
                 "type": "string"
               }
             },
@@ -57560,6 +57671,7 @@
           },
           "is_hidden": {
             "description": "If `true`, the alias is hidden.\nAll indices for the alias must have the same `is_hidden` value.",
+            "x-state": "Generally available",
             "type": "boolean"
           }
         }
@@ -57809,12 +57921,12 @@
           },
           "ingested_as_first_pipeline_in_bytes": {
             "description": "Total number of bytes of all documents ingested by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.",
-            "x-state": "Added in 8.15.0",
+            "x-state": "Generally available",
             "type": "number"
           },
           "produced_as_first_pipeline_in_bytes": {
             "description": "Total number of bytes of all documents produced by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.\nIn situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.",
-            "x-state": "Added in 8.15.0",
+            "x-state": "Generally available",
             "type": "number"
           }
         },
@@ -60148,6 +60260,7 @@
           },
           "system": {
             "description": "If `true`, the data stream is created and managed by an Elastic stack component and cannot be modified through normal user interaction.",
+            "x-state": "Generally available",
             "type": "boolean"
           },
           "template": {
@@ -60285,6 +60398,7 @@
           },
           "deprecated": {
             "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
+            "x-state": "Generally available",
             "type": "boolean"
           },
           "ignore_missing_component_templates": {
@@ -64139,6 +64253,7 @@
               },
               "trace_redact": {
                 "description": "If `true` then ingest metadata `_ingest._redact._is_redacted` is set to `true` if the document has been redacted",
+                "x-state": "Generally available",
                 "type": "boolean"
               }
             },
@@ -64566,7 +64681,7 @@
               },
               "extract_device_type": {
                 "description": "Extracts device type from the user agent string on a best-effort basis.",
-                "x-beta": true,
+                "x-state": "Generally available",
                 "type": "boolean"
               }
             },
@@ -67259,6 +67374,7 @@
         "properties": {
           "annotations_enabled": {
             "description": "If true, enables calculation and storage of the model change annotations for each entity that is being analyzed.",
+            "x-state": "Generally available",
             "type": "boolean"
           },
           "enabled": {
@@ -70551,6 +70667,7 @@
             "$ref": "#/components/schemas/_types.Name"
           },
           "type": {
+            "x-state": "Generally available",
             "type": "string"
           }
         },
@@ -70873,6 +70990,7 @@
           },
           "realm_type": {
             "description": "Realm type of the principal for which this API key was created",
+            "x-state": "Generally available",
             "type": "string"
           },
           "metadata": {
@@ -70887,6 +71005,7 @@
           },
           "limited_by": {
             "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
+            "x-state": "Generally available",
             "type": "array",
             "items": {
               "type": "object",
@@ -70900,6 +71019,7 @@
           },
           "profile_uid": {
             "description": "The profile uid for the API key owner principal, if requested and if it exists",
+            "x-state": "Generally available",
             "type": "string"
           },
           "_sort": {
@@ -71043,6 +71163,7 @@
             }
           },
           "global": {
+            "x-state": "Generally available",
             "type": "object",
             "additionalProperties": {
               "type": "object",
@@ -71849,6 +71970,7 @@
           },
           "unattended": {
             "description": "If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case\nof an error which means the transform never fails. Setting the number of retries other than infinite fails in\nvalidation.",
+            "x-state": "Generally available",
             "type": "boolean"
           }
         }
@@ -73759,6 +73881,7 @@
                 },
                 "encoded": {
                   "description": "API key credentials which is the base64-encoding of\nthe UTF-8 representation of `id` and `api_key` joined\nby a colon (`:`).",
+                  "x-state": "Generally available",
                   "type": "string"
                 }
               },
@@ -79670,6 +79793,7 @@
                 },
                 "knn": {
                   "description": "Defines the approximate kNN search to run.",
+                  "x-state": "Generally available",
                   "oneOf": [
                     {
                       "$ref": "#/components/schemas/_types.KnnSearch"
@@ -81096,6 +81220,7 @@
                     "url": "https://www.elastic.co/docs/solutions/search/vector/knn#approximate-knn"
                   },
                   "description": "The approximate kNN search to run.",
+                  "x-state": "Generally available",
                   "oneOf": [
                     {
                       "$ref": "#/components/schemas/_types.KnnSearch"

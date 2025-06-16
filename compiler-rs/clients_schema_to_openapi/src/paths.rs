@@ -28,16 +28,17 @@ use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
     RequestBody, Response, Responses, StatusCode, Example
 };
+use serde_json::Value;
 use clients_schema::SchemaExample;
-
 use crate::components::TypesAndComponents;
+use crate::convert_availabilities;
 
 /// Add an endpoint to the OpenAPI schema. This will result in the addition of a number of elements to the
 /// openapi schema's `paths` and `components` sections.
 pub fn add_endpoint(
     endpoint: &clients_schema::Endpoint,
     tac: &mut TypesAndComponents,
-    out: &mut Paths,
+    out: &mut Paths
 ) -> anyhow::Result<()> {
     if endpoint.request.is_none() {
         // tracing::warn!("Endpoint {} is missing a request -- ignored", &endpoint.name);
@@ -61,6 +62,8 @@ pub fn add_endpoint(
     let request = tac.model.get_request(endpoint.request.as_ref().unwrap())?;
 
     fn parameter_data(prop: &Property, in_path: bool, tac: &mut TypesAndComponents) -> anyhow::Result<ParameterData> {
+        let mut extensions: IndexMap<String,Value> = Default::default();
+        convert_availabilities(&prop.availability, &tac.config.flavor, &mut extensions);
         Ok(ParameterData {
             name: prop.name.clone(),
             description: tac.property_description(prop)?,
@@ -341,7 +344,7 @@ pub fn add_endpoint(
         };
 
         // add the x-state extension for availability
-        let mut extensions = crate::availability_as_extensions(&endpoint.availability);
+        let mut extensions = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
 
         // add the x-codeSamples extension
         let mut code_samples = vec![];
@@ -368,6 +371,8 @@ pub fn add_endpoint(
         if !code_samples.is_empty() {
             extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
         }
+        let mut ext_availability = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
+        extensions.append(&mut ext_availability);
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
@@ -392,7 +397,7 @@ pub fn add_endpoint(
             deprecated: endpoint.deprecation.is_some(),
             security: None,
             servers: vec![],
-            extensions,
+            extensions
         };
 
 
