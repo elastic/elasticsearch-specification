@@ -47,41 +47,43 @@ async function generateLanguages(example) {
   }
   data.alternatives = alternatives.concat(data.alternatives.filter(pair => !LANGUAGES.includes(pair.language)));
   // specific java example generator
-  data.alternative_java = [];
-  const partialRequest = await parseRequest(request);
-  const java = new JavaCaller({
-    minimumJavaVersion: 21,
-    jar: "path/to/converter/jar/java-es-request-converter-1.0-SNAPSHOT.jar",
-  });
+  if (process.argv[2] === "java") {
+    data.alternative_java = [];
+    const partialRequest = await parseRequest(request);
+    const java = new JavaCaller({
+      minimumJavaVersion: 21,
+      jar: "path/to/converter/jar/java-es-request-converter-1.0-SNAPSHOT.jar",
+    });
 
-  let correctParams = getCodeGenParamNames(partialRequest.params, partialRequest.request);
-  let body = partialRequest.body;
-  if (!body) {
-    body = {}
-  }
+    let correctParams = getCodeGenParamNames(partialRequest.params, partialRequest.request);
+    let body = partialRequest.body;
+    if (!body) {
+      body = {}
+    }
 
-  let javaReqs = [];
-  const javaParsedRequest = {
-    api: partialRequest.api,
-    params: correctParams,
-    query: partialRequest.query,
-    body: body,
-  };
-  javaReqs.push(javaParsedRequest)
+    let javaReqs = [];
+    const javaParsedRequest = {
+      api: partialRequest.api,
+      params: correctParams,
+      query: partialRequest.query,
+      body: body,
+    };
+    javaReqs.push(javaParsedRequest)
 
-  let args = [];
-  args.push(JSON.stringify(javaReqs));
+    let args = [];
+    args.push(JSON.stringify(javaReqs));
 
-  const { status, stdout, stderr } = await java.run(args);
-  if (status) {
-    console.log(stderr);
-    console.log(JSON.stringify(javaReqs));
-    return stderr;
-  }
-  data.alternative_java.push({
+    const {status, stdout, stderr} = await java.run(args);
+    if (status) {
+      console.log(stderr);
+      console.log(JSON.stringify(javaReqs));
+      return stderr;
+    }
+    data.alternative_java.push({
       language: "java",
       code: stdout,
-  });
+    });
+  }
 
   doc.delete('alternatives');
   doc.add(doc.createPair('alternatives', data.alternatives));
