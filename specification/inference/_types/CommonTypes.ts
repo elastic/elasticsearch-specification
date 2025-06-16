@@ -979,9 +979,22 @@ export class HuggingFaceServiceSettings {
   model_id?: string
 }
 
+export class HuggingFaceTaskSettings {
+  /**
+   * For a `rerank` task, return doc text within the results.
+   */
+  return_documents?: boolean
+  /**
+   * For a `rerank` task, the number of most relevant documents to return.
+   * It defaults to the number of the documents.
+   */
+  top_n?: integer
+}
+
 export enum HuggingFaceTaskType {
   chat_completion,
   completion,
+  rerank,
   text_embedding
 }
 
@@ -1255,6 +1268,7 @@ export class WatsonxServiceSettings {
   /**
    * The name of the model to use for the inference task.
    * Refer to the IBM Embedding Models section in the Watsonx documentation for the list of available text embedding models.
+   * Refer to the IBM library - Foundation models in Watsonx.ai.
    * @ext_doc_id watsonx-api-models
    */
   model_id: string
@@ -1274,7 +1288,9 @@ export class WatsonxServiceSettings {
 }
 
 export enum WatsonxTaskType {
-  text_embedding
+  text_embedding,
+  chat_completion,
+  completion
 }
 
 export enum WatsonxServiceType {

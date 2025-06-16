@@ -1,1 +1,33 @@
 method_request: GET /_resolve/cluster/not-present,clust*:my-index*,oldcluster:*?ignore_unavailable=false&timeout=5s
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.resolve_cluster(
+          name="not-present,clust*:my-index*,oldcluster:*",
+          ignore_unavailable=False,
+          timeout="5s",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.resolveCluster({
+        name: "not-present,clust*:my-index*,oldcluster:*",
+        ignore_unavailable: "false",
+        timeout: "5s",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.resolve_cluster(
+        name: "not-present,clust*:my-index*,oldcluster:*",
+        ignore_unavailable: "false",
+        timeout: "5s"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->resolveCluster([
+          "name" => "not-present,clust*:my-index*,oldcluster:*",
+          "ignore_unavailable" => "false",
+          "timeout" => "5s",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_resolve/cluster/not-present,clust*:my-index*,oldcluster:*?ignore_unavailable=false&timeout=5s"'

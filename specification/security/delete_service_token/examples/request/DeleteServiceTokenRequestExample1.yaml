@@ -1,1 +1,33 @@
 method_request: DELETE /_security/service/elastic/fleet-server/credential/token/token42
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.delete_service_token(
+          namespace="elastic",
+          service="fleet-server",
+          name="token42",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.deleteServiceToken({
+        namespace: "elastic",
+        service: "fleet-server",
+        name: "token42",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.delete_service_token(
+        namespace: "elastic",
+        service: "fleet-server",
+        name: "token42"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->deleteServiceToken([
+          "namespace" => "elastic",
+          "service" => "fleet-server",
+          "name" => "token42",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_security/service/elastic/fleet-server/credential/token/token42"'

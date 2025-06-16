@@ -1760,6 +1760,7 @@ export type SearchSourceConfig = boolean | SearchSourceFilter | Fields
 export type SearchSourceConfigParam = boolean | Fields
 
 export interface SearchSourceFilter {
+  exclude_vectors?: boolean
   excludes?: Fields
   exclude?: Fields
   includes?: Fields
@@ -2962,7 +2963,7 @@ export interface TaskFailure {
   reason: ErrorCause
 }
 
-export type TaskId = string | integer
+export type TaskId = string
 
 export interface TextEmbedding {
   model_id: string
@@ -10773,6 +10774,7 @@ export interface EsqlEsqlClusterDetails {
   indices: string
   took?: DurationValue<UnitMillis>
   _shards?: EsqlEsqlShardInfo
+  failures?: EsqlEsqlShardFailure[]
 }
 
 export interface EsqlEsqlClusterInfo {
@@ -10805,8 +10807,8 @@ export interface EsqlEsqlResult {
 }
 
 export interface EsqlEsqlShardFailure {
-  shard: Id
-  index: IndexName
+  shard: integer
+  index: IndexName | null
   node?: NodeId
   reason: ErrorCause
 }
@@ -10816,7 +10818,6 @@ export interface EsqlEsqlShardInfo {
   successful?: integer
   skipped?: integer
   failed?: integer
-  failures?: EsqlEsqlShardFailure[]
 }
 
 export interface EsqlTableValuesContainer {
@@ -13671,7 +13672,12 @@ export interface InferenceHuggingFaceServiceSettings {
 
 export type InferenceHuggingFaceServiceType = 'hugging_face'
 
-export type InferenceHuggingFaceTaskType = 'chat_completion' | 'completion' | 'text_embedding'
+export interface InferenceHuggingFaceTaskSettings {
+  return_documents?: boolean
+  top_n?: integer
+}
+
+export type InferenceHuggingFaceTaskType = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
@@ -13900,7 +13906,7 @@ export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
 export type InferenceTaskTypeGoogleVertexAI = 'text_embedding' | 'rerank'
 
-export type InferenceTaskTypeHuggingFace = 'text_embedding' | 'chat_completion' | 'completion'
+export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
 
@@ -13910,7 +13916,7 @@ export type InferenceTaskTypeOpenAI = 'text_embedding' | 'chat_completion' | 'co
 
 export type InferenceTaskTypeVoyageAI = 'text_embedding' | 'rerank'
 
-export type InferenceTaskTypeWatsonx = 'text_embedding'
+export type InferenceTaskTypeWatsonx = 'text_embedding' | 'chat_completion' | 'completion'
 
 export interface InferenceTextEmbeddingByteResult {
   embedding: InferenceDenseByteVector
@@ -13966,7 +13972,7 @@ export interface InferenceWatsonxServiceSettings {
 
 export type InferenceWatsonxServiceType = 'watsonxai'
 
-export type InferenceWatsonxTaskType = 'text_embedding'
+export type InferenceWatsonxTaskType = 'text_embedding' | 'chat_completion' | 'completion'
 
 export interface InferenceChatCompletionUnifiedRequest extends RequestBase {
   inference_id: Id
@@ -14161,6 +14167,7 @@ export interface InferencePutHuggingFaceRequest extends RequestBase {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceHuggingFaceServiceType
     service_settings: InferenceHuggingFaceServiceSettings
+    task_settings?: InferenceHuggingFaceTaskSettings
   }
 }
 

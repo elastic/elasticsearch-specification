@@ -14,3 +14,65 @@ value: |-
           "index.auto_expand_replicas": "0-all"
       }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.update_settings(
+          security={
+              "index.auto_expand_replicas": "0-all"
+          },
+          security-tokens={
+              "index.auto_expand_replicas": "0-all"
+          },
+          security-profile={
+              "index.auto_expand_replicas": "0-all"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.updateSettings({
+        security: {
+          "index.auto_expand_replicas": "0-all",
+        },
+        "security-tokens": {
+          "index.auto_expand_replicas": "0-all",
+        },
+        "security-profile": {
+          "index.auto_expand_replicas": "0-all",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.update_settings(
+        body: {
+          "security": {
+            "index.auto_expand_replicas": "0-all"
+          },
+          "security-tokens": {
+            "index.auto_expand_replicas": "0-all"
+          },
+          "security-profile": {
+            "index.auto_expand_replicas": "0-all"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->updateSettings([
+          "body" => [
+              "security" => [
+                  "index.auto_expand_replicas" => "0-all",
+              ],
+              "security-tokens" => [
+                  "index.auto_expand_replicas" => "0-all",
+              ],
+              "security-profile" => [
+                  "index.auto_expand_replicas" => "0-all",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"security\":{\"index.auto_expand_replicas\":\"0-all\"},\"security-tokens\":{\"index.auto_expand_replicas\":\"0-all\"},\"se\
+      curity-profile\":{\"index.auto_expand_replicas\":\"0-all\"}}' \"$ELASTICSEARCH_URL/_security/settings\""

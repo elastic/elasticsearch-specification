@@ -1,1 +1,12 @@
 method_request: POST _transform/_upgrade
+alternatives:
+  - language: Python
+    code: resp = client.transform.upgrade_transforms()
+  - language: JavaScript
+    code: const response = await client.transform.upgradeTransforms();
+  - language: Ruby
+    code: response = client.transform.upgrade_transforms
+  - language: PHP
+    code: $resp = $client->transform()->upgradeTransforms();
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_transform/_upgrade"'

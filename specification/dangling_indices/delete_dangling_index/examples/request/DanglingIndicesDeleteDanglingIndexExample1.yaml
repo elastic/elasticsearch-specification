@@ -1,1 +1,28 @@
 method_request: DELETE /_dangling/<index-uuid>?accept_data_loss=true
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.dangling_indices.delete_dangling_index(
+          index_uuid="<index-uuid>",
+          accept_data_loss=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.danglingIndices.deleteDanglingIndex({
+        index_uuid: "<index-uuid>",
+        accept_data_loss: "true",
+      });
+  - language: Ruby
+    code: |-
+      response = client.dangling_indices.delete_dangling_index(
+        index_uuid: "<index-uuid>",
+        accept_data_loss: "true"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->danglingIndices()->deleteDanglingIndex([
+          "index_uuid" => "<index-uuid>",
+          "accept_data_loss" => "true",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_dangling/<index-uuid>?accept_data_loss=true"'

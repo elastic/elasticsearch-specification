@@ -2,6 +2,70 @@ summary: A Google Cloud Storage repository
 method_request: PUT _snapshot/my_gcs_repository
 description: Run `PUT /_snapshot/my_gcs_repository` to create or update a Google Cloud Storage snapshot repository.
 # type: request
-value:
-  "{\n  \"type\": \"gcs\",\n  \"settings\": {\n    \"bucket\": \"my_other_bucket\"\
-  ,\n    \"base_path\": \"dev\"\n  }\n}"
+value: "{
+
+  \  \"type\": \"gcs\",
+
+  \  \"settings\": {
+
+  \    \"bucket\": \"my_other_bucket\",
+
+  \    \"base_path\": \"dev\"
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.snapshot.create_repository(
+          name="my_gcs_repository",
+          repository={
+              "type": "gcs",
+              "settings": {
+                  "bucket": "my_other_bucket",
+                  "base_path": "dev"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.snapshot.createRepository({
+        name: "my_gcs_repository",
+        repository: {
+          type: "gcs",
+          settings: {
+            bucket: "my_other_bucket",
+            base_path: "dev",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.snapshot.create_repository(
+        repository: "my_gcs_repository",
+        body: {
+          "type": "gcs",
+          "settings": {
+            "bucket": "my_other_bucket",
+            "base_path": "dev"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->snapshot()->createRepository([
+          "repository" => "my_gcs_repository",
+          "body" => [
+              "type" => "gcs",
+              "settings" => [
+                  "bucket" => "my_other_bucket",
+                  "base_path" => "dev",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"type":"gcs","settings":{"bucket":"my_other_bucket","base_path":"dev"}}''
+      "$ELASTICSEARCH_URL/_snapshot/my_gcs_repository"'

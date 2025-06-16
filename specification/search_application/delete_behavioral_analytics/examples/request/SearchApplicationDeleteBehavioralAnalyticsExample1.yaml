@@ -1,1 +1,25 @@
 method_request: DELETE _application/analytics/my_analytics_collection/
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.search_application.delete_behavioral_analytics(
+          name="my_analytics_collection",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.searchApplication.deleteBehavioralAnalytics({
+        name: "my_analytics_collection",
+      });
+  - language: Ruby
+    code: |-
+      response = client.search_application.delete_behavioral_analytics(
+        name: "my_analytics_collection"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->searchApplication()->deleteBehavioralAnalytics([
+          "name" => "my_analytics_collection",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_application/analytics/my_analytics_collection/"'

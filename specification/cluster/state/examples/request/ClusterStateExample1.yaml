@@ -1,1 +1,25 @@
 method_request: GET /_cluster/state?filter_path=metadata.cluster_coordination.last_committed_config
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cluster.state(
+          filter_path="metadata.cluster_coordination.last_committed_config",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cluster.state({
+        filter_path: "metadata.cluster_coordination.last_committed_config",
+      });
+  - language: Ruby
+    code: |-
+      response = client.cluster.state(
+        filter_path: "metadata.cluster_coordination.last_committed_config"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cluster()->state([
+          "filter_path" => "metadata.cluster_coordination.last_committed_config",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_cluster/state?filter_path=metadata.cluster_coordination.last_committed_config"'

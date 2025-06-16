@@ -2,6 +2,64 @@ summary: A read-only URL repository
 method_request: PUT _snapshot/my_read_only_url_repository
 description: Run `PUT _snapshot/my_read_only_url_repository` to create or update a read-only URL snapshot repository.
 # type: request
-value:
-  "{\n  \"type\": \"url\",\n  \"settings\": {\n    \"url\": \"file:/mount/backups/my_fs_backup_location\"\
-  \n  }\n}"
+value: "{
+
+  \  \"type\": \"url\",
+
+  \  \"settings\": {
+
+  \    \"url\": \"file:/mount/backups/my_fs_backup_location\"
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.snapshot.create_repository(
+          name="my_read_only_url_repository",
+          repository={
+              "type": "url",
+              "settings": {
+                  "url": "file:/mount/backups/my_fs_backup_location"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.snapshot.createRepository({
+        name: "my_read_only_url_repository",
+        repository: {
+          type: "url",
+          settings: {
+            url: "file:/mount/backups/my_fs_backup_location",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.snapshot.create_repository(
+        repository: "my_read_only_url_repository",
+        body: {
+          "type": "url",
+          "settings": {
+            "url": "file:/mount/backups/my_fs_backup_location"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->snapshot()->createRepository([
+          "repository" => "my_read_only_url_repository",
+          "body" => [
+              "type" => "url",
+              "settings" => [
+                  "url" => "file:/mount/backups/my_fs_backup_location",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"type":"url","settings":{"url":"file:/mount/backups/my_fs_backup_location"}}''
+      "$ELASTICSEARCH_URL/_snapshot/my_read_only_url_repository"'

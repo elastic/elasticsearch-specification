@@ -1,1 +1,33 @@
 method_request: GET _stats/fielddata?human&fields=my_join_field#question
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.stats(
+          metric="fielddata",
+          human=True,
+          fields="my_join_field",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.stats({
+        metric: "fielddata",
+        human: "true",
+        fields: "my_join_field",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.stats(
+        metric: "fielddata",
+        human: "true",
+        fields: "my_join_field"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->stats([
+          "metric" => "fielddata",
+          "human" => "true",
+          "fields" => "my_join_field",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_stats/fielddata?human&fields=my_join_field#question"'

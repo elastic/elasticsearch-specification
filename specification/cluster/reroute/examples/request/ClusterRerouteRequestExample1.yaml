@@ -19,3 +19,101 @@ value: |-
       }
     ]
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cluster.reroute(
+          metric="none",
+          commands=[
+              {
+                  "move": {
+                      "index": "test",
+                      "shard": 0,
+                      "from_node": "node1",
+                      "to_node": "node2"
+                  }
+              },
+              {
+                  "allocate_replica": {
+                      "index": "test",
+                      "shard": 1,
+                      "node": "node3"
+                  }
+              }
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cluster.reroute({
+        metric: "none",
+        commands: [
+          {
+            move: {
+              index: "test",
+              shard: 0,
+              from_node: "node1",
+              to_node: "node2",
+            },
+          },
+          {
+            allocate_replica: {
+              index: "test",
+              shard: 1,
+              node: "node3",
+            },
+          },
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.cluster.reroute(
+        metric: "none",
+        body: {
+          "commands": [
+            {
+              "move": {
+                "index": "test",
+                "shard": 0,
+                "from_node": "node1",
+                "to_node": "node2"
+              }
+            },
+            {
+              "allocate_replica": {
+                "index": "test",
+                "shard": 1,
+                "node": "node3"
+              }
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cluster()->reroute([
+          "metric" => "none",
+          "body" => [
+              "commands" => array(
+                  [
+                      "move" => [
+                          "index" => "test",
+                          "shard" => 0,
+                          "from_node" => "node1",
+                          "to_node" => "node2",
+                      ],
+                  ],
+                  [
+                      "allocate_replica" => [
+                          "index" => "test",
+                          "shard" => 1,
+                          "node" => "node3",
+                      ],
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"commands\":[{\"move\":{\"index\":\"test\",\"shard\":0,\"from_node\":\"node1\",\"to_node\":\"node2\"}},{\"allocate_replica\
+      \":{\"index\":\"test\",\"shard\":1,\"node\":\"node3\"}}]}' \"$ELASTICSEARCH_URL/_cluster/reroute?metric=none\""

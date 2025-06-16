@@ -1,1 +1,33 @@
 method_request: POST /_security/service/elastic/fleet-server/credential/token/token1
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.create_service_token(
+          namespace="elastic",
+          service="fleet-server",
+          name="token1",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.createServiceToken({
+        namespace: "elastic",
+        service: "fleet-server",
+        name: "token1",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.create_service_token(
+        namespace: "elastic",
+        service: "fleet-server",
+        name: "token1"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->createServiceToken([
+          "namespace" => "elastic",
+          "service" => "fleet-server",
+          "name" => "token1",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_security/service/elastic/fleet-server/credential/token/token1"'

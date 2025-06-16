@@ -1,9 +1,79 @@
 summary: Automatic slicing
 method_request: POST _reindex?slices=5&refresh
 description: >
-  Run `POST _reindex?slices=5&refresh` to automatically parallelize using sliced scroll to slice on `_id`.
-  The `slices` parameter specifies the number of slices to use.
+  Run `POST _reindex?slices=5&refresh` to automatically parallelize using sliced scroll to slice on `_id`. The `slices` parameter
+  specifies the number of slices to use.
 # type: request
-value:
-  "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\":\
-  \ {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+value: "{
+
+  \  \"source\": {
+
+  \    \"index\": \"my-index-000001\"
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"my-new-index-000001\"
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.reindex(
+          slices="5",
+          refresh=True,
+          source={
+              "index": "my-index-000001"
+          },
+          dest={
+              "index": "my-new-index-000001"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.reindex({
+        slices: 5,
+        refresh: "true",
+        source: {
+          index: "my-index-000001",
+        },
+        dest: {
+          index: "my-new-index-000001",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.reindex(
+        slices: "5",
+        refresh: "true",
+        body: {
+          "source": {
+            "index": "my-index-000001"
+          },
+          "dest": {
+            "index": "my-new-index-000001"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->reindex([
+          "slices" => "5",
+          "refresh" => "true",
+          "body" => [
+              "source" => [
+                  "index" => "my-index-000001",
+              ],
+              "dest" => [
+                  "index" => "my-new-index-000001",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"source":{"index":"my-index-000001"},"dest":{"index":"my-new-index-000001"}}''
+      "$ELASTICSEARCH_URL/_reindex?slices=5&refresh"'

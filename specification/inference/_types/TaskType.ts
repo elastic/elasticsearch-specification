@@ -86,9 +86,10 @@ export enum TaskTypeGoogleVertexAI {
 }
 
 export enum TaskTypeHuggingFace {
-  text_embedding,
   chat_completion,
-  completion
+  completion,
+  rerank,
+  text_embedding
 }
 
 export enum TaskTypeMistral {
@@ -109,5 +110,7 @@ export enum TaskTypeVoyageAI {
 }
 
 export enum TaskTypeWatsonx {
-  text_embedding
+  text_embedding,
+  chat_completion,
+  completion
 }

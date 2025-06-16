@@ -1,1 +1,24 @@
 method_request: GET _ml/anomaly_detectors/low_request_rate/_stats
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.get_job_stats(
+          job_id="low_request_rate",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.getJobStats({
+        job_id: "low_request_rate",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.get_job_stats(
+        job_id: "low_request_rate"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->getJobStats([
+          "job_id" => "low_request_rate",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_stats"'
