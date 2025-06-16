@@ -47,7 +47,7 @@ async function generateLanguages(example) {
   }
   data.alternatives = alternatives.concat(data.alternatives.filter(pair => !LANGUAGES.includes(pair.language)));
   // specific java example generator
-  const javaExampleFile = path.parse(example).name + "Java.txt";
+  data.alternative_java = [];
   const partialRequest = await parseRequest(request);
   const java = new JavaCaller({
     minimumJavaVersion: 21,
@@ -72,16 +72,20 @@ async function generateLanguages(example) {
   let args = [];
   args.push(JSON.stringify(javaReqs));
 
-  const { status, stdout, stderr } = await java.run(args);
+  const { status, output, stderr } = await java.run(args);
   if (status) {
     console.log(stderr);
     console.log(JSON.stringify(javaReqs));
     return stderr;
   }
-  await fs.promises.writeFile(javaExampleFile, stdout);
+  data.alternatives.push({
+      language: "java",
+      code: output,
+  });
 
   doc.delete('alternatives');
   doc.add(doc.createPair('alternatives', data.alternatives));
+  doc.add(doc.createPair('alternative_java', data.alternative_java));
   await fs.promises.writeFile(example, doc.toString({lineWidth: 132}));
 }
 
