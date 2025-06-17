@@ -36,13 +36,14 @@ async function generateLanguages(example) {
       request += '\n' + JSON.stringify(data.value);
     }
   }
-  data.alternatives = [];
+  const alternatives = [];
   for (const lang of LANGUAGES) {
-    data.alternatives.push({
+    alternatives.push({
       language: lang,
       code: (await convertRequests(request, lang, {})).trim(),
     });
   }
+  data.alternatives = alternatives.concat(data.alternatives.filter(pair => !LANGUAGES.includes(pair.language)));
   doc.delete('alternatives');
   doc.add(doc.createPair('alternatives', data.alternatives));
   await fs.promises.writeFile(example, doc.toString({lineWidth: 132}));
