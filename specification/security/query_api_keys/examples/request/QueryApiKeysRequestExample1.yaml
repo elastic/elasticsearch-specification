@@ -68,3 +68,13 @@ alternatives:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"query":{"ids":{"values":["VuaCfGcBCdbkQm-e5aOx"]}}}''
       "$ELASTICSEARCH_URL/_security/_query/api_key?with_limited_by=true"'
+  - language: java
+    code: |
+      client.security().queryApiKeys(q -> q
+      	.query(qu -> qu
+      		.ids(i -> i
+      			.values("VuaCfGcBCdbkQm-e5aOx")
+      		)
+      	)
+      	.withLimitedBy(true)
+      );

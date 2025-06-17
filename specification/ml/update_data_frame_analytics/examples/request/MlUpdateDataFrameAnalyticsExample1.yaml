@@ -37,3 +37,9 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"model_memory_limit":"200mb"}'' "$ELASTICSEARCH_URL/_ml/data_frame/analytics/loganalytics/_update"'
+  - language: java
+    code: |
+      client.ml().updateDataFrameAnalytics(u -> u
+      	.id("loganalytics")
+      	.modelMemoryLimit("200mb")
+      );

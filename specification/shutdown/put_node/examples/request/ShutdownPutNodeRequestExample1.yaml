@@ -55,3 +55,11 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"type":"restart","reason":"Demonstrating how the node shutdown API works","allocation_delay":"20m"}''
       "$ELASTICSEARCH_URL/_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown"'
+  - language: java
+    code: |
+      client.shutdown().putNode(p -> p
+      	.allocationDelay("20m")
+      	.nodeId("USpTGYaBSIKbgSUJR2Z9lg")
+      	.reason("Demonstrating how the node shutdown API works")
+      	.type(Type.Restart)
+      );

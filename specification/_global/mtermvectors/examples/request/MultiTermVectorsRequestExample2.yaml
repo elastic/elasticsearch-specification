@@ -69,3 +69,9 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"ids":["1","2"],"fields":["message"],"term_statistics":true}''
       "$ELASTICSEARCH_URL/my-index-000001/_mtermvectors"'
+  - language: java
+    code: |
+      client.mtermvectors(m -> m
+      	.ids(List.of("1","2"))
+      	.index("my-index-000001")
+      );

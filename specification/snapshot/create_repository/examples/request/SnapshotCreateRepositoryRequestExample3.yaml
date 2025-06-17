@@ -69,3 +69,16 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"type":"gcs","settings":{"bucket":"my_other_bucket","base_path":"dev"}}''
       "$ELASTICSEARCH_URL/_snapshot/my_gcs_repository"'
+  - language: java
+    code: |
+      client.snapshot().createRepository(c -> c
+      	.name("my_gcs_repository")
+      	.repository(r -> r
+      		.gcs(g -> g
+      			.settings(s -> s
+      				.bucket("my_other_bucket")
+      				.basePath("dev")
+      			)
+      		)
+      	)
+      );

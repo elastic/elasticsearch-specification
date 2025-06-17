@@ -33,3 +33,8 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"index.auto_expand_replicas":"0-4"}'' "$ELASTICSEARCH_URL/_watcher/settings"'
+  - language: java
+    code: |
+      client.watcher().updateSettings(u -> u
+      	.indexAutoExpandReplicas("0-4")
+      );

@@ -22,3 +22,5 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_recovery?human"'
+  - language: java
+    code: "\n"

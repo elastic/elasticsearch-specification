@@ -44,3 +44,10 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"normalizer":"my_normalizer","text":"BaR"}'' "$ELASTICSEARCH_URL/analyze_sample/_analyze"'
+  - language: java
+    code: |
+      client.indices().analyze(a -> a
+      	.index("analyze_sample")
+      	.normalizer("my_normalizer")
+      	.text("BaR")
+      );

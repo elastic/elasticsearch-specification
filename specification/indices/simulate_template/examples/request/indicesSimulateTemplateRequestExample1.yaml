@@ -93,3 +93,15 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"index_patterns\":[\"my-index-*\"],\"composed_of\":[\"ct2\"],\"priority\":10,\"template\":{\"settings\":{\"index.number_of\
       _replicas\":1}}}' \"$ELASTICSEARCH_URL/_index_template/_simulate\""
+  - language: java
+    code: |
+      client.indices().simulateTemplate(s -> s
+      	.composedOf("ct2")
+      	.indexPatterns("my-index-*")
+      	.priority(10L)
+      	.template(t -> t
+      		.settings(se -> se
+      			.otherSettings("index.number_of_replicas", JsonData.fromJson("1"))
+      		)
+      	)
+      );

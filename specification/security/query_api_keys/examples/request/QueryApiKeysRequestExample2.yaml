@@ -263,3 +263,46 @@ alternatives:
       \"term\":{\"name\":\"app1-key-01\"}}],\"filter\":[{\"wildcard\":{\"username\":\"org-*-user\"}},{\"term\":{\"metadata.environm\
       ent\":\"production\"}}]}},\"from\":20,\"size\":10,\"sort\":[{\"creation\":{\"order\":\"desc\",\"format\":\"date_time\"}},\"na\
       me\"]}' \"$ELASTICSEARCH_URL/_security/_query/api_key\""
+  - language: java
+    code: |
+      client.security().queryApiKeys(q -> q
+      	.from(20)
+      	.query(qu -> qu
+      		.bool(b -> b
+      			.filter(List.of(Query.of(que -> que
+      					.wildcard(w -> w
+      						.field("username")
+      						.value("org-*-user")
+      				)),Query.of(quer -> quer
+      					.term(t -> t
+      						.field("metadata.environment")
+      						.value(FieldValue.of("production"))
+      				))))
+      			.must(List.of(Query.of(query -> query
+      					.prefix(p -> p
+      						.field("name")
+      						.value("app1-key-")
+      				)),Query.of(query1 -> query1
+      					.term(t -> t
+      						.field("invalidated")
+      						.value(FieldValue.of("false"))
+      				))))
+      			.mustNot(m -> m
+      				.term(t -> t
+      					.field("name")
+      					.value(FieldValue.of("app1-key-01"))
+      				)
+      			)
+      		)
+      	)
+      	.size(10)
+      	.sort(List.of(SortOptions.of(s -> s
+      			.field(f -> f
+      				.field("creation")
+      				.order(SortOrder.Desc)
+      				.format("date_time")
+      		)),SortOptions.of(so -> so
+      			.field(f -> f
+      				.field("name")
+      		))))
+      );

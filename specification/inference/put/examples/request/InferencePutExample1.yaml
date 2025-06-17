@@ -66,3 +66,13 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"cohere","service_settings":{"model_id":"rerank-english-v3.0","api_key":"{{COHERE_API_KEY}}"}}''
       "$ELASTICSEARCH_URL/_inference/rerank/my-rerank-model"'
+  - language: java
+    code: |
+      client.inference().put(p -> p
+      	.inferenceId("my-rerank-model")
+      	.taskType(TaskType.Rerank)
+      	.inferenceConfig(i -> i
+      		.service("cohere")
+      		.serviceSettings(JsonData.fromJson("{\"model_id\":\"rerank-english-v3.0\",\"api_key\":\"{{COHERE_API_KEY}}\"}"))
+      	)
+      );

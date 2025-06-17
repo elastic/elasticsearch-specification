@@ -84,3 +84,18 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"index\":\"animal_classification\",\"evaluation\":{\"classification\":{\"actual_field\":\"animal_class\",\"metrics\":{\"au\
       c_roc\":{\"class_name\":\"dog\"}}}}}' \"$ELASTICSEARCH_URL/_ml/data_frame/_evaluate\""
+  - language: java
+    code: |
+      client.ml().evaluateDataFrame(e -> e
+      	.evaluation(ev -> ev
+      		.classification(c -> c
+      			.actualField("animal_class")
+      			.metrics(m -> m
+      				.aucRoc(a -> a
+      					.className("dog")
+      				)
+      			)
+      		)
+      	)
+      	.index("animal_classification")
+      );

@@ -96,3 +96,20 @@ alternatives:
       '{\"slice\":{\"id\":0,\"max\":2},\"query\":{\"match\":{\"message\":\"foo\"}},\"pit\":{\"id\":\"46ToAwMDaWR5BXV1aWQyKwZub2RlXz\
       MAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXR\
       jaF9hbGw_gAAAAA==\"}}' \"$ELASTICSEARCH_URL/_search\""
+  - language: java
+    code: >
+      client.search(s -> s
+      	.pit(p -> p
+      		.id("46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==")
+      	)
+      	.query(q -> q
+      		.match(m -> m
+      			.field("message")
+      			.query(FieldValue.of("foo"))
+      		)
+      	)
+      	.slice(sl -> sl
+      		.id("0")
+      		.max(2)
+      	)
+      ,Void.class);

@@ -79,3 +79,13 @@ alternatives:
       '{\"service\":\"alibabacloud-ai-search\",\"service_settings\":{\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyunc\
       s.com\",\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-qwen-turbo\",\"workspace\":\"default\"}}'
       \"$ELASTICSEARCH_URL/_inference/completion/alibabacloud_ai_search_completion\""
+  - language: java
+    code: >
+      client.inference().put(p -> p
+      	.inferenceId("alibabacloud_ai_search_completion")
+      	.taskType(TaskType.Completion)
+      	.inferenceConfig(i -> i
+      		.service("alibabacloud-ai-search")
+      		.serviceSettings(JsonData.fromJson("{\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-qwen-turbo\",\"workspace\":\"default\"}"))
+      	)
+      );

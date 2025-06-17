@@ -48,3 +48,15 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":\"\\n    FROM
       library,remote-*:library\\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\\n    | STATS MAX(page_count) BY year\\n    |
       SORT year\\n    | LIMIT 5\\n  \",\"include_ccs_metadata\":true}' \"$ELASTICSEARCH_URL/_query\""
+  - language: java
+    code: |
+      client.esql().query(q -> q
+      	.includeCcsMetadata(true)
+      	.query("
+          FROM library,remote-*:library
+          | EVAL year = DATE_TRUNC(1 YEARS, release_date)
+          | STATS MAX(page_count) BY year
+          | SORT year
+          | LIMIT 5
+        ")
+      );

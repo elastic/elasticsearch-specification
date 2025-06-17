@@ -37,3 +37,9 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"worker_hostname":"some-machine"}'' "$ELASTICSEARCH_URL/_connector/_sync_job/my-connector-sync-job-id/_claim"'
+  - language: java
+    code: |
+      client.connector().syncJobClaim(s -> s
+      	.connectorSyncJobId("my-connector-sync-job-id")
+      	.workerHostname("some-machine")
+      );

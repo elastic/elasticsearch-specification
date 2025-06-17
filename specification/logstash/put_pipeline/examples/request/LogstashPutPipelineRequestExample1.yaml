@@ -118,3 +118,26 @@ alternatives:
       },\"username\":\"elastic\",\"pipeline\":\"input {}\\\\n filter { grok {} }\\\\n output
       {}\",\"pipeline_settings\":{\"pipeline.workers\":1,\"pipeline.batch.size\":125,\"pipeline.batch.delay\":50,\"queue.type\":\"m\
       emory\",\"queue.max_bytes\":\"1gb\",\"queue.checkpoint.writes\":1024}}' \"$ELASTICSEARCH_URL/_logstash/pipeline/my_pipeline\""
+  - language: java
+    code: |
+      client.logstash().putPipeline(p -> p
+      	.id("my_pipeline")
+      	.pipeline(pi -> pi
+      		.description("Sample pipeline for illustration purposes")
+      		.lastModified(DateTime.of("2021-01-02T02:50:51.250Z"))
+      		.pipeline("input {}\n filter { grok {} }\n output {}")
+      		.pipelineMetadata(pip -> pip
+      			.type("logstash_pipeline")
+      			.version("1")
+      		)
+      		.pipelineSettings(pip -> pip
+      			.pipelineWorkers(1)
+      			.pipelineBatchSize(125)
+      			.pipelineBatchDelay(50)
+      			.queueType("memory")
+      			.queueMaxBytes("1gb")
+      			.queueCheckpointWrites(1024)
+      		)
+      		.username("elastic")
+      	)
+      );

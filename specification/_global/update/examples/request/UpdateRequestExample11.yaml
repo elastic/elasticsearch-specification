@@ -64,3 +64,11 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"doc":{"name":"new_name"},"doc_as_upsert":true}'' "$ELASTICSEARCH_URL/test/_update/1"'
+  - language: java
+    code: |
+      client.update(u -> u
+      	.doc(JsonData.fromJson("{\"name\":\"new_name\"}"))
+      	.docAsUpsert(true)
+      	.id("1")
+      	.index("test")
+      ,Void.class);

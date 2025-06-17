@@ -23,3 +23,5 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_cluster/state?filter_path=metadata.cluster_coordination.last_committed_config"'
+  - language: java
+    code: "\n"

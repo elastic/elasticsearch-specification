@@ -81,3 +81,13 @@ alternatives:
       '{\"service\":\"azureopenai\",\"service_settings\":{\"api_key\":\"Api-Key\",\"resource_name\":\"Resource-name\",\"deployment_\
       id\":\"Deployment-id\",\"api_version\":\"2024-02-01\"}}'
       \"$ELASTICSEARCH_URL/_inference/text_embedding/azure_openai_embeddings\""
+  - language: java
+    code: >
+      client.inference().put(p -> p
+      	.inferenceId("azure_openai_embeddings")
+      	.taskType(TaskType.TextEmbedding)
+      	.inferenceConfig(i -> i
+      		.service("azureopenai")
+      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"Api-Key\",\"resource_name\":\"Resource-name\",\"deployment_id\":\"Deployment-id\",\"api_version\":\"2024-02-01\"}"))
+      	)
+      );

@@ -76,3 +76,11 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"docs":[{"_id":"1"},{"_id":"2"}]}'' "$ELASTICSEARCH_URL/my-index-000001/_mget"'
+  - language: java
+    code: |
+      client.mget(m -> m
+      	.docs(List.of(MultiGetOperation.of(mu -> mu
+      			.id("1")),MultiGetOperation.of(mu -> mu
+      			.id("2"))))
+      	.index("my-index-000001")
+      );

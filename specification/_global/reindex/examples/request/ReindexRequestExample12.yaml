@@ -100,3 +100,20 @@ alternatives:
       '{\"source\":{\"index\":\"my-index-000001\"},\"dest\":{\"index\":\"my-new-index-000001\",\"version_type\":\"external\"},\"scr\
       ipt\":{\"source\":\"if (ctx._source.foo == '\"'\"'bar'\"'\"') {ctx._version++;
       ctx._source.remove('\"'\"'foo'\"'\"')}\",\"lang\":\"painless\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+  - language: java
+    code: |
+      client.reindex(r -> r
+      	.dest(d -> d
+      		.index("my-new-index-000001")
+      		.versionType(VersionType.External)
+      	)
+      	.script(s -> s
+      		.source(so -> so
+      			.scriptString("if (ctx._source.foo == 'bar') {ctx._version++; ctx._source.remove('foo')}")
+      		)
+      		.lang("painless")
+      	)
+      	.source(so -> so
+      		.index("my-index-000001")
+      	)
+      );

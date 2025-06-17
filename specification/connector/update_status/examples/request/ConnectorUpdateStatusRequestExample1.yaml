@@ -40,3 +40,9 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"status":"needs_configuration"}'' "$ELASTICSEARCH_URL/_connector/my-connector/_status"'
+  - language: java
+    code: |
+      client.connector().updateStatus(u -> u
+      	.connectorId("my-connector")
+      	.status(ConnectorStatus.NeedsConfiguration)
+      );

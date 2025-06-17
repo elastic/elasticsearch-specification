@@ -36,3 +36,8 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"realm":"saml1"}''
       "$ELASTICSEARCH_URL/_security/saml/prepare"'
+  - language: java
+    code: |
+      client.security().samlPrepareAuthentication(s -> s
+      	.realm("saml1")
+      );

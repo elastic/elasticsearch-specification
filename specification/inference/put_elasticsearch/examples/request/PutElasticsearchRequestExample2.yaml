@@ -98,3 +98,13 @@ alternatives:
       '{\"service\":\"elasticsearch\",\"service_settings\":{\"model_id\":\".rerank-v1\",\"num_threads\":1,\"adaptive_allocations\":{\
       \"enabled\":true,\"min_number_of_allocations\":1,\"max_number_of_allocations\":4}}}'
       \"$ELASTICSEARCH_URL/_inference/rerank/my-elastic-rerank\""
+  - language: java
+    code: >
+      client.inference().put(p -> p
+      	.inferenceId("my-elastic-rerank")
+      	.taskType(TaskType.Rerank)
+      	.inferenceConfig(i -> i
+      		.service("elasticsearch")
+      		.serviceSettings(JsonData.fromJson("{\"model_id\":\".rerank-v1\",\"num_threads\":1,\"adaptive_allocations\":{\"enabled\":true,\"min_number_of_allocations\":1,\"max_number_of_allocations\":4}}"))
+      	)
+      );

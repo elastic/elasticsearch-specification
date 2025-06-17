@@ -216,3 +216,10 @@ alternatives:
       term\",\"results\":{\"items\":[{\"document\":{\"id\":\"123\",\"index\":\"products\"}}],\"total_results\":10},\"sort\":{\"name\
       \":\"relevance\"},\"search_application\":\"website\"},\"document\":{\"id\":\"123\",\"index\":\"products\"}}'
       \"$ELASTICSEARCH_URL/_application/analytics/my_analytics_collection/event/search_click\""
+  - language: java
+    code: >
+      client.searchApplication().postBehavioralAnalyticsEvent(p -> p
+      	.collectionName("my_analytics_collection")
+      	.eventType(EventType.SearchClick)
+      	.payload(JsonData.fromJson("{\"session\":{\"id\":\"1797ca95-91c9-4e2e-b1bd-9c38e6f386a9\"},\"user\":{\"id\":\"5f26f01a-bbee-4202-9298-81261067abbd\"},\"search\":{\"query\":\"search term\",\"results\":{\"items\":[{\"document\":{\"id\":\"123\",\"index\":\"products\"}}],\"total_results\":10},\"sort\":{\"name\":\"relevance\"},\"search_application\":\"website\"},\"document\":{\"id\":\"123\",\"index\":\"products\"}}"))
+      );

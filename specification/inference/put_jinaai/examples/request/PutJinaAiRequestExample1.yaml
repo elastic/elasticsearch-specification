@@ -70,3 +70,13 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"jinaai","service_settings":{"model_id":"jina-embeddings-v3","api_key":"JinaAi-Api-key"}}''
       "$ELASTICSEARCH_URL/_inference/text_embedding/jinaai-embeddings"'
+  - language: java
+    code: |
+      client.inference().put(p -> p
+      	.inferenceId("jinaai-embeddings")
+      	.taskType(TaskType.TextEmbedding)
+      	.inferenceConfig(i -> i
+      		.service("jinaai")
+      		.serviceSettings(JsonData.fromJson("{\"model_id\":\"jina-embeddings-v3\",\"api_key\":\"JinaAi-Api-key\"}"))
+      	)
+      );

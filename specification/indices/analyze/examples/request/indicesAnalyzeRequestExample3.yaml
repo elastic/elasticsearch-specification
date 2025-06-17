@@ -65,3 +65,17 @@ alternatives:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"tokenizer":"keyword","filter":["lowercase"],"char_filter":["html_strip"],"text":"this is a test</b>"}''
       "$ELASTICSEARCH_URL/_analyze"'
+  - language: java
+    code: |
+      client.indices().analyze(a -> a
+      	.charFilter(c -> c
+      		.name("html_strip")
+      	)
+      	.filter(f -> f
+      		.name("lowercase")
+      	)
+      	.text("this is a test</b>")
+      	.tokenizer(t -> t
+      		.name("keyword")
+      	)
+      );

@@ -26,3 +26,9 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index-000001/_validate/query?q=user.id:kimchy"'
+  - language: java
+    code: |
+      client.indices().validateQuery(v -> v
+      	.index("my-index-000001")
+      	.q("user.id:kimchy")
+      );

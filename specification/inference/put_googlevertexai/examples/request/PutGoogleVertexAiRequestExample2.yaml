@@ -68,3 +68,13 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"googlevertexai\",\"service_settings\":{\"service_account_json\":\"service-account-json\",\"project_id\":\"pro\
       ject-id\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/google_vertex_ai_rerank\""
+  - language: java
+    code: |
+      client.inference().put(p -> p
+      	.inferenceId("google_vertex_ai_rerank")
+      	.taskType(TaskType.Rerank)
+      	.inferenceConfig(i -> i
+      		.service("googlevertexai")
+      		.serviceSettings(JsonData.fromJson("{\"service_account_json\":\"service-account-json\",\"project_id\":\"project-id\"}"))
+      	)
+      );

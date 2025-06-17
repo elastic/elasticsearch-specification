@@ -59,3 +59,12 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"follower_cluster\":\"<follower_cluster>\",\"follower_index\":\"<follower_index>\",\"follower_index_uuid\":\"<follower_ind\
       ex_uuid>\",\"leader_remote_cluster\":\"<leader_remote_cluster>\"}' \"$ELASTICSEARCH_URL/<leader_index>/_ccr/forget_follower\""
+  - language: java
+    code: |
+      client.ccr().forgetFollower(f -> f
+      	.followerCluster("<follower_cluster>")
+      	.followerIndex("<follower_index>")
+      	.followerIndexUuid("<follower_index_uuid>")
+      	.index("<leader_index>")
+      	.leaderRemoteCluster("<leader_remote_cluster>")
+      );
