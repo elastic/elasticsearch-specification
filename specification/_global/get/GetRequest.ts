@@ -165,7 +165,7 @@ export interface Request extends RequestBase {
      * If this field is specified, the `_source` parameter defaults to `false`.
      * Only leaf fields can be retrieved with the `stored_fields` option.
      * Object fields can't be returned; if specified, the request fails.
-     * For an example, refer to [Retrieve stored fields](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-stored-fields).
+     * @ext_doc_id retrieve-stored-fields
      */
     stored_fields?: Fields
     /**
