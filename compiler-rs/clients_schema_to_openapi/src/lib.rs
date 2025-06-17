@@ -44,6 +44,9 @@ pub struct Configuration {
 
     /// Should we output a redirect map when merging multipath endpoints?
     pub multipath_redirects: bool,
+
+    /// include the x-codeSamples extension with language examples for all endpoints
+    pub include_language_examples: bool,
 }
 
 pub struct OpenApiConversion {
