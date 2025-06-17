@@ -17,18 +17,6 @@
  * under the License.
  */
 
-import { FieldCollapse } from '@global/search/_types/FieldCollapse'
-import { Highlight } from '@global/search/_types/highlighting'
-import { TrackHits } from '@global/search/_types/hits'
-import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
-import { Rescore } from '@global/search/_types/rescoring'
-import {
-  SourceConfig,
-  SourceConfigParam
-} from '@global/search/_types/SourceFilter'
-import { Suggester } from '@global/search/_types/suggester'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
@@ -50,6 +38,18 @@ import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort, SortResults } from '@_types/sort'
 import { Duration } from '@_types/Time'
+import { FieldCollapse } from '@global/search/_types/FieldCollapse'
+import { Highlight } from '@global/search/_types/highlighting'
+import { TrackHits } from '@global/search/_types/hits'
+import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
+import { Rescore } from '@global/search/_types/rescoring'
+import {
+  SourceConfig,
+  SourceConfigParam
+} from '@global/search/_types/SourceFilter'
+import { Suggester } from '@global/search/_types/suggester'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Run an async search.
@@ -124,7 +124,7 @@ export interface Request extends RequestBase {
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
     lenient?: boolean
-    max_concurrent_shard_requests?: long
+    max_concurrent_shard_requests?: integer
     preference?: string
     /** @server_default true */
     request_cache?: boolean
@@ -189,7 +189,7 @@ export interface Request extends RequestBase {
     /**
      * Boosts the _score of documents from specified indices.
      */
-    indices_boost?: Array<Dictionary<IndexName, double>>
+    indices_boost?: Array<SingleKeyDictionary<IndexName, double>>
     /**
      * Array of wildcard (*) patterns. The request returns doc values for field
      * names matching these patterns in the hits.fields property of the response.
@@ -203,7 +203,7 @@ export interface Request extends RequestBase {
     knn?: KnnSearch | KnnSearch[]
     /**
      * Minimum _score for matching documents. Documents with a lower _score are
-     * not included in the search results.
+     * not included in search results and results collected by aggregations.
      */
     min_score?: double
     post_filter?: QueryContainer

@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { ScriptSource } from '@_types/Scripting'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { SearchInputRequestDefinition } from '@watcher/_types/Input'
@@ -39,7 +40,7 @@ export class ScriptTransform {
    */
   lang?: string
   params?: Dictionary<string, UserDefinedValue>
-  source?: string
+  source?: ScriptSource
   id?: string
 }
 

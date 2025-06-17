@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Alias } from '@indices/_types/Alias'
-import { IndexSettings } from '@indices/_types/IndexSettings'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { IndexName, Name, WaitForActiveShards } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Duration } from '@_types/Time'
+import { Alias } from '@indices/_types/Alias'
+import { IndexSettings } from '@indices/_types/IndexSettings'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Create an index.
@@ -46,8 +46,6 @@ import { Duration } from '@_types/Time'
  *
  * You can change the default of only waiting for the primary shards to start through the index setting `index.write.wait_for_active_shards`.
  * Note that changing this setting will also affect the `wait_for_active_shards` value on all subsequent write operations.
-
-
  * @doc_id indices-create-index
  * @rest_spec_name indices.create
  * @availability stack stability=stable
@@ -64,6 +62,15 @@ export interface Request extends RequestBase {
   path_parts: {
     /**
      * Name of the index you wish to create.
+     * Index names must meet the following criteria:
+     *
+     * * Lowercase only
+     * * Cannot include `\`, `/`, `*`, `?`, `"`, `<`, `>`, `|`, ` ` (space character), `,`, or `#`
+     * * Indices prior to 7.0 could contain a colon (`:`), but that has been deprecated and will not be supported in later versions
+     * * Cannot start with `-`, `_`, or `+`
+     * * Cannot be `.` or `..`
+     * * Cannot be longer than 255 bytes (note thtat it is bytes, so multi-byte characters will reach the limit faster)
+     * * Names starting with `.` are deprecated, except for hidden indices and internal indices managed by plugins
      */
     index: IndexName
   }

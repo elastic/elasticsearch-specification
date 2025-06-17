@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AcknowledgedResponseBase } from '@_types/Base'
 import { byte, float, integer } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Sparse Embedding tokens are represented as a dictionary
@@ -112,4 +112,17 @@ export class RerankedInferenceResult {
  */
 export class DeleteInferenceEndpointResult extends AcknowledgedResponseBase {
   pipelines: Array<string>
+}
+
+/**
+ * InferenceResult is an aggregation of mutually exclusive variants
+ * @variants container
+ */
+export class InferenceResult {
+  text_embedding_bytes?: Array<TextEmbeddingByteResult>
+  text_embedding_bits?: Array<TextEmbeddingByteResult>
+  text_embedding?: Array<TextEmbeddingResult>
+  sparse_embedding?: Array<SparseEmbeddingResult>
+  completion?: Array<CompletionResult>
+  rerank?: Array<RankedDocument>
 }

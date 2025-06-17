@@ -2,13 +2,8 @@
   "endpointErrors": {
     "async_search.submit": {
       "request": [
-        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
-      ],
-      "response": []
-    },
-    "capabilities": {
-      "request": [
-        "Missing request & response"
+        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required",
+        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
       "response": []
     },
@@ -24,27 +19,13 @@
       ],
       "response": []
     },
-    "connector.secret_delete": {
+    "create": {
       "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.secret_get": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.secret_post": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "connector.secret_put": {
-      "request": [
-        "Missing request & response"
+        "Request: query parameter 'if_primary_term' does not exist in the json spec",
+        "Request: query parameter 'if_seq_no' does not exist in the json spec",
+        "Request: query parameter 'op_type' does not exist in the json spec",
+        "Request: query parameter 'require_alias' does not exist in the json spec",
+        "Request: query parameter 'require_data_stream' does not exist in the json spec"
       ],
       "response": []
     },
@@ -53,32 +34,6 @@
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
         "Request: query parameter 'expand_wildcards' does not exist in the json spec",
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "esql.async_query": {
-      "request": [
-        "Request: query parameter 'keep_alive' does not exist in the json spec",
-        "Request: query parameter 'keep_on_completion' does not exist in the json spec",
-        "Request: query parameter 'wait_for_completion_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "fleet.delete_secret": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "fleet.get_secret": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "fleet.post_secret": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -91,68 +46,6 @@
     "index": {
       "request": [
         "Request: missing json spec query parameter 'require_data_stream'"
-      ],
-      "response": []
-    },
-    "indices.analyze": {
-      "request": [
-        "Request: missing json spec query parameter 'index'"
-      ],
-      "response": []
-    },
-    "indices.clear_cache": {
-      "request": [
-        "Request: missing json spec query parameter 'index'"
-      ],
-      "response": []
-    },
-    "indices.exists_index_template": {
-      "request": [
-        "Request: missing json spec query parameter 'flat_settings'",
-        "Request: missing json spec query parameter 'local'"
-      ],
-      "response": []
-    },
-    "indices.field_usage_stats": {
-      "request": [
-        "Request: query parameter 'wait_for_active_shards' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "indices.put_settings": {
-      "request": [
-        "Request: missing json spec query parameter 'reopen'"
-      ],
-      "response": []
-    },
-    "indices.put_template": {
-      "request": [
-        "Request: query parameter 'cause' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "indices.reload_search_analyzers": {
-      "request": [
-        "Request: missing json spec query parameter 'resource'"
-      ],
-      "response": []
-    },
-    "indices.rollover": {
-      "request": [
-        "Request: missing json spec query parameter 'lazy'"
-      ],
-      "response": []
-    },
-    "indices.simulate_index_template": {
-      "request": [
-        "Request: missing json spec query parameter 'create'",
-        "Request: missing json spec query parameter 'cause'"
-      ],
-      "response": []
-    },
-    "indices.simulate_template": {
-      "request": [
-        "Request: missing json spec query parameter 'cause'"
       ],
       "response": []
     },
@@ -180,16 +73,16 @@
       ],
       "response": []
     },
+    "open_point_in_time": {
+      "request": [
+        "Request: query parameter 'max_concurrent_shard_requests' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "reindex": {
       "request": [
         "Request: query parameter 'require_alias' does not exist in the json spec",
         "Request: missing json spec query parameter 'max_docs'"
-      ],
-      "response": []
-    },
-    "search": {
-      "request": [
-        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
       ],
       "response": []
     },
@@ -220,12 +113,6 @@
       ],
       "response": []
     },
-    "snapshot.clone": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "snapshot.delete": {
       "request": [
         "Request: missing json spec query parameter 'wait_for_completion'"
@@ -235,12 +122,6 @@
     "snapshot.repository_analyze": {
       "request": [
         "Request: query parameter 'register_operation_count' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "transform.get_node_stats": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },

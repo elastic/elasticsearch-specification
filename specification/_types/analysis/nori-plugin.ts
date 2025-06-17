@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { TokenFilterBase } from './token_filters'
 import { TokenizerBase } from './tokenizers'
 
 export enum NoriDecompoundMode {
@@ -31,4 +32,10 @@ export class NoriTokenizer extends TokenizerBase {
   discard_punctuation?: boolean
   user_dictionary?: string
   user_dictionary_rules?: string[]
+}
+
+export class NoriPartOfSpeechTokenFilter extends TokenFilterBase {
+  type: 'nori_part_of_speech'
+  /** An array of part-of-speech tags that should be removed. */
+  stoptags?: string[]
 }

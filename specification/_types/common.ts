@@ -126,7 +126,7 @@ export type SequenceNumber = long
 
 export type PropertyName = string
 export type RelationName = string
-export type TaskId = string | integer
+export type TaskId = string
 /** @doc_id fuzziness */
 export type Fuzziness = string | integer
 /** @doc_id query-dsl-multi-term-rewrite */

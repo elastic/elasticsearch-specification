@@ -20,5 +20,6 @@
 import { ReloadResult } from './types'
 
 export class Response {
+  /** @codegen_name result */
   body: ReloadResult
 }

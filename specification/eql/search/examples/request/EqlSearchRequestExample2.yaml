@@ -1,10 +1,10 @@
 summary: Sequence query
-# method_request: GET /my-data-stream/_eql/search
+method_request: GET /my-data-stream/_eql/search
 description: >
-  Run `GET /my-data-stream/_eql/search` to search for a sequence of events.
-  The sequence starts with an event with an `event.category` of `file`, a `file.name` of `cmd.exe`, and a `process.pid` other than `2013`.
-  It is followed by an event with an `event.category` of `process` and a `process.executable` that contains the substring `regsvr32`.
-  These events must also share the same `process.pid` value.
+  Run `GET /my-data-stream/_eql/search` to search for a sequence of events. The sequence starts with an event with an
+  `event.category` of `file`, a `file.name` of `cmd.exe`, and a `process.pid` other than `2013`. It is followed by an event with an
+  `event.category` of `process` and a `process.executable` that contains the substring `regsvr32`. These events must also share the
+  same `process.pid` value.
 # type: request
 value: |-
   {
@@ -14,3 +14,39 @@ value: |-
         [ process where stringContains(process.executable, "regsvr32") ]
     """
   }
+alternatives:
+  - language: Python
+    code: >-
+      resp = client.eql.search(
+          index="my-data-stream",
+          query="\n    sequence by process.pid\n      [ file where file.name == \"cmd.exe\" and process.pid != 2013 ]\n      [ process where stringContains(process.executable, \"regsvr32\") ]\n  ",
+      )
+  - language: JavaScript
+    code: >-
+      const response = await client.eql.search({
+        index: "my-data-stream",
+        query:
+          '\n    sequence by process.pid\n      [ file where file.name == "cmd.exe" and process.pid != 2013 ]\n      [ process where stringContains(process.executable, "regsvr32") ]\n  ',
+      });
+  - language: Ruby
+    code: >-
+      response = client.eql.search(
+        index: "my-data-stream",
+        body: {
+          "query": "\n    sequence by process.pid\n      [ file where file.name == \"cmd.exe\" and process.pid != 2013 ]\n      [ process where stringContains(process.executable, \"regsvr32\") ]\n  "
+        }
+      )
+  - language: PHP
+    code: >-
+      $resp = $client->eql()->search([
+          "index" => "my-data-stream",
+          "body" => [
+              "query" => "\n    sequence by process.pid\n      [ file where file.name == \"cmd.exe\" and process.pid != 2013 ]\n      [ process where stringContains(process.executable, \"regsvr32\") ]\n  ",
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"query\":\"\\n    sequence by process.pid\\n      [ file where file.name == \\\"cmd.exe\\\" and process.pid != 2013
+      ]\\n      [ process where stringContains(process.executable, \\\"regsvr32\\\") ]\\n  \"}'
+      \"$ELASTICSEARCH_URL/my-data-stream/_eql/search\""

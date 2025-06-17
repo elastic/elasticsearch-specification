@@ -1,0 +1,43 @@
+summary: Sparse embedding task
+description: Run `POST _inference/sparse_embedding/my-elser-model` to perform sparse embedding on the example sentence.
+method_request: 'POST _inference/sparse_embedding/my-elser-model'
+# type: "request"
+value: |-
+  {
+    "input": "The sky above the port was the color of television tuned to a dead channel."
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.sparse_embedding(
+          inference_id="my-elser-model",
+          input="The sky above the port was the color of television tuned to a dead channel.",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.sparseEmbedding({
+        inference_id: "my-elser-model",
+        input:
+          "The sky above the port was the color of television tuned to a dead channel.",
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.sparse_embedding(
+        inference_id: "my-elser-model",
+        body: {
+          "input": "The sky above the port was the color of television tuned to a dead channel."
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->sparseEmbedding([
+          "inference_id" => "my-elser-model",
+          "body" => [
+              "input" => "The sky above the port was the color of television tuned to a dead channel.",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"input":"The sky
+      above the port was the color of television tuned to a dead channel."}''
+      "$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model"'

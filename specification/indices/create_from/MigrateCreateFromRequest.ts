@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexSettings } from '@indices/_types/IndexSettings'
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * Create an index from a source index.
@@ -29,7 +29,7 @@ import { TypeMapping } from '@_types/mapping/TypeMapping'
  * @rest_spec_name indices.create_from
  * @availability stack since=8.18.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
- * @doc_id migrate
+ * @doc_id migration-api-create-from
  * @doc_tag migration
  */
 export interface Request extends RequestBase {

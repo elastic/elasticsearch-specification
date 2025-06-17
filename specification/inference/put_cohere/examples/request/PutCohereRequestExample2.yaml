@@ -1,0 +1,90 @@
+summary: A rerank task
+description: Run `PUT _inference/rerank/cohere-rerank` to create an inference endpoint that performs a rerank task.
+method_request: 'PUT _inference/rerank/cohere-rerank'
+# type: "request"
+value: |-
+  {
+      "service": "cohere",
+      "service_settings": {
+          "api_key": "Cohere-API-key",
+          "model_id": "rerank-english-v3.0"
+      },
+      "task_settings": {
+          "top_n": 10,
+          "return_documents": true
+      }
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="rerank",
+          inference_id="cohere-rerank",
+          inference_config={
+              "service": "cohere",
+              "service_settings": {
+                  "api_key": "Cohere-API-key",
+                  "model_id": "rerank-english-v3.0"
+              },
+              "task_settings": {
+                  "top_n": 10,
+                  "return_documents": True
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "rerank",
+        inference_id: "cohere-rerank",
+        inference_config: {
+          service: "cohere",
+          service_settings: {
+            api_key: "Cohere-API-key",
+            model_id: "rerank-english-v3.0",
+          },
+          task_settings: {
+            top_n: 10,
+            return_documents: true,
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "rerank",
+        inference_id: "cohere-rerank",
+        body: {
+          "service": "cohere",
+          "service_settings": {
+            "api_key": "Cohere-API-key",
+            "model_id": "rerank-english-v3.0"
+          },
+          "task_settings": {
+            "top_n": 10,
+            "return_documents": true
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "rerank",
+          "inference_id" => "cohere-rerank",
+          "body" => [
+              "service" => "cohere",
+              "service_settings" => [
+                  "api_key" => "Cohere-API-key",
+                  "model_id" => "rerank-english-v3.0",
+              ],
+              "task_settings" => [
+                  "top_n" => 10,
+                  "return_documents" => true,
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"service\":\"cohere\",\"service_settings\":{\"api_key\":\"Cohere-API-key\",\"model_id\":\"rerank-english-v3.0\"},\"task_se\
+      ttings\":{\"top_n\":10,\"return_documents\":true}}' \"$ELASTICSEARCH_URL/_inference/rerank/cohere-rerank\""

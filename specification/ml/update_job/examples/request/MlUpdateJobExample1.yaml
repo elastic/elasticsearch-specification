@@ -1,0 +1,111 @@
+method_request: POST _ml/anomaly_detectors/low_request_rate/_update
+description: An example body for a `POST _ml/anomaly_detectors/low_request_rate/_update` request.
+value: |-
+  {
+    "description":"An updated job",
+    "detectors": {
+      "detector_index": 0,
+      "description": "An updated detector description"
+    },
+    "groups": ["kibana_sample_data","kibana_sample_web_logs"],
+    "model_plot_config": {
+      "enabled": true
+    },
+    "renormalization_window_days": 30,
+    "background_persist_interval": "2h",
+    "model_snapshot_retention_days": 7,
+    "results_retention_days": 60
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.update_job(
+          job_id="low_request_rate",
+          description="An updated job",
+          detectors={
+              "detector_index": 0,
+              "description": "An updated detector description"
+          },
+          groups=[
+              "kibana_sample_data",
+              "kibana_sample_web_logs"
+          ],
+          model_plot_config={
+              "enabled": True
+          },
+          renormalization_window_days=30,
+          background_persist_interval="2h",
+          model_snapshot_retention_days=7,
+          results_retention_days=60,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.updateJob({
+        job_id: "low_request_rate",
+        description: "An updated job",
+        detectors: {
+          detector_index: 0,
+          description: "An updated detector description",
+        },
+        groups: ["kibana_sample_data", "kibana_sample_web_logs"],
+        model_plot_config: {
+          enabled: true,
+        },
+        renormalization_window_days: 30,
+        background_persist_interval: "2h",
+        model_snapshot_retention_days: 7,
+        results_retention_days: 60,
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.update_job(
+        job_id: "low_request_rate",
+        body: {
+          "description": "An updated job",
+          "detectors": {
+            "detector_index": 0,
+            "description": "An updated detector description"
+          },
+          "groups": [
+            "kibana_sample_data",
+            "kibana_sample_web_logs"
+          ],
+          "model_plot_config": {
+            "enabled": true
+          },
+          "renormalization_window_days": 30,
+          "background_persist_interval": "2h",
+          "model_snapshot_retention_days": 7,
+          "results_retention_days": 60
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->updateJob([
+          "job_id" => "low_request_rate",
+          "body" => [
+              "description" => "An updated job",
+              "detectors" => [
+                  "detector_index" => 0,
+                  "description" => "An updated detector description",
+              ],
+              "groups" => array(
+                  "kibana_sample_data",
+                  "kibana_sample_web_logs",
+              ),
+              "model_plot_config" => [
+                  "enabled" => true,
+              ],
+              "renormalization_window_days" => 30,
+              "background_persist_interval" => "2h",
+              "model_snapshot_retention_days" => 7,
+              "results_retention_days" => 60,
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"description\":\"An
+      updated job\",\"detectors\":{\"detector_index\":0,\"description\":\"An updated detector
+      description\"},\"groups\":[\"kibana_sample_data\",\"kibana_sample_web_logs\"],\"model_plot_config\":{\"enabled\":true},\"reno\
+      rmalization_window_days\":30,\"background_persist_interval\":\"2h\",\"model_snapshot_retention_days\":7,\"results_retention_d\
+      ays\":60}' \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_update\""

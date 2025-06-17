@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import {
   Field,
@@ -28,6 +27,7 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Filter } from './types'
 
 /**
@@ -72,12 +72,14 @@ import { Filter } from './types'
  * The term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.
  * By default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.
  * Use `routing` only to hit a particular shard.
+ * Refer to the linked documentation for detailed examples of how to use this API.
  * @rest_spec_name termvectors
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @doc_tag document
  * @doc_id docs-termvectors
+ * @ext_doc_id term-vectors-examples
  */
 export interface Request<TDocument> extends RequestBase {
   urls: [
@@ -183,5 +185,57 @@ export interface Request<TDocument> extends RequestBase {
      * When providing an analyzer for a field that already stores term vectors, the term vectors will be regenerated.
      */
     per_field_analyzer?: Dictionary<Field, string>
+    /**
+     * A list of fields to include in the statistics.
+     * It is used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.
+     */
+    fields?: Fields
+    /**
+     * If `true`, the response includes:
+     *
+     * * The document count (how many documents contain this field).
+     * * The sum of document frequencies (the sum of document frequencies for all terms in this field).
+     * * The sum of total term frequencies (the sum of total term frequencies of each term in this field).
+     * @server_default true
+     */
+    field_statistics?: boolean
+    /**
+     * If `true`, the response includes term offsets.
+     * @server_default true
+     */
+    offsets?: boolean
+    /**
+     * If `true`, the response includes term payloads.
+     * @server_default true
+     */
+    payloads?: boolean
+    /**
+     * If `true`, the response includes term positions.
+     * @server_default true
+     */
+    positions?: boolean
+    /**
+     * If `true`, the response includes:
+     *
+     * * The total term frequency (how often a term occurs in all documents).
+     * * The document frequency (the number of documents containing the current term).
+     *
+     * By default these values are not returned since term statistics can have a serious performance impact.
+     *
+     * @server_default false
+     */
+    term_statistics?: boolean
+    /**
+     * A custom value that is used to route operations to a specific shard.
+     */
+    routing?: Routing
+    /**
+     * If `true`, returns the document version as part of a hit.
+     */
+    version?: VersionNumber
+    /**
+     * The version type.
+     */
+    version_type?: VersionType
   }
 }

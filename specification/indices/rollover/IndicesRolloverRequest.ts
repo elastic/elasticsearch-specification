@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Alias } from '@indices/_types/Alias'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { IndexAlias, IndexName, WaitForActiveShards } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Duration } from '@_types/Time'
+import { Alias } from '@indices/_types/Alias'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RolloverConditions } from './types'
 
 /**
@@ -118,6 +118,12 @@ export interface Request extends RequestBase {
      * @server_default 1
      */
     wait_for_active_shards?: WaitForActiveShards
+    /**
+     * If set to true, the rollover action will only mark a data stream to signal that it needs to be rolled over at the next write.
+     * Only allowed on data streams.
+     * @server_default false
+     */
+    lazy?: boolean
   }
   body: {
     /**

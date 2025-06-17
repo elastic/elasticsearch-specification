@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   ByteSize,
   Field,
@@ -36,6 +34,8 @@ import {
   UnitFloatMillis,
   UnitMillis
 } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { DiscoveryNode } from './DiscoveryNode'
 import { InferenceConfigCreateContainer } from './inference'
 
@@ -187,9 +187,9 @@ export class TrainedModelDeploymentNodesStats {
 
   peak_throughput_per_minute: long
   /** The number of inference requests that were not processed because the queue was full. */
-  rejection_execution_count?: integer
+  rejected_execution_count?: integer
   /** The current routing state and reason for the current routing state for this allocation. */
-  routing_state: TrainedModelAssignmentRoutingTable
+  routing_state: TrainedModelAssignmentRoutingStateAndReason
   /** The epoch timestamp when the allocation started. */
   start_time?: EpochTime<UnitMillis>
   /** The number of threads used by each allocation during inference. */
@@ -235,6 +235,7 @@ export class TrainedModelConfig {
   model_size_bytes?: ByteSize
   model_package?: ModelPackageConfig
   location?: TrainedModelLocation
+  platform_architecture?: string
   prefix_strings?: TrainedModelPrefixStrings
 }
 
@@ -425,6 +426,18 @@ export enum RoutingState {
    * The trained model is being deallocated from this node.
    */
   stopping
+}
+
+export class TrainedModelAssignmentRoutingStateAndReason {
+  /**
+   * The reason for the current state. It is usually populated only when the
+   * `routing_state` is `failed`.
+   */
+  reason?: string
+  /**
+   * The current routing state.
+   */
+  routing_state: RoutingState
 }
 
 export class TrainedModelAssignmentRoutingTable {

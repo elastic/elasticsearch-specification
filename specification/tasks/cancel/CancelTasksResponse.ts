@@ -20,5 +20,6 @@
 import { TaskListResponseBase } from '@tasks/_types/TaskListResponseBase'
 
 export class Response {
+  /** @codegen_name task_list */
   body: TaskListResponseBase
 }

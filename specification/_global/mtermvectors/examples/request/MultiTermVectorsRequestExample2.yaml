@@ -1,16 +1,71 @@
 summary: Simplified syntax
-# method_request: POST /my-index-000001/_mtermvectors
+method_request: POST /my-index-000001/_mtermvectors
 description: >
-  Run `POST /my-index-000001/_mtermvectors`.
-  If all requested documents are in same index and the parameters are the same, you can use a simplified syntax.
+  Run `POST /my-index-000001/_mtermvectors`. If all requested documents are in same index and the parameters are the same, you can
+  use a simplified syntax.
 # type: request
 value: |-
   {
     "ids": [ "1", "2" ],
-    "parameters": {
-      "fields": [
-        "message"
-      ],
-      "term_statistics": true
-    }
+    "fields": [
+      "message"
+    ],
+    "term_statistics": true
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.mtermvectors(
+          index="my-index-000001",
+          ids=[
+              "1",
+              "2"
+          ],
+          fields=[
+              "message"
+          ],
+          term_statistics=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.mtermvectors({
+        index: "my-index-000001",
+        ids: ["1", "2"],
+        fields: ["message"],
+        term_statistics: true,
+      });
+  - language: Ruby
+    code: |-
+      response = client.mtermvectors(
+        index: "my-index-000001",
+        body: {
+          "ids": [
+            "1",
+            "2"
+          ],
+          "fields": [
+            "message"
+          ],
+          "term_statistics": true
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->mtermvectors([
+          "index" => "my-index-000001",
+          "body" => [
+              "ids" => array(
+                  "1",
+                  "2",
+              ),
+              "fields" => array(
+                  "message",
+              ),
+              "term_statistics" => true,
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"ids":["1","2"],"fields":["message"],"term_statistics":true}''
+      "$ELASTICSEARCH_URL/my-index-000001/_mtermvectors"'

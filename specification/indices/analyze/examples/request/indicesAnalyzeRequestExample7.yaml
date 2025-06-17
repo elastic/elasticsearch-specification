@@ -1,7 +1,9 @@
 summary: Explain analysis
-# method_request: GET /_analyze
+method_request: GET /_analyze
 description: >
-  If you want to get more advanced details, set `explain` to `true`. It will output all token attributes for each token. You can filter token attributes you want to output by setting the `attributes` option. NOTE: The format of the additional detail information is labelled as experimental in Lucene and it may change in the future.
+  If you want to get more advanced details, set `explain` to `true`. It will output all token attributes for each token. You can
+  filter token attributes you want to output by setting the `attributes` option. NOTE: The format of the additional detail
+  information is labelled as experimental in Lucene and it may change in the future.
 # type: request
 value:
   tokenizer: standard
@@ -11,3 +13,61 @@ value:
   explain: true
   attributes:
     - keyword
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.analyze(
+          tokenizer="standard",
+          filter=[
+              "snowball"
+          ],
+          text="detailed output",
+          explain=True,
+          attributes=[
+              "keyword"
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.analyze({
+        tokenizer: "standard",
+        filter: ["snowball"],
+        text: "detailed output",
+        explain: true,
+        attributes: ["keyword"],
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.analyze(
+        body: {
+          "tokenizer": "standard",
+          "filter": [
+            "snowball"
+          ],
+          "text": "detailed output",
+          "explain": true,
+          "attributes": [
+            "keyword"
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->analyze([
+          "body" => [
+              "tokenizer" => "standard",
+              "filter" => array(
+                  "snowball",
+              ),
+              "text" => "detailed output",
+              "explain" => true,
+              "attributes" => array(
+                  "keyword",
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"tokenizer":"standard","filter":["snowball"],"text":"detailed
+      output","explain":true,"attributes":["keyword"]}'' "$ELASTICSEARCH_URL/_analyze"'

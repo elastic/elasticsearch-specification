@@ -21,6 +21,7 @@ import { AcknowledgedResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 export class Response {
+  /** @codegen_name result */
   body: AnalyticsAcknowledgeResponseBase
 }
 

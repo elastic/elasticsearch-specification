@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id, IndexName, Names } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptLanguage } from '@_types/Scripting'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { FieldSecurity } from './FieldSecurity'
 
 export class ApplicationPrivileges {
@@ -83,6 +83,7 @@ export enum ClusterPrivilege {
    */
   manage_data_stream_global_retention,
   manage_enrich,
+  manage_esql,
   /**
    * @availability stack
    */
@@ -141,6 +142,7 @@ export enum ClusterPrivilege {
    */
   monitor_data_stream_global_retention,
   monitor_enrich,
+  monitor_esql,
   monitor_inference,
   monitor_ml,
   /**

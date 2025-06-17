@@ -1,8 +1,37 @@
 # summary:
-# method_request: DELETE /_search/scroll
+method_request: DELETE /_search/scroll
 description: Run `DELETE /_search/scroll` to clear the search context and results for a scrolling search.
 # type: request
 value: |-
   {
     "scroll_id": "DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ=="
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.clear_scroll(
+          scroll_id="DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.clearScroll({
+        scroll_id: "DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==",
+      });
+  - language: Ruby
+    code: |-
+      response = client.clear_scroll(
+        body: {
+          "scroll_id": "DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ=="
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->clearScroll([
+          "body" => [
+              "scroll_id" => "DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ=="}'' "$ELASTICSEARCH_URL/_search/scroll"'

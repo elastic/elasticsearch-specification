@@ -15,18 +15,15 @@
 // specific language governing permissions and limitations
 // under the License.
 
+use std::fmt::Write;
 use anyhow::bail;
-use clients_schema::{
-    Body, Enum, Interface, LiteralValueValue, PropertiesBody, Property, Request, Response, TypeAlias,
-    TypeAliasVariants, TypeDefinition, TypeName, ValueOf,
-};
+use clients_schema::{ArrayOf, Body, Enum, EnumMember, Interface, LiteralValueValue, PropertiesBody, Property, Request, Response, TypeAlias, TypeAliasVariants, TypeDefinition, TypeName, ValueOf};
 use indexmap::IndexMap;
 use openapiv3::{
     AdditionalProperties, ArrayType, Discriminator, ExternalDocumentation, NumberType, ObjectType, ReferenceOr, Schema,
     SchemaData, SchemaKind, StringType, Type,
 };
 use openapiv3::SchemaKind::AnyOf;
-
 use crate::components::TypesAndComponents;
 use crate::utils::{IntoSchema, ReferenceOrBoxed, SchemaName};
 
@@ -249,7 +246,7 @@ impl<'a> TypesAndComponents<'a> {
         let mut result = self.convert_value_of(&prop.typ)?;
         // TODO: how can we just wrap a reference so that we can add docs?
         if let ReferenceOr::Item(ref mut schema) = &mut result {
-            self.fill_data_with_prop(&mut schema.schema_data, prop);
+            self.fill_data_with_prop(&mut schema.schema_data, prop)?;
         }
         Ok(result)
     }
@@ -366,6 +363,10 @@ impl<'a> TypesAndComponents<'a> {
                 _ => bail!("Unknown behavior {}", &bh.typ),
             }
         }
+
+        // description
+        schema.schema_data.description = itf.base.description.clone();
+
         Ok(schema)
     }
 
@@ -468,15 +469,171 @@ impl<'a> TypesAndComponents<'a> {
         // TODO: base.codegen_names as extension?
     }
 
-    fn fill_data_with_prop(&self, data: &mut SchemaData, prop: &Property) {
+    fn fill_data_with_prop(&self, data: &mut SchemaData, prop: &Property) -> anyhow::Result<()> {
         data.external_docs = self.convert_external_docs(prop);
         data.deprecated = prop.deprecation.is_some();
-        data.description = prop.description.clone();
-        data.extensions = crate::availability_as_extensions(&prop.availability);
+        data.description = self.property_description(prop)?;
+        data.extensions = crate::availability_as_extensions(&prop.availability, &self.config.flavor);
         // TODO: prop.aliases as extensions
         // TODO: prop.server_default as extension
         // TODO: prop.doc_id as extension (new representation of since and stability)
         // TODO: prop.es_quirk as extension?
         // TODO: prop.codegen_name as extension?
+
+        Ok(())
     }
+
+    pub fn property_description(&self, prop: &Property) -> anyhow::Result<Option<String>> {
+        if self.config.lift_enum_descriptions {
+            Ok(lift_enum_descriptions(prop, self.model)?.or_else(|| prop.description.clone()))
+        } else {
+            Ok(prop.description.clone())
+        }
+    }
+}
+
+/// Unwraps aliases from a value definition, recursively.
+///
+/// Returns the end value definition of the alias chain or `None` if the value definition isn't an alias.
+fn unwrap_alias<'a> (value: &ValueOf, model: &'a clients_schema::IndexedModel) -> anyhow::Result<Option<&'a ValueOf>> {
+    let ValueOf::InstanceOf(io) = value else {
+        return Ok(None);
+    };
+
+    if io.typ.is_builtin() {
+        return Ok(None);
+    }
+
+    let TypeDefinition::TypeAlias(alias) = model.get_type(&io.typ)? else {
+        return Ok(None);
+    };
+
+    // Try to unwrap further or else return the current alias
+    let result = match unwrap_alias(&alias.typ, model)? {
+        Some(alias_value) => Some(alias_value),
+        None => Some(&alias.typ),
+    };
+
+    Ok(result)
+}
+
+/// Checks if a value_of is a lenient array definition (i.e. `Foo | Foo[]`) and
+/// if successful, returns the value definition.
+fn unwrap_lenient_array(value: &ValueOf) -> Option<&ValueOf> {
+    // Is this a union
+    let ValueOf::UnionOf(u) = value else {
+        return None
+    };
+
+    // of a value and array_of (in any order)
+    let (single_value, array_value) = match &u.items.as_slice() {
+        [v, ValueOf::ArrayOf(ao)] |
+        [ValueOf::ArrayOf(ao), v] => (v, &*ao.value),
+        _ => return None,
+    };
+
+    // and both value types are the same
+    if single_value == array_value {
+        return Some(single_value);
+    }
+
+    None
+}
+
+fn unwrap_array(value: &ValueOf) -> Option<&ValueOf> {
+    match value {
+        ValueOf::ArrayOf(ArrayOf { value }) => Some(value),
+        _ => None,
+    }
+}
+
+/// If a property value is an enumeration (possibly via aliases and arrays)
+fn lift_enum_descriptions(prop: &Property, model: &clients_schema::IndexedModel) -> anyhow::Result<Option<String>> {
+
+    // FIXME: could be memoized on `prop.typ` as we'll redo this work every time we encounter the same value definition
+    let value = &prop.typ;
+
+    // Maybe an alias pointing to an array or lenient array
+    let value = unwrap_alias(value, model)?.unwrap_or(value);
+
+    // Unwrap lenient array
+    let (lenient_array, value) = match unwrap_lenient_array(value) {
+        Some(lenient_array) => (true, lenient_array),
+        None => (false, value),
+    };
+
+    // Unwrap array to get to the enum type
+    let value = unwrap_array(value).unwrap_or(value);
+
+    // Unwrap aliases again, in case the array value was itself an alias
+    let value = unwrap_alias(value, model)?.unwrap_or(value);
+
+    // Is this an enum?
+    let ValueOf::InstanceOf(inst) = value else {
+        return Ok(None);
+    };
+
+    if inst.typ.is_builtin() {
+        return Ok(None);
+    }
+
+    let TypeDefinition::Enum(enum_def) = model.get_type(&inst.typ)? else {
+        return Ok(None);
+    };
+
+    let mut result: String = match &prop.description {
+        Some(desc) => desc.clone(),
+        None => String::new(),
+    };
+
+    // Do we have at least one enum member description?
+    if enum_def.members.iter().any(|m| m.description.is_some()) {
+        // Some descriptions: output a list with descriptions
+
+        // Close description paragraph and add an empty line to start a new paragraph
+        writeln!(result)?;
+        writeln!(result)?;
+
+        writeln!(result, "Supported values include:")?;
+        for member in &enum_def.members {
+            write!(result, "  - ")?;
+            value_and_aliases(&mut result, member)?;
+            if let Some(desc) = &member.description {
+                write!(result, ": {}", desc)?;
+            }
+            writeln!(result)?;
+        }
+        writeln!(result)?;
+
+    } else {
+        // No description: inline list of values, only if this wasn't a lenient array.
+        // Otherwise (enum or enum array), bump.sh will correctly output a list of possible values.
+        if !lenient_array {
+            return Ok(None);
+        }
+
+        // Close description paragraph and add an empty line to start a new paragraph
+        writeln!(result)?;
+        writeln!(result)?;
+
+        write!(result, "Supported values include: ")?;
+        for (idx, member) in enum_def.members.iter().enumerate() {
+            if idx > 0 {
+                write!(result, ", ")?;
+            }
+            value_and_aliases(&mut result, member)?;
+        }
+        write!(result, "\n\n")?;
+    }
+
+    fn value_and_aliases(out: &mut String, member: &EnumMember) -> anyhow::Result<()> {
+        write!(out, "`{}`", member.name)?;
+        if !member.aliases.is_empty() {
+            write!(out, " (or `{}`)", member.aliases.join("`, `"))?;
+        }
+
+        Ok(())
+    }
+
+    Ok(Some(result))
 }

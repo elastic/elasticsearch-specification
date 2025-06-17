@@ -20,5 +20,6 @@
 import { SearchApplication } from '@search_application/_types/SearchApplication'
 
 export class Response {
+  /** @codegen_name search_application */
   body: SearchApplication
 }

@@ -1,10 +1,11 @@
 # summary:
-# method_request: POST clicklogs/_graph/explore
+method_request: POST clicklogs/_graph/explore
 description: >
-  Run `POST clicklogs/_graph/explore` for a basic exploration
-  An initial graph explore query typically begins with a query to identify strongly related terms.
-  Seed the exploration with a query. This example is searching `clicklogs` for people who searched for the term `midi`.Identify the vertices to include in the graph. This example is looking for product codes that are significantly associated with searches for `midi`.
-  Find the connections. This example is looking for other search terms that led people to click on the products that are associated with searches for `midi`.
+  Run `POST clicklogs/_graph/explore` for a basic exploration An initial graph explore query typically begins with a query to
+  identify strongly related terms. Seed the exploration with a query. This example is searching `clicklogs` for people who searched
+  for the term `midi`.Identify the vertices to include in the graph. This example is looking for product codes that are
+  significantly associated with searches for `midi`. Find the connections. This example is looking for other search terms that led
+  people to click on the products that are associated with searches for `midi`.
 # type: request
 value: |-
   {
@@ -26,3 +27,101 @@ value: |-
       ]
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.graph.explore(
+          index="clicklogs",
+          query={
+              "match": {
+                  "query.raw": "midi"
+              }
+          },
+          vertices=[
+              {
+                  "field": "product"
+              }
+          ],
+          connections={
+              "vertices": [
+                  {
+                      "field": "query.raw"
+                  }
+              ]
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.graph.explore({
+        index: "clicklogs",
+        query: {
+          match: {
+            "query.raw": "midi",
+          },
+        },
+        vertices: [
+          {
+            field: "product",
+          },
+        ],
+        connections: {
+          vertices: [
+            {
+              field: "query.raw",
+            },
+          ],
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.graph.explore(
+        index: "clicklogs",
+        body: {
+          "query": {
+            "match": {
+              "query.raw": "midi"
+            }
+          },
+          "vertices": [
+            {
+              "field": "product"
+            }
+          ],
+          "connections": {
+            "vertices": [
+              {
+                "field": "query.raw"
+              }
+            ]
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->graph()->explore([
+          "index" => "clicklogs",
+          "body" => [
+              "query" => [
+                  "match" => [
+                      "query.raw" => "midi",
+                  ],
+              ],
+              "vertices" => array(
+                  [
+                      "field" => "product",
+                  ],
+              ),
+              "connections" => [
+                  "vertices" => array(
+                      [
+                          "field" => "query.raw",
+                      ],
+                  ),
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"query\":{\"match\":{\"query.raw\":\"midi\"}},\"vertices\":[{\"field\":\"product\"}],\"connections\":{\"vertices\":[{\"fie\
+      ld\":\"query.raw\"}]}}' \"$ELASTICSEARCH_URL/clicklogs/_graph/explore\""

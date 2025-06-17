@@ -18,7 +18,10 @@
  */
 
 import { Field, IndexName, ScalarValue } from '@_types/common'
-import { double, integer } from '@_types/Numeric'
+import { double, float, integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Inference configuration provided when storing the model config
@@ -47,6 +50,8 @@ export class InferenceConfigCreateContainer {
    * @availability serverless
    */
   fill_mask?: FillMaskInferenceOptions
+
+  learning_to_rank?: LearningToRankConfig
   /**
    * Named entity recognition configuration for inference.
    * @availability stack since=8.0.0
@@ -77,6 +82,26 @@ export class InferenceConfigCreateContainer {
    * @availability serverless
    */
   question_answering?: QuestionAnsweringInferenceOptions
+}
+
+export class LearningToRankConfig {
+  default_params?: Dictionary<string, UserDefinedValue>
+  feature_extractors?: Dictionary<string, FeatureExtractor>[]
+  num_top_feature_importance_values: integer
+}
+
+/**
+ * @variants external
+ */
+export type FeatureExtractor = QueryFeatureExtractor
+
+/**
+ * @variant name=query_extractor
+ */
+export class QueryFeatureExtractor {
+  default_score?: float
+  feature_name: string
+  query: QueryContainer
 }
 
 export class RegressionInferenceOptions {
@@ -128,6 +153,8 @@ export class TokenizationConfigContainer {
    * @availability serverless
    * */
   roberta?: NlpRobertaTokenizationConfig
+
+  xlm_roberta?: XlmRobertaTokenizationConfig
 }
 
 export class CommonTokenizationConfig {
@@ -170,6 +197,8 @@ export class NlpRobertaTokenizationConfig extends CommonTokenizationConfig {
   add_prefix_space?: boolean
 }
 
+export class XlmRobertaTokenizationConfig extends CommonTokenizationConfig {}
+
 /** Text classification configuration options */
 export class TextClassificationInferenceOptions {
   /** Specifies the number of top class predictions to return. Defaults to 0. */
@@ -180,6 +209,8 @@ export class TextClassificationInferenceOptions {
   results_field?: string
   /** Classification labels to apply other than the stored labels. Must have the same deminsions as the default configured labels */
   classification_labels?: string[]
+
+  vocabulary?: Vocabulary
 }
 
 /** Zero shot classification configuration options */

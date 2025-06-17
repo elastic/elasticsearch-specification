@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
-import { NumericFielddata } from '@indices/_types/NumericFielddata'
-import { Dictionary } from '@spec_utils/Dictionary'
 import {
   Fields,
   FieldValue,
@@ -38,6 +35,10 @@ import {
 } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateTime } from '@_types/Time'
+import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
+import { NumericFielddata } from '@indices/_types/NumericFielddata'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { ChunkingSettings } from './ChunkingSettings'
 import { Property, PropertyBase } from './Property'
 import { TermVectorOption } from './TermVectorOption'
 import { TimeSeriesMetricType } from './TimeSeriesMetricType'
@@ -60,6 +61,15 @@ export class BooleanProperty extends DocValuesPropertyBase {
   fielddata?: NumericFielddata
   index?: boolean
   null_value?: boolean
+  ignore_malformed?: boolean
+  script?: Script
+  on_script_error?: OnScriptError
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
+   */
+  time_series_dimension?: boolean
   type: 'boolean'
 }
 
@@ -223,6 +233,13 @@ export class SemanticTextProperty {
    * If not specified, the inference endpoint defined by inference_id will be used at both index and query time.
    */
   search_inference_id?: Id
+
+  /**
+   * Settings for chunking text into smaller passages. If specified, these will override the
+   * chunking settings sent in the inference endpoint associated with inference_id. If chunking settings are updated,
+   * they will not be applied to existing documents until they are reindexed.
+   */
+  chunking_settings?: ChunkingSettings
 }
 
 export class SearchAsYouTypeProperty extends CorePropertyBase {

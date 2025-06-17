@@ -1,0 +1,24 @@
+method_request: GET /_cat/thread_pool?format=json
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cat.thread_pool(
+          format="json",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cat.threadPool({
+        format: "json",
+      });
+  - language: Ruby
+    code: |-
+      response = client.cat.thread_pool(
+        format: "json"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cat()->threadPool([
+          "format" => "json",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_cat/thread_pool?format=json"'

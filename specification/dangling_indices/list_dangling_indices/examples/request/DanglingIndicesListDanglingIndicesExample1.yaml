@@ -1,0 +1,12 @@
+method_request: GET /_dangling
+alternatives:
+  - language: Python
+    code: resp = client.dangling_indices.list_dangling_indices()
+  - language: JavaScript
+    code: const response = await client.danglingIndices.listDanglingIndices();
+  - language: Ruby
+    code: response = client.dangling_indices.list_dangling_indices
+  - language: PHP
+    code: $resp = $client->danglingIndices()->listDanglingIndices();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_dangling"'

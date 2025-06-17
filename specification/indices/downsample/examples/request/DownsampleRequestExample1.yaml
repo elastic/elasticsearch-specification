@@ -1,0 +1,47 @@
+# summary:
+method_request: POST /my-time-series-index/_downsample/my-downsampled-time-series-index
+# description: ''
+# type: request
+value:
+  fixed_interval: 1d
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.downsample(
+          index="my-time-series-index",
+          target_index="my-downsampled-time-series-index",
+          config={
+              "fixed_interval": "1d"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.downsample({
+        index: "my-time-series-index",
+        target_index: "my-downsampled-time-series-index",
+        config: {
+          fixed_interval: "1d",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.downsample(
+        index: "my-time-series-index",
+        target_index: "my-downsampled-time-series-index",
+        body: {
+          "fixed_interval": "1d"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->downsample([
+          "index" => "my-time-series-index",
+          "target_index" => "my-downsampled-time-series-index",
+          "body" => [
+              "fixed_interval" => "1d",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"fixed_interval":"1d"}'' "$ELASTICSEARCH_URL/my-time-series-index/_downsample/my-downsampled-time-series-index"'

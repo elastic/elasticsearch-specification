@@ -1,0 +1,58 @@
+# summary:
+method_request: POST /_security/oidc/authenticate
+description: >
+  Run `POST /_security/oidc/authenticate` to exchange the response that was returned from the OpenID Connect Provider after a
+  successful authentication for an Elasticsearch access token and refresh token. This example is from an authentication that uses
+  the authorization code grant flow.
+# type: request
+value: |-
+  {
+    "redirect_uri" : "https://oidc-kibana.elastic.co:5603/api/security/oidc/callback?code=jtI3Ntt8v3_XvcLzCFGq&state=4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I",
+    "state" : "4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I",
+    "nonce" : "WaBPH0KqPVdG5HHdSxPRjfoZbXMCicm5v1OiAj0DUFM",
+    "realm" : "oidc1"
+  }
+alternatives:
+  - language: Python
+    code: >-
+      resp = client.security.oidc_authenticate(
+          redirect_uri="https://oidc-kibana.elastic.co:5603/api/security/oidc/callback?code=jtI3Ntt8v3_XvcLzCFGq&state=4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I",
+          state="4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I",
+          nonce="WaBPH0KqPVdG5HHdSxPRjfoZbXMCicm5v1OiAj0DUFM",
+          realm="oidc1",
+      )
+  - language: JavaScript
+    code: >-
+      const response = await client.security.oidcAuthenticate({
+        redirect_uri:
+          "https://oidc-kibana.elastic.co:5603/api/security/oidc/callback?code=jtI3Ntt8v3_XvcLzCFGq&state=4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I",
+        state: "4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I",
+        nonce: "WaBPH0KqPVdG5HHdSxPRjfoZbXMCicm5v1OiAj0DUFM",
+        realm: "oidc1",
+      });
+  - language: Ruby
+    code: >-
+      response = client.security.oidc_authenticate(
+        body: {
+          "redirect_uri": "https://oidc-kibana.elastic.co:5603/api/security/oidc/callback?code=jtI3Ntt8v3_XvcLzCFGq&state=4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I",
+          "state": "4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I",
+          "nonce": "WaBPH0KqPVdG5HHdSxPRjfoZbXMCicm5v1OiAj0DUFM",
+          "realm": "oidc1"
+        }
+      )
+  - language: PHP
+    code: >-
+      $resp = $client->security()->oidcAuthenticate([
+          "body" => [
+              "redirect_uri" => "https://oidc-kibana.elastic.co:5603/api/security/oidc/callback?code=jtI3Ntt8v3_XvcLzCFGq&state=4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I",
+              "state" => "4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I",
+              "nonce" => "WaBPH0KqPVdG5HHdSxPRjfoZbXMCicm5v1OiAj0DUFM",
+              "realm" => "oidc1",
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"redirect_uri\":\"https://oidc-kibana.elastic.co:5603/api/security/oidc/callback?code=jtI3Ntt8v3_XvcLzCFGq&state=4dbrihtIA\
+      t3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I\",\"state\":\"4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I\",\"nonce\":\"WaBPH0KqPVdG5HHdSx\
+      PRjfoZbXMCicm5v1OiAj0DUFM\",\"realm\":\"oidc1\"}' \"$ELASTICSEARCH_URL/_security/oidc/authenticate\""

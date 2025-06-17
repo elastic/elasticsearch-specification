@@ -3,7 +3,7 @@ name: Update rest-api-spec
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 4 * * *'  # At 04:00.
+    - cron: '0 4 * * *' # At 04:00.
 
 jobs:
   update-rest-api:
@@ -13,17 +13,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: ['main', '9.0', '8.x', '8.18', '8.17', '8.16', '7.17']
+        branch: ['main', '9.0', '8.19', '8.18', '8.17', '8.16', '7.17']
 
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ matrix.branch }}
 
-      - name: Use Node.js 20
+      - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install deps
         run: |
@@ -49,7 +49,7 @@ jobs:
           title: Update rest-api-spec ${{ matrix.branch }}
           body: 'As titled.'
           commit-message: 'Update rest-api-spec'
-          labels: specification
+          labels: specification,skip-backport
           delete-branch: true
           reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo,pquentin,swallez,technige
           branch: automated/rest-api-spec-update-${{ matrix.branch }}
@@ -62,4 +62,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           labels: bug
           body: The rest-api-spec action is currently failing, see [here](https://github.com/elastic/elasticsearch-specification/actions/workflows/update-rest-api-json.yml).
-

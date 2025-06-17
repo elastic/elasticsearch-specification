@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { OverloadOf } from '@spec_utils/behaviors'
 import { Id } from '@_types/common'
+import { OverloadOf } from '@spec_utils/behaviors'
 
 export type SynonymString = string
 
@@ -43,7 +43,8 @@ export class SynonymRuleRead implements OverloadOf<SynonymRule> {
    */
   id: Id
   /**
-   * Synonyms, in Solr format, that conform the synonym rule. See https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-graph-tokenfilter.html#_solr_synonyms_2
+   * Synonyms, in Solr format, that conform the synonym rule.
+   * @ext_doc_id synonym-solr
    */
   synonyms: SynonymString
 }
