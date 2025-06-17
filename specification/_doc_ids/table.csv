@@ -223,6 +223,7 @@ field-usage-stats,https://www.elastic.co/docs/api/doc/elasticsearch/operation/op
 find-field-structure,https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-text_structure
 find-message-structure,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-text-structure-find-message-structure
 find-structure,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-text-structure-find-structure
+find-text-structure-examples,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/find-text-structure-examples
 fingerprint-processor,https://www.elastic.co/docs/reference/enrich-processor/fingerprint-processor
 fleet-multi-search,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-fleet-msearch
 fleet-search,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-fleet-search
@@ -583,6 +584,7 @@ redact-processor,https://www.elastic.co/docs/reference/enrich-processor/redact-p
 regexp-syntax,https://www.elastic.co/docs/reference/query-languages/query-dsl/regexp-syntax
 register-repository,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/self-managed
 registered-domain-processor,https://www.elastic.co/docs/reference/enrich-processor/registered-domain-processor
+reindex-indices,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reindex-indices
 relevance-scores,https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl#relevance-scores
 remove-processor,https://www.elastic.co/docs/reference/enrich-processor/remove-processor
 remote-clusters-api-key,https://www.elastic.co/docs/deploy-manage/remote-clusters/remote-clusters-api-key
