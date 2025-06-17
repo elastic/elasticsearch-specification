@@ -8,7 +8,6 @@ validate-no-cache: ## Validate a given endpoint request or response without loca
 
 generate:	  ## Generate the output spec
 	@echo ">> generating the spec .."
-	@make generate-language-examples
 	@npm run generate-schema --prefix compiler -- --spec ../specification/ --output ../output/
 	@npm run start --prefix typescript-generator
 
@@ -55,7 +54,9 @@ transform-to-openapi: ## Generate the OpenAPI definition from the compiled schem
 	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor serverless --output output/openapi/elasticsearch-serverless-openapi.json
 
 transform-to-openapi-for-docs: ## Generate the OpenAPI definition tailored for API docs generation
-	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor stack --lift-enum-descriptions --merge-multipath-endpoints --multipath-redirects --output output/openapi/elasticsearch-openapi-docs.json
+	@make generate-language-examples
+	@make generate
+	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor stack --lift-enum-descriptions --merge-multipath-endpoints --multipath-redirects --include-language-examples --output output/openapi/elasticsearch-openapi-docs.json
 
 filter-for-serverless: ## Generate the serverless version from the compiled schema
 	@npm run --prefix compiler filter-by-availability -- --serverless --visibility=public --input ../output/schema/schema.json --output ../output/output/openapi/elasticsearch-serverless-openapi.json
