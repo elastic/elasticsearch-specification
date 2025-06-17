@@ -119,6 +119,12 @@
       ],
       "response": []
     },
+    "snapshot.get": {
+      "request": [
+        "Request: missing json spec query parameter 'state'"
+      ],
+      "response": []
+    },
     "snapshot.repository_analyze": {
       "request": [
         "Request: query parameter 'register_operation_count' does not exist in the json spec"
