@@ -104,7 +104,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_async_search/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -164,7 +165,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_async_search/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_async_search/status/{id}": {
@@ -253,7 +255,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_async_search/status/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_async_search": {
@@ -429,7 +432,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"sort\":[{\"date\":{\"order\":\"asc\"}}],\"aggs\":{\"sale_date\":{\"date_histogram\":{\"field\":\"date\",\"calendar_interval\":\"1d\"}}}}' \"$ELASTICSEARCH_URL/sales*/_async_search?size=0\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_async_search": {
@@ -608,7 +612,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"sort\":[{\"date\":{\"order\":\"asc\"}}],\"aggs\":{\"sale_date\":{\"date_histogram\":{\"field\":\"date\",\"calendar_interval\":\"1d\"}}}}' \"$ELASTICSEARCH_URL/sales*/_async_search?size=0\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_bulk": {
@@ -694,7 +699,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{\"index\":{\"_index\":\"test\",\"_id\":\"1\"}},{\"field1\":\"value1\"},{\"delete\":{\"_index\":\"test\",\"_id\":\"2\"}},{\"create\":{\"_index\":\"test\",\"_id\":\"3\"}},{\"field1\":\"value3\"},{\"update\":{\"_id\":\"1\",\"_index\":\"test\"}},{\"doc\":{\"field2\":\"value2\"}}]' \"$ELASTICSEARCH_URL/_bulk\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -778,7 +784,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{\"index\":{\"_index\":\"test\",\"_id\":\"1\"}},{\"field1\":\"value1\"},{\"delete\":{\"_index\":\"test\",\"_id\":\"2\"}},{\"create\":{\"_index\":\"test\",\"_id\":\"3\"}},{\"field1\":\"value3\"},{\"update\":{\"_id\":\"1\",\"_index\":\"test\"}},{\"doc\":{\"field2\":\"value2\"}}]' \"$ELASTICSEARCH_URL/_bulk\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_bulk": {
@@ -867,7 +874,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{\"index\":{\"_index\":\"test\",\"_id\":\"1\"}},{\"field1\":\"value1\"},{\"delete\":{\"_index\":\"test\",\"_id\":\"2\"}},{\"create\":{\"_index\":\"test\",\"_id\":\"3\"}},{\"field1\":\"value3\"},{\"update\":{\"_id\":\"1\",\"_index\":\"test\"}},{\"doc\":{\"field2\":\"value2\"}}]' \"$ELASTICSEARCH_URL/_bulk\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -954,7 +962,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{\"index\":{\"_index\":\"test\",\"_id\":\"1\"}},{\"field1\":\"value1\"},{\"delete\":{\"_index\":\"test\",\"_id\":\"2\"}},{\"create\":{\"_index\":\"test\",\"_id\":\"3\"}},{\"field1\":\"value3\"},{\"update\":{\"_id\":\"1\",\"_index\":\"test\"}},{\"doc\":{\"field2\":\"value2\"}}]' \"$ELASTICSEARCH_URL/_bulk\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/aliases": {
@@ -1010,7 +1019,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/aliases?format=json&v=true\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/aliases/{name}": {
@@ -1069,7 +1079,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/aliases?format=json&v=true\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/component_templates": {
@@ -1125,7 +1136,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/component_templates/my-template-*?v=true&s=name&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/component_templates/{name}": {
@@ -1184,7 +1196,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/component_templates/my-template-*?v=true&s=name&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/count": {
@@ -1234,7 +1247,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/count/my-index-000001?v=true&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/count/{index}": {
@@ -1287,7 +1301,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/count/my-index-000001?v=true&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat": {
@@ -1310,7 +1325,8 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/indices": {
@@ -1381,7 +1397,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/indices/my-index-*?v=true&s=index&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/indices/{index}": {
@@ -1455,7 +1472,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/indices/my-index-*?v=true&s=index&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/ml/data_frame/analytics": {
@@ -1514,7 +1532,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/ml/data_frame/analytics?v=true&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/ml/data_frame/analytics/{id}": {
@@ -1576,7 +1595,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/ml/data_frame/analytics?v=true&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/ml/datafeeds": {
@@ -1632,7 +1652,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/ml/datafeeds?v=true&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/ml/datafeeds/{datafeed_id}": {
@@ -1691,7 +1712,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/ml/datafeeds?v=true&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/ml/anomaly_detectors": {
@@ -1750,7 +1772,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/ml/anomaly_detectors?h=id,s,dpr,mb&v=true&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/ml/anomaly_detectors/{job_id}": {
@@ -1812,7 +1835,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/ml/anomaly_detectors?h=id,s,dpr,mb&v=true&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/ml/trained_models": {
@@ -1877,7 +1901,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/ml/trained_models?v=true&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/ml/trained_models/{model_id}": {
@@ -1945,7 +1970,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/ml/trained_models?v=true&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/transforms": {
@@ -2007,7 +2033,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/transforms?v=true&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_cat/transforms/{transform_id}": {
@@ -2072,7 +2099,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/transforms?v=true&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_search/scroll": {
@@ -2131,7 +2159,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"scroll_id\":\"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"}' \"$ELASTICSEARCH_URL/_search/scroll\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -2188,7 +2217,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"scroll_id\":\"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"}' \"$ELASTICSEARCH_URL/_search/scroll\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -2234,7 +2264,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"scroll_id\":\"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"}' \"$ELASTICSEARCH_URL/_search/scroll\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_search/scroll/{scroll_id}": {
@@ -2296,7 +2327,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"scroll_id\":\"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"}' \"$ELASTICSEARCH_URL/_search/scroll\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -2356,7 +2388,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"scroll_id\":\"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"}' \"$ELASTICSEARCH_URL/_search/scroll\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -2407,7 +2440,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"scroll_id\":\"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ==\"}' \"$ELASTICSEARCH_URL/_search/scroll\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_pit": {
@@ -2499,7 +2533,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"id\":\"46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==\"}' \"$ELASTICSEARCH_URL/_pit\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_component_template/{name}": {
@@ -2558,7 +2593,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_component_template/template_1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -2612,7 +2648,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"template\":null,\"settings\":{\"number_of_shards\":1},\"mappings\":{\"_source\":{\"enabled\":false},\"properties\":{\"host_name\":{\"type\":\"keyword\"},\"created_at\":{\"type\":\"date\",\"format\":\"EEE MMM dd HH:mm:ss Z yyyy\"}}}}' \"$ELASTICSEARCH_URL/_component_template/template_1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -2666,7 +2703,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"template\":null,\"settings\":{\"number_of_shards\":1},\"mappings\":{\"_source\":{\"enabled\":false},\"properties\":{\"host_name\":{\"type\":\"keyword\"},\"created_at\":{\"type\":\"date\",\"format\":\"EEE MMM dd HH:mm:ss Z yyyy\"}}}}' \"$ELASTICSEARCH_URL/_component_template/template_1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -2746,7 +2784,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_component_template/template_1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "head": {
         "tags": [
@@ -2796,7 +2835,8 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_component_template": {
@@ -2852,7 +2892,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_component_template/template_1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_info/{target}": {
@@ -2937,7 +2978,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_info/_all\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}/_check_in": {
@@ -3012,7 +3054,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_connector/my-connector/_check_in\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}": {
@@ -3084,7 +3127,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_connector/my-connector-id\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -3131,7 +3175,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index_name\":\"search-google-drive\",\"name\":\"My Connector\",\"service_type\":\"google_drive\"}' \"$ELASTICSEARCH_URL/_connector/my-connector\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -3216,7 +3261,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_connector/my-connector-id&delete_sync_jobs=true\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector": {
@@ -3352,7 +3398,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_connector\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -3394,7 +3441,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index_name\":\"search-google-drive\",\"name\":\"My Connector\",\"service_type\":\"google_drive\"}' \"$ELASTICSEARCH_URL/_connector/my-connector\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -3456,7 +3504,8 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/_sync_job/{connector_sync_job_id}/_cancel": {
@@ -3526,7 +3575,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_connector/_sync_job/my-connector-sync-job-id/_cancel\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/_sync_job/{connector_sync_job_id}": {
@@ -3587,7 +3637,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_connector/_sync_job/my-connector-sync-job\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -3652,7 +3703,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_connector/_sync_job/my-connector-sync-job-id\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/_sync_job": {
@@ -3778,7 +3830,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_connector/_sync_job?connector_id=my-connector-id&size=1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -3862,7 +3915,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"id\":\"connector-id\",\"job_type\":\"full\",\"trigger_method\":\"on_demand\"}' \"$ELASTICSEARCH_URL/_connector/_sync_job\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}/_filtering/_activate": {
@@ -3906,7 +3960,8 @@
             }
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}/_api_key_id": {
@@ -4004,7 +4059,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"api_key_id\":\"my-api-key-id\",\"api_key_secret_id\":\"my-connector-secret-id\"}' \"$ELASTICSEARCH_URL/_connector/my-connector/_api_key_id\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}/_configuration": {
@@ -4108,7 +4164,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"values\":{\"tenant_id\":\"my-tenant-id\",\"tenant_name\":\"my-sharepoint-site\",\"client_id\":\"foo\",\"secret_value\":\"bar\",\"site_collections\":\"*\"}}' \"$ELASTICSEARCH_URL/_connector/my-spo-connector/_configuration\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}/_error": {
@@ -4213,7 +4270,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"error\":\"Houston, we have a problem!\"}' \"$ELASTICSEARCH_URL/_connector/my-connector/_error\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}/_filtering": {
@@ -4323,7 +4381,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"rules\":[{\"field\":\"file_extension\",\"id\":\"exclude-txt-files\",\"order\":0,\"policy\":\"exclude\",\"rule\":\"equals\",\"value\":\"txt\"},{\"field\":\"_\",\"id\":\"DEFAULT\",\"order\":1,\"policy\":\"include\",\"rule\":\"regex\",\"value\":\".*\"}]}' \"$ELASTICSEARCH_URL/_connector/my-g-drive-connector/_filtering\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}/_filtering/_validation": {
@@ -4385,7 +4444,8 @@
             }
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}/_index_name": {
@@ -4490,7 +4550,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index_name\":\"data-from-my-google-drive\"}' \"$ELASTICSEARCH_URL/_connector/my-connector/_index_name\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}/_name": {
@@ -4587,7 +4648,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"name\":\"Custom connector\",\"description\":\"This is my customized connector\"}' \"$ELASTICSEARCH_URL/_connector/my-connector/_name\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}/_native": {
@@ -4648,7 +4710,8 @@
             }
           }
         },
-        "x-state": "Beta"
+        "x-state": "Beta",
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}/_pipeline": {
@@ -4746,7 +4809,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"pipeline\":{\"extract_binary_content\":true,\"name\":\"my-connector-pipeline\",\"reduce_whitespace\":true,\"run_ml_inference\":true}}' \"$ELASTICSEARCH_URL/_connector/my-connector/_pipeline\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}/_scheduling": {
@@ -4846,7 +4910,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"scheduling\":{\"access_control\":{\"enabled\":true,\"interval\":\"0 10 0 * * ?\"},\"full\":{\"enabled\":true,\"interval\":\"0 20 0 * * ?\"},\"incremental\":{\"enabled\":false,\"interval\":\"0 30 0 * * ?\"}}}' \"$ELASTICSEARCH_URL/_connector/my-connector/_scheduling\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}/_service_type": {
@@ -4943,7 +5008,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service_type\":\"sharepoint_online\"}' \"$ELASTICSEARCH_URL/_connector/my-connector/_service_type\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_connector/{connector_id}/_status": {
@@ -5040,7 +5106,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"status\":\"needs_configuration\"}' \"$ELASTICSEARCH_URL/_connector/my-connector/_status\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_count": {
@@ -5129,7 +5196,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"term\":{\"user.id\":\"kimchy\"}}}' \"$ELASTICSEARCH_URL/my-index-000001/_count\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -5216,7 +5284,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"term\":{\"user.id\":\"kimchy\"}}}' \"$ELASTICSEARCH_URL/my-index-000001/_count\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_count": {
@@ -5308,7 +5377,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"term\":{\"user.id\":\"kimchy\"}}}' \"$ELASTICSEARCH_URL/my-index-000001/_count\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -5398,7 +5468,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"term\":{\"user.id\":\"kimchy\"}}}' \"$ELASTICSEARCH_URL/my-index-000001/_count\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_create/{id}": {
@@ -5493,7 +5564,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"@timestamp\":\"2099-11-15T13:12:00\",\"message\":\"GET /search HTTP/1.1 200 1070000\",\"user\":{\"id\":\"kimchy\"}}' \"$ELASTICSEARCH_URL/my-index-000001/_create/1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -5586,7 +5658,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"@timestamp\":\"2099-11-15T13:12:00\",\"message\":\"GET /search HTTP/1.1 200 1070000\",\"user\":{\"id\":\"kimchy\"}}' \"$ELASTICSEARCH_URL/my-index-000001/_create/1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_doc/{id}": {
@@ -5776,7 +5849,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_doc/1?stored_fields=tags,counter\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -5866,7 +5940,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"@timestamp\":\"2099-11-15T13:12:00\",\"message\":\"GET /search HTTP/1.1 200 1070000\",\"user\":{\"id\":\"kimchy\"}}' \"$ELASTICSEARCH_URL/my-index-000001/_doc/\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -5956,7 +6031,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"@timestamp\":\"2099-11-15T13:12:00\",\"message\":\"GET /search HTTP/1.1 200 1070000\",\"user\":{\"id\":\"kimchy\"}}' \"$ELASTICSEARCH_URL/my-index-000001/_doc/\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -6113,7 +6189,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_doc/1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "head": {
         "tags": [
@@ -6280,7 +6357,8 @@
             "lang": "curl",
             "source": "curl --head -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_doc/0\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_delete_by_query": {
@@ -6749,7 +6827,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"match_all\":{}}}' \"$ELASTICSEARCH_URL/my-index-000001,my-index-000002/_delete_by_query\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_scripts/{id}": {
@@ -6836,7 +6915,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_scripts/my-search-template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -6896,7 +6976,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"script\":{\"lang\":\"mustache\",\"source\":{\"query\":{\"match\":{\"message\":\"{{query_string}}\"}},\"from\":\"{{from}}\",\"size\":\"{{size}}\"}}}' \"$ELASTICSEARCH_URL/_scripts/my-search-template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -6956,7 +7037,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"script\":{\"lang\":\"mustache\",\"source\":{\"query\":{\"match\":{\"message\":\"{{query_string}}\"}},\"from\":\"{{from}}\",\"size\":\"{{size}}\"}}}' \"$ELASTICSEARCH_URL/_scripts/my-search-template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -7036,7 +7118,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_scripts/my-search-template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_enrich/policy/{name}": {
@@ -7086,7 +7169,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_enrich/policy/my-policy\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -7183,7 +7267,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"geo_match\":{\"indices\":\"postal_codes\",\"match_field\":\"location\",\"enrich_fields\":[\"location\",\"postal_code\"]}}' \"$ELASTICSEARCH_URL/_enrich/policy/postal_policy\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -7253,7 +7338,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_enrich/policy/my-policy\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_enrich/policy/{name}/_execute": {
@@ -7343,7 +7429,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_enrich/policy/my-policy/_execute?wait_for_completion=false\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_enrich/policy": {
@@ -7390,7 +7477,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_enrich/policy/my-policy\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_eql/search/{id}": {
@@ -7472,7 +7560,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=?wait_for_completion_timeout=2s\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -7532,7 +7621,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_eql/search/status/{id}": {
@@ -7628,7 +7718,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_eql/search/status/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_eql/search": {
@@ -7705,7 +7796,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":\"\\n    process where (process.name == \\\"cmd.exe\\\" and process.pid != 2013)\\n  \"}' \"$ELASTICSEARCH_URL/my-data-stream/_eql/search\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -7780,7 +7872,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":\"\\n    process where (process.name == \\\"cmd.exe\\\" and process.pid != 2013)\\n  \"}' \"$ELASTICSEARCH_URL/my-data-stream/_eql/search\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_query/queries/{id}": {
@@ -7851,7 +7944,8 @@
             }
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_query/queries": {
@@ -7885,7 +7979,8 @@
             }
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Technical preview",
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_query": {
@@ -8039,7 +8134,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":\"\\n    FROM library,remote-*:library\\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\\n    | STATS MAX(page_count) BY year\\n    | SORT year\\n    | LIMIT 5\\n  \",\"include_ccs_metadata\":true}' \"$ELASTICSEARCH_URL/_query\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_source/{id}": {
@@ -8215,7 +8311,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_source/1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "head": {
         "tags": [
@@ -8375,7 +8472,8 @@
             "lang": "curl",
             "source": "curl --head -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_source/1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_explain/{id}": {
@@ -8464,7 +8562,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"match\":{\"message\":\"elasticsearch\"}}}' \"$ELASTICSEARCH_URL/my-index-000001/_explain/0\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -8551,7 +8650,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"match\":{\"message\":\"elasticsearch\"}}}' \"$ELASTICSEARCH_URL/my-index-000001/_explain/0\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_field_caps": {
@@ -8622,7 +8722,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index_filter\":{\"range\":{\"@timestamp\":{\"gte\":\"2018\"}}}}' \"$ELASTICSEARCH_URL/my-index-*/_field_caps?fields=rating\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -8691,7 +8792,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index_filter\":{\"range\":{\"@timestamp\":{\"gte\":\"2018\"}}}}' \"$ELASTICSEARCH_URL/my-index-*/_field_caps?fields=rating\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_field_caps": {
@@ -8765,7 +8867,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index_filter\":{\"range\":{\"@timestamp\":{\"gte\":\"2018\"}}}}' \"$ELASTICSEARCH_URL/my-index-*/_field_caps?fields=rating\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -8837,7 +8940,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index_filter\":{\"range\":{\"@timestamp\":{\"gte\":\"2018\"}}}}' \"$ELASTICSEARCH_URL/my-index-*/_field_caps?fields=rating\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_graph/explore": {
@@ -8896,7 +9000,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"match\":{\"query.raw\":\"midi\"}},\"vertices\":[{\"field\":\"product\"}],\"connections\":{\"vertices\":[{\"field\":\"query.raw\"}]}}' \"$ELASTICSEARCH_URL/clicklogs/_graph/explore\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -8953,7 +9058,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"match\":{\"query.raw\":\"midi\"}},\"vertices\":[{\"field\":\"product\"}],\"connections\":{\"vertices\":[{\"field\":\"query.raw\"}]}}' \"$ELASTICSEARCH_URL/clicklogs/_graph/explore\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_doc": {
@@ -9042,7 +9148,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"@timestamp\":\"2099-11-15T13:12:00\",\"message\":\"GET /search HTTP/1.1 200 1070000\",\"user\":{\"id\":\"kimchy\"}}' \"$ELASTICSEARCH_URL/my-index-000001/_doc/\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_block/{block}": {
@@ -9190,7 +9297,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_block/write\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_analyze": {
@@ -9243,7 +9351,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"analyzer\":\"standard\",\"text\":\"this is a test\"}' \"$ELASTICSEARCH_URL/_analyze\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -9294,7 +9403,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"analyzer\":\"standard\",\"text\":\"this is a test\"}' \"$ELASTICSEARCH_URL/_analyze\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_analyze": {
@@ -9350,7 +9460,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"analyzer\":\"standard\",\"text\":\"this is a test\"}' \"$ELASTICSEARCH_URL/_analyze\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -9404,7 +9515,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"analyzer\":\"standard\",\"text\":\"this is a test\"}' \"$ELASTICSEARCH_URL/_analyze\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}": {
@@ -9549,7 +9661,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -9696,7 +9809,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"settings\":{\"number_of_shards\":3,\"number_of_replicas\":2}}' \"$ELASTICSEARCH_URL/my-index-000001\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -9806,7 +9920,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/books\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "head": {
         "tags": [
@@ -9922,7 +10037,8 @@
             "lang": "curl",
             "source": "curl --head -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-data-stream\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_data_stream/{name}": {
@@ -9981,7 +10097,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_data_stream/my-data-stream\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -10061,7 +10178,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_data_stream/logs-foo-bar\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -10141,7 +10259,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_data_stream/my-data-stream\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_alias/{name}": {
@@ -10203,7 +10322,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_alias\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -10260,7 +10380,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"actions\":[{\"add\":{\"index\":\"my-data-stream\",\"alias\":\"my-alias\"}}]}' \"$ELASTICSEARCH_URL/_aliases\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -10317,7 +10438,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"actions\":[{\"add\":{\"index\":\"my-data-stream\",\"alias\":\"my-alias\"}}]}' \"$ELASTICSEARCH_URL/_aliases\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -10371,7 +10493,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-data-stream/_alias/my-alias\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "head": {
         "tags": [
@@ -10431,7 +10554,8 @@
             "lang": "curl",
             "source": "curl --head -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_alias/my-alias\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_aliases/{name}": {
@@ -10490,7 +10614,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"actions\":[{\"add\":{\"index\":\"my-data-stream\",\"alias\":\"my-alias\"}}]}' \"$ELASTICSEARCH_URL/_aliases\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -10547,7 +10672,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"actions\":[{\"add\":{\"index\":\"my-data-stream\",\"alias\":\"my-alias\"}}]}' \"$ELASTICSEARCH_URL/_aliases\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -10601,7 +10727,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-data-stream/_alias/my-alias\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_index_template/{name}": {
@@ -10660,7 +10787,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -10717,7 +10845,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index_patterns\":[\"template*\"],\"priority\":1,\"template\":{\"settings\":{\"number_of_shards\":2}}}' \"$ELASTICSEARCH_URL/_index_template/template_1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -10774,7 +10903,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index_patterns\":[\"template*\"],\"priority\":1,\"template\":{\"settings\":{\"number_of_shards\":2}}}' \"$ELASTICSEARCH_URL/_index_template/template_1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -10854,7 +10984,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_index_template/my-index-template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "head": {
         "tags": [
@@ -10914,7 +11045,8 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_alias/{name}": {
@@ -10973,7 +11105,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_alias\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "head": {
         "tags": [
@@ -11030,7 +11163,8 @@
             "lang": "curl",
             "source": "curl --head -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_alias/my-alias\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_lifecycle/explain": {
@@ -11135,7 +11269,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/.ds-metrics-2023.03.22-000001/_lifecycle/explain\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_alias": {
@@ -11191,7 +11326,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_alias\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_alias": {
@@ -11250,7 +11386,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_alias\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_data_stream/{name}/_lifecycle": {
@@ -11359,7 +11496,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_data_stream/%7Bname%7D/_lifecycle?human&pretty\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -11487,7 +11625,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"data_retention\":\"7d\"}' \"$ELASTICSEARCH_URL/_data_stream/my-data-stream/_lifecycle\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_data_stream": {
@@ -11543,7 +11682,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_data_stream/my-data-stream\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_data_stream/{name}/_options": {
@@ -11610,7 +11750,8 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -11688,7 +11829,8 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_data_stream/{name}/_settings": {
@@ -11778,7 +11920,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_data_stream/my-data-stream/_settings\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -11913,7 +12056,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index.lifecycle.name\":\"new-test-policy\",\"index.number_of_shards\":11}' \"$ELASTICSEARCH_URL/_data_stream/my-data-stream/_settings\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_index_template": {
@@ -11969,7 +12113,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_mapping": {
@@ -12028,7 +12173,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/books/_mapping\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_mapping": {
@@ -12090,7 +12236,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/books/_mapping\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -12159,7 +12306,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"properties\":{\"user\":{\"properties\":{\"name\":{\"type\":\"keyword\"}}}}}' \"$ELASTICSEARCH_URL/my-index-000001/_mapping\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -12228,7 +12376,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"properties\":{\"user\":{\"properties\":{\"name\":{\"type\":\"keyword\"}}}}}' \"$ELASTICSEARCH_URL/my-index-000001/_mapping\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_settings": {
@@ -12293,7 +12442,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -12365,7 +12515,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index\":{\"number_of_replicas\":2}}' \"$ELASTICSEARCH_URL/my-index-000001/_settings\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_settings": {
@@ -12433,7 +12584,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -12508,7 +12660,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index\":{\"number_of_replicas\":2}}' \"$ELASTICSEARCH_URL/my-index-000001/_settings\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_settings/{name}": {
@@ -12579,7 +12732,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_settings/{name}": {
@@ -12647,7 +12801,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_data_stream/_migrate/{name}": {
@@ -12729,7 +12884,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_data_stream/_migrate/my-time-series-data\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_data_stream/_modify": {
@@ -12806,7 +12962,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"actions\":[{\"remove_backing_index\":{\"data_stream\":\"my-data-stream\",\"index\":\".ds-my-data-stream-2023.07.26-000001\"}},{\"add_backing_index\":{\"data_stream\":\"my-data-stream\",\"index\":\".ds-my-data-stream-2023.07.26-000001-downsample\"}}]}' \"$ELASTICSEARCH_URL/_data_stream/_modify\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_refresh": {
@@ -12859,7 +13016,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_refresh\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -12910,7 +13068,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_refresh\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_refresh": {
@@ -12966,7 +13125,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_refresh\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -13020,7 +13180,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_refresh\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_resolve/index/{name}": {
@@ -13143,7 +13304,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_resolve/index/f*,remoteCluster1:bar*?expand_wildcards=all\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{alias}/_rollover": {
@@ -13208,7 +13370,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"conditions\":{\"max_age\":\"7d\",\"max_docs\":1000,\"max_primary_shard_size\":\"50gb\",\"max_primary_shard_docs\":\"2000\"}}' \"$ELASTICSEARCH_URL/my-data-stream/_rollover\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{alias}/_rollover/{new_index}": {
@@ -13276,7 +13439,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"conditions\":{\"max_age\":\"7d\",\"max_docs\":1000,\"max_primary_shard_size\":\"50gb\",\"max_primary_shard_docs\":\"2000\"}}' \"$ELASTICSEARCH_URL/my-data-stream/_rollover\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_index_template/_simulate_index/{name}": {
@@ -13398,7 +13562,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_index_template/_simulate_index/my-index-000001\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_index_template/_simulate": {
@@ -13457,7 +13622,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index_patterns\":[\"my-index-*\"],\"composed_of\":[\"ct2\"],\"priority\":10,\"template\":{\"settings\":{\"index.number_of_replicas\":1}}}' \"$ELASTICSEARCH_URL/_index_template/_simulate\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_index_template/_simulate/{name}": {
@@ -13519,7 +13685,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index_patterns\":[\"my-index-*\"],\"composed_of\":[\"ct2\"],\"priority\":10,\"template\":{\"settings\":{\"index.number_of_replicas\":1}}}' \"$ELASTICSEARCH_URL/_index_template/_simulate\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_aliases": {
@@ -13615,7 +13782,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"actions\":[{\"add\":{\"index\":\"logs-nginx.access-prod\",\"alias\":\"logs\"}}]}' \"$ELASTICSEARCH_URL/_aliases\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_validate/query": {
@@ -13698,7 +13866,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_validate/query?q=user.id:kimchy\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -13779,7 +13948,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_validate/query?q=user.id:kimchy\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_validate/query": {
@@ -13865,7 +14035,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_validate/query?q=user.id:kimchy\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -13949,7 +14120,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_validate/query?q=user.id:kimchy\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_inference/chat_completion/{inference_id}/_stream": {
@@ -14054,7 +14226,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"model\":\"gpt-4o\",\"messages\":[{\"role\":\"user\",\"content\":\"What is Elastic?\"}]}' \"$ELASTICSEARCH_URL/_inference/chat_completion/openai-completion/_stream\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/completion/{inference_id}": {
@@ -14170,7 +14343,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":\"What is Elastic?\"}' \"$ELASTICSEARCH_URL/_inference/completion/openai_chat_completions\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{inference_id}": {
@@ -14216,7 +14390,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "put": {
         "tags": [
@@ -14264,7 +14439,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"cohere\",\"service_settings\":{\"model_id\":\"rerank-english-v3.0\",\"api_key\":\"{{COHERE_API_KEY}}\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/my-rerank-model\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "post": {
         "tags": [
@@ -14289,7 +14465,8 @@
             "$ref": "#/components/responses/inference.inference-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "delete": {
         "tags": [
@@ -14339,7 +14516,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{inference_id}": {
@@ -14388,7 +14566,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "put": {
         "tags": [
@@ -14439,7 +14618,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"cohere\",\"service_settings\":{\"model_id\":\"rerank-english-v3.0\",\"api_key\":\"{{COHERE_API_KEY}}\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/my-rerank-model\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "post": {
         "tags": [
@@ -14467,7 +14647,8 @@
             "$ref": "#/components/responses/inference.inference-200"
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "delete": {
         "tags": [
@@ -14520,7 +14701,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference": {
@@ -14561,7 +14743,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{alibabacloud_inference_id}": {
@@ -14683,7 +14866,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"alibabacloud-ai-search\",\"service_settings\":{\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-qwen-turbo\",\"workspace\":\"default\"}}' \"$ELASTICSEARCH_URL/_inference/completion/alibabacloud_ai_search_completion\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{amazonbedrock_inference_id}": {
@@ -14795,7 +14979,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"amazonbedrock\",\"service_settings\":{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"provider\":\"amazontitan\",\"model\":\"amazon.titan-embed-text-v2:0\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/amazon_bedrock_embeddings\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{anthropic_inference_id}": {
@@ -14901,7 +15086,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"anthropic\",\"service_settings\":{\"api_key\":\"Anthropic-Api-Key\",\"model_id\":\"Model-ID\"},\"task_settings\":{\"max_tokens\":1024}}' \"$ELASTICSEARCH_URL/_inference/completion/anthropic_completion\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{azureaistudio_inference_id}": {
@@ -15013,7 +15199,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"azureaistudio\",\"service_settings\":{\"api_key\":\"Azure-AI-Studio-API-key\",\"target\":\"Target-Uri\",\"provider\":\"openai\",\"endpoint_type\":\"token\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/azure_ai_studio_embeddings\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{azureopenai_inference_id}": {
@@ -15125,7 +15312,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"azureopenai\",\"service_settings\":{\"api_key\":\"Api-Key\",\"resource_name\":\"Resource-name\",\"deployment_id\":\"Deployment-id\",\"api_version\":\"2024-02-01\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/azure_openai_embeddings\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{cohere_inference_id}": {
@@ -15237,7 +15425,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"cohere\",\"service_settings\":{\"api_key\":\"Cohere-Api-key\",\"model_id\":\"embed-english-light-v3.0\",\"embedding_type\":\"byte\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/cohere-embeddings\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{elasticsearch_inference_id}": {
@@ -15375,7 +15564,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"elasticsearch\",\"service_settings\":{\"adaptive_allocations\":{\"enabled\":true,\"min_number_of_allocations\":1,\"max_number_of_allocations\":4},\"num_threads\":1,\"model_id\":\".elser_model_2\"}}' \"$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{elser_inference_id}": {
@@ -15491,7 +15681,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"elser\",\"service_settings\":{\"num_allocations\":1,\"num_threads\":1}}' \"$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{googleaistudio_inference_id}": {
@@ -15595,7 +15786,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googleaistudio\",\"service_settings\":{\"api_key\":\"api-key\",\"model_id\":\"model-id\"}}' \"$ELASTICSEARCH_URL/_inference/completion/google_ai_studio_completion\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{googlevertexai_inference_id}": {
@@ -15707,7 +15899,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"service_account_json\":\"service-account-json\",\"model_id\":\"model-id\",\"location\":\"location\",\"project_id\":\"project-id\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/google_vertex_ai_embeddingss\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{huggingface_inference_id}": {
@@ -15819,7 +16012,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"hugging_face\",\"service_settings\":{\"api_key\":\"hugging-face-access-token\",\"url\":\"url-endpoint\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/hugging-face-embeddings\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{jinaai_inference_id}": {
@@ -15931,7 +16125,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"jinaai\",\"service_settings\":{\"model_id\":\"jina-embeddings-v3\",\"api_key\":\"JinaAi-Api-key\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/jinaai-embeddings\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{mistral_inference_id}": {
@@ -16034,7 +16229,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"mistral\",\"service_settings\":{\"api_key\":\"Mistral-API-Key\",\"model\":\"mistral-embed\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/mistral-embeddings-test\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{openai_inference_id}": {
@@ -16146,7 +16342,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"openai\",\"service_settings\":{\"api_key\":\"OpenAI-API-Key\",\"model_id\":\"text-embedding-3-small\",\"dimensions\":128}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/openai-embeddings\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{voyageai_inference_id}": {
@@ -16258,7 +16455,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"voyageai\",\"service_settings\":{\"model_id\":\"voyage-3-large\",\"dimensions\":512}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/openai-embeddings\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/{task_type}/{watsonx_inference_id}": {
@@ -16358,7 +16556,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"watsonxai\",\"service_settings\":{\"api_key\":\"Watsonx-API-Key\",\"url\":\"Wastonx-URL\",\"model_id\":\"ibm/slate-30m-english-rtrvr\",\"project_id\":\"IBM-Cloud-ID\",\"api_version\":\"2024-03-14\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/watsonx-embeddings\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/rerank/{inference_id}": {
@@ -16500,7 +16699,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":[\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"],\"query\":\"star wars main character\"}' \"$ELASTICSEARCH_URL/_inference/rerank/cohere_rerank\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/sparse_embedding/{inference_id}": {
@@ -16616,7 +16816,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":\"The sky above the port was the color of television tuned to a dead channel.\"}' \"$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_inference/text_embedding/{inference_id}": {
@@ -16732,7 +16933,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":\"The sky above the port was the color of television tuned to a dead channel.\",\"task_settings\":{\"input_type\":\"ingest\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-cohere-endpoint\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/": {
@@ -16811,7 +17013,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "head": {
         "tags": [
@@ -16828,7 +17031,8 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_ingest/pipeline/{id}": {
@@ -16884,7 +17088,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ingest/pipeline/my-pipeline-id\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -17028,7 +17233,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"description\":\"My optional pipeline description\",\"processors\":[{\"set\":{\"description\":\"My optional processor description\",\"field\":\"my-keyword-field\",\"value\":\"foo\"}}]}' \"$ELASTICSEARCH_URL/_ingest/pipeline/my-pipeline-id\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -17111,7 +17317,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ingest/pipeline/my-pipeline-id\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_ingest/pipeline": {
@@ -17164,7 +17371,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ingest/pipeline/my-pipeline-id\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_ingest/processor/grok": {
@@ -17227,7 +17435,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ingest/processor/grok\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_ingest/pipeline/_simulate": {
@@ -17277,7 +17486,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"pipeline\":{\"description\":\"_description\",\"processors\":[{\"set\":{\"field\":\"field2\",\"value\":\"_value\"}}]},\"docs\":[{\"_index\":\"index\",\"_id\":\"id\",\"_source\":{\"foo\":\"bar\"}},{\"_index\":\"index\",\"_id\":\"id\",\"_source\":{\"foo\":\"rab\"}}]}' \"$ELASTICSEARCH_URL/_ingest/pipeline/_simulate\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -17325,7 +17535,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"pipeline\":{\"description\":\"_description\",\"processors\":[{\"set\":{\"field\":\"field2\",\"value\":\"_value\"}}]},\"docs\":[{\"_index\":\"index\",\"_id\":\"id\",\"_source\":{\"foo\":\"bar\"}},{\"_index\":\"index\",\"_id\":\"id\",\"_source\":{\"foo\":\"rab\"}}]}' \"$ELASTICSEARCH_URL/_ingest/pipeline/_simulate\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_ingest/pipeline/{id}/_simulate": {
@@ -17378,7 +17589,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"pipeline\":{\"description\":\"_description\",\"processors\":[{\"set\":{\"field\":\"field2\",\"value\":\"_value\"}}]},\"docs\":[{\"_index\":\"index\",\"_id\":\"id\",\"_source\":{\"foo\":\"bar\"}},{\"_index\":\"index\",\"_id\":\"id\",\"_source\":{\"foo\":\"rab\"}}]}' \"$ELASTICSEARCH_URL/_ingest/pipeline/_simulate\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -17429,7 +17641,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"pipeline\":{\"description\":\"_description\",\"processors\":[{\"set\":{\"field\":\"field2\",\"value\":\"_value\"}}]},\"docs\":[{\"_index\":\"index\",\"_id\":\"id\",\"_source\":{\"foo\":\"bar\"}},{\"_index\":\"index\",\"_id\":\"id\",\"_source\":{\"foo\":\"rab\"}}]}' \"$ELASTICSEARCH_URL/_ingest/pipeline/_simulate\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_license": {
@@ -17514,7 +17727,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_license\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_logstash/pipeline/{id}": {
@@ -17564,7 +17778,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_logstash/pipeline/my_pipeline\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, logstash"
       },
       "put": {
         "tags": [
@@ -17640,7 +17855,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"description\":\"Sample pipeline for illustration purposes\",\"last_modified\":\"2021-01-02T02:50:51.250Z\",\"pipeline_metadata\":{\"type\":\"logstash_pipeline\",\"version\":1},\"username\":\"elastic\",\"pipeline\":\"input {}\\\\n filter { grok {} }\\\\n output {}\",\"pipeline_settings\":{\"pipeline.workers\":1,\"pipeline.batch.size\":125,\"pipeline.batch.delay\":50,\"queue.type\":\"memory\",\"queue.max_bytes\":\"1gb\",\"queue.checkpoint.writes\":1024}}' \"$ELASTICSEARCH_URL/_logstash/pipeline/my_pipeline\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, logstash"
       },
       "delete": {
         "tags": [
@@ -17699,7 +17915,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_logstash/pipeline/my_pipeline\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, logstash"
       }
     },
     "/_logstash/pipeline": {
@@ -17744,7 +17961,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_logstash/pipeline/my_pipeline\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, logstash"
       }
     },
     "/_mget": {
@@ -17815,7 +18033,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"_id\":\"1\"},{\"_id\":\"2\"}]}' \"$ELASTICSEARCH_URL/my-index-000001/_mget\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -17884,7 +18103,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"_id\":\"1\"},{\"_id\":\"2\"}]}' \"$ELASTICSEARCH_URL/my-index-000001/_mget\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_mget": {
@@ -17958,7 +18178,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"_id\":\"1\"},{\"_id\":\"2\"}]}' \"$ELASTICSEARCH_URL/my-index-000001/_mget\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -18030,7 +18251,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"_id\":\"1\"},{\"_id\":\"2\"}]}' \"$ELASTICSEARCH_URL/my-index-000001/_mget\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_close": {
@@ -18158,7 +18380,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_close\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/calendars/{calendar_id}": {
@@ -18214,7 +18437,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/calendars/planned-outages\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "put": {
         "tags": [
@@ -18312,7 +18536,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/calendars/planned-outages\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "post": {
         "tags": [
@@ -18366,7 +18591,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/calendars/planned-outages\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "delete": {
         "tags": [
@@ -18432,7 +18658,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/calendars/planned-outages\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/calendars/{calendar_id}/events/{event_id}": {
@@ -18510,7 +18737,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/calendars/planned-outages/events/LS8LJGEBMTCMA-qz49st\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/calendars/{calendar_id}/jobs/{job_id}": {
@@ -18599,7 +18827,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/calendars/planned-outages/jobs/total-requests\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "delete": {
         "tags": [
@@ -18692,7 +18921,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/calendars/planned-outages/jobs/total-requests\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/data_frame/analytics/{id}": {
@@ -18751,7 +18981,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/data_frame/analytics/loganalytics\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "put": {
         "tags": [
@@ -18923,7 +19154,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":[\"kibana_sample_data_flights\"],\"query\":{\"range\":{\"DistanceKilometers\":{\"gt\":0}}},\"_source\":{\"includes\":[],\"excludes\":[\"FlightDelay\",\"FlightDelayType\"]}},\"dest\":{\"index\":\"df-flight-delays\",\"results_field\":\"ml-results\"},\"analysis\":{\"regression\":{\"dependent_variable\":\"FlightDelayMin\",\"training_percent\":90}},\"analyzed_fields\":{\"includes\":[],\"excludes\":[\"FlightNum\"]},\"model_memory_limit\":\"100mb\"}' \"$ELASTICSEARCH_URL/_ml/data_frame/analytics/model-flight-delays-pre\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "delete": {
         "tags": [
@@ -19009,7 +19241,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/data_frame/analytics/loganalytics\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/datafeeds/{datafeed_id}": {
@@ -19062,7 +19295,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-high_sum_total_sales\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "put": {
         "tags": [
@@ -19297,7 +19531,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"indices\":[\"kibana_sample_data_logs\"],\"query\":{\"bool\":{\"must\":[{\"match_all\":{}}]}},\"job_id\":\"test-job\"}' \"$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-test-job?pretty\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "delete": {
         "tags": [
@@ -19373,7 +19608,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-total-requests\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/filters/{filter_id}": {
@@ -19426,7 +19662,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/filters/safe_domains\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "put": {
         "tags": [
@@ -19534,7 +19771,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"description\":\"A list of safe domains\",\"items\":[\"*.google.com\",\"wikipedia.org\"]}' \"$ELASTICSEARCH_URL/_ml/filters/safe_domains\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "delete": {
         "tags": [
@@ -19600,7 +19838,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/filters/safe_domains\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/anomaly_detectors/{job_id}": {
@@ -19653,7 +19892,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/high_sum_total_sales\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "put": {
         "tags": [
@@ -19917,7 +20157,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"analysis_config\":{\"bucket_span\":\"15m\",\"detectors\":[{\"detector_description\":\"Sum of bytes\",\"function\":\"sum\",\"field_name\":\"bytes\"}]},\"data_description\":{\"time_field\":\"timestamp\",\"time_format\":\"epoch_ms\"},\"analysis_limits\":{\"model_memory_limit\":\"11MB\"},\"model_plot_config\":{\"enabled\":true,\"annotations_enabled\":true},\"results_index_name\":\"test-job1\",\"datafeed_config\":{\"indices\":[\"kibana_sample_data_logs\"],\"query\":{\"bool\":{\"must\":[{\"match_all\":{}}]}},\"runtime_mappings\":{\"hour_of_day\":{\"type\":\"long\",\"script\":{\"source\":\"emit(doc['\"'\"'timestamp'\"'\"'].value.getHour());\"}}},\"datafeed_id\":\"datafeed-test-job1\"}}' \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/job-01\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "delete": {
         "tags": [
@@ -20019,7 +20260,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/total-requests\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/trained_models/{model_id}": {
@@ -20087,7 +20329,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/trained_models/\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "put": {
         "tags": [
@@ -20195,7 +20438,8 @@
             }
           }
         },
-        "x-state": "Generally available"
+        "x-state": "Generally available",
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "delete": {
         "tags": [
@@ -20281,7 +20525,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/trained_models/regression-job-one-1574775307356\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/trained_models/{model_id}/model_aliases/{model_alias}": {
@@ -20364,7 +20609,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/trained_models/flight-delay-prediction-1574775339910/model_aliases/flight_delay_model\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "delete": {
         "tags": [
@@ -20441,7 +20687,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/trained_models/flight-delay-prediction-1574775339910/model_aliases/flight_delay_model\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/anomaly_detectors/_estimate_model_memory": {
@@ -20539,7 +20786,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"analysis_config\":{\"bucket_span\":\"5m\",\"detectors\":[{\"function\":\"sum\",\"field_name\":\"bytes\",\"by_field_name\":\"status\",\"partition_field_name\":\"app\"}],\"influencers\":[\"source_ip\",\"dest_ip\"]},\"overall_cardinality\":{\"status\":10,\"app\":50},\"max_bucket_cardinality\":{\"source_ip\":300,\"dest_ip\":30}}' \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/_estimate_model_memory\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/data_frame/_evaluate": {
@@ -20668,7 +20916,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index\":\"animal_classification\",\"evaluation\":{\"classification\":{\"actual_field\":\"animal_class\",\"predicted_field\":\"ml.animal_class_prediction\",\"metrics\":{\"multiclass_confusion_matrix\":{}}}}}' \"$ELASTICSEARCH_URL/_ml/data_frame/_evaluate\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_flush": {
@@ -20826,7 +21075,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"calc_interim\":true}' \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_flush\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/calendars/{calendar_id}/events": {
@@ -20953,7 +21203,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/calendars/planned-outages/events\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "post": {
         "tags": [
@@ -21052,7 +21303,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"events\":[{\"description\":\"event 1\",\"start_time\":1513641600000,\"end_time\":1513728000000},{\"description\":\"event 2\",\"start_time\":1513814400000,\"end_time\":1513900800000},{\"description\":\"event 3\",\"start_time\":1514160000000,\"end_time\":1514246400000}]}' \"$ELASTICSEARCH_URL/_ml/calendars/planned-outages/events\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/calendars": {
@@ -21105,7 +21357,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/calendars/planned-outages\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "post": {
         "tags": [
@@ -21156,7 +21409,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/calendars/planned-outages\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/data_frame/analytics": {
@@ -21212,7 +21466,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/data_frame/analytics/loganalytics\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/data_frame/analytics/_stats": {
@@ -21268,7 +21523,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/data_frame/analytics/weblog-outliers/_stats\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/data_frame/analytics/{id}/_stats": {
@@ -21327,7 +21583,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/data_frame/analytics/weblog-outliers/_stats\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_stats": {
@@ -21377,7 +21634,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-high_sum_total_sales/_stats\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/datafeeds/_stats": {
@@ -21424,7 +21682,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-high_sum_total_sales/_stats\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/datafeeds": {
@@ -21474,7 +21733,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-high_sum_total_sales\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/filters": {
@@ -21524,7 +21784,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/filters/safe_domains\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/anomaly_detectors/_stats": {
@@ -21571,7 +21832,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_stats\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_stats": {
@@ -21621,7 +21883,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_stats\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/anomaly_detectors": {
@@ -21671,7 +21934,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/high_sum_total_sales\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/overall_buckets": {
@@ -21742,7 +22006,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"overall_score\":80,\"start\":\"1403532000000\"}' \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/job-*/results/overall_buckets\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "post": {
         "tags": [
@@ -21811,7 +22076,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"overall_score\":80,\"start\":\"1403532000000\"}' \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/job-*/results/overall_buckets\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/trained_models": {
@@ -21876,7 +22142,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/trained_models/\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/trained_models/{model_id}/_stats": {
@@ -21932,7 +22199,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/trained_models/_stats\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/trained_models/_stats": {
@@ -21985,7 +22253,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/trained_models/_stats\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/trained_models/{model_id}/_infer": {
@@ -22101,7 +22370,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"text\":\"The fool doth think he is wise, but the wise man knows himself to be a fool.\"}]}' \"$ELASTICSEARCH_URL/_ml/trained_models/lang_ident_model_1/_infer\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_open": {
@@ -22211,7 +22481,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"timeout\":\"35m\"}' \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/job-01/_open\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/data_frame/analytics/_preview": {
@@ -22256,7 +22527,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"config\":{\"source\":{\"index\":\"houses_sold_last_10_yrs\"},\"analysis\":{\"regression\":{\"dependent_variable\":\"price\"}}}}' \"$ELASTICSEARCH_URL/_ml/data_frame/analytics/_preview\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "post": {
         "tags": [
@@ -22299,7 +22571,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"config\":{\"source\":{\"index\":\"houses_sold_last_10_yrs\"},\"analysis\":{\"regression\":{\"dependent_variable\":\"price\"}}}}' \"$ELASTICSEARCH_URL/_ml/data_frame/analytics/_preview\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/data_frame/analytics/{id}/_preview": {
@@ -22349,7 +22622,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"config\":{\"source\":{\"index\":\"houses_sold_last_10_yrs\"},\"analysis\":{\"regression\":{\"dependent_variable\":\"price\"}}}}' \"$ELASTICSEARCH_URL/_ml/data_frame/analytics/_preview\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "post": {
         "tags": [
@@ -22397,7 +22671,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"config\":{\"source\":{\"index\":\"houses_sold_last_10_yrs\"},\"analysis\":{\"regression\":{\"dependent_variable\":\"price\"}}}}' \"$ELASTICSEARCH_URL/_ml/data_frame/analytics/_preview\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_preview": {
@@ -22453,7 +22728,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-high_sum_total_sales/_preview\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "post": {
         "tags": [
@@ -22507,7 +22783,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-high_sum_total_sales/_preview\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/datafeeds/_preview": {
@@ -22560,7 +22837,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-high_sum_total_sales/_preview\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       },
       "post": {
         "tags": [
@@ -22611,7 +22889,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-high_sum_total_sales/_preview\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/trained_models/{model_id}/definition/{part}": {
@@ -22719,7 +22998,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"definition\":\"...\",\"total_definition_length\":265632637,\"total_parts\":64}' \"$ELASTICSEARCH_URL/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/definition/0\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/trained_models/{model_id}/vocabulary": {
@@ -22825,7 +23105,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"vocabulary\":[\"[PAD]\",\"[unused0]\"]}' \"$ELASTICSEARCH_URL/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/vocabulary\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_reset": {
@@ -22907,7 +23188,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/total-requests/_reset\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/data_frame/analytics/{id}/_start": {
@@ -22991,7 +23273,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/data_frame/analytics/loganalytics/_start\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_start": {
@@ -23122,7 +23405,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"start\":\"2019-04-07T18:22:16Z\"}' \"$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-low_request_rate/_start\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_start": {
@@ -23276,7 +23560,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/deployment/_start?wait_for=started&timeout=1m\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/data_frame/analytics/{id}/_stop": {
@@ -23376,7 +23661,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/data_frame/analytics/loganalytics/_stop\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_stop": {
@@ -23504,7 +23790,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"timeout\":\"30s\"}' \"$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-low_request_rate/_stop\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_stop": {
@@ -23594,7 +23881,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/trained_models/my_model_for_search/deployment/_stop\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/data_frame/analytics/{id}/_update": {
@@ -23739,7 +24027,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"model_memory_limit\":\"200mb\"}' \"$ELASTICSEARCH_URL/_ml/data_frame/analytics/loganalytics/_update\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_update": {
@@ -23977,7 +24266,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"term\":{\"geo.src\":\"US\"}}}' \"$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-test-job/_update\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/filters/{filter_id}/_update": {
@@ -24094,7 +24384,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"description\":\"Updated list of domains\",\"add_items\":[\"*.myorg.com\"],\"remove_items\":[\"wikipedia.org\"]}' \"$ELASTICSEARCH_URL/_ml/filters/safe_domains/_update\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_update": {
@@ -24324,7 +24615,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"description\":\"An updated job\",\"detectors\":{\"detector_index\":0,\"description\":\"An updated detector description\"},\"groups\":[\"kibana_sample_data\",\"kibana_sample_web_logs\"],\"model_plot_config\":{\"enabled\":true},\"renormalization_window_days\":30,\"background_persist_interval\":\"2h\",\"model_snapshot_retention_days\":7,\"results_retention_days\":60}' \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_update\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_update": {
@@ -24428,7 +24720,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"number_of_allocations\":4}' \"$ELASTICSEARCH_URL/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/deployment/_update\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch, machine-learning"
       }
     },
     "/_msearch": {
@@ -24514,7 +24807,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{},{\"query\":{\"match\":{\"message\":\"this is a test\"}}},{\"index\":\"my-index-000002\"},{\"query\":{\"match_all\":{}}}]' \"$ELASTICSEARCH_URL/my-index-000001/_msearch\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -24598,7 +24892,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{},{\"query\":{\"match\":{\"message\":\"this is a test\"}}},{\"index\":\"my-index-000002\"},{\"query\":{\"match_all\":{}}}]' \"$ELASTICSEARCH_URL/my-index-000001/_msearch\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_msearch": {
@@ -24687,7 +24982,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{},{\"query\":{\"match\":{\"message\":\"this is a test\"}}},{\"index\":\"my-index-000002\"},{\"query\":{\"match_all\":{}}}]' \"$ELASTICSEARCH_URL/my-index-000001/_msearch\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -24774,7 +25070,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{},{\"query\":{\"match\":{\"message\":\"this is a test\"}}},{\"index\":\"my-index-000002\"},{\"query\":{\"match_all\":{}}}]' \"$ELASTICSEARCH_URL/my-index-000001/_msearch\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_msearch/template": {
@@ -24839,7 +25136,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{},{\"id\":\"my-search-template\",\"params\":{\"query_string\":\"hello world\",\"from\":0,\"size\":10}},{},{\"id\":\"my-other-search-template\",\"params\":{\"query_type\":\"match_all\"}}]' \"$ELASTICSEARCH_URL/my-index/_msearch/template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -24902,7 +25200,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{},{\"id\":\"my-search-template\",\"params\":{\"query_string\":\"hello world\",\"from\":0,\"size\":10}},{},{\"id\":\"my-other-search-template\",\"params\":{\"query_type\":\"match_all\"}}]' \"$ELASTICSEARCH_URL/my-index/_msearch/template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_msearch/template": {
@@ -24970,7 +25269,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{},{\"id\":\"my-search-template\",\"params\":{\"query_string\":\"hello world\",\"from\":0,\"size\":10}},{},{\"id\":\"my-other-search-template\",\"params\":{\"query_type\":\"match_all\"}}]' \"$ELASTICSEARCH_URL/my-index/_msearch/template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -25036,7 +25336,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{},{\"id\":\"my-search-template\",\"params\":{\"query_string\":\"hello world\",\"from\":0,\"size\":10}},{},{\"id\":\"my-other-search-template\",\"params\":{\"query_type\":\"match_all\"}}]' \"$ELASTICSEARCH_URL/my-index/_msearch/template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_mtermvectors": {
@@ -25119,7 +25420,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"_id\":\"2\",\"fields\":[\"message\"],\"term_statistics\":true},{\"_id\":\"1\"}]}' \"$ELASTICSEARCH_URL/my-index-000001/_mtermvectors\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -25200,7 +25502,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"_id\":\"2\",\"fields\":[\"message\"],\"term_statistics\":true},{\"_id\":\"1\"}]}' \"$ELASTICSEARCH_URL/my-index-000001/_mtermvectors\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_mtermvectors": {
@@ -25286,7 +25589,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"_id\":\"2\",\"fields\":[\"message\"],\"term_statistics\":true},{\"_id\":\"1\"}]}' \"$ELASTICSEARCH_URL/my-index-000001/_mtermvectors\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -25370,7 +25674,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"_id\":\"2\",\"fields\":[\"message\"],\"term_statistics\":true},{\"_id\":\"1\"}]}' \"$ELASTICSEARCH_URL/my-index-000001/_mtermvectors\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_pit": {
@@ -25535,7 +25840,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_pit?keep_alive=1m&allow_partial_search_results=true\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_scripts/{id}/{context}": {
@@ -25600,7 +25906,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"script\":{\"lang\":\"mustache\",\"source\":{\"query\":{\"match\":{\"message\":\"{{query_string}}\"}},\"from\":\"{{from}}\",\"size\":\"{{size}}\"}}}' \"$ELASTICSEARCH_URL/_scripts/my-search-template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -25663,7 +25970,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"script\":{\"lang\":\"mustache\",\"source\":{\"query\":{\"match\":{\"message\":\"{{query_string}}\"}},\"from\":\"{{from}}\",\"size\":\"{{size}}\"}}}' \"$ELASTICSEARCH_URL/_scripts/my-search-template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_query_rules/{ruleset_id}/_rule/{rule_id}": {
@@ -25745,7 +26053,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query_rules/my-ruleset/_rule/my-rule1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -25870,7 +26179,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"match_criteria\":{\"query_string\":\"puggles\"}}' \"$ELASTICSEARCH_URL/_query_rules/my-ruleset/_test\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -25941,7 +26251,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query_rules/my-ruleset/_rule/my-rule1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_query_rules/{ruleset_id}": {
@@ -26009,7 +26320,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query_rules/my-ruleset/\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -26114,7 +26426,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"rules\":[{\"rule_id\":\"my-rule1\",\"type\":\"pinned\",\"criteria\":[{\"type\":\"contains\",\"metadata\":\"user_query\",\"values\":[\"pugs\",\"puggles\"]},{\"type\":\"exact\",\"metadata\":\"user_country\",\"values\":[\"us\"]}],\"actions\":{\"ids\":[\"id1\",\"id2\"]}},{\"rule_id\":\"my-rule2\",\"type\":\"pinned\",\"criteria\":[{\"type\":\"fuzzy\",\"metadata\":\"user_query\",\"values\":[\"rescue dogs\"]}],\"actions\":{\"docs\":[{\"_index\":\"index1\",\"_id\":\"id3\"},{\"_index\":\"index2\",\"_id\":\"id4\"}]}}]}' \"$ELASTICSEARCH_URL/_query_rules/my-ruleset\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -26174,7 +26487,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query_rules/my-ruleset/\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_query_rules": {
@@ -26266,7 +26580,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query_rules/?from=0&size=3\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_query_rules/{ruleset_id}/_test": {
@@ -26377,7 +26692,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"rules\":[{\"rule_id\":\"my-rule1\",\"type\":\"pinned\",\"criteria\":[{\"type\":\"contains\",\"metadata\":\"user_query\",\"values\":[\"pugs\",\"puggles\"]},{\"type\":\"exact\",\"metadata\":\"user_country\",\"values\":[\"us\"]}],\"actions\":{\"ids\":[\"id1\",\"id2\"]}},{\"rule_id\":\"my-rule2\",\"type\":\"pinned\",\"criteria\":[{\"type\":\"fuzzy\",\"metadata\":\"user_query\",\"values\":[\"rescue dogs\"]}],\"actions\":{\"docs\":[{\"_index\":\"index1\",\"_id\":\"id3\"},{\"_index\":\"index2\",\"_id\":\"id4\"}]}}]}' \"$ELASTICSEARCH_URL/_query_rules/my-ruleset\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_rank_eval": {
@@ -26436,7 +26752,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"requests\":[{\"id\":\"JFK query\",\"request\":{\"query\":{\"match_all\":{}}},\"ratings\":[]}],\"metric\":{\"precision\":{\"k\":20,\"relevant_rating_threshold\":1,\"ignore_unlabeled\":false}}}' \"$ELASTICSEARCH_URL/my-index-000001/_rank_eval\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -26493,7 +26810,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"requests\":[{\"id\":\"JFK query\",\"request\":{\"query\":{\"match_all\":{}}},\"ratings\":[]}],\"metric\":{\"precision\":{\"k\":20,\"relevant_rating_threshold\":1,\"ignore_unlabeled\":false}}}' \"$ELASTICSEARCH_URL/my-index-000001/_rank_eval\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_rank_eval": {
@@ -26555,7 +26873,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"requests\":[{\"id\":\"JFK query\",\"request\":{\"query\":{\"match_all\":{}}},\"ratings\":[]}],\"metric\":{\"precision\":{\"k\":20,\"relevant_rating_threshold\":1,\"ignore_unlabeled\":false}}}' \"$ELASTICSEARCH_URL/my-index-000001/_rank_eval\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -26615,7 +26934,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"requests\":[{\"id\":\"JFK query\",\"request\":{\"query\":{\"match_all\":{}}},\"ratings\":[]}],\"metric\":{\"precision\":{\"k\":20,\"relevant_rating_threshold\":1,\"ignore_unlabeled\":false}}}' \"$ELASTICSEARCH_URL/my-index-000001/_rank_eval\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_reindex": {
@@ -26911,7 +27231,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":[\"my-index-000001\",\"my-index-000002\"]},\"dest\":{\"index\":\"my-new-index-000002\"}}' \"$ELASTICSEARCH_URL/_reindex\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_render/template": {
@@ -26956,7 +27277,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"id\":\"my-search-template\",\"params\":{\"query_string\":\"hello world\",\"from\":20,\"size\":10}}' \"$ELASTICSEARCH_URL/_render/template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -26999,7 +27321,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"id\":\"my-search-template\",\"params\":{\"query_string\":\"hello world\",\"from\":20,\"size\":10}}' \"$ELASTICSEARCH_URL/_render/template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_render/template/{id}": {
@@ -27049,7 +27372,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"id\":\"my-search-template\",\"params\":{\"query_string\":\"hello world\",\"from\":20,\"size\":10}}' \"$ELASTICSEARCH_URL/_render/template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -27097,7 +27421,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"id\":\"my-search-template\",\"params\":{\"query_string\":\"hello world\",\"from\":20,\"size\":10}}' \"$ELASTICSEARCH_URL/_render/template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_scripts/painless/_execute": {
@@ -27142,7 +27467,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"script\":{\"source\":\"params.count / params.total\",\"params\":{\"count\":100,\"total\":1000}}}' \"$ELASTICSEARCH_URL/_scripts/painless/_execute\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -27185,7 +27511,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"script\":{\"source\":\"params.count / params.total\",\"params\":{\"count\":100,\"total\":1000}}}' \"$ELASTICSEARCH_URL/_scripts/painless/_execute\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_search": {
@@ -27364,7 +27691,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"term\":{\"user.id\":\"kimchy\"}}}' \"$ELASTICSEARCH_URL/my-index-000001/_search?from=40&size=20\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -27541,7 +27869,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"term\":{\"user.id\":\"kimchy\"}}}' \"$ELASTICSEARCH_URL/my-index-000001/_search?from=40&size=20\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_search": {
@@ -27723,7 +28052,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"term\":{\"user.id\":\"kimchy\"}}}' \"$ELASTICSEARCH_URL/my-index-000001/_search?from=40&size=20\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -27903,7 +28233,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"term\":{\"user.id\":\"kimchy\"}}}' \"$ELASTICSEARCH_URL/my-index-000001/_search?from=40&size=20\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_application/search_application/{name}": {
@@ -27971,7 +28302,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_application/search_application/my-app/\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -28065,7 +28397,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"indices\":[\"index1\",\"index2\"],\"template\":{\"script\":{\"source\":{\"query\":{\"query_string\":{\"query\":\"{{query_string}}\",\"default_field\":\"{{default_field}}\"}}},\"params\":{\"query_string\":\"*\",\"default_field\":\"*\"}},\"dictionary\":{\"properties\":{\"query_string\":{\"type\":\"string\"},\"default_field\":{\"type\":\"string\",\"enum\":[\"title\",\"description\"]},\"additionalProperties\":false},\"required\":[\"query_string\"]}}}' \"$ELASTICSEARCH_URL/_application/search_application/my-app\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -28125,7 +28458,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_application/search_application/my-app/\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_application/analytics/{name}": {
@@ -28172,7 +28506,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_application/analytics/my*\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -28232,7 +28567,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_application/analytics/my_analytics_collection\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -28293,7 +28629,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_application/analytics/my_analytics_collection/\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_application/analytics": {
@@ -28335,7 +28672,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_application/analytics/my*\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_application/search_application": {
@@ -28437,7 +28775,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_application/search_application?from=0&size=3&q=app*\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_application/search_application/{name}/_search": {
@@ -28490,7 +28829,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"params\":{\"query_string\":\"my first query\",\"text_fields\":[{\"name\":\"title\",\"boost\":5},{\"name\":\"description\",\"boost\":1}]}}' \"$ELASTICSEARCH_URL/_application/search_application/my-app/_search\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -28541,7 +28881,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"params\":{\"query_string\":\"my first query\",\"text_fields\":[{\"name\":\"title\",\"boost\":5},{\"name\":\"description\",\"boost\":1}]}}' \"$ELASTICSEARCH_URL/_application/search_application/my-app/_search\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_mvt/{field}/{zoom}/{x}/{y}": {
@@ -28627,7 +28968,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"grid_agg\":\"geotile\",\"grid_precision\":2,\"fields\":[\"name\",\"price\"],\"query\":{\"term\":{\"included\":true}},\"aggs\":{\"min_price\":{\"min\":{\"field\":\"price\"}},\"max_price\":{\"max\":{\"field\":\"price\"}},\"avg_price\":{\"avg\":{\"field\":\"price\"}}}}' \"$ELASTICSEARCH_URL/museums/_mvt/location/13/4207/2692\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -28711,7 +29053,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"grid_agg\":\"geotile\",\"grid_precision\":2,\"fields\":[\"name\",\"price\"],\"query\":{\"term\":{\"included\":true}},\"aggs\":{\"min_price\":{\"min\":{\"field\":\"price\"}},\"max_price\":{\"max\":{\"field\":\"price\"}},\"avg_price\":{\"avg\":{\"field\":\"price\"}}}}' \"$ELASTICSEARCH_URL/museums/_mvt/location/13/4207/2692\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_search/template": {
@@ -28800,7 +29143,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"id\":\"my-search-template\",\"params\":{\"query_string\":\"hello world\",\"from\":0,\"size\":10}}' \"$ELASTICSEARCH_URL/my-index/_search/template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -28887,7 +29231,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"id\":\"my-search-template\",\"params\":{\"query_string\":\"hello world\",\"from\":0,\"size\":10}}' \"$ELASTICSEARCH_URL/my-index/_search/template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_search/template": {
@@ -28979,7 +29324,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"id\":\"my-search-template\",\"params\":{\"query_string\":\"hello world\",\"from\":0,\"size\":10}}' \"$ELASTICSEARCH_URL/my-index/_search/template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -29069,7 +29415,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"id\":\"my-search-template\",\"params\":{\"query_string\":\"hello world\",\"from\":0,\"size\":10}}' \"$ELASTICSEARCH_URL/my-index/_search/template\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_security/_authenticate": {
@@ -29187,7 +29534,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_security/_authenticate\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_security/api_key": {
@@ -29341,7 +29689,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_security/api_key?username=myuser&realm_name=native1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -29392,7 +29741,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"name\":\"my-api-key\",\"expiration\":\"1d\",\"role_descriptors\":{\"role-a\":{\"cluster\":[\"all\"],\"indices\":[{\"names\":[\"index-a*\"],\"privileges\":[\"read\"]}]},\"role-b\":{\"cluster\":[\"all\"],\"indices\":[{\"names\":[\"index-b*\"],\"privileges\":[\"all\"]}]}},\"metadata\":{\"application\":\"my-application\",\"environment\":{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}}}' \"$ELASTICSEARCH_URL/_security/api_key\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -29443,7 +29793,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"name\":\"my-api-key\",\"expiration\":\"1d\",\"role_descriptors\":{\"role-a\":{\"cluster\":[\"all\"],\"indices\":[{\"names\":[\"index-a*\"],\"privileges\":[\"read\"]}]},\"role-b\":{\"cluster\":[\"all\"],\"indices\":[{\"names\":[\"index-b*\"],\"privileges\":[\"all\"]}]}},\"metadata\":{\"application\":\"my-application\",\"environment\":{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}}}' \"$ELASTICSEARCH_URL/_security/api_key\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -29596,7 +29947,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"ids\":[\"VuaCfGcBCdbkQm-e5aOx\"]}' \"$ELASTICSEARCH_URL/_security/api_key\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_security/role/{name}": {
@@ -29643,7 +29995,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_security/role/my_admin_role\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -29697,7 +30050,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"description\":\"Grants full access to all management features within the cluster.\",\"cluster\":[\"all\"],\"indices\":[{\"names\":[\"index1\",\"index2\"],\"privileges\":[\"all\"],\"field_security\":{\"grant\":[\"title\",\"body\"]},\"query\":\"{\\\"match\\\": {\\\"title\\\": \\\"foo\\\"}}\"}],\"applications\":[{\"application\":\"myapp\",\"privileges\":[\"admin\",\"read\"],\"resources\":[\"*\"]}],\"run_as\":[\"other_user\"],\"metadata\":{\"version\":1}}' \"$ELASTICSEARCH_URL/_security/role/my_admin_role\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -29751,7 +30105,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"description\":\"Grants full access to all management features within the cluster.\",\"cluster\":[\"all\"],\"indices\":[{\"names\":[\"index1\",\"index2\"],\"privileges\":[\"all\"],\"field_security\":{\"grant\":[\"title\",\"body\"]},\"query\":\"{\\\"match\\\": {\\\"title\\\": \\\"foo\\\"}}\"}],\"applications\":[{\"application\":\"myapp\",\"privileges\":[\"admin\",\"read\"],\"resources\":[\"*\"]}],\"run_as\":[\"other_user\"],\"metadata\":{\"version\":1}}' \"$ELASTICSEARCH_URL/_security/role/my_admin_role\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -29836,7 +30191,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_security/role/my_admin_role\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_security/privilege/_builtin": {
@@ -29914,7 +30270,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_security/privilege/_builtin\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_security/role": {
@@ -29956,7 +30313,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_security/role/my_admin_role\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_security/user/_has_privileges": {
@@ -30004,7 +30362,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"cluster\":[\"monitor\",\"manage\"],\"index\":[{\"names\":[\"suppliers\",\"products\"],\"privileges\":[\"read\"]},{\"names\":[\"inventory\"],\"privileges\":[\"read\",\"write\"]}],\"application\":[{\"application\":\"inventory_manager\",\"privileges\":[\"read\",\"data:write/inventory\"],\"resources\":[\"product/1852563\"]}]}' \"$ELASTICSEARCH_URL/_security/user/_has_privileges\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -30050,7 +30409,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"cluster\":[\"monitor\",\"manage\"],\"index\":[{\"names\":[\"suppliers\",\"products\"],\"privileges\":[\"read\"]},{\"names\":[\"inventory\"],\"privileges\":[\"read\",\"write\"]}],\"application\":[{\"application\":\"inventory_manager\",\"privileges\":[\"read\",\"data:write/inventory\"],\"resources\":[\"product/1852563\"]}]}' \"$ELASTICSEARCH_URL/_security/user/_has_privileges\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_security/user/{user}/_has_privileges": {
@@ -30103,7 +30463,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"cluster\":[\"monitor\",\"manage\"],\"index\":[{\"names\":[\"suppliers\",\"products\"],\"privileges\":[\"read\"]},{\"names\":[\"inventory\"],\"privileges\":[\"read\",\"write\"]}],\"application\":[{\"application\":\"inventory_manager\",\"privileges\":[\"read\",\"data:write/inventory\"],\"resources\":[\"product/1852563\"]}]}' \"$ELASTICSEARCH_URL/_security/user/_has_privileges\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -30154,7 +30515,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"cluster\":[\"monitor\",\"manage\"],\"index\":[{\"names\":[\"suppliers\",\"products\"],\"privileges\":[\"read\"]},{\"names\":[\"inventory\"],\"privileges\":[\"read\",\"write\"]}],\"application\":[{\"application\":\"inventory_manager\",\"privileges\":[\"read\",\"data:write/inventory\"],\"resources\":[\"product/1852563\"]}]}' \"$ELASTICSEARCH_URL/_security/user/_has_privileges\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_security/_query/api_key": {
@@ -30210,7 +30572,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"ids\":{\"values\":[\"VuaCfGcBCdbkQm-e5aOx\"]}}}' \"$ELASTICSEARCH_URL/_security/_query/api_key?with_limited_by=true\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -30264,7 +30627,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"ids\":{\"values\":[\"VuaCfGcBCdbkQm-e5aOx\"]}}}' \"$ELASTICSEARCH_URL/_security/_query/api_key?with_limited_by=true\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_security/_query/role": {
@@ -30309,7 +30673,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"sort\":[\"name\"]}' \"$ELASTICSEARCH_URL/_security/_query/role\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -30352,7 +30717,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"sort\":[\"name\"]}' \"$ELASTICSEARCH_URL/_security/_query/role\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_security/api_key/{id}": {
@@ -30466,7 +30832,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"role_descriptors\":{\"role-a\":{\"indices\":[{\"names\":[\"*\"],\"privileges\":[\"write\"]}]}},\"metadata\":{\"environment\":{\"level\":2,\"trusted\":true,\"tags\":[\"production\"]}}}' \"$ELASTICSEARCH_URL/_security/api_key/VuaCfGcBCdbkQm-e5aOx\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_sql/close": {
@@ -30547,7 +30914,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"cursor\":\"sDXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAAEWYUpOYklQMHhRUEtld3RsNnFtYU1hQQ==:BAFmBGRhdGUBZgVsaWtlcwFzB21lc3NhZ2UBZgR1c2Vy9f///w8=\"}' \"$ELASTICSEARCH_URL/_sql/close\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_sql/async/delete/{id}": {
@@ -30609,7 +30977,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_sql/async/delete/FmdMX2pIang3UWhLRU5QS0lqdlppYncaMUpYQ05oSkpTc3kwZ21EdC1tbFJXQToxOTI=\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_sql/async/{id}": {
@@ -30748,7 +31117,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_sql/async/FnR0TDhyWUVmUmVtWXRWZER4MXZiNFEad2F5UDk2ZVdTVHV1S0xDUy00SklUdzozMTU=?wait_for_completion_timeout=2s&format=json\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_sql/async/status/{id}": {
@@ -30840,7 +31210,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_sql/async/status/FnR0TDhyWUVmUmVtWXRWZER4MXZiNFEad2F5UDk2ZVdTVHV1S0xDUy00SklUdzozMTU=\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_sql": {
@@ -30890,7 +31261,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":\"SELECT * FROM library ORDER BY page_count DESC LIMIT 5\"}' \"$ELASTICSEARCH_URL/_sql?format=txt\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -30938,7 +31310,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":\"SELECT * FROM library ORDER BY page_count DESC LIMIT 5\"}' \"$ELASTICSEARCH_URL/_sql?format=txt\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_sql/translate": {
@@ -30983,7 +31356,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":\"SELECT * FROM library ORDER BY page_count DESC\",\"fetch_size\":10}' \"$ELASTICSEARCH_URL/_sql/translate\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -31026,7 +31400,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":\"SELECT * FROM library ORDER BY page_count DESC\",\"fetch_size\":10}' \"$ELASTICSEARCH_URL/_sql/translate\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_synonyms/{id}": {
@@ -31131,7 +31506,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_synonyms/my-synonyms-set\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -31231,7 +31607,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_synonyms/my-synonyms-set\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -31291,7 +31668,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_synonyms/my-synonyms-set\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_synonyms/{set_id}/{rule_id}": {
@@ -31370,7 +31748,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_synonyms/my-synonyms-set/test-1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -31472,7 +31851,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"synonyms\":\"hello, hi, howdy\"}' \"$ELASTICSEARCH_URL/_synonyms/my-synonyms-set/test-1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -31549,7 +31929,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_synonyms/my-synonyms-set/test-1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_synonyms": {
@@ -31643,7 +32024,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_synonyms\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_tasks/{task_id}": {
@@ -31755,7 +32137,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_tasks?detailed=true&actions=*/delete/byquery\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_terms_enum": {
@@ -31805,7 +32188,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"field\":\"tags\",\"string\":\"kiba\"}' \"$ELASTICSEARCH_URL/stackoverflow/_terms_enum\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -31853,7 +32237,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"field\":\"tags\",\"string\":\"kiba\"}' \"$ELASTICSEARCH_URL/stackoverflow/_terms_enum\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_termvectors/{id}": {
@@ -31942,7 +32327,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"fields\":[\"text\"],\"offsets\":true,\"payloads\":true,\"positions\":true,\"term_statistics\":true,\"field_statistics\":true}' \"$ELASTICSEARCH_URL/my-index-000001/_termvectors/1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -32029,7 +32415,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"fields\":[\"text\"],\"offsets\":true,\"payloads\":true,\"positions\":true,\"term_statistics\":true,\"field_statistics\":true}' \"$ELASTICSEARCH_URL/my-index-000001/_termvectors/1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_termvectors": {
@@ -32115,7 +32502,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"fields\":[\"text\"],\"offsets\":true,\"payloads\":true,\"positions\":true,\"term_statistics\":true,\"field_statistics\":true}' \"$ELASTICSEARCH_URL/my-index-000001/_termvectors/1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -32199,7 +32587,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"fields\":[\"text\"],\"offsets\":true,\"payloads\":true,\"positions\":true,\"term_statistics\":true,\"field_statistics\":true}' \"$ELASTICSEARCH_URL/my-index-000001/_termvectors/1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_transform/{transform_id}": {
@@ -32258,7 +32647,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_transform?size=10\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "put": {
         "tags": [
@@ -32403,7 +32793,8 @@
             "lang": "curl",
             "source": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"kibana_sample_data_ecommerce\",\"query\":{\"term\":{\"geoip.continent_name\":{\"value\":\"Asia\"}}}},\"pivot\":{\"group_by\":{\"customer_id\":{\"terms\":{\"field\":\"customer_id\",\"missing_bucket\":true}}},\"aggregations\":{\"max_price\":{\"max\":{\"field\":\"taxful_total_price\"}}}},\"description\":\"Maximum priced ecommerce data by customer_id in Asia\",\"dest\":{\"index\":\"kibana_sample_data_ecommerce_transform1\",\"pipeline\":\"add_timestamp_pipeline\"},\"frequency\":\"5m\",\"sync\":{\"time\":{\"field\":\"order_date\",\"delay\":\"60s\"}},\"retention_policy\":{\"time\":{\"field\":\"order_date\",\"max_age\":\"30d\"}}}' \"$ELASTICSEARCH_URL/_transform/ecommerce_transform1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "delete": {
         "tags": [
@@ -32499,7 +32890,8 @@
             "lang": "curl",
             "source": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_transform/ecommerce_transform\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_transform": {
@@ -32555,7 +32947,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_transform?size=10\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_transform/{transform_id}/_stats": {
@@ -32678,7 +33071,8 @@
             "lang": "curl",
             "source": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_transform/ecommerce-customer-transform/_stats\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_transform/{transform_id}/_preview": {
@@ -32731,7 +33125,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"kibana_sample_data_ecommerce\"},\"pivot\":{\"group_by\":{\"customer_id\":{\"terms\":{\"field\":\"customer_id\",\"missing_bucket\":true}}},\"aggregations\":{\"max_price\":{\"max\":{\"field\":\"taxful_total_price\"}}}}}' \"$ELASTICSEARCH_URL/_transform/_preview\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -32782,7 +33177,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"kibana_sample_data_ecommerce\"},\"pivot\":{\"group_by\":{\"customer_id\":{\"terms\":{\"field\":\"customer_id\",\"missing_bucket\":true}}},\"aggregations\":{\"max_price\":{\"max\":{\"field\":\"taxful_total_price\"}}}}}' \"$ELASTICSEARCH_URL/_transform/_preview\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_transform/_preview": {
@@ -32832,7 +33228,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"kibana_sample_data_ecommerce\"},\"pivot\":{\"group_by\":{\"customer_id\":{\"terms\":{\"field\":\"customer_id\",\"missing_bucket\":true}}},\"aggregations\":{\"max_price\":{\"max\":{\"field\":\"taxful_total_price\"}}}}}' \"$ELASTICSEARCH_URL/_transform/_preview\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       },
       "post": {
         "tags": [
@@ -32880,7 +33277,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"kibana_sample_data_ecommerce\"},\"pivot\":{\"group_by\":{\"customer_id\":{\"terms\":{\"field\":\"customer_id\",\"missing_bucket\":true}}},\"aggregations\":{\"max_price\":{\"max\":{\"field\":\"taxful_total_price\"}}}}}' \"$ELASTICSEARCH_URL/_transform/_preview\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_transform/{transform_id}/_reset": {
@@ -32968,7 +33366,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_transform/ecommerce_transform/_reset\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_transform/{transform_id}/_schedule_now": {
@@ -33046,7 +33445,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_transform/ecommerce_transform/_schedule_now\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_transform/{transform_id}/_start": {
@@ -33134,7 +33534,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_transform/ecommerce-customer-transform/_start\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_transform/{transform_id}/_stop": {
@@ -33252,7 +33653,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_transform/ecommerce_transform/_stop\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/_transform/{transform_id}/_update": {
@@ -33445,7 +33847,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"kibana_sample_data_ecommerce\",\"query\":{\"term\":{\"geoip.continent_name\":{\"value\":\"Asia\"}}}},\"pivot\":{\"group_by\":{\"customer_id\":{\"terms\":{\"field\":\"customer_id\",\"missing_bucket\":true}}},\"aggregations\":{\"max_price\":{\"max\":{\"field\":\"taxful_total_price\"}}}},\"description\":\"Maximum priced ecommerce data by customer_id in Asia\",\"dest\":{\"index\":\"kibana_sample_data_ecommerce_transform1\",\"pipeline\":\"add_timestamp_pipeline\"},\"frequency\":\"5m\",\"sync\":{\"time\":{\"field\":\"order_date\",\"delay\":\"60s\"}},\"retention_policy\":{\"time\":{\"field\":\"order_date\",\"max_age\":\"30d\"}}}' \"$ELASTICSEARCH_URL/_transform/simple-kibana-ecomm-pivot/_update\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_update/{id}": {
@@ -33750,7 +34153,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"script\":{\"source\":\"ctx._source.counter += params.count\",\"lang\":\"painless\",\"params\":{\"count\":4}}}' \"$ELASTICSEARCH_URL/test/_update/1\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     },
     "/{index}/_update_by_query": {
@@ -34239,7 +34643,8 @@
             "lang": "curl",
             "source": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"term\":{\"user.id\":\"kimchy\"}}}' \"$ELASTICSEARCH_URL/my-index-000001/_update_by_query?conflicts=proceed\""
           }
-        ]
+        ],
+        "x-product-feature": "elasticsearch"
       }
     }
   },
