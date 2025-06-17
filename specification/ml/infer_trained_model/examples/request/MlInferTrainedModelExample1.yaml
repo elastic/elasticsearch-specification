@@ -57,6 +57,6 @@ alternatives:
   - language: java
     code: |
       client.ml().inferTrainedModel(i -> i
-      	.docs("text", JsonData.fromJson("\"The fool doth think he is wise, but the wise man knows himself to be a fool.\""))
-      	.modelId("lang_ident_model_1")
+          .docs(Map.of("text", JsonData.fromJson("\"The fool doth think he is wise, but the wise man knows himself to be a fool.\"")))
+          .modelId("lang_ident_model_1")
       );

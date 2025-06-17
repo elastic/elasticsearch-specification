@@ -162,7 +162,7 @@ alternatives:
       				.toolCalls(t -> t
       					.id("call_KcAjWtAww20AihPHphUh46Gd")
       					.function(f -> f
-      						.arguments("{"location":"Boston, MA"}")
+      						.arguments("{\"location\":\"Boston, MA\"}")
       						.name("get_current_weather")
       					)
       					.type("function")

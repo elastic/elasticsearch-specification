@@ -221,12 +221,9 @@ alternatives:
       	.inferenceId("openai-completion")
       	.chatCompletionRequest(ch -> ch
       		.messages(m -> m
-      			.content(co -> co
-      				.object(o -> o
-      					.text("What's the price of a scarf?")
-      					.type("text")
-      				)
-      			)
+                .content(co -> co
+                    .string("What's the price of a scarf?")
+                )
       			.role("user")
       		)
       		.toolChoice(t -> t

@@ -128,14 +128,16 @@ alternatives:
   - language: java
     code: |
       client.security().putRoleMapping(p -> p
-      	.enabled(true)
-      	.name("mapping4")
-      	.roles("superuser")
-      	.rules(r -> r
-      		.any(List.of(RoleMappingRule.of(ro -> ro
-      				.field(NamedValue.of("username",List.of(FieldValue.of("esadmin"))
-      			)),RoleMappingRule.of(rol -> rol
-      				.field(NamedValue.of("groups",List.of(FieldValue.of("cn=admins,dc=example,dc=com"))
-      			))))
-      	)
+          .enabled(true)
+          .name("mapping4")
+          .roles("superuser")
+          .rules(r -> r
+              .any(List.of(RoleMappingRule.of(ro -> ro
+                      .field(NamedValue.of("username",List.of(FieldValue.of("esadmin"))
+                      ))), RoleMappingRule.of(rol -> rol
+                      .field(NamedValue.of("groups",List.of(FieldValue.of("cn=admins,dc=example,dc=com"))
+                      )))
+                  )
+              )
+          )
       );
