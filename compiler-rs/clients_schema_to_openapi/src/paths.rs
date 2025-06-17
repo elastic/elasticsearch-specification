@@ -369,12 +369,6 @@ pub fn add_endpoint(
                         }
                     }
                 }
-                if let Some(alternative_java) = example.alternative_java.clone() {
-                    code_samples.push(serde_json::json!({
-                        "lang": "java",
-                        "source": alternative_java[0].code.as_str(),
-                    }));
-                }
             }
             if !code_samples.is_empty() {
                 extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
