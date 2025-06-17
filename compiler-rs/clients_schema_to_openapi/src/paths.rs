@@ -28,16 +28,17 @@ use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
     RequestBody, Response, Responses, StatusCode, Example
 };
+use serde_json::Value;
 use clients_schema::SchemaExample;
-
 use crate::components::TypesAndComponents;
+use crate::convert_availabilities;
 
 /// Add an endpoint to the OpenAPI schema. This will result in the addition of a number of elements to the
 /// openapi schema's `paths` and `components` sections.
 pub fn add_endpoint(
     endpoint: &clients_schema::Endpoint,
     tac: &mut TypesAndComponents,
-    out: &mut Paths,
+    out: &mut Paths
 ) -> anyhow::Result<()> {
     if endpoint.request.is_none() {
         // tracing::warn!("Endpoint {} is missing a request -- ignored", &endpoint.name);
@@ -61,6 +62,8 @@ pub fn add_endpoint(
     let request = tac.model.get_request(endpoint.request.as_ref().unwrap())?;
 
     fn parameter_data(prop: &Property, in_path: bool, tac: &mut TypesAndComponents) -> anyhow::Result<ParameterData> {
+        let mut extensions: IndexMap<String,Value> = Default::default();
+        convert_availabilities(&prop.availability, &tac.config.flavor, &mut extensions);
         Ok(ParameterData {
             name: prop.name.clone(),
             description: tac.property_description(prop)?,
@@ -320,6 +323,11 @@ pub fn add_endpoint(
             (opt_a, opt_b) => opt_a.or(opt_b)
         };
 
+        // add the x-state extension for availability
+        let mut extensions = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
+        let mut ext_availability = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
+        extensions.append(&mut ext_availability);
+
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
             tags: if let Some(doc_tag) = &endpoint.doc_tag {
@@ -343,7 +351,7 @@ pub fn add_endpoint(
             deprecated: endpoint.deprecation.is_some(),
             security: None,
             servers: vec![],
-            extensions: crate::availability_as_extensions(&endpoint.availability),
+            extensions
         };
 
 
@@ -474,18 +482,20 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
 
 fn add_privileges(privileges: &Option<Privileges>) -> Option<String>{
     if let Some(privs) = privileges {
-        let mut result = "\n ##Required authorization\n".to_string();
+        let mut result = "\n\n## Required authorization\n\n".to_string();
         if !privs.index.is_empty() {
             result += "* Index privileges: ";
             result += &privs.index.iter()
                 .map(|a| format!("`{a}`"))
                 .join(",");
+            result += "\n";
         }
         if !privs.cluster.is_empty() {
             result += "* Cluster privileges: ";
             result += &privs.cluster.iter()
                 .map(|a| format!("`{a}`"))
                 .join(",");
+            result += "\n";
         }
         return Some(result)
     }
