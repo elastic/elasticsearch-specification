@@ -46,9 +46,9 @@ async function generateLanguages(example) {
     });
   }
   data.alternatives = alternatives.concat(data.alternatives.filter(pair => !LANGUAGES.includes(pair.language)));
+
   // specific java example generator
   if (process.argv[2] === "java") {
-    data.alternative_java = [];
     const partialRequest = await parseRequest(request);
     const java = new JavaCaller({
       minimumJavaVersion: 21,
@@ -77,14 +77,13 @@ async function generateLanguages(example) {
     if (status) {
       console.log(stderr);
       console.log(JSON.stringify(javaReqs));
-      return stderr;
     }
-    data.alternative_java.push({
-      language: "java",
-      code: stdout,
-    });
-    doc.delete('alternative_java');
-    doc.add(doc.createPair('alternative_java', data.alternative_java));
+    else {
+      data.alternatives.push({
+        language: "java",
+        code: stdout,
+      });
+    }
   }
 
   doc.delete('alternatives');
