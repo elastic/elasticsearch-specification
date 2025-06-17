@@ -1,8 +1,4 @@
 method_request: GET /_cat/nodes?v=true&h=id,ip,port,v,m&format=json
-alternative_java:
-  - language: java
-    code: |
-      client.cat().nodes();
 alternatives:
   - language: Python
     code: |-

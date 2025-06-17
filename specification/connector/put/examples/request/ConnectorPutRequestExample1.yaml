@@ -11,15 +11,6 @@ value: "{
   \  \"service_type\": \"google_drive\"
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().put(p -> p
-      	.connectorId("my-connector")
-      	.indexName("search-google-drive")
-      	.name("My Connector")
-      	.serviceType("google_drive")
-      );
 alternatives:
   - language: Python
     code: |-

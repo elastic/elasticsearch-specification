@@ -4,13 +4,6 @@ value: |-
   {
     "worker_hostname": "some-machine"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.connector().syncJobClaim(s -> s
-      	.connectorSyncJobId("my-connector-sync-job-id")
-      	.workerHostname("some-machine")
-      );
 alternatives:
   - language: Python
     code: |-

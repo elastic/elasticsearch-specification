@@ -6,13 +6,6 @@ value: |-
   {
     "input": "What is Elastic?"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().completion(c -> c
-      	.inferenceId("openai_chat_completions")
-      	.input("What is Elastic?")
-      );
 alternatives:
   - language: Python
     code: |-

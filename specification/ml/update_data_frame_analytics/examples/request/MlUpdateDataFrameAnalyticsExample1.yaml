@@ -4,13 +4,6 @@ value: |-
   {
     "model_memory_limit": "200mb"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().updateDataFrameAnalytics(u -> u
-      	.id("loganalytics")
-      	.modelMemoryLimit("200mb")
-      );
 alternatives:
   - language: Python
     code: |-

@@ -11,13 +11,6 @@ value: |-
       "size": 10
     }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.renderSearchTemplate(r -> r
-      	.id("my-search-template")
-      	.params(Map.of("size", JsonData.fromJson("10"),"from", JsonData.fromJson("20"),"query_string", JsonData.fromJson("\"hello world\"")))
-      );
 alternatives:
   - language: Python
     code: |-

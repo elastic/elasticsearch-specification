@@ -9,14 +9,6 @@ value: "{
   \    \"description\": \"This is my customized connector\"
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateName(u -> u
-      	.connectorId("my-connector")
-      	.description("This is my customized connector")
-      	.name("Custom connector")
-      );
 alternatives:
   - language: Python
     code: |-

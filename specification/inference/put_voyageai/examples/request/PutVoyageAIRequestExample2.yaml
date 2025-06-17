@@ -9,17 +9,6 @@ value: |-
           "model_id": "rerank-2"
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("voyageai-rerank")
-      	.taskType(TaskType.Rerank)
-      	.inferenceConfig(i -> i
-      		.service("voyageai")
-      		.serviceSettings(JsonData.fromJson("{\"model_id\":\"rerank-2\"}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

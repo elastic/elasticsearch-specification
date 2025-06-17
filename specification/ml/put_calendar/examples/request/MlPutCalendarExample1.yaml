@@ -1,10 +1,4 @@
 method_request: PUT _ml/calendars/planned-outages
-alternative_java:
-  - language: java
-    code: |
-      client.ml().putCalendar(p -> p
-      	.calendarId("planned-outages")
-      );
 alternatives:
   - language: Python
     code: |-

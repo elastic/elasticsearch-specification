@@ -11,17 +11,6 @@ value: |-
           "deployment_id": ".elser_model_2"
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("use_existing_deployment")
-      	.taskType(TaskType.SparseEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("elasticsearch")
-      		.serviceSettings(JsonData.fromJson("{\"deployment_id\":\".elser_model_2\"}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

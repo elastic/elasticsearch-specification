@@ -6,12 +6,6 @@ value: |-
   {
     "name" : "my-api-key"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().invalidateApiKey(i -> i
-      	.name("my-api-key")
-      );
 alternatives:
   - language: Python
     code: |-

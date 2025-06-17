@@ -19,21 +19,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.reindex(r -> r
-      	.dest(d -> d
-      		.index("my-new-index-000001")
-      	)
-      	.refresh(true)
-      	.slices(s -> s
-      		.value(5)
-      	)
-      	.source(so -> so
-      		.index("my-index-000001")
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

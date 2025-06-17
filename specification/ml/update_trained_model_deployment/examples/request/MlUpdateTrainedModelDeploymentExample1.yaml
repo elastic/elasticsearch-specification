@@ -5,13 +5,6 @@ value: |-
   {
     "number_of_allocations": 4
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().updateTrainedModelDeployment(u -> u
-      	.modelId("elastic__distilbert-base-uncased-finetuned-conll03-english")
-      	.numberOfAllocations(4)
-      );
 alternatives:
   - language: Python
     code: |-

@@ -16,9 +16,6 @@ value: |-
     },
     "job_id": "test-job"
   }
-alternative_java:
-  - language: java
-    code: "\n"
 alternatives:
   - language: Python
     code: |-

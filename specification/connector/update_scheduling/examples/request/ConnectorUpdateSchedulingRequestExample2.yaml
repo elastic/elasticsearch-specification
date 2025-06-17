@@ -17,18 +17,6 @@ value: "{
   \    }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateScheduling(u -> u
-      	.connectorId("my-connector")
-      	.scheduling(s -> s
-      		.full(f -> f
-      			.enabled(true)
-      			.interval("0 10 0 * * ?")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

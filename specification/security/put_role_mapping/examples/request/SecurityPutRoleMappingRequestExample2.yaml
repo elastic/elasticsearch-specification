@@ -11,17 +11,6 @@ value: |-
       "field" : { "username" : [ "esadmin01", "esadmin02" ] }
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().putRoleMapping(p -> p
-      	.enabled(true)
-      	.name("mapping2")
-      	.roles(List.of("user","admin"))
-      	.rules(r -> r
-      		.field(NamedValue.of("username",List.of(FieldValue.of("esadmin01"),FieldValue.of("esadmin02"))))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

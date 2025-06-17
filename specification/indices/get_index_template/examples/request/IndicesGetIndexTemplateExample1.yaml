@@ -1,8 +1,5 @@
 method_request: GET
   _index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream
-alternative_java:
-  - language: java
-    code: "\n"
 alternatives:
   - language: Python
     code: >-

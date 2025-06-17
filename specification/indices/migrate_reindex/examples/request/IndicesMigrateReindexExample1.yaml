@@ -7,17 +7,6 @@ value: |-
       },
       "mode": "upgrade"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.indices().migrateReindex(m -> m
-      	.reindex(r -> r
-      		.mode(ModeEnum.Upgrade)
-      		.source(s -> s
-      			.index("my-data-stream")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

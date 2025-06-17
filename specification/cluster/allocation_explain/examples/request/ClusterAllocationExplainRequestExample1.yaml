@@ -9,15 +9,6 @@ value: |-
     "primary": false,
     "current_node": "my-node"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.cluster().allocationExplain(a -> a
-      	.currentNode("my-node")
-      	.index("my-index-000001")
-      	.primary(false)
-      	.shard(0)
-      );
 alternatives:
   - language: Python
     code: |-

@@ -15,15 +15,6 @@ value: |-
       "fullname": "keyword"
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.termvectors(t -> t
-      	.doc(JsonData.fromJson("{\"fullname\":\"John Doe\",\"text\":\"test test test\"}"))
-      	.fields("fullname")
-      	.index("my-index-000001")
-      	.perFieldAnalyzer("fullname", "keyword")
-      );
 alternatives:
   - language: Python
     code: |-

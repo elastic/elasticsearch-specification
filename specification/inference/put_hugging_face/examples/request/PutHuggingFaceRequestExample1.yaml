@@ -12,17 +12,6 @@ value: |-
           "url": "url-endpoint" 
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("hugging-face-embeddings")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("hugging_face")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"hugging-face-access-token\",\"url\":\"url-endpoint\"}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

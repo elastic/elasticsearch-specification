@@ -13,16 +13,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.indices().create(c -> c
-      	.index("my-index-000001")
-      	.settings(s -> s
-      		.numberOfShards("3")
-      		.numberOfReplicas("2")
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

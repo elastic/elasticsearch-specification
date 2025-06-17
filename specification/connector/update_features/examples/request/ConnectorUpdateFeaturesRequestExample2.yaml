@@ -15,17 +15,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateFeatures(u -> u
-      	.connectorId("my-connector")
-      	.features(f -> f
-      		.documentLevelSecurity(d -> d
-      			.enabled(true)
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

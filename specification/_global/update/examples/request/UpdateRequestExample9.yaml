@@ -27,21 +27,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.update(u -> u
-      	.id("1")
-      	.index("test")
-      	.script(s -> s
-      		.source(so -> so
-      			.scriptString("ctx._source.counter += params.count")
-      		)
-      		.params("count", JsonData.fromJson("4"))
-      		.lang("painless")
-      	)
-      	.upsert(JsonData.fromJson("{\"counter\":1}"))
-      ,Void.class);
 alternatives:
   - language: Python
     code: |-

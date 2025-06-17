@@ -7,13 +7,6 @@ value: "{
   \    \"index_name\": \"data-from-my-google-drive\"
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateIndexName(u -> u
-      	.connectorId("my-connector")
-      	.indexName("data-from-my-google-drive")
-      );
 alternatives:
   - language: Python
     code: |-

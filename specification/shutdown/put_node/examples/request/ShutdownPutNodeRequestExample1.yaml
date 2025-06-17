@@ -13,15 +13,6 @@ value: "{
   \  \"allocation_delay\": \"20m\"
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.shutdown().putNode(p -> p
-      	.allocationDelay("20m")
-      	.nodeId("USpTGYaBSIKbgSUJR2Z9lg")
-      	.reason("Demonstrating how the node shutdown API works")
-      	.type(Type.Restart)
-      );
 alternatives:
   - language: Python
     code: |-

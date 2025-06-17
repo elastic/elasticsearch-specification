@@ -14,14 +14,6 @@ value: |-
           "index.auto_expand_replicas": "0-all"
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().updateSettings(u -> u
-      	.security(s -> s)
-      	.securityProfile(s -> s)
-      	.securityTokens(s -> s)
-      );
 alternatives:
   - language: Python
     code: |-

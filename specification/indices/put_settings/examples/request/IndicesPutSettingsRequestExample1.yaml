@@ -11,17 +11,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.indices().putSettings(p -> p
-      	.index("my-index-000001")
-      	.settings(s -> s
-      		.index(i -> i
-      			.numberOfReplicas("2")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

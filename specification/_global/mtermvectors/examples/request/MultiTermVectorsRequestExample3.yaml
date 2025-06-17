@@ -21,16 +21,6 @@ value: |-
         }
     ]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.mtermvectors(m -> m
-      	.docs(List.of(MultiTermVectorsOperation.of(mu -> mu
-      			.index("my-index-000001")
-      			.doc(JsonData.fromJson("{\"message\":\"test test test\"}"))),MultiTermVectorsOperation.of(mu -> mu
-      			.index("my-index-000001")
-      			.doc(JsonData.fromJson("{\"message\":\"Another test ...\"}")))))
-      );
 alternatives:
   - language: Python
     code: |-

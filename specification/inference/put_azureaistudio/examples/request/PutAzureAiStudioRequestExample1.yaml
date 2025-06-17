@@ -14,17 +14,6 @@ value: |-
           "endpoint_type": "token"
       }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.inference().put(p -> p
-      	.inferenceId("azure_ai_studio_embeddings")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("azureaistudio")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"Azure-AI-Studio-API-key\",\"target\":\"Target-Uri\",\"provider\":\"openai\",\"endpoint_type\":\"token\"}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

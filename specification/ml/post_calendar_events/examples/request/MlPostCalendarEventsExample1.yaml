@@ -8,22 +8,6 @@ value: |-
       {"description": "event 3", "start_time": 1514160000000, "end_time": 1514246400000}
     ]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().postCalendarEvents(p -> p
-      	.calendarId("planned-outages")
-      	.events(List.of(CalendarEvent.of(c -> c
-      			.description("event 1")
-      			.endTime(DateTime.ofEpochMilli(1513728000000L))
-      			.startTime(DateTime.ofEpochMilli(1513641600000L))),CalendarEvent.of(c -> c
-      			.description("event 2")
-      			.endTime(DateTime.ofEpochMilli(1513900800000L))
-      			.startTime(DateTime.ofEpochMilli(1513814400000L))),CalendarEvent.of(c -> c
-      			.description("event 3")
-      			.endTime(DateTime.ofEpochMilli(1514246400000L))
-      			.startTime(DateTime.ofEpochMilli(1514160000000L)))))
-      );
 alternatives:
   - language: Python
     code: |-

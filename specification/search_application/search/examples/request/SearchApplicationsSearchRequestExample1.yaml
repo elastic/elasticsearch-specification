@@ -21,13 +21,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: >
-      client.searchApplication().search(s -> s
-      	.name("my-app")
-      	.params(Map.of("text_fields", JsonData.fromJson("[{\"name\":\"title\",\"boost\":5},{\"name\":\"description\",\"boost\":1}]"),"query_string", JsonData.fromJson("\"my first query\"")))
-      );
 alternatives:
   - language: Python
     code: |-

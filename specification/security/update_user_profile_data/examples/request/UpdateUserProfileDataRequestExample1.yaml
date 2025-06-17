@@ -15,14 +15,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().updateUserProfileData(u -> u
-      	.data("app1", JsonData.fromJson("{\"theme\":\"default\"}"))
-      	.labels("direction", JsonData.fromJson("\"east\""))
-      	.uid("u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0")
-      );
 alternatives:
   - language: Python
     code: |-

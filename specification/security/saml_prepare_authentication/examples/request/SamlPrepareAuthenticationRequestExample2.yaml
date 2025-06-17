@@ -8,12 +8,6 @@ value: |-
   {
     "acs" : "https://kibana.org/api/security/saml/callback"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().samlPrepareAuthentication(s -> s
-      	.acs("https://kibana.org/api/security/saml/callback")
-      );
 alternatives:
   - language: Python
     code: |-

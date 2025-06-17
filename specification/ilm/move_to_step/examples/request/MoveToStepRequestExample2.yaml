@@ -14,20 +14,6 @@ value: |-
       "phase": "warm"
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ilm().moveToStep(m -> m
-      	.currentStep(c -> c
-      		.action("complete")
-      		.name("complete")
-      		.phase("hot")
-      	)
-      	.index("my-index-000001")
-      	.nextStep(n -> n
-      		.phase("warm")
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

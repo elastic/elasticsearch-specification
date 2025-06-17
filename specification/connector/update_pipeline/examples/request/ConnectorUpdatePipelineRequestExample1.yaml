@@ -17,18 +17,6 @@ value: "{
   \    }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updatePipeline(u -> u
-      	.connectorId("my-connector")
-      	.pipeline(p -> p
-      		.extractBinaryContent(true)
-      		.name("my-connector-pipeline")
-      		.reduceWhitespace(true)
-      		.runMlInference(true)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

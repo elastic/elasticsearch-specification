@@ -9,13 +9,6 @@ value: |-
     "token" : "46ToAxZVaXVVZTVKOVF5YU04ZFJVUDVSZlV3",
     "refresh_token" : "mJdXLtmvTUSpoLwMvdBt_w"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().samlLogout(s -> s
-      	.refreshToken("mJdXLtmvTUSpoLwMvdBt_w")
-      	.token("46ToAxZVaXVVZTVKOVF5YU04ZFJVUDVSZlV3")
-      );
 alternatives:
   - language: Python
     code: |-

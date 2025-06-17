@@ -1,8 +1,4 @@
 method_request: GET /_cat/fielddata?v=true&fields=body&format=json
-alternative_java:
-  - language: java
-    code: |
-      client.cat().fielddata();
 alternatives:
   - language: Python
     code: |-

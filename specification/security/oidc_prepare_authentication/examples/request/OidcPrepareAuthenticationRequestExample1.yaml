@@ -7,12 +7,6 @@ value: |-
   {
     "realm" : "oidc1"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().oidcPrepareAuthentication(o -> o
-      	.realm("oidc1")
-      );
 alternatives:
   - language: Python
     code: |-

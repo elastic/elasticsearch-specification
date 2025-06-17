@@ -12,17 +12,6 @@ value: |-
           "workspace" : "default"
       }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.inference().put(p -> p
-      	.inferenceId("alibabacloud_ai_search_completion")
-      	.taskType(TaskType.Completion)
-      	.inferenceConfig(i -> i
-      		.service("alibabacloud-ai-search")
-      		.serviceSettings(JsonData.fromJson("{\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-qwen-turbo\",\"workspace\":\"default\"}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

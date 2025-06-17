@@ -7,13 +7,6 @@ value: |-
     "username" : "myuser",
     "realm_name" : "native1"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().invalidateApiKey(i -> i
-      	.realmName("native1")
-      	.username("myuser")
-      );
 alternatives:
   - language: Python
     code: |-

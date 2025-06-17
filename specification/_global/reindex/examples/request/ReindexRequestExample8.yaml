@@ -21,18 +21,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.reindex(r -> r
-      	.dest(d -> d
-      		.index("my-new-index-000001")
-      	)
-      	.source(s -> s
-      		.index("my-index-000001")
-      		.sourceFields(List.of("user.id","_doc"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

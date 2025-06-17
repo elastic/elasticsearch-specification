@@ -8,18 +8,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().updateDatafeed(u -> u
-      	.datafeedId("datafeed-test-job")
-      	.query(q -> q
-      		.term(t -> t
-      			.field("geo.src")
-      			.value(FieldValue.of("US"))
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

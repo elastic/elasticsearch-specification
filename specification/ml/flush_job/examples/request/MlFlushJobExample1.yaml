@@ -4,13 +4,6 @@ value: |-
   {
     "calc_interim": true
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().flushJob(f -> f
-      	.calcInterim(true)
-      	.jobId("low_request_rate")
-      );
 alternatives:
   - language: Python
     code: |-

@@ -7,13 +7,6 @@ value: |-
     "username" : "myuser",
     "realm_name" : "saml1"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().invalidateToken(i -> i
-      	.realmName("saml1")
-      	.username("myuser")
-      );
 alternatives:
   - language: Python
     code: |-

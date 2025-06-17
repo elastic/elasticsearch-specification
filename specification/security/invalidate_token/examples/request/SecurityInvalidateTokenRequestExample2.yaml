@@ -7,12 +7,6 @@ value: |-
   {
     "refresh_token" : "vLBPvmAB6KvwvJZr27cS"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().invalidateToken(i -> i
-      	.refreshToken("vLBPvmAB6KvwvJZr27cS")
-      );
 alternatives:
   - language: Python
     code: |-

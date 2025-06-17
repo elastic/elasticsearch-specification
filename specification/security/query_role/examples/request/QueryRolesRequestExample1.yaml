@@ -6,16 +6,6 @@ value: |-
   {
       "sort": ["name"]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().queryRole(q -> q
-      	.sort(s -> s
-      		.field(f -> f
-      			.field("name")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

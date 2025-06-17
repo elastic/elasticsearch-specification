@@ -9,14 +9,6 @@ value: |-
     "return_documents": true,
     "top_n": 3
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().rerank(r -> r
-      	.inferenceId("bge-reranker-base-mkn")
-      	.input(List.of("luke","like","leia","chewy","r2d2","star","wars"))
-      	.query("star wars main character")
-      );
 alternatives:
   - language: Python
     code: |-

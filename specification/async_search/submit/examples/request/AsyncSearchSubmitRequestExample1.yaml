@@ -29,25 +29,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.asyncSearch().submit(s -> s
-      	.aggregations("sale_date", a -> a
-      		.dateHistogram(d -> d
-      			.calendarInterval(CalendarInterval.Day)
-      			.field("date")
-      		)
-      	)
-      	.index("sales*")
-      	.size(0)
-      	.sort(so -> so
-      		.field(f -> f
-      			.field("date")
-      			.order(SortOrder.Asc)
-      		)
-      	)
-      ,Void.class);
 alternatives:
   - language: Python
     code: |-

@@ -5,14 +5,6 @@ value: |-
     "overall_score": 80,
     "start": "1403532000000"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().getOverallBuckets(g -> g
-      	.jobId("job-*")
-      	.overallScore("80")
-      	.start(DateTime.of("1403532000000"))
-      );
 alternatives:
   - language: Python
     code: |-

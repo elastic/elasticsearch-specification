@@ -15,17 +15,6 @@ value: "{
   \  \"language\": \"english\"
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().put(p -> p
-      	.connectorId("my-connector")
-      	.description("My Connector to sync data to Elastic index from Google Drive")
-      	.indexName("search-google-drive")
-      	.language("english")
-      	.name("My Connector")
-      	.serviceType("google_drive")
-      );
 alternatives:
   - language: Python
     code: |-

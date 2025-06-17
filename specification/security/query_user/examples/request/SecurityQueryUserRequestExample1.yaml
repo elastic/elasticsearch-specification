@@ -12,18 +12,6 @@ value: |-
           }
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().queryUser(q -> q
-      	.query(qu -> qu
-      		.prefix(p -> p
-      			.field("roles")
-      			.value("other")
-      		)
-      	)
-      	.withProfileUid(true)
-      );
 alternatives:
   - language: Python
     code: |-

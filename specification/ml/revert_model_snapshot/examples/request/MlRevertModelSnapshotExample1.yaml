@@ -4,14 +4,6 @@ value: |-
   {
     "delete_intervening_results": true
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().revertModelSnapshot(r -> r
-      	.deleteInterveningResults(true)
-      	.jobId("low_request_rate")
-      	.snapshotId("1637092688")
-      );
 alternatives:
   - language: Python
     code: |-

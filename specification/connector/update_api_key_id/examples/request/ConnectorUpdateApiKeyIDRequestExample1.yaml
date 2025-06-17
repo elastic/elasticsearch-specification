@@ -9,14 +9,6 @@ value: "{
   \    \"api_key_secret_id\": \"my-connector-secret-id\"
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateApiKeyId(u -> u
-      	.apiKeyId("my-api-key-id")
-      	.apiKeySecretId("my-connector-secret-id")
-      	.connectorId("my-connector")
-      );
 alternatives:
   - language: Python
     code: |-

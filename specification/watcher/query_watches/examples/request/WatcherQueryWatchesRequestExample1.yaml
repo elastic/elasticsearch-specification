@@ -1,8 +1,4 @@
 method_request: GET /_watcher/_query/watches
-alternative_java:
-  - language: java
-    code: |
-      client.watcher().queryWatches();
 alternatives:
   - language: Python
     code: resp = client.watcher.query_watches()

@@ -7,10 +7,6 @@ description: >
 # type: request
 value:
   indices: index_1
-alternative_java:
-  - language: java
-    code: |
-      client.cluster().putSettings();
 alternatives:
   - language: Python
     code: |-

@@ -14,22 +14,6 @@ value:
       metrics:
         auc_roc:
           class_name: dog
-alternative_java:
-  - language: java
-    code: |
-      client.ml().evaluateDataFrame(e -> e
-      	.evaluation(ev -> ev
-      		.classification(c -> c
-      			.actualField("animal_class")
-      			.metrics(m -> m
-      				.aucRoc(a -> a
-      					.className("dog")
-      				)
-      			)
-      		)
-      	)
-      	.index("animal_classification")
-      );
 alternatives:
   - language: Python
     code: |-

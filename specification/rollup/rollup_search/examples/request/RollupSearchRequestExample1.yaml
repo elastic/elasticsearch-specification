@@ -21,18 +21,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.rollup().rollupSearch(r -> r
-      	.aggregations("max_temperature", a -> a
-      		.max(m -> m
-      			.field("temperature")
-      		)
-      	)
-      	.index("sensor_rollup")
-      	.size(0)
-      );
 alternatives:
   - language: Python
     code: |-

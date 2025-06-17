@@ -1,8 +1,4 @@
 method_request: GET /_security/privilege/_builtin
-alternative_java:
-  - language: java
-    code: |
-      client.security().getBuiltinPrivileges();
 alternatives:
   - language: Python
     code: resp = client.security.get_builtin_privileges()

@@ -23,19 +23,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.indices().simulateTemplate(s -> s
-      	.composedOf("ct2")
-      	.indexPatterns("my-index-*")
-      	.priority(10L)
-      	.template(t -> t
-      		.settings(se -> se
-      			.otherSettings("index.number_of_replicas", JsonData.fromJson("1"))
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

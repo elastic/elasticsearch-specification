@@ -8,12 +8,6 @@ value: |-
   {
     "grant_type" : "client_credentials"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().getToken(g -> g
-      	.grantType(AccessTokenGrantType.ClientCredentials)
-      );
 alternatives:
   - language: Python
     code: |-

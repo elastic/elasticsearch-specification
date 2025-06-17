@@ -20,34 +20,6 @@ value: |-
     "max_retry_delay" : "10s",
     "read_poll_timeout" : "30s"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ccr().follow(f -> f
-      	.index("follower_index")
-      	.leaderIndex("leader_index")
-      	.maxOutstandingReadRequests(16L)
-      	.maxOutstandingWriteRequests(8)
-      	.maxReadRequestOperationCount(1024)
-      	.maxReadRequestSize("1024k")
-      	.maxRetryDelay(m -> m
-      		.time("10s")
-      	)
-      	.maxWriteBufferCount(512)
-      	.maxWriteBufferSize("512k")
-      	.maxWriteRequestOperationCount(32768)
-      	.maxWriteRequestSize("16k")
-      	.readPollTimeout(r -> r
-      		.time("30s")
-      	)
-      	.remoteCluster("remote_cluster")
-      	.settings(s -> s
-      		.otherSettings("index.number_of_replicas", JsonData.fromJson("0"))
-      	)
-      	.waitForActiveShards(w -> w
-      		.count(1)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

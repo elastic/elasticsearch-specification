@@ -5,14 +5,6 @@ value: |-
     "description": "A list of safe domains",
     "items": ["*.google.com", "wikipedia.org"]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().putFilter(p -> p
-      	.description("A list of safe domains")
-      	.filterId("safe_domains")
-      	.items(List.of("*.google.com","wikipedia.org"))
-      );
 alternatives:
   - language: Python
     code: |-

@@ -11,20 +11,6 @@ value:
         term:
           'user.id': 'kimchy'
       routing: shard-1
-alternative_java:
-  - language: java
-    code: |
-      client.indices().create(c -> c
-      	.aliases(Map.of("alias_2", Alias.of(a -> a
-      			.filter(f -> f
-      				.term(t -> t
-      					.field("user.id")
-      					.value(FieldValue.of("kimchy"))
-      				)
-      			)
-      			.routing("shard-1")),"alias_1", Alias.of(al -> al)))
-      	.index("test")
-      );
 alternatives:
   - language: Python
     code: |-

@@ -10,19 +10,6 @@ value: |-
       "match" : { "message" : "elasticsearch" }
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.explain(e -> e
-      	.id("0")
-      	.index("my-index-000001")
-      	.query(q -> q
-      		.match(m -> m
-      			.field("message")
-      			.query(FieldValue.of("elasticsearch"))
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

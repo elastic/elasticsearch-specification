@@ -17,24 +17,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.deleteByQuery(d -> d
-      	.index("my-index-000001")
-      	.query(q -> q
-      		.range(r -> r
-      			.untyped(u -> u
-      				.field("http.response.bytes")
-      				.lt(JsonData.fromJson("2000000"))
-      			)
-      		)
-      	)
-      	.slice(s -> s
-      		.id("0")
-      		.max(2)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

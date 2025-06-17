@@ -1,8 +1,4 @@
 method_request: GET /_remote/info
-alternative_java:
-  - language: java
-    code: |
-      client.cluster().remoteInfo();
 alternatives:
   - language: Python
     code: resp = client.cluster.remote_info()

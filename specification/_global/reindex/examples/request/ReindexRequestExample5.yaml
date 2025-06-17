@@ -19,18 +19,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.reindex(r -> r
-      	.dest(d -> d
-      		.index("dest")
-      		.pipeline("some_ingest_pipeline")
-      	)
-      	.source(s -> s
-      		.index("source")
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

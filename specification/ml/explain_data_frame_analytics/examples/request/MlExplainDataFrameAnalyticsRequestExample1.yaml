@@ -8,19 +8,6 @@ value:
   analysis:
     regression:
       dependent_variable: price
-alternative_java:
-  - language: java
-    code: |
-      client.ml().explainDataFrameAnalytics(e -> e
-      	.analysis(a -> a
-      		.regression(r -> r
-      			.dependentVariable("price")
-      		)
-      	)
-      	.source(s -> s
-      		.index("houses_sold_last_10_yrs")
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

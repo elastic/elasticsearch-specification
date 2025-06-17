@@ -13,19 +13,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.snapshot().createRepository(c -> c
-      	.name("my_read_only_url_repository")
-      	.repository(r -> r
-      		.url(u -> u
-      			.settings(s -> s
-      				.url("file:/mount/backups/my_fs_backup_location")
-      			)
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

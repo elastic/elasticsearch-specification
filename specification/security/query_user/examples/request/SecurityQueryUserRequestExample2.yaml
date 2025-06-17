@@ -37,38 +37,6 @@ value: |-
       { "username": { "order": "desc"} } 
     ]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().queryUser(q -> q
-      	.from(1)
-      	.query(qu -> qu
-      		.bool(b -> b
-      			.filter(f -> f
-      				.wildcard(w -> w
-      					.field("roles")
-      					.value("*other*")
-      				)
-      			)
-      			.must(List.of(Query.of(que -> que
-      					.wildcard(w -> w
-      						.field("email")
-      						.value("*example.com")
-      				)),Query.of(quer -> quer
-      					.term(t -> t
-      						.field("enabled")
-      						.value(FieldValue.of(true))
-      				))))
-      		)
-      	)
-      	.size(2)
-      	.sort(s -> s
-      		.field(fi -> fi
-      			.field("username")
-      			.order(SortOrder.Desc)
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

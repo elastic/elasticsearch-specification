@@ -12,17 +12,6 @@ value: |-
       "model": "mistral-embed" 
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("mistral-embeddings-test")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("mistral")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"Mistral-API-Key\",\"model\":\"mistral-embed\"}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

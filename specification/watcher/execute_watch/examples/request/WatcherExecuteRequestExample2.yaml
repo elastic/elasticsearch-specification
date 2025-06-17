@@ -10,13 +10,6 @@ value: |-
       "action2" : "skip"
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.watcher().executeWatch(e -> e
-      	.actionModes(Map.of("action1", ActionExecutionMode.ForceSimulate,"action2", ActionExecutionMode.Skip))
-      	.id("my_watch")
-      );
 alternatives:
   - language: Python
     code: |-

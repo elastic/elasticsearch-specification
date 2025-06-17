@@ -35,27 +35,6 @@ value: "{
   \  \"upsert\": {}
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.update(u -> u
-      	.id("1")
-      	.index("test")
-      	.script(s -> s
-      		.source(so -> so
-      			.scriptString("
-            if ( ctx.op == 'create' ) {
-              ctx._source.counter = params.count
-            } else {
-              ctx._source.counter += params.count
-            }
-          ")
-      		)
-      		.params("count", JsonData.fromJson("4"))
-      	)
-      	.scriptedUpsert(true)
-      	.upsert(JsonData.fromJson("{}"))
-      ,Void.class);
 alternatives:
   - language: Python
     code: >-

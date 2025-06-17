@@ -4,18 +4,6 @@ method_request: POST /my-time-series-index/_downsample/my-downsampled-time-serie
 # type: request
 value:
   fixed_interval: 1d
-alternative_java:
-  - language: java
-    code: |
-      client.indices().downsample(d -> d
-      	.index("my-time-series-index")
-      	.targetIndex("my-downsampled-time-series-index")
-      	.config(c -> c
-      		.fixedInterval(f -> f
-      			.time("1d")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

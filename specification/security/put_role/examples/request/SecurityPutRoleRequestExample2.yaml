@@ -12,17 +12,6 @@ value: |-
       }
     ]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().putRole(p -> p
-      	.cluster("cluster:monitor/main")
-      	.indices(i -> i
-      		.names("test")
-      		.privileges(List.of("read","indices:admin/get"))
-      	)
-      	.name("cli_or_drivers_minimal")
-      );
 alternatives:
   - language: Python
     code: |-

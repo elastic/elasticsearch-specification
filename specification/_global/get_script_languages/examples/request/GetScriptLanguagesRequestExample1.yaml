@@ -1,8 +1,4 @@
 method_request: GET _script_language
-alternative_java:
-  - language: java
-    code: |
-      client.getScriptLanguages();
 alternatives:
   - language: Python
     code: resp = client.get_script_languages()

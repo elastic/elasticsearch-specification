@@ -37,28 +37,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateFeatures(u -> u
-      	.connectorId("my-connector")
-      	.features(f -> f
-      		.documentLevelSecurity(d -> d
-      			.enabled(true)
-      		)
-      		.incrementalSync(i -> i
-      			.enabled(true)
-      		)
-      		.syncRules(s -> s
-      			.advanced(a -> a
-      				.enabled(false)
-      			)
-      			.basic(b -> b
-      				.enabled(true)
-      			)
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

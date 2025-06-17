@@ -1,8 +1,4 @@
 method_request: GET /
-alternative_java:
-  - language: java
-    code: |
-      client.info();
 alternatives:
   - language: Python
     code: resp = client.info()

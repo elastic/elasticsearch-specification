@@ -4,12 +4,6 @@
 method_request: PUT /_watcher/settings
 value:
   index.auto_expand_replicas: 0-4
-alternative_java:
-  - language: java
-    code: |
-      client.watcher().updateSettings(u -> u
-      	.indexAutoExpandReplicas("0-4")
-      );
 alternatives:
   - language: Python
     code: |-

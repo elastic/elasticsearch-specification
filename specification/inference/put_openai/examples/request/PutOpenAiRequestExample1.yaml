@@ -13,17 +13,6 @@ value: |-
           "dimensions": 128
       }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.inference().put(p -> p
-      	.inferenceId("openai-embeddings")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("openai")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"OpenAI-API-Key\",\"model_id\":\"text-embedding-3-small\",\"dimensions\":128}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

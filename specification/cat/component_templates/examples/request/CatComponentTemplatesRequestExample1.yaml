@@ -1,8 +1,4 @@
 method_request: GET _cat/component_templates/my-template-*?v=true&s=name&format=json
-alternative_java:
-  - language: java
-    code: |
-      client.cat().componentTemplates();
 alternatives:
   - language: Python
     code: |-

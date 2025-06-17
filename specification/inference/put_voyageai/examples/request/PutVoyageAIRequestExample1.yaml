@@ -12,17 +12,6 @@ value: |-
           "dimensions": 512
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("openai-embeddings")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("voyageai")
-      		.serviceSettings(JsonData.fromJson("{\"model_id\":\"voyage-3-large\",\"dimensions\":512}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

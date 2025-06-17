@@ -17,21 +17,6 @@ value:
     created_at:
       type: date
       format: 'EEE MMM dd HH:mm:ss Z yyyy'
-alternative_java:
-  - language: java
-    code: |
-      client.indices().putTemplate(p -> p
-      	.indexPatterns(List.of("te*","bar*"))
-      	.mappings(m -> m
-      		.source(s -> s
-      			.enabled(false)
-      		)
-      	)
-      	.name("template_1")
-      	.settings(s -> s
-      		.numberOfShards("1")
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

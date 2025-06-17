@@ -1,10 +1,4 @@
 method_request: GET _ml/calendars/planned-outages
-alternative_java:
-  - language: java
-    code: |
-      client.ml().getCalendars(g -> g
-      	.calendarId("planned-outages")
-      );
 alternatives:
   - language: Python
     code: |-

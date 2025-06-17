@@ -15,17 +15,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.scriptsPainlessExecute(s -> s
-      	.script(sc -> sc
-      		.source(so -> so
-      			.scriptString("params.count / params.total")
-      		)
-      		.params(Map.of("total", JsonData.fromJson("1000"),"count", JsonData.fromJson("100")))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

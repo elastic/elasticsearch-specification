@@ -7,13 +7,6 @@ value: "{
   \    \"error\": \"Houston, we have a problem!\"
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateError(u -> u
-      	.connectorId("my-connector")
-      	.error("Houston, we have a problem!")
-      );
 alternatives:
   - language: Python
     code: |-

@@ -1,8 +1,4 @@
 method_request: GET /_cat/snapshots/repo1?v=true&s=id&format=json
-alternative_java:
-  - language: java
-    code: |
-      client.cat().snapshots();
 alternatives:
   - language: Python
     code: |-

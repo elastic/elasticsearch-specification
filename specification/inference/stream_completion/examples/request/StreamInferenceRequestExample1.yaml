@@ -4,13 +4,6 @@ method_request: 'POST _inference/completion/openai-completion/_stream'
 # type: "request"
 value:
   input: 'What is Elastic?'
-alternative_java:
-  - language: java
-    code: |
-      client.inference().streamCompletion(s -> s
-      	.inferenceId("openai-completion")
-      	.input("What is Elastic?")
-      );
 alternatives:
   - language: Python
     code: |-

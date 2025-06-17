@@ -14,18 +14,6 @@ value: |-
       "indices": ["data-*", "important"]
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.slm().putLifecycle(p -> p
-      	.config(c -> c
-      		.indices(List.of("data-*","important"))
-      	)
-      	.name("<hourly-snap-{now/d}>")
-      	.policyId("hourly-snapshots")
-      	.repository("my_repository")
-      	.schedule("1h")
-      );
 alternatives:
   - language: Python
     code: |-

@@ -6,12 +6,6 @@ value: |-
   {
     "ids" : [ "VuaCfGcBCdbkQm-e5aOx" ]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().invalidateApiKey(i -> i
-      	.ids("VuaCfGcBCdbkQm-e5aOx")
-      );
 alternatives:
   - language: Python
     code: |-

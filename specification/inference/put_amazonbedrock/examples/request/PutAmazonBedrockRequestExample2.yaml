@@ -10,17 +10,6 @@ value: |-
           "model_id": "gpt-3.5-turbo"
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("openai-completion")
-      	.taskType(TaskType.Completion)
-      	.inferenceConfig(i -> i
-      		.service("openai")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"OpenAI-API-Key\",\"model_id\":\"gpt-3.5-turbo\"}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

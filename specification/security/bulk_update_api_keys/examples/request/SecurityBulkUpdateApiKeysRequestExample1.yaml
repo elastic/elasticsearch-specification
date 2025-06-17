@@ -21,22 +21,6 @@ value:
       tags:
         - production
   expiration: 30d
-alternative_java:
-  - language: java
-    code: |
-      client.security().bulkUpdateApiKeys(b -> b
-      	.expiration(e -> e
-      		.time("30d")
-      	)
-      	.ids(List.of("VuaCfGcBCdbkQm-e5aOx","H3_AhoIBA9hmeQJdg7ij"))
-      	.metadata("environment", JsonData.fromJson("{\"level\":2,\"trusted\":true,\"tags\":[\"production\"]}"))
-      	.roleDescriptors("role-a", r -> r
-      		.indices(i -> i
-      			.names("*")
-      			.privileges("write")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

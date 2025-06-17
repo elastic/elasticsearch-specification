@@ -7,18 +7,6 @@ value: |-
       "account_id": "1234567"
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ingest().putIpLocationDatabase(p -> p
-      	.id("my-database-1")
-      	.configuration(c -> c
-      		.maxmind(m -> m
-      			.accountId("1234567")
-      		)
-      		.name("GeoIP2-Domain")
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

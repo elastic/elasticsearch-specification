@@ -8,12 +8,6 @@ value: |-
       "indices.recovery.max_bytes_per_sec" : "50mb"
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.cluster().putSettings(p -> p
-      	.persistent("indices.recovery.max_bytes_per_sec", JsonData.fromJson("\"50mb\""))
-      );
 alternatives:
   - language: Python
     code: |-

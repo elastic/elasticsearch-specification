@@ -11,14 +11,6 @@ value: |-
       "input_type": "ingest"
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().textEmbedding(t -> t
-      	.inferenceId("my-cohere-endpoint")
-      	.input("The sky above the port was the color of television tuned to a dead channel.")
-      	.taskSettings(JsonData.fromJson("{\"input_type\":\"ingest\"}"))
-      );
 alternatives:
   - language: Python
     code: |-

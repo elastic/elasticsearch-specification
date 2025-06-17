@@ -1,8 +1,4 @@
 method_request: GET _ingest/geoip/stats
-alternative_java:
-  - language: java
-    code: |
-      client.ingest().geoIpStats();
 alternatives:
   - language: Python
     code: resp = client.ingest.geo_ip_stats()

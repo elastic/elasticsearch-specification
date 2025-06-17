@@ -17,18 +17,6 @@ value: |-
       "application": "replication"
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().updateCrossClusterApiKey(u -> u
-      	.access(a -> a
-      		.replication(r -> r
-      			.names("archive")
-      		)
-      	)
-      	.id("VuaCfGcBCdbkQm-e5aOx")
-      	.metadata("application", JsonData.fromJson("\"replication\""))
-      );
 alternatives:
   - language: Python
     code: |-

@@ -1,8 +1,4 @@
 method_request: GET /_cat/thread_pool?format=json
-alternative_java:
-  - language: java
-    code: |
-      client.cat().threadPool();
 alternatives:
   - language: Python
     code: |-

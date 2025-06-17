@@ -19,18 +19,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: >
-      client.snapshot().create(c -> c
-      	.ignoreUnavailable(true)
-      	.includeGlobalState(false)
-      	.indices("index_1,index_2")
-      	.metadata(Map.of("taken_by", JsonData.fromJson("\"user123\""),"taken_because", JsonData.fromJson("\"backup before upgrading\"")))
-      	.repository("my_repository")
-      	.snapshot("snapshot_2")
-      	.waitForCompletion(true)
-      );
 alternatives:
   - language: Python
     code: |-

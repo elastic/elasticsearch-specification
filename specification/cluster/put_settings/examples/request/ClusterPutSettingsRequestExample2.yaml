@@ -13,12 +13,6 @@ value: |-
       "action.auto_create_index": "my-index-000001,index10,-index1*,+ind*" 
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.cluster().putSettings(p -> p
-      	.persistent("action.auto_create_index", JsonData.fromJson("\"my-index-000001,index10,-index1*,+ind*\""))
-      );
 alternatives:
   - language: Python
     code: |-

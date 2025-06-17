@@ -13,16 +13,6 @@ value: "{
   \  \"leader_remote_cluster\" : \"<leader_remote_cluster>\"
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.ccr().forgetFollower(f -> f
-      	.followerCluster("<follower_cluster>")
-      	.followerIndex("<follower_index>")
-      	.followerIndexUuid("<follower_index_uuid>")
-      	.index("<leader_index>")
-      	.leaderRemoteCluster("<leader_remote_cluster>")
-      );
 alternatives:
   - language: Python
     code: |-

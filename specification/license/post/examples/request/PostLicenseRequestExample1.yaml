@@ -31,21 +31,6 @@ value: "{
   \    ]
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.license().post(p -> p
-      	.licenses(l -> l
-      		.expiryDateInMillis(1914278399999L)
-      		.issueDateInMillis(1411948800000L)
-      		.issuedTo("issuedTo")
-      		.issuer("issuer")
-      		.maxNodes(1L)
-      		.signature("xx")
-      		.type(LicenseType.Basic)
-      		.uid("893361dc-9749-4997-93cb-802e3d7fa4xx")
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

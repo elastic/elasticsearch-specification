@@ -7,12 +7,6 @@ value: |-
   {
     "names": ["my_admin_role", "my_user_role"]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().bulkDeleteRole(b -> b
-      	.names(List.of("my_admin_role","my_user_role"))
-      );
 alternatives:
   - language: Python
     code: |-

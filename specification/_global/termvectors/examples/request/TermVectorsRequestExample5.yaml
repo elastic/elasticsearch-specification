@@ -12,13 +12,6 @@ value: |-
       "text" : "test test test"
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.termvectors(t -> t
-      	.doc(JsonData.fromJson("{\"fullname\":\"John Doe\",\"text\":\"test test test\"}"))
-      	.index("my-index-000001")
-      );
 alternatives:
   - language: Python
     code: |-

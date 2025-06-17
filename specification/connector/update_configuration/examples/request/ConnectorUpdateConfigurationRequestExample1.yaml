@@ -19,13 +19,6 @@ value: "{
   \    }
 
   }"
-alternative_java:
-  - language: java
-    code: >
-      client.connector().updateConfiguration(u -> u
-      	.connectorId("my-spo-connector")
-      	.values(Map.of("tenant_id", JsonData.fromJson("\"my-tenant-id\""),"tenant_name", JsonData.fromJson("\"my-sharepoint-site\""),"secret_value", JsonData.fromJson("\"bar\""),"client_id", JsonData.fromJson("\"foo\""),"site_collections", JsonData.fromJson("\"*\"")))
-      );
 alternatives:
   - language: Python
     code: |-

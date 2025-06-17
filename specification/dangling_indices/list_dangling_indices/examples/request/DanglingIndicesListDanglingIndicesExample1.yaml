@@ -1,8 +1,4 @@
 method_request: GET /_dangling
-alternative_java:
-  - language: java
-    code: |
-      client.danglingIndices().listDanglingIndices();
 alternatives:
   - language: Python
     code: resp = client.dangling_indices.list_dangling_indices()

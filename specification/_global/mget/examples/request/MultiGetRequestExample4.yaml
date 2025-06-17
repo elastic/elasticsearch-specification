@@ -19,18 +19,6 @@ value: |-
       }
     ]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.mget(m -> m
-      	.docs(List.of(MultiGetOperation.of(mu -> mu
-      			.id("1")
-      			.index("test")
-      			.routing("key2")),MultiGetOperation.of(mu -> mu
-      			.id("2")
-      			.index("test"))))
-      	.routing("key1")
-      );
 alternatives:
   - language: Python
     code: |-

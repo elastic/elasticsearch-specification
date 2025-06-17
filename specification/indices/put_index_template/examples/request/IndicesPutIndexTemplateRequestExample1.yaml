@@ -19,19 +19,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.indices().putIndexTemplate(p -> p
-      	.indexPatterns("template*")
-      	.name("template_1")
-      	.priority(1L)
-      	.template(t -> t
-      		.settings(s -> s
-      			.numberOfShards("2")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

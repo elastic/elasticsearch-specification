@@ -8,18 +8,6 @@ value: "{
   \  \"script\" : \"ctx._source.new_field = 'value_of_new_field'\"
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.update(u -> u
-      	.id("1")
-      	.index("test")
-      	.script(s -> s
-      		.source(so -> so
-      			.scriptString("ctx._source.new_field = 'value_of_new_field'")
-      		)
-      	)
-      ,Void.class);
 alternatives:
   - language: Python
     code: |-

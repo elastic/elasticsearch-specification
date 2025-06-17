@@ -21,20 +21,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.indices().create(c -> c
-      	.index("test")
-      	.mappings(m -> m
-      		.properties("field1", p -> p
-      			.text(t -> t)
-      		)
-      	)
-      	.settings(s -> s
-      		.numberOfShards("1")
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

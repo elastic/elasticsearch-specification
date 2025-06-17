@@ -15,20 +15,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.snapshot().createRepository(c -> c
-      	.name("my_gcs_repository")
-      	.repository(r -> r
-      		.gcs(g -> g
-      			.settings(s -> s
-      				.bucket("my_other_bucket")
-      				.basePath("dev")
-      			)
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

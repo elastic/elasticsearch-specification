@@ -15,15 +15,6 @@ value: "{
   \  \"doc_as_upsert\": true
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.update(u -> u
-      	.doc(JsonData.fromJson("{\"name\":\"new_name\"}"))
-      	.docAsUpsert(true)
-      	.id("1")
-      	.index("test")
-      ,Void.class);
 alternatives:
   - language: Python
     code: |-

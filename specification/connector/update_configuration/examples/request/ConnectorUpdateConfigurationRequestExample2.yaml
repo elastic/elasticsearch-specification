@@ -11,13 +11,6 @@ value: "{
   \    }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateConfiguration(u -> u
-      	.connectorId("my-spo-connector")
-      	.values("secret_value", JsonData.fromJson("\"foo-bar\""))
-      );
 alternatives:
   - language: Python
     code: |-

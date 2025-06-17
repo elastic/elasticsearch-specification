@@ -1,8 +1,4 @@
 method_request: GET _cat/ml/anomaly_detectors?h=id,s,dpr,mb&v=true&format=json
-alternative_java:
-  - language: java
-    code: |
-      client.cat().mlJobs();
 alternatives:
   - language: Python
     code: |-

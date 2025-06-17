@@ -21,20 +21,6 @@ value: |-
     },
     "record_execution" : true 
   }
-alternative_java:
-  - language: java
-    code: |
-      client.watcher().executeWatch(e -> e
-      	.actionModes("my-action", ActionExecutionMode.ForceSimulate)
-      	.alternativeInput("foo", JsonData.fromJson("\"bar\""))
-      	.id("my_watch")
-      	.ignoreCondition(true)
-      	.recordExecution(true)
-      	.triggerData(t -> t
-      		.scheduledTime(DateTime.of("now"))
-      		.triggeredTime(DateTime.of("now"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

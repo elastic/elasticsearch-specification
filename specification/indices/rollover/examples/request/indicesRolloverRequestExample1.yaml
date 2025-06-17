@@ -17,20 +17,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.indices().rollover(r -> r
-      	.alias("my-data-stream")
-      	.conditions(c -> c
-      		.maxAge(m -> m
-      			.time("7d")
-      		)
-      		.maxDocs(1000L)
-      		.maxPrimaryShardSize("50gb")
-      		.maxPrimaryShardDocs(2000L)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

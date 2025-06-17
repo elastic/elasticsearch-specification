@@ -1,7 +1,4 @@
 method_request: GET /_cluster/state?filter_path=metadata.cluster_coordination.last_committed_config
-alternative_java:
-  - language: java
-    code: "\n"
 alternatives:
   - language: Python
     code: |-

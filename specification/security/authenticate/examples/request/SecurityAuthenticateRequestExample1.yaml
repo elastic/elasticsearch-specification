@@ -1,8 +1,4 @@
 method_request: GET /_security/_authenticate
-alternative_java:
-  - language: java
-    code: |
-      client.security().authenticate();
 alternatives:
   - language: Python
     code: resp = client.security.authenticate()

@@ -4,13 +4,6 @@ value: |-
   {
     "start": "1575402236000"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().getModelSnapshots(g -> g
-      	.jobId("high_sum_total_sales")
-      	.start(DateTime.of("1575402236000"))
-      );
 alternatives:
   - language: Python
     code: |-

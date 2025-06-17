@@ -4,15 +4,6 @@ value: |-
   {
     "timeout": "30s"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().stopDatafeed(s -> s
-      	.datafeedId("datafeed-low_request_rate")
-      	.timeout(t -> t
-      		.time("30s")
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

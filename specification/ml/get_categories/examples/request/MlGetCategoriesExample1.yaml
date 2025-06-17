@@ -6,15 +6,6 @@ value: |-
       "size": 1
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().getCategories(g -> g
-      	.jobId("esxi_log")
-      	.page(p -> p
-      		.size(1)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

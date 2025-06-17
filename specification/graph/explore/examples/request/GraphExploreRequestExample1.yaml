@@ -27,26 +27,6 @@ value: |-
       ]
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.graph().explore(e -> e
-      	.connections(c -> c
-      		.vertices(v -> v
-      			.field("query.raw")
-      		)
-      	)
-      	.index("clicklogs")
-      	.query(q -> q
-      		.match(m -> m
-      			.field("query.raw")
-      			.query(FieldValue.of("midi"))
-      		)
-      	)
-      	.vertices(v -> v
-      		.field("product")
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

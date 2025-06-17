@@ -8,19 +8,6 @@ value: |-
       "total_document_count": 2000,
       "last_seen": "2023-01-02T10:00:00Z"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.connector().syncJobUpdateStats(s -> s
-      	.connectorSyncJobId("my-connector-sync-job")
-      	.deletedDocumentCount(10L)
-      	.indexedDocumentCount(20L)
-      	.indexedDocumentVolume(1000L)
-      	.lastSeen(l -> l
-      		.time("2023-01-02T10:00:00Z")
-      	)
-      	.totalDocumentCount(2000)
-      );
 alternatives:
   - language: Python
     code: |-

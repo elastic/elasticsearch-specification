@@ -10,21 +10,6 @@ value: |-
       "source": "ctx._source['extra'] = 'test'"
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.updateByQuery(u -> u
-      	.index("my-index-000001")
-      	.refresh(true)
-      	.script(s -> s
-      		.source(so -> so
-      			.scriptString("ctx._source['extra'] = 'test'")
-      		)
-      	)
-      	.slices(sl -> sl
-      		.value(5)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

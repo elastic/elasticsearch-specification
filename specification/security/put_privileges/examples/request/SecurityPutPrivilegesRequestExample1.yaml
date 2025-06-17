@@ -19,15 +19,6 @@ value: |-
         }
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().putPrivileges(p -> p
-      	.privileges("myapp", "read", pr -> pr
-      		.actions(List.of("data:read/*","action:login"))
-      		.metadata("description", JsonData.fromJson("\"Read access to myapp\""))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

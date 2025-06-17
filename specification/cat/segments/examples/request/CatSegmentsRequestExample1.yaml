@@ -1,8 +1,4 @@
 method_request: GET /_cat/segments?v=true&format=json
-alternative_java:
-  - language: java
-    code: |
-      client.cat().segments();
 alternatives:
   - language: Python
     code: |-

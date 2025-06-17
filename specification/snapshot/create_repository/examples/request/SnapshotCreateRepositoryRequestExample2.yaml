@@ -13,19 +13,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.snapshot().createRepository(c -> c
-      	.name("my_backup")
-      	.repository(r -> r
-      		.azure(a -> a
-      			.settings(s -> s
-      				.client("secondary")
-      			)
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

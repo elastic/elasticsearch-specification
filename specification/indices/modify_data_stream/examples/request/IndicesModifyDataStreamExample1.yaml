@@ -17,20 +17,6 @@ value: |-
       }
     ]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.indices().modifyDataStream(m -> m
-      	.actions(List.of(Action.of(a -> a
-      			.removeBackingIndex(r -> r
-      				.dataStream("my-data-stream")
-      				.index(".ds-my-data-stream-2023.07.26-000001")
-      		)),Action.of(ac -> ac
-      			.addBackingIndex(ad -> ad
-      				.dataStream("my-data-stream")
-      				.index(".ds-my-data-stream-2023.07.26-000001-downsample")
-      		))))
-      );
 alternatives:
   - language: Python
     code: |-

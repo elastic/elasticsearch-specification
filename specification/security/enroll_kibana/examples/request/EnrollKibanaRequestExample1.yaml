@@ -1,8 +1,4 @@
 method_request: GET /_security/enroll/kibana
-alternative_java:
-  - language: java
-    code: |
-      client.security().enrollKibana();
 alternatives:
   - language: Python
     code: resp = client.security.enroll_kibana()

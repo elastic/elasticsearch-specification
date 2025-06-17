@@ -11,20 +11,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.search(s -> s
-      	.from(40)
-      	.index("my-index-000001")
-      	.query(q -> q
-      		.term(t -> t
-      			.field("user.id")
-      			.value(FieldValue.of("kimchy"))
-      		)
-      	)
-      	.size(20)
-      ,Void.class);
 alternatives:
   - language: Python
     code: |-

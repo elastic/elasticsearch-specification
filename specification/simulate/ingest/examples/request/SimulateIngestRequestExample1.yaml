@@ -15,18 +15,6 @@ value:
       _index: my-index
       _source:
         foo: rab
-alternative_java:
-  - language: java
-    code: |
-      client.simulate().ingest(i -> i
-      	.docs(List.of(Document.of(d -> d
-      			.id("123")
-      			.index("my-index")
-      			.source(JsonData.fromJson("{\"foo\":\"bar\"}"))),Document.of(d -> d
-      			.id("456")
-      			.index("my-index")
-      			.source(JsonData.fromJson("{\"foo\":\"rab\"}")))))
-      );
 alternatives:
   - language: Python
     code: |-

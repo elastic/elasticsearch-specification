@@ -23,19 +23,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().updateApiKey(u -> u
-      	.id("VuaCfGcBCdbkQm-e5aOx")
-      	.metadata("environment", JsonData.fromJson("{\"level\":2,\"trusted\":true,\"tags\":[\"production\"]}"))
-      	.roleDescriptors("role-a", r -> r
-      		.indices(i -> i
-      			.names("*")
-      			.privileges("write")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

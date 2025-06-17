@@ -7,13 +7,6 @@ value: "{
   \    \"status\": \"needs_configuration\"
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateStatus(u -> u
-      	.connectorId("my-connector")
-      	.status(ConnectorStatus.NeedsConfiguration)
-      );
 alternatives:
   - language: Python
     code: |-

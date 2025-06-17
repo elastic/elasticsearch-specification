@@ -8,15 +8,6 @@ value: |-
       "match_all": {}
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.deleteByQuery(d -> d
-      	.index(List.of("my-index-000001","my-index-000002"))
-      	.query(q -> q
-      		.matchAll(m -> m)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

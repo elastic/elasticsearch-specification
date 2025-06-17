@@ -1,8 +1,4 @@
 method_request: GET _ilm/status
-alternative_java:
-  - language: java
-    code: |
-      client.ilm().getStatus();
 alternatives:
   - language: Python
     code: resp = client.ilm.get_status()

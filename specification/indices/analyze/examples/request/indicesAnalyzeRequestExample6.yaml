@@ -7,14 +7,6 @@ description:
 value:
   normalizer: my_normalizer
   text: BaR
-alternative_java:
-  - language: java
-    code: |
-      client.indices().analyze(a -> a
-      	.index("analyze_sample")
-      	.normalizer("my_normalizer")
-      	.text("BaR")
-      );
 alternatives:
   - language: Python
     code: |-

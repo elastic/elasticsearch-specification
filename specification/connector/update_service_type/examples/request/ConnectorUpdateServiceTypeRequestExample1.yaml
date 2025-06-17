@@ -7,13 +7,6 @@ value: "{
   \    \"service_type\": \"sharepoint_online\"
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.connector().updateServiceType(u -> u
-      	.connectorId("my-connector")
-      	.serviceType("sharepoint_online")
-      );
 alternatives:
   - language: Python
     code: |-

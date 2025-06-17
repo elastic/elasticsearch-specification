@@ -1,8 +1,4 @@
 method_request: GET /_cat/transforms?v=true&format=json
-alternative_java:
-  - language: java
-    code: |
-      client.cat().transforms();
 alternatives:
   - language: Python
     code: |-

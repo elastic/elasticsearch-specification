@@ -13,17 +13,6 @@ value: |-
           "model_id": "msmarco-MiniLM-L12-cos-v5" 
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("my-msmarco-minilm-model")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("elasticsearch")
-      		.serviceSettings(JsonData.fromJson("{\"num_allocations\":1,\"num_threads\":1,\"model_id\":\"msmarco-MiniLM-L12-cos-v5\"}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

@@ -13,14 +13,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: >
-      client.indices().shrink(s -> s
-      	.index("my_source_index")
-      	.settings(Map.of("index.blocks.write", JsonData.fromJson("null"),"index.routing.allocation.require._name", JsonData.fromJson("null")))
-      	.target("my_target_index")
-      );
 alternatives:
   - language: Python
     code: |-

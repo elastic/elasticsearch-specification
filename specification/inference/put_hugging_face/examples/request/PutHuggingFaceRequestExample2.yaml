@@ -14,18 +14,6 @@ value: |-
           "top_n": 3
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("hugging-face-rerank")
-      	.taskType(TaskType.Rerank)
-      	.inferenceConfig(i -> i
-      		.service("hugging_face")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"hugging-face-access-token\",\"url\":\"url-endpoint\"}"))
-      		.taskSettings(JsonData.fromJson("{\"return_documents\":true,\"top_n\":3}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

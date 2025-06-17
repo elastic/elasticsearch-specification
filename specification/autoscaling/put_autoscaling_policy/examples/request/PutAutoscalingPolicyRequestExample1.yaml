@@ -15,15 +15,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.autoscaling().putAutoscalingPolicy(p -> p
-      	.name("<name>")
-      	.policy(po -> po
-      		.deciders("fixed", JsonData.fromJson("{}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

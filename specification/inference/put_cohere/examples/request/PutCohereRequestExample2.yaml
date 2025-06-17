@@ -14,18 +14,6 @@ value: |-
           "return_documents": true
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("cohere-rerank")
-      	.taskType(TaskType.Rerank)
-      	.inferenceConfig(i -> i
-      		.service("cohere")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"Cohere-API-key\",\"model_id\":\"rerank-english-v3.0\"}"))
-      		.taskSettings(JsonData.fromJson("{\"top_n\":10,\"return_documents\":true}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

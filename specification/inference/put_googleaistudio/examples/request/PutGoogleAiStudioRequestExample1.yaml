@@ -10,17 +10,6 @@ value: |-
           "model_id": "model-id"
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("google_ai_studio_completion")
-      	.taskType(TaskType.Completion)
-      	.inferenceConfig(i -> i
-      		.service("googleaistudio")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"api-key\",\"model_id\":\"model-id\"}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

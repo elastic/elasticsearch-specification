@@ -21,20 +21,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.update(u -> u
-      	.id("1")
-      	.index("test")
-      	.script(s -> s
-      		.source(so -> so
-      			.scriptString("if (ctx._source.tags.contains(params.tag)) { ctx.op = 'delete' } else { ctx.op = 'noop' }")
-      		)
-      		.params("tag", JsonData.fromJson("\"green\""))
-      		.lang("painless")
-      	)
-      ,Void.class);
 alternatives:
   - language: Python
     code: |-

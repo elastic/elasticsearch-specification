@@ -1,8 +1,4 @@
 method_request: GET /_ssl/certificates
-alternative_java:
-  - language: java
-    code: |
-      client.ssl().certificates();
 alternatives:
   - language: Python
     code: resp = client.ssl.certificates()

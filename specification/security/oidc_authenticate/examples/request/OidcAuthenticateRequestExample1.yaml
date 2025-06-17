@@ -12,15 +12,6 @@ value: |-
     "nonce" : "WaBPH0KqPVdG5HHdSxPRjfoZbXMCicm5v1OiAj0DUFM",
     "realm" : "oidc1"
   }
-alternative_java:
-  - language: java
-    code: >
-      client.security().oidcAuthenticate(o -> o
-      	.nonce("WaBPH0KqPVdG5HHdSxPRjfoZbXMCicm5v1OiAj0DUFM")
-      	.realm("oidc1")
-      	.redirectUri("https://oidc-kibana.elastic.co:5603/api/security/oidc/callback?code=jtI3Ntt8v3_XvcLzCFGq&state=4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I")
-      	.state("4dbrihtIAt3wBTwo6DxK-vdk-sSyDBV8Yf0AjdkdT5I")
-      );
 alternatives:
   - language: Python
     code: >-

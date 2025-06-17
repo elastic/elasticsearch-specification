@@ -11,14 +11,6 @@ value: |-
       "id": "kimchy"
     }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.create(c -> c
-      	.id("1")
-      	.index("my-index-000001")
-      	.document(JsonData.fromJson("{\"@timestamp\":\"2099-11-15T13:12:00\",\"message\":\"GET /search HTTP/1.1 200 1070000\",\"user\":{\"id\":\"kimchy\"}}"))
-      );
 alternatives:
   - language: Python
     code: |-

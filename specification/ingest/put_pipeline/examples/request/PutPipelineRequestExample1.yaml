@@ -25,20 +25,6 @@ value: "{
   \  ]
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.ingest().putPipeline(p -> p
-      	.description("My optional pipeline description")
-      	.id("my-pipeline-id")
-      	.processors(pr -> pr
-      		.set(s -> s
-      			.field("my-keyword-field")
-      			.value(JsonData.fromJson("\"foo\""))
-      			.description("My optional processor description")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

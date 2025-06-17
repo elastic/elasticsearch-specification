@@ -11,19 +11,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.updateByQuery(u -> u
-      	.conflicts(Conflicts.Proceed)
-      	.index("my-index-000001")
-      	.query(q -> q
-      		.term(t -> t
-      			.field("user.id")
-      			.value(FieldValue.of("kimchy"))
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

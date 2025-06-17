@@ -1,8 +1,4 @@
 method_request: GET _ml/info
-alternative_java:
-  - language: java
-    code: |
-      client.ml().info();
 alternatives:
   - language: Python
     code: resp = client.ml.info()

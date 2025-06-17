@@ -7,13 +7,6 @@ value:
   text:
     - this is a test
     - the second text
-alternative_java:
-  - language: java
-    code: |
-      client.indices().analyze(a -> a
-      	.analyzer("standard")
-      	.text(List.of("this is a test","the second text"))
-      );
 alternatives:
   - language: Python
     code: |-

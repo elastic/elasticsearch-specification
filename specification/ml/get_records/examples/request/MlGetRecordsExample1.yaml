@@ -6,15 +6,6 @@ value: |-
     "desc": true,
     "start": "1454944100000"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().getRecords(g -> g
-      	.desc(true)
-      	.jobId("low_request_rate")
-      	.sort("record_score")
-      	.start(DateTime.of("1454944100000"))
-      );
 alternatives:
   - language: Python
     code: |-

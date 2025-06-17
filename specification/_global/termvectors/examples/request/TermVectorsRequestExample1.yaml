@@ -12,19 +12,6 @@ value: |-
     "term_statistics" : true,
     "field_statistics" : true
   }
-alternative_java:
-  - language: java
-    code: |
-      client.termvectors(t -> t
-      	.fieldStatistics(true)
-      	.fields("text")
-      	.id("1")
-      	.index("my-index-000001")
-      	.offsets(true)
-      	.payloads(true)
-      	.positions(true)
-      	.termStatistics(true)
-      );
 alternatives:
   - language: Python
     code: |-

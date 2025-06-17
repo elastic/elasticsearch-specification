@@ -17,24 +17,6 @@ value:
           user.id: kimchy
       routing: shard-1
     '{index}-alias': {}
-alternative_java:
-  - language: java
-    code: |
-      client.indices().putTemplate(p -> p
-      	.aliases(Map.of("alias1", Alias.of(a -> a),"{index}-alias", Alias.of(a -> a),"alias2", Alias.of(a -> a
-      			.filter(f -> f
-      				.term(t -> t
-      					.field("user.id")
-      					.value(FieldValue.of("kimchy"))
-      				)
-      			)
-      			.routing("shard-1"))))
-      	.indexPatterns("te*")
-      	.name("template_1")
-      	.settings(s -> s
-      		.numberOfShards("1")
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

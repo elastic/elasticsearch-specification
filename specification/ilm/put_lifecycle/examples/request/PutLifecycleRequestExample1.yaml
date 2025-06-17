@@ -31,35 +31,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.ilm().putLifecycle(p -> p
-      	.name("my_policy")
-      	.policy(po -> po
-      		.phases(ph -> ph
-      			.delete(d -> d
-      				.actions(a -> a
-      					.delete(de -> de)
-      				)
-      				.minAge(m -> m
-      					.time("30d")
-      				)
-      			)
-      			.warm(w -> w
-      				.actions(a -> a
-      					.forcemerge(f -> f
-      						.maxNumSegments(1)
-      					)
-      				)
-      				.minAge(m -> m
-      					.time("10d")
-      				)
-      			)
-      		)
-      		.meta(Map.of("description", JsonData.fromJson("\"used for nginx log\""),"project", JsonData.fromJson("{\"name\":\"myProject\",\"department\":\"myDepartment\"}")))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

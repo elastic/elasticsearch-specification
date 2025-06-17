@@ -7,14 +7,6 @@ value: |-
     "input": ["luke", "like", "leia", "chewy","r2d2", "star", "wars"],
     "query": "star wars main character"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().rerank(r -> r
-      	.inferenceId("cohere_rerank")
-      	.input(List.of("luke","like","leia","chewy","r2d2","star","wars"))
-      	.query("star wars main character")
-      );
 alternatives:
   - language: Python
     code: |-

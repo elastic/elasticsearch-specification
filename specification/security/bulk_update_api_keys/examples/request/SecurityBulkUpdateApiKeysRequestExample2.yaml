@@ -8,12 +8,6 @@ value:
     - VuaCfGcBCdbkQm-e5aOx
     - H3_AhoIBA9hmeQJdg7ij
   role_descriptors: {}
-alternative_java:
-  - language: java
-    code: |
-      client.security().bulkUpdateApiKeys(b -> b
-      	.ids(List.of("VuaCfGcBCdbkQm-e5aOx","H3_AhoIBA9hmeQJdg7ij"))
-      );
 alternatives:
   - language: Python
     code: |-

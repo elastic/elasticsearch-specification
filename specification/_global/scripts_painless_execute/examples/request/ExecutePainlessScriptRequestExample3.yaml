@@ -20,22 +20,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.scriptsPainlessExecute(s -> s
-      	.context(PainlessContext.Score)
-      	.contextSetup(c -> c
-      		.document(JsonData.fromJson("{\"rank\":4}"))
-      		.index("my-index-000001")
-      	)
-      	.script(sc -> sc
-      		.source(so -> so
-      			.scriptString("doc['rank'].value / params.max_rank")
-      		)
-      		.params("max_rank", JsonData.fromJson("5"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

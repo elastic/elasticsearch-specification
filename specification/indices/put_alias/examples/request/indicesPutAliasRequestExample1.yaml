@@ -21,17 +21,6 @@ value: "{
   \  ]
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.indices().updateAliases(u -> u
-      	.actions(a -> a
-      		.add(ad -> ad
-      			.alias("my-alias")
-      			.index("my-data-stream")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

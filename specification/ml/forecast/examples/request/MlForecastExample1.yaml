@@ -4,15 +4,6 @@ value: |-
   {
     "duration": "10d"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().forecast(f -> f
-      	.duration(d -> d
-      		.time("10d")
-      	)
-      	.jobId("low_request_rate")
-      );
 alternatives:
   - language: Python
     code: |-

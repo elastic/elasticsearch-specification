@@ -11,17 +11,6 @@ value: |-
           "embedding_type": "byte"
       }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.inference().put(p -> p
-      	.inferenceId("cohere-embeddings")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("cohere")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"Cohere-Api-key\",\"model_id\":\"embed-english-light-v3.0\",\"embedding_type\":\"byte\"}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

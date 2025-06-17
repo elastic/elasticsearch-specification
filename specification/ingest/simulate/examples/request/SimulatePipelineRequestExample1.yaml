@@ -61,27 +61,6 @@ value: "{
   \  ]
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.ingest().simulate(s -> s
-      	.docs(List.of(Document.of(d -> d
-      			.id("id")
-      			.index("index")
-      			.source(JsonData.fromJson("{\"foo\":\"bar\"}"))),Document.of(d -> d
-      			.id("id")
-      			.index("index")
-      			.source(JsonData.fromJson("{\"foo\":\"rab\"}")))))
-      	.pipeline(p -> p
-      		.description("_description")
-      		.processors(pr -> pr
-      			.set(se -> se
-      				.field("field2")
-      				.value(JsonData.fromJson("\"_value\""))
-      			)
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

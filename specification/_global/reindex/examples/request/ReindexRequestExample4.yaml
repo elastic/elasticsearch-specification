@@ -32,24 +32,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.reindex(r -> r
-      	.dest(d -> d
-      		.index("dest")
-      		.routing("=cat")
-      	)
-      	.source(s -> s
-      		.index("source")
-      		.query(q -> q
-      			.match(m -> m
-      				.field("company")
-      				.query(FieldValue.of("cat"))
-      			)
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

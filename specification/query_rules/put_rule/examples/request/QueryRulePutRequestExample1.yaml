@@ -6,13 +6,6 @@ description: >
 value:
   match_criteria:
     query_string: puggles
-alternative_java:
-  - language: java
-    code: |
-      client.queryRules().test(t -> t
-      	.matchCriteria("query_string", JsonData.fromJson("\"puggles\""))
-      	.rulesetId("my-ruleset")
-      );
 alternatives:
   - language: Python
     code: |-

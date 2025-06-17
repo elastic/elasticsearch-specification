@@ -1,7 +1,4 @@
 method_request: GET _ml/memory/_stats?human
-alternative_java:
-  - language: java
-    code: "\n"
 alternatives:
   - language: Python
     code: |-

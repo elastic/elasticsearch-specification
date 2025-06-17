@@ -11,14 +11,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.indices().split(s -> s
-      	.index("my-index-000001")
-      	.settings("index.number_of_shards", JsonData.fromJson("2"))
-      	.target("split-my-index-000001")
-      );
 alternatives:
   - language: Python
     code: |-

@@ -8,17 +8,6 @@ value: |-
       "enrich_fields": [ "location", "postal_code" ]
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.enrich().putPolicy(p -> p
-      	.geoMatch(g -> g
-      		.enrichFields(List.of("location","postal_code"))
-      		.indices("postal_codes")
-      		.matchField("location")
-      	)
-      	.name("postal_policy")
-      );
 alternatives:
   - language: Python
     code: |-

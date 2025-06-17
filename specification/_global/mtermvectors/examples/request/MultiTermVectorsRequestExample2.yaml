@@ -12,13 +12,6 @@ value: |-
     ],
     "term_statistics": true
   }
-alternative_java:
-  - language: java
-    code: |
-      client.mtermvectors(m -> m
-      	.ids(List.of("1","2"))
-      	.index("my-index-000001")
-      );
 alternatives:
   - language: Python
     code: |-

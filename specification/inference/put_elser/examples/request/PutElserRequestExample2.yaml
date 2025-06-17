@@ -17,17 +17,6 @@ value: |-
           "num_threads": 1
       }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.inference().put(p -> p
-      	.inferenceId("my-elser-model")
-      	.taskType(TaskType.SparseEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("elser")
-      		.serviceSettings(JsonData.fromJson("{\"adaptive_allocations\":{\"enabled\":true,\"min_number_of_allocations\":3,\"max_number_of_allocations\":10},\"num_threads\":1}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

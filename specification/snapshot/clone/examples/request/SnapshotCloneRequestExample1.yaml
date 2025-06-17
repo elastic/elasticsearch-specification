@@ -9,15 +9,6 @@ value: "{
   \  \"indices\": \"index_a,index_b\"
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.snapshot().clone(c -> c
-      	.indices("index_a,index_b")
-      	.repository("my_repository")
-      	.snapshot("source_snapshot")
-      	.targetSnapshot("target_snapshot")
-      );
 alternatives:
   - language: Python
     code: |-

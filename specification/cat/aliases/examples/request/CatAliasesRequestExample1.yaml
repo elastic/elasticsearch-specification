@@ -1,8 +1,4 @@
 method_request: GET _cat/aliases?format=json&v=true
-alternative_java:
-  - language: java
-    code: |
-      client.cat().aliases();
 alternatives:
   - language: Python
     code: |-

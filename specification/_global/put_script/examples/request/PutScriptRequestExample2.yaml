@@ -10,18 +10,6 @@ value: |-
       "source": "Math.log(_score * 2) + params['my_modifier']"
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.putScript(p -> p
-      	.id("my-stored-script")
-      	.script(s -> s
-      		.lang("painless")
-      		.source(so -> so
-      			.scriptString("Math.log(_score * 2) + params['my_modifier']")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

@@ -11,19 +11,6 @@ value:
       properties:
         name:
           type: keyword
-alternative_java:
-  - language: java
-    code: |
-      client.indices().putMapping(p -> p
-      	.index("my-index-000001")
-      	.properties("user", pr -> pr
-      		.object(o -> o
-      			.properties("name", pro -> pro
-      				.keyword(k -> k)
-      			)
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

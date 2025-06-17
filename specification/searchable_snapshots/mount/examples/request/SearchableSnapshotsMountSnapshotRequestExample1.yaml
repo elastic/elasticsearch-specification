@@ -19,18 +19,6 @@ value: "{
   \  \"ignore_index_settings\": [ \"index.refresh_interval\" ]
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.searchableSnapshots().mount(m -> m
-      	.ignoreIndexSettings("index.refresh_interval")
-      	.index("my_docs")
-      	.indexSettings("index.number_of_replicas", JsonData.fromJson("0"))
-      	.renamedIndex("docs")
-      	.repository("my_repository")
-      	.snapshot("my_snapshot")
-      	.waitForCompletion(true)
-      );
 alternatives:
   - language: Python
     code: |-

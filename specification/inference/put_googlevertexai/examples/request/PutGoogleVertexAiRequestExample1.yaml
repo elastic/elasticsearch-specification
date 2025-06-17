@@ -14,17 +14,6 @@ value: |-
           "project_id": "project-id"
       }
   }
-alternative_java:
-  - language: java
-    code: >
-      client.inference().put(p -> p
-      	.inferenceId("google_vertex_ai_embeddingss")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("googlevertexai")
-      		.serviceSettings(JsonData.fromJson("{\"service_account_json\":\"service-account-json\",\"model_id\":\"model-id\",\"location\":\"location\",\"project_id\":\"project-id\"}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

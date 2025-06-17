@@ -13,18 +13,6 @@ value: |-
           "max_tokens": 1024
       }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("anthropic_completion")
-      	.taskType(TaskType.Completion)
-      	.inferenceConfig(i -> i
-      		.service("anthropic")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"Anthropic-Api-Key\",\"model_id\":\"Model-ID\"}"))
-      		.taskSettings(JsonData.fromJson("{\"max_tokens\":1024}"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

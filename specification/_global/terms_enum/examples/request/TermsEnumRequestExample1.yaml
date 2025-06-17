@@ -7,14 +7,6 @@ value: |-
       "field" : "tags",
       "string" : "kiba"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.termsEnum(t -> t
-      	.field("tags")
-      	.index("stackoverflow")
-      	.string("kiba")
-      );
 alternatives:
   - language: Python
     code: |-

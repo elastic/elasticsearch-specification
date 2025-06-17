@@ -1,8 +1,4 @@
 method_request: GET /_migration/system_features
-alternative_java:
-  - language: java
-    code: |
-      client.migration().getFeatureUpgradeStatus();
 alternatives:
   - language: Python
     code: resp = client.migration.get_feature_upgrade_status()

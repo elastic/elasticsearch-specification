@@ -8,12 +8,6 @@ value: |-
   {
     "role_descriptors": {}
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().updateApiKey(u -> u
-      	.id("VuaCfGcBCdbkQm-e5aOx")
-      );
 alternatives:
   - language: Python
     code: |-

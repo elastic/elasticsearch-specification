@@ -4,13 +4,6 @@ value: |-
   {
     "start": "2019-04-07T18:22:16Z"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.ml().startDatafeed(s -> s
-      	.datafeedId("datafeed-low_request_rate")
-      	.start(DateTime.of("2019-04-07T18:22:16Z"))
-      );
 alternatives:
   - language: Python
     code: |-

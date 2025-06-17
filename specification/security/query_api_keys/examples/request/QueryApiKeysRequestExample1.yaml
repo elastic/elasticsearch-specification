@@ -12,17 +12,6 @@ value: |-
       }
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().queryApiKeys(q -> q
-      	.query(qu -> qu
-      		.ids(i -> i
-      			.values("VuaCfGcBCdbkQm-e5aOx")
-      		)
-      	)
-      	.withLimitedBy(true)
-      );
 alternatives:
   - language: Python
     code: |-

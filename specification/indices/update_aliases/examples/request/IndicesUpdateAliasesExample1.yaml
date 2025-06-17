@@ -11,17 +11,6 @@ value: |-
       }
     ]
   }
-alternative_java:
-  - language: java
-    code: |
-      client.indices().updateAliases(u -> u
-      	.actions(a -> a
-      		.add(ad -> ad
-      			.alias("logs")
-      			.index("logs-nginx.access-prod")
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

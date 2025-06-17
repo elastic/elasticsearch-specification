@@ -9,14 +9,6 @@ value: |-
     "username" : "jacknich",
     "password" : "l0ng-r4nd0m-p@ssw0rd"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.security().activateUserProfile(a -> a
-      	.grantType(GrantType.Password)
-      	.password("l0ng-r4nd0m-p@ssw0rd")
-      	.username("jacknich")
-      );
 alternatives:
   - language: Python
     code: |-

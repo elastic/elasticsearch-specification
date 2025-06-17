@@ -6,12 +6,6 @@ value: |-
   {
     "secure_settings_password": "keystore-password"
   }
-alternative_java:
-  - language: java
-    code: |
-      client.nodes().reloadSecureSettings(r -> r
-      	.secureSettingsPassword("keystore-password")
-      );
 alternatives:
   - language: Python
     code: |-

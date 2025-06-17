@@ -13,17 +13,6 @@ value: |-
       "index": "my-new-index-000002"
     }
   }
-alternative_java:
-  - language: java
-    code: |
-      client.reindex(r -> r
-      	.dest(d -> d
-      		.index("my-new-index-000002")
-      	)
-      	.source(s -> s
-      		.index(List.of("my-index-000001","my-index-000002"))
-      	)
-      );
 alternatives:
   - language: Python
     code: |-

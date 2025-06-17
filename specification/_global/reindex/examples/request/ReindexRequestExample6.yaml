@@ -29,23 +29,6 @@ value: "{
   \  }
 
   }"
-alternative_java:
-  - language: java
-    code: |
-      client.reindex(r -> r
-      	.dest(d -> d
-      		.index("my-new-index-000001")
-      	)
-      	.source(s -> s
-      		.index("my-index-000001")
-      		.query(q -> q
-      			.term(t -> t
-      				.field("user.id")
-      				.value(FieldValue.of("kimchy"))
-      			)
-      		)
-      	)
-      );
 alternatives:
   - language: Python
     code: |-
