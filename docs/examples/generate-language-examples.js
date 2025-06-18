@@ -81,11 +81,11 @@ async function generateLanguages(example) {
     else {
       const alternative_java = [];
       alternative_java.push({
-        language: "java",
+        language: "Java",
         code: stdout,
       });
       // replace old java examples
-      data.alternatives = data.alternatives.filter(pair => pair.language !== "java");
+      data.alternatives = data.alternatives.filter(pair => pair.language !== "Java");
       data.alternatives = data.alternatives.concat(alternative_java);
     }
   }
