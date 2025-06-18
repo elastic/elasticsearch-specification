@@ -33488,9 +33488,19 @@
               "compression": {
                 "description": "Limits the maximum number of nodes used by the underlying TDigest algorithm to `20 * compression`, enabling control of memory usage and approximation error.",
                 "type": "number"
+              },
+              "execution_hint": {
+                "$ref": "#/components/schemas/_types.aggregations.TDigestExecutionHint"
               }
             }
           }
+        ]
+      },
+      "_types.aggregations.TDigestExecutionHint": {
+        "type": "string",
+        "enum": [
+          "default",
+          "high_accuracy"
         ]
       },
       "_types.aggregations.BucketScriptAggregation": {
@@ -34920,6 +34930,9 @@
               "compression": {
                 "description": "Limits the maximum number of nodes used by the underlying TDigest algorithm to `20 * compression`, enabling control of memory usage and approximation error.",
                 "type": "number"
+              },
+              "execution_hint": {
+                "$ref": "#/components/schemas/_types.aggregations.TDigestExecutionHint"
               }
             }
           }
@@ -35408,6 +35421,9 @@
           "compression": {
             "description": "Limits the maximum number of nodes used by the underlying TDigest algorithm to `20 * compression`, enabling control of memory usage and approximation error.",
             "type": "number"
+          },
+          "execution_hint": {
+            "$ref": "#/components/schemas/_types.aggregations.TDigestExecutionHint"
           }
         }
       },
