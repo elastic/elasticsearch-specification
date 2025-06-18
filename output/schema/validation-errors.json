@@ -37,14 +37,6 @@
       ],
       "response": []
     },
-    "esql.async_query": {
-      "request": [
-        "Request: query parameter 'keep_alive' does not exist in the json spec",
-        "Request: query parameter 'keep_on_completion' does not exist in the json spec",
-        "Request: query parameter 'wait_for_completion_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "get_source": {
       "request": [
         "Request: query parameter 'stored_fields' does not exist in the json spec"
@@ -124,6 +116,12 @@
     "snapshot.delete": {
       "request": [
         "Request: missing json spec query parameter 'wait_for_completion'"
+      ],
+      "response": []
+    },
+    "snapshot.get": {
+      "request": [
+        "Request: missing json spec query parameter 'state'"
       ],
       "response": []
     },

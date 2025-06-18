@@ -1,5 +1,4 @@
 # summary: ''
-method_request: GET /my-index-000001/_field_usage_stats
 description: >
   An abbreviated response from `GET /my-index-000001/_field_usage_stats`.
   The `all_fields` object reports the sums of the usage counts for all fields in the index (on the listed shard).

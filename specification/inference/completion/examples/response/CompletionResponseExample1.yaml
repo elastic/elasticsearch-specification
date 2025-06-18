@@ -1,5 +1,4 @@
 summary: Completion task
-method_request: POST _inference/completion/openai_chat_completions
 description: >
   A successful response from `POST _inference/completion/openai_chat_completions`.
 # type: "response"

@@ -1,0 +1,24 @@
+method_request: GET _scripts/my-search-template
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.get_script(
+          id="my-search-template",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.getScript({
+        id: "my-search-template",
+      });
+  - language: Ruby
+    code: |-
+      response = client.get_script(
+        id: "my-search-template"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->getScript([
+          "id" => "my-search-template",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_scripts/my-search-template"'

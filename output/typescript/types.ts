@@ -1760,6 +1760,7 @@ export type SearchSourceConfig = boolean | SearchSourceFilter | Fields
 export type SearchSourceConfigParam = boolean | Fields
 
 export interface SearchSourceFilter {
+  exclude_vectors?: boolean
   excludes?: Fields
   exclude?: Fields
   includes?: Fields
@@ -2962,7 +2963,7 @@ export interface TaskFailure {
   reason: ErrorCause
 }
 
-export type TaskId = string | integer
+export type TaskId = string
 
 export interface TextEmbedding {
   model_id: string
@@ -3241,6 +3242,7 @@ export interface AggregationsBoxPlotAggregate extends AggregationsAggregateBase 
 
 export interface AggregationsBoxplotAggregation extends AggregationsMetricAggregationBase {
   compression?: double
+  execution_hint?: AggregationsTDigestExecutionHint
 }
 
 export interface AggregationsBucketAggregationBase {
@@ -3900,6 +3902,7 @@ export interface AggregationsMedianAbsoluteDeviationAggregate extends Aggregatio
 
 export interface AggregationsMedianAbsoluteDeviationAggregation extends AggregationsFormatMetricAggregationBase {
   compression?: double
+  execution_hint?: AggregationsTDigestExecutionHint
 }
 
 export interface AggregationsMetricAggregationBase {
@@ -4311,7 +4314,10 @@ export interface AggregationsSumBucketAggregation extends AggregationsPipelineAg
 
 export interface AggregationsTDigest {
   compression?: integer
+  execution_hint?: AggregationsTDigestExecutionHint
 }
+
+export type AggregationsTDigestExecutionHint = 'default' | 'high_accuracy'
 
 export interface AggregationsTDigestPercentileRanksAggregate extends AggregationsPercentilesAggregateBase {
 }
@@ -10773,6 +10779,7 @@ export interface EsqlEsqlClusterDetails {
   indices: string
   took?: DurationValue<UnitMillis>
   _shards?: EsqlEsqlShardInfo
+  failures?: EsqlEsqlShardFailure[]
 }
 
 export interface EsqlEsqlClusterInfo {
@@ -10805,8 +10812,8 @@ export interface EsqlEsqlResult {
 }
 
 export interface EsqlEsqlShardFailure {
-  shard: Id
-  index: IndexName
+  shard: integer
+  index: IndexName | null
   node?: NodeId
   reason: ErrorCause
 }
@@ -10816,7 +10823,6 @@ export interface EsqlEsqlShardInfo {
   successful?: integer
   skipped?: integer
   failed?: integer
-  failures?: EsqlEsqlShardFailure[]
 }
 
 export interface EsqlTableValuesContainer {
@@ -10839,9 +10845,6 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
   delimiter?: string
   drop_null_columns?: boolean
   format?: EsqlEsqlFormat
-  keep_alive?: Duration
-  keep_on_completion?: boolean
-  wait_for_completion_timeout?: Duration
   body?: {
     columnar?: boolean
     filter?: QueryDslQueryContainer
@@ -10852,6 +10855,8 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
     include_ccs_metadata?: boolean
     wait_for_completion_timeout?: Duration
+    keep_alive?: Duration
+    keep_on_completion?: boolean
   }
 }
 
@@ -11279,6 +11284,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   step_time_millis?: EpochTime<UnitMillis>
   phase_execution?: IlmExplainLifecycleLifecycleExplainPhaseExecution
   time_since_index_creation?: Duration
+  skip: boolean
 }
 
 export interface IlmExplainLifecycleLifecycleExplainPhaseExecution {
@@ -11436,6 +11442,7 @@ export interface IndicesDataStream {
   name: DataStreamName
   replicated?: boolean
   rollover_on_write: boolean
+  settings: IndicesIndexSettings
   status: HealthStatus
   system?: boolean
   template: Name
@@ -12469,6 +12476,21 @@ export interface IndicesGetDataStreamOptionsResponse {
   data_streams: IndicesGetDataStreamOptionsDataStreamWithOptions[]
 }
 
+export interface IndicesGetDataStreamSettingsDataStreamSettings {
+  name: string
+  settings: IndicesIndexSettings
+  effective_settings: IndicesIndexSettings
+}
+
+export interface IndicesGetDataStreamSettingsRequest extends RequestBase {
+  name: Indices
+  master_timeout?: Duration
+}
+
+export interface IndicesGetDataStreamSettingsResponse {
+  data_streams: IndicesGetDataStreamSettingsDataStreamSettings[]
+}
+
 export interface IndicesGetFieldMappingRequest extends RequestBase {
   fields: Fields
   index?: Indices
@@ -12674,6 +12696,38 @@ export interface IndicesPutDataStreamOptionsRequest extends RequestBase {
 }
 
 export type IndicesPutDataStreamOptionsResponse = AcknowledgedResponseBase
+
+export interface IndicesPutDataStreamSettingsDataStreamSettingsError {
+  index: IndexName
+  error: string
+}
+
+export interface IndicesPutDataStreamSettingsIndexSettingResults {
+  applied_to_data_stream_only: string[]
+  applied_to_data_stream_and_backing_indices: string[]
+  errors?: IndicesPutDataStreamSettingsDataStreamSettingsError[]
+}
+
+export interface IndicesPutDataStreamSettingsRequest extends RequestBase {
+  name: Indices
+  dry_run?: boolean
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: IndicesIndexSettings
+}
+
+export interface IndicesPutDataStreamSettingsResponse {
+  data_streams: IndicesPutDataStreamSettingsUpdatedDataStreamSettings[]
+}
+
+export interface IndicesPutDataStreamSettingsUpdatedDataStreamSettings {
+  name: IndexName
+  applied_to_data_stream: boolean
+  error?: string
+  settings: IndicesIndexSettings
+  effective_settings: IndicesIndexSettings
+  index_settings_results: IndicesPutDataStreamSettingsIndexSettingResults
+}
 
 export interface IndicesPutIndexTemplateIndexTemplateMapping {
   aliases?: Record<IndexName, IndicesAlias>
@@ -13618,11 +13672,17 @@ export interface InferenceHuggingFaceServiceSettings {
   api_key: string
   rate_limit?: InferenceRateLimitSetting
   url: string
+  model_id?: string
 }
 
 export type InferenceHuggingFaceServiceType = 'hugging_face'
 
-export type InferenceHuggingFaceTaskType = 'text_embedding'
+export interface InferenceHuggingFaceTaskSettings {
+  return_documents?: boolean
+  top_n?: integer
+}
+
+export type InferenceHuggingFaceTaskType = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
@@ -13771,7 +13831,7 @@ export interface InferenceMistralServiceSettings {
 
 export type InferenceMistralServiceType = 'mistral'
 
-export type InferenceMistralTaskType = 'text_embedding'
+export type InferenceMistralTaskType = 'text_embedding' | 'completion' | 'chat_completion'
 
 export interface InferenceOpenAIServiceSettings {
   api_key: string
@@ -13851,17 +13911,17 @@ export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
 export type InferenceTaskTypeGoogleVertexAI = 'text_embedding' | 'rerank'
 
-export type InferenceTaskTypeHuggingFace = 'text_embedding'
+export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
 
-export type InferenceTaskTypeMistral = 'text_embedding'
+export type InferenceTaskTypeMistral = 'text_embedding' | 'chat_completion' | 'completion'
 
 export type InferenceTaskTypeOpenAI = 'text_embedding' | 'chat_completion' | 'completion'
 
 export type InferenceTaskTypeVoyageAI = 'text_embedding' | 'rerank'
 
-export type InferenceTaskTypeWatsonx = 'text_embedding'
+export type InferenceTaskTypeWatsonx = 'text_embedding' | 'chat_completion' | 'completion'
 
 export interface InferenceTextEmbeddingByteResult {
   embedding: InferenceDenseByteVector
@@ -13917,7 +13977,7 @@ export interface InferenceWatsonxServiceSettings {
 
 export type InferenceWatsonxServiceType = 'watsonxai'
 
-export type InferenceWatsonxTaskType = 'text_embedding'
+export type InferenceWatsonxTaskType = 'text_embedding' | 'chat_completion' | 'completion'
 
 export interface InferenceChatCompletionUnifiedRequest extends RequestBase {
   inference_id: Id
@@ -14112,6 +14172,7 @@ export interface InferencePutHuggingFaceRequest extends RequestBase {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceHuggingFaceServiceType
     service_settings: InferenceHuggingFaceServiceSettings
+    task_settings?: InferenceHuggingFaceTaskSettings
   }
 }
 

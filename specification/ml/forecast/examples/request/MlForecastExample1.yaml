@@ -1,0 +1,39 @@
+method_request: POST _ml/anomaly_detectors/low_request_rate/_forecast
+description: An example body for a `POST _ml/anomaly_detectors/low_request_rate/_forecast` request.
+value: |-
+  {
+    "duration": "10d"
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.forecast(
+          job_id="low_request_rate",
+          duration="10d",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.forecast({
+        job_id: "low_request_rate",
+        duration: "10d",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.forecast(
+        job_id: "low_request_rate",
+        body: {
+          "duration": "10d"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->forecast([
+          "job_id" => "low_request_rate",
+          "body" => [
+              "duration" => "10d",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"duration":"10d"}''
+      "$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_forecast"'

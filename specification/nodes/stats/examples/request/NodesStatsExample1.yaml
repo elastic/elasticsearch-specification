@@ -1,0 +1,29 @@
+method_request: GET _nodes/stats/process?filter_path=**.max_file_descriptors
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.nodes.stats(
+          metric="process",
+          filter_path="**.max_file_descriptors",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.nodes.stats({
+        metric: "process",
+        filter_path: "**.max_file_descriptors",
+      });
+  - language: Ruby
+    code: |-
+      response = client.nodes.stats(
+        metric: "process",
+        filter_path: "**.max_file_descriptors"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->nodes()->stats([
+          "metric" => "process",
+          "filter_path" => "**.max_file_descriptors",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_nodes/stats/process?filter_path=**.max_file_descriptors"'

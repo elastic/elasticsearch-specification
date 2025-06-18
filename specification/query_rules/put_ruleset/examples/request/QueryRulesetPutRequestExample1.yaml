@@ -1,27 +1,345 @@
 # summary:
 method_request: PUT _query_rules/my-ruleset
 description: >
-  Run `PUT _query_rules/my-ruleset` to create a new query ruleset.
-  Two rules are associated with `my-ruleset`.
-  `my-rule1` will pin documents with IDs `id1` and `id2` when `user_query` contains `pugs` or `puggles` and `user_country` exactly matches `us`.
-  `my-rule2` will exclude documents from different specified indices with IDs `id3` and `id4` when the `query_string` fuzzily matches `rescue dogs`.
+  Run `PUT _query_rules/my-ruleset` to create a new query ruleset. Two rules are associated with `my-ruleset`. `my-rule1` will pin
+  documents with IDs `id1` and `id2` when `user_query` contains `pugs` or `puggles` and `user_country` exactly matches `us`.
+  `my-rule2` will exclude documents from different specified indices with IDs `id3` and `id4` when the `query_string` fuzzily
+  matches `rescue dogs`.
 # type: request
-value:
-  "{\n    \"rules\": [\n        {\n            \"rule_id\": \"my-rule1\",\n \
-  \           \"type\": \"pinned\",\n            \"criteria\": [\n               \
-  \ {\n                    \"type\": \"contains\",\n                    \"metadata\"\
-  : \"user_query\",\n                    \"values\": [ \"pugs\", \"puggles\" ]\n \
-  \               },\n                {\n                    \"type\": \"exact\",\n\
-  \                    \"metadata\": \"user_country\",\n                    \"values\"\
-  : [ \"us\" ]\n                }\n            ],\n            \"actions\": {\n  \
-  \              \"ids\": [\n                    \"id1\",\n                    \"\
-  id2\"\n                ]\n            }\n        },\n        {\n            \"rule_id\"\
-  : \"my-rule2\",\n            \"type\": \"pinned\",\n            \"criteria\": [\n\
-  \                {\n                    \"type\": \"fuzzy\",\n                 \
-  \   \"metadata\": \"user_query\",\n                    \"values\": [ \"rescue dogs\"\
-  \ ]\n                }\n            ],\n            \"actions\": {\n           \
-  \     \"docs\": [\n                    {\n                        \"_index\": \"\
-  index1\",\n                        \"_id\": \"id3\"\n                    },\n  \
-  \                  {\n                        \"_index\": \"index2\",\n        \
-  \                \"_id\": \"id4\"\n                    }\n                ]\n  \
-  \          }\n        }\n    ]\n}"
+value: "{
+
+  \    \"rules\": [
+
+  \        {
+
+  \            \"rule_id\": \"my-rule1\",
+
+  \            \"type\": \"pinned\",
+
+  \            \"criteria\": [
+
+  \                {
+
+  \                    \"type\": \"contains\",
+
+  \                    \"metadata\": \"user_query\",
+
+  \                    \"values\": [ \"pugs\", \"puggles\" ]
+
+  \                },
+
+  \                {
+
+  \                    \"type\": \"exact\",
+
+  \                    \"metadata\": \"user_country\",
+
+  \                    \"values\": [ \"us\" ]
+
+  \                }
+
+  \            ],
+
+  \            \"actions\": {
+
+  \                \"ids\": [
+
+  \                    \"id1\",
+
+  \                    \"id2\"
+
+  \                ]
+
+  \            }
+
+  \        },
+
+  \        {
+
+  \            \"rule_id\": \"my-rule2\",
+
+  \            \"type\": \"pinned\",
+
+  \            \"criteria\": [
+
+  \                {
+
+  \                    \"type\": \"fuzzy\",
+
+  \                    \"metadata\": \"user_query\",
+
+  \                    \"values\": [ \"rescue dogs\" ]
+
+  \                }
+
+  \            ],
+
+  \            \"actions\": {
+
+  \                \"docs\": [
+
+  \                    {
+
+  \                        \"_index\": \"index1\",
+
+  \                        \"_id\": \"id3\"
+
+  \                    },
+
+  \                    {
+
+  \                        \"_index\": \"index2\",
+
+  \                        \"_id\": \"id4\"
+
+  \                    }
+
+  \                ]
+
+  \            }
+
+  \        }
+
+  \    ]
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.query_rules.put_ruleset(
+          ruleset_id="my-ruleset",
+          rules=[
+              {
+                  "rule_id": "my-rule1",
+                  "type": "pinned",
+                  "criteria": [
+                      {
+                          "type": "contains",
+                          "metadata": "user_query",
+                          "values": [
+                              "pugs",
+                              "puggles"
+                          ]
+                      },
+                      {
+                          "type": "exact",
+                          "metadata": "user_country",
+                          "values": [
+                              "us"
+                          ]
+                      }
+                  ],
+                  "actions": {
+                      "ids": [
+                          "id1",
+                          "id2"
+                      ]
+                  }
+              },
+              {
+                  "rule_id": "my-rule2",
+                  "type": "pinned",
+                  "criteria": [
+                      {
+                          "type": "fuzzy",
+                          "metadata": "user_query",
+                          "values": [
+                              "rescue dogs"
+                          ]
+                      }
+                  ],
+                  "actions": {
+                      "docs": [
+                          {
+                              "_index": "index1",
+                              "_id": "id3"
+                          },
+                          {
+                              "_index": "index2",
+                              "_id": "id4"
+                          }
+                      ]
+                  }
+              }
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.queryRules.putRuleset({
+        ruleset_id: "my-ruleset",
+        rules: [
+          {
+            rule_id: "my-rule1",
+            type: "pinned",
+            criteria: [
+              {
+                type: "contains",
+                metadata: "user_query",
+                values: ["pugs", "puggles"],
+              },
+              {
+                type: "exact",
+                metadata: "user_country",
+                values: ["us"],
+              },
+            ],
+            actions: {
+              ids: ["id1", "id2"],
+            },
+          },
+          {
+            rule_id: "my-rule2",
+            type: "pinned",
+            criteria: [
+              {
+                type: "fuzzy",
+                metadata: "user_query",
+                values: ["rescue dogs"],
+              },
+            ],
+            actions: {
+              docs: [
+                {
+                  _index: "index1",
+                  _id: "id3",
+                },
+                {
+                  _index: "index2",
+                  _id: "id4",
+                },
+              ],
+            },
+          },
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.query_rules.put_ruleset(
+        ruleset_id: "my-ruleset",
+        body: {
+          "rules": [
+            {
+              "rule_id": "my-rule1",
+              "type": "pinned",
+              "criteria": [
+                {
+                  "type": "contains",
+                  "metadata": "user_query",
+                  "values": [
+                    "pugs",
+                    "puggles"
+                  ]
+                },
+                {
+                  "type": "exact",
+                  "metadata": "user_country",
+                  "values": [
+                    "us"
+                  ]
+                }
+              ],
+              "actions": {
+                "ids": [
+                  "id1",
+                  "id2"
+                ]
+              }
+            },
+            {
+              "rule_id": "my-rule2",
+              "type": "pinned",
+              "criteria": [
+                {
+                  "type": "fuzzy",
+                  "metadata": "user_query",
+                  "values": [
+                    "rescue dogs"
+                  ]
+                }
+              ],
+              "actions": {
+                "docs": [
+                  {
+                    "_index": "index1",
+                    "_id": "id3"
+                  },
+                  {
+                    "_index": "index2",
+                    "_id": "id4"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->queryRules()->putRuleset([
+          "ruleset_id" => "my-ruleset",
+          "body" => [
+              "rules" => array(
+                  [
+                      "rule_id" => "my-rule1",
+                      "type" => "pinned",
+                      "criteria" => array(
+                          [
+                              "type" => "contains",
+                              "metadata" => "user_query",
+                              "values" => array(
+                                  "pugs",
+                                  "puggles",
+                              ),
+                          ],
+                          [
+                              "type" => "exact",
+                              "metadata" => "user_country",
+                              "values" => array(
+                                  "us",
+                              ),
+                          ],
+                      ),
+                      "actions" => [
+                          "ids" => array(
+                              "id1",
+                              "id2",
+                          ),
+                      ],
+                  ],
+                  [
+                      "rule_id" => "my-rule2",
+                      "type" => "pinned",
+                      "criteria" => array(
+                          [
+                              "type" => "fuzzy",
+                              "metadata" => "user_query",
+                              "values" => array(
+                                  "rescue dogs",
+                              ),
+                          ],
+                      ),
+                      "actions" => [
+                          "docs" => array(
+                              [
+                                  "_index" => "index1",
+                                  "_id" => "id3",
+                              ],
+                              [
+                                  "_index" => "index2",
+                                  "_id" => "id4",
+                              ],
+                          ),
+                      ],
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"rules\":[{\"rule_id\":\"my-rule1\",\"type\":\"pinned\",\"criteria\":[{\"type\":\"contains\",\"metadata\":\"user_query\",\
+      \"values\":[\"pugs\",\"puggles\"]},{\"type\":\"exact\",\"metadata\":\"user_country\",\"values\":[\"us\"]}],\"actions\":{\"ids\
+      \":[\"id1\",\"id2\"]}},{\"rule_id\":\"my-rule2\",\"type\":\"pinned\",\"criteria\":[{\"type\":\"fuzzy\",\"metadata\":\"user_qu\
+      ery\",\"values\":[\"rescue
+      dogs\"]}],\"actions\":{\"docs\":[{\"_index\":\"index1\",\"_id\":\"id3\"},{\"_index\":\"index2\",\"_id\":\"id4\"}]}}]}'
+      \"$ELASTICSEARCH_URL/_query_rules/my-ruleset\""

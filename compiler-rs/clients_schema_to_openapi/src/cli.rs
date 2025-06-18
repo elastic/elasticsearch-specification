@@ -20,13 +20,37 @@ pub struct Cli {
     #[argh(option, default = "SchemaFlavor::All")]
     pub flavor: SchemaFlavor,
 
-    /// add enum descriptions to property descriptions [default = true]
-    #[argh(option, default = "true")]
-    pub lift_enum_descriptions: bool,
-
     /// generate only this namespace (can be repeated)
     #[argh(option)]
     pub namespace: Vec<String>,
+
+    /// add enum descriptions to property descriptions [default = true]
+    #[argh(switch)]
+    pub lift_enum_descriptions: bool,
+
+    /// merge endpoints with multiple paths into a single OpenAPI operation [default = false]
+    #[argh(switch)]
+    pub merge_multipath_endpoints: bool,
+
+    /// output a redirection map when merging multipath endpoints
+    #[argh(switch)]
+    pub multipath_redirects: bool,
+
+    /// include the x-codeSamples extension with language examples for all endpoints
+    #[argh(switch)]
+    pub include_language_examples: bool,
+}
+
+impl Cli {
+    pub fn redirect_path(&self, output: &PathBuf) -> Option<String> {
+        if self.multipath_redirects {
+            let path = output.to_string_lossy();
+            let path = path.rsplit_once('.').unwrap().0;
+            Some(format!("{}.redirects.csv", path))
+        } else {
+            None
+        }
+    }
 }
 
 use derive_more::FromStr;
@@ -42,8 +66,8 @@ pub enum SchemaFlavor {
 }
 
 impl From<Cli> for Configuration {
-    fn from(val: Cli) -> Configuration {
-        let flavor = match val.flavor {
+    fn from(cli: Cli) -> Configuration {
+        let flavor = match cli.flavor {
             SchemaFlavor::All => None,
             SchemaFlavor::Serverless => Some(Flavor::Serverless),
             SchemaFlavor::Stack => Some(Flavor::Stack),
@@ -51,11 +75,14 @@ impl From<Cli> for Configuration {
 
         Configuration {
             flavor,
-            lift_enum_descriptions: val.lift_enum_descriptions,
-            namespaces: if val.namespace.is_empty() {
+            lift_enum_descriptions: cli.lift_enum_descriptions,
+            merge_multipath_endpoints: cli.merge_multipath_endpoints,
+            multipath_redirects: cli.multipath_redirects,
+            include_language_examples: cli.include_language_examples,
+            namespaces: if cli.namespace.is_empty() {
                 None
             } else {
-                Some(val.namespace)
+                Some(cli.namespace)
             },
         }
     }

@@ -1,5 +1,4 @@
 # summary:
-method_request: GET /_cat/snapshots/repo1?v=true&s=id&format=json
 description: >
   A successful response from `GET /_cat/snapshots/repo1?v=true&s=id&format=json`.
 # type: response

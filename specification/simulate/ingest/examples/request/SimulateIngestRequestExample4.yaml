@@ -1,6 +1,8 @@
 summary: Multiple substitutions
 method_request: POST /_ingest/_simulate
-description: The pipeline, component template, and index template substitutions replace the existing pipeline details for the duration of this request.
+description:
+  The pipeline, component template, and index template substitutions replace the existing pipeline details for the
+  duration of this request.
 # type: request
 value:
   docs:
@@ -41,3 +43,293 @@ value:
     properties:
       foo:
         type: keyword
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.simulate.ingest(
+          docs=[
+              {
+                  "_id": "id",
+                  "_index": "my-index",
+                  "_source": {
+                      "foo": "bar"
+                  }
+              },
+              {
+                  "_id": "id",
+                  "_index": "my-index",
+                  "_source": {
+                      "foo": "rab"
+                  }
+              }
+          ],
+          pipeline_substitutions={
+              "my-pipeline": {
+                  "processors": [
+                      {
+                          "set": {
+                              "field": "field3",
+                              "value": "value3"
+                          }
+                      }
+                  ]
+              }
+          },
+          component_template_substitutions={
+              "my-component-template": {
+                  "template": {
+                      "mappings": {
+                          "dynamic": True,
+                          "properties": {
+                              "field3": {
+                                  "type": "keyword"
+                              }
+                          }
+                      },
+                      "settings": {
+                          "index": {
+                              "default_pipeline": "my-pipeline"
+                          }
+                      }
+                  }
+              }
+          },
+          index_template_substitutions={
+              "my-index-template": {
+                  "index_patterns": [
+                      "my-index-*"
+                  ],
+                  "composed_of": [
+                      "component_template_1",
+                      "component_template_2"
+                  ]
+              }
+          },
+          mapping_addition={
+              "dynamic": "strict",
+              "properties": {
+                  "foo": {
+                      "type": "keyword"
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.simulate.ingest({
+        docs: [
+          {
+            _id: "id",
+            _index: "my-index",
+            _source: {
+              foo: "bar",
+            },
+          },
+          {
+            _id: "id",
+            _index: "my-index",
+            _source: {
+              foo: "rab",
+            },
+          },
+        ],
+        pipeline_substitutions: {
+          "my-pipeline": {
+            processors: [
+              {
+                set: {
+                  field: "field3",
+                  value: "value3",
+                },
+              },
+            ],
+          },
+        },
+        component_template_substitutions: {
+          "my-component-template": {
+            template: {
+              mappings: {
+                dynamic: true,
+                properties: {
+                  field3: {
+                    type: "keyword",
+                  },
+                },
+              },
+              settings: {
+                index: {
+                  default_pipeline: "my-pipeline",
+                },
+              },
+            },
+          },
+        },
+        index_template_substitutions: {
+          "my-index-template": {
+            index_patterns: ["my-index-*"],
+            composed_of: ["component_template_1", "component_template_2"],
+          },
+        },
+        mapping_addition: {
+          dynamic: "strict",
+          properties: {
+            foo: {
+              type: "keyword",
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.simulate.ingest(
+        body: {
+          "docs": [
+            {
+              "_id": "id",
+              "_index": "my-index",
+              "_source": {
+                "foo": "bar"
+              }
+            },
+            {
+              "_id": "id",
+              "_index": "my-index",
+              "_source": {
+                "foo": "rab"
+              }
+            }
+          ],
+          "pipeline_substitutions": {
+            "my-pipeline": {
+              "processors": [
+                {
+                  "set": {
+                    "field": "field3",
+                    "value": "value3"
+                  }
+                }
+              ]
+            }
+          },
+          "component_template_substitutions": {
+            "my-component-template": {
+              "template": {
+                "mappings": {
+                  "dynamic": true,
+                  "properties": {
+                    "field3": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "settings": {
+                  "index": {
+                    "default_pipeline": "my-pipeline"
+                  }
+                }
+              }
+            }
+          },
+          "index_template_substitutions": {
+            "my-index-template": {
+              "index_patterns": [
+                "my-index-*"
+              ],
+              "composed_of": [
+                "component_template_1",
+                "component_template_2"
+              ]
+            }
+          },
+          "mapping_addition": {
+            "dynamic": "strict",
+            "properties": {
+              "foo": {
+                "type": "keyword"
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->simulate()->ingest([
+          "body" => [
+              "docs" => array(
+                  [
+                      "_id" => "id",
+                      "_index" => "my-index",
+                      "_source" => [
+                          "foo" => "bar",
+                      ],
+                  ],
+                  [
+                      "_id" => "id",
+                      "_index" => "my-index",
+                      "_source" => [
+                          "foo" => "rab",
+                      ],
+                  ],
+              ),
+              "pipeline_substitutions" => [
+                  "my-pipeline" => [
+                      "processors" => array(
+                          [
+                              "set" => [
+                                  "field" => "field3",
+                                  "value" => "value3",
+                              ],
+                          ],
+                      ),
+                  ],
+              ],
+              "component_template_substitutions" => [
+                  "my-component-template" => [
+                      "template" => [
+                          "mappings" => [
+                              "dynamic" => true,
+                              "properties" => [
+                                  "field3" => [
+                                      "type" => "keyword",
+                                  ],
+                              ],
+                          ],
+                          "settings" => [
+                              "index" => [
+                                  "default_pipeline" => "my-pipeline",
+                              ],
+                          ],
+                      ],
+                  ],
+              ],
+              "index_template_substitutions" => [
+                  "my-index-template" => [
+                      "index_patterns" => array(
+                          "my-index-*",
+                      ),
+                      "composed_of" => array(
+                          "component_template_1",
+                          "component_template_2",
+                      ),
+                  ],
+              ],
+              "mapping_addition" => [
+                  "dynamic" => "strict",
+                  "properties" => [
+                      "foo" => [
+                          "type" => "keyword",
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"docs\":[{\"_id\":\"id\",\"_index\":\"my-index\",\"_source\":{\"foo\":\"bar\"}},{\"_id\":\"id\",\"_index\":\"my-index\",\"\
+      _source\":{\"foo\":\"rab\"}}],\"pipeline_substitutions\":{\"my-pipeline\":{\"processors\":[{\"set\":{\"field\":\"field3\",\"v\
+      alue\":\"value3\"}}]}},\"component_template_substitutions\":{\"my-component-template\":{\"template\":{\"mappings\":{\"dynamic\
+      \":true,\"properties\":{\"field3\":{\"type\":\"keyword\"}}},\"settings\":{\"index\":{\"default_pipeline\":\"my-pipeline\"}}}}\
+      },\"index_template_substitutions\":{\"my-index-template\":{\"index_patterns\":[\"my-index-*\"],\"composed_of\":[\"component_t\
+      emplate_1\",\"component_template_2\"]}},\"mapping_addition\":{\"dynamic\":\"strict\",\"properties\":{\"foo\":{\"type\":\"keyw\
+      ord\"}}}}' \"$ELASTICSEARCH_URL/_ingest/_simulate\""

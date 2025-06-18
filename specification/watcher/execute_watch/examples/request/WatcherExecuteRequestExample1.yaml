@@ -1,11 +1,10 @@
 summary: Run a watch
 method_request: POST _watcher/watch/my_watch/_execute
 description: >
-  Run `POST _watcher/watch/my_watch/_execute` to run a watch.
-  The input defined in the watch is ignored and the `alternative_input` is used as the payload.
-  The condition as defined by the watch is ignored and is assumed to evaluate to true.
-  The `force_simulate` action forces the simulation of `my-action`.
-  Forcing the simulation means that throttling is ignored and the watch is simulated by Watcher instead of being run normally.
+  Run `POST _watcher/watch/my_watch/_execute` to run a watch. The input defined in the watch is ignored and the `alternative_input`
+  is used as the payload. The condition as defined by the watch is ignored and is assumed to evaluate to true. The `force_simulate`
+  action forces the simulation of `my-action`. Forcing the simulation means that throttling is ignored and the watch is simulated by
+  Watcher instead of being run normally.
 # type: request
 value: |-
   {
@@ -22,3 +21,82 @@ value: |-
     },
     "record_execution" : true 
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.watcher.execute_watch(
+          id="my_watch",
+          trigger_data={
+              "triggered_time": "now",
+              "scheduled_time": "now"
+          },
+          alternative_input={
+              "foo": "bar"
+          },
+          ignore_condition=True,
+          action_modes={
+              "my-action": "force_simulate"
+          },
+          record_execution=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.watcher.executeWatch({
+        id: "my_watch",
+        trigger_data: {
+          triggered_time: "now",
+          scheduled_time: "now",
+        },
+        alternative_input: {
+          foo: "bar",
+        },
+        ignore_condition: true,
+        action_modes: {
+          "my-action": "force_simulate",
+        },
+        record_execution: true,
+      });
+  - language: Ruby
+    code: |-
+      response = client.watcher.execute_watch(
+        id: "my_watch",
+        body: {
+          "trigger_data": {
+            "triggered_time": "now",
+            "scheduled_time": "now"
+          },
+          "alternative_input": {
+            "foo": "bar"
+          },
+          "ignore_condition": true,
+          "action_modes": {
+            "my-action": "force_simulate"
+          },
+          "record_execution": true
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->watcher()->executeWatch([
+          "id" => "my_watch",
+          "body" => [
+              "trigger_data" => [
+                  "triggered_time" => "now",
+                  "scheduled_time" => "now",
+              ],
+              "alternative_input" => [
+                  "foo" => "bar",
+              ],
+              "ignore_condition" => true,
+              "action_modes" => [
+                  "my-action" => "force_simulate",
+              ],
+              "record_execution" => true,
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"trigger_data\":{\"triggered_time\":\"now\",\"scheduled_time\":\"now\"},\"alternative_input\":{\"foo\":\"bar\"},\"ignore_c\
+      ondition\":true,\"action_modes\":{\"my-action\":\"force_simulate\"},\"record_execution\":true}'
+      \"$ELASTICSEARCH_URL/_watcher/watch/my_watch/_execute\""

@@ -1,6 +1,5 @@
 summary: Get unmapped fields
 # type: "response"
-method_request: GET _field_caps?fields=rating,title&include_unmapped
 description: >
   A successful response from `GET _field_caps?fields=rating,title&include_unmapped`.
   The response contains an entry for each field that is present in some indices but not all.

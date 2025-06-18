@@ -1,0 +1,12 @@
+method_request: GET /_remote/info
+alternatives:
+  - language: Python
+    code: resp = client.cluster.remote_info()
+  - language: JavaScript
+    code: const response = await client.cluster.remoteInfo();
+  - language: Ruby
+    code: response = client.cluster.remote_info
+  - language: PHP
+    code: $resp = $client->cluster()->remoteInfo();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_remote/info"'

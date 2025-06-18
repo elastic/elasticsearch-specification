@@ -1,0 +1,24 @@
+method_request: GET _application/analytics/my*
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.search_application.get_behavioral_analytics(
+          name="my*",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.searchApplication.getBehavioralAnalytics({
+        name: "my*",
+      });
+  - language: Ruby
+    code: |-
+      response = client.search_application.get_behavioral_analytics(
+        name: "my*"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->searchApplication()->getBehavioralAnalytics([
+          "name" => "my*",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_application/analytics/my*"'

@@ -22,12 +22,14 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get cluster-wide settings.
+ *
  * By default, it returns only settings that have been explicitly defined.
  * @rest_spec_name cluster.get_settings
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor
  * @doc_id cluster-get-settings
+ * @ext_doc_id stack-settings
  */
 export interface Request extends RequestBase {
   urls: [

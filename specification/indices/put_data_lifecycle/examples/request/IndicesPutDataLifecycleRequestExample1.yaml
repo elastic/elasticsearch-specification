@@ -3,3 +3,36 @@ method_request: PUT _data_stream/my-data-stream/_lifecycle
 # description: Sets the lifecycle of a data stream.
 # type: request
 value: "{\n  \"data_retention\": \"7d\"\n}"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.put_data_lifecycle(
+          name="my-data-stream",
+          data_retention="7d",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.putDataLifecycle({
+        name: "my-data-stream",
+        data_retention: "7d",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.put_data_lifecycle(
+        name: "my-data-stream",
+        body: {
+          "data_retention": "7d"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->putDataLifecycle([
+          "name" => "my-data-stream",
+          "body" => [
+              "data_retention" => "7d",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"data_retention":"7d"}'' "$ELASTICSEARCH_URL/_data_stream/my-data-stream/_lifecycle"'

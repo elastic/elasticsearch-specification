@@ -1,0 +1,28 @@
+method_request: GET /_security/user/jacknich?with_profile_uid=true
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.get_user(
+          username="jacknich",
+          with_profile_uid=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.getUser({
+        username: "jacknich",
+        with_profile_uid: "true",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.get_user(
+        username: "jacknich",
+        with_profile_uid: "true"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->getUser([
+          "username" => "jacknich",
+          "with_profile_uid" => "true",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/user/jacknich?with_profile_uid=true"'

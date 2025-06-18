@@ -1,7 +1,8 @@
 # summary:
 method_request: POST /_security/profile/u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0/_data
 description: >
-  Run `POST /_security/profile/u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0/_data` to update a profile document for the `u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0` user profile.
+  Run `POST /_security/profile/u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0/_data` to update a profile document for the
+  `u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0` user profile.
 # type: request
 value: |-
   {
@@ -14,3 +15,65 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.update_user_profile_data(
+          uid="u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0",
+          labels={
+              "direction": "east"
+          },
+          data={
+              "app1": {
+                  "theme": "default"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.updateUserProfileData({
+        uid: "u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0",
+        labels: {
+          direction: "east",
+        },
+        data: {
+          app1: {
+            theme: "default",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.update_user_profile_data(
+        uid: "u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0",
+        body: {
+          "labels": {
+            "direction": "east"
+          },
+          "data": {
+            "app1": {
+              "theme": "default"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->updateUserProfileData([
+          "uid" => "u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0",
+          "body" => [
+              "labels" => [
+                  "direction" => "east",
+              ],
+              "data" => [
+                  "app1" => [
+                      "theme" => "default",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"labels":{"direction":"east"},"data":{"app1":{"theme":"default"}}}''
+      "$ELASTICSEARCH_URL/_security/profile/u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0/_data"'

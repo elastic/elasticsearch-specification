@@ -140,10 +140,14 @@ import { OperationContainer, UpdateAction } from './types'
  * Imagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.
  * The request will only wait for those three shards to refresh.
  * The other two shards that make up the index do not participate in the `_bulk` request at all.
+ *
+ * You might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.
+ * Refer to the linked documentation for step-by-step instructions using the index settings API.
  * @rest_spec_name bulk
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id docs-bulk
+ * @ext_doc_id indices-refresh-disable
  * @doc_tag document
  *
  */

@@ -17,11 +17,13 @@
  * under the License.
  */
 import singleKeyDict from './rules/single-key-dictionary-key-is-string.js'
+import dict from './rules/dictionary-key-is-string.js'
 import invalidNodeTypes from './rules/invalid-node-types.js'
 
 export default {
   rules: {
     'single-key-dictionary-key-is-string': singleKeyDict,
+    'dictionary-key-is-string': dict,
     'invalid-node-types': invalidNodeTypes,
   }
 }

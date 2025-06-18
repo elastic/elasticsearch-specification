@@ -1,0 +1,24 @@
+method_request: POST /my-index/_searchable_snapshots/cache/clear
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.searchable_snapshots.clear_cache(
+          index="my-index",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.searchableSnapshots.clearCache({
+        index: "my-index",
+      });
+  - language: Ruby
+    code: |-
+      response = client.searchable_snapshots.clear_cache(
+        index: "my-index"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->searchableSnapshots()->clearCache([
+          "index" => "my-index",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index/_searchable_snapshots/cache/clear"'

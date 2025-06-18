@@ -8,6 +8,7 @@
     "lint:fix": "ts-standard --fix src",
     "format:check": "prettier --config .prettierrc.json --loglevel warn --check ../specification/",
     "format:fix": "prettier --config .prettierrc.json --loglevel warn --write ../specification/",
+    "format:fix-examples": "prettier --config .prettierrc.json --loglevel warn --write ../specification/**/*.yaml",
     "generate-schema": "ts-node src/index.ts",
     "transform-expand-generics": "ts-node src/transform/expand-generics.ts",
     "transform-to-openapi": "ts-node src/transform/schema-to-openapi.ts",
@@ -39,7 +40,7 @@
     "ora": "^5.4.1",
     "safe-stable-stringify": "^2.5.0",
     "semver": "^7.5.2",
-    "ts-morph": "^13.0.3",
+    "ts-morph": "^26",
     "zx": "^4.3.0",
     "minimist": "^1.2.6"
   },

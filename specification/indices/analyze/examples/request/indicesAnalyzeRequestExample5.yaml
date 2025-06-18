@@ -1,7 +1,46 @@
 summary: Derive analyzer from field mapping
 method_request: GET /analyze_sample/_analyze
-description: Run `GET /analyze_sample/_analyze` to run an analysis on the text using the default index analyzer associated with the `analyze_sample` index. Alternatively, the analyzer can be derived based on a field mapping.
+description:
+  Run `GET /analyze_sample/_analyze` to run an analysis on the text using the default index analyzer associated with the
+  `analyze_sample` index. Alternatively, the analyzer can be derived based on a field mapping.
 # type: request
 value:
   field: obj1.field1
   text: this is a test
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.analyze(
+          index="analyze_sample",
+          field="obj1.field1",
+          text="this is a test",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.analyze({
+        index: "analyze_sample",
+        field: "obj1.field1",
+        text: "this is a test",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.analyze(
+        index: "analyze_sample",
+        body: {
+          "field": "obj1.field1",
+          "text": "this is a test"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->analyze([
+          "index" => "analyze_sample",
+          "body" => [
+              "field" => "obj1.field1",
+              "text" => "this is a test",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"field":"obj1.field1","text":"this is a test"}'' "$ELASTICSEARCH_URL/analyze_sample/_analyze"'
