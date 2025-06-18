@@ -105,3 +105,14 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"docs\":[{\"_id\":123,\"_index\":\"my-index\",\"_source\":{\"foo\":\"bar\"}},{\"_id\":456,\"_index\":\"my-index\",\"_source\
       \":{\"foo\":\"rab\"}}]}' \"$ELASTICSEARCH_URL/_ingest/_simulate\""
+  - language: Java
+    code: |
+      client.simulate().ingest(i -> i
+          .docs(List.of(Document.of(d -> d
+                  .id("123")
+                  .index("my-index")
+                  .source(JsonData.fromJson("{\"foo\":\"bar\"}"))),Document.of(d -> d
+                  .id("456")
+                  .index("my-index")
+                  .source(JsonData.fromJson("{\"foo\":\"rab\"}")))))
+      );

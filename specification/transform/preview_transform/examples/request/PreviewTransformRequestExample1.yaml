@@ -122,3 +122,23 @@ alternatives:
       '{\"source\":{\"index\":\"kibana_sample_data_ecommerce\"},\"pivot\":{\"group_by\":{\"customer_id\":{\"terms\":{\"field\":\"cu\
       stomer_id\",\"missing_bucket\":true}}},\"aggregations\":{\"max_price\":{\"max\":{\"field\":\"taxful_total_price\"}}}}}'
       \"$ELASTICSEARCH_URL/_transform/_preview\""
+  - language: Java
+    code: |
+      client.transform().previewTransform(p -> p
+          .pivot(pi -> pi
+              .aggregations("max_price", a -> a
+                  .max(m -> m
+                      .field("taxful_total_price")
+                  )
+              )
+              .groupBy("customer_id", g -> g
+                  .terms(t -> t
+                      .field("customer_id")
+                      .missingBucket(true)
+                  )
+              )
+          )
+          .source(s -> s
+              .index("kibana_sample_data_ecommerce")
+          )
+      );

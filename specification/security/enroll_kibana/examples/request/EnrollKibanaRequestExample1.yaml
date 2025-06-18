@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->security()->enrollKibana();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/enroll/kibana"'
+  - language: Java
+    code: |
+      client.security().enrollKibana();

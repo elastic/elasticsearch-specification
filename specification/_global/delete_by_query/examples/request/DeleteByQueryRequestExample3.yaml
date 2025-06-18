@@ -91,3 +91,20 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"slice":{"id":0,"max":2},"query":{"range":{"http.response.bytes":{"lt":2000000}}}}''
       "$ELASTICSEARCH_URL/my-index-000001/_delete_by_query"'
+  - language: Java
+    code: |
+      client.deleteByQuery(d -> d
+          .index("my-index-000001")
+          .query(q -> q
+              .range(r -> r
+                  .untyped(u -> u
+                      .field("http.response.bytes")
+                      .lt(JsonData.fromJson("2000000"))
+                  )
+              )
+          )
+          .slice(s -> s
+              .id("0")
+              .max(2)
+          )
+      );

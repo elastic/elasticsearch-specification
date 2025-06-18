@@ -41,3 +41,8 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"role_descriptors":{}}'' "$ELASTICSEARCH_URL/_security/api_key/VuaCfGcBCdbkQm-e5aOx"'
+  - language: Java
+    code: |
+      client.security().updateApiKey(u -> u
+          .id("VuaCfGcBCdbkQm-e5aOx")
+      );
