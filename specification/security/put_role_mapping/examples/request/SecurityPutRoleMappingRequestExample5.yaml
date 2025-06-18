@@ -103,3 +103,20 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"role_templates\":[{\"template\":{\"source\":\"{{#tojson}}groups{{/tojson}}\"},\"format\":\"json\"}],\"rules\":{\"field\":{\
       \"realm.name\":\"saml1\"}},\"enabled\":true}' \"$ELASTICSEARCH_URL/_security/role_mapping/mapping5\""
+  - language: Java
+    code: |
+      client.security().putRoleMapping(p -> p
+          .enabled(true)
+          .name("mapping5")
+          .roleTemplates(r -> r
+              .format(TemplateFormat.Json)
+              .template(t -> t
+                  .source("{{#tojson}}groups{{/tojson}}")
+              )
+          )
+          .rules(r -> r
+              .field(f -> f
+                  ._Custom(JsonData.fromJson("\"saml1\""))
+              )
+          )
+      );

@@ -96,3 +96,17 @@ alternatives:
       '{\"source\":{\"index\":\"metricbeat-*\"},\"dest\":{\"index\":\"metricbeat\"},\"script\":{\"lang\":\"painless\",\"source\":\"\
       ctx._index = '\"'\"'metricbeat-'\"'\"' + (ctx._index.substring('\"'\"'metricbeat-'\"'\"'.length(), ctx._index.length())) +
       '\"'\"'-1'\"'\"'\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+  - language: Java
+    code: |
+      client.reindex(r -> r
+          .dest(d -> d
+              .index("metricbeat")
+          )
+          .script(s -> s
+              .source("ctx._index = 'metricbeat-' + (ctx._index.substring('metricbeat-'.length(), ctx._index.length())) + '-1'")
+              .lang("painless")
+          )
+          .source(s -> s
+              .index("metricbeat-*")
+          )
+      );

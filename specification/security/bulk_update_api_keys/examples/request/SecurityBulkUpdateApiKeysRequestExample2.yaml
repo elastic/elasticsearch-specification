@@ -51,3 +51,8 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"ids":["VuaCfGcBCdbkQm-e5aOx","H3_AhoIBA9hmeQJdg7ij"],"role_descriptors":{}}''
       "$ELASTICSEARCH_URL/_security/api_key/_bulk_update"'
+  - language: Java
+    code: |
+      client.security().bulkUpdateApiKeys(b -> b
+          .ids(List.of("VuaCfGcBCdbkQm-e5aOx","H3_AhoIBA9hmeQJdg7ij"))
+      );

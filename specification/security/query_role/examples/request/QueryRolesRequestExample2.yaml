@@ -73,3 +73,14 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"query":{"match":{"description":{"query":"user access"}}},"size":1}''
       "$ELASTICSEARCH_URL/_security/_query/role"'
+  - language: Java
+    code: |
+      client.security().queryRole(q -> q
+          .query(qu -> qu
+              .match(m -> m
+                  .field("description")
+                  .query(FieldValue.of("user access"))
+              )
+          )
+          .size(1)
+      );

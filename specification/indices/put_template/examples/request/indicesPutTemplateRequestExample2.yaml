@@ -117,3 +117,20 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"index_patterns\":[\"te*\"],\"settings\":{\"number_of_shards\":1},\"aliases\":{\"alias1\":{},\"alias2\":{\"filter\":{\"term\
       \":{\"user.id\":\"kimchy\"}},\"routing\":\"shard-1\"},\"{index}-alias\":{}}}' \"$ELASTICSEARCH_URL/_template/template_1\""
+  - language: Java
+    code: |
+      client.indices().putTemplate(p -> p
+          .aliases(Map.of("alias1", Alias.of(a -> a),"{index}-alias", Alias.of(a -> a),"alias2", Alias.of(a -> a
+                  .filter(f -> f
+                      .term(t -> t
+                          .field("user.id")
+                          .value(FieldValue.of("kimchy"))
+                      )
+                  )
+                  .routing("shard-1"))))
+          .indexPatterns("te*")
+          .name("template_1")
+          .settings(s -> s
+              .numberOfShards("1")
+          )
+      );

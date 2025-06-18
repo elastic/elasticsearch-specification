@@ -46,3 +46,10 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"name":"Custom
       connector","description":"This is my customized connector"}'' "$ELASTICSEARCH_URL/_connector/my-connector/_name"'
+  - language: Java
+    code: |
+      client.connector().updateName(u -> u
+          .connectorId("my-connector")
+          .description("This is my customized connector")
+          .name("Custom connector")
+      );
