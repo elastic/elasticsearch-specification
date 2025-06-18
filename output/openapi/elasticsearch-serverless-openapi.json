@@ -34854,15 +34854,23 @@
             "properties": {
               "tokens": {
                 "description": "The tokens representing this query",
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "number"
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "number"
+                    }
                   },
-                  "minProperties": 1,
-                  "maxProperties": 1
-                }
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                ]
               },
               "pruning_config": {
                 "$ref": "#/components/schemas/_types.query_dsl.TokenPruningConfig"

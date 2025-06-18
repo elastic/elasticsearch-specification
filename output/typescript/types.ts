@@ -6862,7 +6862,7 @@ export interface QueryDslUntypedRangeQuery extends QueryDslRangeQueryBase<any> {
 }
 
 export interface QueryDslWeightedTokensQuery extends QueryDslQueryBase {
-  tokens: Partial<Record<string, float>>[]
+  tokens: Record<string, float> | Record<string, float>[]
   pruning_config?: QueryDslTokenPruningConfig
 }
 
