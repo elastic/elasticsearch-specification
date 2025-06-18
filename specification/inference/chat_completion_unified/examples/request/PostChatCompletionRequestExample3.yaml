@@ -218,29 +218,29 @@ alternatives:
   - language: Java
     code: |
       client.inference().chatCompletionUnified(c -> c
-      	.inferenceId("openai-completion")
-      	.chatCompletionRequest(ch -> ch
-      		.messages(m -> m
+        .inferenceId("openai-completion")
+        .chatCompletionRequest(ch -> ch
+            .messages(m -> m
                 .content(co -> co
                     .string("What's the price of a scarf?")
                 )
-      			.role("user")
-      		)
-      		.toolChoice(t -> t
-      			.object(o -> o
-      				.type("function")
-      				.function(f -> f
-      					.name("get_current_price")
-      				)
-      			)
-      		)
-      		.tools(to -> to
-      			.type("function")
-      			.function(f -> f
-      				.description("Get the current price of a item")
-      				.name("get_current_price")
-      				.parameters(JsonData.fromJson("{\"type\":\"object\",\"properties\":{\"item\":{\"id\":\"123\"}}}"))
-      			)
-      		)
-      	)
+                .role("user")
+            )
+            .toolChoice(t -> t
+                .object(o -> o
+                    .type("function")
+                    .function(f -> f
+                        .name("get_current_price")
+                    )
+                )
+            )
+            .tools(to -> to
+                .type("function")
+                .function(f -> f
+                    .description("Get the current price of a item")
+                    .name("get_current_price")
+                    .parameters(JsonData.fromJson("{\"type\":\"object\",\"properties\":{\"item\":{\"id\":\"123\"}}}"))
+                )
+            )
+        )
       );
