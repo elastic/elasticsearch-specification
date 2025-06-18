@@ -106,3 +106,20 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"source\":{\"index\":\"source\",\"query\":{\"match\":{\"company\":\"cat\"}}},\"dest\":{\"index\":\"dest\",\"routing\":\"=c\
       at\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+  - language: Java
+    code: |
+      client.reindex(r -> r
+          .dest(d -> d
+              .index("dest")
+              .routing("=cat")
+          )
+          .source(s -> s
+              .index("source")
+              .query(q -> q
+                  .match(m -> m
+                      .field("company")
+                      .query(FieldValue.of("cat"))
+                  )
+              )
+          )
+      );

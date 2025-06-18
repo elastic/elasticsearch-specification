@@ -82,3 +82,17 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"source":{"index":"my-index-000001","slice":{"id":0,"max":2}},"dest":{"index":"my-new-index-000001"}}''
       "$ELASTICSEARCH_URL/_reindex"'
+  - language: Java
+    code: |
+      client.reindex(r -> r
+          .dest(d -> d
+              .index("my-new-index-000001")
+          )
+          .source(s -> s
+              .index("my-index-000001")
+              .slice(sl -> sl
+                  .id("0")
+                  .max(2)
+              )
+          )
+      );

@@ -111,3 +111,19 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"max_docs\":10,\"source\":{\"index\":\"my-index-000001\",\"query\":{\"function_score\":{\"random_score\":{},\"min_score\":\
       0.9}}},\"dest\":{\"index\":\"my-new-index-000001\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+  - language: Java
+    code: |
+      client.reindex(r -> r
+          .dest(d -> d
+              .index("my-new-index-000001")
+          )
+          .maxDocs(10L)
+          .source(s -> s
+              .index("my-index-000001")
+              .query(q -> q
+                  .functionScore(f -> f
+                      .minScore(0.9D)
+                  )
+              )
+          )
+      );

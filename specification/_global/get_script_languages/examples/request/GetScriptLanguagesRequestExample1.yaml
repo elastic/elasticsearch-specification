@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->getScriptLanguages();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_script_language"'
+  - language: Java
+    code: |
+      client.getScriptLanguages();

@@ -49,3 +49,9 @@ alternatives:
     code:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"analyzer":"standard","text":["this is a test","the second text"]}'' "$ELASTICSEARCH_URL/_analyze"'
+  - language: Java
+    code: |
+      client.indices().analyze(a -> a
+          .analyzer("standard")
+          .text(List.of("this is a test","the second text"))
+      );

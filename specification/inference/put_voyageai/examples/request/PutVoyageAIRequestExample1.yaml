@@ -70,3 +70,13 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"voyageai","service_settings":{"model_id":"voyage-3-large","dimensions":512}}''
       "$ELASTICSEARCH_URL/_inference/text_embedding/openai-embeddings"'
+  - language: Java
+    code: |
+      client.inference().put(p -> p
+          .inferenceId("openai-embeddings")
+          .taskType(TaskType.TextEmbedding)
+          .inferenceConfig(i -> i
+              .service("voyageai")
+              .serviceSettings(JsonData.fromJson("{\"model_id\":\"voyage-3-large\",\"dimensions\":512}"))
+          )
+      );
