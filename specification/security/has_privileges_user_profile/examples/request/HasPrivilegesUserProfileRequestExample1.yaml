@@ -1,7 +1,8 @@
 # summary:
-# method_request: POST /_security/profile/_has_privileges
+method_request: POST /_security/profile/_has_privileges
 description: >
-  Run `POST /_security/profile/_has_privileges` to check whether the two users associated with the specified profiles have all the requested set of cluster, index, and application privileges.
+  Run `POST /_security/profile/_has_privileges` to check whether the two users associated with the specified profiles have all the
+  requested set of cluster, index, and application privileges.
 # type: request
 value: |-
   {
@@ -31,3 +32,189 @@ value: |-
       ]
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.has_privileges_user_profile(
+          uids=[
+              "u_LQPnxDxEjIH0GOUoFkZr5Y57YUwSkL9Joiq-g4OCbPc_0",
+              "u_rzRnxDgEHIH0GOUoFkZr5Y27YUwSk19Joiq=g4OCxxB_1",
+              "u_does-not-exist_0"
+          ],
+          privileges={
+              "cluster": [
+                  "monitor",
+                  "create_snapshot",
+                  "manage_ml"
+              ],
+              "index": [
+                  {
+                      "names": [
+                          "suppliers",
+                          "products"
+                      ],
+                      "privileges": [
+                          "create_doc"
+                      ]
+                  },
+                  {
+                      "names": [
+                          "inventory"
+                      ],
+                      "privileges": [
+                          "read",
+                          "write"
+                      ]
+                  }
+              ],
+              "application": [
+                  {
+                      "application": "inventory_manager",
+                      "privileges": [
+                          "read",
+                          "data:write/inventory"
+                      ],
+                      "resources": [
+                          "product/1852563"
+                      ]
+                  }
+              ]
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.hasPrivilegesUserProfile({
+        uids: [
+          "u_LQPnxDxEjIH0GOUoFkZr5Y57YUwSkL9Joiq-g4OCbPc_0",
+          "u_rzRnxDgEHIH0GOUoFkZr5Y27YUwSk19Joiq=g4OCxxB_1",
+          "u_does-not-exist_0",
+        ],
+        privileges: {
+          cluster: ["monitor", "create_snapshot", "manage_ml"],
+          index: [
+            {
+              names: ["suppliers", "products"],
+              privileges: ["create_doc"],
+            },
+            {
+              names: ["inventory"],
+              privileges: ["read", "write"],
+            },
+          ],
+          application: [
+            {
+              application: "inventory_manager",
+              privileges: ["read", "data:write/inventory"],
+              resources: ["product/1852563"],
+            },
+          ],
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.has_privileges_user_profile(
+        body: {
+          "uids": [
+            "u_LQPnxDxEjIH0GOUoFkZr5Y57YUwSkL9Joiq-g4OCbPc_0",
+            "u_rzRnxDgEHIH0GOUoFkZr5Y27YUwSk19Joiq=g4OCxxB_1",
+            "u_does-not-exist_0"
+          ],
+          "privileges": {
+            "cluster": [
+              "monitor",
+              "create_snapshot",
+              "manage_ml"
+            ],
+            "index": [
+              {
+                "names": [
+                  "suppliers",
+                  "products"
+                ],
+                "privileges": [
+                  "create_doc"
+                ]
+              },
+              {
+                "names": [
+                  "inventory"
+                ],
+                "privileges": [
+                  "read",
+                  "write"
+                ]
+              }
+            ],
+            "application": [
+              {
+                "application": "inventory_manager",
+                "privileges": [
+                  "read",
+                  "data:write/inventory"
+                ],
+                "resources": [
+                  "product/1852563"
+                ]
+              }
+            ]
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->hasPrivilegesUserProfile([
+          "body" => [
+              "uids" => array(
+                  "u_LQPnxDxEjIH0GOUoFkZr5Y57YUwSkL9Joiq-g4OCbPc_0",
+                  "u_rzRnxDgEHIH0GOUoFkZr5Y27YUwSk19Joiq=g4OCxxB_1",
+                  "u_does-not-exist_0",
+              ),
+              "privileges" => [
+                  "cluster" => array(
+                      "monitor",
+                      "create_snapshot",
+                      "manage_ml",
+                  ),
+                  "index" => array(
+                      [
+                          "names" => array(
+                              "suppliers",
+                              "products",
+                          ),
+                          "privileges" => array(
+                              "create_doc",
+                          ),
+                      ],
+                      [
+                          "names" => array(
+                              "inventory",
+                          ),
+                          "privileges" => array(
+                              "read",
+                              "write",
+                          ),
+                      ],
+                  ),
+                  "application" => array(
+                      [
+                          "application" => "inventory_manager",
+                          "privileges" => array(
+                              "read",
+                              "data:write/inventory",
+                          ),
+                          "resources" => array(
+                              "product/1852563",
+                          ),
+                      ],
+                  ),
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"uids\":[\"u_LQPnxDxEjIH0GOUoFkZr5Y57YUwSkL9Joiq-g4OCbPc_0\",\"u_rzRnxDgEHIH0GOUoFkZr5Y27YUwSk19Joiq=g4OCxxB_1\",\"u_does-\
+      not-exist_0\"],\"privileges\":{\"cluster\":[\"monitor\",\"create_snapshot\",\"manage_ml\"],\"index\":[{\"names\":[\"suppliers\
+      \",\"products\"],\"privileges\":[\"create_doc\"]},{\"names\":[\"inventory\"],\"privileges\":[\"read\",\"write\"]}],\"applicat\
+      ion\":[{\"application\":\"inventory_manager\",\"privileges\":[\"read\",\"data:write/inventory\"],\"resources\":[\"product/185\
+      2563\"]}]}}' \"$ELASTICSEARCH_URL/_security/profile/_has_privileges\""

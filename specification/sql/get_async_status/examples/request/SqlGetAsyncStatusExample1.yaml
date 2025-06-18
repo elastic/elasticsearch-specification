@@ -1,0 +1,25 @@
+method_request: GET _sql/async/status/FnR0TDhyWUVmUmVtWXRWZER4MXZiNFEad2F5UDk2ZVdTVHV1S0xDUy00SklUdzozMTU=
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.sql.get_async_status(
+          id="FnR0TDhyWUVmUmVtWXRWZER4MXZiNFEad2F5UDk2ZVdTVHV1S0xDUy00SklUdzozMTU=",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.sql.getAsyncStatus({
+        id: "FnR0TDhyWUVmUmVtWXRWZER4MXZiNFEad2F5UDk2ZVdTVHV1S0xDUy00SklUdzozMTU=",
+      });
+  - language: Ruby
+    code: |-
+      response = client.sql.get_async_status(
+        id: "FnR0TDhyWUVmUmVtWXRWZER4MXZiNFEad2F5UDk2ZVdTVHV1S0xDUy00SklUdzozMTU="
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->sql()->getAsyncStatus([
+          "id" => "FnR0TDhyWUVmUmVtWXRWZER4MXZiNFEad2F5UDk2ZVdTVHV1S0xDUy00SklUdzozMTU=",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_sql/async/status/FnR0TDhyWUVmUmVtWXRWZER4MXZiNFEad2F5UDk2ZVdTVHV1S0xDUy00SklUdzozMTU="'

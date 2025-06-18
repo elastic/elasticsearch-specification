@@ -1,5 +1,5 @@
 # summary:
-# method_request: GET my-index/_search/template
+method_request: GET my-index/_search/template
 description: >
   Run `GET my-index/_search/template` to run a search with a search template.
 # type: request
@@ -12,3 +12,57 @@ value: |-
       "size": 10
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.search_template(
+          index="my-index",
+          id="my-search-template",
+          params={
+              "query_string": "hello world",
+              "from": 0,
+              "size": 10
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.searchTemplate({
+        index: "my-index",
+        id: "my-search-template",
+        params: {
+          query_string: "hello world",
+          from: 0,
+          size: 10,
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.search_template(
+        index: "my-index",
+        body: {
+          "id": "my-search-template",
+          "params": {
+            "query_string": "hello world",
+            "from": 0,
+            "size": 10
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->searchTemplate([
+          "index" => "my-index",
+          "body" => [
+              "id" => "my-search-template",
+              "params" => [
+                  "query_string" => "hello world",
+                  "from" => 0,
+                  "size" => 10,
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"id":"my-search-template","params":{"query_string":"hello world","from":0,"size":10}}''
+      "$ELASTICSEARCH_URL/my-index/_search/template"'

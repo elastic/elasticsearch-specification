@@ -148,14 +148,16 @@ pub fn add_endpoint(
                 // }
             };
 
-            let openapi_example = Example {
-                value: example,
-                description: schema_example.description.clone(),
-                summary: schema_example.summary.clone(),
-                external_value: None,
-                extensions: Default::default(),
-            };
-            openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
+            if example.is_some() {
+                let openapi_example = Example {
+                    value: example,
+                    description: schema_example.description.clone(),
+                    summary: schema_example.summary.clone(),
+                    external_value: None,
+                    extensions: Default::default(),
+                };
+                openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
+            }
         }
         openapi_examples
     }
@@ -202,7 +204,7 @@ pub fn add_endpoint(
     // If this endpoint response has examples in schema.json, convert them to the
     // OpenAPI format and add them to the endpoint response in the OpenAPI document.
     let response_examples = if let Some(examples) = &response_def.examples {
-         get_openapi_examples(examples)
+        get_openapi_examples(examples)
     } else {
         IndexMap::new()
     };
@@ -343,8 +345,34 @@ pub fn add_endpoint(
 
         // add the x-state extension for availability
         let mut extensions = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
-        let mut ext_availability = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
-        extensions.append(&mut ext_availability);
+
+        if tac.config.include_language_examples {
+            // add the x-codeSamples extension
+            let mut code_samples = vec![];
+            if let Some(examples) = request.examples.clone() {
+                if let Some((_, example)) = examples.first() {
+                    let request_line = example.method_request.clone().unwrap_or(String::from(""));
+                    let request_body = example.value.clone().unwrap_or(String::from(""));
+                    if !request_line.is_empty() {
+                        code_samples.push(serde_json::json!({
+                            "lang": "Console",
+                            "source": request_line + "\n" + request_body.as_str(),
+                        }));
+                    }
+                    if let Some(alternatives) = example.alternatives.clone() {
+                        for alternative in alternatives.iter() {
+                            code_samples.push(serde_json::json!({
+                                "lang": alternative.language,
+                                "source": alternative.code.as_str(),
+                            }));
+                        }
+                    }
+                }
+            }
+            if !code_samples.is_empty() {
+                extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
+            }
+        }
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
@@ -369,7 +397,7 @@ pub fn add_endpoint(
             deprecated: endpoint.deprecation.is_some(),
             security: None,
             servers: vec![],
-            extensions
+            extensions,
         };
 
 

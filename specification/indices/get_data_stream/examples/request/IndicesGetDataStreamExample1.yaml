@@ -1,0 +1,24 @@
+method_request: GET _data_stream/my-data-stream
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.get_data_stream(
+          name="my-data-stream",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.getDataStream({
+        name: "my-data-stream",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.get_data_stream(
+        name: "my-data-stream"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->getDataStream([
+          "name" => "my-data-stream",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_data_stream/my-data-stream"'

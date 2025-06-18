@@ -1,0 +1,28 @@
+method_request: DELETE _query_rules/my-ruleset/_rule/my-rule1
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.query_rules.delete_rule(
+          ruleset_id="my-ruleset",
+          rule_id="my-rule1",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.queryRules.deleteRule({
+        ruleset_id: "my-ruleset",
+        rule_id: "my-rule1",
+      });
+  - language: Ruby
+    code: |-
+      response = client.query_rules.delete_rule(
+        ruleset_id: "my-ruleset",
+        rule_id: "my-rule1"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->queryRules()->deleteRule([
+          "ruleset_id" => "my-ruleset",
+          "rule_id" => "my-rule1",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_query_rules/my-ruleset/_rule/my-rule1"'

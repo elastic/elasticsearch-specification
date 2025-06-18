@@ -1,5 +1,5 @@
 summary: Bulk delete example 1
-# method_request: DELETE /_security/role
+method_request: DELETE /_security/role
 description: >
   Run DELETE /_security/role` to delete `my_admin_role` and `my_user_role` roles.
 # type: request
@@ -7,3 +7,41 @@ value: |-
   {
     "names": ["my_admin_role", "my_user_role"]
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.bulk_delete_role(
+          names=[
+              "my_admin_role",
+              "my_user_role"
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.bulkDeleteRole({
+        names: ["my_admin_role", "my_user_role"],
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.bulk_delete_role(
+        body: {
+          "names": [
+            "my_admin_role",
+            "my_user_role"
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->bulkDeleteRole([
+          "body" => [
+              "names" => array(
+                  "my_admin_role",
+                  "my_user_role",
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"names":["my_admin_role","my_user_role"]}'' "$ELASTICSEARCH_URL/_security/role"'

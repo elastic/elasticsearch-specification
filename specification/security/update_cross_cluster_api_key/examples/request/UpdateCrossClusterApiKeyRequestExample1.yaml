@@ -1,7 +1,8 @@
 # summary:
-# method_request: PUT /_security/cross_cluster/api_key/VuaCfGcBCdbkQm-e5aOx
+method_request: PUT /_security/cross_cluster/api_key/VuaCfGcBCdbkQm-e5aOx
 description: >
-  Run `PUT /_security/cross_cluster/api_key/VuaCfGcBCdbkQm-e5aOx` to update a cross-cluster API key, assigning it new access scope and metadata.
+  Run `PUT /_security/cross_cluster/api_key/VuaCfGcBCdbkQm-e5aOx` to update a cross-cluster API key, assigning it new access scope
+  and metadata.
 # type: request
 value: |-
   {
@@ -16,3 +17,79 @@ value: |-
       "application": "replication"
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.update_cross_cluster_api_key(
+          id="VuaCfGcBCdbkQm-e5aOx",
+          access={
+              "replication": [
+                  {
+                      "names": [
+                          "archive"
+                      ]
+                  }
+              ]
+          },
+          metadata={
+              "application": "replication"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.updateCrossClusterApiKey({
+        id: "VuaCfGcBCdbkQm-e5aOx",
+        access: {
+          replication: [
+            {
+              names: ["archive"],
+            },
+          ],
+        },
+        metadata: {
+          application: "replication",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.update_cross_cluster_api_key(
+        id: "VuaCfGcBCdbkQm-e5aOx",
+        body: {
+          "access": {
+            "replication": [
+              {
+                "names": [
+                  "archive"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "application": "replication"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->updateCrossClusterApiKey([
+          "id" => "VuaCfGcBCdbkQm-e5aOx",
+          "body" => [
+              "access" => [
+                  "replication" => array(
+                      [
+                          "names" => array(
+                              "archive",
+                          ),
+                      ],
+                  ),
+              ],
+              "metadata" => [
+                  "application" => "replication",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"access":{"replication":[{"names":["archive"]}]},"metadata":{"application":"replication"}}''
+      "$ELASTICSEARCH_URL/_security/cross_cluster/api_key/VuaCfGcBCdbkQm-e5aOx"'

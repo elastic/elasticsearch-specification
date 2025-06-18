@@ -1,10 +1,10 @@
 summary: Add a privilege
-# method_request: PUT /_security/privilege
+method_request: PUT /_security/privilege
 description: >
-  Run `PUT /_security/privilege` to add a single application privilege.
-  The wildcard (`*`) means that this privilege grants access to all actions that start with `data:read/`.
-  Elasticsearch does not assign any meaning to these actions. However,
-  if the request includes an application privilege such as `data:read/users` or `data:read/settings`, the has privileges API respects the use of a wildcard and returns `true`.
+  Run `PUT /_security/privilege` to add a single application privilege. The wildcard (`*`) means that this privilege grants access
+  to all actions that start with `data:read/`. Elasticsearch does not assign any meaning to these actions. However, if the request
+  includes an application privilege such as `data:read/users` or `data:read/settings`, the has privileges API respects the use of a
+  wildcard and returns `true`.
 # type: request
 value: |-
   {
@@ -19,3 +19,74 @@ value: |-
         }
       }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.put_privileges(
+          privileges={
+              "myapp": {
+                  "read": {
+                      "actions": [
+                          "data:read/*",
+                          "action:login"
+                      ],
+                      "metadata": {
+                          "description": "Read access to myapp"
+                      }
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.putPrivileges({
+        privileges: {
+          myapp: {
+            read: {
+              actions: ["data:read/*", "action:login"],
+              metadata: {
+                description: "Read access to myapp",
+              },
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.put_privileges(
+        body: {
+          "myapp": {
+            "read": {
+              "actions": [
+                "data:read/*",
+                "action:login"
+              ],
+              "metadata": {
+                "description": "Read access to myapp"
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->putPrivileges([
+          "body" => [
+              "myapp" => [
+                  "read" => [
+                      "actions" => array(
+                          "data:read/*",
+                          "action:login",
+                      ),
+                      "metadata" => [
+                          "description" => "Read access to myapp",
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"myapp":{"read":{"actions":["data:read/*","action:login"],"metadata":{"description":"Read access to
+      myapp"}}}}'' "$ELASTICSEARCH_URL/_security/privilege"'

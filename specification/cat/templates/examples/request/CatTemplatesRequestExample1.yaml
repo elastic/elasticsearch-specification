@@ -1,0 +1,37 @@
+method_request: GET _cat/templates/my-template-*?v=true&s=name&format=json
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cat.templates(
+          name="my-template-*",
+          v=True,
+          s="name",
+          format="json",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cat.templates({
+        name: "my-template-*",
+        v: "true",
+        s: "name",
+        format: "json",
+      });
+  - language: Ruby
+    code: |-
+      response = client.cat.templates(
+        name: "my-template-*",
+        v: "true",
+        s: "name",
+        format: "json"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cat()->templates([
+          "name" => "my-template-*",
+          "v" => "true",
+          "s" => "name",
+          "format" => "json",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_cat/templates/my-template-*?v=true&s=name&format=json"'

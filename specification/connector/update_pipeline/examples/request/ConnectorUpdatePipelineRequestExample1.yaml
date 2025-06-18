@@ -1,8 +1,73 @@
 # summary: connector/apis/update-connector-pipeline-api.asciidoc:87
-# method_request: PUT _connector/my-connector/_pipeline
+method_request: PUT _connector/my-connector/_pipeline
 # description: ''
 # type: request
-value:
-  "{\n    \"pipeline\": {\n        \"extract_binary_content\": true,\n      \
-  \  \"name\": \"my-connector-pipeline\",\n        \"reduce_whitespace\": true,\n\
-  \        \"run_ml_inference\": true\n    }\n}"
+value: "{
+
+  \    \"pipeline\": {
+
+  \        \"extract_binary_content\": true,
+
+  \        \"name\": \"my-connector-pipeline\",
+
+  \        \"reduce_whitespace\": true,
+
+  \        \"run_ml_inference\": true
+
+  \    }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.update_pipeline(
+          connector_id="my-connector",
+          pipeline={
+              "extract_binary_content": True,
+              "name": "my-connector-pipeline",
+              "reduce_whitespace": True,
+              "run_ml_inference": True
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.updatePipeline({
+        connector_id: "my-connector",
+        pipeline: {
+          extract_binary_content: true,
+          name: "my-connector-pipeline",
+          reduce_whitespace: true,
+          run_ml_inference: true,
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.update_pipeline(
+        connector_id: "my-connector",
+        body: {
+          "pipeline": {
+            "extract_binary_content": true,
+            "name": "my-connector-pipeline",
+            "reduce_whitespace": true,
+            "run_ml_inference": true
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->updatePipeline([
+          "connector_id" => "my-connector",
+          "body" => [
+              "pipeline" => [
+                  "extract_binary_content" => true,
+                  "name" => "my-connector-pipeline",
+                  "reduce_whitespace" => true,
+                  "run_ml_inference" => true,
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"pipeline\":{\"extract_binary_content\":true,\"name\":\"my-connector-pipeline\",\"reduce_whitespace\":true,\"run_ml_infere\
+      nce\":true}}' \"$ELASTICSEARCH_URL/_connector/my-connector/_pipeline\""

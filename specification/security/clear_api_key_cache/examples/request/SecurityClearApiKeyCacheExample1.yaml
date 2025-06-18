@@ -1,0 +1,25 @@
+method_request: POST /_security/api_key/yVGMr3QByxdh1MSaicYx/_clear_cache
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.clear_api_key_cache(
+          ids="yVGMr3QByxdh1MSaicYx",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.clearApiKeyCache({
+        ids: "yVGMr3QByxdh1MSaicYx",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.clear_api_key_cache(
+        ids: "yVGMr3QByxdh1MSaicYx"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->clearApiKeyCache([
+          "ids" => "yVGMr3QByxdh1MSaicYx",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_security/api_key/yVGMr3QByxdh1MSaicYx/_clear_cache"'
