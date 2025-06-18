@@ -102,3 +102,17 @@ alternatives:
       ''{"script":{"source":"ctx._source.counter +=
       params.count","lang":"painless","params":{"count":4}},"upsert":{"counter":1}}''
       "$ELASTICSEARCH_URL/test/_update/1"'
+  - language: Java
+    code: |
+      client.update(u -> u
+          .id("1")
+          .index("test")
+          .script(s -> s
+              .source(so -> so
+                  .scriptString("ctx._source.counter += params.count")
+              )
+              .params("count", JsonData.fromJson("4"))
+              .lang("painless")
+          )
+          .upsert(JsonData.fromJson("{\"counter\":1}"))
+      ,Void.class);

@@ -50,3 +50,9 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"vocabulary":["[PAD]","[unused0]"]}''
       "$ELASTICSEARCH_URL/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/vocabulary"'
+  - language: Java
+    code: |
+      client.ml().putTrainedModelVocabulary(p -> p
+          .modelId("elastic__distilbert-base-uncased-finetuned-conll03-english")
+          .vocabulary(List.of("[PAD]","[unused0]"))
+      );
