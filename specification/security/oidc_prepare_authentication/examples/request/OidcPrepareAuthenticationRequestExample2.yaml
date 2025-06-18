@@ -48,3 +48,10 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"realm\":\"oidc1\",\"state\":\"lGYK0EcSLjqH6pkT5EVZjC6eIW5YCGgywj2sxROO\",\"nonce\":\"zOBXLJGUooRrbLbQk5YCcyC8AXw3iloynvlu\
       YhZ5\"}' \"$ELASTICSEARCH_URL/_security/oidc/prepare\""
+  - language: Java
+    code: |
+      client.security().oidcPrepareAuthentication(o -> o
+          .nonce("zOBXLJGUooRrbLbQk5YCcyC8AXw3iloynvluYhZ5")
+          .realm("oidc1")
+          .state("lGYK0EcSLjqH6pkT5EVZjC6eIW5YCGgywj2sxROO")
+      );
