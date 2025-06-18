@@ -3257,6 +3257,7 @@ export interface AggregationsBoxPlotAggregate extends AggregationsAggregateBase 
 
 export interface AggregationsBoxplotAggregation extends AggregationsMetricAggregationBase {
   compression?: double
+  execution_hint?: AggregationsTDigestExecutionHint
 }
 
 export interface AggregationsBucketAggregationBase {
@@ -3916,6 +3917,7 @@ export interface AggregationsMedianAbsoluteDeviationAggregate extends Aggregatio
 
 export interface AggregationsMedianAbsoluteDeviationAggregation extends AggregationsFormatMetricAggregationBase {
   compression?: double
+  execution_hint?: AggregationsTDigestExecutionHint
 }
 
 export interface AggregationsMetricAggregationBase {
@@ -4327,7 +4329,10 @@ export interface AggregationsSumBucketAggregation extends AggregationsPipelineAg
 
 export interface AggregationsTDigest {
   compression?: integer
+  execution_hint?: AggregationsTDigestExecutionHint
 }
+
+export type AggregationsTDigestExecutionHint = 'default' | 'high_accuracy'
 
 export interface AggregationsTDigestPercentileRanksAggregate extends AggregationsPercentilesAggregateBase {
 }
