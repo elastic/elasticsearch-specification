@@ -1,3 +1,4 @@
+ack-watch, https://www.elastic.co/docs/explore-analyze/alerts-cases/watcher/actions#example
 apis,https://www.elastic.co/docs/api/doc/elasticsearch
 add-nodes,https://www.elastic.co/docs/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes
 alias-update,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-alias
