@@ -85,3 +85,16 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"aliases":{"alias_1":{},"alias_2":{"filter":{"term":{"user.id":"kimchy"}},"routing":"shard-1"}}}''
       "$ELASTICSEARCH_URL/test"'
+  - language: Java
+    code: |
+      client.indices().create(c -> c
+          .aliases(Map.of("alias_2", Alias.of(a -> a
+                  .filter(f -> f
+                      .term(t -> t
+                          .field("user.id")
+                          .value(FieldValue.of("kimchy"))
+                      )
+                  )
+                  .routing("shard-1")),"alias_1", Alias.of(al -> al)))
+          .index("test")
+      );

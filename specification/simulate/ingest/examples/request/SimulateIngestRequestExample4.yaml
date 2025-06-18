@@ -333,3 +333,45 @@ alternatives:
       },\"index_template_substitutions\":{\"my-index-template\":{\"index_patterns\":[\"my-index-*\"],\"composed_of\":[\"component_t\
       emplate_1\",\"component_template_2\"]}},\"mapping_addition\":{\"dynamic\":\"strict\",\"properties\":{\"foo\":{\"type\":\"keyw\
       ord\"}}}}' \"$ELASTICSEARCH_URL/_ingest/_simulate\""
+  - language: Java
+    code: |
+      client.simulate().ingest(i -> i
+          .componentTemplateSubstitutions("my-component-template", c -> c
+              .template(t -> t
+                  .settings("index", s -> s
+                      .defaultPipeline("my-pipeline")
+                  )
+                  .mappings(m -> m
+                      .dynamic(DynamicMapping.True)
+                      .properties("field3", p -> p
+                          .keyword(k -> k)
+                      )
+                  )
+              )
+          )
+          .docs(List.of(Document.of(d -> d
+                  .id("id")
+                  .index("my-index")
+                  .source(JsonData.fromJson("{\"foo\":\"bar\"}"))),Document.of(d -> d
+                  .id("id")
+                  .index("my-index")
+                  .source(JsonData.fromJson("{\"foo\":\"rab\"}")))))
+          .indexTemplateSubstitutions("my-index-template", in -> in
+              .indexPatterns("my-index-*")
+              .composedOf(List.of("component_template_1","component_template_2"))
+          )
+          .mappingAddition(m -> m
+              .dynamic(DynamicMapping.Strict)
+              .properties("foo", p -> p
+                  .keyword(k -> k)
+              )
+          )
+          .pipelineSubstitutions("my-pipeline", p -> p
+              .processors(pr -> pr
+                  .set(s -> s
+                      .field("field3")
+                      .value(JsonData.fromJson("\"value3\""))
+                  )
+              )
+          )
+      );

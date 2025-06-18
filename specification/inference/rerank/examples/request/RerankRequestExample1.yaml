@@ -69,3 +69,10 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"input":["luke","like","leia","chewy","r2d2","star","wars"],"query":"star wars main character"}''
       "$ELASTICSEARCH_URL/_inference/rerank/cohere_rerank"'
+  - language: Java
+    code: |
+      client.inference().rerank(r -> r
+          .inferenceId("cohere_rerank")
+          .input(List.of("luke","like","leia","chewy","r2d2","star","wars"))
+          .query("star wars main character")
+      );

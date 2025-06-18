@@ -40,3 +40,9 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service_type":"sharepoint_online"}'' "$ELASTICSEARCH_URL/_connector/my-connector/_service_type"'
+  - language: Java
+    code: |
+      client.connector().updateServiceType(u -> u
+          .connectorId("my-connector")
+          .serviceType("sharepoint_online")
+      );
