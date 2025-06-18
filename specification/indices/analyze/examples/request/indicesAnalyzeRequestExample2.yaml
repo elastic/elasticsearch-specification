@@ -1,5 +1,5 @@
 summary: An array of text strings
-# method_request: GET /_analyze
+method_request: GET /_analyze
 description: If the text parameter is provided as array of strings, it is analyzed as a multi-value field.
 # type: request
 value:
@@ -7,3 +7,45 @@ value:
   text:
     - this is a test
     - the second text
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.analyze(
+          analyzer="standard",
+          text=[
+              "this is a test",
+              "the second text"
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.analyze({
+        analyzer: "standard",
+        text: ["this is a test", "the second text"],
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.analyze(
+        body: {
+          "analyzer": "standard",
+          "text": [
+            "this is a test",
+            "the second text"
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->analyze([
+          "body" => [
+              "analyzer" => "standard",
+              "text" => array(
+                  "this is a test",
+                  "the second text",
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"analyzer":"standard","text":["this is a test","the second text"]}'' "$ELASTICSEARCH_URL/_analyze"'

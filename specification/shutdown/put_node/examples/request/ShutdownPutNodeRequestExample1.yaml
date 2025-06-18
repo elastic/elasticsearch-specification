@@ -1,9 +1,57 @@
 # summary:
-# method_request: PUT /_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown
+method_request: PUT /_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown
 description: >
-  Register a node for shutdown with `PUT /_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown`.
-  The `restart` type prepares the node to be restarted.
+  Register a node for shutdown with `PUT /_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown`. The `restart` type prepares the node to be
+  restarted.
 # type: request
-value:
-  "{\n  \"type\": \"restart\",\n  \"reason\": \"Demonstrating how the node shutdown\
-  \ API works\",\n  \"allocation_delay\": \"20m\"\n}"
+value: "{
+
+  \  \"type\": \"restart\",
+
+  \  \"reason\": \"Demonstrating how the node shutdown API works\",
+
+  \  \"allocation_delay\": \"20m\"
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.shutdown.put_node(
+          node_id="USpTGYaBSIKbgSUJR2Z9lg",
+          type="restart",
+          reason="Demonstrating how the node shutdown API works",
+          allocation_delay="20m",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.shutdown.putNode({
+        node_id: "USpTGYaBSIKbgSUJR2Z9lg",
+        type: "restart",
+        reason: "Demonstrating how the node shutdown API works",
+        allocation_delay: "20m",
+      });
+  - language: Ruby
+    code: |-
+      response = client.shutdown.put_node(
+        node_id: "USpTGYaBSIKbgSUJR2Z9lg",
+        body: {
+          "type": "restart",
+          "reason": "Demonstrating how the node shutdown API works",
+          "allocation_delay": "20m"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->shutdown()->putNode([
+          "node_id" => "USpTGYaBSIKbgSUJR2Z9lg",
+          "body" => [
+              "type" => "restart",
+              "reason" => "Demonstrating how the node shutdown API works",
+              "allocation_delay" => "20m",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"type":"restart","reason":"Demonstrating how the node shutdown API works","allocation_delay":"20m"}''
+      "$ELASTICSEARCH_URL/_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown"'

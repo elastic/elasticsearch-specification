@@ -1,8 +1,8 @@
 summary: Query users by role prefix
-# method_request: POST /_security/_query/user?with_profile_uid=true
+method_request: POST /_security/_query/user?with_profile_uid=true
 description: >
-  Run `POST /_security/_query/user?with_profile_uid=true` to get users that have roles that are prefixed with `other`.
-  It will also include the user `profile_uid` in the response.
+  Run `POST /_security/_query/user?with_profile_uid=true` to get users that have roles that are prefixed with `other`. It will also
+  include the user `profile_uid` in the response.
 # type: request
 value: |-
   {
@@ -12,3 +12,52 @@ value: |-
           }
       }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.query_user(
+          with_profile_uid=True,
+          query={
+              "prefix": {
+                  "roles": "other"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.queryUser({
+        with_profile_uid: "true",
+        query: {
+          prefix: {
+            roles: "other",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.query_user(
+        with_profile_uid: "true",
+        body: {
+          "query": {
+            "prefix": {
+              "roles": "other"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->queryUser([
+          "with_profile_uid" => "true",
+          "body" => [
+              "query" => [
+                  "prefix" => [
+                      "roles" => "other",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"query":{"prefix":{"roles":"other"}}}'' "$ELASTICSEARCH_URL/_security/_query/user?with_profile_uid=true"'

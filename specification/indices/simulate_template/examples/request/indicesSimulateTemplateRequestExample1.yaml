@@ -1,10 +1,95 @@
 # summary:
-# method_request: POST /_index_template/_simulate
+method_request: POST /_index_template/_simulate
 description: >
-  To see what settings will be applied by a template before you add it to the cluster, you can pass a template configuration in the request body.
-  The specified template is used for the simulation if it has a higher priority than existing templates.
+  To see what settings will be applied by a template before you add it to the cluster, you can pass a template configuration in the
+  request body. The specified template is used for the simulation if it has a higher priority than existing templates.
 # type: request
-value:
-  "{\n  \"index_patterns\": [\"my-index-*\"],\n  \"composed_of\": [\"ct2\"],\n\
-  \  \"priority\": 10,\n  \"template\": {\n    \"settings\": {\n      \"index.number_of_replicas\"\
-  : 1\n    }\n  }\n}"
+value: "{
+
+  \  \"index_patterns\": [\"my-index-*\"],
+
+  \  \"composed_of\": [\"ct2\"],
+
+  \  \"priority\": 10,
+
+  \  \"template\": {
+
+  \    \"settings\": {
+
+  \      \"index.number_of_replicas\": 1
+
+  \    }
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.simulate_template(
+          index_patterns=[
+              "my-index-*"
+          ],
+          composed_of=[
+              "ct2"
+          ],
+          priority=10,
+          template={
+              "settings": {
+                  "index.number_of_replicas": 1
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.simulateTemplate({
+        index_patterns: ["my-index-*"],
+        composed_of: ["ct2"],
+        priority: 10,
+        template: {
+          settings: {
+            "index.number_of_replicas": 1,
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.simulate_template(
+        body: {
+          "index_patterns": [
+            "my-index-*"
+          ],
+          "composed_of": [
+            "ct2"
+          ],
+          "priority": 10,
+          "template": {
+            "settings": {
+              "index.number_of_replicas": 1
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->simulateTemplate([
+          "body" => [
+              "index_patterns" => array(
+                  "my-index-*",
+              ),
+              "composed_of" => array(
+                  "ct2",
+              ),
+              "priority" => 10,
+              "template" => [
+                  "settings" => [
+                      "index.number_of_replicas" => 1,
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"index_patterns\":[\"my-index-*\"],\"composed_of\":[\"ct2\"],\"priority\":10,\"template\":{\"settings\":{\"index.number_of\
+      _replicas\":1}}}' \"$ELASTICSEARCH_URL/_index_template/_simulate\""

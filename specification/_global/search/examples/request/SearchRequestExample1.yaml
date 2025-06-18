@@ -1,5 +1,5 @@
 summary: A simple term search
-# method_request: GET /my-index-000001/_search?from=40&size=20
+method_request: GET /my-index-000001/_search?from=40&size=20
 description: >
   Run `GET /my-index-000001/_search?from=40&size=20` to run a search.
 # type: request
@@ -11,3 +11,60 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.search(
+          index="my-index-000001",
+          from="40",
+          size="20",
+          query={
+              "term": {
+                  "user.id": "kimchy"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.search({
+        index: "my-index-000001",
+        from: 40,
+        size: 20,
+        query: {
+          term: {
+            "user.id": "kimchy",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.search(
+        index: "my-index-000001",
+        from: "40",
+        size: "20",
+        body: {
+          "query": {
+            "term": {
+              "user.id": "kimchy"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->search([
+          "index" => "my-index-000001",
+          "from" => "40",
+          "size" => "20",
+          "body" => [
+              "query" => [
+                  "term" => [
+                      "user.id" => "kimchy",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"query":{"term":{"user.id":"kimchy"}}}'' "$ELASTICSEARCH_URL/my-index-000001/_search?from=40&size=20"'

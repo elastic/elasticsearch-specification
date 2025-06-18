@@ -1,5 +1,5 @@
 # summary:
-# method_request: GET _cluster/allocation/explain
+method_request: GET _cluster/allocation/explain
 description: Run `GET _cluster/allocation/explain` to get an explanation for a shard's current allocation.
 # type: request
 value: |-
@@ -9,3 +9,45 @@ value: |-
     "primary": false,
     "current_node": "my-node"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cluster.allocation_explain(
+          index="my-index-000001",
+          shard=0,
+          primary=False,
+          current_node="my-node",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cluster.allocationExplain({
+        index: "my-index-000001",
+        shard: 0,
+        primary: false,
+        current_node: "my-node",
+      });
+  - language: Ruby
+    code: |-
+      response = client.cluster.allocation_explain(
+        body: {
+          "index": "my-index-000001",
+          "shard": 0,
+          "primary": false,
+          "current_node": "my-node"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cluster()->allocationExplain([
+          "body" => [
+              "index" => "my-index-000001",
+              "shard" => 0,
+              "primary" => false,
+              "current_node" => "my-node",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"index":"my-index-000001","shard":0,"primary":false,"current_node":"my-node"}''
+      "$ELASTICSEARCH_URL/_cluster/allocation/explain"'

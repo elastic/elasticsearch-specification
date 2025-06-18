@@ -1,8 +1,8 @@
 summary: Score context
-# method_request: POST /_scripts/painless/_execute
+method_request: POST /_scripts/painless/_execute
 description: >
-  Run `POST /_scripts/painless/_execute` with a `score` context.
-  It treats scripts as if they were run inside a `script_score` function in a `function_score` query.
+  Run `POST /_scripts/painless/_execute` with a `score` context. It treats scripts as if they were run inside a `script_score`
+  function in a `function_score` query.
 # type: request
 value: |-
   {
@@ -20,3 +20,82 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.scripts_painless_execute(
+          script={
+              "source": "doc['rank'].value / params.max_rank",
+              "params": {
+                  "max_rank": 5
+              }
+          },
+          context="score",
+          context_setup={
+              "index": "my-index-000001",
+              "document": {
+                  "rank": 4
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.scriptsPainlessExecute({
+        script: {
+          source: "doc['rank'].value / params.max_rank",
+          params: {
+            max_rank: 5,
+          },
+        },
+        context: "score",
+        context_setup: {
+          index: "my-index-000001",
+          document: {
+            rank: 4,
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.scripts_painless_execute(
+        body: {
+          "script": {
+            "source": "doc['rank'].value / params.max_rank",
+            "params": {
+              "max_rank": 5
+            }
+          },
+          "context": "score",
+          "context_setup": {
+            "index": "my-index-000001",
+            "document": {
+              "rank": 4
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->scriptsPainlessExecute([
+          "body" => [
+              "script" => [
+                  "source" => "doc['rank'].value / params.max_rank",
+                  "params" => [
+                      "max_rank" => 5,
+                  ],
+              ],
+              "context" => "score",
+              "context_setup" => [
+                  "index" => "my-index-000001",
+                  "document" => [
+                      "rank" => 4,
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"script\":{\"source\":\"doc['\"'\"'rank'\"'\"'].value /
+      params.max_rank\",\"params\":{\"max_rank\":5}},\"context\":\"score\",\"context_setup\":{\"index\":\"my-index-000001\",\"docum\
+      ent\":{\"rank\":4}}}' \"$ELASTICSEARCH_URL/_scripts/painless/_execute\""

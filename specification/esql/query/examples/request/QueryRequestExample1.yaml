@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST /_query
+method_request: POST /_query
 description: Run `POST /_query` to get results for an ES|QL query.
 # type: request
 value: |-
@@ -13,3 +13,38 @@ value: |-
     """,
     "include_ccs_metadata": true
   }
+alternatives:
+  - language: Python
+    code: >-
+      resp = client.esql.query(
+          query="\n    FROM library,remote-*:library\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\n    | STATS MAX(page_count) BY year\n    | SORT year\n    | LIMIT 5\n  ",
+          include_ccs_metadata=True,
+      )
+  - language: JavaScript
+    code: >-
+      const response = await client.esql.query({
+        query:
+          "\n    FROM library,remote-*:library\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\n    | STATS MAX(page_count) BY year\n    | SORT year\n    | LIMIT 5\n  ",
+        include_ccs_metadata: true,
+      });
+  - language: Ruby
+    code: >-
+      response = client.esql.query(
+        body: {
+          "query": "\n    FROM library,remote-*:library\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\n    | STATS MAX(page_count) BY year\n    | SORT year\n    | LIMIT 5\n  ",
+          "include_ccs_metadata": true
+        }
+      )
+  - language: PHP
+    code: >-
+      $resp = $client->esql()->query([
+          "body" => [
+              "query" => "\n    FROM library,remote-*:library\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\n    | STATS MAX(page_count) BY year\n    | SORT year\n    | LIMIT 5\n  ",
+              "include_ccs_metadata" => true,
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":\"\\n    FROM
+      library,remote-*:library\\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\\n    | STATS MAX(page_count) BY year\\n    |
+      SORT year\\n    | LIMIT 5\\n  \",\"include_ccs_metadata\":true}' \"$ELASTICSEARCH_URL/_query\""

@@ -1,0 +1,24 @@
+method_request: GET _application/search_application/my-app/
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.search_application.get(
+          name="my-app",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.searchApplication.get({
+        name: "my-app",
+      });
+  - language: Ruby
+    code: |-
+      response = client.search_application.get(
+        name: "my-app"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->searchApplication()->get([
+          "name" => "my-app",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_application/search_application/my-app/"'

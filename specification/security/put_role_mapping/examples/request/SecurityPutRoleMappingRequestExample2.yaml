@@ -1,5 +1,5 @@
 summary: Roles for specific users
-# method_request: POST /_security/role_mapping/mapping2
+method_request: POST /_security/role_mapping/mapping2
 description: >
   Run `POST /_security/role_mapping/mapping2` to assign the "user" and "admin" roles to specific users.
 # type: request
@@ -11,3 +11,79 @@ value: |-
       "field" : { "username" : [ "esadmin01", "esadmin02" ] }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.put_role_mapping(
+          name="mapping2",
+          roles=[
+              "user",
+              "admin"
+          ],
+          enabled=True,
+          rules={
+              "field": {
+                  "username": [
+                      "esadmin01",
+                      "esadmin02"
+                  ]
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.putRoleMapping({
+        name: "mapping2",
+        roles: ["user", "admin"],
+        enabled: true,
+        rules: {
+          field: {
+            username: ["esadmin01", "esadmin02"],
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.put_role_mapping(
+        name: "mapping2",
+        body: {
+          "roles": [
+            "user",
+            "admin"
+          ],
+          "enabled": true,
+          "rules": {
+            "field": {
+              "username": [
+                "esadmin01",
+                "esadmin02"
+              ]
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->putRoleMapping([
+          "name" => "mapping2",
+          "body" => [
+              "roles" => array(
+                  "user",
+                  "admin",
+              ),
+              "enabled" => true,
+              "rules" => [
+                  "field" => [
+                      "username" => array(
+                          "esadmin01",
+                          "esadmin02",
+                      ),
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"roles":["user","admin"],"enabled":true,"rules":{"field":{"username":["esadmin01","esadmin02"]}}}''
+      "$ELASTICSEARCH_URL/_security/role_mapping/mapping2"'

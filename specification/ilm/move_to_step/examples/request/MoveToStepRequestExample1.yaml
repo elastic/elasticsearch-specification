@@ -1,5 +1,5 @@
 summary: Move to forcemerge step
-# method_request: POST _ilm/move/my-index-000001
+method_request: POST _ilm/move/my-index-000001
 description: >
   Run `POST _ilm/move/my-index-000001` to move `my-index-000001` from the initial step to the `forcemerge` step.
 # type: request
@@ -16,3 +16,73 @@ value: |-
       "name": "forcemerge"
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ilm.move_to_step(
+          index="my-index-000001",
+          current_step={
+              "phase": "new",
+              "action": "complete",
+              "name": "complete"
+          },
+          next_step={
+              "phase": "warm",
+              "action": "forcemerge",
+              "name": "forcemerge"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ilm.moveToStep({
+        index: "my-index-000001",
+        current_step: {
+          phase: "new",
+          action: "complete",
+          name: "complete",
+        },
+        next_step: {
+          phase: "warm",
+          action: "forcemerge",
+          name: "forcemerge",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.ilm.move_to_step(
+        index: "my-index-000001",
+        body: {
+          "current_step": {
+            "phase": "new",
+            "action": "complete",
+            "name": "complete"
+          },
+          "next_step": {
+            "phase": "warm",
+            "action": "forcemerge",
+            "name": "forcemerge"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ilm()->moveToStep([
+          "index" => "my-index-000001",
+          "body" => [
+              "current_step" => [
+                  "phase" => "new",
+                  "action" => "complete",
+                  "name" => "complete",
+              ],
+              "next_step" => [
+                  "phase" => "warm",
+                  "action" => "forcemerge",
+                  "name" => "forcemerge",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"current_step\":{\"phase\":\"new\",\"action\":\"complete\",\"name\":\"complete\"},\"next_step\":{\"phase\":\"warm\",\"acti\
+      on\":\"forcemerge\",\"name\":\"forcemerge\"}}' \"$ELASTICSEARCH_URL/_ilm/move/my-index-000001\""

@@ -1,5 +1,5 @@
 summary: HTTP-Redirect binding
-# method_request: POST /_security/saml/complete_logout
+method_request: POST /_security/saml/complete_logout
 description: >
   Run `POST /_security/saml/complete_logout` to verify the logout response sent by the SAML IdP using the HTTP-Redirect binding.
 # type: request
@@ -9,3 +9,49 @@ value: |-
     "ids": [ "_1c368075e0b3..." ],
     "query_string": "SAMLResponse=fZHLasMwEEVbfb1bf...&SigAlg=http%3A%2F%2Fwww.w3.org%2F2000%2F09%2Fxmldsig%23rsa-sha1&Signature=CuCmFn%2BLqnaZGZJqK..."
   }
+alternatives:
+  - language: Python
+    code: >-
+      resp = client.security.saml_complete_logout(
+          realm="saml1",
+          ids=[
+              "_1c368075e0b3..."
+          ],
+          query_string="SAMLResponse=fZHLasMwEEVbfb1bf...&SigAlg=http%3A%2F%2Fwww.w3.org%2F2000%2F09%2Fxmldsig%23rsa-sha1&Signature=CuCmFn%2BLqnaZGZJqK...",
+      )
+  - language: JavaScript
+    code: >-
+      const response = await client.security.samlCompleteLogout({
+        realm: "saml1",
+        ids: ["_1c368075e0b3..."],
+        query_string:
+          "SAMLResponse=fZHLasMwEEVbfb1bf...&SigAlg=http%3A%2F%2Fwww.w3.org%2F2000%2F09%2Fxmldsig%23rsa-sha1&Signature=CuCmFn%2BLqnaZGZJqK...",
+      });
+  - language: Ruby
+    code: >-
+      response = client.security.saml_complete_logout(
+        body: {
+          "realm": "saml1",
+          "ids": [
+            "_1c368075e0b3..."
+          ],
+          "query_string": "SAMLResponse=fZHLasMwEEVbfb1bf...&SigAlg=http%3A%2F%2Fwww.w3.org%2F2000%2F09%2Fxmldsig%23rsa-sha1&Signature=CuCmFn%2BLqnaZGZJqK..."
+        }
+      )
+  - language: PHP
+    code: >-
+      $resp = $client->security()->samlCompleteLogout([
+          "body" => [
+              "realm" => "saml1",
+              "ids" => array(
+                  "_1c368075e0b3...",
+              ),
+              "query_string" => "SAMLResponse=fZHLasMwEEVbfb1bf...&SigAlg=http%3A%2F%2Fwww.w3.org%2F2000%2F09%2Fxmldsig%23rsa-sha1&Signature=CuCmFn%2BLqnaZGZJqK...",
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"realm\":\"saml1\",\"ids\":[\"_1c368075e0b3...\"],\"query_string\":\"SAMLResponse=fZHLasMwEEVbfb1bf...&SigAlg=http%3A%2F%2\
+      Fwww.w3.org%2F2000%2F09%2Fxmldsig%23rsa-sha1&Signature=CuCmFn%2BLqnaZGZJqK...\"}'
+      \"$ELASTICSEARCH_URL/_security/saml/complete_logout\""

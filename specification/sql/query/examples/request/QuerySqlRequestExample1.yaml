@@ -1,7 +1,42 @@
 # summary:
-# method_request: POST _sql?format=txt
+method_request: POST _sql?format=txt
 description: Run `POST _sql?format=txt` to get results for an SQL search.
 # type: request
-value:
-  "{\n  \"query\": \"SELECT * FROM library ORDER BY page_count DESC LIMIT 5\"\
-  \n}"
+value: "{
+
+  \  \"query\": \"SELECT * FROM library ORDER BY page_count DESC LIMIT 5\"
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.sql.query(
+          format="txt",
+          query="SELECT * FROM library ORDER BY page_count DESC LIMIT 5",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.sql.query({
+        format: "txt",
+        query: "SELECT * FROM library ORDER BY page_count DESC LIMIT 5",
+      });
+  - language: Ruby
+    code: |-
+      response = client.sql.query(
+        format: "txt",
+        body: {
+          "query": "SELECT * FROM library ORDER BY page_count DESC LIMIT 5"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->sql()->query([
+          "format" => "txt",
+          "body" => [
+              "query" => "SELECT * FROM library ORDER BY page_count DESC LIMIT 5",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"query":"SELECT *
+      FROM library ORDER BY page_count DESC LIMIT 5"}'' "$ELASTICSEARCH_URL/_sql?format=txt"'

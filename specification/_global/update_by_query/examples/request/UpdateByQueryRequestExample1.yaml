@@ -1,5 +1,5 @@
 summary: Update selected documents
-# method_request: POST my-index-000001/_update_by_query?conflicts=proceed
+method_request: POST my-index-000001/_update_by_query?conflicts=proceed
 description: >
   Run `POST my-index-000001/_update_by_query?conflicts=proceed` to update documents that match a query.
 # type: "request"
@@ -11,3 +11,56 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.update_by_query(
+          index="my-index-000001",
+          conflicts="proceed",
+          query={
+              "term": {
+                  "user.id": "kimchy"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.updateByQuery({
+        index: "my-index-000001",
+        conflicts: "proceed",
+        query: {
+          term: {
+            "user.id": "kimchy",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.update_by_query(
+        index: "my-index-000001",
+        conflicts: "proceed",
+        body: {
+          "query": {
+            "term": {
+              "user.id": "kimchy"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->updateByQuery([
+          "index" => "my-index-000001",
+          "conflicts" => "proceed",
+          "body" => [
+              "query" => [
+                  "term" => [
+                      "user.id" => "kimchy",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"query":{"term":{"user.id":"kimchy"}}}'' "$ELASTICSEARCH_URL/my-index-000001/_update_by_query?conflicts=proceed"'

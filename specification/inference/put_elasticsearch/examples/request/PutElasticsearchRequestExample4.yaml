@@ -1,6 +1,8 @@
 summary: Eland text embedding task
-description: Run `PUT _inference/text_embedding/my-msmarco-minilm-model` to create an inference endpoint that performs a `text_embedding` task with a model that was uploaded by Eland.
-# method_request: "PUT _inference/text_embedding/my-msmarco-minilm-model"
+description:
+  Run `PUT _inference/text_embedding/my-msmarco-minilm-model` to create an inference endpoint that performs a
+  `text_embedding` task with a model that was uploaded by Eland.
+method_request: 'PUT _inference/text_embedding/my-msmarco-minilm-model'
 # type: "request"
 value: |-
   {
@@ -11,3 +13,65 @@ value: |-
           "model_id": "msmarco-MiniLM-L12-cos-v5" 
       }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="text_embedding",
+          inference_id="my-msmarco-minilm-model",
+          inference_config={
+              "service": "elasticsearch",
+              "service_settings": {
+                  "num_allocations": 1,
+                  "num_threads": 1,
+                  "model_id": "msmarco-MiniLM-L12-cos-v5"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "text_embedding",
+        inference_id: "my-msmarco-minilm-model",
+        inference_config: {
+          service: "elasticsearch",
+          service_settings: {
+            num_allocations: 1,
+            num_threads: 1,
+            model_id: "msmarco-MiniLM-L12-cos-v5",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "text_embedding",
+        inference_id: "my-msmarco-minilm-model",
+        body: {
+          "service": "elasticsearch",
+          "service_settings": {
+            "num_allocations": 1,
+            "num_threads": 1,
+            "model_id": "msmarco-MiniLM-L12-cos-v5"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "text_embedding",
+          "inference_id" => "my-msmarco-minilm-model",
+          "body" => [
+              "service" => "elasticsearch",
+              "service_settings" => [
+                  "num_allocations" => 1,
+                  "num_threads" => 1,
+                  "model_id" => "msmarco-MiniLM-L12-cos-v5",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"service\":\"elasticsearch\",\"service_settings\":{\"num_allocations\":1,\"num_threads\":1,\"model_id\":\"msmarco-MiniLM-L\
+      12-cos-v5\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-msmarco-minilm-model\""

@@ -1,10 +1,9 @@
 summary: Document routing
-# method_request: "GET /_mget?routing=key1"
+method_request: 'GET /_mget?routing=key1'
 description: >
-  Run `GET /_mget?routing=key1`.
-  If routing is used during indexing, you need to specify the routing value to retrieve documents.
-  This request fetches `test/_doc/2` from the shard corresponding to routing key `key1`.
-  It fetches `test/_doc/1` from the shard corresponding to routing key `key2`.
+  Run `GET /_mget?routing=key1`. If routing is used during indexing, you need to specify the routing value to retrieve documents.
+  This request fetches `test/_doc/2` from the shard corresponding to routing key `key1`. It fetches `test/_doc/1` from the shard
+  corresponding to routing key `key2`.
 # type: "request"
 value: |-
   {
@@ -20,3 +19,77 @@ value: |-
       }
     ]
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.mget(
+          routing="key1",
+          docs=[
+              {
+                  "_index": "test",
+                  "_id": "1",
+                  "routing": "key2"
+              },
+              {
+                  "_index": "test",
+                  "_id": "2"
+              }
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.mget({
+        routing: "key1",
+        docs: [
+          {
+            _index: "test",
+            _id: "1",
+            routing: "key2",
+          },
+          {
+            _index: "test",
+            _id: "2",
+          },
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.mget(
+        routing: "key1",
+        body: {
+          "docs": [
+            {
+              "_index": "test",
+              "_id": "1",
+              "routing": "key2"
+            },
+            {
+              "_index": "test",
+              "_id": "2"
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->mget([
+          "routing" => "key1",
+          "body" => [
+              "docs" => array(
+                  [
+                      "_index" => "test",
+                      "_id" => "1",
+                      "routing" => "key2",
+                  ],
+                  [
+                      "_index" => "test",
+                      "_id" => "2",
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"docs":[{"_index":"test","_id":"1","routing":"key2"},{"_index":"test","_id":"2"}]}''
+      "$ELASTICSEARCH_URL/_mget?routing=key1"'
