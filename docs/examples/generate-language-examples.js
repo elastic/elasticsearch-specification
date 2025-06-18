@@ -21,6 +21,8 @@ const fs = require('fs');
 const path = require('path');
 const { parseDocument: yamlParseDocument } = require('yaml');
 const { convertRequests, loadSchema } = require('@elastic/request-converter');
+const {parseRequest} = require("@elastic/request-converter/dist/parse");
+const {JavaCaller} = require("java-caller");
 
 const LANGUAGES = ['Python', 'JavaScript', 'Ruby', 'PHP', 'curl'];
 
@@ -36,13 +38,58 @@ async function generateLanguages(example) {
       request += '\n' + JSON.stringify(data.value);
     }
   }
-  data.alternatives = [];
+  const alternatives = [];
   for (const lang of LANGUAGES) {
-    data.alternatives.push({
+    alternatives.push({
       language: lang,
       code: (await convertRequests(request, lang, {})).trim(),
     });
   }
+  data.alternatives = alternatives.concat(data.alternatives.filter(pair => !LANGUAGES.includes(pair.language)));
+
+  // specific java example generator
+  if (process.argv[2] === "java") {
+    const partialRequest = await parseRequest(request);
+    const java = new JavaCaller({
+      minimumJavaVersion: 21,
+      jar: "path/to/converter/jar/java-es-request-converter-1.0-SNAPSHOT.jar",
+    });
+
+    let correctParams = getCodeGenParamNames(partialRequest.params, partialRequest.request);
+    let body = partialRequest.body;
+    if (!body) {
+      body = {}
+    }
+
+    let javaReqs = [];
+    const javaParsedRequest = {
+      api: partialRequest.api,
+      params: correctParams,
+      query: partialRequest.query,
+      body: body,
+    };
+    javaReqs.push(javaParsedRequest)
+
+    let args = [];
+    args.push(JSON.stringify(javaReqs));
+
+    const {status, stdout, stderr} = await java.run(args);
+    if (status) {
+      console.log(stderr);
+      console.log(JSON.stringify(javaReqs));
+    }
+    else {
+      const alternative_java = [];
+      alternative_java.push({
+        language: "Java",
+        code: stdout,
+      });
+      // replace old java examples
+      data.alternatives = data.alternatives.filter(pair => pair.language !== "Java");
+      data.alternatives = data.alternatives.concat(alternative_java);
+    }
+  }
+
   doc.delete('alternatives');
   doc.add(doc.createPair('alternatives', data.alternatives));
   await fs.promises.writeFile(example, doc.toString({lineWidth: 132}));
@@ -58,6 +105,23 @@ async function* walkExamples(dir) {
       yield entry;
     }
   }
+}
+
+function getCodeGenParamNames(
+    params,
+    request,
+){
+  for (const [key, value] of Object.entries(params)) {
+    if (request?.path) {
+      for (const prop of request.path) {
+        if (prop.name === key && prop.codegenName !== undefined) {
+          delete params[key];
+          params[prop.codegenName] = value;
+        }
+      }
+    }
+  }
+  return params;
 }
 
 async function main() {
