@@ -72,3 +72,15 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"slice":{"id":0,"max":2},"script":{"source":"ctx._source[''"''"''extra''"''"''] = ''"''"''test''"''"''"}}''
       "$ELASTICSEARCH_URL/my-index-000001/_update_by_query"'
+  - language: Java
+    code: |
+      client.updateByQuery(u -> u
+          .index("my-index-000001")
+          .script(s -> s
+              .source("ctx._source['extra'] = 'test'")
+          )
+          .slice(s -> s
+              .id("0")
+              .max(2)
+          )
+      );

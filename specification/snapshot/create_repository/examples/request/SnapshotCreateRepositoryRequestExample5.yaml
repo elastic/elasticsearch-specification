@@ -69,3 +69,15 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"type":"source","settings":{"delegate_type":"fs","location":"my_backup_repository"}}''
       "$ELASTICSEARCH_URL/_snapshot/my_src_only_repository"'
+  - language: Java
+    code: |
+      client.snapshot().createRepository(c -> c
+          .name("my_src_only_repository")
+          .repository(r -> r
+              .source(s -> s
+                  .settings(se -> se
+                      .delegateType("fs")
+                  )
+              )
+          )
+      );

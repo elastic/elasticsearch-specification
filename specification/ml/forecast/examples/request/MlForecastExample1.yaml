@@ -37,3 +37,11 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"duration":"10d"}''
       "$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_forecast"'
+  - language: Java
+    code: |
+      client.ml().forecast(f -> f
+          .duration(d -> d
+              .time("10d")
+          )
+          .jobId("low_request_rate")
+      );
