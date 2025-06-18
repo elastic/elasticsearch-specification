@@ -21131,7 +21131,7 @@ export interface SnapshotGetRequest extends RequestBase {
   size?: integer
   slm_policy_filter?: Name
   sort?: SnapshotSnapshotSort
-  state?: SnapshotSnapshotState
+  state?: SnapshotSnapshotState | SnapshotSnapshotState[]
   verbose?: boolean
 }
 
