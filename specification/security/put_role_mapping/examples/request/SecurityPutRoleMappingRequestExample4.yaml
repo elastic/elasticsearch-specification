@@ -133,13 +133,11 @@ alternatives:
           .roles("superuser")
           .rules(r -> r
               .any(List.of(RoleMappingRule.of(ro -> ro
-                      .field(f -> f
-                          .username("esadmin"
-                      )
-                  )),RoleMappingRule.of(rol -> rol
-                      .field(fi -> fi
-                          .groups("cn=admins,dc=example,dc=com"
-                      )
-                  ))))
+                      .field(NamedValue.of("username",List.of(FieldValue.of("esadmin"))
+                      ))), RoleMappingRule.of(rol -> rol
+                      .field(NamedValue.of("groups",List.of(FieldValue.of("cn=admins,dc=example,dc=com"))
+                      )))
+                  )
+              )
           )
       );
