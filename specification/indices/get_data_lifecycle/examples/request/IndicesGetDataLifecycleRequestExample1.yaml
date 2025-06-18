@@ -30,3 +30,5 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_data_stream/%7Bname%7D/_lifecycle?human&pretty"'
+  - language: Java
+    code: "\n"

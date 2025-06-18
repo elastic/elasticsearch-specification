@@ -84,3 +84,11 @@ alternatives:
       ''{"doc":{"fullname":"John Doe","text":"test test
       test"},"fields":["fullname"],"per_field_analyzer":{"fullname":"keyword"}}''
       "$ELASTICSEARCH_URL/my-index-000001/_termvectors"'
+  - language: Java
+    code: |
+      client.termvectors(t -> t
+          .doc(JsonData.fromJson("{\"fullname\":\"John Doe\",\"text\":\"test test test\"}"))
+          .fields("fullname")
+          .index("my-index-000001")
+          .perFieldAnalyzer("fullname", "keyword")
+      );

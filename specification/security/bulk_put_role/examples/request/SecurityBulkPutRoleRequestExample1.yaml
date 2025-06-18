@@ -420,3 +420,50 @@ alternatives:
       {\\\"title\\\":
       \\\"foo\\\"}}\"}],\"applications\":[{\"application\":\"myapp\",\"privileges\":[\"admin\",\"read\"],\"resources\":[\"*\"]}],\"\
       run_as\":[\"other_user\"],\"metadata\":{\"version\":1}}}}' \"$ELASTICSEARCH_URL/_security/role\""
+  - language: Java
+    code: |
+      client.security().bulkPutRole(b -> b
+          .roles(Map.of("my_admin_role", RoleDescriptor.of(r -> r
+                  .cluster("all")
+                  .indices(i -> i
+                      .fieldSecurity(f -> f
+                          .grant(List.of("title","body"))
+                      )
+                      .names(List.of("index1","index2"))
+                      .privileges("all")
+                      .query(q -> q
+                          .match(m -> m
+                              .field("title")
+                              .query(FieldValue.of("foo"))
+                          )
+                      )
+                  )
+                  .applications(a -> a
+                      .application("myapp")
+                      .privileges(List.of("admin","read"))
+                      .resources("*")
+                  )
+                  .metadata("version", JsonData.fromJson("1"))
+                  .runAs("other_user")),"my_user_role", RoleDescriptor.of(ro -> ro
+                  .cluster("all")
+                  .indices(i -> i
+                      .fieldSecurity(f -> f
+                          .grant(List.of("title","body"))
+                      )
+                      .names("index1")
+                      .privileges("read")
+                      .query(q -> q
+                          .match(m -> m
+                              .field("title")
+                              .query(FieldValue.of("foo"))
+                          )
+                      )
+                  )
+                  .applications(a -> a
+                      .application("myapp")
+                      .privileges(List.of("admin","read"))
+                      .resources("*")
+                  )
+                  .metadata("version", JsonData.fromJson("1"))
+                  .runAs("other_user"))))
+      );
