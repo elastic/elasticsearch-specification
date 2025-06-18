@@ -73,13 +73,3 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"cohere\",\"service_settings\":{\"api_key\":\"Cohere-Api-key\",\"model_id\":\"embed-english-light-v3.0\",\"emb\
       edding_type\":\"byte\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/cohere-embeddings\""
-  - language: java
-    code: >
-      client.inference().put(p -> p
-      	.inferenceId("cohere-embeddings")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("cohere")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"Cohere-Api-key\",\"model_id\":\"embed-english-light-v3.0\",\"embedding_type\":\"byte\"}"))
-      	)
-      );

@@ -63,13 +63,3 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"voyageai","service_settings":{"model_id":"rerank-2"}}''
       "$ELASTICSEARCH_URL/_inference/rerank/voyageai-rerank"'
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("voyageai-rerank")
-      	.taskType(TaskType.Rerank)
-      	.inferenceConfig(i -> i
-      		.service("voyageai")
-      		.serviceSettings(JsonData.fromJson("{\"model_id\":\"rerank-2\"}"))
-      	)
-      );

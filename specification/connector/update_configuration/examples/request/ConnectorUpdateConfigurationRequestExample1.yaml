@@ -77,9 +77,3 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"values\":{\"tenant_id\":\"my-tenant-id\",\"tenant_name\":\"my-sharepoint-site\",\"client_id\":\"foo\",\"secret_value\":\"\
       bar\",\"site_collections\":\"*\"}}' \"$ELASTICSEARCH_URL/_connector/my-spo-connector/_configuration\""
-  - language: java
-    code: >
-      client.connector().updateConfiguration(u -> u
-      	.connectorId("my-spo-connector")
-      	.values(Map.of("tenant_id", JsonData.fromJson("\"my-tenant-id\""),"tenant_name", JsonData.fromJson("\"my-sharepoint-site\""),"secret_value", JsonData.fromJson("\"bar\""),"client_id", JsonData.fromJson("\"foo\""),"site_collections", JsonData.fromJson("\"*\"")))
-      );

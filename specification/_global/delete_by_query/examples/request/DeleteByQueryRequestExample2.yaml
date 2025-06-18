@@ -64,15 +64,3 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"query":{"term":{"user.id":"kimchy"}},"max_docs":1}'' "$ELASTICSEARCH_URL/my-index-000001/_delete_by_query"'
-  - language: java
-    code: |
-      client.deleteByQuery(d -> d
-      	.index("my-index-000001")
-      	.maxDocs(1L)
-      	.query(q -> q
-      		.term(t -> t
-      			.field("user.id")
-      			.value(FieldValue.of("kimchy"))
-      		)
-      	)
-      );

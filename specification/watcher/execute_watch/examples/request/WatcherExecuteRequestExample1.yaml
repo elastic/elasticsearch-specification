@@ -100,16 +100,3 @@ alternatives:
       '{\"trigger_data\":{\"triggered_time\":\"now\",\"scheduled_time\":\"now\"},\"alternative_input\":{\"foo\":\"bar\"},\"ignore_c\
       ondition\":true,\"action_modes\":{\"my-action\":\"force_simulate\"},\"record_execution\":true}'
       \"$ELASTICSEARCH_URL/_watcher/watch/my_watch/_execute\""
-  - language: java
-    code: |
-      client.watcher().executeWatch(e -> e
-      	.actionModes("my-action", ActionExecutionMode.ForceSimulate)
-      	.alternativeInput("foo", JsonData.fromJson("\"bar\""))
-      	.id("my_watch")
-      	.ignoreCondition(true)
-      	.recordExecution(true)
-      	.triggerData(t -> t
-      		.scheduledTime(DateTime.of("now"))
-      		.triggeredTime(DateTime.of("now"))
-      	)
-      );

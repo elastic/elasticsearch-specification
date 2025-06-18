@@ -80,13 +80,3 @@ alternatives:
       ''{"password":"l0ng-r4nd0m-p@ssw0rd","roles":["admin","other_role1"],"full_name":"Jack
       Nicholson","email":"jacknich@example.com","metadata":{"intelligence":7}}''
       "$ELASTICSEARCH_URL/_security/user/jacknich"'
-  - language: java
-    code: |
-      client.security().putUser(p -> p
-      	.email("jacknich@example.com")
-      	.fullName("Jack Nicholson")
-      	.metadata("intelligence", JsonData.fromJson("7"))
-      	.password("l0ng-r4nd0m-p@ssw0rd")
-      	.roles(List.of("admin","other_role1"))
-      	.username("jacknich")
-      );

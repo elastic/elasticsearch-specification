@@ -57,14 +57,3 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"name":"GeoIP2-Domain","maxmind":{"account_id":"1234567"}}''
       "$ELASTICSEARCH_URL/_ingest/ip_location/database/my-database-1"'
-  - language: java
-    code: |
-      client.ingest().putIpLocationDatabase(p -> p
-      	.id("my-database-1")
-      	.configuration(c -> c
-      		.maxmind(m -> m
-      			.accountId("1234567")
-      		)
-      		.name("GeoIP2-Domain")
-      	)
-      );

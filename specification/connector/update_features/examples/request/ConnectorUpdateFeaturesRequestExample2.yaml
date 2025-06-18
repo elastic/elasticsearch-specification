@@ -64,13 +64,3 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"features":{"document_level_security":{"enabled":true}}}'' "$ELASTICSEARCH_URL/_connector/my-connector/_features"'
-  - language: java
-    code: |
-      client.connector().updateFeatures(u -> u
-      	.connectorId("my-connector")
-      	.features(f -> f
-      		.documentLevelSecurity(d -> d
-      			.enabled(true)
-      		)
-      	)
-      );

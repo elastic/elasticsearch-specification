@@ -43,10 +43,3 @@ alternatives:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"anomaly_score":80,"start":"1454530200001"}''
       "$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/results/buckets"'
-  - language: java
-    code: |
-      client.ml().getBuckets(g -> g
-      	.anomalyScore(80.0D)
-      	.jobId("low_request_rate")
-      	.start(DateTime.of("1454530200001"))
-      );

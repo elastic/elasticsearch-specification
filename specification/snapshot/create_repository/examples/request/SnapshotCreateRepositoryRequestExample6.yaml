@@ -63,15 +63,3 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"type":"url","settings":{"url":"file:/mount/backups/my_fs_backup_location"}}''
       "$ELASTICSEARCH_URL/_snapshot/my_read_only_url_repository"'
-  - language: java
-    code: |
-      client.snapshot().createRepository(c -> c
-      	.name("my_read_only_url_repository")
-      	.repository(r -> r
-      		.url(u -> u
-      			.settings(s -> s
-      				.url("file:/mount/backups/my_fs_backup_location")
-      			)
-      		)
-      	)
-      );

@@ -50,11 +50,3 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"indices":"index_a,index_b"}'' "$ELASTICSEARCH_URL/_snapshot/my_repository/source_snapshot/_clone/target_snapshot"'
-  - language: java
-    code: |
-      client.snapshot().clone(c -> c
-      	.indices("index_a,index_b")
-      	.repository("my_repository")
-      	.snapshot("source_snapshot")
-      	.targetSnapshot("target_snapshot")
-      );

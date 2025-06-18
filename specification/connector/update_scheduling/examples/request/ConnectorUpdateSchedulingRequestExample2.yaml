@@ -71,14 +71,3 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"scheduling":{"full":{"enabled":true,"interval":"0 10 0 * * ?"}}}''
       "$ELASTICSEARCH_URL/_connector/my-connector/_scheduling"'
-  - language: java
-    code: |
-      client.connector().updateScheduling(u -> u
-      	.connectorId("my-connector")
-      	.scheduling(s -> s
-      		.full(f -> f
-      			.enabled(true)
-      			.interval("0 10 0 * * ?")
-      		)
-      	)
-      );

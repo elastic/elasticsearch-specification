@@ -41,9 +41,3 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"input":"The sky
       above the port was the color of television tuned to a dead channel."}''
       "$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model"'
-  - language: java
-    code: |
-      client.inference().sparseEmbedding(s -> s
-      	.inferenceId("my-elser-model")
-      	.input("The sky above the port was the color of television tuned to a dead channel.")
-      );

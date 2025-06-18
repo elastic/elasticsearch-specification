@@ -93,14 +93,3 @@ alternatives:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"docs":[{"_index":"test","_id":"1","routing":"key2"},{"_index":"test","_id":"2"}]}''
       "$ELASTICSEARCH_URL/_mget?routing=key1"'
-  - language: java
-    code: |
-      client.mget(m -> m
-      	.docs(List.of(MultiGetOperation.of(mu -> mu
-      			.id("1")
-      			.index("test")
-      			.routing("key2")),MultiGetOperation.of(mu -> mu
-      			.id("2")
-      			.index("test"))))
-      	.routing("key1")
-      );

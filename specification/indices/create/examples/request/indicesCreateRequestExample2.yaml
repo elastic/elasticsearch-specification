@@ -91,16 +91,3 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"settings":{"number_of_shards":1},"mappings":{"properties":{"field1":{"type":"text"}}}}''
       "$ELASTICSEARCH_URL/test"'
-  - language: java
-    code: |
-      client.indices().create(c -> c
-      	.index("test")
-      	.mappings(m -> m
-      		.properties("field1", p -> p
-      			.text(t -> t)
-      		)
-      	)
-      	.settings(s -> s
-      		.numberOfShards("1")
-      	)
-      );

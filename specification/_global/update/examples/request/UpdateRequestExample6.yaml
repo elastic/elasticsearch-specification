@@ -46,14 +46,3 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"script":"ctx._source[''"''"''my-object''"''"''].remove(''"''"''my-subfield''"''"'')"}''
       "$ELASTICSEARCH_URL/test/_update/1"'
-  - language: java
-    code: |
-      client.update(u -> u
-      	.id("1")
-      	.index("test")
-      	.script(s -> s
-      		.source(so -> so
-      			.scriptString("ctx._source['my-object'].remove('my-subfield')")
-      		)
-      	)
-      ,Void.class);

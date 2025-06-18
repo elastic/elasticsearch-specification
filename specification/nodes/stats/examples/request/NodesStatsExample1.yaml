@@ -27,5 +27,3 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_nodes/stats/process?filter_path=**.max_file_descriptors"'
-  - language: java
-    code: "\n"

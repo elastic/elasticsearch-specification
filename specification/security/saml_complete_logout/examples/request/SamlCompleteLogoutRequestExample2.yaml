@@ -53,10 +53,3 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"realm":"saml1","ids":["_1c368075e0b3..."],"content":"PHNhbWxwOkxvZ291dFJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46..."}''
       "$ELASTICSEARCH_URL/_security/saml/complete_logout"'
-  - language: java
-    code: |
-      client.security().samlCompleteLogout(s -> s
-      	.content("PHNhbWxwOkxvZ291dFJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46...")
-      	.ids("_1c368075e0b3...")
-      	.realm("saml1")
-      );

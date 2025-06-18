@@ -45,8 +45,3 @@ alternatives:
     code:
       'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"names":["my_admin_role","my_user_role"]}'' "$ELASTICSEARCH_URL/_security/role"'
-  - language: java
-    code: |
-      client.security().bulkDeleteRole(b -> b
-      	.names(List.of("my_admin_role","my_user_role"))
-      );

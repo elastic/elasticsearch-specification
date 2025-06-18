@@ -125,22 +125,3 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"query\":{\"match\":{\"query.raw\":\"midi\"}},\"vertices\":[{\"field\":\"product\"}],\"connections\":{\"vertices\":[{\"fie\
       ld\":\"query.raw\"}]}}' \"$ELASTICSEARCH_URL/clicklogs/_graph/explore\""
-  - language: java
-    code: |
-      client.graph().explore(e -> e
-      	.connections(c -> c
-      		.vertices(v -> v
-      			.field("query.raw")
-      		)
-      	)
-      	.index("clicklogs")
-      	.query(q -> q
-      		.match(m -> m
-      			.field("query.raw")
-      			.query(FieldValue.of("midi"))
-      		)
-      	)
-      	.vertices(v -> v
-      		.field("product")
-      	)
-      );

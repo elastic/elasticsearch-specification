@@ -48,11 +48,3 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"description":"Snapshot 1","retain":true}''
       "$ELASTICSEARCH_URL/_ml/anomaly_detectors/it_ops_new_logs/model_snapshots/1491852978/_update"'
-  - language: java
-    code: |
-      client.ml().updateModelSnapshot(u -> u
-      	.description("Snapshot 1")
-      	.jobId("it_ops_new_logs")
-      	.retain(true)
-      	.snapshotId("1491852978")
-      );

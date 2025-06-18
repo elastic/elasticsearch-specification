@@ -139,15 +139,3 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"role_descriptors\":{\"role-a\":{\"indices\":[{\"names\":[\"*\"],\"privileges\":[\"write\"]}]}},\"metadata\":{\"environment\
       \":{\"level\":2,\"trusted\":true,\"tags\":[\"production\"]}}}' \"$ELASTICSEARCH_URL/_security/api_key/VuaCfGcBCdbkQm-e5aOx\""
-  - language: java
-    code: |
-      client.security().updateApiKey(u -> u
-      	.id("VuaCfGcBCdbkQm-e5aOx")
-      	.metadata("environment", JsonData.fromJson("{\"level\":2,\"trusted\":true,\"tags\":[\"production\"]}"))
-      	.roleDescriptors("role-a", r -> r
-      		.indices(i -> i
-      			.names("*")
-      			.privileges("write")
-      		)
-      	)
-      );

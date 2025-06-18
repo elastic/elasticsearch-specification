@@ -37,9 +37,3 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"input":"What is
       Elastic?"}'' "$ELASTICSEARCH_URL/_inference/completion/openai-completion/_stream"'
-  - language: java
-    code: |
-      client.inference().streamCompletion(s -> s
-      	.inferenceId("openai-completion")
-      	.input("What is Elastic?")
-      );

@@ -10,6 +10,3 @@ alternatives:
     code: $resp = $client->migration()->getFeatureUpgradeStatus();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_migration/system_features"'
-  - language: java
-    code: |
-      client.migration().getFeatureUpgradeStatus();

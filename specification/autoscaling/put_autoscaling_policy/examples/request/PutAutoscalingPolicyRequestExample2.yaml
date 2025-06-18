@@ -72,12 +72,3 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"roles":["data_hot"],"deciders":{"fixed":{}}}'' "$ELASTICSEARCH_URL/_autoscaling/policy/my_autoscaling_policy"'
-  - language: java
-    code: |
-      client.autoscaling().putAutoscalingPolicy(p -> p
-      	.name("my_autoscaling_policy")
-      	.policy(po -> po
-      		.roles("data_hot")
-      		.deciders("fixed", JsonData.fromJson("{}"))
-      	)
-      );

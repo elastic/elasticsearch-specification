@@ -35,6 +35,3 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_cat/plugins?v=true&s=component&h=name,component,version,description&format=json"'
-  - language: java
-    code: |
-      client.cat().plugins();

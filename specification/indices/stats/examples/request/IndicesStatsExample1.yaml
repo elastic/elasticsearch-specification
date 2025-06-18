@@ -31,5 +31,3 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_stats/fielddata?human&fields=my_join_field#question"'
-  - language: java
-    code: "\n"

@@ -151,18 +151,3 @@ alternatives:
       '{\"ids\":[\"VuaCfGcBCdbkQm-e5aOx\",\"H3_AhoIBA9hmeQJdg7ij\"],\"role_descriptors\":{\"role-a\":{\"indices\":[{\"names\":[\"*\
       \"],\"privileges\":[\"write\"]}]}},\"metadata\":{\"environment\":{\"level\":2,\"trusted\":true,\"tags\":[\"production\"]}},\"\
       expiration\":\"30d\"}' \"$ELASTICSEARCH_URL/_security/api_key/_bulk_update\""
-  - language: java
-    code: |
-      client.security().bulkUpdateApiKeys(b -> b
-      	.expiration(e -> e
-      		.time("30d")
-      	)
-      	.ids(List.of("VuaCfGcBCdbkQm-e5aOx","H3_AhoIBA9hmeQJdg7ij"))
-      	.metadata("environment", JsonData.fromJson("{\"level\":2,\"trusted\":true,\"tags\":[\"production\"]}"))
-      	.roleDescriptors("role-a", r -> r
-      		.indices(i -> i
-      			.names("*")
-      			.privileges("write")
-      		)
-      	)
-      );

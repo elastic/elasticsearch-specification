@@ -81,13 +81,3 @@ alternatives:
       '{\"service\":\"alibabacloud-ai-search\",\"service_settings\":{\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-text\
       -sparse-embedding-001\",\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"workspace\":\"default\"}}'
       \"$ELASTICSEARCH_URL/_inference/sparse_embedding/alibabacloud_ai_search_sparse\""
-  - language: java
-    code: >
-      client.inference().put(p -> p
-      	.inferenceId("alibabacloud_ai_search_sparse")
-      	.taskType(TaskType.SparseEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("alibabacloud-ai-search")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-text-sparse-embedding-001\",\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"workspace\":\"default\"}"))
-      	)
-      );

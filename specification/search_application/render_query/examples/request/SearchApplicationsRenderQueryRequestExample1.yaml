@@ -95,9 +95,3 @@ alternatives:
       ''{"params":{"query_string":"my first
       query","text_fields":[{"name":"title","boost":5},{"name":"description","boost":1}]}}''
       "$ELASTICSEARCH_URL/_application/search_application/my-app/_render_query"'
-  - language: java
-    code: >
-      client.searchApplication().renderQuery(r -> r
-      	.name("my-app")
-      	.params(Map.of("text_fields", JsonData.fromJson("[{\"name\":\"title\",\"boost\":5},{\"name\":\"description\",\"boost\":1}]"),"query_string", JsonData.fromJson("\"my first query\"")))
-      );

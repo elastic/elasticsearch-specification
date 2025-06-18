@@ -84,13 +84,3 @@ alternatives:
       '{\"service\":\"watsonxai\",\"service_settings\":{\"api_key\":\"Watsonx-API-Key\",\"url\":\"Wastonx-URL\",\"model_id\":\"ibm/\
       slate-30m-english-rtrvr\",\"project_id\":\"IBM-Cloud-ID\",\"api_version\":\"2024-03-14\"}}'
       \"$ELASTICSEARCH_URL/_inference/text_embedding/watsonx-embeddings\""
-  - language: java
-    code: >
-      client.inference().put(p -> p
-      	.inferenceId("watsonx-embeddings")
-      	.taskType(TaskType.TextEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("watsonxai")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"Watsonx-API-Key\",\"url\":\"Wastonx-URL\",\"model_id\":\"ibm/slate-30m-english-rtrvr\",\"project_id\":\"IBM-Cloud-ID\",\"api_version\":\"2024-03-14\"}"))
-      	)
-      );

@@ -47,9 +47,3 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"match_criteria":{"query_string":"puggles"}}'' "$ELASTICSEARCH_URL/_query_rules/my-ruleset/_test"'
-  - language: java
-    code: |
-      client.queryRules().test(t -> t
-      	.matchCriteria("query_string", JsonData.fromJson("\"puggles\""))
-      	.rulesetId("my-ruleset")
-      );

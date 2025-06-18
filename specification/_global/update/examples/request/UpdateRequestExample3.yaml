@@ -86,16 +86,3 @@ alternatives:
       ''{"script":{"source":"if (ctx._source.tags.contains(params.tag)) {
       ctx._source.tags.remove(ctx._source.tags.indexOf(params.tag)) }","lang":"painless","params":{"tag":"blue"}}}''
       "$ELASTICSEARCH_URL/test/_update/1"'
-  - language: java
-    code: >
-      client.update(u -> u
-      	.id("1")
-      	.index("test")
-      	.script(s -> s
-      		.source(so -> so
-      			.scriptString("if (ctx._source.tags.contains(params.tag)) { ctx._source.tags.remove(ctx._source.tags.indexOf(params.tag)) }")
-      		)
-      		.params("tag", JsonData.fromJson("\"blue\""))
-      		.lang("painless")
-      	)
-      ,Void.class);

@@ -68,13 +68,3 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"googleaistudio","service_settings":{"api_key":"api-key","model_id":"model-id"}}''
       "$ELASTICSEARCH_URL/_inference/completion/google_ai_studio_completion"'
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("google_ai_studio_completion")
-      	.taskType(TaskType.Completion)
-      	.inferenceConfig(i -> i
-      		.service("googleaistudio")
-      		.serviceSettings(JsonData.fromJson("{\"api_key\":\"api-key\",\"model_id\":\"model-id\"}"))
-      	)
-      );

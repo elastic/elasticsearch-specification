@@ -138,21 +138,3 @@ alternatives:
       \"status\",\"partition_field_name\":\"app\"}],\"influencers\":[\"source_ip\",\"dest_ip\"]},\"overall_cardinality\":{\"status\
       \":10,\"app\":50},\"max_bucket_cardinality\":{\"source_ip\":300,\"dest_ip\":30}}'
       \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/_estimate_model_memory\""
-  - language: java
-    code: |
-      client.ml().estimateModelMemory(e -> e
-      	.analysisConfig(a -> a
-      		.bucketSpan(b -> b
-      			.time("5m")
-      		)
-      		.detectors(d -> d
-      			.byFieldName("status")
-      			.fieldName("bytes")
-      			.function("sum")
-      			.partitionFieldName("app")
-      		)
-      		.influencers(List.of("source_ip","dest_ip"))
-      	)
-      	.maxBucketCardinality(Map.of("dest_ip", 30L,"source_ip", 300L))
-      	.overallCardinality(Map.of("app", 50L,"status", 10L))
-      );

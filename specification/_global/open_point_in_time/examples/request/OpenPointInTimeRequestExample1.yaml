@@ -31,12 +31,3 @@ alternatives:
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/my-index-000001/_pit?keep_alive=1m&allow_partial_search_results=true"'
-  - language: java
-    code: |
-      client.openPointInTime(o -> o
-      	.allowPartialSearchResults(true)
-      	.index("my-index-000001")
-      	.keepAlive(k -> k
-      		.offset(1)
-      	)
-      );

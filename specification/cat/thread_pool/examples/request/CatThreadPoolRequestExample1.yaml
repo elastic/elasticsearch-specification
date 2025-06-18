@@ -22,6 +22,3 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_cat/thread_pool?format=json"'
-  - language: java
-    code: |
-      client.cat().threadPool();

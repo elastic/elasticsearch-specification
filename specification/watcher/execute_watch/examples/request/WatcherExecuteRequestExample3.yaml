@@ -206,39 +206,3 @@ alternatives:
       ody\":{\"query\":{\"match\":{\"message\":\"error\"}}}}}},\"condition\":{\"compare\":{\"ctx.payload.hits.total\":{\"gt\":0}}},\
       \"actions\":{\"log_error\":{\"logging\":{\"text\":\"Found {{ctx.payload.hits.total}} errors in the logs\"}}}}}'
       \"$ELASTICSEARCH_URL/_watcher/watch/_execute\""
-  - language: java
-    code: |
-      client.watcher().executeWatch(e -> e
-      	.watch(w -> w
-      		.actions("log_error", a -> a
-      			.logging(l -> l
-      				.text("Found {{ctx.payload.hits.total}} errors in the logs")
-      			)
-      		)
-      		.condition(c -> c
-      			.compare(NamedValue.of("ctx.payload.hits.total",Pair.of(ConditionOp.Gt,FieldValue.of(0))))
-      		)
-      		.input(i -> i
-      			.search(s -> s
-      				.request(r -> r
-      					.body(b -> b
-      						.query(q -> q
-      							.match(m -> m
-      								.field("message")
-      								.query(FieldValue.of("error"))
-      							)
-      						)
-      					)
-      					.indices("logs")
-      				)
-      			)
-      		)
-      		.trigger(t -> t
-      			.schedule(sc -> sc
-      				.interval(in -> in
-      					.time("10s")
-      				)
-      			)
-      		)
-      	)
-      );

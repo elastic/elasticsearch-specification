@@ -56,10 +56,3 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"settings":{"index.number_of_shards":2}}'' "$ELASTICSEARCH_URL/my-index-000001/_split/split-my-index-000001"'
-  - language: java
-    code: |
-      client.indices().split(s -> s
-      	.index("my-index-000001")
-      	.settings("index.number_of_shards", JsonData.fromJson("2"))
-      	.target("split-my-index-000001")
-      );

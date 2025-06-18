@@ -65,13 +65,3 @@ alternatives:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"service":"elasticsearch","service_settings":{"deployment_id":".elser_model_2"}}''
       "$ELASTICSEARCH_URL/_inference/sparse_embedding/use_existing_deployment"'
-  - language: java
-    code: |
-      client.inference().put(p -> p
-      	.inferenceId("use_existing_deployment")
-      	.taskType(TaskType.SparseEmbedding)
-      	.inferenceConfig(i -> i
-      		.service("elasticsearch")
-      		.serviceSettings(JsonData.fromJson("{\"deployment_id\":\".elser_model_2\"}"))
-      	)
-      );

@@ -10,6 +10,3 @@ alternatives:
     code: $resp = $client->ssl()->certificates();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ssl/certificates"'
-  - language: java
-    code: |
-      client.ssl().certificates();

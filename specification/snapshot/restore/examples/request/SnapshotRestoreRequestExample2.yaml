@@ -36,6 +36,3 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"indices":"index_1"}'' "$ELASTICSEARCH_URL/_cluster/settings"'
-  - language: java
-    code: |
-      client.cluster().putSettings();
