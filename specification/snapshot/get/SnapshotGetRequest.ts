@@ -151,11 +151,10 @@ export interface Request extends RequestBase {
     /**
      * Only return snapshots with a state found in the given comma-separated list of snapshot states.
      * The default is all snapshot states.
-     * @server_default All snapshot states
      * @availability stack since=9.1.0
      * @availability serverless
      */
-    state?: SnapshotState
+    state?: SnapshotState | SnapshotState[]
     /**
      * If `true`, returns additional information about each snapshot such as the version of Elasticsearch which took the snapshot, the start and end times of the snapshot, and the number of shards snapshotted.
      *
