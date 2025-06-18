@@ -88,3 +88,14 @@ alternatives:
       "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"service\":\"hugging_face\",\"service_settings\":{\"api_key\":\"hugging-face-access-token\",\"url\":\"url-endpoint\"},\"ta\
       sk_settings\":{\"return_documents\":true,\"top_n\":3}}' \"$ELASTICSEARCH_URL/_inference/rerank/hugging-face-rerank\""
+  - language: Java
+    code: |
+      client.inference().put(p -> p
+          .inferenceId("hugging-face-rerank")
+          .taskType(TaskType.Rerank)
+          .inferenceConfig(i -> i
+              .service("hugging_face")
+              .serviceSettings(JsonData.fromJson("{\"api_key\":\"hugging-face-access-token\",\"url\":\"url-endpoint\"}"))
+              .taskSettings(JsonData.fromJson("{\"return_documents\":true,\"top_n\":3}"))
+          )
+      );

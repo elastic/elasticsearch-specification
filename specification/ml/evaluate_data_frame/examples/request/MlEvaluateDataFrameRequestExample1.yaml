@@ -79,3 +79,15 @@ alternatives:
       '{\"index\":\"animal_classification\",\"evaluation\":{\"classification\":{\"actual_field\":\"animal_class\",\"predicted_field\
       \":\"ml.animal_class_prediction\",\"metrics\":{\"multiclass_confusion_matrix\":{}}}}}'
       \"$ELASTICSEARCH_URL/_ml/data_frame/_evaluate\""
+  - language: Java
+    code: |
+      client.ml().evaluateDataFrame(e -> e
+          .evaluation(ev -> ev
+              .classification(c -> c
+                  .actualField("animal_class")
+                  .predictedField("ml.animal_class_prediction")
+                  .metrics(m -> m)
+              )
+          )
+          .index("animal_classification")
+      );

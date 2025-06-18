@@ -274,3 +274,48 @@ alternatives:
       r.triggered_time}}\"}}}}}}}}},\"condition\":{\"compare\":{\"ctx.payload.hits.total\":{\"gt\":0}}},\"actions\":{\"email_admin\
       \":{\"email\":{\"to\":\"admin@domain.host.com\",\"subject\":\"404 recently encountered\"}}}}'
       \"$ELASTICSEARCH_URL/_watcher/watch/my-watch\""
+  - language: Java
+    code: |
+      client.watcher().putWatch(p -> p
+          .actions("email_admin", a -> a
+              .email(e -> e
+                  .subject("404 recently encountered")
+                  .to("admin@domain.host.com")
+              )
+          )
+          .condition(c -> c
+              .compare(NamedValue.of("ctx.payload.hits.total",Pair.of(ConditionOp.Gt,FieldValue.of(0))))
+          )
+          .id("my-watch")
+          .input(i -> i
+              .search(s -> s
+                  .request(r -> r
+                      .body(b -> b
+                          .query(q -> q
+                              .bool(bo -> bo
+                                  .filter(f -> f
+                                      .range(ra -> ra
+                                          .untyped(u -> u
+                                              .field("@timestamp")
+                                          )
+                                      )
+                                  )
+                                  .must(m -> m
+                                      .match(ma -> ma
+                                          .field("response")
+                                          .query(FieldValue.of(404))
+                                      )
+                                  )
+                              )
+                          )
+                      )
+                      .indices("logstash*")
+                  )
+              )
+          )
+          .trigger(t -> t
+              .schedule(sc -> sc
+                  .cron("0 0/1 * * * ?")
+              )
+          )
+      );

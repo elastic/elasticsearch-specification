@@ -129,3 +129,17 @@ alternatives:
       '{\"index_patterns\":[\"te*\",\"bar*\"],\"settings\":{\"number_of_shards\":1},\"mappings\":{\"_source\":{\"enabled\":false}},\
       \"properties\":{\"host_name\":{\"type\":\"keyword\"},\"created_at\":{\"type\":\"date\",\"format\":\"EEE MMM dd HH:mm:ss Z
       yyyy\"}}}' \"$ELASTICSEARCH_URL/_template/template_1\""
+  - language: Java
+    code: |
+      client.indices().putTemplate(p -> p
+          .indexPatterns(List.of("te*","bar*"))
+          .mappings(m -> m
+              .source(s -> s
+                  .enabled(false)
+              )
+          )
+          .name("template_1")
+          .settings(s -> s
+              .numberOfShards("1")
+          )
+      );

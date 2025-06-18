@@ -79,3 +79,10 @@ alternatives:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"input":["luke","like","leia","chewy","r2d2","star","wars"],"query":"star wars main
       character","return_documents":true,"top_n":3}'' "$ELASTICSEARCH_URL/_inference/rerank/bge-reranker-base-mkn"'
+  - language: Java
+    code: |
+      client.inference().rerank(r -> r
+          .inferenceId("bge-reranker-base-mkn")
+          .input(List.of("luke","like","leia","chewy","r2d2","star","wars"))
+          .query("star wars main character")
+      );
