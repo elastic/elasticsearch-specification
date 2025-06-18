@@ -123,8 +123,10 @@ alternatives:
           .rules(r -> r
               .all(List.of(RoleMappingRule.of(ro -> ro
                       .field(NamedValue.of("dn",List.of(FieldValue.of("*,ou=subtree,dc=example,dc=com"))
-                  )),RoleMappingRule.of(rol -> rol
+                      ))), RoleMappingRule.of(rol -> rol
                       .field(NamedValue.of("realm.name",List.of(FieldValue.of("ldap1"))
-                  ))))
+                      )))
+                  )
+              )
           )
       );

@@ -12,5 +12,5 @@ alternatives:
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_watcher/_query/watches"'
   - language: Java
     code: |
-      client.watcher().queryWatches(q -> q)
-      );
+      client.watcher().queryWatches();
+

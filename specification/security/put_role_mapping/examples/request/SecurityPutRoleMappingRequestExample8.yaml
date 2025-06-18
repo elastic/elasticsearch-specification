@@ -223,17 +223,25 @@ alternatives:
           .roles("superuser")
           .rules(r -> r
               .all(List.of(RoleMappingRule.of(ro -> ro
-                      .any(List.of(RoleMappingRule.of(rol -> rol
-                              .field(NamedValue.of("dn",List.of(FieldValue.of("*,ou=admin,dc=example,dc=com"))
-                          )),RoleMappingRule.of(role -> role
-                              .field(NamedValue.of("username",List.of(FieldValue.of("es-admin"),FieldValue.of("es-system"))
-                          )))
-                  )),RoleMappingRule.of(roleM -> roleM
-                      .field(NamedValue.of("groups",List.of(FieldValue.of("cn=people,dc=example,dc=com"))
-                  )),RoleMappingRule.of(roleMa -> roleMa
-                      .except(e -> e
-                          .field(NamedValue.of("metadata.terminated_date",List.of(FieldValue.of(null))
+                          .any(List.of(RoleMappingRule.of(rol -> rol
+                                  .field(NamedValue.of("dn", List.of(FieldValue.of("*,ou=admin," +
+                                      "dc=example,dc=com"))
+                                  ))
+                              ), RoleMappingRule.of(role -> role
+                                  .field(NamedValue.of("username", List.of(FieldValue.of("es-admin"),
+                                      FieldValue.of("es-system"))
+                                  )))), RoleMappingRule.of(roleM -> roleM
+                                  .field(NamedValue.of("groups", List.of(FieldValue.of("cn=people," +
+                                      "dc=example,dc=com"))
+                                  )), RoleMappingRule.of(roleMa -> roleMa
+                                  .except(e -> e
+                                      .field(NamedValue.of("metadata.terminated_date",
+                                          List.of(FieldValue.of(null))
+                                          )
+                                      ))))
+                          )
                       )
-                  ))))
+                  )
+              )
           )
       );

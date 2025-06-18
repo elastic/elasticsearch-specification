@@ -134,8 +134,10 @@ alternatives:
           .rules(r -> r
               .any(List.of(RoleMappingRule.of(ro -> ro
                       .field(NamedValue.of("username",List.of(FieldValue.of("esadmin"))
-                  )),RoleMappingRule.of(rol -> rol
+                      ))), RoleMappingRule.of(rol -> rol
                       .field(NamedValue.of("groups",List.of(FieldValue.of("cn=admins,dc=example,dc=com"))
-                  ))))
+                      )))
+                  )
+              )
           )
       );

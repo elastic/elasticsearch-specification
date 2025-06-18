@@ -49,7 +49,5 @@ alternatives:
     code: |
       client.eql().search(s -> s
           .index("my-data-stream")
-          .query("
-          process where (process.name == "cmd.exe" and process.pid != 2013)
-        ")
+          .query(" process where (process.name == \"cmd.exe\" and process.pid != 2013) ")
       );
