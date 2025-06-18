@@ -75,10 +75,10 @@ alternatives:
   - language: Java
     code: |
       client.reindex(r -> r
-      	.dest(d -> d
-      		.index("my-new-index-000002")
-      	)
-      	.source(s -> s
-      		.index(List.of("my-index-000001","my-index-000002"))
-      	)
+        .dest(d -> d
+          .index("my-new-index-000002")
+        )
+        .source(s -> s
+          .index(List.of("my-index-000001","my-index-000002"))
+        )
       );
