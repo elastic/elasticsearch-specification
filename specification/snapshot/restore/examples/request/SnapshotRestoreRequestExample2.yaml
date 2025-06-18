@@ -38,5 +38,5 @@ alternatives:
       ''{"indices":"index_1"}'' "$ELASTICSEARCH_URL/_cluster/settings"'
   - language: Java
     code: |
-      client.cluster().putSettings(p -> p)
-      );
+      client.cluster().putSettings();
+
