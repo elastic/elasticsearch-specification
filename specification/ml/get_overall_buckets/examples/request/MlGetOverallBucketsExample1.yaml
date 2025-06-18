@@ -43,3 +43,10 @@ alternatives:
       'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"overall_score":80,"start":"1403532000000"}''
       "$ELASTICSEARCH_URL/_ml/anomaly_detectors/job-*/results/overall_buckets"'
+  - language: Java
+    code: |
+      client.ml().getOverallBuckets(g -> g
+          .jobId("job-*")
+          .overallScore("80")
+          .start(DateTime.of("1403532000000"))
+      );

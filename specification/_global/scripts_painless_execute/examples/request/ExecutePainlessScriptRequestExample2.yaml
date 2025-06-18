@@ -100,3 +100,18 @@ alternatives:
       '{\"script\":{\"source\":\"doc['\"'\"'field'\"'\"'].value.length() <=
       params.max_length\",\"params\":{\"max_length\":4}},\"context\":\"filter\",\"context_setup\":{\"index\":\"my-index-000001\",\"\
       document\":{\"field\":\"four\"}}}' \"$ELASTICSEARCH_URL/_scripts/painless/_execute\""
+  - language: Java
+    code: |
+      client.scriptsPainlessExecute(s -> s
+          .context(PainlessContext.Filter)
+          .contextSetup(c -> c
+              .document(JsonData.fromJson("{\"field\":\"four\"}"))
+              .index("my-index-000001")
+          )
+          .script(sc -> sc
+              .source(so -> so
+                  .scriptString("doc['field'].value.length() <= params.max_length")
+              )
+              .params("max_length", JsonData.fromJson("4"))
+          )
+      );

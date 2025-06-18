@@ -78,3 +78,13 @@ alternatives:
     code:
       'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"actions":[{"add":{"index":"my-data-stream","alias":"my-alias"}}]}'' "$ELASTICSEARCH_URL/_aliases"'
+  - language: Java
+    code: |
+      client.indices().updateAliases(u -> u
+          .actions(a -> a
+              .add(ad -> ad
+                  .alias("my-alias")
+                  .index("my-data-stream")
+              )
+          )
+      );

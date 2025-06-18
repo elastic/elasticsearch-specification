@@ -86,3 +86,18 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"current_step\":{\"phase\":\"new\",\"action\":\"complete\",\"name\":\"complete\"},\"next_step\":{\"phase\":\"warm\",\"acti\
       on\":\"forcemerge\",\"name\":\"forcemerge\"}}' \"$ELASTICSEARCH_URL/_ilm/move/my-index-000001\""
+  - language: Java
+    code: |
+      client.ilm().moveToStep(m -> m
+          .currentStep(c -> c
+              .action("complete")
+              .name("complete")
+              .phase("new")
+          )
+          .index("my-index-000001")
+          .nextStep(n -> n
+              .action("forcemerge")
+              .name("forcemerge")
+              .phase("warm")
+          )
+      );

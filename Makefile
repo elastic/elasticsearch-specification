@@ -82,6 +82,10 @@ generate-language-examples:
 	@node docs/examples/generate-language-examples.js
 	@npm run format:fix-examples --prefix compiler
 
+generate-language-examples-with-java:
+	@node docs/examples/generate-language-examples.js java
+	@npm run format:fix-examples --prefix compiler
+
 lint-docs: ## Lint the OpenAPI documents after overlays
 	@npx @redocly/cli lint "output/openapi/elasticsearch-*.json" --config "docs/linters/redocly.yaml" --format stylish --max-problems 500
 
