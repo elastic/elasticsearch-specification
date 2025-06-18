@@ -1,5 +1,5 @@
 summary: Create a pipeline
-# method_request: PUT _logstash/pipeline/my_pipeline
+method_request: PUT _logstash/pipeline/my_pipeline
 description: Run `PUT _logstash/pipeline/my_pipeline` to create a pipeline.
 # type: request
 value:
@@ -17,3 +17,104 @@ value:
     queue.type: memory
     queue.max_bytes: 1gb
     queue.checkpoint.writes: 1024
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.logstash.put_pipeline(
+          id="my_pipeline",
+          pipeline={
+              "description": "Sample pipeline for illustration purposes",
+              "last_modified": "2021-01-02T02:50:51.250Z",
+              "pipeline_metadata": {
+                  "type": "logstash_pipeline",
+                  "version": 1
+              },
+              "username": "elastic",
+              "pipeline": "input {}\\n filter { grok {} }\\n output {}",
+              "pipeline_settings": {
+                  "pipeline.workers": 1,
+                  "pipeline.batch.size": 125,
+                  "pipeline.batch.delay": 50,
+                  "queue.type": "memory",
+                  "queue.max_bytes": "1gb",
+                  "queue.checkpoint.writes": 1024
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.logstash.putPipeline({
+        id: "my_pipeline",
+        pipeline: {
+          description: "Sample pipeline for illustration purposes",
+          last_modified: "2021-01-02T02:50:51.250Z",
+          pipeline_metadata: {
+            type: "logstash_pipeline",
+            version: 1,
+          },
+          username: "elastic",
+          pipeline: "input {}\\n filter { grok {} }\\n output {}",
+          pipeline_settings: {
+            "pipeline.workers": 1,
+            "pipeline.batch.size": 125,
+            "pipeline.batch.delay": 50,
+            "queue.type": "memory",
+            "queue.max_bytes": "1gb",
+            "queue.checkpoint.writes": 1024,
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.logstash.put_pipeline(
+        id: "my_pipeline",
+        body: {
+          "description": "Sample pipeline for illustration purposes",
+          "last_modified": "2021-01-02T02:50:51.250Z",
+          "pipeline_metadata": {
+            "type": "logstash_pipeline",
+            "version": 1
+          },
+          "username": "elastic",
+          "pipeline": "input {}\\n filter { grok {} }\\n output {}",
+          "pipeline_settings": {
+            "pipeline.workers": 1,
+            "pipeline.batch.size": 125,
+            "pipeline.batch.delay": 50,
+            "queue.type": "memory",
+            "queue.max_bytes": "1gb",
+            "queue.checkpoint.writes": 1024
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->logstash()->putPipeline([
+          "id" => "my_pipeline",
+          "body" => [
+              "description" => "Sample pipeline for illustration purposes",
+              "last_modified" => "2021-01-02T02:50:51.250Z",
+              "pipeline_metadata" => [
+                  "type" => "logstash_pipeline",
+                  "version" => 1,
+              ],
+              "username" => "elastic",
+              "pipeline" => "input {}\\n filter { grok {} }\\n output {}",
+              "pipeline_settings" => [
+                  "pipeline.workers" => 1,
+                  "pipeline.batch.size" => 125,
+                  "pipeline.batch.delay" => 50,
+                  "queue.type" => "memory",
+                  "queue.max_bytes" => "1gb",
+                  "queue.checkpoint.writes" => 1024,
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"description\":\"Sample
+      pipeline for illustration
+      purposes\",\"last_modified\":\"2021-01-02T02:50:51.250Z\",\"pipeline_metadata\":{\"type\":\"logstash_pipeline\",\"version\":1\
+      },\"username\":\"elastic\",\"pipeline\":\"input {}\\\\n filter { grok {} }\\\\n output
+      {}\",\"pipeline_settings\":{\"pipeline.workers\":1,\"pipeline.batch.size\":125,\"pipeline.batch.delay\":50,\"queue.type\":\"m\
+      emory\",\"queue.max_bytes\":\"1gb\",\"queue.checkpoint.writes\":1024}}' \"$ELASTICSEARCH_URL/_logstash/pipeline/my_pipeline\""

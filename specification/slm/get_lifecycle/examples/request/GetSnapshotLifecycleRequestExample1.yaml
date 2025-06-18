@@ -1,0 +1,28 @@
+method_request: GET _slm/policy/daily-snapshots?human
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.slm.get_lifecycle(
+          policy_id="daily-snapshots",
+          human=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.slm.getLifecycle({
+        policy_id: "daily-snapshots",
+        human: "true",
+      });
+  - language: Ruby
+    code: |-
+      response = client.slm.get_lifecycle(
+        policy_id: "daily-snapshots",
+        human: "true"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->slm()->getLifecycle([
+          "policy_id" => "daily-snapshots",
+          "human" => "true",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_slm/policy/daily-snapshots?human"'

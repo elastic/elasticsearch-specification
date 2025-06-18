@@ -1,5 +1,5 @@
 summary: Move to warm step
-# method_request: POST _ilm/move/my-index-000001
+method_request: POST _ilm/move/my-index-000001
 description: >
   Run `POST _ilm/move/my-index-000001` to move `my-index-000001` from the end of hot phase into the start of warm.
 # type: request
@@ -14,3 +14,65 @@ value: |-
       "phase": "warm"
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ilm.move_to_step(
+          index="my-index-000001",
+          current_step={
+              "phase": "hot",
+              "action": "complete",
+              "name": "complete"
+          },
+          next_step={
+              "phase": "warm"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ilm.moveToStep({
+        index: "my-index-000001",
+        current_step: {
+          phase: "hot",
+          action: "complete",
+          name: "complete",
+        },
+        next_step: {
+          phase: "warm",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.ilm.move_to_step(
+        index: "my-index-000001",
+        body: {
+          "current_step": {
+            "phase": "hot",
+            "action": "complete",
+            "name": "complete"
+          },
+          "next_step": {
+            "phase": "warm"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ilm()->moveToStep([
+          "index" => "my-index-000001",
+          "body" => [
+              "current_step" => [
+                  "phase" => "hot",
+                  "action" => "complete",
+                  "name" => "complete",
+              ],
+              "next_step" => [
+                  "phase" => "warm",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"current_step":{"phase":"hot","action":"complete","name":"complete"},"next_step":{"phase":"warm"}}''
+      "$ELASTICSEARCH_URL/_ilm/move/my-index-000001"'

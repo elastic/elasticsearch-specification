@@ -1,6 +1,9 @@
 summary: ELSER sparse embedding task
-description: Run `PUT _inference/sparse_embedding/my-elser-model` to create an inference endpoint that performs a `sparse_embedding` task. The `model_id` must be the ID of one of the built-in ELSER models. The API will automatically download the ELSER model if it isn't already downloaded and then deploy the model.
-# method_request: "PUT _inference/sparse_embedding/my-elser-model"
+description:
+  Run `PUT _inference/sparse_embedding/my-elser-model` to create an inference endpoint that performs a `sparse_embedding`
+  task. The `model_id` must be the ID of one of the built-in ELSER models. The API will automatically download the ELSER model if it
+  isn't already downloaded and then deploy the model.
+method_request: 'PUT _inference/sparse_embedding/my-elser-model'
 # type: "request"
 value: |-
   {
@@ -15,3 +18,82 @@ value: |-
           "model_id": ".elser_model_2" 
       }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="sparse_embedding",
+          inference_id="my-elser-model",
+          inference_config={
+              "service": "elasticsearch",
+              "service_settings": {
+                  "adaptive_allocations": {
+                      "enabled": True,
+                      "min_number_of_allocations": 1,
+                      "max_number_of_allocations": 4
+                  },
+                  "num_threads": 1,
+                  "model_id": ".elser_model_2"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "sparse_embedding",
+        inference_id: "my-elser-model",
+        inference_config: {
+          service: "elasticsearch",
+          service_settings: {
+            adaptive_allocations: {
+              enabled: true,
+              min_number_of_allocations: 1,
+              max_number_of_allocations: 4,
+            },
+            num_threads: 1,
+            model_id: ".elser_model_2",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "sparse_embedding",
+        inference_id: "my-elser-model",
+        body: {
+          "service": "elasticsearch",
+          "service_settings": {
+            "adaptive_allocations": {
+              "enabled": true,
+              "min_number_of_allocations": 1,
+              "max_number_of_allocations": 4
+            },
+            "num_threads": 1,
+            "model_id": ".elser_model_2"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "sparse_embedding",
+          "inference_id" => "my-elser-model",
+          "body" => [
+              "service" => "elasticsearch",
+              "service_settings" => [
+                  "adaptive_allocations" => [
+                      "enabled" => true,
+                      "min_number_of_allocations" => 1,
+                      "max_number_of_allocations" => 4,
+                  ],
+                  "num_threads" => 1,
+                  "model_id" => ".elser_model_2",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"service\":\"elasticsearch\",\"service_settings\":{\"adaptive_allocations\":{\"enabled\":true,\"min_number_of_allocations\
+      \":1,\"max_number_of_allocations\":4},\"num_threads\":1,\"model_id\":\".elser_model_2\"}}'
+      \"$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model\""

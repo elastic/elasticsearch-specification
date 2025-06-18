@@ -1,0 +1,37 @@
+method_request: GET /_cat/indices/my-index-*?v=true&s=index&format=json
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cat.indices(
+          index="my-index-*",
+          v=True,
+          s="index",
+          format="json",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cat.indices({
+        index: "my-index-*",
+        v: "true",
+        s: "index",
+        format: "json",
+      });
+  - language: Ruby
+    code: |-
+      response = client.cat.indices(
+        index: "my-index-*",
+        v: "true",
+        s: "index",
+        format: "json"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cat()->indices([
+          "index" => "my-index-*",
+          "v" => "true",
+          "s" => "index",
+          "format" => "json",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_cat/indices/my-index-*?v=true&s=index&format=json"'

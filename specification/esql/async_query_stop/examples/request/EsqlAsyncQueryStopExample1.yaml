@@ -1,0 +1,25 @@
+method_request: POST /_query/async/FkpMRkJGS1gzVDRlM3g4ZzMyRGlLbkEaTXlJZHdNT09TU2VTZVBoNDM3cFZMUToxMDM=/stop
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.esql.async_query_stop(
+          id="FkpMRkJGS1gzVDRlM3g4ZzMyRGlLbkEaTXlJZHdNT09TU2VTZVBoNDM3cFZMUToxMDM=",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.esql.asyncQueryStop({
+        id: "FkpMRkJGS1gzVDRlM3g4ZzMyRGlLbkEaTXlJZHdNT09TU2VTZVBoNDM3cFZMUToxMDM=",
+      });
+  - language: Ruby
+    code: |-
+      response = client.esql.async_query_stop(
+        id: "FkpMRkJGS1gzVDRlM3g4ZzMyRGlLbkEaTXlJZHdNT09TU2VTZVBoNDM3cFZMUToxMDM="
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->esql()->asyncQueryStop([
+          "id" => "FkpMRkJGS1gzVDRlM3g4ZzMyRGlLbkEaTXlJZHdNT09TU2VTZVBoNDM3cFZMUToxMDM=",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_query/async/FkpMRkJGS1gzVDRlM3g4ZzMyRGlLbkEaTXlJZHdNT09TU2VTZVBoNDM3cFZMUToxMDM=/stop"'

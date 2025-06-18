@@ -1,0 +1,45 @@
+method_request: GET _ml/anomaly_detectors/job-*/results/overall_buckets
+description: An example body for a `GET _ml/anomaly_detectors/job-*/results/overall_buckets` request.
+value: |-
+  {
+    "overall_score": 80,
+    "start": "1403532000000"
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.get_overall_buckets(
+          job_id="job-*",
+          overall_score=80,
+          start="1403532000000",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.getOverallBuckets({
+        job_id: "job-*",
+        overall_score: 80,
+        start: 1403532000000,
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.get_overall_buckets(
+        job_id: "job-*",
+        body: {
+          "overall_score": 80,
+          "start": "1403532000000"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->getOverallBuckets([
+          "job_id" => "job-*",
+          "body" => [
+              "overall_score" => 80,
+              "start" => "1403532000000",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"overall_score":80,"start":"1403532000000"}''
+      "$ELASTICSEARCH_URL/_ml/anomaly_detectors/job-*/results/overall_buckets"'

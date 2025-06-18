@@ -1,5 +1,74 @@
 summary: 'Creates an autoscaling policy.'
-# method_request: "PUT /_autoscaling/policy/my_autoscaling_policy"
-description: 'The API method and path for this request: `PUT /_autoscaling/policy/my_autoscaling_policy`. It creates `my_autoscaling_policy` using the fixed autoscaling decider, applying to the set of nodes having (only) the `data_hot` role.'
+method_request: 'PUT /_autoscaling/policy/my_autoscaling_policy'
+description:
+  'The API method and path for this request: `PUT /_autoscaling/policy/my_autoscaling_policy`. It creates
+  `my_autoscaling_policy` using the fixed autoscaling decider, applying to the set of nodes having (only) the `data_hot` role.'
 # type: "request"
-value: "{\n  \"roles\" : [ \"data_hot\" ],\n  \"deciders\": {\n    \"fixed\": {\n    }\n  }\n}"
+value: "{
+
+  \  \"roles\" : [ \"data_hot\" ],
+
+  \  \"deciders\": {
+
+  \    \"fixed\": {
+
+  \    }
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.autoscaling.put_autoscaling_policy(
+          name="my_autoscaling_policy",
+          policy={
+              "roles": [
+                  "data_hot"
+              ],
+              "deciders": {
+                  "fixed": {}
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.autoscaling.putAutoscalingPolicy({
+        name: "my_autoscaling_policy",
+        policy: {
+          roles: ["data_hot"],
+          deciders: {
+            fixed: {},
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.autoscaling.put_autoscaling_policy(
+        name: "my_autoscaling_policy",
+        body: {
+          "roles": [
+            "data_hot"
+          ],
+          "deciders": {
+            "fixed": {}
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->autoscaling()->putAutoscalingPolicy([
+          "name" => "my_autoscaling_policy",
+          "body" => [
+              "roles" => array(
+                  "data_hot",
+              ),
+              "deciders" => [
+                  "fixed" => new ArrayObject([]),
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"roles":["data_hot"],"deciders":{"fixed":{}}}'' "$ELASTICSEARCH_URL/_autoscaling/policy/my_autoscaling_policy"'

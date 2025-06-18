@@ -1,9 +1,10 @@
 summary: Templated roles
-# method_request: POST /_security/role_mapping/mapping9
+method_request: POST /_security/role_mapping/mapping9
 description: >
-  Run `POST /_security/role_mapping/mapping9` to use templated roles to automatically map every user to their own custom role.
-  In this example every user who authenticates using the `cloud-saml` realm will be automatically mapped to two roles: the `saml_user` role and a role that is their username prefixed with `_user_`.
-  For example, the user `nwong` would be assigned the `saml_user` and `_user_nwong` roles.
+  Run `POST /_security/role_mapping/mapping9` to use templated roles to automatically map every user to their own custom role. In
+  this example every user who authenticates using the `cloud-saml` realm will be automatically mapped to two roles: the `saml_user`
+  role and a role that is their username prefixed with `_user_`. For example, the user `nwong` would be assigned the `saml_user` and
+  `_user_nwong` roles.
 # type: request
 value: |-
   {
@@ -14,3 +15,105 @@ value: |-
     ],
     "enabled": true
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.put_role_mapping(
+          name="mapping9",
+          rules={
+              "field": {
+                  "realm.name": "cloud-saml"
+              }
+          },
+          role_templates=[
+              {
+                  "template": {
+                      "source": "saml_user"
+                  }
+              },
+              {
+                  "template": {
+                      "source": "_user_{{username}}"
+                  }
+              }
+          ],
+          enabled=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.putRoleMapping({
+        name: "mapping9",
+        rules: {
+          field: {
+            "realm.name": "cloud-saml",
+          },
+        },
+        role_templates: [
+          {
+            template: {
+              source: "saml_user",
+            },
+          },
+          {
+            template: {
+              source: "_user_{{username}}",
+            },
+          },
+        ],
+        enabled: true,
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.put_role_mapping(
+        name: "mapping9",
+        body: {
+          "rules": {
+            "field": {
+              "realm.name": "cloud-saml"
+            }
+          },
+          "role_templates": [
+            {
+              "template": {
+                "source": "saml_user"
+              }
+            },
+            {
+              "template": {
+                "source": "_user_{{username}}"
+              }
+            }
+          ],
+          "enabled": true
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->putRoleMapping([
+          "name" => "mapping9",
+          "body" => [
+              "rules" => [
+                  "field" => [
+                      "realm.name" => "cloud-saml",
+                  ],
+              ],
+              "role_templates" => array(
+                  [
+                      "template" => [
+                          "source" => "saml_user",
+                      ],
+                  ],
+                  [
+                      "template" => [
+                          "source" => "_user_{{username}}",
+                      ],
+                  ],
+              ),
+              "enabled" => true,
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"rules\":{\"field\":{\"realm.name\":\"cloud-saml\"}},\"role_templates\":[{\"template\":{\"source\":\"saml_user\"}},{\"temp\
+      late\":{\"source\":\"_user_{{username}}\"}}],\"enabled\":true}' \"$ELASTICSEARCH_URL/_security/role_mapping/mapping9\""

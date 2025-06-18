@@ -1,0 +1,12 @@
+method_request: POST _ilm/start
+alternatives:
+  - language: Python
+    code: resp = client.ilm.start()
+  - language: JavaScript
+    code: const response = await client.ilm.start();
+  - language: Ruby
+    code: response = client.ilm.start
+  - language: PHP
+    code: $resp = $client->ilm()->start();
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ilm/start"'

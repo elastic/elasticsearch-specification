@@ -1,0 +1,12 @@
+method_request: GET /
+alternatives:
+  - language: Python
+    code: resp = client.info()
+  - language: JavaScript
+    code: const response = await client.info();
+  - language: Ruby
+    code: response = client.info
+  - language: PHP
+    code: $resp = $client->info();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/"'

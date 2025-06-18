@@ -1,5 +1,5 @@
 summary: Return stored term vectors
-# method_request: GET /my-index-000001/_termvectors/1
+method_request: GET /my-index-000001/_termvectors/1
 description: >
   Run `GET /my-index-000001/_termvectors/1` to return all information and statistics for field `text` in document 1.
 # type: request
@@ -12,3 +12,67 @@ value: |-
     "term_statistics" : true,
     "field_statistics" : true
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.termvectors(
+          index="my-index-000001",
+          id="1",
+          fields=[
+              "text"
+          ],
+          offsets=True,
+          payloads=True,
+          positions=True,
+          term_statistics=True,
+          field_statistics=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.termvectors({
+        index: "my-index-000001",
+        id: 1,
+        fields: ["text"],
+        offsets: true,
+        payloads: true,
+        positions: true,
+        term_statistics: true,
+        field_statistics: true,
+      });
+  - language: Ruby
+    code: |-
+      response = client.termvectors(
+        index: "my-index-000001",
+        id: "1",
+        body: {
+          "fields": [
+            "text"
+          ],
+          "offsets": true,
+          "payloads": true,
+          "positions": true,
+          "term_statistics": true,
+          "field_statistics": true
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->termvectors([
+          "index" => "my-index-000001",
+          "id" => "1",
+          "body" => [
+              "fields" => array(
+                  "text",
+              ),
+              "offsets" => true,
+              "payloads" => true,
+              "positions" => true,
+              "term_statistics" => true,
+              "field_statistics" => true,
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"fields\":[\"text\"],\"offsets\":true,\"payloads\":true,\"positions\":true,\"term_statistics\":true,\"field_statistics\":t\
+      rue}' \"$ELASTICSEARCH_URL/my-index-000001/_termvectors/1\""

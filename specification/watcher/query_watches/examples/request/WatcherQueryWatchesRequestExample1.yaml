@@ -1,0 +1,12 @@
+method_request: GET /_watcher/_query/watches
+alternatives:
+  - language: Python
+    code: resp = client.watcher.query_watches()
+  - language: JavaScript
+    code: const response = await client.watcher.queryWatches();
+  - language: Ruby
+    code: response = client.watcher.query_watches
+  - language: PHP
+    code: $resp = $client->watcher()->queryWatches();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_watcher/_query/watches"'

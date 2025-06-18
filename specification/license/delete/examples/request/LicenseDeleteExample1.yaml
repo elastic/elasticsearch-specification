@@ -1,0 +1,12 @@
+method_request: DELETE /_license
+alternatives:
+  - language: Python
+    code: resp = client.license.delete()
+  - language: JavaScript
+    code: const response = await client.license.delete();
+  - language: Ruby
+    code: response = client.license.delete
+  - language: PHP
+    code: $resp = $client->license()->delete();
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_license"'

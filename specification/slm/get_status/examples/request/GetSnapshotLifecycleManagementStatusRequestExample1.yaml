@@ -1,0 +1,12 @@
+method_request: GET _slm/status
+alternatives:
+  - language: Python
+    code: resp = client.slm.get_status()
+  - language: JavaScript
+    code: const response = await client.slm.getStatus();
+  - language: Ruby
+    code: response = client.slm.get_status
+  - language: PHP
+    code: $resp = $client->slm()->getStatus();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_slm/status"'

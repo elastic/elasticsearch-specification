@@ -1,5 +1,5 @@
 summary: Custom analyzer example 2
-# method_request: GET /_analyze
+method_request: GET /_analyze
 description: Custom tokenizers, token filters, and character filters can be specified in the request body.
 # type: request
 value:
@@ -12,3 +12,77 @@ value:
         - is
         - this
   text: this is a test
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.analyze(
+          tokenizer="whitespace",
+          filter=[
+              "lowercase",
+              {
+                  "type": "stop",
+                  "stopwords": [
+                      "a",
+                      "is",
+                      "this"
+                  ]
+              }
+          ],
+          text="this is a test",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.analyze({
+        tokenizer: "whitespace",
+        filter: [
+          "lowercase",
+          {
+            type: "stop",
+            stopwords: ["a", "is", "this"],
+          },
+        ],
+        text: "this is a test",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.analyze(
+        body: {
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase",
+            {
+              "type": "stop",
+              "stopwords": [
+                "a",
+                "is",
+                "this"
+              ]
+            }
+          ],
+          "text": "this is a test"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->analyze([
+          "body" => [
+              "tokenizer" => "whitespace",
+              "filter" => array(
+                  "lowercase",
+                  [
+                      "type" => "stop",
+                      "stopwords" => array(
+                          "a",
+                          "is",
+                          "this",
+                      ),
+                  ],
+              ),
+              "text" => "this is a test",
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"tokenizer\":\"whitespace\",\"filter\":[\"lowercase\",{\"type\":\"stop\",\"stopwords\":[\"a\",\"is\",\"this\"]}],\"text\":\
+      \"this is a test\"}' \"$ELASTICSEARCH_URL/_analyze\""

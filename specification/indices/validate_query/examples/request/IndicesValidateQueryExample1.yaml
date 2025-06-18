@@ -1,0 +1,28 @@
+method_request: GET my-index-000001/_validate/query?q=user.id:kimchy
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.validate_query(
+          index="my-index-000001",
+          q="user.id:kimchy",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.validateQuery({
+        index: "my-index-000001",
+        q: "user.id:kimchy",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.validate_query(
+        index: "my-index-000001",
+        q: "user.id:kimchy"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->validateQuery([
+          "index" => "my-index-000001",
+          "q" => "user.id:kimchy",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index-000001/_validate/query?q=user.id:kimchy"'
