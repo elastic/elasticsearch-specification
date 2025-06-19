@@ -61,3 +61,16 @@ actions:
         - apiKeyAuth: []
         - basicAuth: []
         - bearerAuth: []
+# Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
+  - target: "$.components['schemas']['_types.aggregations.RandomSamplerAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+# Remove long lists of enum values
+  - target: "$.components['schemas']['cat._types.CatNodeColumn'].anyOf"
+    description: Remove anyOf from cat nodes
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatNodeColumn']"
+    description: Add basic string data type for cat node columns
+    update:
+      type: string
