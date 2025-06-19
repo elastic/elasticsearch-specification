@@ -27,3 +27,5 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_cluster/stats?human&filter_path=indices.mappings.total_deduplicated_mapping_size*"'
+  - language: Java
+    code: "\n"

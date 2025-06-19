@@ -35,6 +35,10 @@ pub struct Cli {
     /// output a redirection map when merging multipath endpoints
     #[argh(switch)]
     pub multipath_redirects: bool,
+
+    /// include the x-codeSamples extension with language examples for all endpoints
+    #[argh(switch)]
+    pub include_language_examples: bool,
 }
 
 impl Cli {
@@ -74,6 +78,7 @@ impl From<Cli> for Configuration {
             lift_enum_descriptions: cli.lift_enum_descriptions,
             merge_multipath_endpoints: cli.merge_multipath_endpoints,
             multipath_redirects: cli.multipath_redirects,
+            include_language_examples: cli.include_language_examples,
             namespaces: if cli.namespace.is_empty() {
                 None
             } else {

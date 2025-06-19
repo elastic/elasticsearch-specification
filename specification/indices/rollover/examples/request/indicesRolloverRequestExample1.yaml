@@ -71,3 +71,16 @@ alternatives:
       "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
       '{\"conditions\":{\"max_age\":\"7d\",\"max_docs\":1000,\"max_primary_shard_size\":\"50gb\",\"max_primary_shard_docs\":\"2000\
       \"}}' \"$ELASTICSEARCH_URL/my-data-stream/_rollover\""
+  - language: Java
+    code: |
+      client.indices().rollover(r -> r
+          .alias("my-data-stream")
+          .conditions(c -> c
+              .maxAge(m -> m
+                  .time("7d")
+              )
+              .maxDocs(1000L)
+              .maxPrimaryShardSize("50gb")
+              .maxPrimaryShardDocs(2000L)
+          )
+      );

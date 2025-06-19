@@ -36,3 +36,11 @@ alternatives:
     code:
       'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"data_retention":"7d"}'' "$ELASTICSEARCH_URL/_data_stream/my-data-stream/_lifecycle"'
+  - language: Java
+    code: |
+      client.indices().putDataLifecycle(p -> p
+          .dataRetention(d -> d
+              .time("7d")
+          )
+          .name("my-data-stream")
+      );

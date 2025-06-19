@@ -106,3 +106,17 @@ alternatives:
       '{\"licenses\":[{\"uid\":\"893361dc-9749-4997-93cb-802e3d7fa4xx\",\"type\":\"basic\",\"issue_date_in_millis\":1411948800000,\
       \"expiry_date_in_millis\":1914278399999,\"max_nodes\":1,\"issued_to\":\"issuedTo\",\"issuer\":\"issuer\",\"signature\":\"xx\"\
       }]}' \"$ELASTICSEARCH_URL/_license\""
+  - language: Java
+    code: |
+      client.license().post(p -> p
+          .licenses(l -> l
+              .expiryDateInMillis(1914278399999L)
+              .issueDateInMillis(1411948800000L)
+              .issuedTo("issuedTo")
+              .issuer("issuer")
+              .maxNodes(1L)
+              .signature("xx")
+              .type(LicenseType.Basic)
+              .uid("893361dc-9749-4997-93cb-802e3d7fa4xx")
+          )
+      );

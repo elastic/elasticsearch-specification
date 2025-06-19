@@ -23,8 +23,9 @@ pub mod cli;
 
 use indexmap::IndexMap;
 
-use clients_schema::{Availabilities, Flavor, IndexedModel, Stability, Visibility};
+use clients_schema::{Availabilities, Availability, Flavor, IndexedModel, Stability, Visibility};
 use openapiv3::{Components, OpenAPI};
+use serde_json::Value;
 use clients_schema::transform::ExpandConfig;
 use crate::components::TypesAndComponents;
 
@@ -43,6 +44,9 @@ pub struct Configuration {
 
     /// Should we output a redirect map when merging multipath endpoints?
     pub multipath_redirects: bool,
+
+    /// include the x-codeSamples extension with language examples for all endpoints
+    pub include_language_examples: bool,
 }
 
 pub struct OpenApiConversion {
@@ -51,7 +55,7 @@ pub struct OpenApiConversion {
 }
 
 /// Convert an API model into an OpenAPI v3 schema, optionally filtered for a given flavor
-pub fn convert_schema(mut schema: IndexedModel, config: Configuration) -> anyhow::Result<OpenApiConversion> {
+pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_meta: IndexMap<String,String>) -> anyhow::Result<OpenApiConversion> {
     // Expand generics
     schema = clients_schema::transform::expand_generics(schema, ExpandConfig::default())?;
 
@@ -72,7 +76,7 @@ pub fn convert_schema(mut schema: IndexedModel, config: Configuration) -> anyhow
         schema = clients_schema::transform::filter_availability(schema, filter)?;
     }
 
-    convert_expanded_schema(&schema, &config)
+    convert_expanded_schema(&schema, &config, &product_meta)
 }
 
 /// Convert an API model into an OpenAPI v3 schema. The input model must have all generics expanded, conversion
@@ -81,7 +85,7 @@ pub fn convert_schema(mut schema: IndexedModel, config: Configuration) -> anyhow
 /// Note: there are ways to represent [generics in JSON Schema], but its unlikely that tooling will understand it.
 ///
 /// [generics in JSON Schema]: https://json-schema.org/blog/posts/dynamicref-and-generics
-pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration) -> anyhow::Result<OpenApiConversion> {
+pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, product_meta: &IndexMap<String,String>) -> anyhow::Result<OpenApiConversion> {
     let mut openapi = OpenAPI {
         openapi: "3.0.3".into(),
         info: info(model),
@@ -119,7 +123,7 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration) -> 
                 continue;
             }
         }
-        paths::add_endpoint(endpoint, &mut tac, &mut openapi.paths)?;
+        paths::add_endpoint(endpoint, &mut tac, &mut openapi.paths, product_meta)?;
     }
 
     // // Sort maps to ensure output stability
@@ -179,30 +183,49 @@ fn info(model: &IndexedModel) -> openapiv3::Info {
     }
 }
 
-pub fn availability_as_extensions(availabilities: &Option<Availabilities>) -> IndexMap<String, serde_json::Value> {
+pub fn product_meta_as_extensions(namespace: &str, product_meta: &IndexMap<String,String>) -> IndexMap<String, Value> {
     let mut result = IndexMap::new();
+    let mut additional_namespace= "".to_string();
+    if let Some(meta) = product_meta.get(namespace) {
+        additional_namespace = format!(", {meta}");
+    }
+    
+    let product_str = format!("elasticsearch{additional_namespace}");
+    result.insert("x-product-feature".to_string(), Value::String(product_str));
+    result
+}
 
+pub fn availability_as_extensions(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>) -> IndexMap<String, Value> {
+    let mut result = IndexMap::new();
+    convert_availabilities(availabilities, flavor, &mut result);
+    result
+}
+
+pub fn convert_availabilities(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>, result: &mut IndexMap<String, Value>) {
     if let Some(avails) = availabilities {
-        // We may have several availabilities, but since generally exists only on stateful (stack)
-        for (_, availability) in avails {
-            if let Some(stability) = &availability.stability {
-                match stability {
+        if let Some(flav) = flavor {
+            if let Some(availability) = avails.get(flav) {
+                let Availability {since,stability,..} = &availability;
+                let stab = stability.clone().unwrap_or(Stability::Stable);
+                let mut since_str = "".to_string();
+                if let Some(since) = since {
+                    since_str = format!("; Added in {since}");
+                }
+                match stab {
                     Stability::Beta => {
-                        result.insert("x-beta".to_string(), serde_json::Value::Bool(true));
+                        let beta_since = format!("Beta{since_str}");
+                        result.insert("x-state".to_string(), Value::String(beta_since));
                     }
                     Stability::Experimental => {
-                        result.insert("x-state".to_string(), serde_json::Value::String("Technical preview".to_string()));
+                        let exp_since = format!("Technical preview{since_str}");
+                        result.insert("x-state".to_string(), Value::String(exp_since));
                     }
-                    Stability::Stable => {
-                        if let Some(since) = &availability.since {
-                            let stable_since = "Added in ".to_string() + since;
-                            result.insert("x-state".to_string(), serde_json::Value::String(stable_since));
-                        }
+                    Stability::Stable => { 
+                        let stable_since = format!("Generally available{since_str}");
+                        result.insert("x-state".to_string(), Value::String(stable_since));
                     }
                 }
             }
         }
     }
-
-    result
 }
