@@ -70,7 +70,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
