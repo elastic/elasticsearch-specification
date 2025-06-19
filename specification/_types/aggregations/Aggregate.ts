@@ -36,7 +36,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Void } from '@spec_utils/VoidValue'
 
 /**
- * @variants external
+ * @variants typed_keys_quirk
  * @non_exhaustive
  * @ext_doc_id search-aggregations
  */
