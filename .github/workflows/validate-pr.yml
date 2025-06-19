@@ -63,15 +63,25 @@ jobs:
         env:
           GCS_CREDENTIALS: ${{ secrets.GCS_CREDENTIALS }}
 
-      - name: Remove previous comment
-        uses: maheshrayas/action-pr-comment-delete@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          org: elastic
-          repo: elasticsearch-specification
-          user: github-actions[bot]
-          issue: ${{ github.event.number }}
-
       - name: Run validation
+        id: validation
         working-directory: ./elasticsearch-specification
         run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Find existing comment
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: 'Following you can find the validation results'
+
+      - name: Create or update comment
+        if: steps.validation.outputs.has_results == 'true'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: ${{ steps.validation.outputs.comment_body }}
+          edit-mode: replace
