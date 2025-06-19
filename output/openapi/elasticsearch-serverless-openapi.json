@@ -7807,6 +7807,9 @@
         ],
         "summary": "Get the status for a data stream lifecycle",
         "description": "Get information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream"
+        },
         "operationId": "indices-explain-data-lifecycle",
         "parameters": [
           {
@@ -7952,6 +7955,9 @@
         ],
         "summary": "Get data stream lifecycles",
         "description": "Get the data stream lifecycle configuration of one or more data streams.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream"
+        },
         "operationId": "indices-get-data-lifecycle",
         "parameters": [
           {
@@ -8034,6 +8040,9 @@
         ],
         "summary": "Update data stream lifecycles",
         "description": "Update the data stream lifecycle of the specified data streams.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream"
+        },
         "operationId": "indices-put-data-lifecycle",
         "parameters": [
           {
