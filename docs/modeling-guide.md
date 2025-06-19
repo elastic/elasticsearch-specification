@@ -334,6 +334,8 @@ An example of internal variants are the type mapping properties.
 
 #### typed_keys_quirk
 
+**Note**: this feature exists because of some early Elasticsearch APIs where tagging was forgotten, and added after the fact using this quirk to avoid breaking compatibility. **It should not be used for new APIs.**
+
 The key that defines the variant is external to the definition, like in the
 case of aggregations in responses or suggesters.
 
