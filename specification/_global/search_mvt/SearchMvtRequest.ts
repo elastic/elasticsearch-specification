@@ -118,7 +118,7 @@ import { ZoomLevel } from './_types/ZoomLevel'
  * Some cells may intersect more than one vector tile.
  * To compute the H3 resolution for each precision, Elasticsearch compares the average density of hexagonal bins at each resolution with the average density of tile bins at each zoom level.
  * Elasticsearch uses the H3 resolution that is closest to the corresponding geotile density.
- * 
+ *
  * Learn how to use the vector tile search API with practical examples in the [Vector tile search examples](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/vector-tile-search) guide.
  * @rest_spec_name search_mvt
  * @availability stack since=7.15.0 stability=stable
