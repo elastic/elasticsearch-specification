@@ -1094,7 +1094,7 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
   const nonExhaustive = (typeof tags.non_exhaustive === 'string') ? true : undefined
 
   const [type, ...values] = tags.variants.split(' ')
-  if (type === 'external') {
+  if (type === 'typed_keys_quirk') {
     return {
       kind: 'external_tag',
       nonExhaustive
