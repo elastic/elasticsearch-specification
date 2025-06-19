@@ -13,4 +13,3 @@ alternatives:
   - language: Java
     code: |
       client.watcher().queryWatches();
-
