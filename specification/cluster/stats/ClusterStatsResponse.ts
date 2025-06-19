@@ -20,7 +20,13 @@
 import { HealthStatus, Name, Uuid } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
-import { CCSStats, ClusterIndices, ClusterNodes } from './types'
+import { Dictionary } from '@spec_utils/Dictionary'
+import {
+  CCSStats,
+  ClusterIndices,
+  ClusterNodes,
+  ClusterSnapshotStats
+} from './types'
 
 export class StatsResponseBase extends NodesResponseBase {
   /**
@@ -40,6 +46,14 @@ export class StatsResponseBase extends NodesResponseBase {
    * @doc_id cluster-nodes
    */
   nodes: ClusterNodes
+  /**
+   * Contains stats on repository feature usage exposed in cluster stats for telemetry.
+   */
+  repositories: Dictionary<Name, Dictionary<Name, long>>
+  /**
+   * Contains stats cluster snapshots.
+   */
+  snapshots: ClusterSnapshotStats
   /**
    * Health status of the cluster, based on the state of its primary and replica shards.
    */
