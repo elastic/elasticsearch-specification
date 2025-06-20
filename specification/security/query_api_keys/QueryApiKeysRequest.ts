@@ -37,7 +37,7 @@ import { ApiKeyAggregationContainer, ApiKeyQueryContainer } from './types'
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_own_api_key, read_security
- * @ext_doc_id
+ * @ext_doc_id security-query-api-keys
  * @doc_id security-api-query-api-key
  */
 export interface Request extends RequestBase {
