@@ -1,0 +1,12 @@
+method_request: GET _watcher/stats
+alternatives:
+  - language: Python
+    code: resp = client.watcher.stats()
+  - language: JavaScript
+    code: const response = await client.watcher.stats();
+  - language: Ruby
+    code: response = client.watcher.stats
+  - language: PHP
+    code: $resp = $client->watcher()->stats();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_watcher/stats"'

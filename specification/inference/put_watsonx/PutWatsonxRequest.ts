@@ -17,13 +17,13 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 import {
   WatsonxServiceSettings,
   WatsonxServiceType,
   WatsonxTaskType
 } from '@inference/_types/CommonTypes'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
 
 /**
  * Create a Watsonx inference endpoint.
@@ -46,8 +46,7 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * The task type.
-     * The only valid task type for the model to perform is `text_embedding`.
+     * The type of the inference task that the model will perform.
      */
     task_type: WatsonxTaskType
     /**

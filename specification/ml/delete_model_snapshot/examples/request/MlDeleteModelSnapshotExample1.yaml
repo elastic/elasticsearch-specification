@@ -1,0 +1,29 @@
+method_request: DELETE _ml/anomaly_detectors/farequote/model_snapshots/1491948163
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.delete_model_snapshot(
+          job_id="farequote",
+          snapshot_id="1491948163",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.deleteModelSnapshot({
+        job_id: "farequote",
+        snapshot_id: 1491948163,
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.delete_model_snapshot(
+        job_id: "farequote",
+        snapshot_id: "1491948163"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->deleteModelSnapshot([
+          "job_id" => "farequote",
+          "snapshot_id" => "1491948163",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_ml/anomaly_detectors/farequote/model_snapshots/1491948163"'

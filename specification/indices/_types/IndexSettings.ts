@@ -17,17 +17,11 @@
  * under the License.
  */
 
-import { IndexRouting } from '@indices/_types/IndexRouting'
-import { AdditionalProperties } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Stringified } from '@spec_utils/Stringified'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { WithNullValue } from '@spec_utils/utils'
 import { Analyzer } from '@_types/analysis/analyzers'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Normalizer } from '@_types/analysis/normalizers'
-import { Tokenizer } from '@_types/analysis/tokenizers'
 import { TokenFilter } from '@_types/analysis/token_filters'
+import { Tokenizer } from '@_types/analysis/tokenizers'
 import {
   ByteSize,
   Name,
@@ -46,6 +40,12 @@ import {
   Normalization
 } from '@_types/Similarity'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
+import { IndexRouting } from '@indices/_types/IndexRouting'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Stringified } from '@spec_utils/Stringified'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { WithNullValue } from '@spec_utils/utils'
 import { IndexSegmentSort } from './IndexSegmentSort'
 
 export class SoftDeletes {
@@ -125,6 +125,8 @@ export class IndexSettings
   max_refresh_listeners?: integer
   /**
    * Settings to define analyzers, tokenizers, token filters and character filters.
+   * Refer to the linked documentation for step-by-step examples of updating analyzers on existing indices.
+   * @ext_doc_id analyzer-update-existing
    */
   analyze?: SettingsAnalyze
   highlight?: SettingsHighlight

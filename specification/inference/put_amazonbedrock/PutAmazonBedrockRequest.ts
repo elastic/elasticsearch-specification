@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 import {
   AmazonBedrockServiceSettings,
   AmazonBedrockServiceType,
@@ -24,13 +26,11 @@ import {
   AmazonBedrockTaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
 
 /**
  * Create an Amazon Bedrock inference endpoint.
  *
- * Creates an inference endpoint to perform an inference task with the `amazonbedrock` service.
+ * Create an inference endpoint to perform an inference task with the `amazonbedrock` service.
  *
  * >info
  * > You need to provide the access and secret keys only once, during the inference model creation. The get inference API does not retrieve your access or secret keys. After creating the inference model, you cannot change the associated key pairs. If you want to use a different access and secret key pair, delete the inference model and recreate it with the same name and the updated keys.

@@ -1,9 +1,110 @@
 summary: Create an ingest pipeline.
-# method_request: PUT _ingest/pipeline/my-pipeline-id
+method_request: PUT _ingest/pipeline/my-pipeline-id
 # description: ''
 # type: request
-value:
-  "{\n  \"description\" : \"My optional pipeline description\",\n  \"processors\"\
-  \ : [\n    {\n      \"set\" : {\n        \"description\" : \"My optional processor\
-  \ description\",\n        \"field\": \"my-keyword-field\",\n        \"value\": \"\
-  foo\"\n      }\n    }\n  ]\n}"
+value: "{
+
+  \  \"description\" : \"My optional pipeline description\",
+
+  \  \"processors\" : [
+
+  \    {
+
+  \      \"set\" : {
+
+  \        \"description\" : \"My optional processor description\",
+
+  \        \"field\": \"my-keyword-field\",
+
+  \        \"value\": \"foo\"
+
+  \      }
+
+  \    }
+
+  \  ]
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ingest.put_pipeline(
+          id="my-pipeline-id",
+          description="My optional pipeline description",
+          processors=[
+              {
+                  "set": {
+                      "description": "My optional processor description",
+                      "field": "my-keyword-field",
+                      "value": "foo"
+                  }
+              }
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ingest.putPipeline({
+        id: "my-pipeline-id",
+        description: "My optional pipeline description",
+        processors: [
+          {
+            set: {
+              description: "My optional processor description",
+              field: "my-keyword-field",
+              value: "foo",
+            },
+          },
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.ingest.put_pipeline(
+        id: "my-pipeline-id",
+        body: {
+          "description": "My optional pipeline description",
+          "processors": [
+            {
+              "set": {
+                "description": "My optional processor description",
+                "field": "my-keyword-field",
+                "value": "foo"
+              }
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ingest()->putPipeline([
+          "id" => "my-pipeline-id",
+          "body" => [
+              "description" => "My optional pipeline description",
+              "processors" => array(
+                  [
+                      "set" => [
+                          "description" => "My optional processor description",
+                          "field" => "my-keyword-field",
+                          "value" => "foo",
+                      ],
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"description":"My
+      optional pipeline description","processors":[{"set":{"description":"My optional processor
+      description","field":"my-keyword-field","value":"foo"}}]}'' "$ELASTICSEARCH_URL/_ingest/pipeline/my-pipeline-id"'
+  - language: Java
+    code: |
+      client.ingest().putPipeline(p -> p
+          .description("My optional pipeline description")
+          .id("my-pipeline-id")
+          .processors(pr -> pr
+              .set(s -> s
+                  .field("my-keyword-field")
+                  .value(JsonData.fromJson("\"foo\""))
+                  .description("My optional processor description")
+              )
+          )
+      );

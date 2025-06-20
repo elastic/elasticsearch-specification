@@ -1,0 +1,48 @@
+summary: Change data stream settings on a data stream that has an index with a metadata block
+description: >
+  This shows a response to `PUT /_data_stream/my-data-stream/_settings` when a setting is successfully applied to the
+  data stream, but one of the backing indices, `.ds-my-data-stream-2025.05.28-000001`, has a write block. The response
+  reports that the setting was not successfully applied to that index.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "data_streams": [
+      {
+        "name": "my-data-stream",
+        "applied_to_data_stream": true,
+        "settings": {
+          "index": {
+            "lifecycle": {
+              "name": "new-test-policy"
+            },
+            "number_of_shards": "11"
+          }
+        },
+        "effective_settings": {
+          "index": {
+            "lifecycle": {
+              "name": "new-test-policy"
+            },
+            "mode": "standard",
+            "number_of_shards": "11",
+            "number_of_replicas": "0"
+          }
+        },
+        "index_settings_results": {
+          "applied_to_data_stream_only": [
+            "index.number_of_shards"
+          ],
+          "applied_to_data_stream_and_backing_indices": [
+            "index.lifecycle.name"
+          ],
+          "errors": [
+            {
+              "index": ".ds-my-data-stream-2025.05.28-000001",
+              "error": "index [.ds-my-data-stream-2025.05.28-000001] blocked by: [FORBIDDEN/9/index metadata (api)];"
+            }
+          ]
+        }
+      }
+    ]
+  }

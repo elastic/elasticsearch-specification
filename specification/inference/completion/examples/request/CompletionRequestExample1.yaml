@@ -1,8 +1,47 @@
 summary: Completion task
 description: Run `POST _inference/completion/openai_chat_completions` to perform a completion on the example question.
-# method_request: "POST _inference/completion/openai_chat_completions"
+method_request: 'POST _inference/completion/openai_chat_completions'
 # type: "request"
 value: |-
   {
     "input": "What is Elastic?"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.completion(
+          inference_id="openai_chat_completions",
+          input="What is Elastic?",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.completion({
+        inference_id: "openai_chat_completions",
+        input: "What is Elastic?",
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.completion(
+        inference_id: "openai_chat_completions",
+        body: {
+          "input": "What is Elastic?"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->completion([
+          "inference_id" => "openai_chat_completions",
+          "body" => [
+              "input" => "What is Elastic?",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"input":"What is
+      Elastic?"}'' "$ELASTICSEARCH_URL/_inference/completion/openai_chat_completions"'
+  - language: Java
+    code: |
+      client.inference().completion(c -> c
+          .inferenceId("openai_chat_completions")
+          .input("What is Elastic?")
+      );

@@ -1,13 +1,225 @@
 # summary: behavioral-analytics/apis/post-analytics-collection-event.asciidoc:69
-# method_request: POST _application/analytics/my_analytics_collection/event/search_click
-description: Run `POST _application/analytics/my_analytics_collection/event/search_click` to send a `search_click` event to an analytics collection called `my_analytics_collection`.
+method_request: POST _application/analytics/my_analytics_collection/event/search_click
+description:
+  Run `POST _application/analytics/my_analytics_collection/event/search_click` to send a `search_click` event to an
+  analytics collection called `my_analytics_collection`.
 # type: request
-value:
-  "{\n  \"session\": {\n    \"id\": \"1797ca95-91c9-4e2e-b1bd-9c38e6f386a9\"\n\
-  \  },\n  \"user\": {\n    \"id\": \"5f26f01a-bbee-4202-9298-81261067abbd\"\n  },\n\
-  \  \"search\":{\n    \"query\": \"search term\",\n    \"results\": {\n      \"items\"\
-  : [\n        {\n          \"document\": {\n            \"id\": \"123\",\n      \
-  \      \"index\": \"products\"\n          }\n        }\n      ],\n      \"total_results\"\
-  : 10\n    },\n    \"sort\": {\n      \"name\": \"relevance\"\n    },\n    \"search_application\"\
-  : \"website\"\n  },\n  \"document\":{\n    \"id\": \"123\",\n    \"index\": \"products\"\
-  \n  }\n}"
+value: "{
+
+  \  \"session\": {
+
+  \    \"id\": \"1797ca95-91c9-4e2e-b1bd-9c38e6f386a9\"
+
+  \  },
+
+  \  \"user\": {
+
+  \    \"id\": \"5f26f01a-bbee-4202-9298-81261067abbd\"
+
+  \  },
+
+  \  \"search\":{
+
+  \    \"query\": \"search term\",
+
+  \    \"results\": {
+
+  \      \"items\": [
+
+  \        {
+
+  \          \"document\": {
+
+  \            \"id\": \"123\",
+
+  \            \"index\": \"products\"
+
+  \          }
+
+  \        }
+
+  \      ],
+
+  \      \"total_results\": 10
+
+  \    },
+
+  \    \"sort\": {
+
+  \      \"name\": \"relevance\"
+
+  \    },
+
+  \    \"search_application\": \"website\"
+
+  \  },
+
+  \  \"document\":{
+
+  \    \"id\": \"123\",
+
+  \    \"index\": \"products\"
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.search_application.post_behavioral_analytics_event(
+          collection_name="my_analytics_collection",
+          event_type="search_click",
+          payload={
+              "session": {
+                  "id": "1797ca95-91c9-4e2e-b1bd-9c38e6f386a9"
+              },
+              "user": {
+                  "id": "5f26f01a-bbee-4202-9298-81261067abbd"
+              },
+              "search": {
+                  "query": "search term",
+                  "results": {
+                      "items": [
+                          {
+                              "document": {
+                                  "id": "123",
+                                  "index": "products"
+                              }
+                          }
+                      ],
+                      "total_results": 10
+                  },
+                  "sort": {
+                      "name": "relevance"
+                  },
+                  "search_application": "website"
+              },
+              "document": {
+                  "id": "123",
+                  "index": "products"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.searchApplication.postBehavioralAnalyticsEvent({
+        collection_name: "my_analytics_collection",
+        event_type: "search_click",
+        payload: {
+          session: {
+            id: "1797ca95-91c9-4e2e-b1bd-9c38e6f386a9",
+          },
+          user: {
+            id: "5f26f01a-bbee-4202-9298-81261067abbd",
+          },
+          search: {
+            query: "search term",
+            results: {
+              items: [
+                {
+                  document: {
+                    id: "123",
+                    index: "products",
+                  },
+                },
+              ],
+              total_results: 10,
+            },
+            sort: {
+              name: "relevance",
+            },
+            search_application: "website",
+          },
+          document: {
+            id: "123",
+            index: "products",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.search_application.post_behavioral_analytics_event(
+        collection_name: "my_analytics_collection",
+        event_type: "search_click",
+        body: {
+          "session": {
+            "id": "1797ca95-91c9-4e2e-b1bd-9c38e6f386a9"
+          },
+          "user": {
+            "id": "5f26f01a-bbee-4202-9298-81261067abbd"
+          },
+          "search": {
+            "query": "search term",
+            "results": {
+              "items": [
+                {
+                  "document": {
+                    "id": "123",
+                    "index": "products"
+                  }
+                }
+              ],
+              "total_results": 10
+            },
+            "sort": {
+              "name": "relevance"
+            },
+            "search_application": "website"
+          },
+          "document": {
+            "id": "123",
+            "index": "products"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->searchApplication()->postBehavioralAnalyticsEvent([
+          "collection_name" => "my_analytics_collection",
+          "event_type" => "search_click",
+          "body" => [
+              "session" => [
+                  "id" => "1797ca95-91c9-4e2e-b1bd-9c38e6f386a9",
+              ],
+              "user" => [
+                  "id" => "5f26f01a-bbee-4202-9298-81261067abbd",
+              ],
+              "search" => [
+                  "query" => "search term",
+                  "results" => [
+                      "items" => array(
+                          [
+                              "document" => [
+                                  "id" => "123",
+                                  "index" => "products",
+                              ],
+                          ],
+                      ),
+                      "total_results" => 10,
+                  ],
+                  "sort" => [
+                      "name" => "relevance",
+                  ],
+                  "search_application" => "website",
+              ],
+              "document" => [
+                  "id" => "123",
+                  "index" => "products",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"session\":{\"id\":\"1797ca95-91c9-4e2e-b1bd-9c38e6f386a9\"},\"user\":{\"id\":\"5f26f01a-bbee-4202-9298-81261067abbd\"},\"\
+      search\":{\"query\":\"search
+      term\",\"results\":{\"items\":[{\"document\":{\"id\":\"123\",\"index\":\"products\"}}],\"total_results\":10},\"sort\":{\"name\
+      \":\"relevance\"},\"search_application\":\"website\"},\"document\":{\"id\":\"123\",\"index\":\"products\"}}'
+      \"$ELASTICSEARCH_URL/_application/analytics/my_analytics_collection/event/search_click\""
+  - language: Java
+    code: >
+      client.searchApplication().postBehavioralAnalyticsEvent(p -> p
+          .collectionName("my_analytics_collection")
+          .eventType(EventType.SearchClick)
+          .payload(JsonData.fromJson("{\"session\":{\"id\":\"1797ca95-91c9-4e2e-b1bd-9c38e6f386a9\"},\"user\":{\"id\":\"5f26f01a-bbee-4202-9298-81261067abbd\"},\"search\":{\"query\":\"search term\",\"results\":{\"items\":[{\"document\":{\"id\":\"123\",\"index\":\"products\"}}],\"total_results\":10},\"sort\":{\"name\":\"relevance\"},\"search_application\":\"website\"},\"document\":{\"id\":\"123\",\"index\":\"products\"}}"))
+      );

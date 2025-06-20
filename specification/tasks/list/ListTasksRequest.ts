@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { GroupBy } from '@tasks/_types/GroupBy'
 import { RequestBase } from '@_types/Base'
 import { Id, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { GroupBy } from '@tasks/_types/GroupBy'
 
 /**
  * Get all tasks.

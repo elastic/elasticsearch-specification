@@ -1,0 +1,47 @@
+method_request: POST _ml/datafeeds/datafeed-low_request_rate/_stop
+description: An example body for a `POST _ml/datafeeds/datafeed-low_request_rate/_stop` request.
+value: |-
+  {
+    "timeout": "30s"
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.stop_datafeed(
+          datafeed_id="datafeed-low_request_rate",
+          timeout="30s",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.stopDatafeed({
+        datafeed_id: "datafeed-low_request_rate",
+        timeout: "30s",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.stop_datafeed(
+        datafeed_id: "datafeed-low_request_rate",
+        body: {
+          "timeout": "30s"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->stopDatafeed([
+          "datafeed_id" => "datafeed-low_request_rate",
+          "body" => [
+              "timeout" => "30s",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"timeout":"30s"}''
+      "$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-low_request_rate/_stop"'
+  - language: Java
+    code: |
+      client.ml().stopDatafeed(s -> s
+          .datafeedId("datafeed-low_request_rate")
+          .timeout(t -> t
+              .time("30s")
+          )
+      );

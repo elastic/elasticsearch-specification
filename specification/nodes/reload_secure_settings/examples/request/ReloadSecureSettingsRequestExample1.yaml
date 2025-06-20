@@ -1,8 +1,42 @@
 # summary:
-# method_request: POST _nodes/reload_secure_settings
+method_request: POST _nodes/reload_secure_settings
 description: Run `POST _nodes/reload_secure_settings` to reload the keystore on nodes in the cluster.
 # type: request
 value: |-
   {
     "secure_settings_password": "keystore-password"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.nodes.reload_secure_settings(
+          secure_settings_password="keystore-password",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.nodes.reloadSecureSettings({
+        secure_settings_password: "keystore-password",
+      });
+  - language: Ruby
+    code: |-
+      response = client.nodes.reload_secure_settings(
+        body: {
+          "secure_settings_password": "keystore-password"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->nodes()->reloadSecureSettings([
+          "body" => [
+              "secure_settings_password" => "keystore-password",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"secure_settings_password":"keystore-password"}'' "$ELASTICSEARCH_URL/_nodes/reload_secure_settings"'
+  - language: Java
+    code: |
+      client.nodes().reloadSecureSettings(r -> r
+          .secureSettingsPassword("keystore-password")
+      );

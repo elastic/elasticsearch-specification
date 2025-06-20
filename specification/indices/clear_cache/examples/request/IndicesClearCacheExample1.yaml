@@ -1,0 +1,29 @@
+method_request: POST /my-index-000001,my-index-000002/_cache/clear?request=true
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.clear_cache(
+          index="my-index-000001,my-index-000002",
+          request=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.clearCache({
+        index: "my-index-000001,my-index-000002",
+        request: "true",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.clear_cache(
+        index: "my-index-000001,my-index-000002",
+        request: "true"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->clearCache([
+          "index" => "my-index-000001,my-index-000002",
+          "request" => "true",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/my-index-000001,my-index-000002/_cache/clear?request=true"'

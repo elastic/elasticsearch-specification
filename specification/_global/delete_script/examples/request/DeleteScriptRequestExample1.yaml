@@ -1,0 +1,24 @@
+method_request: DELETE _scripts/my-search-template
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.delete_script(
+          id="my-search-template",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.deleteScript({
+        id: "my-search-template",
+      });
+  - language: Ruby
+    code: |-
+      response = client.delete_script(
+        id: "my-search-template"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->deleteScript([
+          "id" => "my-search-template",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_scripts/my-search-template"'

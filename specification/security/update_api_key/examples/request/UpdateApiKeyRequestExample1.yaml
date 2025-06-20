@@ -1,5 +1,5 @@
 summary: Update role and metadata
-# method_request: PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx
+method_request: PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx
 description: >
   Run `PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx` to assign new role descriptors and metadata to an API key.
 # type: request
@@ -23,3 +23,131 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.update_api_key(
+          id="VuaCfGcBCdbkQm-e5aOx",
+          role_descriptors={
+              "role-a": {
+                  "indices": [
+                      {
+                          "names": [
+                              "*"
+                          ],
+                          "privileges": [
+                              "write"
+                          ]
+                      }
+                  ]
+              }
+          },
+          metadata={
+              "environment": {
+                  "level": 2,
+                  "trusted": True,
+                  "tags": [
+                      "production"
+                  ]
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.updateApiKey({
+        id: "VuaCfGcBCdbkQm-e5aOx",
+        role_descriptors: {
+          "role-a": {
+            indices: [
+              {
+                names: ["*"],
+                privileges: ["write"],
+              },
+            ],
+          },
+        },
+        metadata: {
+          environment: {
+            level: 2,
+            trusted: true,
+            tags: ["production"],
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.update_api_key(
+        id: "VuaCfGcBCdbkQm-e5aOx",
+        body: {
+          "role_descriptors": {
+            "role-a": {
+              "indices": [
+                {
+                  "names": [
+                    "*"
+                  ],
+                  "privileges": [
+                    "write"
+                  ]
+                }
+              ]
+            }
+          },
+          "metadata": {
+            "environment": {
+              "level": 2,
+              "trusted": true,
+              "tags": [
+                "production"
+              ]
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->updateApiKey([
+          "id" => "VuaCfGcBCdbkQm-e5aOx",
+          "body" => [
+              "role_descriptors" => [
+                  "role-a" => [
+                      "indices" => array(
+                          [
+                              "names" => array(
+                                  "*",
+                              ),
+                              "privileges" => array(
+                                  "write",
+                              ),
+                          ],
+                      ),
+                  ],
+              ],
+              "metadata" => [
+                  "environment" => [
+                      "level" => 2,
+                      "trusted" => true,
+                      "tags" => array(
+                          "production",
+                      ),
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"role_descriptors\":{\"role-a\":{\"indices\":[{\"names\":[\"*\"],\"privileges\":[\"write\"]}]}},\"metadata\":{\"environment\
+      \":{\"level\":2,\"trusted\":true,\"tags\":[\"production\"]}}}' \"$ELASTICSEARCH_URL/_security/api_key/VuaCfGcBCdbkQm-e5aOx\""
+  - language: Java
+    code: |
+      client.security().updateApiKey(u -> u
+          .id("VuaCfGcBCdbkQm-e5aOx")
+          .metadata("environment", JsonData.fromJson("{\"level\":2,\"trusted\":true,\"tags\":[\"production\"]}"))
+          .roleDescriptors("role-a", r -> r
+              .indices(i -> i
+                  .names("*")
+                  .privileges("write")
+              )
+          )
+      );

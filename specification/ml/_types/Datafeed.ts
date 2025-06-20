@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { DatafeedAuthorization } from '@ml/_types/Authorization'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { Id, Indices, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
@@ -32,6 +30,8 @@ import {
   UnitFloatMillis,
   UnitMillis
 } from '@_types/Time'
+import { DatafeedAuthorization } from '@ml/_types/Authorization'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { DiscoveryNodeCompact } from './DiscoveryNode'
 
 export class Datafeed {

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Policy } from '@ilm/_types/Policy'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Policy } from '@ilm/_types/Policy'
 
 /**
  * Create or update a lifecycle policy.

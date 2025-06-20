@@ -150,7 +150,7 @@ Or better yet, to completely avoid using dynamic keys the user-defined value can
 
 ### Model object variants in a consumable way
 
-Sometimes an API accepts an object but the keys are determined by what "kind/variant" of the object is intended. An example of this is aggregations, queries, and pipeline steps. There are two ways the Elasticsearch API handles this situation. The first method is using an **internal variant type** property like "type" with analyzers:
+Sometimes an API accepts an object but the keys are determined by what "kind/variant" of the object is intended. An example of this is aggregations, queries, and pipeline steps. There are two ways the Elasticsearch API handles this situation. The first method is using **internal tagging** with property like "type" with analyzers:
 
 ```yaml
 {
@@ -159,7 +159,7 @@ Sometimes an API accepts an object but the keys are determined by what "kind/var
 }
 ```
 
-The second is using **external variants** where the inner object is wrapped with an object with a single key containing the kind of the inner object. This example changes the analyzer from above to use an external variant:
+The second is using **external tagging** where the inner object is wrapped with an object with a single key containing the kind of the inner object. This example changes the analyzer from above to use an external variant:
 
 ```yaml
 {
@@ -169,7 +169,7 @@ The second is using **external variants** where the inner object is wrapped with
 }
 ```
 
-When choosing between these two possibilities **favor using external variants** as it removes the requirement to buffer key-value pairs until the internal variant property is found. Using external variants also improves traversability of the API (ie auto-complete) as properties can be anticipated without waiting for the discriminant property.
+Internal tagging is a common way to identify variants and should usually be preferred. However, it may have performance implications when used to deserialize large objects in strongly-typed languages. In that case, external tagging should be considered instead, as it removes the requirement to buffer key-value pairs until the internal variant property is found. Using external tagging also improves traversability of the API (ie auto-complete) as properties can be anticipated without waiting for the discriminant property.
 
 ## Model enumerations in a portable way
 

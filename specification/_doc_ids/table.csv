@@ -1,3 +1,4 @@
+ack-watch, https://www.elastic.co/docs/explore-analyze/alerts-cases/watcher/actions#example
 apis,https://www.elastic.co/docs/api/doc/elasticsearch
 add-nodes,https://www.elastic.co/docs/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes
 alias-update,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-alias
@@ -14,6 +15,7 @@ analysis-tokenizers,https://www.elastic.co/docs/reference/text-analysis/tokenize
 analysis,https://www.elastic.co/docs/manage-data/data-store/text-analysis
 analyze-repository,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze
 analyzer-anatomy,https://www.elastic.co/docs/manage-data/data-store/text-analysis/anatomy-of-an-analyzer
+analyzer-update-existing,https://www.elastic.co/docs/manage-data/data-store/text-analysis/specify-an-analyzer#update-analyzers-on-existing-indices
 anthropic-messages,https://docs.anthropic.com/en/api/messages
 anthropic-models,https://docs.anthropic.com/en/docs/about-claude/models/all-models#model-names
 api-date-math-index-names,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#api-date-math-index-names
@@ -87,6 +89,7 @@ clear-repositories-metering-archive-api,https://www.elastic.co/docs/api/doc/elas
 clear-scroll-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-clear-scroll
 clear-trained-model,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-clear-trained-model-deployment-cache
 cluster-allocation-explain,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain
+cluster-allocation-explain-examples,https://www.elastic.co/docs/troubleshoot/elasticsearch/cluster-allocation-api-examples
 cluster-get-settings,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings
 cluster-health,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health
 cluster-info,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-info
@@ -151,6 +154,7 @@ data-stream-delete-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/o
 data-stream-explain-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle
 data-stream-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream
 data-stream-get-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-lifecycle
+data-stream-lifecycle,https://www.elastic.co/docs/manage-data/lifecycle/data-stream
 data-stream-lifecycle-stats,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-lifecycle-stats
 data-stream-migrate,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-migrate-to-data-stream
 data-stream-promote,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-promote-data-stream
@@ -221,6 +225,7 @@ field-usage-stats,https://www.elastic.co/docs/api/doc/elasticsearch/operation/op
 find-field-structure,https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-text_structure
 find-message-structure,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-text-structure-find-message-structure
 find-structure,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-text-structure-find-structure
+find-text-structure-examples,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/find-text-structure-examples
 fingerprint-processor,https://www.elastic.co/docs/reference/enrich-processor/fingerprint-processor
 fleet-multi-search,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-fleet-msearch
 fleet-search,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-fleet-search
@@ -260,6 +265,7 @@ grok,https://www.elastic.co/docs/explore-analyze/scripting/grok
 grok-processor,https://www.elastic.co/docs/reference/enrich-processor/grok-processor
 gsub-processor,https://www.elastic.co/docs/reference/enrich-processor/gsub-processor
 health-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report
+huggingface-chat-completion-interface,https://huggingface.co/docs/inference-providers/en/tasks/chat-completion#conversational-large-language-models-llms
 huggingface-tokens,https://huggingface.co/settings/tokens
 ilm-delete-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-delete-lifecycle
 ilm-explain-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle
@@ -306,6 +312,7 @@ indices-exists,https://www.elastic.co/docs/api/doc/elasticsearch/operation/opera
 indices-flush,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-flush
 indices-forcemerge,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge
 indices-get-alias,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-alias
+indices-get-data-stream-settings,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream-settings
 indices-get-field-mapping,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping
 indices-get-index,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get
 indices-get-mapping,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping
@@ -313,9 +320,11 @@ indices-get-settings,https://www.elastic.co/docs/api/doc/elasticsearch/operation
 indices-get-template,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-index-template
 indices-get-template-v1,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-template
 indices-open-close,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-open
+indices-put-data-stream-settings,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-stream-settings
 indices-put-mapping,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping
 indices-recovery,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-recovery
 indices-refresh,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh
+indices-refresh-disable,https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval
 indices-reload-analyzers,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-reload-search-analyzers
 indices-resolve-cluster-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-cluster
 indices-resolve-index-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index
@@ -577,6 +586,7 @@ redact-processor,https://www.elastic.co/docs/reference/enrich-processor/redact-p
 regexp-syntax,https://www.elastic.co/docs/reference/query-languages/query-dsl/regexp-syntax
 register-repository,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/self-managed
 registered-domain-processor,https://www.elastic.co/docs/reference/enrich-processor/registered-domain-processor
+reindex-indices,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reindex-indices
 relevance-scores,https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl#relevance-scores
 remove-processor,https://www.elastic.co/docs/reference/enrich-processor/remove-processor
 remote-clusters-api-key,https://www.elastic.co/docs/deploy-manage/remote-clusters/remote-clusters-api-key
@@ -850,6 +860,7 @@ sql-rest-format,https://www.elastic.co/docs/explore-analyze/query-filter/languag
 sql-search-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query
 sql-spec,https://www.elastic.co/docs/reference/query-languages/sql/sql-spec
 sql-translate-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-translate
+stack-settings,https://www.elastic.co/docs/deploy-manage/stack-settings
 start-basic,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-post-start-basic
 start-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-data-frame-analytics
 start-trained-model-deployment,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment
@@ -871,6 +882,7 @@ synonym-solr,https://www.elastic.co/docs/reference/text-analysis/analysis-synony
 supported-flags,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-simple-query-string-query#supported-flags
 tasks,https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks
 templating-role-query,https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level#templating-role-query
+term-vectors-examples,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/term-vectors-examples
 terminate-processor,https://www.elastic.co/docs/reference/enrich-processor/terminate-processor
 test-grok-pattern,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-text-structure-test-grok-pattern
 time-value,https://github.com/elastic/elasticsearch/blob/current/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java

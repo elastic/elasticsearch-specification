@@ -264,7 +264,7 @@ pub struct Availability {
     pub visibility: Option<Visibility>,
 }
 
-/// The availability of an
+/// The availability of an endpoint, field or parameter
 pub type Availabilities = IndexMap<Flavor, Availability>;
 
 pub trait AvailabilityFilter: Fn(&Option<Availabilities>) -> bool {}
@@ -484,19 +484,28 @@ impl TypeDefinition {
 
 /// The Example type is used for both requests and responses.
 ///
-/// This type definition is taken from the OpenAPI spec
+/// This type definition is based on the OpenAPI spec
 ///     https://spec.openapis.org/oas/v3.1.0#example-object
-/// with the exception of using String as the 'value' type.
+/// with the exception of using String as the 'value' type,
+/// and some custom additions.
 ///
 /// The OpenAPI v3 spec also defines the 'Example' type, so
 /// to distinguish them, this type is called SchemaExample.
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ExampleAlternative {
+    pub language: String,
+    pub code: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SchemaExample {
     pub summary: Option<String>,
+    pub method_request: Option<String>,
     pub description: Option<String>,
     pub value: Option<String>,
     pub external_value: Option<String>,
+    pub alternatives: Option<Vec<ExampleAlternative>>,
 }
 
 /// Common attributes for all type definitions

@@ -1,11 +1,9 @@
 # summary:
-# method_request: PUT _watcher/watch/my-watch
+method_request: PUT _watcher/watch/my-watch
 description: >
-  Run `PUT _watcher/watch/my-watch` add a watch.
-  The watch schedule triggers every minute.
-  The watch search input looks for any 404 HTTP responses that occurred in the last five minutes.
-  The watch condition checks if any search hits where found.
-  When found, the watch action sends an email to an administrator.
+  Run `PUT _watcher/watch/my-watch` add a watch. The watch schedule triggers every minute. The watch search input looks for any 404
+  HTTP responses that occurred in the last five minutes. The watch condition checks if any search hits where found. When found, the
+  watch action sends an email to an administrator.
 # type: request
 value: |-
   {
@@ -52,3 +50,272 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.watcher.put_watch(
+          id="my-watch",
+          trigger={
+              "schedule": {
+                  "cron": "0 0/1 * * * ?"
+              }
+          },
+          input={
+              "search": {
+                  "request": {
+                      "indices": [
+                          "logstash*"
+                      ],
+                      "body": {
+                          "query": {
+                              "bool": {
+                                  "must": {
+                                      "match": {
+                                          "response": 404
+                                      }
+                                  },
+                                  "filter": {
+                                      "range": {
+                                          "@timestamp": {
+                                              "from": "{{ctx.trigger.scheduled_time}}||-5m",
+                                              "to": "{{ctx.trigger.triggered_time}}"
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          },
+          condition={
+              "compare": {
+                  "ctx.payload.hits.total": {
+                      "gt": 0
+                  }
+              }
+          },
+          actions={
+              "email_admin": {
+                  "email": {
+                      "to": "admin@domain.host.com",
+                      "subject": "404 recently encountered"
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.watcher.putWatch({
+        id: "my-watch",
+        trigger: {
+          schedule: {
+            cron: "0 0/1 * * * ?",
+          },
+        },
+        input: {
+          search: {
+            request: {
+              indices: ["logstash*"],
+              body: {
+                query: {
+                  bool: {
+                    must: {
+                      match: {
+                        response: 404,
+                      },
+                    },
+                    filter: {
+                      range: {
+                        "@timestamp": {
+                          from: "{{ctx.trigger.scheduled_time}}||-5m",
+                          to: "{{ctx.trigger.triggered_time}}",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        condition: {
+          compare: {
+            "ctx.payload.hits.total": {
+              gt: 0,
+            },
+          },
+        },
+        actions: {
+          email_admin: {
+            email: {
+              to: "admin@domain.host.com",
+              subject: "404 recently encountered",
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.watcher.put_watch(
+        id: "my-watch",
+        body: {
+          "trigger": {
+            "schedule": {
+              "cron": "0 0/1 * * * ?"
+            }
+          },
+          "input": {
+            "search": {
+              "request": {
+                "indices": [
+                  "logstash*"
+                ],
+                "body": {
+                  "query": {
+                    "bool": {
+                      "must": {
+                        "match": {
+                          "response": 404
+                        }
+                      },
+                      "filter": {
+                        "range": {
+                          "@timestamp": {
+                            "from": "{{ctx.trigger.scheduled_time}}||-5m",
+                            "to": "{{ctx.trigger.triggered_time}}"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "condition": {
+            "compare": {
+              "ctx.payload.hits.total": {
+                "gt": 0
+              }
+            }
+          },
+          "actions": {
+            "email_admin": {
+              "email": {
+                "to": "admin@domain.host.com",
+                "subject": "404 recently encountered"
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->watcher()->putWatch([
+          "id" => "my-watch",
+          "body" => [
+              "trigger" => [
+                  "schedule" => [
+                      "cron" => "0 0/1 * * * ?",
+                  ],
+              ],
+              "input" => [
+                  "search" => [
+                      "request" => [
+                          "indices" => array(
+                              "logstash*",
+                          ),
+                          "body" => [
+                              "query" => [
+                                  "bool" => [
+                                      "must" => [
+                                          "match" => [
+                                              "response" => 404,
+                                          ],
+                                      ],
+                                      "filter" => [
+                                          "range" => [
+                                              "@timestamp" => [
+                                                  "from" => "{{ctx.trigger.scheduled_time}}||-5m",
+                                                  "to" => "{{ctx.trigger.triggered_time}}",
+                                              ],
+                                          ],
+                                      ],
+                                  ],
+                              ],
+                          ],
+                      ],
+                  ],
+              ],
+              "condition" => [
+                  "compare" => [
+                      "ctx.payload.hits.total" => [
+                          "gt" => 0,
+                      ],
+                  ],
+              ],
+              "actions" => [
+                  "email_admin" => [
+                      "email" => [
+                          "to" => "admin@domain.host.com",
+                          "subject" => "404 recently encountered",
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"trigger\":{\"schedule\":{\"cron\":\"0 0/1 * * *
+      ?\"}},\"input\":{\"search\":{\"request\":{\"indices\":[\"logstash*\"],\"body\":{\"query\":{\"bool\":{\"must\":{\"match\":{\"r\
+      esponse\":404}},\"filter\":{\"range\":{\"@timestamp\":{\"from\":\"{{ctx.trigger.scheduled_time}}||-5m\",\"to\":\"{{ctx.trigge\
+      r.triggered_time}}\"}}}}}}}}},\"condition\":{\"compare\":{\"ctx.payload.hits.total\":{\"gt\":0}}},\"actions\":{\"email_admin\
+      \":{\"email\":{\"to\":\"admin@domain.host.com\",\"subject\":\"404 recently encountered\"}}}}'
+      \"$ELASTICSEARCH_URL/_watcher/watch/my-watch\""
+  - language: Java
+    code: |
+      client.watcher().putWatch(p -> p
+          .actions("email_admin", a -> a
+              .email(e -> e
+                  .subject("404 recently encountered")
+                  .to("admin@domain.host.com")
+              )
+          )
+          .condition(c -> c
+              .compare(NamedValue.of("ctx.payload.hits.total",Pair.of(ConditionOp.Gt,FieldValue.of(0))))
+          )
+          .id("my-watch")
+          .input(i -> i
+              .search(s -> s
+                  .request(r -> r
+                      .body(b -> b
+                          .query(q -> q
+                              .bool(bo -> bo
+                                  .filter(f -> f
+                                      .range(ra -> ra
+                                          .untyped(u -> u
+                                              .field("@timestamp")
+                                          )
+                                      )
+                                  )
+                                  .must(m -> m
+                                      .match(ma -> ma
+                                          .field("response")
+                                          .query(FieldValue.of(404))
+                                      )
+                                  )
+                              )
+                          )
+                      )
+                      .indices("logstash*")
+                  )
+              )
+          )
+          .trigger(t -> t
+              .schedule(sc -> sc
+                  .cron("0 0/1 * * * ?")
+              )
+          )
+      );

@@ -1,7 +1,83 @@
 summary: A source-only repository
-# method_request: PUT _snapshot/my_src_only_repository
+method_request: PUT _snapshot/my_src_only_repository
 description: Run `PUT _snapshot/my_src_only_repository` to create or update a source-only snapshot repository.
 # type: request
-value:
-  "{\n  \"type\": \"source\",\n  \"settings\": {\n    \"delegate_type\": \"fs\"\
-  ,\n    \"location\": \"my_backup_repository\"\n  }\n}"
+value: "{
+
+  \  \"type\": \"source\",
+
+  \  \"settings\": {
+
+  \    \"delegate_type\": \"fs\",
+
+  \    \"location\": \"my_backup_repository\"
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.snapshot.create_repository(
+          name="my_src_only_repository",
+          repository={
+              "type": "source",
+              "settings": {
+                  "delegate_type": "fs",
+                  "location": "my_backup_repository"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.snapshot.createRepository({
+        name: "my_src_only_repository",
+        repository: {
+          type: "source",
+          settings: {
+            delegate_type: "fs",
+            location: "my_backup_repository",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.snapshot.create_repository(
+        repository: "my_src_only_repository",
+        body: {
+          "type": "source",
+          "settings": {
+            "delegate_type": "fs",
+            "location": "my_backup_repository"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->snapshot()->createRepository([
+          "repository" => "my_src_only_repository",
+          "body" => [
+              "type" => "source",
+              "settings" => [
+                  "delegate_type" => "fs",
+                  "location" => "my_backup_repository",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"type":"source","settings":{"delegate_type":"fs","location":"my_backup_repository"}}''
+      "$ELASTICSEARCH_URL/_snapshot/my_src_only_repository"'
+  - language: Java
+    code: |
+      client.snapshot().createRepository(c -> c
+          .name("my_src_only_repository")
+          .repository(r -> r
+              .source(s -> s
+                  .settings(se -> se
+                      .delegateType("fs")
+                  )
+              )
+          )
+      );

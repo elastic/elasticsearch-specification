@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import {
   Fields,
   IndexName,
@@ -35,6 +34,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort } from '@_types/sort'
 import { Duration } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Destination {
   /**

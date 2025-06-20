@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { AnalysisConfig } from '@ml/_types/Analysis'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Field } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { AnalysisConfig } from '@ml/_types/Analysis'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Estimate job model memory usage.

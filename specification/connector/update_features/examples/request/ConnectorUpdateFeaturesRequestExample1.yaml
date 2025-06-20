@@ -1,9 +1,154 @@
 # summary: connector/apis/update-connector-features-api.asciidoc:90
-# method_request: PUT _connector/my-connector/_features
+method_request: PUT _connector/my-connector/_features
 # description: ''
 # type: request
-value:
-  "{\n  \"features\": {\n    \"document_level_security\": {\n      \"enabled\"\
-  : true\n    },\n    \"incremental_sync\": {\n      \"enabled\": true\n    },\n \
-  \   \"sync_rules\": {\n      \"advanced\": {\n        \"enabled\": false\n     \
-  \ },\n      \"basic\": {\n        \"enabled\": true\n      }\n    }\n  }\n}"
+value: "{
+
+  \  \"features\": {
+
+  \    \"document_level_security\": {
+
+  \      \"enabled\": true
+
+  \    },
+
+  \    \"incremental_sync\": {
+
+  \      \"enabled\": true
+
+  \    },
+
+  \    \"sync_rules\": {
+
+  \      \"advanced\": {
+
+  \        \"enabled\": false
+
+  \      },
+
+  \      \"basic\": {
+
+  \        \"enabled\": true
+
+  \      }
+
+  \    }
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.update_features(
+          connector_id="my-connector",
+          features={
+              "document_level_security": {
+                  "enabled": True
+              },
+              "incremental_sync": {
+                  "enabled": True
+              },
+              "sync_rules": {
+                  "advanced": {
+                      "enabled": False
+                  },
+                  "basic": {
+                      "enabled": True
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.updateFeatures({
+        connector_id: "my-connector",
+        features: {
+          document_level_security: {
+            enabled: true,
+          },
+          incremental_sync: {
+            enabled: true,
+          },
+          sync_rules: {
+            advanced: {
+              enabled: false,
+            },
+            basic: {
+              enabled: true,
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.update_features(
+        connector_id: "my-connector",
+        body: {
+          "features": {
+            "document_level_security": {
+              "enabled": true
+            },
+            "incremental_sync": {
+              "enabled": true
+            },
+            "sync_rules": {
+              "advanced": {
+                "enabled": false
+              },
+              "basic": {
+                "enabled": true
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->updateFeatures([
+          "connector_id" => "my-connector",
+          "body" => [
+              "features" => [
+                  "document_level_security" => [
+                      "enabled" => true,
+                  ],
+                  "incremental_sync" => [
+                      "enabled" => true,
+                  ],
+                  "sync_rules" => [
+                      "advanced" => [
+                          "enabled" => false,
+                      ],
+                      "basic" => [
+                          "enabled" => true,
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"features\":{\"document_level_security\":{\"enabled\":true},\"incremental_sync\":{\"enabled\":true},\"sync_rules\":{\"adva\
+      nced\":{\"enabled\":false},\"basic\":{\"enabled\":true}}}}' \"$ELASTICSEARCH_URL/_connector/my-connector/_features\""
+  - language: Java
+    code: |
+      client.connector().updateFeatures(u -> u
+          .connectorId("my-connector")
+          .features(f -> f
+              .documentLevelSecurity(d -> d
+                  .enabled(true)
+              )
+              .incrementalSync(i -> i
+                  .enabled(true)
+              )
+              .syncRules(s -> s
+                  .advanced(a -> a
+                      .enabled(false)
+                  )
+                  .basic(b -> b
+                      .enabled(true)
+                  )
+              )
+          )
+      );

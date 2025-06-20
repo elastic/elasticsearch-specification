@@ -1,9 +1,9 @@
 # summary:
-# method_request: POST /_security/profile/_suggest
+method_request: POST /_security/profile/_suggest
 description: >
-  Run `POST /_security/profile/_suggest` to get suggestions for profile documents with name-related fields matching `jack`.
-  It specifies both `uids` and `labels` hints for better relevance.
-  The `labels` hint ranks profiles higher if their `direction` label matches either `north` or `east`.
+  Run `POST /_security/profile/_suggest` to get suggestions for profile documents with name-related fields matching `jack`. It
+  specifies both `uids` and `labels` hints for better relevance. The `labels` hint ranks profiles higher if their `direction` label
+  matches either `north` or `east`.
 # type: request
 value: |-
   {
@@ -18,3 +18,87 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.suggest_user_profiles(
+          name="jack",
+          hint={
+              "uids": [
+                  "u_8RKO7AKfEbSiIHZkZZ2LJy2MUSDPWDr3tMI_CkIGApU_0",
+                  "u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0"
+              ],
+              "labels": {
+                  "direction": [
+                      "north",
+                      "east"
+                  ]
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.suggestUserProfiles({
+        name: "jack",
+        hint: {
+          uids: [
+            "u_8RKO7AKfEbSiIHZkZZ2LJy2MUSDPWDr3tMI_CkIGApU_0",
+            "u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0",
+          ],
+          labels: {
+            direction: ["north", "east"],
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.suggest_user_profiles(
+        body: {
+          "name": "jack",
+          "hint": {
+            "uids": [
+              "u_8RKO7AKfEbSiIHZkZZ2LJy2MUSDPWDr3tMI_CkIGApU_0",
+              "u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0"
+            ],
+            "labels": {
+              "direction": [
+                "north",
+                "east"
+              ]
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->suggestUserProfiles([
+          "body" => [
+              "name" => "jack",
+              "hint" => [
+                  "uids" => array(
+                      "u_8RKO7AKfEbSiIHZkZZ2LJy2MUSDPWDr3tMI_CkIGApU_0",
+                      "u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0",
+                  ),
+                  "labels" => [
+                      "direction" => array(
+                          "north",
+                          "east",
+                      ),
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"name\":\"jack\",\"hint\":{\"uids\":[\"u_8RKO7AKfEbSiIHZkZZ2LJy2MUSDPWDr3tMI_CkIGApU_0\",\"u_79HkWkwmnBH5gqFKwoxggWPjEBOur\
+      1zLPXQPEl1VBW0_0\"],\"labels\":{\"direction\":[\"north\",\"east\"]}}}' \"$ELASTICSEARCH_URL/_security/profile/_suggest\""
+  - language: Java
+    code: |
+      client.security().suggestUserProfiles(s -> s
+          .hint(h -> h
+              .uids(List.of("u_8RKO7AKfEbSiIHZkZZ2LJy2MUSDPWDr3tMI_CkIGApU_0","u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0"))
+              .labels("direction", List.of("north","east"))
+          )
+          .name("jack")
+      );

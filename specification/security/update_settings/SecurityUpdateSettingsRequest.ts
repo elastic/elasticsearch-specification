@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { SecuritySettings } from '@security/_types/SecuritySettings'
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { SecuritySettings } from '@security/_types/SecuritySettings'
 
 /**
  * Update security index settings.
