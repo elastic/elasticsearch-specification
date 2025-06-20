@@ -216,8 +216,8 @@ impl<'a> TypesAndComponents<'a> {
                 .and_then(|i| i.version.as_deref())
                 .unwrap_or("current");
             let mut extensions: IndexMap<String,serde_json::Value> = Default::default();
-            if let Some(legacy_doc_url) = obj.ext_legacy_doc_url() {
-                extensions.insert("x-legacyUrl".to_string(), serde_json::json!(legacy_doc_url));
+            if let Some(previous_version_doc_url) = obj.ext_previous_version_doc_url() {
+                extensions.insert("x-previousVersionUrl".to_string(), serde_json::json!(previous_version_doc_url));
             }
             ExternalDocumentation {
                 description: None,

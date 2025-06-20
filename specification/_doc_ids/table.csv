@@ -1,4 +1,4 @@
-doc_id,doc_url,legacy_doc_url
+doc_id,doc_url,previous_version_doc_url
 ack-watch, https://www.elastic.co/docs/explore-analyze/alerts-cases/watcher/actions#example,
 apis,https://www.elastic.co/docs/api/doc/elasticsearch,
 add-nodes,https://www.elastic.co/docs/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes,

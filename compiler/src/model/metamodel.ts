@@ -443,7 +443,7 @@ export class Endpoint {
   docId?: string
   extDocId?: string
   extDocUrl?: string
-  extLegacyDocUrl?: string
+  extPreviousVersionDocUrl?: string
   deprecation?: Deprecation
   availability: Availabilities
   docTag?: string
