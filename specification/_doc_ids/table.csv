@@ -810,6 +810,7 @@ security-application-privileges,https://www.elastic.co/docs/reference/elasticsea
 security-encrypt-http,https://www.elastic.co/docs/deploy-manage/security/set-up-basic-security-plus-https#encrypt-http-communication
 security-encrypt-internode,https://www.elastic.co/docs/deploy-manage/security/set-up-basic-security#encrypt-internode-communication
 security-privileges,https://www.elastic.co/docs/reference/elasticsearch/security-privileges
+security-query-api-keys,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/query-api-keys
 security-saml-guide,https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/saml
 security-settings-api-keys,https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/security-settings#api-key-service-settings
 security-settings-hashing,https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/security-settings#hashing-settings
