@@ -30,12 +30,13 @@ import { Duration } from '@_types/Time'
  *
  * If you omit the `<snapshot>` request path parameter, the request retrieves information only for currently running snapshots.
  * This usage is preferred.
- * Note that if a node has been restarted or has left the cluster since completing a shard snapshot the stats for that shard will be unavailable.
- * Loading the stats from the repository is an expensive operation (see the WARNING below), so to minimize latency for returning stats for currently
- * running snapshots the stats values will be -1 for these shards even though the "stage" value will be "DONE".  A "description" field will be set
- * on these shard stats instances indicating why they are empty.  Note that the total stats for the index will be less than expected due to the
- * missing values from these shards.
  * If needed, you can specify `<repository>` and `<snapshot>` to retrieve information for specific snapshots, even if they're not currently running.
+ *
+ * Note that the stats will not be available for any shard snapshots in an ongoing snapshot completed by a node that (even momentarily) left the cluster.
+ * Loading the stats from the repository is an expensive operation (see the WARNING below).
+ * Therefore the stats values for such shards will be -1 even though the "stage" value will be "DONE", in order to minimize latency.
+ * A "description" field will be present for a shard snapshot completed by a departed node explaining why the shard snapshot's stats results are invalid.
+ * Consequently, the total stats for the index will be less than expected due to the missing values from these shards.
  *
  * WARNING: Using the API to return the status of any snapshots other than currently running snapshots can be expensive.
  * The API requires a read from the repository for each shard in each snapshot.
