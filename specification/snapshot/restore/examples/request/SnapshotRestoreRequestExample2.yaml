@@ -39,4 +39,3 @@ alternatives:
   - language: Java
     code: |
       client.cluster().putSettings();
-
