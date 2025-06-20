@@ -1,0 +1,132 @@
+summary: Missing shard stats
+description: >
+  A successful response from `GET _snapshot/my_repository/snapshot_2/_status`.
+  Note that in this example the stats for `index-2` shard `0` are missing, with explanatory details provided in the `description` field.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "snapshots" : [
+      {
+        "snapshot" : "snapshot_2",
+        "repository" : "my_repository",
+        "uuid" : "lNeQD1SvTQCqqJUMQSwmGg",
+        "state" : "STARTED",
+        "include_global_state" : true,
+        "shards_stats" : {
+          "initializing" : 0,
+          "started" : 1,
+          "finalizing" : 0,
+          "done" : 1,
+          "failed" : 0,
+          "total" : 2
+        },
+        "stats" : {
+          "incremental" : {
+            "file_count" : 4,
+            "size_in_bytes" : 5412
+          },
+          "processed" : {
+            "file_count" : 2,
+            "size_in_bytes" : 658
+          },
+          "total" : {
+            "file_count" : 4,
+            "size_in_bytes" : 5412
+          },
+          "start_time_in_millis" : 1750452674327,
+          "time_in_millis" : 189
+        },
+        "indices" : {
+          "index-1" : {
+            "shards_stats" : {
+              "initializing" : 0,
+              "started" : 1,
+              "finalizing" : 0,
+              "done" : 0,
+              "failed" : 0,
+              "total" : 1
+            },
+            "stats" : {
+              "incremental" : {
+                "file_count" : 4,
+                "size_in_bytes" : 5412
+              },
+              "processed" : {
+                "file_count" : 2,
+                "size_in_bytes" : 658
+              },
+              "total" : {
+                "file_count" : 4,
+                "size_in_bytes" : 5412
+              },
+              "start_time_in_millis" : 1750452674379,
+              "time_in_millis" : 0
+            },
+            "shards" : {
+              "0" : {
+                "stage" : "STARTED",
+                "stats" : {
+                  "incremental" : {
+                    "file_count" : 4,
+                    "size_in_bytes" : 5412
+                  },
+                  "processed" : {
+                    "file_count" : 2,
+                    "size_in_bytes" : 658
+                  },
+                  "total" : {
+                    "file_count" : 4,
+                    "size_in_bytes" : 5412
+                  },
+                  "start_time_in_millis" : 1750452674379,
+                  "time_in_millis" : 0
+                },
+                "node" : "VJzy6aKJSVKwcfjIFBPXxw"
+              }
+            }
+          },
+          "index-2" : {
+            "shards_stats" : {
+              "initializing" : 0,
+              "started" : 0,
+              "finalizing" : 0,
+              "done" : 1,
+              "failed" : 0,
+              "total" : 1
+            },
+            "stats" : {
+              "incremental" : {
+                "file_count" : 0,
+                "size_in_bytes" : 0
+              },
+              "total" : {
+                "file_count" : 0,
+                "size_in_bytes" : 0
+              },
+              "start_time_in_millis" : 0,
+              "time_in_millis" : 0
+            },
+            "shards" : {
+              "0" : {
+                "stage" : "DONE",
+                "stats" : {
+                  "incremental" : {
+                    "file_count" : -1,
+                    "size_in_bytes" : -1
+                  },
+                  "total" : {
+                    "file_count" : -1,
+                    "size_in_bytes" : -1
+                  },
+                  "start_time_in_millis" : 0,
+                  "time_in_millis" : 0
+                },
+                "description" : "Snapshot shard stats missing from a currently running snapshot due to a node leaving the cluster after completing the shard snapshot; retry once the snapshot has completed to load all shard stats from the repository."
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
