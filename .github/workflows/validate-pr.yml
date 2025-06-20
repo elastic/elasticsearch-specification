@@ -60,8 +60,6 @@ jobs:
           fi
           node scripts/upload-recording/download.js --branch $branch --git
           node scripts/clone-elasticsearch/index.js --branch $branch
-        env:
-          GCS_CREDENTIALS: ${{ secrets.GCS_CREDENTIALS }}
 
       - name: Run validation
         id: validation
