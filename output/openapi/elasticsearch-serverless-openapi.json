@@ -7490,6 +7490,9 @@
         ],
         "summary": "Get data stream lifecycles",
         "description": "Get the data stream lifecycle configuration of one or more data streams.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-lifecycle.html"
+        },
         "operationId": "indices-get-data-lifecycle",
         "parameters": [
           {
@@ -7571,6 +7574,9 @@
         ],
         "summary": "Update data stream lifecycles",
         "description": "Update the data stream lifecycle of the specified data streams.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-lifecycle.html"
+        },
         "operationId": "indices-put-data-lifecycle",
         "parameters": [
           {
@@ -7673,6 +7679,9 @@
         ],
         "summary": "Delete data stream lifecycles",
         "description": "Removes the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-lifecycle.html"
+        },
         "operationId": "indices-delete-data-lifecycle",
         "parameters": [
           {
@@ -8018,6 +8027,9 @@
         ],
         "summary": "Get the status for a data stream lifecycle",
         "description": "Get information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-lifecycle.html"
+        },
         "operationId": "indices-explain-data-lifecycle",
         "parameters": [
           {
