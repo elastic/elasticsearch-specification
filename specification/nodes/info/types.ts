@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ByteSize, Name, VersionString } from '@_types/common'
+import { ByteSize, Name, VersionNumber, VersionString } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { NodeRoles } from '@_types/Node'
 import { integer, long } from '@_types/Numeric'
@@ -26,6 +26,7 @@ import { Duration, DurationValue, EpochTime, UnitMillis } from '@_types/Time'
 import { IndexRouting } from '@indices/_types/IndexRouting'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { Stringified } from '@spec_utils/Stringified'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class NodeInfo {
@@ -34,9 +35,11 @@ export class NodeInfo {
   /** Short hash of the last git commit in this release. */
   build_hash: string
   build_type: string
+  component_versions: Dictionary<Name, integer>
   /** The node’s host name. */
   host: Host
   http?: NodeInfoHttp
+  index_version: VersionNumber
   /** The node’s IP address. */
   ip: Ip
   jvm?: NodeJvmInfo
@@ -59,6 +62,8 @@ export class NodeInfo {
   transport?: NodeInfoTransport
   /** Host and port where transport HTTP connections are accepted. */
   transport_address: TransportAddress
+  transport_version?: VersionNumber
+
   /** Elasticsearch version running on this node. */
   version: VersionString
   modules?: PluginStats[]
@@ -133,7 +138,7 @@ export class NodeInfoSettingsCluster {
   name: Name
   routing?: IndexRouting
   election: NodeInfoSettingsClusterElection
-  initial_master_nodes?: string[]
+  initial_master_nodes?: string[] | string
   /**
    * @availability stack since=7.16.0
    * @availability serverless
@@ -176,7 +181,7 @@ export class NodeInfoRepositoriesUrl {
 export class NodeInfoDiscover
   implements AdditionalProperties<string, UserDefinedValue>
 {
-  seed_hosts?: string[]
+  seed_hosts?: string[] | string
   type?: string
   seed_providers?: string[]
 }
@@ -209,6 +214,11 @@ export class NodeInfoSettingsTransport {
   type: NodeInfoSettingsTransportType
   'type.default'?: string // TODO this clashes with NodeInfoSettingsTransportType
   features?: NodeInfoSettingsTransportFeatures
+  /**
+   * Only used in unit tests
+   * @availability stack visibility=private
+   * */
+  ignore_deserialization_errors?: Stringified<boolean>
 }
 
 /** @shortcut_property default */
@@ -371,7 +381,6 @@ export class NodeJvmInfo {
   vm_name: Name
   vm_vendor: string
   vm_version: VersionString
-  /** @aliases bundled_jdk */
   using_bundled_jdk: boolean
   using_compressed_ordinary_object_pointers?: boolean | string
   input_arguments: string[]
