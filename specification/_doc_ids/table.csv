@@ -154,6 +154,7 @@ data-stream-delete-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/o
 data-stream-explain-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle
 data-stream-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream
 data-stream-get-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-lifecycle
+data-stream-lifecycle,https://www.elastic.co/docs/manage-data/lifecycle/data-stream
 data-stream-lifecycle-stats,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-lifecycle-stats
 data-stream-migrate,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-migrate-to-data-stream
 data-stream-promote,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-promote-data-stream

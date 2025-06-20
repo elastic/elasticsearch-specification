@@ -120,7 +120,7 @@ export class ApiKeyAggregationContainer {
 }
 
 /**
- * @variants external
+ * @variants typed_keys_quirk
  * @non_exhaustive
  */
 export type ApiKeyAggregate =

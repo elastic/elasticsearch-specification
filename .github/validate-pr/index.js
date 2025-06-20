@@ -141,12 +141,10 @@ async function run() {
     }
     comment += `\nYou can validate ${table.length === 1 ? 'this' : 'these'} API${table.length === 1 ? '' : 's'} yourself by using the ${tick}make validate${tick} target.\n`
 
-    await octokit.rest.issues.createComment({
-      owner: 'elastic',
-      repo: 'elasticsearch-specification',
-      issue_number: context.payload.pull_request.number,
-      body: comment
-    })
+    core.setOutput('has_results', 'true')
+    core.setOutput('comment_body', comment)
+  } else {
+    core.setOutput('has_results', 'false')
   }
 
   core.info('Done!')
