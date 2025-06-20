@@ -21009,6 +21009,8 @@ export interface SnapshotSnapshotShardsStatus {
 
 export type SnapshotSnapshotSort = 'start_time' | 'duration' | 'name' | 'index_count' | 'repository' | 'shard_count' | 'failed_shard_count'
 
+export type SnapshotSnapshotState = 'IN_PROGRESS' | 'SUCCESS' | 'FAILED' | 'PARTIAL' | 'INCOMPATIBLE'
+
 export interface SnapshotSnapshotStats {
   incremental: SnapshotFileCountSnapshotStats
   start_time_in_millis: EpochTime<UnitMillis>
@@ -21129,6 +21131,7 @@ export interface SnapshotGetRequest extends RequestBase {
   size?: integer
   slm_policy_filter?: Name
   sort?: SnapshotSnapshotSort
+  state?: SnapshotSnapshotState | SnapshotSnapshotState[]
   verbose?: boolean
 }
 
