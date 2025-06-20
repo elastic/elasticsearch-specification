@@ -1,9 +1,8 @@
 # summary:
 method_request: GET /my-index-000001/_count
 description: >
-  Run `GET /my-index-000001/_count?q=user:kimchy`.
-  Alternatively, run `GET /my-index-000001/_count` with the same query in the request body.
-  Both requests count the number of documents in `my-index-000001` with a `user.id` of `kimchy`.
+  Run `GET /my-index-000001/_count?q=user:kimchy`. Alternatively, run `GET /my-index-000001/_count` with the same query in the
+  request body. Both requests count the number of documents in `my-index-000001` with a `user.id` of `kimchy`.
 # type: request
 value: |-
   {
@@ -11,3 +10,63 @@ value: |-
       "term" : { "user.id" : "kimchy" }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.count(
+          index="my-index-000001",
+          query={
+              "term": {
+                  "user.id": "kimchy"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.count({
+        index: "my-index-000001",
+        query: {
+          term: {
+            "user.id": "kimchy",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.count(
+        index: "my-index-000001",
+        body: {
+          "query": {
+            "term": {
+              "user.id": "kimchy"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->count([
+          "index" => "my-index-000001",
+          "body" => [
+              "query" => [
+                  "term" => [
+                      "user.id" => "kimchy",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"query":{"term":{"user.id":"kimchy"}}}'' "$ELASTICSEARCH_URL/my-index-000001/_count"'
+  - language: Java
+    code: |
+      client.count(c -> c
+          .index("my-index-000001")
+          .query(q -> q
+              .term(t -> t
+                  .field("user.id")
+                  .value(FieldValue.of("kimchy"))
+              )
+          )
+      );

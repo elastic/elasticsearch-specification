@@ -1,8 +1,9 @@
 summary: Artificial documents
 method_request: GET /my-index-000001/_termvectors
 description: >
-  Run `GET /my-index-000001/_termvectors`.
-  Term vectors can be generated for artificial documents, that is for documents not present in the index. If dynamic mapping is turned on (default), the document fields not in the original mapping will be dynamically created.
+  Run `GET /my-index-000001/_termvectors`. Term vectors can be generated for artificial documents, that is for documents not present
+  in the index. If dynamic mapping is turned on (default), the document fields not in the original mapping will be dynamically
+  created.
 # type: request
 value: |-
   {
@@ -11,3 +12,54 @@ value: |-
       "text" : "test test test"
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.termvectors(
+          index="my-index-000001",
+          doc={
+              "fullname": "John Doe",
+              "text": "test test test"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.termvectors({
+        index: "my-index-000001",
+        doc: {
+          fullname: "John Doe",
+          text: "test test test",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.termvectors(
+        index: "my-index-000001",
+        body: {
+          "doc": {
+            "fullname": "John Doe",
+            "text": "test test test"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->termvectors([
+          "index" => "my-index-000001",
+          "body" => [
+              "doc" => [
+                  "fullname" => "John Doe",
+                  "text" => "test test test",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"doc":{"fullname":"John Doe","text":"test test test"}}'' "$ELASTICSEARCH_URL/my-index-000001/_termvectors"'
+  - language: Java
+    code: |
+      client.termvectors(t -> t
+          .doc(JsonData.fromJson("{\"fullname\":\"John Doe\",\"text\":\"test test test\"}"))
+          .index("my-index-000001")
+      );

@@ -1,1 +1,24 @@
 method_request: GET _ml/data_frame/analytics/weblog-outliers/_stats
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.get_data_frame_analytics_stats(
+          id="weblog-outliers",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.getDataFrameAnalyticsStats({
+        id: "weblog-outliers",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.get_data_frame_analytics_stats(
+        id: "weblog-outliers"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->getDataFrameAnalyticsStats([
+          "id" => "weblog-outliers",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/data_frame/analytics/weblog-outliers/_stats"'

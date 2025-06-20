@@ -1,1 +1,31 @@
 method_request: POST /_migration/reindex/my-data-stream/_cancel
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.perform_request(
+          "POST",
+          "/_migration/reindex/my-data-stream/_cancel",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.transport.request({
+        method: "POST",
+        path: "/_migration/reindex/my-data-stream/_cancel",
+      });
+  - language: Ruby
+    code: |-
+      response = client.perform_request(
+        "POST",
+        "/_migration/reindex/my-data-stream/_cancel",
+        {},
+      )
+  - language: PHP
+    code: |-
+      $requestFactory = Psr17FactoryDiscovery::findRequestFactory();
+      $request = $requestFactory->createRequest(
+          "POST",
+          "/_migration/reindex/my-data-stream/_cancel",
+      );
+      $resp = $client->sendRequest($request);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_migration/reindex/my-data-stream/_cancel"'

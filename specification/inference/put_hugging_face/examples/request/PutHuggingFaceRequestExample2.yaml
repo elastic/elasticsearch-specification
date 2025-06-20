@@ -1,0 +1,101 @@
+summary: A rerank task
+description: Run `PUT _inference/rerank/hugging-face-rerank` to create an inference endpoint that performs a `rerank` task type.
+method_request: 'PUT _inference/rerank/hugging-face-rerank'
+# type: "request"
+value: |-
+  {
+      "service": "hugging_face",
+      "service_settings": {
+          "api_key": "hugging-face-access-token", 
+          "url": "url-endpoint" 
+      },
+      "task_settings": {
+          "return_documents": true,
+          "top_n": 3
+      }
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="rerank",
+          inference_id="hugging-face-rerank",
+          inference_config={
+              "service": "hugging_face",
+              "service_settings": {
+                  "api_key": "hugging-face-access-token",
+                  "url": "url-endpoint"
+              },
+              "task_settings": {
+                  "return_documents": True,
+                  "top_n": 3
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "rerank",
+        inference_id: "hugging-face-rerank",
+        inference_config: {
+          service: "hugging_face",
+          service_settings: {
+            api_key: "hugging-face-access-token",
+            url: "url-endpoint",
+          },
+          task_settings: {
+            return_documents: true,
+            top_n: 3,
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "rerank",
+        inference_id: "hugging-face-rerank",
+        body: {
+          "service": "hugging_face",
+          "service_settings": {
+            "api_key": "hugging-face-access-token",
+            "url": "url-endpoint"
+          },
+          "task_settings": {
+            "return_documents": true,
+            "top_n": 3
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "rerank",
+          "inference_id" => "hugging-face-rerank",
+          "body" => [
+              "service" => "hugging_face",
+              "service_settings" => [
+                  "api_key" => "hugging-face-access-token",
+                  "url" => "url-endpoint",
+              ],
+              "task_settings" => [
+                  "return_documents" => true,
+                  "top_n" => 3,
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"service\":\"hugging_face\",\"service_settings\":{\"api_key\":\"hugging-face-access-token\",\"url\":\"url-endpoint\"},\"ta\
+      sk_settings\":{\"return_documents\":true,\"top_n\":3}}' \"$ELASTICSEARCH_URL/_inference/rerank/hugging-face-rerank\""
+  - language: Java
+    code: |
+      client.inference().put(p -> p
+          .inferenceId("hugging-face-rerank")
+          .taskType(TaskType.Rerank)
+          .inferenceConfig(i -> i
+              .service("hugging_face")
+              .serviceSettings(JsonData.fromJson("{\"api_key\":\"hugging-face-access-token\",\"url\":\"url-endpoint\"}"))
+              .taskSettings(JsonData.fromJson("{\"return_documents\":true,\"top_n\":3}"))
+          )
+      );

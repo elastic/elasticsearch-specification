@@ -8,3 +8,65 @@ value: |-
       "total_document_count": 2000,
       "last_seen": "2023-01-02T10:00:00Z"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.sync_job_update_stats(
+          connector_sync_job_id="my-connector-sync-job",
+          deleted_document_count=10,
+          indexed_document_count=20,
+          indexed_document_volume=1000,
+          total_document_count=2000,
+          last_seen="2023-01-02T10:00:00Z",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.syncJobUpdateStats({
+        connector_sync_job_id: "my-connector-sync-job",
+        deleted_document_count: 10,
+        indexed_document_count: 20,
+        indexed_document_volume: 1000,
+        total_document_count: 2000,
+        last_seen: "2023-01-02T10:00:00Z",
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.sync_job_update_stats(
+        connector_sync_job_id: "my-connector-sync-job",
+        body: {
+          "deleted_document_count": 10,
+          "indexed_document_count": 20,
+          "indexed_document_volume": 1000,
+          "total_document_count": 2000,
+          "last_seen": "2023-01-02T10:00:00Z"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->syncJobUpdateStats([
+          "connector_sync_job_id" => "my-connector-sync-job",
+          "body" => [
+              "deleted_document_count" => 10,
+              "indexed_document_count" => 20,
+              "indexed_document_volume" => 1000,
+              "total_document_count" => 2000,
+              "last_seen" => "2023-01-02T10:00:00Z",
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"deleted_document_count\":10,\"indexed_document_count\":20,\"indexed_document_volume\":1000,\"total_document_count\":2000,\
+      \"last_seen\":\"2023-01-02T10:00:00Z\"}' \"$ELASTICSEARCH_URL/_connector/_sync_job/my-connector-sync-job/_stats\""
+  - language: Java
+    code: |
+      client.connector().syncJobUpdateStats(s -> s
+          .connectorSyncJobId("my-connector-sync-job")
+          .deletedDocumentCount(10L)
+          .indexedDocumentCount(20L)
+          .indexedDocumentVolume(1000L)
+          .lastSeen(l -> l
+              .time("2023-01-02T10:00:00Z")
+          )
+          .totalDocumentCount(2000)
+      );

@@ -8,3 +8,63 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.update_datafeed(
+          datafeed_id="datafeed-test-job",
+          query={
+              "term": {
+                  "geo.src": "US"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.updateDatafeed({
+        datafeed_id: "datafeed-test-job",
+        query: {
+          term: {
+            "geo.src": "US",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.update_datafeed(
+        datafeed_id: "datafeed-test-job",
+        body: {
+          "query": {
+            "term": {
+              "geo.src": "US"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->updateDatafeed([
+          "datafeed_id" => "datafeed-test-job",
+          "body" => [
+              "query" => [
+                  "term" => [
+                      "geo.src" => "US",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"query":{"term":{"geo.src":"US"}}}'' "$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-test-job/_update"'
+  - language: Java
+    code: |
+      client.ml().updateDatafeed(u -> u
+          .datafeedId("datafeed-test-job")
+          .query(q -> q
+              .term(t -> t
+                  .field("geo.src")
+                  .value(FieldValue.of("US"))
+              )
+          )
+      );

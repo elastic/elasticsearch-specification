@@ -41,10 +41,21 @@ pub struct Configuration {
     /// be the longest one (with values for all optional parameters), and the other paths will be added
     /// at the beginning of the operation's description.
     pub merge_multipath_endpoints: bool,
+
+    /// Should we output a redirect map when merging multipath endpoints?
+    pub multipath_redirects: bool,
+
+    /// include the x-codeSamples extension with language examples for all endpoints
+    pub include_language_examples: bool,
+}
+
+pub struct OpenApiConversion {
+    pub openapi: OpenAPI,
+    pub redirects: Option<String>,
 }
 
 /// Convert an API model into an OpenAPI v3 schema, optionally filtered for a given flavor
-pub fn convert_schema(mut schema: IndexedModel, config: Configuration) -> anyhow::Result<OpenAPI> {
+pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_meta: IndexMap<String,String>) -> anyhow::Result<OpenApiConversion> {
     // Expand generics
     schema = clients_schema::transform::expand_generics(schema, ExpandConfig::default())?;
 
@@ -65,7 +76,7 @@ pub fn convert_schema(mut schema: IndexedModel, config: Configuration) -> anyhow
         schema = clients_schema::transform::filter_availability(schema, filter)?;
     }
 
-    convert_expanded_schema(&schema, &config)
+    convert_expanded_schema(&schema, &config, &product_meta)
 }
 
 /// Convert an API model into an OpenAPI v3 schema. The input model must have all generics expanded, conversion
@@ -74,7 +85,7 @@ pub fn convert_schema(mut schema: IndexedModel, config: Configuration) -> anyhow
 /// Note: there are ways to represent [generics in JSON Schema], but its unlikely that tooling will understand it.
 ///
 /// [generics in JSON Schema]: https://json-schema.org/blog/posts/dynamicref-and-generics
-pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration) -> anyhow::Result<OpenAPI> {
+pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, product_meta: &IndexMap<String,String>) -> anyhow::Result<OpenApiConversion> {
     let mut openapi = OpenAPI {
         openapi: "3.0.3".into(),
         info: info(model),
@@ -112,7 +123,7 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration) -> 
                 continue;
             }
         }
-        paths::add_endpoint(endpoint, &mut tac, &mut openapi.paths)?;
+        paths::add_endpoint(endpoint, &mut tac, &mut openapi.paths, product_meta)?;
     }
 
     // // Sort maps to ensure output stability
@@ -130,7 +141,21 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration) -> 
     //     comp.security_schemes.sort_keys();
     // }
 
-    Ok(openapi)
+    let redirects = if let Some(redirects) = tac.redirects {
+        use std::fmt::Write;
+        let mut result = String::new();
+        for (source, target) in redirects.iter() {
+            writeln!(&mut result, "{},{}", source, target)?;
+        }
+        Some(result)
+    } else {
+        None
+    };
+
+    Ok(OpenApiConversion {
+        openapi,
+        redirects,
+    })
 }
 
 fn info(model: &IndexedModel) -> openapiv3::Info {
@@ -158,7 +183,19 @@ fn info(model: &IndexedModel) -> openapiv3::Info {
     }
 }
 
-pub fn availability_as_extensions(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>) -> IndexMap<String, serde_json::Value> {
+pub fn product_meta_as_extensions(namespace: &str, product_meta: &IndexMap<String,String>) -> IndexMap<String, Value> {
+    let mut result = IndexMap::new();
+    let mut additional_namespace= "".to_string();
+    if let Some(meta) = product_meta.get(namespace) {
+        additional_namespace = format!(", {meta}");
+    }
+    
+    let product_str = format!("elasticsearch{additional_namespace}");
+    result.insert("x-product-feature".to_string(), Value::String(product_str));
+    result
+}
+
+pub fn availability_as_extensions(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>) -> IndexMap<String, Value> {
     let mut result = IndexMap::new();
     convert_availabilities(availabilities, flavor, &mut result);
     result
@@ -183,7 +220,7 @@ pub fn convert_availabilities(availabilities: &Option<Availabilities>, flavor: &
                         let exp_since = format!("Technical preview{since_str}");
                         result.insert("x-state".to_string(), Value::String(exp_since));
                     }
-                    Stability::Stable => { 
+                    Stability::Stable => {
                         let stable_since = format!("Generally available{since_str}");
                         result.insert("x-state".to_string(), Value::String(stable_since));
                     }

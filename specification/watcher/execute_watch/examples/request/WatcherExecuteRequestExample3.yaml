@@ -1,9 +1,8 @@
 summary: Run a watch inline
 method_request: POST _watcher/watch/_execute
 description: >
-  Run `POST _watcher/watch/_execute` to run a watch inline.
-  All other settings for this API still apply when inlining a watch.
-  In this example, while the inline watch defines a compare condition, during the execution this condition will be ignored.
+  Run `POST _watcher/watch/_execute` to run a watch inline. All other settings for this API still apply when inlining a watch. In
+  this example, while the inline watch defines a compare condition, during the execution this condition will be ignored.
 # type: request
 value: |-
   {
@@ -33,3 +32,213 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.watcher.execute_watch(
+          watch={
+              "trigger": {
+                  "schedule": {
+                      "interval": "10s"
+                  }
+              },
+              "input": {
+                  "search": {
+                      "request": {
+                          "indices": [
+                              "logs"
+                          ],
+                          "body": {
+                              "query": {
+                                  "match": {
+                                      "message": "error"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "condition": {
+                  "compare": {
+                      "ctx.payload.hits.total": {
+                          "gt": 0
+                      }
+                  }
+              },
+              "actions": {
+                  "log_error": {
+                      "logging": {
+                          "text": "Found {{ctx.payload.hits.total}} errors in the logs"
+                      }
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.watcher.executeWatch({
+        watch: {
+          trigger: {
+            schedule: {
+              interval: "10s",
+            },
+          },
+          input: {
+            search: {
+              request: {
+                indices: ["logs"],
+                body: {
+                  query: {
+                    match: {
+                      message: "error",
+                    },
+                  },
+                },
+              },
+            },
+          },
+          condition: {
+            compare: {
+              "ctx.payload.hits.total": {
+                gt: 0,
+              },
+            },
+          },
+          actions: {
+            log_error: {
+              logging: {
+                text: "Found {{ctx.payload.hits.total}} errors in the logs",
+              },
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.watcher.execute_watch(
+        body: {
+          "watch": {
+            "trigger": {
+              "schedule": {
+                "interval": "10s"
+              }
+            },
+            "input": {
+              "search": {
+                "request": {
+                  "indices": [
+                    "logs"
+                  ],
+                  "body": {
+                    "query": {
+                      "match": {
+                        "message": "error"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "condition": {
+              "compare": {
+                "ctx.payload.hits.total": {
+                  "gt": 0
+                }
+              }
+            },
+            "actions": {
+              "log_error": {
+                "logging": {
+                  "text": "Found {{ctx.payload.hits.total}} errors in the logs"
+                }
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->watcher()->executeWatch([
+          "body" => [
+              "watch" => [
+                  "trigger" => [
+                      "schedule" => [
+                          "interval" => "10s",
+                      ],
+                  ],
+                  "input" => [
+                      "search" => [
+                          "request" => [
+                              "indices" => array(
+                                  "logs",
+                              ),
+                              "body" => [
+                                  "query" => [
+                                      "match" => [
+                                          "message" => "error",
+                                      ],
+                                  ],
+                              ],
+                          ],
+                      ],
+                  ],
+                  "condition" => [
+                      "compare" => [
+                          "ctx.payload.hits.total" => [
+                              "gt" => 0,
+                          ],
+                      ],
+                  ],
+                  "actions" => [
+                      "log_error" => [
+                          "logging" => [
+                              "text" => "Found {{ctx.payload.hits.total}} errors in the logs",
+                          ],
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"watch\":{\"trigger\":{\"schedule\":{\"interval\":\"10s\"}},\"input\":{\"search\":{\"request\":{\"indices\":[\"logs\"],\"b\
+      ody\":{\"query\":{\"match\":{\"message\":\"error\"}}}}}},\"condition\":{\"compare\":{\"ctx.payload.hits.total\":{\"gt\":0}}},\
+      \"actions\":{\"log_error\":{\"logging\":{\"text\":\"Found {{ctx.payload.hits.total}} errors in the logs\"}}}}}'
+      \"$ELASTICSEARCH_URL/_watcher/watch/_execute\""
+  - language: Java
+    code: |
+      client.watcher().executeWatch(e -> e
+          .watch(w -> w
+              .actions("log_error", a -> a
+                  .logging(l -> l
+                      .text("Found {{ctx.payload.hits.total}} errors in the logs")
+                  )
+              )
+              .condition(c -> c
+                  .compare(NamedValue.of("ctx.payload.hits.total",Pair.of(ConditionOp.Gt,FieldValue.of(0))))
+              )
+              .input(i -> i
+                  .search(s -> s
+                      .request(r -> r
+                          .body(b -> b
+                              .query(q -> q
+                                  .match(m -> m
+                                      .field("message")
+                                      .query(FieldValue.of("error"))
+                                  )
+                              )
+                          )
+                          .indices("logs")
+                      )
+                  )
+              )
+              .trigger(t -> t
+                  .schedule(sc -> sc
+                      .interval(in -> in
+                          .time("10s")
+                      )
+                  )
+              )
+          )
+      );

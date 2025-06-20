@@ -1,1 +1,31 @@
 method_request: GET /_cat/transforms?v=true&format=json
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cat.transforms(
+          v=True,
+          format="json",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cat.transforms({
+        v: "true",
+        format: "json",
+      });
+  - language: Ruby
+    code: |-
+      response = client.cat.transforms(
+        v: "true",
+        format: "json"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cat()->transforms([
+          "v" => "true",
+          "format" => "json",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_cat/transforms?v=true&format=json"'
+  - language: Java
+    code: |
+      client.cat().transforms();

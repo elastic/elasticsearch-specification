@@ -31,3 +31,163 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ilm.put_lifecycle(
+          name="my_policy",
+          policy={
+              "_meta": {
+                  "description": "used for nginx log",
+                  "project": {
+                      "name": "myProject",
+                      "department": "myDepartment"
+                  }
+              },
+              "phases": {
+                  "warm": {
+                      "min_age": "10d",
+                      "actions": {
+                          "forcemerge": {
+                              "max_num_segments": 1
+                          }
+                      }
+                  },
+                  "delete": {
+                      "min_age": "30d",
+                      "actions": {
+                          "delete": {}
+                      }
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ilm.putLifecycle({
+        name: "my_policy",
+        policy: {
+          _meta: {
+            description: "used for nginx log",
+            project: {
+              name: "myProject",
+              department: "myDepartment",
+            },
+          },
+          phases: {
+            warm: {
+              min_age: "10d",
+              actions: {
+                forcemerge: {
+                  max_num_segments: 1,
+                },
+              },
+            },
+            delete: {
+              min_age: "30d",
+              actions: {
+                delete: {},
+              },
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.ilm.put_lifecycle(
+        policy: "my_policy",
+        body: {
+          "policy": {
+            "_meta": {
+              "description": "used for nginx log",
+              "project": {
+                "name": "myProject",
+                "department": "myDepartment"
+              }
+            },
+            "phases": {
+              "warm": {
+                "min_age": "10d",
+                "actions": {
+                  "forcemerge": {
+                    "max_num_segments": 1
+                  }
+                }
+              },
+              "delete": {
+                "min_age": "30d",
+                "actions": {
+                  "delete": {}
+                }
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ilm()->putLifecycle([
+          "policy" => "my_policy",
+          "body" => [
+              "policy" => [
+                  "_meta" => [
+                      "description" => "used for nginx log",
+                      "project" => [
+                          "name" => "myProject",
+                          "department" => "myDepartment",
+                      ],
+                  ],
+                  "phases" => [
+                      "warm" => [
+                          "min_age" => "10d",
+                          "actions" => [
+                              "forcemerge" => [
+                                  "max_num_segments" => 1,
+                              ],
+                          ],
+                      ],
+                      "delete" => [
+                          "min_age" => "30d",
+                          "actions" => [
+                              "delete" => new ArrayObject([]),
+                          ],
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"policy\":{\"_meta\":{\"description\":\"used for nginx
+      log\",\"project\":{\"name\":\"myProject\",\"department\":\"myDepartment\"}},\"phases\":{\"warm\":{\"min_age\":\"10d\",\"actio\
+      ns\":{\"forcemerge\":{\"max_num_segments\":1}}},\"delete\":{\"min_age\":\"30d\",\"actions\":{\"delete\":{}}}}}}'
+      \"$ELASTICSEARCH_URL/_ilm/policy/my_policy\""
+  - language: Java
+    code: >
+      client.ilm().putLifecycle(p -> p
+          .name("my_policy")
+          .policy(po -> po
+              .phases(ph -> ph
+                  .delete(d -> d
+                      .actions(a -> a
+                          .delete(de -> de)
+                      )
+                      .minAge(m -> m
+                          .time("30d")
+                      )
+                  )
+                  .warm(w -> w
+                      .actions(a -> a
+                          .forcemerge(f -> f
+                              .maxNumSegments(1)
+                          )
+                      )
+                      .minAge(m -> m
+                          .time("10d")
+                      )
+                  )
+              )
+              .meta(Map.of("description", JsonData.fromJson("\"used for nginx log\""),"project", JsonData.fromJson("{\"name\":\"myProject\",\"department\":\"myDepartment\"}")))
+          )
+      );

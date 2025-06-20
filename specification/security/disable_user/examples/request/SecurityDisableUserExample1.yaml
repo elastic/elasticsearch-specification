@@ -1,1 +1,24 @@
 method_request: PUT /_security/user/jacknich/_disable
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.disable_user(
+          username="jacknich",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.disableUser({
+        username: "jacknich",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.disable_user(
+        username: "jacknich"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->disableUser([
+          "username" => "jacknich",
+      ]);
+  - language: curl
+    code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/user/jacknich/_disable"'

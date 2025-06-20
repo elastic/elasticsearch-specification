@@ -1,1 +1,29 @@
 method_request: POST _ml/anomaly_detectors/low_request_rate/_close
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.close_job(
+          job_id="low_request_rate",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.closeJob({
+        job_id: "low_request_rate",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.close_job(
+        job_id: "low_request_rate"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->closeJob([
+          "job_id" => "low_request_rate",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/_close"'
+  - language: Java
+    code: |
+      client.ml().closeJob(c -> c
+          .jobId("low_request_rate")
+      );

@@ -2,6 +2,105 @@ summary: Create an index with mappings.
 method_request: PUT /test
 description: You can provide mapping definitions in the create index API requests.
 # type: request
-value:
-  "{\n  \"settings\": {\n    \"number_of_shards\": 1\n  },\n  \"mappings\": {\n\
-  \    \"properties\": {\n      \"field1\": { \"type\": \"text\" }\n    }\n  }\n}"
+value: "{
+
+  \  \"settings\": {
+
+  \    \"number_of_shards\": 1
+
+  \  },
+
+  \  \"mappings\": {
+
+  \    \"properties\": {
+
+  \      \"field1\": { \"type\": \"text\" }
+
+  \    }
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.create(
+          index="test",
+          settings={
+              "number_of_shards": 1
+          },
+          mappings={
+              "properties": {
+                  "field1": {
+                      "type": "text"
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.create({
+        index: "test",
+        settings: {
+          number_of_shards: 1,
+        },
+        mappings: {
+          properties: {
+            field1: {
+              type: "text",
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.create(
+        index: "test",
+        body: {
+          "settings": {
+            "number_of_shards": 1
+          },
+          "mappings": {
+            "properties": {
+              "field1": {
+                "type": "text"
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->create([
+          "index" => "test",
+          "body" => [
+              "settings" => [
+                  "number_of_shards" => 1,
+              ],
+              "mappings" => [
+                  "properties" => [
+                      "field1" => [
+                          "type" => "text",
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"settings":{"number_of_shards":1},"mappings":{"properties":{"field1":{"type":"text"}}}}''
+      "$ELASTICSEARCH_URL/test"'
+  - language: Java
+    code: |
+      client.indices().create(c -> c
+          .index("test")
+          .mappings(m -> m
+              .properties("field1", p -> p
+                  .text(t -> t)
+              )
+          )
+          .settings(s -> s
+              .numberOfShards("1")
+          )
+      );

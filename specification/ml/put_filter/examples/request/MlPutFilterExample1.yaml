@@ -5,3 +5,56 @@ value: |-
     "description": "A list of safe domains",
     "items": ["*.google.com", "wikipedia.org"]
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.put_filter(
+          filter_id="safe_domains",
+          description="A list of safe domains",
+          items=[
+              "*.google.com",
+              "wikipedia.org"
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.putFilter({
+        filter_id: "safe_domains",
+        description: "A list of safe domains",
+        items: ["*.google.com", "wikipedia.org"],
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.put_filter(
+        filter_id: "safe_domains",
+        body: {
+          "description": "A list of safe domains",
+          "items": [
+            "*.google.com",
+            "wikipedia.org"
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->putFilter([
+          "filter_id" => "safe_domains",
+          "body" => [
+              "description" => "A list of safe domains",
+              "items" => array(
+                  "*.google.com",
+                  "wikipedia.org",
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"description":"A list
+      of safe domains","items":["*.google.com","wikipedia.org"]}'' "$ELASTICSEARCH_URL/_ml/filters/safe_domains"'
+  - language: Java
+    code: |
+      client.ml().putFilter(p -> p
+          .description("A list of safe domains")
+          .filterId("safe_domains")
+          .items(List.of("*.google.com","wikipedia.org"))
+      );

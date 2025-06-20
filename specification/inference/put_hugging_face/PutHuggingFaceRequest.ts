@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 import {
   HuggingFaceServiceSettings,
   HuggingFaceServiceType,
+  HuggingFaceTaskSettings,
   HuggingFaceTaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
@@ -56,6 +57,16 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  * * `Mistral-7B-Instruct-v0.2`
  * * `QwQ-32B`
  * * `Phi-3-mini-128k-instruct`
+ *
+ * For Elastic's `rerank` task:
+ * The selected model must support the `sentence-ranking` task and expose OpenAI API.
+ * HuggingFace supports only dedicated (not serverless) endpoints for `Rerank` so far.
+ * After the endpoint is initialized, copy the full endpoint URL for use.
+ * Tested models for `rerank` task:
+ *
+ * * `bge-reranker-base`
+ * * `jina-reranker-v1-turbo-en-GGUF`
+ *
  * @rest_spec_name inference.put_hugging_face
  * @availability stack since=8.12.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
@@ -93,5 +104,10 @@ export interface Request extends RequestBase {
      * Settings used to install the inference model. These settings are specific to the `hugging_face` service.
      */
     service_settings: HuggingFaceServiceSettings
+    /**
+     * Settings to configure the inference task.
+     * These settings are specific to the task type you specified.
+     */
+    task_settings?: HuggingFaceTaskSettings
   }
 }

@@ -12,3 +12,69 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.query_api_keys(
+          with_limited_by=True,
+          query={
+              "ids": {
+                  "values": [
+                      "VuaCfGcBCdbkQm-e5aOx"
+                  ]
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.queryApiKeys({
+        with_limited_by: "true",
+        query: {
+          ids: {
+            values: ["VuaCfGcBCdbkQm-e5aOx"],
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.query_api_keys(
+        with_limited_by: "true",
+        body: {
+          "query": {
+            "ids": {
+              "values": [
+                "VuaCfGcBCdbkQm-e5aOx"
+              ]
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->queryApiKeys([
+          "with_limited_by" => "true",
+          "body" => [
+              "query" => [
+                  "ids" => [
+                      "values" => array(
+                          "VuaCfGcBCdbkQm-e5aOx",
+                      ),
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"query":{"ids":{"values":["VuaCfGcBCdbkQm-e5aOx"]}}}''
+      "$ELASTICSEARCH_URL/_security/_query/api_key?with_limited_by=true"'
+  - language: Java
+    code: |
+      client.security().queryApiKeys(q -> q
+          .query(qu -> qu
+              .ids(i -> i
+                  .values("VuaCfGcBCdbkQm-e5aOx")
+              )
+          )
+          .withLimitedBy(true)
+      );

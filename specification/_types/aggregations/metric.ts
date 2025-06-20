@@ -59,6 +59,12 @@ export class BoxplotAggregation extends MetricAggregationBase {
    * Limits the maximum number of nodes used by the underlying TDigest algorithm to `20 * compression`, enabling control of memory usage and approximation error.
    */
   compression?: double
+  /**
+   * The default implementation of TDigest is optimized for performance, scaling to millions or even billions of sample values while maintaining acceptable accuracy levels (close to 1% relative error for millions of samples in some cases).
+   * To use an implementation optimized for accuracy, set this parameter to high_accuracy instead.
+   * @server_default default
+   */
+  execution_hint?: TDigestExecutionHint
 }
 
 export enum CardinalityExecutionMode {
@@ -173,6 +179,12 @@ export class MedianAbsoluteDeviationAggregation extends FormatMetricAggregationB
    * @server_default 1000
    */
   compression?: double
+  /**
+   * The default implementation of TDigest is optimized for performance, scaling to millions or even billions of sample values while maintaining acceptable accuracy levels (close to 1% relative error for millions of samples in some cases).
+   * To use an implementation optimized for accuracy, set this parameter to high_accuracy instead.
+   * @server_default default
+   */
+  execution_hint?: TDigestExecutionHint
 }
 
 export class MinAggregation extends FormatMetricAggregationBase {}
@@ -234,6 +246,17 @@ export class TDigest {
    * Limits the maximum number of nodes used by the underlying TDigest algorithm to `20 * compression`, enabling control of memory usage and approximation error.
    */
   compression?: integer
+  /**
+   * The default implementation of TDigest is optimized for performance, scaling to millions or even billions of sample values while maintaining acceptable accuracy levels (close to 1% relative error for millions of samples in some cases).
+   * To use an implementation optimized for accuracy, set this parameter to high_accuracy instead.
+   * @server_default default
+   */
+  execution_hint?: TDigestExecutionHint
+}
+
+export enum TDigestExecutionHint {
+  default,
+  high_accuracy
 }
 
 export class RateAggregation extends FormatMetricAggregationBase {

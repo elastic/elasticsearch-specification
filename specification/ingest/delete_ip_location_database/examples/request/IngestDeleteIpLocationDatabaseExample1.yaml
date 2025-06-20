@@ -1,1 +1,24 @@
 method_request: DELETE /_ingest/ip_location/database/my-database-id
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ingest.delete_ip_location_database(
+          id="my-database-id",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ingest.deleteIpLocationDatabase({
+        id: "my-database-id",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ingest.delete_ip_location_database(
+        id: "my-database-id"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ingest()->deleteIpLocationDatabase([
+          "id" => "my-database-id",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ingest/ip_location/database/my-database-id"'

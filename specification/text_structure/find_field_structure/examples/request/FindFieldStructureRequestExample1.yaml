@@ -1,1 +1,29 @@
 method_request: GET _text_structure/find_field_structure?index=test-logs&field=message
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.text_structure.find_field_structure(
+          index="test-logs",
+          field="message",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.textStructure.findFieldStructure({
+        index: "test-logs",
+        field: "message",
+      });
+  - language: Ruby
+    code: |-
+      response = client.text_structure.find_field_structure(
+        index: "test-logs",
+        field: "message"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->textStructure()->findFieldStructure([
+          "index" => "test-logs",
+          "field" => "message",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_text_structure/find_field_structure?index=test-logs&field=message"'

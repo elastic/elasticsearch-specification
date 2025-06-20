@@ -1,8 +1,8 @@
 summary: Get multiple term vectors
 method_request: 'POST /my-index-000001/_mtermvectors'
 description: >
-  Run `POST /my-index-000001/_mtermvectors`.
-  When you specify an index in the request URI, the index does not need to be specified for each documents in the request body.
+  Run `POST /my-index-000001/_mtermvectors`. When you specify an index in the request URI, the index does not need to be specified
+  for each documents in the request body.
 # type: "request"
 value: |-
   {
@@ -19,3 +19,89 @@ value: |-
         }
     ]
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.mtermvectors(
+          index="my-index-000001",
+          docs=[
+              {
+                  "_id": "2",
+                  "fields": [
+                      "message"
+                  ],
+                  "term_statistics": True
+              },
+              {
+                  "_id": "1"
+              }
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.mtermvectors({
+        index: "my-index-000001",
+        docs: [
+          {
+            _id: "2",
+            fields: ["message"],
+            term_statistics: true,
+          },
+          {
+            _id: "1",
+          },
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.mtermvectors(
+        index: "my-index-000001",
+        body: {
+          "docs": [
+            {
+              "_id": "2",
+              "fields": [
+                "message"
+              ],
+              "term_statistics": true
+            },
+            {
+              "_id": "1"
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->mtermvectors([
+          "index" => "my-index-000001",
+          "body" => [
+              "docs" => array(
+                  [
+                      "_id" => "2",
+                      "fields" => array(
+                          "message",
+                      ),
+                      "term_statistics" => true,
+                  ],
+                  [
+                      "_id" => "1",
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"docs":[{"_id":"2","fields":["message"],"term_statistics":true},{"_id":"1"}]}''
+      "$ELASTICSEARCH_URL/my-index-000001/_mtermvectors"'
+  - language: Java
+    code: |
+      client.mtermvectors(m -> m
+          .docs(List.of(MultiTermVectorsOperation.of(mu -> mu
+                  .id("2")
+                  .fields("message")
+                  .termStatistics(true)),MultiTermVectorsOperation.of(mu -> mu
+                  .id("1"))))
+          .index("my-index-000001")
+      );

@@ -2,4 +2,47 @@
 method_request: PUT _connector/my-connector/_status
 # description: ''
 # type: request
-value: "{\n    \"status\": \"needs_configuration\"\n}"
+value: "{
+
+  \    \"status\": \"needs_configuration\"
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.update_status(
+          connector_id="my-connector",
+          status="needs_configuration",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.updateStatus({
+        connector_id: "my-connector",
+        status: "needs_configuration",
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.update_status(
+        connector_id: "my-connector",
+        body: {
+          "status": "needs_configuration"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->updateStatus([
+          "connector_id" => "my-connector",
+          "body" => [
+              "status" => "needs_configuration",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"status":"needs_configuration"}'' "$ELASTICSEARCH_URL/_connector/my-connector/_status"'
+  - language: Java
+    code: |
+      client.connector().updateStatus(u -> u
+          .connectorId("my-connector")
+          .status(ConnectorStatus.NeedsConfiguration)
+      );

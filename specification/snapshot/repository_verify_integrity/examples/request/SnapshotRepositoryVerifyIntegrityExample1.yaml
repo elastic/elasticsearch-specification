@@ -1,1 +1,24 @@
 method_request: POST /_snapshot/my_repository/_verify_integrity
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.snapshot.repository_verify_integrity(
+          name="my_repository",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.snapshot.repositoryVerifyIntegrity({
+        name: "my_repository",
+      });
+  - language: Ruby
+    code: |-
+      response = client.snapshot.repository_verify_integrity(
+        repository: "my_repository"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->snapshot()->repositoryVerifyIntegrity([
+          "repository" => "my_repository",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_snapshot/my_repository/_verify_integrity"'

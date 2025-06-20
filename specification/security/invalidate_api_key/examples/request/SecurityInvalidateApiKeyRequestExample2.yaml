@@ -6,3 +6,37 @@ value: |-
   {
     "name" : "my-api-key"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.invalidate_api_key(
+          name="my-api-key",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.invalidateApiKey({
+        name: "my-api-key",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.invalidate_api_key(
+        body: {
+          "name": "my-api-key"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->invalidateApiKey([
+          "body" => [
+              "name" => "my-api-key",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"name":"my-api-key"}'' "$ELASTICSEARCH_URL/_security/api_key"'
+  - language: Java
+    code: |
+      client.security().invalidateApiKey(i -> i
+          .name("my-api-key")
+      );

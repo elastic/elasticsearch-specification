@@ -58,6 +58,7 @@ pub trait Documented {
 pub trait ExternalDocument {
     fn ext_doc_id(&self) -> Option<&str>;
     fn ext_doc_url(&self) -> Option<&str>;
+    fn ext_previous_version_doc_url(&self) -> Option<&str>;
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -323,6 +324,9 @@ pub struct Property {
     pub ext_doc_url: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_previous_version_doc_url: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub ext_doc_id: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -369,6 +373,10 @@ impl Documented for Property {
 impl ExternalDocument for Property {
     fn ext_doc_url(&self) -> Option<&str> {
         self.ext_doc_url.as_deref()
+    }
+
+    fn ext_previous_version_doc_url(&self) -> Option<&str> {
+        self.ext_previous_version_doc_url.as_deref()
     }
 
     fn ext_doc_id(&self) -> Option<&str> {
@@ -484,12 +492,19 @@ impl TypeDefinition {
 
 /// The Example type is used for both requests and responses.
 ///
-/// This type definition is taken from the OpenAPI spec
+/// This type definition is based on the OpenAPI spec
 ///     https://spec.openapis.org/oas/v3.1.0#example-object
-/// with the exception of using String as the 'value' type.
+/// with the exception of using String as the 'value' type,
+/// and some custom additions.
 ///
 /// The OpenAPI v3 spec also defines the 'Example' type, so
 /// to distinguish them, this type is called SchemaExample.
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ExampleAlternative {
+    pub language: String,
+    pub code: String,
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SchemaExample {
@@ -498,6 +513,7 @@ pub struct SchemaExample {
     pub description: Option<String>,
     pub value: Option<String>,
     pub external_value: Option<String>,
+    pub alternatives: Option<Vec<ExampleAlternative>>,
 }
 
 /// Common attributes for all type definitions
@@ -519,6 +535,9 @@ pub struct BaseType {
     /// Link to public documentation
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext_doc_url: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_previous_version_doc_url: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext_doc_id: Option<String>,
@@ -560,6 +579,7 @@ impl BaseType {
             spec_location: None,
             ext_doc_id: None,
             ext_doc_url: None,
+            ext_previous_version_doc_url: None,
         }
     }
 }
@@ -581,6 +601,10 @@ impl Documented for BaseType {
 impl ExternalDocument for BaseType {
     fn ext_doc_url(&self) -> Option<&str> {
         self.ext_doc_url.as_deref()
+    }
+
+    fn ext_previous_version_doc_url(&self) -> Option<&str> {
+        self.ext_previous_version_doc_url.as_deref()
     }
 
     fn ext_doc_id(&self) -> Option<&str> {
@@ -609,6 +633,10 @@ impl<T: WithBaseType> Documented for T {
 impl<T: WithBaseType> ExternalDocument for T {
     fn ext_doc_url(&self) -> Option<&str> {
         self.base().doc_url()
+    }
+
+    fn ext_previous_version_doc_url(&self) -> Option<&str> {
+        self.base().ext_previous_version_doc_url()
     }
 
     fn ext_doc_id(&self) -> Option<&str> {
@@ -888,6 +916,9 @@ pub struct Endpoint {
     pub ext_doc_url: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_previous_version_doc_url: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecation: Option<Deprecation>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -935,6 +966,10 @@ impl Documented for Endpoint {
 impl ExternalDocument for Endpoint {
     fn ext_doc_url(&self) -> Option<&str> {
         self.ext_doc_url.as_deref()
+    }
+
+    fn ext_previous_version_doc_url(&self) -> Option<&str> {
+        self.ext_previous_version_doc_url.as_deref()
     }
 
     fn ext_doc_id(&self) -> Option<&str> {

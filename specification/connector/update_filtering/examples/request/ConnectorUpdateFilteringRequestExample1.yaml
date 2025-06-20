@@ -2,11 +2,163 @@
 method_request: PUT _connector/my-g-drive-connector/_filtering
 # description: ''
 # type: request
-value:
-  "{\n    \"rules\": [\n         {\n            \"field\": \"file_extension\"\
-  ,\n            \"id\": \"exclude-txt-files\",\n            \"order\": 0,\n     \
-  \       \"policy\": \"exclude\",\n            \"rule\": \"equals\",\n          \
-  \  \"value\": \"txt\"\n        },\n        {\n            \"field\": \"_\",\n  \
-  \          \"id\": \"DEFAULT\",\n            \"order\": 1,\n            \"policy\"\
-  : \"include\",\n            \"rule\": \"regex\",\n            \"value\": \".*\"\n\
-  \        }\n    ]\n}"
+value: "{
+
+  \    \"rules\": [
+
+  \         {
+
+  \            \"field\": \"file_extension\",
+
+  \            \"id\": \"exclude-txt-files\",
+
+  \            \"order\": 0,
+
+  \            \"policy\": \"exclude\",
+
+  \            \"rule\": \"equals\",
+
+  \            \"value\": \"txt\"
+
+  \        },
+
+  \        {
+
+  \            \"field\": \"_\",
+
+  \            \"id\": \"DEFAULT\",
+
+  \            \"order\": 1,
+
+  \            \"policy\": \"include\",
+
+  \            \"rule\": \"regex\",
+
+  \            \"value\": \".*\"
+
+  \        }
+
+  \    ]
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.update_filtering(
+          connector_id="my-g-drive-connector",
+          rules=[
+              {
+                  "field": "file_extension",
+                  "id": "exclude-txt-files",
+                  "order": 0,
+                  "policy": "exclude",
+                  "rule": "equals",
+                  "value": "txt"
+              },
+              {
+                  "field": "_",
+                  "id": "DEFAULT",
+                  "order": 1,
+                  "policy": "include",
+                  "rule": "regex",
+                  "value": ".*"
+              }
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.updateFiltering({
+        connector_id: "my-g-drive-connector",
+        rules: [
+          {
+            field: "file_extension",
+            id: "exclude-txt-files",
+            order: 0,
+            policy: "exclude",
+            rule: "equals",
+            value: "txt",
+          },
+          {
+            field: "_",
+            id: "DEFAULT",
+            order: 1,
+            policy: "include",
+            rule: "regex",
+            value: ".*",
+          },
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.update_filtering(
+        connector_id: "my-g-drive-connector",
+        body: {
+          "rules": [
+            {
+              "field": "file_extension",
+              "id": "exclude-txt-files",
+              "order": 0,
+              "policy": "exclude",
+              "rule": "equals",
+              "value": "txt"
+            },
+            {
+              "field": "_",
+              "id": "DEFAULT",
+              "order": 1,
+              "policy": "include",
+              "rule": "regex",
+              "value": ".*"
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->updateFiltering([
+          "connector_id" => "my-g-drive-connector",
+          "body" => [
+              "rules" => array(
+                  [
+                      "field" => "file_extension",
+                      "id" => "exclude-txt-files",
+                      "order" => 0,
+                      "policy" => "exclude",
+                      "rule" => "equals",
+                      "value" => "txt",
+                  ],
+                  [
+                      "field" => "_",
+                      "id" => "DEFAULT",
+                      "order" => 1,
+                      "policy" => "include",
+                      "rule" => "regex",
+                      "value" => ".*",
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"rules\":[{\"field\":\"file_extension\",\"id\":\"exclude-txt-files\",\"order\":0,\"policy\":\"exclude\",\"rule\":\"equals\
+      \",\"value\":\"txt\"},{\"field\":\"_\",\"id\":\"DEFAULT\",\"order\":1,\"policy\":\"include\",\"rule\":\"regex\",\"value\":\".*\
+      \"}]}' \"$ELASTICSEARCH_URL/_connector/my-g-drive-connector/_filtering\""
+  - language: Java
+    code: |
+      client.connector().updateFiltering(u -> u
+          .connectorId("my-g-drive-connector")
+          .rules(List.of(FilteringRule.of(f -> f
+                  .field("file_extension")
+                  .id("exclude-txt-files")
+                  .order(0)
+                  .policy(FilteringPolicy.Exclude)
+                  .rule(FilteringRuleRule.Equals)
+                  .value("txt")),FilteringRule.of(f -> f
+                  .field("_")
+                  .id("DEFAULT")
+                  .order(1)
+                  .policy(FilteringPolicy.Include)
+                  .rule(FilteringRuleRule.Regex)
+                  .value(".*"))))
+      );
