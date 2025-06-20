@@ -91,7 +91,7 @@ export class LearningToRankConfig {
 }
 
 /**
- * @variants external
+ * @variants typed_keys_quirk
  */
 export type FeatureExtractor = QueryFeatureExtractor
 
