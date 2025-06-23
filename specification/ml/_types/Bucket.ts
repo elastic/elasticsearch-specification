@@ -18,7 +18,7 @@
  */
 
 import { Field, Id } from '@_types/common'
-import { double } from '@_types/Numeric'
+import { double, long } from '@_types/Numeric'
 import {
   DateTime,
   DurationValue,
@@ -35,6 +35,27 @@ export class BucketSummary {
    */
   anomaly_score: double
   bucket_influencers: BucketInfluencer[]
+  /**
+   * The length of the bucket in seconds. This value matches the bucket span that is specified in the job.
+   */
+  bucket_span: DurationValue<UnitSeconds>
+  /**
+   * The number of input data records processed in this bucket.
+   */
+  event_count: long
+  /**
+   * The maximum anomaly score for any of the bucket influencers. This is the initial value that was calculated at the
+   * time the bucket was processed.
+   */
+  initial_anomaly_score: double
+  /**
+   * If true, this is an interim result. In other words, the results are calculated based on partial input data.
+   */
+  is_interim: boolean
+  /**
+   * Identifier for the anomaly detection job.
+   */
+  job_id: Id
   /**
    * The amount of time, in milliseconds, that it took to analyze the bucket contents and calculate results.
    */
@@ -65,6 +86,22 @@ export class BucketInfluencer {
    * The length of the bucket in seconds. This value matches the bucket span that is specified in the job.
    */
   bucket_span: DurationValue<UnitSeconds>
+  /**
+   * The field name of the influencer.
+   */
+  influencer_field_name: Field
+  /**
+   * The score between 0-100 for each bucket influencer. This score is the initial value that was calculated at the
+   * time the bucket was processed. */
+  initial_anomaly_score: double
+  /**
+   * If true, this is an interim result. In other words, the results are calculated based on partial input data.
+   */
+  is_interim: boolean
+  /**
+   * Identifier for the anomaly detection job.
+   */
+  job_id: Id
   /**
    * The probability that the bucket has this behavior, in the range 0 to 1. This value can be held to a high precision
    * of over 300 decimal places, so the `anomaly_score` is provided as a human-readable and friendly interpretation of
