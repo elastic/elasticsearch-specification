@@ -110,7 +110,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * Indicates whether the request forces synthetic `_source`.
-     * Use this paramater to test if the mapping supports synthetic `_source` and to get a sense of the worst case performance.
+     * Use this parameter to test if the mapping supports synthetic `_source` and to get a sense of the worst case performance.
      * Fetches with this parameter enabled will be slower than enabling synthetic source natively in the index.
      * @availability stack since=8.4.0 visibility=feature_flag feature_flag=es.index_mode_feature_flag_registered
      */
@@ -163,8 +163,9 @@ export interface Request extends RequestBase {
      * A comma-separated list of stored fields to return as part of a hit.
      * If no fields are specified, no stored fields are included in the response.
      * If this field is specified, the `_source` parameter defaults to `false`.
-     * Only leaf fields can be retrieved with the `stored_field` option.
-     * Object fields can't be returned;​if specified, the request fails.
+     * Only leaf fields can be retrieved with the `stored_fields` option.
+     * Object fields can't be returned; if specified, the request fails.
+     * @ext_doc_id retrieve-stored-fields
      */
     stored_fields?: Fields
     /**
