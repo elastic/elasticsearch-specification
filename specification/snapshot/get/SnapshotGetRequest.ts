@@ -75,26 +75,6 @@ export interface Request extends RequestBase {
      */
     from_sort_value?: string
     /**
-     * If `false`, the request returns an error for any snapshots that are unavailable.
-     * @server_default false
-     */
-    ignore_unavailable?: boolean
-    /**
-     * If `true`, the response includes additional information about each index in the snapshot comprising the number of shards in the index, the total size of the index in bytes, and the maximum number of segments per shard in the index.
-     * The default is `false`, meaning that this information is omitted.
-     * @server_default false
-     * @availability stack since=7.13.0
-     * @availability serverless
-     */
-    index_details?: boolean
-    /**
-     * If `true`, the response includes the name of each index in each snapshot.
-     * @server_default true
-     * @availability stack since=8.3.0
-     * @availability serverless
-     */
-    index_names?: boolean
-    /**
      * If `true`, the response includes the repository name in each snapshot.
      * @server_default true
      */
@@ -148,13 +128,6 @@ export interface Request extends RequestBase {
      * @availability serverless
      */
     sort?: SnapshotSort
-    /**
-     * Only return snapshots with a state found in the given comma-separated list of snapshot states.
-     * The default is all snapshot states.
-     * @availability stack since=9.1.0
-     * @availability serverless
-     */
-    state?: SnapshotState | SnapshotState[]
     /**
      * If `true`, returns additional information about each snapshot such as the version of Elasticsearch which took the snapshot, the start and end times of the snapshot, and the number of shards snapshotted.
      *
