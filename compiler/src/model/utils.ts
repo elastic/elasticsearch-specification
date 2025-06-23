@@ -694,6 +694,9 @@ export function hoistRequestAnnotations (
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
       endpoint.docUrl = docUrl[1].replace(/\r/g, '')
+      if (docUrl[2].replace(/\r/g, '') !== '') {
+        endpoint.extPreviousVersionDocUrl = docUrl[2].replace(/\r/g, '')
+      }
     } else if (tag === 'ext_doc_id') {
       assert(jsDocs, value.trim() !== '', `Request ${request.name.name}'s @ext_doc_id cannot be empty`)
       endpoint.extDocId = value.trim()
