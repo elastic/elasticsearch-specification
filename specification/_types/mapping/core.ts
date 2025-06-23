@@ -213,7 +213,14 @@ export class RankFeaturesProperty extends PropertyBase {
   type: 'rank_features'
 }
 
+export class RankVectorProperty extends PropertyBase {
+  type: 'rank_vectors'
+  element_type?: RankVectorElementType
+  dims?: integer
+}
+
 export class SparseVectorProperty extends PropertyBase {
+  store?: boolean
   type: 'sparse_vector'
 }
 
@@ -363,4 +370,10 @@ export class DynamicProperty extends DocValuesPropertyBase {
   format?: string
   precision_step?: integer
   locale?: string
+}
+
+export enum RankVectorElementType {
+  byte,
+  float,
+  bit
 }
