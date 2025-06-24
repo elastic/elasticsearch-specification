@@ -27,3 +27,9 @@ alternatives:
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/my-index-000001,my-index-000002/_cache/clear?request=true"'
+  - language: Java
+    code: |
+      client.indices().clearCache(c -> c
+          .index(List.of("my-index-000001","my-index-000002"))
+          .request(true)
+      );

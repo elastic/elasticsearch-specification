@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ccr/auto_follow/my_auto_follow_pattern"'
+  - language: Java
+    code: |
+      client.ccr().deleteAutoFollowPattern(d -> d
+          .name("my_auto_follow_pattern")
+      );

@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_data_stream/my-data-stream/_lifecycle"'
+  - language: Java
+    code: |
+      client.indices().deleteDataLifecycle(d -> d
+          .name("my-data-stream")
+      );

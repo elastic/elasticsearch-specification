@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_watcher/watch/my_watch/_ack"'
+  - language: Java
+    code: |
+      client.watcher().ackWatch(a -> a
+          .watchId("my_watch")
+      );

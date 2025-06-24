@@ -27,3 +27,9 @@ alternatives:
   - language: curl
     code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_ml/calendars/planned-outages/jobs/total-requests"'
+  - language: Java
+    code: |
+      client.ml().putCalendarJob(p -> p
+          .calendarId("planned-outages")
+          .jobId("total-requests")
+      );

@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_watcher/watch/my_watch/_activate"'
+  - language: Java
+    code: |
+      client.watcher().activateWatch(a -> a
+          .watchId("my_watch")
+      );

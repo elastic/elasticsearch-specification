@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index/_searchable_snapshots/cache/clear"'
+  - language: Java
+    code: |
+      client.searchableSnapshots().clearCache(c -> c
+          .index("my-index")
+      );

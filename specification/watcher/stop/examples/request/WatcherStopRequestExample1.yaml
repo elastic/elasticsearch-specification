@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->watcher()->stop();
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_watcher/_stop"'
+  - language: Java
+    code: |
+      client.watcher().stop(s -> s);

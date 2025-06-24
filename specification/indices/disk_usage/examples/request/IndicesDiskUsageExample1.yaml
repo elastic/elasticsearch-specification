@@ -27,3 +27,9 @@ alternatives:
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/my-index-000001/_disk_usage?run_expensive_tasks=true"'
+  - language: Java
+    code: |
+      client.indices().diskUsage(d -> d
+          .index("my-index-000001")
+          .runExpensiveTasks(true)
+      );

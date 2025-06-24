@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->synonyms()->getSynonymsSets();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_synonyms"'
+  - language: Java
+    code: |
+      client.synonyms().getSynonymsSets(g -> g);

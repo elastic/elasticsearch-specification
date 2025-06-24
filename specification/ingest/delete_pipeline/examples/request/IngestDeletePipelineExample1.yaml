@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ingest/pipeline/my-pipeline-id"'
+  - language: Java
+    code: |
+      client.ingest().deletePipeline(d -> d
+          .id("my-pipeline-id")
+      );
