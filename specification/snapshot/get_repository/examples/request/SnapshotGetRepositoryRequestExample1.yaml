@@ -1,0 +1,24 @@
+method_request: GET /_snapshot/my_repository
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.snapshot.get_repository(
+          name="my_repository",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.snapshot.getRepository({
+        name: "my_repository",
+      });
+  - language: Ruby
+    code: |-
+      response = client.snapshot.get_repository(
+        repository: "my_repository"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->snapshot()->getRepository([
+          "repository" => "my_repository",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_snapshot/my_repository"'

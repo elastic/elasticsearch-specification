@@ -1,0 +1,24 @@
+method_request: POST _transform/ecommerce-customer-transform/_start
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.transform.start_transform(
+          transform_id="ecommerce-customer-transform",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.transform.startTransform({
+        transform_id: "ecommerce-customer-transform",
+      });
+  - language: Ruby
+    code: |-
+      response = client.transform.start_transform(
+        transform_id: "ecommerce-customer-transform"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->transform()->startTransform([
+          "transform_id" => "ecommerce-customer-transform",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_transform/ecommerce-customer-transform/_start"'

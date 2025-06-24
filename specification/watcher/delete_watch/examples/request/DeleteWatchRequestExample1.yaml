@@ -1,0 +1,24 @@
+method_request: DELETE _watcher/watch/my_watch
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.watcher.delete_watch(
+          id="my_watch",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.watcher.deleteWatch({
+        id: "my_watch",
+      });
+  - language: Ruby
+    code: |-
+      response = client.watcher.delete_watch(
+        id: "my_watch"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->watcher()->deleteWatch([
+          "id" => "my_watch",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_watcher/watch/my_watch"'

@@ -1,6 +1,40 @@
 # summary:
 # description:
 # type: request
-# method_request: PUT /_watcher/settings
+method_request: PUT /_watcher/settings
 value:
   index.auto_expand_replicas: 0-4
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.watcher.update_settings(
+          index.auto_expand_replicas="0-4",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.watcher.updateSettings({
+        "index.auto_expand_replicas": "0-4",
+      });
+  - language: Ruby
+    code: |-
+      response = client.watcher.update_settings(
+        body: {
+          "index.auto_expand_replicas": "0-4"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->watcher()->updateSettings([
+          "body" => [
+              "index.auto_expand_replicas" => "0-4",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"index.auto_expand_replicas":"0-4"}'' "$ELASTICSEARCH_URL/_watcher/settings"'
+  - language: Java
+    code: |
+      client.watcher().updateSettings(u -> u
+          .indexAutoExpandReplicas("0-4")
+      );

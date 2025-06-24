@@ -1,5 +1,5 @@
 summary: Invalidate an access token
-# method_request: DELETE /_security/oauth2/token
+method_request: DELETE /_security/oauth2/token
 description: >
   Run `DELETE /_security/oauth2/token` to invalidate an access token.
 # type: request
@@ -7,3 +7,39 @@ value: |-
   {
     "token" : "dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ=="
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.invalidate_token(
+          token="dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.invalidateToken({
+        token:
+          "dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.invalidate_token(
+        body: {
+          "token": "dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ=="
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->invalidateToken([
+          "body" => [
+              "token" => "dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"token":"dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ=="}''
+      "$ELASTICSEARCH_URL/_security/oauth2/token"'
+  - language: Java
+    code: |
+      client.security().invalidateToken(i -> i
+          .token("dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==")
+      );

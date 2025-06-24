@@ -332,7 +332,9 @@ type FooOrBar = Foo | Bar
 
 An example of internal variants are the type mapping properties.
 
-#### External
+#### typed_keys_quirk
+
+**Note**: this feature exists because of some early Elasticsearch APIs where tagging was forgotten, and added after the fact using this quirk to avoid breaking compatibility. **It should not be used for new APIs.**
 
 The key that defines the variant is external to the definition, like in the
 case of aggregations in responses or suggesters.
@@ -343,7 +345,7 @@ name in the definition itself.
 The syntax is:
 
 ```ts
-/** @variants external */
+/** @variants typed_keys_quirk */
 
 /** @variant name='<field-name>' */
 ```
@@ -351,7 +353,7 @@ The syntax is:
 For example:
 
 ```ts
-/** @variants external */
+/** @variants typed_keys_quirk */
 type FooAlias = Faz | Bar
 
 /** @variant name='faz' */
@@ -369,7 +371,7 @@ In the example above, `FooAlias` will look like this:
 
 ```json
 {
-  "faz": {
+  "name#faz": {
     "prop": "hello world"
   }
 }
@@ -379,7 +381,7 @@ or:
 
 ```json
 {
-  "bar": {
+  "name#bar": {
     "prop": true
   }
 }
@@ -670,6 +672,9 @@ class Request {
   ...
 }
 ```
+
+You can see the existing tag values in [elasticsearch-shared-overlays.yaml](https://github.com/elastic/elasticsearch-specification/blob/main/docs/overlays/elasticsearch-shared-overlays.yaml).
+If you add a new tag value in your specification, you must also add it to this file.
 
 NOTE: In the OpenAPI specification, operations can have multiple tags. However, we currently support only a single tag.
 

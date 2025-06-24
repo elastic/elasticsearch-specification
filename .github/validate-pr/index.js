@@ -26,7 +26,7 @@ import assert from 'assert'
 import * as core from '@actions/core'
 import { copyFile } from 'fs/promises'
 import * as github from '@actions/github'
-import specification from '../../output/schema/schema.json' assert { type: 'json' }
+import specification from '../../output/schema/schema.json' with { type: 'json' }
 import { run as getReport } from '../../../clients-flight-recorder/scripts/types-validator/index.js'
 import {
   getNamespace,
@@ -90,7 +90,12 @@ async function run() {
     if (file.startsWith('specification/_spec_utils')) continue
     if (file.startsWith('specification/_doc_ids')) continue
     if (file.startsWith('specification/_json_spec')) continue
-    if (file === 'specification/tsconfig.json') continue
+    if (file.startsWith('specification/node_modules')) continue
+    if (file.endsWith('tsconfig.json')) continue
+    if (file.endsWith('eslint.config.js')) continue
+    if (file.endsWith('package.json')) continue
+    if (file.endsWith('package-lock.json')) continue
+    if (file.endsWith('.md')) continue
     if (getApi(file).endsWith('_types')) {
       const apis = specification.endpoints
         .filter(endpoint => endpoint.name.split('.').filter(s => !privateNames.includes(s))[0] === getApi(file).split('.')[0])
@@ -136,12 +141,10 @@ async function run() {
     }
     comment += `\nYou can validate ${table.length === 1 ? 'this' : 'these'} API${table.length === 1 ? '' : 's'} yourself by using the ${tick}make validate${tick} target.\n`
 
-    await octokit.rest.issues.createComment({
-      owner: 'elastic',
-      repo: 'elasticsearch-specification',
-      issue_number: context.payload.pull_request.number,
-      body: comment
-    })
+    core.setOutput('has_results', 'true')
+    core.setOutput('comment_body', comment)
+  } else {
+    core.setOutput('has_results', 'false')
   }
 
   core.info('Done!')

@@ -1,0 +1,58 @@
+method_request: PUT _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/vocabulary
+description: An example body for a `PUT _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/vocabulary` request.
+value: |-
+  {
+    "vocabulary": [
+      "[PAD]",
+      "[unused0]",
+    ]
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.put_trained_model_vocabulary(
+          model_id="elastic__distilbert-base-uncased-finetuned-conll03-english",
+          vocabulary=[
+              "[PAD]",
+              "[unused0]"
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.putTrainedModelVocabulary({
+        model_id: "elastic__distilbert-base-uncased-finetuned-conll03-english",
+        vocabulary: ["[PAD]", "[unused0]"],
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.put_trained_model_vocabulary(
+        model_id: "elastic__distilbert-base-uncased-finetuned-conll03-english",
+        body: {
+          "vocabulary": [
+            "[PAD]",
+            "[unused0]"
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->putTrainedModelVocabulary([
+          "model_id" => "elastic__distilbert-base-uncased-finetuned-conll03-english",
+          "body" => [
+              "vocabulary" => array(
+                  "[PAD]",
+                  "[unused0]",
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"vocabulary":["[PAD]","[unused0]"]}''
+      "$ELASTICSEARCH_URL/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/vocabulary"'
+  - language: Java
+    code: |
+      client.ml().putTrainedModelVocabulary(p -> p
+          .modelId("elastic__distilbert-base-uncased-finetuned-conll03-english")
+          .vocabulary(List.of("[PAD]","[unused0]"))
+      );

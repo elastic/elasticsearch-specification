@@ -1,4 +1,5 @@
 # summary:
+method_request: POST /_security/api_key/_bulk_update
 description: Remove the previously assigned permissions for two API keys, making them inherit the owner user's full permissions.
 # type": "response",
 # response_code": 200,
@@ -7,3 +8,51 @@ value:
     - VuaCfGcBCdbkQm-e5aOx
     - H3_AhoIBA9hmeQJdg7ij
   role_descriptors: {}
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.bulk_update_api_keys(
+          ids=[
+              "VuaCfGcBCdbkQm-e5aOx",
+              "H3_AhoIBA9hmeQJdg7ij"
+          ],
+          role_descriptors={},
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.bulkUpdateApiKeys({
+        ids: ["VuaCfGcBCdbkQm-e5aOx", "H3_AhoIBA9hmeQJdg7ij"],
+        role_descriptors: {},
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.bulk_update_api_keys(
+        body: {
+          "ids": [
+            "VuaCfGcBCdbkQm-e5aOx",
+            "H3_AhoIBA9hmeQJdg7ij"
+          ],
+          "role_descriptors": {}
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->bulkUpdateApiKeys([
+          "body" => [
+              "ids" => array(
+                  "VuaCfGcBCdbkQm-e5aOx",
+                  "H3_AhoIBA9hmeQJdg7ij",
+              ),
+              "role_descriptors" => new ArrayObject([]),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"ids":["VuaCfGcBCdbkQm-e5aOx","H3_AhoIBA9hmeQJdg7ij"],"role_descriptors":{}}''
+      "$ELASTICSEARCH_URL/_security/api_key/_bulk_update"'
+  - language: Java
+    code: |
+      client.security().bulkUpdateApiKeys(b -> b
+          .ids(List.of("VuaCfGcBCdbkQm-e5aOx","H3_AhoIBA9hmeQJdg7ij"))
+      );

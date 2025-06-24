@@ -1,0 +1,28 @@
+method_request: DELETE /_security/privilege/myapp/read
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.delete_privileges(
+          application="myapp",
+          name="read",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.deletePrivileges({
+        application: "myapp",
+        name: "read",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.delete_privileges(
+        application: "myapp",
+        name: "read"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->deletePrivileges([
+          "application" => "myapp",
+          "name" => "read",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/privilege/myapp/read"'

@@ -1,9 +1,8 @@
 summary: Classification example 1
-# method_request: POST _ml/data_frame/_evaluate
+method_request: POST _ml/data_frame/_evaluate
 description: >
-  Run `POST _ml/data_frame/_evaluate` to evaluate a a classification job for an annotated index.
-  The `actual_field` contains the ground truth for classification.
-  The `predicted_field` contains the predicted value calculated by the classification analysis.
+  Run `POST _ml/data_frame/_evaluate` to evaluate a a classification job for an annotated index. The `actual_field` contains the
+  ground truth for classification. The `predicted_field` contains the predicted value calculated by the classification analysis.
 # type: request
 value:
   index: animal_classification
@@ -13,3 +12,82 @@ value:
       predicted_field: ml.animal_class_prediction
       metrics:
         multiclass_confusion_matrix: {}
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.evaluate_data_frame(
+          index="animal_classification",
+          evaluation={
+              "classification": {
+                  "actual_field": "animal_class",
+                  "predicted_field": "ml.animal_class_prediction",
+                  "metrics": {
+                      "multiclass_confusion_matrix": {}
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.evaluateDataFrame({
+        index: "animal_classification",
+        evaluation: {
+          classification: {
+            actual_field: "animal_class",
+            predicted_field: "ml.animal_class_prediction",
+            metrics: {
+              multiclass_confusion_matrix: {},
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.evaluate_data_frame(
+        body: {
+          "index": "animal_classification",
+          "evaluation": {
+            "classification": {
+              "actual_field": "animal_class",
+              "predicted_field": "ml.animal_class_prediction",
+              "metrics": {
+                "multiclass_confusion_matrix": {}
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->evaluateDataFrame([
+          "body" => [
+              "index" => "animal_classification",
+              "evaluation" => [
+                  "classification" => [
+                      "actual_field" => "animal_class",
+                      "predicted_field" => "ml.animal_class_prediction",
+                      "metrics" => [
+                          "multiclass_confusion_matrix" => new ArrayObject([]),
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"index\":\"animal_classification\",\"evaluation\":{\"classification\":{\"actual_field\":\"animal_class\",\"predicted_field\
+      \":\"ml.animal_class_prediction\",\"metrics\":{\"multiclass_confusion_matrix\":{}}}}}'
+      \"$ELASTICSEARCH_URL/_ml/data_frame/_evaluate\""
+  - language: Java
+    code: |
+      client.ml().evaluateDataFrame(e -> e
+          .evaluation(ev -> ev
+              .classification(c -> c
+                  .actualField("animal_class")
+                  .predictedField("ml.animal_class_prediction")
+                  .metrics(m -> m)
+              )
+          )
+          .index("animal_classification")
+      );

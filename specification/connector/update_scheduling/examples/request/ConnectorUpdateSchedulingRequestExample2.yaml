@@ -1,7 +1,84 @@
 # summary: connector/apis/update-connector-scheduling-api.asciidoc:119
-# method_request: PUT _connector/my-connector/_scheduling
+method_request: PUT _connector/my-connector/_scheduling
 # description: ''
 # type: request
-value:
-  "{\n    \"scheduling\": {\n        \"full\": {\n            \"enabled\": true,\n\
-  \            \"interval\": \"0 10 0 * * ?\"\n        }\n    }\n}"
+value: "{
+
+  \    \"scheduling\": {
+
+  \        \"full\": {
+
+  \            \"enabled\": true,
+
+  \            \"interval\": \"0 10 0 * * ?\"
+
+  \        }
+
+  \    }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.update_scheduling(
+          connector_id="my-connector",
+          scheduling={
+              "full": {
+                  "enabled": True,
+                  "interval": "0 10 0 * * ?"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.updateScheduling({
+        connector_id: "my-connector",
+        scheduling: {
+          full: {
+            enabled: true,
+            interval: "0 10 0 * * ?",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.update_scheduling(
+        connector_id: "my-connector",
+        body: {
+          "scheduling": {
+            "full": {
+              "enabled": true,
+              "interval": "0 10 0 * * ?"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->updateScheduling([
+          "connector_id" => "my-connector",
+          "body" => [
+              "scheduling" => [
+                  "full" => [
+                      "enabled" => true,
+                      "interval" => "0 10 0 * * ?",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"scheduling":{"full":{"enabled":true,"interval":"0 10 0 * * ?"}}}''
+      "$ELASTICSEARCH_URL/_connector/my-connector/_scheduling"'
+  - language: Java
+    code: |
+      client.connector().updateScheduling(u -> u
+          .connectorId("my-connector")
+          .scheduling(s -> s
+              .full(f -> f
+                  .enabled(true)
+                  .interval("0 10 0 * * ?")
+              )
+          )
+      );

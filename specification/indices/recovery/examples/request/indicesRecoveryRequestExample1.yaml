@@ -1,0 +1,26 @@
+method_request: GET /_recovery?human
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.recovery(
+          human=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.recovery({
+        human: "true",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.recovery(
+        human: "true"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->recovery([
+          "human" => "true",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_recovery?human"'
+  - language: Java
+    code: "\n"

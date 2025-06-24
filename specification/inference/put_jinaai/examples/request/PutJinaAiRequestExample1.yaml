@@ -1,6 +1,8 @@
 summary: A text embedding task
-description: Run `PUT _inference/text_embedding/jinaai-embeddings` to create an inference endpoint for text embedding tasks using the JinaAI service.
-# method_request: "PUT _inference/text_embedding/jinaai-embeddings"
+description:
+  Run `PUT _inference/text_embedding/jinaai-embeddings` to create an inference endpoint for text embedding tasks using
+  the JinaAI service.
+method_request: 'PUT _inference/text_embedding/jinaai-embeddings'
 # type: "request"
 value: |-
   {
@@ -10,3 +12,71 @@ value: |-
           "api_key": "JinaAi-Api-key"
       }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="text_embedding",
+          inference_id="jinaai-embeddings",
+          inference_config={
+              "service": "jinaai",
+              "service_settings": {
+                  "model_id": "jina-embeddings-v3",
+                  "api_key": "JinaAi-Api-key"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "text_embedding",
+        inference_id: "jinaai-embeddings",
+        inference_config: {
+          service: "jinaai",
+          service_settings: {
+            model_id: "jina-embeddings-v3",
+            api_key: "JinaAi-Api-key",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "text_embedding",
+        inference_id: "jinaai-embeddings",
+        body: {
+          "service": "jinaai",
+          "service_settings": {
+            "model_id": "jina-embeddings-v3",
+            "api_key": "JinaAi-Api-key"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "text_embedding",
+          "inference_id" => "jinaai-embeddings",
+          "body" => [
+              "service" => "jinaai",
+              "service_settings" => [
+                  "model_id" => "jina-embeddings-v3",
+                  "api_key" => "JinaAi-Api-key",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"service":"jinaai","service_settings":{"model_id":"jina-embeddings-v3","api_key":"JinaAi-Api-key"}}''
+      "$ELASTICSEARCH_URL/_inference/text_embedding/jinaai-embeddings"'
+  - language: Java
+    code: |
+      client.inference().put(p -> p
+          .inferenceId("jinaai-embeddings")
+          .taskType(TaskType.TextEmbedding)
+          .inferenceConfig(i -> i
+              .service("jinaai")
+              .serviceSettings(JsonData.fromJson("{\"model_id\":\"jina-embeddings-v3\",\"api_key\":\"JinaAi-Api-key\"}"))
+          )
+      );

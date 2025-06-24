@@ -1,0 +1,24 @@
+method_request: POST _rollup/job/sensor/_start
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.rollup.start_job(
+          id="sensor",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.rollup.startJob({
+        id: "sensor",
+      });
+  - language: Ruby
+    code: |-
+      response = client.rollup.start_job(
+        id: "sensor"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->rollup()->startJob([
+          "id" => "sensor",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_rollup/job/sensor/_start"'

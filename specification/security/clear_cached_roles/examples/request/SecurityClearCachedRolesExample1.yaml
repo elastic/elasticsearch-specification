@@ -1,0 +1,24 @@
+method_request: POST /_security/role/my_admin_role/_clear_cache
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.clear_cached_roles(
+          name="my_admin_role",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.clearCachedRoles({
+        name: "my_admin_role",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.clear_cached_roles(
+        name: "my_admin_role"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->clearCachedRoles([
+          "name" => "my_admin_role",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/role/my_admin_role/_clear_cache"'

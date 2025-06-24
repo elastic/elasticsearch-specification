@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { AdditionalProperty } from '@spec_utils/behaviors'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   FieldValue,
@@ -33,6 +31,8 @@ import {
 import { double, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateFormat, DateMath, TimeZone } from '@_types/Time'
+import { AdditionalProperty } from '@spec_utils/behaviors'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { QueryBase } from './abstractions'
 
 /**

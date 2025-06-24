@@ -1,0 +1,24 @@
+method_request: HEAD _alias/my-alias
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.exists_alias(
+          name="my-alias",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.existsAlias({
+        name: "my-alias",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.exists_alias(
+        name: "my-alias"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->existsAlias([
+          "name" => "my-alias",
+      ]);
+  - language: curl
+    code: 'curl --head -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_alias/my-alias"'

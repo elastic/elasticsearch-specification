@@ -1,8 +1,8 @@
 summary: Update the document source
-# method_request: POST my-index-000001/_update_by_query
+method_request: POST my-index-000001/_update_by_query
 description: >
-  Run `POST my-index-000001/_update_by_query` with a script to update the document source.
-  It increments the `count` field for all documents with a `user.id` of `kimchy` in `my-index-000001`.
+  Run `POST my-index-000001/_update_by_query` with a script to update the document source. It increments the `count` field for all
+  documents with a `user.id` of `kimchy` in `my-index-000001`.
 # type: "request"
 value: |-
   {
@@ -16,3 +16,86 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.update_by_query(
+          index="my-index-000001",
+          script={
+              "source": "ctx._source.count++",
+              "lang": "painless"
+          },
+          query={
+              "term": {
+                  "user.id": "kimchy"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.updateByQuery({
+        index: "my-index-000001",
+        script: {
+          source: "ctx._source.count++",
+          lang: "painless",
+        },
+        query: {
+          term: {
+            "user.id": "kimchy",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.update_by_query(
+        index: "my-index-000001",
+        body: {
+          "script": {
+            "source": "ctx._source.count++",
+            "lang": "painless"
+          },
+          "query": {
+            "term": {
+              "user.id": "kimchy"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->updateByQuery([
+          "index" => "my-index-000001",
+          "body" => [
+              "script" => [
+                  "source" => "ctx._source.count++",
+                  "lang" => "painless",
+              ],
+              "query" => [
+                  "term" => [
+                      "user.id" => "kimchy",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"script":{"source":"ctx._source.count++","lang":"painless"},"query":{"term":{"user.id":"kimchy"}}}''
+      "$ELASTICSEARCH_URL/my-index-000001/_update_by_query"'
+  - language: Java
+    code: |
+      client.updateByQuery(u -> u
+          .index("my-index-000001")
+          .query(q -> q
+              .term(t -> t
+                  .field("user.id")
+                  .value(FieldValue.of("kimchy"))
+              )
+          )
+          .script(s -> s
+              .source(so -> so
+                  .scriptString("ctx._source.count++")
+              )
+              .lang("painless")
+          )
+      );

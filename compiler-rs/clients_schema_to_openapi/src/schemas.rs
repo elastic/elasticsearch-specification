@@ -215,10 +215,14 @@ impl<'a> TypesAndComponents<'a> {
                 .as_ref()
                 .and_then(|i| i.version.as_deref())
                 .unwrap_or("current");
+            let mut extensions: IndexMap<String,serde_json::Value> = Default::default();
+            if let Some(previous_version_doc_url) = obj.ext_previous_version_doc_url() {
+                extensions.insert("x-previousVersionUrl".to_string(), serde_json::json!(previous_version_doc_url));
+            }
             ExternalDocumentation {
                 description: None,
                 url: url.trim().replace("{branch}", branch),
-                extensions: Default::default(),
+                extensions,
             }
         })
     }
@@ -363,6 +367,10 @@ impl<'a> TypesAndComponents<'a> {
                 _ => bail!("Unknown behavior {}", &bh.typ),
             }
         }
+
+        // description
+        schema.schema_data.description = itf.base.description.clone();
+
         Ok(schema)
     }
 
@@ -469,7 +477,7 @@ impl<'a> TypesAndComponents<'a> {
         data.external_docs = self.convert_external_docs(prop);
         data.deprecated = prop.deprecation.is_some();
         data.description = self.property_description(prop)?;
-        data.extensions = crate::availability_as_extensions(&prop.availability);
+        data.extensions = crate::availability_as_extensions(&prop.availability, &self.config.flavor);
         // TODO: prop.aliases as extensions
         // TODO: prop.server_default as extension
         // TODO: prop.doc_id as extension (new representation of since and stability)
@@ -481,7 +489,7 @@ impl<'a> TypesAndComponents<'a> {
 
     pub fn property_description(&self, prop: &Property) -> anyhow::Result<Option<String>> {
         if self.config.lift_enum_descriptions {
-            Ok(lift_enum_descriptions(prop, &self.model)?.or_else(|| prop.description.clone()))
+            Ok(lift_enum_descriptions(prop, self.model)?.or_else(|| prop.description.clone()))
         } else {
             Ok(prop.description.clone())
         }

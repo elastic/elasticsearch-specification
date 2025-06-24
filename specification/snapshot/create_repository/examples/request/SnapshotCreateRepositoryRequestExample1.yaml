@@ -1,7 +1,76 @@
 summary: A shared file system repository
-# method_request: PUT /_snapshot/my_repository
+method_request: PUT /_snapshot/my_repository
 description: Run `PUT /_snapshot/my_repository` to create or update a shared file system snapshot repository.
 # type: request
-value:
-  "{\n  \"type\": \"fs\",\n  \"settings\": {\n    \"location\": \"my_backup_location\"\
-  \n  }\n}"
+value: "{
+
+  \  \"type\": \"fs\",
+
+  \  \"settings\": {
+
+  \    \"location\": \"my_backup_location\"
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.snapshot.create_repository(
+          name="my_repository",
+          repository={
+              "type": "fs",
+              "settings": {
+                  "location": "my_backup_location"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.snapshot.createRepository({
+        name: "my_repository",
+        repository: {
+          type: "fs",
+          settings: {
+            location: "my_backup_location",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.snapshot.create_repository(
+        repository: "my_repository",
+        body: {
+          "type": "fs",
+          "settings": {
+            "location": "my_backup_location"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->snapshot()->createRepository([
+          "repository" => "my_repository",
+          "body" => [
+              "type" => "fs",
+              "settings" => [
+                  "location" => "my_backup_location",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"type":"fs","settings":{"location":"my_backup_location"}}'' "$ELASTICSEARCH_URL/_snapshot/my_repository"'
+  - language: Java
+    code: |
+      client.snapshot().createRepository(c -> c
+          .name("my_repository")
+          .repository(r -> r
+              .fs(f -> f
+                  .settings(s -> s
+                      .location("my_backup_location")
+                  )
+              )
+          )
+      );

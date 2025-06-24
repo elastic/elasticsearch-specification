@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Id, IndexName } from '@_types/common'
 import { Duration, TimeZone } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class IndexCapabilities {
   rollup_jobs: RollupJobSummary[]
