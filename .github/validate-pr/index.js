@@ -105,7 +105,7 @@ async function run() {
           ci: false,
           verbose: false
         })
-        const [namespace, _method] = api.split('.')
+        const namespace = getNamespace(api)
         // Asked to validate a specific API, so we only store that one
         reports.set(api, report.get(namespace)[0])
       }
@@ -120,7 +120,7 @@ async function run() {
         verbose: false
       })
 
-      const [namespace, _method] = api.split('.')
+      const namespace = getNamespace(api)
       // Asked to validate a specific API, so we only store that one
       reports.set(api, report.get(namespace)[0])
     }
@@ -147,12 +147,10 @@ async function run() {
     }
     comment += `\nYou can validate ${changedApis.length === 1 ? 'this' : 'these'} API${changedApis.length === 1 ? '' : 's'} yourself by using the ${tick}make validate${tick} target.\n`
 
-    await octokit.rest.issues.createComment({
-      owner: 'elastic',
-      repo: 'elasticsearch-specification',
-      issue_number: context.payload.pull_request.number,
-      body: comment
-    })
+    core.setOutput('has_results', 'true')
+    core.setOutput('comment_body', comment)
+  } else {
+    core.setOutput('has_results', 'false')
   }
 
   core.info('Done!')
@@ -161,7 +159,6 @@ async function run() {
 function getApi (file) {
   return file.split('/').slice(1, 3).filter(s => !privateNames.includes(s)).filter(Boolean).join('.')
 }
-
 
 function findBaselineReport(apiName, baselineValidation) {
   const [namespace, method] = apiName.split('.')
