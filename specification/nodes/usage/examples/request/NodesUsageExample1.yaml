@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->nodes()->usage();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_nodes/usage"'
+  - language: Java
+    code: |
+      client.nodes().usage(u -> u);

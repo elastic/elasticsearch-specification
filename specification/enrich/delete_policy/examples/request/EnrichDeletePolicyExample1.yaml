@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_enrich/policy/my-policy"'
+  - language: Java
+    code: |
+      client.enrich().deletePolicy(d -> d
+          .name("my-policy")
+      );

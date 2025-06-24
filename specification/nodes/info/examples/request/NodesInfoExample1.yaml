@@ -26,3 +26,9 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_nodes/_all/jvm"'
+  - language: Java
+    code: |
+      client.nodes().info(i -> i
+          .metric("jvm")
+          .nodeId("_all")
+      );

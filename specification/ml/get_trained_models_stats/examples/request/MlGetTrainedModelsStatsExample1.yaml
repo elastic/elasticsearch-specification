@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->ml()->getTrainedModelsStats();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/trained_models/_stats"'
+  - language: Java
+    code: |
+      client.ml().getTrainedModelsStats(g -> g);

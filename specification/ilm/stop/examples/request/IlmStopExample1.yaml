@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->ilm()->stop();
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ilm/stop"'
+  - language: Java
+    code: |
+      client.ilm().stop(s -> s);

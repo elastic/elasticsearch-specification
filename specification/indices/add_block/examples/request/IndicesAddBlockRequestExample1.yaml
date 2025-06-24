@@ -26,3 +26,9 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index-000001/_block/write"'
+  - language: Java
+    code: |
+      client.indices().addBlock(a -> a
+          .block(IndicesBlockOptions.Write)
+          .index("my-index-000001")
+      );

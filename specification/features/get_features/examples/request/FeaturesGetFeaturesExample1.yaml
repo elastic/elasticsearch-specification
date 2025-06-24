@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->features()->getFeatures();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_features"'
+  - language: Java
+    code: |
+      client.features().getFeatures(g -> g);

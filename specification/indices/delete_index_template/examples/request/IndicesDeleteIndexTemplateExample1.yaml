@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_index_template/my-index-template"'
+  - language: Java
+    code: |
+      client.indices().deleteIndexTemplate(d -> d
+          .name("my-index-template")
+      );

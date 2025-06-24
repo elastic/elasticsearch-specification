@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_connector/my-connector/_check_in"'
+  - language: Java
+    code: |
+      client.connector().checkIn(c -> c
+          .connectorId("my-connector")
+      );
