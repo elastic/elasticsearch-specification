@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_template/.cloud-hot-warm-allocation-0"'
+  - language: Java
+    code: |
+      client.indices().deleteTemplate(d -> d
+          .name(".cloud-hot-warm-allocation-0")
+      );

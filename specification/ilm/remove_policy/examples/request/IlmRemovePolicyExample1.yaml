@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/logs-my_app-default/_ilm/remove"'
+  - language: Java
+    code: |
+      client.ilm().removePolicy(r -> r
+          .index("logs-my_app-default")
+      );

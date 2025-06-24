@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->xpack()->usage();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_xpack/usage"'
+  - language: Java
+    code: |
+      client.xpack().usage(u -> u);

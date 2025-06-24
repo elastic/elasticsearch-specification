@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index-000001/_forcemerge"'
+  - language: Java
+    code: |
+      client.indices().forcemerge(f -> f
+          .index("my-index-000001")
+      );

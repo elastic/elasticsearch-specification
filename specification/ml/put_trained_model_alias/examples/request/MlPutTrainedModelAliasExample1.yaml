@@ -27,3 +27,9 @@ alternatives:
   - language: curl
     code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_ml/trained_models/flight-delay-prediction-1574775339910/model_aliases/flight_delay_model"'
+  - language: Java
+    code: |
+      client.ml().putTrainedModelAlias(p -> p
+          .modelAlias("flight_delay_model")
+          .modelId("flight-delay-prediction-1574775339910")
+      );

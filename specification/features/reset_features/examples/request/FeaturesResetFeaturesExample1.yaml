@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->features()->resetFeatures();
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_features/_reset"'
+  - language: Java
+    code: |
+      client.features().resetFeatures(r -> r);

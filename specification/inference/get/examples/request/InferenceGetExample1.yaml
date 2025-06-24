@@ -26,3 +26,9 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_inference/sparse_embedding/my-elser-model"'
+  - language: Java
+    code: |
+      client.inference().get(g -> g
+          .inferenceId("my-elser-model")
+          .taskType(TaskType.SparseEmbedding)
+      );

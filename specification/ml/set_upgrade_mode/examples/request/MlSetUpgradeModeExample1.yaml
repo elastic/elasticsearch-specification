@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/set_upgrade_mode?enabled=true"'
+  - language: Java
+    code: |
+      client.ml().setUpgradeMode(s -> s
+          .enabled(true)
+      );

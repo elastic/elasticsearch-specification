@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index-000001/_field_usage_stats"'
+  - language: Java
+    code: |
+      client.indices().fieldUsageStats(f -> f
+          .index("my-index-000001")
+      );

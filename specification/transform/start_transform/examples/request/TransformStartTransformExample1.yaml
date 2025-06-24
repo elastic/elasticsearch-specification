@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_transform/ecommerce-customer-transform/_start"'
+  - language: Java
+    code: |
+      client.transform().startTransform(s -> s
+          .transformId("ecommerce-customer-transform")
+      );

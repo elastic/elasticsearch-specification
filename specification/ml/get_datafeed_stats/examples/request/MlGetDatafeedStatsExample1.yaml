@@ -23,3 +23,8 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-high_sum_total_sales/_stats"'
+  - language: Java
+    code: |
+      client.ml().getDatafeedStats(g -> g
+          .datafeedId("datafeed-high_sum_total_sales")
+      );

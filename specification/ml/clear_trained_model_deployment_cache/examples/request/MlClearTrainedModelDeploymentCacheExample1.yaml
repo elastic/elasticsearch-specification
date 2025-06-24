@@ -23,3 +23,8 @@ alternatives:
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/deployment/cache/_clear"'
+  - language: Java
+    code: |
+      client.ml().clearTrainedModelDeploymentCache(c -> c
+          .modelId("elastic__distilbert-base-uncased-finetuned-conll03-english")
+      );
