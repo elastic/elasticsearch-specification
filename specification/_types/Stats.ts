@@ -328,7 +328,6 @@ export class SegmentsStats {
    * Total amount of memory used by all index writers across all shards assigned to selected nodes.
    */
   index_writer_memory?: ByteSize
-  index_writer_max_memory_in_bytes?: long
   /**
    * Total amount, in bytes, of memory used by all index writers across all shards assigned to selected nodes.
    */
@@ -361,7 +360,6 @@ export class SegmentsStats {
    * Total amount, in bytes, of memory used for points across all shards assigned to selected nodes.
    */
   points_memory_in_bytes: long
-  stored_memory?: ByteSize
   /**
    * Total amount, in bytes, of memory used for stored fields across all shards assigned to selected nodes.
    */

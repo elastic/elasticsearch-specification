@@ -33,6 +33,9 @@ import { IndexingPressureMemory } from '@nodes/_types/Stats'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class ClusterFileSystem {
+  path?: string
+  mount?: string
+  type?: string
   /**
    * Total number of bytes available to JVM in file stores across all selected nodes.
    * Depending on operating system or process-level restrictions, this number may be less than `nodes.fs.free_in_byes`.
@@ -61,6 +64,14 @@ export class ClusterFileSystem {
    * Total size of all file stores across all selected nodes.
    */
   total?: ByteSize
+  low_watermark_free_space?: ByteSize
+  low_watermark_free_space_in_bytes?: long
+  high_watermark_free_space?: ByteSize
+  high_watermark_free_space_in_bytes?: long
+  flood_stage_free_space?: ByteSize
+  flood_stage_free_space_in_bytes?: long
+  frozen_flood_stage_free_space?: ByteSize
+  frozen_flood_stage_free_space_in_bytes?: long
 }
 
 export class ClusterIndicesShardsIndex {

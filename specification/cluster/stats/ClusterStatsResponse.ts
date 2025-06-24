@@ -57,7 +57,7 @@ export class StatsResponseBase extends NodesResponseBase {
   /**
    * Health status of the cluster, based on the state of its primary and replica shards.
    */
-  status: HealthStatus
+  status?: HealthStatus
   /**
    * Unix timestamp, in milliseconds, for the last time the cluster statistics were refreshed.
    */
