@@ -30,6 +30,7 @@ end with `Request` or `Response`.
 ### Request and Response definitions
 
 Request and Response definitions should be placed by strictly following
+the rest-api-spec structure.
 the `rest-api-spec` structure.
 For example, the request and response definition for `indices.put_mapping`
 should go in [`/specification/indices/put_mapping`](../specification/indices/put_mapping).
