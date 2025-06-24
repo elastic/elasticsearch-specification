@@ -31,3 +31,12 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_resolve/cluster/not-present,clust*:my-index*,oldcluster:*?ignore_unavailable=false&timeout=5s"'
+  - language: Java
+    code: |
+      client.indices().resolveCluster(r -> r
+          .ignoreUnavailable(false)
+          .name(List.of("not-present","clust*:my-index*","oldcluster:*"))
+          .timeout(t -> t
+              .offset(5)
+          )
+      );

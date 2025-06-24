@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index/_searchable_snapshots/stats"'
+  - language: Java
+    code: |
+      client.searchableSnapshots().stats(s -> s
+          .index("my-index")
+      );

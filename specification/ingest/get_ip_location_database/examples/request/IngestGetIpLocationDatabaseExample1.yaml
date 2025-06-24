@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ingest/ip_location/database/my-database-id"'
+  - language: Java
+    code: |
+      client.ingest().getIpLocationDatabase(g -> g
+          .id("my-database-id")
+      );
