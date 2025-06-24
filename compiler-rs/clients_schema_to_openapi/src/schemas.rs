@@ -215,10 +215,14 @@ impl<'a> TypesAndComponents<'a> {
                 .as_ref()
                 .and_then(|i| i.version.as_deref())
                 .unwrap_or("current");
+            let mut extensions: IndexMap<String,serde_json::Value> = Default::default();
+            if let Some(previous_version_doc_url) = obj.ext_previous_version_doc_url() {
+                extensions.insert("x-previousVersionUrl".to_string(), serde_json::json!(previous_version_doc_url));
+            }
             ExternalDocumentation {
                 description: None,
                 url: url.trim().replace("{branch}", branch),
-                extensions: Default::default(),
+                extensions,
             }
         })
     }
