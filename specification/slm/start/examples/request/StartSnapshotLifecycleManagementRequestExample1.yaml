@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->slm()->start();
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_slm/start"'
+  - language: Java
+    code: |
+      client.slm().start(s -> s);

@@ -23,3 +23,8 @@ alternatives:
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_application/analytics/my_analytics_collection/"'
+  - language: Java
+    code: |
+      client.searchApplication().deleteBehavioralAnalytics(d -> d
+          .name("my_analytics_collection")
+      );

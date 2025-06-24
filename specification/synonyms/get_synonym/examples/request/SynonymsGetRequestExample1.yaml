@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_synonyms/my-synonyms-set"'
+  - language: Java
+    code: |
+      client.synonyms().getSynonym(g -> g
+          .id("my-synonyms-set")
+      );

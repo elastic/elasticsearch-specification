@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index-00001/_close"'
+  - language: Java
+    code: |
+      client.indices().close(c -> c
+          .index("my-index-00001")
+      );

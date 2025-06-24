@@ -23,3 +23,8 @@ alternatives:
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_ml/trained_models/my_model_for_search/deployment/_stop"'
+  - language: Java
+    code: |
+      client.ml().stopTrainedModelDeployment(s -> s
+          .modelId("my_model_for_search")
+      );

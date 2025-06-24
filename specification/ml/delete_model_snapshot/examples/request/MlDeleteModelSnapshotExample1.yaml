@@ -27,3 +27,9 @@ alternatives:
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_ml/anomaly_detectors/farequote/model_snapshots/1491948163"'
+  - language: Java
+    code: |
+      client.ml().deleteModelSnapshot(d -> d
+          .jobId("farequote")
+          .snapshotId("1491948163")
+      );
