@@ -148,7 +148,7 @@ property: UserDefinedValue
 
 ### Numbers
 
-The numeric type in TypeScript is `number`, but given that this specification targets mutliple languages,
+The numeric type in TypeScript is `number`, but given that this specification targets multiple languages,
 it offers a bunch of aliases that represent the type that should be used if the language supports it:
 
 ```ts
@@ -504,7 +504,7 @@ Code generators should track the `es_quirk` they implement and fail if a new unh
 
 ### Additional information
 
-If needed, you can specify additional information on each type with the approariate JSDoc tag.
+If needed, you can specify additional information on each type with the appropriate JSDoc tag.
 Following you can find a list of the supported tags:
 
 #### `@availability`
