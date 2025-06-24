@@ -31,3 +31,10 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_application/search_application?from=0&size=3&q=app*"'
+  - language: Java
+    code: |
+      client.searchApplication().list(l -> l
+          .from(0)
+          .q("app*")
+          .size(3)
+      );

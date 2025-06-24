@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl --head -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_alias/my-alias"'
+  - language: Java
+    code: |
+      client.indices().existsAlias(e -> e
+          .name("my-alias")
+      );

@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_index_template/_simulate_index/my-index-000001"'
+  - language: Java
+    code: |
+      client.indices().simulateIndexTemplate(s -> s
+          .name("my-index-000001")
+      );

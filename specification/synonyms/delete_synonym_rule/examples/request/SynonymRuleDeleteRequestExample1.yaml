@@ -26,3 +26,9 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_synonyms/my-synonyms-set/test-1"'
+  - language: Java
+    code: |
+      client.synonyms().deleteSynonymRule(d -> d
+          .ruleId("test-1")
+          .setId("my-synonyms-set")
+      );

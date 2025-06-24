@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->migration()->deprecations();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_migration/deprecations"'
+  - language: Java
+    code: |
+      client.migration().deprecations(d -> d);

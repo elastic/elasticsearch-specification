@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/.ds-my-data-stream-2099.03.07-000001/_open/"'
+  - language: Java
+    code: |
+      client.indices().open(o -> o
+          .index(".ds-my-data-stream-2099.03.07-000001")
+      );

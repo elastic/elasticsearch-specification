@@ -27,3 +27,9 @@ alternatives:
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_ml/anomaly_detectors/total-requests/_forecast/_all"'
+  - language: Java
+    code: |
+      client.ml().deleteForecast(d -> d
+          .forecastId("_all")
+          .jobId("total-requests")
+      );
