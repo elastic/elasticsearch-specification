@@ -21524,7 +21524,11 @@
           "security"
         ],
         "summary": "Find API keys with a query",
-        "description": "Get a paginated list of API keys and their information.\nYou can optionally filter the results with a query.\n\nTo use this API, you must have at least the `manage_own_api_key` or the `read_security` cluster privileges.\nIf you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have the `read_security`, `manage_api_key`, or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.\n\n## Required authorization\n\n* Cluster privileges: `manage_own_api_key`,`read_security`\n",
+        "description": "Get a paginated list of API keys and their information.\nYou can optionally filter the results with a query.\n\nTo use this API, you must have at least the `manage_own_api_key` or the `read_security` cluster privileges.\nIf you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have the `read_security`, `manage_api_key`, or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.\nRefer to the linked documentation for examples of how to find API keys:\n\n## Required authorization\n\n* Cluster privileges: `manage_own_api_key`,`read_security`\n",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/query-api-keys",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/security-api-query-api-key.html"
+        },
         "operationId": "security-query-api-keys",
         "parameters": [
           {
@@ -21553,7 +21557,11 @@
           "security"
         ],
         "summary": "Find API keys with a query",
-        "description": "Get a paginated list of API keys and their information.\nYou can optionally filter the results with a query.\n\nTo use this API, you must have at least the `manage_own_api_key` or the `read_security` cluster privileges.\nIf you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have the `read_security`, `manage_api_key`, or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.\n\n## Required authorization\n\n* Cluster privileges: `manage_own_api_key`,`read_security`\n",
+        "description": "Get a paginated list of API keys and their information.\nYou can optionally filter the results with a query.\n\nTo use this API, you must have at least the `manage_own_api_key` or the `read_security` cluster privileges.\nIf you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have the `read_security`, `manage_api_key`, or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.\nRefer to the linked documentation for examples of how to find API keys:\n\n## Required authorization\n\n* Cluster privileges: `manage_own_api_key`,`read_security`\n",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/query-api-keys",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/security-api-query-api-key.html"
+        },
         "operationId": "security-query-api-keys-1",
         "parameters": [
           {
@@ -65239,23 +65247,6 @@
                 "count",
                 "api_keys"
               ]
-            },
-            "examples": {
-              "QueryApiKeysResponseExample1": {
-                "summary": "Query API keys by ID",
-                "description": "A successful response from `GET /_security/_query/api_key?with_limited_by=true`. The `limited_by` details are the owner user's permissions associated with the API key. It is a point-in-time snapshot captured at creation and subsequent updates. An API key's effective permissions are an intersection of its assigned privileges and the owner user's permissions.\n",
-                "value": "{\n  \"api_keys\": [\n    {\n      \"id\": \"VuaCfGcBCdbkQm-e5aOx\",\n      \"name\": \"application-key-1\",\n      \"creation\": 1548550550158,\n      \"expiration\": 1548551550158,\n      \"invalidated\": false,\n      \"username\": \"myuser\",\n      \"realm\": \"native1\",\n      \"realm_type\": \"native\",\n      \"metadata\": {\n        \"application\": \"my-application\"\n      },\n      \"role_descriptors\": { },\n      \"limited_by\": [ \n        {\n          \"role-power-user\": {\n            \"cluster\": [\n              \"monitor\"\n            ],\n            \"indices\": [\n              {\n                \"names\": [\n                  \"*\"\n                ],\n                \"privileges\": [\n                  \"read\"\n                ],\n                \"allow_restricted_indices\": false\n              }\n            ],\n            \"applications\": [ ],\n            \"run_as\": [ ],\n            \"metadata\": { },\n            \"transient_metadata\": {\n              \"enabled\": true\n            }\n          }\n        }\n      ]\n    }\n  ]\n}"
-              },
-              "QueryApiKeysResponseExample2": {
-                "summary": "Query API keys with pagination",
-                "description": "An abbreviated response from `GET /_security/_query/api_key` that contains a list of matched API keys along with their sort values. The first sort value is creation time, which is displayed in `date_time` format. The second sort value is the API key name.\n",
-                "value": "{\n  \"total\": 100,\n  \"count\": 10,\n  \"api_keys\": [\n    {\n      \"id\": \"CLXgVnsBOGkf8IyjcXU7\",\n      \"name\": \"app1-key-79\",\n      \"creation\": 1629250154811,\n      \"invalidated\": false,\n      \"username\": \"org-admin-user\",\n      \"realm\": \"native1\",\n      \"metadata\": {\n        \"environment\": \"production\"\n      },\n      \"role_descriptors\": { },\n      \"_sort\": [\n        \"2021-08-18T01:29:14.811Z\",  \n        \"app1-key-79\"  \n      ]\n    },\n    {\n      \"id\": \"BrXgVnsBOGkf8IyjbXVB\",\n      \"name\": \"app1-key-78\",\n      \"creation\": 1629250153794,\n      \"invalidated\": false,\n      \"username\": \"org-admin-user\",\n      \"realm\": \"native1\",\n      \"metadata\": {\n        \"environment\": \"production\"\n      },\n      \"role_descriptors\": { },\n      \"_sort\": [\n        \"2021-08-18T01:29:13.794Z\",\n        \"app1-key-78\"\n      ]\n    }\n  ]\n}"
-              },
-              "QueryApiKeysResponseExample3": {
-                "summary": "Query all API keys",
-                "description": "A successful response from `GET /_security/_query/api_key`. It includes the role descriptors that are assigned to each API key when it was created or last updated. Note that an API key's effective permissions are an intersection of its assigned privileges and the point-in-time snapshot of the owner user's permissions. An empty role descriptors object means the API key inherits the owner user's permissions.\n",
-                "value": "{\n  \"total\": 3,\n  \"count\": 3,\n  \"api_keys\": [ \n    {\n      \"id\": \"nkvrGXsB8w290t56q3Rg\",\n      \"name\": \"my-api-key-1\",\n      \"creation\": 1628227480421,\n      \"expiration\": 1629091480421,\n      \"invalidated\": false,\n      \"username\": \"elastic\",\n      \"realm\": \"reserved\",\n      \"realm_type\": \"reserved\",\n      \"metadata\": {\n        \"letter\": \"a\"\n      },\n      \"role_descriptors\": { \n        \"role-a\": {\n          \"cluster\": [\n            \"monitor\"\n          ],\n          \"indices\": [\n            {\n              \"names\": [\n                \"index-a\"\n              ],\n              \"privileges\": [\n                \"read\"\n              ],\n              \"allow_restricted_indices\": false\n            }\n          ],\n          \"applications\": [ ],\n          \"run_as\": [ ],\n          \"metadata\": { },\n          \"transient_metadata\": {\n            \"enabled\": true\n          }\n        }\n      }\n    },\n    {\n      \"id\": \"oEvrGXsB8w290t5683TI\",\n      \"name\": \"my-api-key-2\",\n      \"creation\": 1628227498953,\n      \"expiration\": 1628313898953,\n      \"invalidated\": false,\n      \"username\": \"elastic\",\n      \"realm\": \"reserved\",\n      \"metadata\": {\n        \"letter\": \"b\"\n      },\n      \"role_descriptors\": { } \n    }\n  ]\n}"
-              }
             }
           }
         }
@@ -72889,16 +72880,6 @@
                 "summary": "Query API keys by ID",
                 "description": "Run `GET /_security/_query/api_key?with_limited_by=true` to retrieve an API key by ID.",
                 "value": "{\n  \"query\": {\n    \"ids\": {\n      \"values\": [\n        \"VuaCfGcBCdbkQm-e5aOx\"\n      ]\n    }\n  }\n}"
-              },
-              "QueryApiKeysRequestExample2": {
-                "summary": "Query API keys with pagination",
-                "description": "Run `GET /_security/_query/api_key`. Use a `bool` query to issue complex logical conditions and use `from`, `size`, and `sort` to help paginate the result. For example, the API key name must begin with `app1-key-` and must not be `app1-key-01`. It must be owned by a username with the wildcard pattern `org-*-user` and the `environment` metadata field must have a `production` value. The offset to begin the search result is the twentieth (zero-based index) API key. The page size of the response is 10 API keys. The result is first sorted by creation date in descending order, then by name in ascending order.\n",
-                "value": "{\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        {\n          \"prefix\": {\n            \"name\": \"app1-key-\" \n          }\n        },\n        {\n          \"term\": {\n            \"invalidated\": \"false\" \n          }\n        }\n      ],\n      \"must_not\": [\n        {\n          \"term\": {\n            \"name\": \"app1-key-01\" \n          }\n        }\n      ],\n      \"filter\": [\n        {\n          \"wildcard\": {\n            \"username\": \"org-*-user\" \n          }\n        },\n        {\n          \"term\": {\n            \"metadata.environment\": \"production\" \n          }\n        }\n      ]\n    }\n  },\n  \"from\": 20, \n  \"size\": 10, \n  \"sort\": [ \n    { \"creation\": { \"order\": \"desc\", \"format\": \"date_time\" } },\n    \"name\"\n  ]\n}"
-              },
-              "QueryApiKeysRequestExample3": {
-                "summary": "Query API keys by name",
-                "description": "Run `GET /_security/_query/api_key` to retrieve the API key by name.",
-                "value": "{\n  \"query\": {\n    \"term\": {\n      \"name\": {\n        \"value\": \"application-key-1\"\n      }\n    }\n  }\n}"
               }
             }
           }
