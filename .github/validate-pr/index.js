@@ -27,6 +27,7 @@ import * as core from '@actions/core'
 import { copyFile } from 'fs/promises'
 import * as github from '@actions/github'
 import specification from '../../output/schema/schema.json' with { type: 'json' }
+import baselineValidation from '../../../clients-flight-recorder/recordings/types-validation/types-validation.json' with { type: 'json' }
 import { run as getReport } from '../../../clients-flight-recorder/scripts/types-validator/index.js'
 import {
   getNamespace,
@@ -81,7 +82,7 @@ async function run() {
   const specFiles = files.filter(
     (file) => file.includes('specification') && !file.includes('compiler/test')
   )
-  const table = []
+  const reports = new Map()
 
   cd(tsValidationPath)
 
@@ -104,37 +105,47 @@ async function run() {
           ci: false,
           verbose: false
         })
-        table.push(buildTableLine(api, report))
+        const [namespace, _method] = api.split('.')
+        // Asked to validate a specific API, so we only store that one
+        reports.set(api, report.get(namespace)[0])
       }
     } else {
+      const api = getApi(file)
       const report = await getReport({
-        api: getApi(file),
+        api,
         'generate-report': false,
         request: true,
         response: true,
         ci: false,
         verbose: false
       })
-      table.push(buildTableLine(getApi(file), report))
+
+      const [namespace, _method] = api.split('.')
+      // Asked to validate a specific API, so we only store that one
+      reports.set(api, report.get(namespace)[0])
     }
   }
 
   cd(path.join(__dirname, '..', '..'))
 
-  table.sort((a, b) => {
-    if (a < b) return -1
-    if (a > b) return 1
-    return 0
-  })
+  // Compare current reports with baseline and find changes
+  const changedApis = []
+  for (const [apiName, report] of reports) {
+    const baselineReport = findBaselineReport(apiName, baselineValidation)
+    if (baselineReport && hasChanges(baselineReport, report, apiName)) {
+      changedApis.push({ api: apiName, baseline: baselineReport, current: report })
+    }
+  }
+  changedApis.sort((a, b) => a.api.localeCompare(b.api))
 
-  if (table.length > 0) {
-    let comment = `Following you can find the validation results for the API${table.length === 1 ? '' : 's'} you have changed.\n\n`
+  if (changedApis.length > 0) {
+    let comment = `Following you can find the validation changes for the API${changedApis.length === 1 ? '' : 's'} you have modified.\n\n`
     comment += '| API | Status | Request | Response |\n'
     comment += '| --- | --- | --- | --- |\n'
-    for (const line of [...new Set(table)]) {
-      comment += line
+    for (const change of changedApis) {
+      comment += buildDiffTableLine(change)
     }
-    comment += `\nYou can validate ${table.length === 1 ? 'this' : 'these'} API${table.length === 1 ? '' : 's'} yourself by using the ${tick}make validate${tick} target.\n`
+    comment += `\nYou can validate ${changedApis.length === 1 ? 'this' : 'these'} API${changedApis.length === 1 ? '' : 's'} yourself by using the ${tick}make validate${tick} target.\n`
 
     await octokit.rest.issues.createComment({
       owner: 'elastic',
@@ -151,35 +162,66 @@ function getApi (file) {
   return file.split('/').slice(1, 3).filter(s => !privateNames.includes(s)).filter(Boolean).join('.')
 }
 
-function buildTableLine (api, report) {
-  const apiReport = report.get(getNamespace(api)).find(r => r.api === getName(api))
-  return `| ${tick}${api}${tick} | ${generateStatus(apiReport)} | ${generateRequest(apiReport)} | ${generateResponse(apiReport)} |\n`
+
+function findBaselineReport(apiName, baselineValidation) {
+  const [namespace, method] = apiName.split('.')
+
+  if (!baselineValidation.namespaces[namespace]) {
+    return null
+  }
+
+  return baselineValidation.namespaces[namespace].apis.find(api => api.api === method)
 }
 
-function generateStatus (report) {
-  if (!report.diagnostics.hasRequestType || !report.diagnostics.hasResponseType) {
+function hasChanges(baselineReport, report) {
+  if (!report) return false
+
+  return baselineReport.status !== report.status ||
+         baselineReport.passingRequest !== report.passingRequest ||
+         baselineReport.passingResponse !== report.passingResponse
+}
+
+function buildDiffTableLine(change) {
+  const { api, baseline, current } = change
+
+  const status = generateStatus(current.status)
+  const request = generateRequest(current)
+  const response = generateResponse(current)
+
+  const baselineStatus = generateStatus(baseline.status)
+  const baselineRequest = generateRequest(baseline)
+  const baselineResponse = generateResponse(baseline)
+
+  const statusDiff = status !== baselineStatus ? `${baselineStatus} → ${status}` : status
+  const requestDiff = request !== baselineRequest ? `${baselineRequest} → ${request}` : request
+  const responseDiff = response !== baselineResponse ? `${baselineResponse} → ${response}` : response
+
+  return `| ${tick}${api}${tick} | ${statusDiff} | ${requestDiff} | ${responseDiff} |\n`
+}
+
+
+function generateStatus (status) {
+  if (status === 'missing_types' || status === 'missing_request_type' || status === 'missing_response_type') {
     return ':orange_circle:'
   }
-  if (report.totalRequest <= 0 || report.totalResponse <= 0) {
+  if (status === 'missing_test') {
     return ':white_circle:'
   }
-  if (report.diagnostics.request.length === 0 && report.diagnostics.response.length === 0) {
+  if (status === 'passing') {
     return ':green_circle:'
   }
   return ':red_circle:'
 }
 
 function generateRequest (r) {
-  if (r.totalRequest === -1) return 'Missing recording'
-  if (!r.diagnostics.hasRequestType) return 'Missing type'
-  if (r.totalRequest === 0) return 'Missing test'
+  if (r.status === 'missing_test') return 'Missing test'
+  if (r.status === 'missing_types' || r.status == 'missing_request_type') return 'Missing type'
   return `${r.passingRequest}/${r.totalRequest}`
 }
 
 function generateResponse (r) {
-  if (r.totalResponse === -1) return 'Missing recording'
-  if (!r.diagnostics.hasResponseType) return 'Missing type'
-  if (r.totalResponse === 0) return 'Missing test'
+  if (r.status === 'missing_test') return 'Missing test'
+  if (r.status === 'missing_types' || r.status == 'missing_response_type') return 'Missing type'
   return `${r.passingResponse}/${r.totalResponse}`
 }
 
