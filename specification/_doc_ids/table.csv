@@ -217,6 +217,7 @@ esql-query-params,https://www.elastic.co/docs/explore-analyze/query-filter/langu
 esql-returning-localized-results,https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql-rest#esql-locale-param,
 evaluate-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-ml-evaluate-data-frame,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/evaluate-dfanalytics.html
 execute-enrich-policy-api,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-enrich-execute-policy,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/execute-enrich-policy-api.html
+execute-watch,https://www.elastic.co/docs/explore-analyze/alerts-cases/watcher/execute-watch,
 expected-reciprocal,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-rank-eval#_expected_reciprocal_rank_err,
 explain-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-ml-explain-data-frame-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/explain-dfanalytics.html
 fail-processor,https://www.elastic.co/docs/reference/enrich-processor/fail-processor,
