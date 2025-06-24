@@ -33164,7 +33164,7 @@
                   },
                   "prune": {
                     "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
-                    "x-state": "Technical preview",
+                    "x-state": "Generally available",
                     "type": "boolean"
                   },
                   "pruning_config": {
