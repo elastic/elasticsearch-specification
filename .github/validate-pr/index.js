@@ -86,6 +86,9 @@ async function run() {
 
   cd(tsValidationPath)
 
+  // Collect all APIs to validate
+  const apisToValidate = new Set()
+
   for (const file of specFiles) {
     if (file.startsWith('specification/_types')) continue
     if (file.startsWith('specification/_spec_utils')) continue
@@ -97,32 +100,35 @@ async function run() {
         .filter(endpoint => endpoint.name.split('.').filter(s => !privateNames.includes(s))[0] === getApi(file).split('.')[0])
         .map(endpoint => endpoint.name)
       for (const api of apis) {
-        const report = await getReport({
-          api,
-          'generate-report': false,
-          request: true,
-          response: true,
-          ci: false,
-          verbose: false
-        })
-        const namespace = getNamespace(api)
-        // Asked to validate a specific API, so we only store that one
-        reports.set(api, report.get(namespace)[0])
+        apisToValidate.add(api)
       }
     } else {
       const api = getApi(file)
-      const report = await getReport({
-        api,
-        'generate-report': false,
-        request: true,
-        response: true,
-        ci: false,
-        verbose: false
-      })
+      apisToValidate.add(api)
+    }
+  }
 
+  // Call getReport once with all APIs
+  if (apisToValidate.size > 0) {
+    const allApis = Array.from(apisToValidate).join(',')
+    const report = await getReport({
+      api: allApis,
+      'generate-report': false,
+      request: true,
+      response: true,
+      ci: false,
+      verbose: false
+    })
+
+    // Extract individual API reports from the combined result
+    for (const api of apisToValidate) {
       const namespace = getNamespace(api)
-      // Asked to validate a specific API, so we only store that one
-      reports.set(api, report.get(namespace)[0])
+      if (report.has(namespace)) {
+        const namespaceReport = report.get(namespace).find(r => r.api === getName(api))
+        if (namespaceReport) {
+          reports.set(api, namespaceReport)
+        }
+      }
     }
   }
 
