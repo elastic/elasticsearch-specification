@@ -23,32 +23,32 @@ import { Duration } from '@_types/Time'
 import {IndexSettingBlocks, IndexSettings} from "../_types/IndexSettings";
 
 /**
- * Add an index block.
+ * Remove an index block.
  *
- * Add an index block to an index.
+ * Remove an index block from an index.
  * Index blocks limit the operations allowed on an index by blocking specific operation types.
- * @rest_spec_name indices.add_block
- * @availability stack since=7.9.0 stability=stable
+ * @rest_spec_name indices.remove_block
+ * @availability stack since=9.1.0 stability=stable
  * @availability serverless stability=stable visibility=public
- * @doc_id index-block-add
+ * @doc_id index-block-remove
  */
 export interface Request extends RequestBase {
   urls: [
     {
       path: '/{index}/_block/{block}'
-      methods: ['PUT']
+      methods: ['DELETE']
     }
   ]
   path_parts: {
     /**
      * A comma-separated list or wildcard expression of index names used to limit the request.
-     * By default, you must explicitly name the indices you are adding blocks to.
-     * To allow the adding of blocks to indices with `_all`, `*`, or other wildcard expressions, change the `action.destructive_requires_name` setting to `false`.
+     * By default, you must explicitly name the indices you are removing blocks from.
+     * To allow the removal of blocks from indices with `_all`, `*`, or other wildcard expressions, change the `action.destructive_requires_name` setting to `false`.
      * You can update this setting in the `elasticsearch.yml` file or by using the cluster update settings API.
      */
     index: IndexName
     /**
-     * The block type to add to the index.
+     * The block type to remove from the index.
      */
     block: keyof IndexSettingBlocks
   }
