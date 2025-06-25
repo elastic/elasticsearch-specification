@@ -27,3 +27,9 @@ alternatives:
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=-1"'
+  - language: Java
+    code: |
+      client.reindexRethrottle(r -> r
+          .requestsPerSecond(-1.0F)
+          .taskId("r1A2WoRbTwKZ516z6NEs5A:36619")
+      );

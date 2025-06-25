@@ -27,3 +27,9 @@ alternatives:
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_dangling/zmM4e0JtBkeUjiHD-MihPQ?accept_data_loss=true"'
+  - language: Java
+    code: |
+      client.danglingIndices().importDanglingIndex(i -> i
+          .acceptDataLoss(true)
+          .indexUuid("zmM4e0JtBkeUjiHD-MihPQ")
+      );

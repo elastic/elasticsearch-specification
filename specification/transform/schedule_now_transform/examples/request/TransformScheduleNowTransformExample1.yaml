@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_transform/ecommerce_transform/_schedule_now"'
+  - language: Java
+    code: |
+      client.transform().scheduleNowTransform(s -> s
+          .transformId("ecommerce_transform")
+      );

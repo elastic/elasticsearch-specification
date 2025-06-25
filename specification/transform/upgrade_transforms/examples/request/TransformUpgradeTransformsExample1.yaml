@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->transform()->upgradeTransforms();
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_transform/_upgrade"'
+  - language: Java
+    code: |
+      client.transform().upgradeTransforms(u -> u);

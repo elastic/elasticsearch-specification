@@ -27,3 +27,9 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_security/api_key?username=myuser&realm_name=native1"'
+  - language: Java
+    code: |
+      client.security().getApiKey(g -> g
+          .realmName("native1")
+          .username("myuser")
+      );

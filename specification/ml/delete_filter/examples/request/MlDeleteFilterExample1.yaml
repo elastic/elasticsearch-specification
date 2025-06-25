@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/filters/safe_domains"'
+  - language: Java
+    code: |
+      client.ml().deleteFilter(d -> d
+          .filterId("safe_domains")
+      );

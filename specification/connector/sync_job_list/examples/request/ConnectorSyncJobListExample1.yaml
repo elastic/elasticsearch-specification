@@ -27,3 +27,9 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_connector/_sync_job?connector_id=my-connector-id&size=1"'
+  - language: Java
+    code: |
+      client.connector().syncJobList(s -> s
+          .connectorId("my-connector-id")
+          .size(1)
+      );

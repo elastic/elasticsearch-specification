@@ -38,3 +38,13 @@ alternatives:
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_snapshot/my_repository/_analyze?blob_count=10&max_blob_size=1mb&timeout=120s"'
+  - language: Java
+    code: |
+      client.snapshot().repositoryAnalyze(r -> r
+          .blobCount(10)
+          .maxBlobSize("1mb")
+          .name("my_repository")
+          .timeout(t -> t
+              .offset(120)
+          )
+      );

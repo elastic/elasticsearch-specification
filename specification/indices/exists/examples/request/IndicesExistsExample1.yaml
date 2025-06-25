@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl --head -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-data-stream"'
+  - language: Java
+    code: |
+      client.indices().exists(e -> e
+          .index("my-data-stream")
+      );
