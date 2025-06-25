@@ -25,7 +25,7 @@ use indexmap::IndexMap;
 
 use clients_schema::{Availabilities, Availability, Flavor, IndexedModel, Stability, Visibility};
 use openapiv3::{Components, OpenAPI};
-use serde_json::Value;
+use serde_json::{Map,Value};
 use clients_schema::transform::ExpandConfig;
 use crate::components::TypesAndComponents;
 
@@ -191,7 +191,10 @@ pub fn product_meta_as_extensions(namespace: &str, product_meta: &IndexMap<Strin
     }
     
     let product_str = format!("elasticsearch{additional_namespace}");
-    result.insert("x-product-feature".to_string(), Value::String(product_str));
+    let mut product_feature: Map<String, Value> = Map::new();
+    product_feature.insert("name".to_string(),Value::String("x-product-feature".to_string()));
+    product_feature.insert("content".to_string(),Value::String(product_str));
+    result.insert("x-metaTags".to_string(), Value::Object(product_feature));
     result
 }
 
