@@ -42,6 +42,7 @@ import { ChunkingSettings } from './ChunkingSettings'
 import { Property, PropertyBase } from './Property'
 import { TermVectorOption } from './TermVectorOption'
 import { TimeSeriesMetricType } from './TimeSeriesMetricType'
+import { SemanticTextIndexOptions } from './SemanticTextIndexOptions'
 
 export class CorePropertyBase extends PropertyBase {
   copy_to?: Fields
@@ -233,6 +234,12 @@ export class SemanticTextProperty {
    * If not specified, the inference endpoint defined by inference_id will be used at both index and query time.
    */
   search_inference_id?: Id
+
+  /**
+   * Settings for index_options that override any defaults used by semantic_text, for example
+   * specific quantization settings.
+   */
+  index_options?: SemanticTextIndexOptions
 
   /**
    * Settings for chunking text into smaller passages. If specified, these will override the
