@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
+import { NumericFielddata } from '@indices/_types/NumericFielddata'
+import { Dictionary } from '@spec_utils/Dictionary'
 import {
   Fields,
   FieldValue,
@@ -35,14 +38,11 @@ import {
 } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateTime } from '@_types/Time'
-import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
-import { NumericFielddata } from '@indices/_types/NumericFielddata'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { ChunkingSettings } from './ChunkingSettings'
 import { Property, PropertyBase } from './Property'
+import { SemanticTextIndexOptions } from './SemanticTextIndexOptions'
 import { TermVectorOption } from './TermVectorOption'
 import { TimeSeriesMetricType } from './TimeSeriesMetricType'
-import { SemanticTextIndexOptions } from './SemanticTextIndexOptions'
 
 export class CorePropertyBase extends PropertyBase {
   copy_to?: Fields
