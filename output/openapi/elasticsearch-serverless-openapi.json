@@ -32142,7 +32142,9 @@
               }
             },
             "required": [
-              "retriever"
+              "retriever",
+              "inference_text",
+              "field"
             ]
           }
         ]
@@ -32239,10 +32241,7 @@
               "rank_window_size": {
                 "type": "number"
               }
-            },
-            "required": [
-              "rank_window_size"
-            ]
+            }
           }
         ]
       },
@@ -32301,8 +32300,7 @@
               }
             },
             "required": [
-              "retriever",
-              "rank_window_size"
+              "retriever"
             ]
           }
         ]
