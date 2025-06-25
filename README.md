@@ -230,6 +230,9 @@ make validate api=xpack.info type=request branch=main
 
 # this will validate the xpack.info request and response types against the 8.15 branch
 make validate api=xpack.info branch=8.15
+
+# this will validate the xpack.info and search request and response types against the 8.15 branch
+make validate api=xpack.info,search branch=8.15
 ```
 
 The last command above will install all the dependencies and run, download
