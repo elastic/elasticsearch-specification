@@ -30928,670 +30928,6 @@
           }
         }
       },
-      "_types.KnnSearch": {
-        "type": "object",
-        "properties": {
-          "field": {
-            "$ref": "#/components/schemas/_types.Field"
-          },
-          "query_vector": {
-            "$ref": "#/components/schemas/_types.QueryVector"
-          },
-          "query_vector_builder": {
-            "$ref": "#/components/schemas/_types.QueryVectorBuilder"
-          },
-          "k": {
-            "description": "The final number of nearest neighbors to return as top hits",
-            "type": "number"
-          },
-          "num_candidates": {
-            "description": "The number of nearest neighbor candidates to consider per shard",
-            "type": "number"
-          },
-          "boost": {
-            "description": "Boost value to apply to kNN scores",
-            "type": "number"
-          },
-          "filter": {
-            "description": "Filters for the kNN search query",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-                }
-              }
-            ]
-          },
-          "similarity": {
-            "description": "The minimum similarity for a vector to be considered a match",
-            "type": "number"
-          },
-          "inner_hits": {
-            "$ref": "#/components/schemas/_global.search._types.InnerHits"
-          },
-          "rescore_vector": {
-            "$ref": "#/components/schemas/_types.RescoreVector"
-          }
-        },
-        "required": [
-          "field"
-        ]
-      },
-      "_types.QueryVector": {
-        "type": "array",
-        "items": {
-          "type": "number"
-        }
-      },
-      "_types.QueryVectorBuilder": {
-        "type": "object",
-        "properties": {
-          "text_embedding": {
-            "$ref": "#/components/schemas/_types.TextEmbedding"
-          }
-        },
-        "minProperties": 1,
-        "maxProperties": 1
-      },
-      "_types.TextEmbedding": {
-        "type": "object",
-        "properties": {
-          "model_id": {
-            "type": "string"
-          },
-          "model_text": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "model_id",
-          "model_text"
-        ]
-      },
-      "_types.RescoreVector": {
-        "type": "object",
-        "properties": {
-          "oversample": {
-            "description": "Applies the specified oversample factor to k on the approximate kNN search",
-            "type": "number"
-          }
-        },
-        "required": [
-          "oversample"
-        ]
-      },
-      "_global.search._types.Rescore": {
-        "allOf": [
-          {
-            "type": "object",
-            "properties": {
-              "window_size": {
-                "type": "number"
-              }
-            }
-          },
-          {
-            "type": "object",
-            "properties": {
-              "query": {
-                "$ref": "#/components/schemas/_global.search._types.RescoreQuery"
-              },
-              "learning_to_rank": {
-                "$ref": "#/components/schemas/_global.search._types.LearningToRank"
-              }
-            },
-            "minProperties": 1,
-            "maxProperties": 1
-          }
-        ]
-      },
-      "_global.search._types.RescoreQuery": {
-        "type": "object",
-        "properties": {
-          "rescore_query": {
-            "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-          },
-          "query_weight": {
-            "description": "Relative importance of the original query versus the rescore query.",
-            "type": "number"
-          },
-          "rescore_query_weight": {
-            "description": "Relative importance of the rescore query versus the original query.",
-            "type": "number"
-          },
-          "score_mode": {
-            "$ref": "#/components/schemas/_global.search._types.ScoreMode"
-          }
-        },
-        "required": [
-          "rescore_query"
-        ]
-      },
-      "_global.search._types.ScoreMode": {
-        "type": "string",
-        "enum": [
-          "avg",
-          "max",
-          "min",
-          "multiply",
-          "total"
-        ]
-      },
-      "_global.search._types.LearningToRank": {
-        "type": "object",
-        "properties": {
-          "model_id": {
-            "description": "The unique identifier of the trained model uploaded to Elasticsearch",
-            "type": "string"
-          },
-          "params": {
-            "description": "Named parameters to be passed to the query templates used for feature",
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
-          }
-        },
-        "required": [
-          "model_id"
-        ]
-      },
-      "_types.RetrieverContainer": {
-        "type": "object",
-        "properties": {
-          "standard": {
-            "$ref": "#/components/schemas/_types.StandardRetriever"
-          },
-          "knn": {
-            "$ref": "#/components/schemas/_types.KnnRetriever"
-          },
-          "rrf": {
-            "$ref": "#/components/schemas/_types.RRFRetriever"
-          },
-          "text_similarity_reranker": {
-            "$ref": "#/components/schemas/_types.TextSimilarityReranker"
-          },
-          "rule": {
-            "$ref": "#/components/schemas/_types.RuleRetriever"
-          },
-          "rescorer": {
-            "$ref": "#/components/schemas/_types.RescorerRetriever"
-          },
-          "linear": {
-            "$ref": "#/components/schemas/_types.LinearRetriever"
-          },
-          "pinned": {
-            "$ref": "#/components/schemas/_types.PinnedRetriever"
-          }
-        },
-        "minProperties": 1,
-        "maxProperties": 1
-      },
-      "_types.StandardRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "query": {
-                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-              },
-              "search_after": {
-                "$ref": "#/components/schemas/_types.SortResults"
-              },
-              "terminate_after": {
-                "description": "Maximum number of documents to collect for each shard.",
-                "type": "number"
-              },
-              "sort": {
-                "$ref": "#/components/schemas/_types.Sort"
-              },
-              "collapse": {
-                "$ref": "#/components/schemas/_global.search._types.FieldCollapse"
-              }
-            }
-          }
-        ]
-      },
-      "_types.RetrieverBase": {
-        "type": "object",
-        "properties": {
-          "filter": {
-            "description": "Query to filter the documents that can match.",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-                }
-              }
-            ]
-          },
-          "min_score": {
-            "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
-            "type": "number"
-          },
-          "_name": {
-            "description": "Retriever name.",
-            "type": "string"
-          }
-        }
-      },
-      "_types.KnnRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "field": {
-                "description": "The name of the vector field to search against.",
-                "type": "string"
-              },
-              "query_vector": {
-                "$ref": "#/components/schemas/_types.QueryVector"
-              },
-              "query_vector_builder": {
-                "$ref": "#/components/schemas/_types.QueryVectorBuilder"
-              },
-              "k": {
-                "description": "Number of nearest neighbors to return as top hits.",
-                "type": "number"
-              },
-              "num_candidates": {
-                "description": "Number of nearest neighbor candidates to consider per shard.",
-                "type": "number"
-              },
-              "similarity": {
-                "description": "The minimum similarity required for a document to be considered a match.",
-                "type": "number"
-              },
-              "rescore_vector": {
-                "$ref": "#/components/schemas/_types.RescoreVector"
-              }
-            },
-            "required": [
-              "field",
-              "k",
-              "num_candidates"
-            ]
-          }
-        ]
-      },
-      "_types.RRFRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "retrievers": {
-                "description": "A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.",
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.RetrieverContainer"
-                }
-              },
-              "rank_constant": {
-                "description": "This value determines how much influence documents in individual result sets per query have over the final ranked result set.",
-                "type": "number"
-              },
-              "rank_window_size": {
-                "description": "This value determines the size of the individual result sets per query.",
-                "type": "number"
-              }
-            },
-            "required": [
-              "retrievers"
-            ]
-          }
-        ]
-      },
-      "_types.TextSimilarityReranker": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "retriever": {
-                "$ref": "#/components/schemas/_types.RetrieverContainer"
-              },
-              "rank_window_size": {
-                "description": "This value determines how many documents we will consider from the nested retriever.",
-                "type": "number"
-              },
-              "inference_id": {
-                "description": "Unique identifier of the inference endpoint created using the inference API.",
-                "type": "string"
-              },
-              "inference_text": {
-                "description": "The text snippet used as the basis for similarity comparison",
-                "type": "string"
-              },
-              "field": {
-                "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text",
-                "type": "string"
-              }
-            },
-            "required": [
-              "retriever",
-              "inference_text",
-              "field"
-            ]
-          }
-        ]
-      },
-      "_types.RuleRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "ruleset_ids": {
-                "description": "The ruleset IDs containing the rules this retriever is evaluating against.",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.Id"
-                  },
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/_types.Id"
-                    }
-                  }
-                ]
-              },
-              "match_criteria": {
-                "description": "The match criteria that will determine if a rule in the provided rulesets should be applied.",
-                "type": "object"
-              },
-              "retriever": {
-                "$ref": "#/components/schemas/_types.RetrieverContainer"
-              },
-              "rank_window_size": {
-                "description": "This value determines the size of the individual result set.",
-                "type": "number"
-              }
-            },
-            "required": [
-              "ruleset_ids",
-              "match_criteria",
-              "retriever"
-            ]
-          }
-        ]
-      },
-      "_types.RescorerRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "retriever": {
-                "$ref": "#/components/schemas/_types.RetrieverContainer"
-              },
-              "rescore": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/_global.search._types.Rescore"
-                  },
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/_global.search._types.Rescore"
-                    }
-                  }
-                ]
-              }
-            },
-            "required": [
-              "retriever",
-              "rescore"
-            ]
-          }
-        ]
-      },
-      "_types.LinearRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "retrievers": {
-                "description": "Inner retrievers.",
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.InnerRetriever"
-                }
-              },
-              "rank_window_size": {
-                "type": "number"
-              }
-            }
-          }
-        ]
-      },
-      "_types.InnerRetriever": {
-        "type": "object",
-        "properties": {
-          "retriever": {
-            "$ref": "#/components/schemas/_types.RetrieverContainer"
-          },
-          "weight": {
-            "type": "number"
-          },
-          "normalizer": {
-            "$ref": "#/components/schemas/_types.ScoreNormalizer"
-          }
-        },
-        "required": [
-          "retriever",
-          "weight",
-          "normalizer"
-        ]
-      },
-      "_types.ScoreNormalizer": {
-        "type": "string",
-        "enum": [
-          "none",
-          "minmax",
-          "l2_norm"
-        ]
-      },
-      "_types.PinnedRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "retriever": {
-                "$ref": "#/components/schemas/_types.RetrieverContainer"
-              },
-              "ids": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "docs": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.SpecifiedDocument"
-                }
-              },
-              "rank_window_size": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "retriever"
-            ]
-          }
-        ]
-      },
-      "_types.SpecifiedDocument": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "$ref": "#/components/schemas/_types.IndexName"
-          },
-          "id": {
-            "$ref": "#/components/schemas/_types.Id"
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "_types.SlicedScroll": {
-        "type": "object",
-        "properties": {
-          "field": {
-            "$ref": "#/components/schemas/_types.Field"
-          },
-          "id": {
-            "$ref": "#/components/schemas/_types.Id"
-          },
-          "max": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "id",
-          "max"
-        ]
-      },
-      "_global.search._types.Suggester": {
-        "type": "object",
-        "properties": {
-          "text": {
-            "description": "Global suggest text, to avoid repetition when the same text is used in several suggesters",
-            "type": "string"
-          }
-        }
-      },
-      "_global.search._types.PointInTimeReference": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/_types.Id"
-          },
-          "keep_alive": {
-            "$ref": "#/components/schemas/_types.Duration"
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "_types.mapping.RuntimeFields": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/_types.mapping.RuntimeField"
-        }
-      },
-      "_types.mapping.RuntimeField": {
-        "type": "object",
-        "properties": {
-          "fields": {
-            "description": "For type `composite`",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/_types.mapping.CompositeSubField"
-            }
-          },
-          "fetch_fields": {
-            "description": "For type `lookup`",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.mapping.RuntimeFieldFetchFields"
-            }
-          },
-          "format": {
-            "description": "A custom format for `date` type runtime fields.",
-            "type": "string"
-          },
-          "input_field": {
-            "$ref": "#/components/schemas/_types.Field"
-          },
-          "target_field": {
-            "$ref": "#/components/schemas/_types.Field"
-          },
-          "target_index": {
-            "$ref": "#/components/schemas/_types.IndexName"
-          },
-          "script": {
-            "$ref": "#/components/schemas/_types.Script"
-          },
-          "type": {
-            "$ref": "#/components/schemas/_types.mapping.RuntimeFieldType"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.mapping.CompositeSubField": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/_types.mapping.RuntimeFieldType"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.mapping.RuntimeFieldType": {
-        "type": "string",
-        "enum": [
-          "boolean",
-          "composite",
-          "date",
-          "double",
-          "geo_point",
-          "geo_shape",
-          "ip",
-          "keyword",
-          "long",
-          "lookup"
-        ]
-      },
-      "_types.mapping.RuntimeFieldFetchFields": {
-        "type": "object",
-        "properties": {
-          "field": {
-            "$ref": "#/components/schemas/_types.Field"
-          },
-          "format": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "field"
-        ]
-      },
       "_types.query_dsl.ChildScoreMode": {
         "type": "string",
         "enum": [
@@ -32012,6 +31348,49 @@
               "field"
             ]
           }
+        ]
+      },
+      "_types.QueryVector": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "_types.QueryVectorBuilder": {
+        "type": "object",
+        "properties": {
+          "text_embedding": {
+            "$ref": "#/components/schemas/_types.TextEmbedding"
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "_types.TextEmbedding": {
+        "type": "object",
+        "properties": {
+          "model_id": {
+            "type": "string"
+          },
+          "model_text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "model_id",
+          "model_text"
+        ]
+      },
+      "_types.RescoreVector": {
+        "type": "object",
+        "properties": {
+          "oversample": {
+            "description": "Applies the specified oversample factor to k on the approximate kNN search",
+            "type": "number"
+          }
+        },
+        "required": [
+          "oversample"
         ]
       },
       "_types.query_dsl.MatchQuery": {
@@ -36966,6 +36345,263 @@
             "$ref": "#/components/schemas/_types.Script"
           }
         }
+      },
+      "_types.KnnSearch": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "$ref": "#/components/schemas/_types.Field"
+          },
+          "query_vector": {
+            "$ref": "#/components/schemas/_types.QueryVector"
+          },
+          "query_vector_builder": {
+            "$ref": "#/components/schemas/_types.QueryVectorBuilder"
+          },
+          "k": {
+            "description": "The final number of nearest neighbors to return as top hits",
+            "type": "number"
+          },
+          "num_candidates": {
+            "description": "The number of nearest neighbor candidates to consider per shard",
+            "type": "number"
+          },
+          "boost": {
+            "description": "Boost value to apply to kNN scores",
+            "type": "number"
+          },
+          "filter": {
+            "description": "Filters for the kNN search query",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+                }
+              }
+            ]
+          },
+          "similarity": {
+            "description": "The minimum similarity for a vector to be considered a match",
+            "type": "number"
+          },
+          "inner_hits": {
+            "$ref": "#/components/schemas/_global.search._types.InnerHits"
+          },
+          "rescore_vector": {
+            "$ref": "#/components/schemas/_types.RescoreVector"
+          }
+        },
+        "required": [
+          "field"
+        ]
+      },
+      "_global.search._types.Rescore": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "window_size": {
+                "type": "number"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "query": {
+                "$ref": "#/components/schemas/_global.search._types.RescoreQuery"
+              },
+              "learning_to_rank": {
+                "$ref": "#/components/schemas/_global.search._types.LearningToRank"
+              }
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
+        ]
+      },
+      "_global.search._types.RescoreQuery": {
+        "type": "object",
+        "properties": {
+          "rescore_query": {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+          },
+          "query_weight": {
+            "description": "Relative importance of the original query versus the rescore query.",
+            "type": "number"
+          },
+          "rescore_query_weight": {
+            "description": "Relative importance of the rescore query versus the original query.",
+            "type": "number"
+          },
+          "score_mode": {
+            "$ref": "#/components/schemas/_global.search._types.ScoreMode"
+          }
+        },
+        "required": [
+          "rescore_query"
+        ]
+      },
+      "_global.search._types.ScoreMode": {
+        "type": "string",
+        "enum": [
+          "avg",
+          "max",
+          "min",
+          "multiply",
+          "total"
+        ]
+      },
+      "_global.search._types.LearningToRank": {
+        "type": "object",
+        "properties": {
+          "model_id": {
+            "description": "The unique identifier of the trained model uploaded to Elasticsearch",
+            "type": "string"
+          },
+          "params": {
+            "description": "Named parameters to be passed to the query templates used for feature",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "model_id"
+        ]
+      },
+      "_types.SlicedScroll": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "$ref": "#/components/schemas/_types.Field"
+          },
+          "id": {
+            "$ref": "#/components/schemas/_types.Id"
+          },
+          "max": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "max"
+        ]
+      },
+      "_global.search._types.Suggester": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "description": "Global suggest text, to avoid repetition when the same text is used in several suggesters",
+            "type": "string"
+          }
+        }
+      },
+      "_global.search._types.PointInTimeReference": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/_types.Id"
+          },
+          "keep_alive": {
+            "$ref": "#/components/schemas/_types.Duration"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "_types.mapping.RuntimeFields": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/_types.mapping.RuntimeField"
+        }
+      },
+      "_types.mapping.RuntimeField": {
+        "type": "object",
+        "properties": {
+          "fields": {
+            "description": "For type `composite`",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.mapping.CompositeSubField"
+            }
+          },
+          "fetch_fields": {
+            "description": "For type `lookup`",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.mapping.RuntimeFieldFetchFields"
+            }
+          },
+          "format": {
+            "description": "A custom format for `date` type runtime fields.",
+            "type": "string"
+          },
+          "input_field": {
+            "$ref": "#/components/schemas/_types.Field"
+          },
+          "target_field": {
+            "$ref": "#/components/schemas/_types.Field"
+          },
+          "target_index": {
+            "$ref": "#/components/schemas/_types.IndexName"
+          },
+          "script": {
+            "$ref": "#/components/schemas/_types.Script"
+          },
+          "type": {
+            "$ref": "#/components/schemas/_types.mapping.RuntimeFieldType"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.mapping.CompositeSubField": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/_types.mapping.RuntimeFieldType"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.mapping.RuntimeFieldType": {
+        "type": "string",
+        "enum": [
+          "boolean",
+          "composite",
+          "date",
+          "double",
+          "geo_point",
+          "geo_shape",
+          "ip",
+          "keyword",
+          "long",
+          "lookup"
+        ]
+      },
+      "_types.mapping.RuntimeFieldFetchFields": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "$ref": "#/components/schemas/_types.Field"
+          },
+          "format": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "field"
+        ]
       },
       "_types.Refresh": {
         "type": "string",
@@ -60125,6 +59761,370 @@
         "required": [
           "document",
           "index"
+        ]
+      },
+      "_types.RetrieverContainer": {
+        "type": "object",
+        "properties": {
+          "standard": {
+            "$ref": "#/components/schemas/_types.StandardRetriever"
+          },
+          "knn": {
+            "$ref": "#/components/schemas/_types.KnnRetriever"
+          },
+          "rrf": {
+            "$ref": "#/components/schemas/_types.RRFRetriever"
+          },
+          "text_similarity_reranker": {
+            "$ref": "#/components/schemas/_types.TextSimilarityReranker"
+          },
+          "rule": {
+            "$ref": "#/components/schemas/_types.RuleRetriever"
+          },
+          "rescorer": {
+            "$ref": "#/components/schemas/_types.RescorerRetriever"
+          },
+          "linear": {
+            "$ref": "#/components/schemas/_types.LinearRetriever"
+          },
+          "pinned": {
+            "$ref": "#/components/schemas/_types.PinnedRetriever"
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "_types.StandardRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "query": {
+                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+              },
+              "search_after": {
+                "$ref": "#/components/schemas/_types.SortResults"
+              },
+              "terminate_after": {
+                "description": "Maximum number of documents to collect for each shard.",
+                "type": "number"
+              },
+              "sort": {
+                "$ref": "#/components/schemas/_types.Sort"
+              },
+              "collapse": {
+                "$ref": "#/components/schemas/_global.search._types.FieldCollapse"
+              }
+            }
+          }
+        ]
+      },
+      "_types.RetrieverBase": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "description": "Query to filter the documents that can match.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+                }
+              }
+            ]
+          },
+          "min_score": {
+            "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+            "type": "number"
+          },
+          "_name": {
+            "description": "Retriever name.",
+            "type": "string"
+          }
+        }
+      },
+      "_types.KnnRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The name of the vector field to search against.",
+                "type": "string"
+              },
+              "query_vector": {
+                "$ref": "#/components/schemas/_types.QueryVector"
+              },
+              "query_vector_builder": {
+                "$ref": "#/components/schemas/_types.QueryVectorBuilder"
+              },
+              "k": {
+                "description": "Number of nearest neighbors to return as top hits.",
+                "type": "number"
+              },
+              "num_candidates": {
+                "description": "Number of nearest neighbor candidates to consider per shard.",
+                "type": "number"
+              },
+              "similarity": {
+                "description": "The minimum similarity required for a document to be considered a match.",
+                "type": "number"
+              },
+              "rescore_vector": {
+                "$ref": "#/components/schemas/_types.RescoreVector"
+              }
+            },
+            "required": [
+              "field",
+              "k",
+              "num_candidates"
+            ]
+          }
+        ]
+      },
+      "_types.RRFRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retrievers": {
+                "description": "A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.RetrieverContainer"
+                }
+              },
+              "rank_constant": {
+                "description": "This value determines how much influence documents in individual result sets per query have over the final ranked result set.",
+                "type": "number"
+              },
+              "rank_window_size": {
+                "description": "This value determines the size of the individual result sets per query.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "retrievers"
+            ]
+          }
+        ]
+      },
+      "_types.TextSimilarityReranker": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retriever": {
+                "$ref": "#/components/schemas/_types.RetrieverContainer"
+              },
+              "rank_window_size": {
+                "description": "This value determines how many documents we will consider from the nested retriever.",
+                "type": "number"
+              },
+              "inference_id": {
+                "description": "Unique identifier of the inference endpoint created using the inference API.",
+                "type": "string"
+              },
+              "inference_text": {
+                "description": "The text snippet used as the basis for similarity comparison",
+                "type": "string"
+              },
+              "field": {
+                "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text",
+                "type": "string"
+              }
+            },
+            "required": [
+              "retriever",
+              "inference_text",
+              "field"
+            ]
+          }
+        ]
+      },
+      "_types.RuleRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ruleset_ids": {
+                "description": "The ruleset IDs containing the rules this retriever is evaluating against.",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Id"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types.Id"
+                    }
+                  }
+                ]
+              },
+              "match_criteria": {
+                "description": "The match criteria that will determine if a rule in the provided rulesets should be applied.",
+                "type": "object"
+              },
+              "retriever": {
+                "$ref": "#/components/schemas/_types.RetrieverContainer"
+              },
+              "rank_window_size": {
+                "description": "This value determines the size of the individual result set.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "ruleset_ids",
+              "match_criteria",
+              "retriever"
+            ]
+          }
+        ]
+      },
+      "_types.RescorerRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retriever": {
+                "$ref": "#/components/schemas/_types.RetrieverContainer"
+              },
+              "rescore": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.Rescore"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_global.search._types.Rescore"
+                    }
+                  }
+                ]
+              }
+            },
+            "required": [
+              "retriever",
+              "rescore"
+            ]
+          }
+        ]
+      },
+      "_types.LinearRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retrievers": {
+                "description": "Inner retrievers.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.InnerRetriever"
+                }
+              },
+              "rank_window_size": {
+                "type": "number"
+              }
+            }
+          }
+        ]
+      },
+      "_types.InnerRetriever": {
+        "type": "object",
+        "properties": {
+          "retriever": {
+            "$ref": "#/components/schemas/_types.RetrieverContainer"
+          },
+          "weight": {
+            "type": "number"
+          },
+          "normalizer": {
+            "$ref": "#/components/schemas/_types.ScoreNormalizer"
+          }
+        },
+        "required": [
+          "retriever",
+          "weight",
+          "normalizer"
+        ]
+      },
+      "_types.ScoreNormalizer": {
+        "type": "string",
+        "enum": [
+          "none",
+          "minmax",
+          "l2_norm"
+        ]
+      },
+      "_types.PinnedRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retriever": {
+                "$ref": "#/components/schemas/_types.RetrieverContainer"
+              },
+              "ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "docs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.SpecifiedDocument"
+                }
+              },
+              "rank_window_size": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "retriever"
+            ]
+          }
+        ]
+      },
+      "_types.SpecifiedDocument": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "$ref": "#/components/schemas/_types.IndexName"
+          },
+          "id": {
+            "$ref": "#/components/schemas/_types.Id"
+          }
+        },
+        "required": [
+          "id"
         ]
       },
       "search_application._types.SearchApplication": {
