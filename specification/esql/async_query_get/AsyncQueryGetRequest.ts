@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
-import { EsqlFormat } from '@esql/_types/QueryParameters'
+import { EsqlFormat } from '@esql/query/QueryParameters'
 
 /**
  * Get async ES|QL query results.
