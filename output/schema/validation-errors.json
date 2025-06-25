@@ -194,6 +194,12 @@
       ],
       "response": []
     },
+    "esql.async_query_get": {
+      "request": [
+        "Request: query parameter 'format' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "get_source": {
       "request": [
         "Request: query parameter 'stored_fields' does not exist in the json spec"

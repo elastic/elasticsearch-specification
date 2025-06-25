@@ -10822,6 +10822,7 @@ export type EsqlAsyncQueryDeleteResponse = AcknowledgedResponseBase
 export interface EsqlAsyncQueryGetRequest extends RequestBase {
   id: Id
   drop_null_columns?: boolean
+  format?: EsqlQueryEsqlFormat
   keep_alive?: Duration
   wait_for_completion_timeout?: Duration
 }
