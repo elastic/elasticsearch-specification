@@ -75,7 +75,7 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: 'github-actions[bot]'
-          body-includes: 'Following you can find the validation results'
+          body-includes: 'Following you can find the validation changes'
 
       - name: Create or update comment
         if: steps.validation.outputs.has_results == 'true'
