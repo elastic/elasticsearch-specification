@@ -21,7 +21,7 @@ import * as model from '../model/metamodel'
 import { ValidationErrors } from '../validation-errors'
 import { JsonSpec } from '../model/json-spec'
 import assert from 'assert'
-import { ResponseException, TypeName } from '../model/metamodel'
+import { TypeName } from '../model/metamodel'
 
 enum TypeDefKind {
   type,
@@ -498,7 +498,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         throw new Error(`Unknown kind: ${typeDef.body.kind}`)
     }
 
-    if (typeDef.exceptions) {
+    if (typeDef.exceptions != null) {
       for (const ex of typeDef.exceptions) {
         switch (ex.body.kind) {
           case 'properties':
