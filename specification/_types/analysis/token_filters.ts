@@ -585,7 +585,7 @@ export type TokenFilterDefinition =
   | ArabicNormalizationTokenFilter
   | AsciiFoldingTokenFilter
   | BengaliNormalizationTokenFilter
-  | BrazilianNormalizationTokenFilter
+  | BrazilianStemTokenFilter
   | CjkBigramTokenFilter
   | CjkWidthTokenFilter
   | ClassicTokenFilter

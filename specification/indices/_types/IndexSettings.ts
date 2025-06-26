@@ -534,6 +534,7 @@ export class SlowlogTresholdLevels {
 }
 
 export class Storage {
+  type: StorageType
   /**
    * You can restrict the use of the mmapfs and the related hybridfs store type via the setting node.store.allow_mmap.
    * This is a boolean setting indicating whether or not memory-mapping is allowed. The default is to allow it. This
@@ -543,6 +544,36 @@ export class Storage {
   allow_mmap?: boolean
   /** How often store statistics are refreshed */
   stats_refresh_interval?: Duration
+}
+
+/**
+ * @non_exhaustive
+ */
+export enum StorageType {
+  /**
+   * Default file system implementation. This will pick the best implementation depending on the operating environment, which
+   * is currently hybridfs on all supported systems but is subject to change.
+   */
+  fs,
+  /**
+   * The NIO FS type stores the shard index on the file system (maps to Lucene NIOFSDirectory) using NIO. It allows multiple
+   * threads to read from the same file concurrently. It is not recommended on Windows because of a bug in the SUN Java
+   * implementation and disables some optimizations for heap memory usage.
+   */
+  niofs,
+  /**
+   * The MMap FS type stores the shard index on the file system (maps to Lucene MMapDirectory) by mapping a file into
+   * memory (mmap). Memory mapping uses up a portion of the virtual memory address space in your process equal to the size
+   * of the file being mapped. Before using this class, be sure you have allowed plenty of virtual address space.
+   */
+  mmapfs,
+  /**
+   * The hybridfs type is a hybrid of niofs and mmapfs, which chooses the best file system type for each type of file
+   * based on the read access pattern. Currently only the Lucene term dictionary, norms and doc values files are memory
+   * mapped. All other files are opened using Lucene NIOFSDirectory. Similarly to mmapfs be sure you have allowed
+   * plenty of virtual address space.
+   */
+  hybridfs
 }
 
 export class IndexingPressure {
