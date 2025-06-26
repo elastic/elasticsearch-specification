@@ -491,7 +491,7 @@ export class BengaliNormalizationTokenFilter extends TokenFilterBase {
   type: 'bengali_normalization'
 }
 
-export class BrazilianNormalizationTokenFilter extends TokenFilterBase {
+export class BrazilianStemTokenFilter extends TokenFilterBase {
   type: 'brazilian_stem'
 }
 
