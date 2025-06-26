@@ -1,4 +1,4 @@
-# summary:
+summary: All shard stats present
 description: >
   A successful response from `GET _snapshot/my_repository/snapshot_2/_status`.
   The response contains detailed status information for `snapshot_2` in the `my_repository` repository.
