@@ -2337,8 +2337,6 @@ export interface ErrorResponseBase {
   status: integer
 }
 
-export type EsqlResult = ArrayBuffer
-
 export type ExpandWildcard = 'all' | 'open' | 'closed' | 'hidden' | 'none'
 
 export type ExpandWildcards = ExpandWildcard | ExpandWildcard[]
@@ -10776,6 +10774,60 @@ export type EqlSearchResponse<TEvent = unknown> = EqlEqlSearchResponseBase<TEven
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
+export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
+  id?: string
+  is_running: boolean
+}
+
+export interface EsqlClusterInfo {
+  total: integer
+  successful: integer
+  running: integer
+  skipped: integer
+  partial: integer
+  failed: integer
+  details: Record<string, EsqlEsqlClusterDetails>
+}
+
+export interface EsqlColumnInfo {
+  name: string
+  type: string
+}
+
+export interface EsqlEsqlClusterDetails {
+  status: EsqlEsqlClusterStatus
+  indices: string
+  took?: DurationValue<UnitMillis>
+  _shards?: EsqlEsqlShardInfo
+}
+
+export type EsqlEsqlClusterStatus = 'running' | 'successful' | 'partial' | 'skipped' | 'failed'
+
+export interface EsqlEsqlResult {
+  took?: DurationValue<UnitMillis>
+  is_partial?: boolean
+  all_columns?: EsqlColumnInfo[]
+  columns: EsqlColumnInfo[]
+  values: FieldValue[][]
+  _clusters?: EsqlClusterInfo
+  profile?: any
+}
+
+export interface EsqlEsqlShardFailure {
+  shard: Id
+  index: IndexName
+  node?: NodeId
+  reason: ErrorCause
+}
+
+export interface EsqlEsqlShardInfo {
+  total: integer
+  successful?: integer
+  skipped?: integer
+  failed?: integer
+  failures?: EsqlEsqlShardFailure[]
+}
+
 export interface EsqlTableValuesContainer {
   integer?: EsqlTableValuesIntegerValue[]
   keyword?: EsqlTableValuesKeywordValue[]
@@ -10811,7 +10863,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
   }
 }
 
-export type EsqlAsyncQueryResponse = EsqlResult
+export type EsqlAsyncQueryResponse = EsqlEsqlResult
 
 export interface EsqlAsyncQueryDeleteRequest extends RequestBase {
   id: Id
@@ -10827,14 +10879,14 @@ export interface EsqlAsyncQueryGetRequest extends RequestBase {
   wait_for_completion_timeout?: Duration
 }
 
-export type EsqlAsyncQueryGetResponse = EsqlResult
+export type EsqlAsyncQueryGetResponse = EsqlAsyncEsqlResult
 
 export interface EsqlAsyncQueryStopRequest extends RequestBase {
   id: Id
   drop_null_columns?: boolean
 }
 
-export type EsqlAsyncQueryStopResponse = EsqlResult
+export type EsqlAsyncQueryStopResponse = EsqlEsqlResult
 
 export type EsqlQueryEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
 
@@ -10855,7 +10907,7 @@ export interface EsqlQueryRequest extends RequestBase {
   }
 }
 
-export type EsqlQueryResponse = EsqlResult
+export type EsqlQueryResponse = EsqlEsqlResult
 
 export interface FeaturesFeature {
   name: string
