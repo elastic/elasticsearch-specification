@@ -46069,6 +46069,9 @@
           "search_inference_id": {
             "$ref": "#/components/schemas/_types.Id"
           },
+          "index_options": {
+            "$ref": "#/components/schemas/_types.mapping.SemanticTextIndexOptions"
+          },
           "chunking_settings": {
             "$ref": "#/components/schemas/_types.mapping.ChunkingSettings"
           }
@@ -46076,6 +46079,14 @@
         "required": [
           "type"
         ]
+      },
+      "_types.mapping.SemanticTextIndexOptions": {
+        "type": "object",
+        "properties": {
+          "dense_vector": {
+            "$ref": "#/components/schemas/_types.mapping.DenseVectorIndexOptions"
+          }
+        }
       },
       "_types.mapping.ChunkingSettings": {
         "type": "object",
