@@ -392,6 +392,7 @@
     }
   },
   "generalErrors": [
-    "Query is present in multiple namespaces: _global.knn_search._types and xpack.usage"
+    "Query is present in multiple namespaces: _global.knn_search._types and xpack.usage",
+    "ClusterInfo is present in multiple namespaces: cluster.allocation_explain and esql._types"
   ]
 }
