@@ -568,6 +568,10 @@ export class RussianStemTokenFilter extends TokenFilterBase {
   type: 'russian_stem'
 }
 
+export class PersianStemTokenFilter extends TokenFilterBase {
+  type: 'persian_stem'
+}
+
 /**
  * @codegen_names name, definition
  * @ext_doc_id analysis-tokenfilters
@@ -621,6 +625,7 @@ export type TokenFilterDefinition =
   | PatternCaptureTokenFilter
   | PatternReplaceTokenFilter
   | PersianNormalizationTokenFilter
+  | PersianStemTokenFilter
   | PorterStemTokenFilter
   | PredicateTokenFilter
   | RemoveDuplicatesTokenFilter
