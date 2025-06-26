@@ -50,7 +50,7 @@ export interface Request extends RequestBase {
     /**
      * The block type to remove from the index.
      */
-    block: keyof IndexSettingBlocks
+    block: IndicesBlockOptions
   }
   query_parameters: {
     /**
@@ -87,4 +87,15 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration // default: 30s
   }
+}
+
+export enum IndicesBlockOptions {
+  /** Disable metadata changes, such as closing the index. */
+  metadata,
+  /** Disable read operations. */
+  read,
+  /** Disable write operations and metadata changes. */
+  read_only,
+  /** Disable write operations. However, metadata changes are still allowed. */
+  write
 }
