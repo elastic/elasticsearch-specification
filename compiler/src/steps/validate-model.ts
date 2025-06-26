@@ -21,7 +21,7 @@ import * as model from '../model/metamodel'
 import { ValidationErrors } from '../validation-errors'
 import { JsonSpec } from '../model/json-spec'
 import assert from 'assert'
-import { TypeName } from '../model/metamodel'
+import { ResponseException, TypeName } from '../model/metamodel'
 
 enum TypeDefKind {
   type,
@@ -497,6 +497,23 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         throw new Error(`Unknown kind: ${typeDef.body.kind}`)
     }
+
+    if (typeDef.exceptions) {
+      for (const ex of typeDef.exceptions) {
+        switch (ex.body.kind) {
+          case 'properties':
+            validateProperties(ex.body.properties, new Set<string>(), new Set<string>())
+            break
+          case 'value':
+            validateValueOf(ex.body.value, new Set<string>())
+            break
+          case 'no_body':
+            // Nothing to validate
+            break
+        }
+      }
+    }
+
     context.pop()
   }
 
