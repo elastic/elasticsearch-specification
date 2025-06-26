@@ -5937,11 +5937,16 @@ export interface MappingSearchAsYouTypeProperty extends MappingCorePropertyBase 
   type: 'search_as_you_type'
 }
 
+export interface MappingSemanticTextIndexOptions {
+  dense_vector?: MappingDenseVectorIndexOptions
+}
+
 export interface MappingSemanticTextProperty {
   type: 'semantic_text'
   meta?: Record<string, string>
   inference_id?: Id
   search_inference_id?: Id
+  index_options?: MappingSemanticTextIndexOptions
   chunking_settings?: MappingChunkingSettings
 }
 
