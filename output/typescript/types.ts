@@ -11749,6 +11749,8 @@ export interface IndicesIndexingSlowlogTresholds {
   index?: IndicesSlowlogTresholdLevels
 }
 
+export type IndicesIndicesBlockOptions = 'metadata' | 'read' | 'read_only' | 'write'
+
 export type IndicesManagedBy = 'Index Lifecycle Management' | 'Data stream lifecycle' | 'Unmanaged'
 
 export interface IndicesMappingLimitSettings {
@@ -11946,16 +11948,14 @@ export interface IndicesTranslogRetention {
   age?: Duration
 }
 
-export type IndicesAddBlockIndicesBlockOptions = 'metadata' | 'read' | 'read_only' | 'write'
-
-export interface IndicesAddBlockIndicesBlockStatus {
+export interface IndicesAddBlockAddIndicesBlockStatus {
   name: IndexName
   blocked: boolean
 }
 
 export interface IndicesAddBlockRequest extends RequestBase {
   index: IndexName
-  block: IndicesAddBlockIndicesBlockOptions
+  block: IndicesIndicesBlockOptions
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -11966,7 +11966,7 @@ export interface IndicesAddBlockRequest extends RequestBase {
 export interface IndicesAddBlockResponse {
   acknowledged: boolean
   shards_acknowledged: boolean
-  indices: IndicesAddBlockIndicesBlockStatus[]
+  indices: IndicesAddBlockAddIndicesBlockStatus[]
 }
 
 export interface IndicesAnalyzeAnalyzeDetail {
@@ -12964,6 +12964,26 @@ export interface IndicesReloadSearchAnalyzersRequest extends RequestBase {
 }
 
 export type IndicesReloadSearchAnalyzersResponse = IndicesReloadSearchAnalyzersReloadResult
+
+export interface IndicesRemoveBlockRemoveIndicesBlockStatus {
+  name: IndexName
+  unblocked: boolean
+}
+
+export interface IndicesRemoveBlockRequest extends RequestBase {
+  index: IndexName
+  block: IndicesIndicesBlockOptions
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export interface IndicesRemoveBlockResponse {
+  acknowledged: boolean
+  indices: IndicesRemoveBlockRemoveIndicesBlockStatus[]
+}
 
 export interface IndicesResolveClusterRequest extends RequestBase {
   name?: Names

@@ -1,0 +1,12 @@
+# summary: ''
+description: A successful response from `DELETE /my-index-000001/_block/write`, which removes an index block from an index.'
+# type: response
+# response_code: 200
+value: |-
+  {
+    "acknowledged" : true,
+    "indices" : [ {
+      "name" : "my-index-000001",
+      "unblocked" : true
+    } ]
+  }

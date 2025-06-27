@@ -269,6 +269,17 @@ export class IndexSettingBlocks {
   metadata?: Stringified<boolean>
 }
 
+export enum IndicesBlockOptions {
+  /** Disable metadata changes, such as closing the index. */
+  metadata,
+  /** Disable read operations. */
+  read,
+  /** Disable write operations and metadata changes. */
+  read_only,
+  /** Disable write operations. However, metadata changes are still allowed. */
+  write
+}
+
 /**
  * @es_quirk This is a boolean that evolved into an enum. ES also accepts plain booleans for true and false.
  */
