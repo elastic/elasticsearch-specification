@@ -24,7 +24,6 @@ import { TokenFilter } from '@_types/analysis/token_filters'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import {
   ByteSize,
-  IndexName,
   Name,
   PipelineName,
   Uuid,
@@ -279,11 +278,6 @@ export enum IndicesBlockOptions {
   read_only,
   /** Disable write operations. However, metadata changes are still allowed. */
   write
-}
-
-export class IndicesBlockStatus {
-  name: IndexName
-  blocked: boolean
 }
 
 /**

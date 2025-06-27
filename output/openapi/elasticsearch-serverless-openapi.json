@@ -6700,7 +6700,7 @@
                     "indices": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/indices._types.IndicesBlockStatus"
+                        "$ref": "#/components/schemas/indices.add_block.AddIndicesBlockStatus"
                       }
                     }
                   },
@@ -6818,7 +6818,7 @@
                     "indices": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/indices._types.IndicesBlockStatus"
+                        "$ref": "#/components/schemas/indices.remove_block.RemoveIndicesBlockStatus"
                       }
                     }
                   },
@@ -51039,7 +51039,7 @@
           "write"
         ]
       },
-      "indices._types.IndicesBlockStatus": {
+      "indices.add_block.AddIndicesBlockStatus": {
         "type": "object",
         "properties": {
           "name": {
@@ -51834,6 +51834,21 @@
             "$ref": "#/components/schemas/_types.ShardStatistics"
           }
         }
+      },
+      "indices.remove_block.RemoveIndicesBlockStatus": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types.IndexName"
+          },
+          "unblocked": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "unblocked"
+        ]
       },
       "indices.resolve_index.ResolveIndexItem": {
         "type": "object",

@@ -17,12 +17,17 @@
  * under the License.
  */
 
-import { IndicesBlockStatus } from '@indices/_types/IndexSettings'
+import { IndexName } from '@_types/common'
 
 export class Response {
   body: {
     acknowledged: boolean
     shards_acknowledged: boolean
-    indices: IndicesBlockStatus[]
+    indices: AddIndicesBlockStatus[]
   }
+}
+
+export class AddIndicesBlockStatus {
+  name: IndexName
+  blocked: boolean
 }

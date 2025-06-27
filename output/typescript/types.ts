@@ -11751,11 +11751,6 @@ export interface IndicesIndexingSlowlogTresholds {
 
 export type IndicesIndicesBlockOptions = 'metadata' | 'read' | 'read_only' | 'write'
 
-export interface IndicesIndicesBlockStatus {
-  name: IndexName
-  blocked: boolean
-}
-
 export type IndicesManagedBy = 'Index Lifecycle Management' | 'Data stream lifecycle' | 'Unmanaged'
 
 export interface IndicesMappingLimitSettings {
@@ -11953,6 +11948,11 @@ export interface IndicesTranslogRetention {
   age?: Duration
 }
 
+export interface IndicesAddBlockAddIndicesBlockStatus {
+  name: IndexName
+  blocked: boolean
+}
+
 export interface IndicesAddBlockRequest extends RequestBase {
   index: IndexName
   block: IndicesIndicesBlockOptions
@@ -11966,7 +11966,7 @@ export interface IndicesAddBlockRequest extends RequestBase {
 export interface IndicesAddBlockResponse {
   acknowledged: boolean
   shards_acknowledged: boolean
-  indices: IndicesIndicesBlockStatus[]
+  indices: IndicesAddBlockAddIndicesBlockStatus[]
 }
 
 export interface IndicesAnalyzeAnalyzeDetail {
@@ -12965,6 +12965,11 @@ export interface IndicesReloadSearchAnalyzersRequest extends RequestBase {
 
 export type IndicesReloadSearchAnalyzersResponse = IndicesReloadSearchAnalyzersReloadResult
 
+export interface IndicesRemoveBlockRemoveIndicesBlockStatus {
+  name: IndexName
+  unblocked: boolean
+}
+
 export interface IndicesRemoveBlockRequest extends RequestBase {
   index: IndexName
   block: IndicesIndicesBlockOptions
@@ -12977,7 +12982,7 @@ export interface IndicesRemoveBlockRequest extends RequestBase {
 
 export interface IndicesRemoveBlockResponse {
   acknowledged: boolean
-  indices: IndicesIndicesBlockStatus[]
+  indices: IndicesRemoveBlockRemoveIndicesBlockStatus[]
 }
 
 export interface IndicesResolveClusterRequest extends RequestBase {
