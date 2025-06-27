@@ -32142,7 +32142,9 @@
               }
             },
             "required": [
-              "retriever"
+              "retriever",
+              "inference_text",
+              "field"
             ]
           }
         ]
@@ -32239,10 +32241,7 @@
               "rank_window_size": {
                 "type": "number"
               }
-            },
-            "required": [
-              "rank_window_size"
-            ]
+            }
           }
         ]
       },
@@ -32301,8 +32300,7 @@
               }
             },
             "required": [
-              "retriever",
-              "rank_window_size"
+              "retriever"
             ]
           }
         ]
@@ -47494,6 +47492,9 @@
           "search_inference_id": {
             "$ref": "#/components/schemas/_types.Id"
           },
+          "index_options": {
+            "$ref": "#/components/schemas/_types.mapping.SemanticTextIndexOptions"
+          },
           "chunking_settings": {
             "$ref": "#/components/schemas/_types.mapping.ChunkingSettings"
           }
@@ -47501,6 +47502,14 @@
         "required": [
           "type"
         ]
+      },
+      "_types.mapping.SemanticTextIndexOptions": {
+        "type": "object",
+        "properties": {
+          "dense_vector": {
+            "$ref": "#/components/schemas/_types.mapping.DenseVectorIndexOptions"
+          }
+        }
       },
       "_types.mapping.ChunkingSettings": {
         "type": "object",
@@ -51181,7 +51190,7 @@
           "settings"
         ]
       },
-      "indices.get_alias.IndexAliases": {
+      "indices.get_alias._types.IndexAliases": {
         "type": "object",
         "properties": {
           "aliases": {
@@ -64098,7 +64107,7 @@
             "schema": {
               "type": "object",
               "additionalProperties": {
-                "$ref": "#/components/schemas/indices.get_alias.IndexAliases"
+                "$ref": "#/components/schemas/indices.get_alias._types.IndexAliases"
               }
             }
           }

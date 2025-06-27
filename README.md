@@ -74,6 +74,11 @@ $ make overlay-docs
 # The generated output can be found in ./output/openapi/
 ```
 
+## Specification Viewer
+
+An interactive viewer for the Elasticsearch specification is available
+[here](https://elastic.github.io/specification-viewer/).
+
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md)

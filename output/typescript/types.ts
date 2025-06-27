@@ -2542,7 +2542,7 @@ export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 
 export interface LinearRetriever extends RetrieverBase {
   retrievers?: InnerRetriever[]
-  rank_window_size: integer
+  rank_window_size?: integer
 }
 
 export type MapboxVectorTiles = ArrayBuffer
@@ -2637,7 +2637,7 @@ export interface PinnedRetriever extends RetrieverBase {
   retriever: RetrieverContainer
   ids?: string[]
   docs?: SpecifiedDocument[]
-  rank_window_size: integer
+  rank_window_size?: integer
 }
 
 export type PipelineName = string
@@ -2974,8 +2974,8 @@ export interface TextSimilarityReranker extends RetrieverBase {
   retriever: RetrieverContainer
   rank_window_size?: integer
   inference_id?: string
-  inference_text?: string
-  field?: string
+  inference_text: string
+  field: string
 }
 
 export type ThreadType = 'cpu' | 'wait' | 'block' | 'gpu' | 'mem'
@@ -5930,11 +5930,16 @@ export interface MappingSearchAsYouTypeProperty extends MappingCorePropertyBase 
   type: 'search_as_you_type'
 }
 
+export interface MappingSemanticTextIndexOptions {
+  dense_vector?: MappingDenseVectorIndexOptions
+}
+
 export interface MappingSemanticTextProperty {
   type: 'semantic_text'
   meta?: Record<string, string>
   inference_id?: Id
   search_inference_id?: Id
+  index_options?: MappingSemanticTextIndexOptions
   chunking_settings?: MappingChunkingSettings
 }
 
@@ -10871,6 +10876,7 @@ export type EsqlAsyncQueryDeleteResponse = AcknowledgedResponseBase
 export interface EsqlAsyncQueryGetRequest extends RequestBase {
   id: Id
   drop_null_columns?: boolean
+  format?: EsqlEsqlFormat
   keep_alive?: Duration
   wait_for_completion_timeout?: Duration
 }
@@ -12402,10 +12408,6 @@ export interface IndicesGetRequest extends RequestBase {
 
 export type IndicesGetResponse = Record<IndexName, IndicesIndexState>
 
-export interface IndicesGetAliasIndexAliases {
-  aliases: Record<string, IndicesAliasDefinition>
-}
-
 export interface IndicesGetAliasRequest extends RequestBase {
   name?: Names
   index?: Indices
@@ -12416,6 +12418,17 @@ export interface IndicesGetAliasRequest extends RequestBase {
 }
 
 export type IndicesGetAliasResponse = Record<IndexName, IndicesGetAliasIndexAliases>
+
+export interface IndicesGetAliasIndexAliases {
+  aliases: Record<string, IndicesAliasDefinition>
+}
+
+export interface IndicesGetAliasNotFoundAliasesKeys {
+  error: string
+  status: number
+}
+export type IndicesGetAliasNotFoundAliases = IndicesGetAliasNotFoundAliasesKeys
+  & { [property: string]: IndicesGetAliasIndexAliases | string | number }
 
 export interface IndicesGetDataLifecycleDataStreamWithLifecycle {
   name: DataStreamName
