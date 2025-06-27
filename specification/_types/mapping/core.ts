@@ -213,6 +213,9 @@ export class RankFeaturesProperty extends PropertyBase {
   type: 'rank_features'
 }
 
+/**
+ * Technical preview
+ */
 export class RankVectorProperty extends PropertyBase {
   type: 'rank_vectors'
   element_type?: RankVectorElementType
