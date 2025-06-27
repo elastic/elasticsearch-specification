@@ -33,6 +33,7 @@ export class FlattenedProperty extends PropertyBase {
   null_value?: string
   similarity?: string
   split_queries_on_whitespace?: boolean
+  time_series_dimensions?: string[]
   type: 'flattened'
 }
 
@@ -59,6 +60,7 @@ export class PassthroughObjectProperty extends CorePropertyBase {
 export class AggregateMetricDoubleProperty extends PropertyBase {
   type: 'aggregate_metric_double'
   default_metric: string
+  ignore_malformed?: boolean
   metrics: string[]
   time_series_metric?: TimeSeriesMetricType
 }

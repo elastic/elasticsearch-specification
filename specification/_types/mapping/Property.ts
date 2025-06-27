@@ -59,6 +59,7 @@ import {
   PercolatorProperty,
   RankFeatureProperty,
   RankFeaturesProperty,
+  RankVectorProperty,
   ScaledFloatNumberProperty,
   SearchAsYouTypeProperty,
   SemanticTextProperty,
@@ -147,6 +148,7 @@ export type Property =
   | NestedProperty
   | ObjectProperty
   | PassthroughObjectProperty
+  | RankVectorProperty
   | SemanticTextProperty
   | SparseVectorProperty
 

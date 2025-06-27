@@ -50,10 +50,7 @@ export class EdgeNGramTokenizer extends TokenizerBase {
   custom_token_chars?: string
   max_gram?: integer
   min_gram?: integer
-  /**
-   * @server_default []
-   */
-  token_chars?: TokenChar[]
+  token_chars?: string | TokenChar[]
 }
 
 export enum TokenChar {
