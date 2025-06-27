@@ -17,21 +17,17 @@
  * under the License.
  */
 
-import { ErrorResponseBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
-import {
-  IndexAliases,
-  NotFoundAliases
-} from '@indices/get_alias/_types/response'
+import { AliasDefinition } from '@indices/_types/AliasDefinition'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 
-export class Response {
-  /** @codegen_name aliases */
-  body: Dictionary<IndexName, IndexAliases>
-  exceptions: [
-    {
-      statusCodes: [404]
-      body: NotFoundAliases | ErrorResponseBase
-    }
-  ]
+export class IndexAliases {
+  aliases: Dictionary<string, AliasDefinition>
+}
+
+export class NotFoundAliases
+  implements AdditionalProperties<string, IndexAliases>
+{
+  error: string
+  status: number
 }
