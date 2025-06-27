@@ -24,6 +24,7 @@ import { TokenFilter } from '@_types/analysis/token_filters'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import {
   ByteSize,
+  IndexName,
   Name,
   PipelineName,
   Uuid,
@@ -267,6 +268,22 @@ export class IndexSettingBlocks {
   read?: Stringified<boolean>
   write?: Stringified<boolean>
   metadata?: Stringified<boolean>
+}
+
+export enum IndicesBlockOptions {
+  /** Disable metadata changes, such as closing the index. */
+  metadata,
+  /** Disable read operations. */
+  read,
+  /** Disable write operations and metadata changes. */
+  read_only,
+  /** Disable write operations. However, metadata changes are still allowed. */
+  write
+}
+
+export class IndicesBlockStatus {
+  name: IndexName
+  blocked: boolean
 }
 
 /**

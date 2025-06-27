@@ -17,16 +17,11 @@
  * under the License.
  */
 
-import { IndexName } from '@_types/common'
+import { IndicesBlockStatus } from '@indices/_types/IndexSettings'
 
 export class Response {
   body: {
     acknowledged: boolean
     indices: IndicesBlockStatus[]
   }
-}
-
-export class IndicesBlockStatus {
-  name: IndexName
-  unblocked: boolean
 }
