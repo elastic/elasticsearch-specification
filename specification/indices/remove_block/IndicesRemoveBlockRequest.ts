@@ -20,7 +20,6 @@
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, IndexName } from '@_types/common'
 import { Duration } from '@_types/Time'
-import {IndexSettingBlocks, IndexSettings} from "../_types/IndexSettings";
 
 /**
  * Remove an index block.
