@@ -274,7 +274,7 @@ export class HunspellTokenFilter extends TokenFilterBase {
   dictionary?: string
   /** Locale directory used to specify the `.aff` and `.dic` files for a Hunspell dictionary.
    * @aliases lang, language */
-  locale?: string
+  locale: string
   /** If `true`, only the longest stemmed version of each token is included in the output. If `false`, all stemmed versions of the token are included. Defaults to `false`. */
   longest_only?: boolean
 }
