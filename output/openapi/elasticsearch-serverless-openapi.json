@@ -49583,7 +49583,7 @@
           "settings"
         ]
       },
-      "indices.get_alias.IndexAliases": {
+      "indices.get_alias._types.IndexAliases": {
         "type": "object",
         "properties": {
           "aliases": {
@@ -62599,7 +62599,7 @@
             "schema": {
               "type": "object",
               "additionalProperties": {
-                "$ref": "#/components/schemas/indices.get_alias.IndexAliases"
+                "$ref": "#/components/schemas/indices.get_alias._types.IndexAliases"
               }
             }
           }

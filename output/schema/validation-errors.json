@@ -253,6 +253,12 @@
       ],
       "response": []
     },
+    "indices.get_alias": {
+      "request": [],
+      "response": [
+        "interface definition indices.get_alias._types:NotFoundAliases / Behaviors - AdditionalProperties behavior for type 'indices.get_alias._types:NotFoundAliases' requires a 'behavior_meta' decorator with exactly 2 arguments (fieldname, description)"
+      ]
+    },
     "ingest.delete_geoip_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
