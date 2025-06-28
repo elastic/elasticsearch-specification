@@ -58,22 +58,22 @@ import { Duration } from '@_types/Time'
  * A bulk update request is performed for each batch of matching documents.
  * Any query or update failures cause the update by query request to fail and the failures are shown in the response.
  * Any update requests that completed successfully still stick, they are not rolled back.
- * 
+ *
  * **Refreshing shards**
  * Specifying the `refresh` parameter refreshes all shards once the request completes.
  * This is different than the update API's `refresh` parameter, which causes just the shard
  * that received the request to be refreshed. Unlike the update API, it does not support
  * `wait_for`.
- * 
+ *
  * **Running update by query asynchronously**
- * 
+ *
  * If the request contains `wait_for_completion=false`, Elasticsearch
  * performs some preflight checks, launches the request, and returns a
  * [task](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks) you can use to cancel or get the status of the task.
  * Elasticsearch creates a record of this task as a document at `.tasks/task/${taskId}`.
- * 
+ *
  * **Waiting for active shards**
- * 
+ *
  * `wait_for_active_shards` controls how many copies of a shard must be active
  * before proceeding with the request. See [`wait_for_active_shards`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create#operation-create-wait_for_active_shards)
  * for details. `timeout` controls how long each write request waits for unavailable
