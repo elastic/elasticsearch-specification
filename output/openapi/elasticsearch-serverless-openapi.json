@@ -4036,7 +4036,7 @@
           {
             "in": "query",
             "name": "stored_fields",
-            "description": "A comma-separated list of stored fields to return as part of a hit.\nIf no fields are specified, no stored fields are included in the response.\nIf this field is specified, the `_source` parameter defaults to `false`.\nOnly leaf fields can be retrieved with the `stored_field` option.\nObject fields can't be returned;​if specified, the request fails.",
+            "description": "A comma-separated list of stored fields to return as part of a hit.\nIf no fields are specified, no stored fields are included in the response.\nIf this field is specified, the `_source` parameter defaults to `false`.\nOnly leaf fields can be retrieved with the `stored_fields` option.\nObject fields can't be returned; if specified, the request fails.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Fields"
@@ -50517,7 +50517,7 @@
           "settings"
         ]
       },
-      "indices.get_alias.IndexAliases": {
+      "indices.get_alias._types.IndexAliases": {
         "type": "object",
         "properties": {
           "aliases": {
@@ -63218,7 +63218,7 @@
             "schema": {
               "type": "object",
               "additionalProperties": {
-                "$ref": "#/components/schemas/indices.get_alias.IndexAliases"
+                "$ref": "#/components/schemas/indices.get_alias._types.IndexAliases"
               }
             }
           }
