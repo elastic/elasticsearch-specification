@@ -32,7 +32,6 @@ use crate::components::TypesAndComponents;
 pub struct Configuration {
     pub flavor: Option<Flavor>,
     pub namespaces: Option<Vec<String>>,
-    pub branch: Option<String>,
 
     /// If a property value is an enumeration, the description of possible values will be copied in the
     /// property's description (also works for arrays of enums).

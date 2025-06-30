@@ -209,14 +209,19 @@ impl<'a> TypesAndComponents<'a> {
     pub fn convert_external_docs(&self, obj: &impl clients_schema::ExternalDocument) -> Option<ExternalDocumentation> {
         // FIXME: does the model contain resolved doc_id?
         obj.ext_doc_url().map(|url| {
-            let branch = self.config.branch.clone();
+            let branch: &str = self
+                .model
+                .info
+                .as_ref()
+                .and_then(|i| i.version.as_deref())
+                .unwrap_or("current");
             let mut extensions: IndexMap<String,serde_json::Value> = Default::default();
             if let Some(previous_version_doc_url) = obj.ext_previous_version_doc_url() {
                 extensions.insert("x-previousVersionUrl".to_string(), serde_json::json!(previous_version_doc_url));
             }
             ExternalDocumentation {
                 description: None,
-                url: url.trim().replace("{branch}", &branch.unwrap_or("current".to_string())),
+                url: url.trim().replace("{branch}", branch),
                 extensions,
             }
         })
