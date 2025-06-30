@@ -65,9 +65,9 @@ alternatives:
       ]);
   - language: curl
     code:
-      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
-      '{\"service\":\"deepseek\",\"service_settings\":{\"api_key\":\"DeepSeek-Api-key\",\"model_id\":\"deepseek-chat\"
-      }' \"$ELASTICSEARCH_URL/_inference/completion/deepseek-completion\""
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"service":"deepseek","service_settings":{"api_key":"DeepSeek-Api-key","model_id":"deepseek-chat"
+      }'' "$ELASTICSEARCH_URL/_inference/completion/deepseek-completion"'
   - language: Java
     code: >
       client.inference().put(p -> p
