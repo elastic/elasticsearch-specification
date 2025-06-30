@@ -45,7 +45,6 @@ export class NodeInfo {
   jvm?: NodeJvmInfo
   /** The node's name */
   name: Name
-  network?: NodeInfoNetwork
   os?: NodeOperatingSystemInfo
   plugins?: PluginStats[]
   process?: NodeProcessInfo
@@ -62,13 +61,19 @@ export class NodeInfo {
   transport?: NodeInfoTransport
   /** Host and port where transport HTTP connections are accepted. */
   transport_address: TransportAddress
-  transport_version?: VersionNumber
+  transport_version: VersionNumber
 
   /** Elasticsearch version running on this node. */
   version: VersionString
   modules?: PluginStats[]
   ingest?: NodeInfoIngest
   aggregations?: Dictionary<string, NodeInfoAggregation>
+  remote_cluster_server?: RemoveClusterServer
+}
+
+export class RemoveClusterServer {
+  bound_address: TransportAddress[]
+  publish_address: TransportAddress
 }
 
 export class NodeInfoSettings {
@@ -341,17 +346,6 @@ export class NodeInfoJvmMemory {
 export class NodeInfoMemory {
   total: string
   total_in_bytes: long
-}
-
-export class NodeInfoNetwork {
-  primary_interface: NodeInfoNetworkInterface
-  refresh_interval: integer
-}
-
-export class NodeInfoNetworkInterface {
-  address: string
-  mac_address: string
-  name: Name
 }
 
 export class NodeInfoOSCPU {
