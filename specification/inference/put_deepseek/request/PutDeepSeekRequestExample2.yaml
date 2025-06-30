@@ -1,0 +1,80 @@
+summary: A chat completion task
+description: Run `PUT _inference/chat_completion/deepseek-chat-completion` to create an inference endpoint that performs a chat completion task.
+method_request: 'PUT _inference/chat_completion/deepseek-chat-completion'
+# type: "request"
+value: |-
+  {
+      "service": "deepseek",
+      "service_settings": {
+          "api_key": "DeepSeek-Api-key",
+          "model_id": "deepseek-chat"
+      }
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="chat_completion",
+          inference_id="deepseek-chat-completion",
+          inference_config={
+              "service": "deepseek",
+              "service_settings": {
+                  "api_key": "DeepSeek-Api-key",
+                  "model_id": "deepseek-chat"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "chat_completion",
+        inference_id: "deepseek-chat-completion",
+        inference_config: {
+          service: "deepseek",
+          service_settings: {
+            api_key: "DeepSeek-Api-key",
+            model_id: "deepseek-chat"
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "chat_completion",
+        inference_id: "deepseek-chat-completion",
+        body: {
+          "service": "deepseek",
+          "service_settings": {
+            "api_key": "DeepSeek-Api-key",
+            "model_id": "deepseek-chat"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "chat_completion",
+          "inference_id" => "deepseek-chat-completion",
+          "body" => [
+              "service" => "deepseek",
+              "service_settings" => [
+                  "api_key" => "DeepSeek-Api-key",
+                  "model_id" => "deepseek-chat"
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"service\":\"deepseek\",\"service_settings\":{\"api_key\":\"DeepSeek-Api-key\",\"model_id\":\"deepseek-chat\"
+      }' \"$ELASTICSEARCH_URL/_inference/chat_completion/deepseekdeepseek-chat-completion\""
+  - language: Java
+    code: >
+      client.inference().put(p -> p
+          .inferenceId("deepseek-chat-completion")
+          .taskType(TaskType.ChatCompletion)
+          .inferenceConfig(i -> i
+              .service("deepseek")
+              .serviceSettings(JsonData.fromJson("{\"api_key\":\"DeepSeek-Api-key\",\"model_id\":\"deepseek-chat\"}"))
+          )
+      );
