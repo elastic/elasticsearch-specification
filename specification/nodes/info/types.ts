@@ -62,7 +62,7 @@ export class NodeInfo {
   transport?: NodeInfoTransport
   /** Host and port where transport HTTP connections are accepted. */
   transport_address: TransportAddress
-  transport_version?: VersionNumber
+  transport_version: VersionNumber
 
   /** Elasticsearch version running on this node. */
   version: VersionString
