@@ -25,6 +25,9 @@ export class IndexAliases {
   aliases: Dictionary<string, AliasDefinition>
 }
 
+/**
+ * @behavior_meta AdditionalProperties fieldname=aliases description="The index aliases"
+ */
 export class NotFoundAliases
   implements AdditionalProperties<string, IndexAliases>
 {
