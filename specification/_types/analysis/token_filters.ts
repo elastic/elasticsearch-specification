@@ -383,6 +383,7 @@ export class PatternReplaceTokenFilter extends TokenFilterBase {
   type: 'pattern_replace'
   /** If `true`, all substrings matching the pattern parameter’s regular expression are replaced. If `false`, the filter replaces only the first matching substring in each token. Defaults to `true`. */
   all?: boolean
+  flags?: string
   /** Regular expression, written in Java’s regular expression syntax. The filter replaces token substrings matching this pattern with the substring in the `replacement` parameter. */
   pattern: string
   /** Replacement substring. Defaults to an empty substring (`""`). */
@@ -486,6 +487,14 @@ export class FlattenGraphTokenFilter extends TokenFilterBase {
   type: 'flatten_graph'
 }
 
+export class BengaliNormalizationTokenFilter extends TokenFilterBase {
+  type: 'bengali_normalization'
+}
+
+export class BrazilianStemTokenFilter extends TokenFilterBase {
+  type: 'brazilian_stem'
+}
+
 export class GermanNormalizationTokenFilter extends TokenFilterBase {
   type: 'german_normalization'
 }
@@ -535,6 +544,34 @@ export class SoraniNormalizationTokenFilter extends TokenFilterBase {
   type: 'sorani_normalization'
 }
 
+export class ArabicStemTokenFilter extends TokenFilterBase {
+  type: 'arabic_stem'
+}
+
+export class CzechStemTokenFilter extends TokenFilterBase {
+  type: 'czech_stem'
+}
+
+export class FrenchStemTokenFilter extends TokenFilterBase {
+  type: 'french_stem'
+}
+
+export class DutchStemTokenFilter extends TokenFilterBase {
+  type: 'dutch_stem'
+}
+
+export class GermanStemTokenFilter extends TokenFilterBase {
+  type: 'german_stem'
+}
+
+export class RussianStemTokenFilter extends TokenFilterBase {
+  type: 'russian_stem'
+}
+
+export class PersianStemTokenFilter extends TokenFilterBase {
+  type: 'persian_stem'
+}
+
 /**
  * @codegen_names name, definition
  * @ext_doc_id analysis-tokenfilters
@@ -548,20 +585,27 @@ export type TokenFilter = string | TokenFilterDefinition
  */
 export type TokenFilterDefinition =
   | ApostropheTokenFilter
+  | ArabicStemTokenFilter
   | ArabicNormalizationTokenFilter
   | AsciiFoldingTokenFilter
+  | BengaliNormalizationTokenFilter
+  | BrazilianStemTokenFilter
   | CjkBigramTokenFilter
   | CjkWidthTokenFilter
   | ClassicTokenFilter
   | CommonGramsTokenFilter
   | ConditionTokenFilter
+  | CzechStemTokenFilter
   | DecimalDigitTokenFilter
   | DelimitedPayloadTokenFilter
+  | DutchStemTokenFilter
   | EdgeNGramTokenFilter
   | ElisionTokenFilter
   | FingerprintTokenFilter
   | FlattenGraphTokenFilter
+  | FrenchStemTokenFilter
   | GermanNormalizationTokenFilter
+  | GermanStemTokenFilter
   | HindiNormalizationTokenFilter
   | HunspellTokenFilter
   | HyphenationDecompounderTokenFilter
@@ -581,10 +625,12 @@ export type TokenFilterDefinition =
   | PatternCaptureTokenFilter
   | PatternReplaceTokenFilter
   | PersianNormalizationTokenFilter
+  | PersianStemTokenFilter
   | PorterStemTokenFilter
   | PredicateTokenFilter
   | RemoveDuplicatesTokenFilter
   | ReverseTokenFilter
+  | RussianStemTokenFilter
   | ScandinavianFoldingTokenFilter
   | ScandinavianNormalizationTokenFilter
   | SerbianNormalizationTokenFilter
