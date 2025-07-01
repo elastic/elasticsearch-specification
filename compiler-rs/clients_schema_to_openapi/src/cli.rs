@@ -24,6 +24,10 @@ pub struct Cli {
     #[argh(option)]
     pub namespace: Vec<String>,
 
+    /// the branch to generate [9.0, 8.19, current, etc... - default = current]
+    #[argh(option)]
+    pub branch: Option<String>,
+
     /// add enum descriptions to property descriptions [default = true]
     #[argh(switch)]
     pub lift_enum_descriptions: bool,
@@ -72,9 +76,12 @@ impl From<Cli> for Configuration {
             SchemaFlavor::Serverless => Some(Flavor::Serverless),
             SchemaFlavor::Stack => Some(Flavor::Stack),
         };
+        
+        let branch = cli.branch;
 
         Configuration {
             flavor,
+            branch,
             lift_enum_descriptions: cli.lift_enum_descriptions,
             merge_multipath_endpoints: cli.merge_multipath_endpoints,
             multipath_redirects: cli.multipath_redirects,
