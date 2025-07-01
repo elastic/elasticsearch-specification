@@ -785,7 +785,7 @@ export class DeepSeekServiceSettings {
   /**
    * For a `completion` or `chat_completion` task, the name of the model to use for the inference task.
    *
-   * * For the available `completion` and `chat_completion` models, refer to the [DeepSeek Models & Pricing docs](https://api-docs.deepseek.com/quick_start/pricing).
+   * For the available `completion` and `chat_completion` models, refer to the [DeepSeek Models & Pricing docs](https://api-docs.deepseek.com/quick_start/pricing).
    */
   model_id: string
   /**
