@@ -13672,6 +13672,16 @@ export interface InferenceContentObject {
   type: string
 }
 
+export interface InferenceDeepSeekServiceSettings {
+  api_key: string
+  model_id: string
+  url?: string
+}
+
+export type InferenceDeepSeekServiceType = 'deepseek'
+
+export type InferenceDeepSeekTaskType = 'completion' | 'chat_completion'
+
 export interface InferenceDeleteInferenceEndpointResult extends AcknowledgedResponseBase {
   pipelines: string[]
 }
@@ -13796,6 +13806,11 @@ export interface InferenceInferenceEndpointInfoAzureOpenAI extends InferenceInfe
 export interface InferenceInferenceEndpointInfoCohere extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeCohere
+}
+
+export interface InferenceInferenceEndpointInfoDeepSeek extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeDeepSeek
 }
 
 export interface InferenceInferenceEndpointInfoELSER extends InferenceInferenceEndpoint {
@@ -13967,6 +13982,8 @@ export type InferenceTaskTypeAzureAIStudio = 'text_embedding' | 'completion'
 export type InferenceTaskTypeAzureOpenAI = 'text_embedding' | 'completion'
 
 export type InferenceTaskTypeCohere = 'text_embedding' | 'rerank' | 'completion'
+
+export type InferenceTaskTypeDeepSeek = 'completion' | 'chat_completion'
 
 export type InferenceTaskTypeELSER = 'sparse_embedding'
 
@@ -14179,6 +14196,18 @@ export interface InferencePutCohereRequest extends RequestBase {
 }
 
 export type InferencePutCohereResponse = InferenceInferenceEndpointInfoCohere
+
+export interface InferencePutDeepseekRequest extends RequestBase {
+  task_type: InferenceDeepSeekTaskType
+  deepseek_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferenceDeepSeekServiceType
+    service_settings: InferenceDeepSeekServiceSettings
+  }
+}
+
+export type InferencePutDeepseekResponse = InferenceInferenceEndpointInfoDeepSeek
 
 export interface InferencePutElasticsearchRequest extends RequestBase {
   task_type: InferenceElasticsearchTaskType
