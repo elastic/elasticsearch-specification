@@ -63,7 +63,7 @@ export interface Request extends CatRequestBase {
      * It supports simple wildcards.
      * @server_default ip,hp,rp,r,m,n,cpu,l
      */
-    h?: CatSegmentsColumn
+    h?: CatSegmentsColumns
     /**
      * A comma-separated list of column names or aliases that determines the sort order.
      * Sorting defaults to ascending and can be changed by setting `:asc`
