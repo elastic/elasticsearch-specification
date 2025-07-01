@@ -1011,9 +1011,281 @@ export enum CatNodeColumn {
   version
 }
 
+/** @non_exhaustive */
+export enum CatRecoveryColumn {
+  /**
+   * The name of the index.
+   * @aliases i, idx
+   */
+  index,
+  /**
+   * The name of the shard.
+   * @aliases s, sh
+   */
+  shard,
+  /**
+   * The recovery time elasped.
+   * @aliases t, ti, primaryOrReplica
+   */
+  time,
+  /**
+   * The type of recovery, from a peer or a snapshot.
+   */
+  type,
+  /**
+   * The stage of the recovery. Returned values are: `INIT`, `INDEX`: recovery of lucene files, either reusing local ones are copying new ones, `VERIFY_INDEX`: potentially running check index, `TRANSLOG`: starting up the engine, replaying the translog, `FINALIZE`: performing final task after all translog ops have been done, `DONE`
+   * @aliases st
+   */
+  stage,
+  /**
+   * The host address the index is moving from.
+   * @aliases shost
+   */
+  'source_host',
+  /**
+   * The node name the index is moving from.
+   * @aliases snode
+   */
+  'source_node',
+  /**
+   * The host address the index is moving to.
+   * @aliases thost
+   */
+  'target_host',
+  /**
+   * The node name the index is moving to.
+   * @aliases tnode
+   */
+  'target_node',
+  /**
+   * The name of the repository being used. if not relevant 'n/a'.
+   * @aliases tnode
+   */
+  'repository',
+  /**
+   * The name of the snapshot being used. if not relevant 'n/a'.
+   * @aliases snap
+   */
+  snapshot,
+  /**
+   * The total number of files to recover.
+   * @aliases f
+   */
+  files,
+  /**
+   * The number of files currently recovered.
+   * @aliases fr
+   */
+  'files_recovered',
+  /**
+   * The percentage of files currently recovered.
+   * @aliases fp
+   */
+  'files_percent',
+  /**
+   * The total number of files.
+   * @aliases tf
+   */
+  'files_total',
+  /**
+   * The total number of bytes to recover.
+   * @aliases b
+   */
+  bytes,
+  /**
+   * Total number of bytes currently recovered.
+   * @aliases br
+   */
+  'bytes_recovered',
+  /**
+   * The percentage of bytes currently recovered.
+   * @aliases bp
+   */
+  'bytes_percent',
+  /**
+   * The total number of bytes.
+   * @aliases tb
+   */
+  'bytes_total',
+  /**
+   * The total number of translog ops to recover.
+   * @aliases to
+   */
+  'translog_ops',
+  /**
+   * The total number of translog ops currently recovered.
+   * @aliases tor
+   */
+  'translog_ops_recovered',
+  /**
+   * The percentage of translog ops currently recovered.
+   * @aliases top
+   */
+  'translog_ops_percent',
+  /**
+   * The start time of the recovery operation.
+   * @aliases start
+   */
+  'start_time',
+  /**
+   * The start time of the recovery operation in eopch milliseconds.
+   * @aliases start_millis
+   */
+  'start_time_millis',
+  /**
+   * The end time of the recovery operation. If ongoing '1970-01-01T00:00:00.000Z'
+   * @aliases stop
+   */
+  'stop_time',
+  /**
+   * The end time of the recovery operation in eopch milliseconds. If ongoing '0'
+   * @aliases stop_millis
+   */
+  'stop_time_millis'
+}
+
+/** @non_exhaustive */
+export enum CatSegmentsColumn {
+  /**
+   * The name of the index.
+   * @aliases i, idx
+   */
+  index,
+  /**
+   * The name of the shard.
+   * @aliases s, sh
+   */
+  shard,
+  /**
+   * The shard type. Returned values are 'primary' or 'replica'.
+   * @aliases p, pr, primaryOrReplica
+   */
+  prirep,
+  /**
+   * IP address of the segment’s shard, such as '127.0.1.1'.
+   */
+  ip,
+  /**
+   * The name of the segment, such as '_0'. The segment name is derived from the segment generation and used internally to create file names in the directory of the shard.
+   */
+  segment,
+  /**
+   * Generation number, such as '0'. Elasticsearch increments this generation number for each segment written. Elasticsearch then uses this number to derive the segment name.
+   */
+  generation,
+  /**
+   * The number of documents as reported by Lucene. This excludes deleted documents and counts any [nested documents](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/nested) separately from their parents. It also excludes documents which were indexed recently and do not yet belong to a segment.
+   */
+  'docs.count',
+  /**
+   * The number of deleted documents as reported by Lucene, which may be higher or lower than the number of delete operations you have performed. This number excludes deletes that were performed recently and do not yet belong to a segment. Deleted documents are cleaned up by the [automatic merge process](https://www.elastic.co/docs/reference/elasticsearch/index-settings/merge) if it makes sense to do so. Also, Elasticsearch creates extra deleted documents to internally track the recent history of operations on a shard.
+   */
+  'docs.deleted',
+  /**
+   * The disk space used by the segment, such as '50kb'.
+   */
+  size,
+  /**
+   * The bytes of segment data stored in memory for efficient search, such as '1264'. A value of '-1' indicates Elasticsearch was unable to compute this number.
+   */
+  'size.memory',
+  /**
+   * If 'true', the segments is synced to disk. Segments that are synced can survive a hard reboot. If 'false', the data from uncommitted segments is also stored in the transaction log so that Elasticsearch is able to replay changes on the next start.
+   */
+  committed,
+  /**
+   * If 'true', the segment is searchable. If 'false', the segment has most likely been written to disk but needs a [refresh](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) to be searchable.
+   */
+  searchable,
+  /**
+   * The version of Lucene used to write the segment.
+   */
+  version,
+  /**
+   * If 'true', the segment is stored in a compound file. This means Lucene merged all files from the segment in a single file to save file descriptors.
+   */
+  compound,
+  /**
+   * The ID of the node, such as 'k0zy'.
+   */
+  id
+}
+
+/** @non_exhaustive */
+export enum CatSnapshotsColumn {
+  /**
+   * The ID of the snapshot, such as 'snap1'.
+   * @aliases snapshot
+   */
+  id,
+  /**
+   * The name of the repository, such as 'repo1'.
+   * @aliases re, repo
+   */
+  repository,
+  /**
+   * State of the snapshot process. Returned values are: 'FAILED': The snapshot process failed. 'INCOMPATIBLE': The snapshot process is incompatible with the current cluster version. 'IN_PROGRESS': The snapshot process started but has not completed. 'PARTIAL': The snapshot process completed with a partial success. 'SUCCESS': The snapshot process completed with a full success.
+   * @aliases s
+   */
+  status,
+  /**
+   * The [unix epoch time](https://en.wikipedia.org/wiki/Unix_time) at which the snapshot process started.
+   * @aliases ste, startEpoch
+   */
+  'start_epoch',
+  /**
+   * 'HH:MM:SS' time at which the snapshot process started.
+   * @aliases sti, startTime
+   */
+  'start_time',
+  /**
+   * The [unix epoch time](https://en.wikipedia.org/wiki/Unix_time) at which the snapshot process ended.
+   * @aliases ete, endEpoch
+   */
+  'end_epoch',
+  /**
+   * 'HH:MM:SS' time at which the snapshot process ended.
+   * @aliases eti, endTime
+   */
+  'end_time',
+  /**
+   * The time it took the snapshot process to complete in [time units](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#time-units).
+   * @aliases dur
+   */
+  duration,
+  /**
+   * The number of indices in the snapshot.
+   * @aliases i
+   */
+  indices,
+  /**
+   * The number of successful shards in the snapshot.
+   * @aliases ss
+   */
+  'successful_shards',
+  /**
+   * The number of failed shards in the snapshot.
+   * @aliases fs
+   */
+  'failed_shards',
+  /**
+   * The total number of shards in the snapshot.
+   * @aliases ts
+   */
+  'total_shards',
+  /**
+   * The reason for any snapshot failures.
+   * @aliases r
+   */
+  reason
+}
+
 export type CatDfaColumns = CatDfaColumn | CatDfaColumn[]
 export type CatDatafeedColumns = CatDatafeedColumn | CatDatafeedColumn[]
 export type CatNodeColumns = CatNodeColumn | CatNodeColumn[]
+export type CatRecoveryColumns = CatRecoveryColumn | CatRecoveryColumn[]
+export type CatSegmentsColumns = CatSegmentsColumn | CatSegmentsColumn[]
+export type CatSnapshotsColumns = CatSnapshotsColumn | CatNodeColumn[]
 
 export enum CatTrainedModelsColumn {
   /**
