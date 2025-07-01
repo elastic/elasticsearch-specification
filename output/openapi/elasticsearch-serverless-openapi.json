@@ -42569,10 +42569,19 @@
             "$ref": "#/components/schemas/_types.analysis.ApostropheTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.ArabicStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.ArabicNormalizationTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.AsciiFoldingTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.BengaliNormalizationTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.BrazilianStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.CjkBigramTokenFilter"
@@ -42590,10 +42599,16 @@
             "$ref": "#/components/schemas/_types.analysis.ConditionTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.CzechStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.DecimalDigitTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.DelimitedPayloadTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.DutchStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.EdgeNGramTokenFilter"
@@ -42608,7 +42623,13 @@
             "$ref": "#/components/schemas/_types.analysis.FlattenGraphTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.FrenchStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.GermanNormalizationTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.GermanStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.HindiNormalizationTokenFilter"
@@ -42668,6 +42689,9 @@
             "$ref": "#/components/schemas/_types.analysis.PersianNormalizationTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.PersianStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.PorterStemTokenFilter"
           },
           {
@@ -42678,6 +42702,9 @@
           },
           {
             "$ref": "#/components/schemas/_types.analysis.ReverseTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.RussianStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.ScandinavianFoldingTokenFilter"
@@ -42791,6 +42818,27 @@
           }
         }
       },
+      "_types.analysis.ArabicStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "arabic_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
       "_types.analysis.ArabicNormalizationTokenFilter": {
         "allOf": [
           {
@@ -42828,6 +42876,48 @@
               },
               "preserve_original": {
                 "$ref": "#/components/schemas/_spec_utils.Stringifiedboolean"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.BengaliNormalizationTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "bengali_normalization"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.BrazilianStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "brazilian_stem"
+                ]
               }
             },
             "required": [
@@ -42992,6 +43082,27 @@
           }
         ]
       },
+      "_types.analysis.CzechStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "czech_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
       "_types.analysis.DecimalDigitTokenFilter": {
         "allOf": [
           {
@@ -43047,6 +43158,27 @@
           "int",
           "float",
           "identity"
+        ]
+      },
+      "_types.analysis.DutchStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "dutch_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
         ]
       },
       "_types.analysis.EdgeNGramTokenFilter": {
@@ -43176,6 +43308,27 @@
           }
         ]
       },
+      "_types.analysis.FrenchStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "french_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
       "_types.analysis.GermanNormalizationTokenFilter": {
         "allOf": [
           {
@@ -43188,6 +43341,27 @@
                 "type": "string",
                 "enum": [
                   "german_normalization"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.GermanStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "german_stem"
                 ]
               }
             },
@@ -43782,6 +43956,9 @@
                 "description": "If `true`, all substrings matching the pattern parameter’s regular expression are replaced. If `false`, the filter replaces only the first matching substring in each token. Defaults to `true`.",
                 "type": "boolean"
               },
+              "flags": {
+                "type": "string"
+              },
               "pattern": {
                 "description": "Regular expression, written in Java’s regular expression syntax. The filter replaces token substrings matching this pattern with the substring in the `replacement` parameter.",
                 "type": "string"
@@ -43810,6 +43987,27 @@
                 "type": "string",
                 "enum": [
                   "persian_normalization"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.PersianStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "persian_stem"
                 ]
               }
             },
@@ -43898,6 +44096,27 @@
                 "type": "string",
                 "enum": [
                   "reverse"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.RussianStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "russian_stem"
                 ]
               }
             },
@@ -44576,10 +44795,10 @@
               "alternate": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationAlternate"
               },
-              "case_first": {
+              "caseFirst": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationCaseFirst"
               },
-              "case_level": {
+              "caseLevel": {
                 "type": "boolean"
               },
               "country": {
@@ -44588,7 +44807,7 @@
               "decomposition": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationDecomposition"
               },
-              "hiragana_quaternary_mode": {
+              "hiraganaQuaternaryMode": {
                 "type": "boolean"
               },
               "language": {
@@ -44603,7 +44822,7 @@
               "strength": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationStrength"
               },
-              "variable_top": {
+              "variableTop": {
                 "type": "string"
               },
               "variant": {
@@ -45066,10 +45285,17 @@
                 "type": "number"
               },
               "token_chars": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.analysis.TokenChar"
-                }
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types.analysis.TokenChar"
+                    }
+                  }
+                ]
               }
             },
             "required": [
@@ -45965,6 +46191,9 @@
           "allow_mmap": {
             "description": "You can restrict the use of the mmapfs and the related hybridfs store type via the setting node.store.allow_mmap.\nThis is a boolean setting indicating whether or not memory-mapping is allowed. The default is to allow it. This\nsetting is useful, for example, if you are in an environment where you can not control the ability to create a lot\nof memory maps so you need disable the ability to use memory-mapping.",
             "type": "boolean"
+          },
+          "stats_refresh_interval": {
+            "$ref": "#/components/schemas/_types.Duration"
           }
         },
         "required": [
@@ -46286,6 +46515,9 @@
           },
           {
             "$ref": "#/components/schemas/_types.mapping.PassthroughObjectProperty"
+          },
+          {
+            "$ref": "#/components/schemas/_types.mapping.RankVectorProperty"
           },
           {
             "$ref": "#/components/schemas/_types.mapping.SemanticTextProperty"
@@ -47211,6 +47443,9 @@
               "default_metric": {
                 "type": "string"
               },
+              "ignore_malformed": {
+                "type": "boolean"
+              },
               "metrics": {
                 "type": "array",
                 "items": {
@@ -47370,6 +47605,12 @@
               "split_queries_on_whitespace": {
                 "type": "boolean"
               },
+              "time_series_dimensions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "type": {
                 "type": "string",
                 "enum": [
@@ -47471,6 +47712,42 @@
           }
         ]
       },
+      "_types.mapping.RankVectorProperty": {
+        "description": "Technical preview",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping.PropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "rank_vectors"
+                ]
+              },
+              "element_type": {
+                "$ref": "#/components/schemas/_types.mapping.RankVectorElementType"
+              },
+              "dims": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.mapping.RankVectorElementType": {
+        "type": "string",
+        "enum": [
+          "byte",
+          "float",
+          "bit"
+        ]
+      },
       "_types.mapping.SemanticTextProperty": {
         "type": "object",
         "properties": {
@@ -47533,6 +47810,9 @@
           {
             "type": "object",
             "properties": {
+              "store": {
+                "type": "boolean"
+              },
               "type": {
                 "type": "string",
                 "enum": [
@@ -47844,12 +48124,23 @@
                 "enum": [
                   "geo_point"
                 ]
+              },
+              "time_series_metric": {
+                "$ref": "#/components/schemas/_types.mapping.GeoPointMetricType"
               }
             },
             "required": [
               "type"
             ]
           }
+        ]
+      },
+      "_types.mapping.GeoPointMetricType": {
+        "type": "string",
+        "enum": [
+          "gauge",
+          "counter",
+          "position"
         ]
       },
       "_types.mapping.GeoShapeProperty": {
