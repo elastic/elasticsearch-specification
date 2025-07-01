@@ -20421,7 +20421,7 @@
           "search"
         ],
         "summary": "Search a vector tile",
-        "description": "Search a vector tile for geospatial values.\nBefore using this API, you should be familiar with the Mapbox vector tile specification.\nThe API returns results as a binary mapbox vector tile.\n\nInternally, Elasticsearch translates a vector tile search API request into a search containing:\n\n* A `geo_bounding_box` query on the `<field>`. The query uses the `<zoom>/<x>/<y>` tile as a bounding box.\n* A `geotile_grid` or `geohex_grid` aggregation on the `<field>`. The `grid_agg` parameter determines the aggregation type. The aggregation uses the `<zoom>/<x>/<y>` tile as a bounding box.\n* Optionally, a `geo_bounds` aggregation on the `<field>`. The search only includes this aggregation if the `exact_bounds` parameter is `true`.\n* If the optional parameter `with_labels` is `true`, the internal search will include a dynamic runtime field that calls the `getLabelPosition` function of the geometry doc value. This enables the generation of new point features containing suggested geometry labels, so that, for example, multi-polygons will have only one label.\n\nFor example, Elasticsearch may translate a vector tile search API request with a `grid_agg` argument of `geotile` and an `exact_bounds` argument of `true` into the following search\n\n```\nGET my-index/_search\n{\n  \"size\": 10000,\n  \"query\": {\n    \"geo_bounding_box\": {\n      \"my-geo-field\": {\n        \"top_left\": {\n          \"lat\": -40.979898069620134,\n          \"lon\": -45\n        },\n        \"bottom_right\": {\n          \"lat\": -66.51326044311186,\n          \"lon\": 0\n        }\n      }\n    }\n  },\n  \"aggregations\": {\n    \"grid\": {\n      \"geotile_grid\": {\n        \"field\": \"my-geo-field\",\n        \"precision\": 11,\n        \"size\": 65536,\n        \"bounds\": {\n          \"top_left\": {\n            \"lat\": -40.979898069620134,\n            \"lon\": -45\n          },\n          \"bottom_right\": {\n            \"lat\": -66.51326044311186,\n            \"lon\": 0\n          }\n        }\n      }\n    },\n    \"bounds\": {\n      \"geo_bounds\": {\n        \"field\": \"my-geo-field\",\n        \"wrap_longitude\": false\n      }\n    }\n  }\n}\n```\n\nThe API returns results as a binary Mapbox vector tile.\nMapbox vector tiles are encoded as Google Protobufs (PBF). By default, the tile contains three layers:\n\n* A `hits` layer containing a feature for each `<field>` value matching the `geo_bounding_box` query.\n* An `aggs` layer containing a feature for each cell of the `geotile_grid` or `geohex_grid`. The layer only contains features for cells with matching data.\n* A meta layer containing:\n  * A feature containing a bounding box. By default, this is the bounding box of the tile.\n  * Value ranges for any sub-aggregations on the `geotile_grid` or `geohex_grid`.\n  * Metadata for the search.\n\nThe API only returns features that can display at its zoom level.\nFor example, if a polygon feature has no area at its zoom level, the API omits it.\nThe API returns errors as UTF-8 encoded JSON.\n\nIMPORTANT: You can specify several options for this API as either a query parameter or request body parameter.\nIf you specify both parameters, the query parameter takes precedence.\n\n**Grid precision for geotile**\n\nFor a `grid_agg` of `geotile`, you can use cells in the `aggs` layer as tiles for lower zoom levels.\n`grid_precision` represents the additional zoom levels available through these cells. The final precision is computed by as follows: `<zoom> + grid_precision`.\nFor example, if `<zoom>` is 7 and `grid_precision` is 8, then the `geotile_grid` aggregation will use a precision of 15.\nThe maximum final precision is 29.\nThe `grid_precision` also determines the number of cells for the grid as follows: `(2^grid_precision) x (2^grid_precision)`.\nFor example, a value of 8 divides the tile into a grid of 256 x 256 cells.\nThe `aggs` layer only contains features for cells with matching data.\n\n**Grid precision for geohex**\n\nFor a `grid_agg` of `geohex`, Elasticsearch uses `<zoom>` and `grid_precision` to calculate a final precision as follows: `<zoom> + grid_precision`.\n\nThis precision determines the H3 resolution of the hexagonal cells produced by the `geohex` aggregation.\nThe following table maps the H3 resolution for each precision.\nFor example, if `<zoom>` is 3 and `grid_precision` is 3, the precision is 6.\nAt a precision of 6, hexagonal cells have an H3 resolution of 2.\nIf `<zoom>` is 3 and `grid_precision` is 4, the precision is 7.\nAt a precision of 7, hexagonal cells have an H3 resolution of 3.\n\n| Precision | Unique tile bins | H3 resolution | Unique hex bins |\tRatio |\n| --------- | ---------------- | ------------- | ----------------| ----- |\n| 1  | 4                  | 0  | 122             | 30.5           |\n| 2  | 16                 | 0  | 122             | 7.625          |\n| 3  | 64                 | 1  | 842             | 13.15625       |\n| 4  | 256                | 1  | 842             | 3.2890625      |\n| 5  | 1024               | 2  | 5882            | 5.744140625    |\n| 6  | 4096               | 2  | 5882            | 1.436035156    |\n| 7  | 16384              | 3  | 41162           | 2.512329102    |\n| 8  | 65536              | 3  | 41162           | 0.6280822754   |\n| 9  | 262144             | 4  | 288122          | 1.099098206    |\n| 10 | 1048576            | 4  | 288122          | 0.2747745514   |\n| 11 | 4194304            | 5  | 2016842         | 0.4808526039   |\n| 12 | 16777216           | 6  | 14117882        | 0.8414913416   |\n| 13 | 67108864           | 6  | 14117882        | 0.2103728354   |\n| 14 | 268435456          | 7  | 98825162        | 0.3681524172   |\n| 15 | 1073741824         | 8  | 691776122       | 0.644266719    |\n| 16 | 4294967296         | 8  | 691776122       | 0.1610666797   |\n| 17 | 17179869184        | 9  | 4842432842      | 0.2818666889   |\n| 18 | 68719476736        | 10 | 33897029882     | 0.4932667053   |\n| 19 | 274877906944       | 11 | 237279209162    | 0.8632167343   |\n| 20 | 1099511627776      | 11 | 237279209162    | 0.2158041836   |\n| 21 | 4398046511104      | 12 | 1660954464122   | 0.3776573213   |\n| 22 | 17592186044416     | 13 | 11626681248842  | 0.6609003122   |\n| 23 | 70368744177664     | 13 | 11626681248842  | 0.165225078    |\n| 24 | 281474976710656    | 14 | 81386768741882  | 0.2891438866   |\n| 25 | 1125899906842620   | 15 | 569707381193162 | 0.5060018015   |\n| 26 | 4503599627370500   | 15 | 569707381193162 | 0.1265004504   |\n| 27 | 18014398509482000  | 15 | 569707381193162 | 0.03162511259  |\n| 28 | 72057594037927900  | 15 | 569707381193162 | 0.007906278149 |\n| 29 | 288230376151712000 | 15 | 569707381193162 | 0.001976569537 |\n\nHexagonal cells don't align perfectly on a vector tile.\nSome cells may intersect more than one vector tile.\nTo compute the H3 resolution for each precision, Elasticsearch compares the average density of hexagonal bins at each resolution with the average density of tile bins at each zoom level.\nElasticsearch uses the H3 resolution that is closest to the corresponding geotile density.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "description": "Search a vector tile for geospatial values.\nBefore using this API, you should be familiar with the Mapbox vector tile specification.\nThe API returns results as a binary mapbox vector tile.\n\nInternally, Elasticsearch translates a vector tile search API request into a search containing:\n\n* A `geo_bounding_box` query on the `<field>`. The query uses the `<zoom>/<x>/<y>` tile as a bounding box.\n* A `geotile_grid` or `geohex_grid` aggregation on the `<field>`. The `grid_agg` parameter determines the aggregation type. The aggregation uses the `<zoom>/<x>/<y>` tile as a bounding box.\n* Optionally, a `geo_bounds` aggregation on the `<field>`. The search only includes this aggregation if the `exact_bounds` parameter is `true`.\n* If the optional parameter `with_labels` is `true`, the internal search will include a dynamic runtime field that calls the `getLabelPosition` function of the geometry doc value. This enables the generation of new point features containing suggested geometry labels, so that, for example, multi-polygons will have only one label.\n\nThe API returns results as a binary Mapbox vector tile.\nMapbox vector tiles are encoded as Google Protobufs (PBF). By default, the tile contains three layers:\n\n* A `hits` layer containing a feature for each `<field>` value matching the `geo_bounding_box` query.\n* An `aggs` layer containing a feature for each cell of the `geotile_grid` or `geohex_grid`. The layer only contains features for cells with matching data.\n* A meta layer containing:\n  * A feature containing a bounding box. By default, this is the bounding box of the tile.\n  * Value ranges for any sub-aggregations on the `geotile_grid` or `geohex_grid`.\n  * Metadata for the search.\n\nThe API only returns features that can display at its zoom level.\nFor example, if a polygon feature has no area at its zoom level, the API omits it.\nThe API returns errors as UTF-8 encoded JSON.\n\nIMPORTANT: You can specify several options for this API as either a query parameter or request body parameter.\nIf you specify both parameters, the query parameter takes precedence.\n\n**Grid precision for geotile**\n\nFor a `grid_agg` of `geotile`, you can use cells in the `aggs` layer as tiles for lower zoom levels.\n`grid_precision` represents the additional zoom levels available through these cells. The final precision is computed by as follows: `<zoom> + grid_precision`.\nFor example, if `<zoom>` is 7 and `grid_precision` is 8, then the `geotile_grid` aggregation will use a precision of 15.\nThe maximum final precision is 29.\nThe `grid_precision` also determines the number of cells for the grid as follows: `(2^grid_precision) x (2^grid_precision)`.\nFor example, a value of 8 divides the tile into a grid of 256 x 256 cells.\nThe `aggs` layer only contains features for cells with matching data.\n\n**Grid precision for geohex**\n\nFor a `grid_agg` of `geohex`, Elasticsearch uses `<zoom>` and `grid_precision` to calculate a final precision as follows: `<zoom> + grid_precision`.\n\nThis precision determines the H3 resolution of the hexagonal cells produced by the `geohex` aggregation.\nThe following table maps the H3 resolution for each precision.\nFor example, if `<zoom>` is 3 and `grid_precision` is 3, the precision is 6.\nAt a precision of 6, hexagonal cells have an H3 resolution of 2.\nIf `<zoom>` is 3 and `grid_precision` is 4, the precision is 7.\nAt a precision of 7, hexagonal cells have an H3 resolution of 3.\n\n| Precision | Unique tile bins | H3 resolution | Unique hex bins |\tRatio |\n| --------- | ---------------- | ------------- | ----------------| ----- |\n| 1  | 4                  | 0  | 122             | 30.5           |\n| 2  | 16                 | 0  | 122             | 7.625          |\n| 3  | 64                 | 1  | 842             | 13.15625       |\n| 4  | 256                | 1  | 842             | 3.2890625      |\n| 5  | 1024               | 2  | 5882            | 5.744140625    |\n| 6  | 4096               | 2  | 5882            | 1.436035156    |\n| 7  | 16384              | 3  | 41162           | 2.512329102    |\n| 8  | 65536              | 3  | 41162           | 0.6280822754   |\n| 9  | 262144             | 4  | 288122          | 1.099098206    |\n| 10 | 1048576            | 4  | 288122          | 0.2747745514   |\n| 11 | 4194304            | 5  | 2016842         | 0.4808526039   |\n| 12 | 16777216           | 6  | 14117882        | 0.8414913416   |\n| 13 | 67108864           | 6  | 14117882        | 0.2103728354   |\n| 14 | 268435456          | 7  | 98825162        | 0.3681524172   |\n| 15 | 1073741824         | 8  | 691776122       | 0.644266719    |\n| 16 | 4294967296         | 8  | 691776122       | 0.1610666797   |\n| 17 | 17179869184        | 9  | 4842432842      | 0.2818666889   |\n| 18 | 68719476736        | 10 | 33897029882     | 0.4932667053   |\n| 19 | 274877906944       | 11 | 237279209162    | 0.8632167343   |\n| 20 | 1099511627776      | 11 | 237279209162    | 0.2158041836   |\n| 21 | 4398046511104      | 12 | 1660954464122   | 0.3776573213   |\n| 22 | 17592186044416     | 13 | 11626681248842  | 0.6609003122   |\n| 23 | 70368744177664     | 13 | 11626681248842  | 0.165225078    |\n| 24 | 281474976710656    | 14 | 81386768741882  | 0.2891438866   |\n| 25 | 1125899906842620   | 15 | 569707381193162 | 0.5060018015   |\n| 26 | 4503599627370500   | 15 | 569707381193162 | 0.1265004504   |\n| 27 | 18014398509482000  | 15 | 569707381193162 | 0.03162511259  |\n| 28 | 72057594037927900  | 15 | 569707381193162 | 0.007906278149 |\n| 29 | 288230376151712000 | 15 | 569707381193162 | 0.001976569537 |\n\nHexagonal cells don't align perfectly on a vector tile.\nSome cells may intersect more than one vector tile.\nTo compute the H3 resolution for each precision, Elasticsearch compares the average density of hexagonal bins at each resolution with the average density of tile bins at each zoom level.\nElasticsearch uses the H3 resolution that is closest to the corresponding geotile density.\n\nLearn how to use the vector tile search API with practical examples in the [Vector tile search examples](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/vector-tile-search) guide.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
           "url": "https://github.com/mapbox/vector-tile-spec/blob/master/README.md",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/search-vector-tile-api.html"
@@ -20481,7 +20481,7 @@
           "search"
         ],
         "summary": "Search a vector tile",
-        "description": "Search a vector tile for geospatial values.\nBefore using this API, you should be familiar with the Mapbox vector tile specification.\nThe API returns results as a binary mapbox vector tile.\n\nInternally, Elasticsearch translates a vector tile search API request into a search containing:\n\n* A `geo_bounding_box` query on the `<field>`. The query uses the `<zoom>/<x>/<y>` tile as a bounding box.\n* A `geotile_grid` or `geohex_grid` aggregation on the `<field>`. The `grid_agg` parameter determines the aggregation type. The aggregation uses the `<zoom>/<x>/<y>` tile as a bounding box.\n* Optionally, a `geo_bounds` aggregation on the `<field>`. The search only includes this aggregation if the `exact_bounds` parameter is `true`.\n* If the optional parameter `with_labels` is `true`, the internal search will include a dynamic runtime field that calls the `getLabelPosition` function of the geometry doc value. This enables the generation of new point features containing suggested geometry labels, so that, for example, multi-polygons will have only one label.\n\nFor example, Elasticsearch may translate a vector tile search API request with a `grid_agg` argument of `geotile` and an `exact_bounds` argument of `true` into the following search\n\n```\nGET my-index/_search\n{\n  \"size\": 10000,\n  \"query\": {\n    \"geo_bounding_box\": {\n      \"my-geo-field\": {\n        \"top_left\": {\n          \"lat\": -40.979898069620134,\n          \"lon\": -45\n        },\n        \"bottom_right\": {\n          \"lat\": -66.51326044311186,\n          \"lon\": 0\n        }\n      }\n    }\n  },\n  \"aggregations\": {\n    \"grid\": {\n      \"geotile_grid\": {\n        \"field\": \"my-geo-field\",\n        \"precision\": 11,\n        \"size\": 65536,\n        \"bounds\": {\n          \"top_left\": {\n            \"lat\": -40.979898069620134,\n            \"lon\": -45\n          },\n          \"bottom_right\": {\n            \"lat\": -66.51326044311186,\n            \"lon\": 0\n          }\n        }\n      }\n    },\n    \"bounds\": {\n      \"geo_bounds\": {\n        \"field\": \"my-geo-field\",\n        \"wrap_longitude\": false\n      }\n    }\n  }\n}\n```\n\nThe API returns results as a binary Mapbox vector tile.\nMapbox vector tiles are encoded as Google Protobufs (PBF). By default, the tile contains three layers:\n\n* A `hits` layer containing a feature for each `<field>` value matching the `geo_bounding_box` query.\n* An `aggs` layer containing a feature for each cell of the `geotile_grid` or `geohex_grid`. The layer only contains features for cells with matching data.\n* A meta layer containing:\n  * A feature containing a bounding box. By default, this is the bounding box of the tile.\n  * Value ranges for any sub-aggregations on the `geotile_grid` or `geohex_grid`.\n  * Metadata for the search.\n\nThe API only returns features that can display at its zoom level.\nFor example, if a polygon feature has no area at its zoom level, the API omits it.\nThe API returns errors as UTF-8 encoded JSON.\n\nIMPORTANT: You can specify several options for this API as either a query parameter or request body parameter.\nIf you specify both parameters, the query parameter takes precedence.\n\n**Grid precision for geotile**\n\nFor a `grid_agg` of `geotile`, you can use cells in the `aggs` layer as tiles for lower zoom levels.\n`grid_precision` represents the additional zoom levels available through these cells. The final precision is computed by as follows: `<zoom> + grid_precision`.\nFor example, if `<zoom>` is 7 and `grid_precision` is 8, then the `geotile_grid` aggregation will use a precision of 15.\nThe maximum final precision is 29.\nThe `grid_precision` also determines the number of cells for the grid as follows: `(2^grid_precision) x (2^grid_precision)`.\nFor example, a value of 8 divides the tile into a grid of 256 x 256 cells.\nThe `aggs` layer only contains features for cells with matching data.\n\n**Grid precision for geohex**\n\nFor a `grid_agg` of `geohex`, Elasticsearch uses `<zoom>` and `grid_precision` to calculate a final precision as follows: `<zoom> + grid_precision`.\n\nThis precision determines the H3 resolution of the hexagonal cells produced by the `geohex` aggregation.\nThe following table maps the H3 resolution for each precision.\nFor example, if `<zoom>` is 3 and `grid_precision` is 3, the precision is 6.\nAt a precision of 6, hexagonal cells have an H3 resolution of 2.\nIf `<zoom>` is 3 and `grid_precision` is 4, the precision is 7.\nAt a precision of 7, hexagonal cells have an H3 resolution of 3.\n\n| Precision | Unique tile bins | H3 resolution | Unique hex bins |\tRatio |\n| --------- | ---------------- | ------------- | ----------------| ----- |\n| 1  | 4                  | 0  | 122             | 30.5           |\n| 2  | 16                 | 0  | 122             | 7.625          |\n| 3  | 64                 | 1  | 842             | 13.15625       |\n| 4  | 256                | 1  | 842             | 3.2890625      |\n| 5  | 1024               | 2  | 5882            | 5.744140625    |\n| 6  | 4096               | 2  | 5882            | 1.436035156    |\n| 7  | 16384              | 3  | 41162           | 2.512329102    |\n| 8  | 65536              | 3  | 41162           | 0.6280822754   |\n| 9  | 262144             | 4  | 288122          | 1.099098206    |\n| 10 | 1048576            | 4  | 288122          | 0.2747745514   |\n| 11 | 4194304            | 5  | 2016842         | 0.4808526039   |\n| 12 | 16777216           | 6  | 14117882        | 0.8414913416   |\n| 13 | 67108864           | 6  | 14117882        | 0.2103728354   |\n| 14 | 268435456          | 7  | 98825162        | 0.3681524172   |\n| 15 | 1073741824         | 8  | 691776122       | 0.644266719    |\n| 16 | 4294967296         | 8  | 691776122       | 0.1610666797   |\n| 17 | 17179869184        | 9  | 4842432842      | 0.2818666889   |\n| 18 | 68719476736        | 10 | 33897029882     | 0.4932667053   |\n| 19 | 274877906944       | 11 | 237279209162    | 0.8632167343   |\n| 20 | 1099511627776      | 11 | 237279209162    | 0.2158041836   |\n| 21 | 4398046511104      | 12 | 1660954464122   | 0.3776573213   |\n| 22 | 17592186044416     | 13 | 11626681248842  | 0.6609003122   |\n| 23 | 70368744177664     | 13 | 11626681248842  | 0.165225078    |\n| 24 | 281474976710656    | 14 | 81386768741882  | 0.2891438866   |\n| 25 | 1125899906842620   | 15 | 569707381193162 | 0.5060018015   |\n| 26 | 4503599627370500   | 15 | 569707381193162 | 0.1265004504   |\n| 27 | 18014398509482000  | 15 | 569707381193162 | 0.03162511259  |\n| 28 | 72057594037927900  | 15 | 569707381193162 | 0.007906278149 |\n| 29 | 288230376151712000 | 15 | 569707381193162 | 0.001976569537 |\n\nHexagonal cells don't align perfectly on a vector tile.\nSome cells may intersect more than one vector tile.\nTo compute the H3 resolution for each precision, Elasticsearch compares the average density of hexagonal bins at each resolution with the average density of tile bins at each zoom level.\nElasticsearch uses the H3 resolution that is closest to the corresponding geotile density.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "description": "Search a vector tile for geospatial values.\nBefore using this API, you should be familiar with the Mapbox vector tile specification.\nThe API returns results as a binary mapbox vector tile.\n\nInternally, Elasticsearch translates a vector tile search API request into a search containing:\n\n* A `geo_bounding_box` query on the `<field>`. The query uses the `<zoom>/<x>/<y>` tile as a bounding box.\n* A `geotile_grid` or `geohex_grid` aggregation on the `<field>`. The `grid_agg` parameter determines the aggregation type. The aggregation uses the `<zoom>/<x>/<y>` tile as a bounding box.\n* Optionally, a `geo_bounds` aggregation on the `<field>`. The search only includes this aggregation if the `exact_bounds` parameter is `true`.\n* If the optional parameter `with_labels` is `true`, the internal search will include a dynamic runtime field that calls the `getLabelPosition` function of the geometry doc value. This enables the generation of new point features containing suggested geometry labels, so that, for example, multi-polygons will have only one label.\n\nThe API returns results as a binary Mapbox vector tile.\nMapbox vector tiles are encoded as Google Protobufs (PBF). By default, the tile contains three layers:\n\n* A `hits` layer containing a feature for each `<field>` value matching the `geo_bounding_box` query.\n* An `aggs` layer containing a feature for each cell of the `geotile_grid` or `geohex_grid`. The layer only contains features for cells with matching data.\n* A meta layer containing:\n  * A feature containing a bounding box. By default, this is the bounding box of the tile.\n  * Value ranges for any sub-aggregations on the `geotile_grid` or `geohex_grid`.\n  * Metadata for the search.\n\nThe API only returns features that can display at its zoom level.\nFor example, if a polygon feature has no area at its zoom level, the API omits it.\nThe API returns errors as UTF-8 encoded JSON.\n\nIMPORTANT: You can specify several options for this API as either a query parameter or request body parameter.\nIf you specify both parameters, the query parameter takes precedence.\n\n**Grid precision for geotile**\n\nFor a `grid_agg` of `geotile`, you can use cells in the `aggs` layer as tiles for lower zoom levels.\n`grid_precision` represents the additional zoom levels available through these cells. The final precision is computed by as follows: `<zoom> + grid_precision`.\nFor example, if `<zoom>` is 7 and `grid_precision` is 8, then the `geotile_grid` aggregation will use a precision of 15.\nThe maximum final precision is 29.\nThe `grid_precision` also determines the number of cells for the grid as follows: `(2^grid_precision) x (2^grid_precision)`.\nFor example, a value of 8 divides the tile into a grid of 256 x 256 cells.\nThe `aggs` layer only contains features for cells with matching data.\n\n**Grid precision for geohex**\n\nFor a `grid_agg` of `geohex`, Elasticsearch uses `<zoom>` and `grid_precision` to calculate a final precision as follows: `<zoom> + grid_precision`.\n\nThis precision determines the H3 resolution of the hexagonal cells produced by the `geohex` aggregation.\nThe following table maps the H3 resolution for each precision.\nFor example, if `<zoom>` is 3 and `grid_precision` is 3, the precision is 6.\nAt a precision of 6, hexagonal cells have an H3 resolution of 2.\nIf `<zoom>` is 3 and `grid_precision` is 4, the precision is 7.\nAt a precision of 7, hexagonal cells have an H3 resolution of 3.\n\n| Precision | Unique tile bins | H3 resolution | Unique hex bins |\tRatio |\n| --------- | ---------------- | ------------- | ----------------| ----- |\n| 1  | 4                  | 0  | 122             | 30.5           |\n| 2  | 16                 | 0  | 122             | 7.625          |\n| 3  | 64                 | 1  | 842             | 13.15625       |\n| 4  | 256                | 1  | 842             | 3.2890625      |\n| 5  | 1024               | 2  | 5882            | 5.744140625    |\n| 6  | 4096               | 2  | 5882            | 1.436035156    |\n| 7  | 16384              | 3  | 41162           | 2.512329102    |\n| 8  | 65536              | 3  | 41162           | 0.6280822754   |\n| 9  | 262144             | 4  | 288122          | 1.099098206    |\n| 10 | 1048576            | 4  | 288122          | 0.2747745514   |\n| 11 | 4194304            | 5  | 2016842         | 0.4808526039   |\n| 12 | 16777216           | 6  | 14117882        | 0.8414913416   |\n| 13 | 67108864           | 6  | 14117882        | 0.2103728354   |\n| 14 | 268435456          | 7  | 98825162        | 0.3681524172   |\n| 15 | 1073741824         | 8  | 691776122       | 0.644266719    |\n| 16 | 4294967296         | 8  | 691776122       | 0.1610666797   |\n| 17 | 17179869184        | 9  | 4842432842      | 0.2818666889   |\n| 18 | 68719476736        | 10 | 33897029882     | 0.4932667053   |\n| 19 | 274877906944       | 11 | 237279209162    | 0.8632167343   |\n| 20 | 1099511627776      | 11 | 237279209162    | 0.2158041836   |\n| 21 | 4398046511104      | 12 | 1660954464122   | 0.3776573213   |\n| 22 | 17592186044416     | 13 | 11626681248842  | 0.6609003122   |\n| 23 | 70368744177664     | 13 | 11626681248842  | 0.165225078    |\n| 24 | 281474976710656    | 14 | 81386768741882  | 0.2891438866   |\n| 25 | 1125899906842620   | 15 | 569707381193162 | 0.5060018015   |\n| 26 | 4503599627370500   | 15 | 569707381193162 | 0.1265004504   |\n| 27 | 18014398509482000  | 15 | 569707381193162 | 0.03162511259  |\n| 28 | 72057594037927900  | 15 | 569707381193162 | 0.007906278149 |\n| 29 | 288230376151712000 | 15 | 569707381193162 | 0.001976569537 |\n\nHexagonal cells don't align perfectly on a vector tile.\nSome cells may intersect more than one vector tile.\nTo compute the H3 resolution for each precision, Elasticsearch compares the average density of hexagonal bins at each resolution with the average density of tile bins at each zoom level.\nElasticsearch uses the H3 resolution that is closest to the corresponding geotile density.\n\nLearn how to use the vector tile search API with practical examples in the [Vector tile search examples](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/vector-tile-search) guide.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
           "url": "https://github.com/mapbox/vector-tile-spec/blob/master/README.md",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/search-vector-tile-api.html"
@@ -21524,7 +21524,11 @@
           "security"
         ],
         "summary": "Find API keys with a query",
-        "description": "Get a paginated list of API keys and their information.\nYou can optionally filter the results with a query.\n\nTo use this API, you must have at least the `manage_own_api_key` or the `read_security` cluster privileges.\nIf you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have the `read_security`, `manage_api_key`, or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.\n\n## Required authorization\n\n* Cluster privileges: `manage_own_api_key`,`read_security`\n",
+        "description": "Get a paginated list of API keys and their information.\nYou can optionally filter the results with a query.\n\nTo use this API, you must have at least the `manage_own_api_key` or the `read_security` cluster privileges.\nIf you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have the `read_security`, `manage_api_key`, or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.\nRefer to the linked documentation for examples of how to find API keys:\n\n## Required authorization\n\n* Cluster privileges: `manage_own_api_key`,`read_security`\n",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/query-api-keys",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/security-api-query-api-key.html"
+        },
         "operationId": "security-query-api-keys",
         "parameters": [
           {
@@ -21553,7 +21557,11 @@
           "security"
         ],
         "summary": "Find API keys with a query",
-        "description": "Get a paginated list of API keys and their information.\nYou can optionally filter the results with a query.\n\nTo use this API, you must have at least the `manage_own_api_key` or the `read_security` cluster privileges.\nIf you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have the `read_security`, `manage_api_key`, or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.\n\n## Required authorization\n\n* Cluster privileges: `manage_own_api_key`,`read_security`\n",
+        "description": "Get a paginated list of API keys and their information.\nYou can optionally filter the results with a query.\n\nTo use this API, you must have at least the `manage_own_api_key` or the `read_security` cluster privileges.\nIf you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.\nIf you have the `read_security`, `manage_api_key`, or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.\nRefer to the linked documentation for examples of how to find API keys:\n\n## Required authorization\n\n* Cluster privileges: `manage_own_api_key`,`read_security`\n",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/query-api-keys",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/security-api-query-api-key.html"
+        },
         "operationId": "security-query-api-keys-1",
         "parameters": [
           {
@@ -32134,7 +32142,9 @@
               }
             },
             "required": [
-              "retriever"
+              "retriever",
+              "inference_text",
+              "field"
             ]
           }
         ]
@@ -32231,10 +32241,7 @@
               "rank_window_size": {
                 "type": "number"
               }
-            },
-            "required": [
-              "rank_window_size"
-            ]
+            }
           }
         ]
       },
@@ -32293,8 +32300,7 @@
               }
             },
             "required": [
-              "retriever",
-              "rank_window_size"
+              "retriever"
             ]
           }
         ]
@@ -34786,7 +34792,7 @@
                   },
                   "prune": {
                     "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
-                    "x-state": "Technical preview",
+                    "x-state": "Generally available",
                     "type": "boolean"
                   },
                   "pruning_config": {
@@ -42563,10 +42569,19 @@
             "$ref": "#/components/schemas/_types.analysis.ApostropheTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.ArabicStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.ArabicNormalizationTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.AsciiFoldingTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.BengaliNormalizationTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.BrazilianStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.CjkBigramTokenFilter"
@@ -42584,10 +42599,16 @@
             "$ref": "#/components/schemas/_types.analysis.ConditionTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.CzechStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.DecimalDigitTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.DelimitedPayloadTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.DutchStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.EdgeNGramTokenFilter"
@@ -42602,7 +42623,13 @@
             "$ref": "#/components/schemas/_types.analysis.FlattenGraphTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.FrenchStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.GermanNormalizationTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.GermanStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.HindiNormalizationTokenFilter"
@@ -42662,6 +42689,9 @@
             "$ref": "#/components/schemas/_types.analysis.PersianNormalizationTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.PersianStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.PorterStemTokenFilter"
           },
           {
@@ -42672,6 +42702,9 @@
           },
           {
             "$ref": "#/components/schemas/_types.analysis.ReverseTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.RussianStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.ScandinavianFoldingTokenFilter"
@@ -42785,6 +42818,27 @@
           }
         }
       },
+      "_types.analysis.ArabicStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "arabic_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
       "_types.analysis.ArabicNormalizationTokenFilter": {
         "allOf": [
           {
@@ -42822,6 +42876,48 @@
               },
               "preserve_original": {
                 "$ref": "#/components/schemas/_spec_utils.Stringifiedboolean"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.BengaliNormalizationTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "bengali_normalization"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.BrazilianStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "brazilian_stem"
+                ]
               }
             },
             "required": [
@@ -42986,6 +43082,27 @@
           }
         ]
       },
+      "_types.analysis.CzechStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "czech_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
       "_types.analysis.DecimalDigitTokenFilter": {
         "allOf": [
           {
@@ -43041,6 +43158,27 @@
           "int",
           "float",
           "identity"
+        ]
+      },
+      "_types.analysis.DutchStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "dutch_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
         ]
       },
       "_types.analysis.EdgeNGramTokenFilter": {
@@ -43170,6 +43308,27 @@
           }
         ]
       },
+      "_types.analysis.FrenchStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "french_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
       "_types.analysis.GermanNormalizationTokenFilter": {
         "allOf": [
           {
@@ -43182,6 +43341,27 @@
                 "type": "string",
                 "enum": [
                   "german_normalization"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.GermanStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "german_stem"
                 ]
               }
             },
@@ -43776,6 +43956,9 @@
                 "description": "If `true`, all substrings matching the pattern parameter’s regular expression are replaced. If `false`, the filter replaces only the first matching substring in each token. Defaults to `true`.",
                 "type": "boolean"
               },
+              "flags": {
+                "type": "string"
+              },
               "pattern": {
                 "description": "Regular expression, written in Java’s regular expression syntax. The filter replaces token substrings matching this pattern with the substring in the `replacement` parameter.",
                 "type": "string"
@@ -43804,6 +43987,27 @@
                 "type": "string",
                 "enum": [
                   "persian_normalization"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.PersianStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "persian_stem"
                 ]
               }
             },
@@ -43892,6 +44096,27 @@
                 "type": "string",
                 "enum": [
                   "reverse"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.RussianStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "russian_stem"
                 ]
               }
             },
@@ -44570,10 +44795,10 @@
               "alternate": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationAlternate"
               },
-              "case_first": {
+              "caseFirst": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationCaseFirst"
               },
-              "case_level": {
+              "caseLevel": {
                 "type": "boolean"
               },
               "country": {
@@ -44582,7 +44807,7 @@
               "decomposition": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationDecomposition"
               },
-              "hiragana_quaternary_mode": {
+              "hiraganaQuaternaryMode": {
                 "type": "boolean"
               },
               "language": {
@@ -44597,7 +44822,7 @@
               "strength": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationStrength"
               },
-              "variable_top": {
+              "variableTop": {
                 "type": "string"
               },
               "variant": {
@@ -45060,10 +45285,17 @@
                 "type": "number"
               },
               "token_chars": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.analysis.TokenChar"
-                }
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types.analysis.TokenChar"
+                    }
+                  }
+                ]
               }
             },
             "required": [
@@ -45959,6 +46191,9 @@
           "allow_mmap": {
             "description": "You can restrict the use of the mmapfs and the related hybridfs store type via the setting node.store.allow_mmap.\nThis is a boolean setting indicating whether or not memory-mapping is allowed. The default is to allow it. This\nsetting is useful, for example, if you are in an environment where you can not control the ability to create a lot\nof memory maps so you need disable the ability to use memory-mapping.",
             "type": "boolean"
+          },
+          "stats_refresh_interval": {
+            "$ref": "#/components/schemas/_types.Duration"
           }
         },
         "required": [
@@ -46280,6 +46515,9 @@
           },
           {
             "$ref": "#/components/schemas/_types.mapping.PassthroughObjectProperty"
+          },
+          {
+            "$ref": "#/components/schemas/_types.mapping.RankVectorProperty"
           },
           {
             "$ref": "#/components/schemas/_types.mapping.SemanticTextProperty"
@@ -47205,6 +47443,9 @@
               "default_metric": {
                 "type": "string"
               },
+              "ignore_malformed": {
+                "type": "boolean"
+              },
               "metrics": {
                 "type": "array",
                 "items": {
@@ -47364,6 +47605,12 @@
               "split_queries_on_whitespace": {
                 "type": "boolean"
               },
+              "time_series_dimensions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "type": {
                 "type": "string",
                 "enum": [
@@ -47465,6 +47712,42 @@
           }
         ]
       },
+      "_types.mapping.RankVectorProperty": {
+        "description": "Technical preview",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping.PropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "rank_vectors"
+                ]
+              },
+              "element_type": {
+                "$ref": "#/components/schemas/_types.mapping.RankVectorElementType"
+              },
+              "dims": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.mapping.RankVectorElementType": {
+        "type": "string",
+        "enum": [
+          "byte",
+          "float",
+          "bit"
+        ]
+      },
       "_types.mapping.SemanticTextProperty": {
         "type": "object",
         "properties": {
@@ -47486,6 +47769,9 @@
           "search_inference_id": {
             "$ref": "#/components/schemas/_types.Id"
           },
+          "index_options": {
+            "$ref": "#/components/schemas/_types.mapping.SemanticTextIndexOptions"
+          },
           "chunking_settings": {
             "$ref": "#/components/schemas/_types.mapping.ChunkingSettings"
           }
@@ -47493,6 +47779,14 @@
         "required": [
           "type"
         ]
+      },
+      "_types.mapping.SemanticTextIndexOptions": {
+        "type": "object",
+        "properties": {
+          "dense_vector": {
+            "$ref": "#/components/schemas/_types.mapping.DenseVectorIndexOptions"
+          }
+        }
       },
       "_types.mapping.ChunkingSettings": {
         "type": "object",
@@ -47527,6 +47821,9 @@
           {
             "type": "object",
             "properties": {
+              "store": {
+                "type": "boolean"
+              },
               "type": {
                 "type": "string",
                 "enum": [
@@ -47838,12 +48135,23 @@
                 "enum": [
                   "geo_point"
                 ]
+              },
+              "time_series_metric": {
+                "$ref": "#/components/schemas/_types.mapping.GeoPointMetricType"
               }
             },
             "required": [
               "type"
             ]
           }
+        ]
+      },
+      "_types.mapping.GeoPointMetricType": {
+        "type": "string",
+        "enum": [
+          "gauge",
+          "counter",
+          "position"
         ]
       },
       "_types.mapping.GeoShapeProperty": {
@@ -51173,7 +51481,7 @@
           "settings"
         ]
       },
-      "indices.get_alias.IndexAliases": {
+      "indices.get_alias._types.IndexAliases": {
         "type": "object",
         "properties": {
           "aliases": {
@@ -64090,7 +64398,7 @@
             "schema": {
               "type": "object",
               "additionalProperties": {
-                "$ref": "#/components/schemas/indices.get_alias.IndexAliases"
+                "$ref": "#/components/schemas/indices.get_alias._types.IndexAliases"
               }
             }
           }
@@ -65239,23 +65547,6 @@
                 "count",
                 "api_keys"
               ]
-            },
-            "examples": {
-              "QueryApiKeysResponseExample1": {
-                "summary": "Query API keys by ID",
-                "description": "A successful response from `GET /_security/_query/api_key?with_limited_by=true`. The `limited_by` details are the owner user's permissions associated with the API key. It is a point-in-time snapshot captured at creation and subsequent updates. An API key's effective permissions are an intersection of its assigned privileges and the owner user's permissions.\n",
-                "value": "{\n  \"api_keys\": [\n    {\n      \"id\": \"VuaCfGcBCdbkQm-e5aOx\",\n      \"name\": \"application-key-1\",\n      \"creation\": 1548550550158,\n      \"expiration\": 1548551550158,\n      \"invalidated\": false,\n      \"username\": \"myuser\",\n      \"realm\": \"native1\",\n      \"realm_type\": \"native\",\n      \"metadata\": {\n        \"application\": \"my-application\"\n      },\n      \"role_descriptors\": { },\n      \"limited_by\": [ \n        {\n          \"role-power-user\": {\n            \"cluster\": [\n              \"monitor\"\n            ],\n            \"indices\": [\n              {\n                \"names\": [\n                  \"*\"\n                ],\n                \"privileges\": [\n                  \"read\"\n                ],\n                \"allow_restricted_indices\": false\n              }\n            ],\n            \"applications\": [ ],\n            \"run_as\": [ ],\n            \"metadata\": { },\n            \"transient_metadata\": {\n              \"enabled\": true\n            }\n          }\n        }\n      ]\n    }\n  ]\n}"
-              },
-              "QueryApiKeysResponseExample2": {
-                "summary": "Query API keys with pagination",
-                "description": "An abbreviated response from `GET /_security/_query/api_key` that contains a list of matched API keys along with their sort values. The first sort value is creation time, which is displayed in `date_time` format. The second sort value is the API key name.\n",
-                "value": "{\n  \"total\": 100,\n  \"count\": 10,\n  \"api_keys\": [\n    {\n      \"id\": \"CLXgVnsBOGkf8IyjcXU7\",\n      \"name\": \"app1-key-79\",\n      \"creation\": 1629250154811,\n      \"invalidated\": false,\n      \"username\": \"org-admin-user\",\n      \"realm\": \"native1\",\n      \"metadata\": {\n        \"environment\": \"production\"\n      },\n      \"role_descriptors\": { },\n      \"_sort\": [\n        \"2021-08-18T01:29:14.811Z\",  \n        \"app1-key-79\"  \n      ]\n    },\n    {\n      \"id\": \"BrXgVnsBOGkf8IyjbXVB\",\n      \"name\": \"app1-key-78\",\n      \"creation\": 1629250153794,\n      \"invalidated\": false,\n      \"username\": \"org-admin-user\",\n      \"realm\": \"native1\",\n      \"metadata\": {\n        \"environment\": \"production\"\n      },\n      \"role_descriptors\": { },\n      \"_sort\": [\n        \"2021-08-18T01:29:13.794Z\",\n        \"app1-key-78\"\n      ]\n    }\n  ]\n}"
-              },
-              "QueryApiKeysResponseExample3": {
-                "summary": "Query all API keys",
-                "description": "A successful response from `GET /_security/_query/api_key`. It includes the role descriptors that are assigned to each API key when it was created or last updated. Note that an API key's effective permissions are an intersection of its assigned privileges and the point-in-time snapshot of the owner user's permissions. An empty role descriptors object means the API key inherits the owner user's permissions.\n",
-                "value": "{\n  \"total\": 3,\n  \"count\": 3,\n  \"api_keys\": [ \n    {\n      \"id\": \"nkvrGXsB8w290t56q3Rg\",\n      \"name\": \"my-api-key-1\",\n      \"creation\": 1628227480421,\n      \"expiration\": 1629091480421,\n      \"invalidated\": false,\n      \"username\": \"elastic\",\n      \"realm\": \"reserved\",\n      \"realm_type\": \"reserved\",\n      \"metadata\": {\n        \"letter\": \"a\"\n      },\n      \"role_descriptors\": { \n        \"role-a\": {\n          \"cluster\": [\n            \"monitor\"\n          ],\n          \"indices\": [\n            {\n              \"names\": [\n                \"index-a\"\n              ],\n              \"privileges\": [\n                \"read\"\n              ],\n              \"allow_restricted_indices\": false\n            }\n          ],\n          \"applications\": [ ],\n          \"run_as\": [ ],\n          \"metadata\": { },\n          \"transient_metadata\": {\n            \"enabled\": true\n          }\n        }\n      }\n    },\n    {\n      \"id\": \"oEvrGXsB8w290t5683TI\",\n      \"name\": \"my-api-key-2\",\n      \"creation\": 1628227498953,\n      \"expiration\": 1628313898953,\n      \"invalidated\": false,\n      \"username\": \"elastic\",\n      \"realm\": \"reserved\",\n      \"metadata\": {\n        \"letter\": \"b\"\n      },\n      \"role_descriptors\": { } \n    }\n  ]\n}"
-              }
             }
           }
         }
@@ -72889,16 +73180,6 @@
                 "summary": "Query API keys by ID",
                 "description": "Run `GET /_security/_query/api_key?with_limited_by=true` to retrieve an API key by ID.",
                 "value": "{\n  \"query\": {\n    \"ids\": {\n      \"values\": [\n        \"VuaCfGcBCdbkQm-e5aOx\"\n      ]\n    }\n  }\n}"
-              },
-              "QueryApiKeysRequestExample2": {
-                "summary": "Query API keys with pagination",
-                "description": "Run `GET /_security/_query/api_key`. Use a `bool` query to issue complex logical conditions and use `from`, `size`, and `sort` to help paginate the result. For example, the API key name must begin with `app1-key-` and must not be `app1-key-01`. It must be owned by a username with the wildcard pattern `org-*-user` and the `environment` metadata field must have a `production` value. The offset to begin the search result is the twentieth (zero-based index) API key. The page size of the response is 10 API keys. The result is first sorted by creation date in descending order, then by name in ascending order.\n",
-                "value": "{\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        {\n          \"prefix\": {\n            \"name\": \"app1-key-\" \n          }\n        },\n        {\n          \"term\": {\n            \"invalidated\": \"false\" \n          }\n        }\n      ],\n      \"must_not\": [\n        {\n          \"term\": {\n            \"name\": \"app1-key-01\" \n          }\n        }\n      ],\n      \"filter\": [\n        {\n          \"wildcard\": {\n            \"username\": \"org-*-user\" \n          }\n        },\n        {\n          \"term\": {\n            \"metadata.environment\": \"production\" \n          }\n        }\n      ]\n    }\n  },\n  \"from\": 20, \n  \"size\": 10, \n  \"sort\": [ \n    { \"creation\": { \"order\": \"desc\", \"format\": \"date_time\" } },\n    \"name\"\n  ]\n}"
-              },
-              "QueryApiKeysRequestExample3": {
-                "summary": "Query API keys by name",
-                "description": "Run `GET /_security/_query/api_key` to retrieve the API key by name.",
-                "value": "{\n  \"query\": {\n    \"term\": {\n      \"name\": {\n        \"value\": \"application-key-1\"\n      }\n    }\n  }\n}"
               }
             }
           }

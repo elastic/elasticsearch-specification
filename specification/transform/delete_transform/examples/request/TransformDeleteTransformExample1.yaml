@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_transform/ecommerce_transform"'
+  - language: Java
+    code: |
+      client.transform().deleteTransform(d -> d
+          .transformId("ecommerce_transform")
+      );

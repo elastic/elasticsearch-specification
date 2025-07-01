@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->license()->get();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_license"'
+  - language: Java
+    code: |
+      client.license().get(g -> g);

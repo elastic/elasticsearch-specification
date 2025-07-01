@@ -74,6 +74,11 @@ $ make overlay-docs
 # The generated output can be found in ./output/openapi/
 ```
 
+## Specification Viewer
+
+An interactive viewer for the Elasticsearch specification is available
+[here](https://elastic.github.io/specification-viewer/).
+
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md)
@@ -234,6 +239,9 @@ make validate api=xpack.info type=request branch=main
 
 # this will validate the xpack.info request and response types against the 8.15 branch
 make validate api=xpack.info branch=8.15
+
+# this will validate the xpack.info and search request and response types against the 8.15 branch
+make validate api=xpack.info,search branch=8.15
 ```
 
 The last command above will install all the dependencies and run, download

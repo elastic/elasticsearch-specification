@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->enrich()->stats();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_enrich/_stats"'
+  - language: Java
+    code: |
+      client.enrich().stats(s -> s);

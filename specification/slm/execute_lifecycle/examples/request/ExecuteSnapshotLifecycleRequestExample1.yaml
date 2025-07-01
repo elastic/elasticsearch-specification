@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_slm/policy/daily-snapshots/_execute"'
+  - language: Java
+    code: |
+      client.slm().executeLifecycle(e -> e
+          .policyId("daily-snapshots")
+      );

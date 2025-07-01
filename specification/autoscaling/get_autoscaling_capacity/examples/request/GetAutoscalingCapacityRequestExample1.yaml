@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->autoscaling()->getAutoscalingCapacity();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_autoscaling/capacity"'
+  - language: Java
+    code: |
+      client.autoscaling().getAutoscalingCapacity(g -> g);

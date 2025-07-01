@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_application/analytics/my_analytics_collection"'
+  - language: Java
+    code: |
+      client.searchApplication().putBehavioralAnalytics(p -> p
+          .name("my_analytics_collection")
+      );

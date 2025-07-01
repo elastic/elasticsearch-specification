@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/follower_index/_ccr/pause_follow"'
+  - language: Java
+    code: |
+      client.ccr().pauseFollow(p -> p
+          .index("follower_index")
+      );

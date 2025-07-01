@@ -23,3 +23,8 @@ alternatives:
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_connector/my-connector-id&delete_sync_jobs=true"'
+  - language: Java
+    code: |
+      client.connector().delete(d -> d
+          .connectorId("my-connector-id&delete_sync_jobs=true")
+      );
