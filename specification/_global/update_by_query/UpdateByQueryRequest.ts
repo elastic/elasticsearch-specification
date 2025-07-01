@@ -60,7 +60,7 @@ import { Duration } from '@_types/Time'
  * Any update requests that completed successfully still stick, they are not rolled back.
  *
  * **Refreshing shards**
- * 
+ *
  * Specifying the `refresh` parameter refreshes all shards once the request completes.
  * This is different than the update API's `refresh` parameter, which causes just the shard
  * that received the request to be refreshed. Unlike the update API, it does not support
