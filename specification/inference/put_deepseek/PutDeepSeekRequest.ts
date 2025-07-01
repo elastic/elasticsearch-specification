@@ -21,10 +21,10 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import {
   DeepSeekServiceSettings,
-  DeepSeekServiceType,
-  DeepSeekTaskType
+  DeepSeekServiceType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
+import { TaskTypeDeepSeek } from '@inference/_types/TaskType'
 
 /**
  * Create a DeepSeek inference endpoint.
@@ -47,7 +47,7 @@ export interface Request extends RequestBase {
     /**
      * The type of the inference task that the model will perform.
      */
-    task_type: DeepSeekTaskType
+    task_type: TaskTypeDeepSeek
     /**
      * The unique identifier of the inference endpoint.
      */

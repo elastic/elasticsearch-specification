@@ -13628,8 +13628,6 @@ export interface InferenceDeepSeekServiceSettings {
 
 export type InferenceDeepSeekServiceType = 'deepseek'
 
-export type InferenceDeepSeekTaskType = 'completion' | 'chat_completion'
-
 export interface InferenceDeleteInferenceEndpointResult extends AcknowledgedResponseBase {
   pipelines: string[]
 }
@@ -14146,7 +14144,7 @@ export interface InferencePutCohereRequest extends RequestBase {
 export type InferencePutCohereResponse = InferenceInferenceEndpointInfoCohere
 
 export interface InferencePutDeepseekRequest extends RequestBase {
-  task_type: InferenceDeepSeekTaskType
+  task_type: InferenceTaskTypeDeepSeek
   deepseek_inference_id: Id
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings

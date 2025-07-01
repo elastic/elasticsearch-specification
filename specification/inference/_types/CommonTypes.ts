@@ -794,11 +794,6 @@ export class DeepSeekServiceSettings {
   url?: string
 }
 
-export enum DeepSeekTaskType {
-  completion,
-  chat_completion
-}
-
 export enum DeepSeekServiceType {
   deepseek
 }
