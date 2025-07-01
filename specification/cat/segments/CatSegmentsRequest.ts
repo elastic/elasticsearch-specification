@@ -19,7 +19,7 @@
 
 import { Bytes, Indices, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
-import { CatRequestBase, CatSegmentsColumn } from '@cat/_types/CatBase'
+import { CatRequestBase, CatSegmentsColumns } from '@cat/_types/CatBase'
 
 /**
  * Get segment information.
