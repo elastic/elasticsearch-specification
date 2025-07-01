@@ -26,10 +26,10 @@ import {
   Name,
   Uuid
 } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'
 import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
 import { IndexSettings } from '@indices/_types/IndexSettings'
-import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 enum ManagedBy {
   ilm = 'Index Lifecycle Management',

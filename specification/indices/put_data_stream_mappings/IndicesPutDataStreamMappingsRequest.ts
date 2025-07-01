@@ -19,8 +19,8 @@
 
 import { RequestBase } from '@_types/Base'
 import { Indices } from '@_types/common'
-import { Duration } from '@_types/Time'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { Duration } from '@_types/Time'
 
 /**
  * Update data stream mappings.
