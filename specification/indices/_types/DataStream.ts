@@ -29,6 +29,7 @@ import {
 import { integer } from '@_types/Numeric'
 import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
 import { IndexSettings } from '@indices/_types/IndexSettings'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 enum ManagedBy {
   ilm = 'Index Lifecycle Management',
@@ -118,6 +119,11 @@ export class DataStream {
    * template.
    */
   settings: IndexSettings
+  /**
+   * The mappings specific to this data stream that will take precedence over the mappings in the matching index
+   * template.
+   */
+  mappings?: TypeMapping
   /**
    * Health status of the data stream.
    * This health status is based on the state of the primary and replica shards of the stream’s backing indices.
