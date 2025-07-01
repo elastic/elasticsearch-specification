@@ -245,7 +245,7 @@ If you need to download the recordings again, run `make validate-no-cache api=xp
 
 Once you see the errors, you can fix the original definition in `/specification`
 and then run the command again until the types validator does not trigger any new error.
-Finally open a pull request with your changes.
+Finally open a pull request with your changes. Please open it from a branch in the repository, and not from a fork.
 
 ## Documentation
 
