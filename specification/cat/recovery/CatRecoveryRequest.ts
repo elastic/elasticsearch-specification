@@ -19,7 +19,7 @@
 
 import { Bytes, Indices, Names } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
-import { CatRecoveryColumn, CatRequestBase } from '@cat/_types/CatBase'
+import { CatRecoveryColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get shard recovery information.
