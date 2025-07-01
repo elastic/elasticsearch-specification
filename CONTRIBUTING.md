@@ -39,7 +39,7 @@ Documents under the docs/ directory will help you to change the specification. T
  * [Fixing a definition, the complete story](docs/validation-example.md)
 
 
-## Send your pull request
+## Send your pull request from a branch
 
 To fix any style issues and generate the outputs (that we store in git), please run:
 
@@ -56,5 +56,4 @@ Then, follow those steps:
   - If the API is unusable without the change -> every supported version
   - If the API is usable, but fix is on the response side -> every supported version
   - If the API is usable, but fix is on the request side -> no backport, unless the API is _partially_ usable and the fix unlocks a missing feature that has no workaround
-
-
+- Send the pull request from a branch, **not a fork**
