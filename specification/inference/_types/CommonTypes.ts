@@ -799,11 +799,24 @@ export enum DeepSeekServiceType {
 }
 
 export enum EisTaskType {
-  chat_completion
+  chat_completion,
+  rerank
 }
 
 export enum EisServiceType {
   elastic
+}
+
+export class EisTaskSettings {
+  /**
+   * For a `rerank` task, return doc text within the results.
+   */
+  return_documents?: boolean
+
+  /**
+   * For a `rerank` task, the number of the top N documents that should be returned.
+   */
+  top_n?: integer
 }
 
 export class ElasticsearchServiceSettings {

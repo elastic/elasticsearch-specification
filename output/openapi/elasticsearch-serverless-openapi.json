@@ -10177,7 +10177,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`completion`, `chat_completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -10275,7 +10275,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`completion`, `chat_completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -10887,6 +10887,78 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoCohere"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-product-feature": "elasticsearch, machine-learning"
+      }
+    },
+    "/_inference/{task_type}/{deepseek_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create a DeepSeek inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `deepseek` service.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-deepseek",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.TaskTypeDeepSeek"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "deepseek_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference._types.DeepSeekServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference._types.DeepSeekServiceSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoDeepSeek"
                 }
               }
             }
@@ -42569,10 +42641,19 @@
             "$ref": "#/components/schemas/_types.analysis.ApostropheTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.ArabicStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.ArabicNormalizationTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.AsciiFoldingTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.BengaliNormalizationTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.BrazilianStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.CjkBigramTokenFilter"
@@ -42590,10 +42671,16 @@
             "$ref": "#/components/schemas/_types.analysis.ConditionTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.CzechStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.DecimalDigitTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.DelimitedPayloadTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.DutchStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.EdgeNGramTokenFilter"
@@ -42608,7 +42695,13 @@
             "$ref": "#/components/schemas/_types.analysis.FlattenGraphTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.FrenchStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.GermanNormalizationTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.GermanStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.HindiNormalizationTokenFilter"
@@ -42668,6 +42761,9 @@
             "$ref": "#/components/schemas/_types.analysis.PersianNormalizationTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.PersianStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.PorterStemTokenFilter"
           },
           {
@@ -42678,6 +42774,9 @@
           },
           {
             "$ref": "#/components/schemas/_types.analysis.ReverseTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.RussianStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.ScandinavianFoldingTokenFilter"
@@ -42791,6 +42890,27 @@
           }
         }
       },
+      "_types.analysis.ArabicStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "arabic_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
       "_types.analysis.ArabicNormalizationTokenFilter": {
         "allOf": [
           {
@@ -42828,6 +42948,48 @@
               },
               "preserve_original": {
                 "$ref": "#/components/schemas/_spec_utils.Stringifiedboolean"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.BengaliNormalizationTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "bengali_normalization"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.BrazilianStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "brazilian_stem"
+                ]
               }
             },
             "required": [
@@ -42992,6 +43154,27 @@
           }
         ]
       },
+      "_types.analysis.CzechStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "czech_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
       "_types.analysis.DecimalDigitTokenFilter": {
         "allOf": [
           {
@@ -43047,6 +43230,27 @@
           "int",
           "float",
           "identity"
+        ]
+      },
+      "_types.analysis.DutchStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "dutch_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
         ]
       },
       "_types.analysis.EdgeNGramTokenFilter": {
@@ -43176,6 +43380,27 @@
           }
         ]
       },
+      "_types.analysis.FrenchStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "french_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
       "_types.analysis.GermanNormalizationTokenFilter": {
         "allOf": [
           {
@@ -43188,6 +43413,27 @@
                 "type": "string",
                 "enum": [
                   "german_normalization"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.GermanStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "german_stem"
                 ]
               }
             },
@@ -43782,6 +44028,9 @@
                 "description": "If `true`, all substrings matching the pattern parameter’s regular expression are replaced. If `false`, the filter replaces only the first matching substring in each token. Defaults to `true`.",
                 "type": "boolean"
               },
+              "flags": {
+                "type": "string"
+              },
               "pattern": {
                 "description": "Regular expression, written in Java’s regular expression syntax. The filter replaces token substrings matching this pattern with the substring in the `replacement` parameter.",
                 "type": "string"
@@ -43810,6 +44059,27 @@
                 "type": "string",
                 "enum": [
                   "persian_normalization"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.PersianStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "persian_stem"
                 ]
               }
             },
@@ -43898,6 +44168,27 @@
                 "type": "string",
                 "enum": [
                   "reverse"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.RussianStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "russian_stem"
                 ]
               }
             },
@@ -44576,10 +44867,10 @@
               "alternate": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationAlternate"
               },
-              "case_first": {
+              "caseFirst": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationCaseFirst"
               },
-              "case_level": {
+              "caseLevel": {
                 "type": "boolean"
               },
               "country": {
@@ -44588,7 +44879,7 @@
               "decomposition": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationDecomposition"
               },
-              "hiragana_quaternary_mode": {
+              "hiraganaQuaternaryMode": {
                 "type": "boolean"
               },
               "language": {
@@ -44603,7 +44894,7 @@
               "strength": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationStrength"
               },
-              "variable_top": {
+              "variableTop": {
                 "type": "string"
               },
               "variant": {
@@ -45066,10 +45357,17 @@
                 "type": "number"
               },
               "token_chars": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.analysis.TokenChar"
-                }
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types.analysis.TokenChar"
+                    }
+                  }
+                ]
               }
             },
             "required": [
@@ -45965,6 +46263,9 @@
           "allow_mmap": {
             "description": "You can restrict the use of the mmapfs and the related hybridfs store type via the setting node.store.allow_mmap.\nThis is a boolean setting indicating whether or not memory-mapping is allowed. The default is to allow it. This\nsetting is useful, for example, if you are in an environment where you can not control the ability to create a lot\nof memory maps so you need disable the ability to use memory-mapping.",
             "type": "boolean"
+          },
+          "stats_refresh_interval": {
+            "$ref": "#/components/schemas/_types.Duration"
           }
         },
         "required": [
@@ -46286,6 +46587,9 @@
           },
           {
             "$ref": "#/components/schemas/_types.mapping.PassthroughObjectProperty"
+          },
+          {
+            "$ref": "#/components/schemas/_types.mapping.RankVectorProperty"
           },
           {
             "$ref": "#/components/schemas/_types.mapping.SemanticTextProperty"
@@ -47211,6 +47515,9 @@
               "default_metric": {
                 "type": "string"
               },
+              "ignore_malformed": {
+                "type": "boolean"
+              },
               "metrics": {
                 "type": "array",
                 "items": {
@@ -47370,6 +47677,12 @@
               "split_queries_on_whitespace": {
                 "type": "boolean"
               },
+              "time_series_dimensions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "type": {
                 "type": "string",
                 "enum": [
@@ -47471,6 +47784,42 @@
           }
         ]
       },
+      "_types.mapping.RankVectorProperty": {
+        "description": "Technical preview",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping.PropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "rank_vectors"
+                ]
+              },
+              "element_type": {
+                "$ref": "#/components/schemas/_types.mapping.RankVectorElementType"
+              },
+              "dims": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.mapping.RankVectorElementType": {
+        "type": "string",
+        "enum": [
+          "byte",
+          "float",
+          "bit"
+        ]
+      },
       "_types.mapping.SemanticTextProperty": {
         "type": "object",
         "properties": {
@@ -47544,6 +47893,9 @@
           {
             "type": "object",
             "properties": {
+              "store": {
+                "type": "boolean"
+              },
               "type": {
                 "type": "string",
                 "enum": [
@@ -47855,12 +48207,23 @@
                 "enum": [
                   "geo_point"
                 ]
+              },
+              "time_series_metric": {
+                "$ref": "#/components/schemas/_types.mapping.GeoPointMetricType"
               }
             },
             "required": [
               "type"
             ]
           }
+        ]
+      },
+      "_types.mapping.GeoPointMetricType": {
+        "type": "string",
+        "enum": [
+          "gauge",
+          "counter",
+          "position"
         ]
       },
       "_types.mapping.GeoShapeProperty": {
@@ -53114,6 +53477,66 @@
           "text_embedding",
           "rerank",
           "completion"
+        ]
+      },
+      "inference._types.TaskTypeDeepSeek": {
+        "type": "string",
+        "enum": [
+          "completion",
+          "chat_completion"
+        ]
+      },
+      "inference._types.DeepSeekServiceType": {
+        "type": "string",
+        "enum": [
+          "deepseek"
+        ]
+      },
+      "inference._types.DeepSeekServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "externalDocs": {
+              "url": "https://api-docs.deepseek.com/"
+            },
+            "description": "A valid API key for your DeepSeek account.\nYou can find or create your DeepSeek API keys on the DeepSeek API key page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "model_id": {
+            "description": "For a `completion` or `chat_completion` task, the name of the model to use for the inference task.\n\nFor the available `completion` and `chat_completion` models, refer to the [DeepSeek Models & Pricing docs](https://api-docs.deepseek.com/quick_start/pricing).",
+            "type": "string"
+          },
+          "url": {
+            "description": "The URL endpoint to use for the requests. Defaults to `https://api.deepseek.com/chat/completions`.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "api_key",
+          "model_id"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoDeepSeek": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeDeepSeek"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
         ]
       },
       "inference._types.ElasticsearchTaskType": {
