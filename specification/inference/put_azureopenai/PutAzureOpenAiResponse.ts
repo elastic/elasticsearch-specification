@@ -20,13 +20,5 @@
 import { InferenceEndpointInfoAzureOpenAI } from '@inference/_types/Services'
 
 export class Response {
-<<<<<<< HEAD
-  body: InferenceEndpointInfo
-||||||| parent of 6baef2fa4 (Adds custom InferenceEndpointInfo classes (#4444))
-  /** @codegen_name endpoint_info */
-  body: InferenceEndpointInfo
-=======
-  /** @codegen_name endpoint_info */
   body: InferenceEndpointInfoAzureOpenAI
->>>>>>> 6baef2fa4 (Adds custom InferenceEndpointInfo classes (#4444))
 }
