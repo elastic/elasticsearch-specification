@@ -1,0 +1,66 @@
+summary: Update part of a document
+method_request: POST test/_update/1
+description: >
+  Run `POST test/_update/1` to do a partial update that adds a new field to the existing document.
+# type: request
+value: "{
+
+  \  \"doc\": {
+
+  \    \"name\": \"new_name\"
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.update(
+          index="test",
+          id="1",
+          doc={
+              "name": "new_name"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.update({
+        index: "test",
+        id: 1,
+        doc: {
+          name: "new_name",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.update(
+        index: "test",
+        id: "1",
+        body: {
+          "doc": {
+            "name": "new_name"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->update([
+          "index" => "test",
+          "id" => "1",
+          "body" => [
+              "doc" => [
+                  "name" => "new_name",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"doc":{"name":"new_name"}}'' "$ELASTICSEARCH_URL/test/_update/1"'
+  - language: Java
+    code: |
+      client.update(u -> u
+          .doc(JsonData.fromJson("{\"name\":\"new_name\"}"))
+          .id("1")
+          .index("test")
+      ,Void.class);
