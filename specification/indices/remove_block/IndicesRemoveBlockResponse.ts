@@ -18,6 +18,7 @@
  */
 
 import { IndexName } from '@_types/common'
+import { ErrorCause } from "@_types/Errors";
 
 export class Response {
   body: {
@@ -28,5 +29,6 @@ export class Response {
 
 export class RemoveIndicesBlockStatus {
   name: IndexName
-  unblocked: boolean
+  unblocked?: boolean
+  exception?: ErrorCause
 }
