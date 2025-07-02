@@ -19,7 +19,7 @@
 
 import { Bytes, Indices, Names } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
-import { CatRequestBase } from '@cat/_types/CatBase'
+import { CatRecoveryColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get shard recovery information.
@@ -73,17 +73,19 @@ export interface Request extends CatRequestBase {
      */
     index?: Indices
     /**
-     * List of columns to appear in the response. Supports simple wildcards.
+     * A comma-separated list of columns names to display.
+     * It supports simple wildcards.
+     * @server_default ip,hp,rp,r,m,n,cpu,l
      */
-    h?: Names
+    h?: CatRecoveryColumns
     /**
-     * List of columns that determine how the table should be sorted.
+     * A comma-separated list of column names or aliases that determines the sort order.
      * Sorting defaults to ascending and can be changed by setting `:asc`
      * or `:desc` as a suffix to the column name.
      */
     s?: Names
     /**
-     * Unit used to display time values.
+     * The unit used to display time values.
      */
     time?: TimeUnit
   }
