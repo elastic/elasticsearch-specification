@@ -27,6 +27,7 @@ import {
   TaskTypeAzureAIStudio,
   TaskTypeAzureOpenAI,
   TaskTypeCohere,
+  TaskTypeDeepSeek,
   TaskTypeElasticsearch,
   TaskTypeELSER,
   TaskTypeGoogleAIStudio,
@@ -150,6 +151,17 @@ export class InferenceEndpointInfoCohere extends InferenceEndpoint {
    * The task type
    */
   task_type: TaskTypeCohere
+}
+
+export class InferenceEndpointInfoDeepSeek extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeDeepSeek
 }
 
 export class InferenceEndpointInfoElasticsearch extends InferenceEndpoint {
