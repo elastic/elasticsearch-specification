@@ -194,6 +194,12 @@
       ],
       "response": []
     },
+    "esql.async_query_get": {
+      "request": [
+        "Request: query parameter 'format' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "get_source": {
       "request": [
         "Request: query parameter 'stored_fields' does not exist in the json spec"
@@ -386,6 +392,7 @@
     }
   },
   "generalErrors": [
-    "Query is present in multiple namespaces: _global.knn_search._types and xpack.usage"
+    "Query is present in multiple namespaces: _global.knn_search._types and xpack.usage",
+    "ClusterInfo is present in multiple namespaces: cluster.allocation_explain and esql._types"
   ]
 }
