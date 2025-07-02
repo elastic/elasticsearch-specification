@@ -1,6 +1,6 @@
 summary: Rerank task
-description: Run `POST _inference/rerank/bge-reranker-base-mkn` to perform reranking on the example input via Hugging Face
-method_request: 'POST _inference/rerank/bge-reranker-base-mkn'
+description: Run `PUT _inference/rerank/bge-reranker-base-mkn` to perform reranking on the example input via Hugging Face
+method_request: 'PUT _inference/rerank/bge-reranker-base-mkn'
 # type: "request"
 value: |-
   {
@@ -12,33 +12,40 @@ value: |-
 alternatives:
   - language: Python
     code: |-
-      resp = client.inference.rerank(
+      resp = client.inference.put(
+          task_type="rerank",
           inference_id="bge-reranker-base-mkn",
-          input=[
-              "luke",
-              "like",
-              "leia",
-              "chewy",
-              "r2d2",
-              "star",
-              "wars"
-          ],
-          query="star wars main character",
-          return_documents=False,
-          top_n=2,
+          inference_config={
+              "input": [
+                  "luke",
+                  "like",
+                  "leia",
+                  "chewy",
+                  "r2d2",
+                  "star",
+                  "wars"
+              ],
+              "query": "star wars main character",
+              "return_documents": False,
+              "top_n": 2
+          },
       )
   - language: JavaScript
     code: |-
-      const response = await client.inference.rerank({
+      const response = await client.inference.put({
+        task_type: "rerank",
         inference_id: "bge-reranker-base-mkn",
-        input: ["luke", "like", "leia", "chewy", "r2d2", "star", "wars"],
-        query: "star wars main character",
-        return_documents: false,
-        top_n: 2,
+        inference_config: {
+          input: ["luke", "like", "leia", "chewy", "r2d2", "star", "wars"],
+          query: "star wars main character",
+          return_documents: false,
+          top_n: 2,
+        },
       });
   - language: Ruby
     code: |-
-      response = client.inference.rerank(
+      response = client.inference.put(
+        task_type: "rerank",
         inference_id: "bge-reranker-base-mkn",
         body: {
           "input": [
@@ -57,7 +64,8 @@ alternatives:
       )
   - language: PHP
     code: |-
-      $resp = $client->inference()->rerank([
+      $resp = $client->inference()->put([
+          "task_type" => "rerank",
           "inference_id" => "bge-reranker-base-mkn",
           "body" => [
               "input" => array(
@@ -76,6 +84,6 @@ alternatives:
       ]);
   - language: curl
     code:
-      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
       ''{"input":["luke","like","leia","chewy","r2d2","star","wars"],"query":"star wars main
       character","return_documents":false,"top_n":2}'' "$ELASTICSEARCH_URL/_inference/rerank/bge-reranker-base-mkn"'

@@ -1,0 +1,29 @@
+method_request: GET /_info/_all
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cluster.info(
+          target="_all",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cluster.info({
+        target: "_all",
+      });
+  - language: Ruby
+    code: |-
+      response = client.cluster.info(
+        target: "_all"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cluster()->info([
+          "target" => "_all",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_info/_all"'
+  - language: Java
+    code: |
+      client.cluster().info(i -> i
+          .target("_all")
+      );

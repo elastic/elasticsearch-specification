@@ -1,6 +1,8 @@
 summary: A text embedding task
-description: Run `PUT _inference/text_embedding/openai-embeddings` to create an inference endpoint that performs a `text_embedding` task. The embeddings created by requests to this endpoint will have 128 dimensions.
-# method_request: "PUT _inference/text_embedding/openai-embeddings"
+description:
+  Run `PUT _inference/text_embedding/openai-embeddings` to create an inference endpoint that performs a `text_embedding`
+  task. The embeddings created by requests to this endpoint will have 128 dimensions.
+method_request: 'PUT _inference/text_embedding/openai-embeddings'
 # type: "request"
 value: |-
   {
@@ -11,3 +13,75 @@ value: |-
           "dimensions": 128
       }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="text_embedding",
+          inference_id="openai-embeddings",
+          inference_config={
+              "service": "openai",
+              "service_settings": {
+                  "api_key": "OpenAI-API-Key",
+                  "model_id": "text-embedding-3-small",
+                  "dimensions": 128
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "text_embedding",
+        inference_id: "openai-embeddings",
+        inference_config: {
+          service: "openai",
+          service_settings: {
+            api_key: "OpenAI-API-Key",
+            model_id: "text-embedding-3-small",
+            dimensions: 128,
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "text_embedding",
+        inference_id: "openai-embeddings",
+        body: {
+          "service": "openai",
+          "service_settings": {
+            "api_key": "OpenAI-API-Key",
+            "model_id": "text-embedding-3-small",
+            "dimensions": 128
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "text_embedding",
+          "inference_id" => "openai-embeddings",
+          "body" => [
+              "service" => "openai",
+              "service_settings" => [
+                  "api_key" => "OpenAI-API-Key",
+                  "model_id" => "text-embedding-3-small",
+                  "dimensions" => 128,
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"service\":\"openai\",\"service_settings\":{\"api_key\":\"OpenAI-API-Key\",\"model_id\":\"text-embedding-3-small\",\"dimen\
+      sions\":128}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/openai-embeddings\""
+  - language: Java
+    code: >
+      client.inference().put(p -> p
+          .inferenceId("openai-embeddings")
+          .taskType(TaskType.TextEmbedding)
+          .inferenceConfig(i -> i
+              .service("openai")
+              .serviceSettings(JsonData.fromJson("{\"api_key\":\"OpenAI-API-Key\",\"model_id\":\"text-embedding-3-small\",\"dimensions\":128}"))
+          )
+      );

@@ -1,0 +1,35 @@
+method_request: DELETE _ml/calendars/planned-outages/events/LS8LJGEBMTCMA-qz49st
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.delete_calendar_event(
+          calendar_id="planned-outages",
+          event_id="LS8LJGEBMTCMA-qz49st",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.deleteCalendarEvent({
+        calendar_id: "planned-outages",
+        event_id: "LS8LJGEBMTCMA-qz49st",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.delete_calendar_event(
+        calendar_id: "planned-outages",
+        event_id: "LS8LJGEBMTCMA-qz49st"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->deleteCalendarEvent([
+          "calendar_id" => "planned-outages",
+          "event_id" => "LS8LJGEBMTCMA-qz49st",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_ml/calendars/planned-outages/events/LS8LJGEBMTCMA-qz49st"'
+  - language: Java
+    code: |
+      client.ml().deleteCalendarEvent(d -> d
+          .calendarId("planned-outages")
+          .eventId("LS8LJGEBMTCMA-qz49st")
+      );

@@ -2,4 +2,52 @@ summary: synonyms/apis/put-synonym-rule.asciidoc:107
 method_request: PUT _synonyms/my-synonyms-set/test-1
 description: ''
 type: request
-value: "{\n  \"synonyms\": \"hello, hi, howdy\"\n}"
+value: "{
+
+  \  \"synonyms\": \"hello, hi, howdy\"
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.synonyms.put_synonym_rule(
+          set_id="my-synonyms-set",
+          rule_id="test-1",
+          synonyms="hello, hi, howdy",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.synonyms.putSynonymRule({
+        set_id: "my-synonyms-set",
+        rule_id: "test-1",
+        synonyms: "hello, hi, howdy",
+      });
+  - language: Ruby
+    code: |-
+      response = client.synonyms.put_synonym_rule(
+        set_id: "my-synonyms-set",
+        rule_id: "test-1",
+        body: {
+          "synonyms": "hello, hi, howdy"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->synonyms()->putSynonymRule([
+          "set_id" => "my-synonyms-set",
+          "rule_id" => "test-1",
+          "body" => [
+              "synonyms" => "hello, hi, howdy",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"synonyms":"hello,
+      hi, howdy"}'' "$ELASTICSEARCH_URL/_synonyms/my-synonyms-set/test-1"'
+  - language: Java
+    code: |
+      client.synonyms().putSynonymRule(p -> p
+          .ruleId("test-1")
+          .setId("my-synonyms-set")
+          .synonyms("hello, hi, howdy")
+      );

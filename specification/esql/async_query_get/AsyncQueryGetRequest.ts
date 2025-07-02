@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { EsqlFormat } from '@esql/query/QueryParameters'
 
 /**
  * Get async ES|QL query results.
@@ -46,6 +47,10 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     drop_null_columns?: boolean
+    /**
+     * A short version of the Accept header, for example `json` or `yaml`.
+     */
+    format?: EsqlFormat
     /**
      * The period for which the query and its results are stored in the cluster.
      * When this period expires, the query and its results are deleted, even if the query is still ongoing.

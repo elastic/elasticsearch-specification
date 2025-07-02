@@ -1,0 +1,53 @@
+method_request: PUT _inference/my-inference-endpoint/_update
+description: An example body for a `PUT _inference/my-inference-endpoint/_update` request.
+value: |-
+  {
+   "service_settings": {
+     "api_key": "<API_KEY>"
+   }
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.update(
+          inference_id="my-inference-endpoint",
+          inference_config={
+              "service_settings": {
+                  "api_key": "<API_KEY>"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.update({
+        inference_id: "my-inference-endpoint",
+        inference_config: {
+          service_settings: {
+            api_key: "<API_KEY>",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.update(
+        inference_id: "my-inference-endpoint",
+        body: {
+          "service_settings": {
+            "api_key": "<API_KEY>"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->update([
+          "inference_id" => "my-inference-endpoint",
+          "body" => [
+              "service_settings" => [
+                  "api_key" => "<API_KEY>",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"service_settings":{"api_key":"<API_KEY>"}}'' "$ELASTICSEARCH_URL/_inference/my-inference-endpoint/_update"'

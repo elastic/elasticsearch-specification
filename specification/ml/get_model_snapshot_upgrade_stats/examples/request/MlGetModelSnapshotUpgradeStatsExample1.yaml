@@ -1,0 +1,35 @@
+method_request: GET _ml/anomaly_detectors/low_request_rate/model_snapshots/_all/_upgrade/_stats
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.get_model_snapshot_upgrade_stats(
+          job_id="low_request_rate",
+          snapshot_id="_all",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.getModelSnapshotUpgradeStats({
+        job_id: "low_request_rate",
+        snapshot_id: "_all",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.get_model_snapshot_upgrade_stats(
+        job_id: "low_request_rate",
+        snapshot_id: "_all"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->getModelSnapshotUpgradeStats([
+          "job_id" => "low_request_rate",
+          "snapshot_id" => "_all",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_ml/anomaly_detectors/low_request_rate/model_snapshots/_all/_upgrade/_stats"'
+  - language: Java
+    code: |
+      client.ml().getModelSnapshotUpgradeStats(g -> g
+          .jobId("low_request_rate")
+          .snapshotId("_all")
+      );

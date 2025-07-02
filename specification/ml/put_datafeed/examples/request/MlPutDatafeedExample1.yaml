@@ -1,0 +1,104 @@
+method_request: PUT _ml/datafeeds/datafeed-test-job?pretty
+description: An example body for a `PUT _ml/datafeeds/datafeed-test-job?pretty` request.
+value: |-
+  {
+    "indices": [
+      "kibana_sample_data_logs"
+    ],
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "match_all": {}
+          }
+        ]
+      }
+    },
+    "job_id": "test-job"
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.put_datafeed(
+          datafeed_id="datafeed-test-job",
+          pretty=True,
+          indices=[
+              "kibana_sample_data_logs"
+          ],
+          query={
+              "bool": {
+                  "must": [
+                      {
+                          "match_all": {}
+                      }
+                  ]
+              }
+          },
+          job_id="test-job",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.putDatafeed({
+        datafeed_id: "datafeed-test-job",
+        pretty: "true",
+        indices: ["kibana_sample_data_logs"],
+        query: {
+          bool: {
+            must: [
+              {
+                match_all: {},
+              },
+            ],
+          },
+        },
+        job_id: "test-job",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.put_datafeed(
+        datafeed_id: "datafeed-test-job",
+        pretty: "true",
+        body: {
+          "indices": [
+            "kibana_sample_data_logs"
+          ],
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "match_all": {}
+                }
+              ]
+            }
+          },
+          "job_id": "test-job"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->putDatafeed([
+          "datafeed_id" => "datafeed-test-job",
+          "pretty" => "true",
+          "body" => [
+              "indices" => array(
+                  "kibana_sample_data_logs",
+              ),
+              "query" => [
+                  "bool" => [
+                      "must" => array(
+                          [
+                              "match_all" => new ArrayObject([]),
+                          ],
+                      ),
+                  ],
+              ],
+              "job_id" => "test-job",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"indices":["kibana_sample_data_logs"],"query":{"bool":{"must":[{"match_all":{}}]}},"job_id":"test-job"}''
+      "$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-test-job?pretty"'
+  - language: Java
+    code: "\n"

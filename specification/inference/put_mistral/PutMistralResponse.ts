@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { InferenceEndpointInfo } from '@inference/_types/Services'
+import { InferenceEndpointInfoMistral } from '@inference/_types/Services'
 
 export class Response {
-  body: InferenceEndpointInfo
+  body: InferenceEndpointInfoMistral
 }

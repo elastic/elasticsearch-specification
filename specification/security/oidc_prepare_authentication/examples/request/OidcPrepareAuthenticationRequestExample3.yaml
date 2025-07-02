@@ -1,11 +1,51 @@
 summary: Prepare by realm
-# method_request: POST /_security/oidc/prepare
+method_request: POST /_security/oidc/prepare
 description: >
-  Run `POST /_security/oidc/prepare` to generate an authentication request for a third party initiated single sign on.
-  Specify the issuer that should be used for matching the appropriate OpenID Connect Authentication realm.
+  Run `POST /_security/oidc/prepare` to generate an authentication request for a third party initiated single sign on. Specify the
+  issuer that should be used for matching the appropriate OpenID Connect Authentication realm.
 # type: request
 value: |-
   {
     "iss" : "http://127.0.0.1:8080",
     "login_hint": "this_is_an_opaque_string"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.oidc_prepare_authentication(
+          iss="http://127.0.0.1:8080",
+          login_hint="this_is_an_opaque_string",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.oidcPrepareAuthentication({
+        iss: "http://127.0.0.1:8080",
+        login_hint: "this_is_an_opaque_string",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.oidc_prepare_authentication(
+        body: {
+          "iss": "http://127.0.0.1:8080",
+          "login_hint": "this_is_an_opaque_string"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->oidcPrepareAuthentication([
+          "body" => [
+              "iss" => "http://127.0.0.1:8080",
+              "login_hint" => "this_is_an_opaque_string",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"iss":"http://127.0.0.1:8080","login_hint":"this_is_an_opaque_string"}''
+      "$ELASTICSEARCH_URL/_security/oidc/prepare"'
+  - language: Java
+    code: |
+      client.security().oidcPrepareAuthentication(o -> o
+          .iss("http://127.0.0.1:8080")
+          .loginHint("this_is_an_opaque_string")
+      );

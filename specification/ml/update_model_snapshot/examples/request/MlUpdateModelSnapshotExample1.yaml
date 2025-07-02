@@ -1,0 +1,58 @@
+method_request: POST
+description: An example body for a `POST` request.
+value: |-
+  _ml/anomaly_detectors/it_ops_new_logs/model_snapshots/1491852978/_update
+  {
+    "description": "Snapshot 1",
+    "retain": true
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.update_model_snapshot(
+          job_id="it_ops_new_logs",
+          snapshot_id="1491852978",
+          description="Snapshot 1",
+          retain=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.updateModelSnapshot({
+        job_id: "it_ops_new_logs",
+        snapshot_id: 1491852978,
+        description: "Snapshot 1",
+        retain: true,
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.update_model_snapshot(
+        job_id: "it_ops_new_logs",
+        snapshot_id: "1491852978",
+        body: {
+          "description": "Snapshot 1",
+          "retain": true
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->updateModelSnapshot([
+          "job_id" => "it_ops_new_logs",
+          "snapshot_id" => "1491852978",
+          "body" => [
+              "description" => "Snapshot 1",
+              "retain" => true,
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"description":"Snapshot 1","retain":true}''
+      "$ELASTICSEARCH_URL/_ml/anomaly_detectors/it_ops_new_logs/model_snapshots/1491852978/_update"'
+  - language: Java
+    code: |
+      client.ml().updateModelSnapshot(u -> u
+          .description("Snapshot 1")
+          .jobId("it_ops_new_logs")
+          .retain(true)
+          .snapshotId("1491852978")
+      );

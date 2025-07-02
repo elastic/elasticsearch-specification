@@ -1,5 +1,5 @@
 summary: API keys by ID and owner
-# method_request: DELETE /_security/api_key
+method_request: DELETE /_security/api_key
 description: Run `DELETE /_security/api_key` to invalidate the API keys identified by ID if they are owned by the currently authenticated user.
 # type: request
 value: |-
@@ -7,3 +7,48 @@ value: |-
     "ids" : ["VuaCfGcBCdbkQm-e5aOx"],
     "owner" : "true"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.invalidate_api_key(
+          ids=[
+              "VuaCfGcBCdbkQm-e5aOx"
+          ],
+          owner=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.invalidateApiKey({
+        ids: ["VuaCfGcBCdbkQm-e5aOx"],
+        owner: "true",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.invalidate_api_key(
+        body: {
+          "ids": [
+            "VuaCfGcBCdbkQm-e5aOx"
+          ],
+          "owner": "true"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->invalidateApiKey([
+          "body" => [
+              "ids" => array(
+                  "VuaCfGcBCdbkQm-e5aOx",
+              ),
+              "owner" => "true",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"ids":["VuaCfGcBCdbkQm-e5aOx"],"owner":"true"}'' "$ELASTICSEARCH_URL/_security/api_key"'
+  - language: Java
+    code: |
+      client.security().invalidateApiKey(i -> i
+          .ids("VuaCfGcBCdbkQm-e5aOx")
+          .owner(true)
+      );

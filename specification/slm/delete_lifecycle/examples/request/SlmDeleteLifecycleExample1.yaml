@@ -1,0 +1,29 @@
+method_request: DELETE /_slm/policy/daily-snapshots
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.slm.delete_lifecycle(
+          policy_id="daily-snapshots",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.slm.deleteLifecycle({
+        policy_id: "daily-snapshots",
+      });
+  - language: Ruby
+    code: |-
+      response = client.slm.delete_lifecycle(
+        policy_id: "daily-snapshots"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->slm()->deleteLifecycle([
+          "policy_id" => "daily-snapshots",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_slm/policy/daily-snapshots"'
+  - language: Java
+    code: |
+      client.slm().deleteLifecycle(d -> d
+          .policyId("daily-snapshots")
+      );

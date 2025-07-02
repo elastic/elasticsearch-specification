@@ -78,8 +78,11 @@ async function run () {
     process.exit(1)
   }
 
-  if (!apis.includes(options.api)) {
-    spinner.fail(`The api '${options.api}' does not exists, did you mean '${closest(options.api, apis)}'?`)
+  const apiList = options.api.split(',').map(api => api.trim())
+  const invalidApis = apiList.filter(api => !apis.includes(api))
+  if (invalidApis.length > 0) {
+    const suggestions = invalidApis.map(api => `'${api}' (did you mean '${closest(api, apis)}'?)`).join(', ')
+    spinner.fail(`The following APIs do not exist: ${suggestions}`)
     process.exit(1)
   }
   // if the empty string it's because the make target wasn't configured with a type argument

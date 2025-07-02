@@ -540,6 +540,8 @@ export class Storage {
    * of memory maps so you need disable the ability to use memory-mapping.
    */
   allow_mmap?: boolean
+  /** How often store statistics are refreshed */
+  stats_refresh_interval?: Duration
 }
 
 /**

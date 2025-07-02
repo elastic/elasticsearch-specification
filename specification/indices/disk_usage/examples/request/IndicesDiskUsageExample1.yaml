@@ -1,0 +1,35 @@
+method_request: POST /my-index-000001/_disk_usage?run_expensive_tasks=true
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.disk_usage(
+          index="my-index-000001",
+          run_expensive_tasks=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.diskUsage({
+        index: "my-index-000001",
+        run_expensive_tasks: "true",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.disk_usage(
+        index: "my-index-000001",
+        run_expensive_tasks: "true"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->diskUsage([
+          "index" => "my-index-000001",
+          "run_expensive_tasks" => "true",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/my-index-000001/_disk_usage?run_expensive_tasks=true"'
+  - language: Java
+    code: |
+      client.indices().diskUsage(d -> d
+          .index("my-index-000001")
+          .runExpensiveTasks(true)
+      );

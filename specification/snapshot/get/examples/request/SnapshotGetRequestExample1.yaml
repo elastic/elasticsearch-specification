@@ -1,0 +1,45 @@
+method_request: GET /_snapshot/my_repository/snapshot_*?sort=start_time&from_sort_value=1577833200000
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.snapshot.get(
+          repository="my_repository",
+          snapshot="snapshot_*",
+          sort="start_time",
+          from_sort_value="1577833200000",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.snapshot.get({
+        repository: "my_repository",
+        snapshot: "snapshot_*",
+        sort: "start_time",
+        from_sort_value: 1577833200000,
+      });
+  - language: Ruby
+    code: |-
+      response = client.snapshot.get(
+        repository: "my_repository",
+        snapshot: "snapshot_*",
+        sort: "start_time",
+        from_sort_value: "1577833200000"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->snapshot()->get([
+          "repository" => "my_repository",
+          "snapshot" => "snapshot_*",
+          "sort" => "start_time",
+          "from_sort_value" => "1577833200000",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_snapshot/my_repository/snapshot_*?sort=start_time&from_sort_value=1577833200000"'
+  - language: Java
+    code: |
+      client.snapshot().get(g -> g
+          .fromSortValue("1577833200000")
+          .repository("my_repository")
+          .snapshot("snapshot_*")
+          .sort(SnapshotSort.StartTime)
+      );

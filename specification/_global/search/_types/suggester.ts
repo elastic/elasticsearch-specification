@@ -32,7 +32,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
- * @variants external
+ * @variants typed_keys_quirk
  */
 export type Suggest<TDocument> =
   | CompletionSuggest<TDocument>

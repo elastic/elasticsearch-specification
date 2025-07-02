@@ -1,13 +1,118 @@
 # summary: connector/apis/update-connector-last-sync-api.asciidoc:115
-# method_request: PUT _connector/my-connector/_last_sync
+method_request: PUT _connector/my-connector/_last_sync
 # description: ''
 # type: request
-value:
-  "{\n    \"last_access_control_sync_error\": \"Houston, we have a problem!\"\
-  ,\n    \"last_access_control_sync_scheduled_at\": \"2023-11-09T15:13:08.231Z\",\n\
-  \    \"last_access_control_sync_status\": \"pending\",\n    \"last_deleted_document_count\"\
-  : 42,\n    \"last_incremental_sync_scheduled_at\": \"2023-11-09T15:13:08.231Z\"\
-  ,\n    \"last_indexed_document_count\": 42,\n    \"last_sync_error\": \"Houston,\
-  \ we have a problem!\",\n    \"last_sync_scheduled_at\": \"2024-11-09T15:13:08.231Z\"\
-  ,\n    \"last_sync_status\": \"completed\",\n    \"last_synced\": \"2024-11-09T15:13:08.231Z\"\
-  \n}"
+value: "{
+
+  \    \"last_access_control_sync_error\": \"Houston, we have a problem!\",
+
+  \    \"last_access_control_sync_scheduled_at\": \"2023-11-09T15:13:08.231Z\",
+
+  \    \"last_access_control_sync_status\": \"pending\",
+
+  \    \"last_deleted_document_count\": 42,
+
+  \    \"last_incremental_sync_scheduled_at\": \"2023-11-09T15:13:08.231Z\",
+
+  \    \"last_indexed_document_count\": 42,
+
+  \    \"last_sync_error\": \"Houston, we have a problem!\",
+
+  \    \"last_sync_scheduled_at\": \"2024-11-09T15:13:08.231Z\",
+
+  \    \"last_sync_status\": \"completed\",
+
+  \    \"last_synced\": \"2024-11-09T15:13:08.231Z\"
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.perform_request(
+          "PUT",
+          "/_connector/my-connector/_last_sync",
+          headers={"Content-Type": "application/json"},
+          body={
+              "last_access_control_sync_error": "Houston, we have a problem!",
+              "last_access_control_sync_scheduled_at": "2023-11-09T15:13:08.231Z",
+              "last_access_control_sync_status": "pending",
+              "last_deleted_document_count": 42,
+              "last_incremental_sync_scheduled_at": "2023-11-09T15:13:08.231Z",
+              "last_indexed_document_count": 42,
+              "last_sync_error": "Houston, we have a problem!",
+              "last_sync_scheduled_at": "2024-11-09T15:13:08.231Z",
+              "last_sync_status": "completed",
+              "last_synced": "2024-11-09T15:13:08.231Z"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.transport.request({
+        method: "PUT",
+        path: "/_connector/my-connector/_last_sync",
+        body: {
+          last_access_control_sync_error: "Houston, we have a problem!",
+          last_access_control_sync_scheduled_at: "2023-11-09T15:13:08.231Z",
+          last_access_control_sync_status: "pending",
+          last_deleted_document_count: 42,
+          last_incremental_sync_scheduled_at: "2023-11-09T15:13:08.231Z",
+          last_indexed_document_count: 42,
+          last_sync_error: "Houston, we have a problem!",
+          last_sync_scheduled_at: "2024-11-09T15:13:08.231Z",
+          last_sync_status: "completed",
+          last_synced: "2024-11-09T15:13:08.231Z",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.perform_request(
+        "PUT",
+        "/_connector/my-connector/_last_sync",
+        {},
+        {
+          "last_access_control_sync_error": "Houston, we have a problem!",
+          "last_access_control_sync_scheduled_at": "2023-11-09T15:13:08.231Z",
+          "last_access_control_sync_status": "pending",
+          "last_deleted_document_count": 42,
+          "last_incremental_sync_scheduled_at": "2023-11-09T15:13:08.231Z",
+          "last_indexed_document_count": 42,
+          "last_sync_error": "Houston, we have a problem!",
+          "last_sync_scheduled_at": "2024-11-09T15:13:08.231Z",
+          "last_sync_status": "completed",
+          "last_synced": "2024-11-09T15:13:08.231Z"
+        },
+        { "Content-Type": "application/json" },
+      )
+  - language: PHP
+    code: |-
+      $requestFactory = Psr17FactoryDiscovery::findRequestFactory();
+      $streamFactory = Psr17FactoryDiscovery::findStreamFactory();
+      $request = $requestFactory->createRequest(
+          "PUT",
+          "/_connector/my-connector/_last_sync",
+      );
+      $request = $request->withHeader("Content-Type", "application/json");
+      $request = $request->withBody($streamFactory->createStream(
+          json_encode([
+              "last_access_control_sync_error" => "Houston, we have a problem!",
+              "last_access_control_sync_scheduled_at" => "2023-11-09T15:13:08.231Z",
+              "last_access_control_sync_status" => "pending",
+              "last_deleted_document_count" => 42,
+              "last_incremental_sync_scheduled_at" => "2023-11-09T15:13:08.231Z",
+              "last_indexed_document_count" => 42,
+              "last_sync_error" => "Houston, we have a problem!",
+              "last_sync_scheduled_at" => "2024-11-09T15:13:08.231Z",
+              "last_sync_status" => "completed",
+              "last_synced" => "2024-11-09T15:13:08.231Z",
+          ]),
+      ));
+      $resp = $client->sendRequest($request);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"last_access_control_sync_error\":\"Houston, we have a
+      problem!\",\"last_access_control_sync_scheduled_at\":\"2023-11-09T15:13:08.231Z\",\"last_access_control_sync_status\":\"pendi\
+      ng\",\"last_deleted_document_count\":42,\"last_incremental_sync_scheduled_at\":\"2023-11-09T15:13:08.231Z\",\"last_indexed_do\
+      cument_count\":42,\"last_sync_error\":\"Houston, we have a
+      problem!\",\"last_sync_scheduled_at\":\"2024-11-09T15:13:08.231Z\",\"last_sync_status\":\"completed\",\"last_synced\":\"2024-\
+      11-09T15:13:08.231Z\"}' \"$ELASTICSEARCH_URL/_connector/my-connector/_last_sync\""

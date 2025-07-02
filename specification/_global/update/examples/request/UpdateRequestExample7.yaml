@@ -1,10 +1,97 @@
 summary: Change the operation with a script
-# method_request: POST test/_update/1
+method_request: POST test/_update/1
 description: >
-  Run `POST test/_update/1` to change the operation that runs from within the script.
-  For example, this request deletes the document if the `tags` field contains `green`, otherwise it does nothing (`noop`).
+  Run `POST test/_update/1` to change the operation that runs from within the script. For example, this request deletes the document
+  if the `tags` field contains `green`, otherwise it does nothing (`noop`).
 # type: request
-value:
-  "{\n  \"script\": {\n    \"source\": \"if (ctx._source.tags.contains(params.tag))\
-  \ { ctx.op = 'delete' } else { ctx.op = 'noop' }\",\n    \"lang\": \"painless\"\
-  ,\n    \"params\": {\n      \"tag\": \"green\"\n    }\n  }\n}"
+value: "{
+
+  \  \"script\": {
+
+  \    \"source\": \"if (ctx._source.tags.contains(params.tag)) { ctx.op = 'delete' } else { ctx.op = 'noop' }\",
+
+  \    \"lang\": \"painless\",
+
+  \    \"params\": {
+
+  \      \"tag\": \"green\"
+
+  \    }
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.update(
+          index="test",
+          id="1",
+          script={
+              "source": "if (ctx._source.tags.contains(params.tag)) { ctx.op = 'delete' } else { ctx.op = 'noop' }",
+              "lang": "painless",
+              "params": {
+                  "tag": "green"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.update({
+        index: "test",
+        id: 1,
+        script: {
+          source:
+            "if (ctx._source.tags.contains(params.tag)) { ctx.op = 'delete' } else { ctx.op = 'noop' }",
+          lang: "painless",
+          params: {
+            tag: "green",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.update(
+        index: "test",
+        id: "1",
+        body: {
+          "script": {
+            "source": "if (ctx._source.tags.contains(params.tag)) { ctx.op = 'delete' } else { ctx.op = 'noop' }",
+            "lang": "painless",
+            "params": {
+              "tag": "green"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->update([
+          "index" => "test",
+          "id" => "1",
+          "body" => [
+              "script" => [
+                  "source" => "if (ctx._source.tags.contains(params.tag)) { ctx.op = 'delete' } else { ctx.op = 'noop' }",
+                  "lang" => "painless",
+                  "params" => [
+                      "tag" => "green",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"script":{"source":"if (ctx._source.tags.contains(params.tag)) { ctx.op = ''"''"''delete''"''"'' } else { ctx.op =
+      ''"''"''noop''"''"'' }","lang":"painless","params":{"tag":"green"}}}'' "$ELASTICSEARCH_URL/test/_update/1"'
+  - language: Java
+    code: |
+      client.update(u -> u
+          .id("1")
+          .index("test")
+          .script(s -> s
+              .source("if (ctx._source.tags.contains(params.tag)) { ctx.op = 'delete' } else { ctx.op = 'noop' }")
+              .params("tag", JsonData.fromJson("\"green\""))
+              .lang("painless")
+          )
+      ,Void.class);

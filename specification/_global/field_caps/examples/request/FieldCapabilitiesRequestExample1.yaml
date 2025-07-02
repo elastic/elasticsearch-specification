@@ -1,8 +1,8 @@
 # summary:
-# method_request: "POST my-index-*/_field_caps?fields=rating"
+method_request: 'POST my-index-*/_field_caps?fields=rating'
 description: >
-  Run `POST my-index-*/_field_caps?fields=rating` to get field capabilities and filter indices with a query.
-  Indices that rewrite the provided filter to `match_none` on every shard will be filtered from the response.
+  Run `POST my-index-*/_field_caps?fields=rating` to get field capabilities and filter indices with a query. Indices that rewrite
+  the provided filter to `match_none` on every shard will be filtered from the response.
 # type: "request"
 value: |-
   {
@@ -14,3 +14,65 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.field_caps(
+          index="my-index-*",
+          fields="rating",
+          index_filter={
+              "range": {
+                  "@timestamp": {
+                      "gte": "2018"
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.fieldCaps({
+        index: "my-index-*",
+        fields: "rating",
+        index_filter: {
+          range: {
+            "@timestamp": {
+              gte: "2018",
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.field_caps(
+        index: "my-index-*",
+        fields: "rating",
+        body: {
+          "index_filter": {
+            "range": {
+              "@timestamp": {
+                "gte": "2018"
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->fieldCaps([
+          "index" => "my-index-*",
+          "fields" => "rating",
+          "body" => [
+              "index_filter" => [
+                  "range" => [
+                      "@timestamp" => [
+                          "gte" => "2018",
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"index_filter":{"range":{"@timestamp":{"gte":"2018"}}}}''
+      "$ELASTICSEARCH_URL/my-index-*/_field_caps?fields=rating"'

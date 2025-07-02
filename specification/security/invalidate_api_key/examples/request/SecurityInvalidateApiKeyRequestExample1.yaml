@@ -1,8 +1,48 @@
 summary: API keys by ID
-# method_request: DELETE /_security/api_key
+method_request: DELETE /_security/api_key
 description: Run `DELETE /_security/api_key` to invalidate the API keys identified by ID.
 # type: request
 value: |-
   {
     "ids" : [ "VuaCfGcBCdbkQm-e5aOx" ]
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.invalidate_api_key(
+          ids=[
+              "VuaCfGcBCdbkQm-e5aOx"
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.invalidateApiKey({
+        ids: ["VuaCfGcBCdbkQm-e5aOx"],
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.invalidate_api_key(
+        body: {
+          "ids": [
+            "VuaCfGcBCdbkQm-e5aOx"
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->invalidateApiKey([
+          "body" => [
+              "ids" => array(
+                  "VuaCfGcBCdbkQm-e5aOx",
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"ids":["VuaCfGcBCdbkQm-e5aOx"]}'' "$ELASTICSEARCH_URL/_security/api_key"'
+  - language: Java
+    code: |
+      client.security().invalidateApiKey(i -> i
+          .ids("VuaCfGcBCdbkQm-e5aOx")
+      );

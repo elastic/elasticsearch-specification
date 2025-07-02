@@ -1,9 +1,8 @@
 summary: Reindex multiple sources
-# method_request: POST _reindex
+method_request: POST _reindex
 description: >
-  Run `POST _reindex` to reindex from multiple sources.
-  The `index` attribute in source can be a list, which enables you to copy from lots of sources in one request.
-  This example copies documents from the `my-index-000001` and `my-index-000002` indices.
+  Run `POST _reindex` to reindex from multiple sources. The `index` attribute in source can be a list, which enables you to copy
+  from lots of sources in one request. This example copies documents from the `my-index-000001` and `my-index-000002` indices.
 # type: request
 value: |-
   {
@@ -14,3 +13,72 @@ value: |-
       "index": "my-new-index-000002"
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.reindex(
+          source={
+              "index": [
+                  "my-index-000001",
+                  "my-index-000002"
+              ]
+          },
+          dest={
+              "index": "my-new-index-000002"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.reindex({
+        source: {
+          index: ["my-index-000001", "my-index-000002"],
+        },
+        dest: {
+          index: "my-new-index-000002",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.reindex(
+        body: {
+          "source": {
+            "index": [
+              "my-index-000001",
+              "my-index-000002"
+            ]
+          },
+          "dest": {
+            "index": "my-new-index-000002"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->reindex([
+          "body" => [
+              "source" => [
+                  "index" => array(
+                      "my-index-000001",
+                      "my-index-000002",
+                  ),
+              ],
+              "dest" => [
+                  "index" => "my-new-index-000002",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"source":{"index":["my-index-000001","my-index-000002"]},"dest":{"index":"my-new-index-000002"}}''
+      "$ELASTICSEARCH_URL/_reindex"'
+  - language: Java
+    code: |
+      client.reindex(r -> r
+          .dest(d -> d
+              .index("my-new-index-000002")
+          )
+          .source(s -> s
+              .index(List.of("my-index-000001","my-index-000002"))
+          )
+      );

@@ -1,0 +1,29 @@
+method_request: DELETE _ml/filters/safe_domains
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.delete_filter(
+          filter_id="safe_domains",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.deleteFilter({
+        filter_id: "safe_domains",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.delete_filter(
+        filter_id: "safe_domains"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->deleteFilter([
+          "filter_id" => "safe_domains",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/filters/safe_domains"'
+  - language: Java
+    code: |
+      client.ml().deleteFilter(d -> d
+          .filterId("safe_domains")
+      );

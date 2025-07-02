@@ -1,11 +1,117 @@
 summary: Reindex modified documents
-# method_request: POST _reindex
+method_request: POST _reindex
 description: >
-  Run `POST _reindex` to modify documents during reindexing.
-  This example bumps the version of the source document.
+  Run `POST _reindex` to modify documents during reindexing. This example bumps the version of the source document.
 # type: request
-value:
-  "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\":\
-  \ {\n    \"index\": \"my-new-index-000001\",\n    \"version_type\": \"external\"\
-  \n  },\n  \"script\": {\n    \"source\": \"if (ctx._source.foo == 'bar') {ctx._version++;\
-  \ ctx._source.remove('foo')}\",\n    \"lang\": \"painless\"\n  }\n}"
+value: "{
+
+  \  \"source\": {
+
+  \    \"index\": \"my-index-000001\"
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"my-new-index-000001\",
+
+  \    \"version_type\": \"external\"
+
+  \  },
+
+  \  \"script\": {
+
+  \    \"source\": \"if (ctx._source.foo == 'bar') {ctx._version++; ctx._source.remove('foo')}\",
+
+  \    \"lang\": \"painless\"
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.reindex(
+          source={
+              "index": "my-index-000001"
+          },
+          dest={
+              "index": "my-new-index-000001",
+              "version_type": "external"
+          },
+          script={
+              "source": "if (ctx._source.foo == 'bar') {ctx._version++; ctx._source.remove('foo')}",
+              "lang": "painless"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.reindex({
+        source: {
+          index: "my-index-000001",
+        },
+        dest: {
+          index: "my-new-index-000001",
+          version_type: "external",
+        },
+        script: {
+          source:
+            "if (ctx._source.foo == 'bar') {ctx._version++; ctx._source.remove('foo')}",
+          lang: "painless",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.reindex(
+        body: {
+          "source": {
+            "index": "my-index-000001"
+          },
+          "dest": {
+            "index": "my-new-index-000001",
+            "version_type": "external"
+          },
+          "script": {
+            "source": "if (ctx._source.foo == 'bar') {ctx._version++; ctx._source.remove('foo')}",
+            "lang": "painless"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->reindex([
+          "body" => [
+              "source" => [
+                  "index" => "my-index-000001",
+              ],
+              "dest" => [
+                  "index" => "my-new-index-000001",
+                  "version_type" => "external",
+              ],
+              "script" => [
+                  "source" => "if (ctx._source.foo == 'bar') {ctx._version++; ctx._source.remove('foo')}",
+                  "lang" => "painless",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"source\":{\"index\":\"my-index-000001\"},\"dest\":{\"index\":\"my-new-index-000001\",\"version_type\":\"external\"},\"scr\
+      ipt\":{\"source\":\"if (ctx._source.foo == '\"'\"'bar'\"'\"') {ctx._version++;
+      ctx._source.remove('\"'\"'foo'\"'\"')}\",\"lang\":\"painless\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+  - language: Java
+    code: |
+      client.reindex(r -> r
+          .dest(d -> d
+              .index("my-new-index-000001")
+              .versionType(VersionType.External)
+          )
+          .script(s -> s
+              .source("if (ctx._source.foo == 'bar') {ctx._version++; ctx._source.remove('foo')}")
+              .lang("painless")
+          )
+          .source(s -> s
+              .index("my-index-000001")
+          )
+      );

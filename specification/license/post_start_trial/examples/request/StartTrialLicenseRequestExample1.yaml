@@ -1,0 +1,29 @@
+method_request: POST /_license/start_trial?acknowledge=true
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.license.post_start_trial(
+          acknowledge=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.license.postStartTrial({
+        acknowledge: "true",
+      });
+  - language: Ruby
+    code: |-
+      response = client.license.post_start_trial(
+        acknowledge: "true"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->license()->postStartTrial([
+          "acknowledge" => "true",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_license/start_trial?acknowledge=true"'
+  - language: Java
+    code: |
+      client.license().postStartTrial(p -> p
+          .acknowledge(true)
+      );

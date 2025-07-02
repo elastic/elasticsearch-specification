@@ -1,0 +1,15 @@
+method_request: GET _synonyms
+alternatives:
+  - language: Python
+    code: resp = client.synonyms.get_synonyms_sets()
+  - language: JavaScript
+    code: const response = await client.synonyms.getSynonymsSets();
+  - language: Ruby
+    code: response = client.synonyms.get_synonyms_sets
+  - language: PHP
+    code: $resp = $client->synonyms()->getSynonymsSets();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_synonyms"'
+  - language: Java
+    code: |
+      client.synonyms().getSynonymsSets(g -> g);
