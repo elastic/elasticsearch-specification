@@ -6022,9 +6022,15 @@ export interface MappingSourceField {
 
 export type MappingSourceFieldMode = 'disabled' | 'stored' | 'synthetic'
 
+export interface MappingSparseVectorIndexOptions {
+  prune?: boolean
+  pruning_config?: QueryDslTokenPruningConfig
+}
+
 export interface MappingSparseVectorProperty extends MappingPropertyBase {
   store?: boolean
   type: 'sparse_vector'
+  index_options?: MappingSparseVectorIndexOptions
 }
 
 export type MappingSubobjects = boolean | 'true' | 'false' | 'auto'
