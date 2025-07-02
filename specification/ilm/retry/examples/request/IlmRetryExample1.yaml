@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index-000001/_ilm/retry"'
+  - language: Java
+    code: |
+      client.ilm().retry(r -> r
+          .index("my-index-000001")
+      );

@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_data_stream/_promote/my-data-stream"'
+  - language: Java
+    code: |
+      client.indices().promoteDataStream(p -> p
+          .name("my-data-stream")
+      );

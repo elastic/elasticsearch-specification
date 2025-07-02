@@ -29,3 +29,8 @@ alternatives:
       $resp = $client->sendRequest($request);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_migration/reindex/my-data-stream/_status"'
+  - language: Java
+    code: |
+      client.indices().getMigrateReindexStatus(g -> g
+          .index("my-data-stream")
+      );

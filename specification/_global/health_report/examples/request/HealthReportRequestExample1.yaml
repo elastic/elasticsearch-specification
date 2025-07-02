@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->healthReport();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_health_report"'
+  - language: Java
+    code: |
+      client.healthReport(h -> h);

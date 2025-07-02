@@ -10,3 +10,6 @@ alternatives:
     code: $resp = $client->cluster()->pendingTasks();
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_cluster/pending_tasks"'
+  - language: Java
+    code: |
+      client.cluster().pendingTasks(p -> p);

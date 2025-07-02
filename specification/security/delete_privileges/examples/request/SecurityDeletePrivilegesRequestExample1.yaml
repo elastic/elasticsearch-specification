@@ -26,3 +26,9 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/privilege/myapp/read"'
+  - language: Java
+    code: |
+      client.security().deletePrivileges(d -> d
+          .application("myapp")
+          .name("read")
+      );

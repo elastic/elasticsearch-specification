@@ -23,3 +23,8 @@ alternatives:
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_security/profile/u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0"'
+  - language: Java
+    code: |
+      client.security().getUserProfile(g -> g
+          .uid("u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0")
+      );

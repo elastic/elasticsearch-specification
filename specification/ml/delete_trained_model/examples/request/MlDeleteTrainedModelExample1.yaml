@@ -23,3 +23,8 @@ alternatives:
   - language: curl
     code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_ml/trained_models/regression-job-one-1574775307356"'
+  - language: Java
+    code: |
+      client.ml().deleteTrainedModel(d -> d
+          .modelId("regression-job-one-1574775307356")
+      );

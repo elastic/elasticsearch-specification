@@ -22,3 +22,8 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown"'
+  - language: Java
+    code: |
+      client.shutdown().getNode(g -> g
+          .nodeId("USpTGYaBSIKbgSUJR2Z9lg")
+      );

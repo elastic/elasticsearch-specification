@@ -26,3 +26,9 @@ alternatives:
       ]);
   - language: curl
     code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/user/jacknich?with_profile_uid=true"'
+  - language: Java
+    code: |
+      client.security().getUser(g -> g
+          .username("jacknich")
+          .withProfileUid(true)
+      );

@@ -31,3 +31,12 @@ alternatives:
   - language: curl
     code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_rollup/job/sensor/_stop?wait_for_completion=true&timeout=10s"'
+  - language: Java
+    code: |
+      client.rollup().stopJob(s -> s
+          .id("sensor")
+          .timeout(t -> t
+              .offset(10)
+          )
+          .waitForCompletion(true)
+      );
