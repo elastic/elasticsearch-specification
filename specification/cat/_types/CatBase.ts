@@ -1654,23 +1654,23 @@ export enum CatShardColumn {
    * Indicates the reason for the last change to the state of this unassigned shard. This does not explain why the shard is currently unassigned.
    * To understand why a shard is not assigned, use the [Cluster allocation explain](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) API. Returned values include:
    *
-   * `ALLOCATION_FAILED`: Unassigned as a result of a failed allocation of the shard.
-   * `CLUSTER_RECOVERED`: Unassigned as a result of a full cluster recovery.
-   * `DANGLING_INDEX_IMPORTED`: Unassigned as a result of importing a dangling index.
-   * `EXISTING_INDEX_RESTORED`: Unassigned as a result of restoring into a closed index.
-   * `FORCED_EMPTY_PRIMARY`: The shard’s allocation was last modified by forcing an empty primary using the Cluster reroute API.
-   * `INDEX_CLOSED`: Unassigned because the index was closed.
-   * `INDEX_CREATED`: Unassigned as a result of an API creation of an index.
-   * `INDEX_REOPENED`: Unassigned as a result of opening a closed index.
-   * `MANUAL_ALLOCATION`: The shard’s allocation was last modified by the Cluster reroute API.
-   * `NEW_INDEX_RESTORED`: Unassigned as a result of restoring into a new index.
-   * `NODE_LEFT`: Unassigned as a result of the node hosting it leaving the cluster.
-   * `NODE_RESTARTING`: Similar to NODE_LEFT, except that the node was registered as restarting using the Node shutdown API.
-   * `PRIMARY_FAILED`: The shard was initializing as a replica, but the primary shard failed before the initialization completed.
-   * `REALLOCATED_REPLICA`: A better replica location is identified and causes the existing replica allocation to be cancelled.
-   * `REINITIALIZED`: When a shard moves from started back to initializing.
-   * `REPLICA_ADDED`: Unassigned as a result of explicit addition of a replica.
-   * `REROUTE_CANCELLED`: Unassigned as a result of explicit cancel reroute command.
+   * * `ALLOCATION_FAILED`: Unassigned as a result of a failed allocation of the shard.
+   * * `CLUSTER_RECOVERED`: Unassigned as a result of a full cluster recovery.
+   * * `DANGLING_INDEX_IMPORTED`: Unassigned as a result of importing a dangling index.
+   * * `EXISTING_INDEX_RESTORED`: Unassigned as a result of restoring into a closed index.
+   * * `FORCED_EMPTY_PRIMARY`: The shard’s allocation was last modified by forcing an empty primary using the Cluster reroute API.
+   * * `INDEX_CLOSED`: Unassigned because the index was closed.
+   * * `INDEX_CREATED`: Unassigned as a result of an API creation of an index.
+   * * `INDEX_REOPENED`: Unassigned as a result of opening a closed index.
+   * * `MANUAL_ALLOCATION`: The shard’s allocation was last modified by the Cluster reroute API.
+   * * `NEW_INDEX_RESTORED`: Unassigned as a result of restoring into a new index.
+   * * `NODE_LEFT`: Unassigned as a result of the node hosting it leaving the cluster.
+   * * `NODE_RESTARTING`: Similar to NODE_LEFT, except that the node was registered as restarting using the Node shutdown API.
+   * * `PRIMARY_FAILED`: The shard was initializing as a replica, but the primary shard failed before the initialization completed.
+   * * `REALLOCATED_REPLICA`: A better replica location is identified and causes the existing replica allocation to be cancelled.
+   * * `REINITIALIZED`: When a shard moves from started back to initializing.
+   * * `REPLICA_ADDED`: Unassigned as a result of explicit addition of a replica.
+   * * `REROUTE_CANCELLED`: Unassigned as a result of explicit cancel reroute command.
    * @aliases ur
    */
   'unassigned.reason'
