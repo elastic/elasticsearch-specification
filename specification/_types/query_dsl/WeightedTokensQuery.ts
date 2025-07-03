@@ -19,8 +19,8 @@
 
 import { float } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { TokenPruningConfig } from '../TokenPruningConfig'
 import { QueryBase } from './abstractions'
-import { TokenPruningConfig } from './TokenPruningConfig'
 
 /**
  * @ext_doc_id query-dsl-weighted-tokens-query
