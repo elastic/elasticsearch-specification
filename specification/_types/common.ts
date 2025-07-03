@@ -215,6 +215,7 @@ export type ExpandWildcards = ExpandWildcard | ExpandWildcard[]
 
 /**
  * Health status of the cluster, based on the state of its primary and replica shards.
+ * @non_exhaustive
  */
 export enum HealthStatus {
   // ES will send this enum as upper or lowercase depending on the APIs
@@ -232,7 +233,9 @@ export enum HealthStatus {
    * One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.
    * @aliases RED
    */
-  red
+  red,
+  unknown,
+  unavailable
 }
 
 export enum HttpMethod {
