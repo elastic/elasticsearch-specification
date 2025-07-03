@@ -19,7 +19,7 @@
 
 import { Bytes, Indices, Names } from '@_types/common'
 import { Duration, TimeUnit } from '@_types/Time'
-import { CatShardColumns, CatRequestBase } from '@cat/_types/CatBase'
+import { CatRequestBase, CatShardColumns } from '@cat/_types/CatBase'
 
 /**
  * Get shard information.
