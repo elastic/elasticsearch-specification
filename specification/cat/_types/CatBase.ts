@@ -1677,3 +1677,106 @@ export enum CatShardColumn {
 }
 export type CatShardColumns = CatShardColumn | CatShardColumn[]
 
+/** @non_exhaustive */
+export enum CatThreadPoolColumn {
+  /**
+   * Number of active threads in the current thread pool.
+   * @aliases a
+   */
+  active,
+  /**
+   * Number of tasks completed by the thread pool executor.
+   * @aliases c
+   */
+  completed,
+  /**
+   * Configured core number of active threads allowed in the current thread pool.
+   * @aliases cr
+   */
+  core,
+  /**
+   * Ephemeral node ID.
+   * @aliases eid
+   */
+  ephemeral_id,
+  /**
+   * Hostname for the current node.
+   * @aliases h
+   */
+  host,
+    /**
+   * IP address for the current node.
+   * @aliases i
+   */
+  ip,
+  /**
+   * Configured keep alive time for threads.
+   * @aliases k
+   */
+  keep_alive,
+  /**
+   * Highest number of active threads in the current thread pool.
+   * @aliases l
+   */
+  largest,
+  /**
+   * Configured maximum number of active threads allowed in the current thread pool.
+   * @aliases mx
+   */
+  max,
+  /**
+   * Name of the thread pool, such as `analyze` or `generic`.
+   */
+  name,
+  /**
+   * ID of the node, such as `k0zy`.
+   * @aliases id
+   */
+  node_id,
+  /**
+   * Node name, such as `I8hydUG`.
+   */
+  node_name,
+  /**
+   * Process ID of the running node.
+   * @aliases p
+   */
+  pid,
+  /**
+   * Number of threads in the current thread pool.
+   * @aliases psz
+   */
+  pool_size,
+  /**
+   * Bound transport port for the current node.
+   * @aliases po
+   */
+  port,
+  /**
+   * Number of tasks in the queue for the current thread pool.
+   * @aliases q
+   */
+  queue,
+  /**
+   * Maximum number of tasks permitted in the queue for the current thread pool.
+   * @aliases qs
+   */
+  queue_size,
+  /**
+   * Number of tasks rejected by the thread pool executor.
+   * @aliases r
+   */
+  rejected,
+  /**
+   * Configured fixed number of active threads allowed in the current thread pool.
+   * @aliases sz
+   */
+  size,
+  /**
+   * Type of thread pool. Returned values are `fixed`, `fixed_auto_queue_size`, `direct`, or `scaling`.
+   * @aliases t
+   */
+  type,
+}
+export type CatThreadPoolColumns = CatThreadPoolColumn | CatThreadPoolColumn[]
+
