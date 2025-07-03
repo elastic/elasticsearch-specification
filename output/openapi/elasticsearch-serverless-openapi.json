@@ -34940,7 +34940,7 @@
                     "type": "boolean"
                   },
                   "pruning_config": {
-                    "$ref": "#/components/schemas/_types.query_dsl.TokenPruningConfig"
+                    "$ref": "#/components/schemas/_types.TokenPruningConfig"
                   }
                 },
                 "required": [
@@ -34968,7 +34968,7 @@
           }
         ]
       },
-      "_types.query_dsl.TokenPruningConfig": {
+      "_types.TokenPruningConfig": {
         "type": "object",
         "properties": {
           "tokens_freq_ratio_threshold": {
@@ -35066,7 +35066,7 @@
                 "type": "string"
               },
               "pruning_config": {
-                "$ref": "#/components/schemas/_types.query_dsl.TokenPruningConfig"
+                "$ref": "#/components/schemas/_types.TokenPruningConfig"
               }
             },
             "required": [
@@ -35105,7 +35105,7 @@
                 ]
               },
               "pruning_config": {
-                "$ref": "#/components/schemas/_types.query_dsl.TokenPruningConfig"
+                "$ref": "#/components/schemas/_types.TokenPruningConfig"
               }
             },
             "required": [
@@ -47993,7 +47993,7 @@
             "type": "boolean"
           },
           "pruning_config": {
-            "$ref": "#/components/schemas/_types.query_dsl.TokenPruningConfig"
+            "$ref": "#/components/schemas/_types.TokenPruningConfig"
           }
         }
       },

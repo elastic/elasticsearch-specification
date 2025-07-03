@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TokenPruningConfig } from '@_types/query_dsl/TokenPruningConfig'
+import { TokenPruningConfig } from '@_types/TokenPruningConfig'
 
 export class SparseVectorIndexOptions {
   /**
