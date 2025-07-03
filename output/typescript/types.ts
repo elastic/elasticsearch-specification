@@ -2987,6 +2987,12 @@ export type TimeUnit = 'nanos' | 'micros' | 'ms' | 's' | 'm' | 'h' | 'd'
 
 export type TimeZone = string
 
+export interface TokenPruningConfig {
+  tokens_freq_ratio_threshold?: integer
+  tokens_weight_threshold?: float
+  only_score_pruned_tokens?: boolean
+}
+
 export interface TopLeftBottomRightGeoBounds {
   top_left: GeoLocation
   bottom_right: GeoLocation
@@ -6022,9 +6028,15 @@ export interface MappingSourceField {
 
 export type MappingSourceFieldMode = 'disabled' | 'stored' | 'synthetic'
 
+export interface MappingSparseVectorIndexOptions {
+  prune?: boolean
+  pruning_config?: TokenPruningConfig
+}
+
 export interface MappingSparseVectorProperty extends MappingPropertyBase {
   store?: boolean
   type: 'sparse_vector'
+  index_options?: MappingSparseVectorIndexOptions
 }
 
 export type MappingSubobjects = boolean | 'true' | 'false' | 'auto'
@@ -6855,7 +6867,7 @@ export interface QueryDslSparseVectorQuery extends QueryDslQueryBase {
   inference_id?: Id
   query?: string
   prune?: boolean
-  pruning_config?: QueryDslTokenPruningConfig
+  pruning_config?: TokenPruningConfig
 }
 
 export interface QueryDslTermQuery extends QueryDslQueryBase {
@@ -6890,16 +6902,10 @@ export interface QueryDslTermsSetQuery extends QueryDslQueryBase {
 export interface QueryDslTextExpansionQuery extends QueryDslQueryBase {
   model_id: string
   model_text: string
-  pruning_config?: QueryDslTokenPruningConfig
+  pruning_config?: TokenPruningConfig
 }
 
 export type QueryDslTextQueryType = 'best_fields' | 'most_fields' | 'cross_fields' | 'phrase' | 'phrase_prefix' | 'bool_prefix'
-
-export interface QueryDslTokenPruningConfig {
-  tokens_freq_ratio_threshold?: integer
-  tokens_weight_threshold?: float
-  only_score_pruned_tokens?: boolean
-}
 
 export interface QueryDslTypeQuery extends QueryDslQueryBase {
   value: string
@@ -6920,7 +6926,7 @@ export interface QueryDslUntypedRangeQuery extends QueryDslRangeQueryBase<any> {
 
 export interface QueryDslWeightedTokensQuery extends QueryDslQueryBase {
   tokens: Record<string, float> | Record<string, float>[]
-  pruning_config?: QueryDslTokenPruningConfig
+  pruning_config?: TokenPruningConfig
 }
 
 export interface QueryDslWildcardQuery extends QueryDslQueryBase {
