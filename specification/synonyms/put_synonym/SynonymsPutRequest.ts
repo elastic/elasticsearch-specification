@@ -27,11 +27,14 @@ import { SynonymRule } from '../_types/SynonymRule'
  *
  * When an existing synonyms set is updated, the search analyzers that use the synonyms set are reloaded automatically for all indices.
  * This is equivalent to invoking the reload search analyzers API for all indices that use the synonyms set.
+ *
+ * For practical examples of how to create or update a synonyms set, refer to the External documentation.
  * @rest_spec_name synonyms.put_synonym
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_synonyms
  * @doc_id synonym-set-create
+ * @ext_doc_id synonym-api-examples
  */
 export interface Request extends RequestBase {
   urls: [
