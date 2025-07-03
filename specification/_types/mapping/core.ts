@@ -40,6 +40,7 @@ import { NumericFielddata } from '@indices/_types/NumericFielddata'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ChunkingSettings } from './ChunkingSettings'
 import { Property, PropertyBase } from './Property'
+import { SparseVectorIndexOptions } from './SparseVectorIndexOptions'
 import { TermVectorOption } from './TermVectorOption'
 import { TimeSeriesMetricType } from './TimeSeriesMetricType'
 
@@ -225,6 +226,13 @@ export class RankVectorProperty extends PropertyBase {
 export class SparseVectorProperty extends PropertyBase {
   store?: boolean
   type: 'sparse_vector'
+  /**
+   * Additional index options for the sparse vector field that controls the
+   * token pruning behavior of the sparse vector field.
+   * @availability stack since=8.19.0
+   * @availability serverless
+   */
+  index_options?: SparseVectorIndexOptions
 }
 
 export class SemanticTextProperty {
