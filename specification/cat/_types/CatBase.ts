@@ -1304,7 +1304,7 @@ export type CatTransformColumns = CatTransformColumn | CatTransformColumn[]
 /** @non_exhaustive */
 export enum CatShardColumn {
   /**
-   * The size of completion. For example: `0b`.
+   * Size of completion. For example: `0b`.
    * @aliases cs, completionSize
    */
   'completion.size',
