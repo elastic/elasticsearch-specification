@@ -55,7 +55,7 @@ export interface Request extends CatRequestBase {
     /**
      * List of columns to appear in the response. Supports simple wildcards.
      */
-    h?: CatThreadPoolColumn
+    h?: CatThreadPoolColumns
     /**
      * A comma-separated list of column names or aliases that determines the sort order.
      * Sorting defaults to ascending and can be changed by setting `:asc`
