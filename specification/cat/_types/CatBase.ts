@@ -1572,3 +1572,482 @@ export enum CatTransformColumn {
   version
 }
 export type CatTransformColumns = CatTransformColumn | CatTransformColumn[]
+
+/** @non_exhaustive */
+export enum CatShardColumn {
+  /**
+   * Size of completion. For example: `0b`.
+   * @aliases cs, completionSize
+   */
+  'completion.size',
+  /**
+   * Disk space used by the shard’s dataset, which may or may not be the size on
+   * disk, but includes space used by the shard on object storage. Reported as a size value for example: `5kb`.
+   */
+  'dataset.size',
+  /**
+   * Number of indexed dense vectors.
+   * @aliases dvc, denseVectorCount
+   */
+  'dense_vector.value_count',
+  /**
+   * Number of documents in shard, for example: `25`.
+   * @aliases d, dc
+   */
+  'docs',
+  /**
+   * Fielddata cache evictions, for example: `0`.
+   * @aliases fe, fielddataEvictions
+   */
+  'fielddata.evictions',
+  /**
+   * Used fielddata cache memory, for example: `0b`.
+   * @aliases fm, fielddataMemory
+   */
+  'fielddata.memory_size',
+  /**
+   * Number of flushes, for example: `1`.
+   * @aliases ft, flushTotal
+   */
+  'flush.total',
+  /**
+   * Time spent in flush, for example: `1`.
+   * @aliases ftt, flushTotalTime
+   */
+  'flush.total_time',
+  /**
+   * Number of current get operations, for example: `0`.
+   * @aliases gc, getCurrent
+   */
+  'get.current',
+  /**
+   * Time spent in successful gets, for example: `14ms`.
+   * @aliases geti, getExistsTime
+   */
+  'get.exists_time',
+  /**
+   * Number of successful get operations, for example: `2`.
+   * @aliases geto, getExistsTotal
+   */
+  'get.exists_total',
+  /**
+   * Time spent in failed gets, for example: `0s`.
+   * @aliases gmti, getMissingTime
+   */
+  'get.missing_time',
+  /**
+   * Number of failed get operations, for example: `1`.
+   * @aliases gmto, getMissingTotal
+   */
+  'get.missing_total',
+  /**
+   * Time spent in get, for example: `14ms`.
+   * @aliases gti, getTime
+   */
+  'get.time',
+  /**
+   * Number of get operations, for example: `2`.
+   * @aliases gto, getTotal
+   */
+  'get.total',
+  /**
+   * ID of the node, for example: `k0zy`.
+   */
+  id,
+  /**
+   * Name of the index.
+   * @aliases i, idx
+   */
+  index,
+  /**
+   * Number of current deletion operations, for example: `0`.
+   * @aliases idc, indexingDeleteCurrent
+   */
+  'indexing.delete_current',
+  /**
+   * Time spent in deletions, for example: `2ms`.
+   * @aliases idti, indexingDeleteTime
+   */
+  'indexing.delete_time',
+  /**
+   * Number of deletion operations, for example: `2`.
+   * @aliases idto, indexingDeleteTotal
+   */
+  'indexing.delete_total',
+  /**
+   * Number of current indexing operations, for example: `0`.
+   * @aliases iic, indexingIndexCurrent
+   */
+  'indexing.index_current',
+  /**
+   * Number of failed indexing operations due to version conflict, for example: `0`.
+   * @aliases iifvc, indexingIndexFailedDueToVersionConflict
+   */
+  'indexing.index_failed_due_to_version_conflict',
+  /**
+   * Number of failed indexing operations, for example: `0`.
+   * @aliases iif, indexingIndexFailed
+   */
+  'indexing.index_failed',
+  /**
+   * Time spent in indexing, such as for example: `134ms`.
+   * @aliases iiti, indexingIndexTime
+   */
+  'indexing.index_time',
+  /**
+   * Number of indexing operations, for example: `1`.
+   * @aliases iito, indexingIndexTotal
+   */
+  'indexing.index_total',
+  /**
+   * IP address of the node, for example: `127.0.1.1`.
+   */
+  ip,
+  /**
+   * Number of current merge operations, for example: `0`.
+   * @aliases mc, mergesCurrent
+   */
+  'merges.current',
+  /**
+   * Number of current merging documents, for example: `0`.
+   * @aliases mcd, mergesCurrentDocs
+   */
+  'merges.current_docs',
+  /**
+   * Size of current merges, for example: `0b`.
+   * @aliases mcs, mergesCurrentSize
+   */
+  'merges.current_size',
+  /**
+   * Number of completed merge operations, for example: `0`.
+   * @aliases mt, mergesTotal
+   */
+  'merges.total',
+  /**
+   * Number of merged documents, for example: `0`.
+   * @aliases mtd, mergesTotalDocs
+   */
+  'merges.total_docs',
+  /**
+   * Size of current merges, for example: `0b`.
+   * @aliases mts, mergesTotalSize
+   */
+  'merges.total_size',
+  /**
+   * Time spent merging documents, for example: `0s`.
+   * @aliases mtt, mergesTotalTime
+   */
+  'merges.total_time',
+  /**
+   * Node name, for example: `I8hydUG`.
+   * @aliases n
+   */
+  node,
+  /**
+   * Shard type. Returned values are `primary` or `replica`.
+   * @aliases p, pr, primaryOrReplica
+   */
+  prirep,
+  /**
+   * Query cache evictions, for example: `0`.
+   * @aliases qce, queryCacheEvictions
+   */
+  'query_cache.evictions',
+  /**
+   * Used query cache memory, for example: `0b`.
+   * @aliases qcm, queryCacheMemory
+   */
+  'query_cache.memory_size',
+  /**
+   * Type of recovery source.
+   * @aliases rs
+   */
+  'recoverysource.type',
+  /**
+   * Time spent in refreshes, for example: `91ms`.
+   * @aliases rti, refreshTime
+   */
+  'refresh.time',
+  /**
+   * Number of refreshes, for example: `16`.
+   * @aliases rto, refreshTotal
+   */
+  'refresh.total',
+  /**
+   * Current fetch phase operations, for example: `0`.
+   * @aliases sfc, searchFetchCurrent
+   */
+  'search.fetch_current',
+  /**
+   * Time spent in fetch phase, for example: `37ms`.
+   * @aliases sfti, searchFetchTime
+   */
+  'search.fetch_time',
+  /**
+   * Number of fetch operations, for example: `7`.
+   * @aliases sfto, searchFetchTotal
+   */
+  'search.fetch_total',
+  /**
+   * Open search contexts, for example: `0`.
+   * @aliases so, searchOpenContexts
+   */
+  'search.open_contexts',
+  /**
+   * Current query phase operations, for example: `0`.
+   * @aliases sqc, searchQueryCurrent
+   */
+  'search.query_current',
+  /**
+   * Time spent in query phase, for example: `43ms`.
+   * @aliases sqti, searchQueryTime
+   */
+  'search.query_time',
+  /**
+   * Number of query operations, for example: `9`.
+   * @aliases sqto, searchQueryTotal
+   */
+  'search.query_total',
+  /**
+   * Open scroll contexts, for example: `2`.
+   * @aliases scc, searchScrollCurrent
+   */
+  'search.scroll_current',
+  /**
+   * Time scroll contexts held open, for example: `2m`.
+   * @aliases scti, searchScrollTime
+   */
+  'search.scroll_time',
+  /**
+   * Completed scroll contexts, for example: `1`.
+   * @aliases scto, searchScrollTotal
+   */
+  'search.scroll_total',
+  /**
+   * Number of segments, for example: `4`.
+   * @aliases sc, segmentsCount
+   */
+  'segments.count',
+  /**
+   * Memory used by fixed bit sets for nested object field types and type filters for types referred in join fields, for example: `1.0kb`.
+   * @aliases sfbm, fixedBitsetMemory
+   */
+  'segments.fixed_bitset_memory',
+  /**
+   * Memory used by index writer, for example: `18mb`.
+   * @aliases siwm, segmentsIndexWriterMemory
+   */
+  'segments.index_writer_memory',
+  /**
+   * Memory used by segments, for example: `1.4kb`.
+   * @aliases sm, segmentsMemory
+   */
+  'segments.memory',
+  /**
+   * Memory used by version map, for example: `1.0kb`.
+   * @aliases svmm, segmentsVersionMapMemory
+   */
+  'segments.version_map_memory',
+  /**
+   * Global checkpoint.
+   * @aliases sqg, globalCheckpoint
+   */
+  'seq_no.global_checkpoint',
+  /**
+   * Local checkpoint.
+   * @aliases sql, localCheckpoint
+   */
+  'seq_no.local_checkpoint',
+  /**
+   * Maximum sequence number.
+   * @aliases sqm, maxSeqNo
+   */
+  'seq_no.max',
+  /**
+   * Name of the shard.
+   * @aliases s, sh
+   */
+  'shard',
+  /**
+   * Number of indexed [sparse vectors](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/sparse-vector).
+   * @aliases svc, sparseVectorCount
+   */
+  'dsparse_vector.value_count',
+  /**
+   * State of the shard. Returned values are:
+   * * `INITIALIZING`: The shard is recovering from a peer shard or gateway.
+   * * `RELOCATING`: The shard is relocating.
+   * * `STARTED`: The shard has started.
+   * * `UNASSIGNED`: The shard is not assigned to any node.
+   * @aliases st
+   */
+  'state',
+  /**
+   * Disk space used by the shard, for example: `5kb`.
+   * @aliases sto
+   */
+  'store',
+  /**
+   * Number of current suggest operations, for example: `0`.
+   * @aliases suc, suggestCurrent
+   */
+  'suggest.current',
+  /**
+   * Time spent in suggest, for example: `0`.
+   * @aliases suti, suggestTime
+   */
+  'suggest.time',
+  /**
+   * Number of suggest operations, for example: `0`.
+   * @aliases suto, suggestTotal
+   */
+  'suggest.total',
+  /**
+   * Sync ID of the shard.
+   */
+  sync_id,
+  /**
+   * Time at which the shard became unassigned in [Coordinated Universal Time (UTC)](https://en.wikipedia.org/wiki/List_of_UTC_offsets).
+   * @aliases ua
+   */
+  'unassigned.at',
+  /**
+   * Details about why the shard became unassigned. This does not explain why the shard is currently unassigned. To understand why a shard
+   * is not assigned, use the [Cluster allocation explain](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) API.
+   * @aliases ud
+   */
+  'unassigned.details',
+  /**
+   * Time at which the shard was requested to be unassigned in [Coordinated Universal Time (UTC)](https://en.wikipedia.org/wiki/List_of_UTC_offsets).
+   * @aliases uf
+   */
+  'unassigned.for',
+  /**
+   * Indicates the reason for the last change to the state of this unassigned shard. This does not explain why the shard is currently unassigned.
+   * To understand why a shard is not assigned, use the [Cluster allocation explain](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) API. Returned values include:
+   *
+   * * `ALLOCATION_FAILED`: Unassigned as a result of a failed allocation of the shard.
+   * * `CLUSTER_RECOVERED`: Unassigned as a result of a full cluster recovery.
+   * * `DANGLING_INDEX_IMPORTED`: Unassigned as a result of importing a dangling index.
+   * * `EXISTING_INDEX_RESTORED`: Unassigned as a result of restoring into a closed index.
+   * * `FORCED_EMPTY_PRIMARY`: The shard’s allocation was last modified by forcing an empty primary using the Cluster reroute API.
+   * * `INDEX_CLOSED`: Unassigned because the index was closed.
+   * * `INDEX_CREATED`: Unassigned as a result of an API creation of an index.
+   * * `INDEX_REOPENED`: Unassigned as a result of opening a closed index.
+   * * `MANUAL_ALLOCATION`: The shard’s allocation was last modified by the Cluster reroute API.
+   * * `NEW_INDEX_RESTORED`: Unassigned as a result of restoring into a new index.
+   * * `NODE_LEFT`: Unassigned as a result of the node hosting it leaving the cluster.
+   * * `NODE_RESTARTING`: Similar to `NODE_LEFT`, except that the node was registered as restarting using the Node shutdown API.
+   * * `PRIMARY_FAILED`: The shard was initializing as a replica, but the primary shard failed before the initialization completed.
+   * * `REALLOCATED_REPLICA`: A better replica location is identified and causes the existing replica allocation to be cancelled.
+   * * `REINITIALIZED`: When a shard moves from started back to initializing.
+   * * `REPLICA_ADDED`: Unassigned as a result of explicit addition of a replica.
+   * * `REROUTE_CANCELLED`: Unassigned as a result of explicit cancel reroute command.
+   * @aliases ur
+   */
+  'unassigned.reason'
+}
+export type CatShardColumns = CatShardColumn | CatShardColumn[]
+
+/** @non_exhaustive */
+export enum CatThreadPoolColumn {
+  /**
+   * Number of active threads in the current thread pool.
+   * @aliases a
+   */
+  active,
+  /**
+   * Number of tasks completed by the thread pool executor.
+   * @aliases c
+   */
+  completed,
+  /**
+   * Configured core number of active threads allowed in the current thread pool.
+   * @aliases cr
+   */
+  core,
+  /**
+   * Ephemeral node ID.
+   * @aliases eid
+   */
+  ephemeral_id,
+  /**
+   * Hostname for the current node.
+   * @aliases h
+   */
+  host,
+  /**
+   * IP address for the current node.
+   * @aliases i
+   */
+  ip,
+  /**
+   * Configured keep alive time for threads.
+   * @aliases k
+   */
+  keep_alive,
+  /**
+   * Highest number of active threads in the current thread pool.
+   * @aliases l
+   */
+  largest,
+  /**
+   * Configured maximum number of active threads allowed in the current thread pool.
+   * @aliases mx
+   */
+  max,
+  /**
+   * Name of the thread pool, such as `analyze` or `generic`.
+   */
+  name,
+  /**
+   * ID of the node, such as `k0zy`.
+   * @aliases id
+   */
+  node_id,
+  /**
+   * Node name, such as `I8hydUG`.
+   */
+  node_name,
+  /**
+   * Process ID of the running node.
+   * @aliases p
+   */
+  pid,
+  /**
+   * Number of threads in the current thread pool.
+   * @aliases psz
+   */
+  pool_size,
+  /**
+   * Bound transport port for the current node.
+   * @aliases po
+   */
+  port,
+  /**
+   * Number of tasks in the queue for the current thread pool.
+   * @aliases q
+   */
+  queue,
+  /**
+   * Maximum number of tasks permitted in the queue for the current thread pool.
+   * @aliases qs
+   */
+  queue_size,
+  /**
+   * Number of tasks rejected by the thread pool executor.
+   * @aliases r
+   */
+  rejected,
+  /**
+   * Configured fixed number of active threads allowed in the current thread pool.
+   * @aliases sz
+   */
+  size,
+  /**
+   * Type of thread pool. Returned values are `fixed`, `fixed_auto_queue_size`, `direct`, or `scaling`.
+   * @aliases t
+   */
+  type
+}
+export type CatThreadPoolColumns = CatThreadPoolColumn | CatThreadPoolColumn[]
