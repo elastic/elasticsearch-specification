@@ -284,6 +284,7 @@ ilm-start,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-
 ilm-stop,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/ilm-stop.html
 important-settings,https://www.elastic.co/docs/deploy-manage/deploy/self-managed/important-settings-configuration,
 index-block-add,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-add-block,
+index-block-remove,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-remove-block,
 index-modules-blocks,https://www.elastic.co/docs/reference/elasticsearch/index-settings/index-block,
 index-modules-settings,https://www.elastic.co/docs/reference/elasticsearch/index-settings/index-modules,
 index-modules-slowlog-slowlog,https://www.elastic.co/docs/reference/elasticsearch/index-settings/slow-log#index-slow-log,

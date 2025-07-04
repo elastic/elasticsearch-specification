@@ -6628,7 +6628,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/indices.add_block.IndicesBlockOptions"
+              "$ref": "#/components/schemas/indices._types.IndicesBlockOptions"
             },
             "style": "simple"
           },
@@ -6700,7 +6700,7 @@
                     "indices": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/indices.add_block.IndicesBlockStatus"
+                        "$ref": "#/components/schemas/indices.add_block.AddIndicesBlockStatus"
                       }
                     }
                   },
@@ -6714,6 +6714,123 @@
                   "IndicesAddBlockResponseExample1": {
                     "description": "A successful response from `PUT /my-index-000001/_block/write`, which adds an index block to an index.'",
                     "value": "{\n  \"acknowledged\" : true,\n  \"shards_acknowledged\" : true,\n  \"indices\" : [ {\n    \"name\" : \"my-index-000001\",\n    \"blocked\" : true\n  } ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-product-feature": "elasticsearch"
+      },
+      "delete": {
+        "tags": [
+          "indices"
+        ],
+        "summary": "Remove an index block",
+        "description": "Remove an index block from an index.\nIndex blocks limit the operations allowed on an index by blocking specific operation types.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "operationId": "indices-remove-block",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "index",
+            "description": "A comma-separated list or wildcard expression of index names used to limit the request.\nBy default, you must explicitly name the indices you are removing blocks from.\nTo allow the removal of blocks from indices with `_all`, `*`, or other wildcard expressions, change the `action.destructive_requires_name` setting to `false`.\nYou can update this setting in the `elasticsearch.yml` file or by using the cluster update settings API.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.IndexName"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "block",
+            "description": "The block type to remove from the index.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/indices._types.IndicesBlockOptions"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "allow_no_indices",
+            "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "expand_wildcards",
+            "description": "The type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nIt supports comma-separated values, such as `open,hidden`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.ExpandWildcards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "ignore_unavailable",
+            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nIt can also be set to `-1` to indicate that the request should never timeout.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.\nIf no response is received before the timeout expires, the cluster metadata update still applies but the response will indicate that it was not completely acknowledged.\nIt can also be set to `-1` to indicate that the request should never timeout.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "acknowledged": {
+                      "type": "boolean"
+                    },
+                    "indices": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.remove_block.RemoveIndicesBlockStatus"
+                      }
+                    }
+                  },
+                  "required": [
+                    "acknowledged",
+                    "indices"
+                  ]
+                },
+                "examples": {
+                  "IndicesRemoveBlockResponseExample1": {
+                    "description": "A successful response from `DELETE /my-index-000001/_block/write`, which removes an index block from an index.'",
+                    "value": "{\n  \"acknowledged\" : true,\n  \"indices\" : [ {\n    \"name\" : \"my-index-000001\",\n    \"unblocked\" : true\n  } ]\n}"
                   }
                 }
               }
@@ -51269,7 +51386,7 @@
           "weight"
         ]
       },
-      "indices.add_block.IndicesBlockOptions": {
+      "indices._types.IndicesBlockOptions": {
         "type": "string",
         "enum": [
           "metadata",
@@ -51278,7 +51395,7 @@
           "write"
         ]
       },
-      "indices.add_block.IndicesBlockStatus": {
+      "indices.add_block.AddIndicesBlockStatus": {
         "type": "object",
         "properties": {
           "name": {
@@ -52073,6 +52190,23 @@
             "$ref": "#/components/schemas/_types.ShardStatistics"
           }
         }
+      },
+      "indices.remove_block.RemoveIndicesBlockStatus": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types.IndexName"
+          },
+          "unblocked": {
+            "type": "boolean"
+          },
+          "exception": {
+            "$ref": "#/components/schemas/_types.ErrorCause"
+          }
+        },
+        "required": [
+          "name"
+        ]
       },
       "indices.resolve_index.ResolveIndexItem": {
         "type": "object",
