@@ -1665,7 +1665,7 @@ export enum CatShardColumn {
    * * `MANUAL_ALLOCATION`: The shard’s allocation was last modified by the Cluster reroute API.
    * * `NEW_INDEX_RESTORED`: Unassigned as a result of restoring into a new index.
    * * `NODE_LEFT`: Unassigned as a result of the node hosting it leaving the cluster.
-   * * `NODE_RESTARTING`: Similar to NODE_LEFT, except that the node was registered as restarting using the Node shutdown API.
+   * * `NODE_RESTARTING`: Similar to `NODE_LEFT`, except that the node was registered as restarting using the Node shutdown API.
    * * `PRIMARY_FAILED`: The shard was initializing as a replica, but the primary shard failed before the initialization completed.
    * * `REALLOCATED_REPLICA`: A better replica location is identified and causes the existing replica allocation to be cancelled.
    * * `REINITIALIZED`: When a shard moves from started back to initializing.
