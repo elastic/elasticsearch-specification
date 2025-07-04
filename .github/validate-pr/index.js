@@ -158,7 +158,7 @@ async function run() {
       comment += buildDiffTableLine(change)
     }
   } else {
-    comment += 'No changes detected.'
+    comment += '**No changes detected**.\n'
   }
   comment += `\nYou can validate ${changedApis.length === 1 ? 'this' : 'these'} API${changedApis.length === 1 ? '' : 's'} yourself by using the ${tick}make validate${tick} target.\n`
   core.setOutput('comment_body', comment)
