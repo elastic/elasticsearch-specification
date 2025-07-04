@@ -56,6 +56,7 @@ async function run() {
     path.join(tsValidationPath, 'types.ts')
   )
   const context = github.context
+  const branch = context.base_ref
   assert(context.payload.pull_request, 'We should be in a PR context')
   const files = []
   let page = 1
@@ -149,20 +150,18 @@ async function run() {
   }
   changedApis.sort((a, b) => a.api.localeCompare(b.api))
 
+  let comment = `Following you can find the validation changes against the ${branch} branch for the API${changedApis.length === 1 ? '' : 's'}.\n\n`
   if (changedApis.length > 0) {
-    let comment = `Following you can find the validation changes for the API${changedApis.length === 1 ? '' : 's'} you have modified.\n\n`
     comment += '| API | Status | Request | Response |\n'
     comment += '| --- | --- | --- | --- |\n'
     for (const change of changedApis) {
       comment += buildDiffTableLine(change)
     }
-    comment += `\nYou can validate ${changedApis.length === 1 ? 'this' : 'these'} API${changedApis.length === 1 ? '' : 's'} yourself by using the ${tick}make validate${tick} target.\n`
-
-    core.setOutput('has_results', 'true')
-    core.setOutput('comment_body', comment)
   } else {
-    core.setOutput('has_results', 'false')
+    comment += 'No changes detected.'
   }
+  comment += `\nYou can validate ${changedApis.length === 1 ? 'this' : 'these'} API${changedApis.length === 1 ? '' : 's'} yourself by using the ${tick}make validate${tick} target.\n`
+  core.setOutput('comment_body', comment)
 
   core.info('Done!')
 }
