@@ -33344,7 +33344,7 @@
                     "type": "boolean"
                   },
                   "pruning_config": {
-                    "$ref": "#/components/schemas/_types.query_dsl.TokenPruningConfig"
+                    "$ref": "#/components/schemas/_types.TokenPruningConfig"
                   }
                 },
                 "required": [
@@ -33372,7 +33372,7 @@
           }
         ]
       },
-      "_types.query_dsl.TokenPruningConfig": {
+      "_types.TokenPruningConfig": {
         "type": "object",
         "properties": {
           "tokens_freq_ratio_threshold": {
@@ -33474,7 +33474,7 @@
                 "type": "string"
               },
               "pruning_config": {
-                "$ref": "#/components/schemas/_types.query_dsl.TokenPruningConfig"
+                "$ref": "#/components/schemas/_types.TokenPruningConfig"
               }
             },
             "required": [
@@ -33500,7 +33500,7 @@
                 }
               },
               "pruning_config": {
-                "$ref": "#/components/schemas/_types.query_dsl.TokenPruningConfig"
+                "$ref": "#/components/schemas/_types.TokenPruningConfig"
               }
             },
             "required": [
@@ -46676,6 +46676,9 @@
                 "enum": [
                   "sparse_vector"
                 ]
+              },
+              "index_options": {
+                "$ref": "#/components/schemas/_types.mapping.SparseVectorIndexOptions"
               }
             },
             "required": [
@@ -46683,6 +46686,19 @@
             ]
           }
         ]
+      },
+      "_types.mapping.SparseVectorIndexOptions": {
+        "type": "object",
+        "properties": {
+          "prune": {
+            "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
+            "x-state": "Generally available",
+            "type": "boolean"
+          },
+          "pruning_config": {
+            "$ref": "#/components/schemas/_types.TokenPruningConfig"
+          }
+        }
       },
       "_types.mapping.CompletionProperty": {
         "allOf": [
