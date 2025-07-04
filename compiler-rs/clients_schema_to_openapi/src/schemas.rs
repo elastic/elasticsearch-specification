@@ -472,9 +472,9 @@ impl<'a> TypesAndComponents<'a> {
         data.external_docs = self.convert_external_docs(prop);
         data.deprecated = prop.deprecation.is_some();
         data.description = self.property_description(prop)?;
+        data.default = prop.server_default.clone().map(|value| { serde_json::json!(value) });
         data.extensions = crate::availability_as_extensions(&prop.availability, &self.config.flavor);
         // TODO: prop.aliases as extensions
-        // TODO: prop.server_default as extension
         // TODO: prop.doc_id as extension (new representation of since and stability)
         // TODO: prop.es_quirk as extension?
         // TODO: prop.codegen_name as extension?
