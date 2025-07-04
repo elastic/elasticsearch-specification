@@ -43,12 +43,6 @@
       ],
       "response": []
     },
-    "get_source": {
-      "request": [
-        "Request: query parameter 'stored_fields' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "index": {
       "request": [
         "Request: missing json spec query parameter 'require_data_stream'"
