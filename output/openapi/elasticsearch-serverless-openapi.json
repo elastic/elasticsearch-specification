@@ -6728,7 +6728,7 @@
           "indices"
         ],
         "summary": "Remove an index block",
-        "description": "Remove an index block from an index.\nIndex blocks limit the operations allowed on an index by blocking specific operation types.",
+        "description": "Remove an index block from an index.\nIndex blocks limit the operations allowed on an index by blocking specific operation types.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "operationId": "indices-remove-block",
         "parameters": [
           {
@@ -6828,7 +6828,7 @@
                   ]
                 },
                 "examples": {
-                  "IndicesAddBlockResponseExample1": {
+                  "IndicesRemoveBlockResponseExample1": {
                     "description": "A successful response from `DELETE /my-index-000001/_block/write`, which removes an index block from an index.'",
                     "value": "{\n  \"acknowledged\" : true,\n  \"indices\" : [ {\n    \"name\" : \"my-index-000001\",\n    \"unblocked\" : true\n  } ]\n}"
                   }
@@ -10294,7 +10294,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`completion`, `chat_completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -10392,7 +10392,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`completion`, `chat_completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -11004,6 +11004,78 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoCohere"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-product-feature": "elasticsearch, machine-learning"
+      }
+    },
+    "/_inference/{task_type}/{deepseek_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create a DeepSeek inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `deepseek` service.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-deepseek",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.TaskTypeDeepSeek"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "deepseek_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference._types.DeepSeekServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference._types.DeepSeekServiceSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoDeepSeek"
                 }
               }
             }
@@ -19313,6 +19385,66 @@
                   "summary": "Reindex multiple sources",
                   "description": "Run `POST _reindex` to reindex from multiple sources. The `index` attribute in source can be a list, which enables you to copy from lots of sources in one request. This example copies documents from the `my-index-000001` and `my-index-000002` indices.\n",
                   "value": "{\n  \"source\": {\n    \"index\": [\"my-index-000001\", \"my-index-000002\"]\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000002\"\n  }\n}"
+                },
+                "ReindexRequestExample10": {
+                  "summary": "Reindex with Painless",
+                  "description": "You can use Painless to reindex daily indices to apply a new template to the existing documents. The script extracts the date from the index name and creates a new index with `-1` appended. For example, all data from `metricbeat-2016.05.31` will be reindexed into `metricbeat-2016.05.31-1`.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"metricbeat-*\"\n  },\n  \"dest\": {\n    \"index\": \"metricbeat\"\n  },\n  \"script\": {\n    \"lang\": \"painless\",\n    \"source\": \"ctx._index = 'metricbeat-' + (ctx._index.substring('metricbeat-'.length(), ctx._index.length())) + '-1'\"\n  }\n}"
+                },
+                "ReindexRequestExample11": {
+                  "summary": "Reindex a random subset",
+                  "description": "Run `POST _reindex` to extract a random subset of the source for testing. You might need to adjust the `min_score` value depending on the relative amount of data extracted from source.\n",
+                  "value": "{\n  \"max_docs\": 10,\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"query\": {\n      \"function_score\" : {\n        \"random_score\" : {},\n        \"min_score\" : 0.9\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample12": {
+                  "summary": "Reindex modified documents",
+                  "description": "Run `POST _reindex` to modify documents during reindexing. This example bumps the version of the source document.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\",\n    \"version_type\": \"external\"\n  },\n  \"script\": {\n    \"source\": \"if (ctx._source.foo == 'bar') {ctx._version++; ctx._source.remove('foo')}\",\n    \"lang\": \"painless\"\n  }\n}"
+                },
+                "ReindexRequestExample13": {
+                  "summary": "Reindex from remote on Elastic Cloud",
+                  "description": "When using Elastic Cloud, you can run `POST _reindex` and authenticate against a remote cluster with an API key.\n",
+                  "value": "{\n  \"source\": {\n    \"remote\": {\n      \"host\": \"http://otherhost:9200\",\n      \"username\": \"user\",\n      \"password\": \"pass\"\n    },\n    \"index\": \"my-index-000001\",\n    \"query\": {\n      \"match\": {\n        \"test\": \"data\"\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample2": {
+                  "summary": "Manual slicing",
+                  "description": "Run `POST _reindex` to slice a reindex request manually. Provide a slice ID and total number of slices to each request.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"slice\": {\n      \"id\": 0,\n      \"max\": 2\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample3": {
+                  "summary": "Automatic slicing",
+                  "description": "Run `POST _reindex?slices=5&refresh` to automatically parallelize using sliced scroll to slice on `_id`. The `slices` parameter specifies the number of slices to use.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample4": {
+                  "summary": "Routing",
+                  "description": "By default if reindex sees a document with routing then the routing is preserved unless it's changed by the script. You can set `routing` on the `dest` request to change this behavior. In this example, run `POST _reindex` to copy all documents from the `source` with the company name `cat` into the `dest` with routing set to `cat`.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"source\",\n    \"query\": {\n      \"match\": {\n        \"company\": \"cat\"\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"dest\",\n    \"routing\": \"=cat\"\n  }\n}"
+                },
+                "ReindexRequestExample5": {
+                  "summary": "Ingest pipelines",
+                  "description": "Run `POST _reindex` and use the ingest pipelines feature.",
+                  "value": "{\n  \"source\": {\n    \"index\": \"source\"\n  },\n  \"dest\": {\n    \"index\": \"dest\",\n    \"pipeline\": \"some_ingest_pipeline\"\n  }\n}"
+                },
+                "ReindexRequestExample6": {
+                  "summary": "Reindex with a query",
+                  "description": "Run `POST _reindex` and add a query to the `source` to limit the documents to reindex. For example, this request copies documents into `my-new-index-000001` only if they have a `user.id` of `kimchy`.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"query\": {\n      \"term\": {\n        \"user.id\": \"kimchy\"\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample7": {
+                  "summary": "Reindex with max_docs",
+                  "description": "You can limit the number of processed documents by setting `max_docs`. For example, run `POST _reindex` to copy a single document from `my-index-000001` to `my-new-index-000001`.\n",
+                  "value": "{\n  \"max_docs\": 1,\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample8": {
+                  "summary": "Reindex selected fields",
+                  "description": "You can use source filtering to reindex a subset of the fields in the original documents. For example, run `POST _reindex` the reindex only the `user.id` and `_doc` fields of each document.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"_source\": [\"user.id\", \"_doc\"]\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample9": {
+                  "summary": "Reindex new field names",
+                  "description": "A reindex operation can build a copy of an index with renamed fields. If your index has documents with `text` and `flag` fields, you can change the latter field name to `tag` during the reindex.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  },\n  \"script\": {\n    \"source\": \"ctx._source.tag = ctx._source.remove(\\\"flag\\\")\"\n  }\n}"
                 }
               }
             }
@@ -22274,7 +22406,11 @@
           "synonyms"
         ],
         "summary": "Create or update a synonym set",
-        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.\n\nWhen an existing synonyms set is updated, the search analyzers that use the synonyms set are reloaded automatically for all indices.\nThis is equivalent to invoking the reload search analyzers API for all indices that use the synonyms set.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_synonyms`\n",
+        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.\n\nWhen an existing synonyms set is updated, the search analyzers that use the synonyms set are reloaded automatically for all indices.\nThis is equivalent to invoking the reload search analyzers API for all indices that use the synonyms set.\n\nFor practical examples of how to create or update a synonyms set, refer to the External documentation.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_synonyms`\n",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/solutions/search/full-text/create-update-synonyms-api-example",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-synonyms-set.html"
+        },
         "operationId": "synonyms-put-synonym",
         "parameters": [
           {
@@ -23919,7 +24055,11 @@
           "document"
         ],
         "summary": "Update a document",
-        "description": "Update a document by running a script or passing a partial document.\n\nIf the Elasticsearch security features are enabled, you must have the `index` or `write` index privilege for the target index or index alias.\n\nThe script can update, delete, or skip modifying the document.\nThe API also supports passing a partial document, which is merged into the existing document.\nTo fully replace an existing document, use the index API.\nThis operation:\n\n* Gets the document (collocated with the shard) from the index.\n* Runs the specified script.\n* Indexes the result.\n\nThe document must still be reindexed, but using this API removes some network roundtrips and reduces chances of version conflicts between the GET and the index operation.\n\nThe `_source` field must be enabled to use this API.\nIn addition to `_source`, you can access the following variables through the `ctx` map: `_index`, `_type`, `_id`, `_version`, `_routing`, and `_now` (the current timestamp).\n\n## Required authorization\n\n* Index privileges: `write`\n",
+        "description": "Update a document by running a script or passing a partial document.\n\nIf the Elasticsearch security features are enabled, you must have the `index` or `write` index privilege for the target index or index alias.\n\nThe script can update, delete, or skip modifying the document.\nThe API also supports passing a partial document, which is merged into the existing document.\nTo fully replace an existing document, use the index API.\nThis operation:\n\n* Gets the document (collocated with the shard) from the index.\n* Runs the specified script.\n* Indexes the result.\n\nThe document must still be reindexed, but using this API removes some network roundtrips and reduces chances of version conflicts between the GET and the index operation.\n\nThe `_source` field must be enabled to use this API.\nIn addition to `_source`, you can access the following variables through the `ctx` map: `_index`, `_type`, `_id`, `_version`, `_routing`, and `_now` (the current timestamp).\nFor usage examples such as partial updates, upserts, and scripted updates, see the External documentation.\n\n## Required authorization\n\n* Index privileges: `write`\n",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/update-document",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-update.html"
+        },
         "operationId": "update",
         "parameters": [
           {
@@ -24199,7 +24339,11 @@
           "document"
         ],
         "summary": "Update documents",
-        "description": "Updates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or alias:\n\n* `read`\n* `index` or `write`\n\nYou can specify the query criteria in the request URI or the request body using the same syntax as the search API.\n\nWhen you submit an update by query request, Elasticsearch gets a snapshot of the data stream or index when it begins processing the request and updates matching documents using internal versioning.\nWhen the versions match, the document is updated and the version number is incremented.\nIf a document changes between the time that the snapshot is taken and the update operation is processed, it results in a version conflict and the operation fails.\nYou can opt to count version conflicts instead of halting and returning by setting `conflicts` to `proceed`.\nNote that if you opt to count version conflicts, the operation could attempt to update more documents from the source than `max_docs` until it has successfully updated `max_docs` documents or it has gone through every document in the source query.\n\nNOTE: Documents with a version equal to 0 cannot be updated using update by query because internal versioning does not support 0 as a valid version number.\n\nWhile processing an update by query request, Elasticsearch performs multiple search requests sequentially to find all of the matching documents.\nA bulk update request is performed for each batch of matching documents.\nAny query or update failures cause the update by query request to fail and the failures are shown in the response.\nAny update requests that completed successfully still stick, they are not rolled back.\n\n**Throttling update requests**\n\nTo control the rate at which update by query issues batches of update operations, you can set `requests_per_second` to any positive decimal number.\nThis pads each batch with a wait time to throttle the rate.\nSet `requests_per_second` to `-1` to turn off throttling.\n\nThrottling uses a wait time between batches so that the internal scroll requests can be given a timeout that takes the request padding into account.\nThe padding time is the difference between the batch size divided by the `requests_per_second` and the time spent writing.\nBy default the batch size is 1000, so if `requests_per_second` is set to `500`:\n\n```\ntarget_time = 1000 / 500 per second = 2 seconds\nwait_time = target_time - write_time = 2 seconds - .5 seconds = 1.5 seconds\n```\n\nSince the batch is issued as a single _bulk request, large batch sizes cause Elasticsearch to create many requests and wait before starting the next set.\nThis is \"bursty\" instead of \"smooth\".\n\n**Slicing**\n\nUpdate by query supports sliced scroll to parallelize the update process.\nThis can improve efficiency and provide a convenient way to break the request down into smaller parts.\n\nSetting `slices` to `auto` chooses a reasonable number for most data streams and indices.\nThis setting will use one slice per shard, up to a certain limit.\nIf there are multiple source data streams or indices, it will choose the number of slices based on the index or backing index with the smallest number of shards.\n\nAdding `slices` to `_update_by_query` just automates the manual process of creating sub-requests, which means it has some quirks:\n\n* You can see these requests in the tasks APIs. These sub-requests are \"child\" tasks of the task for the request with slices.\n* Fetching the status of the task for the request with `slices` only contains the status of completed slices.\n* These sub-requests are individually addressable for things like cancellation and rethrottling.\n* Rethrottling the request with `slices` will rethrottle the unfinished sub-request proportionally.\n* Canceling the request with slices will cancel each sub-request.\n* Due to the nature of slices each sub-request won't get a perfectly even portion of the documents. All documents will be addressed, but some slices may be larger than others. Expect larger slices to have a more even distribution.\n* Parameters like `requests_per_second` and `max_docs` on a request with slices are distributed proportionally to each sub-request. Combine that with the point above about distribution being uneven and you should conclude that using `max_docs` with `slices` might not result in exactly `max_docs` documents being updated.\n* Each sub-request gets a slightly different snapshot of the source data stream or index though these are all taken at approximately the same time.\n\nIf you're slicing manually or otherwise tuning automatic slicing, keep in mind that:\n\n* Query performance is most efficient when the number of slices is equal to the number of shards in the index or backing index. If that number is large (for example, 500), choose a lower number as too many slices hurts performance. Setting slices higher than the number of shards generally does not improve efficiency and adds overhead.\n* Update performance scales linearly across available resources with the number of slices.\n\nWhether query or update performance dominates the runtime depends on the documents being reindexed and cluster resources.\n\n**Update the document source**\n\nUpdate by query supports scripts to update the document source.\nAs with the update API, you can set `ctx.op` to change the operation that is performed.\n\nSet `ctx.op = \"noop\"` if your script decides that it doesn't have to make any changes.\nThe update by query operation skips updating the document and increments the `noop` counter.\n\nSet `ctx.op = \"delete\"` if your script decides that the document should be deleted.\nThe update by query operation deletes the document and increments the `deleted` counter.\n\nUpdate by query supports only `index`, `noop`, and `delete`.\nSetting `ctx.op` to anything else is an error.\nSetting any other field in `ctx` is an error.\nThis API enables you to only modify the source of matching documents; you cannot move them.\n\n## Required authorization\n\n* Index privileges: `read`,`write`\n",
+        "description": "Updates documents that match the specified query.\nIf no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or alias:\n\n* `read`\n* `index` or `write`\n\nYou can specify the query criteria in the request URI or the request body using the same syntax as the search API.\n\nWhen you submit an update by query request, Elasticsearch gets a snapshot of the data stream or index when it begins processing the request and updates matching documents using internal versioning.\nWhen the versions match, the document is updated and the version number is incremented.\nIf a document changes between the time that the snapshot is taken and the update operation is processed, it results in a version conflict and the operation fails.\nYou can opt to count version conflicts instead of halting and returning by setting `conflicts` to `proceed`.\nNote that if you opt to count version conflicts, the operation could attempt to update more documents from the source than `max_docs` until it has successfully updated `max_docs` documents or it has gone through every document in the source query.\n\nNOTE: Documents with a version equal to 0 cannot be updated using update by query because internal versioning does not support 0 as a valid version number.\n\nWhile processing an update by query request, Elasticsearch performs multiple search requests sequentially to find all of the matching documents.\nA bulk update request is performed for each batch of matching documents.\nAny query or update failures cause the update by query request to fail and the failures are shown in the response.\nAny update requests that completed successfully still stick, they are not rolled back.\n\n**Refreshing shards**\n\nSpecifying the `refresh` parameter refreshes all shards once the request completes.\nThis is different to the update API's `refresh` parameter, which causes only the shard\nthat received the request to be refreshed. Unlike the update API, it does not support\n`wait_for`.\n\n**Running update by query asynchronously**\n\nIf the request contains `wait_for_completion=false`, Elasticsearch\nperforms some preflight checks, launches the request, and returns a\n[task](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks) you can use to cancel or get the status of the task.\nElasticsearch creates a record of this task as a document at `.tasks/task/${taskId}`.\n\n**Waiting for active shards**\n\n`wait_for_active_shards` controls how many copies of a shard must be active\nbefore proceeding with the request. See [`wait_for_active_shards`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create#operation-create-wait_for_active_shards)\nfor details. `timeout` controls how long each write request waits for unavailable\nshards to become available. Both work exactly the way they work in the\n[Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk). Update by query uses scrolled searches, so you can also\nspecify the `scroll` parameter to control how long it keeps the search context\nalive, for example `?scroll=10m`. The default is 5 minutes.\n\n**Throttling update requests**\n\nTo control the rate at which update by query issues batches of update operations, you can set `requests_per_second` to any positive decimal number.\nThis pads each batch with a wait time to throttle the rate.\nSet `requests_per_second` to `-1` to turn off throttling.\n\nThrottling uses a wait time between batches so that the internal scroll requests can be given a timeout that takes the request padding into account.\nThe padding time is the difference between the batch size divided by the `requests_per_second` and the time spent writing.\nBy default the batch size is 1000, so if `requests_per_second` is set to `500`:\n\n```\ntarget_time = 1000 / 500 per second = 2 seconds\nwait_time = target_time - write_time = 2 seconds - .5 seconds = 1.5 seconds\n```\n\nSince the batch is issued as a single _bulk request, large batch sizes cause Elasticsearch to create many requests and wait before starting the next set.\nThis is \"bursty\" instead of \"smooth\".\n\n**Slicing**\n\nUpdate by query supports sliced scroll to parallelize the update process.\nThis can improve efficiency and provide a convenient way to break the request down into smaller parts.\n\nSetting `slices` to `auto` chooses a reasonable number for most data streams and indices.\nThis setting will use one slice per shard, up to a certain limit.\nIf there are multiple source data streams or indices, it will choose the number of slices based on the index or backing index with the smallest number of shards.\n\nAdding `slices` to `_update_by_query` just automates the manual process of creating sub-requests, which means it has some quirks:\n\n* You can see these requests in the tasks APIs. These sub-requests are \"child\" tasks of the task for the request with slices.\n* Fetching the status of the task for the request with `slices` only contains the status of completed slices.\n* These sub-requests are individually addressable for things like cancellation and rethrottling.\n* Rethrottling the request with `slices` will rethrottle the unfinished sub-request proportionally.\n* Canceling the request with slices will cancel each sub-request.\n* Due to the nature of slices each sub-request won't get a perfectly even portion of the documents. All documents will be addressed, but some slices may be larger than others. Expect larger slices to have a more even distribution.\n* Parameters like `requests_per_second` and `max_docs` on a request with slices are distributed proportionally to each sub-request. Combine that with the point above about distribution being uneven and you should conclude that using `max_docs` with `slices` might not result in exactly `max_docs` documents being updated.\n* Each sub-request gets a slightly different snapshot of the source data stream or index though these are all taken at approximately the same time.\n\nIf you're slicing manually or otherwise tuning automatic slicing, keep in mind that:\n\n* Query performance is most efficient when the number of slices is equal to the number of shards in the index or backing index. If that number is large (for example, 500), choose a lower number as too many slices hurts performance. Setting slices higher than the number of shards generally does not improve efficiency and adds overhead.\n* Update performance scales linearly across available resources with the number of slices.\n\nWhether query or update performance dominates the runtime depends on the documents being reindexed and cluster resources.\nRefer to the linked documentation for examples of how to update documents using the `_update_by_query` API:\n\n## Required authorization\n\n* Index privileges: `read`,`write`\n",
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/update-by-query-api",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-update-by-query.html"
+        },
         "operationId": "update-by-query",
         "parameters": [
           {
@@ -34913,7 +35057,7 @@
                     "type": "boolean"
                   },
                   "pruning_config": {
-                    "$ref": "#/components/schemas/_types.query_dsl.TokenPruningConfig"
+                    "$ref": "#/components/schemas/_types.TokenPruningConfig"
                   }
                 },
                 "required": [
@@ -34941,7 +35085,7 @@
           }
         ]
       },
-      "_types.query_dsl.TokenPruningConfig": {
+      "_types.TokenPruningConfig": {
         "type": "object",
         "properties": {
           "tokens_freq_ratio_threshold": {
@@ -35039,7 +35183,7 @@
                 "type": "string"
               },
               "pruning_config": {
-                "$ref": "#/components/schemas/_types.query_dsl.TokenPruningConfig"
+                "$ref": "#/components/schemas/_types.TokenPruningConfig"
               }
             },
             "required": [
@@ -35078,7 +35222,7 @@
                 ]
               },
               "pruning_config": {
-                "$ref": "#/components/schemas/_types.query_dsl.TokenPruningConfig"
+                "$ref": "#/components/schemas/_types.TokenPruningConfig"
               }
             },
             "required": [
@@ -42686,10 +42830,19 @@
             "$ref": "#/components/schemas/_types.analysis.ApostropheTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.ArabicStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.ArabicNormalizationTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.AsciiFoldingTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.BengaliNormalizationTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.BrazilianStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.CjkBigramTokenFilter"
@@ -42707,10 +42860,16 @@
             "$ref": "#/components/schemas/_types.analysis.ConditionTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.CzechStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.DecimalDigitTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.DelimitedPayloadTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.DutchStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.EdgeNGramTokenFilter"
@@ -42725,7 +42884,13 @@
             "$ref": "#/components/schemas/_types.analysis.FlattenGraphTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.FrenchStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.GermanNormalizationTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.GermanStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.HindiNormalizationTokenFilter"
@@ -42785,6 +42950,9 @@
             "$ref": "#/components/schemas/_types.analysis.PersianNormalizationTokenFilter"
           },
           {
+            "$ref": "#/components/schemas/_types.analysis.PersianStemTokenFilter"
+          },
+          {
             "$ref": "#/components/schemas/_types.analysis.PorterStemTokenFilter"
           },
           {
@@ -42795,6 +42963,9 @@
           },
           {
             "$ref": "#/components/schemas/_types.analysis.ReverseTokenFilter"
+          },
+          {
+            "$ref": "#/components/schemas/_types.analysis.RussianStemTokenFilter"
           },
           {
             "$ref": "#/components/schemas/_types.analysis.ScandinavianFoldingTokenFilter"
@@ -42908,6 +43079,27 @@
           }
         }
       },
+      "_types.analysis.ArabicStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "arabic_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
       "_types.analysis.ArabicNormalizationTokenFilter": {
         "allOf": [
           {
@@ -42945,6 +43137,48 @@
               },
               "preserve_original": {
                 "$ref": "#/components/schemas/_spec_utils.Stringifiedboolean"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.BengaliNormalizationTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "bengali_normalization"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.BrazilianStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "brazilian_stem"
+                ]
               }
             },
             "required": [
@@ -43109,6 +43343,27 @@
           }
         ]
       },
+      "_types.analysis.CzechStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "czech_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
       "_types.analysis.DecimalDigitTokenFilter": {
         "allOf": [
           {
@@ -43164,6 +43419,27 @@
           "int",
           "float",
           "identity"
+        ]
+      },
+      "_types.analysis.DutchStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "dutch_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
         ]
       },
       "_types.analysis.EdgeNGramTokenFilter": {
@@ -43293,6 +43569,27 @@
           }
         ]
       },
+      "_types.analysis.FrenchStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "french_stem"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
       "_types.analysis.GermanNormalizationTokenFilter": {
         "allOf": [
           {
@@ -43305,6 +43602,27 @@
                 "type": "string",
                 "enum": [
                   "german_normalization"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.GermanStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "german_stem"
                 ]
               }
             },
@@ -43899,6 +44217,9 @@
                 "description": "If `true`, all substrings matching the pattern parameter’s regular expression are replaced. If `false`, the filter replaces only the first matching substring in each token. Defaults to `true`.",
                 "type": "boolean"
               },
+              "flags": {
+                "type": "string"
+              },
               "pattern": {
                 "description": "Regular expression, written in Java’s regular expression syntax. The filter replaces token substrings matching this pattern with the substring in the `replacement` parameter.",
                 "type": "string"
@@ -43927,6 +44248,27 @@
                 "type": "string",
                 "enum": [
                   "persian_normalization"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.PersianStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "persian_stem"
                 ]
               }
             },
@@ -44015,6 +44357,27 @@
                 "type": "string",
                 "enum": [
                   "reverse"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.analysis.RussianStemTokenFilter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.analysis.TokenFilterBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "russian_stem"
                 ]
               }
             },
@@ -44693,10 +45056,10 @@
               "alternate": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationAlternate"
               },
-              "case_first": {
+              "caseFirst": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationCaseFirst"
               },
-              "case_level": {
+              "caseLevel": {
                 "type": "boolean"
               },
               "country": {
@@ -44705,7 +45068,7 @@
               "decomposition": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationDecomposition"
               },
-              "hiragana_quaternary_mode": {
+              "hiraganaQuaternaryMode": {
                 "type": "boolean"
               },
               "language": {
@@ -44720,7 +45083,7 @@
               "strength": {
                 "$ref": "#/components/schemas/_types.analysis.IcuCollationStrength"
               },
-              "variable_top": {
+              "variableTop": {
                 "type": "string"
               },
               "variant": {
@@ -45183,10 +45546,17 @@
                 "type": "number"
               },
               "token_chars": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.analysis.TokenChar"
-                }
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types.analysis.TokenChar"
+                    }
+                  }
+                ]
               }
             },
             "required": [
@@ -46082,6 +46452,9 @@
           "allow_mmap": {
             "description": "You can restrict the use of the mmapfs and the related hybridfs store type via the setting node.store.allow_mmap.\nThis is a boolean setting indicating whether or not memory-mapping is allowed. The default is to allow it. This\nsetting is useful, for example, if you are in an environment where you can not control the ability to create a lot\nof memory maps so you need disable the ability to use memory-mapping.",
             "type": "boolean"
+          },
+          "stats_refresh_interval": {
+            "$ref": "#/components/schemas/_types.Duration"
           }
         },
         "required": [
@@ -46403,6 +46776,9 @@
           },
           {
             "$ref": "#/components/schemas/_types.mapping.PassthroughObjectProperty"
+          },
+          {
+            "$ref": "#/components/schemas/_types.mapping.RankVectorProperty"
           },
           {
             "$ref": "#/components/schemas/_types.mapping.SemanticTextProperty"
@@ -47328,6 +47704,9 @@
               "default_metric": {
                 "type": "string"
               },
+              "ignore_malformed": {
+                "type": "boolean"
+              },
               "metrics": {
                 "type": "array",
                 "items": {
@@ -47487,6 +47866,12 @@
               "split_queries_on_whitespace": {
                 "type": "boolean"
               },
+              "time_series_dimensions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "type": {
                 "type": "string",
                 "enum": [
@@ -47588,6 +47973,42 @@
           }
         ]
       },
+      "_types.mapping.RankVectorProperty": {
+        "description": "Technical preview",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping.PropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "rank_vectors"
+                ]
+              },
+              "element_type": {
+                "$ref": "#/components/schemas/_types.mapping.RankVectorElementType"
+              },
+              "dims": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.mapping.RankVectorElementType": {
+        "type": "string",
+        "enum": [
+          "byte",
+          "float",
+          "bit"
+        ]
+      },
       "_types.mapping.SemanticTextProperty": {
         "type": "object",
         "properties": {
@@ -47661,11 +48082,17 @@
           {
             "type": "object",
             "properties": {
+              "store": {
+                "type": "boolean"
+              },
               "type": {
                 "type": "string",
                 "enum": [
                   "sparse_vector"
                 ]
+              },
+              "index_options": {
+                "$ref": "#/components/schemas/_types.mapping.SparseVectorIndexOptions"
               }
             },
             "required": [
@@ -47673,6 +48100,19 @@
             ]
           }
         ]
+      },
+      "_types.mapping.SparseVectorIndexOptions": {
+        "type": "object",
+        "properties": {
+          "prune": {
+            "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
+            "x-state": "Generally available",
+            "type": "boolean"
+          },
+          "pruning_config": {
+            "$ref": "#/components/schemas/_types.TokenPruningConfig"
+          }
+        }
       },
       "_types.mapping.CompletionProperty": {
         "allOf": [
@@ -47972,12 +48412,23 @@
                 "enum": [
                   "geo_point"
                 ]
+              },
+              "time_series_metric": {
+                "$ref": "#/components/schemas/_types.mapping.GeoPointMetricType"
               }
             },
             "required": [
               "type"
             ]
           }
+        ]
+      },
+      "_types.mapping.GeoPointMetricType": {
+        "type": "string",
+        "enum": [
+          "gauge",
+          "counter",
+          "position"
         ]
       },
       "_types.mapping.GeoShapeProperty": {
@@ -51843,11 +52294,13 @@
           },
           "unblocked": {
             "type": "boolean"
+          },
+          "exception": {
+            "$ref": "#/components/schemas/_types.ErrorCause"
           }
         },
         "required": [
-          "name",
-          "unblocked"
+          "name"
         ]
       },
       "indices.resolve_index.ResolveIndexItem": {
@@ -53246,6 +53699,66 @@
           "text_embedding",
           "rerank",
           "completion"
+        ]
+      },
+      "inference._types.TaskTypeDeepSeek": {
+        "type": "string",
+        "enum": [
+          "completion",
+          "chat_completion"
+        ]
+      },
+      "inference._types.DeepSeekServiceType": {
+        "type": "string",
+        "enum": [
+          "deepseek"
+        ]
+      },
+      "inference._types.DeepSeekServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "externalDocs": {
+              "url": "https://api-docs.deepseek.com/"
+            },
+            "description": "A valid API key for your DeepSeek account.\nYou can find or create your DeepSeek API keys on the DeepSeek API key page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "model_id": {
+            "description": "For a `completion` or `chat_completion` task, the name of the model to use for the inference task.\n\nFor the available `completion` and `chat_completion` models, refer to the [DeepSeek Models & Pricing docs](https://api-docs.deepseek.com/quick_start/pricing).",
+            "type": "string"
+          },
+          "url": {
+            "description": "The URL endpoint to use for the requests. Defaults to `https://api.deepseek.com/chat/completions`.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "api_key",
+          "model_id"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoDeepSeek": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeDeepSeek"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
         ]
       },
       "inference._types.ElasticsearchTaskType": {
@@ -65388,6 +65901,23 @@
                 "count",
                 "api_keys"
               ]
+            },
+            "examples": {
+              "QueryApiKeysResponseExample1": {
+                "summary": "Query API keys by ID",
+                "description": "A successful response from `GET /_security/_query/api_key?with_limited_by=true`. The `limited_by` details are the owner user's permissions associated with the API key. It is a point-in-time snapshot captured at creation and subsequent updates. An API key's effective permissions are an intersection of its assigned privileges and the owner user's permissions.\n",
+                "value": "{\n  \"api_keys\": [\n    {\n      \"id\": \"VuaCfGcBCdbkQm-e5aOx\",\n      \"name\": \"application-key-1\",\n      \"creation\": 1548550550158,\n      \"expiration\": 1548551550158,\n      \"invalidated\": false,\n      \"username\": \"myuser\",\n      \"realm\": \"native1\",\n      \"realm_type\": \"native\",\n      \"metadata\": {\n        \"application\": \"my-application\"\n      },\n      \"role_descriptors\": { },\n      \"limited_by\": [ \n        {\n          \"role-power-user\": {\n            \"cluster\": [\n              \"monitor\"\n            ],\n            \"indices\": [\n              {\n                \"names\": [\n                  \"*\"\n                ],\n                \"privileges\": [\n                  \"read\"\n                ],\n                \"allow_restricted_indices\": false\n              }\n            ],\n            \"applications\": [ ],\n            \"run_as\": [ ],\n            \"metadata\": { },\n            \"transient_metadata\": {\n              \"enabled\": true\n            }\n          }\n        }\n      ]\n    }\n  ]\n}"
+              },
+              "QueryApiKeysResponseExample2": {
+                "summary": "Query API keys with pagination",
+                "description": "An abbreviated response from `GET /_security/_query/api_key` that contains a list of matched API keys along with their sort values. The first sort value is creation time, which is displayed in `date_time` format. The second sort value is the API key name.\n",
+                "value": "{\n  \"total\": 100,\n  \"count\": 10,\n  \"api_keys\": [\n    {\n      \"id\": \"CLXgVnsBOGkf8IyjcXU7\",\n      \"name\": \"app1-key-79\",\n      \"creation\": 1629250154811,\n      \"invalidated\": false,\n      \"username\": \"org-admin-user\",\n      \"realm\": \"native1\",\n      \"metadata\": {\n        \"environment\": \"production\"\n      },\n      \"role_descriptors\": { },\n      \"_sort\": [\n        \"2021-08-18T01:29:14.811Z\",  \n        \"app1-key-79\"  \n      ]\n    },\n    {\n      \"id\": \"BrXgVnsBOGkf8IyjbXVB\",\n      \"name\": \"app1-key-78\",\n      \"creation\": 1629250153794,\n      \"invalidated\": false,\n      \"username\": \"org-admin-user\",\n      \"realm\": \"native1\",\n      \"metadata\": {\n        \"environment\": \"production\"\n      },\n      \"role_descriptors\": { },\n      \"_sort\": [\n        \"2021-08-18T01:29:13.794Z\",\n        \"app1-key-78\"\n      ]\n    }\n  ]\n}"
+              },
+              "QueryApiKeysResponseExample3": {
+                "summary": "Query all API keys",
+                "description": "A successful response from `GET /_security/_query/api_key`. It includes the role descriptors that are assigned to each API key when it was created or last updated. Note that an API key's effective permissions are an intersection of its assigned privileges and the point-in-time snapshot of the owner user's permissions. An empty role descriptors object means the API key inherits the owner user's permissions.\n",
+                "value": "{\n  \"total\": 3,\n  \"count\": 3,\n  \"api_keys\": [ \n    {\n      \"id\": \"nkvrGXsB8w290t56q3Rg\",\n      \"name\": \"my-api-key-1\",\n      \"creation\": 1628227480421,\n      \"expiration\": 1629091480421,\n      \"invalidated\": false,\n      \"username\": \"elastic\",\n      \"realm\": \"reserved\",\n      \"realm_type\": \"reserved\",\n      \"metadata\": {\n        \"letter\": \"a\"\n      },\n      \"role_descriptors\": { \n        \"role-a\": {\n          \"cluster\": [\n            \"monitor\"\n          ],\n          \"indices\": [\n            {\n              \"names\": [\n                \"index-a\"\n              ],\n              \"privileges\": [\n                \"read\"\n              ],\n              \"allow_restricted_indices\": false\n            }\n          ],\n          \"applications\": [ ],\n          \"run_as\": [ ],\n          \"metadata\": { },\n          \"transient_metadata\": {\n            \"enabled\": true\n          }\n        }\n      }\n    },\n    {\n      \"id\": \"oEvrGXsB8w290t5683TI\",\n      \"name\": \"my-api-key-2\",\n      \"creation\": 1628227498953,\n      \"expiration\": 1628313898953,\n      \"invalidated\": false,\n      \"username\": \"elastic\",\n      \"realm\": \"reserved\",\n      \"metadata\": {\n        \"letter\": \"b\"\n      },\n      \"role_descriptors\": { } \n    }\n  ]\n}"
+              }
             }
           }
         }
@@ -73021,6 +73551,16 @@
                 "summary": "Query API keys by ID",
                 "description": "Run `GET /_security/_query/api_key?with_limited_by=true` to retrieve an API key by ID.",
                 "value": "{\n  \"query\": {\n    \"ids\": {\n      \"values\": [\n        \"VuaCfGcBCdbkQm-e5aOx\"\n      ]\n    }\n  }\n}"
+              },
+              "QueryApiKeysRequestExample2": {
+                "summary": "Query API keys with pagination",
+                "description": "Run `GET /_security/_query/api_key`. Use a `bool` query to issue complex logical conditions and use `from`, `size`, and `sort` to help paginate the result. For example, the API key name must begin with `app1-key-` and must not be `app1-key-01`. It must be owned by a username with the wildcard pattern `org-*-user` and the `environment` metadata field must have a `production` value. The offset to begin the search result is the twentieth (zero-based index) API key. The page size of the response is 10 API keys. The result is first sorted by creation date in descending order, then by name in ascending order.\n",
+                "value": "{\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        {\n          \"prefix\": {\n            \"name\": \"app1-key-\" \n          }\n        },\n        {\n          \"term\": {\n            \"invalidated\": \"false\" \n          }\n        }\n      ],\n      \"must_not\": [\n        {\n          \"term\": {\n            \"name\": \"app1-key-01\" \n          }\n        }\n      ],\n      \"filter\": [\n        {\n          \"wildcard\": {\n            \"username\": \"org-*-user\" \n          }\n        },\n        {\n          \"term\": {\n            \"metadata.environment\": \"production\" \n          }\n        }\n      ]\n    }\n  },\n  \"from\": 20, \n  \"size\": 10, \n  \"sort\": [ \n    { \"creation\": { \"order\": \"desc\", \"format\": \"date_time\" } },\n    \"name\"\n  ]\n}"
+              },
+              "QueryApiKeysRequestExample3": {
+                "summary": "Query API keys by name",
+                "description": "Run `GET /_security/_query/api_key` to retrieve the API key by name.",
+                "value": "{\n  \"query\": {\n    \"term\": {\n      \"name\": {\n        \"value\": \"application-key-1\"\n      }\n    }\n  }\n}"
               }
             }
           }

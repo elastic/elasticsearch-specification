@@ -1003,7 +1003,6 @@ pub struct UrlTemplate {
 pub struct ModelInfo {
     pub title: String,
     pub license: License,
-    pub version: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

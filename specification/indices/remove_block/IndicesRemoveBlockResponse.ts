@@ -18,7 +18,7 @@
  */
 
 import { IndexName } from '@_types/common'
-import { ErrorCause } from "@_types/Errors";
+import { ErrorCause } from '@_types/Errors'
 
 export class Response {
   body: {
