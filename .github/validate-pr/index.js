@@ -56,7 +56,6 @@ async function run() {
     path.join(tsValidationPath, 'types.ts')
   )
   const context = github.context
-  const branch = context.payload.base_ref
   assert(context.payload.pull_request, 'We should be in a PR context')
   const files = []
   let page = 1
@@ -150,7 +149,7 @@ async function run() {
   }
   changedApis.sort((a, b) => a.api.localeCompare(b.api))
 
-  let comment = `Following you can find the validation changes against the ${branch} branch for the API${changedApis.length === 1 ? '' : 's'}.\n\n`
+  let comment = `Following you can find the validation changes against the target branch for the API${changedApis.length === 1 ? '' : 's'}.\n\n`
   if (changedApis.length > 0) {
     comment += '| API | Status | Request | Response |\n'
     comment += '| --- | --- | --- | --- |\n'
