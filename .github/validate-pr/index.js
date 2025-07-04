@@ -56,7 +56,7 @@ async function run() {
     path.join(tsValidationPath, 'types.ts')
   )
   const context = github.context
-  const branch = context.base_ref
+  const branch = context.payload.base_ref
   assert(context.payload.pull_request, 'We should be in a PR context')
   const files = []
   let page = 1
