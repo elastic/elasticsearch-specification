@@ -20,8 +20,8 @@
 import { Field, Id } from '@_types/common'
 import { float } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { TokenPruningConfig } from '../TokenPruningConfig'
 import { QueryBase } from './abstractions'
-import { TokenPruningConfig } from './TokenPruningConfig'
 
 /**
  * @variants container
