@@ -215,7 +215,7 @@ impl<'a> TypesAndComponents<'a> {
                 extensions.insert("x-previousVersionUrl".to_string(), serde_json::json!(previous_version_doc_url));
             }
             ExternalDocumentation {
-                description: None,
+                description: obj.ext_doc_description().map(|desc| { desc.to_string() }),
                 url: url.trim().replace("{branch}", &branch.unwrap_or("current".to_string())),
                 extensions,
             }
