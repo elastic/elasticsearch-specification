@@ -5835,6 +5835,7 @@
                   },
                   "include_ccs_metadata": {
                     "description": "When set to `true` and performing a cross-cluster query, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.",
+                    "default": false,
                     "type": "boolean"
                   }
                 },
@@ -8365,6 +8366,7 @@
                   },
                   "enabled": {
                     "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+                    "default": true,
                     "type": "boolean"
                   }
                 }
@@ -12443,6 +12445,7 @@
                   },
                   "deprecated": {
                     "description": "Marks this ingest pipeline as deprecated.\nWhen a deprecated ingest pipeline is referenced as the default or final pipeline when creating or updating a non-deprecated index template, Elasticsearch will emit a deprecation warning.",
+                    "default": false,
                     "type": "boolean"
                   }
                 }
@@ -13145,10 +13148,12 @@
                 "properties": {
                   "allow_no_match": {
                     "description": "Refer to the description for the `allow_no_match` query parameter.",
+                    "default": true,
                     "type": "boolean"
                   },
                   "force": {
                     "description": "Refer to the descriptiion for the `force` query parameter.",
+                    "default": false,
                     "type": "boolean"
                   },
                   "timeout": {
@@ -13609,6 +13614,7 @@
                 "properties": {
                   "allow_lazy_start": {
                     "description": "Specifies whether this job can start when there is insufficient machine\nlearning node capacity for it to be immediately assigned to a node. If\nset to `false` and a machine learning node with capacity to run the job\ncannot be immediately found, the API returns an error. If set to `true`,\nthe API does not return an error; the job waits in the `starting` state\nuntil sufficient machine learning node capacity is available. This\nbehavior is also affected by the cluster-wide\n`xpack.ml.max_lazy_ml_nodes` setting.",
+                    "default": false,
                     "type": "boolean"
                   },
                   "analysis": {
@@ -13626,6 +13632,7 @@
                   },
                   "max_num_threads": {
                     "description": "The maximum number of threads to be used by the analysis. Using more\nthreads may decrease the time necessary to complete the analysis at the\ncost of using more CPU. Note that the process may use additional threads\nfor operational functionality other than the analysis itself.",
+                    "default": 1.0,
                     "type": "number"
                   },
                   "_meta": {
@@ -13633,6 +13640,7 @@
                   },
                   "model_memory_limit": {
                     "description": "The approximate maximum amount of memory resources that are permitted for\nanalytical processing. If your `elasticsearch.yml` file contains an\n`xpack.ml.max_model_memory_limit` setting, an error occurs when you try\nto create data frame analytics jobs that have `model_memory_limit` values\ngreater than that setting.",
+                    "default": "1gb",
                     "type": "string"
                   },
                   "source": {
@@ -13930,6 +13938,7 @@
                   },
                   "scroll_size": {
                     "description": "The size parameter that is used in Elasticsearch searches when the datafeed does not use aggregations.\nThe maximum value is the value of `index.max_result_window`, which is 10,000 by default.",
+                    "default": 1000.0,
                     "type": "number"
                   },
                   "headers": {
@@ -14326,6 +14335,7 @@
                 "properties": {
                   "allow_lazy_open": {
                     "description": "Advanced configuration option. Specifies whether this job can open when there is insufficient machine learning node capacity for it to be immediately assigned to a node. By default, if a machine learning node with capacity to run the job cannot immediately be found, the open anomaly detection jobs API returns an error. However, this is also subject to the cluster-wide `xpack.ml.max_lazy_ml_nodes` setting. If this option is set to true, the open anomaly detection jobs API does not return an error and the job waits in the opening state until sufficient machine learning node capacity is available.",
+                    "default": false,
                     "type": "boolean"
                   },
                   "analysis_config": {
@@ -14342,6 +14352,7 @@
                   },
                   "daily_model_snapshot_retention_after_days": {
                     "description": "Advanced configuration option, which affects the automatic removal of old model snapshots for this job. It specifies a period of time (in days) after which only the first snapshot per day is retained. This period is relative to the timestamp of the most recent snapshot for this job. Valid values range from 0 to `model_snapshot_retention_days`.",
+                    "default": 1.0,
                     "type": "number"
                   },
                   "data_description": {
@@ -14369,6 +14380,7 @@
                   },
                   "model_snapshot_retention_days": {
                     "description": "Advanced configuration option, which affects the automatic removal of old model snapshots for this job. It specifies the maximum period of time (in days) that snapshots are retained. This period is relative to the timestamp of the most recent snapshot for this job. By default, snapshots ten days older than the newest snapshot are deleted.",
+                    "default": 10.0,
                     "type": "number"
                   },
                   "renormalization_window_days": {
@@ -16917,10 +16929,12 @@
                 "properties": {
                   "allow_no_match": {
                     "description": "Refer to the description for the `allow_no_match` query parameter.",
+                    "default": true,
                     "type": "boolean"
                   },
                   "force": {
                     "description": "Refer to the description for the `force` query parameter.",
+                    "default": false,
                     "type": "boolean"
                   },
                   "timeout": {
@@ -17059,14 +17073,17 @@
                   },
                   "model_memory_limit": {
                     "description": "The approximate maximum amount of memory resources that are permitted for\nanalytical processing. If your `elasticsearch.yml` file contains an\n`xpack.ml.max_model_memory_limit` setting, an error occurs when you try\nto create data frame analytics jobs that have `model_memory_limit` values\ngreater than that setting.",
+                    "default": "1gb",
                     "type": "string"
                   },
                   "max_num_threads": {
                     "description": "The maximum number of threads to be used by the analysis. Using more\nthreads may decrease the time necessary to complete the analysis at the\ncost of using more CPU. Note that the process may use additional threads\nfor operational functionality other than the analysis itself.",
+                    "default": 1.0,
                     "type": "number"
                   },
                   "allow_lazy_start": {
                     "description": "Specifies whether this job can start when there is insufficient machine\nlearning node capacity for it to be immediately assigned to a node.",
+                    "default": false,
                     "type": "boolean"
                   }
                 }
@@ -17264,6 +17281,7 @@
                   },
                   "scroll_size": {
                     "description": "The size parameter that is used in Elasticsearch searches when the datafeed does not use aggregations.\nThe maximum value is the value of `index.max_result_window`.",
+                    "default": 1000.0,
                     "type": "number"
                   }
                 }
@@ -17480,6 +17498,7 @@
                 "properties": {
                   "allow_lazy_open": {
                     "description": "Advanced configuration option. Specifies whether this job can open when\nthere is insufficient machine learning node capacity for it to be\nimmediately assigned to a node. If `false` and a machine learning node\nwith capacity to run the job cannot immediately be found, the open\nanomaly detection jobs API returns an error. However, this is also\nsubject to the cluster-wide `xpack.ml.max_lazy_ml_nodes` setting. If this\noption is set to `true`, the open anomaly detection jobs API does not\nreturn an error and the job waits in the opening state until sufficient\nmachine learning node capacity is available.",
+                    "default": false,
                     "type": "boolean"
                   },
                   "analysis_limits": {
@@ -17513,10 +17532,12 @@
                   },
                   "daily_model_snapshot_retention_after_days": {
                     "description": "Advanced configuration option, which affects the automatic removal of old\nmodel snapshots for this job. It specifies a period of time (in days)\nafter which only the first snapshot per day is retained. This period is\nrelative to the timestamp of the most recent snapshot for this job. Valid\nvalues range from 0 to `model_snapshot_retention_days`. For jobs created\nbefore version 7.8.0, the default value matches\n`model_snapshot_retention_days`.",
+                    "default": 1.0,
                     "type": "number"
                   },
                   "model_snapshot_retention_days": {
                     "description": "Advanced configuration option, which affects the automatic removal of old\nmodel snapshots for this job. It specifies the maximum period of time (in\ndays) that snapshots are retained. This period is relative to the\ntimestamp of the most recent snapshot for this job.",
+                    "default": 10.0,
                     "type": "number"
                   },
                   "renormalization_window_days": {
@@ -17695,6 +17716,7 @@
                 "properties": {
                   "number_of_allocations": {
                     "description": "The number of model allocations on each node where the model is deployed.\nAll allocations on a node share the same copy of the model in memory but use\na separate set of threads to evaluate the model.\nIncreasing this value generally increases the throughput.\nIf this setting is greater than the number of hardware threads\nit will automatically be changed to a value less than the number of hardware threads.\nIf adaptive_allocations is enabled, do not set this value, because it’s automatically set.",
+                    "default": 1.0,
                     "type": "number"
                   },
                   "adaptive_allocations": {
@@ -21291,6 +21313,7 @@
                   },
                   "owner": {
                     "description": "Query API keys owned by the currently authenticated user.\nThe `realm_name` or `username` parameters cannot be specified when this parameter is set to `true` as they are assumed to be the currently authenticated ones.\n\nNOTE: At least one of `ids`, `name`, `username`, and `realm_name` must be specified if `owner` is `false`.",
+                    "default": false,
                     "type": "boolean"
                   },
                   "realm_name": {
@@ -24159,6 +24182,7 @@
                 "properties": {
                   "detect_noop": {
                     "description": "If `true`, the `result` in the response is set to `noop` (no operation) when there are no changes to the document.",
+                    "default": true,
                     "type": "boolean"
                   },
                   "doc": {
@@ -24167,6 +24191,7 @@
                   },
                   "doc_as_upsert": {
                     "description": "If `true`, use the contents of 'doc' as the value of 'upsert'.\nNOTE: Using ingest pipelines with `doc_as_upsert` is not supported.",
+                    "default": false,
                     "type": "boolean"
                   },
                   "script": {
@@ -24174,6 +24199,7 @@
                   },
                   "scripted_upsert": {
                     "description": "If `true`, run the script whether or not the document exists.",
+                    "default": false,
                     "type": "boolean"
                   },
                   "_source": {
@@ -30672,6 +30698,7 @@
         "properties": {
           "boost": {
             "description": "Floating point number used to decrease or increase the relevance scores of the query.\nBoost values are relative to the default value of 1.0.\nA boost value between 0 and 1.0 decreases the relevance score.\nA value greater than 1.0 increases the relevance score.",
+            "default": 1.0,
             "type": "number"
           },
           "_name": {
@@ -30760,6 +30787,7 @@
               },
               "auto_generate_synonyms_phrase_query": {
                 "description": "If true, match phrase queries are automatically created for multi-term synonyms.",
+                "default": true,
                 "type": "boolean"
               },
               "operator": {
@@ -30828,6 +30856,7 @@
               },
               "tie_breaker": {
                 "description": "Floating point number between 0 and 1.0 used to increase the relevance scores of documents matching multiple query clauses.",
+                "default": 0.0,
                 "type": "number"
               }
             },
@@ -31179,6 +31208,7 @@
           },
           "factor": {
             "description": "Optional factor to multiply the field value with.",
+            "default": 1.0,
             "type": "number"
           },
           "missing": {
@@ -31292,6 +31322,7 @@
           },
           "explain": {
             "description": "If `true`, the request returns detailed information about score computation as part of a hit.",
+            "default": false,
             "type": "boolean"
           },
           "ext": {
@@ -31303,6 +31334,7 @@
           },
           "from": {
             "description": "The starting document offset, which must be non-negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+            "default": 0.0,
             "type": "number"
           },
           "highlight": {
@@ -31363,6 +31395,7 @@
           },
           "profile": {
             "description": "Set to `true` to return detailed timing information about the execution of individual components in a search request.\nNOTE: This is a debugging tool and adds significant overhead to search execution.",
+            "default": false,
             "type": "boolean"
           },
           "query": {
@@ -31397,6 +31430,7 @@
           },
           "size": {
             "description": "The number of hits to return, which must not be negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` property.",
+            "default": 10.0,
             "type": "number"
           },
           "slice": {
@@ -31420,6 +31454,7 @@
           },
           "terminate_after": {
             "description": "The maximum number of documents to collect for each shard.\nIf a query reaches this limit, Elasticsearch terminates the query early.\nElasticsearch collects documents before sorting.\n\nIMPORTANT: Use with caution.\nElasticsearch applies this property to each shard handling the request.\nWhen possible, let Elasticsearch perform early termination automatically.\nAvoid specifying this property for requests that target data streams with backing indices across multiple data tiers.\n\nIf set to `0` (default), the query does not terminate early.",
+            "default": 0.0,
             "type": "number"
           },
           "timeout": {
@@ -31428,10 +31463,12 @@
           },
           "track_scores": {
             "description": "If `true`, calculate and return document scores, even if the scores are not used for sorting.",
+            "default": false,
             "type": "boolean"
           },
           "version": {
             "description": "If `true`, the request returns the document version as part of a hit.",
+            "default": false,
             "type": "boolean"
           },
           "seq_no_primary_term": {
@@ -31499,10 +31536,12 @@
           },
           "size": {
             "description": "The maximum number of hits to return per `inner_hits`.",
+            "default": 3.0,
             "type": "number"
           },
           "from": {
             "description": "Inner hit starting document offset.",
+            "default": 0.0,
             "type": "number"
           },
           "collapse": {
@@ -31548,6 +31587,7 @@
             "$ref": "#/components/schemas/_types.Fields"
           },
           "track_scores": {
+            "default": false,
             "type": "boolean"
           },
           "version": {
@@ -31651,10 +31691,12 @@
           },
           "boundary_chars": {
             "description": "A string that contains each boundary character.",
+            "default": ".,!? \\t\\n",
             "type": "string"
           },
           "boundary_max_scan": {
             "description": "How far to scan for boundary characters.",
+            "default": 20.0,
             "type": "number"
           },
           "boundary_scanner": {
@@ -31662,6 +31704,7 @@
           },
           "boundary_scanner_locale": {
             "description": "Controls which locale is used to search for sentence and word boundaries.\nThis parameter takes a form of a language tag, for example: `\"en-US\"`, `\"fr-FR\"`, `\"ja-JP\"`.",
+            "default": "Locale.ROOT",
             "type": "string"
           },
           "force_source": {
@@ -31673,6 +31716,7 @@
           },
           "fragment_size": {
             "description": "The size of the highlighted fragment in characters.",
+            "default": 100.0,
             "type": "number"
           },
           "highlight_filter": {
@@ -31690,10 +31734,12 @@
           },
           "no_match_size": {
             "description": "The amount of text you want to return from the beginning of the field if there are no matching fragments to highlight.",
+            "default": 0.0,
             "type": "number"
           },
           "number_of_fragments": {
             "description": "The maximum number of fragments to return.\nIf the number of fragments is set to `0`, no fragments are returned.\nInstead, the entire field contents are highlighted and returned.\nThis can be handy when you need to highlight short texts such as a title or address, but fragmentation is not required.\nIf `number_of_fragments` is `0`, `fragment_size` is ignored.",
+            "default": 5.0,
             "type": "number"
           },
           "options": {
@@ -31707,6 +31753,7 @@
           },
           "phrase_limit": {
             "description": "Controls the number of matching phrases in a document that are considered.\nPrevents the `fvh` highlighter from analyzing too many phrases and consuming too much memory.\nWhen using `matched_fields`, `phrase_limit` phrases per matched field are considered. Raising the limit increases query time and consumes more memory.\nOnly supported by the `fvh` highlighter.",
+            "default": 256.0,
             "type": "number"
           },
           "post_tags": {
@@ -31725,6 +31772,7 @@
           },
           "require_field_match": {
             "description": "By default, only fields that contains a query match are highlighted.\nSet to `false` to highlight all fields.",
+            "default": true,
             "type": "boolean"
           },
           "tags_schema": {
@@ -32105,10 +32153,12 @@
           },
           "query_weight": {
             "description": "Relative importance of the original query versus the rescore query.",
+            "default": 1.0,
             "type": "number"
           },
           "rescore_query_weight": {
             "description": "Relative importance of the rescore query versus the original query.",
+            "default": 1.0,
             "type": "number"
           },
           "score_mode": {
@@ -32677,10 +32727,12 @@
             "properties": {
               "max_expansions": {
                 "description": "Maximum number of variations created.",
+                "default": 50.0,
                 "type": "number"
               },
               "prefix_length": {
                 "description": "Number of beginning characters left unchanged when creating expansions.",
+                "default": 0.0,
                 "type": "number"
               },
               "rewrite": {
@@ -32688,6 +32740,7 @@
               },
               "transpositions": {
                 "description": "Indicates whether edits include transpositions of two adjacent characters (for example `ab` to `ba`).",
+                "default": true,
                 "type": "boolean"
               },
               "fuzziness": {
@@ -32743,6 +32796,7 @@
               },
               "ignore_unmapped": {
                 "description": "Set to `true` to ignore an unmapped field and not match any documents for this query.\nSet to `false` to throw an exception if the field is not mapped.",
+                "default": false,
                 "type": "boolean"
               }
             }
@@ -32783,6 +32837,7 @@
               },
               "ignore_unmapped": {
                 "description": "Set to `true` to ignore an unmapped field and not match any documents for this query.\nSet to `false` to throw an exception if the field is not mapped.",
+                "default": false,
                 "type": "boolean"
               }
             },
@@ -32843,6 +32898,7 @@
             "properties": {
               "ignore_unmapped": {
                 "description": "Set to `true` to ignore an unmapped field and not match any documents for this query.\nSet to `false` to throw an exception if the field is not mapped.",
+                "default": false,
                 "type": "boolean"
               }
             }
@@ -32859,6 +32915,7 @@
             "properties": {
               "ignore_unmapped": {
                 "description": "Indicates whether to ignore an unmapped `type` and not return any documents instead of an error.",
+                "default": false,
                 "type": "boolean"
               },
               "inner_hits": {
@@ -32912,6 +32969,7 @@
             "properties": {
               "ignore_unmapped": {
                 "description": "Indicates whether to ignore an unmapped `parent_type` and not return any documents instead of an error.\nYou can use this parameter to query multiple indices that may not contain the `parent_type`.",
+                "default": false,
                 "type": "boolean"
               },
               "inner_hits": {
@@ -32925,6 +32983,7 @@
               },
               "score": {
                 "description": "Indicates whether the relevance score of a matching parent document is aggregated into its child documents.",
+                "default": false,
                 "type": "boolean"
               }
             },
@@ -33016,10 +33075,12 @@
           },
           "max_gaps": {
             "description": "Maximum number of positions between the matching terms.\nIntervals produced by the rules further apart than this are not considered matches.",
+            "default": -1.0,
             "type": "number"
           },
           "ordered": {
             "description": "If `true`, intervals produced by the rules should appear in the order in which they are specified.",
+            "default": false,
             "type": "boolean"
           },
           "filter": {
@@ -33125,6 +33186,7 @@
           },
           "prefix_length": {
             "description": "Number of beginning characters left unchanged when creating expansions.",
+            "default": 0.0,
             "type": "number"
           },
           "term": {
@@ -33133,6 +33195,7 @@
           },
           "transpositions": {
             "description": "Indicates whether edits include transpositions of two adjacent characters (for example, `ab` to `ba`).",
+            "default": true,
             "type": "boolean"
           },
           "use_field": {
@@ -33152,10 +33215,12 @@
           },
           "max_gaps": {
             "description": "Maximum number of positions between the matching terms.\nTerms further apart than this are not considered matches.",
+            "default": -1.0,
             "type": "number"
           },
           "ordered": {
             "description": "If `true`, matching terms must appear in their specified order.",
+            "default": false,
             "type": "boolean"
           },
           "query": {
@@ -33325,6 +33390,7 @@
               },
               "auto_generate_synonyms_phrase_query": {
                 "description": "If `true`, match phrase queries are automatically created for multi-term synonyms.",
+                "default": true,
                 "type": "boolean"
               },
               "cutoff_frequency": {
@@ -33339,14 +33405,17 @@
               },
               "fuzzy_transpositions": {
                 "description": "If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example, `ab` to `ba`).",
+                "default": true,
                 "type": "boolean"
               },
               "lenient": {
                 "description": "If `true`, format-based errors, such as providing a text query value for a numeric field, are ignored.",
+                "default": false,
                 "type": "boolean"
               },
               "max_expansions": {
                 "description": "Maximum number of terms to which the query will expand.",
+                "default": 50.0,
                 "type": "number"
               },
               "minimum_should_match": {
@@ -33357,6 +33426,7 @@
               },
               "prefix_length": {
                 "description": "Number of beginning characters left unchanged for fuzzy matching.",
+                "default": 0.0,
                 "type": "number"
               },
               "query": {
@@ -33420,10 +33490,12 @@
               },
               "fuzzy_transpositions": {
                 "description": "If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example, `ab` to `ba`).\nCan be applied to the term subqueries constructed for all terms but the final term.",
+                "default": true,
                 "type": "boolean"
               },
               "max_expansions": {
                 "description": "Maximum number of terms to which the query will expand.\nCan be applied to the term subqueries constructed for all terms but the final term.",
+                "default": 50.0,
                 "type": "number"
               },
               "minimum_should_match": {
@@ -33434,6 +33506,7 @@
               },
               "prefix_length": {
                 "description": "Number of beginning characters left unchanged for fuzzy matching.\nCan be applied to the term subqueries constructed for all terms but the final term.",
+                "default": 0.0,
                 "type": "number"
               },
               "query": {
@@ -33475,6 +33548,7 @@
               },
               "slop": {
                 "description": "Maximum number of positions allowed between matching tokens.",
+                "default": 0.0,
                 "type": "number"
               },
               "zero_terms_query": {
@@ -33501,6 +33575,7 @@
               },
               "max_expansions": {
                 "description": "Maximum number of terms to which the last provided term of the query value will expand.",
+                "default": 50.0,
                 "type": "number"
               },
               "query": {
@@ -33509,6 +33584,7 @@
               },
               "slop": {
                 "description": "Maximum number of positions allowed between matching tokens.",
+                "default": 0.0,
                 "type": "number"
               },
               "zero_terms_query": {
@@ -33538,10 +33614,12 @@
               },
               "boost_terms": {
                 "description": "Each term in the formed query could be further boosted by their tf-idf score.\nThis sets the boost factor to use when using this feature.\nDefaults to deactivated (0).",
+                "default": 0.0,
                 "type": "number"
               },
               "fail_on_unsupported_field": {
                 "description": "Controls whether the query should fail (throw an exception) if any of the specified fields are not of the supported types (`text` or `keyword`).",
+                "default": true,
                 "type": "boolean"
               },
               "fields": {
@@ -33553,6 +33631,7 @@
               },
               "include": {
                 "description": "Specifies whether the input documents should also be included in the search results returned.",
+                "default": false,
                 "type": "boolean"
               },
               "like": {
@@ -33575,14 +33654,17 @@
               },
               "max_query_terms": {
                 "description": "The maximum number of query terms that can be selected.",
+                "default": 25.0,
                 "type": "number"
               },
               "max_word_length": {
                 "description": "The maximum word length above which the terms are ignored.\nDefaults to unbounded (`0`).",
+                "default": 0.0,
                 "type": "number"
               },
               "min_doc_freq": {
                 "description": "The minimum document frequency below which the terms are ignored from the input document.",
+                "default": 5.0,
                 "type": "number"
               },
               "minimum_should_match": {
@@ -33590,10 +33672,12 @@
               },
               "min_term_freq": {
                 "description": "The minimum term frequency below which the terms are ignored from the input document.",
+                "default": 2.0,
                 "type": "number"
               },
               "min_word_length": {
                 "description": "The minimum word length below which the terms are ignored.",
+                "default": 0.0,
                 "type": "number"
               },
               "routing": {
@@ -33756,6 +33840,7 @@
               },
               "auto_generate_synonyms_phrase_query": {
                 "description": "If `true`, match phrase queries are automatically created for multi-term synonyms.",
+                "default": true,
                 "type": "boolean"
               },
               "cutoff_frequency": {
@@ -33773,14 +33858,17 @@
               },
               "fuzzy_transpositions": {
                 "description": "If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example, `ab` to `ba`).\nCan be applied to the term subqueries constructed for all terms but the final term.",
+                "default": true,
                 "type": "boolean"
               },
               "lenient": {
                 "description": "If `true`, format-based errors, such as providing a text query value for a numeric field, are ignored.",
+                "default": false,
                 "type": "boolean"
               },
               "max_expansions": {
                 "description": "Maximum number of terms to which the query will expand.",
+                "default": 50.0,
                 "type": "number"
               },
               "minimum_should_match": {
@@ -33791,6 +33879,7 @@
               },
               "prefix_length": {
                 "description": "Number of beginning characters left unchanged for fuzzy matching.",
+                "default": 0.0,
                 "type": "number"
               },
               "query": {
@@ -33799,10 +33888,12 @@
               },
               "slop": {
                 "description": "Maximum number of positions allowed between matching tokens.",
+                "default": 0.0,
                 "type": "number"
               },
               "tie_breaker": {
                 "description": "Determines how scores for each per-term blended query and scores across groups are combined.",
+                "default": 0.0,
                 "type": "number"
               },
               "type": {
@@ -33839,6 +33930,7 @@
             "properties": {
               "ignore_unmapped": {
                 "description": "Indicates whether to ignore an unmapped path and not return any documents instead of an error.",
+                "default": false,
                 "type": "boolean"
               },
               "inner_hits": {
@@ -33874,6 +33966,7 @@
               },
               "ignore_unmapped": {
                 "description": "Indicates whether to ignore an unmapped `type` and not return any documents instead of an error.",
+                "default": false,
                 "type": "boolean"
               },
               "type": {
@@ -34009,6 +34102,7 @@
               },
               "case_insensitive": {
                 "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nDefault is `false` which means the case sensitivity of matching depends on the underlying field’s mapping.",
+                "default": false,
                 "x-state": "Generally available",
                 "type": "boolean"
               }
@@ -34029,6 +34123,7 @@
             "properties": {
               "allow_leading_wildcard": {
                 "description": "If `true`, the wildcard characters `*` and `?` are allowed as the first character of the query string.",
+                "default": true,
                 "type": "boolean"
               },
               "analyzer": {
@@ -34037,10 +34132,12 @@
               },
               "analyze_wildcard": {
                 "description": "If `true`, the query attempts to analyze wildcard terms in the query string.",
+                "default": false,
                 "type": "boolean"
               },
               "auto_generate_synonyms_phrase_query": {
                 "description": "If `true`, match phrase queries are automatically created for multi-term synonyms.",
+                "default": true,
                 "type": "boolean"
               },
               "default_field": {
@@ -34051,9 +34148,11 @@
               },
               "enable_position_increments": {
                 "description": "If `true`, enable position increments in queries constructed from a `query_string` search.",
+                "default": true,
                 "type": "boolean"
               },
               "escape": {
+                "default": false,
                 "type": "boolean"
               },
               "fields": {
@@ -34068,10 +34167,12 @@
               },
               "fuzzy_max_expansions": {
                 "description": "Maximum number of terms to which the query expands for fuzzy matching.",
+                "default": 50.0,
                 "type": "number"
               },
               "fuzzy_prefix_length": {
                 "description": "Number of beginning characters left unchanged for fuzzy matching.",
+                "default": 0.0,
                 "type": "number"
               },
               "fuzzy_rewrite": {
@@ -34079,14 +34180,17 @@
               },
               "fuzzy_transpositions": {
                 "description": "If `true`, edits for fuzzy matching include transpositions of two adjacent characters (for example, `ab` to `ba`).",
+                "default": true,
                 "type": "boolean"
               },
               "lenient": {
                 "description": "If `true`, format-based errors, such as providing a text value for a numeric field, are ignored.",
+                "default": false,
                 "type": "boolean"
               },
               "max_determinized_states": {
                 "description": "Maximum number of automaton states required for the query.",
+                "default": 10000.0,
                 "type": "number"
               },
               "minimum_should_match": {
@@ -34094,6 +34198,7 @@
               },
               "phrase_slop": {
                 "description": "Maximum number of positions allowed between matching tokens for phrases.",
+                "default": 0.0,
                 "type": "number"
               },
               "query": {
@@ -34449,6 +34554,7 @@
             "properties": {
               "case_insensitive": {
                 "description": "Allows case insensitive matching of the regular expression value with the indexed field values when set to `true`.\nWhen `false`, case sensitivity of matching depends on the underlying field’s mapping.",
+                "default": false,
                 "x-state": "Generally available",
                 "type": "boolean"
               },
@@ -34458,6 +34564,7 @@
               },
               "max_determinized_states": {
                 "description": "Maximum number of automaton states required for the query.",
+                "default": 10000.0,
                 "type": "number"
               },
               "rewrite": {
@@ -34610,10 +34717,12 @@
               },
               "analyze_wildcard": {
                 "description": "If `true`, the query attempts to analyze wildcard terms in the query string.",
+                "default": false,
                 "type": "boolean"
               },
               "auto_generate_synonyms_phrase_query": {
                 "description": "If `true`, the parser creates a match_phrase query for each multi-position token.",
+                "default": true,
                 "type": "boolean"
               },
               "default_operator": {
@@ -34631,10 +34740,12 @@
               },
               "fuzzy_max_expansions": {
                 "description": "Maximum number of terms to which the query expands for fuzzy matching.",
+                "default": 50.0,
                 "type": "number"
               },
               "fuzzy_prefix_length": {
                 "description": "Number of beginning characters left unchanged for fuzzy matching.",
+                "default": 0.0,
                 "type": "number"
               },
               "fuzzy_transpositions": {
@@ -34643,6 +34754,7 @@
               },
               "lenient": {
                 "description": "If `true`, format-based errors, such as providing a text value for a numeric field, are ignored.",
+                "default": false,
                 "type": "boolean"
               },
               "minimum_should_match": {
@@ -34887,10 +34999,12 @@
               },
               "post": {
                 "description": "The number of tokens after the include span that can’t have overlap with the exclude span.",
+                "default": 0.0,
                 "type": "number"
               },
               "pre": {
                 "description": "The number of tokens before the include span that can’t have overlap with the exclude span.",
+                "default": 0.0,
                 "type": "number"
               }
             },
@@ -35022,14 +35136,17 @@
         "properties": {
           "tokens_freq_ratio_threshold": {
             "description": "Tokens whose frequency is more than this threshold times the average frequency of all tokens in the specified field are considered outliers and pruned.",
+            "default": 5.0,
             "type": "number"
           },
           "tokens_weight_threshold": {
             "description": "Tokens whose weight is less than this threshold are considered nonsignificant and pruned.",
+            "default": 0.4,
             "type": "number"
           },
           "only_score_pruned_tokens": {
             "description": "Whether to only score pruned tokens, vs only scoring kept tokens.",
+            "default": false,
             "type": "boolean"
           }
         }
@@ -35047,6 +35164,7 @@
               },
               "case_insensitive": {
                 "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nWhen `false`, the case sensitivity of matching depends on the underlying field’s mapping.",
+                "default": false,
                 "x-state": "Generally available",
                 "type": "boolean"
               }
@@ -35252,6 +35370,7 @@
             "properties": {
               "buckets": {
                 "description": "The target number of buckets.",
+                "default": 10.0,
                 "type": "number"
               },
               "field": {
@@ -35616,6 +35735,7 @@
             "properties": {
               "precision_threshold": {
                 "description": "A unique count below which counts are expected to be close to accurate.\nThis allows to trade memory for accuracy.",
+                "default": 3000.0,
                 "type": "number"
               },
               "rehash": {
@@ -35652,14 +35772,17 @@
               },
               "max_unique_tokens": {
                 "description": "The maximum number of unique tokens at any position up to max_matched_tokens. Must be larger than 1.\nSmaller values use less memory and create fewer categories. Larger values will use more memory and\ncreate narrower categories. Max allowed value is 100.",
+                "default": 50.0,
                 "type": "number"
               },
               "max_matched_tokens": {
                 "description": "The maximum number of token positions to match on before attempting to merge categories. Larger\nvalues will use more memory and create narrower categories. Max allowed value is 100.",
+                "default": 5.0,
                 "type": "number"
               },
               "similarity_threshold": {
                 "description": "The minimum percentage of tokens that must match for text to be added to the category bucket. Must\nbe between 1 and 100. The larger the value the narrower the categories. Larger values will increase memory\nusage and create narrower categories.",
+                "default": 50.0,
                 "type": "number"
               },
               "categorization_filters": {
@@ -35678,6 +35801,7 @@
               },
               "size": {
                 "description": "The number of buckets to return.",
+                "default": 10.0,
                 "type": "number"
               },
               "min_doc_count": {
@@ -35753,6 +35877,7 @@
               },
               "size": {
                 "description": "The number of composite buckets that should be returned.",
+                "default": 10.0,
                 "type": "number"
               },
               "sources": {
@@ -36128,6 +36253,7 @@
               },
               "max_docs_per_value": {
                 "description": "Limits how many documents are permitted per choice of de-duplicating value.",
+                "default": 1.0,
                 "type": "number"
               },
               "script": {
@@ -36135,6 +36261,7 @@
               },
               "shard_size": {
                 "description": "Limits how many top-scoring documents are collected in the sample processed on each shard.",
+                "default": 100.0,
                 "type": "number"
               },
               "field": {
@@ -36196,14 +36323,17 @@
           },
           "minimum_set_size": {
             "description": "The minimum size of one item set.",
+            "default": 1.0,
             "type": "number"
           },
           "minimum_support": {
             "description": "The minimum support of one item set.",
+            "default": 0.1,
             "type": "number"
           },
           "size": {
             "description": "The number of top item sets to return.",
+            "default": 10.0,
             "type": "number"
           },
           "filter": {
@@ -36294,10 +36424,12 @@
               },
               "other_bucket_key": {
                 "description": "The key with which the other bucket is returned.",
+                "default": "_other_",
                 "type": "string"
               },
               "keyed": {
                 "description": "By default, the named filters aggregation returns the buckets as an object.\nSet to `false` to return the buckets as an array of objects.",
+                "default": true,
                 "type": "boolean"
               }
             }
@@ -36331,6 +36463,7 @@
             "properties": {
               "wrap_longitude": {
                 "description": "Specifies whether the bounding box should be allowed to overlap the international date line.",
+                "default": true,
                 "type": "boolean"
               }
             }
@@ -36442,6 +36575,7 @@
               },
               "size": {
                 "description": "The maximum number of geohash buckets to return.",
+                "default": 10000.0,
                 "type": "number"
               }
             }
@@ -36477,6 +36611,7 @@
           },
           "size": {
             "description": "The maximum length of the line represented in the aggregation.\nValid sizes are between 1 and 10000.",
+            "default": 10000.0,
             "type": "number"
           }
         },
@@ -36527,6 +36662,7 @@
               },
               "size": {
                 "description": "The maximum number of buckets to return.",
+                "default": 10000.0,
                 "type": "number"
               },
               "bounds": {
@@ -36552,6 +36688,7 @@
               },
               "precision": {
                 "description": "Integer zoom of the key used to defined cells or buckets\nin the results. Value should be between 0-15.",
+                "default": 6.0,
                 "type": "number"
               },
               "bounds": {
@@ -36559,6 +36696,7 @@
               },
               "size": {
                 "description": "Maximum number of buckets to return.",
+                "default": 10000.0,
                 "type": "number"
               },
               "shard_size": {
@@ -36626,6 +36764,7 @@
               },
               "keyed": {
                 "description": "If `true`, returns buckets as a hash instead of an array, keyed by the bucket keys.",
+                "default": false,
                 "type": "boolean"
               }
             }
@@ -36717,10 +36856,12 @@
               },
               "is_ipv6": {
                 "description": "Defines whether the prefix applies to IPv6 addresses.",
+                "default": false,
                 "type": "boolean"
               },
               "append_prefix_length": {
                 "description": "Defines whether the prefix length is appended to IP address keys in the response.",
+                "default": false,
                 "type": "boolean"
               },
               "keyed": {
@@ -36729,6 +36870,7 @@
               },
               "min_doc_count": {
                 "description": "Minimum number of documents in a bucket for it to be included in the response.",
+                "default": 1.0,
                 "type": "number"
               }
             },
@@ -36781,6 +36923,7 @@
           },
           "num_top_feature_importance_values": {
             "description": "Specifies the maximum number of feature importance values per document.",
+            "default": 0.0,
             "type": "number"
           }
         }
@@ -36794,6 +36937,7 @@
           },
           "num_top_feature_importance_values": {
             "description": "Specifies the maximum number of feature importance values per document.",
+            "default": 0.0,
             "type": "number"
           },
           "prediction_field_type": {
@@ -36877,6 +37021,7 @@
             "properties": {
               "compression": {
                 "description": "Limits the maximum number of nodes used by the underlying TDigest algorithm to `20 * compression`, enabling control of memory usage and approximation error.",
+                "default": 1000.0,
                 "type": "number"
               },
               "execution_hint": {
@@ -37159,6 +37304,7 @@
               },
               "shift": {
                 "description": "By default, the window consists of the last n values excluding the current bucket.\nIncreasing `shift` by 1, moves the starting window position by 1 to the right.",
+                "default": 0.0,
                 "type": "number"
               },
               "keyed": {
@@ -37182,6 +37328,7 @@
               },
               "shift": {
                 "description": "By default, the window consists of the last n values excluding the current bucket.\nIncreasing `shift` by 1, moves the starting window position by 1 to the right.",
+                "default": 0.0,
                 "type": "number"
               },
               "window": {
@@ -37208,10 +37355,12 @@
               },
               "min_doc_count": {
                 "description": "The minimum number of documents in a bucket for it to be returned.",
+                "default": 1.0,
                 "type": "number"
               },
               "shard_min_doc_count": {
                 "description": "The minimum number of documents in a bucket on each shard for it to be returned.",
+                "default": 1.0,
                 "type": "number"
               },
               "shard_size": {
@@ -37220,10 +37369,12 @@
               },
               "show_term_doc_count_error": {
                 "description": "Calculates the doc count error on per term basis.",
+                "default": false,
                 "type": "boolean"
               },
               "size": {
                 "description": "The number of term buckets should be returned out of the overall terms list.",
+                "default": 10.0,
                 "type": "number"
               },
               "terms": {
@@ -37327,6 +37478,7 @@
             "properties": {
               "keyed": {
                 "description": "By default, the aggregation associates a unique string key with each bucket and returns the ranges as a hash rather than an array.\nSet to `false` to disable this behavior.",
+                "default": true,
                 "type": "boolean"
               },
               "values": {
@@ -37385,6 +37537,7 @@
             "properties": {
               "keyed": {
                 "description": "By default, the aggregation associates a unique string key with each bucket and returns the ranges as a hash rather than an array.\nSet to `false` to disable this behavior.",
+                "default": true,
                 "type": "boolean"
               },
               "percents": {
@@ -37478,6 +37631,7 @@
               },
               "max_doc_count": {
                 "description": "The maximum number of documents a term should appear in.",
+                "default": 1.0,
                 "type": "number"
               },
               "missing": {
@@ -37485,6 +37639,7 @@
               },
               "precision": {
                 "description": "The precision of the internal CuckooFilters.\nSmaller precision leads to better approximation, but higher memory usage.",
+                "default": 0.001,
                 "type": "number"
               },
               "value_type": {
@@ -37544,6 +37699,7 @@
             "properties": {
               "shard_size": {
                 "description": "Limits how many top-scoring documents are collected in the sample processed on each shard.",
+                "default": 100.0,
                 "type": "number"
               }
             }
@@ -37631,6 +37787,7 @@
               },
               "min_doc_count": {
                 "description": "Only return terms that are found in more than `min_doc_count` hits.",
+                "default": 3.0,
                 "type": "number"
               },
               "mutual_information": {
@@ -37758,6 +37915,7 @@
               },
               "min_doc_count": {
                 "description": "Only return values that are found in more than `min_doc_count` hits.",
+                "default": 3.0,
                 "type": "number"
               },
               "mutual_information": {
@@ -37818,6 +37976,7 @@
             "properties": {
               "show_distribution": {
                 "description": "Shows the probability distribution for all characters.",
+                "default": false,
                 "type": "boolean"
               }
             }
@@ -37869,6 +38028,7 @@
               },
               "min_doc_count": {
                 "description": "Only return values that are found in more than `min_doc_count` hits.",
+                "default": 1.0,
                 "type": "number"
               },
               "missing": {
@@ -37904,6 +38064,7 @@
               },
               "size": {
                 "description": "The number of buckets returned out of the overall terms list.",
+                "default": 10.0,
                 "type": "number"
               },
               "format": {
@@ -37923,6 +38084,7 @@
             "properties": {
               "size": {
                 "description": "The maximum number of results to return.",
+                "default": 10000.0,
                 "type": "number"
               },
               "keyed": {
@@ -37950,6 +38112,7 @@
               },
               "explain": {
                 "description": "If `true`, returns detailed information about score computation as part of a hit.",
+                "default": false,
                 "type": "boolean"
               },
               "fields": {
@@ -37961,6 +38124,7 @@
               },
               "from": {
                 "description": "Starting document offset.",
+                "default": 0.0,
                 "type": "number"
               },
               "highlight": {
@@ -37975,6 +38139,7 @@
               },
               "size": {
                 "description": "The maximum number of top matching hits to return per bucket.",
+                "default": 3.0,
                 "type": "number"
               },
               "sort": {
@@ -37988,10 +38153,12 @@
               },
               "track_scores": {
                 "description": "If `true`, calculates and returns document scores, even if the scores are not used for sorting.",
+                "default": false,
                 "type": "boolean"
               },
               "version": {
                 "description": "If `true`, returns document version as part of a hit.",
+                "default": false,
                 "type": "boolean"
               },
               "seq_no_primary_term": {
@@ -38072,6 +38239,7 @@
               },
               "size": {
                 "description": "The number of top documents from which to return metrics.",
+                "default": 1.0,
                 "type": "number"
               },
               "sort": {
@@ -38165,6 +38333,7 @@
           },
           "buckets": {
             "description": "The target number of buckets.",
+            "default": 10.0,
             "type": "number"
           },
           "shard_size": {
@@ -38255,6 +38424,7 @@
               },
               "require_alias": {
                 "description": "If `true`, the request's actions must target an index alias.",
+                "default": false,
                 "type": "boolean"
               }
             }
@@ -38307,6 +38477,7 @@
             "properties": {
               "require_alias": {
                 "description": "If `true`, the request's actions must target an index alias.",
+                "default": false,
                 "type": "boolean"
               },
               "retry_on_conflict": {
@@ -38332,6 +38503,7 @@
         "properties": {
           "detect_noop": {
             "description": "If true, the `result` in the response is set to 'noop' when no changes to the document occur.",
+            "default": true,
             "type": "boolean"
           },
           "doc": {
@@ -38340,6 +38512,7 @@
           },
           "doc_as_upsert": {
             "description": "Set to `true` to use the contents of `doc` as the value of `upsert`.",
+            "default": false,
             "type": "boolean"
           },
           "script": {
@@ -38347,6 +38520,7 @@
           },
           "scripted_upsert": {
             "description": "Set to `true` to run the script whether or not the document exists.",
+            "default": false,
             "type": "boolean"
           },
           "_source": {
@@ -40428,15 +40602,18 @@
             "$ref": "#/components/schemas/indices._types.IndexCheckOnStartup"
           },
           "codec": {
+            "default": "LZ4",
             "type": "string"
           },
           "routing_partition_size": {
             "$ref": "#/components/schemas/_spec_utils.Stringifiedinteger"
           },
           "load_fixed_bitset_filters_eagerly": {
+            "default": true,
             "type": "boolean"
           },
           "hidden": {
+            "default": "false",
             "oneOf": [
               {
                 "type": "boolean"
@@ -40447,6 +40624,7 @@
             ]
           },
           "auto_expand_replicas": {
+            "default": "false",
             "oneOf": [
               {
                 "type": "string"
@@ -40466,24 +40644,31 @@
             "$ref": "#/components/schemas/_types.Duration"
           },
           "max_result_window": {
+            "default": 10000.0,
             "type": "number"
           },
           "max_inner_result_window": {
+            "default": 100.0,
             "type": "number"
           },
           "max_rescore_window": {
+            "default": 10000.0,
             "type": "number"
           },
           "max_docvalue_fields_search": {
+            "default": 100.0,
             "type": "number"
           },
           "max_script_fields": {
+            "default": 32.0,
             "type": "number"
           },
           "max_ngram_diff": {
+            "default": 1.0,
             "type": "number"
           },
           "max_shingle_diff": {
+            "default": 3.0,
             "type": "number"
           },
           "blocks": {
@@ -40499,9 +40684,11 @@
             "$ref": "#/components/schemas/indices._types.SettingsHighlight"
           },
           "max_terms_count": {
+            "default": 65536.0,
             "type": "number"
           },
           "max_regex_length": {
+            "default": 1000.0,
             "type": "number"
           },
           "routing": {
@@ -40614,6 +40801,7 @@
         "properties": {
           "enabled": {
             "description": "Indicates whether soft deletes are enabled on the index.",
+            "default": true,
             "type": "boolean"
           },
           "retention_lease": {
@@ -40854,6 +41042,7 @@
         "type": "object",
         "properties": {
           "max_analyzed_offset": {
+            "default": 1000000.0,
             "type": "number"
           }
         }
@@ -40963,6 +41152,7 @@
           },
           "origination_date": {
             "description": "If specified, this is the timestamp used to calculate the index age for its phase transitions. Use this setting\nif you create a new index that contains old data and want to use the original creation date to calculate the index\nage. Specified as a Unix epoch value in milliseconds.",
+            "default": 0.0,
             "type": "number"
           },
           "parse_origination_date": {
@@ -40974,10 +41164,12 @@
           },
           "rollover_alias": {
             "description": "The index alias to update when the index rolls over. Specify when using a policy that contains a rollover action.\nWhen the index rolls over, the alias is updated to reflect that the index is no longer the write index. For more\ninformation about rolling indices, see Rollover.",
+            "default": "",
             "type": "string"
           },
           "prefer_ilm": {
             "description": "Preference for the system that manages a data stream backing index (preferring ILM when both ILM and DLM are\napplicable for an index).",
+            "default": "true",
             "oneOf": [
               {
                 "type": "boolean"
@@ -41323,6 +41515,7 @@
           },
           "max_output_size": {
             "description": "The maximum token size to emit. Tokens larger than this size will be discarded.\nDefaults to `255`",
+            "default": 255.0,
             "type": "number"
           },
           "separator": {
@@ -41413,10 +41606,12 @@
           },
           "lowercase": {
             "description": "Should terms be lowercased or not.\nDefaults to `true`.",
+            "default": true,
             "type": "boolean"
           },
           "pattern": {
             "description": "A Java regular expression.\nDefaults to `\\W+`.",
+            "default": "\\W+",
             "type": "string"
           },
           "stopwords": {
@@ -41459,6 +41654,7 @@
           },
           "max_token_length": {
             "description": "The maximum token length. If a token is seen that exceeds this length then it is split at `max_token_length` intervals.\nDefaults to `255`.",
+            "default": 255.0,
             "type": "number"
           },
           "stopwords": {
@@ -45523,6 +45719,7 @@
                 ]
               },
               "buffer_size": {
+                "default": 256.0,
                 "type": "number"
               }
             },
@@ -45598,6 +45795,7 @@
                 "type": "number"
               },
               "token_chars": {
+                "default": [],
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/_types.analysis.TokenChar"
@@ -46244,6 +46442,7 @@
         "properties": {
           "limit": {
             "description": "The maximum number of fields in an index. Field and object mappings, as well as field aliases count towards this limit.\nThe limit is in place to prevent mappings and searches from becoming too large. Higher values can lead to performance\ndegradations and memory issues, especially in clusters with a high load or few resources.",
+            "default": "1000",
             "oneOf": [
               {
                 "type": "number"
@@ -46255,6 +46454,7 @@
           },
           "ignore_dynamic_beyond_limit": {
             "description": "This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set\nto false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail\nwith the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.\nInstead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.\nThe fields that were not added to the mapping will be added to the _ignored field.",
+            "default": "false",
             "oneOf": [
               {
                 "type": "boolean"
@@ -46271,6 +46471,7 @@
         "properties": {
           "limit": {
             "description": "The maximum depth for a field, which is measured as the number of inner objects. For instance, if all fields are defined\nat the root object level, then the depth is 1. If there is one object mapping, then the depth is 2, etc.",
+            "default": 20.0,
             "type": "number"
           }
         }
@@ -46280,6 +46481,7 @@
         "properties": {
           "limit": {
             "description": "The maximum number of distinct nested mappings in an index. The nested type should only be used in special cases, when\narrays of objects need to be queried independently of each other. To safeguard against poorly designed mappings, this\nsetting limits the number of unique nested types per index.",
+            "default": 50.0,
             "type": "number"
           }
         }
@@ -46289,6 +46491,7 @@
         "properties": {
           "limit": {
             "description": "The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps\nto prevent out of memory errors when a document contains too many nested objects.",
+            "default": 10000.0,
             "type": "number"
           }
         }
@@ -47680,6 +47883,7 @@
               },
               "index": {
                 "description": "If `true`, you can search this field using the kNN search API.",
+                "default": true,
                 "type": "boolean"
               },
               "index_options": {
@@ -47712,10 +47916,12 @@
           },
           "ef_construction": {
             "description": "The number of candidates to track while assembling the list of nearest neighbors for each new node.\n\nOnly applicable to `hnsw`, `int8_hnsw`, `bbq_hnsw`, and `int4_hnsw` index types.",
+            "default": 100.0,
             "type": "number"
           },
           "m": {
             "description": "The number of neighbors each node will be connected to in the HNSW graph.\n\nOnly applicable to `hnsw`, `int8_hnsw`, `bbq_hnsw`, and `int4_hnsw` index types.",
+            "default": 16.0,
             "type": "number"
           },
           "type": {
@@ -47975,18 +48181,22 @@
         "properties": {
           "strategy": {
             "description": "The chunking strategy: `sentence` or `word`.",
+            "default": "sentence",
             "type": "string"
           },
           "max_chunk_size": {
             "description": "The maximum size of a chunk in words.\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).",
+            "default": 250.0,
             "type": "number"
           },
           "overlap": {
             "description": "The number of overlapping words for chunks.\nIt is applicable only to a `word` chunking strategy.\nThis value cannot be higher than half the `max_chunk_size` value.",
+            "default": 100.0,
             "type": "number"
           },
           "sentence_overlap": {
             "description": "The number of overlapping sentences for chunks.\nIt is applicable only for a `sentence` chunking strategy.\nIt can be either `1` or `0`.",
+            "default": 1.0,
             "type": "number"
           }
         },
@@ -48518,6 +48728,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
+                "default": false,
                 "x-state": "Technical preview",
                 "type": "boolean"
               }
@@ -49058,6 +49269,7 @@
           },
           "is_write_index": {
             "description": "If `true`, the index is the write index for the alias.",
+            "default": false,
             "type": "boolean"
           },
           "routing": {
@@ -49070,6 +49282,7 @@
           },
           "is_hidden": {
             "description": "If `true`, the alias is hidden.\nAll indices for the alias must have the same `is_hidden` value.",
+            "default": false,
             "x-state": "Generally available",
             "type": "boolean"
           }
@@ -49138,6 +49351,7 @@
           },
           "enabled": {
             "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "default": true,
             "type": "boolean"
           }
         }
@@ -49206,6 +49420,7 @@
         "properties": {
           "enabled": {
             "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
+            "default": "true",
             "oneOf": [
               {
                 "type": "boolean"
@@ -49248,6 +49463,7 @@
           },
           "enabled": {
             "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "default": true,
             "type": "boolean"
           }
         }
@@ -49578,10 +49794,12 @@
           },
           "is_hidden": {
             "description": "If `true`, the alias is hidden.\nAll indices for the alias must have the same `is_hidden` value.",
+            "default": false,
             "type": "boolean"
           },
           "is_write_index": {
             "description": "If `true`, the index is the write index for the alias.",
+            "default": false,
             "type": "boolean"
           },
           "routing": {
@@ -51274,14 +51492,17 @@
           },
           "min_doc_count": {
             "description": "Specifies how many documents must contain a pair of terms before it is considered to be a useful connection.\nThis setting acts as a certainty threshold.",
+            "default": 3.0,
             "type": "number"
           },
           "shard_min_doc_count": {
             "description": "Controls how many documents on a particular shard have to contain a pair of terms before the connection is returned for global consideration.",
+            "default": 2.0,
             "type": "number"
           },
           "size": {
             "description": "Specifies the maximum number of vertex terms returned for each field.",
+            "default": 5.0,
             "type": "number"
           }
         },
@@ -51311,6 +51532,7 @@
           },
           "sample_size": {
             "description": "Each hop considers a sample of the best-matching documents on each shard.\nUsing samples improves the speed of execution and keeps exploration focused on meaningfully-connected terms.\nVery small values (less than 50) might not provide sufficient weight-of-evidence to identify significant connections between terms.\nVery large sample sizes can dilute the quality of the results and increase execution times.",
+            "default": 100.0,
             "type": "number"
           },
           "timeout": {
@@ -51885,6 +52107,7 @@
         "properties": {
           "enabled": {
             "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
+            "default": true,
             "type": "boolean"
           },
           "lifecycle": {
@@ -51901,6 +52124,7 @@
           },
           "enabled": {
             "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "default": true,
             "type": "boolean"
           }
         }
@@ -52024,10 +52248,12 @@
         "properties": {
           "hidden": {
             "description": "If true, the data stream is hidden.",
+            "default": false,
             "type": "boolean"
           },
           "allow_custom_routing": {
             "description": "If true, the data stream supports custom routing.",
+            "default": false,
             "type": "boolean"
           }
         }
@@ -52412,6 +52638,7 @@
           },
           "is_hidden": {
             "description": "If `true`, the alias is hidden.",
+            "default": false,
             "type": "boolean"
           },
           "is_write_index": {
@@ -52426,6 +52653,7 @@
           },
           "must_exist": {
             "description": "If `true`, the alias must exist to perform the action.",
+            "default": false,
             "type": "boolean"
           }
         }
@@ -52458,6 +52686,7 @@
           },
           "must_exist": {
             "description": "If `true`, the alias must exist to perform the action.",
+            "default": false,
             "type": "boolean"
           }
         }
@@ -52473,6 +52702,7 @@
           },
           "must_exist": {
             "description": "If `true`, the alias must exist to perform the action.",
+            "default": false,
             "type": "boolean"
           }
         }
@@ -52842,18 +53072,22 @@
         "properties": {
           "max_chunk_size": {
             "description": "The maximum size of a chunk in words.\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).",
+            "default": 250.0,
             "type": "number"
           },
           "overlap": {
             "description": "The number of overlapping words for chunks.\nIt is applicable only to a `word` chunking strategy.\nThis value cannot be higher than half the `max_chunk_size` value.",
+            "default": 100.0,
             "type": "number"
           },
           "sentence_overlap": {
             "description": "The number of overlapping sentences for chunks.\nIt is applicable only for a `sentence` chunking strategy.\nIt can be either `1` or `0`.",
+            "default": 1.0,
             "type": "number"
           },
           "strategy": {
             "description": "The chunking strategy: `sentence` or `word`.",
+            "default": "sentence",
             "type": "string"
           }
         }
@@ -53144,6 +53378,7 @@
         "properties": {
           "max_new_tokens": {
             "description": "For a `completion` task, it sets the maximum number for the output tokens to be generated.",
+            "default": 64.0,
             "type": "number"
           },
           "temperature": {
@@ -53336,6 +53571,7 @@
           },
           "max_new_tokens": {
             "description": "For a `completion` task, provide a hint for the maximum number of output tokens to be generated.",
+            "default": 64.0,
             "type": "number"
           },
           "temperature": {
@@ -53716,6 +53952,7 @@
         "properties": {
           "enabled": {
             "description": "Turn on `adaptive_allocations`.",
+            "default": false,
             "type": "boolean"
           },
           "max_number_of_allocations": {
@@ -53733,6 +53970,7 @@
         "properties": {
           "return_documents": {
             "description": "For a `rerank` task, return the document instead of only the index.",
+            "default": true,
             "type": "boolean"
           }
         }
@@ -54299,6 +54537,7 @@
           },
           "url": {
             "description": "The URL endpoint to use for the requests.\nIt can be changed for testing purposes.",
+            "default": "https://api.openai.com/v1/embeddings.",
             "type": "string"
           }
         },
@@ -54401,6 +54640,7 @@
           },
           "return_documents": {
             "description": "Whether to return the source documents in the response.\nOnly for the `rerank` task type.",
+            "default": false,
             "type": "boolean"
           },
           "top_k": {
@@ -54409,6 +54649,7 @@
           },
           "truncation": {
             "description": "Whether to truncate the input texts to fit within the context length.",
+            "default": true,
             "type": "boolean"
           }
         }
@@ -54662,6 +54903,7 @@
           },
           "deprecated": {
             "description": "Marks this ingest pipeline as deprecated.\nWhen a deprecated ingest pipeline is referenced as the default or final pipeline when creating or updating a non-deprecated index template, Elasticsearch will emit a deprecation warning.",
+            "default": false,
             "type": "boolean"
           },
           "_meta": {
@@ -54838,6 +55080,7 @@
               },
               "allow_duplicates": {
                 "description": "If `false`, the processor does not append values already present in the field.",
+                "default": true,
                 "type": "boolean"
               }
             },
@@ -54888,10 +55131,12 @@
               },
               "ignore_missing": {
                 "description": "If `true` and field does not exist, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "indexed_chars": {
                 "description": "The number of chars being used for extraction to prevent huge fields.\nUse `-1` for no limit.",
+                "default": 100000.0,
                 "type": "number"
               },
               "indexed_chars_field": {
@@ -54909,6 +55154,7 @@
               },
               "remove_binary": {
                 "description": "If true, the binary field will be removed from the document",
+                "default": false,
                 "type": "boolean"
               },
               "resource_name": {
@@ -54935,6 +55181,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "target_field": {
@@ -54964,6 +55211,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "shape_type": {
@@ -55025,10 +55273,12 @@
               },
               "seed": {
                 "description": "Seed for the community ID hash. Must be between 0 and 65535 (inclusive). The\nseed can prevent hash collisions between network domains, such as a staging\nand production network that use the same addressing scheme.",
+                "default": 0.0,
                 "type": "number"
               },
               "ignore_missing": {
                 "description": "If true and any required fields are missing, the processor quietly exits\nwithout modifying the document.",
+                "default": true,
                 "type": "boolean"
               }
             }
@@ -55048,6 +55298,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "target_field": {
@@ -55098,10 +55349,12 @@
               },
               "quote": {
                 "description": "Quote used in CSV, has to be single character string.",
+                "default": "\"",
                 "type": "string"
               },
               "separator": {
                 "description": "Separator used in CSV, has to be single character string.",
+                "default": ",",
                 "type": "string"
               },
               "target_fields": {
@@ -55139,6 +55392,7 @@
               },
               "locale": {
                 "description": "The locale to use when parsing the date, relevant when parsing month names or week days.\nSupports template snippets.",
+                "default": "ENGLISH",
                 "type": "string"
               },
               "target_field": {
@@ -55146,10 +55400,12 @@
               },
               "timezone": {
                 "description": "The timezone to use when parsing the date.\nSupports template snippets.",
+                "default": "UTC",
                 "type": "string"
               },
               "output_format": {
                 "description": "The format to use when writing the date to target_field. Must be a valid\njava time pattern.",
+                "default": "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
                 "type": "string"
               }
             },
@@ -55184,6 +55440,7 @@
               },
               "index_name_format": {
                 "description": "The format to be used when printing the parsed date into the index name.\nA valid java time pattern is expected here.\nSupports template snippets.",
+                "default": "yyyy-MM-dd",
                 "type": "string"
               },
               "index_name_prefix": {
@@ -55192,10 +55449,12 @@
               },
               "locale": {
                 "description": "The locale to use when parsing the date from the document being preprocessed, relevant when parsing month names or week days.",
+                "default": "ENGLISH",
                 "type": "string"
               },
               "timezone": {
                 "description": "The timezone to use when parsing the date and when date math index supports resolves expressions into concrete index names.",
+                "default": "UTC",
                 "type": "string"
               }
             },
@@ -55216,6 +55475,7 @@
             "properties": {
               "append_separator": {
                 "description": "The character(s) that separate the appended fields.",
+                "default": "\"\"",
                 "type": "string"
               },
               "field": {
@@ -55223,6 +55483,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "pattern": {
@@ -55250,6 +55511,7 @@
               },
               "override": {
                 "description": "Controls the behavior when there is already an existing nested object that conflicts with the expanded field.\nWhen `false`, the processor will merge conflicts by combining the old and the new values into an array.\nWhen `true`, the value from the expanded field will overwrite the existing value.",
+                "default": false,
                 "type": "boolean"
               },
               "path": {
@@ -55286,14 +55548,17 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "max_matches": {
                 "description": "The maximum number of matched documents to include under the configured target field.\nThe `target_field` will be turned into a json array if `max_matches` is higher than 1, otherwise `target_field` will become a json object.\nIn order to avoid documents getting too large, the maximum allowed value is 128.",
+                "default": 1.0,
                 "type": "number"
               },
               "override": {
                 "description": "If processor will update fields with pre-existing non-null-valued field.\nWhen set to `false`, such fields will not be touched.",
+                "default": true,
                 "type": "boolean"
               },
               "policy_name": {
@@ -55366,6 +55631,7 @@
               },
               "ignore_missing": {
                 "description": "If true, the processor ignores any missing fields. If all fields are\nmissing, the processor silently exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               }
             },
@@ -55398,6 +55664,7 @@
               },
               "ignore_missing": {
                 "description": "If `true`, the processor silently exits without changing the document if the `field` is `null` or missing.",
+                "default": false,
                 "type": "boolean"
               },
               "processor": {
@@ -55421,6 +55688,7 @@
             "properties": {
               "database_file": {
                 "description": "The database filename referring to a database the module ships with (GeoLite2-City.mmdb, GeoLite2-Country.mmdb, or GeoLite2-ASN.mmdb) or a custom database in the ingest-geoip config directory.",
+                "default": "GeoLite2-City.mmdb",
                 "type": "string"
               },
               "field": {
@@ -55428,10 +55696,12 @@
               },
               "first_only": {
                 "description": "If `true`, only the first found IP location data will be returned, even if the field contains an array.",
+                "default": true,
                 "type": "boolean"
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "properties": {
@@ -55487,6 +55757,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "target_format": {
@@ -55525,6 +55796,7 @@
             "properties": {
               "database_file": {
                 "description": "The database filename referring to a database the module ships with (GeoLite2-City.mmdb, GeoLite2-Country.mmdb, or GeoLite2-ASN.mmdb) or a custom database in the ingest-geoip config directory.",
+                "default": "GeoLite2-City.mmdb",
                 "type": "string"
               },
               "field": {
@@ -55532,10 +55804,12 @@
               },
               "first_only": {
                 "description": "If `true`, only the first found geoip data will be returned, even if the field contains an array.",
+                "default": true,
                 "type": "boolean"
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "properties": {
@@ -55569,6 +55843,7 @@
             "properties": {
               "ecs_compatibility": {
                 "description": "Must be disabled or v1. If v1, the processor uses patterns with Elastic\nCommon Schema (ECS) field names.",
+                "default": "disabled",
                 "type": "string"
               },
               "field": {
@@ -55576,6 +55851,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "pattern_definitions": {
@@ -55594,6 +55870,7 @@
               },
               "trace_match": {
                 "description": "When `true`, `_ingest._grok_match_index` will be inserted into your matched document’s metadata with the index into the pattern found in `patterns` that matched.",
+                "default": false,
                 "type": "boolean"
               }
             },
@@ -55620,6 +55897,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "pattern": {
@@ -55655,6 +55933,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document,",
+                "default": false,
                 "type": "boolean"
               },
               "target_field": {
@@ -55737,6 +56016,7 @@
           },
           "num_top_feature_importance_values": {
             "description": "Specifies the maximum number of feature importance values per document.",
+            "default": 0.0,
             "type": "number"
           }
         }
@@ -55746,10 +56026,12 @@
         "properties": {
           "num_top_classes": {
             "description": "Specifies the number of top class predictions to return.",
+            "default": 0.0,
             "type": "number"
           },
           "num_top_feature_importance_values": {
             "description": "Specifies the maximum number of feature importance values per document.",
+            "default": 0.0,
             "type": "number"
           },
           "results_field": {
@@ -55815,6 +56097,7 @@
             "properties": {
               "add_to_root": {
                 "description": "Flag that forces the parsed JSON to be added at the top level of the document.\n`target_field` must not be set when this option is chosen.",
+                "default": false,
                 "type": "boolean"
               },
               "add_to_root_conflict_strategy": {
@@ -55822,6 +56105,7 @@
               },
               "allow_duplicate_keys": {
                 "description": "When set to `true`, the JSON parser will not fail if the JSON contains duplicate keys.\nInstead, the last encountered value for any duplicate key wins.",
+                "default": false,
                 "type": "boolean"
               },
               "field": {
@@ -55868,6 +56152,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "include_keys": {
@@ -55879,10 +56164,12 @@
               },
               "prefix": {
                 "description": "Prefix to be added to extracted keys.",
+                "default": "null",
                 "type": "string"
               },
               "strip_brackets": {
                 "description": "If `true`. strip brackets `()`, `<>`, `[]` as well as quotes `'` and `\"` from extracted values.",
+                "default": false,
                 "type": "boolean"
               },
               "target_field": {
@@ -55922,6 +56209,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "target_field": {
@@ -55963,6 +56251,7 @@
               },
               "ignore_missing": {
                 "description": "If true and any required fields are missing, the processor quietly exits\nwithout modifying the document.",
+                "default": true,
                 "type": "boolean"
               }
             }
@@ -55982,6 +56271,7 @@
               },
               "ignore_missing_pipeline": {
                 "description": "Whether to ignore missing pipelines instead of failing.",
+                "default": false,
                 "type": "boolean"
               }
             },
@@ -56017,22 +56307,27 @@
               },
               "prefix": {
                 "description": "Start a redacted section with this token",
+                "default": "<",
                 "type": "string"
               },
               "suffix": {
                 "description": "End a redacted section with this token",
+                "default": ">",
                 "type": "string"
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "skip_if_unlicensed": {
                 "description": "If `true` and the current license does not support running redact processors, then the processor quietly exits without modifying the document",
+                "default": false,
                 "type": "boolean"
               },
               "trace_redact": {
                 "description": "If `true` then ingest metadata `_ingest._redact._is_redacted` is set to `true` if the document has been redacted",
+                "default": false,
                 "x-state": "Generally available",
                 "type": "boolean"
               }
@@ -56060,6 +56355,7 @@
               },
               "ignore_missing": {
                 "description": "If true and any required fields are missing, the processor quietly exits\nwithout modifying the document.",
+                "default": true,
                 "type": "boolean"
               }
             },
@@ -56085,6 +56381,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               }
             },
@@ -56107,6 +56404,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "target_field": {
@@ -56208,6 +56506,7 @@
               },
               "ignore_empty_value": {
                 "description": "If `true` and `value` is a template snippet that evaluates to `null` or the empty string, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "media_type": {
@@ -56216,6 +56515,7 @@
               },
               "override": {
                 "description": "If `true` processor will update fields with pre-existing non-null-valued field.\nWhen set to `false`, such fields will not be touched.",
+                "default": true,
                 "type": "boolean"
               },
               "value": {
@@ -56291,10 +56591,12 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "preserve_trailing": {
                 "description": "Preserves empty trailing fields, if any.",
+                "default": false,
                 "type": "boolean"
               },
               "separator": {
@@ -56335,6 +56637,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "target_field": {
@@ -56360,6 +56663,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "target_field": {
@@ -56385,6 +56689,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "target_field": {
@@ -56410,14 +56715,17 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "keep_original": {
                 "description": "If `true`, the processor copies the unparsed URI to `<target_field>.original`.",
+                "default": true,
                 "type": "boolean"
               },
               "remove_if_successful": {
                 "description": "If `true`, the processor removes the `field` after parsing the URI string.\nIf parsing fails, the processor does not remove the `field`.",
+                "default": false,
                 "type": "boolean"
               },
               "target_field": {
@@ -56443,6 +56751,7 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "default": false,
                 "type": "boolean"
               },
               "regex_file": {
@@ -56454,6 +56763,18 @@
               },
               "properties": {
                 "description": "Controls what properties are added to `target_field`.",
+                "default": [
+                  "name",
+                  "major",
+                  "minor",
+                  "patch",
+                  "build",
+                  "os",
+                  "os_name",
+                  "os_major",
+                  "os_minor",
+                  "device"
+                ],
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/ingest._types.UserAgentProperty"
@@ -56461,6 +56782,7 @@
               },
               "extract_device_type": {
                 "description": "Extracts device type from the user agent string on a best-effort basis.",
+                "default": false,
                 "x-state": "Generally available",
                 "type": "boolean"
               }
@@ -56993,6 +57315,7 @@
           },
           "use_null": {
             "description": "Defines whether a new series is used as the null series when there is no value for the by or partition fields.",
+            "default": false,
             "type": "boolean"
           }
         }
@@ -57002,6 +57325,9 @@
         "properties": {
           "actions": {
             "description": "The set of actions to be triggered when the rule applies. If more than one action is specified the effects of all actions are combined.",
+            "default": [
+              "skip_result"
+            ],
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ml._types.RuleAction"
@@ -57598,10 +57924,12 @@
           },
           "skip_result": {
             "description": "When true the model will not create results for this calendar period.",
+            "default": true,
             "type": "boolean"
           },
           "skip_model_update": {
             "description": "When true the model will not be updated for this calendar period.",
+            "default": true,
             "type": "boolean"
           },
           "force_time_shift": {
@@ -57620,10 +57948,12 @@
         "properties": {
           "from": {
             "description": "Skips the specified number of items.",
+            "default": 0.0,
             "type": "number"
           },
           "size": {
             "description": "Specifies the maximum number of items to obtain.",
+            "default": 10000.0,
             "type": "number"
           }
         }
@@ -57730,6 +58060,7 @@
               },
               "num_top_classes": {
                 "description": "Defines the number of categories for which the predicted probabilities are reported. It must be non-negative or -1. If it is -1 or greater than the total number of categories, probabilities are reported for all categories; if you have a large number of categories, there could be a significant effect on the size of your destination index. NOTE: To use the AUC ROC evaluation method, `num_top_classes` must be set to -1 or a value greater than or equal to the total number of categories.",
+                "default": 2.0,
                 "type": "number"
               }
             }
@@ -57753,6 +58084,7 @@
           },
           "early_stopping_enabled": {
             "description": "Advanced configuration option. Specifies whether the training process should finish if it is not finding any better performing models. If disabled, the training process can take significantly longer and the chance of finding a better performing model is unremarkable.",
+            "default": true,
             "type": "boolean"
           },
           "eta": {
@@ -57792,6 +58124,7 @@
           },
           "num_top_feature_importance_values": {
             "description": "Advanced configuration option. Specifies the maximum number of feature importance values per document to return. By default, no feature importance calculation occurs.",
+            "default": 0.0,
             "type": "number"
           },
           "prediction_field_name": {
@@ -57970,14 +58303,17 @@
         "properties": {
           "compute_feature_influence": {
             "description": "Specifies whether the feature influence calculation is enabled.",
+            "default": true,
             "type": "boolean"
           },
           "feature_influence_threshold": {
             "description": "The minimum outlier score that a document needs to have in order to calculate its feature influence score. Value range: 0-1.",
+            "default": 0.1,
             "type": "number"
           },
           "method": {
             "description": "The method that outlier detection uses. Available methods are `lof`, `ldof`, `distance_kth_nn`, `distance_knn`, and `ensemble`. The default value is ensemble, which means that outlier detection uses an ensemble of different methods and normalises and combines their individual outlier scores to obtain the overall outlier score.",
+            "default": "ensemble",
             "type": "string"
           },
           "n_neighbors": {
@@ -57990,6 +58326,7 @@
           },
           "standardization_enabled": {
             "description": "If true, the following operation is performed on the columns before computing outlier scores: `(x_i - mean(x_i)) / sd(x_i)`.",
+            "default": true,
             "type": "boolean"
           }
         }
@@ -58004,6 +58341,7 @@
             "properties": {
               "loss_function": {
                 "description": "The loss function used during regression. Available options are `mse` (mean squared error), `msle` (mean squared logarithmic error), `huber` (Pseudo-Huber loss).",
+                "default": "mse",
                 "type": "string"
               },
               "loss_function_parameter": {
@@ -58304,10 +58642,12 @@
         "properties": {
           "compute_feature_influence": {
             "description": "Specifies whether the feature influence calculation is enabled.",
+            "default": true,
             "type": "boolean"
           },
           "feature_influence_threshold": {
             "description": "The minimum outlier score that a document needs to have in order to calculate its feature influence score.\nValue range: 0-1",
+            "default": 0.1,
             "type": "number"
           },
           "method": {
@@ -58324,6 +58664,7 @@
           },
           "standardization_enabled": {
             "description": "If `true`, the following operation is performed on the columns before computing outlier scores: (x_i - mean(x_i)) / sd(x_i).",
+            "default": true,
             "type": "boolean"
           }
         }
@@ -58671,10 +59012,12 @@
           },
           "ignore_unavailable": {
             "description": "If true, missing or closed indices are not included in the response.",
+            "default": false,
             "type": "boolean"
           },
           "ignore_throttled": {
             "description": "If true, concrete, expanded or aliased indices are ignored when frozen.",
+            "default": true,
             "type": "boolean"
           }
         }
@@ -59025,6 +59368,7 @@
           },
           "daily_model_snapshot_retention_after_days": {
             "description": "Advanced configuration option, which affects the automatic removal of old model snapshots for this job.\nIt specifies a period of time (in days) after which only the first snapshot per day is retained.\nThis period is relative to the timestamp of the most recent snapshot for this job.\nValid values range from 0 to `model_snapshot_retention_days`.",
+            "default": 1.0,
             "type": "number"
           },
           "data_description": {
@@ -59097,6 +59441,7 @@
         "properties": {
           "categorization_examples_limit": {
             "description": "The maximum number of examples stored per category in memory and in the results data store. If you increase this value, more examples are available, however it requires that you have more storage available. If you set this value to 0, no examples are stored. NOTE: The `categorization_examples_limit` applies only to analysis that uses categorization.",
+            "default": 4.0,
             "type": "number"
           },
           "model_memory_limit": {
@@ -59142,6 +59487,7 @@
           },
           "time_format": {
             "description": "The time format, which can be `epoch`, `epoch_ms`, or a custom pattern. The value `epoch` refers to UNIX or Epoch time (the number of seconds since 1 Jan 1970). The value `epoch_ms` indicates that time is measured in milliseconds since the epoch. The `epoch` and `epoch_ms` time formats accept either integer or real values. Custom patterns must conform to the Java DateTimeFormatter class. When you use date-time formatting patterns, it is recommended that you provide the full date, time and time zone. For example: `yyyy-MM-dd'T'HH:mm:ssX`. If the pattern that you specify is not sufficient to produce a complete timestamp, job creation fails.",
+            "default": "epoch",
             "type": "string"
           },
           "field_delimiter": {
@@ -59154,11 +59500,13 @@
         "properties": {
           "annotations_enabled": {
             "description": "If true, enables calculation and storage of the model change annotations for each entity that is being analyzed.",
+            "default": true,
             "x-state": "Generally available",
             "type": "boolean"
           },
           "enabled": {
             "description": "If true, enables calculation and storage of the model bounds for each entity that is being analyzed.",
+            "default": false,
             "type": "boolean"
           },
           "terms": {
@@ -59441,14 +59789,17 @@
         "properties": {
           "do_lower_case": {
             "description": "Should the tokenizer lower case the text",
+            "default": false,
             "type": "boolean"
           },
           "max_sequence_length": {
             "description": "Maximum input sequence length for the model",
+            "default": 512.0,
             "type": "number"
           },
           "span": {
             "description": "Tokenization spanning options. Special value of -1 indicates no spanning takes place",
+            "default": -1.0,
             "type": "number"
           },
           "truncate": {
@@ -59456,6 +59807,7 @@
           },
           "with_special_tokens": {
             "description": "Is tokenization completed with special tokens",
+            "default": true,
             "type": "boolean"
           }
         }
@@ -59479,6 +59831,7 @@
             "properties": {
               "add_prefix_space": {
                 "description": "Should the tokenizer prefix input with a space character",
+                "default": false,
                 "type": "boolean"
               }
             }
@@ -59515,6 +59868,7 @@
           },
           "hypothesis_template": {
             "description": "Hypothesis template used when tokenizing labels for prediction",
+            "default": "\"This example is {}.\"",
             "type": "string"
           },
           "classification_labels": {
@@ -59530,6 +59884,7 @@
           },
           "multi_label": {
             "description": "Indicates if more than one true label exists.",
+            "default": false,
             "type": "boolean"
           },
           "labels": {
@@ -60695,6 +61050,7 @@
           },
           "scroll_size": {
             "description": "The size parameter that is used in Elasticsearch searches when the datafeed does not use aggregations. The maximum value is the value of `index.max_result_window`, which is 10,000 by default.",
+            "default": 1000.0,
             "type": "number"
           }
         }
@@ -60704,6 +61060,7 @@
         "properties": {
           "allow_lazy_open": {
             "description": "Advanced configuration option. Specifies whether this job can open when there is insufficient machine learning node capacity for it to be immediately assigned to a node.",
+            "default": false,
             "type": "boolean"
           },
           "analysis_config": {
@@ -60720,6 +61077,7 @@
           },
           "daily_model_snapshot_retention_after_days": {
             "description": "Advanced configuration option, which affects the automatic removal of old model snapshots for this job.\nIt specifies a period of time (in days) after which only the first snapshot per day is retained.\nThis period is relative to the timestamp of the most recent snapshot for this job.",
+            "default": 1.0,
             "type": "number"
           },
           "data_description": {
@@ -60751,6 +61109,7 @@
           },
           "model_snapshot_retention_days": {
             "description": "Advanced configuration option, which affects the automatic removal of old model snapshots for this job.\nIt specifies the maximum period of time (in days) that snapshots are retained.\nThis period is relative to the timestamp of the most recent snapshot for this job.\nThe default value is `10`, which means snapshots ten days older than the newest snapshot are deleted.",
+            "default": 10.0,
             "type": "number"
           },
           "renormalization_window_days": {
@@ -60881,6 +61240,7 @@
           },
           "use_null": {
             "description": "Defines whether a new series is used as the null series when there is no value for the by or partition fields.",
+            "default": false,
             "type": "boolean"
           }
         },
@@ -61494,6 +61854,7 @@
         "properties": {
           "explain": {
             "description": "If `true`, returns detailed information about score calculation as part of each hit.",
+            "default": false,
             "type": "boolean"
           },
           "id": {
@@ -61508,6 +61869,7 @@
           },
           "profile": {
             "description": "If `true`, the query execution is profiled.",
+            "default": false,
             "type": "boolean"
           },
           "source": {
@@ -61533,6 +61895,7 @@
           },
           "field_statistics": {
             "description": "If `true`, the response includes the document count, sum of document frequencies, and sum of total term frequencies.",
+            "default": true,
             "type": "boolean"
           },
           "filter": {
@@ -61540,14 +61903,17 @@
           },
           "offsets": {
             "description": "If `true`, the response includes term offsets.",
+            "default": true,
             "type": "boolean"
           },
           "payloads": {
             "description": "If `true`, the response includes term payloads.",
+            "default": true,
             "type": "boolean"
           },
           "positions": {
             "description": "If `true`, the response includes term positions.",
+            "default": true,
             "type": "boolean"
           },
           "routing": {
@@ -61555,6 +61921,7 @@
           },
           "term_statistics": {
             "description": "If true, the response includes term frequency and document frequency.",
+            "default": false,
             "type": "boolean"
           },
           "version": {
@@ -61574,6 +61941,7 @@
           },
           "max_num_terms": {
             "description": "The maximum number of terms that must be returned per field.",
+            "default": 25.0,
             "type": "number"
           },
           "max_term_freq": {
@@ -61582,18 +61950,22 @@
           },
           "max_word_length": {
             "description": "The maximum word length above which words will be ignored.\nDefaults to unbounded.",
+            "default": 0.0,
             "type": "number"
           },
           "min_doc_freq": {
             "description": "Ignore terms which do not occur in at least this many docs.",
+            "default": 1.0,
             "type": "number"
           },
           "min_term_freq": {
             "description": "Ignore words with less than this frequency in the source doc.",
+            "default": 1.0,
             "type": "number"
           },
           "min_word_length": {
             "description": "The minimum word length below which words will be ignored.",
+            "default": 0.0,
             "type": "number"
           }
         }
@@ -61977,6 +62349,7 @@
             "properties": {
               "ignore_unlabeled": {
                 "description": "Controls how unlabeled documents in the search results are counted. If set to true, unlabeled documents are ignored and neither count as relevant or irrelevant. Set to false (the default), they are treated as irrelevant.",
+                "default": false,
                 "type": "boolean"
               }
             }
@@ -61993,6 +62366,7 @@
             "properties": {
               "relevant_rating_threshold": {
                 "description": "Sets the rating threshold above which documents are considered to be \"relevant\".",
+                "default": 1.0,
                 "type": "number"
               }
             }
@@ -62004,6 +62378,7 @@
         "properties": {
           "k": {
             "description": "Sets the maximum number of documents retrieved per query. This value will act in place of the usual size parameter in the query.",
+            "default": 10.0,
             "type": "number"
           }
         }
@@ -62041,6 +62416,7 @@
             "properties": {
               "normalize": {
                 "description": "If set to true, this metric will calculate the Normalized DCG.",
+                "default": false,
                 "type": "boolean"
               }
             }
@@ -62200,6 +62576,7 @@
           },
           "size": {
             "description": "The number of documents to index per batch.\nUse it when you are indexing from remote to ensure that the batches fit within the on-heap buffer, which defaults to a maximum size of 100 MB.",
+            "default": 1000.0,
             "type": "number"
           },
           "slice": {
@@ -62864,6 +63241,7 @@
           },
           "allow_restricted_indices": {
             "description": "This needs to be set to true if the patterns in the names field should cover system indices.",
+            "default": false,
             "type": "boolean"
           }
         },
@@ -63209,10 +63587,12 @@
               },
               "other_bucket_key": {
                 "description": "The key with which the other bucket is returned.",
+                "default": "_other_",
                 "type": "string"
               },
               "keyed": {
                 "description": "By default, the named filters aggregation returns the buckets as an object.\nSet to `false` to return the buckets as an array of objects.",
+                "default": true,
                 "type": "boolean"
               }
             }
@@ -63731,14 +64111,17 @@
         "properties": {
           "align_checkpoints": {
             "description": "Specifies whether the transform checkpoint ranges should be optimized for performance. Such optimization can align\ncheckpoint ranges with the date histogram interval when date histogram is specified as a group source in the\ntransform config. As a result, less document updates in the destination index will be performed thus improving\noverall performance.",
+            "default": true,
             "type": "boolean"
           },
           "dates_as_epoch_millis": {
             "description": "Defines if dates in the ouput should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
+            "default": false,
             "type": "boolean"
           },
           "deduce_mappings": {
             "description": "Specifies whether the transform should deduce the destination index mappings from the transform configuration.",
+            "default": true,
             "type": "boolean"
           },
           "docs_per_second": {
@@ -63747,10 +64130,12 @@
           },
           "max_page_search_size": {
             "description": "Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker\nexceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is `10` and the\nmaximum is `65,536`.",
+            "default": 500.0,
             "type": "number"
           },
           "unattended": {
             "description": "If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case\nof an error which means the transform never fails. Setting the number of retries other than infinite fails in\nvalidation.",
+            "default": false,
             "x-state": "Generally available",
             "type": "boolean"
           }
@@ -71517,6 +71902,7 @@
                 },
                 "explain": {
                   "description": "If true, returns detailed information about score computation as part of a hit.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "ext": {
@@ -71528,6 +71914,7 @@
                 },
                 "from": {
                   "description": "Starting document offset. By default, you cannot page through more than 10,000\nhits using the from and size parameters. To page through more hits, use the\nsearch_after parameter.",
+                  "default": 0.0,
                   "type": "number"
                 },
                 "highlight": {
@@ -71608,6 +71995,7 @@
                 },
                 "size": {
                   "description": "The number of hits to return. By default, you cannot page through more\nthan 10,000 hits using the from and size parameters. To page through more\nhits, use the search_after parameter.",
+                  "default": 10.0,
                   "type": "number"
                 },
                 "slice": {
@@ -71631,6 +72019,7 @@
                 },
                 "terminate_after": {
                   "description": "Maximum number of documents to collect for each shard. If a query reaches this\nlimit, Elasticsearch terminates the query early. Elasticsearch collects documents\nbefore sorting. Defaults to 0, which does not terminate query execution early.",
+                  "default": 0.0,
                   "type": "number"
                 },
                 "timeout": {
@@ -71639,10 +72028,12 @@
                 },
                 "track_scores": {
                   "description": "If true, calculate and return document scores, even if the scores are not used for sorting.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "version": {
                   "description": "If true, returns document version as part of a hit.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "seq_no_primary_term": {
@@ -71903,10 +72294,12 @@
                 },
                 "allow_partial_search_results": {
                   "description": "Allow query execution also in case of shard failures.\nIf true, the query will keep running and will return results based on the available shards.\nFor sequences, the behavior can be further refined using allow_partial_sequence_results",
+                  "default": true,
                   "type": "boolean"
                 },
                 "allow_partial_sequence_results": {
                   "description": "This flag applies only to sequences and has effect only if allow_partial_search_results=true.\nIf true, the sequence query will return results based on the available shards, ignoring the others.\nIf false, the sequence query will return successfully, but will always have empty results.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "size": {
@@ -71934,6 +72327,7 @@
                 },
                 "max_samples_per_key": {
                   "description": "By default, the response of a sample query contains up to `10` samples, with one sample per unique set of join keys. Use the `size`\nparameter to get a smaller or larger set of samples. To retrieve more than one sample per set of join keys, use the\n`max_samples_per_key` parameter. Pipes are not supported for sample queries.",
+                  "default": 1.0,
                   "type": "number"
                 }
               },
@@ -72084,6 +72478,7 @@
                 },
                 "explain": {
                   "description": "If `true`, the response includes token attributes and additional details.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "field": {
@@ -72284,6 +72679,7 @@
                 },
                 "numeric_detection": {
                   "description": "Automatically map strings into numeric data types for all fields.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "properties": {
@@ -72599,6 +72995,7 @@
               "properties": {
                 "allow_no_match": {
                   "description": "Refer to the description for the `allow_no_match` query parameter.",
+                  "default": true,
                   "type": "boolean"
                 },
                 "bucket_span": {
@@ -72609,6 +73006,7 @@
                 },
                 "exclude_interim": {
                   "description": "Refer to the description for the `exclude_interim` query parameter.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "overall_score": {
@@ -72627,6 +73025,7 @@
                 },
                 "top_n": {
                   "description": "Refer to the description for the `top_n` query parameter.",
+                  "default": 1.0,
                   "type": "number"
                 }
               }
@@ -72935,6 +73334,7 @@
                 },
                 "explain": {
                   "description": "If `true`, the request returns detailed information about score computation as part of a hit.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "ext": {
@@ -72946,6 +73346,7 @@
                 },
                 "from": {
                   "description": "The starting document offset, which must be non-negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "default": 0.0,
                   "type": "number"
                 },
                 "highlight": {
@@ -73006,6 +73407,7 @@
                 },
                 "profile": {
                   "description": "Set to `true` to return detailed timing information about the execution of individual components in a search request.\nNOTE: This is a debugging tool and adds significant overhead to search execution.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "query": {
@@ -73040,6 +73442,7 @@
                 },
                 "size": {
                   "description": "The number of hits to return, which must not be negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` property.",
+                  "default": 10.0,
                   "type": "number"
                 },
                 "slice": {
@@ -73063,6 +73466,7 @@
                 },
                 "terminate_after": {
                   "description": "The maximum number of documents to collect for each shard.\nIf a query reaches this limit, Elasticsearch terminates the query early.\nElasticsearch collects documents before sorting.\n\nIMPORTANT: Use with caution.\nElasticsearch applies this property to each shard handling the request.\nWhen possible, let Elasticsearch perform early termination automatically.\nAvoid specifying this property for requests that target data streams with backing indices across multiple data tiers.\n\nIf set to `0` (default), the query does not terminate early.",
+                  "default": 0.0,
                   "type": "number"
                 },
                 "timeout": {
@@ -73071,10 +73475,12 @@
                 },
                 "track_scores": {
                   "description": "If `true`, calculate and return document scores, even if the scores are not used for sorting.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "version": {
                   "description": "If `true`, the request returns the document version as part of a hit.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "seq_no_primary_term": {
@@ -73161,14 +73567,17 @@
                 },
                 "buffer": {
                   "description": "The size, in pixels, of a clipping buffer outside the tile. This allows renderers\nto avoid outline artifacts from geometries that extend past the extent of the tile.",
+                  "default": 5.0,
                   "type": "number"
                 },
                 "exact_bounds": {
                   "description": "If `false`, the meta layer's feature is the bounding box of the tile.\nIf `true`, the meta layer's feature is a bounding box resulting from a\n`geo_bounds` aggregation. The aggregation runs on <field> values that intersect\nthe `<zoom>/<x>/<y>` tile with `wrap_longitude` set to `false`. The resulting\nbounding box may be larger than the vector tile.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "extent": {
                   "description": "The size, in pixels, of a side of the tile. Vector tiles are square with equal sides.",
+                  "default": 4096.0,
                   "type": "number"
                 },
                 "fields": {
@@ -73179,6 +73588,7 @@
                 },
                 "grid_precision": {
                   "description": "Additional zoom levels available through the aggs layer. For example, if `<zoom>` is `7`\nand `grid_precision` is `8`, you can zoom in up to level 15. Accepts 0-8. If 0, results\ndon't include the aggs layer.",
+                  "default": 8.0,
                   "type": "number"
                 },
                 "grid_type": {
@@ -73192,6 +73602,7 @@
                 },
                 "size": {
                   "description": "The maximum number of features to return in the hits layer. Accepts 0-10000.\nIf 0, results don't include the hits layer.",
+                  "default": 10000.0,
                   "type": "number"
                 },
                 "sort": {
@@ -73223,6 +73634,7 @@
               "properties": {
                 "explain": {
                   "description": "If `true`, returns detailed information about score calculation as part of each hit.\nIf you specify both this and the `explain` query parameter, the API uses only the query parameter.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "id": {
@@ -73237,6 +73649,7 @@
                 },
                 "profile": {
                   "description": "If `true`, the query execution is profiled.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "source": {
@@ -73420,6 +73833,7 @@
                 },
                 "from": {
                   "description": "The starting document offset.\nIt must not be negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "default": 0.0,
                   "type": "number"
                 },
                 "sort": {
@@ -73427,6 +73841,7 @@
                 },
                 "size": {
                   "description": "The number of hits to return.\nIt must not be negative.\nThe `size` parameter can be set to `0`, in which case no API key matches are returned, only the aggregation results.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "default": 10.0,
                   "type": "number"
                 },
                 "search_after": {
@@ -73455,6 +73870,7 @@
                 },
                 "from": {
                   "description": "The starting document offset.\nIt must not be negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "default": 0.0,
                   "type": "number"
                 },
                 "sort": {
@@ -73462,6 +73878,7 @@
                 },
                 "size": {
                   "description": "The number of hits to return.\nIt must not be negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "default": 10.0,
                   "type": "number"
                 },
                 "search_after": {
@@ -73492,6 +73909,7 @@
               "properties": {
                 "allow_partial_search_results": {
                   "description": "If `true`, the response has partial results when there are shard request timeouts or shard failures.\nIf `false`, the API returns an error with no partial results.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "catalog": {
@@ -73503,6 +73921,7 @@
                     "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/sql-rest-columnar"
                   },
                   "description": "If `true`, the results are in a columnar fashion: one row represents all the values of a certain column from the current page of results.\nThe API supports this parameter only for CBOR, JSON, SMILE, and YAML responses.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "cursor": {
@@ -73511,10 +73930,12 @@
                 },
                 "fetch_size": {
                   "description": "The maximum number of rows (or entries) to return in one response.",
+                  "default": 1000.0,
                   "type": "number"
                 },
                 "field_multi_value_leniency": {
                   "description": "If `false`, the API returns an exception when encountering multiple values for a field.\nIf `true`, the API is lenient and returns the first value from the array with no guarantee of consistent results.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "filter": {
@@ -73522,6 +73943,7 @@
                 },
                 "index_using_frozen": {
                   "description": "If `true`, the search can run on frozen indices.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "keep_alive": {
@@ -73529,6 +73951,7 @@
                 },
                 "keep_on_completion": {
                   "description": "If `true`, Elasticsearch stores synchronous searches if you also specify the `wait_for_completion_timeout` parameter.\nIf `false`, Elasticsearch only stores async searches that don't finish before the `wait_for_completion_timeout`.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "page_timeout": {
@@ -73580,6 +74003,7 @@
               "properties": {
                 "fetch_size": {
                   "description": "The maximum number of rows (or entries) to return in one response.",
+                  "default": 1000.0,
                   "type": "number"
                 },
                 "filter": {
@@ -73619,6 +74043,7 @@
                 },
                 "size": {
                   "description": "The number of matching terms to return.",
+                  "default": 10.0,
                   "type": "number"
                 },
                 "timeout": {
@@ -73626,6 +74051,7 @@
                 },
                 "case_insensitive": {
                   "description": "When `true`, the provided search string is matched against index terms without case sensitivity.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "index_filter": {
@@ -73678,22 +74104,27 @@
                 },
                 "field_statistics": {
                   "description": "If `true`, the response includes:\n\n* The document count (how many documents contain this field).\n* The sum of document frequencies (the sum of document frequencies for all terms in this field).\n* The sum of total term frequencies (the sum of total term frequencies of each term in this field).",
+                  "default": true,
                   "type": "boolean"
                 },
                 "offsets": {
                   "description": "If `true`, the response includes term offsets.",
+                  "default": true,
                   "type": "boolean"
                 },
                 "payloads": {
                   "description": "If `true`, the response includes term payloads.",
+                  "default": true,
                   "type": "boolean"
                 },
                 "positions": {
                   "description": "If `true`, the response includes term positions.",
+                  "default": true,
                   "type": "boolean"
                 },
                 "term_statistics": {
                   "description": "If `true`, the response includes:\n\n* The total term frequency (how often a term occurs in all documents).\n* The document frequency (the number of documents containing the current term).\n\nBy default these values are not returned since term statistics can have a serious performance impact.",
+                  "default": false,
                   "type": "boolean"
                 },
                 "routing": {
