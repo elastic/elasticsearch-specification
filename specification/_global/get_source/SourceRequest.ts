@@ -100,10 +100,6 @@ export interface Request extends RequestBase {
      */
     _source_includes?: Fields
     /**
-     * A comma-separated list of stored fields to return as part of a hit.
-     */
-    stored_fields?: Fields
-    /**
      * The version number for concurrency control.
      * It must match the current version of the document for the request to succeed.
      */
