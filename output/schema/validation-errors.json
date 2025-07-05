@@ -15,7 +15,7 @@
     },
     "cluster.put_component_template": {
       "request": [
-        "Request: missing json spec query parameter 'timeout'"
+        "Request: missing json spec query parameter 'cause'"
       ],
       "response": []
     },
@@ -34,12 +34,6 @@
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
         "Request: query parameter 'expand_wildcards' does not exist in the json spec",
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "esql.async_query_get": {
-      "request": [
-        "Request: query parameter 'format' does not exist in the json spec"
       ],
       "response": []
     },
