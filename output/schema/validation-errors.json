@@ -13,12 +13,6 @@
       ],
       "response": []
     },
-    "cluster.put_component_template": {
-      "request": [
-        "Request: missing json spec query parameter 'cause'"
-      ],
-      "response": []
-    },
     "create": {
       "request": [
         "Request: query parameter 'if_primary_term' does not exist in the json spec",
