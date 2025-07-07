@@ -672,6 +672,7 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
   version_type?: VersionType
   wait_for_active_shards?: WaitForActiveShards
   require_alias?: boolean
+  require_data_stream?: boolean
   body?: TDocument
 }
 
@@ -9610,6 +9611,7 @@ export type ClusterPostVotingConfigExclusionsResponse = boolean
 export interface ClusterPutComponentTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
+  cause?: string
   master_timeout?: Duration
   body?: {
     template: IndicesIndexState
@@ -15035,7 +15037,6 @@ export interface IngestGetIpLocationDatabaseDatabaseConfigurationMetadata {
 
 export interface IngestGetIpLocationDatabaseRequest extends RequestBase {
   id?: Ids
-  master_timeout?: Duration
 }
 
 export interface IngestGetIpLocationDatabaseResponse {
@@ -15207,7 +15208,7 @@ export interface LicensePostStartBasicResponse {
 
 export interface LicensePostStartTrialRequest extends RequestBase {
   acknowledge?: boolean
-  type_query_string?: string
+  type?: string
   master_timeout?: Duration
 }
 

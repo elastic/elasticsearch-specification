@@ -1711,6 +1711,9 @@
             "$ref": "#/components/parameters/cluster.put_component_template-create"
           },
           {
+            "$ref": "#/components/parameters/cluster.put_component_template-cause"
+          },
+          {
             "$ref": "#/components/parameters/cluster.put_component_template-master_timeout"
           }
         ],
@@ -1738,6 +1741,9 @@
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template-create"
+          },
+          {
+            "$ref": "#/components/parameters/cluster.put_component_template-cause"
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template-master_timeout"
@@ -4149,6 +4155,9 @@
           },
           {
             "$ref": "#/components/parameters/index-require_alias"
+          },
+          {
+            "$ref": "#/components/parameters/index-require_data_stream"
           }
         ],
         "requestBody": {
@@ -4215,6 +4224,9 @@
           },
           {
             "$ref": "#/components/parameters/index-require_alias"
+          },
+          {
+            "$ref": "#/components/parameters/index-require_data_stream"
           }
         ],
         "requestBody": {
@@ -6578,6 +6590,9 @@
           },
           {
             "$ref": "#/components/parameters/index-require_alias"
+          },
+          {
+            "$ref": "#/components/parameters/index-require_data_stream"
           }
         ],
         "requestBody": {
@@ -67804,6 +67819,16 @@
         },
         "style": "form"
       },
+      "cluster.put_component_template-cause": {
+        "in": "query",
+        "name": "cause",
+        "description": "User defined reason for create the component template.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
       "cluster.put_component_template-master_timeout": {
         "in": "query",
         "name": "master_timeout",
@@ -68641,6 +68666,16 @@
         "in": "query",
         "name": "require_alias",
         "description": "If `true`, the destination must be an index alias.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "index-require_data_stream": {
+        "in": "query",
+        "name": "require_data_stream",
+        "description": "If `true`, the request's actions must target a data stream (existing or to be created).",
         "deprecated": false,
         "schema": {
           "type": "boolean"
