@@ -4032,6 +4032,9 @@
           },
           {
             "$ref": "#/components/parameters/index-require_alias"
+          },
+          {
+            "$ref": "#/components/parameters/index-require_data_stream"
           }
         ],
         "requestBody": {
@@ -4096,6 +4099,9 @@
           },
           {
             "$ref": "#/components/parameters/index-require_alias"
+          },
+          {
+            "$ref": "#/components/parameters/index-require_data_stream"
           }
         ],
         "requestBody": {
@@ -6377,6 +6383,9 @@
           },
           {
             "$ref": "#/components/parameters/index-require_alias"
+          },
+          {
+            "$ref": "#/components/parameters/index-require_data_stream"
           }
         ],
         "requestBody": {
@@ -66738,6 +66747,16 @@
         "in": "query",
         "name": "require_alias",
         "description": "If `true`, the destination must be an index alias.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "index-require_data_stream": {
+        "in": "query",
+        "name": "require_data_stream",
+        "description": "If `true`, the request's actions must target a data stream (existing or to be created).",
         "deprecated": false,
         "schema": {
           "type": "boolean"
