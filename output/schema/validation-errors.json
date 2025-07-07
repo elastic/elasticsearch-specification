@@ -13,12 +13,6 @@
       ],
       "response": []
     },
-    "cluster.put_component_template": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
     "create": {
       "request": [
         "Request: query parameter 'if_primary_term' does not exist in the json spec",
@@ -34,37 +28,6 @@
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
         "Request: query parameter 'expand_wildcards' does not exist in the json spec",
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "esql.async_query_get": {
-      "request": [
-        "Request: query parameter 'format' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "get_source": {
-      "request": [
-        "Request: query parameter 'stored_fields' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "index": {
-      "request": [
-        "Request: missing json spec query parameter 'require_data_stream'"
-      ],
-      "response": []
-    },
-    "ingest.get_ip_location_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "license.post_start_trial": {
-      "request": [
-        "Request: query parameter 'type_query_string' does not exist in the json spec",
-        "Request: missing json spec query parameter 'type'"
       ],
       "response": []
     },
