@@ -49,12 +49,6 @@
       ],
       "response": []
     },
-    "ingest.get_ip_location_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "license.post_start_trial": {
       "request": [
         "Request: query parameter 'type_query_string' does not exist in the json spec",
