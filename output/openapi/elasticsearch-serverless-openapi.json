@@ -64907,6 +64907,12 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/_types.WriteResponseBase"
+            },
+            "examples": {
+              "CreateResponseExample1": {
+                "description": "A successful response from `PUT my-index-000001/_create/1` which indexes a document.",
+                "value": "{\n   \"_index\": \"my-index-000001\",\n   \"_id\": \"1\",\n   \"_version\": 1,\n   \"result\": \"created\",\n   \"_shards\": {\n     \"total\": 1,\n     \"successful\": 1,\n     \"failed\": 0\n   },\n   \"_seq_no\": 0,\n   \"_primary_term\": 1\n}"
+              }
             }
           }
         }
