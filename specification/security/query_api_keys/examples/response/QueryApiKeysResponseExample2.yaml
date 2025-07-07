@@ -1,0 +1,46 @@
+summary: Query API keys with pagination
+description: >
+  An abbreviated response from `GET /_security/_query/api_key` that contains a list of matched API keys along with their sort values.
+  The first sort value is creation time, which is displayed in `date_time` format.
+  The second sort value is the API key name.
+# type: response
+# response_code:
+value: |-
+  {
+    "total": 100,
+    "count": 10,
+    "api_keys": [
+      {
+        "id": "CLXgVnsBOGkf8IyjcXU7",
+        "name": "app1-key-79",
+        "creation": 1629250154811,
+        "invalidated": false,
+        "username": "org-admin-user",
+        "realm": "native1",
+        "metadata": {
+          "environment": "production"
+        },
+        "role_descriptors": { },
+        "_sort": [
+          "2021-08-18T01:29:14.811Z",  
+          "app1-key-79"  
+        ]
+      },
+      {
+        "id": "BrXgVnsBOGkf8IyjbXVB",
+        "name": "app1-key-78",
+        "creation": 1629250153794,
+        "invalidated": false,
+        "username": "org-admin-user",
+        "realm": "native1",
+        "metadata": {
+          "environment": "production"
+        },
+        "role_descriptors": { },
+        "_sort": [
+          "2021-08-18T01:29:13.794Z",
+          "app1-key-78"
+        ]
+      }
+    ]
+  }
