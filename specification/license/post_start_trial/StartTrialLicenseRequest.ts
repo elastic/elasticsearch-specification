@@ -42,7 +42,7 @@ export interface Request extends RequestBase {
   ]
   query_parameters: {
     acknowledge?: boolean
-    type_query_string?: string
+    type?: string
     /**
      * Period to wait for a connection to the master node.
      * @server_default 30s
