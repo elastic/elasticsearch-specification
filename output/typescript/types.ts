@@ -9612,6 +9612,7 @@ export type ClusterPostVotingConfigExclusionsResponse = boolean
 export interface ClusterPutComponentTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
+  cause?: string
   master_timeout?: Duration
   body?: {
     template: IndicesIndexState
