@@ -49,13 +49,6 @@
       ],
       "response": []
     },
-    "license.post_start_trial": {
-      "request": [
-        "Request: query parameter 'type_query_string' does not exist in the json spec",
-        "Request: missing json spec query parameter 'type'"
-      ],
-      "response": []
-    },
     "msearch": {
       "request": [
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
