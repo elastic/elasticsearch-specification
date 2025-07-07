@@ -247,12 +247,6 @@
       ],
       "response": []
     },
-    "index": {
-      "request": [
-        "Request: missing json spec query parameter 'require_data_stream'"
-      ],
-      "response": []
-    },
     "ingest.delete_geoip_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
