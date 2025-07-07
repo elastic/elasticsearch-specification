@@ -663,6 +663,7 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
   version_type?: VersionType
   wait_for_active_shards?: WaitForActiveShards
   require_alias?: boolean
+  require_data_stream?: boolean
   body?: TDocument
 }
 
