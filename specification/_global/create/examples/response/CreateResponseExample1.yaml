@@ -1,0 +1,18 @@
+# summary: ''
+description: A successful response from `PUT my-index-000001/_create/1` which indexes a document.
+# type: response
+# response_code: 200
+value: |-
+  {
+     "_index": "my-index-000001",
+     "_id": "1",
+     "_version": 1,
+     "result": "created",
+     "_shards": {
+       "total": 1,
+       "successful": 1,
+       "failed": 0
+     },
+     "_seq_no": 0,
+     "_primary_term": 1
+  }
