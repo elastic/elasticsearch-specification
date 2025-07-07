@@ -172,6 +172,7 @@
     },
     "cluster.put_component_template": {
       "request": [
+        "Request: query parameter 'cause' does not exist in the json spec",
         "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
