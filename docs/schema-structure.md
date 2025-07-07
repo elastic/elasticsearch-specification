@@ -35,7 +35,7 @@ to model the various endpoints.
 
 ## Specification format
 
-The specification's specification can be found [here](compiler/src/model/metamodel.ts).
+The specification's specification can be found [here](../compiler/src/model/metamodel.ts).
 
 ## Identify a type by name
 
