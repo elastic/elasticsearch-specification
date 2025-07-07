@@ -14776,7 +14776,6 @@ export interface IngestGetIpLocationDatabaseDatabaseConfigurationMetadata {
 
 export interface IngestGetIpLocationDatabaseRequest extends RequestBase {
   id?: Ids
-  master_timeout?: Duration
 }
 
 export interface IngestGetIpLocationDatabaseResponse {

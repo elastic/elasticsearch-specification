@@ -261,12 +261,6 @@
       ],
       "response": []
     },
-    "ingest.get_ip_location_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "ingest.put_geoip_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
