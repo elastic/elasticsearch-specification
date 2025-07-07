@@ -5791,16 +5791,6 @@
           },
           {
             "in": "query",
-            "name": "stored_fields",
-            "description": "A comma-separated list of stored fields to return as part of a hit.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Fields"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
             "name": "version",
             "description": "The version number for concurrency control.\nIt must match the current version of the document for the request to succeed.",
             "deprecated": false,
