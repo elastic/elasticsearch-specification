@@ -201,12 +201,6 @@
       ],
       "response": []
     },
-    "get_source": {
-      "request": [
-        "Request: query parameter 'stored_fields' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "ilm.delete_lifecycle": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",

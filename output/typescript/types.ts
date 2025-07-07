@@ -462,7 +462,6 @@ export interface GetSourceRequest extends RequestBase {
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
-  stored_fields?: Fields
   version?: VersionNumber
   version_type?: VersionType
 }
