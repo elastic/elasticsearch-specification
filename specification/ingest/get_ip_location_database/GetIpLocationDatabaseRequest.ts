@@ -19,7 +19,6 @@
 
 import { RequestBase } from '@_types/Base'
 import { Ids } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Get IP geolocation database configurations.
@@ -47,13 +46,5 @@ export interface Request extends RequestBase {
      * To get all database configurations, omit this parameter or use `*`.
      */
     id?: Ids
-  }
-  query_parameters: {
-    /**
-     * The period to wait for a connection to the master node.
-     * If no response is received before the timeout expires, the request fails and returns an error.
-     * A value of `-1` indicates that the request should never time out.
-     * @server_default 30s */
-    master_timeout?: Duration
   }
 }
