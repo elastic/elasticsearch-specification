@@ -31,12 +31,6 @@
       ],
       "response": []
     },
-    "get_source": {
-      "request": [
-        "Request: query parameter 'stored_fields' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "msearch": {
       "request": [
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
