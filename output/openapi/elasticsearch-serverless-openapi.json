@@ -1665,6 +1665,9 @@
             "$ref": "#/components/parameters/cluster.put_component_template-create"
           },
           {
+            "$ref": "#/components/parameters/cluster.put_component_template-cause"
+          },
+          {
             "$ref": "#/components/parameters/cluster.put_component_template-master_timeout"
           }
         ],
@@ -1691,6 +1694,9 @@
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template-create"
+          },
+          {
+            "$ref": "#/components/parameters/cluster.put_component_template-cause"
           },
           {
             "$ref": "#/components/parameters/cluster.put_component_template-master_timeout"
@@ -65907,6 +65913,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "cluster.put_component_template-cause": {
+        "in": "query",
+        "name": "cause",
+        "description": "User defined reason for create the component template.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
         },
         "style": "form"
       },
