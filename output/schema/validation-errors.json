@@ -9,7 +9,7 @@
     },
     "cluster.get_component_template": {
       "request": [
-        "Request: query parameter 'flat_settings' does not exist in the json spec"
+        "Request: missing json spec query parameter 'settings_filter'"
       ],
       "response": []
     },
@@ -31,6 +31,12 @@
       ],
       "response": []
     },
+    "get": {
+      "request": [
+        "Request: missing json spec query parameter '_source_exclude_vectors'"
+      ],
+      "response": []
+    },
     "msearch": {
       "request": [
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
@@ -42,16 +48,16 @@
       ],
       "response": []
     },
-    "open_point_in_time": {
-      "request": [
-        "Request: query parameter 'max_concurrent_shard_requests' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "reindex": {
       "request": [
         "Request: query parameter 'require_alias' does not exist in the json spec",
         "Request: missing json spec query parameter 'max_docs'"
+      ],
+      "response": []
+    },
+    "search": {
+      "request": [
+        "Request: missing json spec query parameter '_source_exclude_vectors'"
       ],
       "response": []
     },
