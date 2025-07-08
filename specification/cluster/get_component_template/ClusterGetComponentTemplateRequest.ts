@@ -56,6 +56,10 @@ export interface Request extends RequestBase {
      */
     flat_settings?: boolean
     /**
+     * Filter out results, for example to filter out sensitive information. Supports wildcards or full settings keys
+     */
+    settings_filter?: string | string[]
+    /**
      * @server_default false
      * @availability stack since=8.11.0 stability=stable
      * @availability serverless stability=stable
