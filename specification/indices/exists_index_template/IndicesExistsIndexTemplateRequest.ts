@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id index-templates-exist
+ * @cluster_privileges manage_index_templates
  */
 export interface Request extends RequestBase {
   urls: [
