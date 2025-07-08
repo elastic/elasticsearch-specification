@@ -11430,7 +11430,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Perform rereanking inference on the service",
+        "summary": "Perform reranking inference on the service",
         "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
         "operationId": "inference-rerank",
         "parameters": [
