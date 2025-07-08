@@ -7,12 +7,6 @@
       ],
       "response": []
     },
-    "cluster.get_component_template": {
-      "request": [
-        "Request: missing json spec query parameter 'settings_filter'"
-      ],
-      "response": []
-    },
     "create": {
       "request": [
         "Request: query parameter 'if_primary_term' does not exist in the json spec",
@@ -31,12 +25,6 @@
       ],
       "response": []
     },
-    "get": {
-      "request": [
-        "Request: missing json spec query parameter '_source_exclude_vectors'"
-      ],
-      "response": []
-    },
     "msearch": {
       "request": [
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
@@ -52,12 +40,6 @@
       "request": [
         "Request: query parameter 'require_alias' does not exist in the json spec",
         "Request: missing json spec query parameter 'max_docs'"
-      ],
-      "response": []
-    },
-    "search": {
-      "request": [
-        "Request: missing json spec query parameter '_source_exclude_vectors'"
       ],
       "response": []
     },

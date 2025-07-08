@@ -397,6 +397,7 @@ export interface GetRequest extends RequestBase {
   routing?: Routing
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
+  _source_exclude_vectors?: boolean
   _source_includes?: Fields
   stored_fields?: Fields
   version?: VersionNumber
@@ -1170,6 +1171,7 @@ export interface SearchRequest extends RequestBase {
   version?: boolean
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
+  _source_exclude_vectors?: boolean
   _source_includes?: Fields
   seq_no_primary_term?: boolean
   q?: string
@@ -9483,6 +9485,7 @@ export type ClusterExistsComponentTemplateResponse = boolean
 export interface ClusterGetComponentTemplateRequest extends RequestBase {
   name?: Name
   flat_settings?: boolean
+  settings_filter?: string | string[]
   include_defaults?: boolean
   local?: boolean
   master_timeout?: Duration
