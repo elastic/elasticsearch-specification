@@ -1679,6 +1679,9 @@
             "$ref": "#/components/parameters/cluster.get_component_template-flat_settings"
           },
           {
+            "$ref": "#/components/parameters/cluster.get_component_template-settings_filter"
+          },
+          {
             "$ref": "#/components/parameters/cluster.get_component_template-include_defaults"
           },
           {
@@ -1878,6 +1881,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/cluster.get_component_template-flat_settings"
+          },
+          {
+            "$ref": "#/components/parameters/cluster.get_component_template-settings_filter"
           },
           {
             "$ref": "#/components/parameters/cluster.get_component_template-include_defaults"
@@ -4026,6 +4032,16 @@
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Fields"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "_source_exclude_vectors",
+            "description": "Whether vectors should be excluded from _source",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
             },
             "style": "form"
           },
@@ -7944,7 +7960,7 @@
           "indices"
         ],
         "summary": "Check index templates",
-        "description": "Check whether index templates exist.",
+        "description": "Check whether index templates exist.\n\n## Required authorization\n\n* Cluster privileges: `manage_index_templates`\n",
         "operationId": "indices-exists-index-template",
         "parameters": [
           {
@@ -12138,7 +12154,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Perform rereanking inference on the service",
+        "summary": "Perform reranking inference on the service",
         "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
         "operationId": "inference-rerank",
         "parameters": [
@@ -19976,6 +19992,9 @@
             "$ref": "#/components/parameters/search-_source_excludes"
           },
           {
+            "$ref": "#/components/parameters/search-_source_exclude_vectors"
+          },
+          {
             "$ref": "#/components/parameters/search-_source_includes"
           },
           {
@@ -20127,6 +20146,9 @@
           },
           {
             "$ref": "#/components/parameters/search-_source_excludes"
+          },
+          {
+            "$ref": "#/components/parameters/search-_source_exclude_vectors"
           },
           {
             "$ref": "#/components/parameters/search-_source_includes"
@@ -20287,6 +20309,9 @@
             "$ref": "#/components/parameters/search-_source_excludes"
           },
           {
+            "$ref": "#/components/parameters/search-_source_exclude_vectors"
+          },
+          {
             "$ref": "#/components/parameters/search-_source_includes"
           },
           {
@@ -20441,6 +20466,9 @@
           },
           {
             "$ref": "#/components/parameters/search-_source_excludes"
+          },
+          {
+            "$ref": "#/components/parameters/search-_source_exclude_vectors"
           },
           {
             "$ref": "#/components/parameters/search-_source_includes"
@@ -67995,6 +68023,26 @@
         },
         "style": "form"
       },
+      "cluster.get_component_template-settings_filter": {
+        "in": "query",
+        "name": "settings_filter",
+        "description": "Filter out results, for example to filter out sensitive information. Supports wildcards or full settings keys",
+        "deprecated": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "style": "form"
+      },
       "cluster.get_component_template-include_defaults": {
         "in": "query",
         "name": "include_defaults",
@@ -71565,6 +71613,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Fields"
+        },
+        "style": "form"
+      },
+      "search-_source_exclude_vectors": {
+        "in": "query",
+        "name": "_source_exclude_vectors",
+        "description": "Whether vectors should be excluded from _source",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },

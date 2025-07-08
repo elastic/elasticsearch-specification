@@ -337,6 +337,13 @@ export interface Request extends RequestBase {
      */
     _source_excludes?: Fields
     /**
+     * Whether vectors should be excluded from _source
+     * @availability stack since=9.2.0
+     * @availability serverless
+     * @server_default false
+     */
+    _source_exclude_vectors?: boolean
+    /**
      * A comma-separated list of source fields to include in the response.
      * If this parameter is specified, only these source fields are returned.
      * You can exclude fields from this subset using the `_source_excludes` query parameter.
