@@ -19353,6 +19353,16 @@
           },
           {
             "in": "query",
+            "name": "max_docs",
+            "description": "The maximum number of documents to reindex.\nBy default, all documents are reindexed.\nIf it is a value less then or equal to `scroll_size`, a scroll will not be used to retrieve the results for the operation.\n\nIf `conflicts` is set to `proceed`, the reindex operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "timeout",
             "description": "The period each indexing waits for automatic index creation, dynamic mapping updates, and waiting for active shards.\nBy default, Elasticsearch waits for at least one minute before failing.\nThe actual wait time could be longer, particularly when multiple waits occur.",
             "deprecated": false,
