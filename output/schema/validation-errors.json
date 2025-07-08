@@ -166,14 +166,7 @@
     },
     "cluster.get_component_template": {
       "request": [
-        "Request: query parameter 'flat_settings' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "cluster.put_component_template": {
-      "request": [
-        "Request: query parameter 'cause' does not exist in the json spec",
-        "Request: missing json spec query parameter 'timeout'"
+        "Request: missing json spec query parameter 'settings_filter'"
       ],
       "response": []
     },
@@ -284,12 +277,6 @@
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
         "Request: query parameter 'include_named_queries_score' does not exist in the json spec",
         "Request: query parameter 'routing' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "open_point_in_time": {
-      "request": [
-        "Request: query parameter 'max_concurrent_shard_requests' does not exist in the json spec"
       ],
       "response": []
     },
