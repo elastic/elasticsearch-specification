@@ -9468,6 +9468,7 @@ export type ClusterExistsComponentTemplateResponse = boolean
 export interface ClusterGetComponentTemplateRequest extends RequestBase {
   name?: Name
   flat_settings?: boolean
+  settings_filter?: string | string[]
   include_defaults?: boolean
   local?: boolean
   master_timeout?: Duration
