@@ -7960,7 +7960,7 @@
           "indices"
         ],
         "summary": "Check index templates",
-        "description": "Check whether index templates exist.",
+        "description": "Check whether index templates exist.\n\n## Required authorization\n\n* Cluster privileges: `manage_index_templates`\n",
         "operationId": "indices-exists-index-template",
         "parameters": [
           {
