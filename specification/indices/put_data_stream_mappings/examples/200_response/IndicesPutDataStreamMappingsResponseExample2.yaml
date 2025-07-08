@@ -2,8 +2,8 @@ summary: Attempt to change a data stream setting that is not allowed
 description: >
   This shows a response to `PUT /_data_stream/my-data-stream/_settings` when a user attempts to set a setting that is
   not allowed on a data stream. As a result, no change was applied to the data stream.
-# type: response
-# response_code: 200
+type: response
+response_code: 200
 value: |-
   {
     "data_streams": [
