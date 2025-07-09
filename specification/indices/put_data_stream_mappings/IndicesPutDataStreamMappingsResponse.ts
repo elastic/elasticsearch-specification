@@ -42,10 +42,10 @@ export class UpdatedDataStreamMappings {
   /**
    * The mappings that are specfic to this data stream that will override any mappings from the matching index template.
    */
-  mappings: TypeMapping
+  mappings?: TypeMapping
   /**
    * The mappings that are effective on this data stream, taking into account the mappings from the matching index
    * template and the mappings specific to this data stream.
    */
-  effective_mappings: TypeMapping
+  effective_mappings?: TypeMapping
 }
