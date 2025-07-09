@@ -46,6 +46,22 @@ export interface Request extends RequestBase {
   ]
   query_parameters: {
     /**
+     * Specifies the node ID or the name of the node to only explain a shard that is currently located on the specified node.
+     */
+    current_node?: string
+    /**
+     * Specifies the name of the index that you would like an explanation for.
+     */
+    index?: IndexName
+    /**
+     * If true, returns explanation for the primary shard for the given shard ID.
+     */
+    primary?: boolean
+    /**
+     * Specifies the ID of the shard that you would like an explanation for.
+     */
+    shard?: integer
+    /**
      * If true, returns information about disk usage and shard sizes.
      * @server_default false
      */

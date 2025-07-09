@@ -7,15 +7,6 @@
       ],
       "response": []
     },
-    "cluster.allocation_explain": {
-      "request": [
-        "Request: missing json spec query parameter 'current_node'",
-        "Request: missing json spec query parameter 'index'",
-        "Request: missing json spec query parameter 'primary'",
-        "Request: missing json spec query parameter 'shard'"
-      ],
-      "response": []
-    },
     "create": {
       "request": [
         "Request: query parameter 'if_primary_term' does not exist in the json spec",
