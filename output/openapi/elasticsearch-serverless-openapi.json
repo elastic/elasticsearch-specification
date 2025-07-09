@@ -8459,6 +8459,176 @@
         "x-product-feature": "elasticsearch"
       }
     },
+    "/_data_stream/{name}/_mappings": {
+      "get": {
+        "tags": [
+          "data stream"
+        ],
+        "summary": "Get data stream mappings",
+        "description": "Get mapping information for one or more data streams.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
+        "operationId": "indices-get-data-stream-mappings",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "A comma-separated list of data streams or data stream patterns. Supports wildcards (`*`).",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Indices"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for a connection to the master node. If no response is\nreceived before the timeout expires, the request fails and returns an\nerror.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data_streams": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_data_stream_mappings.DataStreamMappings"
+                      }
+                    }
+                  },
+                  "required": [
+                    "data_streams"
+                  ]
+                },
+                "examples": {
+                  "IndicesGetDataStreamMappingsResponseExample1": {
+                    "summary": "Get data stream settings on a data stream",
+                    "description": "This is a response to `GET /_data_stream/my-data-stream/_settings` where my-data-stream that has two settings set. The `effective_settings` field shows additional settings that are pulled from its template.\n",
+                    "value": "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream\",\n      \"mappings\": {\n        \"properties\": {\n          \"field1\": {\n            \"type\": \"ip\"\n          },\n          \"field3\": {\n            \"type\": \"text\"\n          }\n        }\n      },\n      \"effective_mappings\": {\n        \"properties\": {\n          \"field1\": {\n            \"type\": \"ip\"\n          },\n          \"field2\": {\n            \"type\": \"text\"\n          },\n          \"field3\": {\n            \"type\": \"text\"\n          }\n        }\n      }\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-product-feature": "elasticsearch"
+      },
+      "put": {
+        "tags": [
+          "data stream"
+        ],
+        "summary": "Update data stream mappings",
+        "description": "This API can be used to override mappings on specific data streams. These overrides will take precedence over what\nis specified in the template that the data stream matches. The mapping change is only applied to new write indices\nthat are created during rollover after this API is called. No indices are changed by this API.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "operationId": "indices-put-data-stream-mappings",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "A comma-separated list of data streams or data stream patterns.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Indices"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "dry_run",
+            "description": "If `true`, the request does not actually change the mappings on any data streams. Instead, it\nsimulates changing the settings and reports back to the user what would have happened had these settings\nactually been applied.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for a connection to the master node. If no response is\nreceived before the timeout expires, the request fails and returns an\nerror.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The period to wait for a response. If no response is received before the\n timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+              },
+              "examples": {
+                "IndicesPutDataStreamMappingsRequestExample1": {
+                  "summary": "Change a data stream mapping",
+                  "description": "This is a request to add or modify two fields in a mapping on a data stream.\n",
+                  "value": "{\n   \"properties\":{\n      \"field1\":{\n         \"type\":\"ip\"\n      },\n      \"field3\":{\n         \"type\":\"text\"\n      }\n   }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data_streams": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.put_data_stream_mappings.UpdatedDataStreamMappings"
+                      }
+                    }
+                  },
+                  "required": [
+                    "data_streams"
+                  ]
+                },
+                "examples": {
+                  "IndicesPutDataStreamMappingsResponseExample1": {
+                    "summary": "Change data stream settings on a data stream",
+                    "description": "This shows a response to `PUT /_data_stream/my-data-stream/_settings` when two settings are successfully updated on the data stream. In this case, `index.number_of_shards` is only applied to the data stream -- it will be applied to the write index on rollover. The setting `index.lifecycle.name` is applied to the data stream and all backing indices.\n",
+                    "value": "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream\",\n      \"applied_to_data_stream\": true,\n      \"mappings\": {\n        \"properties\": {\n          \"field1\": {\n            \"type\": \"ip\"\n          },\n          \"field3\": {\n            \"type\": \"text\"\n          }\n        }\n      },\n      \"effective_mappings\": {\n        \"properties\": {\n          \"field1\": {\n            \"type\": \"ip\"\n          },\n          \"field3\": {\n            \"type\": \"text\"\n          }\n        }\n      }\n    }\n  ]\n}"
+                  },
+                  "IndicesPutDataStreamMappingsResponseExample2": {
+                    "summary": "Attempt to change a data stream setting that is not allowed",
+                    "description": "This shows a response to `PUT /_data_stream/my-data-stream/_settings` when a user attempts to set a setting that is not allowed on a data stream. As a result, no change was applied to the data stream.\n",
+                    "value": "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream\",\n      \"applied_to_data_stream\": false,\n      \"error\": \"Failed to parse mapping: The mapper type [txt] declared on field [field1] does not exist. It might have been created within a future version or requires a plugin to be installed. Check the documentation.\",\n      \"mappings\": {\n        \"_doc\": {}\n      },\n      \"effective_mappings\": {\n        \"_doc\": {}\n      }\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-product-feature": "elasticsearch"
+      }
+    },
     "/_data_stream/{name}/_options": {
       "get": {
         "tags": [
@@ -52096,6 +52266,9 @@
           "settings": {
             "$ref": "#/components/schemas/indices._types.IndexSettings"
           },
+          "mappings": {
+            "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+          },
           "status": {
             "$ref": "#/components/schemas/_types.HealthStatus"
           },
@@ -52204,6 +52377,26 @@
         },
         "required": [
           "name"
+        ]
+      },
+      "indices.get_data_stream_mappings.DataStreamMappings": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name of the data stream.",
+            "type": "string"
+          },
+          "mappings": {
+            "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+          },
+          "effective_mappings": {
+            "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+          }
+        },
+        "required": [
+          "name",
+          "mappings",
+          "effective_mappings"
         ]
       },
       "indices.get_data_stream_options.DataStreamWithOptions": {
@@ -52426,6 +52619,32 @@
         "required": [
           "data_stream",
           "index"
+        ]
+      },
+      "indices.put_data_stream_mappings.UpdatedDataStreamMappings": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/_types.IndexName"
+          },
+          "applied_to_data_stream": {
+            "description": "If the mappings were successfully applied to the data stream (or would have been, if running in `dry_run`\nmode), it is `true`. If an error occurred, it is `false`.",
+            "type": "boolean"
+          },
+          "error": {
+            "description": "A message explaining why the mappings could not be applied to the data stream.",
+            "type": "string"
+          },
+          "mappings": {
+            "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+          },
+          "effective_mappings": {
+            "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+          }
+        },
+        "required": [
+          "name",
+          "applied_to_data_stream"
         ]
       },
       "indices.put_data_stream_settings.UpdatedDataStreamSettings": {
