@@ -1,5 +1,5 @@
 {
-    "inference.put_cohere": {
+    "inference.put_custom": {
       "documentation": {
         "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-custom.html",
         "description": "Configure a custom inference endpoint"
