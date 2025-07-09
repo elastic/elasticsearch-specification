@@ -2,28 +2,19 @@ summary: Update index analysis
 method_request: POST /my-index-000001/_close
 description: To add an analyzer, you must close the index, define the analyzer, then reopen the index.
 # type: request
-value: "{
-
-  \  \"analysis\" : {
-
-  \    \"analyzer\":{
-
-  \      \"content\":{
-
-  \        \"type\":\"custom\",
-
-  \        \"tokenizer\":\"whitespace\"
-
-  \      }
-
-  \    }
-
-  \  }
-
+value: |-
+  PUT /my-index-000001/_settings
+  {
+    "analysis": {
+      "analyzer": {
+        "content": {
+          "type": "custom",
+          "tokenizer": "whitespace"
+        }
+      }
+    }
   }
-
-
-  POST /my-index-000001/_open"
+  POST /my-index-000001/_open
 alternatives:
   - language: Python
     code: |-
@@ -31,7 +22,21 @@ alternatives:
           index="my-index-000001",
       )
 
-      resp1 = client.indices.open(
+      resp1 = client.indices.put_settings(
+          index="my-index-000001",
+          settings={
+              "analysis": {
+                  "analyzer": {
+                      "content": {
+                          "type": "custom",
+                          "tokenizer": "whitespace"
+                      }
+                  }
+              }
+          },
+      )
+
+      resp2 = client.indices.open(
           index="my-index-000001",
       )
   - language: JavaScript
@@ -40,12 +45,30 @@ alternatives:
         index: "my-index-000001",
       });
 
-      const response1 = await client.indices.open({
+      const response1 = await client.indices.putSettings({
+        index: "my-index-000001",
+        settings: {
+          analysis: {
+            analyzer: {
+              content: {
+                type: "custom",
+                tokenizer: "whitespace",
+              },
+            },
+          },
+        },
+      });
+
+      const response2 = await client.indices.open({
         index: "my-index-000001",
       });
   - language: Ruby
     code: |-
       response = client.indices.close(
+        index: "my-index-000001"
+      )
+
+      response1 = client.indices.put_settings(
         index: "my-index-000001",
         body: {
           "analysis": {
@@ -59,12 +82,16 @@ alternatives:
         }
       )
 
-      response1 = client.indices.open(
+      response2 = client.indices.open(
         index: "my-index-000001"
       )
   - language: PHP
     code: |-
       $resp = $client->indices()->close([
+          "index" => "my-index-000001",
+      ]);
+
+      $resp1 = $client->indices()->putSettings([
           "index" => "my-index-000001",
           "body" => [
               "analysis" => [
@@ -78,12 +105,15 @@ alternatives:
           ],
       ]);
 
-      $resp1 = $client->indices()->open([
+      $resp2 = $client->indices()->open([
           "index" => "my-index-000001",
       ]);
   - language: curl
     code: >-
-      curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      '{"analysis":{"analyzer":{"content":{"type":"custom","tokenizer":"whitespace"}}}}' "$ELASTICSEARCH_URL/my-index-000001/_close"
+      curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index-000001/_close"
+
+      curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      '{"analysis":{"analyzer":{"content":{"type":"custom","tokenizer":"whitespace"}}}}'
+      "$ELASTICSEARCH_URL/my-index-000001/_settings"
 
       curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index-000001/_open"
