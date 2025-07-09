@@ -769,7 +769,7 @@ export class CustomServiceSettings {
    * }
    * ```
    */
-  headers?: object
+  headers?: UserDefinedValue
   /**
    * The request configuration object.
    */
@@ -787,7 +787,7 @@ export class CustomServiceSettings {
    * }
    * ```
    */
-  secret_parameters: object
+  secret_parameters: UserDefinedValue
   /**
    * The URL endpoint to use for the requests.
    */
@@ -821,7 +821,7 @@ export class CustomResponseParams {
    * }
    * ```
    */
-  error_parser: object
+  error_parser: UserDefinedValue
   /**
    * Specifies the JSON parser that is used to parse the response from the custom service.
    * Different task types require different json_parser parameters.
@@ -858,7 +858,7 @@ export class CustomResponseParams {
    *   }
    * }
    */
-  json_parser: object
+  json_parser: UserDefinedValue
 }
 
 export enum CustomTaskType {
@@ -885,7 +885,7 @@ export class CustomTaskSettings {
    * }
    * ```
    */
-  parameters?: object
+  parameters?: UserDefinedValue
 }
 
 export class EisServiceSettings {
