@@ -8581,7 +8581,7 @@
               },
               "examples": {
                 "IndicesPutDataStreamMappingsRequestExample1": {
-                  "summary": "Change a data stream setting",
+                  "summary": "Change a data stream mapping",
                   "description": "This is a request to add or modify two fields in a mapping on a data stream.\n",
                   "value": "{\n   \"properties\":{\n      \"field1\":{\n         \"type\":\"ip\"\n      },\n      \"field3\":{\n         \"type\":\"text\"\n      }\n   }\n}"
                 }
@@ -52644,9 +52644,7 @@
         },
         "required": [
           "name",
-          "applied_to_data_stream",
-          "mappings",
-          "effective_mappings"
+          "applied_to_data_stream"
         ]
       },
       "indices.put_data_stream_settings.UpdatedDataStreamSettings": {

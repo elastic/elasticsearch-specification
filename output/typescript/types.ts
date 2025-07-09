@@ -12813,8 +12813,8 @@ export interface IndicesPutDataStreamMappingsUpdatedDataStreamMappings {
   name: IndexName
   applied_to_data_stream: boolean
   error?: string
-  mappings: MappingTypeMapping
-  effective_mappings: MappingTypeMapping
+  mappings?: MappingTypeMapping
+  effective_mappings?: MappingTypeMapping
 }
 
 export interface IndicesPutDataStreamOptionsRequest extends RequestBase {
