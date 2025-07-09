@@ -83,7 +83,7 @@ export interface Request extends RequestBase {
      */
     input: string | Array<string>
     /**
-     * Specifies the input data type. Possible values include:
+     * Specifies the input data type for the text embedding model. The `input_type` parameter only applies to Inference Endpoints with the `text_embedding` task type. Possible values include:
      * * `SEARCH`
      * * `INGEST`
      * * `CLASSIFICATION`
