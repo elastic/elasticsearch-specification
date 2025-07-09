@@ -1,14 +1,10 @@
-summary: All parameters in the request body
+summary: Query Parameters
 method_request: GET _cluster/allocation/explain
-description: Run `GET _cluster/allocation/explain` to get an explanation for a shard's current allocation.
+description: >
+  Run `GET _cluster/allocation/explain?index="my-index-000001"&shard=0&primary=false&current_node="my-node` to get an explanation for a shard's current allocation. No parameters are required in the request body
 # type: request
 value: |-
-  {
-    "index": "my-index-000001",
-    "shard": 0,
-    "primary": false,
-    "current_node": "my-node"
-  }
+  {}
 alternatives:
   - language: Python
     code: |-
@@ -29,28 +25,25 @@ alternatives:
   - language: Ruby
     code: |-
       response = client.cluster.allocation_explain(
-        body: {
-          "index": "my-index-000001",
-          "shard": 0,
-          "primary": false,
-          "current_node": "my-node"
-        }
+        index: "my-index-000001",
+        shard: 0,
+        primary: false,
+        current_node: "my-node",
+        body: {}
       )
   - language: PHP
     code: |-
       $resp = $client->cluster()->allocationExplain([
-          "body" => [
-              "index" => "my-index-000001",
-              "shard" => 0,
-              "primary" => false,
-              "current_node" => "my-node",
-          ],
+          "index" => "my-index-000001",
+          "shard" => 0,
+          "primary" => false,
+          "current_node" => "my-node",
+          "body" => [],
       ]);
   - language: curl
     code:
-      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"index":"my-index-000001","shard":0,"primary":false,"current_node":"my-node"}''
-      "$ELASTICSEARCH_URL/_cluster/allocation/explain"'
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_cluster/allocation/explain?index="my-index-000001"&shard=0&primary=false&current_node="my-node"'
   - language: Java
     code: |
       client.cluster().allocationExplain(a -> a
