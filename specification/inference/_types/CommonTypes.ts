@@ -807,7 +807,7 @@ export class CustomRequestParams {
    * > The content string needs to be a single line except using the Kibana console.
    */
   content: string
-} 
+}
 
 export class CustomResponseParams {
   /**
@@ -822,7 +822,7 @@ export class CustomResponseParams {
    * ```
    */
   error_parser: object
-  /** 
+  /**
    * Specifies the JSON parser that is used to parse the response from the custom service.
    * Different task types require different json_parser parameters.
    * For example:
@@ -833,7 +833,7 @@ export class CustomResponseParams {
    *     "text_embeddings":"$.result.embeddings[*].embedding"
    *   }
    * }
-   * 
+   *
    * # sparse_embedding
    * "response":{
    *   "json_parser":{
@@ -841,7 +841,7 @@ export class CustomResponseParams {
    *     "weight_path":"$.result[*].embeddings[*].weight"
    *   }
    * }
-   * 
+   *
    * # rerank
    * "response":{
    *   "json_parser":{
@@ -850,7 +850,7 @@ export class CustomResponseParams {
    *     "document_text":"xxx"    // optional
    *   }
    * }
-   * 
+   *
    * # completion
    * "response":{
    *   "json_parser":{
