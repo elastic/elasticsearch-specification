@@ -758,6 +758,136 @@ export class CohereTaskSettings {
   truncate?: CohereTruncateType
 }
 
+export class CustomServiceSettings {
+  /**
+   * Specifies the HTTPS header parameters – such as `Authentication` or `Contet-Type` – that are required to access the custom service.
+   * For example:
+   * ```
+   * "headers":{
+   *   "Authorization": "Bearer ${api_key}",
+   *   "Content-Type": "application/json;charset=utf-8"
+   * }
+   * ```
+   */
+  headers?: object
+  /**
+   * The request configuration object.
+   */
+  request: CustomRequestParams
+  /**
+   * The response configuration object.
+   */
+  response: CustomResponseParams
+  /**
+   * Specifies secret parameters, like `api_key` or `api_token`, that are required to access the custom service.
+   * For example:
+   * ```
+   * "secret_parameters":{
+   *   "api_key":"<api_key>"
+   * }
+   * ```
+   */
+  secret_parameters: object
+  /**
+   * The URL endpoint to use for the requests.
+   */
+  url?: string
+}
+
+export class CustomRequestParams {
+  /**
+   * The body structure of the request. It requires passing in the string-escaped result of the JSON format HTTP request body.
+   * For example:
+   * ```
+   * "request":{
+   *   "content":"{\"input\":${input}}"
+   * }
+   * ```
+   * > info
+   * > The content string needs to be a single line except using the Kibana console.
+   */
+  content: string
+} 
+
+export class CustomResponseParams {
+  /**
+   * Specifies the path to the error message in the response from the custom service.
+   * For example:
+   * ```
+   * "response": {
+   *   "error_parser": {
+   *     "path": "$.error.message"
+   *   }
+   * }
+   * ```
+   */
+  error_parser: object
+  /** 
+   * Specifies the JSON parser that is used to parse the response from the custom service.
+   * Different task types require different json_parser parameters.
+   * For example:
+   * ```
+   * # text_embedding
+   * "response":{
+   *   "json_parser":{
+   *     "text_embeddings":"$.result.embeddings[*].embedding"
+   *   }
+   * }
+   * 
+   * # sparse_embedding
+   * "response":{
+   *   "json_parser":{
+   *     "token_path":"$.result[*].embeddings[*].token",
+   *     "weight_path":"$.result[*].embeddings[*].weight"
+   *   }
+   * }
+   * 
+   * # rerank
+   * "response":{
+   *   "json_parser":{
+   *     "reranked_index":"$.result.scores[*].index",    // optional
+   *     "relevance_score":"$.result.scores[*].score",
+   *     "document_text":"xxx"    // optional
+   *   }
+   * }
+   * 
+   * # completion
+   * "response":{
+   *   "json_parser":{
+   *     "completion_result":"$.result.text"
+   *   }
+   * }
+   */
+  json_parser: object
+}
+
+export enum CustomTaskType {
+  text_embedding,
+  sparse_embedding,
+  rerank,
+  completion
+}
+
+export enum CustomServiceType {
+  custom
+}
+
+export class CustomTaskSettings {
+  /**
+   * Specifies parameters that are required to run the custom service. The parameters depend on the model your custom service uses.
+   * For example:
+   * ```
+   * "task_settings":{
+   *   "parameters":{
+   *     "input_type":"query",
+   *     "return_token":true
+   *   }
+   * }
+   * ```
+   */
+  parameters?: object
+}
+
 export class EisServiceSettings {
   /**
    * The name of the model to use for the inference task.
