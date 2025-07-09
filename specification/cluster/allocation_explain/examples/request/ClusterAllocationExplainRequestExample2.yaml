@@ -41,8 +41,7 @@ alternatives:
           "body" => [],
       ]);
   - language: curl
-    code:
-      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
       "$ELASTICSEARCH_URL/_cluster/allocation/explain?index="my-index-000001"&shard=0&primary=false&current_node="my-node"'
   - language: Java
     code: |
