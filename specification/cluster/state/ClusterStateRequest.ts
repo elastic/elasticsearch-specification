@@ -81,7 +81,11 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     /** @server_default false */
     local?: boolean
-    /** @server_default 30s */
+    /**
+     * Timeout for waiting for new cluster state in case it is blocked
+     * @deprecated 9.2.0
+     * @server_default 30s
+     * */
     master_timeout?: Duration
     wait_for_metadata_version?: VersionNumber
     wait_for_timeout?: Duration
