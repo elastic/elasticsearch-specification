@@ -1,0 +1,24 @@
+summary: Custom text embedding task (OpenAI)
+description: Run `PUT _inference/text_embedding/custom-embeddings` to create an inference endpoint that performs a text embedding task.
+method_request: 'PUT _inference/text_embedding/custom-embeddings'
+# type: "request"
+value: |-
+  {
+      "service": "custom",
+      "service_settings": {
+          "secret_parameters": {
+              "api_key": "<api key>"
+          },
+          "url": "https://api.openai.com/v1/embeddings",
+          "headers": {
+              "Authorization": "Bearer ${api_key}",
+              "Content-Type": "application/json;charset=utf-8"
+          },
+          "request": "{\"input\": ${input}, \"model\": \"text-embedding-3-small\"}",
+          "response": {
+              "json_parser": {
+                  "text_embeddings": "$.data[*].embedding[*]"
+              }
+          }
+      }
+  }
