@@ -579,17 +579,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
     if (typeDef.variants?.kind === 'container') {
       const variants = typeDef.properties.filter(prop => !(prop.containerProperty ?? false))
-      if (variants.length === 1) {
-        // Single-variant containers must have a required property
-        if (!variants[0].required) {
-          modelError(`Property ${variants[0].name} is a single-variant and must be required`)
-        }
-      } else {
-        // Multiple variants must all be optional
-        for (const v of variants) {
-          if (v.required) {
-            modelError(`Variant ${variants[0].name} must be optional`)
-          }
+      // Variants must all be optional
+      for (const v of variants) {
+        if (v.required) {
+          modelError(`Variant ${variants[0].name} must be optional`)
         }
       }
     }
