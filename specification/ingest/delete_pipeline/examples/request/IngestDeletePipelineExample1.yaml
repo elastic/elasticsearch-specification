@@ -1,1 +1,29 @@
 method_request: DELETE /_ingest/pipeline/my-pipeline-id
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ingest.delete_pipeline(
+          id="my-pipeline-id",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ingest.deletePipeline({
+        id: "my-pipeline-id",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ingest.delete_pipeline(
+        id: "my-pipeline-id"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ingest()->deletePipeline([
+          "id" => "my-pipeline-id",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ingest/pipeline/my-pipeline-id"'
+  - language: Java
+    code: |
+      client.ingest().deletePipeline(d -> d
+          .id("my-pipeline-id")
+      );

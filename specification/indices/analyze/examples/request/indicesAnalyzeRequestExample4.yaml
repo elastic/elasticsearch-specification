@@ -12,3 +12,93 @@ value:
         - is
         - this
   text: this is a test
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.analyze(
+          tokenizer="whitespace",
+          filter=[
+              "lowercase",
+              {
+                  "type": "stop",
+                  "stopwords": [
+                      "a",
+                      "is",
+                      "this"
+                  ]
+              }
+          ],
+          text="this is a test",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.analyze({
+        tokenizer: "whitespace",
+        filter: [
+          "lowercase",
+          {
+            type: "stop",
+            stopwords: ["a", "is", "this"],
+          },
+        ],
+        text: "this is a test",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.analyze(
+        body: {
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase",
+            {
+              "type": "stop",
+              "stopwords": [
+                "a",
+                "is",
+                "this"
+              ]
+            }
+          ],
+          "text": "this is a test"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->analyze([
+          "body" => [
+              "tokenizer" => "whitespace",
+              "filter" => array(
+                  "lowercase",
+                  [
+                      "type" => "stop",
+                      "stopwords" => array(
+                          "a",
+                          "is",
+                          "this",
+                      ),
+                  ],
+              ),
+              "text" => "this is a test",
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"tokenizer\":\"whitespace\",\"filter\":[\"lowercase\",{\"type\":\"stop\",\"stopwords\":[\"a\",\"is\",\"this\"]}],\"text\":\
+      \"this is a test\"}' \"$ELASTICSEARCH_URL/_analyze\""
+  - language: Java
+    code: |
+      client.indices().analyze(a -> a
+          .filter(List.of(TokenFilter.of(t -> t
+                  .name("lowercase"
+              )),TokenFilter.of(to -> to
+                  .definition(d -> d
+                      .stop(s -> s
+                          .stopwords(List.of("a","is","this"))
+                  )
+              ))))
+          .text("this is a test")
+          .tokenizer(tok -> tok
+              .name("whitespace")
+          )
+      );

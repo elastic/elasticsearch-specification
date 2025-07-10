@@ -66,3 +66,11 @@ actions:
     description: Add x-model
     update:
       x-model: true
+# Remove long lists of enum values
+  - target: "$.components['schemas']['cat._types.CatNodeColumn'].anyOf"
+    description: Remove anyOf from cat nodes
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatNodeColumn']"
+    description: Add basic string data type for cat node columns
+    update:
+      type: string

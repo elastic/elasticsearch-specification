@@ -1,1 +1,30 @@
 method_request: GET _ml/datafeeds/datafeed-high_sum_total_sales/_stats
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.get_datafeed_stats(
+          datafeed_id="datafeed-high_sum_total_sales",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.getDatafeedStats({
+        datafeed_id: "datafeed-high_sum_total_sales",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.get_datafeed_stats(
+        datafeed_id: "datafeed-high_sum_total_sales"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->getDatafeedStats([
+          "datafeed_id" => "datafeed-high_sum_total_sales",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_ml/datafeeds/datafeed-high_sum_total_sales/_stats"'
+  - language: Java
+    code: |
+      client.ml().getDatafeedStats(g -> g
+          .datafeedId("datafeed-high_sum_total_sales")
+      );

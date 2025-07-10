@@ -1,1 +1,30 @@
 method_request: PUT _connector/_sync_job/my-connector-sync-job/_check_in
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.sync_job_check_in(
+          connector_sync_job_id="my-connector-sync-job",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.syncJobCheckIn({
+        connector_sync_job_id: "my-connector-sync-job",
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.sync_job_check_in(
+        connector_sync_job_id: "my-connector-sync-job"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->syncJobCheckIn([
+          "connector_sync_job_id" => "my-connector-sync-job",
+      ]);
+  - language: curl
+    code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_connector/_sync_job/my-connector-sync-job/_check_in"'
+  - language: Java
+    code: |
+      client.connector().syncJobCheckIn(s -> s
+          .connectorSyncJobId("my-connector-sync-job")
+      );

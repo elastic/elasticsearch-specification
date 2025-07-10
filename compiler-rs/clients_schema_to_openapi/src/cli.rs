@@ -24,6 +24,10 @@ pub struct Cli {
     #[argh(option)]
     pub namespace: Vec<String>,
 
+    /// the branch to generate [9.0, 8.19, current, etc... - default = current]
+    #[argh(option)]
+    pub branch: Option<String>,
+
     /// add enum descriptions to property descriptions [default = true]
     #[argh(switch)]
     pub lift_enum_descriptions: bool,
@@ -35,6 +39,10 @@ pub struct Cli {
     /// output a redirection map when merging multipath endpoints
     #[argh(switch)]
     pub multipath_redirects: bool,
+
+    /// include the x-codeSamples extension with language examples for all endpoints
+    #[argh(switch)]
+    pub include_language_examples: bool,
 }
 
 impl Cli {
@@ -68,12 +76,16 @@ impl From<Cli> for Configuration {
             SchemaFlavor::Serverless => Some(Flavor::Serverless),
             SchemaFlavor::Stack => Some(Flavor::Stack),
         };
+        
+        let branch = cli.branch;
 
         Configuration {
             flavor,
+            branch,
             lift_enum_descriptions: cli.lift_enum_descriptions,
             merge_multipath_endpoints: cli.merge_multipath_endpoints,
             multipath_redirects: cli.multipath_redirects,
+            include_language_examples: cli.include_language_examples,
             namespaces: if cli.namespace.is_empty() {
                 None
             } else {

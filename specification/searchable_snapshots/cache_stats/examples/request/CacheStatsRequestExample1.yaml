@@ -1,1 +1,15 @@
 method_request: GET /_searchable_snapshots/cache/stats
+alternatives:
+  - language: Python
+    code: resp = client.searchable_snapshots.cache_stats()
+  - language: JavaScript
+    code: const response = await client.searchableSnapshots.cacheStats();
+  - language: Ruby
+    code: response = client.searchable_snapshots.cache_stats
+  - language: PHP
+    code: $resp = $client->searchableSnapshots()->cacheStats();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_searchable_snapshots/cache/stats"'
+  - language: Java
+    code: |
+      client.searchableSnapshots().cacheStats(c -> c);

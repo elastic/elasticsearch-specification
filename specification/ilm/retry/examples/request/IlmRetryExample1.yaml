@@ -1,1 +1,29 @@
 method_request: POST /my-index-000001/_ilm/retry
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ilm.retry(
+          index="my-index-000001",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ilm.retry({
+        index: "my-index-000001",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ilm.retry(
+        index: "my-index-000001"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ilm()->retry([
+          "index" => "my-index-000001",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index-000001/_ilm/retry"'
+  - language: Java
+    code: |
+      client.ilm().retry(r -> r
+          .index("my-index-000001")
+      );

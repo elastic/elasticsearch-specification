@@ -1,9 +1,74 @@
 summary: Doc as upsert
 method_request: POST test/_update/1
 description: >
-  Run `POST test/_update/1` to perform a doc as upsert.
-  Instead of sending a partial `doc` plus an `upsert` doc, you can set `doc_as_upsert` to `true` to use the contents of `doc` as the `upsert` value.
+  Run `POST test/_update/1` to perform a doc as upsert. Instead of sending a partial `doc` plus an `upsert` doc, you can set
+  `doc_as_upsert` to `true` to use the contents of `doc` as the `upsert` value.
 # type: request
-value:
-  "{\n  \"doc\": {\n    \"name\": \"new_name\"\n  },\n  \"doc_as_upsert\": true\n\
+value: "{
+
+  \  \"doc\": {
+
+  \    \"name\": \"new_name\"
+
+  \  },
+
+  \  \"doc_as_upsert\": true
+
   }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.update(
+          index="test",
+          id="1",
+          doc={
+              "name": "new_name"
+          },
+          doc_as_upsert=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.update({
+        index: "test",
+        id: 1,
+        doc: {
+          name: "new_name",
+        },
+        doc_as_upsert: true,
+      });
+  - language: Ruby
+    code: |-
+      response = client.update(
+        index: "test",
+        id: "1",
+        body: {
+          "doc": {
+            "name": "new_name"
+          },
+          "doc_as_upsert": true
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->update([
+          "index" => "test",
+          "id" => "1",
+          "body" => [
+              "doc" => [
+                  "name" => "new_name",
+              ],
+              "doc_as_upsert" => true,
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"doc":{"name":"new_name"},"doc_as_upsert":true}'' "$ELASTICSEARCH_URL/test/_update/1"'
+  - language: Java
+    code: |
+      client.update(u -> u
+          .doc(JsonData.fromJson("{\"name\":\"new_name\"}"))
+          .docAsUpsert(true)
+          .id("1")
+          .index("test")
+      ,Void.class);

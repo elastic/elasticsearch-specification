@@ -1,7 +1,53 @@
 summary: Normalizer
 method_request: GET /analyze_sample/_analyze
-description: Run `GET /analyze_sample/_analyze` and supply a normalizer for a keyword field if there is a normalizer associated with the specified index.
+description:
+  Run `GET /analyze_sample/_analyze` and supply a normalizer for a keyword field if there is a normalizer associated with
+  the specified index.
 # type: request
 value:
   normalizer: my_normalizer
   text: BaR
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.analyze(
+          index="analyze_sample",
+          normalizer="my_normalizer",
+          text="BaR",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.analyze({
+        index: "analyze_sample",
+        normalizer: "my_normalizer",
+        text: "BaR",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.analyze(
+        index: "analyze_sample",
+        body: {
+          "normalizer": "my_normalizer",
+          "text": "BaR"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->analyze([
+          "index" => "analyze_sample",
+          "body" => [
+              "normalizer" => "my_normalizer",
+              "text" => "BaR",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"normalizer":"my_normalizer","text":"BaR"}'' "$ELASTICSEARCH_URL/analyze_sample/_analyze"'
+  - language: Java
+    code: |
+      client.indices().analyze(a -> a
+          .index("analyze_sample")
+          .normalizer("my_normalizer")
+          .text("BaR")
+      );

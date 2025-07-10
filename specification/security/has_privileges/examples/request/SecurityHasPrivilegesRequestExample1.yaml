@@ -1,6 +1,8 @@
 # summary:
 method_request: GET /_security/user/_has_privileges
-description: Run `GET /_security/user/_has_privileges` to check whether the current user has a specific set of cluster, index, and application privileges.
+description:
+  Run `GET /_security/user/_has_privileges` to check whether the current user has a specific set of cluster, index, and
+  application privileges.
 # type: request
 value: |-
   {
@@ -23,3 +25,172 @@ value: |-
       }
     ]
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.has_privileges(
+          cluster=[
+              "monitor",
+              "manage"
+          ],
+          index=[
+              {
+                  "names": [
+                      "suppliers",
+                      "products"
+                  ],
+                  "privileges": [
+                      "read"
+                  ]
+              },
+              {
+                  "names": [
+                      "inventory"
+                  ],
+                  "privileges": [
+                      "read",
+                      "write"
+                  ]
+              }
+          ],
+          application=[
+              {
+                  "application": "inventory_manager",
+                  "privileges": [
+                      "read",
+                      "data:write/inventory"
+                  ],
+                  "resources": [
+                      "product/1852563"
+                  ]
+              }
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.hasPrivileges({
+        cluster: ["monitor", "manage"],
+        index: [
+          {
+            names: ["suppliers", "products"],
+            privileges: ["read"],
+          },
+          {
+            names: ["inventory"],
+            privileges: ["read", "write"],
+          },
+        ],
+        application: [
+          {
+            application: "inventory_manager",
+            privileges: ["read", "data:write/inventory"],
+            resources: ["product/1852563"],
+          },
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.has_privileges(
+        body: {
+          "cluster": [
+            "monitor",
+            "manage"
+          ],
+          "index": [
+            {
+              "names": [
+                "suppliers",
+                "products"
+              ],
+              "privileges": [
+                "read"
+              ]
+            },
+            {
+              "names": [
+                "inventory"
+              ],
+              "privileges": [
+                "read",
+                "write"
+              ]
+            }
+          ],
+          "application": [
+            {
+              "application": "inventory_manager",
+              "privileges": [
+                "read",
+                "data:write/inventory"
+              ],
+              "resources": [
+                "product/1852563"
+              ]
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->hasPrivileges([
+          "body" => [
+              "cluster" => array(
+                  "monitor",
+                  "manage",
+              ),
+              "index" => array(
+                  [
+                      "names" => array(
+                          "suppliers",
+                          "products",
+                      ),
+                      "privileges" => array(
+                          "read",
+                      ),
+                  ],
+                  [
+                      "names" => array(
+                          "inventory",
+                      ),
+                      "privileges" => array(
+                          "read",
+                          "write",
+                      ),
+                  ],
+              ),
+              "application" => array(
+                  [
+                      "application" => "inventory_manager",
+                      "privileges" => array(
+                          "read",
+                          "data:write/inventory",
+                      ),
+                      "resources" => array(
+                          "product/1852563",
+                      ),
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"cluster\":[\"monitor\",\"manage\"],\"index\":[{\"names\":[\"suppliers\",\"products\"],\"privileges\":[\"read\"]},{\"names\
+      \":[\"inventory\"],\"privileges\":[\"read\",\"write\"]}],\"application\":[{\"application\":\"inventory_manager\",\"privileges\
+      \":[\"read\",\"data:write/inventory\"],\"resources\":[\"product/1852563\"]}]}'
+      \"$ELASTICSEARCH_URL/_security/user/_has_privileges\""
+  - language: Java
+    code: |
+      client.security().hasPrivileges(h -> h
+          .application(a -> a
+              .application("inventory_manager")
+              .privileges(List.of("read","data:write/inventory"))
+              .resources("product/1852563")
+          )
+          .cluster(List.of("monitor","manage"))
+          .index(List.of(IndexPrivilegesCheck.of(i -> i
+                  .names(List.of("suppliers","products"))
+                  .privileges("read")),IndexPrivilegesCheck.of(i -> i
+                  .names("inventory")
+                  .privileges(List.of("read","write")))))
+      );

@@ -1,8 +1,8 @@
 summary: Per-field analyzer
 method_request: GET /my-index-000001/_termvectors
 description: >
-  Run `GET /my-index-000001/_termvectors/1` to set per-field analyzers.
-  A different analyzer than the one at the field may be provided by using the `per_field_analyzer` parameter.
+  Run `GET /my-index-000001/_termvectors/1` to set per-field analyzers. A different analyzer than the one at the field may be
+  provided by using the `per_field_analyzer` parameter.
 # type: request
 value: |-
   {
@@ -15,3 +15,80 @@ value: |-
       "fullname": "keyword"
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.termvectors(
+          index="my-index-000001",
+          doc={
+              "fullname": "John Doe",
+              "text": "test test test"
+          },
+          fields=[
+              "fullname"
+          ],
+          per_field_analyzer={
+              "fullname": "keyword"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.termvectors({
+        index: "my-index-000001",
+        doc: {
+          fullname: "John Doe",
+          text: "test test test",
+        },
+        fields: ["fullname"],
+        per_field_analyzer: {
+          fullname: "keyword",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.termvectors(
+        index: "my-index-000001",
+        body: {
+          "doc": {
+            "fullname": "John Doe",
+            "text": "test test test"
+          },
+          "fields": [
+            "fullname"
+          ],
+          "per_field_analyzer": {
+            "fullname": "keyword"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->termvectors([
+          "index" => "my-index-000001",
+          "body" => [
+              "doc" => [
+                  "fullname" => "John Doe",
+                  "text" => "test test test",
+              ],
+              "fields" => array(
+                  "fullname",
+              ),
+              "per_field_analyzer" => [
+                  "fullname" => "keyword",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"doc":{"fullname":"John Doe","text":"test test
+      test"},"fields":["fullname"],"per_field_analyzer":{"fullname":"keyword"}}''
+      "$ELASTICSEARCH_URL/my-index-000001/_termvectors"'
+  - language: Java
+    code: |
+      client.termvectors(t -> t
+          .doc(JsonData.fromJson("{\"fullname\":\"John Doe\",\"text\":\"test test test\"}"))
+          .fields("fullname")
+          .index("my-index-000001")
+          .perFieldAnalyzer("fullname", "keyword")
+      );

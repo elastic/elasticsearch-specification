@@ -14,3 +14,119 @@ value: |-
       ]
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.put_role_mapping(
+          name="mapping7",
+          roles=[
+              "ldap-example-user"
+          ],
+          enabled=True,
+          rules={
+              "all": [
+                  {
+                      "field": {
+                          "dn": "*,ou=subtree,dc=example,dc=com"
+                      }
+                  },
+                  {
+                      "field": {
+                          "realm.name": "ldap1"
+                      }
+                  }
+              ]
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.putRoleMapping({
+        name: "mapping7",
+        roles: ["ldap-example-user"],
+        enabled: true,
+        rules: {
+          all: [
+            {
+              field: {
+                dn: "*,ou=subtree,dc=example,dc=com",
+              },
+            },
+            {
+              field: {
+                "realm.name": "ldap1",
+              },
+            },
+          ],
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.put_role_mapping(
+        name: "mapping7",
+        body: {
+          "roles": [
+            "ldap-example-user"
+          ],
+          "enabled": true,
+          "rules": {
+            "all": [
+              {
+                "field": {
+                  "dn": "*,ou=subtree,dc=example,dc=com"
+                }
+              },
+              {
+                "field": {
+                  "realm.name": "ldap1"
+                }
+              }
+            ]
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->putRoleMapping([
+          "name" => "mapping7",
+          "body" => [
+              "roles" => array(
+                  "ldap-example-user",
+              ),
+              "enabled" => true,
+              "rules" => [
+                  "all" => array(
+                      [
+                          "field" => [
+                              "dn" => "*,ou=subtree,dc=example,dc=com",
+                          ],
+                      ],
+                      [
+                          "field" => [
+                              "realm.name" => "ldap1",
+                          ],
+                      ],
+                  ),
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"roles\":[\"ldap-example-user\"],\"enabled\":true,\"rules\":{\"all\":[{\"field\":{\"dn\":\"*,ou=subtree,dc=example,dc=com\
+      \"}},{\"field\":{\"realm.name\":\"ldap1\"}}]}}' \"$ELASTICSEARCH_URL/_security/role_mapping/mapping7\""
+  - language: Java
+    code: |
+      client.security().putRoleMapping(p -> p
+          .enabled(true)
+          .name("mapping7")
+          .roles("ldap-example-user")
+          .rules(r -> r
+              .all(List.of(RoleMappingRule.of(ro -> ro
+                      .field(NamedValue.of("dn",List.of(FieldValue.of("*,ou=subtree,dc=example,dc=com"))
+                      ))), RoleMappingRule.of(rol -> rol
+                      .field(NamedValue.of("realm.name",List.of(FieldValue.of("ldap1"))
+                      )))
+                  )
+              )
+          )
+      );

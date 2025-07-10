@@ -1,5 +1,7 @@
 summary: A chat completion task with tools and tool_calls
-description: Run `POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion  using a User message with `tools` and `tool_choice`.
+description:
+  Run `POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion  using a User message with
+  `tools` and `tool_choice`.
 method_request: 'POST _inference/chat_completion/openai-completion/_stream'
 # type: "request"
 value: |-
@@ -39,3 +41,206 @@ value: |-
         }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.chat_completion_unified(
+          inference_id="openai-completion",
+          chat_completion_request={
+              "messages": [
+                  {
+                      "role": "user",
+                      "content": [
+                          {
+                              "type": "text",
+                              "text": "What's the price of a scarf?"
+                          }
+                      ]
+                  }
+              ],
+              "tools": [
+                  {
+                      "type": "function",
+                      "function": {
+                          "name": "get_current_price",
+                          "description": "Get the current price of a item",
+                          "parameters": {
+                              "type": "object",
+                              "properties": {
+                                  "item": {
+                                      "id": "123"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              ],
+              "tool_choice": {
+                  "type": "function",
+                  "function": {
+                      "name": "get_current_price"
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.chatCompletionUnified({
+        inference_id: "openai-completion",
+        chat_completion_request: {
+          messages: [
+            {
+              role: "user",
+              content: [
+                {
+                  type: "text",
+                  text: "What's the price of a scarf?",
+                },
+              ],
+            },
+          ],
+          tools: [
+            {
+              type: "function",
+              function: {
+                name: "get_current_price",
+                description: "Get the current price of a item",
+                parameters: {
+                  type: "object",
+                  properties: {
+                    item: {
+                      id: "123",
+                    },
+                  },
+                },
+              },
+            },
+          ],
+          tool_choice: {
+            type: "function",
+            function: {
+              name: "get_current_price",
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.chat_completion_unified(
+        inference_id: "openai-completion",
+        body: {
+          "messages": [
+            {
+              "role": "user",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "What's the price of a scarf?"
+                }
+              ]
+            }
+          ],
+          "tools": [
+            {
+              "type": "function",
+              "function": {
+                "name": "get_current_price",
+                "description": "Get the current price of a item",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "item": {
+                      "id": "123"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "tool_choice": {
+            "type": "function",
+            "function": {
+              "name": "get_current_price"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->chatCompletionUnified([
+          "inference_id" => "openai-completion",
+          "body" => [
+              "messages" => array(
+                  [
+                      "role" => "user",
+                      "content" => array(
+                          [
+                              "type" => "text",
+                              "text" => "What's the price of a scarf?",
+                          ],
+                      ),
+                  ],
+              ),
+              "tools" => array(
+                  [
+                      "type" => "function",
+                      "function" => [
+                          "name" => "get_current_price",
+                          "description" => "Get the current price of a item",
+                          "parameters" => [
+                              "type" => "object",
+                              "properties" => [
+                                  "item" => [
+                                      "id" => "123",
+                                  ],
+                              ],
+                          ],
+                      ],
+                  ],
+              ),
+              "tool_choice" => [
+                  "type" => "function",
+                  "function" => [
+                      "name" => "get_current_price",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"What'\"'\"'s the price of a
+      scarf?\"}]}],\"tools\":[{\"type\":\"function\",\"function\":{\"name\":\"get_current_price\",\"description\":\"Get the current
+      price of a
+      item\",\"parameters\":{\"type\":\"object\",\"properties\":{\"item\":{\"id\":\"123\"}}}}}],\"tool_choice\":{\"type\":\"function\
+      \",\"function\":{\"name\":\"get_current_price\"}}}'
+      \"$ELASTICSEARCH_URL/_inference/chat_completion/openai-completion/_stream\""
+  - language: Java
+    code: |
+      client.inference().chatCompletionUnified(c -> c
+        .inferenceId("openai-completion")
+        .chatCompletionRequest(ch -> ch
+            .messages(m -> m
+                .content(co -> co
+                    .string("What's the price of a scarf?")
+                )
+                .role("user")
+            )
+            .toolChoice(t -> t
+                .object(o -> o
+                    .type("function")
+                    .function(f -> f
+                        .name("get_current_price")
+                    )
+                )
+            )
+            .tools(to -> to
+                .type("function")
+                .function(f -> f
+                    .description("Get the current price of a item")
+                    .name("get_current_price")
+                    .parameters(JsonData.fromJson("{\"type\":\"object\",\"properties\":{\"item\":{\"id\":\"123\"}}}"))
+                )
+            )
+        )
+      );

@@ -1,1 +1,15 @@
 method_request: GET /_autoscaling/capacity
+alternatives:
+  - language: Python
+    code: resp = client.autoscaling.get_autoscaling_capacity()
+  - language: JavaScript
+    code: const response = await client.autoscaling.getAutoscalingCapacity();
+  - language: Ruby
+    code: response = client.autoscaling.get_autoscaling_capacity
+  - language: PHP
+    code: $resp = $client->autoscaling()->getAutoscalingCapacity();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_autoscaling/capacity"'
+  - language: Java
+    code: |
+      client.autoscaling().getAutoscalingCapacity(g -> g);

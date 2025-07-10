@@ -4,3 +4,42 @@ value: |-
   {
     "start": "1575402236000"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.get_model_snapshots(
+          job_id="high_sum_total_sales",
+          start="1575402236000",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.getModelSnapshots({
+        job_id: "high_sum_total_sales",
+        start: 1575402236000,
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.get_model_snapshots(
+        job_id: "high_sum_total_sales",
+        body: {
+          "start": "1575402236000"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->getModelSnapshots([
+          "job_id" => "high_sum_total_sales",
+          "body" => [
+              "start" => "1575402236000",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"start":"1575402236000"}'' "$ELASTICSEARCH_URL/_ml/anomaly_detectors/high_sum_total_sales/model_snapshots"'
+  - language: Java
+    code: |
+      client.ml().getModelSnapshots(g -> g
+          .jobId("high_sum_total_sales")
+          .start(DateTime.of("1575402236000"))
+      );

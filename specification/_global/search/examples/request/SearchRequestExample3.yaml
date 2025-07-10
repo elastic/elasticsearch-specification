@@ -1,10 +1,10 @@
 summary: Search slicing
 method_request: GET /_search
 description: >
-  When paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently.
-  The result from running the first `GET /_search` request returns documents belonging to the first slice (`id: 0`).
-  If you run a second request with `id` set to `1', it returns documents in the second slice.
-  Since the maximum number of slices is set to `2`, the union of the results is equivalent to the results of a point-in-time search without slicing.
+  When paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them
+  independently. The result from running the first `GET /_search` request returns documents belonging to the first slice (`id: 0`).
+  If you run a second request with `id` set to `1', it returns documents in the second slice. Since the maximum number of slices is
+  set to `2`, the union of the results is equivalent to the results of a point-in-time search without slicing.
 # type: request
 value: |-
   {
@@ -21,3 +21,95 @@ value: |-
       "id": "46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA=="
     }
   }
+alternatives:
+  - language: Python
+    code: >-
+      resp = client.search(
+          slice={
+              "id": 0,
+              "max": 2
+          },
+          query={
+              "match": {
+                  "message": "foo"
+              }
+          },
+          pit={
+              "id": "46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA=="
+          },
+      )
+  - language: JavaScript
+    code: >-
+      const response = await client.search({
+        slice: {
+          id: 0,
+          max: 2,
+        },
+        query: {
+          match: {
+            message: "foo",
+          },
+        },
+        pit: {
+          id: "46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==",
+        },
+      });
+  - language: Ruby
+    code: >-
+      response = client.search(
+        body: {
+          "slice": {
+            "id": 0,
+            "max": 2
+          },
+          "query": {
+            "match": {
+              "message": "foo"
+            }
+          },
+          "pit": {
+            "id": "46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA=="
+          }
+        }
+      )
+  - language: PHP
+    code: >-
+      $resp = $client->search([
+          "body" => [
+              "slice" => [
+                  "id" => 0,
+                  "max" => 2,
+              ],
+              "query" => [
+                  "match" => [
+                      "message" => "foo",
+                  ],
+              ],
+              "pit" => [
+                  "id" => "46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"slice\":{\"id\":0,\"max\":2},\"query\":{\"match\":{\"message\":\"foo\"}},\"pit\":{\"id\":\"46ToAwMDaWR5BXV1aWQyKwZub2RlXz\
+      MAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXR\
+      jaF9hbGw_gAAAAA==\"}}' \"$ELASTICSEARCH_URL/_search\""
+  - language: Java
+    code: >
+      client.search(s -> s
+          .pit(p -> p
+              .id("46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==")
+          )
+          .query(q -> q
+              .match(m -> m
+                  .field("message")
+                  .query(FieldValue.of("foo"))
+              )
+          )
+          .slice(sl -> sl
+              .id("0")
+              .max(2)
+          )
+      ,Void.class);

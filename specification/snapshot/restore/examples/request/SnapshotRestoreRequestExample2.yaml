@@ -1,8 +1,41 @@
 summary: Restore in-place
 method_request: PUT _cluster/settings
 description: >
-  Close `index_1` then run `POST /_snapshot/my_repository/snapshot_2/_restore?wait_for_completion=true` to restore an index in-place.
-  For example, you might want to perform this type of restore operation when no alternative options surface after the cluster allocation explain API reports `no_valid_shard_copy`.
+  Close `index_1` then run `POST /_snapshot/my_repository/snapshot_2/_restore?wait_for_completion=true` to restore an index
+  in-place. For example, you might want to perform this type of restore operation when no alternative options surface after the
+  cluster allocation explain API reports `no_valid_shard_copy`.
 # type: request
 value:
   indices: index_1
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cluster.put_settings(
+          indices="index_1",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cluster.putSettings({
+        indices: "index_1",
+      });
+  - language: Ruby
+    code: |-
+      response = client.cluster.put_settings(
+        body: {
+          "indices": "index_1"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cluster()->putSettings([
+          "body" => [
+              "indices" => "index_1",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"indices":"index_1"}'' "$ELASTICSEARCH_URL/_cluster/settings"'
+  - language: Java
+    code: |
+      client.cluster().putSettings();

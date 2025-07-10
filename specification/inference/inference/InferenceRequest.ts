@@ -83,6 +83,19 @@ export interface Request extends RequestBase {
      */
     input: string | Array<string>
     /**
+     * Specifies the input data type for the text embedding model. The `input_type` parameter only applies to Inference Endpoints with the `text_embedding` task type. Possible values include:
+     * * `SEARCH`
+     * * `INGEST`
+     * * `CLASSIFICATION`
+     * * `CLUSTERING`
+     * Not all services support all values. Unsupported values will trigger a validation exception.
+     * Accepted values depend on the configured inference service, refer to the relevant service-specific documentation for more info.
+     *
+     * > info
+     * > The `input_type` parameter specified on the root level of the request body will take precedence over the `input_type` parameter specified in `task_settings`.
+     */
+    input_type?: string
+    /**
      * Task settings for the individual inference request.
      * These settings are specific to the task type you specified and override the task settings specified when initializing the service.
      */

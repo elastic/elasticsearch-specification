@@ -1,1 +1,29 @@
 method_request: GET /my-index-000001/_field_usage_stats
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.field_usage_stats(
+          index="my-index-000001",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.fieldUsageStats({
+        index: "my-index-000001",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.field_usage_stats(
+        index: "my-index-000001"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->fieldUsageStats([
+          "index" => "my-index-000001",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index-000001/_field_usage_stats"'
+  - language: Java
+    code: |
+      client.indices().fieldUsageStats(f -> f
+          .index("my-index-000001")
+      );

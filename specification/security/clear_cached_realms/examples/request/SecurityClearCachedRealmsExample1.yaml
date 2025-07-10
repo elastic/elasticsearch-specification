@@ -1,1 +1,29 @@
 method_request: POST /_security/realm/default_file/_clear_cache
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.clear_cached_realms(
+          realms="default_file",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.clearCachedRealms({
+        realms: "default_file",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.clear_cached_realms(
+        realms: "default_file"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->clearCachedRealms([
+          "realms" => "default_file",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/realm/default_file/_clear_cache"'
+  - language: Java
+    code: |
+      client.security().clearCachedRealms(c -> c
+          .realms("default_file")
+      );

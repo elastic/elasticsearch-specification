@@ -269,6 +269,17 @@ export class IndexSettingBlocks {
   metadata?: Stringified<boolean>
 }
 
+export enum IndicesBlockOptions {
+  /** Disable metadata changes, such as closing the index. */
+  metadata,
+  /** Disable read operations. */
+  read,
+  /** Disable write operations and metadata changes. */
+  read_only,
+  /** Disable write operations. However, metadata changes are still allowed. */
+  write
+}
+
 /**
  * @es_quirk This is a boolean that evolved into an enum. ES also accepts plain booleans for true and false.
  */
@@ -542,6 +553,8 @@ export class Storage {
    * of memory maps so you need disable the ability to use memory-mapping.
    */
   allow_mmap?: boolean
+  /** How often store statistics are refreshed */
+  stats_refresh_interval?: Duration
 }
 
 /**

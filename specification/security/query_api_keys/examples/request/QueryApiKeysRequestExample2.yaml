@@ -1,12 +1,10 @@
 summary: Query API keys with pagination
 method_request: GET /_security/_query/api_key
 description: >
-  Run `GET /_security/_query/api_key`.
-  Use a `bool` query to issue complex logical conditions and use `from`, `size`, and `sort` to help paginate the result.
-  For example, the API key name must begin with `app1-key-` and must not be `app1-key-01`.
-  It must be owned by a username with the wildcard pattern `org-*-user` and the `environment` metadata field must have a `production` value.
-  The offset to begin the search result is the twentieth (zero-based index) API key.
-  The page size of the response is 10 API keys.
+  Run `GET /_security/_query/api_key`. Use a `bool` query to issue complex logical conditions and use `from`, `size`, and `sort` to
+  help paginate the result. For example, the API key name must begin with `app1-key-` and must not be `app1-key-01`. It must be
+  owned by a username with the wildcard pattern `org-*-user` and the `environment` metadata field must have a `production` value.
+  The offset to begin the search result is the twentieth (zero-based index) API key. The page size of the response is 10 API keys.
   The result is first sorted by creation date in descending order, then by name in ascending order.
 # type: request
 value: |-
@@ -53,3 +51,258 @@ value: |-
       "name"
     ]
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.query_api_keys(
+          query={
+              "bool": {
+                  "must": [
+                      {
+                          "prefix": {
+                              "name": "app1-key-"
+                          }
+                      },
+                      {
+                          "term": {
+                              "invalidated": "false"
+                          }
+                      }
+                  ],
+                  "must_not": [
+                      {
+                          "term": {
+                              "name": "app1-key-01"
+                          }
+                      }
+                  ],
+                  "filter": [
+                      {
+                          "wildcard": {
+                              "username": "org-*-user"
+                          }
+                      },
+                      {
+                          "term": {
+                              "metadata.environment": "production"
+                          }
+                      }
+                  ]
+              }
+          },
+          from=20,
+          size=10,
+          sort=[
+              {
+                  "creation": {
+                      "order": "desc",
+                      "format": "date_time"
+                  }
+              },
+              "name"
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.queryApiKeys({
+        query: {
+          bool: {
+            must: [
+              {
+                prefix: {
+                  name: "app1-key-",
+                },
+              },
+              {
+                term: {
+                  invalidated: "false",
+                },
+              },
+            ],
+            must_not: [
+              {
+                term: {
+                  name: "app1-key-01",
+                },
+              },
+            ],
+            filter: [
+              {
+                wildcard: {
+                  username: "org-*-user",
+                },
+              },
+              {
+                term: {
+                  "metadata.environment": "production",
+                },
+              },
+            ],
+          },
+        },
+        from: 20,
+        size: 10,
+        sort: [
+          {
+            creation: {
+              order: "desc",
+              format: "date_time",
+            },
+          },
+          "name",
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.query_api_keys(
+        body: {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "prefix": {
+                    "name": "app1-key-"
+                  }
+                },
+                {
+                  "term": {
+                    "invalidated": "false"
+                  }
+                }
+              ],
+              "must_not": [
+                {
+                  "term": {
+                    "name": "app1-key-01"
+                  }
+                }
+              ],
+              "filter": [
+                {
+                  "wildcard": {
+                    "username": "org-*-user"
+                  }
+                },
+                {
+                  "term": {
+                    "metadata.environment": "production"
+                  }
+                }
+              ]
+            }
+          },
+          "from": 20,
+          "size": 10,
+          "sort": [
+            {
+              "creation": {
+                "order": "desc",
+                "format": "date_time"
+              }
+            },
+            "name"
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->queryApiKeys([
+          "body" => [
+              "query" => [
+                  "bool" => [
+                      "must" => array(
+                          [
+                              "prefix" => [
+                                  "name" => "app1-key-",
+                              ],
+                          ],
+                          [
+                              "term" => [
+                                  "invalidated" => "false",
+                              ],
+                          ],
+                      ),
+                      "must_not" => array(
+                          [
+                              "term" => [
+                                  "name" => "app1-key-01",
+                              ],
+                          ],
+                      ),
+                      "filter" => array(
+                          [
+                              "wildcard" => [
+                                  "username" => "org-*-user",
+                              ],
+                          ],
+                          [
+                              "term" => [
+                                  "metadata.environment" => "production",
+                              ],
+                          ],
+                      ),
+                  ],
+              ],
+              "from" => 20,
+              "size" => 10,
+              "sort" => array(
+                  [
+                      "creation" => [
+                          "order" => "desc",
+                          "format" => "date_time",
+                      ],
+                  ],
+                  "name",
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"query\":{\"bool\":{\"must\":[{\"prefix\":{\"name\":\"app1-key-\"}},{\"term\":{\"invalidated\":\"false\"}}],\"must_not\":[{\
+      \"term\":{\"name\":\"app1-key-01\"}}],\"filter\":[{\"wildcard\":{\"username\":\"org-*-user\"}},{\"term\":{\"metadata.environm\
+      ent\":\"production\"}}]}},\"from\":20,\"size\":10,\"sort\":[{\"creation\":{\"order\":\"desc\",\"format\":\"date_time\"}},\"na\
+      me\"]}' \"$ELASTICSEARCH_URL/_security/_query/api_key\""
+  - language: Java
+    code: |
+      client.security().queryApiKeys(q -> q
+          .from(20)
+          .query(qu -> qu
+              .bool(b -> b
+                  .filter(List.of(Query.of(que -> que
+                          .wildcard(w -> w
+                              .field("username")
+                              .value("org-*-user")
+                      )),Query.of(quer -> quer
+                          .term(t -> t
+                              .field("metadata.environment")
+                              .value(FieldValue.of("production"))
+                      ))))
+                  .must(List.of(Query.of(query -> query
+                          .prefix(p -> p
+                              .field("name")
+                              .value("app1-key-")
+                      )),Query.of(query1 -> query1
+                          .term(t -> t
+                              .field("invalidated")
+                              .value(FieldValue.of("false"))
+                      ))))
+                  .mustNot(m -> m
+                      .term(t -> t
+                          .field("name")
+                          .value(FieldValue.of("app1-key-01"))
+                      )
+                  )
+              )
+          )
+          .size(10)
+          .sort(List.of(SortOptions.of(s -> s
+                  .field(f -> f
+                      .field("creation")
+                      .order(SortOrder.Desc)
+                      .format("date_time")
+              )),SortOptions.of(so -> so
+                  .field(f -> f
+                      .field("name")
+              ))))
+      );

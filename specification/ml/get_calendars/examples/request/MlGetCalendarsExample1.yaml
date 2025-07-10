@@ -1,1 +1,29 @@
 method_request: GET _ml/calendars/planned-outages
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.get_calendars(
+          calendar_id="planned-outages",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.getCalendars({
+        calendar_id: "planned-outages",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.get_calendars(
+        calendar_id: "planned-outages"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->getCalendars([
+          "calendar_id" => "planned-outages",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/calendars/planned-outages"'
+  - language: Java
+    code: |
+      client.ml().getCalendars(g -> g
+          .calendarId("planned-outages")
+      );

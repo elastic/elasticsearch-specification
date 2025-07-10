@@ -1,1 +1,29 @@
 method_request: POST logs-my_app-default/_ilm/remove
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ilm.remove_policy(
+          index="logs-my_app-default",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ilm.removePolicy({
+        index: "logs-my_app-default",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ilm.remove_policy(
+        index: "logs-my_app-default"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ilm()->removePolicy([
+          "index" => "logs-my_app-default",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/logs-my_app-default/_ilm/remove"'
+  - language: Java
+    code: |
+      client.ilm().removePolicy(r -> r
+          .index("logs-my_app-default")
+      );

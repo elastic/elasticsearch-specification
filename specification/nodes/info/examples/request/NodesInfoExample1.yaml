@@ -1,1 +1,34 @@
 method_request: GET _nodes/_all/jvm
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.nodes.info(
+          node_id="_all",
+          metric="jvm",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.nodes.info({
+        node_id: "_all",
+        metric: "jvm",
+      });
+  - language: Ruby
+    code: |-
+      response = client.nodes.info(
+        node_id: "_all",
+        metric: "jvm"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->nodes()->info([
+          "node_id" => "_all",
+          "metric" => "jvm",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_nodes/_all/jvm"'
+  - language: Java
+    code: |
+      client.nodes().info(i -> i
+          .metric("jvm")
+          .nodeId("_all")
+      );

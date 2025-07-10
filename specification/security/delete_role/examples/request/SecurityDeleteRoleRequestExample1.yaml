@@ -1,1 +1,29 @@
 method_request: DELETE /_security/role/my_admin_role
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.delete_role(
+          name="my_admin_role",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.deleteRole({
+        name: "my_admin_role",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.delete_role(
+        name: "my_admin_role"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->deleteRole([
+          "name" => "my_admin_role",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/role/my_admin_role"'
+  - language: Java
+    code: |
+      client.security().deleteRole(d -> d
+          .name("my_admin_role")
+      );

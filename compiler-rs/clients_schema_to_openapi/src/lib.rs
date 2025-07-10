@@ -32,6 +32,7 @@ use crate::components::TypesAndComponents;
 pub struct Configuration {
     pub flavor: Option<Flavor>,
     pub namespaces: Option<Vec<String>>,
+    pub branch: Option<String>,
 
     /// If a property value is an enumeration, the description of possible values will be copied in the
     /// property's description (also works for arrays of enums).
@@ -44,6 +45,9 @@ pub struct Configuration {
 
     /// Should we output a redirect map when merging multipath endpoints?
     pub multipath_redirects: bool,
+
+    /// include the x-codeSamples extension with language examples for all endpoints
+    pub include_language_examples: bool,
 }
 
 pub struct OpenApiConversion {
@@ -52,7 +56,7 @@ pub struct OpenApiConversion {
 }
 
 /// Convert an API model into an OpenAPI v3 schema, optionally filtered for a given flavor
-pub fn convert_schema(mut schema: IndexedModel, config: Configuration) -> anyhow::Result<OpenApiConversion> {
+pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_meta: IndexMap<String,String>) -> anyhow::Result<OpenApiConversion> {
     // Expand generics
     schema = clients_schema::transform::expand_generics(schema, ExpandConfig::default())?;
 
@@ -73,7 +77,7 @@ pub fn convert_schema(mut schema: IndexedModel, config: Configuration) -> anyhow
         schema = clients_schema::transform::filter_availability(schema, filter)?;
     }
 
-    convert_expanded_schema(&schema, &config)
+    convert_expanded_schema(&schema, &config, &product_meta)
 }
 
 /// Convert an API model into an OpenAPI v3 schema. The input model must have all generics expanded, conversion
@@ -82,7 +86,7 @@ pub fn convert_schema(mut schema: IndexedModel, config: Configuration) -> anyhow
 /// Note: there are ways to represent [generics in JSON Schema], but its unlikely that tooling will understand it.
 ///
 /// [generics in JSON Schema]: https://json-schema.org/blog/posts/dynamicref-and-generics
-pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration) -> anyhow::Result<OpenApiConversion> {
+pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, product_meta: &IndexMap<String,String>) -> anyhow::Result<OpenApiConversion> {
     let mut openapi = OpenAPI {
         openapi: "3.0.3".into(),
         info: info(model),
@@ -120,7 +124,7 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration) -> 
                 continue;
             }
         }
-        paths::add_endpoint(endpoint, &mut tac, &mut openapi.paths)?;
+        paths::add_endpoint(endpoint, &mut tac, &mut openapi.paths, product_meta)?;
     }
 
     // // Sort maps to ensure output stability
@@ -180,7 +184,19 @@ fn info(model: &IndexedModel) -> openapiv3::Info {
     }
 }
 
-pub fn availability_as_extensions(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>) -> IndexMap<String, serde_json::Value> {
+pub fn product_meta_as_extensions(namespace: &str, product_meta: &IndexMap<String,String>) -> IndexMap<String, Value> {
+    let mut result = IndexMap::new();
+    let mut additional_namespace= "".to_string();
+    if let Some(meta) = product_meta.get(namespace) {
+        additional_namespace = format!(", {meta}");
+    }
+    
+    let product_str = format!("elasticsearch{additional_namespace}");
+    result.insert("x-product-feature".to_string(), Value::String(product_str));
+    result
+}
+
+pub fn availability_as_extensions(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>) -> IndexMap<String, Value> {
     let mut result = IndexMap::new();
     convert_availabilities(availabilities, flavor, &mut result);
     result

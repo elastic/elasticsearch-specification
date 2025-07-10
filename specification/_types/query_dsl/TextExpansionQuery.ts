@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { TokenPruningConfig } from '../TokenPruningConfig'
 import { QueryBase } from './abstractions'
-import { TokenPruningConfig } from './TokenPruningConfig'
 
 /**
  * @ext_doc_id query-dsl-text-expansion-query

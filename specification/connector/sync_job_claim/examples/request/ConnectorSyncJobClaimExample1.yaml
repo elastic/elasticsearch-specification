@@ -4,3 +4,42 @@ value: |-
   {
     "worker_hostname": "some-machine"
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.sync_job_claim(
+          connector_sync_job_id="my-connector-sync-job-id",
+          worker_hostname="some-machine",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.syncJobClaim({
+        connector_sync_job_id: "my-connector-sync-job-id",
+        worker_hostname: "some-machine",
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.sync_job_claim(
+        connector_sync_job_id: "my-connector-sync-job-id",
+        body: {
+          "worker_hostname": "some-machine"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->syncJobClaim([
+          "connector_sync_job_id" => "my-connector-sync-job-id",
+          "body" => [
+              "worker_hostname" => "some-machine",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"worker_hostname":"some-machine"}'' "$ELASTICSEARCH_URL/_connector/_sync_job/my-connector-sync-job-id/_claim"'
+  - language: Java
+    code: |
+      client.connector().syncJobClaim(s -> s
+          .connectorSyncJobId("my-connector-sync-job-id")
+          .workerHostname("some-machine")
+      );

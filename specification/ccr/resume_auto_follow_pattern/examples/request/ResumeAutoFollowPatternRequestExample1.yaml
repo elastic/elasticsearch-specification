@@ -1,1 +1,29 @@
 method_request: POST /_ccr/auto_follow/my_auto_follow_pattern/resume
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ccr.resume_auto_follow_pattern(
+          name="my_auto_follow_pattern",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ccr.resumeAutoFollowPattern({
+        name: "my_auto_follow_pattern",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ccr.resume_auto_follow_pattern(
+        name: "my_auto_follow_pattern"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ccr()->resumeAutoFollowPattern([
+          "name" => "my_auto_follow_pattern",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ccr/auto_follow/my_auto_follow_pattern/resume"'
+  - language: Java
+    code: |
+      client.ccr().resumeAutoFollowPattern(r -> r
+          .name("my_auto_follow_pattern")
+      );

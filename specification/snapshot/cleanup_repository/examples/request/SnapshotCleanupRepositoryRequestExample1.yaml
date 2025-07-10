@@ -1,1 +1,29 @@
 method_request: POST /_snapshot/my_repository/_cleanup
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.snapshot.cleanup_repository(
+          name="my_repository",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.snapshot.cleanupRepository({
+        name: "my_repository",
+      });
+  - language: Ruby
+    code: |-
+      response = client.snapshot.cleanup_repository(
+        repository: "my_repository"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->snapshot()->cleanupRepository([
+          "repository" => "my_repository",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_snapshot/my_repository/_cleanup"'
+  - language: Java
+    code: |
+      client.snapshot().cleanupRepository(c -> c
+          .name("my_repository")
+      );

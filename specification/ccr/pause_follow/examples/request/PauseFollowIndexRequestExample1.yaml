@@ -1,1 +1,29 @@
 method_request: POST /follower_index/_ccr/pause_follow
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ccr.pause_follow(
+          index="follower_index",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ccr.pauseFollow({
+        index: "follower_index",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ccr.pause_follow(
+        index: "follower_index"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ccr()->pauseFollow([
+          "index" => "follower_index",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/follower_index/_ccr/pause_follow"'
+  - language: Java
+    code: |
+      client.ccr().pauseFollow(p -> p
+          .index("follower_index")
+      );

@@ -16,3 +16,127 @@ value: |-
       }
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.rank_eval(
+          index="my-index-000001",
+          requests=[
+              {
+                  "id": "JFK query",
+                  "request": {
+                      "query": {
+                          "match_all": {}
+                      }
+                  },
+                  "ratings": []
+              }
+          ],
+          metric={
+              "precision": {
+                  "k": 20,
+                  "relevant_rating_threshold": 1,
+                  "ignore_unlabeled": False
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.rankEval({
+        index: "my-index-000001",
+        requests: [
+          {
+            id: "JFK query",
+            request: {
+              query: {
+                match_all: {},
+              },
+            },
+            ratings: [],
+          },
+        ],
+        metric: {
+          precision: {
+            k: 20,
+            relevant_rating_threshold: 1,
+            ignore_unlabeled: false,
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.rank_eval(
+        index: "my-index-000001",
+        body: {
+          "requests": [
+            {
+              "id": "JFK query",
+              "request": {
+                "query": {
+                  "match_all": {}
+                }
+              },
+              "ratings": []
+            }
+          ],
+          "metric": {
+            "precision": {
+              "k": 20,
+              "relevant_rating_threshold": 1,
+              "ignore_unlabeled": false
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->rankEval([
+          "index" => "my-index-000001",
+          "body" => [
+              "requests" => array(
+                  [
+                      "id" => "JFK query",
+                      "request" => [
+                          "query" => [
+                              "match_all" => new ArrayObject([]),
+                          ],
+                      ],
+                      "ratings" => array(
+                      ),
+                  ],
+              ),
+              "metric" => [
+                  "precision" => [
+                      "k" => 20,
+                      "relevant_rating_threshold" => 1,
+                      "ignore_unlabeled" => false,
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"requests\":[{\"id\":\"JFK
+      query\",\"request\":{\"query\":{\"match_all\":{}}},\"ratings\":[]}],\"metric\":{\"precision\":{\"k\":20,\"relevant_rating_thr\
+      eshold\":1,\"ignore_unlabeled\":false}}}' \"$ELASTICSEARCH_URL/my-index-000001/_rank_eval\""
+  - language: Java
+    code: |
+      client.rankEval(r -> r
+          .index("my-index-000001")
+          .metric(m -> m
+              .precision(p -> p
+                  .ignoreUnlabeled(false)
+                  .relevantRatingThreshold(1)
+                  .k(20)
+              )
+          )
+          .requests(re -> re
+              .id("JFK query")
+              .request(req -> req
+                  .query(q -> q
+                      .matchAll(m -> m)
+                  )
+              )
+          )
+      );

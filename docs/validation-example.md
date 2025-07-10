@@ -16,7 +16,7 @@ The example assumes that you have already performed the necessary steps to run a
 if not, take a look at the [README](../README.md).
 
 ```sh
-make validate api=index type=request branch=main
+make validate api=index branch=main
 ```
 
 You will see an output like the following:
@@ -82,7 +82,7 @@ open it with your favourite editor and perform the fix
 Finally run the validation again:
 
 ```sh
-make validate api=index type=request branch=main
+make validate api=index branch=main
 ```
 
 If there are no more errors, open a pull request with the fix.

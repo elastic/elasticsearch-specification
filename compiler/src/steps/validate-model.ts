@@ -497,6 +497,23 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         throw new Error(`Unknown kind: ${typeDef.body.kind}`)
     }
+
+    if (typeDef.exceptions != null) {
+      for (const ex of typeDef.exceptions) {
+        switch (ex.body.kind) {
+          case 'properties':
+            validateProperties(ex.body.properties, openGenerics, new Set<string>())
+            break
+          case 'value':
+            validateValueOf(ex.body.value, openGenerics)
+            break
+          case 'no_body':
+            // Nothing to validate
+            break
+        }
+      }
+    }
+
     context.pop()
   }
 
@@ -562,17 +579,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
     if (typeDef.variants?.kind === 'container') {
       const variants = typeDef.properties.filter(prop => !(prop.containerProperty ?? false))
-      if (variants.length === 1) {
-        // Single-variant containers must have a required property
-        if (!variants[0].required) {
-          modelError(`Property ${variants[0].name} is a single-variant and must be required`)
-        }
-      } else {
-        // Multiple variants must all be optional
-        for (const v of variants) {
-          if (v.required) {
-            modelError(`Variant ${variants[0].name} must be optional`)
-          }
+      // Variants must all be optional
+      for (const v of variants) {
+        if (v.required) {
+          modelError(`Variant ${variants[0].name} must be optional`)
         }
       }
     }

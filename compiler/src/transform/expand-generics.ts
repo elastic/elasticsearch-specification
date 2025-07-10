@@ -27,7 +27,7 @@ import {
   Request,
   Response,
   Body,
-  InstanceOf, Inherits, Property
+  InstanceOf, Inherits, Property, ResponseException
 } from '../model/metamodel'
 import { readFile, writeFile } from 'fs/promises'
 import stringify from 'safe-stable-stringify'
@@ -293,6 +293,17 @@ export function expandGenerics (inputModel: Model, config?: ExpansionConfig): Mo
     return addIfNotSeen(resp.name, () => {
       const result = { ...resp }
       result.body = expandBody(resp.body, genericParamMapping(resp.generics, params))
+      if (resp.exceptions != null) {
+        result.exceptions = []
+        for (const exception of resp.exceptions) {
+          const except: ResponseException = {
+            description: exception.description,
+            statusCodes: exception.statusCodes,
+            body: expandBody(exception.body, genericParamMapping(resp.generics, params))
+          }
+          result.exceptions.push(except)
+        }
+      }
       result.generics = undefined
       return result
     })

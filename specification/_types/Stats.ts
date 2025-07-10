@@ -272,6 +272,7 @@ export class SearchStats {
   suggest_time?: Duration
   suggest_time_in_millis: DurationValue<UnitMillis>
   suggest_total: long
+  recent_search_load?: double
   groups?: Dictionary<string, SearchStats>
 }
 

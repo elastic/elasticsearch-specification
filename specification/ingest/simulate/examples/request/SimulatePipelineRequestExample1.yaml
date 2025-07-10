@@ -2,11 +2,217 @@ summary: Run an ingest pipeline against a set of provided documents.
 method_request: POST /_ingest/pipeline/_simulate
 description: You can specify the used pipeline either in the request body or as a path parameter.
 # type: request
-value:
-  "{\n  \"pipeline\" :\n  {\n    \"description\": \"_description\",\n    \"processors\"\
-  : [\n      {\n        \"set\" : {\n          \"field\" : \"field2\",\n         \
-  \ \"value\" : \"_value\"\n        }\n      }\n    ]\n  },\n  \"docs\": [\n    {\n\
-  \      \"_index\": \"index\",\n      \"_id\": \"id\",\n      \"_source\": {\n  \
-  \      \"foo\": \"bar\"\n      }\n    },\n    {\n      \"_index\": \"index\",\n\
-  \      \"_id\": \"id\",\n      \"_source\": {\n        \"foo\": \"rab\"\n      }\n\
-  \    }\n  ]\n}"
+value: "{
+
+  \  \"pipeline\" :
+
+  \  {
+
+  \    \"description\": \"_description\",
+
+  \    \"processors\": [
+
+  \      {
+
+  \        \"set\" : {
+
+  \          \"field\" : \"field2\",
+
+  \          \"value\" : \"_value\"
+
+  \        }
+
+  \      }
+
+  \    ]
+
+  \  },
+
+  \  \"docs\": [
+
+  \    {
+
+  \      \"_index\": \"index\",
+
+  \      \"_id\": \"id\",
+
+  \      \"_source\": {
+
+  \        \"foo\": \"bar\"
+
+  \      }
+
+  \    },
+
+  \    {
+
+  \      \"_index\": \"index\",
+
+  \      \"_id\": \"id\",
+
+  \      \"_source\": {
+
+  \        \"foo\": \"rab\"
+
+  \      }
+
+  \    }
+
+  \  ]
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ingest.simulate(
+          pipeline={
+              "description": "_description",
+              "processors": [
+                  {
+                      "set": {
+                          "field": "field2",
+                          "value": "_value"
+                      }
+                  }
+              ]
+          },
+          docs=[
+              {
+                  "_index": "index",
+                  "_id": "id",
+                  "_source": {
+                      "foo": "bar"
+                  }
+              },
+              {
+                  "_index": "index",
+                  "_id": "id",
+                  "_source": {
+                      "foo": "rab"
+                  }
+              }
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ingest.simulate({
+        pipeline: {
+          description: "_description",
+          processors: [
+            {
+              set: {
+                field: "field2",
+                value: "_value",
+              },
+            },
+          ],
+        },
+        docs: [
+          {
+            _index: "index",
+            _id: "id",
+            _source: {
+              foo: "bar",
+            },
+          },
+          {
+            _index: "index",
+            _id: "id",
+            _source: {
+              foo: "rab",
+            },
+          },
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.ingest.simulate(
+        body: {
+          "pipeline": {
+            "description": "_description",
+            "processors": [
+              {
+                "set": {
+                  "field": "field2",
+                  "value": "_value"
+                }
+              }
+            ]
+          },
+          "docs": [
+            {
+              "_index": "index",
+              "_id": "id",
+              "_source": {
+                "foo": "bar"
+              }
+            },
+            {
+              "_index": "index",
+              "_id": "id",
+              "_source": {
+                "foo": "rab"
+              }
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ingest()->simulate([
+          "body" => [
+              "pipeline" => [
+                  "description" => "_description",
+                  "processors" => array(
+                      [
+                          "set" => [
+                              "field" => "field2",
+                              "value" => "_value",
+                          ],
+                      ],
+                  ),
+              ],
+              "docs" => array(
+                  [
+                      "_index" => "index",
+                      "_id" => "id",
+                      "_source" => [
+                          "foo" => "bar",
+                      ],
+                  ],
+                  [
+                      "_index" => "index",
+                      "_id" => "id",
+                      "_source" => [
+                          "foo" => "rab",
+                      ],
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"pipeline\":{\"description\":\"_description\",\"processors\":[{\"set\":{\"field\":\"field2\",\"value\":\"_value\"}}]},\"do\
+      cs\":[{\"_index\":\"index\",\"_id\":\"id\",\"_source\":{\"foo\":\"bar\"}},{\"_index\":\"index\",\"_id\":\"id\",\"_source\":{\
+      \"foo\":\"rab\"}}]}' \"$ELASTICSEARCH_URL/_ingest/pipeline/_simulate\""
+  - language: Java
+    code: |
+      client.ingest().simulate(s -> s
+          .docs(List.of(Document.of(d -> d
+                  .id("id")
+                  .index("index")
+                  .source(JsonData.fromJson("{\"foo\":\"bar\"}"))),Document.of(d -> d
+                  .id("id")
+                  .index("index")
+                  .source(JsonData.fromJson("{\"foo\":\"rab\"}")))))
+          .pipeline(p -> p
+              .description("_description")
+              .processors(pr -> pr
+                  .set(se -> se
+                      .field("field2")
+                      .value(JsonData.fromJson("\"_value\""))
+                  )
+              )
+          )
+      );

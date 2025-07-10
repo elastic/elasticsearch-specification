@@ -1,6 +1,8 @@
 # summary:
 method_request: POST _application/search_application/my-app/_render_query
-description: Run `POST _application/search_application/my-app/_render_query` to generate a query for a search application called `my-app` that uses the search template.
+description:
+  Run `POST _application/search_application/my-app/_render_query` to generate a query for a search application called
+  `my-app` that uses the search template.
 # type: request
 value:
   params:
@@ -10,3 +12,92 @@ value:
         boost: 5
       - name: description
         boost: 1
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.search_application.render_query(
+          name="my-app",
+          params={
+              "query_string": "my first query",
+              "text_fields": [
+                  {
+                      "name": "title",
+                      "boost": 5
+                  },
+                  {
+                      "name": "description",
+                      "boost": 1
+                  }
+              ]
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.searchApplication.renderQuery({
+        name: "my-app",
+        params: {
+          query_string: "my first query",
+          text_fields: [
+            {
+              name: "title",
+              boost: 5,
+            },
+            {
+              name: "description",
+              boost: 1,
+            },
+          ],
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.search_application.render_query(
+        name: "my-app",
+        body: {
+          "params": {
+            "query_string": "my first query",
+            "text_fields": [
+              {
+                "name": "title",
+                "boost": 5
+              },
+              {
+                "name": "description",
+                "boost": 1
+              }
+            ]
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->searchApplication()->renderQuery([
+          "name" => "my-app",
+          "body" => [
+              "params" => [
+                  "query_string" => "my first query",
+                  "text_fields" => array(
+                      [
+                          "name" => "title",
+                          "boost" => 5,
+                      ],
+                      [
+                          "name" => "description",
+                          "boost" => 1,
+                      ],
+                  ),
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"params":{"query_string":"my first
+      query","text_fields":[{"name":"title","boost":5},{"name":"description","boost":1}]}}''
+      "$ELASTICSEARCH_URL/_application/search_application/my-app/_render_query"'
+  - language: Java
+    code: >
+      client.searchApplication().renderQuery(r -> r
+          .name("my-app")
+          .params(Map.of("text_fields", JsonData.fromJson("[{\"name\":\"title\",\"boost\":5},{\"name\":\"description\",\"boost\":1}]"),"query_string", JsonData.fromJson("\"my first query\"")))
+      );

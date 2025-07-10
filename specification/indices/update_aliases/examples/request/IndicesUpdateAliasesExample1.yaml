@@ -11,3 +11,70 @@ value: |-
       }
     ]
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.update_aliases(
+          actions=[
+              {
+                  "add": {
+                      "index": "logs-nginx.access-prod",
+                      "alias": "logs"
+                  }
+              }
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.updateAliases({
+        actions: [
+          {
+            add: {
+              index: "logs-nginx.access-prod",
+              alias: "logs",
+            },
+          },
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.update_aliases(
+        body: {
+          "actions": [
+            {
+              "add": {
+                "index": "logs-nginx.access-prod",
+                "alias": "logs"
+              }
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->updateAliases([
+          "body" => [
+              "actions" => array(
+                  [
+                      "add" => [
+                          "index" => "logs-nginx.access-prod",
+                          "alias" => "logs",
+                      ],
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"actions":[{"add":{"index":"logs-nginx.access-prod","alias":"logs"}}]}'' "$ELASTICSEARCH_URL/_aliases"'
+  - language: Java
+    code: |
+      client.indices().updateAliases(u -> u
+          .actions(a -> a
+              .add(ad -> ad
+                  .alias("logs")
+                  .index("logs-nginx.access-prod")
+              )
+          )
+      );

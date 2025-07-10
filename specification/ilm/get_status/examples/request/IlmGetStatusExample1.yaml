@@ -1,1 +1,15 @@
 method_request: GET _ilm/status
+alternatives:
+  - language: Python
+    code: resp = client.ilm.get_status()
+  - language: JavaScript
+    code: const response = await client.ilm.getStatus();
+  - language: Ruby
+    code: response = client.ilm.get_status
+  - language: PHP
+    code: $resp = $client->ilm()->getStatus();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ilm/status"'
+  - language: Java
+    code: |
+      client.ilm().getStatus();
