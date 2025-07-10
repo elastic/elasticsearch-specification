@@ -1,12 +1,5 @@
 {
   "endpointErrors": {
-    "async_search.submit": {
-      "request": [
-        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required",
-        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
-      ],
-      "response": []
-    },
     "create": {
       "request": [
         "Request: query parameter 'if_primary_term' does not exist in the json spec",
@@ -81,21 +74,6 @@
         "Request: query parameter 'register_operation_count' does not exist in the json spec"
       ],
       "response": []
-    },
-    "transform.get_transform": {
-      "request": [],
-      "response": [
-        "interface definition transform._types:RetentionPolicyContainer - Property time is a single-variant and must be required",
-        "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required"
-      ]
-    },
-    "watcher.execute_watch": {
-      "request": [
-        "interface definition watcher._types:TriggerContainer - Property schedule is a single-variant and must be required"
-      ],
-      "response": [
-        "interface definition watcher._types:TriggerEventContainer - Property schedule is a single-variant and must be required"
-      ]
     },
     "xpack.info": {
       "request": [
