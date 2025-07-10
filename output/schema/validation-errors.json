@@ -2,8 +2,7 @@
   "endpointErrors": {
     "async_search.submit": {
       "request": [
-        "Request: query parameter 'min_compatible_shard_node' does not exist in the json spec",
-        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
+        "Request: query parameter 'min_compatible_shard_node' does not exist in the json spec"
       ],
       "response": []
     },
@@ -281,12 +280,6 @@
       ],
       "response": []
     },
-    "search": {
-      "request": [
-        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
-      ],
-      "response": []
-    },
     "search_mvt": {
       "request": [
         "Request: query parameter 'grid_agg' does not exist in the json spec",
@@ -325,21 +318,6 @@
         "Request: query parameter 'register_operation_count' does not exist in the json spec"
       ],
       "response": []
-    },
-    "transform.get_transform": {
-      "request": [],
-      "response": [
-        "interface definition transform._types:RetentionPolicyContainer - Property time is a single-variant and must be required",
-        "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required"
-      ]
-    },
-    "watcher.execute_watch": {
-      "request": [
-        "interface definition watcher._types:TriggerContainer - Property schedule is a single-variant and must be required"
-      ],
-      "response": [
-        "interface definition watcher._types:TriggerEventContainer - Property schedule is a single-variant and must be required"
-      ]
     },
     "xpack.info": {
       "request": [
