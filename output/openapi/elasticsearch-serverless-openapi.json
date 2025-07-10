@@ -79,10 +79,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -117,10 +119,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_async_search/status/{id}": {
@@ -184,10 +188,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_async_search": {
@@ -338,10 +344,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_async_search": {
@@ -495,10 +503,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_bulk": {
@@ -560,10 +570,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -623,10 +635,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_bulk": {
@@ -691,10 +705,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -757,10 +773,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/aliases": {
@@ -791,10 +809,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/aliases/{name}": {
@@ -828,10 +848,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/component_templates": {
@@ -862,10 +884,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/component_templates/{name}": {
@@ -899,10 +923,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/count": {
@@ -927,10 +953,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/count/{index}": {
@@ -958,10 +986,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat": {
@@ -985,10 +1015,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/indices": {
@@ -1034,10 +1066,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/indices/{index}": {
@@ -1086,10 +1120,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/ml/data_frame/analytics": {
@@ -1123,10 +1159,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/ml/data_frame/analytics/{id}": {
@@ -1163,10 +1201,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/ml/datafeeds": {
@@ -1197,10 +1237,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/ml/datafeeds/{datafeed_id}": {
@@ -1234,10 +1276,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/ml/anomaly_detectors": {
@@ -1271,10 +1315,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/ml/anomaly_detectors/{job_id}": {
@@ -1311,10 +1357,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/ml/trained_models": {
@@ -1354,10 +1402,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/ml/trained_models/{model_id}": {
@@ -1400,10 +1450,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/transforms": {
@@ -1440,10 +1492,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_cat/transforms/{transform_id}": {
@@ -1483,10 +1537,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_search/scroll": {
@@ -1521,10 +1577,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -1557,10 +1615,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -1582,10 +1642,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_search/scroll/{scroll_id}": {
@@ -1623,10 +1685,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -1662,10 +1726,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -1692,10 +1758,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_pit": {
@@ -1762,10 +1830,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_component_template/{name}": {
@@ -1799,10 +1869,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -1831,10 +1903,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -1863,10 +1937,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -1921,10 +1997,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -1975,10 +2053,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_component_template": {
@@ -2009,10 +2089,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_info/{target}": {
@@ -2072,10 +2154,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_check_in": {
@@ -2125,10 +2209,12 @@
           }
         },
         "x-state": "Technical preview",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}": {
@@ -2175,10 +2261,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -2200,10 +2288,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -2263,10 +2353,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector": {
@@ -2377,10 +2469,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -2397,10 +2491,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -2463,10 +2559,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/_sync_job/{connector_sync_job_id}/_cancel": {
@@ -2511,10 +2609,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/_sync_job/{connector_sync_job_id}": {
@@ -2550,10 +2650,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -2593,10 +2695,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/_sync_job": {
@@ -2697,10 +2801,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -2759,10 +2865,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_filtering/_activate": {
@@ -2807,10 +2915,12 @@
           }
         },
         "x-state": "Technical preview",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_api_key_id": {
@@ -2883,10 +2993,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_configuration": {
@@ -2965,10 +3077,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_error": {
@@ -3048,10 +3162,12 @@
           }
         },
         "x-state": "Technical preview",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_filtering": {
@@ -3136,10 +3252,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_filtering/_validation": {
@@ -3202,10 +3320,12 @@
           }
         },
         "x-state": "Technical preview",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_index_name": {
@@ -3285,10 +3405,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_name": {
@@ -3360,10 +3482,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_native": {
@@ -3425,10 +3549,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_pipeline": {
@@ -3501,10 +3627,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_scheduling": {
@@ -3579,10 +3707,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_service_type": {
@@ -3654,10 +3784,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_connector/{connector_id}/_status": {
@@ -3729,10 +3861,12 @@
           }
         },
         "x-state": "Technical preview",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_count": {
@@ -3796,10 +3930,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -3861,10 +3997,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_count": {
@@ -3931,10 +4069,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -3999,10 +4139,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_create/{id}": {
@@ -4073,10 +4215,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -4145,10 +4289,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_doc/{id}": {
@@ -4313,10 +4459,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -4382,10 +4530,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -4451,10 +4601,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -4586,10 +4738,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -4731,10 +4885,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_delete_by_query": {
@@ -5178,10 +5334,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_scripts/{id}": {
@@ -5243,10 +5401,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -5282,10 +5442,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -5321,10 +5483,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5379,10 +5543,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_enrich/policy/{name}": {
@@ -5407,10 +5573,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -5482,10 +5650,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5530,10 +5700,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_enrich/policy/{name}/_execute": {
@@ -5598,10 +5770,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_enrich/policy": {
@@ -5623,10 +5797,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_eql/search/{id}": {
@@ -5683,10 +5859,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5721,10 +5899,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_eql/search/status/{id}": {
@@ -5795,10 +5975,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_eql/search": {
@@ -5851,10 +6033,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -5905,10 +6089,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_query/queries/{id}": {
@@ -5980,10 +6166,12 @@
           }
         },
         "x-state": "Technical preview",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_query/queries": {
@@ -6018,10 +6206,12 @@
           }
         },
         "x-state": "Technical preview",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_query": {
@@ -6150,10 +6340,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_source/{id}": {
@@ -6305,10 +6497,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -6444,10 +6638,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_explain/{id}": {
@@ -6511,10 +6707,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6576,10 +6774,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_field_caps": {
@@ -6625,10 +6825,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6672,10 +6874,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_field_caps": {
@@ -6724,10 +6928,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6774,10 +6980,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_graph/explore": {
@@ -6812,10 +7020,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6848,10 +7058,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_doc": {
@@ -6916,10 +7128,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_block/{block}": {
@@ -7042,10 +7256,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_analyze": {
@@ -7074,10 +7290,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -7104,10 +7322,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_analyze": {
@@ -7139,10 +7359,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -7172,10 +7394,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}": {
@@ -7295,10 +7519,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -7420,10 +7646,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -7508,10 +7736,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -7602,10 +7832,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_data_stream/{name}": {
@@ -7639,10 +7871,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -7697,10 +7931,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -7755,10 +7991,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_alias/{name}": {
@@ -7795,10 +8033,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -7830,10 +8070,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -7865,10 +8107,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -7897,10 +8141,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -7935,10 +8181,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_aliases/{name}": {
@@ -7972,10 +8220,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -8007,10 +8257,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -8039,10 +8291,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_index_template/{name}": {
@@ -8076,10 +8330,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -8111,10 +8367,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -8146,10 +8404,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -8204,10 +8464,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -8268,10 +8530,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_alias/{name}": {
@@ -8305,10 +8569,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -8340,10 +8606,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_lifecycle/explain": {
@@ -8427,10 +8695,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_alias": {
@@ -8461,10 +8731,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_alias": {
@@ -8498,10 +8770,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_data_stream/{name}/_lifecycle": {
@@ -8589,10 +8863,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -8699,10 +8975,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_data_stream": {
@@ -8733,10 +9011,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_data_stream/{name}/_options": {
@@ -8804,10 +9084,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -8886,10 +9168,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_data_stream/{name}/_settings": {
@@ -8954,10 +9238,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -9067,10 +9353,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_index_template": {
@@ -9101,10 +9389,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_mapping": {
@@ -9138,10 +9428,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_mapping": {
@@ -9178,10 +9470,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -9226,10 +9520,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -9274,10 +9570,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_settings": {
@@ -9317,10 +9615,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -9368,10 +9668,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_settings": {
@@ -9414,10 +9716,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -9468,10 +9772,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_settings/{name}": {
@@ -9517,10 +9823,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_settings/{name}": {
@@ -9563,10 +9871,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_data_stream/_migrate/{name}": {
@@ -9623,10 +9933,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_data_stream/_modify": {
@@ -9678,10 +9990,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_refresh": {
@@ -9709,10 +10023,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -9738,10 +10054,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_refresh": {
@@ -9772,10 +10090,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -9804,10 +10124,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_resolve/index/{name}": {
@@ -9905,10 +10227,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{alias}/_rollover": {
@@ -9948,10 +10272,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{alias}/_rollover/{new_index}": {
@@ -9994,10 +10320,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_index_template/_simulate_index/{name}": {
@@ -10094,10 +10422,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_index_template/_simulate": {
@@ -10131,10 +10461,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_index_template/_simulate/{name}": {
@@ -10171,10 +10503,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_aliases": {
@@ -10245,10 +10579,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_validate/query": {
@@ -10306,10 +10642,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -10365,10 +10703,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_validate/query": {
@@ -10429,10 +10769,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -10491,10 +10833,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/chat_completion/{inference_id}/_stream": {
@@ -10574,10 +10918,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/completion/{inference_id}": {
@@ -10668,10 +11014,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{inference_id}": {
@@ -10692,10 +11040,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -10718,10 +11068,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -10747,10 +11099,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -10775,10 +11129,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{inference_id}": {
@@ -10802,10 +11158,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -10831,10 +11189,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -10863,10 +11223,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -10894,10 +11256,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference": {
@@ -10913,10 +11277,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{alibabacloud_inference_id}": {
@@ -11013,10 +11379,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{amazonbedrock_inference_id}": {
@@ -11103,10 +11471,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{anthropic_inference_id}": {
@@ -11187,10 +11557,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{azureaistudio_inference_id}": {
@@ -11277,10 +11649,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{azureopenai_inference_id}": {
@@ -11367,10 +11741,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{cohere_inference_id}": {
@@ -11457,10 +11833,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{elasticsearch_inference_id}": {
@@ -11573,10 +11951,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{elser_inference_id}": {
@@ -11667,10 +12047,12 @@
         },
         "deprecated": true,
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{googleaistudio_inference_id}": {
@@ -11749,10 +12131,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{googlevertexai_inference_id}": {
@@ -11839,10 +12223,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{huggingface_inference_id}": {
@@ -11929,10 +12315,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{jinaai_inference_id}": {
@@ -12019,10 +12407,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{mistral_inference_id}": {
@@ -12100,10 +12490,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{openai_inference_id}": {
@@ -12190,10 +12582,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{voyageai_inference_id}": {
@@ -12280,10 +12674,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/{task_type}/{watsonx_inference_id}": {
@@ -12358,10 +12754,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/rerank/{inference_id}": {
@@ -12478,10 +12876,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/sparse_embedding/{inference_id}": {
@@ -12572,10 +12972,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_inference/text_embedding/{inference_id}": {
@@ -12666,10 +13068,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/": {
@@ -12723,10 +13127,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "head": {
         "tags": [
@@ -12744,10 +13150,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ingest/pipeline/{id}": {
@@ -12779,10 +13187,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -12901,10 +13311,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -12963,10 +13375,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ingest/pipeline": {
@@ -12995,10 +13409,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ingest/processor/grok": {
@@ -13036,10 +13452,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ingest/pipeline/_simulate": {
@@ -13064,10 +13482,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -13090,10 +13510,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ingest/pipeline/{id}/_simulate": {
@@ -13121,10 +13543,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -13150,10 +13574,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_license": {
@@ -13213,10 +13639,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_logstash/pipeline/{id}": {
@@ -13242,10 +13670,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, logstash",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, logstash",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -13297,10 +13727,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, logstash",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, logstash",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -13335,10 +13767,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, logstash",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, logstash",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_logstash/pipeline": {
@@ -13359,10 +13793,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, logstash",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, logstash",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_mget": {
@@ -13408,10 +13844,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -13455,10 +13893,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_mget": {
@@ -13507,10 +13947,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -13557,10 +13999,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_close": {
@@ -13663,10 +14107,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/calendars/{calendar_id}": {
@@ -13697,10 +14143,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -13773,10 +14221,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -13805,10 +14255,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -13849,10 +14301,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/calendars/{calendar_id}/events/{event_id}": {
@@ -13905,10 +14359,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/calendars/{calendar_id}/jobs/{job_id}": {
@@ -13972,10 +14428,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -14043,10 +14501,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/{id}": {
@@ -14080,10 +14540,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -14230,10 +14692,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -14294,10 +14758,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/{datafeed_id}": {
@@ -14325,10 +14791,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -14538,10 +15006,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -14592,10 +15062,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/filters/{filter_id}": {
@@ -14623,10 +15095,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -14709,10 +15183,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -14753,10 +15229,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}": {
@@ -14784,10 +15262,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -15026,10 +15506,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -15106,10 +15588,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}": {
@@ -15152,10 +15636,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -15264,10 +15750,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -15328,10 +15816,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/model_aliases/{model_alias}": {
@@ -15389,10 +15879,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -15444,10 +15936,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/_estimate_model_memory": {
@@ -15520,10 +16014,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/data_frame/_evaluate": {
@@ -15627,10 +16123,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_flush": {
@@ -15763,10 +16261,12 @@
         },
         "deprecated": true,
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/calendars/{calendar_id}/events": {
@@ -15868,10 +16368,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -15945,10 +16447,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/calendars": {
@@ -15976,10 +16480,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16005,10 +16511,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics": {
@@ -16039,10 +16547,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/_stats": {
@@ -16073,10 +16583,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/{id}/_stats": {
@@ -16110,10 +16622,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_stats": {
@@ -16138,10 +16652,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/_stats": {
@@ -16163,10 +16679,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/datafeeds": {
@@ -16191,10 +16709,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/filters": {
@@ -16219,10 +16739,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/_stats": {
@@ -16244,10 +16766,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_stats": {
@@ -16272,10 +16796,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors": {
@@ -16300,10 +16826,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/results/overall_buckets": {
@@ -16349,10 +16877,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16396,10 +16926,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/trained_models": {
@@ -16439,10 +16971,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/_stats": {
@@ -16473,10 +17007,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/trained_models/_stats": {
@@ -16504,10 +17040,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/_infer": {
@@ -16598,10 +17136,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_open": {
@@ -16686,10 +17226,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/_preview": {
@@ -16709,10 +17251,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16730,10 +17274,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/{id}/_preview": {
@@ -16758,10 +17304,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16784,10 +17332,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_preview": {
@@ -16818,10 +17368,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16850,10 +17402,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/_preview": {
@@ -16881,10 +17435,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16910,10 +17466,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/definition/{part}": {
@@ -16996,10 +17554,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/vocabulary": {
@@ -17080,10 +17640,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_reset": {
@@ -17140,10 +17702,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/{id}/_start": {
@@ -17202,10 +17766,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_start": {
@@ -17311,10 +17877,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_start": {
@@ -17443,10 +18011,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/{id}/_stop": {
@@ -17521,10 +18091,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_stop": {
@@ -17627,10 +18199,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_stop": {
@@ -17695,10 +18269,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/data_frame/analytics/{id}/_update": {
@@ -17818,10 +18394,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/datafeeds/{datafeed_id}/_update": {
@@ -18034,10 +18612,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/filters/{filter_id}/_update": {
@@ -18129,10 +18709,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/anomaly_detectors/{job_id}/_update": {
@@ -18337,10 +18919,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_ml/trained_models/{model_id}/deployment/_update": {
@@ -18419,10 +19003,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch, machine-learning",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_msearch": {
@@ -18483,10 +19069,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -18545,10 +19133,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_msearch": {
@@ -18612,10 +19202,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -18677,10 +19269,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_msearch/template": {
@@ -18721,10 +19315,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -18763,10 +19359,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_msearch/template": {
@@ -18810,10 +19408,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -18855,10 +19455,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_mtermvectors": {
@@ -18916,10 +19518,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -18975,10 +19579,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_mtermvectors": {
@@ -19039,10 +19645,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19101,10 +19709,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_pit": {
@@ -19244,10 +19854,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_scripts/{id}/{context}": {
@@ -19288,10 +19900,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19330,10 +19944,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_query_rules/{ruleset_id}/_rule/{rule_id}": {
@@ -19391,10 +20007,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -19494,10 +20112,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -19543,10 +20163,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_query_rules/{ruleset_id}": {
@@ -19589,10 +20211,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -19673,10 +20297,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -19711,10 +20337,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_query_rules": {
@@ -19781,10 +20409,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_query_rules/{ruleset_id}/_test": {
@@ -19870,10 +20500,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_rank_eval": {
@@ -19907,10 +20539,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -19942,10 +20576,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_rank_eval": {
@@ -19982,10 +20618,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20020,10 +20658,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_reindex": {
@@ -20238,10 +20878,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_render/template": {
@@ -20261,10 +20903,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20282,10 +20926,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_render/template/{id}": {
@@ -20310,10 +20956,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20336,10 +20984,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_scripts/painless/_execute": {
@@ -20359,10 +21009,12 @@
           }
         },
         "x-state": "Technical preview",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20380,10 +21032,12 @@
           }
         },
         "x-state": "Technical preview",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_search": {
@@ -20538,10 +21192,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -20694,10 +21350,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_search": {
@@ -20855,10 +21513,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21014,10 +21674,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_application/search_application/{name}": {
@@ -21060,10 +21722,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -21132,10 +21796,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -21170,10 +21836,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_application/analytics/{name}": {
@@ -21195,10 +21863,12 @@
         },
         "deprecated": true,
         "x-state": "Technical preview",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -21233,10 +21903,12 @@
         },
         "deprecated": true,
         "x-state": "Technical preview",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -21272,10 +21944,12 @@
         },
         "deprecated": true,
         "x-state": "Technical preview",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_application/analytics": {
@@ -21292,10 +21966,12 @@
         },
         "deprecated": true,
         "x-state": "Technical preview",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_application/search_application": {
@@ -21372,10 +22048,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_application/search_application/{name}/_search": {
@@ -21403,10 +22081,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21432,10 +22112,12 @@
           }
         },
         "x-state": "Beta",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_mvt/{field}/{zoom}/{x}/{y}": {
@@ -21497,10 +22179,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21560,10 +22244,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_search/template": {
@@ -21628,10 +22314,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21694,10 +22382,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_search/template": {
@@ -21765,10 +22455,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -21834,10 +22526,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_security/_authenticate": {
@@ -21930,10 +22624,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_security/api_key": {
@@ -22062,10 +22758,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -22092,10 +22790,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -22122,10 +22822,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -22253,10 +22955,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_security/role/{name}": {
@@ -22278,10 +22982,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -22311,10 +23017,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -22344,10 +23052,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -22407,10 +23117,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_security/privilege/_builtin": {
@@ -22464,10 +23176,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_security/role": {
@@ -22484,10 +23198,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_security/user/_has_privileges": {
@@ -22511,10 +23227,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -22536,10 +23254,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_security/user/{user}/_has_privileges": {
@@ -22568,10 +23288,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -22598,10 +23320,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_security/_query/api_key": {
@@ -22636,10 +23360,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -22672,10 +23398,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_security/_query/role": {
@@ -22695,10 +23423,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -22716,10 +23446,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_security/api_key/{id}": {
@@ -22808,10 +23540,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_sql/close": {
@@ -22867,10 +23601,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_sql/async/delete/{id}": {
@@ -22907,10 +23643,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_sql/async/{id}": {
@@ -23024,10 +23762,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_sql/async/status/{id}": {
@@ -23094,10 +23834,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_sql": {
@@ -23122,10 +23864,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -23148,10 +23892,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_sql/translate": {
@@ -23171,10 +23917,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -23192,10 +23940,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_synonyms/{id}": {
@@ -23275,10 +24025,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -23353,10 +24105,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -23391,10 +24145,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_synonyms/{set_id}/{rule_id}": {
@@ -23448,10 +24204,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -23528,10 +24286,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -23583,10 +24343,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_synonyms": {
@@ -23655,10 +24417,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_tasks/{task_id}": {
@@ -23745,10 +24509,12 @@
           }
         },
         "x-state": "Technical preview",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_terms_enum": {
@@ -23773,10 +24539,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -23799,10 +24567,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_termvectors/{id}": {
@@ -23867,10 +24637,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -23933,10 +24705,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_termvectors": {
@@ -23998,10 +24772,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -24061,10 +24837,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}": {
@@ -24098,10 +24876,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -24221,10 +25001,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -24295,10 +25077,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_transform": {
@@ -24329,10 +25113,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_stats": {
@@ -24430,10 +25216,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_preview": {
@@ -24461,10 +25249,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -24490,10 +25280,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_transform/_preview": {
@@ -24518,10 +25310,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -24544,10 +25338,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_reset": {
@@ -24610,10 +25406,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_schedule_now": {
@@ -24666,10 +25464,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_start": {
@@ -24732,10 +25532,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_stop": {
@@ -24828,10 +25630,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/_transform/{transform_id}/_update": {
@@ -24999,10 +25803,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_update/{id}": {
@@ -25282,10 +26088,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     },
     "/{index}/_update_by_query": {
@@ -25749,10 +26557,12 @@
           }
         },
         "x-state": "Generally available",
-        "x-metaTags": {
-          "content": "elasticsearch",
-          "name": "x-product-feature"
-        }
+        "x-metaTags": [
+          {
+            "content": "elasticsearch",
+            "name": "x-product-feature"
+          }
+        ]
       }
     }
   },

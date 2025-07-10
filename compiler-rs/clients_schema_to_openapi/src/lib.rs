@@ -191,10 +191,14 @@ pub fn product_meta_as_extensions(namespace: &str, product_meta: &IndexMap<Strin
     }
     
     let product_str = format!("elasticsearch{additional_namespace}");
-    let mut product_feature: Map<String, Value> = Map::new();
-    product_feature.insert("name".to_string(),Value::String("x-product-feature".to_string()));
-    product_feature.insert("content".to_string(),Value::String(product_str));
-    result.insert("x-metaTags".to_string(), Value::Object(product_feature));
+    let mut product_feature_list: Vec<Value> = Vec::new();
+    let mut product_feature_name: Map<String, Value> = Map::new();
+    product_feature_name.insert("name".to_string(),Value::String("x-product-feature".to_string()));
+    //let mut product_feature_content: Map<String, Value> = Map::new();
+    product_feature_name.insert("content".to_string(),Value::String(product_str));
+    product_feature_list.push(Value::Object(product_feature_name));
+    //product_feature_list.push(Value::Object(product_feature_content));
+    result.insert("x-metaTags".to_string(), Value::Array(product_feature_list));
     result
 }
 
