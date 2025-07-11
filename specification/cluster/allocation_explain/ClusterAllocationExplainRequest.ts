@@ -25,6 +25,7 @@ import { Duration } from '@_types/Time'
 /**
  * Explain the shard allocations.
  * Get explanations for shard allocations in the cluster.
+ * This API accepts the current_node, index, primary and shard parameters via the request body, or via query parameters, but not via both at the same time.
  * For unassigned shards, it provides an explanation for why the shard is unassigned.
  * For assigned shards, it provides an explanation for why the shard is remaining on its current node and has not moved or rebalanced to another node.
  * This API can be very useful when attempting to diagnose why a shard is unassigned or why a shard continues to remain on its current node when you might expect otherwise.
@@ -44,6 +45,22 @@ export interface Request extends RequestBase {
     }
   ]
   query_parameters: {
+    /**
+     * Specifies the node ID or the name of the node to only explain a shard that is currently located on the specified node.
+     */
+    current_node?: string
+    /**
+     * Specifies the name of the index that you would like an explanation for.
+     */
+    index?: IndexName
+    /**
+     * If true, returns explanation for the primary shard for the given shard ID.
+     */
+    primary?: boolean
+    /**
+     * Specifies the ID of the shard that you would like an explanation for.
+     */
+    shard?: integer
     /**
      * If true, returns information about disk usage and shard sizes.
      * @server_default false
