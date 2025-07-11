@@ -1,0 +1,24 @@
+summary: A live shard recovery
+description: >
+  A successful response from `GET _cat/recovery?v=true&h=i,s,t,ty,st,shost,thost,f,fp,b,bp&format=json`.
+  You can retrieve information about an ongoing recovery for example when you increase the replica count of an index and bring another node online to host the replicas.
+  In this example, the recovery type is `peer`, meaning the shard recovered from another node.
+  The `files` and `bytes` are real-time measurements.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "i": "my-index-000001",
+      "s": "0",
+      "t": "1252ms",
+      "ty": "peer",
+      "st": "done",
+      "shost": "192.168.1.1",
+      "thost": "192.168.1.1",
+      "f": "0",
+      "fp": "100.0%",
+      "b": "0b",
+      "bp": "100.0%",
+    }
+  ]

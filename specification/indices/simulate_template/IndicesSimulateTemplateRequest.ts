@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { IndexTemplateMapping } from '@indices/put_index_template/IndicesPutIndexTemplateRequest'
-import { DataStreamVisibility } from '@indices/_types/DataStream'
 import { RequestBase } from '@_types/Base'
 import { Indices, Metadata, Name, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { DataStreamVisibility } from '@indices/_types/DataStream'
+import { IndexTemplateMapping } from '@indices/put_index_template/IndicesPutIndexTemplateRequest'
 
 /**
  * Simulate an index template.
@@ -34,6 +34,16 @@ import { Duration } from '@_types/Time'
  * @doc_id indices-simulate-template
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_index_template/_simulate'
+      methods: ['POST']
+    },
+    {
+      path: '/_index_template/_simulate/{name}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the index template to simulate. To test a template configuration before you add it to the cluster, omit
@@ -47,6 +57,10 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     create?: boolean
+    /**
+     * User defined reason for dry-run creating the new template for simulation purposes
+     */
+    cause?: string
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s

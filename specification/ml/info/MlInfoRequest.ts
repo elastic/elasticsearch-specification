@@ -32,5 +32,13 @@ import { RequestBase } from '@_types/Base'
  * @availability stack since=6.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
+ * @doc_id get-ml-info
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/info'
+      methods: ['GET']
+    }
+  ]
+}

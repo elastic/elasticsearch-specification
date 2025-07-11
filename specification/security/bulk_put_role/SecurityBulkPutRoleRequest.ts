@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RoleDescriptor } from '@security/_types/RoleDescriptor'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Refresh } from '@_types/common'
+import { RoleDescriptor } from '@security/_types/RoleDescriptor'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Bulk create or update roles.
@@ -31,8 +31,15 @@ import { Refresh } from '@_types/common'
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security
+ * @doc_id security-api-bulk-put-role
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/role'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     refresh?: Refresh
   }

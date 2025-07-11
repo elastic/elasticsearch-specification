@@ -1,0 +1,97 @@
+summary: Set the data stream lifecycle downsampling
+method_request: PUT _data_stream/my-weather-sensor-data-stream/_lifecycle
+description: This example configures two downsampling rounds.
+# type: request
+value: "{
+
+  \    \"downsampling\": [
+
+  \      {
+
+  \        \"after\": \"1d\",
+
+  \        \"fixed_interval\": \"10m\"
+
+  \      },
+
+  \      {
+
+  \        \"after\": \"7d\",
+
+  \        \"fixed_interval\": \"1d\"
+
+  \      }
+
+  \    ]
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.put_data_lifecycle(
+          name="my-weather-sensor-data-stream",
+          downsampling=[
+              {
+                  "after": "1d",
+                  "fixed_interval": "10m"
+              },
+              {
+                  "after": "7d",
+                  "fixed_interval": "1d"
+              }
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.putDataLifecycle({
+        name: "my-weather-sensor-data-stream",
+        downsampling: [
+          {
+            after: "1d",
+            fixed_interval: "10m",
+          },
+          {
+            after: "7d",
+            fixed_interval: "1d",
+          },
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.put_data_lifecycle(
+        name: "my-weather-sensor-data-stream",
+        body: {
+          "downsampling": [
+            {
+              "after": "1d",
+              "fixed_interval": "10m"
+            },
+            {
+              "after": "7d",
+              "fixed_interval": "1d"
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->putDataLifecycle([
+          "name" => "my-weather-sensor-data-stream",
+          "body" => [
+              "downsampling" => array(
+                  [
+                      "after" => "1d",
+                      "fixed_interval" => "10m",
+                  ],
+                  [
+                      "after" => "7d",
+                      "fixed_interval" => "1d",
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"downsampling":[{"after":"1d","fixed_interval":"10m"},{"after":"7d","fixed_interval":"1d"}]}''
+      "$ELASTICSEARCH_URL/_data_stream/my-weather-sensor-data-stream/_lifecycle"'

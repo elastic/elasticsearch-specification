@@ -31,8 +31,19 @@ import { integer } from '@_types/Numeric'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
  * @doc_tag ml data frame
+ * @doc_id get-dfanalytics
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/data_frame/analytics/{id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/data_frame/analytics'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the data frame analytics job. If you do not specify this

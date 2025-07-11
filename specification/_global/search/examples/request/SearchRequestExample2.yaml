@@ -1,0 +1,104 @@
+summary: A point in time search
+method_request: POST /_search
+description: >
+  Run `POST /_search` to run a point in time search. The `id` parameter tells Elasticsearch to run the request using contexts from
+  this open point in time. The `keep_alive` parameter tells Elasticsearch how long it should extend the time to live of the point in
+  time.
+# type: request
+value: |-
+  {
+      "size": 100,  
+      "query": {
+          "match" : {
+              "title" : "elasticsearch"
+          }
+      },
+      "pit": {
+        "id":  "46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==", 
+        "keep_alive": "1m"  
+      }
+  }
+alternatives:
+  - language: Python
+    code: >-
+      resp = client.search(
+          size=100,
+          query={
+              "match": {
+                  "title": "elasticsearch"
+              }
+          },
+          pit={
+              "id": "46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==",
+              "keep_alive": "1m"
+          },
+      )
+  - language: JavaScript
+    code: >-
+      const response = await client.search({
+        size: 100,
+        query: {
+          match: {
+            title: "elasticsearch",
+          },
+        },
+        pit: {
+          id: "46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==",
+          keep_alive: "1m",
+        },
+      });
+  - language: Ruby
+    code: >-
+      response = client.search(
+        body: {
+          "size": 100,
+          "query": {
+            "match": {
+              "title": "elasticsearch"
+            }
+          },
+          "pit": {
+            "id": "46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==",
+            "keep_alive": "1m"
+          }
+        }
+      )
+  - language: PHP
+    code: >-
+      $resp = $client->search([
+          "body" => [
+              "size" => 100,
+              "query" => [
+                  "match" => [
+                      "title" => "elasticsearch",
+                  ],
+              ],
+              "pit" => [
+                  "id" => "46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==",
+                  "keep_alive" => "1m",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"size\":100,\"query\":{\"match\":{\"title\":\"elasticsearch\"}},\"pit\":{\"id\":\"46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAA\
+      ACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_g\
+      AAAAA==\",\"keep_alive\":\"1m\"}}' \"$ELASTICSEARCH_URL/_search\""
+  - language: Java
+    code: >
+      client.search(s -> s
+          .pit(p -> p
+              .id("46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA==")
+              .keepAlive(k -> k
+                  .time("1m")
+              )
+          )
+          .query(q -> q
+              .match(m -> m
+                  .field("title")
+                  .query(FieldValue.of("elasticsearch"))
+              )
+          )
+          .size(100)
+      ,Void.class);

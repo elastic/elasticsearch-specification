@@ -33,8 +33,20 @@ import { Id } from '@_types/common'
  * @rest_spec_name rollup.get_rollup_caps
  * @availability stack since=6.3.0 stability=experimental
  * @cluster_privileges monitor_rollup
+ * @deprecated 8.11.0
+ * @doc_id rollup-get-rollup-caps
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_rollup/data/{id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_rollup/data'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Index, indices or index-pattern to return rollup capabilities for.

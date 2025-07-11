@@ -43,8 +43,19 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name health_report
  * @availability stack since=8.7.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id health-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_health_report'
+      methods: ['GET']
+    },
+    {
+      path: '/_health_report/{feature}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A feature of the cluster, as returned by the top-level health report API.

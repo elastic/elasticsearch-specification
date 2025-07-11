@@ -33,6 +33,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_dangling/{index_uuid}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The UUID of the index to import. Use the get dangling indices API to locate the UUID.

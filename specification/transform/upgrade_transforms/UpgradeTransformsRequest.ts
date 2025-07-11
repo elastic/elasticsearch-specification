@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Upgrade all transforms.
+ *
  * Transforms are compatible across minor versions and between supported major versions.
  * However, over time, the format of transform configuration information may change.
  * This API identifies transforms that have a legacy configuration format and upgrades them to the latest version.
@@ -39,8 +40,15 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.16.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_transform
+ * @doc_id upgrade-transforms
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/_upgrade'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * When true, the request checks for updates but does not run them.

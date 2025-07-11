@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Alias } from '@indices/_types/Alias'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { IndexName, Name, WaitForActiveShards } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Alias } from '@indices/_types/Alias'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Clone an index.
@@ -73,8 +73,15 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name indices.clone
  * @availability stack since=7.4.0 stability=stable
  * @index_privileges manage
+ * @doc_id indices-clone-index
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_clone/{target}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the source index to clone.

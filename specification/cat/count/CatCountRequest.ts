@@ -17,15 +17,16 @@
  * under the License.
  */
 
+import { Indices, Names } from '@_types/common'
 import { CatRequestBase } from '@cat/_types/CatBase'
-import { Indices } from '@_types/common'
 
 /**
  * Get a document count.
- * Provides quick access to a document count for a data stream, an index, or an entire cluster.
+ *
+ * Get quick access to a document count for a data stream, an index, or an entire cluster.
  * The document count only includes live documents, not deleted documents which have not yet been removed by the merge process.
  *
- * CAT APIs are only intended for human consumption using the command line or Kibana console.
+ * IMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use the count API.
  * @rest_spec_name cat.count
  * @availability stack stability=stable
@@ -34,11 +35,34 @@ import { Indices } from '@_types/common'
  * @index_privileges read
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/count'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/count/{index}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
-     * Comma-separated list of data streams, indices, and aliases used to limit the request.
-     * Supports wildcards (`*`). To target all data streams and indices, omit this parameter or use `*` or `_all`.
+     * A comma-separated list of data streams, indices, and aliases used to limit the request.
+     * It supports wildcards (`*`).
+     * To target all data streams and indices, omit this parameter or use `*` or `_all`.
      */
     index?: Indices
+  }
+  query_parameters: {
+    /**
+     * List of columns to appear in the response. Supports simple wildcards.
+     */
+    h?: Names
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
   }
 }

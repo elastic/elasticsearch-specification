@@ -21,7 +21,13 @@ import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {
+    /**
+     * 	If `true`, all search contexts associated with the point-in-time ID were successfully closed.
+     */
     succeeded: boolean
+    /**
+     * The number of search contexts that were successfully closed.
+     */
     num_freed: integer
   }
   exceptions: [

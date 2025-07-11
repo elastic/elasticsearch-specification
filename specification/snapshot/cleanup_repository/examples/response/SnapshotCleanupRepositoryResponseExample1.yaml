@@ -1,0 +1,7 @@
+# summary:
+description: A successful response from `POST /_snapshot/my_repository/_cleanup`.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"results\": {\n    \"deleted_bytes\": 20,\n    \"deleted_blobs\": 5\n\
+  \  }\n}"

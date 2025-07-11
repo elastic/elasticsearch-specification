@@ -33,6 +33,12 @@ import { Id } from '@_types/common'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_async_search/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /** A unique identifier for the async search. */
     id: Id

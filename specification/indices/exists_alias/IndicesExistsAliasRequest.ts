@@ -23,12 +23,24 @@ import { Duration } from '@_types/Time'
 
 /**
  * Check aliases.
- * Checks if one or more data stream or index aliases exist.
+ *
+ * Check if one or more data stream or index aliases exist.
  * @rest_spec_name indices.exists_alias
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id indices-aliases-exist
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_alias/{name}'
+      methods: ['HEAD']
+    },
+    {
+      path: '/{index}/_alias/{name}'
+      methods: ['HEAD']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of aliases to check. Supports wildcards (`*`).
@@ -51,7 +63,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards

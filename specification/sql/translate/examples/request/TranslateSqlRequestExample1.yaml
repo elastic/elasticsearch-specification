@@ -1,0 +1,50 @@
+summary: sql/apis/sql-translate-api.asciidoc:12
+method_request: POST _sql/translate
+description: ''
+type: request
+value: "{
+
+  \  \"query\": \"SELECT * FROM library ORDER BY page_count DESC\",
+
+  \  \"fetch_size\": 10
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.sql.translate(
+          query="SELECT * FROM library ORDER BY page_count DESC",
+          fetch_size=10,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.sql.translate({
+        query: "SELECT * FROM library ORDER BY page_count DESC",
+        fetch_size: 10,
+      });
+  - language: Ruby
+    code: |-
+      response = client.sql.translate(
+        body: {
+          "query": "SELECT * FROM library ORDER BY page_count DESC",
+          "fetch_size": 10
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->sql()->translate([
+          "body" => [
+              "query" => "SELECT * FROM library ORDER BY page_count DESC",
+              "fetch_size" => 10,
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"query":"SELECT *
+      FROM library ORDER BY page_count DESC","fetch_size":10}'' "$ELASTICSEARCH_URL/_sql/translate"'
+  - language: Java
+    code: |
+      client.sql().translate(t -> t
+          .fetchSize(10)
+          .query("SELECT * FROM library ORDER BY page_count DESC")
+      );

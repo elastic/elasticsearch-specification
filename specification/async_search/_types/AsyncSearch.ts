@@ -17,19 +17,19 @@
  * under the License.
  */
 
+import { Aggregate } from '@_types/aggregations/Aggregate'
+import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
+import { double, long } from '@_types/Numeric'
+import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
 import { HitsMetadata } from '@global/search/_types/hits'
 import { Profile } from '@global/search/_types/profile'
 import { Suggest } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Aggregate } from '@_types/aggregations/Aggregate'
-import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
-import { double, long } from '@_types/Numeric'
-import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
 
 export class AsyncSearch<TDocument> {
   /**
-   * Partial aggregations results, coming from the shards that have already completed the execution of the query.
+   * Partial aggregations results, coming from the shards that have already completed running the query.
    */
   aggregations?: Dictionary<AggregateName, Aggregate>
   _clusters?: ClusterStatistics

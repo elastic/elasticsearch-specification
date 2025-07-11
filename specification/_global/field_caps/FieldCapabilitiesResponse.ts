@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Indices } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { FieldCapability } from './types'
 
 /**
@@ -29,6 +29,9 @@ import { FieldCapability } from './types'
  */
 export class Response {
   body: {
+    /**
+     * The list of indices where this field has the same type family, or null if all indices have the same type family for the field.
+     */
     indices: Indices
     fields: Dictionary<Field, Dictionary<string, FieldCapability>>
   }

@@ -1,0 +1,247 @@
+summary: Complex roles
+method_request: POST /_security/role_mapping/mapping8
+description: >
+  Run `POST /_security/role_mapping/mapping8` to assign rules that are complex and include wildcard matching. For example, this
+  mapping matches any user where all of these conditions are met: the Distinguished Name matches the pattern
+  `*,ou=admin,dc=example,dc=com`, or the `username` is `es-admin`, or the `username` is `es-system`; the user is in the
+  `cn=people,dc=example,dc=com` group; the user does not have a `terminated_date`.
+# type: request
+value: |-
+  {
+    "roles": [ "superuser" ],
+    "enabled": true,
+    "rules": {
+      "all": [
+        {
+          "any": [
+            {
+              "field": {
+                "dn": "*,ou=admin,dc=example,dc=com"
+              }
+            },
+            {
+              "field": {
+                "username": [ "es-admin", "es-system" ]
+              }
+            }
+          ]
+        },
+        {
+          "field": {
+            "groups": "cn=people,dc=example,dc=com"
+          }
+        },
+        {
+          "except": {
+            "field": {
+              "metadata.terminated_date": null
+            }
+          }
+        }
+      ]
+    }
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.put_role_mapping(
+          name="mapping8",
+          roles=[
+              "superuser"
+          ],
+          enabled=True,
+          rules={
+              "all": [
+                  {
+                      "any": [
+                          {
+                              "field": {
+                                  "dn": "*,ou=admin,dc=example,dc=com"
+                              }
+                          },
+                          {
+                              "field": {
+                                  "username": [
+                                      "es-admin",
+                                      "es-system"
+                                  ]
+                              }
+                          }
+                      ]
+                  },
+                  {
+                      "field": {
+                          "groups": "cn=people,dc=example,dc=com"
+                      }
+                  },
+                  {
+                      "except": {
+                          "field": {
+                              "metadata.terminated_date": None
+                          }
+                      }
+                  }
+              ]
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.putRoleMapping({
+        name: "mapping8",
+        roles: ["superuser"],
+        enabled: true,
+        rules: {
+          all: [
+            {
+              any: [
+                {
+                  field: {
+                    dn: "*,ou=admin,dc=example,dc=com",
+                  },
+                },
+                {
+                  field: {
+                    username: ["es-admin", "es-system"],
+                  },
+                },
+              ],
+            },
+            {
+              field: {
+                groups: "cn=people,dc=example,dc=com",
+              },
+            },
+            {
+              except: {
+                field: {
+                  "metadata.terminated_date": null,
+                },
+              },
+            },
+          ],
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.put_role_mapping(
+        name: "mapping8",
+        body: {
+          "roles": [
+            "superuser"
+          ],
+          "enabled": true,
+          "rules": {
+            "all": [
+              {
+                "any": [
+                  {
+                    "field": {
+                      "dn": "*,ou=admin,dc=example,dc=com"
+                    }
+                  },
+                  {
+                    "field": {
+                      "username": [
+                        "es-admin",
+                        "es-system"
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "groups": "cn=people,dc=example,dc=com"
+                }
+              },
+              {
+                "except": {
+                  "field": {
+                    "metadata.terminated_date": nil
+                  }
+                }
+              }
+            ]
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->putRoleMapping([
+          "name" => "mapping8",
+          "body" => [
+              "roles" => array(
+                  "superuser",
+              ),
+              "enabled" => true,
+              "rules" => [
+                  "all" => array(
+                      [
+                          "any" => array(
+                              [
+                                  "field" => [
+                                      "dn" => "*,ou=admin,dc=example,dc=com",
+                                  ],
+                              ],
+                              [
+                                  "field" => [
+                                      "username" => array(
+                                          "es-admin",
+                                          "es-system",
+                                      ),
+                                  ],
+                              ],
+                          ),
+                      ],
+                      [
+                          "field" => [
+                              "groups" => "cn=people,dc=example,dc=com",
+                          ],
+                      ],
+                      [
+                          "except" => [
+                              "field" => [
+                                  "metadata.terminated_date" => null,
+                              ],
+                          ],
+                      ],
+                  ),
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"roles\":[\"superuser\"],\"enabled\":true,\"rules\":{\"all\":[{\"any\":[{\"field\":{\"dn\":\"*,ou=admin,dc=example,dc=com\
+      \"}},{\"field\":{\"username\":[\"es-admin\",\"es-system\"]}}]},{\"field\":{\"groups\":\"cn=people,dc=example,dc=com\"}},{\"ex\
+      cept\":{\"field\":{\"metadata.terminated_date\":null}}}]}}' \"$ELASTICSEARCH_URL/_security/role_mapping/mapping8\""
+  - language: Java
+    code: |
+      client.security().putRoleMapping(p -> p
+          .enabled(true)
+          .name("mapping8")
+          .roles("superuser")
+          .rules(r -> r
+              .all(List.of(RoleMappingRule.of(ro -> ro
+                          .any(List.of(RoleMappingRule.of(rol -> rol
+                                  .field(NamedValue.of("dn", List.of(FieldValue.of("*,ou=admin," +
+                                      "dc=example,dc=com"))
+                                  ))
+                              ), RoleMappingRule.of(role -> role
+                                  .field(NamedValue.of("username", List.of(FieldValue.of("es-admin"),
+                                      FieldValue.of("es-system"))
+                                  )))), RoleMappingRule.of(roleM -> roleM
+                                  .field(NamedValue.of("groups", List.of(FieldValue.of("cn=people," +
+                                      "dc=example,dc=com"))
+                                  )), RoleMappingRule.of(roleMa -> roleMa
+                                  .except(e -> e
+                                      .field(NamedValue.of("metadata.terminated_date",
+                                          List.of(FieldValue.of(null))
+                                          )
+                                      ))))
+                          )
+                      )
+                  )
+              )
+          )
+      );

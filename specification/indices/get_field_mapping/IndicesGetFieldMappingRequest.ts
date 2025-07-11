@@ -32,6 +32,16 @@ import { ExpandWildcards, Fields, Indices } from '@_types/common'
  * @doc_id indices-get-field-mapping
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_mapping/field/{fields}'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_mapping/field/{fields}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list or wildcard expression of fields used to limit returned information.
@@ -56,7 +66,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -70,10 +79,5 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     include_defaults?: boolean
-    /**
-     * If `true`, the request retrieves information from the local node only.
-     * @server_default false
-     */
-    local?: boolean
   }
 }

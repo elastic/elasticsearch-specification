@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DatabaseConfiguration } from '@ingest/_types/Database'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { DatabaseConfiguration } from '@ingest/_types/Database'
 
 /**
  * Create or update an IP geolocation database configuration.
@@ -28,8 +28,15 @@ import { Duration } from '@_types/Time'
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
  * @cluster_privileges manage
+ * @doc_id ip-location-put-database
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/ip_location/database/{id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The database configuration identifier.

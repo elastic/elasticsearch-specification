@@ -1,0 +1,136 @@
+summary: Create an index template with aliases
+method_request: PUT _template/template_1
+description: >
+  You can include index aliases in an index template. During index creation, the `{index}` placeholder in the alias name will be
+  replaced with the actual index name that the template gets applied to.
+# type: request
+value:
+  index_patterns:
+    - te*
+  settings:
+    number_of_shards: 1
+  aliases:
+    alias1: {}
+    alias2:
+      filter:
+        term:
+          user.id: kimchy
+      routing: shard-1
+    '{index}-alias': {}
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.put_template(
+          name="template_1",
+          index_patterns=[
+              "te*"
+          ],
+          settings={
+              "number_of_shards": 1
+          },
+          aliases={
+              "alias1": {},
+              "alias2": {
+                  "filter": {
+                      "term": {
+                          "user.id": "kimchy"
+                      }
+                  },
+                  "routing": "shard-1"
+              },
+              "{index}-alias": {}
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.putTemplate({
+        name: "template_1",
+        index_patterns: ["te*"],
+        settings: {
+          number_of_shards: 1,
+        },
+        aliases: {
+          alias1: {},
+          alias2: {
+            filter: {
+              term: {
+                "user.id": "kimchy",
+              },
+            },
+            routing: "shard-1",
+          },
+          "{index}-alias": {},
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.put_template(
+        name: "template_1",
+        body: {
+          "index_patterns": [
+            "te*"
+          ],
+          "settings": {
+            "number_of_shards": 1
+          },
+          "aliases": {
+            "alias1": {},
+            "alias2": {
+              "filter": {
+                "term": {
+                  "user.id": "kimchy"
+                }
+              },
+              "routing": "shard-1"
+            },
+            "{index}-alias": {}
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->putTemplate([
+          "name" => "template_1",
+          "body" => [
+              "index_patterns" => array(
+                  "te*",
+              ),
+              "settings" => [
+                  "number_of_shards" => 1,
+              ],
+              "aliases" => [
+                  "alias1" => new ArrayObject([]),
+                  "alias2" => [
+                      "filter" => [
+                          "term" => [
+                              "user.id" => "kimchy",
+                          ],
+                      ],
+                      "routing" => "shard-1",
+                  ],
+                  "{index}-alias" => new ArrayObject([]),
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"index_patterns\":[\"te*\"],\"settings\":{\"number_of_shards\":1},\"aliases\":{\"alias1\":{},\"alias2\":{\"filter\":{\"term\
+      \":{\"user.id\":\"kimchy\"}},\"routing\":\"shard-1\"},\"{index}-alias\":{}}}' \"$ELASTICSEARCH_URL/_template/template_1\""
+  - language: Java
+    code: |
+      client.indices().putTemplate(p -> p
+          .aliases(Map.of("alias1", Alias.of(a -> a),"{index}-alias", Alias.of(a -> a),"alias2", Alias.of(a -> a
+                  .filter(f -> f
+                      .term(t -> t
+                          .field("user.id")
+                          .value(FieldValue.of("kimchy"))
+                      )
+                  )
+                  .routing("shard-1"))))
+          .indexPatterns("te*")
+          .name("template_1")
+          .settings(s -> s
+              .numberOfShards("1")
+          )
+      );

@@ -1,0 +1,29 @@
+method_request: PUT _application/analytics/my_analytics_collection
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.search_application.put_behavioral_analytics(
+          name="my_analytics_collection",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.searchApplication.putBehavioralAnalytics({
+        name: "my_analytics_collection",
+      });
+  - language: Ruby
+    code: |-
+      response = client.search_application.put_behavioral_analytics(
+        name: "my_analytics_collection"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->searchApplication()->putBehavioralAnalytics([
+          "name" => "my_analytics_collection",
+      ]);
+  - language: curl
+    code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_application/analytics/my_analytics_collection"'
+  - language: Java
+    code: |
+      client.searchApplication().putBehavioralAnalytics(p -> p
+          .name("my_analytics_collection")
+      );

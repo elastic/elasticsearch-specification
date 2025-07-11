@@ -30,9 +30,20 @@ import { Names } from '@_types/common'
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security
+ * @doc_id security-api-get-role-mapping
  * @ext_doc_id mapping-roles
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/role_mapping/{name}'
+      methods: ['GET']
+    },
+    {
+      path: '/_security/role_mapping'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The distinct name that identifies the role mapping. The name is used solely as an identifier to facilitate interaction via the API; it does not affect the behavior of the mapping in any way. You can specify multiple mapping names as a comma-separated list. If you do not specify this parameter, the API returns information about all role mappings.

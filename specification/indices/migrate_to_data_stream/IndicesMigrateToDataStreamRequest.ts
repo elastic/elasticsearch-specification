@@ -38,8 +38,15 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage
  * @doc_tag data stream
+ * @doc_id data-stream-migrate
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/_migrate/{name}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /** Name of the index alias to convert to a data stream. */
     name: IndexName

@@ -29,8 +29,19 @@ import { Duration } from '@_types/Time'
  * @availability stack since=8.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
+ * @doc_id ml-get-memory
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/memory/_stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/memory/{node_id}/_stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The names of particular nodes in the cluster to target. For example, `nodeId1,nodeId2` or

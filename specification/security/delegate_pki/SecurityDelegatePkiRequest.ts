@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Delegate PKI authentication.
+ *
  * This API implements the exchange of an X509Certificate chain for an Elasticsearch access token.
  * The certificate chain is validated, according to RFC 5280, by sequentially considering the trust configuration of every installed PKI realm that has `delegation.enabled` set to `true`.
  * A successfully trusted client certificate is also subject to the validation of the subject distinguished name according to thw `username_pattern` of the respective realm.
@@ -37,6 +38,12 @@ import { RequestBase } from '@_types/Base'
  * @ext_doc_id pki-realm
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/delegate_pki'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * The X509Certificate chain, which is represented as an ordered string array.

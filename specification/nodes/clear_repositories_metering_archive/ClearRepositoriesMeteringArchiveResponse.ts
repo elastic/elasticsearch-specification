@@ -17,14 +17,15 @@
  * under the License.
  */
 
+import { Name } from '@_types/common'
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { RepositoryMeteringInformation } from '@nodes/_types/RepositoryMeteringInformation'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Name } from '@_types/common'
 
 export class ResponseBase extends NodesResponseBase {
   /**
-   * Name of the cluster. Based on the [Cluster name setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html#cluster-name).
+   * Name of the cluster. Based on the `cluster.name` setting.
+   * @ext_doc_id cluster-name
    */
   cluster_name: Name
   /**
@@ -34,5 +35,6 @@ export class ResponseBase extends NodesResponseBase {
 }
 
 export class Response {
+  /** @codegen_name metering_infos */
   body: ResponseBase
 }

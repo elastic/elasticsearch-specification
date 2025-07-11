@@ -39,13 +39,26 @@ import { StepKey } from './types'
  * @rest_spec_name ilm.move_to_step
  * @availability stack since=6.6.0 stability=stable
  * @index_privileges manage_ilm
+ * @doc_id ilm-move-to-step
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ilm/move/{index}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     index: IndexName
   }
   body: {
+    /**
+     * The step that the index is expected to be in.
+     */
     current_step: StepKey
+    /**
+     * The step that you want to run.
+     */
     next_step: StepKey
   }
 }

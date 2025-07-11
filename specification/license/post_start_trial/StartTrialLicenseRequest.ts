@@ -34,9 +34,15 @@ import { Duration } from '@_types/Time'
  * @doc_id start-trial
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_license/start_trial'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     acknowledge?: boolean
-    type_query_string?: string
+    type?: string
     /**
      * Period to wait for a connection to the master node.
      * @server_default 30s

@@ -30,6 +30,12 @@ import { Id } from '@_types/common'
  * @doc_id query-rule-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query_rules/{ruleset_id}/_rule/{rule_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the query ruleset containing the rule to delete

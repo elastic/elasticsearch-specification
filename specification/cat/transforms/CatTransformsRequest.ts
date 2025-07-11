@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { CatRequestBase, CatTransformColumns } from '@cat/_types/CatBase'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { TimeUnit } from '@_types/Time'
+import { CatRequestBase, CatTransformColumns } from '@cat/_types/CatBase'
 
 /**
  * Get transform information.
+ *
  * Get configuration and usage information about transforms.
  *
  * CAT APIs are only intended for human consumption using the Kibana
@@ -37,6 +38,16 @@ import { TimeUnit } from '@_types/Time'
  * @cluster_privileges monitor_transform
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/transforms'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/transforms/{transform_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A transform identifier or a wildcard expression.

@@ -1,0 +1,41 @@
+# summary:
+description: >
+  A successful response from `GET _cat/aliases?format=json&v=true`.
+  This response shows that `alias2` has configured a filter and `alias3` and `alias4` have routing configurations.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "alias": "alias1",
+      "index": "test1",
+      "filter": "-",
+      "routing.index": "-",
+      "routing.search": "-",
+      "is_write_index": "true"
+    },
+    {
+      "alias": "alias1",
+      "index": "test1",
+      "filter": "*",
+      "routing.index": "-",
+      "routing.search": "-",
+      "is_write_index": "true"
+    },
+    {
+      "alias": "alias3",
+      "index": "test1",
+      "filter": "-",
+      "routing.index": "1",
+      "routing.search": "1",
+      "is_write_index": "true"
+    },
+    {
+      "alias": "alias4",
+      "index": "test1",
+      "filter": "-",
+      "routing.index": "2",
+      "routing.search": "1,2",
+      "is_write_index": "true"
+    }
+  ]

@@ -29,6 +29,7 @@ import { EcsCompatibilityType, FormatType } from '../_types/Structure'
  *
  * This API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.
  * Use this API rather than the find text structure API if your input text has already been split up into separate messages by some other process.
+ *
  * The response from the API contains:
  *
  * * Sample messages.
@@ -38,12 +39,21 @@ import { EcsCompatibilityType, FormatType } from '../_types/Structure'
  *
  * All this information can be calculated by the structure finder with no guidance.
  * However, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.
+ *
+ * If the structure finder produces unexpected results, specify the `explain` query parameter and an explanation will appear in the response.
+ * It helps determine why the returned structure was chosen.
  * @rest_spec_name text_structure.find_message_structure
  * @availability stack stability=stable visibility=public
  * @cluster_privileges monitor_text_structure
  * @doc_id find-message-structure
  */
 interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_text_structure/find_message_structure'
+      methods: ['GET', 'POST']
+    }
+  ]
   query_parameters: {
     /** If the format is `delimited`, you can specify the column names in a comma-separated list.
      * If this parameter is not specified, the structure finder uses the column names from the header row of the text.
@@ -71,7 +81,8 @@ interface Request extends RequestBase {
      * @server_default false
      */
     explain?: boolean
-    /** The high level structure of the text.
+    /**
+     * The high level structure of the text.
      * By default, the API chooses the format.
      * In this default scenario, all rows must have the same number of fields for a delimited format to be detected.
      * If the format is `delimited` and the delimiter is not set, however, the API tolerates up to 5% of rows that have a different number of columns than the first row.
@@ -94,7 +105,7 @@ interface Request extends RequestBase {
     /**
      * If the format is `delimited`, you can specify whether values between delimiters should have whitespace trimmed from them.
      * If this parameter is not specified and the delimiter is pipe (`|`), the default value is true.
-     * Otherwise, the default value is false.
+     * Otherwise, the default value is `false`.
      */
     should_trim_fields?: boolean
     /**

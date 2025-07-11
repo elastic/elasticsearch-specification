@@ -1,0 +1,234 @@
+summary: Role example 1
+method_request: POST /_security/role/my_admin_role
+description: Run `POST /_security/role/my_admin_role` to create a role.
+# type: request
+value: |-
+  {
+    "description": "Grants full access to all management features within the cluster.",
+    "cluster": ["all"],
+    "indices": [
+      {
+        "names": [ "index1", "index2" ],
+        "privileges": ["all"],
+        "field_security" : { // optional
+          "grant" : [ "title", "body" ]
+        },
+        "query": "{\"match\": {\"title\": \"foo\"}}" // optional
+      }
+    ],
+    "applications": [
+      {
+        "application": "myapp",
+        "privileges": [ "admin", "read" ],
+        "resources": [ "*" ]
+      }
+    ],
+    "run_as": [ "other_user" ], // optional
+    "metadata" : { // optional
+      "version" : 1
+    }
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.put_role(
+          name="my_admin_role",
+          description="Grants full access to all management features within the cluster.",
+          cluster=[
+              "all"
+          ],
+          indices=[
+              {
+                  "names": [
+                      "index1",
+                      "index2"
+                  ],
+                  "privileges": [
+                      "all"
+                  ],
+                  "field_security": {
+                      "grant": [
+                          "title",
+                          "body"
+                      ]
+                  },
+                  "query": "{\"match\": {\"title\": \"foo\"}}"
+              }
+          ],
+          applications=[
+              {
+                  "application": "myapp",
+                  "privileges": [
+                      "admin",
+                      "read"
+                  ],
+                  "resources": [
+                      "*"
+                  ]
+              }
+          ],
+          run_as=[
+              "other_user"
+          ],
+          metadata={
+              "version": 1
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.putRole({
+        name: "my_admin_role",
+        description:
+          "Grants full access to all management features within the cluster.",
+        cluster: ["all"],
+        indices: [
+          {
+            names: ["index1", "index2"],
+            privileges: ["all"],
+            field_security: {
+              grant: ["title", "body"],
+            },
+            query: '{"match": {"title": "foo"}}',
+          },
+        ],
+        applications: [
+          {
+            application: "myapp",
+            privileges: ["admin", "read"],
+            resources: ["*"],
+          },
+        ],
+        run_as: ["other_user"],
+        metadata: {
+          version: 1,
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.put_role(
+        name: "my_admin_role",
+        body: {
+          "description": "Grants full access to all management features within the cluster.",
+          "cluster": [
+            "all"
+          ],
+          "indices": [
+            {
+              "names": [
+                "index1",
+                "index2"
+              ],
+              "privileges": [
+                "all"
+              ],
+              "field_security": {
+                "grant": [
+                  "title",
+                  "body"
+                ]
+              },
+              "query": "{\"match\": {\"title\": \"foo\"}}"
+            }
+          ],
+          "applications": [
+            {
+              "application": "myapp",
+              "privileges": [
+                "admin",
+                "read"
+              ],
+              "resources": [
+                "*"
+              ]
+            }
+          ],
+          "run_as": [
+            "other_user"
+          ],
+          "metadata": {
+            "version": 1
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->putRole([
+          "name" => "my_admin_role",
+          "body" => [
+              "description" => "Grants full access to all management features within the cluster.",
+              "cluster" => array(
+                  "all",
+              ),
+              "indices" => array(
+                  [
+                      "names" => array(
+                          "index1",
+                          "index2",
+                      ),
+                      "privileges" => array(
+                          "all",
+                      ),
+                      "field_security" => [
+                          "grant" => array(
+                              "title",
+                              "body",
+                          ),
+                      ],
+                      "query" => "{\"match\": {\"title\": \"foo\"}}",
+                  ],
+              ),
+              "applications" => array(
+                  [
+                      "application" => "myapp",
+                      "privileges" => array(
+                          "admin",
+                          "read",
+                      ),
+                      "resources" => array(
+                          "*",
+                      ),
+                  ],
+              ),
+              "run_as" => array(
+                  "other_user",
+              ),
+              "metadata" => [
+                  "version" => 1,
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"description\":\"Grants full access to all management features within the
+      cluster.\",\"cluster\":[\"all\"],\"indices\":[{\"names\":[\"index1\",\"index2\"],\"privileges\":[\"all\"],\"field_security\":{\
+      \"grant\":[\"title\",\"body\"]},\"query\":\"{\\\"match\\\": {\\\"title\\\":
+      \\\"foo\\\"}}\"}],\"applications\":[{\"application\":\"myapp\",\"privileges\":[\"admin\",\"read\"],\"resources\":[\"*\"]}],\"\
+      run_as\":[\"other_user\"],\"metadata\":{\"version\":1}}' \"$ELASTICSEARCH_URL/_security/role/my_admin_role\""
+  - language: Java
+    code: |
+      client.security().putRole(p -> p
+          .applications(a -> a
+              .application("myapp")
+              .privileges(List.of("admin","read"))
+              .resources("*")
+          )
+          .cluster("all")
+          .description("Grants full access to all management features within the cluster.")
+          .indices(i -> i
+              .fieldSecurity(f -> f
+                  .grant(List.of("title","body"))
+              )
+              .names(List.of("index1","index2"))
+              .privileges("all")
+              .query(q -> q
+                  .match(m -> m
+                      .field("title")
+                      .query(FieldValue.of("foo"))
+                  )
+              )
+          )
+          .metadata("version", JsonData.fromJson("1"))
+          .name("my_admin_role")
+          .runAs("other_user")
+      );

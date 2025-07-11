@@ -1,0 +1,34 @@
+method_request: DELETE _synonyms/my-synonyms-set/test-1
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.synonyms.delete_synonym_rule(
+          set_id="my-synonyms-set",
+          rule_id="test-1",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.synonyms.deleteSynonymRule({
+        set_id: "my-synonyms-set",
+        rule_id: "test-1",
+      });
+  - language: Ruby
+    code: |-
+      response = client.synonyms.delete_synonym_rule(
+        set_id: "my-synonyms-set",
+        rule_id: "test-1"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->synonyms()->deleteSynonymRule([
+          "set_id" => "my-synonyms-set",
+          "rule_id" => "test-1",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_synonyms/my-synonyms-set/test-1"'
+  - language: Java
+    code: |
+      client.synonyms().deleteSynonymRule(d -> d
+          .ruleId("test-1")
+          .setId("my-synonyms-set")
+      );

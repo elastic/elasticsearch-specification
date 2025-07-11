@@ -19,10 +19,18 @@
 
 /**
  * Get CAT help.
- * Returns help for the CAT APIs.
+ *
+ * Get help for the CAT APIs.
  * @rest_spec_name cat.help
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat
  */
-export interface Request {}
+export interface Request {
+  urls: [
+    {
+      path: '/_cat'
+      methods: ['GET']
+    }
+  ]
+}

@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import {
   Buckets,
   CardinalityAggregate,
@@ -59,6 +58,7 @@ import {
   TermsQuery,
   WildcardQuery
 } from '@_types/query_dsl/term'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 /**
  * @variants container
@@ -120,7 +120,7 @@ export class ApiKeyAggregationContainer {
 }
 
 /**
- * @variants external
+ * @variants typed_keys_quirk
  * @non_exhaustive
  */
 export type ApiKeyAggregate =
@@ -144,7 +144,7 @@ export type ApiKeyAggregate =
  */
 export class ApiKeyQueryContainer {
   /**
-   * matches documents matching boolean combinations of other queries.
+   * Matches documents matching boolean combinations of other queries.
    * @doc_id query-dsl-bool-query
    */
   bool?: BoolQuery

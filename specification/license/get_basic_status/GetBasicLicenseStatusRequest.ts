@@ -24,5 +24,13 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name license.get_basic_status
  * @availability stack since=6.3.0 stability=stable
  * @cluster_privileges monitor
+ * @doc_id get-basic-status
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_license/basic_status'
+      methods: ['GET']
+    }
+  ]
+}

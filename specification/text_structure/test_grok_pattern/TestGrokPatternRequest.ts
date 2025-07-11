@@ -27,21 +27,32 @@ import { GrokPattern } from '@_types/common'
  * @rest_spec_name text_structure.test_grok_pattern
  * @availability stack since=8.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id test-grok-pattern
  * @ext_doc_id grok
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_text_structure/test_grok_pattern'
+      methods: ['GET', 'POST']
+    }
+  ]
   query_parameters: {
-    /** The mode of compatibility with ECS compliant Grok patterns (disabled or v1, default: disabled). */
+    /**
+     * The mode of compatibility with ECS compliant Grok patterns.
+     * Use this parameter to specify whether to use ECS Grok patterns instead of legacy ones when the structure finder creates a Grok pattern.
+     * Valid values are `disabled` and `v1`.
+     * @server_default disabled
+     */
     ecs_compatibility?: string
   }
   body: {
     /**
-     * Grok pattern to run on the text.
+     * The Grok pattern to run on the text.
      */
     grok_pattern: GrokPattern
-
     /**
-     * Lines of text to run the Grok pattern on.
+     * The lines of text to run the Grok pattern on.
      */
     text: string[]
   }

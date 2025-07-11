@@ -23,13 +23,22 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get data stream lifecycles.
- * Retrieves the data stream lifecycle configuration of one or more data streams.
+ *
+ * Get the data stream lifecycle configuration of one or more data streams.
  * @rest_spec_name indices.get_data_lifecycle
  * @availability stack since=8.11.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag data stream
+ * @doc_id data-stream-get-lifecycle
+ * @ext_doc_id data-stream-lifecycle
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/{name}/_lifecycle'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams to limit the request.
@@ -42,7 +51,6 @@ export interface Request extends RequestBase {
     /**
      * Type of data stream that wildcard patterns can match.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards

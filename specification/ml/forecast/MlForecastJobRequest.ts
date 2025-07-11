@@ -34,8 +34,15 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-forecast
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/_forecast'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job. The job must be open when you

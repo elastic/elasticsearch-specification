@@ -1,0 +1,31 @@
+# summary:
+description: A successful response from `GET _cat/ml/anomaly_detectors?h=id,s,dpr,mb&v=true&format=json`.
+# type: response
+# response_code: ''
+value: |-
+  [
+    {
+      "id": "high_sum_total_sales",
+      "s": "closed",
+      "dpr": "14022",
+      "mb": "1.5mb"
+    },
+    {
+      "id": "low_request_rate",
+      "s": "closed",
+      "dpr": "1216",
+      "mb": "40.5kb"
+    },
+    {
+      "id": "response_code_rates",
+      "s": "closed",
+      "dpr": "28146",
+      "mb": "132.7kb"
+    },
+    {
+      "id": "url_scanning",
+      "s": "closed",
+      "dpr": "28146",
+      "mb": "501.6kb"
+    }
+  ]

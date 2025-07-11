@@ -1,0 +1,40 @@
+# summary:
+description: >
+  A successful response from `GET /_cat/segments?v=true&format=json`.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "index": "test",
+      "shard": "0",
+      "prirep": "p",
+      "ip": "127.0.0.1",
+      "segment": "_0",
+      "generation": "0",
+      "docs.count": "1",
+      "docs.deleted": "0",
+      "size": "3kb",
+      "size.memory": "0",
+      "committed": "false",
+      "searchable": "true",
+      "version": "9.12.0",
+      "compound": "true"
+    },
+    {
+      "index": "test1",
+      "shard": "0",
+      "prirep": "p",
+      "ip": "127.0.0.1",
+      "segment": "_0",
+      "generation": "0",
+      "docs.count": "1",
+      "docs.deleted": "0",
+      "size": "3kb",
+      "size.memory": "0",
+      "committed": "false",
+      "searchable": "true",
+      "version": "9.12.0",
+      "compound": "true"
+    }
+  ]

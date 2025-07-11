@@ -32,6 +32,16 @@ import { Duration } from '@_types/Time'
  * @doc_tag indices
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_component_template'
+      methods: ['GET']
+    },
+    {
+      path: '/_component_template/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of component template names used to limit the request.
@@ -45,6 +55,10 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     flat_settings?: boolean
+    /**
+     * Filter out results, for example to filter out sensitive information. Supports wildcards or full settings keys
+     */
+    settings_filter?: string | string[]
     /**
      * @server_default false
      * @availability stack since=8.11.0 stability=stable

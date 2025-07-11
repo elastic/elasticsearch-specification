@@ -16,10 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Run a search application search.
@@ -28,8 +28,15 @@ import { Name } from '@_types/common'
  * @rest_spec_name search_application.search
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
+ * @doc_id search-application-search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/search_application/{name}/_search'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the search application to be searched.

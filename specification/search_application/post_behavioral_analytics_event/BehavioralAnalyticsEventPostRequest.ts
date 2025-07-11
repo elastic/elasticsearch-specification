@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { EventType } from '../_types/AnalyticsEvent'
 
 /**
@@ -28,8 +28,15 @@ import { EventType } from '../_types/AnalyticsEvent'
  * @doc_tag analytics
  * @doc_id behavioral-analytics-collection-event
  * @ext_doc_id behavioral-analytics-event-reference
+ * @deprecated 9.0.0
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/analytics/{collection_name}/event/{event_type}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the behavioral analytics collection.

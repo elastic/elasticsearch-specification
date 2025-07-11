@@ -1,0 +1,114 @@
+summary: Artificial documents
+method_request: POST /_mtermvectors
+description: >
+  Run `POST /_mtermvectors` to generate term vectors for artificial documents provided in the body of the request. The mapping used
+  is determined by the specified `_index`.
+# type: request
+value: |-
+  {
+    "docs": [
+        {
+          "_index": "my-index-000001",
+          "doc" : {
+              "message" : "test test test"
+          }
+        },
+        {
+          "_index": "my-index-000001",
+          "doc" : {
+            "message" : "Another test ..."
+          }
+        }
+    ]
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.mtermvectors(
+          docs=[
+              {
+                  "_index": "my-index-000001",
+                  "doc": {
+                      "message": "test test test"
+                  }
+              },
+              {
+                  "_index": "my-index-000001",
+                  "doc": {
+                      "message": "Another test ..."
+                  }
+              }
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.mtermvectors({
+        docs: [
+          {
+            _index: "my-index-000001",
+            doc: {
+              message: "test test test",
+            },
+          },
+          {
+            _index: "my-index-000001",
+            doc: {
+              message: "Another test ...",
+            },
+          },
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.mtermvectors(
+        body: {
+          "docs": [
+            {
+              "_index": "my-index-000001",
+              "doc": {
+                "message": "test test test"
+              }
+            },
+            {
+              "_index": "my-index-000001",
+              "doc": {
+                "message": "Another test ..."
+              }
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->mtermvectors([
+          "body" => [
+              "docs" => array(
+                  [
+                      "_index" => "my-index-000001",
+                      "doc" => [
+                          "message" => "test test test",
+                      ],
+                  ],
+                  [
+                      "_index" => "my-index-000001",
+                      "doc" => [
+                          "message" => "Another test ...",
+                      ],
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"docs":[{"_index":"my-index-000001","doc":{"message":"test test
+      test"}},{"_index":"my-index-000001","doc":{"message":"Another test ..."}}]}'' "$ELASTICSEARCH_URL/_mtermvectors"'
+  - language: Java
+    code: |
+      client.mtermvectors(m -> m
+          .docs(List.of(MultiTermVectorsOperation.of(mu -> mu
+                  .index("my-index-000001")
+                  .doc(JsonData.fromJson("{\"message\":\"test test test\"}"))),MultiTermVectorsOperation.of(mu -> mu
+                  .index("my-index-000001")
+                  .doc(JsonData.fromJson("{\"message\":\"Another test ...\"}")))))
+      );

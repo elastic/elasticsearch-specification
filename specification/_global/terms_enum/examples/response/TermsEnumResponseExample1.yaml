@@ -1,0 +1,16 @@
+# summary:
+description: A successful response from `POST stackoverflow/_terms_enum`.
+# type: "response",
+# response_code: 200,
+value: |-
+  {
+    "_shards": {
+      "total": 1,
+      "successful": 1,
+      "failed": 0
+    },
+    "terms": [
+      "kibana"
+    ],
+    "complete" : true
+  }

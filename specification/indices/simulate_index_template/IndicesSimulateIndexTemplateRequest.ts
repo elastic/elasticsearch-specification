@@ -31,11 +31,26 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_index_templates
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_index_template/_simulate_index/{name}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /** Name of the index to simulate */
     name: Name
   }
   query_parameters: {
+    /**
+     * Whether the index template we optionally defined in the body should only be dry-run added if new or can also replace an existing one
+     * @server_default false
+     */
+    create?: boolean
+    /** User defined reason for dry-run creating the new template for simulation purposes
+     * @server_default false
+     */
+    cause?: string
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s

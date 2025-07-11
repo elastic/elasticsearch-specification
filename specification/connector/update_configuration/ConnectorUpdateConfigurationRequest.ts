@@ -16,10 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ConnectorConfiguration } from '../_types/Connector'
 
 /**
@@ -32,6 +32,12 @@ import { ConnectorConfiguration } from '../_types/Connector'
  * @doc_id connector-configuration
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}/_configuration'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be updated

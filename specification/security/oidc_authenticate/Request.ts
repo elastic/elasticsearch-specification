@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Authenticate OpenID Connect.
+ *
  * Exchange an OpenID Connect authentication response message for an Elasticsearch internal access token and refresh token that can be subsequently used for authentication.
  *
  * Elasticsearch exposes all the necessary OpenID Connect related functionality with the OpenID Connect APIs.
@@ -30,6 +31,12 @@ import { RequestBase } from '@_types/Base'
  * @doc_id security-api-oidc-authenticate
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/oidc/authenticate'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * Associate a client session with an ID token and mitigate replay attacks.

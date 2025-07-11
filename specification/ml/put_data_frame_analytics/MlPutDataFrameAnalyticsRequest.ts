@@ -17,15 +17,15 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { HttpHeaders, Id, Metadata, VersionString } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import {
   DataframeAnalysisAnalyzedFields,
   DataframeAnalysisContainer,
   DataframeAnalyticsDestination,
   DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
-import { RequestBase } from '@_types/Base'
-import { HttpHeaders, Id, Metadata, VersionString } from '@_types/common'
-import { integer } from '@_types/Numeric'
 
 /**
  * Create a data frame analytics job.
@@ -45,6 +45,12 @@ import { integer } from '@_types/Numeric'
  * @doc_tag ml data frame
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/data_frame/analytics/{id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the data frame analytics job. This identifier can contain

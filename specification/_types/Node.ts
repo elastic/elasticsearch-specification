@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { ErrorCause } from '@_types/Errors'
+import { integer } from '@_types/Numeric'
 import { UnassignedInformation } from '@cluster/allocation_explain/types'
 import { ShardRoutingState } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ErrorCause } from '@_types/Errors'
-import { integer } from '@_types/Numeric'
 import { Id, IndexName, NodeId, NodeName } from './common'
 import { TransportAddress } from './Networking'
 
@@ -89,6 +89,6 @@ export enum NodeRole {
 }
 
 /**
- * * @doc_id node-roles
+ * @doc_id node-roles
  */
 export type NodeRoles = NodeRole[]

@@ -1,0 +1,19 @@
+# summary:
+description: A successful response from `GET /_security/role_mapping/mapping1`.
+# type: response
+# response_code:
+value: |-
+  {
+    "mapping1": {
+      "enabled": true,
+      "roles": [
+        "user"
+      ],
+      "rules": {
+        "field": {
+          "username": "*"
+        }
+      },
+      "metadata": {}
+    }
+  }

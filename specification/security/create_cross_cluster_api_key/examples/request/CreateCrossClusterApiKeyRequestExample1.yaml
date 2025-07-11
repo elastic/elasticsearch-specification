@@ -1,0 +1,184 @@
+# summary:
+method_request: POST /_security/cross_cluster/api_key
+description: >
+  Run `POST /_security/cross_cluster/api_key` to create a cross-cluster API key.
+# type: request
+value: |-
+  {
+    "name": "my-cross-cluster-api-key",
+    "expiration": "1d",   
+    "access": {
+      "search": [  
+        {
+          "names": ["logs*"]
+        }
+      ],
+      "replication": [  
+        {
+          "names": ["archive*"]
+        }
+      ]
+    },
+    "metadata": {
+      "description": "phase one",
+      "environment": {
+        "level": 1,
+        "trusted": true,
+        "tags": ["dev", "staging"]
+      }
+    }
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.create_cross_cluster_api_key(
+          name="my-cross-cluster-api-key",
+          expiration="1d",
+          access={
+              "search": [
+                  {
+                      "names": [
+                          "logs*"
+                      ]
+                  }
+              ],
+              "replication": [
+                  {
+                      "names": [
+                          "archive*"
+                      ]
+                  }
+              ]
+          },
+          metadata={
+              "description": "phase one",
+              "environment": {
+                  "level": 1,
+                  "trusted": True,
+                  "tags": [
+                      "dev",
+                      "staging"
+                  ]
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.createCrossClusterApiKey({
+        name: "my-cross-cluster-api-key",
+        expiration: "1d",
+        access: {
+          search: [
+            {
+              names: ["logs*"],
+            },
+          ],
+          replication: [
+            {
+              names: ["archive*"],
+            },
+          ],
+        },
+        metadata: {
+          description: "phase one",
+          environment: {
+            level: 1,
+            trusted: true,
+            tags: ["dev", "staging"],
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.create_cross_cluster_api_key(
+        body: {
+          "name": "my-cross-cluster-api-key",
+          "expiration": "1d",
+          "access": {
+            "search": [
+              {
+                "names": [
+                  "logs*"
+                ]
+              }
+            ],
+            "replication": [
+              {
+                "names": [
+                  "archive*"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "description": "phase one",
+            "environment": {
+              "level": 1,
+              "trusted": true,
+              "tags": [
+                "dev",
+                "staging"
+              ]
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->createCrossClusterApiKey([
+          "body" => [
+              "name" => "my-cross-cluster-api-key",
+              "expiration" => "1d",
+              "access" => [
+                  "search" => array(
+                      [
+                          "names" => array(
+                              "logs*",
+                          ),
+                      ],
+                  ),
+                  "replication" => array(
+                      [
+                          "names" => array(
+                              "archive*",
+                          ),
+                      ],
+                  ),
+              ],
+              "metadata" => [
+                  "description" => "phase one",
+                  "environment" => [
+                      "level" => 1,
+                      "trusted" => true,
+                      "tags" => array(
+                          "dev",
+                          "staging",
+                      ),
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"name\":\"my-cross-cluster-api-key\",\"expiration\":\"1d\",\"access\":{\"search\":[{\"names\":[\"logs*\"]}],\"replication\
+      \":[{\"names\":[\"archive*\"]}]},\"metadata\":{\"description\":\"phase
+      one\",\"environment\":{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}}}'
+      \"$ELASTICSEARCH_URL/_security/cross_cluster/api_key\""
+  - language: Java
+    code: >
+      client.security().createCrossClusterApiKey(c -> c
+          .access(a -> a
+              .replication(r -> r
+                  .names("archive*")
+              )
+              .search(s -> s
+                  .names("logs*")
+              )
+          )
+          .expiration(e -> e
+              .time("1d")
+          )
+          .metadata(Map.of("environment", JsonData.fromJson("{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}"),"description", JsonData.fromJson("\"phase one\"")))
+          .name("my-cross-cluster-api-key")
+      );

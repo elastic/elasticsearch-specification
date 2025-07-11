@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Id, IndexName, ScalarValue } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 interface SelectOption {
   label: string
@@ -254,6 +254,7 @@ export interface Connector {
   api_key_secret_id?: string
   configuration: ConnectorConfiguration
   custom_scheduling: ConnectorCustomScheduling
+  deleted: boolean
   description?: string
   error?: string | null
   features?: ConnectorFeatures

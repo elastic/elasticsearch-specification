@@ -1,0 +1,22 @@
+# summary:
+description: >
+  A successful response from `GET /_cat/plugins?v=true&s=component&h=name,component,version,description&format=json`.
+# type: response
+# response_code:
+value: |-
+  [
+    { "name": "U7321H6", "component": "analysis-icu", "version": "8.17.0", "description": "The ICU Analysis plugin integrates the Lucene ICU module into Elasticsearch, adding ICU-related analysis components."},
+    {"name": "U7321H6", "component": "analysis-kuromoji",   "verison":  "8.17.0", description: "The Japanese (kuromoji) Analysis plugin integrates Lucene kuromoji analysis module into elasticsearch."},
+    {"name" "U7321H6", "component": "analysis-nori", "version":         "8.17.0", "description": "The Korean (nori) Analysis plugin integrates Lucene nori analysis module into elasticsearch."},
+    {"name": "U7321H6", "component": "analysis-phonetic",   "verison":  "8.17.0", "description": "The Phonetic Analysis plugin integrates phonetic token filter analysis with elasticsearch."},
+    {"name": "U7321H6", "component": "analysis-smartcn",   "verison":  "8.17.0", "description": "Smart Chinese Analysis plugin integrates Lucene Smart Chinese analysis module into elasticsearch."},
+    {"name": "U7321H6", "component": "analysis-stempel",   "verison":  "8.17.0", "description": "The Stempel (Polish) Analysis plugin integrates Lucene stempel (polish) analysis module into elasticsearch."},
+    {"name": "U7321H6", "component": "analysis-ukrainian",   "verison":  "8.17.0", "description": "The Ukrainian Analysis plugin integrates the Lucene UkrainianMorfologikAnalyzer into elasticsearch."},
+    {"name": "U7321H6", "component": "discovery-azure-classic",   "verison":  "8.17.0", "description": "The Azure Classic Discovery plugin allows to use Azure Classic API for the unicast discovery mechanism"},
+    {"name": "U7321H6", "component": "discovery-ec2",   "verison":  "8.17.0", "description": "The EC2 discovery plugin allows to use AWS API for the unicast discovery mechanism."},
+    {"name": "U7321H6", "component": "discovery-gce",   "verison":  "8.17.0", "description": "The Google Compute Engine (GCE) Discovery plugin allows to use GCE API for the unicast discovery mechanism."},
+    {"name": "U7321H6", "component": "mapper-annotated-text",   "verison":  "8.17.0", "description": "The Mapper Annotated_text plugin adds support for text fields with markup used to inject annotation tokens into the index."},
+    {"name": "U7321H6", "component": "mapper-murmur3",   "verison":  "8.17.0", "description": "The Mapper Murmur3 plugin allows to compute hashes of a field's values at index-time and to store them in the index."},
+    {"name": "U7321H6", "component": "mapper-size",   "verison":  "8.17.0", "description": "The Mapper Size plugin allows document to record their uncompressed size at index time."},
+    {"name": "U7321H6", "component": "store-smb",   "verison":  "8.17.0", "description": "The Store SMB plugin adds support for SMB stores."}
+  ]

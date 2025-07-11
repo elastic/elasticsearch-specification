@@ -1,0 +1,47 @@
+summary: Identify search problems
+# indices/resolve-cluster.asciidoc:213
+description: >
+  A successful response from `GET /_resolve/cluster/not-present,clust*:my-index*,oldcluster:*?ignore_unavailable=false&timeout=5s`.
+  This type of request can be used to identify potential problems with your cross-cluster search.
+  Note also that a `timeout` of 5 seconds is sent, which sets the maximum time the query will wait for remote clusters to respond.
+  The local cluster has no index called `not_present`. Searching with `ignore_unavailable=false` would return a "no such index" error.
+  The `cluster_one` remote cluster has no indices that match the pattern `my-index*`.
+  There may be no indices that match the pattern or the index could be closed.
+  The `cluster_two` remote cluster is not connected (the attempt to connect failed). Since this cluster is marked as `skip_unavailable=false`, you should probably exclude this cluster from the search by adding `-cluster_two:*` to the search index expression.
+  For `cluster_three`, the error message indicates that this remote cluster did not respond within the 5-second timeout window specified, so it is also marked as not connected.
+  The `oldcluster` remote cluster shows that it has matching indices, but no version information is included. This indicates that the cluster version predates the introduction of the `_resolve/cluster` API, so you may want to exclude it from your cross-cluster search.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "(local)": {
+      "connected": true,
+      "skip_unavailable": false,
+      "error": "no such index [not_present]"
+    },
+    "cluster_one": {
+      "connected": true,
+      "skip_unavailable": true,
+      "matching_indices": false,
+      "version": {
+        "number": "8.13.0",
+        "build_flavor": "default",
+        "minimum_wire_compatibility_version": "7.17.0",
+        "minimum_index_compatibility_version": "7.0.0"
+      }
+    },
+    "cluster_two": {
+      "connected": false,
+      "skip_unavailable": false
+    },
+    "cluster_three": {
+      "connected": false,
+      "skip_unavailable": false,
+      "error": "Request timed out before receiving a response from the remote cluster"
+    },
+    "oldcluster": {
+      "connected": true,
+      "skip_unavailable": false,
+      "matching_indices": true
+    }
+  }

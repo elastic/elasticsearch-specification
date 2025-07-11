@@ -1,0 +1,50 @@
+method_request: GET _ml/anomaly_detectors/high_sum_total_sales/results/influencers
+description: An example body for a `GET _ml/anomaly_detectors/high_sum_total_sales/results/influencers` request.
+value: |-
+  {
+    "sort": "influencer_score",
+    "desc": true
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.get_influencers(
+          job_id="high_sum_total_sales",
+          sort="influencer_score",
+          desc=True,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.getInfluencers({
+        job_id: "high_sum_total_sales",
+        sort: "influencer_score",
+        desc: true,
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.get_influencers(
+        job_id: "high_sum_total_sales",
+        body: {
+          "sort": "influencer_score",
+          "desc": true
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->getInfluencers([
+          "job_id" => "high_sum_total_sales",
+          "body" => [
+              "sort" => "influencer_score",
+              "desc" => true,
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"sort":"influencer_score","desc":true}''
+      "$ELASTICSEARCH_URL/_ml/anomaly_detectors/high_sum_total_sales/results/influencers"'
+  - language: Java
+    code: |
+      client.ml().getInfluencers(g -> g
+          .jobId("high_sum_total_sales")
+      );

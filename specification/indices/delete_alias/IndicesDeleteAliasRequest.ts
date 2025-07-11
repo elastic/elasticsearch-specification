@@ -31,6 +31,16 @@ import { Duration } from '@_types/Time'
  * @doc_id indices-delete-alias
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_alias/{name}'
+      methods: ['DELETE']
+    },
+    {
+      path: '/{index}/_aliases/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams or indices used to limit the request.

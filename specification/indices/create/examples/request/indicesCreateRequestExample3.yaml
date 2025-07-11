@@ -1,0 +1,100 @@
+summary: Create an index with aliases.
+method_request: PUT /test
+description: >
+  You can provide mapping definitions in the create index API requests. Index alias names also support date math.
+# type: request
+value:
+  aliases:
+    alias_1: {}
+    alias_2:
+      filter:
+        term:
+          'user.id': 'kimchy'
+      routing: shard-1
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.create(
+          index="test",
+          aliases={
+              "alias_1": {},
+              "alias_2": {
+                  "filter": {
+                      "term": {
+                          "user.id": "kimchy"
+                      }
+                  },
+                  "routing": "shard-1"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.create({
+        index: "test",
+        aliases: {
+          alias_1: {},
+          alias_2: {
+            filter: {
+              term: {
+                "user.id": "kimchy",
+              },
+            },
+            routing: "shard-1",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.create(
+        index: "test",
+        body: {
+          "aliases": {
+            "alias_1": {},
+            "alias_2": {
+              "filter": {
+                "term": {
+                  "user.id": "kimchy"
+                }
+              },
+              "routing": "shard-1"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->create([
+          "index" => "test",
+          "body" => [
+              "aliases" => [
+                  "alias_1" => new ArrayObject([]),
+                  "alias_2" => [
+                      "filter" => [
+                          "term" => [
+                              "user.id" => "kimchy",
+                          ],
+                      ],
+                      "routing" => "shard-1",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"aliases":{"alias_1":{},"alias_2":{"filter":{"term":{"user.id":"kimchy"}},"routing":"shard-1"}}}''
+      "$ELASTICSEARCH_URL/test"'
+  - language: Java
+    code: |
+      client.indices().create(c -> c
+          .aliases(Map.of("alias_2", Alias.of(a -> a
+                  .filter(f -> f
+                      .term(t -> t
+                          .field("user.id")
+                          .value(FieldValue.of("kimchy"))
+                      )
+                  )
+                  .routing("shard-1")),"alias_1", Alias.of(al -> al)))
+          .index("test")
+      );

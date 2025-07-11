@@ -31,8 +31,15 @@ import { DateTime } from '@_types/Time'
  * @deprecated 7.11.0 Posting data directly to anomaly detection jobs is deprecated, in a future major version a datafeed will be required.
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-post-data
  */
 export interface Request<TData> extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/_data'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job. The job must have a state of open to receive and process the data.
@@ -63,6 +70,7 @@ export interface Request<TData> extends RequestBase {
    * If your data is larger, split it into multiple chunks and upload each one separately in sequential time order.
    * When running in real time, it is generally recommended that you perform many small uploads,
    * rather than queueing data to upload larger files.
+   *
    * @codegen_name data
    * */
   body: Array<TData>

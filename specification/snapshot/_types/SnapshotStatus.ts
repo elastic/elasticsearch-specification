@@ -17,19 +17,44 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Uuid } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { SnapshotIndexStats } from './SnapshotIndexStats'
 import { ShardsStats } from './SnapshotShardsStats'
 import { SnapshotStats } from './SnapshotStats'
 
 export class Status {
+  /**
+   * Indicates whether the current cluster state is included in the snapshot.
+   */
   include_global_state: boolean
   indices: Dictionary<string, SnapshotIndexStats>
+  /**
+   * The name of the repository that includes the snapshot.
+   */
   repository: string
+  /**
+   * Statistics for the shards in the snapshot.
+   */
   shards_stats: ShardsStats
+  /**
+   * The name of the snapshot.
+   */
   snapshot: string
+  /**
+   * The current snapshot state:
+   *
+   * * `FAILED`: The snapshot finished with an error and failed to store any data.
+   * * `STARTED`: The snapshot is currently running.
+   * * `SUCCESS`: The snapshot completed.
+   */
   state: string
+  /**
+   * Details about the number (`file_count`) and size (`size_in_bytes`) of files included in the snapshot.
+   */
   stats: SnapshotStats
+  /**
+   * The universally unique identifier (UUID) for the snapshot.
+   */
   uuid: Uuid
 }

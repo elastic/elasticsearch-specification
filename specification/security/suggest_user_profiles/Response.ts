@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { UserProfile } from '@security/_types/UserProfile'
 import { RelationName } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { UserProfile } from '@security/_types/UserProfile'
 
 export class TotalUserProfiles {
   value: long
@@ -28,8 +28,17 @@ export class TotalUserProfiles {
 
 export class Response {
   body: {
+    /**
+     * Metadata about the number of matching profiles.
+     */
     total: TotalUserProfiles
+    /**
+     * The number of milliseconds it took Elasticsearch to run the request.
+     */
     took: long
+    /**
+     * A list of profile documents, ordered by relevance, that match the search criteria.
+     */
     profiles: UserProfile[]
   }
 }

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { ByteSize, IndexPattern, IndexPatterns, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Create or update auto-follow patterns.
@@ -38,6 +38,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id ccr-auto-follow
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ccr/auto_follow/{name}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The name of the collection of auto-follow patterns.

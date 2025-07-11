@@ -1,0 +1,65 @@
+# summary:
+description: Split an existing index into a new index with more primary shards.
+method_request: POST /my-index-000001/_split/split-my-index-000001
+# type: request
+value: "{
+
+  \  \"settings\": {
+
+  \    \"index.number_of_shards\": 2
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.split(
+          index="my-index-000001",
+          target="split-my-index-000001",
+          settings={
+              "index.number_of_shards": 2
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.split({
+        index: "my-index-000001",
+        target: "split-my-index-000001",
+        settings: {
+          "index.number_of_shards": 2,
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.split(
+        index: "my-index-000001",
+        target: "split-my-index-000001",
+        body: {
+          "settings": {
+            "index.number_of_shards": 2
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->split([
+          "index" => "my-index-000001",
+          "target" => "split-my-index-000001",
+          "body" => [
+              "settings" => [
+                  "index.number_of_shards" => 2,
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"settings":{"index.number_of_shards":2}}'' "$ELASTICSEARCH_URL/my-index-000001/_split/split-my-index-000001"'
+  - language: Java
+    code: |
+      client.indices().split(s -> s
+          .index("my-index-000001")
+          .settings("index.number_of_shards", JsonData.fromJson("2"))
+          .target("split-my-index-000001")
+      );

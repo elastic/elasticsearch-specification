@@ -30,12 +30,19 @@ import { NodeIds } from '@_types/common'
  * @availability serverless stability=experimental visibility=private
  * @cluster_privileges monitor, manage
  * @doc_tag cluster
+ * @doc_id get-repositories-metering-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_nodes/{node_id}/_repositories_metering'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of node IDs or names used to limit returned information.
-     * All the nodes selective options are explained [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes).
+     * @ext_doc_id cluster-nodes
      */
     node_id: NodeIds
   }

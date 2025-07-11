@@ -23,20 +23,31 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get follower information.
+ *
  * Get information about all cross-cluster replication follower indices.
  * For example, the results include follower index names, leader index names, replication options, and whether the follower indices are active or paused.
  * @rest_spec_name ccr.follow_info
  * @availability stack since=6.7.0 stability=stable
+ * @cluster_privileges monitor
  * @doc_id ccr-get-follow-info
  * @ext_doc_id ccr
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ccr/info'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
+    /** A comma-delimited list of follower index patterns. */
     index: Indices
   }
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node.
+     * The period to wait for a connection to the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * It can also be set to `-1` to indicate that the request should never timeout.
      * @server_default 30s
      */
     master_timeout?: Duration

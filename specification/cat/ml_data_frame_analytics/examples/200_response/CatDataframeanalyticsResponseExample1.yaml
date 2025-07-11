@@ -1,0 +1,37 @@
+# summary:
+description: A successful response from `GET _cat/ml/data_frame/analytics?v=true&format=json`.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "id": "classifier_job_1",
+      "type": "classification",
+      "create_time": "2020-02-12T11:49:09.594Z",
+      "state": "stopped"
+    },
+      {
+      "id": "classifier_job_2",
+      "type": "classification",
+      "create_time": "2020-02-12T11:49:14.479Z",
+      "state": "stopped"
+    },
+    {
+      "id": "classifier_job_3",
+      "type": "classification",
+      "create_time": "2020-02-12T11:49:16.928Z",
+      "state": "stopped"
+    },
+    {
+      "id": "classifier_job_4",
+      "type": "classification",
+      "create_time": "2020-02-12T11:49:19.127Z",
+      "state": "stopped"
+    },
+    {
+      "id": "classifier_job_5",
+      "type": "classification",
+      "create_time": "2020-02-12T11:49:21.349Z",
+      "state": "stopped"
+    }
+  ]

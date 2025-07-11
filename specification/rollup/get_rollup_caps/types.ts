@@ -17,11 +17,14 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Field } from '@_types/common'
 import { Duration, TimeZone } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class RollupCapabilities {
+  /**
+   * There can be multiple, independent jobs configured for a single index or index pattern. Each of these jobs may have different configurations, so the API returns a list of all the various configurations available.
+   */
   rollup_jobs: RollupCapabilitySummary[]
 }
 

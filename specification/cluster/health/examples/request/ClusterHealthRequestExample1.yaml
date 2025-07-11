@@ -1,0 +1,15 @@
+method_request: GET _cluster/health
+alternatives:
+  - language: Python
+    code: resp = client.cluster.health()
+  - language: JavaScript
+    code: const response = await client.cluster.health();
+  - language: Ruby
+    code: response = client.cluster.health
+  - language: PHP
+    code: $resp = $client->cluster()->health();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_cluster/health"'
+  - language: Java
+    code: |
+      client.cluster().health(h -> h);

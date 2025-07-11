@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DownsampleConfig } from '@indices/_types/Downsample'
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
+import { DownsampleConfig } from '@indices/_types/Downsample'
 
 /**
  * Downsample an index.
@@ -37,6 +37,12 @@ import { IndexName } from '@_types/common'
  * @doc_tag data stream
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_downsample/{target_index}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the time series index to downsample.

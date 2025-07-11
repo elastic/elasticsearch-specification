@@ -28,8 +28,15 @@ import { IndexName } from '@_types/common'
  * @rest_spec_name ilm.retry
  * @availability stack since=6.6.0 stability=stable
  * @index_privileges manage_ilm
+ * @doc_id ilm-retry-policy
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ilm/retry'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     index: IndexName
   }

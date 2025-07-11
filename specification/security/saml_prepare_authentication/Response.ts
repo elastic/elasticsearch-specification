@@ -21,8 +21,17 @@ import { Id } from '@_types/common'
 
 export class Response {
   body: {
+    /**
+     * A unique identifier for the SAML Request to be stored by the caller of the API.
+     */
     id: Id
+    /**
+     * The name of the Elasticsearch realm that was used to construct the authentication request.
+     */
     realm: string
+    /**
+     * The URL to redirect the user to.
+     */
     redirect: string
   }
 }

@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import {
   Field,
   Id,
@@ -27,6 +26,7 @@ import {
 } from '@_types/common'
 import { KnnQuery } from '@_types/Knn'
 import { float } from '@_types/Numeric'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import {
   BoolQuery,
   BoostingQuery,
@@ -48,6 +48,7 @@ import {
 import {
   GeoBoundingBoxQuery,
   GeoDistanceQuery,
+  GeoGridQuery,
   GeoPolygonQuery,
   GeoShapeQuery
 } from './geo'
@@ -167,6 +168,11 @@ export class QueryContainer {
    * @ext_doc_id query-dsl-geo-distance-query
    */
   geo_distance?: GeoDistanceQuery
+
+  /**
+   * Matches `geo_point` and `geo_shape` values that intersect a grid cell from a GeoGrid aggregation.
+   */
+  geo_grid?: SingleKeyDictionary<Field, GeoGridQuery>
   /**
    * @deprecated 7.12.0 Use geo-shape instead.
    */
@@ -532,11 +538,11 @@ export enum CombinedFieldsZeroTerms {
  */
 export class FieldAndFormat {
   /**
-   * Wildcard pattern. The request returns values for field names matching this pattern.
+   * A wildcard pattern. The request returns values for field names matching this pattern.
    */
   field: Field
   /**
-   * Format in which the values are returned.
+   * The format in which the values are returned.
    */
   format?: string
   include_unmapped?: boolean

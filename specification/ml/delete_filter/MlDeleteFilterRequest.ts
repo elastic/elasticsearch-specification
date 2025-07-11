@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Delete a filter.
+ *
  * If an anomaly detection job references the filter, you cannot delete the
  * filter. You must update or delete the job before you can delete the filter.
  * @rest_spec_name ml.delete_filter
@@ -29,8 +30,15 @@ import { Id } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-delete-filter
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/filters/{filter_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * A string that uniquely identifies a filter.

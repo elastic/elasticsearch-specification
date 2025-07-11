@@ -1,0 +1,29 @@
+method_request: GET _logstash/pipeline/my_pipeline
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.logstash.get_pipeline(
+          id="my_pipeline",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.logstash.getPipeline({
+        id: "my_pipeline",
+      });
+  - language: Ruby
+    code: |-
+      response = client.logstash.get_pipeline(
+        id: "my_pipeline"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->logstash()->getPipeline([
+          "id" => "my_pipeline",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_logstash/pipeline/my_pipeline"'
+  - language: Java
+    code: |
+      client.logstash().getPipeline(g -> g
+          .id("my_pipeline")
+      );

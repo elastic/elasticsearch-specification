@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Pipeline } from '@logstash/_types/Pipeline'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { Pipeline } from '@logstash/_types/Pipeline'
 
 /**
  * Create or update a Logstash pipeline.
@@ -34,6 +34,12 @@ import { Id } from '@_types/common'
  * @ext_doc_id logstash-centralized-pipeline-management
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_logstash/pipeline/{id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * An identifier for the pipeline.

@@ -28,8 +28,15 @@ import { Id } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-update-filter
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/filters/{filter_id}/_update'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * A string that uniquely identifies a filter.

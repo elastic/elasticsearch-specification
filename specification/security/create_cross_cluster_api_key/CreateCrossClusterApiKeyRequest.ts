@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Access } from '@security/_types/Access'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Access } from '@security/_types/Access'
 
 /**
  * Create a cross-cluster API key.
@@ -43,9 +43,16 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name security.create_cross_cluster_api_key
  * @availability stack stability=stable
  * @cluster_privileges manage_security
+ * @doc_id security-api-cross-cluster-key
  * @ext_doc_id remote-clusters-api-key
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/cross_cluster/api_key'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * The access to be granted to this API key.

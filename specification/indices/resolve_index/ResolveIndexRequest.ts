@@ -31,6 +31,12 @@ import { ExpandWildcards, Names } from '@_types/common'
  * @index_privileges view_index_metadata
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_resolve/index/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated name(s) or index pattern(s) of the indices, aliases, and data streams to resolve.
@@ -43,7 +49,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards

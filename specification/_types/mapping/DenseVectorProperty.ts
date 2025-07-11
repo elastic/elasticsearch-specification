@@ -144,14 +144,14 @@ export class DenseVectorIndexOptions {
   /**
    * The number of candidates to track while assembling the list of nearest neighbors for each new node.
    *
-   * Only applicable to `hnsw`, `int8_hnsw`, and `int4_hnsw` index types.
+   * Only applicable to `hnsw`, `int8_hnsw`, `bbq_hnsw`, and `int4_hnsw` index types.
    * @server_default 100
    */
   ef_construction?: integer
   /**
    * The number of neighbors each node will be connected to in the HNSW graph.
    *
-   * Only applicable to `hnsw`, `int8_hnsw`, and `int4_hnsw` index types.
+   * Only applicable to `hnsw`, `int8_hnsw`, `bbq_hnsw`, and `int4_hnsw` index types.
    * @server_default 16
    */
   m?: integer
@@ -159,9 +159,25 @@ export class DenseVectorIndexOptions {
    * The type of kNN algorithm to use.
    */
   type: DenseVectorIndexOptionsType
+  /**
+   * The rescore vector options. This is only applicable to `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.
+   */
+  rescore_vector?: DenseVectorIndexOptionsRescoreVector
 }
 
 export enum DenseVectorIndexOptionsType {
+  /**
+   * This utilizes a brute-force search algorithm in addition to automatically quantizing to binary vectors.
+   * Only supports `element_type` of `float`.
+   */
+  bbq_flat,
+  /**
+   * This utilizes the HNSW algorithm in addition to automatic binary quantization for scalable approximate kNN
+   * search with `element_type` of `float`.
+   *
+   * This can reduce the memory footprint by nearly 32x at the cost of some accuracy.
+   */
+  bbq_hnsw,
   /**
    * This utilizes a brute-force search algorithm for exact kNN search. This supports all `element_type` values.
    */
@@ -194,4 +210,14 @@ export enum DenseVectorIndexOptionsType {
    * This can reduce the memory footprint by 4x at the cost of some accuracy.
    */
   int8_hnsw
+}
+
+export class DenseVectorIndexOptionsRescoreVector {
+  /**
+   * The oversampling factor to use when searching for the nearest neighbor. This is only applicable to the quantized formats: `bbq_*`, `int4_*`, and `int8_*`.
+   * When provided, `oversample * k` vectors will be gathered and then their scores will be re-computed with the original vectors.
+   *
+   * valid values are between `1.0` and `10.0` (inclusive), or `0` exactly to disable oversampling.
+   */
+  oversample: float
 }

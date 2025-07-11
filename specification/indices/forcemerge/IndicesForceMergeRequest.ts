@@ -83,6 +83,16 @@ import { long } from '@_types/Numeric'
  * @index_privileges maintenance
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_forcemerge'
+      methods: ['POST']
+    },
+    {
+      path: '/{index}/_forcemerge'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     index?: Indices
   }

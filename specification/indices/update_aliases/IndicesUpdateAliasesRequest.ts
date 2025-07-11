@@ -27,8 +27,15 @@ import { Action } from './types'
  * @rest_spec_name indices.update_aliases
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id aliases-update
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_aliases'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

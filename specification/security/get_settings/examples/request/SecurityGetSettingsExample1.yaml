@@ -1,0 +1,15 @@
+method_request: GET /_security/settings
+alternatives:
+  - language: Python
+    code: resp = client.security.get_settings()
+  - language: JavaScript
+    code: const response = await client.security.getSettings();
+  - language: Ruby
+    code: response = client.security.get_settings
+  - language: PHP
+    code: $resp = $client->security()->getSettings();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/settings"'
+  - language: Java
+    code: |
+      client.security().getSettings(g -> g);

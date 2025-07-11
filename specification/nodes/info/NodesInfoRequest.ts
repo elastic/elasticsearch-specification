@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get node information.
+ *
  * By default, the API returns all attributes and core settings for cluster nodes.
  * @rest_spec_name nodes.info
  * @availability stack since=1.3.0 stability=stable
@@ -31,6 +32,24 @@ import { Duration } from '@_types/Time'
  * @doc_tag cluster
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_nodes'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/{node_id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/{metric}'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/{node_id}/{metric}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** Comma-separated list of node IDs or names used to limit returned information. */
     node_id?: NodeIds

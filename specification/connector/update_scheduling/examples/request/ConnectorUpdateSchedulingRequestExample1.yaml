@@ -1,0 +1,141 @@
+# summary: connector/apis/update-connector-scheduling-api.asciidoc:89
+method_request: PUT _connector/my-connector/_scheduling
+# description: ''
+# type: request
+value: "{
+
+  \    \"scheduling\": {
+
+  \        \"access_control\": {
+
+  \            \"enabled\": true,
+
+  \            \"interval\": \"0 10 0 * * ?\"
+
+  \        },
+
+  \        \"full\": {
+
+  \            \"enabled\": true,
+
+  \            \"interval\": \"0 20 0 * * ?\"
+
+  \        },
+
+  \        \"incremental\": {
+
+  \            \"enabled\": false,
+
+  \            \"interval\": \"0 30 0 * * ?\"
+
+  \        }
+
+  \    }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.update_scheduling(
+          connector_id="my-connector",
+          scheduling={
+              "access_control": {
+                  "enabled": True,
+                  "interval": "0 10 0 * * ?"
+              },
+              "full": {
+                  "enabled": True,
+                  "interval": "0 20 0 * * ?"
+              },
+              "incremental": {
+                  "enabled": False,
+                  "interval": "0 30 0 * * ?"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.updateScheduling({
+        connector_id: "my-connector",
+        scheduling: {
+          access_control: {
+            enabled: true,
+            interval: "0 10 0 * * ?",
+          },
+          full: {
+            enabled: true,
+            interval: "0 20 0 * * ?",
+          },
+          incremental: {
+            enabled: false,
+            interval: "0 30 0 * * ?",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.update_scheduling(
+        connector_id: "my-connector",
+        body: {
+          "scheduling": {
+            "access_control": {
+              "enabled": true,
+              "interval": "0 10 0 * * ?"
+            },
+            "full": {
+              "enabled": true,
+              "interval": "0 20 0 * * ?"
+            },
+            "incremental": {
+              "enabled": false,
+              "interval": "0 30 0 * * ?"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->updateScheduling([
+          "connector_id" => "my-connector",
+          "body" => [
+              "scheduling" => [
+                  "access_control" => [
+                      "enabled" => true,
+                      "interval" => "0 10 0 * * ?",
+                  ],
+                  "full" => [
+                      "enabled" => true,
+                      "interval" => "0 20 0 * * ?",
+                  ],
+                  "incremental" => [
+                      "enabled" => false,
+                      "interval" => "0 30 0 * * ?",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"scheduling":{"access_control":{"enabled":true,"interval":"0 10 0 * *
+      ?"},"full":{"enabled":true,"interval":"0 20 0 * * ?"},"incremental":{"enabled":false,"interval":"0 30 0 * *
+      ?"}}}'' "$ELASTICSEARCH_URL/_connector/my-connector/_scheduling"'
+  - language: Java
+    code: |
+      client.connector().updateScheduling(u -> u
+          .connectorId("my-connector")
+          .scheduling(s -> s
+              .accessControl(a -> a
+                  .enabled(true)
+                  .interval("0 10 0 * * ?")
+              )
+              .full(f -> f
+                  .enabled(true)
+                  .interval("0 20 0 * * ?")
+              )
+              .incremental(i -> i
+                  .enabled(false)
+                  .interval("0 30 0 * * ?")
+              )
+          )
+      );

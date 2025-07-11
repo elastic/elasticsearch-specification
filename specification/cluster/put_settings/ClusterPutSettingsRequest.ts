@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Update the cluster settings.
+ *
  * Configure and update dynamic settings on a running cluster.
  * You can also configure dynamic settings locally on an unstarted or shut down node in `elasticsearch.yml`.
  *
@@ -45,8 +46,15 @@ import { Duration } from '@_types/Time'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-update-settings
+ * @ext_doc_id stack-settings
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/settings'
+      methods: ['PUT']
+    }
+  ]
   query_parameters: {
     flat_settings?: boolean
     /** @server_default 30s */
@@ -55,7 +63,9 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
   body: {
+    /** The settings that persist after the cluster restarts. */
     persistent?: Dictionary<string, UserDefinedValue>
+    /** The settings that do not persist after the cluster restarts. */
     transient?: Dictionary<string, UserDefinedValue>
   }
 }

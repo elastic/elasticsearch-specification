@@ -27,9 +27,16 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name ingest.delete_pipeline
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id delete-pipeline-api
  * @ext_doc_id ingest
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/pipeline/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Pipeline ID or wildcard expression of pipeline IDs used to limit the request.

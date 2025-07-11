@@ -21,17 +21,25 @@ import { Name } from '@_types/common'
 
 /**
  * Delete a search application.
+ *
  * Remove a search application and its associated alias. Indices attached to the search application are not removed.
  * @rest_spec_name search_application.delete
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @cluster_privileges manage_search_application
  * @index_privileges manage
+ * @doc_id search-application-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/search_application/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
-     * The name of the search application to delete
+     * The name of the search application to delete.
      */
     name: Name
   }

@@ -1,0 +1,9 @@
+summary: Classification example 2
+description: >
+  A succesful response from `POST _ml/data_frame/_evaluate` to evaluate a classification analysis job with the AUC ROC metrics for an annotated index.
+# type: response
+# response_code: 200
+value:
+  classification:
+    auc_roc:
+      value: 0.8941788639536681

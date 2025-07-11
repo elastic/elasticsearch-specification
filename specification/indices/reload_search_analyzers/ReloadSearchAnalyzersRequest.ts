@@ -37,9 +37,17 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * This ensures the synonym file is updated everywhere in the cluster in case shards are relocated in the future.
  * @rest_spec_name indices.reload_search_analyzers
  * @availability stack since=7.3.0 stability=stable
+ * @index_privileges manage
+ * @doc_id indices-reload-analyzers
  * @ext_doc_id search-analyzer
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_reload_search_analyzers'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     index: Indices
   }
@@ -47,5 +55,9 @@ export interface Request extends RequestBase {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
     ignore_unavailable?: boolean
+    /**
+     * Changed resource to reload analyzers from if applicable
+     */
+    resource?: string
   }
 }

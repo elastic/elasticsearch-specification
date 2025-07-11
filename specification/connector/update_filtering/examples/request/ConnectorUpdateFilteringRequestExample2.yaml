@@ -1,0 +1,106 @@
+# summary: connector/apis/update-connector-filtering-api.asciidoc:149
+method_request: PUT _connector/my-sql-connector/_filtering
+# description: ''
+# type: request
+value: "{
+
+  \    \"advanced_snippet\": {
+
+  \        \"value\": [{
+
+  \            \"tables\": [
+
+  \                \"users\",
+
+  \                \"orders\"
+
+  \            ],
+
+  \            \"query\": \"SELECT users.id AS id, orders.order_id AS order_id FROM users JOIN orders ON users.id = orders.user_id\"
+
+  \        }]
+
+  \    }
+
+  }"
+alternatives:
+  - language: Python
+    code: >-
+      resp = client.connector.update_filtering(
+          connector_id="my-sql-connector",
+          advanced_snippet={
+              "value": [
+                  {
+                      "tables": [
+                          "users",
+                          "orders"
+                      ],
+                      "query": "SELECT users.id AS id, orders.order_id AS order_id FROM users JOIN orders ON users.id = orders.user_id"
+                  }
+              ]
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.updateFiltering({
+        connector_id: "my-sql-connector",
+        advanced_snippet: {
+          value: [
+            {
+              tables: ["users", "orders"],
+              query:
+                "SELECT users.id AS id, orders.order_id AS order_id FROM users JOIN orders ON users.id = orders.user_id",
+            },
+          ],
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.update_filtering(
+        connector_id: "my-sql-connector",
+        body: {
+          "advanced_snippet": {
+            "value": [
+              {
+                "tables": [
+                  "users",
+                  "orders"
+                ],
+                "query": "SELECT users.id AS id, orders.order_id AS order_id FROM users JOIN orders ON users.id = orders.user_id"
+              }
+            ]
+          }
+        }
+      )
+  - language: PHP
+    code: >-
+      $resp = $client->connector()->updateFiltering([
+          "connector_id" => "my-sql-connector",
+          "body" => [
+              "advanced_snippet" => [
+                  "value" => array(
+                      [
+                          "tables" => array(
+                              "users",
+                              "orders",
+                          ),
+                          "query" => "SELECT users.id AS id, orders.order_id AS order_id FROM users JOIN orders ON users.id = orders.user_id",
+                      ],
+                  ),
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"advanced_snippet":{"value":[{"tables":["users","orders"],"query":"SELECT users.id AS id, orders.order_id AS
+      order_id FROM users JOIN orders ON users.id = orders.user_id"}]}}''
+      "$ELASTICSEARCH_URL/_connector/my-sql-connector/_filtering"'
+  - language: Java
+    code: >
+      client.connector().updateFiltering(u -> u
+          .advancedSnippet(a -> a
+              .value(JsonData.fromJson("[{\"tables\":[\"users\",\"orders\"],\"query\":\"SELECT users.id AS id, orders.order_id AS order_id FROM users JOIN orders ON users.id = orders.user_id\"}]"))
+          )
+          .connectorId("my-sql-connector")
+      );

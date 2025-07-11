@@ -1,0 +1,26 @@
+# summary:
+description: >
+  A successful response from `GET _cat/component_templates/my-template-*?v=true&s=name&format=json`.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "name": "my-template-1",
+      "version": "null",
+      "alias_count": "0",
+      "mapping_count": "0",
+      "settings_count": "1",
+      "metadata_count": "0",
+      "included_in": "[my-index-template]"
+    },
+      {
+      "name": "my-template-2",
+      "version": null,
+      "alias_count": "0",
+      "mapping_count": "3",
+      "settings_count": "0",
+      "metadata_count": "0",
+      "included_in": "[my-index-template]"
+    }
+  ]

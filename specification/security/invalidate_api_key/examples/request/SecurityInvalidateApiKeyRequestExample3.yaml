@@ -1,0 +1,42 @@
+summary: API keys by realm
+method_request: DELETE /_security/api_key
+description: Run `DELETE /_security/api_key` to invalidate all API keys for the `native1` realm.
+# type: request
+value: |-
+  {
+    "realm_name" : "native1"
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.invalidate_api_key(
+          realm_name="native1",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.invalidateApiKey({
+        realm_name: "native1",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.invalidate_api_key(
+        body: {
+          "realm_name": "native1"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->invalidateApiKey([
+          "body" => [
+              "realm_name" => "native1",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"realm_name":"native1"}'' "$ELASTICSEARCH_URL/_security/api_key"'
+  - language: Java
+    code: |
+      client.security().invalidateApiKey(i -> i
+          .realmName("native1")
+      );

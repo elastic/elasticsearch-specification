@@ -1,0 +1,14 @@
+summary: Single data stream or index count
+description: >
+  A successful response from `GET /_cat/count/my-index-000001?v=true&format=json`.
+  It retrieves the document count for the `my-index-000001` data stream or index.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "epoch": "1475868259",
+      "timestamp": "15:24:20",
+      "count": "120"
+    }
+  ]

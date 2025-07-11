@@ -1,0 +1,48 @@
+# summary: connector/apis/update-connector-service-type-api.asciidoc:77
+method_request: PUT _connector/my-connector/_service_type
+# description: ''
+# type: request
+value: "{
+
+  \    \"service_type\": \"sharepoint_online\"
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.update_service_type(
+          connector_id="my-connector",
+          service_type="sharepoint_online",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.updateServiceType({
+        connector_id: "my-connector",
+        service_type: "sharepoint_online",
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.update_service_type(
+        connector_id: "my-connector",
+        body: {
+          "service_type": "sharepoint_online"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->updateServiceType([
+          "connector_id" => "my-connector",
+          "body" => [
+              "service_type" => "sharepoint_online",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"service_type":"sharepoint_online"}'' "$ELASTICSEARCH_URL/_connector/my-connector/_service_type"'
+  - language: Java
+    code: |
+      client.connector().updateServiceType(u -> u
+          .connectorId("my-connector")
+          .serviceType("sharepoint_online")
+      );

@@ -17,12 +17,13 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-import { Bytes, Indices } from '@_types/common'
+import { Bytes, Indices, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { CatRequestBase, CatSegmentsColumns } from '@cat/_types/CatBase'
 
 /**
  * Get segment information.
+ *
  * Get low-level information about the Lucene segments in index shards.
  * For data streams, the API returns information about the backing indices.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the index segments API.
@@ -34,6 +35,16 @@ import { Duration } from '@_types/Time'
  * @index_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/segments'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/segments/{index}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of data streams, indices, and aliases used to limit the request.
@@ -47,6 +58,18 @@ export interface Request extends CatRequestBase {
      * The unit used to display byte values.
      */
     bytes?: Bytes
+    /**
+     * A comma-separated list of columns names to display.
+     * It supports simple wildcards.
+     * @server_default ip,hp,rp,r,m,n,cpu,l
+     */
+    h?: CatSegmentsColumns
+    /**
+     * A comma-separated list of column names or aliases that determines the sort order.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
     /**
      * If `true`, the request computes the list of selected nodes from the
      * local cluster state. If `false` the list of selected nodes are computed

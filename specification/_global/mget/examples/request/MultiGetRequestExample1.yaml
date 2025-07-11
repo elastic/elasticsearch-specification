@@ -1,0 +1,86 @@
+summary: Get documents by ID
+method_request: 'GET /my-index-000001/_mget'
+description: >
+  Run `GET /my-index-000001/_mget`. When you specify an index in the request URI, only the document IDs are required in the request
+  body.
+# type: "request"
+value: |-
+  {
+    "docs": [
+      {
+        "_id": "1"
+      },
+      {
+        "_id": "2"
+      }
+    ]
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.mget(
+          index="my-index-000001",
+          docs=[
+              {
+                  "_id": "1"
+              },
+              {
+                  "_id": "2"
+              }
+          ],
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.mget({
+        index: "my-index-000001",
+        docs: [
+          {
+            _id: "1",
+          },
+          {
+            _id: "2",
+          },
+        ],
+      });
+  - language: Ruby
+    code: |-
+      response = client.mget(
+        index: "my-index-000001",
+        body: {
+          "docs": [
+            {
+              "_id": "1"
+            },
+            {
+              "_id": "2"
+            }
+          ]
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->mget([
+          "index" => "my-index-000001",
+          "body" => [
+              "docs" => array(
+                  [
+                      "_id" => "1",
+                  ],
+                  [
+                      "_id" => "2",
+                  ],
+              ),
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"docs":[{"_id":"1"},{"_id":"2"}]}'' "$ELASTICSEARCH_URL/my-index-000001/_mget"'
+  - language: Java
+    code: |
+      client.mget(m -> m
+          .docs(List.of(MultiGetOperation.of(mu -> mu
+                  .id("1")),MultiGetOperation.of(mu -> mu
+                  .id("2"))))
+          .index("my-index-000001")
+      );

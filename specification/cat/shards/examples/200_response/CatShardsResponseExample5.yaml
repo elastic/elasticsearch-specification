@@ -1,0 +1,37 @@
+summary: Reasons for unassigned shards
+description: >
+  A successful response from `GET _cat/shards?h=index,shard,prirep,state,unassigned.reason&format=json`.
+  It includes the `unassigned.reason` column, which indicates why a shard is unassigned.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "index": "my-index-000001",
+      "shard": "0",
+      "prirep": "p",
+      "state": "STARTED",
+      "unassigned.reason": "3014 31.1mb 192.168.56.10 H5dfFeA"
+    },
+    {
+      "index": "my-index-000001",
+      "shard": "0",
+      "prirep": "r",
+      "state": "STARTED",
+      "unassigned.reason": "3014 31.1mb 192.168.56.30 bGG90GE"
+    },
+    {
+      "index": "my-index-000001",
+      "shard": "0",
+      "prirep": "r",
+      "state": "STARTED",
+      "unassigned.reason": "3014 31.1mb 192.168.56.20 I8hydUG"
+    },
+    {
+      "index": "my-index-000001",
+      "shard": "0",
+      "prirep": "r",
+      "state": "UNASSIGNED",
+      "unassigned.reason": "ALLOCATION_FAILED"
+    }
+  ]

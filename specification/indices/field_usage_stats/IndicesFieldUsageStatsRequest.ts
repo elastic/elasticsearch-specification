@@ -18,12 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {
-  ExpandWildcards,
-  Fields,
-  Indices,
-  WaitForActiveShards
-} from '@_types/common'
+import { ExpandWildcards, Fields, Indices } from '@_types/common'
 
 /**
  * Get field usage stats.
@@ -40,6 +35,12 @@ import {
  * @doc_id field-usage-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_field_usage_stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list or wildcard expression of index names used to limit the request.
@@ -68,11 +69,5 @@ export interface Request extends RequestBase {
      * Comma-separated list or wildcard expressions of fields to include in the statistics.
      */
     fields?: Fields
-    /**
-     * The number of shard copies that must be active before proceeding with the operation.
-     * Set to all or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
-     * @server_default 1
-     */
-    wait_for_active_shards?: WaitForActiveShards
   }
 }

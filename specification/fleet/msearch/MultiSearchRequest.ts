@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { RequestItem } from '@global/msearch/types'
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
@@ -25,7 +24,8 @@ import {
   IndexName,
   SearchType
 } from '@_types/common'
-import { long } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
+import { RequestItem } from '@global/msearch/types'
 import { Checkpoint } from '../_types/Checkpoints'
 
 /**
@@ -37,8 +37,19 @@ import { Checkpoint } from '../_types/Checkpoints'
  * @availability stack since=7.16.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @index_privileges read
+ * @doc_id fleet-multi-search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_fleet/_fleet_msearch'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_fleet/_fleet_msearch'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * A single target to search. If the target is an index alias, it must resolve to a single index.
@@ -73,12 +84,12 @@ export interface Request extends RequestBase {
     /**
      * Maximum number of concurrent searches the multi search API can execute.
      */
-    max_concurrent_searches?: long
+    max_concurrent_searches?: integer
     /**
      * Maximum number of concurrent shard requests that each sub-search request executes per node.
      * @server_default 5
      */
-    max_concurrent_shard_requests?: long
+    max_concurrent_shard_requests?: integer
     /**
      * Defines a threshold that enforces a pre-filter roundtrip to prefilter search shards based on query rewriting if the number of shards the search request expands to exceeds the threshold. This filter roundtrip can limit the number of shards significantly if for instance a shard can not match any documents based on its rewrite method i.e., if date filters are mandatory to match but the shard bounds and the query are disjoint.
      */
@@ -104,9 +115,9 @@ export interface Request extends RequestBase {
      */
     wait_for_checkpoints?: Checkpoint[]
     /**
-     * If true, returns partial results if there are shard request timeouts or [shard failures](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-replication.html#shard-failures). If false, returns
-     * an error with no partial results. Defaults to the configured cluster setting `search.default_allow_partial_results`
-     * which is true by default.
+     * If true, returns partial results if there are shard request timeouts or shard failures.
+     * If false, returns an error with no partial results.
+     * Defaults to the configured cluster setting `search.default_allow_partial_results`, which is true by default.
      */
     allow_partial_search_results?: boolean
   }

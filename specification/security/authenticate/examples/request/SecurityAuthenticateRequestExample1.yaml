@@ -1,0 +1,15 @@
+method_request: GET /_security/_authenticate
+alternatives:
+  - language: Python
+    code: resp = client.security.authenticate()
+  - language: JavaScript
+    code: const response = await client.security.authenticate();
+  - language: Ruby
+    code: response = client.security.authenticate
+  - language: PHP
+    code: $resp = $client->security()->authenticate();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/_authenticate"'
+  - language: Java
+    code: |
+      client.security().authenticate();

@@ -27,8 +27,15 @@ import { Action } from './types'
  * @availability stack since=7.16.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag data stream
+ * @doc_id data-stream-update
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/_modify'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * Actions to perform.

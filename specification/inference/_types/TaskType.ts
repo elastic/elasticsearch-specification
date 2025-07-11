@@ -24,5 +24,98 @@ export enum TaskType {
   sparse_embedding,
   text_embedding,
   rerank,
+  completion,
+  chat_completion
+}
+
+export enum TaskTypeJinaAi {
+  text_embedding,
+  rerank
+}
+
+export enum TaskTypeAlibabaCloudAI {
+  text_embedding,
+  rerank,
+  completion,
+  sparse_embedding
+}
+
+export enum TaskTypeAmazonBedrock {
+  text_embedding,
+  completion
+}
+
+export enum TaskTypeAnthropic {
+  completion
+}
+
+export enum TaskTypeAzureAIStudio {
+  text_embedding,
+  completion
+}
+
+export enum TaskTypeAzureOpenAI {
+  text_embedding,
+  completion
+}
+
+export enum TaskTypeCohere {
+  text_embedding,
+  rerank,
+  completion
+}
+
+export enum TaskTypeDeepSeek {
+  completion,
+  chat_completion
+}
+
+export enum TaskTypeElasticsearch {
+  sparse_embedding,
+  text_embedding,
+  rerank
+}
+
+export enum TaskTypeELSER {
+  sparse_embedding
+}
+
+export enum TaskTypeGoogleAIStudio {
+  text_embedding,
+  completion
+}
+
+export enum TaskTypeGoogleVertexAI {
+  text_embedding,
+  rerank
+}
+
+export enum TaskTypeHuggingFace {
+  chat_completion,
+  completion,
+  rerank,
+  text_embedding
+}
+
+export enum TaskTypeMistral {
+  text_embedding,
+  chat_completion,
+  completion
+}
+
+export enum TaskTypeOpenAI {
+  text_embedding,
+  chat_completion,
+  completion
+}
+
+export enum TaskTypeVoyageAI {
+  text_embedding,
+  rerank
+}
+
+export enum TaskTypeWatsonx {
+  text_embedding,
+  chat_completion,
   completion
 }

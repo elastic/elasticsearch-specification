@@ -30,8 +30,15 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-stop-datafeed
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/datafeeds/{datafeed_id}/_stop'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the datafeed. You can stop multiple datafeeds in a single API request by using a comma-separated

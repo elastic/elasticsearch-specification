@@ -16,10 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Test a query ruleset.
@@ -31,6 +31,12 @@ import { Id } from '@_types/common'
  * @doc_id query-ruleset-test
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query_rules/{ruleset_id}/_test'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the query ruleset to be created or updated

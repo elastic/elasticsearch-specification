@@ -30,8 +30,15 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name ilm.explain_lifecycle
  * @availability stack since=6.6.0 stability=stable
  * @index_privileges view_index_metadata,manage_ilm
+ * @doc_id ilm-explain-lifecycle
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ilm/explain'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases to target. Supports wildcards (`*`).

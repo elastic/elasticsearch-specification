@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Claim a connector sync job.
@@ -35,6 +35,12 @@ import { Id } from '@_types/common'
  * @doc_id connector-sync-job-claim
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/_sync_job/{connector_sync_job_id}/_claim'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector sync job.

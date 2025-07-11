@@ -30,6 +30,12 @@ import { Id } from '@_types/common'
  * @doc_id connector-sync-job-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/_sync_job/{connector_sync_job_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector sync job to be deleted

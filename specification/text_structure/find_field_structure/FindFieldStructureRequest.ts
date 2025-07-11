@@ -26,12 +26,34 @@ import { EcsCompatibilityType, FormatType } from '../_types/Structure'
 /**
  * Find the structure of a text field.
  * Find the structure of a text field in an Elasticsearch index.
+ *
+ * This API provides a starting point for extracting further information from log messages already ingested into Elasticsearch.
+ * For example, if you have ingested data into a very simple index that has just `@timestamp` and message fields, you can use this API to see what common structure exists in the message field.
+ *
+ * The response from the API contains:
+ *
+ * * Sample messages.
+ * * Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.
+ * * Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.
+ * * Appropriate mappings for an Elasticsearch index, which you could use to ingest the text.
+ *
+ * All this information can be calculated by the structure finder with no guidance.
+ * However, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.
+ *
+ * If the structure finder produces unexpected results, specify the `explain` query parameter and an explanation will appear in the response.
+ * It helps determine why the returned structure was chosen.
  * @rest_spec_name text_structure.find_field_structure
  * @availability stack stability=stable visibility=public
  * @cluster_privileges monitor_text_structure
  * @doc_id find-field-structure
  */
 interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_text_structure/find_field_structure'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * If `format` is set to `delimited`, you can specify the column names in a comma-separated list.
@@ -63,7 +85,7 @@ interface Request extends RequestBase {
      */
     ecs_compatibility?: EcsCompatibilityType
     /**
-     * If true, the response includes a field named `explanation`, which is an array of strings that indicate how the structure finder produced its result.
+     * If `true`, the response includes a field named `explanation`, which is an array of strings that indicate how the structure finder produced its result.
      * @server_default false
      */
     explain?: boolean
@@ -99,7 +121,7 @@ interface Request extends RequestBase {
     /**
      * If the format is `delimited`, you can specify whether values between delimiters should have whitespace trimmed from them.
      * If this parameter is not specified and the delimiter is pipe (`|`), the default value is true.
-     * Otherwise, the default value is false.
+     * Otherwise, the default value is `false`.
      */
     should_trim_fields?: boolean
     /**

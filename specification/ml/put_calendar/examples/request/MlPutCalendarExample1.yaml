@@ -1,0 +1,29 @@
+method_request: PUT _ml/calendars/planned-outages
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.put_calendar(
+          calendar_id="planned-outages",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.putCalendar({
+        calendar_id: "planned-outages",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.put_calendar(
+        calendar_id: "planned-outages"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->putCalendar([
+          "calendar_id" => "planned-outages",
+      ]);
+  - language: curl
+    code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/calendars/planned-outages"'
+  - language: Java
+    code: |
+      client.ml().putCalendar(p -> p
+          .calendarId("planned-outages")
+      );

@@ -1,0 +1,81 @@
+summary: Grant an API key with run_as
+method_request: POST /_security/api_key/grant
+description: >
+  Run `POST /_security/api_key/grant`. The user (`test_admin`) whose credentials are provided can "run as" another user
+  (`test_user`). The API key will be granted to the impersonated user (`test_user`).
+# type: request
+value: |-
+  {
+    "grant_type": "password",
+    "username" : "test_admin",  
+    "password" : "x-pack-test-password",  
+    "run_as": "test_user",  
+    "api_key" : {
+      "name": "another-api-key"
+    }
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.grant_api_key(
+          grant_type="password",
+          username="test_admin",
+          password="x-pack-test-password",
+          run_as="test_user",
+          api_key={
+              "name": "another-api-key"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.grantApiKey({
+        grant_type: "password",
+        username: "test_admin",
+        password: "x-pack-test-password",
+        run_as: "test_user",
+        api_key: {
+          name: "another-api-key",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.grant_api_key(
+        body: {
+          "grant_type": "password",
+          "username": "test_admin",
+          "password": "x-pack-test-password",
+          "run_as": "test_user",
+          "api_key": {
+            "name": "another-api-key"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->grantApiKey([
+          "body" => [
+              "grant_type" => "password",
+              "username" => "test_admin",
+              "password" => "x-pack-test-password",
+              "run_as" => "test_user",
+              "api_key" => [
+                  "name" => "another-api-key",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"grant_type\":\"password\",\"username\":\"test_admin\",\"password\":\"x-pack-test-password\",\"run_as\":\"test_user\",\"ap\
+      i_key\":{\"name\":\"another-api-key\"}}' \"$ELASTICSEARCH_URL/_security/api_key/grant\""
+  - language: Java
+    code: |
+      client.security().grantApiKey(g -> g
+          .apiKey(a -> a
+              .name("another-api-key")
+          )
+          .grantType(ApiKeyGrantType.Password)
+          .password("x-pack-test-password")
+          .runAs("test_user")
+          .username("test_admin")
+      );

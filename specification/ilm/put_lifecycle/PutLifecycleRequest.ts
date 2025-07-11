@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Policy } from '@ilm/_types/Policy'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Policy } from '@ilm/_types/Policy'
 
 /**
  * Create or update a lifecycle policy.
@@ -31,9 +31,16 @@ import { Duration } from '@_types/Time'
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm
  * @index_privileges manage
+ * @doc_id ilm-put-lifecycle
  * @ext_doc_id ilm-index-lifecycle
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ilm/policy/{policy}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the policy.

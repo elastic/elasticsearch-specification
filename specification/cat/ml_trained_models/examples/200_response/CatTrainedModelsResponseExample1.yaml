@@ -1,0 +1,25 @@
+# summary:
+description: A successful response from `GET _cat/ml/trained_models?v=true&format=json`.
+# type: response
+# response_code: ''
+value: |-
+  [
+    {
+      "id": "ddddd-1580216177138",
+      "heap_size": "0b",
+      "operations": "196",
+      "create_time": "2025-03-25T00:01:38.662Z",
+      "type": "pytorch",
+      "ingest.pipelines": "0",
+      "data_frame.id": "__none__"
+    },
+    {
+      "id": "lang_ident_model_1",
+      "heap_size": "1mb",
+      "operations": "39629",
+      "create_time": "2019-12-05T12:28:34.594Z",
+      "type": "lang_ident",
+      "ingest.pipelines": "0",
+      "data_frame.id": "__none__"
+    }
+  ]

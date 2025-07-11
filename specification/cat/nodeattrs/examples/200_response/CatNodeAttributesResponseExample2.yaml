@@ -1,0 +1,15 @@
+summary: Explicit columns
+description: >
+  A successful response from `GET /_cat/nodeattrs?v=true&h=name,pid,attr,value`.
+  It returns the `name`, `pid`, `attr`, and `value` columns.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "name": "node-0",
+      "pid": "19566",
+      "attr": "testattr",
+      "value": "test"
+    }
+  ]

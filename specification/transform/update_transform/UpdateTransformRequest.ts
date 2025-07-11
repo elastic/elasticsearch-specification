@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id, Metadata } from '@_types/common'
+import { Duration } from '@_types/Time'
 import {
   Destination,
   RetentionPolicyContainer,
@@ -24,9 +27,6 @@ import {
   Source,
   SyncContainer
 } from '@transform/_types/Transform'
-import { RequestBase } from '@_types/Base'
-import { Id, Metadata } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Update a transform.
@@ -42,8 +42,15 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  * @index_privileges read, index, view_index_metadata
+ * @doc_id update-transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}/_update'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform.

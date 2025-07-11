@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Groupings } from '@rollup/_types/Groupings'
-import { FieldMetric } from '@rollup/_types/Metric'
 import { RequestBase } from '@_types/Base'
 import { HttpHeaders, Id, IndexName } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { Groupings } from '@rollup/_types/Groupings'
+import { FieldMetric } from '@rollup/_types/Metric'
 
 /**
  * Create a rollup job.
@@ -37,8 +37,16 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name rollup.put_job
  * @availability stack since=6.3.0 stability=experimental
  * @cluster_privileges manage, manage_rollup
+ * @deprecated 8.11.0
+ * @doc_id rollup-put-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_rollup/job/{id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the rollup job. This can be any alphanumeric string and uniquely identifies the

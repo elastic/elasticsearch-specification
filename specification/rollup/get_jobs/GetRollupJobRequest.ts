@@ -30,8 +30,20 @@ import { Id } from '@_types/common'
  * @rest_spec_name rollup.get_jobs
  * @availability stack since=6.3.0 stability=experimental
  * @cluster_privileges monitor_rollup
+ * @deprecated 8.11.0
+ * @doc_id rollup-get-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_rollup/job/{id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_rollup/job'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the rollup job.

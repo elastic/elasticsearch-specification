@@ -32,6 +32,12 @@ import { Id } from '@_types/common'
  * @ext_doc_id logstash-centralized-pipeline-management
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_logstash/pipeline/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * An identifier for the pipeline.

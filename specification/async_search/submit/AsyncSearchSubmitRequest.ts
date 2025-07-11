@@ -17,18 +17,6 @@
  * under the License.
  */
 
-import { FieldCollapse } from '@global/search/_types/FieldCollapse'
-import { Highlight } from '@global/search/_types/highlighting'
-import { TrackHits } from '@global/search/_types/hits'
-import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
-import { Rescore } from '@global/search/_types/rescoring'
-import {
-  SourceConfig,
-  SourceConfigParam
-} from '@global/search/_types/SourceFilter'
-import { Suggester } from '@global/search/_types/suggester'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
@@ -50,6 +38,18 @@ import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort, SortResults } from '@_types/sort'
 import { Duration } from '@_types/Time'
+import { FieldCollapse } from '@global/search/_types/FieldCollapse'
+import { Highlight } from '@global/search/_types/highlighting'
+import { TrackHits } from '@global/search/_types/hits'
+import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
+import { Rescore } from '@global/search/_types/rescoring'
+import {
+  SourceConfig,
+  SourceConfigParam
+} from '@global/search/_types/SourceFilter'
+import { Suggester } from '@global/search/_types/suggester'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Run an async search.
@@ -67,9 +67,19 @@ import { Duration } from '@_types/Time'
  * @doc_tag search
  */
 // NOTE: this is a SearchRequest with:
-//  * 2 added parameters: wait_for_completion_timeout, keep_on_completion
+//  * 2 added parameters: wait_for_completion_timeout, keep_on_completion and keep_alive
 //  * 2 removed parameters: scroll, pre_filter_shard_size
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_async_search'
+      methods: ['POST']
+    },
+    {
+      path: '/{index}/_async_search'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     index?: Indices
   }
@@ -80,6 +90,12 @@ export interface Request extends RequestBase {
      * @server_default 1s
      */
     wait_for_completion_timeout?: Duration
+    /**
+     * Specifies how long the async search needs to be available.
+     * Ongoing async searches and any saved search results are deleted after this period.
+     * @server_default 5d
+     */
+    keep_alive?: Duration
     /**
      * If `true`, results are stored for later retrieval when the search completes within the `wait_for_completion_timeout`.
      * @server_default false
@@ -108,7 +124,7 @@ export interface Request extends RequestBase {
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
     lenient?: boolean
-    max_concurrent_shard_requests?: long
+    max_concurrent_shard_requests?: integer
     preference?: string
     /** @server_default true */
     request_cache?: boolean
@@ -173,7 +189,7 @@ export interface Request extends RequestBase {
     /**
      * Boosts the _score of documents from specified indices.
      */
-    indices_boost?: Array<Dictionary<IndexName, double>>
+    indices_boost?: Array<SingleKeyDictionary<IndexName, double>>
     /**
      * Array of wildcard (*) patterns. The request returns doc values for field
      * names matching these patterns in the hits.fields property of the response.
@@ -187,7 +203,7 @@ export interface Request extends RequestBase {
     knn?: KnnSearch | KnnSearch[]
     /**
      * Minimum _score for matching documents. Documents with a lower _score are
-     * not included in the search results.
+     * not included in search results and results collected by aggregations.
      */
     min_score?: double
     post_filter?: QueryContainer

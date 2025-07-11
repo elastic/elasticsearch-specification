@@ -23,12 +23,20 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete GeoIP database configurations.
+ *
  * Delete one or more IP geolocation database configurations.
  * @rest_spec_name ingest.delete_geoip_database
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
+ * @doc_id geoip-delete-database
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/geoip/database/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of geoip database configurations to delete
@@ -37,12 +45,12 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node.
+     * The period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s */
     master_timeout?: Duration
     /**
-     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * The period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s */
     timeout?: Duration
   }

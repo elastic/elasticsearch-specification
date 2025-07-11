@@ -1,0 +1,29 @@
+# summary:
+description: A successful response from `GET _cat/tasks?v=true&format=json`.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "action": "cluster:monitor/tasks/lists[n]",
+      "task_id": "oTUltX4IQMOUUVeiohTt8A:124",
+      "parent_task_id": "oTUltX4IQMOUUVeiohTt8A:123",
+      "type": "direct",
+      "start_time": "1458585884904",
+      "timestamp": "01:48:24",
+      "running_time": "44.1micros",
+      "ip": "127.0.0.1:9300",
+      "node": "oTUltX4IQMOUUVeiohTt8A"
+    },
+    {
+      "action": "cluster:monitor/tasks/lists",
+      "task_id": "oTUltX4IQMOUUVeiohTt8A:123",
+      "parent_task_id": "-",
+      "type": "transport",
+      "start_time": "1458585884904",
+      "timestamp": "01:48:24",
+      "running_time": "186.2micros",
+      "ip": "127.0.0.1:9300",
+      "node": "oTUltX4IQMOUUVeiohTt8A"
+    }
+  ]

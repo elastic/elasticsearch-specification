@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { Metadata } from '@_types/common'
 import { OverloadOf } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Metadata } from '@_types/common'
 import {
   ApplicationPrivileges,
   ClusterPrivilege,
@@ -46,7 +46,8 @@ export class RoleDescriptor {
    */
   remote_indices?: RemoteIndicesPrivileges[]
   /**
-   * A list of cluster permissions for remote clusters. Note - this is limited a subset of the cluster permissions.
+   * A list of cluster permissions for remote clusters.
+   * NOTE: This is limited a subset of the cluster permissions.
    * @availability stack since=8.15.0
    */
   remote_cluster?: RemoteClusterPrivileges[]
@@ -64,8 +65,10 @@ export class RoleDescriptor {
    */
   metadata?: Metadata
   /**
-   * A list of users that the API keys can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.
-   * @doc_id run-as-privilege
+   * A list of users that the API keys can impersonate.
+   * NOTE: In Elastic Cloud Serverless, the run-as feature is disabled.
+   * For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.
+   * @ext_doc_id run-as-privilege
    */
   run_as?: string[]
   /**
@@ -95,7 +98,8 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
    */
   remote_indices?: RemoteIndicesPrivileges[]
   /**
-   * A list of cluster permissions for remote clusters. Note - this is limited a subset of the cluster permissions.
+   * A list of cluster permissions for remote clusters.
+   * NOTE: This is limited a subset of the cluster permissions.
    * @availability stack since=8.15.0
    */
   remote_cluster?: RemoteClusterPrivileges[]
@@ -113,21 +117,26 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
   metadata?: Metadata
   /**
    * A list of users that the API keys can impersonate.
-   * @doc_id run-as-privilege
+   * @ext_doc_id run-as-privilege
    */
   run_as?: string[]
   /**
-   * Optional description of the role descriptor
+   * An optional description of the role descriptor.
    */
   description?: string
   /**
-   * Restriction for when the role descriptor is allowed to be effective.
+   * A restriction for when the role descriptor is allowed to be effective.
+   * @ext_doc_id role-restriction
    */
   restriction?: Restriction
   transient_metadata?: Dictionary<string, UserDefinedValue>
 }
 
 export class Restriction {
+  /**
+   * A list of workflows to which the API key is restricted.
+   * NOTE: In order to use a role restriction, an API key must be created with a single role descriptor.
+   */
   workflows: RestrictionWorkflow[]
 }
 

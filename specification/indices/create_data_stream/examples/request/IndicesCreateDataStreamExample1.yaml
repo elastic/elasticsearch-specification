@@ -1,0 +1,29 @@
+method_request: PUT _data_stream/logs-foo-bar
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.create_data_stream(
+          name="logs-foo-bar",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.createDataStream({
+        name: "logs-foo-bar",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.create_data_stream(
+        name: "logs-foo-bar"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->createDataStream([
+          "name" => "logs-foo-bar",
+      ]);
+  - language: curl
+    code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_data_stream/logs-foo-bar"'
+  - language: Java
+    code: |
+      client.indices().createDataStream(c -> c
+          .name("logs-foo-bar")
+      );

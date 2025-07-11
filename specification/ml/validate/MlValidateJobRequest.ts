@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
-import { DataDescription } from '@ml/_types/Job'
-import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { RequestBase } from '@_types/Base'
 import { Id, IndexName } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
+import { DataDescription } from '@ml/_types/Job'
+import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 
 /**
  * Validate an anomaly detection job.
@@ -32,6 +32,12 @@ import { long } from '@_types/Numeric'
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/_validate'
+      methods: ['POST']
+    }
+  ]
   body: {
     job_id?: Id
     analysis_config?: AnalysisConfig

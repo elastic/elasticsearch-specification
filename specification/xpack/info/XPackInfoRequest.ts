@@ -30,16 +30,25 @@ import { RequestBase } from '@_types/Base'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor
+ * @doc_id info-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_xpack'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
-     * A comma-separated list of the information categories to include in the response. For example, `build,license,features`.
+     * A comma-separated list of the information categories to include in the response.
+     * For example, `build,license,features`.
      */
     categories?: XPackCategory[]
     accept_enterprise?: boolean
     /**
-     * Defines whether additional human-readable information is included in the response. In particular, it adds descriptions and a tag line.
+     * Defines whether additional human-readable information is included in the response.
+     * In particular, it adds descriptions and a tag line.
      * @server_default true
      */
     human?: boolean

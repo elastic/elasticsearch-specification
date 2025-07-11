@@ -1,0 +1,47 @@
+# summary:
+method_request: POST /_ml/anomaly_detectors/job-01/_open
+description: >
+  A request to open anomaly detection jobs. The timeout specifies to wait 35 minutes for the job to open.
+value:
+  timeout: 35m
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.open_job(
+          job_id="job-01",
+          timeout="35m",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.openJob({
+        job_id: "job-01",
+        timeout: "35m",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.open_job(
+        job_id: "job-01",
+        body: {
+          "timeout": "35m"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->openJob([
+          "job_id" => "job-01",
+          "body" => [
+              "timeout" => "35m",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"timeout":"35m"}''
+      "$ELASTICSEARCH_URL/_ml/anomaly_detectors/job-01/_open"'
+  - language: Java
+    code: |
+      client.ml().openJob(o -> o
+          .jobId("job-01")
+          .timeout(t -> t
+              .time("35m")
+          )
+      );

@@ -26,8 +26,15 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name enrich.stats
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id enrich-stats-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_enrich/_stats'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

@@ -1,0 +1,56 @@
+# summary: connector/apis/update-connector-api-key-id-api.asciidoc:86
+method_request: PUT _connector/my-connector/_api_key_id
+# description: ''
+# type: request
+value: "{
+
+  \    \"api_key_id\": \"my-api-key-id\",
+
+  \    \"api_key_secret_id\": \"my-connector-secret-id\"
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.update_api_key_id(
+          connector_id="my-connector",
+          api_key_id="my-api-key-id",
+          api_key_secret_id="my-connector-secret-id",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.updateApiKeyId({
+        connector_id: "my-connector",
+        api_key_id: "my-api-key-id",
+        api_key_secret_id: "my-connector-secret-id",
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.update_api_key_id(
+        connector_id: "my-connector",
+        body: {
+          "api_key_id": "my-api-key-id",
+          "api_key_secret_id": "my-connector-secret-id"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->updateApiKeyId([
+          "connector_id" => "my-connector",
+          "body" => [
+              "api_key_id" => "my-api-key-id",
+              "api_key_secret_id" => "my-connector-secret-id",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"api_key_id":"my-api-key-id","api_key_secret_id":"my-connector-secret-id"}''
+      "$ELASTICSEARCH_URL/_connector/my-connector/_api_key_id"'
+  - language: Java
+    code: |
+      client.connector().updateApiKeyId(u -> u
+          .apiKeyId("my-api-key-id")
+          .apiKeySecretId("my-connector-secret-id")
+          .connectorId("my-connector")
+      );

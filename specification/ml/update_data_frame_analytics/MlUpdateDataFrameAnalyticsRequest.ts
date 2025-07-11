@@ -29,8 +29,15 @@ import { integer } from '@_types/Numeric'
  * @cluster_privileges manage_ml
  * @index_privileges read, create_index, manage, index, view_index_metadata
  * @doc_tag ml data frame
+ * @doc_id update-dfanalytics
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/data_frame/analytics/{id}/_update'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the data frame analytics job. This identifier can contain

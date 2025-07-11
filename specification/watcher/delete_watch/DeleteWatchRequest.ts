@@ -32,9 +32,19 @@ import { Name } from '@_types/common'
  * @rest_spec_name watcher.delete_watch
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
+ * @doc_id watcher-api-delete-watch
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/watch/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
+    /**
+     * The watch identifier.
+     */
     id: Name
   }
 }

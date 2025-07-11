@@ -22,7 +22,6 @@ import { Id } from '@_types/common'
 
 /**
  * Close a point in time.
- *
  * A point in time must be opened explicitly before being used in search requests.
  * The `keep_alive` parameter tells Elasticsearch how long it should persist.
  * A point in time is automatically closed when the `keep_alive` period has elapsed.
@@ -34,6 +33,12 @@ import { Id } from '@_types/common'
  * @doc_tag search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_pit'
+      methods: ['DELETE']
+    }
+  ]
   body: {
     /**
      * The ID of the point-in-time.

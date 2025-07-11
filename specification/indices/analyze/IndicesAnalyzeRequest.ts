@@ -18,8 +18,8 @@
  */
 
 import { CharFilter } from '@_types/analysis/char_filters'
-import { Tokenizer } from '@_types/analysis/tokenizers'
 import { TokenFilter } from '@_types/analysis/token_filters'
+import { Tokenizer } from '@_types/analysis/tokenizers'
 import { RequestBase } from '@_types/Base'
 import { Field, IndexName } from '@_types/common'
 import { TextToAnalyze } from './types'
@@ -40,7 +40,26 @@ import { TextToAnalyze } from './types'
  * @index_privileges index
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_analyze'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_analyze'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
+    /**
+     * Index used to derive the analyzer.
+     * If specified, the `analyzer` or field parameter overrides this value.
+     * If no index is specified or the index does not have a default analyzer, the analyze API uses the standard analyzer.
+     * @doc_id analysis-standard-analyzer
+     */
+    index?: IndexName
+  }
+  query_parameters: {
     /**
      * Index used to derive the analyzer.
      * If specified, the `analyzer` or field parameter overrides this value.

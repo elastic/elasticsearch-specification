@@ -1,0 +1,34 @@
+# summary:
+description: >
+  A successful response from `GET /_snapshot/my_repository/snapshot_*?sort=start_time&from_sort_value=1577833200000`.
+  The response contains information for all snapshots with names starting with `snapshot_` and that started on or after timestamp `1577833200000` (Jan 1st 2020) when sorted by snapshot start time in the default ascending order.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"snapshots\": [\n    {\n      \"snapshot\": \"snapshot_1\",\n      \"\
+  uuid\": \"dKb54xw67gvdRctLCxSket\",\n      \"repository\": \"my_repository\",\n\
+  \      \"version_id\": <version_id>,\n      \"version\": <version>,\n      \"indices\"\
+  : [],\n      \"data_streams\": [],\n      \"feature_states\": [],\n      \"include_global_state\"\
+  : true,\n      \"state\": \"SUCCESS\",\n      \"start_time\": \"2020-07-06T21:55:18.128Z\"\
+  ,\n      \"start_time_in_millis\": 1593093628849,\n      \"end_time\": \"2020-07-06T21:55:18.129Z\"\
+  ,\n      \"end_time_in_millis\": 1593093628850,\n      \"duration_in_millis\": 1,\n\
+  \      \"failures\": [],\n      \"shards\": {\n        \"total\": 0,\n        \"\
+  failed\": 0,\n        \"successful\": 0\n      }\n    },\n    {\n      \"snapshot\"\
+  : \"snapshot_2\",\n      \"uuid\": \"vdRctLCxSketdKb54xw67g\",\n      \"repository\"\
+  : \"my_repository\",\n      \"version_id\": <version_id>,\n      \"version\": <version>,\n\
+  \      \"indices\": [],\n      \"data_streams\": [],\n      \"feature_states\":\
+  \ [],\n      \"include_global_state\": true,\n      \"state\": \"SUCCESS\",\n  \
+  \    \"start_time\": \"2020-07-06T21:55:18.130Z\",\n      \"start_time_in_millis\"\
+  : 1593093628851,\n      \"end_time\": \"2020-07-06T21:55:18.130Z\",\n      \"end_time_in_millis\"\
+  : 1593093628851,\n      \"duration_in_millis\": 0,\n      \"failures\": [],\n  \
+  \    \"shards\": {\n        \"total\": 0,\n        \"failed\": 0,\n        \"successful\"\
+  : 0\n      }\n    },\n    {\n      \"snapshot\": \"snapshot_3\",\n      \"uuid\"\
+  : \"dRctdKb54xw67gvLCxSket\",\n      \"repository\": \"my_repository\",\n      \"\
+  version_id\": <version_id>,\n      \"version\": <version>,\n      \"indices\": [],\n\
+  \      \"data_streams\": [],\n      \"feature_states\": [],\n      \"include_global_state\"\
+  : true,\n      \"state\": \"SUCCESS\",\n      \"start_time\": \"2020-07-06T21:55:18.131Z\"\
+  ,\n      \"start_time_in_millis\": 1593093628852,\n      \"end_time\": \"2020-07-06T21:55:18.135Z\"\
+  ,\n      \"end_time_in_millis\": 1593093628856,\n      \"duration_in_millis\": 4,\n\
+  \      \"failures\": [],\n      \"shards\": {\n        \"total\": 0,\n        \"\
+  failed\": 0,\n        \"successful\": 0\n      }\n    }\n  ],\n  \"total\": 3,\n\
+  \  \"remaining\": 0\n}"

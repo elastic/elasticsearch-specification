@@ -1,0 +1,58 @@
+# summary: connector/apis/create-connector-sync-job-api.asciidoc:15
+method_request: POST _connector/_sync_job
+# description: ''
+# type: request
+value: "{
+
+  \  \"id\": \"connector-id\",
+
+  \  \"job_type\": \"full\",
+
+  \  \"trigger_method\": \"on_demand\"
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.sync_job_post(
+          id="connector-id",
+          job_type="full",
+          trigger_method="on_demand",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.syncJobPost({
+        id: "connector-id",
+        job_type: "full",
+        trigger_method: "on_demand",
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.sync_job_post(
+        body: {
+          "id": "connector-id",
+          "job_type": "full",
+          "trigger_method": "on_demand"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->syncJobPost([
+          "body" => [
+              "id" => "connector-id",
+              "job_type" => "full",
+              "trigger_method" => "on_demand",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"id":"connector-id","job_type":"full","trigger_method":"on_demand"}''
+      "$ELASTICSEARCH_URL/_connector/_sync_job"'
+  - language: Java
+    code: |
+      client.connector().syncJobPost(s -> s
+          .id("connector-id")
+          .jobType(SyncJobType.Full)
+          .triggerMethod(SyncJobTriggerMethod.OnDemand)
+      );

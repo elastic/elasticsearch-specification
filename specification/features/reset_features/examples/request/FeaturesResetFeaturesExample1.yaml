@@ -1,0 +1,15 @@
+method_request: POST /_features/_reset
+alternatives:
+  - language: Python
+    code: resp = client.features.reset_features()
+  - language: JavaScript
+    code: const response = await client.features.resetFeatures();
+  - language: Ruby
+    code: response = client.features.reset_features
+  - language: PHP
+    code: $resp = $client->features()->resetFeatures();
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_features/_reset"'
+  - language: Java
+    code: |
+      client.features().resetFeatures(r -> r);

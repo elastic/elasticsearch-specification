@@ -16,10 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Render a search application query.
@@ -33,6 +33,12 @@ import { Name } from '@_types/common'
  * @doc_id search-render-query
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/search_application/{name}/_render_query'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the search application to render teh query for.

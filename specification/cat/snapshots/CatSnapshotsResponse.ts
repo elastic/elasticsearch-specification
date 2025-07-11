@@ -20,5 +20,6 @@
 import { SnapshotsRecord } from './types'
 
 export class Response {
+  /** @codegen_name snapshots */
   body: Array<SnapshotsRecord>
 }

@@ -1,0 +1,54 @@
+# summary:
+description: An abbreviated response when requesting cluster nodes information.
+# type: response
+# response_code: 200
+value: |-
+  {
+      "_nodes": {},
+      "cluster_name": "elasticsearch",
+      "nodes": {
+        "USpTGYaBSIKbgSUJR2Z9lg": {
+          "name": "node-0",
+          "transport_address": "192.168.17:9300",
+          "host": "node-0.elastic.co",
+          "ip": "192.168.17",
+          "version": "{version}",
+          "transport_version": 100000298,
+          "index_version": 100000074,
+          "component_versions": {
+            "ml_config_version": 100000162,
+            "transform_config_version": 100000096
+          },
+          "build_flavor": "default",
+          "build_type": "{build_type}",
+          "build_hash": "587409e",
+          "roles": [
+            "master",
+            "data",
+            "ingest"
+          ],
+          "attributes": {},
+          "plugins": [
+            {
+              "name": "analysis-icu",
+              "version": "{version}",
+              "description": "The ICU Analysis plugin integrates Lucene ICU
+    module into elasticsearch, adding ICU relates analysis components.",
+              "classname":
+    "org.elasticsearch.plugin.analysis.icu.AnalysisICUPlugin",
+              "has_native_controller": false
+            }
+          ],
+          "modules": [
+            {
+              "name": "lang-painless",
+              "version": "{version}",
+              "description": "An easy, safe and fast scripting language for
+    Elasticsearch",
+              "classname": "org.elasticsearch.painless.PainlessPlugin",
+              "has_native_controller": false
+            }
+          ]
+        }
+      }
+  }

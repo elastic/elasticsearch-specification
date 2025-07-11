@@ -27,8 +27,15 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name enrich.delete_policy
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id delete-enrich-policy-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_enrich/policy/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Enrich policy to delete.

@@ -1,0 +1,85 @@
+summary: A text embedding task
+description: Run `PUT _inference/text_embedding/cohere-embeddings` to create an inference endpoint that performs a text embedding task.
+method_request: 'PUT _inference/text_embedding/cohere-embeddings'
+# type: "request"
+value: |-
+  {
+      "service": "cohere",
+      "service_settings": {
+          "api_key": "Cohere-Api-key",
+          "model_id": "embed-english-light-v3.0",
+          "embedding_type": "byte"
+      }
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="text_embedding",
+          inference_id="cohere-embeddings",
+          inference_config={
+              "service": "cohere",
+              "service_settings": {
+                  "api_key": "Cohere-Api-key",
+                  "model_id": "embed-english-light-v3.0",
+                  "embedding_type": "byte"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "text_embedding",
+        inference_id: "cohere-embeddings",
+        inference_config: {
+          service: "cohere",
+          service_settings: {
+            api_key: "Cohere-Api-key",
+            model_id: "embed-english-light-v3.0",
+            embedding_type: "byte",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "text_embedding",
+        inference_id: "cohere-embeddings",
+        body: {
+          "service": "cohere",
+          "service_settings": {
+            "api_key": "Cohere-Api-key",
+            "model_id": "embed-english-light-v3.0",
+            "embedding_type": "byte"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "text_embedding",
+          "inference_id" => "cohere-embeddings",
+          "body" => [
+              "service" => "cohere",
+              "service_settings" => [
+                  "api_key" => "Cohere-Api-key",
+                  "model_id" => "embed-english-light-v3.0",
+                  "embedding_type" => "byte",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"service\":\"cohere\",\"service_settings\":{\"api_key\":\"Cohere-Api-key\",\"model_id\":\"embed-english-light-v3.0\",\"emb\
+      edding_type\":\"byte\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/cohere-embeddings\""
+  - language: Java
+    code: >
+      client.inference().put(p -> p
+          .inferenceId("cohere-embeddings")
+          .taskType(TaskType.TextEmbedding)
+          .inferenceConfig(i -> i
+              .service("cohere")
+              .serviceSettings(JsonData.fromJson("{\"api_key\":\"Cohere-Api-key\",\"model_id\":\"embed-english-light-v3.0\",\"embedding_type\":\"byte\"}"))
+          )
+      );

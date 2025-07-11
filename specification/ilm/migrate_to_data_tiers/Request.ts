@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
  * Migrate to data tiers routing.
@@ -36,9 +37,16 @@ import { RequestBase } from '@_types/Base'
  * Use the stop ILM and get ILM status APIs to wait until the reported operation mode is `STOPPED`.
  * @rest_spec_name ilm.migrate_to_data_tiers
  * @availability stack since=7.14.0 stability=stable
+ * @doc_id ilm-migrate-to-data-tiers
  * @ext_doc_id migrate-index-allocation-filters
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ilm/migrate_to_data_tiers'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * If true, simulates the migration from node attributes based allocation filters to data tiers, but does not perform the migration.
@@ -46,6 +54,13 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     dry_run?: boolean
+    /**
+     * The period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * It can also be set to `-1` to indicate that the request should never timeout.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
   body: {
     legacy_template_to_delete?: string

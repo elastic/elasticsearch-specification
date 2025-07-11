@@ -1,0 +1,8 @@
+agents:
+  memory: "24G"
+  cpu: "4"
+  ephemeralStorage: 15Gi
+
+steps:
+  - label: "Run Kibana type checks"
+    command: .buildkite/kibana.sh

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { RoleDescriptor } from '@security/_types/RoleDescriptor'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Metadata } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { RoleDescriptor } from '@security/_types/RoleDescriptor'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Bulk update API keys.
@@ -46,6 +46,12 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_own_api_key
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/api_key/_bulk_update'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * Expiration time for the API keys.

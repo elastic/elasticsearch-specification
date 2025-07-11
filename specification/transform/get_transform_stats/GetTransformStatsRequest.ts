@@ -24,14 +24,22 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get transform stats.
- * Retrieves usage information for transforms.
+ *
+ * Get usage information for transforms.
  * @rest_spec_name transform.get_transform_stats
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_transform
  * @index_privileges read, view_index_metadata
+ * @doc_id get-transform-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}/_stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform. It can be a transform identifier or a

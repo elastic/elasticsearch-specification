@@ -1,0 +1,26 @@
+# summary:
+description: >
+  A successful response from `GET /_cat/health?v=true&format=json`.
+  By default, it returns `HH:MM:SS` and Unix epoch timestamps.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "epoch": "1475871424",
+      "timestamp": "16:17:04",
+      "cluster": "elasticsearch",
+      "status": "green",
+      "node.total": "1",
+      "node.data": "1",
+      "shards": "1",
+      "pri": "1",
+      "relo": "0",
+      "init": "0",
+      "unassign": "0",
+      "unassign.pri": "0",
+      "pending_tasks": "0",
+      "max_task_wait_time": "-",
+      "active_shards_percent": "100.0%"
+    }
+  ]

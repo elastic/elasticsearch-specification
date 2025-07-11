@@ -17,16 +17,19 @@
  * under the License.
  */
 
-import { AdditionalProperty } from '@spec_utils/behaviors'
 import { Field } from '@_types/common'
 import {
   Distance,
   GeoBounds,
   GeoDistanceType,
+  GeoHash,
+  GeoHexCell,
   GeoLocation,
   GeoShape,
-  GeoShapeRelation
+  GeoShapeRelation,
+  GeoTile
 } from '@_types/Geo'
+import { AdditionalProperty } from '@spec_utils/behaviors'
 import { FieldLookup, QueryBase } from './abstractions'
 
 /**
@@ -90,6 +93,13 @@ export class GeoDistanceQuery
    * @server_default false
    */
   ignore_unmapped?: boolean
+}
+
+/** @variants container */
+export class GeoGridQuery extends QueryBase {
+  geotile?: GeoTile
+  geohash?: GeoHash
+  geohex?: GeoHexCell
 }
 
 export class GeoPolygonPoints {

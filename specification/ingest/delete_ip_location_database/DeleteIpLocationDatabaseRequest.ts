@@ -27,8 +27,15 @@ import { Duration } from '@_types/Time'
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
  * @cluster_privileges manage
+ * @doc_id ip-location-delete-database
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/ip_location/database/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of IP location database configurations.

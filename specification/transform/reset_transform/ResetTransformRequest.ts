@@ -23,15 +23,22 @@ import { Duration } from '@_types/Time'
 
 /**
  * Reset a transform.
- * Resets a transform.
+ *
  * Before you can reset it, you must stop it; alternatively, use the `force` query parameter.
  * If the destination index was created by the transform, it is deleted.
  * @rest_spec_name transform.reset_transform
  * @availability stack since=8.1.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
+ * @doc_id reset-transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}/_reset'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9),

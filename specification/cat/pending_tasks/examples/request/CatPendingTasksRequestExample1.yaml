@@ -1,0 +1,32 @@
+method_request: GET /_cat/pending_tasks?v=trueh=insertOrder,timeInQueue,priority,source&format=json
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cat.pending_tasks(
+          v="trueh=insertOrder,timeInQueue,priority,source",
+          format="json",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cat.pendingTasks({
+        v: "trueh=insertOrder,timeInQueue,priority,source",
+        format: "json",
+      });
+  - language: Ruby
+    code: |-
+      response = client.cat.pending_tasks(
+        v: "trueh=insertOrder,timeInQueue,priority,source",
+        format: "json"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cat()->pendingTasks([
+          "v" => "trueh=insertOrder,timeInQueue,priority,source",
+          "format" => "json",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_cat/pending_tasks?v=trueh=insertOrder,timeInQueue,priority,source&format=json"'
+  - language: Java
+    code: |
+      client.cat().pendingTasks();

@@ -1,0 +1,48 @@
+summary: Invalidate tokens by user and realm
+method_request: DELETE /_security/oauth2/token
+description: Run `DELETE /_security/oauth2/token` to invalidate all access tokens and refresh tokens for the user `myuser` in the `saml1` realm.
+# type: request
+value: |-
+  {
+    "username" : "myuser",
+    "realm_name" : "saml1"
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.invalidate_token(
+          username="myuser",
+          realm_name="saml1",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.invalidateToken({
+        username: "myuser",
+        realm_name: "saml1",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.invalidate_token(
+        body: {
+          "username": "myuser",
+          "realm_name": "saml1"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->invalidateToken([
+          "body" => [
+              "username" => "myuser",
+              "realm_name" => "saml1",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"username":"myuser","realm_name":"saml1"}'' "$ELASTICSEARCH_URL/_security/oauth2/token"'
+  - language: Java
+    code: |
+      client.security().invalidateToken(i -> i
+          .realmName("saml1")
+          .username("myuser")
+      );

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Policy } from '@enrich/_types/Policy'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Policy } from '@enrich/_types/Policy'
 
 /**
  * Create an enrich policy.
@@ -31,6 +31,12 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_enrich/policy/{name}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Name of the enrich policy to create or update.

@@ -31,8 +31,15 @@ import { Id } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
+ * @doc_id ml-reset-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/_reset'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The ID of the job to reset.

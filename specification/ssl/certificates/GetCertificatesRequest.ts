@@ -40,6 +40,16 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name ssl.certificates
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges monitor
  * @doc_tag security
+ * @doc_id security-api-ssl
+ * @ext_doc_id security-encrypt-internode
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ssl/certificates'
+      methods: ['GET']
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+# summary: "Performs a search request asynchronously."
+method_request: 'POST /sales*/_async_search?size=0'
+description: >
+  Perform a search request asynchronously with `POST /sales*/_async_search?size=0`. It accepts the same parameters and request body
+  as the search API.
+# type: "request",
+value: "{
+
+  \  \"sort\": [
+
+  \    { \"date\": { \"order\": \"asc\" } }
+
+  \  ],
+
+  \  \"aggs\": {
+
+  \    \"sale_date\": {
+
+  \      \"date_histogram\": {
+
+  \        \"field\": \"date\",
+
+  \        \"calendar_interval\": \"1d\"
+
+  \      }
+
+  \    }
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.async_search.submit(
+          index="sales*",
+          size="0",
+          sort=[
+              {
+                  "date": {
+                      "order": "asc"
+                  }
+              }
+          ],
+          aggs={
+              "sale_date": {
+                  "date_histogram": {
+                      "field": "date",
+                      "calendar_interval": "1d"
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.asyncSearch.submit({
+        index: "sales*",
+        size: 0,
+        sort: [
+          {
+            date: {
+              order: "asc",
+            },
+          },
+        ],
+        aggs: {
+          sale_date: {
+            date_histogram: {
+              field: "date",
+              calendar_interval: "1d",
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.async_search.submit(
+        index: "sales*",
+        size: "0",
+        body: {
+          "sort": [
+            {
+              "date": {
+                "order": "asc"
+              }
+            }
+          ],
+          "aggs": {
+            "sale_date": {
+              "date_histogram": {
+                "field": "date",
+                "calendar_interval": "1d"
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->asyncSearch()->submit([
+          "index" => "sales*",
+          "size" => "0",
+          "body" => [
+              "sort" => array(
+                  [
+                      "date" => [
+                          "order" => "asc",
+                      ],
+                  ],
+              ),
+              "aggs" => [
+                  "sale_date" => [
+                      "date_histogram" => [
+                          "field" => "date",
+                          "calendar_interval" => "1d",
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"sort\":[{\"date\":{\"order\":\"asc\"}}],\"aggs\":{\"sale_date\":{\"date_histogram\":{\"field\":\"date\",\"calendar_interv\
+      al\":\"1d\"}}}}' \"$ELASTICSEARCH_URL/sales*/_async_search?size=0\""
+  - language: Java
+    code: |
+      client.asyncSearch().submit(s -> s
+          .aggregations("sale_date", a -> a
+              .dateHistogram(d -> d
+                  .calendarInterval(CalendarInterval.Day)
+                  .field("date")
+              )
+          )
+          .index("sales*")
+          .size(0)
+          .sort(so -> so
+              .field(f -> f
+                  .field("date")
+                  .order(SortOrder.Asc)
+              )
+          )
+      ,Void.class);

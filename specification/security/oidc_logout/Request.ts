@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Logout of OpenID Connect.
+ *
  * Invalidate an access token and a refresh token that were generated as a response to the `/_security/oidc/authenticate` API.
  *
  * If the OpenID Connect authentication realm in Elasticsearch is accordingly configured, the response to this call will contain a URI pointing to the end session endpoint of the OpenID Connect Provider in order to perform single logout.
@@ -32,11 +33,17 @@ import { RequestBase } from '@_types/Base'
  * @doc_id security-api-oidc-logout
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/oidc/logout'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * The access token to be invalidated.
      */
-    access_token: string
+    token: string
     /**
      * The refresh token to be invalidated.
      */

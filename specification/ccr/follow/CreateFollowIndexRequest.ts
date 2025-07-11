@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { IndexSettings } from '@indices/_types/IndexSettings'
 import { RequestBase } from '@_types/Base'
 import { ByteSize, IndexName, WaitForActiveShards } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * Create a follower.
@@ -32,6 +32,12 @@ import { Duration } from '@_types/Time'
  * @doc_id ccr-put-follow
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ccr/follow'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The name of the follower index.

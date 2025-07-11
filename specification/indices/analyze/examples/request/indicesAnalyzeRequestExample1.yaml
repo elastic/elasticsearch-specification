@@ -1,0 +1,46 @@
+summary: No index specified
+method_request: GET /_analyze
+description: You can apply any of the built-in analyzers to the text string without specifying an index.
+# type: request
+value:
+  analyzer: standard
+  text: this is a test
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.analyze(
+          analyzer="standard",
+          text="this is a test",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.analyze({
+        analyzer: "standard",
+        text: "this is a test",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.analyze(
+        body: {
+          "analyzer": "standard",
+          "text": "this is a test"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->analyze([
+          "body" => [
+              "analyzer" => "standard",
+              "text" => "this is a test",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"analyzer":"standard","text":"this is a test"}'' "$ELASTICSEARCH_URL/_analyze"'
+  - language: Java
+    code: |
+      client.indices().analyze(a -> a
+          .analyzer("standard")
+          .text("this is a test")
+      );

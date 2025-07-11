@@ -1,0 +1,42 @@
+method_request: POST _rollup/job/sensor/_stop?wait_for_completion=true&timeout=10s
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.rollup.stop_job(
+          id="sensor",
+          wait_for_completion=True,
+          timeout="10s",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.rollup.stopJob({
+        id: "sensor",
+        wait_for_completion: "true",
+        timeout: "10s",
+      });
+  - language: Ruby
+    code: |-
+      response = client.rollup.stop_job(
+        id: "sensor",
+        wait_for_completion: "true",
+        timeout: "10s"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->rollup()->stopJob([
+          "id" => "sensor",
+          "wait_for_completion" => "true",
+          "timeout" => "10s",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY"
+      "$ELASTICSEARCH_URL/_rollup/job/sensor/_stop?wait_for_completion=true&timeout=10s"'
+  - language: Java
+    code: |
+      client.rollup().stopJob(s -> s
+          .id("sensor")
+          .timeout(t -> t
+              .offset(10)
+          )
+          .waitForCompletion(true)
+      );

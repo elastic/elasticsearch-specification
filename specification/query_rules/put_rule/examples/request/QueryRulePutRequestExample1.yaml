@@ -1,0 +1,55 @@
+# summary:
+method_request: POST _query_rules/my-ruleset/_test
+description: >
+  Run `POST _query_rules/my-ruleset/_test` to test a ruleset. Provide the match criteria that you want to test against.
+# type: request
+value:
+  match_criteria:
+    query_string: puggles
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.query_rules.test(
+          ruleset_id="my-ruleset",
+          match_criteria={
+              "query_string": "puggles"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.queryRules.test({
+        ruleset_id: "my-ruleset",
+        match_criteria: {
+          query_string: "puggles",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.query_rules.test(
+        ruleset_id: "my-ruleset",
+        body: {
+          "match_criteria": {
+            "query_string": "puggles"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->queryRules()->test([
+          "ruleset_id" => "my-ruleset",
+          "body" => [
+              "match_criteria" => [
+                  "query_string" => "puggles",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"match_criteria":{"query_string":"puggles"}}'' "$ELASTICSEARCH_URL/_query_rules/my-ruleset/_test"'
+  - language: Java
+    code: |
+      client.queryRules().test(t -> t
+          .matchCriteria("query_string", JsonData.fromJson("\"puggles\""))
+          .rulesetId("my-ruleset")
+      );

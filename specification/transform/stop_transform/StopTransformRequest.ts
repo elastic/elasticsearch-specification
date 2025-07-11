@@ -28,8 +28,15 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
+ * @doc_id stop-transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}/_stop'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform. To stop multiple transforms, use a comma-separated list or a wildcard expression.

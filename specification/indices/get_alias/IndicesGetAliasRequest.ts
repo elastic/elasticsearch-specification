@@ -31,6 +31,24 @@ import { Duration } from '@_types/Time'
  * @index_privileges view_index_metadata
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_alias'
+      methods: ['GET']
+    },
+    {
+      path: '/_alias/{name}'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_alias/{name}'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_alias'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of aliases to retrieve.
@@ -56,7 +74,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards

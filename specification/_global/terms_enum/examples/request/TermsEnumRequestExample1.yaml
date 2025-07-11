@@ -1,0 +1,53 @@
+# summary:
+method_request: 'POST stackoverflow/_terms_enum'
+description: Run `POST stackoverflow/_terms_enum`.
+# type: "request"
+value: |-
+  {
+      "field" : "tags",
+      "string" : "kiba"
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.terms_enum(
+          index="stackoverflow",
+          field="tags",
+          string="kiba",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.termsEnum({
+        index: "stackoverflow",
+        field: "tags",
+        string: "kiba",
+      });
+  - language: Ruby
+    code: |-
+      response = client.terms_enum(
+        index: "stackoverflow",
+        body: {
+          "field": "tags",
+          "string": "kiba"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->termsEnum([
+          "index" => "stackoverflow",
+          "body" => [
+              "field" => "tags",
+              "string" => "kiba",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"field":"tags","string":"kiba"}'' "$ELASTICSEARCH_URL/stackoverflow/_terms_enum"'
+  - language: Java
+    code: |
+      client.termsEnum(t -> t
+          .field("tags")
+          .index("stackoverflow")
+          .string("kiba")
+      );

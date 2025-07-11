@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Prepare OpenID connect authentication.
+ *
  * Create an oAuth 2.0 authentication request as a URL string based on the configuration of the OpenID Connect authentication realm in Elasticsearch.
  *
  * The response of this API is a URL pointing to the Authorization Endpoint of the configured OpenID Connect Provider, which can be used to redirect the browser of the user in order to continue the authentication process.
@@ -32,6 +33,12 @@ import { RequestBase } from '@_types/Base'
  * @doc_id security-api-oidc-prepare
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/oidc/prepare'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * In the case of a third party initiated single sign on, this is the issuer identifier for the OP that the RP is to send the authentication request to.

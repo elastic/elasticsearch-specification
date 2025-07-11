@@ -21,8 +21,17 @@ import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {
+    /**
+     * The number of tokens that were invalidated as part of this logout.
+     */
     invalidated: integer
+    /**
+     * The realm name of the SAML realm in Elasticsearch that authenticated the user.
+     */
     realm: string
+    /**
+     * A SAML logout response as a parameter so that the user can be redirected back to the SAML IdP.
+     */
     redirect: string
   }
 }

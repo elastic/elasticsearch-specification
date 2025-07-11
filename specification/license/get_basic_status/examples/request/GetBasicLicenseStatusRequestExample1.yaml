@@ -1,0 +1,15 @@
+method_request: GET /_license/basic_status
+alternatives:
+  - language: Python
+    code: resp = client.license.get_basic_status()
+  - language: JavaScript
+    code: const response = await client.license.getBasicStatus();
+  - language: Ruby
+    code: response = client.license.get_basic_status
+  - language: PHP
+    code: $resp = $client->license()->getBasicStatus();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_license/basic_status"'
+  - language: Java
+    code: |
+      client.license().getBasicStatus();

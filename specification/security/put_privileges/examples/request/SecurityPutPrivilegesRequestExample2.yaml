@@ -1,0 +1,135 @@
+summary: Add multiple privileges
+method_request: PUT /_security/privilege
+description: >
+  Run `PUT /_security/privilege` to add multiple application privileges.
+# type: request
+value: |-
+  {
+    "app01": {
+      "read": {
+        "actions": [ "action:login", "data:read/*" ]
+      },
+      "write": {
+        "actions": [ "action:login", "data:write/*" ]
+      }
+    },
+    "app02": {
+      "all": {
+        "actions": [ "*" ]
+      }
+    }
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.put_privileges(
+          privileges={
+              "app01": {
+                  "read": {
+                      "actions": [
+                          "action:login",
+                          "data:read/*"
+                      ]
+                  },
+                  "write": {
+                      "actions": [
+                          "action:login",
+                          "data:write/*"
+                      ]
+                  }
+              },
+              "app02": {
+                  "all": {
+                      "actions": [
+                          "*"
+                      ]
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.putPrivileges({
+        privileges: {
+          app01: {
+            read: {
+              actions: ["action:login", "data:read/*"],
+            },
+            write: {
+              actions: ["action:login", "data:write/*"],
+            },
+          },
+          app02: {
+            all: {
+              actions: ["*"],
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.put_privileges(
+        body: {
+          "app01": {
+            "read": {
+              "actions": [
+                "action:login",
+                "data:read/*"
+              ]
+            },
+            "write": {
+              "actions": [
+                "action:login",
+                "data:write/*"
+              ]
+            }
+          },
+          "app02": {
+            "all": {
+              "actions": [
+                "*"
+              ]
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->putPrivileges([
+          "body" => [
+              "app01" => [
+                  "read" => [
+                      "actions" => array(
+                          "action:login",
+                          "data:read/*",
+                      ),
+                  ],
+                  "write" => [
+                      "actions" => array(
+                          "action:login",
+                          "data:write/*",
+                      ),
+                  ],
+              ],
+              "app02" => [
+                  "all" => [
+                      "actions" => array(
+                          "*",
+                      ),
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"app01\":{\"read\":{\"actions\":[\"action:login\",\"data:read/*\"]},\"write\":{\"actions\":[\"action:login\",\"data:write/*\
+      \"]}},\"app02\":{\"all\":{\"actions\":[\"*\"]}}}' \"$ELASTICSEARCH_URL/_security/privilege\""
+  - language: Java
+    code: |
+      client.security().putPrivileges(p -> p
+          .privileges(Map.of("app02", "all", pr -> pr
+              .actions("*"),"app01", Map.of("read", Actions.of(a -> a
+                  .actions(List.of("action:login","data:read/*"))),"write", Actions.of(a -> a
+                  .actions(List.of("action:login","data:write/*"))))))
+      );

@@ -1,0 +1,76 @@
+# summary: connector/apis/update-connector-features-api.asciidoc:122
+method_request: PUT _connector/my-connector/_features
+# description: ''
+# type: request
+value: "{
+
+  \  \"features\": {
+
+  \    \"document_level_security\": {
+
+  \      \"enabled\": true
+
+  \    }
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.connector.update_features(
+          connector_id="my-connector",
+          features={
+              "document_level_security": {
+                  "enabled": True
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.connector.updateFeatures({
+        connector_id: "my-connector",
+        features: {
+          document_level_security: {
+            enabled: true,
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.connector.update_features(
+        connector_id: "my-connector",
+        body: {
+          "features": {
+            "document_level_security": {
+              "enabled": true
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->connector()->updateFeatures([
+          "connector_id" => "my-connector",
+          "body" => [
+              "features" => [
+                  "document_level_security" => [
+                      "enabled" => true,
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"features":{"document_level_security":{"enabled":true}}}'' "$ELASTICSEARCH_URL/_connector/my-connector/_features"'
+  - language: Java
+    code: |
+      client.connector().updateFeatures(u -> u
+          .connectorId("my-connector")
+          .features(f -> f
+              .documentLevelSecurity(d -> d
+                  .enabled(true)
+              )
+          )
+      );

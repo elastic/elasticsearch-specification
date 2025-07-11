@@ -1,0 +1,34 @@
+# summary:
+description: >
+  A successful response from `GET /_cat/indices/my-index-*?v=true&s=index&format=json`.
+# type: response
+# response_code:
+value: |-
+  [
+    {
+      "health": "yellow",
+      "status": "open",
+      "index": "my-index-000001",
+      "uuid": "u8FNjxh8Rfy_awN11oDKYQ",
+      "pri": "1",
+      "rep": "1",
+      "docs.count": "1200",
+      "docs.deleted": "0",
+      "store.size": "88.1kb",
+      "pri.store.size": "88.1kb",
+      "dataset.size": "88.1kb"
+    },
+    {
+      "health": "green",
+      "status": "open",
+      "index": "my-index-000002",
+      "uuid": "nYFWZEO7TUiOjLQXBaYJpA ",
+      "pri": "1",
+      "rep": "0",
+      "docs.count": "0",
+      "docs.deleted": "0",
+      "store.size": "260b",
+      "pri.store.size": "260b",
+      "dataset.size": "260b"
+    }
+  ]
