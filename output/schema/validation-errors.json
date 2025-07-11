@@ -55,12 +55,6 @@
       ],
       "response": []
     },
-    "security.grant_api_key": {
-      "request": [
-        "Request: missing json spec query parameter 'refresh'"
-      ],
-      "response": []
-    },
     "snapshot.delete": {
       "request": [
         "Request: missing json spec query parameter 'wait_for_completion'"
