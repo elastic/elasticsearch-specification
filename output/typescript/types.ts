@@ -19934,9 +19934,6 @@ export interface SecurityGetUserRequest extends RequestBase {
 export type SecurityGetUserResponse = Record<string, SecurityUser>
 
 export interface SecurityGetUserPrivilegesRequest extends RequestBase {
-  application?: Name
-  priviledge?: Name
-  username?: Name | null
 }
 
 export interface SecurityGetUserPrivilegesResponse {
