@@ -21091,6 +21091,7 @@ export interface SnapshotDeleteRequest extends RequestBase {
   repository: Name
   snapshot: Name
   master_timeout?: Duration
+  wait_for_completion?: boolean
 }
 
 export type SnapshotDeleteResponse = AcknowledgedResponseBase
