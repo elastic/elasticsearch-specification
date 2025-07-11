@@ -1851,6 +1851,7 @@ export interface SearchMvtRequest extends RequestBase {
   grid_precision?: integer
   grid_type?: SearchMvtGridType
   size?: integer
+  track_total_hits?: SearchTrackHits
   with_labels?: boolean
   body?: {
     aggs?: Record<string, AggregationsAggregationContainer>
