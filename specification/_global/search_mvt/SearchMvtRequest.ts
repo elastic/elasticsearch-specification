@@ -201,6 +201,13 @@ export interface Request extends RequestBase {
      */
     size?: integer
     /**
+     * The number of hits matching the query to count accurately.
+     * If `true`, the exact number of hits is returned at the cost of some performance.
+     * If `false`, the response does not include the total number of hits matching the query.
+     * @server_default 10000
+     */
+    track_total_hits?: TrackHits
+    /**
      * If `true`, the hits and aggs layers will contain additional point features representing
      * suggested label positions for the original features.
      *

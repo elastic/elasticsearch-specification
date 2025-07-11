@@ -37,8 +37,7 @@
     },
     "search_mvt": {
       "request": [
-        "Request: query parameter 'grid_agg' does not exist in the json spec",
-        "Request: missing json spec query parameter 'track_total_hits'"
+        "Request: query parameter 'grid_agg' does not exist in the json spec"
       ],
       "response": []
     },
