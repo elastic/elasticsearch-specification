@@ -1000,6 +1000,7 @@ export interface ReindexRequest extends RequestBase {
   requests_per_second?: float
   scroll?: Duration
   slices?: Slices
+  max_docs?: integer
   timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
   wait_for_completion?: boolean
@@ -11532,6 +11533,7 @@ export interface IndicesDataStream {
   replicated?: boolean
   rollover_on_write: boolean
   settings: IndicesIndexSettings
+  mappings?: MappingTypeMapping
   status: HealthStatus
   system?: boolean
   template: Name
@@ -12558,6 +12560,21 @@ export interface IndicesGetDataStreamResponse {
   data_streams: IndicesDataStream[]
 }
 
+export interface IndicesGetDataStreamMappingsDataStreamMappings {
+  name: string
+  mappings: MappingTypeMapping
+  effective_mappings: MappingTypeMapping
+}
+
+export interface IndicesGetDataStreamMappingsRequest extends RequestBase {
+  name: Indices
+  master_timeout?: Duration
+}
+
+export interface IndicesGetDataStreamMappingsResponse {
+  data_streams: IndicesGetDataStreamMappingsDataStreamMappings[]
+}
+
 export interface IndicesGetDataStreamOptionsDataStreamWithOptions {
   name: DataStreamName
   options?: IndicesDataStreamOptions
@@ -12781,6 +12798,26 @@ export interface IndicesPutDataLifecycleRequest extends RequestBase {
 }
 
 export type IndicesPutDataLifecycleResponse = AcknowledgedResponseBase
+
+export interface IndicesPutDataStreamMappingsRequest extends RequestBase {
+  name: Indices
+  dry_run?: boolean
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: MappingTypeMapping
+}
+
+export interface IndicesPutDataStreamMappingsResponse {
+  data_streams: IndicesPutDataStreamMappingsUpdatedDataStreamMappings[]
+}
+
+export interface IndicesPutDataStreamMappingsUpdatedDataStreamMappings {
+  name: IndexName
+  applied_to_data_stream: boolean
+  error?: string
+  mappings?: MappingTypeMapping
+  effective_mappings?: MappingTypeMapping
+}
 
 export interface IndicesPutDataStreamOptionsRequest extends RequestBase {
   name: DataStreamNames
