@@ -275,8 +275,7 @@
     },
     "reindex": {
       "request": [
-        "Request: query parameter 'require_alias' does not exist in the json spec",
-        "Request: missing json spec query parameter 'max_docs'"
+        "Request: query parameter 'require_alias' does not exist in the json spec"
       ],
       "response": []
     },
