@@ -54174,6 +54174,21 @@
           }
         ]
       },
+      "indices.delete_alias.IndicesAliasesResponseBody": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
       "_types.DataStreamNames": {
         "oneOf": [
           {
@@ -67438,7 +67453,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+              "$ref": "#/components/schemas/indices.delete_alias.IndicesAliasesResponseBody"
             }
           }
         }
