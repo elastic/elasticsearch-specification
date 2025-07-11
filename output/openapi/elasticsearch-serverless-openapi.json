@@ -22083,6 +22083,9 @@
             "$ref": "#/components/parameters/search_mvt-size"
           },
           {
+            "$ref": "#/components/parameters/search_mvt-track_total_hits"
+          },
+          {
             "$ref": "#/components/parameters/search_mvt-with_labels"
           }
         ],
@@ -22145,6 +22148,9 @@
           },
           {
             "$ref": "#/components/parameters/search_mvt-size"
+          },
+          {
+            "$ref": "#/components/parameters/search_mvt-track_total_hits"
           },
           {
             "$ref": "#/components/parameters/search_mvt-with_labels"
@@ -72635,6 +72641,16 @@
         "deprecated": false,
         "schema": {
           "type": "number"
+        },
+        "style": "form"
+      },
+      "search_mvt-track_total_hits": {
+        "in": "query",
+        "name": "track_total_hits",
+        "description": "The number of hits matching the query to count accurately.\nIf `true`, the exact number of hits is returned at the cost of some performance.\nIf `false`, the response does not include the total number of hits matching the query.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_global.search._types.TrackHits"
         },
         "style": "form"
       },
