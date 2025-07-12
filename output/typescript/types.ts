@@ -14150,6 +14150,7 @@ export interface InferenceInferenceRequest extends RequestBase {
   body?: {
     query?: string
     input: string | string[]
+    input_type?: string
     task_settings?: InferenceTaskSettings
   }
 }
