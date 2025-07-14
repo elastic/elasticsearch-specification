@@ -16311,6 +16311,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.put#inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.put#timeout"
           }
         ],
         "requestBody": {
@@ -16408,6 +16411,9 @@
           },
           {
             "$ref": "#/components/parameters/inference.put#inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.put#timeout"
           }
         ],
         "requestBody": {
@@ -16502,6 +16508,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.stream_inference#inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.stream_inference#timeout"
           }
         ],
         "requestBody": {
@@ -16529,6 +16538,9 @@
           },
           {
             "$ref": "#/components/parameters/inference.stream_inference#inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.stream_inference#timeout"
           }
         ],
         "requestBody": {
@@ -103479,6 +103491,16 @@
         },
         "style": "simple"
       },
+      "inference.put#timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
+      },
       "inference.stream_inference#inference_id": {
         "in": "path",
         "name": "inference_id",
@@ -103500,6 +103522,16 @@
           "$ref": "#/components/schemas/inference._types:TaskType"
         },
         "style": "simple"
+      },
+      "inference.stream_inference#timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "The amount of time to wait for the inference request to complete.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
       },
       "inference.unified_inference#task_type": {
         "in": "path",

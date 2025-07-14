@@ -13081,6 +13081,7 @@ export type InferenceInferenceResponse = InferenceInferenceResult
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
+  timeout?: Duration
   body?: InferenceInferenceEndpoint
 }
 
@@ -13089,6 +13090,7 @@ export type InferencePutResponse = InferenceInferenceEndpointInfo
 export interface InferenceStreamInferenceRequest extends RequestBase {
   inference_id: Id
   task_type?: InferenceTaskType
+  timeout?: Duration
   body?: {
     input: string | string[]
   }

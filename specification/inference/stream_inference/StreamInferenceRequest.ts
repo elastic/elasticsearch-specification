@@ -20,6 +20,7 @@
 import { TaskType } from '@inference/_types/TaskType'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Perform streaming inference.
@@ -54,6 +55,13 @@ export interface Request extends RequestBase {
      * The type of task that the model performs.
      */
     task_type?: TaskType
+  }
+  query_parameters: {
+    /**
+     * The amount of time to wait for the inference request to complete.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
   body: {
     /**

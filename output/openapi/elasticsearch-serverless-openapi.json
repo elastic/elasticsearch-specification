@@ -8796,6 +8796,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.put#inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.put#timeout"
           }
         ],
         "requestBody": {
@@ -8893,6 +8896,9 @@
           },
           {
             "$ref": "#/components/parameters/inference.put#inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.put#timeout"
           }
         ],
         "requestBody": {
@@ -61096,6 +61102,16 @@
           "$ref": "#/components/schemas/_types:Id"
         },
         "style": "simple"
+      },
+      "inference.put#timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types:Duration"
+        },
+        "style": "form"
       },
       "inference.unified_inference#task_type": {
         "in": "path",
