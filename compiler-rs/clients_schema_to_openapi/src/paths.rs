@@ -73,7 +73,7 @@ pub fn add_endpoint(
             example: None,
             examples: Default::default(),
             explode: None, // Defaults to simple, i.e. comma-separated values for arrays
-            extensions: Default::default(),
+            extensions,
         })
     }
 
