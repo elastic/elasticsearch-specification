@@ -288,7 +288,7 @@ export class InferenceChunkingSettings {
    */
   sentence_overlap?: integer
   /**
-   * The chunking strategy: `sentence`, `word`, `none` or `recursive`.
+   * The chunking strategy: `sentence`, `word`, `none` or `recursive`. Learn more about chunking strategies in the External documentation.
    * @server_default sentence
    * @ext_doc_id chunking-strategies
    */
