@@ -71099,8 +71099,8 @@
               },
               "indicesPutSettingsRequestExample3": {
                 "summary": "Update index analysis",
-                "description": "To add an analyzer, you must close the index, define the analyzer, then reopen the index.",
-                "value": "{\n  \"analysis\" : {\n    \"analyzer\":{\n      \"content\":{\n        \"type\":\"custom\",\n        \"tokenizer\":\"whitespace\"\n      }\n    }\n  }\n}\n\nPOST /my-index-000001/_open"
+                "description": "To add an analyzer, you must close the index (`POST /my-index-000001/_open`), define the analyzer, then reopen the index (`POST /my-index-000001/_open`).",
+                "value": "{\n  \"analysis\": {\n    \"analyzer\": {\n      \"content\": {\n        \"type\": \"custom\",\n        \"tokenizer\": \"whitespace\"\n      }\n    }\n  }\n}"
               }
             }
           }
