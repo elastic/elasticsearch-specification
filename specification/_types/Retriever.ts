@@ -69,6 +69,9 @@ export class LinearRetriever extends RetrieverBase {
   /** Inner retrievers. */
   retrievers?: InnerRetriever[]
   rank_window_size?: integer
+  query?: string
+  fields?: string[]
+  normalizer?: ScoreNormalizer
 }
 
 export class PinnedRetriever extends RetrieverBase {
@@ -136,6 +139,8 @@ export class RRFRetriever extends RetrieverBase {
   rank_constant?: integer
   /** This value determines the size of the individual result sets per query.  */
   rank_window_size?: integer
+  query?: string
+  fields?: string[]
 }
 
 export class TextSimilarityReranker extends RetrieverBase {
