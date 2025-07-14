@@ -6738,6 +6738,7 @@
             "schema": {
               "$ref": "#/components/schemas/indices.get.Features"
             },
+            "x-state": "Generally available",
             "style": "form"
           }
         ],
@@ -9184,6 +9185,7 @@
             "schema": {
               "type": "boolean"
             },
+            "x-state": "Generally available",
             "style": "form"
           }
         ],
@@ -13987,6 +13989,7 @@
             "schema": {
               "type": "boolean"
             },
+            "x-state": "Generally available",
             "style": "form"
           },
           {
@@ -13997,6 +14000,7 @@
             "schema": {
               "type": "boolean"
             },
+            "x-state": "Generally available",
             "style": "form"
           }
         ],
@@ -20422,6 +20426,7 @@
             "schema": {
               "type": "boolean"
             },
+            "x-state": "Generally available",
             "style": "form"
           },
           {
@@ -20432,6 +20437,7 @@
             "schema": {
               "type": "boolean"
             },
+            "x-state": "Generally available",
             "style": "form"
           },
           {
@@ -20442,6 +20448,7 @@
             "schema": {
               "type": "boolean"
             },
+            "x-state": "Generally available",
             "style": "form"
           }
         ],
@@ -65918,6 +65925,7 @@
         "schema": {
           "type": "boolean"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "cluster.get_component_template-local": {
@@ -66616,6 +66624,7 @@
         "schema": {
           "type": "string"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "field_caps-types": {
@@ -66629,6 +66638,7 @@
             "type": "string"
           }
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "field_caps-include_empty_fields": {
@@ -66639,6 +66649,7 @@
         "schema": {
           "type": "boolean"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "graph.explore-index": {
@@ -67061,6 +67072,7 @@
         "schema": {
           "type": "boolean"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "indices.get_data_stream-master_timeout": {
@@ -67132,6 +67144,7 @@
         "schema": {
           "type": "boolean"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "indices.get_mapping-index": {
@@ -67745,6 +67758,7 @@
         "schema": {
           "type": "boolean"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "indices.validate_query-index": {
@@ -69699,6 +69713,7 @@
         "schema": {
           "type": "boolean"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "search_mvt-index": {
@@ -69965,6 +69980,7 @@
         "schema": {
           "type": "boolean"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "search_template-typed_keys": {
@@ -70006,6 +70022,7 @@
         "schema": {
           "type": "boolean"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "security.query_api_keys-with_profile_uid": {
@@ -70016,6 +70033,7 @@
         "schema": {
           "type": "boolean"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "security.query_api_keys-typed_keys": {
@@ -70026,6 +70044,7 @@
         "schema": {
           "type": "boolean"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "sql.query-format": {
