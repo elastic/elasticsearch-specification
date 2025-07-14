@@ -45,7 +45,7 @@ async function generateLanguages(example) {
       code: (await convertRequests(request, lang, {})).trim(),
     });
   }
-  data.alternatives = alternatives.concat(data.alternatives.filter(pair => !LANGUAGES.includes(pair.language)));
+  data.alternatives = alternatives.concat((data.alternatives ?? []).filter(pair => !LANGUAGES.includes(pair.language)));
 
   // specific java example generator
   if (process.argv[2] === "java") {
