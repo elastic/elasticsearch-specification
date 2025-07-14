@@ -288,8 +288,9 @@ export class InferenceChunkingSettings {
    */
   sentence_overlap?: integer
   /**
-   * The chunking strategy: `sentence`, `word`, `none` or `recursive`. Learn more about [chunking strategies](https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#chunking-strategies).
+   * The chunking strategy: `sentence`, `word`, `none` or `recursive`.
    * @server_default sentence
+   * @ext_doc_id chunking-strategies
    */
   strategy?: string
 }
