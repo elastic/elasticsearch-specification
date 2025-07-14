@@ -1,0 +1,29 @@
+method_request: GET _ml/data_frame/analytics/loganalytics
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.get_data_frame_analytics(
+          id="loganalytics",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.getDataFrameAnalytics({
+        id: "loganalytics",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.get_data_frame_analytics(
+        id: "loganalytics"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->getDataFrameAnalytics([
+          "id" => "loganalytics",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/data_frame/analytics/loganalytics"'
+  - language: Java
+    code: |
+      client.ml().getDataFrameAnalytics(g -> g
+          .id("loganalytics")
+      );

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Access } from '@security/_types/Access'
 import { RequestBase } from '@_types/Base'
 import { Id, Metadata } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Access } from '@security/_types/Access'
 
 /**
  * Update a cross-cluster API key.
@@ -40,6 +40,8 @@ import { Duration } from '@_types/Time'
  * The owner user's information, such as the `username` and `realm`, is also updated automatically on every call.
  *
  * NOTE: This API cannot update REST API keys, which should be updated by either the update API key or bulk update API keys API.
+ *
+ * To learn more about how to use this API, refer to the [Update cross cluter API key API examples page](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/update-cc-api-key-examples).
  * @rest_spec_name security.update_cross_cluster_api_key
  * @availability stack stability=stable
  * @cluster_privileges manage_security

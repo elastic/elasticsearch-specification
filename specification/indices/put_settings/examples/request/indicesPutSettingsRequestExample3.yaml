@@ -1,8 +1,83 @@
 summary: Update index analysis
-# method_request: 'POST /my-index-000001/_close
-description: To add an analyzer, you must close the index, define the analyzer, then reopen the index.
+method_request: PUT /my-index-000001/_settings
+description:
+  To add an analyzer, you must close the index (`POST /my-index-000001/_close`), define the analyzer, then reopen the
+  index (`POST /my-index-000001/_open`).
 # type: request
-value:
-  "{\n  \"analysis\" : {\n    \"analyzer\":{\n      \"content\":{\n        \"\
-  type\":\"custom\",\n        \"tokenizer\":\"whitespace\"\n      }\n    }\n  }\n\
-  }\n\nPOST /my-index-000001/_open"
+value: |-
+  {
+    "analysis": {
+      "analyzer": {
+        "content": {
+          "type": "custom",
+          "tokenizer": "whitespace"
+        }
+      }
+    }
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.put_settings(
+          index="my-index-000001",
+          settings={
+              "analysis": {
+                  "analyzer": {
+                      "content": {
+                          "type": "custom",
+                          "tokenizer": "whitespace"
+                      }
+                  }
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.putSettings({
+        index: "my-index-000001",
+        settings: {
+          analysis: {
+            analyzer: {
+              content: {
+                type: "custom",
+                tokenizer: "whitespace",
+              },
+            },
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.put_settings(
+        index: "my-index-000001",
+        body: {
+          "analysis": {
+            "analyzer": {
+              "content": {
+                "type": "custom",
+                "tokenizer": "whitespace"
+              }
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->putSettings([
+          "index" => "my-index-000001",
+          "body" => [
+              "analysis" => [
+                  "analyzer" => [
+                      "content" => [
+                          "type" => "custom",
+                          "tokenizer" => "whitespace",
+                      ],
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"analysis":{"analyzer":{"content":{"type":"custom","tokenizer":"whitespace"}}}}''
+      "$ELASTICSEARCH_URL/my-index-000001/_settings"'

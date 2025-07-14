@@ -20,5 +20,6 @@
 import { SegmentsRecord } from './types'
 
 export class Response {
+  /** @codegen_name segments */
   body: Array<SegmentsRecord>
 }

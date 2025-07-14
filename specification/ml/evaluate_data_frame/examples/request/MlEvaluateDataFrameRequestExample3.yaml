@@ -1,5 +1,5 @@
 summary: Outlier detection
-# method_request: POST _ml/data_frame/_evaluate
+method_request: POST _ml/data_frame/_evaluate
 description: >
   Run `POST _ml/data_frame/_evaluate` to evaluate an outlier detection job for an annotated index.
 # type: request
@@ -9,3 +9,68 @@ value:
     outlier_detection:
       actual_field: is_outlier
       predicted_probability_field: ml.outlier_score
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.evaluate_data_frame(
+          index="my_analytics_dest_index",
+          evaluation={
+              "outlier_detection": {
+                  "actual_field": "is_outlier",
+                  "predicted_probability_field": "ml.outlier_score"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.evaluateDataFrame({
+        index: "my_analytics_dest_index",
+        evaluation: {
+          outlier_detection: {
+            actual_field: "is_outlier",
+            predicted_probability_field: "ml.outlier_score",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.evaluate_data_frame(
+        body: {
+          "index": "my_analytics_dest_index",
+          "evaluation": {
+            "outlier_detection": {
+              "actual_field": "is_outlier",
+              "predicted_probability_field": "ml.outlier_score"
+            }
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->evaluateDataFrame([
+          "body" => [
+              "index" => "my_analytics_dest_index",
+              "evaluation" => [
+                  "outlier_detection" => [
+                      "actual_field" => "is_outlier",
+                      "predicted_probability_field" => "ml.outlier_score",
+                  ],
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"index\":\"my_analytics_dest_index\",\"evaluation\":{\"outlier_detection\":{\"actual_field\":\"is_outlier\",\"predicted_pr\
+      obability_field\":\"ml.outlier_score\"}}}' \"$ELASTICSEARCH_URL/_ml/data_frame/_evaluate\""
+  - language: Java
+    code: |
+      client.ml().evaluateDataFrame(e -> e
+          .evaluation(ev -> ev
+              .outlierDetection(o -> o
+                  .actualField("is_outlier")
+                  .predictedProbabilityField("ml.outlier_score")
+              )
+          )
+          .index("my_analytics_dest_index")
+      );

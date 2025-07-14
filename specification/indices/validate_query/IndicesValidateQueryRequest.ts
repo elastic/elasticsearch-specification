@@ -28,6 +28,7 @@ import { Operator } from '@_types/query_dsl/Operator'
  * @rest_spec_name indices.validate_query
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id search-validate
  */
 export interface Request extends RequestBase {
   urls: [
@@ -84,7 +85,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards

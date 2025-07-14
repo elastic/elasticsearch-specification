@@ -17,14 +17,14 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { IndexName, PipelineName } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { ComponentTemplateNode } from '@cluster/_types/ComponentTemplate'
 import { IndexTemplate } from '@indices/_types/IndexTemplate'
 import { Pipeline } from '@ingest/_types/Pipeline'
 import { Document } from '@ingest/_types/Simulation'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { RequestBase } from '@_types/Base'
-import { IndexName, PipelineName } from '@_types/common'
-import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 /**
  * Simulate data ingestion.
@@ -88,7 +88,7 @@ export interface Request extends RequestBase {
     /**
      * A map of index template names to substitute index template definition objects.
      */
-    index_template_subtitutions?: Dictionary<string, IndexTemplate>
+    index_template_substitutions?: Dictionary<string, IndexTemplate>
     mapping_addition?: TypeMapping
     /**
      * Pipelines to test.

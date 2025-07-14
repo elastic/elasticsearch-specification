@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Include } from '@ml/_types/Include'
 import { RequestBase } from '@_types/Base'
 import { Ids } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { Include } from '@ml/_types/Include'
 
 /**
  * Get trained model configuration info.
@@ -88,12 +88,6 @@ export interface Request extends RequestBase {
      * body.
      */
     include?: Include
-
-    /**
-     * parameter is deprecated! Use [include=definition] instead
-     * @deprecated 7.10.0
-     */
-    include_model_definition?: boolean
 
     /**
      * Specifies the maximum number of models to obtain.

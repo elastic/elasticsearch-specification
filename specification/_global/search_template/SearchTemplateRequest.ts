@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
@@ -27,7 +25,10 @@ import {
   Routing,
   SearchType
 } from '@_types/common'
+import { ScriptSource } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Run a search with a search template.
@@ -73,7 +74,6 @@ export interface Request extends RequestBase {
      * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      */
     expand_wildcards?: ExpandWildcards
     /**
@@ -148,6 +148,6 @@ export interface Request extends RequestBase {
      * request body. It also supports Mustache variables. If no `id` is specified, this
      * parameter is required.
      */
-    source?: string
+    source?: ScriptSource
   }
 }

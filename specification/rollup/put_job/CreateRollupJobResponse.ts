@@ -20,5 +20,6 @@
 import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class Response {
+  /** @codegen_name result */
   body: AcknowledgedResponseBase
 }

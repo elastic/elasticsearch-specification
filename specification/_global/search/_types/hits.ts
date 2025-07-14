@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { Explanation } from '@global/explain/types'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   Fields,
@@ -33,6 +30,9 @@ import { double, integer, long } from '@_types/Numeric'
 import { FieldAndFormat } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { Sort, SortResults } from '@_types/sort'
+import { Explanation } from '@global/explain/types'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { FieldCollapse } from './FieldCollapse'
 import { Highlight } from './highlighting'
 import { SourceConfig } from './SourceFilter'
@@ -127,7 +127,7 @@ export class InnerHits {
   ignore_unmapped?: boolean
   script_fields?: Dictionary<Field, ScriptField>
   seq_no_primary_term?: boolean
-  fields?: Fields
+  fields?: Field[]
   /**
    * How the inner hits should be sorted per `inner_hits`.
    * By default, inner hits are sorted by score.

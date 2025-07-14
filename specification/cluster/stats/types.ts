@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { ByteSize, Name, VersionString } from '@_types/common'
+import { ByteSize, HealthStatus, Name, VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import {
   CompletionStats,
@@ -30,6 +29,7 @@ import {
   StoreStats
 } from '@_types/Stats'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class ClusterFileSystem {
   /**
@@ -586,4 +586,99 @@ export class IndexingPressureMemorySummary {
   primary_rejections?: long
   replica_in_bytes: long
   replica_rejections?: long
+}
+
+export class CCSStats {
+  /**
+   * Contains remote cluster settings and metrics collected from them.
+   * The keys are cluster names, and the values are per-cluster data.
+   * Only present if `include_remotes` option is set to true.
+   */
+  clusters?: Dictionary<string, RemoteClusterInfo>
+  /**
+   * Information about cross-cluster search usage.
+   */
+  _search: CCSUsageStats
+  /**
+   * Information about ES|QL cross-cluster query usage.
+   */
+  _esql?: CCSUsageStats
+}
+
+export class RemoteClusterInfo {
+  /** The UUID of the remote cluster. */
+  cluster_uuid: string
+  /** The connection mode used to communicate with the remote cluster. */
+  mode: string
+  /** The `skip_unavailable` setting used for this remote cluster. */
+  skip_unavailable: boolean
+  /** Transport compression setting used for this remote cluster. */
+  transport_compress: string
+  /** Health status of the cluster, based on the state of its primary and replica shards. */
+  status: HealthStatus
+  /** The list of Elasticsearch versions used by the nodes on the remote cluster. */
+  version: VersionString[]
+  /** The total count of nodes in the remote cluster. */
+  nodes_count: integer
+  /** The total number of shards in the remote cluster. */
+  shards_count: integer
+  /** The total number of indices in the remote cluster. */
+  indices_count: integer
+  /** Total data set size, in bytes, of all shards assigned to selected nodes. */
+  indices_total_size_in_bytes: long
+  /** Total data set size of all shards assigned to selected nodes, as a human-readable string. */
+  indices_total_size?: string
+  /** Maximum amount of memory, in bytes, available for use by the heap across the nodes of the remote cluster. */
+  max_heap_in_bytes: long
+  /** Maximum amount of memory available for use by the heap across the nodes of the remote cluster, as a human-readable string. */
+  max_heap?: string
+  /** Total amount, in bytes, of physical memory across the nodes of the remote cluster. */
+  mem_total_in_bytes: long
+  /** Total amount of physical memory across the nodes of the remote cluster, as a human-readable string. */
+  mem_total?: string
+}
+
+export class CCSUsageStats {
+  /** The total number of cross-cluster search requests that have been executed by the cluster. */
+  total: integer
+  /** The total number of cross-cluster search requests that have been successfully executed by the cluster. */
+  success: integer
+  /** The total number of cross-cluster search requests (successful or failed) that had at least one remote cluster skipped. */
+  skipped: integer
+  /** Statistics about the time taken to execute cross-cluster search requests. */
+  took: CCSUsageTimeValue
+  /** Statistics about the time taken to execute cross-cluster search requests for which the `ccs_minimize_roundtrips` setting was set to `true`. */
+  took_mrt_true?: CCSUsageTimeValue
+  /** Statistics about the time taken to execute cross-cluster search requests for which the `ccs_minimize_roundtrips` setting was set to `false`. */
+  took_mrt_false?: CCSUsageTimeValue
+  /** The maximum number of remote clusters that were queried in a single cross-cluster search request. */
+  remotes_per_search_max: integer
+  /** The average number of remote clusters that were queried in a single cross-cluster search request. */
+  remotes_per_search_avg: double
+  /** Statistics about the reasons for cross-cluster search request failures. The keys are the failure reason names and the values are the number of requests that failed for that reason. */
+  failure_reasons: Dictionary<string, integer>
+  /** The keys are the names of the search feature, and the values are the number of requests that used that feature. Single request can use more than one feature (e.g. both `async` and `wildcard`). */
+  features: Dictionary<string, integer>
+  /** Statistics about the clients that executed cross-cluster search requests. The keys are the names of the clients, and the values are the number of requests that were executed by that client. Only known clients (such as `kibana` or `elasticsearch`) are counted. */
+  clients: Dictionary<string, integer>
+  /** Statistics about the clusters that were queried in cross-cluster search requests. The keys are cluster names, and the values are per-cluster telemetry data. This also includes the local cluster itself, which uses the name `(local)`. */
+  clusters: Dictionary<string, CCSUsageClusterStats>
+}
+
+export class CCSUsageTimeValue {
+  /** The maximum time taken to execute a request, in milliseconds. */
+  max: DurationValue<UnitMillis>
+  /** The average time taken to execute a request, in milliseconds. */
+  avg: DurationValue<UnitMillis>
+  /** The 90th percentile of the time taken to execute requests, in milliseconds. */
+  p90: DurationValue<UnitMillis>
+}
+
+export class CCSUsageClusterStats {
+  /** The total number of successful (not skipped) cross-cluster search requests that were executed against this cluster. This may include requests where partial results were returned, but not requests in which the cluster has been skipped entirely. */
+  total: integer
+  /** The total number of cross-cluster search requests for which this cluster was skipped. */
+  skipped: integer
+  /** Statistics about the time taken to execute requests against this cluster. */
+  took: CCSUsageTimeValue
 }

@@ -1,10 +1,89 @@
 summary: Reindex new field names
-# method_request: POST _reindex
+method_request: POST _reindex
 description: >
-  A reindex operation can build a copy of an index with renamed fields.
-  If your index has documents with `text` and `flag` fields, you can change the latter field name to `tag` during the reindex.
+  A reindex operation can build a copy of an index with renamed fields. If your index has documents with `text` and `flag` fields,
+  you can change the latter field name to `tag` during the reindex.
 # type: request
-value:
-  "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\":\
-  \ {\n    \"index\": \"my-new-index-000001\"\n  },\n  \"script\": {\n    \"source\"\
-  : \"ctx._source.tag = ctx._source.remove(\\\"flag\\\")\"\n  }\n}"
+value: "{
+
+  \  \"source\": {
+
+  \    \"index\": \"my-index-000001\"
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"my-new-index-000001\"
+
+  \  },
+
+  \  \"script\": {
+
+  \    \"source\": \"ctx._source.tag = ctx._source.remove(\\\"flag\\\")\"
+
+  \  }
+
+  }"
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.reindex(
+          source={
+              "index": "my-index-000001"
+          },
+          dest={
+              "index": "my-new-index-000001"
+          },
+          script={
+              "source": "ctx._source.tag = ctx._source.remove(\"flag\")"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.reindex({
+        source: {
+          index: "my-index-000001",
+        },
+        dest: {
+          index: "my-new-index-000001",
+        },
+        script: {
+          source: 'ctx._source.tag = ctx._source.remove("flag")',
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.reindex(
+        body: {
+          "source": {
+            "index": "my-index-000001"
+          },
+          "dest": {
+            "index": "my-new-index-000001"
+          },
+          "script": {
+            "source": "ctx._source.tag = ctx._source.remove(\"flag\")"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->reindex([
+          "body" => [
+              "source" => [
+                  "index" => "my-index-000001",
+              ],
+              "dest" => [
+                  "index" => "my-new-index-000001",
+              ],
+              "script" => [
+                  "source" => "ctx._source.tag = ctx._source.remove(\"flag\")",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"source\":{\"index\":\"my-index-000001\"},\"dest\":{\"index\":\"my-new-index-000001\"},\"script\":{\"source\":\"ctx._sourc\
+      e.tag = ctx._source.remove(\\\"flag\\\")\"}}' \"$ELASTICSEARCH_URL/_reindex\""

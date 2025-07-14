@@ -1,0 +1,54 @@
+method_request: PUT _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/definition/0
+description: An example body for a `PUT _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/definition/0` request.
+value: |-
+  {
+      "definition": "...",
+      "total_definition_length": 265632637,
+      "total_parts": 64
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.put_trained_model_definition_part(
+          model_id="elastic__distilbert-base-uncased-finetuned-conll03-english",
+          part="0",
+          definition="...",
+          total_definition_length=265632637,
+          total_parts=64,
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.putTrainedModelDefinitionPart({
+        model_id: "elastic__distilbert-base-uncased-finetuned-conll03-english",
+        part: 0,
+        definition: "...",
+        total_definition_length: 265632637,
+        total_parts: 64,
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.put_trained_model_definition_part(
+        model_id: "elastic__distilbert-base-uncased-finetuned-conll03-english",
+        part: "0",
+        body: {
+          "definition": "...",
+          "total_definition_length": 265632637,
+          "total_parts": 64
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->putTrainedModelDefinitionPart([
+          "model_id" => "elastic__distilbert-base-uncased-finetuned-conll03-english",
+          "part" => "0",
+          "body" => [
+              "definition" => "...",
+              "total_definition_length" => 265632637,
+              "total_parts" => 64,
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"definition":"...","total_definition_length":265632637,"total_parts":64}''
+      "$ELASTICSEARCH_URL/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/definition/0"'

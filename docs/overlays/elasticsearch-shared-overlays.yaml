@@ -39,8 +39,8 @@ actions:
 
             This API requires the `manage_connector` privilege or, for read-only endpoints, the `monitor_connector` privilege.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/es-connectors-tutorial-api.html
-            description: Check out the connector API tutorial
+            url: https://www.elastic.co/docs/reference/search-connectors/api-tutorial
+            description: Check out the connector API tutorial.
         - name: ccr
           x-displayName: Cross-cluster replication
       # D
@@ -48,12 +48,12 @@ actions:
           x-displayName: Data stream
           externalDocs:
             description: Learn more about data streams. 
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html
+            url: https://www.elastic.co/docs/manage-data/data-store/data-streams
         - name: document
           x-displayName: Document
           externalDocs:
             description: Learn more about reading and writing documents.
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-replication.html
+            url: https://www.elastic.co/docs/deploy-manage/distributed-architecture/reading-and-writing-documents
       # E  
         - name: enrich
           x-displayName: Enrich
@@ -62,14 +62,14 @@ actions:
           description: >
             Event Query Language (EQL) is a query language for event-based time series data, such as logs, metrics, and traces.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/eql.html
+            url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/eql
             description: Learn more about EQL search.
         - name: esql
           x-displayName: ES|QL
           description: >
             The Elasticsearch Query Language (ES|QL) provides a powerful way to filter, transform, and analyze data stored in Elasticsearch, and in the future in other runtimes.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/esql.html
+            url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql
             description: Learn more about ES|QL.
       # F
         - name: features
@@ -83,7 +83,7 @@ actions:
           description: >
             The graph explore API enables you to extract and summarize information about the documents and terms in an Elasticsearch data stream or index.
           externalDocs:
-            url: https://www.elastic.co/guide/en/kibana/master/xpack-graph.html
+            url: https://www.elastic.co/docs/explore-analyze/visualize/graph
             description: Get started with Graph.
       # I
         - name: indices
@@ -93,7 +93,7 @@ actions:
         - name: ilm
           x-displayName: Index lifecycle management
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/index-lifecycle-management.html
+            url: https://www.elastic.co/docs/manage-data/lifecycle/index-lifecycle-management
             description: Learn more about managing the index lifecycle.
         - name: inference
           x-displayName: Inference
@@ -118,7 +118,7 @@ actions:
           description: >
             Logstash APIs enable you to manage pipelines that are used by Logstash Central Management.
           externalDocs:
-            url: https://www.elastic.co/guide/en/logstash/master/logstash-centralized-pipeline-management.html
+            url: https://www.elastic.co/docs/reference/logstash/logstash-centralized-pipeline-management
             description: Learn more about centralized pipeline management.
       # M
         - name: ml
@@ -127,19 +127,19 @@ actions:
           x-displayName: Machine learning anomaly detection
           # description:
           externalDocs:
-            url: https://www.elastic.co/guide/en/machine-learning/master/ml-ad-finding-anomalies.html
+            url: https://www.elastic.co/docs/explore-analyze/machine-learning/anomaly-detection/ml-ad-finding-anomalies
             description: Learn more about finding anomalies.
         - name: ml data frame
           x-displayName: Machine learning data frame analytics
           # description:
           externalDocs:
-            url: https://www.elastic.co/guide/en/machine-learning/master/ml-dfa-overview.html
+            url: https://www.elastic.co/docs/explore-analyze/machine-learning/data-frame-analytics/ml-dfa-overview
             description: Learn more about data frame analytics.
         - name: ml trained model
           x-displayName: Machine learning trained model
           # description:
           externalDocs:
-            url: https://www.elastic.co/guide/en/machine-learning/master/ml-nlp-overview.html
+            url: https://www.elastic.co/docs/explore-analyze/machine-learning/nlp/ml-nlp-overview
             description: Learn more about natural language processing.
         - name: migration
           x-displayName: Migration
@@ -159,7 +159,7 @@ actions:
             If a query matches one or more rules in the ruleset, the query is re-written to apply the rules before searching.
             This allows pinning documents for only queries that match a specific term.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-rule-query.html
+            url: https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-rule-query
             description: Learn more about the rule query.
       # R
         - name: rollup
@@ -171,7 +171,7 @@ actions:
             Use the script support APIs to get a list of supported script contexts and languages.
             Use the stored script APIs to manage stored scripts and search templates.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html
+            url: https://www.elastic.co/docs/explore-analyze/scripting
         - name: search
           x-displayName: Search
         - name: search_application
@@ -185,21 +185,21 @@ actions:
           description: >
             Snapshot and restore APIs enable you to set up snapshot repositories, manage snapshot backups, and restore snapshots to a running cluster.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/snapshot-restore.html
+            url: https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore
             description: Learn more about snapshot and restore operations.
         - name: slm
           x-displayName: Snapshot lifecycle management
           description: >
             Snapshot lifecycle management (SLM) APIs enable you to set up policies to automatically take snapshots and control how long they are retained.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/snapshots-take-snapshot.html
+            url: https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/create-snapshots
             description: Learn more about creating a snapshot.
         - name: sql
           x-displayName: SQL
           description: >
             Elasticsearch's SQL APIs enable you to run SQL queries on Elasticsearch indices and data streams.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/xpack-sql.html
+            url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/sql
             description: Check out the overview and tutorials for the Elasticsearch SQL features.
         - name: synonyms
           x-displayName: Synonyms
@@ -223,778 +223,774 @@ actions:
           description: >
             You can use Watcher to watch for changes or anomalies in your data and perform the necessary actions in response.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/master/xpack-alerting.html
+            url: https://www.elastic.co/docs/explore-analyze/alerts-cases/watcher
             description: Learn more about Watcher.
 # Add x-model and/or abbreviate schemas that should point to other references
-  - target: "$.components['schemas']['_types.query_dsl:QueryContainer']"
+  - target: "$.components['schemas']['_types.query_dsl.QueryContainer']"
     description: Add x-model for the QueryContainer object
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.analysis:CharFilter'].oneOf"
+  - target: "$.components['schemas']['_types.analysis.CharFilter'].oneOf"
     description: Remove existing oneOf definition for CharFilter
     remove: true
-  - target: "$.components['schemas']['_types.analysis:CharFilter']"
+  - target: "$.components['schemas']['_types.analysis.CharFilter']"
     description: Simplify CharFilter definition
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.analysis:Tokenizer'].oneOf"
+  - target: "$.components['schemas']['_types.analysis.Tokenizer'].oneOf"
     description: Remove existing oneOf definition for tokenizer
     remove: true
-  - target: "$.components['schemas']['_types.analysis:Tokenizer']"
+  - target: "$.components['schemas']['_types.analysis.Tokenizer']"
     description: Simplify tokenizer definition
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.analysis:TokenFilter'].oneOf"
+  - target: "$.components['schemas']['_types.analysis.TokenFilter'].oneOf"
     description: Remove existing oneOf definition for tokenfilter
     remove: true
-  - target: "$.components['schemas']['_types.analysis:TokenFilter']"
+  - target: "$.components['schemas']['_types.analysis.TokenFilter']"
     description: Simplify tokenfilter definition
     update:
       x-model: true
-  - target: "$.components['schemas']['security._types:RoleTemplateScript']"
+  - target: "$.components['schemas']['security._types.RoleTemplateScript']"
     description: Add x-model where recommended by Bump.sh
     update:
       x-model: true
       externalDocs:
         description: Templating a role query
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/field-and-document-access-control.html#templating-role-query
-  - target: "$.components['schemas']['_types.query_dsl:DistanceFeatureQuery']"
+        url: https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level#templating-role-query
+  - target: "$.components['schemas']['_types.query_dsl.DistanceFeatureQuery']"
     description: Add x-model for distance feature query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:GeoShapeQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.GeoShapeQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:GeoPolygonQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.GeoPolygonQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:GeoDistanceQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.GeoDistanceQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DistanceFeatureQueryBase']"
+  - target: "$.components['schemas']['_types.query_dsl.DistanceFeatureQueryBase']"
     description: Add x-model to distance feature query base
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:GeoDistanceFeatureQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.GeoDistanceFeatureQuery']"
     description: Add x-model to geo distance feature query 
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DistanceFeatureQueryBaseGeoLocationDistance']"
+  - target: "$.components['schemas']['_types.query_dsl.DistanceFeatureQueryBaseGeoLocationDistance']"
     description: Add x-model to distance feature query base geolocation distance
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DateDistanceFeatureQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.DateDistanceFeatureQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DistanceFeatureQueryBaseDateMathDuration']"
+  - target: "$.components['schemas']['_types.query_dsl.DistanceFeatureQueryBaseDateMathDuration']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MoreLikeThisQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MoreLikeThisQuery']"
     description: Add x-model for more like this query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:PercolateQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.PercolateQuery']"
     description: Add x-model for percolate query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:RankFeatureQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.RankFeatureQuery']"
     description: Add x-model for rank feature query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:ScriptQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.ScriptQuery']"
     description: Add x-model for script query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:ScriptScoreFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.ScriptScoreFunction']"
     description: Add x-model for script score query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:ScriptScoreQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.ScriptScoreQuery']"
     description: Add x-model for script score query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:WrapperQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.WrapperQuery']"
     description: Add x-model for wrapper query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:PinnedQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.PinnedQuery']"
     description: Add x-model for pinned query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:RuleQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.RuleQuery']"
     description: Add x-model for rule query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:BoolQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.BoolQuery']"
     description: Add x-model for boolean query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:QueryBase']"
+  - target: "$.components['schemas']['_types.query_dsl.QueryBase']"
     description: Add x-model for query base
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:BoostingQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.BoostingQuery']"
     description: Add x-model for query base
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:CommonTermsQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.CommonTermsQuery']"
     description: Add x-model for common terms query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:CombinedFieldsQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.CombinedFieldsQuery']"
     description: Add x-model for combined fields query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:ConstantScoreQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.ConstantScoreQuery']"
     description: Add x-model for constant score query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DisMaxQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.DisMaxQuery']"
     description: Add x-model to Disjunction max query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:UntypedDistanceFeatureQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.UntypedDistanceFeatureQuery']"
     description: Add x-model to untyped distance feature query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:ExistsQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.ExistsQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:FunctionScoreQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.FunctionScoreQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:FunctionScoreContainer']"
+  - target: "$.components['schemas']['_types.query_dsl.FunctionScoreContainer']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DecayFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.DecayFunction']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:UntypedDecayFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.UntypedDecayFunction']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DecayFunctionBase']"
+  - target: "$.components['schemas']['_types.query_dsl.DecayFunctionBase']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MultiValueMode']"
+  - target: "$.components['schemas']['_types.query_dsl.MultiValueMode']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DateDecayFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.DateDecayFunction']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DecayFunctionBaseDateMathDuration']"
+  - target: "$.components['schemas']['_types.query_dsl.DecayFunctionBaseDateMathDuration']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:NumericDecayFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.NumericDecayFunction']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DecayFunctionBasedoubledouble']"
+  - target: "$.components['schemas']['_types.query_dsl.DecayFunctionBasedoubledouble']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:GeoDecayFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.GeoDecayFunction']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DecayFunctionBaseGeoLocationDistance']"
+  - target: "$.components['schemas']['_types.query_dsl.DecayFunctionBaseGeoLocationDistance']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:FieldValueFactorScoreFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.FieldValueFactorScoreFunction']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:RandomScoreFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.RandomScoreFunction']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:FuzzyQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.FuzzyQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:GeoBoundingBoxQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.GeoBoundingBoxQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:HasChildQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.HasChildQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:HasParentQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.HasParentQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:ParentIdQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.ParentIdQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsAllOf']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsAllOf']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsContainer']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsContainer']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsAnyOf']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsAnyOf']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsFilter']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsFilter']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsFuzzy']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsFuzzy']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsMatch']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsMatch']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsPrefix']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsPrefix']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsWildcard']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsWildcard']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MatchQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MatchQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MatchBoolPrefixQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MatchBoolPrefixQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MatchPhraseQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MatchPhraseQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MatchPhrasePrefixQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MatchPhrasePrefixQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MultiMatchQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MultiMatchQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:QueryStringQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.QueryStringQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SimpleQueryStringQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SimpleQueryStringQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:ShapeQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.ShapeQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:NestedQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.NestedQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MatchAllQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MatchAllQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MatchNoneQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MatchNoneQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanContainingQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanContainingQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanFieldMaskingQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanFieldMaskingQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanFirstQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanFirstQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanMultiTermQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanMultiTermQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanNearQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanNearQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanNotQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanNotQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanOrQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanOrQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanTermQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanTermQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanWithinQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanWithinQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types:KnnQuery']"
+  - target: "$.components['schemas']['_types.KnnQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SparseVectorQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SparseVectorQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SemanticQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SemanticQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:TextExpansionQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.TextExpansionQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:WeightedTokensQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.WeightedTokensQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IdsQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.IdsQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:PrefixQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.PrefixQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:RangeQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.RangeQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:RegexpQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.RegexpQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:TermQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.TermQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:TermsQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.TermsQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:TermsSetQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.TermsSetQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:WildcardQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.WildcardQuery']"
     description: Add x-model
     update:
       x-model: true
 # Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
-  - target: "$.components['schemas']['_types.aggregations:Aggregate']"
+  - target: "$.components['schemas']['_types.aggregations.Aggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:CardinalityAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.CardinalityAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:HdrPercentilesAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.HdrPercentilesAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:HdrPercentileRanksAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.HdrPercentileRanksAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:PercentileRanksAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.PercentileRanksAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:TDigestPercentilesAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.TDigestPercentilesAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:TDigestPercentileRanksAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.TDigestPercentileRanksAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:PercentilesBucketAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.PercentilesBucketAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MedianAbsoluteDeviationAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.MedianAbsoluteDeviationAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MinAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.MinAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MaxAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.MaxAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SumAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.SumAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:AvgAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.AvgAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:WeightedAvgAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.WeightedAvgAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:ValueCountAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.ValueCountAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SimpleValueAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.SimpleValueAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:DerivativeAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.DerivativeAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:BucketMetricValueAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.BucketMetricValueAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:StatsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.StatsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:StatsBucketAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.StatsBucketAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:ExtendedStatsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.ExtendedStatsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:ExtendedStatsBucketAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.ExtendedStatsBucketAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GeoBoundsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GeoBoundsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GeoCentroidAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GeoCentroidAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:HistogramAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.HistogramAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:DateHistogramAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.DateHistogramAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:AutoDateHistogramAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.AutoDateHistogramAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:VariableWidthHistogramAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.VariableWidthHistogramAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:StringTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.StringTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:LongTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.LongTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:DoubleTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.DoubleTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:UnmappedTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.UnmappedTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:LongRareTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.LongRareTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:StringRareTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.StringRareTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:UnmappedRareTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.UnmappedRareTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MultiTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.MultiTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MissingAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.MissingAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:NestedAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.NestedAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:ReverseNestedAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.ReverseNestedAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GlobalAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GlobalAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:FilterAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.FilterAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:ChildrenAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.ChildrenAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:ParentAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.ParentAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SamplerAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.SamplerAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:UnmappedSamplerAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.UnmappedSamplerAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GeoHashGridAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GeoHashGridAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GeoTileGridAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GeoTileGridAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GeoHexGridAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GeoHexGridAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:RangeAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.RangeAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:DateRangeAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.DateRangeAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GeoDistanceAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GeoDistanceAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:IpRangeAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.IpRangeAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:IpPrefixAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.IpPrefixAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:FiltersAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.FiltersAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:AdjacencyMatrixAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.AdjacencyMatrixAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SignificantLongTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.SignificantLongTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SignificantStringTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.SignificantStringTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:UnmappedSignificantTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.UnmappedSignificantTermsAggregate']"
     description: Add x-model
     update:
       x-model: true 
-  - target: "$.components['schemas']['_types.aggregations:SignificantTermsAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.SignificantTermsAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:CompositeAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.CompositeAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:FrequentItemSetsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.FrequentItemSetsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:TimeSeriesAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.TimeSeriesAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:ScriptedMetricAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.ScriptedMetricAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:TopHitsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.TopHitsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:InferenceAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.InferenceAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:StringStatsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.StringStatsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:BoxPlotAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.BoxPlotAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:TopMetricsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.TopMetricsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:TTestAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.TTestAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:RateAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.RateAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:CumulativeCardinalityAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.CumulativeCardinalityAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MatrixStatsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.MatrixStatsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GeoLineAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GeoLineAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:AutoDateHistogramAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.AutoDateHistogramAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:CategorizeTextAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.CategorizeTextAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:DiversifiedSamplerAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.DiversifiedSamplerAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:RandomSamplerAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.RareTermsAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:RareTermsAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.SignificantTextAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SignificantTextAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.TermsAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:TermsAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.AverageBucketAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:AverageBucketAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.BucketScriptAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:BucketScriptAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.BucketKsAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:BucketKsAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.BucketCorrelationAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:BucketCorrelationAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.BucketSelectorAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:BucketSelectorAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.BucketSortAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:BucketSortAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.CumulativeSumAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:CumulativeSumAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.MaxBucketAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MaxBucketAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.MinBucketAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MinBucketAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.MovingFunctionAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MovingFunctionAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.MovingPercentilesAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MovingPercentilesAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.NormalizeAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:NormalizeAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.SerialDifferencingAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SerialDifferencingAggregation']"
-    description: Add x-model
-    update:
-      x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SumBucketAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.SumBucketAggregation']"
     description: Add x-model
     update:
       x-model: true 
-  - target: "$.components['schemas']['_types.query_dsl:LikeDocument']"
+  - target: "$.components['schemas']['_types.query_dsl.LikeDocument']"
     description: Add x-model to LikeDocument schema
     update:
       x-model: true
-  - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
+  - target: "$.components['schemas']['ml._types.Datafeed'].properties.query"
     description: Remove query object from anomaly detection datafeed
     remove: true
-  - target: "$.components['schemas']['ml._types:Datafeed'].properties"
+  - target: "$.components['schemas']['ml._types.Datafeed'].properties"
     description: Re-add a simplified query object in anomaly detection datafeed
     update:
       query:
@@ -1006,12 +1002,12 @@ actions:
           All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
           By default, this property has the following value: `{"match_all": {"boost": 1}}`.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl.html
+          url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl
           description: Query DSL
-  - target: "$.components['schemas']['ml._types:CategorizationAnalyzerDefinition'].properties.tokenizer"
+  - target: "$.components['schemas']['ml._types.CategorizationAnalyzerDefinition'].properties.tokenizer"
     description: Remove tokenizer object from ML anomaly detection analysis config
     remove: true
-  - target: "$.components['schemas']['ml._types:CategorizationAnalyzerDefinition'].properties"
+  - target: "$.components['schemas']['ml._types.CategorizationAnalyzerDefinition'].properties"
     description: Re-add a simplified tokenizer object in anomaly detection analysis config
     update:
       tokenizer:
@@ -1027,12 +1023,12 @@ actions:
           Additionally, the `ml_classic` tokenizer is available, which tokenizes in the same way as the non-customizable tokenizer in old versions of the product (before 6.2).
           `ml_classic` was the default categorization tokenizer in versions 6.2 to 7.13, so if you need categorization identical to the default for jobs created in these versions, specify `"tokenizer": "ml_classic"` in your `categorization_analyzer`.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/master/analysis-tokenizers.html
+          url: https://www.elastic.co/docs/reference/text-analysis/tokenizer-reference
           description: Tokenizer reference
-  - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties.query"
+  - target: "$.components['schemas']['ml._types.DataframeAnalyticsSource'].properties.query"
     description: Remove query object from data frame analytics source
     remove: true
-  - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties"
+  - target: "$.components['schemas']['ml._types.DataframeAnalyticsSource'].properties"
     description: Re-add a simplified query object in data frame analytics source
     update:
       query:
@@ -1044,12 +1040,12 @@ actions:
           All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
           By default, this property has the following value: `{"match_all": {}}`.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl.html
+          url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl
           description: Query DSL
-  - target: "$.components['schemas']['transform._types:Source'].properties.query"
+  - target: "$.components['schemas']['transform._types.Source'].properties.query"
     description: Remove query object from transform source
     remove: true
-  - target: "$.components['schemas']['transform._types:Source'].properties"
+  - target: "$.components['schemas']['transform._types.Source'].properties"
     description: Re-add a simplified query object in transform source
     update:
       query:
@@ -1058,1604 +1054,42 @@ actions:
         description: >
           A query clause that retrieves a subset of data from the source index.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl.html
+          url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl
           description: Query DSL
-  - target: "$.components['schemas']['_global.search._types:FieldCollapse']"
+  - target: "$.components['schemas']['_global.search._types.FieldCollapse']"
     description: Add x-model and externalDocs
     update:
       x-model: true
       externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/master/collapse-search-results.html
-  - target: "$.components['schemas']['_global.msearch:MultisearchBody'].properties"
-    description: Add x-model
+        url: https://www.elastic.co/docs/reference/elasticsearch/rest-apis/collapse-search-results
+  - target: "$.components['schemas']['indices._types.IndexSettings']"
+    description: Add x-model and externalDocs for IndexSettings component
     update:
-      aggregations:
-        x-model: true
-# Examples
-## Examples for cat
-  - target: "$.components['responses']['cat.aliases#200']"
-    description: "Add example for cat aliases response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catAliasesResponseExample1:
-              $ref: "../../specification/cat/aliases/examples/200_response/CatAliasesResponseExample1.yaml"
-  - target: "$.components['responses']['cat.allocation#200']"
-    description: "Add example for cat allocation response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catAllocationResponseExample1:
-              $ref: "../../specification/cat/allocation/examples/200_response/CatAllocationResponseExample1.yaml"
-  - target: "$.components['responses']['cat.component_templates#200']"
-    description: "Add example for cat component templates response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catComponentTemplatesResponseExample1:
-              $ref: "../../specification/cat/component_templates/examples/200_response/CatComponentTemplatesResponseExample1.yaml"
-  - target: "$.components['responses']['cat.count#200']"
-    description: "Add example for cat count response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catCountResponseExample1:
-              $ref: "../../specification/cat/count/examples/200_response/CatCountResponseExample1.yaml"
-            catCountResponseExample2:
-              $ref: "../../specification/cat/count/examples/200_response/CatCountResponseExample2.yaml" 
-  - target: "$.components['responses']['cat.fielddata#200']"
-    description: "Add example for cat fielddata response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catFieldDataResponseExample1:
-              $ref: "../../specification/cat/fielddata/examples/200_response/CatFielddataResponseExample1.yaml"
-            catFieldDataResponseExample2:
-              $ref: "../../specification/cat/fielddata/examples/200_response/CatFielddataResponseExample2.yaml" 
-  - target: "$.components['responses']['cat.indices#200']"
-    description: "Add example for cat indices response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catIndicesResponseExample1:
-              $ref: "../../specification/cat/indices/examples/200_response/CatIndicesResponseExample1.yaml" 
-  - target: "$.components['responses']['cat.ml_datafeeds#200']"
-    description: "Add example for cat datafeeds response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catDatafeedsResponseExample1:
-              $ref: "../../specification/cat/ml_datafeeds/examples/200_response/CatDatafeedsResponseExample1.yaml"
-  - target: "$.components['responses']['cat.ml_data_frame_analytics#200']"
-    description: "Add example for cat data frame analytics response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catDataFrameAnalyticsResponseExample1:
-              $ref: "../../specification/cat/ml_data_frame_analytics/examples/200_response/CatDataFrameAnalyticsResponseExample1.yaml" 
-  - target: "$.components['responses']['cat.ml_jobs#200']"
-    description: "Add example for cat anomaly detectors response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catAnomalyDetectorsResponseExample1:
-              $ref: "../../specification/cat/ml_jobs/examples/200_response/CatJobsResponseExample1.yaml"
-  - target: "$.components['responses']['cat.ml_trained_models#200']"
-    description: "Add example for cat trained models response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catTrainedModelsResponseExample1:
-              $ref: "../../specification/cat/ml_trained_models/examples/200_response/CatTrainedModelsResponseExample1.yaml"
-  - target: "$.components['responses']['cat.recovery#200']"
-    description: "Add example for cat recovery response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catRecoveryResponseExample1:
-              $ref: "../../specification/cat/recovery/examples/200_response/CatRecoveryResponseExample1.yaml"
-            catRecoveryResponseExample2:
-              $ref: "../../specification/cat/recovery/examples/200_response/CatRecoveryResponseExample2.yaml"
-            catRecoveryResponseExample3:
-              $ref: "../../specification/cat/recovery/examples/200_response/CatRecoveryResponseExample3.yaml"
-  - target: "$.components['responses']['cat.segments#200']"
-    description: "Add example for cat segments response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catSegmentsResponseExample1:
-              $ref: "../../specification/cat/segments/examples/200_response/CatSegmentsResponseExample1.yaml"
-  - target: "$.components['responses']['cat.shards#200']"
-    description: "Add example for cat shards response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catShardsResponseExample1:
-              $ref: "../../specification/cat/shards/examples/200_response/CatShardsResponseExample1.yaml"
-            catShardsResponseExample2:
-              $ref: "../../specification/cat/shards/examples/200_response/CatShardsResponseExample2.yaml"
-            catShardsResponseExample3:
-              $ref: "../../specification/cat/shards/examples/200_response/CatShardsResponseExample3.yaml"
-            catShardsResponseExample4:
-              $ref: "../../specification/cat/shards/examples/200_response/CatShardsResponseExample4.yaml"
-            catShardsResponseExample5:
-              $ref: "../../specification/cat/shards/examples/200_response/CatShardsResponseExample5.yaml"
-  - target: "$.components['responses']['cat.snapshots#200']"
-    description: "Add example for cat snapshot response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catSnapshotsResponseExample1:
-              $ref: "../../specification/cat/snapshots/examples/200_response/CatSnapshotsResponseExample1.yaml"
-  - target: "$.components['responses']['cat.templates#200']"
-    description: "Add example for cat templates response"
-    update: 
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            catTemplatesResponseExample1:
-              $ref: "../../specification/cat/templates/examples/200_response/CatTemplatesResponseExample1.yaml"
-  - target: "$.components['responses']['cat.transforms#200']"
-    description: "Add example for cat transforms response"
-    update: 
-      content:
-        application/json:
-          examples:
-            catTransformsResponseExample1:
-              $ref: "../../specification/cat/transforms/examples/200_response/CatTransformsResponseExample1.yaml"
-  - target: "$.paths['/_cat/health']['get']"
-    description: "Add examples for cat health operation"
-    update: 
-      responses:
-        200: 
-          content:
-            text/plain:
-              schema:
-                type: string
-              examples:
-                catHealthResponseExample1: 
-                  $ref: "../../specification/cat/health/examples/200_response/CatHealthResponseExample1.yaml"
-  - target: "$.paths['/_cat/master']['get']"
-    description: "Add examples for cat master operation"
-    update: 
-      responses:
-        200: 
-          content:
-            text/plain:
-              schema:
-                type: string
-              examples:
-                catMasterResponseExample1: 
-                  $ref: "../../specification/cat/master/examples/200_response/CatMasterResponseExample1.yaml"
-  - target: "$.paths['/_cat/nodeattrs']['get']"
-    description: "Add examples for cat node attributes operation"
-    update: 
-      responses:
-        200: 
-          content:
-            text/plain:
-              schema:
-                type: string
-              examples:
-                catNodeAttributesResponseExample1: 
-                  $ref: "../../specification/cat/nodeattrs/examples/200_response/CatNodeAttributesResponseExample1.yaml"
-                catNodeAttributesResponseExample2: 
-                  $ref: "../../specification/cat/nodeattrs/examples/200_response/CatNodeAttributesResponseExample2.yaml"
-  - target: "$.paths['/_cat/nodes']['get']"
-    description: "Add examples for cat nodes operation"
-    update: 
-      responses:
-        200: 
-          content:
-            text/plain:
-              schema:
-                type: string
-              examples:
-                catNodesResponseExample1: 
-                  $ref: "../../specification/cat/nodes/examples/200_response/CatNodesResponseExample1.yaml"
-                catNodesResponseExample2: 
-                  $ref: "../../specification/cat/nodes/examples/200_response/CatNodesResponseExample2.yaml"
-  - target: "$.paths['/_cat/pending_tasks']['get']"
-    description: "Add examples for cat pending tasks operation"
-    update: 
-      responses:
-        200: 
-          content:
-            text/plain:
-              schema:
-                type: string
-              examples:
-                catPendingTasksResponseExample1: 
-                  $ref: "../../specification/cat/pending_tasks/examples/200_response/CatPendingTasksResponseExample1.yaml"
-  - target: "$.paths['/_cat/plugins']['get']"
-    description: "Add examples for cat plugins operation"
-    update: 
-      responses:
-        200: 
-          content:
-            text/plain:
-              schema:
-                type: string
-              examples:
-                catPluginsResponseExample1: 
-                  $ref: "../../specification/cat/plugins/examples/200_response/CatPluginsResponseExample1.yaml"
-  - target: "$.paths['/_cat/repositories']['get']"
-    description: "Add examples for cat repositories operation"
-    update: 
-      responses:
-        200: 
-          content:
-            text/plain:
-              schema:
-                type: string
-              examples:
-                catRepositoriesResponseExample1: 
-                  $ref: "../../specification/cat/repositories/examples/200_response/CatRepositoriesResponseExample1.yaml"
-  - target: "$.paths['/_cat/tasks']['get']"
-    description: "Add examples for cat tasks operation"
-    update: 
-      responses:
-        200: 
-          content:
-            text/plain:
-              schema:
-                type: string
-              examples:
-                catTasksResponseExample1: 
-                  $ref: "../../specification/cat/tasks/examples/200_response/CatTasksResponseExample1.yaml"
-## Examples for connectors
-  - target: "$.paths['/_connector/{connector_id}/_check_in']['put']"
-    description: "Add example for check in connector response"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                connectorCheckInResponseExample1:
-                  $ref: "../../specification/connector/check_in/examples/response/ConnectorCheckInResponseExample1.yaml"
-  - target: "$.paths['/_connector/{connector_id}']['delete']"
-    description: "Add example for delete connector response"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                connectorDeleteResponseExample1:
-                  $ref: "../../specification/connector/delete/examples/response/ConnectorDeleteResponseExample1.yaml"
-  - target: "$.components['requestBodies']['connector.put']"
-    description: "Add example for create connector request"
-    update: 
-      content:
-        application/json:
-          examples:
-            connectorPutRequestExample1:
-              $ref: "../../specification/connector/put/examples/request/ConnectorPutRequestExample1.yaml"
-            connectorPutRequestExample2:
-              $ref: "../../specification/connector/put/examples/request/ConnectorPutRequestExample2.yaml"
-  - target: "$.components['responses']['connector.put#200']"
-    description: "Add example for create connector response"
-    update: 
-      content:
-        application/json:
-          examples:
-            connectorPutResponseExample:
-              $ref: "../../specification/connector/put/examples/response/ConnectorPutResponseExample1.yaml"
-  - target: "$.paths['/_connector/_sync_job/{connector_sync_job_id}']['delete']"
-    description: "Add example for delete sync job response"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                syncJobDeleteResponseExample1:
-                  $ref: "../../specification/connector/sync_job_delete/examples/response/SyncJobDeleteResponseExample1.yaml"
-  - target: "$.paths['/_connector/_sync_job']['post']"
-    description: "Add example for create sync job"
-    update: 
-      requestBody:
-        content:
-          application/json:
-            examples:
-              syncJobPostRequestExample1:
-                $ref: "../../specification/connector/sync_job_post/examples/request/SyncJobPostRequestExample1.yaml"
-  - target: "$.paths['/_connector/{connector_id}/_api_key_id']['put']"
-    description: "Add examples for update connector API key ID"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              connectorUpdateApiKeyIdRequestExample1: 
-                $ref: "../../specification/connector/update_api_key_id/examples/request/ConnectorUpdateApiKeyIDRequestExample1.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                connectorUpdateApiKeyIdResponseExample1:
-                  $ref: "../../specification/connector/update_api_key_id/examples/response/ConnectorUpdateApiKeyIDResponseExample1.yaml"
-  - target: "$.paths['/_connector/{connector_id}/_configuration']['put']"
-    description: "Add examples for update connector configuration"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              connectorUpdateConfigurationRequestExample1: 
-                $ref: "../../specification/connector/update_configuration/examples/request/ConnectorUpdateConfigurationRequestExample1.yaml"
-              connectorUpdateConfigurationRequestExample2: 
-                $ref: "../../specification/connector/update_configuration/examples/request/ConnectorUpdateConfigurationRequestExample2.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                connectorUpdateConfigurationResponseExample1:
-                  $ref: "../../specification/connector/update_configuration/examples/response/ConnectorUpdateConfigurationResponseExample1.yaml"
-  - target: "$.paths['/_connector/{connector_id}/_error']['put']"
-    description: "Add examples for update connector error field"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              connectorUpdateConfigurationRequestExample1: 
-                $ref: "../../specification/connector/update_error/examples/request/ConnectorUpdateErrorRequestExample1.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                connectorUpdateErrorResponseExample1:
-                  $ref: "../../specification/connector/update_error/examples/response/ConnectorUpdateErrorResponseExample1.yaml"
-  - target: "$.paths['/_connector/{connector_id}/_filtering']['put']"
-    description: "Add examples for update connector filtering"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              connectorUpdateFilteringRequestExample1: 
-                $ref: "../../specification/connector/update_filtering/examples/request/ConnectorUpdateFilteringRequestExample1.yaml"
-              connectorUpdateFilteringRequestExample2: 
-                $ref: "../../specification/connector/update_filtering/examples/request/ConnectorUpdateFilteringRequestExample2.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                connectorUpdateFilteringResponseExample1:
-                  $ref: "../../specification/connector/update_filtering/examples/response/ConnectorUpdateFilteringResponseExample1.yaml"
-  - target: "$.paths['/_connector/{connector_id}/_index_name']['put']"
-    description: "Add examples for update connector index name"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              connectorUpdateIndexNameRequestExample1: 
-                $ref: "../../specification/connector/update_index_name/examples/request/ConnectorUpdateIndexNameRequestExample1.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                connectorUpdateIndexNameResponseExample1:
-                  $ref: "../../specification/connector/update_index_name/examples/response/ConnectorUpdateIndexNameResponseExample1.yaml"
-  - target: "$.paths['/_connector/{connector_id}/_name']['put']"
-    description: "Add examples for update connector name"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              connectorUpdateNameRequestExample1: 
-                $ref: "../../specification/connector/update_name/examples/request/ConnectorUpdateNameRequestExample1.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                connectorUpdateNameResponseExample1:
-                  $ref: "../../specification/connector/update_name/examples/response/ConnectorUpdateNameResponseExample1.yaml"
-  - target: "$.paths['/_connector/{connector_id}/_pipeline']['put']"
-    description: "Add examples for update connector pipeline"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              connectorUpdatePipelineRequestExample1: 
-                $ref: "../../specification/connector/update_pipeline/examples/request/ConnectorUpdatePipelineRequestExample1.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                connectorUpdatePipelineResponseExample1:
-                  $ref: "../../specification/connector/update_pipeline/examples/response/ConnectorUpdatePipelineResponseExample1.yaml"
-  - target: "$.paths['/_connector/{connector_id}/_scheduling']['put']"
-    description: "Add examples for update connector scheduling"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              connectorUpdateSchedulingRequestExample1: 
-                $ref: "../../specification/connector/update_scheduling/examples/request/ConnectorUpdateSchedulingRequestExample1.yaml"
-              connectorUpdateSchedulingRequestExample2: 
-                $ref: "../../specification/connector/update_scheduling/examples/request/ConnectorUpdateSchedulingRequestExample2.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                connectorUpdateSchedulingResponseExample1:
-                  $ref: "../../specification/connector/update_scheduling/examples/response/ConnectorUpdateSchedulingResponseExample1.yaml"
-  - target: "$.paths['/_connector/{connector_id}/_service_type']['put']"
-    description: "Add examples for update connector service type"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              connectorUpdateServiceTypeRequestExample1: 
-                $ref: "../../specification/connector/update_service_type/examples/request/ConnectorUpdateServiceTypeRequestExample1.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                connectorUpdateServiceTypeResponseExample1:
-                  $ref: "../../specification/connector/update_service_type/examples/response/ConnectorUpdateServiceTypeResponseExample1.yaml"
-  - target: "$.paths['/_connector/{connector_id}/_status']['put']"
-    description: "Add examples for update connector status"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              connectorUpdateStatusRequestExample1: 
-                $ref: "../../specification/connector/update_status/examples/request/ConnectorUpdateStatusRequestExample1.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                connectorUpdateStatusResponseExample1:
-                  $ref: "../../specification/connector/update_status/examples/response/ConnectorUpdateStatusResponseExample1.yaml"
-## Examples for data streams
-  - target: "$.paths['/_data_stream/{name}/_lifecycle']['delete']"
-    description: "Add example for delete data stream lifecycle response"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                indicesDeleteDataLifecycleResponseExample1:
-                  $ref: "../../specification/indices/delete_data_lifecycle/examples/200_response/IndicesDeleteDataLifecycleResponseExample1.yaml"
-  - target: "$.paths['/_data_stream/{name}/_lifecycle']['get']"
-    description: "Add example for get data stream lifecycle response"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                indicesGetDataLifecycleResponseExample1:
-                  $ref: "../../specification/indices/get_data_lifecycle/examples/response/IndicesGetDataLifecycleResponseExample1.yaml"
-  - target: "$.components['responses']['indices.get_data_stream#200']"
-    description: "Add example for get data stream response"
-    update: 
-      content:
-        application/json:
-          examples:
-            indicesGetDataStreamResponseExample:
-              $ref: "../../specification/indices/get_data_stream/examples/200_response/indicesGetDataStreamResponseExample1.yaml"
-  - target: "$.paths['/_data_stream/{name}/_lifecycle']['put']"
-    description: "Add examples update data stream lifecycle request and response"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              indicesPutDataLifecycleRequestExample1: 
-                $ref: "../../specification/indices/put_data_lifecycle/examples/request/IndicesPutDataLifecycleRequestExample1.yaml"
-              indicesPutLifecycleRequestExample2:
-                $ref: "../../specification/indices/put_data_lifecycle/examples/request/IndicesPutDataLifecycleRequestExample2.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                indicesPutDataLifecycleResponseExample1:
-                  $ref: "../../specification/indices/put_data_lifecycle/examples/200_response/IndicesPutDataLifecycleResponseExample1.yaml"
-  - target: "$.paths['/{index}/_lifecycle/explain']['get']"
-    description: "Add example for explain data stream lifecycle response"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                indicesExplainDataLifecycleResponseExample:
-                  $ref: "../../specification/indices/explain_data_lifecycle/examples/response/IndicesExplainDataLifecycleResponseExample1.yaml"
-## Examples for documents
-  - target: "$.components['requestBodies']['bulk']"
-    description: "Add example for bulk index or delete documents"
-    update: 
-      content:
-        application/json:
-          examples:
-            bulkDocumentRequestExample1:
-              $ref: "../../specification/_global/bulk/examples/request/BulkRequestExample1.yaml"
-            bulkDocumentRequestExample2:
-              $ref: "../../specification/_global/bulk/examples/request/BulkRequestExample2.yaml"
-            bulkDocumentRequestExample3:
-              $ref: "../../specification/_global/bulk/examples/request/BulkRequestExample3.yaml"
-            bulkDocumentRequestExample4:
-              $ref: "../../specification/_global/bulk/examples/request/BulkRequestExample4.yaml"
-  - target: "$.components['responses']['bulk#200']"
-    description: "Add example for bulk indext or delete documents response"
-    update: 
-      content:
-        application/json:
-          examples:
-            bulkDocumentResponseExample1:
-              $ref: "../../specification/_global/bulk/examples/response/BulkResponseExample1.yaml"
-            bulkDocumentResponseExample2:
-              $ref: "../../specification/_global/bulk/examples/response/BulkResponseExample2.yaml"
-            bulkDocumentResponseExample3:
-              $ref: "../../specification/_global/bulk/examples/response/BulkResponseExample3.yaml"
-  - target: "$.components['requestBodies']['create']"
-    description: "Add example for create documents"
-    update: 
-      content:
-        application/json:
-          examples:
-            createDocumentRequestExample1:
-              $ref: "../../specification/_global/create/examples/request/CreateRequestExample1.yaml"
-  - target: "$.paths['/{index}/_doc/{id}']['delete']"
-    description: "Add examples for delete document operation"
-    update: 
-      responses:
-        200: 
-          content: 
-            application/json: 
-              examples: 
-                deleteDocumentResponseExample1: 
-                  $ref: "../../specification/_global/delete/examples/response/DeleteResponseExample1.yaml"
-  - target: "$.paths['/{index}/_delete_by_query']['post']"
-    description: "Add examples delete by query operation"
-    update:
-      requestBody:
-        content:
-          application/json:
-            examples:
-              deleteByQueryRequestExample1:
-                $ref: "../../specification/_global/delete_by_query/examples/request/DeleteByQueryRequestExample1.yaml"
-              deleteByQueryRequestExample2:
-                $ref: "../../specification/_global/delete_by_query/examples/request/DeleteByQueryRequestExample2.yaml"
-              deleteByQueryRequestExample3:
-                $ref: "../../specification/_global/delete_by_query/examples/request/DeleteByQueryRequestExample3.yaml"
-              deleteByQueryRequestExample4:
-                $ref: "../../specification/_global/delete_by_query/examples/request/DeleteByQueryRequestExample4.yaml"
-      responses:
-        200: 
-          content: 
-            application/json: 
-              examples: 
-                deleteDocumentResponseExample1: 
-                  $ref: "../../specification/_global/delete_by_query/examples/response/DeleteByQueryResponseExample1.yaml"
-  - target: "$.paths['/{index}/_doc/{id}']['get']"
-    description: "Add examples for get document operation"
-    update: 
-      responses:
-        200: 
-          content: 
-            application/json: 
-              examples: 
-                getDocumentResponseExample1: 
-                  $ref: "../../specification/_global/get/examples/response/GetResponseExample1.yaml"
-                getDocumentResponseExample2: 
-                  $ref: "../../specification/_global/get/examples/response/GetResponseExample2.yaml"
-                getDocumentResponseExample3: 
-                  $ref: "../../specification/_global/get/examples/response/GetResponseExample3.yaml"
-  - target: "$.components['requestBodies']['index']"
-    description: "Add example for index request"
-    update: 
-      content:
-        application/json:
-          examples:
-            indexRequestExample1:
-              $ref: "../../specification/_global/index/examples/request/IndexRequestExample1.yaml"
-            indexRequestExample2:
-              $ref: "../../specification/_global/index/examples/request/IndexRequestExample2.yaml"
-  - target: "$.components['responses']['index#200']"
-    description: "Add example for index response"
-    update: 
-      content:
-        application/json:
-          examples:
-            indexResponseExample1:
-              $ref: "../../specification/_global/index/examples/response/IndexResponseExample1.yaml"
-            indexResponseExample2:
-              $ref: "../../specification/_global/index/examples/response/IndexResponseExample2.yaml"
-  - target: "$.components['requestBodies']['mget']"
-    description: "Add example for mget request"
-    update: 
-      content:
-        application/json:
-          examples:
-            mgetRequestExample1:
-              $ref: "../../specification/_global/mget/examples/request/MultiGetRequestExample1.yaml"
-            mgetRequestExample2:
-              $ref: "../../specification/_global/mget/examples/request/MultiGetRequestExample2.yaml"
-            mgetRequestExample3:
-              $ref: "../../specification/_global/mget/examples/request/MultiGetRequestExample3.yaml"
-            mgetRequestExample4:
-              $ref: "../../specification/_global/mget/examples/request/MultiGetRequestExample4.yaml"
-  - target: "$.components['requestBodies']['mtermvectors']"
-    description: "Add example for multi term vectors request"
-    update: 
-      content:
-        application/json:
-          examples:
-            multiTermVectorsRequestExample1:
-              $ref: "../../specification/_global/mtermvectors/examples/request/MultiTermVectorsRequestExample1.yaml"
-            multiTermVectorsRequestExample2:
-              $ref: "../../specification/_global/mtermvectors/examples/request/MultiTermVectorsRequestExample2.yaml"
-            multiTermVectorsRequestExample3:
-              $ref: "../../specification/_global/mtermvectors/examples/request/MultiTermVectorsRequestExample3.yaml"
-  - target: "$.paths['/_reindex']['post']"
-    description: "Add examples for reindex operation"
-    update:
-      requestBody:
-        content:
-          application/json:
-            examples:
-              reindexRequestExample1:
-                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample1.yaml"
-              reindexRequestExample2:
-                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample2.yaml"
-              reindexRequestExample3:
-                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample3.yaml"
-              reindexRequestExample4:
-                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample4.yaml"
-              reindexRequestExample5:
-                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample5.yaml"
-              reindexRequestExample6:
-                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample6.yaml"
-              reindexRequestExample7:
-                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample7.yaml"
-              reindexRequestExample8:
-                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample8.yaml"
-              reindexRequestExample9:
-                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample9.yaml"
-              reindexRequestExample10:
-                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample10.yaml"
-              reindexRequestExample11:
-                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample11.yaml"
-              reindexRequestExample12:
-                $ref: "../../specification/_global/reindex/examples/request/ReindexRequestExample12.yaml"
-  - target: "$.paths['/{index}/_update/{id}']['post']"
-    description: "Add examples for update document operation"
-    update:
-      requestBody:
-        content:
-          application/json:
-            examples:
-              updateRequestExample1:
-                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample1.yaml"
-              updateRequestExample2:
-                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample2.yaml"
-              updateRequestExample3:
-                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample3.yaml"
-              updateRequestExample4:
-                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample4.yaml"
-              updateRequestExample5:
-                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample5.yaml"
-              updateRequestExample6:
-                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample6.yaml"
-              updateRequestExample7:
-                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample7.yaml"
-              updateRequestExample8:
-                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample8.yaml"
-              updateRequestExample9:
-                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample9.yaml"
-              updateRequestExample10:
-                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample10.yaml"
-              updateRequestExample11:
-                $ref: "../../specification/_global/update/examples/request/UpdateRequestExample11.yaml"
-      responses:
-        200: 
-          content:
-            application/json:
-              examples:
-                updateResponseExample1: 
-                  $ref: "../../specification/_global/update/examples/response/UpdateResponseExample1.yaml"
-  - target: "$.paths['/{index}/_update_by_query']['post']"
-    description: "Add examples for update by query operation"
-    update:
-      requestBody:
-        content:
-          application/json:
-            examples:
-              updateByQueryRequestExample1:
-                $ref: "../../specification/_global/update_by_query/examples/request/UpdateByQueryRequestExample1.yaml"
-              updateByQueryRequestExample2:
-                $ref: "../../specification/_global/update_by_query/examples/request/UpdateByQueryRequestExample2.yaml"
-              updateByQueryRequestExample3:
-                $ref: "../../specification/_global/update_by_query/examples/request/UpdateByQueryRequestExample3.yaml"
-              updateByQueryRequestExample4:
-                $ref: "../../specification/_global/update_by_query/examples/request/UpdateByQueryRequestExample4.yaml"
-## Examples for EQL
-  - target: "$.paths['/_eql/search/status/{id}']['get']"
-    description: "Add examples for get async EQL status operation"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                eqlGetStatusResponseExample1:
-                  $ref: "../../specification/eql/get_status/examples/response/EqlGetStatusResponseExample1.yaml"
-  - target: "$.components['requestBodies']['eql.search']"
-    description: "Add examples for EQL search operation"
-    update: 
-      content: 
-        application/json: 
-          examples: 
-            eqlSearchRequestExample1: 
-              $ref: "../../specification/eql/search/examples/request/EqlSearchRequestExample1.yaml"
-            eqlSearchRequestExample2: 
-              $ref: "../../specification/eql/search/examples/request/EqlSearchRequestExample2.yaml"
-  - target: "$.components['reponses']['eql.search#200']"
-    description: "Add examples for EQL search operation"
-    update: 
-      content:
-        application/json:
-          examples:
-            eqlSearchResponseExample2:
-              $ref: "../../specification/eql/search/examples/response/EqlSearchResponseExample2.yaml"
-## Examples for ESQL
-  - target: "$.paths['/_query']['post']"
-    description: "Add examples for ES|QL query operation"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              esqlQueryRequestExample1: 
-                $ref: "../../specification/esql/query/examples/request/QueryRequestExample1.yaml"
-## Examples for graph
-  - target: "$.components['requestBodies']['graph.explore']"
-    description: "Add example for graph explore request"
-    update: 
-      content:
-        application/json:
-          examples:
-            graphExploreRequestExample1:
-              $ref: "../../specification/graph/explore/examples/request/GraphExploreRequestExample1.yaml"
-## Examples for indices
-  - target: "$.components['requestBodies']['indices.put_index_template']"
-    description: "Add example for create index template request"
-    update: 
-      content:
-        application/json:
-          examples:
-            indicesPutIndexTemplateRequestExample1:
-              $ref: "../../specification/indices/put_index_template/examples/request/indicesPutIndexTemplateRequestExample1.yaml"
-  - target: "$.components['requestBodies']['indices.put_mapping']"
-    description: "Add example for update mapping request"
-    update: 
-      content:
-        application/json:
-          examples:
-            indicesPutSettingRequestExample1:
-              $ref: "../../specification/indices/put_mapping/examples/request/indicesPutMappingRequestExample1.yaml"
-  - target: "$.components['requestBodies']['indices.put_settings']"
-    description: "Add example for update index settings request"
-    update: 
-      content:
-        application/json:
-          examples:
-            indicesPutSettingRequestExample1:
-              $ref: "../../specification/indices/put_settings/examples/request/IndicesPutSettingsRequestExample1.yaml"
-  - target: "$.paths['/_resolve/index/{name}']['get']"
-    description: "Add examples for resolve index operation"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                indicesResolveResponseExample1:
-                  $ref: "../../specification/indices/resolve_index/examples/response/ResolveIndexResponseExample1.yaml"
-  - target: "$.components['requestBodies']['indices.rollover']"
-    description: "Add example for rollover index request"
-    update: 
-      content:
-        application/json:
-          examples:
-            indicesRolloverRequestExample1:
-              $ref: "../../specification/indices/rollover/examples/request/indicesRolloverRequestExample1.yaml"
-  - target: "$.components['responses']['indices.rollover#200']"
-    description: "Add example for rollover index response"
-    update: 
-      content:
-        application/json:
-          examples:
-            indicesRolloverResponseExample1:
-              $ref: "../../specification/indices/rollover/examples/200_response/indicesRolloverResponseExample1.yaml"
-  - target: "$.paths['/{index}/_block/{block}']['put']"
-    description: "Add examples for add index block operation"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                indicesAddBlockResponseExample1:
-                  $ref: "../../specification/indices/add_block/examples/response/IndicesAddBlockResponseExample1.yaml"
-  - target: "$.components['requestBodies']['indices.analyze']"
-    description: "Add example for analyze API request"
-    update: 
-      content:
-        application/json:
-          examples:
-            indicesAnalyzeRequestExample1:
-              $ref: "../../specification/indices/analyze/examples/request/indicesAnalyzeRequestExample1.yaml"
-  - target: "$.paths['/{index}']['put']"
-    description: "Add examples for create index request"
-    update: 
-      requestBody:
-        content:
-          application/json:
-            examples:
-              indicesCreateRequestExample1:
-                $ref: "../../specification/indices/create/examples/request/indicesCreateRequestExample1.yaml"
-              indicesCreateRequestExample2:
-                $ref: "../../specification/indices/create/examples/request/indicesCreateRequestExample2.yaml"
-  - target: "$.components['requestBodies']['cluster.put_component_template']"
-    description: "Add example for put component template request"
-    update: 
-      content:
-        application/json:
-          examples:
-            clusterPutComponentTemplateRequestExample1:
-              $ref: "../../specification/cluster/put_component_template/examples/request/ClusterPutComponentTemplateRequestExample1.yaml"
-            clusterPutComponentTemplateRequestExample2:
-              $ref: "../../specification/cluster/put_component_template/examples/request/ClusterPutComponentTemplateRequestExample2.yaml"
-## Examples for info
-  - target: "$.paths['/']['get']"
-    description: "Add examples for cluster info"
-    update: 
-      responses:
-        200: 
-          content:
-            application/json:
-              examples:
-                clusterInfoResponseExample1: 
-                  $ref: "../../specification/_global/info/examples/response/RootNodeInfoResponseExample1.yaml"
-## Examples for ingest
-  - target: "$.components['responses']['ingest.get_pipeline#200']"
-    description: "Add example for get pipeline response"
-    update: 
-      content:
-        application/json:
-          examples:
-            indicesGetDataStreamResponseExample:
-              $ref: "../../specification/ingest/get_pipeline/examples/200_response/GetPipelineResponseExample1.yaml"
-  - target: "$.paths['/_ingest/pipeline/{id}']['put']"
-    description: "Add examples for create pipeline"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              putPipelineRequestExample1: 
-                $ref: "../../specification/ingest/put_pipeline/examples/request/PutPipelineRequestExample1.yaml"
-              putPipelineRequestExample2: 
-                $ref: "../../specification/ingest/put_pipeline/examples/request/PutPipelineRequestExample2.yaml"
-  - target: "$.components['requestBodies']['ingest.simulate']"
-    description: "Add example for simulate pipeline request"
-    update: 
-      content:
-        application/json:
-          examples:
-            simulatePipelineRequestExample1:
-              $ref: "../../specification/ingest/simulate/examples/request/SimulatePipelineRequestExample1.yaml"
-  - target: "$.components['responses']['ingest.simulate#200']"
-    description: "Add example for simulate pipeline response"
-    update: 
-      content:
-        application/json:
-          examples:
-            simulatePipelineResponseExample1:
-              $ref: "../../specification/ingest/simulate/examples/response/SimulatePipelineResponseExample1.yaml"## Examples for behavioral analytics
-## Examples for licensing
-  - target: "$.paths['/_license']['get']"
-    description: "Add example for get license response"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                getLicenseResponseExample1:
-                  $ref: "../../specification/license/get/examples/response/GetLicenseResponseExample1.yaml"
-## Examples for machine learning
-  - target: "$.paths['/_ml/data_frame/_evaluate']['post']"
-    description: "Add examples for evaluate data frame analytics"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              mlDataFrameAnalyticsEvaluateRequestExample1: 
-                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample1.yaml"
-              mlDataFrameAnalyticsEvaluateRequestExample2: 
-                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample2.yaml"
-              mlDataFrameAnalyticsEvaluateRequestExample3: 
-                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample3.yaml"
-              mlDataFrameAnalyticsEvaluateRequestExample4: 
-                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample4.yaml"
-              mlDataFrameAnalyticsEvaluateRequestExample5: 
-                $ref: "../../specification/ml/evaluate_data_frame/examples/request/MlEvaluateDataFrameRequestExample5.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                mlDataFrameAnalyticsEvaluateResponseExample1:
-                  $ref: "../../specification/ml/evaluate_data_frame/examples/response/MlEvaluateDataFrameResponseExample1.yaml"
-                mlDataFrameAnalyticsEvaluateResponseExample2:
-                  $ref: "../../specification/ml/evaluate_data_frame/examples/response/MlEvaluateDataFrameResponseExample2.yaml"
-                mlDataFrameAnalyticsEvaluateResponseExample3:
-                  $ref: "../../specification/ml/evaluate_data_frame/examples/response/MlEvaluateDataFrameResponseExample3.yaml"
-  - target: "$.paths['/_ml/anomaly_detectors/_estimate_model_memory']['post']"
-    description: "Add examples for estimate anomaly job model memory"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              mlAnomalyJobEstimateRequestExample1: 
-                $ref: "../../specification/ml/estimate_model_memory/examples/request/MlEstimatemodelMemoryRequestExample1.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                mlAnomalyJobEstimateResponseExample1:
-                  $ref: "../../specification/ml/estimate_model_memory/examples/response/MlEstimateModelMemoryResponseExample1.yaml"
-  - target: "$.paths['/_ml/anomaly_detectors/{job_id}']['put']"
-    description: "Add examples for create anomaly detection job"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              mlAnomalyJobCreateRequestExample1: 
-                $ref: "../../specification/ml/put_job/examples/request/MlPutJobRequestExample1.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                mlAnomalyJobCreateResponseExample1:
-                  $ref: "../../specification/ml/put_job/examples/200_response/MlPutJobResponseExample1.yaml"
-  - target: "$.paths['/_ml/anomaly_detectors/{job_id}/_open']['post']"
-    description: "Add examples for open anomaly detection job"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              mlAnomalyJobOpenRequestExample1: 
-                $ref: "../../specification/ml/open_job/examples/request/MlOpenJobRequestExample1.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                mlAnomalyJobCreateResponseExample1:
-                  $ref: "../../specification/ml/open_job/examples/200_response/MlOpenJobResponseExample1.yaml"
-  - target: "$.paths['/_ml/trained_models/{model_id}/model_aliases/{model_alias}']['delete']"
-    description: "Add examples for delete trained model alias"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                mlTrainedModelAliasDeleteResponseExample1:
-                  $ref: "../../specification/ml/delete_trained_model_alias/examples/response/MlDeleteTrainedModelAliasResponseExample1.yaml"
-  - target: "$.paths['/_ml/trained_models/{model_id}']['delete']"
-    description: "Add examples for delete trained model"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                mlTrainedModelDeleteResponseExample1:
-                  $ref: "../../specification/ml/delete_trained_model/examples/response/MlDeleteTrainedModelResponseExample1.yaml"
-  - target: "$.paths['/_ml/anomaly_detectors/{job_id}']['delete']"
-    description: "Add examples for delete anomaly detection job"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                mlAnomalyJobDeleteResponseExample1:
-                  $ref: "../../specification/ml/delete_job/examples/response/MlDeleteJobResponseExample1.yaml"
-                mlAnomalyJobDeleteResponseExample2:
-                  $ref: "../../specification/ml/delete_job/examples/response/MlDeleteJobResponseExample2.yaml"
-  - target: "$.paths['/_ml/filters/{filter_id}']['delete']"
-    description: "Add examples for delete filter"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                mlFilterDeleteResponseExample1:
-                  $ref: "../../specification/ml/delete_filter/examples/response/MlDeleteFilterResponseExample1.yaml"
-  - target: "$.paths['/_ml/datafeeds/{datafeed_id}']['delete']"
-    description: "Add examples for delete data feed"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                mlDatafeedDeleteResponseExample1:
-                  $ref: "../../specification/ml/delete_datafeed/examples/response/MlDeleteDatafeedResponseExample1.yaml"
-  - target: "$.paths['/_ml/data_frame/analytics/{id}']['delete']"
-    description: "Add examples for delete data frame analytics job"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                mlDataFrameAnalyticsDeleteResponseExample1:
-                  $ref: "../../specification/ml/delete_data_frame_analytics/examples/response/MlDeleteDataFrameAnalyticsResponseExample1.yaml"
-  - target: "$.paths['/_ml/calendars/{calendar_id}/jobs/{job_id}']['delete']"
-    description: "Add examples for delete anomaly jobs from calendar"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                mlCalendarJobDeleteResponseExample1:
-                  $ref: "../../specification/ml/delete_calendar_job/examples/response/MlDeleteCalendarJobResponseExample1.yaml"
-  - target: "$.paths['/_ml/calendars/{calendar_id}/events/{event_id}']['delete']"
-    description: "Add examples for delete event from calendar"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                mlCalendarEventDeleteResponseExample1:
-                  $ref: "../../specification/ml/delete_calendar_event/examples/response/MlDeleteCalendarEventResponseExample1.yaml"
-  - target: "$.paths['/_ml/calendars/{calendar_id}']['delete']"
-    description: "Add examples for delete event from calendar"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                mlCalendarDeleteResponseExample1:
-                  $ref: "../../specification/ml/delete_calendar/examples/response/MlDeleteCalendarResponseExample1.yaml"
-  - target: "$.paths['/_ml/anomaly_detectors/{job_id}/_close']['post']"
-    description: "Add examples for close anomaly job"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                mlAnomalyJobCloseResponseExample1:
-                  $ref: "../../specification/ml/close_job/examples/response/MlCloseJobResponseExample1.yaml"
-## Examples for script
-  - target: "$.components['requestBodies']['put_script']"
-    description: "Add example for create script request"
-    update: 
-      content:
-        application/json:
-          examples:
-            putScriptRequestExample1:
-              $ref: "../../specification/_global/put_script/examples/request/PutScriptRequestExample1.yaml"
-            putScriptRequestExample2:
-              $ref: "../../specification/_global/put_script/examples/request/PutScriptRequestExample2.yaml"
-  - target: "$.components['requestBodies']['scripts_painless_execute']"
-    description: "Add example for run painless script request"
-    update: 
-      content:
-        application/json:
-          examples:
-            runPainlessScriptRequestExample1:
-              $ref: "../../specification/_global/scripts_painless_execute/examples/request/ExecutePainlessScriptRequestExample1.yaml"
-            runPainlessScriptRequestExample2:
-              $ref: "../../specification/_global/scripts_painless_execute/examples/request/ExecutePainlessScriptRequestExample2.yaml"
-            runPainlessScriptRequestExample3:
-              $ref: "../../specification/_global/scripts_painless_execute/examples/request/ExecutePainlessScriptRequestExample3.yaml"
-  - target: "$.components['responses']['scripts_painless_execute#200']"
-    description: "Add example for run painless script response"
-    update: 
-      content:
-        application/json:
-          examples:
-            runPainlessScriptResponseExample1:
-              $ref: "../../specification/_global/scripts_painless_execute/examples/response/ExecutePainlessScriptResponseExample1.yaml"
-            runPainlessScriptResponseExample2:
-              $ref: "../../specification/_global/scripts_painless_execute/examples/response/ExecutePainlessScriptResponseExample2.yaml"
-            runPainlessScriptResponseExample3:
-              $ref: "../../specification/_global/scripts_painless_execute/examples/response/ExecutePainlessScriptResponseExample3.yaml"
-## Examples for search
-  - target: "$.components['requestBodies']['clear_scroll']"
-    description: "Add example for clear scroll request"
-    update: 
-      content:
-        application/json:
-          examples:
-            clearScrollRequestExample1:
-              $ref: "../../specification/_global/clear_scroll/examples/request/ClearScrollRequestExample1.yaml"
-  - target: "$.paths['/_pit']['delete']"
-    description: "Add examples for close PIT operation"
-    update:
-      requestBody:
-        content:
-          application/json:
-            examples:
-              closePointInTimeRequestExample1: 
-                $ref: "../../specification/_global/close_point_in_time/examples/request/ClosePointInTimeRequestExample1.yaml"
-      responses:
-        200: 
-          content: 
-            application/json: 
-              examples: 
-                closePointInTimeResponseExample1: 
-                  $ref: "../../specification/_global/close_point_in_time/examples/200_response/ClosePointInTimeResponseExample1.yaml"
-  - target: "$.components['requestBodies']['count']"
-    description: "Add example for count request"
-    update: 
-      content:
-        application/json:
-          examples:
-            countRequestExample1:
-              $ref: "../../specification/_global/count/examples/request/CountRequestExample1.yaml"
-  - target: "$.components['responses']['count#200']"
-    description: "Add example for count response"
-    update: 
-      content:
-        application/json:
-          examples:
-            countResponseExample1:
-              $ref: "../../specification/_global/count/examples/200_response/CountResponseExample1.yaml"
-  - target: "$.components['requestBodies']['explain']"
-    description: "Add example for explain request"
-    update: 
-      content:
-        application/json:
-          examples:
-            explainRequestExample1:
-              $ref: "../../specification/_global/explain/examples/request/ExplainRequestExample1.yaml"
-  - target: "$.components['responses']['explain#200']"
-    description: "Add example for explain response"
-    update: 
-      content:
-        application/json:
-          examples:
-            explainResponseExample1:
-              $ref: "../../specification/_global/explain/examples/response/ExplainResponseExample1.yaml"
-  - target: "$.components['requestBodies']['field_caps']"
-    description: "Add example for field capabilities request"
-    update: 
-      content:
-        application/json:
-          examples:
-            fieldCapabilitiesRequestExample1:
-              $ref: "../../specification/_global/field_caps/examples/request/FieldCapabilitiesRequestExample1.yaml"
-  - target: "$.components['responses']['field_caps#200']"
-    description: "Add example for field capabilities response"
-    update: 
-      content:
-        application/json:
-          examples:
-            fieldCapabilitiesResponseExample1:
-              $ref: "../../specification/_global/field_caps/examples/response/FieldCapabilitiesResponseExample1.yaml"
-            fieldCapabilitiesResponseExample2:
-              $ref: "../../specification/_global/field_caps/examples/response/FieldCapabilitiesResponseExample2.yaml"
-  - target: "$.components['requestBodies']['msearch_template']"
-    description: "Add example for multi search template request"
-    update: 
-      content:
-        application/json:
-          examples:
-            multiSearchTemplateRequestExample1:
-              $ref: "../../specification/_global/msearch_template/examples/request/MultiSearchTemplateRequestExample1.yaml"
-  - target: "$.paths['/{index}/_pit']['post']"
-    description: "Add examples for open PIT operation"
-    update:
-      responses:
-        200: 
-          content: 
-            application/json: 
-              examples: 
-                openPointInTimeResponseExample1: 
-                  $ref: "../../specification/_global/open_point_in_time/examples/response/OpenPointInTimeResponseExample1.yaml"
-  - target: "$.components['requestBodies']['scroll']"
-    description: "Add example for scroll request"
-    update: 
-      content:
-        application/json:
-          examples:
-            scrollRequestExample1:
-              $ref: "../../specification/_global/scroll/examples/request/ScrollRequestExample1.yaml"
-  - target: "$.components['requestBodies']['search']"
-    description: "Add example for search request"
-    update: 
-      content:
-        application/json:
-          examples:
-            searchRequestExample1:
-              $ref: "../../specification/_global/search/examples/request/SearchRequestExample1.yaml"
-            searchRequestExample2:
-              $ref: "../../specification/_global/search/examples/request/SearchRequestExample2.yaml"
-            searchRequestExample3:
-              $ref: "../../specification/_global/search/examples/request/SearchRequestExample3.yaml"
-  - target: "$.components['responses']['search#200']"
-    description: "Add example for search response"
-    update: 
-      content:
-        application/json:
-          examples:
-            searchResponseExample1:
-              $ref: "../../specification/_global/search/examples/200_response/SearchResponseExample1.yaml"
-  - target: "$.components['requestBodies']['search_mvt']"
-    description: "Add example for search MVT request"
-    update: 
-      content:
-        application/json:
-          examples:
-            searchMvtRequestExample1:
-              $ref: "../../specification/_global/search_mvt/examples/request/SearchMvtRequestExample1.yaml"
-  - target: "$.components['responses']['search_mvt#200']"
-    description: "Add example for search MVT response"
-    update: 
-      content:
-        application/json:
-          examples:
-            searchMvtResponseExample1:
-              $ref: "../../specification/_global/search_mvt/examples/response/SearchMvtResponseExample1.yaml"
-  - target: "$.components['responses']['search_shards#200']"
-    description: "Add example for search shards response"
-    update: 
-      content:
-        application/json:
-          examples:
-            searchShardsResponseExample1:
-              $ref: "../../specification/_global/search_shards/examples/response/SearchShardsResponseExample1.yaml"
-  - target: "$.components['requestBodies']['search_template']"
-    description: "Add example for search template request"
-    update: 
-      content:
-        application/json:
-          examples:
-            searchTemplateRequestExample1:
-              $ref: "../../specification/_global/search_template/examples/request/SearchTemplateRequestExample1.yaml"
-  - target: "$.components['requestBodies']['terms_enum']"
-    description: "Add example for terms enum request"
-    update: 
-      content:
-        application/json:
-          examples:
-            termsEnumRequestExample1:
-              $ref: "../../specification/_global/terms_enum/examples/request/TermsEnumRequestExample1.yaml"
-  - target: "$.components['responses']['terms_enum#200']"
-    description: "Add example for terms enum response"
-    update: 
-      content:
-        application/json:
-          examples:
-            termsEnumResponseExample1:
-              $ref: "../../specification/_global/terms_enum/examples/response/TermsEnumResponseExample1.yaml"
-  - target: "$.components['requestBodies']['termvectors']"
-    description: "Add example for term vectors request"
-    update: 
-      content:
-        application/json:
-          examples:
-            termVectorsRequestExample1:
-              $ref: "../../specification/_global/termvectors/examples/request/TermVectorsRequestExample1.yaml"
-            termVectorsRequestExample2:
-              $ref: "../../specification/_global/termvectors/examples/request/TermVectorsRequestExample2.yaml"
-            termVectorsRequestExample3:
-              $ref: "../../specification/_global/termvectors/examples/request/TermVectorsRequestExample3.yaml"
-            termVectorsRequestExample4:
-              $ref: "../../specification/_global/termvectors/examples/request/TermVectorsRequestExample4.yaml"
-            termVectorsRequestExample5:
-              $ref: "../../specification/_global/termvectors/examples/request/TermVectorsRequestExample5.yaml"
-  - target: "$.components['responses']['termvectors#200']"
-    description: "Add example for term vectors response"
-    update: 
-      content:
-        application/json:
-          examples:
-            termVectorsResponseExample1:
-              $ref: "../../specification/_global/termvectors/examples/response/TermVectorsResponseExample1.yaml"
-            termVectorsResponseExample2:
-              $ref: "../../specification/_global/termvectors/examples/response/TermVectorsResponseExample2.yaml"
-            termVectorsResponseExample3:
-              $ref: "../../specification/_global/termvectors/examples/response/TermVectorsResponseExample3.yaml"
-  - target: "$.components['requestBodies']['async_search.submit']"
-    description: "Add example for asynch search submit request"
-    update: 
-      content:
-        application/json:
-          examples:
-            asyncSearchSubmitRequestExample1:
-              $ref: "../../specification/async_search/submit/examples/request/AsyncSearchSubmitRequestExample1.yaml"
-  - target: "$.components['responses']['async_search.submit#200']"
-    description: "Add example for asynch search submit response"
-    update: 
-      content:
-        application/json:
-          examples:
-            asyncSearchSubmitResponseExample1:
-              $ref: "../../specification/async_search/submit/examples/response/AsyncSearchSubmitResponseExample1.yaml"
-  - target: "$.paths['/_async_search/status/{id}']['get']"
-    description: "Add examples for get async search status"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                asyncSearchStatusResponseExample1:
-                  $ref: "../../specification/async_search/status/examples/response/AsyncSearchStatusResponseExample1.yaml"
-                asyncSearchStatusResponseExample2:
-                  $ref: "../../specification/async_search/status/examples/response/AsyncSearchStatusResponseExample2.yaml"
-                asyncSearchStatusResponseExample3:
-                  $ref: "../../specification/async_search/status/examples/response/AsyncSearchStatusResponseExample3.yaml"
-  - target: "$.paths['/_async_search/{id}']['get']"
-    description: "Add examples for get async search"
-    update: 
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                asyncSearchResponseExample1:
-                  $ref: "../../specification/async_search/get/examples/response/AsyncSearchGetResponseExample1.yaml"
-## Examples for search applications
-  - target: "$.paths['/_application/search_application']['get']"
-    description: "Add examples for get search applications operation"
-    update: 
-      responses:
-        200: 
-          content: 
-            application/json: 
-              examples: 
-                getSearchApplicationsResponseExample1: 
-                  $ref: "../../specification/search_application/list/examples/200_response/SearchApplicationsListResponseExample1.yaml"
-  - target: "$.paths['/_application/search_application/{name}']['get']"
-    description: "Add examples for get search application details operation"
-    update: 
-      responses:
-        200: 
-          content: 
-            application/json: 
-              examples: 
-                getSearchApplicationResponseExample1: 
-                  $ref: "../../specification/search_application/get/examples/200_response/SearchApplicationGetResponseExample1.yaml"
-  - target: "$.paths['/_application/search_application/{name}']['put']"
-    description: "Add examples for create search application operation"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              putSearchApplicationRequestExample1: 
-                $ref: "../../specification/search_application/put/examples/request/SearchApplicationPutRequestExample1.yaml"
-  - target: "$.components['requestBodies']['search_application.search']"
-    description: "Add example for search application search request"
-    update: 
-      content:
-        application/json:
-          examples:
-            searchApplicationSearchRequestExample1:
-              $ref: "../../specification/search_application/search/examples/request/SearchApplicationsSearchRequestExample1.yaml"
-  - target: "$.components['responses']['search_application.get_behavioral_analytics#200']"
-    description: "Add example for get behavioral analytics collections response"
-    update: 
-      content:
-        application/json:
-          examples:
-            getBehavioralAnalyticsCollectionsResponseExample1:
-              $ref: "../../specification/search_application/get_behavioral_analytics/examples/200_response/BehavioralAnalyticsGetResponseExample1.yaml"
-## Examples for transforms
-  - target: "$.paths['/_transform/{transform_id}']['put']"
-    description: "Add examples for create transform operation"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              createTransformRequestExample1: 
-                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample1.yaml"
-              createTransformRequestExample2:
-                $ref: "../../specification/transform/put_transform/examples/request/PutTransformRequestExample2.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                createTransformResponseExample1:
-                  $ref: "../../specification/transform/put_transform/examples/response/PutTransformResponseExample1.yaml"
-  - target: "$.components['requestBodies']['transform.preview_transform']"
-    description: "Add examples for preview transform operation"
-    update: 
-      content: 
-        application/json: 
-          examples: 
-            previewTransformRequestExample1: 
-              $ref: "../../specification/transform/preview_transform/examples/request/PreviewTransformRequestExample1.yaml"
-  - target: "$.components['responses']['transform.preview_transform#200']"
-    description: "Add examples for preview transform operation"
-    update: 
-      content:
-        application/json:
-          examples:
-            previewTransformResponseExample1:
-              $ref: "../../specification/transform/preview_transform/examples/response/PreviewTransformResponseExample1.yaml"
-  - target: "$.paths['/_transform/{transform_id}/_update']['post']"
-    description: "Add examples for update transform operation"
-    update: 
-      requestBody: 
-        content: 
-          application/json: 
-            examples: 
-              updateTransformRequestExample1: 
-                $ref: "../../specification/transform/update_transform/examples/request/UpdateTransformRequestExample1.yaml"
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                updateTransformResponseExample1:
-                  $ref: "../../specification/transform/update_transform/examples/response/UpdateTransformResponseExample1.yaml"
-  - target: "$.paths['/_transform/{transform_id}/_stop']['post']"
-    description: "Add examples for transform stop"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                transformStopResponseExample1:
-                  $ref: "../../specification/transform/stop_transform/examples/response/StopTransformResponseExample1.yaml"
-  - target: "$.paths['/_transform/{transform_id}/_start']['post']"
-    description: "Add examples for transform start"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                transformStartResponseExample1:
-                  $ref: "../../specification/transform/start_transform/examples/response/StartTransformResponseExample1.yaml"
-  - target: "$.paths['/_transform/{transform_id}/_schedule_now']['post']"
-    description: "Add examples for transform schedule now"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                transformScheduleNowResponseExample1:
-                  $ref: "../../specification/transform/schedule_now_transform/examples/response/ScheduleNowTransformResponseExample1.yaml"
-  - target: "$.paths['/_transform/{transform_id}/_reset']['post']"
-    description: "Add examples for transform reset"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                transformResetResponseExample1:
-                  $ref: "../../specification/transform/reset_transform/examples/response/ResetTransformResponseExample1.yaml"
-  - target: "$.paths['/_transform/{transform_id}/_stats']['get']"
-    description: "Add examples for transform get stats"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                transformGetStatsResponseExample1:
-                  $ref: "../../specification/transform/get_transform_stats/examples/response/GetTransformStatsResponseExample1.yaml"
-  - target: "$.paths['/_transform/{transform_id}']['delete']"
-    description: "Add examples for transform delete"
-    update:
-      responses:
-        200:
-          content:
-            application/json:
-              examples:
-                transformDeleteResponseExample1:
-                  $ref: "../../specification/transform/delete_transform/examples/response/DeleteTransformResponseExample1.yaml"
-  - target: "$.components['transform.get_transform#200']"
-    description: "Add examples for transform get"
-    update:
-      content:
-        application/json:
-          examples:
-            transformGetResponseExample1:
-              $ref: "../../specification/transform/get_transform/examples/response/GetTransformResponseExample1.yaml"
-## xCodeSamples
-  - target: "$.paths['/{index}/_doc/{id}']['head']"
-    description: "Add xCodeSamples for check document operation"
-    update: 
-      x-codeSamples:
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsConsoleExample1.yaml"
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsCurlExample1.yaml"
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsJavaScriptExample1.yaml"
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsPythonExample1.yaml"
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsRubyExample1.yaml"
+      x-model: true
+      externalDocs:
+        description: Index settings
+        url: https://www.elastic.co/docs/reference/elasticsearch/index-settings/
+  - target: "$.components['schemas']['indices._types.IndexSettings'].properties"
+    description: Remove properties IndexSettings object
+    remove: true
+  # - target: "$.components['schemas']['_global.msearch.MultisearchBody'].properties"
+  #   description: Add x-model
+  #   update:
+  #     aggregations:
+  #       x-model: true
+# Remove long lists of enum values
+  - target: "$.components['schemas']['cat._types.CatAnomalyDetectorColumn'].enum"
+    description: Remove enum array from cat detectors
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatDfaColumn'].enum"
+    description: Remove enum array from cat data frame analytics
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatDatafeedColumn'].enum"
+    description: Remove enum array from cat datafeeds
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatTrainedModelsColumn'].enum"
+    description: Remove enum array from cat trained models
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatTransformColumn'].enum"
+    description: Remove enum array from cat transforms
+    remove: true

@@ -44,6 +44,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_text_structure
  * @doc_id find-structure
+ * @ext_doc_id find-text-structure-examples
  */
 export interface Request<TJsonDocument> {
   urls: [

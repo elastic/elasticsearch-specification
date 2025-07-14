@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Metadata } from '@_types/common'
 import {
   ApplicationPrivileges,
   ClusterPrivilege,
@@ -27,7 +28,6 @@ import {
 import { RoleTemplate } from '@security/_types/RoleTemplate'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Metadata } from '@_types/common'
 
 export class Role {
   cluster: ClusterPrivilege[]
@@ -41,7 +41,8 @@ export class Role {
    */
   remote_cluster?: RemoteClusterPrivileges[]
   metadata: Metadata
-  run_as: string[]
+  description?: string
+  run_as?: string[]
   transient_metadata?: Dictionary<string, UserDefinedValue>
   applications: ApplicationPrivileges[]
   role_templates?: RoleTemplate[]

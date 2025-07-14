@@ -1,0 +1,15 @@
+method_request: GET /_ssl/certificates
+alternatives:
+  - language: Python
+    code: resp = client.ssl.certificates()
+  - language: JavaScript
+    code: const response = await client.ssl.certificates();
+  - language: Ruby
+    code: response = client.ssl.certificates
+  - language: PHP
+    code: $resp = $client->ssl()->certificates();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ssl/certificates"'
+  - language: Java
+    code: |
+      client.ssl().certificates();

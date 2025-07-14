@@ -1,0 +1,29 @@
+method_request: GET /_ccr/auto_follow/my_auto_follow_pattern
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ccr.get_auto_follow_pattern(
+          name="my_auto_follow_pattern",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ccr.getAutoFollowPattern({
+        name: "my_auto_follow_pattern",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ccr.get_auto_follow_pattern(
+        name: "my_auto_follow_pattern"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ccr()->getAutoFollowPattern([
+          "name" => "my_auto_follow_pattern",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ccr/auto_follow/my_auto_follow_pattern"'
+  - language: Java
+    code: |
+      client.ccr().getAutoFollowPattern(g -> g
+          .name("my_auto_follow_pattern")
+      );

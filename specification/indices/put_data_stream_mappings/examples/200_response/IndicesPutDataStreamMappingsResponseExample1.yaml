@@ -1,0 +1,36 @@
+summary: Change data stream settings on a data stream
+description: >
+  This shows a response to `PUT /_data_stream/my-data-stream/_settings` when two settings are successfully updated on
+  the data stream. In this case, `index.number_of_shards` is only applied to the data stream -- it will be applied to
+  the write index on rollover. The setting `index.lifecycle.name` is applied to the data stream and all backing indices.
+type: response
+response_code: 200
+value: |-
+  {
+    "data_streams": [
+      {
+        "name": "my-data-stream",
+        "applied_to_data_stream": true,
+        "mappings": {
+          "properties": {
+            "field1": {
+              "type": "ip"
+            },
+            "field3": {
+              "type": "text"
+            }
+          }
+        },
+        "effective_mappings": {
+          "properties": {
+            "field1": {
+              "type": "ip"
+            },
+            "field3": {
+              "type": "text"
+            }
+          }
+        }
+      }
+    ]
+  }

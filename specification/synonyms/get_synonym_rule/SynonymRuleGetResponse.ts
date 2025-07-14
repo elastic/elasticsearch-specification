@@ -20,5 +20,6 @@
 import { SynonymRuleRead } from '../_types/SynonymRule'
 
 export class Response {
+  /** @codegen_name synonym_rule */
   body: SynonymRuleRead
 }

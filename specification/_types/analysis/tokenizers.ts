@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Stringified } from '@spec_utils/Stringified'
 import { VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { Stringified } from '@spec_utils/Stringified'
 import { IcuTokenizer } from './icu-plugin'
 import { KuromojiTokenizer } from './kuromoji-plugin'
 import { NoriTokenizer } from './nori-plugin'
@@ -50,10 +50,7 @@ export class EdgeNGramTokenizer extends TokenizerBase {
   custom_token_chars?: string
   max_gram?: integer
   min_gram?: integer
-  /**
-   * @server_default []
-   */
-  token_chars?: TokenChar[]
+  token_chars?: string | TokenChar[]
 }
 
 export enum TokenChar {

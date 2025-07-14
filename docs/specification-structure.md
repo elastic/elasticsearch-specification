@@ -1,7 +1,7 @@
 # Specification structure
 
 The [`/specification`](../specification) folders follows a set of rules to
-keep the defintion easy to access and contribute, while maintaing
+keep the definition easy to access and contribute, while maintaining
 the generated schema consistent and useful for language generators.
 
 ## Rules
@@ -14,7 +14,7 @@ root of the [`/specification`](../specification) folder as well
 as inside the namespaces when necessary.
 
 You should decide if a type should go inside the top-level `_types`
-folder or inside a namespace (eg: `indices/_types`) on a case by case basis.
+folder or inside a namespace (e.g.: `indices/_types`) on a case by case basis.
 A good rule of thumb is that if a type is widely used in the specification,
 it should go in the top level `_types`, while if it's used only within
 a namespace or a few times in other namespaces, it could go inside the
@@ -29,8 +29,9 @@ end with `Request` or `Response`.
 
 ### Request and Response definitions
 
-Request and Reponse definitions should be placed by structly following
+Request and Response definitions should be placed by strictly following
 the rest-api-spec structure.
+the `rest-api-spec` structure.
 For example, the request and response definition for `indices.put_mapping`
 should go in [`/specification/indices/put_mapping`](../specification/indices/put_mapping).
 There are no requirements on the file name, but the type should be

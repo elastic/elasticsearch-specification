@@ -404,6 +404,8 @@ fn generate_interface_def(
             doc_url: None,
             ext_doc_id: None,
             ext_doc_url: None,
+            ext_doc_description: None,
+            ext_previous_version_doc_url: None,
             codegen_name: None, // FIXME: extension in workplace search
             description: None,
             aliases: Vec::default(),

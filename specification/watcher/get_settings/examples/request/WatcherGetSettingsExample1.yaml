@@ -1,0 +1,15 @@
+method_request: GET /_watcher/settings
+alternatives:
+  - language: Python
+    code: resp = client.watcher.get_settings()
+  - language: JavaScript
+    code: const response = await client.watcher.getSettings();
+  - language: Ruby
+    code: response = client.watcher.get_settings
+  - language: PHP
+    code: $resp = $client->watcher()->getSettings();
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_watcher/settings"'
+  - language: Java
+    code: |
+      client.watcher().getSettings(g -> g);

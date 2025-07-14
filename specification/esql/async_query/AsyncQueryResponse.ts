@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { EsqlResult } from '@_types/Binary'
+import { AsyncEsqlResult } from '@esql/_types/EsqlResult'
 
 export class Response {
-  body: EsqlResult
+  /** @codegen_name data */
+  body: AsyncEsqlResult
 }

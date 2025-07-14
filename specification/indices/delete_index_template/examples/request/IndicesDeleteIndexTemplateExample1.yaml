@@ -1,0 +1,29 @@
+method_request: DELETE /_index_template/my-index-template
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.indices.delete_index_template(
+          name="my-index-template",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.indices.deleteIndexTemplate({
+        name: "my-index-template",
+      });
+  - language: Ruby
+    code: |-
+      response = client.indices.delete_index_template(
+        name: "my-index-template"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->indices()->deleteIndexTemplate([
+          "name" => "my-index-template",
+      ]);
+  - language: curl
+    code: 'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_index_template/my-index-template"'
+  - language: Java
+    code: |
+      client.indices().deleteIndexTemplate(d -> d
+          .name("my-index-template")
+      );

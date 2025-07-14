@@ -55,6 +55,12 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
+     * Comma-separated list of data streams, indices, and aliases used to limit the request.
+     * Supports wildcards (`*`).
+     * To target all data streams and indices, omit this parameter or use `*` or `_all`.
+     */
+    index?: Indices
+    /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
      * This behavior applies even if the request targets other open indices.
      * @server_default true
@@ -64,7 +70,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards

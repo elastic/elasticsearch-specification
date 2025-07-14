@@ -1,0 +1,92 @@
+summary: A text embedding task
+description:
+  Run `PUT _inference/text_embedding/azure_ai_studio_embeddings` to create an inference endpoint that performs a
+  text_embedding task. Note that you do not specify a model here, as it is defined already in the Azure AI Studio deployment.
+method_request: 'PUT _inference/text_embedding/azure_ai_studio_embeddings'
+# type: "request"
+value: |-
+  {
+      "service": "azureaistudio",
+      "service_settings": {
+          "api_key": "Azure-AI-Studio-API-key",
+          "target": "Target-Uri",
+          "provider": "openai",
+          "endpoint_type": "token"
+      }
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.inference.put(
+          task_type="text_embedding",
+          inference_id="azure_ai_studio_embeddings",
+          inference_config={
+              "service": "azureaistudio",
+              "service_settings": {
+                  "api_key": "Azure-AI-Studio-API-key",
+                  "target": "Target-Uri",
+                  "provider": "openai",
+                  "endpoint_type": "token"
+              }
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.inference.put({
+        task_type: "text_embedding",
+        inference_id: "azure_ai_studio_embeddings",
+        inference_config: {
+          service: "azureaistudio",
+          service_settings: {
+            api_key: "Azure-AI-Studio-API-key",
+            target: "Target-Uri",
+            provider: "openai",
+            endpoint_type: "token",
+          },
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.inference.put(
+        task_type: "text_embedding",
+        inference_id: "azure_ai_studio_embeddings",
+        body: {
+          "service": "azureaistudio",
+          "service_settings": {
+            "api_key": "Azure-AI-Studio-API-key",
+            "target": "Target-Uri",
+            "provider": "openai",
+            "endpoint_type": "token"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->inference()->put([
+          "task_type" => "text_embedding",
+          "inference_id" => "azure_ai_studio_embeddings",
+          "body" => [
+              "service" => "azureaistudio",
+              "service_settings" => [
+                  "api_key" => "Azure-AI-Studio-API-key",
+                  "target" => "Target-Uri",
+                  "provider" => "openai",
+                  "endpoint_type" => "token",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"service\":\"azureaistudio\",\"service_settings\":{\"api_key\":\"Azure-AI-Studio-API-key\",\"target\":\"Target-Uri\",\"pro\
+      vider\":\"openai\",\"endpoint_type\":\"token\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/azure_ai_studio_embeddings\""
+  - language: Java
+    code: >
+      client.inference().put(p -> p
+          .inferenceId("azure_ai_studio_embeddings")
+          .taskType(TaskType.TextEmbedding)
+          .inferenceConfig(i -> i
+              .service("azureaistudio")
+              .serviceSettings(JsonData.fromJson("{\"api_key\":\"Azure-AI-Studio-API-key\",\"target\":\"Target-Uri\",\"provider\":\"openai\",\"endpoint_type\":\"token\"}"))
+          )
+      );

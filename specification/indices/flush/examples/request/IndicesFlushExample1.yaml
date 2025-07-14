@@ -1,0 +1,15 @@
+method_request: POST /_flush
+alternatives:
+  - language: Python
+    code: resp = client.indices.flush()
+  - language: JavaScript
+    code: const response = await client.indices.flush();
+  - language: Ruby
+    code: response = client.indices.flush
+  - language: PHP
+    code: $resp = $client->indices()->flush();
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_flush"'
+  - language: Java
+    code: |
+      client.indices().flush(f -> f);

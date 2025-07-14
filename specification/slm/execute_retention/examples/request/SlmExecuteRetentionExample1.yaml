@@ -1,0 +1,15 @@
+method_request: POST _slm/_execute_retention
+alternatives:
+  - language: Python
+    code: resp = client.slm.execute_retention()
+  - language: JavaScript
+    code: const response = await client.slm.executeRetention();
+  - language: Ruby
+    code: response = client.slm.execute_retention
+  - language: PHP
+    code: $resp = $client->slm()->executeRetention();
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_slm/_execute_retention"'
+  - language: Java
+    code: |
+      client.slm().executeRetention(e -> e);

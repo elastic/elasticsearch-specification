@@ -1,6 +1,8 @@
 # summary:
-# method_request: POST _ml/anomaly_detectors/_estimate_model_memory
-description: Run `POST _ml/anomaly_detectors/_estimate_model_memory` to estimate the model memory limit based on the analysis configuration details provided in the request body.
+method_request: POST _ml/anomaly_detectors/_estimate_model_memory
+description:
+  Run `POST _ml/anomaly_detectors/_estimate_model_memory` to estimate the model memory limit based on the analysis
+  configuration details provided in the request body.
 # type: request
 value:
   analysis_config:
@@ -19,3 +21,138 @@ value:
   max_bucket_cardinality:
     source_ip: 300
     dest_ip: 30
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.estimate_model_memory(
+          analysis_config={
+              "bucket_span": "5m",
+              "detectors": [
+                  {
+                      "function": "sum",
+                      "field_name": "bytes",
+                      "by_field_name": "status",
+                      "partition_field_name": "app"
+                  }
+              ],
+              "influencers": [
+                  "source_ip",
+                  "dest_ip"
+              ]
+          },
+          overall_cardinality={
+              "status": 10,
+              "app": 50
+          },
+          max_bucket_cardinality={
+              "source_ip": 300,
+              "dest_ip": 30
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.estimateModelMemory({
+        analysis_config: {
+          bucket_span: "5m",
+          detectors: [
+            {
+              function: "sum",
+              field_name: "bytes",
+              by_field_name: "status",
+              partition_field_name: "app",
+            },
+          ],
+          influencers: ["source_ip", "dest_ip"],
+        },
+        overall_cardinality: {
+          status: 10,
+          app: 50,
+        },
+        max_bucket_cardinality: {
+          source_ip: 300,
+          dest_ip: 30,
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.estimate_model_memory(
+        body: {
+          "analysis_config": {
+            "bucket_span": "5m",
+            "detectors": [
+              {
+                "function": "sum",
+                "field_name": "bytes",
+                "by_field_name": "status",
+                "partition_field_name": "app"
+              }
+            ],
+            "influencers": [
+              "source_ip",
+              "dest_ip"
+            ]
+          },
+          "overall_cardinality": {
+            "status": 10,
+            "app": 50
+          },
+          "max_bucket_cardinality": {
+            "source_ip": 300,
+            "dest_ip": 30
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->estimateModelMemory([
+          "body" => [
+              "analysis_config" => [
+                  "bucket_span" => "5m",
+                  "detectors" => array(
+                      [
+                          "function" => "sum",
+                          "field_name" => "bytes",
+                          "by_field_name" => "status",
+                          "partition_field_name" => "app",
+                      ],
+                  ),
+                  "influencers" => array(
+                      "source_ip",
+                      "dest_ip",
+                  ),
+              ],
+              "overall_cardinality" => [
+                  "status" => 10,
+                  "app" => 50,
+              ],
+              "max_bucket_cardinality" => [
+                  "source_ip" => 300,
+                  "dest_ip" => 30,
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"analysis_config\":{\"bucket_span\":\"5m\",\"detectors\":[{\"function\":\"sum\",\"field_name\":\"bytes\",\"by_field_name\":\
+      \"status\",\"partition_field_name\":\"app\"}],\"influencers\":[\"source_ip\",\"dest_ip\"]},\"overall_cardinality\":{\"status\
+      \":10,\"app\":50},\"max_bucket_cardinality\":{\"source_ip\":300,\"dest_ip\":30}}'
+      \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/_estimate_model_memory\""
+  - language: Java
+    code: |
+      client.ml().estimateModelMemory(e -> e
+          .analysisConfig(a -> a
+              .bucketSpan(b -> b
+                  .time("5m")
+              )
+              .detectors(d -> d
+                  .byFieldName("status")
+                  .fieldName("bytes")
+                  .function("sum")
+                  .partitionFieldName("app")
+              )
+              .influencers(List.of("source_ip","dest_ip"))
+          )
+          .maxBucketCardinality(Map.of("dest_ip", 30L,"source_ip", 300L))
+          .overallCardinality(Map.of("app", 50L,"status", 10L))
+      );

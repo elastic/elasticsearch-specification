@@ -1,0 +1,39 @@
+method_request: GET /_cat/snapshots/repo1?v=true&s=id&format=json
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.cat.snapshots(
+          repository="repo1",
+          v=True,
+          s="id",
+          format="json",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.cat.snapshots({
+        repository: "repo1",
+        v: "true",
+        s: "id",
+        format: "json",
+      });
+  - language: Ruby
+    code: |-
+      response = client.cat.snapshots(
+        repository: "repo1",
+        v: "true",
+        s: "id",
+        format: "json"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->cat()->snapshots([
+          "repository" => "repo1",
+          "v" => "true",
+          "s" => "id",
+          "format" => "json",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_cat/snapshots/repo1?v=true&s=id&format=json"'
+  - language: Java
+    code: |
+      client.cat().snapshots();

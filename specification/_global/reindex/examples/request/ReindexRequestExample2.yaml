@@ -1,8 +1,7 @@
 summary: Manual slicing
-# method_request: POST _reindex
+method_request: POST _reindex
 description: >
-  Run `POST _reindex` to slice a reindex request manually.
-  Provide a slice ID and total number of slices to each request.
+  Run `POST _reindex` to slice a reindex request manually. Provide a slice ID and total number of slices to each request.
 # type: request
 value: |-
   {
@@ -17,3 +16,69 @@ value: |-
       "index": "my-new-index-000001"
     }
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.reindex(
+          source={
+              "index": "my-index-000001",
+              "slice": {
+                  "id": 0,
+                  "max": 2
+              }
+          },
+          dest={
+              "index": "my-new-index-000001"
+          },
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.reindex({
+        source: {
+          index: "my-index-000001",
+          slice: {
+            id: 0,
+            max: 2,
+          },
+        },
+        dest: {
+          index: "my-new-index-000001",
+        },
+      });
+  - language: Ruby
+    code: |-
+      response = client.reindex(
+        body: {
+          "source": {
+            "index": "my-index-000001",
+            "slice": {
+              "id": 0,
+              "max": 2
+            }
+          },
+          "dest": {
+            "index": "my-new-index-000001"
+          }
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->reindex([
+          "body" => [
+              "source" => [
+                  "index" => "my-index-000001",
+                  "slice" => [
+                      "id" => 0,
+                      "max" => 2,
+                  ],
+              ],
+              "dest" => [
+                  "index" => "my-new-index-000001",
+              ],
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"source":{"index":"my-index-000001","slice":{"id":0,"max":2}},"dest":{"index":"my-new-index-000001"}}''
+      "$ELASTICSEARCH_URL/_reindex"'

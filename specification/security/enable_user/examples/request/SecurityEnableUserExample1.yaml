@@ -1,0 +1,29 @@
+method_request: PUT _security/user/logstash_system/_enable
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.enable_user(
+          username="logstash_system",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.enableUser({
+        username: "logstash_system",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.enable_user(
+        username: "logstash_system"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->enableUser([
+          "username" => "logstash_system",
+      ]);
+  - language: curl
+    code: 'curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/user/logstash_system/_enable"'
+  - language: Java
+    code: |
+      client.security().enableUser(e -> e
+          .username("logstash_system")
+      );

@@ -20,5 +20,6 @@
 import { MasterRecord } from './types'
 
 export class Response {
+  /** @codegen_name masters */
   body: Array<MasterRecord>
 }

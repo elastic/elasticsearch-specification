@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
 import { RequestBase } from '@_types/Base'
 import { DataStreamNames, ExpandWildcards } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { DataStreamLifecycleDownsampling } from '@indices/_types/DataStreamLifecycleDownsampling'
 
 /**
  * Update data stream lifecycles.
@@ -29,6 +29,8 @@ import { Duration } from '@_types/Time'
  * @availability stack since=8.11.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag data stream
+ * @doc_id data-stream-put-lifecycle
+ * @ext_doc_id data-stream-lifecycle
  */
 export interface Request extends RequestBase {
   urls: [
@@ -49,7 +51,6 @@ export interface Request extends RequestBase {
     /**
      * Type of data stream that wildcard patterns can match.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `hidden`, `open`, `closed`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -67,8 +68,26 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  /**
-   * @codegen_name lifecycle
+  /*
+   * This is DataStreamLifecycle from @indices/_types/DataStreamLifecycle.ts,
+   * but kept as a properties body to avoid a breaking change
    */
-  body: DataStreamLifecycle
+  body: {
+    /**
+     * If defined, every document added to this data stream will be stored at least for this time frame.
+     * Any time after this duration the document could be deleted.
+     * When empty, every document in this data stream will be stored indefinitely.
+     */
+    data_retention?: Duration
+    /**
+     * The downsampling configuration to execute for the managed backing index after rollover.
+     */
+    downsampling?: DataStreamLifecycleDownsampling
+    /**
+     * If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle
+     * that's disabled (enabled: `false`) will have no effect on the data stream.
+     * @server_default true
+     */
+    enabled?: boolean
+  }
 }

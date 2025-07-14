@@ -1,0 +1,29 @@
+method_request: GET /_autoscaling/policy/my_autoscaling_policy
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.autoscaling.get_autoscaling_policy(
+          name="my_autoscaling_policy",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.autoscaling.getAutoscalingPolicy({
+        name: "my_autoscaling_policy",
+      });
+  - language: Ruby
+    code: |-
+      response = client.autoscaling.get_autoscaling_policy(
+        name: "my_autoscaling_policy"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->autoscaling()->getAutoscalingPolicy([
+          "name" => "my_autoscaling_policy",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_autoscaling/policy/my_autoscaling_policy"'
+  - language: Java
+    code: |
+      client.autoscaling().getAutoscalingPolicy(g -> g
+          .name("my_autoscaling_policy")
+      );

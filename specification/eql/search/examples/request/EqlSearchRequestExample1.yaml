@@ -1,7 +1,8 @@
 summary: Basic query
-# method_request: GET /my-data-stream/_eql/search
+method_request: GET /my-data-stream/_eql/search
 description: >
-  Run `GET /my-data-stream/_eql/search` to search for events that have a `process.name` of `cmd.exe` and a  `process.pid` other than `2013`.
+  Run `GET /my-data-stream/_eql/search` to search for events that have a `process.name` of `cmd.exe` and a  `process.pid` other than
+  `2013`.
 # type: request
 value: |-
   {
@@ -9,3 +10,44 @@ value: |-
       process where (process.name == "cmd.exe" and process.pid != 2013)
     """
   }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.eql.search(
+          index="my-data-stream",
+          query="\n    process where (process.name == \"cmd.exe\" and process.pid != 2013)\n  ",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.eql.search({
+        index: "my-data-stream",
+        query:
+          '\n    process where (process.name == "cmd.exe" and process.pid != 2013)\n  ',
+      });
+  - language: Ruby
+    code: |-
+      response = client.eql.search(
+        index: "my-data-stream",
+        body: {
+          "query": "\n    process where (process.name == \"cmd.exe\" and process.pid != 2013)\n  "
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->eql()->search([
+          "index" => "my-data-stream",
+          "body" => [
+              "query" => "\n    process where (process.name == \"cmd.exe\" and process.pid != 2013)\n  ",
+          ],
+      ]);
+  - language: curl
+    code:
+      "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d
+      '{\"query\":\"\\n    process where (process.name == \\\"cmd.exe\\\" and process.pid != 2013)\\n  \"}'
+      \"$ELASTICSEARCH_URL/my-data-stream/_eql/search\""
+  - language: Java
+    code: |
+      client.eql().search(s -> s
+          .index("my-data-stream")
+          .query(" process where (process.name == \"cmd.exe\" and process.pid != 2013) ")
+      );

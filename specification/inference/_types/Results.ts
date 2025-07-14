@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AcknowledgedResponseBase } from '@_types/Base'
 import { byte, float, integer } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Sparse Embedding tokens are represented as a dictionary
@@ -35,6 +35,13 @@ export type DenseVector = Array<float>
 
 export class SparseEmbeddingResult {
   embedding: SparseVector
+}
+
+/**
+ * The response format for the sparse embedding request.
+ */
+export class SparseEmbeddingInferenceResult {
+  sparse_embedding: Array<SparseEmbeddingResult>
 }
 
 /**
@@ -58,10 +65,27 @@ export class TextEmbeddingResult {
 }
 
 /**
+ * TextEmbeddingInferenceResult is an aggregation of mutually exclusive text_embedding variants
+ * @variants container
+ */
+export class TextEmbeddingInferenceResult {
+  text_embedding_bytes?: Array<TextEmbeddingByteResult>
+  text_embedding_bits?: Array<TextEmbeddingByteResult>
+  text_embedding?: Array<TextEmbeddingResult>
+}
+
+/**
  * The completion result object
  */
 export class CompletionResult {
   result: string
+}
+
+/**
+ * Defines the completion result.
+ */
+export class CompletionInferenceResult {
+  completion: Array<CompletionResult>
 }
 
 /**
@@ -77,6 +101,20 @@ export class RankedDocument {
 }
 
 /**
+ * Defines the response for a rerank request.
+ */
+export class RerankedInferenceResult {
+  rerank: Array<RankedDocument>
+}
+
+/**
+ * Acknowledged response. For dry_run, contains the list of pipelines which reference the inference endpoint
+ */
+export class DeleteInferenceEndpointResult extends AcknowledgedResponseBase {
+  pipelines: Array<string>
+}
+
+/**
  * InferenceResult is an aggregation of mutually exclusive variants
  * @variants container
  */
@@ -87,11 +125,4 @@ export class InferenceResult {
   sparse_embedding?: Array<SparseEmbeddingResult>
   completion?: Array<CompletionResult>
   rerank?: Array<RankedDocument>
-}
-
-/**
- * Acknowledged response. For dry_run, contains the list of pipelines which reference the inference endpoint
- */
-export class DeleteInferenceEndpointResult extends AcknowledgedResponseBase {
-  pipelines: Array<string>
 }

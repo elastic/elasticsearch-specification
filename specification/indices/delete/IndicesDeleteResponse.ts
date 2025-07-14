@@ -20,5 +20,6 @@
 import { IndicesResponseBase } from '@_types/Base'
 
 export class Response {
+  /** @codegen_name result */
   body: IndicesResponseBase
 }

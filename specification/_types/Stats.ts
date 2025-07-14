@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { ShardFileSizeInfo } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { ByteSize, ClusterAlias, Field, Name, VersionString } from './common'
 import { ShardFailure } from './Errors'
 import { double, integer, long, uint } from './Numeric'
@@ -159,6 +159,8 @@ export class IndexingStats {
   index_failed: long
   types?: Dictionary<string, IndexingStats>
   write_load?: double
+  recent_write_load?: double
+  peak_write_load?: double
 }
 
 export class MergesStats {
@@ -270,6 +272,7 @@ export class SearchStats {
   suggest_time?: Duration
   suggest_time_in_millis: DurationValue<UnitMillis>
   suggest_total: long
+  recent_search_load?: double
   groups?: Dictionary<string, SearchStats>
 }
 

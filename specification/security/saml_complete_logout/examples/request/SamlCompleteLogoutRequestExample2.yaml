@@ -1,0 +1,62 @@
+summary: HTTP-Post binding
+method_request: POST /_security/saml/complete_logout
+description: >
+  Run `POST /_security/saml/complete_logout` to verify the logout response sent by the SAML IdP using the HTTP-Post binding.
+# type: request
+value: |-
+  {
+    "realm": "saml1",
+    "ids": [ "_1c368075e0b3..." ],
+    "content": "PHNhbWxwOkxvZ291dFJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46..."
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.saml_complete_logout(
+          realm="saml1",
+          ids=[
+              "_1c368075e0b3..."
+          ],
+          content="PHNhbWxwOkxvZ291dFJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46...",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.samlCompleteLogout({
+        realm: "saml1",
+        ids: ["_1c368075e0b3..."],
+        content: "PHNhbWxwOkxvZ291dFJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46...",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.saml_complete_logout(
+        body: {
+          "realm": "saml1",
+          "ids": [
+            "_1c368075e0b3..."
+          ],
+          "content": "PHNhbWxwOkxvZ291dFJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46..."
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->samlCompleteLogout([
+          "body" => [
+              "realm" => "saml1",
+              "ids" => array(
+                  "_1c368075e0b3...",
+              ),
+              "content" => "PHNhbWxwOkxvZ291dFJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46...",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"realm":"saml1","ids":["_1c368075e0b3..."],"content":"PHNhbWxwOkxvZ291dFJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46..."}''
+      "$ELASTICSEARCH_URL/_security/saml/complete_logout"'
+  - language: Java
+    code: |
+      client.security().samlCompleteLogout(s -> s
+          .content("PHNhbWxwOkxvZ291dFJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46...")
+          .ids("_1c368075e0b3...")
+          .realm("saml1")
+      );

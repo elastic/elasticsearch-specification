@@ -1,0 +1,29 @@
+method_request: GET _ml/filters/safe_domains
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.ml.get_filters(
+          filter_id="safe_domains",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.ml.getFilters({
+        filter_id: "safe_domains",
+      });
+  - language: Ruby
+    code: |-
+      response = client.ml.get_filters(
+        filter_id: "safe_domains"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->ml()->getFilters([
+          "filter_id" => "safe_domains",
+      ]);
+  - language: curl
+    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/filters/safe_domains"'
+  - language: Java
+    code: |
+      client.ml().getFilters(g -> g
+          .filterId("safe_domains")
+      );

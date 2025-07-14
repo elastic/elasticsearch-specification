@@ -38,7 +38,7 @@ export class ErrorCause
   /**
    * A human-readable explanation of the error, in English.
    */
-  reason?: string
+  reason?: string | null
   /**
    * The server stack trace. Present only if the `error_trace=true` parameter was sent with the request.
    */
@@ -62,7 +62,6 @@ export class BulkIndexByScrollFailure {
   id: Id
   index: IndexName
   status: integer
-  type: string
 }
 
 export class TaskFailure {

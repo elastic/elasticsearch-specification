@@ -1,0 +1,15 @@
+method_request: POST _watcher/_stop
+alternatives:
+  - language: Python
+    code: resp = client.watcher.stop()
+  - language: JavaScript
+    code: const response = await client.watcher.stop();
+  - language: Ruby
+    code: response = client.watcher.stop
+  - language: PHP
+    code: $resp = $client->watcher()->stop();
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_watcher/_stop"'
+  - language: Java
+    code: |
+      client.watcher().stop(s -> s);

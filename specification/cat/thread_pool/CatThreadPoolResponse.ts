@@ -20,5 +20,6 @@
 import { ThreadPoolRecord } from './types'
 
 export class Response {
+  /** @codegen_name thread_pools */
   body: Array<ThreadPoolRecord>
 }

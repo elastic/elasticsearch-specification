@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
@@ -33,6 +31,8 @@ import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
+import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Create a datafeed.
@@ -126,8 +126,8 @@ export interface Request extends RequestBase {
      */
     frequency?: Duration
     /**
-     * An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the machine
-     * learning nodes must have the `remote_cluster_client` role.
+     * An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the master
+     * nodes and the machine learning nodes must have the `remote_cluster_client` role.
      * @aliases indexes
      * */
     indices?: Indices

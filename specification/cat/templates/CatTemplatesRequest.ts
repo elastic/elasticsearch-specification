@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-import { Name } from '@_types/common'
+import { Name, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get index template information.
@@ -52,6 +52,16 @@ export interface Request extends CatRequestBase {
     name?: Name
   }
   query_parameters: {
+    /**
+     * List of columns to appear in the response. Supports simple wildcards.
+     */
+    h?: Names
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
     /**
      * If `true`, the request computes the list of selected nodes from the
      * local cluster state. If `false` the list of selected nodes are computed

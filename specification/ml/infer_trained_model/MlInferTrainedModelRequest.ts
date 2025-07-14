@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { InferenceConfigUpdateContainer } from '@ml/_types/inference'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { InferenceConfigUpdateContainer } from '@ml/_types/inference'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Evaluate a trained model.
@@ -36,11 +36,6 @@ export interface Request extends RequestBase {
   urls: [
     {
       path: '/_ml/trained_models/{model_id}/_infer'
-      methods: ['POST']
-    },
-    {
-      /** @deprecated 8.3.0 /_ml/trained_models/{model_id}/deployment/_infer is deprecated. Use /_ml/trained_models/{model_id}/_infer instead */
-      path: '/_ml/trained_models/{model_id}/deployment/_infer'
       methods: ['POST']
     }
   ]

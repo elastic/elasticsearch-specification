@@ -20,5 +20,6 @@
 import { ShardsRecord } from './types'
 
 export class Response {
+  /** @codegen_name shards */
   body: Array<ShardsRecord>
 }

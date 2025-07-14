@@ -1,0 +1,15 @@
+method_request: POST _ilm/stop
+alternatives:
+  - language: Python
+    code: resp = client.ilm.stop()
+  - language: JavaScript
+    code: const response = await client.ilm.stop();
+  - language: Ruby
+    code: response = client.ilm.stop
+  - language: PHP
+    code: $resp = $client->ilm()->stop();
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ilm/stop"'
+  - language: Java
+    code: |
+      client.ilm().stop(s -> s);

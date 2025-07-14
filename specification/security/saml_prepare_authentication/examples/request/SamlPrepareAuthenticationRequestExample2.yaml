@@ -1,0 +1,44 @@
+summary: Prepare with an ACS
+method_request: POST /_security/saml/prepare
+description: >
+  Run `POST /_security/saml/prepare` to generate a SAML authentication request for the SAML realm with an Assertion Consuming
+  Service (ACS) URL.
+# type: request
+value: |-
+  {
+    "acs" : "https://kibana.org/api/security/saml/callback"
+  }
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.security.saml_prepare_authentication(
+          acs="https://kibana.org/api/security/saml/callback",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.security.samlPrepareAuthentication({
+        acs: "https://kibana.org/api/security/saml/callback",
+      });
+  - language: Ruby
+    code: |-
+      response = client.security.saml_prepare_authentication(
+        body: {
+          "acs": "https://kibana.org/api/security/saml/callback"
+        }
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->security()->samlPrepareAuthentication([
+          "body" => [
+              "acs" => "https://kibana.org/api/security/saml/callback",
+          ],
+      ]);
+  - language: curl
+    code:
+      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
+      ''{"acs":"https://kibana.org/api/security/saml/callback"}'' "$ELASTICSEARCH_URL/_security/saml/prepare"'
+  - language: Java
+    code: |
+      client.security().samlPrepareAuthentication(s -> s
+          .acs("https://kibana.org/api/security/saml/callback")
+      );

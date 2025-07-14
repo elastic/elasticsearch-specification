@@ -17,16 +17,11 @@
  * under the License.
  */
 
-import { IndexRouting } from '@indices/_types/IndexRouting'
-import { AdditionalProperties } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Stringified } from '@spec_utils/Stringified'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Analyzer } from '@_types/analysis/analyzers'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Normalizer } from '@_types/analysis/normalizers'
-import { Tokenizer } from '@_types/analysis/tokenizers'
 import { TokenFilter } from '@_types/analysis/token_filters'
+import { Tokenizer } from '@_types/analysis/tokenizers'
 import {
   ByteSize,
   Name,
@@ -45,6 +40,12 @@ import {
   Normalization
 } from '@_types/Similarity'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
+import { IndexRouting } from '@indices/_types/IndexRouting'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Stringified } from '@spec_utils/Stringified'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { WithNullValue } from '@spec_utils/utils'
 import { IndexSegmentSort } from './IndexSegmentSort'
 
 export class SoftDeletes {
@@ -68,7 +69,7 @@ export class RetentionLease {
 
 /**
  * @doc_id index-modules-settings
- *
+ * @ext_doc_id index-settings
  * @behavior_meta AdditionalProperties fieldname=other_settings description="Additional settings not covered in this type."
  */
 export class IndexSettings
@@ -79,9 +80,15 @@ export class IndexSettings
   routing_path?: string | string[]
   soft_deletes?: SoftDeletes
   sort?: IndexSegmentSort
-  /** @server_default 1 */
+  /**
+   * @server_default 1
+   * @availability stack
+   * */
   number_of_shards?: integer | string // TODO: should be only int
-  /** @server_default 0 */
+  /**
+   * @server_default 0
+   * @availability stack
+   * */
   number_of_replicas?: integer | string // TODO: should be only int
   number_of_routing_shards?: integer
   /** @server_default false */
@@ -95,7 +102,7 @@ export class IndexSettings
   /** @server_default false */
   hidden?: boolean | string // TODO should be bool only
   /** @server_default false */
-  auto_expand_replicas?: string
+  auto_expand_replicas?: WithNullValue<string>
   merge?: Merge
   search?: SettingsSearch
   /** @server_default 1s */
@@ -118,6 +125,8 @@ export class IndexSettings
   max_refresh_listeners?: integer
   /**
    * Settings to define analyzers, tokenizers, token filters and character filters.
+   * Refer to the linked documentation for step-by-step examples of updating analyzers on existing indices.
+   * @ext_doc_id analyzer-update-existing
    */
   analyze?: SettingsAnalyze
   highlight?: SettingsHighlight
@@ -258,6 +267,17 @@ export class IndexSettingBlocks {
   read?: Stringified<boolean>
   write?: Stringified<boolean>
   metadata?: Stringified<boolean>
+}
+
+export enum IndicesBlockOptions {
+  /** Disable metadata changes, such as closing the index. */
+  metadata,
+  /** Disable read operations. */
+  read,
+  /** Disable write operations and metadata changes. */
+  read_only,
+  /** Disable write operations. However, metadata changes are still allowed. */
+  write
 }
 
 /**
@@ -500,9 +520,9 @@ export class MappingLimitSettingsSourceFields {
 }
 
 export enum SourceMode {
-  DISABLED,
-  STORED,
-  SYNTHETIC
+  disabled,
+  stored,
+  synthetic
 }
 
 export class SlowlogSettings {
@@ -533,6 +553,8 @@ export class Storage {
    * of memory maps so you need disable the ability to use memory-mapping.
    */
   allow_mmap?: boolean
+  /** How often store statistics are refreshed */
+  stats_refresh_interval?: Duration
 }
 
 /**

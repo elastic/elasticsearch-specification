@@ -1,0 +1,29 @@
+method_request: POST _snapshot/my_unverified_backup/_verify
+alternatives:
+  - language: Python
+    code: |-
+      resp = client.snapshot.verify_repository(
+          name="my_unverified_backup",
+      )
+  - language: JavaScript
+    code: |-
+      const response = await client.snapshot.verifyRepository({
+        name: "my_unverified_backup",
+      });
+  - language: Ruby
+    code: |-
+      response = client.snapshot.verify_repository(
+        repository: "my_unverified_backup"
+      )
+  - language: PHP
+    code: |-
+      $resp = $client->snapshot()->verifyRepository([
+          "repository" => "my_unverified_backup",
+      ]);
+  - language: curl
+    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_snapshot/my_unverified_backup/_verify"'
+  - language: Java
+    code: |
+      client.snapshot().verifyRepository(v -> v
+          .name("my_unverified_backup")
+      );

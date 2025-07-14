@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { AdditionalProperty } from '@spec_utils/behaviors'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   FieldValue,
@@ -33,6 +31,8 @@ import {
 import { double, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateFormat, DateMath, TimeZone } from '@_types/Time'
+import { AdditionalProperty } from '@spec_utils/behaviors'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { QueryBase } from './abstractions'
 
 /**
@@ -141,10 +141,6 @@ export class RangeQueryBase<T> extends QueryBase {
    * Less than or equal to.
    */
   lte?: T
-  /** @deprecated 8.16.0 Use gte or gt instead */
-  from?: T | null
-  /** @deprecated 8.16.0 Use lte or lt instead */
-  to?: T | null
 }
 
 export class UntypedRangeQuery extends RangeQueryBase<UserDefinedValue> {

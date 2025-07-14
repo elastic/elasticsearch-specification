@@ -60,7 +60,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -71,6 +70,7 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     /**
      * If `true`, the request retrieves information from the local node only.
+     * @deprecated 7.8.0 This parameter is a no-op and field mappings are always retrieved locally.
      * @server_default false
      */
     local?: boolean
