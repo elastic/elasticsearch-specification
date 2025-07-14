@@ -34688,6 +34688,15 @@
               "rank_window_size": {
                 "description": "This value determines the size of the individual result sets per query.",
                 "type": "number"
+              },
+              "query": {
+                "type": "string"
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             },
             "required": [
@@ -34823,6 +34832,18 @@
               },
               "rank_window_size": {
                 "type": "number"
+              },
+              "query": {
+                "type": "string"
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "normalizer": {
+                "$ref": "#/components/schemas/_types.ScoreNormalizer"
               }
             }
           }
