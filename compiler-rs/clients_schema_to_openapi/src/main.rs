@@ -45,6 +45,6 @@ fn main() -> anyhow::Result<()> {
         let path = redirect_path.unwrap();
         std::fs::write(path, &redirects)?;
     }
-
+    
     Ok(())
 }
