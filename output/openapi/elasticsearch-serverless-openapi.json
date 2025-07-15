@@ -4179,16 +4179,7 @@
             "$ref": "#/components/parameters/create-id"
           },
           {
-            "$ref": "#/components/parameters/create-if_primary_term"
-          },
-          {
-            "$ref": "#/components/parameters/create-if_seq_no"
-          },
-          {
             "$ref": "#/components/parameters/create-include_source_on_error"
-          },
-          {
-            "$ref": "#/components/parameters/create-op_type"
           },
           {
             "$ref": "#/components/parameters/create-pipeline"
@@ -4253,16 +4244,7 @@
             "$ref": "#/components/parameters/create-id"
           },
           {
-            "$ref": "#/components/parameters/create-if_primary_term"
-          },
-          {
-            "$ref": "#/components/parameters/create-if_seq_no"
-          },
-          {
             "$ref": "#/components/parameters/create-include_source_on_error"
-          },
-          {
-            "$ref": "#/components/parameters/create-op_type"
           },
           {
             "$ref": "#/components/parameters/create-pipeline"
@@ -53038,13 +53020,6 @@
           "scheduled"
         ]
       },
-      "_types.OpType": {
-        "type": "string",
-        "enum": [
-          "index",
-          "create"
-        ]
-      },
       "_types.WriteResponseBase": {
         "type": "object",
         "properties": {
@@ -53962,6 +53937,13 @@
           "field",
           "term",
           "weight"
+        ]
+      },
+      "_types.OpType": {
+        "type": "string",
+        "enum": [
+          "index",
+          "create"
         ]
       },
       "indices._types.IndicesBlockOptions": {
@@ -70306,26 +70288,6 @@
         },
         "style": "simple"
       },
-      "create-if_primary_term": {
-        "in": "query",
-        "name": "if_primary_term",
-        "description": "Only perform the operation if the document has this primary term.",
-        "deprecated": false,
-        "schema": {
-          "type": "number"
-        },
-        "style": "form"
-      },
-      "create-if_seq_no": {
-        "in": "query",
-        "name": "if_seq_no",
-        "description": "Only perform the operation if the document has this sequence number.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.SequenceNumber"
-        },
-        "style": "form"
-      },
       "create-include_source_on_error": {
         "in": "query",
         "name": "include_source_on_error",
@@ -70333,16 +70295,6 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
-        },
-        "style": "form"
-      },
-      "create-op_type": {
-        "in": "query",
-        "name": "op_type",
-        "description": "Set to `create` to only index the document if it does not already exist (put if absent).\nIf a document with the specified `_id` already exists, the indexing operation will fail.\nThe behavior is the same as using the `<index>/_create` endpoint.\nIf a document ID is specified, this paramater defaults to `index`.\nOtherwise, it defaults to `create`.\nIf the request targets a data stream, an `op_type` of `create` is required.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.OpType"
         },
         "style": "form"
       },
