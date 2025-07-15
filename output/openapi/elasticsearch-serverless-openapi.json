@@ -56180,7 +56180,7 @@
             "$ref": "#/components/schemas/inference._types.CohereEmbeddingType"
           },
           "model_id": {
-            "description": "For a `completion`, `rerank`, or `text_embedding` task, the name of the model to use for the inference task.\n\n* For the available `completion` models, refer to the [Cohere command docs](https://docs.cohere.com/docs/models#command).\n* For the available `rerank` models, refer to the [Cohere rerank docs](https://docs.cohere.com/reference/rerank-1).\n* For the available `text_embedding` models, refer to [Cohere embed docs](https://docs.cohere.com/reference/embed).\n\nThe default value for a text embedding task is `embed-english-v2.0`.",
+            "description": "For a `completion`, `rerank`, or `text_embedding` task, the name of the model to use for the inference task.\n\n* For the available `completion` models, refer to the [Cohere command docs](https://docs.cohere.com/docs/models#command).\n* For the available `rerank` models, refer to the [Cohere rerank docs](https://docs.cohere.com/reference/rerank-1).\n* For the available `text_embedding` models, refer to [Cohere embed docs](https://docs.cohere.com/reference/embed).",
             "type": "string"
           },
           "rate_limit": {
@@ -56191,7 +56191,8 @@
           }
         },
         "required": [
-          "api_key"
+          "api_key",
+          "model_id"
         ]
       },
       "inference._types.CohereEmbeddingType": {
@@ -56229,7 +56230,10 @@
           "truncate": {
             "$ref": "#/components/schemas/inference._types.CohereTruncateType"
           }
-        }
+        },
+        "required": [
+          "input_type"
+        ]
       },
       "inference._types.CohereInputType": {
         "type": "string",
