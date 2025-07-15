@@ -10793,6 +10793,7 @@ export interface EqlSearchRequest extends RequestBase {
   allow_partial_search_results?: boolean
   allow_partial_sequence_results?: boolean
   expand_wildcards?: ExpandWildcards
+  ccs_minimize_roundtrips?: boolean
   ignore_unavailable?: boolean
   keep_alive?: Duration
   keep_on_completion?: boolean
