@@ -13940,6 +13940,7 @@ export type InferenceInferenceResponse = InferenceInferenceResult
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
+  timeout?: Duration
   body?: InferenceInferenceEndpoint
 }
 
@@ -13948,6 +13949,7 @@ export type InferencePutResponse = InferenceInferenceEndpointInfo
 export interface InferencePutAlibabacloudRequest extends RequestBase {
   task_type: InferenceAlibabaCloudTaskType
   alibabacloud_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceAlibabaCloudServiceType
@@ -13961,6 +13963,7 @@ export type InferencePutAlibabacloudResponse = InferenceInferenceEndpointInfoAli
 export interface InferencePutAmazonbedrockRequest extends RequestBase {
   task_type: InferenceAmazonBedrockTaskType
   amazonbedrock_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceAmazonBedrockServiceType
@@ -13974,6 +13977,7 @@ export type InferencePutAmazonbedrockResponse = InferenceInferenceEndpointInfoAm
 export interface InferencePutAnthropicRequest extends RequestBase {
   task_type: InferenceAnthropicTaskType
   anthropic_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceAnthropicServiceType
@@ -13987,6 +13991,7 @@ export type InferencePutAnthropicResponse = InferenceInferenceEndpointInfoAnthro
 export interface InferencePutAzureaistudioRequest extends RequestBase {
   task_type: InferenceAzureAiStudioTaskType
   azureaistudio_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceAzureAiStudioServiceType
@@ -14000,6 +14005,7 @@ export type InferencePutAzureaistudioResponse = InferenceInferenceEndpointInfoAz
 export interface InferencePutAzureopenaiRequest extends RequestBase {
   task_type: InferenceAzureOpenAITaskType
   azureopenai_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceAzureOpenAIServiceType
@@ -14013,6 +14019,7 @@ export type InferencePutAzureopenaiResponse = InferenceInferenceEndpointInfoAzur
 export interface InferencePutCohereRequest extends RequestBase {
   task_type: InferenceCohereTaskType
   cohere_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceCohereServiceType
@@ -14026,6 +14033,7 @@ export type InferencePutCohereResponse = InferenceInferenceEndpointInfoCohere
 export interface InferencePutElasticsearchRequest extends RequestBase {
   task_type: InferenceElasticsearchTaskType
   elasticsearch_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceElasticsearchServiceType
@@ -14039,6 +14047,7 @@ export type InferencePutElasticsearchResponse = InferenceInferenceEndpointInfoEl
 export interface InferencePutElserRequest extends RequestBase {
   task_type: InferenceElserTaskType
   elser_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceElserServiceType
@@ -14051,6 +14060,7 @@ export type InferencePutElserResponse = InferenceInferenceEndpointInfoELSER
 export interface InferencePutGoogleaistudioRequest extends RequestBase {
   task_type: InferenceGoogleAiStudioTaskType
   googleaistudio_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceGoogleAiServiceType
@@ -14063,6 +14073,7 @@ export type InferencePutGoogleaistudioResponse = InferenceInferenceEndpointInfoG
 export interface InferencePutGooglevertexaiRequest extends RequestBase {
   task_type: InferenceGoogleVertexAITaskType
   googlevertexai_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceGoogleVertexAIServiceType
@@ -14076,6 +14087,7 @@ export type InferencePutGooglevertexaiResponse = InferenceInferenceEndpointInfoG
 export interface InferencePutHuggingFaceRequest extends RequestBase {
   task_type: InferenceHuggingFaceTaskType
   huggingface_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceHuggingFaceServiceType
@@ -14088,6 +14100,7 @@ export type InferencePutHuggingFaceResponse = InferenceInferenceEndpointInfoHugg
 export interface InferencePutJinaaiRequest extends RequestBase {
   task_type: InferenceJinaAITaskType
   jinaai_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceJinaAIServiceType
@@ -14101,6 +14114,7 @@ export type InferencePutJinaaiResponse = InferenceInferenceEndpointInfoJinaAi
 export interface InferencePutMistralRequest extends RequestBase {
   task_type: InferenceMistralTaskType
   mistral_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceMistralServiceType
@@ -14113,6 +14127,7 @@ export type InferencePutMistralResponse = InferenceInferenceEndpointInfoMistral
 export interface InferencePutOpenaiRequest extends RequestBase {
   task_type: InferenceOpenAITaskType
   openai_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceOpenAIServiceType
@@ -14126,6 +14141,7 @@ export type InferencePutOpenaiResponse = InferenceInferenceEndpointInfoOpenAI
 export interface InferencePutVoyageaiRequest extends RequestBase {
   task_type: InferenceVoyageAITaskType
   voyageai_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceVoyageAIServiceType
@@ -14139,6 +14155,7 @@ export type InferencePutVoyageaiResponse = InferenceInferenceEndpointInfoVoyageA
 export interface InferencePutWatsonxRequest extends RequestBase {
   task_type: InferenceWatsonxTaskType
   watsonx_inference_id: Id
+  timeout?: Duration
   body?: {
     service: InferenceWatsonxServiceType
     service_settings: InferenceWatsonxServiceSettings
@@ -14172,6 +14189,7 @@ export type InferenceSparseEmbeddingResponse = InferenceSparseEmbeddingInference
 
 export interface InferenceStreamCompletionRequest extends RequestBase {
   inference_id: Id
+  timeout?: Duration
   body?: {
     input: string | string[]
     task_settings?: InferenceTaskSettings
