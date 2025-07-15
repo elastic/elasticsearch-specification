@@ -173,12 +173,6 @@
       ],
       "response": []
     },
-    "eql.search": {
-      "request": [
-        "Request: missing json spec query parameter 'ccs_minimize_roundtrips'"
-      ],
-      "response": []
-    },
     "esql.async_query_get": {
       "request": [
         "Request: query parameter 'format' does not exist in the json spec"
