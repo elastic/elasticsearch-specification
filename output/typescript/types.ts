@@ -14024,6 +14024,7 @@ export type InferenceInferenceResponse = InferenceInferenceResult
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
+  timeout?: Duration
   body?: InferenceInferenceEndpoint
 }
 
