@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 import {
   ElasticsearchServiceSettings,
   ElasticsearchServiceType,
@@ -24,9 +27,6 @@ import {
   ElasticsearchTaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Create an Elasticsearch inference endpoint.

@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 import {
   HuggingFaceServiceSettings,
   HuggingFaceServiceType,
@@ -24,9 +27,6 @@ import {
   HuggingFaceTaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Create a Hugging Face inference endpoint.

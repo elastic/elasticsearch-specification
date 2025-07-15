@@ -17,14 +17,14 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 import {
   WatsonxServiceSettings,
   WatsonxServiceType,
   WatsonxTaskType
 } from '@inference/_types/CommonTypes'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Create a Watsonx inference endpoint.

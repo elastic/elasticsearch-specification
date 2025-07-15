@@ -17,15 +17,15 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 import {
   DeepSeekServiceSettings,
   DeepSeekServiceType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
 import { TaskTypeDeepSeek } from '@inference/_types/TaskType'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Create a DeepSeek inference endpoint.

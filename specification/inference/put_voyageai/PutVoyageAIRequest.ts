@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 import {
   VoyageAIServiceSettings,
   VoyageAIServiceType,
@@ -24,9 +27,6 @@ import {
   VoyageAITaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
    * Create a VoyageAI inference endpoint.

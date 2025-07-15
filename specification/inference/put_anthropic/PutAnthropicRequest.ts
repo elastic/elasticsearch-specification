@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 import {
   AnthropicServiceSettings,
   AnthropicServiceType,
@@ -24,9 +27,6 @@ import {
   AnthropicTaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Create an Anthropic inference endpoint.
