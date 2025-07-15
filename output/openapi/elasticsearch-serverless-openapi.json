@@ -11421,7 +11421,7 @@
                 },
                 "RerankRequestExample2": {
                   "summary": "Rerank task",
-                  "description": "Run `PUT _inference/rerank/bge-reranker-base-mkn` to perform reranking on the example input via Hugging Face",
+                  "description": "Run `POST _inference/rerank/bge-reranker-base-mkn` to perform reranking on the example input via Hugging Face",
                   "value": "{\n  \"input\": [\"luke\", \"like\", \"leia\", \"chewy\",\"r2d2\", \"star\", \"wars\"],\n  \"query\": \"star wars main character\",\n  \"return_documents\": false,\n  \"top_n\": 2\n}"
                 },
                 "RerankRequestExample3": {

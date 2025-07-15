@@ -1,12 +1,1 @@
 method_request: GET /_cluster/pending_tasks
-alternatives:
-  - language: Python
-    code: resp = client.cluster.pending_tasks()
-  - language: JavaScript
-    code: const response = await client.cluster.pendingTasks();
-  - language: Ruby
-    code: response = client.cluster.pending_tasks
-  - language: PHP
-    code: $resp = $client->cluster()->pendingTasks();
-  - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_cluster/pending_tasks"'
