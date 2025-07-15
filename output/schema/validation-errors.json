@@ -175,9 +175,7 @@
     },
     "eql.search": {
       "request": [
-        "Request: query parameter 'allow_no_indices' does not exist in the json spec",
-        "Request: query parameter 'expand_wildcards' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
+        "Request: missing json spec query parameter 'ccs_minimize_roundtrips'"
       ],
       "response": []
     },

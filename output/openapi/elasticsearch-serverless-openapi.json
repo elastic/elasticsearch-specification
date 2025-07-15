@@ -66338,6 +66338,7 @@
       "eql.search-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
+        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -66367,6 +66368,7 @@
       "eql.search-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
+        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
