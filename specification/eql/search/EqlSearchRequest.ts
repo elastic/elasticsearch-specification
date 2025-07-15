@@ -66,6 +66,11 @@ export interface Request extends RequestBase {
      */
     expand_wildcards?: ExpandWildcards
     /**
+     * Indicates whether network round-trips should be minimized as part of cross-cluster search requests execution
+     * @server_default true
+     */
+    ccs_minimize_roundtrips?: boolean
+    /**
      * If true, missing or closed indices are not included in the response.
      * @server_default true
      */
