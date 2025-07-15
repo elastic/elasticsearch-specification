@@ -25,6 +25,8 @@ const {parseRequest} = require("@elastic/request-converter/dist/parse");
 const {JavaCaller} = require("java-caller");
 
 const LANGUAGES = ['Python', 'JavaScript', 'Ruby', 'PHP', 'curl'];
+const EXAMPLES_JSON = 'docs/examples/languageExamples.json';
+let languageExamples = {};
 
 async function generateLanguages(example) {
   const doc = yamlParseDocument(await fs.promises.readFile(example, 'utf8'));
@@ -38,14 +40,18 @@ async function generateLanguages(example) {
       request += '\n' + JSON.stringify(data.value);
     }
   }
-  const alternatives = [];
+  if (data.alternatives) {
+    languageExamples[example] = data.alternatives;
+    delete data.alternatives;
+  }
+  let alternatives = [];
   for (const lang of LANGUAGES) {
     alternatives.push({
       language: lang,
       code: (await convertRequests(request, lang, {})).trim(),
     });
   }
-  data.alternatives = alternatives.concat((data.alternatives ?? []).filter(pair => !LANGUAGES.includes(pair.language)));
+  alternatives = alternatives.concat((languageExamples[example] ?? []).filter(pair => !LANGUAGES.includes(pair.language)));
 
   // specific java example generator
   if (process.argv[2] === "java") {
@@ -85,13 +91,13 @@ async function generateLanguages(example) {
         code: stdout,
       });
       // replace old java examples
-      data.alternatives = data.alternatives.filter(pair => pair.language !== "Java");
-      data.alternatives = data.alternatives.concat(alternative_java);
+      alternatives = alternatives.filter(pair => pair.language !== "Java");
+      alternatives = alternatives.concat(alternative_java);
     }
   }
 
   doc.delete('alternatives');
-  doc.add(doc.createPair('alternatives', data.alternatives));
+  languageExamples[example] = alternatives;
   await fs.promises.writeFile(example, doc.toString({lineWidth: 132}));
 }
 
@@ -128,6 +134,9 @@ async function main() {
   let count = 0;
   let errors = 0;
   await loadSchema('output/schema/schema.json');
+  if (fs.existsSync(EXAMPLES_JSON)) {
+    languageExamples = JSON.parse(await fs.promises.readFile(EXAMPLES_JSON, 'utf8'));
+  }
   for await (const example of walkExamples('./specification/')) {
     try {
       await generateLanguages(example);
@@ -138,6 +147,7 @@ async function main() {
     }
     count += 1;
   }
+  await fs.promises.writeFile(EXAMPLES_JSON, JSON.stringify(languageExamples, null, 2));
   console.log(`${count} examples processed, ${errors} errors.`);
 }
 
