@@ -13663,7 +13663,7 @@ export type InferenceCohereInputType = 'classification' | 'clustering' | 'ingest
 export interface InferenceCohereServiceSettings {
   api_key: string
   embedding_type?: InferenceCohereEmbeddingType
-  model_id?: string
+  model_id: string
   rate_limit?: InferenceRateLimitSetting
   similarity?: InferenceCohereSimilarityType
 }
@@ -13673,7 +13673,7 @@ export type InferenceCohereServiceType = 'cohere'
 export type InferenceCohereSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
 
 export interface InferenceCohereTaskSettings {
-  input_type?: InferenceCohereInputType
+  input_type: InferenceCohereInputType
   return_documents?: boolean
   top_n?: integer
   truncate?: InferenceCohereTruncateType
