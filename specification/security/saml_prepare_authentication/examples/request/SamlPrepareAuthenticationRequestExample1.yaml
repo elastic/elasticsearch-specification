@@ -7,37 +7,3 @@ value: |-
   {
     "realm" : "saml1"
   }
-alternatives:
-  - language: Python
-    code: |-
-      resp = client.security.saml_prepare_authentication(
-          realm="saml1",
-      )
-  - language: JavaScript
-    code: |-
-      const response = await client.security.samlPrepareAuthentication({
-        realm: "saml1",
-      });
-  - language: Ruby
-    code: |-
-      response = client.security.saml_prepare_authentication(
-        body: {
-          "realm": "saml1"
-        }
-      )
-  - language: PHP
-    code: |-
-      $resp = $client->security()->samlPrepareAuthentication([
-          "body" => [
-              "realm" => "saml1",
-          ],
-      ]);
-  - language: curl
-    code:
-      'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d ''{"realm":"saml1"}''
-      "$ELASTICSEARCH_URL/_security/saml/prepare"'
-  - language: Java
-    code: |
-      client.security().samlPrepareAuthentication(s -> s
-          .realm("saml1")
-      );

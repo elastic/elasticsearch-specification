@@ -21042,6 +21042,66 @@
                   "summary": "Reindex multiple sources",
                   "description": "Run `POST _reindex` to reindex from multiple sources. The `index` attribute in source can be a list, which enables you to copy from lots of sources in one request. This example copies documents from the `my-index-000001` and `my-index-000002` indices.\n",
                   "value": "{\n  \"source\": {\n    \"index\": [\"my-index-000001\", \"my-index-000002\"]\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000002\"\n  }\n}"
+                },
+                "ReindexRequestExample10": {
+                  "summary": "Reindex with Painless",
+                  "description": "You can use Painless to reindex daily indices to apply a new template to the existing documents. The script extracts the date from the index name and creates a new index with `-1` appended. For example, all data from `metricbeat-2016.05.31` will be reindexed into `metricbeat-2016.05.31-1`.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"metricbeat-*\"\n  },\n  \"dest\": {\n    \"index\": \"metricbeat\"\n  },\n  \"script\": {\n    \"lang\": \"painless\",\n    \"source\": \"ctx._index = 'metricbeat-' + (ctx._index.substring('metricbeat-'.length(), ctx._index.length())) + '-1'\"\n  }\n}"
+                },
+                "ReindexRequestExample11": {
+                  "summary": "Reindex a random subset",
+                  "description": "Run `POST _reindex` to extract a random subset of the source for testing. You might need to adjust the `min_score` value depending on the relative amount of data extracted from source.\n",
+                  "value": "{\n  \"max_docs\": 10,\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"query\": {\n      \"function_score\" : {\n        \"random_score\" : {},\n        \"min_score\" : 0.9\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample12": {
+                  "summary": "Reindex modified documents",
+                  "description": "Run `POST _reindex` to modify documents during reindexing. This example bumps the version of the source document.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\",\n    \"version_type\": \"external\"\n  },\n  \"script\": {\n    \"source\": \"if (ctx._source.foo == 'bar') {ctx._version++; ctx._source.remove('foo')}\",\n    \"lang\": \"painless\"\n  }\n}"
+                },
+                "ReindexRequestExample13": {
+                  "summary": "Reindex from remote on Elastic Cloud",
+                  "description": "When using Elastic Cloud, you can run `POST _reindex` and authenticate against a remote cluster with an API key.\n",
+                  "value": "{\n  \"source\": {\n    \"remote\": {\n      \"host\": \"http://otherhost:9200\",\n      \"username\": \"user\",\n      \"password\": \"pass\"\n    },\n    \"index\": \"my-index-000001\",\n    \"query\": {\n      \"match\": {\n        \"test\": \"data\"\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample2": {
+                  "summary": "Manual slicing",
+                  "description": "Run `POST _reindex` to slice a reindex request manually. Provide a slice ID and total number of slices to each request.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"slice\": {\n      \"id\": 0,\n      \"max\": 2\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample3": {
+                  "summary": "Automatic slicing",
+                  "description": "Run `POST _reindex?slices=5&refresh` to automatically parallelize using sliced scroll to slice on `_id`. The `slices` parameter specifies the number of slices to use.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample4": {
+                  "summary": "Routing",
+                  "description": "By default if reindex sees a document with routing then the routing is preserved unless it's changed by the script. You can set `routing` on the `dest` request to change this behavior. In this example, run `POST _reindex` to copy all documents from the `source` with the company name `cat` into the `dest` with routing set to `cat`.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"source\",\n    \"query\": {\n      \"match\": {\n        \"company\": \"cat\"\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"dest\",\n    \"routing\": \"=cat\"\n  }\n}"
+                },
+                "ReindexRequestExample5": {
+                  "summary": "Ingest pipelines",
+                  "description": "Run `POST _reindex` and use the ingest pipelines feature.",
+                  "value": "{\n  \"source\": {\n    \"index\": \"source\"\n  },\n  \"dest\": {\n    \"index\": \"dest\",\n    \"pipeline\": \"some_ingest_pipeline\"\n  }\n}"
+                },
+                "ReindexRequestExample6": {
+                  "summary": "Reindex with a query",
+                  "description": "Run `POST _reindex` and add a query to the `source` to limit the documents to reindex. For example, this request copies documents into `my-new-index-000001` only if they have a `user.id` of `kimchy`.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"query\": {\n      \"term\": {\n        \"user.id\": \"kimchy\"\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample7": {
+                  "summary": "Reindex with max_docs",
+                  "description": "You can limit the number of processed documents by setting `max_docs`. For example, run `POST _reindex` to copy a single document from `my-index-000001` to `my-new-index-000001`.\n",
+                  "value": "{\n  \"max_docs\": 1,\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample8": {
+                  "summary": "Reindex selected fields",
+                  "description": "You can use source filtering to reindex a subset of the fields in the original documents. For example, run `POST _reindex` the reindex only the `user.id` and `_doc` fields of each document.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"_source\": [\"user.id\", \"_doc\"]\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample9": {
+                  "summary": "Reindex new field names",
+                  "description": "A reindex operation can build a copy of an index with renamed fields. If your index has documents with `text` and `flag` fields, you can change the latter field name to `tag` during the reindex.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  },\n  \"script\": {\n    \"source\": \"ctx._source.tag = ctx._source.remove(\\\"flag\\\")\"\n  }\n}"
                 }
               }
             }
@@ -68290,6 +68350,23 @@
                 "count",
                 "api_keys"
               ]
+            },
+            "examples": {
+              "QueryApiKeysResponseExample1": {
+                "summary": "Query API keys by ID",
+                "description": "A successful response from `GET /_security/_query/api_key?with_limited_by=true`. The `limited_by` details are the owner user's permissions associated with the API key. It is a point-in-time snapshot captured at creation and subsequent updates. An API key's effective permissions are an intersection of its assigned privileges and the owner user's permissions.\n",
+                "value": "{\n  \"api_keys\": [\n    {\n      \"id\": \"VuaCfGcBCdbkQm-e5aOx\",\n      \"name\": \"application-key-1\",\n      \"creation\": 1548550550158,\n      \"expiration\": 1548551550158,\n      \"invalidated\": false,\n      \"username\": \"myuser\",\n      \"realm\": \"native1\",\n      \"realm_type\": \"native\",\n      \"metadata\": {\n        \"application\": \"my-application\"\n      },\n      \"role_descriptors\": { },\n      \"limited_by\": [ \n        {\n          \"role-power-user\": {\n            \"cluster\": [\n              \"monitor\"\n            ],\n            \"indices\": [\n              {\n                \"names\": [\n                  \"*\"\n                ],\n                \"privileges\": [\n                  \"read\"\n                ],\n                \"allow_restricted_indices\": false\n              }\n            ],\n            \"applications\": [ ],\n            \"run_as\": [ ],\n            \"metadata\": { },\n            \"transient_metadata\": {\n              \"enabled\": true\n            }\n          }\n        }\n      ]\n    }\n  ]\n}"
+              },
+              "QueryApiKeysResponseExample2": {
+                "summary": "Query API keys with pagination",
+                "description": "An abbreviated response from `GET /_security/_query/api_key` that contains a list of matched API keys along with their sort values. The first sort value is creation time, which is displayed in `date_time` format. The second sort value is the API key name.\n",
+                "value": "{\n  \"total\": 100,\n  \"count\": 10,\n  \"api_keys\": [\n    {\n      \"id\": \"CLXgVnsBOGkf8IyjcXU7\",\n      \"name\": \"app1-key-79\",\n      \"creation\": 1629250154811,\n      \"invalidated\": false,\n      \"username\": \"org-admin-user\",\n      \"realm\": \"native1\",\n      \"metadata\": {\n        \"environment\": \"production\"\n      },\n      \"role_descriptors\": { },\n      \"_sort\": [\n        \"2021-08-18T01:29:14.811Z\",  \n        \"app1-key-79\"  \n      ]\n    },\n    {\n      \"id\": \"BrXgVnsBOGkf8IyjbXVB\",\n      \"name\": \"app1-key-78\",\n      \"creation\": 1629250153794,\n      \"invalidated\": false,\n      \"username\": \"org-admin-user\",\n      \"realm\": \"native1\",\n      \"metadata\": {\n        \"environment\": \"production\"\n      },\n      \"role_descriptors\": { },\n      \"_sort\": [\n        \"2021-08-18T01:29:13.794Z\",\n        \"app1-key-78\"\n      ]\n    }\n  ]\n}"
+              },
+              "QueryApiKeysResponseExample3": {
+                "summary": "Query all API keys",
+                "description": "A successful response from `GET /_security/_query/api_key`. It includes the role descriptors that are assigned to each API key when it was created or last updated. Note that an API key's effective permissions are an intersection of its assigned privileges and the point-in-time snapshot of the owner user's permissions. An empty role descriptors object means the API key inherits the owner user's permissions.\n",
+                "value": "{\n  \"total\": 3,\n  \"count\": 3,\n  \"api_keys\": [ \n    {\n      \"id\": \"nkvrGXsB8w290t56q3Rg\",\n      \"name\": \"my-api-key-1\",\n      \"creation\": 1628227480421,\n      \"expiration\": 1629091480421,\n      \"invalidated\": false,\n      \"username\": \"elastic\",\n      \"realm\": \"reserved\",\n      \"realm_type\": \"reserved\",\n      \"metadata\": {\n        \"letter\": \"a\"\n      },\n      \"role_descriptors\": { \n        \"role-a\": {\n          \"cluster\": [\n            \"monitor\"\n          ],\n          \"indices\": [\n            {\n              \"names\": [\n                \"index-a\"\n              ],\n              \"privileges\": [\n                \"read\"\n              ],\n              \"allow_restricted_indices\": false\n            }\n          ],\n          \"applications\": [ ],\n          \"run_as\": [ ],\n          \"metadata\": { },\n          \"transient_metadata\": {\n            \"enabled\": true\n          }\n        }\n      }\n    },\n    {\n      \"id\": \"oEvrGXsB8w290t5683TI\",\n      \"name\": \"my-api-key-2\",\n      \"creation\": 1628227498953,\n      \"expiration\": 1628313898953,\n      \"invalidated\": false,\n      \"username\": \"elastic\",\n      \"realm\": \"reserved\",\n      \"metadata\": {\n        \"letter\": \"b\"\n      },\n      \"role_descriptors\": { } \n    }\n  ]\n}"
+              }
             }
           }
         }
@@ -76019,6 +76096,16 @@
                 "summary": "Query API keys by ID",
                 "description": "Run `GET /_security/_query/api_key?with_limited_by=true` to retrieve an API key by ID.",
                 "value": "{\n  \"query\": {\n    \"ids\": {\n      \"values\": [\n        \"VuaCfGcBCdbkQm-e5aOx\"\n      ]\n    }\n  }\n}"
+              },
+              "QueryApiKeysRequestExample2": {
+                "summary": "Query API keys with pagination",
+                "description": "Run `GET /_security/_query/api_key`. Use a `bool` query to issue complex logical conditions and use `from`, `size`, and `sort` to help paginate the result. For example, the API key name must begin with `app1-key-` and must not be `app1-key-01`. It must be owned by a username with the wildcard pattern `org-*-user` and the `environment` metadata field must have a `production` value. The offset to begin the search result is the twentieth (zero-based index) API key. The page size of the response is 10 API keys. The result is first sorted by creation date in descending order, then by name in ascending order.\n",
+                "value": "{\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        {\n          \"prefix\": {\n            \"name\": \"app1-key-\" \n          }\n        },\n        {\n          \"term\": {\n            \"invalidated\": \"false\" \n          }\n        }\n      ],\n      \"must_not\": [\n        {\n          \"term\": {\n            \"name\": \"app1-key-01\" \n          }\n        }\n      ],\n      \"filter\": [\n        {\n          \"wildcard\": {\n            \"username\": \"org-*-user\" \n          }\n        },\n        {\n          \"term\": {\n            \"metadata.environment\": \"production\" \n          }\n        }\n      ]\n    }\n  },\n  \"from\": 20, \n  \"size\": 10, \n  \"sort\": [ \n    { \"creation\": { \"order\": \"desc\", \"format\": \"date_time\" } },\n    \"name\"\n  ]\n}"
+              },
+              "QueryApiKeysRequestExample3": {
+                "summary": "Query API keys by name",
+                "description": "Run `GET /_security/_query/api_key` to retrieve the API key by name.",
+                "value": "{\n  \"query\": {\n    \"term\": {\n      \"name\": {\n        \"value\": \"application-key-1\"\n      }\n    }\n  }\n}"
               }
             }
           }
