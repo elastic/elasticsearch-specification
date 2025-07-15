@@ -163,14 +163,6 @@
       ],
       "response": []
     },
-    "create": {
-      "request": [
-        "Request: query parameter 'if_primary_term' does not exist in the json spec",
-        "Request: query parameter 'if_seq_no' does not exist in the json spec",
-        "Request: query parameter 'op_type' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "esql.async_query_get": {
       "request": [
         "Request: query parameter 'format' does not exist in the json spec"
