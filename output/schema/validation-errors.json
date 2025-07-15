@@ -1,23 +1,5 @@
 {
   "endpointErrors": {
-    "create": {
-      "request": [
-        "Request: query parameter 'if_primary_term' does not exist in the json spec",
-        "Request: query parameter 'if_seq_no' does not exist in the json spec",
-        "Request: query parameter 'op_type' does not exist in the json spec",
-        "Request: query parameter 'require_alias' does not exist in the json spec",
-        "Request: query parameter 'require_data_stream' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "eql.search": {
-      "request": [
-        "Request: query parameter 'allow_no_indices' does not exist in the json spec",
-        "Request: query parameter 'expand_wildcards' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "esql.async_query_get": {
       "request": [
         "Request: query parameter 'format' does not exist in the json spec"
@@ -44,12 +26,6 @@
     "searchable_snapshots.clear_cache": {
       "request": [
         "Request: missing json spec query parameter 'index'"
-      ],
-      "response": []
-    },
-    "snapshot.repository_analyze": {
-      "request": [
-        "Request: query parameter 'register_operation_count' does not exist in the json spec"
       ],
       "response": []
     },
