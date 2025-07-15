@@ -6030,6 +6030,9 @@
             "$ref": "#/components/parameters/eql.search-expand_wildcards"
           },
           {
+            "$ref": "#/components/parameters/eql.search-ccs_minimize_roundtrips"
+          },
+          {
             "$ref": "#/components/parameters/eql.search-ignore_unavailable"
           },
           {
@@ -6084,6 +6087,9 @@
           },
           {
             "$ref": "#/components/parameters/eql.search-expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/eql.search-ccs_minimize_roundtrips"
           },
           {
             "$ref": "#/components/parameters/eql.search-ignore_unavailable"
@@ -70499,6 +70505,16 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
+        },
+        "style": "form"
+      },
+      "eql.search-ccs_minimize_roundtrips": {
+        "in": "query",
+        "name": "ccs_minimize_roundtrips",
+        "description": "Indicates whether network round-trips should be minimized as part of cross-cluster search requests execution",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
         },
         "style": "form"
       },
