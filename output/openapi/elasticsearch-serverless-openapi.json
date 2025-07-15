@@ -49962,11 +49962,6 @@
           "weight"
         ]
       },
-<<<<<<< HEAD
-      "indices.add_block.IndicesBlockOptions": {
-||||||| parent of 11c4e8ef8 (Remove invalid query parameters from CreateRequest)
-      "indices._types.IndicesBlockOptions": {
-=======
       "_types.OpType": {
         "type": "string",
         "enum": [
@@ -49974,8 +49969,7 @@
           "create"
         ]
       },
-      "indices._types.IndicesBlockOptions": {
->>>>>>> 11c4e8ef8 (Remove invalid query parameters from CreateRequest)
+      "indices.add_block.IndicesBlockOptions": {
         "type": "string",
         "enum": [
           "metadata",
