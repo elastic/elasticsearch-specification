@@ -1,12 +1,1 @@
 method_request: GET _connector
-alternatives:
-  - language: Python
-    code: resp = client.connector.list()
-  - language: JavaScript
-    code: const response = await client.connector.list();
-  - language: Ruby
-    code: response = client.connector.list
-  - language: PHP
-    code: $resp = $client->connector()->list();
-  - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_connector"'
