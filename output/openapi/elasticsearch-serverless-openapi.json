@@ -9791,6 +9791,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.put-inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.put-timeout"
           }
         ],
         "requestBody": {
@@ -9888,6 +9891,9 @@
           },
           {
             "$ref": "#/components/parameters/inference.put-inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.put-timeout"
           }
         ],
         "requestBody": {
@@ -10001,6 +10007,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -10097,6 +10113,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -10183,6 +10209,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -10263,6 +10299,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -10349,6 +10395,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -10435,6 +10491,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -10521,6 +10587,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -10633,6 +10709,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -10723,6 +10809,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -10801,6 +10897,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -10887,6 +10993,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -10970,6 +11086,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -11056,6 +11182,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -11133,6 +11269,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -11219,6 +11365,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -11305,6 +11461,16 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -68009,6 +68175,16 @@
           "$ref": "#/components/schemas/_types.Id"
         },
         "style": "simple"
+      },
+      "inference.put-timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Duration"
+        },
+        "style": "form"
       },
       "ingest.get_pipeline-id": {
         "in": "path",
