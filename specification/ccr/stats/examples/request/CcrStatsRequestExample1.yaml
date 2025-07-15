@@ -1,15 +1,1 @@
 method_request: GET /_ccr/stats
-alternatives:
-  - language: Python
-    code: resp = client.ccr.stats()
-  - language: JavaScript
-    code: const response = await client.ccr.stats();
-  - language: Ruby
-    code: response = client.ccr.stats
-  - language: PHP
-    code: $resp = $client->ccr()->stats();
-  - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ccr/stats"'
-  - language: Java
-    code: |
-      client.ccr().stats(s -> s);

@@ -1,15 +1,1 @@
 method_request: GET /_nodes/hot_threads
-alternatives:
-  - language: Python
-    code: resp = client.nodes.hot_threads()
-  - language: JavaScript
-    code: const response = await client.nodes.hotThreads();
-  - language: Ruby
-    code: response = client.nodes.hot_threads
-  - language: PHP
-    code: $resp = $client->nodes()->hotThreads();
-  - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_nodes/hot_threads"'
-  - language: Java
-    code: |
-      client.nodes().hotThreads(h -> h);
