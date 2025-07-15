@@ -2560,6 +2560,9 @@ export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 export interface LinearRetriever extends RetrieverBase {
   retrievers?: InnerRetriever[]
   rank_window_size?: integer
+  query?: string
+  fields?: string[]
+  normalizer?: ScoreNormalizer
 }
 
 export type MapboxVectorTiles = ArrayBuffer
@@ -2694,6 +2697,8 @@ export interface RRFRetriever extends RetrieverBase {
   retrievers: RetrieverContainer[]
   rank_constant?: integer
   rank_window_size?: integer
+  query?: string
+  fields?: string[]
 }
 
 export interface RankBase {
