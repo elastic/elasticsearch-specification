@@ -6,37 +6,3 @@ value: |-
   {
     "realm_name" : "saml1"
   }
-alternatives:
-  - language: Python
-    code: |-
-      resp = client.security.invalidate_token(
-          realm_name="saml1",
-      )
-  - language: JavaScript
-    code: |-
-      const response = await client.security.invalidateToken({
-        realm_name: "saml1",
-      });
-  - language: Ruby
-    code: |-
-      response = client.security.invalidate_token(
-        body: {
-          "realm_name": "saml1"
-        }
-      )
-  - language: PHP
-    code: |-
-      $resp = $client->security()->invalidateToken([
-          "body" => [
-              "realm_name" => "saml1",
-          ],
-      ]);
-  - language: curl
-    code:
-      'curl -X DELETE -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d
-      ''{"realm_name":"saml1"}'' "$ELASTICSEARCH_URL/_security/oauth2/token"'
-  - language: Java
-    code: |
-      client.security().invalidateToken(i -> i
-          .realmName("saml1")
-      );
