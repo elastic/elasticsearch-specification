@@ -21,15 +21,12 @@ import { RequestBase } from '@_types/Base'
 import {
   Id,
   IndexName,
-  OpType,
   Refresh,
   Routing,
-  SequenceNumber,
   VersionNumber,
   VersionType,
   WaitForActiveShards
 } from '@_types/common'
-import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
@@ -135,29 +132,10 @@ export interface Request<TDocument> extends RequestBase {
   }
   query_parameters: {
     /**
-     * Only perform the operation if the document has this primary term.
-     * @ext_doc_id optimistic-concurrency
-     */
-    if_primary_term?: long
-    /**
-     * Only perform the operation if the document has this sequence number.
-     * @ext_doc_id optimistic-concurrency
-     */
-    if_seq_no?: SequenceNumber
-    /**
      * True or false if to include the document source in the error message in case of parsing errors.
      * @server_default true
      */
     include_source_on_error?: boolean
-    /**
-     * Set to `create` to only index the document if it does not already exist (put if absent).
-     * If a document with the specified `_id` already exists, the indexing operation will fail.
-     * The behavior is the same as using the `<index>/_create` endpoint.
-     * If a document ID is specified, this paramater defaults to `index`.
-     * Otherwise, it defaults to `create`.
-     * If the request targets a data stream, an `op_type` of `create` is required.
-     */
-    op_type?: OpType
     /**
      * The ID of the pipeline to use to preprocess incoming documents.
      * If the index has a default ingest pipeline specified, setting the value to `_none` turns off the default ingest pipeline for this request.
