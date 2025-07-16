@@ -1,5 +1,14 @@
 {
   "endpointErrors": {
+    "cluster.allocation_explain": {
+      "request": [
+        "Request: missing json spec query parameter 'index'",
+        "Request: missing json spec query parameter 'shard'",
+        "Request: missing json spec query parameter 'primary'",
+        "Request: missing json spec query parameter 'current_node'"
+      ],
+      "response": []
+    },
     "msearch": {
       "request": [
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
@@ -8,12 +17,6 @@
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
         "Request: query parameter 'include_named_queries_score' does not exist in the json spec",
         "Request: query parameter 'routing' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "reindex": {
-      "request": [
-        "Request: query parameter 'require_alias' does not exist in the json spec"
       ],
       "response": []
     },
