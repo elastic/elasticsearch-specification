@@ -288,7 +288,33 @@ export class InferenceChunkingSettings {
    */
   sentence_overlap?: integer
   /**
-   * The chunking strategy: `sentence`, `word`, `none` or `recursive`. Learn more about chunking strategies in the External documentation.
+   * This parameter is only applicable when using the `recursive` chunking strategy.
+   *
+   * Sets a predefined list of separators in the saved chunking settings based on the selected text type.
+   * Values can be `markdown` or `plaintext`.
+   *
+   * Using this parameter is an alternative to manually specifying a custom `separators` list.
+   */
+  separator_group: string
+  /**
+   * A list of strings used as possible split points when chunking text with the `recursive` strategy.
+   *
+   * Each string can be a plain string or a regular expression (regex) pattern.
+   * The system tries each separator in order to split the text, starting from the first item in the list.
+   *
+   * After splitting, it attempts to recombine smaller pieces into larger chunks that stay within
+   * the `max_chunk_size` limit, to reduce the total number of chunks generated.
+   */
+  separators: string[]
+  /**
+   * The chunking strategy: `sentence`, `word`, `none` or `recursive`.
+   *
+   *  * If `strategy` is set to `recursive`, you must also specify:
+   *
+   * - `max_chunk_size`
+   * - either `separators` or`separator_group`
+   *
+   * Learn more about different chunking strategies in the External documentation.
    * @server_default sentence
    * @ext_doc_id chunking-strategies
    */
