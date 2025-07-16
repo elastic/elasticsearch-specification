@@ -314,7 +314,7 @@ export class InferenceChunkingSettings {
    * - `max_chunk_size`
    * - either `separators` or`separator_group`
    *
-   * Learn more about different chunking strategies in the External documentation.
+   * Learn more about different chunking strategies in the linked documentation.
    * @server_default sentence
    * @ext_doc_id chunking-strategies
    */
