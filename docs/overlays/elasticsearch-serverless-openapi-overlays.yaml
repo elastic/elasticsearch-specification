@@ -45,3 +45,53 @@ actions:
     update:
       security:
         - apiKeyAuth: []
+# Add x-topics
+  - target: '$'
+    description: Add an extra page about versioning
+    update:
+      x-topics:
+        - title: API versioning
+          content: |
+            Elasticsearch Serverless implements API versioning to enable backwards-incompatible changes while maintaining client compatibility. An API version is a date-based identifier that represents a guaranteed backwards-compatible API surface.
+            
+            As long as the server supports an API version and the client specifies that version, existing client code will continue to work without modification. This backwards compatibility guarantee covers request/response structure and API behavior.
+            
+            ## Guarantees
+            
+            This API versioning scheme provides several key guarantees:
+            
+            * No code changes required: Your application code remains unchanged during Serverless infrastructure upgrades.
+            * No manual migrations: Data, indices, and resources are migrated transparently without user intervention.
+            * New features available everywhere: Compatible additions like new APIs and parameters work across all supported versions.
+            * Predictable upgrade timeline: API versions are supported for at least 18 months after newer versions are introduced.
+          
+          ## API version format
+          
+          API versions use ISO8601 date format: `YYYY-MM-DD` (for example, `2023-10-31`).
+        
+          ## Supported versions
+          
+          Elasticsearch Serverless currently supports the following API versions:
+          
+          * `2023-10-31`
+          
+          Future breaking changes will introduce new date-based versions.
+          Support policies for existing versions will be announced when new versions are released.
+          
+          ## How to specify API versions
+          
+          Clients specify API versions using the `Elastic-Api-Version` HTTP header:
+
+          ```
+          GET /_search HTTP/1.1
+          Elastic-Api-Version: 2023-10-31
+          ```
+          
+          ### Server responses
+          
+          The server's response depends on whether the client provides a version header:
+
+          * When a client sends the `Elastic-Api-Version` header, the server processes the request using the specified API version or returns HTTP 400 if the version is unsupported or malformed. 
+          * When no version header is provided, the server defaults to the latest supported API version.
+          
+          The server always includes the Elastic-Api-Version header in successful responses to indicate which version was used.
