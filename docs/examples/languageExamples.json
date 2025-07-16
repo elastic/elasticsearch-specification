@@ -16836,5 +16836,27 @@
       "language": "Java",
       "code": "client.sql().query(q -> q\n    .format(SqlFormat.Txt)\n    .query(\"SELECT * FROM library ORDER BY page_count DESC LIMIT 5\")\n);\n"
     }
+  ],
+  "specification/cluster/allocation_explain/examples/request/ClusterAllocationExplainRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.cluster.allocation_explain(\n    index=\"my-index-000001\",\n    shard=\"0\",\n    primary=False,\n    current_node=\"my-node\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.cluster.allocationExplain({\n  index: \"my-index-000001\",\n  shard: 0,\n  primary: \"false\",\n  current_node: \"my-node\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.cluster.allocation_explain(\n  index: \"my-index-000001\",\n  shard: \"0\",\n  primary: \"false\",\n  current_node: \"my-node\",\n  body: {}\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->cluster()->allocationExplain([\n    \"index\" => \"my-index-000001\",\n    \"shard\" => \"0\",\n    \"primary\" => \"false\",\n    \"current_node\" => \"my-node\",\n    \"body\" => new ArrayObject([]),\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{}' \"$ELASTICSEARCH_URL/_cluster/allocation/explain?index=my-index-000001&shard=0&primary=false&current_node=my-node\""
+    }
   ]
 }

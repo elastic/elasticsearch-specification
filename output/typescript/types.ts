@@ -9405,14 +9405,18 @@ export interface ClusterAllocationExplainNodeDiskUsage {
 }
 
 export interface ClusterAllocationExplainRequest extends RequestBase {
+  index?: IndexName
+  shard?: integer
+  primary?: boolean
+  current_node?: NodeId
   include_disk_info?: boolean
   include_yes_decisions?: boolean
   master_timeout?: Duration
   body?: {
-    current_node?: string
     index?: IndexName
-    primary?: boolean
     shard?: integer
+    primary?: boolean
+    current_node?: NodeId
   }
 }
 
