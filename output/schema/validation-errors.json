@@ -267,12 +267,6 @@
       ],
       "response": []
     },
-    "snapshot.repository_analyze": {
-      "request": [
-        "Request: query parameter 'register_operation_count' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "xpack.info": {
       "request": [
         "request definition xpack.info:Request / query - Property 'human' is already defined in an ancestor class"
