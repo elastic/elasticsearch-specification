@@ -567,14 +567,17 @@ export interface AmazonSageMakerTaskSettings {
  * `elastic` API allows any key value pair in the task settings when calling the inference endpoint, but it cannot
  * be used when creating the inference endpoint.
  */
-export class AmazonSageMakerElasticTaskSettings implements AmazonSageMakerTaskSettings {
+export class AmazonSageMakerElasticTaskSettings
+  implements AmazonSageMakerTaskSettings
+{
   [key: string]: unknown
 }
 
 /**
  * `openai` API-specific task settings for Amazon SageMaker.
  */
-export interface AmazonSageMakerOpenAiTaskSettings extends AmazonSageMakerTaskSettings {
+export interface AmazonSageMakerOpenAiTaskSettings
+  extends AmazonSageMakerTaskSettings {
   user?: string
 }
 
