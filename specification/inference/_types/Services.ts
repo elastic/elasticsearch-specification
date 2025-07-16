@@ -23,6 +23,7 @@ import {
   TaskType,
   TaskTypeAlibabaCloudAI,
   TaskTypeAmazonBedrock,
+  TaskTypeAmazonSageMaker,
   TaskTypeAnthropic,
   TaskTypeAzureAIStudio,
   TaskTypeAzureOpenAI,
@@ -107,6 +108,17 @@ export class InferenceEndpointInfoAmazonBedrock extends InferenceEndpoint {
    * The task type
    */
   task_type: TaskTypeAmazonBedrock
+}
+
+export class InferenceEndpointInfoAmazonSageMaker extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeAmazonSageMaker
 }
 
 export class InferenceEndpointInfoAnthropic extends InferenceEndpoint {

@@ -442,6 +442,146 @@ export enum AmazonBedrockServiceType {
   amazonbedrock
 }
 
+export class AmazonSageMakerServiceSettings {
+  /**
+   * A valid AWS access key that has permissions to use Amazon SageMaker and access to models for invoke requests.
+   */
+  access_key: string
+  /**
+   * The name of the SageMaker Endpoint.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  endpoint_name: string
+  /**
+   * The API format to use when calling SageMaker.
+   * This will structure the payload when invoking the SageMaker endpoint.
+   */
+  api: AmazonSageMakerApi
+  /**
+   * The region that your endpoint or ARN is deployed in.
+   * The list of available regions per model can be found in the Amazon SageMaker documentation.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  region: string
+  /**
+   * A valid AWS secret key that is paired with the `access_key`.
+   * For informationg about creating and managing access and secret keys, refer to the AWS documentation.
+   * @ext_doc_id amazonsagemaker-secret-keys
+   */
+  secret_key: string
+  /**
+   * The model id when calling a multi-model endpoint.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  target_model?: string
+  /**
+   * The container to directly invoke when calling a multi-container endpoint.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  target_container_hostname?: string
+  /**
+   * The inference component to directly invoke when calling a multi-component endpoint.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  inference_component_name?: string
+  /**
+   * The maximum number of inputs in each batch. This value is used by inference ingestion pipelines
+   * when processing semantic values. It correlates to the number of times the SageMaker endpoint is
+   * invoked (one per batch of input).
+   * @server_default 256
+   */
+  batch_size?: integer
+  /**
+   * The number of dimensions returned by the text_embedding models. If this value is not provided, then
+   * it is guessed by making invoking the Endpoint for the text_embedding task.
+   */
+  dimensions?: integer
+}
+
+export enum AmazonSageMakerApi {
+  openai,
+  elastic
+}
+
+/**
+ * Service Settings specific to the Elastic API for the Amazon SageMaker service.
+ */
+export class AmazonSageMakerElasticServiceSettings extends AmazonSageMakerServiceSettings {
+  /**
+   * Similarity measure used when invoking the text_embedding task type.
+   */
+  similarity?: AmazonSageMakerSimilarity
+
+  /**
+   * The data type returned by the text_embedding model.
+   * This value must be set when task_type is text_embedding and is used when parsing the response
+   * back to Elasticsearch data structures.
+   */
+  element_type: AmazonSageMakerElementType
+}
+
+export enum AmazonSageMakerSimilarity {
+  cosine,
+  dot_product,
+  l2_norm
+}
+
+export enum AmazonSageMakerElementType {
+  byte,
+  float,
+  bit
+}
+
+export interface AmazonSageMakerTaskSettings {
+  /**
+   * The AWS custom attributes passed verbatim through to the model running in the SageMaker Endpoint.
+   * Values will be returned in the `X-elastic-sagemaker-custom-attributes` header.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  custom_attributes?: string
+  /**
+   * The optional JMESPath expression used to override the EnableExplanations provided during endpoint creation.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  enable_explanations?: string
+  /**
+   * The capture data id when enabled in the Endpoint.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  inference_id?: string
+  /**
+   * The stateful session identifier for a new or existing session.
+   * New sessions will be returned in the `X-elastic-sagemaker-new-session-id` header.
+   * Closed sessions will be returned in the `X-elastic-sagemaker-closed-session-id` header.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  session_id?: string
+  /**
+   * Specifies the variant when running with multi-variant Endpoints.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  target_variant?: string
+}
+
+/**
+ * `elastic` API allows any key value pair in the task settings when calling the inference endpoint, but it cannot
+ * be used when creating the inference endpoint.
+ */
+export class AmazonSageMakerElasticTaskSettings implements AmazonSageMakerTaskSettings {
+  [key: string]: unknown
+}
+
+/**
+ * `openai` API-specific task settings for Amazon SageMaker.
+ */
+export interface AmazonSageMakerOpenAiTaskSettings extends AmazonSageMakerTaskSettings {
+  user?: string
+}
+
+export enum AmazonSageMakerServiceType {
+  amazon_sagemaker
+}
+
 export class AnthropicServiceSettings {
   /**
    * A valid API key for the Anthropic API.
