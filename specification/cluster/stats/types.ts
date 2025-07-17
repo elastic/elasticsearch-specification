@@ -224,15 +224,15 @@ export class FieldTypes {
   /**
    * For dense_vector field types, number of indexed vector types in selected nodes.
    */
-  indexed_vector_count?: long
+  indexed_vector_count?: integer
   /**
    * For dense_vector field types, the maximum dimension of all indexed vector types in selected nodes.
    */
-  indexed_vector_dim_max?: long
+  indexed_vector_dim_max?: integer
   /**
    * For dense_vector field types, the minimum dimension of all indexed vector types in selected nodes.
    */
-  indexed_vector_dim_min?: long
+  indexed_vector_dim_min?: integer
   /**
    * The number of fields that declare a script.
    * @availability stack since=7.13.0
