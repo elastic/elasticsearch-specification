@@ -239,7 +239,9 @@ export enum HealthStatus {
    * One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.
    * @aliases RED
    */
-  red
+  red,
+  unknown,
+  unavailable
 }
 
 export enum HttpMethod {
