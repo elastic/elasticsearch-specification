@@ -26,7 +26,8 @@ export enum IndicatorHealthStatus {
   green,
   yellow,
   red,
-  unknown
+  unknown,
+  unavailable
 }
 
 export class Indicators {
