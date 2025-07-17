@@ -22,12 +22,6 @@
         "Request: missing json spec query parameter 'index'"
       ],
       "response": []
-    },
-    "xpack.info": {
-      "request": [
-        "request definition xpack.info:Request / query - Property 'human' is already defined in an ancestor class"
-      ],
-      "response": []
     }
   },
   "generalErrors": []
