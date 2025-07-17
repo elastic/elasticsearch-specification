@@ -37343,7 +37343,9 @@
           "yellow",
           "YELLOW",
           "red",
-          "RED"
+          "RED",
+          "unknown",
+          "unavailable"
         ]
       },
       "_types.TimeUnit": {
