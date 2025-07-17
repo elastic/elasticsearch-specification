@@ -164,15 +164,15 @@ export class SparseVectorStats {
 }
 
 export class DenseVectorOffHeapStats {
-  total_size_bytes?: long
+  total_size_bytes: long
   total_size?: ByteSize
-  total_veb_size_bytes?: long
+  total_veb_size_bytes: long
   total_veb_size?: ByteSize
-  total_vec_size_bytes?: long
+  total_vec_size_bytes: long
   total_vec_size?: ByteSize
-  total_veq_size_bytes?: long
+  total_veq_size_bytes: long
   total_veq_size?: ByteSize
-  total_vex_size_bytes?: long
+  total_vex_size_bytes: long
   total_vex_size?: ByteSize
   fielddata?: Dictionary<string, Dictionary<string, long>>
 }
@@ -359,7 +359,7 @@ export class SynonymsStats {
 export class IndicesVersions {
   index_count: integer
   primary_shard_count: integer
-  total_primary_bytes?: long
+  total_primary_bytes: long
   total_primary_size?: ByteSize
   version: VersionString
 }
@@ -373,7 +373,7 @@ export class ClusterJvm {
   /**
    * Uptime duration, in milliseconds, since JVM last started.
    */
-  max_uptime_in_millis?: DurationValue<UnitMillis>
+  max_uptime_in_millis: DurationValue<UnitMillis>
   /**
    * Uptime duration since JVM last started.
    */
@@ -396,7 +396,7 @@ export class ClusterJvmMemory {
   /**
    * Maximum amount of memory, in bytes, available for use by the heap across all selected nodes.
    */
-  heap_max_in_bytes?: long
+  heap_max_in_bytes: long
   /**
    * Maximum amount of memory available for use by the heap across all selected nodes.
    */
@@ -404,7 +404,7 @@ export class ClusterJvmMemory {
   /**
    * Memory, in bytes, currently in use by the heap across all selected nodes.
    */
-  heap_used_in_bytes?: long
+  heap_used_in_bytes: long
   /**
    * Memory currently in use by the heap across all selected nodes.
    */
@@ -664,7 +664,7 @@ export class SnapshotCurrentCounts {
 
 export class PerRepositoryStats {
   type: string
-  oldest_start_time_millis?: UnitMillis
+  oldest_start_time_millis: UnitMillis
   oldest_start_time?: DateFormat
   current_counts: RepositoryStatsCurrentCounts
 }
@@ -729,7 +729,7 @@ export class OperatingSystemMemoryInfo {
   /**
    * Amount, in bytes, of free physical memory across all selected nodes.
    */
-  free_in_bytes?: long
+  free_in_bytes: long
   /**
    * Amount of free physical memory across all selected nodes.
    */
@@ -742,7 +742,7 @@ export class OperatingSystemMemoryInfo {
   /**
    * Total amount, in bytes, of physical memory across all selected nodes.
    */
-  total_in_bytes?: long
+  total_in_bytes: long
   /**
    * Total amount of physical memory across all selected nodes.
    */
@@ -751,7 +751,7 @@ export class OperatingSystemMemoryInfo {
   /**
    * Amount, in bytes, of physical memory in use across all selected nodes.
    */
-  used_in_bytes?: long
+  used_in_bytes: long
   /**
    * Amount of physical memory in use across all selected nodes.
    */

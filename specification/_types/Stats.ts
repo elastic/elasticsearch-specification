@@ -113,7 +113,7 @@ export class DocStats {
    * Returns the total size in bytes of all documents in this stats.
    * This value may be more reliable than store_stats.size_in_bytes in estimating the index size.
    */
-  total_size_in_bytes?: long
+  total_size_in_bytes: long
   /**
    * Human readable total_size_in_bytes
    */
@@ -129,13 +129,13 @@ export class FielddataStats {
 }
 
 export class GlobalOrdinalsStats {
-  build_time_in_millis?: UnitMillis
+  build_time_in_millis: UnitMillis
   build_time?: string
   fields?: Dictionary<Name, GlobalOrdinalFieldStats>
 }
 
 export class GlobalOrdinalFieldStats {
-  build_time_in_millis?: UnitMillis
+  build_time_in_millis: UnitMillis
   build_time?: string
   shard_max_value_count: long
 }
