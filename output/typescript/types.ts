@@ -13791,9 +13791,11 @@ export interface InferenceAzureAiStudioTaskSettings {
   temperature?: float
   top_p?: float
   user?: string
+  return_documents?: boolean
+  top_n?: integer
 }
 
-export type InferenceAzureAiStudioTaskType = 'completion' | 'text_embedding'
+export type InferenceAzureAiStudioTaskType = 'completion' | 'rerank' | 'text_embedding'
 
 export interface InferenceAzureOpenAIServiceSettings {
   api_key?: string
@@ -14178,7 +14180,7 @@ export type InferenceTaskTypeAmazonBedrock = 'text_embedding' | 'completion'
 
 export type InferenceTaskTypeAnthropic = 'completion'
 
-export type InferenceTaskTypeAzureAIStudio = 'text_embedding' | 'completion'
+export type InferenceTaskTypeAzureAIStudio = 'text_embedding' | 'completion' | 'rerank'
 
 export type InferenceTaskTypeAzureOpenAI = 'text_embedding' | 'completion'
 
