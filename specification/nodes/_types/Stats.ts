@@ -197,8 +197,6 @@ export interface PressureMemory {
    */
   replica_rejections?: long
   primary_document_rejections?: long
-  limit?: ByteSize
-  limit_in_bytes?: long
   large_operation_rejections?: long
 }
 

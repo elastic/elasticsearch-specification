@@ -101,7 +101,7 @@ export class ClusterIndices {
   /**
    * Contains statistics about analyzers and analyzer components used in selected nodes.
    */
-  analysis: CharFilterTypes
+  analysis?: CharFilterTypes
   /** Contains statistics about memory used for completion in selected nodes. */
   completion: CompletionStats
   /** Total number of indices with shards assigned to selected nodes. */
@@ -130,7 +130,7 @@ export class ClusterIndices {
   /**
    * Contains statistics about field mappings in selected nodes.
    */
-  mappings: FieldTypesMappings
+  mappings?: FieldTypesMappings
   /**
    * Contains statistics about analyzers and analyzer components used in selected nodes.
    * @doc_id analyzer-anatomy
@@ -139,11 +139,11 @@ export class ClusterIndices {
   /**
    * Contains statistics about indexed dense vector
    */
-  dense_vector?: DenseVectorStats
+  dense_vector: DenseVectorStats
   /**
    * Contains statistics about indexed sparse vector
    */
-  sparse_vector?: SparseVectorStats
+  sparse_vector: SparseVectorStats
 }
 
 export class SearchUsageStats {
@@ -188,11 +188,11 @@ export class FieldTypesMappings {
   /**
    * Total number of fields in all non-system indices.
    */
-  total_field_count?: integer
+  total_field_count?: long
   /**
    * Total number of fields in all non-system indices, accounting for mapping deduplication.
    */
-  total_deduplicated_field_count?: integer
+  total_deduplicated_field_count?: long
   /**
    * Total size of all mappings after deduplication and compression.
    */
