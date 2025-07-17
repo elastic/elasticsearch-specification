@@ -255,12 +255,6 @@
       ],
       "response": []
     },
-    "reindex": {
-      "request": [
-        "Request: query parameter 'require_alias' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "searchable_snapshots.clear_cache": {
       "request": [
         "Request: missing json spec query parameter 'index'"
