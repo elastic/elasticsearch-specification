@@ -174,6 +174,7 @@ export class DenseVectorOffHeapStats {
   total_veq_size?: ByteSize
   total_vex_size_bytes?: long
   total_vex_size?: ByteSize
+  fielddata?: Dictionary<string, Dictionary<string, long>>
 }
 
 export class FieldTypesMappings {
@@ -239,15 +240,15 @@ export class FieldTypes {
    */
   script_count?: integer
   /**
-   * Count of mappings by index type
+   * For dense_vector field types, count of mappings by index type
    */
   vector_index_type_count?: Dictionary<Name, integer>
   /**
-   * Count of mappings by similarity
+   * For dense_vector field types, count of mappings by similarity
    */
   vector_similarity_type_count?: Dictionary<Name, integer>
   /**
-   * Count of mappings by element type
+   * For dense_vector field types, count of mappings by element type
    */
   vector_element_type_count?: Dictionary<Name, integer>
 }
