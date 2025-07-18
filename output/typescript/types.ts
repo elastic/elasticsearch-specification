@@ -12263,6 +12263,10 @@ export interface IndicesDeleteRequest extends RequestBase {
 
 export type IndicesDeleteResponse = IndicesResponseBase
 
+export interface IndicesDeleteAliasIndicesAliasesResponseBody extends AcknowledgedResponseBase {
+  errors?: boolean
+}
+
 export interface IndicesDeleteAliasRequest extends RequestBase {
   index: Indices
   name: Names
@@ -12270,7 +12274,7 @@ export interface IndicesDeleteAliasRequest extends RequestBase {
   timeout?: Duration
 }
 
-export type IndicesDeleteAliasResponse = AcknowledgedResponseBase
+export type IndicesDeleteAliasResponse = IndicesDeleteAliasIndicesAliasesResponseBody
 
 export interface IndicesDeleteDataLifecycleRequest extends RequestBase {
   name: DataStreamNames
