@@ -1,15 +1,1 @@
 method_request: GET /_security/privilege/_builtin
-alternatives:
-  - language: Python
-    code: resp = client.security.get_builtin_privileges()
-  - language: JavaScript
-    code: const response = await client.security.getBuiltinPrivileges();
-  - language: Ruby
-    code: response = client.security.get_builtin_privileges
-  - language: PHP
-    code: $resp = $client->security()->getBuiltinPrivileges();
-  - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_security/privilege/_builtin"'
-  - language: Java
-    code: |
-      client.security().getBuiltinPrivileges();
