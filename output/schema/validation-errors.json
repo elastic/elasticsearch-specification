@@ -254,12 +254,6 @@
         "Request: query parameter 'routing' does not exist in the json spec"
       ],
       "response": []
-    },
-    "searchable_snapshots.clear_cache": {
-      "request": [
-        "Request: missing json spec query parameter 'index'"
-      ],
-      "response": []
     }
   },
   "generalErrors": [
