@@ -1,13 +1,5 @@
 {
   "endpointErrors": {
-    "indices.recovery": {
-      "request": [
-        "Request: missing json spec query parameter 'ignore_unavailable'",
-        "Request: missing json spec query parameter 'allow_no_indices'",
-        "Request: missing json spec query parameter 'expand_wildcards'"
-      ],
-      "response": []
-    },
     "msearch": {
       "request": [
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
