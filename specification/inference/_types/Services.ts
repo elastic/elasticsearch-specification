@@ -27,6 +27,7 @@ import {
   TaskTypeAzureAIStudio,
   TaskTypeAzureOpenAI,
   TaskTypeCohere,
+  TaskTypeCustom,
   TaskTypeDeepSeek,
   TaskTypeElasticsearch,
   TaskTypeELSER,
@@ -75,18 +76,6 @@ export class InferenceEndpointInfo extends InferenceEndpoint {
    */
   task_type: TaskType
 }
-
-export class InferenceEndpointInfoJinaAi extends InferenceEndpoint {
-  /**
-   * The inference Id
-   */
-  inference_id: string
-  /**
-   * The task type
-   */
-  task_type: TaskTypeJinaAi
-}
-
 export class InferenceEndpointInfoAlibabaCloudAI extends InferenceEndpoint {
   /**
    * The inference Id
@@ -153,6 +142,16 @@ export class InferenceEndpointInfoCohere extends InferenceEndpoint {
   task_type: TaskTypeCohere
 }
 
+export class InferenceEndpointInfoCustom extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeCustom
+}
 export class InferenceEndpointInfoDeepSeek extends InferenceEndpoint {
   /**
    * The inference Id
@@ -217,6 +216,17 @@ export class InferenceEndpointInfoHuggingFace extends InferenceEndpoint {
    * The task type
    */
   task_type: TaskTypeHuggingFace
+}
+
+export class InferenceEndpointInfoJinaAi extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeJinaAi
 }
 
 export class InferenceEndpointInfoMistral extends InferenceEndpoint {
