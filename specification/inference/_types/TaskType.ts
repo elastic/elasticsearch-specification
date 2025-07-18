@@ -51,7 +51,8 @@ export enum TaskTypeAnthropic {
 
 export enum TaskTypeAzureAIStudio {
   text_embedding,
-  completion
+  completion,
+  rerank
 }
 
 export enum TaskTypeAzureOpenAI {
