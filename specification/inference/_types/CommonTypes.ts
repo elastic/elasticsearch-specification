@@ -771,6 +771,17 @@ export class CustomServiceSettings {
    */
   headers?: UserDefinedValue
   /**
+   * Specifies the query parameters as a list of tuples. The arrays inside the `query_parameters` must have two items, a key and a value.
+   * For example:
+   * ```
+   * "query_parameters":[
+   *   ["param_key", "some_value"],
+   *   ["param_key", "another_value"]
+   * ]
+   * ```
+   */
+  query_parameters?: UserDefinedValue
+  /**
    * The request configuration object.
    */
   request: CustomRequestParams
