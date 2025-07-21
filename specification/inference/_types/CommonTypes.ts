@@ -572,7 +572,7 @@ export class AzureAiStudioTaskSettings {
    */
   return_documents?: boolean
   /**
-   * For a `rerank` task, the number of the top N documents that should be returned.
+   * For a `rerank` task, the number of most relevant documents to return.\nIt defaults to the number of the documents.
    */
   top_n?: integer
 }

@@ -54374,6 +54374,21 @@
           }
         ]
       },
+      "indices.delete_alias.IndicesAliasesResponseBody": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "errors": {
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
       "_types.DataStreamNames": {
         "oneOf": [
           {
@@ -56200,7 +56215,7 @@
             "type": "boolean"
           },
           "top_n": {
-            "description": "For a `rerank` task, the number of the top N documents that should be returned.",
+            "description": "For a `rerank` task, the number of most relevant documents to return.\\nIt defaults to the number of the documents.",
             "type": "number"
           }
         }
@@ -67652,7 +67667,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+              "$ref": "#/components/schemas/indices.delete_alias.IndicesAliasesResponseBody"
             }
           }
         }
