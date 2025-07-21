@@ -1,11 +1,4 @@
 {
-  "endpointErrors": {
-    "msearch": {
-      "request": [
-        "Request: missing json spec query parameter 'index'"
-      ],
-      "response": []
-    }
-  },
+  "endpointErrors": {},
   "generalErrors": []
 }
