@@ -1,0 +1,25 @@
+summary: Custom rerank task (Jina AI)
+description: Run `PUT _inference/rerank/custom-rerank-jina` to create an inference endpoint that performs a rerank task.
+method_request: 'PUT _inference/rerank/custom-rerank-jina'
+# type: "request"
+value: |-
+  {
+    "service": "custom",
+    "service_settings": {
+      "secret_parameters": {
+        "api_key": "<api key>"
+      },    
+      "url": "https://api.jina.ai/v1/rerank",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer ${api_key}"
+      },
+      "request": "{\"model\": \"jina-reranker-v2-base-multilingual\",\"query\": ${query},\"documents\":${input}}",
+      "response": {
+        "json_parser": {
+          "relevance_score": "$.results[*].relevance_score",
+          "reranked_index": "$.results[*].index"
+        }
+      }
+    }
+  }
