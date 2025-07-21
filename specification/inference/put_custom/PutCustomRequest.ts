@@ -30,7 +30,8 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
 /**
  * Create a custom inference endpoint.
  *
- * You can create an inference endpoint to perform an inference task with a custom model that supports the HTTP format.
+ * The custom service gives more control over how to interact with external inference services that aren't explicitly supported through dedicated integrations.
+ * The custom service gives you the ability to define the headers, url, query parameters, request body, and secrets.
  * @rest_spec_name inference.put_custom
  * @availability stack since=8.13.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public

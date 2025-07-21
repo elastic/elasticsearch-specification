@@ -799,9 +799,7 @@ export class CustomRequestParams {
    * The body structure of the request. It requires passing in the string-escaped result of the JSON format HTTP request body.
    * For example:
    * ```
-   * "request":{
-   *   "content":"{\"input\":${input}}"
-   * }
+   * "request": "{\"input\":${input}}"
    * ```
    * > info
    * > The content string needs to be a single line except using the Kibana console.
@@ -810,18 +808,6 @@ export class CustomRequestParams {
 }
 
 export class CustomResponseParams {
-  /**
-   * Specifies the path to the error message in the response from the custom service.
-   * For example:
-   * ```
-   * "response": {
-   *   "error_parser": {
-   *     "path": "$.error.message"
-   *   }
-   * }
-   * ```
-   */
-  error_parser: UserDefinedValue
   /**
    * Specifies the JSON parser that is used to parse the response from the custom service.
    * Different task types require different json_parser parameters.
