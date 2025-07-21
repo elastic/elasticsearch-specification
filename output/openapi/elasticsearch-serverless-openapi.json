@@ -12197,6 +12197,11 @@
                   "summary": "A rerank task",
                   "description": "Run `PUT _inference/rerank/cohere-rerank` to create an inference endpoint that performs a rerank task.",
                   "value": "{\n    \"service\": \"cohere\",\n    \"service_settings\": {\n        \"api_key\": \"Cohere-API-key\",\n        \"model_id\": \"rerank-english-v3.0\"\n    },\n    \"task_settings\": {\n        \"top_n\": 10,\n        \"return_documents\": true\n    }\n}"
+                },
+                "PutCohereRequestExample3": {
+                  "summary": "A completion task",
+                  "description": "Run `PUT _inference/completion/cohere-completion` to create an inference endpoint that performs a completion task.",
+                  "value": "{\n    \"service\": \"cohere\",\n    \"service_settings\": {\n        \"api_key\": \"Cohere-API-key\",\n        \"model_id\": \"command-a-03-2025\"\n    }\n}"
                 }
               }
             }
