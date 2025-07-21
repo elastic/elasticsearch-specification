@@ -18,13 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, NodeId } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
  * Explain the shard allocations.
  * Get explanations for shard allocations in the cluster.
+ * This API accepts the current_node, index, primary and shard parameters in the request body or in query parameters, but not in both at the same time.
  * For unassigned shards, it provides an explanation for why the shard is unassigned.
  * For assigned shards, it provides an explanation for why the shard is remaining on its current node and has not moved or rebalanced to another node.
  * This API can be very useful when attempting to diagnose why a shard is unassigned or why a shard continues to remain on its current node when you might expect otherwise.
@@ -45,6 +46,22 @@ export interface Request extends RequestBase {
   ]
   query_parameters: {
     /**
+     * The name of the index that you would like an explanation for.
+     */
+    index?: IndexName
+    /**
+     * An identifier for the shard that you would like an explanation for.
+     */
+    shard?: integer
+    /**
+     * If true, returns an explanation for the primary shard for the specified shard ID.
+     */
+    primary?: boolean
+    /**
+     * Explain a shard only if it is currently located on the specified node name or node ID.
+     */
+    current_node?: NodeId
+    /**
      * If true, returns information about disk usage and shard sizes.
      * @server_default false
      */
@@ -62,20 +79,20 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * Specifies the node ID or the name of the node to only explain a shard that is currently located on the specified node.
-     */
-    current_node?: string
-    /**
-     * Specifies the name of the index that you would like an explanation for.
+     * The name of the index that you would like an explanation for.
      */
     index?: IndexName
     /**
-     * If true, returns explanation for the primary shard for the given shard ID.
+     * An identifier for the shard that you would like an explanation for.
+     */
+    shard?: integer
+    /**
+     * If true, returns an explanation for the primary shard for the specified shard ID.
      */
     primary?: boolean
     /**
-     * Specifies the ID of the shard that you would like an explanation for.
+     * Explain a shard only if it is currently located on the specified node name or node ID.
      */
-    shard?: integer
+    current_node?: NodeId
   }
 }

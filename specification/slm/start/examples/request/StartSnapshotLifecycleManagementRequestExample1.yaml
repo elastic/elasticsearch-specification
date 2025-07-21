@@ -1,15 +1,1 @@
 method_request: POST _slm/start
-alternatives:
-  - language: Python
-    code: resp = client.slm.start()
-  - language: JavaScript
-    code: const response = await client.slm.start();
-  - language: Ruby
-    code: response = client.slm.start
-  - language: PHP
-    code: $resp = $client->slm()->start();
-  - language: curl
-    code: 'curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_slm/start"'
-  - language: Java
-    code: |
-      client.slm().start(s -> s);

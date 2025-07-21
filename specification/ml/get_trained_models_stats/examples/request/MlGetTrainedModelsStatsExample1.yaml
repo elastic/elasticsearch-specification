@@ -1,15 +1,1 @@
 method_request: GET _ml/trained_models/_stats
-alternatives:
-  - language: Python
-    code: resp = client.ml.get_trained_models_stats()
-  - language: JavaScript
-    code: const response = await client.ml.getTrainedModelsStats();
-  - language: Ruby
-    code: response = client.ml.get_trained_models_stats
-  - language: PHP
-    code: $resp = $client->ml()->getTrainedModelsStats();
-  - language: curl
-    code: 'curl -X GET -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/_ml/trained_models/_stats"'
-  - language: Java
-    code: |
-      client.ml().getTrainedModelsStats(g -> g);
