@@ -243,12 +243,6 @@
         "Request: missing json spec query parameter 'allow_no_datafeeds'"
       ],
       "response": []
-    },
-    "msearch": {
-      "request": [
-        "Request: missing json spec query parameter 'index'"
-      ],
-      "response": []
     }
   },
   "generalErrors": [
