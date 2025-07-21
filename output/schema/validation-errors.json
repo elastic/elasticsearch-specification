@@ -5,12 +5,6 @@
         "Request: query parameter 'format' does not exist in the json spec"
       ],
       "response": []
-    },
-    "msearch": {
-      "request": [
-        "Request: missing json spec query parameter 'index'"
-      ],
-      "response": []
     }
   },
   "generalErrors": []
