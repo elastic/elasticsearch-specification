@@ -782,7 +782,7 @@ export class CustomServiceSettings {
    * ```
    * If the subsequent inference requests come from a search context, the `search` key will be used and the template will be replaced with `do_search`.
    * If it comes from the ingest context `do_ingest` is used. If it's a different context that is not specified, the default value will be used. If no default is specified an empty string is used.
-   * `transition` can be:
+   * `translation` can be:
    * * `classification`
    * * `clustering`
    * * `ingest`
@@ -795,9 +795,11 @@ export class CustomServiceSettings {
    * ```
    * "query_parameters":[
    *   ["param_key", "some_value"],
-   *   ["param_key", "another_value"]
+   *   ["param_key", "another_value"],
+   *   ["other_key", "other_value"]
    * ]
    * ```
+   * If the base url is `https://www.elastic.co` it results in: `https://www.elastic.co?param_key=some_value&param_key=another_value&other_key=other_value`.
    */
   query_parameters?: UserDefinedValue
   /**
@@ -832,7 +834,7 @@ export class CustomRequestParams {
    * "request": "{\"input\":${input}}"
    * ```
    * > info
-   * > The content string needs to be a single line except using the Kibana console.
+   * > The content string needs to be a single line except when using the Kibana console.
    */
   content: string
 }

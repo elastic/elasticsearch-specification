@@ -32,7 +32,7 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  *
  * The custom service gives more control over how to interact with external inference services that aren't explicitly supported through dedicated integrations.
  * The custom service gives you the ability to define the headers, url, query parameters, request body, and secrets.
- * The custom service supports the template replacement functionality, which enables you to define a template that can be replaced with the contents of a value that defines that key.
+ * The custom service supports the template replacement functionality, which enables you to define a template that can be replaced with the value associated with that key.
  * Templates are portions of a string that start with `${` and end with `}`.
  * The parameters `secret_parameters` and `task_settings` are checked for keys for template replacement. Template replacement is supported in the `request`, `headers`, `url`, and `query_parameters`.
  * If the definition (key) is not found for a template, an error message is returned.
