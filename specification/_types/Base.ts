@@ -111,9 +111,8 @@ export class ElasticsearchVersionInfo {
   /**
    * The Elasticsearch version number.
    *
-   * ::: In Serverless deployments, this value is always `8.11.0`, regardless of the actual runtime version.
-   * This static value exists for backward compatibility with legacy clients.
-   * Serverless environments are automatically upgraded, so this value can be safely ignored.
+   * ::: IMPORTANT: For Serverless deployments, this static value is always `8.11.0` and is used solely for backward compatibility with legacy clients.
+   *  Serverless environments are versionless and automatically upgraded, so this value can be safely ignored.
    */
   number: string
 }
