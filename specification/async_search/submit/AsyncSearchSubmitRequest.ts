@@ -27,8 +27,7 @@ import {
   Indices,
   Routing,
   SearchType,
-  SuggestMode,
-  VersionString
+  SuggestMode
 } from '@_types/common'
 import { KnnSearch } from '@_types/Knn'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
@@ -126,7 +125,6 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     lenient?: boolean
     max_concurrent_shard_requests?: long
-    min_compatible_shard_node?: VersionString
     preference?: string
     /** @server_default true */
     request_cache?: boolean
