@@ -60,10 +60,10 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  * }
  * ```
  * To replace `${api_key}` the `secret_parameters` and `task_settings` are checked for a key named `api_key`.
- * 
+ *
  * > info
  * > Templates should not be surrounded by quotes.
- * 
+ *
  * Pre-defined templates:
  * * `${input}` refers to the array of input strings that comes from the `input` field of the subsequent inference requests.
  * * `${input_type}` refers to the input type translation values.

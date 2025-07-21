@@ -774,20 +774,20 @@ export class CustomServiceSettings {
    * Specifies the input type translation values that are used to replace the `${input_type}` template in the request body.
    * For example:
    * ```
-   * "input_type": { 
-   *   "translation": { 
-   *     "ingest": "do_ingest", 
-   *     "search": "do_search" 
-   *   }, 
-   *   "default": "a_default" 
+   * "input_type": {
+   *   "translation": {
+   *     "ingest": "do_ingest",
+   *     "search": "do_search"
+   *   },
+   *   "default": "a_default"
    * },
    * ```
    * If the subsequent inference requests come from a search context, the `search` key will be used and the template will be replaced with `do_search`.
    * If it comes from the ingest context `do_ingest` is used. If it's a different context that is not specified, the default value will be used. If no default is specified an empty string is used.
    * `transition` can be:
-   * * `classification` 
-   * * `clustering` 
-   * * `ingest` 
+   * * `classification`
+   * * `clustering`
+   * * `ingest`
    * * `search`
    */
   input_type?: UserDefinedValue
@@ -847,7 +847,7 @@ export class CustomResponseParams {
    * ```
    * # text_embedding
    * # For a response like this:
-   * 
+   *
    * {
    *  "object": "list",
    *  "data": [
@@ -866,9 +866,9 @@ export class CustomResponseParams {
    *      "total_tokens": 8
    *  }
    * }
-   * 
+   *
    * # the json_parser definition should look like this:
-   * 
+   *
    * "response":{
    *   "json_parser":{
    *     "text_embeddings":"$.data[*].embedding[*]"
@@ -877,7 +877,7 @@ export class CustomResponseParams {
    *
    * # sparse_embedding
    * # For a response like this:
-   * 
+   *
    * {
    *   "request_id": "75C50B5B-E79E-4930-****-F48DBB392231",
    *   "latency": 22,
@@ -902,9 +902,9 @@ export class CustomResponseParams {
    *      ]
    *   }
    * }
-   * 
+   *
    * # the json_parser definition should look like this:
-   * 
+   *
    * "response":{
    *   "json_parser":{
    *     "token_path":"$.result.sparse_embeddings[*].embedding[*].token_id",
@@ -914,7 +914,7 @@ export class CustomResponseParams {
    *
    * # rerank
    * # For a response like this:
-   * 
+   *
    * {
    *   "results": [
    *     {
@@ -934,9 +934,9 @@ export class CustomResponseParams {
    *     }
    *   ],
    * }
-   * 
-   * # the json_parser definition should look like this: 
-   * 
+   *
+   * # the json_parser definition should look like this:
+   *
    * "response":{
    *   "json_parser":{
    *     "reranked_index":"$.result.scores[*].index",    // optional
@@ -947,7 +947,7 @@ export class CustomResponseParams {
    *
    * # completion
    * # For a response like this:
-   * 
+   *
    * {
    *  "id": "chatcmpl-B9MBs8CjcvOU2jLn4n570S5qMJKcT",
    *  "object": "chat.completion",
@@ -967,9 +967,9 @@ export class CustomResponseParams {
    *   }
    *  ]
    * }
-   * 
+   *
    * # the json_parser definition should look like this:
-   * 
+   *
    * "response":{
    *   "json_parser":{
    *     "completion_result":"$.choices[*].message.content"
