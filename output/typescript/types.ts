@@ -7020,7 +7020,6 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   ignore_unavailable?: boolean
   lenient?: boolean
   max_concurrent_shard_requests?: long
-  min_compatible_shard_node?: VersionString
   preference?: string
   request_cache?: boolean
   routing?: Routing

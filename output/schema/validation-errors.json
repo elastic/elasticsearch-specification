@@ -1,11 +1,5 @@
 {
   "endpointErrors": {
-    "async_search.submit": {
-      "request": [
-        "Request: query parameter 'min_compatible_shard_node' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "bulk": {
       "request": [
         "Request: missing json spec query parameter 'type'"
