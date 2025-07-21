@@ -18732,6 +18732,9 @@
             "$ref": "#/components/parameters/msearch-include_named_queries_score"
           },
           {
+            "$ref": "#/components/parameters/msearch-index_"
+          },
+          {
             "$ref": "#/components/parameters/msearch-max_concurrent_searches"
           },
           {
@@ -18794,6 +18797,9 @@
           },
           {
             "$ref": "#/components/parameters/msearch-include_named_queries_score"
+          },
+          {
+            "$ref": "#/components/parameters/msearch-index_"
           },
           {
             "$ref": "#/components/parameters/msearch-max_concurrent_searches"
@@ -18865,6 +18871,9 @@
             "$ref": "#/components/parameters/msearch-include_named_queries_score"
           },
           {
+            "$ref": "#/components/parameters/msearch-index_"
+          },
+          {
             "$ref": "#/components/parameters/msearch-max_concurrent_searches"
           },
           {
@@ -18930,6 +18939,9 @@
           },
           {
             "$ref": "#/components/parameters/msearch-include_named_queries_score"
+          },
+          {
+            "$ref": "#/components/parameters/msearch-index_"
           },
           {
             "$ref": "#/components/parameters/msearch-max_concurrent_searches"
@@ -71575,6 +71587,16 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
+        },
+        "style": "form"
+      },
+      "msearch-index_": {
+        "in": "query",
+        "name": "index",
+        "description": "Comma-separated list of data streams, indices, and index aliases to use as default",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Indices"
         },
         "style": "form"
       },
