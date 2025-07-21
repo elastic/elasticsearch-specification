@@ -242,9 +242,6 @@
             "$ref": "#/components/parameters/async_search.submit-max_concurrent_shard_requests"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit-min_compatible_shard_node"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit-preference"
           },
           {
@@ -396,9 +393,6 @@
           },
           {
             "$ref": "#/components/parameters/async_search.submit-max_concurrent_shard_requests"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit-min_compatible_shard_node"
           },
           {
             "$ref": "#/components/parameters/async_search.submit-preference"
@@ -29044,9 +29038,6 @@
           "none"
         ]
       },
-      "_types.VersionString": {
-        "type": "string"
-      },
       "_types.SearchType": {
         "type": "string",
         "enum": [
@@ -38105,6 +38096,9 @@
             "type": "string"
           }
         }
+      },
+      "_types.VersionString": {
+        "type": "string"
       },
       "cat._types.CatDatafeedColumns": {
         "oneOf": [
@@ -65058,15 +65052,6 @@
         "deprecated": false,
         "schema": {
           "type": "number"
-        },
-        "style": "form"
-      },
-      "async_search.submit-min_compatible_shard_node": {
-        "in": "query",
-        "name": "min_compatible_shard_node",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.VersionString"
         },
         "style": "form"
       },
