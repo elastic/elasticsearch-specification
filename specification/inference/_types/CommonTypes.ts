@@ -771,6 +771,27 @@ export class CustomServiceSettings {
    */
   headers?: UserDefinedValue
   /**
+   * Specifies the input type translation values that are used to replace the `${input_type}` template in the request body.
+   * For example:
+   * ```
+   * "input_type": { 
+   *   "translation": { 
+   *     "ingest": "do_ingest", 
+   *     "search": "do_search" 
+   *   }, 
+   *   "default": "a_default" 
+   * },
+   * ```
+   * If the subsequent inference requests come from a search context, the `search` key will be used and the template will be replaced with `do_search`.
+   * If it comes from the ingest context `do_ingest` is used. If it's a different context that is not specified, the default value will be used. If no default is specified an empty string is used.
+   * `transition` can be:
+   * * `classification` 
+   * * `clustering` 
+   * * `ingest` 
+   * * `search`
+   */
+  input_type?: UserDefinedValue
+  /**
    * Specifies the query parameters as a list of tuples. The arrays inside the `query_parameters` must have two items, a key and a value.
    * For example:
    * ```
