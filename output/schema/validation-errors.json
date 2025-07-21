@@ -210,14 +210,6 @@
       ],
       "response": []
     },
-    "indices.recovery": {
-      "request": [
-        "Request: query parameter 'allow_no_indices' does not exist in the json spec",
-        "Request: query parameter 'expand_wildcards' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "ingest.delete_geoip_database": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",
@@ -254,12 +246,7 @@
     },
     "msearch": {
       "request": [
-        "Request: query parameter 'allow_no_indices' does not exist in the json spec",
-        "Request: query parameter 'expand_wildcards' does not exist in the json spec",
-        "Request: query parameter 'ignore_throttled' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
-        "Request: query parameter 'include_named_queries_score' does not exist in the json spec",
-        "Request: query parameter 'routing' does not exist in the json spec"
+        "Request: missing json spec query parameter 'index'"
       ],
       "response": []
     }
