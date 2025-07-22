@@ -567,10 +567,20 @@ export class AzureAiStudioTaskSettings {
    * This information can be used for abuse detection.
    */
   user?: string
+  /**
+   * For a `rerank` task, return doc text within the results.
+   */
+  return_documents?: boolean
+  /**
+   * For a `rerank` task, the number of most relevant documents to return.
+   * It defaults to the number of the documents.
+   */
+  top_n?: integer
 }
 
 export enum AzureAiStudioTaskType {
   completion,
+  rerank,
   text_embedding
 }
 
