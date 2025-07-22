@@ -7249,7 +7249,6 @@ export interface CatAliasesRequest extends CatCatRequestBase {
   s?: Names
   expand_wildcards?: ExpandWildcards
   local?: boolean
-  master_timeout?: Duration
 }
 
 export type CatAliasesResponse = CatAliasesAliasesRecord[]
