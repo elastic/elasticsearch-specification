@@ -66,6 +66,13 @@ export enum TaskTypeCohere {
   completion
 }
 
+export enum TaskTypeCustom {
+  text_embedding,
+  sparse_embedding,
+  rerank,
+  completion
+}
+
 export enum TaskTypeDeepSeek {
   completion,
   chat_completion

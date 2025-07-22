@@ -12202,6 +12202,11 @@
                   "summary": "A rerank task",
                   "description": "Run `PUT _inference/rerank/cohere-rerank` to create an inference endpoint that performs a rerank task.",
                   "value": "{\n    \"service\": \"cohere\",\n    \"service_settings\": {\n        \"api_key\": \"Cohere-API-key\",\n        \"model_id\": \"rerank-english-v3.0\"\n    },\n    \"task_settings\": {\n        \"top_n\": 10,\n        \"return_documents\": true\n    }\n}"
+                },
+                "PutCohereRequestExample3": {
+                  "summary": "A completion task",
+                  "description": "Run `PUT _inference/completion/cohere-completion` to create an inference endpoint that performs a completion task.",
+                  "value": "{\n    \"service\": \"cohere\",\n    \"service_settings\": {\n        \"api_key\": \"Cohere-API-key\",\n        \"model_id\": \"command-a-03-2025\"\n    }\n}"
                 }
               }
             }
@@ -12214,6 +12219,86 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoCohere"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "elasticsearch, machine-learning",
+            "name": "x-product-feature"
+          }
+        ]
+      }
+    },
+    "/_inference/{task_type}/{custom_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create a custom inference endpoint",
+        "description": "The custom service gives more control over how to interact with external inference services that aren't explicitly supported through dedicated integrations.\nThe custom service gives you the ability to define the headers, url, query parameters, request body, and secrets.\nThe custom service supports the template replacement functionality, which enables you to define a template that can be replaced with the value associated with that key.\nTemplates are portions of a string that start with `${` and end with `}`.\nThe parameters `secret_parameters` and `task_settings` are checked for keys for template replacement. Template replacement is supported in the `request`, `headers`, `url`, and `query_parameters`.\nIf the definition (key) is not found for a template, an error message is returned.\nIn case of an endpoint definition like the following:\n```\nPUT _inference/text_embedding/test-text-embedding\n{\n  \"service\": \"custom\",\n  \"service_settings\": {\n     \"secret_parameters\": {\n          \"api_key\": \"<some api key>\"\n     },\n     \"url\": \"...endpoints.huggingface.cloud/v1/embeddings\",\n     \"headers\": {\n         \"Authorization\": \"Bearer ${api_key}\",\n         \"Content-Type\": \"application/json\"\n     },\n     \"request\": \"{\\\"input\\\": ${input}}\",\n     \"response\": {\n         \"json_parser\": {\n             \"text_embeddings\":\"$.data[*].embedding[*]\"\n         }\n     }\n  }\n}\n```\nTo replace `${api_key}` the `secret_parameters` and `task_settings` are checked for a key named `api_key`.\n\n> info\n> Templates should not be surrounded by quotes.\n\nPre-defined templates:\n* `${input}` refers to the array of input strings that comes from the `input` field of the subsequent inference requests.\n* `${input_type}` refers to the input type translation values.\n* `${query}` refers to the query field used specifically for reranking tasks.\n* `${top_n}` refers to the `top_n` field available when performing rerank requests.\n* `${return_documents}` refers to the `return_documents` field available when performing rerank requests.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-custom",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.CustomTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "custom_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference._types.CustomServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference._types.CustomServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference._types.CustomTaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoCustom"
                 }
               }
             }
@@ -19635,6 +19720,9 @@
             "$ref": "#/components/parameters/msearch-include_named_queries_score"
           },
           {
+            "$ref": "#/components/parameters/msearch-index_"
+          },
+          {
             "$ref": "#/components/parameters/msearch-max_concurrent_searches"
           },
           {
@@ -19697,6 +19785,9 @@
           },
           {
             "$ref": "#/components/parameters/msearch-include_named_queries_score"
+          },
+          {
+            "$ref": "#/components/parameters/msearch-index_"
           },
           {
             "$ref": "#/components/parameters/msearch-max_concurrent_searches"
@@ -19768,6 +19859,9 @@
             "$ref": "#/components/parameters/msearch-include_named_queries_score"
           },
           {
+            "$ref": "#/components/parameters/msearch-index_"
+          },
+          {
             "$ref": "#/components/parameters/msearch-max_concurrent_searches"
           },
           {
@@ -19833,6 +19927,9 @@
           },
           {
             "$ref": "#/components/parameters/msearch-include_named_queries_score"
+          },
+          {
+            "$ref": "#/components/parameters/msearch-index_"
           },
           {
             "$ref": "#/components/parameters/msearch-max_concurrent_searches"
@@ -29841,7 +29938,12 @@
             "$ref": "#/components/schemas/_types.aggregations.MultiBucketBase"
           },
           {
-            "type": "object"
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string"
+              }
+            }
           }
         ]
       },
@@ -50723,9 +50825,23 @@
         "type": "object",
         "properties": {
           "strategy": {
-            "description": "The chunking strategy: `sentence` or `word`.",
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#chunking-strategies"
+            },
+            "description": "The chunking strategy: `sentence`, `word`, `none` or `recursive`.\n\n * If `strategy` is set to `recursive`, you must also specify:\n\n- `max_chunk_size`\n- either `separators` or`separator_group`\n\nLearn more about different chunking strategies in the linked documentation.",
             "default": "sentence",
             "type": "string"
+          },
+          "separator_group": {
+            "description": "This parameter is only applicable when using the `recursive` chunking strategy.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
+            "type": "string"
+          },
+          "separators": {
+            "description": "A list of strings used as possible split points when chunking text with the `recursive` strategy.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "max_chunk_size": {
             "description": "The maximum size of a chunk in words.\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).",
@@ -50745,6 +50861,8 @@
         },
         "required": [
           "strategy",
+          "separator_group",
+          "separators",
           "max_chunk_size"
         ]
       },
@@ -55708,12 +55826,30 @@
             "default": 1.0,
             "type": "number"
           },
+          "separator_group": {
+            "description": "This parameter is only applicable when using the `recursive` chunking strategy.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
+            "type": "string"
+          },
+          "separators": {
+            "description": "A list of strings used as possible split points when chunking text with the `recursive` strategy.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "strategy": {
-            "description": "The chunking strategy: `sentence` or `word`.",
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#chunking-strategies"
+            },
+            "description": "The chunking strategy: `sentence`, `word`, `none` or `recursive`.\n\n * If `strategy` is set to `recursive`, you must also specify:\n\n- `max_chunk_size`\n- either `separators` or`separator_group`\n\nLearn more about different chunking strategies in the linked documentation.",
             "default": "sentence",
             "type": "string"
           }
-        }
+        },
+        "required": [
+          "separator_group",
+          "separators"
+        ]
       },
       "inference._types.ServiceSettings": {
         "type": "object"
@@ -56475,6 +56611,122 @@
         "type": "string",
         "enum": [
           "text_embedding",
+          "rerank",
+          "completion"
+        ]
+      },
+      "inference._types.CustomTaskType": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "sparse_embedding",
+          "rerank",
+          "completion"
+        ]
+      },
+      "inference._types.CustomServiceType": {
+        "type": "string",
+        "enum": [
+          "custom"
+        ]
+      },
+      "inference._types.CustomServiceSettings": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "description": "Specifies the HTTPS header parameters – such as `Authentication` or `Contet-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\":{\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
+            "type": "object"
+          },
+          "input_type": {
+            "description": "Specifies the input type translation values that are used to replace the `${input_type}` template in the request body.\nFor example:\n```\n\"input_type\": {\n  \"translation\": {\n    \"ingest\": \"do_ingest\",\n    \"search\": \"do_search\"\n  },\n  \"default\": \"a_default\"\n},\n```\nIf the subsequent inference requests come from a search context, the `search` key will be used and the template will be replaced with `do_search`.\nIf it comes from the ingest context `do_ingest` is used. If it's a different context that is not specified, the default value will be used. If no default is specified an empty string is used.\n`translation` can be:\n* `classification`\n* `clustering`\n* `ingest`\n* `search`",
+            "type": "object"
+          },
+          "query_parameters": {
+            "description": "Specifies the query parameters as a list of tuples. The arrays inside the `query_parameters` must have two items, a key and a value.\nFor example:\n```\n\"query_parameters\":[\n  [\"param_key\", \"some_value\"],\n  [\"param_key\", \"another_value\"],\n  [\"other_key\", \"other_value\"]\n]\n```\nIf the base url is `https://www.elastic.co` it results in: `https://www.elastic.co?param_key=some_value&param_key=another_value&other_key=other_value`.",
+            "type": "object"
+          },
+          "request": {
+            "$ref": "#/components/schemas/inference._types.CustomRequestParams"
+          },
+          "response": {
+            "$ref": "#/components/schemas/inference._types.CustomResponseParams"
+          },
+          "secret_parameters": {
+            "description": "Specifies secret parameters, like `api_key` or `api_token`, that are required to access the custom service.\nFor example:\n```\n\"secret_parameters\":{\n  \"api_key\":\"<api_key>\"\n}\n```",
+            "type": "object"
+          },
+          "url": {
+            "description": "The URL endpoint to use for the requests.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "request",
+          "response",
+          "secret_parameters"
+        ]
+      },
+      "inference._types.CustomRequestParams": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "description": "The body structure of the request. It requires passing in the string-escaped result of the JSON format HTTP request body.\nFor example:\n```\n\"request\": \"{\\\"input\\\":${input}}\"\n```\n> info\n> The content string needs to be a single line except when using the Kibana console.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "content"
+        ]
+      },
+      "inference._types.CustomResponseParams": {
+        "type": "object",
+        "properties": {
+          "json_parser": {
+            "description": "Specifies the JSON parser that is used to parse the response from the custom service.\nDifferent task types require different json_parser parameters.\nFor example:\n```\n# text_embedding\n# For a response like this:\n\n{\n \"object\": \"list\",\n \"data\": [\n     {\n       \"object\": \"embedding\",\n       \"index\": 0,\n       \"embedding\": [\n           0.014539449,\n           -0.015288644\n       ]\n     }\n ],\n \"model\": \"text-embedding-ada-002-v2\",\n \"usage\": {\n     \"prompt_tokens\": 8,\n     \"total_tokens\": 8\n }\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"text_embeddings\":\"$.data[*].embedding[*]\"\n  }\n}\n\n# sparse_embedding\n# For a response like this:\n\n{\n  \"request_id\": \"75C50B5B-E79E-4930-****-F48DBB392231\",\n  \"latency\": 22,\n  \"usage\": {\n     \"token_count\": 11\n  },\n  \"result\": {\n     \"sparse_embeddings\": [\n        {\n          \"index\": 0,\n          \"embedding\": [\n            {\n              \"token_id\": 6,\n              \"weight\": 0.101\n            },\n            {\n              \"token_id\": 163040,\n              \"weight\": 0.28417\n            }\n          ]\n        }\n     ]\n  }\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"token_path\":\"$.result.sparse_embeddings[*].embedding[*].token_id\",\n    \"weight_path\":\"$.result.sparse_embeddings[*].embedding[*].weight\"\n  }\n}\n\n# rerank\n# For a response like this:\n\n{\n  \"results\": [\n    {\n      \"index\": 3,\n      \"relevance_score\": 0.999071,\n      \"document\": \"abc\"\n    },\n    {\n      \"index\": 4,\n      \"relevance_score\": 0.7867867,\n      \"document\": \"123\"\n    },\n    {\n      \"index\": 0,\n      \"relevance_score\": 0.32713068,\n      \"document\": \"super\"\n    }\n  ],\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"reranked_index\":\"$.result.scores[*].index\",    // optional\n    \"relevance_score\":\"$.result.scores[*].score\",\n    \"document_text\":\"xxx\"    // optional\n  }\n}\n\n# completion\n# For a response like this:\n\n{\n \"id\": \"chatcmpl-B9MBs8CjcvOU2jLn4n570S5qMJKcT\",\n \"object\": \"chat.completion\",\n \"created\": 1741569952,\n \"model\": \"gpt-4.1-2025-04-14\",\n \"choices\": [\n   {\n    \"index\": 0,\n    \"message\": {\n      \"role\": \"assistant\",\n      \"content\": \"Hello! How can I assist you today?\",\n      \"refusal\": null,\n      \"annotations\": []\n    },\n    \"logprobs\": null,\n    \"finish_reason\": \"stop\"\n  }\n ]\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"completion_result\":\"$.choices[*].message.content\"\n  }\n}",
+            "type": "object"
+          }
+        },
+        "required": [
+          "json_parser"
+        ]
+      },
+      "inference._types.CustomTaskSettings": {
+        "type": "object",
+        "properties": {
+          "parameters": {
+            "description": "Specifies parameters that are required to run the custom service. The parameters depend on the model your custom service uses.\nFor example:\n```\n\"task_settings\":{\n  \"parameters\":{\n    \"input_type\":\"query\",\n    \"return_token\":true\n  }\n}\n```",
+            "type": "object"
+          }
+        }
+      },
+      "inference._types.InferenceEndpointInfoCustom": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeCustom"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeCustom": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "sparse_embedding",
           "rerank",
           "completion"
         ]
@@ -73099,6 +73351,16 @@
         },
         "style": "form"
       },
+      "msearch-index_": {
+        "in": "query",
+        "name": "index",
+        "description": "Comma-separated list of data streams, indices, and index aliases to use as default",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Indices"
+        },
+        "style": "form"
+      },
       "msearch-max_concurrent_searches": {
         "in": "query",
         "name": "max_concurrent_searches",
@@ -75619,7 +75881,7 @@
             "examples": {
               "InferencePutExample1": {
                 "description": "An example body for a `PUT _inference/rerank/my-rerank-model` request.",
-                "value": "{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n }\n}"
+                "value": "{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n }\n \"chunking_settings\": {\n   \"strategy\": \"recursive\",\n   \"max_chunk_size\": 200,\n   \"separator_group\": \"markdown\"\n}"
               }
             }
           }

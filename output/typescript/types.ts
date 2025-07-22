@@ -3572,9 +3572,10 @@ export interface AggregationsFiltersAggregation extends AggregationsBucketAggreg
 }
 
 export interface AggregationsFiltersBucketKeys extends AggregationsMultiBucketBase {
+  key?: string
 }
 export type AggregationsFiltersBucket = AggregationsFiltersBucketKeys
-  & { [property: string]: AggregationsAggregate | long }
+  & { [property: string]: AggregationsAggregate | string | long }
 
 export interface AggregationsFormatMetricAggregationBase extends AggregationsMetricAggregationBase {
   format?: string
@@ -5566,6 +5567,8 @@ export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
 
 export interface MappingChunkingSettings {
   strategy: string
+  separator_group: string
+  separators: string[]
   max_chunk_size: integer
   overlap?: integer
   sentence_overlap?: integer
@@ -13884,6 +13887,32 @@ export interface InferenceContentObject {
   type: string
 }
 
+export interface InferenceCustomRequestParams {
+  content: string
+}
+
+export interface InferenceCustomResponseParams {
+  json_parser: any
+}
+
+export interface InferenceCustomServiceSettings {
+  headers?: any
+  input_type?: any
+  query_parameters?: any
+  request: InferenceCustomRequestParams
+  response: InferenceCustomResponseParams
+  secret_parameters: any
+  url?: string
+}
+
+export type InferenceCustomServiceType = 'custom'
+
+export interface InferenceCustomTaskSettings {
+  parameters?: any
+}
+
+export type InferenceCustomTaskType = 'text_embedding' | 'sparse_embedding' | 'rerank' | 'completion'
+
 export interface InferenceDeepSeekServiceSettings {
   api_key: string
   model_id: string
@@ -13973,6 +14002,8 @@ export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
   overlap?: integer
   sentence_overlap?: integer
+  separator_group: string
+  separators: string[]
   strategy?: string
 }
 
@@ -14016,6 +14047,11 @@ export interface InferenceInferenceEndpointInfoAzureOpenAI extends InferenceInfe
 export interface InferenceInferenceEndpointInfoCohere extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeCohere
+}
+
+export interface InferenceInferenceEndpointInfoCustom extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeCustom
 }
 
 export interface InferenceInferenceEndpointInfoDeepSeek extends InferenceInferenceEndpoint {
@@ -14192,6 +14228,8 @@ export type InferenceTaskTypeAzureAIStudio = 'text_embedding' | 'completion' | '
 export type InferenceTaskTypeAzureOpenAI = 'text_embedding' | 'completion'
 
 export type InferenceTaskTypeCohere = 'text_embedding' | 'rerank' | 'completion'
+
+export type InferenceTaskTypeCustom = 'text_embedding' | 'sparse_embedding' | 'rerank' | 'completion'
 
 export type InferenceTaskTypeDeepSeek = 'completion' | 'chat_completion'
 
@@ -14414,6 +14452,19 @@ export interface InferencePutCohereRequest extends RequestBase {
 }
 
 export type InferencePutCohereResponse = InferenceInferenceEndpointInfoCohere
+
+export interface InferencePutCustomRequest extends RequestBase {
+  task_type: InferenceCustomTaskType
+  custom_inference_id: Id
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferenceCustomServiceType
+    service_settings: InferenceCustomServiceSettings
+    task_settings?: InferenceCustomTaskSettings
+  }
+}
+
+export type InferencePutCustomResponse = InferenceInferenceEndpointInfoCustom
 
 export interface InferencePutDeepseekRequest extends RequestBase {
   task_type: InferenceTaskTypeDeepSeek
