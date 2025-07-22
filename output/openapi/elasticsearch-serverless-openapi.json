@@ -11415,6 +11415,11 @@
                   "summary": "A rerank task",
                   "description": "Run `PUT _inference/rerank/cohere-rerank` to create an inference endpoint that performs a rerank task.",
                   "value": "{\n    \"service\": \"cohere\",\n    \"service_settings\": {\n        \"api_key\": \"Cohere-API-key\",\n        \"model_id\": \"rerank-english-v3.0\"\n    },\n    \"task_settings\": {\n        \"top_n\": 10,\n        \"return_documents\": true\n    }\n}"
+                },
+                "PutCohereRequestExample3": {
+                  "summary": "A completion task",
+                  "description": "Run `PUT _inference/completion/cohere-completion` to create an inference endpoint that performs a completion task.",
+                  "value": "{\n    \"service\": \"cohere\",\n    \"service_settings\": {\n        \"api_key\": \"Cohere-API-key\",\n        \"model_id\": \"command-a-03-2025\"\n    }\n}"
                 }
               }
             }
@@ -25514,7 +25519,7 @@
               "examples": {
                 "UpdateTransformRequestExample1": {
                   "description": "Run `POST _transform/simple-kibana-ecomm-pivot/_update` to update a transform that uses the pivot method.",
-                  "value": "{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\",\n    \"query\": {\n      \"term\": {\n        \"geoip.continent_name\": {\n          \"value\": \"Asia\"\n        }\n      }\n    }\n  },\n  \"pivot\": {\n    \"group_by\": {\n      \"customer_id\": {\n        \"terms\": {\n          \"field\": \"customer_id\",\n          \"missing_bucket\": true\n        }\n      }\n    },\n    \"aggregations\": {\n      \"max_price\": {\n        \"max\": {\n          \"field\": \"taxful_total_price\"\n        }\n      }\n    }\n  },\n  \"description\": \"Maximum priced ecommerce data by customer_id in Asia\",\n  \"dest\": {\n    \"index\": \"kibana_sample_data_ecommerce_transform1\",\n    \"pipeline\": \"add_timestamp_pipeline\"\n  },\n  \"frequency\": \"5m\",\n  \"sync\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"delay\": \"60s\"\n    }\n  },\n  \"retention_policy\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"max_age\": \"30d\"\n    }\n  }\n}"
+                  "value": "{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\",\n    \"query\": {\n      \"term\": {\n        \"geoip.continent_name\": {\n          \"value\": \"Asia\"\n        }\n      }\n    }\n  },\n  \"description\": \"Maximum priced ecommerce data by customer_id in Asia\",\n  \"dest\": {\n    \"index\": \"kibana_sample_data_ecommerce_transform_v2\",\n    \"pipeline\": \"add_timestamp_pipeline\"\n  },\n  \"frequency\": \"15m\",\n  \"sync\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"delay\": \"120s\"\n    }\n  }\n}"
                 }
               }
             }
@@ -28939,7 +28944,12 @@
             "$ref": "#/components/schemas/_types.aggregations.MultiBucketBase"
           },
           {
-            "type": "object"
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string"
+              }
+            }
           }
         ]
       },
