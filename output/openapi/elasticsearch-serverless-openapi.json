@@ -785,9 +785,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.aliases-local"
-          },
-          {
-            "$ref": "#/components/parameters/cat.aliases-master_timeout"
           }
         ],
         "responses": {
@@ -827,9 +824,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.aliases-local"
-          },
-          {
-            "$ref": "#/components/parameters/cat.aliases-master_timeout"
           }
         ],
         "responses": {
@@ -68572,16 +68566,6 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
-        },
-        "style": "form"
-      },
-      "cat.aliases-master_timeout": {
-        "in": "query",
-        "name": "master_timeout",
-        "description": "The period to wait for a connection to the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicated that the request should never timeout, you can set it to `-1`.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.Duration"
         },
         "style": "form"
       },
