@@ -6,12 +6,6 @@
       ],
       "response": []
     },
-    "cat.aliases": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "esql.async_query_get": {
       "request": [
         "Request: query parameter 'format' does not exist in the json spec"
