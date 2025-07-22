@@ -29933,7 +29933,12 @@
             "$ref": "#/components/schemas/_types.aggregations.MultiBucketBase"
           },
           {
-            "type": "object"
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string"
+              }
+            }
           }
         ]
       },
