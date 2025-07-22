@@ -56215,7 +56215,7 @@
             "type": "boolean"
           },
           "top_n": {
-            "description": "For a `rerank` task, the number of most relevant documents to return.\\nIt defaults to the number of the documents.",
+            "description": "For a `rerank` task, the number of most relevant documents to return.\nIt defaults to the number of the documents.",
             "type": "number"
           }
         }
