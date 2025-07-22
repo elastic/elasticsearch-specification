@@ -642,7 +642,9 @@ export class IpRangeBucket extends MultiBucketBase {
  */
 export class FiltersAggregate extends MultiBucketAggregateBase<FiltersBucket> {}
 
-export class FiltersBucket extends MultiBucketBase {}
+export class FiltersBucket extends MultiBucketBase {
+  key?: string
+}
 
 /**
  * @variant name=adjacency_matrix
