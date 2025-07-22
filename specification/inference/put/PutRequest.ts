@@ -34,7 +34,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * * AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)
  * * Amazon Bedrock (`completion`, `text_embedding`)
  * * Anthropic (`completion`)
- * * Azure AI Studio (`completion`, `text_embedding`)
+ * * Azure AI Studio (`completion`, 'rerank', `text_embedding`)
  * * Azure OpenAI (`completion`, `text_embedding`)
  * * Cohere (`completion`, `rerank`, `text_embedding`)
  * * DeepSeek (`completion`, `chat_completion`)
