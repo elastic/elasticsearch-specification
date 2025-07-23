@@ -1387,7 +1387,7 @@ export class LlamaServiceSettings {
   url: string
   /**
    * The name of the model to use for the inference task.
-   * Refer to the Llama downloading models documentation for different ways of getting list of available models and downloading them.
+   * Refer to the Llama downloading models documentation for different ways of getting a list of available models and downloading them.
    * Service has been tested and confirmed to be working with the following models:
    * * For `text_embedding` task - `all-MiniLM-L6-v2`.
    * * For `completion` and `chat_completion` tasks - `llama3.2:3b`.
