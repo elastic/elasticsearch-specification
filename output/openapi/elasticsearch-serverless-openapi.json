@@ -13129,7 +13129,7 @@
         "x-state": "Generally available",
         "x-metaTags": [
           {
-            "content": "elasticsearch, Machine Learning",
+            "content": "Elasticsearch, Machine Learning",
             "name": "product_name"
           }
         ]
@@ -57433,7 +57433,7 @@
             "externalDocs": {
               "url": "https://llama-stack.readthedocs.io/en/latest/references/llama_cli_reference/download_models.html/"
             },
-            "description": "The name of the model to use for the inference task.\nRefer to the Llama downloading models documentation for different ways of getting list of available models and downloading them.\nService has been tested and confirmed to be working with the following models:\n* For `text_embedding` task - `all-MiniLM-L6-v2`.\n* For `completion` and `chat_completion` tasks - `llama3.2:3b`.",
+            "description": "The name of the model to use for the inference task.\nRefer to the Llama downloading models documentation for different ways of getting a list of available models and downloading them.\nService has been tested and confirmed to be working with the following models:\n* For `text_embedding` task - `all-MiniLM-L6-v2`.\n* For `completion` and `chat_completion` tasks - `llama3.2:3b`.",
             "type": "string"
           },
           "api_key": {
