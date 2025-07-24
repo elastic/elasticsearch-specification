@@ -45,6 +45,14 @@ export enum TaskTypeAmazonBedrock {
   completion
 }
 
+export enum TaskTypeAmazonSageMaker {
+  text_embedding,
+  completion,
+  chat_completion,
+  sparse_embedding,
+  rerank
+}
+
 export enum TaskTypeAnthropic {
   completion
 }
