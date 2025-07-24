@@ -1285,7 +1285,7 @@ export type CatDatafeedColumns = CatDatafeedColumn | CatDatafeedColumn[]
 export type CatNodeColumns = CatNodeColumn | CatNodeColumn[]
 export type CatRecoveryColumns = CatRecoveryColumn | CatRecoveryColumn[]
 export type CatSegmentsColumns = CatSegmentsColumn | CatSegmentsColumn[]
-export type CatSnapshotsColumns = CatSnapshotsColumn | CatNodeColumn[]
+export type CatSnapshotsColumns = CatSnapshotsColumn | CatSnapshotsColumn[]
 
 export enum CatTrainedModelsColumn {
   /**

@@ -1,34 +1,4 @@
 {
-  "endpointErrors": {
-    "msearch": {
-      "request": [
-        "Request: query parameter 'allow_no_indices' does not exist in the json spec",
-        "Request: query parameter 'expand_wildcards' does not exist in the json spec",
-        "Request: query parameter 'ignore_throttled' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
-        "Request: query parameter 'include_named_queries_score' does not exist in the json spec",
-        "Request: query parameter 'routing' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "reindex": {
-      "request": [
-        "Request: query parameter 'require_alias' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "searchable_snapshots.clear_cache": {
-      "request": [
-        "Request: missing json spec query parameter 'index'"
-      ],
-      "response": []
-    },
-    "xpack.info": {
-      "request": [
-        "request definition xpack.info:Request / query - Property 'human' is already defined in an ancestor class"
-      ],
-      "response": []
-    }
-  },
+  "endpointErrors": {},
   "generalErrors": []
 }

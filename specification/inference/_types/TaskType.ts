@@ -59,7 +59,8 @@ export enum TaskTypeAnthropic {
 
 export enum TaskTypeAzureAIStudio {
   text_embedding,
-  completion
+  completion,
+  rerank
 }
 
 export enum TaskTypeAzureOpenAI {
@@ -69,6 +70,13 @@ export enum TaskTypeAzureOpenAI {
 
 export enum TaskTypeCohere {
   text_embedding,
+  rerank,
+  completion
+}
+
+export enum TaskTypeCustom {
+  text_embedding,
+  sparse_embedding,
   rerank,
   completion
 }

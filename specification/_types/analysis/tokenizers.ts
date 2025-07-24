@@ -50,7 +50,11 @@ export class EdgeNGramTokenizer extends TokenizerBase {
   custom_token_chars?: string
   max_gram?: integer
   min_gram?: integer
-  token_chars?: string | TokenChar[]
+  /**
+   * @es_quirk A comma-separated string is also accepted but the enum array is enough
+   * @server_default []
+   */
+  token_chars?: TokenChar[]
 }
 
 export enum TokenChar {
@@ -84,6 +88,7 @@ export class NGramTokenizer extends TokenizerBase {
   max_gram?: integer
   min_gram?: integer
   /**
+   * @es_quirk A comma-separated string is also accepted but the enum array is enough
    * @server_default []
    */
   token_chars?: TokenChar[]

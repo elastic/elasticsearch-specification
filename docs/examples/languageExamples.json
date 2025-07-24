@@ -2401,6 +2401,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"analysis\":{\"analyzer\":{\"content\":{\"type\":\"custom\",\"tokenizer\":\"whitespace\"}}}}' \"$ELASTICSEARCH_URL/my-index-000001/_settings\""
+    },
+    {
+      "language": "Java",
+      "code": "client.indices().putSettings(p -> p\n    .index(\"my-index-000001\")\n    .settings(s -> s\n        .analysis(a -> a\n            .analyzer(\"content\", an -> an\n                .custom(c -> c\n                    .tokenizer(\"whitespace\")\n                )\n            )\n        )\n    )\n);\n"
     }
   ],
   "specification/indices/put_settings/examples/request/indicesPutSettingsRequestExample2.yaml": [
@@ -5431,6 +5435,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"my-index-000001\"},\"dest\":{\"index\":\"my-new-index-000001\"},\"script\":{\"source\":\"ctx._source.tag = ctx._source.remove(\\\"flag\\\")\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+    },
+    {
+      "language": "Java",
+      "code": "client.reindex(r -> r\n    .dest(d -> d\n        .index(\"my-new-index-000001\")\n    )\n    .script(s -> s\n        .source(so -> so\n            .scriptString(\"ctx._source.tag = ctx._source.remove(\"flag\")\")\n        )\n    )\n    .source(so -> so\n        .index(\"my-index-000001\")\n    )\n);\n"
     }
   ],
   "specification/_global/reindex/examples/request/ReindexRequestExample5.yaml": [
@@ -5453,6 +5461,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"source\"},\"dest\":{\"index\":\"dest\",\"pipeline\":\"some_ingest_pipeline\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+    },
+    {
+      "language": "Java",
+      "code": "client.reindex(r -> r\n    .dest(d -> d\n        .index(\"dest\")\n        .pipeline(\"some_ingest_pipeline\")\n    )\n    .source(s -> s\n        .index(\"source\")\n    )\n);\n"
     }
   ],
   "specification/_global/reindex/examples/request/ReindexRequestExample11.yaml": [
@@ -5475,6 +5487,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"max_docs\":10,\"source\":{\"index\":\"my-index-000001\",\"query\":{\"function_score\":{\"random_score\":{},\"min_score\":0.9}}},\"dest\":{\"index\":\"my-new-index-000001\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+    },
+    {
+      "language": "Java",
+      "code": "client.reindex(r -> r\n    .dest(d -> d\n        .index(\"my-new-index-000001\")\n    )\n    .maxDocs(10L)\n    .source(s -> s\n        .index(\"my-index-000001\")\n        .query(q -> q\n            .functionScore(f -> f\n                .minScore(0.9D)\n            )\n        )\n    )\n);\n"
     }
   ],
   "specification/_global/reindex/examples/request/ReindexRequestExample10.yaml": [
@@ -5497,6 +5513,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"metricbeat-*\"},\"dest\":{\"index\":\"metricbeat\"},\"script\":{\"lang\":\"painless\",\"source\":\"ctx._index = '\"'\"'metricbeat-'\"'\"' + (ctx._index.substring('\"'\"'metricbeat-'\"'\"'.length(), ctx._index.length())) + '\"'\"'-1'\"'\"'\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+    },
+    {
+      "language": "Java",
+      "code": "client.reindex(r -> r\n    .dest(d -> d\n        .index(\"metricbeat\")\n    )\n    .script(s -> s\n        .source(so -> so\n            .scriptString(\"ctx._index = 'metricbeat-' + (ctx._index.substring('metricbeat-'.length(), ctx._index.length())) + '-1'\")\n        )\n        .lang(\"painless\")\n    )\n    .source(so -> so\n        .index(\"metricbeat-*\")\n    )\n);\n"
     }
   ],
   "specification/_global/reindex/examples/request/ReindexRequestExample4.yaml": [
@@ -5519,6 +5539,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"source\",\"query\":{\"match\":{\"company\":\"cat\"}}},\"dest\":{\"index\":\"dest\",\"routing\":\"=cat\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+    },
+    {
+      "language": "Java",
+      "code": "client.reindex(r -> r\n    .dest(d -> d\n        .index(\"dest\")\n        .routing(\"=cat\")\n    )\n    .source(s -> s\n        .index(\"source\")\n        .query(q -> q\n            .match(m -> m\n                .field(\"company\")\n                .query(FieldValue.of(\"cat\"))\n            )\n        )\n    )\n);\n"
     }
   ],
   "specification/_global/reindex/examples/request/ReindexRequestExample8.yaml": [
@@ -5541,6 +5565,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"my-index-000001\",\"_source\":[\"user.id\",\"_doc\"]},\"dest\":{\"index\":\"my-new-index-000001\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+    },
+    {
+      "language": "Java",
+      "code": "client.reindex(r -> r\n    .dest(d -> d\n        .index(\"my-new-index-000001\")\n    )\n    .source(s -> s\n        .index(\"my-index-000001\")\n        .sourceFields(List.of(\"user.id\",\"_doc\"))\n    )\n);\n"
     }
   ],
   "specification/_global/reindex/examples/request/ReindexRequestExample3.yaml": [
@@ -5563,6 +5591,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"my-index-000001\"},\"dest\":{\"index\":\"my-new-index-000001\"}}' \"$ELASTICSEARCH_URL/_reindex?slices=5&refresh\""
+    },
+    {
+      "language": "Java",
+      "code": "client.reindex(r -> r\n    .dest(d -> d\n        .index(\"my-new-index-000001\")\n    )\n    .refresh(true)\n    .slices(s -> s\n        .value(5)\n    )\n    .source(so -> so\n        .index(\"my-index-000001\")\n    )\n);\n"
     }
   ],
   "specification/_global/reindex/examples/request/ReindexRequestExample2.yaml": [
@@ -5585,6 +5617,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"my-index-000001\",\"slice\":{\"id\":0,\"max\":2}},\"dest\":{\"index\":\"my-new-index-000001\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+    },
+    {
+      "language": "Java",
+      "code": "client.reindex(r -> r\n    .dest(d -> d\n        .index(\"my-new-index-000001\")\n    )\n    .source(s -> s\n        .index(\"my-index-000001\")\n        .slice(sl -> sl\n            .id(\"0\")\n            .max(2)\n        )\n    )\n);\n"
     }
   ],
   "specification/_global/reindex/examples/request/ReindexRequestExample1.yaml": [
@@ -5633,6 +5669,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"remote\":{\"host\":\"http://otherhost:9200\",\"username\":\"user\",\"password\":\"pass\"},\"index\":\"my-index-000001\",\"query\":{\"match\":{\"test\":\"data\"}}},\"dest\":{\"index\":\"my-new-index-000001\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+    },
+    {
+      "language": "Java",
+      "code": "client.reindex(r -> r\n    .dest(d -> d\n        .index(\"my-new-index-000001\")\n    )\n    .source(s -> s\n        .index(\"my-index-000001\")\n        .query(q -> q\n            .match(m -> m\n                .field(\"test\")\n                .query(FieldValue.of(\"data\"))\n            )\n        )\n        .remote(re -> re\n            .host(\"http://otherhost:9200\")\n            .username(\"user\")\n            .password(\"pass\")\n        )\n    )\n);\n"
     }
   ],
   "specification/_global/reindex/examples/request/ReindexRequestExample7.yaml": [
@@ -5655,6 +5695,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"max_docs\":1,\"source\":{\"index\":\"my-index-000001\"},\"dest\":{\"index\":\"my-new-index-000001\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+    },
+    {
+      "language": "Java",
+      "code": "client.reindex(r -> r\n    .dest(d -> d\n        .index(\"my-new-index-000001\")\n    )\n    .maxDocs(1L)\n    .source(s -> s\n        .index(\"my-index-000001\")\n    )\n);\n"
     }
   ],
   "specification/_global/reindex/examples/request/ReindexRequestExample6.yaml": [
@@ -5677,6 +5721,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"my-index-000001\",\"query\":{\"term\":{\"user.id\":\"kimchy\"}}},\"dest\":{\"index\":\"my-new-index-000001\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+    },
+    {
+      "language": "Java",
+      "code": "client.reindex(r -> r\n    .dest(d -> d\n        .index(\"my-new-index-000001\")\n    )\n    .source(s -> s\n        .index(\"my-index-000001\")\n        .query(q -> q\n            .term(t -> t\n                .field(\"user.id\")\n                .value(FieldValue.of(\"kimchy\"))\n            )\n        )\n    )\n);\n"
     }
   ],
   "specification/_global/reindex/examples/request/ReindexRequestExample12.yaml": [
@@ -5699,6 +5747,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"my-index-000001\"},\"dest\":{\"index\":\"my-new-index-000001\",\"version_type\":\"external\"},\"script\":{\"source\":\"if (ctx._source.foo == '\"'\"'bar'\"'\"') {ctx._version++; ctx._source.remove('\"'\"'foo'\"'\"')}\",\"lang\":\"painless\"}}' \"$ELASTICSEARCH_URL/_reindex\""
+    },
+    {
+      "language": "Java",
+      "code": "client.reindex(r -> r\n    .dest(d -> d\n        .index(\"my-new-index-000001\")\n        .versionType(VersionType.External)\n    )\n    .script(s -> s\n        .source(so -> so\n            .scriptString(\"if (ctx._source.foo == 'bar') {ctx._version++; ctx._source.remove('foo')}\")\n        )\n        .lang(\"painless\")\n    )\n    .source(so -> so\n        .index(\"my-index-000001\")\n    )\n);\n"
     }
   ],
   "specification/_global/index/examples/request/IndexRequestExample1.yaml": [
@@ -15904,23 +15956,23 @@
   "specification/transform/update_transform/examples/request/UpdateTransformRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.transform.update_transform(\n    transform_id=\"simple-kibana-ecomm-pivot\",\n    source={\n        \"index\": \"kibana_sample_data_ecommerce\",\n        \"query\": {\n            \"term\": {\n                \"geoip.continent_name\": {\n                    \"value\": \"Asia\"\n                }\n            }\n        }\n    },\n    pivot={\n        \"group_by\": {\n            \"customer_id\": {\n                \"terms\": {\n                    \"field\": \"customer_id\",\n                    \"missing_bucket\": True\n                }\n            }\n        },\n        \"aggregations\": {\n            \"max_price\": {\n                \"max\": {\n                    \"field\": \"taxful_total_price\"\n                }\n            }\n        }\n    },\n    description=\"Maximum priced ecommerce data by customer_id in Asia\",\n    dest={\n        \"index\": \"kibana_sample_data_ecommerce_transform1\",\n        \"pipeline\": \"add_timestamp_pipeline\"\n    },\n    frequency=\"5m\",\n    sync={\n        \"time\": {\n            \"field\": \"order_date\",\n            \"delay\": \"60s\"\n        }\n    },\n    retention_policy={\n        \"time\": {\n            \"field\": \"order_date\",\n            \"max_age\": \"30d\"\n        }\n    },\n)"
+      "code": "resp = client.transform.update_transform(\n    transform_id=\"simple-kibana-ecomm-pivot\",\n    source={\n        \"index\": \"kibana_sample_data_ecommerce\",\n        \"query\": {\n            \"term\": {\n                \"geoip.continent_name\": {\n                    \"value\": \"Asia\"\n                }\n            }\n        }\n    },\n    description=\"Maximum priced ecommerce data by customer_id in Asia\",\n    dest={\n        \"index\": \"kibana_sample_data_ecommerce_transform_v2\",\n        \"pipeline\": \"add_timestamp_pipeline\"\n    },\n    frequency=\"15m\",\n    sync={\n        \"time\": {\n            \"field\": \"order_date\",\n            \"delay\": \"120s\"\n        }\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.transform.updateTransform({\n  transform_id: \"simple-kibana-ecomm-pivot\",\n  source: {\n    index: \"kibana_sample_data_ecommerce\",\n    query: {\n      term: {\n        \"geoip.continent_name\": {\n          value: \"Asia\",\n        },\n      },\n    },\n  },\n  pivot: {\n    group_by: {\n      customer_id: {\n        terms: {\n          field: \"customer_id\",\n          missing_bucket: true,\n        },\n      },\n    },\n    aggregations: {\n      max_price: {\n        max: {\n          field: \"taxful_total_price\",\n        },\n      },\n    },\n  },\n  description: \"Maximum priced ecommerce data by customer_id in Asia\",\n  dest: {\n    index: \"kibana_sample_data_ecommerce_transform1\",\n    pipeline: \"add_timestamp_pipeline\",\n  },\n  frequency: \"5m\",\n  sync: {\n    time: {\n      field: \"order_date\",\n      delay: \"60s\",\n    },\n  },\n  retention_policy: {\n    time: {\n      field: \"order_date\",\n      max_age: \"30d\",\n    },\n  },\n});"
+      "code": "const response = await client.transform.updateTransform({\n  transform_id: \"simple-kibana-ecomm-pivot\",\n  source: {\n    index: \"kibana_sample_data_ecommerce\",\n    query: {\n      term: {\n        \"geoip.continent_name\": {\n          value: \"Asia\",\n        },\n      },\n    },\n  },\n  description: \"Maximum priced ecommerce data by customer_id in Asia\",\n  dest: {\n    index: \"kibana_sample_data_ecommerce_transform_v2\",\n    pipeline: \"add_timestamp_pipeline\",\n  },\n  frequency: \"15m\",\n  sync: {\n    time: {\n      field: \"order_date\",\n      delay: \"120s\",\n    },\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.transform.update_transform(\n  transform_id: \"simple-kibana-ecomm-pivot\",\n  body: {\n    \"source\": {\n      \"index\": \"kibana_sample_data_ecommerce\",\n      \"query\": {\n        \"term\": {\n          \"geoip.continent_name\": {\n            \"value\": \"Asia\"\n          }\n        }\n      }\n    },\n    \"pivot\": {\n      \"group_by\": {\n        \"customer_id\": {\n          \"terms\": {\n            \"field\": \"customer_id\",\n            \"missing_bucket\": true\n          }\n        }\n      },\n      \"aggregations\": {\n        \"max_price\": {\n          \"max\": {\n            \"field\": \"taxful_total_price\"\n          }\n        }\n      }\n    },\n    \"description\": \"Maximum priced ecommerce data by customer_id in Asia\",\n    \"dest\": {\n      \"index\": \"kibana_sample_data_ecommerce_transform1\",\n      \"pipeline\": \"add_timestamp_pipeline\"\n    },\n    \"frequency\": \"5m\",\n    \"sync\": {\n      \"time\": {\n        \"field\": \"order_date\",\n        \"delay\": \"60s\"\n      }\n    },\n    \"retention_policy\": {\n      \"time\": {\n        \"field\": \"order_date\",\n        \"max_age\": \"30d\"\n      }\n    }\n  }\n)"
+      "code": "response = client.transform.update_transform(\n  transform_id: \"simple-kibana-ecomm-pivot\",\n  body: {\n    \"source\": {\n      \"index\": \"kibana_sample_data_ecommerce\",\n      \"query\": {\n        \"term\": {\n          \"geoip.continent_name\": {\n            \"value\": \"Asia\"\n          }\n        }\n      }\n    },\n    \"description\": \"Maximum priced ecommerce data by customer_id in Asia\",\n    \"dest\": {\n      \"index\": \"kibana_sample_data_ecommerce_transform_v2\",\n      \"pipeline\": \"add_timestamp_pipeline\"\n    },\n    \"frequency\": \"15m\",\n    \"sync\": {\n      \"time\": {\n        \"field\": \"order_date\",\n        \"delay\": \"120s\"\n      }\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->transform()->updateTransform([\n    \"transform_id\" => \"simple-kibana-ecomm-pivot\",\n    \"body\" => [\n        \"source\" => [\n            \"index\" => \"kibana_sample_data_ecommerce\",\n            \"query\" => [\n                \"term\" => [\n                    \"geoip.continent_name\" => [\n                        \"value\" => \"Asia\",\n                    ],\n                ],\n            ],\n        ],\n        \"pivot\" => [\n            \"group_by\" => [\n                \"customer_id\" => [\n                    \"terms\" => [\n                        \"field\" => \"customer_id\",\n                        \"missing_bucket\" => true,\n                    ],\n                ],\n            ],\n            \"aggregations\" => [\n                \"max_price\" => [\n                    \"max\" => [\n                        \"field\" => \"taxful_total_price\",\n                    ],\n                ],\n            ],\n        ],\n        \"description\" => \"Maximum priced ecommerce data by customer_id in Asia\",\n        \"dest\" => [\n            \"index\" => \"kibana_sample_data_ecommerce_transform1\",\n            \"pipeline\" => \"add_timestamp_pipeline\",\n        ],\n        \"frequency\" => \"5m\",\n        \"sync\" => [\n            \"time\" => [\n                \"field\" => \"order_date\",\n                \"delay\" => \"60s\",\n            ],\n        ],\n        \"retention_policy\" => [\n            \"time\" => [\n                \"field\" => \"order_date\",\n                \"max_age\" => \"30d\",\n            ],\n        ],\n    ],\n]);"
+      "code": "$resp = $client->transform()->updateTransform([\n    \"transform_id\" => \"simple-kibana-ecomm-pivot\",\n    \"body\" => [\n        \"source\" => [\n            \"index\" => \"kibana_sample_data_ecommerce\",\n            \"query\" => [\n                \"term\" => [\n                    \"geoip.continent_name\" => [\n                        \"value\" => \"Asia\",\n                    ],\n                ],\n            ],\n        ],\n        \"description\" => \"Maximum priced ecommerce data by customer_id in Asia\",\n        \"dest\" => [\n            \"index\" => \"kibana_sample_data_ecommerce_transform_v2\",\n            \"pipeline\" => \"add_timestamp_pipeline\",\n        ],\n        \"frequency\" => \"15m\",\n        \"sync\" => [\n            \"time\" => [\n                \"field\" => \"order_date\",\n                \"delay\" => \"120s\",\n            ],\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"kibana_sample_data_ecommerce\",\"query\":{\"term\":{\"geoip.continent_name\":{\"value\":\"Asia\"}}}},\"pivot\":{\"group_by\":{\"customer_id\":{\"terms\":{\"field\":\"customer_id\",\"missing_bucket\":true}}},\"aggregations\":{\"max_price\":{\"max\":{\"field\":\"taxful_total_price\"}}}},\"description\":\"Maximum priced ecommerce data by customer_id in Asia\",\"dest\":{\"index\":\"kibana_sample_data_ecommerce_transform1\",\"pipeline\":\"add_timestamp_pipeline\"},\"frequency\":\"5m\",\"sync\":{\"time\":{\"field\":\"order_date\",\"delay\":\"60s\"}},\"retention_policy\":{\"time\":{\"field\":\"order_date\",\"max_age\":\"30d\"}}}' \"$ELASTICSEARCH_URL/_transform/simple-kibana-ecomm-pivot/_update\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"kibana_sample_data_ecommerce\",\"query\":{\"term\":{\"geoip.continent_name\":{\"value\":\"Asia\"}}}},\"description\":\"Maximum priced ecommerce data by customer_id in Asia\",\"dest\":{\"index\":\"kibana_sample_data_ecommerce_transform_v2\",\"pipeline\":\"add_timestamp_pipeline\"},\"frequency\":\"15m\",\"sync\":{\"time\":{\"field\":\"order_date\",\"delay\":\"120s\"}}}' \"$ELASTICSEARCH_URL/_transform/simple-kibana-ecomm-pivot/_update\""
     },
     {
       "language": "Java",
@@ -16835,6 +16887,54 @@
     {
       "language": "Java",
       "code": "client.sql().query(q -> q\n    .format(SqlFormat.Txt)\n    .query(\"SELECT * FROM library ORDER BY page_count DESC LIMIT 5\")\n);\n"
+    }
+  ],
+  "specification/cluster/allocation_explain/examples/request/ClusterAllocationExplainRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.cluster.allocation_explain(\n    index=\"my-index-000001\",\n    shard=\"0\",\n    primary=False,\n    current_node=\"my-node\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.cluster.allocationExplain({\n  index: \"my-index-000001\",\n  shard: 0,\n  primary: \"false\",\n  current_node: \"my-node\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.cluster.allocation_explain(\n  index: \"my-index-000001\",\n  shard: \"0\",\n  primary: \"false\",\n  current_node: \"my-node\",\n  body: {}\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->cluster()->allocationExplain([\n    \"index\" => \"my-index-000001\",\n    \"shard\" => \"0\",\n    \"primary\" => \"false\",\n    \"current_node\" => \"my-node\",\n    \"body\" => new ArrayObject([]),\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{}' \"$ELASTICSEARCH_URL/_cluster/allocation/explain?index=my-index-000001&shard=0&primary=false&current_node=my-node\""
+    },
+    {
+      "language": "Java",
+      "code": "client.cluster().allocationExplain(a -> a\n    .currentNode(\"my-node\")\n    .index(\"my-index-000001\")\n    .primary(false)\n    .shard(0)\n);\n"
+    }
+  ],
+  "specification/inference/put_cohere/examples/request/PutCohereRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"cohere-completion\",\n    inference_config={\n        \"service\": \"cohere\",\n        \"service_settings\": {\n            \"api_key\": \"Cohere-API-key\",\n            \"model_id\": \"command-a-03-2025\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"cohere-completion\",\n  inference_config: {\n    service: \"cohere\",\n    service_settings: {\n      api_key: \"Cohere-API-key\",\n      model_id: \"command-a-03-2025\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"cohere-completion\",\n  body: {\n    \"service\": \"cohere\",\n    \"service_settings\": {\n      \"api_key\": \"Cohere-API-key\",\n      \"model_id\": \"command-a-03-2025\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"cohere-completion\",\n    \"body\" => [\n        \"service\" => \"cohere\",\n        \"service_settings\" => [\n            \"api_key\" => \"Cohere-API-key\",\n            \"model_id\" => \"command-a-03-2025\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"cohere\",\"service_settings\":{\"api_key\":\"Cohere-API-key\",\"model_id\":\"command-a-03-2025\"}}' \"$ELASTICSEARCH_URL/_inference/completion/cohere-completion\""
     }
   ]
 }

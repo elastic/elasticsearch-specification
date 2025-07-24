@@ -1,0 +1,14 @@
+summary: A rerank task
+description: Run `PUT _inference/rerank/azure_ai_studio_rerank` to create an inference endpoint that performs a rerank task.
+method_request: 'PUT _inference/rerank/azure_ai_studio_rerank'
+# type: "request"
+value: |-
+  {
+      "service": "azureaistudio",
+      "service_settings": {
+          "api_key": "Azure-AI-Studio-API-key",
+          "target": "Target-URI",
+          "provider": "cohere",
+          "endpoint_type": "token"
+      }
+  }

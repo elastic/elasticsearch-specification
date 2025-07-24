@@ -1,0 +1,8 @@
+summary: Query Parameters
+method_request: GET _cluster/allocation/explain?index=my-index-000001&shard=0&primary=false&current_node=my-node
+description: >
+  Run `GET _cluster/allocation/explain?index=my-index-000001&shard=0&primary=false&current_node=my-node` to get an explanation for a
+  shard's current allocation. No parameters are required in the request body
+# type: request
+value: |-
+  {}
