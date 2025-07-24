@@ -52316,13 +52316,13 @@
           "all_columns": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/esql._types.ColumnInfo"
+              "$ref": "#/components/schemas/esql._types.EsqlColumnInfo"
             }
           },
           "columns": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/esql._types.ColumnInfo"
+              "$ref": "#/components/schemas/esql._types.EsqlColumnInfo"
             }
           },
           "values": {
@@ -52335,7 +52335,7 @@
             }
           },
           "_clusters": {
-            "$ref": "#/components/schemas/esql._types.ClusterInfo"
+            "$ref": "#/components/schemas/esql._types.EsqlClusterInfo"
           },
           "profile": {
             "description": "Profiling information. Present if `profile` was `true` in the request.\nThe contents of this field are currently unstable.",
@@ -52347,7 +52347,7 @@
           "values"
         ]
       },
-      "esql._types.ColumnInfo": {
+      "esql._types.EsqlColumnInfo": {
         "type": "object",
         "properties": {
           "name": {
@@ -52362,7 +52362,7 @@
           "type"
         ]
       },
-      "esql._types.ClusterInfo": {
+      "esql._types.EsqlClusterInfo": {
         "type": "object",
         "properties": {
           "total": {

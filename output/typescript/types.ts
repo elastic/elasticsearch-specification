@@ -10973,7 +10973,14 @@ export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
   is_running: boolean
 }
 
-export interface EsqlClusterInfo {
+export interface EsqlEsqlClusterDetails {
+  status: EsqlEsqlClusterStatus
+  indices: string
+  took?: DurationValue<UnitMillis>
+  _shards?: EsqlEsqlShardInfo
+}
+
+export interface EsqlEsqlClusterInfo {
   total: integer
   successful: integer
   running: integer
@@ -10983,27 +10990,20 @@ export interface EsqlClusterInfo {
   details: Record<string, EsqlEsqlClusterDetails>
 }
 
-export interface EsqlColumnInfo {
+export type EsqlEsqlClusterStatus = 'running' | 'successful' | 'partial' | 'skipped' | 'failed'
+
+export interface EsqlEsqlColumnInfo {
   name: string
   type: string
 }
 
-export interface EsqlEsqlClusterDetails {
-  status: EsqlEsqlClusterStatus
-  indices: string
-  took?: DurationValue<UnitMillis>
-  _shards?: EsqlEsqlShardInfo
-}
-
-export type EsqlEsqlClusterStatus = 'running' | 'successful' | 'partial' | 'skipped' | 'failed'
-
 export interface EsqlEsqlResult {
   took?: DurationValue<UnitMillis>
   is_partial?: boolean
-  all_columns?: EsqlColumnInfo[]
-  columns: EsqlColumnInfo[]
+  all_columns?: EsqlEsqlColumnInfo[]
+  columns: EsqlEsqlColumnInfo[]
   values: FieldValue[][]
-  _clusters?: EsqlClusterInfo
+  _clusters?: EsqlEsqlClusterInfo
   profile?: any
 }
 
