@@ -231,6 +231,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       Phases: ['ilm._types', 'xpack.usage'],
       Pipeline: ['ingest._types', 'logstash._types'],
       Policy: ['enrich._types', 'ilm._types', 'slm._types'],
+      Query: ['_global.knn_search._types', 'xpack.usage'],
       RequestItem: ['_global.msearch', '_global.msearch_template'],
       ResponseItem: ['_global.bulk', '_global.mget', '_global.msearch'],
       RoleMapping: ['security._types', 'xpack.usage'],
