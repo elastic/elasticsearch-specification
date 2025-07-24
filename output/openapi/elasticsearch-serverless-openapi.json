@@ -13741,7 +13741,7 @@
           "info"
         ],
         "summary": "Get cluster info",
-        "description": "Get basic build, version, and cluster information.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "description": "Get basic build, version, and cluster information.\n::: In Serverless, this API is retained for backward compatibility only. Some response fields, such as the version number, should be ignored.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "info",
         "responses": {
           "200": {
@@ -13777,8 +13777,12 @@
                 },
                 "examples": {
                   "RootNodeInfoResponseExample1": {
-                    "description": "A successful response from `GET /`s.",
-                    "value": "{\n  \"name\": \"instance-0000000000\",\n  \"cluster_name\": \"my_test_cluster\",\n  \"cluster_uuid\": \"5QaxoN0pRZuOmWSxstBBwQ\",\n  \"version\": {\n    \"build_date\": \"2024-02-01T13:07:13.727175297Z\",\n    \"minimum_wire_compatibility_version\": \"7.17.0\",\n    \"build_hash\": \"6185ba65d27469afabc9bc951cded6c17c21e3f3\",\n    \"number\": \"8.12.1\",\n    \"lucene_version\": \"9.9.2\",\n    \"minimum_index_compatibility_version\": \"7.0.0\",\n    \"build_flavor\": \"default\",\n    \"build_snapshot\": false,\n    \"build_type\": \"docker\"\n  },\n  \"tagline\": \"You Know, for Search\"\n}"
+                    "description": "A successful response from `GET /`.",
+                    "value": "{\n  \"name\": \"instance-0000000000\",\n  \"cluster_name\": \"my_test_cluster\",\n  \"cluster_uuid\": \"zk-HjQtYQGyL3NFSSu7InA\",\n  \"version\": {\n    \"number\": \"9.1.0\",\n    \"build_flavor\": \"default\",\n    \"build_type\": \"docker\",\n    \"build_hash\": 0,\n    \"build_date\": \"2025-07-09T22:10:13.578Z\",\n    \"build_snapshot\": false,\n    \"lucene_version\": \"10.2.2\",\n    \"minimum_wire_compatibility_version\": \"8.19.0\",\n    \"minimum_index_compatibility_version\": \"8.0.0\"\n  },\n  \"tagline\": \"You Know, for Search\"\n}"
+                  },
+                  "RootNodeInfoResponseExample2": {
+                    "description": "A successful response from `GET /` on Serverless. This API is retained for backward compatibility only. Some fields, such as the version number, return static values and should be ignored.",
+                    "value": "{\n  \"name\": \"serverless\",\n  \"cluster_name\": \"my_test_serverless_cluster\",\n  \"cluster_uuid\": \"8xx0pi24Squnf4PFDOAtwg\",\n  \"version\": {\n    \"number\": \"8.11.0\",\n    \"build_flavor\": \"serverless\",\n    \"build_type\": \"docker\",\n    \"build_hash\": 0,\n    \"build_date\": \"2023-10-31T00:00:00.000Z\",\n    \"build_snapshot\": false,\n    \"lucene_version\": \"9.7.0\",\n    \"minimum_wire_compatibility_version\": \"8.11.0\",\n    \"minimum_index_compatibility_version\": \"8.11.0\"\n  },\n  \"tagline\": \"You Know, for Search\"\n}"
                   }
                 }
               }
@@ -57750,7 +57754,7 @@
             "$ref": "#/components/schemas/_types.VersionString"
           },
           "number": {
-            "description": "The Elasticsearch version number.",
+            "description": "The Elasticsearch version number.\n\n::: IMPORTANT: For Serverless deployments, this static value is always `8.11.0` and is used solely for backward compatibility with legacy clients.\n Serverless environments are versionless and automatically upgraded, so this value can be safely ignored.",
             "type": "string"
           }
         },
