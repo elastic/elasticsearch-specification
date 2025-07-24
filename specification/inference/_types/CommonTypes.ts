@@ -454,7 +454,7 @@ export class AmazonSageMakerServiceSettings {
   endpoint_name: string
   /**
    * The API format to use when calling SageMaker.
-   * This will structure the payload when invoking the SageMaker endpoint.
+   * Elasticsearch will convert the POST _inference request to this data format when invoking the SageMaker endpoint.
    */
   api: AmazonSageMakerApi
   /**
