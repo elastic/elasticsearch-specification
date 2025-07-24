@@ -1,11 +1,4 @@
 {
-  "endpointErrors": {
-    "esql.async_query_get": {
-      "request": [
-        "Request: query parameter 'format' does not exist in the json spec"
-      ],
-      "response": []
-    }
-  },
+  "endpointErrors": {},
   "generalErrors": []
 }
