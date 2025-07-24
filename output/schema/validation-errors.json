@@ -6,12 +6,6 @@
       ],
       "response": []
     },
-    "esql.async_query_get": {
-      "request": [
-        "Request: query parameter 'format' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "ml.stop_datafeed": {
       "request": [
         "Request: missing json spec query parameter 'allow_no_datafeeds'"
