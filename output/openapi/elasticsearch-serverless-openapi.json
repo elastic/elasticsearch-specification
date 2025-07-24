@@ -13777,10 +13777,12 @@
                 },
                 "examples": {
                   "RootNodeInfoResponseExample1": {
+                    "summary": "Stack response",
                     "description": "A successful response from `GET /`.",
                     "value": "{\n  \"name\": \"instance-0000000000\",\n  \"cluster_name\": \"my_test_cluster\",\n  \"cluster_uuid\": \"zk-HjQtYQGyL3NFSSu7InA\",\n  \"version\": {\n    \"number\": \"9.1.0\",\n    \"build_flavor\": \"default\",\n    \"build_type\": \"docker\",\n    \"build_hash\": 0,\n    \"build_date\": \"2025-07-09T22:10:13.578Z\",\n    \"build_snapshot\": false,\n    \"lucene_version\": \"10.2.2\",\n    \"minimum_wire_compatibility_version\": \"8.19.0\",\n    \"minimum_index_compatibility_version\": \"8.0.0\"\n  },\n  \"tagline\": \"You Know, for Search\"\n}"
                   },
                   "RootNodeInfoResponseExample2": {
+                    "summary": "Serverless response",
                     "description": "A successful response from `GET /` on Serverless. This API is retained for backward compatibility only. Some fields, such as the version number, return static values and should be ignored.",
                     "value": "{\n  \"name\": \"serverless\",\n  \"cluster_name\": \"my_test_serverless_cluster\",\n  \"cluster_uuid\": \"8xx0pi24Squnf4PFDOAtwg\",\n  \"version\": {\n    \"number\": \"8.11.0\",\n    \"build_flavor\": \"serverless\",\n    \"build_type\": \"docker\",\n    \"build_hash\": 0,\n    \"build_date\": \"2023-10-31T00:00:00.000Z\",\n    \"build_snapshot\": false,\n    \"lucene_version\": \"9.7.0\",\n    \"minimum_wire_compatibility_version\": \"8.11.0\",\n    \"minimum_index_compatibility_version\": \"8.11.0\"\n  },\n  \"tagline\": \"You Know, for Search\"\n}"
                   }
