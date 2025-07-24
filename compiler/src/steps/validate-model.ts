@@ -214,7 +214,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     const existingDuplicates: Record<string, string[]> = {
       Action: ['indices.modify_data_stream', 'indices.update_aliases', 'watcher._types'],
       Actions: ['ilm._types', 'security.put_privileges', 'watcher._types'],
-      ClusterInfo: ['cluster.allocation_explain', 'esql._types'],
       ComponentTemplate: ['cat.component_templates', 'cluster._types'],
       Context: ['_global.get_script_context', '_global.search._types', 'nodes._types'],
       DatabaseConfigurationMetadata: ['ingest.get_geoip_database', 'ingest.get_ip_location_database'],

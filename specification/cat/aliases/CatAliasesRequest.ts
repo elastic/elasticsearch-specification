@@ -18,7 +18,6 @@
  */
 
 import { ExpandWildcards, Names } from '@_types/common'
-import { Duration } from '@_types/Time'
 import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -74,12 +73,5 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     local?: boolean
-    /**
-     * The period to wait for a connection to the master node.
-     * If the master node is not available before the timeout expires, the request fails and returns an error.
-     * To indicated that the request should never timeout, you can set it to `-1`.
-     * @server_default 30s
-     */
-    master_timeout?: Duration
   }
 }
