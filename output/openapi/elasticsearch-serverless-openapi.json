@@ -46824,17 +46824,11 @@
                 "type": "number"
               },
               "token_chars": {
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/_types.analysis.TokenChar"
-                    }
-                  }
-                ]
+                "default": [],
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.analysis.TokenChar"
+                }
               }
             },
             "required": [
