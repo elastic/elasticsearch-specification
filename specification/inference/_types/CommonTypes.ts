@@ -444,11 +444,11 @@ export enum AmazonBedrockServiceType {
 
 export class AmazonSageMakerServiceSettings {
   /**
-   * A valid AWS access key that has permissions to use Amazon SageMaker and access to models for invoke requests.
+   * A valid AWS access key that has permissions to use Amazon SageMaker and access to models for invoking requests.
    */
   access_key: string
   /**
-   * The name of the SageMaker Endpoint.
+   * The name of the SageMaker endpoint.
    * @ext_doc_id amazonsagemaker-invoke
    */
   endpoint_name: string
@@ -458,19 +458,19 @@ export class AmazonSageMakerServiceSettings {
    */
   api: AmazonSageMakerApi
   /**
-   * The region that your endpoint or ARN is deployed in.
+   * The region that your endpoint or Amazon Resource Name (ARN) is deployed in.
    * The list of available regions per model can be found in the Amazon SageMaker documentation.
    * @ext_doc_id amazonsagemaker-invoke
    */
   region: string
   /**
    * A valid AWS secret key that is paired with the `access_key`.
-   * For informationg about creating and managing access and secret keys, refer to the AWS documentation.
+   * For information about creating and managing access and secret keys, refer to the AWS documentation.
    * @ext_doc_id amazonsagemaker-secret-keys
    */
   secret_key: string
   /**
-   * The model id when calling a multi-model endpoint.
+   * The model ID when calling a multi-model endpoint.
    * @ext_doc_id amazonsagemaker-invoke
    */
   target_model?: string
@@ -492,8 +492,8 @@ export class AmazonSageMakerServiceSettings {
    */
   batch_size?: integer
   /**
-   * The number of dimensions returned by the text_embedding models. If this value is not provided, then
-   * it is guessed by making invoking the Endpoint for the text_embedding task.
+   * The number of dimensions returned by the text embedding models. If this value is not provided, then
+   * it is guessed by making invoking the endpoint for the `text_embedding` task.
    */
   dimensions?: integer
 }
@@ -504,17 +504,17 @@ export enum AmazonSageMakerApi {
 }
 
 /**
- * Service Settings specific to the Elastic API for the Amazon SageMaker service.
+ * Service settings specific to the Elastic API for the Amazon SageMaker service.
  */
 export class AmazonSageMakerElasticServiceSettings extends AmazonSageMakerServiceSettings {
   /**
-   * Similarity measure used when invoking the text_embedding task type.
+   * Similarity measure used when invoking the `text_embedding` task type.
    */
   similarity?: AmazonSageMakerSimilarity
 
   /**
-   * The data type returned by the text_embedding model.
-   * This value must be set when task_type is text_embedding and is used when parsing the response
+   * The data type returned by the text embedding model.
+   * This value must be set when `task_type` is `text_embedding` and is used when parsing the response
    * back to Elasticsearch data structures.
    */
   element_type: AmazonSageMakerElementType
@@ -545,7 +545,7 @@ export interface AmazonSageMakerTaskSettings {
    */
   enable_explanations?: string
   /**
-   * The capture data id when enabled in the Endpoint.
+   * The capture data ID when enabled in the endpoint.
    * @ext_doc_id amazonsagemaker-invoke
    */
   inference_id?: string
