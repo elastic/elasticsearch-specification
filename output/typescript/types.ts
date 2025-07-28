@@ -13576,6 +13576,31 @@ export interface InferenceAmazonBedrockTaskSettings {
 
 export type InferenceAmazonBedrockTaskType = 'completion' | 'text_embedding'
 
+export type InferenceAmazonSageMakerApi = 'openai' | 'elastic'
+
+export interface InferenceAmazonSageMakerServiceSettings {
+  access_key: string
+  endpoint_name: string
+  api: InferenceAmazonSageMakerApi
+  region: string
+  secret_key: string
+  target_model?: string
+  target_container_hostname?: string
+  inference_component_name?: string
+  batch_size?: integer
+  dimensions?: integer
+}
+
+export type InferenceAmazonSageMakerServiceType = 'amazon_sagemaker'
+
+export interface InferenceAmazonSageMakerTaskSettings {
+  custom_attributes?: string
+  enable_explanations?: string
+  inference_id?: string
+  session_id?: string
+  target_variant?: string
+}
+
 export interface InferenceAnthropicServiceSettings {
   api_key: string
   model_id: string
@@ -13833,6 +13858,11 @@ export interface InferenceInferenceEndpointInfoAmazonBedrock extends InferenceIn
   task_type: InferenceTaskTypeAmazonBedrock
 }
 
+export interface InferenceInferenceEndpointInfoAmazonSageMaker extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeAmazonSageMaker
+}
+
 export interface InferenceInferenceEndpointInfoAnthropic extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeAnthropic
@@ -14025,6 +14055,8 @@ export type InferenceTaskTypeAlibabaCloudAI = 'text_embedding' | 'rerank' | 'com
 
 export type InferenceTaskTypeAmazonBedrock = 'text_embedding' | 'completion'
 
+export type InferenceTaskTypeAmazonSageMaker = 'text_embedding' | 'completion' | 'chat_completion' | 'sparse_embedding' | 'rerank'
+
 export type InferenceTaskTypeAnthropic = 'completion'
 
 export type InferenceTaskTypeAzureAIStudio = 'text_embedding' | 'completion'
@@ -14200,6 +14232,20 @@ export interface InferencePutAmazonbedrockRequest extends RequestBase {
 }
 
 export type InferencePutAmazonbedrockResponse = InferenceInferenceEndpointInfoAmazonBedrock
+
+export interface InferencePutAmazonsagemakerRequest extends RequestBase {
+  task_type: InferenceTaskTypeAmazonSageMaker
+  amazonsagemaker_inference_id: Id
+  timeout?: Duration
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferenceAmazonSageMakerServiceType
+    service_settings: InferenceAmazonSageMakerServiceSettings
+    task_settings?: InferenceAmazonSageMakerTaskSettings
+  }
+}
+
+export type InferencePutAmazonsagemakerResponse = InferenceInferenceEndpointInfoAmazonSageMaker
 
 export interface InferencePutAnthropicRequest extends RequestBase {
   task_type: InferenceAnthropicTaskType
