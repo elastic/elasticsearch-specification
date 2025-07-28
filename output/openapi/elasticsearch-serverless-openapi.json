@@ -11368,7 +11368,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, 'rerank', `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`completion`, `chat_completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, 'rerank', `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`completion`, `chat_completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -11489,7 +11489,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, 'rerank', `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`completion`, `chat_completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, 'rerank', `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`completion`, `chat_completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -11807,6 +11807,96 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAmazonBedrock"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/{task_type}/{amazonsagemaker_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Amazon SageMaker inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `amazon_sagemaker` service.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-amazonsagemaker",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.TaskTypeAmazonSageMaker"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "amazonsagemaker_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference._types.AmazonSageMakerServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference._types.AmazonSageMakerServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference._types.AmazonSageMakerTaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAmazonSageMaker"
                 }
               }
             }
@@ -56182,6 +56272,162 @@
         "enum": [
           "text_embedding",
           "completion"
+        ]
+      },
+      "inference._types.TaskTypeAmazonSageMaker": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "completion",
+          "chat_completion",
+          "sparse_embedding",
+          "rerank"
+        ]
+      },
+      "inference._types.AmazonSageMakerServiceType": {
+        "type": "string",
+        "enum": [
+          "amazon_sagemaker"
+        ]
+      },
+      "inference._types.AmazonSageMakerServiceSettings": {
+        "type": "object",
+        "properties": {
+          "access_key": {
+            "description": "A valid AWS access key that has permissions to use Amazon SageMaker and access to models for invoking requests.",
+            "type": "string"
+          },
+          "endpoint_name": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The name of the SageMaker endpoint.",
+            "type": "string"
+          },
+          "api": {
+            "$ref": "#/components/schemas/inference._types.AmazonSageMakerApi"
+          },
+          "region": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The region that your endpoint or Amazon Resource Name (ARN) is deployed in.\nThe list of available regions per model can be found in the Amazon SageMaker documentation.",
+            "type": "string"
+          },
+          "secret_key": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+            },
+            "description": "A valid AWS secret key that is paired with the `access_key`.\nFor information about creating and managing access and secret keys, refer to the AWS documentation.",
+            "type": "string"
+          },
+          "target_model": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The model ID when calling a multi-model endpoint.",
+            "type": "string"
+          },
+          "target_container_hostname": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The container to directly invoke when calling a multi-container endpoint.",
+            "type": "string"
+          },
+          "inference_component_name": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The inference component to directly invoke when calling a multi-component endpoint.",
+            "type": "string"
+          },
+          "batch_size": {
+            "description": "The maximum number of inputs in each batch. This value is used by inference ingestion pipelines\nwhen processing semantic values. It correlates to the number of times the SageMaker endpoint is\ninvoked (one per batch of input).",
+            "default": 256.0,
+            "type": "number"
+          },
+          "dimensions": {
+            "description": "The number of dimensions returned by the text embedding models. If this value is not provided, then\nit is guessed by making invoking the endpoint for the `text_embedding` task.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "access_key",
+          "endpoint_name",
+          "api",
+          "region",
+          "secret_key"
+        ]
+      },
+      "inference._types.AmazonSageMakerApi": {
+        "type": "string",
+        "enum": [
+          "openai",
+          "elastic"
+        ]
+      },
+      "inference._types.AmazonSageMakerTaskSettings": {
+        "type": "object",
+        "properties": {
+          "custom_attributes": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The AWS custom attributes passed verbatim through to the model running in the SageMaker Endpoint.\nValues will be returned in the `X-elastic-sagemaker-custom-attributes` header.",
+            "type": "string"
+          },
+          "enable_explanations": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The optional JMESPath expression used to override the EnableExplanations provided during endpoint creation.",
+            "type": "string"
+          },
+          "inference_id": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The capture data ID when enabled in the endpoint.",
+            "type": "string"
+          },
+          "session_id": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The stateful session identifier for a new or existing session.\nNew sessions will be returned in the `X-elastic-sagemaker-new-session-id` header.\nClosed sessions will be returned in the `X-elastic-sagemaker-closed-session-id` header.",
+            "type": "string"
+          },
+          "target_variant": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "Specifies the variant when running with multi-variant Endpoints.",
+            "type": "string"
+          }
+        }
+      },
+      "inference._types.InferenceEndpointInfoAmazonSageMaker": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeAmazonSageMaker"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
         ]
       },
       "inference._types.AnthropicTaskType": {
