@@ -333,9 +333,13 @@ export class AppendProcessor extends ProcessorBase {
    */
   field: Field
   /**
-   * The value to be appended. Supports template snippets.
+   * The value to be appended. Supports template snippets. May specify only one of `value` or `copy_from`.
    */
-  value: UserDefinedValue | UserDefinedValue[]
+  value?: UserDefinedValue | UserDefinedValue[]
+  /**
+   * The source field to be append. Cannot set `value` simultaneously.
+   */
+  copy_from?: Field
   /**
    * If `false`, the processor does not append values already present in the field.
    * @server_default true
