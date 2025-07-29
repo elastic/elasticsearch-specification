@@ -14188,6 +14188,10 @@ export type InferenceLlamaServiceType = 'llama'
 
 export type InferenceLlamaSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
 
+export interface InferenceLlamaTaskSettings {
+  user?: string
+}
+
 export type InferenceLlamaTaskType = 'text_embedding' | 'completion' | 'chat_completion'
 
 export interface InferenceMessage {
@@ -14638,6 +14642,7 @@ export interface InferencePutLlamaRequest extends RequestBase {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceLlamaServiceType
     service_settings: InferenceLlamaServiceSettings
+    task_settings?: InferenceLlamaTaskSettings
   }
 }
 

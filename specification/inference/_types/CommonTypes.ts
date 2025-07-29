@@ -1524,7 +1524,7 @@ export class LlamaServiceSettings {
   /**
    * The URL endpoint of the Llama stack endpoint.
    * URL must contain:
-   * * For `text_embedding` task - `/v1/inference/embeddings`.
+   * * For `text_embedding` task - `/v1/openai/v1/embeddings`.
    * * For `completion` and `chat_completion` tasks - `/v1/openai/v1/chat/completions`.
    */
   url: string
@@ -1552,7 +1552,9 @@ export class LlamaServiceSettings {
    */
   max_input_tokens?: integer
   /**
-   * For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.
+   * For a `text_embedding` task, the number of dimensions the resulting output embeddings must have.
+   * It is supported only in `text-embedding-3` and later models. If it is not set by user, it defaults to the model returned dimensions.
+   * If model returns embeddings with a different number of dimensions, error is returned.
    */
   dimensions?: integer
   /**
@@ -1564,6 +1566,14 @@ export class LlamaServiceSettings {
    * By default, the `llama` service sets the number of requests allowed per minute to 3000.
    */
   rate_limit?: RateLimitSetting
+}
+
+export class LlamaTaskSettings {
+  /**
+   * For a `completion` or `text_embedding` task, specify the user issuing the request.
+   * This information can be used for abuse detection.
+   */
+  user?: string
 }
 
 export enum LlamaTaskType {

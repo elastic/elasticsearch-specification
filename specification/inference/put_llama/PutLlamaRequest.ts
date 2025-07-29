@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 import {
   LlamaServiceSettings,
   LlamaServiceType,
+  LlamaTaskSettings,
   LlamaTaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
@@ -75,5 +76,10 @@ export interface Request extends RequestBase {
      * Settings used to install the inference model. These settings are specific to the `llama` service.
      */
     service_settings: LlamaServiceSettings
+    /**
+     * Settings to configure the inference task.
+     * These settings are specific to the task type you specified.
+     */
+    task_settings?: LlamaTaskSettings
   }
 }
