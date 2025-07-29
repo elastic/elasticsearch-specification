@@ -59,6 +59,8 @@ export interface Request extends RequestBase {
     drop_null_columns?: boolean
     /**
      * A short version of the Accept header, for example `json` or `yaml`.
+     * 
+     * `csv`, `tsv`, and `txt` formats will return results in a tabular format, excluding other metadata fields from the response.
      */
     format?: EsqlFormat
   }
