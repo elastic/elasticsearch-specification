@@ -63,6 +63,7 @@ export interface Request extends RequestBase {
      * `csv`, `tsv`, and `txt` formats will return results in a tabular format, excluding other metadata fields from the response.
      *
      * For async requests, nothing will be returned if the async query doesn't finish within the timeout.
+     * You should then take the query ID and status from the `X-Elasticsearch-Async-Id` and `X-Elasticsearch-Async-Is-Running` HTTP headers, respectively.
      */
     format?: EsqlFormat
   }
