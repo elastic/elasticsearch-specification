@@ -67855,7 +67855,7 @@
                 ]
               },
               "value": {
-                "description": "The value to be appended. Supports template snippets.",
+                "description": "The value to be appended. Supports template snippets. May specify only one of `value` or `copy_from`.",
                 "oneOf": [
                   {
                     "type": "object"
@@ -67868,6 +67868,9 @@
                   }
                 ]
               },
+              "copy_from": {
+                "$ref": "#/components/schemas/_types.Field"
+              },
               "allow_duplicates": {
                 "description": "If `false`, the processor does not append values already present in the field.",
                 "default": true,
@@ -67875,8 +67878,7 @@
               }
             },
             "required": [
-              "field",
-              "value"
+              "field"
             ]
           }
         ]
