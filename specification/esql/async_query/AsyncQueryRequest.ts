@@ -61,6 +61,8 @@ export interface Request extends RequestBase {
      * A short version of the Accept header, for example `json` or `yaml`.
      * 
      * `csv`, `tsv`, and `txt` formats will return results in a tabular format, excluding other metadata fields from the response.
+     * 
+     * For async requests, nothing will be returned if the async query doesn't finish within the timeout.
      */
     format?: EsqlFormat
   }
