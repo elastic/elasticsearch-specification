@@ -6118,7 +6118,7 @@
           {
             "in": "query",
             "name": "format",
-            "description": "A short version of the Accept header, e.g. json, yaml.",
+            "description": "A short version of the Accept header, e.g. json, yaml.\n\n`csv`, `tsv`, and `txt` formats will return results in a tabular format, excluding other metadata fields from the response.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/esql._types.EsqlFormat"
