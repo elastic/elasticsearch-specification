@@ -22,7 +22,6 @@ import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration, TimeZone } from '@_types/Time'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
@@ -118,7 +117,7 @@ export interface Request extends RequestBase {
     /**
      * The values for parameters in the query.
      */
-    params?: Dictionary<string, UserDefinedValue>
+    params?: UserDefinedValue[]
     /**
      * The SQL query to run.
      * @ext_doc_id sql-spec
