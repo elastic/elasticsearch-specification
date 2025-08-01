@@ -36,6 +36,7 @@ import {
   TaskTypeGoogleVertexAI,
   TaskTypeHuggingFace,
   TaskTypeJinaAi,
+  TaskTypeLlama,
   TaskTypeMistral,
   TaskTypeOpenAI,
   TaskTypeVoyageAI,
@@ -241,6 +242,17 @@ export class InferenceEndpointInfoJinaAi extends InferenceEndpoint {
   task_type: TaskTypeJinaAi
 }
 
+export class InferenceEndpointInfoLlama extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeLlama
+}
+
 export class InferenceEndpointInfoMistral extends InferenceEndpoint {
   /**
    * The inference Id
@@ -366,6 +378,7 @@ export class RateLimitSetting {
    * * `googlevertexai` service: `30000`
    * * `hugging_face` service: `3000`
    * * `jinaai` service: `2000`
+   * * `llama` service: `3000`
    * * `mistral` service: `240`
    * * `openai` service and task type `text_embedding`: `3000`
    * * `openai` service and task type `completion`: `500`
