@@ -77410,8 +77410,8 @@
                 },
                 "params": {
                   "description": "The values for parameters in the query.",
-                  "type": "object",
-                  "additionalProperties": {
+                  "type": "array",
+                  "items": {
                     "type": "object"
                   }
                 },
