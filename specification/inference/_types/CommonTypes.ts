@@ -813,10 +813,8 @@ export class CohereServiceSettings {
    * * For the available `completion` models, refer to the [Cohere command docs](https://docs.cohere.com/docs/models#command).
    * * For the available `rerank` models, refer to the [Cohere rerank docs](https://docs.cohere.com/reference/rerank-1).
    * * For the available `text_embedding` models, refer to [Cohere embed docs](https://docs.cohere.com/reference/embed).
-   *
-   * The default value for a text embedding task is `embed-english-v2.0`.
    */
-  model_id?: string
+  model_id: string
   /**
    * This setting helps to minimize the number of rate limit errors returned from Cohere.
    * By default, the `cohere` service sets the number of requests allowed per minute to 10000.
@@ -879,7 +877,7 @@ export class CohereTaskSettings {
    *
    * IMPORTANT: The `input_type` field is required when using embedding models `v3` and higher.
    */
-  input_type?: CohereInputType
+  input_type: CohereInputType
   /**
    * For a `rerank` task, return doc text within the results.
    */
