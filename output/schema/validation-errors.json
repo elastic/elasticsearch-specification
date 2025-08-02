@@ -5,12 +5,6 @@
         "Request: missing json spec query parameter 'type'"
       ],
       "response": []
-    },
-    "ml.stop_datafeed": {
-      "request": [
-        "Request: missing json spec query parameter 'allow_no_datafeeds'"
-      ],
-      "response": []
     }
   },
   "generalErrors": []
