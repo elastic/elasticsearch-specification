@@ -13731,6 +13731,16 @@ export interface InferenceAdaptiveAllocations {
   min_number_of_allocations?: integer
 }
 
+export interface InferenceAi21ServiceSettings {
+  model_id: string
+  api_key?: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceAi21ServiceType = 'ai21'
+
+export type InferenceAi21TaskType = 'completion' | 'chat_completion'
+
 export interface InferenceAlibabaCloudServiceSettings {
   api_key: string
   host: string
@@ -14044,6 +14054,11 @@ export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoi
   task_type: InferenceTaskType
 }
 
+export interface InferenceInferenceEndpointInfoAi21 extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeAi21
+}
+
 export interface InferenceInferenceEndpointInfoAlibabaCloudAI extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeAlibabaCloudAI
@@ -14272,6 +14287,8 @@ export type InferenceTaskSettings = any
 
 export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion'
 
+export type InferenceTaskTypeAi21 = 'completion' | 'chat_completion'
+
 export type InferenceTaskTypeAlibabaCloudAI = 'text_embedding' | 'rerank' | 'completion' | 'sparse_embedding'
 
 export type InferenceTaskTypeAmazonBedrock = 'text_embedding' | 'completion'
@@ -14427,6 +14444,18 @@ export interface InferencePutRequest extends RequestBase {
 }
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
+
+export interface InferencePutAi21Request extends RequestBase {
+  task_type: InferenceAi21TaskType
+  ai21_inference_id: Id
+  timeout?: Duration
+  body?: {
+    service: InferenceAi21ServiceType
+    service_settings: InferenceAi21ServiceSettings
+  }
+}
+
+export type InferencePutAi21Response = InferenceInferenceEndpointInfoAi21
 
 export interface InferencePutAlibabacloudRequest extends RequestBase {
   task_type: InferenceAlibabaCloudTaskType

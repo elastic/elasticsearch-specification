@@ -11368,7 +11368,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, 'rerank', `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`completion`, `chat_completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, 'rerank', `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`completion`, `chat_completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -11489,7 +11489,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, 'rerank', `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`completion`, `chat_completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, 'rerank', `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`completion`, `chat_completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -11596,6 +11596,100 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/inference.get-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/{task_type}/{ai21_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create a AI21 inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `ai21` service.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-ai21",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.Ai21TaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "ai21_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "service": {
+                    "$ref": "#/components/schemas/inference._types.Ai21ServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference._types.Ai21ServiceSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutAi21RequestExample1": {
+                  "description": "Run `PUT _inference/completion/ai21-completion` to create an AI21 inference endpoint that performs a `completion` task.",
+                  "value": "{\n  \"service\": \"ai21\",\n  \"service_settings\": {\n    \"api_key\": \"ai21-api-key\",\n    \"model_id\": \"jamba-large\" \n  }\n}"
+                },
+                "PutAi21RequestExample2": {
+                  "description": "Run `PUT _inference/chat-completion/ai21-chat-completion` to create a AI21 inference endpoint that performs a `chat_completion` task.",
+                  "value": "{\n  \"service\": \"ai21\",\n  \"service_settings\": {\n    \"api_key\": \"ai21-api-key\",\n    \"model_id\": \"jamba-mini\" \n  }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAi21"
+                }
+              }
+            }
           }
         },
         "x-state": "Generally available",
@@ -13110,110 +13204,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoJinaAi"
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Generally available",
-        "x-metaTags": [
-          {
-            "content": "Elasticsearch, Machine Learning",
-            "name": "product_name"
-          }
-        ]
-      }
-    },
-    "/_inference/{task_type}/{llama_inference_id}": {
-      "put": {
-        "tags": [
-          "inference"
-        ],
-        "summary": "Create a Llama inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `llama` service.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
-        "operationId": "inference-put-llama",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "task_type",
-            "description": "The type of the inference task that the model will perform.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/inference._types.LlamaTaskType"
-            },
-            "style": "simple"
-          },
-          {
-            "in": "path",
-            "name": "llama_inference_id",
-            "description": "The unique identifier of the inference endpoint.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Id"
-            },
-            "style": "simple"
-          },
-          {
-            "in": "query",
-            "name": "timeout",
-            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Duration"
-            },
-            "style": "form"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "chunking_settings": {
-                    "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
-                  },
-                  "service": {
-                    "$ref": "#/components/schemas/inference._types.LlamaServiceType"
-                  },
-                  "service_settings": {
-                    "$ref": "#/components/schemas/inference._types.LlamaServiceSettings"
-                  },
-                  "task_settings": {
-                    "$ref": "#/components/schemas/inference._types.LlamaTaskSettings"
-                  }
-                },
-                "required": [
-                  "service",
-                  "service_settings"
-                ]
-              },
-              "examples": {
-                "PutLlamaRequestExample1": {
-                  "description": "Run `PUT _inference/text_embedding/llama-text-embedding` to create a Llama inference endpoint that performs a `text_embedding` task.",
-                  "value": "{\n  \"service\": \"llama\",\n  \"service_settings\": {\n    \"url\": \"http://localhost:8321/v1/openai/v1/embeddings\"\n    \"dimensions\": 384,\n    \"api_key\": \"llama-api-key\",\n    \"model_id\": \"all-MiniLM-L6-v2\" \n  }\n}"
-                },
-                "PutLlamaRequestExample2": {
-                  "description": "Run `PUT _inference/completion/llama-completion` to create a Llama inference endpoint that performs a `completion` task.",
-                  "value": "{\n  \"service\": \"llama\",\n  \"service_settings\": {\n    \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\"\n    \"api_key\": \"llama-api-key\",\n    \"model_id\": \"llama3.2:3b\" \n  }\n}"
-                },
-                "PutLlamaRequestExample3": {
-                  "description": "Run `PUT _inference/chat-completion/llama-chat-completion` to create a Llama inference endpoint that performs a `chat_completion` task.",
-                  "value": "{\n  \"service\": \"llama\",\n  \"service_settings\": {\n    \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\"\n    \"api_key\": \"llama-api-key\",\n    \"model_id\": \"llama3.2:3b\" \n  }\n}"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoLlama"
                 }
               }
             }
@@ -56167,6 +56157,81 @@
           "relevance_score"
         ]
       },
+      "inference._types.Ai21TaskType": {
+        "type": "string",
+        "enum": [
+          "completion",
+          "chat_completion"
+        ]
+      },
+      "inference._types.Ai21ServiceType": {
+        "type": "string",
+        "enum": [
+          "ai21"
+        ]
+      },
+      "inference._types.Ai21ServiceSettings": {
+        "type": "object",
+        "properties": {
+          "model_id": {
+            "externalDocs": {
+              "url": "https://docs.ai21.com/docs/jamba-foundation-models"
+            },
+            "description": "The name of the model to use for the inference task.\nRefer to the AI21 models documentation for the list of supported models and versions.\nService has been tested and confirmed to be working for `completion` and `chat_completion` tasks with the following models:\n* `jamba-mini`\n* `jamba-large`",
+            "type": "string"
+          },
+          "api_key": {
+            "description": "A valid API key for accessing AI21 API.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/inference._types.RateLimitSetting"
+          }
+        },
+        "required": [
+          "model_id"
+        ]
+      },
+      "inference._types.RateLimitSetting": {
+        "description": "This setting helps to minimize the number of rate limit errors returned from the service.",
+        "type": "object",
+        "properties": {
+          "requests_per_minute": {
+            "description": "The number of requests allowed per minute.\nBy default, the number of requests allowed per minute is set by each service as follows:\n\n* `alibabacloud-ai-search` service: `1000`\n* `anthropic` service: `50`\n* `azureaistudio` service: `240`\n* `azureopenai` service and task type `text_embedding`: `1440`\n* `azureopenai` service and task type `completion`: `120`\n* `cohere` service: `10000`\n* `elastic` service and task type `chat_completion`: `240`\n* `googleaistudio` service: `360`\n* `googlevertexai` service: `30000`\n* `hugging_face` service: `3000`\n* `jinaai` service: `2000`\n* `mistral` service: `240`\n* `openai` service and task type `text_embedding`: `3000`\n* `openai` service and task type `completion`: `500`\n* `voyageai` service: `2000`\n* `watsonxai` service: `120`",
+            "type": "number"
+          }
+        }
+      },
+      "inference._types.InferenceEndpointInfoAi21": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeAi21"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeAi21": {
+        "type": "string",
+        "enum": [
+          "completion",
+          "chat_completion"
+        ]
+      },
       "inference._types.AlibabaCloudTaskType": {
         "type": "string",
         "enum": [
@@ -56214,16 +56279,6 @@
           "service_id",
           "workspace"
         ]
-      },
-      "inference._types.RateLimitSetting": {
-        "description": "This setting helps to minimize the number of rate limit errors returned from the service.",
-        "type": "object",
-        "properties": {
-          "requests_per_minute": {
-            "description": "The number of requests allowed per minute.\nBy default, the number of requests allowed per minute is set by each service as follows:\n\n* `alibabacloud-ai-search` service: `1000`\n* `anthropic` service: `50`\n* `azureaistudio` service: `240`\n* `azureopenai` service and task type `text_embedding`: `1440`\n* `azureopenai` service and task type `completion`: `120`\n* `cohere` service: `10000`\n* `elastic` service and task type `chat_completion`: `240`\n* `googleaistudio` service: `360`\n* `googlevertexai` service: `30000`\n* `hugging_face` service: `3000`\n* `jinaai` service: `2000`\n* `llama` service: `3000`\n* `mistral` service: `240`\n* `openai` service and task type `text_embedding`: `3000`\n* `openai` service and task type `completion`: `500`\n* `voyageai` service: `2000`\n* `watsonxai` service: `120`",
-            "type": "number"
-          }
-        }
       },
       "inference._types.AlibabaCloudTaskSettings": {
         "type": "object",
@@ -57655,106 +57710,6 @@
         "enum": [
           "text_embedding",
           "rerank"
-        ]
-      },
-      "inference._types.LlamaTaskType": {
-        "type": "string",
-        "enum": [
-          "text_embedding",
-          "completion",
-          "chat_completion"
-        ]
-      },
-      "inference._types.LlamaServiceType": {
-        "type": "string",
-        "enum": [
-          "llama"
-        ]
-      },
-      "inference._types.LlamaServiceSettings": {
-        "type": "object",
-        "properties": {
-          "url": {
-            "description": "The URL endpoint of the Llama stack endpoint.\nURL must contain:\n* For `text_embedding` task - `/v1/openai/v1/embeddings`.\n* For `completion` and `chat_completion` tasks - `/v1/openai/v1/chat/completions`.",
-            "type": "string"
-          },
-          "model_id": {
-            "externalDocs": {
-              "url": "https://llama-stack.readthedocs.io/en/latest/references/llama_cli_reference/download_models.html/"
-            },
-            "description": "The name of the model to use for the inference task.\nRefer to the Llama downloading models documentation for different ways of getting a list of available models and downloading them.\nService has been tested and confirmed to be working with the following models:\n* For `text_embedding` task - `all-MiniLM-L6-v2`.\n* For `completion` and `chat_completion` tasks - `llama3.2:3b`.",
-            "type": "string"
-          },
-          "api_key": {
-            "description": "A valid API key for accessing Llama stack endpoint that is going to be sent as part of Bearer authentication header.\nThis field is optional because Llama stack doesn't provide authentication by default.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
-            "type": "string"
-          },
-          "max_input_tokens": {
-            "description": "For a `text_embedding` task, the maximum number of tokens per input before chunking occurs.",
-            "type": "number"
-          },
-          "dimensions": {
-            "description": "For a `text_embedding` task, the number of dimensions the resulting output embeddings must have.\nIt is supported only in `text-embedding-3` and later models. If it is not set by user, it defaults to the model returned dimensions.\nIf model returns embeddings with a different number of dimensions, error is returned.",
-            "type": "number"
-          },
-          "similarity": {
-            "$ref": "#/components/schemas/inference._types.LlamaSimilarityType"
-          },
-          "rate_limit": {
-            "$ref": "#/components/schemas/inference._types.RateLimitSetting"
-          }
-        },
-        "required": [
-          "url",
-          "model_id"
-        ]
-      },
-      "inference._types.LlamaSimilarityType": {
-        "type": "string",
-        "enum": [
-          "cosine",
-          "dot_product",
-          "l2_norm"
-        ]
-      },
-      "inference._types.LlamaTaskSettings": {
-        "type": "object",
-        "properties": {
-          "user": {
-            "description": "For a `completion` or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
-            "type": "string"
-          }
-        }
-      },
-      "inference._types.InferenceEndpointInfoLlama": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "inference_id": {
-                "description": "The inference Id",
-                "type": "string"
-              },
-              "task_type": {
-                "$ref": "#/components/schemas/inference._types.TaskTypeLlama"
-              }
-            },
-            "required": [
-              "inference_id",
-              "task_type"
-            ]
-          }
-        ]
-      },
-      "inference._types.TaskTypeLlama": {
-        "type": "string",
-        "enum": [
-          "text_embedding",
-          "chat_completion",
-          "completion"
         ]
       },
       "inference._types.MistralTaskType": {

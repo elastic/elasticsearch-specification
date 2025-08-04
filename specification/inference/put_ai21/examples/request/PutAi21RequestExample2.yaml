@@ -1,0 +1,12 @@
+# summary:
+description: Run `PUT _inference/chat-completion/ai21-chat-completion` to create a AI21 inference endpoint that performs a `chat_completion` task.
+method_request: 'PUT _inference/chat-completion/ai21-chat-completion'
+# type: "request"
+value: |-
+  {
+    "service": "ai21",
+    "service_settings": {
+      "api_key": "ai21-api-key",
+      "model_id": "jamba-mini" 
+    }
+  }
