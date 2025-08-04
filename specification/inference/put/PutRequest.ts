@@ -31,6 +31,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
  *
  * The following integrations are available through the inference API. You can find the available task types next to the integration name:
+ * * AI21 (`chat_completion`, `completion`)
  * * AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)
  * * Amazon Bedrock (`completion`, `text_embedding`)
  * * Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)
