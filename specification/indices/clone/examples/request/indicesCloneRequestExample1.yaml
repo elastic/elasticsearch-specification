@@ -8,7 +8,7 @@ value: "{
 
   \  \"settings\": {
 
-  \    \"index.number_of_shards\": 5
+  \    \"index.refresh_interval\": \"2s\"
 
   \  },
 
