@@ -21,6 +21,7 @@ import { integer } from '@_types/Numeric'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   TaskType,
+  TaskTypeAi21,
   TaskTypeAlibabaCloudAI,
   TaskTypeAmazonBedrock,
   TaskTypeAmazonSageMaker,
@@ -77,6 +78,18 @@ export class InferenceEndpointInfo extends InferenceEndpoint {
    */
   task_type: TaskType
 }
+
+export class InferenceEndpointInfoAi21 extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeAi21
+}
+
 export class InferenceEndpointInfoAlibabaCloudAI extends InferenceEndpoint {
   /**
    * The inference Id

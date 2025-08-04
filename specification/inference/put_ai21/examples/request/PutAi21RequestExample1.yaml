@@ -1,0 +1,12 @@
+# summary:
+description: Run `PUT _inference/completion/ai21-completion` to create an AI21 inference endpoint that performs a `completion` task.
+method_request: 'PUT _inference/completion/ai21-completion'
+# type: "request"
+value: |-
+  {
+    "service": "ai21",
+    "service_settings": {
+      "api_key": "ai21-api-key",
+      "model_id": "jamba-large" 
+    }
+  }
