@@ -1560,7 +1560,7 @@ export class LlamaServiceSettings {
   /**
    * The URL endpoint of the Llama stack endpoint.
    * URL must contain:
-   * * For `text_embedding` task - `/v1/openai/v1/embeddings`.
+   * * For `text_embedding` task - `/v1/inference/embeddings`.
    * * For `completion` and `chat_completion` tasks - `/v1/openai/v1/chat/completions`.
    */
   url: string
@@ -1574,25 +1574,9 @@ export class LlamaServiceSettings {
    */
   model_id: string
   /**
-   * A valid API key for accessing Llama stack endpoint that is going to be sent as part of Bearer authentication header.
-   * This field is optional because Llama stack doesn't provide authentication by default.
-   *
-   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
-   * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
-   */
-  api_key?: string
-  /**
    * For a `text_embedding` task, the maximum number of tokens per input before chunking occurs.
    */
   max_input_tokens?: integer
-  /**
-   * For a `text_embedding` task, the number of dimensions the resulting output embeddings must have.
-   * It is supported only in `text-embedding-3` and later models. If it is not set by user, it defaults to the model returned dimensions.
-   * If model returns embeddings with a different number of dimensions, error is returned.
-   */
-  dimensions?: integer
   /**
    * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
    */
@@ -1602,14 +1586,6 @@ export class LlamaServiceSettings {
    * By default, the `llama` service sets the number of requests allowed per minute to 3000.
    */
   rate_limit?: RateLimitSetting
-}
-
-export class LlamaTaskSettings {
-  /**
-   * For a `completion` or `text_embedding` task, specify the user issuing the request.
-   * This information can be used for abuse detection.
-   */
-  user?: string
 }
 
 export enum LlamaTaskType {

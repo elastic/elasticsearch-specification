@@ -14192,9 +14192,7 @@ export type InferenceJinaAITextEmbeddingTask = 'classification' | 'clustering' |
 export interface InferenceLlamaServiceSettings {
   url: string
   model_id: string
-  api_key?: string
   max_input_tokens?: integer
-  dimensions?: integer
   similarity?: InferenceLlamaSimilarityType
   rate_limit?: InferenceRateLimitSetting
 }
@@ -14202,10 +14200,6 @@ export interface InferenceLlamaServiceSettings {
 export type InferenceLlamaServiceType = 'llama'
 
 export type InferenceLlamaSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
-
-export interface InferenceLlamaTaskSettings {
-  user?: string
-}
 
 export type InferenceLlamaTaskType = 'text_embedding' | 'completion' | 'chat_completion'
 
@@ -14671,7 +14665,6 @@ export interface InferencePutLlamaRequest extends RequestBase {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceLlamaServiceType
     service_settings: InferenceLlamaServiceSettings
-    task_settings?: InferenceLlamaTaskSettings
   }
 }
 

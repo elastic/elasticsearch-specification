@@ -6,9 +6,8 @@ value: |-
   {
     "service": "llama",
     "service_settings": {
-      "url": "http://localhost:8321/v1/openai/v1/embeddings"
+      "url": "http://localhost:8321/v1/inference/embeddings"
       "dimensions": 384,
-      "api_key": "llama-api-key",
       "model_id": "all-MiniLM-L6-v2" 
     }
   }
