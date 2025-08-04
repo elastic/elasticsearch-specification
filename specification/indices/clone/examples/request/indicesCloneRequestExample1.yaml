@@ -6,6 +6,12 @@ description: >
 # type: request
 value: "{
 
+  \  \"settings\": {
+
+  \    \"index.refresh_interval\": \"2s\"
+
+  \  },
+
   \  \"aliases\": {
 
   \    \"my_search_indices\": {}
