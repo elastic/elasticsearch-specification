@@ -14134,6 +14134,11 @@ export interface InferenceInferenceEndpointInfoJinaAi extends InferenceInference
   task_type: InferenceTaskTypeJinaAi
 }
 
+export interface InferenceInferenceEndpointInfoLlama extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeLlama
+}
+
 export interface InferenceInferenceEndpointInfoMistral extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeMistral
@@ -14183,6 +14188,20 @@ export interface InferenceJinaAITaskSettings {
 export type InferenceJinaAITaskType = 'rerank' | 'text_embedding'
 
 export type InferenceJinaAITextEmbeddingTask = 'classification' | 'clustering' | 'ingest' | 'search'
+
+export interface InferenceLlamaServiceSettings {
+  url: string
+  model_id: string
+  max_input_tokens?: integer
+  similarity?: InferenceLlamaSimilarityType
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceLlamaServiceType = 'llama'
+
+export type InferenceLlamaSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
+
+export type InferenceLlamaTaskType = 'text_embedding' | 'completion' | 'chat_completion'
 
 export interface InferenceMessage {
   content?: InferenceMessageContent
@@ -14293,6 +14312,8 @@ export type InferenceTaskTypeGoogleVertexAI = 'text_embedding' | 'rerank'
 export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeLlama = 'text_embedding' | 'chat_completion' | 'completion'
 
 export type InferenceTaskTypeMistral = 'text_embedding' | 'chat_completion' | 'completion'
 
@@ -14635,6 +14656,19 @@ export interface InferencePutJinaaiRequest extends RequestBase {
 }
 
 export type InferencePutJinaaiResponse = InferenceInferenceEndpointInfoJinaAi
+
+export interface InferencePutLlamaRequest extends RequestBase {
+  task_type: InferenceLlamaTaskType
+  llama_inference_id: Id
+  timeout?: Duration
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferenceLlamaServiceType
+    service_settings: InferenceLlamaServiceSettings
+  }
+}
+
+export type InferencePutLlamaResponse = InferenceInferenceEndpointInfoLlama
 
 export interface InferencePutMistralRequest extends RequestBase {
   task_type: InferenceMistralTaskType

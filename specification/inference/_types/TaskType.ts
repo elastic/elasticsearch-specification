@@ -118,6 +118,12 @@ export enum TaskTypeHuggingFace {
   text_embedding
 }
 
+export enum TaskTypeLlama {
+  text_embedding,
+  chat_completion,
+  completion
+}
+
 export enum TaskTypeMistral {
   text_embedding,
   chat_completion,
