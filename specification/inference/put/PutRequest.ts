@@ -39,18 +39,18 @@ import { TaskType } from '@inference/_types/TaskType'
  * * Azure AI Studio (`completion`, 'rerank', `text_embedding`)
  * * Azure OpenAI (`completion`, `text_embedding`)
  * * Cohere (`completion`, `rerank`, `text_embedding`)
- * * DeepSeek (`completion`, `chat_completion`)
+ * * DeepSeek (`chat_completion`, `completion`)
  * * Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)
  * * ELSER (`sparse_embedding`)
  * * Google AI Studio (`completion`, `text_embedding`)
- * * Google Vertex AI (`rerank`, `text_embedding`)
+ * * Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)
  * * Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)
+ * * JinaAI (`rerank`, `text_embedding`)
  * * Llama (`chat_completion`, `completion`, `text_embedding`)
  * * Mistral (`chat_completion`, `completion`, `text_embedding`)
  * * OpenAI (`chat_completion`, `completion`, `text_embedding`)
- * * VoyageAI (`text_embedding`, `rerank`)
+ * * VoyageAI (`rerank`, `text_embedding`)
  * * Watsonx inference integration (`text_embedding`)
- * * JinaAI (`text_embedding`, `rerank`)
  * @rest_spec_name inference.put
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
