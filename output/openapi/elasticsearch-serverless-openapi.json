@@ -11980,6 +11980,33 @@
                   "service",
                   "service_settings"
                 ]
+              },
+              "examples": {
+                "PutAmazonSageMakerRequestExample1": {
+                  "summary": "A text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/amazon_sagemaker_embeddings` to create an inference endpoint that performs a text embedding task.",
+                  "value": "{\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"api\": \"elastic\",\n        \"endpoint_name\": \"my-endpoint\",\n        \"dimensions\": 384,\n        \"element_type\": \"float\"\n    }\n}"
+                },
+                "PutAmazonSageMakerRequestExample2": {
+                  "summary": "A completion task",
+                  "description": "Run `PUT _inference/completion/amazon_sagemaker_completion` to create an inference endpoint that performs a completion task.",
+                  "value": "{\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"api\": \"elastic\",\n        \"endpoint_name\": \"my-endpoint\"\n    }\n}"
+                },
+                "PutAmazonSageMakerRequestExample3": {
+                  "summary": "A chat completion task",
+                  "description": "Run `PUT _inference/chat_completion/amazon_sagemaker_chat_completion` to create an inference endpoint that performs a chat completion task.",
+                  "value": "{\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"api\": \"elastic\",\n        \"endpoint_name\": \"my-endpoint\"\n    }\n}"
+                },
+                "PutAmazonSageMakerRequestExample4": {
+                  "summary": "A sparse embedding task",
+                  "description": "Run `PUT _inference/sparse_embedding/amazon_sagemaker_sparse_embedding` to create an inference endpoint that performs a sparse embedding task.",
+                  "value": "{\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"api\": \"elastic\",\n        \"endpoint_name\": \"my-endpoint\"\n    }\n}"
+                },
+                "PutAmazonSageMakerRequestExample5": {
+                  "summary": "A rerank task",
+                  "description": "Run `PUT _inference/rerank/amazon_sagemaker_rerank` to create an inference endpoint that performs a rerank task.",
+                  "value": "{\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"api\": \"elastic\",\n        \"endpoint_name\": \"my-endpoint\"\n    }\n}"
+                }
               }
             }
           }
@@ -12472,6 +12499,33 @@
                   "service",
                   "service_settings"
                 ]
+              },
+              "examples": {
+                "PutCustomRequestExample1": {
+                  "summary": "Custom text embedding task (OpenAI)",
+                  "description": "Run `PUT _inference/text_embedding/custom-embeddings` to create an inference endpoint that performs a text embedding task.",
+                  "value": "{\n    \"service\": \"custom\",\n    \"service_settings\": {\n        \"secret_parameters\": {\n            \"api_key\": \"<api key>\"\n        },\n        \"url\": \"https://api.openai.com/v1/embeddings\",\n        \"headers\": {\n            \"Authorization\": \"Bearer ${api_key}\",\n            \"Content-Type\": \"application/json;charset=utf-8\"\n        },\n        \"request\": \"{\\\"input\\\": ${input}, \\\"model\\\": \\\"text-embedding-3-small\\\"}\",\n        \"response\": {\n            \"json_parser\": {\n                \"text_embeddings\": \"$.data[*].embedding[*]\"\n            }\n        }\n    }\n}"
+                },
+                "PutCustomRequestExample2": {
+                  "summary": "Custom rerank task (Cohere APIv2)",
+                  "description": "Run `PUT _inference/rerank/custom-rerank` to create an inference endpoint that performs a rerank task.",
+                  "value": "{\n  \"service\": \"custom\",\n  \"service_settings\": {\n      \"secret_parameters\": {\n          \"api_key\": \"<api key>\"\n      },\n      \"url\": \"https://api.cohere.com/v2/rerank\",\n      \"headers\": {\n          \"Authorization\": \"bearer ${api_key}\",\n          \"Content-Type\": \"application/json\"\n      },\n      \"request\": \"{\\\"documents\\\": ${input}, \\\"query\\\": ${query}, \\\"model\\\": \\\"rerank-v3.5\\\"}\",\n      \"response\": {\n          \"json_parser\": {\n              \"reranked_index\":\"$.results[*].index\",\n              \"relevance_score\":\"$.results[*].relevance_score\"\n          }\n      }\n  }\n}"
+                },
+                "PutCustomRequestExample3": {
+                  "summary": "Custom text embedding task (Cohere APIv2)",
+                  "description": "Run `PUT _inference/text_embedding/custom-text-embedding` to create an inference endpoint that performs a text embedding task.",
+                  "value": "{\n  \"service\": \"custom\",\n  \"service_settings\": {\n      \"secret_parameters\": {\n          \"api_key\": \"<api key>\"\n      },\n      \"url\": \"https://api.cohere.com/v2/embed\",\n      \"headers\": {\n          \"Authorization\": \"bearer ${api_key}\",\n          \"Content-Type\": \"application/json\"\n      },\n      \"request\": \"{\\\"texts\\\": ${input}, \\\"model\\\": \\\"embed-v4.0\\\", \\\"input_type\\\": ${input_type}}\",\n      \"response\": {\n          \"json_parser\": {\n              \"text_embeddings\":\"$.embeddings.float[*]\"\n          }\n      },\n      \"input_type\": {\n          \"translation\": {\n              \"ingest\": \"search_document\",\n              \"search\": \"search_query\"\n          },\n          \"default\": \"search_document\"\n      }\n  }\n}"
+                },
+                "PutCustomRequestExample4": {
+                  "summary": "Custom rerank task (Jina AI)",
+                  "description": "Run `PUT _inference/rerank/custom-rerank-jina` to create an inference endpoint that performs a rerank task.",
+                  "value": "{\n  \"service\": \"custom\",\n  \"service_settings\": {\n    \"secret_parameters\": {\n      \"api_key\": \"<api key>\"\n    },    \n    \"url\": \"https://api.jina.ai/v1/rerank\",\n    \"headers\": {\n      \"Content-Type\": \"application/json\",\n      \"Authorization\": \"Bearer ${api_key}\"\n    },\n    \"request\": \"{\\\"model\\\": \\\"jina-reranker-v2-base-multilingual\\\",\\\"query\\\": ${query},\\\"documents\\\":${input}}\",\n    \"response\": {\n      \"json_parser\": {\n        \"relevance_score\": \"$.results[*].relevance_score\",\n        \"reranked_index\": \"$.results[*].index\"\n      }\n    }\n  }\n}"
+                },
+                "PutCustomRequestExample5": {
+                  "summary": "Custom text embedding task (Hugging Face)",
+                  "description": "Run `PUT _inference/text_embedding/custom-text-embedding-hf` to create an inference endpoint that performs a text embedding task by using the Qwen/Qwen3-Embedding-8B model.",
+                  "value": "{\n  \"service\": \"custom\",\n  \"service_settings\": {\n      \"secret_parameters\": {\n          \"api_key\": \"<api key>\"\n      },\n      \"url\": \"<dedicated inference endpoint on HF>/v1/embeddings\",\n      \"headers\": {\n          \"Authorization\": \"Bearer ${api_key}\",\n          \"Content-Type\": \"application/json\"\n      },\n      \"request\": \"{\\\"input\\\": ${input}}\",\n      \"response\": {\n          \"json_parser\": {\n              \"text_embeddings\":\"$.data[*].embedding[*]\"\n          }\n      }\n  }\n}"
+                }
               }
             }
           }
