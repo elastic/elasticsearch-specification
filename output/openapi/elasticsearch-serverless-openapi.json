@@ -75996,7 +75996,11 @@
                   }
                 },
                 "fields": {
-                  "$ref": "#/components/schemas/_types.Fields"
+                  "description": "A list of fields to include in the statistics.\nIt is used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
                 },
                 "field_statistics": {
                   "description": "If `true`, the response includes:\n\n* The document count (how many documents contain this field).\n* The sum of document frequencies (the sum of document frequencies for all terms in this field).\n* The sum of total term frequencies (the sum of total term frequencies of each term in this field).",
