@@ -189,7 +189,7 @@ export interface Request<TDocument> extends RequestBase {
      * A list of fields to include in the statistics.
      * It is used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.
      */
-    fields?: Fields
+    fields?: Field[]
     /**
      * If `true`, the response includes:
      *

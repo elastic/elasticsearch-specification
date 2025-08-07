@@ -33,6 +33,11 @@ export enum TaskTypeJinaAi {
   rerank
 }
 
+export enum TaskTypeAi21 {
+  completion,
+  chat_completion
+}
+
 export enum TaskTypeAlibabaCloudAI {
   text_embedding,
   rerank,
@@ -111,6 +116,12 @@ export enum TaskTypeHuggingFace {
   completion,
   rerank,
   text_embedding
+}
+
+export enum TaskTypeLlama {
+  text_embedding,
+  chat_completion,
+  completion
 }
 
 export enum TaskTypeMistral {

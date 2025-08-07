@@ -289,6 +289,42 @@ export interface CompletionTool {
   function: CompletionToolFunction
 }
 
+export class Ai21ServiceSettings {
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the AI21 models documentation for the list of supported models and versions.
+   * Service has been tested and confirmed to be working for `completion` and `chat_completion` tasks with the following models:
+   * * `jamba-mini`
+   * * `jamba-large`
+   * @ext_doc_id ai21-api-models
+   */
+  model_id: string
+  /**
+   * A valid API key for accessing AI21 API.
+   *
+   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
+   * The get inference endpoint API does not retrieve your API key.
+   * After creating the inference model, you cannot change the associated API key.
+   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
+   */
+  api_key?: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from the AI21 API.
+   * By default, the `ai21` service sets the number of requests allowed per minute to 200. Please refer to AI21 documentation for more details.
+   * @ext_doc_id ai21-rate-limit
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export enum Ai21TaskType {
+  completion,
+  chat_completion
+}
+
+export enum Ai21ServiceType {
+  ai21
+}
+
 export class AlibabaCloudServiceSettings {
   /**
    * A valid API key for the AlibabaCloud AI Search API.
@@ -1518,6 +1554,54 @@ export enum JinaAITextEmbeddingTask {
   clustering,
   ingest,
   search
+}
+
+export class LlamaServiceSettings {
+  /**
+   * The URL endpoint of the Llama stack endpoint.
+   * URL must contain:
+   * * For `text_embedding` task - `/v1/inference/embeddings`.
+   * * For `completion` and `chat_completion` tasks - `/v1/openai/v1/chat/completions`.
+   */
+  url: string
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the Llama downloading models documentation for different ways of getting a list of available models and downloading them.
+   * Service has been tested and confirmed to be working with the following models:
+   * * For `text_embedding` task - `all-MiniLM-L6-v2`.
+   * * For `completion` and `chat_completion` tasks - `llama3.2:3b`.
+   * @ext_doc_id llama-api-models
+   */
+  model_id: string
+  /**
+   * For a `text_embedding` task, the maximum number of tokens per input before chunking occurs.
+   */
+  max_input_tokens?: integer
+  /**
+   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
+   */
+  similarity?: LlamaSimilarityType
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from the Llama API.
+   * By default, the `llama` service sets the number of requests allowed per minute to 3000.
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export enum LlamaTaskType {
+  text_embedding,
+  completion,
+  chat_completion
+}
+
+export enum LlamaServiceType {
+  llama
+}
+
+export enum LlamaSimilarityType {
+  cosine,
+  dot_product,
+  l2_norm
 }
 
 export class MistralServiceSettings {

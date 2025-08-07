@@ -7,11 +7,11 @@ description:
 # type: request
 value:
   docs:
-    - _id: 123
+    - _id: '123'
       _index: my-index
       _source:
         foo: bar
-    - _id: 456
+    - _id: '456'
       _index: my-index
       _source:
         foo: rab
