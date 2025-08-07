@@ -18,6 +18,7 @@
  */
 
 import {
+  DataStreamName,
   Field,
   Fields,
   Id,
@@ -62,6 +63,7 @@ export class Hit<TDocument> {
   _primary_term?: long
   _version?: VersionNumber
   sort?: SortResults
+  _data_stream?: DataStreamName
 }
 
 export class HitsMetadata<T> {
