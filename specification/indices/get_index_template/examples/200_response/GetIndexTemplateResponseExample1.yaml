@@ -12,6 +12,6 @@ value:
   \              \"message\" : {\n                \"type\" : \"text\"\n              }\n\
   \            }\n          }\n        },\n        \"composed_of\" : [ \"my-component-template\" ],\n\
   \        \"priority\" : 200,\n        \"version\" : 1,\n        \"_meta\" : {\n\
-  \          \"description\" : \"my custom index template\"\n        },\n        \"created_date\" : \"2025-01-01T12:00:00.000Z\",\n\
-  \        \"created_date_millis\" : 1735732800000,\n        \"modified_date\" : \"2024-01-01T12:00:00.000Z\",\n\
-  \        \"modified_date_millis\" : 1704110400000\n      }\n    }\n  ]\n}"
+  \          \"description\" : \"my custom index template\"\n        },\n        \"created_date\" : \"2024-01-01T12:00:00.000Z\",\n\
+  \        \"created_date_millis\" : 1704110400000,\n        \"modified_date\" : \"2025-01-01T12:00:00.000Z\",\n\
+  \        \"modified_date_millis\" : 1735732800000\n      }\n    }\n  ]\n}"
