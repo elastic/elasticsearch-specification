@@ -399,7 +399,7 @@ export enum CatAnomalyDetectorColumn {
    */
   state
 }
-export type CatAnonalyDetectorColumns =
+export type CatAnomalyDetectorColumns =
   | CatAnomalyDetectorColumn
   | CatAnomalyDetectorColumn[]
 export enum CatDatafeedColumn {
@@ -1280,12 +1280,208 @@ export enum CatSnapshotsColumn {
   reason
 }
 
+/** @non_exhaustive */
+export enum CatAliasesColumn {
+  /**
+   * The name of the alias.
+   * @aliases a
+   */
+  alias,
+  /**
+   * The name of the index the alias points to.
+   * @aliases i, idx
+   */
+  index,
+  /**
+   * The filter applied to the alias.
+   * @aliases f, fi
+   */
+  filter,
+  /**
+   * Index routing value for the alias.
+   * @aliases ri, routingIndex
+   */
+  'routing.index',
+  /**
+   * Search routing value for the alias.
+   * @aliases rs, routingSearch
+   */
+  'routing.search',
+  /**
+   * Indicates if the index is the write index for the alias.
+   * @aliases w, isWriteIndex
+   */
+  'is_write_index'
+}
+
+/** @non_exhaustive */
+export enum CatAllocationColumn {
+  /**
+   * The number of shards on the node.
+   * @aliases s
+   */
+  shards,
+  /**
+   * The number of shards scheduled to be moved elsewhere in the cluster.
+   */
+  'shards.undesired',
+  /**
+   * The sum of index write load forecasts.
+   * @aliases wlf, writeLoadForecast
+   */
+  'write_load.forecast',
+  /**
+   * The sum of shard size forecasts.
+   * @aliases dif, diskIndicesForecast
+   */
+  'disk.indices.forecast',
+  /**
+   * The disk space used by Elasticsearch indices.
+   * @aliases di, diskIndices
+   */
+  'disk.indices',
+  /**
+   * The total disk space used on the node.
+   * @aliases du,diskUsed
+   */
+  'disk.used',
+  /**
+   * The available disk space on the node.
+   * @aliases da, diskAvail
+   */
+  'disk.avail',
+  /**
+   * The total disk capacity of all volumes on the node.
+   * @aliases dt, diskTotal
+   */
+  'disk.total',
+  /**
+   * The percentage of disk space used on the node.
+   * @aliases dp, diskPercent
+   */
+  'disk.percent',
+  /**
+   * IThe host of the node.
+   * @aliases h
+   */
+  host,
+  /**
+   * The IP address of the node.
+   */
+  ip,
+  /**
+   * The name of the node.
+   * @aliases n
+   */
+  node,
+  /**
+   * The roles assigned to the node.
+   * @aliases r, role, nodeRole
+   */
+  'node.role'
+}
+
+/** @non_exhaustive */
+export enum CatComponentColumn {
+  /**
+   * The name of the component template.
+   * @aliases n
+   */
+  name,
+  /**
+   * The version number of the component template.
+   * @aliases v
+   */
+  version,
+  /**
+   * The number of aliases in the component template.
+   * @aliases a
+   */
+  'alias_count',
+  /**
+   * The number of mappings in the component template.
+   * @aliases m
+   */
+  'mapping_count',
+  /**
+   * The number of settings in the component template.
+   * @aliases s
+   */
+  'settings_count',
+  /**
+   * The number of metadata entries in the component template.
+   * @aliases me
+   */
+  'metadata_count',
+  /**
+   * The index templates that include this component template.
+   * @aliases i
+   */
+  'included_in'
+}
+
+/** @non_exhaustive */
+export enum CatCountColumn {
+  /**
+   * The Unix epoch time in seconds since 1970-01-01 00:00:00.
+   * @aliases t,time
+   */
+  epoch,
+  /**
+   * The current time in HH:MM:SS format.
+   * @aliases ts,hms,hhmmss
+   */
+  timestamp,
+  /**
+   * The document count in the cluster or index.
+   * @aliases dc,docs.count,docsCount
+   */
+  count
+}
+
+/** @non_exhaustive */
+export enum CatFieldDataColumn {
+  /**
+   * The node ID.
+   */
+  id,
+  /**
+   * The host name of the node.
+   * @aliases h
+   */
+  host,
+  /**
+   * The IP address of the node.
+   */
+  ip,
+  /**
+   * The node name.
+   * @aliases n
+   */
+  node,
+  /**
+   * The field name.
+   * @aliases f
+   */
+  field,
+  /**
+   * The field data usage.
+   * @aliases s
+   */
+  size
+}
+
 export type CatDfaColumns = CatDfaColumn | CatDfaColumn[]
 export type CatDatafeedColumns = CatDatafeedColumn | CatDatafeedColumn[]
 export type CatNodeColumns = CatNodeColumn | CatNodeColumn[]
 export type CatRecoveryColumns = CatRecoveryColumn | CatRecoveryColumn[]
 export type CatSegmentsColumns = CatSegmentsColumn | CatSegmentsColumn[]
 export type CatSnapshotsColumns = CatSnapshotsColumn | CatSnapshotsColumn[]
+export type CatAliasesColumns = CatAliasesColumn | CatAliasesColumn[]
+export type CatAllocationColumns = CatAllocationColumn | CatAllocationColumn[]
+export type CatComponentColumns = CatComponentColumn | CatComponentColumn[]
+export type CatCountColumns = CatCountColumn | CatCountColumn[]
+export type CatFieldDataColumns = CatFieldDataColumn | CatFieldDataColumn[]
 
 export enum CatTrainedModelsColumn {
   /**
