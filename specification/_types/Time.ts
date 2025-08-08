@@ -24,10 +24,7 @@ import { double, long } from './Numeric'
  * number of milliseconds since the Epoch. Elasticsearch accepts both as input, but will generally output a string
  * representation.
  */
-export type DateTime = DateString | EpochTime<UnitMillis>
-
-/** Date and time in ISO 8601 format */
-export type DateString = string
+export type DateTime = string | EpochTime<UnitMillis>
 
 /** Time unit for seconds */
 export type UnitSeconds = long
