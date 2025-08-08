@@ -32815,12 +32815,16 @@
         "description": "A date and time, either as a string whose format can depend on the context (defaulting to ISO 8601), or a\nnumber of milliseconds since the Epoch. Elasticsearch accepts both as input, but will generally output a string\nrepresentation.",
         "oneOf": [
           {
-            "type": "string"
+            "$ref": "#/components/schemas/_types.DateString"
           },
           {
             "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
           }
         ]
+      },
+      "_types.DateString": {
+        "description": "Date and time in ISO 8601 format",
+        "type": "string"
       },
       "async_search.status.StatusResponseBase": {
         "allOf": [
@@ -43499,6 +43503,18 @@
           },
           "deprecated": {
             "type": "boolean"
+          },
+          "created_date": {
+            "$ref": "#/components/schemas/_types.DateString"
+          },
+          "created_date_millis": {
+            "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+          },
+          "modified_date": {
+            "$ref": "#/components/schemas/_types.DateString"
+          },
+          "modified_date_millis": {
+            "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
           }
         },
         "required": [
@@ -55257,6 +55273,18 @@
           },
           "ignore_missing_component_templates": {
             "$ref": "#/components/schemas/_types.Names"
+          },
+          "created_date": {
+            "$ref": "#/components/schemas/_types.DateString"
+          },
+          "created_date_millis": {
+            "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+          },
+          "modified_date": {
+            "$ref": "#/components/schemas/_types.DateString"
+          },
+          "modified_date_millis": {
+            "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
           }
         },
         "required": [
@@ -58440,6 +58468,18 @@
           },
           "_meta": {
             "$ref": "#/components/schemas/_types.Metadata"
+          },
+          "created_date": {
+            "$ref": "#/components/schemas/_types.DateString"
+          },
+          "created_date_millis": {
+            "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+          },
+          "modified_date": {
+            "$ref": "#/components/schemas/_types.DateString"
+          },
+          "modified_date_millis": {
+            "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
           }
         }
       },
@@ -68264,6 +68304,12 @@
               "required": [
                 "component_templates"
               ]
+            },
+            "examples": {
+              "GetComponentTemplateResponseExample1": {
+                "description": "A successful response for retrieving information about a component template.",
+                "value": "{\n  \"component_templates\" : [\n    {\n      \"name\" : \"my-component-template\",\n      \"component_template\" : {\n        \"version\" : 1,\n        \"_meta\" : {\n          \"description\" : \"my custom component template\"\n        },\n        \"template\" : {\n          \"settings\" : {\n            \"index\" : {\n              \"number_of_shards\" : \"1\"\n            }\n          },\n          \"mappings\" : {\n            \"properties\" : {\n              \"@timestamp\" : {\n                \"type\" : \"date\"\n              },\n              \"message\" : {\n                \"type\" : \"text\"\n              }\n            }\n          }\n        },\n        \"created_date\" : \"2025-01-01T12:00:00.000Z\",\n        \"created_date_millis\" : 1735732800000,\n        \"modified_date\" : \"2024-01-01T12:00:00.000Z\",\n        \"modified_date_millis\" : 1704110400000\n      }\n    }\n  ]\n}"
+              }
             }
           }
         }
@@ -68630,6 +68676,12 @@
               "required": [
                 "index_templates"
               ]
+            },
+            "examples": {
+              "GetIndexTemplateResponseExample1": {
+                "description": "A successful response for retrieving information about an index template.",
+                "value": "{\n  \"index_templates\" : [\n    {\n      \"name\" : \"my-index-template\",\n      \"index_template\" : {\n        \"index_patterns\" : [ \"logs-*\" ],\n        \"template\" : {\n          \"settings\" : {\n            \"index\" : {\n              \"number_of_shards\" : \"1\",\n              \"number_of_replicas\" : \"1\"\n            }\n          },\n          \"mappings\" : {\n            \"properties\" : {\n              \"@timestamp\" : {\n                \"type\" : \"date\"\n              },\n              \"message\" : {\n                \"type\" : \"text\"\n              }\n            }\n          }\n        },\n        \"composed_of\" : [ \"my-component-template\" ],\n        \"priority\" : 200,\n        \"version\" : 1,\n        \"_meta\" : {\n          \"description\" : \"my custom index template\"\n        },\n        \"created_date\" : \"2025-01-01T12:00:00.000Z\",\n        \"created_date_millis\" : 1735732800000,\n        \"modified_date\" : \"2024-01-01T12:00:00.000Z\",\n        \"modified_date_millis\" : 1704110400000\n      }\n    }\n  ]\n}"
+              }
             }
           }
         }
@@ -68885,7 +68937,7 @@
             "examples": {
               "GetPipelineResponseExample1": {
                 "description": "A successful response for retrieving information about an ingest pipeline.",
-                "value": "{\n  \"my-pipeline-id\" : {\n    \"description\" : \"describe pipeline\",\n    \"version\" : 123,\n    \"processors\" : [\n      {\n        \"set\" : {\n          \"field\" : \"foo\",\n          \"value\" : \"bar\"\n        }\n      }\n    ]\n  }\n}"
+                "value": "{\n  \"my-pipeline-id\" : {\n    \"description\" : \"describe pipeline\",\n    \"version\" : 123,\n    \"processors\" : [\n      {\n        \"set\" : {\n          \"field\" : \"foo\",\n          \"value\" : \"bar\"\n        }\n      }\n    ],\n    \"created_date\" : \"2025-01-01T12:00:00.000Z\",\n    \"created_date_millis\" : 1735732800000,\n    \"modified_date\" : \"2024-01-01T12:00:00.000Z\",\n    \"modified_date_millis\" : 1704110400000\n  }\n}"
               }
             }
           }

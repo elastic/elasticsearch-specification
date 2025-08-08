@@ -4,6 +4,8 @@ description: A successful response for retrieving information about an ingest pi
 # response_code: 200
 value:
   "{\n  \"my-pipeline-id\" : {\n    \"description\" : \"describe pipeline\",\n\
-  \    \"version\" : 123,\n    \"processors\" : [\n      {\n        \"set\" : {\n\
-  \          \"field\" : \"foo\",\n          \"value\" : \"bar\"\n        }\n    \
-  \  }\n    ]\n  }\n}"
+  \    \"version\" : 123,\n    \"processors\" : [\n      {\n        \"set\" : {\n   \
+  \       \"field\" : \"foo\",\n          \"value\" : \"bar\"\n        }\n      }\n\
+  \    ],\n    \"created_date\" : \"2025-01-01T12:00:00.000Z\",\n    \"created_date_millis\"\
+  \ : 1735732800000,\n    \"modified_date\" : \"2024-01-01T12:00:00.000Z\",\n    \"modified_date_millis\"\
+  \ : 1704110400000\n  }\n}"

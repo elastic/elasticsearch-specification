@@ -1,0 +1,15 @@
+# summary:
+description: A successful response for retrieving information about a component template.
+# type: response
+# response_code: 200
+value:
+  "{\n  \"component_templates\" : [\n    {\n      \"name\" : \"my-component-template\",\n\
+  \      \"component_template\" : {\n        \"version\" : 1,\n        \"_meta\" : {\n\
+  \          \"description\" : \"my custom component template\"\n        },\n        \"template\" : {\n\
+  \          \"settings\" : {\n            \"index\" : {\n              \"number_of_shards\" : \"1\"\n\
+  \            }\n          },\n          \"mappings\" : {\n            \"properties\" : {\n\
+  \              \"@timestamp\" : {\n                \"type\" : \"date\"\n              },\n\
+  \              \"message\" : {\n                \"type\" : \"text\"\n              }\n\
+  \            }\n          }\n        },\n        \"created_date\" : \"2025-01-01T12:00:00.000Z\",\n\
+  \        \"created_date_millis\" : 1735732800000,\n        \"modified_date\" : \"2024-01-01T12:00:00.000Z\",\n\
+  \        \"modified_date_millis\" : 1704110400000\n      }\n    }\n  ]\n}"
