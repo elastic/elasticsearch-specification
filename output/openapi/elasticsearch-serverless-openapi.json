@@ -9606,7 +9606,7 @@
           "indices"
         ],
         "summary": "Update field mappings",
-        "description": "Add new fields to an existing data stream or index.\nYou can use the update mapping API to:\n\n- Add a new field to an existing index\n- Update mappings for multiple indices in a single request\n- Add new properties to an object field\n- Enable multi-fields for an existing field\n- Update supported mapping parameters\n- Change a field's mapping using reindexing\n- Rename a field using a field alias\n\nLearn how to use the update mapping API with practical examples in the [Update mapping API examples](https://www.elastic.co/docs//manage-data/data-store/mapping/update-mappings-examples) guide.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "description": "Add new fields to an existing data stream or index.\nYou can use the update mapping API to:\n\n- Add a new field to an existing index\n- Update mappings for multiple indices in a single request\n- Add new properties to an object field\n- Enable multi-fields for an existing field\n- Update supported mapping parameters\n- Change a field's mapping using reindexing\n- Rename a field using a field alias\n\nLearn how to use the update mapping API with practical examples in the [Update mapping API examples](https://www.elastic.co/docs/manage-data/data-store/mapping/update-mappings-examples) guide.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/mapping-parameters",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/indices-put-mapping.html"
@@ -9656,7 +9656,7 @@
           "indices"
         ],
         "summary": "Update field mappings",
-        "description": "Add new fields to an existing data stream or index.\nYou can use the update mapping API to:\n\n- Add a new field to an existing index\n- Update mappings for multiple indices in a single request\n- Add new properties to an object field\n- Enable multi-fields for an existing field\n- Update supported mapping parameters\n- Change a field's mapping using reindexing\n- Rename a field using a field alias\n\nLearn how to use the update mapping API with practical examples in the [Update mapping API examples](https://www.elastic.co/docs//manage-data/data-store/mapping/update-mappings-examples) guide.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "description": "Add new fields to an existing data stream or index.\nYou can use the update mapping API to:\n\n- Add a new field to an existing index\n- Update mappings for multiple indices in a single request\n- Add new properties to an object field\n- Enable multi-fields for an existing field\n- Update supported mapping parameters\n- Change a field's mapping using reindexing\n- Rename a field using a field alias\n\nLearn how to use the update mapping API with practical examples in the [Update mapping API examples](https://www.elastic.co/docs/manage-data/data-store/mapping/update-mappings-examples) guide.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/mapping-parameters",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/indices-put-mapping.html"
@@ -11177,7 +11177,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`completion`, `chat_completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx inference integration (`text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -11298,7 +11298,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`completion`, `chat_completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`text_embedding`, `rerank`)\n* Watsonx inference integration (`text_embedding`)\n* JinaAI (`text_embedding`, `rerank`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx inference integration (`text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -11616,6 +11616,123 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAmazonBedrock"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/{task_type}/{amazonsagemaker_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Amazon SageMaker inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `amazon_sagemaker` service.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-amazonsagemaker",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.TaskTypeAmazonSageMaker"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "amazonsagemaker_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
+                  },
+                  "service": {
+                    "$ref": "#/components/schemas/inference._types.AmazonSageMakerServiceType"
+                  },
+                  "service_settings": {
+                    "$ref": "#/components/schemas/inference._types.AmazonSageMakerServiceSettings"
+                  },
+                  "task_settings": {
+                    "$ref": "#/components/schemas/inference._types.AmazonSageMakerTaskSettings"
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutAmazonSageMakerRequestExample1": {
+                  "summary": "A text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/amazon_sagemaker_embeddings` to create an inference endpoint that performs a text embedding task.",
+                  "value": "{\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"api\": \"elastic\",\n        \"endpoint_name\": \"my-endpoint\",\n        \"dimensions\": 384,\n        \"element_type\": \"float\"\n    }\n}"
+                },
+                "PutAmazonSageMakerRequestExample2": {
+                  "summary": "A completion task",
+                  "description": "Run `PUT _inference/completion/amazon_sagemaker_completion` to create an inference endpoint that performs a completion task.",
+                  "value": "{\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"api\": \"elastic\",\n        \"endpoint_name\": \"my-endpoint\"\n    }\n}"
+                },
+                "PutAmazonSageMakerRequestExample3": {
+                  "summary": "A chat completion task",
+                  "description": "Run `PUT _inference/chat_completion/amazon_sagemaker_chat_completion` to create an inference endpoint that performs a chat completion task.",
+                  "value": "{\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"api\": \"elastic\",\n        \"endpoint_name\": \"my-endpoint\"\n    }\n}"
+                },
+                "PutAmazonSageMakerRequestExample4": {
+                  "summary": "A sparse embedding task",
+                  "description": "Run `PUT _inference/sparse_embedding/amazon_sagemaker_sparse_embedding` to create an inference endpoint that performs a sparse embedding task.",
+                  "value": "{\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"api\": \"elastic\",\n        \"endpoint_name\": \"my-endpoint\"\n    }\n}"
+                },
+                "PutAmazonSageMakerRequestExample5": {
+                  "summary": "A rerank task",
+                  "description": "Run `PUT _inference/rerank/amazon_sagemaker_rerank` to create an inference endpoint that performs a rerank task.",
+                  "value": "{\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"api\": \"elastic\",\n        \"endpoint_name\": \"my-endpoint\"\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAmazonSageMaker"
                 }
               }
             }
@@ -12092,6 +12209,33 @@
                   "service",
                   "service_settings"
                 ]
+              },
+              "examples": {
+                "PutCustomRequestExample1": {
+                  "summary": "Custom text embedding task (OpenAI)",
+                  "description": "Run `PUT _inference/text_embedding/custom-embeddings` to create an inference endpoint that performs a text embedding task.",
+                  "value": "{\n    \"service\": \"custom\",\n    \"service_settings\": {\n        \"secret_parameters\": {\n            \"api_key\": \"<api key>\"\n        },\n        \"url\": \"https://api.openai.com/v1/embeddings\",\n        \"headers\": {\n            \"Authorization\": \"Bearer ${api_key}\",\n            \"Content-Type\": \"application/json;charset=utf-8\"\n        },\n        \"request\": \"{\\\"input\\\": ${input}, \\\"model\\\": \\\"text-embedding-3-small\\\"}\",\n        \"response\": {\n            \"json_parser\": {\n                \"text_embeddings\": \"$.data[*].embedding[*]\"\n            }\n        }\n    }\n}"
+                },
+                "PutCustomRequestExample2": {
+                  "summary": "Custom rerank task (Cohere APIv2)",
+                  "description": "Run `PUT _inference/rerank/custom-rerank` to create an inference endpoint that performs a rerank task.",
+                  "value": "{\n  \"service\": \"custom\",\n  \"service_settings\": {\n      \"secret_parameters\": {\n          \"api_key\": \"<api key>\"\n      },\n      \"url\": \"https://api.cohere.com/v2/rerank\",\n      \"headers\": {\n          \"Authorization\": \"bearer ${api_key}\",\n          \"Content-Type\": \"application/json\"\n      },\n      \"request\": \"{\\\"documents\\\": ${input}, \\\"query\\\": ${query}, \\\"model\\\": \\\"rerank-v3.5\\\"}\",\n      \"response\": {\n          \"json_parser\": {\n              \"reranked_index\":\"$.results[*].index\",\n              \"relevance_score\":\"$.results[*].relevance_score\"\n          }\n      }\n  }\n}"
+                },
+                "PutCustomRequestExample3": {
+                  "summary": "Custom text embedding task (Cohere APIv2)",
+                  "description": "Run `PUT _inference/text_embedding/custom-text-embedding` to create an inference endpoint that performs a text embedding task.",
+                  "value": "{\n  \"service\": \"custom\",\n  \"service_settings\": {\n      \"secret_parameters\": {\n          \"api_key\": \"<api key>\"\n      },\n      \"url\": \"https://api.cohere.com/v2/embed\",\n      \"headers\": {\n          \"Authorization\": \"bearer ${api_key}\",\n          \"Content-Type\": \"application/json\"\n      },\n      \"request\": \"{\\\"texts\\\": ${input}, \\\"model\\\": \\\"embed-v4.0\\\", \\\"input_type\\\": ${input_type}}\",\n      \"response\": {\n          \"json_parser\": {\n              \"text_embeddings\":\"$.embeddings.float[*]\"\n          }\n      },\n      \"input_type\": {\n          \"translation\": {\n              \"ingest\": \"search_document\",\n              \"search\": \"search_query\"\n          },\n          \"default\": \"search_document\"\n      }\n  }\n}"
+                },
+                "PutCustomRequestExample4": {
+                  "summary": "Custom rerank task (Jina AI)",
+                  "description": "Run `PUT _inference/rerank/custom-rerank-jina` to create an inference endpoint that performs a rerank task.",
+                  "value": "{\n  \"service\": \"custom\",\n  \"service_settings\": {\n    \"secret_parameters\": {\n      \"api_key\": \"<api key>\"\n    },    \n    \"url\": \"https://api.jina.ai/v1/rerank\",\n    \"headers\": {\n      \"Content-Type\": \"application/json\",\n      \"Authorization\": \"Bearer ${api_key}\"\n    },\n    \"request\": \"{\\\"model\\\": \\\"jina-reranker-v2-base-multilingual\\\",\\\"query\\\": ${query},\\\"documents\\\":${input}}\",\n    \"response\": {\n      \"json_parser\": {\n        \"relevance_score\": \"$.results[*].relevance_score\",\n        \"reranked_index\": \"$.results[*].index\"\n      }\n    }\n  }\n}"
+                },
+                "PutCustomRequestExample5": {
+                  "summary": "Custom text embedding task (Hugging Face)",
+                  "description": "Run `PUT _inference/text_embedding/custom-text-embedding-hf` to create an inference endpoint that performs a text embedding task by using the Qwen/Qwen3-Embedding-8B model.",
+                  "value": "{\n  \"service\": \"custom\",\n  \"service_settings\": {\n      \"secret_parameters\": {\n          \"api_key\": \"<api key>\"\n      },\n      \"url\": \"<dedicated inference endpoint on HF>/v1/embeddings\",\n      \"headers\": {\n          \"Authorization\": \"Bearer ${api_key}\",\n          \"Content-Type\": \"application/json\"\n      },\n      \"request\": \"{\\\"input\\\": ${input}}\",\n      \"response\": {\n          \"json_parser\": {\n              \"text_embeddings\":\"$.data[*].embedding[*]\"\n          }\n      }\n  }\n}"
+                }
               }
             }
           }
@@ -50606,9 +50750,23 @@
         "type": "object",
         "properties": {
           "strategy": {
-            "description": "The chunking strategy: `sentence` or `word`.",
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#chunking-strategies"
+            },
+            "description": "The chunking strategy: `sentence`, `word`, `none` or `recursive`.\n\n * If `strategy` is set to `recursive`, you must also specify:\n\n- `max_chunk_size`\n- either `separators` or`separator_group`\n\nLearn more about different chunking strategies in the linked documentation.",
             "default": "sentence",
             "type": "string"
+          },
+          "separator_group": {
+            "description": "This parameter is only applicable when using the `recursive` chunking strategy.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
+            "type": "string"
+          },
+          "separators": {
+            "description": "A list of strings used as possible split points when chunking text with the `recursive` strategy.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "max_chunk_size": {
             "description": "The maximum size of a chunk in words.\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).",
@@ -50628,6 +50786,8 @@
         },
         "required": [
           "strategy",
+          "separator_group",
+          "separators",
           "max_chunk_size"
         ]
       },
@@ -55542,12 +55702,30 @@
             "default": 1.0,
             "type": "number"
           },
+          "separator_group": {
+            "description": "This parameter is only applicable when using the `recursive` chunking strategy.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
+            "type": "string"
+          },
+          "separators": {
+            "description": "A list of strings used as possible split points when chunking text with the `recursive` strategy.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "strategy": {
-            "description": "The chunking strategy: `sentence` or `word`.",
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#chunking-strategies"
+            },
+            "description": "The chunking strategy: `sentence`, `word`, `none` or `recursive`.\n\n * If `strategy` is set to `recursive`, you must also specify:\n\n- `max_chunk_size`\n- either `separators` or`separator_group`\n\nLearn more about different chunking strategies in the linked documentation.",
             "default": "sentence",
             "type": "string"
           }
-        }
+        },
+        "required": [
+          "separator_group",
+          "separators"
+        ]
       },
       "inference._types.ServiceSettings": {
         "type": "object"
@@ -55882,6 +56060,162 @@
           "completion"
         ]
       },
+      "inference._types.TaskTypeAmazonSageMaker": {
+        "type": "string",
+        "enum": [
+          "text_embedding",
+          "completion",
+          "chat_completion",
+          "sparse_embedding",
+          "rerank"
+        ]
+      },
+      "inference._types.AmazonSageMakerServiceType": {
+        "type": "string",
+        "enum": [
+          "amazon_sagemaker"
+        ]
+      },
+      "inference._types.AmazonSageMakerServiceSettings": {
+        "type": "object",
+        "properties": {
+          "access_key": {
+            "description": "A valid AWS access key that has permissions to use Amazon SageMaker and access to models for invoking requests.",
+            "type": "string"
+          },
+          "endpoint_name": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The name of the SageMaker endpoint.",
+            "type": "string"
+          },
+          "api": {
+            "$ref": "#/components/schemas/inference._types.AmazonSageMakerApi"
+          },
+          "region": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The region that your endpoint or Amazon Resource Name (ARN) is deployed in.\nThe list of available regions per model can be found in the Amazon SageMaker documentation.",
+            "type": "string"
+          },
+          "secret_key": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+            },
+            "description": "A valid AWS secret key that is paired with the `access_key`.\nFor information about creating and managing access and secret keys, refer to the AWS documentation.",
+            "type": "string"
+          },
+          "target_model": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The model ID when calling a multi-model endpoint.",
+            "type": "string"
+          },
+          "target_container_hostname": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The container to directly invoke when calling a multi-container endpoint.",
+            "type": "string"
+          },
+          "inference_component_name": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The inference component to directly invoke when calling a multi-component endpoint.",
+            "type": "string"
+          },
+          "batch_size": {
+            "description": "The maximum number of inputs in each batch. This value is used by inference ingestion pipelines\nwhen processing semantic values. It correlates to the number of times the SageMaker endpoint is\ninvoked (one per batch of input).",
+            "default": 256.0,
+            "type": "number"
+          },
+          "dimensions": {
+            "description": "The number of dimensions returned by the text embedding models. If this value is not provided, then\nit is guessed by making invoking the endpoint for the `text_embedding` task.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "access_key",
+          "endpoint_name",
+          "api",
+          "region",
+          "secret_key"
+        ]
+      },
+      "inference._types.AmazonSageMakerApi": {
+        "type": "string",
+        "enum": [
+          "openai",
+          "elastic"
+        ]
+      },
+      "inference._types.AmazonSageMakerTaskSettings": {
+        "type": "object",
+        "properties": {
+          "custom_attributes": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The AWS custom attributes passed verbatim through to the model running in the SageMaker Endpoint.\nValues will be returned in the `X-elastic-sagemaker-custom-attributes` header.",
+            "type": "string"
+          },
+          "enable_explanations": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The optional JMESPath expression used to override the EnableExplanations provided during endpoint creation.",
+            "type": "string"
+          },
+          "inference_id": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The capture data ID when enabled in the endpoint.",
+            "type": "string"
+          },
+          "session_id": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "The stateful session identifier for a new or existing session.\nNew sessions will be returned in the `X-elastic-sagemaker-new-session-id` header.\nClosed sessions will be returned in the `X-elastic-sagemaker-closed-session-id` header.",
+            "type": "string"
+          },
+          "target_variant": {
+            "externalDocs": {
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
+            },
+            "description": "Specifies the variant when running with multi-variant Endpoints.",
+            "type": "string"
+          }
+        }
+      },
+      "inference._types.InferenceEndpointInfoAmazonSageMaker": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "$ref": "#/components/schemas/inference._types.TaskTypeAmazonSageMaker"
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
       "inference._types.AnthropicTaskType": {
         "type": "string",
         "enum": [
@@ -56200,7 +56534,7 @@
             "$ref": "#/components/schemas/inference._types.CohereEmbeddingType"
           },
           "model_id": {
-            "description": "For a `completion`, `rerank`, or `text_embedding` task, the name of the model to use for the inference task.\n\n* For the available `completion` models, refer to the [Cohere command docs](https://docs.cohere.com/docs/models#command).\n* For the available `rerank` models, refer to the [Cohere rerank docs](https://docs.cohere.com/reference/rerank-1).\n* For the available `text_embedding` models, refer to [Cohere embed docs](https://docs.cohere.com/reference/embed).\n\nThe default value for a text embedding task is `embed-english-v2.0`.",
+            "description": "For a `completion`, `rerank`, or `text_embedding` task, the name of the model to use for the inference task.\n\n* For the available `completion` models, refer to the [Cohere command docs](https://docs.cohere.com/docs/models#command).\n* For the available `rerank` models, refer to the [Cohere rerank docs](https://docs.cohere.com/reference/rerank-1).\n* For the available `text_embedding` models, refer to [Cohere embed docs](https://docs.cohere.com/reference/embed).",
             "type": "string"
           },
           "rate_limit": {
@@ -56211,7 +56545,8 @@
           }
         },
         "required": [
-          "api_key"
+          "api_key",
+          "model_id"
         ]
       },
       "inference._types.CohereEmbeddingType": {
@@ -56249,7 +56584,10 @@
           "truncate": {
             "$ref": "#/components/schemas/inference._types.CohereTruncateType"
           }
-        }
+        },
+        "required": [
+          "input_type"
+        ]
       },
       "inference._types.CohereInputType": {
         "type": "string",
@@ -75554,7 +75892,7 @@
             "examples": {
               "InferencePutExample1": {
                 "description": "An example body for a `PUT _inference/rerank/my-rerank-model` request.",
-                "value": "{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n }\n}"
+                "value": "{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n }\n \"chunking_settings\": {\n   \"strategy\": \"recursive\",\n   \"max_chunk_size\": 200,\n   \"separator_group\": \"markdown\"\n}"
               }
             }
           }
@@ -76633,8 +76971,8 @@
                 },
                 "params": {
                   "description": "The values for parameters in the query.",
-                  "type": "object",
-                  "additionalProperties": {
+                  "type": "array",
+                  "items": {
                     "type": "object"
                   }
                 },
@@ -76774,7 +77112,11 @@
                   }
                 },
                 "fields": {
-                  "$ref": "#/components/schemas/_types.Fields"
+                  "description": "A list of fields to include in the statistics.\nIt is used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
                 },
                 "field_statistics": {
                   "description": "If `true`, the response includes:\n\n* The document count (how many documents contain this field).\n* The sum of document frequencies (the sum of document frequencies for all terms in this field).\n* The sum of total term frequencies (the sum of total term frequencies of each term in this field).",
