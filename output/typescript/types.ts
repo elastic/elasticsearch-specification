@@ -2006,7 +2006,7 @@ export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
     doc?: TDocument
     filter?: TermvectorsFilter
     per_field_analyzer?: Record<Field, string>
-    fields?: Fields
+    fields?: Field[]
     field_statistics?: boolean
     offsets?: boolean
     payloads?: boolean
@@ -21431,7 +21431,7 @@ export interface SqlQueryRequest extends RequestBase {
     keep_alive?: Duration
     keep_on_completion?: boolean
     page_timeout?: Duration
-    params?: Record<string, any>
+    params?: any[]
     query?: string
     request_timeout?: Duration
     runtime_mappings?: MappingRuntimeFields
