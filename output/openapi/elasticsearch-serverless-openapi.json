@@ -9797,7 +9797,7 @@
           "indices"
         ],
         "summary": "Update field mappings",
-        "description": "Add new fields to an existing data stream or index.\nYou can use the update mapping API to:\n\n- Add a new field to an existing index\n- Update mappings for multiple indices in a single request\n- Add new properties to an object field\n- Enable multi-fields for an existing field\n- Update supported mapping parameters\n- Change a field's mapping using reindexing\n- Rename a field using a field alias\n\nLearn how to use the update mapping API with practical examples in the [Update mapping API examples](https://www.elastic.co/docs//manage-data/data-store/mapping/update-mappings-examples) guide.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "description": "Add new fields to an existing data stream or index.\nYou can use the update mapping API to:\n\n- Add a new field to an existing index\n- Update mappings for multiple indices in a single request\n- Add new properties to an object field\n- Enable multi-fields for an existing field\n- Update supported mapping parameters\n- Change a field's mapping using reindexing\n- Rename a field using a field alias\n\nLearn how to use the update mapping API with practical examples in the [Update mapping API examples](https://www.elastic.co/docs/manage-data/data-store/mapping/update-mappings-examples) guide.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/mapping-parameters",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/indices-put-mapping.html"
@@ -9847,7 +9847,7 @@
           "indices"
         ],
         "summary": "Update field mappings",
-        "description": "Add new fields to an existing data stream or index.\nYou can use the update mapping API to:\n\n- Add a new field to an existing index\n- Update mappings for multiple indices in a single request\n- Add new properties to an object field\n- Enable multi-fields for an existing field\n- Update supported mapping parameters\n- Change a field's mapping using reindexing\n- Rename a field using a field alias\n\nLearn how to use the update mapping API with practical examples in the [Update mapping API examples](https://www.elastic.co/docs//manage-data/data-store/mapping/update-mappings-examples) guide.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "description": "Add new fields to an existing data stream or index.\nYou can use the update mapping API to:\n\n- Add a new field to an existing index\n- Update mappings for multiple indices in a single request\n- Add new properties to an object field\n- Enable multi-fields for an existing field\n- Update supported mapping parameters\n- Change a field's mapping using reindexing\n- Rename a field using a field alias\n\nLearn how to use the update mapping API with practical examples in the [Update mapping API examples](https://www.elastic.co/docs/manage-data/data-store/mapping/update-mappings-examples) guide.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/mapping-parameters",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/indices-put-mapping.html"
