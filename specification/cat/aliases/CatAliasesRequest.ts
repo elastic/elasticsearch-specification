@@ -18,7 +18,8 @@
  */
 
 import { ExpandWildcards, Names } from '@_types/common'
-import { CatRequestBase } from '@cat/_types/CatBase'
+import { Duration } from '@_types/Time'
+import { CatAliasesColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get aliases.
@@ -50,9 +51,9 @@ export interface Request extends CatRequestBase {
   }
   query_parameters: {
     /**
-     * List of columns to appear in the response. Supports simple wildcards.
+     * A comma-separated list of columns names to display. It supports simple wildcards.
      */
-    h?: Names
+    h?: CatAliasesColumns
     /**
      * List of columns that determine how the table should be sorted.
      * Sorting defaults to ascending and can be changed by setting `:asc`
