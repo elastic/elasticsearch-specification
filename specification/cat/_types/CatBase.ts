@@ -399,7 +399,7 @@ export enum CatAnomalyDetectorColumn {
    */
   state
 }
-export type CatAnonalyDetectorColumns =
+export type CatAnomalyDetectorColumns =
   | CatAnomalyDetectorColumn
   | CatAnomalyDetectorColumn[]
 export enum CatDatafeedColumn {
@@ -683,7 +683,7 @@ export enum CatNodeColumn {
    * The bound HTTP address.
    * @aliases http
    */
-  'http_address',
+  http_address,
   /**
    * The identifier for the node.
    * @aliases nodeId
@@ -743,17 +743,17 @@ export enum CatNodeColumn {
    * The most recent load average. For example: `0.22`.
    * @aliases l
    */
-  'load_1m',
+  load_1m,
   /**
    * The load average for the last five minutes. For example: `0.78`.
    * @aliases l
    */
-  'load_5m',
+  load_5m,
   /**
    * The load average for the last fifteen minutes. For example: `1.24`.
    * @aliases l
    */
-  'load_15m',
+  load_15m,
   /**
    * The number of mappings, including runtime and object fields.
    * @aliases mtc, mappingsTotalCount
@@ -1041,27 +1041,27 @@ export enum CatRecoveryColumn {
    * The host address the index is moving from.
    * @aliases shost
    */
-  'source_host',
+  source_host,
   /**
    * The node name the index is moving from.
    * @aliases snode
    */
-  'source_node',
+  source_node,
   /**
    * The host address the index is moving to.
    * @aliases thost
    */
-  'target_host',
+  target_host,
   /**
    * The node name the index is moving to.
    * @aliases tnode
    */
-  'target_node',
+  target_node,
   /**
    * The name of the repository being used. if not relevant 'n/a'.
    * @aliases tnode
    */
-  'repository',
+  repository,
   /**
    * The name of the snapshot being used. if not relevant 'n/a'.
    * @aliases snap
@@ -1076,17 +1076,17 @@ export enum CatRecoveryColumn {
    * The number of files currently recovered.
    * @aliases fr
    */
-  'files_recovered',
+  files_recovered,
   /**
    * The percentage of files currently recovered.
    * @aliases fp
    */
-  'files_percent',
+  files_percent,
   /**
    * The total number of files.
    * @aliases tf
    */
-  'files_total',
+  files_total,
   /**
    * The total number of bytes to recover.
    * @aliases b
@@ -1096,52 +1096,52 @@ export enum CatRecoveryColumn {
    * Total number of bytes currently recovered.
    * @aliases br
    */
-  'bytes_recovered',
+  bytes_recovered,
   /**
    * The percentage of bytes currently recovered.
    * @aliases bp
    */
-  'bytes_percent',
+  bytes_percent,
   /**
    * The total number of bytes.
    * @aliases tb
    */
-  'bytes_total',
+  bytes_total,
   /**
    * The total number of translog ops to recover.
    * @aliases to
    */
-  'translog_ops',
+  translog_ops,
   /**
    * The total number of translog ops currently recovered.
    * @aliases tor
    */
-  'translog_ops_recovered',
+  translog_ops_recovered,
   /**
    * The percentage of translog ops currently recovered.
    * @aliases top
    */
-  'translog_ops_percent',
+  translog_ops_percent,
   /**
    * The start time of the recovery operation.
    * @aliases start
    */
-  'start_time',
+  start_time,
   /**
    * The start time of the recovery operation in eopch milliseconds.
    * @aliases start_millis
    */
-  'start_time_millis',
+  start_time_millis,
   /**
    * The end time of the recovery operation. If ongoing '1970-01-01T00:00:00.000Z'
    * @aliases stop
    */
-  'stop_time',
+  stop_time,
   /**
    * The end time of the recovery operation in eopch milliseconds. If ongoing '0'
    * @aliases stop_millis
    */
-  'stop_time_millis'
+  stop_time_millis
 }
 
 /** @non_exhaustive */
@@ -1232,22 +1232,22 @@ export enum CatSnapshotsColumn {
    * The [unix epoch time](https://en.wikipedia.org/wiki/Unix_time) at which the snapshot process started.
    * @aliases ste, startEpoch
    */
-  'start_epoch',
+  start_epoch,
   /**
    * 'HH:MM:SS' time at which the snapshot process started.
    * @aliases sti, startTime
    */
-  'start_time',
+  start_time,
   /**
    * The [unix epoch time](https://en.wikipedia.org/wiki/Unix_time) at which the snapshot process ended.
    * @aliases ete, endEpoch
    */
-  'end_epoch',
+  end_epoch,
   /**
    * 'HH:MM:SS' time at which the snapshot process ended.
    * @aliases eti, endTime
    */
-  'end_time',
+  end_time,
   /**
    * The time it took the snapshot process to complete in [time units](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#time-units).
    * @aliases dur
@@ -1262,22 +1262,213 @@ export enum CatSnapshotsColumn {
    * The number of successful shards in the snapshot.
    * @aliases ss
    */
-  'successful_shards',
+  successful_shards,
   /**
    * The number of failed shards in the snapshot.
    * @aliases fs
    */
-  'failed_shards',
+  failed_shards,
   /**
    * The total number of shards in the snapshot.
    * @aliases ts
    */
-  'total_shards',
+  total_shards,
   /**
    * The reason for any snapshot failures.
    * @aliases r
    */
   reason
+}
+
+/** @non_exhaustive */
+export enum CatAliasesColumn {
+  /**
+   * The name of the alias.
+   * @aliases a
+   */
+  alias,
+  /**
+   * The name of the index the alias points to.
+   * @aliases i, idx
+   */
+  index,
+  /**
+   * The filter applied to the alias.
+   * @aliases f, fi
+   */
+  filter,
+  /**
+   * Index routing value for the alias.
+   * @aliases ri, routingIndex
+   */
+  'routing.index',
+  /**
+   * Search routing value for the alias.
+   * @aliases rs, routingSearch
+   */
+  'routing.search',
+  /**
+   * Indicates if the index is the write index for the alias.
+   * @aliases w, isWriteIndex
+   */
+  is_write_index
+}
+
+/** @non_exhaustive */
+export enum CatAllocationColumn {
+  /**
+   * The number of shards on the node.
+   * @aliases s
+   */
+  shards,
+  /**
+   * The number of shards scheduled to be moved elsewhere in the cluster.
+   */
+  'shards.undesired',
+  /**
+   * The sum of index write load forecasts.
+   * @aliases wlf, writeLoadForecast
+   */
+  'write_load.forecast',
+  /**
+   * The sum of shard size forecasts.
+   * @aliases dif, diskIndicesForecast
+   */
+  'disk.indices.forecast',
+  /**
+   * The disk space used by Elasticsearch indices.
+   * @aliases di, diskIndices
+   */
+  'disk.indices',
+  /**
+   * The total disk space used on the node.
+   * @aliases du,diskUsed
+   */
+  'disk.used',
+  /**
+   * The available disk space on the node.
+   * @aliases da, diskAvail
+   */
+  'disk.avail',
+  /**
+   * The total disk capacity of all volumes on the node.
+   * @aliases dt, diskTotal
+   */
+  'disk.total',
+  /**
+   * The percentage of disk space used on the node.
+   * @aliases dp, diskPercent
+   */
+  'disk.percent',
+  /**
+   * IThe host of the node.
+   * @aliases h
+   */
+  host,
+  /**
+   * The IP address of the node.
+   */
+  ip,
+  /**
+   * The name of the node.
+   * @aliases n
+   */
+  node,
+  /**
+   * The roles assigned to the node.
+   * @aliases r, role, nodeRole
+   */
+  'node.role'
+}
+
+/** @non_exhaustive */
+export enum CatComponentColumn {
+  /**
+   * The name of the component template.
+   * @aliases n
+   */
+  name,
+  /**
+   * The version number of the component template.
+   * @aliases v
+   */
+  version,
+  /**
+   * The number of aliases in the component template.
+   * @aliases a
+   */
+  alias_count,
+  /**
+   * The number of mappings in the component template.
+   * @aliases m
+   */
+  mapping_count,
+  /**
+   * The number of settings in the component template.
+   * @aliases s
+   */
+  settings_count,
+  /**
+   * The number of metadata entries in the component template.
+   * @aliases me
+   */
+  metadata_count,
+  /**
+   * The index templates that include this component template.
+   * @aliases i
+   */
+  included_in
+}
+
+/** @non_exhaustive */
+export enum CatCountColumn {
+  /**
+   * The Unix epoch time in seconds since 1970-01-01 00:00:00.
+   * @aliases t,time
+   */
+  epoch,
+  /**
+   * The current time in HH:MM:SS format.
+   * @aliases ts,hms,hhmmss
+   */
+  timestamp,
+  /**
+   * The document count in the cluster or index.
+   * @aliases dc,docs.count,docsCount
+   */
+  count
+}
+
+/** @non_exhaustive */
+export enum CatFieldDataColumn {
+  /**
+   * The node ID.
+   */
+  id,
+  /**
+   * The host name of the node.
+   * @aliases h
+   */
+  host,
+  /**
+   * The IP address of the node.
+   */
+  ip,
+  /**
+   * The node name.
+   * @aliases n
+   */
+  node,
+  /**
+   * The field name.
+   * @aliases f
+   */
+  field,
+  /**
+   * The field data usage.
+   * @aliases s
+   */
+  size
 }
 
 export type CatDfaColumns = CatDfaColumn | CatDfaColumn[]
@@ -1286,6 +1477,11 @@ export type CatNodeColumns = CatNodeColumn | CatNodeColumn[]
 export type CatRecoveryColumns = CatRecoveryColumn | CatRecoveryColumn[]
 export type CatSegmentsColumns = CatSegmentsColumn | CatSegmentsColumn[]
 export type CatSnapshotsColumns = CatSnapshotsColumn | CatSnapshotsColumn[]
+export type CatAliasesColumns = CatAliasesColumn | CatAliasesColumn[]
+export type CatAllocationColumns = CatAllocationColumn | CatAllocationColumn[]
+export type CatComponentColumns = CatComponentColumn | CatComponentColumn[]
+export type CatCountColumns = CatCountColumn | CatCountColumn[]
+export type CatFieldDataColumns = CatFieldDataColumn | CatFieldDataColumn[]
 
 export enum CatTrainedModelsColumn {
   /**
@@ -1594,7 +1790,7 @@ export enum CatShardColumn {
    * Number of documents in shard, for example: `25`.
    * @aliases d, dc
    */
-  'docs',
+  docs,
   /**
    * Fielddata cache evictions, for example: `0`.
    * @aliases fe, fielddataEvictions
@@ -1867,7 +2063,7 @@ export enum CatShardColumn {
    * Name of the shard.
    * @aliases s, sh
    */
-  'shard',
+  shard,
   /**
    * Number of indexed [sparse vectors](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/sparse-vector).
    * @aliases svc, sparseVectorCount
@@ -1881,12 +2077,12 @@ export enum CatShardColumn {
    * * `UNASSIGNED`: The shard is not assigned to any node.
    * @aliases st
    */
-  'state',
+  state,
   /**
    * Disk space used by the shard, for example: `5kb`.
    * @aliases sto
    */
-  'store',
+  store,
   /**
    * Number of current suggest operations, for example: `0`.
    * @aliases suc, suggestCurrent
