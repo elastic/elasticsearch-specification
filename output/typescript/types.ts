@@ -2009,7 +2009,7 @@ export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
     doc?: TDocument
     filter?: TermvectorsFilter
     per_field_analyzer?: Record<Field, string>
-    fields?: Fields
+    fields?: Field[]
     field_statistics?: boolean
     offsets?: boolean
     payloads?: boolean
@@ -13731,6 +13731,16 @@ export interface InferenceAdaptiveAllocations {
   min_number_of_allocations?: integer
 }
 
+export interface InferenceAi21ServiceSettings {
+  model_id: string
+  api_key?: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceAi21ServiceType = 'ai21'
+
+export type InferenceAi21TaskType = 'completion' | 'chat_completion'
+
 export interface InferenceAlibabaCloudServiceSettings {
   api_key: string
   host: string
@@ -14044,6 +14054,11 @@ export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoi
   task_type: InferenceTaskType
 }
 
+export interface InferenceInferenceEndpointInfoAi21 extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeAi21
+}
+
 export interface InferenceInferenceEndpointInfoAlibabaCloudAI extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeAlibabaCloudAI
@@ -14119,6 +14134,11 @@ export interface InferenceInferenceEndpointInfoJinaAi extends InferenceInference
   task_type: InferenceTaskTypeJinaAi
 }
 
+export interface InferenceInferenceEndpointInfoLlama extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeLlama
+}
+
 export interface InferenceInferenceEndpointInfoMistral extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeMistral
@@ -14168,6 +14188,20 @@ export interface InferenceJinaAITaskSettings {
 export type InferenceJinaAITaskType = 'rerank' | 'text_embedding'
 
 export type InferenceJinaAITextEmbeddingTask = 'classification' | 'clustering' | 'ingest' | 'search'
+
+export interface InferenceLlamaServiceSettings {
+  url: string
+  model_id: string
+  max_input_tokens?: integer
+  similarity?: InferenceLlamaSimilarityType
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceLlamaServiceType = 'llama'
+
+export type InferenceLlamaSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
+
+export type InferenceLlamaTaskType = 'text_embedding' | 'completion' | 'chat_completion'
 
 export interface InferenceMessage {
   content?: InferenceMessageContent
@@ -14247,6 +14281,8 @@ export type InferenceTaskSettings = any
 
 export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion'
 
+export type InferenceTaskTypeAi21 = 'completion' | 'chat_completion'
+
 export type InferenceTaskTypeAlibabaCloudAI = 'text_embedding' | 'rerank' | 'completion' | 'sparse_embedding'
 
 export type InferenceTaskTypeAmazonBedrock = 'text_embedding' | 'completion'
@@ -14276,6 +14312,8 @@ export type InferenceTaskTypeGoogleVertexAI = 'text_embedding' | 'rerank'
 export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeLlama = 'text_embedding' | 'chat_completion' | 'completion'
 
 export type InferenceTaskTypeMistral = 'text_embedding' | 'chat_completion' | 'completion'
 
@@ -14400,6 +14438,18 @@ export interface InferencePutRequest extends RequestBase {
 }
 
 export type InferencePutResponse = InferenceInferenceEndpointInfo
+
+export interface InferencePutAi21Request extends RequestBase {
+  task_type: InferenceAi21TaskType
+  ai21_inference_id: Id
+  timeout?: Duration
+  body?: {
+    service: InferenceAi21ServiceType
+    service_settings: InferenceAi21ServiceSettings
+  }
+}
+
+export type InferencePutAi21Response = InferenceInferenceEndpointInfoAi21
 
 export interface InferencePutAlibabacloudRequest extends RequestBase {
   task_type: InferenceAlibabaCloudTaskType
@@ -14606,6 +14656,19 @@ export interface InferencePutJinaaiRequest extends RequestBase {
 }
 
 export type InferencePutJinaaiResponse = InferenceInferenceEndpointInfoJinaAi
+
+export interface InferencePutLlamaRequest extends RequestBase {
+  task_type: InferenceLlamaTaskType
+  llama_inference_id: Id
+  timeout?: Duration
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferenceLlamaServiceType
+    service_settings: InferenceLlamaServiceSettings
+  }
+}
+
+export type InferencePutLlamaResponse = InferenceInferenceEndpointInfoLlama
 
 export interface InferencePutMistralRequest extends RequestBase {
   task_type: InferenceMistralTaskType
@@ -21819,7 +21882,7 @@ export interface SqlQueryRequest extends RequestBase {
     keep_alive?: Duration
     keep_on_completion?: boolean
     page_timeout?: Duration
-    params?: Record<string, any>
+    params?: any[]
     query?: string
     request_timeout?: Duration
     runtime_mappings?: MappingRuntimeFields

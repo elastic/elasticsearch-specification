@@ -1,0 +1,31 @@
+summary: Custom text embedding task (Cohere APIv2)
+description: Run `PUT _inference/text_embedding/custom-text-embedding` to create an inference endpoint that performs a text embedding task.
+method_request: 'PUT _inference/text_embedding/custom-text-embedding'
+# type: "request"
+value: |-
+  {
+    "service": "custom",
+    "service_settings": {
+        "secret_parameters": {
+            "api_key": "<api key>"
+        },
+        "url": "https://api.cohere.com/v2/embed",
+        "headers": {
+            "Authorization": "bearer ${api_key}",
+            "Content-Type": "application/json"
+        },
+        "request": "{\"texts\": ${input}, \"model\": \"embed-v4.0\", \"input_type\": ${input_type}}",
+        "response": {
+            "json_parser": {
+                "text_embeddings":"$.embeddings.float[*]"
+            }
+        },
+        "input_type": {
+            "translation": {
+                "ingest": "search_document",
+                "search": "search_query"
+            },
+            "default": "search_document"
+        }
+    }
+  }

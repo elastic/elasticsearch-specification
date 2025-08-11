@@ -58,7 +58,12 @@ export interface Request extends RequestBase {
      */
     drop_null_columns?: boolean
     /**
-     * A short version of the Accept header, for example `json` or `yaml`.
+     * A short version of the Accept header, e.g. json, yaml.
+     *
+     * `csv`, `tsv`, and `txt` formats will return results in a tabular format, excluding other metadata fields from the response.
+     *
+     * For async requests, nothing will be returned if the async query doesn't finish within the timeout.
+     * The query ID and running status are available in the `X-Elasticsearch-Async-Id` and `X-Elasticsearch-Async-Is-Running` HTTP headers of the response, respectively.
      */
     format?: EsqlFormat
   }

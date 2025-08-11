@@ -9,11 +9,11 @@ description:
 value:
   docs:
     - _index: my-index
-      _id: 123
+      _id: '123'
       _source:
         foo: bar
     - _index: my-index
-      _id: 456
+      _id: '456'
       _source:
         foo: rab
   pipeline_substitutions:
