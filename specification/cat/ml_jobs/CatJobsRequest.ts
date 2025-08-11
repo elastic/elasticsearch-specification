@@ -19,7 +19,7 @@
 
 import { Bytes, Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
-import { CatAnonalyDetectorColumns, CatRequestBase } from '@cat/_types/CatBase'
+import { CatAnomalyDetectorColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get anomaly detection jobs.
@@ -78,9 +78,9 @@ export interface Request extends CatRequestBase {
      * Comma-separated list of column names to display.
      * @server_default buckets.count,data.processed_records,forecasts.total,id,model.bytes,model.memory_status,state
      */
-    h?: CatAnonalyDetectorColumns
+    h?: CatAnomalyDetectorColumns
     /** Comma-separated list of column names or column aliases used to sort the response. */
-    s?: CatAnonalyDetectorColumns
+    s?: CatAnomalyDetectorColumns
     /**
      * The unit used to display time values.
      */
