@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Fields, Names } from '@_types/common'
+import { CatFieldDataColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get field data cache information.
@@ -57,9 +57,9 @@ export interface Request extends CatRequestBase {
     /** Comma-separated list of fields used to limit returned information. */
     fields?: Fields
     /**
-     * List of columns to appear in the response. Supports simple wildcards.
+     * A comma-separated list of columns names to display. It supports simple wildcards.
      */
-    h?: Names
+    h?: CatFieldDataColumns
     /**
      * List of columns that determine how the table should be sorted.
      * Sorting defaults to ascending and can be changed by setting `:asc`
