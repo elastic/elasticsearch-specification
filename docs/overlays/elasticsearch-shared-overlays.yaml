@@ -12,9 +12,15 @@ actions:
       # A
         - name: autoscaling
           x-displayName: Autoscaling
+          description: >
+            The autoscaling APIs enable you to create and manage autoscaling policies and retrieve information about autoscaling capacity.
+            Autoscaling adjusts resources based on demand. A deployment can use autoscaling to scale resources as needed, ensuring sufficient capacity to meet workload requirements.
       # B
         - name: analytics
           x-displayName: Behavioral analytics
+          description: >
+            The behavioral analytics APIs let you create and manage analytics collections and view their data.
+            Use them to analyze users’ search and click behavior, improve result relevance, and identify content gaps.
       # C 
         - name: cat
           x-displayName: Compact and aligned text (CAT)
@@ -26,8 +32,13 @@ actions:
             All the cat commands accept a query string parameter `help` to see all the headers and info they provide, and the `/_cat` command alone lists all the available commands.
         - name: cluster
           x-displayName: Cluster
+          description: >
+            The cluster APIs enable you to retrieve information about your infrastructure on cluster, node, or shard level.
+            You can manage cluster settings and voting configuration exceptions, collect node statistics and retrieve node information.
         - name: health_report
           x-displayName: Cluster - Health
+          description: >
+            The cluster - health API provides you a report with the health status of an Elasticsearch cluster.
         - name: connector
           x-displayName: Connector
           description: >
@@ -43,20 +54,32 @@ actions:
             description: Check out the connector API tutorial.
         - name: ccr
           x-displayName: Cross-cluster replication
+          description: >
+            The cross-cluster replication (CCR) APIs let you run replication operations, such as creating and managing follower indices or auto-follow patterns.
+            Use CCR to replicate indices across clusters to maintain search availability during outages, reduce indexing impact, and lower search latency by serving requests closer to users.
       # D
         - name: data stream
           x-displayName: Data stream
+          description: >
+            The data stream APIs enable you to create and manage data streams and data stream lifecycles.
+            A data stream lets you store append-only time series data across multiple indices while giving you a single named resource for requests.
+            Data streams are well-suited for logs, events, metrics, and other continuously generated data.
           externalDocs:
             description: Learn more about data streams. 
             url: https://www.elastic.co/docs/manage-data/data-store/data-streams
         - name: document
           x-displayName: Document
+          description: >
+            The document APIs enable you to create and manage documents in an Elasticsearch index.
           externalDocs:
             description: Learn more about reading and writing documents.
             url: https://www.elastic.co/docs/deploy-manage/distributed-architecture/reading-and-writing-documents
       # E  
         - name: enrich
           x-displayName: Enrich
+          description: >
+            The enrich APIs enable you to manage enrich policies.
+            An enrich policy is a set of configuration options used to add the right enrich data to the right incoming documents.
         - name: eql
           x-displayName: EQL
           description: >
@@ -73,10 +96,13 @@ actions:
             description: Learn more about ES|QL.
       # F
         - name: features
-          description: The feature APIs enable you to introspect and manage features provided by Elasticsearch and Elasticsearch plugins.
           x-displayName: Features
+          description: >
+            The feature APIs enable you to introspect and manage features provided by Elasticsearch and Elasticsearch plugins.
         - name: fleet
           x-displayName: Fleet
+          description: >
+            The Fleet APIs support Fleet’s use of Elasticsearch as a data store for internal agent and action data.
       # G
         - name: graph
           x-displayName: Graph explore
@@ -92,6 +118,8 @@ actions:
             Index APIs enable you to manage individual indices, index settings, aliases, mappings, and index templates.
         - name: ilm
           x-displayName: Index lifecycle management
+          description: >
+            The index lifecycle management APIs enable you to set up policies to automatically manage the index lifecycle.
           externalDocs:
             url: https://www.elastic.co/docs/manage-data/lifecycle/index-lifecycle-management
             description: Learn more about managing the index lifecycle.
@@ -103,6 +131,8 @@ actions:
             However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
         - name: info
           x-displayName: Info
+          description: >
+            The info API provides basic build, version, and cluster information.
         - name: ingest
           x-displayName: Ingest
           description: Ingest APIs enable you to manage tasks and resources related to ingest pipelines and processors.
@@ -123,31 +153,40 @@ actions:
       # M
         - name: ml
           x-displayName: Machine learning
+          description: >
+            The machine learning APIs enable you to retrieve information related to the Elastic Stack machine learning features.
         - name: ml anomaly
           x-displayName: Machine learning anomaly detection
-          # description:
+          description: >
+            The machine learning anomaly detection APIs enbale you to perform anomaly detection activities.
           externalDocs:
             url: https://www.elastic.co/docs/explore-analyze/machine-learning/anomaly-detection/ml-ad-finding-anomalies
             description: Learn more about finding anomalies.
         - name: ml data frame
           x-displayName: Machine learning data frame analytics
-          # description:
+          description: >
+            The machine learning data frame analytics APIs enbale you to perform data frame analytics activities.
           externalDocs:
             url: https://www.elastic.co/docs/explore-analyze/machine-learning/data-frame-analytics/ml-dfa-overview
             description: Learn more about data frame analytics.
         - name: ml trained model
           x-displayName: Machine learning trained model
-          # description:
+          description: >
+            The machine learning trained models APIs enable you to perform model management operations.
           externalDocs:
             url: https://www.elastic.co/docs/explore-analyze/machine-learning/nlp/ml-nlp-overview
             description: Learn more about natural language processing.
         - name: migration
           x-displayName: Migration
+          description: >
+            The migration APIs power Kibana's Upgrade Assistant feature.
         - name: monitoring
           x-displayName: Monitoring
       # N
         - name: shutdown
           x-displayName: Node lifecycle
+          description: >
+            The node lifecycle APIs enable you to prepare nodes for temporary or permanent shutdown, monitor the shutdown status, and enable a previously shut-down node to resume normal operations.
       # Q
         - name: query_rules
           x-displayName: Query rules
@@ -164,6 +203,8 @@ actions:
       # R
         - name: rollup
           x-displayName: Rollup
+          description: >
+            The rollup APIs enable you to create, manage, and retrieve infromation about rollup jobs.
       # S
         - name: script
           x-displayName: Script
@@ -174,12 +215,21 @@ actions:
             url: https://www.elastic.co/docs/explore-analyze/scripting
         - name: search
           x-displayName: Search
+          description: >
+            The search APIs enable you to search and aggregate data stored in Elasticsearch indices and data streams.
         - name: search_application
           x-displayName: Search application
+          description: >
+            The search applcation APIs enable you to manage tasks and resources related to Search Applications.
         - name: searchable_snapshots
           x-displayName: Searchable snapshots
+          description: >
+            The searchable snapshots APIs enable you to perform searchable snapshots operations.
         - name: security
           x-displayName: Security
+          description: >
+            The security APIs enable you to perform security activities, and add, update, retrieve, and remove application privileges, role mappings, and roles.
+            You can also create and update API keys and create and invalidate bearer tokens.
         - name: snapshot
           x-displayName: Snapshot and restore
           description: >
@@ -210,13 +260,21 @@ actions:
       # T  
         - name: tasks
           x-displayName: Task management
+          description: >
+            The task management APIs enable you to retrieve information about tasks or cancel tasks running in a cluster.
         - name: text_structure
           x-displayName: Text structure
+          description: >
+            The text structure APIs enable you to find the structure of a text field in an Elasticsearch index.
         - name: transform
           x-displayName: Transform
+          description: >
+            The transform APIs enable you to create and manage transforms.
       # U
         - name: xpack
           x-displayName: Usage
+          description: >
+            The usage API provides usage information about the installed X-Pack features.
       # W
         - name: watcher
           x-displayName: Watcher
