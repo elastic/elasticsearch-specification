@@ -20,7 +20,7 @@ actions:
           x-displayName: Behavioral analytics
           description: >
             The behavioral analytics APIs let you create and manage analytics collections and view their data.
-            Use them to analyze users’ search and click behavior, improve result relevance, and identify content gaps
+            Use them to analyze users’ search and click behavior, improve result relevance, and identify content gaps.
       # C 
         - name: cat
           x-displayName: Compact and aligned text (CAT)
