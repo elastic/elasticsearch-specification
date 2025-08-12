@@ -3874,7 +3874,7 @@ export interface AggregationsIpRangeBucketKeys extends AggregationsMultiBucketBa
 export type AggregationsIpRangeBucket = AggregationsIpRangeBucketKeys
   & { [property: string]: AggregationsAggregate | string | long }
 
-export type AggregationsKeyedPercentiles = Record<string, string | long | null>
+export type AggregationsKeyedPercentiles = Record<string, string | double | null>
 
 export interface AggregationsLinearMovingAverageAggregation extends AggregationsMovingAverageAggregationBase {
   model: 'linear'

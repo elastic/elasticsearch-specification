@@ -1151,18 +1151,6 @@ export class CustomTaskSettings {
   parameters?: UserDefinedValue
 }
 
-export class EisServiceSettings {
-  /**
-   * The name of the model to use for the inference task.
-   */
-  model_id: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned.
-   * By default, the `elastic` service sets the number of requests allowed per minute to `240` in case of `chat_completion`.
-   */
-  rate_limit?: RateLimitSetting
-}
-
 export class DeepSeekServiceSettings {
   /**
    * A valid API key for your DeepSeek account.
@@ -1189,27 +1177,6 @@ export class DeepSeekServiceSettings {
 
 export enum DeepSeekServiceType {
   deepseek
-}
-
-export enum EisTaskType {
-  chat_completion,
-  rerank
-}
-
-export enum EisServiceType {
-  elastic
-}
-
-export class EisTaskSettings {
-  /**
-   * For a `rerank` task, return doc text within the results.
-   */
-  return_documents?: boolean
-
-  /**
-   * For a `rerank` task, the number of the top N documents that should be returned.
-   */
-  top_n?: integer
 }
 
 export class ElasticsearchServiceSettings {

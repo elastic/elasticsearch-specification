@@ -96,6 +96,7 @@ import { OperationContainer, UpdateAction } from './types'
  * * JavaScript: Check out `client.helpers.*`
  * * .NET: Check out `BulkAllObservable`
  * * PHP: Check out bulk indexing.
+ * * Ruby: Check out `Elasticsearch::Helpers::BulkHelper`
  *
  * **Submitting bulk requests with cURL**
  *
