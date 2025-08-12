@@ -56,8 +56,6 @@
     "Dangling type 'indices._types:StringFielddata'",
     "Dangling type 'indices._types:StringFielddataFormat'",
     "Dangling type 'indices.stats:ShardFielddata'",
-    "Dangling type 'inference._types:DeepSeekServiceSettings'",
-    "Dangling type 'inference._types:DeepSeekServiceType'",
     "Dangling type 'ingest._types:PipelineFailure'",
     "Dangling type 'ml._types:CountFunction'",
     "Dangling type 'ml._types:DistinctCountFunction'",

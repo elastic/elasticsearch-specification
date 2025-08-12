@@ -754,34 +754,6 @@ export class CohereTaskSettings {
   truncate?: CohereTruncateType
 }
 
-export class DeepSeekServiceSettings {
-  /**
-   * A valid API key for your DeepSeek account.
-   * You can find or create your DeepSeek API keys on the DeepSeek API key page.
-   *
-   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
-   * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
-   * @ext_doc_id deepseek-api-keys
-   */
-  api_key: string
-  /**
-   * For a `completion` or `chat_completion` task, the name of the model to use for the inference task.
-   *
-   * For the available `completion` and `chat_completion` models, refer to the [DeepSeek Models & Pricing docs](https://api-docs.deepseek.com/quick_start/pricing).
-   */
-  model_id: string
-  /**
-   * The URL endpoint to use for the requests. Defaults to `https://api.deepseek.com/chat/completions`.
-   */
-  url?: string
-}
-
-export enum DeepSeekServiceType {
-  deepseek
-}
-
 export class ElasticsearchServiceSettings {
   /**
    * Adaptive allocations configuration details.
