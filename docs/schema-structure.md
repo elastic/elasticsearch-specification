@@ -9,7 +9,7 @@ the basic types [here](https://www.typescriptlang.org/docs/handbook/basic-types.
 while in [behaviors](./behaviors.md) you can find the list of special interfaces used
 for describing APIs that can't be represented in the specification.
 
-Refer to the [documentation guide](doc-comments-guide.md) to add documentation to types and fields,
+Refer to the [API docs contributon guidelines](https://www.elastic.co/docs/extend/contribute/api-docs/) to add documentation to types and fields,
 and to the [modeling guide](modeling-guide.md) to learn how to model the different types.
 
 You can find the schema representing all APIs and types in the [output folder](output/schema/schema.json).
