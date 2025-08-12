@@ -158,14 +158,14 @@ actions:
         - name: ml anomaly
           x-displayName: Machine learning anomaly detection
           description: >
-            The machine learning anomaly detection APIs enbale you to perform anomaly detection activities.
+            The machine learning anomaly detection APIs enable you to perform anomaly detection activities.
           externalDocs:
             url: https://www.elastic.co/docs/explore-analyze/machine-learning/anomaly-detection/ml-ad-finding-anomalies
             description: Learn more about finding anomalies.
         - name: ml data frame
           x-displayName: Machine learning data frame analytics
           description: >
-            The machine learning data frame analytics APIs enbale you to perform data frame analytics activities.
+            The machine learning data frame analytics APIs enable you to perform data frame analytics activities.
           externalDocs:
             url: https://www.elastic.co/docs/explore-analyze/machine-learning/data-frame-analytics/ml-dfa-overview
             description: Learn more about data frame analytics.
@@ -204,7 +204,7 @@ actions:
         - name: rollup
           x-displayName: Rollup
           description: >
-            The rollup APIs enable you to create, manage, and retrieve infromation about rollup jobs.
+            The rollup APIs enable you to create, manage, and retrieve information about rollup jobs.
       # S
         - name: script
           x-displayName: Script
@@ -220,7 +220,7 @@ actions:
         - name: search_application
           x-displayName: Search application
           description: >
-            The search applcation APIs enable you to manage tasks and resources related to Search Applications.
+            The search application APIs enable you to manage tasks and resources related to Search Applications.
         - name: searchable_snapshots
           x-displayName: Searchable snapshots
           description: >
