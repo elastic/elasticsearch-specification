@@ -2263,9 +2263,7 @@ export type DateFormat = string
 
 export type DateMath = string
 
-export type DateString = string
-
-export type DateTime = DateString | EpochTime<UnitMillis>
+export type DateTime = string | EpochTime<UnitMillis>
 
 export type Distance = string
 
@@ -9348,9 +9346,9 @@ export interface ClusterComponentTemplateNode {
   version?: VersionNumber
   _meta?: Metadata
   deprecated?: boolean
-  created_date?: DateString
+  created_date?: DateTime
   created_date_millis?: EpochTime<UnitMillis>
-  modified_date?: DateString
+  modified_date?: DateTime
   modified_date_millis?: EpochTime<UnitMillis>
 }
 
@@ -11917,9 +11915,9 @@ export interface IndicesIndexTemplate {
   data_stream?: IndicesIndexTemplateDataStreamConfiguration
   deprecated?: boolean
   ignore_missing_component_templates?: Names
-  created_date?: DateString
+  created_date?: DateTime
   created_date_millis?: EpochTime<UnitMillis>
-  modified_date?: DateString
+  modified_date?: DateTime
   modified_date_millis?: EpochTime<UnitMillis>
 }
 
@@ -15108,9 +15106,9 @@ export interface IngestPipeline {
   version?: VersionNumber
   deprecated?: boolean
   _meta?: Metadata
-  created_date?: DateString
+  created_date?: DateTime
   created_date_millis?: EpochTime<UnitMillis>
-  modified_date?: DateString
+  modified_date?: DateTime
   modified_date_millis?: EpochTime<UnitMillis>
 }
 

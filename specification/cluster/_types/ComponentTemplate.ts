@@ -19,7 +19,7 @@
 
 import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
-import { DateString, EpochTime, UnitMillis } from '@_types/Time'
+import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
 import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
 import { DataStreamOptionsTemplate } from '@indices/_types/DataStreamOptions'
@@ -45,7 +45,7 @@ export class ComponentTemplateNode {
    * @availability stack since=9.2.0
    * @availability serverless
    */
-  created_date?: DateString
+  created_date?: DateTime
   /**
    * Date and time when the component template was created, in milliseconds since the epoch.
    * @availability stack since=9.2.0
@@ -57,7 +57,7 @@ export class ComponentTemplateNode {
    * @availability stack since=9.2.0
    * @availability serverless
    */
-  modified_date?: DateString
+  modified_date?: DateTime
   /**
    * Date and time when the component template was last modified, in milliseconds since the epoch.
    * @availability stack since=9.2.0

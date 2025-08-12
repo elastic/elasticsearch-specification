@@ -18,7 +18,7 @@
  */
 
 import { Metadata, VersionNumber } from '@_types/common'
-import { DateString, EpochTime, UnitMillis } from '@_types/Time'
+import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
 import { ProcessorContainer } from './Processors'
 
 export class Pipeline {
@@ -54,7 +54,7 @@ export class Pipeline {
    * @availability stack since=9.2.0
    * @availability serverless
    */
-  created_date?: DateString
+  created_date?: DateTime
   /**
    * Date and time when the pipeline was created, in milliseconds since the epoch.
    * @availability stack since=9.2.0
@@ -66,7 +66,7 @@ export class Pipeline {
    * @availability stack since=9.2.0
    * @availability serverless
    */
-  modified_date?: DateString
+  modified_date?: DateTime
   /**
    * Date and time when the pipeline was last modified, in milliseconds since the epoch.
    * @availability stack since=9.2.0
