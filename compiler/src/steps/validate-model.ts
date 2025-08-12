@@ -186,6 +186,13 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   apiModel.endpoints.filter(ep => readyForValidation(ep)).forEach(validateEndpoint)
   apiModel.endpoints.filter(ep => !readyForValidation(ep)).forEach(validateEndpoint)
 
+  // Check types are used
+  for (const type of apiModel.types) {
+    if (!typesSeen.has(fqn(type.name))) {
+      errors.addGeneralError(`Dangling type '${fqn(type.name)}'`)
+    }
+  }
+
   // Removes types that we've not seen
   apiModel.types = apiModel.types.filter(type => typesSeen.has(fqn(type.name)))
 
