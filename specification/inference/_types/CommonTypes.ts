@@ -754,26 +754,6 @@ export class CohereTaskSettings {
   truncate?: CohereTruncateType
 }
 
-export class EisServiceSettings {
-  /**
-   * The name of the model to use for the inference task.
-   */
-  model_id: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned.
-   * By default, the `elastic` service sets the number of requests allowed per minute to `240` in case of `chat_completion`.
-   */
-  rate_limit?: RateLimitSetting
-}
-
-export enum EisTaskType {
-  chat_completion
-}
-
-export enum EisServiceType {
-  elastic
-}
-
 export class ElasticsearchServiceSettings {
   /**
    * Adaptive allocations configuration details.
