@@ -1,11 +1,4 @@
 {
-  "endpointErrors": {
-    "bulk": {
-      "request": [
-        "Request: missing json spec query parameter 'type'"
-      ],
-      "response": []
-    }
-  },
+  "endpointErrors": {},
   "generalErrors": []
 }
