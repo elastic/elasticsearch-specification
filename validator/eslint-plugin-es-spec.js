@@ -18,12 +18,14 @@
  */
 import singleKeyDict from './rules/single-key-dictionary-key-is-string.js'
 import dict from './rules/dictionary-key-is-string.js'
+import noNativeTypes from './rules/no-native-types.js'
 import invalidNodeTypes from './rules/invalid-node-types.js'
 
 export default {
   rules: {
     'single-key-dictionary-key-is-string': singleKeyDict,
     'dictionary-key-is-string': dict,
+    'no-native-types': noNativeTypes,
     'invalid-node-types': invalidNodeTypes,
   }
 }
