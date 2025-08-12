@@ -2007,7 +2007,7 @@ export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
     doc?: TDocument
     filter?: TermvectorsFilter
     per_field_analyzer?: Record<Field, string>
-    fields?: Fields
+    fields?: Field[]
     field_statistics?: boolean
     offsets?: boolean
     payloads?: boolean
@@ -3862,7 +3862,7 @@ export interface AggregationsIpRangeBucketKeys extends AggregationsMultiBucketBa
 export type AggregationsIpRangeBucket = AggregationsIpRangeBucketKeys
   & { [property: string]: AggregationsAggregate | string | long }
 
-export type AggregationsKeyedPercentiles = Record<string, string | long | null>
+export type AggregationsKeyedPercentiles = Record<string, string | double | null>
 
 export interface AggregationsLinearMovingAverageAggregation extends AggregationsMovingAverageAggregationBase {
   model: 'linear'
@@ -5565,6 +5565,8 @@ export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
 
 export interface MappingChunkingSettings {
   strategy: string
+  separator_group: string
+  separators: string[]
   max_chunk_size: integer
   overlap?: integer
   sentence_overlap?: integer
@@ -13976,6 +13978,8 @@ export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
   overlap?: integer
   sentence_overlap?: integer
+  separator_group: string
+  separators: string[]
   strategy?: string
 }
 
@@ -21766,7 +21770,7 @@ export interface SqlQueryRequest extends RequestBase {
     keep_alive?: Duration
     keep_on_completion?: boolean
     page_timeout?: Duration
-    params?: Record<string, any>
+    params?: any[]
     query?: string
     request_timeout?: Duration
     runtime_mappings?: MappingRuntimeFields
