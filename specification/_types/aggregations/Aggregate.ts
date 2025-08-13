@@ -160,7 +160,7 @@ type Percentiles = KeyedPercentiles | Array<ArrayPercentilesItem>
 type KeyedPercentiles = Dictionary<string, string | double | null>
 
 export class ArrayPercentilesItem {
-  key: string
+  key: double
   value: double | null
   value_as_string?: string
 }
