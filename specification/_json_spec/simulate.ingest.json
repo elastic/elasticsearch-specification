@@ -35,7 +35,7 @@
       },
       "merge_type": {
         "type": "string",
-        "description": "The way that mapping_additions ought to be merged into existing mappings"
+        "description": "The method to be used when merging mapping_additions existing mappings"
       }
     },
     "body": {
