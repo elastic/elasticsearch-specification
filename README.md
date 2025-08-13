@@ -84,7 +84,7 @@ An interactive viewer for the Elasticsearch specification is available
 See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 Refer to the
-[Contributie to Elastic API docs](https://www.elastic.co/docs/extend/contribute/api-docs/)
+[Contribute to Elastic API docs](https://www.elastic.co/docs/extend/contribute/api-docs/)
 for more details about the API documentation guidelines.
 
 ## Make Targets
