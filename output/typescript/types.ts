@@ -21166,9 +21166,12 @@ export interface SimulateIngestIngestDocumentSimulationKeys {
 export type SimulateIngestIngestDocumentSimulation = SimulateIngestIngestDocumentSimulationKeys
   & { [property: string]: string | Id | IndexName | Record<string, any> | SpecUtilsStringified<VersionNumber> | string[] | Record<string, string>[] | ErrorCause }
 
+export type SimulateIngestMergeType = 'index' | 'template'
+
 export interface SimulateIngestRequest extends RequestBase {
   index?: IndexName
   pipeline?: PipelineName
+  merge_type?: SimulateIngestMergeType
   body?: {
     docs: IngestDocument[]
     component_template_substitutions?: Record<string, ClusterComponentTemplateNode>
