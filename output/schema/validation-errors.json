@@ -1,12 +1,5 @@
 {
-  "endpointErrors": {
-    "simulate.ingest": {
-      "request": [
-        "Request: query parameter 'merge_type' does not exist in the json spec"
-      ],
-      "response": []
-    }
-  },
+  "endpointErrors": {},
   "generalErrors": [
     "Dangling type '_global.scripts_painless_execute:PainlessExecutionPosition'",
     "Dangling type '_global.scripts_painless_execute:PainlessScript'",
