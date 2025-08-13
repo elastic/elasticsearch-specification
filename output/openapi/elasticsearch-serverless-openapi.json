@@ -27006,7 +27006,7 @@
         "type": "object",
         "properties": {
           "key": {
-            "type": "string"
+            "type": "number"
           },
           "value": {
             "oneOf": [

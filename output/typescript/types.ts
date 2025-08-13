@@ -3230,7 +3230,7 @@ export interface AggregationsAggregationRange {
 }
 
 export interface AggregationsArrayPercentilesItem {
-  key: string
+  key: double
   value: double | null
   value_as_string?: string
 }
