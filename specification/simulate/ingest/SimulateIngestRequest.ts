@@ -75,6 +75,13 @@ export interface Request extends RequestBase {
      * This value can be used to override the default pipeline of the index.
      */
     pipeline?: PipelineName
+    /**
+     * The method to be used when merging mapping_additions existing mappings. Mappings can be merged in the way mapping changes are merged into an existing index, or in
+     * the way mapping changes are merged into existing templates. Some changes are allowed to templates that are not allowed to indices. For example,
+     * a field cannot be changed to an incompatible type in an index, but can in a template.
+     * @server_default index
+     */
+    merge_type?: MergeType
   }
   body: {
     /**
@@ -97,4 +104,9 @@ export interface Request extends RequestBase {
      */
     pipeline_substitutions?: Dictionary<string, Pipeline>
   }
+}
+
+enum MergeType {
+  index,
+  template
 }

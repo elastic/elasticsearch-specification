@@ -32,6 +32,10 @@
       "pipeline": {
         "type": "string",
         "description": "The pipeline id to preprocess incoming documents with if no pipeline is given for a particular document"
+      },
+      "merge_type": {
+        "type": "string",
+        "description": "The method to be used when merging mapping_additions existing mappings"
       }
     },
     "body": {
