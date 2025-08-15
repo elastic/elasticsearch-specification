@@ -32,7 +32,7 @@ export interface Request extends RequestBase {
   urls: [
     {
       path: '/'
-      methods: ['HEAD']
+      methods: ['OPTIONS']
     }
   ]
 }

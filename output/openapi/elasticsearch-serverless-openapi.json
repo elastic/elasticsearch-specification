@@ -14138,7 +14138,7 @@
           }
         ]
       },
-      "head": {
+      "options": {
         "tags": [
           "cluster"
         ],
