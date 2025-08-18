@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ExpandWildcards, Names } from "@_types/common";
-import { Duration } from "@_types/Time";
-import { CatAliasesColumns, CatRequestBase } from "@cat/_types/CatBase";
+import { ExpandWildcards, Names } from '@_types/common'
+import { Duration } from '@_types/Time'
+import { CatAliasesColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get aliases.
@@ -37,35 +37,35 @@ import { CatAliasesColumns, CatRequestBase } from "@cat/_types/CatBase";
 export interface Request extends CatRequestBase {
   urls: [
     {
-      path: "/_cat/aliases";
-      methods: ["GET"];
+      path: '/_cat/aliases'
+      methods: ['GET']
     },
     {
-      path: "/_cat/aliases/{name}";
-      methods: ["GET"];
+      path: '/_cat/aliases/{name}'
+      methods: ['GET']
     }
-  ];
+  ]
   path_parts: {
     /** A comma-separated list of aliases to retrieve. Supports wildcards (`*`).  To retrieve all aliases, omit this parameter or use `*` or `_all`. */
-    name?: Names;
-  };
+    name?: Names
+  }
   query_parameters: {
     /**
      * A comma-separated list of columns names to display. It supports simple wildcards.
      */
-    h?: CatAliasesColumns;
+    h?: CatAliasesColumns
     /**
      * List of columns that determine how the table should be sorted.
      * Sorting defaults to ascending and can be changed by setting `:asc`
      * or `:desc` as a suffix to the column name.
      */
-    s?: Names;
+    s?: Names
     /**
      * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * It supports comma-separated values, such as `open,hidden`.
      */
-    expand_wildcards?: ExpandWildcards;
+    expand_wildcards?: ExpandWildcards
     /**
      * If `true`, the request computes the list of selected nodes from the
      * local cluster state. If `false` the list of selected nodes are computed
@@ -73,6 +73,6 @@ export interface Request extends CatRequestBase {
      * node will send requests for further information to each selected node.
      * @server_default false
      */
-    local?: boolean;
-  };
+    local?: boolean
+  }
 }
