@@ -18,6 +18,7 @@
  */
 
 import { DataStreamName, Field, Indices, Name } from '@_types/common'
+import {IndexMode} from "@indices/_types/DataStream";
 
 export class Response {
   body: {
@@ -32,7 +33,7 @@ export class ResolveIndexItem {
   aliases?: string[]
   attributes: string[]
   data_stream?: DataStreamName
-  mode?: string
+  mode?: IndexMode
 }
 
 export class ResolveIndexAliasItem {

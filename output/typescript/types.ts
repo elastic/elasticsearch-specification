@@ -13300,7 +13300,7 @@ export interface IndicesResolveIndexResolveIndexItem {
   aliases?: string[]
   attributes: string[]
   data_stream?: DataStreamName
-  mode?: string
+  mode?: IndicesIndexMode
 }
 
 export interface IndicesResolveIndexResponse {
