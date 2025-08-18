@@ -18,7 +18,6 @@
  */
 
 import { ExpandWildcards, Names } from '@_types/common'
-import { Duration } from '@_types/Time'
 import { CatAliasesColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
