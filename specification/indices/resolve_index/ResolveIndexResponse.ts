@@ -18,7 +18,7 @@
  */
 
 import { DataStreamName, Field, Indices, Name } from '@_types/common'
-import {IndexMode} from "@indices/_types/DataStream";
+import { IndexMode } from '@indices/_types/DataStream'
 
 export class Response {
   body: {
