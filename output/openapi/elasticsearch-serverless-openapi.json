@@ -55677,7 +55677,7 @@
             "$ref": "#/components/schemas/_types.DataStreamName"
           },
           "mode": {
-            "type": "string"
+            "$ref": "#/components/schemas/indices._types.IndexMode"
           }
         },
         "required": [
