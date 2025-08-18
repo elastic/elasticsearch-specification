@@ -3048,23 +3048,23 @@
   "specification/indices/clone/examples/request/indicesCloneRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.indices.clone(\n    index=\"my_source_index\",\n    target=\"my_target_index\",\n    settings={\n        \"index.number_of_shards\": 5\n    },\n    aliases={\n        \"my_search_indices\": {}\n    },\n)"
+      "code": "resp = client.indices.clone(\n    index=\"my_source_index\",\n    target=\"my_target_index\",\n    settings={\n        \"index.refresh_interval\": \"2s\"\n    },\n    aliases={\n        \"my_search_indices\": {}\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.indices.clone({\n  index: \"my_source_index\",\n  target: \"my_target_index\",\n  settings: {\n    \"index.number_of_shards\": 5,\n  },\n  aliases: {\n    my_search_indices: {},\n  },\n});"
+      "code": "const response = await client.indices.clone({\n  index: \"my_source_index\",\n  target: \"my_target_index\",\n  settings: {\n    \"index.refresh_interval\": \"2s\",\n  },\n  aliases: {\n    my_search_indices: {},\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.indices.clone(\n  index: \"my_source_index\",\n  target: \"my_target_index\",\n  body: {\n    \"settings\": {\n      \"index.number_of_shards\": 5\n    },\n    \"aliases\": {\n      \"my_search_indices\": {}\n    }\n  }\n)"
+      "code": "response = client.indices.clone(\n  index: \"my_source_index\",\n  target: \"my_target_index\",\n  body: {\n    \"settings\": {\n      \"index.refresh_interval\": \"2s\"\n    },\n    \"aliases\": {\n      \"my_search_indices\": {}\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->indices()->clone([\n    \"index\" => \"my_source_index\",\n    \"target\" => \"my_target_index\",\n    \"body\" => [\n        \"settings\" => [\n            \"index.number_of_shards\" => 5,\n        ],\n        \"aliases\" => [\n            \"my_search_indices\" => new ArrayObject([]),\n        ],\n    ],\n]);"
+      "code": "$resp = $client->indices()->clone([\n    \"index\" => \"my_source_index\",\n    \"target\" => \"my_target_index\",\n    \"body\" => [\n        \"settings\" => [\n            \"index.refresh_interval\" => \"2s\",\n        ],\n        \"aliases\" => [\n            \"my_search_indices\" => new ArrayObject([]),\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"settings\":{\"index.number_of_shards\":5},\"aliases\":{\"my_search_indices\":{}}}' \"$ELASTICSEARCH_URL/my_source_index/_clone/my_target_index\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"settings\":{\"index.refresh_interval\":\"2s\"},\"aliases\":{\"my_search_indices\":{}}}' \"$ELASTICSEARCH_URL/my_source_index/_clone/my_target_index\""
     },
     {
       "language": "Java",
@@ -9700,23 +9700,23 @@
   "specification/simulate/ingest/examples/request/SimulateIngestRequestExample2.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.simulate.ingest(\n    docs=[\n        {\n            \"_index\": \"my-index\",\n            \"_id\": 123,\n            \"_source\": {\n                \"foo\": \"bar\"\n            }\n        },\n        {\n            \"_index\": \"my-index\",\n            \"_id\": 456,\n            \"_source\": {\n                \"foo\": \"rab\"\n            }\n        }\n    ],\n    pipeline_substitutions={\n        \"my-pipeline\": {\n            \"processors\": [\n                {\n                    \"uppercase\": {\n                        \"field\": \"foo\"\n                    }\n                }\n            ]\n        }\n    },\n)"
+      "code": "resp = client.simulate.ingest(\n    docs=[\n        {\n            \"_index\": \"my-index\",\n            \"_id\": \"123\",\n            \"_source\": {\n                \"foo\": \"bar\"\n            }\n        },\n        {\n            \"_index\": \"my-index\",\n            \"_id\": \"456\",\n            \"_source\": {\n                \"foo\": \"rab\"\n            }\n        }\n    ],\n    pipeline_substitutions={\n        \"my-pipeline\": {\n            \"processors\": [\n                {\n                    \"uppercase\": {\n                        \"field\": \"foo\"\n                    }\n                }\n            ]\n        }\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.simulate.ingest({\n  docs: [\n    {\n      _index: \"my-index\",\n      _id: 123,\n      _source: {\n        foo: \"bar\",\n      },\n    },\n    {\n      _index: \"my-index\",\n      _id: 456,\n      _source: {\n        foo: \"rab\",\n      },\n    },\n  ],\n  pipeline_substitutions: {\n    \"my-pipeline\": {\n      processors: [\n        {\n          uppercase: {\n            field: \"foo\",\n          },\n        },\n      ],\n    },\n  },\n});"
+      "code": "const response = await client.simulate.ingest({\n  docs: [\n    {\n      _index: \"my-index\",\n      _id: \"123\",\n      _source: {\n        foo: \"bar\",\n      },\n    },\n    {\n      _index: \"my-index\",\n      _id: \"456\",\n      _source: {\n        foo: \"rab\",\n      },\n    },\n  ],\n  pipeline_substitutions: {\n    \"my-pipeline\": {\n      processors: [\n        {\n          uppercase: {\n            field: \"foo\",\n          },\n        },\n      ],\n    },\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.simulate.ingest(\n  body: {\n    \"docs\": [\n      {\n        \"_index\": \"my-index\",\n        \"_id\": 123,\n        \"_source\": {\n          \"foo\": \"bar\"\n        }\n      },\n      {\n        \"_index\": \"my-index\",\n        \"_id\": 456,\n        \"_source\": {\n          \"foo\": \"rab\"\n        }\n      }\n    ],\n    \"pipeline_substitutions\": {\n      \"my-pipeline\": {\n        \"processors\": [\n          {\n            \"uppercase\": {\n              \"field\": \"foo\"\n            }\n          }\n        ]\n      }\n    }\n  }\n)"
+      "code": "response = client.simulate.ingest(\n  body: {\n    \"docs\": [\n      {\n        \"_index\": \"my-index\",\n        \"_id\": \"123\",\n        \"_source\": {\n          \"foo\": \"bar\"\n        }\n      },\n      {\n        \"_index\": \"my-index\",\n        \"_id\": \"456\",\n        \"_source\": {\n          \"foo\": \"rab\"\n        }\n      }\n    ],\n    \"pipeline_substitutions\": {\n      \"my-pipeline\": {\n        \"processors\": [\n          {\n            \"uppercase\": {\n              \"field\": \"foo\"\n            }\n          }\n        ]\n      }\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->simulate()->ingest([\n    \"body\" => [\n        \"docs\" => array(\n            [\n                \"_index\" => \"my-index\",\n                \"_id\" => 123,\n                \"_source\" => [\n                    \"foo\" => \"bar\",\n                ],\n            ],\n            [\n                \"_index\" => \"my-index\",\n                \"_id\" => 456,\n                \"_source\" => [\n                    \"foo\" => \"rab\",\n                ],\n            ],\n        ),\n        \"pipeline_substitutions\" => [\n            \"my-pipeline\" => [\n                \"processors\" => array(\n                    [\n                        \"uppercase\" => [\n                            \"field\" => \"foo\",\n                        ],\n                    ],\n                ),\n            ],\n        ],\n    ],\n]);"
+      "code": "$resp = $client->simulate()->ingest([\n    \"body\" => [\n        \"docs\" => array(\n            [\n                \"_index\" => \"my-index\",\n                \"_id\" => \"123\",\n                \"_source\" => [\n                    \"foo\" => \"bar\",\n                ],\n            ],\n            [\n                \"_index\" => \"my-index\",\n                \"_id\" => \"456\",\n                \"_source\" => [\n                    \"foo\" => \"rab\",\n                ],\n            ],\n        ),\n        \"pipeline_substitutions\" => [\n            \"my-pipeline\" => [\n                \"processors\" => array(\n                    [\n                        \"uppercase\" => [\n                            \"field\" => \"foo\",\n                        ],\n                    ],\n                ),\n            ],\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"_index\":\"my-index\",\"_id\":123,\"_source\":{\"foo\":\"bar\"}},{\"_index\":\"my-index\",\"_id\":456,\"_source\":{\"foo\":\"rab\"}}],\"pipeline_substitutions\":{\"my-pipeline\":{\"processors\":[{\"uppercase\":{\"field\":\"foo\"}}]}}}' \"$ELASTICSEARCH_URL/_ingest/_simulate\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"_index\":\"my-index\",\"_id\":\"123\",\"_source\":{\"foo\":\"bar\"}},{\"_index\":\"my-index\",\"_id\":\"456\",\"_source\":{\"foo\":\"rab\"}}],\"pipeline_substitutions\":{\"my-pipeline\":{\"processors\":[{\"uppercase\":{\"field\":\"foo\"}}]}}}' \"$ELASTICSEARCH_URL/_ingest/_simulate\""
     },
     {
       "language": "Java",
@@ -9778,23 +9778,23 @@
   "specification/simulate/ingest/examples/request/SimulateIngestRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.simulate.ingest(\n    docs=[\n        {\n            \"_id\": 123,\n            \"_index\": \"my-index\",\n            \"_source\": {\n                \"foo\": \"bar\"\n            }\n        },\n        {\n            \"_id\": 456,\n            \"_index\": \"my-index\",\n            \"_source\": {\n                \"foo\": \"rab\"\n            }\n        }\n    ],\n)"
+      "code": "resp = client.simulate.ingest(\n    docs=[\n        {\n            \"_id\": \"123\",\n            \"_index\": \"my-index\",\n            \"_source\": {\n                \"foo\": \"bar\"\n            }\n        },\n        {\n            \"_id\": \"456\",\n            \"_index\": \"my-index\",\n            \"_source\": {\n                \"foo\": \"rab\"\n            }\n        }\n    ],\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.simulate.ingest({\n  docs: [\n    {\n      _id: 123,\n      _index: \"my-index\",\n      _source: {\n        foo: \"bar\",\n      },\n    },\n    {\n      _id: 456,\n      _index: \"my-index\",\n      _source: {\n        foo: \"rab\",\n      },\n    },\n  ],\n});"
+      "code": "const response = await client.simulate.ingest({\n  docs: [\n    {\n      _id: \"123\",\n      _index: \"my-index\",\n      _source: {\n        foo: \"bar\",\n      },\n    },\n    {\n      _id: \"456\",\n      _index: \"my-index\",\n      _source: {\n        foo: \"rab\",\n      },\n    },\n  ],\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.simulate.ingest(\n  body: {\n    \"docs\": [\n      {\n        \"_id\": 123,\n        \"_index\": \"my-index\",\n        \"_source\": {\n          \"foo\": \"bar\"\n        }\n      },\n      {\n        \"_id\": 456,\n        \"_index\": \"my-index\",\n        \"_source\": {\n          \"foo\": \"rab\"\n        }\n      }\n    ]\n  }\n)"
+      "code": "response = client.simulate.ingest(\n  body: {\n    \"docs\": [\n      {\n        \"_id\": \"123\",\n        \"_index\": \"my-index\",\n        \"_source\": {\n          \"foo\": \"bar\"\n        }\n      },\n      {\n        \"_id\": \"456\",\n        \"_index\": \"my-index\",\n        \"_source\": {\n          \"foo\": \"rab\"\n        }\n      }\n    ]\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->simulate()->ingest([\n    \"body\" => [\n        \"docs\" => array(\n            [\n                \"_id\" => 123,\n                \"_index\" => \"my-index\",\n                \"_source\" => [\n                    \"foo\" => \"bar\",\n                ],\n            ],\n            [\n                \"_id\" => 456,\n                \"_index\" => \"my-index\",\n                \"_source\" => [\n                    \"foo\" => \"rab\",\n                ],\n            ],\n        ),\n    ],\n]);"
+      "code": "$resp = $client->simulate()->ingest([\n    \"body\" => [\n        \"docs\" => array(\n            [\n                \"_id\" => \"123\",\n                \"_index\" => \"my-index\",\n                \"_source\" => [\n                    \"foo\" => \"bar\",\n                ],\n            ],\n            [\n                \"_id\" => \"456\",\n                \"_index\" => \"my-index\",\n                \"_source\" => [\n                    \"foo\" => \"rab\",\n                ],\n            ],\n        ),\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"_id\":123,\"_index\":\"my-index\",\"_source\":{\"foo\":\"bar\"}},{\"_id\":456,\"_index\":\"my-index\",\"_source\":{\"foo\":\"rab\"}}]}' \"$ELASTICSEARCH_URL/_ingest/_simulate\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"_id\":\"123\",\"_index\":\"my-index\",\"_source\":{\"foo\":\"bar\"}},{\"_id\":\"456\",\"_index\":\"my-index\",\"_source\":{\"foo\":\"rab\"}}]}' \"$ELASTICSEARCH_URL/_ingest/_simulate\""
     },
     {
       "language": "Java",
@@ -16935,6 +16935,292 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"cohere\",\"service_settings\":{\"api_key\":\"Cohere-API-key\",\"model_id\":\"command-a-03-2025\"}}' \"$ELASTICSEARCH_URL/_inference/completion/cohere-completion\""
+    }
+  ],
+  "specification/inference/put_amazonsagemaker/examples/request/PutAmazonSageMakerRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"amazon_sagemaker_embeddings\",\n    inference_config={\n        \"service\": \"amazon_sagemaker\",\n        \"service_settings\": {\n            \"access_key\": \"AWS-access-key\",\n            \"secret_key\": \"AWS-secret-key\",\n            \"region\": \"us-east-1\",\n            \"api\": \"elastic\",\n            \"endpoint_name\": \"my-endpoint\",\n            \"dimensions\": 384,\n            \"element_type\": \"float\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"amazon_sagemaker_embeddings\",\n  inference_config: {\n    service: \"amazon_sagemaker\",\n    service_settings: {\n      access_key: \"AWS-access-key\",\n      secret_key: \"AWS-secret-key\",\n      region: \"us-east-1\",\n      api: \"elastic\",\n      endpoint_name: \"my-endpoint\",\n      dimensions: 384,\n      element_type: \"float\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"amazon_sagemaker_embeddings\",\n  body: {\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n      \"access_key\": \"AWS-access-key\",\n      \"secret_key\": \"AWS-secret-key\",\n      \"region\": \"us-east-1\",\n      \"api\": \"elastic\",\n      \"endpoint_name\": \"my-endpoint\",\n      \"dimensions\": 384,\n      \"element_type\": \"float\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"amazon_sagemaker_embeddings\",\n    \"body\" => [\n        \"service\" => \"amazon_sagemaker\",\n        \"service_settings\" => [\n            \"access_key\" => \"AWS-access-key\",\n            \"secret_key\" => \"AWS-secret-key\",\n            \"region\" => \"us-east-1\",\n            \"api\" => \"elastic\",\n            \"endpoint_name\" => \"my-endpoint\",\n            \"dimensions\" => 384,\n            \"element_type\" => \"float\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"amazon_sagemaker\",\"service_settings\":{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"api\":\"elastic\",\"endpoint_name\":\"my-endpoint\",\"dimensions\":384,\"element_type\":\"float\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/amazon_sagemaker_embeddings\""
+    }
+  ],
+  "specification/inference/put_amazonsagemaker/examples/request/PutAmazonSageMakerRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"amazon_sagemaker_completion\",\n    inference_config={\n        \"service\": \"amazon_sagemaker\",\n        \"service_settings\": {\n            \"access_key\": \"AWS-access-key\",\n            \"secret_key\": \"AWS-secret-key\",\n            \"region\": \"us-east-1\",\n            \"api\": \"elastic\",\n            \"endpoint_name\": \"my-endpoint\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"amazon_sagemaker_completion\",\n  inference_config: {\n    service: \"amazon_sagemaker\",\n    service_settings: {\n      access_key: \"AWS-access-key\",\n      secret_key: \"AWS-secret-key\",\n      region: \"us-east-1\",\n      api: \"elastic\",\n      endpoint_name: \"my-endpoint\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"amazon_sagemaker_completion\",\n  body: {\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n      \"access_key\": \"AWS-access-key\",\n      \"secret_key\": \"AWS-secret-key\",\n      \"region\": \"us-east-1\",\n      \"api\": \"elastic\",\n      \"endpoint_name\": \"my-endpoint\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"amazon_sagemaker_completion\",\n    \"body\" => [\n        \"service\" => \"amazon_sagemaker\",\n        \"service_settings\" => [\n            \"access_key\" => \"AWS-access-key\",\n            \"secret_key\" => \"AWS-secret-key\",\n            \"region\" => \"us-east-1\",\n            \"api\" => \"elastic\",\n            \"endpoint_name\" => \"my-endpoint\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"amazon_sagemaker\",\"service_settings\":{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"api\":\"elastic\",\"endpoint_name\":\"my-endpoint\"}}' \"$ELASTICSEARCH_URL/_inference/completion/amazon_sagemaker_completion\""
+    }
+  ],
+  "specification/inference/put_amazonsagemaker/examples/request/PutAmazonSageMakerRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"amazon_sagemaker_chat_completion\",\n    inference_config={\n        \"service\": \"amazon_sagemaker\",\n        \"service_settings\": {\n            \"access_key\": \"AWS-access-key\",\n            \"secret_key\": \"AWS-secret-key\",\n            \"region\": \"us-east-1\",\n            \"api\": \"elastic\",\n            \"endpoint_name\": \"my-endpoint\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"amazon_sagemaker_chat_completion\",\n  inference_config: {\n    service: \"amazon_sagemaker\",\n    service_settings: {\n      access_key: \"AWS-access-key\",\n      secret_key: \"AWS-secret-key\",\n      region: \"us-east-1\",\n      api: \"elastic\",\n      endpoint_name: \"my-endpoint\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"amazon_sagemaker_chat_completion\",\n  body: {\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n      \"access_key\": \"AWS-access-key\",\n      \"secret_key\": \"AWS-secret-key\",\n      \"region\": \"us-east-1\",\n      \"api\": \"elastic\",\n      \"endpoint_name\": \"my-endpoint\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"amazon_sagemaker_chat_completion\",\n    \"body\" => [\n        \"service\" => \"amazon_sagemaker\",\n        \"service_settings\" => [\n            \"access_key\" => \"AWS-access-key\",\n            \"secret_key\" => \"AWS-secret-key\",\n            \"region\" => \"us-east-1\",\n            \"api\" => \"elastic\",\n            \"endpoint_name\" => \"my-endpoint\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"amazon_sagemaker\",\"service_settings\":{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"api\":\"elastic\",\"endpoint_name\":\"my-endpoint\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/amazon_sagemaker_chat_completion\""
+    }
+  ],
+  "specification/inference/put_amazonsagemaker/examples/request/PutAmazonSageMakerRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"sparse_embedding\",\n    inference_id=\"amazon_sagemaker_sparse_embedding\",\n    inference_config={\n        \"service\": \"amazon_sagemaker\",\n        \"service_settings\": {\n            \"access_key\": \"AWS-access-key\",\n            \"secret_key\": \"AWS-secret-key\",\n            \"region\": \"us-east-1\",\n            \"api\": \"elastic\",\n            \"endpoint_name\": \"my-endpoint\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"sparse_embedding\",\n  inference_id: \"amazon_sagemaker_sparse_embedding\",\n  inference_config: {\n    service: \"amazon_sagemaker\",\n    service_settings: {\n      access_key: \"AWS-access-key\",\n      secret_key: \"AWS-secret-key\",\n      region: \"us-east-1\",\n      api: \"elastic\",\n      endpoint_name: \"my-endpoint\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"sparse_embedding\",\n  inference_id: \"amazon_sagemaker_sparse_embedding\",\n  body: {\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n      \"access_key\": \"AWS-access-key\",\n      \"secret_key\": \"AWS-secret-key\",\n      \"region\": \"us-east-1\",\n      \"api\": \"elastic\",\n      \"endpoint_name\": \"my-endpoint\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"sparse_embedding\",\n    \"inference_id\" => \"amazon_sagemaker_sparse_embedding\",\n    \"body\" => [\n        \"service\" => \"amazon_sagemaker\",\n        \"service_settings\" => [\n            \"access_key\" => \"AWS-access-key\",\n            \"secret_key\" => \"AWS-secret-key\",\n            \"region\" => \"us-east-1\",\n            \"api\" => \"elastic\",\n            \"endpoint_name\" => \"my-endpoint\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"amazon_sagemaker\",\"service_settings\":{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"api\":\"elastic\",\"endpoint_name\":\"my-endpoint\"}}' \"$ELASTICSEARCH_URL/_inference/sparse_embedding/amazon_sagemaker_sparse_embedding\""
+    }
+  ],
+  "specification/inference/put_amazonsagemaker/examples/request/PutAmazonSageMakerRequestExample5.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"rerank\",\n    inference_id=\"amazon_sagemaker_rerank\",\n    inference_config={\n        \"service\": \"amazon_sagemaker\",\n        \"service_settings\": {\n            \"access_key\": \"AWS-access-key\",\n            \"secret_key\": \"AWS-secret-key\",\n            \"region\": \"us-east-1\",\n            \"api\": \"elastic\",\n            \"endpoint_name\": \"my-endpoint\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"rerank\",\n  inference_id: \"amazon_sagemaker_rerank\",\n  inference_config: {\n    service: \"amazon_sagemaker\",\n    service_settings: {\n      access_key: \"AWS-access-key\",\n      secret_key: \"AWS-secret-key\",\n      region: \"us-east-1\",\n      api: \"elastic\",\n      endpoint_name: \"my-endpoint\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"rerank\",\n  inference_id: \"amazon_sagemaker_rerank\",\n  body: {\n    \"service\": \"amazon_sagemaker\",\n    \"service_settings\": {\n      \"access_key\": \"AWS-access-key\",\n      \"secret_key\": \"AWS-secret-key\",\n      \"region\": \"us-east-1\",\n      \"api\": \"elastic\",\n      \"endpoint_name\": \"my-endpoint\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"amazon_sagemaker_rerank\",\n    \"body\" => [\n        \"service\" => \"amazon_sagemaker\",\n        \"service_settings\" => [\n            \"access_key\" => \"AWS-access-key\",\n            \"secret_key\" => \"AWS-secret-key\",\n            \"region\" => \"us-east-1\",\n            \"api\" => \"elastic\",\n            \"endpoint_name\" => \"my-endpoint\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"amazon_sagemaker\",\"service_settings\":{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"api\":\"elastic\",\"endpoint_name\":\"my-endpoint\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/amazon_sagemaker_rerank\""
+    }
+  ],
+  "specification/inference/put_ai21/examples/request/PutAi21RequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"ai21-completion\",\n    inference_config={\n        \"service\": \"ai21\",\n        \"service_settings\": {\n            \"api_key\": \"ai21-api-key\",\n            \"model_id\": \"jamba-large\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"ai21-completion\",\n  inference_config: {\n    service: \"ai21\",\n    service_settings: {\n      api_key: \"ai21-api-key\",\n      model_id: \"jamba-large\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"ai21-completion\",\n  body: {\n    \"service\": \"ai21\",\n    \"service_settings\": {\n      \"api_key\": \"ai21-api-key\",\n      \"model_id\": \"jamba-large\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"ai21-completion\",\n    \"body\" => [\n        \"service\" => \"ai21\",\n        \"service_settings\" => [\n            \"api_key\" => \"ai21-api-key\",\n            \"model_id\" => \"jamba-large\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"ai21\",\"service_settings\":{\"api_key\":\"ai21-api-key\",\"model_id\":\"jamba-large\"}}' \"$ELASTICSEARCH_URL/_inference/completion/ai21-completion\""
+    }
+  ],
+  "specification/inference/put_ai21/examples/request/PutAi21RequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat-completion\",\n    inference_id=\"ai21-chat-completion\",\n    inference_config={\n        \"service\": \"ai21\",\n        \"service_settings\": {\n            \"api_key\": \"ai21-api-key\",\n            \"model_id\": \"jamba-mini\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat-completion\",\n  inference_id: \"ai21-chat-completion\",\n  inference_config: {\n    service: \"ai21\",\n    service_settings: {\n      api_key: \"ai21-api-key\",\n      model_id: \"jamba-mini\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat-completion\",\n  inference_id: \"ai21-chat-completion\",\n  body: {\n    \"service\": \"ai21\",\n    \"service_settings\": {\n      \"api_key\": \"ai21-api-key\",\n      \"model_id\": \"jamba-mini\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat-completion\",\n    \"inference_id\" => \"ai21-chat-completion\",\n    \"body\" => [\n        \"service\" => \"ai21\",\n        \"service_settings\" => [\n            \"api_key\" => \"ai21-api-key\",\n            \"model_id\" => \"jamba-mini\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"ai21\",\"service_settings\":{\"api_key\":\"ai21-api-key\",\"model_id\":\"jamba-mini\"}}' \"$ELASTICSEARCH_URL/_inference/chat-completion/ai21-chat-completion\""
+    }
+  ],
+  "specification/inference/put_custom/examples/request/PutCustomRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"custom-embeddings\",\n    inference_config={\n        \"service\": \"custom\",\n        \"service_settings\": {\n            \"secret_parameters\": {\n                \"api_key\": \"<api key>\"\n            },\n            \"url\": \"https://api.openai.com/v1/embeddings\",\n            \"headers\": {\n                \"Authorization\": \"Bearer ${api_key}\",\n                \"Content-Type\": \"application/json;charset=utf-8\"\n            },\n            \"request\": \"{\\\"input\\\": ${input}, \\\"model\\\": \\\"text-embedding-3-small\\\"}\",\n            \"response\": {\n                \"json_parser\": {\n                    \"text_embeddings\": \"$.data[*].embedding[*]\"\n                }\n            }\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"custom-embeddings\",\n  inference_config: {\n    service: \"custom\",\n    service_settings: {\n      secret_parameters: {\n        api_key: \"<api key>\",\n      },\n      url: \"https://api.openai.com/v1/embeddings\",\n      headers: {\n        Authorization: \"Bearer ${api_key}\",\n        \"Content-Type\": \"application/json;charset=utf-8\",\n      },\n      request: '{\"input\": ${input}, \"model\": \"text-embedding-3-small\"}',\n      response: {\n        json_parser: {\n          text_embeddings: \"$.data[*].embedding[*]\",\n        },\n      },\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"custom-embeddings\",\n  body: {\n    \"service\": \"custom\",\n    \"service_settings\": {\n      \"secret_parameters\": {\n        \"api_key\": \"<api key>\"\n      },\n      \"url\": \"https://api.openai.com/v1/embeddings\",\n      \"headers\": {\n        \"Authorization\": \"Bearer ${api_key}\",\n        \"Content-Type\": \"application/json;charset=utf-8\"\n      },\n      \"request\": \"{\\\"input\\\": ${input}, \\\"model\\\": \\\"text-embedding-3-small\\\"}\",\n      \"response\": {\n        \"json_parser\": {\n          \"text_embeddings\": \"$.data[*].embedding[*]\"\n        }\n      }\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"custom-embeddings\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"https://api.openai.com/v1/embeddings\",\n            \"headers\" => [\n                \"Authorization\" => \"Bearer ${api_key}\",\n                \"Content-Type\" => \"application/json;charset=utf-8\",\n            ],\n            \"request\" => \"{\\\"input\\\": ${input}, \\\"model\\\": \\\"text-embedding-3-small\\\"}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"text_embeddings\" => \"$.data[*].embedding[*]\",\n                ],\n            ],\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"custom\",\"service_settings\":{\"secret_parameters\":{\"api_key\":\"<api key>\"},\"url\":\"https://api.openai.com/v1/embeddings\",\"headers\":{\"Authorization\":\"Bearer ${api_key}\",\"Content-Type\":\"application/json;charset=utf-8\"},\"request\":\"{\\\"input\\\": ${input}, \\\"model\\\": \\\"text-embedding-3-small\\\"}\",\"response\":{\"json_parser\":{\"text_embeddings\":\"$.data[*].embedding[*]\"}}}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/custom-embeddings\""
+    }
+  ],
+  "specification/inference/put_custom/examples/request/PutCustomRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"custom-text-embedding\",\n    inference_config={\n        \"service\": \"custom\",\n        \"service_settings\": {\n            \"secret_parameters\": {\n                \"api_key\": \"<api key>\"\n            },\n            \"url\": \"https://api.cohere.com/v2/embed\",\n            \"headers\": {\n                \"Authorization\": \"bearer ${api_key}\",\n                \"Content-Type\": \"application/json\"\n            },\n            \"request\": \"{\\\"texts\\\": ${input}, \\\"model\\\": \\\"embed-v4.0\\\", \\\"input_type\\\": ${input_type}}\",\n            \"response\": {\n                \"json_parser\": {\n                    \"text_embeddings\": \"$.embeddings.float[*]\"\n                }\n            },\n            \"input_type\": {\n                \"translation\": {\n                    \"ingest\": \"search_document\",\n                    \"search\": \"search_query\"\n                },\n                \"default\": \"search_document\"\n            }\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"custom-text-embedding\",\n  inference_config: {\n    service: \"custom\",\n    service_settings: {\n      secret_parameters: {\n        api_key: \"<api key>\",\n      },\n      url: \"https://api.cohere.com/v2/embed\",\n      headers: {\n        Authorization: \"bearer ${api_key}\",\n        \"Content-Type\": \"application/json\",\n      },\n      request:\n        '{\"texts\": ${input}, \"model\": \"embed-v4.0\", \"input_type\": ${input_type}}',\n      response: {\n        json_parser: {\n          text_embeddings: \"$.embeddings.float[*]\",\n        },\n      },\n      input_type: {\n        translation: {\n          ingest: \"search_document\",\n          search: \"search_query\",\n        },\n        default: \"search_document\",\n      },\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"custom-text-embedding\",\n  body: {\n    \"service\": \"custom\",\n    \"service_settings\": {\n      \"secret_parameters\": {\n        \"api_key\": \"<api key>\"\n      },\n      \"url\": \"https://api.cohere.com/v2/embed\",\n      \"headers\": {\n        \"Authorization\": \"bearer ${api_key}\",\n        \"Content-Type\": \"application/json\"\n      },\n      \"request\": \"{\\\"texts\\\": ${input}, \\\"model\\\": \\\"embed-v4.0\\\", \\\"input_type\\\": ${input_type}}\",\n      \"response\": {\n        \"json_parser\": {\n          \"text_embeddings\": \"$.embeddings.float[*]\"\n        }\n      },\n      \"input_type\": {\n        \"translation\": {\n          \"ingest\": \"search_document\",\n          \"search\": \"search_query\"\n        },\n        \"default\": \"search_document\"\n      }\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"custom-text-embedding\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"https://api.cohere.com/v2/embed\",\n            \"headers\" => [\n                \"Authorization\" => \"bearer ${api_key}\",\n                \"Content-Type\" => \"application/json\",\n            ],\n            \"request\" => \"{\\\"texts\\\": ${input}, \\\"model\\\": \\\"embed-v4.0\\\", \\\"input_type\\\": ${input_type}}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"text_embeddings\" => \"$.embeddings.float[*]\",\n                ],\n            ],\n            \"input_type\" => [\n                \"translation\" => [\n                    \"ingest\" => \"search_document\",\n                    \"search\" => \"search_query\",\n                ],\n                \"default\" => \"search_document\",\n            ],\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"custom\",\"service_settings\":{\"secret_parameters\":{\"api_key\":\"<api key>\"},\"url\":\"https://api.cohere.com/v2/embed\",\"headers\":{\"Authorization\":\"bearer ${api_key}\",\"Content-Type\":\"application/json\"},\"request\":\"{\\\"texts\\\": ${input}, \\\"model\\\": \\\"embed-v4.0\\\", \\\"input_type\\\": ${input_type}}\",\"response\":{\"json_parser\":{\"text_embeddings\":\"$.embeddings.float[*]\"}},\"input_type\":{\"translation\":{\"ingest\":\"search_document\",\"search\":\"search_query\"},\"default\":\"search_document\"}}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/custom-text-embedding\""
+    }
+  ],
+  "specification/inference/put_custom/examples/request/PutCustomRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"rerank\",\n    inference_id=\"custom-rerank\",\n    inference_config={\n        \"service\": \"custom\",\n        \"service_settings\": {\n            \"secret_parameters\": {\n                \"api_key\": \"<api key>\"\n            },\n            \"url\": \"https://api.cohere.com/v2/rerank\",\n            \"headers\": {\n                \"Authorization\": \"bearer ${api_key}\",\n                \"Content-Type\": \"application/json\"\n            },\n            \"request\": \"{\\\"documents\\\": ${input}, \\\"query\\\": ${query}, \\\"model\\\": \\\"rerank-v3.5\\\"}\",\n            \"response\": {\n                \"json_parser\": {\n                    \"reranked_index\": \"$.results[*].index\",\n                    \"relevance_score\": \"$.results[*].relevance_score\"\n                }\n            }\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"rerank\",\n  inference_id: \"custom-rerank\",\n  inference_config: {\n    service: \"custom\",\n    service_settings: {\n      secret_parameters: {\n        api_key: \"<api key>\",\n      },\n      url: \"https://api.cohere.com/v2/rerank\",\n      headers: {\n        Authorization: \"bearer ${api_key}\",\n        \"Content-Type\": \"application/json\",\n      },\n      request:\n        '{\"documents\": ${input}, \"query\": ${query}, \"model\": \"rerank-v3.5\"}',\n      response: {\n        json_parser: {\n          reranked_index: \"$.results[*].index\",\n          relevance_score: \"$.results[*].relevance_score\",\n        },\n      },\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"rerank\",\n  inference_id: \"custom-rerank\",\n  body: {\n    \"service\": \"custom\",\n    \"service_settings\": {\n      \"secret_parameters\": {\n        \"api_key\": \"<api key>\"\n      },\n      \"url\": \"https://api.cohere.com/v2/rerank\",\n      \"headers\": {\n        \"Authorization\": \"bearer ${api_key}\",\n        \"Content-Type\": \"application/json\"\n      },\n      \"request\": \"{\\\"documents\\\": ${input}, \\\"query\\\": ${query}, \\\"model\\\": \\\"rerank-v3.5\\\"}\",\n      \"response\": {\n        \"json_parser\": {\n          \"reranked_index\": \"$.results[*].index\",\n          \"relevance_score\": \"$.results[*].relevance_score\"\n        }\n      }\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"custom-rerank\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"https://api.cohere.com/v2/rerank\",\n            \"headers\" => [\n                \"Authorization\" => \"bearer ${api_key}\",\n                \"Content-Type\" => \"application/json\",\n            ],\n            \"request\" => \"{\\\"documents\\\": ${input}, \\\"query\\\": ${query}, \\\"model\\\": \\\"rerank-v3.5\\\"}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"reranked_index\" => \"$.results[*].index\",\n                    \"relevance_score\" => \"$.results[*].relevance_score\",\n                ],\n            ],\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"custom\",\"service_settings\":{\"secret_parameters\":{\"api_key\":\"<api key>\"},\"url\":\"https://api.cohere.com/v2/rerank\",\"headers\":{\"Authorization\":\"bearer ${api_key}\",\"Content-Type\":\"application/json\"},\"request\":\"{\\\"documents\\\": ${input}, \\\"query\\\": ${query}, \\\"model\\\": \\\"rerank-v3.5\\\"}\",\"response\":{\"json_parser\":{\"reranked_index\":\"$.results[*].index\",\"relevance_score\":\"$.results[*].relevance_score\"}}}}' \"$ELASTICSEARCH_URL/_inference/rerank/custom-rerank\""
+    }
+  ],
+  "specification/inference/put_custom/examples/request/PutCustomRequestExample5.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"custom-text-embedding-hf\",\n    inference_config={\n        \"service\": \"custom\",\n        \"service_settings\": {\n            \"secret_parameters\": {\n                \"api_key\": \"<api key>\"\n            },\n            \"url\": \"<dedicated inference endpoint on HF>/v1/embeddings\",\n            \"headers\": {\n                \"Authorization\": \"Bearer ${api_key}\",\n                \"Content-Type\": \"application/json\"\n            },\n            \"request\": \"{\\\"input\\\": ${input}}\",\n            \"response\": {\n                \"json_parser\": {\n                    \"text_embeddings\": \"$.data[*].embedding[*]\"\n                }\n            }\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"custom-text-embedding-hf\",\n  inference_config: {\n    service: \"custom\",\n    service_settings: {\n      secret_parameters: {\n        api_key: \"<api key>\",\n      },\n      url: \"<dedicated inference endpoint on HF>/v1/embeddings\",\n      headers: {\n        Authorization: \"Bearer ${api_key}\",\n        \"Content-Type\": \"application/json\",\n      },\n      request: '{\"input\": ${input}}',\n      response: {\n        json_parser: {\n          text_embeddings: \"$.data[*].embedding[*]\",\n        },\n      },\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"custom-text-embedding-hf\",\n  body: {\n    \"service\": \"custom\",\n    \"service_settings\": {\n      \"secret_parameters\": {\n        \"api_key\": \"<api key>\"\n      },\n      \"url\": \"<dedicated inference endpoint on HF>/v1/embeddings\",\n      \"headers\": {\n        \"Authorization\": \"Bearer ${api_key}\",\n        \"Content-Type\": \"application/json\"\n      },\n      \"request\": \"{\\\"input\\\": ${input}}\",\n      \"response\": {\n        \"json_parser\": {\n          \"text_embeddings\": \"$.data[*].embedding[*]\"\n        }\n      }\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"custom-text-embedding-hf\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"<dedicated inference endpoint on HF>/v1/embeddings\",\n            \"headers\" => [\n                \"Authorization\" => \"Bearer ${api_key}\",\n                \"Content-Type\" => \"application/json\",\n            ],\n            \"request\" => \"{\\\"input\\\": ${input}}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"text_embeddings\" => \"$.data[*].embedding[*]\",\n                ],\n            ],\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"custom\",\"service_settings\":{\"secret_parameters\":{\"api_key\":\"<api key>\"},\"url\":\"<dedicated inference endpoint on HF>/v1/embeddings\",\"headers\":{\"Authorization\":\"Bearer ${api_key}\",\"Content-Type\":\"application/json\"},\"request\":\"{\\\"input\\\": ${input}}\",\"response\":{\"json_parser\":{\"text_embeddings\":\"$.data[*].embedding[*]\"}}}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/custom-text-embedding-hf\""
+    }
+  ],
+  "specification/inference/put_custom/examples/request/PutCustomRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"rerank\",\n    inference_id=\"custom-rerank-jina\",\n    inference_config={\n        \"service\": \"custom\",\n        \"service_settings\": {\n            \"secret_parameters\": {\n                \"api_key\": \"<api key>\"\n            },\n            \"url\": \"https://api.jina.ai/v1/rerank\",\n            \"headers\": {\n                \"Content-Type\": \"application/json\",\n                \"Authorization\": \"Bearer ${api_key}\"\n            },\n            \"request\": \"{\\\"model\\\": \\\"jina-reranker-v2-base-multilingual\\\",\\\"query\\\": ${query},\\\"documents\\\":${input}}\",\n            \"response\": {\n                \"json_parser\": {\n                    \"relevance_score\": \"$.results[*].relevance_score\",\n                    \"reranked_index\": \"$.results[*].index\"\n                }\n            }\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"rerank\",\n  inference_id: \"custom-rerank-jina\",\n  inference_config: {\n    service: \"custom\",\n    service_settings: {\n      secret_parameters: {\n        api_key: \"<api key>\",\n      },\n      url: \"https://api.jina.ai/v1/rerank\",\n      headers: {\n        \"Content-Type\": \"application/json\",\n        Authorization: \"Bearer ${api_key}\",\n      },\n      request:\n        '{\"model\": \"jina-reranker-v2-base-multilingual\",\"query\": ${query},\"documents\":${input}}',\n      response: {\n        json_parser: {\n          relevance_score: \"$.results[*].relevance_score\",\n          reranked_index: \"$.results[*].index\",\n        },\n      },\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"rerank\",\n  inference_id: \"custom-rerank-jina\",\n  body: {\n    \"service\": \"custom\",\n    \"service_settings\": {\n      \"secret_parameters\": {\n        \"api_key\": \"<api key>\"\n      },\n      \"url\": \"https://api.jina.ai/v1/rerank\",\n      \"headers\": {\n        \"Content-Type\": \"application/json\",\n        \"Authorization\": \"Bearer ${api_key}\"\n      },\n      \"request\": \"{\\\"model\\\": \\\"jina-reranker-v2-base-multilingual\\\",\\\"query\\\": ${query},\\\"documents\\\":${input}}\",\n      \"response\": {\n        \"json_parser\": {\n          \"relevance_score\": \"$.results[*].relevance_score\",\n          \"reranked_index\": \"$.results[*].index\"\n        }\n      }\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"custom-rerank-jina\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"https://api.jina.ai/v1/rerank\",\n            \"headers\" => [\n                \"Content-Type\" => \"application/json\",\n                \"Authorization\" => \"Bearer ${api_key}\",\n            ],\n            \"request\" => \"{\\\"model\\\": \\\"jina-reranker-v2-base-multilingual\\\",\\\"query\\\": ${query},\\\"documents\\\":${input}}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"relevance_score\" => \"$.results[*].relevance_score\",\n                    \"reranked_index\" => \"$.results[*].index\",\n                ],\n            ],\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"custom\",\"service_settings\":{\"secret_parameters\":{\"api_key\":\"<api key>\"},\"url\":\"https://api.jina.ai/v1/rerank\",\"headers\":{\"Content-Type\":\"application/json\",\"Authorization\":\"Bearer ${api_key}\"},\"request\":\"{\\\"model\\\": \\\"jina-reranker-v2-base-multilingual\\\",\\\"query\\\": ${query},\\\"documents\\\":${input}}\",\"response\":{\"json_parser\":{\"relevance_score\":\"$.results[*].relevance_score\",\"reranked_index\":\"$.results[*].index\"}}}}' \"$ELASTICSEARCH_URL/_inference/rerank/custom-rerank-jina\""
+    }
+  ],
+  "specification/inference/put_azureaistudio/examples/request/PutAzureAiStudioRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"rerank\",\n    inference_id=\"azure_ai_studio_rerank\",\n    inference_config={\n        \"service\": \"azureaistudio\",\n        \"service_settings\": {\n            \"api_key\": \"Azure-AI-Studio-API-key\",\n            \"target\": \"Target-URI\",\n            \"provider\": \"cohere\",\n            \"endpoint_type\": \"token\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"rerank\",\n  inference_id: \"azure_ai_studio_rerank\",\n  inference_config: {\n    service: \"azureaistudio\",\n    service_settings: {\n      api_key: \"Azure-AI-Studio-API-key\",\n      target: \"Target-URI\",\n      provider: \"cohere\",\n      endpoint_type: \"token\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"rerank\",\n  inference_id: \"azure_ai_studio_rerank\",\n  body: {\n    \"service\": \"azureaistudio\",\n    \"service_settings\": {\n      \"api_key\": \"Azure-AI-Studio-API-key\",\n      \"target\": \"Target-URI\",\n      \"provider\": \"cohere\",\n      \"endpoint_type\": \"token\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"azure_ai_studio_rerank\",\n    \"body\" => [\n        \"service\" => \"azureaistudio\",\n        \"service_settings\" => [\n            \"api_key\" => \"Azure-AI-Studio-API-key\",\n            \"target\" => \"Target-URI\",\n            \"provider\" => \"cohere\",\n            \"endpoint_type\" => \"token\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"azureaistudio\",\"service_settings\":{\"api_key\":\"Azure-AI-Studio-API-key\",\"target\":\"Target-URI\",\"provider\":\"cohere\",\"endpoint_type\":\"token\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/azure_ai_studio_rerank\""
     }
   ]
 }
