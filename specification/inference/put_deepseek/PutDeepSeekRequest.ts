@@ -32,7 +32,7 @@ import { TaskTypeDeepSeek } from '@inference/_types/TaskType'
  *
  * Create an inference endpoint to perform an inference task with the `deepseek` service.
  * @rest_spec_name inference.put_deepseek
- * @availability stack since=9.1.0 stability=stable visibility=public
+ * @availability stack since=8.19.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference
  * @doc_id inference-api-put-deepseek
