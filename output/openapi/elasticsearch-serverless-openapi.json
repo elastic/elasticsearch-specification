@@ -10534,7 +10534,7 @@
                 "examples": {
                   "ResolveIndexResponseExample1": {
                     "description": "A successful response from `GET /_resolve/index/f*,remoteCluster1:bar*?expand_wildcards=all`.",
-                    "value": "{\n  \"indices\": [\n    {\n      \"name\": \"foo_closed\",\n      \"attributes\": [\n        \"closed\"\n      ]\n    },\n    {\n      \"name\": \"freeze-index\",\n      \"aliases\": [\n        \"f-alias\"\n      ],\n      \"attributes\": [\n        \"open\"\n      ]\n    },\n    {\n      \"name\": \"remoteCluster1:bar-01\",\n      \"attributes\": [\n        \"open\"\n      ]\n    }\n  ],\n  \"aliases\": [\n    {\n      \"name\": \"f-alias\",\n      \"indices\": [\n        \"freeze-index\",\n        \"my-index-000001\"\n      ]\n    }\n  ],\n  \"data_streams\": [\n    {\n      \"name\": \"foo\",\n      \"backing_indices\": [\n        \".ds-foo-2099.03.07-000001\"\n      ],\n      \"timestamp_field\": \"@timestamp\"\n    }\n  ]\n}"
+                    "value": "{\n  \"indices\": [\n    {\n      \"name\": \"foo_closed\",\n      \"attributes\": [\n        \"closed\"\n      ],\n      \"mode\": \"standard\"\n    },\n    {\n      \"name\": \"freeze-index\",\n      \"aliases\": [\n        \"f-alias\"\n      ],\n      \"attributes\": [\n        \"open\"\n      ]\n    },\n    {\n      \"name\": \"remoteCluster1:bar-01\",\n      \"attributes\": [\n        \"open\"\n      ]\n    }\n  ],\n  \"aliases\": [\n    {\n      \"name\": \"f-alias\",\n      \"indices\": [\n        \"freeze-index\",\n        \"my-index-000001\"\n      ]\n    }\n  ],\n  \"data_streams\": [\n    {\n      \"name\": \"foo\",\n      \"backing_indices\": [\n        \".ds-foo-2099.03.07-000001\"\n      ],\n      \"timestamp_field\": \"@timestamp\"\n    }\n  ]\n}"
                   }
                 }
               }
@@ -55675,6 +55675,9 @@
           },
           "data_stream": {
             "$ref": "#/components/schemas/_types.DataStreamName"
+          },
+          "mode": {
+            "$ref": "#/components/schemas/indices._types.IndexMode"
           }
         },
         "required": [
