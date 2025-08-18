@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Indices, Names } from "@_types/common";
-import { CatCountColumns, CatRequestBase } from "@cat/_types/CatBase";
+import { Indices, Names } from '@_types/common'
+import { CatCountColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get a document count.
@@ -37,32 +37,32 @@ import { CatCountColumns, CatRequestBase } from "@cat/_types/CatBase";
 export interface Request extends CatRequestBase {
   urls: [
     {
-      path: "/_cat/count";
-      methods: ["GET"];
+      path: '/_cat/count'
+      methods: ['GET']
     },
     {
-      path: "/_cat/count/{index}";
-      methods: ["GET"];
+      path: '/_cat/count/{index}'
+      methods: ['GET']
     }
-  ];
+  ]
   path_parts: {
     /**
      * A comma-separated list of data streams, indices, and aliases used to limit the request.
      * It supports wildcards (`*`).
      * To target all data streams and indices, omit this parameter or use `*` or `_all`.
      */
-    index?: Indices;
-  };
+    index?: Indices
+  }
   query_parameters: {
     /**
      * A comma-separated list of columns names to display. It supports simple wildcards.
      */
-    h?: CatCountColumns;
+    h?: CatCountColumns
     /**
      * List of columns that determine how the table should be sorted.
      * Sorting defaults to ascending and can be changed by setting `:asc`
      * or `:desc` as a suffix to the column name.
      */
-    s?: Names;
-  };
+    s?: Names
+  }
 }
