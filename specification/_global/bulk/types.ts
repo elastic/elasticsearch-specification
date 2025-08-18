@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { SourceConfig } from '@global/search/_types/SourceFilter'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Id,
   IndexName,
@@ -33,6 +30,9 @@ import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { ShardStatistics } from '@_types/Stats'
+import { SourceConfig } from '@global/search/_types/SourceFilter'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class ResponseItem {
   /**

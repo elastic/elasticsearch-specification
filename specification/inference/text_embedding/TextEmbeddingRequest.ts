@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { TaskSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { TaskSettings } from '@inference/_types/Services'
 
 /**
  * Perform text embedding inference on the service

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ApiKeyAggregationContainer, ApiKeyQueryContainer } from './types'
 
 /**

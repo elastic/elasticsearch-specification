@@ -1,5 +1,5 @@
 summary: Bulk delete example 1
-# method_request: DELETE /_security/role
+method_request: DELETE /_security/role
 description: >
   Run DELETE /_security/role` to delete `my_admin_role` and `my_user_role` roles.
 # type: request

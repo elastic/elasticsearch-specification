@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { AutoscalingPolicy } from '@autoscaling/_types/AutoscalingPolicy'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { AutoscalingPolicy } from '@autoscaling/_types/AutoscalingPolicy'
 
 /**
  * Create or update an autoscaling policy.

@@ -1069,23 +1069,34 @@ actions:
       x-model: true
       externalDocs:
         url: https://www.elastic.co/guide/en/elasticsearch/reference/8.18/collapse-search-results.html
+  - target: "$.components['schemas']['indices._types.IndexSettings']"
+    description: Add x-model and externalDocs for IndexSettings component
+    update:
+      x-model: true
+      externalDocs:
+        description: Index settings
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/8.18/index-modules.html
+  - target: "$.components['schemas']['indices._types.IndexSettings'].properties"
+    description: Remove properties IndexSettings object
+    remove: true
   # - target: "$.components['schemas']['_global.msearch.MultisearchBody'].properties"
   #   description: Add x-model
   #   update:
   #     aggregations:
   #       x-model: true
-# Examples
-## xCodeSamples
-  - target: "$.paths['/{index}/_doc/{id}']['head']"
-    description: "Add xCodeSamples for check document operation"
-    update: 
-      x-codeSamples:
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsConsoleExample1.yaml"
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsCurlExample1.yaml"
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsJavaScriptExample1.yaml"
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsPythonExample1.yaml"
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsRubyExample1.yaml"
 # Remove long lists of enum values
   - target: "$.components['schemas']['cat._types.CatAnomalyDetectorColumn'].enum"
-    description: Remove enum array
+    description: Remove enum array from cat detectors
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatDfaColumn'].enum"
+    description: Remove enum array from cat data frame analytics
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatDatafeedColumn'].enum"
+    description: Remove enum array from cat datafeeds
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatTrainedModelsColumn'].enum"
+    description: Remove enum array from cat trained models
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatTransformColumn'].enum"
+    description: Remove enum array from cat transforms
     remove: true

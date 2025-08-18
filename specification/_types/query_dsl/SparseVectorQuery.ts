@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Id } from '@_types/common'
 import { float } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { QueryBase } from './abstractions'
 import { TokenPruningConfig } from './TokenPruningConfig'
 

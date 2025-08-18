@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { AdditionalProperties } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   Fuzziness,
@@ -30,9 +27,12 @@ import {
 } from '@_types/common'
 import { GeoHashPrecision, GeoLocation } from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
- * @variants external
+ * @variants typed_keys_quirk
  */
 export type Suggest<TDocument> =
   | CompletionSuggest<TDocument>

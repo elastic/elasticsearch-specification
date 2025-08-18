@@ -1,6 +1,8 @@
 # summary:
-description: Run `PUT _inference/text_embedding/mistral-embeddings-test` to create a Mistral inference endpoint that performs a text embedding task.
-# method_request: "PUT _inference/text_embedding/mistral-embeddings-test"
+description:
+  Run `PUT _inference/text_embedding/mistral-embeddings-test` to create a Mistral inference endpoint that performs a text
+  embedding task.
+method_request: 'PUT _inference/text_embedding/mistral-embeddings-test'
 # type: "request"
 value: |-
   {

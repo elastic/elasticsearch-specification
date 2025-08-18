@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Maxmind } from '@ingest/_types/Database'
 import { RequestBase } from '@_types/Base'
 import { Id, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Maxmind } from '@ingest/_types/Database'
 
 /**
  * Create or update a GeoIP database configuration.

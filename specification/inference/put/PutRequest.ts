@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { InferenceEndpoint } from '@inference/_types/Services'
-import { TaskType } from '@inference/_types/TaskType'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
+import { InferenceEndpoint } from '@inference/_types/Services'
+import { TaskType } from '@inference/_types/TaskType'
 
 /**
  * Create an inference endpoint.
@@ -28,6 +29,24 @@ import { Id } from '@_types/common'
  * IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.
  * For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.
  * However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
+ *
+ * The following integrations are available through the inference API. You can find the available task types next to the integration name:
+ * * AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)
+ * * Amazon Bedrock (`completion`, `text_embedding`)
+ * * Anthropic (`completion`)
+ * * Azure AI Studio (`completion`, `text_embedding`)
+ * * Azure OpenAI (`completion`, `text_embedding`)
+ * * Cohere (`completion`, `rerank`, `text_embedding`)
+ * * Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)
+ * * ELSER (`sparse_embedding`)
+ * * Google AI Studio (`completion`, `text_embedding`)
+ * * Google Vertex AI (`rerank`, `text_embedding`)
+ * * Hugging Face (`text_embedding`)
+ * * Mistral (`text_embedding`)
+ * * OpenAI (`chat_completion`, `completion`, `text_embedding`)
+ * * VoyageAI (`text_embedding`, `rerank`)
+ * * Watsonx inference integration (`text_embedding`)
+ * * JinaAI (`text_embedding`, `rerank`)
  * @rest_spec_name inference.put
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
@@ -47,13 +66,20 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * The task type
+     * The task type. Refer to the integration list in the API description for the available task types.
      */
     task_type?: TaskType
     /**
      * The inference Id
      */
     inference_id: Id
+  }
+  query_parameters: {
+    /**
+     * Specifies the amount of time to wait for the inference endpoint to be created.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
   /** @codegen_name inference_config */
   body: InferenceEndpoint

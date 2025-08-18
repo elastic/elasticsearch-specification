@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CatDfaColumns, CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
+import { CatDfaColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get data frame analytics jobs.

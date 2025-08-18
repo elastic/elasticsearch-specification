@@ -17,11 +17,6 @@
  * under the License.
  */
 
-import { Alias } from '@indices/_types/Alias'
-import { DataStreamVisibility } from '@indices/_types/DataStream'
-import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
-import { IndexSettings } from '@indices/_types/IndexSettings'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import {
   IndexName,
@@ -33,6 +28,11 @@ import {
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { Alias } from '@indices/_types/Alias'
+import { DataStreamVisibility } from '@indices/_types/DataStream'
+import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
+import { IndexSettings } from '@indices/_types/IndexSettings'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Create or update an index template.

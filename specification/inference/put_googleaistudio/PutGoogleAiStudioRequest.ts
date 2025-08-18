@@ -17,14 +17,15 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 import {
   GoogleAiServiceType,
   GoogleAiStudioServiceSettings,
   GoogleAiStudioTaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
 
 /**
  * Create an Google AI Studio inference endpoint.
@@ -52,6 +53,13 @@ export interface Request extends RequestBase {
      * The unique identifier of the inference endpoint.
      */
     googleaistudio_inference_id: Id
+  }
+  query_parameters: {
+    /**
+     * Specifies the amount of time to wait for the inference endpoint to be created.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
   body: {
     /**

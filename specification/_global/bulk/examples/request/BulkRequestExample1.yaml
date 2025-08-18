@@ -1,5 +1,5 @@
 summary: Multiple operations
-# method_request: POST _bulk
+method_request: POST _bulk
 description: Run `POST _bulk` to perform multiple operations.
 # type: request
 value: '{ "index" : { "_index" : "test", "_id" : "1" } }

@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
@@ -27,6 +26,7 @@ import {
   WaitForActiveShards
 } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { OperationContainer, UpdateAction } from './types'
 
 /**
@@ -96,6 +96,7 @@ import { OperationContainer, UpdateAction } from './types'
  * * JavaScript: Check out `client.helpers.*`
  * * .NET: Check out `BulkAllObservable`
  * * PHP: Check out bulk indexing.
+ * * Ruby: Check out `Elasticsearch::Helpers::BulkHelper`
  *
  * **Submitting bulk requests with cURL**
  *

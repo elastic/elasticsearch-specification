@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { IndexTemplate } from '@indices/_types/IndexTemplate'
 import { Name } from '@_types/common'
+import { IndexTemplate } from '@indices/_types/IndexTemplate'
 
 export class Response {
   body: {

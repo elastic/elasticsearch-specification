@@ -1,6 +1,6 @@
 summary: A completion task
 description: Run `PUT _inference/completion/azure_openai_completion` to create an inference endpoint that performs a `completion` task.
-# method_request: "PUT _inference/completion/azure_openai_completion"
+method_request: 'PUT _inference/completion/azure_openai_completion'
 # type: "request"
 value: |-
   {

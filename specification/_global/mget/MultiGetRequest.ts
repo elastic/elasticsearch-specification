@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import { Fields, Ids, IndexName, Routing } from '@_types/common'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { Operation } from './types'
 
 /**

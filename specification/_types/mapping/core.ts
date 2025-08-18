@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
-import { NumericFielddata } from '@indices/_types/NumericFielddata'
-import { Dictionary } from '@spec_utils/Dictionary'
 import {
   Fields,
   FieldValue,
@@ -38,6 +35,9 @@ import {
 } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateTime } from '@_types/Time'
+import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
+import { NumericFielddata } from '@indices/_types/NumericFielddata'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Property, PropertyBase } from './Property'
 import { TermVectorOption } from './TermVectorOption'
 import { TimeSeriesMetricType } from './TimeSeriesMetricType'
@@ -212,7 +212,17 @@ export class RankFeaturesProperty extends PropertyBase {
   type: 'rank_features'
 }
 
+/**
+ * Technical preview
+ */
+export class RankVectorProperty extends PropertyBase {
+  type: 'rank_vectors'
+  element_type?: RankVectorElementType
+  dims?: integer
+}
+
 export class SparseVectorProperty extends PropertyBase {
+  store?: boolean
   type: 'sparse_vector'
 }
 
@@ -355,4 +365,10 @@ export class DynamicProperty extends DocValuesPropertyBase {
   format?: string
   precision_step?: integer
   locale?: string
+}
+
+export enum RankVectorElementType {
+  byte,
+  float,
+  bit
 }

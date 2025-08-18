@@ -1,10 +1,31 @@
 summary: Reindex with a query
-# method_request: POST _reindex
+method_request: POST _reindex
 description: >
-  Run `POST _reindex` and add a query to the `source` to limit the documents to reindex.
-  For example, this request copies documents into `my-new-index-000001` only if they have a `user.id` of `kimchy`.
+  Run `POST _reindex` and add a query to the `source` to limit the documents to reindex. For example, this request copies documents
+  into `my-new-index-000001` only if they have a `user.id` of `kimchy`.
 # type: request
-value:
-  "{\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"query\": {\n\
-  \      \"term\": {\n        \"user.id\": \"kimchy\"\n      }\n    }\n  },\n  \"\
-  dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+value: "{
+
+  \  \"source\": {
+
+  \    \"index\": \"my-index-000001\",
+
+  \    \"query\": {
+
+  \      \"term\": {
+
+  \        \"user.id\": \"kimchy\"
+
+  \      }
+
+  \    }
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"my-new-index-000001\"
+
+  \  }
+
+  }"

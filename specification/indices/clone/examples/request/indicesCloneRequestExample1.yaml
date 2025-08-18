@@ -1,8 +1,21 @@
 summary: Clone an existing index.
-# method_request: POST /my_source_index/_clone/my_target_index
+method_request: POST /my_source_index/_clone/my_target_index
 description: >
-  Clone `my_source_index` into a new index called `my_target_index` with `POST /my_source_index/_clone/my_target_index`. The API accepts `settings` and `aliases` parameters for the target index.
+  Clone `my_source_index` into a new index called `my_target_index` with `POST /my_source_index/_clone/my_target_index`. The API
+  accepts `settings` and `aliases` parameters for the target index.
 # type: request
-value:
-  "{\n  \"settings\": {\n    \"index.number_of_shards\": 5\n  },\n  \"aliases\"\
-  : {\n    \"my_search_indices\": {}\n  }\n}"
+value: "{
+
+  \  \"settings\": {
+
+  \    \"index.number_of_shards\": 5
+
+  \  },
+
+  \  \"aliases\": {
+
+  \    \"my_search_indices\": {}
+
+  \  }
+
+  }"

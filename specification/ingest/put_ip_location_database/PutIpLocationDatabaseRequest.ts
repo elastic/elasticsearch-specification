@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DatabaseConfiguration } from '@ingest/_types/Database'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { DatabaseConfiguration } from '@ingest/_types/Database'
 
 /**
  * Create or update an IP geolocation database configuration.

@@ -1,5 +1,5 @@
 summary: Update selected documents
-# method_request: POST my-index-000001/_update_by_query?conflicts=proceed
+method_request: POST my-index-000001/_update_by_query?conflicts=proceed
 description: >
   Run `POST my-index-000001/_update_by_query?conflicts=proceed` to update documents that match a query.
 # type: "request"

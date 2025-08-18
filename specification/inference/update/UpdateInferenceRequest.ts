@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { InferenceEndpoint } from '@inference/_types/Services'
-import { TaskType } from '@inference/_types/TaskType'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { InferenceEndpoint } from '@inference/_types/Services'
+import { TaskType } from '@inference/_types/TaskType'
 
 /**
  * Update an inference endpoint.

@@ -2,6 +2,10 @@ summary: sql/apis/sql-translate-api.asciidoc:12
 method_request: POST _sql/translate
 description: ''
 type: request
-value:
-  "{\n  \"query\": \"SELECT * FROM library ORDER BY page_count DESC\",\n  \"\
-  fetch_size\": 10\n}"
+value: "{
+
+  \  \"query\": \"SELECT * FROM library ORDER BY page_count DESC\",
+
+  \  \"fetch_size\": 10
+
+  }"

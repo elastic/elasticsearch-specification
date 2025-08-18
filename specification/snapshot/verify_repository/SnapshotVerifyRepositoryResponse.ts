@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   body: { nodes: Dictionary<string, CompactNodeInfo> }

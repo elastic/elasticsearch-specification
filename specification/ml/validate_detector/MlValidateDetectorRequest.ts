@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Detector } from '@ml/_types/Detector'
 import { RequestBase } from '@_types/Base'
+import { Detector } from '@ml/_types/Detector'
 
 /**
  * Validate an anomaly detection job.

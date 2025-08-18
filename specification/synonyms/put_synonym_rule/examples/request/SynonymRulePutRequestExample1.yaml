@@ -2,4 +2,8 @@ summary: synonyms/apis/put-synonym-rule.asciidoc:107
 method_request: PUT _synonyms/my-synonyms-set/test-1
 description: ''
 type: request
-value: "{\n  \"synonyms\": \"hello, hi, howdy\"\n}"
+value: "{
+
+  \  \"synonyms\": \"hello, hi, howdy\"
+
+  }"

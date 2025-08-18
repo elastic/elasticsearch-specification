@@ -1,5 +1,5 @@
 summary: Roles for specific realms
-# method_request: POST /_security/role_mapping/mapping3
+method_request: POST /_security/role_mapping/mapping3
 description: >
   Run `POST /_security/role_mapping/mapping3` to match users who authenticated against a specific realm.
 # type: request

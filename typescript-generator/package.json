@@ -21,11 +21,11 @@
   "author": "",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@types/node": "^17.0.12",
-    "ts-node": "^10.4.0",
-    "ts-standard": "^11.0.0"
+    "@types/node": "^22",
+    "ts-node": "^10",
+    "ts-standard": "^12"
   },
   "dependencies": {
-    "typescript": "^4.5.5"
+    "typescript": "^5"
   }
 }

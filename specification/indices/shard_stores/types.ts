@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { AdditionalProperty } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, Name, NodeId } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
+import { AdditionalProperty } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class IndicesShardStores {
   shards: Dictionary<string, ShardStoreWrapper>

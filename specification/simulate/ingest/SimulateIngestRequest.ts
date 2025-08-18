@@ -17,14 +17,14 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { IndexName, PipelineName } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { ComponentTemplateNode } from '@cluster/_types/ComponentTemplate'
 import { IndexTemplate } from '@indices/_types/IndexTemplate'
 import { Pipeline } from '@ingest/_types/Pipeline'
 import { Document } from '@ingest/_types/Simulation'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { RequestBase } from '@_types/Base'
-import { IndexName, PipelineName } from '@_types/common'
-import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 /**
  * Simulate data ingestion.

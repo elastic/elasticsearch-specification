@@ -1,8 +1,21 @@
 # summary:
-# method_request: PUT /_snapshot/my_repository/snapshot_2?wait_for_completion=true
+method_request: PUT /_snapshot/my_repository/snapshot_2?wait_for_completion=true
 description: Run `PUT /_snapshot/my_repository/snapshot_2?wait_for_completion=true` to take a snapshot of `index_1` and `index_2`.
 # type: request
-value:
-  "{\n  \"indices\": \"index_1,index_2\",\n  \"ignore_unavailable\": true,\n\
-  \  \"include_global_state\": false,\n  \"metadata\": {\n    \"taken_by\": \"user123\"\
-  ,\n    \"taken_because\": \"backup before upgrading\"\n  }\n}"
+value: "{
+
+  \  \"indices\": \"index_1,index_2\",
+
+  \  \"ignore_unavailable\": true,
+
+  \  \"include_global_state\": false,
+
+  \  \"metadata\": {
+
+  \    \"taken_by\": \"user123\",
+
+  \    \"taken_because\": \"backup before upgrading\"
+
+  \  }
+
+  }"

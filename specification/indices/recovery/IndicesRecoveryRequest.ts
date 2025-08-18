@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
+import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
  * Get index recovery information.
@@ -80,5 +80,23 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     detailed?: boolean
+    /**
+     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
+     * This behavior applies even if the request targets other open indices.
+     * @server_default true
+     */
+    allow_no_indices?: boolean
+    /**
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * Supports comma-separated values, such as `open,hidden`.
+     * @server_default open
+     */
+    expand_wildcards?: ExpandWildcards
+    /**
+     * If `false`, the request returns an error if it targets a missing or closed index.
+     * @server_default false
+     */
+    ignore_unavailable?: boolean
   }
 }

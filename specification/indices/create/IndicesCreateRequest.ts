@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Alias } from '@indices/_types/Alias'
-import { IndexSettings } from '@indices/_types/IndexSettings'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { IndexName, Name, WaitForActiveShards } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Duration } from '@_types/Time'
+import { Alias } from '@indices/_types/Alias'
+import { IndexSettings } from '@indices/_types/IndexSettings'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Create an index.

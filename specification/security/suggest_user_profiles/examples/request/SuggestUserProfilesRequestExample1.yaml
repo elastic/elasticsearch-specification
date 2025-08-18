@@ -1,9 +1,9 @@
 # summary:
-# method_request: POST /_security/profile/_suggest
+method_request: POST /_security/profile/_suggest
 description: >
-  Run `POST /_security/profile/_suggest` to get suggestions for profile documents with name-related fields matching `jack`.
-  It specifies both `uids` and `labels` hints for better relevance.
-  The `labels` hint ranks profiles higher if their `direction` label matches either `north` or `east`.
+  Run `POST /_security/profile/_suggest` to get suggestions for profile documents with name-related fields matching `jack`. It
+  specifies both `uids` and `labels` hints for better relevance. The `labels` hint ranks profiles higher if their `direction` label
+  matches either `north` or `east`.
 # type: request
 value: |-
   {

@@ -1,5 +1,5 @@
 summary: Query roles by name
-# method_request: POST /_security/_query/role
+method_request: POST /_security/_query/role
 description: Run `POST /_security/_query/role` to lists all roles, sorted by the role name.
 # type: request
 value: |-

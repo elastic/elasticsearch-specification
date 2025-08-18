@@ -694,12 +694,18 @@ export function hoistRequestAnnotations (
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
       endpoint.docUrl = docUrl[1].replace(/\r/g, '')
+      if (docUrl[2].replace(/\r/g, '') !== '') {
+        endpoint.extPreviousVersionDocUrl = docUrl[2].replace(/\r/g, '')
+      }
     } else if (tag === 'ext_doc_id') {
       assert(jsDocs, value.trim() !== '', `Request ${request.name.name}'s @ext_doc_id cannot be empty`)
       endpoint.extDocId = value.trim()
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @ext_doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
       endpoint.extDocUrl = docUrl[1].replace(/\r/g, '')
+      if (docUrl[3].replace(/\r/g, '') !== '') {
+        endpoint.extDocDescription = docUrl[3].replace(/\r/g, '')
+      }
     } else if (tag === 'availability') {
       // The @availability jsTag is different than most because it allows
       // multiple values within the same docstring, hence needing to parse
@@ -1094,7 +1100,7 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
   const nonExhaustive = (typeof tags.non_exhaustive === 'string') ? true : undefined
 
   const [type, ...values] = tags.variants.split(' ')
-  if (type === 'external') {
+  if (type === 'typed_keys_quirk') {
     return {
       kind: 'external_tag',
       nonExhaustive: nonExhaustive

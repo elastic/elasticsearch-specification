@@ -16,13 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
-import { FieldCollapse } from '@global/search/_types/FieldCollapse'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { QueryVector, QueryVectorBuilder, RescoreVector } from '@_types/Knn'
 import { float, integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
-import { Id } from './common'
+import { FieldCollapse } from '@global/search/_types/FieldCollapse'
+import { Rescore } from '@global/search/_types/rescoring'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Id, IndexName } from './common'
 import { QueryContainer } from './query_dsl/abstractions'
 
 /**
@@ -39,6 +39,15 @@ export class RetrieverContainer {
   text_similarity_reranker?: TextSimilarityReranker
   /** A retriever that replaces the functionality of a rule query. */
   rule?: RuleRetriever
+  /** A retriever that re-scores only the results produced by its child retriever. */
+  rescorer?: RescorerRetriever
+  /** A retriever that supports the combination of different retrievers through a weighted linear combination. */
+  linear?: LinearRetriever
+  /**
+   * A pinned retriever applies pinned documents to the underlying retriever.
+   * This retriever will rewrite to a PinnedQueryBuilder.
+   */
+  pinned?: PinnedRetriever
 }
 
 export class RetrieverBase {
@@ -46,6 +55,44 @@ export class RetrieverBase {
   filter?: QueryContainer | QueryContainer[]
   /** Minimum _score for matching documents. Documents with a lower _score are not included in the top documents. */
   min_score?: float
+  /** Retriever name. */
+  _name?: string
+}
+
+export class RescorerRetriever extends RetrieverBase {
+  /** Inner retriever. */
+  retriever: RetrieverContainer
+  rescore: Rescore | Rescore[]
+}
+
+export class LinearRetriever extends RetrieverBase {
+  /** Inner retrievers. */
+  retrievers?: InnerRetriever[]
+  rank_window_size: integer
+}
+
+export class PinnedRetriever extends RetrieverBase {
+  /** Inner retriever. */
+  retriever: RetrieverContainer
+  ids?: string[]
+  docs?: SpecifiedDocument[]
+  rank_window_size: integer
+}
+
+export class InnerRetriever {
+  retriever: RetrieverContainer
+  weight: float
+  normalizer: ScoreNormalizer
+}
+
+export enum ScoreNormalizer {
+  none,
+  minmax
+}
+
+export class SpecifiedDocument {
+  index?: IndexName
+  id: Id
 }
 
 export class StandardRetriever extends RetrieverBase {
@@ -105,7 +152,7 @@ export class TextSimilarityReranker extends RetrieverBase {
 
 export class RuleRetriever extends RetrieverBase {
   /** The ruleset IDs containing the rules this retriever is evaluating against. */
-  ruleset_ids: Id[]
+  ruleset_ids: Id | Id[]
   /** The match criteria that will determine if a rule in the provided rulesets should be applied. */
   match_criteria: UserDefinedValue
   /** The retriever whose results rules should be applied to. */

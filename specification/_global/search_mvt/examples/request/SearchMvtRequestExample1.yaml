@@ -1,7 +1,8 @@
 # summary:
-# method_request: "GET museums/_mvt/location/13/4207/2692"
+method_request: 'GET museums/_mvt/location/13/4207/2692'
 description: >
-  Run `GET museums/_mvt/location/13/4207/2692` to search an index for `location` values that intersect the `13/4207/2692` vector tile.
+  Run `GET museums/_mvt/location/13/4207/2692` to search an index for `location` values that intersect the `13/4207/2692` vector
+  tile.
 # type: "request"
 value: |-
   {

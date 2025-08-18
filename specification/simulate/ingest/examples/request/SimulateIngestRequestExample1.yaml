@@ -1,6 +1,9 @@
 summary: Existing pipeline definitions
-# method_request: POST /_ingest/_simulate
-description: In this example the index `my-index` has a default pipeline called `my-pipeline` and a final pipeline called `my-final-pipeline`. Since both documents are being ingested into `my-index`, both pipelines are run using the pipeline definitions that are already in the system.
+method_request: POST /_ingest/_simulate
+description:
+  In this example the index `my-index` has a default pipeline called `my-pipeline` and a final pipeline called
+  `my-final-pipeline`. Since both documents are being ingested into `my-index`, both pipelines are run using the pipeline
+  definitions that are already in the system.
 # type: request
 value:
   docs:

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { InferenceConfigCreateContainer } from '@ml/_types/inference'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { InferenceConfigCreateContainer } from '@ml/_types/inference'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   TrainedModelPrefixStrings,
   TrainedModelType

@@ -1,4 +1,5 @@
 # summary:
+method_request: POST /_security/api_key/_bulk_update
 description: Remove the previously assigned permissions for two API keys, making them inherit the owner user's full permissions.
 # type": "response",
 # response_code": 200,

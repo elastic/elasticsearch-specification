@@ -1,399 +1,93 @@
 {
-  "endpointErrors": {
-    "async_search.submit": {
-      "request": [
-        "Request: query parameter 'min_compatible_shard_node' does not exist in the json spec",
-        "interface definition _types:QueryVectorBuilder - Property text_embedding is a single-variant and must be required"
-      ],
-      "response": []
-    },
-    "bulk": {
-      "request": [
-        "Request: missing json spec query parameter 'type'"
-      ],
-      "response": []
-    },
-    "cat.aliases": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "request definition cat.aliases:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.allocation": {
-      "request": [
-        "request definition cat.allocation:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.component_templates": {
-      "request": [
-        "request definition cat.component_templates:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.count": {
-      "request": [
-        "request definition cat.count:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.fielddata": {
-      "request": [
-        "request definition cat.fielddata:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.health": {
-      "request": [
-        "request definition cat.health:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.indices": {
-      "request": [
-        "request definition cat.indices:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.master": {
-      "request": [
-        "request definition cat.master:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.ml_data_frame_analytics": {
-      "request": [
-        "request definition cat.ml_data_frame_analytics:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.ml_datafeeds": {
-      "request": [
-        "request definition cat.ml_datafeeds:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.ml_jobs": {
-      "request": [
-        "request definition cat.ml_jobs:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.ml_trained_models": {
-      "request": [
-        "request definition cat.ml_trained_models:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.nodeattrs": {
-      "request": [
-        "request definition cat.nodeattrs:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.nodes": {
-      "request": [
-        "request definition cat.nodes:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.pending_tasks": {
-      "request": [
-        "request definition cat.pending_tasks:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.plugins": {
-      "request": [
-        "request definition cat.plugins:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.recovery": {
-      "request": [
-        "request definition cat.recovery:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.repositories": {
-      "request": [
-        "request definition cat.repositories:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.segments": {
-      "request": [
-        "request definition cat.segments:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.shards": {
-      "request": [
-        "request definition cat.shards:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.snapshots": {
-      "request": [
-        "request definition cat.snapshots:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.tasks": {
-      "request": [
-        "request definition cat.tasks:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.templates": {
-      "request": [
-        "request definition cat.templates:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.thread_pool": {
-      "request": [
-        "request definition cat.thread_pool:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cat.transforms": {
-      "request": [
-        "request definition cat.transforms:Request / body - A request with inherited properties must have a PropertyBody"
-      ],
-      "response": []
-    },
-    "cluster.get_component_template": {
-      "request": [
-        "Request: query parameter 'flat_settings' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "cluster.put_component_template": {
-      "request": [
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
-    "create": {
-      "request": [
-        "Request: query parameter 'if_primary_term' does not exist in the json spec",
-        "Request: query parameter 'if_seq_no' does not exist in the json spec",
-        "Request: query parameter 'op_type' does not exist in the json spec",
-        "Request: query parameter 'require_alias' does not exist in the json spec",
-        "Request: query parameter 'require_data_stream' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "eql.search": {
-      "request": [
-        "Request: query parameter 'allow_no_indices' does not exist in the json spec",
-        "Request: query parameter 'expand_wildcards' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "esql.async_query": {
-      "request": [
-        "Request: query parameter 'keep_alive' does not exist in the json spec",
-        "Request: query parameter 'keep_on_completion' does not exist in the json spec",
-        "Request: query parameter 'wait_for_completion_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "get_source": {
-      "request": [
-        "Request: query parameter 'stored_fields' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.delete_lifecycle": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.explain_lifecycle": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.get_lifecycle": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.put_lifecycle": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.start": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ilm.stop": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "index": {
-      "request": [
-        "Request: missing json spec query parameter 'require_data_stream'"
-      ],
-      "response": []
-    },
-    "ingest.delete_geoip_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ingest.delete_ip_location_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ingest.get_ip_location_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ingest.put_geoip_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "ingest.put_ip_location_database": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "license.post_start_trial": {
-      "request": [
-        "Request: query parameter 'type_query_string' does not exist in the json spec",
-        "Request: missing json spec query parameter 'type'"
-      ],
-      "response": []
-    },
-    "ml.stop_datafeed": {
-      "request": [
-        "Request: missing json spec query parameter 'allow_no_datafeeds'"
-      ],
-      "response": []
-    },
-    "msearch": {
-      "request": [
-        "Request: query parameter 'allow_no_indices' does not exist in the json spec",
-        "Request: query parameter 'expand_wildcards' does not exist in the json spec",
-        "Request: query parameter 'ignore_throttled' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
-        "Request: query parameter 'include_named_queries_score' does not exist in the json spec",
-        "Request: query parameter 'routing' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "open_point_in_time": {
-      "request": [
-        "Request: query parameter 'max_concurrent_shard_requests' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "reindex": {
-      "request": [
-        "Request: query parameter 'require_alias' does not exist in the json spec",
-        "Request: missing json spec query parameter 'max_docs'"
-      ],
-      "response": []
-    },
-    "search": {
-      "request": [
-        "interface definition _types:RankContainer - Property rrf is a single-variant and must be required"
-      ],
-      "response": []
-    },
-    "search_mvt": {
-      "request": [
-        "Request: query parameter 'grid_agg' does not exist in the json spec",
-        "Request: missing json spec query parameter 'track_total_hits'"
-      ],
-      "response": []
-    },
-    "searchable_snapshots.clear_cache": {
-      "request": [
-        "Request: missing json spec query parameter 'index'"
-      ],
-      "response": []
-    },
-    "security.get_user_privileges": {
-      "request": [
-        "Request: query parameter 'application' does not exist in the json spec",
-        "Request: query parameter 'priviledge' does not exist in the json spec",
-        "Request: query parameter 'username' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "security.grant_api_key": {
-      "request": [
-        "Request: missing json spec query parameter 'refresh'"
-      ],
-      "response": []
-    },
-    "snapshot.delete": {
-      "request": [
-        "Request: missing json spec query parameter 'wait_for_completion'"
-      ],
-      "response": []
-    },
-    "snapshot.repository_analyze": {
-      "request": [
-        "Request: query parameter 'register_operation_count' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "transform.get_transform": {
-      "request": [],
-      "response": [
-        "interface definition transform._types:RetentionPolicyContainer - Property time is a single-variant and must be required",
-        "interface definition transform._types:SyncContainer - Property time is a single-variant and must be required"
-      ]
-    },
-    "watcher.execute_watch": {
-      "request": [
-        "interface definition watcher._types:TriggerContainer - Property schedule is a single-variant and must be required"
-      ],
-      "response": [
-        "interface definition watcher._types:TriggerEventContainer - Property schedule is a single-variant and must be required"
-      ]
-    },
-    "xpack.info": {
-      "request": [
-        "request definition xpack.info:Request / query - Property 'human' is already defined in an ancestor class"
-      ],
-      "response": []
-    }
-  },
+  "endpointErrors": {},
   "generalErrors": [
-    "Query is present in multiple namespaces: _global.knn_search._types and xpack.usage"
+    "Dangling type '_global.scripts_painless_execute:PainlessExecutionPosition'",
+    "Dangling type '_global.scripts_painless_execute:PainlessScript'",
+    "Dangling type '_global.search._types:HitMetadata'",
+    "Dangling type '_global.search._types:SmoothingModel'",
+    "Dangling type '_spec_utils:Setting'",
+    "Dangling type '_types:ActionIds'",
+    "Dangling type '_types:CustomResponseBuilderBase'",
+    "Dangling type '_types:DistanceParsed'",
+    "Dangling type '_types:DynamicResponseBase'",
+    "Dangling type '_types:ElasticsearchResponseBase'",
+    "Dangling type '_types:ElasticsearchUrlFormatter'",
+    "Dangling type '_types:HttpMethod'",
+    "Dangling type '_types:IndexMetrics'",
+    "Dangling type '_types:LatLon'",
+    "Dangling type '_types:LogLevel'",
+    "Dangling type '_types:LongId'",
+    "Dangling type '_types:ScriptBase'",
+    "Dangling type '_types:Transform'",
+    "Dangling type '_types:UnitFloatSeconds'",
+    "Dangling type '_types:Uri'",
+    "Dangling type '_types:UrlParameter'",
+    "Dangling type '_types:VersionNumbers'",
+    "Dangling type '_types:VersionStrings'",
+    "Dangling type '_types.aggregations:AggregationVisitorScope'",
+    "Dangling type '_types.mapping:GeoTree'",
+    "Dangling type '_types.mapping:PropertyWithClrOrigin'",
+    "Dangling type '_types.query_dsl:CharacterType'",
+    "Dangling type '_types.query_dsl:FieldNameQuery'",
+    "Dangling type '_types.query_dsl:GeoFormat'",
+    "Dangling type '_types.query_dsl:Intervals'",
+    "Dangling type '_types.query_dsl:RewriteMultiTerm'",
+    "Dangling type '_types.query_dsl:SpanSubQuery'",
+    "Dangling type '_types.query_dsl:TokenType'",
+    "Dangling type '_types.query_dsl:VisitorScope'",
+    "Dangling type 'cat.transforms:TransformState'",
+    "Dangling type 'cat.transforms:TransformType'",
+    "Dangling type 'cluster.allocation_explain:StoreCopy'",
+    "Dangling type 'cluster.reroute:CommandAction'",
+    "Dangling type 'esql._types:DataPartitioning'",
+    "Dangling type 'ilm._types:Configurations'",
+    "Dangling type 'ilm._types:ForceMergeConfiguration'",
+    "Dangling type 'ilm._types:ShrinkConfiguration'",
+    "Dangling type 'indices._types:Fielddata'",
+    "Dangling type 'indices._types:FielddataFilter'",
+    "Dangling type 'indices._types:FielddataLoading'",
+    "Dangling type 'indices._types:FielddataRegexFilter'",
+    "Dangling type 'indices._types:FielddataSettings'",
+    "Dangling type 'indices._types:GeoPointFielddataFormat'",
+    "Dangling type 'indices._types:IndicesCircuitBreakerSettings'",
+    "Dangling type 'indices._types:IndicesModuleSettings'",
+    "Dangling type 'indices._types:IndicesRecoverySettings'",
+    "Dangling type 'indices._types:OverlappingIndexTemplate'",
+    "Dangling type 'indices._types:StringFielddata'",
+    "Dangling type 'indices._types:StringFielddataFormat'",
+    "Dangling type 'indices.stats:ShardFielddata'",
+    "Dangling type 'ingest._types:PipelineFailure'",
+    "Dangling type 'ml._types:CountFunction'",
+    "Dangling type 'ml._types:DistinctCountFunction'",
+    "Dangling type 'ml._types:GeographicFunction'",
+    "Dangling type 'ml._types:InfoContentFunction'",
+    "Dangling type 'ml._types:MetricFunction'",
+    "Dangling type 'ml._types:ModelPlotConfigEnabled'",
+    "Dangling type 'ml._types:NlpInferenceConfigUpdateContainer'",
+    "Dangling type 'ml._types:NlpTokenizationUpdateContainer'",
+    "Dangling type 'ml._types:NonNullSumFunction'",
+    "Dangling type 'ml._types:NonZeroCountFunction'",
+    "Dangling type 'ml._types:RareFunction'",
+    "Dangling type 'ml._types:SumFunction'",
+    "Dangling type 'search_application._types:AnalyticsEvent'",
+    "Dangling type 'transform._types:Sync'",
+    "Dangling type 'watcher._types:Interval'",
+    "Dangling type 'watcher._types:IntervalUnit'",
+    "Dangling type 'watcher._types:JiraAction'",
+    "Dangling type 'watcher._types:JiraIssueAssignee'",
+    "Dangling type 'watcher._types:JiraIssueFields'",
+    "Dangling type 'watcher._types:JiraIssuePriority'",
+    "Dangling type 'watcher._types:JiraIssueProject'",
+    "Dangling type 'watcher._types:JiraIssueReporter'",
+    "Dangling type 'watcher._types:JiraIssueType'",
+    "Dangling type 'watcher._types:PagerDutySentEvent'",
+    "Dangling type 'watcher._types:SimpleInput'",
+    "Dangling type 'watcher._types:SlackActionMessageResult'",
+    "Dangling type 'watcher._types:TriggerEvent'",
+    "Dangling type 'xpack.usage:Alerting'",
+    "Dangling type 'xpack.usage:AlertingExecution'",
+    "Dangling type 'xpack.usage:AlertingInput'",
+    "Dangling type 'xpack.usage:ExecutionAction'",
+    "Dangling type 'xpack.usage:ForecastStatistics'"
   ]
 }

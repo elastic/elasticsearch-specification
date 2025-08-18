@@ -1,11 +1,9 @@
 # summary:
-# method_request: PUT _watcher/watch/my-watch
+method_request: PUT _watcher/watch/my-watch
 description: >
-  Run `PUT _watcher/watch/my-watch` add a watch.
-  The watch schedule triggers every minute.
-  The watch search input looks for any 404 HTTP responses that occurred in the last five minutes.
-  The watch condition checks if any search hits where found.
-  When found, the watch action sends an email to an administrator.
+  Run `PUT _watcher/watch/my-watch` add a watch. The watch schedule triggers every minute. The watch search input looks for any 404
+  HTTP responses that occurred in the last five minutes. The watch condition checks if any search hits where found. When found, the
+  watch action sends an email to an administrator.
 # type: request
 value: |-
   {

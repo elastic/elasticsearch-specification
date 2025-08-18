@@ -186,6 +186,13 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   apiModel.endpoints.filter(ep => readyForValidation(ep)).forEach(validateEndpoint)
   apiModel.endpoints.filter(ep => !readyForValidation(ep)).forEach(validateEndpoint)
 
+  // Check types are used
+  for (const type of apiModel.types) {
+    if (!typesSeen.has(fqn(type.name))) {
+      errors.addGeneralError(`Dangling type '${fqn(type.name)}'`)
+    }
+  }
+
   // Removes types that we've not seen
   apiModel.types = apiModel.types.filter(type => typesSeen.has(fqn(type.name)))
 
@@ -231,6 +238,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       Phases: ['ilm._types', 'xpack.usage'],
       Pipeline: ['ingest._types', 'logstash._types'],
       Policy: ['enrich._types', 'ilm._types', 'slm._types'],
+      Query: ['_global.knn_search._types', 'xpack.usage'],
       RequestItem: ['_global.msearch', '_global.msearch_template'],
       ResponseItem: ['_global.bulk', '_global.mget', '_global.msearch'],
       RoleMapping: ['security._types', 'xpack.usage'],
@@ -455,11 +463,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     context.pop()
 
     context.push('body')
-    if (typeDef.inherits != null && typeDef.body.kind !== 'properties') {
-      if (fqn(typeDef.inherits.type) !== '_types:RequestBase') {
-        modelError('A request with inherited properties must have a PropertyBody')
-      }
-    }
     switch (typeDef.body.kind) {
       case 'properties':
         validateProperties(typeDef.body.properties, openGenerics, inheritedProps)
@@ -502,6 +505,23 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         throw new Error(`Unknown kind: ${typeDef.body.kind}`)
     }
+
+    if (typeDef.exceptions != null) {
+      for (const ex of typeDef.exceptions) {
+        switch (ex.body.kind) {
+          case 'properties':
+            validateProperties(ex.body.properties, openGenerics, new Set<string>())
+            break
+          case 'value':
+            validateValueOf(ex.body.value, openGenerics)
+            break
+          case 'no_body':
+            // Nothing to validate
+            break
+        }
+      }
+    }
+
     context.pop()
   }
 
@@ -567,17 +587,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
     if (typeDef.variants?.kind === 'container') {
       const variants = typeDef.properties.filter(prop => !(prop.containerProperty ?? false))
-      if (variants.length === 1) {
-        // Single-variant containers must have a required property
-        if (!variants[0].required) {
-          modelError(`Property ${variants[0].name} is a single-variant and must be required`)
-        }
-      } else {
-        // Multiple variants must all be optional
-        for (const v of variants) {
-          if (v.required) {
-            modelError(`Variant ${variants[0].name} must be optional`)
-          }
+      // Variants must all be optional
+      for (const v of variants) {
+        if (v.required) {
+          modelError(`Variant ${variants[0].name} must be optional`)
         }
       }
     }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DatabaseConfigurationFull } from '@ingest/_types/Database'
 import { Id, VersionNumber } from '@_types/common'
 import { EpochTime, UnitMillis } from '@_types/Time'
+import { DatabaseConfigurationFull } from '@ingest/_types/Database'
 
 export class Response {
   body: { databases: DatabaseConfigurationMetadata[] }

@@ -1,6 +1,8 @@
 summary: A text embedding task
-description: Run `PUT _inference/text_embedding/alibabacloud_ai_search_embeddings` to create an inference endpoint that performs a text embedding task.
-# method_request: "PUT _inference/text_embedding/alibabacloud_ai_search_embeddings"
+description:
+  Run `PUT _inference/text_embedding/alibabacloud_ai_search_embeddings` to create an inference endpoint that performs a
+  text embedding task.
+method_request: 'PUT _inference/text_embedding/alibabacloud_ai_search_embeddings'
 # type: "request"
 value: |-
   {

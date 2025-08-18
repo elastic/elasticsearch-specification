@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Indices } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { FieldCapability } from './types'
 
 /**

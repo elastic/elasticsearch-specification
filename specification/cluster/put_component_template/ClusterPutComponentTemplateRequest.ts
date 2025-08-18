@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexState } from '@indices/_types/IndexState'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { IndexState } from '@indices/_types/IndexState'
 
 /**
  * Create or update a component template.
@@ -72,6 +72,11 @@ export interface Request extends RequestBase {
      *  If `true`, this request cannot replace or update existing component templates.
      * @server_default false */
     create?: boolean
+    /**
+     * User defined reason for create the component template.
+     * @server_default api
+     */
+    cause?: string
     /**
      * Period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.

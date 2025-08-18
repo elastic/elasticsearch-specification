@@ -159,10 +159,7 @@ export interface CountResponse {
 export interface CreateRequest<TDocument = unknown> extends RequestBase {
   id: Id
   index: IndexName
-  if_primary_term?: long
-  if_seq_no?: SequenceNumber
   include_source_on_error?: boolean
-  op_type?: OpType
   pipeline?: string
   refresh?: Refresh
   require_alias?: boolean
@@ -462,7 +459,6 @@ export interface GetSourceRequest extends RequestBase {
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
-  stored_fields?: Fields
   version?: VersionNumber
   version_type?: VersionType
 }
@@ -533,7 +529,7 @@ export interface HealthReportImpact {
 
 export type HealthReportImpactArea = 'search' | 'ingest' | 'backup' | 'deployment_management'
 
-export type HealthReportIndicatorHealthStatus = 'green' | 'yellow' | 'red' | 'unknown'
+export type HealthReportIndicatorHealthStatus = 'green' | 'yellow' | 'red' | 'unknown' | 'unavailable'
 
 export interface HealthReportIndicatorNode {
   name: string | null
@@ -663,6 +659,7 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
   version_type?: VersionType
   wait_for_active_shards?: WaitForActiveShards
   require_alias?: boolean
+  require_data_stream?: boolean
   body?: TDocument
 }
 
@@ -1053,6 +1050,7 @@ export interface ReindexRequest extends RequestBase {
   requests_per_second?: float
   scroll?: Duration
   slices?: Slices
+  max_docs?: integer
   timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
   wait_for_completion?: boolean
@@ -1867,6 +1865,7 @@ export interface SearchMvtRequest extends RequestBase {
   grid_precision?: integer
   grid_type?: SearchMvtGridType
   size?: integer
+  track_total_hits?: SearchTrackHits
   with_labels?: boolean
   body?: {
     aggs?: Record<string, AggregationsAggregationContainer>
@@ -2287,6 +2286,8 @@ export type DistanceUnit = 'in' | 'ft' | 'yd' | 'mi' | 'nmi' | 'km' | 'm' | 'cm'
 export interface DocStats {
   count: long
   deleted?: long
+  total_size_in_bytes: long
+  total_size?: ByteSize
 }
 
 export type Duration = string | -1 | 0
@@ -2322,7 +2323,7 @@ export type EpochTime<Unit = unknown> = Unit
 
 export interface ErrorCauseKeys {
   type: string
-  reason?: string
+  reason?: string | null
   stack_trace?: string
   caused_by?: ErrorCause
   root_cause?: ErrorCause[]
@@ -2373,6 +2374,7 @@ export interface FielddataStats {
   memory_size?: ByteSize
   memory_size_in_bytes: long
   fields?: Record<Field, FieldMemoryUsage>
+  global_ordinals: GlobalOrdinalsStats
 }
 
 export type Fields = Field | Field[]
@@ -2439,9 +2441,21 @@ export interface GetStats {
   total: long
 }
 
+export interface GlobalOrdinalFieldStats {
+  build_time_in_millis: UnitMillis
+  build_time?: string
+  shard_max_value_count: long
+}
+
+export interface GlobalOrdinalsStats {
+  build_time_in_millis: UnitMillis
+  build_time?: string
+  fields?: Record<Name, GlobalOrdinalFieldStats>
+}
+
 export type GrokPattern = string
 
-export type HealthStatus = 'green' | 'GREEN' | 'yellow' | 'YELLOW' | 'red' | 'RED'
+export type HealthStatus = 'green' | 'GREEN' | 'yellow' | 'YELLOW' | 'red' | 'RED' | 'unknown' | 'unavailable'
 
 export type Host = string
 
@@ -2505,6 +2519,12 @@ export interface InlineGetKeys<TDocument = unknown> {
 export type InlineGet<TDocument = unknown> = InlineGetKeys<TDocument>
   & { [property: string]: any }
 
+export interface InnerRetriever {
+  retriever: RetrieverContainer
+  weight: float
+  normalizer: ScoreNormalizer
+}
+
 export type Ip = string
 
 export interface KnnQuery extends QueryDslQueryBase {
@@ -2549,6 +2569,11 @@ export interface LatLonGeoLocation {
 export type Level = 'cluster' | 'indices' | 'shards'
 
 export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
+
+export interface LinearRetriever extends RetrieverBase {
+  retrievers?: InnerRetriever[]
+  rank_window_size: integer
+}
 
 export type MapboxVectorTiles = ArrayBuffer
 
@@ -2638,6 +2663,13 @@ export type Password = string
 
 export type Percentage = string | float
 
+export interface PinnedRetriever extends RetrieverBase {
+  retriever: RetrieverContainer
+  ids?: string[]
+  docs?: SpecifiedDocument[]
+  rank_window_size: integer
+}
+
 export type PipelineName = string
 
 export interface PluginStats {
@@ -2723,6 +2755,11 @@ export interface RescoreVector {
   oversample: float
 }
 
+export interface RescorerRetriever extends RetrieverBase {
+  retriever: RetrieverContainer
+  rescore: SearchRescore | SearchRescore[]
+}
+
 export type Result = 'created' | 'updated' | 'deleted' | 'not_found' | 'noop'
 
 export interface Retries {
@@ -2733,6 +2770,7 @@ export interface Retries {
 export interface RetrieverBase {
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   min_score?: float
+  _name?: string
 }
 
 export interface RetrieverContainer {
@@ -2741,6 +2779,9 @@ export interface RetrieverContainer {
   rrf?: RRFRetriever
   text_similarity_reranker?: TextSimilarityReranker
   rule?: RuleRetriever
+  rescorer?: RescorerRetriever
+  linear?: LinearRetriever
+  pinned?: PinnedRetriever
 }
 
 export type Routing = string
@@ -2751,13 +2792,15 @@ export interface RrfRank {
 }
 
 export interface RuleRetriever extends RetrieverBase {
-  ruleset_ids: Id[]
+  ruleset_ids: Id | Id[]
   match_criteria: any
   retriever: RetrieverContainer
   rank_window_size?: integer
 }
 
 export type ScalarValue = long | double | string | boolean | null
+
+export type ScoreNormalizer = 'none' | 'minmax'
 
 export interface ScoreSort {
   order?: SortOrder
@@ -2835,7 +2878,6 @@ export interface SegmentsStats {
   fixed_bit_set?: ByteSize
   fixed_bit_set_memory_in_bytes: long
   index_writer_memory?: ByteSize
-  index_writer_max_memory_in_bytes?: long
   index_writer_memory_in_bytes: long
   max_unsafe_auto_id_timestamp: long
   memory?: ByteSize
@@ -2844,11 +2886,11 @@ export interface SegmentsStats {
   norms_memory_in_bytes: long
   points_memory?: ByteSize
   points_memory_in_bytes: long
-  stored_memory?: ByteSize
   stored_fields_memory_in_bytes: long
+  stored_fields_memory?: ByteSize
   terms_memory_in_bytes: long
   terms_memory?: ByteSize
-  term_vectory_memory?: ByteSize
+  term_vectors_memory?: ByteSize
   term_vectors_memory_in_bytes: long
   version_map_memory?: ByteSize
   version_map_memory_in_bytes: long
@@ -2906,6 +2948,11 @@ export type SortOptions = SortOptionsKeys
 export type SortOrder = 'asc' | 'desc'
 
 export type SortResults = FieldValue[]
+
+export interface SpecifiedDocument {
+  index?: IndexName
+  id: Id
+}
 
 export interface StandardRetriever extends RetrieverBase {
   query?: QueryDslQueryContainer
@@ -3524,9 +3571,10 @@ export interface AggregationsFiltersAggregation extends AggregationsBucketAggreg
 }
 
 export interface AggregationsFiltersBucketKeys extends AggregationsMultiBucketBase {
+  key?: string
 }
 export type AggregationsFiltersBucket = AggregationsFiltersBucketKeys
-  & { [property: string]: AggregationsAggregate | long }
+  & { [property: string]: AggregationsAggregate | string | long }
 
 export interface AggregationsFormatMetricAggregationBase extends AggregationsMetricAggregationBase {
   format?: string
@@ -4491,6 +4539,10 @@ export interface AnalysisArabicNormalizationTokenFilter extends AnalysisTokenFil
   type: 'arabic_normalization'
 }
 
+export interface AnalysisArabicStemTokenFilter extends AnalysisTokenFilterBase {
+  type: 'arabic_stem'
+}
+
 export interface AnalysisArmenianAnalyzer {
   type: 'armenian'
   stopwords?: AnalysisStopWords
@@ -4517,10 +4569,18 @@ export interface AnalysisBengaliAnalyzer {
   stem_exclusion?: string[]
 }
 
+export interface AnalysisBengaliNormalizationTokenFilter extends AnalysisTokenFilterBase {
+  type: 'bengali_normalization'
+}
+
 export interface AnalysisBrazilianAnalyzer {
   type: 'brazilian'
   stopwords?: AnalysisStopWords
   stopwords_path?: string
+}
+
+export interface AnalysisBrazilianStemTokenFilter extends AnalysisTokenFilterBase {
+  type: 'brazilian_stem'
 }
 
 export interface AnalysisBulgarianAnalyzer {
@@ -4629,6 +4689,10 @@ export interface AnalysisCzechAnalyzer {
   stem_exclusion?: string[]
 }
 
+export interface AnalysisCzechStemTokenFilter extends AnalysisTokenFilterBase {
+  type: 'czech_stem'
+}
+
 export interface AnalysisDanishAnalyzer {
   type: 'danish'
   stopwords?: AnalysisStopWords
@@ -4656,6 +4720,10 @@ export interface AnalysisDutchAnalyzer {
   stopwords?: AnalysisStopWords
   stopwords_path?: string
   stem_exclusion?: string[]
+}
+
+export interface AnalysisDutchStemTokenFilter extends AnalysisTokenFilterBase {
+  type: 'dutch_stem'
 }
 
 export type AnalysisEdgeNGramSide = 'front' | 'back'
@@ -4730,6 +4798,10 @@ export interface AnalysisFrenchAnalyzer {
   stem_exclusion?: string[]
 }
 
+export interface AnalysisFrenchStemTokenFilter extends AnalysisTokenFilterBase {
+  type: 'french_stem'
+}
+
 export interface AnalysisGalicianAnalyzer {
   type: 'galician'
   stopwords?: AnalysisStopWords
@@ -4746,6 +4818,10 @@ export interface AnalysisGermanAnalyzer {
 
 export interface AnalysisGermanNormalizationTokenFilter extends AnalysisTokenFilterBase {
   type: 'german_normalization'
+}
+
+export interface AnalysisGermanStemTokenFilter extends AnalysisTokenFilterBase {
+  type: 'german_stem'
 }
 
 export interface AnalysisGreekAnalyzer {
@@ -4811,16 +4887,16 @@ export type AnalysisIcuCollationStrength = 'primary' | 'secondary' | 'tertiary' 
 export interface AnalysisIcuCollationTokenFilter extends AnalysisTokenFilterBase {
   type: 'icu_collation'
   alternate?: AnalysisIcuCollationAlternate
-  case_first?: AnalysisIcuCollationCaseFirst
-  case_level?: boolean
+  caseFirst?: AnalysisIcuCollationCaseFirst
+  caseLevel?: boolean
   country?: string
   decomposition?: AnalysisIcuCollationDecomposition
-  hiragana_quaternary_mode?: boolean
+  hiraganaQuaternaryMode?: boolean
   language?: string
   numeric?: boolean
   rules?: string
   strength?: AnalysisIcuCollationStrength
-  variable_top?: string
+  variableTop?: string
   variant?: string
 }
 
@@ -5115,6 +5191,7 @@ export interface AnalysisPatternReplaceCharFilter extends AnalysisCharFilterBase
 export interface AnalysisPatternReplaceTokenFilter extends AnalysisTokenFilterBase {
   type: 'pattern_replace'
   all?: boolean
+  flags?: string
   pattern: string
   replacement?: string
 }
@@ -5134,6 +5211,10 @@ export interface AnalysisPersianAnalyzer {
 
 export interface AnalysisPersianNormalizationTokenFilter extends AnalysisTokenFilterBase {
   type: 'persian_normalization'
+}
+
+export interface AnalysisPersianStemTokenFilter extends AnalysisTokenFilterBase {
+  type: 'persian_stem'
 }
 
 export type AnalysisPhoneticEncoder = 'metaphone' | 'double_metaphone' | 'soundex' | 'refined_soundex' | 'caverphone1' | 'caverphone2' | 'cologne' | 'nysiis' | 'koelnerphonetik' | 'haasephonetik' | 'beider_morse' | 'daitch_mokotoff'
@@ -5190,6 +5271,10 @@ export interface AnalysisRussianAnalyzer {
   stopwords?: AnalysisStopWords
   stopwords_path?: string
   stem_exclusion?: string[]
+}
+
+export interface AnalysisRussianStemTokenFilter extends AnalysisTokenFilterBase {
+  type: 'russian_stem'
 }
 
 export interface AnalysisScandinavianFoldingTokenFilter extends AnalysisTokenFilterBase {
@@ -5356,7 +5441,7 @@ export interface AnalysisTokenFilterBase {
   version?: VersionString
 }
 
-export type AnalysisTokenFilterDefinition = AnalysisApostropheTokenFilter | AnalysisArabicNormalizationTokenFilter | AnalysisAsciiFoldingTokenFilter | AnalysisCjkBigramTokenFilter | AnalysisCjkWidthTokenFilter | AnalysisClassicTokenFilter | AnalysisCommonGramsTokenFilter | AnalysisConditionTokenFilter | AnalysisDecimalDigitTokenFilter | AnalysisDelimitedPayloadTokenFilter | AnalysisEdgeNGramTokenFilter | AnalysisElisionTokenFilter | AnalysisFingerprintTokenFilter | AnalysisFlattenGraphTokenFilter | AnalysisGermanNormalizationTokenFilter | AnalysisHindiNormalizationTokenFilter | AnalysisHunspellTokenFilter | AnalysisHyphenationDecompounderTokenFilter | AnalysisIndicNormalizationTokenFilter | AnalysisKeepTypesTokenFilter | AnalysisKeepWordsTokenFilter | AnalysisKeywordMarkerTokenFilter | AnalysisKeywordRepeatTokenFilter | AnalysisKStemTokenFilter | AnalysisLengthTokenFilter | AnalysisLimitTokenCountTokenFilter | AnalysisLowercaseTokenFilter | AnalysisMinHashTokenFilter | AnalysisMultiplexerTokenFilter | AnalysisNGramTokenFilter | AnalysisNoriPartOfSpeechTokenFilter | AnalysisPatternCaptureTokenFilter | AnalysisPatternReplaceTokenFilter | AnalysisPersianNormalizationTokenFilter | AnalysisPorterStemTokenFilter | AnalysisPredicateTokenFilter | AnalysisRemoveDuplicatesTokenFilter | AnalysisReverseTokenFilter | AnalysisScandinavianFoldingTokenFilter | AnalysisScandinavianNormalizationTokenFilter | AnalysisSerbianNormalizationTokenFilter | AnalysisShingleTokenFilter | AnalysisSnowballTokenFilter | AnalysisSoraniNormalizationTokenFilter | AnalysisStemmerOverrideTokenFilter | AnalysisStemmerTokenFilter | AnalysisStopTokenFilter | AnalysisSynonymGraphTokenFilter | AnalysisSynonymTokenFilter | AnalysisTrimTokenFilter | AnalysisTruncateTokenFilter | AnalysisUniqueTokenFilter | AnalysisUppercaseTokenFilter | AnalysisWordDelimiterGraphTokenFilter | AnalysisWordDelimiterTokenFilter | AnalysisJaStopTokenFilter | AnalysisKuromojiStemmerTokenFilter | AnalysisKuromojiReadingFormTokenFilter | AnalysisKuromojiPartOfSpeechTokenFilter | AnalysisIcuCollationTokenFilter | AnalysisIcuFoldingTokenFilter | AnalysisIcuNormalizationTokenFilter | AnalysisIcuTransformTokenFilter | AnalysisPhoneticTokenFilter | AnalysisDictionaryDecompounderTokenFilter
+export type AnalysisTokenFilterDefinition = AnalysisApostropheTokenFilter | AnalysisArabicStemTokenFilter | AnalysisArabicNormalizationTokenFilter | AnalysisAsciiFoldingTokenFilter | AnalysisBengaliNormalizationTokenFilter | AnalysisBrazilianStemTokenFilter | AnalysisCjkBigramTokenFilter | AnalysisCjkWidthTokenFilter | AnalysisClassicTokenFilter | AnalysisCommonGramsTokenFilter | AnalysisConditionTokenFilter | AnalysisCzechStemTokenFilter | AnalysisDecimalDigitTokenFilter | AnalysisDelimitedPayloadTokenFilter | AnalysisDutchStemTokenFilter | AnalysisEdgeNGramTokenFilter | AnalysisElisionTokenFilter | AnalysisFingerprintTokenFilter | AnalysisFlattenGraphTokenFilter | AnalysisFrenchStemTokenFilter | AnalysisGermanNormalizationTokenFilter | AnalysisGermanStemTokenFilter | AnalysisHindiNormalizationTokenFilter | AnalysisHunspellTokenFilter | AnalysisHyphenationDecompounderTokenFilter | AnalysisIndicNormalizationTokenFilter | AnalysisKeepTypesTokenFilter | AnalysisKeepWordsTokenFilter | AnalysisKeywordMarkerTokenFilter | AnalysisKeywordRepeatTokenFilter | AnalysisKStemTokenFilter | AnalysisLengthTokenFilter | AnalysisLimitTokenCountTokenFilter | AnalysisLowercaseTokenFilter | AnalysisMinHashTokenFilter | AnalysisMultiplexerTokenFilter | AnalysisNGramTokenFilter | AnalysisNoriPartOfSpeechTokenFilter | AnalysisPatternCaptureTokenFilter | AnalysisPatternReplaceTokenFilter | AnalysisPersianNormalizationTokenFilter | AnalysisPersianStemTokenFilter | AnalysisPorterStemTokenFilter | AnalysisPredicateTokenFilter | AnalysisRemoveDuplicatesTokenFilter | AnalysisReverseTokenFilter | AnalysisRussianStemTokenFilter | AnalysisScandinavianFoldingTokenFilter | AnalysisScandinavianNormalizationTokenFilter | AnalysisSerbianNormalizationTokenFilter | AnalysisShingleTokenFilter | AnalysisSnowballTokenFilter | AnalysisSoraniNormalizationTokenFilter | AnalysisStemmerOverrideTokenFilter | AnalysisStemmerTokenFilter | AnalysisStopTokenFilter | AnalysisSynonymGraphTokenFilter | AnalysisSynonymTokenFilter | AnalysisTrimTokenFilter | AnalysisTruncateTokenFilter | AnalysisUniqueTokenFilter | AnalysisUppercaseTokenFilter | AnalysisWordDelimiterGraphTokenFilter | AnalysisWordDelimiterTokenFilter | AnalysisJaStopTokenFilter | AnalysisKuromojiStemmerTokenFilter | AnalysisKuromojiReadingFormTokenFilter | AnalysisKuromojiPartOfSpeechTokenFilter | AnalysisIcuCollationTokenFilter | AnalysisIcuFoldingTokenFilter | AnalysisIcuNormalizationTokenFilter | AnalysisIcuTransformTokenFilter | AnalysisPhoneticTokenFilter | AnalysisDictionaryDecompounderTokenFilter
 
 export type AnalysisTokenizer = string | AnalysisTokenizerDefinition
 
@@ -5435,6 +5520,7 @@ export interface AnalysisWordDelimiterTokenFilterBase extends AnalysisTokenFilte
 export interface MappingAggregateMetricDoubleProperty extends MappingPropertyBase {
   type: 'aggregate_metric_double'
   default_metric: string
+  ignore_malformed?: boolean
   metrics: string[]
   time_series_metric?: MappingTimeSeriesMetricType
 }
@@ -5638,6 +5724,7 @@ export interface MappingFlattenedProperty extends MappingPropertyBase {
   null_value?: string
   similarity?: string
   split_queries_on_whitespace?: boolean
+  time_series_dimensions?: string[]
   type: 'flattened'
 }
 
@@ -5652,6 +5739,8 @@ export interface MappingFloatRangeProperty extends MappingRangePropertyBase {
 
 export type MappingGeoOrientation = 'right' | 'RIGHT' | 'counterclockwise' | 'ccw' | 'left' | 'LEFT' | 'clockwise' | 'cw'
 
+export type MappingGeoPointMetricType = 'gauge' | 'counter' | 'position'
+
 export interface MappingGeoPointProperty extends MappingDocValuesPropertyBase {
   ignore_malformed?: boolean
   ignore_z_value?: boolean
@@ -5660,6 +5749,7 @@ export interface MappingGeoPointProperty extends MappingDocValuesPropertyBase {
   on_script_error?: MappingOnScriptError
   script?: Script | string
   type: 'geo_point'
+  time_series_metric?: MappingGeoPointMetricType
 }
 
 export interface MappingGeoShapeProperty extends MappingDocValuesPropertyBase {
@@ -5822,7 +5912,7 @@ export interface MappingPointProperty extends MappingDocValuesPropertyBase {
   type: 'point'
 }
 
-export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingPassthroughObjectProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingCountedKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
+export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingPassthroughObjectProperty | MappingRankVectorProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingCountedKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
 
 export interface MappingPropertyBase {
   meta?: Record<string, string>
@@ -5847,6 +5937,14 @@ export interface MappingRankFeatureProperty extends MappingPropertyBase {
 export interface MappingRankFeaturesProperty extends MappingPropertyBase {
   positive_score_impact?: boolean
   type: 'rank_features'
+}
+
+export type MappingRankVectorElementType = 'byte' | 'float' | 'bit'
+
+export interface MappingRankVectorProperty extends MappingPropertyBase {
+  type: 'rank_vectors'
+  element_type?: MappingRankVectorElementType
+  dims?: integer
 }
 
 export interface MappingRoutingField {
@@ -5928,6 +6026,7 @@ export interface MappingSourceField {
 export type MappingSourceFieldMode = 'disabled' | 'stored' | 'synthetic'
 
 export interface MappingSparseVectorProperty extends MappingPropertyBase {
+  store?: boolean
   type: 'sparse_vector'
 }
 
@@ -6181,7 +6280,7 @@ export type QueryDslGeoDistanceQuery = QueryDslGeoDistanceQueryKeys
 export type QueryDslGeoExecution = 'memory' | 'indexed'
 
 export interface QueryDslGeoGridQuery extends QueryDslQueryBase {
-  geogrid?: GeoTile
+  geotile?: GeoTile
   geohash?: GeoHash
   geohex?: GeoHexCell
 }
@@ -6251,6 +6350,8 @@ export interface QueryDslIntervalsContainer {
   fuzzy?: QueryDslIntervalsFuzzy
   match?: QueryDslIntervalsMatch
   prefix?: QueryDslIntervalsPrefix
+  range?: QueryDslIntervalsRange
+  regexp?: QueryDslIntervalsRegexp
   wildcard?: QueryDslIntervalsWildcard
 }
 
@@ -6296,7 +6397,24 @@ export interface QueryDslIntervalsQuery extends QueryDslQueryBase {
   fuzzy?: QueryDslIntervalsFuzzy
   match?: QueryDslIntervalsMatch
   prefix?: QueryDslIntervalsPrefix
+  range?: QueryDslIntervalsRange
+  regexp?: QueryDslIntervalsRegexp
   wildcard?: QueryDslIntervalsWildcard
+}
+
+export interface QueryDslIntervalsRange {
+  analyzer?: string
+  gte?: string
+  gt?: string
+  lte?: string
+  lt?: string
+  use_field?: Field
+}
+
+export interface QueryDslIntervalsRegexp {
+  analyzer?: string
+  pattern: string
+  use_field?: Field
 }
 
 export interface QueryDslIntervalsWildcard {
@@ -6618,7 +6736,8 @@ export interface QueryDslRegexpQuery extends QueryDslQueryBase {
 
 export interface QueryDslRuleQuery extends QueryDslQueryBase {
   organic: QueryDslQueryContainer
-  ruleset_ids: Id[]
+  ruleset_ids?: Id | Id[]
+  ruleset_id?: string
   match_criteria: any
 }
 
@@ -6902,7 +7021,6 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   ignore_unavailable?: boolean
   lenient?: boolean
   max_concurrent_shard_requests?: long
-  min_compatible_shard_node?: VersionString
   preference?: string
   request_cache?: boolean
   routing?: Routing
@@ -7047,8 +7165,28 @@ export type CatCatNodeColumn = 'build' | 'b' | 'completion.size' | 'cs' | 'compl
 
 export type CatCatNodeColumns = CatCatNodeColumn | CatCatNodeColumn[]
 
+export type CatCatRecoveryColumn = 'index' | 'i' | 'idx' | 'shard' | 's' | 'sh' | 'time' | 't' | 'ti' | 'primaryOrReplica' | 'type' | 'stage' | 'st' | 'source_host' | 'shost' | 'source_node' | 'snode' | 'target_host' | 'thost' | 'target_node' | 'tnode' | 'repository' | 'tnode' | 'snapshot' | 'snap' | 'files' | 'f' | 'files_recovered' | 'fr' | 'files_percent' | 'fp' | 'files_total' | 'tf' | 'bytes' | 'b' | 'bytes_recovered' | 'br' | 'bytes_percent' | 'bp' | 'bytes_total' | 'tb' | 'translog_ops' | 'to' | 'translog_ops_recovered' | 'tor' | 'translog_ops_percent' | 'top' | 'start_time' | 'start' | 'start_time_millis' | 'start_millis' | 'stop_time' | 'stop' | 'stop_time_millis' | 'stop_millis'| string
+
+export type CatCatRecoveryColumns = CatCatRecoveryColumn | CatCatRecoveryColumn[]
+
 export interface CatCatRequestBase extends RequestBase, SpecUtilsCommonCatQueryParameters {
 }
+
+export type CatCatSegmentsColumn = 'index' | 'i' | 'idx' | 'shard' | 's' | 'sh' | 'prirep' | 'p' | 'pr' | 'primaryOrReplica' | 'ip' | 'segment' | 'generation' | 'docs.count' | 'docs.deleted' | 'size' | 'size.memory' | 'committed' | 'searchable' | 'version' | 'compound' | 'id'| string
+
+export type CatCatSegmentsColumns = CatCatSegmentsColumn | CatCatSegmentsColumn[]
+
+export type CatCatShardColumn = 'completion.size' | 'cs' | 'completionSize' | 'dataset.size' | 'dense_vector.value_count' | 'dvc' | 'denseVectorCount' | 'docs' | 'd' | 'dc' | 'fielddata.evictions' | 'fe' | 'fielddataEvictions' | 'fielddata.memory_size' | 'fm' | 'fielddataMemory' | 'flush.total' | 'ft' | 'flushTotal' | 'flush.total_time' | 'ftt' | 'flushTotalTime' | 'get.current' | 'gc' | 'getCurrent' | 'get.exists_time' | 'geti' | 'getExistsTime' | 'get.exists_total' | 'geto' | 'getExistsTotal' | 'get.missing_time' | 'gmti' | 'getMissingTime' | 'get.missing_total' | 'gmto' | 'getMissingTotal' | 'get.time' | 'gti' | 'getTime' | 'get.total' | 'gto' | 'getTotal' | 'id' | 'index' | 'i' | 'idx' | 'indexing.delete_current' | 'idc' | 'indexingDeleteCurrent' | 'indexing.delete_time' | 'idti' | 'indexingDeleteTime' | 'indexing.delete_total' | 'idto' | 'indexingDeleteTotal' | 'indexing.index_current' | 'iic' | 'indexingIndexCurrent' | 'indexing.index_failed_due_to_version_conflict' | 'iifvc' | 'indexingIndexFailedDueToVersionConflict' | 'indexing.index_failed' | 'iif' | 'indexingIndexFailed' | 'indexing.index_time' | 'iiti' | 'indexingIndexTime' | 'indexing.index_total' | 'iito' | 'indexingIndexTotal' | 'ip' | 'merges.current' | 'mc' | 'mergesCurrent' | 'merges.current_docs' | 'mcd' | 'mergesCurrentDocs' | 'merges.current_size' | 'mcs' | 'mergesCurrentSize' | 'merges.total' | 'mt' | 'mergesTotal' | 'merges.total_docs' | 'mtd' | 'mergesTotalDocs' | 'merges.total_size' | 'mts' | 'mergesTotalSize' | 'merges.total_time' | 'mtt' | 'mergesTotalTime' | 'node' | 'n' | 'prirep' | 'p' | 'pr' | 'primaryOrReplica' | 'query_cache.evictions' | 'qce' | 'queryCacheEvictions' | 'query_cache.memory_size' | 'qcm' | 'queryCacheMemory' | 'recoverysource.type' | 'rs' | 'refresh.time' | 'rti' | 'refreshTime' | 'refresh.total' | 'rto' | 'refreshTotal' | 'search.fetch_current' | 'sfc' | 'searchFetchCurrent' | 'search.fetch_time' | 'sfti' | 'searchFetchTime' | 'search.fetch_total' | 'sfto' | 'searchFetchTotal' | 'search.open_contexts' | 'so' | 'searchOpenContexts' | 'search.query_current' | 'sqc' | 'searchQueryCurrent' | 'search.query_time' | 'sqti' | 'searchQueryTime' | 'search.query_total' | 'sqto' | 'searchQueryTotal' | 'search.scroll_current' | 'scc' | 'searchScrollCurrent' | 'search.scroll_time' | 'scti' | 'searchScrollTime' | 'search.scroll_total' | 'scto' | 'searchScrollTotal' | 'segments.count' | 'sc' | 'segmentsCount' | 'segments.fixed_bitset_memory' | 'sfbm' | 'fixedBitsetMemory' | 'segments.index_writer_memory' | 'siwm' | 'segmentsIndexWriterMemory' | 'segments.memory' | 'sm' | 'segmentsMemory' | 'segments.version_map_memory' | 'svmm' | 'segmentsVersionMapMemory' | 'seq_no.global_checkpoint' | 'sqg' | 'globalCheckpoint' | 'seq_no.local_checkpoint' | 'sql' | 'localCheckpoint' | 'seq_no.max' | 'sqm' | 'maxSeqNo' | 'shard' | 's' | 'sh' | 'dsparse_vector.value_count' | 'svc' | 'sparseVectorCount' | 'state' | 'st' | 'store' | 'sto' | 'suggest.current' | 'suc' | 'suggestCurrent' | 'suggest.time' | 'suti' | 'suggestTime' | 'suggest.total' | 'suto' | 'suggestTotal' | 'sync_id' | 'unassigned.at' | 'ua' | 'unassigned.details' | 'ud' | 'unassigned.for' | 'uf' | 'unassigned.reason' | 'ur'| string
+
+export type CatCatShardColumns = CatCatShardColumn | CatCatShardColumn[]
+
+export type CatCatSnapshotsColumn = 'id' | 'snapshot' | 'repository' | 're' | 'repo' | 'status' | 's' | 'start_epoch' | 'ste' | 'startEpoch' | 'start_time' | 'sti' | 'startTime' | 'end_epoch' | 'ete' | 'endEpoch' | 'end_time' | 'eti' | 'endTime' | 'duration' | 'dur' | 'indices' | 'i' | 'successful_shards' | 'ss' | 'failed_shards' | 'fs' | 'total_shards' | 'ts' | 'reason' | 'r'| string
+
+export type CatCatSnapshotsColumns = CatCatSnapshotsColumn | CatCatSnapshotsColumn[]
+
+export type CatCatThreadPoolColumn = 'active' | 'a' | 'completed' | 'c' | 'core' | 'cr' | 'ephemeral_id' | 'eid' | 'host' | 'h' | 'ip' | 'i' | 'keep_alive' | 'k' | 'largest' | 'l' | 'max' | 'mx' | 'name' | 'node_id' | 'id' | 'node_name' | 'pid' | 'p' | 'pool_size' | 'psz' | 'port' | 'po' | 'queue' | 'q' | 'queue_size' | 'qs' | 'rejected' | 'r' | 'size' | 'sz' | 'type' | 't'| string
+
+export type CatCatThreadPoolColumns = CatCatThreadPoolColumn | CatCatThreadPoolColumn[]
 
 export type CatCatTrainedModelsColumn = 'create_time' | 'ct' | 'created_by' | 'c' | 'createdBy' | 'data_frame_analytics_id' | 'df' | 'dataFrameAnalytics' | 'dfid' | 'description' | 'd' | 'heap_size' | 'hs' | 'modelHeapSize' | 'id' | 'ingest.count' | 'ic' | 'ingestCount' | 'ingest.current' | 'icurr' | 'ingestCurrent' | 'ingest.failed' | 'if' | 'ingestFailed' | 'ingest.pipelines' | 'ip' | 'ingestPipelines' | 'ingest.time' | 'it' | 'ingestTime' | 'license' | 'l' | 'operations' | 'o' | 'modelOperations' | 'version' | 'v'
 
@@ -7084,7 +7222,6 @@ export interface CatAliasesRequest extends CatCatRequestBase {
   s?: Names
   expand_wildcards?: ExpandWildcards
   local?: boolean
-  master_timeout?: Duration
 }
 
 export type CatAliasesResponse = CatAliasesAliasesRecord[]
@@ -8353,7 +8490,7 @@ export interface CatRecoveryRequest extends CatCatRequestBase {
   active_only?: boolean
   bytes?: Bytes
   detailed?: boolean
-  h?: Names
+  h?: CatCatRecoveryColumns
   s?: Names
   time?: TimeUnit
 }
@@ -8379,7 +8516,7 @@ export type CatRepositoriesResponse = CatRepositoriesRepositoriesRecord[]
 export interface CatSegmentsRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
-  h?: Names
+  h?: CatCatSegmentsColumns
   s?: Names
   local?: boolean
   master_timeout?: Duration
@@ -8432,7 +8569,7 @@ export interface CatSegmentsSegmentsRecord {
 export interface CatShardsRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
-  h?: Names
+  h?: CatCatShardColumns
   s?: Names
   master_timeout?: Duration
   time?: TimeUnit
@@ -8658,7 +8795,7 @@ export interface CatShardsShardsRecord {
 export interface CatSnapshotsRequest extends CatCatRequestBase {
   repository?: Names
   ignore_unavailable?: boolean
-  h?: Names
+  h?: CatCatSnapshotsColumns
   s?: Names
   master_timeout?: Duration
   time?: TimeUnit
@@ -8775,7 +8912,7 @@ export interface CatTemplatesTemplatesRecord {
 
 export interface CatThreadPoolRequest extends CatCatRequestBase {
   thread_pool_patterns?: Names
-  h?: Names
+  h?: CatCatThreadPoolColumns
   s?: Names
   time?: TimeUnit
   local?: boolean
@@ -9343,6 +9480,7 @@ export type ClusterExistsComponentTemplateResponse = boolean
 export interface ClusterGetComponentTemplateRequest extends RequestBase {
   name?: Name
   flat_settings?: boolean
+  settings_filter?: string | string[]
   include_defaults?: boolean
   local?: boolean
   master_timeout?: Duration
@@ -9471,6 +9609,7 @@ export type ClusterPostVotingConfigExclusionsResponse = boolean
 export interface ClusterPutComponentTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
+  cause?: string
   master_timeout?: Duration
   body?: {
     template: IndicesIndexState
@@ -9658,26 +9797,44 @@ export interface ClusterStatsCharFilterTypes {
   char_filter_types: ClusterStatsFieldTypes[]
   filter_types: ClusterStatsFieldTypes[]
   tokenizer_types: ClusterStatsFieldTypes[]
+  synonyms: Record<Name, ClusterStatsSynonymsStats>
 }
 
 export interface ClusterStatsClusterFileSystem {
-  available_in_bytes: long
-  free_in_bytes: long
-  total_in_bytes: long
+  path?: string
+  mount?: string
+  type?: string
+  available_in_bytes?: long
+  available?: ByteSize
+  free_in_bytes?: long
+  free?: ByteSize
+  total_in_bytes?: long
+  total?: ByteSize
+  low_watermark_free_space?: ByteSize
+  low_watermark_free_space_in_bytes?: long
+  high_watermark_free_space?: ByteSize
+  high_watermark_free_space_in_bytes?: long
+  flood_stage_free_space?: ByteSize
+  flood_stage_free_space_in_bytes?: long
+  frozen_flood_stage_free_space?: ByteSize
+  frozen_flood_stage_free_space_in_bytes?: long
 }
 
 export interface ClusterStatsClusterIndices {
-  analysis: ClusterStatsCharFilterTypes
+  analysis?: ClusterStatsCharFilterTypes
   completion: CompletionStats
   count: long
   docs: DocStats
   fielddata: FielddataStats
   query_cache: QueryCacheStats
+  search: ClusterStatsSearchUsageStats
   segments: SegmentsStats
   shards: ClusterStatsClusterIndicesShards
   store: StoreStats
-  mappings: ClusterStatsFieldTypesMappings
+  mappings?: ClusterStatsFieldTypesMappings
   versions?: ClusterStatsIndicesVersions[]
+  dense_vector: ClusterStatsDenseVectorStats
+  sparse_vector: ClusterStatsSparseVectorStats
 }
 
 export interface ClusterStatsClusterIndicesShards {
@@ -9700,6 +9857,7 @@ export interface ClusterStatsClusterIngest {
 
 export interface ClusterStatsClusterJvm {
   max_uptime_in_millis: DurationValue<UnitMillis>
+  max_uptime?: Duration
   mem: ClusterStatsClusterJvmMemory
   threads: long
   versions: ClusterStatsClusterJvmVersion[]
@@ -9707,7 +9865,9 @@ export interface ClusterStatsClusterJvm {
 
 export interface ClusterStatsClusterJvmMemory {
   heap_max_in_bytes: long
+  heap_max?: ByteSize
   heap_used_in_bytes: long
+  heap_used?: ByteSize
 }
 
 export interface ClusterStatsClusterJvmVersion {
@@ -9726,20 +9886,22 @@ export interface ClusterStatsClusterNetworkTypes {
 }
 
 export interface ClusterStatsClusterNodeCount {
-  coordinating_only: integer
-  data: integer
-  data_cold: integer
-  data_content: integer
-  data_frozen?: integer
-  data_hot: integer
-  data_warm: integer
-  ingest: integer
-  master: integer
-  ml: integer
-  remote_cluster_client: integer
   total: integer
-  transform: integer
-  voting_only: integer
+  coordinating_only?: integer
+  data?: integer
+  data_cold?: integer
+  data_content?: integer
+  data_frozen?: integer
+  data_hot?: integer
+  data_warm?: integer
+  index?: integer
+  ingest?: integer
+  master?: integer
+  ml?: integer
+  remote_cluster_client?: integer
+  search?: integer
+  transform?: integer
+  voting_only?: integer
 }
 
 export interface ClusterStatsClusterNodes {
@@ -9810,50 +9972,62 @@ export interface ClusterStatsClusterShardMetrics {
   min: double
 }
 
+export interface ClusterStatsClusterSnapshotStats {
+  current_counts: ClusterStatsSnapshotCurrentCounts
+  repositories: Record<Name, ClusterStatsPerRepositoryStats>
+}
+
+export interface ClusterStatsDenseVectorOffHeapStats {
+  total_size_bytes: long
+  total_size?: ByteSize
+  total_veb_size_bytes: long
+  total_veb_size?: ByteSize
+  total_vec_size_bytes: long
+  total_vec_size?: ByteSize
+  total_veq_size_bytes: long
+  total_veq_size?: ByteSize
+  total_vex_size_bytes: long
+  total_vex_size?: ByteSize
+  fielddata?: Record<string, Record<string, long>>
+}
+
+export interface ClusterStatsDenseVectorStats {
+  value_count: long
+  off_heap?: ClusterStatsDenseVectorOffHeapStats
+}
+
 export interface ClusterStatsFieldTypes {
   name: Name
   count: integer
   index_count: integer
-  indexed_vector_count?: long
-  indexed_vector_dim_max?: long
-  indexed_vector_dim_min?: long
+  indexed_vector_count?: integer
+  indexed_vector_dim_max?: integer
+  indexed_vector_dim_min?: integer
   script_count?: integer
+  vector_index_type_count?: Record<Name, integer>
+  vector_similarity_type_count?: Record<Name, integer>
+  vector_element_type_count?: Record<Name, integer>
 }
 
 export interface ClusterStatsFieldTypesMappings {
   field_types: ClusterStatsFieldTypes[]
-  runtime_field_types?: ClusterStatsRuntimeFieldTypes[]
-  total_field_count?: integer
-  total_deduplicated_field_count?: integer
+  runtime_field_types: ClusterStatsRuntimeFieldTypes[]
+  total_field_count?: long
+  total_deduplicated_field_count?: long
   total_deduplicated_mapping_size?: ByteSize
   total_deduplicated_mapping_size_in_bytes?: long
+  source_modes: Record<Name, integer>
 }
 
 export interface ClusterStatsIndexingPressure {
-  memory: ClusterStatsIndexingPressureMemory
-}
-
-export interface ClusterStatsIndexingPressureMemory {
-  current: ClusterStatsIndexingPressureMemorySummary
-  limit_in_bytes: long
-  total: ClusterStatsIndexingPressureMemorySummary
-}
-
-export interface ClusterStatsIndexingPressureMemorySummary {
-  all_in_bytes: long
-  combined_coordinating_and_primary_in_bytes: long
-  coordinating_in_bytes: long
-  coordinating_rejections?: long
-  primary_in_bytes: long
-  primary_rejections?: long
-  replica_in_bytes: long
-  replica_rejections?: long
+  memory: NodesIndexingPressureMemory
 }
 
 export interface ClusterStatsIndicesVersions {
   index_count: integer
   primary_shard_count: integer
   total_primary_bytes: long
+  total_primary_size?: ByteSize
   version: VersionString
 }
 
@@ -9865,18 +10039,29 @@ export interface ClusterStatsNodePackagingType {
 
 export interface ClusterStatsOperatingSystemMemoryInfo {
   adjusted_total_in_bytes?: long
+  adjusted_total?: ByteSize
   free_in_bytes: long
+  free?: ByteSize
   free_percent: integer
   total_in_bytes: long
+  total?: ByteSize
   used_in_bytes: long
+  used?: ByteSize
   used_percent: integer
+}
+
+export interface ClusterStatsPerRepositoryStats {
+  type: string
+  oldest_start_time_millis: UnitMillis
+  oldest_start_time?: DateFormat
+  current_counts: ClusterStatsRepositoryStatsCurrentCounts
 }
 
 export interface ClusterStatsRemoteClusterInfo {
   cluster_uuid: string
   mode: string
   skip_unavailable: boolean
-  transport_compress: string
+  'transport.compress': string
   status: HealthStatus
   version: VersionString[]
   nodes_count: integer
@@ -9888,6 +10073,23 @@ export interface ClusterStatsRemoteClusterInfo {
   max_heap?: string
   mem_total_in_bytes: long
   mem_total?: string
+}
+
+export interface ClusterStatsRepositoryStatsCurrentCounts {
+  snapshots: integer
+  clones: integer
+  finalizations: integer
+  deletions: integer
+  snapshot_deletions: integer
+  active_deletions: integer
+  shards: ClusterStatsRepositoryStatsShards
+}
+
+export interface ClusterStatsRepositoryStatsShards {
+  total: integer
+  complete: integer
+  incomplete: integer
+  states: Record<ClusterStatsShardState, integer>
 }
 
 export interface ClusterStatsRequest extends RequestBase {
@@ -9915,14 +10117,43 @@ export interface ClusterStatsRuntimeFieldTypes {
   source_total: integer
 }
 
+export interface ClusterStatsSearchUsageStats {
+  total: long
+  queries: Record<Name, long>
+  rescorers: Record<Name, long>
+  sections: Record<Name, long>
+  retrievers: Record<Name, long>
+}
+
+export type ClusterStatsShardState = 'INIT' | 'SUCCESS' | 'FAILED' | 'ABORTED' | 'MISSING' | 'WAITING' | 'QUEUED' | 'PAUSED_FOR_NODE_REMOVAL'
+
+export interface ClusterStatsSnapshotCurrentCounts {
+  snapshots: integer
+  shard_snapshots: integer
+  snapshot_deletions: integer
+  concurrent_operations: integer
+  cleanups: integer
+}
+
+export interface ClusterStatsSparseVectorStats {
+  value_count: long
+}
+
 export interface ClusterStatsStatsResponseBase extends NodesNodesResponseBase {
   cluster_name: Name
   cluster_uuid: Uuid
   indices: ClusterStatsClusterIndices
   nodes: ClusterStatsClusterNodes
-  status: HealthStatus
+  repositories: Record<Name, Record<Name, long>>
+  snapshots: ClusterStatsClusterSnapshotStats
+  status?: HealthStatus
   timestamp: long
   ccs: ClusterStatsCCSStats
+}
+
+export interface ClusterStatsSynonymsStats {
+  count: integer
+  index_count: integer
 }
 
 export interface ConnectorConnector {
@@ -10679,6 +10910,7 @@ export interface EqlSearchRequest extends RequestBase {
   allow_partial_search_results?: boolean
   allow_partial_sequence_results?: boolean
   expand_wildcards?: ExpandWildcards
+  ccs_minimize_roundtrips?: boolean
   ignore_unavailable?: boolean
   keep_alive?: Duration
   keep_on_completion?: boolean
@@ -10727,9 +10959,6 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
   delimiter?: string
   drop_null_columns?: boolean
   format?: EsqlQueryEsqlFormat
-  keep_alive?: Duration
-  keep_on_completion?: boolean
-  wait_for_completion_timeout?: Duration
   body?: {
     columnar?: boolean
     filter?: QueryDslQueryContainer
@@ -10740,6 +10969,8 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
     include_ccs_metadata?: boolean
     wait_for_completion_timeout?: Duration
+    keep_alive?: Duration
+    keep_on_completion?: boolean
   }
 }
 
@@ -10754,6 +10985,7 @@ export type EsqlAsyncQueryDeleteResponse = AcknowledgedResponseBase
 export interface EsqlAsyncQueryGetRequest extends RequestBase {
   id: Id
   drop_null_columns?: boolean
+  format?: EsqlQueryEsqlFormat
   keep_alive?: Duration
   wait_for_completion_timeout?: Duration
 }
@@ -11733,6 +11965,7 @@ export type IndicesSourceMode = 'disabled' | 'stored' | 'synthetic'
 export interface IndicesStorage {
   type: IndicesStorageType
   allow_mmap?: boolean
+  stats_refresh_interval?: Duration
 }
 
 export type IndicesStorageType = 'fs' | 'niofs' | 'mmapfs' | 'hybridfs'| string
@@ -12213,10 +12446,6 @@ export interface IndicesGetRequest extends RequestBase {
 
 export type IndicesGetResponse = Record<IndexName, IndicesIndexState>
 
-export interface IndicesGetAliasIndexAliases {
-  aliases: Record<string, IndicesAliasDefinition>
-}
-
 export interface IndicesGetAliasRequest extends RequestBase {
   name?: Names
   index?: Indices
@@ -12227,6 +12456,17 @@ export interface IndicesGetAliasRequest extends RequestBase {
 }
 
 export type IndicesGetAliasResponse = Record<IndexName, IndicesGetAliasIndexAliases>
+
+export interface IndicesGetAliasIndexAliases {
+  aliases: Record<string, IndicesAliasDefinition>
+}
+
+export interface IndicesGetAliasNotFoundAliasesKeys {
+  error: string
+  status: number
+}
+export type IndicesGetAliasNotFoundAliases = IndicesGetAliasNotFoundAliasesKeys
+  & { [property: string]: IndicesGetAliasIndexAliases | string | number }
 
 export interface IndicesGetDataLifecycleDataStreamWithLifecycle {
   name: DataStreamName
@@ -12621,6 +12861,9 @@ export interface IndicesRecoveryRequest extends RequestBase {
   index?: Indices
   active_only?: boolean
   detailed?: boolean
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
 }
 
 export type IndicesRecoveryResponse = Record<IndexName, IndicesRecoveryRecoveryStatus>
@@ -13456,9 +13699,79 @@ export interface InferenceInferenceEndpointInfoAlibabaCloudAI extends InferenceI
   task_type: InferenceTaskTypeAlibabaCloudAI
 }
 
+export interface InferenceInferenceEndpointInfoAmazonBedrock extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeAmazonBedrock
+}
+
+export interface InferenceInferenceEndpointInfoAnthropic extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeAnthropic
+}
+
+export interface InferenceInferenceEndpointInfoAzureAIStudio extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeAzureAIStudio
+}
+
+export interface InferenceInferenceEndpointInfoAzureOpenAI extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeAzureOpenAI
+}
+
+export interface InferenceInferenceEndpointInfoCohere extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeCohere
+}
+
+export interface InferenceInferenceEndpointInfoELSER extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeELSER
+}
+
+export interface InferenceInferenceEndpointInfoElasticsearch extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeElasticsearch
+}
+
+export interface InferenceInferenceEndpointInfoGoogleAIStudio extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeGoogleAIStudio
+}
+
+export interface InferenceInferenceEndpointInfoGoogleVertexAI extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeGoogleVertexAI
+}
+
+export interface InferenceInferenceEndpointInfoHuggingFace extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeHuggingFace
+}
+
 export interface InferenceInferenceEndpointInfoJinaAi extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeJinaAi
+}
+
+export interface InferenceInferenceEndpointInfoMistral extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeMistral
+}
+
+export interface InferenceInferenceEndpointInfoOpenAI extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeOpenAI
+}
+
+export interface InferenceInferenceEndpointInfoVoyageAI extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeVoyageAI
+}
+
+export interface InferenceInferenceEndpointInfoWatsonx extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeWatsonx
 }
 
 export interface InferenceInferenceResult {
@@ -13571,7 +13884,35 @@ export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank'
 
 export type InferenceTaskTypeAlibabaCloudAI = 'text_embedding' | 'rerank' | 'completion' | 'sparse_embedding'
 
+export type InferenceTaskTypeAmazonBedrock = 'text_embedding' | 'completion'
+
+export type InferenceTaskTypeAnthropic = 'completion'
+
+export type InferenceTaskTypeAzureAIStudio = 'text_embedding' | 'completion'
+
+export type InferenceTaskTypeAzureOpenAI = 'text_embedding' | 'completion'
+
+export type InferenceTaskTypeCohere = 'text_embedding' | 'rerank' | 'completion'
+
+export type InferenceTaskTypeELSER = 'sparse_embedding'
+
+export type InferenceTaskTypeElasticsearch = 'sparse_embedding' | 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
+
+export type InferenceTaskTypeGoogleVertexAI = 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeHuggingFace = 'text_embedding'
+
 export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeMistral = 'text_embedding'
+
+export type InferenceTaskTypeOpenAI = 'text_embedding' | 'chat_completion' | 'completion'
+
+export type InferenceTaskTypeVoyageAI = 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeWatsonx = 'text_embedding'
 
 export interface InferenceTextEmbeddingByteResult {
   embedding: InferenceDenseByteVector
@@ -13681,6 +14022,7 @@ export type InferenceInferenceResponse = InferenceInferenceResult
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
   inference_id: Id
+  timeout?: Duration
   body?: InferenceInferenceEndpoint
 }
 
@@ -13689,6 +14031,7 @@ export type InferencePutResponse = InferenceInferenceEndpointInfo
 export interface InferencePutAlibabacloudRequest extends RequestBase {
   task_type: InferenceAlibabaCloudTaskType
   alibabacloud_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceAlibabaCloudServiceType
@@ -13702,6 +14045,7 @@ export type InferencePutAlibabacloudResponse = InferenceInferenceEndpointInfoAli
 export interface InferencePutAmazonbedrockRequest extends RequestBase {
   task_type: InferenceAmazonBedrockTaskType
   amazonbedrock_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceAmazonBedrockServiceType
@@ -13710,11 +14054,12 @@ export interface InferencePutAmazonbedrockRequest extends RequestBase {
   }
 }
 
-export type InferencePutAmazonbedrockResponse = InferenceInferenceEndpointInfo
+export type InferencePutAmazonbedrockResponse = InferenceInferenceEndpointInfoAmazonBedrock
 
 export interface InferencePutAnthropicRequest extends RequestBase {
   task_type: InferenceAnthropicTaskType
   anthropic_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceAnthropicServiceType
@@ -13723,11 +14068,12 @@ export interface InferencePutAnthropicRequest extends RequestBase {
   }
 }
 
-export type InferencePutAnthropicResponse = InferenceInferenceEndpointInfo
+export type InferencePutAnthropicResponse = InferenceInferenceEndpointInfoAnthropic
 
 export interface InferencePutAzureaistudioRequest extends RequestBase {
   task_type: InferenceAzureAiStudioTaskType
   azureaistudio_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceAzureAiStudioServiceType
@@ -13736,11 +14082,12 @@ export interface InferencePutAzureaistudioRequest extends RequestBase {
   }
 }
 
-export type InferencePutAzureaistudioResponse = InferenceInferenceEndpointInfo
+export type InferencePutAzureaistudioResponse = InferenceInferenceEndpointInfoAzureAIStudio
 
 export interface InferencePutAzureopenaiRequest extends RequestBase {
   task_type: InferenceAzureOpenAITaskType
   azureopenai_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceAzureOpenAIServiceType
@@ -13749,11 +14096,12 @@ export interface InferencePutAzureopenaiRequest extends RequestBase {
   }
 }
 
-export type InferencePutAzureopenaiResponse = InferenceInferenceEndpointInfo
+export type InferencePutAzureopenaiResponse = InferenceInferenceEndpointInfoAzureOpenAI
 
 export interface InferencePutCohereRequest extends RequestBase {
   task_type: InferenceCohereTaskType
   cohere_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceCohereServiceType
@@ -13762,11 +14110,12 @@ export interface InferencePutCohereRequest extends RequestBase {
   }
 }
 
-export type InferencePutCohereResponse = InferenceInferenceEndpointInfo
+export type InferencePutCohereResponse = InferenceInferenceEndpointInfoCohere
 
 export interface InferencePutElasticsearchRequest extends RequestBase {
   task_type: InferenceElasticsearchTaskType
   elasticsearch_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceElasticsearchServiceType
@@ -13775,11 +14124,12 @@ export interface InferencePutElasticsearchRequest extends RequestBase {
   }
 }
 
-export type InferencePutElasticsearchResponse = InferenceInferenceEndpointInfo
+export type InferencePutElasticsearchResponse = InferenceInferenceEndpointInfoElasticsearch
 
 export interface InferencePutElserRequest extends RequestBase {
   task_type: InferenceElserTaskType
   elser_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceElserServiceType
@@ -13787,11 +14137,12 @@ export interface InferencePutElserRequest extends RequestBase {
   }
 }
 
-export type InferencePutElserResponse = InferenceInferenceEndpointInfo
+export type InferencePutElserResponse = InferenceInferenceEndpointInfoELSER
 
 export interface InferencePutGoogleaistudioRequest extends RequestBase {
   task_type: InferenceGoogleAiStudioTaskType
   googleaistudio_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceGoogleAiServiceType
@@ -13799,11 +14150,12 @@ export interface InferencePutGoogleaistudioRequest extends RequestBase {
   }
 }
 
-export type InferencePutGoogleaistudioResponse = InferenceInferenceEndpointInfo
+export type InferencePutGoogleaistudioResponse = InferenceInferenceEndpointInfoGoogleAIStudio
 
 export interface InferencePutGooglevertexaiRequest extends RequestBase {
   task_type: InferenceGoogleVertexAITaskType
   googlevertexai_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceGoogleVertexAIServiceType
@@ -13812,11 +14164,12 @@ export interface InferencePutGooglevertexaiRequest extends RequestBase {
   }
 }
 
-export type InferencePutGooglevertexaiResponse = InferenceInferenceEndpointInfo
+export type InferencePutGooglevertexaiResponse = InferenceInferenceEndpointInfoGoogleVertexAI
 
 export interface InferencePutHuggingFaceRequest extends RequestBase {
   task_type: InferenceHuggingFaceTaskType
   huggingface_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceHuggingFaceServiceType
@@ -13824,11 +14177,12 @@ export interface InferencePutHuggingFaceRequest extends RequestBase {
   }
 }
 
-export type InferencePutHuggingFaceResponse = InferenceInferenceEndpointInfo
+export type InferencePutHuggingFaceResponse = InferenceInferenceEndpointInfoHuggingFace
 
 export interface InferencePutJinaaiRequest extends RequestBase {
   task_type: InferenceJinaAITaskType
   jinaai_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceJinaAIServiceType
@@ -13842,6 +14196,7 @@ export type InferencePutJinaaiResponse = InferenceInferenceEndpointInfoJinaAi
 export interface InferencePutMistralRequest extends RequestBase {
   task_type: InferenceMistralTaskType
   mistral_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceMistralServiceType
@@ -13849,11 +14204,12 @@ export interface InferencePutMistralRequest extends RequestBase {
   }
 }
 
-export type InferencePutMistralResponse = InferenceInferenceEndpointInfo
+export type InferencePutMistralResponse = InferenceInferenceEndpointInfoMistral
 
 export interface InferencePutOpenaiRequest extends RequestBase {
   task_type: InferenceOpenAITaskType
   openai_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceOpenAIServiceType
@@ -13862,11 +14218,12 @@ export interface InferencePutOpenaiRequest extends RequestBase {
   }
 }
 
-export type InferencePutOpenaiResponse = InferenceInferenceEndpointInfo
+export type InferencePutOpenaiResponse = InferenceInferenceEndpointInfoOpenAI
 
 export interface InferencePutVoyageaiRequest extends RequestBase {
   task_type: InferenceVoyageAITaskType
   voyageai_inference_id: Id
+  timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceVoyageAIServiceType
@@ -13875,18 +14232,19 @@ export interface InferencePutVoyageaiRequest extends RequestBase {
   }
 }
 
-export type InferencePutVoyageaiResponse = InferenceInferenceEndpointInfo
+export type InferencePutVoyageaiResponse = InferenceInferenceEndpointInfoVoyageAI
 
 export interface InferencePutWatsonxRequest extends RequestBase {
   task_type: InferenceWatsonxTaskType
   watsonx_inference_id: Id
+  timeout?: Duration
   body?: {
     service: InferenceWatsonxServiceType
     service_settings: InferenceWatsonxServiceSettings
   }
 }
 
-export type InferencePutWatsonxResponse = InferenceInferenceEndpointInfo
+export type InferencePutWatsonxResponse = InferenceInferenceEndpointInfoWatsonx
 
 export interface InferenceRerankRequest extends RequestBase {
   inference_id: Id
@@ -13913,6 +14271,7 @@ export type InferenceSparseEmbeddingResponse = InferenceSparseEmbeddingInference
 
 export interface InferenceStreamCompletionRequest extends RequestBase {
   inference_id: Id
+  timeout?: Duration
   body?: {
     input: string | string[]
     task_settings?: InferenceTaskSettings
@@ -14544,7 +14903,6 @@ export interface IngestGetIpLocationDatabaseDatabaseConfigurationMetadata {
 
 export interface IngestGetIpLocationDatabaseRequest extends RequestBase {
   id?: Ids
-  master_timeout?: Duration
 }
 
 export interface IngestGetIpLocationDatabaseResponse {
@@ -14716,7 +15074,7 @@ export interface LicensePostStartBasicResponse {
 
 export interface LicensePostStartTrialRequest extends RequestBase {
   acknowledge?: boolean
-  type_query_string?: string
+  type?: string
   master_timeout?: Duration
 }
 
@@ -17783,6 +18141,7 @@ export interface NodesJvmMemoryStats {
   heap_used_percent?: long
   heap_committed_in_bytes?: long
   heap_max_in_bytes?: long
+  heap_max?: ByteSize
   non_heap_used_in_bytes?: long
   non_heap_committed_in_bytes?: long
   pools?: Record<string, NodesPool>
@@ -17857,6 +18216,8 @@ export interface NodesPressureMemory {
   coordinating_rejections?: long
   primary_rejections?: long
   replica_rejections?: long
+  primary_document_rejections?: long
+  large_operation_rejections?: long
 }
 
 export interface NodesProcess {
@@ -18058,12 +18419,13 @@ export interface NodesInfoNodeInfo {
   build_flavor: string
   build_hash: string
   build_type: string
+  component_versions: Record<Name, integer>
   host: Host
   http?: NodesInfoNodeInfoHttp
+  index_version: VersionNumber
   ip: Ip
   jvm?: NodesInfoNodeJvmInfo
   name: Name
-  network?: NodesInfoNodeInfoNetwork
   os?: NodesInfoNodeOperatingSystemInfo
   plugins?: PluginStats[]
   process?: NodesInfoNodeProcessInfo
@@ -18074,10 +18436,12 @@ export interface NodesInfoNodeInfo {
   total_indexing_buffer_in_bytes?: ByteSize
   transport?: NodesInfoNodeInfoTransport
   transport_address: TransportAddress
+  transport_version: VersionNumber
   version: VersionString
   modules?: PluginStats[]
   ingest?: NodesInfoNodeInfoIngest
   aggregations?: Record<string, NodesInfoNodeInfoAggregation>
+  remote_cluster_server?: NodesInfoRemoveClusterServer
 }
 
 export interface NodesInfoNodeInfoAction {
@@ -18097,7 +18461,7 @@ export interface NodesInfoNodeInfoClient {
 }
 
 export interface NodesInfoNodeInfoDiscoverKeys {
-  seed_hosts?: string[]
+  seed_hosts?: string[] | string
   type?: string
   seed_providers?: string[]
 }
@@ -18143,17 +18507,6 @@ export interface NodesInfoNodeInfoJvmMemory {
 export interface NodesInfoNodeInfoMemory {
   total: string
   total_in_bytes: long
-}
-
-export interface NodesInfoNodeInfoNetwork {
-  primary_interface: NodesInfoNodeInfoNetworkInterface
-  refresh_interval: integer
-}
-
-export interface NodesInfoNodeInfoNetworkInterface {
-  address: string
-  mac_address: string
-  name: Name
 }
 
 export interface NodesInfoNodeInfoOSCPU {
@@ -18217,7 +18570,7 @@ export interface NodesInfoNodeInfoSettingsCluster {
   name: Name
   routing?: IndicesIndexRouting
   election: NodesInfoNodeInfoSettingsClusterElection
-  initial_master_nodes?: string[]
+  initial_master_nodes?: string[] | string
   deprecation_indexing?: NodesInfoDeprecationIndexing
 }
 
@@ -18287,6 +18640,7 @@ export interface NodesInfoNodeInfoSettingsTransport {
   type: NodesInfoNodeInfoSettingsTransportType | string
   'type.default'?: string
   features?: NodesInfoNodeInfoSettingsTransportFeatures
+  ignore_deserialization_errors?: SpecUtilsStringified<boolean>
 }
 
 export interface NodesInfoNodeInfoSettingsTransportFeatures {
@@ -18364,7 +18718,6 @@ export interface NodesInfoNodeJvmInfo {
   vm_vendor: string
   vm_version: VersionString
   using_bundled_jdk: boolean
-  bundled_jdk: boolean
   using_compressed_ordinary_object_pointers?: boolean | string
   input_arguments: string[]
 }
@@ -18395,6 +18748,11 @@ export interface NodesInfoNodeThreadPoolInfo {
   queue_size: integer
   size?: integer
   type: string
+}
+
+export interface NodesInfoRemoveClusterServer {
+  bound_address: TransportAddress[]
+  publish_address: TransportAddress
 }
 
 export interface NodesInfoRequest extends RequestBase {
@@ -19684,9 +20042,6 @@ export interface SecurityGetUserRequest extends RequestBase {
 export type SecurityGetUserResponse = Record<string, SecurityUser>
 
 export interface SecurityGetUserPrivilegesRequest extends RequestBase {
-  application?: Name
-  priviledge?: Name
-  username?: Name | null
 }
 
 export interface SecurityGetUserPrivilegesResponse {
@@ -19724,6 +20079,7 @@ export interface SecurityGrantApiKeyGrantApiKey {
 }
 
 export interface SecurityGrantApiKeyRequest extends RequestBase {
+  refresh?: Refresh
   body?: {
     api_key: SecurityGrantApiKeyGrantApiKey
     grant_type: SecurityGrantApiKeyApiKeyGrantType
@@ -20373,6 +20729,14 @@ export interface SlmSnapshotLifecycle {
   stats: SlmStatistics
 }
 
+export interface SlmSnapshotPolicyStats {
+  policy: string
+  snapshots_taken: long
+  snapshots_failed: long
+  snapshots_deleted: long
+  snapshot_deletion_failures: long
+}
+
 export interface SlmStatistics {
   retention_deletion_time?: Duration
   retention_deletion_time_millis?: DurationValue<UnitMillis>
@@ -20438,7 +20802,7 @@ export interface SlmGetStatsResponse {
   total_snapshot_deletion_failures: long
   total_snapshots_failed: long
   total_snapshots_taken: long
-  policy_stats: string[]
+  policy_stats: SlmSnapshotPolicyStats[]
 }
 
 export interface SlmGetStatusRequest extends RequestBase {
@@ -20736,6 +21100,7 @@ export interface SnapshotDeleteRequest extends RequestBase {
   repository: Name
   snapshot: Name
   master_timeout?: Duration
+  wait_for_completion?: boolean
 }
 
 export type SnapshotDeleteResponse = AcknowledgedResponseBase
@@ -21030,7 +21395,7 @@ export interface SqlQueryRequest extends RequestBase {
     keep_alive?: Duration
     keep_on_completion?: boolean
     page_timeout?: Duration
-    params?: Record<string, any>
+    params?: any[]
     query?: string
     request_timeout?: Duration
     runtime_mappings?: MappingRuntimeFields

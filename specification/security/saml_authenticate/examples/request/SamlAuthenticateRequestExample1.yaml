@@ -1,7 +1,8 @@
 # summary:
-# method_request: POST /_security/saml/authenticate
+method_request: POST /_security/saml/authenticate
 description: >
-  Run `POST /_security/saml/authenticate` to exchange a SAML Response indicating a successful authentication at the SAML IdP for an Elasticsearch access token and refresh token to be used in subsequent requests.
+  Run `POST /_security/saml/authenticate` to exchange a SAML Response indicating a successful authentication at the SAML IdP for an
+  Elasticsearch access token and refresh token to be used in subsequent requests.
 # type: request
 value: |-
   {

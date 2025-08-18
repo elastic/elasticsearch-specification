@@ -17,6 +17,27 @@
  * under the License.
  */
 
+import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
+import { RequestBase } from '@_types/Base'
+import {
+  ExpandWildcards,
+  Field,
+  Fields,
+  IndexName,
+  Indices,
+  Routing,
+  SearchType,
+  SuggestMode
+} from '@_types/common'
+import { KnnSearch } from '@_types/Knn'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
+import { double, integer, long } from '@_types/Numeric'
+import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
+import { Operator } from '@_types/query_dsl/Operator'
+import { ScriptField } from '@_types/Scripting'
+import { SlicedScroll } from '@_types/SlicedScroll'
+import { Sort, SortResults } from '@_types/sort'
+import { Duration } from '@_types/Time'
 import { FieldCollapse } from '@global/search/_types/FieldCollapse'
 import { Highlight } from '@global/search/_types/highlighting'
 import { TrackHits } from '@global/search/_types/hits'
@@ -29,28 +50,6 @@ import {
 import { Suggester } from '@global/search/_types/suggester'
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { RequestBase } from '@_types/Base'
-import {
-  ExpandWildcards,
-  Field,
-  Fields,
-  IndexName,
-  Indices,
-  Routing,
-  SearchType,
-  SuggestMode,
-  VersionString
-} from '@_types/common'
-import { KnnSearch } from '@_types/Knn'
-import { RuntimeFields } from '@_types/mapping/RuntimeFields'
-import { double, integer, long } from '@_types/Numeric'
-import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
-import { Operator } from '@_types/query_dsl/Operator'
-import { ScriptField } from '@_types/Scripting'
-import { SlicedScroll } from '@_types/SlicedScroll'
-import { Sort, SortResults } from '@_types/sort'
-import { Duration } from '@_types/Time'
 
 /**
  * Run an async search.
@@ -126,7 +125,6 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     lenient?: boolean
     max_concurrent_shard_requests?: long
-    min_compatible_shard_node?: VersionString
     preference?: string
     /** @server_default true */
     request_cache?: boolean

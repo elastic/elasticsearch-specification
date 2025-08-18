@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { Name } from '@_types/common'
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { RepositoryMeteringInformation } from '@nodes/_types/RepositoryMeteringInformation'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Name } from '@_types/common'
 
 export class ResponseBase extends NodesResponseBase {
   /**

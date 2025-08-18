@@ -100,6 +100,10 @@ export interface Request extends RequestBase {
      */
     include_named_queries_score?: boolean
     /**
+     * Comma-separated list of data streams, indices, and index aliases to use as default
+     */
+    index?: Indices
+    /**
      * Maximum number of concurrent searches the multi search API can execute.
      */
     max_concurrent_searches?: long

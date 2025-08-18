@@ -1,5 +1,5 @@
 summary: Add multiple privileges
-# method_request: PUT /_security/privilege
+method_request: PUT /_security/privilege
 description: >
   Run `PUT /_security/privilege` to add multiple application privileges.
 # type: request

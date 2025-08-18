@@ -1,10 +1,35 @@
 # summary: connector/apis/update-connector-scheduling-api.asciidoc:89
-# method_request: PUT _connector/my-connector/_scheduling
+method_request: PUT _connector/my-connector/_scheduling
 # description: ''
 # type: request
-value:
-  "{\n    \"scheduling\": {\n        \"access_control\": {\n            \"enabled\"\
-  : true,\n            \"interval\": \"0 10 0 * * ?\"\n        },\n        \"full\"\
-  : {\n            \"enabled\": true,\n            \"interval\": \"0 20 0 * * ?\"\n\
-  \        },\n        \"incremental\": {\n            \"enabled\": false,\n     \
-  \       \"interval\": \"0 30 0 * * ?\"\n        }\n    }\n}"
+value: "{
+
+  \    \"scheduling\": {
+
+  \        \"access_control\": {
+
+  \            \"enabled\": true,
+
+  \            \"interval\": \"0 10 0 * * ?\"
+
+  \        },
+
+  \        \"full\": {
+
+  \            \"enabled\": true,
+
+  \            \"interval\": \"0 20 0 * * ?\"
+
+  \        },
+
+  \        \"incremental\": {
+
+  \            \"enabled\": false,
+
+  \            \"interval\": \"0 30 0 * * ?\"
+
+  \        }
+
+  \    }
+
+  }"

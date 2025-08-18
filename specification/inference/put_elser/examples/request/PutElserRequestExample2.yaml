@@ -1,6 +1,9 @@
 summary: Adaptive allocations
-description: Run `PUT _inference/sparse_embedding/my-elser-model` to create an inference endpoint that performs a `sparse_embedding` task with adaptive allocations. When adaptive allocations are enabled, the number of allocations of the model is set automatically based on the current load.
-# method_request: "PUT _inference/sparse_embedding/my-elser-model"
+description:
+  Run `PUT _inference/sparse_embedding/my-elser-model` to create an inference endpoint that performs a `sparse_embedding`
+  task with adaptive allocations. When adaptive allocations are enabled, the number of allocations of the model is set automatically
+  based on the current load.
+method_request: 'PUT _inference/sparse_embedding/my-elser-model'
 # type: "request"
 value: |-
   {

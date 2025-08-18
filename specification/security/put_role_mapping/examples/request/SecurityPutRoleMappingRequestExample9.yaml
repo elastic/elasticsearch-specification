@@ -1,9 +1,10 @@
 summary: Templated roles
-# method_request: POST /_security/role_mapping/mapping9
+method_request: POST /_security/role_mapping/mapping9
 description: >
-  Run `POST /_security/role_mapping/mapping9` to use templated roles to automatically map every user to their own custom role.
-  In this example every user who authenticates using the `cloud-saml` realm will be automatically mapped to two roles: the `saml_user` role and a role that is their username prefixed with `_user_`.
-  For example, the user `nwong` would be assigned the `saml_user` and `_user_nwong` roles.
+  Run `POST /_security/role_mapping/mapping9` to use templated roles to automatically map every user to their own custom role. In
+  this example every user who authenticates using the `cloud-saml` realm will be automatically mapped to two roles: the `saml_user`
+  role and a role that is their username prefixed with `_user_`. For example, the user `nwong` would be assigned the `saml_user` and
+  `_user_nwong` roles.
 # type: request
 value: |-
   {

@@ -1,5 +1,11 @@
 # summary:
-# method_request: PUT /_snapshot/my_repository/source_snapshot/_clone/target_snapshot
-description: Run `PUT /_snapshot/my_repository/source_snapshot/_clone/target_snapshot` to clone the `source_snapshot` into a new `target_snapshot`.
+method_request: PUT /_snapshot/my_repository/source_snapshot/_clone/target_snapshot
+description:
+  Run `PUT /_snapshot/my_repository/source_snapshot/_clone/target_snapshot` to clone the `source_snapshot` into a new
+  `target_snapshot`.
 # type: request
-value: "{\n  \"indices\": \"index_a,index_b\"\n}"
+value: "{
+
+  \  \"indices\": \"index_a,index_b\"
+
+  }"

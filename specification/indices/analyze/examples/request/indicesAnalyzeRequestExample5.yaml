@@ -1,6 +1,8 @@
 summary: Derive analyzer from field mapping
-# method_request: GET /analyze_sample/_analyze
-description: Run `GET /analyze_sample/_analyze` to run an analysis on the text using the default index analyzer associated with the `analyze_sample` index. Alternatively, the analyzer can be derived based on a field mapping.
+method_request: GET /analyze_sample/_analyze
+description:
+  Run `GET /analyze_sample/_analyze` to run an analysis on the text using the default index analyzer associated with the
+  `analyze_sample` index. Alternatively, the analyzer can be derived based on a field mapping.
 # type: request
 value:
   field: obj1.field1

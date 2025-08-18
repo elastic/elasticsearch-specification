@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
 import { Bytes, Indices, Names } from '@_types/common'
 import { Duration, TimeUnit } from '@_types/Time'
+import { CatRequestBase, CatShardColumns } from '@cat/_types/CatBase'
 
 /**
  * Get shard information.
@@ -61,20 +61,20 @@ export interface Request extends CatRequestBase {
     /**
      * List of columns to appear in the response. Supports simple wildcards.
      */
-    h?: Names
+    h?: CatShardColumns
     /**
-     * List of columns that determine how the table should be sorted.
+     * A comma-separated list of column names or aliases that determines the sort order.
      * Sorting defaults to ascending and can be changed by setting `:asc`
      * or `:desc` as a suffix to the column name.
      */
     s?: Names
     /**
-     * Period to wait for a connection to the master node.
+     * The period to wait for a connection to the master node.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * Unit used to display time values.
+     * The unit used to display time values.
      */
     time?: TimeUnit
   }

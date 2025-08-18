@@ -1,5 +1,5 @@
 summary: Role example 2
-# method_request: POST /_security/role/cli_or_drivers_minimal
+method_request: POST /_security/role/cli_or_drivers_minimal
 description: Run `POST /_security/role/cli_or_drivers_minimal` to configure a role that can run SQL in JDBC.
 # type: request
 value: |-

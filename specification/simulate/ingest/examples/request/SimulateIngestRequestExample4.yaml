@@ -1,6 +1,8 @@
 summary: Multiple substitutions
-# method_request: POST /_ingest/_simulate
-description: The pipeline, component template, and index template substitutions replace the existing pipeline details for the duration of this request.
+method_request: POST /_ingest/_simulate
+description:
+  The pipeline, component template, and index template substitutions replace the existing pipeline details for the
+  duration of this request.
 # type: request
 value:
   docs:

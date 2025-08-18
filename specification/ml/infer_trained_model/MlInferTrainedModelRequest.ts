@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { InferenceConfigUpdateContainer } from '@ml/_types/inference'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { InferenceConfigUpdateContainer } from '@ml/_types/inference'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Evaluate a trained model.

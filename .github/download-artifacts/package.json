@@ -2,6 +2,7 @@
   "name": "download-artifacts",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,7 +14,7 @@
     "@actions/core": "^1.6.0",
     "cross-zip": "^4.0.0",
     "minimist": "^1.2.5",
-    "node-fetch": "^2.6.7",
-    "rimraf": "^3.0.2"
+    "node-fetch": "^3",
+    "rimraf": "^6"
   }
 }

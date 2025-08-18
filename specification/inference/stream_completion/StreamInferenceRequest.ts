@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { TaskSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
+import { TaskSettings } from '@inference/_types/Services'
 
 /**
  * Perform streaming inference.
@@ -46,6 +47,13 @@ export interface Request extends RequestBase {
      * The unique identifier for the inference endpoint.
      */
     inference_id: Id
+  }
+  query_parameters: {
+    /**
+     * The amount of time to wait for the inference request to complete.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
   body: {
     /**

@@ -1,17 +1,82 @@
 # summary: search-application/apis/put-search-application.asciidoc:148
-# method_request: PUT _application/search_application/my-app
+method_request: PUT _application/search_application/my-app
 description: >
-  Run `PUT _application/search_application/my-app` to create or update a search application called `my-app`. When the  dictionary parameter is specified, the search application search API will perform the following parameter validation: it accepts only the `query_string` and `default_field` parameters; it verifies that `query_string` and `default_field` are both strings; it accepts `default_field` only if it takes the values title or description. If the parameters are not valid, the search application search API will return an error.
+  Run `PUT _application/search_application/my-app` to create or update a search application called `my-app`. When the  dictionary
+  parameter is specified, the search application search API will perform the following parameter validation: it accepts only the
+  `query_string` and `default_field` parameters; it verifies that `query_string` and `default_field` are both strings; it accepts
+  `default_field` only if it takes the values title or description. If the parameters are not valid, the search application search
+  API will return an error.
 # type: request
-value:
-  "{\n  \"indices\": [ \"index1\", \"index2\" ],\n  \"template\": {\n    \"script\"\
-  : {\n      \"source\": {\n        \"query\": {\n          \"query_string\": {\n\
-  \            \"query\": \"{{query_string}}\",\n            \"default_field\": \"\
-  {{default_field}}\"\n          }\n        }\n      },\n      \"params\": {\n   \
-  \     \"query_string\": \"*\",\n        \"default_field\": \"*\"\n      }\n    },\n\
-  \    \"dictionary\": {\n      \"properties\": {\n        \"query_string\": {\n \
-  \         \"type\": \"string\"\n        },\n        \"default_field\": {\n     \
-  \     \"type\": \"string\",\n          \"enum\": [\n            \"title\",\n   \
-  \         \"description\"\n          ]\n        },\n        \"additionalProperties\"\
-  : false\n      },\n      \"required\": [\n        \"query_string\"\n      ]\n  \
-  \  }\n  }\n}"
+value: "{
+
+  \  \"indices\": [ \"index1\", \"index2\" ],
+
+  \  \"template\": {
+
+  \    \"script\": {
+
+  \      \"source\": {
+
+  \        \"query\": {
+
+  \          \"query_string\": {
+
+  \            \"query\": \"{{query_string}}\",
+
+  \            \"default_field\": \"{{default_field}}\"
+
+  \          }
+
+  \        }
+
+  \      },
+
+  \      \"params\": {
+
+  \        \"query_string\": \"*\",
+
+  \        \"default_field\": \"*\"
+
+  \      }
+
+  \    },
+
+  \    \"dictionary\": {
+
+  \      \"properties\": {
+
+  \        \"query_string\": {
+
+  \          \"type\": \"string\"
+
+  \        },
+
+  \        \"default_field\": {
+
+  \          \"type\": \"string\",
+
+  \          \"enum\": [
+
+  \            \"title\",
+
+  \            \"description\"
+
+  \          ]
+
+  \        },
+
+  \        \"additionalProperties\": false
+
+  \      },
+
+  \      \"required\": [
+
+  \        \"query_string\"
+
+  \      ]
+
+  \    }
+
+  \  }
+
+  }"

@@ -1,6 +1,6 @@
 summary: Rerank task
 description: Run `POST _inference/rerank/cohere_rerank` to perform reranking on the example input.
-# method_request: "POST _inference/rerank/cohere_rerank"
+method_request: 'POST _inference/rerank/cohere_rerank'
 # type: "request"
 value: |-
   {

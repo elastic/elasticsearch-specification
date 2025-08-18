@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class IndexSegment {
   shards: Dictionary<string, ShardsSegment | Array<ShardsSegment>>

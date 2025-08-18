@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { License } from '@license/_types/License'
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { License } from '@license/_types/License'
 
 /**
  * Update the license.

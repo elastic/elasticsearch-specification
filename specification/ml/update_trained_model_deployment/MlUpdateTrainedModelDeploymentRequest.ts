@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { AdaptiveAllocationsSettings } from '@ml/_types/TrainedModel'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { AdaptiveAllocationsSettings } from '@ml/_types/TrainedModel'
 
 /**
  * Update a trained model deployment.

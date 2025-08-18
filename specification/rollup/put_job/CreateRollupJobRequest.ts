@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Groupings } from '@rollup/_types/Groupings'
-import { FieldMetric } from '@rollup/_types/Metric'
 import { RequestBase } from '@_types/Base'
 import { HttpHeaders, Id, IndexName } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { Groupings } from '@rollup/_types/Groupings'
+import { FieldMetric } from '@rollup/_types/Metric'
 
 /**
  * Create a rollup job.

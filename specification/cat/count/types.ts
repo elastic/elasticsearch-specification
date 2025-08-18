@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Stringified } from '@spec_utils/Stringified'
 import { EpochTime, TimeOfDay, UnitSeconds } from '@_types/Time'
+import { Stringified } from '@spec_utils/Stringified'
 
 export class CountRecord {
   /**

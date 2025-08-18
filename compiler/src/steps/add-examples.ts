@@ -54,10 +54,18 @@ export default class ExamplesProcessor {
 class BaseExamplesProcessor {
   model: model.Model
   specsFolder: string
+  static languageExamples: Record<string, model.ExampleAlternative[]> = {}
 
   constructor (model: model.Model, specsFolder: string) {
     this.model = model
     this.specsFolder = specsFolder
+    if (Object.keys(BaseExamplesProcessor.languageExamples).length === 0) {
+      // load the language examples
+      const examplesJson = this.specsFolder + '/../docs/examples/languageExamples.json'
+      if (fs.existsSync(examplesJson)) {
+        BaseExamplesProcessor.languageExamples = JSON.parse(fs.readFileSync(examplesJson, 'utf8'))
+      }
+    }
   }
 
   // Log a 'warning' message.
@@ -139,6 +147,11 @@ class BaseExamplesProcessor {
       const exampleFileContent = fs.readFileSync(filePath, 'utf8')
       const exampleName = path.basename(fileName, path.extname(fileName))
       const example: model.Example = yaml.load(exampleFileContent)
+      // find the language alternative examples and add them
+      const alternativeKey = 'specification/' + filePath.split('/specification/')[1]
+      if (BaseExamplesProcessor.languageExamples[alternativeKey] !== undefined) {
+        example.alternatives = BaseExamplesProcessor.languageExamples[alternativeKey]
+      }
       // Some of the example files set their 'value' as a JSON string,
       // and some files set their 'value' as an object. For consistency,
       // if the value is not a JSON string, convert it to a JSON string.

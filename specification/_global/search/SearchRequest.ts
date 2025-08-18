@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { TrackHits } from '@global/search/_types/hits'
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
@@ -44,6 +41,9 @@ import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort, SortResults } from '@_types/sort'
 import { Duration } from '@_types/Time'
+import { TrackHits } from '@global/search/_types/hits'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { FieldCollapse } from './_types/FieldCollapse'
 import { Highlight } from './_types/highlighting'
 import { PointInTimeReference } from './_types/PointInTimeReference'

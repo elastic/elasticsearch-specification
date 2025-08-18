@@ -1,9 +1,21 @@
 summary: Automatic slicing
-# method_request: POST _reindex?slices=5&refresh
+method_request: POST _reindex?slices=5&refresh
 description: >
-  Run `POST _reindex?slices=5&refresh` to automatically parallelize using sliced scroll to slice on `_id`.
-  The `slices` parameter specifies the number of slices to use.
+  Run `POST _reindex?slices=5&refresh` to automatically parallelize using sliced scroll to slice on `_id`. The `slices` parameter
+  specifies the number of slices to use.
 # type: request
-value:
-  "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\":\
-  \ {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+value: "{
+
+  \  \"source\": {
+
+  \    \"index\": \"my-index-000001\"
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"my-new-index-000001\"
+
+  \  }
+
+  }"

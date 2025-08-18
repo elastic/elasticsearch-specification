@@ -1,6 +1,6 @@
 summary: A completion task
 description: Run `PUT _inference/completion/alibabacloud_ai_search_completion` to create an inference endpoint that performs a completion task.
-# method_request: "PUT _inference/completion/alibabacloud_ai_search_completion"
+method_request: 'PUT _inference/completion/alibabacloud_ai_search_completion'
 # type: "request"
 value: |-
   {

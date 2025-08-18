@@ -29,7 +29,7 @@ import { RequestBase } from '@_types/Base'
  * > This API returns information that reflects current state on the local cluster.
  * > The `connected` field does not necessarily reflect whether a remote cluster is down or unavailable, only whether there is currently an open connection to it.
  * > Elasticsearch does not spontaneously try to reconnect to a disconnected remote cluster.
- * > To trigger a reconnection, attempt a cross-cluster search, ES|QL cross-cluster search, or try the [resolve cluster endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-cluster).
+ * > To trigger a reconnection, attempt a cross-cluster search, ES|QL cross-cluster search, or try the `/_resolve/cluster` endpoint.
  * @rest_spec_name cluster.remote_info
  * @availability stack since=6.1.0 stability=stable
  * @cluster_privileges monitor

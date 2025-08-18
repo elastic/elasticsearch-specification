@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ValueType } from '@_types/aggregations/metric'
 import {
   EmptyObject,
@@ -46,6 +44,8 @@ import {
   DurationLarge,
   TimeZone
 } from '@_types/Time'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Buckets } from './Aggregate'
 import { Aggregation } from './Aggregation'
 import { Missing, MissingOrder } from './AggregationContainer'
@@ -1158,8 +1158,9 @@ export class CategorizeTextAggregation extends Aggregation {
   categorization_filters?: string[]
   /**
    * The categorization analyzer specifies how the text is analyzed and tokenized before being categorized.
-   * The syntax is very similar to that used to define the analyzer in the [Analyze endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/8.0/indices-analyze.html). This property
+   * The syntax is very similar to that used to define the analyzer in the `_analyze` endpoint. This property
    * cannot be used at the same time as categorization_filters.
+   * @ext_doc_id indices-analyze
    */
   categorization_analyzer?: CategorizeTextAnalyzer
   /**

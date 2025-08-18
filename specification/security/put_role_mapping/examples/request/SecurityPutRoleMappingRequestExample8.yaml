@@ -1,7 +1,10 @@
 summary: Complex roles
-# method_request: POST /_security/role_mapping/mapping8
+method_request: POST /_security/role_mapping/mapping8
 description: >
-  Run `POST /_security/role_mapping/mapping8` to assign rules that are complex and include wildcard matching. For example, this mapping matches any user where all of these conditions are met: the Distinguished Name matches the pattern `*,ou=admin,dc=example,dc=com`, or the `username` is `es-admin`, or the `username` is `es-system`; the user is in the `cn=people,dc=example,dc=com` group; the user does not have a `terminated_date`.
+  Run `POST /_security/role_mapping/mapping8` to assign rules that are complex and include wildcard matching. For example, this
+  mapping matches any user where all of these conditions are met: the Distinguished Name matches the pattern
+  `*,ou=admin,dc=example,dc=com`, or the `username` is `es-admin`, or the `username` is `es-system`; the user is in the
+  `cn=people,dc=example,dc=com` group; the user does not have a `terminated_date`.
 # type: request
 value: |-
   {

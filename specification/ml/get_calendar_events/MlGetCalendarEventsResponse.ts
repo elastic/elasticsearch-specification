@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { CalendarEvent } from '@ml/_types/CalendarEvent'
 import { long } from '@_types/Numeric'
+import { CalendarEvent } from '@ml/_types/CalendarEvent'
 
 export class Response {
   body: {

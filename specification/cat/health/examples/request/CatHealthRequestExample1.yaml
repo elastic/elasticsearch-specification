@@ -1,0 +1,1 @@
+method_request: GET /_cat/health?v=true&format=json

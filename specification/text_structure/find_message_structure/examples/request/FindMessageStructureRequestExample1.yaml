@@ -1,36 +1,61 @@
 # summary:
-# method_request: POST _text_structure/find_message_structure
+method_request: POST _text_structure/find_message_structure
 description: >
   Run `POST _text_structure/find_message_structure` to analyze Elasticsearch log files.
 # type: request
-value:
-  "{\n  \"messages\": [\n    \"[2024-03-05T10:52:36,256][INFO ][o.a.l.u.VectorUtilPanamaProvider]\
-  \ [laptop] Java vector incubator API enabled; uses preferredBitSize=128\",\n   \
-  \ \"[2024-03-05T10:52:41,038][INFO ][o.e.p.PluginsService     ] [laptop] loaded\
-  \ module [repository-url]\",\n    \"[2024-03-05T10:52:41,042][INFO ][o.e.p.PluginsService\
-  \     ] [laptop] loaded module [rest-root]\",\n    \"[2024-03-05T10:52:41,043][INFO\
-  \ ][o.e.p.PluginsService     ] [laptop] loaded module [x-pack-core]\",\n    \"[2024-03-05T10:52:41,043][INFO\
-  \ ][o.e.p.PluginsService     ] [laptop] loaded module [x-pack-redact]\",\n    \"\
-  [2024-03-05T10:52:41,043][INFO ][o.e.p.PluginsService     ] [laptop] loaded module\
-  \ [ingest-user-agent]\",\n    \"[2024-03-05T10:52:41,044][INFO ][o.e.p.PluginsService\
-  \     ] [laptop] loaded module [x-pack-monitoring]\",\n    \"[2024-03-05T10:52:41,044][INFO\
-  \ ][o.e.p.PluginsService     ] [laptop] loaded module [repository-s3]\",\n    \"\
-  [2024-03-05T10:52:41,044][INFO ][o.e.p.PluginsService     ] [laptop] loaded module\
-  \ [x-pack-analytics]\",\n    \"[2024-03-05T10:52:41,044][INFO ][o.e.p.PluginsService\
-  \     ] [laptop] loaded module [x-pack-ent-search]\",\n    \"[2024-03-05T10:52:41,044][INFO\
-  \ ][o.e.p.PluginsService     ] [laptop] loaded module [x-pack-autoscaling]\",\n\
-  \    \"[2024-03-05T10:52:41,044][INFO ][o.e.p.PluginsService     ] [laptop] loaded\
-  \ module [lang-painless]]\",\n    \"[2024-03-05T10:52:41,059][INFO ][o.e.p.PluginsService\
-  \     ] [laptop] loaded module [lang-expression]\",\n    \"[2024-03-05T10:52:41,059][INFO\
-  \ ][o.e.p.PluginsService     ] [laptop] loaded module [x-pack-eql]\",\n    \"[2024-03-05T10:52:43,291][INFO\
-  \ ][o.e.e.NodeEnvironment    ] [laptop] heap size [16gb], compressed ordinary object\
-  \ pointers [true]\",\n    \"[2024-03-05T10:52:46,098][INFO ][o.e.x.s.Security  \
-  \       ] [laptop] Security is enabled\",\n    \"[2024-03-05T10:52:47,227][INFO\
-  \ ][o.e.x.p.ProfilingPlugin  ] [laptop] Profiling is enabled\",\n    \"[2024-03-05T10:52:47,259][INFO\
-  \ ][o.e.x.p.ProfilingPlugin  ] [laptop] profiling index templates will not be installed\
-  \ or reinstalled\",\n    \"[2024-03-05T10:52:47,755][INFO ][o.e.i.r.RecoverySettings\
-  \ ] [laptop] using rate limit [40mb] with [default=40mb, read=0b, write=0b, max=0b]\"\
-  ,\n    \"[2024-03-05T10:52:47,787][INFO ][o.e.d.DiscoveryModule    ] [laptop] using\
-  \ discovery type [multi-node] and seed hosts providers [settings]\",\n    \"[2024-03-05T10:52:49,188][INFO\
-  \ ][o.e.n.Node               ] [laptop] initialized\",\n    \"[2024-03-05T10:52:49,199][INFO\
-  \ ][o.e.n.Node               ] [laptop] starting ...\"\n  ]\n}"
+value: "{
+
+  \  \"messages\": [
+
+  \    \"[2024-03-05T10:52:36,256][INFO ][o.a.l.u.VectorUtilPanamaProvider] [laptop] Java vector incubator API enabled; uses
+  preferredBitSize=128\",
+
+  \    \"[2024-03-05T10:52:41,038][INFO ][o.e.p.PluginsService     ] [laptop] loaded module [repository-url]\",
+
+  \    \"[2024-03-05T10:52:41,042][INFO ][o.e.p.PluginsService     ] [laptop] loaded module [rest-root]\",
+
+  \    \"[2024-03-05T10:52:41,043][INFO ][o.e.p.PluginsService     ] [laptop] loaded module [x-pack-core]\",
+
+  \    \"[2024-03-05T10:52:41,043][INFO ][o.e.p.PluginsService     ] [laptop] loaded module [x-pack-redact]\",
+
+  \    \"[2024-03-05T10:52:41,043][INFO ][o.e.p.PluginsService     ] [laptop] loaded module [ingest-user-agent]\",
+
+  \    \"[2024-03-05T10:52:41,044][INFO ][o.e.p.PluginsService     ] [laptop] loaded module [x-pack-monitoring]\",
+
+  \    \"[2024-03-05T10:52:41,044][INFO ][o.e.p.PluginsService     ] [laptop] loaded module [repository-s3]\",
+
+  \    \"[2024-03-05T10:52:41,044][INFO ][o.e.p.PluginsService     ] [laptop] loaded module [x-pack-analytics]\",
+
+  \    \"[2024-03-05T10:52:41,044][INFO ][o.e.p.PluginsService     ] [laptop] loaded module [x-pack-ent-search]\",
+
+  \    \"[2024-03-05T10:52:41,044][INFO ][o.e.p.PluginsService     ] [laptop] loaded module [x-pack-autoscaling]\",
+
+  \    \"[2024-03-05T10:52:41,044][INFO ][o.e.p.PluginsService     ] [laptop] loaded module [lang-painless]]\",
+
+  \    \"[2024-03-05T10:52:41,059][INFO ][o.e.p.PluginsService     ] [laptop] loaded module [lang-expression]\",
+
+  \    \"[2024-03-05T10:52:41,059][INFO ][o.e.p.PluginsService     ] [laptop] loaded module [x-pack-eql]\",
+
+  \    \"[2024-03-05T10:52:43,291][INFO ][o.e.e.NodeEnvironment    ] [laptop] heap size [16gb], compressed ordinary object pointers
+  [true]\",
+
+  \    \"[2024-03-05T10:52:46,098][INFO ][o.e.x.s.Security         ] [laptop] Security is enabled\",
+
+  \    \"[2024-03-05T10:52:47,227][INFO ][o.e.x.p.ProfilingPlugin  ] [laptop] Profiling is enabled\",
+
+  \    \"[2024-03-05T10:52:47,259][INFO ][o.e.x.p.ProfilingPlugin  ] [laptop] profiling index templates will not be installed or
+  reinstalled\",
+
+  \    \"[2024-03-05T10:52:47,755][INFO ][o.e.i.r.RecoverySettings ] [laptop] using rate limit [40mb] with [default=40mb, read=0b,
+  write=0b, max=0b]\",
+
+  \    \"[2024-03-05T10:52:47,787][INFO ][o.e.d.DiscoveryModule    ] [laptop] using discovery type [multi-node] and seed hosts
+  providers [settings]\",
+
+  \    \"[2024-03-05T10:52:49,188][INFO ][o.e.n.Node               ] [laptop] initialized\",
+
+  \    \"[2024-03-05T10:52:49,199][INFO ][o.e.n.Node               ] [laptop] starting ...\"
+
+  \  ]
+
+  }"

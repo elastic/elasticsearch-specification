@@ -18,7 +18,6 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
 
 /**
  * Get user privileges.
@@ -39,11 +38,4 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
-  query_parameters: {
-    /** The name of the application. Application privileges are always associated with exactly one application. If you do not specify this parameter, the API returns information about all privileges for all applications. */
-    application?: Name
-    /** The name of the privilege. If you do not specify this parameter, the API returns information about all privileges for the requested application. */
-    priviledge?: Name
-    username?: Name | null
-  }
 }

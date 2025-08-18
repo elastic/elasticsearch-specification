@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
 import { Names } from '@_types/common'
 import { Duration, TimeUnit } from '@_types/Time'
+import { CatRequestBase, CatThreadPoolColumns } from '@cat/_types/CatBase'
 
 /**
  * Get thread pool statistics.
@@ -55,9 +55,9 @@ export interface Request extends CatRequestBase {
     /**
      * List of columns to appear in the response. Supports simple wildcards.
      */
-    h?: Names
+    h?: CatThreadPoolColumns
     /**
-     * List of columns that determine how the table should be sorted.
+     * A comma-separated list of column names or aliases that determines the sort order.
      * Sorting defaults to ascending and can be changed by setting `:asc`
      * or `:desc` as a suffix to the column name.
      */
@@ -75,7 +75,7 @@ export interface Request extends CatRequestBase {
      */
     local?: boolean
     /**
-     * Period to wait for a connection to the master node.
+     * The period to wait for a connection to the master node.
      * @server_default 30s
      */
     master_timeout?: Duration

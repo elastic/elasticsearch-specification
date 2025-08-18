@@ -1,5 +1,5 @@
 summary: A latest transform
-# method_request: PUT _transform/ecommerce_transform2
+method_request: PUT _transform/ecommerce_transform2
 description: Run `PUT _transform/ecommerce_transform2` to create a transform that uses the latest method.
 # type: request
 value:

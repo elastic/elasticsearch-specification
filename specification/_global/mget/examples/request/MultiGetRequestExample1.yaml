@@ -1,8 +1,8 @@
 summary: Get documents by ID
-# method_request: "GET /my-index-000001/_mget"
+method_request: 'GET /my-index-000001/_mget'
 description: >
-  Run `GET /my-index-000001/_mget`.
-  When you specify an index in the request URI, only the document IDs are required in the request body.
+  Run `GET /my-index-000001/_mget`. When you specify an index in the request URI, only the document IDs are required in the request
+  body.
 # type: "request"
 value: |-
   {

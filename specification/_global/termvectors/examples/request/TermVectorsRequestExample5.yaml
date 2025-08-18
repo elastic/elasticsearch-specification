@@ -1,8 +1,9 @@
 summary: Artificial documents
-# method_request: GET /my-index-000001/_termvectors
+method_request: GET /my-index-000001/_termvectors
 description: >
-  Run `GET /my-index-000001/_termvectors`.
-  Term vectors can be generated for artificial documents, that is for documents not present in the index. If dynamic mapping is turned on (default), the document fields not in the original mapping will be dynamically created.
+  Run `GET /my-index-000001/_termvectors`. Term vectors can be generated for artificial documents, that is for documents not present
+  in the index. If dynamic mapping is turned on (default), the document fields not in the original mapping will be dynamically
+  created.
 # type: request
 value: |-
   {

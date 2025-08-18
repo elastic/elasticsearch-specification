@@ -1,8 +1,8 @@
 summary: Get multiple term vectors
-# method_request: "POST /my-index-000001/_mtermvectors"
+method_request: 'POST /my-index-000001/_mtermvectors'
 description: >
-  Run `POST /my-index-000001/_mtermvectors`.
-  When you specify an index in the request URI, the index does not need to be specified for each documents in the request body.
+  Run `POST /my-index-000001/_mtermvectors`. When you specify an index in the request URI, the index does not need to be specified
+  for each documents in the request body.
 # type: "request"
 value: |-
   {

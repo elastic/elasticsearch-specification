@@ -1,6 +1,10 @@
 summary: Elastic rerank task
-description: Run `PUT _inference/rerank/my-elastic-rerank` to create an inference endpoint that performs a rerank task using the built-in Elastic Rerank cross-encoder model.  The `model_id` must be `.rerank-v1`, which is the ID of the built-in Elastic Rerank model. The API will automatically download the Elastic Rerank model if it isn't already downloaded and then deploy the model. Once deployed, the model can be used for semantic re-ranking with a `text_similarity_reranker` retriever.
-# method_request: "PUT _inference/rerank/my-elastic-rerank"
+description:
+  Run `PUT _inference/rerank/my-elastic-rerank` to create an inference endpoint that performs a rerank task using the
+  built-in Elastic Rerank cross-encoder model.  The `model_id` must be `.rerank-v1`, which is the ID of the built-in Elastic Rerank
+  model. The API will automatically download the Elastic Rerank model if it isn't already downloaded and then deploy the model. Once
+  deployed, the model can be used for semantic re-ranking with a `text_similarity_reranker` retriever.
+method_request: 'PUT _inference/rerank/my-elastic-rerank'
 # type: "request"
 value: |-
   {

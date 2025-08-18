@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
@@ -37,6 +36,7 @@ import {
 import { Property } from '@_types/mapping/Property'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { Duration } from '@_types/Time'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 /**
  * Update field mappings.
@@ -96,7 +96,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards

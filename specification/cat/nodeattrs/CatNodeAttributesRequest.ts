@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
 import { Names } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get node attribute information.

@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { RequestItem } from '@global/msearch/types'
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
@@ -26,17 +25,20 @@ import {
   SearchType
 } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { RequestItem } from '@global/msearch/types'
 import { Checkpoint } from '../_types/Checkpoints'
 
 /**
- * Executes several [fleet searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/fleet-search.html) with a single API request.
- * The API follows the same structure as the [multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) API. However, similar to the fleet search API, it
- * supports the wait_for_checkpoints parameter.
+ * Executes several fleet searches with a single API request.
+ *
+ * The API follows the same structure as the multi search (`_msearch`) API.
+ * However, similar to the fleet search API, it supports the `wait_for_checkpoints` parameter.
  * @rest_spec_name fleet.msearch
  * @availability stack since=7.16.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @index_privileges read
  * @doc_id fleet-multi-search
+ * @ext_doc_id search-multi-search
  */
 export interface Request extends RequestBase {
   urls: [
@@ -114,9 +116,10 @@ export interface Request extends RequestBase {
      */
     wait_for_checkpoints?: Checkpoint[]
     /**
-     * If true, returns partial results if there are shard request timeouts or [shard failures](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-replication.html#shard-failures). If false, returns
-     * an error with no partial results. Defaults to the configured cluster setting `search.default_allow_partial_results`
-     * which is true by default.
+     * If true, returns partial results if there are shard request timeouts or shard failures.
+     * If false, returns an error with no partial results.
+     * Defaults to the configured cluster setting `search.default_allow_partial_results` which is true by default.
+     * @ext_doc_id shard-failures
      */
     allow_partial_search_results?: boolean
   }

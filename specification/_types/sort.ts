@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { AdditionalProperty } from '@spec_utils/behaviors'
 import { Missing } from '@_types/aggregations/AggregationContainer'
 import { Field, FieldValue } from '@_types/common'
 import { DistanceUnit, GeoDistanceType, GeoLocation } from '@_types/Geo'
@@ -25,6 +24,7 @@ import { FieldType } from '@_types/mapping/Property'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
+import { AdditionalProperty } from '@spec_utils/behaviors'
 
 export class NestedSortValue {
   filter?: QueryContainer

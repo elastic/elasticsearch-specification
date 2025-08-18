@@ -1,9 +1,8 @@
 summary: Reindex multiple sources
-# method_request: POST _reindex
+method_request: POST _reindex
 description: >
-  Run `POST _reindex` to reindex from multiple sources.
-  The `index` attribute in source can be a list, which enables you to copy from lots of sources in one request.
-  This example copies documents from the `my-index-000001` and `my-index-000002` indices.
+  Run `POST _reindex` to reindex from multiple sources. The `index` attribute in source can be a list, which enables you to copy
+  from lots of sources in one request. This example copies documents from the `my-index-000001` and `my-index-000002` indices.
 # type: request
 value: |-
   {

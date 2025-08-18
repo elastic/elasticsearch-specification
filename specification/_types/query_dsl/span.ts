@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { Field } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { QueryBase, QueryContainer } from './abstractions'
 
 /**

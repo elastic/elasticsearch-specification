@@ -17,15 +17,15 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { HttpHeaders, Id, Metadata, VersionString } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import {
   DataframeAnalysisAnalyzedFields,
   DataframeAnalysisContainer,
   DataframeAnalyticsDestination,
   DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
-import { RequestBase } from '@_types/Base'
-import { HttpHeaders, Id, Metadata, VersionString } from '@_types/common'
-import { integer } from '@_types/Numeric'
 
 /**
  * Create a data frame analytics job.

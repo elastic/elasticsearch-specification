@@ -1,5 +1,5 @@
 summary: Roles for all users
-# method_request: POST /_security/role_mapping/mapping1
+method_request: POST /_security/role_mapping/mapping1
 description: >
   Run `POST /_security/role_mapping/mapping1` to assign the `user` role to all users.
 # type: request

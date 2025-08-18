@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Conflicts, Slices, WaitForActiveShards } from '@_types/common'
-import { float, long } from '@_types/Numeric'
+import { float, integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
 import { Destination, Source } from './types'
@@ -253,6 +253,14 @@ export interface Request extends RequestBase {
      * @ext_doc_id slice-scroll
      */
     slices?: Slices
+    /**
+     * The maximum number of documents to reindex.
+     * By default, all documents are reindexed.
+     * If it is a value less then or equal to `scroll_size`, a scroll will not be used to retrieve the results for the operation.
+     *
+     * If `conflicts` is set to `proceed`, the reindex operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.
+     */
+    max_docs?: integer
     /**
      * The period each indexing waits for automatic index creation, dynamic mapping updates, and waiting for active shards.
      * By default, Elasticsearch waits for at least one minute before failing.

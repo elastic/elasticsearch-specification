@@ -1,5 +1,5 @@
 summary: Run a watch with multiple action modes
-# method_request: POST _watcher/watch/my_watch/_execute
+method_request: POST _watcher/watch/my_watch/_execute
 description: >
   Run `POST _watcher/watch/my_watch/_execute` and set a different mode for each action.
 # type: request

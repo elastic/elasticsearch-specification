@@ -1,5 +1,5 @@
 summary: A pivot transform
-# method_request: PUT _transform/ecommerce_transform1
+method_request: PUT _transform/ecommerce_transform1
 description: Run `PUT _transform/ecommerce_transform1` to create a transform that uses the pivot method.
 # type: request
 value:

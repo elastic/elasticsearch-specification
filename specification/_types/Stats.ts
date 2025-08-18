@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { ShardFileSizeInfo } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { ByteSize, ClusterAlias, Field, Name, VersionString } from './common'
 import { ShardFailure } from './Errors'
 import { double, integer, long, uint } from './Numeric'
@@ -109,6 +109,15 @@ export class DocStats {
    * Elasticsearch reclaims the disk space of deleted Lucene documents when a segment is merged.
    */
   deleted?: long
+  /**
+   * Returns the total size in bytes of all documents in this stats.
+   * This value may be more reliable than store_stats.size_in_bytes in estimating the index size.
+   */
+  total_size_in_bytes: long
+  /**
+   * Human readable total_size_in_bytes
+   */
+  total_size?: ByteSize
 }
 
 export class FielddataStats {
@@ -116,6 +125,19 @@ export class FielddataStats {
   memory_size?: ByteSize
   memory_size_in_bytes: long
   fields?: Dictionary<Field, FieldMemoryUsage>
+  global_ordinals: GlobalOrdinalsStats
+}
+
+export class GlobalOrdinalsStats {
+  build_time_in_millis: UnitMillis
+  build_time?: string
+  fields?: Dictionary<Name, GlobalOrdinalFieldStats>
+}
+
+export class GlobalOrdinalFieldStats {
+  build_time_in_millis: UnitMillis
+  build_time?: string
+  shard_max_value_count: long
 }
 
 export class FieldMemoryUsage {
@@ -304,7 +326,6 @@ export class SegmentsStats {
    * Total amount of memory used by all index writers across all shards assigned to selected nodes.
    */
   index_writer_memory?: ByteSize
-  index_writer_max_memory_in_bytes?: long
   /**
    * Total amount, in bytes, of memory used by all index writers across all shards assigned to selected nodes.
    */
@@ -337,11 +358,14 @@ export class SegmentsStats {
    * Total amount, in bytes, of memory used for points across all shards assigned to selected nodes.
    */
   points_memory_in_bytes: long
-  stored_memory?: ByteSize
   /**
    * Total amount, in bytes, of memory used for stored fields across all shards assigned to selected nodes.
    */
   stored_fields_memory_in_bytes: long
+  /**
+   * Total amount of memory used for stored fields across all shards assigned to selected nodes.
+   */
+  stored_fields_memory?: ByteSize
   /**
    * Total amount, in bytes, of memory used for terms across all shards assigned to selected nodes.
    */
@@ -353,7 +377,7 @@ export class SegmentsStats {
   /**
    * Total amount of memory used for term vectors across all shards assigned to selected nodes.
    */
-  term_vectory_memory?: ByteSize
+  term_vectors_memory?: ByteSize
   /**
    * Total amount, in bytes, of memory used for term vectors across all shards assigned to selected nodes.
    */

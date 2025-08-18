@@ -20,8 +20,8 @@
 import { integer } from '@_types/Numeric'
 import { CharFilterBase } from './char_filters'
 import { StopWords } from './StopWords'
-import { TokenizerBase } from './tokenizers'
 import { TokenFilterBase } from './token_filters'
+import { TokenizerBase } from './tokenizers'
 
 export class KuromojiAnalyzer {
   type: 'kuromoji'

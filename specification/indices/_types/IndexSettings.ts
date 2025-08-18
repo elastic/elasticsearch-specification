@@ -17,17 +17,11 @@
  * under the License.
  */
 
-import { IndexRouting } from '@indices/_types/IndexRouting'
-import { AdditionalProperties } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Stringified } from '@spec_utils/Stringified'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { WithNullValue } from '@spec_utils/utils'
 import { Analyzer } from '@_types/analysis/analyzers'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Normalizer } from '@_types/analysis/normalizers'
-import { Tokenizer } from '@_types/analysis/tokenizers'
 import { TokenFilter } from '@_types/analysis/token_filters'
+import { Tokenizer } from '@_types/analysis/tokenizers'
 import {
   ByteSize,
   Name,
@@ -46,6 +40,12 @@ import {
   Normalization
 } from '@_types/Similarity'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
+import { IndexRouting } from '@indices/_types/IndexRouting'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Stringified } from '@spec_utils/Stringified'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { WithNullValue } from '@spec_utils/utils'
 import { IndexSegmentSort } from './IndexSegmentSort'
 
 export class SoftDeletes {
@@ -69,7 +69,7 @@ export class RetentionLease {
 
 /**
  * @doc_id index-modules-settings
- *
+ * @ext_doc_id index-settings
  * @behavior_meta AdditionalProperties fieldname=other_settings description="Additional settings not covered in this type."
  */
 export class IndexSettings
@@ -540,6 +540,8 @@ export class Storage {
    * of memory maps so you need disable the ability to use memory-mapping.
    */
   allow_mmap?: boolean
+  /** How often store statistics are refreshed */
+  stats_refresh_interval?: Duration
 }
 
 /**

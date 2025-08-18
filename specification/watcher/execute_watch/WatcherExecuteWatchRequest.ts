@@ -17,13 +17,13 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ActionExecutionMode, SimulatedActions } from '@watcher/_types/Action'
 import { ScheduleTriggerEvent } from '@watcher/_types/Schedule'
 import { Watch } from '@watcher/_types/Watch'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
 
 /**
  * Run a watch.

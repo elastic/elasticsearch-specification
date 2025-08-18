@@ -29,6 +29,13 @@ export class GeoPointProperty extends DocValuesPropertyBase {
   on_script_error?: OnScriptError
   script?: Script
   type: 'geo_point'
+  time_series_metric?: GeoPointMetricType
+}
+
+export enum GeoPointMetricType {
+  gauge,
+  counter,
+  position
 }
 
 export enum GeoOrientation {

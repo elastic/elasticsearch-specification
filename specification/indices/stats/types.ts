@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   ByteSize,
   HealthStatus,
@@ -48,6 +46,8 @@ import {
   TranslogStats,
   WarmerStats
 } from '@_types/Stats'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class IndexStats {
   /** Contains statistics about completions across all shards assigned to the node. */

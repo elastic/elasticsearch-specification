@@ -1,11 +1,10 @@
 summary: Run a watch
-# method_request: POST _watcher/watch/my_watch/_execute
+method_request: POST _watcher/watch/my_watch/_execute
 description: >
-  Run `POST _watcher/watch/my_watch/_execute` to run a watch.
-  The input defined in the watch is ignored and the `alternative_input` is used as the payload.
-  The condition as defined by the watch is ignored and is assumed to evaluate to true.
-  The `force_simulate` action forces the simulation of `my-action`.
-  Forcing the simulation means that throttling is ignored and the watch is simulated by Watcher instead of being run normally.
+  Run `POST _watcher/watch/my_watch/_execute` to run a watch. The input defined in the watch is ignored and the `alternative_input`
+  is used as the payload. The condition as defined by the watch is ignored and is assumed to evaluate to true. The `force_simulate`
+  action forces the simulation of `my-action`. Forcing the simulation means that throttling is ignored and the watch is simulated by
+  Watcher instead of being run normally.
 # type: request
 value: |-
   {
