@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Bytes, Id } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
-import { CatAnomalyDetectorColumns, CatRequestBase } from '@cat/_types/CatBase'
+import { Bytes, Id } from "@_types/common";
+import { TimeUnit } from "@_types/Time";
+import { CatAnomalyDetectorColumns, CatRequestBase } from "@cat/_types/CatBase";
 
 /**
  * Get anomaly detection jobs.
@@ -42,20 +42,20 @@ import { CatAnomalyDetectorColumns, CatRequestBase } from '@cat/_types/CatBase'
 export interface Request extends CatRequestBase {
   urls: [
     {
-      path: '/_cat/ml/anomaly_detectors'
-      methods: ['GET']
+      path: "/_cat/ml/anomaly_detectors";
+      methods: ["GET"];
     },
     {
-      path: '/_cat/ml/anomaly_detectors/{job_id}'
-      methods: ['GET']
+      path: "/_cat/ml/anomaly_detectors/{job_id}";
+      methods: ["GET"];
     }
-  ]
+  ];
   path_parts: {
     /**
      * Identifier for the anomaly detection job.
      */
-    job_id?: Id
-  }
+    job_id?: Id;
+  };
   query_parameters: {
     /**
      * Specifies what to do when the request:
@@ -69,21 +69,21 @@ export interface Request extends CatRequestBase {
      * matches.
      * @server_default true
      */
-    allow_no_match?: boolean
+    allow_no_match?: boolean;
     /**
      * The unit used to display byte values.
      */
-    bytes?: Bytes
+    bytes?: Bytes;
     /**
      * Comma-separated list of column names to display.
      * @server_default buckets.count,data.processed_records,forecasts.total,id,model.bytes,model.memory_status,state
      */
-    h?: CatAnomalyDetectorColumns
+    h?: CatAnomalyDetectorColumns;
     /** Comma-separated list of column names or column aliases used to sort the response. */
-    s?: CatAnomalyDetectorColumns
+    s?: CatAnomalyDetectorColumns;
     /**
      * The unit used to display time values.
      */
-    time?: TimeUnit
-  }
+    time?: TimeUnit;
+  };
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Bytes, Fields, Names } from '@_types/common'
-import { CatFieldDataColumns, CatRequestBase } from '@cat/_types/CatBase'
+import { Bytes, Fields, Names } from "@_types/common";
+import { CatFieldDataColumns, CatRequestBase } from "@cat/_types/CatBase";
 
 /**
  * Get field data cache information.
@@ -36,35 +36,35 @@ import { CatFieldDataColumns, CatRequestBase } from '@cat/_types/CatBase'
 export interface Request extends CatRequestBase {
   urls: [
     {
-      path: '/_cat/fielddata'
-      methods: ['GET']
+      path: "/_cat/fielddata";
+      methods: ["GET"];
     },
     {
-      path: '/_cat/fielddata/{fields}'
-      methods: ['GET']
+      path: "/_cat/fielddata/{fields}";
+      methods: ["GET"];
     }
-  ]
+  ];
   path_parts: {
     /**
      * Comma-separated list of fields used to limit returned information.
      * To retrieve all fields, omit this parameter.
      */
-    fields?: Fields
-  }
+    fields?: Fields;
+  };
   query_parameters: {
     /** The unit used to display byte values. */
-    bytes?: Bytes
+    bytes?: Bytes;
     /** Comma-separated list of fields used to limit returned information. */
-    fields?: Fields
+    fields?: Fields;
     /**
      * A comma-separated list of columns names to display. It supports simple wildcards.
      */
-    h?: CatFieldDataColumns
+    h?: CatFieldDataColumns;
     /**
      * List of columns that determine how the table should be sorted.
      * Sorting defaults to ascending and can be changed by setting `:asc`
      * or `:desc` as a suffix to the column name.
      */
-    s?: Names
-  }
+    s?: Names;
+  };
 }

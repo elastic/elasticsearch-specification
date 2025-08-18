@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Bytes, Names, NodeIds } from '@_types/common'
-import { Duration } from '@_types/Time'
-import { CatAllocationColumns, CatRequestBase } from '@cat/_types/CatBase'
+import { Bytes, Names, NodeIds } from "@_types/common";
+import { Duration } from "@_types/Time";
+import { CatAllocationColumns, CatRequestBase } from "@cat/_types/CatBase";
 
 /**
  * Get shard allocation information.
@@ -36,31 +36,31 @@ import { CatAllocationColumns, CatRequestBase } from '@cat/_types/CatBase'
 export interface Request extends CatRequestBase {
   urls: [
     {
-      path: '/_cat/allocation'
-      methods: ['GET']
+      path: "/_cat/allocation";
+      methods: ["GET"];
     },
     {
-      path: '/_cat/allocation/{node_id}'
-      methods: ['GET']
+      path: "/_cat/allocation/{node_id}";
+      methods: ["GET"];
     }
-  ]
+  ];
   path_parts: {
     /** A comma-separated list of node identifiers or names used to limit the returned information. */
-    node_id?: NodeIds
-  }
+    node_id?: NodeIds;
+  };
   query_parameters: {
     /** The unit used to display byte values. */
-    bytes?: Bytes
+    bytes?: Bytes;
     /**
      * A comma-separated list of columns names to display. It supports simple wildcards.
      */
-    h?: CatAllocationColumns
+    h?: CatAllocationColumns;
     /**
      * List of columns that determine how the table should be sorted.
      * Sorting defaults to ascending and can be changed by setting `:asc`
      * or `:desc` as a suffix to the column name.
      */
-    s?: Names
+    s?: Names;
     /**
      * If `true`, the request computes the list of selected nodes from the
      * local cluster state. If `false` the list of selected nodes are computed
@@ -68,11 +68,11 @@ export interface Request extends CatRequestBase {
      * node will send requests for further information to each selected node.
      * @server_default false
      */
-    local?: boolean
+    local?: boolean;
     /**
      * Period to wait for a connection to the master node.
      * @server_default 30s
      */
-    master_timeout?: Duration
-  }
+    master_timeout?: Duration;
+  };
 }

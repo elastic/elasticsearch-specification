@@ -22,8 +22,8 @@
 // Cat*Request APIs will inherit the CommonQueryParameters behavior
 // as well, as CatRequestBase extends RequestBase.
 
-import { RequestBase } from '@_types/Base'
-import { CommonCatQueryParameters } from '@spec_utils/behaviors'
+import { RequestBase } from "@_types/Base";
+import { CommonCatQueryParameters } from "@spec_utils/behaviors";
 
 export class CatRequestBase
   extends RequestBase
@@ -40,52 +40,52 @@ export enum CatAnomalyDetectorColumn {
    * The number of bucket results produced by the job.
    * @aliases bc, bucketsCount
    */
-  'buckets.count',
+  "buckets.count",
   /**
    * Exponential moving average of all bucket processing times, in milliseconds.
    * @aliases btea, bucketsTimeExpAvg
    */
-  'buckets.time.exp_avg',
+  "buckets.time.exp_avg",
   /**
    * Exponentially-weighted moving average of bucket processing times calculated
    * in a 1 hour time window, in milliseconds.
    * @aliases bteah, bucketsTimeExpAvgHour
    */
-  'buckets.time.exp_avg_hour',
+  "buckets.time.exp_avg_hour",
   /**
    * Maximum among all bucket processing times, in milliseconds.
    * @aliases btmax, bucketsTimeMax
    */
-  'buckets.time.max',
+  "buckets.time.max",
   /**
    * Minimum among all bucket processing times, in milliseconds.
    * @aliases btmin, bucketsTimeMin
    */
-  'buckets.time.min',
+  "buckets.time.min",
   /**
    * Sum of all bucket processing times, in milliseconds.
    * @aliases btt, bucketsTimeTotal
    */
-  'buckets.time.total',
+  "buckets.time.total",
   /**
    * The number of buckets processed.
    * @aliases db, dataBuckets
    */
-  'data.buckets',
+  "data.buckets",
   /**
    * The timestamp of the earliest chronologically input document.
    * @aliases der, dataEarliestRecord
    */
-  'data.earliest_record',
+  "data.earliest_record",
   /**
    * The number of buckets which did not contain any data.
    * @aliases deb, dataEmptyBuckets */
-  'data.empty_buckets',
+  "data.empty_buckets",
   /**
    * The number of bytes of input data posted to the anomaly detection job.
    * @aliases dib, dataInputBytes
    */
-  'data.input_bytes',
+  "data.input_bytes",
   /**
    * The total number of fields in input documents posted to the anomaly
    * detection job. This count includes fields that are not used in the analysis.
@@ -93,44 +93,44 @@ export enum CatAnomalyDetectorColumn {
    * required fields from the documents it retrieves before posting them to the job.
    * @aliases dif, dataInputFields
    */
-  'data.input_fields',
+  "data.input_fields",
   /**
    * The number of input documents posted to the anomaly detection job.
    * @aliases dir, dataInputRecords
    */
-  'data.input_records',
+  "data.input_records",
   /**
    * The number of input documents with either a missing date field or a date
    * that could not be parsed.
    * @aliases did, dataInvalidDates
    */
-  'data.invalid_dates',
+  "data.invalid_dates",
   /**
    * The timestamp at which data was last analyzed, according to server time.
    * @aliases dl, dataLast
    */
-  'data.last',
+  "data.last",
   /**
    * The timestamp of the last bucket that did not contain any data.
    * @aliases dleb, dataLastEmptyBucket
    */
-  'data.last_empty_bucket',
+  "data.last_empty_bucket",
   /**
    * The timestamp of the last bucket that was considered sparse.
    * @aliases dlsb, dataLastSparseBucket
    */
-  'data.last_sparse_bucket',
+  "data.last_sparse_bucket",
   /**
    * The timestamp of the latest chronologically input document.
    * @aliases dlr, dataLatestRecord
    */
-  'data.latest_record',
+  "data.latest_record",
   /**
    * The number of input documents that are missing a field that the anomaly
    * detection job is configured to analyze. Input documents with missing fields
    * are still processed because it is possible that not all fields are missing.
    * @aliases dmf, dataMissingFields */
-  'data.missing_fields',
+  "data.missing_fields",
   /**
    * The number of input documents that have a timestamp chronologically
    * preceding the start of the current anomaly detection bucket offset by the
@@ -140,7 +140,7 @@ export enum CatAnomalyDetectorColumn {
    * ascending chronological order.
    * @aliases doot, dataOutOfOrderTimestamps
    */
-  'data.out_of_order_timestamps',
+  "data.out_of_order_timestamps",
   /**
    * The total number of fields in all the documents that have been processed by
    * the anomaly detection job. Only fields that are specified in the detector
@@ -148,7 +148,7 @@ export enum CatAnomalyDetectorColumn {
    * included in this count.
    * @aliases dpf, dataProcessedFields
    */
-  'data.processed_fields',
+  "data.processed_fields",
   /**
    * The number of input documents that have been processed by the anomaly
    * detection job. This value includes documents with missing fields, since
@@ -157,90 +157,90 @@ export enum CatAnomalyDetectorColumn {
    * aggregation results processed, not the number of Elasticsearch documents.
    * @aliases dpr, dataProcessedRecords
    */
-  'data.processed_records',
+  "data.processed_records",
   /**
    * The number of buckets that contained few data points compared to the
    * expected number of data points.
    * @aliases dsb, dataSparseBuckets
    */
-  'data.sparse_buckets',
+  "data.sparse_buckets",
   /**
    * The average memory usage in bytes for forecasts related to the anomaly
    * detection job.
    * @aliases fmavg, forecastsMemoryAvg
    */
-  'forecasts.memory.avg',
+  "forecasts.memory.avg",
   /**
    * The maximum memory usage in bytes for forecasts related to the anomaly
    * detection job.
    * @aliases fmmax, forecastsMemoryMax
    */
-  'forecasts.memory.max',
+  "forecasts.memory.max",
   /**
    * The minimum memory usage in bytes for forecasts related to the anomaly
    * detection job.
    * @aliases fmmin, forecastsMemoryMin
    */
-  'forecasts.memory.min',
+  "forecasts.memory.min",
   /**
    * The total memory usage in bytes for forecasts related to the anomaly
    * detection job.
    * @aliases fmt, forecastsMemoryTotal
    */
-  'forecasts.memory.total',
+  "forecasts.memory.total",
   /**
    * The average number of `m`odel_forecast` documents written for forecasts
    * related to the anomaly detection job.
    * @aliases fravg, forecastsRecordsAvg
    */
-  'forecasts.records.avg',
+  "forecasts.records.avg",
   /**
    * The maximum number of `model_forecast` documents written for forecasts
    * related to the anomaly detection job.
    * @aliases frmax, forecastsRecordsMax
    */
-  'forecasts.records.max',
+  "forecasts.records.max",
   /**
    * The minimum number of `model_forecast` documents written for forecasts
    * related to the anomaly detection job.
    * @aliases frmin, forecastsRecordsMin
    */
-  'forecasts.records.min',
+  "forecasts.records.min",
   /**
    * The total number of `model_forecast` documents written for forecasts
    * related to the anomaly detection job.
    * @aliases frt, forecastsRecordsTotal
    */
-  'forecasts.records.total',
+  "forecasts.records.total",
   /**
    * The average runtime in milliseconds for forecasts related to the anomaly
    * detection job.
    * @aliases ftavg, forecastsTimeAvg
    */
-  'forecasts.time.avg',
+  "forecasts.time.avg",
   /**
    * The maximum runtime in milliseconds for forecasts related to the anomaly
    * detection job.
    * @aliases ftmax, forecastsTimeMax
    */
-  'forecasts.time.max',
+  "forecasts.time.max",
   /**
    * The minimum runtime in milliseconds for forecasts related to the anomaly
    * detection job.
    * @aliases ftmin, forecastsTimeMin
    */
-  'forecasts.time.min',
+  "forecasts.time.min",
   /**
    * The total runtime in milliseconds for forecasts related to the anomaly
    * detection job.
    * @aliases ftt, forecastsTimeTotal
    */
-  'forecasts.time.total',
+  "forecasts.time.total",
   /**
    * The number of individual forecasts currently available for the job.
    * @aliases ft, forecastsTotal
    */
-  'forecasts.total',
+  "forecasts.total",
   /** Identifier for the anomaly detection job. */
   id,
   /**
@@ -248,26 +248,26 @@ export enum CatAnomalyDetectorColumn {
    * processed due to insufficient model memory.
    * @aliases mbaf, modelBucketAllocationFailures
    */
-  'model.bucket_allocation_failures',
+  "model.bucket_allocation_failures",
   /**
    * The number of by field values that were analyzed by the models. This value
    * is cumulative for all detectors in the job.
    * @aliases mbf, modelByFields
    */
-  'model.by_fields',
+  "model.by_fields",
   /**
    * The number of bytes of memory used by the models. This is the maximum value
    * since the last time the model was persisted. If the job is closed, this
    * value indicates the latest size.
    * @aliases mb, modelBytes
    */
-  'model.bytes',
+  "model.bytes",
   /**
    * The number of bytes over the high limit for memory usage at the last
    * allocation failure.
    * @aliases mbe, modelBytesExceeded
    */
-  'model.bytes_exceeded',
+  "model.bytes_exceeded",
   /**
    * The status of categorization for the job: `ok` or `warn`. If `ok`,
    * categorization is performing acceptably well (or not being used at all). If
@@ -279,11 +279,11 @@ export enum CatAnomalyDetectorColumn {
    * categories are dead.
    * @aliases mcs, modelCategorizationStatus
    */
-  'model.categorization_status',
+  "model.categorization_status",
   /**
    * The number of documents that have had a field categorized.
    * @aliases mcdc, modelCategorizedDocCount */
-  'model.categorized_doc_count',
+  "model.categorized_doc_count",
   /**
    * The number of categories created by categorization that will never be
    * assigned again because another category’s definition makes it a superset of
@@ -291,7 +291,7 @@ export enum CatAnomalyDetectorColumn {
    * categorization has no prior training.
    * @aliases mdcc, modelDeadCategoryCount
    */
-  'model.dead_category_count',
+  "model.dead_category_count",
   /**
    * The number of times that categorization wanted to create a new category but
    * couldn’t because the job had hit its model memory limit. This count does
@@ -299,22 +299,22 @@ export enum CatAnomalyDetectorColumn {
    * cannot use this value to determine the number of unique categories that
    * were missed.
    * @aliases mdcc, modelFailedCategoryCount */
-  'model.failed_category_count',
+  "model.failed_category_count",
   /**
    * The number of categories that match more than 1% of categorized documents.
    * @aliases mfcc, modelFrequentCategoryCount
    */
-  'model.frequent_category_count',
+  "model.frequent_category_count",
   /**
    * The timestamp when the model stats were gathered, according to server time.
    * @aliases mlt, modelLogTime
    */
-  'model.log_time',
+  "model.log_time",
   /**
    * The timestamp when the model stats were gathered, according to server time.
    * @aliases mml, modelMemoryLimit
    */
-  'model.memory_limit',
+  "model.memory_limit",
   /**
    * The status of the mathematical models: `ok`, `soft_limit`, or `hard_limit`.
    * If `ok`, the models stayed below the configured value. If `soft_limit`, the
@@ -325,57 +325,57 @@ export enum CatAnomalyDetectorColumn {
    * incoming data was processed.
    * @aliases mms, modelMemoryStatus
    */
-  'model.memory_status',
+  "model.memory_status",
   /**
    * The number of over field values that were analyzed by the models. This
    * value is cumulative for all detectors in the job.
    * @aliases mof, modelOverFields
    */
-  'model.over_fields',
+  "model.over_fields",
   /**
    * The number of partition field values that were analyzed by the models. This
    * value is cumulative for all detectors in the job.
    * @aliases mpf, modelPartitionFields
    */
-  'model.partition_fields',
+  "model.partition_fields",
   /**
    * The number of categories that match just one categorized document.
    * @aliases mrcc, modelRareCategoryCount
    */
-  'model.rare_category_count',
+  "model.rare_category_count",
   /**
    * The timestamp of the last record when the model stats were gathered.
    * @aliases mt, modelTimestamp
    */
-  'model.timestamp',
+  "model.timestamp",
   /**
    * The number of categories created by categorization.
    * @aliases mtcc, modelTotalCategoryCount */
-  'model.total_category_count',
+  "model.total_category_count",
   /**
    * The network address of the node that runs the job. This information is
    * available only for open jobs.
    * @aliases na, nodeAddress
    */
-  'node.address',
+  "node.address",
   /**
    * The ephemeral ID of the node that runs the job. This information is
    * available only for open jobs.
    * @aliases ne, nodeEphemeralId
    */
-  'node.ephemeral_id',
+  "node.ephemeral_id",
   /**
    * The unique identifier of the node that runs the job. This information is
    * available only for open jobs.
    * @aliases ni, nodeId
    */
-  'node.id',
+  "node.id",
   /**
    * The name of the node that runs the job. This information is available only
    * for open jobs.
    * @aliases nn, nodeName
    */
-  'node.name',
+  "node.name",
   /**
    * For open jobs only, the elapsed time for which the job has been open.
    * @aliases ot
@@ -397,11 +397,11 @@ export enum CatAnomalyDetectorColumn {
    * yet completed.
    * @aliases s
    */
-  state
+  state,
 }
 export type CatAnomalyDetectorColumns =
   | CatAnomalyDetectorColumn
-  | CatAnomalyDetectorColumn[]
+  | CatAnomalyDetectorColumn[];
 export enum CatDatafeedColumn {
   /**
    * For started datafeeds only, contains messages relating to the selection of
@@ -467,7 +467,7 @@ export enum CatDatafeedColumn {
    * not receive data until it is re-started.
    * @aliases state
    */
-  s
+  s,
 }
 
 export enum CatDfaColumn {
@@ -511,24 +511,24 @@ export enum CatDfaColumn {
    * assigned to.
    * @aliases na, nodeAddress
    */
-  'node.address',
+  "node.address",
   /**
    * The ephemeral ID of the node that the data frame analytics job is assigned
    * to.
    * @aliases ne, nodeEphemeralId
    */
-  'node.ephemeral_id',
+  "node.ephemeral_id",
   /**
    * The unique identifier of the node that the data frame analytics job is
    * assigned to.
    * @aliases ni, nodeId
    */
-  'node.id',
+  "node.id",
   /**
    * The name of the node that the data frame analytics job is assigned to.
    * @aliases nn, nodeName
    */
-  'node.name',
+  "node.name",
   /**
    * The progress report of the data frame analytics job by phase.
    * @aliases p
@@ -554,7 +554,7 @@ export enum CatDfaColumn {
    * created.
    * @aliases v
    */
-  version
+  version,
 }
 
 /** @non_exhaustive */
@@ -568,7 +568,7 @@ export enum CatNodeColumn {
    * The size of completion. For example: `0b`.
    * @aliases cs, completionSize
    */
-  'completion.size',
+  "completion.size",
   /**
    * The percentage of recent system CPU used.
    */
@@ -577,108 +577,108 @@ export enum CatNodeColumn {
    * The available disk space. For example: `198.4gb`.
    * @aliases d, disk, diskAvail
    */
-  'disk.avail',
+  "disk.avail",
   /**
    * The total disk space. For example: `458.3gb`.
    * @aliases dt, diskTotal
    */
-  'disk.total',
+  "disk.total",
   /**
    * The used disk space. For example: `259.8gb`.
    * @aliases du, diskUsed
    */
-  'disk.used',
+  "disk.used",
   /**
    * The percentage of disk space used.
    * @aliases dup, diskUsedPercent
    */
-  'disk.used_percent',
+  "disk.used_percent",
   /**
    * The number of fielddata cache evictions.
    * @aliases fe, fielddataEvictions
    */
-  'fielddata.evictions',
+  "fielddata.evictions",
   /**
    * The fielddata cache memory used. For example: `0b`.
    * @aliases fm, fielddataMemory
    */
-  'fielddata.memory_size',
+  "fielddata.memory_size",
   /**
    * The number of file descriptors used.
    * @aliases fdc, fileDescriptorCurrent
    */
-  'file_desc.current',
+  "file_desc.current",
   /**
    * The maximum number of file descriptors.
    * @aliases  fdm, fileDescriptorMax
    */
-  'file_desc.max',
+  "file_desc.max",
   /**
    * The percentage of file descriptors used.
    * @aliases fdp, fileDescriptorPercent
    */
-  'file_desc.percent',
+  "file_desc.percent",
   /**
    * The number of flushes.
    * @aliases ft, flushTotal
    */
-  'flush.total',
+  "flush.total",
   /**
    * The amount of time spent in flush.
    * @aliases ftt, flushTotalTime
    */
-  'flush.total_time',
+  "flush.total_time",
   /**
    * The number of current get operations.
    * @aliases gc, getCurrent
    */
-  'get.current',
+  "get.current",
   /**
    * The time spent in successful get operations. For example: `14ms`.
    * @aliases geti, getExistsTime
    */
-  'get.exists_time',
+  "get.exists_time",
   /**
    * The number of successful get operations.
    * @aliases geto, getExistsTotal
    */
-  'get.exists_total',
+  "get.exists_total",
   /**
    * The time spent in failed get operations. For example: `0s`.
    * @aliases gmti, getMissingTime
    */
-  'get.missing_time',
+  "get.missing_time",
   /**
    * The number of failed get operations.
    * @aliases gmto, getMissingTotal
    */
-  'get.missing_total',
+  "get.missing_total",
   /**
    * The amount of time spent in get operations. For example: `14ms`.
    * @aliases gti, getTime
    */
-  'get.time',
+  "get.time",
   /**
    * The number of get operations.
    * @aliases gto, getTotal
    */
-  'get.total',
+  "get.total",
   /**
    * The used heap size. For example: `311.2mb`.
    * @aliases hc, heapCurrent
    */
-  'heap.current',
+  "heap.current",
   /**
    * The total heap size. For example: `4gb`.
    * @aliases hm, heapMax
    */
-  'heap.max',
+  "heap.max",
   /**
    * The used percentage of total allocated Elasticsearch JVM heap.
    * This value reflects only the Elasticsearch process running within the operating system and is the most direct indicator of its JVM, heap, or memory resource performance.
    * @aliases hp, heapPercent
    */
-  'heap.percent',
+  "heap.percent",
   /**
    * The bound HTTP address.
    * @aliases http
@@ -693,42 +693,42 @@ export enum CatNodeColumn {
    * The number of current deletion operations.
    * @aliases idc, indexingDeleteCurrent
    */
-  'indexing.delete_current',
+  "indexing.delete_current",
   /**
    * The time spent in deletion operations. For example: `2ms`.
    * @aliases idti, indexingDeleteTime
    */
-  'indexing.delete_time',
+  "indexing.delete_time",
   /**
    * The number of deletion operations.
    * @aliases idto, indexingDeleteTotal
    */
-  'indexing.delete_total',
+  "indexing.delete_total",
   /**
    * The number of current indexing operations.
    * @aliases iic, indexingIndexCurrent
    */
-  'indexing.index_current',
+  "indexing.index_current",
   /**
    * The number of failed indexing operations.
    * @aliases iif, indexingIndexFailed
    */
-  'indexing.index_failed',
+  "indexing.index_failed",
   /**
    * The number of indexing operations that failed due to version conflict.
    * @aliases iifvc, indexingIndexFailedDueToVersionConflict
    */
-  'indexing.index_failed_due_to_version_conflict',
+  "indexing.index_failed_due_to_version_conflict",
   /**
    * The time spent in indexing operations. For example: `134ms`.
    * @aliases iiti, indexingIndexTime
    */
-  'indexing.index_time',
+  "indexing.index_time",
   /**
    * The number of indexing operations.
    * @aliases iito, indexingIndexTotal
    */
-  'indexing.index_total',
+  "indexing.index_total",
   /**
    * The IP address.
    * @aliases i
@@ -758,12 +758,12 @@ export enum CatNodeColumn {
    * The number of mappings, including runtime and object fields.
    * @aliases mtc, mappingsTotalCount
    */
-  'mappings.total_count',
+  "mappings.total_count",
   /**
    * The estimated heap overhead, in bytes, of mappings on this node, which allows for 1KiB of heap for every mapped field.
    * @aliases mteo, mappingsTotalEstimatedOverheadInBytes
    */
-  'mappings.total_estimated_overhead_in_bytes',
+  "mappings.total_estimated_overhead_in_bytes",
   /**
    * Indicates whether the node is the elected master node.
    * Returned values include `*` (elected master) and `-` (not elected master).
@@ -774,37 +774,37 @@ export enum CatNodeColumn {
    * The number of current merge operations.
    * @aliases mc, mergesCurrent
    */
-  'merges.current',
+  "merges.current",
   /**
    * The number of current merging documents.
    * @aliases mcd, mergesCurrentDocs
    */
-  'merges.current_docs',
+  "merges.current_docs",
   /**
    * The size of current merges. For example: `0b`.
    * @aliases mcs, mergesCurrentSize
    */
-  'merges.current_size',
+  "merges.current_size",
   /**
    * The number of completed merge operations.
    * @aliases mt, mergesTotal
    */
-  'merges.total',
+  "merges.total",
   /**
    * The number of merged documents.
    * @aliases  mtd, mergesTotalDocs
    */
-  'merges.total_docs',
+  "merges.total_docs",
   /**
    * The total size of merges. For example: `0b`.
    * @aliases mts, mergesTotalSize
    */
-  'merges.total_size',
+  "merges.total_size",
   /**
    * The time spent merging documents. For example: `0s`.
    * @aliases mtt, mergesTotalTime
    */
-  'merges.total_time',
+  "merges.total_time",
   /**
    * The node name.
    * @aliases n
@@ -816,7 +816,7 @@ export enum CatNodeColumn {
    * For example, `dim` indicates a master-eligible data and ingest node.
    * @aliases r, role, nodeRole
    */
-  'node.role',
+  "node.role",
   /**
    * The process identifier.
    * @aliases p
@@ -831,174 +831,174 @@ export enum CatNodeColumn {
    * The used query cache memory. For example: `0b`.
    * @aliases qcm, queryCacheMemory
    */
-  'query_cache.memory_size',
+  "query_cache.memory_size",
   /**
    * The number of query cache evictions.
    * @aliases qce, queryCacheEvictions
    */
-  'query_cache.evictions',
+  "query_cache.evictions",
   /**
    * The query cache hit count.
    * @aliases qchc, queryCacheHitCount
    */
-  'query_cache.hit_count',
+  "query_cache.hit_count",
   /**
    * The query cache miss count.
    * @aliases qcmc, queryCacheMissCount
    */
-  'query_cache.miss_count',
+  "query_cache.miss_count",
   /**
    * The used total memory. For example: `513.4mb`.
    * @aliases rc, ramCurrent
    */
-  'ram.current',
+  "ram.current",
   /**
    * The total memory. For example: `2.9gb`.
    * @aliases rm, ramMax
    */
-  'ram.max',
+  "ram.max",
   /**
    * The used percentage of the total operating system memory.
    * This reflects all processes running on the operating system instead of only Elasticsearch and is not guaranteed to correlate to its performance.
    * @aliases rp, ramPercent
    */
-  'ram.percent',
+  "ram.percent",
   /**
    * The number of refresh operations.
    * @aliases rto, refreshTotal
    */
-  'refresh.total',
+  "refresh.total",
   /**
    * The time spent in refresh operations. For example: `91ms`.
    * @aliases rti, refreshTime
    */
-  'refresh.time',
+  "refresh.time",
   /**
    * The used request cache memory. For example: `0b`.
    * @aliases rcm, requestCacheMemory
    */
-  'request_cache.memory_size',
+  "request_cache.memory_size",
   /**
    * The number of request cache evictions.
    * @aliases rce, requestCacheEvictions
    */
-  'request_cache.evictions',
+  "request_cache.evictions",
   /**
    * The request cache hit count.
    * @aliases rchc, requestCacheHitCount
    */
-  'request_cache.hit_count',
+  "request_cache.hit_count",
   /**
    * The request cache miss count.
    * @aliases rcmc, requestCacheMissCount
    */
-  'request_cache.miss_count',
+  "request_cache.miss_count",
   /**
    * The number of total script compilations.
    * @aliases scrcc, scriptCompilations
    */
-  'script.compilations',
+  "script.compilations",
   /**
    * The number of total compiled scripts evicted from cache.
    * @aliases scrce, scriptCacheEvictions
    */
-  'script.cache_evictions',
+  "script.cache_evictions",
   /**
    * The number of current fetch phase operations.
    * @aliases sfc, searchFetchCurrent
    */
-  'search.fetch_current',
+  "search.fetch_current",
   /**
    * The time spent in fetch phase. For example: `37ms`.
    * @aliases sfti, searchFetchTime
    */
-  'search.fetch_time',
+  "search.fetch_time",
   /**
    * The number of fetch operations.
    * @aliases sfto, searchFetchTotal
    */
-  'search.fetch_total',
+  "search.fetch_total",
   /**
    * The number of open search contexts.
    * @aliases so, searchOpenContexts
    */
-  'search.open_contexts',
+  "search.open_contexts",
   /**
    * The number of current query phase operations.
    * @aliases sqc, searchQueryCurrent
    */
-  'search.query_current',
+  "search.query_current",
   /**
    * The time spent in query phase. For example: `43ms`.
    * @aliases sqti, searchQueryTime
    */
-  'search.query_time',
+  "search.query_time",
   /**
    * The number of query operations.
    * @aliases  sqto, searchQueryTotal
    */
-  'search.query_total',
+  "search.query_total",
   /**
    * The number of open scroll contexts.
    * @aliases scc, searchScrollCurrent
    */
-  'search.scroll_current',
+  "search.scroll_current",
   /**
    * The amount of time scroll contexts were held open. For example: `2m`.
    * @aliases scti, searchScrollTime
    */
-  'search.scroll_time',
+  "search.scroll_time",
   /**
    * The number of completed scroll contexts.
    * @aliases scto, searchScrollTotal
    */
-  'search.scroll_total',
+  "search.scroll_total",
   /**
    * The number of segments.
    * @aliases sc, segmentsCount
    */
-  'segments.count',
+  "segments.count",
   /**
    * The memory used by fixed bit sets for nested object field types and type filters for types referred in join fields.
    * For example: `1.0kb`.
    * @aliases sfbm, fixedBitsetMemory
    */
-  'segments.fixed_bitset_memory',
+  "segments.fixed_bitset_memory",
   /**
    * The memory used by the index writer. For example: `18mb`.
    * @aliases siwm, segmentsIndexWriterMemory
    */
-  'segments.index_writer_memory',
+  "segments.index_writer_memory",
   /**
    * The memory used by segments. For example: `1.4kb`.
    * @aliases sm, segmentsMemory
    */
-  'segments.memory',
+  "segments.memory",
   /**
    * The memory used by the version map. For example: `1.0kb`.
    * @aliases svmm, segmentsVersionMapMemory
    */
-  'segments.version_map_memory',
+  "segments.version_map_memory",
   /**
    * The number of shards assigned.
    * @aliases sstc, shards, shardStatsTotalCount
    */
-  'shard_stats.total_count',
+  "shard_stats.total_count",
   /**
    * The number of current suggest operations.
    * @aliases  suc, suggestCurrent
    */
-  'suggest.current',
+  "suggest.current",
   /**
    * The time spent in suggest operations.
    * @aliases suti, suggestTime
    */
-  'suggest.time',
+  "suggest.time",
   /**
    * The number of suggest operations.
    * @aliases suto, suggestTotal
    */
-  'suggest.total',
+  "suggest.total",
   /**
    * The amount of node uptime. For example: `17.3m`.
    * @aliases u
@@ -1008,7 +1008,7 @@ export enum CatNodeColumn {
    * The Elasticsearch version. For example: `9.0.0`.
    * @aliases v
    */
-  version
+  version,
 }
 
 /** @non_exhaustive */
@@ -1141,7 +1141,7 @@ export enum CatRecoveryColumn {
    * The end time of the recovery operation in eopch milliseconds. If ongoing '0'
    * @aliases stop_millis
    */
-  stop_time_millis
+  stop_time_millis,
 }
 
 /** @non_exhaustive */
@@ -1176,11 +1176,11 @@ export enum CatSegmentsColumn {
   /**
    * The number of documents as reported by Lucene. This excludes deleted documents and counts any [nested documents](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/nested) separately from their parents. It also excludes documents which were indexed recently and do not yet belong to a segment.
    */
-  'docs.count',
+  "docs.count",
   /**
    * The number of deleted documents as reported by Lucene, which may be higher or lower than the number of delete operations you have performed. This number excludes deletes that were performed recently and do not yet belong to a segment. Deleted documents are cleaned up by the [automatic merge process](https://www.elastic.co/docs/reference/elasticsearch/index-settings/merge) if it makes sense to do so. Also, Elasticsearch creates extra deleted documents to internally track the recent history of operations on a shard.
    */
-  'docs.deleted',
+  "docs.deleted",
   /**
    * The disk space used by the segment, such as '50kb'.
    */
@@ -1188,7 +1188,7 @@ export enum CatSegmentsColumn {
   /**
    * The bytes of segment data stored in memory for efficient search, such as '1264'. A value of '-1' indicates Elasticsearch was unable to compute this number.
    */
-  'size.memory',
+  "size.memory",
   /**
    * If 'true', the segments is synced to disk. Segments that are synced can survive a hard reboot. If 'false', the data from uncommitted segments is also stored in the transaction log so that Elasticsearch is able to replay changes on the next start.
    */
@@ -1208,7 +1208,7 @@ export enum CatSegmentsColumn {
   /**
    * The ID of the node, such as 'k0zy'.
    */
-  id
+  id,
 }
 
 /** @non_exhaustive */
@@ -1277,7 +1277,7 @@ export enum CatSnapshotsColumn {
    * The reason for any snapshot failures.
    * @aliases r
    */
-  reason
+  reason,
 }
 
 /** @non_exhaustive */
@@ -1301,17 +1301,17 @@ export enum CatAliasesColumn {
    * Index routing value for the alias.
    * @aliases ri, routingIndex
    */
-  'routing.index',
+  "routing.index",
   /**
    * Search routing value for the alias.
    * @aliases rs, routingSearch
    */
-  'routing.search',
+  "routing.search",
   /**
    * Indicates if the index is the write index for the alias.
    * @aliases w, isWriteIndex
    */
-  is_write_index
+  is_write_index,
 }
 
 /** @non_exhaustive */
@@ -1324,42 +1324,42 @@ export enum CatAllocationColumn {
   /**
    * The number of shards scheduled to be moved elsewhere in the cluster.
    */
-  'shards.undesired',
+  "shards.undesired",
   /**
    * The sum of index write load forecasts.
    * @aliases wlf, writeLoadForecast
    */
-  'write_load.forecast',
+  "write_load.forecast",
   /**
    * The sum of shard size forecasts.
    * @aliases dif, diskIndicesForecast
    */
-  'disk.indices.forecast',
+  "disk.indices.forecast",
   /**
    * The disk space used by Elasticsearch indices.
    * @aliases di, diskIndices
    */
-  'disk.indices',
+  "disk.indices",
   /**
    * The total disk space used on the node.
    * @aliases du,diskUsed
    */
-  'disk.used',
+  "disk.used",
   /**
    * The available disk space on the node.
    * @aliases da, diskAvail
    */
-  'disk.avail',
+  "disk.avail",
   /**
    * The total disk capacity of all volumes on the node.
    * @aliases dt, diskTotal
    */
-  'disk.total',
+  "disk.total",
   /**
    * The percentage of disk space used on the node.
    * @aliases dp, diskPercent
    */
-  'disk.percent',
+  "disk.percent",
   /**
    * IThe host of the node.
    * @aliases h
@@ -1378,7 +1378,7 @@ export enum CatAllocationColumn {
    * The roles assigned to the node.
    * @aliases r, role, nodeRole
    */
-  'node.role'
+  "node.role",
 }
 
 /** @non_exhaustive */
@@ -1417,7 +1417,7 @@ export enum CatComponentColumn {
    * The index templates that include this component template.
    * @aliases i
    */
-  included_in
+  included_in,
 }
 
 /** @non_exhaustive */
@@ -1436,7 +1436,7 @@ export enum CatCountColumn {
    * The document count in the cluster or index.
    * @aliases dc,docs.count,docsCount
    */
-  count
+  count,
 }
 
 /** @non_exhaustive */
@@ -1468,20 +1468,20 @@ export enum CatFieldDataColumn {
    * The field data usage.
    * @aliases s
    */
-  size
+  size,
 }
 
-export type CatDfaColumns = CatDfaColumn | CatDfaColumn[]
-export type CatDatafeedColumns = CatDatafeedColumn | CatDatafeedColumn[]
-export type CatNodeColumns = CatNodeColumn | CatNodeColumn[]
-export type CatRecoveryColumns = CatRecoveryColumn | CatRecoveryColumn[]
-export type CatSegmentsColumns = CatSegmentsColumn | CatSegmentsColumn[]
-export type CatSnapshotsColumns = CatSnapshotsColumn | CatSnapshotsColumn[]
-export type CatAliasesColumns = CatAliasesColumn | CatAliasesColumn[]
-export type CatAllocationColumns = CatAllocationColumn | CatAllocationColumn[]
-export type CatComponentColumns = CatComponentColumn | CatComponentColumn[]
-export type CatCountColumns = CatCountColumn | CatCountColumn[]
-export type CatFieldDataColumns = CatFieldDataColumn | CatFieldDataColumn[]
+export type CatDfaColumns = CatDfaColumn | CatDfaColumn[];
+export type CatDatafeedColumns = CatDatafeedColumn | CatDatafeedColumn[];
+export type CatNodeColumns = CatNodeColumn | CatNodeColumn[];
+export type CatRecoveryColumns = CatRecoveryColumn | CatRecoveryColumn[];
+export type CatSegmentsColumns = CatSegmentsColumn | CatSegmentsColumn[];
+export type CatSnapshotsColumns = CatSnapshotsColumn | CatSnapshotsColumn[];
+export type CatAliasesColumns = CatAliasesColumn | CatAliasesColumn[];
+export type CatAllocationColumns = CatAllocationColumn | CatAllocationColumn[];
+export type CatComponentColumns = CatComponentColumn | CatComponentColumn[];
+export type CatCountColumns = CatCountColumn | CatCountColumn[];
+export type CatFieldDataColumns = CatFieldDataColumn | CatFieldDataColumn[];
 
 export enum CatTrainedModelsColumn {
   /**
@@ -1518,29 +1518,29 @@ export enum CatTrainedModelsColumn {
    * The total number of documents that are processed by the model.
    * @aliases ic, ingestCount
    */
-  'ingest.count',
+  "ingest.count",
   /**
    * The total number of document that are currently being handled by the
    * trained model.
    * @aliases icurr, ingestCurrent
    */
-  'ingest.current',
+  "ingest.current",
   /**
    * The total number of failed ingest attempts with the trained model.
    * @aliases if, ingestFailed
    */
-  'ingest.failed',
+  "ingest.failed",
   /**
    * The total number of ingest pipelines that are referencing the trained
    * model.
    * @aliases ip, ingestPipelines
    */
-  'ingest.pipelines',
+  "ingest.pipelines",
   /**
    * The total time that is spent processing documents with the trained model.
    * @aliases it, ingestTime
    */
-  'ingest.time',
+  "ingest.time",
   /**
    * The license level of the trained model.
    * @aliases l
@@ -1556,11 +1556,11 @@ export enum CatTrainedModelsColumn {
    * The Elasticsearch version number in which the trained model was created.
    * @aliases v
    */
-  version
+  version,
 }
 export type CatTrainedModelsColumns =
   | CatTrainedModelsColumn
-  | CatTrainedModelsColumn[]
+  | CatTrainedModelsColumn[];
 
 export enum CatTransformColumn {
   /**
@@ -1765,9 +1765,9 @@ export enum CatTransformColumn {
    * was created.
    * @aliases v
    */
-  version
+  version,
 }
-export type CatTransformColumns = CatTransformColumn | CatTransformColumn[]
+export type CatTransformColumns = CatTransformColumn | CatTransformColumn[];
 
 /** @non_exhaustive */
 export enum CatShardColumn {
@@ -1775,17 +1775,17 @@ export enum CatShardColumn {
    * Size of completion. For example: `0b`.
    * @aliases cs, completionSize
    */
-  'completion.size',
+  "completion.size",
   /**
    * Disk space used by the shard’s dataset, which may or may not be the size on
    * disk, but includes space used by the shard on object storage. Reported as a size value for example: `5kb`.
    */
-  'dataset.size',
+  "dataset.size",
   /**
    * Number of indexed dense vectors.
    * @aliases dvc, denseVectorCount
    */
-  'dense_vector.value_count',
+  "dense_vector.value_count",
   /**
    * Number of documents in shard, for example: `25`.
    * @aliases d, dc
@@ -1795,57 +1795,57 @@ export enum CatShardColumn {
    * Fielddata cache evictions, for example: `0`.
    * @aliases fe, fielddataEvictions
    */
-  'fielddata.evictions',
+  "fielddata.evictions",
   /**
    * Used fielddata cache memory, for example: `0b`.
    * @aliases fm, fielddataMemory
    */
-  'fielddata.memory_size',
+  "fielddata.memory_size",
   /**
    * Number of flushes, for example: `1`.
    * @aliases ft, flushTotal
    */
-  'flush.total',
+  "flush.total",
   /**
    * Time spent in flush, for example: `1`.
    * @aliases ftt, flushTotalTime
    */
-  'flush.total_time',
+  "flush.total_time",
   /**
    * Number of current get operations, for example: `0`.
    * @aliases gc, getCurrent
    */
-  'get.current',
+  "get.current",
   /**
    * Time spent in successful gets, for example: `14ms`.
    * @aliases geti, getExistsTime
    */
-  'get.exists_time',
+  "get.exists_time",
   /**
    * Number of successful get operations, for example: `2`.
    * @aliases geto, getExistsTotal
    */
-  'get.exists_total',
+  "get.exists_total",
   /**
    * Time spent in failed gets, for example: `0s`.
    * @aliases gmti, getMissingTime
    */
-  'get.missing_time',
+  "get.missing_time",
   /**
    * Number of failed get operations, for example: `1`.
    * @aliases gmto, getMissingTotal
    */
-  'get.missing_total',
+  "get.missing_total",
   /**
    * Time spent in get, for example: `14ms`.
    * @aliases gti, getTime
    */
-  'get.time',
+  "get.time",
   /**
    * Number of get operations, for example: `2`.
    * @aliases gto, getTotal
    */
-  'get.total',
+  "get.total",
   /**
    * ID of the node, for example: `k0zy`.
    */
@@ -1859,42 +1859,42 @@ export enum CatShardColumn {
    * Number of current deletion operations, for example: `0`.
    * @aliases idc, indexingDeleteCurrent
    */
-  'indexing.delete_current',
+  "indexing.delete_current",
   /**
    * Time spent in deletions, for example: `2ms`.
    * @aliases idti, indexingDeleteTime
    */
-  'indexing.delete_time',
+  "indexing.delete_time",
   /**
    * Number of deletion operations, for example: `2`.
    * @aliases idto, indexingDeleteTotal
    */
-  'indexing.delete_total',
+  "indexing.delete_total",
   /**
    * Number of current indexing operations, for example: `0`.
    * @aliases iic, indexingIndexCurrent
    */
-  'indexing.index_current',
+  "indexing.index_current",
   /**
    * Number of failed indexing operations due to version conflict, for example: `0`.
    * @aliases iifvc, indexingIndexFailedDueToVersionConflict
    */
-  'indexing.index_failed_due_to_version_conflict',
+  "indexing.index_failed_due_to_version_conflict",
   /**
    * Number of failed indexing operations, for example: `0`.
    * @aliases iif, indexingIndexFailed
    */
-  'indexing.index_failed',
+  "indexing.index_failed",
   /**
    * Time spent in indexing, such as for example: `134ms`.
    * @aliases iiti, indexingIndexTime
    */
-  'indexing.index_time',
+  "indexing.index_time",
   /**
    * Number of indexing operations, for example: `1`.
    * @aliases iito, indexingIndexTotal
    */
-  'indexing.index_total',
+  "indexing.index_total",
   /**
    * IP address of the node, for example: `127.0.1.1`.
    */
@@ -1903,37 +1903,37 @@ export enum CatShardColumn {
    * Number of current merge operations, for example: `0`.
    * @aliases mc, mergesCurrent
    */
-  'merges.current',
+  "merges.current",
   /**
    * Number of current merging documents, for example: `0`.
    * @aliases mcd, mergesCurrentDocs
    */
-  'merges.current_docs',
+  "merges.current_docs",
   /**
    * Size of current merges, for example: `0b`.
    * @aliases mcs, mergesCurrentSize
    */
-  'merges.current_size',
+  "merges.current_size",
   /**
    * Number of completed merge operations, for example: `0`.
    * @aliases mt, mergesTotal
    */
-  'merges.total',
+  "merges.total",
   /**
    * Number of merged documents, for example: `0`.
    * @aliases mtd, mergesTotalDocs
    */
-  'merges.total_docs',
+  "merges.total_docs",
   /**
    * Size of current merges, for example: `0b`.
    * @aliases mts, mergesTotalSize
    */
-  'merges.total_size',
+  "merges.total_size",
   /**
    * Time spent merging documents, for example: `0s`.
    * @aliases mtt, mergesTotalTime
    */
-  'merges.total_time',
+  "merges.total_time",
   /**
    * Node name, for example: `I8hydUG`.
    * @aliases n
@@ -1948,117 +1948,117 @@ export enum CatShardColumn {
    * Query cache evictions, for example: `0`.
    * @aliases qce, queryCacheEvictions
    */
-  'query_cache.evictions',
+  "query_cache.evictions",
   /**
    * Used query cache memory, for example: `0b`.
    * @aliases qcm, queryCacheMemory
    */
-  'query_cache.memory_size',
+  "query_cache.memory_size",
   /**
    * Type of recovery source.
    * @aliases rs
    */
-  'recoverysource.type',
+  "recoverysource.type",
   /**
    * Time spent in refreshes, for example: `91ms`.
    * @aliases rti, refreshTime
    */
-  'refresh.time',
+  "refresh.time",
   /**
    * Number of refreshes, for example: `16`.
    * @aliases rto, refreshTotal
    */
-  'refresh.total',
+  "refresh.total",
   /**
    * Current fetch phase operations, for example: `0`.
    * @aliases sfc, searchFetchCurrent
    */
-  'search.fetch_current',
+  "search.fetch_current",
   /**
    * Time spent in fetch phase, for example: `37ms`.
    * @aliases sfti, searchFetchTime
    */
-  'search.fetch_time',
+  "search.fetch_time",
   /**
    * Number of fetch operations, for example: `7`.
    * @aliases sfto, searchFetchTotal
    */
-  'search.fetch_total',
+  "search.fetch_total",
   /**
    * Open search contexts, for example: `0`.
    * @aliases so, searchOpenContexts
    */
-  'search.open_contexts',
+  "search.open_contexts",
   /**
    * Current query phase operations, for example: `0`.
    * @aliases sqc, searchQueryCurrent
    */
-  'search.query_current',
+  "search.query_current",
   /**
    * Time spent in query phase, for example: `43ms`.
    * @aliases sqti, searchQueryTime
    */
-  'search.query_time',
+  "search.query_time",
   /**
    * Number of query operations, for example: `9`.
    * @aliases sqto, searchQueryTotal
    */
-  'search.query_total',
+  "search.query_total",
   /**
    * Open scroll contexts, for example: `2`.
    * @aliases scc, searchScrollCurrent
    */
-  'search.scroll_current',
+  "search.scroll_current",
   /**
    * Time scroll contexts held open, for example: `2m`.
    * @aliases scti, searchScrollTime
    */
-  'search.scroll_time',
+  "search.scroll_time",
   /**
    * Completed scroll contexts, for example: `1`.
    * @aliases scto, searchScrollTotal
    */
-  'search.scroll_total',
+  "search.scroll_total",
   /**
    * Number of segments, for example: `4`.
    * @aliases sc, segmentsCount
    */
-  'segments.count',
+  "segments.count",
   /**
    * Memory used by fixed bit sets for nested object field types and type filters for types referred in join fields, for example: `1.0kb`.
    * @aliases sfbm, fixedBitsetMemory
    */
-  'segments.fixed_bitset_memory',
+  "segments.fixed_bitset_memory",
   /**
    * Memory used by index writer, for example: `18mb`.
    * @aliases siwm, segmentsIndexWriterMemory
    */
-  'segments.index_writer_memory',
+  "segments.index_writer_memory",
   /**
    * Memory used by segments, for example: `1.4kb`.
    * @aliases sm, segmentsMemory
    */
-  'segments.memory',
+  "segments.memory",
   /**
    * Memory used by version map, for example: `1.0kb`.
    * @aliases svmm, segmentsVersionMapMemory
    */
-  'segments.version_map_memory',
+  "segments.version_map_memory",
   /**
    * Global checkpoint.
    * @aliases sqg, globalCheckpoint
    */
-  'seq_no.global_checkpoint',
+  "seq_no.global_checkpoint",
   /**
    * Local checkpoint.
    * @aliases sql, localCheckpoint
    */
-  'seq_no.local_checkpoint',
+  "seq_no.local_checkpoint",
   /**
    * Maximum sequence number.
    * @aliases sqm, maxSeqNo
    */
-  'seq_no.max',
+  "seq_no.max",
   /**
    * Name of the shard.
    * @aliases s, sh
@@ -2068,7 +2068,7 @@ export enum CatShardColumn {
    * Number of indexed [sparse vectors](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/sparse-vector).
    * @aliases svc, sparseVectorCount
    */
-  'dsparse_vector.value_count',
+  "dsparse_vector.value_count",
   /**
    * State of the shard. Returned values are:
    * * `INITIALIZING`: The shard is recovering from a peer shard or gateway.
@@ -2087,17 +2087,17 @@ export enum CatShardColumn {
    * Number of current suggest operations, for example: `0`.
    * @aliases suc, suggestCurrent
    */
-  'suggest.current',
+  "suggest.current",
   /**
    * Time spent in suggest, for example: `0`.
    * @aliases suti, suggestTime
    */
-  'suggest.time',
+  "suggest.time",
   /**
    * Number of suggest operations, for example: `0`.
    * @aliases suto, suggestTotal
    */
-  'suggest.total',
+  "suggest.total",
   /**
    * Sync ID of the shard.
    */
@@ -2106,18 +2106,18 @@ export enum CatShardColumn {
    * Time at which the shard became unassigned in [Coordinated Universal Time (UTC)](https://en.wikipedia.org/wiki/List_of_UTC_offsets).
    * @aliases ua
    */
-  'unassigned.at',
+  "unassigned.at",
   /**
    * Details about why the shard became unassigned. This does not explain why the shard is currently unassigned. To understand why a shard
    * is not assigned, use the [Cluster allocation explain](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) API.
    * @aliases ud
    */
-  'unassigned.details',
+  "unassigned.details",
   /**
    * Time at which the shard was requested to be unassigned in [Coordinated Universal Time (UTC)](https://en.wikipedia.org/wiki/List_of_UTC_offsets).
    * @aliases uf
    */
-  'unassigned.for',
+  "unassigned.for",
   /**
    * Indicates the reason for the last change to the state of this unassigned shard. This does not explain why the shard is currently unassigned.
    * To understand why a shard is not assigned, use the [Cluster allocation explain](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) API. Returned values include:
@@ -2141,9 +2141,9 @@ export enum CatShardColumn {
    * * `REROUTE_CANCELLED`: Unassigned as a result of explicit cancel reroute command.
    * @aliases ur
    */
-  'unassigned.reason'
+  "unassigned.reason",
 }
-export type CatShardColumns = CatShardColumn | CatShardColumn[]
+export type CatShardColumns = CatShardColumn | CatShardColumn[];
 
 /** @non_exhaustive */
 export enum CatThreadPoolColumn {
@@ -2244,6 +2244,6 @@ export enum CatThreadPoolColumn {
    * Type of thread pool. Returned values are `fixed`, `fixed_auto_queue_size`, `direct`, or `scaling`.
    * @aliases t
    */
-  type
+  type,
 }
-export type CatThreadPoolColumns = CatThreadPoolColumn | CatThreadPoolColumn[]
+export type CatThreadPoolColumns = CatThreadPoolColumn | CatThreadPoolColumn[];
