@@ -76,9 +76,10 @@ export interface Request extends RequestBase {
      */
     pipeline?: PipelineName
     /**
-     * The method to be used when merging mapping_additions existing mappings. Mappings can be merged in the way mapping changes are merged into an existing index, or in
-     * the way mapping changes are merged into existing templates. Some changes are allowed to templates that are not allowed to indices. For example,
-     * a field cannot be changed to an incompatible type in an index, but can in a template.
+     * The mapping merge type if mapping overrides are being provided in mapping_addition.
+     * The allowed values are one of index or template.
+     * The index option merges mappings the way they would be merged into an existing index.
+     * The template option merges mappings the way they would be merged into a template.
      * @server_default index
      */
     merge_type?: MergeType
