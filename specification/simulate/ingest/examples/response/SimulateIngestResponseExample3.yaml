@@ -13,7 +13,16 @@ value: |-
           "_source": {
             "foo": "foo"
           },
-          "executed_pipelines": []
+          "executed_pipelines": [],
+          "effective_mapping": {
+            "_doc": {
+              "properties": {
+                "foo": {
+                  "type": "keyword"
+                }
+              }
+            }
+          }
         }
       },
       {
@@ -24,7 +33,16 @@ value: |-
           "_source": {
             "bar": "rab"
           },
-        "executed_pipelines": []
+        "executed_pipelines": [],
+          "effective_mapping": {
+            "_doc": {
+              "properties": {
+                "bar": {
+                  "type": "keyword"
+                }
+              }
+            }
+          }
         }
       }
     ]
