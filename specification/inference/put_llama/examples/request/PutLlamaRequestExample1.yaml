@@ -6,7 +6,7 @@ value: |-
   {
     "service": "llama",
     "service_settings": {
-      "url": "http://localhost:8321/v1/inference/embeddings"
+      "url": "http://localhost:8321/v1/inference/embeddings",
       "dimensions": 384,
       "model_id": "all-MiniLM-L6-v2" 
     }

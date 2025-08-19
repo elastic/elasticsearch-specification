@@ -6,7 +6,7 @@ value: |-
   {
     "service": "llama",
     "service_settings": {
-      "url": "http://localhost:8321/v1/openai/v1/chat/completions"
+      "url": "http://localhost:8321/v1/openai/v1/chat/completions",
       "model_id": "llama3.2:3b" 
     }
   }
