@@ -76695,7 +76695,7 @@
             "examples": {
               "InferencePutExample1": {
                 "description": "An example body for a `PUT _inference/rerank/my-rerank-model` request.",
-                "value": "{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n }\n \"chunking_settings\": {\n   \"strategy\": \"recursive\",\n   \"max_chunk_size\": 200,\n   \"separator_group\": \"markdown\"\n}"
+                "value": "{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n },\n \"chunking_settings\": {\n   \"strategy\": \"recursive\",\n   \"max_chunk_size\": 200,\n   \"separator_group\": \"markdown\"\n }\n}"
               }
             }
           }
