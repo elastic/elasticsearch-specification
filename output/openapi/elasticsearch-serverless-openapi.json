@@ -13341,15 +13341,15 @@
               "examples": {
                 "PutLlamaRequestExample1": {
                   "description": "Run `PUT _inference/text_embedding/llama-text-embedding` to create a Llama inference endpoint that performs a `text_embedding` task.",
-                  "value": "{\n  \"service\": \"llama\",\n  \"service_settings\": {\n    \"url\": \"http://localhost:8321/v1/inference/embeddings\"\n    \"dimensions\": 384,\n    \"model_id\": \"all-MiniLM-L6-v2\" \n  }\n}"
+                  "value": "{\n  \"service\": \"llama\",\n  \"service_settings\": {\n    \"url\": \"http://localhost:8321/v1/inference/embeddings\",\n    \"dimensions\": 384,\n    \"model_id\": \"all-MiniLM-L6-v2\" \n  }\n}"
                 },
                 "PutLlamaRequestExample2": {
                   "description": "Run `PUT _inference/completion/llama-completion` to create a Llama inference endpoint that performs a `completion` task.",
-                  "value": "{\n  \"service\": \"llama\",\n  \"service_settings\": {\n    \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\"\n    \"model_id\": \"llama3.2:3b\" \n  }\n}"
+                  "value": "{\n  \"service\": \"llama\",\n  \"service_settings\": {\n    \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\",\n    \"model_id\": \"llama3.2:3b\" \n  }\n}"
                 },
                 "PutLlamaRequestExample3": {
                   "description": "Run `PUT _inference/chat-completion/llama-chat-completion` to create a Llama inference endpoint that performs a `chat_completion` task.",
-                  "value": "{\n  \"service\": \"llama\",\n  \"service_settings\": {\n    \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\"\n    \"model_id\": \"llama3.2:3b\" \n  }\n}"
+                  "value": "{\n  \"service\": \"llama\",\n  \"service_settings\": {\n    \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\",\n    \"model_id\": \"llama3.2:3b\" \n  }\n}"
                 }
               }
             }
