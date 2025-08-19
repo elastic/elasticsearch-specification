@@ -19,7 +19,7 @@ This JSON representation is formally defined by [a set of TypeScript definitions
 that also explains the various properties and their values.
 
 > [!TIP]
-> To learn more about how to write docs specifically for our [API references](https://www.elastic.co/docs/api/), refer to our [contribution guide](https://www.elastic.co/docs/extend/contribute/api-docs/).
+> To learn more about how to write docs specifically for our [API references](https://www.elastic.co/docs/api/), refer to the [Contribute to Elastic API docs](https://www.elastic.co/docs/extend/contribute/api-docs/).
 
 ## Prepare the environment
 
