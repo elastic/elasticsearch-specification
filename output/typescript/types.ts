@@ -224,6 +224,7 @@ export interface DeleteByQueryRequest extends RequestBase {
     max_docs?: long
     query?: QueryDslQueryContainer
     slice?: SlicedScroll
+    sort?: Sort
   }
 }
 
@@ -21163,9 +21164,10 @@ export interface SimulateIngestIngestDocumentSimulationKeys {
   executed_pipelines: string[]
   ignored_fields?: Record<string, string>[]
   error?: ErrorCause
+  effective_mapping?: MappingTypeMapping
 }
 export type SimulateIngestIngestDocumentSimulation = SimulateIngestIngestDocumentSimulationKeys
-  & { [property: string]: string | Id | IndexName | Record<string, any> | SpecUtilsStringified<VersionNumber> | string[] | Record<string, string>[] | ErrorCause }
+  & { [property: string]: string | Id | IndexName | Record<string, any> | SpecUtilsStringified<VersionNumber> | string[] | Record<string, string>[] | ErrorCause | MappingTypeMapping }
 
 export type SimulateIngestMergeType = 'index' | 'template'
 
