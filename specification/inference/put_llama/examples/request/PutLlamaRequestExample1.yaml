@@ -1,5 +1,7 @@
 # summary:
-description: Run `PUT _inference/text_embedding/llama-text-embedding` to create a Llama inference endpoint that performs a `text_embedding` task.
+description:
+  Run `PUT _inference/text_embedding/llama-text-embedding` to create a Llama inference endpoint that performs a
+  `text_embedding` task.
 method_request: 'PUT _inference/text_embedding/llama-text-embedding'
 # type: "request"
 value: |-
