@@ -72,12 +72,14 @@ import { Filter } from './types'
  * The term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.
  * By default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.
  * Use `routing` only to hit a particular shard.
+ * Refer to the linked documentation for detailed examples of how to use this API.
  * @rest_spec_name termvectors
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @doc_tag document
  * @doc_id docs-termvectors
+ * @ext_doc_id term-vectors-examples
  */
 export interface Request<TDocument> extends RequestBase {
   urls: [
@@ -187,7 +189,7 @@ export interface Request<TDocument> extends RequestBase {
      * A list of fields to include in the statistics.
      * It is used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.
      */
-    fields?: Fields
+    fields?: Field[]
     /**
      * If `true`, the response includes:
      *

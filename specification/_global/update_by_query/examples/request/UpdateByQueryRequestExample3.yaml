@@ -1,8 +1,8 @@
 summary: Slice manually
 method_request: POST my-index-000001/_update_by_query
 description: >
-  Run `POST my-index-000001/_update_by_query` to slice an update by query manually.
-  Provide a slice ID and total number of slices to each request.
+  Run `POST my-index-000001/_update_by_query` to slice an update by query manually. Provide a slice ID and total number of slices to
+  each request.
 # type: "request"
 value: |-
   {

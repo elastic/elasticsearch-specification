@@ -1,6 +1,8 @@
 # summary:
 method_request: POST _application/search_application/my-app/_render_query
-description: Run `POST _application/search_application/my-app/_render_query` to generate a query for a search application called `my-app` that uses the search template.
+description:
+  Run `POST _application/search_application/my-app/_render_query` to generate a query for a search application called
+  `my-app` that uses the search template.
 # type: request
 value:
   params:

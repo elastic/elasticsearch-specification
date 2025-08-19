@@ -1,6 +1,8 @@
 summary: Custom analyzer example 1
 method_request: GET /_analyze
-description: You can test a custom transient analyzer built from tokenizers, token filters, and char filters. Token filters use the filter parameter.
+description:
+  You can test a custom transient analyzer built from tokenizers, token filters, and char filters. Token filters use the
+  filter parameter.
 # type: request
 value:
   tokenizer: keyword

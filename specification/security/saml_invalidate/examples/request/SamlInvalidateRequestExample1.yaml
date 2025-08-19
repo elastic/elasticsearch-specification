@@ -1,7 +1,8 @@
 # summary:
 method_request: POST /_security/saml/invalidate
 description: >
-  Run `POST /_security/saml/invalidate` to invalidate all the tokens for realm `saml1` pertaining to the user that is identified in the SAML Logout Request.
+  Run `POST /_security/saml/invalidate` to invalidate all the tokens for realm `saml1` pertaining to the user that is identified in
+  the SAML Logout Request.
 # type: request
 value: |-
   {

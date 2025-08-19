@@ -1,8 +1,8 @@
 summary: Score context
 method_request: POST /_scripts/painless/_execute
 description: >
-  Run `POST /_scripts/painless/_execute` with a `score` context.
-  It treats scripts as if they were run inside a `script_score` function in a `function_score` query.
+  Run `POST /_scripts/painless/_execute` with a `score` context. It treats scripts as if they were run inside a `script_score`
+  function in a `function_score` query.
 # type: request
 value: |-
   {

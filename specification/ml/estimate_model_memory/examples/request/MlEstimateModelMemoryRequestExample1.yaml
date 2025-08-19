@@ -1,6 +1,8 @@
 # summary:
 method_request: POST _ml/anomaly_detectors/_estimate_model_memory
-description: Run `POST _ml/anomaly_detectors/_estimate_model_memory` to estimate the model memory limit based on the analysis configuration details provided in the request body.
+description:
+  Run `POST _ml/anomaly_detectors/_estimate_model_memory` to estimate the model memory limit based on the analysis
+  configuration details provided in the request body.
 # type: request
 value:
   analysis_config:

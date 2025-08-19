@@ -1,7 +1,8 @@
 summary: A client_credentials grant type example
 method_request: POST /_security/oauth2/token
 description: >
-  Run `POST /_security/oauth2/token` to obtain a token using the `client_credentials` grant type, which simply creates a token as the authenticated user.
+  Run `POST /_security/oauth2/token` to obtain a token using the `client_credentials` grant type, which simply creates a token as
+  the authenticated user.
 # type: request
 value: |-
   {

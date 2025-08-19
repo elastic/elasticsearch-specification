@@ -1,12 +1,10 @@
 summary: Query API keys with pagination
 method_request: GET /_security/_query/api_key
 description: >
-  Run `GET /_security/_query/api_key`.
-  Use a `bool` query to issue complex logical conditions and use `from`, `size`, and `sort` to help paginate the result.
-  For example, the API key name must begin with `app1-key-` and must not be `app1-key-01`.
-  It must be owned by a username with the wildcard pattern `org-*-user` and the `environment` metadata field must have a `production` value.
-  The offset to begin the search result is the twentieth (zero-based index) API key.
-  The page size of the response is 10 API keys.
+  Run `GET /_security/_query/api_key`. Use a `bool` query to issue complex logical conditions and use `from`, `size`, and `sort` to
+  help paginate the result. For example, the API key name must begin with `app1-key-` and must not be `app1-key-01`. It must be
+  owned by a username with the wildcard pattern `org-*-user` and the `environment` metadata field must have a `production` value.
+  The offset to begin the search result is the twentieth (zero-based index) API key. The page size of the response is 10 API keys.
   The result is first sorted by creation date in descending order, then by name in ascending order.
 # type: request
 value: |-

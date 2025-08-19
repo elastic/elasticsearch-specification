@@ -1,5 +1,7 @@
 summary: A chat completion task with tool_calls
-description: Run `POST POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion using an Assistant message with `tool_calls`.
+description:
+  Run `POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion using an Assistant message
+  with `tool_calls`.
 method_request: 'POST _inference/chat_completion/openai-completion/_stream'
 # type: "request"
 value: |-

@@ -1,1 +1,1 @@
-method_request: POST /_slm/policy/daily-snapshots/_execute
+method_request: PUT /_slm/policy/daily-snapshots/_execute

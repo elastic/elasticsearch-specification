@@ -1,5 +1,7 @@
 summary: A sparse embedding task
-description: Run `PUT _inference/sparse_embedding/my-elser-model` to create an inference endpoint that performs a `sparse_embedding` task. The request will automatically download the ELSER model if it isn't already downloaded and then deploy the model.
+description:
+  Run `PUT _inference/sparse_embedding/my-elser-model` to create an inference endpoint that performs a `sparse_embedding`
+  task. The request will automatically download the ELSER model if it isn't already downloaded and then deploy the model.
 method_request: 'PUT _inference/sparse_embedding/my-elser-model'
 # type: "request"
 value: |-

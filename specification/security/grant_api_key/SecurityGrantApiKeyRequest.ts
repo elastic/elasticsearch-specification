@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Password, Username } from '@_types/common'
+import { Password, Refresh, Username } from '@_types/common'
 import { ApiKeyGrantType, GrantApiKey } from './types'
 
 /**
@@ -57,6 +57,16 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  query_parameters: {
+    /**
+     * If 'true', Elasticsearch refreshes the affected shards to make this operation
+     * visible to search.
+     * If 'wait_for', it waits for a refresh to make this operation visible to search.
+     * If 'false', nothing is done with refreshes.
+     * @server_default false
+     */
+    refresh?: Refresh
+  }
   body: {
     /**
      * The API key.

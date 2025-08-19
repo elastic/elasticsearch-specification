@@ -2,6 +2,20 @@ summary: Ingest pipelines
 method_request: POST _reindex
 description: Run `POST _reindex` and use the ingest pipelines feature.
 # type: request
-value:
-  "{\n  \"source\": {\n    \"index\": \"source\"\n  },\n  \"dest\": {\n    \"\
-  index\": \"dest\",\n    \"pipeline\": \"some_ingest_pipeline\"\n  }\n}"
+value: "{
+
+  \  \"source\": {
+
+  \    \"index\": \"source\"
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"dest\",
+
+  \    \"pipeline\": \"some_ingest_pipeline\"
+
+  \  }
+
+  }"

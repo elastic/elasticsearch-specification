@@ -89,6 +89,6 @@ export enum NodeRole {
 }
 
 /**
- * * @doc_id node-roles
+ * @doc_id node-roles
  */
 export type NodeRoles = NodeRole[]

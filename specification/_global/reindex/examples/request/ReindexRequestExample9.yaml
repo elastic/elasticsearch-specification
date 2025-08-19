@@ -1,10 +1,27 @@
 summary: Reindex new field names
 method_request: POST _reindex
 description: >
-  A reindex operation can build a copy of an index with renamed fields.
-  If your index has documents with `text` and `flag` fields, you can change the latter field name to `tag` during the reindex.
+  A reindex operation can build a copy of an index with renamed fields. If your index has documents with `text` and `flag` fields,
+  you can change the latter field name to `tag` during the reindex.
 # type: request
-value:
-  "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\":\
-  \ {\n    \"index\": \"my-new-index-000001\"\n  },\n  \"script\": {\n    \"source\"\
-  : \"ctx._source.tag = ctx._source.remove(\\\"flag\\\")\"\n  }\n}"
+value: "{
+
+  \  \"source\": {
+
+  \    \"index\": \"my-index-000001\"
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"my-new-index-000001\"
+
+  \  },
+
+  \  \"script\": {
+
+  \    \"source\": \"ctx._source.tag = ctx._source.remove(\\\"flag\\\")\"
+
+  \  }
+
+  }"

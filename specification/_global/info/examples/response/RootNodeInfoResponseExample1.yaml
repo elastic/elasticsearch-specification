@@ -1,19 +1,19 @@
-# summary: ''
-description: A successful response from `GET /`s.
+summary: Stack response
+description: A successful response from `GET /`.
 # type: response
 # response_code: 200
 value:
   name: instance-0000000000
   cluster_name: my_test_cluster
-  cluster_uuid: 5QaxoN0pRZuOmWSxstBBwQ
+  cluster_uuid: zk-HjQtYQGyL3NFSSu7InA
   version:
-    build_date: '2024-02-01T13:07:13.727175297Z'
-    minimum_wire_compatibility_version: 7.17.0
-    build_hash: 6185ba65d27469afabc9bc951cded6c17c21e3f3
-    number: 8.12.1
-    lucene_version: 9.9.2
-    minimum_index_compatibility_version: 7.0.0
+    number: 9.1.0
     build_flavor: default
-    build_snapshot: false
     build_type: docker
+    build_hash: 00000000
+    build_date: 2025-07-09T22:10:13.578182715Z
+    build_snapshot: false
+    lucene_version: 10.2.2
+    minimum_wire_compatibility_version: 8.19.0
+    minimum_index_compatibility_version: 8.0.0
   tagline: 'You Know, for Search'

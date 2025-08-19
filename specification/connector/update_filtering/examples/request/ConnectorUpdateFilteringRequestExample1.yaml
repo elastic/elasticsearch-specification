@@ -2,11 +2,42 @@
 method_request: PUT _connector/my-g-drive-connector/_filtering
 # description: ''
 # type: request
-value:
-  "{\n    \"rules\": [\n         {\n            \"field\": \"file_extension\"\
-  ,\n            \"id\": \"exclude-txt-files\",\n            \"order\": 0,\n     \
-  \       \"policy\": \"exclude\",\n            \"rule\": \"equals\",\n          \
-  \  \"value\": \"txt\"\n        },\n        {\n            \"field\": \"_\",\n  \
-  \          \"id\": \"DEFAULT\",\n            \"order\": 1,\n            \"policy\"\
-  : \"include\",\n            \"rule\": \"regex\",\n            \"value\": \".*\"\n\
-  \        }\n    ]\n}"
+value: "{
+
+  \    \"rules\": [
+
+  \         {
+
+  \            \"field\": \"file_extension\",
+
+  \            \"id\": \"exclude-txt-files\",
+
+  \            \"order\": 0,
+
+  \            \"policy\": \"exclude\",
+
+  \            \"rule\": \"equals\",
+
+  \            \"value\": \"txt\"
+
+  \        },
+
+  \        {
+
+  \            \"field\": \"_\",
+
+  \            \"id\": \"DEFAULT\",
+
+  \            \"order\": 1,
+
+  \            \"policy\": \"include\",
+
+  \            \"rule\": \"regex\",
+
+  \            \"value\": \".*\"
+
+  \        }
+
+  \    ]
+
+  }"

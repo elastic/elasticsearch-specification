@@ -1,10 +1,10 @@
 summary: Component template substitutions
 method_request: POST /_ingest/_simulate
 description: >
-  In this example, imagine that the index `my-index` has a strict mapping with only the `foo` keyword field defined.
-  Say that field mapping came from a component template named `my-mappings-template`. You want to test adding a new field, `bar`.
-  So a substitute definition of `my-mappings-template` is provided in `component_template_substitutions`.
-  The substitute `my-mappings-template` will be used in place of the existing mapping for `my-index` and in place of the `my-mappings-template` that is in the system.
+  In this example, imagine that the index `my-index` has a strict mapping with only the `foo` keyword field defined. Say that field
+  mapping came from a component template named `my-mappings-template`. You want to test adding a new field, `bar`. So a substitute
+  definition of `my-mappings-template` is provided in `component_template_substitutions`. The substitute `my-mappings-template` will
+  be used in place of the existing mapping for `my-index` and in place of the `my-mappings-template` that is in the system.
 # type: request
 value: |-
   {

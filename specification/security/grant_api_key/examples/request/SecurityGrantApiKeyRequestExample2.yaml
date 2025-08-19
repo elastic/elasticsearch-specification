@@ -1,9 +1,8 @@
 summary: Grant an API key with run_as
 method_request: POST /_security/api_key/grant
 description: >
-  Run `POST /_security/api_key/grant`.
-  The user (`test_admin`) whose credentials are provided can "run as" another user (`test_user`).
-  The API key will be granted to the impersonated user (`test_user`).
+  Run `POST /_security/api_key/grant`. The user (`test_admin`) whose credentials are provided can "run as" another user
+  (`test_user`). The API key will be granted to the impersonated user (`test_user`).
 # type: request
 value: |-
   {

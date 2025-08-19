@@ -1,4 +1,5 @@
 # summary:
+method_request: PUT /_ml/anomaly_detectors/job-01
 description: A request to create an anomaly detection job and datafeed.
 value:
   analysis_config:

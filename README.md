@@ -60,6 +60,13 @@ Follow the steps to generate the JSON representation, then:
 ```
 # Generate the OpenAPI representation
 $ make transform-to-openapi
+```
+
+To generate the JSON representation that is used for documentation purposes, the commands are different:
+
+```
+# Generate the OpenAPI files
+$ make transform-to-openapi-for-docs
 
 # Apply fixes
 $ make overlay-docs
@@ -223,6 +230,9 @@ make validate api=xpack.info type=request branch=main
 
 # this will validate the xpack.info request and response types against the 8.15 branch
 make validate api=xpack.info branch=8.15
+
+# this will validate the xpack.info and search request and response types against the 8.15 branch
+make validate api=xpack.info,search branch=8.15
 ```
 
 The last command above will install all the dependencies and run, download

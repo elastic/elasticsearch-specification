@@ -28,9 +28,10 @@ use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
     RequestBody, Response, Responses, StatusCode, Example
 };
+use serde_json::Value;
 use clients_schema::SchemaExample;
-
 use crate::components::TypesAndComponents;
+use crate::convert_availabilities;
 
 /// Add an endpoint to the OpenAPI schema. This will result in the addition of a number of elements to the
 /// openapi schema's `paths` and `components` sections.
@@ -38,6 +39,7 @@ pub fn add_endpoint(
     endpoint: &clients_schema::Endpoint,
     tac: &mut TypesAndComponents,
     out: &mut Paths,
+    product_meta: &IndexMap<String,String>
 ) -> anyhow::Result<()> {
     if endpoint.request.is_none() {
         // tracing::warn!("Endpoint {} is missing a request -- ignored", &endpoint.name);
@@ -61,6 +63,8 @@ pub fn add_endpoint(
     let request = tac.model.get_request(endpoint.request.as_ref().unwrap())?;
 
     fn parameter_data(prop: &Property, in_path: bool, tac: &mut TypesAndComponents) -> anyhow::Result<ParameterData> {
+        let mut extensions: IndexMap<String,Value> = Default::default();
+        convert_availabilities(&prop.availability, &tac.config.flavor, &mut extensions);
         Ok(ParameterData {
             name: prop.name.clone(),
             description: tac.property_description(prop)?,
@@ -70,7 +74,7 @@ pub fn add_endpoint(
             example: None,
             examples: Default::default(),
             explode: None, // Defaults to simple, i.e. comma-separated values for arrays
-            extensions: Default::default(),
+            extensions,
         })
     }
 
@@ -232,9 +236,27 @@ pub fn add_endpoint(
     };
 
     //---- Merge multipath endpoints if asked for
+
+    let operation_id: String = endpoint
+        .name
+        .chars()
+        .map(|x| match x {
+            '_' | '.' => '-',
+            _ => x,
+        })
+        .collect();
+
     let mut new_endpoint: clients_schema::Endpoint;
 
     let endpoint = if is_multipath && tac.config.merge_multipath_endpoints {
+
+        // Add redirects for operations that would have been generated otherwise
+        if let Some(ref mut map) = &mut tac.redirects {
+            for i in 1..endpoint.urls.len() {
+                map.insert(format!("{operation_id}-{i}"), operation_id.clone());
+            }
+        }
+
         new_endpoint = endpoint.clone();
         let endpoint = &mut new_endpoint;
 
@@ -314,34 +336,46 @@ pub fn add_endpoint(
         parameters.append(&mut query_params.clone());
 
         let sum_desc = split_summary_desc(&endpoint.description);
-        
+
         let privilege_desc = add_privileges(&endpoint.privileges);
-        
+
         let full_desc = match (sum_desc.description, privilege_desc) {
             (Some(a), Some(b)) => Some(a+ &b),
             (opt_a, opt_b) => opt_a.or(opt_b)
         };
 
         // add the x-state extension for availability
-        let mut extensions = crate::availability_as_extensions(&endpoint.availability);
+        let mut extensions = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
 
-        // add the x-codeSamples extension
-        let mut code_samples = vec![];
-        if let Some(examples) = request.examples.clone() {
-            if let Some((_, example)) = examples.first() {
-                let request_line = example.method_request.clone().unwrap_or(String::from(""));
-                let request_body = example.value.clone().unwrap_or(String::from(""));
-                if !request_line.is_empty() {
-                    code_samples.push(serde_json::json!({
-                        "lang": "Console",
-                        "source": request_line + "\n" + request_body.as_str(),
-                    }));
+        if tac.config.include_language_examples {
+            // add the x-codeSamples extension
+            let mut code_samples = vec![];
+            if let Some(examples) = request.examples.clone() {
+                if let Some((_, example)) = examples.first() {
+                    let request_line = example.method_request.clone().unwrap_or(String::from(""));
+                    let request_body = example.value.clone().unwrap_or(String::from(""));
+                    if !request_line.is_empty() {
+                        code_samples.push(serde_json::json!({
+                            "lang": "Console",
+                            "source": request_line + "\n" + request_body.as_str(),
+                        }));
+                    }
+                    if let Some(alternatives) = example.alternatives.clone() {
+                        for alternative in alternatives.iter() {
+                            code_samples.push(serde_json::json!({
+                                "lang": alternative.language,
+                                "source": alternative.code.as_str(),
+                            }));
+                        }
+                    }
                 }
             }
+            if !code_samples.is_empty() {
+                extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
+            }
         }
-        if !code_samples.is_empty() {
-            extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
-        }
+
+        extensions.append(&mut crate::product_meta_as_extensions(namespace, product_meta));
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
@@ -366,7 +400,7 @@ pub fn add_endpoint(
             deprecated: endpoint.deprecation.is_some(),
             security: None,
             servers: vec![],
-            extensions,
+            extensions
         };
 
 
@@ -434,14 +468,7 @@ pub fn add_endpoint(
             };
 
             let mut operation = operation.clone();
-            let mut operation_id: String = endpoint
-                .name
-                .chars()
-                .map(|x| match x {
-                    '_' | '.' => '-',
-                    _ => x,
-                })
-                .collect();
+            let mut operation_id = operation_id.clone();
             if operation_counter != 0 {
                 write!(&mut operation_id, "-{}", operation_counter)?;
             }
@@ -497,18 +524,20 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
 
 fn add_privileges(privileges: &Option<Privileges>) -> Option<String>{
     if let Some(privs) = privileges {
-        let mut result = "\n ##Required authorization\n".to_string();
+        let mut result = "\n\n## Required authorization\n\n".to_string();
         if !privs.index.is_empty() {
             result += "* Index privileges: ";
             result += &privs.index.iter()
                 .map(|a| format!("`{a}`"))
                 .join(",");
+            result += "\n";
         }
         if !privs.cluster.is_empty() {
             result += "* Cluster privileges: ";
             result += &privs.cluster.iter()
                 .map(|a| format!("`{a}`"))
                 .join(",");
+            result += "\n";
         }
         return Some(result)
     }

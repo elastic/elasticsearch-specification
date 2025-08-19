@@ -1,8 +1,9 @@
 summary: Update multiple targets
 method_request: PUT /my-index-000001/_mapping
 description: >
-  The update mapping API can be applied to multiple data streams or indices with a single request.
-  For example, run `PUT /my-index-000001,my-index-000002/_mapping` to update mappings for the `my-index-000001` and `my-index-000002` indices at the same time.
+  The update mapping API can be applied to multiple data streams or indices with a single request. For example, run `PUT
+  /my-index-000001,my-index-000002/_mapping` to update mappings for the `my-index-000001` and `my-index-000002` indices at the same
+  time.
 # type: request
 value:
   properties:

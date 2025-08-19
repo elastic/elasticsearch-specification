@@ -261,6 +261,14 @@ export class Interface extends BaseType {
 }
 
 /**
+ * An alternative of an example, coded in a given language.
+ */
+export class ExampleAlternative {
+  language: string
+  code: string
+}
+
+/**
  * The Example type is used for both requests and responses
  * This type definition is taken from the OpenAPI spec
  *     https://spec.openapis.org/oas/v3.1.0#example-object
@@ -277,6 +285,8 @@ export class Example {
   value?: string
   /** A URI that points to the literal example */
   external_value?: string
+  /** An array of alternatives for this example in other languages */
+  alternatives?: ExampleAlternative[]
 }
 
 /**
@@ -433,6 +443,8 @@ export class Endpoint {
   docId?: string
   extDocId?: string
   extDocUrl?: string
+  extDocDescription?: string
+  extPreviousVersionDocUrl?: string
   deprecation?: Deprecation
   availability: Availabilities
   docTag?: string

@@ -43,6 +43,8 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * A short version of the Accept header, e.g. json, yaml.
+     *
+     * `csv`, `tsv`, and `txt` formats will return results in a tabular format, excluding other metadata fields from the response.
      */
     format?: EsqlFormat
     /**

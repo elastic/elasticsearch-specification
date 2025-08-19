@@ -2,6 +2,14 @@ summary: A shared file system repository
 method_request: PUT /_snapshot/my_repository
 description: Run `PUT /_snapshot/my_repository` to create or update a shared file system snapshot repository.
 # type: request
-value:
-  "{\n  \"type\": \"fs\",\n  \"settings\": {\n    \"location\": \"my_backup_location\"\
-  \n  }\n}"
+value: "{
+
+  \  \"type\": \"fs\",
+
+  \  \"settings\": {
+
+  \    \"location\": \"my_backup_location\"
+
+  \  }
+
+  }"

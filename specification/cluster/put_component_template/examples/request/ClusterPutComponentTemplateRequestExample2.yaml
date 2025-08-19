@@ -1,8 +1,8 @@
 summary: Create a template with aliases
 method_request: PUT _component_template/template_1
 description: >
-  You can include index aliases in a component template.
-  During index creation, the `{index}` placeholder in the alias name will be replaced with the actual index name that the template gets applied to.
+  You can include index aliases in a component template. During index creation, the `{index}` placeholder in the alias name will be
+  replaced with the actual index name that the template gets applied to.
 # type: request
 value:
   template:

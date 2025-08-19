@@ -1,9 +1,10 @@
 summary: Roles for specific groups
 method_request: POST /_security/role_mapping/mapping4
 description: >
-  Run `POST /_security/role_mapping/mapping4` to match any user where either the username is `esadmin` or the user is in the `cn=admin,dc=example,dc=com group`.
-  This example is useful when the group names in your identity management system (such as Active Directory, or a SAML Identity Provider) do not have a one-to-one correspondence with the names of roles in Elasticsearch.
-  The role mapping is the means by which you link a group name with a role name.
+  Run `POST /_security/role_mapping/mapping4` to match any user where either the username is `esadmin` or the user is in the
+  `cn=admin,dc=example,dc=com group`. This example is useful when the group names in your identity management system (such as Active
+  Directory, or a SAML Identity Provider) do not have a one-to-one correspondence with the names of roles in Elasticsearch. The role
+  mapping is the means by which you link a group name with a role name.
 # type: request
 value: |-
   {

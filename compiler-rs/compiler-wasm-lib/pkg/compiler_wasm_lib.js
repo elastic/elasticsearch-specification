@@ -162,16 +162,16 @@ function handleError(f, args) {
     }
 }
 
+module.exports.__wbg_writeFileSync_bc6b1883f11970b9 = function(arg0, arg1, arg2, arg3) {
+    writeFileSync(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
+};
+
 module.exports.__wbg_readFileSync_2d82336a457bbeee = function(arg0, arg1, arg2, arg3, arg4) {
     const ret = readFileSync(getStringFromWasm0(arg1, arg2), getStringFromWasm0(arg3, arg4));
     const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len1 = WASM_VECTOR_LEN;
     getDataViewMemory0().setInt32(arg0 + 4 * 1, len1, true);
     getDataViewMemory0().setInt32(arg0 + 4 * 0, ptr1, true);
-};
-
-module.exports.__wbg_writeFileSync_bc6b1883f11970b9 = function(arg0, arg1, arg2, arg3) {
-    writeFileSync(getStringFromWasm0(arg0, arg1), getStringFromWasm0(arg2, arg3));
 };
 
 module.exports.__wbindgen_string_new = function(arg0, arg1) {

@@ -40,10 +40,12 @@ import { Watch } from '@watcher/_types/Watch'
  * If your user is allowed to read index `a`, but not index `b`, then the exact same set of rules will apply during execution of a watch.
  *
  * When using the run watch API, the authorization data of the user that called the API will be used as a base, instead of the information who stored the watch.
+ * Refer to the external documentation for examples of watch execution requests, including existing, customized, and inline watches.
  * @rest_spec_name watcher.execute_watch
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
  * @doc_id watcher-api-execute-watch
+ * @ext_doc_id execute-watch
  */
 export interface Request extends RequestBase {
   urls: [

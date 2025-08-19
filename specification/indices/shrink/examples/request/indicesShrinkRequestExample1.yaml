@@ -2,6 +2,14 @@ summary: Shrink an existing index into a new index with fewer primary shards.
 method_request: POST /my_source_index/_shrink/my_target_index
 # description: ''
 # type: request
-value:
-  "{\n  \"settings\": {\n    \"index.routing.allocation.require._name\": null,\n\
-  \    \"index.blocks.write\": null\n  }\n}"
+value: "{
+
+  \  \"settings\": {
+
+  \    \"index.routing.allocation.require._name\": null,
+
+  \    \"index.blocks.write\": null
+
+  \  }
+
+  }"

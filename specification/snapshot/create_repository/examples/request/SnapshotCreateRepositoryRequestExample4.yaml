@@ -2,6 +2,14 @@ summary: An S3 repository
 method_request: PUT _snapshot/my_s3_repository
 description: Run `PUT /_snapshot/my_s3_repository` to create or update an AWS S3 snapshot repository.
 # type: request
-value:
-  "{\n  \"type\": \"s3\",\n  \"settings\": {\n    \"bucket\": \"my-bucket\"\n\
-  \  }\n}"
+value: "{
+
+  \  \"type\": \"s3\",
+
+  \  \"settings\": {
+
+  \    \"bucket\": \"my-bucket\"
+
+  \  }
+
+  }"

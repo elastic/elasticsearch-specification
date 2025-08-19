@@ -259,6 +259,11 @@ export interface Request<TDocument> extends RequestBase {
      * @server_default false
      */
     require_alias?: boolean
+    /**
+     * If `true`, the request's actions must target a data stream (existing or to be created).
+     * @server_default false
+     */
+    require_data_stream?: boolean
   }
   /** @codegen_name document */
   /**

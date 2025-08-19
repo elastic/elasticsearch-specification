@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { FieldValue, Id, IndexName, NodeId } from '@_types/common'
+import { FieldValue, IndexName, NodeId } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
 import { DurationValue, UnitMillis } from '@_types/Time'
@@ -43,7 +43,17 @@ export class EsqlResult {
 }
 
 export class AsyncEsqlResult extends EsqlResult {
+  /**
+   * The ID of the async query, to be used in subsequent requests to check the status or retrieve results.
+   *
+   * Also available in the `X-Elasticsearch-Async-Id` HTTP header.
+   */
   id?: string
+  /**
+   * Indicates whether the async query is still running or has completed.
+   *
+   * Also available in the `X-Elasticsearch-Async-Is-Running` HTTP header.
+   */
   is_running: boolean
 }
 
@@ -67,6 +77,7 @@ export class EsqlClusterDetails {
   indices: string
   took?: DurationValue<UnitMillis>
   _shards?: EsqlShardInfo
+  failures?: EsqlShardFailure[]
 }
 
 export enum EsqlClusterStatus {
@@ -82,12 +93,11 @@ export class EsqlShardInfo {
   successful?: integer
   skipped?: integer
   failed?: integer
-  failures?: EsqlShardFailure[]
 }
 
 export class EsqlShardFailure {
-  shard: Id
-  index: IndexName
+  shard: integer
+  index: IndexName | null
   node?: NodeId
   reason: ErrorCause
 }

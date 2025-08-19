@@ -68,7 +68,7 @@ export class RescorerRetriever extends RetrieverBase {
 export class LinearRetriever extends RetrieverBase {
   /** Inner retrievers. */
   retrievers?: InnerRetriever[]
-  rank_window_size: integer
+  rank_window_size?: integer
 }
 
 export class PinnedRetriever extends RetrieverBase {
@@ -76,7 +76,7 @@ export class PinnedRetriever extends RetrieverBase {
   retriever: RetrieverContainer
   ids?: string[]
   docs?: SpecifiedDocument[]
-  rank_window_size: integer
+  rank_window_size?: integer
 }
 
 export class InnerRetriever {
@@ -145,9 +145,9 @@ export class TextSimilarityReranker extends RetrieverBase {
   /** Unique identifier of the inference endpoint created using the inference API. */
   inference_id?: string
   /** The text snippet used as the basis for similarity comparison */
-  inference_text?: string
+  inference_text: string
   /** The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text */
-  field?: string
+  field: string
 }
 
 export class RuleRetriever extends RetrieverBase {

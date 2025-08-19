@@ -55,5 +55,11 @@ export interface Request extends RequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
+    /**
+     * If `true`, the request returns a response when the matching snapshots are all deleted.
+     * If `false`, the request returns a response as soon as the deletes are scheduled.
+     * @server_default true
+     */
+    wait_for_completion?: boolean
   }
 }

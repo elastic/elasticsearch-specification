@@ -1,8 +1,9 @@
 # summary:
 method_request: POST /_security/oidc/authenticate
 description: >
-  Run `POST /_security/oidc/authenticate` to exchange the response that was returned from the OpenID Connect Provider after a successful authentication for an Elasticsearch access token and refresh token.
-  This example is from an authentication that uses the authorization code grant flow.
+  Run `POST /_security/oidc/authenticate` to exchange the response that was returned from the OpenID Connect Provider after a
+  successful authentication for an Elasticsearch access token and refresh token. This example is from an authentication that uses
+  the authorization code grant flow.
 # type: request
 value: |-
   {

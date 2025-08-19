@@ -1,10 +1,10 @@
 summary: Add a privilege
 method_request: PUT /_security/privilege
 description: >
-  Run `PUT /_security/privilege` to add a single application privilege.
-  The wildcard (`*`) means that this privilege grants access to all actions that start with `data:read/`.
-  Elasticsearch does not assign any meaning to these actions. However,
-  if the request includes an application privilege such as `data:read/users` or `data:read/settings`, the has privileges API respects the use of a wildcard and returns `true`.
+  Run `PUT /_security/privilege` to add a single application privilege. The wildcard (`*`) means that this privilege grants access
+  to all actions that start with `data:read/`. Elasticsearch does not assign any meaning to these actions. However, if the request
+  includes an application privilege such as `data:read/users` or `data:read/settings`, the has privileges API respects the use of a
+  wildcard and returns `true`.
 # type: request
 value: |-
   {

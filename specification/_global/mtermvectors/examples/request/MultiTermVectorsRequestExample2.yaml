@@ -1,8 +1,8 @@
 summary: Simplified syntax
 method_request: POST /my-index-000001/_mtermvectors
 description: >
-  Run `POST /my-index-000001/_mtermvectors`.
-  If all requested documents are in same index and the parameters are the same, you can use a simplified syntax.
+  Run `POST /my-index-000001/_mtermvectors`. If all requested documents are in same index and the parameters are the same, you can
+  use a simplified syntax.
 # type: request
 value: |-
   {

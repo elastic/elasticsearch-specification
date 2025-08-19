@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 import {
   AnthropicServiceSettings,
   AnthropicServiceType,
@@ -54,6 +55,13 @@ export interface Request extends RequestBase {
      * The unique identifier of the inference endpoint.
      */
     anthropic_inference_id: Id
+  }
+  query_parameters: {
+    /**
+     * Specifies the amount of time to wait for the inference endpoint to be created.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
   body: {
     /**

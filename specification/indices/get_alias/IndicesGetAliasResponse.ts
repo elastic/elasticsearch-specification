@@ -19,8 +19,10 @@
 
 import { ErrorResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
-import { AliasDefinition } from '@indices/_types/AliasDefinition'
-import { AdditionalProperties } from '@spec_utils/behaviors'
+import {
+  IndexAliases,
+  NotFoundAliases
+} from '@indices/get_alias/_types/response'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
@@ -32,13 +34,4 @@ export class Response {
       body: NotFoundAliases | ErrorResponseBase
     }
   ]
-}
-
-export class IndexAliases {
-  aliases: Dictionary<string, AliasDefinition>
-}
-
-class NotFoundAliases implements AdditionalProperties<string, IndexAliases> {
-  error: string
-  status: number
 }

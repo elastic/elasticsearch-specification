@@ -2,7 +2,20 @@ summary: Update a counter with a script
 method_request: POST test/_update/1
 description: Run `POST test/_update/1` to increment a counter by using a script.
 # type: request
-value:
-  "{\n  \"script\" : {\n    \"source\": \"ctx._source.counter += params.count\"\
-  ,\n    \"lang\": \"painless\",\n    \"params\" : {\n      \"count\" : 4\n    }\n\
-  \  }\n}"
+value: "{
+
+  \  \"script\" : {
+
+  \    \"source\": \"ctx._source.counter += params.count\",
+
+  \    \"lang\": \"painless\",
+
+  \    \"params\" : {
+
+  \      \"count\" : 4
+
+  \    }
+
+  \  }
+
+  }"

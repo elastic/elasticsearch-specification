@@ -50,31 +50,14 @@ export interface Request extends RequestBase {
      */
     drop_null_columns?: boolean
     /**
-     * A short version of the Accept header, for example `json` or `yaml`.
+     * A short version of the Accept header, e.g. json, yaml.
+     *
+     * `csv`, `tsv`, and `txt` formats will return results in a tabular format, excluding other metadata fields from the response.
+     *
+     * For async requests, nothing will be returned if the async query doesn't finish within the timeout.
+     * The query ID and running status are available in the `X-Elasticsearch-Async-Id` and `X-Elasticsearch-Async-Is-Running` HTTP headers of the response, respectively.
      */
     format?: EsqlFormat
-    /**
-     * The period for which the query and its results are stored in the cluster.
-     * The default period is five days.
-     * When this period expires, the query and its results are deleted, even if the query is still ongoing.
-     * If the `keep_on_completion` parameter is false, Elasticsearch only stores async queries that do not complete within the period set by the `wait_for_completion_timeout` parameter, regardless of this value.
-     * @server_default 5d
-     */
-    keep_alive?: Duration
-    /**
-     *  Indicates whether the query and its results are stored in the cluster.
-     * If false, the query and its results are stored in the cluster only if the request does not complete during the period set by the `wait_for_completion_timeout` parameter.
-     * @server_default false
-     */
-    keep_on_completion?: boolean
-    /**
-     * The period to wait for the request to finish.
-     * By default, the request waits for 1 second for the query results.
-     * If the query completes during this period, results are returned
-     * Otherwise, a query ID is returned that can later be used to retrieve the results.
-     * @server_default 1s
-     */
-    wait_for_completion_timeout?: Duration
   }
   /**
    * Use the `query` element to start a query. Use `time_zone` to specify an execution time zone and `columnar` to format the answer.
@@ -129,5 +112,19 @@ export interface Request extends RequestBase {
      * @server_default 1s
      */
     wait_for_completion_timeout?: Duration
+    /**
+     * The period for which the query and its results are stored in the cluster.
+     * The default period is five days.
+     * When this period expires, the query and its results are deleted, even if the query is still ongoing.
+     * If the `keep_on_completion` parameter is false, Elasticsearch only stores async queries that do not complete within the period set by the `wait_for_completion_timeout` parameter, regardless of this value.
+     * @server_default 5d
+     */
+    keep_alive?: Duration
+    /**
+     *  Indicates whether the query and its results are stored in the cluster.
+     * If false, the query and its results are stored in the cluster only if the request does not complete during the period set by the `wait_for_completion_timeout` parameter.
+     * @server_default false
+     */
+    keep_on_completion?: boolean
   }
 }

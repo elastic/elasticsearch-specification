@@ -1,8 +1,23 @@
 # summary: search-application/apis/search-application-search.asciidoc:125
 method_request: POST _application/search_application/my-app/_search
-description: Use `POST _application/search_application/my-app/_search` to run a search against a search application called `my-app` that uses a search template.
+description:
+  Use `POST _application/search_application/my-app/_search` to run a search against a search application called `my-app`
+  that uses a search template.
 # type: request
-value:
-  "{\n  \"params\": {\n    \"query_string\": \"my first query\",\n    \"text_fields\"\
-  : [\n      {\"name\": \"title\", \"boost\": 5},\n      {\"name\": \"description\"\
-  , \"boost\": 1}\n    ]\n  }\n}"
+value: "{
+
+  \  \"params\": {
+
+  \    \"query_string\": \"my first query\",
+
+  \    \"text_fields\": [
+
+  \      {\"name\": \"title\", \"boost\": 5},
+
+  \      {\"name\": \"description\", \"boost\": 1}
+
+  \    ]
+
+  \  }
+
+  }"

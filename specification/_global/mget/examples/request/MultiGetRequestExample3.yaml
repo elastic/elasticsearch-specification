@@ -1,8 +1,7 @@
 summary: Get stored fields
 method_request: 'GET /_mget'
 description: >
-  Run `GET /_mget`.
-  This request retrieves `field1` and `field2` from document 1 and `field3` and `field4` from document 2.
+  Run `GET /_mget`. This request retrieves `field1` and `field2` from document 1 and `field3` and `field4` from document 2.
 # type: "request"
 value: |-
   {

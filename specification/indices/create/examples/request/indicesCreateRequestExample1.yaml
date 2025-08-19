@@ -2,6 +2,14 @@ summary: Create an index.
 method_request: PUT /my-index-000001
 description: This request specifies the `number_of_shards` and `number_of_replicas`.
 # type: request
-value:
-  "{\n  \"settings\": {\n    \"number_of_shards\": 3,\n    \"number_of_replicas\"\
-  : 2\n  }\n}"
+value: "{
+
+  \  \"settings\": {
+
+  \    \"number_of_shards\": 3,
+
+  \    \"number_of_replicas\": 2
+
+  \  }
+
+  }"

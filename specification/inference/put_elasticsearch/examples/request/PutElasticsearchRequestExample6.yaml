@@ -1,5 +1,7 @@
 summary: Existing model deployment
-description: Run `PUT _inference/sparse_embedding/use_existing_deployment` to use an already existing model deployment when creating an inference endpoint.
+description:
+  Run `PUT _inference/sparse_embedding/use_existing_deployment` to use an already existing model deployment when creating
+  an inference endpoint.
 method_request: 'PUT _inference/sparse_embedding/use_existing_deployment'
 # type: "request"
 value: |-

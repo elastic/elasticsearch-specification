@@ -173,12 +173,13 @@ Add an `examples` folder and `request` and `xxx_response` subfolders (where `xxx
 
 These examples are for use in the API documentation and must adhere to the [OpenAPI 3.0 Example object specification](https://spec.openapis.org/oas/v3.0.3#example-object). They must have a `value` field that contains the request or response body.
 If there are multiple examples for the endpoint, they must each have a brief `summary` field, which is used as the label for the example. You can also optionaly provide an explanation in a `description` field.
+In order to generate curl and console examples automatically, the request examples must also contain a `method_request`.
 
 For example:
 
 ```yaml
 summary: Sequence query
-# method_request: GET /my-data-stream/_eql/search
+method_request: GET /my-data-stream/_eql/search
 # type: request
 description: >
   Run `GET /my-data-stream/_eql/search` to search for a sequence of events.

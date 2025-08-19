@@ -1,5 +1,7 @@
 summary: A text embedding task
-description: Run `PUT _inference/text_embedding/azure_ai_studio_embeddings` to create an inference endpoint that performs a text_embedding task. Note that you do not specify a model here, as it is defined already in the Azure AI Studio deployment.
+description:
+  Run `PUT _inference/text_embedding/azure_ai_studio_embeddings` to create an inference endpoint that performs a
+  text_embedding task. Note that you do not specify a model here, as it is defined already in the Azure AI Studio deployment.
 method_request: 'PUT _inference/text_embedding/azure_ai_studio_embeddings'
 # type: "request"
 value: |-

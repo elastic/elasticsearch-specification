@@ -1,8 +1,8 @@
 summary: Artificial documents
 method_request: POST /_mtermvectors
 description: >
-  Run `POST /_mtermvectors` to generate term vectors for artificial documents provided in the body of the request.
-  The mapping used is determined by the specified `_index`.
+  Run `POST /_mtermvectors` to generate term vectors for artificial documents provided in the body of the request. The mapping used
+  is determined by the specified `_index`.
 # type: request
 value: |-
   {

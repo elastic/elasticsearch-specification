@@ -125,6 +125,8 @@ export class IndexSettings
   max_refresh_listeners?: integer
   /**
    * Settings to define analyzers, tokenizers, token filters and character filters.
+   * Refer to the linked documentation for step-by-step examples of updating analyzers on existing indices.
+   * @ext_doc_id analyzer-update-existing
    */
   analyze?: SettingsAnalyze
   highlight?: SettingsHighlight
@@ -540,6 +542,8 @@ export class Storage {
    * of memory maps so you need disable the ability to use memory-mapping.
    */
   allow_mmap?: boolean
+  /** How often store statistics are refreshed */
+  stats_refresh_interval?: Duration
 }
 
 /**

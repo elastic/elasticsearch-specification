@@ -73,6 +73,11 @@ export interface Request extends RequestBase {
      * @server_default false */
     create?: boolean
     /**
+     * User defined reason for create the component template.
+     * @server_default api
+     */
+    cause?: string
+    /**
      * Period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s */

@@ -44,54 +44,6 @@ import { ZoomLevel } from './_types/ZoomLevel'
  * * Optionally, a `geo_bounds` aggregation on the `<field>`. The search only includes this aggregation if the `exact_bounds` parameter is `true`.
  * * If the optional parameter `with_labels` is `true`, the internal search will include a dynamic runtime field that calls the `getLabelPosition` function of the geometry doc value. This enables the generation of new point features containing suggested geometry labels, so that, for example, multi-polygons will have only one label.
  *
- * For example, Elasticsearch may translate a vector tile search API request with a `grid_agg` argument of `geotile` and an `exact_bounds` argument of `true` into the following search
- *
- * ```
- * GET my-index/_search
- * {
- *   "size": 10000,
- *   "query": {
- *     "geo_bounding_box": {
- *       "my-geo-field": {
- *         "top_left": {
- *           "lat": -40.979898069620134,
- *           "lon": -45
- *         },
- *         "bottom_right": {
- *           "lat": -66.51326044311186,
- *           "lon": 0
- *         }
- *       }
- *     }
- *   },
- *   "aggregations": {
- *     "grid": {
- *       "geotile_grid": {
- *         "field": "my-geo-field",
- *         "precision": 11,
- *         "size": 65536,
- *         "bounds": {
- *           "top_left": {
- *             "lat": -40.979898069620134,
- *             "lon": -45
- *           },
- *           "bottom_right": {
- *             "lat": -66.51326044311186,
- *             "lon": 0
- *           }
- *         }
- *       }
- *     },
- *     "bounds": {
- *       "geo_bounds": {
- *         "field": "my-geo-field",
- *         "wrap_longitude": false
- *       }
- *     }
- *   }
- * }
- * ```
- *
  * The API returns results as a binary Mapbox vector tile.
  * Mapbox vector tiles are encoded as Google Protobufs (PBF). By default, the tile contains three layers:
  *
@@ -166,6 +118,8 @@ import { ZoomLevel } from './_types/ZoomLevel'
  * Some cells may intersect more than one vector tile.
  * To compute the H3 resolution for each precision, Elasticsearch compares the average density of hexagonal bins at each resolution with the average density of tile bins at each zoom level.
  * Elasticsearch uses the H3 resolution that is closest to the corresponding geotile density.
+ *
+ * Learn how to use the vector tile search API with practical examples in the [Vector tile search examples](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/vector-tile-search) guide.
  * @rest_spec_name search_mvt
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -246,6 +200,13 @@ export interface Request extends RequestBase {
      * @server_default 10000
      */
     size?: integer
+    /**
+     * The number of hits matching the query to count accurately.
+     * If `true`, the exact number of hits is returned at the cost of some performance.
+     * If `false`, the response does not include the total number of hits matching the query.
+     * @server_default 10000
+     */
+    track_total_hits?: TrackHits
     /**
      * If `true`, the hits and aggs layers will contain additional point features representing
      * suggested label positions for the original features.

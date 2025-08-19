@@ -1,8 +1,7 @@
 summary: Manual slicing
 method_request: POST _reindex
 description: >
-  Run `POST _reindex` to slice a reindex request manually.
-  Provide a slice ID and total number of slices to each request.
+  Run `POST _reindex` to slice a reindex request manually. Provide a slice ID and total number of slices to each request.
 # type: request
 value: |-
   {

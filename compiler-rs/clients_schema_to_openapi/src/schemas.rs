@@ -209,16 +209,15 @@ impl<'a> TypesAndComponents<'a> {
     pub fn convert_external_docs(&self, obj: &impl clients_schema::ExternalDocument) -> Option<ExternalDocumentation> {
         // FIXME: does the model contain resolved doc_id?
         obj.ext_doc_url().map(|url| {
-            let branch: &str = self
-                .model
-                .info
-                .as_ref()
-                .and_then(|i| i.version.as_deref())
-                .unwrap_or("current");
+            let branch = self.config.branch.clone();
+            let mut extensions: IndexMap<String,serde_json::Value> = Default::default();
+            if let Some(previous_version_doc_url) = obj.ext_previous_version_doc_url() {
+                extensions.insert("x-previousVersionUrl".to_string(), serde_json::json!(previous_version_doc_url));
+            }
             ExternalDocumentation {
-                description: None,
-                url: url.trim().replace("{branch}", branch),
-                extensions: Default::default(),
+                description: obj.ext_doc_description().map(|desc| { desc.to_string() }),
+                url: url.trim().replace("{branch}", &branch.unwrap_or("current".to_string())),
+                extensions,
             }
         })
     }
@@ -363,6 +362,10 @@ impl<'a> TypesAndComponents<'a> {
                 _ => bail!("Unknown behavior {}", &bh.typ),
             }
         }
+
+        // description
+        schema.schema_data.description = itf.base.description.clone();
+
         Ok(schema)
     }
 
@@ -469,9 +472,9 @@ impl<'a> TypesAndComponents<'a> {
         data.external_docs = self.convert_external_docs(prop);
         data.deprecated = prop.deprecation.is_some();
         data.description = self.property_description(prop)?;
-        data.extensions = crate::availability_as_extensions(&prop.availability);
+        data.default = prop.server_default.clone().map(|value| { serde_json::json!(value) });
+        data.extensions = crate::availability_as_extensions(&prop.availability, &self.config.flavor);
         // TODO: prop.aliases as extensions
-        // TODO: prop.server_default as extension
         // TODO: prop.doc_id as extension (new representation of since and stability)
         // TODO: prop.es_quirk as extension?
         // TODO: prop.codegen_name as extension?

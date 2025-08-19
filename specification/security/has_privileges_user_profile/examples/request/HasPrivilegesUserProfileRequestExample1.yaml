@@ -1,7 +1,8 @@
 # summary:
 method_request: POST /_security/profile/_has_privileges
 description: >
-  Run `POST /_security/profile/_has_privileges` to check whether the two users associated with the specified profiles have all the requested set of cluster, index, and application privileges.
+  Run `POST /_security/profile/_has_privileges` to check whether the two users associated with the specified profiles have all the
+  requested set of cluster, index, and application privileges.
 # type: request
 value: |-
   {

@@ -1,10 +1,23 @@
 summary: Change the operation with a script
 method_request: POST test/_update/1
 description: >
-  Run `POST test/_update/1` to change the operation that runs from within the script.
-  For example, this request deletes the document if the `tags` field contains `green`, otherwise it does nothing (`noop`).
+  Run `POST test/_update/1` to change the operation that runs from within the script. For example, this request deletes the document
+  if the `tags` field contains `green`, otherwise it does nothing (`noop`).
 # type: request
-value:
-  "{\n  \"script\": {\n    \"source\": \"if (ctx._source.tags.contains(params.tag))\
-  \ { ctx.op = 'delete' } else { ctx.op = 'noop' }\",\n    \"lang\": \"painless\"\
-  ,\n    \"params\": {\n      \"tag\": \"green\"\n    }\n  }\n}"
+value: "{
+
+  \  \"script\": {
+
+  \    \"source\": \"if (ctx._source.tags.contains(params.tag)) { ctx.op = 'delete' } else { ctx.op = 'noop' }\",
+
+  \    \"lang\": \"painless\",
+
+  \    \"params\": {
+
+  \      \"tag\": \"green\"
+
+  \    }
+
+  \  }
+
+  }"

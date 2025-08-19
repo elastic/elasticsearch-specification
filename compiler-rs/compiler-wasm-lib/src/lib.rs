@@ -15,10 +15,11 @@
 // specific language governing permissions and limitations
 // under the License.
 
-use std::path::PathBuf;
+use std::path::{PathBuf};
 use argh::FromArgs;
-use clients_schema::IndexedModel;
+use clients_schema::{IndexedModel};
 use wasm_bindgen::prelude::*;
+use clients_schema::indexmap::IndexMap;
 use clients_schema_to_openapi::cli::Cli;
 
 /// Minimal bindings to Node's `fs` module.
@@ -59,14 +60,28 @@ pub fn convert0(cli: Cli, cwd: Option<String>) -> anyhow::Result<()> {
         Some(ref cwd) => PathBuf::from(cwd).join(&cli.output),
         None => cli.output.clone(),
     };
+    let redirect_path = cli.redirect_path(&output);
 
     let json = node_fs::read_file_sync_to_string(&input.to_string_lossy(), "utf8");
     let schema = IndexedModel::from_reader(json.as_bytes())?;
+    
+    let product_meta_path = match cwd {
+        Some(ref cwd) => format!("{cwd}/specification/_doc_ids/product-meta.json"),
+        None => "specification/_doc_ids/product-meta.json".to_string(),
+    };
+    let json_product_map = node_fs::read_file_sync_to_string(&product_meta_path, "utf8");
+    let product_meta: IndexMap<String, String> = serde_json::from_str(&json_product_map).expect("Cannot parse product metadata file");
 
-    let openapi = clients_schema_to_openapi::convert_schema(schema, cli.into())?;
+    let openapi = clients_schema_to_openapi::convert_schema(schema, cli.into(), product_meta)?;
 
-    let result = serde_json::to_string_pretty(&openapi)?;
+    let result = serde_json::to_string_pretty(&openapi.openapi)?;
     node_fs::write_file_sync(&output.to_string_lossy(), &result);
+
+    if let Some(redirects) = openapi.redirects {
+        let path = redirect_path.unwrap();
+        node_fs::write_file_sync(&path, &redirects);
+    }
+
     Ok(())
 }
 

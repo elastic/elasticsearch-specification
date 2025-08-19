@@ -1,8 +1,8 @@
 # summary:
 method_request: GET /my-index-000001/_explain/0
 description: >
-  Run `GET /my-index-000001/_explain/0` with the request body.
-  Alternatively, run `GET /my-index-000001/_explain/0?q=message:elasticsearch`
+  Run `GET /my-index-000001/_explain/0` with the request body. Alternatively, run `GET
+  /my-index-000001/_explain/0?q=message:elasticsearch`
 # type: request
 value: |-
   {

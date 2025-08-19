@@ -2,8 +2,24 @@
 method_request: PUT _connector/my-sql-connector/_filtering
 # description: ''
 # type: request
-value:
-  "{\n    \"advanced_snippet\": {\n        \"value\": [{\n            \"tables\"\
-  : [\n                \"users\",\n                \"orders\"\n            ],\n  \
-  \          \"query\": \"SELECT users.id AS id, orders.order_id AS order_id FROM\
-  \ users JOIN orders ON users.id = orders.user_id\"\n        }]\n    }\n}"
+value: "{
+
+  \    \"advanced_snippet\": {
+
+  \        \"value\": [{
+
+  \            \"tables\": [
+
+  \                \"users\",
+
+  \                \"orders\"
+
+  \            ],
+
+  \            \"query\": \"SELECT users.id AS id, orders.order_id AS order_id FROM users JOIN orders ON users.id = orders.user_id\"
+
+  \        }]
+
+  \    }
+
+  }"

@@ -2,6 +2,10 @@
 method_request: PUT _connector/my-connector/_name
 # description: ''
 # type: request
-value:
-  "{\n    \"name\": \"Custom connector\",\n    \"description\": \"This is my\
-  \ customized connector\"\n}"
+value: "{
+
+  \    \"name\": \"Custom connector\",
+
+  \    \"description\": \"This is my customized connector\"
+
+  }"

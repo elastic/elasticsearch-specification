@@ -1,8 +1,8 @@
 summary: Remove permissions
 method_request: PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx
 description: >
-  Run `PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx` to remove the API key's previously assigned permissions.
-  It will inherit the owner user's full permissions.
+  Run `PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx` to remove the API key's previously assigned permissions. It will inherit the
+  owner user's full permissions.
 # type: request
 value: |-
   {

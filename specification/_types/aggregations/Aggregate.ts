@@ -36,7 +36,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Void } from '@spec_utils/VoidValue'
 
 /**
- * @variants external
+ * @variants typed_keys_quirk
  * @non_exhaustive
  * @ext_doc_id search-aggregations
  */
@@ -157,10 +157,10 @@ type Percentiles = KeyedPercentiles | Array<ArrayPercentilesItem>
 // <key_name>_as_string? string - present if a format was provided
 //
 // Note: defined as type alias and not inline, as some clients may want to implement it in a more usable way.
-type KeyedPercentiles = Dictionary<string, string | long | null>
+type KeyedPercentiles = Dictionary<string, string | double | null>
 
 export class ArrayPercentilesItem {
-  key: string
+  key: double
   value: double | null
   value_as_string?: string
 }
@@ -642,7 +642,9 @@ export class IpRangeBucket extends MultiBucketBase {
  */
 export class FiltersAggregate extends MultiBucketAggregateBase<FiltersBucket> {}
 
-export class FiltersBucket extends MultiBucketBase {}
+export class FiltersBucket extends MultiBucketBase {
+  key?: string
+}
 
 /**
  * @variant name=adjacency_matrix

@@ -1,11 +1,9 @@
 summary: Test context
 method_request: POST /_scripts/painless/_execute
 description: >
-  Run `POST /_scripts/painless/_execute`.
-  The `painless_test` context is the default context.
-  It runs scripts without additional parameters.
-  The only variable that is available is `params`, which can be used to access user defined values.
-  The result of the script is always converted to a string.
+  Run `POST /_scripts/painless/_execute`. The `painless_test` context is the default context. It runs scripts without additional
+  parameters. The only variable that is available is `params`, which can be used to access user defined values. The result of the
+  script is always converted to a string.
 # type: request
 value: |-
   {

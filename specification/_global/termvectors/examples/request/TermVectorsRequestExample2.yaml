@@ -1,8 +1,8 @@
 summary: Per-field analyzer
 method_request: GET /my-index-000001/_termvectors
 description: >
-  Run `GET /my-index-000001/_termvectors/1` to set per-field analyzers.
-  A different analyzer than the one at the field may be provided by using the `per_field_analyzer` parameter.
+  Run `GET /my-index-000001/_termvectors/1` to set per-field analyzers. A different analyzer than the one at the field may be
+  provided by using the `per_field_analyzer` parameter.
 # type: request
 value: |-
   {

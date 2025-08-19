@@ -2,6 +2,14 @@ summary: An Azure repository
 method_request: PUT _snapshot/my_backup
 description: Run `PUT /_snapshot/my_repository` to create or update an Azure snapshot repository.
 # type: request
-value:
-  "{\n  \"type\": \"azure\",\n  \"settings\": {\n    \"client\": \"secondary\"\
-  \n  }\n}"
+value: "{
+
+  \  \"type\": \"azure\",
+
+  \  \"settings\": {
+
+  \    \"client\": \"secondary\"
+
+  \  }
+
+  }"

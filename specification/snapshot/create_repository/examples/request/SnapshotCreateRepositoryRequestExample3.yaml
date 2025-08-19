@@ -2,6 +2,16 @@ summary: A Google Cloud Storage repository
 method_request: PUT _snapshot/my_gcs_repository
 description: Run `PUT /_snapshot/my_gcs_repository` to create or update a Google Cloud Storage snapshot repository.
 # type: request
-value:
-  "{\n  \"type\": \"gcs\",\n  \"settings\": {\n    \"bucket\": \"my_other_bucket\"\
-  ,\n    \"base_path\": \"dev\"\n  }\n}"
+value: "{
+
+  \  \"type\": \"gcs\",
+
+  \  \"settings\": {
+
+  \    \"bucket\": \"my_other_bucket\",
+
+  \    \"base_path\": \"dev\"
+
+  \  }
+
+  }"

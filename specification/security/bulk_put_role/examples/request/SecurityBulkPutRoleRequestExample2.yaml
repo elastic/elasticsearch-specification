@@ -1,8 +1,9 @@
 summary: Bulk role errors
 method_request: POST /_security/role
 description: >
-  Because errors are handled individually for each role create or update, the API allows partial success.
-  For example, `POST /_security/role` would throw an error for `my_admin_role` because the privilege `bad_cluster_privilege` doesn't exist, but would be successful for the `my_user_role`.
+  Because errors are handled individually for each role create or update, the API allows partial success. For example, `POST
+  /_security/role` would throw an error for `my_admin_role` because the privilege `bad_cluster_privilege` doesn't exist, but would
+  be successful for the `my_user_role`.
 # type: request
 value: |-
   {

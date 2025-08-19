@@ -1,8 +1,9 @@
 summary: A password grant type example
 method_request: POST /_security/oauth2/token
 description: >
-  Run `POST /_security/oauth2/token` to obtain a token for the `test_admin` user using the password grant type.
-  This request needs to be made by an authenticated user with sufficient privileges that may or may not be the same as the one whose username is passed in the `username` parameter.
+  Run `POST /_security/oauth2/token` to obtain a token for the `test_admin` user using the password grant type. This request needs
+  to be made by an authenticated user with sufficient privileges that may or may not be the same as the one whose username is passed
+  in the `username` parameter.
 # type: request
 value: |-
   {
