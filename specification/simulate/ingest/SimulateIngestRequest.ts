@@ -75,6 +75,14 @@ export interface Request extends RequestBase {
      * This value can be used to override the default pipeline of the index.
      */
     pipeline?: PipelineName
+    /**
+     * The mapping merge type if mapping overrides are being provided in mapping_addition.
+     * The allowed values are one of index or template.
+     * The index option merges mappings the way they would be merged into an existing index.
+     * The template option merges mappings the way they would be merged into a template.
+     * @server_default index
+     */
+    merge_type?: MergeType
   }
   body: {
     /**
@@ -97,4 +105,9 @@ export interface Request extends RequestBase {
      */
     pipeline_substitutions?: Dictionary<string, Pipeline>
   }
+}
+
+enum MergeType {
+  index,
+  template
 }

@@ -3220,7 +3220,7 @@ export interface AggregationsAggregationRange {
 }
 
 export interface AggregationsArrayPercentilesItem {
-  key: string
+  key: double
   value: double | null
   value_as_string?: string
 }
@@ -9366,6 +9366,10 @@ export interface ClusterComponentTemplateNode {
   version?: VersionNumber
   _meta?: Metadata
   deprecated?: boolean
+  created_date?: DateTime
+  created_date_millis?: EpochTime<UnitMillis>
+  modified_date?: DateTime
+  modified_date_millis?: EpochTime<UnitMillis>
 }
 
 export interface ClusterComponentTemplateSummary {
@@ -11931,6 +11935,10 @@ export interface IndicesIndexTemplate {
   data_stream?: IndicesIndexTemplateDataStreamConfiguration
   deprecated?: boolean
   ignore_missing_component_templates?: Names
+  created_date?: DateTime
+  created_date_millis?: EpochTime<UnitMillis>
+  modified_date?: DateTime
+  modified_date_millis?: EpochTime<UnitMillis>
 }
 
 export interface IndicesIndexTemplateDataStreamConfiguration {
@@ -13292,6 +13300,7 @@ export interface IndicesResolveIndexResolveIndexItem {
   aliases?: string[]
   attributes: string[]
   data_stream?: DataStreamName
+  mode?: IndicesIndexMode
 }
 
 export interface IndicesResolveIndexResponse {
@@ -15118,6 +15127,10 @@ export interface IngestPipeline {
   version?: VersionNumber
   deprecated?: boolean
   _meta?: Metadata
+  created_date?: DateTime
+  created_date_millis?: EpochTime<UnitMillis>
+  modified_date?: DateTime
+  modified_date_millis?: EpochTime<UnitMillis>
 }
 
 export interface IngestPipelineConfig {
@@ -21154,9 +21167,12 @@ export interface SimulateIngestIngestDocumentSimulationKeys {
 export type SimulateIngestIngestDocumentSimulation = SimulateIngestIngestDocumentSimulationKeys
   & { [property: string]: string | Id | IndexName | Record<string, any> | SpecUtilsStringified<VersionNumber> | string[] | Record<string, string>[] | ErrorCause }
 
+export type SimulateIngestMergeType = 'index' | 'template'
+
 export interface SimulateIngestRequest extends RequestBase {
   index?: IndexName
   pipeline?: PipelineName
+  merge_type?: SimulateIngestMergeType
   body?: {
     docs: IngestDocument[]
     component_template_substitutions?: Record<string, ClusterComponentTemplateNode>
