@@ -31,7 +31,7 @@ import { SnapshotSort } from '@snapshot/_types/SnapshotInfo'
  * It is guaranteed that any snapshot that exists at the beginning of the iteration and is not concurrently deleted will be seen during the iteration.
  * Snapshots concurrently created may be seen during an iteration.
  * @rest_spec_name snapshot.get
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_snapshot
  * @doc_id snapshot-get
