@@ -1,5 +1,7 @@
 summary: A chat completion task
-description: Run `PUT _inference/chat_completion/amazon_sagemaker_chat_completion` to create an inference endpoint that performs a chat completion task.
+description:
+  Run `PUT _inference/chat_completion/amazon_sagemaker_chat_completion` to create an inference endpoint that performs a
+  chat completion task.
 method_request: 'PUT _inference/chat_completion/amazon_sagemaker_chat_completion'
 # type: "request"
 value: |-
