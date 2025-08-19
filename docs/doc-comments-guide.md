@@ -5,7 +5,7 @@ A specification is not only about formalizing data structures, it's also about e
 Documentation of the TypeScript specification is made using [JSDoc](https://jsdoc.app/) comments, i.e. multiline comments starting with `/**` above a type or field declaration.
 
 The first phrase is used as the mandatory operation summary in the OpenAPI document.
-Refer to [API documentation guidelines](https://docs.elastic.dev/content-architecture/oas#summaries).
+Refer to the [Elastic API docs contribution guidelines](https://www.elastic.co/docs/extend/contribute/api-docs/guidelines) to learn more about how to create great documentation for your API.
 
 > [!NOTE] 
 > You must add a period at the end of the phrase for it to parse correctly. The period will be properly omitted from the output OpenAPI document.
@@ -75,6 +75,8 @@ Each of these targets has a different way to format inline documentation: Java c
 GFM also has implementations in most languages, meaning that code generators will be able to easily parse the doc comments and transcode them.
 
 ## Structuring a doc-comment
+
+For guidelines of how to write great doc-comments, refer to the [Contribute to Elastic API docs](https://www.elastic.co/docs/extend/contribute/api-docs/guidelines#write-descriptions) page.
 
 ### Terseness
 

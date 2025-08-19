@@ -5,6 +5,9 @@ in this repository, or we do have an endpoint definition in [`/specification/_js
 but we don't have a type definition for it.
 In this document you will see how to add a new endpoint and how to add a new endpoint definition.
 
+> [!TIP]
+> To learn more about how to write docs specifically for our [API references](https://www.elastic.co/docs/api/), refer to the [Contribute to Elastic API docs](https://www.elastic.co/docs/extend/contribute/api-docs/).
+
 ## How to add a new endpoint
 
 Add a new endpoint is straightforward, you only need to copy-paste the json rest-api-spec definition

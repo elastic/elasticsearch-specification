@@ -18,6 +18,8 @@ The repository has the following structure:
 This JSON representation is formally defined by [a set of TypeScript definitions (a meta-model)](./compiler/src/model/metamodel.ts)
 that also explains the various properties and their values.
 
+> [!TIP]
+> To learn more about how to write docs specifically for our [API references](https://www.elastic.co/docs/api/), refer to the [Contribute to Elastic API docs](https://www.elastic.co/docs/extend/contribute/api-docs/).
 
 ## Prepare the environment
 
@@ -82,6 +84,10 @@ An interactive viewer for the Elasticsearch specification is available
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md)
+
+Refer to the
+[Contribute to Elastic API docs](https://www.elastic.co/docs/extend/contribute/api-docs/)
+for more details about the API documentation guidelines.
 
 ## Make Targets
 
