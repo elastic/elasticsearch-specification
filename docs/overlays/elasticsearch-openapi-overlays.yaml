@@ -14,7 +14,7 @@ actions:
         
         ## Documentation source and versions
         
-        This documentation is derived from the `8.x` branch of the [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification) repository.
+        This documentation is derived from the `8.19` branch of the [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification) repository.
         It is provided under license [Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/).
 
         This documentation contains work-in-progress information for future Elastic Stack releases.
