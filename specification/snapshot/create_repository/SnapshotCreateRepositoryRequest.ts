@@ -31,7 +31,7 @@ import { Repository } from '@snapshot/_types/SnapshotRepository'
  * Several options for this API can be specified using a query parameter or a request body parameter.
  * If both parameters are specified, only the query parameter is used.
  * @rest_spec_name snapshot.create_repository
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage
  * @doc_id snapshot-repo-create
