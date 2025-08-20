@@ -1,0 +1,18 @@
+[package]
+name = "clients_schema_to_rest_api_spec"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+clients_schema = { path = "../clients_schema" }
+
+argh = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+indexmap = { workspace = true }
+itertools = { workspace = true }
+
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
