@@ -5173,9 +5173,6 @@
                   },
                   "slice": {
                     "$ref": "#/components/schemas/_types.SlicedScroll"
-                  },
-                  "sort": {
-                    "$ref": "#/components/schemas/_types.Sort"
                   }
                 }
               },

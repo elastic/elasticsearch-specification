@@ -224,7 +224,6 @@ export interface DeleteByQueryRequest extends RequestBase {
     max_docs?: long
     query?: QueryDslQueryContainer
     slice?: SlicedScroll
-    sort?: Sort
   }
 }
 
