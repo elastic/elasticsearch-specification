@@ -1,0 +1,2 @@
+summary: Serverless request
+method_request: POST my-data-stream/_rollover
