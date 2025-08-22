@@ -21001,7 +21001,8 @@
         "summary": "Get a query rule",
         "description": "Get details about a query rule within a query ruleset.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
         "externalDocs": {
-          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules",
+          "description": "See rules and rulesets in Query Rules UI",
+          "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#accessing-the-query-rules-ui",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/get-query-rule.html"
         },
         "operationId": "query-rules-get-rule",
@@ -21061,6 +21062,11 @@
         ],
         "summary": "Create or update a query rule",
         "description": "Create or update a query rule within a query ruleset.\n\nIMPORTANT: Due to limitations within pinned queries, you can only pin documents using ids or docs, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
+        "externalDocs": {
+          "description": "Edit rules and rulesets from the Query Rules UI",
+          "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#edit-a-rule",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-query-rule.html"
+        },
         "operationId": "query-rules-put-rule",
         "parameters": [
           {
@@ -21166,6 +21172,11 @@
         ],
         "summary": "Delete a query rule",
         "description": "Delete a query rule within a query ruleset.\nThis is a destructive action that is only recoverable by re-adding the same rule with the create or update query rule API.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
+        "externalDocs": {
+          "description": "Delete a rule from the Query Rules UI",
+          "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#delete-a-rule",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/delete-query-rule.html"
+        },
         "operationId": "query-rules-delete-rule",
         "parameters": [
           {
@@ -21219,6 +21230,11 @@
         ],
         "summary": "Get a query ruleset",
         "description": "Get details about a query ruleset.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
+        "externalDocs": {
+          "description": "See rules and rulesets in Query Rules UI",
+          "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#accessing-the-query-rules-ui",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/get-query-ruleset.html"
+        },
         "operationId": "query-rules-get-ruleset",
         "parameters": [
           {
@@ -21266,7 +21282,8 @@
         "summary": "Create or update a query ruleset",
         "description": "There is a limit of 100 rules per ruleset.\nThis limit can be increased by using the `xpack.applications.rules.max_rules_per_ruleset` cluster setting.\n\nIMPORTANT: Due to limitations within pinned queries, you can only select documents using `ids` or `docs`, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
         "externalDocs": {
-          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules",
+          "description": "Edit rules and rulesets from the Query Rules UI",
+          "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#edit-a-rule",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-query-ruleset.html"
         },
         "operationId": "query-rules-put-ruleset",
@@ -21351,6 +21368,11 @@
         ],
         "summary": "Delete a query ruleset",
         "description": "Remove a query ruleset and its associated data.\nThis is a destructive action that is not recoverable.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
+        "externalDocs": {
+          "description": "Delete a ruleset from the Query Rules UI",
+          "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#delete-a-ruleset",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/delete-query-ruleset.html"
+        },
         "operationId": "query-rules-delete-ruleset",
         "parameters": [
           {
@@ -21393,6 +21415,11 @@
         ],
         "summary": "Get all query rulesets",
         "description": "Get summarized information about the query rulesets.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
+        "externalDocs": {
+          "description": "See rules and rulesets in Query Rules UI",
+          "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#accessing-the-query-rules-ui",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/list-query-rulesets.html"
+        },
         "operationId": "query-rules-list-rulesets",
         "parameters": [
           {
