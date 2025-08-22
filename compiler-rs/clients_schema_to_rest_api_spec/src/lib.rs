@@ -25,6 +25,9 @@ pub fn convert_schema_to_individual_files(model: IndexedModel, output_dir: &str)
     for endpoint in expanded_model.endpoints {
         let converted_endpoint = convert_endpoint(&endpoint, &expanded_model.types)?;
         
+        // Wrap the JSON content with the API name
+        let wrapped_content = HashMap::from([(endpoint.name.clone(), converted_endpoint)]);
+
         // Create filename from endpoint name
         let filename = format!("{}.json", endpoint.name);
         let file_path = StdPath::new(output_dir).join(&filename);
@@ -32,7 +35,7 @@ pub fn convert_schema_to_individual_files(model: IndexedModel, output_dir: &str)
         // Write individual endpoint file
         let output_file = File::create(&file_path)?;
         let writer = BufWriter::new(output_file);
-        serde_json::to_writer_pretty(writer, &converted_endpoint)?;
+        serde_json::to_writer_pretty(writer, &wrapped_content)?;
         
         tracing::debug!("Wrote {} to {}", endpoint.name, file_path.display());
     }
