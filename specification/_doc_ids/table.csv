@@ -598,6 +598,11 @@ query-ruleset-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/op
 query-ruleset-list,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-query-rules-list-rulesets,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/list-query-rulesets.html,
 query-ruleset-put,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-query-rules-put-ruleset,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-query-ruleset.html,
 query-ruleset-test,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-query-rules-test,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/test-query-ruleset.html,
+create-query-rule-from-ui,https://www.elastic.co/docs/solutions/search/query-rules-ui#create-a-query-rule,,Create rules and rulesets from the Query Rules UI
+edit-query-rule-from-ui,https://www.elastic.co/docs/solutions/search/query-rules-ui#edit-a-rule,,Edit rules and rulesets from the Query Rules UI
+delete-query-rule-from-ui,https://www.elastic.co/docs/solutions/search/query-rules-ui#delete-a-rule,,Delete a rule from the Query Rules UI
+list-query-rules-in-ui,https://www.elastic.co/docs/solutions/search/query-rules-ui#accessing-the-query-rules-ui,,See rules and rulesets in Query Rules UI
+delete-query-ruleset-from-ui,https://www.elastic.co/docs/solutions/search/query-rules-ui#delete-a-ruleset,,Delete a ruleset from the Query Rules UI
 realtime,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-get.html,
 redact-processor,https://www.elastic.co/docs/reference/enrich-processor/redact-processor,,
 regexp-syntax,https://www.elastic.co/docs/reference/query-languages/query-dsl/regexp-syntax,,

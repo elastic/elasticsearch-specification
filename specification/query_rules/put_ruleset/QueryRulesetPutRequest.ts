@@ -34,7 +34,7 @@ import { QueryRule } from '../_types/QueryRuleset'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_query_rules
  * @doc_id query-ruleset-put
- * @ext_doc_id query-rule
+ * @ext_doc_id edit-query-rule-from-ui
  */
 export interface Request extends RequestBase {
   urls: [
