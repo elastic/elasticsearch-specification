@@ -94,10 +94,29 @@ fn convert_endpoint(
         version: dep.version.clone(),
         description: dep.description.clone(),
     });
+
+    // Convert headers from request_media_type and response_media_type
+    let headers = if !endpoint.request_media_type.is_empty() || !endpoint.response_media_type.is_empty() {
+        Some(Headers {
+            accept: if endpoint.response_media_type.is_empty() {
+                vec!["application/json".to_string()]
+            } else {
+                endpoint.response_media_type.clone()
+            },
+            content_type: if endpoint.request_media_type.is_empty() {
+                vec!["application/json".to_string()]
+            } else {
+                endpoint.request_media_type.clone()
+            },
+        })
+    } else {
+        None
+    };
     
     Ok(Endpoint {
         documentation,
         stability,
+        headers,
         url,
         params,
         body,

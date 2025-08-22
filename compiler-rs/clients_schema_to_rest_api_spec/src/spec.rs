@@ -7,6 +7,8 @@ pub struct Endpoint {
     pub documentation: Documentation,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub stability: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub headers: Option<Headers>,
     pub url: Url,
     #[serde(skip_serializing_if = "IndexMap::is_empty")]
     pub params: IndexMap<String, Parameter>,
@@ -67,4 +69,10 @@ pub struct Body {
 pub struct Deprecation {
     pub version: String,
     pub description: String,
+}
+
+#[derive(Debug, Serialize)]
+pub struct Headers {
+    pub accept: Vec<String>,
+    pub content_type: Vec<String>,
 }
