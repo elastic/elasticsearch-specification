@@ -31,6 +31,7 @@ import { float, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
 import { SlicedScroll } from '@_types/SlicedScroll'
+import { Sort } from '@_types/sort'
 import { Duration } from '@_types/Time'
 
 /**
@@ -310,5 +311,9 @@ export interface Request extends RequestBase {
      * Slice the request manually using the provided slice ID and total number of slices.
      */
     slice?: SlicedScroll
+    /**
+     * A sort object that specifies the order of deleted documents.
+     */
+    sort?: Sort
   }
 }
