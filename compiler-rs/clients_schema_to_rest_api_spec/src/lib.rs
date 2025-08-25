@@ -79,7 +79,7 @@ fn convert_endpoint(
         if let Some(TypeDefinition::Request(request)) = types.get(request_type_name) {
             // Convert query parameters
             for param in &request.query {
-                let converted_param = convert_parameter(param, types)?;
+                let converted_param = convert_parameter(param, types, &endpoint.name)?;
                 params.insert(param.name.clone(), converted_param);
             }
             
@@ -141,7 +141,7 @@ fn convert_url_template(
         if let Some(TypeDefinition::Request(request)) = types.get(request_type_name) {
             for path_param in &request.path {
                 let part = PathPart {
-                    typ: get_type_name(&path_param.typ, types),
+                    typ: get_type_name(&path_param.typ, types, &endpoint.name, &path_param.name),
                     description: path_param.description.clone().unwrap_or_default(),
                     deprecated: path_param.deprecation.as_ref().map(|dep| Deprecation {
                         version: dep.version.clone(),
@@ -163,7 +163,8 @@ fn convert_url_template(
 /// Convert a Property to a Parameter
 fn convert_parameter(
     property: &Property,
-    types: &IndexMap<TypeName, TypeDefinition>
+    types: &IndexMap<TypeName, TypeDefinition>,
+    api_name: &str
 ) -> Result<Parameter> {
     let typ = get_type_name(&property.typ, types);
     let options = get_enum_options(&property.typ, types);
@@ -193,7 +194,12 @@ fn convert_parameter(
 }
 
 /// Convert a ValueOf type to a simple string representation
-fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>) -> String {
+fn get_type_name(
+    value_of: &ValueOf,
+    types: &IndexMap<TypeName, TypeDefinition>,
+    api_name: &str,
+    parameter_name: &str
+) -> String {
     match value_of {
         ValueOf::InstanceOf(instance) => {
             // Handle builtin types
@@ -215,7 +221,9 @@ fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>)
                     if let Some(TypeDefinition::Enum(_)) = types.get(type_name) {
                         "enum".to_string()
                     } else {
-                        "string".to_string() // Default fallback
+                        // Enhanced logging with context
+                        tracing::warn!("{}:{} -> '{}'", api_name, parameter_name, type_name);
+                        "???".to_string() // Default fallback
                     }
                 }
             }
@@ -304,12 +312,29 @@ mod tests {
             },
             generics: vec![],
         });
-        assert_eq!(get_type_name(&string_type, &types), "string");
+        assert_eq!(get_type_name(&string_type, &types, "test_api", "test_param"), "string");
         
         // Test array type
         let array_type = ValueOf::ArrayOf(ArrayOf {
             value: Box::new(string_type),
         });
-        assert_eq!(get_type_name(&array_type, &types), "list");
+        assert_eq!(get_type_name(&array_type, &types, "test_api", "test_param"), "list");
+    }
+
+    #[test]
+    fn test_get_type_name_unknown_type_logging() {
+        let types = IndexMap::new();
+
+        // Test unknown type (should trigger the enhanced logging and return "string")
+        let unknown_type = ValueOf::InstanceOf(InstanceOf {
+            typ: TypeName {
+                namespace: "some_namespace".into(),
+                name: "UnknownType".into(),
+            },
+            generics: vec![],
+        });
+
+        // This should log a warning with API and parameter context
+        assert_eq!(get_type_name(&unknown_type, &types, "search_api", "query_param"), "???");
     }
 }
