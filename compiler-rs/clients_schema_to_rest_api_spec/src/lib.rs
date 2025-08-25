@@ -166,19 +166,35 @@ fn convert_parameter(
     types: &IndexMap<TypeName, TypeDefinition>,
     api_name: &str
 ) -> Result<Parameter> {
-    let typ = get_type_name(&property.typ, types);
-    let options = get_enum_options(&property.typ, types);
+    let typ = get_type_name(&property.typ, types, api_name, &property.name);
+    let mut options = get_enum_options(&property.typ, types);
     
-    let default = property.server_default.as_ref().map(|default| {
+    let mut default = property.server_default.as_ref().map(|default| {
         match default {
-            clients_schema::ServerDefault::String(s) => s.clone(),
-            clients_schema::ServerDefault::Number(n) => n.to_string(),
-            clients_schema::ServerDefault::Boolean(b) => b.to_string(),
-            clients_schema::ServerDefault::StringArray(arr) => format!("{:?}", arr),
-            clients_schema::ServerDefault::NumberArray(arr) => format!("{:?}", arr),
+            clients_schema::ServerDefault::String(s) => serde_json::Value::String(s.clone()),
+            clients_schema::ServerDefault::Number(n) => serde_json::Value::from(*n as i64),
+            clients_schema::ServerDefault::Boolean(b) => serde_json::Value::Bool(*b),
+            clients_schema::ServerDefault::StringArray(arr) => {
+                serde_json::Value::Array(arr.iter().map(|s| serde_json::Value::String(s.clone())).collect())
+            },
+            clients_schema::ServerDefault::NumberArray(arr) => {
+                serde_json::Value::Array(arr.iter().map(|s| serde_json::Value::String(s.clone())).collect())
+            },
         }
     });
     
+    // Hardcode expand_wildcards parameter
+    if property.name == "expand_wildcards" {
+        options = vec![
+            "open".to_string(),
+            "closed".to_string(),
+            "hidden".to_string(),
+            "none".to_string(),
+            "all".to_string()
+        ];
+        default = Some(serde_json::Value::String("open".to_string()));
+    }
+
     let deprecated = property.deprecation.as_ref().map(|dep| Deprecation {
         version: dep.version.clone(),
         description: dep.description.clone(),
@@ -207,15 +223,14 @@ fn get_type_name(
             match (type_name.namespace.as_str(), type_name.name.as_str()) {
                 ("_builtins", "string") => "string".to_string(),
                 ("_builtins", "boolean") => "boolean".to_string(),
-                ("_builtins", "number") => "number".to_string(),
-                ("_builtins", "integer") => "int".to_string(),
-                ("_builtins", "long") => "long".to_string(),
-                ("_builtins", "float") => "float".to_string(),
-                ("_builtins", "double") => "double".to_string(),
-                ("_builtins", "byte") => "byte".to_string(),
-                ("_builtins", "short") => "short".to_string(),
-                ("_builtins", "DateTime") => "time".to_string(),
-                ("_builtins", "Duration") => "time".to_string(),
+                ("_types", "integer") => "number".to_string(),
+                ("_types", "long") => "number".to_string(),
+                ("_types", "time") => "time".to_string(),
+                ("_types", "Duration") => "time".to_string(),
+                ("_global.search._types", "SourceConfigParam") => "list".to_string(),
+                ("_types", "Fields") => "list".to_string(),
+                ("_types", "Id") => "string".to_string(),
+                ("_types", "ExpandWildcard") => "enum".to_string(),
                 _ => {
                     // Check if it's an enum type
                     if let Some(TypeDefinition::Enum(_)) = types.get(type_name) {

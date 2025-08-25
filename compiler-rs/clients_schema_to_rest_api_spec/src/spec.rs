@@ -57,7 +57,7 @@ pub struct Parameter {
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub options: Vec<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub default: Option<String>,
+    pub default: Option<serde_json::Value>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecated: Option<Deprecation>,
 }
