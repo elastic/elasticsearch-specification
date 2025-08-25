@@ -209,10 +209,17 @@ const BUILTIN_MAPPINGS: &[((&str, &str), &str)] = &[
     (("_types", "time"), "time"),
     (("_types", "Duration"), "time"),
     (("_global.search._types", "SourceConfigParam"), "list"),
+    (("_types", "Field"), "string"),
     (("_types", "Fields"), "list"),
+    (("_types", "Name"), "string"),
+    (("_types", "Names"), "list"),
     (("_types", "Id"), "string"),
-    (("_types", "ExpandWildcard"), "enum"),
+    (("_types", "ExpandWildcards"), "enum"),
     (("_types", "Indices"), "list"),
+    // sometimes list in rest-api-spec as comma-separate values are allowed
+    // but the Elasticsearch specification always models it as a string.
+    (("_types", "Routing"), "string"),
+    (("_global.search._types", "TrackHits"), "boolean|long"),
 ];
 
 /// Convert a ValueOf type to a simple string representation
