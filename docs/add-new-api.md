@@ -5,6 +5,9 @@ in this repository, or we do have an endpoint definition in [`/specification/_js
 but we don't have a type definition for it.
 In this document you will see how to add a new endpopint and how to add a new endpoint definition.
 
+> [!TIP]
+> To learn more about how to write docs specifically for our [API references](https://www.elastic.co/docs/api/), refer to the [Contribute to Elastic API docs](https://www.elastic.co/docs/extend/contribute/api-docs/).
+
 ## How to add a new endpoint
 
 Add a new endpoint is straightforward, you only need to copy-paste the json rest-api-spec defintion
@@ -56,7 +59,7 @@ Furthermore, every request definition **must** contain three JS Doc tags:
   - `stability`: the API stability, one of `experimental`, `beta`, `stable`
   - `visibility`: the API stability, one of `public` or `private`.
   - `since`: the version of Elasticsearch when the API has been introduced (eg: `7.7.0`).
-    This field is only available for `stack`.
+    This field is only available for `stack`. If the API is introduced in multiple major versions (eg: `8.19.0` and `9.1.0`), use the appropriate value in each branch.
   - `feature_flag`: the feature flag value, only valid if the `visibility` is set to `feature_flag`.
     This field is only available for `stack`.
 

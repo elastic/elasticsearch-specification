@@ -230,10 +230,11 @@ export interface DeleteByQueryRequest extends RequestBase {
   wait_for_active_shards?: WaitForActiveShards;
   wait_for_completion?: boolean;
   body?: {
-    max_docs?: long;
-    query?: QueryDslQueryContainer;
-    slice?: SlicedScroll;
-  };
+    max_docs?: long
+    query?: QueryDslQueryContainer
+    slice?: SlicedScroll
+    sort?: Sort
+  }
 }
 
 export interface DeleteByQueryResponse {

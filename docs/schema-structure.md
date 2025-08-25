@@ -12,6 +12,9 @@ for describing APIs that can't be represented in the specification.
 Refer to the [documentation guide](doc-comments-guide.md) to add documentation to types and fields,
 and to the [modeling guide](modeling-guide.md) to learn how to model the different types.
 
+> [!TIP]
+> To learn more about how to write docs specifically for our [API references](https://www.elastic.co/docs/api/), refer to the [Contribute to Elastic API docs](https://www.elastic.co/docs/extend/contribute/api-docs/).
+
 You can find the schema representing all APIs and types in the [output folder](output/schema/schema.json).
 The schema is structured as follows:
 
