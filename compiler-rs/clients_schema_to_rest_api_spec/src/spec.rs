@@ -8,6 +8,8 @@ pub struct Endpoint {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub stability: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub visibility: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub headers: Option<Headers>,
     pub url: Url,
     #[serde(skip_serializing_if = "IndexMap::is_empty")]

@@ -1,7 +1,7 @@
 use anyhow::Result;
 use clients_schema::{
     IndexedModel, Endpoint as SchemaEndpoint, TypeDefinition, ValueOf, Property,
-    UrlTemplate, TypeName, Body as SchemaBody
+    UrlTemplate, TypeName, Body as SchemaBody, Flavor, Visibility
 };
 use indexmap::IndexMap;
 use std::collections::HashMap;
@@ -61,6 +61,9 @@ fn convert_endpoint(
     // Convert stability information
     let stability = endpoint.availability.as_ref().map(|_| "stable".to_string());
     
+    // Convert visibility information
+    let visibility = extract_visibility_from_availabilities(&endpoint.availability);
+
     // Convert URL patterns
     let paths = endpoint.urls.iter()
         .map(|url_template| convert_url_template(url_template, endpoint, types))
@@ -116,6 +119,7 @@ fn convert_endpoint(
     Ok(Endpoint {
         documentation,
         stability,
+        visibility,
         headers,
         url,
         params,
@@ -248,6 +252,38 @@ fn get_enum_options(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinitio
                 .collect()
         }
         _ => vec![],
+    }
+}
+
+/// Extract visibility information from availabilities
+/// Defaults to "public" if no specific visibility is set
+fn extract_visibility_from_availabilities(availabilities: &Option<clients_schema::Availabilities>) -> Option<String> {
+    if let Some(avails) = availabilities {
+        // Check for stack flavor first, then serverless, then default to the first available
+        let flavor = Flavor::Stack;
+        if let Some(visibility) = flavor.visibility(availabilities) {
+            Some(match visibility {
+                Visibility::Public => "public".to_string(),
+                Visibility::FeatureFlag => "feature_flag".to_string(),
+                Visibility::Private => "private".to_string(),
+            })
+        } else {
+            // If stack flavor is not available, try other flavors
+            for (_, availability) in avails {
+                if let Some(ref vis) = availability.visibility {
+                    return Some(match vis {
+                        Visibility::Public => "public".to_string(),
+                        Visibility::FeatureFlag => "feature_flag".to_string(),
+                        Visibility::Private => "private".to_string(),
+                    });
+                }
+            }
+            // Default to public if no visibility is explicitly set
+            Some("public".to_string())
+        }
+    } else {
+        // No availability restrictions means public
+        Some("public".to_string())
     }
 }
 
