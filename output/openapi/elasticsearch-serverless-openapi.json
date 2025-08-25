@@ -39970,6 +39970,48 @@
           }
         ]
       },
+      "cat._types.CatAliasesColumns": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/cat._types.CatAliasesColumn"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/cat._types.CatAliasesColumn"
+            }
+          }
+        ]
+      },
+      "cat._types.CatAliasesColumn": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "alias",
+              "a",
+              "index",
+              "i",
+              "idx",
+              "filter",
+              "f",
+              "fi",
+              "routing.index",
+              "ri",
+              "routingIndex",
+              "routing.search",
+              "rs",
+              "routingSearch",
+              "is_write_index",
+              "w",
+              "isWriteIndex"
+            ]
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
       "cat.aliases.AliasesRecord": {
         "type": "object",
         "properties": {
@@ -39997,6 +40039,45 @@
             "type": "string"
           }
         }
+      },
+      "cat._types.CatComponentColumns": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/cat._types.CatComponentColumn"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/cat._types.CatComponentColumn"
+            }
+          }
+        ]
+      },
+      "cat._types.CatComponentColumn": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "name",
+              "n",
+              "version",
+              "v",
+              "alias_count",
+              "a",
+              "mapping_count",
+              "m",
+              "settings_count",
+              "s",
+              "metadata_count",
+              "me",
+              "included_in",
+              "i"
+            ]
+          },
+          {
+            "type": "string"
+          }
+        ]
       },
       "cat.component_templates.ComponentTemplate": {
         "type": "object",
@@ -40039,6 +40120,42 @@
           "settings_count",
           "metadata_count",
           "included_in"
+        ]
+      },
+      "cat._types.CatCountColumns": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/cat._types.CatCountColumn"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/cat._types.CatCountColumn"
+            }
+          }
+        ]
+      },
+      "cat._types.CatCountColumn": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "epoch",
+              "t",
+              "time",
+              "timestamp",
+              "ts",
+              "hms",
+              "hhmmss",
+              "count",
+              "dc",
+              "docs.count",
+              "docsCount"
+            ]
+          },
+          {
+            "type": "string"
+          }
         ]
       },
       "cat.count.CountRecord": {
@@ -40966,7 +41083,7 @@
           "stopping"
         ]
       },
-      "cat._types.CatAnonalyDetectorColumns": {
+      "cat._types.CatAnomalyDetectorColumns": {
         "oneOf": [
           {
             "$ref": "#/components/schemas/cat._types.CatAnomalyDetectorColumn"
@@ -68840,10 +68957,10 @@
       "cat.aliases-h": {
         "in": "query",
         "name": "h",
-        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "description": "A comma-separated list of columns names to display. It supports simple wildcards.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types.Names"
+          "$ref": "#/components/schemas/cat._types.CatAliasesColumns"
         },
         "style": "form"
       },
@@ -68891,10 +69008,10 @@
       "cat.component_templates-h": {
         "in": "query",
         "name": "h",
-        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "description": "A comma-separated list of columns names to display. It supports simple wildcards.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types.Names"
+          "$ref": "#/components/schemas/cat._types.CatComponentColumns"
         },
         "style": "form"
       },
@@ -68942,10 +69059,10 @@
       "cat.count-h": {
         "in": "query",
         "name": "h",
-        "description": "List of columns to appear in the response. Supports simple wildcards.",
+        "description": "A comma-separated list of columns names to display. It supports simple wildcards.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types.Names"
+          "$ref": "#/components/schemas/cat._types.CatCountColumns"
         },
         "style": "form"
       },
@@ -69209,7 +69326,7 @@
         "description": "Comma-separated list of column names to display.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/cat._types.CatAnonalyDetectorColumns"
+          "$ref": "#/components/schemas/cat._types.CatAnomalyDetectorColumns"
         },
         "style": "form"
       },
@@ -69219,7 +69336,7 @@
         "description": "Comma-separated list of column names or column aliases used to sort the response.",
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/cat._types.CatAnonalyDetectorColumns"
+          "$ref": "#/components/schemas/cat._types.CatAnomalyDetectorColumns"
         },
         "style": "form"
       },
