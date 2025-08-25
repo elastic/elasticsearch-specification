@@ -65,6 +65,7 @@ pub struct Parameter {
 #[derive(Debug, Serialize)]
 pub struct Body {
     pub description: String,
+    pub required: bool,
 }
 
 #[derive(Debug, Serialize)]

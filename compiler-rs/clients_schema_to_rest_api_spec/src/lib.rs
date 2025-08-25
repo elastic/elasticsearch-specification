@@ -87,6 +87,7 @@ fn convert_endpoint(
             if !matches!(request.body, SchemaBody::NoBody(_)) {
                 body = Some(Body {
                     description: "Request body".to_string(),
+                    required: endpoint.request_body_required,
                 });
             }
         }
@@ -351,5 +352,26 @@ mod tests {
 
         // This should log a warning with API and parameter context
         assert_eq!(get_type_name(&unknown_type, &types, "search_api", "query_param"), "???");
+    }
+
+    #[test]
+    fn test_body_struct_has_required_field() {
+        use crate::spec::Body;
+
+        // Simple test to verify Body struct has required field
+        let body = Body {
+            description: "Test body".to_string(),
+            required: true,
+        };
+
+        assert_eq!(body.description, "Test body");
+        assert_eq!(body.required, true);
+
+        let body_optional = Body {
+            description: "Optional body".to_string(),
+            required: false,
+        };
+
+        assert_eq!(body_optional.required, false);
     }
 }
