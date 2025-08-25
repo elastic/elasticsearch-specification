@@ -28,6 +28,7 @@ import { Id } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_query_rules
  * @doc_id query-rule-delete
+ * @ext_doc_id delete-query-rule-from-ui
  */
 export interface Request extends RequestBase {
   urls: [

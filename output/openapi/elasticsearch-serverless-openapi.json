@@ -21001,7 +21001,8 @@
         "summary": "Get a query rule",
         "description": "Get details about a query rule within a query ruleset.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
         "externalDocs": {
-          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules",
+          "description": "See rules and rulesets in Query Rules UI",
+          "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#accessing-the-query-rules-ui",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/get-query-rule.html"
         },
         "operationId": "query-rules-get-rule",
@@ -21061,6 +21062,11 @@
         ],
         "summary": "Create or update a query rule",
         "description": "Create or update a query rule within a query ruleset.\n\nIMPORTANT: Due to limitations within pinned queries, you can only pin documents using ids or docs, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
+        "externalDocs": {
+          "description": "Edit rules and rulesets from the Query Rules UI",
+          "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#edit-a-rule",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-query-rule.html"
+        },
         "operationId": "query-rules-put-rule",
         "parameters": [
           {
@@ -21166,6 +21172,11 @@
         ],
         "summary": "Delete a query rule",
         "description": "Delete a query rule within a query ruleset.\nThis is a destructive action that is only recoverable by re-adding the same rule with the create or update query rule API.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
+        "externalDocs": {
+          "description": "Delete a rule from the Query Rules UI",
+          "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#delete-a-rule",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/delete-query-rule.html"
+        },
         "operationId": "query-rules-delete-rule",
         "parameters": [
           {
@@ -21219,6 +21230,11 @@
         ],
         "summary": "Get a query ruleset",
         "description": "Get details about a query ruleset.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
+        "externalDocs": {
+          "description": "See rules and rulesets in Query Rules UI",
+          "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#accessing-the-query-rules-ui",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/get-query-ruleset.html"
+        },
         "operationId": "query-rules-get-ruleset",
         "parameters": [
           {
@@ -21266,7 +21282,8 @@
         "summary": "Create or update a query ruleset",
         "description": "There is a limit of 100 rules per ruleset.\nThis limit can be increased by using the `xpack.applications.rules.max_rules_per_ruleset` cluster setting.\n\nIMPORTANT: Due to limitations within pinned queries, you can only select documents using `ids` or `docs`, but cannot use both in single rule.\nIt is advised to use one or the other in query rulesets, to avoid errors.\nAdditionally, pinned queries have a maximum limit of 100 pinned hits.\nIf multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
         "externalDocs": {
-          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules",
+          "description": "Edit rules and rulesets from the Query Rules UI",
+          "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#edit-a-rule",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-query-ruleset.html"
         },
         "operationId": "query-rules-put-ruleset",
@@ -21351,6 +21368,11 @@
         ],
         "summary": "Delete a query ruleset",
         "description": "Remove a query ruleset and its associated data.\nThis is a destructive action that is not recoverable.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
+        "externalDocs": {
+          "description": "Delete a ruleset from the Query Rules UI",
+          "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#delete-a-ruleset",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/delete-query-ruleset.html"
+        },
         "operationId": "query-rules-delete-ruleset",
         "parameters": [
           {
@@ -21393,6 +21415,11 @@
         ],
         "summary": "Get all query rulesets",
         "description": "Get summarized information about the query rulesets.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
+        "externalDocs": {
+          "description": "See rules and rulesets in Query Rules UI",
+          "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#accessing-the-query-rules-ui",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/list-query-rulesets.html"
+        },
         "operationId": "query-rules-list-rulesets",
         "parameters": [
           {
@@ -21713,7 +21740,7 @@
           "document"
         ],
         "summary": "Reindex documents",
-        "description": "Copy documents from a source to a destination.\nYou can copy all documents to the destination index or reindex a subset of the documents.\nThe source can be any existing index, alias, or data stream.\nThe destination must differ from the source.\nFor example, you cannot reindex a data stream into itself.\n\nIMPORTANT: Reindex requires `_source` to be enabled for all documents in the source.\nThe destination should be configured as wanted before calling the reindex API.\nReindex does not copy the settings from the source or its associated template.\nMappings, shard counts, and replicas, for example, must be configured ahead of time.\n\nIf the Elasticsearch security features are enabled, you must have the following security privileges:\n\n* The `read` index privilege for the source data stream, index, or alias.\n* The `write` index privilege for the destination data stream, index, or index alias.\n* To automatically create a data stream or index with a reindex API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege for the destination data stream, index, or alias.\n* If reindexing from a remote cluster, the `source.remote.user` must have the `monitor` cluster privilege and the `read` index privilege for the source data stream, index, or alias.\n\nIf reindexing from a remote cluster, you must explicitly allow the remote host in the `reindex.remote.whitelist` setting.\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe `dest` element can be configured like the index API to control optimistic concurrency control.\nOmitting `version_type` or setting it to `internal` causes Elasticsearch to blindly dump documents into the destination, overwriting any that happen to have the same ID.\n\nSetting `version_type` to `external` causes Elasticsearch to preserve the `version` from the source, create any documents that are missing, and update any documents that have an older version in the destination than they do in the source.\n\nSetting `op_type` to `create` causes the reindex API to create only missing documents in the destination.\nAll existing documents will cause a version conflict.\n\nIMPORTANT: Because data streams are append-only, any reindex request to a destination data stream must have an `op_type` of `create`.\nA reindex can only add new documents to a destination data stream.\nIt cannot update existing documents in a destination data stream.\n\nBy default, version conflicts abort the reindex process.\nTo continue reindexing if there are conflicts, set the `conflicts` request body property to `proceed`.\nIn this case, the response includes a count of the version conflicts that were encountered.\nNote that the handling of other error types is unaffected by the `conflicts` property.\nAdditionally, if you opt to count version conflicts, the operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.\n\nIt's recommended to reindex on indices with a green status. Reindexing can fail when a node shuts down or crashes.\n* When requested with `wait_for_completion=true` (default), the request fails if the node shuts down.\n* When requested with `wait_for_completion=false`, a task id is returned, which can be used via the task management API to monitor, debug, or cancel the task. The task may disappear or fail if the node shuts down.\nWhen retrying a failed reindex operation, it might be necessary to set `conflicts=proceed` or to first delete the partial destination index.\nAdditionally, dry runs, checking disk space, and fetching index recovery information can help address the root cause.\n\nRefer to the linked documentation for examples of how to reindex documents.\n\n## Required authorization\n\n* Index privileges: `read`,`write`\n",
+        "description": "Copy documents from a source to a destination.\nYou can copy all documents to the destination index or reindex a subset of the documents.\nThe source can be any existing index, alias, or data stream.\nThe destination must differ from the source.\nFor example, you cannot reindex a data stream into itself.\n\nIMPORTANT: Reindex requires `_source` to be enabled for all documents in the source.\nThe destination should be configured as wanted before calling the reindex API.\nReindex does not copy the settings from the source or its associated template.\nMappings, shard counts, and replicas, for example, must be configured ahead of time.\n\nIf the Elasticsearch security features are enabled, you must have the following security privileges:\n\n* The `read` index privilege for the source data stream, index, or alias.\n* The `write` index privilege for the destination data stream, index, or index alias.\n* To automatically create a data stream or index with a reindex API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege for the destination data stream, index, or alias.\n* If reindexing from a remote cluster, the `source.remote.user` must have the `monitor` cluster privilege and the `read` index privilege for the source data stream, index, or alias.\n\nIf reindexing from a remote cluster, you must explicitly allow the remote host in the `reindex.remote.whitelist` setting.\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe `dest` element can be configured like the index API to control optimistic concurrency control.\nOmitting `version_type` or setting it to `internal` causes Elasticsearch to blindly dump documents into the destination, overwriting any that happen to have the same ID.\n\nSetting `version_type` to `external` causes Elasticsearch to preserve the `version` from the source, create any documents that are missing, and update any documents that have an older version in the destination than they do in the source.\n\nSetting `op_type` to `create` causes the reindex API to create only missing documents in the destination.\nAll existing documents will cause a version conflict.\n\nIMPORTANT: Because data streams are append-only, any reindex request to a destination data stream must have an `op_type` of `create`.\nA reindex can only add new documents to a destination data stream.\nIt cannot update existing documents in a destination data stream.\n\nBy default, version conflicts abort the reindex process.\nTo continue reindexing if there are conflicts, set the `conflicts` request body property to `proceed`.\nIn this case, the response includes a count of the version conflicts that were encountered.\nNote that the handling of other error types is unaffected by the `conflicts` property.\nAdditionally, if you opt to count version conflicts, the operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.\n\nIt's recommended to reindex on indices with a green status. Reindexing can fail when a node shuts down or crashes.\n* When requested with `wait_for_completion=true` (default), the request fails if the node shuts down.\n* When requested with `wait_for_completion=false`, a task id is returned, for use with the task management APIs. The task may disappear or fail if the node shuts down.\nWhen retrying a failed reindex operation, it might be necessary to set `conflicts=proceed` or to first delete the partial destination index.\nAdditionally, dry runs, checking disk space, and fetching index recovery information can help address the root cause.\n\nRefer to the linked documentation for examples of how to reindex documents.\n\n## Required authorization\n\n* Index privileges: `read`,`write`\n",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reindex-indices",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-reindex.html"

@@ -197,9 +197,10 @@ actions:
             
             If a query matches one or more rules in the ruleset, the query is re-written to apply the rules before searching.
             This allows pinning documents for only queries that match a specific term.
+            Alternatively, you can use the [Query Rules UI](https://www.elastic.co/docs/solutions/search/query-rules-ui) to manage query rules.
           externalDocs:
-            url: https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-rule-query
-            description: Learn more about the rule query.
+            url: https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules
+            description: Learn more about searching with query rules.
       # R
         - name: rollup
           x-displayName: Rollup
