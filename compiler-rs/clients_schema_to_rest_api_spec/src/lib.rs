@@ -141,7 +141,7 @@ fn convert_url_template(
         if let Some(TypeDefinition::Request(request)) = types.get(request_type_name) {
             for path_param in &request.path {
                 let part = PathPart {
-                    typ: get_type_name(&path_param.typ, types, &endpoint.name, &path_param.name),
+                    typ: get_type_name(&path_param.typ, types, &endpoint.name, &path_param.name).to_string(),
                     description: path_param.description.clone().unwrap_or_default(),
                     deprecated: path_param.deprecation.as_ref().map(|dep| Deprecation {
                         version: dep.version.clone(),
@@ -166,7 +166,7 @@ fn convert_parameter(
     types: &IndexMap<TypeName, TypeDefinition>,
     api_name: &str
 ) -> Result<Parameter> {
-    let typ = get_type_name(&property.typ, types, api_name, &property.name);
+    let typ = get_type_name(&property.typ, types, api_name, &property.name).to_string();
     let mut options = get_enum_options(&property.typ, types);
     
     let mut default = property.server_default.as_ref().map(|default| {
@@ -209,45 +209,46 @@ fn convert_parameter(
     })
 }
 
+const BUILTIN_MAPPINGS: &[((&str, &str), &str)] = &[
+    (("_builtins", "string"), "string"),
+    (("_builtins", "boolean"), "boolean"),
+    (("_types", "integer"), "number"),
+    (("_types", "long"), "number"),
+    (("_types", "time"), "time"),
+    (("_types", "Duration"), "time"),
+    (("_global.search._types", "SourceConfigParam"), "list"),
+    (("_types", "Fields"), "list"),
+    (("_types", "Id"), "string"),
+    (("_types", "ExpandWildcard"), "enum"),
+    (("_types", "Indices"), "list"),
+];
+
 /// Convert a ValueOf type to a simple string representation
 fn get_type_name(
     value_of: &ValueOf,
     types: &IndexMap<TypeName, TypeDefinition>,
     api_name: &str,
     parameter_name: &str
-) -> String {
+) -> &'static str {
     match value_of {
         ValueOf::InstanceOf(instance) => {
-            // Handle builtin types
             let type_name = &instance.typ;
-            match (type_name.namespace.as_str(), type_name.name.as_str()) {
-                ("_builtins", "string") => "string".to_string(),
-                ("_builtins", "boolean") => "boolean".to_string(),
-                ("_types", "integer") => "number".to_string(),
-                ("_types", "long") => "number".to_string(),
-                ("_types", "time") => "time".to_string(),
-                ("_types", "Duration") => "time".to_string(),
-                ("_global.search._types", "SourceConfigParam") => "list".to_string(),
-                ("_types", "Fields") => "list".to_string(),
-                ("_types", "Id") => "string".to_string(),
-                ("_types", "ExpandWildcard") => "enum".to_string(),
-                _ => {
-                    // Check if it's an enum type
-                    if let Some(TypeDefinition::Enum(_)) = types.get(type_name) {
-                        "enum".to_string()
-                    } else {
-                        // Enhanced logging with context
-                        tracing::warn!("{}:{} -> '{}'", api_name, parameter_name, type_name);
-                        "???".to_string() // Default fallback
-                    }
-                }
+            let key = (type_name.namespace.as_str(), type_name.name.as_str());
+
+            if let Some(&mapped_type) = BUILTIN_MAPPINGS.iter().find(|&&(k, _)| k == key).map(|(_, v)| v) {
+                mapped_type
+            } else if let Some(TypeDefinition::Enum(_)) = types.get(type_name) {
+                "enum"
+            } else {
+                tracing::warn!("{}:{} -> '{}'", api_name, parameter_name, type_name);
+                "???"
             }
         }
-        ValueOf::ArrayOf(_) => "list".to_string(),
-        ValueOf::UnionOf(_) => "object".to_string(), // Fallback for complex unions
-        ValueOf::DictionaryOf(_) => "object".to_string(),
-        ValueOf::UserDefinedValue(_) => "object".to_string(),
-        ValueOf::LiteralValue(_) => "string".to_string(),
+        ValueOf::ArrayOf(_) => "list",
+        ValueOf::UnionOf(_) => "object",
+        ValueOf::DictionaryOf(_) => "object",
+        ValueOf::UserDefinedValue(_) => "object",
+        ValueOf::LiteralValue(_) => "string",
     }
 }
 
