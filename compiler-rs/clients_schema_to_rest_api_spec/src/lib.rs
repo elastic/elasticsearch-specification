@@ -83,6 +83,13 @@ fn convert_endpoint(
                 params.insert(param.name.clone(), converted_param);
             }
             
+            // Add parameters from attached behaviors
+            for behavior_name in &request.attached_behaviors {
+                if behavior_name != "CommonQueryParameters" {  // handled in _common.json
+                    add_behavior_parameters(&mut params, behavior_name, types, &endpoint.name)?;
+                }
+            }
+
             // Convert body if present
             if !matches!(request.body, SchemaBody::NoBody(_)) {
                 body = Some(Body {
@@ -209,17 +216,20 @@ const BUILTIN_MAPPINGS: &[((&str, &str), &str)] = &[
     (("_types", "long"), "number"),
     (("_types", "time"), "time"),
     (("_types", "Duration"), "time"),
-    (("_global.search._types", "SourceConfigParam"), "list"),
+    (("_types", "ExpandWildcards"), "enum"),
     (("_types", "Field"), "string"),
     (("_types", "Fields"), "list"),
+    (("_types", "Id"), "string"),
+    (("_types", "IndexName"), "string"),
+    (("_types", "Indices"), "list"),
     (("_types", "Name"), "string"),
     (("_types", "Names"), "list"),
-    (("_types", "Id"), "string"),
-    (("_types", "ExpandWildcards"), "enum"),
-    (("_types", "Indices"), "list"),
+    (("_types", "NodeIds"), "list"),
+    (("_types", "WaitForActiveShards"), "string"),
     // sometimes list in rest-api-spec as comma-separate values are allowed
     // but the Elasticsearch specification always models it as a string.
     (("_types", "Routing"), "string"),
+    (("_global.search._types", "SourceConfigParam"), "list"),
     (("_global.search._types", "TrackHits"), "boolean|long"),
 ];
 
@@ -277,6 +287,27 @@ fn get_enum_options(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinitio
         }
         _ => vec![],
     }
+}
+
+/// Add parameters from an attached behavior to the parameters map
+fn add_behavior_parameters(
+    params: &mut IndexMap<String, Parameter>,
+    behavior_name: &str,
+    types: &IndexMap<TypeName, TypeDefinition>,
+    api_name: &str
+) -> Result<()> {
+    // Look for the behavior in the _spec_utils namespace
+    let behavior_type_name = TypeName::new("_spec_utils", behavior_name);
+
+    if let Some(TypeDefinition::Interface(interface)) = types.get(&behavior_type_name) {
+        // Add each property from the behavior as a query parameter
+        for property in &interface.properties {
+            let converted_param = convert_parameter(property, types, api_name)?;
+            params.insert(property.name.clone(), converted_param);
+        }
+    }
+
+    Ok(())
 }
 
 /// Extract visibility information from availabilities
