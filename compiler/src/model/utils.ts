@@ -654,6 +654,11 @@ export function hoistRequestAnnotations (
   const endpoint = mappings[apiName]
   assert(jsDocs, endpoint != null, `The api '${apiName}' does not exists, did you mean '${closest(apiName, Object.keys(mappings))}'?`)
 
+  if (endpoint.availability.stack?.visibility !== 'private') {
+    assert(jsDocs, tags.doc_id !== '' && tags.doc_id !== null && tags.doc_id !== undefined,
+      `Request ${request.name.name} needs a @doc_id annotation`)
+  }
+
   endpoint.request = request.name
   endpoint.response = response
 
