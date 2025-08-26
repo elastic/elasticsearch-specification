@@ -5282,7 +5282,7 @@
             "in": "query",
             "name": "sort",
             "description": "A comma-separated list of `<field>:<direction>` pairs.",
-            "deprecated": false,
+            "deprecated": true,
             "schema": {
               "type": "array",
               "items": {
