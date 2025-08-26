@@ -1,8 +1,7 @@
 SHELL := /bin/bash
 
-validate: ## Validate a given endpoint request or response
+validate: lint ## Validate a given endpoint request or response
 	@node compiler/run-validations.js --api $(api) --type $(type) --branch $(branch)
-	@npm run lint --prefix specification
 
 validate-no-cache: ## Validate a given endpoint request or response without local cache
 	@node compiler/run-validations.js --api $(api) --type $(type) --branch $(branch) --no-cache
@@ -86,6 +85,9 @@ generate-language-examples-with-java:
 	@node docs/examples/generate-language-examples.js java
 	@npm run format:fix-examples --prefix compiler
 
+lint:
+	@npm run lint --prefix specification
+
 lint-docs: ## Lint the OpenAPI documents after overlays
 	@npx @redocly/cli lint "output/openapi/elasticsearch-*.json" --config "docs/linters/redocly.yaml" --format stylish --max-problems 500
 
@@ -95,7 +97,7 @@ lint-docs-stateful: ## Lint only the elasticsearch-openapi-docs-final.json file
 lint-docs-serverless: ## Lint only the serverless OpenAPI document after overlays
 	@npx @redocly/cli lint "output/openapi/elasticsearch-serverless-openapi-docs-final.json" --config "docs/linters/redocly.yaml" --format stylish --max-problems 500
 
-contrib: | generate license-check spec-format-fix transform-to-openapi filter-for-serverless lint-docs ## Pre contribution target
+contrib: | lint generate license-check spec-format-fix transform-to-openapi filter-for-serverless lint-docs ## Pre contribution target
 
 help:  ## Display help
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
