@@ -22025,6 +22025,13 @@ export interface TransformScheduleNowTransformRequest extends RequestBase {
 
 export type TransformScheduleNowTransformResponse = AcknowledgedResponseBase
 
+export interface TransformSetUpgradeModeRequest extends RequestBase {
+  enabled?: boolean
+  timeout?: Duration
+}
+
+export type TransformSetUpgradeModeResponse = AcknowledgedResponseBase
+
 export interface TransformStartTransformRequest extends RequestBase {
   transform_id: Id
   timeout?: Duration
