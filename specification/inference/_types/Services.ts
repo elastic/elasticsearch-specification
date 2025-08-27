@@ -345,7 +345,7 @@ export class InferenceChunkingSettings {
   separator_group?: string
   /**
    * Only applicable to the `recursive` strategy and required when using it.
-   * 
+   *
    * A list of strings used as possible split points when chunking text.
    *
    * Each string can be a plain string or a regular expression (regex) pattern.
