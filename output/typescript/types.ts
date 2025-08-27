@@ -5572,8 +5572,8 @@ export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
 
 export interface MappingChunkingSettings {
   strategy: string
-  separator_group: string
-  separators: string[]
+  separator_group?: string
+  separators?: string[]
   max_chunk_size: integer
   overlap?: integer
   sentence_overlap?: integer
@@ -14071,8 +14071,8 @@ export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
   overlap?: integer
   sentence_overlap?: integer
-  separator_group: string
-  separators: string[]
+  separator_group?: string
+  separators?: string[]
   strategy?: string
 }
 
