@@ -1471,6 +1471,85 @@ export enum CatFieldDataColumn {
   size
 }
 
+/** @non_exhaustive */
+export enum CatHealthColumn {
+  /**
+   * The number of seconds since 1970-01-01 00:00:00.
+   * @aliases t, time
+   */
+  epoch,
+  /**
+   * The time in HH:MM:SS format.
+   * @aliases ts, hms, hhmmss
+   */
+  timestamp,
+  /**
+   * The cluster name.
+   * @aliases cl
+   */
+  cluster,
+  /**
+   * The health status.
+   * @aliases st
+   */
+  status,
+  /**
+   * The total number of nodes.
+   * @aliases nt, nodeTotal
+   */
+  'node.total',
+  /**
+   * The number of nodes that can store data.
+   * @aliases nd, nodeData
+   */
+  'node.data',
+    /**
+   * The total number of shards.
+   * @aliases t, sh, shards.total, shardsTotal
+   */
+  shards,
+  /**
+   * The number of primary shards.
+   * @aliases p, shards.primary, shardsPrimary
+   */
+  pri,
+  /**
+   * The number of relocating nodes.
+   * @aliases r, shards.relocating, shardsRelocating
+   */
+  relo,
+  /**
+   * The number of initializing nodes.
+   * @aliases i, shards.initializing, shardsInitializing
+   */
+  init,
+  /**
+   * The number of unassigned shards.
+   * @aliases u, shards.unassigned, shardsUnassigned
+   */
+  unassign,
+  /**
+   * The number of unassigned primary shards.
+   * @aliases up, shards.unassigned.primary, shardsUnassignedPrimary
+   */
+  'unassign.pri',
+    /**
+   * The number of pending tasks.
+   * @aliases pt, pendingTasks
+   */
+  pending_tasks,
+  /**
+   * The wait time of the longest pending task.
+   * @aliases mtwt, maxTaskWaitTime
+   */
+  max_task_wait_time,
+  /**
+   * The percentage of active shards.
+   * @aliases asp, activeShardsPercent
+   */
+  active_shards_percent
+}
+
 export type CatDfaColumns = CatDfaColumn | CatDfaColumn[]
 export type CatDatafeedColumns = CatDatafeedColumn | CatDatafeedColumn[]
 export type CatNodeColumns = CatNodeColumn | CatNodeColumn[]
