@@ -50,11 +50,15 @@ export class ErrorCause
 }
 
 export class ShardFailure {
+  /** @aliases _index */
   index?: IndexName
+  /** @aliases _node */
   node?: string
   reason: ErrorCause
-  shard: integer
+  /** @aliases _shard */
+  shard?: integer
   status?: string
+  primary?: boolean
 }
 
 export class BulkIndexByScrollFailure {
