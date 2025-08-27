@@ -1,15 +1,1 @@
-# summary:
 method_request: POST /my-index-000001/_reload_search_analyzers
-# description: ''
-# type: request
-value:
-  _shards:
-    total: 2
-    successful: 2
-    failed: 0
-  reload_details:
-    - index: my-index-000001
-      reloaded_analyzers:
-        - my_synonyms
-      reloaded_node_ids:
-        - mfdqTXn_T7SGr2Ho2KT8uw
