@@ -1494,7 +1494,7 @@ export enum CatHealthColumn {
    */
   status,
   /**
-   * The total number of nodes.
+   * The total number of nodes that can store data.
    * @aliases nt, nodeTotal
    */
   'node.total',
@@ -1549,6 +1549,702 @@ export enum CatHealthColumn {
    */
   active_shards_percent
 }
+
+/** @non_exhaustive */
+export enum CatIndicesColumn {
+  /**
+   * The current health status.
+   * @aliases h
+   */
+  health,
+  /**
+   * The open/close status.
+   * @aliases s
+   */
+  status,
+  /**
+   * The index name.
+   * @aliases i, idx
+   */
+  index,
+  /**
+   * The index UUID.
+   * @aliases id, uuid
+   */
+  uuid,
+  /**
+   * The number of primary shards.
+   * @aliases p, shards.primary, shardsPrimary
+   */
+  pri,
+  /**
+   * The number of replica shards.
+   * @aliases r, shards.replica, shardsReplica
+   */
+  rep,
+  /**
+   * The number of available documents.
+   * @aliases dc, docsCount
+   */
+  'docs.count',
+  /**
+   * The number of deleted documents.
+   * @aliases dd, docsDeleted
+   */
+  'docs.deleted',
+  /**
+   * The index creation date (millisecond value).
+   * @aliases cd
+   */
+  'creation.date',
+  /**
+   * The index creation date (as string).
+   * @aliases cds
+   */
+  'creation.date.string',
+  /**
+   * The store size of primaries and replicas.
+   * @aliases ss, storeSize
+   */
+  'store.size',
+  /**
+   * The store size of primaries.
+   */
+  'pri.store.size',
+  /**
+   * The total size of the dataset.
+   */
+  'dataset.size',
+  /**
+   * The size of completion.
+   * @aliases cs, completionSize
+   */
+  'completion.size',
+  /**
+   * The size of completion.
+   */
+  'pri.completion.size',
+  /**
+   * The used fielddata cache.
+   * @aliases fm, fielddataMemory
+   */
+  'fielddata.memory_size',
+  /**
+   * The used fielddata cache.
+   */
+  'pri.fielddata.memory_size',
+  /**
+   * The number of fielddata evictions.
+   * @aliases fe, fielddataEvictions
+   */
+  'fielddata.evictions',
+  /**
+   * The number of fielddata evictions.
+   */
+  'pri.fielddata.evictions',
+  /**
+   * The used query cache.
+   * @aliases qcm, queryCacheMemory
+   */
+  'query_cache.memory_size',
+  /**
+   * The used query cache.
+   */
+  'pri.query_cache.memory_size',
+  /**
+   * The number of query cache evictions.
+   * @aliases qce, queryCacheEvictions
+   */
+  'query_cache.evictions',
+  /**
+   * The number of query cache evictions.
+   */
+  'pri.query_cache.evictions',
+  /**
+   * The used request cache.
+   * @aliases rcm, requestCacheMemory
+   */
+  'request_cache.memory_size',
+  /**
+   * The used request cache.
+   */
+  'pri.request_cache.memory_size',
+  /**
+   * The number of request cache evictions.
+   * @aliases rce, requestCacheEvictions
+   */
+  'request_cache.evictions',
+  /**
+   * The number of request cache evictions.
+   */
+  'pri.request_cache.evictions',
+  /**
+   * The request cache hit count.
+   * @aliases rchc, requestCacheHitCount
+   */
+  'request_cache.hit_count',
+  /**
+   * The request cache hit count.
+   */
+  'pri.request_cache.hit_count',
+  /**
+   * The request cache miss count.
+   * @aliases rcmc, requestCacheMissCount
+   */
+  'request_cache.miss_count',
+  /**
+   * The request cache miss count.
+   */
+  'pri.request_cache.miss_count',
+  /**
+   * The number of flushes.
+   * @aliases ft, flushTotal
+   */
+  'flush.total',
+  /**
+   * The number of flushes.
+   */
+  'pri.flush.total',
+  /**
+   * The time spent in flush.
+   * @aliases ftt, flushTotalTime
+   */
+  'flush.total_time',
+  /**
+   * The time spent in flush.
+   */
+  'pri.flush.total_time',
+  /**
+   * The number of current get operations.
+   * @aliases gc, getCurrent
+   */
+  'get.current',
+  /**
+   * The number of current get operations.
+   */
+  'pri.get.current',
+  /**
+   * The time spent in get.
+   * @aliases gti, getTime
+   */
+  'get.time',
+  /**
+   * The time spent in get.
+   */
+  'pri.get.time',
+  /**
+   * The number of get operations.
+   * @aliases gto, getTotal
+   */
+  'get.total',
+  /**
+   * The number of get operations.
+   */
+  'pri.get.total',
+  /**
+   * The time spent in successful gets.
+   * @aliases geti, getExistsTime
+   */
+  'get.exists_time',
+  /**
+   * The time spent in successful gets.
+   */
+  'pri.get.exists_time',
+  /**
+   * The number of successful gets.
+   * @aliases geto, getExistsTotal
+   */
+  'get.exists_total',
+  /**
+   * The number of successful gets.
+   */
+  'pri.get.exists_total',
+  /**
+   * The time spent in failed gets.
+   * @aliases gmti, getMissingTime
+   */
+  'get.missing_time',
+  /**
+   * The time spent in failed gets.
+   */
+  'pri.get.missing_time',
+  /**
+   * The number of failed gets.
+   * @aliases gmto, getMissingTotal
+   */
+  'get.missing_total',
+  /**
+   * The number of failed gets.
+   */
+  'pri.get.missing_total',
+  /**
+   * The number of current deletions.
+   * @aliases idc, indexingDeleteCurrent
+   */
+  'indexing.delete_current',
+  /**
+   * The number of current deletions.
+   */
+  'pri.indexing.delete_current',
+  /**
+   * The time spent in deletions.
+   * @aliases idti, indexingDeleteTime
+   */
+  'indexing.delete_time',
+  /**
+   * The time spent in deletions.
+   */
+  'pri.indexing.delete_time',
+  /**
+   * The number of delete operations.
+   * @aliases idto, indexingDeleteTotal
+   */
+  'indexing.delete_total',
+  /**
+   * The number of delete operations.
+   */
+  'pri.indexing.delete_total',
+  /**
+   * The number of current indexing operations.
+   * @aliases iic, indexingIndexCurrent
+   */
+  'indexing.index_current',
+  /**
+   * The number of current indexing operations.
+   */
+  'pri.indexing.index_current',
+  /**
+   * The time spent in indexing.
+   * @aliases iiti, indexingIndexTime
+   */
+  'indexing.index_time',
+  /**
+   * The time spent in indexing.
+   */
+  'pri.indexing.index_time',
+  /**
+   * The number of indexing operations.
+   * @aliases iito, indexingIndexTotal
+   */
+  'indexing.index_total',
+  /**
+   * The number of indexing operations.
+   */
+  'pri.indexing.index_total',
+  /**
+   * The number of failed indexing operations.
+   * @aliases iif, indexingIndexFailed
+   */
+  'indexing.index_failed',
+  /**
+   * The number of failed indexing operations.
+   */
+  'pri.indexing.index_failed',
+  /**
+   * The number of failed indexing operations due to version conflict.
+   * @aliases iifvc, indexingIndexFailedDueToVersionConflict
+   */
+  'indexing.index_failed_due_to_version_conflict',
+  /**
+   * The number of failed indexing operations due to version conflict.
+   */
+  'pri.indexing.index_failed_due_to_version_conflict',
+  /**
+   * The number of current merges.
+   * @aliases mc, mergesCurrent
+   */
+  'merges.current',
+  /**
+   * The number of current merges.
+   */
+  'pri.merges.current',
+  /**
+   * The number of current merging documents.
+   * @aliases mcd, mergesCurrentDocs
+   */
+  'merges.current_docs',
+  /**
+   * The number of current merging documents.
+   */
+  'pri.merges.current_docs',
+  /**
+   * The size of current merges.
+   * @aliases mcs, mergesCurrentSize
+   */
+  'merges.current_size',
+  /**
+   * The size of current merges.
+   */
+  'pri.merges.current_size',
+  /**
+   * The number of completed merge operations.
+   * @aliases mt, mergesTotal
+   */
+  'merges.total',
+  /**
+   * The number of completed merge operations.
+   */
+  'pri.merges.total',
+  /**
+   * The number of merged documents.
+   * @aliases mtd, mergesTotalDocs
+   */
+  'merges.total_docs',
+  /**
+   * The number of merged documents.
+   */
+  'pri.merges.total_docs',
+  /**
+   * The merged size.
+   * @aliases mts, mergesTotalSize
+   */
+  'merges.total_size',
+  /**
+   * The merged size.
+   */
+  'pri.merges.total_size',
+  /**
+   * The time spent in merges.
+   * @aliases mtt, mergesTotalTime
+   */
+  'merges.total_time',
+  /**
+   * The time spent in merges.
+   */
+  'pri.merges.total_time',
+  /**
+   * The total refreshes.
+   * @aliases rto, refreshTotal
+   */
+  'refresh.total',
+  /**
+   * The total refreshes.
+   */
+  'pri.refresh.total',
+  /**
+   * The time spent in refreshes.
+   * @aliases rti, refreshTime
+   */
+  'refresh.time',
+  /**
+   * The time spent in refreshes.
+   */
+  'pri.refresh.time',
+  /**
+   * The total external refreshes.
+   * @aliases rto, refreshTotal
+   */
+  'refresh.external_total',
+  /**
+   * The total external refreshes.
+   */
+  'pri.refresh.external_total',
+  /**
+   * The time spent in external refreshes.
+   * @aliases rti, refreshTime
+   */
+  'refresh.external_time',
+  /**
+   * The time spent in external refreshes.
+   */
+  'pri.refresh.external_time',
+  /**
+   * The number of pending refresh listeners.
+   * @aliases rli, refreshListeners
+   */
+  'refresh.listeners',
+  /**
+   * The number of pending refresh listeners.
+   */
+  'pri.refresh.listeners',
+  /**
+   * The current fetch phase operations.
+   * @aliases sfc, searchFetchCurrent
+   */
+  'search.fetch_current',
+  /**
+   * The current fetch phase operations.
+   */
+  'pri.search.fetch_current',
+  /**
+   * The time spent in fetch phase.
+   * @aliases sfti, searchFetchTime
+   */
+  'search.fetch_time',
+  /**
+   * The time spent in fetch phase.
+   */
+  'pri.search.fetch_time',
+  /**
+   * The total fetch operations.
+   * @aliases sfto, searchFetchTotal
+   */
+  'search.fetch_total',
+  /**
+   * The total fetch operations.
+   */
+  'pri.search.fetch_total',
+  /**
+   * The open search contexts.
+   * @aliases so, searchOpenContexts
+   */
+  'search.open_contexts',
+  /**
+   * The open search contexts.
+   */
+  'pri.search.open_contexts',
+  /**
+   * The current query phase operations.
+   * @aliases sqc, searchQueryCurrent
+   */
+  'search.query_current',
+  /**
+   * The current query phase operations.
+   */
+  'pri.search.query_current',
+  /**
+   * The time spent in query phase.
+   * @aliases sqti, searchQueryTime
+   */
+  'search.query_time',
+  /**
+   * The time spent in query phase.
+   */
+  'pri.search.query_time',
+  /**
+   * The total query phase operations.
+   * @aliases sqto, searchQueryTotal
+   */
+  'search.query_total',
+  /**
+   * The total query phase operations.
+   */
+  'pri.search.query_total',
+  /**
+   * The open scroll contexts.
+   * @aliases scc, searchScrollCurrent
+   */
+  'search.scroll_current',
+  /**
+   * The open scroll contexts.
+   */
+  'pri.search.scroll_current',
+  /**
+   * The time scroll contexts held open.
+   * @aliases scti, searchScrollTime
+   */
+  'search.scroll_time',
+  /**
+   * The time scroll contexts held open.
+   */
+  'pri.search.scroll_time',
+  /**
+   * The completed scroll contexts.
+   * @aliases scto, searchScrollTotal
+   */
+  'search.scroll_total',
+  /**
+   * The completed scroll contexts.
+   */
+  'pri.search.scroll_total',
+  /**
+   * The number of segments.
+   * @aliases sc, segmentsCount
+   */
+  'segments.count',
+  /**
+   * The number of segments.
+   */
+  'pri.segments.count',
+  /**
+   * The memory used by segments.
+   * @aliases sm, segmentsMemory
+   */
+  'segments.memory',
+  /**
+   * The memory used by segments.
+   */
+  'pri.segments.memory',
+  /**
+   * The memory used by index writer.
+   * @aliases siwm, segmentsIndexWriterMemory
+   */
+  'segments.index_writer_memory',
+  /**
+   * The memory used by index writer.
+   */
+  'pri.segments.index_writer_memory',
+  /**
+   * The memory used by version map.
+   * @aliases svmm, segmentsVersionMapMemory
+   */
+  'segments.version_map_memory',
+  /**
+   * The memory used by version map.
+   */
+  'pri.segments.version_map_memory',
+  /**
+   * The memory used by fixed bit sets for nested object field types and type filters for types referred in _parent fields.
+   * @aliases sfbm, fixedBitsetMemory
+   */
+  'segments.fixed_bitset_memory',
+  /**
+   * The memory used by fixed bit sets for nested object field types and type filters for types referred in _parent fields.
+   */
+  'pri.segments.fixed_bitset_memory',
+  /**
+   * The current warmer operations.
+   * @aliases wc, warmerCurrent
+   */
+  'warmer.current',
+  /**
+   * The current warmer operations.
+   */
+  'pri.warmer.current',
+  /**
+   * The total warmer operations.
+   * @aliases wto, warmerTotal
+   */
+  'warmer.total',
+  /**
+   * The total warmer operations.
+   */
+  'pri.warmer.total',
+  /**
+   * The time spent in warmers.
+   * @aliases wtt, warmerTotalTime
+   */
+  'warmer.total_time',
+  /**
+   * The time spent in warmers.
+   */
+  'pri.warmer.total_time',
+  /**
+   * The current suggest operations.
+   * @aliases suc, suggestCurrent
+   */
+  'suggest.current',
+  /**
+   * The current suggest operations.
+   */
+  'pri.suggest.current',
+  /**
+   * The time spent in suggest.
+   * @aliases suti, suggestTime
+   */
+  'suggest.time',
+  /**
+   * The time spent in suggest.
+   */
+  'pri.suggest.time',
+  /**
+   * The number of suggest operations.
+   * @aliases suto, suggestTotal
+   */
+  'suggest.total',
+  /**
+   * The number of suggest operations.
+   */
+  'pri.suggest.total',
+  /**
+   * The total used memory.
+   * @aliases tm, memoryTotal
+   */
+  'memory.total',
+  /**
+   * The total used memory.
+   */
+  'pri.memory.total',
+  /**
+   * The number of bulk shard operations.
+   * @aliases bto, bulkTotalOperation
+   */
+  'bulk.total_operations',
+  /**
+   * The number of bulk shard operations.
+   */
+  'pri.bulk.total_operations',
+  /**
+   * The time spent in shard bulk.
+   * @aliases btti, bulkTotalTime
+   */
+  'bulk.total_time',
+  /**
+   * The time spent in shard bulk.
+   */
+  'pri.bulk.total_time',
+  /**
+   * The total size in bytes of shard bulk.
+   * @aliases btsi, bulkTotalSizeInBytes
+   */
+  'bulk.total_size_in_bytes',
+  /**
+   * The total size in bytes of shard bulk.
+   */
+  'pri.bulk.total_size_in_bytes',
+  /**
+   * The average time spent in shard bulk.
+   * @aliases bati, bulkAvgTime
+   */
+  'bulk.avg_time',
+  /**
+   * The average time spent in shard bulk.
+   */
+  'pri.bulk.avg_time',
+  /**
+   * The average size in bytes of shard bulk.
+   * @aliases basi, bulkAvgSizeInBytes
+   */
+  'bulk.avg_size_in_bytes',
+  /**
+   * The average size in bytes of shard bulk.
+   */
+  'pri.bulk.avg_size_in_bytes',
+  /**
+   * The total count of indexed dense vectors.
+   * @aliases dvc, denseVectorCount
+   */
+  'dense_vector.value_count',
+  /**
+   * The total count of indexed dense vectors.
+   */
+  'pri.dense_vector.value_count',
+  /**
+   * The total count of indexed sparse vectors.
+   * @aliases svc, sparseVectorCount
+   */
+  'sparse_vector.value_count',
+  /**
+   * The total count of indexed sparse vectors.
+   */
+  'pri.sparse_vector.value_count'
+}
+
+/** @non_exhaustive */
+export enum CatMasterColumn {
+  /**
+   * The node ID.
+   */
+  id,
+  /**
+   * The host name of the node.
+   * @aliases h
+   */
+  host,
+  /**
+   * The IP address of the node.
+   */
+  ip,
+  /**
+   * The node name.
+   * @aliases n
+   */
+  node,
+}
+
+
+
+
 
 export type CatDfaColumns = CatDfaColumn | CatDfaColumn[]
 export type CatDatafeedColumns = CatDatafeedColumn | CatDatafeedColumn[]
