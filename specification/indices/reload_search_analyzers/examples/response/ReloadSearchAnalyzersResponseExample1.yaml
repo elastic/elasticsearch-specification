@@ -4,14 +4,14 @@ description: A successful response when reloading a search analyzer of an index.
 # response_code: 200
 value:
   template:
-   settings:
-    number_of_shards: 1
-   mappings:
-    _source:
-      enabled: false
-    properties:
-      host_name:
-        type: keyword
-      created_at:
-        type: date
-        format: 'EEE MMM dd HH:mm:ss Z yyyy'
+    settings:
+      number_of_shards: 1
+    mappings:
+      _source:
+        enabled: false
+      properties:
+        host_name:
+          type: keyword
+        created_at:
+          type: date
+          format: 'EEE MMM dd HH:mm:ss Z yyyy'
