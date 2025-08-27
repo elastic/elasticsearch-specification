@@ -1,7 +1,7 @@
-summary: Create a template
-method_request: PUT _component_template/template_1
-# description:
-# type: request
+# summary:
+description: A successful response when reloading a search analyzer of an index.
+# type: response
+# response_code: 200
 value:
   template:
    settings:
