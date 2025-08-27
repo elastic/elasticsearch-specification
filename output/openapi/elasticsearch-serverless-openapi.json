@@ -86015,7 +86015,7 @@
             "examples": {
               "ClusterPutComponentTemplateRequestExample1": {
                 "summary": "Create a template",
-                "value": "{\n  \"template\": null,\n  \"settings\": {\n    \"number_of_shards\": 1\n  },\n  \"mappings\": {\n    \"_source\": {\n      \"enabled\": false\n    },\n    \"properties\": {\n      \"host_name\": {\n        \"type\": \"keyword\"\n      },\n      \"created_at\": {\n        \"type\": \"date\",\n        \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n      }\n    }\n  }\n}"
+                "value": "{\n  \"template\": {\n    \"settings\": {\n      \"number_of_shards\": 1\n    },\n    \"mappings\": {\n      \"_source\": {\n        \"enabled\": false\n      },\n      \"properties\": {\n        \"host_name\": {\n          \"type\": \"keyword\"\n        },\n        \"created_at\": {\n          \"type\": \"date\",\n          \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n        }\n      }\n    }\n  }\n}"
               },
               "ClusterPutComponentTemplateRequestExample2": {
                 "summary": "Create a template with aliases",
@@ -86834,7 +86834,7 @@
             "examples": {
               "indicesPutTemplateRequestExample1": {
                 "summary": "Create an index template",
-                "value": "{\n  \"index_patterns\": [\n    \"te*\",\n    \"bar*\"\n  ],\n  \"settings\": {\n    \"number_of_shards\": 1\n  },\n  \"mappings\": {\n    \"_source\": {\n      \"enabled\": false\n    }\n  },\n  \"properties\": {\n    \"host_name\": {\n      \"type\": \"keyword\"\n    },\n    \"created_at\": {\n      \"type\": \"date\",\n      \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n    }\n  }\n}"
+                "value": "{\n  \"index_patterns\": [\n    \"te*\",\n    \"bar*\"\n  ],\n  \"settings\": {\n    \"number_of_shards\": 1\n  },\n  \"mappings\": {\n    \"_source\": {\n      \"enabled\": false\n    },\n    \"properties\": {\n      \"host_name\": {\n        \"type\": \"keyword\"\n      },\n      \"created_at\": {\n        \"type\": \"date\",\n        \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n      }\n    }\n  }\n}"
               },
               "indicesPutTemplateRequestExample2": {
                 "summary": "Create an index template with aliases",
