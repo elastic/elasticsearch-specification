@@ -1,6 +1,6 @@
-summary: Create a new index for a data stream.
+summary: Stack request
 method_request: POST my-data-stream/_rollover
-# description: ''
+description: 'Create a new index for a data stream'
 # type: request
 value: "{
 
