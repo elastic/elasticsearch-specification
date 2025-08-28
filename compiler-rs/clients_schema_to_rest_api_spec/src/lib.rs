@@ -59,7 +59,7 @@ fn convert_endpoint(
     };
     
     // Convert stability information
-    let stability = endpoint.availability.as_ref().map(|_| "stable".to_string());
+    let stability = extract_stability_from_availabilities(&endpoint.availability);
     
     // Convert visibility information
     let visibility = extract_visibility_from_availabilities(&endpoint.availability);
@@ -313,33 +313,35 @@ fn add_behavior_parameters(
 /// Extract visibility information from availabilities
 /// Defaults to "public" if no specific visibility is set
 fn extract_visibility_from_availabilities(availabilities: &Option<clients_schema::Availabilities>) -> Option<String> {
-    if let Some(avails) = availabilities {
-        // Check for stack flavor first, then serverless, then default to the first available
-        let flavor = Flavor::Stack;
-        if let Some(visibility) = flavor.visibility(availabilities) {
-            Some(match visibility {
-                Visibility::Public => "public".to_string(),
-                Visibility::FeatureFlag => "feature_flag".to_string(),
-                Visibility::Private => "private".to_string(),
-            })
-        } else {
-            // If stack flavor is not available, try other flavors
-            for (_, availability) in avails {
-                if let Some(ref vis) = availability.visibility {
-                    return Some(match vis {
-                        Visibility::Public => "public".to_string(),
-                        Visibility::FeatureFlag => "feature_flag".to_string(),
-                        Visibility::Private => "private".to_string(),
-                    });
-                }
-            }
-            // Default to public if no visibility is explicitly set
-            Some("public".to_string())
-        }
-    } else {
-        // No availability restrictions means public
-        Some("public".to_string())
+    let flavor = Flavor::Stack;
+    if let Some(visibility) = flavor.visibility(availabilities) {
+        return Some(match visibility {
+            Visibility::Public => "public".to_string(),
+            Visibility::FeatureFlag => "feature_flag".to_string(),
+            Visibility::Private => "private".to_string(),
+        })
     }
+
+    // No availability restrictions means public
+    Some("public".to_string())
+}
+
+/// Extract stability information from availabilities
+/// Uses stack flavor stability, defaults to "stable" if not specified
+fn extract_stability_from_availabilities(availabilities: &Option<clients_schema::Availabilities>) -> Option<String> {
+    if let Some(avails) = availabilities {
+        if let Some(stack_availability) = avails.get(&Flavor::Stack) {
+            if let Some(ref stability) = stack_availability.stability {
+                return Some(match stability {
+                    clients_schema::Stability::Stable => "stable".to_string(),
+                    clients_schema::Stability::Beta => "beta".to_string(),
+                    clients_schema::Stability::Experimental => "experimental".to_string(),
+                });
+            }
+        }
+    }
+    // Default to stable if no stability is explicitly set
+    Some("stable".to_string())
 }
 
 #[cfg(test)]
