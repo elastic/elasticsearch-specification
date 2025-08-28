@@ -6,6 +6,7 @@ on:
       - 'main'
       - '7.17'
       - '8.[0-9]+'
+      - '9.[0-9]+'
 
   # For debugging purposes:
   # pull_request:
