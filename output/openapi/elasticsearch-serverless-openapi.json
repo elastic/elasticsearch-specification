@@ -30231,11 +30231,13 @@
           },
           "status": {
             "type": "string"
+          },
+          "primary": {
+            "type": "boolean"
           }
         },
         "required": [
-          "reason",
-          "shard"
+          "reason"
         ]
       },
       "_types.ErrorCause": {

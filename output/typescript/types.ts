@@ -2903,10 +2903,14 @@ export type Service = string
 
 export interface ShardFailure {
   index?: IndexName
+  _index?: IndexName
   node?: string
+  _node?: string
   reason: ErrorCause
-  shard: integer
+  shard?: integer
+  _shard?: integer
   status?: string
+  primary?: boolean
 }
 
 export interface ShardStatistics {
