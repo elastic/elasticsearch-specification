@@ -88093,8 +88093,14 @@
             },
             "examples": {
               "indicesRolloverRequestExample1": {
-                "summary": "Create a new index for a data stream.",
+                "summary": "Stack request",
+                "description": "Create a new index for a data stream",
                 "value": "{\n  \"conditions\": {\n    \"max_age\": \"7d\",\n    \"max_docs\": 1000,\n    \"max_primary_shard_size\": \"50gb\",\n    \"max_primary_shard_docs\": \"2000\"\n  }\n}"
+              },
+              "indicesRolloverRequestExample2": {
+                "summary": "Serverless request",
+                "description": "Create a new index for a data stream",
+                "value": "{}"
               }
             }
           }
