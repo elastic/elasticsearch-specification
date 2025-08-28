@@ -5137,7 +5137,7 @@
             "in": "query",
             "name": "sort",
             "description": "A comma-separated list of `<field>:<direction>` pairs.",
-            "deprecated": false,
+            "deprecated": true,
             "schema": {
               "type": "array",
               "items": {
@@ -73504,7 +73504,7 @@
             "examples": {
               "ClusterPutComponentTemplateRequestExample1": {
                 "summary": "Create a template",
-                "value": "{\n  \"template\": null,\n  \"settings\": {\n    \"number_of_shards\": 1\n  },\n  \"mappings\": {\n    \"_source\": {\n      \"enabled\": false\n    },\n    \"properties\": {\n      \"host_name\": {\n        \"type\": \"keyword\"\n      },\n      \"created_at\": {\n        \"type\": \"date\",\n        \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n      }\n    }\n  }\n}"
+                "value": "{\n  \"template\": {\n    \"settings\": {\n      \"number_of_shards\": 1\n    },\n    \"mappings\": {\n      \"_source\": {\n        \"enabled\": false\n      },\n      \"properties\": {\n        \"host_name\": {\n          \"type\": \"keyword\"\n        },\n        \"created_at\": {\n          \"type\": \"date\",\n          \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n        }\n      }\n    }\n  }\n}"
               },
               "ClusterPutComponentTemplateRequestExample2": {
                 "summary": "Create a template with aliases",
