@@ -1,0 +1,10 @@
+# summary:
+description: >
+  A successful response from `DELETE /_security/role_mapping/mapping1`.
+  If the mapping is successfully deleted, `found` is `true`.
+# type: response
+# response_code:
+value: |-
+  {
+    "found" : true
+  }

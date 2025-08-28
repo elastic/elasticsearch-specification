@@ -19,14 +19,32 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
+ * Get an autoscaling policy.
+ *
+ * NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.
  * @rest_spec_name autoscaling.get_autoscaling_policy
  * @availability stack since=7.11.0 stability=stable
  * @doc_id autoscaling-get-autoscaling-capacity
+ * @ext_doc_id autoscaling
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_autoscaling/policy/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     name: Name
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s */
+    master_timeout?: Duration
   }
 }

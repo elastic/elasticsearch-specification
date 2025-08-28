@@ -1,0 +1,8 @@
+# summary:
+method_request: POST _nodes/reload_secure_settings
+description: Run `POST _nodes/reload_secure_settings` to reload the keystore on nodes in the cluster.
+# type: request
+value: |-
+  {
+    "secure_settings_password": "keystore-password"
+  }

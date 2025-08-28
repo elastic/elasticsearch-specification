@@ -21,11 +21,25 @@ import { RequestBase } from '@_types/Base'
 import { Refresh, Username } from '@_types/common'
 
 /**
+ * Delete users.
+ *
+ * Delete users from the native realm.
  * @rest_spec_name security.delete_user
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
+ * @cluster_privileges manage_security
+ * @doc_id security-api-delete-user
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/user/{username}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
+    /**
+     * An identifier for the user.
+     */
     username: Username
   }
   query_parameters: {

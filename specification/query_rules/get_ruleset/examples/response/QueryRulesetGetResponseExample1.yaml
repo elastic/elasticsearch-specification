@@ -1,0 +1,21 @@
+# summary:
+description: A successful response from `GET _query_rules/my-ruleset/`.
+# type: response
+# response_code: ''
+value:
+  "{\n    \"ruleset_id\": \"my-ruleset\",\n    \"rules\": [\n        {\n    \
+  \        \"rule_id\": \"my-rule1\",\n            \"type\": \"pinned\",\n       \
+  \     \"criteria\": [\n                {\n                    \"type\": \"contains\"\
+  ,\n                    \"metadata\": \"query_string\",\n                    \"values\"\
+  : [ \"pugs\", \"puggles\" ]\n                }\n            ],\n            \"actions\"\
+  : {\n                \"ids\": [\n                    \"id1\",\n                \
+  \    \"id2\"\n                ]\n            }\n        },\n        {\n        \
+  \    \"rule_id\": \"my-rule2\",\n            \"type\": \"pinned\",\n           \
+  \ \"criteria\": [\n                {\n                    \"type\": \"fuzzy\",\n\
+  \                    \"metadata\": \"query_string\",\n                    \"values\"\
+  : [ \"rescue dogs\" ]\n                }\n            ],\n            \"actions\"\
+  : {\n                \"docs\": [\n                    {\n                      \
+  \  \"_index\": \"index1\",\n                        \"_id\": \"id3\"\n         \
+  \           },\n                    {\n                        \"_index\": \"index2\"\
+  ,\n                        \"_id\": \"id4\"\n                    }\n           \
+  \     ]\n            }\n        }\n    ]\n}"

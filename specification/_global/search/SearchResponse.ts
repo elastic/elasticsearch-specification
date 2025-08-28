@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Aggregate } from '@_types/aggregations/Aggregate'
 import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { HitsMetadata } from './_types/hits'
 import { Profile } from './_types/profile'
 import { Suggest } from './_types/suggester'
@@ -32,14 +32,39 @@ import { Suggest } from './_types/suggester'
 // - fleet.search
 // - scroll
 export class Response<TDocument> {
+  /** @codegen_name result */
   body: ResponseBody<TDocument>
 }
 
 export class ResponseBody<TDocument> {
   // Has to be kept in sync with SearchTemplateResponse
+  /**
+   * The number of milliseconds it took Elasticsearch to run the request.
+   * This value is calculated by measuring the time elapsed between receipt of a request on the coordinating node and the time at which the coordinating node is ready to send the response.
+   * It includes:
+   *
+   * * Communication time between the coordinating node and data nodes
+   * * Time the request spends in the search thread pool, queued for execution
+   * * Actual run time
+   *
+   * It does not include:
+   *
+   * * Time needed to send the request to Elasticsearch
+   * * Time needed to serialize the JSON response
+   * * Time needed to send the response to a client
+   */
   took: long
+  /**
+   * If `true`, the request timed out before completion; returned results may be partial or empty.
+   */
   timed_out: boolean
+  /**
+   * A count of shards used for the request.
+   */
   _shards: ShardStatistics
+  /**
+   * The returned documents and metadata.
+   */
   hits: HitsMetadata<TDocument>
   aggregations?: Dictionary<AggregateName, Aggregate>
   _clusters?: ClusterStatistics
@@ -48,6 +73,12 @@ export class ResponseBody<TDocument> {
   num_reduce_phases?: long
   profile?: Profile
   pit_id?: Id
+  /**
+   * The identifier for the search and its search context.
+   * You can use this scroll ID with the scroll API to retrieve the next batch of search results for the request.
+   * This property is returned only if the `scroll` query parameter is specified in the request.
+   * @ext_doc_id scroll-search-results
+   */
   _scroll_id?: ScrollId
   suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
   terminated_early?: boolean

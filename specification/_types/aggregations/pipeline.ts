@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { Sort } from '@_types/sort'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Name, Field, EmptyObject } from '@_types/common'
-import { integer, double, float } from '@_types/Numeric'
+import { EmptyObject, Name } from '@_types/common'
+import { double, float, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
-import { Aggregation } from './Aggregation'
+import { Sort } from '@_types/sort'
 import {
-  RegressionInferenceOptions,
-  ClassificationInferenceOptions
+  ClassificationInferenceOptions,
+  RegressionInferenceOptions
 } from '@ml/_types/inference'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Aggregation } from './Aggregation'
 
 export class BucketPathAggregation extends Aggregation {
   /**
@@ -75,8 +75,14 @@ export enum GapPolicy {
   keep_values
 }
 
+/**
+ * @ext_doc_id search-aggregations-pipeline-avg-bucket-aggregation
+ */
 export class AverageBucketAggregation extends PipelineAggregationBase {}
 
+/**
+ * @ext_doc_id search-aggregations-pipeline-bucket-script-aggregation
+ */
 export class BucketScriptAggregation extends PipelineAggregationBase {
   /**
    * The script to run for this aggregation.
@@ -84,6 +90,9 @@ export class BucketScriptAggregation extends PipelineAggregationBase {
   script?: Script
 }
 
+/**
+ * @ext_doc_id search-aggregations-pipeline-bucket-selector-aggregation
+ */
 export class BucketSelectorAggregation extends PipelineAggregationBase {
   /**
    * The script to run for this aggregation.
@@ -101,6 +110,7 @@ export class BucketSelectorAggregation extends PipelineAggregationBase {
  * of the documents. A natural use case is if the sibling aggregation range aggregation nested in a
  * terms aggregation, in which case one compares the overall distribution of metric to its restriction
  * to each term.
+ * @ext_doc_id search-aggregations-bucket-count-ks-test-aggregation
  */
 export class BucketKsAggregation extends BucketPathAggregation {
   /**
@@ -128,6 +138,7 @@ export class BucketKsAggregation extends BucketPathAggregation {
 
 /**
  * A sibling pipeline aggregation which executes a correlation function on the configured sibling multi-bucket aggregation.
+ * @ext_doc_id search-aggregations-bucket-correlation-aggregation
  */
 export class BucketCorrelationAggregation extends BucketPathAggregation {
   /** The correlation function to execute. */
@@ -166,6 +177,9 @@ export class BucketCorrelationFunctionCountCorrelationIndicator {
   fractions?: double[]
 }
 
+/**
+ * @ext_doc_id search-aggregations-pipeline-bucket-sort-aggregation
+ */
 export class BucketSortAggregation extends Aggregation {
   /**
    * Buckets in positions prior to `from` will be truncated.
@@ -189,8 +203,14 @@ export class BucketSortAggregation extends Aggregation {
   sort?: Sort
 }
 
+/**
+ * @ext_doc_id search-aggregations-pipeline-cumulative-cardinality-aggregation
+ */
 export class CumulativeCardinalityAggregation extends PipelineAggregationBase {}
 
+/**
+ * @ext_doc_id search-aggregations-pipeline-cumulative-sum-aggregation
+ */
 export class CumulativeSumAggregation extends PipelineAggregationBase {}
 
 export class DerivativeAggregation extends PipelineAggregationBase {}
@@ -221,8 +241,14 @@ class InferenceConfigContainer {
   classification?: ClassificationInferenceOptions
 }
 
+/**
+ * @ext_doc_id search-aggregations-pipeline-max-bucket-aggregation
+ */
 export class MaxBucketAggregation extends PipelineAggregationBase {}
 
+/**
+ * @ext_doc_id search-aggregations-pipeline-min-bucket-aggregation
+ */
 export class MinBucketAggregation extends PipelineAggregationBase {}
 
 /** @variants internal tag=model */
@@ -285,6 +311,9 @@ export enum HoltWintersType {
   Multiplicative = 'mult'
 }
 
+/**
+ * @ext_doc_id search-aggregations-pipeline-movfn-aggregation
+ */
 export class MovingFunctionAggregation extends PipelineAggregationBase {
   /**
    * The script that should be executed on each window of data.
@@ -302,6 +331,9 @@ export class MovingFunctionAggregation extends PipelineAggregationBase {
   window?: integer
 }
 
+/**
+ * @ext_doc_id search-aggregations-pipeline-moving-percentiles-aggregation
+ */
 export class MovingPercentilesAggregation extends PipelineAggregationBase {
   /**
    * The size of window to "slide" across the histogram.
@@ -316,6 +348,9 @@ export class MovingPercentilesAggregation extends PipelineAggregationBase {
   keyed?: boolean
 }
 
+/**
+ * @ext_doc_id search-aggregations-pipeline-normalize-aggregation
+ */
 export class NormalizeAggregation extends PipelineAggregationBase {
   /**
    * The specific method to apply.
@@ -351,6 +386,9 @@ export enum NormalizeMethod {
   softmax
 }
 
+/**
+ * @ext_doc_id search-aggregations-pipeline-percentiles-bucket-aggregation
+ */
 export class PercentilesBucketAggregation extends PipelineAggregationBase {
   /**
    * The list of percentiles to calculate.
@@ -358,6 +396,9 @@ export class PercentilesBucketAggregation extends PipelineAggregationBase {
   percents?: double[]
 }
 
+/**
+ * @ext_doc_id search-aggregations-pipeline-serialdiff-aggregation
+ */
 export class SerialDifferencingAggregation extends PipelineAggregationBase {
   /**
    * The historical bucket to subtract from the current value.
@@ -368,4 +409,7 @@ export class SerialDifferencingAggregation extends PipelineAggregationBase {
 
 export class StatsBucketAggregation extends PipelineAggregationBase {}
 
+/**
+ * @ext_doc_id search-aggregations-pipeline-sum-bucket-aggregation
+ */
 export class SumBucketAggregation extends PipelineAggregationBase {}

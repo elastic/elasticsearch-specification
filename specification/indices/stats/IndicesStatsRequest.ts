@@ -27,14 +27,42 @@ import {
 } from '@_types/common'
 
 /**
- * Returns statistics for one or more indices.
- * For data streams, the API retrieves statistics for the stream’s backing indices.
+ * Get index statistics.
+ * For data streams, the API retrieves statistics for the stream's backing indices.
+ *
+ * By default, the returned statistics are index-level with `primaries` and `total` aggregations.
+ * `primaries` are the values for only the primary shards.
+ * `total` are the accumulated values for both primary and replica shards.
+ *
+ * To get shard-level statistics, set the `level` parameter to `shards`.
+ *
+ * NOTE: When moving to another node, the shard-level statistics for a shard are cleared.
+ * Although the shard is no longer part of the node, that node retains any node-level statistics to which the shard contributed.
  * @rest_spec_name indices.stats
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
- * @index_privileges manage, monitor
+ * @index_privileges monitor
+ * @doc_id indices-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_stats/{metric}'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_stats'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_stats/{metric}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     metric?: Metrics
     index?: Indices

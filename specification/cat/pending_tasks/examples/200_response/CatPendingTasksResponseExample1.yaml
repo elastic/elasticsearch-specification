@@ -1,0 +1,15 @@
+# summary:
+description: >
+  A successful response from `GET /_cat/pending_tasks?v=trueh=insertOrder,timeInQueue,priority,source&format=json`.
+# type: response
+# response_code: 200
+value: |-
+  [
+    { "insertOrder": "1685", "timeInQueue": "855ms", "priority": "HIGH", "source": "update-mapping [foo][t]"},
+      { "insertOrder": "1686", "timeInQueue": "843ms", "priority": "HIGH", "source": "update-mapping [foo][t]"},
+      { "insertOrder": "1693", "timeInQueue": "753ms", "priority": "HIGH", "source": "refresh-mapping [foo][[t]]"},
+      { "insertOrder": "1688", "timeInQueue": "816ms", "priority": "HIGH", "source": "update-mapping [foo][t]"},
+      { "insertOrder": "1689", "timeInQueue": "802ms", "priority": "HIGH", "source": "update-mapping [foo][t]"},
+      { "insertOrder": "1690", "timeInQueue": "787ms", "priority": "HIGH", "source": "update-mapping [foo][t]"},
+      { "insertOrder": "1691", "timeInQueue": "773ms", "priority": "HIGH", "source": "update-mapping [foo][t]"}
+  ]

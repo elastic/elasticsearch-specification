@@ -1,0 +1,43 @@
+summary: Get detailed recovery information
+# indices/recovery.asciidoc:358
+description: >
+  A successful response from `GET _recovery?human&detailed=true`.
+  The response includes a listing of any physical files recovered and their sizes.
+  The response also includes timings in milliseconds of the various stages of recovery: index retrieval, translog replay, and index start time.
+  This response indicates the recovery is done.
+# type: response
+# response_code: 200
+value:
+  "{\n  \"index1\" : {\n    \"shards\" : [ {\n      \"id\" : 0,\n      \"type\"\
+  \ : \"EXISTING_STORE\",\n      \"stage\" : \"DONE\",\n      \"primary\" : true,\n      \"\
+  start_time\" : \"2014-02-24T12:38:06.349\",\n      \"start_time_in_millis\" : \"\
+  1393245486349\",\n      \"stop_time\" : \"2014-02-24T12:38:08.464\",\n      \"stop_time_in_millis\"\
+  \ : \"1393245488464\",\n      \"total_time\" : \"2.1s\",\n      \"total_time_in_millis\"\
+  \ : 2115,\n      \"source\" : {\n        \"id\" : \"RGMdRc-yQWWKIBM4DGvwqQ\",\n\
+  \        \"host\" : \"my.fqdn\",\n        \"transport_address\" : \"my.fqdn\",\n\
+  \        \"ip\" : \"10.0.1.7\",\n        \"name\" : \"my_es_node\"\n      },\n \
+  \     \"target\" : {\n        \"id\" : \"RGMdRc-yQWWKIBM4DGvwqQ\",\n        \"host\"\
+  \ : \"my.fqdn\",\n        \"transport_address\" : \"my.fqdn\",\n        \"ip\" :\
+  \ \"10.0.1.7\",\n        \"name\" : \"my_es_node\"\n      },\n      \"index\" :\
+  \ {\n        \"size\" : {\n          \"total\" : \"24.7mb\",\n          \"total_in_bytes\"\
+  \ : 26001617,\n          \"reused\" : \"24.7mb\",\n          \"reused_in_bytes\"\
+  \ : 26001617,\n          \"recovered\" : \"0b\",\n          \"recovered_in_bytes\"\
+  \ : 0,\n          \"recovered_from_snapshot\" : \"0b\",\n          \"recovered_from_snapshot_in_bytes\"\
+  \ : 0,\n          \"percent\" : \"100.0%\"\n        },\n        \"files\" : {\n\
+  \          \"total\" : 26,\n          \"reused\" : 26,\n          \"recovered\"\
+  \ : 0,\n          \"percent\" : \"100.0%\",\n          \"details\" : [ {\n     \
+  \       \"name\" : \"segments.gen\",\n            \"length\" : 20,\n           \
+  \ \"recovered\" : 20\n          }, {\n            \"name\" : \"_0.cfs\",\n     \
+  \       \"length\" : 135306,\n            \"recovered\" : 135306,\n            \"\
+  recovered_from_snapshot\": 0\n          }, {\n            \"name\" : \"segments_2\"\
+  ,\n            \"length\" : 251,\n            \"recovered\" : 251,\n           \
+  \ \"recovered_from_snapshot\": 0\n          }\n          ]\n        },\n       \
+  \ \"total_time\" : \"2ms\",\n        \"total_time_in_millis\" : 2,\n        \"source_throttle_time\"\
+  \ : \"0s\",\n        \"source_throttle_time_in_millis\" : 0,\n        \"target_throttle_time\"\
+  \ : \"0s\",\n        \"target_throttle_time_in_millis\" : 0\n      },\n      \"\
+  translog\" : {\n        \"recovered\" : 71,\n        \"total\" : 0,\n        \"\
+  percent\" : \"100.0%\",\n        \"total_on_start\" : 0,\n        \"total_time\"\
+  \ : \"2.0s\",\n        \"total_time_in_millis\" : 2025\n      },\n      \"verify_index\"\
+  \ : {\n        \"check_index_time\" : 0,\n        \"check_index_time_in_millis\"\
+  \ : 0,\n        \"total_time\" : \"88ms\",\n        \"total_time_in_millis\" : 88\n\
+  \      }\n    } ]\n  }\n}"

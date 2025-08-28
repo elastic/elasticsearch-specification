@@ -18,7 +18,12 @@
  */
 
 import { Id } from '@_types/common'
+import { ShardStatistics } from '@_types/Stats'
 
 export class Response {
-  body: { id: Id }
+  body: {
+    /** Shards used to create the PIT */
+    _shards: ShardStatistics
+    id: Id
+  }
 }

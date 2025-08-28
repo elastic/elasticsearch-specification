@@ -1,0 +1,8 @@
+summary: API keys by name
+method_request: DELETE /_security/api_key
+description: Run `DELETE /_security/api_key` to invalidate the API keys identified by name.
+# type: request
+value: |-
+  {
+    "name" : "my-api-key"
+  }

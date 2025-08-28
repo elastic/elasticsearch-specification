@@ -22,21 +22,35 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Get task information.
+ * Get information about a task currently running in the cluster.
+ *
+ * WARNING: The task management API is new and should still be considered a beta feature.
+ * The API may change in ways that are not backwards compatible.
+ *
+ * If the task identifier is not found, a 404 response code indicates that there are no resources that match the request.
  * @rest_spec_name tasks.get
  * @availability stack since=5.0.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
+ * @cluster_privileges monitor
  * @doc_id tasks
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_tasks/{task_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
-     * ID of the task.
+     * The task identifier.
      */
     task_id: Id
   }
   query_parameters: {
     /**
-     * Period to wait for a response.
+     * The period to wait for a response.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */

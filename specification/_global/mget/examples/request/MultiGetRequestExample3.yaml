@@ -1,0 +1,20 @@
+summary: Get stored fields
+method_request: 'GET /_mget'
+description: >
+  Run `GET /_mget`. This request retrieves `field1` and `field2` from document 1 and `field3` and `field4` from document 2.
+# type: "request"
+value: |-
+  {
+    "docs": [
+      {
+        "_index": "test",
+        "_id": "1",
+        "stored_fields": [ "field1", "field2" ]
+      },
+      {
+        "_index": "test",
+        "_id": "2",
+        "stored_fields": [ "field3", "field4" ]
+      }
+    ]
+  }

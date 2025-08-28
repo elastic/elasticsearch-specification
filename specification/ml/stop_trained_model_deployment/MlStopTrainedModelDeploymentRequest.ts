@@ -21,13 +21,21 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Stops a trained model deployment.
+ * Stop a trained model deployment.
  * @rest_spec_name ml.stop_trained_model_deployment
  * @availability stack since=8.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml trained model
+ * @doc_id stop-trained-model-deployment
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/deployment/_stop'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model.

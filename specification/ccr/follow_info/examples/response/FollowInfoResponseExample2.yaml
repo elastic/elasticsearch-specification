@@ -1,0 +1,15 @@
+summary: A paused follower index
+description: A successful response from `GET /follower_index/_ccr/info` when the follower index is paused.
+# type: response
+# response_code: '200'
+value: |-
+  {
+    "follower_indices": [
+      {
+        "follower_index": "follower_index",
+        "remote_cluster": "remote_cluster",
+        "leader_index": "leader_index",
+        "status": "paused"
+      }
+    ]
+  }

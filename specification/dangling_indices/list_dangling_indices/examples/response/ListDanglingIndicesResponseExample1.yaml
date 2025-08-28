@@ -1,0 +1,9 @@
+# summary:
+# description: ''
+# type: response
+# response_code: 200
+value:
+  "{\n  \"dangling_indices\": [\n   {\n    \"index_name\": \"my-index-000001\"\
+  ,\n    \"index_uuid\": \"zmM4e0JtBkeUjiHD-MihPQ\",\n    \"creation_date_millis\"\
+  : 1589414451372,\n    \"node_ids\": [\n      \"pL47UN3dAb2d5RCWP6lQ3e\"\n    ]\n\
+  \   }\n  ]\n}"

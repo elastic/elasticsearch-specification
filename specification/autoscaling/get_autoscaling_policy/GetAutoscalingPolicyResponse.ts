@@ -20,5 +20,6 @@
 import { AutoscalingPolicy } from '@autoscaling/_types/AutoscalingPolicy'
 
 export class Response {
+  /** @codegen_name policy */
   body: AutoscalingPolicy
 }

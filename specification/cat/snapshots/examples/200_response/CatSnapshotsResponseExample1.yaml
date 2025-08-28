@@ -1,0 +1,36 @@
+# summary:
+description: >
+  A successful response from `GET /_cat/snapshots/repo1?v=true&s=id&format=json`.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "id": "snap1",
+      "repository": "repo1",
+      "status": "FAILED",
+      "start_epoch": "1445616705",
+      "start_time": "18:11:45",
+      "end_epoch": "1445616978",
+      "end_time": "18:16:18",
+      "duration": "4.6m",
+      "indices": "1",
+      "successful_shards": "4",
+      "failed_shards": "1",
+      "total_shards": "5"
+    },
+    {
+      "id": "snap2",
+      "repository": "repo1",
+      "status": "SUCCESS",
+      "start_epoch": "1445634298",
+      "start_time": "23:04:58",
+      "end_epoch": "1445634672",
+      "end_time": "23:11:12",
+      "duration": "6.2m",
+      "indices": "2",
+      "successful_shards": "10",
+      "failed_shards": "0",
+      "total_shards": "10"
+    }
+  ]

@@ -1,0 +1,8 @@
+# summary:
+method_request: POST _query_rules/my-ruleset/_test
+description: >
+  Run `POST _query_rules/my-ruleset/_test` to test a ruleset. Provide the match criteria that you want to test against.
+# type: request
+value:
+  match_criteria:
+    query_string: puggles

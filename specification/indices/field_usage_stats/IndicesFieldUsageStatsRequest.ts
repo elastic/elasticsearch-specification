@@ -18,22 +18,29 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {
-  ExpandWildcards,
-  Fields,
-  Indices,
-  WaitForActiveShards
-} from '@_types/common'
-import { Duration } from '@_types/Time'
+import { ExpandWildcards, Fields, Indices } from '@_types/common'
 
 /**
- * Returns field usage information for each shard and field of an index.
+ * Get field usage stats.
+ * Get field usage information for each shard and field of an index.
+ * Field usage statistics are automatically captured when queries are running on a cluster.
+ * A shard-level search request that accesses a given field, even if multiple times during that request, is counted as a single use.
+ *
+ * The response body reports the per-shard usage count of the data structures that back the fields in the index.
+ * A given request will increment each count by a maximum value of 1, even if the request accesses the same field multiple times.
  * @rest_spec_name indices.field_usage_stats
  * @availability stack since=7.15.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @index_privileges manage
+ * @doc_id field-usage-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_field_usage_stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list or wildcard expression of index names used to limit the request.
@@ -62,23 +69,5 @@ export interface Request extends RequestBase {
      * Comma-separated list or wildcard expressions of fields to include in the statistics.
      */
     fields?: Fields
-    /**
-     * Period to wait for a connection to the master node.
-     * If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s
-     */
-    master_timeout?: Duration
-    /**
-     * Period to wait for a response.
-     * If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s
-     */
-    timeout?: Duration
-    /**
-     * The number of shard copies that must be active before proceeding with the operation.
-     * Set to all or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
-     * @server_default 1
-     */
-    wait_for_active_shards?: WaitForActiveShards
   }
 }

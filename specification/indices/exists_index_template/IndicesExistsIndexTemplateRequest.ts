@@ -22,16 +22,37 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Check index templates.
+ *
+ * Check whether index templates exist.
  * @rest_spec_name indices.exists_index_template
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id index-templates-exist
+ * @cluster_privileges manage_index_templates
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_index_template/{name}'
+      methods: ['HEAD']
+    }
+  ]
   path_parts: {
     /** Comma-separated list of index template names used to limit the request. Wildcard (*) expressions are supported. */
     name: Name
   }
   query_parameters: {
+    /**
+     * If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.
+     * @server_default false
+     */
+    local?: boolean
+    /**
+     * If true, returns settings in flat format.
+     * @server_default false
+     */
+    flat_settings?: boolean
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s

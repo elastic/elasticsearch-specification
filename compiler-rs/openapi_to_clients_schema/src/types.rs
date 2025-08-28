@@ -121,7 +121,7 @@ fn generate_type_for_schema(
         })
     }
     if let Some(ref docs) = data.external_docs {
-        base.doc_url = Some(docs.url.clone())
+        base.ext_doc_url = Some(docs.url.clone())
     }
 
     // TODO: data.readonly/writeonly -> OverloadOf?
@@ -225,7 +225,7 @@ fn generate_schema_kind_type(
         String(_) => types.add(id, alias(base, builtins::STRING.clone())),
 
         //---------------------------------------------------------------------
-        Boolean {} => types.add(id, alias(base, builtins::BOOLEAN.clone())),
+        Boolean(_) => types.add(id, alias(base, builtins::BOOLEAN.clone())),
 
         //---------------------------------------------------------------------
         Integer(_) =>
@@ -402,12 +402,14 @@ fn generate_interface_def(
             required: required.contains(&name),
             doc_id: None,
             doc_url: None,
+            ext_doc_id: None,
+            ext_doc_url: None,
+            ext_doc_description: None,
+            ext_previous_version_doc_url: None,
             codegen_name: None, // FIXME: extension in workplace search
             description: None,
             aliases: Vec::default(),
             deprecation: None,
-            stability: None,
-            since: None,
             container_property: false,
             es_quirk: None,
             server_default: None,

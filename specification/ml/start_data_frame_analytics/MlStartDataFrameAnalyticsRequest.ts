@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Starts a data frame analytics job.
+ * Start a data frame analytics job.
  * A data frame analytics job can be started and stopped multiple times
  * throughout its lifecycle.
  * If the destination index does not exist, it is created automatically the
@@ -39,8 +39,16 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @index_privileges create_index, index, manage, read, view_index_metadata
+ * @doc_tag ml data frame
+ * @doc_id start-dfanalytics
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/data_frame/analytics/{id}/_start'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the data frame analytics job. This identifier can contain

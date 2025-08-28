@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { OverloadOf } from '@spec_utils/behaviors'
 import { Field } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { OverloadOf } from '@spec_utils/behaviors'
 import { DetectionRule } from './Rule'
 
 export class Detector {
@@ -122,6 +122,24 @@ export class DetectorRead implements OverloadOf<Detector> {
    * @server_default false
    */
   use_null?: boolean
+}
+
+export class DetectorUpdate {
+  /**
+   * A unique identifier for the detector.
+   * This identifier is based on the order of the detectors in the `analysis_config`, starting at zero.
+   */
+  detector_index: integer
+  /**
+   * A description of the detector.
+   */
+  description?: string
+  /**
+   * An array of custom rule objects, which enable you to customize the way detectors operate.
+   * For example, a rule may dictate to the detector conditions under which results should be skipped.
+   * Kibana refers to custom rules as job rules.
+   */
+  custom_rules?: DetectionRule[]
 }
 
 export enum ExcludeFrequent {

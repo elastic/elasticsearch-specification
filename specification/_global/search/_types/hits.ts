@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { Explanation } from '@global/explain/types'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   Fields,
@@ -30,12 +27,15 @@ import {
   VersionNumber
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
+import { FieldAndFormat } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
+import { Sort, SortResults } from '@_types/sort'
+import { Explanation } from '@global/explain/types'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { FieldCollapse } from './FieldCollapse'
 import { Highlight } from './highlighting'
 import { SourceConfig } from './SourceFilter'
-import { FieldAndFormat } from '@_types/query_dsl/abstractions'
-import { Sort, SortResults } from '@_types/sort'
 
 export class Hit<TDocument> {
   _index: IndexName
@@ -49,14 +49,15 @@ export class Hit<TDocument> {
   fields?: Dictionary<string, UserDefinedValue>
   highlight?: Dictionary<string, string[]>
   inner_hits?: Dictionary<string, InnerHitsResult>
-  matched_queries?: string[]
+  matched_queries?: string[] | Dictionary<string, double>
   _nested?: NestedIdentity
   _ignored?: string[]
-  ignored_field_values?: Dictionary<string, string[]>
+  ignored_field_values?: Dictionary<string, UserDefinedValue[]>
   _shard?: string
   _node?: string
   _routing?: string
   _source?: TDocument
+  _rank?: integer
   _seq_no?: SequenceNumber
   _primary_term?: long
   _version?: VersionNumber
@@ -126,7 +127,7 @@ export class InnerHits {
   ignore_unmapped?: boolean
   script_fields?: Dictionary<Field, ScriptField>
   seq_no_primary_term?: boolean
-  fields?: Fields
+  fields?: Field[]
   /**
    * How the inner hits should be sorted per `inner_hits`.
    * By default, inner hits are sorted by score.

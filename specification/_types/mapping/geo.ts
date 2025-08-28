@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DocValuesPropertyBase, OnScriptError } from './core'
 import { GeoLocation } from '@_types/Geo'
 import { Script } from '@_types/Scripting'
+import { DocValuesPropertyBase, OnScriptError } from './core'
 
 export class GeoPointProperty extends DocValuesPropertyBase {
   ignore_malformed?: boolean
@@ -29,6 +29,13 @@ export class GeoPointProperty extends DocValuesPropertyBase {
   on_script_error?: OnScriptError
   script?: Script
   type: 'geo_point'
+  time_series_metric?: GeoPointMetricType
+}
+
+export enum GeoPointMetricType {
+  gauge,
+  counter,
+  position
 }
 
 export enum GeoOrientation {
@@ -48,6 +55,7 @@ export class GeoShapeProperty extends DocValuesPropertyBase {
   coerce?: boolean
   ignore_malformed?: boolean
   ignore_z_value?: boolean
+  index?: boolean
   orientation?: GeoOrientation
   strategy?: GeoStrategy
   type: 'geo_shape'

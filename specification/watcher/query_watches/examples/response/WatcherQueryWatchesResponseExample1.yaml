@@ -1,0 +1,59 @@
+# summary: ''
+description: A successful response from `GET /_watcher/_query/watches`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "count": 1,
+    "watches": [
+        {
+            "_id": "my_watch",
+            "watch": {
+                "trigger": {
+                    "schedule": {
+                        "hourly": {
+                            "minute": [
+                                0,
+                                5
+                            ]
+                        }
+                    }
+                },
+                "input": {
+                    "simple": {
+                        "payload": {
+                            "send": "yes"
+                        }
+                    }
+                },
+                "condition": {
+                    "always": {}
+                },
+                "actions": {
+                    "test_index": {
+                        "index": {
+                            "index": "test"
+                        }
+                    }
+                }
+            },
+            "status": {
+                "state": {
+                    "active": true,
+                    "timestamp": "2015-05-26T18:21:08.630Z"
+                },
+                "actions": {
+                    "test_index": {
+                        "ack": {
+                            "timestamp": "2015-05-26T18:21:08.630Z",
+                            "state": "awaits_successful_execution"
+                        }
+                    }
+                },
+                "version": -1
+            },
+            "_seq_no": 0,
+            "_primary_term": 1
+        }
+    ]
+  }

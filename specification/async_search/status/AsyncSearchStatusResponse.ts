@@ -17,25 +17,26 @@
  * under the License.
  */
 
-import { AsyncSearchResponseBase } from '@async_search/_types/AsyncSearchResponseBase'
 import { integer } from '@_types/Numeric'
 import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
+import { AsyncSearchResponseBase } from '@async_search/_types/AsyncSearchResponseBase'
 
 export class StatusResponseBase extends AsyncSearchResponseBase {
-  /** Indicates how many shards have run the query so far. */
+  /** The number of shards that have run the query so far. */
   _shards: ShardStatistics
   /**
    * Metadata about clusters involved in the cross-cluster search.
-   * Not shown for local-only searches.
+   * It is not shown for local-only searches.
    */
   _clusters?: ClusterStatistics
   /**
    * If the async search completed, this field shows the status code of the search.
-   * For example, 200 indicates that the async search was successfully completed.
-   * 503 indicates that the async search was completed with an error.
+   * For example, `200` indicates that the async search was successfully completed.
+   * `503` indicates that the async search was completed with an error.
    */
   completion_status?: integer
 }
 export class Response {
+  /** @codegen_name status */
   body: StatusResponseBase
 }

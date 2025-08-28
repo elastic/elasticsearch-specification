@@ -18,9 +18,30 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
+ * Stop the watch service.
+ * Stop the Watcher service if it is running.
  * @rest_spec_name watcher.stop
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
+ * @cluster_privileges manage_watcher
+ * @doc_id watcher-api-stop
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/_stop'
+      methods: ['POST']
+    }
+  ]
+  query_parameters: {
+    /**
+     * The period to wait for the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * To indicate that the request should never timeout, set it to `-1`.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+  }
+}

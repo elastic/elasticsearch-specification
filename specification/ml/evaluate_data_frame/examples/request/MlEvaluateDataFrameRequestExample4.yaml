@@ -1,0 +1,25 @@
+summary: Regression example 1
+method_request: POST _ml/data_frame/_evaluate
+description: >
+  Run `POST _ml/data_frame/_evaluate` to evaluate the testing error of a regression job for an annotated index. The term query in
+  the body limits evaluation to be performed on the test split only. The `actual_field` contains the ground truth for house prices.
+  The `predicted_field` contains the house price calculated by the regression analysis.
+# type: request
+value:
+  index: house_price_predictions
+  query:
+    bool:
+      filter:
+        - term:
+            ml.is_training: false
+  evaluation:
+    regression:
+      actual_field: price
+      predicted_field: ml.price_prediction
+      metrics:
+        r_squared: {}
+        mse: {}
+        msle:
+          offset: 10
+        huber:
+          delta: 1.5

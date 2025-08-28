@@ -1,0 +1,19 @@
+summary: Roles for multiple groups
+method_request: POST /_security/role_mapping/mapping5
+description: >
+  Run `POST /_security/role_mapping/mapping5` to use an array syntax for the groups field when there are multiple groups. This
+  pattern matches any of the groups (rather than all of the groups).
+# type: request
+value: |-
+  {
+    "role_templates": [
+      {
+        "template": { "source": "{{#tojson}}groups{{/tojson}}" }, 
+        "format" : "json" 
+      }
+    ],
+    "rules": {
+      "field" : { "realm.name" : "saml1" }
+    },
+    "enabled": true
+  }

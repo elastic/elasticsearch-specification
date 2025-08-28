@@ -1,0 +1,14 @@
+summary: Update part of a document
+method_request: POST test/_update/1
+description: >
+  Run `POST test/_update/1` to do a partial update that adds a new field to the existing document.
+# type: request
+value: "{
+
+  \  \"doc\": {
+
+  \    \"name\": \"new_name\"
+
+  \  }
+
+  }"

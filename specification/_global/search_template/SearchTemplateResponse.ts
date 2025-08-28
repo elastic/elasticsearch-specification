@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { HitsMetadata } from '@global/search/_types/hits'
-import { double, integer, long } from '@_types/Numeric'
-import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
 import { Aggregate } from '@_types/aggregations/Aggregate'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
+import { double, long } from '@_types/Numeric'
+import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
+import { HitsMetadata } from '@global/search/_types/hits'
 import { Profile } from '@global/search/_types/profile'
 import { Suggest } from '@global/search/_types/suggester'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response<TDocument> {
   body: {

@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { DataframeAnalytics } from '@ml/_types/DataframeAnalytics'
-import { DataframeState } from '@ml/_types/Dataframe'
 import { long } from '@_types/Numeric'
+import { DataframeAnalytics } from '@ml/_types/DataframeAnalytics'
 
 export class Response {
   body: {

@@ -1,0 +1,32 @@
+summary: Shard states
+description: >
+  A successful response from `GET _cat/shards?format=json`.
+  Before a shard is available for use, it goes through an `INITIALIZING` state.
+  You can use the cat shards API to see which shards are initializing.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "index": "my-index-000001",
+      "shard": "0",
+      "prirep": "p",
+      "state": "STARTED",
+      "docs": "3014",
+      "store": "31.1mb",
+      "dataset": "249b",
+      "ip": "192.168.56.10",
+      "node": "H5dfFeA"
+    },
+    {
+      "index": "my-index-000001",
+      "shard": "0",
+      "prirep": "r",
+      "state": "INITIALIZING",
+      "docs": "0",
+      "store": "14.3mb",
+      "dataset": "249b",
+      "ip": "192.168.56.30",
+      "node": "bGG90GE"
+    }
+  ]

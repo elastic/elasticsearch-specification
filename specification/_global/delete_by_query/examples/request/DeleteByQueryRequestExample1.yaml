@@ -1,0 +1,10 @@
+summary: Delete all documents
+method_request: POST /my-index-000001,my-index-000002/_delete_by_query
+description: Run `POST /my-index-000001,my-index-000002/_delete_by_query` to delete all documents from multiple data streams or indices.
+# type: request
+value: |-
+  {
+    "query": {
+      "match_all": {}
+    }
+  }

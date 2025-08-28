@@ -21,13 +21,21 @@ import { RequestBase } from '@_types/Base'
 import { Id, Ids } from '@_types/common'
 
 /**
- * Adds an anomaly detection job to a calendar.
+ * Add anomaly detection job to calendar.
  * @rest_spec_name ml.put_calendar_job
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-put-calendar-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/calendars/{calendar_id}/jobs/{job_id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /** A string that uniquely identifies a calendar. */
     calendar_id: Id

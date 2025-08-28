@@ -1,0 +1,43 @@
+summary: Grant an API key
+method_request: POST /_security/api_key/grant
+description: >
+  Run `POST /_security/api_key/grant` to create an API key on behalf of the `test_admin` user.
+# type: request
+value: |-
+  {
+    "grant_type": "password",
+    "username" : "test_admin",
+    "password" : "x-pack-test-password",
+    "api_key" : {
+      "name": "my-api-key",
+      "expiration": "1d",
+      "role_descriptors": {
+        "role-a": {
+          "cluster": ["all"],
+          "indices": [
+            {
+            "names": ["index-a*"],
+            "privileges": ["read"]
+            }
+          ]
+        },
+        "role-b": {
+          "cluster": ["all"],
+          "indices": [
+            {
+            "names": ["index-b*"],
+            "privileges": ["all"]
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "application": "my-application",
+        "environment": {
+          "level": 1,
+          "trusted": true,
+          "tags": ["dev", "staging"]
+        }
+      }
+    }
+  }

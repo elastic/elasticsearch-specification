@@ -1,0 +1,12 @@
+# summary:
+description: A successful response from `GET /_security/enroll/kibana`.
+# type: response
+# response_code:
+value: |-
+  {
+    "token" : {
+      "name" : "enroll-process-token-1629123923000", 
+      "value": "AAEAAWVsYXN0aWM...vZmxlZXQtc2VydmVyL3Rva2VuMTo3TFdaSDZ" 
+    },
+    "http_ca" : "MIIJlAIBAzVoGCSqGSIb3...vsDfsA3UZBAjEPfhubpQysAICAA=", 
+  }

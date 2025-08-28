@@ -1,0 +1,48 @@
+summary: Return stored term vectors
+description: A successful response from `GET /my-index-000001/_termvectors/1`.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "_index": "my-index-000001",
+    "_id": "1",
+    "_version": 1,
+    "found": true,
+    "took": 6,
+    "term_vectors": {
+      "text": {
+        "field_statistics": {
+          "sum_doc_freq": 4,
+          "doc_count": 2,
+          "sum_ttf": 6
+        },
+        "terms": {
+          "test": {
+            "doc_freq": 2,
+            "ttf": 4,
+            "term_freq": 3,
+            "tokens": [
+              {
+                "position": 0,
+                "start_offset": 0,
+                "end_offset": 4,
+                "payload": "d29yZA=="
+              },
+              {
+                "position": 1,
+                "start_offset": 5,
+                "end_offset": 9,
+                "payload": "d29yZA=="
+              },
+              {
+                "position": 2,
+                "start_offset": 10,
+                "end_offset": 14,
+                "payload": "d29yZA=="
+              }
+            ]
+          }
+        }
+      }
+    }
+  }

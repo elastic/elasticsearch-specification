@@ -25,21 +25,68 @@ import { DurationValue, EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {
+    /**
+     * The number of scroll responses that were pulled back by the reindex.
+     */
     batches?: long
+    /**
+     * The number of documents that were successfully created.
+     */
     created?: long
+    /**
+     * The number of documents that were successfully deleted.
+     */
     deleted?: long
+    /**
+     * If there were any unrecoverable errors during the process, it is an array of those failures.
+     * If this array is not empty, the request ended because of those failures.
+     * Reindex is implemented using batches and any failure causes the entire process to end but all failures in the current batch are collected into the array.
+     * You can use the `conflicts` option to prevent the reindex from ending on version conflicts.
+     */
     failures?: BulkIndexByScrollFailure[]
+    /**
+     * The number of documents that were ignored because the script used for the reindex returned a `noop` value for `ctx.op`.
+     */
     noops?: long
+    /**
+     * The number of retries attempted by reindex.
+     */
     retries?: Retries
+    /**
+     * The number of requests per second effectively run during the reindex.
+     */
     requests_per_second?: float
     slice_id?: integer
     task?: TaskId
+    /**
+     * The number of milliseconds the request slept to conform to `requests_per_second`.
+     */
     throttled_millis?: EpochTime<UnitMillis>
+    /**
+     * This field should always be equal to zero in a reindex response.
+     * It has meaning only when using the task API, where it indicates the next time (in milliseconds since epoch) that a throttled request will be run again in order to conform to `requests_per_second`.
+     */
     throttled_until_millis?: EpochTime<UnitMillis>
+    /**
+     * If any of the requests that ran during the reindex timed out, it is `true`.
+     */
     timed_out?: boolean
+    /**
+     * The total milliseconds the entire operation took.
+     */
     took?: DurationValue<UnitMillis>
+    /**
+     * The number of documents that were successfully processed.
+     */
     total?: long
+    /**
+     * The number of documents that were successfully updated.
+     * That is to say, a document with the same ID already existed before the reindex updated it.
+     */
     updated?: long
+    /**
+     * The number of version conflicts that occurred.
+     */
     version_conflicts?: long
   }
 }

@@ -1,0 +1,29 @@
+summary: Upsert
+method_request: POST test/_update/1
+description: >
+  Run `POST test/_update/1` to perfom an upsert. If the document does not already exist, the contents of the upsert element are
+  inserted as a new document. If the document exists, the script is run.
+# type: request
+value: "{
+
+  \  \"script\": {
+
+  \    \"source\": \"ctx._source.counter += params.count\",
+
+  \    \"lang\": \"painless\",
+
+  \    \"params\": {
+
+  \      \"count\": 4
+
+  \    }
+
+  \  },
+
+  \  \"upsert\": {
+
+  \    \"counter\": 1
+
+  \  }
+
+  }"

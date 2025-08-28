@@ -35,9 +35,4 @@ test('Request @availability can fulfill all the fields', t => {
     stack: { stability: 'beta', visibility: 'feature_flag', featureFlag: 'abc', since: '1.2.3' },
     serverless: { visibility: 'private', stability: 'experimental' }
   });
-  // Assert backfilled values are correct
-  t.true(endpoint?.visibility === 'feature_flag');
-  t.true(endpoint?.stability === 'beta');
-  t.true(endpoint?.featureFlag === 'abc');
-  t.true(endpoint?.since === '1.2.3');
 })

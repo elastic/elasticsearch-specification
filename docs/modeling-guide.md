@@ -148,7 +148,7 @@ property: UserDefinedValue
 
 ### Numbers
 
-The numeric type in TypeScript is `number`, but given that this specification targets mutliple languages,
+The numeric type in TypeScript is `number`, but given that this specification targets multiple languages,
 it offers a bunch of aliases that represent the type that should be used if the language supports it:
 
 ```ts
@@ -332,7 +332,9 @@ type FooOrBar = Foo | Bar
 
 An example of internal variants are the type mapping properties.
 
-#### External
+#### typed_keys_quirk
+
+**Note**: this feature exists because of some early Elasticsearch APIs where tagging was forgotten, and added after the fact using this quirk to avoid breaking compatibility. **It should not be used for new APIs.**
 
 The key that defines the variant is external to the definition, like in the
 case of aggregations in responses or suggesters.
@@ -343,7 +345,7 @@ name in the definition itself.
 The syntax is:
 
 ```ts
-/** @variants external */
+/** @variants typed_keys_quirk */
 
 /** @variant name='<field-name>' */
 ```
@@ -351,7 +353,7 @@ The syntax is:
 For example:
 
 ```ts
-/** @variants external */
+/** @variants typed_keys_quirk */
 type FooAlias = Faz | Bar
 
 /** @variant name='faz' */
@@ -369,7 +371,7 @@ In the example above, `FooAlias` will look like this:
 
 ```json
 {
-  "faz": {
+  "name#faz": {
     "prop": "hello world"
   }
 }
@@ -379,7 +381,7 @@ or:
 
 ```json
 {
-  "bar": {
+  "name#bar": {
     "prop": true
   }
 }
@@ -418,7 +420,7 @@ An annotation allows distinguishing these properties from container variants:
 
 For example:
 
-```
+```ts
 /**
  * @variants container
  */
@@ -433,6 +435,39 @@ class AggregationContainer {
   auto_date_histogram?: AutoDateHistogramAggregation
   avg?: AverageAggregation
   ...
+```
+
+#### Untagged
+
+The untagged variant is used for unions that can only be distinguished by the type of one or more fields.
+
+> [!WARNING]
+> This variant should only be used for legacy types and should otherwise be avoided as far as possible, as it leads to less optimal code generation in the client libraries.
+
+The syntax is:
+
+```ts
+/** @variants untagged */
+```
+
+Untagged variants must exactly follow a defined pattern.
+
+For example:
+
+```ts
+export class MyTypeBase<T1, T2, ...> { ... }
+
+export class MyTypeUntyped extends MyTypeBase<UserDefinedValue> {}
+export class MyTypeSpecialized1 extends MyTypeBase<int> {}
+export class MyTypeSpecialized2 extends MyTypeBase<string> {}
+export class MyTypeSpecialized3 extends MyTypeBase<bool> {}
+
+/**
+ * @codegen_names untyped, mytype1, mytypet2, mytype3 
+ * @variant untagged untyped=_types.MyTypeUntyped
+ */
+// Note: deserialization depends on value types
+export type MyType = MyTypeUntyped | MyTypeSpecialized1 | MyTypeSpecialized2 | MyTypeSpecialized3 
 ```
 
 ### Shortcut properties
@@ -469,7 +504,7 @@ Code generators should track the `es_quirk` they implement and fail if a new unh
 
 ### Additional information
 
-If needed, you can specify additional information on each type with the approariate JSDoc tag.
+If needed, you can specify additional information on each type with the appropriate JSDoc tag.
 Following you can find a list of the supported tags:
 
 #### `@availability`
@@ -544,6 +579,7 @@ class Foo {
 
 The server side default value if the property is not specified.
 Default values can only be specified on optional properties.
+They appear in the generated documentation and do not affect clients.
 
 ```ts
 class Foo {
@@ -565,24 +601,11 @@ class Foo {
 }
 ```
 
-#### `@doc_url`
-
-The documentation url for the parameter or definition.
-If possible, use `@doc_id`.
-
-```ts
-class Foo {
-  bar: string
-  /** @doc_url http://localhost:9200 */
-  baz?: string
-  faz: string
-}
-```
-
 #### `@doc_id`
 
-The documentation id that can be used for generating the doc url.
-You must add the id/url pair in `specification/_doc_ids/table.csv`.
+An identifier that can be used for generating the doc url in clients.
+The unique id/url pair must exist in `specification/_doc_ids/table.csv`.
+NOTE: This link is *not* included in the OpenAPI output.
 
 ```ts
 /**
@@ -597,6 +620,64 @@ class Request {
 ```csv
 foobar,/guide/en/example
 ```
+
+#### `@ext_doc_id`
+
+An identifier for a link.
+The unique id/url pair must exist in `specification/_doc_ids/table.csv`.
+NOTE: This link is included in the OpenAPI output.
+
+```ts
+/**
+ * @variants container
+ * @non_exhaustive
+ * @ext_doc_id query-dsl
+ */
+export class QueryContainer {
+  ...
+}
+```
+
+```csv
+query-dsl,/guide/en/example
+```
+
+
+#### `@doc_url`
+
+The documentation url for the parameter or definition.
+To reduce the risk of broken links, use `@doc_id` instead.
+NOTE: This link is *not* included in the OpenAPI output.
+
+```ts
+class Foo {
+  bar: string
+  /** @doc_url http://localhost:9200 */
+  baz?: string
+  faz: string
+}
+```
+
+#### `@doc_tag`
+
+An OpenAPI tag that is used to group similar endpoints in the API documentation.
+If it is absent, by default the tag is derived from the first part of the namespace.
+
+```ts
+/**
+ * @rest_spec_name api
+ * @doc_tag my tag
+ */
+class Request {
+  ...
+}
+```
+
+You can see the existing tag values in [elasticsearch-shared-overlays.yaml](https://github.com/elastic/elasticsearch-specification/blob/main/docs/overlays/elasticsearch-shared-overlays.yaml).
+If you add a new tag value in your specification, you must also add it to this file.
+
+NOTE: In the OpenAPI specification, operations can have multiple tags. However, we currently support only a single tag.
+
 
 #### `@codegen_name`
 

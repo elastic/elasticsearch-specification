@@ -1,0 +1,30 @@
+summary: Role example 1
+method_request: POST /_security/role/my_admin_role
+description: Run `POST /_security/role/my_admin_role` to create a role.
+# type: request
+value: |-
+  {
+    "description": "Grants full access to all management features within the cluster.",
+    "cluster": ["all"],
+    "indices": [
+      {
+        "names": [ "index1", "index2" ],
+        "privileges": ["all"],
+        "field_security" : { // optional
+          "grant" : [ "title", "body" ]
+        },
+        "query": "{\"match\": {\"title\": \"foo\"}}" // optional
+      }
+    ],
+    "applications": [
+      {
+        "application": "myapp",
+        "privileges": [ "admin", "read" ],
+        "resources": [ "*" ]
+      }
+    ],
+    "run_as": [ "other_user" ], // optional
+    "metadata" : { // optional
+      "version" : 1
+    }
+  }

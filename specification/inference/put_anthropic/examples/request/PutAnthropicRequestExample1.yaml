@@ -1,0 +1,15 @@
+# summary:
+description: Run `PUT _inference/completion/anthropic_completion` to create an inference endpoint that performs a completion task.
+method_request: 'PUT _inference/completion/anthropic_completion'
+# type: "request"
+value: |-
+  {
+      "service": "anthropic",
+      "service_settings": {
+          "api_key": "Anthropic-Api-Key",
+          "model_id": "Model-ID"
+      },
+      "task_settings": {
+          "max_tokens": 1024
+      }
+  }

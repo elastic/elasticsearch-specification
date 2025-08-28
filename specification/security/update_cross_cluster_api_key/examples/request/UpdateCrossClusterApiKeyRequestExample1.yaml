@@ -1,0 +1,19 @@
+# summary:
+method_request: PUT /_security/cross_cluster/api_key/VuaCfGcBCdbkQm-e5aOx
+description: >
+  Run `PUT /_security/cross_cluster/api_key/VuaCfGcBCdbkQm-e5aOx` to update a cross-cluster API key, assigning it new access scope
+  and metadata.
+# type: request
+value: |-
+  {
+    "access": {
+      "replication": [
+        {
+          "names": ["archive"]
+        }
+      ]
+    },
+    "metadata": {
+      "application": "replication"
+    }
+  }

@@ -17,16 +17,17 @@
  * under the License.
  */
 
+import { IndexName, Indices } from '@_types/common'
 import { LifecycleOperationMode } from '@_types/Lifecycle'
 import { integer, long } from '@_types/Numeric'
-import { Indices } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export enum IndicatorHealthStatus {
   green,
   yellow,
   red,
-  unknown
+  unknown,
+  unavailable
 }
 
 export class Indicators {
@@ -34,9 +35,11 @@ export class Indicators {
   shards_availability?: ShardsAvailabilityIndicator
   disk?: DiskIndicator
   repository_integrity?: RepositoryIntegrityIndicator
+  data_stream_lifecycle?: DataStreamLifecycleIndicator
   ilm?: IlmIndicator
   slm?: SlmIndicator
   shards_capacity?: ShardsCapacityIndicator
+  file_settings?: FileSettingsIndicator
 }
 
 export class BaseIndicator {
@@ -108,6 +111,7 @@ export class ShardsAvailabilityIndicator extends BaseIndicator {
 }
 export class ShardsAvailabilityIndicatorDetails {
   creating_primaries: long
+  creating_replicas: long
   initializing_primaries: long
   initializing_replicas: long
   restarting_primaries: long
@@ -142,6 +146,22 @@ export class RepositoryIntegrityIndicatorDetails {
   corrupted?: string[]
 }
 
+/** DATA_STREAM_LIFECYCLE */
+
+export class DataStreamLifecycleIndicator extends BaseIndicator {
+  details?: DataStreamLifecycleDetails
+}
+export class DataStreamLifecycleDetails {
+  stagnating_backing_indices_count: integer
+  total_backing_indices_in_error: integer
+  stagnating_backing_indices?: StagnatingBackingIndices[]
+}
+export class StagnatingBackingIndices {
+  index_name: IndexName
+  first_occurrence_timestamp: long
+  retry_count: integer
+}
+
 /** ILM */
 
 export class IlmIndicator extends BaseIndicator {
@@ -150,6 +170,7 @@ export class IlmIndicator extends BaseIndicator {
 export class IlmIndicatorDetails {
   ilm_status: LifecycleOperationMode
   policies: long
+  stagnating_indices: integer
 }
 
 /** SLM */
@@ -160,7 +181,7 @@ export class SlmIndicator extends BaseIndicator {
 export class SlmIndicatorDetails {
   slm_status: LifecycleOperationMode
   policies: long
-  unhealthy_policies: SlmIndicatorUnhealthyPolicies
+  unhealthy_policies?: SlmIndicatorUnhealthyPolicies
 }
 
 export class SlmIndicatorUnhealthyPolicies {
@@ -182,4 +203,15 @@ export class ShardsCapacityIndicatorDetails {
 export class ShardsCapacityIndicatorTierDetail {
   max_shards_in_cluster: integer
   current_used_shards?: integer
+}
+
+/** FILE_SETTINGS **/
+
+export class FileSettingsIndicator extends BaseIndicator {
+  details?: FileSettingsIndicatorDetails
+}
+
+export class FileSettingsIndicatorDetails {
+  failure_streak: long
+  most_recent_failure: string
 }

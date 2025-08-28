@@ -20,13 +20,24 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes a connector.
+ * Delete a connector.
+ *
+ * Removes a connector and associated sync jobs.
+ * This is a destructive action that is not recoverable.
+ * NOTE: This action doesn’t delete any API keys, ingest pipelines, or data indices associated with the connector.
+ * These need to be removed manually.
  * @rest_spec_name connector.delete
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be deleted
@@ -34,6 +45,14 @@ export interface Request extends RequestBase {
     connector_id: Id
   }
   query_parameters: {
-    delete_sync_jobs: boolean
+    /**
+     * A flag indicating if associated sync jobs should be also removed. Defaults to false.
+     */
+    delete_sync_jobs?: boolean
+    /**
+     * A flag indicating if the connector should be hard deleted.
+     * @server_default false
+     */
+    hard?: boolean
   }
 }

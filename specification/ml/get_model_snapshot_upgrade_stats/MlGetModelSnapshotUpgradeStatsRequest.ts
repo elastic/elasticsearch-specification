@@ -21,13 +21,21 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Retrieves usage information for anomaly detection job model snapshot upgrades.
+ * Get anomaly detection job model snapshot upgrade usage info.
  * @rest_spec_name ml.get_model_snapshot_upgrade_stats
  * @availability stack since=7.16.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-get-job-model-snapshot-upgrade-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/model_snapshots/{snapshot_id}/_upgrade/_stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job.

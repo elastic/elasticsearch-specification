@@ -22,12 +22,21 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
- * Perform a search against a search application.
+ * Run a search application search.
+ * Generate and run an Elasticsearch query that uses the specified query parameteter and the search template associated with the search application or default template.
+ * Unspecified template parameters are assigned their default values if applicable.
  * @rest_spec_name search_application.search
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
+ * @doc_id search-application-search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/search_application/{name}/_search'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the search application to be searched.

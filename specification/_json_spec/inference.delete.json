@@ -4,7 +4,7 @@
       "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-inference-api.html",
       "description": "Delete an inference endpoint"
     },
-    "stability": "experimental",
+    "stability": "stable",
     "visibility": "public",
     "headers": {
       "accept": ["application/json"]
@@ -45,7 +45,7 @@
       },
       "force": {
         "type": "boolean",
-        "description": "True if the endpoint should be forcefully stopped (regardless of whether or not it is referenced by any ingest processors or semantic text fields).",
+        "description": "If true the endpoint will be forcefully stopped (regardless of whether or not it is referenced by any ingest processors or semantic text fields).",
         "required": false
       }
     }

@@ -1,0 +1,5 @@
+summary: Set the data stream lifecycle retention
+method_request: PUT _data_stream/my-data-stream/_lifecycle
+# description: Sets the lifecycle of a data stream.
+# type: request
+value: "{\n  \"data_retention\": \"7d\"\n}"

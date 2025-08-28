@@ -1,0 +1,16 @@
+summary: Create a policy with intevals
+method_request: PUT /_slm/policy/hourly-snapshots
+description: >
+  Run `PUT /_slm/policy/hourly-snapshots` to create a lifecycle policy that uses interval scheduling. It creates a snapshot once
+  every hour. The first snapshot will be created one hour after the policy is modified, with subsequent snapshots every hour
+  afterward.
+# type: request
+value: |-
+  {
+    "schedule": "1h",
+    "name": "<hourly-snap-{now/d}>",
+    "repository": "my_repository",
+    "config": {
+      "indices": ["data-*", "important"]
+    }
+  }

@@ -23,12 +23,22 @@ import { Duration } from '@_types/Time'
 import { DataStreamLifecycleDownsampling } from '@indices/_types/DataStreamLifecycleDownsampling'
 
 /**
- * Update the data lifecycle of the specified data streams.
+ * Update data stream lifecycles.
+ * Update the data stream lifecycle of the specified data streams.
  * @rest_spec_name indices.put_data_lifecycle
  * @availability stack since=8.11.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag data stream
+ * @doc_id data-stream-put-lifecycle
+ * @ext_doc_id data-stream-lifecycle
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/{name}/_lifecycle'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams used to limit the request.
@@ -41,7 +51,6 @@ export interface Request extends RequestBase {
     /**
      * Type of data stream that wildcard patterns can match.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `hidden`, `open`, `closed`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -59,6 +68,10 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
+  /*
+   * This is DataStreamLifecycle from @indices/_types/DataStreamLifecycle.ts,
+   * but kept as a properties body to avoid a breaking change
+   */
   body: {
     /**
      * If defined, every document added to this data stream will be stored at least for this time frame.
@@ -67,9 +80,14 @@ export interface Request extends RequestBase {
      */
     data_retention?: Duration
     /**
-     * If defined, every backing index will execute the configured downsampling configuration after the backing
-     * index is not the data stream write index anymore.
+     * The downsampling configuration to execute for the managed backing index after rollover.
      */
     downsampling?: DataStreamLifecycleDownsampling
+    /**
+     * If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle
+     * that's disabled (enabled: `false`) will have no effect on the data stream.
+     * @server_default true
+     */
+    enabled?: boolean
   }
 }

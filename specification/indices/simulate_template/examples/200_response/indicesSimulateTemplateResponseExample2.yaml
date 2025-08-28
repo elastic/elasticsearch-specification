@@ -1,0 +1,15 @@
+# summary:
+description: >
+  A successful response from `POST /_index_template/_simulate` with a template configuration in the request body.
+  The response shows any overlapping templates with a lower priority.
+# type: response
+# response_code: 200
+value:
+  "{\n  \"template\" : {\n    \"settings\" : {\n      \"index\" : {\n       \
+  \ \"number_of_replicas\" : \"1\",\n        \"routing\" : {\n          \"allocation\"\
+  \ : {\n            \"include\" : {\n              \"_tier_preference\" : \"data_content\"\
+  \n            }\n          }\n        }\n      }\n    },\n    \"mappings\" : {\n\
+  \      \"properties\" : {\n        \"@timestamp\" : {\n          \"type\" : \"date\"\
+  \n        }\n      }\n    },\n    \"aliases\" : { }\n  },\n  \"overlapping\" : [\n\
+  \    {\n      \"name\" : \"final-template\",\n      \"index_patterns\" : [\n   \
+  \     \"my-index-*\"\n      ]\n    }\n  ]\n}"

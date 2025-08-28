@@ -17,27 +17,36 @@
  * under the License.
  */
 
-import {
-  PerPartitionCategorization,
-  AnalysisMemoryLimit
-} from '@ml/_types/Analysis'
-import { Detector } from '@ml/_types/Detector'
-import { ModelPlotConfig } from '@ml/_types/ModelPlot'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import {
+  AnalysisMemoryLimit,
+  PerPartitionCategorization
+} from '@ml/_types/Analysis'
+import { DetectorUpdate } from '@ml/_types/Detector'
+import { ModelPlotConfig } from '@ml/_types/ModelPlot'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
+ * Update an anomaly detection job.
  * Updates certain properties of an anomaly detection job.
  * @rest_spec_name ml.update_job
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-update-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/_update'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the job.
@@ -129,7 +138,7 @@ export interface Request extends RequestBase {
     /**
      * An array of detector update objects.
      */
-    detectors?: Detector[]
+    detectors?: DetectorUpdate[]
     /**
      * Settings related to how categorization interacts with partition fields.
      */

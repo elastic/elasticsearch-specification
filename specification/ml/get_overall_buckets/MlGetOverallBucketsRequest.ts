@@ -20,10 +20,12 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { Duration, DateTime } from '@_types/Time'
+import { DateTime, Duration } from '@_types/Time'
 
 /**
- * Retrieves overall bucket results that summarize the bucket results of
+ * Get overall bucket results.
+ *
+ * Retrievs overall bucket results that summarize the bucket results of
  * multiple anomaly detection jobs.
  *
  * The `overall_score` is calculated by combining the scores of all the
@@ -44,8 +46,16 @@ import { Duration, DateTime } from '@_types/Time'
  * @availability stack since=6.1.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-get-overall-buckets
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/results/overall_buckets'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job. It can be a job identifier, a

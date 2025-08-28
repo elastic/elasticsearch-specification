@@ -1,0 +1,14 @@
+# summary:
+description: >
+  A successful response from `GET /_cat/master?v=true&format=json`.
+# type: response
+# response_code:
+value: |-
+  [
+    {
+      "id": "YzWoH_2BT-6UjVGDyPdqYg",
+      "host": "127.0.0.1",
+      "ip": "127.0.0.1",
+      "node": "YzWoH_2"
+    }
+  ]

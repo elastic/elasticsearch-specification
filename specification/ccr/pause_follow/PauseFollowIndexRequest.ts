@@ -19,14 +19,38 @@
 
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
+ * Pause a follower.
+ *
+ * Pause a cross-cluster replication follower index.
+ * The follower index will not fetch any additional operations from the leader index.
+ * You can resume following with the resume follower API.
+ * You can pause and resume a follower index to change the configuration of the following task.
  * @rest_spec_name ccr.pause_follow
  * @availability stack since=6.5.0 stability=stable
+ * @cluster_privileges manage_ccr
  * @doc_id ccr-post-pause-follow
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_ccr/pause_follow'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
+    /** The name of the follower index. */
     index: IndexName
+  }
+  query_parameters: {
+    /**
+     * The period to wait for a connection to the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * It can also be set to `-1` to indicate that the request should never timeout.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

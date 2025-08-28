@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Field } from '@_types/common'
 import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { Property } from './Property'
-import { Field } from '@_types/common'
 
 export class FieldMapping {
   full_name: string

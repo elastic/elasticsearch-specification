@@ -18,31 +18,11 @@
  */
 
 import { long } from '@_types/Numeric'
-import { IndexName, Name } from '@_types/common'
-import { EpochTime, UnitMillis } from '@_types/Time'
+import { SearchApplication } from '@search_application/_types/SearchApplication'
 
 export class Response {
   body: {
     count: long
-    results: SearchApplicationListItem[]
+    results: SearchApplication[]
   }
-}
-
-export class SearchApplicationListItem {
-  /**
-   * Search Application name
-   */
-  name: Name
-  /**
-   * Indices that are part of the Search Application
-   */
-  indices: IndexName[]
-  /**
-   * Last time the Search Application was updated
-   */
-  updated_at_millis: EpochTime<UnitMillis>
-  /**
-   * Analytics collection associated to the Search Application
-   */
-  analytics_collection_name?: Name
 }

@@ -1,0 +1,17 @@
+# summary:
+description: A successful response for clearing state information stored in system indices by Elasticsearch features.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "features" : [
+      {
+        "feature_name" : "security",
+        "status" : "SUCCESS"
+      },
+      {
+        "feature_name" : "tasks",
+        "status" : "SUCCESS"
+      }
+    ]
+  }

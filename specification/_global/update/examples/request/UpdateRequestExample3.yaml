@@ -1,0 +1,24 @@
+summary: Remove a tag with a script
+method_request: POST test/_update/1
+description: >
+  Run `POST test/_update/1` to use a script to remove a tag from a list of tags. The Painless function to remove a tag takes the
+  array index of the element you want to remove. To avoid a possible runtime error, you first need to make sure the tag exists. If
+  the list contains duplicates of the tag, this script just removes one occurrence.
+# type: request
+value: "{
+
+  \  \"script\": {
+
+  \    \"source\": \"if (ctx._source.tags.contains(params.tag)) { ctx._source.tags.remove(ctx._source.tags.indexOf(params.tag)) }\",
+
+  \    \"lang\": \"painless\",
+
+  \    \"params\": {
+
+  \      \"tag\": \"blue\"
+
+  \    }
+
+  \  }
+
+  }"

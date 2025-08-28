@@ -1,0 +1,13 @@
+# summary:
+description: Split an existing index into a new index with more primary shards.
+method_request: POST /my-index-000001/_split/split-my-index-000001
+# type: request
+value: "{
+
+  \  \"settings\": {
+
+  \    \"index.number_of_shards\": 2
+
+  \  }
+
+  }"

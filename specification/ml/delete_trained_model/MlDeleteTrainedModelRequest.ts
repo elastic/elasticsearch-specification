@@ -19,16 +19,26 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
- * Deletes an existing trained inference model that is currently not referenced
- * by an ingest pipeline.
+ * Delete an unreferenced trained model.
+ *
+ * The request deletes a trained inference model that is not referenced by an ingest pipeline.
  * @rest_spec_name ml.delete_trained_model
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml trained model
+ * @doc_id delete-trained-models
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model.
@@ -38,5 +48,10 @@ export interface Request extends RequestBase {
   query_parameters: {
     /** Forcefully deletes a trained model that is referenced by ingest pipelines or has a started deployment. **/
     force?: boolean
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
 }

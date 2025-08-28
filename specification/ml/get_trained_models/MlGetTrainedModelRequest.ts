@@ -23,13 +23,25 @@ import { integer } from '@_types/Numeric'
 import { Include } from '@ml/_types/Include'
 
 /**
- * Retrieves configuration information for a trained model.
+ * Get trained model configuration info.
  * @rest_spec_name ml.get_trained_models
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
+ * @doc_tag ml trained model
+ * @doc_id get-trained-models
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/trained_models'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model or a model alias.
@@ -76,6 +88,7 @@ export interface Request extends RequestBase {
      * body.
      */
     include?: Include
+
     /**
      * Specifies the maximum number of models to obtain.
      * @server_default 100

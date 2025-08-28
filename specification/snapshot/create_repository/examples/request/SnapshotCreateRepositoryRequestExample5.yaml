@@ -1,0 +1,17 @@
+summary: A source-only repository
+method_request: PUT _snapshot/my_src_only_repository
+description: Run `PUT _snapshot/my_src_only_repository` to create or update a source-only snapshot repository.
+# type: request
+value: "{
+
+  \  \"type\": \"source\",
+
+  \  \"settings\": {
+
+  \    \"delegate_type\": \"fs\",
+
+  \    \"location\": \"my_backup_repository\"
+
+  \  }
+
+  }"

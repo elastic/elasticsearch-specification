@@ -1,0 +1,6 @@
+# summary:
+description: A successful response when deleting expired and unused anomaly detection data.
+# type: response
+# response_code: 200
+value:
+  deleted: true

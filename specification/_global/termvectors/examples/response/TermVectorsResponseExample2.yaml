@@ -1,0 +1,32 @@
+summary: Per-field analyzer
+description: A successful response from `GET /my-index-000001/_termvectors` with `per_field_analyzer` in the request body.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "_index": "my-index-000001",
+    "_version": 0,
+    "found": true,
+    "took": 6,
+    "term_vectors": {
+      "fullname": {
+        "field_statistics": {
+            "sum_doc_freq": 2,
+            "doc_count": 4,
+            "sum_ttf": 4
+        },
+        "terms": {
+            "John Doe": {
+              "term_freq": 1,
+              "tokens": [
+                  {
+                    "position": 0,
+                    "start_offset": 0,
+                    "end_offset": 8
+                  }
+              ]
+            }
+        }
+      }
+    }
+  }

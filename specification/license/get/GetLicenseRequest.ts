@@ -20,13 +20,25 @@
 import { RequestBase } from '@_types/Base'
 
 /**
- * This API returns information about the type of license, when it was issued, and when it expires, for example.
- * For more information about the different types of licenses, see https://www.elastic.co/subscriptions.
+ * Get license information.
+ *
+ * Get information about your Elastic license including its type, its status, when it was issued, and when it expires.
+ *
+ * >info
+ * > If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.
+ * > If you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.
  * @rest_spec_name license.get
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id get-license
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_license'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * If `true`, this parameter returns enterprise for Enterprise license types. If `false`, this parameter returns platinum for both platinum and enterprise license types. This behavior is maintained for backwards compatibility.

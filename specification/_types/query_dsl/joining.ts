@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { InnerHits } from '@global/search/_types/hits'
 import { Field, Id, RelationName } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { InnerHits } from '@global/search/_types/hits'
 import { QueryBase, QueryContainer } from './abstractions'
 
 /**
@@ -38,6 +38,9 @@ export enum ChildScoreMode {
   min
 }
 
+/**
+ * @ext_doc_id query-dsl-has-child-query
+ */
 export class HasChildQuery extends QueryBase {
   /**
    * Indicates whether to ignore an unmapped `type` and not return any documents instead of an error.
@@ -75,6 +78,9 @@ export class HasChildQuery extends QueryBase {
   type: RelationName
 }
 
+/**
+ * @ext_doc_id query-dsl-has-parent-query
+ */
 export class HasParentQuery extends QueryBase {
   /**
    * Indicates whether to ignore an unmapped `parent_type` and not return any documents instead of an error.
@@ -103,6 +109,9 @@ export class HasParentQuery extends QueryBase {
   score?: boolean
 }
 
+/**
+ * @ext_doc_id query-dsl-nested-query
+ */
 export class NestedQuery extends QueryBase {
   /**
    * Indicates whether to ignore an unmapped path and not return any documents instead of an error.
@@ -129,6 +138,9 @@ export class NestedQuery extends QueryBase {
   score_mode?: ChildScoreMode
 }
 
+/**
+ * @ext_doc_id query-dsl-parent-id-query
+ */
 export class ParentIdQuery extends QueryBase {
   /**
    * ID of the parent document.

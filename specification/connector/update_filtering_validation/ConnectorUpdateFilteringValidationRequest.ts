@@ -18,16 +18,24 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { FilteringRulesValidation } from 'connector/_types/Connector'
+import { FilteringRulesValidation } from '@connector/_types/Connector'
 
 /**
- * Updates the draft filtering validation info for a connector.
+ * Update the connector draft filtering validation.
+ *
+ * Update the draft filtering validation info for a connector.
  * @rest_spec_name connector.update_filtering_validation
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  * @doc_id connector-update-filtering-validation
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}/_filtering/_validation'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be updated

@@ -1,0 +1,24 @@
+# summary:
+description: A successful response from `GET /_security/_authenticate`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "username": "rdeniro",
+    "roles": [
+      "admin"
+    ],
+    "full_name": null,
+    "email":  null,
+    "metadata": { },
+    "enabled": true,
+    "authentication_realm": {
+      "name" : "file",
+      "type" : "file"
+    },
+    "lookup_realm": {
+      "name" : "file",
+      "type" : "file"
+    },
+    "authentication_type": "realm"
+  }

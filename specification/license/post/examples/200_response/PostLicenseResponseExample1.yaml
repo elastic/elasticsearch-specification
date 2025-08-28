@@ -1,0 +1,15 @@
+# summary: licensing/get-trial-status.asciidoc:47
+description: If you update to a basic license and you previously had a license with more features, you receive this type of response. You must re-submit the API request and set the `acknowledge` parameter to `true`.
+# type: response
+# response_code: 200
+value:
+  acknowledged: false
+  license_status: valid
+  acknowledge:
+    message: '"""This license update requires acknowledgement. To acknowledge the license, please read the following messages and update the license again, this time with the "acknowledge=true" parameter:"""'
+    watcher:
+      - Watcher will be disabled
+    logstash:
+      - Logstash will no longer poll for centrally-managed pipelines
+    security:
+      - The following X-Pack security functionality will be disabled ...

@@ -1,0 +1,37 @@
+summary: Scripted upsert
+method_request: POST test/_update/1
+description: >
+  Run `POST test/_update/1` to perform a scripted upsert. When `scripted_upsert` is `true`, the script runs whether or not the
+  document exists.
+# type: request
+value: "{
+
+  \  \"scripted_upsert\": true,
+
+  \  \"script\": {
+
+  \    \"source\": \"\"\"
+
+  \      if ( ctx.op == 'create' ) {
+
+  \        ctx._source.counter = params.count
+
+  \      } else {
+
+  \        ctx._source.counter += params.count
+
+  \      }
+
+  \    \"\"\",
+
+  \    \"params\": {
+
+  \      \"count\": 4
+
+  \    }
+
+  \  },
+
+  \  \"upsert\": {}
+
+  }"

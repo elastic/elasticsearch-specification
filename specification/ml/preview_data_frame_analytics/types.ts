@@ -17,12 +17,12 @@
  * under the License.
  */
 
+import { integer } from '@_types/Numeric'
 import {
   DataframeAnalysisAnalyzedFields,
   DataframeAnalysisContainer,
   DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
-import { integer } from '@_types/Numeric'
 
 export class DataframePreviewConfig {
   source: DataframeAnalyticsSource

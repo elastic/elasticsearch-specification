@@ -17,19 +17,30 @@
  * under the License.
  */
 
-import { Policy } from '@ilm/_types/Policy'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Policy } from '@ilm/_types/Policy'
 
 /**
- * Creates a lifecycle policy. If the specified policy exists, the policy is replaced and the policy version is incremented.
+ * Create or update a lifecycle policy.
+ * If the specified policy exists, it is replaced and the policy version is incremented.
+ *
+ * NOTE: Only the latest version of the policy is stored, you cannot revert to previous versions.
  * @rest_spec_name ilm.put_lifecycle
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm
  * @index_privileges manage
+ * @doc_id ilm-put-lifecycle
+ * @ext_doc_id ilm-index-lifecycle
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ilm/policy/{policy}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the policy.

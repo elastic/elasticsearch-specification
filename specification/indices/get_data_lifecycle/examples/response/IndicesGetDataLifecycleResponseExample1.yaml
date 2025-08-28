@@ -1,0 +1,10 @@
+# summary:
+description: A successful response from `GET /_data_stream/{name}/_lifecycle?human&pretty`.
+# type: response
+# response_code: 200
+value:
+  "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream-1\",\n \
+  \     \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\":\
+  \ \"7d\"\n      }\n    },\n    {\n      \"name\": \"my-data-stream-2\",\n      \"\
+  lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"7d\"\n\
+  \      }\n    }\n  ]\n}"

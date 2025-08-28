@@ -1,0 +1,14 @@
+summary: Role example 2
+method_request: POST /_security/role/cli_or_drivers_minimal
+description: Run `POST /_security/role/cli_or_drivers_minimal` to configure a role that can run SQL in JDBC.
+# type: request
+value: |-
+  {
+    "cluster": ["cluster:monitor/main"],
+    "indices": [
+      {
+        "names": ["test"],
+        "privileges": ["read", "indices:admin/get"]
+      }
+    ]
+  }

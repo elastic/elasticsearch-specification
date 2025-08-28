@@ -1,0 +1,23 @@
+# summary:
+description: A successful response from `GET _rollup/job/sensor`.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"jobs\": [\n    {\n      \"config\": {\n        \"id\": \"sensor\",\n\
+  \        \"index_pattern\": \"sensor-*\",\n        \"rollup_index\": \"sensor_rollup\"\
+  ,\n        \"cron\": \"*/30 * * * * ?\",\n        \"groups\": {\n          \"date_histogram\"\
+  : {\n            \"fixed_interval\": \"1h\",\n            \"delay\": \"7d\",\n \
+  \           \"field\": \"timestamp\",\n            \"time_zone\": \"UTC\"\n    \
+  \      },\n          \"terms\": {\n            \"fields\": [\n              \"node\"\
+  \n            ]\n          }\n        },\n        \"metrics\": [\n          {\n\
+  \            \"field\": \"temperature\",\n            \"metrics\": [\n         \
+  \     \"min\",\n              \"max\",\n              \"sum\"\n            ]\n \
+  \         },\n          {\n            \"field\": \"voltage\",\n            \"metrics\"\
+  : [\n              \"avg\"\n            ]\n          }\n        ],\n        \"timeout\"\
+  : \"20s\",\n        \"page_size\": 1000\n      },\n      \"status\": {\n       \
+  \ \"job_state\": \"stopped\"\n      },\n      \"stats\": {\n        \"pages_processed\"\
+  : 0,\n        \"documents_processed\": 0,\n        \"rollups_indexed\": 0,\n   \
+  \     \"trigger_count\": 0,\n        \"index_failures\": 0,\n        \"index_time_in_ms\"\
+  : 0,\n        \"index_total\": 0,\n        \"search_failures\": 0,\n        \"search_time_in_ms\"\
+  : 0,\n        \"search_total\": 0,\n        \"processing_time_in_ms\": 0,\n    \
+  \    \"processing_total\": 0\n      }\n    }\n  ]\n}"

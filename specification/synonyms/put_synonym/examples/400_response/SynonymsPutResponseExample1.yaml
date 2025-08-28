@@ -1,0 +1,14 @@
+# summary:
+description: >
+  An abbreviated response from `PUT _synonyms/my-synonyms-set`.
+  If any of the synonym rules included is not valid, the API returns an error.
+# type: response
+# response_code: 400
+value:
+  "{\n  \"error\": {\n    \"root_cause\": [\n      {\n        \"type\": \"action_request_validation_exception\"\
+  ,\n        \"reason\": \"Validation Failed: 1: More than one explicit mapping specified\
+  \ in the same synonyms rule: [hello => hi => howdy];\",\n        \"stack_trace\"\
+  : ...\n      }\n    ],\n    \"type\": \"action_request_validation_exception\",\n\
+  \    \"reason\": \"Validation Failed: 1: More than one explicit mapping specified\
+  \ in the same synonyms rule: [hello => hi => howdy];\",\n    \"stack_trace\": ...\n\
+  \  },\n  \"status\": 400\n}"

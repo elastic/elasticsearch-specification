@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { PipelineSimulation } from './types'
+import { SimulateDocumentResult } from '../_types/Simulation'
 
 export class Response {
-  body: { docs: PipelineSimulation[] }
+  body: { docs: SimulateDocumentResult[] }
 }

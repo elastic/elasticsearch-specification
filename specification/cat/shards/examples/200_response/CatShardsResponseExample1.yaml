@@ -1,0 +1,19 @@
+summary: A single data stream or index
+description: >
+  A successful response from `GET _cat/shards?format=json`.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "index": "my-index-000001",
+      "shard": "0",
+      "prirep": "p",
+      "state": "STARTED",
+      "docs": "3014",
+      "store": "31.1mb",
+      "dataset": "249b",
+      "ip": "192.168.56.10",
+      "node": "H5dfFeA"
+    }
+  ]

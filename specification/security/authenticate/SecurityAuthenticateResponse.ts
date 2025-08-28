@@ -17,14 +17,13 @@
  * under the License.
  */
 
-import { ApiKey } from '@security/_types/ApiKey'
+import { Id, Metadata, Name, Username } from '@_types/common'
 import { RealmInfo } from '@security/_types/RealmInfo'
-import { Metadata, Name, Username } from '@_types/common'
 import { Token } from './types'
 
 export class Response {
   body: {
-    api_key?: ApiKey
+    api_key?: AuthenticateApiKey
     authentication_realm: RealmInfo
     email?: string | null
     full_name?: Name | null
@@ -40,4 +39,9 @@ export class Response {
      */
     token?: Token
   }
+}
+
+export class AuthenticateApiKey {
+  id: Id
+  name?: Name
 }

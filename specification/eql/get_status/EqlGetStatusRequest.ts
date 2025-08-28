@@ -21,13 +21,20 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Returns the current status for an async EQL search or a stored synchronous EQL search without returning results.
+ * Get the async EQL status.
+ * Get the current status for an async EQL search or a stored synchronous EQL search without returning results.
  * @doc_id eql-async-search-status-api
  * @rest_spec_name eql.get_status
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_eql/search/status/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** Identifier for the search. */
     id: Id

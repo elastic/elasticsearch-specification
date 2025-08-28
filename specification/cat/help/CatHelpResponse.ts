@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { HelpRecord } from './types'
-
+/**
+ * The response is a string with line-separated list of all the `_cat` endpoints, starting with a `=^.^=` emoticon.
+ */
 export class Response {
-  body: Array<HelpRecord>
+  body: string
 }

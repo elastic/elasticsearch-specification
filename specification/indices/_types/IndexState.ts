@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { DataStreamName, IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Alias } from './Alias'
 import { IndexSettings } from './IndexSettings'
-import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
 
 export class IndexState {
   aliases?: Dictionary<IndexName, Alias>
@@ -32,7 +32,7 @@ export class IndexState {
   defaults?: IndexSettings
   data_stream?: DataStreamName
   /**
-   * Data lifecycle applicable if this is a data stream.
+   * Data stream lifecycle applicable if this is a data stream.
    * @availability stack since=8.11.0 stability=stable
    * @availability serverless stability=stable
    */

@@ -1,0 +1,9 @@
+# summary:
+description: >
+  A successful response from `DELETE /_security/service/elastic/fleet-server/credential/token/token42`.
+# type: response
+# response_code:
+value: |-
+  {
+    "found" : true
+  }

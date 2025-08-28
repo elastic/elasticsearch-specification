@@ -1,0 +1,15 @@
+summary: A text embedding task
+description: Run `PUT _inference/text_embedding/amazon_bedrock_embeddings` to create an inference endpoint that performs a text embedding task.
+method_request: 'PUT _inference/text_embedding/amazon_bedrock_embeddings'
+# type: "request"
+value: |-
+  {
+      "service": "amazonbedrock",
+      "service_settings": {
+          "access_key": "AWS-access-key",
+          "secret_key": "AWS-secret-key",
+          "region": "us-east-1",
+          "provider": "amazontitan",
+          "model": "amazon.titan-embed-text-v2:0"
+      }
+  }

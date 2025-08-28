@@ -1,0 +1,9 @@
+summary: Prepare with realm
+method_request: POST /_security/oidc/prepare
+description: >
+  Run `POST /_security/oidc/prepare` to generate an authentication request for the OpenID Connect Realm `oidc1`.
+# type: request
+value: |-
+  {
+    "realm" : "oidc1"
+  }

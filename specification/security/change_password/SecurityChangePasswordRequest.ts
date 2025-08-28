@@ -21,10 +21,24 @@ import { RequestBase } from '@_types/Base'
 import { Password, Refresh, Username } from '@_types/common'
 
 /**
+ * Change passwords.
+ *
+ * Change the passwords of users in the native realm and built-in users.
  * @rest_spec_name security.change_password
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
+ * @doc_id security-api-change-password
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/user/{username}/_password'
+      methods: ['PUT', 'POST']
+    },
+    {
+      path: '/_security/user/_password'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * The user whose password you want to change. If you do not specify this

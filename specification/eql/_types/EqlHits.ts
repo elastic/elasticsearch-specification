@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { Field, Id, IndexName } from '@_types/common'
 import { TotalHits } from '@global/search/_types/hits'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Field, Id, IndexName } from '@_types/common'
 
 export class EqlHits<TEvent> {
   /**
@@ -45,6 +45,11 @@ export class HitsEvent<TEvent> {
   _id: Id
   /** Original JSON body passed for the event at index time. */
   _source: TEvent
+  /**
+   * Set to `true` for events in a timespan-constrained sequence that do not meet a given condition.
+   * @doc_id eql-missing-events
+   */
+  missing?: boolean
   fields?: Dictionary<Field, UserDefinedValue[]>
 }
 
@@ -55,5 +60,5 @@ export class HitsSequence<TEvent> {
    * Shared field values used to constrain matches in the sequence. These are defined using the by keyword in the EQL query syntax.
    * @doc_id eql-sequences
    */
-  join_keys: UserDefinedValue[]
+  join_keys?: UserDefinedValue[]
 }

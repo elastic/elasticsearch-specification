@@ -17,28 +17,16 @@
  * under the License.
  */
 
-import { FieldCollapse } from '@global/search/_types/FieldCollapse'
-import { Highlight } from '@global/search/_types/highlighting'
-import { TrackHits } from '@global/search/_types/hits'
-import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
-import { Rescore } from '@global/search/_types/rescoring'
-import {
-  SourceConfig,
-  SourceConfigParam
-} from '@global/search/_types/SourceFilter'
-import { Suggester } from '@global/search/_types/suggester'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
-  IndexName,
-  IndexAlias,
-  Fields,
   ExpandWildcards,
-  VersionString,
+  Field,
+  Fields,
+  IndexAlias,
+  IndexName,
   Routing,
   SearchType,
-  Field,
   SuggestMode
 } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
@@ -49,18 +37,37 @@ import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort, SortResults } from '@_types/sort'
 import { Duration } from '@_types/Time'
-import { Checkpoint } from '../_types/Checkpoints'
+import { FieldCollapse } from '@global/search/_types/FieldCollapse'
+import { Highlight } from '@global/search/_types/highlighting'
+import { TrackHits } from '@global/search/_types/hits'
+import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
+import { Rescore } from '@global/search/_types/rescoring'
+import {
+  SourceConfig,
+  SourceConfigParam
+} from '@global/search/_types/SourceFilter'
+import { Suggester } from '@global/search/_types/suggester'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Checkpoint } from '../_types/Checkpoints'
 
 /**
- * The purpose of the fleet search api is to provide a search api where the search will only be executed
- * after provided checkpoint has been processed and is visible for searches inside of Elasticsearch.
+ * Run a Fleet search.
+ * The purpose of the Fleet search API is to provide an API where the search will be run only
+ * after the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.
  * @rest_spec_name fleet.search
  * @availability stack since=7.16.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @index_privileges read
+ * @doc_id fleet-search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_fleet/_fleet_search'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * A single target to search. If the target is an index alias, it must resolve to a single index.
@@ -81,8 +88,7 @@ export interface Request extends RequestBase {
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
     lenient?: boolean
-    max_concurrent_shard_requests?: long
-    min_compatible_shard_node?: VersionString
+    max_concurrent_shard_requests?: integer
     preference?: string
     pre_filter_shard_size?: long
     request_cache?: boolean
@@ -124,9 +130,9 @@ export interface Request extends RequestBase {
      */
     wait_for_checkpoints?: Checkpoint[]
     /**
-     * If true, returns partial results if there are shard request timeouts or [shard failures](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-replication.html#shard-failures). If false, returns
-     * an error with no partial results. Defaults to the configured cluster setting `search.default_allow_partial_results`
-     * which is true by default.
+     * If true, returns partial results if there are shard request timeouts or shard failures.
+     * If false, returns an error with no partial results.
+     * Defaults to the configured cluster setting `search.default_allow_partial_results`, which is true by default.
      */
     allow_partial_search_results?: boolean
   }
@@ -161,7 +167,7 @@ export interface Request extends RequestBase {
     /**
      * Boosts the _score of documents from specified indices.
      */
-    indices_boost?: Array<Dictionary<IndexName, double>>
+    indices_boost?: Array<SingleKeyDictionary<IndexName, double>>
     /**
      * Array of wildcard (*) patterns. The request returns doc values for field
      * names matching these patterns in the hits.fields property of the response.
@@ -169,7 +175,7 @@ export interface Request extends RequestBase {
     docvalue_fields?: FieldAndFormat[]
     /**
      * Minimum _score for matching documents. Documents with a lower _score are
-     * not included in the search results.
+     * not included in search results and results collected by aggregations.
      */
     min_score?: double
     post_filter?: QueryContainer

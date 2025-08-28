@@ -20,5 +20,6 @@
 import { DataFrameAnalyticsRecord } from './types'
 
 export class Response {
+  /** @codegen_name data_frame_analytics */
   body: Array<DataFrameAnalyticsRecord>
 }

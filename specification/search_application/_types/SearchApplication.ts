@@ -17,36 +17,17 @@
  * under the License.
  */
 
-import { IndexName, Name } from '@_types/common'
+import { Name } from '@_types/common'
 import { EpochTime, UnitMillis } from '@_types/Time'
-import { InlineScript } from '@_types/Scripting'
+import { SearchApplicationParameters } from './SearchApplicationParameters'
 
-export class SearchApplication {
+export class SearchApplication extends SearchApplicationParameters {
   /**
-   * Search Application name.
+   * Search Application name
    */
   name: Name
-  /**
-   * Indices that are part of the Search Application.
-   */
-  indices: IndexName[]
   /**
    * Last time the Search Application was updated.
    */
   updated_at_millis: EpochTime<UnitMillis>
-  /**
-   * Analytics collection associated to the Search Application.
-   */
-  analytics_collection_name?: Name
-  /**
-   * Search template to use on search operations.
-   */
-  template?: SearchApplicationTemplate
-}
-
-export class SearchApplicationTemplate {
-  /**
-   * The associated mustache template.
-   */
-  script: InlineScript
 }

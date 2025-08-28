@@ -1,0 +1,13 @@
+# summary: connector/apis/create-connector-sync-job-api.asciidoc:15
+method_request: POST _connector/_sync_job
+# description: ''
+# type: request
+value: "{
+
+  \  \"id\": \"connector-id\",
+
+  \  \"job_type\": \"full\",
+
+  \  \"trigger_method\": \"on_demand\"
+
+  }"

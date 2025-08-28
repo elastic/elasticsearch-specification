@@ -1,0 +1,16 @@
+# summary: Get results for an async ES|QL query.
+method_request: 'POST /_query/async'
+# description:
+# type: request
+value: |-
+  {
+    "query": """
+      FROM library,remote-*:library
+      | EVAL year = DATE_TRUNC(1 YEARS, release_date)
+      | STATS MAX(page_count) BY year
+      | SORT year
+      | LIMIT 5
+    """,
+    "wait_for_completion_timeout": "2s",
+    "include_ccs_metadata": true
+  }

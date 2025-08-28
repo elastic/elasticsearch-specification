@@ -18,8 +18,8 @@
  */
 
 import { long } from '@_types/Numeric'
-import { ShardsStatsStage } from './SnapshotShardsStatsStage'
 import { Duration, DurationValue, EpochTime, UnitMillis } from '@_types/Time'
+import { ShardsStatsStage } from './SnapshotShardsStatsStage'
 
 export class SnapshotShardsStatus {
   stage: ShardsStatsStage

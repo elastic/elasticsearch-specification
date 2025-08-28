@@ -1,0 +1,39 @@
+# summary:
+method_request: POST /_security/api_key
+description: >
+  Run `POST /_security/api_key` to create an API key. If `expiration` is not provided, the API keys do not expire. If
+  `role_descriptors` is not provided, the permissions of the authenticated user are applied.
+# type: request
+value: |-
+  {
+    "name": "my-api-key",
+    "expiration": "1d",   
+    "role_descriptors": { 
+      "role-a": {
+        "cluster": ["all"],
+        "indices": [
+          {
+            "names": ["index-a*"],
+            "privileges": ["read"]
+          }
+        ]
+      },
+      "role-b": {
+        "cluster": ["all"],
+        "indices": [
+          {
+            "names": ["index-b*"],
+            "privileges": ["all"]
+          }
+        ]
+      }
+    },
+    "metadata": {
+      "application": "my-application",
+      "environment": {
+        "level": 1,
+        "trusted": true,
+        "tags": ["dev", "staging"]
+      }
+    }
+  }

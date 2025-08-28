@@ -17,15 +17,14 @@
  * under the License.
  */
 
-import { AdditionalProperty } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Missing } from '@_types/aggregations/AggregationContainer'
 import { Field, FieldValue } from '@_types/common'
 import { DistanceUnit, GeoDistanceType, GeoLocation } from '@_types/Geo'
 import { FieldType } from '@_types/mapping/Property'
-import { double, integer, long } from '@_types/Numeric'
+import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
+import { AdditionalProperty } from '@spec_utils/behaviors'
 
 export class NestedSortValue {
   filter?: QueryContainer
@@ -55,6 +54,10 @@ export class FieldSort {
 export class ScoreSort {
   order?: SortOrder
 }
+
+/**
+ * @behavior_meta AdditionalProperty key=field value=location
+ */
 export class GeoDistanceSort
   implements AdditionalProperty<Field, GeoLocation | GeoLocation[]>
 {
@@ -63,6 +66,7 @@ export class GeoDistanceSort
   ignore_unmapped?: boolean
   order?: SortOrder
   unit?: DistanceUnit
+  nested?: NestedSortValue
 }
 
 export class ScriptSort {
@@ -82,6 +86,7 @@ export enum ScriptSortType {
 /**
  * @doc_id sort-search-results
  * @variants container
+ * @behavior_meta AdditionalProperty key=field value=sort
  */
 export class SortOptions implements AdditionalProperty<Field, FieldSort> {
   _score?: ScoreSort

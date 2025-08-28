@@ -22,13 +22,25 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns information about one or more index templates.
+ * Get index templates.
+ * Get information about one or more index templates.
  * @rest_spec_name indices.get_index_template
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
- * @cluster_privileges manage_index_templates,manage
+ * @cluster_privileges manage_index_templates
+ * @doc_id indices-get-template
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_index_template'
+      methods: ['GET']
+    },
+    {
+      path: '/_index_template/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** Comma-separated list of index template names used to limit the request. Wildcard (*) expressions are supported. */
     name?: Name

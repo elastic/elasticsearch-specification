@@ -23,13 +23,21 @@ import { integer } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
 
 /**
- * Retrieves information about the scheduled events in calendars.
+ * Get info about events in calendars.
  * @rest_spec_name ml.get_calendar_events
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-get-calendar-event
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/calendars/{calendar_id}/events'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** A string that uniquely identifies a calendar. You can get information for multiple calendars by using a comma-separated list of ids or a wildcard expression. You can get information for all calendars by using `_all` or `*` or by omitting the calendar identifier.*/
     calendar_id: Id

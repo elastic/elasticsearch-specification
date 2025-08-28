@@ -1,0 +1,13 @@
+summary: Change a dynamic index setting
+method_request: PUT /my-index-000001/_settings
+# description: ''
+# type: request
+value: "{
+
+  \  \"index\" : {
+
+  \    \"number_of_replicas\" : 2
+
+  \  }
+
+  }"

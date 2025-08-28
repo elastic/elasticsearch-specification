@@ -1,0 +1,9 @@
+# summary: connector/apis/update-connector-status-api.asciidoc:75
+method_request: PUT _connector/my-connector/_status
+# description: ''
+# type: request
+value: "{
+
+  \    \"status\": \"needs_configuration\"
+
+  }"

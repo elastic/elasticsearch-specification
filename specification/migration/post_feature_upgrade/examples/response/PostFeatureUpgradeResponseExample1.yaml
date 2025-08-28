@@ -1,0 +1,8 @@
+# summary:
+description: >
+  When you run `POST /_migration/system_features` to start the migration process, the response lists the features that will be migrated.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"accepted\" : true,\n  \"features\" : [\n    {\n      \"feature_name\"\
+  \ : \"security\"\n    }\n  ]\n}"

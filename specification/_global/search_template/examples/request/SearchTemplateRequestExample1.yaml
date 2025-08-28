@@ -1,0 +1,14 @@
+# summary:
+method_request: GET my-index/_search/template
+description: >
+  Run `GET my-index/_search/template` to run a search with a search template.
+# type: request
+value: |-
+  {
+    "id": "my-search-template",
+    "params": {
+      "query_string": "hello world",
+      "from": 0,
+      "size": 10
+    }
+  }

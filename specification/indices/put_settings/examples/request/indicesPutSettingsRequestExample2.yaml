@@ -1,0 +1,13 @@
+summary: Reset an index setting
+method_request: PUT /my-index-000001/_settings
+description: To revert a setting to the default value, use `null`.
+# type: request
+value: "{
+
+  \  \"index\" : {
+
+  \    \"refresh_interval\" : null
+
+  \  }
+
+  }"

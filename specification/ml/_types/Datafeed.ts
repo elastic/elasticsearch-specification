@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { Id, Indices, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
@@ -27,11 +26,13 @@ import { ScriptField } from '@_types/Scripting'
 import {
   Duration,
   DurationValue,
-  UnitMillis,
-  UnitFloatMillis
+  EpochTime,
+  UnitFloatMillis,
+  UnitMillis
 } from '@_types/Time'
-import { DiscoveryNode } from './DiscoveryNode'
 import { DatafeedAuthorization } from '@ml/_types/Authorization'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { DiscoveryNodeCompact } from './DiscoveryNode'
 
 export class Datafeed {
   /** @aliases aggs */
@@ -47,6 +48,9 @@ export class Datafeed {
   indexes?: string[]
   job_id: Id
   max_empty_searches?: integer
+  /**
+   * @ext_doc_id query-dsl
+   */
   query: QueryContainer
   query_delay?: Duration
   script_fields?: Dictionary<string, ScriptField>
@@ -151,7 +155,7 @@ export class DatafeedStats {
    * For started datafeeds only, this information pertains to the node upon which the datafeed is started.
    * @availability stack
    */
-  node?: DiscoveryNode
+  node?: DiscoveryNodeCompact
   /**
    * The status of the datafeed, which can be one of the following values: `starting`, `started`, `stopping`, `stopped`.
    */
@@ -159,7 +163,7 @@ export class DatafeedStats {
   /**
    * An object that provides statistical information about timing aspect of this datafeed.
    */
-  timing_stats: DatafeedTimingStats
+  timing_stats?: DatafeedTimingStats
   /**
    * An object containing the running state for this datafeed.
    * It is only provided if the datafeed is started.
@@ -176,6 +180,9 @@ export class DatafeedTimingStats {
    * The exponential average search time per hour, in milliseconds.
    */
   exponential_average_search_time_per_hour_ms: DurationValue<UnitFloatMillis>
+
+  exponential_average_calculation_context?: ExponentialAverageCalculationContext
+
   /**
    * Identifier for the anomaly detection job.
    */
@@ -192,6 +199,12 @@ export class DatafeedTimingStats {
    * The average search time per bucket, in milliseconds.
    */
   average_search_time_per_bucket_ms?: DurationValue<UnitFloatMillis>
+}
+
+export class ExponentialAverageCalculationContext {
+  incremental_metric_value_ms: DurationValue<UnitFloatMillis>
+  latest_timestamp?: EpochTime<UnitMillis>
+  previous_exponential_average_ms?: DurationValue<UnitFloatMillis>
 }
 
 export class DatafeedRunningState {

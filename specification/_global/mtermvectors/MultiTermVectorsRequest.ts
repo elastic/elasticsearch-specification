@@ -29,22 +29,47 @@ import {
 import { Operation } from './types'
 
 /**
+ * Get multiple term vectors.
+ *
+ * Get multiple term vectors with a single request.
+ * You can specify existing documents by index and ID or provide artificial documents in the body of the request.
+ * You can specify the index in the request body or request URI.
+ * The response contains a `docs` array with all the fetched termvectors.
+ * Each element has the structure provided by the termvectors API.
+ *
+ * **Artificial documents**
+ *
+ * You can also use `mtermvectors` to generate term vectors for artificial documents provided in the body of the request.
+ * The mapping used is determined by the specified `_index`.
  * @rest_spec_name mtermvectors
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @index_privileges read
+ * @doc_tag document
+ * @doc_id docs-multi-termvectors
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_mtermvectors'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_mtermvectors'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
-     * Name of the index that contains the documents.
+     * The name of the index that contains the documents.
      */
     index?: IndexName
   }
   query_parameters: {
     ids?: Id[]
     /**
-     * Comma-separated list or wildcard expressions of fields to include in the statistics.
-     * Used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.
+     * A comma-separated list or wildcard expressions of fields to include in the statistics.
+     * It is used as the default list unless a specific field list is provided in the `completion_fields` or `fielddata_fields` parameters.
      */
     fields?: Fields
     /**
@@ -68,8 +93,8 @@ export interface Request extends RequestBase {
      */
     positions?: boolean
     /**
-     * Specifies the node or shard the operation should be performed on.
-     * Random by default.
+     * The node or shard the operation should be performed on.
+     * It is random by default.
      */
     preference?: string
     /**
@@ -79,7 +104,7 @@ export interface Request extends RequestBase {
      */
     realtime?: boolean
     /**
-     * Custom value used to route operations to a specific shard.
+     * A custom value used to route operations to a specific shard.
      */
     routing?: Routing
     /**
@@ -92,17 +117,17 @@ export interface Request extends RequestBase {
      */
     version?: VersionNumber
     /**
-     * Specific version type.
+     * The version type.
      */
     version_type?: VersionType
   }
   body: {
     /**
-     * Array of existing or artificial documents.
+     * An array of existing or artificial documents.
      */
     docs?: Operation[]
     /**
-     * Simplified syntax to specify documents by their ID if they're in the same index.
+     * A simplified syntax to specify documents by their ID if they're in the same index.
      */
     ids?: Id[]
   }

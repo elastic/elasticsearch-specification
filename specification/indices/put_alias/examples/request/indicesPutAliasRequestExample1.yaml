@@ -1,0 +1,23 @@
+# summary: indices/aliases.asciidoc:10
+method_request: POST _aliases
+# description: ''
+# type: request
+value: "{
+
+  \  \"actions\": [
+
+  \    {
+
+  \      \"add\": {
+
+  \        \"index\": \"my-data-stream\",
+
+  \        \"alias\": \"my-alias\"
+
+  \      }
+
+  \    }
+
+  \  ]
+
+  }"

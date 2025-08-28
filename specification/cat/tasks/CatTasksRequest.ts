@@ -17,19 +17,28 @@
  * under the License.
  */
 
+import { Names } from '@_types/common'
+import { Duration, TimeUnit } from '@_types/Time'
 import { CatRequestBase } from '@cat/_types/CatBase'
-import { long } from '@_types/Numeric'
 
 /**
- * Returns information about tasks currently executing in the cluster.
+ * Get task information.
+ *
+ * Get information about tasks currently running in the cluster.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.
  * @rest_spec_name cat.tasks
  * @availability stack since=5.0.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
- * @doc_id tasks
+ * @doc_id cat-tasks
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/tasks'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * The task action names, which are used to limit the response.
@@ -41,8 +50,33 @@ export interface Request extends CatRequestBase {
      */
     detailed?: boolean
     /** Unique node identifiers, which are used to limit the response. */
-    node_id?: string[]
+    nodes?: string[]
     /** The parent task identifier, which is used to limit the response. */
     parent_task_id?: string
+    /**
+     * List of columns to appear in the response. Supports simple wildcards.
+     */
+    h?: Names
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
+    /**
+     * Unit used to display time values.
+     */
+    time?: TimeUnit
+    /**
+     * Period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
+    /**
+     * If `true`, the request blocks until the task has completed.
+     * @server_default false
+     */
+    wait_for_completion?: boolean
   }
 }

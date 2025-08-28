@@ -1,0 +1,12 @@
+# summary:
+description: A successful response from `POST /_security/api_key`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "id": "VuaCfGcBCdbkQm-e5aOx",        
+    "name": "my-api-key",
+    "expiration": 1544068612110,         
+    "api_key": "ui2lp2axTNmsyakw9tvNnw", 
+    "encoded": "VnVhQ2ZHY0JDZGJrUW0tZTVhT3g6dWkybHAyYXhUTm1zeWFrdzl0dk5udw=="  
+  }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { HealthStatus } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class IndexHealthStats {
   active_primary_shards: integer
@@ -31,6 +31,7 @@ export class IndexHealthStats {
   shards?: Dictionary<string, ShardHealthStats>
   status: HealthStatus
   unassigned_shards: integer
+  unassigned_primary_shards: integer
 }
 
 export class ShardHealthStats {
@@ -40,4 +41,7 @@ export class ShardHealthStats {
   relocating_shards: integer
   status: HealthStatus
   unassigned_shards: integer
+  unassigned_primary_shards: integer
 }
+
+export type WaitForNodes = string | integer

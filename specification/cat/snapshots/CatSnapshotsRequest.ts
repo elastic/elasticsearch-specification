@@ -17,11 +17,14 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
 import { Names } from '@_types/common'
+import { Duration, TimeUnit } from '@_types/Time'
+import { CatRequestBase, CatSnapshotsColumns } from '@cat/_types/CatBase'
 
 /**
- * Returns information about the snapshots stored in one or more repositories.
+ * Get snapshot information.
+ *
+ * Get information about the snapshots stored in one or more repositories.
  * A snapshot is a backup of an index or running Elasticsearch cluster.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.
  * @rest_spec_name cat.snapshots
@@ -31,6 +34,16 @@ import { Names } from '@_types/common'
  * @cluster_privileges monitor_snapshot
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/snapshots'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/snapshots/{repository}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A comma-separated list of snapshot repositories used to limit the request.
@@ -46,5 +59,26 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     ignore_unavailable?: boolean
+    /**
+     * A comma-separated list of columns names to display.
+     * It supports simple wildcards.
+     * @server_default ip,hp,rp,r,m,n,cpu,l
+     */
+    h?: CatSnapshotsColumns
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Unit used to display time values.
+     */
+    time?: TimeUnit
   }
 }

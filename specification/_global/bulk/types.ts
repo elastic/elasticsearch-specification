@@ -17,12 +17,10 @@
  * under the License.
  */
 
-import { InlineGet } from '@_types/common'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Id,
   IndexName,
+  InlineGet,
   Routing,
   SequenceNumber,
   VersionNumber,
@@ -30,9 +28,11 @@ import {
 } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
-import { ShardStatistics } from '@_types/Stats'
 import { Script } from '@_types/Scripting'
+import { ShardStatistics } from '@_types/Stats'
 import { SourceConfig } from '@global/search/_types/SourceFilter'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class ResponseItem {
   /**
@@ -40,44 +40,54 @@ export class ResponseItem {
    */
   _id?: string | null
   /**
-   * Name of the index associated with the operation.
+   * The name of the index associated with the operation.
    * If the operation targeted a data stream, this is the backing index into which the document was written.
    */
   _index: string
   /**
-   * HTTP status code returned for the operation.
+   * The HTTP status code returned for the operation.
    */
   status: integer
+  failure_store?: FailureStoreStatus
   /**
-   * Contains additional information about the failed operation.
-   * The parameter is only returned for failed operations.
+   * Additional information about the failed operation.
+   * The property is returned only for failed operations.
    */
   error?: ErrorCause
   /**
    * The primary term assigned to the document for the operation.
+   * This property is returned only for successful operations.
    */
   _primary_term?: long
   /**
-   * Result of the operation.
+   * The result of the operation.
    * Successful values are `created`, `deleted`, and `updated`.
    */
   result?: string
   /**
    * The sequence number assigned to the document for the operation.
-   * Sequence numbers are used to ensure an older version of a document doesn’t overwrite a newer version.
+   * Sequence numbers are used to ensure an older version of a document doesn't overwrite a newer version.
    */
   _seq_no?: SequenceNumber
   /**
-   * Contains shard information for the operation.
+   * Shard information for the operation.
    */
   _shards?: ShardStatistics
   /**
    * The document version associated with the operation.
    * The document version is incremented each time the document is updated.
+   * This property is returned only for successful actions.
    */
   _version?: VersionNumber
   forced_refresh?: boolean
   get?: InlineGet<Dictionary<string, UserDefinedValue>>
+}
+
+export enum FailureStoreStatus {
+  not_applicable_or_unknown,
+  used,
+  not_enabled,
+  failed
 }
 
 export enum OperationType {
@@ -93,11 +103,11 @@ export class OperationBase {
    */
   _id?: Id
   /**
-   * Name of the index or index alias to perform the action on.
+   * The name of the index or index alias to perform the action on.
    */
   _index?: IndexName
   /**
-   * Custom value used to route operations to a specific shard.
+   * A custom value used to route operations to a specific shard.
    */
   routing?: Routing
   if_primary_term?: long
@@ -109,19 +119,19 @@ export class OperationBase {
 export class WriteOperation extends OperationBase {
   /**
    * A map from the full name of fields to the name of dynamic templates.
-   * Defaults to an empty map.
-   * If a name matches a dynamic template, then that template will be applied regardless of other match predicates defined in the template.
-   * If a field is already defined in the mapping, then this parameter won’t be used.
+   * It defaults to an empty map.
+   * If a name matches a dynamic template, that template will be applied regardless of other match predicates defined in the template.
+   * If a field is already defined in the mapping, then this parameter won't be used.
    */
   dynamic_templates?: Dictionary<string, string>
   /**
-   * ID of the pipeline to use to preprocess incoming documents.
-   * If the index has a default ingest pipeline specified, then setting the value to `_none` disables the default ingest pipeline for this request.
-   * If a final pipeline is configured it will always run, regardless of the value of this parameter.
+   * The ID of the pipeline to use to preprocess incoming documents.
+   * If the index has a default ingest pipeline specified, setting the value to `_none` turns off the default ingest pipeline for this request.
+   * If a final pipeline is configured, it will always run regardless of the value of this parameter.
    */
   pipeline?: string
   /**
-   * If `true`, the request’s actions must target an index alias.
+   * If `true`, the request's actions must target an index alias.
    * @server_default false
    */
   require_alias?: boolean
@@ -135,41 +145,43 @@ export class DeleteOperation extends OperationBase {}
 
 export class UpdateOperation extends OperationBase {
   /**
-   * If `true`, the request’s actions must target an index alias.
+   * If `true`, the request's actions must target an index alias.
    * @server_default false
    */
   require_alias?: boolean
+  /**
+   * The number of times an update should be retried in the case of a version conflict.
+   */
   retry_on_conflict?: integer
 }
 
 /** @variants container */
 export class OperationContainer {
   /**
-   * Indexes the specified document.
-   * If the document exists, replaces the document and increments the version.
+   * Index the specified document.
+   * If the document exists, it replaces the document and increments the version.
    * The following line must contain the source data to be indexed.
    */
   index?: IndexOperation
   /**
-   * Indexes the specified document if it does not already exist.
+   * Index the specified document if it does not already exist.
    * The following line must contain the source data to be indexed.
    */
   create?: CreateOperation
   /**
-   * Performs a partial document update.
+   * Perform a partial document update.
    * The following line must contain the partial document and update options.
    */
   update?: UpdateOperation
   /**
-   * Removes the specified document from the index.
+   * Remove the specified document from the index.
    */
   delete?: DeleteOperation
 }
 
 export class UpdateAction<TDocument, TPartialDocument> {
   /**
-   * Set to false to disable setting 'result' in the response
-   * to 'noop' if no change to the document occurred.
+   * If true, the `result` in the response is set to 'noop' when no changes to the document occur.
    * @server_default true
    */
   detect_noop?: boolean
@@ -178,28 +190,28 @@ export class UpdateAction<TDocument, TPartialDocument> {
    */
   doc?: TPartialDocument
   /**
-   * Set to true to use the contents of 'doc' as the value of 'upsert'
+   * Set to `true` to use the contents of `doc` as the value of `upsert`.
    * @server_default false
    */
   doc_as_upsert?: boolean
   /**
-   * Script to execute to update the document.
+   * The script to run to update the document.
    */
   script?: Script
   /**
-   * Set to true to execute the script whether or not the document exists.
+   * Set to `true` to run the script whether or not the document exists.
    * @server_default false
    */
   scripted_upsert?: boolean
   /**
-   * Set to false to disable source retrieval. You can also specify a comma-separated
-   * list of the fields you want to retrieve.
+   * If `false`, source retrieval is turned off.
+   * You can also specify a comma-separated list of the fields you want to retrieve.
    * @server_default true
    */
   _source?: SourceConfig
   /**
-   * If the document does not already exist, the contents of 'upsert' are inserted as a
-   * new document. If the document exists, the 'script' is executed.
+   * If the document does not already exist, the contents of `upsert` are inserted as a new document.
+   * If the document exists, the `script` is run.
    */
   upsert?: TDocument
 }

@@ -19,6 +19,9 @@
 
 export class Response {
   body: {
+    /**
+     * An XML string that contains a SAML Service Provider's metadata for the realm.
+     */
     metadata: string
   }
 }

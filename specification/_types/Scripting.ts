@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { SearchRequestBody } from '@global/search/_types/SearchRequestBody'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id } from './common'
@@ -44,49 +45,48 @@ export enum ScriptLanguage {
   java
 }
 
+/** @codegen_names script_string, script_template */
+export type ScriptSource = string | SearchRequestBody
+
 export class StoredScript {
   /**
-   * Specifies the language the script is written in.
+   * The language the script is written in.
+   * For search templates, use `mustache`.
    */
   lang: ScriptLanguage
   options?: Dictionary<string, string>
   /**
    * The script source.
+   * For search templates, an object containing the search template.
    */
-  source: string
+  source: ScriptSource
 }
 
-export class ScriptBase {
+/**
+ * @shortcut_property source
+ * */
+export class Script {
+  /**
+   * The script source.
+   */
+  source?: ScriptSource
+  /**
+   * The `id` for a stored script.
+   */
+  id?: Id
+
   /**
    * Specifies any named parameters that are passed into the script as variables.
    * Use parameters instead of hard-coded values to decrease compile time.
    */
   params?: Dictionary<string, UserDefinedValue>
-}
-
-/** @shortcut_property source */
-export class InlineScript extends ScriptBase {
   /**
    * Specifies the language the script is written in.
    * @server_default painless
    */
   lang?: ScriptLanguage
   options?: Dictionary<string, string>
-  /**
-   * The script source.
-   */
-  source: string
 }
-
-export class StoredScriptId extends ScriptBase {
-  /**
-   * The `id` for a stored script.
-   */
-  id: Id
-}
-
-/** @codegen_names inline, stored */
-export type Script = InlineScript | StoredScriptId
 
 export class ScriptField {
   script: Script

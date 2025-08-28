@@ -1,0 +1,29 @@
+# summary:
+description: >
+  A successful response from `GET _cat/templates/my-template-*?v=true&s=name&format=json`.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "name": "my-template-0",
+      "index_patterns": "[te*]",
+      "order": "500",
+      "version": null,
+      "composed_of": "[]"
+    },
+    {
+      "name": "my-template-1",
+      "index_patterns": "[tea*]",
+      "order": "501",
+      "version": null,
+      "composed_of": "[]"
+    },
+    {
+      "name": "my-template-2",
+      "index_patterns": "[teak*]",
+      "order": "502",
+      "version": "7",
+      "composed_of": "[]"
+    }
+  ]

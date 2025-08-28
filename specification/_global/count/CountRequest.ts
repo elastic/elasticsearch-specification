@@ -24,15 +24,39 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
 
 /**
+ * Count search results.
+ * Get the number of documents matching a query.
+ *
+ * The query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.
+ * The query is optional. When no query is provided, the API uses `match_all` to count all the documents.
+ *
+ * The count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.
+ *
+ * The operation is broadcast across all shards.
+ * For each shard ID group, a replica is chosen and the search is run against it.
+ * This means that replicas increase the scalability of the count.
  * @rest_spec_name count
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag search
+ * @doc_id search-count
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_count'
+      methods: ['POST', 'GET']
+    },
+    {
+      path: '/{index}/_count'
+      methods: ['POST', 'GET']
+    }
+  ]
   path_parts: {
     /**
-     * Comma-separated list of data streams, indices, and aliases to search.
-     * Supports wildcards (`*`).
+     * A comma-separated list of data streams, indices, and aliases to search.
+     * It supports wildcards (`*`).
      * To search all data streams and indices, omit this parameter or use `*` or `_all`.
      */
     index?: Indices
@@ -41,40 +65,43 @@ export interface Request extends RequestBase {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
      * This behavior applies even if the request targets other open indices.
+     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
      * @server_default true
      */
     allow_no_indices?: boolean
     /**
-     * Analyzer to use for the query string.
-     * This parameter can only be used when the `q` query string parameter is specified.
+     * The analyzer to use for the query string.
+     * This parameter can be used only when the `q` query string parameter is specified.
      */
     analyzer?: string
     /**
      * If `true`, wildcard and prefix queries are analyzed.
-     * This parameter can only be used when the `q` query string parameter is specified.
+     * This parameter can be used only when the `q` query string parameter is specified.
      * @server_default false
      */
     analyze_wildcard?: boolean
     /**
      * The default operator for query string query: `AND` or `OR`.
-     * This parameter can only be used when the `q` query string parameter is specified.
+     * This parameter can be used only when the `q` query string parameter is specified.
+     * @server_default OR
      */
     default_operator?: Operator
     /**
-     * Field to use as default where no field prefix is given in the query string.
-     * This parameter can only be used when the `q` query string parameter is specified.
+     * The field to use as a default when no field prefix is given in the query string.
+     * This parameter can be used only when the `q` query string parameter is specified.
      */
     df?: string
     /**
-     * Type of index that wildcard patterns can match.
+     * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
-     * Supports comma-separated values, such as `open,hidden`.
+     * It supports comma-separated values, such as `open,hidden`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
-     * If `true`, concrete, expanded or aliased indices are ignored when frozen.
+     * If `true`, concrete, expanded, or aliased indices are ignored when frozen.
      * @server_default true
+     * @deprecated 7.16.0
      */
     ignore_throttled?: boolean
     /**
@@ -84,36 +111,43 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     /**
      * If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.
+     * This parameter can be used only when the `q` query string parameter is specified.
      * @server_default false
      */
     lenient?: boolean
     /**
-     * Sets the minimum `_score` value that documents must have to be included in the result.
+     * The minimum `_score` value that documents must have to be included in the result.
      */
     min_score?: double
     /**
-     * Specifies the node or shard the operation should be performed on.
-     * Random by default.
+     * The node or shard the operation should be performed on.
+     * By default, it is random.
      */
     preference?: string
     /**
-     * Custom value used to route operations to a specific shard.
+     * A custom value used to route operations to a specific shard.
      */
     routing?: Routing
     /**
-     * Maximum number of documents to collect for each shard.
+     * The maximum number of documents to collect for each shard.
      * If a query reaches this limit, Elasticsearch terminates the query early.
      * Elasticsearch collects documents before sorting.
+     *
+     * IMPORTANT: Use with caution.
+     * Elasticsearch applies this parameter to each shard handling the request.
+     * When possible, let Elasticsearch perform early termination automatically.
+     * Avoid specifying this parameter for requests that target data streams with backing indices across multiple data tiers.
      */
     terminate_after?: long
     /**
-     * Query in the Lucene query string syntax.
+     * The query in Lucene query string syntax. This parameter cannot be used with a request body.
      */
     q?: string
   }
   body: {
     /**
-     * Defines the search definition using the Query DSL.
+     * Defines the search query using Query DSL. A request body query cannot be used
+     * with the `q` query string parameter.
      */
     query?: QueryContainer
   }

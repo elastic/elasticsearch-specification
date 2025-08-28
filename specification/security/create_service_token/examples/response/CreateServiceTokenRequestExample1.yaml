@@ -1,0 +1,14 @@
+# summary:
+description: >
+  A successful response from `POST /_security/service/elastic/fleet-server/credential/token/token1`.
+  The response includes the service account token, its name, and its secret value as a bearer token.
+# type: response
+# response_code:
+value: |-
+  {
+    "created": true,
+    "token": {
+      "name": "token1",
+      "value": "AAEAAWVsYXN0aWM...vZmxlZXQtc2VydmVyL3Rva2VuMTo3TFdaSDZ" 
+    }
+  }

@@ -1,0 +1,18 @@
+summary: Move to forcemerge step
+method_request: POST _ilm/move/my-index-000001
+description: >
+  Run `POST _ilm/move/my-index-000001` to move `my-index-000001` from the initial step to the `forcemerge` step.
+# type: request
+value: |-
+  {
+    "current_step": {
+      "phase": "new",
+      "action": "complete",
+      "name": "complete"
+    },
+    "next_step": {
+      "phase": "warm",
+      "action": "forcemerge",
+      "name": "forcemerge"
+    }
+  }

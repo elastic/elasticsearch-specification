@@ -21,13 +21,23 @@ import { Id } from '@_types/common'
 import { WithNullValue } from '@spec_utils/utils'
 
 /**
- * Updates the filtering field in the connector document
+ * Update the connector error field.
+ *
+ * Set the error field for the connector.
+ * If the error provided in the request body is non-null, the connector’s status is updated to error.
+ * Otherwise, if the error is reset to null, the connector status is updated to connected.
  * @rest_spec_name connector.update_error
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  * @doc_id connector-update-error
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}/_error'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be updated

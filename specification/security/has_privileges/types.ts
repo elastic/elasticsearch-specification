@@ -17,16 +17,17 @@
  * under the License.
  */
 
+import { Indices, Name } from '@_types/common'
 import { IndexPrivilege } from '@security/_types/Privileges'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Indices, Name } from '@_types/common'
 
 export class ApplicationPrivilegesCheck {
   /** The name of the application. */
   application: string
-  /** A list of the privileges that you want to check for the specified resources. May be either application privilege names, or the names of actions that are granted by those privileges */
+  /** A list of the privileges that you want to check for the specified resources.
+   * It may be either application privilege names or the names of actions that are granted by those privileges */
   privileges: string[]
-  /** A list of resource names against which the privileges should be checked */
+  /** A list of resource names against which the privileges should be checked. */
   resources: string[]
 }
 
@@ -36,9 +37,9 @@ export class IndexPrivilegesCheck {
   /** A list of the privileges that you want to check for the specified indices. */
   privileges: IndexPrivilege[]
   /**
-   * This needs to be set to true (default is false) if using wildcards or regexps for patterns that cover restricted indices.
+   * This needs to be set to `true` (default is `false`) if using wildcards or regexps for patterns that cover restricted indices.
    * Implicitly, restricted indices do not match index patterns because restricted indices usually have limited privileges and including them in pattern tests would render most such tests false.
-   * If restricted indices are explicitly included in the names list, privileges will be checked against them regardless of the value of allow_restricted_indices.
+   * If restricted indices are explicitly included in the names list, privileges will be checked against them regardless of the value of `allow_restricted_indices`.
    */
   allow_restricted_indices?: boolean
 }

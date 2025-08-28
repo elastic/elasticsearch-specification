@@ -19,15 +19,19 @@ use std::collections::HashMap;
 use std::fmt::Write;
 
 use anyhow::{anyhow, bail};
-use clients_schema::Property;
+use clients_schema::{Privileges, Property};
+use indexmap::IndexMap;
 use indexmap::indexmap;
 use icu_segmenter::SentenceSegmenter;
+use itertools::Itertools;
 use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
-    RequestBody, Response, Responses, StatusCode,
+    RequestBody, Response, Responses, StatusCode, Example
 };
-
+use serde_json::Value;
+use clients_schema::SchemaExample;
 use crate::components::TypesAndComponents;
+use crate::convert_availabilities;
 
 /// Add an endpoint to the OpenAPI schema. This will result in the addition of a number of elements to the
 /// openapi schema's `paths` and `components` sections.
@@ -35,22 +39,23 @@ pub fn add_endpoint(
     endpoint: &clients_schema::Endpoint,
     tac: &mut TypesAndComponents,
     out: &mut Paths,
+    product_meta: &IndexMap<String,String>
 ) -> anyhow::Result<()> {
     if endpoint.request.is_none() {
-        tracing::warn!("Endpoint {} is missing a request -- ignored", &endpoint.name);
+        // tracing::warn!("Endpoint {} is missing a request -- ignored", &endpoint.name);
         return Ok(());
     }
 
     if endpoint.response.is_none() {
-        tracing::warn!("Endpoint {} is missing a response -- ignored", &endpoint.name);
+        // tracing::warn!("Endpoint {} is missing a response -- ignored", &endpoint.name);
         return Ok(());
     }
 
     // Namespace
-    // let namespace = match endpoint.name.split_once('.') {
-    //    Some((ns, _)) => ns,
-    //    None => "core",
-    //};
+    let namespace = match endpoint.name.split_once('.') {
+       Some((ns, _)) => ns,
+       None => &endpoint.name,
+    };
 
     // Will we produce multiple paths? If true, we will register components for reuse across paths
     let is_multipath = endpoint.urls.len() > 1 || endpoint.urls.iter().any(|u| u.methods.len() > 1);
@@ -58,16 +63,18 @@ pub fn add_endpoint(
     let request = tac.model.get_request(endpoint.request.as_ref().unwrap())?;
 
     fn parameter_data(prop: &Property, in_path: bool, tac: &mut TypesAndComponents) -> anyhow::Result<ParameterData> {
+        let mut extensions: IndexMap<String,Value> = Default::default();
+        convert_availabilities(&prop.availability, &tac.config.flavor, &mut extensions);
         Ok(ParameterData {
             name: prop.name.clone(),
-            description: prop.description.clone(),
+            description: tac.property_description(prop)?,
             required: in_path || prop.required, // Path parameters are always required
             deprecated: Some(prop.deprecation.is_some()),
             format: ParameterSchemaOrContent::Schema(tac.convert_value_of(&prop.typ)?),
             example: None,
             examples: Default::default(),
             explode: None, // Defaults to simple, i.e. comma-separated values for arrays
-            extensions: Default::default(),
+            extensions,
         })
     }
 
@@ -116,14 +123,63 @@ pub fn add_endpoint(
 
     //---- Prepare request body
 
+    // This function converts the IndexMap<String, SchemaExample> examples of
+    // schema.json to IndexMap<String, ReferenceOr<Example>> which is the format
+    // that OpenAPI expects.
+    fn get_openapi_examples(schema_examples: &IndexMap<String, SchemaExample>) -> IndexMap<String, ReferenceOr<Example>> {
+        let mut openapi_examples = indexmap! {};
+        for (name, schema_example) in schema_examples {
+            let example = match &schema_example.value {
+                None => None,
+                // Examples should be objects - https://spec.openapis.org/oas/v3.1.1.html#example-object
+                // Disabled for now, as some examples use multi-line json as in the Kibana console.
+                Some(text) => Some(serde_json::Value::String(text.clone())),
+                // Some(text) => {
+                //     match serde_json::from_str::<serde_json::Value>(&text) {
+                //         Ok(json) => {
+                //             Some(json)
+                //         }
+                //         // Cannot parse json: assume it's text (e.g. cat requests)
+                //         // but should be validated by looking at the media-type
+                //         Err(err) => {
+                //             tracing::warn!("Cannot parse example: {}\n{}", err, text);
+                //             Some(serde_json::Value::String(text.clone()))
+                //         }
+                //     }
+                // }
+            };
+
+            if example.is_some() {
+                let openapi_example = Example {
+                    value: example,
+                    description: schema_example.description.clone(),
+                    summary: schema_example.summary.clone(),
+                    external_value: None,
+                    extensions: Default::default(),
+                };
+                openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
+            }
+        }
+        openapi_examples
+    }
+
+    // If this endpoint request has examples in schema.json, convert them to the
+    // OpenAPI format and add them to the endpoint request in the OpenAPI document.
+    let request_examples = if let Some(examples) = &request.examples {
+        get_openapi_examples(examples)
+    } else {
+        IndexMap::new()
+    };
+
     let request_body = tac.convert_request(request)?.map(|schema| {
         let media = MediaType {
             schema: Some(schema),
             example: None,
-            examples: Default::default(),
+            examples: request_examples,
             encoding: Default::default(),
             extensions: Default::default(),
         };
+
 
         let body = RequestBody {
             description: None,
@@ -142,9 +198,17 @@ pub fn add_endpoint(
 
     //---- Prepare request responses
 
+
     // FIXME: buggy for responses with no body
     // TODO: handle binary responses
     let response_def = tac.model.get_response(endpoint.response.as_ref().unwrap())?;
+    // If this endpoint response has examples in schema.json, convert them to the
+    // OpenAPI format and add them to the endpoint response in the OpenAPI document.
+    let response_examples = if let Some(examples) = &response_def.examples {
+        get_openapi_examples(examples)
+    } else {
+        IndexMap::new()
+    };
     let response = Response {
         description: "".to_string(),
         headers: Default::default(),
@@ -152,7 +216,7 @@ pub fn add_endpoint(
             "application/json".to_string() => MediaType {
                 schema: tac.convert_response(response_def)?,
                 example: None,
-                examples: Default::default(),
+                examples: response_examples,
                 encoding: Default::default(),
                 extensions: Default::default(),
             }
@@ -169,6 +233,85 @@ pub fn add_endpoint(
     let responses = indexmap! {
         StatusCode::Code(200) => response
         // TODO: add error responses
+    };
+
+    //---- Merge multipath endpoints if asked for
+
+    let operation_id: String = endpoint
+        .name
+        .chars()
+        .map(|x| match x {
+            '_' | '.' => '-',
+            _ => x,
+        })
+        .collect();
+
+    let mut new_endpoint: clients_schema::Endpoint;
+
+    let endpoint = if is_multipath && tac.config.merge_multipath_endpoints {
+
+        // Add redirects for operations that would have been generated otherwise
+        if let Some(ref mut map) = &mut tac.redirects {
+            for i in 1..endpoint.urls.len() {
+                map.insert(format!("{operation_id}-{i}"), operation_id.clone());
+            }
+        }
+
+        new_endpoint = endpoint.clone();
+        let endpoint = &mut new_endpoint;
+
+        // Sort paths from smallest to longest
+        endpoint.urls.sort_by_key(|x| x.path.len());
+
+        // Keep the longest and its last method so that the operation's path+method are the same as the last one
+        // (avoids the perception that it may have been chosen randomly).
+        let mut longest_path = endpoint.urls.last().unwrap().clone();
+        while longest_path.methods.len() > 1 {
+            longest_path.methods.remove(0);
+        }
+
+        // Replace endpoint urls with the longest path
+        let mut urls = vec![longest_path];
+        std::mem::swap(&mut endpoint.urls, &mut urls);
+
+        let split_desc = split_summary_desc(&endpoint.description);
+
+        // Make sure the description is stays at the top
+        let mut description = match split_desc.summary {
+            Some(summary) => format!("{summary}\n\n"),
+            None => String::new(),
+        };
+
+        // Convert removed paths to descriptions
+        write!(description, "**All methods and paths for this operation:**\n\n")?;
+
+        for url in urls {
+            for method in url.methods {
+                let lower_method = method.to_lowercase();
+                let path = &url.path;
+                write!(
+                    description,
+                    r#"<div>
+                      <span class="operation-verb {lower_method}">{method}</span>
+                      <span class="operation-path">{path}</span>
+                      </div>
+                    "#
+                )?;
+            }
+        }
+
+        if let Some(desc) = &split_desc.description {
+            write!(description, "\n\n{}", desc)?;
+        }
+
+        // Replace description
+        endpoint.description = description;
+
+        // Done
+        endpoint
+    } else {
+        // Not multipath or not asked to merge multipath
+        endpoint
     };
 
     //---- Build a path for each url + method
@@ -194,12 +337,57 @@ pub fn add_endpoint(
 
         let sum_desc = split_summary_desc(&endpoint.description);
 
+        let privilege_desc = add_privileges(&endpoint.privileges);
+
+        let full_desc = match (sum_desc.description, privilege_desc) {
+            (Some(a), Some(b)) => Some(a+ &b),
+            (opt_a, opt_b) => opt_a.or(opt_b)
+        };
+
+        // add the x-state extension for availability
+        let mut extensions = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
+
+        if tac.config.include_language_examples {
+            // add the x-codeSamples extension
+            let mut code_samples = vec![];
+            if let Some(examples) = request.examples.clone() {
+                if let Some((_, example)) = examples.first() {
+                    let request_line = example.method_request.clone().unwrap_or(String::from(""));
+                    let request_body = example.value.clone().unwrap_or(String::from(""));
+                    if !request_line.is_empty() {
+                        code_samples.push(serde_json::json!({
+                            "lang": "Console",
+                            "source": request_line + "\n" + request_body.as_str(),
+                        }));
+                    }
+                    if let Some(alternatives) = example.alternatives.clone() {
+                        for alternative in alternatives.iter() {
+                            code_samples.push(serde_json::json!({
+                                "lang": alternative.language,
+                                "source": alternative.code.as_str(),
+                            }));
+                        }
+                    }
+                }
+            }
+            if !code_samples.is_empty() {
+                extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
+            }
+        }
+
+        extensions.append(&mut crate::product_meta_as_extensions(namespace, product_meta));
+
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
-            tags: vec![endpoint.name.clone()],
+            tags: if let Some(doc_tag) = &endpoint.doc_tag {
+                vec![doc_tag.clone()]
+            } else {
+                vec![namespace.to_string()]
+            },
             summary: sum_desc.summary,
-            description: sum_desc.description,
+            description: full_desc,
             external_docs: tac.convert_external_docs(endpoint),
+            // external_docs: None, // Need values that differ from client purposes
             operation_id: None, // set in clone_operation below with operation_counter
             parameters,
             request_body: request_body.clone(),
@@ -208,11 +396,13 @@ pub fn add_endpoint(
                 responses: responses.clone(),
                 extensions: Default::default(),
             },
+            callbacks: Default::default(),
             deprecated: endpoint.deprecation.is_some(),
             security: None,
             servers: vec![],
-            extensions: Default::default(), // FIXME: translate availability?
+            extensions
         };
+
 
         let mut operation_path = url_template.path.clone();
 
@@ -278,14 +468,7 @@ pub fn add_endpoint(
             };
 
             let mut operation = operation.clone();
-            let mut operation_id: String = endpoint
-                .name
-                .chars()
-                .map(|x| match x {
-                    '_' | '.' => '-',
-                    _ => x,
-                })
-                .collect();
+            let mut operation_id = operation_id.clone();
             if operation_counter != 0 {
                 write!(&mut operation_id, "-{}", operation_counter)?;
             }
@@ -316,14 +499,12 @@ fn get_path_parameters(template: &str) -> Vec<&str> {
 
 // Splits the original endpoint description into OpenAPI summary and description, where summary
 // is the first sentence of the original description with no trailing `.`, and description contains
-// the remaining sentences, if there are any left. 
+// the remaining sentences, if there are any left.
 fn split_summary_desc(desc: &str) -> SplitDesc{
     let segmenter = SentenceSegmenter::new();
 
-    let desc_no_newlines = desc.replace("\n\n",".\n").replace('\n'," ");
-
     let breakpoints: Vec<usize> = segmenter
-        .segment_str(&desc_no_newlines)
+        .segment_str(desc)
         .collect();
 
     if breakpoints.len()<2{
@@ -332,13 +513,35 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
             description: None
         }
     }
-    let first_line = &desc_no_newlines[breakpoints[0]..breakpoints[1]];
-    let rest = &desc_no_newlines[breakpoints[1]..breakpoints[breakpoints.len()-1]];
+    let first_line = &desc[breakpoints[0]..breakpoints[1]];
+    let rest = &desc[breakpoints[1]..breakpoints[breakpoints.len()-1]];
 
     SplitDesc {
         summary:  Some(String::from(first_line.trim().strip_suffix('.').unwrap_or(first_line))),
         description: if !rest.is_empty() {Some(String::from(rest.trim()))} else {None}
     }
+}
+
+fn add_privileges(privileges: &Option<Privileges>) -> Option<String>{
+    if let Some(privs) = privileges {
+        let mut result = "\n\n## Required authorization\n\n".to_string();
+        if !privs.index.is_empty() {
+            result += "* Index privileges: ";
+            result += &privs.index.iter()
+                .map(|a| format!("`{a}`"))
+                .join(",");
+            result += "\n";
+        }
+        if !privs.cluster.is_empty() {
+            result += "* Cluster privileges: ";
+            result += &privs.cluster.iter()
+                .map(|a| format!("`{a}`"))
+                .join(",");
+            result += "\n";
+        }
+        return Some(result)
+    }
+    None
 }
 
 #[derive(PartialEq,Debug)]
@@ -369,9 +572,9 @@ mod tests {
                        summary: Some(String::from("One sentence")),
                        description: None
                    });
-        assert_eq!(split_summary_desc("This is\nstill one. sentence: all; together"),
+        assert_eq!(split_summary_desc("This is - still one. sentence: all; together"),
                    SplitDesc{
-                       summary: Some(String::from("This is still one. sentence: all; together")),
+                       summary: Some(String::from("This is - still one. sentence: all; together")),
                        description: None
                    });
         assert_eq!(split_summary_desc("These are two totally. Separate sentences!"),
@@ -379,10 +582,10 @@ mod tests {
                        summary: Some(String::from("These are two totally")),
                        description: Some(String::from("Separate sentences!"))
                    });
-        assert_eq!(split_summary_desc("Such a weird way to separate sentences\n\nRight?"),
+        assert_eq!(split_summary_desc("These -> \n are allowed \n because they're needed \n\n for \n\n\n formatting"),
                    SplitDesc{
-                       summary: Some(String::from("Such a weird way to separate sentences")),
-                       description: Some(String::from("Right?"))
+                       summary: Some(String::from("These -> \n")),
+                       description: Some(String::from("are allowed \n because they're needed \n\n for \n\n\n formatting"))
                    });
         assert_eq!(split_summary_desc(""),
                    SplitDesc{

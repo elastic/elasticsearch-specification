@@ -1,0 +1,15 @@
+# summary:
+method_request: PUT /_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown
+description: >
+  Register a node for shutdown with `PUT /_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown`. The `restart` type prepares the node to be
+  restarted.
+# type: request
+value: "{
+
+  \  \"type\": \"restart\",
+
+  \  \"reason\": \"Demonstrating how the node shutdown API works\",
+
+  \  \"allocation_delay\": \"20m\"
+
+  }"

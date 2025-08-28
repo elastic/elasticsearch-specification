@@ -22,12 +22,34 @@ import { ExpandWildcards, Indices } from '@_types/common'
 import { ShardStoreStatus } from './types'
 
 /**
- * Retrieves store information about replica shards in one or more indices.
- * For data streams, the API retrieves store information for the stream’s backing indices.
+ * Get index shard stores.
+ * Get store information about replica shards in one or more indices.
+ * For data streams, the API retrieves store information for the stream's backing indices.
+ *
+ * The index shard stores API returns the following information:
+ *
+ * * The node on which each replica shard exists.
+ * * The allocation ID for each replica shard.
+ * * A unique ID for each replica shard.
+ * * Any errors encountered while opening the shard index or from an earlier failure.
+ *
+ * By default, the API returns store information only for primary shards that are unassigned or have one or more unassigned replica shards.
  * @rest_spec_name indices.shard_stores
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
+ * @index_privileges monitor
+ * @doc_id indices-shards-stores
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_shard_stores'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_shard_stores'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * List of data streams, indices, and aliases used to limit the request.

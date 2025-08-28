@@ -1,0 +1,12 @@
+summary: A successful response
+description: >
+  A successful response from `POST /_security/role/my_admin_role` returns a JSON structure that shows whether the role has been created, updated, or had no changes made.
+# type: response
+# response_code:
+value: |-
+  {
+      "created": [ 
+          "my_admin_role", 
+          "my_user_role"
+      ]
+  }

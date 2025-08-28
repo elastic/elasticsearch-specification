@@ -1,0 +1,11 @@
+summary: All parameters in the request body
+method_request: GET _cluster/allocation/explain
+description: Run `GET _cluster/allocation/explain` to get an explanation for a shard's current allocation.
+# type: request
+value: |-
+  {
+    "index": "my-index-000001",
+    "shard": 0,
+    "primary": false,
+    "current_node": "my-node"
+  }

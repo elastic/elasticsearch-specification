@@ -1,0 +1,11 @@
+summary: Prepare by realm
+method_request: POST /_security/oidc/prepare
+description: >
+  Run `POST /_security/oidc/prepare` to generate an authentication request for a third party initiated single sign on. Specify the
+  issuer that should be used for matching the appropriate OpenID Connect Authentication realm.
+# type: request
+value: |-
+  {
+    "iss" : "http://127.0.0.1:8080",
+    "login_hint": "this_is_an_opaque_string"
+  }

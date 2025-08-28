@@ -20,10 +20,19 @@
 import { RequestBase } from '@_types/Base'
 
 /**
- * Gets download statistics for GeoIP2 databases used with the geoip processor.
+ * Get GeoIP statistics.
+ * Get download statistics for GeoIP2 databases that are used with the GeoIP processor.
  * @doc_id geoip-processor
  * @rest_spec_name ingest.geo_ip_stats
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @ext_doc_id geoip-processor
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/geoip/stats'
+      methods: ['GET']
+    }
+  ]
+}

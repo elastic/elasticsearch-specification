@@ -18,18 +18,26 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { ConnectorConfiguration } from '../_types/Connector'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { ConnectorConfiguration } from '../_types/Connector'
 
 /**
- * Updates the configuration field in the connector document
+ * Update the connector configuration.
+ *
+ * Update the configuration field in the connector document.
  * @rest_spec_name connector.update_configuration
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-configuration
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}/_configuration'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be updated

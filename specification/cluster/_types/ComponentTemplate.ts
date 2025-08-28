@@ -17,15 +17,14 @@
  * under the License.
  */
 
-import { AliasDefinition } from '@indices/_types/AliasDefinition'
-import { IndexSettings } from '@indices/_types/IndexSettings'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
-import {
-  DataStreamLifecycle,
-  DataStreamLifecycleWithRollover
-} from '@indices/_types/DataStreamLifecycle'
+import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
+import { AliasDefinition } from '@indices/_types/AliasDefinition'
+import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
+import { DataStreamOptionsTemplate } from '@indices/_types/DataStreamOptions'
+import { IndexSettings } from '@indices/_types/IndexSettings'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class ComponentTemplate {
   name: Name
@@ -37,6 +36,34 @@ export class ComponentTemplateNode {
   version?: VersionNumber
   /** @doc_id mapping-meta-field */
   _meta?: Metadata
+  /*
+   * @server_default false
+   */
+  deprecated?: boolean
+  /**
+   * Date and time when the component template was created. Only returned if the `human` query parameter is `true`.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  created_date?: DateTime
+  /**
+   * Date and time when the component template was created, in milliseconds since the epoch.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  created_date_millis?: EpochTime<UnitMillis>
+  /**
+   * Date and time when the component template was last modified. Only returned if the `human` query parameter is `true`.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  modified_date?: DateTime
+  /**
+   * Date and time when the component template was last modified, in milliseconds since the epoch.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  modified_date_millis?: EpochTime<UnitMillis>
 }
 
 export class ComponentTemplateSummary {
@@ -51,4 +78,9 @@ export class ComponentTemplateSummary {
    * @availability serverless stability=stable
    */
   lifecycle?: DataStreamLifecycleWithRollover
+  /**
+   * @availability stack since=8.19.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  data_stream_options?: DataStreamOptionsTemplate | null
 }

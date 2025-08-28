@@ -21,12 +21,32 @@ import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
 /**
+ * Start the ILM plugin.
+ * Start the index lifecycle management plugin if it is currently stopped.
+ * ILM is started automatically when the cluster is formed.
+ * Restarting ILM is necessary only when it has been stopped using the stop ILM API.
  * @rest_spec_name ilm.start
  * @availability stack since=6.6.0 stability=stable
+ * @cluster_privileges manage_ilm
+ * @doc_id ilm-start
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ilm/start'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     master_timeout?: Duration
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }

@@ -22,14 +22,32 @@ import { Uuid } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Delete a dangling index.
+ * If Elasticsearch encounters index data that is absent from the current cluster state, those indices are considered to be dangling.
+ * For example, this can happen if you delete more than `cluster.indices.tombstones.size` indices while an Elasticsearch node is offline.
  * @rest_spec_name dangling_indices.delete_dangling_index
  * @availability stack since=7.9.0 stability=stable
+ * @doc_tag indices
+ * @doc_id dangling-index-delete
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_dangling/{index_uuid}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
+    /**
+     * The UUID of the index to delete. Use the get dangling indices API to find the UUID.
+     */
     index_uuid: Uuid
   }
   query_parameters: {
+    /**
+     * This parameter must be set to true to acknowledge that it will no longer be possible to recove data from the dangling index.
+     */
     accept_data_loss: boolean
     master_timeout?: Duration
     timeout?: Duration

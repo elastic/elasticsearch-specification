@@ -1,0 +1,5 @@
+# summary: connector/apis/set-connector-sync-job-error-api.asciidoc:56
+method_request: PUT _connector/_sync_job/my-connector-sync-job/_error
+# description: ''
+# type: request
+value: "{\n    \"error\": \"some-error\"\n}"

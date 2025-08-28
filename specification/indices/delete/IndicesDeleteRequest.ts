@@ -22,12 +22,26 @@ import { ExpandWildcards, Indices } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Deletes one or more indices.
+ * Delete indices.
+ * Deleting an index deletes its documents, shards, and metadata.
+ * It does not delete related Kibana components, such as data views, visualizations, or dashboards.
+ *
+ * You cannot delete the current write index of a data stream.
+ * To delete the index, you must roll over the data stream so a new write index is created.
+ * You can then use the delete index API to delete the previous write index.
  * @rest_spec_name indices.delete
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id indices-delete-index
+ * @index_privileges delete_index
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of indices to delete.
@@ -48,7 +62,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards

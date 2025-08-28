@@ -1,0 +1,12 @@
+summary: Slice automatically
+method_request: POST my-index-000001/_update_by_query?refresh&slices=5
+description: >
+  Run `POST my-index-000001/_update_by_query?refresh&slices=5` to use automatic slicing. It automatically parallelizes using sliced
+  scroll to slice on `_id`.
+# type: "request"
+value: |-
+  {
+    "script": {
+      "source": "ctx._source['extra'] = 'test'"
+    }
+  }

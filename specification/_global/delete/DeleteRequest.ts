@@ -32,58 +32,113 @@ import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
- * Removes a JSON document from the specified index.
+ * Delete a document.
+ *
+ * Remove a JSON document from the specified index.
+ *
+ * NOTE: You cannot send deletion requests directly to a data stream.
+ * To delete a document in a data stream, you must target the backing index containing the document.
+ *
+ * **Optimistic concurrency control**
+ *
+ * Delete operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters.
+ * If a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`.
+ *
+ * **Versioning**
+ *
+ * Each document indexed is versioned.
+ * When deleting a document, the version can be specified to make sure the relevant document you are trying to delete is actually being deleted and it has not changed in the meantime.
+ * Every write operation run on a document, deletes included, causes its version to be incremented.
+ * The version number of a deleted document remains available for a short time after deletion to allow for control of concurrent operations.
+ * The length of time for which a deleted document's version remains available is determined by the `index.gc_deletes` index setting.
+ *
+ * **Routing**
+ *
+ * If routing is used during indexing, the routing value also needs to be specified to delete a document.
+ *
+ * If the `_routing` mapping is set to `required` and no routing value is specified, the delete API throws a `RoutingMissingException` and rejects the request.
+ *
+ * For example:
+ *
+ * ```
+ * DELETE /my-index-000001/_doc/1?routing=shard-1
+ * ```
+ *
+ * This request deletes the document with ID 1, but it is routed based on the user.
+ * The document is not deleted if the correct routing is not specified.
+ *
+ * **Distributed**
+ *
+ * The delete operation gets hashed into a specific shard ID.
+ * It then gets redirected into the primary shard within that ID group and replicated (if needed) to shard replicas within that ID group.
  * @rest_spec_name delete
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @index_privileges delete
+ * @doc_tag document
+ * @doc_id docs-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_doc/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
-     * Unique identifier for the document.
+     * A unique identifier for the document.
      */
     id: Id
     /**
-     * Name of the target index.
+     * The name of the target index.
      */
     index: IndexName
   }
   query_parameters: {
     /**
      * Only perform the operation if the document has this primary term.
+     * @ext_doc_id optimistic-concurrency
      */
     if_primary_term?: long
     /**
      * Only perform the operation if the document has this sequence number.
+     * @ext_doc_id optimistic-concurrency
      */
     if_seq_no?: SequenceNumber
     /**
-     * If `true`, Elasticsearch refreshes the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` do nothing with refreshes.
-     * Valid values: `true`, `false`, `wait_for`.
+     * If `true`, Elasticsearch refreshes the affected shards to make this operation visible to search.
+     * If `wait_for`, it waits for a refresh to make this operation visible to search.
+     * If `false`, it does nothing with refreshes.
      * @server_default false
      */
     refresh?: Refresh
     /**
-     * Custom value used to route operations to a specific shard.
+     * A custom value used to route operations to a specific shard.
      */
     routing?: Routing
     /**
-     * Period to wait for active shards.
+     * The period to wait for active shards.
+     *
+     * This parameter is useful for situations where the primary shard assigned to perform the delete operation might not be available when the delete operation runs.
+     * Some reasons for this might be that the primary shard is currently recovering from a store or undergoing relocation.
+     * By default, the delete operation will wait on the primary shard to become available for up to 1 minute before failing and responding with an error.
      * @server_default 1m
      */
     timeout?: Duration
     /**
-     * Explicit version number for concurrency control.
-     * The specified version must match the current version of the document for the request to succeed.
+     * An explicit version number for concurrency control.
+     * It must match the current version of the document for the request to succeed.
      */
     version?: VersionNumber
     /**
-     * Specific version type: `external`, `external_gte`.
+     * The version type.
      */
     version_type?: VersionType
     /**
-     * The number of shard copies that must be active before proceeding with the operation.
-     * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
+     * The minimum number of shard copies that must be active before proceeding with the operation.
+     * You can set it to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
+     * The default value of `1` means it waits for each primary shard to be active.
      * @server_default 1
      */
     wait_for_active_shards?: WaitForActiveShards

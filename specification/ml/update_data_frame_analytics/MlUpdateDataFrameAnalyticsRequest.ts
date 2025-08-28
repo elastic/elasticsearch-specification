@@ -22,14 +22,22 @@ import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Updates an existing data frame analytics job.
+ * Update a data frame analytics job.
  * @rest_spec_name ml.update_data_frame_analytics
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @index_privileges read, create_index, manage, index, view_index_metadata
+ * @doc_tag ml data frame
+ * @doc_id update-dfanalytics
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/data_frame/analytics/{id}/_update'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the data frame analytics job. This identifier can contain

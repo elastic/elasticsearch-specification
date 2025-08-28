@@ -1,0 +1,29 @@
+# summary:
+method_request: POST _transform/simple-kibana-ecomm-pivot/_update
+description: Run `POST _transform/simple-kibana-ecomm-pivot/_update` to update a transform that uses the pivot method.
+# type: request
+value: |-
+  {
+    "source": {
+      "index": "kibana_sample_data_ecommerce",
+      "query": {
+        "term": {
+          "geoip.continent_name": {
+            "value": "Asia"
+          }
+        }
+      }
+    },
+    "description": "Maximum priced ecommerce data by customer_id in Asia",
+    "dest": {
+      "index": "kibana_sample_data_ecommerce_transform_v2",
+      "pipeline": "add_timestamp_pipeline"
+    },
+    "frequency": "15m",
+    "sync": {
+      "time": {
+        "field": "order_date",
+        "delay": "120s"
+      }
+    }
+  }

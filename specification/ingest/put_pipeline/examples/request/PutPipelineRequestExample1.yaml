@@ -1,0 +1,27 @@
+summary: Create an ingest pipeline.
+method_request: PUT _ingest/pipeline/my-pipeline-id
+# description: ''
+# type: request
+value: "{
+
+  \  \"description\" : \"My optional pipeline description\",
+
+  \  \"processors\" : [
+
+  \    {
+
+  \      \"set\" : {
+
+  \        \"description\" : \"My optional processor description\",
+
+  \        \"field\": \"my-keyword-field\",
+
+  \        \"value\": \"foo\"
+
+  \      }
+
+  \    }
+
+  \  ]
+
+  }"

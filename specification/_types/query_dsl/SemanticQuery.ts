@@ -19,6 +19,9 @@
 
 import { QueryBase } from './abstractions'
 
+/**
+ * @ext_doc_id query-dsl-semantic-query
+ */
 export class SemanticQuery extends QueryBase {
   /** The field to query, which must be a semantic_text field type */
   field: string

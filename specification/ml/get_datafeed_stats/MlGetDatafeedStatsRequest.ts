@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Ids } from '@_types/common'
 
 /**
- * Retrieves usage information for datafeeds.
+ * Get datafeed stats.
  * You can get statistics for multiple datafeeds in a single API request by
  * using a comma-separated list of datafeeds or a wildcard expression. You can
  * get statistics for all datafeeds by using `_all`, by specifying `*` as the
@@ -32,8 +32,20 @@ import { Ids } from '@_types/common'
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-get-datafeed-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/datafeeds/{datafeed_id}/_stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/datafeeds/_stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the datafeed. It can be a datafeed identifier or a

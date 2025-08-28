@@ -1,0 +1,42 @@
+# summary:
+description: A successful response when creating a transform.
+# type: response
+# response_code: 200
+value:
+  id: simple-kibana-ecomm-pivot
+  authorization:
+    roles:
+      - superuser
+  version: 10.0.0
+  create_time: 1712951576767
+  source:
+    index:
+      - kibana_sample_data_ecommerce
+    query:
+      term:
+        geoip.continent_name:
+          value: Asia
+  dest:
+    index: kibana_sample_data_ecommerce_transform_v2
+    pipeline: add_timestamp_pipeline
+  frequency: 15m
+  sync:
+    time:
+      field: order_date
+      delay: 120s
+  pivot:
+    group_by:
+      customer_id:
+        terms:
+          field: customer_id
+          missing_bucket: true
+    aggregations:
+      max_price:
+        max:
+          field: taxful_total_price
+  description: Maximum priced ecommerce data by customer_id in Asia
+  settings: {}
+  retention_policy:
+    time:
+      field: order_date
+      max_age: 30d

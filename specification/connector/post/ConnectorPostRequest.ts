@@ -18,23 +18,32 @@
  */
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
-import { WithNullValue } from '@spec_utils/utils'
 
 /**
- * Creates a connector.
+ * Create a connector.
+ *
+ * Connectors are Elasticsearch integrations that bring content from third-party data sources, which can be deployed on Elastic Cloud or hosted on your own infrastructure.
+ * Elastic managed connectors (Native connectors) are a managed service on Elastic Cloud.
+ * Self-managed connectors (Connector clients) are self-managed on your infrastructure.
  * @rest_spec_name connector.post
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-post
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector'
+      methods: ['POST']
+    }
+  ]
   /**
    * The connector document to be created
    */
   /** @codegen_name connector */
-  body: {
+  body?: {
     description?: string
-    index_name: WithNullValue<IndexName>
+    index_name?: IndexName
     is_native?: boolean
     language?: string
     name?: string

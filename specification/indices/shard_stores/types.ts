@@ -17,16 +17,18 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, VersionNumber, Name, NodeId } from '@_types/common'
+import { Id, Name, NodeId } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
 import { AdditionalProperty } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class IndicesShardStores {
   shards: Dictionary<string, ShardStoreWrapper>
 }
 
+/**
+ * @behavior_meta AdditionalProperty key=node_id value=node
+ */
 export class ShardStore implements AdditionalProperty<NodeId, ShardStoreNode> {
   allocation: ShardStoreAllocation
   allocation_id?: Id

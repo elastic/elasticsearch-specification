@@ -22,16 +22,48 @@ import { Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Check existence of index templates.
+ * Get information about whether index templates exist.
+ * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
+ *
+ * IMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.
  * @rest_spec_name indices.exists_template
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
+ * @doc_id indices-template-exists-v1
+ * @ext_doc_id index-templates
+ * @cluster_privileges manage_index_templates
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_template/{name}'
+      methods: ['HEAD']
+    }
+  ]
   path_parts: {
+    /**
+     * A comma-separated list of index template names used to limit the request.
+     * Wildcard (`*`) expressions are supported.
+     */
     name: Names
   }
   query_parameters: {
+    /**
+     * Indicates whether to use a flat format for the response.
+     * @server_default false
+     */
     flat_settings?: boolean
+    /**
+     * Indicates whether to get information from the local node only.
+     * @server_default false
+     */
     local?: boolean
+    /**
+     * The period to wait for the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * To indicate that the request should never timeout, set it to `-1`.
+     * @server_default 30s
+     */
     master_timeout?: Duration
   }
 }

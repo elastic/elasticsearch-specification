@@ -1,0 +1,22 @@
+summary: Score context
+method_request: POST /_scripts/painless/_execute
+description: >
+  Run `POST /_scripts/painless/_execute` with a `score` context. It treats scripts as if they were run inside a `script_score`
+  function in a `function_score` query.
+# type: request
+value: |-
+  {
+    "script": {
+      "source": "doc['rank'].value / params.max_rank",
+      "params": {
+        "max_rank": 5.0
+      }
+    },
+    "context": "score",
+    "context_setup": {
+      "index": "my-index-000001",
+      "document": {
+        "rank": 4
+      }
+    }
+  }

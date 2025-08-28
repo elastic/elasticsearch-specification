@@ -20,5 +20,8 @@
 import { Void } from '@spec_utils/VoidValue'
 
 export class Response {
+  /**
+   * The API returns an empty response on success.
+   */
   body: Void
 }

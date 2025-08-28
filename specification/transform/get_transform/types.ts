@@ -17,7 +17,10 @@
  * under the License.
  */
 
+import { Id, Metadata, VersionString } from '@_types/common'
+import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
 import { Destination } from '@global/reindex/types'
+import { TransformAuthorization } from '@ml/_types/Authorization'
 import {
   Latest,
   Pivot,
@@ -26,9 +29,6 @@ import {
   Source,
   SyncContainer
 } from '@transform/_types/Transform'
-import { TransformAuthorization } from '@ml/_types/Authorization'
-import { Id, Metadata, VersionString } from '@_types/common'
-import { Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class TransformSummary {
   /**
@@ -37,6 +37,7 @@ export class TransformSummary {
   authorization?: TransformAuthorization
   /** The time the transform was created. */
   create_time?: EpochTime<UnitMillis>
+  create_time_string?: DateTime
   /** Free text description of the transform. */
   description?: string
   /** The destination for the transform. */

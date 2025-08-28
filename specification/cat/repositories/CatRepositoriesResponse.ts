@@ -20,5 +20,6 @@
 import { RepositoriesRecord } from './types'
 
 export class Response {
+  /** @codegen_name repositories */
   body: Array<RepositoriesRecord>
 }

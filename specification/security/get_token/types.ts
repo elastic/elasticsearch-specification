@@ -17,13 +17,33 @@
  * under the License.
  */
 
-import { User } from '@security/_types/User'
 import { Name } from '@_types/common'
+import { User } from '@security/_types/User'
 
 export enum AccessTokenGrantType {
+  /**
+   * This grant type implements the Resource Owner Password Credentials Grant of OAuth2.
+   * In this grant, a trusted client exchanges the end user's credentials for an access token and (possibly) a refresh token.
+   * The request needs to be made by an authenticated user but happens on behalf of another authenticated user (the one whose credentials are passed as request parameters).
+   * This grant type is not suitable or designed for the self-service user creation of tokens.
+   */
   password,
+  /**
+   * This grant type implements the Client Credentials Grant of OAuth2.
+   * It is geared for machine to machine communication and is not suitable or designed for the self-service user creation of tokens.
+   * It generates only access tokens that cannot be refreshed.
+   * The premise is that the entity that uses `client_credentials` has constant access to a set of (client, not end-user) credentials and can authenticate itself at will.
+   */
   client_credentials,
+  /**
+   * This grant type is supported internally and implements SPNEGO based Kerberos support.
+   * The `_kerberos` grant type may change from version to version.
+   */
   _kerberos,
+  /**
+   * This grant type implements the Refresh Token Grant of OAuth2.
+   * In this grant a user exchanges a previously issued refresh token for a new access token and a new refresh token.
+   */
   refresh_token
 }
 

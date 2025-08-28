@@ -22,15 +22,23 @@ import { Id } from '@_types/common'
 import { double } from '@_types/Numeric'
 
 /**
- * Creates a trained model vocabulary.
+ * Create a trained model vocabulary.
  * This API is supported only for natural language processing (NLP) models.
  * The vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.
  * @rest_spec_name ml.put_trained_model_vocabulary
  * @availability stack since=8.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml trained model
+ * @doc_id put-trained-model-vocabulary
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/vocabulary'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model.

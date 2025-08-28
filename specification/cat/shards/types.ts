@@ -54,6 +54,12 @@ export class ShardsRecord {
    */
   'store'?: string | null
   /**
+   * total size of dataset (including the cache for partially mounted indices)
+   * @availability stack since=8.11.0 stability=stable
+   * @availability serverless stability=stable visibility=public
+   */
+  'dataset'?: string | null
+  /**
    * The IP address of the node.
    */
   'ip'?: string | null

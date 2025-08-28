@@ -1,0 +1,13 @@
+summary: Create an index with aliases.
+method_request: PUT /test
+description: >
+  You can provide mapping definitions in the create index API requests. Index alias names also support date math.
+# type: request
+value:
+  aliases:
+    alias_1: {}
+    alias_2:
+      filter:
+        term:
+          'user.id': 'kimchy'
+      routing: shard-1

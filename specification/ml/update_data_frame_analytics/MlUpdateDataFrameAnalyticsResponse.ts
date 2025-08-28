@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { Id, VersionString } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
 import { DataframeAnalyticsAuthorization } from '@ml/_types/Authorization'
 import {
   DataframeAnalysisAnalyzedFields,
@@ -24,8 +26,6 @@ import {
   DataframeAnalyticsDestination,
   DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
-import { Id, VersionString } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
 
 export class Response {
   body: {

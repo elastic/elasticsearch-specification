@@ -1,0 +1,35 @@
+summary: Reindex a random subset
+method_request: POST _reindex
+description: >
+  Run `POST _reindex` to extract a random subset of the source for testing. You might need to adjust the `min_score` value depending
+  on the relative amount of data extracted from source.
+# type: request
+value: "{
+
+  \  \"max_docs\": 10,
+
+  \  \"source\": {
+
+  \    \"index\": \"my-index-000001\",
+
+  \    \"query\": {
+
+  \      \"function_score\" : {
+
+  \        \"random_score\" : {},
+
+  \        \"min_score\" : 0.9
+
+  \      }
+
+  \    }
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"my-new-index-000001\"
+
+  \  }
+
+  }"

@@ -1,0 +1,8 @@
+# summary:
+description: >
+  Run `POST /_slm/policy/daily-snapshots/_execute` to take an immediate snapshot according to the `daily-snapshots` policy.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"snapshot_name\": \"daily-snap-2019.04.24-gwrqoo2xtea3q57vvg0uea\"\n\
+  }"

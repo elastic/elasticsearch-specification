@@ -17,12 +17,18 @@
  * under the License.
  */
 
-import { QueryWatch } from '../_types/Watch'
 import { integer } from '@_types/Numeric'
+import { QueryWatch } from '../_types/Watch'
 
 export class Response {
   body: {
+    /**
+     * The total number of watches found.
+     */
     count: integer
+    /**
+     * A list of watches based on the `from`, `size`, or `search_after` request body parameters.
+     */
     watches: QueryWatch[]
   }
 }

@@ -17,32 +17,49 @@
  * under the License.
  */
 
-import { Configuration, Retention } from '@slm/_types/SnapshotLifecycle'
-import { CronExpression } from '@watcher/_types/Schedule'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Configuration, Retention } from '@slm/_types/SnapshotLifecycle'
+import { CronExpression } from '@watcher/_types/Schedule'
 
 /**
+ * Create or update a policy.
+ * Create or update a snapshot lifecycle policy.
+ * If the policy already exists, this request increments the policy version.
+ * Only the latest version of a policy is stored.
  * @rest_spec_name slm.put_lifecycle
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_slm
+ * @index_privileges manage
+ * @doc_id slm-api-put-policy
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_slm/policy/{policy_id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
-     * ID for the snapshot lifecycle policy you want to create or update.
+     * The identifier for the snapshot lifecycle policy you want to create or update.
      */
     policy_id: Name
   }
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * The period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * To indicate that the request should never timeout, set it to `-1`.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * The period to wait for a response.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * To indicate that the request should never timeout, set it to `-1`.
      * @server_default 30s
      */
     timeout?: Duration

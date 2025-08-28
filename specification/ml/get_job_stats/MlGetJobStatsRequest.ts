@@ -21,13 +21,25 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Retrieves usage information for anomaly detection jobs.
+ * Get anomaly detection job stats.
  * @rest_spec_name ml.get_job_stats
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-get-job-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/_stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/_stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job. It can be a job identifier, a

@@ -22,13 +22,21 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Stop transforms.
  * Stops one or more transforms.
  * @rest_spec_name transform.stop_transform
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
+ * @doc_id stop-transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}/_stop'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform. To stop multiple transforms, use a comma-separated list or a wildcard expression.

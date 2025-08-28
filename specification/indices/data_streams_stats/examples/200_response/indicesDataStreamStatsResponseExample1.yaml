@@ -1,0 +1,13 @@
+# summary: ''
+description: A successful response for retrieving statistics for a data stream.
+# type: response
+# response_code: 200
+value:
+  "{\n  \"_shards\": {\n    \"total\": 10,\n    \"successful\": 5,\n    \"failed\"\
+  : 0\n  },\n  \"data_stream_count\": 2,\n  \"backing_indices\": 5,\n  \"total_store_size\"\
+  : \"7kb\",\n  \"total_store_size_bytes\": 7268,\n  \"data_streams\": [\n    {\n\
+  \      \"data_stream\": \"my-data-stream\",\n      \"backing_indices\": 3,\n   \
+  \   \"store_size\": \"3.7kb\",\n      \"store_size_bytes\": 3772,\n      \"maximum_timestamp\"\
+  : 1607512028000\n    },\n    {\n      \"data_stream\": \"my-data-stream-two\",\n\
+  \      \"backing_indices\": 2,\n      \"store_size\": \"3.4kb\",\n      \"store_size_bytes\"\
+  : 3496,\n      \"maximum_timestamp\": 1607425567000\n    }\n  ]\n}"

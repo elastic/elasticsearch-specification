@@ -20,5 +20,6 @@
 import { EqlSearchResponseBase } from '@eql/_types/EqlSearchResponseBase'
 
 export class Response<TEvent> {
+  /** @codegen_name result */
   body: EqlSearchResponseBase<TEvent>
 }

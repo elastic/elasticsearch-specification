@@ -1,0 +1,5 @@
+# summary: connector/apis/delete-connector-api.asciidoc:74
+# description: ''
+# type: response
+# response_code: ''
+value: "{\n    \"acknowledged\": true\n}"

@@ -1,0 +1,13 @@
+# summary: ''
+description: A successful response from `PUT /my-index-000001/_block/write`, which adds an index block to an index.'
+# type: response
+# response_code: 200
+value: |-
+  {
+    "acknowledged" : true,
+    "shards_acknowledged" : true,
+    "indices" : [ {
+      "name" : "my-index-000001",
+      "blocked" : true
+    } ]
+  }

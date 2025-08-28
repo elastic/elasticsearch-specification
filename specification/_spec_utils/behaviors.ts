@@ -16,15 +16,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-/*
- * This file hosts `behaviors`. We use this interfaces that are marked with a `@behavior` JS Doc annotation
- * to signal complicated mappings to the compiler -> canonical json -> client generators.
- *
- * These are problem sets that need a custom client solution.
- */
-
-import { Names } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * In some places in the specification an object consists of the union of a set of known properties
@@ -69,7 +60,7 @@ export interface CommonQueryParameters {
   /**
    * When set to `true` will return statistics in a format suitable for humans.
    * For example `"exists_time": "1h"` for humans and
-   * `"eixsts_time_in_millis": 3600000` for computers. When disabled the human
+   * `"exists_time_in_millis": 3600000` for computers. When disabled the human
    * readable values will be omitted. This makes sense for responses being consumed
    * only by machines.
    * @server_default false
@@ -96,34 +87,11 @@ export interface CommonCatQueryParameters {
    */
   format?: string
   /**
-   * List of columns to appear in the response. Supports simple wildcards.
-   */
-  h?: Names
-  /**
    * When set to `true` will output available columns. This option
    * can't be combined with any other query string option.
    * @server_default false
    */
   help?: boolean
-  /**
-   * If `true`, the request computes the list of selected nodes from the
-   * local cluster state. If `false` the list of selected nodes are computed
-   * from the cluster state of the master node. In both cases the coordinating
-   * node will send requests for further information to each selected node.
-   * @server_default false
-   */
-  local?: boolean
-  /**
-   * Period to wait for a connection to the master node.
-   * @server_default 30s
-   */
-  master_timeout?: Duration
-  /**
-   * List of columns that determine how the table should be sorted.
-   * Sorting defaults to ascending and can be changed by setting `:asc`
-   * or `:desc` as a suffix to the column name.
-   */
-  s?: Names
   /**
    * When set to `true` will enable verbose output.
    * @server_default false

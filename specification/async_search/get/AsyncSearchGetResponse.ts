@@ -20,5 +20,6 @@
 import { AsyncSearchDocumentResponseBase } from '@async_search/_types/AsyncSearchResponseBase'
 
 export class Response<TDocument> {
+  /** @codegen_name result */
   body: AsyncSearchDocumentResponseBase<TDocument>
 }

@@ -15,18 +15,15 @@
 // specific language governing permissions and limitations
 // under the License.
 
+use std::fmt::Write;
 use anyhow::bail;
-use clients_schema::{
-    Body, Enum, Interface, LiteralValueValue, PropertiesBody, Property, Request, Response, TypeAlias,
-    TypeAliasVariants, TypeDefinition, TypeName, ValueOf,
-};
+use clients_schema::{ArrayOf, Body, Enum, EnumMember, Interface, LiteralValueValue, PropertiesBody, Property, Request, Response, TypeAlias, TypeAliasVariants, TypeDefinition, TypeName, ValueOf};
 use indexmap::IndexMap;
 use openapiv3::{
     AdditionalProperties, ArrayType, Discriminator, ExternalDocumentation, NumberType, ObjectType, ReferenceOr, Schema,
     SchemaData, SchemaKind, StringType, Type,
 };
 use openapiv3::SchemaKind::AnyOf;
-
 use crate::components::TypesAndComponents;
 use crate::utils::{IntoSchema, ReferenceOrBoxed, SchemaName};
 
@@ -38,7 +35,7 @@ const SCHEMA_PLACEHOLDER: ReferenceOr<Schema> = ReferenceOr::Reference {
 /// Convert `schema.json` type and value definitions to OpenAPI schemas:
 ///
 /// The `convert_*` functions return a concrete schema and not a reference and do not store them in
-/// the OpenAPI `components.schema`. This is the role of `for_type_name` hat creates and stores the
+/// the OpenAPI `components.schema`. This is the role of `for_type_name` that creates and stores the
 /// schema and returns a reference.
 impl<'a> TypesAndComponents<'a> {
     /// Convert a value. Returns a schema reference and not a concrete schema, as values can
@@ -143,7 +140,7 @@ impl<'a> TypesAndComponents<'a> {
                     max_length: None,
                 })
                 .into_schema_ref()),
-                "boolean" => Ok(Type::Boolean {}.into_schema_ref()),
+                "boolean" => Ok(Type::Boolean(Default::default()).into_schema_ref()),
                 "number" => Ok(Type::Number(NumberType::default()).into_schema_ref()),
                 "void" => {
                     // Empty object
@@ -209,19 +206,18 @@ impl<'a> TypesAndComponents<'a> {
         self.for_body(&response.body)
     }
 
-    pub fn convert_external_docs(&self, obj: &impl clients_schema::Documented) -> Option<ExternalDocumentation> {
+    pub fn convert_external_docs(&self, obj: &impl clients_schema::ExternalDocument) -> Option<ExternalDocumentation> {
         // FIXME: does the model contain resolved doc_id?
-        obj.doc_url().map(|url| {
-            let branch: &str = self
-                .model
-                .info
-                .as_ref()
-                .and_then(|i| i.version.as_deref())
-                .unwrap_or("current");
+        obj.ext_doc_url().map(|url| {
+            let branch = self.config.branch.clone();
+            let mut extensions: IndexMap<String,serde_json::Value> = Default::default();
+            if let Some(previous_version_doc_url) = obj.ext_previous_version_doc_url() {
+                extensions.insert("x-previousVersionUrl".to_string(), serde_json::json!(previous_version_doc_url));
+            }
             ExternalDocumentation {
-                description: None,
-                url: url.trim().replace("{branch}", branch),
-                extensions: Default::default(),
+                description: obj.ext_doc_description().map(|desc| { desc.to_string() }),
+                url: url.trim().replace("{branch}", &branch.unwrap_or("current".to_string())),
+                extensions,
             }
         })
     }
@@ -246,12 +242,28 @@ impl<'a> TypesAndComponents<'a> {
     }
 
     fn convert_property(&mut self, prop: &Property) -> anyhow::Result<ReferenceOr<Schema>> {
-        let mut result = self.convert_value_of(&prop.typ)?;
-        // TODO: how can we just wrap a reference so that we can add docs?
-        if let ReferenceOr::Item(ref mut schema) = &mut result {
-            self.fill_data_with_prop(&mut schema.schema_data, prop);
-        }
-        Ok(result)
+        let result = self.convert_value_of(&prop.typ)?;
+
+        // OpenAPI 3.0 doesn't allow adding summary and description to a reference. The recommended workaround
+        // is to use a schema with a single `allOf` - see https://github.com/OAI/OpenAPI-Specification/issues/1514
+        //
+        // OpenAPI 3.1 added summary and description for a `$ref` have been added to avoid the workaround
+        // https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#reference-object
+
+        let mut schema = match result {
+            ReferenceOr::Item(schema) => schema,
+            reference @ ReferenceOr::Reference { reference: _ } => Schema {
+                schema_kind: SchemaKind::AllOf {
+                    all_of: vec![reference]
+                },
+                schema_data: Default::default(),
+            }
+        };
+
+        // Add docs & other properties
+        self.fill_data_with_prop(&mut schema.schema_data, prop)?;
+
+        Ok(ReferenceOr::Item(schema))
     }
 
     fn convert_properties<'b>(
@@ -366,6 +378,10 @@ impl<'a> TypesAndComponents<'a> {
                 _ => bail!("Unknown behavior {}", &bh.typ),
             }
         }
+
+        // description
+        schema.schema_data.description = itf.base.description.clone();
+
         Ok(schema)
     }
 
@@ -394,6 +410,8 @@ impl<'a> TypesAndComponents<'a> {
                     mapping: Default::default(),
                     extensions: Default::default(),
                 });
+            }
+            Some(TypeAliasVariants::Untagged(_tag)) => {
             }
         };
 
@@ -466,16 +484,171 @@ impl<'a> TypesAndComponents<'a> {
         // TODO: base.codegen_names as extension?
     }
 
-    fn fill_data_with_prop(&self, data: &mut SchemaData, prop: &Property) {
+    fn fill_data_with_prop(&self, data: &mut SchemaData, prop: &Property) -> anyhow::Result<()> {
         data.external_docs = self.convert_external_docs(prop);
         data.deprecated = prop.deprecation.is_some();
-        data.description = prop.description.clone();
+        data.description = self.property_description(prop)?;
+        data.default = prop.server_default.clone().map(|value| { serde_json::json!(value) });
+        data.extensions = crate::availability_as_extensions(&prop.availability, &self.config.flavor);
         // TODO: prop.aliases as extensions
-        // TODO: prop.server_default as extension
-        // TODO: prop.availability as extension
         // TODO: prop.doc_id as extension (new representation of since and stability)
         // TODO: prop.es_quirk as extension?
         // TODO: prop.codegen_name as extension?
-        // TODO: prop.deprecation as extension
+
+        Ok(())
     }
+
+    pub fn property_description(&self, prop: &Property) -> anyhow::Result<Option<String>> {
+        if self.config.lift_enum_descriptions {
+            Ok(lift_enum_descriptions(prop, self.model)?.or_else(|| prop.description.clone()))
+        } else {
+            Ok(prop.description.clone())
+        }
+    }
+}
+
+/// Unwraps aliases from a value definition, recursively.
+///
+/// Returns the end value definition of the alias chain or `None` if the value definition isn't an alias.
+fn unwrap_alias<'a> (value: &ValueOf, model: &'a clients_schema::IndexedModel) -> anyhow::Result<Option<&'a ValueOf>> {
+    let ValueOf::InstanceOf(io) = value else {
+        return Ok(None);
+    };
+
+    if io.typ.is_builtin() {
+        return Ok(None);
+    }
+
+    let TypeDefinition::TypeAlias(alias) = model.get_type(&io.typ)? else {
+        return Ok(None);
+    };
+
+    // Try to unwrap further or else return the current alias
+    let result = match unwrap_alias(&alias.typ, model)? {
+        Some(alias_value) => Some(alias_value),
+        None => Some(&alias.typ),
+    };
+
+    Ok(result)
+}
+
+/// Checks if a value_of is a lenient array definition (i.e. `Foo | Foo[]`) and
+/// if successful, returns the value definition.
+fn unwrap_lenient_array(value: &ValueOf) -> Option<&ValueOf> {
+    // Is this a union
+    let ValueOf::UnionOf(u) = value else {
+        return None
+    };
+
+    // of a value and array_of (in any order)
+    let (single_value, array_value) = match &u.items.as_slice() {
+        [v, ValueOf::ArrayOf(ao)] |
+        [ValueOf::ArrayOf(ao), v] => (v, &*ao.value),
+        _ => return None,
+    };
+
+    // and both value types are the same
+    if single_value == array_value {
+        return Some(single_value);
+    }
+
+    None
+}
+
+fn unwrap_array(value: &ValueOf) -> Option<&ValueOf> {
+    match value {
+        ValueOf::ArrayOf(ArrayOf { value }) => Some(value),
+        _ => None,
+    }
+}
+
+/// If a property value is an enumeration (possibly via aliases and arrays)
+fn lift_enum_descriptions(prop: &Property, model: &clients_schema::IndexedModel) -> anyhow::Result<Option<String>> {
+
+    // FIXME: could be memoized on `prop.typ` as we'll redo this work every time we encounter the same value definition
+    let value = &prop.typ;
+
+    // Maybe an alias pointing to an array or lenient array
+    let value = unwrap_alias(value, model)?.unwrap_or(value);
+
+    // Unwrap lenient array
+    let (lenient_array, value) = match unwrap_lenient_array(value) {
+        Some(lenient_array) => (true, lenient_array),
+        None => (false, value),
+    };
+
+    // Unwrap array to get to the enum type
+    let value = unwrap_array(value).unwrap_or(value);
+
+    // Unwrap aliases again, in case the array value was itself an alias
+    let value = unwrap_alias(value, model)?.unwrap_or(value);
+
+    // Is this an enum?
+    let ValueOf::InstanceOf(inst) = value else {
+        return Ok(None);
+    };
+
+    if inst.typ.is_builtin() {
+        return Ok(None);
+    }
+
+    let TypeDefinition::Enum(enum_def) = model.get_type(&inst.typ)? else {
+        return Ok(None);
+    };
+
+    let mut result: String = match &prop.description {
+        Some(desc) => desc.clone(),
+        None => String::new(),
+    };
+
+    // Do we have at least one enum member description?
+    if enum_def.members.iter().any(|m| m.description.is_some()) {
+        // Some descriptions: output a list with descriptions
+
+        // Close description paragraph and add an empty line to start a new paragraph
+        writeln!(result)?;
+        writeln!(result)?;
+
+        writeln!(result, "Supported values include:")?;
+        for member in &enum_def.members {
+            write!(result, "  - ")?;
+            value_and_aliases(&mut result, member)?;
+            if let Some(desc) = &member.description {
+                write!(result, ": {}", desc)?;
+            }
+            writeln!(result)?;
+        }
+        writeln!(result)?;
+
+    } else {
+        // No description: inline list of values, only if this wasn't a lenient array.
+        // Otherwise (enum or enum array), bump.sh will correctly output a list of possible values.
+        if !lenient_array {
+            return Ok(None);
+        }
+
+        // Close description paragraph and add an empty line to start a new paragraph
+        writeln!(result)?;
+        writeln!(result)?;
+
+        write!(result, "Supported values include: ")?;
+        for (idx, member) in enum_def.members.iter().enumerate() {
+            if idx > 0 {
+                write!(result, ", ")?;
+            }
+            value_and_aliases(&mut result, member)?;
+        }
+        write!(result, "\n\n")?;
+    }
+
+    fn value_and_aliases(out: &mut String, member: &EnumMember) -> anyhow::Result<()> {
+        write!(out, "`{}`", member.name)?;
+        if !member.aliases.is_empty() {
+            write!(out, " (or `{}`)", member.aliases.join("`, `"))?;
+        }
+
+        Ok(())
+    }
+
+    Ok(Some(result))
 }

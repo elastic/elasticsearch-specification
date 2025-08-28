@@ -21,11 +21,29 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Retrieves the configuration, stats, and status of rollup jobs.
+ * Get rollup job information.
+ * Get the configuration, stats, and status of rollup jobs.
+ *
+ * NOTE: This API returns only active (both `STARTED` and `STOPPED`) jobs.
+ * If a job was created, ran for a while, then was deleted, the API does not return any details about it.
+ * For details about a historical rollup job, the rollup capabilities API may be more useful.
  * @rest_spec_name rollup.get_jobs
  * @availability stack since=6.3.0 stability=experimental
+ * @cluster_privileges monitor_rollup
+ * @deprecated 8.11.0
+ * @doc_id rollup-get-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_rollup/job/{id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_rollup/job'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the rollup job.

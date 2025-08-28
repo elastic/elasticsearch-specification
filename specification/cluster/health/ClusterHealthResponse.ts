@@ -17,16 +17,17 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { HealthStatus, IndexName, Name } from '@_types/common'
-import { double, integer, Percentage } from '@_types/Numeric'
+import { double, integer } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexHealthStats } from './types'
 
 /**
  * @doc_id cluster-health
  */
 export class Response {
+  /** @codegen_name result */
   body: HealthResponseBody
   exceptions: [
     {
@@ -41,8 +42,10 @@ export class HealthResponseBody {
   active_primary_shards: integer
   /** The total number of active primary and replica shards. */
   active_shards: integer
+  /** The ratio of active shards in the cluster expressed as a string formatted percentage. */
+  active_shards_percent?: string
   /** The ratio of active shards in the cluster expressed as a percentage. */
-  active_shards_percent_as_number: Percentage
+  active_shards_percent_as_number: double
   /** The name of the cluster. */
   cluster_name: Name
   /** The number of shards whose allocation has been delayed by the timeout settings. */
@@ -67,6 +70,8 @@ export class HealthResponseBody {
   task_max_waiting_in_queue_millis: DurationValue<UnitMillis>
   /** If false the response returned within the period of time that is specified by the timeout parameter (30s by default) */
   timed_out: boolean
+  /** The number of primary shards that are not allocated. */
+  unassigned_primary_shards: integer
   /** The number of shards that are not allocated. */
   unassigned_shards: integer
 }

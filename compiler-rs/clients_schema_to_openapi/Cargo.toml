@@ -7,21 +7,14 @@ publish = false
 [dependencies]
 clients_schema = {path="../clients_schema"}
 
-serde = {version = "1.0", features=["derive"]}
-serde_json = "1.0"
-serde_path_to_error = "0.1"
-serde_ignored = "0.1"
-icu_segmenter = "1.5.0"
-openapiv3 = "1.0"
-anyhow = "1.0"
-indexmap = "1.9"
-convert_case = "0.6"
-either_n = "0.2.0"
-maplit = "1.0"
+argh = { workspace = true }
+derive_more = { version = "2", features = ["from_str"] }
+serde_json = { workspace = true }
+itertools = { workspace = true }
+icu_segmenter = { workspace = true }
+openapiv3 = { workspace = true }
+anyhow = { workspace = true }
+indexmap = { workspace = true }
 
-tracing = "0.1.37"
-tracing-subscriber = "0.3.16"
-clap = { version = "4.4.2", features = ["derive"] }
-
-
-quantiles = "0.7.1"
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }

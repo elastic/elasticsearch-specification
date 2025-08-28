@@ -17,28 +17,41 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Metadata, Name, Refresh } from '@_types/common'
 import {
-  IndicesPrivileges,
+  ApplicationPrivileges,
   ClusterPrivilege,
-  ApplicationPrivileges
+  IndicesPrivileges,
+  RemoteClusterPrivileges,
+  RemoteIndicesPrivileges
 } from '@security/_types/Privileges'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RequestBase } from '@_types/Base'
-import { Metadata, Name, Refresh } from '@_types/common'
 
 /**
- * The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.
+ * Create or update roles.
+ *
+ * The role management APIs are generally the preferred way to manage roles in the native realm, rather than using file-based role management.
  * The create or update roles API cannot update roles that are defined in roles files.
+ * File-based role management is not available in Elastic Serverless.
  * @rest_spec_name security.put_role
- * @availability stack since=0.0.0 stability=stable
- * @availability serverless stability=stable visibility=private
+ * @availability stack stability=stable
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_security
+ * @doc_id security-api-put-role
+ * @ext_doc_id defining-roles
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/role/{name}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
-     * The name of the role.
+     * The name of the role that is being created or updated. On Elasticsearch Serverless, the role name must begin with a letter or digit and can only contain letters, digits and the characters '_', '-', and '.'. Each role must have a unique name, as this will serve as the identifier for that role.
      */
     name: Name
   }
@@ -64,14 +77,32 @@ export interface Request extends RequestBase {
      */
     indices?: IndicesPrivileges[]
     /**
+     * A list of remote indices permissions entries.
+     *
+     * NOTE: Remote indices are effective for remote clusters configured with the API key based model.
+     * They have no effect for remote clusters configured with the certificate based model.
+     * @availability stack since=8.14.0
+     *
+     */
+    remote_indices?: RemoteIndicesPrivileges[]
+    /**
+     * A list of remote cluster permissions entries.
+     * @availability stack since=8.15.0
+     */
+    remote_cluster?: RemoteClusterPrivileges[]
+    /**
      * Optional metadata. Within the metadata object, keys that begin with an underscore (`_`) are reserved for system use.
      */
     metadata?: Metadata
     /**
      * A list of users that the owners of this role can impersonate. *Note*: in Serverless, the run-as feature is disabled. For API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.
-     * @doc_id run-as-privilege
+     * @ext_doc_id run-as-privilege
      */
     run_as?: string[]
+    /**
+     * Optional description of the role descriptor
+     */
+    description?: string
     /**
      * Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn’t allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API.
      */

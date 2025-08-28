@@ -1,0 +1,58 @@
+summary: Get all keys for a user
+description: >
+  A successful response from `GET /_security/api_key?username=myuser&realm_name=native1`.
+  The response contains all API keys for the user `myuser` in the `native1` realm.
+# type: response
+# response_code:
+value: |-
+  {
+    "api_keys": [
+      {
+        "id": "0GF5GXsBCXxz2eDxWwFN",
+        "name": "hadoop_myuser_key",
+        "creation": 1548550550158,
+        "expiration": 1548551550158,
+        "invalidated": false,
+        "username": "myuser",
+        "realm": "native1",
+        "realm_type": "native",
+        "metadata": {
+          "application": "myapp"
+        },
+        "role_descriptors": {
+          "role-a": {
+            "cluster": [
+              "monitor"
+            ],
+            "indices": [
+              {
+                "names": [
+                  "index-a"
+                ],
+                "privileges": [
+                  "read"
+                ],
+                "allow_restricted_indices": false
+              }
+            ],
+            "applications": [ ],
+            "run_as": [ ],
+            "metadata": { },
+            "transient_metadata": {
+              "enabled": true
+            }
+          }
+        }
+      },
+      {
+        "id": "6wHJmcQpReKBa42EHV5SBw",
+        "name": "api-key-name-2",
+        "creation": 1548550550158,
+        "invalidated": false,
+        "username": "user-y",
+        "realm": "realm-2",
+        "metadata": {},
+        "role_descriptors": { }
+      }
+    ]
+  }

@@ -1,0 +1,38 @@
+summary: Conflicting settings
+description: >
+  An example of an allocation explanation for an unassigned primary shard.
+  In this example, a newly created index has an index setting that requires that it only be allocated to a node named `nonexistent_node`, which does not exist, so the index is unable to allocate.
+# type: response
+# response_code:
+value: |-
+  {
+    "index" : "my-index-000001",
+    "shard" : 0,
+    "primary" : true,
+    "current_state" : "unassigned",
+    "unassigned_info" : {
+      "reason" : "INDEX_CREATED",
+      "at" : "2017-01-04T18:08:16.600Z",
+      "last_allocation_status" : "no"
+    },
+    "can_allocate" : "no",
+    "allocate_explanation" : "Elasticsearch isn't allowed to allocate this shard to any of the nodes in the cluster. Choose a node to which you expect this shard to be allocated, find this node in the node-by-node explanation, and address the reasons which prevent Elasticsearch from allocating this shard there.",
+    "node_allocation_decisions" : [
+      {
+        "node_id" : "8qt2rY-pT6KNZB3-hGfLnw",
+        "node_name" : "node-0",
+        "transport_address" : "127.0.0.1:9401",
+        "roles" : ["data", "data_cold", "data_content", "data_frozen", "data_hot", "data_warm", "ingest", "master", "ml", "remote_cluster_client", "transform"],
+        "node_attributes" : {},
+        "node_decision" : "no",
+        "weight_ranking" : 1,
+        "deciders" : [
+          {
+            "decider" : "filter",
+            "decision" : "NO",
+            "explanation" : "node does not match index setting [index.routing.allocation.include] filters [_name:\"nonexistent_node\"]"
+          }
+        ]
+      }
+    ]
+  }

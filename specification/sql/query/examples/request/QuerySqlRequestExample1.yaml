@@ -1,0 +1,9 @@
+# summary:
+method_request: POST _sql?format=txt
+description: Run `POST _sql?format=txt` to get results for an SQL search.
+# type: request
+value: "{
+
+  \  \"query\": \"SELECT * FROM library ORDER BY page_count DESC LIMIT 5\"
+
+  }"

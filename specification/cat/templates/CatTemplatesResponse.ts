@@ -20,5 +20,6 @@
 import { TemplatesRecord } from './types'
 
 export class Response {
+  /** @codegen_name templates */
   body: Array<TemplatesRecord>
 }

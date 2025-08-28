@@ -1,0 +1,1 @@
+method_request: GET /_cat/fielddata?v=true&fields=body&format=json

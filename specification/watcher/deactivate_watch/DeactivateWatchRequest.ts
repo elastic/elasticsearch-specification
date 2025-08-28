@@ -21,11 +21,25 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
+ * Deactivate a watch.
+ * A watch can be either active or inactive.
  * @rest_spec_name watcher.deactivate_watch
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
+ * @cluster_privileges manage_watcher
+ * @doc_id watcher-api-deactivate-watch
+ * @ext_doc_id watcher-works
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/watch/{watch_id}/_deactivate'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
+    /**
+     * The watch identifier.
+     */
     watch_id: Name
   }
 }

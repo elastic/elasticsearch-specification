@@ -17,15 +17,14 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import {
-  Uuid,
-  Id,
-  SequenceNumber,
-  VersionNumber,
+  ByteSize,
   HealthStatus,
+  Id,
   IndexName,
-  ByteSize
+  SequenceNumber,
+  Uuid,
+  VersionNumber
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import {
@@ -47,6 +46,7 @@ import {
   TranslogStats,
   WarmerStats
 } from '@_types/Stats'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class IndexStats {

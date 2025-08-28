@@ -20,8 +20,21 @@
 import { RequestBase } from '@_types/Base'
 
 /**
- * Enables a Kibana instance to configure itself for communication with a secured Elasticsearch cluster.
+ * Enroll Kibana.
+ *
+ * Enable a Kibana instance to configure itself for communication with a secured Elasticsearch cluster.
+ *
+ * NOTE: This API is currently intended for internal use only by Kibana.
+ * Kibana uses this API internally to configure itself for communications with an Elasticsearch cluster that already has security features enabled.
  * @rest_spec_name security.enroll_kibana
  * @availability stack since=8.0.0 stability=stable
+ * @doc_id security-api-kibana-enrollment
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/enroll/kibana'
+      methods: ['GET']
+    }
+  ]
+}

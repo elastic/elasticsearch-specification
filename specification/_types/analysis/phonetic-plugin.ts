@@ -64,9 +64,9 @@ export enum PhoneticRuleType {
 export class PhoneticTokenFilter extends TokenFilterBase {
   type: 'phonetic'
   encoder: PhoneticEncoder
-  languageset: PhoneticLanguage | PhoneticLanguage[]
+  languageset?: PhoneticLanguage | PhoneticLanguage[]
   max_code_len?: integer
-  name_type: PhoneticNameType
+  name_type?: PhoneticNameType
   replace?: boolean
-  rule_type: PhoneticRuleType
+  rule_type?: PhoneticRuleType
 }

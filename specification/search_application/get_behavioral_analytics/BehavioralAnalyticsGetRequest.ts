@@ -20,12 +20,25 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
- * Returns the existing behavioral analytics collections.
+ * Get behavioral analytics collections.
  * @rest_spec_name search_application.get_behavioral_analytics
  * @availability stack since=8.8.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
+ * @doc_tag analytics
+ * @doc_id list-analytics-collection
+ * @deprecated 9.0.0
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/analytics'
+      methods: ['GET']
+    },
+    {
+      path: '/_application/analytics/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A list of analytics collections to limit the returned information

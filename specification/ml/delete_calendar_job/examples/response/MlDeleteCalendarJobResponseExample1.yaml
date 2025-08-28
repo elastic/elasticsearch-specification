@@ -1,0 +1,7 @@
+# summary:
+description: A successful response when deleting an anomaly detection job from a calendar.
+# type: response
+# response_code: 200
+value:
+  calendar_id: planned-outages
+  job_ids: []

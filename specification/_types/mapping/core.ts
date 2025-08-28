@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
-import { NumericFielddata } from '@indices/_types/NumericFielddata'
-import { Dictionary } from '@spec_utils/Dictionary'
 import {
   Fields,
   FieldValue,
@@ -36,15 +33,20 @@ import {
   short,
   ulong
 } from '@_types/Numeric'
-import { DateTime } from '@_types/Time'
-import { Property, PropertyBase } from './Property'
-import { TermVectorOption } from './TermVectorOption'
 import { Script } from '@_types/Scripting'
+import { DateTime } from '@_types/Time'
+import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
+import { NumericFielddata } from '@indices/_types/NumericFielddata'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { ChunkingSettings } from './ChunkingSettings'
+import { Property, PropertyBase } from './Property'
+import { SemanticTextIndexOptions } from './SemanticTextIndexOptions'
+import { SparseVectorIndexOptions } from './SparseVectorIndexOptions'
+import { TermVectorOption } from './TermVectorOption'
 import { TimeSeriesMetricType } from './TimeSeriesMetricType'
 
 export class CorePropertyBase extends PropertyBase {
   copy_to?: Fields
-  similarity?: string
   store?: boolean
 }
 
@@ -61,6 +63,15 @@ export class BooleanProperty extends DocValuesPropertyBase {
   fielddata?: NumericFielddata
   index?: boolean
   null_value?: boolean
+  ignore_malformed?: boolean
+  script?: Script
+  on_script_error?: OnScriptError
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
+   */
+  time_series_dimension?: boolean
   type: 'boolean'
 }
 
@@ -70,6 +81,8 @@ export class DateProperty extends DocValuesPropertyBase {
   format?: string
   ignore_malformed?: boolean
   index?: boolean
+  script?: Script
+  on_script_error?: OnScriptError
   null_value?: DateTime
   precision_step?: integer
   locale?: string
@@ -81,6 +94,8 @@ export class DateNanosProperty extends DocValuesPropertyBase {
   format?: string
   ignore_malformed?: boolean
   index?: boolean
+  script?: Script
+  on_script_error?: OnScriptError
   null_value?: DateTime
   precision_step?: integer
   type: 'date_nanos'
@@ -102,6 +117,7 @@ export class KeywordProperty extends DocValuesPropertyBase {
   normalizer?: string
   norms?: boolean
   null_value?: string
+  similarity?: string | null
   split_queries_on_whitespace?: boolean
   /**
    * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
@@ -199,14 +215,56 @@ export class RankFeaturesProperty extends PropertyBase {
   type: 'rank_features'
 }
 
+/**
+ * Technical preview
+ */
+export class RankVectorProperty extends PropertyBase {
+  type: 'rank_vectors'
+  element_type?: RankVectorElementType
+  dims?: integer
+}
+
 export class SparseVectorProperty extends PropertyBase {
+  store?: boolean
   type: 'sparse_vector'
+  /**
+   * Additional index options for the sparse vector field that controls the
+   * token pruning behavior of the sparse vector field.
+   * @availability stack since=8.19.0
+   * @availability serverless
+   */
+  index_options?: SparseVectorIndexOptions
 }
 
 export class SemanticTextProperty {
   type: 'semantic_text'
   meta?: Dictionary<string, string>
-  inference_id: Id
+  /**
+   * Inference endpoint that will be used to generate embeddings for the field.
+   * This parameter cannot be updated. Use the Create inference API to create the endpoint.
+   * If `search_inference_id` is specified, the inference endpoint will only be used at index time.
+   * @server_default .elser-2-elasticsearch
+   */
+  inference_id?: Id
+  /**
+   * Inference endpoint that will be used to generate embeddings at query time.
+   * You can update this parameter by using the Update mapping API. Use the Create inference API to create the endpoint.
+   * If not specified, the inference endpoint defined by inference_id will be used at both index and query time.
+   */
+  search_inference_id?: Id
+
+  /**
+   * Settings for index_options that override any defaults used by semantic_text, for example
+   * specific quantization settings.
+   */
+  index_options?: SemanticTextIndexOptions
+
+  /**
+   * Settings for chunking text into smaller passages. If specified, these will override the
+   * chunking settings sent in the inference endpoint associated with inference_id. If chunking settings are updated,
+   * they will not be applied to existing documents until they are reindexed.
+   */
+  chunking_settings?: ChunkingSettings
 }
 
 export class SearchAsYouTypeProperty extends CorePropertyBase {
@@ -217,6 +275,7 @@ export class SearchAsYouTypeProperty extends CorePropertyBase {
   norms?: boolean
   search_analyzer?: string
   search_quote_analyzer?: string
+  similarity?: string | null
   term_vector?: TermVectorOption
   type: 'search_as_you_type'
 }
@@ -275,11 +334,12 @@ export class TextProperty extends CorePropertyBase {
   index?: boolean
   index_options?: IndexOptions
   index_phrases?: boolean
-  index_prefixes?: TextIndexPrefixes
+  index_prefixes?: TextIndexPrefixes | null
   norms?: boolean
   position_increment_gap?: integer
   search_analyzer?: string
   search_quote_analyzer?: string
+  similarity?: string | null
   term_vector?: TermVectorOption
   type: 'text'
 }
@@ -317,7 +377,7 @@ export class DynamicProperty extends DocValuesPropertyBase {
   index?: boolean
   index_options?: IndexOptions
   index_phrases?: boolean
-  index_prefixes?: TextIndexPrefixes
+  index_prefixes?: TextIndexPrefixes | null
   norms?: boolean
   position_increment_gap?: integer
   search_analyzer?: string
@@ -328,4 +388,10 @@ export class DynamicProperty extends DocValuesPropertyBase {
   format?: string
   precision_step?: integer
   locale?: string
+}
+
+export enum RankVectorElementType {
+  byte,
+  float,
+  bit
 }

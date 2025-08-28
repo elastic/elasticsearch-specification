@@ -1,0 +1,36 @@
+name: Cargo Build & Test
+
+on:
+  pull_request:
+
+env: 
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build_and_test:
+    name: compiler-rs
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install deps
+        run: |
+          make setup
+          make generate
+          make transform-to-openapi
+          make transform-expand-generics
+
+      - name: Install Rust
+        run: rustup update stable && rustup default stable
+
+      - run: cargo build --verbose
+        working-directory: compiler-rs
+
+      - run: cargo test --verbose
+        working-directory: compiler-rs

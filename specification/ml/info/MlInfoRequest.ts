@@ -20,7 +20,8 @@
 import { RequestBase } from '@_types/Base'
 
 /**
- * Returns defaults and limits used by machine learning.
+ * Get machine learning information.
+ * Get defaults and limits used by machine learning.
  * This endpoint is designed to be used by a user interface that needs to fully
  * understand machine learning configurations where some options are not
  * specified, meaning that the defaults should be used. This endpoint may be
@@ -31,5 +32,13 @@ import { RequestBase } from '@_types/Base'
  * @availability stack since=6.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
+ * @doc_id get-ml-info
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/info'
+      methods: ['GET']
+    }
+  ]
+}

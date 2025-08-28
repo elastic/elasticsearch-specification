@@ -232,13 +232,8 @@ dist/*            binary
 
 ### Linguist Overrides #############################################################################
 
-output/dangling-types/dangling.csv linguist-generated=true
-output/schema/schema.json linguist-generated=true
-output/openapi/elasticsearch-serverless-openapi.json linguist-generated=true
-output/schema/import-type-graph.json linguist-generated=true
-output/schema/import-namespace-graph-compact.json linguist-generated=true
-output/schema/import-namespace-graph-expanded.json linguist-generated=true
-output/schema/validation-errors.json linguist-generated=true
-output/typescript/types.ts linguist-generated=true
+output/** linguist-generated=true
+output/schema/validation-errors.json linguist-generated=false
+compiler-rs/compiler-wasm-lib/pkg/* linguist-generated=true
 
 ####################################################################################################

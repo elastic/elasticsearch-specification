@@ -22,13 +22,20 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Deletes the specified lifecycle policy definition. You cannot delete policies that are currently in use. If the policy is being used to manage any indices, the request fails and returns an error.
- *
+ * Delete a lifecycle policy.
+ * You cannot delete policies that are currently in use. If the policy is being used to manage any indices, the request fails and returns an error.
  * @rest_spec_name ilm.delete_lifecycle
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm
+ * @doc_id ilm-delete-lifecycle
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ilm/policy/{policy}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the policy.

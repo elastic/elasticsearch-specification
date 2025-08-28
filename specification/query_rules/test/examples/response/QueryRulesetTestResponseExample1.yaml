@@ -1,0 +1,9 @@
+# summary:
+description: A successful response from `POST _query_rules/my-ruleset/_test`.
+# type: response
+# response_code: ''
+value:
+  total_matched_rules: 1
+  matched_rules:
+    - ruleset_id: my-ruleset
+      rule_id: my-rule1

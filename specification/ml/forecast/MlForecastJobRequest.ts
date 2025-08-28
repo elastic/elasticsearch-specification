@@ -22,19 +22,27 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Predicts the future behavior of a time series by using its historical
- * behavior.
+ * Predict future behavior of a time series.
  *
  * Forecasts are not supported for jobs that perform population analysis; an
  * error occurs if you try to create a forecast for a job that has an
- * `over_field_name` in its configuration.
+ * `over_field_name` in its configuration. Forcasts predict future behavior
+ * based on historical data.
  *
  * @rest_spec_name ml.forecast
  * @availability stack since=6.1.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-forecast
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/_forecast'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job. The job must be open when you

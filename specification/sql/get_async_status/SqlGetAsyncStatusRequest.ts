@@ -17,19 +17,28 @@
  * under the License.
  */
 
-import { Duration } from '@_types/Time'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Get the async SQL search status.
+ * Get the current status of an async SQL search or a stored synchronous SQL search.
  * @rest_spec_name sql.get_async_status
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges monitor
+ * @doc_id sql-async-status-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_sql/async/status/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
-     * Identifier for the search.
+     * The identifier for the search.
      */
     id: Id
   }

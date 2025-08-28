@@ -17,12 +17,14 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
+import { Names } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
+import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Returns the health status of a cluster, similar to the cluster health API.
- * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.
+ * Get the cluster health status.
+ *
+ * IMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use the cluster health API.
  * This API is often used to check malfunctioning clusters.
  * To help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:
@@ -32,12 +34,18 @@ import { TimeUnit } from '@_types/Time'
  * You can use the cat health API to verify cluster health across multiple nodes.
  * You also can use the API to track the recovery of a large cluster over a longer period of time.
  * @rest_spec_name cat.health
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cat-health
  * @cluster_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/health'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * The unit used to display time values.
@@ -48,5 +56,15 @@ export interface Request extends CatRequestBase {
      * @server_default true
      */
     ts?: boolean
+    /**
+     * List of columns to appear in the response. Supports simple wildcards.
+     */
+    h?: Names
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
   }
 }

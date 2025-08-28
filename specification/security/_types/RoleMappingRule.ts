@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Name, Names } from '@_types/common'
+import { Field, FieldValue } from '@_types/common'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 /**
  * @variants container
@@ -26,19 +26,6 @@ import { Name, Names } from '@_types/common'
 export class RoleMappingRule {
   any?: RoleMappingRule[]
   all?: RoleMappingRule[]
-  // `field` should have been defined as SingleKeyDictionary<String, ScalarValue|ScalarValue[]>
-  // However, this was initially defined as a container with a limited number of variants,
-  // and was later made non_exhaustive to limit breaking changes.
-  field?: FieldRule
+  field?: SingleKeyDictionary<Field, FieldValue | FieldValue[]>
   except?: RoleMappingRule
-}
-
-/**
- * @variants container
- * @non_exhaustive
- */
-export class FieldRule {
-  username?: Names
-  dn?: Names
-  groups?: Names
 }

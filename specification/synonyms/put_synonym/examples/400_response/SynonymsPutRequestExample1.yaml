@@ -1,0 +1,10 @@
+# summary:
+description: >
+  Run `PUT _synonyms/my-synonyms-set` to create a new synonyms set.
+  If any of the synonym rules included is not valid, the API will return an error.
+# type: request
+value:
+  "{\n  \"synonyms_set\": [\n    {\n      \"id\": \"test-1\",\n      \"synonyms\"\
+  : \"hello, hi\"\n    },\n    {\n      \"synonyms\": \"bye, goodbye\"\n    },\n \
+  \   {\n      \"id\": \"test-2\",\n      \"synonyms\": \"test => check\"\n    }\n\
+  \  ]\n}"

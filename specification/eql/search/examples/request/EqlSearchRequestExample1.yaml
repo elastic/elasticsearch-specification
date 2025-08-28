@@ -1,0 +1,12 @@
+summary: Basic query
+method_request: GET /my-data-stream/_eql/search
+description: >
+  Run `GET /my-data-stream/_eql/search` to search for events that have a `process.name` of `cmd.exe` and a  `process.pid` other than
+  `2013`.
+# type: request
+value: |-
+  {
+    "query": """
+      process where (process.name == "cmd.exe" and process.pid != 2013)
+    """
+  }

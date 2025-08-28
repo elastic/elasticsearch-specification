@@ -1,0 +1,17 @@
+# summary:
+description: A successful response from `GET _query_rules/my-ruleset/_rule/my-rule1`.
+# type: response
+# response_code: ''
+value:
+  rule_id: my-rule1
+  type: pinned
+  criteria:
+    - type: contains
+      metadata: query_string
+      values:
+        - pugs
+        - puggles
+  actions:
+    ids:
+      - id1
+      - id2

@@ -17,8 +17,26 @@
  * under the License.
  */
 
-import { Indices } from '@_types/common'
+import { IndexName } from '@_types/common'
+import {
+  ClusterPrivilege,
+  RemoteClusterPrivilege
+} from '@security/_types/Privileges'
 
 export class Response {
-  body: { cluster: string[]; index: Indices }
+  body: {
+    /**
+     * The list of cluster privileges that are understood by this version of Elasticsearch.
+     */
+    cluster: ClusterPrivilege[]
+    /**
+     * The list of index privileges that are understood by this version of Elasticsearch.
+     */
+    index: IndexName[]
+    /**
+     * The list of remote_cluster privileges that are understood by this version of Elasticsearch.
+     * @availability stack since=8.15.0
+     */
+    remote_cluster: RemoteClusterPrivilege[]
+  }
 }

@@ -20,5 +20,6 @@
 import { FielddataRecord } from './types'
 
 export class Response {
+  /** @codegen_name fielddata_records */
   body: Array<FielddataRecord>
 }

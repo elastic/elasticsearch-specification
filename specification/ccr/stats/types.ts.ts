@@ -17,12 +17,11 @@
  * under the License.
  */
 
-import { FollowIndexStats } from '@ccr/_types/FollowIndexStats'
+import { Name, VersionNumber } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { long } from '@_types/Numeric'
-
-import { Name, VersionNumber } from '@_types/common'
-import { DateTime, DurationValue, UnitMillis } from '@_types/Time'
+import { DurationValue, UnitMillis } from '@_types/Time'
+import { FollowIndexStats } from '@ccr/_types/FollowIndexStats'
 
 export class AutoFollowedCluster {
   cluster_name: Name
@@ -32,9 +31,18 @@ export class AutoFollowedCluster {
 
 export class AutoFollowStats {
   auto_followed_clusters: AutoFollowedCluster[]
+  /**
+   * The number of indices that the auto-follow coordinator failed to automatically follow.
+   * The causes of recent failures are captured in the logs of the elected master node and in the `auto_follow_stats.recent_auto_follow_errors` field.
+   */
   number_of_failed_follow_indices: long
+  /**
+   * The number of times that the auto-follow coordinator failed to retrieve the cluster state from a remote cluster registered in a collection of auto-follow patterns.
+   */
   number_of_failed_remote_cluster_state_requests: long
+  /** The number of indices that the auto-follow coordinator successfully followed. */
   number_of_successful_follow_indices: long
+  /** An array of objects representing failures by the auto-follow coordinator. */
   recent_auto_follow_errors: ErrorCause[]
 }
 

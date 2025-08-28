@@ -1,0 +1,8 @@
+summary: Invalidate tokens by user
+method_request: DELETE /_security/oauth2/token
+description: Run `DELETE /_security/oauth2/token` to invalidate all access tokens and refresh tokens for the user `myuser` in all realms.
+# type: request
+value: |-
+  {
+    "username" : "myuser"
+  }

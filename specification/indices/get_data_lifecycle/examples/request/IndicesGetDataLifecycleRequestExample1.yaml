@@ -1,0 +1,1 @@
+method_request: GET /_data_stream/{name}/_lifecycle?human&pretty

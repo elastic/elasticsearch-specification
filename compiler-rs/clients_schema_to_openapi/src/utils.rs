@@ -43,13 +43,15 @@ pub trait SchemaName {
 }
 
 impl SchemaName for TypeName {
+    // Use '.' as the separator: names and paths must be RFC 3986 compliant,
+    // and ':' output by `TypeName.toString()` is a reserved character.
     fn schema_name(&self) -> String {
-        format!("{}", self)
+        format!("{}.{}", self.namespace, self.name)
     }
 
     fn schema_ref(&self) -> ReferenceOr<Schema> {
         ReferenceOr::Reference {
-            reference: format!("#/components/schemas/{}", self),
+            reference: format!("#/components/schemas/{}.{}", self.namespace, self.name),
         }
     }
 }
@@ -83,13 +85,6 @@ pub trait IntoSchema {
     where Self: Sized {
         let mut schema = self.into_schema();
         tac.fill_data_with_base(&mut schema.schema_data, base);
-        schema
-    }
-
-    fn into_schema_with_data_fn(self, f: fn(&mut SchemaData) -> ()) -> Schema
-    where Self: Sized {
-        let mut schema = self.into_schema();
-        f(&mut schema.schema_data);
         schema
     }
 

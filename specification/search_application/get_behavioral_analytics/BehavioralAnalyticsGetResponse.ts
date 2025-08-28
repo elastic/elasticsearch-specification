@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { AnalyticsCollection } from '../_types/BehavioralAnalytics'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { AnalyticsCollection } from '../_types/BehavioralAnalytics'
 
 export class Response {
   /** @codegen_name analytics */

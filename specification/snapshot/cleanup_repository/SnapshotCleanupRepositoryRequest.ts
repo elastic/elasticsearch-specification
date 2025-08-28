@@ -22,26 +22,40 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Triggers the review of a snapshot repository’s contents and deletes any stale data not referenced by existing snapshots.
+ * Clean up the snapshot repository.
+ * Trigger the review of the contents of a snapshot repository and delete any stale data not referenced by existing snapshots.
  * @rest_spec_name snapshot.cleanup_repository
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage
+ * @doc_id snapshot-repo-cleanup
+ * @ext_doc_id clean-up-snapshot-repo
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot/{repository}/_cleanup'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
-     * Snapshot repository to clean up.
+     * The name of the snapshot repository to clean up.
      * @codegen_name name */
     repository: Name
   }
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node.
+     * The period to wait for a connection to the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * To indicate that the request should never timeout, set it to `-1`
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response.
+     * The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.
+     * If no response is received before the timeout expires, the cluster metadata update still applies but the response will indicate that it was not completely acknowledged.
+     * To indicate that the request should never timeout, set it to `-1`.
      * @server_default 30s
      */
     timeout?: Duration

@@ -22,14 +22,26 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Get machine learning memory usage info.
  * Get information about how machine learning jobs and trained models are using memory,
  * on each node, both within the JVM heap, and natively, outside of the JVM.
  * @rest_spec_name ml.get_memory_stats
  * @availability stack since=8.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
+ * @doc_id ml-get-memory
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/memory/_stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/memory/{node_id}/_stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The names of particular nodes in the cluster to target. For example, `nodeId1,nodeId2` or
@@ -38,11 +50,6 @@ export interface Request extends RequestBase {
     node_id?: Id
   }
   query_parameters: {
-    /**
-     * Specify this query parameter to include the fields with units in the response. Otherwise only
-     * the `_in_bytes` sizes are returned in the response.
-     */
-    human?: boolean
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout
      * expires, the request fails and returns an error.

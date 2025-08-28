@@ -27,6 +27,8 @@ import addDescription from './steps/add-description'
 import validateModel from './steps/validate-model'
 import addContentType from './steps/add-content-type'
 import readDefinitionValidation from './steps/read-definition-validation'
+import addDeprecation from './steps/add-deprecation'
+import ExamplesProcessor from './steps/add-examples'
 
 const nvmrc = readFileSync(join(__dirname, '..', '..', '.nvmrc'), 'utf8')
 const nodejsMajor = process.version.split('.').shift()?.slice(1) ?? ''
@@ -64,14 +66,19 @@ if (outputFolder === '' || outputFolder === undefined) {
 
 const compiler = new Compiler(specsFolder, outputFolder)
 
+const examplesProcessor = new ExamplesProcessor(specsFolder)
+const addExamples = examplesProcessor.addExamples.bind(examplesProcessor)
+
 compiler
   .generateModel()
   .step(addInfo)
+  .step(addDeprecation)
   .step(addContentType)
   .step(readDefinitionValidation)
   .step(validateRestSpec)
   .step(addDescription)
   .step(validateModel)
+  .step(addExamples)
   .write()
   .then(() => {
     console.log('Done')

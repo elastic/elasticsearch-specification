@@ -1,0 +1,9 @@
+# summary:
+description: A successful response from `GET _synonyms/my-synonyms-set`.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"count\": 3,\n  \"synonyms_set\": [\n    {\n      \"id\": \"test-1\"\
+  ,\n      \"synonyms\": \"hello, hi\"\n    },\n    {\n      \"id\": \"test-2\",\n\
+  \      \"synonyms\": \"bye, goodbye\"\n    },\n    {\n      \"id\": \"test-3\",\n\
+  \      \"synonyms\": \"test => check\"\n    }\n  ]\n}"

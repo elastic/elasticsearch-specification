@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { InlineGet } from '@_types/common'
 import { WriteResponseBase } from '@_types/Base'
+import { InlineGet } from '@_types/common'
 
 export class UpdateWriteResponseBase<TDocument> extends WriteResponseBase {
   get?: InlineGet<TDocument>
 }
 
 export class Response<TDocument> {
+  /** @codegen_name result */
   body: UpdateWriteResponseBase<TDocument>
 }

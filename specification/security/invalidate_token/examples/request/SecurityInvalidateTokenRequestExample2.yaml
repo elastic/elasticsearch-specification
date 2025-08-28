@@ -1,0 +1,9 @@
+summary: Invalidate a refresh token
+method_request: DELETE /_security/oauth2/token
+description: >
+  Run `DELETE /_security/oauth2/token` to invalidate a refresh token.
+# type: request
+value: |-
+  {
+    "refresh_token" : "vLBPvmAB6KvwvJZr27cS"
+  }

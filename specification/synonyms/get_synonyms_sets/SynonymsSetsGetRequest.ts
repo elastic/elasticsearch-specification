@@ -20,20 +20,29 @@ import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 
 /**
- * Retrieves a summary of all defined synonym sets
+ * Get all synonym sets.
+ * Get a summary of all defined synonym sets.
  * @rest_spec_name synonyms.get_synonyms_sets
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_search_synonyms
+ * @doc_id synonym-set-list
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_synonyms'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
-     * Starting offset
+     * The starting offset for synonyms sets to retrieve.
      * @server_default 0
      */
     from?: integer
     /**
-     * specifies a max number of results to get
+     * The maximum number of synonyms sets to retrieve.
      * @server_default 10
      */
     size?: integer

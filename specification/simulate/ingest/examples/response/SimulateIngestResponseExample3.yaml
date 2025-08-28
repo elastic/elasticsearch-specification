@@ -1,0 +1,49 @@
+summary: Use pipeline substitutions
+description: A successful response when the simulation uses pipeline substitutions.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "docs": [
+      {
+        "doc": {
+          "_id": "123",
+          "_index": "my-index",
+          "_version": -3,
+          "_source": {
+            "foo": "foo"
+          },
+          "executed_pipelines": [],
+          "effective_mapping": {
+            "_doc": {
+              "properties": {
+                "foo": {
+                  "type": "keyword"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "doc": {
+          "_id": "456",
+          "_index": "my-index",
+          "_version": -3,
+          "_source": {
+            "bar": "rab"
+          },
+        "executed_pipelines": [],
+          "effective_mapping": {
+            "_doc": {
+              "properties": {
+                "bar": {
+                  "type": "keyword"
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }

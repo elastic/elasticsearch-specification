@@ -21,10 +21,26 @@ import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
 
 export class Response {
+  /**
+   * A successful call returns a JSON structure that contains the ids of the API keys that were invalidated, the IDs of the API keys that had already been invalidated, and potentially a list of errors encountered while invalidating specific API keys.
+   */
   body: {
+    /**
+     * The number of errors that were encountered when invalidating the API keys.
+     */
     error_count: integer
+    /**
+     * Details about the errors.
+     * This field is not present in the response when `error_count` is `0`.
+     */
     error_details?: ErrorCause[]
+    /**
+     * The IDs of the API keys that were invalidated as part of this request.
+     */
     invalidated_api_keys: string[]
+    /**
+     * The IDs of the API keys that were already invalidated.
+     */
     previously_invalidated_api_keys: string[]
   }
 }

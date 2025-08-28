@@ -1,0 +1,15 @@
+# summary: "Removes the follower retention leases from the leader index."
+method_request: 'POST /<leader_index>/_ccr/forget_follower'
+description: Run `POST /<leader_index>/_ccr/forget_follower`.
+# type: "request"
+value: "{
+
+  \  \"follower_cluster\" : \"<follower_cluster>\",
+
+  \  \"follower_index\" : \"<follower_index>\",
+
+  \  \"follower_index_uuid\" : \"<follower_index_uuid>\",
+
+  \  \"leader_remote_cluster\" : \"<leader_remote_cluster>\"
+
+  }"

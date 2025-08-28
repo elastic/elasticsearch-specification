@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Retrieves configuration information for data frame analytics jobs.
+ * Get data frame analytics job configuration info.
  * You can get information for multiple data frame analytics jobs in a single
  * API request by using a comma-separated list of data frame analytics jobs or a
  * wildcard expression.
@@ -30,8 +30,20 @@ import { integer } from '@_types/Numeric'
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
+ * @doc_tag ml data frame
+ * @doc_id get-dfanalytics
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/data_frame/analytics/{id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/data_frame/analytics'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the data frame analytics job. If you do not specify this

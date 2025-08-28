@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { ElasticsearchVersionMinInfo } from '@_types/Base'
 import { ClusterAlias } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ElasticsearchVersionMinInfo } from '@_types/Base'
 
 export class Response {
   /** @codegen_name infos */
@@ -35,7 +35,7 @@ export class ResolveClusterInfo {
    */
   connected: boolean
   /**
-   * The skip_unavailable setting for a remote cluster.
+   * The `skip_unavailable` setting for a remote cluster.
    */
   skip_unavailable: boolean
   /**
@@ -45,7 +45,7 @@ export class ResolveClusterInfo {
   matching_indices?: boolean
   /**
    * Provides error messages that are likely to occur if you do a search with this index expression
-   * on the specified cluster (e.g., lack of security privileges to query an index).
+   * on the specified cluster (for example, lack of security privileges to query an index).
    */
   error?: string
   /**

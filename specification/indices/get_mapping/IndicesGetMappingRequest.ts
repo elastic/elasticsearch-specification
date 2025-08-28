@@ -22,13 +22,25 @@ import { ExpandWildcards, Indices } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Retrieves mapping definitions for one or more indices.
+ * Get mapping definitions.
  * For data streams, the API retrieves mappings for the stream’s backing indices.
  * @rest_spec_name indices.get_mapping
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id indices-get-mapping
+ * @index_privileges view_index_metadata
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_mapping'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_mapping'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.
@@ -48,7 +60,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -59,6 +70,7 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     /**
      * If `true`, the request retrieves information from the local node only.
+     * @deprecated 7.8.0 This parameter is a no-op and field mappings are always retrieved locally.
      * @server_default false
      */
     local?: boolean

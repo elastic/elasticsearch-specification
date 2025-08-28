@@ -1,0 +1,15 @@
+summary: Generate term vectors on the fly
+method_request: GET /my-index-000001/_termvectors/1
+description: >
+  Run `GET /my-index-000001/_termvectors/1`. Term vectors which are not explicitly stored in the index are automatically computed on
+  the fly. This request returns all information and statistics for the fields in document 1, even though the terms haven't been
+  explicitly stored in the index. Note that for the field text, the terms are not regenerated.
+# type: request
+value: |-
+  {
+    "fields" : ["text", "some_field_without_term_vectors"],
+    "offsets" : true,
+    "positions" : true,
+    "term_statistics" : true,
+    "field_statistics" : true
+  }

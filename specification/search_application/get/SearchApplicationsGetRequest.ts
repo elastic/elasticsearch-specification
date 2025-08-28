@@ -20,12 +20,20 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
- * Returns the details about a search application
+ * Get search application details.
  * @rest_spec_name search_application.get
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
+ * @cluster_privileges manage_search_application
+ * @doc_id search-application-get
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_application/search_application/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The name of the search application

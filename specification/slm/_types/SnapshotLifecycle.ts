@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { CronExpression } from '@watcher/_types/Schedule'
 import {
   Id,
   Indices,
@@ -28,22 +27,33 @@ import {
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import {
-  Duration,
   DateTime,
-  UnitMillis,
+  Duration,
+  DurationValue,
   EpochTime,
-  DurationValue
+  UnitMillis
 } from '@_types/Time'
+import { CronExpression } from '@watcher/_types/Schedule'
 
 export class SnapshotLifecycle {
   in_progress?: InProgress
   last_failure?: Invocation
   last_success?: Invocation
+  /**
+   * The last time the policy was modified.
+   */
   modified_date?: DateTime
   modified_date_millis: EpochTime<UnitMillis>
+  /**
+   * The next time the policy will run.
+   */
   next_execution?: DateTime
   next_execution_millis: EpochTime<UnitMillis>
   policy: Policy
+  /**
+   * The version of the snapshot policy.
+   * Only the latest version is stored and incremented when the policy is updated.
+   */
   version: VersionNumber
   stats: Statistics
 }
@@ -138,4 +148,12 @@ export class InProgress {
 export class Invocation {
   snapshot_name: Name
   time: DateTime
+}
+
+export class SnapshotPolicyStats {
+  policy: string
+  snapshots_taken: long
+  snapshots_failed: long
+  snapshots_deleted: long
+  snapshot_deletion_failures: long
 }

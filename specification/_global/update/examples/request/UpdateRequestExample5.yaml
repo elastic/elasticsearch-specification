@@ -1,0 +1,10 @@
+summary: Remove fields with a script
+method_request: POST test/_update/1
+description: >
+  Run `POST test/_update/1` to use a script to remove a field `new_field` from the document.
+# type: request
+value: "{
+
+  \  \"script\" : \"ctx._source.remove('new_field')\"
+
+  }"

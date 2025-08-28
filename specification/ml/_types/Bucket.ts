@@ -21,11 +21,10 @@ import { Field, Id } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import {
   DateTime,
-  Duration,
   DurationValue,
-  UnitSeconds,
+  EpochTime,
   UnitMillis,
-  EpochTime
+  UnitSeconds
 } from '@_types/Time'
 
 export class BucketSummary {
@@ -141,7 +140,7 @@ export class OverallBucket {
   /** The start time of the bucket for which these results were calculated. */
   timestamp: EpochTime<UnitMillis>
   /** The start time of the bucket for which these results were calculated. */
-  timestamp_string: DateTime
+  timestamp_string?: DateTime
 }
 export class OverallBucketJob {
   job_id: Id

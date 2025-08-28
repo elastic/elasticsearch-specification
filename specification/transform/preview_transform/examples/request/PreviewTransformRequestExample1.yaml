@@ -1,0 +1,17 @@
+# summary:
+method_request: POST _transform/_preview
+description: Run `POST _transform/_preview` to preview a transform that uses the pivot method.
+# type: request
+value:
+  source:
+    index: kibana_sample_data_ecommerce
+  pivot:
+    group_by:
+      customer_id:
+        terms:
+          field: customer_id
+          missing_bucket: true
+    aggregations:
+      max_price:
+        max:
+          field: taxful_total_price

@@ -21,17 +21,25 @@ import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns cluster-level changes (such as create index, update mapping, allocate or fail shard) that have not yet been executed.
+ * Get the pending cluster tasks.
+ * Get information about cluster-level changes (such as create index, update mapping, allocate or fail shard) that have not yet taken effect.
+ *
  * NOTE: This API returns a list of any pending updates to the cluster state.
- * These are distinct from the tasks reported by the Task Management API which include periodic tasks and tasks initiated by the user, such as node stats, search queries, or create index requests.
+ * These are distinct from the tasks reported by the task management API which include periodic tasks and tasks initiated by the user, such as node stats, search queries, or create index requests.
  * However, if a user-initiated task such as a create index command causes a cluster state update, the activity of this task might be reported by both task api and pending cluster tasks API.
  * @rest_spec_name cluster.pending_tasks
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor
  * @doc_id cluster-pending
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/pending_tasks'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * If `true`, the request retrieves information from the local node only.

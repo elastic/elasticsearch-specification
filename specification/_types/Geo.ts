@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { double } from './Numeric'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { double } from './Numeric'
 
 export class DistanceParsed {
   precision: double

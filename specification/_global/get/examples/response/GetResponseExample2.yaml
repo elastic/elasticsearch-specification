@@ -1,0 +1,21 @@
+summary: Get stored fields
+description: >
+  A successful response from `GET my-index-000001/_doc/1?stored_fields=tags,counter`, which retrieves a set of stored fields.
+  Field values fetched from the document itself are always returned as an array.
+  Any requested fields that are not stored (such as the counter field in this example) are ignored.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "_index": "my-index-000001",
+    "_id": "1",
+    "_version": 1,
+    "_seq_no" : 22,
+    "_primary_term" : 1,
+    "found": true,
+    "fields": {
+        "tags": [
+          "production"
+        ]
+    }
+  }

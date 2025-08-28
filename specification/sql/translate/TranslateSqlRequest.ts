@@ -23,11 +23,22 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { TimeZone } from '@_types/Time'
 
 /**
+ * Translate SQL into Elasticsearch queries.
+ * Translate an SQL search into a search API request containing Query DSL.
+ * It accepts the same request body parameters as the SQL search API, excluding `cursor`.
  * @rest_spec_name sql.translate
  * @availability stack since=6.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @index_privileges read
+ * @doc_id sql-translate-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_sql/translate'
+      methods: ['POST', 'GET']
+    }
+  ]
   body: {
     /**
      * The maximum number of rows (or entries) to return in one response.
@@ -35,18 +46,18 @@ export interface Request extends RequestBase {
      */
     fetch_size?: integer
     /**
-     * Elasticsearch query DSL for additional filtering.
-     * @doc_id sql-rest-filtering
+     * The Elasticsearch query DSL for additional filtering.
+     * @ext_doc_id sql-rest-filtering
      * @server_default none
      */
     filter?: QueryContainer
     /**
-     * SQL query to run.
+     * The SQL query to run.
      */
     query: string
     /**
-     * ISO-8601 time zone ID for the search.
-     * @doc_url https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html
+     * The ISO-8601 time zone ID for the search.
+     * @ext_doc_id time-zone-id
      * @server_default Z
      */
     time_zone?: TimeZone

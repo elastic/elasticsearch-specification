@@ -1,0 +1,23 @@
+summary: Reindex with max_docs
+method_request: POST _reindex
+description: >
+  You can limit the number of processed documents by setting `max_docs`. For example, run `POST _reindex` to copy a single document
+  from `my-index-000001` to `my-new-index-000001`.
+# type: request
+value: "{
+
+  \  \"max_docs\": 1,
+
+  \  \"source\": {
+
+  \    \"index\": \"my-index-000001\"
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"my-new-index-000001\"
+
+  \  }
+
+  }"

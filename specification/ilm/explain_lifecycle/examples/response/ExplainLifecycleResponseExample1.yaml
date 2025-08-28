@@ -1,0 +1,29 @@
+# summary:
+description: A successful response when retrieving the current ILM status for an index.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "indices": {
+      "my-index-000001": {
+        "index": "my-index-000001",
+        "index_creation_date_millis": 1538475653281,
+        "index_creation_date": "2018-10-15T13:45:21.981Z",
+        "time_since_index_creation": "15s",
+        "managed": true,
+        "policy": "my_policy",
+        "lifecycle_date_millis": 1538475653281,
+        "lifecycle_date": "2018-10-15T13:45:21.981Z",
+        "age": "15s",
+        "phase": "new",
+        "phase_time_millis": 1538475653317,
+        "phase_time": "2018-10-15T13:45:22.577Z",
+        "action": "complete"
+        "action_time_millis": 1538475653317,
+        "action_time": "2018-10-15T13:45:22.577Z",
+        "step": "complete",
+        "step_time_millis": 1538475653317,
+        "step_time": "2018-10-15T13:45:22.577Z"
+      }
+    }
+  }

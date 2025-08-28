@@ -21,18 +21,30 @@ import { RequestBase } from '@_types/Base'
 import { Indices, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
+import { VertexDefinition } from '@graph/_types/Vertex'
 import { ExploreControls } from '../_types/ExploreControls'
 import { Hop } from '../_types/Hop'
-import { VertexDefinition } from '@graph/_types/Vertex'
 
 /**
- * Extracts and summarizes information about the documents and terms in an Elasticsearch data stream or index.
+ * Explore graph analytics.
+ * Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.
+ * The easiest way to understand the behavior of this API is to use the Graph UI to explore connections.
+ * An initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.
+ * Subsequent requests enable you to spider out from one more vertices of interest.
+ * You can exclude vertices that have already been returned.
  * @doc_id graph-explore-api
  * @rest_spec_name graph.explore
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @ext_doc_id graph
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_graph/explore'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the index.

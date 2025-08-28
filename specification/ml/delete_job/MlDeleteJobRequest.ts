@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes an anomaly detection job.
+ * Delete an anomaly detection job.
  *
  * All job configuration, model state and results are deleted.
  * It is not currently possible to delete multiple jobs using wildcards or a
@@ -33,8 +33,16 @@ import { Id } from '@_types/common'
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-delete-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job.

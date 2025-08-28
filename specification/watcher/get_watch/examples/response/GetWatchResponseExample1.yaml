@@ -1,0 +1,53 @@
+# summary:
+description: A successful response from `GET _watcher/watch/my_watch`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "found": true,
+    "_id": "my_watch",
+    "_seq_no": 0,
+    "_primary_term": 1,
+    "_version": 1,
+    "status": { 
+      "version": 1,
+      "state": {
+        "active": true,
+        "timestamp": "2015-05-26T18:21:08.630Z"
+      },
+      "actions": {
+        "test_index": {
+          "ack": {
+            "timestamp": "2015-05-26T18:21:08.630Z",
+            "state": "awaits_successful_execution"
+          }
+        }
+      }
+    },
+    "watch": {
+      "input": {
+        "simple": {
+          "payload": {
+            "send": "yes"
+          }
+        }
+      },
+      "condition": {
+        "always": {}
+      },
+      "trigger": {
+        "schedule": {
+          "hourly": {
+            "minute": [0, 5]
+          }
+        }
+      },
+      "actions": {
+        "test_index": {
+          "index": {
+            "index": "test"
+          }
+        }
+      }
+    }
+  }

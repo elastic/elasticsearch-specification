@@ -19,17 +19,25 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { SyncJobType } from '../_types/SyncJob'
 import { SyncStatus } from '../_types/Connector'
+import { SyncJobType } from '../_types/SyncJob'
 
 /**
- * Lists connector sync jobs.
+ * Get all connector sync jobs.
+ *
+ * Get information about all stored connector sync jobs listed by their creation date in ascending order.
  * @rest_spec_name connector.sync_job_list
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-sync-job-list
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/_sync_job'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
      * Starting offset (default: 0)
@@ -50,6 +58,6 @@ export interface Request extends RequestBase {
     /**
      * A comma-separated list of job types to fetch the sync jobs for
      */
-    job_type?: SyncJobType[]
+    job_type?: SyncJobType | SyncJobType[]
   }
 }

@@ -1,0 +1,9 @@
+# summary:
+method_request: 'POST stackoverflow/_terms_enum'
+description: Run `POST stackoverflow/_terms_enum`.
+# type: "request"
+value: |-
+  {
+      "field" : "tags",
+      "string" : "kiba"
+  }

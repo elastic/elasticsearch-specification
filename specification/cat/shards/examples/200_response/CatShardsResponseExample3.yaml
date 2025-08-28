@@ -1,0 +1,20 @@
+summary: A relocating shard
+description: >
+  A successful response from `GET _cat/shards?format=json`.
+  The `RELOCATING` value in the `state` column indicates the index shard is relocating.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "index": "my-index-000001",
+      "shard": "0",
+      "prirep": "p",
+      "state": "RELOCATING",
+      "docs": "3014",
+      "store": "31.1mb",
+      "dataset": "249b",
+      "ip": "192.168.56.10",
+      "node": "H5dfFeA -> -> 192.168.56.30 bGG90GE"
+    }
+  ]

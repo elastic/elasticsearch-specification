@@ -18,7 +18,7 @@
  */
 
 import { DataStreamName } from '@_types/common'
-import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
+import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
 
 export class Response {
   body: { data_streams: DataStreamWithLifecycle[] }
@@ -26,5 +26,5 @@ export class Response {
 
 class DataStreamWithLifecycle {
   name: DataStreamName
-  lifecycle?: DataStreamLifecycle
+  lifecycle?: DataStreamLifecycleWithRollover
 }

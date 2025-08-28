@@ -20,5 +20,14 @@
 import { MultiSearchResult } from '@global/msearch/types'
 
 export class Response<TDocument> {
+  /**
+   * The API returns a 400 status code only if the request itself fails.
+   * If one or more searches in the request fail, the API returns a 200 status code with an error object for each failed search in the response.
+   *
+   * The body contains results for each search, returned in the order submitted.
+   * Each object uses the same properties as the search API's response.
+   *
+   * @codegen_name result
+   */
   body: MultiSearchResult<TDocument>
 }

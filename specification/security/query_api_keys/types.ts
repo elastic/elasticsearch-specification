@@ -17,21 +17,22 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { SingleKeyDictionary } from '@spec_utils/Dictionary'
-import { Metadata, Field } from '@_types/common'
-import { BoolQuery } from '@_types/query_dsl/compound'
 import {
-  ExistsQuery,
-  IdsQuery,
-  PrefixQuery,
-  RangeQuery,
-  TermQuery,
-  TermsQuery,
-  WildcardQuery
-} from '@_types/query_dsl/term'
-import { MatchQuery, SimpleQueryStringQuery } from '@_types/query_dsl/fulltext'
-import { MatchAllQuery } from '@_types/query_dsl/MatchAllQuery'
+  Buckets,
+  CardinalityAggregate,
+  CompositeAggregate,
+  DateRangeAggregate,
+  DoubleTermsAggregate,
+  FilterAggregate,
+  FiltersAggregate,
+  LongTermsAggregate,
+  MissingAggregate,
+  MultiTermsAggregate,
+  RangeAggregate,
+  StringTermsAggregate,
+  UnmappedTermsAggregate,
+  ValueCountAggregate
+} from '@_types/aggregations/Aggregate'
 import {
   BucketAggregationBase,
   CompositeAggregation,
@@ -44,22 +45,20 @@ import {
   CardinalityAggregation,
   ValueCountAggregation
 } from '@_types/aggregations/metric'
+import { Field, Metadata } from '@_types/common'
+import { BoolQuery } from '@_types/query_dsl/compound'
+import { MatchQuery, SimpleQueryStringQuery } from '@_types/query_dsl/fulltext'
+import { MatchAllQuery } from '@_types/query_dsl/MatchAllQuery'
 import {
-  Buckets,
-  CardinalityAggregate,
-  ValueCountAggregate,
-  StringTermsAggregate,
-  LongTermsAggregate,
-  DoubleTermsAggregate,
-  UnmappedTermsAggregate,
-  MultiTermsAggregate,
-  MissingAggregate,
-  FilterAggregate,
-  RangeAggregate,
-  DateRangeAggregate,
-  FiltersAggregate,
-  CompositeAggregate
-} from '@_types/aggregations/Aggregate'
+  ExistsQuery,
+  IdsQuery,
+  PrefixQuery,
+  RangeQuery,
+  TermQuery,
+  TermsQuery,
+  WildcardQuery
+} from '@_types/query_dsl/term'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 /**
  * @variants container
@@ -121,7 +120,7 @@ export class ApiKeyAggregationContainer {
 }
 
 /**
- * @variants external
+ * @variants typed_keys_quirk
  * @non_exhaustive
  */
 export type ApiKeyAggregate =
@@ -145,7 +144,7 @@ export type ApiKeyAggregate =
  */
 export class ApiKeyQueryContainer {
   /**
-   * matches documents matching boolean combinations of other queries.
+   * Matches documents matching boolean combinations of other queries.
    * @doc_id query-dsl-bool-query
    */
   bool?: BoolQuery

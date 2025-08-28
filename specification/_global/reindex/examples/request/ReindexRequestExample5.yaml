@@ -1,0 +1,21 @@
+summary: Ingest pipelines
+method_request: POST _reindex
+description: Run `POST _reindex` and use the ingest pipelines feature.
+# type: request
+value: "{
+
+  \  \"source\": {
+
+  \    \"index\": \"source\"
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"dest\",
+
+  \    \"pipeline\": \"some_ingest_pipeline\"
+
+  \  }
+
+  }"

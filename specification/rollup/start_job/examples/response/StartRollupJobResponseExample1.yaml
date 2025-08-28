@@ -1,0 +1,5 @@
+# summary:
+description: A successful response from `POST _rollup/job/sensor/_start`.
+# type: response
+# response_code: ''
+value: "{\n  \"started\": true\n}"

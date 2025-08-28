@@ -26,10 +26,10 @@ import {
 } from '@_types/common'
 import { double, float, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
-import { QueryBase } from './abstractions'
-import { Operator } from './Operator'
 import { TimeZone } from '@_types/Time'
 import { PipeSeparatedFlags } from '@spec_utils/PipeSeparatedFlags'
+import { QueryBase } from './abstractions'
+import { Operator } from './Operator'
 
 /**
  * @shortcut_property query
@@ -103,6 +103,8 @@ export class IntervalsContainer {
    * Matches terms that start with a specified set of characters.
    */
   prefix?: IntervalsPrefix
+  range?: IntervalsRange
+  regexp?: IntervalsRegexp
   /**
    * Matches terms using a wildcard pattern.
    */
@@ -232,7 +234,56 @@ export class IntervalsPrefix {
   use_field?: Field
 }
 
-/** @variants container */
+export class IntervalsRange {
+  /**
+   * Analyzer used to analyze the `prefix`.
+   * @doc_id analysis
+   */
+  analyzer?: string
+  /**
+   * Lower term, either gte or gt must be provided.
+   */
+  gte?: string
+  /**
+   * Lower term, either gte or gt must be provided.
+   */
+  gt?: string
+  /**
+   * Upper term, either lte or lt must be provided.
+   */
+  lte?: string
+  /**
+   * Upper term, either lte or lt must be provided.
+   */
+  lt?: string
+  /**
+   * If specified, match intervals from this field rather than the top-level field.
+   * The `prefix` is normalized using the search analyzer from this field, unless `analyzer` is specified separately.
+   */
+  use_field?: Field
+}
+
+export class IntervalsRegexp {
+  /**
+   * Analyzer used to analyze the `prefix`.
+   * @doc_id analysis
+   */
+  analyzer?: string
+  /**
+   * Regex pattern.
+   */
+  pattern: string
+  /**
+   * If specified, match intervals from this field rather than the top-level field.
+   * The `prefix` is normalized using the search analyzer from this field, unless `analyzer` is specified separately.
+   */
+  use_field?: Field
+}
+
+/**
+ * @variants container
+ * @ext_doc_id query-dsl-intervals-query
+ */
 // Note: similar to IntervalsContainer, but has to be duplicated because of the QueryBase parent class
 export class IntervalsQuery extends QueryBase {
   /**
@@ -256,6 +307,9 @@ export class IntervalsQuery extends QueryBase {
    * Matches terms that start with a specified set of characters.
    */
   prefix?: IntervalsPrefix
+  range?: IntervalsRange
+  regexp?: IntervalsRegexp
+
   /**
    * Matches terms using a wildcard pattern.
    */
@@ -279,7 +333,10 @@ export class IntervalsWildcard {
   use_field?: Field
 }
 
-/** @shortcut_property query */
+/**
+ * @shortcut_property query
+ * @ext_doc_id query-dsl-match-query
+ */
 export class MatchQuery extends QueryBase {
   /**
    * Analyzer used to convert the text in the query value into tokens.
@@ -346,7 +403,10 @@ export class MatchQuery extends QueryBase {
   zero_terms_query?: ZeroTermsQuery
 }
 
-/** @shortcut_property query */
+/**
+ * @shortcut_property query
+ * @ext_doc_id query-dsl-match-bool-prefix-query
+ */
 export class MatchBoolPrefixQuery extends QueryBase {
   /**
    * Analyzer used to convert the text in the query value into tokens.
@@ -402,7 +462,10 @@ export class MatchBoolPrefixQuery extends QueryBase {
   query: string
 }
 
-/** @shortcut_property query */
+/**
+ * @shortcut_property query
+ * @ext_doc_id query-dsl-match-query-phrase
+ */
 export class MatchPhraseQuery extends QueryBase {
   /**
    * Analyzer used to convert the text in the query value into tokens.
@@ -425,7 +488,10 @@ export class MatchPhraseQuery extends QueryBase {
   zero_terms_query?: ZeroTermsQuery
 }
 
-/** @shortcut_property query */
+/**
+ * @shortcut_property query
+ * @ext_doc_id query-dsl-match-query-phrase-prefix
+ */
 export class MatchPhrasePrefixQuery extends QueryBase {
   /**
    * Analyzer used to convert text in the query value into tokens.
@@ -453,6 +519,9 @@ export class MatchPhrasePrefixQuery extends QueryBase {
   zero_terms_query?: ZeroTermsQuery
 }
 
+/**
+ * @ext_doc_id query-dsl-multi-match-query
+ */
 export class MultiMatchQuery extends QueryBase {
   /**
    * Analyzer used to convert the text in the query value into tokens.
@@ -577,6 +646,9 @@ export enum ZeroTermsQuery {
   none
 }
 
+/**
+ * @ext_doc_id query-dsl-query-string-query
+ */
 export class QueryStringQuery extends QueryBase {
   /**
    * If `true`, the wildcard characters `*` and `?` are allowed as the first character of the query string.
@@ -762,6 +834,9 @@ export enum SimpleQueryStringFlag {
   ALL
 }
 
+/**
+ * @ext_doc_id query-dsl-simple-query-string-query
+ */
 export class SimpleQueryStringQuery extends QueryBase {
   /**
    * Analyzer used to convert text in the query string into tokens.

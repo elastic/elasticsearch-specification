@@ -1,0 +1,11 @@
+summary: HTTP-Post binding
+method_request: POST /_security/saml/complete_logout
+description: >
+  Run `POST /_security/saml/complete_logout` to verify the logout response sent by the SAML IdP using the HTTP-Post binding.
+# type: request
+value: |-
+  {
+    "realm": "saml1",
+    "ids": [ "_1c368075e0b3..." ],
+    "content": "PHNhbWxwOkxvZ291dFJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46..."
+  }

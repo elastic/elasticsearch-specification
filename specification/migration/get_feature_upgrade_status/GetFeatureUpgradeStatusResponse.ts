@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexName, Indices, VersionString } from '@_types/common'
+import { IndexName, VersionString } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 
 export class Response {

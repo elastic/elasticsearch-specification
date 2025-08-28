@@ -17,20 +17,21 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id, Metadata } from '@_types/common'
+import { Duration } from '@_types/Time'
 import {
+  Destination,
   Latest,
   Pivot,
   RetentionPolicyContainer,
   Settings,
-  SyncContainer,
-  Destination,
-  Source
+  Source,
+  SyncContainer
 } from '@transform/_types/Transform'
-import { RequestBase } from '@_types/Base'
-import { Id, Metadata } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
+ * Create a transform.
  * Creates a transform.
  *
  * A transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as
@@ -58,8 +59,15 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  * @index_privileges create_index, read, index, view_index_metadata
+ * @doc_id put-transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /** Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9),
      * hyphens, and underscores. It has a 64 character limit and must start and end with alphanumeric characters.

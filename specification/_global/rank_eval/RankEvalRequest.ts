@@ -22,16 +22,31 @@ import { ExpandWildcards, Indices } from '@_types/common'
 import { RankEvalMetric, RankEvalRequestItem } from './types'
 
 /**
- * Enables you to evaluate the quality of ranked search results over a set of typical search queries.
+ * Evaluate ranked search results.
+ *
+ * Evaluate the quality of ranked search results over a set of typical search queries.
  * @rest_spec_name rank_eval
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
+ * @doc_tag search
+ * @doc_id search-rank-eval
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_rank_eval'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_rank_eval'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
-     * Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard (`*`) expressions are supported.
+     * A  comma-separated list of data streams, indices, and index aliases used to limit the request.
+     * Wildcard (`*`) expressions are supported.
      * To target all data streams and indices in a cluster, omit this parameter or use `_all` or `*`.
      */
     index?: Indices

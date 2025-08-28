@@ -22,14 +22,43 @@ import { Fields, Level, Metrics, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns cluster nodes statistics.
+ * Get node statistics.
+ * Get statistics for nodes in a cluster.
+ * By default, all stats are returned. You can limit the returned information by using metrics.
  * @rest_spec_name nodes.stats
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-nodes-stats
  * @cluster_privileges monitor,manage
+ * @doc_tag cluster
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_nodes/stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/{node_id}/stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/stats/{metric}'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/{node_id}/stats/{metric}'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/stats/{metric}/{index_metric}'
+      methods: ['GET']
+    },
+    {
+      path: '/_nodes/{node_id}/stats/{metric}/{index_metric}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** Comma-separated list of node IDs or names used to limit returned information. */
     node_id?: NodeIds
@@ -54,11 +83,6 @@ export interface Request extends RequestBase {
     include_segment_file_sizes?: boolean
     /** Indicates whether statistics are aggregated at the cluster, index, or shard level. */
     level?: Level
-    /**
-     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s
-     */
-    master_timeout?: Duration
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s

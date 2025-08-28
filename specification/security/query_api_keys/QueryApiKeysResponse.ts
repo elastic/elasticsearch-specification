@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ApiKey } from '@security/_types/ApiKey'
-import { integer } from '@_types/Numeric'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregateName } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { ApiKey } from '@security/_types/ApiKey'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ApiKeyAggregate } from './types'
 
 export class Response {

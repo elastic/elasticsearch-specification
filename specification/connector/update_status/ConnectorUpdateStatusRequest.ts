@@ -21,13 +21,19 @@ import { Id } from '@_types/common'
 import { ConnectorStatus } from '../_types/Connector'
 
 /**
- * Updates the status of the connector
+ * Update the connector status.
  * @rest_spec_name connector.update_status
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  * @doc_id connector-update-status
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}/_status'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be updated

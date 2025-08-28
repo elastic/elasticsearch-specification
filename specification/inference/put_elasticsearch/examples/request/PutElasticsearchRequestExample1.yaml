@@ -1,0 +1,20 @@
+summary: ELSER sparse embedding task
+description:
+  Run `PUT _inference/sparse_embedding/my-elser-model` to create an inference endpoint that performs a `sparse_embedding`
+  task. The `model_id` must be the ID of one of the built-in ELSER models. The API will automatically download the ELSER model if it
+  isn't already downloaded and then deploy the model.
+method_request: 'PUT _inference/sparse_embedding/my-elser-model'
+# type: "request"
+value: |-
+  {
+      "service": "elasticsearch",
+      "service_settings": {
+          "adaptive_allocations": { 
+          "enabled": true,
+          "min_number_of_allocations": 1,
+          "max_number_of_allocations": 4
+          },
+          "num_threads": 1,
+          "model_id": ".elser_model_2" 
+      }
+  }

@@ -1,0 +1,10 @@
+# summary:
+description: >
+  A successful response from `DELETE /_security/role/my_admin_role`.
+  If the role is successfully deleted, `found` is set to `true`.
+# type: response
+# response_code:
+value: |-
+  {
+    "found" : true
+  }

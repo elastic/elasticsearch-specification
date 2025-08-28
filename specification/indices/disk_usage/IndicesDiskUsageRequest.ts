@@ -21,13 +21,26 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
- * Analyzes the disk usage of each field of an index or data stream.
+ * Analyze the index disk usage.
+ * Analyze the disk usage of each field of an index or data stream.
+ * This API might not support indices created in previous Elasticsearch versions.
+ * The result of a small index can be inaccurate as some parts of an index might not be analyzed by the API.
+ *
+ * NOTE: The total size of fields of the analyzed shards of the index in the response is usually smaller than the index `store_size` value because some small metadata files are ignored and some parts of data files might not be scanned by the API.
+ * Since stored fields are stored together in a compressed format, the sizes of stored fields are also estimates and can be inaccurate.
+ * The stored size of the `_id` field is likely underestimated while the `_source` field is overestimated.
  * @doc_id indices-disk-usage
  * @rest_spec_name indices.disk_usage
  * @availability stack since=7.15.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_disk_usage'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.

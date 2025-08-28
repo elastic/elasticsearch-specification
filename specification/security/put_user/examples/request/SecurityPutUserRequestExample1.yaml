@@ -1,0 +1,14 @@
+# summary:
+method_request: POST /_security/user/jacknich
+description: Run `POST /_security/user/jacknich` to activate a user profile.
+# type: request
+value: |-
+  {
+    "password" : "l0ng-r4nd0m-p@ssw0rd",
+    "roles" : [ "admin", "other_role1" ],
+    "full_name" : "Jack Nicholson",
+    "email" : "jacknich@example.com",
+    "metadata" : {
+      "intelligence" : 7
+    }
+  }

@@ -1,0 +1,9 @@
+summary: Invalidate an access token
+method_request: DELETE /_security/oauth2/token
+description: >
+  Run `DELETE /_security/oauth2/token` to invalidate an access token.
+# type: request
+value: |-
+  {
+    "token" : "dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ=="
+  }

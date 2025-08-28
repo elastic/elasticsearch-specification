@@ -1,0 +1,14 @@
+summary: Filter for failed operations
+description: >
+  An example response from `POST /_bulk?filter_path=items.*.error`, which returns only information about failed operations.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"items\": [\n    {\n      \"update\": {\n        \"error\": {\n    \
+  \      \"type\": \"document_missing_exception\",\n          \"reason\": \"[5]: document\
+  \ missing\",\n          \"index_uuid\": \"aAsFqTI0Tc2W0LCWgPNrOA\",\n          \"\
+  shard\": \"0\",\n          \"index\": \"index1\"\n        }\n      }\n    },\n \
+  \   {\n      \"update\": {\n        \"error\": {\n          \"type\": \"document_missing_exception\"\
+  ,\n          \"reason\": \"[6]: document missing\",\n          \"index_uuid\": \"\
+  aAsFqTI0Tc2W0LCWgPNrOA\",\n          \"shard\": \"0\",\n          \"index\": \"\
+  index1\"\n        }\n      }\n    }\n  ]\n}"

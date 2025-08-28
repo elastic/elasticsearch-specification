@@ -1,0 +1,15 @@
+summary: Explain analysis
+method_request: GET /_analyze
+description: >
+  If you want to get more advanced details, set `explain` to `true`. It will output all token attributes for each token. You can
+  filter token attributes you want to output by setting the `attributes` option. NOTE: The format of the additional detail
+  information is labelled as experimental in Lucene and it may change in the future.
+# type: request
+value:
+  tokenizer: standard
+  filter:
+    - snowball
+  text: detailed output
+  explain: true
+  attributes:
+    - keyword

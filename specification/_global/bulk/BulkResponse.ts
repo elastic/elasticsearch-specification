@@ -18,13 +18,27 @@
  */
 
 import { long } from '@_types/Numeric'
-import { OperationType, ResponseItem } from './types'
 import { SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { OperationType, ResponseItem } from './types'
 
 export class Response {
+  /**
+   * The response contains the individual results of each operation in the request.
+   * They are returned in the order submitted.
+   * The success or failure of an individual operation does not affect other operations in the request.
+   */
   body: {
+    /**
+     * If `true`, one or more of the operations in the bulk request did not complete successfully.
+     */
     errors: boolean
+    /**
+     * The result of each operation in the bulk request, in the order they were submitted.
+     */
     items: SingleKeyDictionary<OperationType, ResponseItem>[]
+    /**
+     * The length of time, in milliseconds, it took to process the bulk request.
+     */
     took: long
     ingest_took?: long
   }

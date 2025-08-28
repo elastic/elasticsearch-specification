@@ -414,14 +414,40 @@ export function modelImplements (node: ExpressionWithTypeArguments): model.Inher
  * A class could have multiple behaviors from multiple classes,
  * which are defined inside the node typeArguments.
  */
-export function modelBehaviors (node: ExpressionWithTypeArguments): model.Inherits {
+export function modelBehaviors (node: ExpressionWithTypeArguments, jsDocs: JSDoc[]): model.Behavior {
+  const behaviorName = node.getExpression().getText()
   const generics = node.getTypeArguments().map(node => modelType(node))
+
+  let meta: Map<string, string> | undefined
+  const tags = parseJsDocTagsAllowDuplicates(jsDocs)
+  if (tags.behavior_meta !== undefined) {
+    // Extracts whitespace/comma-separated key-value-pairs with a "=" delimiter and handles double-quotes
+    const re = /(?<key>[^=\s,]+)=(?<value>"([^"]*)"|([^\s,]+))/g
+
+    for (const tag of tags.behavior_meta) {
+      const id = tag.split(' ')
+      if (id[0].trim() !== behaviorName) {
+        continue
+      }
+      const matches = [...id.slice(1).join(' ').matchAll(re)]
+      meta = new Map<string, string>()
+      for (const match of matches) {
+        if (match.groups == null) {
+          continue
+        }
+        meta.set(match.groups.key, match.groups.value.replace(/^"(.+(?="$))"$/, '$1'))
+      }
+      break
+    }
+  }
+
   return {
     type: {
-      name: node.getExpression().getText(),
+      name: behaviorName,
       namespace: getNameSpace(node)
     },
-    ...(generics.length > 0 && { generics })
+    ...(generics.length > 0 && { generics }),
+    meta: (meta === undefined) ? undefined : Object.fromEntries(meta)
   }
 }
 
@@ -510,8 +536,8 @@ export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAl
     if (variants != null) {
       assert(
         declaration.getJsDocs(),
-        variants.kind === 'internal_tag' || variants.kind === 'external_tag',
-        'Type Aliases can only have internal or external variants'
+        variants.kind === 'internal_tag' || variants.kind === 'external_tag' || variants.kind === 'untagged',
+        'Type Aliases can only have internal, external or untagged variants'
       )
       typeAlias.variants = variants
     }
@@ -532,10 +558,15 @@ export function modelProperty (declaration: PropertySignature | PropertyDeclarat
 
   // names that contains `.` or `-` will be wrapped inside single quotes
   const name = declaration.getName().replace(/'/g, '')
-  const property = {
-    name,
-    required: !declaration.hasQuestionToken(),
-    type: modelType(type)
+  let property: model.Property
+  try {
+    property = {
+      name,
+      required: !declaration.hasQuestionToken(),
+      type: modelType(type)
+    }
+  } catch (e) {
+    throw new Error(`cannot determine type of ${name}, got:${type.getFullText()}`)
   }
   hoistPropertyAnnotations(property, declaration.getJsDocs())
   return property
@@ -545,12 +576,21 @@ export function modelProperty (declaration: PropertySignature | PropertyDeclarat
  * Pulls @deprecated from types and properties
  */
 function setDeprecated (type: model.BaseType | model.Property | model.EnumMember, tags: Record<string, string>, jsDocs: JSDoc[]): void {
+  const deprecation = parseDeprecation(tags, jsDocs)
+  if (deprecation != null) {
+    type.deprecation = deprecation
+  }
+}
+
+export function parseDeprecation (tags: Record<string, string>, jsDocs: JSDoc[]): model.Deprecation | undefined {
   if (tags.deprecated !== undefined) {
     const [version, ...description] = tags.deprecated.split(' ')
     assert(jsDocs, semver.valid(version), 'Invalid semver value')
-    type.deprecation = { version, description: description.join(' ') }
+    delete tags.deprecated
+    return { version, description: description.join(' ') }
+  } else {
+    return undefined
   }
-  delete tags.deprecated
 }
 
 /**
@@ -574,7 +614,7 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
   )
 
   for (const tag of validTags) {
-    if (tag === 'behavior') continue
+    if (tag === 'behavior' || tag === 'behavior_meta') continue
     if (tags[tag] !== undefined) {
       setter(tags, tag, tags[tag])
     }
@@ -594,7 +634,7 @@ export function hoistRequestAnnotations (
   request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
 ): void {
   const knownRequestAnnotations = [
-    'rest_spec_name', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id', 'availability'
+    'rest_spec_name', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id', 'availability', 'doc_tag', 'ext_doc_id'
   ]
   // in most of the cases the jsDocs comes in a single block,
   // but it can happen that the user defines multiple single line jsDoc.
@@ -636,10 +676,10 @@ export function hoistRequestAnnotations (
     } else if (tag === 'cluster_privileges') {
       const privileges = [
         'all', 'cancel_task', 'create_snapshot', 'grant_api_key', 'manage', 'manage_api_key', 'manage_ccr',
-        'manage_enrich', 'manage_ilm', 'manage_index_templates', 'manage_ingest_pipelines', 'manage_logstash_pipelines',
-        'manage_ml', 'manage_oidc', 'manage_own_api_key', 'manage_pipeline', 'manage_rollup', 'manage_saml',
+        'manage_enrich', 'manage_ilm', 'manage_index_templates', 'manage_inference', 'manage_ingest_pipelines', 'manage_logstash_pipelines',
+        'manage_ml', 'manage_oidc', 'manage_own_api_key', 'manage_pipeline', 'manage_rollup', 'manage_saml', 'manage_search_application', 'manage_search_query_rules', 'manage_search_synonyms',
         'manage_security', 'manage_service_account', 'manage_slm', 'manage_token', 'manage_transform', 'manage_user_profile',
-        'manage_watcher', 'monitor', 'monitor_ml', 'monitor_rollup', 'monitor_snapshot', 'monitor_text_structure',
+        'manage_watcher', 'monitor', 'monitor_esql', 'monitor_inference', 'monitor_ml', 'monitor_rollup', 'monitor_snapshot', 'monitor_text_structure',
         'monitor_transform', 'monitor_watcher', 'read_ccr', 'read_ilm', 'read_pipeline', 'read_security', 'read_slm', 'transport_client'
       ]
       const values = parseCommaSeparated(value)
@@ -654,6 +694,18 @@ export function hoistRequestAnnotations (
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
       endpoint.docUrl = docUrl[1].replace(/\r/g, '')
+      if (docUrl[2].replace(/\r/g, '') !== '') {
+        endpoint.extPreviousVersionDocUrl = docUrl[2].replace(/\r/g, '')
+      }
+    } else if (tag === 'ext_doc_id') {
+      assert(jsDocs, value.trim() !== '', `Request ${request.name.name}'s @ext_doc_id cannot be empty`)
+      endpoint.extDocId = value.trim()
+      const docUrl = docIds.find(entry => entry[0] === value.trim())
+      assert(jsDocs, docUrl != null, `The @ext_doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
+      endpoint.extDocUrl = docUrl[1].replace(/\r/g, '')
+      if (docUrl[3].replace(/\r/g, '') !== '') {
+        endpoint.extDocDescription = docUrl[3].replace(/\r/g, '')
+      }
     } else if (tag === 'availability') {
       // The @availability jsTag is different than most because it allows
       // multiple values within the same docstring, hence needing to parse
@@ -664,23 +716,10 @@ export function hoistRequestAnnotations (
       // Apply the availabilities to the Endpoint.
       for (const [availabilityName, availabilityValue] of Object.entries(availabilities)) {
         endpoint.availability[availabilityName] = availabilityValue
-
-        // Backfilling deprecated fields on an endpoint.
-        if (availabilityName === 'stack') {
-          if (availabilityValue.since !== undefined) {
-            endpoint.since = availabilityValue.since
-          }
-          if (availabilityValue.stability !== undefined) {
-            endpoint.stability = availabilityValue.stability
-          }
-          if (availabilityValue.visibility !== undefined) {
-            endpoint.visibility = availabilityValue.visibility
-          }
-          if (availabilityValue.featureFlag !== undefined) {
-            endpoint.featureFlag = availabilityValue.featureFlag
-          }
-        }
       }
+    } else if (tag === 'doc_tag') {
+      assert(jsDocs, value.trim() !== '', `Request ${request.name.name}'s @doc_tag cannot be empty`)
+      endpoint.docTag = value.trim()
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
     }
@@ -695,7 +734,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
   const validTags = ['class_serializer', 'doc_url', 'doc_id', 'behavior', 'variants', 'variant', 'shortcut_property',
-    'codegen_names', 'non_exhaustive', 'es_quirk']
+    'codegen_names', 'non_exhaustive', 'es_quirk', 'behavior_meta', 'ext_doc_id']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -724,6 +763,12 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
       type.docUrl = docUrl[1].replace(/\r/g, '')
+    } else if (tag === 'ext_doc_id') {
+      assert(jsDocs, value.trim() !== '', `Type ${type.name.namespace}.${type.name.name}'s @ext_doc_id cannot be empty`)
+      type.extDocId = value.trim()
+      const docUrl = docIds.find(entry => entry[0] === value.trim())
+      assert(jsDocs, docUrl != null, `The @ext_doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
+      type.extDocUrl = docUrl[1].replace(/\r/g, '')
     } else if (tag === 'codegen_names') {
       type.codegenNames = parseCommaSeparated(value)
       assert(jsDocs,
@@ -746,7 +791,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
   const validTags = ['prop_serializer', 'doc_url', 'aliases', 'codegen_name', 'server_default',
-    'variant', 'doc_id', 'es_quirk', 'availability']
+    'variant', 'doc_id', 'es_quirk', 'availability', 'ext_doc_id']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -782,16 +827,6 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       property.availability = {}
       for (const [availabilityName, availabilityValue] of Object.entries(availabilities)) {
         property.availability[availabilityName] = availabilityValue
-
-        // Backfilling deprecated fields on a property.
-        if (availabilityName === 'stack') {
-          if (availabilityValue.since !== undefined) {
-            property.since = availabilityValue.since
-          }
-          if (availabilityValue.stability !== undefined) {
-            property.stability = availabilityValue.stability
-          }
-        }
       }
     } else if (tag === 'doc_id') {
       assert(jsDocs, value.trim() !== '', `Property ${property.name}'s @doc_id is cannot be empty`)
@@ -799,6 +834,13 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       const docUrl = docIds.find(entry => entry[0] === value)
       if (docUrl != null) {
         property.docUrl = docUrl[1].replace(/\r/g, '')
+      }
+    } else if (tag === 'ext_doc_id') {
+      assert(jsDocs, value.trim() !== '', `Property ${property.name}'s @ext_doc_id is cannot be empty`)
+      property.extDocId = value
+      const docUrl = docIds.find(entry => entry[0] === value)
+      if (docUrl != null) {
+        property.extDocUrl = docUrl[1].replace(/\r/g, '')
       }
     } else if (tag === 'server_default') {
       assert(jsDocs, property.type.kind === 'instance_of' || property.type.kind === 'union_of' || property.type.kind === 'array_of', `Default values can only be configured for instance_of or union_of types, you are using ${property.type.kind}`)
@@ -893,13 +935,6 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
       member.availability = {}
       for (const [availabilityName, availabilityValue] of Object.entries(availabilities)) {
         member.availability[availabilityName] = availabilityValue
-
-        // Backfilling deprecated fields on a property.
-        if (availabilityName === 'stack') {
-          if (availabilityValue.since !== undefined) {
-            member.since = availabilityValue.since
-          }
-        }
       }
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on enum member ${member.name}`)
@@ -1065,7 +1100,7 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
   const nonExhaustive = (typeof tags.non_exhaustive === 'string') ? true : undefined
 
   const [type, ...values] = tags.variants.split(' ')
-  if (type === 'external') {
+  if (type === 'typed_keys_quirk') {
     return {
       kind: 'external_tag',
       nonExhaustive: nonExhaustive
@@ -1079,17 +1114,32 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     }
   }
 
-  assert(jsDoc, type === 'internal', `Bad variant type: ${type}`)
-
-  const pairs = parseKeyValues(jsDoc, values, 'tag', 'default')
-  assert(jsDoc, typeof pairs.tag === 'string', 'Internal variant requires a tag definition')
-
-  return {
-    kind: 'internal_tag',
-    nonExhaustive: nonExhaustive,
-    tag: pairs.tag,
-    defaultTag: pairs.default
+  if (type === 'internal') {
+    const pairs = parseKeyValues(jsDoc, values, 'tag', 'default')
+    assert(jsDoc, typeof pairs.tag === 'string', 'Internal variant requires a tag definition')
+    return {
+      kind: 'internal_tag',
+      nonExhaustive: nonExhaustive,
+      tag: pairs.tag,
+      defaultTag: pairs.default
+    }
   }
+
+  if (type === 'untagged') {
+    const pairs = parseKeyValues(jsDoc, values, 'untyped')
+    assert(jsDoc, typeof pairs.untyped === 'string', 'Untagged variant requires an untyped definition')
+    const fqn = pairs.untyped.split('.')
+    return {
+      kind: 'untagged',
+      nonExhaustive: nonExhaustive,
+      untypedVariant: {
+        namespace: fqn.slice(0, fqn.length - 1).join('.'),
+        name: fqn[fqn.length - 1]
+      }
+    }
+  }
+
+  assert(jsDoc, false, `Bad variant type: ${type}`)
 }
 
 /**

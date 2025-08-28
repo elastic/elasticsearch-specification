@@ -1,0 +1,20 @@
+summary: Get metadata fields
+description: >
+  A successful response from `GET my-index-000001/_doc/2?routing=user1&stored_fields=tags,counter`, which retrieves the `_routing` metadata field.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "_index": "my-index-000001",
+    "_id": "2",
+    "_version": 1,
+    "_seq_no" : 13,
+    "_primary_term" : 1,
+    "_routing": "user1",
+    "found": true,
+    "fields": {
+        "tags": [
+          "env2"
+        ]
+    }
+  }

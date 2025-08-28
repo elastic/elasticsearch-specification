@@ -15,45 +15,77 @@
 // specific language governing permissions and limitations
 // under the License.
 
-use anyhow::bail;
-use clients_schema::{Availabilities, Visibility};
+use std::path::{PathBuf};
+use argh::FromArgs;
+use clients_schema::{IndexedModel};
 use wasm_bindgen::prelude::*;
-use clients_schema::transform::ExpandConfig;
+use clients_schema::indexmap::IndexMap;
+use clients_schema_to_openapi::cli::Cli;
 
-#[cfg(all(not(target_arch = "wasm32"), not(feature = "cargo-clippy")))]
-compile_error!("To build this crate use `make compiler-wasm-lib`");
+/// Minimal bindings to Node's `fs` module.
+mod node_fs {
+    use wasm_bindgen::prelude::*;
 
-#[wasm_bindgen]
-pub fn convert_schema_to_openapi(json: &str, flavor: &str) -> Result<String, String> {
-    set_panic_hook();
-    convert0(json, flavor).map_err(|err| err.to_string())
+    #[wasm_bindgen(module = "node:fs")]
+    extern "C" {
+        #[wasm_bindgen(js_name = "readFileSync")]
+        pub fn read_file_sync_to_string(path: &str, encoding: &str) -> String;
+
+        #[wasm_bindgen(js_name = "writeFileSync")]
+        pub fn write_file_sync(path: &str, content: &str);
+
+        #[wasm_bindgen(js_name = "readdirSync")]
+        pub fn read_dir_sync(path: &str) -> Vec<String>;
+    }
 }
 
-fn convert0(json: &str, flavor: &str) -> anyhow::Result<String> {
-    let filter: Option<fn(&Option<Availabilities>) -> bool> = match flavor {
-        "all" => None,
-        "stack" => Some(|a| {
-            // Generate public and private items for Stack
-            clients_schema::Flavor::Stack.available(a)
-        }),
-        "serverless" => Some(|a| {
-            // Generate only public items for Serverless
-            clients_schema::Flavor::Serverless.visibility(a) == Some(Visibility::Public)
-        }),
-        _ => bail!("Unknown flavor {}", flavor),
+/// Convert schema.json to OpenAPI. The `cwd` argument is the current directory to be used
+/// if not the system-defined one, as is the case when running with `npm rum --prefix compiler`
+#[wasm_bindgen]
+pub fn convert_schema_to_openapi(args: Vec<String>, cwd: Option<String>) -> Result<(), String> {
+    setup_hooks();
+
+    let args = args.iter().map(String::as_str).collect::<Vec<_>>();
+    let cli = Cli::from_args(&["schema-to-openapi"], &args).map_err(|err| err.output)?;
+    convert0(cli, cwd).map_err(|err| err.to_string())
+}
+
+pub fn convert0(cli: Cli, cwd: Option<String>) -> anyhow::Result<()> {
+    let input = match cwd {
+        Some(ref cwd) => PathBuf::from(cwd).join(&cli.schema),
+        None => cli.schema.clone(),
     };
 
-    let mut schema = clients_schema::IndexedModel::from_reader(json.as_bytes())?;
-    schema = clients_schema::transform::expand_generics(schema, ExpandConfig::default())?;
-    if let Some(filter) = filter {
-        schema = clients_schema::transform::filter_availability(schema, filter)?;
+    let output = match cwd {
+        Some(ref cwd) => PathBuf::from(cwd).join(&cli.output),
+        None => cli.output.clone(),
+    };
+    let redirect_path = cli.redirect_path(&output);
+
+    let json = node_fs::read_file_sync_to_string(&input.to_string_lossy(), "utf8");
+    let schema = IndexedModel::from_reader(json.as_bytes())?;
+    
+    let product_meta_path = match cwd {
+        Some(ref cwd) => format!("{cwd}/specification/_doc_ids/product-meta.json"),
+        None => "specification/_doc_ids/product-meta.json".to_string(),
+    };
+    let json_product_map = node_fs::read_file_sync_to_string(&product_meta_path, "utf8");
+    let product_meta: IndexMap<String, String> = serde_json::from_str(&json_product_map).expect("Cannot parse product metadata file");
+
+    let openapi = clients_schema_to_openapi::convert_schema(schema, cli.into(), product_meta)?;
+
+    let result = serde_json::to_string_pretty(&openapi.openapi)?;
+    node_fs::write_file_sync(&output.to_string_lossy(), &result);
+
+    if let Some(redirects) = openapi.redirects {
+        let path = redirect_path.unwrap();
+        node_fs::write_file_sync(&path, &redirects);
     }
-    let openapi = clients_schema_to_openapi::convert_schema(&schema)?;
-    let result = serde_json::to_string_pretty(&openapi)?;
-    Ok(result)
+
+    Ok(())
 }
 
-pub fn set_panic_hook() {
+pub fn setup_hooks() {
     // When the `console_error_panic_hook` feature is enabled, we can call the
     // `set_panic_hook` function at least once during initialization, and then
     // we will get better error messages if our code ever panics.
@@ -62,4 +94,10 @@ pub fn set_panic_hook() {
     // https://github.com/rustwasm/console_error_panic_hook#readme
     #[cfg(feature = "console_error_panic_hook")]
     console_error_panic_hook::set_once();
+
+    use std::sync::Once;
+    static SET_TRACING: Once = Once::new();
+    SET_TRACING.call_once(|| {
+        tracing_wasm::set_as_global_default();
+    });
 }

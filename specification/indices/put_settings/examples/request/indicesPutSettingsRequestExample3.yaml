@@ -1,0 +1,17 @@
+summary: Update index analysis
+method_request: PUT /my-index-000001/_settings
+description:
+  To add an analyzer, you must close the index (`POST /my-index-000001/_close`), define the analyzer, then reopen the
+  index (`POST /my-index-000001/_open`).
+# type: request
+value: |-
+  {
+    "analysis": {
+      "analyzer": {
+        "content": {
+          "type": "custom",
+          "tokenizer": "whitespace"
+        }
+      }
+    }
+  }

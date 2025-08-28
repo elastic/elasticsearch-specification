@@ -18,9 +18,9 @@
  */
 
 import { Id } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
-import { EqlHits } from './EqlHits'
+import { ShardFailure } from '@_types/Errors'
 import { DurationValue, UnitMillis } from '@_types/Time'
+import { EqlHits } from './EqlHits'
 
 export class EqlSearchResponseBase<TEvent> {
   /**
@@ -47,4 +47,8 @@ export class EqlSearchResponseBase<TEvent> {
    * Contains matching events and sequences. Also contains related metadata.
    */
   hits: EqlHits<TEvent>
+  /**
+   * Contains information about shard failures (if any), in case allow_partial_search_results=true
+   */
+  shard_failures?: ShardFailure[]
 }

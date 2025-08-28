@@ -22,13 +22,25 @@ import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Retrieves usage information for data frame analytics jobs.
+ * Get data frame analytics job stats.
  * @rest_spec_name ml.get_data_frame_analytics_stats
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
+ * @doc_tag ml data frame
+ * @doc_id get-dfanalytics-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/data_frame/analytics/_stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/data_frame/analytics/{id}/_stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the data frame analytics job. If you do not specify this

@@ -1,0 +1,13 @@
+summary: Delete a single document
+method_request: POST my-index-000001/_delete_by_query
+description: Run `POST my-index-000001/_delete_by_query` to delete a document by using a unique attribute.
+# type: request
+value: |-
+  {
+    "query": {
+      "term": {
+        "user.id": "kimchy"
+      }
+    },
+    "max_docs": 1
+  }

@@ -17,15 +17,55 @@
  * under the License.
  */
 
+import { Names } from '@_types/common'
+import { Duration, TimeUnit } from '@_types/Time'
 import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Returns cluster-level changes that have not yet been executed.
+ * Get pending task information.
+ *
+ * Get information about cluster-level changes that have not yet taken effect.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the pending cluster tasks API.
  * @rest_spec_name cat.pending_tasks
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cat-pending-tasks
  * @cluster_privileges monitor
  */
-export interface Request extends CatRequestBase {}
+export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/pending_tasks'
+      methods: ['GET']
+    }
+  ]
+  query_parameters: {
+    /**
+     * List of columns to appear in the response. Supports simple wildcards.
+     */
+    h?: Names
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
+    /**
+     * If `true`, the request computes the list of selected nodes from the
+     * local cluster state. If `false` the list of selected nodes are computed
+     * from the cluster state of the master node. In both cases the coordinating
+     * node will send requests for further information to each selected node.
+     * @server_default false
+     */
+    local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Unit used to display time values.
+     */
+    time?: TimeUnit
+  }
+}

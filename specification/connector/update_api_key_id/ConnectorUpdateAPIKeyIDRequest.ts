@@ -18,16 +18,25 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { WithNullValue } from '@spec_utils/utils'
-
 /**
- * Updates the API key id in the connector document
+ * Update the connector API key ID.
+ *
+ * Update the `api_key_id` and `api_key_secret_id` fields of a connector.
+ * You can specify the ID of the API key used for authorization and the ID of the connector secret where the API key is stored.
+ * The connector secret ID is required only for Elastic managed (native) connectors.
+ * Self-managed connectors (connector clients) do not use this field.
  * @rest_spec_name connector.update_api_key_id
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-update-api-key-id
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}/_api_key_id'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be updated
@@ -38,7 +47,7 @@ export interface Request extends RequestBase {
    * The connector api key request body
    */
   body: {
-    api_key_id?: WithNullValue<string>
-    api_key_secret_id?: WithNullValue<string>
+    api_key_id?: string
+    api_key_secret_id?: string
   }
 }

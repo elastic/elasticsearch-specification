@@ -20,8 +20,11 @@ use std::fmt::{Debug, Display, Formatter};
 use anyhow::anyhow;
 use derive_more::From;
 use indexmap::IndexMap;
+
 // Re-export crates whose types we expose publicly
-pub use once_cell;
+pub use ::once_cell;
+pub use ::indexmap;
+pub use ::anyhow;
 
 // Child modules
 pub mod builtins;
@@ -50,7 +53,13 @@ pub trait Documented {
     fn doc_url(&self) -> Option<&str>;
     fn doc_id(&self) -> Option<&str>;
     fn description(&self) -> Option<&str>;
-    fn since(&self) -> Option<&str>;
+}
+
+pub trait ExternalDocument {
+    fn ext_doc_id(&self) -> Option<&str>;
+    fn ext_doc_url(&self) -> Option<&str>;
+    fn ext_doc_description(&self) -> Option<&str>;
+    fn ext_previous_version_doc_url(&self) -> Option<&str>;
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -241,7 +250,7 @@ pub struct Deprecation {
 }
 
 /// An API flavor
-#[derive(Debug, Clone, Serialize, Deserialize, Hash, PartialEq, Eq)]
+#[derive(Debug, Clone, Serialize, Deserialize, Hash, PartialEq, Eq, clap::ValueEnum)]
 #[serde(rename_all = "snake_case")]
 pub enum Flavor {
     Stack,
@@ -252,12 +261,12 @@ pub enum Flavor {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Availability {
-    since: Option<String>,
-    stability: Option<Stability>,
-    visibility: Option<Visibility>,
+    pub since: Option<String>,
+    pub stability: Option<Stability>,
+    pub visibility: Option<Visibility>,
 }
 
-/// The availability of an
+/// The availability of an endpoint, field or parameter
 pub type Availabilities = IndexMap<Flavor, Availability>;
 
 pub trait AvailabilityFilter: Fn(&Option<Availabilities>) -> bool {}
@@ -313,7 +322,16 @@ pub struct Property {
     pub doc_id: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub since: Option<String>,
+    pub ext_doc_url: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_doc_description: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_previous_version_doc_url: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_doc_id: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub server_default: Option<ServerDefault>,
@@ -323,9 +341,6 @@ pub struct Property {
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub availability: Option<Availabilities>,
-
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub stability: Option<Stability>,
 
     /// If specified takes precedence over `name` when generating code. `name` is always the value
     /// to be sent over the wire
@@ -357,9 +372,23 @@ impl Documented for Property {
     fn description(&self) -> Option<&str> {
         self.description.as_deref()
     }
+}
 
-    fn since(&self) -> Option<&str> {
-        self.since.as_deref()
+impl ExternalDocument for Property {
+    fn ext_doc_url(&self) -> Option<&str> {
+        self.ext_doc_url.as_deref()
+    }
+
+    fn ext_doc_description(&self) -> Option<&str> {
+        self.ext_doc_description.as_deref()
+    }
+
+    fn ext_previous_version_doc_url(&self) -> Option<&str> {
+        self.ext_previous_version_doc_url.as_deref()
+    }
+
+    fn ext_doc_id(&self) -> Option<&str> {
+        self.ext_doc_id.as_deref()
     }
 }
 
@@ -380,6 +409,7 @@ pub enum ServerDefault {
 pub enum Variants {
     ExternalTag(ExternalTag),
     InternalTag(InternalTag),
+    Untagged(Untagged),
     Container(Container),
 }
 
@@ -402,6 +432,13 @@ pub struct InternalTag {
     /// Default value for the variant tag if it's missing
     #[serde(skip_serializing_if = "Option::is_none")]
     pub default_tag: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Untagged {
+    #[serde(default)]
+    pub non_exhaustive: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -461,6 +498,32 @@ impl TypeDefinition {
     }
 }
 
+/// The Example type is used for both requests and responses.
+///
+/// This type definition is based on the OpenAPI spec
+///     https://spec.openapis.org/oas/v3.1.0#example-object
+/// with the exception of using String as the 'value' type,
+/// and some custom additions.
+///
+/// The OpenAPI v3 spec also defines the 'Example' type, so
+/// to distinguish them, this type is called SchemaExample.
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ExampleAlternative {
+    pub language: String,
+    pub code: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SchemaExample {
+    pub summary: Option<String>,
+    pub method_request: Option<String>,
+    pub description: Option<String>,
+    pub value: Option<String>,
+    pub external_value: Option<String>,
+    pub alternatives: Option<Vec<ExampleAlternative>>,
+}
+
 /// Common attributes for all type definitions
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -476,6 +539,19 @@ pub struct BaseType {
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub doc_id: Option<String>,
+
+    /// Link to public documentation
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_doc_url: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_doc_description: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_previous_version_doc_url: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_doc_id: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecation: Option<Deprecation>,
@@ -512,6 +588,10 @@ impl BaseType {
             description: None,
             variant_name: None,
             spec_location: None,
+            ext_doc_id: None,
+            ext_doc_url: None,
+            ext_doc_description: None,
+            ext_previous_version_doc_url: None,
         }
     }
 }
@@ -528,9 +608,23 @@ impl Documented for BaseType {
     fn description(&self) -> Option<&str> {
         self.description.as_deref()
     }
+}
 
-    fn since(&self) -> Option<&str> {
-        None
+impl ExternalDocument for BaseType {
+    fn ext_doc_url(&self) -> Option<&str> {
+        self.ext_doc_url.as_deref()
+    }
+
+    fn ext_doc_description(&self) -> Option<&str> {
+        self.ext_doc_description.as_deref()
+    }
+
+    fn ext_previous_version_doc_url(&self) -> Option<&str> {
+        self.ext_previous_version_doc_url.as_deref()
+    }
+
+    fn ext_doc_id(&self) -> Option<&str> {
+        self.ext_doc_id.as_deref()
     }
 }
 
@@ -550,9 +644,23 @@ impl<T: WithBaseType> Documented for T {
     fn description(&self) -> Option<&str> {
         self.base().description()
     }
+}
 
-    fn since(&self) -> Option<&str> {
-        self.base().since()
+impl<T: WithBaseType> ExternalDocument for T {
+    fn ext_doc_url(&self) -> Option<&str> {
+        self.base().doc_url()
+    }
+
+    fn ext_doc_description(&self) -> Option<&str> {
+        self.base().ext_doc_description()
+    }
+
+    fn ext_previous_version_doc_url(&self) -> Option<&str> {
+        self.base().ext_previous_version_doc_url()
+    }
+
+    fn ext_doc_id(&self) -> Option<&str> {
+        self.base().doc_id()
     }
 }
 
@@ -633,6 +741,8 @@ pub struct Request {
 
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub attached_behaviors: Vec<String>,
+
+    pub examples: Option<IndexMap<String, SchemaExample>>
 }
 
 impl WithBaseType for Request {
@@ -661,6 +771,8 @@ pub struct Response {
 
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub exceptions: Vec<ResponseException>,
+
+    pub examples: Option<IndexMap<String, SchemaExample>>
 }
 
 impl WithBaseType for Response {
@@ -799,6 +911,7 @@ impl TypeAlias {
 pub enum TypeAliasVariants {
     ExternalTag(ExternalTag),
     InternalTag(InternalTag),
+    Untagged(Untagged),
 }
 
 //------------------------------------------------------------------------------------------------------------
@@ -817,10 +930,25 @@ pub struct Endpoint {
     pub doc_id: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_doc_id: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_doc_url: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_doc_description: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext_previous_version_doc_url: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecation: Option<Deprecation>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub availability: Option<Availabilities>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub doc_tag: Option<String>,
 
     /// If missing, there is not yet a request definition for this endpoint.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -833,20 +961,6 @@ pub struct Endpoint {
     pub response: Option<TypeName>,
 
     pub urls: Vec<UrlTemplate>,
-
-    /// The version when this endpoint reached its current stability level.
-    /// Missing data means "forever", i.e. before any of the target client versions produced from this spec.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub since: Option<String>,
-
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub stability: Option<Stability>,
-
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub visibility: Option<Visibility>,
-
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub feature_flag: Option<String>,
 
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub request_media_type: Vec<String>,
@@ -870,9 +984,23 @@ impl Documented for Endpoint {
     fn description(&self) -> Option<&str> {
         Some(self.description.as_str())
     }
+}
 
-    fn since(&self) -> Option<&str> {
-        self.since.as_deref()
+impl ExternalDocument for Endpoint {
+    fn ext_doc_url(&self) -> Option<&str> {
+        self.ext_doc_url.as_deref()
+    }
+
+    fn ext_doc_description(&self) -> Option<&str> {
+        self.ext_doc_description.as_deref()
+    }
+
+    fn ext_previous_version_doc_url(&self) -> Option<&str> {
+        self.ext_previous_version_doc_url.as_deref()
+    }
+
+    fn ext_doc_id(&self) -> Option<&str> {
+        self.ext_doc_id.as_deref()
     }
 }
 
@@ -902,7 +1030,6 @@ pub struct UrlTemplate {
 pub struct ModelInfo {
     pub title: String,
     pub license: License,
-    pub version: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

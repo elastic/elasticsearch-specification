@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Field, Name } from '@_types/common'
-import { double, integer } from '@_types/Numeric'
-import { DocValuesPropertyBase, IndexOptions, OnScriptError } from './core'
-import { PropertyBase } from './Property'
-import { Script } from '@_types/Scripting'
 import {
   IcuCollationAlternate,
   IcuCollationCaseFirst,
   IcuCollationDecomposition,
   IcuCollationStrength
 } from '@_types/analysis/icu-plugin'
+import { Field, Name } from '@_types/common'
+import { double, integer } from '@_types/Numeric'
+import { Script } from '@_types/Scripting'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { DocValuesPropertyBase, IndexOptions, OnScriptError } from './core'
+import { PropertyBase } from './Property'
 
 export class CompletionProperty extends DocValuesPropertyBase {
   analyzer?: string
@@ -50,6 +50,15 @@ export class SuggestContext {
 export class ConstantKeywordProperty extends PropertyBase {
   value?: UserDefinedValue
   type: 'constant_keyword'
+}
+
+export class CountedKeywordProperty extends PropertyBase {
+  type: 'counted_keyword'
+  /*
+   * Set to false to reduce disk usage for use cases where indexed fields are not required.
+   * @server_default true
+   */
+  index?: boolean
 }
 
 export class FieldAliasProperty extends PropertyBase {

@@ -1,0 +1,22 @@
+summary: Terms filtering
+method_request: GET /imdb/_termvectors
+description: >
+  Run `GET /imdb/_termvectors` to filter the terms returned based on their tf-idf scores. It returns the three most "interesting"
+  keywords from the artificial document having the given "plot" field value. Notice that the keyword "Tony" or any stop words are
+  not part of the response, as their tf-idf must be too low.
+# type: request
+value: |-
+  {
+    "doc": {
+      "plot": "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."
+    },
+    "term_statistics": true,
+    "field_statistics": true,
+    "positions": false,
+    "offsets": false,
+    "filter": {
+      "max_num_terms": 3,
+      "min_term_freq": 1,
+      "min_doc_freq": 1
+    }
+  }

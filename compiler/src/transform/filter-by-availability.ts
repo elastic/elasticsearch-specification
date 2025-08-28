@@ -131,9 +131,6 @@ function filterModel (inputModel: Model, stack: boolean, serverless: boolean, vi
       if (typeDef.inherits !== undefined) {
         addTypeToOutput(typeDef.inherits.type)
       }
-      typeDef.implements?.forEach((implemented) => {
-        addTypeToOutput(implemented.type)
-      })
     }
 
     // handle body value and body properties for request and response

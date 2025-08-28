@@ -26,22 +26,42 @@ import {
   WaitForActiveShards,
   WaitForEvents
 } from '@_types/common'
-import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { WaitForNodes } from './types'
 
 /**
- * The cluster health API returns a simple status on the health of the cluster. You can also use the API to get the health status of only specified data streams and indices. For data streams, the API retrieves the health status of the stream’s backing indices.
- * The cluster health status is: green, yellow or red. On the shard level, a red status indicates that the specific shard is not allocated in the cluster, yellow means that the primary shard is allocated but replicas are not, and green means that all shards are allocated. The index level status is controlled by the worst shard status. The cluster status is controlled by the worst index status.
+ * Get the cluster health status.
+ *
+ * You can also use the API to get the health status of only specified data streams and indices.
+ * For data streams, the API retrieves the health status of the stream’s backing indices.
+ *
+ * The cluster health status is: green, yellow or red.
+ * On the shard level, a red status indicates that the specific shard is not allocated in the cluster. Yellow means that the primary shard is allocated but replicas are not. Green means that all shards are allocated.
+ * The index level status is controlled by the worst shard status.
+ *
+ * One of the main benefits of the API is the ability to wait until the cluster reaches a certain high watermark health level.
+ * The cluster status is controlled by the worst index status.
  * @rest_spec_name cluster.health
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor, manage
  * @doc_id cluster-health
+ * @doc_tag cluster
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/health'
+      methods: ['GET']
+    },
+    {
+      path: '/_cluster/health/{index}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
-     * Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard expressions (*) are supported. To target all data streams and indices in a cluster, omit this parameter or use _all or *.
+     * Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard expressions (`*`) are supported. To target all data streams and indices in a cluster, omit this parameter or use _all or `*`.
      */
     index?: Indices
   }
@@ -79,7 +99,7 @@ export interface Request extends RequestBase {
     /**
      * The request waits until the specified number N of nodes is available. It also accepts >=N, <=N, >N and <N. Alternatively, it is possible to use ge(N), le(N), gt(N) and lt(N) notation.
      */
-    wait_for_nodes?: string | integer
+    wait_for_nodes?: WaitForNodes
     /**
      * A boolean value which controls whether to wait (until the timeout provided) for the cluster to have no shard initializations. Defaults to false, which means it will not wait for initializing shards.
      * @server_default false

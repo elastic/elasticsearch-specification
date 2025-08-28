@@ -20,7 +20,8 @@
 export class Response {
   body: {
     accepted: boolean
-    features: MigrationFeature[]
+    features?: MigrationFeature[]
+    reason?: string
   }
 }
 

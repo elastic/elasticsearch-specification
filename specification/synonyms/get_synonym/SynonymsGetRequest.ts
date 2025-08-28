@@ -21,26 +21,34 @@ import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Retrieves a synonym set
+ * Get a synonym set.
  * @rest_spec_name synonyms.get_synonym
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_search_synonyms
+ * @doc_id synonym-set-get
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_synonyms/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
-     * "The id of the synonyms set to be retrieved
+     * The synonyms set identifier to retrieve.
      */
     id: Id
   }
   query_parameters: {
     /**
-     * Starting offset for query rules to be retrieved
+     * The starting offset for query rules to retrieve.
      * @server_default 0
      */
     from?: integer
     /**
-     * specifies a max number of query rules to retrieve
+     * The max number of query rules to retrieve.
      * @server_default 10
      */
     size?: integer

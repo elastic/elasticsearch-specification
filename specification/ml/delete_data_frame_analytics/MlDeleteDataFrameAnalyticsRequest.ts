@@ -22,14 +22,21 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Deletes a data frame analytics job.
+ * Delete a data frame analytics job.
  * @rest_spec_name ml.delete_data_frame_analytics
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_id ml-delete-dfanalytics
+ * @doc_tag ml data frame
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/data_frame/analytics/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the data frame analytics job.

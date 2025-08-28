@@ -20,20 +20,28 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Retrieves a synonym rule from a synonym set
+ * Get a synonym rule.
+ * Get a synonym rule from a synonym set.
  * @rest_spec_name synonyms.get_synonym_rule
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_search_synonyms
+ * @doc_id synonym-rule-get
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_synonyms/{set_id}/{rule_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
-     * The id of the synonym set to retrieve the synonym rule from
+     * The ID of the synonym set to retrieve the synonym rule from.
      */
     set_id: Id
-
     /**
-     * The id of the synonym rule to retrieve
+     * The ID of the synonym rule to retrieve.
      */
     rule_id: Id
   }

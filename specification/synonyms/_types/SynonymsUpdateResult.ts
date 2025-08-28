@@ -22,13 +22,13 @@ import { ReloadResult } from '@indices/reload_search_analyzers/types'
 
 export class SynonymsUpdateResult {
   /**
-   * Update operation result
+   * The update operation result.
    */
   result: Result
 
   /**
-   * Updating synonyms in a synonym set reloads the associated analyzers.
-   * This is the analyzers reloading result
+   * Updating synonyms in a synonym set can reload the associated analyzers in case refresh is set to true.
+   * This information is the analyzers reloading result.
    */
-  reload_analyzers_details: ReloadResult
+  reload_analyzers_details?: ReloadResult
 }

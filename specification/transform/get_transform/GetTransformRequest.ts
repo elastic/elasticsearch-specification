@@ -18,17 +18,29 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Names } from '@_types/common'
+import { Names } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Retrieves configuration information for transforms.
+ * Get transforms.
+ * Get configuration information for transforms.
  * @rest_spec_name transform.get_transform
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_transform
+ * @doc_id get-transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_transform'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform. It can be a transform identifier or a

@@ -1,0 +1,39 @@
+summary: Query users with multiple conditions
+method_request: POST /_security/_query/user
+description: >
+  Run `POST /_security/_query/user`. Use a `bool` query to issue complex logical conditions: The `email` must end with
+  `example.com`. The user must be enabled. The result will be filtered to only contain users with at least one role that contains
+  the substring `other`. The offset to begin the search result is the second (zero-based index) user. The page size of the response
+  is two users. The result is sorted by `username` in descending order.
+# type: request
+value: |-
+  {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "wildcard": {
+              "email": "*example.com" 
+            }
+          },
+          {
+            "term": {
+              "enabled": true 
+            }
+          }
+        ],
+        "filter": [
+          {
+            "wildcard": {
+              "roles": "*other*" 
+            }
+          }
+        ]
+      }
+    },
+    "from": 1, 
+    "size": 2, 
+    "sort": [
+      { "username": { "order": "desc"} } 
+    ]
+  }

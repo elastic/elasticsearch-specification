@@ -1,0 +1,23 @@
+summary: Reindex selected fields
+method_request: POST _reindex
+description: >
+  You can use source filtering to reindex a subset of the fields in the original documents. For example, run `POST _reindex` the
+  reindex only the `user.id` and `_doc` fields of each document.
+# type: request
+value: "{
+
+  \  \"source\": {
+
+  \    \"index\": \"my-index-000001\",
+
+  \    \"_source\": [\"user.id\", \"_doc\"]
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"my-new-index-000001\"
+
+  \  }
+
+  }"

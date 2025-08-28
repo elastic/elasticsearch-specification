@@ -22,10 +22,10 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Opens one or more anomaly detection jobs.
- * An anomaly detection job must be opened in order for it to be ready to
- * receive and analyze data. It can be opened and closed multiple times
- * throughout its lifecycle.
+ * Open anomaly detection jobs.
+ *
+ * An anomaly detection job must be opened to be ready to receive and analyze
+ * data. It can be opened and closed multiple times throughout its lifecycle.
  * When you open a new job, it starts with an empty model.
  * When you open an existing job, the most recent model state is automatically
  * loaded. The job is ready to resume its analysis from where it left off, once
@@ -34,8 +34,16 @@ import { Duration } from '@_types/Time'
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-open-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/_open'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job.

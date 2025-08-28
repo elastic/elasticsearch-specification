@@ -1,0 +1,16 @@
+summary: A text embedding task
+description:
+  Run `PUT _inference/text_embedding/azure_openai_embeddings` to create an inference endpoint that performs a
+  `text_embedding` task. You do not specify a model, as it is defined already in the Azure OpenAI deployment.
+method_request: 'PUT _inference/text_embedding/azure_openai_embeddings'
+# type: "request"
+value: |-
+  {
+      "service": "azureopenai",
+      "service_settings": {
+          "api_key": "Api-Key",
+          "resource_name": "Resource-name",
+          "deployment_id": "Deployment-id",
+          "api_version": "2024-02-01"
+      }
+  }

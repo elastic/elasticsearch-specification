@@ -25,13 +25,23 @@ import {
 } from '../_types/Connector'
 
 /**
- * Updates the filtering field in the connector document
+ * Update the connector filtering.
+ *
+ * Update the draft filtering configuration of a connector and marks the draft validation state as edited.
+ * The filtering draft is activated once validated by the running Elastic connector service.
+ * The filtering property is used to configure sync rules (both basic and advanced) for a connector.
  * @rest_spec_name connector.update_filtering
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-update-filtering
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}/_filtering'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be updated

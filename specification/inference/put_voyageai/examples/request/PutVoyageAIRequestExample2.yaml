@@ -1,0 +1,11 @@
+summary: A rerank task
+description: Run `PUT _inference/rerank/voyageai-rerank` to create an inference endpoint that performs a `rerank` task.
+method_request: 'PUT _inference/rerank/voyageai-rerank'
+# type: "request"
+value: |-
+  {
+      "service": "voyageai",
+      "service_settings": {
+          "model_id": "rerank-2"
+      }
+  }

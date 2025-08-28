@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { ShardStats } from '@indices/stats/types'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, Field, Name } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { NodeRoles } from '@_types/Node'
 import { double, float, integer, long } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis, UnitNanos } from '@_types/Time'
+import { ShardStats } from '@indices/stats/types'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 // The node stats response can be filtered both by `metric` and `filter_path`,
 // every property needs to be optional to be compliant with the API behavior.
@@ -196,6 +196,8 @@ export interface PressureMemory {
    * Number of indexing requests rejected in the replica stage.
    */
   replica_rejections?: long
+  primary_document_rejections?: long
+  large_operation_rejections?: long
 }
 
 export class Discovery {
@@ -346,34 +348,70 @@ export class Ingest {
   /**
    * Contains statistics about ingest pipelines for the node.
    */
-  pipelines?: Dictionary<string, IngestTotal>
+  pipelines?: Dictionary<string, IngestStats>
   /**
    * Contains statistics about ingest operations for the node.
    */
   total?: IngestTotal
 }
 
+export class IngestStats {
+  /**
+   * Total number of documents ingested during the lifetime of this node.
+   */
+  count: long
+  /**
+   * Total number of documents currently being ingested.
+   */
+  current: long
+  /**
+   * Total number of failed ingest operations during the lifetime of this node.
+   */
+  failed: long
+  /**
+   * Total number of ingest processors.
+   */
+  processors: Dictionary<string, KeyedProcessor>[]
+  /**
+   * Total time, in milliseconds, spent preprocessing ingest documents during the lifetime of this node.
+   */
+  time_in_millis: DurationValue<UnitMillis>
+  /**
+   * Total number of bytes of all documents ingested by the pipeline.
+   * This field is only present on pipelines which are the first to process a document.
+   * Thus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.
+   * @availability stack since=8.15.0 stability=stable
+   * @availability serverless
+   */
+  ingested_as_first_pipeline_in_bytes: long
+  /**
+   * Total number of bytes of all documents produced by the pipeline.
+   * This field is only present on pipelines which are the first to process a document.
+   * Thus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.
+   * In situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.
+   * @availability stack since=8.15.0 stability=stable
+   * @availability serverless
+   */
+  produced_as_first_pipeline_in_bytes: long
+}
+
 export class IngestTotal {
   /**
    * Total number of documents ingested during the lifetime of this node.
    */
-  count?: long
+  count: long
   /**
    * Total number of documents currently being ingested.
    */
-  current?: long
+  current: long
   /**
    * Total number of failed ingest operations during the lifetime of this node.
    */
-  failed?: long
-  /**
-   * Total number of ingest processors.
-   */
-  processors?: Dictionary<string, KeyedProcessor>[]
+  failed: long
   /**
    * Total time, in milliseconds, spent preprocessing ingest documents during the lifetime of this node.
    */
-  time_in_millis?: DurationValue<UnitMillis>
+  time_in_millis: DurationValue<UnitMillis>
 }
 
 export class KeyedProcessor {
@@ -644,6 +682,41 @@ export class Http {
    * Clients that have been closed longer than the `http.client_stats.closed_channels.max_age` setting will not be represented here.
    */
   clients?: Client[]
+  /**
+   * Detailed HTTP stats broken down by route
+   * @availability stack since=8.12.0 stability=stable
+   */
+  routes: Dictionary<string, HttpRoute>
+}
+
+export class HttpRoute {
+  requests: HttpRouteRequests
+  responses: HttpRouteResponses
+}
+
+export class HttpRouteRequests {
+  count: long
+  total_size_in_bytes: long
+  size_histogram: SizeHttpHistogram[]
+}
+
+export class HttpRouteResponses {
+  count: long
+  total_size_in_bytes: long
+  handling_time_histogram: TimeHttpHistogram[]
+  size_histogram: SizeHttpHistogram[]
+}
+
+export class TimeHttpHistogram {
+  count: long
+  ge_millis?: long
+  lt_millis?: long
+}
+
+export class SizeHttpHistogram {
+  count: long
+  ge_bytes?: long
+  lt_bytes?: long
 }
 
 export class Client {
@@ -861,6 +934,11 @@ export class JvmMemoryStats {
    * Maximum amount of memory, in bytes, available for use by the heap.
    */
   heap_max_in_bytes?: long
+  /**
+   * Maximum amount of memory, available for use by the heap.
+   */
+  heap_max?: ByteSize
+
   /**
    * Non-heap memory used, in bytes.
    */

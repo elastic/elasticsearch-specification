@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Field, Id } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
+import { Page } from '@ml/_types/Page'
 
 /**
- * Retrieves anomaly records for an anomaly detection job.
+ * Get anomaly records for an anomaly detection job.
  * Records contain the detailed analytical results. They describe the anomalous
  * activity that has been identified in the input data based on the detector
  * configuration.
@@ -39,8 +39,16 @@ import { DateTime } from '@_types/Time'
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-get-record
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/results/records'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job.

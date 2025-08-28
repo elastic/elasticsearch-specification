@@ -1,0 +1,22 @@
+summary: Default columns
+description: >
+  A successful response from `GET /_cat/nodes?v=true&format=json`.
+  The `ip`, `heap.percent`, `ram.percent`, `cpu`, and `load_*` columns provide the IP addresses and performance information of each node.
+  The `node.role`, `master`, and `name` columns provide information useful for monitoring an entire cluster, particularly large ones.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "ip": "127.0.0.1",
+      "heap.percent": "65",
+      "ram.percent": "99",
+      "cpu": "42",
+      "load_1m": "3.07",
+      "load_5m": null,
+      "load_15m": null,
+      "node.role": "cdfhilmrstw",
+      "master": "*",
+      "name": "mJw06l1"
+    }
+  ]

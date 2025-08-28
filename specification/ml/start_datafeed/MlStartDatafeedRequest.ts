@@ -19,10 +19,10 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { Duration, DateTime } from '@_types/Time'
+import { DateTime, Duration } from '@_types/Time'
 
 /**
- * Starts one or more datafeeds.
+ * Start datafeeds.
  *
  * A datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped
  * multiple times throughout its lifecycle.
@@ -39,8 +39,16 @@ import { Duration, DateTime } from '@_types/Time'
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-start-datafeed
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/datafeeds/{datafeed_id}/_start'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase

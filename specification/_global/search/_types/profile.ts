@@ -17,8 +17,11 @@
  * under the License.
  */
 
+import { IndexName, NodeId } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { DurationValue, UnitNanos } from '@_types/Time'
+import { Duration, DurationValue, UnitNanos } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class AggregationBreakdown {
   build_aggregation: long
@@ -65,6 +68,11 @@ export class AggregationProfileDebug {
   segments_counted?: integer
   segments_collected?: integer
   map_reducer?: string
+  // global ords cardinality aggregator
+  brute_force_used?: integer
+  dynamic_pruning_attempted?: integer
+  dynamic_pruning_used?: integer
+  skipped_due_to_no_data?: integer
 }
 
 export class AggregationProfileDelegateDebugFilter {
@@ -111,6 +119,8 @@ export class QueryBreakdown {
   score_count: long
   compute_max_score: long
   compute_max_score_count: long
+  count_weight: long
+  count_weight_count: long
   set_min_competitive_score: long
   set_min_competitive_score_count: long
 }
@@ -131,9 +141,90 @@ export class SearchProfile {
 
 export class ShardProfile {
   aggregations: AggregationProfile[]
-  id: string
-  searches: SearchProfile[]
+  cluster: string
+  dfs?: DfsProfile
   fetch?: FetchProfile
+  id: string
+  index: IndexName
+  node_id: NodeId
+  searches: SearchProfile[]
+  shard_id: integer
+}
+
+export class DfsProfile {
+  statistics?: DfsStatisticsProfile
+  knn?: DfsKnnProfile[]
+}
+
+export class DfsStatisticsProfile {
+  type: string
+  description: string
+  time?: Duration
+  time_in_nanos: DurationValue<UnitNanos>
+  breakdown: DfsStatisticsBreakdown
+  debug?: Dictionary<string, UserDefinedValue>
+  children?: DfsStatisticsProfile[]
+}
+
+// This is a Map<String, long> in ES. Below are the known fields.
+export class DfsStatisticsBreakdown {
+  collection_statistics: long
+  collection_statistics_count: long
+  create_weight: long
+  create_weight_count: long
+  rewrite: long
+  rewrite_count: long
+  term_statistics: long
+  term_statistics_count: long
+}
+
+export class DfsKnnProfile {
+  vector_operations_count?: long
+  query: KnnQueryProfileResult[]
+  rewrite_time: long
+  collector: KnnCollectorResult[]
+}
+
+export class KnnQueryProfileResult {
+  type: string
+  description: string
+  time?: Duration
+  time_in_nanos: DurationValue<UnitNanos>
+  breakdown: KnnQueryProfileBreakdown
+  debug?: Dictionary<string, UserDefinedValue>
+  children?: KnnQueryProfileResult[]
+}
+
+// This is a Map<String, long> in ES. Below are the known fields.
+export class KnnQueryProfileBreakdown {
+  advance: long
+  advance_count: long
+  build_scorer: long
+  build_scorer_count: long
+  compute_max_score: long
+  compute_max_score_count: long
+  count_weight: long
+  count_weight_count: long
+  create_weight: long
+  create_weight_count: long
+  match: long
+  match_count: long
+  next_doc: long
+  next_doc_count: long
+  score: long
+  score_count: long
+  set_min_competitive_score: long
+  set_min_competitive_score_count: long
+  shallow_advance: long
+  shallow_advance_count: long
+}
+
+export class KnnCollectorResult {
+  name: string
+  reason: string
+  time?: Duration
+  time_in_nanos: DurationValue<UnitNanos>
+  children?: KnnCollectorResult[]
 }
 
 export class FetchProfile {

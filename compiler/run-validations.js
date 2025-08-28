@@ -23,13 +23,17 @@
 
 let ora
 let closest
+let minimist
 try {
   require('zx/globals')
   ora = require('ora')
   const fl = require('fastest-levenshtein')
   closest = fl.closest
+  minimist = require('minimist')
 } catch (err) {
-  console.log('It looks like you didn\'t install the project dependencies, please run \'make setup\'')
+  console.log(
+    "It looks like you didn't install the project dependencies, please run 'make setup'"
+  )
   process.exit(1)
 }
 
@@ -49,44 +53,53 @@ const uploadRecordingsPath = path.join(__dirname, '..', '..', 'clients-flight-re
 const tsValidationPath = path.join(__dirname, '..', '..', 'clients-flight-recorder', 'scripts', 'types-validator')
 const DAY = 1000 * 60 * 60 * 24
 const specPath = path.join(__dirname, '..', 'specification')
-const outputPath = path.join(__dirname, '..', 'output/schema')
+const outputPath = path.join(__dirname, '..', 'output')
 
 const apis = require('../output/schema/schema.json')
   .endpoints
   .map(endpoint => endpoint.name)
 
 async function run () {
+  const options = minimist(process.argv.slice(2), {
+    string: ['api', 'type', 'branch'],
+    boolean: ['cache'],
+    default: { cache: true }
+  })
+
   spinner.text = 'Checking requirements'
 
-  const noCache = argv.cache === false
+  const noCache = options.cache === false
   const metadata = await readMetadata()
   const lastRun = metadata.lastRun ? new Date(metadata.lastRun) : new Date(0)
   const isStale = lastRun.getTime() + DAY < Date.now()
 
-  if (typeof argv.api !== 'string') {
-    spinner.fail('You must specify the api, for example: \'make validate api=index type=request stack-version=8.1.0-SNAPSHOT\'')
+  if (options.api === '') {
+    spinner.fail('You must specify the api, for example: \'make validate api=index type=request branch=main\'')
     process.exit(1)
   }
 
-  if (!apis.includes(argv.api)) {
-    spinner.fail(`The api '${argv.api}' does not exists, did you mean '${closest(argv.api, apis)}'?`)
+  const apiList = options.api.split(',').map(api => api.trim())
+  const invalidApis = apiList.filter(api => !apis.includes(api))
+  if (invalidApis.length > 0) {
+    const suggestions = invalidApis.map(api => `'${api}' (did you mean '${closest(api, apis)}'?)`).join(', ')
+    spinner.fail(`The following APIs do not exist: ${suggestions}`)
+    process.exit(1)
+  }
+  // if the empty string it's because the make target wasn't configured with a type argument
+  if (options.type !== '' && options.type !== 'request' && options.type !== 'response') {
+    spinner.fail('You must specify the type (request or response), for example: \'make validate api=index type=request branch=main\'')
     process.exit(1)
   }
 
-  // if true it's because the make target wasn't configured with a type argument
-  if (argv.type !== true && argv.type !== 'request' && argv.type !== 'response') {
-    spinner.fail('You must specify the type (request or response), for example: \'make validate api=index type=request stack-version=8.1.0-SNAPSHOT\'')
+  if (options.branch === '') {
+    spinner.fail('You must specify the branch, for example: \'make validate api=index type=request branch=main\'')
     process.exit(1)
   }
 
-  if (typeof argv['stack-version'] !== 'string') {
-    spinner.fail('You must specify the stack version, for example: \'make validate api=index type=request stack-version=8.1.0-SNAPSHOT\'')
-    process.exit(1)
-  }
 
   const isFlightRecorderCloned = await $`[[ -d ${path.join(__dirname, '..', '..', 'clients-flight-recorder')} ]]`.exitCode === 0
   if (!isFlightRecorderCloned) {
-    spinner.text = 'It looks like you didn\'t cloned the flight recorder, doing that for you'
+    spinner.text = 'It looks like you didn\'t clone the flight recorder, doing that for you'
     await $`git clone https://github.com/elastic/clients-flight-recorder.git ${path.join(__dirname, '..', '..', 'clients-flight-recorder')}`
   } else if (isStale) {
     spinner.text = 'Pulling the latest flight recorder changes'
@@ -98,7 +111,7 @@ async function run () {
   const isCompilerInstalled = await $`[[ -d ${path.join(compilerPath, 'node_modules')} ]]`.exitCode === 0
   const isTsGeneratorInstalled = await $`[[ -d ${path.join(tsGeneratorPath, 'node_modules')} ]]`.exitCode === 0
   if (noCache || !isCompilerInstalled || !isTsGeneratorInstalled) {
-    spinner.text = 'It looks like you didn\'t installed the project dependencies, doing that for you'
+    spinner.text = "It looks like you didn't install the project dependencies, doing that for you"
     await $`npm install --prefix ${compilerPath}`
     await $`npm install --prefix ${tsGeneratorPath}`
   }
@@ -165,30 +178,30 @@ async function run () {
 
   spinner.text = 'Running validations'
 
-  const branchName = argv['stack-version'].startsWith('7.') ? '7.x' : argv['stack-version'].slice(0, 3)
+  const branchName = options.branch.startsWith('7.') ? '7.x' : options.branch
 
   if (noCache || isStale || metadata.branchName !== branchName) {
     metadata.lastRun = new Date()
     metadata.branchName = branchName
 
     spinner.text = 'Downloading recordings'
-    await $`node ${path.join(uploadRecordingsPath, 'download.js')} --branch ${branchName}`
+    await $`node ${path.join(uploadRecordingsPath, 'download.js')} --branch ${branchName} --git`
 
     spinner.text = 'Fetching artifacts'
-    await $`node ${path.join(cloneEsPath, 'index.js')} --version ${argv['stack-version']}`
+    await $`node ${path.join(cloneEsPath, 'index.js')} --branch ${branchName}`
   }
 
   cd(tsValidationPath)
   spinner.text = 'Validating endpoints'
   // the ts validator will copy types.ts and schema.json autonomously
   const flags = ['--verbose']
-  if (argv.type === true) {
+  if (options.type === '') {
     flags.push('--request')
     flags.push('--response')
   } else {
-    flags.push(`--${argv.type}`)
+    flags.push(`--${options.type}`)
   }
-  const output = await $`STACK_VERSION=${argv['stack-version']} node ${path.join(tsValidationPath, 'index.js')} --api ${argv.api} ${flags}`
+  const output = await $`node ${path.join(tsValidationPath, 'index.js')} --api ${options.api} --branch ${branchName} ${flags}`
 
   cd(path.join(compilerPath, '..'))
   if (output.exitCode === 0) {

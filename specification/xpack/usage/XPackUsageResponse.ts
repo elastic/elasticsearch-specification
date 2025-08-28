@@ -26,7 +26,6 @@ import {
   DataTiers,
   Eql,
   Flattened,
-  FrozenIndices,
   HealthStatistics,
   Ilm,
   MachineLearning,
@@ -58,7 +57,6 @@ export class Response {
     enrich?: Base
     eql: Eql
     flattened?: Flattened
-    frozen_indices: FrozenIndices
     graph: Base
     health_api?: HealthStatistics
     ilm: Ilm

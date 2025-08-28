@@ -1,0 +1,18 @@
+summary: Profile details with errors
+description: >
+  A response that contains errors that occurred while retrieving user profiles.
+# type: response
+# response_code:
+value: |-
+  {
+    "profiles": [],
+    "errors": {
+      "count": 1,
+      "details": {
+        "u_FmxQt3gr1BBH5wpnz9HkouPj3Q710XkOgg1PWkwLPBW_5": {
+          "type": "resource_not_found_exception",
+          "reason": "profile document not found"
+        }
+      }
+    }
+  }

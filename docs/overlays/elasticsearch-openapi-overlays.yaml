@@ -1,0 +1,76 @@
+# Overlays that are specific to the Elasticsearch OpenAPI document
+overlay: 1.0.0
+info:
+  title: Overlays for the Elasticsearch OpenAPI document
+  version: 0.0.1
+actions:
+# Add document info details
+  - target: '$.info'
+    description: Add a document description and feedback link
+    update:
+      title: Elasticsearch API
+      description: >
+        Elasticsearch provides REST APIs that are used by the UI components and can be called directly to configure and access Elasticsearch features.
+        
+        ## Documentation source and versions
+        
+        This documentation is derived from the `main` branch of the [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification) repository.
+        It is provided under license [Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+        This documentation contains work-in-progress information for future Elastic Stack releases.
+      x-doc-license:
+        name: Attribution-NonCommercial-NoDerivatives 4.0 International
+        url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/'
+      x-feedbackLink:
+        label: Feedback
+        url: https://github.com/elastic/docs-content/issues/new?assignees=&labels=feedback%2Ccommunity&projects=&template=api-feedback.yaml&title=%5BFeedback%5D%3A+
+# Add security details
+  - target: '$.components'
+    description: Add securitySchemes
+    update:
+        securitySchemes:
+          apiKeyAuth:
+            in: header
+            name: Authorization
+            type: apiKey
+            description: |
+              Elasticsearch APIs support key-based authentication.
+              You must create an API key and use the encoded value in the request header.
+              For example:
+
+              
+              ```
+              curl -X GET "${ES_URL}/_cat/indices?v=true" \
+                -H "Authorization: ApiKey ${API_KEY}"
+              ```
+              
+              To get API keys, use the `/_security/api_key` APIs.
+          basicAuth:
+            scheme: basic
+            type: http
+          bearerAuth:
+            scheme: bearer
+            type: http
+            description: |
+              Elasticsearch APIs support the use of bearer tokens in the `Authorization` HTTP header to authenticate with the API.
+              For examples, refer to [Token-based authentication services](https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/token-based-authentication-services)
+  - target: '$'
+    description: Add document security
+    update:
+      security:
+        - apiKeyAuth: []
+        - basicAuth: []
+        - bearerAuth: []
+# Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
+  - target: "$.components['schemas']['_types.aggregations.RandomSamplerAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+# Remove long lists of enum values
+  - target: "$.components['schemas']['cat._types.CatNodeColumn'].anyOf"
+    description: Remove anyOf from cat nodes
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatNodeColumn']"
+    description: Add basic string data type for cat node columns
+    update:
+      type: string

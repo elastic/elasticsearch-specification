@@ -1,0 +1,9 @@
+summary: Invalidate tokens by user and realm
+method_request: DELETE /_security/oauth2/token
+description: Run `DELETE /_security/oauth2/token` to invalidate all access tokens and refresh tokens for the user `myuser` in the `saml1` realm.
+# type: request
+value: |-
+  {
+    "username" : "myuser",
+    "realm_name" : "saml1"
+  }

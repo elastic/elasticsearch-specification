@@ -22,18 +22,28 @@ import { ByteSize, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import {
+  AdaptiveAllocationsSettings,
   DeploymentAllocationState,
   TrainingPriority
 } from '../_types/TrainedModel'
 
 /**
- * Starts a trained model deployment, which allocates the model to every machine learning node.
+ * Start a trained model deployment.
+ * It allocates the model to every machine learning node.
  * @rest_spec_name ml.start_trained_model_deployment
  * @availability stack since=8.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml trained model
+ * @doc_id start-trained-model-deployment
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/deployment/_start'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model. Currently, only PyTorch models are supported.
@@ -59,6 +69,7 @@ export interface Request extends RequestBase {
      * Increasing this value generally increases the throughput.
      * If this setting is greater than the number of hardware threads
      * it will automatically be changed to a value less than the number of hardware threads.
+     * If adaptive_allocations is enabled, do not set this value, because it’s automatically set.
      * @server_default 1
      */
     number_of_allocations?: integer
@@ -88,5 +99,13 @@ export interface Request extends RequestBase {
      * @server_default started
      */
     wait_for?: DeploymentAllocationState
+  }
+  body: {
+    /**
+     * Adaptive allocations configuration. When enabled, the number of allocations
+     * is set based on the current load.
+     * If adaptive_allocations is enabled, do not set the number of allocations manually.
+     */
+    adaptive_allocations?: AdaptiveAllocationsSettings
   }
 }

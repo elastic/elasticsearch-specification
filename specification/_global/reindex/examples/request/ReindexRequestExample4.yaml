@@ -1,0 +1,34 @@
+summary: Routing
+method_request: POST _reindex
+description: >
+  By default if reindex sees a document with routing then the routing is preserved unless it's changed by the script. You can set
+  `routing` on the `dest` request to change this behavior. In this example, run `POST _reindex` to copy all documents from the
+  `source` with the company name `cat` into the `dest` with routing set to `cat`.
+# type: request
+value: "{
+
+  \  \"source\": {
+
+  \    \"index\": \"source\",
+
+  \    \"query\": {
+
+  \      \"match\": {
+
+  \        \"company\": \"cat\"
+
+  \      }
+
+  \    }
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"dest\",
+
+  \    \"routing\": \"=cat\"
+
+  \  }
+
+  }"

@@ -18,19 +18,24 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
 
 /**
+ * Get user privileges.
+ *
+ * Get the security privileges for the logged in user.
+ * All users can use this API, but only to determine their own privileges.
+ * To check the privileges of other users, you must use the run as feature.
+ * To check whether a user has a specific list of privileges, use the has privileges API.
  * @rest_spec_name security.get_user_privileges
  * @availability stack since=6.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id security-api-get-user-privileges
  */
 export interface Request extends RequestBase {
-  query_parameters: {
-    /** The name of the application. Application privileges are always associated with exactly one application. If you do not specify this parameter, the API returns information about all privileges for all applications. */
-    application?: Name
-    /** The name of the privilege. If you do not specify this parameter, the API returns information about all privileges for the requested application. */
-    priviledge?: Name
-    username?: Name | null
-  }
+  urls: [
+    {
+      path: '/_security/user/_privileges'
+      methods: ['GET']
+    }
+  ]
 }

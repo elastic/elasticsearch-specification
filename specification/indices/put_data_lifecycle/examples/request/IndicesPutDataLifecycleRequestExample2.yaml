@@ -1,0 +1,27 @@
+summary: Set the data stream lifecycle downsampling
+method_request: PUT _data_stream/my-weather-sensor-data-stream/_lifecycle
+description: This example configures two downsampling rounds.
+# type: request
+value: "{
+
+  \    \"downsampling\": [
+
+  \      {
+
+  \        \"after\": \"1d\",
+
+  \        \"fixed_interval\": \"10m\"
+
+  \      },
+
+  \      {
+
+  \        \"after\": \"7d\",
+
+  \        \"fixed_interval\": \"1d\"
+
+  \      }
+
+  \    ]
+
+  }"

@@ -1,0 +1,20 @@
+summary: Resolve with wildcards
+description: >
+  A successful response from `GET /_resolve/cluster/my-index*,clust*:my-index*`.
+  Each cluster has its own response section. The cluster you sent the request to is labelled as "(local)".
+# type: response
+# response_code: 200
+value:
+  "{\n  \"(local)\": {\n    \"connected\": true,\n    \"skip_unavailable\": false,\n\
+  \    \"matching_indices\": true,\n    \"version\": {\n      \"number\": \"8.13.0\"\
+  ,\n      \"build_flavor\": \"default\",\n      \"minimum_wire_compatibility_version\"\
+  : \"7.17.0\",\n      \"minimum_index_compatibility_version\": \"7.0.0\"\n    }\n\
+  \  },\n  \"cluster_one\": {\n    \"connected\": true,\n    \"skip_unavailable\"\
+  : true,\n    \"matching_indices\": true,\n    \"version\": {\n      \"number\":\
+  \ \"8.13.0\",\n      \"build_flavor\": \"default\",\n      \"minimum_wire_compatibility_version\"\
+  : \"7.17.0\",\n      \"minimum_index_compatibility_version\": \"7.0.0\"\n    }\n\
+  \  },\n  \"cluster_two\": {\n    \"connected\": true,\n    \"skip_unavailable\"\
+  : false,\n    \"matching_indices\": true,\n    \"version\": {\n      \"number\"\
+  : \"8.13.0\",\n      \"build_flavor\": \"default\",\n      \"minimum_wire_compatibility_version\"\
+  : \"7.17.0\",\n      \"minimum_index_compatibility_version\": \"7.0.0\"\n    }\n\
+  \  }\n}"

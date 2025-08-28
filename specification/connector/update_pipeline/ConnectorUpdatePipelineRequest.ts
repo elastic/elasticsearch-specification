@@ -21,13 +21,21 @@ import { Id } from '@_types/common'
 import { IngestPipelineParams } from '../_types/Connector'
 
 /**
- * Updates the pipeline field in the connector document
+ * Update the connector pipeline.
+ *
+ * When you create a new connector, the configuration of an ingest pipeline is populated with default settings.
  * @rest_spec_name connector.update_pipeline
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-update-pipeline
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}/_pipeline'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be updated

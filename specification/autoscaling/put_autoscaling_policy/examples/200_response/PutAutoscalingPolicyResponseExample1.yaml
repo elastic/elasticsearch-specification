@@ -1,0 +1,5 @@
+summary: 'A successful response when creating an autoscaling policy.'
+# description: "",
+# type: "response",
+# response_code: 200,
+value: "{\n  \"acknowledged\": true\n}"

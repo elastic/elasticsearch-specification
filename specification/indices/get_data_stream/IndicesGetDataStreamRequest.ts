@@ -18,16 +18,31 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, DataStreamNames } from '@_types/common'
+import { DataStreamNames, ExpandWildcards } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
- * Retrieves information about one or more data streams.
+ * Get data streams.
+ *
+ * Get information about one or more data streams.
  * @rest_spec_name indices.get_data_stream
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges view_index_metadata
+ * @doc_tag data stream
+ * @doc_id data-stream-get
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream'
+      methods: ['GET']
+    },
+    {
+      path: '/_data_stream/{name}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data stream names used to limit the request.
@@ -49,5 +64,15 @@ export interface Request extends RequestBase {
      * @availability serverless stability=stable
      */
     include_defaults?: boolean
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Whether the maximum timestamp for each data stream should be calculated and returned.
+     * @server_default false
+     */
+    verbose?: boolean
   }
 }

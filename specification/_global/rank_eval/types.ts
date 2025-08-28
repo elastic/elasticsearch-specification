@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id, IndexName } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class RankEvalMetricBase {
   /**
@@ -108,6 +108,9 @@ export class RankEvalRequestItem {
   params?: Dictionary<string, UserDefinedValue>
 }
 
+/**
+ * @shortcut_property query
+ */
 export class RankEvalQuery {
   query: QueryContainer
   size?: integer

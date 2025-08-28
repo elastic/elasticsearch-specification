@@ -1,0 +1,83 @@
+# summary:
+description: An abbreviated response from `GET /my-index-000001/_search_shards`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "nodes": {},
+    "indices": {
+        "my-index-000001": { }
+    },
+    "shards": [
+        [
+        {
+            "index": "my-index-000001",
+            "node": "JklnKbD7Tyqi9TP3_Q_tBg",
+            "relocating_node": null,
+            "primary": true,
+            "shard": 0,
+            "state": "STARTED",
+            "allocation_id": {"id":"0TvkCyF7TAmM1wHP4a42-A"},
+            "relocation_failure_info" : {
+            "failed_attempts" : 0
+            }
+        }
+        ],
+        [
+        {
+            "index": "my-index-000001",
+            "node": "JklnKbD7Tyqi9TP3_Q_tBg",
+            "relocating_node": null,
+            "primary": true,
+            "shard": 1,
+            "state": "STARTED",
+            "allocation_id": {"id":"fMju3hd1QHWmWrIgFnI4Ww"},
+            "relocation_failure_info" : {
+            "failed_attempts" : 0
+            }
+        }
+        ],
+        [
+        {
+            "index": "my-index-000001",
+            "node": "JklnKbD7Tyqi9TP3_Q_tBg",
+            "relocating_node": null,
+            "primary": true,
+            "shard": 2,
+            "state": "STARTED",
+            "allocation_id": {"id":"Nwl0wbMBTHCWjEEbGYGapg"},
+            "relocation_failure_info" : {
+            "failed_attempts" : 0
+            }
+        }
+        ],
+        [
+        {
+            "index": "my-index-000001",
+            "node": "JklnKbD7Tyqi9TP3_Q_tBg",
+            "relocating_node": null,
+            "primary": true,
+            "shard": 3,
+            "state": "STARTED",
+            "allocation_id": {"id":"bU_KLGJISbW0RejwnwDPKw"},
+            "relocation_failure_info" : {
+            "failed_attempts" : 0
+            }
+        }
+        ],
+        [
+        {
+            "index": "my-index-000001",
+            "node": "JklnKbD7Tyqi9TP3_Q_tBg",
+            "relocating_node": null,
+            "primary": true,
+            "shard": 4,
+            "state": "STARTED",
+            "allocation_id": {"id":"DMs7_giNSwmdqVukF7UydA"},
+            "relocation_failure_info" : {
+            "failed_attempts" : 0
+            }
+        }
+        ]
+      ]
+    }

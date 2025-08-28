@@ -19,14 +19,28 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Names } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
- * Checks if an alias exists.
+ * Check aliases.
+ *
+ * Check if one or more data stream or index aliases exist.
  * @rest_spec_name indices.exists_alias
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id indices-aliases-exist
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_alias/{name}'
+      methods: ['HEAD']
+    },
+    {
+      path: '/{index}/_alias/{name}'
+      methods: ['HEAD']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of aliases to check. Supports wildcards (`*`).
@@ -49,7 +63,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -59,9 +72,10 @@ export interface Request extends RequestBase {
      */
     ignore_unavailable?: boolean
     /**
-     * If `true`, the request retrieves information from the local node only.
-     * @server_default false
+     * Period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
      */
-    local?: boolean
+    master_timeout?: Duration
   }
 }

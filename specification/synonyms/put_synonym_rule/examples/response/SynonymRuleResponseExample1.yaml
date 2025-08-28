@@ -1,0 +1,13 @@
+# summary:
+description: >
+  A successful response from `PUT _synonyms/my-synonyms-set/test-1`.
+
+# type: response
+# response_code: ''
+value:
+  "{\n  \"result\": \"updated\",\n  \"reload_analyzers_details\": {\n    \"_shards\"\
+  : {\n      \"total\": 2,\n      \"successful\": 1,\n      \"failed\": 0\n    },\n\
+  \    \"reload_details\": [\n      {\n        \"index\": \"test-index\",\n      \
+  \  \"reloaded_analyzers\": [\n          \"my_search_analyzer\"\n        ],\n   \
+  \     \"reloaded_node_ids\": [\n          \"1wYFZzq8Sxeu_Jvt9mlbkg\"\n        ]\n\
+  \      }\n    ]\n  }\n}"

@@ -1,0 +1,6 @@
+summary: A successful response of deleting one or more autoscaling policy.
+description: >
+  This may be a response to either `DELETE /_autoscaling/policy/my_autoscaling_policy` or `DELETE /_autoscaling/policy/*`.
+# type: "response"
+# response_code: 200
+value: "{\n  \"acknowledged\": true\n}"

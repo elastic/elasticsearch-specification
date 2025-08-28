@@ -1,0 +1,37 @@
+# summary:
+method_request: 'GET museums/_mvt/location/13/4207/2692'
+description: >
+  Run `GET museums/_mvt/location/13/4207/2692` to search an index for `location` values that intersect the `13/4207/2692` vector
+  tile.
+# type: "request"
+value: |-
+  {
+    "grid_agg": "geotile",
+    "grid_precision": 2,
+    "fields": [
+      "name",
+      "price"
+    ],
+    "query": {
+      "term": {
+        "included": true
+      }
+    },
+    "aggs": {
+      "min_price": {
+        "min": {
+          "field": "price"
+        }
+      },
+      "max_price": {
+        "max": {
+          "field": "price"
+        }
+      },
+      "avg_price": {
+        "avg": {
+          "field": "price"
+        }
+      }
+    }
+  }

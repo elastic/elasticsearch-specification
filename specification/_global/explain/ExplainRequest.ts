@@ -20,71 +20,91 @@
 import { RequestBase } from '@_types/Base'
 import { Fields, Id, IndexName, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { Operator } from '@_types/query_dsl/Operator'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
- * Returns information about why a specific document matches (or doesn’t match) a query.
+ * Explain a document match result.
+ * Get information about why a specific document matches, or doesn't match, a query.
+ * It computes a score explanation for a query and a specific document.
  * @rest_spec_name explain
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @index_privileges read
+ * @doc_tag search
+ * @doc_id search-explain
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_explain/{id}'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
-     * Defines the document ID.
+     * The document identifier.
      */
     id: Id
     /**
-     * Index names used to limit the request.
+     * Index names that are used to limit the request.
      * Only a single index name can be provided to this parameter.
      */
     index: IndexName
   }
   query_parameters: {
     /**
-     * Analyzer to use for the query string.
-     * This parameter can only be used when the `q` query string parameter is specified.
+     * The analyzer to use for the query string.
+     * This parameter can be used only when the `q` query string parameter is specified.
      */
     analyzer?: string
     /**
      * If `true`, wildcard and prefix queries are analyzed.
+     * This parameter can be used only when the `q` query string parameter is specified.
      * @server_default false
      */
     analyze_wildcard?: boolean
     /**
      * The default operator for query string query: `AND` or `OR`.
+     * This parameter can be used only when the `q` query string parameter is specified.
      * @server_default OR
      */
     default_operator?: Operator
     /**
-     * Field to use as default where no field prefix is given in the query string.
+     * The field to use as default where no field prefix is given in the query string.
+     * This parameter can be used only when the `q` query string parameter is specified.
      */
     df?: string
     /**
      * If `true`, format-based query failures (such as providing text to a numeric field) in the query string will be ignored.
+     * This parameter can be used only when the `q` query string parameter is specified.
      * @server_default false
      */
     lenient?: boolean
     /**
-     * Specifies the node or shard the operation should be performed on.
-     * Random by default.
+     * The node or shard the operation should be performed on.
+     * It is random by default.
      */
     preference?: string
     /**
-     * Custom value used to route operations to a specific shard.
+     * A custom value used to route operations to a specific shard.
      */
     routing?: Routing
     /**
-     * True or false to return the `_source` field or not, or a list of fields to return.
+     * `True` or `false` to return the `_source` field or not or a list of fields to return.
      */
     _source?: SourceConfigParam
     /**
      * A comma-separated list of source fields to exclude from the response.
+     * You can also use this parameter to exclude fields from the subset specified in `_source_includes` query parameter.
+     * If the `_source` parameter is `false`, this parameter is ignored.
      */
     _source_excludes?: Fields
     /**
      * A comma-separated list of source fields to include in the response.
+     * If this parameter is specified, only these source fields are returned.
+     * You can exclude fields from this subset using the `_source_excludes` query parameter.
+     * If the `_source` parameter is `false`, this parameter is ignored.
      */
     _source_includes?: Fields
     /**
@@ -92,7 +112,7 @@ export interface Request extends RequestBase {
      */
     stored_fields?: Fields
     /**
-     * Query in the Lucene query string syntax.
+     * The query in the Lucene query string syntax.
      */
     q?: string
   }

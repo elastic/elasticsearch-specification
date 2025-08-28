@@ -22,21 +22,49 @@ import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Clone a snapshot.
+ * Clone part of all of a snapshot into another snapshot in the same repository.
  * @rest_spec_name snapshot.clone
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage
+ * @doc_id snapshot-clone
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot/{repository}/{snapshot}/_clone/{target_snapshot}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
+    /**
+     * The name of the snapshot repository that both source and target snapshot belong to.
+     */
     repository: Name
+    /**
+     * The source snapshot name.
+     */
     snapshot: Name
+    /**
+     * The target snapshot name.
+     */
     target_snapshot: Name
   }
   query_parameters: {
+    /**
+     * The period to wait for the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * To indicate that the request should never timeout, set it to `-1`.
+     * @server_default 30s
+     */
     master_timeout?: Duration
-    timeout?: Duration
   }
   body: {
+    /**
+     * A comma-separated list of indices to include in the snapshot.
+     * Multi-target syntax is supported.
+     */
     indices: string
   }
 }

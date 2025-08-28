@@ -17,21 +17,22 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { Duration } from '@_types/Time'
 import {
   Destination,
   Latest,
   Pivot,
   RetentionPolicyContainer,
   Settings,
-  SyncContainer,
-  Source
+  Source,
+  SyncContainer
 } from '@transform/_types/Transform'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
- * Previews a transform.
+ * Preview a transform.
+ * Generates a preview of the results that you will get when you create a transform with the same configuration.
  *
  * It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also
  * generates a list of mappings and settings for the destination index. These values are determined based on the field
@@ -41,8 +42,19 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
  * @index_privileges read, view_index_metadata
+ * @doc_id preview-transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}/_preview'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_transform/_preview'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform to preview. If you specify this path parameter, you cannot provide transform

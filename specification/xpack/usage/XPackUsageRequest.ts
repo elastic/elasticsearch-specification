@@ -21,16 +21,27 @@ import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
 /**
- * This API provides information about which features are currently enabled and available under the current license and some usage statistics.
+ * Get usage information.
+ * Get information about the features that are currently enabled and available under the current license.
+ * The API also provides some usage statistics.
  * @rest_spec_name xpack.usage
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
- * @cluster_privileges monitor,manage
+ * @cluster_privileges monitor
+ * @doc_id usage-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_xpack/usage'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * The period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * To indicate that the request should never timeout, set it to `-1`.
      * @server_default 30s
      */
     master_timeout?: Duration

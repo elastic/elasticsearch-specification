@@ -17,14 +17,16 @@
  * under the License.
  */
 
-import { CatRequestBase, CatDfaColumns } from '@cat/_types/CatBase'
 import { Bytes, Id } from '@_types/common'
-import { Duration } from '@_types/Time'
+import { TimeUnit } from '@_types/Time'
+import { CatDfaColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Returns configuration and usage information about data frame analytics jobs.
+ * Get data frame analytics jobs.
  *
- * IMPORTANT: cat APIs are only intended for human consumption using the Kibana
+ * Get configuration and usage information about data frame analytics jobs.
+ *
+ * IMPORTANT: CAT APIs are only intended for human consumption using the Kibana
  * console or command line. They are not intended for use by applications. For
  * application consumption, use the get data frame analytics jobs statistics API.
  *
@@ -35,6 +37,16 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges monitor_ml
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/ml/data_frame/analytics'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/ml/data_frame/analytics/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     id?: Id
   }
@@ -53,6 +65,6 @@ export interface Request extends CatRequestBase {
     /**
      * Unit used to display time values.
      */
-    time?: Duration
+    time?: TimeUnit
   }
 }

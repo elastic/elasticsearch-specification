@@ -17,16 +17,17 @@
  * under the License.
  */
 
-import { IndexRouting } from '@indices/_types/IndexRouting'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ByteSize, Name, VersionString } from '@_types/common'
+import { ByteSize, Name, VersionNumber, VersionString } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
+import { NodeRoles } from '@_types/Node'
 import { integer, long } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
-import { NodeRoles } from '@_types/Node'
 import { Duration, DurationValue, EpochTime, UnitMillis } from '@_types/Time'
+import { IndexRouting } from '@indices/_types/IndexRouting'
 import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Stringified } from '@spec_utils/Stringified'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class NodeInfo {
   attributes: Dictionary<string, string>
@@ -34,15 +35,16 @@ export class NodeInfo {
   /** Short hash of the last git commit in this release. */
   build_hash: string
   build_type: string
+  component_versions: Dictionary<Name, integer>
   /** The node’s host name. */
   host: Host
   http?: NodeInfoHttp
+  index_version: VersionNumber
   /** The node’s IP address. */
   ip: Ip
   jvm?: NodeJvmInfo
   /** The node's name */
   name: Name
-  network?: NodeInfoNetwork
   os?: NodeOperatingSystemInfo
   plugins?: PluginStats[]
   process?: NodeProcessInfo
@@ -59,11 +61,19 @@ export class NodeInfo {
   transport?: NodeInfoTransport
   /** Host and port where transport HTTP connections are accepted. */
   transport_address: TransportAddress
+  transport_version: VersionNumber
+
   /** Elasticsearch version running on this node. */
   version: VersionString
   modules?: PluginStats[]
   ingest?: NodeInfoIngest
   aggregations?: Dictionary<string, NodeInfoAggregation>
+  remote_cluster_server?: RemoveClusterServer
+}
+
+export class RemoveClusterServer {
+  bound_address: TransportAddress[]
+  publish_address: TransportAddress
 }
 
 export class NodeInfoSettings {
@@ -133,7 +143,7 @@ export class NodeInfoSettingsCluster {
   name: Name
   routing?: IndexRouting
   election: NodeInfoSettingsClusterElection
-  initial_master_nodes?: string[]
+  initial_master_nodes?: string[] | string
   /**
    * @availability stack since=7.16.0
    * @availability serverless
@@ -159,7 +169,7 @@ export class NodeInfoPath {
   logs?: string
   home?: string
   repo?: string[]
-  data?: string[]
+  data?: string | string[]
 }
 
 export class NodeInfoRepositories {
@@ -170,10 +180,13 @@ export class NodeInfoRepositoriesUrl {
   allowed_urls: string
 }
 
+/**
+ * @behavior_meta AdditionalProperties fieldname=settings description="Additional or alternative settings"
+ */
 export class NodeInfoDiscover
   implements AdditionalProperties<string, UserDefinedValue>
 {
-  seed_hosts?: string[]
+  seed_hosts?: string[] | string
   type?: string
   seed_providers?: string[]
 }
@@ -206,6 +219,11 @@ export class NodeInfoSettingsTransport {
   type: NodeInfoSettingsTransportType
   'type.default'?: string // TODO this clashes with NodeInfoSettingsTransportType
   features?: NodeInfoSettingsTransportFeatures
+  /**
+   * Only used in unit tests
+   * @availability stack visibility=private
+   * */
+  ignore_deserialization_errors?: Stringified<boolean>
 }
 
 /** @shortcut_property default */
@@ -218,7 +236,7 @@ export class NodeInfoSettingsTransportFeatures {
 }
 
 export class NodeInfoSettingsNetwork {
-  host?: Host
+  host?: Host | Host[]
 }
 
 export class NodeInfoIngest {
@@ -237,13 +255,18 @@ export class NodeInfoXpack {
   license?: NodeInfoXpackLicense
   security: NodeInfoXpackSecurity
   notification?: Dictionary<string, UserDefinedValue>
+  ml?: NodeInfoXpackMl
 }
 
 export class NodeInfoXpackSecurity {
-  http: NodeInfoXpackSecuritySsl
+  http?: NodeInfoXpackSecuritySsl
   enabled: string
   transport?: NodeInfoXpackSecuritySsl
   authc?: NodeInfoXpackSecurityAuthc
+}
+
+export class NodeInfoXpackMl {
+  use_auto_machine_memory_percent?: boolean
 }
 
 export class NodeInfoXpackSecuritySsl {
@@ -251,8 +274,8 @@ export class NodeInfoXpackSecuritySsl {
 }
 
 export class NodeInfoXpackSecurityAuthc {
-  realms: NodeInfoXpackSecurityAuthcRealms
-  token: NodeInfoXpackSecurityAuthcToken
+  realms?: NodeInfoXpackSecurityAuthcRealms
+  token?: NodeInfoXpackSecurityAuthcToken
 }
 
 export class NodeInfoXpackSecurityAuthcRealms {
@@ -325,17 +348,6 @@ export class NodeInfoMemory {
   total_in_bytes: long
 }
 
-export class NodeInfoNetwork {
-  primary_interface: NodeInfoNetworkInterface
-  refresh_interval: integer
-}
-
-export class NodeInfoNetworkInterface {
-  address: string
-  mac_address: string
-  name: Name
-}
-
 export class NodeInfoOSCPU {
   cache_size: string
   cache_size_in_bytes: integer
@@ -363,7 +375,6 @@ export class NodeJvmInfo {
   vm_name: Name
   vm_vendor: string
   vm_version: VersionString
-  /** @aliases bundled_jdk */
   using_bundled_jdk: boolean
   using_compressed_ordinary_object_pointers?: boolean | string
   input_arguments: string[]

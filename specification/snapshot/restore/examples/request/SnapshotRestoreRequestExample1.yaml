@@ -1,0 +1,22 @@
+summary: Restore with rename pattern
+method_request: POST /_snapshot/my_repository/snapshot_2/_restore?wait_for_completion=true
+description: >
+  Run `POST /_snapshot/my_repository/snapshot_2/_restore?wait_for_completion=true`. It restores `index_1` and `index_2` from
+  `snapshot_2`. The `rename_pattern` and `rename_replacement` parameters indicate any index matching the regular expression
+  `index_(.+)` will be renamed using the pattern `restored_index_$1`. For example, `index_1` will be renamed to `restored_index_1`.
+# type: request
+value: "{
+
+  \  \"indices\": \"index_1,index_2\",
+
+  \  \"ignore_unavailable\": true,
+
+  \  \"include_global_state\": false,
+
+  \  \"rename_pattern\": \"index_(.+)\",
+
+  \  \"rename_replacement\": \"restored_index_$1\",
+
+  \  \"include_aliases\": false
+
+  }"

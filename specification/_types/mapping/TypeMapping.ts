@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata, PropertyName } from '@_types/common'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { DynamicMapping, DynamicTemplate } from './dynamic-template'
 import {
   AllField,
@@ -36,7 +36,7 @@ export class TypeMapping {
   date_detection?: boolean
   dynamic?: DynamicMapping
   dynamic_date_formats?: string[]
-  dynamic_templates?: Dictionary<string, DynamicTemplate>[]
+  dynamic_templates?: SingleKeyDictionary<string, DynamicTemplate>[]
   _field_names?: FieldNamesField
   index_field?: IndexField
   /** @doc_id mapping-meta-field */
@@ -48,7 +48,7 @@ export class TypeMapping {
   _source?: SourceField
   runtime?: Dictionary<string, RuntimeField>
   enabled?: boolean
-  subobjects?: boolean
+  subobjects?: Subobjects
   /**
    * @availability stack since=7.16.0
    * @availability serverless
@@ -58,4 +58,17 @@ export class TypeMapping {
 
 export class DataStreamTimestamp {
   enabled: boolean
+}
+
+/**
+ * @es_quirk This enum is a boolean that evolved into a tri-state enum. True and False have
+ *   to be (de)serialized as JSON booleans.
+ */
+export enum Subobjects {
+  true,
+  false,
+  /**
+   * @availability stack since=8.16.0 visibility=feature_flag feature_flag=sub_objects_auto
+   */
+  auto
 }

@@ -21,16 +21,26 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes a pipeline used for Logstash Central Management.
+ * Delete a Logstash pipeline.
+ * Delete a pipeline that is used for Logstash Central Management.
+ * If the request succeeds, you receive an empty response with an appropriate status code.
  * @rest_spec_name logstash.delete_pipeline
  * @availability stack since=7.12.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_logstash_pipelines
+ * @doc_id logstash-api-delete-pipeline
+ * @ext_doc_id logstash-centralized-pipeline-management
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_logstash/pipeline/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
-     * Identifier for the pipeline.
+     * An identifier for the pipeline.
      */
     id: Id
   }

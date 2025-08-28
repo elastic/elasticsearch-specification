@@ -1,4 +1,4 @@
-# Fixing a defintion, a complete story
+# Fixing a definition, a complete story
 
 This document is an example of how you could interact with the project
 when fixing a definition.
@@ -8,15 +8,15 @@ Let's assume that the index document request definition is broken, how can you f
 ## Detect the error
 
 Very likely you know a definition is no longer valid because you saw a validation
-error in the validation [report](https://github.com/elastic/clients-flight-recorder/blob/dev/recordings/types-validation/types-validation.md).
+error in the validation [report](https://github.com/elastic/clients-flight-recorder/blob/main/recordings/types-validation/types-validation.md).
 
 ## Finding and fixing the error
 
 The example assumes that you have already performed the necessary steps to run a validation,
-if not, take a look at the [README](./README.md).
+if not, take a look at the [README](../README.md).
 
 ```sh
-make validate api=index type=request stack-version=8.1.0-SNAPSHOT
+make validate api=index branch=main
 ```
 
 You will see an output like the following:
@@ -82,7 +82,7 @@ open it with your favourite editor and perform the fix
 Finally run the validation again:
 
 ```sh
-make validate api=index type=request stack-version=8.1.0-SNAPSHOT
+make validate api=index branch=main
 ```
 
-If there are no more errors, open a pr with the fix.
+If there are no more errors, open a pull request with the fix.

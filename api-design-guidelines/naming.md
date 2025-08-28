@@ -100,6 +100,8 @@ Care should be given to ensure that:
 - All member APIs of a given namespace are logically related and form a coherent set.
 - Related functionality is not distributed across multiple arbitrary namespaces
 
+NOTE: The endpoint namespaces are used to generate tags in the OpenAPI documents. The tags are ultimately used to group the endpoints in the API documentation. To override the default tag, use `@doc_tag`.
+
 ### Use the global namespace sparingly
 
 The top-level global namespace should be treated with particular care. It is traditionally reserved for search and document endpoints only. A case should be made and a broader discussion carried out before new endpoints unrelated to these functions are added to the global namespace.

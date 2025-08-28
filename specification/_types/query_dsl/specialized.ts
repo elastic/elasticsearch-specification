@@ -17,12 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { StopWords } from '@_types/analysis/StopWords'
 import {
   Field,
-  Fields,
   Id,
   IndexName,
   MinimumShouldMatch,
@@ -31,11 +28,13 @@ import {
   VersionType
 } from '@_types/common'
 import { Distance, GeoLocation, GeoShape, GeoShapeRelation } from '@_types/Geo'
-import { double, float, integer, long } from '@_types/Numeric'
+import { double, float, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateMath, Duration } from '@_types/Time'
-import { FieldLookup, QueryBase, QueryContainer } from './abstractions'
 import { AdditionalProperty } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { FieldLookup, QueryBase, QueryContainer } from './abstractions'
 
 export class DistanceFeatureQueryBase<TOrigin, TDistance> extends QueryBase {
   /**
@@ -59,6 +58,11 @@ export class DistanceFeatureQueryBase<TOrigin, TDistance> extends QueryBase {
   field: Field
 }
 
+export class UntypedDistanceFeatureQuery extends DistanceFeatureQueryBase<
+  UserDefinedValue,
+  UserDefinedValue
+> {}
+
 export class GeoDistanceFeatureQuery extends DistanceFeatureQueryBase<
   GeoLocation,
   Distance
@@ -69,17 +73,25 @@ export class DateDistanceFeatureQuery extends DistanceFeatureQueryBase<
   Duration
 > {}
 
-/** @codegen_names geo, date */
+/**
+ * @codegen_names untyped, geo, date
+ * @variants untagged untyped=_types.query_dsl.UntypedDistanceFeatureQuery
+ * @ext_doc_id query-dsl-distance-feature-query
+ */
 // Note: deserialization depends on value types
 export type DistanceFeatureQuery =
+  | UntypedDistanceFeatureQuery
   | GeoDistanceFeatureQuery
   | DateDistanceFeatureQuery
 
+/**
+ * @ext_doc_id query-dsl-mlt-query
+ */
 export class MoreLikeThisQuery extends QueryBase {
   /**
    * The analyzer that is used to analyze the free form text.
    * Defaults to the analyzer associated with the first field in fields.
-   * @doc_id analysis
+   * @ext_doc_id analysis
    */
   analyzer?: string
   /**
@@ -190,6 +202,9 @@ export class LikeDocument {
  */
 export type Like = string | LikeDocument
 
+/**
+ * @ext_doc_id query-dsl-percolate-query
+ */
 export class PercolateQuery extends QueryBase {
   /**
    * The source of the document being percolated.
@@ -231,6 +246,7 @@ export class PercolateQuery extends QueryBase {
 
 /**
  * @variants container
+ * @ext_doc_id query-dsl-pinned-query
  */
 export class PinnedQuery extends QueryBase {
   /**
@@ -258,7 +274,7 @@ export class PinnedDoc {
   /**
    * The index that contains the document.
    */
-  _index: IndexName
+  _index?: IndexName
 }
 
 export class RankFeatureFunction {}
@@ -290,6 +306,9 @@ export class RankFeatureFunctionSigmoid extends RankFeatureFunction {
   exponent: float
 }
 
+/**
+ * @ext_doc_id query-dsl-rank-feature-query
+ */
 export class RankFeatureQuery extends QueryBase {
   /**
    * `rank_feature` or `rank_features` field used to boost relevance scores.
@@ -315,6 +334,9 @@ export class RankFeatureQuery extends QueryBase {
   sigmoid?: RankFeatureFunctionSigmoid
 }
 
+/**
+ * @ext_doc_id query-dsl-script-query
+ */
 export class ScriptQuery extends QueryBase {
   /**
    * Contains a script to run as a query.
@@ -323,6 +345,9 @@ export class ScriptQuery extends QueryBase {
   script: Script
 }
 
+/**
+ * @ext_doc_id query-dsl-script-score-query
+ */
 export class ScriptScoreQuery extends QueryBase {
   /**
    * Documents with a score lower than this floating point number are excluded from the search results.
@@ -339,6 +364,10 @@ export class ScriptScoreQuery extends QueryBase {
   script: Script
 }
 
+/**
+ * @behavior_meta AdditionalProperty key=field value=shape
+ * @ext_doc_id query-dsl-shape-query
+ */
 // Shape query doesn't follow the common pattern of having a single field-name property
 // holding also the query base fields (boost and _name)
 export class ShapeQuery
@@ -366,8 +395,12 @@ export class ShapeFieldQuery {
   shape?: GeoShape
 }
 
+/**
+ * @ext_doc_id query-dsl-rule-query
+ */
 export class RuleQuery extends QueryBase {
   organic: QueryContainer
-  ruleset_id: Id
+  ruleset_ids?: Id | Id[]
+  ruleset_id?: string
   match_criteria: UserDefinedValue
 }

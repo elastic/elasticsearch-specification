@@ -1,0 +1,10 @@
+# summary:
+description: A successful response from `POST /_security/role/my_admin_role`.
+# type: response
+# response_code:
+value: |-
+  {
+    "role": {
+      "created": true 
+    }
+  }

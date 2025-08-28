@@ -1,0 +1,21 @@
+summary: Clone an existing index.
+method_request: POST /my_source_index/_clone/my_target_index
+description: >
+  Clone `my_source_index` into a new index called `my_target_index` with `POST /my_source_index/_clone/my_target_index`. The API
+  accepts `settings` and `aliases` parameters for the target index.
+# type: request
+value: "{
+
+  \  \"settings\": {
+
+  \    \"index.refresh_interval\": \"2s\"
+
+  \  },
+
+  \  \"aliases\": {
+
+  \    \"my_search_indices\": {}
+
+  \  }
+
+  }"

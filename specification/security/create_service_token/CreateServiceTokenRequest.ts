@@ -18,19 +18,52 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Namespace, Service } from '@_types/common'
-import { Refresh } from '@_types/common'
+import { Name, Namespace, Refresh, Service } from '@_types/common'
 
 /**
- * Creates a service accounts token for access without requiring basic authentication.
+ * Create a service account token.
+ *
+ * Create a service accounts token for access without requiring basic authentication.
+ *
+ * NOTE: Service account tokens never expire.
+ * You must actively delete them if they are no longer needed.
  * @rest_spec_name security.create_service_token
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_service_account
+ * @doc_id security-api-create-service-token
+ * @ext_doc_id service-accounts
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/service/{namespace}/{service}/credential/token/{name}'
+      methods: ['PUT', 'POST']
+    },
+    {
+      path: '/_security/service/{namespace}/{service}/credential/token'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
+    /**
+     * The name of the namespace, which is a top-level grouping of service accounts.
+     */
     namespace: Namespace
+    /**
+     * The name of the service.
+     */
     service: Service
+    /**
+     * The name for the service account token.
+     * If omitted, a random name will be generated.
+     *
+     * Token names must be at least one and no more than 256 characters.
+     * They can contain alphanumeric characters (a-z, A-Z, 0-9), dashes (`-`), and underscores (`_`), but cannot begin with an underscore.
+     *
+     * NOTE: Token names must be unique in the context of the associated service account.
+     * They must also be globally unique with their fully qualified names, which are comprised of the service account principal and token name, such as `<namespace>/<service>/<token-name>`.
+     */
     name?: Name
   }
   query_parameters: {

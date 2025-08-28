@@ -21,7 +21,14 @@ import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {
+    /**
+     * If `true`, the request succeeded.
+     * This does not indicate whether any scrolling search requests were cleared.
+     */
     succeeded: boolean
+    /**
+     * The number of scrolling search requests cleared.
+     */
     num_freed: integer
   }
   exceptions: [

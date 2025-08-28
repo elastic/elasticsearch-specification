@@ -21,18 +21,36 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
+ * Clear the cache.
+ * Clear indices and data streams from the shared cache for partially mounted indices.
  * @rest_spec_name searchable_snapshots.clear_cache
  * @availability stack since=7.10.0 stability=experimental
+ * @cluster_privileges manage
+ * @index_privileges manage
+ * @doc_id searchable-snapshots-api-clear-cache
+ * @ext_doc_id searchable-snapshots
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_searchable_snapshots/cache/clear'
+      methods: ['POST']
+    },
+    {
+      path: '/{index}/_searchable_snapshots/cache/clear'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
+    /**
+     * A comma-separated list of data streams, indices, and aliases to clear from the cache.
+     * It supports wildcards (`*`).
+     */
     index?: Indices
   }
   query_parameters: {
     expand_wildcards?: ExpandWildcards
     allow_no_indices?: boolean
     ignore_unavailable?: boolean
-    pretty?: boolean
-    human?: boolean
   }
 }

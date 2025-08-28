@@ -21,13 +21,26 @@ import { RequestBase } from '@_types/Base'
 import { UserProfileId } from '@security/_types/UserProfile'
 
 /**
- * Retrieves a user's profile using the unique profile ID.
+ * Get a user profile.
+ *
+ * Get a user's profile using the unique profile ID.
+ *
+ * NOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.
+ * Individual users and external applications should not call this API directly.
+ * Elastic reserves the right to change or remove this feature in future releases without prior notice.
  * @rest_spec_name security.get_user_profile
  * @availability stack since=8.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
- * @cluster_privileges manage_user_profile
+ * @cluster_privileges read_security
+ * @doc_id security-api-get-user-profile
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/profile/{uid}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A unique identifier for the user profile.
@@ -36,9 +49,9 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * List of filters for the `data` field of the profile document.
-     * To return all content use `data=*`. To return a subset of content
-     * use `data=<key>` to retrieve content nested under the specified `<key>`.
+     * A comma-separated list of filters for the `data` field of the profile document.
+     * To return all content use `data=*`.
+     * To return a subset of content use `data=<key>` to retrieve content nested under the specified `<key>`.
      * By default returns no `data` content.
      */
     data?: string | string[]

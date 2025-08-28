@@ -18,18 +18,50 @@
  */
 
 import { Id, IndexName, SequenceNumber, VersionNumber } from '@_types/common'
+import { long } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { long } from '@_types/Numeric'
 
 export class GetResult<TDocument> {
+  /**
+   * The name of the index the document belongs to.
+   */
   _index: IndexName
+  /**
+   * If the `stored_fields` parameter is set to `true` and `found` is `true`, it contains the document fields stored in the index.
+   */
   fields?: Dictionary<string, UserDefinedValue>
+  _ignored?: string[]
+  /**
+   * Indicates whether the document exists.
+   */
   found: boolean
+  /**
+   * The unique identifier for the document.
+   */
   _id: Id
+  /**
+   * The primary term assigned to the document for the indexing operation.
+   * @ext_doc_id optimistic_concurrency
+   */
   _primary_term?: long
+  /**
+   * The explicit routing, if set.
+   */
   _routing?: string
+  /**
+   * The sequence number assigned to the document for the indexing operation.
+   * Sequence numbers are used to ensure an older version of a document doesn't overwrite a newer version.
+   * @ext_doc_id optimistic_concurrency
+   */
   _seq_no?: SequenceNumber
+  /**
+   * If `found` is `true`, it contains the document data formatted in JSON.
+   * If the `_source` parameter is set to `false` or the `stored_fields` parameter is set to `true`, it is excluded.
+   */
   _source?: TDocument
+  /**
+   * The document version, which is ncremented each time the document is updated.
+   */
   _version?: VersionNumber
 }

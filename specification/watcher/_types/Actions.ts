@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { AdditionalProperties } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   HttpHeaders,
@@ -32,7 +29,10 @@ import {
 import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { Result } from '@_types/Result'
-import { Duration, DateTime, EpochTime, UnitSeconds } from '@_types/Time'
+import { DateTime, Duration, EpochTime, UnitSeconds } from '@_types/Time'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { HttpInputRequestDefinition } from './Input'
 
 // PagerDuty ----------------------------- //
@@ -237,15 +237,15 @@ export class DataEmailAttachment {
 
 export class Email {
   id?: Id
-  bcc?: string[]
+  bcc?: string | string[]
   body?: EmailBody
-  cc?: string[]
+  cc?: string | string[]
   from?: string
   priority?: EmailPriority
-  reply_to?: string[]
+  reply_to?: string | string[]
   sent_date?: DateTime
   subject: string
-  to: string[]
+  to: string | string[]
   attachments?: Dictionary<string, EmailAttachmentContainer>
 }
 

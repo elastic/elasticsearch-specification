@@ -1,0 +1,8 @@
+summary: API keys by realm
+method_request: DELETE /_security/api_key
+description: Run `DELETE /_security/api_key` to invalidate all API keys for the `native1` realm.
+# type: request
+value: |-
+  {
+    "realm_name" : "native1"
+  }

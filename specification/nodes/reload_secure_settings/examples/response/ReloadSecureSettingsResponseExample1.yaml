@@ -1,0 +1,18 @@
+# summary:
+description: A successful response when reloading keystore on nodes in your cluster.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "_nodes": {
+      "total": 1,
+      "successful": 1,
+      "failed": 0
+    },
+    "cluster_name": "my_cluster",
+    "nodes": {
+      "pQHNt5rXTTWNvUgOrdynKg": {
+        "name": "node-0"
+      }
+    }
+  }

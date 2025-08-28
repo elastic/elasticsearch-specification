@@ -1,0 +1,47 @@
+# Overlays that are specific to the Elasticsearch Serverless OpenAPI document
+overlay: 1.0.0
+info:
+  title: Overlays for the Elasticsearch Serverless OpenAPI document
+  version: 0.0.1
+actions:
+  - target: '$.info'
+    description: Add a document description and feedback link
+    update:
+      title: Elasticsearch Serverless API
+      description: >
+        ## Documentation source and versions
+        
+        This documentation is derived from the `main` branch of the [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification) repository.
+        It is provided under license [Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+      x-doc-license:
+        name: Attribution-NonCommercial-NoDerivatives 4.0 International
+        url: 'https://creativecommons.org/licenses/by-nc-nd/4.0/'
+      x-feedbackLink:
+        label: Feedback
+        url: https://github.com/elastic/docs-content/issues/new?assignees=&labels=feedback%2Ccommunity&projects=&template=api-feedback.yaml&title=%5BFeedback%5D%3A+
+# Add security details
+  - target: '$.components'
+    description: Add securitySchemes
+    update:
+      securitySchemes:
+        apiKeyAuth:
+          description: |
+            Elasticsearch APIs use key-based authentication.
+            You must create an API key and use the encoded value in the request header.
+            For example:
+            
+            
+            ```
+            curl -X GET "${ES_URL}/_cat/indices?v=true" \
+              -H "Authorization: ApiKey ${API_KEY}"
+            ```
+            
+            For more information about where to find API keys for the Elasticsearch endpoint (${ES_URL}) for a project, go to [Get started with Elasticsearch Serverless](https://www.elastic.co/docs/solutions/search/serverless-elasticsearch-get-started).
+          in: header
+          name: Authorization
+          type: apiKey
+  - target: '$'
+    description: Add document security
+    update:
+      security:
+        - apiKeyAuth: []

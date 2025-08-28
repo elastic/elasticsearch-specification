@@ -1,0 +1,63 @@
+summary: Run an ingest pipeline against a set of provided documents.
+method_request: POST /_ingest/pipeline/_simulate
+description: You can specify the used pipeline either in the request body or as a path parameter.
+# type: request
+value: "{
+
+  \  \"pipeline\" :
+
+  \  {
+
+  \    \"description\": \"_description\",
+
+  \    \"processors\": [
+
+  \      {
+
+  \        \"set\" : {
+
+  \          \"field\" : \"field2\",
+
+  \          \"value\" : \"_value\"
+
+  \        }
+
+  \      }
+
+  \    ]
+
+  \  },
+
+  \  \"docs\": [
+
+  \    {
+
+  \      \"_index\": \"index\",
+
+  \      \"_id\": \"id\",
+
+  \      \"_source\": {
+
+  \        \"foo\": \"bar\"
+
+  \      }
+
+  \    },
+
+  \    {
+
+  \      \"_index\": \"index\",
+
+  \      \"_id\": \"id\",
+
+  \      \"_source\": {
+
+  \        \"foo\": \"rab\"
+
+  \      }
+
+  \    }
+
+  \  ]
+
+  }"

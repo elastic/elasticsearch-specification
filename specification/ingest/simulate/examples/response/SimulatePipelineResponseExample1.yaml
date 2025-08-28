@@ -1,0 +1,16 @@
+# summary:
+description: A successful response for running an ingest pipeline against a set of provided documents.
+# description: ''
+# type: response
+# response_code: 200
+value:
+  "{\n   \"docs\": [\n      {\n         \"doc\": {\n            \"_id\": \"id\"\
+  ,\n            \"_index\": \"index\",\n            \"_version\": \"-3\",\n     \
+  \       \"_source\": {\n               \"field2\": \"_value\",\n               \"\
+  foo\": \"bar\"\n            },\n            \"_ingest\": {\n               \"timestamp\"\
+  : \"2017-05-04T22:30:03.187Z\"\n            }\n         }\n      },\n      {\n \
+  \        \"doc\": {\n            \"_id\": \"id\",\n            \"_index\": \"index\"\
+  ,\n            \"_version\": \"-3\",\n            \"_source\": {\n             \
+  \  \"field2\": \"_value\",\n               \"foo\": \"rab\"\n            },\n  \
+  \          \"_ingest\": {\n               \"timestamp\": \"2017-05-04T22:30:03.188Z\"\
+  \n            }\n         }\n      }\n   ]\n}"

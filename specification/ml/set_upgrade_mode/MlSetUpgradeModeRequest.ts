@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
 /**
+ * Set upgrade_mode for ML indices.
  * Sets a cluster wide upgrade_mode setting that prepares machine learning
  * indices for an upgrade.
  * When upgrading your cluster, in some circumstances you must restart your
@@ -37,8 +38,15 @@ import { Duration } from '@_types/Time'
  * @availability stack since=6.7.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml
+ * @doc_id ml-set-upgrade-mode
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/set_upgrade_mode'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * When `true`, it enables `upgrade_mode` which temporarily halts all job

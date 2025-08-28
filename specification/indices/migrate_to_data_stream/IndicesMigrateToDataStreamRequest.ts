@@ -19,8 +19,10 @@
 
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
+ * Convert an index alias to a data stream.
  * Converts an index alias to a data stream.
  * You must have a matching index template that is data stream enabled.
  * The alias must meet the following criteria:
@@ -35,10 +37,30 @@ import { IndexName } from '@_types/common'
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage
+ * @doc_tag data stream
+ * @doc_id data-stream-migrate
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/_migrate/{name}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /** Name of the index alias to convert to a data stream. */
     name: IndexName
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
 }

@@ -17,14 +17,18 @@
  * under the License.
  */
 
-import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
 import { Field, MinimumShouldMatch } from '@_types/common'
 import { Distance, GeoLocation } from '@_types/Geo'
-import { double, float, long } from '@_types/Numeric'
+import { double, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateMath, Duration } from '@_types/Time'
+import { AdditionalProperty } from '@spec_utils/behaviors'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { QueryBase, QueryContainer } from './abstractions'
 
+/**
+ * @ext_doc_id query-dsl-bool-query
+ */
 export class BoolQuery extends QueryBase {
   /**
    * The clause (query) must appear in matching documents.
@@ -51,6 +55,9 @@ export class BoolQuery extends QueryBase {
   should?: QueryContainer | QueryContainer[]
 }
 
+/**
+ * @ext_doc_id query-dsl-boosting-query
+ */
 export class BoostingQuery extends QueryBase {
   /**
    * Floating point number between 0 and 1.0 used to decrease the relevance scores of documents matching the `negative` query.
@@ -66,6 +73,9 @@ export class BoostingQuery extends QueryBase {
   positive: QueryContainer
 }
 
+/**
+ * @ext_doc_id query-dsl-constant-score-query
+ */
 export class ConstantScoreQuery extends QueryBase {
   /**
    * Filter query you wish to run. Any returned documents must match this query.
@@ -75,6 +85,9 @@ export class ConstantScoreQuery extends QueryBase {
   filter: QueryContainer
 }
 
+/**
+ * @ext_doc_id query-dsl-dis-max-query
+ */
 export class DisMaxQuery extends QueryBase {
   /**
    * One or more query clauses.
@@ -89,6 +102,10 @@ export class DisMaxQuery extends QueryBase {
   tie_breaker?: double
 }
 
+/**
+ * @shortcut_property functions
+ * @ext_doc_id query-dsl-function-score-query
+ */
 export class FunctionScoreQuery extends QueryBase {
   /**
    * Defines how he newly computed score is combined with the score of the query
@@ -171,7 +188,12 @@ export class DecayPlacement<TOrigin, TScale> {
   origin?: TOrigin
 }
 
-export class DecayFunctionBase {
+/**
+ * @behavior_meta AdditionalProperty key=field value=placement
+ */
+export class DecayFunctionBase<TOrigin, TScale>
+  implements AdditionalProperty<Field, DecayPlacement<TOrigin, TScale>>
+{
   /**
    * Determines how the distance is calculated when a field used for computing the decay contains multiple values.
    * @server_default min
@@ -179,21 +201,24 @@ export class DecayFunctionBase {
   multi_value_mode?: MultiValueMode
 }
 
-export class NumericDecayFunction
-  extends DecayFunctionBase
-  implements AdditionalProperty<Field, DecayPlacement<double, double>> {}
+export class UntypedDecayFunction extends DecayFunctionBase<
+  UserDefinedValue,
+  UserDefinedValue
+> {}
+export class NumericDecayFunction extends DecayFunctionBase<double, double> {}
+export class DateDecayFunction extends DecayFunctionBase<DateMath, Duration> {}
+export class GeoDecayFunction extends DecayFunctionBase<
+  GeoLocation,
+  Distance
+> {}
 
-export class DateDecayFunction
-  extends DecayFunctionBase
-  implements AdditionalProperty<Field, DecayPlacement<DateMath, Duration>> {}
-
-export class GeoDecayFunction
-  extends DecayFunctionBase
-  implements AdditionalProperty<Field, DecayPlacement<GeoLocation, Distance>> {}
-
-/** @codegen_names date, numeric, geo */
+/**
+ * @codegen_names untyped, date, numeric, geo
+ * @variants untagged untyped=_types.query_dsl.UntypedDecayFunction
+ */
 // Note: deserialization depends on value types
 export type DecayFunction =
+  | UntypedDecayFunction
   | DateDecayFunction
   | NumericDecayFunction
   | GeoDecayFunction

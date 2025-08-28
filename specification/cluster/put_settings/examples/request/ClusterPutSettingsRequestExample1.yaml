@@ -1,0 +1,10 @@
+summary: A simple setting
+method_request: PUT /_cluster/settings
+description: An example of a persistent update.
+# type: request
+value: |-
+  {
+    "persistent" : {
+      "indices.recovery.max_bytes_per_sec" : "50mb"
+    }
+  }

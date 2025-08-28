@@ -21,20 +21,28 @@ import { RequestBase } from '@_types/Base'
 import { NodeIds } from '@_types/common'
 
 /**
- * You can use the cluster repositories metering API to retrieve repositories metering information in a cluster.
- * This API exposes monotonically non-decreasing counters and it’s expected that clients would durably store the
- * information needed to compute aggregations over a period of time. Additionally, the information exposed by this
- * API is volatile, meaning that it won’t be present after node restarts.
+ * Get cluster repositories metering.
+ * Get repositories metering information for a cluster.
+ * This API exposes monotonically non-decreasing counters and it is expected that clients would durably store the information needed to compute aggregations over a period of time.
+ * Additionally, the information exposed by this API is volatile, meaning that it will not be present after node restarts.
  * @rest_spec_name nodes.get_repositories_metering_info
  * @availability stack since=7.16.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @cluster_privileges monitor, manage
+ * @doc_tag cluster
+ * @doc_id get-repositories-metering-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_nodes/{node_id}/_repositories_metering'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of node IDs or names used to limit returned information.
-     * All the nodes selective options are explained [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes).
+     * @ext_doc_id cluster-nodes
      */
     node_id: NodeIds
   }

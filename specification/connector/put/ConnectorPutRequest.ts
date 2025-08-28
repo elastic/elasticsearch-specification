@@ -18,29 +18,38 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id, IndexName } from '@_types/common'
-import { WithNullValue } from '@spec_utils/utils'
 
 /**
- * Creates or updates a connector.
+ * Create or update a connector.
  * @rest_spec_name connector.put
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-put
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}'
+      methods: ['PUT']
+    },
+    {
+      path: '/_connector'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
-     * The unique identifier of the connector to be created or updated
+     * The unique identifier of the connector to be created or updated. ID is auto-generated if not provided.
      */
-    connector_id: Id
+    connector_id?: Id
   }
   /**
    * The connector document to be created
    */
   /** @codegen_name connector */
-  body: {
+  body?: {
     description?: string
-    index_name: WithNullValue<IndexName>
+    index_name?: IndexName
     is_native?: boolean
     language?: string
     name?: string

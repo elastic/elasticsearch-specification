@@ -25,11 +25,13 @@ export type SynonymString = string
 // Synonym Rule with optional ID, used for PUT method
 export class SynonymRule {
   /**
-   * Synonym Rule identifier
+   * The identifier for the synonym rule.
+   * If you do not specify a synonym rule ID when you create a rule, an identifier is created automatically by Elasticsearch.
    */
   id?: Id
   /**
-   * Synonyms, in Solr format, that conform the synonym rule. See https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-graph-tokenfilter.html#_solr_synonyms_2
+   * The synonyms that conform the synonym rule in Solr format.
+   * @ext_doc_id synonym-set-define
    */
   synonyms: SynonymString
 }
@@ -41,7 +43,8 @@ export class SynonymRuleRead implements OverloadOf<SynonymRule> {
    */
   id: Id
   /**
-   * Synonyms, in Solr format, that conform the synonym rule. See https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-graph-tokenfilter.html#_solr_synonyms_2
+   * Synonyms, in Solr format, that conform the synonym rule.
+   * @ext_doc_id synonym-solr
    */
   synonyms: SynonymString
 }

@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
@@ -27,19 +25,36 @@ import {
   Routing,
   SearchType
 } from '@_types/common'
+import { ScriptSource } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
- * Runs a search with a search template.
+ * Run a search with a search template.
  * @rest_spec_name search_template
  * @availability stack since=2.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @index_privileges read
+ * @doc_tag search
+ * @doc_id search-template-api
+ * @ext_doc_id search-template
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_search/template'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_search/template'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
-     * Comma-separated list of data streams, indices,
-     * and aliases to search. Supports wildcards (*).
+     * A comma-separated list of data streams, indices, and aliases to search.
+     * It supports wildcards (`*`).
      */
     index?: Indices
   }
@@ -56,10 +71,9 @@ export interface Request extends RequestBase {
      * @server_default false */
     ccs_minimize_roundtrips?: boolean
     /**
-     * Type of index that wildcard patterns can match.
+     * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      */
     expand_wildcards?: ExpandWildcards
     /**
@@ -68,32 +82,36 @@ export interface Request extends RequestBase {
     explain?: boolean
     /**
      * If `true`, specified concrete, expanded, or aliased indices are not included in the response when throttled.
-     * @server_default true */
+     * @server_default true
+     * @deprecated 7.16.0
+     */
     ignore_throttled?: boolean
     /**
      * If `false`, the request returns an error if it targets a missing or closed index.
      * @server_default false */
     ignore_unavailable?: boolean
     /**
-     * Specifies the node or shard the operation should be performed on.
-     * Random by default.
+     * The node or shard the operation should be performed on.
+     * It is random by default.
      */
     preference?: string
     /**
      * If `true`, the query execution is profiled.
      * @server_default false */
     profile?: boolean
-    /** Custom value used to route operations to a specific shard. */
+    /**  A custom value used to route operations to a specific shard. */
     routing?: Routing
     /**
      * Specifies how long a consistent view of the index
      * should be maintained for scrolled search.
      */
     scroll?: Duration
-    /** The type of the search operation. */
+    /**
+     * The type of the search operation. */
     search_type?: SearchType
     /**
-     * If true, hits.total are rendered as an integer in the response.
+     * If `true`, `hits.total` is rendered as an integer in the response.
+     * If `false`, it is rendered as an object.
      * @server_default false
      * @availability stack since=7.0.0
      * @availability serverless
@@ -107,10 +125,11 @@ export interface Request extends RequestBase {
   body: {
     /**
      * If `true`, returns detailed information about score calculation as part of each hit.
+     * If you specify both this and the `explain` query parameter, the API uses only the query parameter.
      * @server_default false */
     explain?: boolean
     /**
-     * ID of the search template to use. If no source is specified,
+     * The ID of the search template to use. If no `source` is specified,
      * this parameter is required.
      */
     id?: Id
@@ -126,9 +145,9 @@ export interface Request extends RequestBase {
     profile?: boolean
     /**
      * An inline search template. Supports the same parameters as the search API's
-     * request body. Also supports Mustache variables. If no id is specified, this
+     * request body. It also supports Mustache variables. If no `id` is specified, this
      * parameter is required.
      */
-    source?: string
+    source?: ScriptSource
   }
 }

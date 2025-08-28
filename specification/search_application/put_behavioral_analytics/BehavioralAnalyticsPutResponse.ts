@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Result } from '@_types/Result'
 import { AcknowledgedResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 export class Response {
+  /** @codegen_name result */
   body: AnalyticsAcknowledgeResponseBase
 }
 

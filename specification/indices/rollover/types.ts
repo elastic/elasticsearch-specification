@@ -19,7 +19,7 @@
 
 import { ByteSize } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Duration, DurationValue, EpochTime, UnitMillis } from '@_types/Time'
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class RolloverConditions {
   min_age?: Duration

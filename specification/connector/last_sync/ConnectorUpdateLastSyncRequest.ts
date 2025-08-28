@@ -18,19 +18,28 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { SyncStatus } from '../_types/Connector'
 import { long } from '@_types/Numeric'
-import { WithNullValue } from '@spec_utils/utils'
 import { DateTime } from '@_types/Time'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { SyncStatus } from '../_types/Connector'
 
 /**
- * Updates last sync stats in the connector document
+ * Update the connector last sync stats.
+ *
+ * Update the fields related to the last sync of a connector.
+ * This action is used for analytics and monitoring.
  * @rest_spec_name connector.last_sync
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=experimental visibility=private
+ * @availability serverless stability=experimental visibility=private
  * @doc_id connector-last-sync
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/{connector_id}/_last_sync'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector to be updated
@@ -41,16 +50,17 @@ export interface Request extends RequestBase {
    * Connector last sync stats
    */
   body: {
-    last_access_control_sync_error?: WithNullValue<string>
+    last_access_control_sync_error?: string
     last_access_control_sync_scheduled_at?: DateTime
     last_access_control_sync_status?: SyncStatus
     last_deleted_document_count?: long
     last_incremental_sync_scheduled_at?: DateTime
     last_indexed_document_count?: long
-    last_seen?: WithNullValue<DateTime>
-    last_sync_error?: WithNullValue<string>
+    last_seen?: DateTime
+    last_sync_error?: string
     last_sync_scheduled_at?: DateTime
     last_sync_status?: SyncStatus
     last_synced?: DateTime
+    sync_cursor?: UserDefinedValue
   }
 }

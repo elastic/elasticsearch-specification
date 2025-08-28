@@ -1,0 +1,15 @@
+summary: A response with not_found roles
+description: >
+  A partially successful response from `DELETE /_security/role`.
+  If a role cannot be found, it appears in the `not_found` list in the response.
+# type: response
+# response_code:
+value: |-
+  {
+    "deleted": [
+        "my_admin_role"
+    ],
+    "not_found": [
+        "not_an_existing_role"
+    ]
+  }

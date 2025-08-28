@@ -1,0 +1,12 @@
+# summary:
+description: >
+  An abbreviated response from `GET /sensor_rollup/_rollup_search` with a `max` aggregation on a `temperature` field.
+  The response provides some metadata about the request (`took`, `_shards`), the search hits (which is always empty for rollup searches), and the aggregation response.
+# type: response
+# response_code: ''
+value:
+  "{\n  \"took\" : 102,\n  \"timed_out\" : false,\n  \"terminated_early\" : false,\n\
+  \  \"_shards\" : {} ,\n  \"hits\" : {\n    \"total\" : {\n        \"value\": 0,\n\
+  \        \"relation\": \"eq\"\n    },\n    \"max_score\" : 0.0,\n    \"hits\" :\
+  \ [ ]\n  },\n  \"aggregations\" : {\n    \"max_temperature\" : {\n      \"value\"\
+  \ : 202.0\n    }\n  }\n}"

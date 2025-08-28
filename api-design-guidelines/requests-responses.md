@@ -97,34 +97,6 @@ It's best to use the body for large or high cardinality variable-length request 
 - Large objects (Query DSL, aggregations, machine learning models)
 - High cardinality variable length values (list of fields, indices, shards, document IDs)
 
-## Adhere to the robustness principle
-
-The robustness principle states:
-
-> "be conservative in what you do, be liberal in what you accept from others"
-
-This principle can apply in a number of ways, but in particular it can determine the design of API requests and responses. An API request may be built flexibly so as to allow both verbose detailed payloads and terse convenience payloads. The corresponding response, however, should always be structured predictably, and not depend on a particular syntax used within the request.
-
-As an example, consider an API that looks up entities based on their ID. The request may be structured to allow either a single ID or a collection of IDs to be passed in. However, the API response should always return a collection of entities, even if that collection only contains one entity.
-
-This principle allows for simpler consumer code that neither has to remember state between request and response, nor needs to "sniff" the output to determine its structure. If multiple variants of the response are truly desired, this may suggest that multiple API endpoints should be introduced, for example called `get_single_entity` and `get_multiple_entities`.
-
-An example of this is the datafeeds API which accepts either a string or list of strings for indices but always returns a list of strings:
-
-```yaml
-PUT /_ml/datafeeds/feed-id
-{
-  "indices": "index-name", // Input is a string.
-  ...
-}
-
-GET /_ml/datafeeds/feed-id
-{
-  "indices": ["index-name"], // Always returns a list of strings.
-  ...
-}
-```
-
 ## Consider how client functions would wrap the API endpoint
 
 It is common within client-side architecture to provide a one-to-one mapping between API endpoint and client language function. This simplifies implementation and documentation, provides good developer experience, and makes tracking of endpoint usage straightforward.

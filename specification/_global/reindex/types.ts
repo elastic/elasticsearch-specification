@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Sort } from '@_types/sort'
 import {
   Fields,
   IndexName,
@@ -33,6 +32,7 @@ import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { SlicedScroll } from '@_types/SlicedScroll'
+import { Sort } from '@_types/sort'
 import { Duration } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 
@@ -42,8 +42,9 @@ export class Destination {
    */
   index: IndexName
   /**
-   * Set to `create` to only index documents that do not already exist.
-   * Important: To reindex to a data stream destination, this argument must be `create`.
+   * If it is `create`, the operation will only index documents that do not already exist (also known as "put if absent").
+   *
+   * IMPORTANT: To reindex to a data stream destination, this argument must be `create`.
    * @server_default index
    */
   op_type?: OpType
@@ -52,8 +53,10 @@ export class Destination {
    */
   pipeline?: string
   /**
-   * By default, a document's routing is preserved unless it’s changed by the script.
-   * Set to `discard` to set routing to `null`,  or `=value` to route using the specified `value`.
+   * By default, a document's routing is preserved unless it's changed by the script.
+   * If it is `keep`, the routing on the bulk request sent for each match is set to the routing on the match.
+   * If it is `discard`, the routing on the bulk request sent for each match is set to `null`.
+   * If it is `=value`, the routing on the bulk request sent for each match is set to all value specified after the equals sign (`=`).
    * @server_default keep
    */
   routing?: Routing
@@ -66,11 +69,11 @@ export class Destination {
 export class Source {
   /**
    * The name of the data stream, index, or alias you are copying from.
-   * Accepts a comma-separated list to reindex from multiple sources.
+   * It accepts a comma-separated list to reindex from multiple sources.
    */
   index: Indices
   /**
-   * Specifies the documents to reindex using the Query DSL.
+   * The documents to reindex, which is defined with Query DSL.
    */
   query?: QueryContainer
   /**
@@ -79,17 +82,27 @@ export class Source {
   remote?: RemoteSource
   /**
    * The number of documents to index per batch.
-   * Use when indexing from remote to ensure that the batches fit within the on-heap buffer, which defaults to a maximum size of 100 MB.
+   * Use it when you are indexing from remote to ensure that the batches fit within the on-heap buffer, which defaults to a maximum size of 100 MB.
+   * @server_default 1000
    */
   size?: integer
   /**
    * Slice the reindex request manually using the provided slice ID and total number of slices.
    */
   slice?: SlicedScroll
+  /**
+   * A comma-separated list of `<field>:<direction>` pairs to sort by before indexing.
+   * Use it in conjunction with `max_docs` to control what documents are reindexed.
+   *
+   * WARNING: Sort in reindex is deprecated.
+   * Sorting in reindex was never guaranteed to index documents in order and prevents further development of reindex such as resilience and performance improvements.
+   * If used in combination with `max_docs`, consider using a query filter instead.
+   * @deprecated 7.6.0
+   */
   sort?: Sort
   /**
-   * If `true` reindexes all source fields.
-   * Set to a list to reindex select fields.
+   * If `true`, reindex all source fields.
+   * Set it to a list to reindex select fields.
    * @server_default true
    * @codegen_name source_fields */
   _source?: Fields
@@ -99,7 +112,7 @@ export class Source {
 export class RemoteSource {
   /**
    * The remote connection timeout.
-   * Defaults to 30 seconds.
+   * @server_default 30s
    */
   connect_timeout?: Duration
   /**
@@ -108,6 +121,7 @@ export class RemoteSource {
   headers?: Dictionary<string, string>
   /**
    * The URL for the remote instance of Elasticsearch that you want to index from.
+   * This information is required when you're indexing from remote.
    */
   host: Host
   /**
@@ -119,7 +133,8 @@ export class RemoteSource {
    */
   password?: Password
   /**
-   * The remote socket read timeout. Defaults to 30 seconds.
+   * The remote socket read timeout.
+   * @server_default 30s
    */
   socket_timeout?: Duration
 }

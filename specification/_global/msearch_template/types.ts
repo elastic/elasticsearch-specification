@@ -17,10 +17,11 @@
  * under the License.
  */
 
+import { Id } from '@_types/common'
+import { ScriptSource } from '@_types/Scripting'
+import { MultisearchHeader } from '@global/msearch/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id } from '@_types/common'
-import { MultisearchHeader } from '@global/msearch/types'
 
 /** @codegen_names header, body */
 export type RequestItem = MultisearchHeader | TemplateConfig
@@ -31,7 +32,7 @@ export class TemplateConfig {
    * @server_default false */
   explain?: boolean
   /**
-   * ID of the search template to use. If no source is specified,
+   * The ID of the search template to use. If no `source` is specified,
    * this parameter is required.
    */
   id?: Id
@@ -47,8 +48,8 @@ export class TemplateConfig {
   profile?: boolean
   /**
    * An inline search template. Supports the same parameters as the search API's
-   * request body. Also supports Mustache variables. If no id is specified, this
+   * request body. It also supports Mustache variables. If no `id` is specified, this
    * parameter is required.
    */
-  source?: string
+  source?: ScriptSource
 }

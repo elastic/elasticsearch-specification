@@ -44,7 +44,6 @@ import {
   modelBehaviors,
   modelEnumDeclaration,
   modelGenerics,
-  modelImplements,
   modelInherits,
   modelProperty,
   modelType,
@@ -54,7 +53,7 @@ import {
   verifyUniqueness,
   parseJsDocTags,
   deepEqual,
-  sourceLocation, sortTypeDefinitions
+  sourceLocation, sortTypeDefinitions, parseDeprecation
 } from './utils'
 
 const jsonSpec = buildJsonSpec()
@@ -68,6 +67,8 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
       name: api,
       description: spec.documentation.description,
       docUrl: spec.documentation.url,
+      docTag: spec.docTag,
+      extDocUrl: spec.externalDocs?.url,
       // Setting these values by default should be removed
       // when we no longer use rest-api-spec stubs as the
       // source of truth for stability/visibility.
@@ -77,8 +78,6 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
           visibility: spec.visibility
         }
       },
-      stability: spec.stability,
-      visibility: spec.visibility,
       request: null,
       requestBodyRequired: Boolean(spec.body?.required),
       response: null,
@@ -91,7 +90,7 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
       })
     }
     if (typeof spec.feature_flag === 'string') {
-      map[api].featureFlag = spec.feature_flag
+      map[api].availability.stack.featureFlag = spec.feature_flag
     }
   }
   return map
@@ -211,6 +210,49 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       if (mapping == null) {
         throw new Error(`Cannot find url template for ${namespace}, very likely the specification folder does not follow the rest-api-spec`)
       }
+
+      let pathMember: Node | null = null
+      let bodyProperties: model.Property[] = []
+      let bodyValue: model.ValueOf | null = null
+      let bodyMember: Node | null = null
+
+      // collect path/query/body properties
+      for (const member of declaration.getMembers()) {
+        // we are visiting `urls`, `path_parts, `query_parameters` or `body`
+        assert(
+          member,
+          Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
+          'Class and interfaces can only have property declarations or signatures'
+        )
+        const name = member.getName()
+        if (name === 'urls') {
+          // Overwrite the endpoint urls read from the json-rest-spec
+          // TODO: once all spec files are using it, make it mandatory.
+          mapping.urls = visitUrls(member)
+        } else if (name === 'path_parts') {
+          const property = visitRequestOrResponseProperty(member)
+          assert(member, property.properties.length > 0, 'There is no need to declare an empty object path_parts, just remove the path_parts declaration.')
+          pathMember = member
+          type.path = property.properties
+        } else if (name === 'query_parameters') {
+          const property = visitRequestOrResponseProperty(member)
+          assert(member, property.properties.length > 0, 'There is no need to declare an empty object query_parameters, just remove the query_parameters declaration.')
+          type.query = property.properties
+        } else if (name === 'body') {
+          const property = visitRequestOrResponseProperty(member)
+          bodyMember = member
+          if (property.valueOf != null) {
+            bodyValue = property.valueOf
+          } else {
+            assert(member, property.properties.length > 0, 'There is no need to declare an empty object body, just remove the body declaration.')
+            bodyProperties = property.properties
+          }
+        } else {
+          assert(member, false, `Unknown request property: ${name}`)
+        }
+      }
+
+      // validate path properties
       // list of unique dynamic parameters
       const urlTemplateParams = [...new Set(
         mapping.urls.flatMap(url => url.path.split('/')
@@ -220,46 +262,6 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       )]
       const methods = [...new Set(mapping.urls.flatMap(url => url.methods))]
 
-      let pathMember: Node | null = null
-      let bodyProperties: model.Property[] = []
-      let bodyValue: model.ValueOf | null = null
-      let bodyMember: Node | null = null
-
-      // collect path/query/body properties
-      for (const member of declaration.getMembers()) {
-        // we are visiting `path_parts, `query_parameters` or `body`
-        assert(
-          member,
-          Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
-          'Class and interfaces can only have property declarations or signatures'
-        )
-        const property = visitRequestOrResponseProperty(member)
-        if (property.name === 'path_parts') {
-          assert(member, property.properties.length > 0, 'There is no need to declare an empty object path_parts, just remove the path_parts declaration.')
-          pathMember = member
-          type.path = property.properties
-        } else if (property.name === 'query_parameters') {
-          assert(member, property.properties.length > 0, 'There is no need to declare an empty object query_parameters, just remove the query_parameters declaration.')
-          type.query = property.properties
-        } else if (property.name === 'body') {
-          bodyMember = member
-          assert(
-            member,
-            methods.some(method => ['POST', 'PUT', 'DELETE'].includes(method)),
-            `${namespace}.${name} can't have a body, allowed methods: ${methods.join(', ')}`
-          )
-          if (property.valueOf != null) {
-            bodyValue = property.valueOf
-          } else {
-            assert(member, property.properties.length > 0, 'There is no need to declare an empty object body, just remove the body declaration.')
-            bodyProperties = property.properties
-          }
-        } else {
-          assert(member, false, `Unknown request property: ${property.name}`)
-        }
-      }
-
-      // validate path properties
       for (const part of type.path) {
         assert(
           pathMember as Node,
@@ -283,6 +285,13 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       }
 
       // validate body
+      if (bodyMember != null) {
+        assert(
+          bodyMember,
+          methods.some(method => ['POST', 'PUT', 'DELETE'].includes(method)),
+            `${namespace}.${name} can't have a body, allowed methods: ${methods.join(', ')}`
+        )
+      }
       // the body can either be a value (eg Array<string> or an object with properties)
       if (bodyValue != null) {
         // Propagate required body value nature based on TS question token being present.
@@ -374,7 +383,17 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
             if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
               type.body = { kind: 'no_body' }
             } else {
-              type.body = { kind: 'value', value: property.valueOf }
+              const tags = parseJsDocTags((member as PropertySignature).getJsDocs())
+              assert(
+                member as Node,
+                tags.codegen_name != null,
+                'You should configure a body @codegen_name'
+              )
+              type.body = {
+                kind: 'value',
+                value: property.valueOf,
+                codegenName: tags.codegen_name
+              }
             }
           } else {
             type.body = { kind: 'properties', properties: property.properties }
@@ -459,7 +478,8 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       properties: new Array<model.Property>()
     }
 
-    hoistTypeAnnotations(type, declaration.getJsDocs())
+    const jsDocs = declaration.getJsDocs()
+    hoistTypeAnnotations(type, jsDocs)
 
     const variant = parseVariantNameTag(declaration.getJsDocs())
     if (typeof variant === 'string') {
@@ -479,15 +499,25 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
         'Class and interfaces can only have property declarations or signatures'
       )
-      const property = modelProperty(member)
-      if (type.variants?.kind === 'container' && property.containerProperty == null) {
-        assert(
-          member,
-          !property.required,
-          'All @variants container properties must be optional'
-        )
+      try {
+        const property = modelProperty(member)
+        if (type.variants?.kind === 'container' && property.containerProperty == null) {
+          assert(
+            member,
+            !property.required,
+            'All @variants container properties must be optional'
+          )
+        }
+        type.properties.push(property)
+      } catch (e) {
+        const name = declaration.getName()
+        if (name !== undefined) {
+          console.log(`failed to parse ${name}, reason:`, e.message)
+        } else {
+          console.log('failed to parse field, reason:', e.message)
+        }
+        process.exit(1)
       }
-      type.properties.push(property)
     }
 
     // The class or interface is extended, an extended class or interface could
@@ -522,9 +552,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     if (Node.isClassDeclaration(declaration)) {
       for (const implement of declaration.getImplements()) {
         if (isKnownBehavior(implement)) {
-          type.behaviors = (type.behaviors ?? []).concat(modelBehaviors(implement))
-        } else {
-          type.implements = (type.implements ?? []).concat(modelImplements(implement))
+          type.behaviors = (type.behaviors ?? []).concat(modelBehaviors(implement, jsDocs))
         }
       }
     }
@@ -578,4 +606,81 @@ function visitRequestOrResponseProperty (member: PropertyDeclaration | PropertyS
   }
 
   return { name, properties, valueOf }
+}
+
+/**
+ * Parse the 'urls' property of a request definition. Format is:
+ * ```
+ * urls: [
+ *   {
+ *     /** @deprecated 1.2.3 Use something else
+ *     path: '/some/path',
+ *     methods: ["GET", "POST"]
+ *   }
+ * ]
+ * ```
+ */
+function visitUrls (member: PropertyDeclaration | PropertySignature): model.UrlTemplate[] {
+  const value = member.getTypeNode()
+
+  // Literal arrays are exposed as tuples by ts-morph
+  assert(value, Node.isTupleTypeNode(value), '"urls" should be an array')
+
+  const result: model.UrlTemplate[] = []
+
+  value.forEachChild(urlNode => {
+    assert(urlNode, Node.isTypeLiteral(urlNode), '"urls" members should be objects')
+
+    const urlTemplate: any = {}
+
+    urlNode.forEachChild(node => {
+      assert(node, Node.isPropertySignature(node), "Expecting 'path' and 'methods' properties")
+
+      const name = node.getName()
+      const propValue = node.getTypeNode()
+
+      if (name === 'path') {
+        assert(propValue, Node.isLiteralTypeNode(propValue), '"path" should be a string')
+
+        const pathLit = propValue.getLiteral()
+        assert(pathLit, Node.isStringLiteral(pathLit), '"path" should be a string')
+
+        urlTemplate.path = pathLit.getLiteralValue()
+
+        // Deprecation
+        const jsDoc = node.getJsDocs()
+        const tags = parseJsDocTags(jsDoc)
+        const deprecation = parseDeprecation(tags, jsDoc)
+        if (deprecation != null) {
+          urlTemplate.deprecation = deprecation
+        }
+        if (Object.keys(tags).length > 0) {
+          assert(jsDoc, false, `Unknown annotations: ${Object.keys(tags).join(', ')}`)
+        }
+      } else if (name === 'methods') {
+        assert(propValue, Node.isTupleTypeNode(propValue), '"methods" should be an array')
+
+        const methods: string[] = []
+        propValue.forEachChild(node => {
+          assert(node, Node.isLiteralTypeNode(node), '"methods" should contain strings')
+
+          const nodeLit = node.getLiteral()
+          assert(nodeLit, Node.isStringLiteral(nodeLit), '"methods" should contain strings')
+
+          methods.push(nodeLit.getLiteralValue())
+        })
+        assert(node, methods.length > 0, "'methods' should not be empty")
+        urlTemplate.methods = methods
+      } else {
+        assert(node, false, "Expecting 'path' or 'methods'")
+      }
+    })
+
+    assert(urlTemplate, urlTemplate.path, "Missing required property 'path'")
+    assert(urlTemplate, urlTemplate.methods, "Missing required property 'methods'")
+
+    result.push(urlTemplate)
+  })
+
+  return result
 }

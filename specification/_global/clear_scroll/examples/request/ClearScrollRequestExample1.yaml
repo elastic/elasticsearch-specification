@@ -1,0 +1,8 @@
+# summary:
+method_request: DELETE /_search/scroll
+description: Run `DELETE /_search/scroll` to clear the search context and results for a scrolling search.
+# type: request
+value: |-
+  {
+    "scroll_id": "DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ=="
+  }

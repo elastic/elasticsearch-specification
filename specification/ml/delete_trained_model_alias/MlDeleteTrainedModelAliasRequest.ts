@@ -21,7 +21,8 @@ import { RequestBase } from '@_types/Base'
 import { Id, Name } from '@_types/common'
 
 /**
- * Deletes a trained model alias.
+ * Delete a trained model alias.
+ *
  * This API deletes an existing model alias that refers to a trained model. If
  * the model alias is missing or refers to a model other than the one identified
  * by the `model_id`, this API returns an error.
@@ -29,8 +30,16 @@ import { Id, Name } from '@_types/common'
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml trained model
+ * @doc_id delete-trained-models-aliases
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/model_aliases/{model_alias}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The model alias to delete.

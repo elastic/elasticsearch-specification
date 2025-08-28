@@ -18,8 +18,8 @@
  */
 
 import { ErrorCause } from '@_types/Errors'
-import { TaskInfo } from '../_types/TaskInfo'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { TaskInfo } from '../_types/TaskInfo'
 
 export class Response {
   body: {

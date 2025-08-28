@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { LicenseStatus, LicenseType } from '@license/_types/License'
 import { VersionString } from '@_types/common'
 import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
+import { LicenseStatus, LicenseType } from '@license/_types/License'
 
 export class BuildInformation {
   date: DateTime
@@ -43,17 +43,22 @@ export class Features {
   aggregate_metric: Feature
   analytics: Feature
   ccr: Feature
-  data_frame?: Feature
-  data_science?: Feature
   data_streams: Feature
   data_tiers: Feature
   enrich: Feature
+  /**
+   * @availability stack since=8.8.0
+   */
+  enterprise_search: Feature
   eql: Feature
-  flattened?: Feature
-  frozen_indices: Feature
+  /**
+   * @availability stack since=8.14.0
+   */
+  esql: Feature
   graph: Feature
   ilm: Feature
   logstash: Feature
+  logsdb: Feature
   ml: Feature
   monitoring: Feature
   rollup: Feature
@@ -64,12 +69,14 @@ export class Features {
   spatial: Feature
   sql: Feature
   transform: Feature
-  vectors?: Feature
+  /**
+   * @availability stack since=8.7.0
+   */
+  universal_profiling: Feature
   voting_only: Feature
   watcher: Feature
   /**
    * @availability stack since=8.2.0
-   * @availability serverless
    */
   archive: Feature
 }

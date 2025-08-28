@@ -26,14 +26,30 @@ import {
   Name,
   Uuid
 } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'
 import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 
 enum ManagedBy {
   ilm = 'Index Lifecycle Management',
   // This should have been written with capital letters, it's a known typo and should not be corrected.
   datastream = 'Data stream lifecycle',
   unmanaged = 'Unmanaged'
+}
+
+// Available index modes (for the `index.mode` setting) See the `IndexMode` class in Elasticsearch for the options.
+export enum IndexMode {
+  standard,
+  time_series,
+  logsdb,
+  lookup
+}
+
+export class FailureStore {
+  enabled: boolean
+  indices: DataStreamIndex[]
+  rollover_on_write: boolean
 }
 
 export class DataStream {
@@ -47,6 +63,11 @@ export class DataStream {
    *  If `true`, the data stream allows custom routing on write request.
    */
   allow_custom_routing?: boolean
+  /**
+   * Information about failure store backing indices
+   *
+   */
+  failure_store?: FailureStore
   /**
    * Current generation for the data stream. This number acts as a cumulative count of the stream’s rollovers, starting at 1.
    */
@@ -76,7 +97,7 @@ export class DataStream {
    */
   indices: DataStreamIndex[]
   /**
-   * Contains the configuration for the data lifecycle management of this data stream.
+   * Contains the configuration for the data stream lifecycle of this data stream.
    * @availability stack since=8.11.0 stability=stable
    * @availability serverless stability=stable
    */
@@ -89,6 +110,20 @@ export class DataStream {
    *  If `true`, the data stream is created and managed by cross-cluster replication and the local cluster can not write into this data stream or change its mappings.
    */
   replicated?: boolean
+  /**
+   * If `true`, the next write to this data stream will trigger a rollover first and the document will be indexed in the new backing index. If the rollover fails the indexing request will fail too.
+   */
+  rollover_on_write: boolean
+  /**
+   * The settings specific to this data stream that will take precedence over the settings in the matching index
+   * template.
+   */
+  settings: IndexSettings
+  /**
+   * The mappings specific to this data stream that will take precedence over the mappings in the matching index
+   * template.
+   */
+  mappings?: TypeMapping
   /**
    * Health status of the data stream.
    * This health status is based on the state of the primary and replica shards of the stream’s backing indices.
@@ -109,6 +144,10 @@ export class DataStream {
    * Information about the `@timestamp` field in the data stream.
    */
   timestamp_field: DataStreamTimestampField
+  /**
+   * The index mode for the data stream that will be used for newly created backing indices.
+   */
+  index_mode?: IndexMode
 }
 
 export class DataStreamTimestampField {
@@ -134,13 +173,18 @@ export class DataStreamIndex {
   /**
    * Name of the lifecycle system that's currently managing this backing index.
    */
-  managed_by: ManagedBy
+  managed_by?: ManagedBy
   /**
    * Indicates if ILM should take precedence over DSL in case both are configured to manage this index.
    */
-  prefer_ilm: boolean
+  prefer_ilm?: boolean
+  /**
+   * The index mode of this backing index of the data stream.
+   */
+  index_mode?: IndexMode
 }
 
 export class DataStreamVisibility {
   hidden?: boolean
+  allow_custom_routing?: boolean
 }

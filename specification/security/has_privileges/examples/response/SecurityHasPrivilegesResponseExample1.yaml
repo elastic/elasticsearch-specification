@@ -1,0 +1,33 @@
+# summary:
+description: A successful response from `GET /_security/user/_has_privileges`, which lists the privileges for the `rdeniro` user.
+# type: response
+# response_code:
+value: |-
+  {
+    "username": "rdeniro",
+    "has_all_requested" : false,
+    "cluster" : {
+      "monitor" : true,
+      "manage" : false
+    },
+    "index" : {
+      "suppliers" : {
+        "read" : true
+      },
+      "products" : {
+        "read" : true
+      },
+      "inventory" : {
+        "read" : true,
+        "write" : false
+      }
+    },
+    "application" : {
+      "inventory_manager" : {
+        "product/1852563" : {
+          "read": false,
+          "data:write/inventory": false
+        }
+      }
+    }
+  }

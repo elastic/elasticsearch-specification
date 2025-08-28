@@ -20,16 +20,32 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Logout of SAML.
+ *
  * Submits a request to invalidate an access token and refresh token.
+ *
+ * NOTE: This API is intended for use by custom web applications other than Kibana.
+ * If you are using Kibana, refer to the documentation for configuring SAML single-sign-on on the Elastic Stack.
+ *
+ * This API invalidates the tokens that were generated for a user by the SAML authenticate API.
+ * If the SAML realm in Elasticsearch is configured accordingly and the SAML IdP supports this, the Elasticsearch response contains a URL to redirect the user to the IdP that contains a SAML logout request (starting an SP-initiated SAML Single Logout).
  * @rest_spec_name security.saml_logout
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id security-api-saml-logout
+ * @ext_doc_id security-saml-guide
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/saml/logout'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * The access token that was returned as a response to calling the SAML authenticate API.
-     * Alternatively, the most recent token that was received after refreshing the original one by using a refresh_token.
+     * Alternatively, the most recent token that was received after refreshing the original one by using a `refresh_token`.
      */
     token: string
     /**

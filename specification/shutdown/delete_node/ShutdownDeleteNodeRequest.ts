@@ -22,10 +22,27 @@ import { NodeId } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
 
 /**
+ * Cancel node shutdown preparations.
+ * Remove a node from the shutdown list so it can resume normal operations.
+ * You must explicitly clear the shutdown request when a node rejoins the cluster or when a node has permanently left the cluster.
+ * Shutdown requests are never removed automatically by Elasticsearch.
+ *
+ * NOTE: This feature is designed for indirect use by Elastic Cloud, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes.
+ * Direct use is not supported.
+ *
+ * If the operator privileges feature is enabled, you must be an operator to use this API.
  * @rest_spec_name shutdown.delete_node
  * @availability stack since=7.13.0 stability=stable
+ * @cluster_privileges manage
+ * @doc_id nodes-api-shutdown-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_nodes/{node_id}/shutdown'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     node_id: NodeId
   }

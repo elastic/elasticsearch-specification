@@ -19,7 +19,7 @@
 
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { Duration, DateTime } from '@_types/Time'
+import { DateTime } from '@_types/Time'
 import { DiscoveryNode } from '@ml/_types/DiscoveryNode'
 
 export class ModelSnapshot {
@@ -64,6 +64,7 @@ export class ModelSizeStats {
   model_bytes: ByteSize
   model_bytes_exceeded?: ByteSize
   model_bytes_memory_limit?: ByteSize
+  output_memory_allocator_bytes?: ByteSize
   peak_model_bytes?: ByteSize
   assignment_memory_basis?: string
   result_type: string

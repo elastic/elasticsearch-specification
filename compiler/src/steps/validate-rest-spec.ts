@@ -21,6 +21,7 @@ import assert from 'assert'
 import * as model from '../model/metamodel'
 import { JsonSpec } from '../model/json-spec'
 import { ValidationErrors } from '../validation-errors'
+import { deepEqual } from '../model/utils'
 
 // This code can be simplified once https://github.com/tc39/proposal-set-methods is available
 
@@ -46,6 +47,30 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
       const spec = jsonSpec.get(endpoint.name)
       assert(spec, `Can't find the json spec for ${endpoint.name}`)
 
+      // Check URL paths and methods
+      if (spec.url.paths.length !== endpoint.urls.length) {
+        errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: different number of urls in the json spec`)
+      } else {
+        for (const modelUrl of endpoint.urls) {
+          // URL path
+          const restSpecUrl = spec.url.paths.find(path => path.path === modelUrl.path)
+          if (restSpecUrl == null) {
+            errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: url path '${modelUrl.path}' not found in the json spec`)
+          } else {
+            // URL methods
+            if (!deepEqual([...restSpecUrl.methods].sort(), [...modelUrl.methods].sort())) {
+              errors.addEndpointError(endpoint.name, 'request', `${modelUrl.path}: different http methods in the json spec`)
+            }
+
+            // Deprecation.
+            if ((restSpecUrl.deprecated != null) !== (modelUrl.deprecation != null)) {
+              errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: different deprecation in the json spec`)
+            }
+          }
+        }
+      }
+
+      // Check url parts
       const urlParts = Array.from(new Set(spec.url.paths
         .filter(path => path.parts != null)
         .flatMap(path => {
@@ -97,7 +122,8 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
         }
       }
 
-      if (spec.params != null) {
+      // fleet API are deliberately undocumented in rest-api-spec)
+      if (spec.params != null && !endpoint.name.startsWith('fleet.')) {
         const params = Object.keys(spec.params)
         const queryProperties = requestProperties.query.map(property => property.name)
         // are all the parameters in the request definition present in the json spec?
@@ -160,27 +186,27 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
       if (definition.body.kind !== 'no_body') {
         body = Body.yesBody
       }
+
+      if (definition.attachedBehaviors != null) {
+        for (const attachedBehavior of definition.attachedBehaviors) {
+          const type_ = getDefinition({
+            namespace: '_spec_utils',
+            name: attachedBehavior
+          })
+          if (
+            type_.kind === 'interface' &&
+            // allowing CommonQueryParameters too generates many errors
+            attachedBehavior === 'CommonCatQueryParameters'
+          ) {
+            for (const prop of type_.properties) {
+              query.push(prop)
+            }
+          }
+        }
+      }
     } else {
       if (definition.properties.length > 0) {
         query.push(...definition.properties)
-      }
-    }
-
-    if (Array.isArray(definition.inherits)) {
-      const inherits = definition.inherits.map(inherit => getDefinition(inherit.type))
-      for (const inherit of inherits) {
-        const properties = getProperties(inherit)
-        if (properties.path.length > 0) {
-          path.push(...properties.path)
-        }
-
-        if (properties.query.length > 0) {
-          query.push(...properties.query)
-        }
-
-        if (properties.body === Body.yesBody) {
-          body = properties.body
-        }
       }
     }
 

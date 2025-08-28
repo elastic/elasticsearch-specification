@@ -1,0 +1,34 @@
+# summary:
+description: >
+  A successful response from `DELETE /_security/api_key`.
+# type: response
+# response_code:
+value: |-
+  {
+    "invalidated_api_keys": [ 
+      "api-key-id-1"
+    ],
+    "previously_invalidated_api_keys": [ 
+      "api-key-id-2",
+      "api-key-id-3"
+    ],
+    "error_count": 2, 
+    "error_details": [ 
+      {
+        "type": "exception",
+        "reason": "error occurred while invalidating api keys",
+        "caused_by": {
+          "type": "illegal_argument_exception",
+          "reason": "invalid api key id"
+        }
+      },
+      {
+        "type": "exception",
+        "reason": "error occurred while invalidating api keys",
+        "caused_by": {
+          "type": "illegal_argument_exception",
+          "reason": "invalid api key id"
+        }
+      }
+    ]
+  }

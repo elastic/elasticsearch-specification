@@ -17,22 +17,15 @@
  * under the License.
  */
 
-import { Duration } from '@_types/Time'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RolloverConditions } from '@indices/rollover/types'
+import { ByteSize, EmptyObject } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
+import { Duration, DurationLarge } from '@_types/Time'
+import { RolloverConditions } from '@indices/rollover/types'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Phase {
   actions?: Actions
-  /**
-   * @es_quirk output as a millis number in XPack usage stats, which cannot roundtrip with a Duration as it requires a unit.
-   */
-  min_age?: Duration | long
-  /**
-   * @availability stack since=7.16.0
-   * @availability serverless
-   */
-  configurations?: Configurations
+  min_age?: Duration
 }
 
 export class Phases {
@@ -43,20 +36,130 @@ export class Phases {
   warm?: Phase
 }
 
-// TODO. This is a variants container.
-// See https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-index-lifecycle.html#ilm-phase-actions
-export type Actions = UserDefinedValue
+export class Actions {
+  /**
+   * Phases allowed: warm, cold.
+   */
+  allocate?: AllocateAction
+  /**
+   * Phases allowed: delete.
+   */
+  delete?: DeleteAction
+  /**
+   * Phases allowed: hot, warm, cold.
+   */
+  downsample?: DownsampleAction
 
-export class Configurations {
-  rollover?: RolloverConditions
-  forcemerge?: ForceMergeConfiguration
-  shrink?: ShrinkConfiguration
+  /**
+   * The freeze action is a noop in 8.x
+   * @deprecated 7.0.0 */
+  freeze?: EmptyObject
+  /**
+   * Phases allowed: hot, warm.
+   */
+  forcemerge?: ForceMergeAction
+  /**
+   * Phases allowed: warm, cold.
+   */
+  migrate?: MigrateAction
+  /**
+   * Phases allowed: hot, warm, cold.
+   */
+  readonly?: EmptyObject
+  /**
+   * Phases allowed: hot.
+   */
+  rollover?: RolloverAction
+  /**
+   * Phases allowed: hot, warm, cold.
+   */
+  set_priority?: SetPriorityAction
+  /**
+   * Phases allowed: hot, cold, frozen.
+   */
+  searchable_snapshot?: SearchableSnapshotAction
+  /**
+   * Phases allowed: hot, warm.
+   */
+  shrink?: ShrinkAction
+  /**
+   * Phases allowed: hot, warm, cold, frozen.
+   */
+  unfollow?: EmptyObject
+  /**
+   * Phases allowed: delete.
+   */
+  wait_for_snapshot?: WaitForSnapshotAction
+}
+
+export class SetPriorityAction {
+  priority?: integer
+}
+
+export class RolloverAction {
+  max_size?: ByteSize
+  max_primary_shard_size?: ByteSize
+  max_age?: Duration
+  max_docs?: long
+  max_primary_shard_docs?: long
+  min_size?: ByteSize
+  min_primary_shard_size?: ByteSize
+  min_age?: Duration
+  min_docs?: long
+  min_primary_shard_docs?: long
+}
+
+export class DownsampleAction {
+  fixed_interval: DurationLarge
+  wait_timeout?: Duration
+}
+
+export class ShrinkAction {
+  number_of_shards?: integer
+  max_primary_shard_size?: ByteSize
+  allow_write_after_shrink?: boolean
+}
+
+export class ForceMergeAction {
+  max_num_segments: integer
+  index_codec?: string
+}
+
+export class SearchableSnapshotAction {
+  snapshot_repository: string
+  force_merge_index?: boolean
+}
+
+export class AllocateAction {
+  number_of_replicas?: integer
+  total_shards_per_node?: integer
+  include?: Dictionary<string, string>
+  exclude?: Dictionary<string, string>
+  require?: Dictionary<string, string>
+}
+
+export class MigrateAction {
+  enabled?: boolean
+}
+
+export class WaitForSnapshotAction {
+  policy: string
+}
+
+export class DeleteAction {
+  delete_searchable_snapshot?: boolean
+}
+
+export class ShrinkConfiguration {
+  number_of_shards: integer
 }
 
 export class ForceMergeConfiguration {
   max_num_segments: integer
 }
 
-export class ShrinkConfiguration {
-  number_of_shards: integer
+export class Configurations {
+  rollover?: RolloverConditions
+  forcemerge?: ForceMergeConfiguration
+  shrink?: ShrinkConfiguration
 }

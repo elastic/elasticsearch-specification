@@ -1,0 +1,16 @@
+# summary:
+method_request: 'POST my-index-*/_field_caps?fields=rating'
+description: >
+  Run `POST my-index-*/_field_caps?fields=rating` to get field capabilities and filter indices with a query. Indices that rewrite
+  the provided filter to `match_none` on every shard will be filtered from the response.
+# type: "request"
+value: |-
+  {
+    "index_filter": {
+      "range": {
+        "@timestamp": {
+          "gte": "2018"
+        }
+      }
+    }
+  }

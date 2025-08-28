@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
 import { ByteSize } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 export class IndicesRecoverySettings {
   compress: boolean

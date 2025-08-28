@@ -22,14 +22,26 @@ import { Ids } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Retrieves filters.
+ * Get filters.
  * You can get a single filter or all filters.
  * @rest_spec_name ml.get_filters
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-get-filter
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/filters'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/filters/{filter_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A string that uniquely identifies a filter.

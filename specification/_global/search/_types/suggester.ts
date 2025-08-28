@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   Fuzziness,
@@ -29,10 +27,13 @@ import {
 } from '@_types/common'
 import { GeoHashPrecision, GeoLocation } from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
+import { ScriptSource } from '@_types/Scripting'
 import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
- * @variants external
+ * @variants typed_keys_quirk
  */
 export type Suggest<TDocument> =
   | CompletionSuggest<TDocument>
@@ -98,6 +99,9 @@ export class TermSuggestOption {
   collate_match?: boolean
 }
 
+/**
+ * @behavior_meta AdditionalProperties fieldname=suggesters description="The named suggesters"
+ */
 export class Suggester implements AdditionalProperties<string, FieldSuggester> {
   /** Global suggest text, to avoid repetition when the same text is used in several suggesters */
   text?: string
@@ -350,7 +354,7 @@ export class PhraseSuggestCollateQuery {
   /**
    * The query source.
    */
-  source?: string
+  source?: ScriptSource
 }
 
 export class PhraseSuggester extends SuggesterBase {

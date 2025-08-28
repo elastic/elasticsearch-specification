@@ -17,25 +17,51 @@
  * under the License.
  */
 
+import {
+  Bytes,
+  ExpandWildcards,
+  HealthStatus,
+  Indices,
+  Names
+} from '@_types/common'
+import { Duration, TimeUnit } from '@_types/Time'
 import { CatRequestBase } from '@cat/_types/CatBase'
-import { Bytes, ExpandWildcards, HealthStatus, Indices } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
 
 /**
- * Returns high-level information about indices in a cluster, including backing indices for data streams.
- * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console.
- * They are not intended for use by applications. For application consumption, use the get index API.
- * Use the cat indices API to get the following information for each index in a cluster: shard count; document count; deleted document count; primary store size; total store size of all shards, including shard replicas.
+ * Get index information.
+ *
+ * Get high-level information about indices in a cluster, including backing indices for data streams.
+ *
+ * Use this request to get the following information for each index in a cluster:
+ * - shard count
+ * - document count
+ * - deleted document count
+ * - primary store size
+ * - total store size of all shards, including shard replicas
+ *
  * These metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.
  * To get an accurate count of Elasticsearch documents, use the cat count or count APIs.
+ *
+ * CAT APIs are only intended for human consumption using the command line or Kibana console.
+ * They are not intended for use by applications. For application consumption, use an index endpoint.
  * @rest_spec_name cat.indices
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat-indices
  * @cluster_privileges monitor
  * @index_privileges monitor
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/indices'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/indices/{index}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.
@@ -64,5 +90,20 @@ export interface Request extends CatRequestBase {
     pri?: boolean
     /** The unit used to display time values. */
     time?: TimeUnit
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * List of columns to appear in the response. Supports simple wildcards.
+     */
+    h?: Names
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
   }
 }

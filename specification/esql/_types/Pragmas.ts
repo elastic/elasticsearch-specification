@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
-import { Duration } from '@_types/Time'
-
 export enum DataPartitioning {
   SHARD,
   SEGMENT,

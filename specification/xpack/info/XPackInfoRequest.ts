@@ -20,23 +20,43 @@
 import { RequestBase } from '@_types/Base'
 
 /**
- * Provides general information about the installed X-Pack features.
+ * Get information.
+ * The information provided by the API includes:
+ *
+ * * Build information including the build number and timestamp.
+ * * License information about the currently installed license.
+ * * Feature information for the features that are currently enabled and available under the current license.
  * @rest_spec_name xpack.info
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
- * @cluster_privileges monitor,manage
+ * @cluster_privileges monitor
+ * @doc_id info-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_xpack'
+      methods: ['GET']
+    }
+  ]
   query_parameters: {
     /**
-     * A comma-separated list of the information categories to include in the response. For example, `build,license,features`.
+     * A comma-separated list of the information categories to include in the response.
+     * For example, `build,license,features`.
      */
-    categories?: string[]
+    categories?: XPackCategory[]
     accept_enterprise?: boolean
     /**
-     * Defines whether additional human-readable information is included in the response. In particular, it adds descriptions and a tag line.
+     * Defines whether additional human-readable information is included in the response.
+     * In particular, it adds descriptions and a tag line.
      * @server_default true
      */
     human?: boolean
   }
+}
+
+export enum XPackCategory {
+  build,
+  features,
+  license
 }

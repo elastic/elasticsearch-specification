@@ -17,18 +17,19 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import {
   DataframeAnalysisAnalyzedFields,
   DataframeAnalysisContainer,
   DataframeAnalyticsDestination,
   DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
-import { RequestBase } from '@_types/Base'
-import { ByteSize, Id } from '@_types/common'
-import { integer } from '@_types/Numeric'
 
 /**
- * Explains a data frame analytics config.
+ * Explain data frame analytics config.
+ *
  * This API provides explanations for a data frame analytics config that either
  * exists already or one that has not been created yet. The following
  * explanations are provided:
@@ -39,8 +40,20 @@ import { integer } from '@_types/Numeric'
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
+ * @doc_tag ml data frame
+ * @doc_id explain-dfanalytics
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/data_frame/analytics/_explain'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_ml/data_frame/analytics/{id}/_explain'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the data frame analytics job. This identifier can contain

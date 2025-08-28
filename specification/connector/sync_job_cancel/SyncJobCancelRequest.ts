@@ -20,13 +20,22 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Cancels a connector sync job.
+ * Cancel a connector sync job.
+ *
+ * Cancel a connector sync job, which sets the status to cancelling and updates `cancellation_requested_at` to the current time.
+ * The connector service is then responsible for setting the status of connector sync jobs to cancelled.
  * @rest_spec_name connector.sync_job_cancel
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-sync-job-cancel
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/_sync_job/{connector_sync_job_id}/_cancel'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the connector sync job

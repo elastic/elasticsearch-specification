@@ -1,0 +1,19 @@
+summary: A latest transform
+method_request: PUT _transform/ecommerce_transform2
+description: Run `PUT _transform/ecommerce_transform2` to create a transform that uses the latest method.
+# type: request
+value:
+  source:
+    index: kibana_sample_data_ecommerce
+  latest:
+    unique_key:
+      - customer_id
+    sort: order_date
+  description: Latest order for each customer
+  dest:
+    index: kibana_sample_data_ecommerce_transform2
+  frequency: 5m
+  sync:
+    time:
+      field: order_date
+      delay: 60s

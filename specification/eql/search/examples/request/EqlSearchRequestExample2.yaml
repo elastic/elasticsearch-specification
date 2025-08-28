@@ -1,0 +1,16 @@
+summary: Sequence query
+method_request: GET /my-data-stream/_eql/search
+description: >
+  Run `GET /my-data-stream/_eql/search` to search for a sequence of events. The sequence starts with an event with an
+  `event.category` of `file`, a `file.name` of `cmd.exe`, and a `process.pid` other than `2013`. It is followed by an event with an
+  `event.category` of `process` and a `process.executable` that contains the substring `regsvr32`. These events must also share the
+  same `process.pid` value.
+# type: request
+value: |-
+  {
+    "query": """
+      sequence by process.pid
+        [ file where file.name == "cmd.exe" and process.pid != 2013 ]
+        [ process where stringContains(process.executable, "regsvr32") ]
+    """
+  }

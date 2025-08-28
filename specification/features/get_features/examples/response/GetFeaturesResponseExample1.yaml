@@ -1,0 +1,17 @@
+# summary:
+description: A successful response for retrieving a list of feature states that can be included when taking a snapshot.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "features": [
+      {
+        "name": "tasks",
+        "description": "Manages task results"
+      },
+      {
+        "name": "kibana",
+        "description": "Manages Kibana configuration and reports"
+      }
+    ]
+  }

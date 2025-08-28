@@ -1,0 +1,5 @@
+summary: 'A successful response for retrieving an autoscaling policy.'
+description: 'This may be a response to `GET /_autoscaling/policy/my_autoscaling_policy`.'
+# type: "response"
+# response_code: 200
+value: "{\n   \"roles\": <roles>,\n   \"deciders\": <deciders>\n}"

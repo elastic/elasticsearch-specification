@@ -49,6 +49,9 @@ export class CharFilterDetail {
 }
 
 // Additional properties are attributes that can be set by plugin-defined tokenizers
+/**
+ * @behavior_meta AdditionalProperties fieldname=attributes description="Additional tokenizer-specific attributes"
+ */
 export class ExplainAnalyzeToken
   implements AdditionalProperties<string, UserDefinedValue>
 {

@@ -1,0 +1,23 @@
+# summary:
+method_request: POST /_security/api_key/_bulk_update
+description: Assign new role descriptors and metadata and update the expiration time for two API keys.
+# type": "response",
+# response_code": 200,
+value:
+  ids:
+    - VuaCfGcBCdbkQm-e5aOx
+    - H3_AhoIBA9hmeQJdg7ij
+  role_descriptors:
+    role-a:
+      indices:
+        - names:
+            - '*'
+          privileges:
+            - write
+  metadata:
+    environment:
+      level: 2
+      trusted: true
+      tags:
+        - production
+  expiration: 30d

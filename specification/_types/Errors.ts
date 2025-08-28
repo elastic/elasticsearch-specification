@@ -17,14 +17,16 @@
  * under the License.
  */
 
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id, IndexName, NodeId } from './common'
 import { integer, long } from './Numeric'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { AdditionalProperties } from '@spec_utils/behaviors'
 
 /**
  * Cause and details about a request failure. This class defines the properties common to all error types.
  * Additional details are also provided, that depend on the error type.
+ *
+ * @behavior_meta AdditionalProperties fieldname=metadata description="Additional details about the error"
  */
 export class ErrorCause
   implements AdditionalProperties<string, UserDefinedValue>
@@ -34,9 +36,9 @@ export class ErrorCause
    */
   type: string
   /**
-   * A human-readable explanation of the error, in english
+   * A human-readable explanation of the error, in English.
    */
-  reason?: string
+  reason?: string | null
   /**
    * The server stack trace. Present only if the `error_trace=true` parameter was sent with the request.
    */
@@ -48,11 +50,15 @@ export class ErrorCause
 }
 
 export class ShardFailure {
+  /** @aliases _index */
   index?: IndexName
+  /** @aliases _node */
   node?: string
   reason: ErrorCause
-  shard: integer
+  /** @aliases _shard */
+  shard?: integer
   status?: string
+  primary?: boolean
 }
 
 export class BulkIndexByScrollFailure {
@@ -60,7 +66,6 @@ export class BulkIndexByScrollFailure {
   id: Id
   index: IndexName
   status: integer
-  type: string
 }
 
 export class TaskFailure {

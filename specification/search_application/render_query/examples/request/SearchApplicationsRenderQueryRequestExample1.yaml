@@ -1,0 +1,14 @@
+# summary:
+method_request: POST _application/search_application/my-app/_render_query
+description:
+  Run `POST _application/search_application/my-app/_render_query` to generate a query for a search application called
+  `my-app` that uses the search template.
+# type: request
+value:
+  params:
+    query_string: my first query
+    text_fields:
+      - name: title
+        boost: 5
+      - name: description
+        boost: 1

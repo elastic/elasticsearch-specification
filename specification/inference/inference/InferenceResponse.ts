@@ -20,5 +20,6 @@
 import { InferenceResult } from '@inference/_types/Results'
 
 export class Response {
+  /** @codegen_name result */
   body: InferenceResult
 }

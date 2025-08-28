@@ -21,13 +21,35 @@ import { RequestBase } from '@_types/Base'
 import { Name, Names, Refresh } from '@_types/common'
 
 /**
+ * Delete application privileges.
+ *
+ * To use this API, you must have one of the following privileges:
+ *
+ * * The `manage_security` cluster privilege (or a greater privilege such as `all`).
+ * * The "Manage Application Privileges" global privilege for the application being referenced in the request.
  * @rest_spec_name security.delete_privileges
  * @availability stack since=6.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_security
+ * @doc_id security-api-delete-privilege
+ * @ext_doc_id security-privileges
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/privilege/{application}/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
+    /**
+     * The name of the application.
+     * Application privileges are always associated with exactly one application.
+     */
     application: Name
+    /**
+     * The name of the privilege.
+     */
     name: Names
   }
   query_parameters: {

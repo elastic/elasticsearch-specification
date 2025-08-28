@@ -21,19 +21,33 @@ import { RequestBase } from '@_types/Base'
 import { Id, Name, Username } from '@_types/common'
 
 /**
- * Invalidates one or more API keys.
- * The `manage_api_key` privilege allows deleting any API keys.
- * The `manage_own_api_key` only allows deleting API keys that are owned by the user.
+ * Invalidate API keys.
+ *
+ * This API invalidates API keys created by the create API key or grant API key APIs.
+ * Invalidated API keys fail authentication, but they can still be viewed using the get API key information and query API key information APIs, for at least the configured retention period, until they are automatically deleted.
+ *
+ * To use this API, you must have at least the `manage_security`, `manage_api_key`, or `manage_own_api_key` cluster privileges.
+ * The `manage_security` privilege allows deleting any API key, including both REST and cross cluster API keys.
+ * The `manage_api_key` privilege allows deleting any REST API key, but not cross cluster API keys.
+ * The `manage_own_api_key` only allows deleting REST API keys that are owned by the user.
  * In addition, with the `manage_own_api_key` privilege, an invalidation request must be issued in one of the three formats:
+ *
  * - Set the parameter `owner=true`.
- * - Or, set both `username` and `realm_name` to match the user’s identity.
- * - Or, if the request is issued by an API key, i.e. an API key invalidates itself, specify its ID in the `ids` field.
+ * - Or, set both `username` and `realm_name` to match the user's identity.
+ * - Or, if the request is issued by an API key, that is to say an API key invalidates itself, specify its ID in the `ids` field.
  * @rest_spec_name security.invalidate_api_key
  * @availability stack since=6.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_api_key, manage_own_api_key
+ * @doc_id security-api-invalidate-api-key
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/api_key'
+      methods: ['DELETE']
+    }
+  ]
   body: {
     id?: Id
     /**
@@ -47,8 +61,10 @@ export interface Request extends RequestBase {
      */
     name?: Name
     /**
-     * Can be used to query API keys owned by the currently authenticated user.
+     * Query API keys owned by the currently authenticated user.
      * The `realm_name` or `username` parameters cannot be specified when this parameter is set to `true` as they are assumed to be the currently authenticated ones.
+     *
+     * NOTE: At least one of `ids`, `name`, `username`, and `realm_name` must be specified if `owner` is `false`.
      * @server_default false
      */
     owner?: boolean
@@ -59,7 +75,7 @@ export interface Request extends RequestBase {
     realm_name?: string
     /**
      * The username of a user.
-     * This parameter cannot be used with either `ids` or `name`, or when `owner` flag is set to `true`.
+     * This parameter cannot be used with either `ids` or `name` or when `owner` flag is set to `true`.
      */
     username?: Username
   }

@@ -22,13 +22,29 @@ import { Refresh } from '@_types/common'
 import { UserProfileId } from '@security/_types/UserProfile'
 
 /**
- * Disables a user profile so it's not visible in user profile searches.
+ * Disable a user profile.
+ *
+ * Disable user profiles so that they are not visible in user profile searches.
+ *
+ * NOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.
+ * Individual users and external applications should not call this API directly.
+ * Elastic reserves the right to change or remove this feature in future releases without prior notice.
+ *
+ * When you activate a user profile, its automatically enabled and visible in user profile searches. You can use the disable user profile API to disable a user profile so it’s not visible in these searches.
+ * To re-enable a disabled user profile, use the enable user profile API .
  * @rest_spec_name security.disable_user_profile
  * @availability stack since=8.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_user_profile
+ * @doc_id security-api-disable-user-profile
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/profile/{uid}/_disable'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Unique identifier for the user profile.
@@ -37,9 +53,9 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * If 'true', Elasticsearch refreshes the affected shards to make this operation
-     * visible to search, if 'wait_for' then wait for a refresh to make this operation
-     * visible to search, if 'false' do nothing with refreshes.
+     * If 'true', Elasticsearch refreshes the affected shards to make this operation visible to search.
+     * If 'wait_for', it waits for a refresh to make this operation visible to search.
+     * If 'false', it does nothing with refreshes.
      * @server_default false
      */
     refresh?: Refresh

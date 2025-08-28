@@ -1,0 +1,23 @@
+summary: Pipeline substitions
+method_request: POST /_ingest/_simulate
+description:
+  In this example the index `my-index` has a default pipeline called `my-pipeline` and a final pipeline called
+  `my-final-pipeline`. But a substitute definition of `my-pipeline` is provided in `pipeline_substitutions`. The substitute
+  `my-pipeline` will be used in place of the `my-pipeline` that is in the system, and then the `my-final-pipeline` that is already
+  defined in the system will run.
+# type: request
+value:
+  docs:
+    - _index: my-index
+      _id: '123'
+      _source:
+        foo: bar
+    - _index: my-index
+      _id: '456'
+      _source:
+        foo: rab
+  pipeline_substitutions:
+    my-pipeline:
+      processors:
+        - uppercase:
+            field: foo

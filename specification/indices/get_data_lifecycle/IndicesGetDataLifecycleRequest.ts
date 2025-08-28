@@ -18,15 +18,27 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, DataStreamNames } from '@_types/common'
+import { DataStreamNames, ExpandWildcards } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
- * Retrieves the data stream lifecycle configuration of one or more data streams.
+ * Get data stream lifecycles.
+ *
+ * Get the data stream lifecycle configuration of one or more data streams.
  * @rest_spec_name indices.get_data_lifecycle
  * @availability stack since=8.11.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag data stream
+ * @doc_id data-stream-get-lifecycle
+ * @ext_doc_id data-stream-lifecycle
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/{name}/_lifecycle'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams to limit the request.
@@ -39,7 +51,6 @@ export interface Request extends RequestBase {
     /**
      * Type of data stream that wildcard patterns can match.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -48,5 +59,10 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     include_defaults?: boolean
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
 }

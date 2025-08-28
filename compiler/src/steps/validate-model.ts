@@ -23,13 +23,6 @@ import { JsonSpec } from '../model/json-spec'
 import assert from 'assert'
 import { TypeName } from '../model/metamodel'
 
-// Superclasses (i.e. non-leaf types, who are inherited or implemented) that are ok to be used as field types because
-// they're used as definition reuse and not as polymorphic types.
-// See also validateIsLeafType() below.
-const allowedSuperclasses = new Set([
-  '_types:ErrorCause'
-])
-
 enum TypeDefKind {
   type,
   behavior
@@ -43,6 +36,8 @@ enum JsonEvent {
   object = 'object',
   array = 'array'
 }
+
+const privateNamespaces = ['_internal', 'profiling']
 
 /**
  * Validates the internal consistency of the model (doesn't check the json spec)
@@ -142,8 +137,8 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   const parentTypes = new Set<string>()
   for (const type of apiModel.types) {
     if (type.kind === 'request' || type.kind === 'interface') {
-      for (const parent of (type.implements ?? []).concat(type.inherits ?? [])) {
-        parentTypes.add(fqn(parent.type))
+      if (type.inherits != null) {
+        parentTypes.add(fqn(type.inherits.type))
       }
     }
   }
@@ -156,7 +151,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
   // Register builtin types
   for (const name of [
-    'string', 'boolean', 'number', 'null'
+    'string', 'boolean', 'number', 'null', 'void', 'binary'
   ]) {
     const typeName = {
       namespace: '_builtins',
@@ -183,10 +178,20 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     return ep.request != null && ep.response != null
   }
 
+  // Check that all type names are unique
+  validateUniqueTypeNames(apiModel, modelError)
+
   // Validate all endpoints. We start by those that are ready for validation so that transitive validation of common
   // data types is associated with these endpoints and their errors are not filtered out in the error report.
   apiModel.endpoints.filter(ep => readyForValidation(ep)).forEach(validateEndpoint)
   apiModel.endpoints.filter(ep => !readyForValidation(ep)).forEach(validateEndpoint)
+
+  // Check types are used
+  for (const type of apiModel.types) {
+    if (!typesSeen.has(fqn(type.name))) {
+      errors.addGeneralError(`Dangling type '${fqn(type.name)}'`)
+    }
+  }
 
   // Removes types that we've not seen
   apiModel.types = apiModel.types.filter(type => typesSeen.has(fqn(type.name)))
@@ -210,19 +215,74 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   // -----------------------------------------------------------------------------------------------
 
   /**
+   * Validates that all type names in the model are unique
+   */
+  function validateUniqueTypeNames (apiModel: model.Model, modelError: (msg: string) => void): void {
+    const existingDuplicates: Record<string, string[]> = {
+      Action: ['indices.modify_data_stream', 'indices.update_aliases', 'watcher._types'],
+      Actions: ['ilm._types', 'security.put_privileges', 'watcher._types'],
+      ComponentTemplate: ['cat.component_templates', 'cluster._types'],
+      Context: ['_global.get_script_context', '_global.search._types', 'nodes._types'],
+      DatabaseConfigurationMetadata: ['ingest.get_geoip_database', 'ingest.get_ip_location_database'],
+      Datafeed: ['ml._types', 'xpack.usage'],
+      Destination: ['_global.reindex', 'transform._types'],
+      Feature: ['features._types', 'indices.get', 'xpack.info'],
+      Features: ['indices.get', 'xpack.info'],
+      Filter: ['_global.termvectors', 'ml._types'],
+      IndexingPressure: ['cluster.stats', 'indices._types', 'nodes._types'],
+      IndexingPressureMemory: ['cluster.stats', 'indices._types', 'nodes._types'],
+      Ingest: ['ingest._types', 'nodes._types'],
+      MigrationFeature: ['migration.get_feature_upgrade_status', 'migration.post_feature_upgrade'],
+      Operation: ['_global.mget', '_global.mtermvectors'],
+      Phase: ['ilm._types', 'xpack.usage'],
+      Phases: ['ilm._types', 'xpack.usage'],
+      Pipeline: ['ingest._types', 'logstash._types'],
+      Policy: ['enrich._types', 'ilm._types', 'slm._types'],
+      RequestItem: ['_global.msearch', '_global.msearch_template'],
+      ResponseItem: ['_global.bulk', '_global.mget', '_global.msearch'],
+      RoleMapping: ['security._types', 'xpack.usage'],
+      RuntimeFieldTypes: ['cluster.stats', 'xpack.usage'],
+      ShardsStats: ['indices.field_usage_stats', 'snapshot._types'],
+      ShardStats: ['ccr._types', 'indices.stats'],
+      Source: ['_global.reindex', 'transform._types'],
+      Token: ['_global.termvectors', 'security.authenticate', 'security.create_service_token', 'security.enroll_kibana']
+    }
+
+    // collect namespaces for each type name
+    const typeNames = new Map<string, string[]>()
+    for (const type of apiModel.types) {
+      const name = type.name.name
+      if (name !== 'Request' && name !== 'Response' && name !== 'ResponseBase') {
+        const namespaces = typeNames.get(name) ?? []
+        namespaces.push(type.name.namespace)
+        typeNames.set(name, namespaces)
+      }
+    }
+
+    // check for duplicates
+    for (const [name, namespaces] of typeNames) {
+      if (namespaces.length > 1) {
+        const allowedDuplicates = existingDuplicates[name] ?? []
+        const hasUnexpectedDuplicate = namespaces.some(ns => !allowedDuplicates.includes(ns))
+        if (hasUnexpectedDuplicate) {
+          modelError(`${name} is present in multiple namespaces: ${namespaces.sort().join(' and ')}`)
+        }
+      }
+    }
+  }
+
+  /**
    * Validate an endpoint
    */
   function validateEndpoint (endpoint: model.Endpoint): void {
     setRootContext(endpoint.name, 'request')
 
-    if (endpoint.request == null) {
-      if (endpoint.response == null) {
-        modelError('Missing request & response')
-        return
-      } else {
-        modelError('Missing request')
-      }
-    } else {
+    // Skip validation for internal endpoints
+    if (privateNamespaces.some(ns => endpoint.name.startsWith(ns))) {
+      return
+    }
+
+    if (endpoint.request !== null) {
       const reqType = getTypeDef(endpoint.request)
 
       if (reqType == null) {
@@ -231,7 +291,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         modelError(`Type ${fqn(endpoint.request)} is not a request definition`)
       } else {
         validateTypeDef(reqType)
-        validateIsLeafType(endpoint.request)
 
         // Request path properties and url template properties should be the same
         const reqProperties = new Set(reqType.path.map(p => p.name))
@@ -267,16 +326,13 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
     setRootContext(endpoint.name, 'response')
 
-    if (endpoint.response == null) {
-      modelError('Missing response')
-    } else {
+    if (endpoint.response !== null) {
       const respType = getTypeDef(endpoint.response)
 
       if (respType == null) {
         modelError(`Type ${fqn(endpoint.response)} not found`)
       } else {
         validateTypeDef(respType)
-        validateIsLeafType(endpoint.response)
       }
     }
   }
@@ -389,7 +445,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     const openGenerics = openGenericSet(typeDef)
 
     validateInherits(typeDef.inherits, openGenerics)
-    validateImplements(typeDef.implements, openGenerics)
     validateBehaviors(typeDef, openGenerics)
 
     // Note: we validate codegen_name/name uniqueness independently in the path, query and body as there are some
@@ -407,11 +462,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     context.pop()
 
     context.push('body')
-    if (typeDef.inherits != null && typeDef.body.kind !== 'properties') {
-      if (fqn(typeDef.inherits.type) !== '_types:RequestBase') {
-        modelError('A request with inherited properties must have a PropertyBody')
-      }
-    }
     switch (typeDef.body.kind) {
       case 'properties':
         validateProperties(typeDef.body.properties, openGenerics, inheritedProps)
@@ -454,6 +504,23 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         throw new Error(`Unknown kind: ${typeDef.body.kind}`)
     }
+
+    if (typeDef.exceptions != null) {
+      for (const ex of typeDef.exceptions) {
+        switch (ex.body.kind) {
+          case 'properties':
+            validateProperties(ex.body.properties, openGenerics, new Set<string>())
+            break
+          case 'value':
+            validateValueOf(ex.body.value, openGenerics)
+            break
+          case 'no_body':
+            // Nothing to validate
+            break
+        }
+      }
+    }
+
     context.pop()
   }
 
@@ -504,7 +571,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       if (typeDef.inherits != null) {
         addInherits(typeDef.inherits)
       }
-      typeDef.implements?.forEach(addInherits)
       typeDef.behaviors?.forEach(addInherits)
     }
 
@@ -514,24 +580,16 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   function validateInterface (typeDef: model.Interface): void {
     const openGenerics = openGenericSet(typeDef)
 
-    validateImplements(typeDef.implements, openGenerics)
     validateInherits(typeDef.inherits, openGenerics)
     validateBehaviors(typeDef, openGenerics)
     validateProperties(typeDef.properties, openGenerics, inheritedProperties(typeDef))
 
     if (typeDef.variants?.kind === 'container') {
       const variants = typeDef.properties.filter(prop => !(prop.containerProperty ?? false))
-      if (variants.length === 1) {
-        // Single-variant containers must have a required property
-        if (!variants[0].required) {
-          modelError(`Property ${variants[0].name} is a single-variant and must be required`)
-        }
-      } else {
-        // Multiple variants must all be optional
-        for (const v of variants) {
-          if (v.required) {
-            modelError(`Variant ${variants[0].name} must be optional`)
-          }
+      // Variants must all be optional
+      for (const v of variants) {
+        if (v.required) {
+          modelError(`Variant ${variants[0].name} must be optional`)
         }
       }
     }
@@ -558,33 +616,29 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   function validateTypeAlias (typeDef: model.TypeAlias): void {
-    const openGenerics = new Set(typeDef.generics?.map(t => t.name))
+    const openGenerics = openGenericSet(typeDef)
 
     if (typeDef.variants != null) {
-      if (typeDef.generics != null && typeDef.generics.length !== 0) {
-        modelError('A tagged union should not have generic parameters')
-      }
-
       if (typeDef.type.kind !== 'union_of') {
         modelError('The "variants" tag only applies to unions')
       } else {
-        validateTaggedUnion(typeDef.type, typeDef.variants)
+        validateTaggedUnion(typeDef.name, typeDef.type, typeDef.variants, openGenerics)
       }
     } else {
       validateValueOf(typeDef.type, openGenerics)
     }
   }
 
-  function validateTaggedUnion (valueOf: model.UnionOf, variants: model.InternalTag | model.ExternalTag): void {
+  function validateTaggedUnion (parentName: TypeName, valueOf: model.UnionOf, variants: model.InternalTag | model.ExternalTag | model.Untagged, openGenerics: Set<string>): void {
     if (variants.kind === 'external_tag') {
       // All items must have a 'variant' attribute
-      const items = flattenUnionMembers(valueOf)
+      const items = flattenUnionMembers(valueOf, openGenerics)
 
       for (const item of items) {
         if (item.kind !== 'instance_of') {
           modelError('Items of externally tagged unions must be types with a "variant_tag" annotation')
         } else {
-          validateTypeRef(item.type, undefined, new Set<string>())
+          validateTypeRef(item.type, item.generics, openGenerics)
           const type = getTypeDef(item.type)
           if (type == null) {
             modelError(`Type ${fqn(item.type)} not found`)
@@ -599,13 +653,13 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
       }
     } else if (variants.kind === 'internal_tag') {
       const tagName = variants.tag
-      const items = flattenUnionMembers(valueOf)
+      const items = flattenUnionMembers(valueOf, openGenerics)
 
       for (const item of items) {
         if (item.kind !== 'instance_of') {
           modelError('Items of internally tagged unions must be type references')
         } else {
-          validateTypeRef(item.type, undefined, new Set<string>())
+          validateTypeRef(item.type, item.generics, openGenerics)
           const type = getTypeDef(item.type)
           if (type == null) {
             modelError(`Type ${fqn(item.type)} not found`)
@@ -618,14 +672,80 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         }
       }
 
-      validateValueOf(valueOf, new Set())
+      validateValueOf(valueOf, openGenerics)
+    } else if (variants.kind === 'untagged') {
+      if (fqn(parentName) !== '_types.query_dsl:DecayFunction' &&
+          fqn(parentName) !== '_types.query_dsl:DistanceFeatureQuery' &&
+          fqn(parentName) !== '_types.query_dsl:RangeQuery') {
+        throw new Error(`Please contact the devtools team before adding new untagged variant ${fqn(parentName)}`)
+      }
+
+      const untypedVariant = getTypeDef(variants.untypedVariant)
+      if (untypedVariant == null) {
+        modelError(`Type ${fqn(variants.untypedVariant)} not found`)
+      }
+
+      const items = flattenUnionMembers(valueOf, openGenerics)
+      const baseTypes = new Set<string>()
+      let foundUntyped = false
+
+      for (const item of items) {
+        if (item.kind !== 'instance_of') {
+          modelError('Items of type untagged unions must be type references')
+        } else {
+          validateTypeRef(item.type, item.generics, openGenerics)
+          const type = getTypeDef(item.type)
+          if (type == null) {
+            modelError(`Type ${fqn(item.type)} not found`)
+          } else {
+            if (type.kind !== 'interface') {
+              modelError(`Type ${fqn(item.type)} must be an interface to be used in an untagged union`)
+              continue
+            }
+
+            if (untypedVariant != null && fqn(item.type) === fqn(untypedVariant.name)) {
+              foundUntyped = true
+            }
+
+            if (type.inherits == null) {
+              modelError(`Type ${fqn(item.type)} must derive from a base type to be used in an untagged union`)
+              continue
+            }
+
+            baseTypes.add(fqn(type.inherits.type))
+
+            const baseType = getTypeDef(type.inherits.type)
+            if (baseType == null) {
+              modelError(`Type ${fqn(type.inherits.type)} not found`)
+              continue
+            }
+
+            if (baseType.kind !== 'interface') {
+              modelError(`Type ${fqn(type.inherits.type)} must be an interface to be used as the base class of another interface`)
+              continue
+            }
+
+            if (baseType.generics == null || baseType.generics.length === 0) {
+              modelError('The common base type of an untagged union must accept at least one generic type argument')
+            }
+          }
+        }
+      }
+
+      if (baseTypes.size !== 1) {
+        modelError('All items of an untagged union must derive from the same common base type')
+      }
+
+      if (!foundUntyped) {
+        modelError('The untyped variant of an untagged variant must be contained in the union items')
+      }
     }
   }
 
   // -----------------------------------------------------------------------------------------------
   // Constituents of type definitions
 
-  function openGenericSet (typeDef: model.Request | model.Response | model.Interface): Set<string> {
+  function openGenericSet (typeDef: model.Request | model.Response | model.Interface | model.TypeAlias): Set<string> {
     return new Set((typeDef.generics ?? []).map(name => fqn(name)))
   }
 
@@ -637,21 +757,18 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     context.pop()
   }
 
-  function validateImplements (parents: (model.Inherits[] | undefined), openGenerics: Set<string>): void {
-    if (parents == null || parents.length === 0) return
-
-    context.push('Implements')
-    for (const parent of parents) {
-      validateTypeRef(parent.type, parent.generics, openGenerics)
-    }
-    context.pop()
-  }
-
   function validateBehaviors (typeDef: model.Request | model.Response | model.Interface, openGenerics: Set<string>): void {
     if (typeDef.kind !== 'response' && typeDef.behaviors != null && typeDef.behaviors.length > 0) {
       context.push('Behaviors')
       for (const parent of typeDef.behaviors) {
         validateTypeRef(parent.type, parent.generics, openGenerics)
+
+        if (parent.type.name === 'AdditionalProperty' && (parent.meta == null || parent.meta.key == null || parent.meta.value == null)) {
+          modelError(`AdditionalProperty behavior for type '${fqn(typeDef.name)}' requires a 'behavior_meta' decorator with at least 2 arguments (key, value)`)
+        }
+        if (parent.type.name === 'AdditionalProperties' && (parent.meta == null || parent.meta.fieldname == null || parent.meta.description == null)) {
+          modelError(`AdditionalProperties behavior for type '${fqn(typeDef.name)}' requires a 'behavior_meta' decorator with exactly 2 arguments (fieldname, description)`)
+        }
       }
       context.pop()
     }
@@ -682,11 +799,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     }
 
     // Does a parent have this behavior?
-    const parents = (type.implements ?? []).concat(type.inherits ?? [])
-    for (const parent of parents) {
-      const parentDef = getTypeDef(parent.type)
+    if (type.inherits != null) {
+      const parentDef = getTypeDef(type.inherits.type)
       if (parentDef == null) {
-        modelError(`No type definition for parent '${fqn(parent.type)}'`)
+        modelError(`No type definition for parent '${fqn(type.inherits.type)}'`)
         return false
       }
       if (parentDef.kind === 'request' || parentDef.kind === 'interface') {
@@ -731,44 +847,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     }
   }
 
-  // Validates that use of non-leaf types (i.e. those who are inherited or implemented) are used either
-  // in contexts that are distinct from that of their children, or are abstract parent classes providing a way
-  // way to identify actual concrete implementations in strongly typed languages.
-  function validateIsLeafType (type: model.TypeName): void {
-    if (parentTypes.has(fqn(type))) {
-      // Aggregations are disambiguated with the 'typed_keys' parameter
-      if (type.namespace === 'aggregations') return
-
-      const fqName = fqn(type)
-
-      switch (fqName) {
-        // Base type also used as property, no polymorphic usage
-        case '_builtins:ErrorCause':
-        case 'x_pack.enrich:EnrichPolicy':
-        case 'x_pack.info.x_pack_usage:XPackUsage':
-        case 'x_pack.info.x_pack_usage:SecurityFeatureToggle':
-        case 'x_pack.watcher.watcher_stats:WatchRecordQueuedStats':
-        case 'x_pack.security.user.get_user:XPackUser':
-        case 'cluster.nodes_stats:MemoryStats':
-        case 'search.search:SearchResponse':
-          return
-
-        // Have a "type" attribute that identifies the variant
-        case 'mapping.types:PropertyBase':
-        case 'analysis.token_filters:TokenFilterBase':
-          return
-
-        // Single subclass with no additional properties, can probably be removed
-        case 'x_pack.watcher.input:HttpInputRequestDefinition':
-          return
-      }
-
-      if (!allowedSuperclasses.has(fqName)) {
-        modelError(`Non-leaf type cannot be used here: '${fqName}'`)
-      }
-    }
-  }
-
   // -----------------------------------------------------------------------------------------------
   // Value_Of validations
 
@@ -777,7 +855,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     switch (valueOf.kind) {
       case 'instance_of':
         validateTypeRef(valueOf.type, valueOf.generics, openGenerics)
-        validateIsLeafType(valueOf.type)
         break
 
       case 'array_of':
@@ -873,7 +950,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         } else {
           // tagged union: the discriminant tells us what to look for, check each member in isolation
           assert(typeDef.type.kind === 'union_of', 'Variants are only allowed on union_of type aliases')
-          for (const item of flattenUnionMembers(typeDef.type)) {
+          for (const item of flattenUnionMembers(typeDef.type, new Set())) {
             validateValueOfJsonEvents(item)
           }
 
@@ -888,13 +965,13 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   /** Build the flattened item list of potentially nested unions (this is used for large unions) */
-  function flattenUnionMembers (union: model.UnionOf): model.ValueOf[] {
+  function flattenUnionMembers (union: model.UnionOf, openGenerics: Set<string>): model.ValueOf[] {
     const allItems = new Array<model.ValueOf>()
 
     function collectItems (items: model.ValueOf[]): void {
       for (const item of items) {
         if (item.kind !== 'instance_of') {
-          validateValueOf(item, new Set<string>())
+          validateValueOf(item, openGenerics)
           allItems.push(item)
         } else {
           const itemType = getTypeDef(item.type)
@@ -904,7 +981,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
             // Recurse in nested union
             collectItems(itemType.type.items)
           } else {
-            validateValueOf(item, new Set<string>())
+            validateValueOf(item, openGenerics)
             allItems.push(item)
           }
         }

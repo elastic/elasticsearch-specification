@@ -1,0 +1,31 @@
+# summary:
+description: >
+  A successful response from `GET _tasks?actions=*search&detailed`
+  The `detailed` parameter affects the `description` field, which contains human readable text that identifies the particular request that the task is performing.
+  For example, it helps identify the search request being performed by a search task.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "nodes" : {
+      "oTUltX4IQMOUUVeiohTt8A" : {
+        "name" : "H5dfFeA",
+        "transport_address" : "127.0.0.1:9300",
+        "host" : "127.0.0.1",
+        "ip" : "127.0.0.1:9300",
+        "tasks" : {
+          "oTUltX4IQMOUUVeiohTt8A:464" : {
+            "node" : "oTUltX4IQMOUUVeiohTt8A",
+            "id" : 464,
+            "type" : "transport",
+            "action" : "indices:data/read/search",
+            "description" : "indices[test], types[test], search_type[QUERY_THEN_FETCH], source[{\"query\":...}]",
+            "start_time_in_millis" : 1483478610008,
+            "running_time_in_nanos" : 13991383,
+            "cancellable" : true,
+            "cancelled" : false
+          }
+        }
+      }
+    }
+  }

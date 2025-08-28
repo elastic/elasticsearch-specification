@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Field, Id } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
+import { Page } from '@ml/_types/Page'
 
 /**
- * Retrieves anomaly detection job results for one or more influencers.
+ * Get anomaly detection job results for influencers.
  * Influencers are the entities that have contributed to, or are to blame for,
  * the anomalies. Influencer results are available only if an
  * `influencer_field_name` is specified in the job configuration.
@@ -32,8 +32,16 @@ import { DateTime } from '@_types/Time'
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-get-influencer
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/results/influencers'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job.

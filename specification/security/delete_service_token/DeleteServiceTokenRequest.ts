@@ -21,14 +21,35 @@ import { RequestBase } from '@_types/Base'
 import { Name, Namespace, Refresh, Service } from '@_types/common'
 
 /**
+ * Delete service account tokens.
+ *
+ * Delete service account tokens for a service in a specified namespace.
  * @rest_spec_name security.delete_service_token
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_service_account
+ * @doc_id security-api-delete-service-token
+ * @ext_doc_id service-accounts
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/service/{namespace}/{service}/credential/token/{name}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
+    /**
+     * The namespace, which is a top-level grouping of service accounts.
+     */
     namespace: Namespace
+    /**
+     * The service name.
+     */
     service: Service
+    /**
+     * The name of the service account token.
+     */
     name: Name
   }
   query_parameters: {

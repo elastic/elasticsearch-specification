@@ -21,12 +21,28 @@ import { RequestBase } from '@_types/Base'
 import { Names } from '@_types/common'
 
 /**
+ * Clear the roles cache.
+ *
+ * Evict roles from the native role cache.
  * @rest_spec_name security.clear_cached_roles
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
+ * @cluster_privileges manage_security
+ * @doc_id security-api-clear-role-cache
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/role/{name}/_clear_cache'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
+    /**
+     * A comma-separated list of roles to evict from the role cache.
+     * To evict all roles, use an asterisk (`*`).
+     * It does not support other wildcard patterns.
+     */
     name: Names
   }
 }

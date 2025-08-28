@@ -1,0 +1,16 @@
+summary: Wildcards
+# indices/get-field-mapping.asciidoc:173
+description: >
+  A successful response from `GET publications/_mapping/field/a*`.
+# type: response
+# response_code: ''
+value:
+  "{\n   \"publications\": {\n      \"mappings\": {\n         \"author.name\"\
+  : {\n            \"full_name\": \"author.name\",\n            \"mapping\": {\n \
+  \              \"name\": {\n                 \"type\": \"text\"\n              \
+  \ }\n            }\n         },\n         \"abstract\": {\n            \"full_name\"\
+  : \"abstract\",\n            \"mapping\": {\n               \"abstract\": {\n  \
+  \                \"type\": \"text\"\n               }\n            }\n         },\n\
+  \         \"author.id\": {\n            \"full_name\": \"author.id\",\n        \
+  \    \"mapping\": {\n               \"id\": {\n                  \"type\": \"text\"\
+  \n               }\n            }\n         }\n      }\n   }\n}"

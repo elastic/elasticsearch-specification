@@ -1,0 +1,14 @@
+# summary:
+description: A successful response from `GET _query_rules/?from=0&size=3`.
+# type: response
+# response_code: ''
+value:
+  "{\n    \"count\": 3,\n    \"results\": [\n        {\n            \"ruleset_id\"\
+  : \"ruleset-1\",\n            \"rule_total_count\": 1,\n            \"rule_criteria_types_counts\"\
+  : {\n                \"exact\": 1\n            }\n        },\n        {\n      \
+  \      \"ruleset_id\": \"ruleset-2\",\n            \"rule_total_count\": 2,\n  \
+  \          \"rule_criteria_types_counts\": {\n                \"exact\": 1,\n  \
+  \              \"fuzzy\": 1\n            }\n        },\n        {\n            \"\
+  ruleset_id\": \"ruleset-3\",\n            \"rule_total_count\": 3,\n           \
+  \ \"rule_criteria_types_counts\": {\n                \"exact\": 1,\n           \
+  \     \"fuzzy\": 2\n            }\n        }\n    ]\n}"

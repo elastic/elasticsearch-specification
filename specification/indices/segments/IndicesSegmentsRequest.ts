@@ -20,13 +20,27 @@
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices } from '@_types/common'
 
-/** Returns low-level information about the Lucene segments in index shards.
- * For data streams, the API returns information about the stream’s backing indices.
+/**
+ * Get index segments.
+ * Get low-level information about the Lucene segments in index shards.
+ * For data streams, the API returns information about the stream's backing indices.
  * @rest_spec_name indices.segments
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id indices-segments
+ * @index_privileges monitor
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_segments'
+      methods: ['GET']
+    },
+    {
+      path: '/{index}/_segments'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.
@@ -46,7 +60,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -55,10 +68,5 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     ignore_unavailable?: boolean
-    /**
-     * If `true`, the request returns a verbose response.
-     * @server_default false
-     */
-    verbose?: boolean
   }
 }

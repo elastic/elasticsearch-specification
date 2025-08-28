@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { Highlight } from '@global/search/_types/highlighting'
-import { SortOrder, Sort } from '@_types/sort'
-import { SourceConfig } from '@global/search/_types/SourceFilter'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields } from '@_types/common'
+import { GeoLocation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script, ScriptField } from '@_types/Scripting'
+import { Sort, SortOrder } from '@_types/sort'
+import { Highlight } from '@global/search/_types/highlighting'
+import { SourceConfig } from '@global/search/_types/SourceFilter'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Aggregation } from './Aggregation'
 import { Missing } from './AggregationContainer'
 import { CalendarInterval } from './bucket'
-import { GeoLocation } from '@_types/Geo'
 
 export class MetricAggregationBase {
   /**
@@ -59,6 +59,12 @@ export class BoxplotAggregation extends MetricAggregationBase {
    * Limits the maximum number of nodes used by the underlying TDigest algorithm to `20 * compression`, enabling control of memory usage and approximation error.
    */
   compression?: double
+  /**
+   * The default implementation of TDigest is optimized for performance, scaling to millions or even billions of sample values while maintaining acceptable accuracy levels (close to 1% relative error for millions of samples in some cases).
+   * To use an implementation optimized for accuracy, set this parameter to high_accuracy instead.
+   * @server_default default
+   */
+  execution_hint?: TDigestExecutionHint
 }
 
 export enum CardinalityExecutionMode {
@@ -105,6 +111,9 @@ export class ExtendedStatsAggregation extends FormatMetricAggregationBase {
   sigma?: double
 }
 
+/**
+ * @ext_doc_id search-aggregations-metrics-geobounds-aggregation
+ */
 export class GeoBoundsAggregation extends MetricAggregationBase {
   /**
    * Specifies whether the bounding box should be allowed to overlap the international date line.
@@ -161,16 +170,28 @@ export class GeoLinePoint {
 
 export class MaxAggregation extends FormatMetricAggregationBase {}
 
+/**
+ * @ext_doc_id search-aggregations-metrics-median-absolute-deviation-aggregation
+ */
 export class MedianAbsoluteDeviationAggregation extends FormatMetricAggregationBase {
   /**
    * Limits the maximum number of nodes used by the underlying TDigest algorithm to `20 * compression`, enabling control of memory usage and approximation error.
    * @server_default 1000
    */
   compression?: double
+  /**
+   * The default implementation of TDigest is optimized for performance, scaling to millions or even billions of sample values while maintaining acceptable accuracy levels (close to 1% relative error for millions of samples in some cases).
+   * To use an implementation optimized for accuracy, set this parameter to high_accuracy instead.
+   * @server_default default
+   */
+  execution_hint?: TDigestExecutionHint
 }
 
 export class MinAggregation extends FormatMetricAggregationBase {}
 
+/**
+ * @ext_doc_id search-aggregations-metrics-percentile-rank-aggregation
+ */
 export class PercentileRanksAggregation extends FormatMetricAggregationBase {
   /**
    * By default, the aggregation associates a unique string key with each bucket and returns the ranges as a hash rather than an array.
@@ -225,6 +246,17 @@ export class TDigest {
    * Limits the maximum number of nodes used by the underlying TDigest algorithm to `20 * compression`, enabling control of memory usage and approximation error.
    */
   compression?: integer
+  /**
+   * The default implementation of TDigest is optimized for performance, scaling to millions or even billions of sample values while maintaining acceptable accuracy levels (close to 1% relative error for millions of samples in some cases).
+   * To use an implementation optimized for accuracy, set this parameter to high_accuracy instead.
+   * @server_default default
+   */
+  execution_hint?: TDigestExecutionHint
+}
+
+export enum TDigestExecutionHint {
+  default,
+  high_accuracy
 }
 
 export class RateAggregation extends FormatMetricAggregationBase {
@@ -396,6 +428,9 @@ export class TopHitsAggregation extends MetricAggregationBase {
   seq_no_primary_term?: boolean
 }
 
+/**
+ * @ext_doc_id search-aggregations-metrics-top-metrics
+ */
 export class TopMetricsAggregation extends MetricAggregationBase {
   /**
    * The fields of the top document to return.

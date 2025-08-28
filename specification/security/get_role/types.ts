@@ -17,20 +17,32 @@
  * under the License.
  */
 
-import {
-  IndicesPrivileges,
-  ApplicationPrivileges
-} from '@security/_types/Privileges'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata } from '@_types/common'
+import {
+  ApplicationPrivileges,
+  ClusterPrivilege,
+  IndicesPrivileges,
+  RemoteClusterPrivileges,
+  RemoteIndicesPrivileges
+} from '@security/_types/Privileges'
 import { RoleTemplate } from '@security/_types/RoleTemplate'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Role {
-  cluster: string[]
+  cluster: ClusterPrivilege[]
   indices: IndicesPrivileges[]
+  /**
+   * @availability stack since=8.14.0
+   */
+  remote_indices?: RemoteIndicesPrivileges[]
+  /**
+   * @availability stack since=8.15.0
+   */
+  remote_cluster?: RemoteClusterPrivileges[]
   metadata: Metadata
-  run_as: string[]
+  description?: string
+  run_as?: string[]
   transient_metadata?: Dictionary<string, UserDefinedValue>
   applications: ApplicationPrivileges[]
   role_templates?: RoleTemplate[]

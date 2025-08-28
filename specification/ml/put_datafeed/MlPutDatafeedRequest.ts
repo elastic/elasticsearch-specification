@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
@@ -33,13 +31,17 @@ import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
+import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
- * Instantiates a datafeed.
+ * Create a datafeed.
  * Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.
  * You can associate only one datafeed with each anomaly detection job.
  * The datafeed contains a query that runs at a defined interval (`frequency`).
  * If you are concerned about delayed data, you can add a delay (`query_delay') at each interval.
+ * By default, the datafeed uses the following query: `{"match_all": {"boost": 1}}`.
+ *
  * When Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had
  * at the time of creation and runs the query using those same roles. If you provide secondary authorization headers,
  * those credentials are used instead.
@@ -50,8 +52,16 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-put-datafeed
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/datafeeds/{datafeed_id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * A numerical character string that uniquely identifies the datafeed.
@@ -86,8 +96,10 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
   }
   body: {
-    /** If set, the datafeed performs aggregation searches.
+    /**
+     * If set, the datafeed performs aggregation searches.
      * Support for aggregations is limited and should be used only with low cardinality data.
+     * @aliases aggs
      */
     aggregations?: Dictionary<string, AggregationContainer>
     /**
@@ -114,8 +126,8 @@ export interface Request extends RequestBase {
      */
     frequency?: Duration
     /**
-     * An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the machine
-     * learning nodes must have the `remote_cluster_client` role.
+     * An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the master
+     * nodes and the machine learning nodes must have the `remote_cluster_client` role.
      * @aliases indexes
      * */
     indices?: Indices

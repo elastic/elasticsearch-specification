@@ -17,17 +17,19 @@
  * under the License.
  */
 
-import { CatRequestBase, CatAnonalyDetectorColumns } from '@cat/_types/CatBase'
 import { Bytes, Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
+import { CatAnomalyDetectorColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Returns configuration and usage information for anomaly detection jobs.
+ * Get anomaly detection jobs.
+ *
+ * Get configuration and usage information for anomaly detection jobs.
  * This API returns a maximum of 10,000 jobs.
  * If the Elasticsearch security features are enabled, you must have `monitor_ml`,
  * `monitor`, `manage_ml`, or `manage` cluster privileges to use this API.
  *
- * IMPORTANT: cat APIs are only intended for human consumption using the Kibana
+ * IMPORTANT: CAT APIs are only intended for human consumption using the Kibana
  * console or command line. They are not intended for use by applications. For
  * application consumption, use the get anomaly detection job statistics API.
  *
@@ -38,6 +40,16 @@ import { TimeUnit } from '@_types/Time'
  * @doc_id cat-anomaly-detectors
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/ml/anomaly_detectors'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/ml/anomaly_detectors/{job_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job.
@@ -66,9 +78,9 @@ export interface Request extends CatRequestBase {
      * Comma-separated list of column names to display.
      * @server_default buckets.count,data.processed_records,forecasts.total,id,model.bytes,model.memory_status,state
      */
-    h?: CatAnonalyDetectorColumns
+    h?: CatAnomalyDetectorColumns
     /** Comma-separated list of column names or column aliases used to sort the response. */
-    s?: CatAnonalyDetectorColumns
+    s?: CatAnomalyDetectorColumns
     /**
      * The unit used to display time values.
      */

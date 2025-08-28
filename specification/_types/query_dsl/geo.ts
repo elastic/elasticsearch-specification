@@ -17,18 +17,25 @@
  * under the License.
  */
 
-import { AdditionalProperty } from '@spec_utils/behaviors'
+import { Field } from '@_types/common'
 import {
   Distance,
   GeoBounds,
   GeoDistanceType,
+  GeoHash,
+  GeoHexCell,
   GeoLocation,
   GeoShape,
-  GeoShapeRelation
+  GeoShapeRelation,
+  GeoTile
 } from '@_types/Geo'
+import { AdditionalProperty } from '@spec_utils/behaviors'
 import { FieldLookup, QueryBase } from './abstractions'
-import { Field } from '@_types/common'
 
+/**
+ * @behavior_meta AdditionalProperty key=field value=bounding_box
+ * @ext_doc_id query-dsl-geo-bounding-box-query
+ */
 export class GeoBoundingBoxQuery
   extends QueryBase
   implements AdditionalProperty<Field, GeoBounds>
@@ -54,6 +61,10 @@ export enum GeoExecution {
   indexed
 }
 
+/**
+ * @behavior_meta AdditionalProperty key=field value=location
+ * @ext_doc_id query-dsl-geo-distance-query
+ */
 export class GeoDistanceQuery
   extends QueryBase
   implements AdditionalProperty<Field, GeoLocation>
@@ -84,11 +95,22 @@ export class GeoDistanceQuery
   ignore_unmapped?: boolean
 }
 
+/** @variants container */
+export class GeoGridQuery extends QueryBase {
+  geotile?: GeoTile
+  geohash?: GeoHash
+  geohex?: GeoHexCell
+}
+
 export class GeoPolygonPoints {
   points: GeoLocation[]
 }
 
-/** @deprecated 7.12.0 Use geo-shape instead. */
+/**
+ * @deprecated 7.12.0 Use geo-shape instead.
+ * @behavior_meta AdditionalProperty key=field value=polygon
+ * @ext_doc_id query-dsl-geo-polygon-query
+ */
 export class GeoPolygonQuery
   extends QueryBase
   implements AdditionalProperty<Field, GeoPolygonPoints>
@@ -116,6 +138,10 @@ export class GeoShapeFieldQuery {
   relation?: GeoShapeRelation
 }
 
+/**
+ * @behavior_meta AdditionalProperty key=field value=shape
+ * @ext_doc_id query-dsl-geo-shape-query
+ */
 // GeoShape query doesn't follow the common pattern of having a single field-name property
 // holding also the query base fields (boost and _name)
 export class GeoShapeQuery

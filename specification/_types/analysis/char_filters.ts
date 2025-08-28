@@ -25,7 +25,10 @@ export class CharFilterBase {
   version?: VersionString
 }
 
-/** @codegen_names name, definition */
+/**
+ * @codegen_names name, definition
+ * @ext_doc_id analysis-charfilters
+ */
 // ES: NameOrDefinition, used everywhere charfilter, tokenfilter or tokenizer is used
 export type CharFilter = string | CharFilterDefinition
 

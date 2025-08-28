@@ -1,0 +1,20 @@
+summary: Create a search template
+method_request: PUT _scripts/my-search-template
+description: >
+  Run `PUT _scripts/my-search-template` to create a search template.
+# type: request
+value: |-
+  {
+    "script": {
+      "lang": "mustache",
+      "source": {
+        "query": {
+          "match": {
+            "message": "{{query_string}}"
+          }
+        },
+        "from": "{{from}}",
+        "size": "{{size}}"
+      }
+    }
+  }

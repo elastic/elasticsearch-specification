@@ -1,0 +1,16 @@
+summary: E5 text embedding task
+description:
+  Run `PUT _inference/text_embedding/my-e5-model` to create an inference endpoint that performs a `text_embedding` task.
+  The `model_id` must be the ID of one of the built-in E5 models. The API will automatically download the E5 model if it isn't
+  already downloaded and then deploy the model.
+method_request: 'PUT _inference/text_embedding/my-e5-model'
+# type: "request"
+value: |-
+  {
+      "service": "elasticsearch",
+      "service_settings": {
+          "num_allocations": 1,
+          "num_threads": 1,
+          "model_id": ".multilingual-e5-small" 
+      }
+  }

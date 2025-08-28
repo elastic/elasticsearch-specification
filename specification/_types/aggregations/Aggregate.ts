@@ -17,10 +17,7 @@
  * under the License.
  */
 
-import { HitsMetadata } from '@global/search/_types/hits'
-import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { CompositeAggregateKey } from '@_types/aggregations/bucket'
 import { AggregateName, Field, FieldValue, Metadata } from '@_types/common'
 import {
   GeoBounds,
@@ -32,12 +29,16 @@ import {
 } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { DurationLarge, EpochTime, UnitMillis } from '@_types/Time'
+import { HitsMetadata } from '@global/search/_types/hits'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Void } from '@spec_utils/VoidValue'
-import { CompositeAggregateKey } from '@_types/aggregations/bucket'
 
 /**
- * @variants external
+ * @variants typed_keys_quirk
  * @non_exhaustive
+ * @ext_doc_id search-aggregations
  */
 export type Aggregate =
   | CardinalityAggregate
@@ -108,6 +109,7 @@ export type Aggregate =
   | UnmappedSignificantTermsAggregate
   | CompositeAggregate
   | FrequentItemSetsAggregate
+  | TimeSeriesAggregate
   //
   | ScriptedMetricAggregate
   | TopHitsAggregate
@@ -155,10 +157,10 @@ type Percentiles = KeyedPercentiles | Array<ArrayPercentilesItem>
 // <key_name>_as_string? string - present if a format was provided
 //
 // Note: defined as type alias and not inline, as some clients may want to implement it in a more usable way.
-type KeyedPercentiles = Dictionary<string, string | long | null>
+type KeyedPercentiles = Dictionary<string, string | double | null>
 
 export class ArrayPercentilesItem {
-  key: string
+  key: double
   value: double | null
   value_as_string?: string
 }
@@ -194,37 +196,52 @@ export class SingleMetricAggregateBase extends AggregateBase {
 /** @variant name=median_absolute_deviation */
 export class MedianAbsoluteDeviationAggregate extends SingleMetricAggregateBase {}
 
-/** @variant name=min */
+/**
+ * @variant name=min
+ * @ext_doc_id search-aggregations-metrics-min-aggregation
+ */
 export class MinAggregate extends SingleMetricAggregateBase {}
 
-/** @variant name=max */
+/**
+ * @variant name=max
+ * @ext_doc_id search-aggregations-metrics-max-aggregation
+ */
 export class MaxAggregate extends SingleMetricAggregateBase {}
 
 /**
  * Sum aggregation result. `value` is always present and is zero if there were no values to process.
  * @variant name=sum
+ * @ext_doc_id search-aggregations-metrics-sum-aggregation
  */
 export class SumAggregate extends SingleMetricAggregateBase {}
 
-/** @variant name=avg */
+/**
+ * @variant name=avg
+ * @ext_doc_id search-aggregations-metrics-avg-aggregation
+ */
 export class AvgAggregate extends SingleMetricAggregateBase {}
 
 /**
  * Weighted average aggregation result. `value` is missing if the weight was set to zero.
  * @variant name=weighted_avg
+ * @ext_doc_id search-aggregations-metrics-weight-avg-aggregation
  */
 export class WeightedAvgAggregate extends SingleMetricAggregateBase {}
 
 /**
  * Value count aggregation result. `value` is always present.
  * @variant name=value_count
+ * @ext_doc_id search-aggregations-metrics-valuecount-aggregation
  */
 export class ValueCountAggregate extends SingleMetricAggregateBase {}
 
 /** @variant name=simple_value */
 export class SimpleValueAggregate extends SingleMetricAggregateBase {}
 
-/** @variant name=derivative */
+/**
+ * @variant name=derivative
+ * @ext_doc_id search-aggregations-pipeline-derivative-aggregation
+ */
 export class DerivativeAggregate extends SingleMetricAggregateBase {
   normalized_value?: double
   normalized_value_as_string?: string
@@ -241,6 +258,7 @@ export class BucketMetricValueAggregate extends SingleMetricAggregateBase {
  * Statistics aggregation result. `min`, `max` and `avg` are missing if there were no values to process
  * (`count` is zero).
  * @variant name=stats
+ * @ext_doc_id search-aggregations-metrics-stats-aggregation
  */
 export class StatsAggregate extends AggregateBase {
   count: long
@@ -254,7 +272,10 @@ export class StatsAggregate extends AggregateBase {
   sum_as_string?: string
 }
 
-/** @variant name=stats_bucket */
+/**
+ * @variant name=stats_bucket
+ * @ext_doc_id search-aggregations-pipeline-stats-bucket-aggregation
+ */
 export class StatsBucketAggregate extends StatsAggregate {}
 
 export class StandardDeviationBounds {
@@ -275,7 +296,10 @@ export class StandardDeviationBoundsAsString {
   lower_sampling: string
 }
 
-/** @variant name=extended_stats */
+/**
+ * @variant name=extended_stats
+ * @ext_doc_id search-aggregations-metrics-extendedstats-aggregation
+ */
 export class ExtendedStatsAggregate extends StatsAggregate {
   sum_of_squares: double | null
   variance: double | null
@@ -300,12 +324,18 @@ export class ExtendedStatsBucketAggregate extends ExtendedStatsAggregate {}
 
 //----- Geo
 
-/** @variant name=geo_bounds */
+/**
+ * @variant name=geo_bounds
+ * @ext_doc_id search-aggregations-metrics-geobounds-aggregation
+ */
 export class GeoBoundsAggregate extends AggregateBase {
   bounds?: GeoBounds
 }
 
-/** @variant name=geo_centroid */
+/**
+ * @variant name=geo_centroid
+ * @ext_doc_id search-aggregations-metrics-geocentroid-aggregation
+ */
 export class GeoCentroidAggregate extends AggregateBase {
   count: long
   location?: GeoLocation
@@ -330,6 +360,8 @@ export class MultiBucketAggregateBase<TBucket> extends AggregateBase {
 
 /**
  * Base type for multi-bucket aggregation results that can hold sub-aggregations results.
+ *
+ * @behavior_meta AdditionalProperties fieldname=aggregations description="Nested aggregations"
  */
 export class MultiBucketBase
   implements AdditionalProperties<AggregateName, Aggregate>
@@ -337,7 +369,10 @@ export class MultiBucketBase
   doc_count: long
 }
 
-/** @variant name=histogram */
+/**
+ * @variant name=histogram
+ * @ext_doc_id search-aggregations-bucket-histogram-aggregation
+ */
 export class HistogramAggregate extends MultiBucketAggregateBase<HistogramBucket> {}
 
 export class HistogramBucket extends MultiBucketBase {
@@ -345,7 +380,9 @@ export class HistogramBucket extends MultiBucketBase {
   key: double
 }
 
-/** @variant name=date_histogram */
+/** @variant name=date_histogram
+ * @ext_doc_id search-aggregations-bucket-datehistogram-aggregation
+ */
 export class DateHistogramAggregate extends MultiBucketAggregateBase<DateHistogramBucket> {}
 
 export class DateHistogramBucket extends MultiBucketBase {
@@ -353,7 +390,10 @@ export class DateHistogramBucket extends MultiBucketBase {
   key: EpochTime<UnitMillis>
 }
 
-/** @variant name=auto_date_histogram */
+/**
+ * @variant name=auto_date_histogram
+ * @ext_doc_id search-aggregations-bucket-autodatehistogram-aggregation
+ */
 // Note: no keyed variant in `InternalAutoDateHistogram`
 export class AutoDateHistogramAggregate extends MultiBucketAggregateBase<DateHistogramBucket> {
   interval: DurationLarge
@@ -458,7 +498,10 @@ export class StringRareTermsBucket extends MultiBucketBase {
 // Since the buckets array is present but always empty, we use `Void` as the bucket type.
 export class UnmappedRareTermsAggregate extends MultiBucketAggregateBase<Void> {}
 
-/** @variant name=multi_terms */
+/**
+ * @variant name=multi_terms
+ * @ext_doc_id search-aggregations-bucket-multi-terms-aggregation
+ */
 // Note: no keyed variant
 export class MultiTermsAggregate extends TermsAggregateBase<MultiTermsBucket> {}
 
@@ -472,6 +515,8 @@ export class MultiTermsBucket extends MultiBucketBase {
 
 /**
  * Base type for single-bucket aggregation results that can hold sub-aggregations results.
+ *
+ * @behavior_meta AdditionalProperties fieldname=aggregations description="Nested aggregations"
  */
 export class SingleBucketAggregateBase
   extends AggregateBase
@@ -480,19 +525,34 @@ export class SingleBucketAggregateBase
   doc_count: long
 }
 
-/** @variant name=missing */
+/**
+ * @variant name=missing
+ * @ext_doc_id search-aggregations-bucket-missing-aggregation
+ */
 export class MissingAggregate extends SingleBucketAggregateBase {}
 
-/** @variant name=nested */
+/**
+ * @variant name=nested
+ * @ext_doc_id search-aggregations-bucket-nested-aggregation
+ */
 export class NestedAggregate extends SingleBucketAggregateBase {}
 
-/** @variant name=reverse_nested */
+/**
+ * @variant name=reverse_nested
+ * @ext_doc_id search-aggregations-bucket-reverse-nested-aggregation
+ */
 export class ReverseNestedAggregate extends SingleBucketAggregateBase {}
 
-/** @variant name=global */
+/**
+ * @variant name=global
+ * @ext_doc_id search-aggregations-bucket-global-aggregation
+ */
 export class GlobalAggregate extends SingleBucketAggregateBase {}
 
-/** @variant name=filter */
+/**
+ * @variant name=filter
+ * @ext_doc_id search-aggregations-bucket-filter-aggregation
+ */
 export class FilterAggregate extends SingleBucketAggregateBase {}
 
 /** @variant name=sampler */
@@ -511,7 +571,10 @@ export class GeoHashGridBucket extends MultiBucketBase {
   key: GeoHash
 }
 
-/** @variant name=geotile_grid */
+/**
+ * @variant name=geotile_grid
+ * @ext_doc_id search-aggregations-bucket-geotilegrid-aggregation
+ */
 // Note: no keyed variant in the `InternalGeoGrid` parent class
 export class GeoTileGridAggregate extends MultiBucketAggregateBase<GeoTileGridBucket> {}
 
@@ -528,7 +591,10 @@ export class GeoHexGridBucket extends MultiBucketBase {
 
 //----- Ranges
 
-/** @variant name=range */
+/**
+ * @variant name=range
+ * @ext_doc_id search-aggregations-bucket-range-aggregation
+ */
 export class RangeAggregate extends MultiBucketAggregateBase<RangeBucket> {}
 
 export class RangeBucket extends MultiBucketBase {
@@ -544,16 +610,21 @@ export class RangeBucket extends MultiBucketBase {
  * Result of a `date_range` aggregation. Same format as a for a `range` aggregation: `from` and `to`
  * in `buckets` are milliseconds since the Epoch, represented as a floating point number.
  * @variant name=date_range
+ * @ext_doc_id search-aggregations-bucket-daterange-aggregation
  */
 export class DateRangeAggregate extends RangeAggregate {}
 
 /**
  * Result of a `geo_distance` aggregation. The unit for `from` and `to` is meters by default.
  * @variant name=geo_distance
+ * @ext_doc_id search-aggregations-bucket-geodistance-aggregation
  */
 export class GeoDistanceAggregate extends RangeAggregate {}
 
-/** @variant name=ip_range */
+/**
+ * @variant name=ip_range
+ * @ext_doc_id search-aggregations-bucket-iprange-aggregation
+ */
 // ES: InternalBinaryRange
 export class IpRangeAggregate extends MultiBucketAggregateBase<IpRangeBucket> {}
 
@@ -565,12 +636,20 @@ export class IpRangeBucket extends MultiBucketBase {
 
 //----- Other multi-bucket
 
-/** @variant name=filters */
+/**
+ * @variant name=filters
+ * @ext_doc_id search-aggregations-bucket-filters-aggregation
+ */
 export class FiltersAggregate extends MultiBucketAggregateBase<FiltersBucket> {}
 
-export class FiltersBucket extends MultiBucketBase {}
+export class FiltersBucket extends MultiBucketBase {
+  key?: string
+}
 
-/** @variant name=adjacency_matrix */
+/**
+ * @variant name=adjacency_matrix
+ * @ext_doc_id search-aggregations-bucket-adjacency-matrix-aggregation
+ */
 // Note: no keyed variant in the `InternalAdjacencyMatrix`
 export class AdjacencyMatrixAggregate extends MultiBucketAggregateBase<AdjacencyMatrixBucket> {}
 
@@ -578,6 +657,9 @@ export class AdjacencyMatrixBucket extends MultiBucketBase {
   key: string
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-significanttext-aggregation
+ */
 export class SignificantTermsAggregateBase<
   T
 > extends MultiBucketAggregateBase<T> {
@@ -626,7 +708,10 @@ export class CompositeBucket extends MultiBucketBase {
   key: CompositeAggregateKey
 }
 
-/** @variant name=ip_prefix */
+/**
+ * @variant name=ip_prefix
+ * @ext_doc_id search-aggregations-bucket-ipprefix-aggregation
+ */
 export class IpPrefixAggregate extends MultiBucketAggregateBase<IpPrefixBucket> {}
 
 export class IpPrefixBucket extends MultiBucketBase {
@@ -644,19 +729,36 @@ export class FrequentItemSetsBucket extends MultiBucketBase {
   support: double
 }
 
+/** @variant name=time_series */
+export class TimeSeriesAggregate extends MultiBucketAggregateBase<TimeSeriesBucket> {}
+
+export class TimeSeriesBucket extends MultiBucketBase {
+  key: Dictionary<Field, FieldValue>
+}
+
 //----- Misc
 
-/** @variant name=scripted_metric */
+/**
+ * @variant name=scripted_metric
+ * @ext_doc_id search-aggregations-metrics-scripted-metric-aggregation
+ */
 export class ScriptedMetricAggregate extends AggregateBase {
   value: UserDefinedValue
 }
 
-/** @variant name=top_hits */
+/**
+ * @variant name=top_hits
+ * @ext_doc_id search-aggregations-metrics-top-hits-aggregation
+ */
 export class TopHitsAggregate extends AggregateBase {
   hits: HitsMetadata<UserDefinedValue>
 }
 
-/** @variant name=inference */
+/**
+ * @variant name=inference
+ * @behavior_meta AdditionalProperties fieldname=data description="Additional data"
+ * @ext_doc_id search-aggregations-pipeline-inference-bucket-aggregation
+ */
 // This is a union with widely different fields, many of them being runtime-defined. We mimic below the few fields
 // present in `ParsedInference` with an additional properties spillover to not loose any data.
 export class InferenceAggregate
@@ -703,7 +805,10 @@ export class StringStatsAggregate extends AggregateBase {
   avg_length_as_string?: string
 }
 
-/** @variant name=boxplot */
+/**
+ * @variant name=boxplot
+ * @ext_doc_id search-aggregations-metrics-boxplot-aggregation
+ */
 export class BoxPlotAggregate extends AggregateBase {
   min: double
   max: double
@@ -732,13 +837,19 @@ export class TopMetrics {
   metrics: Dictionary<string, FieldValue | null>
 }
 
-/** @variant name=t_test */
+/**
+ * @variant name=t_test
+ * @ext_doc_id search-aggregations-metrics-ttest-aggregation
+ */
 export class TTestAggregate extends AggregateBase {
   value: double | null
   value_as_string?: string
 }
 
-/** @variant name=rate */
+/**
+ * @variant name=rate
+ * @ext_doc_id search-aggregations-metrics-rate-aggregation
+ */
 export class RateAggregate extends AggregateBase {
   value: double
   value_as_string?: string
@@ -754,7 +865,10 @@ export class CumulativeCardinalityAggregate extends AggregateBase {
   value_as_string?: string
 }
 
-/** @variant name=matrix_stats */
+/**
+ * @variant name=matrix_stats
+ * @ext_doc_id search-aggregations-matrix-stats-aggregation
+ */
 export class MatrixStatsAggregate extends AggregateBase {
   doc_count: long
   fields?: MatrixStatsFields[]
@@ -773,15 +887,24 @@ export class MatrixStatsFields {
 
 //----- Parent join plugin
 
-/** @variant name=children */
+/**
+ * @variant name=children
+ * @ext_doc_id search-aggregations-bucket-children-aggregation
+ */
 export class ChildrenAggregate extends SingleBucketAggregateBase {}
 
-/** @variant name=parent */
+/**
+ * @variant name=parent
+ * @ext_doc_id search-aggregations-bucket-parent-aggregation
+ */
 export class ParentAggregate extends SingleBucketAggregateBase {}
 
 //----- Spatial plugin
 
-/** @variant name=geo_line */
+/**
+ * @variant name=geo_line
+ * @ext_doc_id search-aggregations-metrics-geo-line
+ */
 export class GeoLineAggregate extends AggregateBase {
   type: string // should be "Feature"
   geometry: GeoLine

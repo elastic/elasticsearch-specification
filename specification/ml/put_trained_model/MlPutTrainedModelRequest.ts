@@ -17,23 +17,34 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Definition, Input } from './types'
-import { TrainedModelPrefixStrings } from '../_types/TrainedModel'
-import { TrainedModelType } from '../_types/TrainedModel'
 import { InferenceConfigCreateContainer } from '@ml/_types/inference'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import {
+  TrainedModelPrefixStrings,
+  TrainedModelType
+} from '../_types/TrainedModel'
+import { Definition, Input } from './types'
 
 /**
- * Enables you to supply a trained model that is not created by data frame analytics.
+ * Create a trained model.
+ * Enable you to supply a trained model that is not created by data frame analytics.
  * @rest_spec_name ml.put_trained_model
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml trained model
+ * @doc_id put-trained-models
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the trained model.

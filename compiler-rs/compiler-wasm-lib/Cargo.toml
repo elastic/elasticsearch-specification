@@ -3,6 +3,7 @@ name = "compiler-wasm-lib"
 version = "0.1.0"
 edition = "2021"
 description = "WASM library to manipulate and convert schema.json files"
+publish = false
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -11,17 +12,19 @@ crate-type = ["cdylib", "rlib"]
 default = ["console_error_panic_hook"]
 
 [dependencies]
-wasm-bindgen = "0.2.87"
+wasm-bindgen = { workspace = true }
 clients_schema = {path="../clients_schema"}
 clients_schema_to_openapi = {path="../clients_schema_to_openapi"}
-serde_json = "1.0.107"
-anyhow = "1.0.75"
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+tracing = "0.1"
+argh = { workspace = true }
 
-console_error_panic_hook = { version = "0.1.7", optional = true }
-web-sys = { version = "0.3.64", features = ["console"] }
+console_error_panic_hook = { workspace = true, optional = true }
+tracing-wasm = "0.2.1"
 
 [dev-dependencies]
-wasm-bindgen-test = "0.3.37"
+wasm-bindgen-test = { workspace = true }
 
 [package.metadata.wasm-pack.profile.release]
 opt-level = 'z'

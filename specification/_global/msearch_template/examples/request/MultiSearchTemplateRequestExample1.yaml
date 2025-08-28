@@ -1,0 +1,9 @@
+# summary:
+method_request: GET my-index/_msearch/template
+description: Run `GET my-index/_msearch/template` to run multiple templated searches.
+# type: "request"
+value: |-
+  { }
+  { "id": "my-search-template", "params": { "query_string": "hello world", "from": 0, "size": 10 }}
+  { }
+  { "id": "my-other-search-template", "params": { "query_type": "match_all" }}

@@ -17,13 +17,24 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
-  body: { nodes: Dictionary<string, CompactNodeInfo> }
+  body: {
+    /**
+     * Information about the nodes connected to the snapshot repository.
+     * The key is the ID of the node.
+     */
+    nodes: Dictionary<string, CompactNodeInfo>
+  }
 }
 
 export class CompactNodeInfo {
+  /**
+   * A human-readable name for the node.
+   * You can set this name using the `node.name` property in `elasticsearch.yml`.
+   * The default value is the machine's hostname.
+   */
   name: Name
 }

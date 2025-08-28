@@ -1,0 +1,14 @@
+summary: Custom analyzer example 2
+method_request: GET /_analyze
+description: Custom tokenizers, token filters, and character filters can be specified in the request body.
+# type: request
+value:
+  tokenizer: whitespace
+  filter:
+    - lowercase
+    - type: stop
+      stopwords:
+        - a
+        - is
+        - this
+  text: this is a test

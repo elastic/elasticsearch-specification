@@ -1,0 +1,6 @@
+# summary:
+description: A successful response when clearing the inference cache.
+# type: response
+# response_code: 200
+value:
+  cleared: true

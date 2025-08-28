@@ -1,0 +1,6 @@
+{
+  "repoOwner": "elastic",
+  "repoName": "elasticsearch-specification",
+  "targetBranchChoices": ["9.1", "9.0", "8.19", "8.18"],
+  "fork": false
+}

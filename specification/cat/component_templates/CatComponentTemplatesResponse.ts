@@ -20,5 +20,6 @@
 import { ComponentTemplate } from './types'
 
 export class Response {
+  /** @codegen_name component_templates */
   body: Array<ComponentTemplate>
 }

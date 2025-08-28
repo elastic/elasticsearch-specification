@@ -18,14 +18,29 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Void } from '@spec_utils/VoidValue'
 
 /**
- * The cluster remote info API allows you to retrieve all of the configured
- * remote cluster information. It returns connection and endpoint information
- * keyed by the configured remote cluster alias.
+ * Get remote cluster information.
+ *
+ * Get information about configured remote clusters.
+ * The API returns connection and endpoint information keyed by the configured remote cluster alias.
+ *
+ * > info
+ * > This API returns information that reflects current state on the local cluster.
+ * > The `connected` field does not necessarily reflect whether a remote cluster is down or unavailable, only whether there is currently an open connection to it.
+ * > Elasticsearch does not spontaneously try to reconnect to a disconnected remote cluster.
+ * > To trigger a reconnection, attempt a cross-cluster search, ES|QL cross-cluster search, or try the [resolve cluster endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-cluster).
  * @rest_spec_name cluster.remote_info
  * @availability stack since=6.1.0 stability=stable
+ * @cluster_privileges monitor
  * @doc_id cluster-remote-info
+ * @ext_doc_id modules-cross-cluster-search
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_remote/info'
+      methods: ['GET']
+    }
+  ]
+}

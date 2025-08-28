@@ -1,0 +1,29 @@
+summary: Filter source fields
+method_request: 'GET /_mget'
+description: >
+  Run `GET /_mget`. This request sets `_source` to `false` for document 1 to exclude the source entirely. It retrieves `field3` and
+  `field4` from document 2. It retrieves the `user` field from document 3 but filters out the `user.location` field.
+# type: "request"
+value: |-
+  {
+    "docs": [
+      {
+        "_index": "test",
+        "_id": "1",
+        "_source": false
+      },
+      {
+        "_index": "test",
+        "_id": "2",
+        "_source": [ "field3", "field4" ]
+      },
+      {
+        "_index": "test",
+        "_id": "3",
+        "_source": {
+          "include": [ "user" ],
+          "exclude": [ "user.location" ]
+        }
+      }
+    ]
+  }

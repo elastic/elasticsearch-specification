@@ -1,0 +1,15 @@
+# summary:
+method_request: POST /_query
+description: Run `POST /_query` to get results for an ES|QL query.
+# type: request
+value: |-
+  {
+    "query": """
+      FROM library,remote-*:library
+      | EVAL year = DATE_TRUNC(1 YEARS, release_date)
+      | STATS MAX(page_count) BY year
+      | SORT year
+      | LIMIT 5
+    """,
+    "include_ccs_metadata": true
+  }

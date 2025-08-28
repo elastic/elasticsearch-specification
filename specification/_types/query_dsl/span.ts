@@ -17,11 +17,14 @@
  * under the License.
  */
 
-import { Field } from '@_types/common'
+import { Field, FieldValue } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { QueryBase, QueryContainer } from './abstractions'
 import { SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { QueryBase, QueryContainer } from './abstractions'
 
+/**
+ * @ext_doc_id query-dsl-span-containing-query
+ */
 export class SpanContainingQuery extends QueryBase {
   /**
    * Can be any span query.
@@ -35,11 +38,17 @@ export class SpanContainingQuery extends QueryBase {
   little: SpanQuery
 }
 
+/**
+ * @ext_doc_id query-dsl-span-field-masking-query
+ */
 export class SpanFieldMaskingQuery extends QueryBase {
   field: Field
   query: SpanQuery
 }
 
+/**
+ * @ext_doc_id query-dsl-span-first-query
+ */
 export class SpanFirstQuery extends QueryBase {
   /**
    * Controls the maximum end position permitted in a match.
@@ -55,6 +64,9 @@ export class SpanFirstQuery extends QueryBase {
 // The integer value is the span width
 export type SpanGapQuery = SingleKeyDictionary<Field, integer>
 
+/**
+ * @ext_doc_id query-dsl-span-multi-term-query
+ */
 export class SpanMultiTermQuery extends QueryBase {
   /**
    * Should be a multi term query (one of `wildcard`, `fuzzy`, `prefix`, `range`, or `regexp` query).
@@ -62,6 +74,9 @@ export class SpanMultiTermQuery extends QueryBase {
   match: QueryContainer
 }
 
+/**
+ * @ext_doc_id query-dsl-span-near-query
+ */
 export class SpanNearQuery extends QueryBase {
   /**
    * Array of one or more other span type queries.
@@ -77,6 +92,9 @@ export class SpanNearQuery extends QueryBase {
   slop?: integer
 }
 
+/**
+ * @ext_doc_id query-dsl-span-not-query
+ */
 export class SpanNotQuery extends QueryBase {
   /**
    * The number of tokens from within the include span that can’t have overlap with the exclude span.
@@ -103,6 +121,9 @@ export class SpanNotQuery extends QueryBase {
   pre?: integer
 }
 
+/**
+ * @ext_doc_id query-dsl-span-or-query
+ */
 export class SpanOrQuery extends QueryBase {
   /**
    * Array of one or more other span type queries.
@@ -110,11 +131,18 @@ export class SpanOrQuery extends QueryBase {
   clauses: SpanQuery[]
 }
 
-/** @shortcut_property value */
+/**
+ * @shortcut_property value
+ * @ext_doc_id query-dsl-span-term-query
+ */
 export class SpanTermQuery extends QueryBase {
-  value: string
+  /** @aliases term */
+  value: FieldValue
 }
 
+/**
+ * @ext_doc_id query-dsl-span-within-query
+ */
 export class SpanWithinQuery extends QueryBase {
   /**
    * Can be any span query.

@@ -21,14 +21,21 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes an existing datafeed.
+ * Delete a datafeed.
  * @rest_spec_name ml.delete_datafeed
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_id ml-delete-datafeed
+ * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/datafeeds/{datafeed_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * A numerical character string that uniquely identifies the datafeed. This

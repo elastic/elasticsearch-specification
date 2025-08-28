@@ -22,13 +22,20 @@ import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Deletes a transform.
+ * Delete a transform.
  * @rest_spec_name transform.delete_transform
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform
+ * @doc_id delete-transform
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/{transform_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the transform.

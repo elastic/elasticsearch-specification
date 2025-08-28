@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
@@ -38,16 +36,36 @@ import {
 import { Property } from '@_types/mapping/Property'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { Duration } from '@_types/Time'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 /**
- * Adds new fields to an existing data stream or index.
- * You can also use this API to change the search settings of existing fields.
- * For data streams, these changes are applied to all backing indices by default.
+ * Update field mappings.
+ * Add new fields to an existing data stream or index.
+ * You can use the update mapping API to:
+
+ * - Add a new field to an existing index
+ * - Update mappings for multiple indices in a single request
+ * - Add new properties to an object field
+ * - Enable multi-fields for an existing field
+ * - Update supported mapping parameters
+ * - Change a field's mapping using reindexing
+ * - Rename a field using a field alias
+ *
+ * Learn how to use the update mapping API with practical examples in the [Update mapping API examples](https://www.elastic.co/docs/manage-data/data-store/mapping/update-mappings-examples) guide.
  * @rest_spec_name indices.put_mapping
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id indices-put-mapping
+ * @ext_doc_id mapping-params
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_mapping'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     index: Indices
   }
@@ -62,7 +80,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -107,9 +124,7 @@ export interface Request extends RequestBase {
     /**
      * Specify dynamic templates for the mapping.
      */
-    dynamic_templates?:
-      | Dictionary<string, DynamicTemplate>
-      | Dictionary<string, DynamicTemplate>[]
+    dynamic_templates?: SingleKeyDictionary<string, DynamicTemplate>[]
     /**
      * Control whether field names are enabled for the index.
      */

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Filter } from '@ml/_types/Filter'
 import { long } from '@_types/Numeric'
+import { Filter } from '@ml/_types/Filter'
 
 export class Response {
   body: {

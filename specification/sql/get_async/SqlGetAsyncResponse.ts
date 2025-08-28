@@ -18,28 +18,28 @@
  */
 
 import { Id } from '@_types/common'
-import { Column, Row } from '../types'
+import { Column, Row } from '../_types/types'
 
 export class Response {
   body: {
     /**
-     * Identifier for the search. This value is only returned for async and saved
-     * synchronous searches. For CSV, TSV, and TXT responses, this value is returned
-     * in the `Async-ID` HTTP header.
+     * Identifier for the search.
+     * This value is returned only for async and saved synchronous searches.
+     * For CSV, TSV, and TXT responses, this value is returned in the `Async-ID` HTTP header.
      */
     id: Id
     /**
-     * If `true`, the search is still running. If false, the search has finished.
-     * This value is only returned for async and saved synchronous searches. For
-     * CSV, TSV, and TXT responses, this value is returned in the `Async-partial`
-     * HTTP header.
+     * If `true`, the search is still running.
+     * If `false`, the search has finished.
+     * This value is returned only for async and saved synchronous searches.
+     * For CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.
      */
     is_running: boolean
     /**
-     * If `true`, the response does not contain complete search results. If `is_partial`
-     * is `true` and `is_running` is `true`, the search is still running. If `is_partial`
-     * is `true` but `is_running` is `false`, the results are partial due to a failure or
-     * timeout. This value is only returned for async and saved synchronous searches.
+     * If `true`, the response does not contain complete search results.
+     * If `is_partial` is `true` and `is_running` is `true`, the search is still running.
+     * If `is_partial` is `true` but `is_running` is `false`, the results are partial due to a failure or timeout.
+     * This value is returned only for async and saved synchronous searches.
      * For CSV, TSV, and TXT responses, this value is returned in the `Async-partial` HTTP header.
      */
     is_partial: boolean
@@ -48,12 +48,12 @@ export class Response {
      */
     columns?: Column[]
     /**
-     * Cursor for the next set of paginated results. For CSV, TSV, and
-     * TXT responses, this value is returned in the `Cursor` HTTP header.
+     * The cursor for the next set of paginated results.
+     * For CSV, TSV, and TXT responses, this value is returned in the `Cursor` HTTP header.
      */
     cursor?: string
     /**
-     * Values for the search results.
+     * The values for the search results.
      */
     rows: Row[]
   }

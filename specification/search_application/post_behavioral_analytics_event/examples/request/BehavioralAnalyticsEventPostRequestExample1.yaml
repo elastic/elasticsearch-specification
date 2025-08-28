@@ -1,0 +1,65 @@
+# summary: behavioral-analytics/apis/post-analytics-collection-event.asciidoc:69
+method_request: POST _application/analytics/my_analytics_collection/event/search_click
+description:
+  Run `POST _application/analytics/my_analytics_collection/event/search_click` to send a `search_click` event to an
+  analytics collection called `my_analytics_collection`.
+# type: request
+value: "{
+
+  \  \"session\": {
+
+  \    \"id\": \"1797ca95-91c9-4e2e-b1bd-9c38e6f386a9\"
+
+  \  },
+
+  \  \"user\": {
+
+  \    \"id\": \"5f26f01a-bbee-4202-9298-81261067abbd\"
+
+  \  },
+
+  \  \"search\":{
+
+  \    \"query\": \"search term\",
+
+  \    \"results\": {
+
+  \      \"items\": [
+
+  \        {
+
+  \          \"document\": {
+
+  \            \"id\": \"123\",
+
+  \            \"index\": \"products\"
+
+  \          }
+
+  \        }
+
+  \      ],
+
+  \      \"total_results\": 10
+
+  \    },
+
+  \    \"sort\": {
+
+  \      \"name\": \"relevance\"
+
+  \    },
+
+  \    \"search_application\": \"website\"
+
+  \  },
+
+  \  \"document\":{
+
+  \    \"id\": \"123\",
+
+  \    \"index\": \"products\"
+
+  \  }
+
+  }"

@@ -1,0 +1,5 @@
+# summary:
+description: A successful response from `POST _slm/start`.
+# type: response
+# response_code: ''
+value: "{\n  \"acknowledged\": true\n}"

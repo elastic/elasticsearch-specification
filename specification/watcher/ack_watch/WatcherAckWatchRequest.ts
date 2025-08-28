@@ -21,12 +21,43 @@ import { RequestBase } from '@_types/Base'
 import { Name, Names } from '@_types/common'
 
 /**
+ * Acknowledge a watch.
+ * Acknowledging a watch enables you to manually throttle the execution of the watch's actions.
+ *
+ * The acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.
+ *
+ * IMPORTANT: If the specified watch is currently being executed, this API will return an error
+ * The reason for this behavior is to prevent overwriting the watch status from a watch execution.
+ *
+ * Acknowledging an action throttles further executions of that action until its `ack.state` is reset to `awaits_successful_execution`.
+ * This happens when the condition of the watch is not met (the condition evaluates to false).
+ * To demonstrate how throttling works in practice and how it can be configured for individual actions within a watch, refer to External documentation.
  * @rest_spec_name watcher.ack_watch
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
+ * @cluster_privileges manage_watcher
+ * @doc_id watcher-api-ack-watch
+ * @ext_doc_id ack-watch
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/watch/{watch_id}/_ack'
+      methods: ['PUT', 'POST']
+    },
+    {
+      path: '/_watcher/watch/{watch_id}/_ack/{action_id}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
+    /**
+     * The watch identifier.
+     */
     watch_id: Name
+    /**
+     * A comma-separated list of the action identifiers to acknowledge.
+     * If you omit this parameter, all of the actions of the watch are acknowledged.
+     */
     action_id?: Names
   }
 }

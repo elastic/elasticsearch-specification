@@ -21,14 +21,23 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Removes all scheduled events from a calendar, then deletes it.
+ * Delete a calendar.
+ *
+ * Remove all scheduled events from a calendar, then delete it.
  * @rest_spec_name ml.delete_calendar
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_id ml-delete-calendar
+ * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/calendars/{calendar_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /** A string that uniquely identifies a calendar. */
     calendar_id: Id

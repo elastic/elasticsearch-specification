@@ -1,0 +1,8 @@
+# summary:
+method_request: DELETE /_pit
+description: Run `DELETE /_pit` to close a point-in-time.
+# type: request
+value: |-
+  {
+    "id": "46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA=="
+  }

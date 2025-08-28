@@ -17,15 +17,12 @@
  * under the License.
  */
 
-import { Phases } from '@ilm/_types/Phase'
-import { Statistics } from '@slm/_types/SnapshotLifecycle'
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
-import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
-import { Job, JobStatistics } from '@ml/_types/Job'
+import { ByteSize, Field, Name } from '@_types/common'
 import { double, integer, long, uint, ulong } from '@_types/Numeric'
-import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { JobStatistics } from '@ml/_types/Job'
+import { Statistics } from '@slm/_types/SnapshotLifecycle'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Base {
   available: boolean
@@ -152,6 +149,19 @@ export class ForecastStatistics {
 
 export class HealthStatistics extends Base {
   invocations: Invocations
+}
+
+export class Phase {
+  actions: string[]
+  min_age: DurationValue<UnitMillis>
+}
+
+export class Phases {
+  cold?: Phase
+  delete?: Phase
+  frozen?: Phase
+  hot?: Phase
+  warm?: Phase
 }
 
 export class IlmPolicyStatistics {
@@ -355,10 +365,6 @@ export class Eql extends Base {
 
 export class Flattened extends Base {
   field_count: integer
-}
-
-export class FrozenIndices extends Base {
-  indices_count: long
 }
 
 export class JobUsage {

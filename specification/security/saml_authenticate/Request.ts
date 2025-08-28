@@ -21,16 +21,39 @@ import { RequestBase } from '@_types/Base'
 import { Ids } from '@_types/common'
 
 /**
- * Submits a SAML Response message to Elasticsearch for consumption.
+ * Authenticate SAML.
+ *
+ * Submit a SAML response message to Elasticsearch for consumption.
+ *
+ * NOTE: This API is intended for use by custom web applications other than Kibana.
+ * If you are using Kibana, refer to the documentation for configuring SAML single-sign-on on the Elastic Stack.
+ *
+ * The SAML message that is submitted can be:
+ *
+ * * A response to a SAML authentication request that was previously created using the SAML prepare authentication API.
+ * * An unsolicited SAML message in the case of an IdP-initiated single sign-on (SSO) flow.
+ *
+ * In either case, the SAML message needs to be a base64 encoded XML document with a root element of `<Response>`.
+ *
+ * After successful validation, Elasticsearch responds with an Elasticsearch internal access token and refresh token that can be subsequently used for authentication.
+ * This API endpoint essentially exchanges SAML responses that indicate successful authentication in the IdP for Elasticsearch access and refresh tokens, which can be used for authentication against Elasticsearch.
  * @rest_spec_name security.saml_authenticate
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id security-api-saml-authenticate
+ * @ext_doc_id security-saml-guide
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/saml/authenticate'
+      methods: ['POST']
+    }
+  ]
   body: {
-    /** The SAML response as it was sent by the user’s browser, usually a Base64 encoded XML document. */
+    /** The SAML response as it was sent by the user's browser, usually a Base64 encoded XML document. */
     content: string
-    /** A json array with all the valid SAML Request Ids that the caller of the API has for the current user. */
+    /** A JSON array with all the valid SAML Request Ids that the caller of the API has for the current user. */
     ids: Ids
     /** The name of the realm that should authenticate the SAML response. Useful in cases where many SAML realms are defined. */
     realm?: string

@@ -1,0 +1,31 @@
+# summary:
+description: A successful response from `GET _cat/ml/datafeeds?v=true&format=json`.
+# type: response
+# response_code:
+value: |-
+  [
+    {
+      "id": "datafeed-high_sum_total_sales",
+      "state": "stopped",
+      "buckets.count": "743",
+      "search.count": "7"
+    },
+    {
+      "id": "datafeed-low_request_rate",
+      "state": "stopped",
+      "buckets.count": "1457",
+      "search.count": "3"
+    },
+    {
+      "id": "datafeed-response_code_rates",
+      "state": "stopped",
+      "buckets.count": "1460",
+      "search.count": "18"
+    },
+    {
+      "id": "datafeed-url_scanning",
+      "state": "stopped",
+      "buckets.count": "1460",
+      "search.count": "18"
+    }
+  ]

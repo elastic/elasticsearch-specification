@@ -1,0 +1,14 @@
+summary: Query API keys by ID
+method_request: GET /_security/_query/api_key?with_limited_by=true
+description: Run `GET /_security/_query/api_key?with_limited_by=true` to retrieve an API key by ID.
+# type: request
+value: |-
+  {
+    "query": {
+      "ids": {
+        "values": [
+          "VuaCfGcBCdbkQm-e5aOx"
+        ]
+      }
+    }
+  }

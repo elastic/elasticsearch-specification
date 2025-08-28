@@ -1,0 +1,14 @@
+summary: A completion task
+description: Run `PUT _inference/completion/alibabacloud_ai_search_completion` to create an inference endpoint that performs a completion task.
+method_request: 'PUT _inference/completion/alibabacloud_ai_search_completion'
+# type: "request"
+value: |-
+  {
+      "service": "alibabacloud-ai-search",
+      "service_settings": {
+          "host" : "default-j01.platform-cn-shanghai.opensearch.aliyuncs.com",
+          "api_key": "AlibabaCloud-API-Key",
+          "service_id": "ops-qwen-turbo",
+          "workspace" : "default"
+      }
+  }

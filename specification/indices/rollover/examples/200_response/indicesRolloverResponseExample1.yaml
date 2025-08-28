@@ -1,0 +1,28 @@
+# summary:
+description: >
+  An abbreviated response from `GET /_segments`.
+# type: response
+# response_code: 200
+value:
+  _shards: {}
+  indices:
+    test:
+      shards:
+        0:
+          - routing:
+              state: STARTED
+              primary: true
+              node: zDC_RorJQCao9xf9pg3Fvw
+            num_committed_segments: 0
+            num_search_segments: 1
+            segments:
+              _0:
+                generation: 0
+                num_docs: 1
+                deleted_docs: 0
+                size_in_bytes: 3800
+                committed: false
+                search: true
+                version: '7.0.0'
+                compound: true
+                attributes: {}

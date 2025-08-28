@@ -17,16 +17,9 @@
  * under the License.
  */
 
-import { double, integer, long } from '@_types/Numeric'
 import { Field, Id } from '@_types/common'
-import {
-  Duration,
-  DateTime,
-  DurationValue,
-  UnitSeconds,
-  UnitMillis,
-  EpochTime
-} from '@_types/Time'
+import { double } from '@_types/Numeric'
+import { DurationValue, EpochTime, UnitMillis, UnitSeconds } from '@_types/Time'
 
 export class Influencer {
   /**

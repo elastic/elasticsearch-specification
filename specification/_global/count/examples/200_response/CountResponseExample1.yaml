@@ -1,0 +1,14 @@
+# summary:
+description: A successful response from `GET /my-index-000001/_count?q=user:kimchy`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "count": 1,
+    "_shards": {
+      "total": 1,
+      "successful": 1,
+      "skipped": 0,
+      "failed": 0
+    }
+  }

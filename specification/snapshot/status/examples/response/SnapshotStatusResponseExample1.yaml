@@ -1,0 +1,79 @@
+summary: All shard stats present
+description: >
+  A successful response from `GET _snapshot/my_repository/snapshot_2/_status`.
+  The response contains detailed status information for `snapshot_2` in the `my_repository` repository.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "snapshots" : [
+      {
+        "snapshot" : "snapshot_2",
+        "repository" : "my_repository",
+        "uuid" : "lNeQD1SvTQCqqJUMQSwmGg",
+        "state" : "SUCCESS",
+        "include_global_state" : false,
+        "shards_stats" : {
+          "initializing" : 0,
+          "started" : 0,
+          "finalizing" : 0,
+          "done" : 1,
+          "failed" : 0,
+          "total" : 1
+        },
+        "stats" : {
+          "incremental" : {
+            "file_count" : 3,
+            "size_in_bytes" : 5969
+          },
+          "total" : {
+            "file_count" : 4,
+            "size_in_bytes" : 6024
+          },
+          "start_time_in_millis" : 1594829326691,
+          "time_in_millis" : 205
+        },
+        "indices" : {
+          "index_1" : {
+            "shards_stats" : {
+              "initializing" : 0,
+              "started" : 0,
+              "finalizing" : 0,
+              "done" : 1,
+              "failed" : 0,
+              "total" : 1
+            },
+            "stats" : {
+              "incremental" : {
+                "file_count" : 3,
+                "size_in_bytes" : 5969
+              },
+              "total" : {
+                "file_count" : 4,
+                "size_in_bytes" : 6024
+              },
+              "start_time_in_millis" : 1594829326896,
+              "time_in_millis" : 0
+            },
+            "shards" : {
+              "0" : {
+                "stage" : "DONE",
+                "stats" : {
+                  "incremental" : {
+                    "file_count" : 3,
+                    "size_in_bytes" : 5969
+                  },
+                  "total" : {
+                    "file_count" : 4,
+                    "size_in_bytes" : 6024
+                  },
+                  "start_time_in_millis" : 1594829326896,
+                  "time_in_millis" : 0
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }

@@ -17,15 +17,24 @@
  * under the License.
  */
 
-import { Detector } from '@ml/_types/Detector'
 import { RequestBase } from '@_types/Base'
+import { Detector } from '@ml/_types/Detector'
 
 /**
+ * Validate an anomaly detection job.
  * @rest_spec_name ml.validate_detector
  * @availability stack since=5.4.0 stability=stable visibility=private
  * @availability serverless stability=stable visibility=private
+ * @doc_tag ml anomaly
+ * @doc_id apis
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/_validate/detector'
+      methods: ['POST']
+    }
+  ]
   /** @codegen_name detector */
   body: Detector
 }

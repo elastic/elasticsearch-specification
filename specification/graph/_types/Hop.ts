@@ -28,7 +28,7 @@ export class Hop {
   /**
    * An optional guiding query that constrains the Graph API as it explores connected terms.
    */
-  query: QueryContainer
+  query?: QueryContainer
   /**
    * Contains the fields you are interested in.
    */

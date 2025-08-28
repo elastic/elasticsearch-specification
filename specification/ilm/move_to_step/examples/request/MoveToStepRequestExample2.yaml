@@ -1,0 +1,16 @@
+summary: Move to warm step
+method_request: POST _ilm/move/my-index-000001
+description: >
+  Run `POST _ilm/move/my-index-000001` to move `my-index-000001` from the end of hot phase into the start of warm.
+# type: request
+value: |-
+  {
+    "current_step": {
+      "phase": "hot",
+      "action": "complete",
+      "name": "complete"
+    },
+    "next_step": {
+      "phase": "warm"
+    }
+  }

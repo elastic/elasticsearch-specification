@@ -17,30 +17,48 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { ApiKeyAggregationContainer, ApiKeyQueryContainer } from './types'
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { ApiKeyAggregationContainer, ApiKeyQueryContainer } from './types'
 
 /**
- * Retrieves information for API keys in a paginated manner. You can optionally filter the results with a query.
+ * Find API keys with a query.
+ *
+ * Get a paginated list of API keys and their information.
+ * You can optionally filter the results with a query.
+ *
+ * To use this API, you must have at least the `manage_own_api_key` or the `read_security` cluster privileges.
+ * If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.
+ * If you have the `read_security`, `manage_api_key`, or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.
+ * Refer to the linked documentation for examples of how to find API keys:
  * @rest_spec_name security.query_api_keys
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_own_api_key, read_security
+ * @ext_doc_id security-query-api-keys
+ * @doc_id security-api-query-api-key
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/_query/api_key'
+      methods: ['GET', 'POST']
+    }
+  ]
   query_parameters: {
     /**
      * Return the snapshot of the owner user's role descriptors associated with the API key.
-     * An API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors.
+     * An API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors (effectively limited by it).
+     * An API key cannot retrieve any API key’s limited-by role descriptors (including itself) unless it has `manage_api_key` or higher privileges.
      * @availability stack since=8.5.0
      * @availability serverless
      */
     with_limited_by?: boolean
     /**
-     * Determines whether to also retrieve the profile uid, for the API key owner principal, if it exists.
+     * Determines whether to also retrieve the profile UID for the API key owner principal.
+     * If it exists, the profile UID is returned under the `profile_uid` response field for each API key.
      * @server_default false
      * @availability stack since=8.14.0
      * @availability serverless
@@ -70,29 +88,38 @@ export interface Request extends RequestBase {
      * `ids`, `prefix`, `wildcard`, `exists`, `range`, and `simple_query_string`.
      * You can query the following public information associated with an API key: `id`, `type`, `name`,
      * `creation`, `expiration`, `invalidated`, `invalidation`, `username`, `realm`, and `metadata`.
+     *
+     * NOTE: The queryable string values associated with API keys are internally mapped as keywords.
+     * Consequently, if no `analyzer` parameter is specified for a `match` query, then the provided match query string is interpreted as a single keyword value.
+     * Such a match query is hence equivalent to a `term` query.
      */
     query?: ApiKeyQueryContainer
     /**
-     * Starting document offset.
-     * By default, you cannot page through more than 10,000 hits using the from and size parameters.
+     * The starting document offset.
+     * It must not be negative.
+     * By default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.
      * To page through more hits, use the `search_after` parameter.
      * @server_default 0
      */
     from?: integer
     /**
+     * The sort definition.
      * Other than `id`, all public fields of an API key are eligible for sorting.
      * In addition, sort can also be applied to the `_doc` field to sort by index order.
-     * @doc_id sort-search-results */
+     * @ext_doc_id sort-search-results */
     sort?: Sort
     /**
      * The number of hits to return.
+     * It must not be negative.
+     * The `size` parameter can be set to `0`, in which case no API key matches are returned, only the aggregation results.
      * By default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.
      * To page through more hits, use the `search_after` parameter.
      * @server_default 10
      */
     size?: integer
     /**
-     * Search after definition
+     * The search after definition.
+     * @ext_doc_id search-after
      */
     search_after?: SortResults
   }

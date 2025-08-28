@@ -1,0 +1,15 @@
+# summary:
+description: A successful response from `GET /_cat/transforms?v=true&format=json`.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "id" : "ecommerce_transform",
+      "state" : "started",
+      "checkpoint" : "1",
+      "documents_processed" : "705",
+      "checkpoint_progress" : "100.00",
+      "changes_last_detection_time" : null
+    }
+  ]

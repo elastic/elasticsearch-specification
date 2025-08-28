@@ -1,0 +1,5 @@
+# summary:
+description: A successful response from `DELETE /_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown`.
+# type: response
+# response_code: ''
+value: "{\n    \"acknowledged\": true\n}"

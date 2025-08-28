@@ -17,22 +17,32 @@
  * under the License.
  */
 
-import { AnalysisConfig } from '@ml/_types/Analysis'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Field } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { AnalysisConfig } from '@ml/_types/Analysis'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
- * Makes an estimation of the memory usage for an anomaly detection job model.
- * It is based on analysis configuration details for the job and cardinality
+ * Estimate job model memory usage.
+ *
+ * Make an estimation of the memory usage for an anomaly detection job model.
+ * The estimate is based on analysis configuration details for the job and cardinality
  * estimates for the fields it references.
  * @rest_spec_name ml.estimate_model_memory
  * @availability stack since=7.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-estimate-memory
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/_estimate_model_memory'
+      methods: ['POST']
+    }
+  ]
   body: {
     /**
      * For a list of the properties that you can specify in the

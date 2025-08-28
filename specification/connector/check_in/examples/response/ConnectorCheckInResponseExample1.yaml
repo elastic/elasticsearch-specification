@@ -1,0 +1,5 @@
+# summary: connector/apis/check-in-connector-api.asciidoc:73
+# description: ''
+# type: response
+# response_code: ''
+value: "{\n    \"result\": \"updated\"\n}"

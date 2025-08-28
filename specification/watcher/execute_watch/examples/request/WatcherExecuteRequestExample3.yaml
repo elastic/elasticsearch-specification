@@ -1,0 +1,34 @@
+summary: Run a watch inline
+method_request: POST _watcher/watch/_execute
+description: >
+  Run `POST _watcher/watch/_execute` to run a watch inline. All other settings for this API still apply when inlining a watch. In
+  this example, while the inline watch defines a compare condition, during the execution this condition will be ignored.
+# type: request
+value: |-
+  {
+    "watch" : {
+      "trigger" : { "schedule" : { "interval" : "10s" } },
+      "input" : {
+        "search" : {
+          "request" : {
+            "indices" : [ "logs" ],
+            "body" : {
+              "query" : {
+                "match" : { "message": "error" }
+              }
+            }
+          }
+        }
+      },
+      "condition" : {
+        "compare" : { "ctx.payload.hits.total" : { "gt" : 0 }}
+      },
+      "actions" : {
+        "log_error" : {
+          "logging" : {
+            "text" : "Found {{ctx.payload.hits.total}} errors in the logs"
+          }
+        }
+      }
+    }
+  }

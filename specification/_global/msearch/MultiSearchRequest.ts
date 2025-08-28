@@ -19,16 +19,45 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, Routing, SearchType } from '@_types/common'
-import { long } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
 import { RequestItem } from './types'
 
 /**
+ * Run multiple searches.
+ *
+ * The format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.
+ * The structure is as follows:
+ *
+ * ```
+ * header\n
+ * body\n
+ * header\n
+ * body\n
+ * ```
+ *
+ * This structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.
+ *
+ * IMPORTANT: The final line of data must end with a newline character `\n`.
+ * Each newline character may be preceded by a carriage return `\r`.
+ * When sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.
  * @rest_spec_name msearch
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
+ * @doc_tag search
+ * @doc_id search-multi-search
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_msearch'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_msearch'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and index aliases to search.
@@ -61,14 +90,29 @@ export interface Request extends RequestBase {
      */
     ignore_unavailable?: boolean
     /**
-     * Maximum number of concurrent searches the multi search API can execute.
+     * Indicates whether hit.matched_queries should be rendered as a map that includes
+     * the name of the matched query associated with its score (true)
+     * or as an array containing the name of the matched queries (false)
+     * This functionality reruns each named query on every hit in a search response.
+     * Typically, this adds a small overhead to a request.
+     * However, using computationally expensive named queries on a large number of hits may add significant overhead.
+     * @server_default false
      */
-    max_concurrent_searches?: long
+    include_named_queries_score?: boolean
+    /**
+     * Comma-separated list of data streams, indices, and index aliases to use as default
+     */
+    index?: Indices
+    /**
+     * Maximum number of concurrent searches the multi search API can execute.
+     * Defaults to `max(1, (# of data nodes * min(search thread pool size, 10)))`.
+     */
+    max_concurrent_searches?: integer
     /**
      * Maximum number of concurrent shard requests that each sub-search request executes per node.
      * @server_default 5
      */
-    max_concurrent_shard_requests?: long
+    max_concurrent_shard_requests?: integer
     /**
      * Defines a threshold that enforces a pre-filter roundtrip to prefilter search shards based on query rewriting if the number of shards the search request expands to exceeds the threshold. This filter roundtrip can limit the number of shards significantly if for instance a shard can not match any documents based on its rewrite method i.e., if date filters are mandatory to match but the shard bounds and the query are disjoint.
      */

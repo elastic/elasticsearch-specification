@@ -18,11 +18,28 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
+ * Get enrich stats.
  * Returns enrich coordinator statistics and information about enrich policies that are currently executing.
  * @rest_spec_name enrich.stats
  * @availability stack since=7.5.0 stability=stable
- * @availability serverless stability=stable visibility=public
+ * @availability serverless stability=stable visibility=private
+ * @doc_id enrich-stats-api
  */
-export interface Request extends RequestBase {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_enrich/_stats'
+      methods: ['GET']
+    }
+  ]
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+  }
+}

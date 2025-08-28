@@ -18,16 +18,25 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, DataStreamNames } from '@_types/common'
+import { DataStreamNames, ExpandWildcards } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Removes the data lifecycle from a data stream rendering it not managed by the data stream lifecycle
+ * Delete data stream lifecycles.
+ * Removes the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.
  * @rest_spec_name indices.delete_data_lifecycle
  * @availability stack since=8.11.0 stability=stable
- * @availability serverless stability=stable visibility=public
+ * @availability serverless stability=stable visibility=private
+ * @doc_id data-stream-delete-lifecycle
+ * @ext_doc_id data-stream-lifecycle
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/{name}/_lifecycle'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     name: DataStreamNames
   }

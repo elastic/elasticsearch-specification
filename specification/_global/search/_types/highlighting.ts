@@ -17,12 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Fields } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Analyzer } from '@_types/analysis/analyzers'
 
 export enum BoundaryScanner {
   /**
@@ -152,7 +151,9 @@ export class HighlightBase {
 
 export class Highlight extends HighlightBase {
   encoder?: HighlighterEncoder
-  fields: Dictionary<Field, HighlightField>
+  fields:
+    | SingleKeyDictionary<Field, HighlightField>
+    | SingleKeyDictionary<Field, HighlightField>[]
 }
 
 export enum HighlighterEncoder {
@@ -193,5 +194,4 @@ export enum HighlighterType {
 export class HighlightField extends HighlightBase {
   fragment_offset?: integer
   matched_fields?: Fields
-  analyzer?: Analyzer
 }

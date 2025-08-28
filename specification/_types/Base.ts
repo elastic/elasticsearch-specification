@@ -34,12 +34,34 @@ import { DateTime } from './Time'
 export class RequestBase implements CommonQueryParameters {}
 
 export class WriteResponseBase {
+  /**
+   * The unique identifier for the added document.
+   */
   _id: Id
+  /**
+   * The name of the index the document was added to.
+   */
   _index: IndexName
+  /**
+   * The primary term assigned to the document for the indexing operation.
+   */
   _primary_term?: long
+  /**
+   * The result of the indexing operation: `created` or `updated`.
+   */
   result: Result
+  /**
+   * The sequence number assigned to the document for the indexing operation.
+   * Sequence numbers are used to ensure an older version of a document doesn't overwrite a newer version.
+   */
   _seq_no?: SequenceNumber
+  /**
+   * Information about the replication process of the operation.
+   */
   _shards: ShardStatistics
+  /**
+   * The document version, which is incremented each time the document is updated.
+   */
   _version: VersionNumber
   forced_refresh?: boolean
 }
@@ -52,14 +74,46 @@ export class AcknowledgedResponseBase {
 export class DynamicResponseBase {}
 
 export class ElasticsearchVersionInfo {
+  /**
+   * The Elasticsearch Git commit's date.
+   */
   build_date: DateTime
+  /**
+   * The build flavor. For example, `default`.
+   */
   build_flavor: string
+  /**
+   * The Elasticsearch Git commit's SHA hash.
+   */
   build_hash: string
+  /**
+   * Indicates whether the Elasticsearch build was a snapshot.
+   */
   build_snapshot: boolean
+  /**
+   * The build type that corresponds to how Elasticsearch was installed.
+   * For example, `docker`, `rpm`, or `tar`.
+   */
   build_type: string
+  /**
+   * The version number of Elasticsearch's underlying Lucene software.
+   */
   lucene_version: VersionString
+  /**
+   * The minimum index version with which the responding node can read from disk.
+   */
   minimum_index_compatibility_version: VersionString
+  /**
+   * The minimum node version with which the responding node can communicate.
+   * Also the minimum version from which you can perform a rolling upgrade.
+   */
   minimum_wire_compatibility_version: VersionString
+  /**
+   * The Elasticsearch version number.
+   *
+   * ::: IMPORTANT: For Serverless deployments, this static value is always `8.11.0` and is used solely for backward compatibility with legacy clients.
+   *  Serverless environments are versionless and automatically upgraded, so this value can be safely ignored.
+   */
   number: string
 }
 
@@ -89,7 +143,8 @@ export class IndicesResponseBase extends AcknowledgedResponseBase {
 }
 
 export class ShardsOperationResponseBase {
-  _shards: ShardStatistics
+  // _shards is always returned, but not when wait_for_completion is false in the request
+  _shards?: ShardStatistics
 }
 
 export class CustomResponseBuilderBase {}

@@ -17,10 +17,14 @@
  * under the License.
  */
 
+import { Names } from '@_types/common'
+import { Duration } from '@_types/Time'
 import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Returns the snapshot repositories for a cluster.
+ * Get snapshot repository information.
+ *
+ * Get a list of snapshot repositories for a cluster.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.
  * @rest_spec_name cat.repositories
  * @availability stack since=2.1.0 stability=stable
@@ -28,4 +32,36 @@ import { CatRequestBase } from '@cat/_types/CatBase'
  * @doc_id cat-repositories
  * @cluster_privileges monitor_snapshot
  */
-export interface Request extends CatRequestBase {}
+export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/repositories'
+      methods: ['GET']
+    }
+  ]
+  query_parameters: {
+    /**
+     * List of columns to appear in the response. Supports simple wildcards.
+     */
+    h?: Names
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
+    /**
+     * If `true`, the request computes the list of selected nodes from the
+     * local cluster state. If `false` the list of selected nodes are computed
+     * from the cluster state of the master node. In both cases the coordinating
+     * node will send requests for further information to each selected node.
+     * @server_default false
+     */
+    local?: boolean
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+  }
+}

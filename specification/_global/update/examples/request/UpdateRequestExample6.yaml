@@ -1,0 +1,10 @@
+summary: Remove subfields with a script
+method_request: POST test/_update/1
+description: >
+  Run `POST test/_update/1` to use a script to remove a subfield from an object field.
+# type: request
+value: "{
+
+  \  \"script\": \"ctx._source['my-object'].remove('my-subfield')\"
+
+  }"

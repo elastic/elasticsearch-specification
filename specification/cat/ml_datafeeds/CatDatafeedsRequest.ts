@@ -17,17 +17,19 @@
  * under the License.
  */
 
-import { CatRequestBase, CatDatafeedColumns } from '@cat/_types/CatBase'
 import { Id } from '@_types/common'
 import { TimeUnit } from '@_types/Time'
+import { CatDatafeedColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Returns configuration and usage information about datafeeds.
+ * Get datafeeds.
+ *
+ * Get configuration and usage information about datafeeds.
  * This API returns a maximum of 10,000 datafeeds.
  * If the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`
  * cluster privileges to use this API.
  *
- * IMPORTANT: cat APIs are only intended for human consumption using the Kibana
+ * IMPORTANT: CAT APIs are only intended for human consumption using the Kibana
  * console or command line. They are not intended for use by applications. For
  * application consumption, use the get datafeed statistics API.
  *
@@ -38,6 +40,16 @@ import { TimeUnit } from '@_types/Time'
  * @doc_id cat-datafeeds
  */
 export interface Request extends CatRequestBase {
+  urls: [
+    {
+      path: '/_cat/ml/datafeeds'
+      methods: ['GET']
+    },
+    {
+      path: '/_cat/ml/datafeeds/{datafeed_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * A numerical character string that uniquely identifies the datafeed.

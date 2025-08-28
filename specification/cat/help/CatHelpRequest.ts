@@ -17,12 +17,20 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-
 /**
+ * Get CAT help.
+ *
+ * Get help for the CAT APIs.
  * @rest_spec_name cat.help
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat
  */
-export interface Request extends CatRequestBase {}
+export interface Request {
+  urls: [
+    {
+      path: '/_cat'
+      methods: ['GET']
+    }
+  ]
+}

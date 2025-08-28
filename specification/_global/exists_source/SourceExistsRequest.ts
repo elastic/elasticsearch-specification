@@ -29,47 +29,67 @@ import {
 import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
- * Checks if a document's `_source` is stored.
+ * Check for a document source.
+ *
+ * Check whether a document source exists in an index.
+ * For example:
+ *
+ * ```
+ * HEAD my-index-000001/_source/1
+ * ```
+ *
+ * A document's source is not available if it is disabled in the mapping.
  * @rest_spec_name exists_source
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_tag document
+ * @index_privileges read
+ * @doc_id docs-get
+ * @ext_doc_id mapping-source-field
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_source/{id}'
+      methods: ['HEAD']
+    }
+  ]
   path_parts: {
     /**
-     * Identifier of the document.
+     * A unique identifier for the document.
      */
     id: Id
     /**
-     * Comma-separated list of data streams, indices, and aliases.
-     * Supports wildcards (`*`).
+     * A comma-separated list of data streams, indices, and aliases.
+     * It supports wildcards (`*`).
      */
     index: IndexName
   }
   query_parameters: {
     /**
-     * Specifies the node or shard the operation should be performed on.
-     * Random by default.
+     * The node or shard the operation should be performed on.
+     * By default, the operation is randomized between the shard replicas.
      */
     preference?: string
     /**
-     * If true, the request is real-time as opposed to near-real-time.
+     * If `true`, the request is real-time as opposed to near-real-time.
      * @server_default true
-     * @doc_id realtime
+     * @ext_doc_id realtime
      */
     realtime?: boolean
     /**
-     * If `true`, Elasticsearch refreshes all shards involved in the delete by query after the request completes.
+     * If `true`, the request refreshes the relevant shards before retrieving the document.
+     * Setting it to `true` should be done after careful thought and verification that this does not cause a heavy load on the system (and slow down indexing).
      * @server_default false
      */
     refresh?: boolean
     /**
-     * Target the specified primary shard.
-     * @doc_id routing
+     * A custom value used to route operations to a specific shard.
+     * @ext_doc_id routing
      */
     routing?: Routing
     /**
-     * `true` or `false` to return the `_source` field or not, or a list of fields to return.
+     * Indicates whether to return the `_source` field (`true` or `false`) or lists the fields to return.
      */
     _source?: SourceConfigParam
     /**
@@ -81,12 +101,12 @@ export interface Request extends RequestBase {
      */
     _source_includes?: Fields
     /**
-     * Explicit version number for concurrency control.
-     * The specified version must match the current version of the document for the request to succeed.
+     * The version number for concurrency control.
+     * It must match the current version of the document for the request to succeed.
      */
     version?: VersionNumber
     /**
-     * Specific version type: `external`, `external_gte`.
+     * The version type.
      */
     version_type?: VersionType
   }

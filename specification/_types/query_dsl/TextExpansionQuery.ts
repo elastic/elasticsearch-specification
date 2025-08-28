@@ -17,9 +17,12 @@
  * under the License.
  */
 
-import { TokenPruningConfig } from './TokenPruningConfig'
+import { TokenPruningConfig } from '../TokenPruningConfig'
 import { QueryBase } from './abstractions'
 
+/**
+ * @ext_doc_id query-dsl-text-expansion-query
+ */
 export class TextExpansionQuery extends QueryBase {
   /** The text expansion NLP model to use */
   model_id: string

@@ -17,19 +17,19 @@
  * under the License.
  */
 
+import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Id, IndicesOptions } from '@_types/common'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
-import { Duration } from '@_types/Time'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { ScriptField } from '@_types/Scripting'
+import { Duration } from '@_types/Time'
+import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
- * Updates the properties of a datafeed.
+ * Update a datafeed.
  * You must stop and start the datafeed for the changes to be applied.
  * When Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at
  * the time of the update and runs the query using those same roles. If you provide secondary authorization headers,
@@ -38,8 +38,16 @@ import { ScriptField } from '@_types/Scripting'
  * @availability stack since=6.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-update-datafeed
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/datafeeds/{datafeed_id}/_update'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * A numerical character string that uniquely identifies the datafeed.
@@ -57,13 +65,7 @@ export interface Request extends RequestBase {
     allow_no_indices?: boolean
     /**
      * Type of index that wildcard patterns can match. If the request can target data streams, this argument determines
-     * whether wildcard expressions match hidden data streams. Supports comma-separated values. Valid values are:
-     *
-     * * `all`: Match any data stream or index, including hidden ones.
-     * * `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.
-     * * `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or both.
-     * * `none`: Wildcard patterns are not accepted.
-     * * `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.
+     * whether wildcard expressions match hidden data streams. Supports comma-separated values.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards

@@ -22,14 +22,22 @@ import { ExpandWildcards, Indices } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns information about one or more indices. For data streams, the API returns information about the
+ * Get index information.
+ * Get information about one or more indices. For data streams, the API returns information about the
  * stream’s backing indices.
  * @rest_spec_name indices.get
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges view_index_metadata, manage
+ * @doc_id indices-get-index
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and index aliases used to limit the request.

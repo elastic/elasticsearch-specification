@@ -17,13 +17,15 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, IndexName } from '@_types/common'
 import { Script } from '@_types/Scripting'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export type RuntimeFields = Dictionary<Field, RuntimeField>
 
 export class RuntimeField {
+  /** For type `composite` */
+  fields?: Dictionary<string, CompositeSubField>
   /** For type `lookup` */
   fetch_fields?: RuntimeFieldFetchFields[]
   /**
@@ -47,6 +49,10 @@ export class RuntimeField {
   type: RuntimeFieldType
 }
 
+class CompositeSubField {
+  type: RuntimeFieldType
+}
+
 /** @shortcut_property field */
 export class RuntimeFieldFetchFields {
   field: Field
@@ -59,6 +65,7 @@ export enum RuntimeFieldType {
   date,
   double,
   geo_point,
+  geo_shape,
   ip,
   keyword,
   long,

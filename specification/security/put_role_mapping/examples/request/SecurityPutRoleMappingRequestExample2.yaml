@@ -1,0 +1,13 @@
+summary: Roles for specific users
+method_request: POST /_security/role_mapping/mapping2
+description: >
+  Run `POST /_security/role_mapping/mapping2` to assign the "user" and "admin" roles to specific users.
+# type: request
+value: |-
+  {
+    "roles": [ "user", "admin" ],
+    "enabled": true,
+    "rules": {
+      "field" : { "username" : [ "esadmin01", "esadmin02" ] }
+    }
+  }

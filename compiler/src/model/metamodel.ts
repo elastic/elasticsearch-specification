@@ -126,11 +126,11 @@ export class Property {
   description?: string
   docUrl?: string
   docId?: string
-  since?: string
+  extDocId?: string
+  extDocUrl?: string
   serverDefault?: boolean | string | number | string[] | number[]
   deprecation?: Deprecation
   availability?: Availabilities
-  stability?: Stability
   /**
    * If specified takes precedence over `name` when generating code. `name` is always the value
    * to be sent over the wire
@@ -160,6 +160,8 @@ export abstract class BaseType {
   /** Link to public documentation */
   docUrl?: string
   docId?: string
+  extDocId?: string
+  extDocUrl?: string
   deprecation?: Deprecation
   /** If this endpoint has a quirk that needs special attention, give a short explanation about it */
   esQuirk?: string
@@ -180,7 +182,7 @@ export abstract class BaseType {
   specLocation: string
 }
 
-export type Variants = ExternalTag | InternalTag | Container
+export type Variants = ExternalTag | InternalTag | Container | Untagged
 
 export class VariantBase {
   /**
@@ -207,12 +209,23 @@ export class Container extends VariantBase {
   kind: 'container'
 }
 
+export class Untagged extends VariantBase {
+  kind: 'untagged'
+  untypedVariant: TypeName
+}
+
 /**
  * Inherits clause (aka extends or implements) for an interface or request
  */
 export class Inherits {
   type: TypeName
   generics?: ValueOf[]
+}
+
+export class Behavior {
+  type: TypeName
+  generics?: ValueOf[]
+  meta?: Record<string, string>
 }
 
 /**
@@ -226,12 +239,11 @@ export class Interface extends BaseType {
    */
   generics?: TypeName[]
   inherits?: Inherits
-  implements?: Inherits[]
 
   /**
    * Behaviors directly implemented by this interface
    */
-  behaviors?: Inherits[]
+  behaviors?: Behavior[]
 
   /**
    * Behaviors attached to this interface, coming from the interface itself (see `behaviors`)
@@ -249,6 +261,35 @@ export class Interface extends BaseType {
 }
 
 /**
+ * An alternative of an example, coded in a given language.
+ */
+export class ExampleAlternative {
+  language: string
+  code: string
+}
+
+/**
+ * The Example type is used for both requests and responses
+ * This type definition is taken from the OpenAPI spec
+ *     https://spec.openapis.org/oas/v3.1.0#example-object
+ * With the exception of using String as the 'value' type
+ */
+export class Example {
+  /** Short description. */
+  summary?: string
+  /** Long description. */
+  description?: string
+  /** request method and URL */
+  method_request?: string
+  /** Embedded literal example. Mutually exclusive with `external_value` */
+  value?: string
+  /** A URI that points to the literal example */
+  external_value?: string
+  /** An array of alternatives for this example in other languages */
+  alternatives?: ExampleAlternative[]
+}
+
+/**
  * A request type
  */
 export class Request extends BaseType {
@@ -257,7 +298,6 @@ export class Request extends BaseType {
   generics?: TypeName[]
   /** The parent defines additional body properties that are added to the body, that has to be a PropertyBody */
   inherits?: Inherits
-  implements?: Inherits[]
   /** URL path properties */
   path: Property[]
   /** Query string properties */
@@ -275,8 +315,9 @@ export class Request extends BaseType {
    * that don't have a body.
    */
   body: Body
-  behaviors?: Inherits[]
+  behaviors?: Behavior[]
   attachedBehaviors?: string[]
+  examples?: Record<string, Example>
 }
 
 /**
@@ -286,9 +327,10 @@ export class Response extends BaseType {
   kind: 'response'
   generics?: TypeName[]
   body: Body
-  behaviors?: Inherits[]
+  behaviors?: Behavior[]
   attachedBehaviors?: string[]
   exceptions?: ResponseException[]
+  examples?: Record<string, Example>
 }
 
 export class ResponseException {
@@ -333,7 +375,6 @@ export class EnumMember {
   codegenName?: string
   description?: string
   deprecation?: Deprecation
-  since?: string
   availability?: Availabilities
 }
 
@@ -358,8 +399,11 @@ export class TypeAlias extends BaseType {
   type: ValueOf
   /** generic parameters: either concrete types or open parameters from the enclosing type */
   generics?: TypeName[]
-  /** Only applicable to `union_of` aliases: identify typed_key unions (external) and variant inventories (internal) */
-  variants?: InternalTag | ExternalTag
+  /**
+   * Only applicable to `union_of` aliases: identify typed_key unions (external), variant inventories (internal)
+   * and untagged variants
+   */
+  variants?: InternalTag | ExternalTag | Untagged
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -397,9 +441,13 @@ export class Endpoint {
   description: string
   docUrl: string
   docId?: string
+  extDocId?: string
+  extDocUrl?: string
+  extDocDescription?: string
+  extPreviousVersionDocUrl?: string
   deprecation?: Deprecation
   availability: Availabilities
-
+  docTag?: string
   /**
    * If the request value is `null` it means that there is not yet a
    * request type definition for this endpoint.
@@ -415,14 +463,6 @@ export class Endpoint {
 
   urls: UrlTemplate[]
 
-  /**
-   * The version when this endpoint reached its current stability level.
-   * Missing data means "forever", i.e. before any of the target client versions produced from this spec.
-   */
-  since?: string
-  stability?: Stability
-  visibility?: Visibility
-  featureFlag?: string
   requestMediaType?: string[]
   responseMediaType?: string[]
   privileges?: {

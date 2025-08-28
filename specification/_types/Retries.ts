@@ -20,6 +20,12 @@
 import { long } from './Numeric'
 
 export class Retries {
+  /**
+   * The number of bulk actions retried.
+   */
   bulk: long
+  /**
+   * The number of search actions retried.
+   */
   search: long
 }

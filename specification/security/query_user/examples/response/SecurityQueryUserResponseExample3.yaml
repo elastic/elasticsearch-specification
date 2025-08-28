@@ -1,0 +1,39 @@
+summary: Query all users
+description: >
+  A successful response from `GET /_security/_query/user`, which lists all users.
+  It returns a JSON structure that contains the information retrieved from one or more users.
+# type: response
+# response_code:
+value: |-
+  {
+      "total": 2,
+      "count": 2,
+      "users": [ 
+          {
+              "username": "jacknich",
+              "roles": [
+                  "admin",
+                  "other_role1"
+              ],
+              "full_name": "Jack Nicholson",
+              "email": "jacknich@example.com",
+              "metadata": {
+                  "intelligence": 7
+              },
+              "enabled": true
+          },
+          {
+              "username": "sandrakn",
+              "roles": [
+                  "admin",
+                  "other_role1"
+              ],
+              "full_name": "Sandra Knight",
+              "email": "sandrakn@example.com",
+              "metadata": {
+                  "intelligence": 7
+              },
+              "enabled": true
+          }
+      ]
+  }

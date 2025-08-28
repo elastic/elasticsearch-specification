@@ -22,13 +22,21 @@ import { Id } from '@_types/common'
 import { CalendarEvent } from '../_types/CalendarEvent'
 
 /**
- * Adds scheduled events to a calendar.
+ * Add scheduled events to the calendar.
  * @rest_spec_name ml.post_calendar_events
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-post-calendar-event
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/calendars/{calendar_id}/events'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /** A string that uniquely identifies a calendar. */
     calendar_id: Id

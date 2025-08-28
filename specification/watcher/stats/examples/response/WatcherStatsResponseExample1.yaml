@@ -1,0 +1,13 @@
+summary: Basic metrics
+description: A successful response from `GET _watcher/stats`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "watcher_state": "started",  
+    "watch_count": 1, 
+    "execution_thread_pool": {
+      "size": 1000, 
+      "max_size": 1 
+    }
+  }

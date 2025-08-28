@@ -1,0 +1,9 @@
+# summary:
+description: >
+  A successful response from `DELETE /_security/user/jacknich`.
+# type: response
+# response_code:
+value: |-
+  {
+    "found" : true
+  }

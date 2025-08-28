@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { TaskInfo } from '@tasks/_types/TaskInfo'
 import { Id, Name } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
+import { DurationValue, UnitMillis } from '@_types/Time'
+import { TaskInfo } from '@tasks/_types/TaskInfo'
 
 export class ExecutingPolicy {
   name: Name
@@ -38,6 +39,12 @@ export class CacheStats {
   node_id: Id
   count: integer
   hits: integer
+  /* The amount of time in milliseconds spent fetching data from the cache on successful cache hits only. */
+  hits_time_in_millis: DurationValue<UnitMillis>
   misses: integer
+  /* The amount of time in milliseconds spent fetching data from the enrich index and updating the cache, on cache misses only. */
+  misses_time_in_millis: DurationValue<UnitMillis>
   evictions: integer
+  /* An _approximation_ of the size in bytes that the enrich cache takes up on the heap. */
+  size_in_bytes: long
 }

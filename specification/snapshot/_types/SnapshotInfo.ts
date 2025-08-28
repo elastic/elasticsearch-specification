@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import {
   IndexName,
   Metadata,
@@ -28,12 +27,13 @@ import {
 } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
 import {
-  Duration,
   DateTime,
+  Duration,
   DurationValue,
-  UnitMillis,
-  EpochTime
+  EpochTime,
+  UnitMillis
 } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexDetails } from './SnapshotIndexDetails'
 import { InfoFeatureState } from './SnapshotInfoFeatureState'
 import { SnapshotShardFailure } from './SnapshotShardFailure'

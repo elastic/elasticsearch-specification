@@ -17,28 +17,40 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { HttpHeaders, Id, Metadata, VersionString } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import {
   DataframeAnalysisAnalyzedFields,
   DataframeAnalysisContainer,
   DataframeAnalyticsDestination,
   DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
-import { RequestBase } from '@_types/Base'
-import { HttpHeaders, Id, VersionString } from '@_types/common'
-import { integer } from '@_types/Numeric'
 
 /**
- * Instantiates a data frame analytics job.
+ * Create a data frame analytics job.
  * This API creates a data frame analytics job that performs an analysis on the
  * source indices and stores the outcome in a destination index.
+ * By default, the query used in the source configuration is `{"match_all": {}}`.
+ *
+ * If the destination index does not exist, it is created automatically when you start the job.
+ *
+ * If you supply only a subset of the regression or classification parameters, hyperparameter optimization occurs. It determines a value for each of the undefined parameters.
  * @rest_spec_name ml.put_data_frame_analytics
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @index_privileges create_index, index, manage, read, view_index_metadata
  * @doc_id put-dfanalytics
+ * @doc_tag ml data frame
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/data_frame/analytics/{id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the data frame analytics job. This identifier can contain
@@ -114,6 +126,8 @@ export interface Request extends RequestBase {
      * @server_default 1
      */
     max_num_threads?: integer
+
+    _meta?: Metadata
     /**
      * The approximate maximum amount of memory resources that are permitted for
      * analytical processing. If your `elasticsearch.yml` file contains an

@@ -1,0 +1,36 @@
+# summary:
+description: A successful response from `GET /_security/user/_privileges`.
+# type: response
+# response_code:
+value: |-
+  {
+    "cluster" : [
+      "all"
+    ],
+    "global" : [ ],
+    "indices" : [
+      {
+        "names" : [
+          "*"
+        ],
+        "privileges" : [
+          "all"
+        ],
+        "allow_restricted_indices" : true
+      }
+    ],
+    "applications" : [
+      {
+        "application" : "*",
+        "privileges" : [
+          "*"
+        ],
+        "resources" : [
+          "*"
+        ]
+      }
+    ],
+    "run_as" : [
+      "*"
+    ]
+  }

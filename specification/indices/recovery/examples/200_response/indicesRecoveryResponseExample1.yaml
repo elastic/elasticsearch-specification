@@ -1,0 +1,36 @@
+summary: Get segment information
+description: >
+  A successful response from `GET /_recovery?human`, which gets information about ongoing and completed shard recoveries for all data streams and indices in a cluster.
+  This example includes information about a single index recovering a single shard.
+  The source of the recovery is a snapshot repository and the target of the recovery is the `my_es_node` node.
+  The response also includes the number and percentage of files and bytes recovered.
+# type: response
+# response_code: 200
+value:
+  "{\n  \"index1\" : {\n    \"shards\" : [ {\n      \"id\" : 0,\n      \"type\"\
+  \ : \"SNAPSHOT\",\n      \"stage\" : \"INDEX\",\n      \"primary\" : true,\n   \
+  \   \"start_time\" : \"2014-02-24T12:15:59.716\",\n      \"start_time_in_millis\"\
+  : 1393244159716,\n      \"stop_time\" : \"0s\",\n      \"stop_time_in_millis\" :\
+  \ 0,\n      \"total_time\" : \"2.9m\",\n      \"total_time_in_millis\" : 175576,\n\
+  \      \"source\" : {\n        \"repository\" : \"my_repository\",\n        \"snapshot\"\
+  \ : \"my_snapshot\",\n        \"index\" : \"index1\",\n        \"version\" : \"\
+  {version}\",\n        \"restoreUUID\": \"PDh1ZAOaRbiGIVtCvZOMww\"\n      },\n  \
+  \    \"target\" : {\n        \"id\" : \"ryqJ5lO5S4-lSFbGntkEkg\",\n        \"host\"\
+  \ : \"my.fqdn\",\n        \"transport_address\" : \"my.fqdn\",\n        \"ip\" :\
+  \ \"10.0.1.7\",\n        \"name\" : \"my_es_node\"\n      },\n      \"index\" :\
+  \ {\n        \"size\" : {\n          \"total\" : \"75.4mb\",\n          \"total_in_bytes\"\
+  \ : 79063092,\n          \"reused\" : \"0b\",\n          \"reused_in_bytes\" : 0,\n\
+  \          \"recovered\" : \"65.7mb\",\n          \"recovered_in_bytes\" : 68891939,\n\
+  \          \"recovered_from_snapshot\" : \"0b\",\n          \"recovered_from_snapshot_in_bytes\"\
+  \ : 0,\n          \"percent\" : \"87.1%\"\n        },\n        \"files\" : {\n \
+  \         \"total\" : 73,\n          \"reused\" : 0,\n          \"recovered\" :\
+  \ 69,\n          \"percent\" : \"94.5%\"\n        },\n        \"total_time\" : \"\
+  0s\",\n        \"total_time_in_millis\" : 0,\n        \"source_throttle_time\" :\
+  \ \"0s\",\n        \"source_throttle_time_in_millis\" : 0,\n        \"target_throttle_time\"\
+  \ : \"0s\",\n        \"target_throttle_time_in_millis\" : 0\n      },\n      \"\
+  translog\" : {\n        \"recovered\" : 0,\n        \"total\" : 0,\n        \"percent\"\
+  \ : \"100.0%\",\n        \"total_on_start\" : 0,\n        \"total_time\" : \"0s\"\
+  ,\n        \"total_time_in_millis\" : 0\n      },\n      \"verify_index\" : {\n\
+  \        \"check_index_time\" : \"0s\",\n        \"check_index_time_in_millis\"\
+  \ : 0,\n        \"total_time\" : \"0s\",\n        \"total_time_in_millis\" : 0\n\
+  \      }\n    } ]\n  }\n}"

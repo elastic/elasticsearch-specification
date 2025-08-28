@@ -1,0 +1,38 @@
+summary: Get two fields
+# type: "response"
+description: >
+  A successful response from `GET _field_caps?fields=rating,title`.
+  The field `rating` is defined as a long in `index1` and `index2` and as a `keyword` in `index3` and `index4`.
+  The field `rating` is not aggregatable in `index1`.
+  The field `rating` is not searchable in `index4`.
+  The field `title` is defined as text in all indices.
+# response_code: 200,
+value: |-
+  {
+    "indices": [ "index1", "index2", "index3", "index4", "index5" ],
+    "fields": {
+      "rating": {                                   
+        "long": {
+          "metadata_field": false,
+          "searchable": true,
+          "aggregatable": false,
+          "indices": [ "index1", "index2" ],
+          "non_aggregatable_indices": [ "index1" ]  
+        },
+        "keyword": {
+          "metadata_field": false,
+          "searchable": false,
+          "aggregatable": true,
+          "indices": [ "index3", "index4" ],
+          "non_searchable_indices": [ "index4" ]    
+        }
+      },
+      "title": {                                    
+        "text": {
+          "metadata_field": false,
+          "searchable": true,
+          "aggregatable": false
+        }
+      }
+    }
+  }

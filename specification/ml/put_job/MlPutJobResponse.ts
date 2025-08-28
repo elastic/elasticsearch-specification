@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { AnalysisConfigRead, AnalysisLimits } from '@ml/_types/Analysis'
-import { DataDescription } from '@ml/_types/Job'
-import { ModelPlotConfig } from '@ml/_types/ModelPlot'
-import { CustomSettings } from '@ml/_types/Settings'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateTime, Duration } from '@_types/Time'
+import { AnalysisConfigRead, AnalysisLimits } from '@ml/_types/Analysis'
 import { Datafeed } from '@ml/_types/Datafeed'
+import { DataDescription } from '@ml/_types/Job'
+import { ModelPlotConfig } from '@ml/_types/ModelPlot'
+import { CustomSettings } from '@ml/_types/Settings'
 
 export class Response {
   body: {

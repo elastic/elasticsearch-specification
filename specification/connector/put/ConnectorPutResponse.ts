@@ -17,10 +17,12 @@
  * under the License.
  */
 
+import { Id } from '@_types/common'
 import { Result } from '@_types/Result'
 
 export class Response {
   body: {
     result: Result
+    id: Id
   }
 }

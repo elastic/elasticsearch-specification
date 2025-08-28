@@ -1,0 +1,6 @@
+# summary:
+description: A successful response when creating a transform.
+# type: response
+# response_code: 200
+value:
+  acknowledged: true

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RoleDescriptor } from '@security/_types/RoleDescriptor'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata, Name } from '@_types/common'
 import { DurationLarge } from '@_types/Time'
+import { RoleDescriptor } from '@security/_types/RoleDescriptor'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class GrantApiKey {
   name: Name
@@ -30,7 +30,6 @@ export class GrantApiKey {
   expiration?: DurationLarge
   /**
    * The role descriptors for this API key.
-   * This parameter is optional.
    * When it is not specified or is an empty array, the API key has a point in time snapshot of permissions of the specified user or access token.
    * If you supply role descriptors, the resultant permissions are an intersection of API keys permissions and the permissions of the user or access token.
    */

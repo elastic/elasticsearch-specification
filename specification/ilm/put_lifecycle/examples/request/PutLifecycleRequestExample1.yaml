@@ -1,0 +1,33 @@
+# summary:
+method_request: PUT _ilm/policy/my_policy
+description: >
+  Run `PUT _ilm/policy/my_policy` to create a new policy with arbitrary metadata.
+# type: request
+value: |-
+  {
+    "policy": {
+      "_meta": {
+        "description": "used for nginx log",
+        "project": {
+          "name": "myProject",
+          "department": "myDepartment"
+        }
+      },
+      "phases": {
+        "warm": {
+          "min_age": "10d",
+          "actions": {
+            "forcemerge": {
+              "max_num_segments": 1
+            }
+          }
+        },
+        "delete": {
+          "min_age": "30d",
+          "actions": {
+            "delete": {}
+          }
+        }
+      }
+    }
+  }

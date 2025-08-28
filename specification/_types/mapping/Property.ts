@@ -17,15 +17,29 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Metadata, PropertyName } from '@_types/common'
+import { PropertyName } from '@_types/common'
+import {
+  GeoPointProperty,
+  GeoShapeProperty,
+  PointProperty,
+  ShapeProperty
+} from '@_types/mapping/geo'
+import {
+  DateRangeProperty,
+  DoubleRangeProperty,
+  FloatRangeProperty,
+  IntegerRangeProperty,
+  IpRangeProperty,
+  LongRangeProperty
+} from '@_types/mapping/range'
 import { integer } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 import {
   AggregateMetricDoubleProperty,
-  DenseVectorProperty,
   FlattenedProperty,
   NestedProperty,
-  ObjectProperty
+  ObjectProperty,
+  PassthroughObjectProperty
 } from './complex'
 import {
   BinaryProperty,
@@ -45,20 +59,23 @@ import {
   PercolatorProperty,
   RankFeatureProperty,
   RankFeaturesProperty,
+  RankVectorProperty,
   ScaledFloatNumberProperty,
   SearchAsYouTypeProperty,
-  ShortNumberProperty,
   SemanticTextProperty,
+  ShortNumberProperty,
   SparseVectorProperty,
   TextProperty,
   UnsignedLongNumberProperty,
   VersionProperty,
   WildcardProperty
 } from './core'
+import { DenseVectorProperty } from './DenseVectorProperty'
 import { DynamicMapping } from './dynamic-template'
 import {
   CompletionProperty,
   ConstantKeywordProperty,
+  CountedKeywordProperty,
   FieldAliasProperty,
   HistogramProperty,
   IcuCollationProperty,
@@ -66,20 +83,6 @@ import {
   Murmur3HashProperty,
   TokenCountProperty
 } from './specialized'
-import {
-  DateRangeProperty,
-  DoubleRangeProperty,
-  FloatRangeProperty,
-  IntegerRangeProperty,
-  IpRangeProperty,
-  LongRangeProperty
-} from '@_types/mapping/range'
-import {
-  GeoPointProperty,
-  GeoShapeProperty,
-  PointProperty,
-  ShapeProperty
-} from '@_types/mapping/geo'
 
 export class PropertyBase {
   /**
@@ -91,6 +94,27 @@ export class PropertyBase {
   ignore_above?: integer
   dynamic?: DynamicMapping
   fields?: Dictionary<PropertyName, Property>
+  synthetic_source_keep?: SyntheticSourceKeepEnum
+}
+
+export enum SyntheticSourceKeepEnum {
+  /**
+   * Synthetic source diverges from the original source (default)
+   */
+  none,
+  /**
+   * Arrays of the corresponding field or object preserve the original element ordering and duplicate elements.
+   * The synthetic source fragment for such arrays is not guaranteed to match the original source exactly,
+   * e.g. array [1, 2, [5], [[4, [3]]], 5] may appear as-is or in an equivalent format like [1, 2, 5, 4, 3, 5].
+   * The exact format may change in the future, in an effort to reduce the storage overhead of this option.
+   */
+  arrays,
+  /**
+   * The source for both singleton instances and arrays of the corresponding field or object gets recorded.
+   * When applied to objects, the source of all sub-objects and sub-fields gets captured.
+   * Furthermore, the original source of arrays gets captured and appears in synthetic source with no modifications.
+   */
+  all
 }
 
 /**
@@ -123,12 +147,15 @@ export type Property =
   | FlattenedProperty
   | NestedProperty
   | ObjectProperty
+  | PassthroughObjectProperty
+  | RankVectorProperty
   | SemanticTextProperty
   | SparseVectorProperty
 
   // structured
   | CompletionProperty
   | ConstantKeywordProperty
+  | CountedKeywordProperty
   | FieldAliasProperty
   | HistogramProperty
   | IpProperty
@@ -178,6 +205,7 @@ export enum FieldType {
   completion,
   nested,
   object,
+  passthrough,
   version,
   murmur3,
   token_count,
@@ -204,6 +232,7 @@ export enum FieldType {
   shape,
   histogram,
   constant_keyword,
+  counted_keyword,
   aggregate_metric_double,
   dense_vector,
   semantic_text,

@@ -1,0 +1,45 @@
+summary: Multiple substitutions
+method_request: POST /_ingest/_simulate
+description:
+  The pipeline, component template, and index template substitutions replace the existing pipeline details for the
+  duration of this request.
+# type: request
+value:
+  docs:
+    - _id: id
+      _index: my-index
+      _source:
+        foo: bar
+    - _id: id
+      _index: my-index
+      _source:
+        foo: rab
+  pipeline_substitutions:
+    my-pipeline:
+      processors:
+        - set:
+            field: field3
+            value: value3
+  component_template_substitutions:
+    my-component-template:
+      template:
+        mappings:
+          dynamic: true
+          properties:
+            field3:
+              type: keyword
+        settings:
+          index:
+            default_pipeline: my-pipeline
+  index_template_substitutions:
+    my-index-template:
+      index_patterns:
+        - 'my-index-*'
+      composed_of:
+        - component_template_1
+        - component_template_2
+  mapping_addition:
+    dynamic: strict
+    properties:
+      foo:
+        type: keyword

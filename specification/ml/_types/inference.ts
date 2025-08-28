@@ -17,8 +17,11 @@
  * under the License.
  */
 
-import { Field, IndexName } from '@_types/common'
-import { double, integer } from '@_types/Numeric'
+import { Field, IndexName, ScalarValue } from '@_types/common'
+import { double, float, integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Inference configuration provided when storing the model config
@@ -47,6 +50,8 @@ export class InferenceConfigCreateContainer {
    * @availability serverless
    */
   fill_mask?: FillMaskInferenceOptions
+
+  learning_to_rank?: LearningToRankConfig
   /**
    * Named entity recognition configuration for inference.
    * @availability stack since=8.0.0
@@ -77,6 +82,26 @@ export class InferenceConfigCreateContainer {
    * @availability serverless
    */
   question_answering?: QuestionAnsweringInferenceOptions
+}
+
+export class LearningToRankConfig {
+  default_params?: Dictionary<string, UserDefinedValue>
+  feature_extractors?: Dictionary<string, FeatureExtractor>[]
+  num_top_feature_importance_values: integer
+}
+
+/**
+ * @variants typed_keys_quirk
+ */
+export type FeatureExtractor = QueryFeatureExtractor
+
+/**
+ * @variant name=query_extractor
+ */
+export class QueryFeatureExtractor {
+  default_score?: float
+  feature_name: string
+  query: QueryContainer
 }
 
 export class RegressionInferenceOptions {
@@ -114,6 +139,8 @@ export class ClassificationInferenceOptions {
 export class TokenizationConfigContainer {
   /** Indicates BERT tokenization and its options */
   bert?: NlpBertTokenizationConfig
+  /** Indicates BERT Japanese tokenization and its options */
+  bert_ja?: NlpBertTokenizationConfig
   /**
    * Indicates MPNET tokenization and its options
    * @availability stack since=8.1.0
@@ -126,65 +153,51 @@ export class TokenizationConfigContainer {
    * @availability serverless
    * */
   roberta?: NlpRobertaTokenizationConfig
+
+  xlm_roberta?: XlmRobertaTokenizationConfig
 }
 
-/** BERT and MPNet tokenization configuration options */
-export class NlpBertTokenizationConfig {
+export class CommonTokenizationConfig {
   /**
    * Should the tokenizer lower case the text
    * @server_default false
    */
   do_lower_case?: boolean
   /**
-   * Is tokenization completed with special tokens
-   * @server_default true
-   */
-  with_special_tokens?: boolean
-  /**
    * Maximum input sequence length for the model
    * @server_default 512
    */
   max_sequence_length?: integer
+  /**
+   * Tokenization spanning options. Special value of -1 indicates no spanning takes place
+   * @server_default -1
+   */
+  span?: integer
   /**
    * Should tokenization input be automatically truncated before sending to the model for inference
    * @server_default first
    */
   truncate?: TokenizationTruncate
   /**
-   * Tokenization spanning options. Special value of -1 indicates no spanning takes place
-   * @server_default -1
+   * Is tokenization completed with special tokens
+   * @server_default true
    */
-  span?: integer
+  with_special_tokens?: boolean
 }
 
+/** BERT and MPNet tokenization configuration options */
+export class NlpBertTokenizationConfig extends CommonTokenizationConfig {}
+
 /** RoBERTa tokenization configuration options */
-export class NlpRobertaTokenizationConfig {
+export class NlpRobertaTokenizationConfig extends CommonTokenizationConfig {
   /**
    * Should the tokenizer prefix input with a space character
    * @server_default false
    */
   add_prefix_space?: boolean
-  /**
-   * Is tokenization completed with special tokens
-   * @server_default true
-   */
-  with_special_tokens?: boolean
-  /**
-   * Maximum input sequence length for the model
-   * @server_default 512
-   */
-  max_sequence_length?: integer
-  /**
-   * Should tokenization input be automatically truncated before sending to the model for inference
-   * @server_default first
-   */
-  truncate?: TokenizationTruncate
-  /**
-   * Tokenization spanning options. Special value of -1 indicates no spanning takes place
-   * @server_default -1
-   */
-  span?: integer
 }
+
+export class XlmRobertaTokenizationConfig extends CommonTokenizationConfig {}
 
 /** Text classification configuration options */
 export class TextClassificationInferenceOptions {
@@ -196,6 +209,8 @@ export class TextClassificationInferenceOptions {
   results_field?: string
   /** Classification labels to apply other than the stored labels. Must have the same deminsions as the default configured labels */
   classification_labels?: string[]
+
+  vocabulary?: Vocabulary
 }
 
 /** Zero shot classification configuration options */
@@ -242,6 +257,8 @@ export class TextEmbeddingInferenceOptions {
   tokenization?: TokenizationConfigContainer
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
+
+  vocabulary: Vocabulary
 }
 
 /** Text expansion inference options */
@@ -250,6 +267,7 @@ export class TextExpansionInferenceOptions {
   tokenization?: TokenizationConfigContainer
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
+  vocabulary: Vocabulary
 }
 
 /** Named entity recognition options */
@@ -277,6 +295,7 @@ export class FillMaskInferenceOptions {
   tokenization?: TokenizationConfigContainer
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
+  vocabulary: Vocabulary
 }
 
 /** Question answering inference options */
@@ -454,7 +473,7 @@ export class TrainedModelInferenceFeatureImportance {
   classes?: TrainedModelInferenceClassImportance[]
 }
 
-export type PredictedValue = string | double | boolean | integer
+export type PredictedValue = ScalarValue | ScalarValue[]
 
 export class InferenceResponseResult {
   /**
@@ -476,6 +495,7 @@ export class InferenceResponseResult {
    * For classification models, it may be an integer, double, boolean or string depending on prediction type
    */
   predicted_value?: PredictedValue | PredictedValue[]
+
   /**
    * For fill mask tasks, the response contains the input text sequence with the mask token replaced by the predicted
    * value.

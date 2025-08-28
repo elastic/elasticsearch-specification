@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
-import { integer, long } from '@_types/Numeric'
+import { long } from '@_types/Numeric'
 import { DateTime, DurationValue, UnitMillis } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ActionStatusOptions, ActionType } from './Action'
 import {
   EmailResult,
@@ -92,6 +92,12 @@ export class ExecutionResultInput {
 }
 
 export class ExecutionThreadPool {
+  /**
+   * The largest size of the execution thread pool, which indicates the largest number of concurrent running watches.
+   */
   max_size: long
+  /**
+   * The number of watches that were triggered and are currently queued.
+   */
   queue_size: long
 }

@@ -1,0 +1,17 @@
+# summary:
+description: A successful response from `GET /_slm/stats`.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "retention_runs": 13,
+    "retention_failed": 0,
+    "retention_timed_out": 0,
+    "retention_deletion_time": "1.4s",
+    "retention_deletion_time_millis": 1404,
+    "policy_stats": [ ],
+    "total_snapshots_taken": 1,
+    "total_snapshots_failed": 1,
+    "total_snapshots_deleted": 0,
+    "total_snapshot_deletion_failures": 0
+  }

@@ -20,21 +20,38 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
- * Deletes a synonym rule in a synonym set
+ * Delete a synonym rule.
+ * Delete a synonym rule from a synonym set.
  * @rest_spec_name synonyms.delete_synonym_rule
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_search_synonyms
+ * @doc_id synonym-rule-delete
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_synonyms/{set_id}/{rule_id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
-     * The id of the synonym set to be updated
+     * The ID of the synonym set to update.
      */
     set_id: Id
-
     /**
-     * The id of the synonym rule to be deleted
+     * The ID of the synonym rule to delete.
      */
     rule_id: Id
+  }
+  query_parameters: {
+    /**
+     * If `true`, the request will refresh the analyzers with the deleted synonym rule and wait for the new synonyms to be available before returning.
+     * If `false`, analyzers will not be reloaded with the deleted synonym rule
+     * @server_default true
+     * @availability stack since=9.1.0
+     */
+    refresh?: boolean
   }
 }

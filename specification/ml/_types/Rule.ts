@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Field } from '@_types/common'
 import { double } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { FilterRef } from './Filter'
 
 export class DetectionRule {

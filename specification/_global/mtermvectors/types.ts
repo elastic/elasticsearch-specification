@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { Filter, TermVector } from '@global/termvectors/types'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   Fields,
@@ -31,6 +28,9 @@ import {
 } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { long } from '@_types/Numeric'
+import { Filter, TermVector } from '@global/termvectors/types'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Operation {
   /**
@@ -94,7 +94,7 @@ export class Operation {
 }
 
 export class TermVectorsResult {
-  _id: Id
+  _id?: Id
   _index: IndexName
   _version?: VersionNumber
   took?: long

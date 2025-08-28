@@ -22,13 +22,42 @@ import { ExpandWildcards, Indices, WaitForActiveShards } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Opens a closed index.
+ * Open a closed index.
  * For data streams, the API opens any closed backing indices.
+ *
+ * A closed index is blocked for read/write operations and does not allow all operations that opened indices allow.
+ * It is not possible to index documents or to search for documents in a closed index.
+ * This allows closed indices to not have to maintain internal data structures for indexing or searching documents, resulting in a smaller overhead on the cluster.
+ *
+ * When opening or closing an index, the master is responsible for restarting the index shards to reflect the new state of the index.
+ * The shards will then go through the normal recovery process.
+ * The data of opened or closed indices is automatically replicated by the cluster to ensure that enough shard copies are safely kept around at all times.
+ *
+ * You can open and close multiple indices.
+ * An error is thrown if the request explicitly refers to a missing index.
+ * This behavior can be turned off by using the `ignore_unavailable=true` parameter.
+ *
+ * By default, you must explicitly name the indices you are opening or closing.
+ * To open or close indices with `_all`, `*`, or other wildcard expressions, change the `action.destructive_requires_name` setting to `false`.
+ * This setting can also be changed with the cluster update settings API.
+ *
+ * Closed indices consume a significant amount of disk-space which can cause problems in managed environments.
+ * Closing indices can be turned off with the cluster settings API by setting `cluster.indices.close.enable` to `false`.
+ *
+ * Because opening or closing an index allocates its shards, the `wait_for_active_shards` setting on index creation applies to the `_open` and `_close` index actions as well.
  * @rest_spec_name indices.open
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
+ * @doc_id indices-open-close
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/{index}/_open'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.
@@ -51,7 +80,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards

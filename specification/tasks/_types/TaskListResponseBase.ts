@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { NodeId, TaskId } from '@_types/common'
 import { ErrorCause, TaskFailure } from '@_types/Errors'
+import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { TaskInfo } from '@tasks/_types/TaskInfo'
-import { NodeId, TaskId } from '@_types/common'
-import { Host, Ip, TransportAddress } from '@_types/Networking'
 
 export class TaskListResponseBase {
   node_failures?: ErrorCause[]

@@ -17,21 +17,45 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Refresh, SequenceNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { UserProfileId } from '@security/_types/UserProfile'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
- * Updates specific data for the user profile that's associated with the specified unique ID.
+ * Update user profile data.
+ *
+ * Update specific data for the user profile that is associated with a unique ID.
+ *
+ * NOTE: The user profile feature is designed only for use by Kibana and Elastic's Observability, Enterprise Search, and Elastic Security solutions.
+ * Individual users and external applications should not call this API directly.
+ * Elastic reserves the right to change or remove this feature in future releases without prior notice.
+ *
+ * To use this API, you must have one of the following privileges:
+ *
+ * * The `manage_user_profile` cluster privilege.
+ * * The `update_profile_data` global privilege for the namespaces that are referenced in the request.
+ *
+ * This API updates the `labels` and `data` fields of an existing user profile document with JSON objects.
+ * New keys and their values are added to the profile document and conflicting keys are replaced by data that's included in the request.
+ *
+ * For both labels and data, content is namespaced by the top-level fields.
+ * The `update_profile_data` global privilege grants privileges for updating only the allowed namespaces.
  * @rest_spec_name security.update_user_profile_data
  * @availability stack since=8.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_user_profile
+ * @doc_id security-api-update-user-data
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_security/profile/{uid}/_data'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * A unique identifier for the user profile.
@@ -49,21 +73,25 @@ export interface Request extends RequestBase {
     if_primary_term?: long
     /**
      * If 'true', Elasticsearch refreshes the affected shards to make this operation
-     * visible to search, if 'wait_for' then wait for a refresh to make this operation
-     * visible to search, if 'false' do nothing with refreshes.
+     * visible to search.
+     * If 'wait_for', it waits for a refresh to make this operation visible to search.
+     * If 'false', nothing is done with refreshes.
      * @server_default false
      */
     refresh?: Refresh
   }
   body: {
     /**
-     * Searchable data that you want to associate with the user profile. This
-     * field supports a nested data structure.
+     * Searchable data that you want to associate with the user profile.
+     * This field supports a nested data structure.
+     * Within the labels object, top-level keys cannot begin with an underscore (`_`) or contain a period (`.`).
      */
     labels?: Dictionary<string, UserDefinedValue>
     /**
      * Non-searchable data that you want to associate with the user profile.
      * This field supports a nested data structure.
+     * Within the `data` object, top-level keys cannot begin with an underscore (`_`) or contain a period (`.`).
+     * The data object is not searchable, but can be retrieved with the get user profile API.
      */
     data?: Dictionary<string, UserDefinedValue>
   }

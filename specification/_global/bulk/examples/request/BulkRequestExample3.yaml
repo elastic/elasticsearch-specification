@@ -1,0 +1,16 @@
+summary: Filter for failed operations
+method_request: POST /_bulk
+description: >
+  To return only information about failed operations, run `POST /_bulk?filter_path=items.*.error`.
+# type: request
+value: '{ "update": {"_id": "5", "_index": "index1"} }
+
+  { "doc": {"my_field": "foo"} }
+
+  { "update": {"_id": "6", "_index": "index1"} }
+
+  { "doc": {"my_field": "foo"} }
+
+  { "create": {"_id": "7", "_index": "index1"} }
+
+  { "my_field": "foo" }'

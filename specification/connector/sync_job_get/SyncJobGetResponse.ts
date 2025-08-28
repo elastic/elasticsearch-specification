@@ -20,5 +20,6 @@
 import { ConnectorSyncJob } from '../_types/SyncJob'
 
 export class Response {
+  /** @codegen_name sync_job */
   body: ConnectorSyncJob
 }

@@ -17,11 +17,13 @@
  * under the License.
  */
 
-import { Policy } from '@enrich/_types/Policy'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Duration } from '@_types/Time'
+import { Policy } from '@enrich/_types/Policy'
 
 /**
+ * Create an enrich policy.
  * Creates an enrich policy.
  * @doc_id put-enrich-policy-api
  * @rest_spec_name enrich.put_policy
@@ -29,11 +31,24 @@ import { Name } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_enrich/policy/{name}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Name of the enrich policy to create or update.
      */
     name: Name
+  }
+  query_parameters: {
+    /**
+     * Period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
   body: {
     /**

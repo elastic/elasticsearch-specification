@@ -22,11 +22,29 @@ import { NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Get cache statistics.
+ * Get statistics about the shared cache for partially mounted indices.
  * @rest_spec_name searchable_snapshots.cache_stats
  * @availability stack since=7.13.0 stability=experimental
+ * @cluster_privileges manage
+ * @doc_id searchable-snapshots-api-cache-stats
+ * @ext_doc_id searchable-snapshots
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_searchable_snapshots/cache/stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_searchable_snapshots/{node_id}/cache/stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
+    /**
+     * The names of the nodes in the cluster to target.
+     */
     node_id?: NodeIds
   }
   query_parameters: {

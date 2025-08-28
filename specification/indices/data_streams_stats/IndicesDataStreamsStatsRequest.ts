@@ -21,13 +21,27 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, IndexName } from '@_types/common'
 
 /**
- * Retrieves statistics for one or more data streams.
+ * Get data stream stats.
+ *
+ * Get statistics for one or more data streams.
  * @rest_spec_name indices.data_streams_stats
  * @availability stack since=7.9.0 stability=stable
- * @availability serverless stability=stable visibility=public
+ * @availability serverless stability=stable visibility=private
  * @index_privileges monitor
+ * @doc_tag data stream
+ * @doc_id data-stream-stats-api
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_data_stream/_stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_data_stream/{name}/_stats'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams used to limit the request.

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { float, byte, integer } from '@_types/Numeric'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AcknowledgedResponseBase } from '@_types/Base'
+import { byte, float, integer } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Sparse Embedding tokens are represented as a dictionary
@@ -35,6 +35,13 @@ export type DenseVector = Array<float>
 
 export class SparseEmbeddingResult {
   embedding: SparseVector
+}
+
+/**
+ * The response format for the sparse embedding request.
+ */
+export class SparseEmbeddingInferenceResult {
+  sparse_embedding: Array<SparseEmbeddingResult>
 }
 
 /**
@@ -58,6 +65,16 @@ export class TextEmbeddingResult {
 }
 
 /**
+ * TextEmbeddingInferenceResult is an aggregation of mutually exclusive text_embedding variants
+ * @variants container
+ */
+export class TextEmbeddingInferenceResult {
+  text_embedding_bytes?: Array<TextEmbeddingByteResult>
+  text_embedding_bits?: Array<TextEmbeddingByteResult>
+  text_embedding?: Array<TextEmbeddingResult>
+}
+
+/**
  * The completion result object
  */
 export class CompletionResult {
@@ -65,15 +82,36 @@ export class CompletionResult {
 }
 
 /**
+ * Defines the completion result.
+ */
+export class CompletionInferenceResult {
+  completion: Array<CompletionResult>
+}
+
+/**
  * The rerank result object representing a single ranked document
  * id: the original index of the document in the request
- * score: the score of the document relative to the query
+ * relevance_score: the relevance_score of the document relative to the query
  * text: Optional, the text of the document, if requested
  */
 export class RankedDocument {
   index: integer
-  score: float
+  relevance_score: float
   text?: string
+}
+
+/**
+ * Defines the response for a rerank request.
+ */
+export class RerankedInferenceResult {
+  rerank: Array<RankedDocument>
+}
+
+/**
+ * Acknowledged response. For dry_run, contains the list of pipelines which reference the inference endpoint
+ */
+export class DeleteInferenceEndpointResult extends AcknowledgedResponseBase {
+  pipelines: Array<string>
 }
 
 /**
@@ -82,15 +120,9 @@ export class RankedDocument {
  */
 export class InferenceResult {
   text_embedding_bytes?: Array<TextEmbeddingByteResult>
+  text_embedding_bits?: Array<TextEmbeddingByteResult>
   text_embedding?: Array<TextEmbeddingResult>
   sparse_embedding?: Array<SparseEmbeddingResult>
   completion?: Array<CompletionResult>
   rerank?: Array<RankedDocument>
-}
-
-/**
- * Acknowledged response. For dry_run, contains the list of pipelines which reference the inference endpoint
- */
-export class DeleteInferenceEndpointResult extends AcknowledgedResponseBase {
-  pipelines: Array<string>
 }

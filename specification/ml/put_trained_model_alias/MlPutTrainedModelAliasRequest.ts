@@ -21,8 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { Id, Name } from '@_types/common'
 
 /**
- * Creates or updates a trained model alias. A trained model alias is a logical
- * name used to reference a single trained model.
+ * Create or update a trained model alias.
+ * A trained model alias is a logical name used to reference a single trained
+ * model.
  * You can use aliases instead of trained model identifiers to make it easier to
  * reference your models. For example, you can use aliases in inference
  * aggregations and processors.
@@ -41,8 +42,16 @@ import { Id, Name } from '@_types/common'
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @doc_tag ml trained model
+ * @doc_id put-trained-models-aliases
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/trained_models/{model_id}/model_aliases/{model_alias}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * The alias to create or update. This value cannot end in numbers.

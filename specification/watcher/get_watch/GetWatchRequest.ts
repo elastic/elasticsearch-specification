@@ -21,11 +21,23 @@ import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 /**
+ * Get a watch.
  * @rest_spec_name watcher.get_watch
  * @availability stack since=5.6.0 stability=stable
+ * @cluster_privileges monitor_watcher
+ * @doc_id watcher-api-get-watch
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_watcher/watch/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
+    /**
+     * The watch identifier.
+     */
     id: Name
   }
 }

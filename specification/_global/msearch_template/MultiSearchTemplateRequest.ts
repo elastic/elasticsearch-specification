@@ -23,17 +23,44 @@ import { long } from '@_types/Numeric'
 import { RequestItem } from './types'
 
 /**
- * Runs multiple templated searches with a single request.
+ * Run multiple templated searches.
+ *
+ * Run multiple templated searches with a single request.
+ * If you are providing a text file or text input to `curl`, use the `--data-binary` flag instead of `-d` to preserve newlines.
+ * For example:
+ *
+ * ```
+ * $ cat requests
+ * { "index": "my-index" }
+ * { "id": "my-search-template", "params": { "query_string": "hello world", "from": 0, "size": 10 }}
+ * { "index": "my-other-index" }
+ * { "id": "my-other-search-template", "params": { "query_type": "match_all" }}
+ *
+ * $ curl -H "Content-Type: application/x-ndjson" -XGET localhost:9200/_msearch/template --data-binary "@requests"; echo
+ * ```
  * @rest_spec_name msearch_template
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
+ * @doc_tag search
+ * @doc_id search-multi-search-template
+ * @ext_doc_id search-templates
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_msearch/template'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/_msearch/template'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
-     * Comma-separated list of data streams, indices, and aliases to search.
-     * Supports wildcards (`*`).
+     * A comma-separated list of data streams, indices, and aliases to search.
+     * It supports wildcards (`*`).
      * To search all data streams and indices, omit this parameter or use `*`.
      */
     index?: Indices
@@ -45,12 +72,11 @@ export interface Request extends RequestBase {
      */
     ccs_minimize_roundtrips?: boolean
     /**
-     * Maximum number of concurrent searches the API can run.
+     * The maximum number of concurrent searches the API can run.
      */
     max_concurrent_searches?: long
     /**
      * The type of the search operation.
-     * Available options: `query_then_fetch`, `dfs_query_then_fetch`.
      */
     search_type?: SearchType
     /**
@@ -65,6 +91,26 @@ export interface Request extends RequestBase {
      */
     typed_keys?: boolean
   }
-  /** @codegen_name search_templates */
+  /**
+   * The request body must be newline-delimited JSON (NDJSON) in the following format:
+   *
+   * ```
+   * <header>\n
+   * <body>\n
+   * <header>\n
+   * <body>\n
+   * ```
+   *
+   * Each `<header>` and `<body>` pair represents a search request.
+   * The `<header>` supports the same parameters as the multi search API's `<header>`.
+   * The `<body>` supports the same parameters as the search template API's request body.
+   *
+   * The `<header>` contains the parameters used to limit or change the search.
+   * It is required for each search body but can be empty `({})` or a blank line.
+   *
+   * The `<body>` contains the parameters for the search.
+   *
+   * @codegen_name search_templates
+   */
   body: Array<RequestItem>
 }

@@ -1,0 +1,14 @@
+# summary: ''
+description: A successful response for generating a query for a search application. The `from`, `size`, and `explain` parameters were not specified in the request, so the default values specified in the search template are used.
+# type: response
+# response_code: 200
+value:
+  from: 0
+  size: 10
+  query:
+    multi_match:
+      query: my first query
+      fields:
+        - 'description^1.0'
+        - 'title^5.0'
+  explain: false

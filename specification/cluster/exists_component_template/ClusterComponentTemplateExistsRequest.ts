@@ -22,12 +22,21 @@ import { Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
+ * Check component templates.
+ * Returns information about whether a particular component template exists.
  * @rest_spec_name cluster.exists_component_template
  * @availability stack since=7.8.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-component-template
+ * @doc_tag indices
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_component_template/{name}'
+      methods: ['HEAD']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of component template names used to limit the request.

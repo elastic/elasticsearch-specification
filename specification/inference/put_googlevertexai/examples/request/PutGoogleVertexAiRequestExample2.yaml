@@ -1,0 +1,12 @@
+summary: A rerank task
+description: Run `PUT _inference/rerank/google_vertex_ai_rerank` to create an inference endpoint to perform a `rerank` task type.
+method_request: 'PUT _inference/rerank/google_vertex_ai_rerank'
+# type: "request"
+value: |-
+  {
+      "service": "googlevertexai",
+      "service_settings": {
+          "service_account_json": "service-account-json",
+          "project_id": "project-id"
+      }
+  }

@@ -17,14 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
-  ByteSize,
   Field,
   Id,
   IndexName,
   Indices,
+  Metadata,
   Name,
   VersionString
 } from '@_types/common'
@@ -32,9 +30,11 @@ import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { NodeAttributes } from '@_types/Node'
 import { double, integer, long, Percentage } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { UnitMillis, DurationValue, EpochTime } from '@_types/Time'
-import { DataframeState } from './Dataframe'
+import { DurationValue, EpochTime, UnitMillis } from '@_types/Time'
 import { DataframeAnalyticsAuthorization } from '@ml/_types/Authorization'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { DataframeState } from './Dataframe'
 
 export class DataframeAnalyticsSource {
   /** Index or indices on which to perform the analysis. It can be a single index or index pattern as well as an array of indices or patterns. NOTE: If your source indices contain documents with the same IDs, only the document that is indexed last appears in the destination index.*/
@@ -238,9 +238,9 @@ export class DataframeAnalysisClassification extends DataframeAnalysis {
 /** @shortcut_property includes */
 export class DataframeAnalysisAnalyzedFields {
   /** An array of strings that defines the fields that will be excluded from the analysis. You do not need to add fields with unsupported data types to excludes, these fields are excluded from the analysis automatically. */
-  includes: string[]
+  includes?: string[]
   /** An array of strings that defines the fields that will be included in the analysis. */
-  excludes: string[]
+  excludes?: string[]
 }
 
 /** @variants container */
@@ -319,6 +319,7 @@ export class DataframeAnalyticsSummary {
   model_memory_limit?: string
   source: DataframeAnalyticsSource
   version?: VersionString
+  _meta?: Metadata
 }
 
 export class DataframeAnalytics {

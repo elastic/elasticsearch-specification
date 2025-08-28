@@ -17,16 +17,17 @@
  * under the License.
  */
 
-import { AdditionalProperty } from '@spec_utils/behaviors'
-import { TokenPruningConfig } from './TokenPruningConfig'
-import { QueryBase } from './abstractions'
-import { Field, FieldValue } from '@_types/common'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { float } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { TokenPruningConfig } from '../TokenPruningConfig'
+import { QueryBase } from './abstractions'
 
+/**
+ * @ext_doc_id query-dsl-weighted-tokens-query
+ */
 export class WeightedTokensQuery extends QueryBase {
   /** The tokens representing this query */
-  tokens: Dictionary<string, float>
+  tokens: Dictionary<string, float> | Dictionary<string, float>[]
   /** Token pruning configurations */
   pruning_config?: TokenPruningConfig
 }

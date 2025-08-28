@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Ids } from '@_types/common'
 
 /**
- * Retrieves configuration information for anomaly detection jobs.
+ * Get anomaly detection jobs configuration info.
  * You can get information for multiple anomaly detection jobs in a single API
  * request by using a group name, a comma-separated list of jobs, or a wildcard
  * expression. You can get information for all anomaly detection jobs by using
@@ -30,8 +30,20 @@ import { Ids } from '@_types/common'
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-get-job
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}'
+      methods: ['GET']
+    },
+    {
+      path: '/_ml/anomaly_detectors'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job. It can be a job identifier, a

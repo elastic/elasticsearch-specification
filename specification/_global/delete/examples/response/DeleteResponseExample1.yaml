@@ -1,0 +1,18 @@
+# summary:
+description: A successful response from `DELETE /my-index-000001/_doc/1`, which deletes the JSON document 1 from the `my-index-000001` index.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "_shards": {
+      "total": 2,
+      "failed": 0,
+      "successful": 2
+    },
+    "_index": "my-index-000001",
+    "_id": "1",
+    "_version": 2,
+    "_primary_term": 1,
+    "_seq_no": 5,
+    "result": "deleted"
+  }

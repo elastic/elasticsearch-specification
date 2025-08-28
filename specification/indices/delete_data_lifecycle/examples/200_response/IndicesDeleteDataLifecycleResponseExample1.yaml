@@ -1,0 +1,5 @@
+# summary: ''
+description: A successful response for deleting a data stream lifecycle.
+# type: response
+# response_code: 200
+value: "{\n  \"acknowledged\": true\n}"

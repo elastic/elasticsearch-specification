@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { DateTime } from '@_types/Time'
 
 /**
- * Sends data to an anomaly detection job for analysis.
+ * Send data to an anomaly detection job for analysis.
  *
  * IMPORTANT: For each job, data can be accepted from only a single connection at a time.
  * It is not currently possible to post data to multiple jobs using wildcards or a comma-separated list.
@@ -30,8 +30,16 @@ import { DateTime } from '@_types/Time'
  * @availability stack since=5.4.0 stability=stable
  * @deprecated 7.11.0 Posting data directly to anomaly detection jobs is deprecated, in a future major version a datafeed will be required.
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-post-data
  */
 export interface Request<TData> extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/anomaly_detectors/{job_id}/_data'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Identifier for the anomaly detection job. The job must have a state of open to receive and process the data.
@@ -62,6 +70,7 @@ export interface Request<TData> extends RequestBase {
    * If your data is larger, split it into multiple chunks and upload each one separately in sequential time order.
    * When running in real time, it is generally recommended that you perform many small uploads,
    * rather than queueing data to upload larger files.
+   *
    * @codegen_name data
    * */
   body: Array<TData>

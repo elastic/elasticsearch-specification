@@ -47,11 +47,7 @@ export class PipelineSettings {
   /**
    * The total capacity of the queue (`queue.type: persisted`) in number of bytes.
    */
-  'queue.max_bytes.number': integer
-  /**
-   * The total capacity of the queue (`queue.type: persisted`) in terms of units of bytes.
-   */
-  'queue.max_bytes.units': string
+  'queue.max_bytes': string
   /**
    * The maximum number of written events before forcing a checkpoint when persistent queues are enabled (`queue.type: persisted`).
    */
@@ -59,34 +55,33 @@ export class PipelineSettings {
 }
 export class Pipeline {
   /**
-   * Description of the pipeline.
+   * A description of the pipeline.
    * This description is not used by Elasticsearch or Logstash.
    */
   description: string
   /**
-   * Date the pipeline was last updated.
-   * Must be in the `yyyy-MM-dd'T'HH:mm:ss.SSSZZ` strict_date_time format.
+   * The date the pipeline was last updated.
+   * It must be in the `yyyy-MM-dd'T'HH:mm:ss.SSSZZ` strict_date_time format.
    */
   last_modified: DateTime
   /**
-   * Optional metadata about the pipeline.
-   * May have any contents.
+   * The configuration for the pipeline.
+   * @ext_doc_id logstash-configuration-file-structure
+   */
+  pipeline: string
+  /**
+   * Optional metadata about the pipeline, which can have any contents.
    * This metadata is not generated or used by Elasticsearch or Logstash.
    */
   pipeline_metadata: PipelineMetadata
   /**
-   * User who last updated the pipeline.
-   */
-  username: string
-  /**
-   * Configuration for the pipeline.
-   * @doc_id logstash-configuration-file-structure
-   */
-  pipeline: string
-  /**
    * Settings for the pipeline.
-   * Supports only flat keys in dot notation.
-   * @doc_id logstash-logstash-settings-file
+   * It supports only flat keys in dot notation.
+   * @ext_doc_id logstash-logstash-settings-file
    */
   pipeline_settings: PipelineSettings
+  /**
+   * The user who last updated the pipeline.
+   */
+  username: string
 }

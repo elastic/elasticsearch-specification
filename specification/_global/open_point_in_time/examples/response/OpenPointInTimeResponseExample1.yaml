@@ -1,0 +1,16 @@
+# summary:
+description: >
+  A successful response from `POST /my-index-000001/_pit?keep_alive=1m&allow_partial_search_results=true`.
+  It includes a summary of the total number of shards, as well as the number of successful shards when creating the PIT.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "id": "46ToAwMDaWR5BXV1aWQyKwZub2RlXzMAAAAAAAAAACoBYwADaWR4BXV1aWQxAgZub2RlXzEAAAAAAAAAAAEBYQADaWR5BXV1aWQyKgZub2RlXzIAAAAAAAAAAAwBYgACBXV1aWQyAAAFdXVpZDEAAQltYXRjaF9hbGw_gAAAAA=",
+    "_shards": {
+      "total": 10,
+      "successful": 10,
+      "skipped": 0,
+      "failed": 0
+    }
+  }

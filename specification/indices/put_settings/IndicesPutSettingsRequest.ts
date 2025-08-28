@@ -17,20 +17,85 @@
  * under the License.
  */
 
-import { IndexSettings } from '@indices/_types/IndexSettings'
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
- * Changes a dynamic index setting in real time. For data streams, index setting
- * changes are applied to all backing indices by default.
+ * Update index settings.
+ * Changes dynamic index settings in real time.
+ * For data streams, index setting changes are applied to all backing indices by default.
+ *
+ * To revert a setting to the default value, use a null value.
+ * The list of per-index settings that can be updated dynamically on live indices can be found in index settings documentation.
+ * To preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.
+ *
+ * For performance optimization during bulk indexing, you can disable the refresh interval.
+ * Refer to [disable refresh interval](https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval) for an example.
+ * There are multiple valid ways to represent index settings in the request body. You can specify only the setting, for example:
+ *
+ * ```
+ * {
+ *   "number_of_replicas": 1
+ * }
+ * ```
+ *
+ * Or you can use an `index` setting object:
+ * ```
+ * {
+ *   "index": {
+ *     "number_of_replicas": 1
+ *   }
+ * }
+ * ```
+ *
+ * Or you can use dot annotation:
+ * ```
+ * {
+ *   "index.number_of_replicas": 1
+ * }
+ * ```
+ *
+ * Or you can embed any of the aforementioned options in a `settings` object. For example:
+ *
+ * ```
+ * {
+ *   "settings": {
+ *     "index": {
+ *       "number_of_replicas": 1
+ *     }
+ *   }
+ * }
+ * ```
+ *
+ * NOTE: You can only define new analyzers on closed indices.
+ * To add an analyzer, you must close the index, define the analyzer, and reopen the index.
+ * You cannot close the write index of a data stream.
+ * To update the analyzer for a data stream's write index and future backing indices, update the analyzer in the index template used by the stream.
+ * Then roll over the data stream to apply the new analyzer to the stream's write index and future backing indices.
+ * This affects searches and any new data added to the stream after the rollover.
+ * However, it does not affect the data stream's backing indices or their existing data.
+ * To change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.
+ * Refer to [updating analyzers on existing indices](https://www.elastic.co/docs/manage-data/data-store/text-analysis/specify-an-analyzer#update-analyzers-on-existing-indices) for step-by-step examples.
  * @rest_spec_name indices.put_settings
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage
+ * @doc_id indices-update-settings
+ * @ext_doc_id index-settings
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_settings'
+      methods: ['PUT']
+    },
+    {
+      path: '/{index}/_settings'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit
@@ -80,6 +145,13 @@ export interface Request extends RequestBase {
      */
     preserve_existing?: boolean
     /**
+     * Whether to close and reopen the index to apply non-dynamic settings.
+     * If set to `true` the indices to which the settings are being applied
+     * will be closed temporarily and then reopened in order to apply the changes.
+     * @server_default false
+     */
+    reopen?: boolean
+    /**
      *  Period to wait for a response. If no response is received before the
      *  timeout expires, the request fails and returns an error.
      * @server_default 30s
@@ -87,6 +159,7 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
   /** Configuration options for the index.
-   * @codegen_name settings */
+   * @codegen_name settings
+   */
   body: IndexSettings
 }

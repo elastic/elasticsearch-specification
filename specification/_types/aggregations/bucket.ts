@@ -17,33 +17,38 @@
  * under the License.
  */
 
-import { SortOrder } from '@_types/sort'
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { EmptyObject, FieldValue } from '@_types/common'
-import { Field, RelationName, Fields } from '@_types/common'
+import { ValueType } from '@_types/aggregations/metric'
 import {
-  GeoDistanceType,
+  EmptyObject,
+  Field,
+  Fields,
+  FieldValue,
+  RelationName
+} from '@_types/common'
+import {
   DistanceUnit,
+  GeoBounds,
+  GeoDistanceType,
   GeoHashPrecision,
-  GeoTilePrecision,
   GeoLocation,
-  GeoBounds
+  GeoTilePrecision
 } from '@_types/Geo'
-import { integer, long, double } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
+import { SortOrder } from '@_types/sort'
 import {
+  DateMath,
   DateTime,
   Duration,
-  DateMath,
-  TimeZone,
-  DurationLarge
+  DurationLarge,
+  TimeZone
 } from '@_types/Time'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Buckets } from './Aggregate'
 import { Aggregation } from './Aggregation'
 import { Missing, MissingOrder } from './AggregationContainer'
-import { ValueType } from '@_types/aggregations/metric'
 
 /**
  * Base type for bucket aggregations. These aggregations also accept sub-aggregations.
@@ -64,6 +69,9 @@ export class AdjacencyMatrixAggregation extends BucketAggregationBase {
   separator?: string
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-autodatehistogram-aggregation
+ */
 export class AutoDateHistogramAggregation extends BucketAggregationBase {
   /**
    * The target number of buckets.
@@ -119,6 +127,9 @@ export class ChildrenAggregation extends BucketAggregationBase {
 
 export type CompositeAggregateKey = Dictionary<Field, FieldValue>
 
+/**
+ * @ext_doc_id search-aggregations-bucket-composite-aggregation
+ */
 export class CompositeAggregation extends BucketAggregationBase {
   // Must be consistent with CompositeAggregate.after_key
   /**
@@ -319,6 +330,9 @@ export class DateRangeExpression {
   to?: FieldDateMath
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-diversified-sampler-aggregation
+ */
 export class DiversifiedSamplerAggregation extends BucketAggregationBase {
   /**
    * The type of value used for de-duplication.
@@ -404,6 +418,9 @@ export class GeoDistanceAggregation extends BucketAggregationBase {
   unit?: DistanceUnit
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-geohashgrid-aggregation
+ */
 export class GeoHashGridAggregation extends BucketAggregationBase {
   /**
    * The bounding box to filter the points in each bucket.
@@ -675,7 +692,7 @@ export class AggregationRange {
   /**
    * Start of the range (inclusive).
    */
-  from?: double
+  from?: double | null
   /**
    * Custom key to return the range with.
    */
@@ -683,9 +700,12 @@ export class AggregationRange {
   /**
    * End of the range (exclusive).
    */
-  to?: double
+  to?: double | null
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-rare-terms-aggregation
+ */
 export class RareTermsAggregation extends BucketAggregationBase {
   /**
    * Terms that should be excluded from the aggregation.
@@ -726,6 +746,31 @@ export class ReverseNestedAggregation extends BucketAggregationBase {
   path?: Field
 }
 
+/**
+ * @ext_doc_id search-aggregations-random-sampler-aggregation
+ */
+export class RandomSamplerAggregation extends BucketAggregationBase {
+  /**
+   * The probability that a document will be included in the aggregated data.
+   * Must be greater than 0, less than 0.5, or exactly 1.
+   * The lower the probability, the fewer documents are matched.
+   */
+  probability: double
+  /**
+   * The seed to generate the random sampling of documents.
+   * When a seed is provided, the random subset of documents is the same between calls.
+   */
+  seed?: integer
+  /**
+   * When combined with seed, setting shard_seed ensures 100% consistent sampling over shards where data is exactly the same.
+   * @availability stack since=8.14.0
+   */
+  shard_seed?: integer
+}
+
+/**
+ * @ext_doc_id search-aggregations-bucket-sampler-aggregation
+ */
 export class SamplerAggregation extends BucketAggregationBase {
   /**
    * Limits how many top-scoring documents are collected in the sample processed on each shard.
@@ -769,6 +814,9 @@ export class ScriptedHeuristic {
   script: Script
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-significanttext-aggregation
+ */
 export class SignificantTermsAggregation extends BucketAggregationBase {
   /**
    * A background filter that can be used to focus in on significant terms within a narrower context, instead of the entire index.
@@ -835,6 +883,9 @@ export class SignificantTermsAggregation extends BucketAggregationBase {
   size?: integer
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-significanttext-aggregation
+ */
 export class SignificantTextAggregation extends BucketAggregationBase {
   /**
    * A background filter that can be used to focus in on significant terms within a narrower context, instead of the entire index.
@@ -909,6 +960,9 @@ export class SignificantTextAggregation extends BucketAggregationBase {
   source_fields?: Fields
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-terms-aggregation
+ */
 export class TermsAggregation extends BucketAggregationBase {
   /**
    * Determines how child aggregations should be calculated: breadth-first or depth-first.
@@ -976,6 +1030,21 @@ export class TermsAggregation extends BucketAggregationBase {
   format?: string
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-time-series-aggregation
+ */
+export class TimeSeriesAggregation extends BucketAggregationBase {
+  /**
+   * The maximum number of results to return.
+   * @server_default 10000
+   */
+  size?: integer
+  /**
+   * Set to `true` to associate a unique string key with each bucket and returns the ranges as a hash rather than an array.
+   */
+  keyed?: boolean
+}
+
 // Note: ES is very lazy when parsing this data type: it accepts any number of properties in the objects below,
 // but will only keep the *last* property in JSON document order and ignore others.
 // This means that something like `"order": { "downloads": "desc", "_key": "asc" }` will actually be interpreted
@@ -1019,6 +1088,9 @@ export class TermsPartition {
   partition: long
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-variablewidthhistogram-aggregation
+ */
 export class VariableWidthHistogramAggregation {
   /**
    * The name of the field.
@@ -1047,6 +1119,7 @@ export class VariableWidthHistogramAggregation {
  * field is re-analyzed using a custom analyzer. The resulting tokens are then categorized
  * creating buckets of similarly formatted text values. This aggregation works best with machine
  * generated text like system logs. Only the first 100 analyzed tokens are used to categorize the text.
+ * @ext_doc_id search-aggregations-bucket-categorize-text-aggregation
  */
 export class CategorizeTextAggregation extends Aggregation {
   /**
@@ -1085,8 +1158,9 @@ export class CategorizeTextAggregation extends Aggregation {
   categorization_filters?: string[]
   /**
    * The categorization analyzer specifies how the text is analyzed and tokenized before being categorized.
-   * The syntax is very similar to that used to define the analyzer in the [Analyze endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/8.0/indices-analyze.html). This property
-   * cannot be used at the same time as categorization_filters.
+   * The syntax is very similar to that used to define the analyzer in the analyze API. This property
+   * cannot be used at the same time as `categorization_filters`.
+   * @ext_doc_id indices-analyze
    */
   categorization_analyzer?: CategorizeTextAnalyzer
   /**
@@ -1164,6 +1238,9 @@ export class FrequentItemSetsField {
   include?: TermsInclude
 }
 
+/**
+ * @ext_doc_id search-aggregations-bucket-frequent-item-sets-aggregation
+ */
 export class FrequentItemSetsAggregation {
   /**
    * Fields to analyze.

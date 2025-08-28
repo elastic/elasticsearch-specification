@@ -1,0 +1,12 @@
+# summary:
+description: A successful response from `PUT /_security/privilege`.
+# type: response
+# response_code:
+value: |-
+  {
+    "myapp": {
+      "read": {
+        "created": true 
+      }
+    }
+  }

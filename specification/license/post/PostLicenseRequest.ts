@@ -17,21 +17,48 @@
  * under the License.
  */
 
-import { License } from '@license/_types/License'
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
+import { License } from '@license/_types/License'
 
 /**
+ * Update the license.
+ *
+ * You can update your license at runtime without shutting down your nodes.
+ * License updates take effect immediately.
+ * If the license you are installing does not support all of the features that were available with your previous license, however, you are notified in the response.
+ * You must then re-submit the API request with the acknowledge parameter set to true.
+ *
+ * NOTE: If Elasticsearch security features are enabled and you are installing a gold or higher license, you must enable TLS on the transport networking layer before you install the license.
+ * If the operator privileges feature is enabled, only operator users can use this API.
  * @rest_spec_name license.post
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @cluster_privileges manage
+ * @doc_id update-license
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_license'
+      methods: ['PUT', 'POST']
+    }
+  ]
   query_parameters: {
     /**
      * Specifies whether you acknowledge the license changes.
      * @server_default false
      */
     acknowledge?: boolean
+    /**
+     * The period to wait for a connection to the master node.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
+    /**
+     * The period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Duration
   }
   body: {
     license?: License

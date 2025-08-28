@@ -18,16 +18,24 @@
  */
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { SyncJobType, SyncJobTriggerMethod } from '../_types/SyncJob'
+import { SyncJobTriggerMethod, SyncJobType } from '../_types/SyncJob'
 
 /**
- * Creates a connector sync job.
+ * Create a connector sync job.
+ *
+ * Create a connector sync job document in the internal index and initialize its counters and timestamps with default values.
  * @rest_spec_name connector.sync_job_post
- * @availability stack since=8.12.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.12.0 stability=beta
+ * @availability serverless stability=beta visibility=public
  * @doc_id connector-sync-job-post
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/_sync_job'
+      methods: ['POST']
+    }
+  ]
   /**
    * The sync job to be created
    */

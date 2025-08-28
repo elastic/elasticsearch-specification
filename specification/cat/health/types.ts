@@ -72,6 +72,11 @@ export class HealthRecord {
    */
   'init'?: string
   /**
+   * number of unassigned primary shards
+   * @aliases up,shards.unassigned.primary,shardsUnassignedPrimary
+   */
+  'unassign.pri'?: string
+  /**
    * number of unassigned shards
    * @aliases u,shards.unassigned,shardsUnassigned
    */

@@ -1,0 +1,21 @@
+summary: A completed async search
+description: >
+  A succesful response from `GET /_async_search/status/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=` for an async search that has completed.
+  The status response has an additional `completion_status` field that shows the status code of the completed async search.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "id" : "FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=",
+    "is_running" : false,
+    "is_partial" : false,
+    "start_time_in_millis" : 1583945890986,
+    "expiration_time_in_millis" : 1584377890986,
+    "_shards" : {
+        "total" : 562,
+        "successful" : 562,
+        "skipped" : 0,
+        "failed" : 0
+    },
+  "completion_status" : 200 
+  }

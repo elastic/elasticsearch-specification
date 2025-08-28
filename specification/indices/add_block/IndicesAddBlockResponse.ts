@@ -23,11 +23,11 @@ export class Response {
   body: {
     acknowledged: boolean
     shards_acknowledged: boolean
-    indices: IndicesBlockStatus[]
+    indices: AddIndicesBlockStatus[]
   }
 }
 
-export class IndicesBlockStatus {
+export class AddIndicesBlockStatus {
   name: IndexName
   blocked: boolean
 }

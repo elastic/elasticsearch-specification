@@ -19,12 +19,8 @@
 
 import { Name } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
-import { Stats } from '@nodes/_types/Stats'
 
-export class NodeReloadError {
+export class NodeReloadResult {
   name: Name
   reload_exception?: ErrorCause
 }
-
-/** @codegen_names stats, error */
-export type NodeReloadResult = Stats | NodeReloadError

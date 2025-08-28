@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { TimeSeriesMetricType } from '@_types/mapping/TimeSeriesMetricType'
 import { double, integer } from '@_types/Numeric'
 import { CorePropertyBase, IndexOptions } from './core'
-import { DenseVectorIndexOptions } from './DenseVectorIndexOptions'
 import { PropertyBase } from './Property'
-import { TimeSeriesMetricType } from '@_types/mapping/TimeSeriesMetricType'
+import { Subobjects } from './TypeMapping'
 
 export class FlattenedProperty extends PropertyBase {
   boost?: double
@@ -33,6 +33,7 @@ export class FlattenedProperty extends PropertyBase {
   null_value?: string
   similarity?: string
   split_queries_on_whitespace?: boolean
+  time_series_dimensions?: string[]
   type: 'flattened'
 }
 
@@ -45,22 +46,21 @@ export class NestedProperty extends CorePropertyBase {
 
 export class ObjectProperty extends CorePropertyBase {
   enabled?: boolean
-  subobjects?: boolean
+  subobjects?: Subobjects
   type?: 'object'
 }
 
-export class DenseVectorProperty extends PropertyBase {
-  type: 'dense_vector'
-  element_type?: string
-  dims?: integer
-  similarity?: string
-  index?: boolean
-  index_options?: DenseVectorIndexOptions
+export class PassthroughObjectProperty extends CorePropertyBase {
+  type?: 'passthrough'
+  enabled?: boolean
+  priority?: integer
+  time_series_dimension?: boolean
 }
 
 export class AggregateMetricDoubleProperty extends PropertyBase {
   type: 'aggregate_metric_double'
   default_metric: string
+  ignore_malformed?: boolean
   metrics: string[]
   time_series_metric?: TimeSeriesMetricType
 }

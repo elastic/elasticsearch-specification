@@ -19,12 +19,12 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { DateTime } from '@_types/Time'
 import { DatafeedConfig } from '@ml/_types/Datafeed'
 import { JobConfig } from '@ml/_types/Job'
-import { DateTime } from '@_types/Time'
 
 /**
- * Previews a datafeed.
+ * Preview a datafeed.
  * This API returns the first "page" of search results from a datafeed.
  * You can preview an existing datafeed or provide configuration details for a datafeed
  * and anomaly detection job in the API. The preview shows the structure of the data
@@ -38,8 +38,20 @@ import { DateTime } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @index_privileges read
  * @cluster_privileges manage_ml
+ * @doc_tag ml anomaly
+ * @doc_id ml-preview-datafeed
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ml/datafeeds/{datafeed_id}/_preview'
+      methods: ['GET', 'POST']
+    },
+    {
+      path: '/_ml/datafeeds/_preview'
+      methods: ['GET', 'POST']
+    }
+  ]
   path_parts: {
     /**
      * A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase

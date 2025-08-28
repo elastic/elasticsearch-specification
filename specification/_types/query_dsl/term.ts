@@ -19,20 +19,25 @@
 
 import {
   Field,
+  FieldValue,
   Fuzziness,
   Id,
   Ids,
   IndexName,
+  MinimumShouldMatch,
   MultiTermQueryRewrite,
-  Routing,
-  FieldValue
+  Routing
 } from '@_types/common'
-import { double, float, integer, long } from '@_types/Numeric'
+import { double, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateFormat, DateMath, TimeZone } from '@_types/Time'
-import { QueryBase } from './abstractions'
 import { AdditionalProperty } from '@spec_utils/behaviors'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { QueryBase } from './abstractions'
 
+/**
+ * @ext_doc_id query-dsl-exists-query
+ */
 export class ExistsQuery extends QueryBase {
   /**
    * Name of the field you wish to search.
@@ -40,7 +45,10 @@ export class ExistsQuery extends QueryBase {
   field: Field
 }
 
-/** @shortcut_property value */
+/**
+ * @shortcut_property value
+ * @ext_doc_id query-dsl-fuzzy-query
+ */
 export class FuzzyQuery extends QueryBase {
   /**
    * Maximum number of variations created.
@@ -77,6 +85,9 @@ export class FuzzyQuery extends QueryBase {
   value: string | double | boolean
 }
 
+/**
+ * @ext_doc_id query-dsl-ids-query
+ */
 export class IdsQuery extends QueryBase {
   /**
    * An array of document IDs.
@@ -84,7 +95,10 @@ export class IdsQuery extends QueryBase {
   values?: Ids
 }
 
-/** @shortcut_property value */
+/**
+ * @shortcut_property value
+ * @ext_doc_id query-dsl-prefix-query
+ */
 export class PrefixQuery extends QueryBase {
   /**
    * Method used to rewrite the query.
@@ -105,33 +119,31 @@ export class PrefixQuery extends QueryBase {
   case_insensitive?: boolean
 }
 
-export class RangeQueryBase extends QueryBase {
+export class RangeQueryBase<T> extends QueryBase {
   /**
    * Indicates how the range query matches values for `range` fields.
    * @server_default intersects
    */
   relation?: RangeRelation
-}
-
-export class DateRangeQuery extends RangeQueryBase {
   /**
    * Greater than.
    */
-  gt?: DateMath
+  gt?: T
   /**
    * Greater than or equal to.
    */
-  gte?: DateMath
+  gte?: T
   /**
    * Less than.
    */
-  lt?: DateMath
+  lt?: T
   /**
    * Less than or equal to.
    */
-  lte?: DateMath
-  from?: DateMath | null
-  to?: DateMath | null
+  lte?: T
+}
+
+export class UntypedRangeQuery extends RangeQueryBase<UserDefinedValue> {
   /**
    * Date format used to convert `date` values in the query.
    */
@@ -142,51 +154,32 @@ export class DateRangeQuery extends RangeQueryBase {
   time_zone?: TimeZone
 }
 
-export class NumberRangeQuery extends RangeQueryBase {
+export class DateRangeQuery extends RangeQueryBase<DateMath> {
   /**
-   * Greater than.
+   * Date format used to convert `date` values in the query.
    */
-  gt?: double
+  format?: DateFormat
   /**
-   * Greater than or equal to.
+   *  Coordinated Universal Time (UTC) offset or IANA time zone used to convert `date` values in the query to UTC.
    */
-  gte?: double
-  /**
-   * Less than.
-   */
-  lt?: double
-  /**
-   * Less than or equal to.
-   */
-  lte?: double
-  from?: double | null
-  to?: double | null
+  time_zone?: TimeZone
 }
 
-export class TermsRangeQuery extends RangeQueryBase {
-  /**
-   * Greater than.
-   */
-  gt?: string
-  /**
-   * Greater than or equal to.
-   */
-  gte?: string
-  /**
-   * Less than.
-   */
-  lt?: string
-  /**
-   * Less than or equal to.
-   */
-  lte?: string
-  from?: string | null
-  to?: string | null
-}
+export class NumberRangeQuery extends RangeQueryBase<double> {}
 
-/** @codegen_names date, number, terms */
+export class TermRangeQuery extends RangeQueryBase<string> {}
+
+/**
+ * @codegen_names untyped, date, number, term
+ * @variants untagged untyped=_types.query_dsl.UntypedRangeQuery
+ * @ext_doc_id query-dsl-range-query
+ */
 // Note: deserialization depends on value types
-export type RangeQuery = DateRangeQuery | NumberRangeQuery | TermsRangeQuery
+export type RangeQuery =
+  | UntypedRangeQuery
+  | DateRangeQuery
+  | NumberRangeQuery
+  | TermRangeQuery
 
 export enum RangeRelation {
   /**
@@ -203,7 +196,10 @@ export enum RangeRelation {
   intersects
 }
 
-/** @shortcut_property value */
+/**
+ * @shortcut_property value
+ * @ext_doc_id query-dsl-regexp-query
+ */
 export class RegexpQuery extends QueryBase {
   /**
    *  Allows case insensitive matching of the regular expression value with the indexed field values when set to `true`.
@@ -235,7 +231,10 @@ export class RegexpQuery extends QueryBase {
   value: string
 }
 
-/** @shortcut_property value */
+/**
+ * @shortcut_property value
+ * @ext_doc_id query-dsl-term-query
+ */
 export class TermQuery extends QueryBase {
   /**
    * Term you wish to find in the provided field.
@@ -251,6 +250,10 @@ export class TermQuery extends QueryBase {
   case_insensitive?: boolean
 }
 
+/**
+ * @behavior_meta AdditionalProperty key=field value=terms
+ * @ext_doc_id query-dsl-terms-query
+ */
 export class TermsQuery
   extends QueryBase
   implements AdditionalProperty<Field, TermsQueryField> {}
@@ -267,7 +270,16 @@ export class TermsLookup {
   routing?: Routing
 }
 
+/**
+ * @ext_doc_id query-dsl-terms-set-query
+ */
 export class TermsSetQuery extends QueryBase {
+  /**
+   * Specification describing number of matching terms required to return a document.
+   * @availability stack since=8.10.0
+   * @availability serverless
+   */
+  minimum_should_match?: MinimumShouldMatch
   /**
    * Numeric field containing the number of matching terms required to return a document.
    */
@@ -279,14 +291,17 @@ export class TermsSetQuery extends QueryBase {
   /**
    *  Array of terms you wish to find in the provided field.
    */
-  terms: string[]
+  terms: FieldValue[]
 }
 
 export class TypeQuery extends QueryBase {
   value: string
 }
 
-/** @shortcut_property value */
+/**
+ * @shortcut_property value
+ * @ext_doc_id query-dsl-wildcard-query
+ */
 export class WildcardQuery extends QueryBase {
   /**
    * Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field’s mapping.

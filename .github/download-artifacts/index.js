@@ -17,50 +17,48 @@
  * under the License.
  */
 
-'use strict'
-
-const core = require('@actions/core')
-const { join } = require('path')
-const minimist = require('minimist')
-const stream = require('stream')
-const { promisify } = require('util')
-const { createWriteStream, promises } = require('fs')
-const rimraf = require('rimraf')
-const fetch = require('node-fetch')
-const crossZip = require('cross-zip')
+import core from '@actions/core'
+import { join, dirname } from 'path'
+import { fileURLToPath } from 'url'
+import minimist from 'minimist'
+import stream from 'stream'
+import { promisify } from 'util'
+import { createWriteStream, promises } from 'fs'
+import { rimraf } from 'rimraf'
+import fetch from 'node-fetch'
+import crossZip from 'cross-zip'
 
 const { mkdir, rename, readdir, unlink } = promises
 const pipeline = promisify(stream.pipeline)
 const unzip = promisify(crossZip.unzip)
-const rm = promisify(rimraf)
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 const esFolder = join(__dirname, '..', '..', 'artifacts')
 const zipFolder = join(esFolder, 'artifacts.zip')
 const downloadedSpec = join(esFolder, 'rest-api-spec', 'api')
 const specFolder = join(__dirname, '..', '..', 'specification', '_json_spec')
 
 async function downloadArtifacts (opts) {
-  if (typeof opts.version !== 'string' && typeof opts.branch !== 'string') {
-    throw new Error('Missing version or branch')
+  if (typeof opts.branch !== 'string') {
+    throw new Error('Missing branch')
   }
 
-  core.info('Checking out spec and test')
+  core.info('Resolving artifact URL')
 
-  core.info('Resolving version')
   let resolved
   try {
-    resolved = await resolve(opts.version || fromBranch(opts.branch), opts.hash)
+    resolved = await resolve(opts.branch)
   } catch (err) {
     core.error(err.message)
     process.exit(1)
   }
 
-  opts.version = resolved.version
-  core.info(`Resolved version ${opts.version}`)
+  core.info(`Resolved artifact URL for ${resolved.commit_url}`)
 
   core.info('Cleanup')
-  await rm(esFolder)
-  await rm(specFolder)
+  await rimraf(esFolder)
+  await rimraf(specFolder)
   await mkdir(esFolder, { recursive: true })
   await mkdir(specFolder, { recursive: true })
 
@@ -76,7 +74,7 @@ async function downloadArtifacts (opts) {
   await unzip(zipFolder, esFolder)
 
   core.info('Cleanup')
-  await rm(zipFolder)
+  await rimraf(zipFolder)
 
   core.info('Moving files')
   const files = await readdir(downloadedSpec)
@@ -96,74 +94,29 @@ async function downloadArtifacts (opts) {
   core.info('Done')
 }
 
-async function resolve (version, hash) {
-  if (version === 'latest') {
-    const response = await fetch('https://artifacts-api.elastic.co/v1/versions')
-    if (!response.ok) {
-      throw new Error(`unexpected response ${response.statusText}`)
-    }
-    const { versions } = await response.json()
-    version = versions.pop()
+async function resolve (branch) {
+  if (branch == 'main') {
+    branch = 'master'
   }
-
-  core.info(`Resolving version ${version}`)
-  const response = await fetch(`https://artifacts-api.elastic.co/v1/versions/${version}`)
+  const url = `https://artifacts-snapshot.elastic.co/elasticsearch/latest/${branch}.json`
+  const response = await fetch(url)
   if (!response.ok) {
-    throw new Error(`unexpected response ${response.statusText}`)
+    throw new Error(`Unexpected response. Invalid version? ${url}: ${response.statusText}`)
   }
-
   const data = await response.json()
-  const esBuilds = data.version.builds
-    .filter(build => build.projects.elasticsearch != null)
-    .map(build => {
-      return {
-        projects: build.projects.elasticsearch,
-        buildId: build.build_id,
-        date: build.start_time,
-        version: build.version
-      }
-    })
-    .sort((a, b) => {
-      const dA = new Date(a.date)
-      const dB = new Date(b.date)
-      if (dA > dB) return -1
-      if (dA < dB) return 1
-      return 0
-    })
 
-  if (hash != null) {
-    const build = esBuilds.find(build => build.projects.commit_hash === hash)
-    if (!build) {
-      throw new Error(`Can't find any build with hash '${hash}'`)
-    }
-    const zipKey = Object.keys(build.projects.packages).find(key => key.startsWith('rest-resources-zip-') && key.endsWith('.zip'))
-    return {
-      url: build.projects.packages[zipKey].url,
-      id: build.buildId,
-      hash: build.projects.commit_hash,
-      version: build.version
-    }
+  let manifest_url = data.manifest_url
+  const manifestResponse = await fetch(manifest_url)
+  if (!manifestResponse.ok) {
+    throw new Error(`Unexpected manifestResponse. ${manifest_url}: ${manifestResponse.statusText}`)
   }
+  const manifestData = await manifestResponse.json()
+  const elasticsearch = manifestData.projects.elasticsearch
+  const restResourceName = `rest-resources-zip-${manifestData.version}.zip`
 
-  const lastBuild = esBuilds[0]
-  const zipKey = Object.keys(lastBuild.projects.packages).find(key => key.startsWith('rest-resources-zip-') && key.endsWith('.zip'))
   return {
-    url: lastBuild.projects.packages[zipKey].url,
-    id: lastBuild.buildId,
-    hash: lastBuild.projects.commit_hash,
-    version: lastBuild.version
-  }
-}
-
-function fromBranch (branch) {
-  if (branch === 'main') {
-    return 'latest'
-  } else if (branch === '7.x') {
-    return '7.x-SNAPSHOT'
-  } else if ((branch.startsWith('7.') || branch.startsWith('8.')) && !isNaN(Number(branch.split('.')[1]))) {
-    return `${branch}-SNAPSHOT`
-  } else {
-    throw new Error(`Cannot derive version from branch '${branch}'`)
+    url: elasticsearch.packages[restResourceName].url,
+    commit_url: elasticsearch.commit_url,
   }
 }
 
@@ -172,7 +125,7 @@ async function main (options) {
 }
 
 const options = minimist(process.argv.slice(2), {
-  string: ['id', 'version', 'hash', 'branch']
+  string: ['branch']
 })
 main(options).catch(t => {
   core.error(t)

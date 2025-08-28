@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { SourceConfig } from '@global/search/_types/SourceFilter'
 import {
   Fields,
   Id,
@@ -28,6 +27,7 @@ import {
 } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { GetResult } from '@global/get/types'
+import { SourceConfig } from '@global/search/_types/SourceFilter'
 
 export class Operation {
   /**

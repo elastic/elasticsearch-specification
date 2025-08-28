@@ -17,20 +17,27 @@
  * under the License.
  */
 
-import { ProcessorContainer } from '@ingest/_types/Processors'
 import { RequestBase } from '@_types/Base'
-import { Id, VersionNumber, Metadata } from '@_types/common'
+import { Id, Metadata, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { ProcessorContainer } from '@ingest/_types/Processors'
 
 /**
- * Creates or updates an ingest pipeline.
+ * Create or update a pipeline.
  * Changes made using this API take effect immediately.
  * @doc_id ingest
  * @rest_spec_name ingest.put_pipeline
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @ext_doc_id ingest
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_ingest/pipeline/{id}'
+      methods: ['PUT']
+    }
+  ]
   path_parts: {
     /**
      * ID of the ingest pipeline to create or update.
@@ -73,5 +80,11 @@ export interface Request extends RequestBase {
      * Version number used by external systems to track ingest pipelines. This parameter is intended for external systems only. Elasticsearch does not use or validate pipeline version numbers.
      */
     version?: VersionNumber
+    /**
+     * Marks this ingest pipeline as deprecated.
+     * When a deprecated ingest pipeline is referenced as the default or final pipeline when creating or updating a non-deprecated index template, Elasticsearch will emit a deprecation warning.
+     * @server_default false
+     */
+    deprecated?: boolean
   }
 }

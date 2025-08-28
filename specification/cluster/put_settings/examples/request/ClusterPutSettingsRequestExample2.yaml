@@ -1,0 +1,15 @@
+summary: A setting with multiple patterns
+method_request: PUT /_cluster/settings
+description: >
+  PUT `/_cluster/settings` to update the `action.auto_create_index` setting. The setting accepts a comma-separated list of patterns
+  that you want to allow or you can prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked. In this
+  example, the auto-creation of indices called `my-index-000001` or `index10` is allowed, the creation of indices that match the
+  pattern `index1*` is blocked, and the creation of any other indices that match the `ind*` pattern is allowed. Patterns are matched
+  in the order specified.
+# type: request
+value: |-
+  {
+    "persistent": {
+      "action.auto_create_index": "my-index-000001,index10,-index1*,+ind*" 
+    }
+  }

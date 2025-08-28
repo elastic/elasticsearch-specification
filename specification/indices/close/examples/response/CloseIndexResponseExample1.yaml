@@ -1,0 +1,7 @@
+# summary: ''
+description: A successful response for closing an index.
+# type: response
+# response_code: 200
+value:
+  "{\n  \"acknowledged\": true,\n  \"shards_acknowledged\": true,\n  \"indices\"\
+  : {\n    \"my-index-000001\": {\n      \"closed\": true\n    }\n  }\n}"

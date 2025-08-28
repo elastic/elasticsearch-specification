@@ -1,0 +1,13 @@
+# summary:
+method_request: POST _render/template
+description: Run `POST _render/template`
+# type: request
+value: |-
+  {
+    "id": "my-search-template",
+    "params": {
+      "query_string": "hello world",
+      "from": 20,
+      "size": 10
+    }
+  }

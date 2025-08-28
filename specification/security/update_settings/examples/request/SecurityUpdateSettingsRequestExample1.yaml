@@ -1,0 +1,16 @@
+# summary:
+method_request: PUT /_security/settings
+description: Run `PUT /_security/settings` to modify the security settings.
+# type: request
+value: |-
+  {
+      "security": {
+          "index.auto_expand_replicas": "0-all"
+      },
+      "security-tokens": {
+          "index.auto_expand_replicas": "0-all"
+      },
+      "security-profile": {
+          "index.auto_expand_replicas": "0-all"
+      }
+  }

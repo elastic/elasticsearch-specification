@@ -1,0 +1,11 @@
+summary: HTTP-Redirect binding
+method_request: POST /_security/saml/complete_logout
+description: >
+  Run `POST /_security/saml/complete_logout` to verify the logout response sent by the SAML IdP using the HTTP-Redirect binding.
+# type: request
+value: |-
+  {
+    "realm": "saml1",
+    "ids": [ "_1c368075e0b3..." ],
+    "query_string": "SAMLResponse=fZHLasMwEEVbfb1bf...&SigAlg=http%3A%2F%2Fwww.w3.org%2F2000%2F09%2Fxmldsig%23rsa-sha1&Signature=CuCmFn%2BLqnaZGZJqK..."
+  }

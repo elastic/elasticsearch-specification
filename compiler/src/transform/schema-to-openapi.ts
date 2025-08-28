@@ -18,30 +18,12 @@
  */
 
 import { convert_schema_to_openapi } from 'compiler-wasm-lib'
-import { argv } from 'zx'
-import { join } from 'path'
-import { readFileSync, writeFileSync } from 'fs'
 
-const inputPath = argv.input ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
-const outputPath = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'openapi', 'elasticsearch-serverless-openapi.json')
-const outputPathStack = argv.output ?? join(__dirname, '..', '..', '..', 'output', 'openapi', 'elasticsearch-openapi.json')
+// Remove the 2 first args ("ts-node", "schema-to-openapi.ts")
+const realArgs = process.argv.slice(2)
 
-const inputText = readFileSync(
-  inputPath,
-  { encoding: 'utf8' }
-)
-
-const output = convert_schema_to_openapi(inputText, 'serverless')
-const outputStack = convert_schema_to_openapi(inputText, 'stack')
-
-writeFileSync(
-  outputPath,
-  output,
-  'utf8'
-)
-
-writeFileSync(
-  outputPathStack,
-  outputStack,
-  'utf8'
-)
+try {
+  convert_schema_to_openapi(realArgs, '..')
+} catch (e) {
+  console.log(e)
+}

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { double, integer, long } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class TermVector {
-  field_statistics: FieldStatistics
+  field_statistics?: FieldStatistics
   terms: Dictionary<string, Term>
 }
 
@@ -53,13 +53,13 @@ export class Filter {
    */
   max_doc_freq?: integer
   /**
-   * Maximum number of terms that must be returned per field.
+   * The maximum number of terms that must be returned per field.
    * @server_default 25
    */
   max_num_terms?: integer
   /**
    * Ignore words with more than this frequency in the source doc.
-   * Defaults to unbounded.
+   * It defaults to unbounded.
    */
   max_term_freq?: integer
   /**

@@ -64,3 +64,8 @@ output/schema/schema
 
 # Test suite outputs
 compiler/test/**/output/
+
+# Temporary openAPI documentation files
+output/openapi/elasticsearch-serverless-openapi-docs*.json
+output/openapi/elasticsearch-openapi-docs*.json
+output/openapi/elasticsearch*.redirects.csv

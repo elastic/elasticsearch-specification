@@ -22,7 +22,15 @@ import { ReloadResult } from '@indices/reload_search_analyzers/types'
 
 export class Response {
   body: {
+    /**
+     * The update operation result.
+     */
     result: Result
-    reload_analyzers_details: ReloadResult
+
+    /**
+     * Updating a synonyms set can reload the associated analyzers in case refresh is set to true.
+     * This information is the analyzers reloading result.
+     */
+    reload_analyzers_details?: ReloadResult
   }
 }

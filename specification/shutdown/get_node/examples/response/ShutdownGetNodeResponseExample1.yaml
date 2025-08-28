@@ -1,0 +1,17 @@
+# summary:
+description: >
+  Get the status of shutdown preparations with `GET /_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown`.
+  The response shows information about the shutdown preparations, including the status of shard migration, task migration, and plugin cleanup
+# type: response
+# response_code: ''
+value:
+  "{\n    \"nodes\": [\n        {\n            \"node_id\": \"USpTGYaBSIKbgSUJR2Z9lg\"\
+  ,\n            \"type\": \"RESTART\",\n            \"reason\": \"Demonstrating how\
+  \ the node shutdown API works\",\n            \"shutdown_startedmillis\": 1624406108685,\n\
+  \            \"allocation_delay\": \"10m\",\n            \"status\": \"COMPLETE\"\
+  ,\n            \"shard_migration\": {\n                \"status\": \"COMPLETE\"\
+  ,\n                \"shard_migrations_remaining\": 0,\n                \"explanation\"\
+  : \"no shard relocation is necessary for a node restart\"\n            },\n    \
+  \        \"persistent_tasks\": {\n                \"status\": \"COMPLETE\"\n   \
+  \         },\n            \"plugins\": {\n                \"status\": \"COMPLETE\"\
+  \n            }\n        }\n    ]\n}"

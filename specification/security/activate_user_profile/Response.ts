@@ -20,5 +20,6 @@
 import { UserProfileWithMetadata } from '@security/_types/UserProfile'
 
 export class Response {
+  /** @codegen_name user_profile */
   body: UserProfileWithMetadata
 }

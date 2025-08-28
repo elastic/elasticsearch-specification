@@ -1,0 +1,9 @@
+summary: Restore in-place
+method_request: PUT _cluster/settings
+description: >
+  Close `index_1` then run `POST /_snapshot/my_repository/snapshot_2/_restore?wait_for_completion=true` to restore an index
+  in-place. For example, you might want to perform this type of restore operation when no alternative options surface after the
+  cluster allocation explain API reports `no_valid_shard_copy`.
+# type: request
+value:
+  indices: index_1

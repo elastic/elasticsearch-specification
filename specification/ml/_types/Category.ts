@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id } from '@_types/common'
+import { GrokPattern, Id } from '@_types/common'
 import { long, ulong } from '@_types/Numeric'
 
 export class Category {
@@ -26,7 +26,7 @@ export class Category {
   /** A list of examples of actual values that matched the category. */
   examples: string[]
   /** [experimental] A Grok pattern that could be used in Logstash or an ingest pipeline to extract fields from messages that match the category. This field is experimental and may be changed or removed in a future release. The Grok patterns that are found are not optimal, but are often a good starting point for manual tweaking. */
-  grok_pattern?: string
+  grok_pattern?: GrokPattern
   /** Identifier for the anomaly detection job. */
   job_id: Id
   /** The maximum length of the fields that matched the category. The value is increased by 10% to enable matching for similar fields that have not been analyzed. */

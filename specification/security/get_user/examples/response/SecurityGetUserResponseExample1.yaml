@@ -1,0 +1,20 @@
+# summary:
+description: >
+  A successful response from `GET /_security/user/jacknich?with_profile_uid=true`.
+  It includes the user `profile_uid` as part of the response.
+# type: response
+# response_code:
+value: |-
+  {
+    "jacknich": {
+      "username": "jacknich",
+      "roles": [
+        "admin", "other_role1"
+      ],
+      "full_name": "Jack Nicholson",
+      "email": "jacknich@example.com",
+      "metadata": { "intelligence" : 7 },
+      "enabled": true,
+      "profile_uid": "u_79HkWkwmnBH5gqFKwoxggWPjEBOur1zLPXQPEl1VBW0_0"
+    }
+  }

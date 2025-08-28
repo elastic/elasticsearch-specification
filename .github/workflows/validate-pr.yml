@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - main
+      - '[0-9]+.[0-9]+'
 
 jobs:
   validate-pr:
@@ -26,10 +27,10 @@ jobs:
           token: ${{ secrets.PAT }}
           ref: main
 
-      - name: Use Node.js 20.x
-        uses: actions/setup-node@v1
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 22
 
       - name: Install deps 1/2
         working-directory: ./clients-flight-recorder
@@ -47,7 +48,7 @@ jobs:
       - name: Generate specification and check generated types
         working-directory: ./elasticsearch-specification
         run: |
-          make generate
+          make contrib
 
       - name: Download artifacts
         working-directory: ./clients-flight-recorder
@@ -57,20 +58,27 @@ jobs:
           else
             branch=$GITHUB_REF_NAME
           fi
-          node scripts/upload-recording/download.js --branch latest
+          node scripts/upload-recording/download.js --branch $branch --git
           node scripts/clone-elasticsearch/index.js --branch $branch
-        env:
-          GCS_CREDENTIALS: ${{ secrets.GCS_CREDENTIALS }}
-
-      - name: Remove previous comment
-        uses: maheshrayas/action-pr-comment-delete@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          org: elastic
-          repo: elasticsearch-specification
-          user: github-actions[bot]
-          issue: ${{ github.event.number }}
 
       - name: Run validation
+        id: validation
         working-directory: ./elasticsearch-specification
         run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Find existing comment
+        uses: peter-evans/find-comment@3eae4d37986fb5a8592848f6a574fdf654e61f9e # v3.1.0
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: 'Following you can find the validation changes'
+
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: ${{ steps.validation.outputs.comment_body }}
+          edit-mode: replace

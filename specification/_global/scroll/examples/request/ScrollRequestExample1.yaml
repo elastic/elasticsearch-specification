@@ -1,0 +1,8 @@
+#
+method_request: 'GET /_search/scroll'
+description: Run `GET /_search/scroll` to get the next batch of results for a scrolling search.
+# type: "request"
+value: |-
+  {
+    "scroll_id" : "DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAD4WYm9laVYtZndUQlNsdDcwakFMNjU1QQ=="
+  }

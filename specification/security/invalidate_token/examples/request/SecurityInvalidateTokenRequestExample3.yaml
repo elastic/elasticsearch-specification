@@ -1,0 +1,8 @@
+summary: Invalidate tokens by realm
+method_request: DELETE /_security/oauth2/token
+description: Run `DELETE /_security/oauth2/token` to invalidate all access tokens and refresh tokens for the `saml1` realm.
+# type: request
+value: |-
+  {
+    "realm_name" : "saml1"
+  }

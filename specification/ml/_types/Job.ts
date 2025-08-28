@@ -17,21 +17,21 @@
  * under the License.
  */
 
-import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
-import { ModelPlotConfig } from '@ml/_types/ModelPlot'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { CustomSettings } from '@ml/_types/Settings'
-import { Field, Id, TaskId, IndexName, VersionString } from '@_types/common'
+import { Field, Id, IndexName, TaskId, VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import {
-  Duration,
   DateTime,
+  Duration,
   DurationValue,
   UnitFloatMillis
 } from '@_types/Time'
-import { DiscoveryNode } from './DiscoveryNode'
-import { ModelSizeStats } from './Model'
+import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
 import { Datafeed, DatafeedConfig } from '@ml/_types/Datafeed'
+import { ModelPlotConfig } from '@ml/_types/ModelPlot'
+import { CustomSettings } from '@ml/_types/Settings'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { DiscoveryNodeCompact } from './DiscoveryNode'
+import { ModelSizeStats } from './Model'
 
 export enum JobState {
   /** The job close action is in progress and has not yet completed. A closing job cannot accept further data. */
@@ -310,7 +310,7 @@ export class JobStats {
    * This information is available only for open jobs.
    * @availability stack
    */
-  node?: DiscoveryNode
+  node?: DiscoveryNodeCompact
   /**
    * For open jobs only, the elapsed time for which the job has been open.
    */

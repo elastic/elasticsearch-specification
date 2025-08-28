@@ -21,6 +21,9 @@ import { Field } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { InnerHits } from './hits'
 
+/**
+ * @ext_doc_id collapse-search-results
+ */
 export class FieldCollapse {
   /**
    * The field to collapse the result set on

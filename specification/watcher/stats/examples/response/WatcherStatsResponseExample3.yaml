@@ -1,0 +1,21 @@
+summary: Queued watch metrics
+description: An abbreviated response from `GET _watcher/stats/queued_watches`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "watcher_state": "started",
+    "watch_count": 10,
+    "execution_thread_pool": {
+        "queue_size": 1000,
+        "max_size": 20
+    },
+    "queued_watches": [ 
+          {
+              "watch_id": "slow_condition4", 
+              "watch_record_id": "slow_condition4_223-2015-05-21T11:59:59.811Z", 
+              "triggered_time": "2015-05-21T11:59:59.811Z", 
+              "execution_time": "2015-05-21T11:59:59.811Z" 
+          }
+    ]
+  }

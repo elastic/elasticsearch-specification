@@ -1,0 +1,11 @@
+summary: A single field mapping
+# indices/get-field-mapping.asciidoc:104
+description: >
+  A sucessful response from `GET publications/_mapping/field/title`, which returns the mapping of a field called `title`.
+# type: response
+# response_code: ''
+value:
+  "{\n   \"publications\": {\n      \"mappings\": {\n          \"title\": {\n\
+  \             \"full_name\": \"title\",\n             \"mapping\": {\n         \
+  \       \"title\": {\n                   \"type\": \"text\"\n                }\n\
+  \             }\n          }\n       }\n   }\n}"

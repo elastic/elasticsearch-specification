@@ -22,8 +22,8 @@ import { NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Returns cluster statistics.
- * It returns basic index metrics (shard numbers, store size, memory usage) and information about the current nodes that form the cluster (number, roles, os, jvm versions, memory usage, cpu and installed plugins).
+ * Get cluster statistics.
+ * Get basic index metrics (shard numbers, store size, memory usage) and information about the current nodes that form the cluster (number, roles, os, jvm versions, memory usage, cpu and installed plugins).
  * @rest_spec_name cluster.stats
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
@@ -31,16 +31,26 @@ import { Duration } from '@_types/Time'
  * @doc_id cluster-stats
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_cluster/stats'
+      methods: ['GET']
+    },
+    {
+      path: '/_cluster/stats/nodes/{node_id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** Comma-separated list of node filters used to limit returned information. Defaults to all nodes in the cluster. */
     node_id?: NodeIds
   }
   query_parameters: {
     /**
-     * If `true`, returns settings in flat format.
+     * Include remote cluster data into the response
      * @server_default false
      */
-    flat_settings?: boolean
+    include_remotes?: boolean
     /**
      * Period to wait for each node to respond.
      * If a node does not respond before its timeout expires, the response does not include its stats.

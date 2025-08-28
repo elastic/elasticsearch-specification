@@ -18,16 +18,16 @@
  */
 
 import { IndexName } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
+import { integer } from '@_types/Numeric'
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import {
-  Decision,
   AllocationDecision,
   ClusterInfo,
   CurrentNode,
+  Decision,
   NodeAllocationExplanation,
   UnassignedInformation
 } from './types'
-import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
 export class Response {
   body: {

@@ -1,0 +1,10 @@
+method_request: POST _ml/datafeeds/datafeed-test-job/_update
+description: An example body for a `POST _ml/datafeeds/datafeed-test-job/_update` request.
+value: |-
+  {
+    "query": {
+      "term": {
+        "geo.src": "US"
+      }
+    }
+  }
