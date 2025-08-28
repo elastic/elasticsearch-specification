@@ -316,7 +316,8 @@ export class InferenceEndpointInfoWatsonx extends InferenceEndpoint {
 export class InferenceChunkingSettings {
   /**
    * The maximum size of a chunk in words.
-   * This value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).
+   * This value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).
+   * This value should not exceed the window size for the associated model.
    * @server_default 250
    */
   max_chunk_size?: integer

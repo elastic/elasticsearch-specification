@@ -78,7 +78,8 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * The chunking configuration object.
+     * The chunking configuration object. 
+     * Note that for ELSER endpoints, the max_chunk_size may not exceed `300`.
      * @ext_doc_id inference-chunking
      */
     chunking_settings?: InferenceChunkingSettings
