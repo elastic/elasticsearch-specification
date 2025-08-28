@@ -32824,7 +32824,8 @@
           }
         },
         "required": [
-          "hits"
+          "hits",
+          "max_score"
         ]
       },
       "_global.search._types.TotalHits": {
@@ -32988,7 +32989,8 @@
           }
         },
         "required": [
-          "_index"
+          "_index",
+          "_score"
         ]
       },
       "_types.IndexName": {
