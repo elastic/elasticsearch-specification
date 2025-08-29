@@ -19,30 +19,10 @@
 
 /**
  * @rest_spec_name index
- * @availability stack stability=stable since=0.0.0
- * @doc_id docs-index
+ * @availability stack since=0.0.0 stability=stable
  */
-export interface Request<TDocument> {
-  path_parts: {
-    id?: string
-    index: string
-  }
-  query_parameters: {
-    if_primary_term?: number
-    if_seq_no?: number
-    op_type?: string
-    pipeline?: string
-    refresh?: string
-    routing?: string
-    timeout?: string
-    version?: number
-    version_type?: string
-    wait_for_active_shards?: string
-    require_alias?: boolean
-  }
-  /** @codegen_name document */
-  body?: TDocument
-  headers: {
-    'content-type': string
+export interface Request {
+  body: {
+    foo: string
   }
 }
