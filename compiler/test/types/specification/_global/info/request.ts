@@ -20,5 +20,6 @@
 /**
  * @rest_spec_name info
  * @availability stack since=0.0.0 stability=stable
+ * @doc_id api-root
  */
 export interface Request {}
