@@ -27,8 +27,11 @@ export class Response {
 }
 
 export class CleanupRepositoryResults {
-  /** Number of binary large objects (blobs) removed during cleanup. */
+  /**
+   * The number of binary large objects (blobs) removed from the snapshot repository during cleanup operations.
+   * A non-zero value indicates that unreferenced blobs were found and subsequently cleaned up.
+   */
   deleted_blobs: long
-  /** Number of bytes freed by cleanup operations. */
+  /** The number of bytes freed by cleanup operations. */
   deleted_bytes: long
 }

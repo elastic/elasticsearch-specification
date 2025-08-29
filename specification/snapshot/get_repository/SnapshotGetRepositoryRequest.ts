@@ -41,11 +41,28 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /** @codegen_name name */
+    /**
+     * A comma-separated list of snapshot repository names used to limit the request.
+     * Wildcard (`*`) expressions are supported including combining wildcards with exclude patterns starting with `-`.
+     *
+     * To get information about all snapshot repositories registered in the cluster, omit this parameter or use `*` or `_all`.
+     * @codegen_name name
+     */
     repository?: Names
   }
   query_parameters: {
+    /**
+     * If `true`, the request gets information from the local node only.
+     * If `false`, the request gets information from the master node.
+     * @server_default false
+     */
     local?: boolean
+    /**
+     * The period to wait for the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * To indicate that the request should never timeout, set it to `-1`.
+     * @server_default to 30s
+     */
     master_timeout?: Duration
   }
 }

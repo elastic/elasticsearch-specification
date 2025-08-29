@@ -50,6 +50,14 @@ import { integer } from '@_types/Numeric'
  * NOTE: This API is intended for exploratory use by humans. You should expect the request parameters and the response format to vary in future versions.
  *
  * NOTE: This API may not work correctly in a mixed-version cluster.
+ *
+ * The default values for the parameters of this API are designed to limit the impact of the integrity verification on other activities in your cluster.
+ * For instance, by default it will only use at most half of the `snapshot_meta` threads to verify the integrity of each snapshot, allowing other snapshot operations to use the other half of this thread pool.
+ * If you modify these parameters to speed up the verification process, you risk disrupting other snapshot-related operations in your cluster.
+ * For large repositories, consider setting up a separate single-node Elasticsearch cluster just for running the integrity verification API.
+ *
+ * The response exposes implementation details of the analysis which may change from version to version.
+ * The response body format is therefore not considered stable and may be different in newer versions.
  * @rest_spec_name snapshot.repository_verify_integrity
  * @availability stack since=8.16.0 stability=experimental visibility=private
  * @cluster_privileges manage
@@ -63,17 +71,56 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /** @codegen_name name */
+    /**
+     * The name of the snapshot repository.
+     * @codegen_name name */
     repository: Names
   }
   query_parameters: {
-    meta_thread_pool_concurrency?: integer
+    /**
+     * If `verify_blob_contents` is `true`, this parameter specifies how many blobs to verify at once.
+     * @server_default 1
+     */
     blob_thread_pool_concurrency?: integer
-    snapshot_verification_concurrency?: integer
-    index_verification_concurrency?: integer
+    /**
+     * The maximum number of index snapshots to verify concurrently within each index verification.
+     * @server_default 1
+     */
     index_snapshot_verification_concurrency?: integer
-    max_failed_shard_snapshots?: integer
-    verify_blob_contents?: boolean
+    /**
+     * The number of indices to verify concurrently.
+     * The default behavior is to use the entire `snapshot_meta` thread pool.
+     * @server_default 0
+     */
+    index_verification_concurrency?: integer
+    /**
+     * If `verify_blob_contents` is `true`, this parameter specifies the maximum amount of data that Elasticsearch will read from the repository every second.
+     * @server_default 10mb
+     */
     max_bytes_per_sec?: string
+    /**
+     * The number of shard snapshot failures to track during integrity verification, in order to avoid excessive resource usage.
+     * If your repository contains more than this number of shard snapshot failures, the verification will fail.
+     * @server_default 10000
+     */
+    max_failed_shard_snapshots?: integer
+    /**
+     * The maximum number of snapshot metadata operations to run concurrently.
+     * The default behavior is to use at most half of the `snapshot_meta` thread pool at once.
+     * @server_default 0
+     */
+    meta_thread_pool_concurrency?: integer
+    /**
+     * The number of snapshots to verify concurrently.
+     * The default behavior is to use at most half of the `snapshot_meta` thread pool at once.
+     * @server_default 0
+     */
+    snapshot_verification_concurrency?: integer
+    /**
+     * Indicates whether to verify the checksum of every data blob in the repository.
+     * If this feature is enabled, Elasticsearch will read the entire repository contents, which may be extremely slow and expensive.
+     * @server_default false
+     */
+    verify_blob_contents?: boolean
   }
 }
