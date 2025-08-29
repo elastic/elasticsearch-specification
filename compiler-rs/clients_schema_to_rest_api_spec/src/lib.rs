@@ -136,19 +136,23 @@ fn convert_url_template(
 ) -> Result<Path> {
     let mut parts = HashMap::new();
     
-    // Extract path parameters from the request type
+    // Extract path parameters from the request type, but only include those referenced in this URL template
     if let Some(request_type_name) = &endpoint.request {
         if let Some(TypeDefinition::Request(request)) = types.get(request_type_name) {
             for path_param in &request.path {
-                let part = PathPart {
-                    typ: get_type_name(&path_param.typ, types, &endpoint.name, &path_param.name).to_string(),
-                    description: path_param.description.clone().unwrap_or_default(),
-                    deprecated: path_param.deprecation.as_ref().map(|dep| Deprecation {
-                        version: dep.version.clone(),
-                        description: dep.description.clone(),
-                    }),
-                };
-                parts.insert(path_param.name.clone(), part);
+                // Only include this path parameter if it's referenced in this specific URL template
+                let param_pattern = format!("{{{}}}", path_param.name);
+                if url_template.path.contains(&param_pattern) {
+                    let part = PathPart {
+                        typ: get_type_name(&path_param.typ, types, &endpoint.name, &path_param.name).to_string(),
+                        description: path_param.description.clone().unwrap_or_default(),
+                        deprecated: path_param.deprecation.as_ref().map(|dep| Deprecation {
+                            version: dep.version.clone(),
+                            description: dep.description.clone(),
+                        }),
+                    };
+                    parts.insert(path_param.name.clone(), part);
+                }
             }
         }
     }
@@ -406,5 +410,134 @@ mod tests {
         };
 
         assert_eq!(body_optional.required, false);
+    }
+
+    #[test]
+    fn test_convert_url_template_only_includes_referenced_path_parts() {
+        use indexmap::IndexMap;
+        use clients_schema::{Request, Body as SchemaBody, NoBody};
+        
+        // Create test data
+        let mut types = IndexMap::new();
+        let request_name = TypeName::new("test", "TestRequest");
+        
+        let path_params = vec![
+            Property {
+                name: "index".to_string(),
+                typ: ValueOf::InstanceOf(InstanceOf {
+                    typ: TypeName::new("_builtins", "string"),
+                    generics: vec![],
+                }),
+                description: Some("Index name".to_string()),
+                required: true,
+                deprecation: None,
+                availability: None,
+                server_default: None,
+                doc_url: None,
+                doc_id: None,
+                ext_doc_url: None,
+                ext_doc_description: None,
+                ext_previous_version_doc_url: None,
+                ext_doc_id: None,
+                codegen_name: None,
+                aliases: vec![],
+                container_property: false,
+                es_quirk: None,
+            },
+            Property {
+                name: "id".to_string(),
+                typ: ValueOf::InstanceOf(InstanceOf {
+                    typ: TypeName::new("_builtins", "string"),
+                    generics: vec![],
+                }),
+                description: Some("Document ID".to_string()),
+                required: true,
+                deprecation: None,
+                availability: None,
+                server_default: None,
+                doc_url: None,
+                doc_id: None,
+                ext_doc_url: None,
+                ext_doc_description: None,
+                ext_previous_version_doc_url: None,
+                ext_doc_id: None,
+                codegen_name: None,
+                aliases: vec![],
+                container_property: false,
+                es_quirk: None,
+            }
+        ];
+
+        let base: BaseType = BaseType::new(TypeName::new("_builtins", "string"),);
+
+        let request = Request {
+            base: base,
+            path: path_params,
+            query: vec![],
+            body: SchemaBody::NoBody(NoBody {}),
+            generics: vec![],
+            inherits: None,
+            implements: vec![],
+            behaviors: vec![],
+            attached_behaviors: vec![],
+            examples: None
+        };
+        
+        types.insert(request_name.clone(), TypeDefinition::Request(request));
+        
+        let endpoint = SchemaEndpoint {
+            name: "test_endpoint".to_string(),
+            request: Some(request_name),
+            response: None,
+            urls: vec![],
+            doc_url: None,
+            description: "".to_string(),
+            request_body_required: false,
+            request_media_type: vec![],
+            response_media_type: vec![],
+            availability: None,
+            deprecation: None,
+            doc_id: None,
+            ext_doc_id: None,
+            ext_doc_url: None,
+            ext_doc_description: None,
+            ext_previous_version_doc_url: None,
+            doc_tag: None,
+            privileges: None,
+        };
+        
+        // Test URL with index parameter only
+        let url_template_with_index = UrlTemplate {
+            path: "/{index}/_async_search".to_string(),
+            methods: vec!["POST".to_string()],
+            deprecation: None,
+        };
+        
+        let path_with_index = convert_url_template(&url_template_with_index, &endpoint, &types).unwrap();
+        assert_eq!(path_with_index.parts.len(), 1);
+        assert!(path_with_index.parts.contains_key("index"));
+        assert!(!path_with_index.parts.contains_key("id"));
+        
+        // Test URL with id parameter only  
+        let url_template_with_id = UrlTemplate {
+            path: "/_async_search/{id}".to_string(),
+            methods: vec!["GET".to_string()],
+            deprecation: None,
+        };
+        
+        let path_with_id = convert_url_template(&url_template_with_id, &endpoint, &types).unwrap();
+        assert_eq!(path_with_id.parts.len(), 1);
+        assert!(path_with_id.parts.contains_key("id"));
+        assert!(!path_with_id.parts.contains_key("index"));
+        
+        // Test URL with no parameters
+        let url_template_no_params = UrlTemplate {
+            path: "/_async_search".to_string(),
+            methods: vec!["POST".to_string()],
+            deprecation: None,
+        };
+        
+        let path_no_params = convert_url_template(&url_template_no_params, &endpoint, &types).unwrap();
+        assert_eq!(path_no_params.parts.len(), 0);
     }
 }
