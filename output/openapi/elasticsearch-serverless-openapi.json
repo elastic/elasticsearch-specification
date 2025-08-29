@@ -57719,11 +57719,11 @@
             "type": "string"
           },
           "separator_group": {
-            "description": "This parameter is only applicable when using the `recursive` chunking strategy.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
             "type": "string"
           },
           "separators": {
-            "description": "A list of strings used as possible split points when chunking text with the `recursive` strategy.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nA list of strings used as possible split points when chunking text.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
             "type": "array",
             "items": {
               "type": "string"
@@ -57747,8 +57747,6 @@
         },
         "required": [
           "strategy",
-          "separator_group",
-          "separators",
           "max_chunk_size"
         ]
       },
@@ -63865,11 +63863,11 @@
             "type": "number"
           },
           "separator_group": {
-            "description": "This parameter is only applicable when using the `recursive` chunking strategy.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
             "type": "string"
           },
           "separators": {
-            "description": "A list of strings used as possible split points when chunking text with the `recursive` strategy.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nA list of strings used as possible split points when chunking text.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
             "type": "array",
             "items": {
               "type": "string"
@@ -63883,11 +63881,7 @@
             "default": "sentence",
             "type": "string"
           }
-        },
-        "required": [
-          "separator_group",
-          "separators"
-        ]
+        }
       },
       "inference._types.ServiceSettings": {
         "type": "object"
