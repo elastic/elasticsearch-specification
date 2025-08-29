@@ -17,32 +17,16 @@
  * under the License.
  */
 
-/**
- * @rest_spec_name index
- * @availability stack stability=stable since=0.0.0
- * @doc_id docs-index
- */
-export interface Request<TDocument> {
-  path_parts: {
-    id?: string
-    index: string
-  }
-  query_parameters: {
-    if_primary_term?: number
-    if_seq_no?: number
-    op_type?: string
-    pipeline?: string
-    refresh?: string
-    routing?: string
-    timeout?: string
-    version?: number
-    version_type?: string
-    wait_for_active_shards?: string
-    require_alias?: boolean
-  }
-  /** @codegen_name document */
-  body?: TDocument
-  headers: {
-    'content-type': string
-  }
-}
+import { join } from 'path'
+import test from 'ava'
+import Compiler from '../../src/compiler'
+import * as Model from '../../src/model/metamodel'
+
+const specsFolder = join(__dirname, 'specification')
+const outputFolder = join(__dirname, 'output')
+
+test("Body cannot be defined if the API methods don't allow it", t => {
+  const compiler = new Compiler(specsFolder, outputFolder)
+  const error = t.throws(() => compiler.generateModel())
+  t.is(error?.message, "Request Request needs a @doc_id annotation")
+})
