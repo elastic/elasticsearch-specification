@@ -1480,7 +1480,7 @@ export type SearchHighlighterType = 'plain' | 'fvh' | 'unified'| string
 export interface SearchHit<TDocument = unknown> {
   _index: IndexName
   _id?: Id
-  _score?: double | null
+  _score: double | null
   _explanation?: ExplainExplanation
   fields?: Record<string, any>
   highlight?: Record<string, string[]>
@@ -1503,7 +1503,7 @@ export interface SearchHit<TDocument = unknown> {
 export interface SearchHitsMetadata<T = unknown> {
   total?: SearchTotalHits | long
   hits: SearchHit<T>[]
-  max_score?: double | null
+  max_score: double | null
 }
 
 export interface SearchInnerHits {
@@ -2897,10 +2897,14 @@ export type Service = string
 
 export interface ShardFailure {
   index?: IndexName
+  _index?: IndexName
   node?: string
+  _node?: string
   reason: ErrorCause
-  shard: integer
+  shard?: integer
+  _shard?: integer
   status?: string
+  primary?: boolean
 }
 
 export interface ShardStatistics {
@@ -5568,8 +5572,8 @@ export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
 
 export interface MappingChunkingSettings {
   strategy: string
-  separator_group: string
-  separators: string[]
+  separator_group?: string
+  separators?: string[]
   max_chunk_size: integer
   overlap?: integer
   sentence_overlap?: integer
@@ -14067,8 +14071,8 @@ export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
   overlap?: integer
   sentence_overlap?: integer
-  separator_group: string
-  separators: string[]
+  separator_group?: string
+  separators?: string[]
   strategy?: string
 }
 
@@ -22531,6 +22535,13 @@ export interface TransformScheduleNowTransformRequest extends RequestBase {
 }
 
 export type TransformScheduleNowTransformResponse = AcknowledgedResponseBase
+
+export interface TransformSetUpgradeModeRequest extends RequestBase {
+  enabled?: boolean
+  timeout?: Duration
+}
+
+export type TransformSetUpgradeModeResponse = AcknowledgedResponseBase
 
 export interface TransformStartTransformRequest extends RequestBase {
   transform_id: Id

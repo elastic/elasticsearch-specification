@@ -28,6 +28,7 @@ import { Id } from '@_types/common'
  * @cluster_privileges monitor_esql
  * @availability stack since=9.1.0 stability=experimental visibility=public
  * @availability serverless stability=experimental visibility=public
+ * @doc_id esql-get-query
  */
 export interface Request extends RequestBase {
   urls: [

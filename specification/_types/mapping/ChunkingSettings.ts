@@ -24,9 +24,9 @@ import { OverloadOf } from '@spec_utils/behaviors'
 export class ChunkingSettings implements OverloadOf<InferenceChunkingSettings> {
   strategy: string
 
-  separator_group: string
+  separator_group?: string
 
-  separators: string[]
+  separators?: string[]
 
   max_chunk_size: integer
 
