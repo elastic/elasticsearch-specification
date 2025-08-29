@@ -724,6 +724,11 @@ export function hoistRequestAnnotations (
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
     }
   })
+
+  if (endpoint.availability.stack?.visibility !== 'private') {
+    assert(jsDocs, tags.doc_id !== '' && tags.doc_id !== null && tags.doc_id !== undefined,
+      `Request ${request.name.name} needs a @doc_id annotation`)
+  }
 }
 
 /** Lifts jsDoc type annotations to fixed properties on Type */
