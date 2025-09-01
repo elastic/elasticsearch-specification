@@ -25,7 +25,7 @@ import {
   Names
 } from '@_types/common'
 import { Duration, TimeUnit } from '@_types/Time'
-import { CatRequestBase } from '@cat/_types/CatBase'
+import { CatIndicesColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get index information.
@@ -96,9 +96,9 @@ export interface Request extends CatRequestBase {
      */
     master_timeout?: Duration
     /**
-     * List of columns to appear in the response. Supports simple wildcards.
+     * A comma-separated list of columns names to display. It supports simple wildcards.
      */
-    h?: Names
+    h?: CatIndicesColumns
     /**
      * List of columns that determine how the table should be sorted.
      * Sorting defaults to ascending and can be changed by setting `:asc`
