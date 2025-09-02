@@ -7233,7 +7233,7 @@ export type CatCatNodeattrsColumns = CatCatNodeattrsColumn | CatCatNodeattrsColu
 
 export type CatCatPendingTasksColumn = 'insertOrder' | 'o' | 'timeInQueue' | 't' | 'priority' | 'p' | 'source' | 's'| string
 
-export type CatCatPendingTasksColumns = CatCatPendingTasksColumn | CatCatPendingTasksColumns[]
+export type CatCatPendingTasksColumns = CatCatPendingTasksColumn | CatCatPendingTasksColumn[]
 
 export type CatCatPluginsColumn = 'id' | 'name' | 'n' | 'component' | 'c' | 'version' | 'v' | 'description' | 'd'| string
 
