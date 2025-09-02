@@ -2476,7 +2476,7 @@ export type CatMasterColumns = CatMasterColumn | CatMasterColumn[]
 export type CatNodeattrsColumns = CatNodeattrsColumn | CatNodeattrsColumn[]
 export type CatPendingTasksColumns =
   | CatPendingTasksColumn
-  | CatPendingTasksColumns[]
+  | CatPendingTasksColumn[]
 export type CatPluginsColumns = CatPluginsColumn | CatPluginsColumn[]
 export type CatTasksColumns = CatTasksColumn | CatTasksColumn[]
 export type CatTemplatesColumns = CatTemplatesColumn | CatTemplatesColumn[]
