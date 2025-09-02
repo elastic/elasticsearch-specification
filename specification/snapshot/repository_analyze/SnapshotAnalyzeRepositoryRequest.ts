@@ -143,12 +143,13 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * The total number of blobs to write to the repository during the test.
-     * For realistic experiments, you should set it to at least `2000`.
+     * For realistic experiments, set this parameter to at least `2000`.
      * @server_default 100
      */
     blob_count?: integer
     /**
      * The number of operations to run concurrently during the test.
+     * For realistic experiments, leave this parameter unset.
      * @server_default 10
      */
     concurrency?: integer
@@ -161,39 +162,43 @@ export interface Request extends RequestBase {
     /**
      * The number of nodes on which to perform an early read operation while writing each blob.
      * Early read operations are only rarely performed.
+     * For realistic experiments, leave this parameter unset.
      * @server_default 2
      */
     early_read_node_count?: integer
     /**
      * The maximum size of a blob to be written during the test.
-     * For realistic experiments, you should set it to at least `2gb`.
+     * For realistic experiments, set this parameter to at least `2gb`.
      * @server_default 10mb
      */
     max_blob_size?: ByteSize
     /**
      * An upper limit on the total size of all the blobs written during the test.
-     * For realistic experiments, you should set it to at least `1tb`.
+     * For realistic experiments, set this parameter to at least `1tb`.
      * @server_default 1gb
      */
     max_total_data_size?: ByteSize
     /**
      * The probability of performing a rare action such as an early read, an overwrite, or an aborted write on each blob.
+     * For realistic experiments, leave this parameter unset.
      * @server_default 0.02
      */
     rare_action_probability?: double
     /**
      * Indicates whether to rarely cancel writes before they complete.
+     * For realistic experiments, leave this parameter unset.
      * @server_default true
      */
     rarely_abort_writes?: boolean
     /**
      * The number of nodes on which to read a blob after writing.
+     * For realistic experiments, leave this parameter unset.
      * @server_default 10
      */
     read_node_count?: integer
     /**
      * The minimum number of linearizable register operations to perform in total.
-     * For realistic experiments, you should set it to at least `100`.
+     * For realistic experiments, set this parameter to at least `100`.
      * @server_default 10
      */
     register_operation_count?: integer
@@ -201,11 +206,13 @@ export interface Request extends RequestBase {
      * The seed for the pseudo-random number generator used to generate the list of operations performed during the test.
      * To repeat the same set of operations in multiple experiments, use the same seed in each experiment.
      * Note that the operations are performed concurrently so might not always happen in the same order on each run.
+     * For realistic experiments, leave this parameter unset.
      */
     seed?: integer
     /**
      * The period of time to wait for the test to complete.
      * If no response is received before the timeout expires, the test is cancelled and returns an error.
+     * For realistic experiments, set this parameter sufficiently long to allow the test to complete.
      * @server_default 30s
      */
     timeout?: Duration
