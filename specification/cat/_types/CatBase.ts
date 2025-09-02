@@ -1012,139 +1012,6 @@ export enum CatNodeColumn {
 }
 
 /** @non_exhaustive */
-export enum CatRecoveryColumn {
-  /**
-   * The name of the index.
-   * @aliases i, idx
-   */
-  index,
-  /**
-   * The name of the shard.
-   * @aliases s, sh
-   */
-  shard,
-  /**
-   * The recovery time elasped.
-   * @aliases t, ti, primaryOrReplica
-   */
-  time,
-  /**
-   * The type of recovery, from a peer or a snapshot.
-   */
-  type,
-  /**
-   * The stage of the recovery. Returned values are: `INIT`, `INDEX`: recovery of lucene files, either reusing local ones are copying new ones, `VERIFY_INDEX`: potentially running check index, `TRANSLOG`: starting up the engine, replaying the translog, `FINALIZE`: performing final task after all translog ops have been done, `DONE`
-   * @aliases st
-   */
-  stage,
-  /**
-   * The host address the index is moving from.
-   * @aliases shost
-   */
-  source_host,
-  /**
-   * The node name the index is moving from.
-   * @aliases snode
-   */
-  source_node,
-  /**
-   * The host address the index is moving to.
-   * @aliases thost
-   */
-  target_host,
-  /**
-   * The node name the index is moving to.
-   * @aliases tnode
-   */
-  target_node,
-  /**
-   * The name of the repository being used. if not relevant 'n/a'.
-   * @aliases tnode
-   */
-  repository,
-  /**
-   * The name of the snapshot being used. if not relevant 'n/a'.
-   * @aliases snap
-   */
-  snapshot,
-  /**
-   * The total number of files to recover.
-   * @aliases f
-   */
-  files,
-  /**
-   * The number of files currently recovered.
-   * @aliases fr
-   */
-  files_recovered,
-  /**
-   * The percentage of files currently recovered.
-   * @aliases fp
-   */
-  files_percent,
-  /**
-   * The total number of files.
-   * @aliases tf
-   */
-  files_total,
-  /**
-   * The total number of bytes to recover.
-   * @aliases b
-   */
-  bytes,
-  /**
-   * Total number of bytes currently recovered.
-   * @aliases br
-   */
-  bytes_recovered,
-  /**
-   * The percentage of bytes currently recovered.
-   * @aliases bp
-   */
-  bytes_percent,
-  /**
-   * The total number of bytes.
-   * @aliases tb
-   */
-  bytes_total,
-  /**
-   * The total number of translog ops to recover.
-   * @aliases to
-   */
-  translog_ops,
-  /**
-   * The total number of translog ops currently recovered.
-   * @aliases tor
-   */
-  translog_ops_recovered,
-  /**
-   * The percentage of translog ops currently recovered.
-   * @aliases top
-   */
-  translog_ops_percent,
-  /**
-   * The start time of the recovery operation.
-   * @aliases start
-   */
-  start_time,
-  /**
-   * The start time of the recovery operation in eopch milliseconds.
-   * @aliases start_millis
-   */
-  start_time_millis,
-  /**
-   * The end time of the recovery operation. If ongoing '1970-01-01T00:00:00.000Z'
-   * @aliases stop
-   */
-  stop_time,
-  /**
-   * The end time of the recovery operation in eopch milliseconds. If ongoing '0'
-   * @aliases stop_millis
-   */
-  stop_time_millis
-}
-
-/** @non_exhaustive */
 export enum CatSegmentsColumn {
   /**
    * The name of the index.
@@ -2286,6 +2153,289 @@ export enum CatNodeattrsColumn {
 }
 
 /** @non_exhaustive */
+export enum CatTasksColumn {
+  /**
+   * The ID of the task with the node.
+   */
+  id,
+  /**
+   * The task action.
+   * @aliases ac
+   */
+  action,
+  /**
+   * The unique task ID.
+   * @aliases ti
+   */
+  task_id,
+  /**
+   * The parent task ID.
+   * @aliases pti
+   */
+  parent_task_id,
+  /**
+   * The task type.
+   * @aliases ty
+   */
+  type,
+  /**
+   * The start time in milliseconds.
+   * @aliases start
+   */
+  start_time,
+  /**
+   * The start time in HH:MM:SS.
+   * @aliases ts, hms, hhmmss
+   */
+  timestamp,
+  /**
+   * The running time in nanoseconds.
+   * @aliases time
+   */
+  running_time_ns,
+  /**
+   * The running time.
+   * @aliases time
+   */
+  running_time,
+  /**
+   * The unique node ID.
+   * @aliases ni
+   */
+  node_id,
+  /**
+   * The IP address.
+   * @aliases i
+   */
+  ip,
+  /**
+   * The bound transport port.
+   * @aliases po
+   */
+  port,
+  /**
+   * The node name.
+   * @aliases n
+   */
+  node,
+  /**
+   * The Elasticsearch version.
+   * @aliases v
+   */
+  version,
+  /**
+   * The X-Opaque-ID header.
+   * @aliases x
+   */
+  x_opaque_id
+}
+
+/** @non_exhaustive */
+export enum CatPluginsColumn {
+  /**
+   * The unique node ID.
+   */
+  id,
+  /**
+   * The node name.
+   * @aliases n
+   */
+  name,
+  /**
+   * The component.
+   * @aliases c
+   */
+  component,
+  /**
+   * The component version.
+   * @aliases v
+   */
+  version,
+  /**
+   * The plugin details.
+   * @aliases d
+   */
+  description
+}
+
+/** @non_exhaustive */
+export enum CatRecoveryColumn {
+  /**
+   * The index name.
+   * @aliases i, idx
+   */
+  index,
+  /**
+   * The shard name.
+   * @aliases s, sh
+   */
+  shard,
+  /**
+   * The recovery start time.
+   * @aliases start
+   */
+  start_time,
+  /**
+   * The recovery start time in epoch milliseconds.
+   * @aliases start_millis
+   */
+  start_time_millis,
+  /**
+   * The recovery stop time.
+   * @aliases stop
+   */
+  stop_time,
+  /**
+   * The recovery stop time in epoch milliseconds.
+   * @aliases stop_millis
+   */
+  stop_time_millis,
+  /**
+   * The recovery time.
+   * @aliases t, ti
+   */
+  time,
+  /**
+   * The recovery type.
+   * @aliases ty
+   */
+  type,
+  /**
+   * The recovery stage.
+   * @aliases st
+   */
+  stage,
+  /**
+   * The source host.
+   * @aliases shost
+   */
+  source_host,
+  /**
+   * The source node name.
+   * @aliases snode
+   */
+  source_node,
+  /**
+   * The target host.
+   * @aliases thost
+   */
+  target_host,
+  /**
+   * The target node name.
+   * @aliases tnode
+   */
+  target_node,
+  /**
+   * The repository.
+   * @aliases rep
+   */
+  repository,
+  /**
+   * The snapshot.
+   * @aliases snap
+   */
+  snapshot,
+  /**
+   * The number of files to recover.
+   * @aliases f
+   */
+  files,
+  /**
+   * The files recovered.
+   * @aliases fr
+   */
+  files_recovered,
+  /**
+   * The percent of files recovered.
+   * @aliases fp
+   */
+  files_percent,
+  /**
+   * The total number of files.
+   * @aliases tf
+   */
+  files_total,
+  /**
+   * The number of bytes to recover.
+   * @aliases b
+   */
+  bytes,
+  /**
+   * The bytes recovered.
+   * @aliases br
+   */
+  bytes_recovered,
+  /**
+   * The percent of bytes recovered.
+   * @aliases bp
+   */
+  bytes_percent,
+  /**
+   * The total number of bytes.
+   * @aliases tb
+   */
+  bytes_total,
+  /**
+   * The number of translog ops to recover.
+   * @aliases to
+   */
+  translog_ops,
+  /**
+   * The translog ops recovered.
+   * @aliases tor
+   */
+  translog_ops_recovered,
+  /**
+   * The percent of translog ops recovered.
+   * @aliases top
+   */
+  translog_ops_percent
+}
+
+/** @non_exhaustive */
+export enum CatRepositoriesColumn {
+  /**
+   * The unique repository ID.
+   * @aliases id,repoId
+   */
+  id,
+  /**
+   * The repository type.
+   * @aliases t, type
+   */
+  type
+}
+
+/** @non_exhaustive */
+export enum CatTemplatesColumn {
+  /**
+   * The template name.
+   * @aliases n
+   */
+  name,
+  /**
+   * The template index patterns.
+   * @aliases t
+   */
+  index_patterns,
+  /**
+   * The template application order or priority number.
+   * @aliases o, p
+   */
+  order,
+  /**
+   * The version.
+   * @aliases v
+   */
+  version,
+  /**
+   * The component templates comprising the index template.
+   * @aliases c
+   */
+  composed_of
+}
+
+/** @non_exhaustive */
 export enum CatPendingTasksColumn {
   /**
    * The task insertion order.
@@ -2326,7 +2476,10 @@ export type CatMasterColumns = CatMasterColumn | CatMasterColumn[]
 export type CatNodeattrsColumns = CatNodeattrsColumn | CatNodeattrsColumn[]
 export type CatPendingTasksColumns =
   | CatPendingTasksColumn
-  | CatPendingTasksColumn[]
+  | CatPendingTasksColumns[]
+export type CatPluginsColumns = CatPluginsColumn | CatPluginsColumn[]
+export type CatTasksColumns = CatTasksColumn | CatTasksColumn[]
+export type CatTemplatesColumns = CatTemplatesColumn | CatTemplatesColumn[]
 
 export enum CatTrainedModelsColumn {
   /**
