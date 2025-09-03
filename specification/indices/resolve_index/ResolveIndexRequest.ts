@@ -66,7 +66,7 @@ export interface Request extends RequestBase {
      */
     allow_no_indices?: boolean
     /**
-     * Filter by index mode - standard, lookup, time_series, etc. Comma-separated list of IndexMode. Empty means no filter.
+     * Filter indices by index mode - standard, lookup, time_series, etc. Comma-separated list of IndexMode. Empty means no filter.
      */
     mode?: IndexMode | IndexMode[]
   }
