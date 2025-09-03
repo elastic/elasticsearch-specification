@@ -10768,6 +10768,26 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "mode",
+            "description": "Filter indices by index mode - standard, lookup, time_series, etc. Comma-separated list of IndexMode. Empty means no filter.",
+            "deprecated": false,
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/indices._types.IndexMode"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/indices._types.IndexMode"
+                  }
+                }
+              ]
+            },
+            "style": "form"
           }
         ],
         "responses": {
