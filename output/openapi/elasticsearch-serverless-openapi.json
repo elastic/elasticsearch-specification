@@ -66492,6 +66492,26 @@
           "top_n": {
             "description": "For a `rerank` task, the number of the top N documents that should be returned.",
             "type": "number"
+          },
+          "thinking_config": {
+            "externalDocs": {
+              "url": "https://ai.google.dev/gemini-api/docs/thinking#set-budget"
+            },
+            "description": "For a `completion` or `chat_completion` task, allows configuration of the thinking features for the model.\nRefer to the Google documentation for the allowable configurations for each model type.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ThinkingConfig"
+              }
+            ]
+          }
+        }
+      },
+      "inference._types.ThinkingConfig": {
+        "type": "object",
+        "properties": {
+          "thinking_budget": {
+            "description": "Indicates the desired thinking budget in tokens.",
+            "type": "number"
           }
         }
       },

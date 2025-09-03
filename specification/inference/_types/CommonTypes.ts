@@ -1377,6 +1377,19 @@ export class GoogleVertexAITaskSettings {
    * For a `rerank` task, the number of the top N documents that should be returned.
    */
   top_n?: integer
+  /**
+   * For a `completion` or `chat_completion` task, allows configuration of the thinking features for the model.
+   * Refer to the Google documentation for the allowable configurations for each model type.
+   * @ext_doc_id googlevertexai-thinking
+   */
+  thinking_config?: ThinkingConfig
+}
+
+export class ThinkingConfig {
+  /**
+   * Indicates the desired thinking budget in tokens.
+   */
+  thinking_budget?: integer
 }
 
 export enum GoogleVertexAITaskType {

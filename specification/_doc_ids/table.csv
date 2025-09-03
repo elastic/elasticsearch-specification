@@ -271,6 +271,7 @@ get-transform,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operat
 get-trial-status,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get-trial-status,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/get-trial-status.html,
 googlevertexai-locations,https://cloud.google.com/vertex-ai/generative-ai/docs/learn/locations,,
 googlevertexai-models,https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/text-embeddings-api,,
+googlevertexai-thinking,https://ai.google.dev/gemini-api/docs/thinking#set-budget,,
 googleaistudio-models,https://ai.google.dev/gemini-api/docs/models,,
 graph,https://www.elastic.co/docs/explore-analyze/visualize/graph,,
 graph-explore-api,https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-graph,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/graph-explore-api.html,

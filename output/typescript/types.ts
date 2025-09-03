@@ -14080,6 +14080,7 @@ export type InferenceGoogleVertexAIServiceType = 'googlevertexai'
 export interface InferenceGoogleVertexAITaskSettings {
   auto_truncate?: boolean
   top_n?: integer
+  thinking_config?: InferenceThinkingConfig
 }
 
 export type InferenceGoogleVertexAITaskType = 'rerank' | 'text_embedding' | 'completion' | 'chat_completion'
@@ -14402,6 +14403,10 @@ export interface InferenceTextEmbeddingInferenceResult {
 
 export interface InferenceTextEmbeddingResult {
   embedding: InferenceDenseVector
+}
+
+export interface InferenceThinkingConfig {
+  thinking_budget?: integer
 }
 
 export interface InferenceToolCall {
