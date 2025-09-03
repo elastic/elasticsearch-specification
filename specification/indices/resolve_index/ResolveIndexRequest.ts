@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Names } from '@_types/common'
+import { IndexMode } from '@indices/_types/DataStream'
 
 /**
  * Resolve indices.
