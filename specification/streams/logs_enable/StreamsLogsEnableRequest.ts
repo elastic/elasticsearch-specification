@@ -29,8 +29,7 @@ import { Duration } from '@_types/Time'
  * it does not have existing indices or data streams matching the pattern `logs|logs.*`.
  * If this is the case, a `409 - Conflict` response and error will be returned.
  * @rest_spec_name streams.logs_enable
- * @availability stack since=9.1.0 stability=experimental visibility=feature_flag
- * @feature_flag logs_stream
+ * @availability stack since=9.1.0 stability=experimental visibility=feature_flag feature_flag=logs_stream
  * @cluster_privileges manage
  */
 export interface Request extends RequestBase {

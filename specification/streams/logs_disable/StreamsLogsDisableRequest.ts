@@ -25,8 +25,7 @@ import { Duration } from '@_types/Time'
  *
  * This disables the logs stream feature for this cluster.
  * @rest_spec_name streams.logs_disable
- * @availability stack since=9.1.0 stability=experimental visibility=feature_flag
- * @feature_flag logs_stream
+ * @availability stack since=9.1.0 stability=experimental visibility=feature_flag feature_flag=logs_stream
  * @cluster_privileges manage
  */
 export interface Request extends RequestBase {

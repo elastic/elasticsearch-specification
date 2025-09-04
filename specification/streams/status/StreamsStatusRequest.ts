@@ -25,8 +25,7 @@ import { TimeUnit } from '@_types/Time'
  *
  * Gets the current status of all stream types
  * @rest_spec_name streams.status
- * @availability stack since=9.1.0 stability=experimental visibility=feature_flag
- * @feature_flag logs_stream
+ * @availability stack since=9.1.0 stability=experimental visibility=feature_flag feature_flag=logs_stream
  * @cluster_privileges monitor
  */
 export interface Request extends RequestBase {
