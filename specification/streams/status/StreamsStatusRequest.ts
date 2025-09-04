@@ -27,6 +27,7 @@ import { TimeUnit } from '@_types/Time'
  * @rest_spec_name streams.status
  * @availability stack since=9.1.0 stability=experimental visibility=feature_flag feature_flag=logs_stream
  * @cluster_privileges monitor
+ * @doc_id streams-status
  */
 export interface Request extends RequestBase {
   urls: [
