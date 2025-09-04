@@ -27,7 +27,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name streams.logs_disable
  * @availability stack since=9.1.0 stability=experimental visibility=feature_flag feature_flag=logs_stream
  * @cluster_privileges manage
- * @doc_id streams-disable-logs
+ * @doc_id streams-logs-disable
  */
 export interface Request extends RequestBase {
   urls: [
