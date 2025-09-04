@@ -1,0 +1,10 @@
+summary: Get Streams Status
+description: >
+  A successful response from `GET _streams/status` that outlines the current state of all wired streams in the cluster,
+# type: response
+value: |-
+  {
+    "logs": {
+      "enabled": true
+    }
+  }
