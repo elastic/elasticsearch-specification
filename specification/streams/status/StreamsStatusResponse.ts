@@ -24,5 +24,5 @@ export class Response {
 }
 
 export class LogsStatus {
-    enabled: boolean
+  enabled: boolean
 }

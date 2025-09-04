@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import {RequestBase} from '@_types/Base'
-import {Duration} from '@_types/Time'
+import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
 
 /**
  * Enable logs stream
