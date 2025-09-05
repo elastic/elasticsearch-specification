@@ -337,7 +337,7 @@ export class AppendProcessor extends ProcessorBase {
    */
   value?: UserDefinedValue | UserDefinedValue[]
   /**
-   * The source field to be append. Cannot set `value` simultaneously.
+   * The origin field which will be appended to `field`, cannot set `value` simultaneously.
    */
   copy_from?: Field
   /**
