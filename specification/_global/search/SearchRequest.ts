@@ -25,6 +25,7 @@ import {
   Fields,
   IndexName,
   Indices,
+  ProjectRouting,
   Routing,
   SearchType,
   SuggestMode
@@ -219,6 +220,17 @@ export interface Request extends RequestBase {
      * * The primary sort of the query targets an indexed field.
      */
     pre_filter_shard_size?: long
+    /**
+     * Specifies a subset of projects to target for a search using project metadata
+     * tags in a subset Lucene syntax. Allowed Lucene queries: the _alias tag
+     * and a single value (possible wildcarded). Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only. The param is not supported in stateful
+     * (on-prem, ECH, etc.)
+     */
+    project_routing?: ProjectRouting
     /**
      * If `true`, the caching of search results is enabled for requests where `size` is `0`.
      * It defaults to index level settings.
