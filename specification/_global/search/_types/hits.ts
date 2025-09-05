@@ -44,7 +44,10 @@ export class Hit<TDocument> {
    * on a search request. Otherwise the field is always present on hits.
    */
   _id?: Id
-  _score: double | null
+  // While _score is always returned by Elasticsearch, making it required
+  // breaks downstream JavaScript users for little added benefit
+  // See https://github.com/elastic/elasticsearch-specification/pull/5248
+  _score?: double | null
   _explanation?: Explanation
   fields?: Dictionary<string, UserDefinedValue>
   highlight?: Dictionary<string, string[]>
@@ -69,7 +72,10 @@ export class HitsMetadata<T> {
   total?: TotalHits | long
   hits: Hit<T>[]
 
-  max_score: double | null
+  // While max_score is always returned by Elasticsearch, making it required
+  // breaks downstream JavaScript users for little added benefit
+  // See https://github.com/elastic/elasticsearch-specification/pull/5248
+  max_score?: double | null
 }
 
 export class HitMetadata<TDocument> {

@@ -1012,139 +1012,6 @@ export enum CatNodeColumn {
 }
 
 /** @non_exhaustive */
-export enum CatRecoveryColumn {
-  /**
-   * The name of the index.
-   * @aliases i, idx
-   */
-  index,
-  /**
-   * The name of the shard.
-   * @aliases s, sh
-   */
-  shard,
-  /**
-   * The recovery time elasped.
-   * @aliases t, ti, primaryOrReplica
-   */
-  time,
-  /**
-   * The type of recovery, from a peer or a snapshot.
-   */
-  type,
-  /**
-   * The stage of the recovery. Returned values are: `INIT`, `INDEX`: recovery of lucene files, either reusing local ones are copying new ones, `VERIFY_INDEX`: potentially running check index, `TRANSLOG`: starting up the engine, replaying the translog, `FINALIZE`: performing final task after all translog ops have been done, `DONE`
-   * @aliases st
-   */
-  stage,
-  /**
-   * The host address the index is moving from.
-   * @aliases shost
-   */
-  source_host,
-  /**
-   * The node name the index is moving from.
-   * @aliases snode
-   */
-  source_node,
-  /**
-   * The host address the index is moving to.
-   * @aliases thost
-   */
-  target_host,
-  /**
-   * The node name the index is moving to.
-   * @aliases tnode
-   */
-  target_node,
-  /**
-   * The name of the repository being used. if not relevant 'n/a'.
-   * @aliases tnode
-   */
-  repository,
-  /**
-   * The name of the snapshot being used. if not relevant 'n/a'.
-   * @aliases snap
-   */
-  snapshot,
-  /**
-   * The total number of files to recover.
-   * @aliases f
-   */
-  files,
-  /**
-   * The number of files currently recovered.
-   * @aliases fr
-   */
-  files_recovered,
-  /**
-   * The percentage of files currently recovered.
-   * @aliases fp
-   */
-  files_percent,
-  /**
-   * The total number of files.
-   * @aliases tf
-   */
-  files_total,
-  /**
-   * The total number of bytes to recover.
-   * @aliases b
-   */
-  bytes,
-  /**
-   * Total number of bytes currently recovered.
-   * @aliases br
-   */
-  bytes_recovered,
-  /**
-   * The percentage of bytes currently recovered.
-   * @aliases bp
-   */
-  bytes_percent,
-  /**
-   * The total number of bytes.
-   * @aliases tb
-   */
-  bytes_total,
-  /**
-   * The total number of translog ops to recover.
-   * @aliases to
-   */
-  translog_ops,
-  /**
-   * The total number of translog ops currently recovered.
-   * @aliases tor
-   */
-  translog_ops_recovered,
-  /**
-   * The percentage of translog ops currently recovered.
-   * @aliases top
-   */
-  translog_ops_percent,
-  /**
-   * The start time of the recovery operation.
-   * @aliases start
-   */
-  start_time,
-  /**
-   * The start time of the recovery operation in eopch milliseconds.
-   * @aliases start_millis
-   */
-  start_time_millis,
-  /**
-   * The end time of the recovery operation. If ongoing '1970-01-01T00:00:00.000Z'
-   * @aliases stop
-   */
-  stop_time,
-  /**
-   * The end time of the recovery operation in eopch milliseconds. If ongoing '0'
-   * @aliases stop_millis
-   */
-  stop_time_millis
-}
-
-/** @non_exhaustive */
 export enum CatSegmentsColumn {
   /**
    * The name of the index.
@@ -1471,6 +1338,1127 @@ export enum CatFieldDataColumn {
   size
 }
 
+/** @non_exhaustive */
+export enum CatHealthColumn {
+  /**
+   * The number of seconds since 1970-01-01 00:00:00.
+   * @aliases t, time
+   */
+  epoch,
+  /**
+   * The time in HH:MM:SS format.
+   * @aliases ts, hms, hhmmss
+   */
+  timestamp,
+  /**
+   * The cluster name.
+   * @aliases cl
+   */
+  cluster,
+  /**
+   * The health status.
+   * @aliases st
+   */
+  status,
+  /**
+   * The total number of nodes that can store data.
+   * @aliases nt, nodeTotal
+   */
+  'node.total',
+  /**
+   * The number of nodes that can store data.
+   * @aliases nd, nodeData
+   */
+  'node.data',
+  /**
+   * The total number of shards.
+   * @aliases t, sh, shards.total, shardsTotal
+   */
+  shards,
+  /**
+   * The number of primary shards.
+   * @aliases p, shards.primary, shardsPrimary
+   */
+  pri,
+  /**
+   * The number of relocating nodes.
+   * @aliases r, shards.relocating, shardsRelocating
+   */
+  relo,
+  /**
+   * The number of initializing nodes.
+   * @aliases i, shards.initializing, shardsInitializing
+   */
+  init,
+  /**
+   * The number of unassigned shards.
+   * @aliases u, shards.unassigned, shardsUnassigned
+   */
+  unassign,
+  /**
+   * The number of unassigned primary shards.
+   * @aliases up, shards.unassigned.primary, shardsUnassignedPrimary
+   */
+  'unassign.pri',
+  /**
+   * The number of pending tasks.
+   * @aliases pt, pendingTasks
+   */
+  pending_tasks,
+  /**
+   * The wait time of the longest pending task.
+   * @aliases mtwt, maxTaskWaitTime
+   */
+  max_task_wait_time,
+  /**
+   * The percentage of active shards.
+   * @aliases asp, activeShardsPercent
+   */
+  active_shards_percent
+}
+
+/** @non_exhaustive */
+export enum CatIndicesColumn {
+  /**
+   * The current health status.
+   * @aliases h
+   */
+  health,
+  /**
+   * The open/close status.
+   * @aliases s
+   */
+  status,
+  /**
+   * The index name.
+   * @aliases i, idx
+   */
+  index,
+  /**
+   * The index UUID.
+   * @aliases id, uuid
+   */
+  uuid,
+  /**
+   * The number of primary shards.
+   * @aliases p, shards.primary, shardsPrimary
+   */
+  pri,
+  /**
+   * The number of replica shards.
+   * @aliases r, shards.replica, shardsReplica
+   */
+  rep,
+  /**
+   * The number of available documents.
+   * @aliases dc, docsCount
+   */
+  'docs.count',
+  /**
+   * The number of deleted documents.
+   * @aliases dd, docsDeleted
+   */
+  'docs.deleted',
+  /**
+   * The index creation date (millisecond value).
+   * @aliases cd
+   */
+  'creation.date',
+  /**
+   * The index creation date (as string).
+   * @aliases cds
+   */
+  'creation.date.string',
+  /**
+   * The store size of primaries and replicas.
+   * @aliases ss, storeSize
+   */
+  'store.size',
+  /**
+   * The store size of primaries.
+   */
+  'pri.store.size',
+  /**
+   * The total size of the dataset.
+   */
+  'dataset.size',
+  /**
+   * The size of completion for primaries and replicas.
+   * @aliases cs, completionSize
+   */
+  'completion.size',
+  /**
+   * The size of completion for primaries.
+   */
+  'pri.completion.size',
+  /**
+   * The used fielddata cache for primaries and replicas.
+   * @aliases fm, fielddataMemory
+   */
+  'fielddata.memory_size',
+  /**
+   * The used fielddata cache for primaries.
+   */
+  'pri.fielddata.memory_size',
+  /**
+   * The number of fielddata evictions for primaries and replicas.
+   * @aliases fe, fielddataEvictions
+   */
+  'fielddata.evictions',
+  /**
+   * The number of fielddata evictions for primaries.
+   */
+  'pri.fielddata.evictions',
+  /**
+   * The used query cache for primaries and replicas.
+   * @aliases qcm, queryCacheMemory
+   */
+  'query_cache.memory_size',
+  /**
+   * The used query cache for primaries.
+   */
+  'pri.query_cache.memory_size',
+  /**
+   * The number of query cache evictions for primaries and replicas.
+   * @aliases qce, queryCacheEvictions
+   */
+  'query_cache.evictions',
+  /**
+   * The number of query cache evictions for primaries.
+   */
+  'pri.query_cache.evictions',
+  /**
+   * The used request cache for primaries and replicas.
+   * @aliases rcm, requestCacheMemory
+   */
+  'request_cache.memory_size',
+  /**
+   * The used request cache for primaries.
+   */
+  'pri.request_cache.memory_size',
+  /**
+   * The number of request cache evictions for primaries and replicas.
+   * @aliases rce, requestCacheEvictions
+   */
+  'request_cache.evictions',
+  /**
+   * The number of request cache evictions for primaries.
+   */
+  'pri.request_cache.evictions',
+  /**
+   * The request cache hit count for primaries and replicas.
+   * @aliases rchc, requestCacheHitCount
+   */
+  'request_cache.hit_count',
+  /**
+   * The request cache hit count for primaries.
+   */
+  'pri.request_cache.hit_count',
+  /**
+   * The request cache miss count for primaries and replicas.
+   * @aliases rcmc, requestCacheMissCount
+   */
+  'request_cache.miss_count',
+  /**
+   * The request cache miss count for primaries.
+   */
+  'pri.request_cache.miss_count',
+  /**
+   * The number of flushes for primaries and replicas.
+   * @aliases ft, flushTotal
+   */
+  'flush.total',
+  /**
+   * The number of flushes for primaries.
+   */
+  'pri.flush.total',
+  /**
+   * The time spent in flush for primaries and replicas.
+   * @aliases ftt, flushTotalTime
+   */
+  'flush.total_time',
+  /**
+   * The time spent in flush for primaries.
+   */
+  'pri.flush.total_time',
+  /**
+   * The number of current get operations for primaries and replicas.
+   * @aliases gc, getCurrent
+   */
+  'get.current',
+  /**
+   * The number of current get operations for primaries.
+   */
+  'pri.get.current',
+  /**
+   * The time spent in get for primaries and replicas.
+   * @aliases gti, getTime
+   */
+  'get.time',
+  /**
+   * The time spent in get for primaries.
+   */
+  'pri.get.time',
+  /**
+   * The number of get operations for primaries and replicas.
+   * @aliases gto, getTotal
+   */
+  'get.total',
+  /**
+   * The number of get operations for primaries.
+   */
+  'pri.get.total',
+  /**
+   * The time spent in successful gets for primaries and replicas.
+   * @aliases geti, getExistsTime
+   */
+  'get.exists_time',
+  /**
+   * The time spent in successful gets for primaries.
+   */
+  'pri.get.exists_time',
+  /**
+   * The number of successful gets for primaries and replicas.
+   * @aliases geto, getExistsTotal
+   */
+  'get.exists_total',
+  /**
+   * The number of successful gets for primaries.
+   */
+  'pri.get.exists_total',
+  /**
+   * The time spent in failed gets for primaries and replicas.
+   * @aliases gmti, getMissingTime
+   */
+  'get.missing_time',
+  /**
+   * The time spent in failed gets for primaries.
+   */
+  'pri.get.missing_time',
+  /**
+   * The number of failed gets for primaries and replicas.
+   * @aliases gmto, getMissingTotal
+   */
+  'get.missing_total',
+  /**
+   * The number of failed gets for primaries.
+   */
+  'pri.get.missing_total',
+  /**
+   * The number of current deletions for primaries and replicas.
+   * @aliases idc, indexingDeleteCurrent
+   */
+  'indexing.delete_current',
+  /**
+   * The number of current deletions for primaries.
+   */
+  'pri.indexing.delete_current',
+  /**
+   * The time spent in deletions for primaries and replicas.
+   * @aliases idti, indexingDeleteTime
+   */
+  'indexing.delete_time',
+  /**
+   * The time spent in deletions for primaries.
+   */
+  'pri.indexing.delete_time',
+  /**
+   * The number of delete operations for primaries and replicas.
+   * @aliases idto, indexingDeleteTotal
+   */
+  'indexing.delete_total',
+  /**
+   * The number of delete operations for primaries.
+   */
+  'pri.indexing.delete_total',
+  /**
+   * The number of current indexing operations for primaries and replicas.
+   * @aliases iic, indexingIndexCurrent
+   */
+  'indexing.index_current',
+  /**
+   * The number of current indexing operations for primaries.
+   */
+  'pri.indexing.index_current',
+  /**
+   * The time spent in indexing for primaries and replicas.
+   * @aliases iiti, indexingIndexTime
+   */
+  'indexing.index_time',
+  /**
+   * The time spent in indexing for primaries.
+   */
+  'pri.indexing.index_time',
+  /**
+   * The number of indexing operations for primaries and replicas.
+   * @aliases iito, indexingIndexTotal
+   */
+  'indexing.index_total',
+  /**
+   * The number of indexing operations for primaries.
+   */
+  'pri.indexing.index_total',
+  /**
+   * The number of failed indexing operations for primaries and replicas.
+   * @aliases iif, indexingIndexFailed
+   */
+  'indexing.index_failed',
+  /**
+   * The number of failed indexing operations for primaries.
+   */
+  'pri.indexing.index_failed',
+  /**
+   * The number of failed indexing operations due to version conflict for primaries and replicas.
+   * @aliases iifvc, indexingIndexFailedDueToVersionConflict
+   */
+  'indexing.index_failed_due_to_version_conflict',
+  /**
+   * The number of failed indexing operations due to version conflict for primaries.
+   */
+  'pri.indexing.index_failed_due_to_version_conflict',
+  /**
+   * The number of current merges for primaries and replicas.
+   * @aliases mc, mergesCurrent
+   */
+  'merges.current',
+  /**
+   * The number of current merges for primaries.
+   */
+  'pri.merges.current',
+  /**
+   * The number of current merging documents for primaries and replicas.
+   * @aliases mcd, mergesCurrentDocs
+   */
+  'merges.current_docs',
+  /**
+   * The number of current merging documents for primaries.
+   */
+  'pri.merges.current_docs',
+  /**
+   * The size of current merges for primaries and replicas.
+   * @aliases mcs, mergesCurrentSize
+   */
+  'merges.current_size',
+  /**
+   * The size of current merges for primaries.
+   */
+  'pri.merges.current_size',
+  /**
+   * The number of completed merge operations for primaries and replicas.
+   * @aliases mt, mergesTotal
+   */
+  'merges.total',
+  /**
+   * The number of completed merge operations for primaries.
+   */
+  'pri.merges.total',
+  /**
+   * The number of merged documents for primaries and replicas.
+   * @aliases mtd, mergesTotalDocs
+   */
+  'merges.total_docs',
+  /**
+   * The number of merged documents for primaries.
+   */
+  'pri.merges.total_docs',
+  /**
+   * The merged size for primaries and replicas.
+   * @aliases mts, mergesTotalSize
+   */
+  'merges.total_size',
+  /**
+   * The merged size for primaries.
+   */
+  'pri.merges.total_size',
+  /**
+   * The time spent in merges for primaries and replicas.
+   * @aliases mtt, mergesTotalTime
+   */
+  'merges.total_time',
+  /**
+   * The time spent in merges for primaries.
+   */
+  'pri.merges.total_time',
+  /**
+   * The total refreshes for primaries and replicas.
+   * @aliases rto, refreshTotal
+   */
+  'refresh.total',
+  /**
+   * The total refreshes for primaries.
+   */
+  'pri.refresh.total',
+  /**
+   * The time spent in refreshes for primaries and replicas.
+   * @aliases rti, refreshTime
+   */
+  'refresh.time',
+  /**
+   * The time spent in refreshes for primaries.
+   */
+  'pri.refresh.time',
+  /**
+   * The total external refreshes for primaries and replicas.
+   * @aliases rto, refreshTotal
+   */
+  'refresh.external_total',
+  /**
+   * The total external refreshes for primaries.
+   */
+  'pri.refresh.external_total',
+  /**
+   * The time spent in external refreshes for primaries and replicas.
+   * @aliases rti, refreshTime
+   */
+  'refresh.external_time',
+  /**
+   * The time spent in external refreshes for primaries.
+   */
+  'pri.refresh.external_time',
+  /**
+   * The number of pending refresh listeners for primaries and replicas.
+   * @aliases rli, refreshListeners
+   */
+  'refresh.listeners',
+  /**
+   * The number of pending refresh listeners for primaries.
+   */
+  'pri.refresh.listeners',
+  /**
+   * The current fetch phase operations for primaries and replicas.
+   * @aliases sfc, searchFetchCurrent
+   */
+  'search.fetch_current',
+  /**
+   * The current fetch phase operations for primaries.
+   */
+  'pri.search.fetch_current',
+  /**
+   * The time spent in fetch phase for primaries and replicas.
+   * @aliases sfti, searchFetchTime
+   */
+  'search.fetch_time',
+  /**
+   * The time spent in fetch phase for primaries.
+   */
+  'pri.search.fetch_time',
+  /**
+   * The total fetch operations for primaries and replicas.
+   * @aliases sfto, searchFetchTotal
+   */
+  'search.fetch_total',
+  /**
+   * The total fetch operations for primaries.
+   */
+  'pri.search.fetch_total',
+  /**
+   * The open search contexts for primaries and replicas.
+   * @aliases so, searchOpenContexts
+   */
+  'search.open_contexts',
+  /**
+   * The open search contexts for primaries.
+   */
+  'pri.search.open_contexts',
+  /**
+   * The current query phase operations for primaries and replicas.
+   * @aliases sqc, searchQueryCurrent
+   */
+  'search.query_current',
+  /**
+   * The current query phase operations for primaries.
+   */
+  'pri.search.query_current',
+  /**
+   * The time spent in query phase for primaries and replicas.
+   * @aliases sqti, searchQueryTime
+   */
+  'search.query_time',
+  /**
+   * The time spent in query phase for primaries.
+   */
+  'pri.search.query_time',
+  /**
+   * The total query phase operations for primaries and replicas.
+   * @aliases sqto, searchQueryTotal
+   */
+  'search.query_total',
+  /**
+   * The total query phase operations for primaries.
+   */
+  'pri.search.query_total',
+  /**
+   * The open scroll contexts for primaries and replicas.
+   * @aliases scc, searchScrollCurrent
+   */
+  'search.scroll_current',
+  /**
+   * The open scroll contexts for primaries.
+   */
+  'pri.search.scroll_current',
+  /**
+   * The time scroll contexts held open for primaries and replicas.
+   * @aliases scti, searchScrollTime
+   */
+  'search.scroll_time',
+  /**
+   * The time scroll contexts held open for primaries.
+   */
+  'pri.search.scroll_time',
+  /**
+   * The completed scroll contexts for primaries and replicas.
+   * @aliases scto, searchScrollTotal
+   */
+  'search.scroll_total',
+  /**
+   * The completed scroll contexts for primaries.
+   */
+  'pri.search.scroll_total',
+  /**
+   * The number of segments for primaries and replicas.
+   * @aliases sc, segmentsCount
+   */
+  'segments.count',
+  /**
+   * The number of segments for primaries.
+   */
+  'pri.segments.count',
+  /**
+   * The memory used by segments for primaries and replicas.
+   * @aliases sm, segmentsMemory
+   */
+  'segments.memory',
+  /**
+   * The memory used by segments for primaries.
+   */
+  'pri.segments.memory',
+  /**
+   * The memory used by index writer for primaries and replicas.
+   * @aliases siwm, segmentsIndexWriterMemory
+   */
+  'segments.index_writer_memory',
+  /**
+   * The memory used by index writer for primaries.
+   */
+  'pri.segments.index_writer_memory',
+  /**
+   * The memory used by version map for primaries and replicas.
+   * @aliases svmm, segmentsVersionMapMemory
+   */
+  'segments.version_map_memory',
+  /**
+   * The memory used by version map for primaries.
+   */
+  'pri.segments.version_map_memory',
+  /**
+   * The memory used by fixed bit sets for nested object field types and type filters for types referred in _parent fields. Applicable for primaries and replicas.
+   * @aliases sfbm, fixedBitsetMemory
+   */
+  'segments.fixed_bitset_memory',
+  /**
+   * The memory used by fixed bit sets for nested object field types and type filters for types referred in _parent fields. Applicable for primaries.
+   */
+  'pri.segments.fixed_bitset_memory',
+  /**
+   * The current warmer operations for primaries and replicas.
+   * @aliases wc, warmerCurrent
+   */
+  'warmer.current',
+  /**
+   * The current warmer operations for primaries.
+   */
+  'pri.warmer.current',
+  /**
+   * The total warmer operations for primaries and replicas.
+   * @aliases wto, warmerTotal
+   */
+  'warmer.total',
+  /**
+   * The total warmer operations for primaries.
+   */
+  'pri.warmer.total',
+  /**
+   * The time spent in warmers for primaries and replicas.
+   * @aliases wtt, warmerTotalTime
+   */
+  'warmer.total_time',
+  /**
+   * The time spent in warmers for primaries.
+   */
+  'pri.warmer.total_time',
+  /**
+   * The current suggest operations for primaries and replicas.
+   * @aliases suc, suggestCurrent
+   */
+  'suggest.current',
+  /**
+   * The current suggest operations for primaries.
+   */
+  'pri.suggest.current',
+  /**
+   * The time spent in suggest for primaries and replicas.
+   * @aliases suti, suggestTime
+   */
+  'suggest.time',
+  /**
+   * The time spent in suggest for primaries.
+   */
+  'pri.suggest.time',
+  /**
+   * The number of suggest operations for primaries and replicas.
+   * @aliases suto, suggestTotal
+   */
+  'suggest.total',
+  /**
+   * The number of suggest operations for primaries.
+   */
+  'pri.suggest.total',
+  /**
+   * The total used memory for primaries and replicas.
+   * @aliases tm, memoryTotal
+   */
+  'memory.total',
+  /**
+   * The total used memory for primaries.
+   */
+  'pri.memory.total',
+  /**
+   * The number of bulk shard operations for primaries and replicas.
+   * @aliases bto, bulkTotalOperation
+   */
+  'bulk.total_operations',
+  /**
+   * The number of bulk shard operations for primaries.
+   */
+  'pri.bulk.total_operations',
+  /**
+   * The time spent in shard bulk for primaries and replicas.
+   * @aliases btti, bulkTotalTime
+   */
+  'bulk.total_time',
+  /**
+   * The time spent in shard bulk for primaries.
+   */
+  'pri.bulk.total_time',
+  /**
+   * The total size in bytes of shard bulk for primaries and replicas.
+   * @aliases btsi, bulkTotalSizeInBytes
+   */
+  'bulk.total_size_in_bytes',
+  /**
+   * The total size in bytes of shard bulk for primaries.
+   */
+  'pri.bulk.total_size_in_bytes',
+  /**
+   * The average time spent in shard bulk for primaries and replicas.
+   * @aliases bati, bulkAvgTime
+   */
+  'bulk.avg_time',
+  /**
+   * The average time spent in shard bulk for primaries.
+   */
+  'pri.bulk.avg_time',
+  /**
+   * The average size in bytes of shard bulk for primaries and replicas.
+   * @aliases basi, bulkAvgSizeInBytes
+   */
+  'bulk.avg_size_in_bytes',
+  /**
+   * The average size in bytes of shard bulk for primaries.
+   */
+  'pri.bulk.avg_size_in_bytes',
+  /**
+   * The total count of indexed dense vectors for primaries and replicas.
+   * @aliases dvc, denseVectorCount
+   */
+  'dense_vector.value_count',
+  /**
+   * The total count of indexed dense vectors for primaries.
+   */
+  'pri.dense_vector.value_count',
+  /**
+   * The total count of indexed sparse vectors for primaries and replicas.
+   * @aliases svc, sparseVectorCount
+   */
+  'sparse_vector.value_count',
+  /**
+   * The total count of indexed sparse vectors for primaries.
+   */
+  'pri.sparse_vector.value_count'
+}
+
+/** @non_exhaustive */
+export enum CatMasterColumn {
+  /**
+   * The node ID.
+   */
+  id,
+  /**
+   * The host name of the node.
+   * @aliases h
+   */
+  host,
+  /**
+   * The IP address of the node.
+   */
+  ip,
+  /**
+   * The node name.
+   * @aliases n
+   */
+  node
+}
+
+/** @non_exhaustive */
+export enum CatNodeattrsColumn {
+  /**
+   * The node name.
+   */
+  node,
+  /**
+   * The unique node ID.
+   * @aliases id, nodeId
+   */
+  id,
+  /**
+   * The process ID.
+   * * @aliases p
+   */
+  pid,
+  /**
+   * The host name.
+   * @aliases h
+   */
+  host,
+  /**
+   * The IP address.
+   * @aliases i
+   */
+  ip,
+  /**
+   * The bound transport port.
+   * @aliases po
+   */
+  port,
+  /**
+   * The attribute description.
+   * @aliases attr.name
+   */
+  attr,
+  /**
+   * The attribute value.
+   * @aliases attr.value
+   */
+  value
+}
+
+/** @non_exhaustive */
+export enum CatTasksColumn {
+  /**
+   * The ID of the task with the node.
+   */
+  id,
+  /**
+   * The task action.
+   * @aliases ac
+   */
+  action,
+  /**
+   * The unique task ID.
+   * @aliases ti
+   */
+  task_id,
+  /**
+   * The parent task ID.
+   * @aliases pti
+   */
+  parent_task_id,
+  /**
+   * The task type.
+   * @aliases ty
+   */
+  type,
+  /**
+   * The start time in milliseconds.
+   * @aliases start
+   */
+  start_time,
+  /**
+   * The start time in HH:MM:SS.
+   * @aliases ts, hms, hhmmss
+   */
+  timestamp,
+  /**
+   * The running time in nanoseconds.
+   * @aliases time
+   */
+  running_time_ns,
+  /**
+   * The running time.
+   * @aliases time
+   */
+  running_time,
+  /**
+   * The unique node ID.
+   * @aliases ni
+   */
+  node_id,
+  /**
+   * The IP address.
+   * @aliases i
+   */
+  ip,
+  /**
+   * The bound transport port.
+   * @aliases po
+   */
+  port,
+  /**
+   * The node name.
+   * @aliases n
+   */
+  node,
+  /**
+   * The Elasticsearch version.
+   * @aliases v
+   */
+  version,
+  /**
+   * The X-Opaque-ID header.
+   * @aliases x
+   */
+  x_opaque_id
+}
+
+/** @non_exhaustive */
+export enum CatPluginsColumn {
+  /**
+   * The unique node ID.
+   */
+  id,
+  /**
+   * The node name.
+   * @aliases n
+   */
+  name,
+  /**
+   * The component.
+   * @aliases c
+   */
+  component,
+  /**
+   * The component version.
+   * @aliases v
+   */
+  version,
+  /**
+   * The plugin details.
+   * @aliases d
+   */
+  description
+}
+
+/** @non_exhaustive */
+export enum CatRecoveryColumn {
+  /**
+   * The index name.
+   * @aliases i, idx
+   */
+  index,
+  /**
+   * The shard name.
+   * @aliases s, sh
+   */
+  shard,
+  /**
+   * The recovery start time.
+   * @aliases start
+   */
+  start_time,
+  /**
+   * The recovery start time in epoch milliseconds.
+   * @aliases start_millis
+   */
+  start_time_millis,
+  /**
+   * The recovery stop time.
+   * @aliases stop
+   */
+  stop_time,
+  /**
+   * The recovery stop time in epoch milliseconds.
+   * @aliases stop_millis
+   */
+  stop_time_millis,
+  /**
+   * The recovery time.
+   * @aliases t, ti
+   */
+  time,
+  /**
+   * The recovery type.
+   * @aliases ty
+   */
+  type,
+  /**
+   * The recovery stage.
+   * @aliases st
+   */
+  stage,
+  /**
+   * The source host.
+   * @aliases shost
+   */
+  source_host,
+  /**
+   * The source node name.
+   * @aliases snode
+   */
+  source_node,
+  /**
+   * The target host.
+   * @aliases thost
+   */
+  target_host,
+  /**
+   * The target node name.
+   * @aliases tnode
+   */
+  target_node,
+  /**
+   * The repository.
+   * @aliases rep
+   */
+  repository,
+  /**
+   * The snapshot.
+   * @aliases snap
+   */
+  snapshot,
+  /**
+   * The number of files to recover.
+   * @aliases f
+   */
+  files,
+  /**
+   * The files recovered.
+   * @aliases fr
+   */
+  files_recovered,
+  /**
+   * The percent of files recovered.
+   * @aliases fp
+   */
+  files_percent,
+  /**
+   * The total number of files.
+   * @aliases tf
+   */
+  files_total,
+  /**
+   * The number of bytes to recover.
+   * @aliases b
+   */
+  bytes,
+  /**
+   * The bytes recovered.
+   * @aliases br
+   */
+  bytes_recovered,
+  /**
+   * The percent of bytes recovered.
+   * @aliases bp
+   */
+  bytes_percent,
+  /**
+   * The total number of bytes.
+   * @aliases tb
+   */
+  bytes_total,
+  /**
+   * The number of translog ops to recover.
+   * @aliases to
+   */
+  translog_ops,
+  /**
+   * The translog ops recovered.
+   * @aliases tor
+   */
+  translog_ops_recovered,
+  /**
+   * The percent of translog ops recovered.
+   * @aliases top
+   */
+  translog_ops_percent
+}
+
+/** @non_exhaustive */
+export enum CatRepositoriesColumn {
+  /**
+   * The unique repository ID.
+   * @aliases id,repoId
+   */
+  id,
+  /**
+   * The repository type.
+   * @aliases t, type
+   */
+  type
+}
+
+/** @non_exhaustive */
+export enum CatTemplatesColumn {
+  /**
+   * The template name.
+   * @aliases n
+   */
+  name,
+  /**
+   * The template index patterns.
+   * @aliases t
+   */
+  index_patterns,
+  /**
+   * The template application order or priority number.
+   * @aliases o, p
+   */
+  order,
+  /**
+   * The version.
+   * @aliases v
+   */
+  version,
+  /**
+   * The component templates comprising the index template.
+   * @aliases c
+   */
+  composed_of
+}
+
+/** @non_exhaustive */
+export enum CatPendingTasksColumn {
+  /**
+   * The task insertion order.
+   * @aliases o
+   */
+  insertOrder,
+  /**
+   * How long the task has been in the queue.
+   * @aliases t
+   */
+  timeInQueue,
+  /**
+   * The task priority.
+   * @aliases p
+   */
+  priority,
+  /**
+   * The task source.
+   * @aliases s
+   */
+  source
+}
+
 export type CatDfaColumns = CatDfaColumn | CatDfaColumn[]
 export type CatDatafeedColumns = CatDatafeedColumn | CatDatafeedColumn[]
 export type CatNodeColumns = CatNodeColumn | CatNodeColumn[]
@@ -1482,6 +2470,16 @@ export type CatAllocationColumns = CatAllocationColumn | CatAllocationColumn[]
 export type CatComponentColumns = CatComponentColumn | CatComponentColumn[]
 export type CatCountColumns = CatCountColumn | CatCountColumn[]
 export type CatFieldDataColumns = CatFieldDataColumn | CatFieldDataColumn[]
+export type CatHealthColumns = CatHealthColumn | CatHealthColumn[]
+export type CatIndicesColumns = CatIndicesColumn | CatIndicesColumn[]
+export type CatMasterColumns = CatMasterColumn | CatMasterColumn[]
+export type CatNodeattrsColumns = CatNodeattrsColumn | CatNodeattrsColumn[]
+export type CatPendingTasksColumns =
+  | CatPendingTasksColumn
+  | CatPendingTasksColumn[]
+export type CatPluginsColumns = CatPluginsColumn | CatPluginsColumn[]
+export type CatTasksColumns = CatTasksColumn | CatTasksColumn[]
+export type CatTemplatesColumns = CatTemplatesColumn | CatTemplatesColumn[]
 
 export enum CatTrainedModelsColumn {
   /**
