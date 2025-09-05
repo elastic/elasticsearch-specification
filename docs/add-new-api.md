@@ -38,8 +38,7 @@ interface Request {}
 class Response {}
 ```
 
-Try to use less files as possible, for example there is no need to create a custom file for an enum,
-you can define it in the same file where it's used, unless is a commonly used type.
+Try to use the least number of files possible, for example there is no need to create a custom file for an enum as you can define it in the same file where it's used, unless is a commonly used type.
 
 ### Add the endpoint request definition
 
