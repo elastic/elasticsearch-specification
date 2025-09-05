@@ -227,8 +227,8 @@ export interface Request extends RequestBase {
      *  _alias:my-project
      *  _alias:_origin
      *  _alias:*pr*
-     * Supported in serverless only. The param is not supported in stateful
-     * (on-prem, ECH, etc.)
+     * Supported in serverless only.
+     * @availability serverless
      */
     project_routing?: ProjectRouting
     /**

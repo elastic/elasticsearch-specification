@@ -82923,11 +82923,12 @@
       "async_search.submit-project_routing": {
         "in": "query",
         "name": "project_routing",
-        "description": "Specifies a subset of projects to target for a search using project metadata\ntags in a subset Lucene syntax. Allowed Lucene queries: the _alias tag\nand a single value (possible wildcarded). Examples:\n _alias:my-project\n _alias:_origin\n _alias:*pr*\nSupported in serverless only. The param is not supported in stateful\n(on-prem, ECH, etc.)",
+        "description": "Specifies a subset of projects to target for a search using project metadata\ntags in a subset Lucene syntax. Allowed Lucene queries: the _alias tag\nand a single value (possible wildcarded). Examples:\n _alias:my-project\n _alias:_origin\n _alias:*pr*\nSupported in serverless only.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ProjectRouting"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "async_search.submit-request_cache": {
@@ -87317,11 +87318,12 @@
       "search-project_routing": {
         "in": "query",
         "name": "project_routing",
-        "description": "Specifies a subset of projects to target for a search using project metadata\ntags in a subset Lucene syntax. Allowed Lucene queries: the _alias tag\nand a single value (possible wildcarded). Examples:\n _alias:my-project\n _alias:_origin\n _alias:*pr*\nSupported in serverless only. The param is not supported in stateful\n(on-prem, ECH, etc.)",
+        "description": "Specifies a subset of projects to target for a search using project metadata\ntags in a subset Lucene syntax. Allowed Lucene queries: the _alias tag\nand a single value (possible wildcarded). Examples:\n _alias:my-project\n _alias:_origin\n _alias:*pr*\nSupported in serverless only.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ProjectRouting"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "search-request_cache": {
