@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, WaitForActiveShards } from '@_types/common'
 
 /**
  * Analyze the index disk usage.
@@ -84,11 +84,10 @@ export interface Request extends RequestBase {
      */
     run_expensive_tasks?: boolean
     /**
-     * The number of copies of each shard that must be active before proceeding with the operation.
-     * Set to all or any non-negative integer up to the total number of copies of each shard in the index (number_of_replicas+1).
-     * Defaults to `1`, meaning to wait just for each primary shard to be active.
+     * The number of shard copies that must be active before proceeding with the operation.
+     * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * @server_default 1
      */
-    wait_for_active_shards?: string
+    wait_for_active_shards?: WaitForActiveShards
   }
 }

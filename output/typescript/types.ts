@@ -12505,7 +12505,7 @@ export interface IndicesDiskUsageRequest extends RequestBase {
   flush?: boolean
   ignore_unavailable?: boolean
   run_expensive_tasks?: boolean
-  wait_for_active_shards?: string
+  wait_for_active_shards?: WaitForActiveShards
 }
 
 export type IndicesDiskUsageResponse = any

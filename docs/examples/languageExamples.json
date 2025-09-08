@@ -17354,5 +17354,27 @@
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_transform/set_upgrade_mode?enabled=true\""
     }
+  ],
+  "specification/indices/disk_usage/examples/request/IndicesDiskUsageRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.indices.disk_usage(\n    index=\"my-index-000001\",\n    run_expensive_tasks=True,\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.indices.diskUsage({\n  index: \"my-index-000001\",\n  run_expensive_tasks: \"true\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.indices.disk_usage(\n  index: \"my-index-000001\",\n  run_expensive_tasks: \"true\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->indices()->diskUsage([\n    \"index\" => \"my-index-000001\",\n    \"run_expensive_tasks\" => \"true\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_disk_usage?run_expensive_tasks=true\""
+    }
   ]
 }
