@@ -1480,7 +1480,7 @@ export type SearchHighlighterType = 'plain' | 'fvh' | 'unified'| string
 export interface SearchHit<TDocument = unknown> {
   _index: IndexName
   _id?: Id
-  _score: double | null
+  _score?: double | null
   _explanation?: ExplainExplanation
   fields?: Record<string, any>
   highlight?: Record<string, string[]>
@@ -1503,7 +1503,7 @@ export interface SearchHit<TDocument = unknown> {
 export interface SearchHitsMetadata<T = unknown> {
   total?: SearchTotalHits | long
   hits: SearchHit<T>[]
-  max_score: double | null
+  max_score?: double | null
 }
 
 export interface SearchInnerHits {
@@ -7235,7 +7235,11 @@ export type CatCatPendingTasksColumn = 'insertOrder' | 'o' | 'timeInQueue' | 't'
 
 export type CatCatPendingTasksColumns = CatCatPendingTasksColumn | CatCatPendingTasksColumn[]
 
-export type CatCatRecoveryColumn = 'index' | 'i' | 'idx' | 'shard' | 's' | 'sh' | 'time' | 't' | 'ti' | 'primaryOrReplica' | 'type' | 'stage' | 'st' | 'source_host' | 'shost' | 'source_node' | 'snode' | 'target_host' | 'thost' | 'target_node' | 'tnode' | 'repository' | 'tnode' | 'snapshot' | 'snap' | 'files' | 'f' | 'files_recovered' | 'fr' | 'files_percent' | 'fp' | 'files_total' | 'tf' | 'bytes' | 'b' | 'bytes_recovered' | 'br' | 'bytes_percent' | 'bp' | 'bytes_total' | 'tb' | 'translog_ops' | 'to' | 'translog_ops_recovered' | 'tor' | 'translog_ops_percent' | 'top' | 'start_time' | 'start' | 'start_time_millis' | 'start_millis' | 'stop_time' | 'stop' | 'stop_time_millis' | 'stop_millis'| string
+export type CatCatPluginsColumn = 'id' | 'name' | 'n' | 'component' | 'c' | 'version' | 'v' | 'description' | 'd'| string
+
+export type CatCatPluginsColumns = CatCatPluginsColumn | CatCatPluginsColumn[]
+
+export type CatCatRecoveryColumn = 'index' | 'i' | 'idx' | 'shard' | 's' | 'sh' | 'start_time' | 'start' | 'start_time_millis' | 'start_millis' | 'stop_time' | 'stop' | 'stop_time_millis' | 'stop_millis' | 'time' | 't' | 'ti' | 'type' | 'ty' | 'stage' | 'st' | 'source_host' | 'shost' | 'source_node' | 'snode' | 'target_host' | 'thost' | 'target_node' | 'tnode' | 'repository' | 'rep' | 'snapshot' | 'snap' | 'files' | 'f' | 'files_recovered' | 'fr' | 'files_percent' | 'fp' | 'files_total' | 'tf' | 'bytes' | 'b' | 'bytes_recovered' | 'br' | 'bytes_percent' | 'bp' | 'bytes_total' | 'tb' | 'translog_ops' | 'to' | 'translog_ops_recovered' | 'tor' | 'translog_ops_percent' | 'top'| string
 
 export type CatCatRecoveryColumns = CatCatRecoveryColumn | CatCatRecoveryColumn[]
 
@@ -7253,6 +7257,14 @@ export type CatCatShardColumns = CatCatShardColumn | CatCatShardColumn[]
 export type CatCatSnapshotsColumn = 'id' | 'snapshot' | 'repository' | 're' | 'repo' | 'status' | 's' | 'start_epoch' | 'ste' | 'startEpoch' | 'start_time' | 'sti' | 'startTime' | 'end_epoch' | 'ete' | 'endEpoch' | 'end_time' | 'eti' | 'endTime' | 'duration' | 'dur' | 'indices' | 'i' | 'successful_shards' | 'ss' | 'failed_shards' | 'fs' | 'total_shards' | 'ts' | 'reason' | 'r'| string
 
 export type CatCatSnapshotsColumns = CatCatSnapshotsColumn | CatCatSnapshotsColumn[]
+
+export type CatCatTasksColumn = 'id' | 'action' | 'ac' | 'task_id' | 'ti' | 'parent_task_id' | 'pti' | 'type' | 'ty' | 'start_time' | 'start' | 'timestamp' | 'ts' | 'hms' | 'hhmmss' | 'running_time_ns' | 'time' | 'running_time' | 'time' | 'node_id' | 'ni' | 'ip' | 'i' | 'port' | 'po' | 'node' | 'n' | 'version' | 'v' | 'x_opaque_id' | 'x'| string
+
+export type CatCatTasksColumns = CatCatTasksColumn | CatCatTasksColumn[]
+
+export type CatCatTemplatesColumn = 'name' | 'n' | 'index_patterns' | 't' | 'order' | 'o' | 'p' | 'version' | 'v' | 'composed_of' | 'c'| string
+
+export type CatCatTemplatesColumns = CatCatTemplatesColumn | CatCatTemplatesColumn[]
 
 export type CatCatThreadPoolColumn = 'active' | 'a' | 'completed' | 'c' | 'core' | 'cr' | 'ephemeral_id' | 'eid' | 'host' | 'h' | 'ip' | 'i' | 'keep_alive' | 'k' | 'largest' | 'l' | 'max' | 'mx' | 'name' | 'node_id' | 'id' | 'node_name' | 'pid' | 'p' | 'pool_size' | 'psz' | 'port' | 'po' | 'queue' | 'q' | 'queue_size' | 'qs' | 'rejected' | 'r' | 'size' | 'sz' | 'type' | 't'| string
 
@@ -8488,7 +8500,7 @@ export interface CatPluginsPluginsRecord {
 }
 
 export interface CatPluginsRequest extends CatCatRequestBase {
-  h?: Names
+  h?: CatCatPluginsColumns
   s?: Names
   include_bootstrap?: boolean
   local?: boolean
@@ -8912,7 +8924,7 @@ export interface CatTasksRequest extends CatCatRequestBase {
   detailed?: boolean
   nodes?: string[]
   parent_task_id?: string
-  h?: Names
+  h?: CatCatTasksColumns
   s?: Names
   time?: TimeUnit
   timeout?: Duration
@@ -8958,7 +8970,7 @@ export interface CatTasksTasksRecord {
 
 export interface CatTemplatesRequest extends CatCatRequestBase {
   name?: Name
-  h?: Names
+  h?: CatCatTemplatesColumns
   s?: Names
   local?: boolean
   master_timeout?: Duration
@@ -13308,6 +13320,7 @@ export interface IndicesResolveIndexRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
   allow_no_indices?: boolean
+  mode?: IndicesIndexMode | IndicesIndexMode[]
 }
 
 export interface IndicesResolveIndexResolveIndexAliasItem {
@@ -14068,6 +14081,7 @@ export type InferenceGoogleVertexAIServiceType = 'googlevertexai'
 export interface InferenceGoogleVertexAITaskSettings {
   auto_truncate?: boolean
   top_n?: integer
+  thinking_config?: InferenceThinkingConfig
 }
 
 export type InferenceGoogleVertexAITaskType = 'rerank' | 'text_embedding' | 'completion' | 'chat_completion'
@@ -14390,6 +14404,10 @@ export interface InferenceTextEmbeddingInferenceResult {
 
 export interface InferenceTextEmbeddingResult {
   embedding: InferenceDenseVector
+}
+
+export interface InferenceThinkingConfig {
+  thinking_budget?: integer
 }
 
 export interface InferenceToolCall {

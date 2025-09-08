@@ -41,6 +41,7 @@
     "Dangling type '_types.query_dsl:SpanSubQuery'",
     "Dangling type '_types.query_dsl:TokenType'",
     "Dangling type '_types.query_dsl:VisitorScope'",
+    "Dangling type 'cat._types:CatRepositoriesColumn'",
     "Dangling type 'cat.transforms:TransformState'",
     "Dangling type 'cat.transforms:TransformType'",
     "Dangling type 'cluster.allocation_explain:StoreCopy'",

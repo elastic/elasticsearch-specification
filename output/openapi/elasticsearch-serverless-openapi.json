@@ -10768,6 +10768,26 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "mode",
+            "description": "Filter indices by index mode - standard, lookup, time_series, etc. Comma-separated list of IndexMode. Empty means no filter.",
+            "deprecated": false,
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/indices._types.IndexMode"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/indices._types.IndexMode"
+                  }
+                }
+              ]
+            },
+            "style": "form"
           }
         ],
         "responses": {
@@ -13334,7 +13354,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nNote that for ELSER endpoints, the max_chunk_size may not exceed `300`.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -32824,8 +32844,7 @@
           }
         },
         "required": [
-          "hits",
-          "max_score"
+          "hits"
         ]
       },
       "_global.search._types.TotalHits": {
@@ -32989,8 +33008,7 @@
           }
         },
         "required": [
-          "_index",
-          "_score"
+          "_index"
         ]
       },
       "_types.IndexName": {
@@ -58572,7 +58590,7 @@
             }
           },
           "max_chunk_size": {
-            "description": "The maximum size of a chunk in words.\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).",
+            "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
             "default": 250.0,
             "type": "number"
           },
@@ -64812,7 +64830,7 @@
         "type": "object",
         "properties": {
           "max_chunk_size": {
-            "description": "The maximum size of a chunk in words.\nThis value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).",
+            "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
             "default": 250.0,
             "type": "number"
           },
@@ -66473,6 +66491,26 @@
           },
           "top_n": {
             "description": "For a `rerank` task, the number of the top N documents that should be returned.",
+            "type": "number"
+          },
+          "thinking_config": {
+            "externalDocs": {
+              "url": "https://ai.google.dev/gemini-api/docs/thinking#set-budget"
+            },
+            "description": "For a `completion` or `chat_completion` task, allows configuration of the thinking features for the model.\nRefer to the Google documentation for the allowable configurations for each model type.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ThinkingConfig"
+              }
+            ]
+          }
+        }
+      },
+      "inference._types.ThinkingConfig": {
+        "type": "object",
+        "properties": {
+          "thinking_budget": {
+            "description": "Indicates the desired thinking budget in tokens.",
             "type": "number"
           }
         }
