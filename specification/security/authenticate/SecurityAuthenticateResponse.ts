@@ -38,18 +38,17 @@ export class Response {
      * @availability serverless
      */
     token?: Token
-
   }
 }
 
 export class AuthenticateApiKey {
   id: Id
   name?: Name
-  managed_by: ManagedBy
+  managed_by: AuthenticateApiKeyManagedBy
   internal: boolean
 }
 
-export enum ManagedBy {
+export enum AuthenticateApiKeyManagedBy {
   cloud,
   elasticsearch
 }
