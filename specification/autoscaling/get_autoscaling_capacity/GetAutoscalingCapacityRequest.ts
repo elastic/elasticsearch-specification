@@ -36,7 +36,7 @@ import { Duration } from '@_types/Time'
  * This information is provided for diagnosis only.
  * Do not use this information to make autoscaling decisions.
  * @rest_spec_name autoscaling.get_autoscaling_capacity
- * @availability stack since=7.11.0 stability=stable
+ * @availability stack since=7.11.0 stability=stable visibility=private
  * @doc_id autoscaling-get-autoscaling-capacity
  * @ext_doc_id autoscaling
  */
