@@ -246,7 +246,7 @@ export enum HttpMethod {
 }
 
 export enum Level {
-  cluster,
+  node,
   indices,
   shards
 }

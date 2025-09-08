@@ -2553,7 +2553,7 @@ export interface LatLonGeoLocation {
   lon: double
 }
 
-export type Level = 'cluster' | 'indices' | 'shards'
+export type Level = 'node' | 'indices' | 'shards'
 
 export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 

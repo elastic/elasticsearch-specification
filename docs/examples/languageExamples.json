@@ -1354,23 +1354,23 @@
   "specification/cluster/put_component_template/examples/request/ClusterPutComponentTemplateRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.cluster.put_component_template(\n    name=\"template_1\",\n    template=None,\n    settings={\n        \"number_of_shards\": 1\n    },\n    mappings={\n        \"_source\": {\n            \"enabled\": False\n        },\n        \"properties\": {\n            \"host_name\": {\n                \"type\": \"keyword\"\n            },\n            \"created_at\": {\n                \"type\": \"date\",\n                \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n            }\n        }\n    },\n)"
+      "code": "resp = client.cluster.put_component_template(\n    name=\"template_1\",\n    template={\n        \"settings\": {\n            \"number_of_shards\": 1\n        },\n        \"mappings\": {\n            \"_source\": {\n                \"enabled\": False\n            },\n            \"properties\": {\n                \"host_name\": {\n                    \"type\": \"keyword\"\n                },\n                \"created_at\": {\n                    \"type\": \"date\",\n                    \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n                }\n            }\n        }\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.cluster.putComponentTemplate({\n  name: \"template_1\",\n  template: null,\n  settings: {\n    number_of_shards: 1,\n  },\n  mappings: {\n    _source: {\n      enabled: false,\n    },\n    properties: {\n      host_name: {\n        type: \"keyword\",\n      },\n      created_at: {\n        type: \"date\",\n        format: \"EEE MMM dd HH:mm:ss Z yyyy\",\n      },\n    },\n  },\n});"
+      "code": "const response = await client.cluster.putComponentTemplate({\n  name: \"template_1\",\n  template: {\n    settings: {\n      number_of_shards: 1,\n    },\n    mappings: {\n      _source: {\n        enabled: false,\n      },\n      properties: {\n        host_name: {\n          type: \"keyword\",\n        },\n        created_at: {\n          type: \"date\",\n          format: \"EEE MMM dd HH:mm:ss Z yyyy\",\n        },\n      },\n    },\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.cluster.put_component_template(\n  name: \"template_1\",\n  body: {\n    \"template\": nil,\n    \"settings\": {\n      \"number_of_shards\": 1\n    },\n    \"mappings\": {\n      \"_source\": {\n        \"enabled\": false\n      },\n      \"properties\": {\n        \"host_name\": {\n          \"type\": \"keyword\"\n        },\n        \"created_at\": {\n          \"type\": \"date\",\n          \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n        }\n      }\n    }\n  }\n)"
+      "code": "response = client.cluster.put_component_template(\n  name: \"template_1\",\n  body: {\n    \"template\": {\n      \"settings\": {\n        \"number_of_shards\": 1\n      },\n      \"mappings\": {\n        \"_source\": {\n          \"enabled\": false\n        },\n        \"properties\": {\n          \"host_name\": {\n            \"type\": \"keyword\"\n          },\n          \"created_at\": {\n            \"type\": \"date\",\n            \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n          }\n        }\n      }\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->cluster()->putComponentTemplate([\n    \"name\" => \"template_1\",\n    \"body\" => [\n        \"template\" => null,\n        \"settings\" => [\n            \"number_of_shards\" => 1,\n        ],\n        \"mappings\" => [\n            \"_source\" => [\n                \"enabled\" => false,\n            ],\n            \"properties\" => [\n                \"host_name\" => [\n                    \"type\" => \"keyword\",\n                ],\n                \"created_at\" => [\n                    \"type\" => \"date\",\n                    \"format\" => \"EEE MMM dd HH:mm:ss Z yyyy\",\n                ],\n            ],\n        ],\n    ],\n]);"
+      "code": "$resp = $client->cluster()->putComponentTemplate([\n    \"name\" => \"template_1\",\n    \"body\" => [\n        \"template\" => [\n            \"settings\" => [\n                \"number_of_shards\" => 1,\n            ],\n            \"mappings\" => [\n                \"_source\" => [\n                    \"enabled\" => false,\n                ],\n                \"properties\" => [\n                    \"host_name\" => [\n                        \"type\" => \"keyword\",\n                    ],\n                    \"created_at\" => [\n                        \"type\" => \"date\",\n                        \"format\" => \"EEE MMM dd HH:mm:ss Z yyyy\",\n                    ],\n                ],\n            ],\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"template\":null,\"settings\":{\"number_of_shards\":1},\"mappings\":{\"_source\":{\"enabled\":false},\"properties\":{\"host_name\":{\"type\":\"keyword\"},\"created_at\":{\"type\":\"date\",\"format\":\"EEE MMM dd HH:mm:ss Z yyyy\"}}}}' \"$ELASTICSEARCH_URL/_component_template/template_1\""
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"template\":{\"settings\":{\"number_of_shards\":1},\"mappings\":{\"_source\":{\"enabled\":false},\"properties\":{\"host_name\":{\"type\":\"keyword\"},\"created_at\":{\"type\":\"date\",\"format\":\"EEE MMM dd HH:mm:ss Z yyyy\"}}}}}' \"$ELASTICSEARCH_URL/_component_template/template_1\""
     }
   ],
   "specification/cluster/put_component_template/examples/request/ClusterPutComponentTemplateRequestExample2.yaml": [
@@ -2032,23 +2032,23 @@
   "specification/indices/put_template/examples/request/indicesPutTemplateRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.indices.put_template(\n    name=\"template_1\",\n    index_patterns=[\n        \"te*\",\n        \"bar*\"\n    ],\n    settings={\n        \"number_of_shards\": 1\n    },\n    mappings={\n        \"_source\": {\n            \"enabled\": False\n        }\n    },\n    properties={\n        \"host_name\": {\n            \"type\": \"keyword\"\n        },\n        \"created_at\": {\n            \"type\": \"date\",\n            \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n        }\n    },\n)"
+      "code": "resp = client.indices.put_template(\n    name=\"template_1\",\n    index_patterns=[\n        \"te*\",\n        \"bar*\"\n    ],\n    settings={\n        \"number_of_shards\": 1\n    },\n    mappings={\n        \"_source\": {\n            \"enabled\": False\n        },\n        \"properties\": {\n            \"host_name\": {\n                \"type\": \"keyword\"\n            },\n            \"created_at\": {\n                \"type\": \"date\",\n                \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n            }\n        }\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.indices.putTemplate({\n  name: \"template_1\",\n  index_patterns: [\"te*\", \"bar*\"],\n  settings: {\n    number_of_shards: 1,\n  },\n  mappings: {\n    _source: {\n      enabled: false,\n    },\n  },\n  properties: {\n    host_name: {\n      type: \"keyword\",\n    },\n    created_at: {\n      type: \"date\",\n      format: \"EEE MMM dd HH:mm:ss Z yyyy\",\n    },\n  },\n});"
+      "code": "const response = await client.indices.putTemplate({\n  name: \"template_1\",\n  index_patterns: [\"te*\", \"bar*\"],\n  settings: {\n    number_of_shards: 1,\n  },\n  mappings: {\n    _source: {\n      enabled: false,\n    },\n    properties: {\n      host_name: {\n        type: \"keyword\",\n      },\n      created_at: {\n        type: \"date\",\n        format: \"EEE MMM dd HH:mm:ss Z yyyy\",\n      },\n    },\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.indices.put_template(\n  name: \"template_1\",\n  body: {\n    \"index_patterns\": [\n      \"te*\",\n      \"bar*\"\n    ],\n    \"settings\": {\n      \"number_of_shards\": 1\n    },\n    \"mappings\": {\n      \"_source\": {\n        \"enabled\": false\n      }\n    },\n    \"properties\": {\n      \"host_name\": {\n        \"type\": \"keyword\"\n      },\n      \"created_at\": {\n        \"type\": \"date\",\n        \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n      }\n    }\n  }\n)"
+      "code": "response = client.indices.put_template(\n  name: \"template_1\",\n  body: {\n    \"index_patterns\": [\n      \"te*\",\n      \"bar*\"\n    ],\n    \"settings\": {\n      \"number_of_shards\": 1\n    },\n    \"mappings\": {\n      \"_source\": {\n        \"enabled\": false\n      },\n      \"properties\": {\n        \"host_name\": {\n          \"type\": \"keyword\"\n        },\n        \"created_at\": {\n          \"type\": \"date\",\n          \"format\": \"EEE MMM dd HH:mm:ss Z yyyy\"\n        }\n      }\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->indices()->putTemplate([\n    \"name\" => \"template_1\",\n    \"body\" => [\n        \"index_patterns\" => array(\n            \"te*\",\n            \"bar*\",\n        ),\n        \"settings\" => [\n            \"number_of_shards\" => 1,\n        ],\n        \"mappings\" => [\n            \"_source\" => [\n                \"enabled\" => false,\n            ],\n        ],\n        \"properties\" => [\n            \"host_name\" => [\n                \"type\" => \"keyword\",\n            ],\n            \"created_at\" => [\n                \"type\" => \"date\",\n                \"format\" => \"EEE MMM dd HH:mm:ss Z yyyy\",\n            ],\n        ],\n    ],\n]);"
+      "code": "$resp = $client->indices()->putTemplate([\n    \"name\" => \"template_1\",\n    \"body\" => [\n        \"index_patterns\" => array(\n            \"te*\",\n            \"bar*\",\n        ),\n        \"settings\" => [\n            \"number_of_shards\" => 1,\n        ],\n        \"mappings\" => [\n            \"_source\" => [\n                \"enabled\" => false,\n            ],\n            \"properties\" => [\n                \"host_name\" => [\n                    \"type\" => \"keyword\",\n                ],\n                \"created_at\" => [\n                    \"type\" => \"date\",\n                    \"format\" => \"EEE MMM dd HH:mm:ss Z yyyy\",\n                ],\n            ],\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index_patterns\":[\"te*\",\"bar*\"],\"settings\":{\"number_of_shards\":1},\"mappings\":{\"_source\":{\"enabled\":false}},\"properties\":{\"host_name\":{\"type\":\"keyword\"},\"created_at\":{\"type\":\"date\",\"format\":\"EEE MMM dd HH:mm:ss Z yyyy\"}}}' \"$ELASTICSEARCH_URL/_template/template_1\""
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index_patterns\":[\"te*\",\"bar*\"],\"settings\":{\"number_of_shards\":1},\"mappings\":{\"_source\":{\"enabled\":false},\"properties\":{\"host_name\":{\"type\":\"keyword\"},\"created_at\":{\"type\":\"date\",\"format\":\"EEE MMM dd HH:mm:ss Z yyyy\"}}}}' \"$ELASTICSEARCH_URL/_template/template_1\""
     },
     {
       "language": "Java",
@@ -2492,15 +2492,15 @@
     },
     {
       "language": "Ruby",
-      "code": "response = client.indices.reload_search_analyzers(\n  index: \"my-index-000001\",\n  body: {\n    \"_shards\": {\n      \"total\": 2,\n      \"successful\": 2,\n      \"failed\": 0\n    },\n    \"reload_details\": [\n      {\n        \"index\": \"my-index-000001\",\n        \"reloaded_analyzers\": [\n          \"my_synonyms\"\n        ],\n        \"reloaded_node_ids\": [\n          \"mfdqTXn_T7SGr2Ho2KT8uw\"\n        ]\n      }\n    ]\n  }\n)"
+      "code": "response = client.indices.reload_search_analyzers(\n  index: \"my-index-000001\"\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->indices()->reloadSearchAnalyzers([\n    \"index\" => \"my-index-000001\",\n    \"body\" => [\n        \"_shards\" => [\n            \"total\" => 2,\n            \"successful\" => 2,\n            \"failed\" => 0,\n        ],\n        \"reload_details\" => array(\n            [\n                \"index\" => \"my-index-000001\",\n                \"reloaded_analyzers\" => array(\n                    \"my_synonyms\",\n                ),\n                \"reloaded_node_ids\" => array(\n                    \"mfdqTXn_T7SGr2Ho2KT8uw\",\n                ),\n            ],\n        ),\n    ],\n]);"
+      "code": "$resp = $client->indices()->reloadSearchAnalyzers([\n    \"index\" => \"my-index-000001\",\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"_shards\":{\"total\":2,\"successful\":2,\"failed\":0},\"reload_details\":[{\"index\":\"my-index-000001\",\"reloaded_analyzers\":[\"my_synonyms\"],\"reloaded_node_ids\":[\"mfdqTXn_T7SGr2Ho2KT8uw\"]}]}' \"$ELASTICSEARCH_URL/my-index-000001/_reload_search_analyzers\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_reload_search_analyzers\""
     }
   ],
   "specification/indices/cancel_migrate_reindex/examples/request/IndicesCancelMigrateReindexExample1.yaml": [
@@ -13736,23 +13736,23 @@
   "specification/inference/put/examples/request/InferencePutExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.inference.put(\n    task_type=\"rerank\",\n    inference_id=\"my-rerank-model\",\n    inference_config={\n        \"service\": \"cohere\",\n        \"service_settings\": {\n            \"model_id\": \"rerank-english-v3.0\",\n            \"api_key\": \"{{COHERE_API_KEY}}\"\n        }\n    },\n)"
+      "code": "resp = client.inference.put(\n    task_type=\"rerank\",\n    inference_id=\"my-rerank-model\",\n    inference_config={\n        \"service\": \"cohere\",\n        \"service_settings\": {\n            \"model_id\": \"rerank-english-v3.0\",\n            \"api_key\": \"{{COHERE_API_KEY}}\"\n        },\n        \"chunking_settings\": {\n            \"strategy\": \"recursive\",\n            \"max_chunk_size\": 200,\n            \"separator_group\": \"markdown\"\n        }\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.inference.put({\n  task_type: \"rerank\",\n  inference_id: \"my-rerank-model\",\n  inference_config: {\n    service: \"cohere\",\n    service_settings: {\n      model_id: \"rerank-english-v3.0\",\n      api_key: \"{{COHERE_API_KEY}}\",\n    },\n  },\n});"
+      "code": "const response = await client.inference.put({\n  task_type: \"rerank\",\n  inference_id: \"my-rerank-model\",\n  inference_config: {\n    service: \"cohere\",\n    service_settings: {\n      model_id: \"rerank-english-v3.0\",\n      api_key: \"{{COHERE_API_KEY}}\",\n    },\n    chunking_settings: {\n      strategy: \"recursive\",\n      max_chunk_size: 200,\n      separator_group: \"markdown\",\n    },\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.inference.put(\n  task_type: \"rerank\",\n  inference_id: \"my-rerank-model\",\n  body: {\n    \"service\": \"cohere\",\n    \"service_settings\": {\n      \"model_id\": \"rerank-english-v3.0\",\n      \"api_key\": \"{{COHERE_API_KEY}}\"\n    }\n  }\n)"
+      "code": "response = client.inference.put(\n  task_type: \"rerank\",\n  inference_id: \"my-rerank-model\",\n  body: {\n    \"service\": \"cohere\",\n    \"service_settings\": {\n      \"model_id\": \"rerank-english-v3.0\",\n      \"api_key\": \"{{COHERE_API_KEY}}\"\n    },\n    \"chunking_settings\": {\n      \"strategy\": \"recursive\",\n      \"max_chunk_size\": 200,\n      \"separator_group\": \"markdown\"\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"my-rerank-model\",\n    \"body\" => [\n        \"service\" => \"cohere\",\n        \"service_settings\" => [\n            \"model_id\" => \"rerank-english-v3.0\",\n            \"api_key\" => \"{{COHERE_API_KEY}}\",\n        ],\n    ],\n]);"
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"my-rerank-model\",\n    \"body\" => [\n        \"service\" => \"cohere\",\n        \"service_settings\" => [\n            \"model_id\" => \"rerank-english-v3.0\",\n            \"api_key\" => \"{{COHERE_API_KEY}}\",\n        ],\n        \"chunking_settings\" => [\n            \"strategy\" => \"recursive\",\n            \"max_chunk_size\" => 200,\n            \"separator_group\" => \"markdown\",\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"cohere\",\"service_settings\":{\"model_id\":\"rerank-english-v3.0\",\"api_key\":\"{{COHERE_API_KEY}}\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/my-rerank-model\""
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"cohere\",\"service_settings\":{\"model_id\":\"rerank-english-v3.0\",\"api_key\":\"{{COHERE_API_KEY}}\"},\"chunking_settings\":{\"strategy\":\"recursive\",\"max_chunk_size\":200,\"separator_group\":\"markdown\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/my-rerank-model\""
     },
     {
       "language": "Java",
@@ -17221,6 +17221,116 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"azureaistudio\",\"service_settings\":{\"api_key\":\"Azure-AI-Studio-API-key\",\"target\":\"Target-URI\",\"provider\":\"cohere\",\"endpoint_type\":\"token\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/azure_ai_studio_rerank\""
+    }
+  ],
+  "specification/indices/rollover/examples/request/indicesRolloverRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.indices.rollover(\n    alias=\"my-data-stream\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.indices.rollover({\n  alias: \"my-data-stream\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.indices.rollover(\n  alias: \"my-data-stream\",\n  body: {}\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->indices()->rollover([\n    \"alias\" => \"my-data-stream\",\n    \"body\" => new ArrayObject([]),\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{}' \"$ELASTICSEARCH_URL/my-data-stream/_rollover\""
+    }
+  ],
+  "specification/inference/put_llama/examples/request/PutLlamaRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat-completion\",\n    inference_id=\"llama-chat-completion\",\n    inference_config={\n        \"service\": \"llama\",\n        \"service_settings\": {\n            \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\",\n            \"model_id\": \"llama3.2:3b\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat-completion\",\n  inference_id: \"llama-chat-completion\",\n  inference_config: {\n    service: \"llama\",\n    service_settings: {\n      url: \"http://localhost:8321/v1/openai/v1/chat/completions\",\n      model_id: \"llama3.2:3b\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat-completion\",\n  inference_id: \"llama-chat-completion\",\n  body: {\n    \"service\": \"llama\",\n    \"service_settings\": {\n      \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\",\n      \"model_id\": \"llama3.2:3b\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat-completion\",\n    \"inference_id\" => \"llama-chat-completion\",\n    \"body\" => [\n        \"service\" => \"llama\",\n        \"service_settings\" => [\n            \"url\" => \"http://localhost:8321/v1/openai/v1/chat/completions\",\n            \"model_id\" => \"llama3.2:3b\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"llama\",\"service_settings\":{\"url\":\"http://localhost:8321/v1/openai/v1/chat/completions\",\"model_id\":\"llama3.2:3b\"}}' \"$ELASTICSEARCH_URL/_inference/chat-completion/llama-chat-completion\""
+    }
+  ],
+  "specification/inference/put_llama/examples/request/PutLlamaRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"llama-completion\",\n    inference_config={\n        \"service\": \"llama\",\n        \"service_settings\": {\n            \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\",\n            \"model_id\": \"llama3.2:3b\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"llama-completion\",\n  inference_config: {\n    service: \"llama\",\n    service_settings: {\n      url: \"http://localhost:8321/v1/openai/v1/chat/completions\",\n      model_id: \"llama3.2:3b\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"llama-completion\",\n  body: {\n    \"service\": \"llama\",\n    \"service_settings\": {\n      \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\",\n      \"model_id\": \"llama3.2:3b\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"llama-completion\",\n    \"body\" => [\n        \"service\" => \"llama\",\n        \"service_settings\" => [\n            \"url\" => \"http://localhost:8321/v1/openai/v1/chat/completions\",\n            \"model_id\" => \"llama3.2:3b\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"llama\",\"service_settings\":{\"url\":\"http://localhost:8321/v1/openai/v1/chat/completions\",\"model_id\":\"llama3.2:3b\"}}' \"$ELASTICSEARCH_URL/_inference/completion/llama-completion\""
+    }
+  ],
+  "specification/inference/put_llama/examples/request/PutLlamaRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"llama-text-embedding\",\n    inference_config={\n        \"service\": \"llama\",\n        \"service_settings\": {\n            \"url\": \"http://localhost:8321/v1/inference/embeddings\",\n            \"dimensions\": 384,\n            \"model_id\": \"all-MiniLM-L6-v2\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"llama-text-embedding\",\n  inference_config: {\n    service: \"llama\",\n    service_settings: {\n      url: \"http://localhost:8321/v1/inference/embeddings\",\n      dimensions: 384,\n      model_id: \"all-MiniLM-L6-v2\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"llama-text-embedding\",\n  body: {\n    \"service\": \"llama\",\n    \"service_settings\": {\n      \"url\": \"http://localhost:8321/v1/inference/embeddings\",\n      \"dimensions\": 384,\n      \"model_id\": \"all-MiniLM-L6-v2\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"llama-text-embedding\",\n    \"body\" => [\n        \"service\" => \"llama\",\n        \"service_settings\" => [\n            \"url\" => \"http://localhost:8321/v1/inference/embeddings\",\n            \"dimensions\" => 384,\n            \"model_id\" => \"all-MiniLM-L6-v2\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"llama\",\"service_settings\":{\"url\":\"http://localhost:8321/v1/inference/embeddings\",\"dimensions\":384,\"model_id\":\"all-MiniLM-L6-v2\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/llama-text-embedding\""
+    }
+  ],
+  "specification/transform/set_upgrade_mode/examples/request/TransformSetUpgradeModeExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.transform.set_upgrade_mode(\n    enabled=True,\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.transform.setUpgradeMode({\n  enabled: \"true\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.transform.set_upgrade_mode(\n  enabled: \"true\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->transform()->setUpgradeMode([\n    \"enabled\" => \"true\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_transform/set_upgrade_mode?enabled=true\""
     }
   ]
 }
