@@ -67870,7 +67870,12 @@
                 ]
               },
               "copy_from": {
-                "$ref": "#/components/schemas/_types.Field"
+                "description": "The origin field which will be appended to `field`, cannot set `value` simultaneously.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
               },
               "allow_duplicates": {
                 "description": "If `false`, the processor does not append values already present in the field.",
