@@ -20874,6 +20874,7 @@
                       ]
                     },
                     "frequency": {
+                      "description": "The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.",
                       "allOf": [
                         {
                           "$ref": "#/components/schemas/_types.Duration"
@@ -67855,7 +67856,7 @@
                 ]
               },
               "value": {
-                "description": "The value to be appended. Supports template snippets.",
+                "description": "The value to be appended. Supports template snippets. May specify only one of `value` or `copy_from`.",
                 "oneOf": [
                   {
                     "type": "object"
@@ -67868,6 +67869,14 @@
                   }
                 ]
               },
+              "copy_from": {
+                "description": "The origin field which will be appended to `field`, cannot set `value` simultaneously.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
               "allow_duplicates": {
                 "description": "If `false`, the processor does not append values already present in the field.",
                 "default": true,
@@ -67875,8 +67884,7 @@
               }
             },
             "required": [
-              "field",
-              "value"
+              "field"
             ]
           }
         ]
@@ -72995,6 +73003,7 @@
             ]
           },
           "frequency": {
+            "description": "The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Duration"
