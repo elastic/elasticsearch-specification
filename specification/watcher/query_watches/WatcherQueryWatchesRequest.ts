@@ -39,7 +39,7 @@ export interface Request extends RequestBase {
       methods: ['GET', 'POST']
     }
   ]
-  body: {
+  body?: {
     /**
      * The offset from the first result to fetch.
      * It must be non-negative.
