@@ -1,12 +1,5 @@
 {
-  "endpointErrors": {
-    "indices.disk_usage": {
-      "request": [
-        "Request: query parameter 'wait_for_active_shards' does not exist in the json spec"
-      ],
-      "response": []
-    }
-  },
+  "endpointErrors": {},
   "generalErrors": [
     "Dangling type '_global.scripts_painless_execute:PainlessExecutionPosition'",
     "Dangling type '_global.scripts_painless_execute:PainlessScript'",
