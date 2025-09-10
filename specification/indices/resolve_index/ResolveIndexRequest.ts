@@ -67,7 +67,6 @@ export interface Request extends RequestBase {
     allow_no_indices?: boolean
     /**
      * Filter indices by index mode - standard, lookup, time_series, etc. Comma-separated list of IndexMode. Empty means no filter.
-     * @server_default []
      * @availability stack since=9.2.0 stability=stable
      * @availability serverless stability=stable visibility=public
      */
