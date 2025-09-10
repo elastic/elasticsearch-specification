@@ -61,7 +61,7 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  body: {
+  body?: {
     /**
      * The password for the Elasticsearch keystore.
      */

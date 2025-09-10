@@ -57,7 +57,7 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `timeout` query parameter.
      * @server_default 30m

@@ -10997,6 +10997,15 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/indices._types.IndexTemplate"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",

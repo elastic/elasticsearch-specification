@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { IndexTemplate } from '@indices/_types/IndexTemplate'
 
 /**
  * Simulate an index.
@@ -64,4 +65,6 @@ export interface Request extends RequestBase {
      */
     include_defaults?: boolean
   }
+  /** @codegen_name index_template */
+  body?: IndexTemplate
 }
