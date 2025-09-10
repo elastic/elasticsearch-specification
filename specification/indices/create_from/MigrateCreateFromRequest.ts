@@ -40,7 +40,7 @@ export interface Request extends RequestBase {
     dest: IndexName
   }
   /** @codegen_name create_from */
-  body: CreateFrom
+  body?: CreateFrom
 }
 
 export class CreateFrom {
