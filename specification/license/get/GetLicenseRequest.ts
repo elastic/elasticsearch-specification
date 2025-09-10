@@ -50,7 +50,7 @@ export interface Request extends RequestBase {
     /**
      * Specifies whether to retrieve local information.
      * From 9.2 onwards the default value is `true`, which means the information is retrieved from the responding node.
-     * In earlier versions the default is `false`.
+     * In earlier versions the default is `false`, which means the information is retrieved from the elected master node.
      * @server_default true
      */
     local?: boolean
