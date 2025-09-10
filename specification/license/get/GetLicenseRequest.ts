@@ -48,8 +48,10 @@ export interface Request extends RequestBase {
      */
     accept_enterprise?: boolean
     /**
-     * Specifies whether to retrieve local information. The default value is `false`, which means the information is retrieved from the master node.
-     * @server_default false
+     * Specifies whether to retrieve local information.
+     * From 9.2 onwards the default value is `true`, which means the information is retrieved from the responding node.
+     * In earlier versions the default is `false`.
+     * @server_default true
      */
     local?: boolean
   }
