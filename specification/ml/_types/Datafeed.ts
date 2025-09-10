@@ -18,7 +18,7 @@
  */
 
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { Id, Indices, IndicesOptions } from '@_types/common'
+import { Id, Indices, IndicesOptions, ProjectRouting } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -94,6 +94,12 @@ export class DatafeedConfig {
    * Specifies index expansion options that are used during search.
    */
   indices_options?: IndicesOptions
+  /**
+   * The specified projects when querying the source indices.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  project_routing?: ProjectRouting
   job_id?: Id
   /**
    * If a real-time datafeed has never seen any data (including during any initial training period) then it will automatically stop itself and close its associated job after this many real-time searches that return no documents. In other words, it will stop after `frequency` times `max_empty_searches` of real-time operation. If not set then a datafeed with no end time that sees no data will remain started until it is explicitly stopped.

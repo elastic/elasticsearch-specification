@@ -24,7 +24,7 @@ import {
   HistogramAggregation,
   TermsAggregation
 } from '@_types/aggregations/bucket'
-import { Field, IndexName, Indices } from '@_types/common'
+import { Field, IndexName, Indices, ProjectRouting } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { float, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -151,6 +151,12 @@ export class Source {
    * any indices are in remote clusters then the master node and at least one transform node must have the `remote_cluster_client` node role.
    */
   index: Indices
+  /**
+   * The specified projects when querying the source indices.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  project_routing?: ProjectRouting
   /**
    * A query clause that retrieves a subset of data from the source index.
    */

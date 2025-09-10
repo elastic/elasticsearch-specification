@@ -24,7 +24,8 @@ import {
   HttpHeaders,
   Id,
   Indices,
-  IndicesOptions
+  IndicesOptions,
+  ProjectRouting
 } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
@@ -135,6 +136,12 @@ export interface Request extends RequestBase {
      * Specifies index expansion options that are used during search
      */
     indices_options?: IndicesOptions
+    /**
+     * The specified projects when querying the source indices.
+     * @availability stack since=9.2.0
+     * @availability serverless
+     * */
+    project_routing?: ProjectRouting
     /**
      * Identifier for the anomaly detection job.
      */

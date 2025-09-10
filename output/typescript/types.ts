@@ -2674,6 +2674,8 @@ export interface PluginStats {
   licensed: boolean
 }
 
+export type ProjectRouting = string
+
 export type PropertyName = string
 
 export interface QueryCacheStats {
@@ -16009,6 +16011,7 @@ export interface MlDatafeedConfig {
   indices?: Indices
   indexes?: Indices
   indices_options?: IndicesOptions
+  project_routing?: ProjectRouting
   job_id?: Id
   max_empty_searches?: integer
   query?: QueryDslQueryContainer
@@ -17902,6 +17905,7 @@ export interface MlPutDatafeedRequest extends RequestBase {
     indices?: Indices
     indexes?: Indices
     indices_options?: IndicesOptions
+    project_routing?: ProjectRouting
     job_id?: Id
     max_empty_searches?: integer
     query?: QueryDslQueryContainer
@@ -22383,6 +22387,7 @@ export interface TransformSettings {
 
 export interface TransformSource {
   index: Indices
+  project_routing?: ProjectRouting
   query?: QueryDslQueryContainer
   runtime_mappings?: MappingRuntimeFields
 }
