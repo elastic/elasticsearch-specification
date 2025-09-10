@@ -69,7 +69,7 @@ export interface Request extends RequestBase {
      */
     debug?: boolean
   }
-  body: {
+  body?: {
     /**
      * Determines how to handle the watch actions as part of the watch execution.
      */

@@ -62,7 +62,7 @@ export interface Request extends RequestBase {
      */
     id?: Id
   }
-  body: {
+  body?: {
     /**
      * The configuration of how to source the analysis data. It requires an
      * index. Optionally, query and _source may be specified.

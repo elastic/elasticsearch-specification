@@ -75,7 +75,7 @@ export interface Request extends RequestBase {
      */
     max_model_memory?: string
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `duration` query parameter.
      * @server_default 1d

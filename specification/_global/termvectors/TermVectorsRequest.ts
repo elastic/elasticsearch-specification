@@ -165,7 +165,7 @@ export interface Request<TDocument> extends RequestBase {
      */
     version_type?: VersionType
   }
-  body: {
+  body?: {
     /**
      * An artificial document (a document not present in the index) for which you want to retrieve term vectors.
      */
