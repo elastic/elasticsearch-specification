@@ -7227,7 +7227,7 @@ export type CatCatNodeColumn = 'build' | 'b' | 'completion.size' | 'cs' | 'compl
 
 export type CatCatNodeColumns = CatCatNodeColumn | CatCatNodeColumn[]
 
-export type CatCatNodeattrsColumn = 'node' | 'id' | 'id' | 'nodeId' | 'pid' | 'p' | 'host' | 'h' | 'ip' | 'i' | 'port' | 'po' | 'attr' | 'attr.name' | 'value' | 'attr.value'| string
+export type CatCatNodeattrsColumn = 'node' | 'id' | 'id' | 'nodeId' | 'pid' | 'host' | 'h' | 'ip' | 'i' | 'port' | 'po' | 'attr' | 'attr.name' | 'value' | 'attr.value'| string
 
 export type CatCatNodeattrsColumns = CatCatNodeattrsColumn | CatCatNodeattrsColumn[]
 
