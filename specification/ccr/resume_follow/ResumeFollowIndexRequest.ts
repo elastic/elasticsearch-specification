@@ -50,7 +50,7 @@ export interface Request extends RequestBase {
      */
     master_timeout?: Duration
   }
-  body: {
+  body?: {
     max_outstanding_read_requests?: long
     max_outstanding_write_requests?: long
     max_read_request_operation_count?: long
