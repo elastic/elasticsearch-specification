@@ -64,7 +64,7 @@ export interface Request extends RequestBase {
      */
     wait_for_completion?: boolean
   }
-  body: {
+  body?: {
     /**
      * Determines how wildcard patterns in the `indices` parameter match data streams and indices.
      * It supports comma-separated values such as `open,hidden`.

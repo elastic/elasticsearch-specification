@@ -70,7 +70,7 @@ export interface Request extends RequestBase {
      */
     typed_keys?: boolean
   }
-  body: {
+  body?: {
     /**
      * Any aggregations to run over the corpus of returned API keys.
      * Aggregations and queries work together. Aggregations are computed only on the API keys that match the query.
