@@ -78310,10 +78310,29 @@
                 "$ref": "#/components/schemas/_types.Name"
               }
             ]
+          },
+          "managed_by": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security.authenticate.AuthenticateApiKeyManagedBy"
+              }
+            ]
+          },
+          "internal": {
+            "type": "boolean"
           }
         },
         "required": [
-          "id"
+          "id",
+          "managed_by",
+          "internal"
+        ]
+      },
+      "security.authenticate.AuthenticateApiKeyManagedBy": {
+        "type": "string",
+        "enum": [
+          "cloud",
+          "elasticsearch"
         ]
       },
       "security._types.RealmInfo": {

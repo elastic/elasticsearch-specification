@@ -20125,7 +20125,11 @@ export type SecurityActivateUserProfileResponse = SecurityUserProfileWithMetadat
 export interface SecurityAuthenticateAuthenticateApiKey {
   id: Id
   name?: Name
+  managed_by: SecurityAuthenticateAuthenticateApiKeyManagedBy
+  internal: boolean
 }
+
+export type SecurityAuthenticateAuthenticateApiKeyManagedBy = 'cloud' | 'elasticsearch'
 
 export interface SecurityAuthenticateRequest extends RequestBase {
 }
