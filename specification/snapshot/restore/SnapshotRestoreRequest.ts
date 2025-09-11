@@ -83,7 +83,7 @@ export interface Request extends RequestBase {
      */
     wait_for_completion?: boolean
   }
-  body: {
+  body?: {
     /**
      * The feature states to restore.
      * If `include_global_state` is `true`, the request restores all feature states in the snapshot by default.

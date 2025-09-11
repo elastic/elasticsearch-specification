@@ -65,7 +65,7 @@ export interface Request extends RequestBase {
     start?: DateTime
     end?: DateTime
   }
-  body: {
+  body?: {
     /**
      * The datafeed definition to preview.
      */

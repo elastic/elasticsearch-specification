@@ -52,7 +52,7 @@ export interface Request extends RequestBase {
      */
     typed_keys?: boolean
   }
-  body: {
+  body?: {
     /**
      * Query parameters specific to this request, which will override any defaults specified in the template.
      */

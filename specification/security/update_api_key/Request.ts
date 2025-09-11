@@ -63,7 +63,7 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
-  body: {
+  body?: {
     /**
      * The role descriptors to assign to this API key.
      * The API key's effective permissions are an intersection of its assigned privileges and the point in time snapshot of permissions of the owner user.
