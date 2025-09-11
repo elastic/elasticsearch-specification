@@ -2553,7 +2553,7 @@ export interface LatLonGeoLocation {
   lon: double
 }
 
-export type Level = 'node' | 'indices' | 'shards'
+export type Level = 'cluster' | 'indices' | 'shards'
 
 export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 
@@ -2644,6 +2644,8 @@ export interface NodeStatistics {
   successful: integer
   failed: integer
 }
+
+export type NodeStatsLevel = 'node' | 'indices' | 'shards'
 
 export type Normalization = 'no' | 'h1' | 'h2' | 'h3' | 'z'
 
@@ -19348,7 +19350,7 @@ export interface NodesStatsRequest extends RequestBase {
   fields?: Fields
   groups?: boolean
   include_segment_file_sizes?: boolean
-  level?: Level
+  level?: NodeStatsLevel
   timeout?: Duration
   types?: string[]
   include_unloaded_segments?: boolean
