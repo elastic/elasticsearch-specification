@@ -48,7 +48,7 @@ or, if there are too many types, they can be organized in separate files in a `_
 
 [`/specification/_global/search/_types`](../specification/_global/search/_types)
 
-In general, try to use as fewer files as possible, and before introducing a new type, do check if it already exists.
+In general, try to use the fewest files possible, and check if a new type already exists before introducing it.
 
 ### Add the endpoint request definition
 
