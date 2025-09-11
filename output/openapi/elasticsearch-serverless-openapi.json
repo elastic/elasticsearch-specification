@@ -15396,7 +15396,7 @@
           {
             "in": "query",
             "name": "local",
-            "description": "Specifies whether to retrieve local information. The default value is `false`, which means the information is retrieved from the master node.",
+            "description": "Specifies whether to retrieve local information.\nFrom 9.2 onwards the default value is `true`, which means the information is retrieved from the responding node.\nIn earlier versions the default is `false`, which means the information is retrieved from the elected master node.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
