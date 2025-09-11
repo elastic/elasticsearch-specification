@@ -8,10 +8,10 @@ value:
     successful: 1
     failed: 0
   my-index-000001:
-    store_size: 929mb"
+    store_size: 929mb
     store_size_in_bytes: 974192723
     all_fields:
-      total: 928.9mb"
+      total: 928.9mb
       total_in_bytes: 973977084
       inverted_index:
         total: 107.8mb
@@ -45,7 +45,7 @@ value:
         norms_in_bytes: 0
         term_vectors: 0b
         term_vectors_in_bytes: 0
-        knn_vectors": 0b
+        knn_vectors: 0b
         knn_vectors_in_bytes: 0
       _primary_term: {}
       _seq_no: {}
