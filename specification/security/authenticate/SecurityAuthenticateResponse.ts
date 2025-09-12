@@ -44,4 +44,11 @@ export class Response {
 export class AuthenticateApiKey {
   id: Id
   name?: Name
+  managed_by: AuthenticateApiKeyManagedBy
+  internal: boolean
+}
+
+export enum AuthenticateApiKeyManagedBy {
+  cloud,
+  elasticsearch
 }

@@ -48,7 +48,7 @@ export interface Request extends RequestBase {
      */
     id?: Id
   }
-  body: {
+  body?: {
     /**
      * A data frame analytics config as described in create data frame analytics
      * jobs. Note that `id` and `dest` don’t need to be provided in the context of

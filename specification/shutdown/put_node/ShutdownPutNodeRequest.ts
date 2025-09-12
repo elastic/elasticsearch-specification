@@ -40,7 +40,7 @@ import { Type } from '../_types/types'
  * IMPORTANT: This API does NOT terminate the Elasticsearch process.
  * Monitor the node shutdown status to determine when it is safe to stop Elasticsearch.
  * @rest_spec_name shutdown.put_node
- * @availability stack since=7.13.0 stability=stable
+ * @availability stack since=7.13.0 stability=stable visibility=private
  * @cluster_privileges manage
  * @doc_id nodes-api-shutdown
  */

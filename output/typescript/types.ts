@@ -2645,6 +2645,8 @@ export interface NodeStatistics {
   failed: integer
 }
 
+export type NodeStatsLevel = 'node' | 'indices' | 'shards'
+
 export type Normalization = 'no' | 'h1' | 'h2' | 'h3' | 'z'
 
 export type OpType = 'index' | 'create'
@@ -13319,6 +13321,7 @@ export interface IndicesResolveIndexRequest extends RequestBase {
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
   allow_no_indices?: boolean
+  mode?: IndicesIndexMode | IndicesIndexMode[]
 }
 
 export interface IndicesResolveIndexResolveIndexAliasItem {
@@ -13501,6 +13504,7 @@ export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
   cause?: string
   master_timeout?: Duration
   include_defaults?: boolean
+  body?: IndicesIndexTemplate
 }
 
 export interface IndicesSimulateIndexTemplateResponse {
@@ -14079,6 +14083,7 @@ export type InferenceGoogleVertexAIServiceType = 'googlevertexai'
 export interface InferenceGoogleVertexAITaskSettings {
   auto_truncate?: boolean
   top_n?: integer
+  thinking_config?: InferenceThinkingConfig
 }
 
 export type InferenceGoogleVertexAITaskType = 'rerank' | 'text_embedding' | 'completion' | 'chat_completion'
@@ -14401,6 +14406,10 @@ export interface InferenceTextEmbeddingInferenceResult {
 
 export interface InferenceTextEmbeddingResult {
   embedding: InferenceDenseVector
+}
+
+export interface InferenceThinkingConfig {
+  thinking_budget?: integer
 }
 
 export interface InferenceToolCall {
@@ -14828,6 +14837,7 @@ export interface InferenceTextEmbeddingRequest extends RequestBase {
   timeout?: Duration
   body?: {
     input: string | string[]
+    input_type?: string
     task_settings?: InferenceTaskSettings
   }
 }
@@ -14844,7 +14854,8 @@ export type InferenceUpdateResponse = InferenceInferenceEndpointInfo
 
 export interface IngestAppendProcessor extends IngestProcessorBase {
   field: Field
-  value: any | any[]
+  value?: any | any[]
+  copy_from?: Field
   allow_duplicates?: boolean
 }
 
@@ -19342,7 +19353,7 @@ export interface NodesStatsRequest extends RequestBase {
   fields?: Fields
   groups?: boolean
   include_segment_file_sizes?: boolean
-  level?: Level
+  level?: NodeStatsLevel
   timeout?: Duration
   types?: string[]
   include_unloaded_segments?: boolean
@@ -20117,7 +20128,11 @@ export type SecurityActivateUserProfileResponse = SecurityUserProfileWithMetadat
 export interface SecurityAuthenticateAuthenticateApiKey {
   id: Id
   name?: Name
+  managed_by: SecurityAuthenticateAuthenticateApiKeyManagedBy
+  internal: boolean
 }
+
+export type SecurityAuthenticateAuthenticateApiKeyManagedBy = 'cloud' | 'elasticsearch'
 
 export interface SecurityAuthenticateRequest extends RequestBase {
 }

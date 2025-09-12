@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Names } from '@_types/common'
+import { IndexMode } from '@indices/_types/DataStream'
 
 /**
  * Resolve indices.
@@ -64,5 +65,11 @@ export interface Request extends RequestBase {
      * @server_default true
      */
     allow_no_indices?: boolean
+    /**
+     * Filter indices by index mode - standard, lookup, time_series, etc. Comma-separated list of IndexMode. Empty means no filter.
+     * @availability stack since=9.2.0 stability=stable
+     * @availability serverless stability=stable visibility=public
+     */
+    mode?: IndexMode | IndexMode[]
   }
 }
