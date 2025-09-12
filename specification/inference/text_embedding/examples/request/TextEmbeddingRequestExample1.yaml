@@ -7,7 +7,5 @@ method_request: 'POST _inference/text_embedding/my-cohere-endpoint'
 value: |-
   {
     "input": "The sky above the port was the color of television tuned to a dead channel.",
-    "task_settings": {
-      "input_type": "ingest"
-    }
+    "input_type": "ingest"
   }

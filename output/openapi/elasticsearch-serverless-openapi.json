@@ -14341,6 +14341,10 @@
                       }
                     ]
                   },
+                  "input_type": {
+                    "description": "The input data type for the text embedding model. Possible values include:\n* `SEARCH`\n* `INGEST`\n* `CLASSIFICATION`\n* `CLUSTERING`\nNot all services support all values. Unsupported values will trigger a validation exception.\nAccepted values depend on the configured inference service, refer to the relevant service-specific documentation for more info.\n\n> info\n> The `input_type` parameter specified on the root level of the request body will take precedence over the `input_type` parameter specified in `task_settings`.",
+                    "type": "string"
+                  },
                   "task_settings": {
                     "description": "Optional task settings",
                     "allOf": [
@@ -14358,7 +14362,7 @@
                 "TextEmbeddingRequestExample1": {
                   "summary": "Text embedding task",
                   "description": "Run `POST _inference/text_embedding/my-cohere-endpoint` to perform text embedding on the example sentence using the Cohere integration,",
-                  "value": "{\n  \"input\": \"The sky above the port was the color of television tuned to a dead channel.\",\n  \"task_settings\": {\n    \"input_type\": \"ingest\"\n  }\n}"
+                  "value": "{\n  \"input\": \"The sky above the port was the color of television tuned to a dead channel.\",\n  \"input_type\": \"ingest\"\n}"
                 }
               }
             }
