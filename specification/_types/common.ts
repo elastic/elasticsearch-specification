@@ -245,8 +245,15 @@ export enum HttpMethod {
   HEAD
 }
 
+// This is the ClusterStatsLevel enum in Elasticsearch
 export enum Level {
   cluster,
+  indices,
+  shards
+}
+
+export enum NodeStatsLevel {
+  node,
   indices,
   shards
 }
