@@ -78319,7 +78319,7 @@
           "managed_by": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/security.authenticate.AuthenticateApiKeyManagedBy"
+                "$ref": "#/components/schemas/security._types.ApiKeyManagedBy"
               }
             ]
           },
@@ -78333,7 +78333,7 @@
           "internal"
         ]
       },
-      "security.authenticate.AuthenticateApiKeyManagedBy": {
+      "security._types.ApiKeyManagedBy": {
         "type": "string",
         "enum": [
           "cloud",

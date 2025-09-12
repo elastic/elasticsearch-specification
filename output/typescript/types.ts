@@ -19895,6 +19895,8 @@ export interface SecurityApiKey {
   _sort?: SortResults
 }
 
+export type SecurityApiKeyManagedBy = 'cloud' | 'elasticsearch'
+
 export type SecurityApiKeyType = 'rest' | 'cross_cluster'
 
 export interface SecurityApplicationGlobalUserPrivileges {
@@ -20128,11 +20130,9 @@ export type SecurityActivateUserProfileResponse = SecurityUserProfileWithMetadat
 export interface SecurityAuthenticateAuthenticateApiKey {
   id: Id
   name?: Name
-  managed_by: SecurityAuthenticateAuthenticateApiKeyManagedBy
+  managed_by: SecurityApiKeyManagedBy
   internal: boolean
 }
-
-export type SecurityAuthenticateAuthenticateApiKeyManagedBy = 'cloud' | 'elasticsearch'
 
 export interface SecurityAuthenticateRequest extends RequestBase {
 }
