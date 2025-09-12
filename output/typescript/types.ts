@@ -1151,6 +1151,7 @@ export interface SearchRequest extends RequestBase {
   max_concurrent_shard_requests?: integer
   preference?: string
   pre_filter_shard_size?: long
+  project_routing?: ProjectRouting
   request_cache?: boolean
   routing?: Routing
   scroll?: Duration
@@ -2675,6 +2676,8 @@ export interface PluginStats {
   version: VersionString
   licensed: boolean
 }
+
+export type ProjectRouting = string
 
 export type PropertyName = string
 
@@ -7054,6 +7057,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   lenient?: boolean
   max_concurrent_shard_requests?: integer
   preference?: string
+  project_routing?: ProjectRouting
   request_cache?: boolean
   routing?: Routing
   search_type?: SearchType

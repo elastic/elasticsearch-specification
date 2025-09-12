@@ -25,6 +25,7 @@ import {
   Fields,
   IndexName,
   Indices,
+  ProjectRouting,
   Routing,
   SearchType,
   SuggestMode
@@ -126,6 +127,17 @@ export interface Request extends RequestBase {
     lenient?: boolean
     max_concurrent_shard_requests?: integer
     preference?: string
+    /**
+     * Specifies a subset of projects to target for a search using project metadata
+     * tags in a subset Lucene syntax. Allowed Lucene queries: the _alias tag
+     * and a single value (possible wildcarded). Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
     /** @server_default true */
     request_cache?: boolean
     routing?: Routing
