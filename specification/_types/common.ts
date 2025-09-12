@@ -71,6 +71,8 @@ export type Metrics = string | string[]
 
 export type ClusterAlias = string
 
+export type ProjectRouting = string
+
 export type Name = string
 export type Names = Name | Name[]
 
