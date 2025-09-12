@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Fields, Level, Metrics, NodeIds } from '@_types/common'
+import { Fields, Metrics, NodeIds, NodeStatsLevel } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -82,7 +82,7 @@ export interface Request extends RequestBase {
      */
     include_segment_file_sizes?: boolean
     /** Indicates whether statistics are aggregated at the cluster, index, or shard level. */
-    level?: Level
+    level?: NodeStatsLevel
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s

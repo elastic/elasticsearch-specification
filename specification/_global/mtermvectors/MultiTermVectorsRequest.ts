@@ -121,7 +121,7 @@ export interface Request extends RequestBase {
      */
     version_type?: VersionType
   }
-  body: {
+  body?: {
     /**
      * An array of existing or artificial documents.
      */

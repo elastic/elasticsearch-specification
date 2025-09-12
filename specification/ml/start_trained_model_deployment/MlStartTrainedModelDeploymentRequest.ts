@@ -100,7 +100,7 @@ export interface Request extends RequestBase {
      */
     wait_for?: DeploymentAllocationState
   }
-  body: {
+  body?: {
     /**
      * Adaptive allocations configuration. When enabled, the number of allocations
      * is set based on the current load.

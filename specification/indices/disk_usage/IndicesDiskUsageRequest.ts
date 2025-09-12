@@ -29,6 +29,9 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * NOTE: The total size of fields of the analyzed shards of the index in the response is usually smaller than the index `store_size` value because some small metadata files are ignored and some parts of data files might not be scanned by the API.
  * Since stored fields are stored together in a compressed format, the sizes of stored fields are also estimates and can be inaccurate.
  * The stored size of the `_id` field is likely underestimated while the `_source` field is overestimated.
+ *
+ * For usage examples see the External documentation or refer to [Analyze the index disk usage example](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/index-disk-usage) for an example.
+ * @ext_doc_id indices-disk-usage
  * @doc_id indices-disk-usage
  * @rest_spec_name indices.disk_usage
  * @availability stack since=7.15.0 stability=experimental

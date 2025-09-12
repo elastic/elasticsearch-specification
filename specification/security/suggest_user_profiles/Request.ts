@@ -52,7 +52,7 @@ export interface Request extends RequestBase {
      */
     data?: string | string[]
   }
-  body: {
+  body?: {
     /**
      * A query string used to match name-related fields in user profile documents.
      * Name-related fields are the user's `username`, `full_name`, and `email`.

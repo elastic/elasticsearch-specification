@@ -170,7 +170,7 @@ export interface Request extends RequestBase {
     from?: integer
     sort?: string | string[]
   }
-  body: {
+  body?: {
     /** @aliases aggs */
     aggregations?: Dictionary<string, AggregationContainer>
     collapse?: FieldCollapse

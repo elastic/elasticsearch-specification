@@ -70,7 +70,7 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  body: {
+  body?: {
     /**
      * Query used to limit documents the alias can access.
      */

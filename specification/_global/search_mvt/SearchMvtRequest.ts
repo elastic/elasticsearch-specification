@@ -221,7 +221,7 @@ export interface Request extends RequestBase {
      */
     with_labels?: boolean
   }
-  body: {
+  body?: {
     /**
      * Sub-aggregations for the geotile_grid.
      *

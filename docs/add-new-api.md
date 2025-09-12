@@ -1,16 +1,16 @@
 # How to add a new API
 
 It might happen that a new API in Elasticsearch is not yet defined
-in this repository, or we do have an endpoint definition in [`/specification/_json_spec`](../specification/_json_spec)
+in this repository, or we do have an endpoint definition in [`/specification/_json_spec`](../specification/_json_spec),
 but we don't have a type definition for it.
-In this document you will see how to add a new endpoint and how to add a new endpoint definition.
+This document explains how to add a new endpoint and how to add a new endpoint definition.
 
 > [!TIP]
 > To learn more about how to write docs specifically for our [API references](https://www.elastic.co/docs/api/), refer to the [Contribute to Elastic API docs](https://www.elastic.co/docs/extend/contribute/api-docs/).
 
 ## How to add a new endpoint
 
-Add a new endpoint is straightforward, you only need to copy-paste the json rest-api-spec definition
+Adding a new endpoint is straightforward, you only need to copy-paste the json rest-api-spec definition
 from the Elasticsearch repository inside [`/specification/_json_spec`](../specification/_json_spec)
 and you are good to go.
 
@@ -20,13 +20,13 @@ or [here](https://github.com/elastic/elasticsearch/tree/7.x/x-pack/plugin/src/te
 ## How to add the definition of an endpoint
 
 Once you have added a new endpoint definition, the next step is to add its type definition.
-First of all, you should find the most appropriate place inside [`/specification`](../specification)
+First, you should find the most appropriate place inside [`/specification`](../specification)
 where to put the new definition. The content of [`/specification`](../specification)
-tried to mimic the Elasticsearch online documentation, so you can use it as inspiration.
+tries to mimic the Elasticsearch online documentation, so you can use that as inspiration.
 For example, the index document definition can be found in [`/specification/_global/index`](../specification/_global/index).
 
 Once you have found the best place for the new definition, you should create a new file for it.
-The filename should be the same of the type definition you are writing, for example:
+The filename should be the same as the type definition you are writing, for example:
 
 ```ts
 // IndexRequest.ts
@@ -38,8 +38,17 @@ interface Request {}
 class Response {}
 ```
 
-Try to use less files as possible, for example there is no need to create a custom file for an enum,
-you can define it in the same file where it's used, unless is a commonly used type.
+The request and response files should only contain the main type definition: everything else, from subtypes to enums, should
+be placed in a separate file, usually called types.ts, at the same level in the hierarchy, for example:
+
+[`/specification/_global/bulk/types.ts`](../specification/_global/bulk/types.ts)
+
+
+or, if there are too many types, they can be organized in separate files in a `_types` folder:
+
+[`/specification/_global/search/_types`](../specification/_global/search/_types)
+
+In general, try to use the fewest files possible, and check if a new type already exists before introducing it.
 
 ### Add the endpoint request definition
 
@@ -63,7 +72,7 @@ Furthermore, every request definition **must** contain these JS Doc tags:
   - `feature_flag`: the feature flag value, only valid if the `visibility` is set to `feature_flag`.
     This field is only available for `stack`.
 
-Following you can find a template valid for any request definition.
+Following, you can find a template valid for any request definition.
 
 ```ts
  /*
@@ -118,11 +127,11 @@ There are cases where the generic might be the entire body, see [`IndexRequest`]
 
 ### Add the endpoint response definition
 
-Responses definitions should always be defined **after** a request definition,
+Response definitions should always be defined **after** a request definition,
 otherwise the compiler will not pick them up. It is required that the response
 definition is named `Response`.
 
-Following you can find a template valid for any response definition.
+Following, you can find a template valid for any response definition.
 
 ```ts
 class Response {
@@ -153,7 +162,7 @@ And the generic will be used somewhere inside the definition.
 
 Normally, every API returns the exact same structure in case of error, which is defined
 in [`ErrorResponseBase`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Base.ts#L66-L75).
-In some edge cases, the response structure may change. To document this situations, you should use the `exceptions` key.
+In some edge cases, the response structure may change. To document these cases, you should use the `exceptions` key.
 
 ```ts
 class Response {
