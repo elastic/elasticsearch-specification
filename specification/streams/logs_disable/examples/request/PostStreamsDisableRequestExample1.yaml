@@ -1,0 +1,3 @@
+summary: 'Disable the logs streams on this cluster'
+method_request: POST _streams/logs/_disable
+# type: request
