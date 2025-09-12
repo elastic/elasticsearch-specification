@@ -228,7 +228,7 @@ export interface Request extends RequestBase {
      *  _alias:_origin
      *  _alias:*pr*
      * Supported in serverless only.
-     * @availability serverless
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
      */
     project_routing?: ProjectRouting
     /**

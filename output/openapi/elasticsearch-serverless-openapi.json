@@ -263,9 +263,6 @@
             "$ref": "#/components/parameters/async_search.submit-preference"
           },
           {
-            "$ref": "#/components/parameters/async_search.submit-project_routing"
-          },
-          {
             "$ref": "#/components/parameters/async_search.submit-request_cache"
           },
           {
@@ -423,9 +420,6 @@
           },
           {
             "$ref": "#/components/parameters/async_search.submit-preference"
-          },
-          {
-            "$ref": "#/components/parameters/async_search.submit-project_routing"
           },
           {
             "$ref": "#/components/parameters/async_search.submit-request_cache"
@@ -23739,9 +23733,6 @@
             "$ref": "#/components/parameters/search-pre_filter_shard_size"
           },
           {
-            "$ref": "#/components/parameters/search-project_routing"
-          },
-          {
             "$ref": "#/components/parameters/search-request_cache"
           },
           {
@@ -23901,9 +23892,6 @@
           },
           {
             "$ref": "#/components/parameters/search-pre_filter_shard_size"
-          },
-          {
-            "$ref": "#/components/parameters/search-project_routing"
           },
           {
             "$ref": "#/components/parameters/search-request_cache"
@@ -24072,9 +24060,6 @@
             "$ref": "#/components/parameters/search-pre_filter_shard_size"
           },
           {
-            "$ref": "#/components/parameters/search-project_routing"
-          },
-          {
             "$ref": "#/components/parameters/search-request_cache"
           },
           {
@@ -24237,9 +24222,6 @@
           },
           {
             "$ref": "#/components/parameters/search-pre_filter_shard_size"
-          },
-          {
-            "$ref": "#/components/parameters/search-project_routing"
           },
           {
             "$ref": "#/components/parameters/search-request_cache"
@@ -35173,9 +35155,6 @@
           "hidden",
           "none"
         ]
-      },
-      "_types.ProjectRouting": {
-        "type": "string"
       },
       "_types.SearchType": {
         "type": "string",
@@ -82962,17 +82941,6 @@
         },
         "style": "form"
       },
-      "async_search.submit-project_routing": {
-        "in": "query",
-        "name": "project_routing",
-        "description": "Specifies a subset of projects to target for a search using project metadata\ntags in a subset Lucene syntax. Allowed Lucene queries: the _alias tag\nand a single value (possible wildcarded). Examples:\n _alias:my-project\n _alias:_origin\n _alias:*pr*\nSupported in serverless only.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.ProjectRouting"
-        },
-        "x-state": "Generally available",
-        "style": "form"
-      },
       "async_search.submit-request_cache": {
         "in": "query",
         "name": "request_cache",
@@ -87355,17 +87323,6 @@
         "schema": {
           "type": "number"
         },
-        "style": "form"
-      },
-      "search-project_routing": {
-        "in": "query",
-        "name": "project_routing",
-        "description": "Specifies a subset of projects to target for a search using project metadata\ntags in a subset Lucene syntax. Allowed Lucene queries: the _alias tag\nand a single value (possible wildcarded). Examples:\n _alias:my-project\n _alias:_origin\n _alias:*pr*\nSupported in serverless only.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.ProjectRouting"
-        },
-        "x-state": "Generally available",
         "style": "form"
       },
       "search-request_cache": {
