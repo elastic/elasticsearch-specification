@@ -56,6 +56,19 @@ export interface Request extends RequestBase {
      */
     input: string | Array<string>
     /**
+     * The input data type for the text embedding model. Possible values include:
+     * * `SEARCH`
+     * * `INGEST`
+     * * `CLASSIFICATION`
+     * * `CLUSTERING`
+     * Not all services support all values. Unsupported values will trigger a validation exception.
+     * Accepted values depend on the configured inference service, refer to the relevant service-specific documentation for more info.
+     *
+     * > info
+     * > The `input_type` parameter specified on the root level of the request body will take precedence over the `input_type` parameter specified in `task_settings`.
+     */
+    input_type?: string
+    /**
      * Optional task settings
      */
     task_settings?: TaskSettings
