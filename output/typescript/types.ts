@@ -13504,6 +13504,7 @@ export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
   cause?: string
   master_timeout?: Duration
   include_defaults?: boolean
+  body?: IndicesIndexTemplate
 }
 
 export interface IndicesSimulateIndexTemplateResponse {
@@ -14852,7 +14853,8 @@ export type InferenceUpdateResponse = InferenceInferenceEndpointInfo
 
 export interface IngestAppendProcessor extends IngestProcessorBase {
   field: Field
-  value: any | any[]
+  value?: any | any[]
+  copy_from?: Field
   allow_duplicates?: boolean
 }
 
@@ -20125,7 +20127,11 @@ export type SecurityActivateUserProfileResponse = SecurityUserProfileWithMetadat
 export interface SecurityAuthenticateAuthenticateApiKey {
   id: Id
   name?: Name
+  managed_by: SecurityAuthenticateAuthenticateApiKeyManagedBy
+  internal: boolean
 }
+
+export type SecurityAuthenticateAuthenticateApiKeyManagedBy = 'cloud' | 'elasticsearch'
 
 export interface SecurityAuthenticateRequest extends RequestBase {
 }

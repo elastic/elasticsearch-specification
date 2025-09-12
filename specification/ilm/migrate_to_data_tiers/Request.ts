@@ -62,7 +62,7 @@ export interface Request extends RequestBase {
      */
     master_timeout?: Duration
   }
-  body: {
+  body?: {
     legacy_template_to_delete?: string
     node_attribute?: string
   }

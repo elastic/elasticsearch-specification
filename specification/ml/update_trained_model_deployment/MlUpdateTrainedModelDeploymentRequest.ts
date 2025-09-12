@@ -56,7 +56,7 @@ export interface Request extends RequestBase {
      */
     number_of_allocations?: integer
   }
-  body: {
+  body?: {
     /**
      * The number of model allocations on each node where the model is deployed.
      * All allocations on a node share the same copy of the model in memory but use
