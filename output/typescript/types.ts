@@ -360,6 +360,7 @@ export interface FieldCapsRequest extends RequestBase {
   filters?: string
   types?: string[]
   include_empty_fields?: boolean
+  project_routing?: ProjectRouting
   body?: {
     fields?: Fields
     index_filter?: QueryDslQueryContainer
@@ -742,6 +743,7 @@ export interface MsearchMultisearchHeader {
   ignore_unavailable?: boolean
   index?: Indices
   preference?: string
+  project_routing?: ProjectRouting
   request_cache?: boolean
   routing?: Routing
   search_type?: SearchType
@@ -761,6 +763,7 @@ export interface MsearchRequest extends RequestBase {
   max_concurrent_searches?: integer
   max_concurrent_shard_requests?: integer
   pre_filter_shard_size?: long
+  project_routing?: ProjectRouting
   rest_total_hits_as_int?: boolean
   routing?: Routing
   search_type?: SearchType
@@ -13307,6 +13310,7 @@ export interface IndicesResolveIndexRequest extends RequestBase {
   ignore_unavailable?: boolean
   allow_no_indices?: boolean
   mode?: IndicesIndexMode | IndicesIndexMode[]
+  project_routing?: ProjectRouting
 }
 
 export interface IndicesResolveIndexResolveIndexAliasItem {
