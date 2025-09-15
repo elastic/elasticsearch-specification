@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use serde::Serialize;
+use serde::{Serialize, Serializer};
 use indexmap::IndexMap;
 
 #[derive(Debug, Serialize)]
@@ -62,10 +62,50 @@ pub struct Parameter {
     pub deprecated: Option<Deprecation>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug)]
 pub struct Body {
     pub description: String,
     pub required: bool,
+}
+
+impl Serialize for Body {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        use serde::ser::SerializeStruct;
+
+        let mut state = if self.required {
+            serializer.serialize_struct("Body", 2)?
+        } else {
+            serializer.serialize_struct("Body", 1)?
+        };
+
+        if self.required {
+            state.serialize_field("description", &self.description)?;
+        }
+        state.serialize_field("required", &self.required)?;
+        state.end()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_body_serialization_with_required_false() {
+        let body = Body {
+            description: "Test description".to_string(),
+            required: false,
+        };
+
+        let json = serde_json::to_string(&body).unwrap();
+        let parsed: serde_json::Value = serde_json::from_str(&json).unwrap();
+
+        assert!(parsed.get("description").is_none());
+        assert_eq!(parsed["required"], false);
+    }
 }
 
 #[derive(Debug, Serialize)]
