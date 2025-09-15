@@ -19390,6 +19390,26 @@ export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   nodes: Record<string, NodesUsageNodeUsage>
 }
 
+export interface ProjectTagsProjectTagsKeys {
+  linked_projects?: Record<string, ProjectTagsTags>
+}
+export type ProjectTagsProjectTags = ProjectTagsProjectTagsKeys
+  & { [property: string]: ProjectTagsTags | Record<string, ProjectTagsTags> }
+
+export interface ProjectTagsRequest extends RequestBase {
+}
+
+export type ProjectTagsResponse = ProjectTagsProjectTags
+
+export interface ProjectTagsTagsKeys {
+  _id: string
+  _alias: string
+  _type: string
+  _organisation: string
+}
+export type ProjectTagsTags = ProjectTagsTagsKeys
+  & { [property: string]: string }
+
 export interface QueryRulesQueryRule {
   rule_id: Id
   type: QueryRulesQueryRuleType
