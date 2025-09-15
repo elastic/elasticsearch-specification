@@ -1151,6 +1151,7 @@ export interface SearchRequest extends RequestBase {
   max_concurrent_shard_requests?: integer
   preference?: string
   pre_filter_shard_size?: long
+  project_routing?: ProjectRouting
   request_cache?: boolean
   routing?: Routing
   scroll?: Duration
@@ -2645,6 +2646,8 @@ export interface NodeStatistics {
   failed: integer
 }
 
+export type NodeStatsLevel = 'node' | 'indices' | 'shards'
+
 export type Normalization = 'no' | 'h1' | 'h2' | 'h3' | 'z'
 
 export type OpType = 'index' | 'create'
@@ -2673,6 +2676,8 @@ export interface PluginStats {
   version: VersionString
   licensed: boolean
 }
+
+export type ProjectRouting = string
 
 export type PropertyName = string
 
@@ -7052,6 +7057,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   lenient?: boolean
   max_concurrent_shard_requests?: integer
   preference?: string
+  project_routing?: ProjectRouting
   request_cache?: boolean
   routing?: Routing
   search_type?: SearchType
@@ -13502,6 +13508,7 @@ export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
   cause?: string
   master_timeout?: Duration
   include_defaults?: boolean
+  body?: IndicesIndexTemplate
 }
 
 export interface IndicesSimulateIndexTemplateResponse {
@@ -14834,6 +14841,7 @@ export interface InferenceTextEmbeddingRequest extends RequestBase {
   timeout?: Duration
   body?: {
     input: string | string[]
+    input_type?: string
     task_settings?: InferenceTaskSettings
   }
 }
@@ -19349,7 +19357,7 @@ export interface NodesStatsRequest extends RequestBase {
   fields?: Fields
   groups?: boolean
   include_segment_file_sizes?: boolean
-  level?: Level
+  level?: NodeStatsLevel
   timeout?: Duration
   types?: string[]
   include_unloaded_segments?: boolean
@@ -19891,6 +19899,8 @@ export interface SecurityApiKey {
   _sort?: SortResults
 }
 
+export type SecurityApiKeyManagedBy = 'cloud' | 'elasticsearch'
+
 export type SecurityApiKeyType = 'rest' | 'cross_cluster'
 
 export interface SecurityApplicationGlobalUserPrivileges {
@@ -20124,6 +20134,8 @@ export type SecurityActivateUserProfileResponse = SecurityUserProfileWithMetadat
 export interface SecurityAuthenticateAuthenticateApiKey {
   id: Id
   name?: Name
+  managed_by: SecurityApiKeyManagedBy
+  internal: boolean
 }
 
 export interface SecurityAuthenticateRequest extends RequestBase {

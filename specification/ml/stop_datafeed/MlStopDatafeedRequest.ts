@@ -69,7 +69,7 @@ export interface Request extends RequestBase {
      *  @server_default 20s */
     timeout?: Duration
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `allow_no_match` query parameter.
      * @server_default true */

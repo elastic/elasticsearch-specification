@@ -63,6 +63,8 @@ export type IndexAlias = string
 export type IndexPattern = string
 export type IndexPatterns = IndexPattern[]
 
+export type ProjectRouting = string
+
 export type Routing = string
 export type LongId = string
 //TODO encode metrics as API specific enums
@@ -245,8 +247,15 @@ export enum HttpMethod {
   HEAD
 }
 
+// This is the ClusterStatsLevel enum in Elasticsearch
 export enum Level {
   cluster,
+  indices,
+  shards
+}
+
+export enum NodeStatsLevel {
+  node,
   indices,
   shards
 }

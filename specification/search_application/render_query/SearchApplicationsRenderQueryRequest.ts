@@ -48,7 +48,7 @@ export interface Request extends RequestBase {
   /**
    * Contains parameters for a search application.
    */
-  body: {
+  body?: {
     params?: Dictionary<string, UserDefinedValue>
   }
 }

@@ -43,7 +43,7 @@ export interface Request extends RequestBase {
       methods: ['GET', 'POST']
     }
   ]
-  body: {
+  body?: {
     /**
      * A query to filter which roles to return.
      * If the query parameter is missing, it is equivalent to a `match_all` query.
