@@ -76072,10 +76072,6 @@
               }
             ]
           },
-          "job_type": {
-            "description": "Reserved for future use, currently set to `anomaly_detector`.",
-            "type": "string"
-          },
           "model_plot_config": {
             "description": "This advanced configuration option stores model information along with the results.\nIt provides a more detailed view into anomaly detection.\nModel plot provides a simplified and indicative view of the model and its bounds.",
             "allOf": [
