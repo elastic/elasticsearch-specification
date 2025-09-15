@@ -242,6 +242,7 @@ export class JobConfig {
   job_id?: Id
   /**
    * Reserved for future use, currently set to `anomaly_detector`.
+   * @availability visibility=private
    */
   job_type?: string
   /**
