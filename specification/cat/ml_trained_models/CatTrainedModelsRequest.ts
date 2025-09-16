@@ -62,8 +62,6 @@ export interface Request extends CatRequestBase {
      * @server_default true
      */
     allow_no_match?: boolean
-    /** The unit used to display byte values. */
-    bytes?: Bytes
     /** A comma-separated list of column names to display. */
     h?: CatTrainedModelsColumns
     /** A comma-separated list of column names or aliases used to sort the response. */
@@ -72,9 +70,5 @@ export interface Request extends CatRequestBase {
     from?: integer
     /** The maximum number of transforms to display. */
     size?: integer
-    /**
-     * Unit used to display time values.
-     */
-    time?: TimeUnit
   }
 }

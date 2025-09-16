@@ -48,10 +48,6 @@ export interface Request extends CatRequestBase {
   ]
   query_parameters: {
     /**
-     * The unit used to display time values.
-     */
-    time?: TimeUnit
-    /**
      * If true, returns `HH:MM:SS` and Unix epoch timestamps.
      * @server_default true
      */

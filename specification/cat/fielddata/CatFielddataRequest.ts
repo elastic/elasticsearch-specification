@@ -52,8 +52,6 @@ export interface Request extends CatRequestBase {
     fields?: Fields
   }
   query_parameters: {
-    /** The unit used to display byte values. */
-    bytes?: Bytes
     /** Comma-separated list of fields used to limit returned information. */
     fields?: Fields
     /**

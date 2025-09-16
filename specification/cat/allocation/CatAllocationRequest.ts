@@ -49,8 +49,6 @@ export interface Request extends CatRequestBase {
     node_id?: NodeIds
   }
   query_parameters: {
-    /** The unit used to display byte values. */
-    bytes?: Bytes
     /**
      * A comma-separated list of columns names to display. It supports simple wildcards.
      */

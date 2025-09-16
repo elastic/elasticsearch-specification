@@ -63,10 +63,6 @@ export interface Request extends CatRequestBase {
      */
     s?: Names
     /**
-     * The unit used to display time values.
-     */
-    time?: TimeUnit
-    /**
      * If `true`, the request computes the list of selected nodes from the
      * local cluster state. If `false` the list of selected nodes are computed
      * from the cluster state of the master node. In both cases the coordinating

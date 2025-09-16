@@ -55,10 +55,6 @@ export interface Request extends CatRequestBase {
   }
   query_parameters: {
     /**
-     * The unit used to display byte values.
-     */
-    bytes?: Bytes
-    /**
      * A comma-separated list of columns names to display.
      * It supports simple wildcards.
      * @server_default ip,hp,rp,r,m,n,cpu,l

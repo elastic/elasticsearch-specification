@@ -63,9 +63,5 @@ export interface Request extends CatRequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
-    /**
-     * Unit used to display time values.
-     */
-    time?: TimeUnit
   }
 }

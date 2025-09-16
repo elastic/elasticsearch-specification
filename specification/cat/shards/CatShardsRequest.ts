@@ -55,10 +55,6 @@ export interface Request extends CatRequestBase {
   }
   query_parameters: {
     /**
-     * The unit used to display byte values.
-     */
-    bytes?: Bytes
-    /**
      * List of columns to appear in the response. Supports simple wildcards.
      */
     h?: CatShardColumns
@@ -73,9 +69,5 @@ export interface Request extends CatRequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
-    /**
-     * The unit used to display time values.
-     */
-    time?: TimeUnit
   }
 }

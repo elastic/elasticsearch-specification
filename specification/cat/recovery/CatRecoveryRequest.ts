@@ -60,10 +60,6 @@ export interface Request extends CatRequestBase {
      */
     active_only?: boolean
     /**
-     * The unit used to display byte values.
-     */
-    bytes?: Bytes
-    /**
      * If `true`, the response includes detailed information about shard recoveries.
      * @server_default false
      */
@@ -84,9 +80,5 @@ export interface Request extends CatRequestBase {
      * or `:desc` as a suffix to the column name.
      */
     s?: Names
-    /**
-     * The unit used to display time values.
-     */
-    time?: TimeUnit
   }
 }

@@ -70,8 +70,6 @@ export interface Request extends CatRequestBase {
     index?: Indices
   }
   query_parameters: {
-    /** The unit used to display byte values. */
-    bytes?: Bytes
     /**
      * The type of index that wildcard patterns can match.
      */
@@ -88,8 +86,6 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     pri?: boolean
-    /** The unit used to display time values. */
-    time?: TimeUnit
     /**
      * Period to wait for a connection to the master node.
      * @server_default 30s

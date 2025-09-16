@@ -77,10 +77,6 @@ export interface Request extends CatRequestBase {
      */
     s?: CatTransformColumns
     /**
-     * The unit used to display time values.
-     */
-    time?: TimeUnit
-    /**
      * The maximum number of transforms to obtain.
      * @server_default 100
      */
