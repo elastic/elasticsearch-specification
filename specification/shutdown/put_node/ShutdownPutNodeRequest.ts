@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { NodeId } from '@_types/common'
 import { Type } from '../_types/types'
+import { Duration } from '@_types/Time'
 
 /**
  * Prepare a node to be shut down.

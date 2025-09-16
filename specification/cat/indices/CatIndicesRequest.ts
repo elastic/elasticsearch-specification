@@ -18,7 +18,6 @@
  */
 
 import {
-  Bytes,
   ExpandWildcards,
   HealthStatus,
   Indices,
