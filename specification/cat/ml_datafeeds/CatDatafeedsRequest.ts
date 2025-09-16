@@ -18,7 +18,6 @@
  */
 
 import { Id } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
 import { CatDatafeedColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**

@@ -19,7 +19,6 @@
 
 import { RequestBase } from '@_types/Base'
 import { NodeIds } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
 
 /**
  * Get the shutdown status.

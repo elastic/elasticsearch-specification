@@ -19,7 +19,6 @@
 
 import { RequestBase } from '@_types/Base'
 import { NodeId } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
 
 /**
  * Cancel node shutdown preparations.

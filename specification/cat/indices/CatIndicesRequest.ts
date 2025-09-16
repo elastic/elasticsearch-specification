@@ -24,7 +24,7 @@ import {
   Indices,
   Names
 } from '@_types/common'
-import { Duration, TimeUnit } from '@_types/Time'
+import { Duration }  from '@_types/Time'
 import { CatIndicesColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**

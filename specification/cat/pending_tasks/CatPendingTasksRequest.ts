@@ -18,7 +18,7 @@
  */
 
 import { Names } from '@_types/common'
-import { Duration, TimeUnit } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { CatPendingTasksColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**

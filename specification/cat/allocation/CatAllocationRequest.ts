@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Bytes, Names, NodeIds } from '@_types/common'
+import { Names, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { CatAllocationColumns, CatRequestBase } from '@cat/_types/CatBase'
 

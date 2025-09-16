@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Bytes, Fields, Names } from '@_types/common'
+import { Fields, Names } from '@_types/common'
 import { CatFieldDataColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**

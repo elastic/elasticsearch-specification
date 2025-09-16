@@ -18,7 +18,6 @@
  */
 
 import { Names } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
 import { CatHealthColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**

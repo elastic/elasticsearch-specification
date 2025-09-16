@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { Bytes, Indices, Names } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
+import { Indices, Names } from '@_types/common'
 import { CatRecoveryColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
