@@ -1,6 +1,6 @@
-use std::collections::HashMap;
-use serde::{Serialize, Serializer};
 use indexmap::IndexMap;
+use serde::{Serialize, Serializer};
+use std::collections::HashMap;
 
 #[derive(Debug, Serialize)]
 pub struct Endpoint {
