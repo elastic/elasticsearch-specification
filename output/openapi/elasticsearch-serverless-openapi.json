@@ -62687,10 +62687,6 @@
           "job_id": {
             "$ref": "#/components/schemas/_types.Id"
           },
-          "job_type": {
-            "description": "Reserved for future use, currently set to `anomaly_detector`.",
-            "type": "string"
-          },
           "model_plot_config": {
             "$ref": "#/components/schemas/ml._types.ModelPlotConfig"
           },
