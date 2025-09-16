@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { Bytes } from '@_types/common'
+import { TimeUnit } from '@_types/Time'
+
 /**
  * In some places in the specification an object consists of the union of a set of known properties
  * and a set of runtime injected properties. Meaning that object should theoretically extend Dictionary but expose
