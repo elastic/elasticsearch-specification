@@ -73,6 +73,13 @@ export class Pipeline {
    * @availability serverless
    */
   modified_date_millis?: EpochTime<UnitMillis>
+  /**
+   * Controls how processors in this pipeline should read and write data on a document's source.
+   * @server_default classic
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  field_access_pattern?: FieldAccessPattern
 }
 
 // Unused .. but let's keep it for now
@@ -103,4 +110,9 @@ export class PipelineConfig {
    * Processors run sequentially in the order specified.
    */
   processors: ProcessorContainer[]
+}
+
+export enum FieldAccessPattern {
+  classic,
+  flexible,
 }

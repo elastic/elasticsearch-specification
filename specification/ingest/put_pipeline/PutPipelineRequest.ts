@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { Id, Metadata, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { ProcessorContainer } from '@ingest/_types/Processors'
+import {FieldAccessPattern} from "@ingest/_types/Pipeline";
 
 /**
  * Create or update a pipeline.
@@ -86,5 +87,12 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     deprecated?: boolean
+    /**
+     * Controls how processors in this pipeline should read and write data on a document's source.
+     * @server_default classic
+     * @availability stack since=9.2.0
+     * @availability serverless
+     */
+    field_access_pattern?: FieldAccessPattern
   }
 }
