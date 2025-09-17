@@ -17,14 +17,8 @@
  * under the License.
  */
 
-import {
-  Bytes,
-  ExpandWildcards,
-  HealthStatus,
-  Indices,
-  Names
-} from '@_types/common'
-import { Duration, TimeUnit } from '@_types/Time'
+import { ExpandWildcards, HealthStatus, Indices, Names } from '@_types/common'
+import { Duration } from '@_types/Time'
 import { CatIndicesColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -70,8 +64,6 @@ export interface Request extends CatRequestBase {
     index?: Indices
   }
   query_parameters: {
-    /** The unit used to display byte values. */
-    bytes?: Bytes
     /**
      * The type of index that wildcard patterns can match.
      */
@@ -88,8 +80,6 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     pri?: boolean
-    /** The unit used to display time values. */
-    time?: TimeUnit
     /**
      * Period to wait for a connection to the master node.
      * @server_default 30s
