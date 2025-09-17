@@ -24,5 +24,8 @@ export class Response {
 }
 
 export class LogsStatus {
+  /**
+   * If true, the logs stream feature is enabled.
+   */
   enabled: boolean
 }
