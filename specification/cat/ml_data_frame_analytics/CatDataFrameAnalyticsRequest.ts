@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { Bytes, Id } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
+import { Id } from '@_types/common'
 import { CatDfaColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -52,7 +51,6 @@ export interface Request extends CatRequestBase {
   }
   query_parameters: {
     allow_no_match?: boolean
-    bytes?: Bytes
     /**
      * Comma-separated list of column names to display.
      * @server_default create_time,id,state,type
@@ -62,9 +60,5 @@ export interface Request extends CatRequestBase {
      * response.
      */
     s?: CatDfaColumns
-    /**
-     * Unit used to display time values.
-     */
-    time?: TimeUnit
   }
 }

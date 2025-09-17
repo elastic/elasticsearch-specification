@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Bytes, Names } from '@_types/common'
-import { Duration, TimeUnit } from '@_types/Time'
+import { Names } from '@_types/common'
+import { Duration } from '@_types/Time'
 import { CatNodeColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -40,10 +40,6 @@ export interface Request extends CatRequestBase {
     }
   ]
   query_parameters: {
-    /**
-     * The unit used to display byte values.
-     */
-    bytes?: Bytes
     /**
      * If `true`, return the full node ID. If `false`, return the shortened node ID.
      * @server_default false
@@ -71,9 +67,5 @@ export interface Request extends CatRequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
-    /**
-     * The unit used to display time values.
-     */
-    time?: TimeUnit
   }
 }

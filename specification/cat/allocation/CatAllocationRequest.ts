@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Bytes, Names, NodeIds } from '@_types/common'
+import { Names, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { CatAllocationColumns, CatRequestBase } from '@cat/_types/CatBase'
 
@@ -49,8 +49,6 @@ export interface Request extends CatRequestBase {
     node_id?: NodeIds
   }
   query_parameters: {
-    /** The unit used to display byte values. */
-    bytes?: Bytes
     /**
      * A comma-separated list of columns names to display. It supports simple wildcards.
      */
