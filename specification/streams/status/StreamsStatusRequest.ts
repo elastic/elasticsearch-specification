@@ -21,9 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { TimeUnit } from '@_types/Time'
 
 /**
- * Get the status of streams
+ * Get the status of streams.
  *
- * Gets the current status of all stream types
+ * Get the current status for all types of streams.
  * @rest_spec_name streams.status
  * @availability stack since=9.1.0 stability=experimental visibility=feature_flag feature_flag=logs_stream
  * @cluster_privileges monitor
