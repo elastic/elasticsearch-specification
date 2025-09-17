@@ -109,13 +109,6 @@ export interface CommonCatQueryParameters {
    */
   bytes?: Bytes
   /**
-   * Sets the units for columns that contain a size value which is not a byte-size value.
-   * If omitted, size values are rendered with a suffix such as `k`, `m`, or `g`, chosen such that the numeric value of the column is as small as possible whilst still being at least `1.0`.
-   * If given, size values are rendered as an integer with no suffix, representing the value of the column in the chosen unit.
-   * Values that are not an exact multiple of the chosen unit are rounded down.
-   */
-  size?: '' | 'k' | 'm' | 'g' | 't' | 'p'
-  /**
    * Sets the units for columns that contain a time duration.
    * If omitted, time duration values are rendered with a suffix such as `ms`, `s`, `m` or `h`, chosen such that the numeric value of the column is as small as possible whilst still being at least `1.0`.
    * If given, time duration values are rendered as an integer with no suffix.
