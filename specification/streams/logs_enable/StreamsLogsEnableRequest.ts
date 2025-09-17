@@ -21,13 +21,13 @@ import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
 /**
- * Enable logs stream
+ * Enable logs stream.
  *
- * This enables the logs stream feature for this cluster.
+ * Turn on the logs stream feature for this cluster.
  *
- * Note: To protect existing data, this feature can only be enabled on a cluster if
- * it does not have existing indices or data streams matching the pattern `logs|logs.*`.
- * If this is the case, a `409 - Conflict` response and error will be returned.
+ * NOTE: To protect existing data, this feature can be turned on only if the
+ * cluster does not have existing indices or data streams that match the pattern `logs|logs.*`.
+ * If those indices or data streams exist, a `409 - Conflict` response and error is returned.
  * @rest_spec_name streams.logs_enable
  * @availability stack since=9.1.0 stability=experimental visibility=feature_flag feature_flag=logs_stream
  * @cluster_privileges manage
