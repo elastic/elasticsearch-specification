@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Bytes, Indices, Names } from '@_types/common'
+import { Indices, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { CatRequestBase, CatSegmentsColumns } from '@cat/_types/CatBase'
 
@@ -54,10 +54,6 @@ export interface Request extends CatRequestBase {
     index?: Indices
   }
   query_parameters: {
-    /**
-     * The unit used to display byte values.
-     */
-    bytes?: Bytes
     /**
      * A comma-separated list of columns names to display.
      * It supports simple wildcards.
