@@ -18,7 +18,7 @@
  */
 
 import { Names } from '@_types/common'
-import { Duration, TimeUnit } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { CatRequestBase, CatTasksColumns } from '@cat/_types/CatBase'
 
 /**
@@ -63,10 +63,6 @@ export interface Request extends CatRequestBase {
      * or `:desc` as a suffix to the column name.
      */
     s?: Names
-    /**
-     * Unit used to display time values.
-     */
-    time?: TimeUnit
     /**
      * Period to wait for a response.
      * If no response is received before the timeout expires, the request fails and returns an error.

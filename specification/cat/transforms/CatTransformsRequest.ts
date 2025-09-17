@@ -19,7 +19,6 @@
 
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { TimeUnit } from '@_types/Time'
 import { CatRequestBase, CatTransformColumns } from '@cat/_types/CatBase'
 
 /**
@@ -76,10 +75,6 @@ export interface Request extends CatRequestBase {
     /** Comma-separated list of column names or column aliases used to sort the response.
      */
     s?: CatTransformColumns
-    /**
-     * The unit used to display time values.
-     */
-    time?: TimeUnit
     /**
      * The maximum number of transforms to obtain.
      * @server_default 100

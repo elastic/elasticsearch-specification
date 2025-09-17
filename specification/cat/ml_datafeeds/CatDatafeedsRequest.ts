@@ -18,7 +18,6 @@
  */
 
 import { Id } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
 import { CatDatafeedColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -77,9 +76,5 @@ export interface Request extends CatRequestBase {
     h?: CatDatafeedColumns
     /** Comma-separated list of column names or column aliases used to sort the response. */
     s?: CatDatafeedColumns
-    /**
-     * The unit used to display time values.
-     */
-    time?: TimeUnit
   }
 }
