@@ -7339,7 +7339,6 @@ export interface CatAllocationAllocationRecord {
 
 export interface CatAllocationRequest extends CatCatRequestBase {
   node_id?: NodeIds
-  bytes?: Bytes
   h?: CatCatAllocationColumns
   s?: Names
   local?: boolean
@@ -7404,7 +7403,6 @@ export interface CatFielddataFielddataRecord {
 
 export interface CatFielddataRequest extends CatCatRequestBase {
   fields?: Fields
-  bytes?: Bytes
   h?: CatCatFieldDataColumns
   s?: Names
 }
@@ -7465,7 +7463,6 @@ export interface CatHealthHealthRecord {
 }
 
 export interface CatHealthRequest extends CatCatRequestBase {
-  time?: TimeUnit
   ts?: boolean
   h?: CatCatHealthColumns
   s?: Names
@@ -7772,12 +7769,10 @@ export interface CatIndicesIndicesRecord {
 
 export interface CatIndicesRequest extends CatCatRequestBase {
   index?: Indices
-  bytes?: Bytes
   expand_wildcards?: ExpandWildcards
   health?: HealthStatus
   include_unloaded_segments?: boolean
   pri?: boolean
-  time?: TimeUnit
   master_timeout?: Duration
   h?: CatCatIndicesColumns
   s?: Names
@@ -7850,10 +7845,8 @@ export interface CatMlDataFrameAnalyticsDataFrameAnalyticsRecord {
 export interface CatMlDataFrameAnalyticsRequest extends CatCatRequestBase {
   id?: Id
   allow_no_match?: boolean
-  bytes?: Bytes
   h?: CatCatDfaColumns
   s?: CatCatDfaColumns
-  time?: TimeUnit
 }
 
 export type CatMlDataFrameAnalyticsResponse = CatMlDataFrameAnalyticsDataFrameAnalyticsRecord[]
@@ -7898,7 +7891,6 @@ export interface CatMlDatafeedsRequest extends CatCatRequestBase {
   allow_no_match?: boolean
   h?: CatCatDatafeedColumns
   s?: CatCatDatafeedColumns
-  time?: TimeUnit
 }
 
 export type CatMlDatafeedsResponse = CatMlDatafeedsDatafeedsRecord[]
@@ -8083,10 +8075,8 @@ export interface CatMlJobsJobsRecord {
 export interface CatMlJobsRequest extends CatCatRequestBase {
   job_id?: Id
   allow_no_match?: boolean
-  bytes?: Bytes
   h?: CatCatAnomalyDetectorColumns
   s?: CatCatAnomalyDetectorColumns
-  time?: TimeUnit
 }
 
 export type CatMlJobsResponse = CatMlJobsJobsRecord[]
@@ -8094,12 +8084,10 @@ export type CatMlJobsResponse = CatMlJobsJobsRecord[]
 export interface CatMlTrainedModelsRequest extends CatCatRequestBase {
   model_id?: Id
   allow_no_match?: boolean
-  bytes?: Bytes
   h?: CatCatTrainedModelsColumns
   s?: CatCatTrainedModelsColumns
   from?: integer
   size?: integer
-  time?: TimeUnit
 }
 
 export type CatMlTrainedModelsResponse = CatMlTrainedModelsTrainedModelsRecord[]
@@ -8446,13 +8434,11 @@ export interface CatNodesNodesRecord {
 }
 
 export interface CatNodesRequest extends CatCatRequestBase {
-  bytes?: Bytes
   full_id?: boolean | string
   include_unloaded_segments?: boolean
   h?: CatCatNodeColumns
   s?: Names
   master_timeout?: Duration
-  time?: TimeUnit
 }
 
 export type CatNodesResponse = CatNodesNodesRecord[]
@@ -8473,7 +8459,6 @@ export interface CatPendingTasksRequest extends CatCatRequestBase {
   s?: Names
   local?: boolean
   master_timeout?: Duration
-  time?: TimeUnit
 }
 
 export type CatPendingTasksResponse = CatPendingTasksPendingTasksRecord[]
@@ -8563,11 +8548,9 @@ export interface CatRecoveryRecoveryRecord {
 export interface CatRecoveryRequest extends CatCatRequestBase {
   index?: Indices
   active_only?: boolean
-  bytes?: Bytes
   detailed?: boolean
   h?: CatCatRecoveryColumns
   s?: Names
-  time?: TimeUnit
 }
 
 export type CatRecoveryResponse = CatRecoveryRecoveryRecord[]
@@ -8590,7 +8573,6 @@ export type CatRepositoriesResponse = CatRepositoriesRepositoriesRecord[]
 
 export interface CatSegmentsRequest extends CatCatRequestBase {
   index?: Indices
-  bytes?: Bytes
   h?: CatCatSegmentsColumns
   s?: Names
   local?: boolean
@@ -8643,11 +8625,9 @@ export interface CatSegmentsSegmentsRecord {
 
 export interface CatShardsRequest extends CatCatRequestBase {
   index?: Indices
-  bytes?: Bytes
   h?: CatCatShardColumns
   s?: Names
   master_timeout?: Duration
-  time?: TimeUnit
 }
 
 export type CatShardsResponse = CatShardsShardsRecord[]
@@ -8873,7 +8853,6 @@ export interface CatSnapshotsRequest extends CatCatRequestBase {
   h?: CatCatSnapshotsColumns
   s?: Names
   master_timeout?: Duration
-  time?: TimeUnit
 }
 
 export type CatSnapshotsResponse = CatSnapshotsSnapshotsRecord[]
@@ -8919,7 +8898,6 @@ export interface CatTasksRequest extends CatCatRequestBase {
   parent_task_id?: string
   h?: CatCatTasksColumns
   s?: Names
-  time?: TimeUnit
   timeout?: Duration
   wait_for_completion?: boolean
 }
@@ -8989,7 +8967,6 @@ export interface CatThreadPoolRequest extends CatCatRequestBase {
   thread_pool_patterns?: Names
   h?: CatCatThreadPoolColumns
   s?: Names
-  time?: TimeUnit
   local?: boolean
   master_timeout?: Duration
 }
@@ -9045,7 +9022,6 @@ export interface CatTransformsRequest extends CatCatRequestBase {
   from?: integer
   h?: CatCatTransformColumns
   s?: CatCatTransformColumns
-  time?: TimeUnit
   size?: integer
 }
 
@@ -21013,8 +20989,8 @@ export type ShutdownType = 'restart' | 'remove' | 'replace'
 
 export interface ShutdownDeleteNodeRequest extends RequestBase {
   node_id: NodeId
-  master_timeout?: TimeUnit
-  timeout?: TimeUnit
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type ShutdownDeleteNodeResponse = AcknowledgedResponseBase
@@ -21040,7 +21016,7 @@ export interface ShutdownGetNodePluginsStatus {
 
 export interface ShutdownGetNodeRequest extends RequestBase {
   node_id?: NodeIds
-  master_timeout?: TimeUnit
+  master_timeout?: Duration
 }
 
 export interface ShutdownGetNodeResponse {
@@ -21057,8 +21033,8 @@ export type ShutdownGetNodeShutdownType = 'remove' | 'restart'
 
 export interface ShutdownPutNodeRequest extends RequestBase {
   node_id: NodeId
-  master_timeout?: TimeUnit
-  timeout?: TimeUnit
+  master_timeout?: Duration
+  timeout?: Duration
   body?: {
     type: ShutdownType
     reason: string
@@ -23758,5 +23734,7 @@ export interface SpecUtilsCommonCatQueryParameters {
   format?: string
   help?: boolean
   v?: boolean
+  bytes?: Bytes
+  time?: TimeUnit
 }
 
