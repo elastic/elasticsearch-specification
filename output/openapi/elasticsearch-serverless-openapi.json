@@ -15016,6 +15016,16 @@
                     "description": "Marks this ingest pipeline as deprecated.\nWhen a deprecated ingest pipeline is referenced as the default or final pipeline when creating or updating a non-deprecated index template, Elasticsearch will emit a deprecation warning.",
                     "default": false,
                     "type": "boolean"
+                  },
+                  "field_access_pattern": {
+                    "description": "Controls how processors in this pipeline should read and write data on a document's source.",
+                    "default": "classic",
+                    "x-state": "Generally available",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/ingest._types.FieldAccessPattern"
+                      }
+                    ]
                   }
                 }
               },
@@ -67400,6 +67410,16 @@
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
               }
             ]
+          },
+          "field_access_pattern": {
+            "description": "Controls how processors in this pipeline should read and write data on a document's source.",
+            "default": "classic",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ingest._types.FieldAccessPattern"
+              }
+            ]
           }
         }
       },
@@ -70081,6 +70101,13 @@
           "device",
           "original",
           "version"
+        ]
+      },
+      "ingest._types.FieldAccessPattern": {
+        "type": "string",
+        "enum": [
+          "classic",
+          "flexible"
         ]
       },
       "ingest._types.Document": {

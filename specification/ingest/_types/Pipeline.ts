@@ -114,5 +114,5 @@ export class PipelineConfig {
 
 export enum FieldAccessPattern {
   classic,
-  flexible,
+  flexible
 }

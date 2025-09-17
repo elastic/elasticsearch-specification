@@ -20,8 +20,8 @@
 import { RequestBase } from '@_types/Base'
 import { Id, Metadata, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { FieldAccessPattern } from '@ingest/_types/Pipeline'
 import { ProcessorContainer } from '@ingest/_types/Processors'
-import {FieldAccessPattern} from "@ingest/_types/Pipeline";
 
 /**
  * Create or update a pipeline.
