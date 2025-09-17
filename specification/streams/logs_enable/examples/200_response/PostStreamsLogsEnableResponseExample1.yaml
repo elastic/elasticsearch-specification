@@ -1,0 +1,6 @@
+summary: Enable logs streams
+description: >
+  A successful response from `POST _streams/logs/_enable` endpoint
+# type: response
+value:
+  acknowledged: true
