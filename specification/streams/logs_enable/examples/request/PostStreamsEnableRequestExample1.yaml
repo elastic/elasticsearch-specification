@@ -1,0 +1,3 @@
+summary: 'Enable the logs streams on this cluster'
+method_request: POST _streams/logs/_enable
+# type: request
