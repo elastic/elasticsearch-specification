@@ -21859,6 +21859,32 @@ export interface SslCertificatesRequest extends RequestBase {
 
 export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
 
+export interface StreamsLogsDisableRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type StreamsLogsDisableResponse = AcknowledgedResponseBase
+
+export interface StreamsLogsEnableRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type StreamsLogsEnableResponse = AcknowledgedResponseBase
+
+export interface StreamsStatusLogsStatus {
+  enabled: boolean
+}
+
+export interface StreamsStatusRequest extends RequestBase {
+  master_timeout?: TimeUnit
+}
+
+export interface StreamsStatusResponse {
+  logs: StreamsStatusLogsStatus
+}
+
 export interface SynonymsSynonymRule {
   id?: Id
   synonyms: SynonymsSynonymString
