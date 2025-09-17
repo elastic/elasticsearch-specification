@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { Bytes, Id } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
+import { Id } from '@_types/common'
 import { CatAnomalyDetectorColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -71,19 +70,11 @@ export interface Request extends CatRequestBase {
      */
     allow_no_match?: boolean
     /**
-     * The unit used to display byte values.
-     */
-    bytes?: Bytes
-    /**
      * Comma-separated list of column names to display.
      * @server_default buckets.count,data.processed_records,forecasts.total,id,model.bytes,model.memory_status,state
      */
     h?: CatAnomalyDetectorColumns
     /** Comma-separated list of column names or column aliases used to sort the response. */
     s?: CatAnomalyDetectorColumns
-    /**
-     * The unit used to display time values.
-     */
-    time?: TimeUnit
   }
 }

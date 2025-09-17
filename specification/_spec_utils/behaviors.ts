@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { Bytes } from '@_types/common'
+import { TimeUnit } from '@_types/Time'
+
 /**
  * In some places in the specification an object consists of the union of a set of known properties
  * and a set of runtime injected properties. Meaning that object should theoretically extend Dictionary but expose
@@ -97,6 +100,21 @@ export interface CommonCatQueryParameters {
    * @server_default false
    */
   v?: boolean
+  /**
+   * Sets the units for columns that contain a byte-size value.
+   * Note that byte-size value units work in terms of powers of 1024. For instance `1kb` means 1024 bytes, not 1000 bytes.
+   * If omitted, byte-size values are rendered with a suffix such as `kb`, `mb`, or `gb`, chosen such that the numeric value of the column is as small as possible whilst still being at least `1.0`.
+   * If given, byte-size values are rendered as an integer with no suffix, representing the value of the column in the chosen unit.
+   * Values that are not an exact multiple of the chosen unit are rounded down.
+   */
+  bytes?: Bytes
+  /**
+   * Sets the units for columns that contain a time duration.
+   * If omitted, time duration values are rendered with a suffix such as `ms`, `s`, `m` or `h`, chosen such that the numeric value of the column is as small as possible whilst still being at least `1.0`.
+   * If given, time duration values are rendered as an integer with no suffix.
+   * Values that are not an exact multiple of the chosen unit are rounded down.
+   */
+  time?: TimeUnit
 }
 
 /**

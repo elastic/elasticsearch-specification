@@ -1017,9 +1017,6 @@
         "operationId": "cat-indices",
         "parameters": [
           {
-            "$ref": "#/components/parameters/cat.indices-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.indices-expand_wildcards"
           },
           {
@@ -1030,9 +1027,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices-pri"
-          },
-          {
-            "$ref": "#/components/parameters/cat.indices-time"
           },
           {
             "$ref": "#/components/parameters/cat.indices-master_timeout"
@@ -1071,9 +1065,6 @@
             "$ref": "#/components/parameters/cat.indices-index"
           },
           {
-            "$ref": "#/components/parameters/cat.indices-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.indices-expand_wildcards"
           },
           {
@@ -1084,9 +1075,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices-pri"
-          },
-          {
-            "$ref": "#/components/parameters/cat.indices-time"
           },
           {
             "$ref": "#/components/parameters/cat.indices-master_timeout"
@@ -1125,16 +1113,10 @@
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-allow_no_match"
           },
           {
-            "$ref": "#/components/parameters/cat.ml_data_frame_analytics-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-h"
           },
           {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_data_frame_analytics-time"
           }
         ],
         "responses": {
@@ -1167,16 +1149,10 @@
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-allow_no_match"
           },
           {
-            "$ref": "#/components/parameters/cat.ml_data_frame_analytics-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-h"
           },
           {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_data_frame_analytics-time"
           }
         ],
         "responses": {
@@ -1210,9 +1186,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_datafeeds-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_datafeeds-time"
           }
         ],
         "responses": {
@@ -1249,9 +1222,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_datafeeds-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_datafeeds-time"
           }
         ],
         "responses": {
@@ -1281,16 +1251,10 @@
             "$ref": "#/components/parameters/cat.ml_jobs-allow_no_match"
           },
           {
-            "$ref": "#/components/parameters/cat.ml_jobs-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.ml_jobs-h"
           },
           {
             "$ref": "#/components/parameters/cat.ml_jobs-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_jobs-time"
           }
         ],
         "responses": {
@@ -1323,16 +1287,10 @@
             "$ref": "#/components/parameters/cat.ml_jobs-allow_no_match"
           },
           {
-            "$ref": "#/components/parameters/cat.ml_jobs-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.ml_jobs-h"
           },
           {
             "$ref": "#/components/parameters/cat.ml_jobs-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_jobs-time"
           }
         ],
         "responses": {
@@ -1362,9 +1320,6 @@
             "$ref": "#/components/parameters/cat.ml_trained_models-allow_no_match"
           },
           {
-            "$ref": "#/components/parameters/cat.ml_trained_models-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.ml_trained_models-h"
           },
           {
@@ -1375,9 +1330,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models-size"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_trained_models-time"
           }
         ],
         "responses": {
@@ -1410,9 +1362,6 @@
             "$ref": "#/components/parameters/cat.ml_trained_models-allow_no_match"
           },
           {
-            "$ref": "#/components/parameters/cat.ml_trained_models-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.ml_trained_models-h"
           },
           {
@@ -1423,9 +1372,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models-size"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_trained_models-time"
           }
         ],
         "responses": {
@@ -1462,9 +1408,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.transforms-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.transforms-time"
           },
           {
             "$ref": "#/components/parameters/cat.transforms-size"
@@ -1507,9 +1450,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.transforms-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.transforms-time"
           },
           {
             "$ref": "#/components/parameters/cat.transforms-size"
@@ -45596,17 +45536,6 @@
         "description": "Time of day, expressed as HH:MM:SS",
         "type": "string"
       },
-      "_types.Bytes": {
-        "type": "string",
-        "enum": [
-          "b",
-          "kb",
-          "mb",
-          "gb",
-          "tb",
-          "pb"
-        ]
-      },
       "_types.HealthStatus": {
         "type": "string",
         "enum": [
@@ -45618,18 +45547,6 @@
           "RED",
           "unknown",
           "unavailable"
-        ]
-      },
-      "_types.TimeUnit": {
-        "type": "string",
-        "enum": [
-          "nanos",
-          "micros",
-          "ms",
-          "s",
-          "m",
-          "h",
-          "d"
         ]
       },
       "cat.indices.IndicesRecord": {
@@ -80848,16 +80765,6 @@
         },
         "style": "simple"
       },
-      "cat.indices-bytes": {
-        "in": "query",
-        "name": "bytes",
-        "description": "The unit used to display byte values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.Bytes"
-        },
-        "style": "form"
-      },
       "cat.indices-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
@@ -80895,16 +80802,6 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
-        },
-        "style": "form"
-      },
-      "cat.indices-time": {
-        "in": "query",
-        "name": "time",
-        "description": "The unit used to display time values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.TimeUnit"
         },
         "style": "form"
       },
@@ -80959,16 +80856,6 @@
         },
         "style": "form"
       },
-      "cat.ml_data_frame_analytics-bytes": {
-        "in": "query",
-        "name": "bytes",
-        "description": "The unit in which to display byte values",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.Bytes"
-        },
-        "style": "form"
-      },
       "cat.ml_data_frame_analytics-h": {
         "in": "query",
         "name": "h",
@@ -80986,16 +80873,6 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/cat._types.CatDfaColumns"
-        },
-        "style": "form"
-      },
-      "cat.ml_data_frame_analytics-time": {
-        "in": "query",
-        "name": "time",
-        "description": "Unit used to display time values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.TimeUnit"
         },
         "style": "form"
       },
@@ -81040,16 +80917,6 @@
         },
         "style": "form"
       },
-      "cat.ml_datafeeds-time": {
-        "in": "query",
-        "name": "time",
-        "description": "The unit used to display time values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.TimeUnit"
-        },
-        "style": "form"
-      },
       "cat.ml_jobs-job_id": {
         "in": "path",
         "name": "job_id",
@@ -81068,16 +80935,6 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
-        },
-        "style": "form"
-      },
-      "cat.ml_jobs-bytes": {
-        "in": "query",
-        "name": "bytes",
-        "description": "The unit used to display byte values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.Bytes"
         },
         "style": "form"
       },
@@ -81101,16 +80958,6 @@
         },
         "style": "form"
       },
-      "cat.ml_jobs-time": {
-        "in": "query",
-        "name": "time",
-        "description": "The unit used to display time values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.TimeUnit"
-        },
-        "style": "form"
-      },
       "cat.ml_trained_models-model_id": {
         "in": "path",
         "name": "model_id",
@@ -81129,16 +80976,6 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
-        },
-        "style": "form"
-      },
-      "cat.ml_trained_models-bytes": {
-        "in": "query",
-        "name": "bytes",
-        "description": "The unit used to display byte values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.Bytes"
         },
         "style": "form"
       },
@@ -81179,16 +81016,6 @@
         "deprecated": false,
         "schema": {
           "type": "number"
-        },
-        "style": "form"
-      },
-      "cat.ml_trained_models-time": {
-        "in": "query",
-        "name": "time",
-        "description": "Unit used to display time values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.TimeUnit"
         },
         "style": "form"
       },
@@ -81240,16 +81067,6 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/cat._types.CatTransformColumns"
-        },
-        "style": "form"
-      },
-      "cat.transforms-time": {
-        "in": "query",
-        "name": "time",
-        "description": "The unit used to display time values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.TimeUnit"
         },
         "style": "form"
       },

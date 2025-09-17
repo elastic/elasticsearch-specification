@@ -18,7 +18,7 @@
  */
 
 import { Names } from '@_types/common'
-import { Duration, TimeUnit } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -63,9 +63,5 @@ export interface Request extends CatRequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
-    /**
-     * Unit used to display time values.
-     */
-    time?: TimeUnit
   }
 }

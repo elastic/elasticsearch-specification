@@ -18,7 +18,7 @@
  */
 
 import { Names } from '@_types/common'
-import { Duration, TimeUnit } from '@_types/Time'
+import { Duration } from '@_types/Time'
 import { CatRequestBase, CatThreadPoolColumns } from '@cat/_types/CatBase'
 
 /**
@@ -62,10 +62,6 @@ export interface Request extends CatRequestBase {
      * or `:desc` as a suffix to the column name.
      */
     s?: Names
-    /**
-     * The unit used to display time values.
-     */
-    time?: TimeUnit
     /**
      * If `true`, the request computes the list of selected nodes from the
      * local cluster state. If `false` the list of selected nodes are computed
