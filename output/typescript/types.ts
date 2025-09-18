@@ -143,6 +143,7 @@ export interface CountRequest extends RequestBase {
   lenient?: boolean
   min_score?: double
   preference?: string
+  project_routing?: ProjectRouting
   routing?: Routing
   terminate_after?: long
   q?: string
@@ -781,6 +782,7 @@ export interface MsearchTemplateRequest extends RequestBase {
   index?: Indices
   ccs_minimize_roundtrips?: boolean
   max_concurrent_searches?: long
+  project_routing?: ProjectRouting
   search_type?: SearchType
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
@@ -854,6 +856,7 @@ export interface OpenPointInTimeRequest extends RequestBase {
   keep_alive: Duration
   ignore_unavailable?: boolean
   preference?: string
+  project_routing?: ProjectRouting
   routing?: Routing
   expand_wildcards?: ExpandWildcards
   allow_partial_search_results?: boolean
@@ -1860,6 +1863,7 @@ export interface SearchMvtRequest extends RequestBase {
   grid_agg?: SearchMvtGridAggregationType
   grid_precision?: integer
   grid_type?: SearchMvtGridType
+  project_routing?: ProjectRouting
   size?: integer
   track_total_hits?: SearchTrackHits
   with_labels?: boolean
@@ -1935,6 +1939,7 @@ export interface SearchTemplateRequest extends RequestBase {
   ignore_unavailable?: boolean
   preference?: string
   profile?: boolean
+  project_routing?: ProjectRouting
   routing?: Routing
   scroll?: Duration
   search_type?: SearchType
@@ -7405,6 +7410,7 @@ export interface CatCountCountRecord {
 export interface CatCountRequest extends CatCatRequestBase {
   index?: Indices
   h?: CatCatCountColumns
+  project_routing?: ProjectRouting
   s?: Names
 }
 
@@ -10999,6 +11005,7 @@ export interface EqlSearchRequest extends RequestBase {
   ignore_unavailable?: boolean
   keep_alive?: Duration
   keep_on_completion?: boolean
+  project_routing?: ProjectRouting
   wait_for_completion_timeout?: Duration
   body?: {
     query: string
@@ -21948,6 +21955,7 @@ export interface SqlGetAsyncStatusResponse {
 
 export interface SqlQueryRequest extends RequestBase {
   format?: SqlQuerySqlFormat
+  project_routing?: ProjectRouting
   body?: {
     allow_partial_search_results?: boolean
     catalog?: string

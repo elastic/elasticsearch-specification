@@ -18,7 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, ProjectRouting, Routing } from '@_types/common'
+import {
+  ExpandWildcards,
+  Indices,
+  ProjectRouting,
+  Routing
+} from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
