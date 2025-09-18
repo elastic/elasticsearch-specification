@@ -71,7 +71,7 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  * * `${top_n}` refers to the `top_n` field available when performing rerank requests.
  * * `${return_documents}` refers to the `return_documents` field available when performing rerank requests.
  * @rest_spec_name inference.put_custom
- * @availability stack since=8.13.0 stability=stable visibility=public
+ * @availability stack since=9.1.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference
  * @doc_id inference-api-put-custom
