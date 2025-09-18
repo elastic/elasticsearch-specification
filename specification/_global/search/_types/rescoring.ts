@@ -19,6 +19,7 @@
 
 import { double, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Script } from '@_types/Scripting'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -35,6 +36,8 @@ export class Rescore {
   query?: RescoreQuery
 
   learning_to_rank?: LearningToRank
+
+  script?: ScriptRescore
 }
 
 export class RescoreQuery {
@@ -94,4 +97,8 @@ export class LearningToRank {
    * Named parameters to be passed to the query templates used for feature
    */
   params?: Dictionary<string, UserDefinedValue>
+}
+
+export class ScriptRescore {
+  script: Script
 }
