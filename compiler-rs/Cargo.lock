@@ -253,6 +253,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "clients_schema_to_rest_api_spec"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "argh",
+ "clients_schema",
+ "indexmap",
+ "itertools",
+ "serde",
+ "serde_json",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "colorchoice"
 version = "1.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
