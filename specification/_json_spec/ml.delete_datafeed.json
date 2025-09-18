@@ -26,7 +26,6 @@
     "params": {
       "force": {
         "type": "boolean",
-        "required": false,
         "description": "True if the datafeed should be forcefully deleted"
       }
     }
