@@ -260,7 +260,7 @@ fn is_literal(instance: &InstanceOf) -> Option<String> {
 fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>) -> String {
     match value_of {
         ValueOf::ArrayOf(_) => "list".to_string(),
-        ValueOf::UnionOf(union) => if is_list_enum(union) { "enum" } else { todo!() }.to_string(),
+        ValueOf::UnionOf(union) => if is_list_enum(union) { "enum" } else { tracing::warn!("{:?}", union); todo!() }.to_string(),
         ValueOf::LiteralValue(_) => "string".to_string(),
         ValueOf::InstanceOf(instance) => {
             let type_name = &instance.typ;
