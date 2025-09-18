@@ -105,7 +105,7 @@ export interface Request extends RequestBase {
      * Returns overall buckets with overall scores greater than or equal to this
      * value.
      */
-    overall_score?: double | string
+    overall_score?: double
     /**
      * Returns overall buckets with timestamps after this time.
      */
@@ -139,7 +139,7 @@ export interface Request extends RequestBase {
     /**
      * Refer to the description for the `overall_score` query parameter.
      */
-    overall_score?: double | string
+    overall_score?: double
     /**
      * Refer to the description for the `start` query parameter.
      */
