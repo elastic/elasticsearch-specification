@@ -1684,6 +1684,7 @@ export interface SearchRescore {
   window_size?: integer
   query?: SearchRescoreQuery
   learning_to_rank?: SearchLearningToRank
+  script?: SearchScriptRescore
 }
 
 export interface SearchRescoreQuery {
@@ -1694,6 +1695,10 @@ export interface SearchRescoreQuery {
 }
 
 export type SearchScoreMode = 'avg' | 'max' | 'min' | 'multiply' | 'total'
+
+export interface SearchScriptRescore {
+  script: Script | ScriptSource
+}
 
 export interface SearchSearchProfile {
   collector: SearchCollector[]

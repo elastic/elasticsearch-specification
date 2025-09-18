@@ -38738,6 +38738,13 @@
                     "$ref": "#/components/schemas/_global.search._types.LearningToRank"
                   }
                 ]
+              },
+              "script": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.ScriptRescore"
+                  }
+                ]
               }
             },
             "minProperties": 1,
@@ -38807,6 +38814,21 @@
         },
         "required": [
           "model_id"
+        ]
+      },
+      "_global.search._types.ScriptRescore": {
+        "type": "object",
+        "properties": {
+          "script": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Script"
+              }
+            ]
+          }
+        },
+        "required": [
+          "script"
         ]
       },
       "_types.RetrieverContainer": {
