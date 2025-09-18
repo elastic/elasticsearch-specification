@@ -8330,6 +8330,70 @@
         ]
       }
     },
+    "/_create_from/{source}/{dest}": {
+      "put": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "Create an index from a source index",
+        "description": "Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.",
+        "operationId": "indices-create-from",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/indices.create_from-source"
+          },
+          {
+            "$ref": "#/components/parameters/indices.create_from-dest"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/indices.create_from"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/indices.create_from-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "Create an index from a source index",
+        "description": "Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.",
+        "operationId": "indices-create-from-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/indices.create_from-source"
+          },
+          {
+            "$ref": "#/components/parameters/indices.create_from-dest"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/indices.create_from"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/indices.create_from-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/{index}/_alias/{name}": {
       "get": {
         "tags": [
@@ -62882,6 +62946,32 @@
           "type"
         ]
       },
+      "indices.create_from.CreateFrom": {
+        "type": "object",
+        "properties": {
+          "mappings_override": {
+            "description": "Mappings overrides to be applied to the destination index (optional)",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+              }
+            ]
+          },
+          "settings_override": {
+            "description": "Settings overrides to be applied to the destination index (optional)",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
+          "remove_index_blocks": {
+            "description": "If index blocks should be removed when creating destination index (optional)",
+            "default": true,
+            "type": "boolean"
+          }
+        }
+      },
       "_types.IndicesResponseBase": {
         "allOf": [
           {
@@ -81104,6 +81194,36 @@
           }
         }
       },
+      "indices.create_from-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "acknowledged": {
+                  "type": "boolean"
+                },
+                "index": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.IndexName"
+                    }
+                  ]
+                },
+                "shards_acknowledged": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "acknowledged",
+                "index",
+                "shards_acknowledged"
+              ]
+            }
+          }
+        }
+      },
       "indices.delete_alias-200": {
         "description": "",
         "content": {
@@ -84691,6 +84811,28 @@
           "$ref": "#/components/schemas/_types.IndexName"
         },
         "style": "form"
+      },
+      "indices.create_from-source": {
+        "in": "path",
+        "name": "source",
+        "description": "The source index or data stream name",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.IndexName"
+        },
+        "style": "simple"
+      },
+      "indices.create_from-dest": {
+        "in": "path",
+        "name": "dest",
+        "description": "The destination index or data stream name",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.IndexName"
+        },
+        "style": "simple"
       },
       "indices.delete_alias-index": {
         "in": "path",
@@ -88898,6 +89040,15 @@
                 "description": "If you want to get more advanced details, set `explain` to `true`. It will output all token attributes for each token. You can filter token attributes you want to output by setting the `attributes` option. NOTE: The format of the additional detail information is labelled as experimental in Lucene and it may change in the future.\n",
                 "value": "{\n  \"tokenizer\": \"standard\",\n  \"filter\": [\n    \"snowball\"\n  ],\n  \"text\": \"detailed output\",\n  \"explain\": true,\n  \"attributes\": [\n    \"keyword\"\n  ]\n}"
               }
+            }
+          }
+        }
+      },
+      "indices.create_from": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/indices.create_from.CreateFrom"
             }
           }
         }
