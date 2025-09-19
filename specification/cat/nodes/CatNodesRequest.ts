@@ -44,7 +44,7 @@ export interface Request extends CatRequestBase {
      * If `true`, return the full node ID. If `false`, return the shortened node ID.
      * @server_default false
      */
-    full_id?: boolean | string
+    full_id?: boolean
     /**
      * If true, the response includes information from segments that are not loaded into memory.
      * @server_default false

@@ -86405,14 +86405,7 @@
         "description": "Returns overall buckets with overall scores greater than or equal to this\nvalue.",
         "deprecated": false,
         "schema": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ]
+          "type": "number"
         },
         "style": "form"
       },
@@ -89676,14 +89669,7 @@
                 },
                 "overall_score": {
                   "description": "Refer to the description for the `overall_score` query parameter.",
-                  "oneOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ]
+                  "type": "number"
                 },
                 "start": {
                   "description": "Refer to the description for the `start` query parameter.",

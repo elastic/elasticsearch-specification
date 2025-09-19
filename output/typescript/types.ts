@@ -8452,7 +8452,7 @@ export interface CatNodesNodesRecord {
 }
 
 export interface CatNodesRequest extends CatCatRequestBase {
-  full_id?: boolean | string
+  full_id?: boolean
   include_unloaded_segments?: boolean
   h?: CatCatNodeColumns
   s?: Names
@@ -17608,7 +17608,7 @@ export interface MlGetOverallBucketsRequest extends RequestBase {
   bucket_span?: Duration
   end?: DateTime
   exclude_interim?: boolean
-  overall_score?: double | string
+  overall_score?: double
   start?: DateTime
   top_n?: integer
   body?: {
@@ -17616,7 +17616,7 @@ export interface MlGetOverallBucketsRequest extends RequestBase {
     bucket_span?: Duration
     end?: DateTime
     exclude_interim?: boolean
-    overall_score?: double | string
+    overall_score?: double
     start?: DateTime
     top_n?: integer
   }
