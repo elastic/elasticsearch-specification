@@ -115,6 +115,12 @@
         "Request: query parameter 'bytes' does not exist in the json spec"
       ],
       "response": []
+    },
+    "streams.status": {
+      "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec"
+      ],
+      "response": []
     }
   },
   "generalErrors": [
