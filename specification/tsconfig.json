@@ -42,6 +42,7 @@
       "@ml/*": ["ml/*"],
       "@monitoring/*": ["monitoring/*"],
       "@nodes/*": ["nodes/*"],
+      "@project/*": ["project/*"],
       "@query_ruleset/*": ["query_ruleset/*"],
       "@rollup/*": ["rollup/*"],
       "@searchable_snapshots/*": ["searchable_snapshots/*"],
