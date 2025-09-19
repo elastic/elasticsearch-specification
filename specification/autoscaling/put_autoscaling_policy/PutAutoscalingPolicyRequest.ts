@@ -27,7 +27,7 @@ import { AutoscalingPolicy } from '@autoscaling/_types/AutoscalingPolicy'
  *
  * NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.
  * @rest_spec_name autoscaling.put_autoscaling_policy
- * @availability stack since=7.11.0 stability=stable visibility=private
+ * @availability stack since=7.11.0 stability=stable
  * @doc_id autoscaling-put-autoscaling-policy
  * @ext_doc_id autoscaling
  */
