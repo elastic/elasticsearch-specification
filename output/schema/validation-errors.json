@@ -18,6 +18,24 @@
       ],
       "response": []
     },
+    "field_caps": {
+      "request": [
+        "Request: query parameter 'project_routing' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "indices.resolve_index": {
+      "request": [
+        "Request: query parameter 'project_routing' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "msearch": {
+      "request": [
+        "Request: query parameter 'project_routing' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "msearch_template": {
       "request": [
         "Request: query parameter 'project_routing' does not exist in the json spec"
