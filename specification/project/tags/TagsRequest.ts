@@ -26,10 +26,10 @@ import { RequestBase } from '@_types/Base'
  * @cluster_privileges monitor
  */
 export interface Request extends RequestBase {
-    urls: [
-        {
-            path: '/_project/tags'
-            methods: ['GET']
-        }
-    ]
+  urls: [
+    {
+      path: '/_project/tags'
+      methods: ['GET']
+    }
+  ]
 }

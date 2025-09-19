@@ -1,4 +1,4 @@
-summary: Porject tags
+summary: Project tags
 description: A successful response from `GET /_project/tags`
 # type: response
 # response_code: 200
