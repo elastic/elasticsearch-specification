@@ -132,7 +132,7 @@ export class Settings {
   max_page_search_size?: integer
   /**
    * Specifies whether the transform checkpoint will use the Point In Time API while searching over the source index.
-   * @doc_id point-in-time-api
+   * @ext_doc_id point-in-time-api
    * @server_default true
    */
   use_point_in_time?: boolean
