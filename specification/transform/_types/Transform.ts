@@ -130,6 +130,12 @@ export class Settings {
    * @server_default 500
    */
   max_page_search_size?: integer
+  /**
+   * Specifies whether the transform checkpoint will use the Point In Time API while searching over the source index.
+   * @doc_id point-in-time-api
+   * @server_default true
+   */
+  use_point_in_time?: boolean
 
   /**
    * If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case
