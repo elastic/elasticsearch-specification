@@ -1,5 +1,53 @@
 {
   "endpointErrors": {
+    "cat.count": {
+      "request": [
+        "Request: query parameter 'project_routing' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "count": {
+      "request": [
+        "Request: query parameter 'project_routing' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "eql.search": {
+      "request": [
+        "Request: query parameter 'project_routing' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "msearch_template": {
+      "request": [
+        "Request: query parameter 'project_routing' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "open_point_in_time": {
+      "request": [
+        "Request: query parameter 'project_routing' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "search_mvt": {
+      "request": [
+        "Request: query parameter 'project_routing' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "search_template": {
+      "request": [
+        "Request: query parameter 'project_routing' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "sql.query": {
+      "request": [
+        "Request: query parameter 'project_routing' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "streams.status": {
       "request": [
         "Request: query parameter 'master_timeout' does not exist in the json spec",

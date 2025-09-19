@@ -76879,6 +76879,13 @@
           "preference": {
             "type": "string"
           },
+          "project_routing": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ProjectRouting"
+              }
+            ]
+          },
           "request_cache": {
             "type": "boolean"
           },
@@ -76906,6 +76913,9 @@
             "type": "boolean"
           }
         }
+      },
+      "_types.ProjectRouting": {
+        "type": "string"
       },
       "_global.msearch.MultiSearchResult": {
         "type": "object",
