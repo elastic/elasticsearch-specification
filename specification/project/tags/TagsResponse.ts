@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 
 /**
@@ -31,10 +31,8 @@ class Tags implements AdditionalProperties<string, string> {
     _organisation: string
 }
 
-/**
- * @behavior_meta AdditionalProperty key=string value=Tags
- */
-class ProjectTags implements AdditionalProperty<string, Tags> {
+class ProjectTags {
+    origin: SingleKeyDictionary<string, Tags>
     linked_projects?: Dictionary<string, Tags>
 }
 

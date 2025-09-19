@@ -22344,10 +22344,10 @@
                   "$ref": "#/components/schemas/project.tags.ProjectTags"
                 },
                 "examples": {
-                  "ProjectTagsResponseExample1": {
+                  "FollowInfoResponseExample1": {
                     "summary": "Porject tags",
                     "description": "A successful response from `GET /_project/tags`",
-                    "value": "{\n  \"c56c4f8849c64cc6ae59c261f40bd195\": {\n    \"id\": \"c56c4f8849c64cc6ae59c261f40bd195\"\n    \"type\": \"elasticsearch\",\n    \"_csp\": \"aws\",\n    \"_region\": \"us-east-1\"\n    \"mytag1\": \"foo\",\n    \"mytag2\": \"bar\"\n  }\n  \"linked_projects\": {\n    \"a3b88ea3f195a336ae59c261f40bd195\": {\n      \"id\": \"a3b88ea3f195a336ae59c261f40bd195\"\n      \"type\": \"security\",\n      \"_csp\": \"aws\",\n      \"_region\": \"us-east-1\"\n      \"mytag1\": \"foo\",\n      \"mytag2\": \"bar\"\n    },\n    \"f40bd195389s3761023ca7aa8a3r0932\": {\n      \"id\": \"f40bd195389s3761023ca7aa8a3r0932\"\n      \"type\": \"observability\",\n      \"_csp\": \"aws\",\n      \"_region\": \"us-east-1\"\n      \"mytag1\": \"foo\",\n      \"mytag2\": \"bar\"\n    }\n  }\n}"
+                    "value": "{\n  \"origin\": {\n    \"c56c4f8849c64cc6ae59c261f40bd195\": {\n      \"_id\": \"c56c4f8849c64cc6ae59c261f40bd195\"\n      \"_type\": \"elasticsearch\",\n      \"_alias\": \"project-1\",\n      \"_csp\": \"aws\",\n      \"_region\": \"us-east-1\"\n      \"mytag1\": \"foo\",\n      \"mytag2\": \"bar\"\n    }\n  },\n  \"linked_projects\": {\n    \"a3b88ea3f195a336ae59c261f40bd195\": {\n      \"_id\": \"a3b88ea3f195a336ae59c261f40bd195\"\n      \"_type\": \"security\",\n      \"_alias\": \"project-2\",\n      \"_csp\": \"aws\",\n      \"_region\": \"us-east-1\"\n      \"mytag1\": \"foo\",\n      \"mytag2\": \"bar\"\n    },\n    \"f40bd195389s3761023ca7aa8a3r0932\": {\n      \"_id\": \"f40bd195389s3761023ca7aa8a3r0932\"\n      \"_type\": \"observability\",\n      \"_alias\": \"project-3\",\n      \"_csp\": \"aws\",\n      \"_region\": \"us-east-1\"\n      \"mytag1\": \"foo\",\n      \"mytag2\": \"bar\"\n    }\n  }\n}"
                   }
                 }
               }
@@ -77387,13 +77387,24 @@
       "project.tags.ProjectTags": {
         "type": "object",
         "properties": {
+          "origin": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/project.tags.Tags"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
           "linked_projects": {
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/project.tags.Tags"
             }
           }
-        }
+        },
+        "required": [
+          "origin"
+        ]
       },
       "project.tags.Tags": {
         "type": "object",

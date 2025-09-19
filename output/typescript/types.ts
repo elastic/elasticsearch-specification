@@ -19390,11 +19390,10 @@ export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   nodes: Record<string, NodesUsageNodeUsage>
 }
 
-export interface ProjectTagsProjectTagsKeys {
+export interface ProjectTagsProjectTags {
+  origin: Partial<Record<string, ProjectTagsTags>>
   linked_projects?: Record<string, ProjectTagsTags>
 }
-export type ProjectTagsProjectTags = ProjectTagsProjectTagsKeys
-  & { [property: string]: ProjectTagsTags | Record<string, ProjectTagsTags> }
 
 export interface ProjectTagsRequest extends RequestBase {
 }

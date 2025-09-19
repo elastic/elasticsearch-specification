@@ -4,15 +4,17 @@ description: A successful response from `GET /_project/tags`
 # response_code: 200
 value: |-
   {
-    "c56c4f8849c64cc6ae59c261f40bd195": {
-      "_id": "c56c4f8849c64cc6ae59c261f40bd195"
-      "_type": "elasticsearch",
-      "_alias": "project-1",
-      "_csp": "aws",
-      "_region": "us-east-1"
-      "mytag1": "foo",
-      "mytag2": "bar"
-    }
+    "origin": {
+      "c56c4f8849c64cc6ae59c261f40bd195": {
+        "_id": "c56c4f8849c64cc6ae59c261f40bd195"
+        "_type": "elasticsearch",
+        "_alias": "project-1",
+        "_csp": "aws",
+        "_region": "us-east-1"
+        "mytag1": "foo",
+        "mytag2": "bar"
+      }
+    },
     "linked_projects": {
       "a3b88ea3f195a336ae59c261f40bd195": {
         "_id": "a3b88ea3f195a336ae59c261f40bd195"
