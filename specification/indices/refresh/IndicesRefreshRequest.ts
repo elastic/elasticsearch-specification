@@ -27,6 +27,8 @@ import { ExpandWildcards, Indices } from '@_types/common'
  *
  * By default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.
  * You can change this default interval with the `index.refresh_interval` setting.
+ * 
+ * In Elastic Cloud Serverless, the default refresh interval is 5 seconds.
  *
  * Refresh requests are synchronous and do not return a response until the refresh operation completes.
  *
