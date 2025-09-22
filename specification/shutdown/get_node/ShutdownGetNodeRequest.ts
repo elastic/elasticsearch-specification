@@ -31,7 +31,7 @@ import { TimeUnit } from '@_types/Time'
  *
  * If the operator privileges feature is enabled, you must be an operator to use this API.
  * @rest_spec_name shutdown.get_node
- * @availability stack since=7.13.0 stability=stable visibility=private
+ * @availability stack since=7.13.0 stability=stable
  * @cluster_privileges manage
  * @doc_id nodes-api-shutdown-status
  */
