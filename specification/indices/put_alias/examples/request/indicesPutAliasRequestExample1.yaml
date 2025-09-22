@@ -1,23 +1,26 @@
-# summary: indices/aliases.asciidoc:10
-method_request: POST _aliases
-# description: ''
+summary: Filter an alias
+method_request: POST /my-index-2099.05.06-000001/_alias/my-alias
+description: The filter option uses Query DSL to limit the documents an alias can access.
 # type: request
-value: "{
-
-  \  \"actions\": [
-
-  \    {
-
-  \      \"add\": {
-
-  \        \"index\": \"my-data-stream\",
-
-  \        \"alias\": \"my-alias\"
-
-  \      }
-
-  \    }
-
-  \  ]
-
-  }"
+value:  |-
+  {
+    "filter": {
+      "bool": {
+        "filter": [
+          {
+            "range": {
+              "@timestamp": {
+                "gte": "now-1d/d",
+                "lt": "now/d"
+              }
+            }
+          },
+          {
+            "term": {
+              "user.id": "kimchy"
+            }
+          }
+        ]
+      }
+    }
+  }
