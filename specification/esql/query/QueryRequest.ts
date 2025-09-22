@@ -108,8 +108,17 @@ export interface Request extends RequestBase {
      * When set to `true` and performing a cross-cluster query, the response will include an extra `_clusters`
      * object with information about the clusters that participated in the search along with info such as shards
      * count.
+     * This is a synonym for `include_execution_metadata`, the two parameters can be used interchangeably but not together.
      * @server_default false
      */
     include_ccs_metadata?: boolean
+    /**
+     * When set to `true` and performing a cross-cluster or cross-project query, the response will include an extra `_clusters`
+     * object with information about the clusters that participated in the search along with info such as shards
+     * count.
+     * This is a synonym for `include_ccs_metadata`, the two parameters can be used interchangeably but not together.
+     * @server_default false
+     */
+    include_execution_metadata?: boolean
   }
 }

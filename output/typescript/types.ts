@@ -11191,6 +11191,7 @@ export interface EsqlQueryRequest extends RequestBase {
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
     include_ccs_metadata?: boolean
+    include_execution_metadata?: boolean
   }
 }
 
