@@ -5,4 +5,4 @@ description: You can use is_write_index to specify a write index or data stream 
 value: |-
   {
     "is_write_index": true
-  } 
+  }

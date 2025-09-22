@@ -2,7 +2,7 @@ summary: Filter an alias
 method_request: POST /my-index-2099.05.06-000001/_alias/my-alias
 description: The filter option uses Query DSL to limit the documents an alias can access.
 # type: request
-value:  |-
+value: |-
   {
     "filter": {
       "bool": {
