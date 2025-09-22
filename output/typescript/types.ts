@@ -14994,6 +14994,8 @@ export interface IngestFailProcessor extends IngestProcessorBase {
   message: string
 }
 
+export type IngestFieldAccessPattern = 'classic' | 'flexible'
+
 export type IngestFingerprintDigest = 'MD5' | 'SHA-1' | 'SHA-256' | 'SHA-512' | 'MurmurHash3'
 
 export interface IngestFingerprintProcessor extends IngestProcessorBase {
@@ -15175,6 +15177,7 @@ export interface IngestPipeline {
   created_date_millis?: EpochTime<UnitMillis>
   modified_date?: DateTime
   modified_date_millis?: EpochTime<UnitMillis>
+  field_access_pattern?: IngestFieldAccessPattern
 }
 
 export interface IngestPipelineConfig {
@@ -15511,6 +15514,7 @@ export interface IngestPutPipelineRequest extends RequestBase {
     processors?: IngestProcessorContainer[]
     version?: VersionNumber
     deprecated?: boolean
+    field_access_pattern?: IngestFieldAccessPattern
   }
 }
 
