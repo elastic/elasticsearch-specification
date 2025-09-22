@@ -11552,23 +11552,23 @@
   "specification/inference/text_embedding/examples/request/TextEmbeddingRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.inference.text_embedding(\n    inference_id=\"my-cohere-endpoint\",\n    input=\"The sky above the port was the color of television tuned to a dead channel.\",\n    task_settings={\n        \"input_type\": \"ingest\"\n    },\n)"
+      "code": "resp = client.inference.text_embedding(\n    inference_id=\"my-cohere-endpoint\",\n    input=\"The sky above the port was the color of television tuned to a dead channel.\",\n    input_type=\"ingest\",\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.inference.textEmbedding({\n  inference_id: \"my-cohere-endpoint\",\n  input:\n    \"The sky above the port was the color of television tuned to a dead channel.\",\n  task_settings: {\n    input_type: \"ingest\",\n  },\n});"
+      "code": "const response = await client.inference.textEmbedding({\n  inference_id: \"my-cohere-endpoint\",\n  input:\n    \"The sky above the port was the color of television tuned to a dead channel.\",\n  input_type: \"ingest\",\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.inference.text_embedding(\n  inference_id: \"my-cohere-endpoint\",\n  body: {\n    \"input\": \"The sky above the port was the color of television tuned to a dead channel.\",\n    \"task_settings\": {\n      \"input_type\": \"ingest\"\n    }\n  }\n)"
+      "code": "response = client.inference.text_embedding(\n  inference_id: \"my-cohere-endpoint\",\n  body: {\n    \"input\": \"The sky above the port was the color of television tuned to a dead channel.\",\n    \"input_type\": \"ingest\"\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->inference()->textEmbedding([\n    \"inference_id\" => \"my-cohere-endpoint\",\n    \"body\" => [\n        \"input\" => \"The sky above the port was the color of television tuned to a dead channel.\",\n        \"task_settings\" => [\n            \"input_type\" => \"ingest\",\n        ],\n    ],\n]);"
+      "code": "$resp = $client->inference()->textEmbedding([\n    \"inference_id\" => \"my-cohere-endpoint\",\n    \"body\" => [\n        \"input\" => \"The sky above the port was the color of television tuned to a dead channel.\",\n        \"input_type\" => \"ingest\",\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":\"The sky above the port was the color of television tuned to a dead channel.\",\"task_settings\":{\"input_type\":\"ingest\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-cohere-endpoint\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":\"The sky above the port was the color of television tuned to a dead channel.\",\"input_type\":\"ingest\"}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-cohere-endpoint\""
     }
   ],
   "specification/inference/put_jinaai/examples/request/PutJinaAiRequestExample1.yaml": [
@@ -14847,6 +14847,72 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":\"SELECT * FROM library ORDER BY page_count DESC LIMIT 5\"}' \"$ELASTICSEARCH_URL/_sql?format=txt\""
+    }
+  ],
+  "specification/streams/logs_disable/examples/request/PostStreamsDisableRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.streams.logs_disable()"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.streams.logsDisable();"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.streams.logs_disable"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->streams()->logsDisable();"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_streams/logs/_disable\""
+    }
+  ],
+  "specification/streams/status/examples/request/GetStreamsStatusRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.streams.status()"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.streams.status();"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.streams.status"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->streams()->status();"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_streams/status\""
+    }
+  ],
+  "specification/streams/logs_enable/examples/request/PostStreamsEnableRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.streams.logs_enable()"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.streams.logsEnable();"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.streams.logs_enable"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->streams()->logsEnable();"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_streams/logs/_enable\""
     }
   ]
 }

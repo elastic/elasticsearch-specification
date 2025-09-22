@@ -83,7 +83,7 @@ import { GroupBy } from '@tasks/_types/GroupBy'
  * The `X-Opaque-Id` in the task `headers` is the ID for the task that was initiated by the REST request.
  * The `X-Opaque-Id` in the children `headers` is the child task of the task that was initiated by the REST request.
  * @rest_spec_name tasks.list
- * @availability stack since=2.3.0 stability=experimental
+ * @availability stack since=2.3.0 stability=stable
  * @availability serverless stability=experimental visibility=private
  * @cluster_privileges monitor
  * @doc_id tasks
