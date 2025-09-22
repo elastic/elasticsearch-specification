@@ -1,6 +1,8 @@
 summary: Write index
 method_request: POST /logs-my_app-default/_alias/logs
-description: You can use is_write_index to specify a write index or data stream for an alias. Elasticsearch routes any write requests for the alias to this index or data stream.
+description:
+  You can use is_write_index to specify a write index or data stream for an alias. Elasticsearch routes any write
+  requests for the alias to this index or data stream.
 # type: request
 value: |-
   {
