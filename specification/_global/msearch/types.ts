@@ -18,7 +18,13 @@
  */
 
 import { ErrorResponseBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Routing, SearchType } from '@_types/common'
+import {
+  ExpandWildcards,
+  Indices,
+  ProjectRouting,
+  Routing,
+  SearchType
+} from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { SearchRequestBody } from '@global/search/_types/SearchRequestBody'
 import { ResponseBody as SearchResponse } from '@global/search/SearchResponse'
@@ -37,6 +43,7 @@ export class MultisearchHeader {
   ignore_unavailable?: boolean
   index?: Indices
   preference?: string
+  project_routing?: ProjectRouting
   request_cache?: boolean
   routing?: Routing
   search_type?: SearchType

@@ -1,13 +1,5 @@
 {
-  "endpointErrors": {
-    "streams.status": {
-      "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'mater_timeout'"
-      ],
-      "response": []
-    }
-  },
+  "endpointErrors": {},
   "generalErrors": [
     "Dangling type '_global.scripts_painless_execute:PainlessExecutionPosition'",
     "Dangling type '_global.scripts_painless_execute:PainlessScript'",

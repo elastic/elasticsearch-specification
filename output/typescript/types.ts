@@ -143,6 +143,7 @@ export interface CountRequest extends RequestBase {
   lenient?: boolean
   min_score?: double
   preference?: string
+  project_routing?: ProjectRouting
   routing?: Routing
   terminate_after?: long
   q?: string
@@ -360,6 +361,7 @@ export interface FieldCapsRequest extends RequestBase {
   filters?: string
   types?: string[]
   include_empty_fields?: boolean
+  project_routing?: ProjectRouting
   body?: {
     fields?: Fields
     index_filter?: QueryDslQueryContainer
@@ -742,6 +744,7 @@ export interface MsearchMultisearchHeader {
   ignore_unavailable?: boolean
   index?: Indices
   preference?: string
+  project_routing?: ProjectRouting
   request_cache?: boolean
   routing?: Routing
   search_type?: SearchType
@@ -761,6 +764,7 @@ export interface MsearchRequest extends RequestBase {
   max_concurrent_searches?: integer
   max_concurrent_shard_requests?: integer
   pre_filter_shard_size?: long
+  project_routing?: ProjectRouting
   rest_total_hits_as_int?: boolean
   routing?: Routing
   search_type?: SearchType
@@ -778,6 +782,7 @@ export interface MsearchTemplateRequest extends RequestBase {
   index?: Indices
   ccs_minimize_roundtrips?: boolean
   max_concurrent_searches?: long
+  project_routing?: ProjectRouting
   search_type?: SearchType
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
@@ -851,6 +856,7 @@ export interface OpenPointInTimeRequest extends RequestBase {
   keep_alive: Duration
   ignore_unavailable?: boolean
   preference?: string
+  project_routing?: ProjectRouting
   routing?: Routing
   expand_wildcards?: ExpandWildcards
   allow_partial_search_results?: boolean
@@ -1857,6 +1863,7 @@ export interface SearchMvtRequest extends RequestBase {
   grid_agg?: SearchMvtGridAggregationType
   grid_precision?: integer
   grid_type?: SearchMvtGridType
+  project_routing?: ProjectRouting
   size?: integer
   track_total_hits?: SearchTrackHits
   with_labels?: boolean
@@ -1932,6 +1939,7 @@ export interface SearchTemplateRequest extends RequestBase {
   ignore_unavailable?: boolean
   preference?: string
   profile?: boolean
+  project_routing?: ProjectRouting
   routing?: Routing
   scroll?: Duration
   search_type?: SearchType
@@ -7402,6 +7410,7 @@ export interface CatCountCountRecord {
 export interface CatCountRequest extends CatCatRequestBase {
   index?: Indices
   h?: CatCatCountColumns
+  project_routing?: ProjectRouting
   s?: Names
 }
 
@@ -10996,6 +11005,7 @@ export interface EqlSearchRequest extends RequestBase {
   ignore_unavailable?: boolean
   keep_alive?: Duration
   keep_on_completion?: boolean
+  project_routing?: ProjectRouting
   wait_for_completion_timeout?: Duration
   body?: {
     query: string
@@ -11107,6 +11117,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
     include_ccs_metadata?: boolean
+    include_execution_metadata?: boolean
     wait_for_completion_timeout?: Duration
     keep_alive?: Duration
     keep_on_completion?: boolean
@@ -11181,6 +11192,7 @@ export interface EsqlQueryRequest extends RequestBase {
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
     include_ccs_metadata?: boolean
+    include_execution_metadata?: boolean
   }
 }
 
@@ -13307,6 +13319,7 @@ export interface IndicesResolveIndexRequest extends RequestBase {
   ignore_unavailable?: boolean
   allow_no_indices?: boolean
   mode?: IndicesIndexMode | IndicesIndexMode[]
+  project_routing?: ProjectRouting
 }
 
 export interface IndicesResolveIndexResolveIndexAliasItem {
@@ -14983,6 +14996,8 @@ export interface IngestFailProcessor extends IngestProcessorBase {
   message: string
 }
 
+export type IngestFieldAccessPattern = 'classic' | 'flexible'
+
 export type IngestFingerprintDigest = 'MD5' | 'SHA-1' | 'SHA-256' | 'SHA-512' | 'MurmurHash3'
 
 export interface IngestFingerprintProcessor extends IngestProcessorBase {
@@ -15164,6 +15179,7 @@ export interface IngestPipeline {
   created_date_millis?: EpochTime<UnitMillis>
   modified_date?: DateTime
   modified_date_millis?: EpochTime<UnitMillis>
+  field_access_pattern?: IngestFieldAccessPattern
 }
 
 export interface IngestPipelineConfig {
@@ -15500,6 +15516,7 @@ export interface IngestPutPipelineRequest extends RequestBase {
     processors?: IngestProcessorContainer[]
     version?: VersionNumber
     deprecated?: boolean
+    field_access_pattern?: IngestFieldAccessPattern
   }
 }
 
@@ -21944,6 +21961,7 @@ export interface SqlGetAsyncStatusResponse {
 
 export interface SqlQueryRequest extends RequestBase {
   format?: SqlQuerySqlFormat
+  project_routing?: ProjectRouting
   body?: {
     allow_partial_search_results?: boolean
     catalog?: string

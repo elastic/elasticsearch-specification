@@ -6509,7 +6509,7 @@
                     }
                   },
                   "include_ccs_metadata": {
-                    "description": "When set to `true` and performing a cross-cluster query, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.",
+                    "description": "When set to `true` and performing a cross-cluster/cross-project query, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.",
                     "default": false,
                     "type": "boolean"
                   }
@@ -15080,6 +15080,16 @@
                     "description": "Marks this ingest pipeline as deprecated.\nWhen a deprecated ingest pipeline is referenced as the default or final pipeline when creating or updating a non-deprecated index template, Elasticsearch will emit a deprecation warning.",
                     "default": false,
                     "type": "boolean"
+                  },
+                  "field_access_pattern": {
+                    "description": "Controls how processors in this pipeline should read and write data on a document's source.",
+                    "default": "classic",
+                    "x-state": "Generally available",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/ingest._types.FieldAccessPattern"
+                      }
+                    ]
                   }
                 }
               },
@@ -67512,6 +67522,16 @@
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
               }
             ]
+          },
+          "field_access_pattern": {
+            "description": "Controls how processors in this pipeline should read and write data on a document's source.",
+            "default": "classic",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ingest._types.FieldAccessPattern"
+              }
+            ]
           }
         }
       },
@@ -70193,6 +70213,13 @@
           "device",
           "original",
           "version"
+        ]
+      },
+      "ingest._types.FieldAccessPattern": {
+        "type": "string",
+        "enum": [
+          "classic",
+          "flexible"
         ]
       },
       "ingest._types.Document": {
@@ -76879,6 +76906,13 @@
           "preference": {
             "type": "string"
           },
+          "project_routing": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ProjectRouting"
+              }
+            ]
+          },
           "request_cache": {
             "type": "boolean"
           },
@@ -76906,6 +76940,9 @@
             "type": "boolean"
           }
         }
+      },
+      "_types.ProjectRouting": {
+        "type": "string"
       },
       "_global.msearch.MultiSearchResult": {
         "type": "object",
