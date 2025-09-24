@@ -2,6 +2,7 @@ doc_id,doc_url,previous_version_doc_url,description
 apis,https://www.elastic.co/docs/api/doc/elasticsearch/v8,https://www.elastic.co/guide/en/elasticsearch/reference/7.17/rest-apis.html,
 add-nodes,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/add-elasticsearch-nodes.html,,
 alias-update,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-put-alias,,
+aliases,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/aliases.html,,Aliases
 aliases-update,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-update-aliases,,
 alibabacloud-api-keys,https://opensearch.console.aliyun.com/cn-shanghai/rag/api-key,,
 amazonbedrock-models,https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html,,
