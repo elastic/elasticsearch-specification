@@ -148,6 +148,9 @@ export class CompositeAggregation extends BucketAggregationBase {
   sources?: Array<SingleKeyDictionary<string, CompositeAggregationSource>>
 }
 
+/**
+ * @variants container
+ */
 export class CompositeAggregationSource {
   /**
    * A terms aggregation.
