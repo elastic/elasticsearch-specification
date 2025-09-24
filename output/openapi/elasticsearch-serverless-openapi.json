@@ -8183,6 +8183,10 @@
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
+        "externalDocs": {
+          "description": "Aliases",
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/aliases.html"
+        },
         "operationId": "indices-put-alias",
         "parameters": [
           {
@@ -8220,6 +8224,10 @@
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
+        "externalDocs": {
+          "description": "Aliases",
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/aliases.html"
+        },
         "operationId": "indices-put-alias-1",
         "parameters": [
           {
@@ -8333,6 +8341,10 @@
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
+        "externalDocs": {
+          "description": "Aliases",
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/aliases.html"
+        },
         "operationId": "indices-put-alias-2",
         "parameters": [
           {
@@ -8370,6 +8382,10 @@
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
+        "externalDocs": {
+          "description": "Aliases",
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/aliases.html"
+        },
         "operationId": "indices-put-alias-3",
         "parameters": [
           {
@@ -86379,7 +86395,19 @@
             },
             "examples": {
               "indicesPutAliasRequestExample1": {
-                "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"my-data-stream\",\n        \"alias\": \"my-alias\"\n      }\n    }\n  ]\n}"
+                "summary": "Filter an alias",
+                "description": "The filter option uses Query DSL to limit the documents an alias can access.",
+                "value": "{\n  \"filter\": {\n    \"bool\": {\n      \"filter\": [\n        {\n          \"range\": {\n            \"@timestamp\": {\n              \"gte\": \"now-1d/d\",\n              \"lt\": \"now/d\"\n            }\n          }\n        },\n        {\n          \"term\": {\n            \"user.id\": \"kimchy\"\n          }\n        }\n      ]\n    }\n  }\n}"
+              },
+              "indicesPutAliasRequestExample2": {
+                "summary": "Write index",
+                "description": "You can use is_write_index to specify a write index or data stream for an alias. Elasticsearch routes any write requests for the alias to this index or data stream.",
+                "value": "{\n  \"is_write_index\": true\n}"
+              },
+              "indicesPutAliasRequestExample3": {
+                "summary": "Routing",
+                "description": "Use the routing option to route requests for an alias to a specific shard.",
+                "value": "{\n  \"routing\": \"1\"\n}"
               }
             }
           }
