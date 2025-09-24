@@ -35,7 +35,6 @@ import { Hop } from '../_types/Hop'
  * @doc_id graph-explore-api
  * @rest_spec_name graph.explore
  * @availability stack stability=stable
- * @availability serverless stability=stable visibility=public
  * @ext_doc_id graph
  */
 export interface Request extends RequestBase {
