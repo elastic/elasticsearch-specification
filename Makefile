@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-DOCS_BRANCH := 8.x
+DOCS_BRANCH := 8.19
 
 validate: ## Validate a given endpoint request or response
 	@node compiler/run-validations.js --api $(api) --type $(type) --branch $(branch)
