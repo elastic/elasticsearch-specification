@@ -145,9 +145,12 @@ export class CompositeAggregation extends BucketAggregationBase {
    * The value sources used to build composite buckets.
    * Keys are returned in the order of the `sources` definition.
    */
-  sources?: Array<Dictionary<string, CompositeAggregationSource>>
+  sources?: Array<SingleKeyDictionary<string, CompositeAggregationSource>>
 }
 
+/**
+ * @variants container
+ */
 export class CompositeAggregationSource {
   /**
    * A terms aggregation.

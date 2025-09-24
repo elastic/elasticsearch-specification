@@ -1033,9 +1033,6 @@
         "operationId": "cat-indices",
         "parameters": [
           {
-            "$ref": "#/components/parameters/cat.indices-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.indices-expand_wildcards"
           },
           {
@@ -1046,9 +1043,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices-pri"
-          },
-          {
-            "$ref": "#/components/parameters/cat.indices-time"
           },
           {
             "$ref": "#/components/parameters/cat.indices-master_timeout"
@@ -1087,9 +1081,6 @@
             "$ref": "#/components/parameters/cat.indices-index"
           },
           {
-            "$ref": "#/components/parameters/cat.indices-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.indices-expand_wildcards"
           },
           {
@@ -1100,9 +1091,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices-pri"
-          },
-          {
-            "$ref": "#/components/parameters/cat.indices-time"
           },
           {
             "$ref": "#/components/parameters/cat.indices-master_timeout"
@@ -1141,16 +1129,10 @@
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-allow_no_match"
           },
           {
-            "$ref": "#/components/parameters/cat.ml_data_frame_analytics-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-h"
           },
           {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_data_frame_analytics-time"
           }
         ],
         "responses": {
@@ -1183,16 +1165,10 @@
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-allow_no_match"
           },
           {
-            "$ref": "#/components/parameters/cat.ml_data_frame_analytics-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-h"
           },
           {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_data_frame_analytics-time"
           }
         ],
         "responses": {
@@ -1226,9 +1202,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_datafeeds-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_datafeeds-time"
           }
         ],
         "responses": {
@@ -1265,9 +1238,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_datafeeds-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_datafeeds-time"
           }
         ],
         "responses": {
@@ -1297,16 +1267,10 @@
             "$ref": "#/components/parameters/cat.ml_jobs-allow_no_match"
           },
           {
-            "$ref": "#/components/parameters/cat.ml_jobs-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.ml_jobs-h"
           },
           {
             "$ref": "#/components/parameters/cat.ml_jobs-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_jobs-time"
           }
         ],
         "responses": {
@@ -1339,16 +1303,10 @@
             "$ref": "#/components/parameters/cat.ml_jobs-allow_no_match"
           },
           {
-            "$ref": "#/components/parameters/cat.ml_jobs-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.ml_jobs-h"
           },
           {
             "$ref": "#/components/parameters/cat.ml_jobs-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_jobs-time"
           }
         ],
         "responses": {
@@ -1378,9 +1336,6 @@
             "$ref": "#/components/parameters/cat.ml_trained_models-allow_no_match"
           },
           {
-            "$ref": "#/components/parameters/cat.ml_trained_models-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.ml_trained_models-h"
           },
           {
@@ -1391,9 +1346,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models-size"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_trained_models-time"
           }
         ],
         "responses": {
@@ -1426,9 +1378,6 @@
             "$ref": "#/components/parameters/cat.ml_trained_models-allow_no_match"
           },
           {
-            "$ref": "#/components/parameters/cat.ml_trained_models-bytes"
-          },
-          {
             "$ref": "#/components/parameters/cat.ml_trained_models-h"
           },
           {
@@ -1439,9 +1388,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models-size"
-          },
-          {
-            "$ref": "#/components/parameters/cat.ml_trained_models-time"
           }
         ],
         "responses": {
@@ -1478,9 +1424,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.transforms-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.transforms-time"
           },
           {
             "$ref": "#/components/parameters/cat.transforms-size"
@@ -1523,9 +1466,6 @@
           },
           {
             "$ref": "#/components/parameters/cat.transforms-s"
-          },
-          {
-            "$ref": "#/components/parameters/cat.transforms-time"
           },
           {
             "$ref": "#/components/parameters/cat.transforms-size"
@@ -6569,7 +6509,7 @@
                     }
                   },
                   "include_ccs_metadata": {
-                    "description": "When set to `true` and performing a cross-cluster query, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.",
+                    "description": "When set to `true` and performing a cross-cluster/cross-project query, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.",
                     "default": false,
                     "type": "boolean"
                   }
@@ -8390,6 +8330,70 @@
         ]
       }
     },
+    "/_create_from/{source}/{dest}": {
+      "put": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "Create an index from a source index",
+        "description": "Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.",
+        "operationId": "indices-create-from",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/indices.create_from-source"
+          },
+          {
+            "$ref": "#/components/parameters/indices.create_from-dest"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/indices.create_from"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/indices.create_from-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "Create an index from a source index",
+        "description": "Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.",
+        "operationId": "indices-create-from-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/indices.create_from-source"
+          },
+          {
+            "$ref": "#/components/parameters/indices.create_from-dest"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/indices.create_from"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/indices.create_from-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/{index}/_alias/{name}": {
       "get": {
         "tags": [
@@ -8437,6 +8441,11 @@
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
+        "externalDocs": {
+          "description": "Aliases",
+          "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-add-alias.html"
+        },
         "operationId": "indices-put-alias",
         "parameters": [
           {
@@ -8474,6 +8483,11 @@
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
+        "externalDocs": {
+          "description": "Aliases",
+          "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-add-alias.html"
+        },
         "operationId": "indices-put-alias-1",
         "parameters": [
           {
@@ -8587,6 +8601,11 @@
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
+        "externalDocs": {
+          "description": "Aliases",
+          "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-add-alias.html"
+        },
         "operationId": "indices-put-alias-2",
         "parameters": [
           {
@@ -8624,6 +8643,11 @@
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
+        "externalDocs": {
+          "description": "Aliases",
+          "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-add-alias.html"
+        },
         "operationId": "indices-put-alias-3",
         "parameters": [
           {
@@ -10591,7 +10615,7 @@
           "indices"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
         "operationId": "indices-refresh-1",
         "parameters": [
           {
@@ -10622,7 +10646,7 @@
           "indices"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
         "operationId": "indices-refresh",
         "parameters": [
           {
@@ -10655,7 +10679,7 @@
           "indices"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
         "operationId": "indices-refresh-3",
         "parameters": [
           {
@@ -10689,7 +10713,7 @@
           "indices"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
         "operationId": "indices-refresh-2",
         "parameters": [
           {
@@ -15076,6 +15100,16 @@
                     "description": "Marks this ingest pipeline as deprecated.\nWhen a deprecated ingest pipeline is referenced as the default or final pipeline when creating or updating a non-deprecated index template, Elasticsearch will emit a deprecation warning.",
                     "default": false,
                     "type": "boolean"
+                  },
+                  "field_access_pattern": {
+                    "description": "Controls how processors in this pipeline should read and write data on a document's source.",
+                    "default": "classic",
+                    "x-state": "Generally available",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/ingest._types.FieldAccessPattern"
+                      }
+                    ]
                   }
                 }
               },
@@ -38834,6 +38868,13 @@
                     "$ref": "#/components/schemas/_global.search._types.LearningToRank"
                   }
                 ]
+              },
+              "script": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.ScriptRescore"
+                  }
+                ]
               }
             },
             "minProperties": 1,
@@ -38903,6 +38944,21 @@
         },
         "required": [
           "model_id"
+        ]
+      },
+      "_global.search._types.ScriptRescore": {
+        "type": "object",
+        "properties": {
+          "script": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Script"
+              }
+            ]
+          }
+        },
+        "required": [
+          "script"
         ]
       },
       "_types.RetrieverContainer": {
@@ -43730,7 +43786,9 @@
                   "type": "object",
                   "additionalProperties": {
                     "$ref": "#/components/schemas/_types.aggregations.CompositeAggregationSource"
-                  }
+                  },
+                  "minProperties": 1,
+                  "maxProperties": 1
                 }
               }
             }
@@ -43772,7 +43830,9 @@
               }
             ]
           }
-        }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
       },
       "_types.aggregations.CompositeTermsAggregation": {
         "allOf": [
@@ -47601,17 +47661,6 @@
         "description": "Time of day, expressed as HH:MM:SS",
         "type": "string"
       },
-      "_types.Bytes": {
-        "type": "string",
-        "enum": [
-          "b",
-          "kb",
-          "mb",
-          "gb",
-          "tb",
-          "pb"
-        ]
-      },
       "_types.HealthStatus": {
         "type": "string",
         "enum": [
@@ -47623,18 +47672,6 @@
           "RED",
           "unknown",
           "unavailable"
-        ]
-      },
-      "_types.TimeUnit": {
-        "type": "string",
-        "enum": [
-          "nanos",
-          "micros",
-          "ms",
-          "s",
-          "m",
-          "h",
-          "d"
         ]
       },
       "cat._types.CatIndicesColumns": {
@@ -62979,6 +63016,32 @@
           "type"
         ]
       },
+      "indices.create_from.CreateFrom": {
+        "type": "object",
+        "properties": {
+          "mappings_override": {
+            "description": "Mappings overrides to be applied to the destination index (optional)",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+              }
+            ]
+          },
+          "settings_override": {
+            "description": "Settings overrides to be applied to the destination index (optional)",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
+          "remove_index_blocks": {
+            "description": "If index blocks should be removed when creating destination index (optional)",
+            "default": true,
+            "type": "boolean"
+          }
+        }
+      },
       "_types.IndicesResponseBase": {
         "allOf": [
           {
@@ -67519,6 +67582,16 @@
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
               }
             ]
+          },
+          "field_access_pattern": {
+            "description": "Controls how processors in this pipeline should read and write data on a document's source.",
+            "default": "classic",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ingest._types.FieldAccessPattern"
+              }
+            ]
           }
         }
       },
@@ -70200,6 +70273,13 @@
           "device",
           "original",
           "version"
+        ]
+      },
+      "ingest._types.FieldAccessPattern": {
+        "type": "string",
+        "enum": [
+          "classic",
+          "flexible"
         ]
       },
       "ingest._types.Document": {
@@ -76886,6 +76966,13 @@
           "preference": {
             "type": "string"
           },
+          "project_routing": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ProjectRouting"
+              }
+            ]
+          },
           "request_cache": {
             "type": "boolean"
           },
@@ -76913,6 +77000,9 @@
             "type": "boolean"
           }
         }
+      },
+      "_types.ProjectRouting": {
+        "type": "string"
       },
       "_global.msearch.MultiSearchResult": {
         "type": "object",
@@ -81246,6 +81336,36 @@
           }
         }
       },
+      "indices.create_from-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "acknowledged": {
+                  "type": "boolean"
+                },
+                "index": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.IndexName"
+                    }
+                  ]
+                },
+                "shards_acknowledged": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "acknowledged",
+                "index",
+                "shards_acknowledged"
+              ]
+            }
+          }
+        }
+      },
       "indices.delete_alias-200": {
         "description": "",
         "content": {
@@ -83546,16 +83666,6 @@
         },
         "style": "simple"
       },
-      "cat.indices-bytes": {
-        "in": "query",
-        "name": "bytes",
-        "description": "The unit used to display byte values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.Bytes"
-        },
-        "style": "form"
-      },
       "cat.indices-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
@@ -83593,16 +83703,6 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
-        },
-        "style": "form"
-      },
-      "cat.indices-time": {
-        "in": "query",
-        "name": "time",
-        "description": "The unit used to display time values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.TimeUnit"
         },
         "style": "form"
       },
@@ -83657,16 +83757,6 @@
         },
         "style": "form"
       },
-      "cat.ml_data_frame_analytics-bytes": {
-        "in": "query",
-        "name": "bytes",
-        "description": "The unit in which to display byte values",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.Bytes"
-        },
-        "style": "form"
-      },
       "cat.ml_data_frame_analytics-h": {
         "in": "query",
         "name": "h",
@@ -83684,16 +83774,6 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/cat._types.CatDfaColumns"
-        },
-        "style": "form"
-      },
-      "cat.ml_data_frame_analytics-time": {
-        "in": "query",
-        "name": "time",
-        "description": "Unit used to display time values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.TimeUnit"
         },
         "style": "form"
       },
@@ -83738,16 +83818,6 @@
         },
         "style": "form"
       },
-      "cat.ml_datafeeds-time": {
-        "in": "query",
-        "name": "time",
-        "description": "The unit used to display time values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.TimeUnit"
-        },
-        "style": "form"
-      },
       "cat.ml_jobs-job_id": {
         "in": "path",
         "name": "job_id",
@@ -83766,16 +83836,6 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
-        },
-        "style": "form"
-      },
-      "cat.ml_jobs-bytes": {
-        "in": "query",
-        "name": "bytes",
-        "description": "The unit used to display byte values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.Bytes"
         },
         "style": "form"
       },
@@ -83799,16 +83859,6 @@
         },
         "style": "form"
       },
-      "cat.ml_jobs-time": {
-        "in": "query",
-        "name": "time",
-        "description": "The unit used to display time values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.TimeUnit"
-        },
-        "style": "form"
-      },
       "cat.ml_trained_models-model_id": {
         "in": "path",
         "name": "model_id",
@@ -83827,16 +83877,6 @@
         "deprecated": false,
         "schema": {
           "type": "boolean"
-        },
-        "style": "form"
-      },
-      "cat.ml_trained_models-bytes": {
-        "in": "query",
-        "name": "bytes",
-        "description": "The unit used to display byte values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.Bytes"
         },
         "style": "form"
       },
@@ -83877,16 +83917,6 @@
         "deprecated": false,
         "schema": {
           "type": "number"
-        },
-        "style": "form"
-      },
-      "cat.ml_trained_models-time": {
-        "in": "query",
-        "name": "time",
-        "description": "Unit used to display time values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.TimeUnit"
         },
         "style": "form"
       },
@@ -83938,16 +83968,6 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/cat._types.CatTransformColumns"
-        },
-        "style": "form"
-      },
-      "cat.transforms-time": {
-        "in": "query",
-        "name": "time",
-        "description": "The unit used to display time values.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.TimeUnit"
         },
         "style": "form"
       },
@@ -84933,6 +84953,28 @@
           "$ref": "#/components/schemas/_types.IndexName"
         },
         "style": "form"
+      },
+      "indices.create_from-source": {
+        "in": "path",
+        "name": "source",
+        "description": "The source index or data stream name",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.IndexName"
+        },
+        "style": "simple"
+      },
+      "indices.create_from-dest": {
+        "in": "path",
+        "name": "dest",
+        "description": "The destination index or data stream name",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.IndexName"
+        },
+        "style": "simple"
       },
       "indices.delete_alias-index": {
         "in": "path",
@@ -86505,14 +86547,7 @@
         "description": "Returns overall buckets with overall scores greater than or equal to this\nvalue.",
         "deprecated": false,
         "schema": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ]
+          "type": "number"
         },
         "style": "form"
       },
@@ -89144,6 +89179,15 @@
           }
         }
       },
+      "indices.create_from": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/indices.create_from.CreateFrom"
+            }
+          }
+        }
+      },
       "indices.put_alias": {
         "content": {
           "application/json": {
@@ -89190,7 +89234,19 @@
             },
             "examples": {
               "indicesPutAliasRequestExample1": {
-                "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"my-data-stream\",\n        \"alias\": \"my-alias\"\n      }\n    }\n  ]\n}"
+                "summary": "Filter an alias",
+                "description": "The filter option uses Query DSL to limit the documents an alias can access.",
+                "value": "{\n  \"filter\": {\n    \"bool\": {\n      \"filter\": [\n        {\n          \"range\": {\n            \"@timestamp\": {\n              \"gte\": \"now-1d/d\",\n              \"lt\": \"now/d\"\n            }\n          }\n        },\n        {\n          \"term\": {\n            \"user.id\": \"kimchy\"\n          }\n        }\n      ]\n    }\n  }\n}"
+              },
+              "indicesPutAliasRequestExample2": {
+                "summary": "Write index",
+                "description": "You can use is_write_index to specify a write index or data stream for an alias. Elasticsearch routes any write requests for the alias to this index or data stream.",
+                "value": "{\n  \"is_write_index\": true\n}"
+              },
+              "indicesPutAliasRequestExample3": {
+                "summary": "Routing",
+                "description": "Use the routing option to route requests for an alias to a specific shard.",
+                "value": "{\n  \"routing\": \"1\"\n}"
               }
             }
           }
@@ -89767,14 +89823,7 @@
                 },
                 "overall_score": {
                   "description": "Refer to the description for the `overall_score` query parameter.",
-                  "oneOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ]
+                  "type": "number"
                 },
                 "start": {
                   "description": "Refer to the description for the `start` query parameter.",

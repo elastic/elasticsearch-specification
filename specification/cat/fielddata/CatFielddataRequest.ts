@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Bytes, Fields, Names } from '@_types/common'
+import { Fields, Names } from '@_types/common'
 import { CatFieldDataColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -52,8 +52,6 @@ export interface Request extends CatRequestBase {
     fields?: Fields
   }
   query_parameters: {
-    /** The unit used to display byte values. */
-    bytes?: Bytes
     /** Comma-separated list of fields used to limit returned information. */
     fields?: Fields
     /**

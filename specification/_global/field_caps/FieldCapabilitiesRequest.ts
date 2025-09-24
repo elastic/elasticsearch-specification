@@ -18,7 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Fields, Indices } from '@_types/common'
+import {
+  ExpandWildcards,
+  Fields,
+  Indices,
+  ProjectRouting
+} from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
@@ -102,6 +107,18 @@ export interface Request extends RequestBase {
      * @server_default true
      */
     include_empty_fields?: boolean
+    /**
+     * Specifies a subset of projects to target for the field-caps query using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
   body: {
     /**

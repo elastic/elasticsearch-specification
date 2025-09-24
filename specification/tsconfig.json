@@ -51,6 +51,7 @@
       "@shutdown/*": ["shutdown/*"],
       "@slm/*": ["slm/*"],
       "@snapshot/*": ["snapshot/*"],
+      "@streams/*": ["streams/*"],
       "@sql/*": ["sql/*"],
       "@ssl/*": ["ssl/*"],
       "@synonyms/*": ["synonyms/*"],

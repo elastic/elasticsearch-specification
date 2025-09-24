@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Indices, Names } from '@_types/common'
+import { Indices, Names, ProjectRouting } from '@_types/common'
 import { CatCountColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -58,6 +58,18 @@ export interface Request extends CatRequestBase {
      * A comma-separated list of columns names to display. It supports simple wildcards.
      */
     h?: CatCountColumns
+    /**
+     * Specifies a subset of projects to target for the search using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
     /**
      * List of columns that determine how the table should be sorted.
      * Sorting defaults to ascending and can be changed by setting `:asc`

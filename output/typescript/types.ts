@@ -143,6 +143,7 @@ export interface CountRequest extends RequestBase {
   lenient?: boolean
   min_score?: double
   preference?: string
+  project_routing?: ProjectRouting
   routing?: Routing
   terminate_after?: long
   q?: string
@@ -360,6 +361,7 @@ export interface FieldCapsRequest extends RequestBase {
   filters?: string
   types?: string[]
   include_empty_fields?: boolean
+  project_routing?: ProjectRouting
   body?: {
     fields?: Fields
     index_filter?: QueryDslQueryContainer
@@ -742,6 +744,7 @@ export interface MsearchMultisearchHeader {
   ignore_unavailable?: boolean
   index?: Indices
   preference?: string
+  project_routing?: ProjectRouting
   request_cache?: boolean
   routing?: Routing
   search_type?: SearchType
@@ -761,6 +764,7 @@ export interface MsearchRequest extends RequestBase {
   max_concurrent_searches?: integer
   max_concurrent_shard_requests?: integer
   pre_filter_shard_size?: long
+  project_routing?: ProjectRouting
   rest_total_hits_as_int?: boolean
   routing?: Routing
   search_type?: SearchType
@@ -778,6 +782,7 @@ export interface MsearchTemplateRequest extends RequestBase {
   index?: Indices
   ccs_minimize_roundtrips?: boolean
   max_concurrent_searches?: long
+  project_routing?: ProjectRouting
   search_type?: SearchType
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
@@ -851,6 +856,7 @@ export interface OpenPointInTimeRequest extends RequestBase {
   keep_alive: Duration
   ignore_unavailable?: boolean
   preference?: string
+  project_routing?: ProjectRouting
   routing?: Routing
   expand_wildcards?: ExpandWildcards
   allow_partial_search_results?: boolean
@@ -1684,6 +1690,7 @@ export interface SearchRescore {
   window_size?: integer
   query?: SearchRescoreQuery
   learning_to_rank?: SearchLearningToRank
+  script?: SearchScriptRescore
 }
 
 export interface SearchRescoreQuery {
@@ -1694,6 +1701,10 @@ export interface SearchRescoreQuery {
 }
 
 export type SearchScoreMode = 'avg' | 'max' | 'min' | 'multiply' | 'total'
+
+export interface SearchScriptRescore {
+  script: Script | ScriptSource
+}
 
 export interface SearchSearchProfile {
   collector: SearchCollector[]
@@ -1852,6 +1863,7 @@ export interface SearchMvtRequest extends RequestBase {
   grid_agg?: SearchMvtGridAggregationType
   grid_precision?: integer
   grid_type?: SearchMvtGridType
+  project_routing?: ProjectRouting
   size?: integer
   track_total_hits?: SearchTrackHits
   with_labels?: boolean
@@ -1927,6 +1939,7 @@ export interface SearchTemplateRequest extends RequestBase {
   ignore_unavailable?: boolean
   preference?: string
   profile?: boolean
+  project_routing?: ProjectRouting
   routing?: Routing
   scroll?: Duration
   search_type?: SearchType
@@ -3388,7 +3401,7 @@ export type AggregationsCompositeAggregateKey = Record<Field, FieldValue>
 export interface AggregationsCompositeAggregation extends AggregationsBucketAggregationBase {
   after?: AggregationsCompositeAggregateKey
   size?: integer
-  sources?: Record<string, AggregationsCompositeAggregationSource>[]
+  sources?: Partial<Record<string, AggregationsCompositeAggregationSource>>[]
 }
 
 export interface AggregationsCompositeAggregationBase {
@@ -7352,7 +7365,6 @@ export interface CatAllocationAllocationRecord {
 
 export interface CatAllocationRequest extends CatCatRequestBase {
   node_id?: NodeIds
-  bytes?: Bytes
   h?: CatCatAllocationColumns
   s?: Names
   local?: boolean
@@ -7398,6 +7410,7 @@ export interface CatCountCountRecord {
 export interface CatCountRequest extends CatCatRequestBase {
   index?: Indices
   h?: CatCatCountColumns
+  project_routing?: ProjectRouting
   s?: Names
 }
 
@@ -7417,7 +7430,6 @@ export interface CatFielddataFielddataRecord {
 
 export interface CatFielddataRequest extends CatCatRequestBase {
   fields?: Fields
-  bytes?: Bytes
   h?: CatCatFieldDataColumns
   s?: Names
 }
@@ -7478,7 +7490,6 @@ export interface CatHealthHealthRecord {
 }
 
 export interface CatHealthRequest extends CatCatRequestBase {
-  time?: TimeUnit
   ts?: boolean
   h?: CatCatHealthColumns
   s?: Names
@@ -7785,12 +7796,10 @@ export interface CatIndicesIndicesRecord {
 
 export interface CatIndicesRequest extends CatCatRequestBase {
   index?: Indices
-  bytes?: Bytes
   expand_wildcards?: ExpandWildcards
   health?: HealthStatus
   include_unloaded_segments?: boolean
   pri?: boolean
-  time?: TimeUnit
   master_timeout?: Duration
   h?: CatCatIndicesColumns
   s?: Names
@@ -7863,10 +7872,8 @@ export interface CatMlDataFrameAnalyticsDataFrameAnalyticsRecord {
 export interface CatMlDataFrameAnalyticsRequest extends CatCatRequestBase {
   id?: Id
   allow_no_match?: boolean
-  bytes?: Bytes
   h?: CatCatDfaColumns
   s?: CatCatDfaColumns
-  time?: TimeUnit
 }
 
 export type CatMlDataFrameAnalyticsResponse = CatMlDataFrameAnalyticsDataFrameAnalyticsRecord[]
@@ -7911,7 +7918,6 @@ export interface CatMlDatafeedsRequest extends CatCatRequestBase {
   allow_no_match?: boolean
   h?: CatCatDatafeedColumns
   s?: CatCatDatafeedColumns
-  time?: TimeUnit
 }
 
 export type CatMlDatafeedsResponse = CatMlDatafeedsDatafeedsRecord[]
@@ -8096,10 +8102,8 @@ export interface CatMlJobsJobsRecord {
 export interface CatMlJobsRequest extends CatCatRequestBase {
   job_id?: Id
   allow_no_match?: boolean
-  bytes?: Bytes
   h?: CatCatAnomalyDetectorColumns
   s?: CatCatAnomalyDetectorColumns
-  time?: TimeUnit
 }
 
 export type CatMlJobsResponse = CatMlJobsJobsRecord[]
@@ -8107,12 +8111,10 @@ export type CatMlJobsResponse = CatMlJobsJobsRecord[]
 export interface CatMlTrainedModelsRequest extends CatCatRequestBase {
   model_id?: Id
   allow_no_match?: boolean
-  bytes?: Bytes
   h?: CatCatTrainedModelsColumns
   s?: CatCatTrainedModelsColumns
   from?: integer
   size?: integer
-  time?: TimeUnit
 }
 
 export type CatMlTrainedModelsResponse = CatMlTrainedModelsTrainedModelsRecord[]
@@ -8459,13 +8461,11 @@ export interface CatNodesNodesRecord {
 }
 
 export interface CatNodesRequest extends CatCatRequestBase {
-  bytes?: Bytes
-  full_id?: boolean | string
+  full_id?: boolean
   include_unloaded_segments?: boolean
   h?: CatCatNodeColumns
   s?: Names
   master_timeout?: Duration
-  time?: TimeUnit
 }
 
 export type CatNodesResponse = CatNodesNodesRecord[]
@@ -8486,7 +8486,6 @@ export interface CatPendingTasksRequest extends CatCatRequestBase {
   s?: Names
   local?: boolean
   master_timeout?: Duration
-  time?: TimeUnit
 }
 
 export type CatPendingTasksResponse = CatPendingTasksPendingTasksRecord[]
@@ -8576,11 +8575,9 @@ export interface CatRecoveryRecoveryRecord {
 export interface CatRecoveryRequest extends CatCatRequestBase {
   index?: Indices
   active_only?: boolean
-  bytes?: Bytes
   detailed?: boolean
   h?: CatCatRecoveryColumns
   s?: Names
-  time?: TimeUnit
 }
 
 export type CatRecoveryResponse = CatRecoveryRecoveryRecord[]
@@ -8603,7 +8600,6 @@ export type CatRepositoriesResponse = CatRepositoriesRepositoriesRecord[]
 
 export interface CatSegmentsRequest extends CatCatRequestBase {
   index?: Indices
-  bytes?: Bytes
   h?: CatCatSegmentsColumns
   s?: Names
   local?: boolean
@@ -8656,11 +8652,9 @@ export interface CatSegmentsSegmentsRecord {
 
 export interface CatShardsRequest extends CatCatRequestBase {
   index?: Indices
-  bytes?: Bytes
   h?: CatCatShardColumns
   s?: Names
   master_timeout?: Duration
-  time?: TimeUnit
 }
 
 export type CatShardsResponse = CatShardsShardsRecord[]
@@ -8886,7 +8880,6 @@ export interface CatSnapshotsRequest extends CatCatRequestBase {
   h?: CatCatSnapshotsColumns
   s?: Names
   master_timeout?: Duration
-  time?: TimeUnit
 }
 
 export type CatSnapshotsResponse = CatSnapshotsSnapshotsRecord[]
@@ -8932,7 +8925,6 @@ export interface CatTasksRequest extends CatCatRequestBase {
   parent_task_id?: string
   h?: CatCatTasksColumns
   s?: Names
-  time?: TimeUnit
   timeout?: Duration
   wait_for_completion?: boolean
 }
@@ -9002,7 +8994,6 @@ export interface CatThreadPoolRequest extends CatCatRequestBase {
   thread_pool_patterns?: Names
   h?: CatCatThreadPoolColumns
   s?: Names
-  time?: TimeUnit
   local?: boolean
   master_timeout?: Duration
 }
@@ -9058,7 +9049,6 @@ export interface CatTransformsRequest extends CatCatRequestBase {
   from?: integer
   h?: CatCatTransformColumns
   s?: CatCatTransformColumns
-  time?: TimeUnit
   size?: integer
 }
 
@@ -11015,6 +11005,7 @@ export interface EqlSearchRequest extends RequestBase {
   ignore_unavailable?: boolean
   keep_alive?: Duration
   keep_on_completion?: boolean
+  project_routing?: ProjectRouting
   wait_for_completion_timeout?: Duration
   body?: {
     query: string
@@ -11126,6 +11117,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
     include_ccs_metadata?: boolean
+    include_execution_metadata?: boolean
     wait_for_completion_timeout?: Duration
     keep_alive?: Duration
     keep_on_completion?: boolean
@@ -11200,6 +11192,7 @@ export interface EsqlQueryRequest extends RequestBase {
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
     include_ccs_metadata?: boolean
+    include_execution_metadata?: boolean
   }
 }
 
@@ -13326,6 +13319,7 @@ export interface IndicesResolveIndexRequest extends RequestBase {
   ignore_unavailable?: boolean
   allow_no_indices?: boolean
   mode?: IndicesIndexMode | IndicesIndexMode[]
+  project_routing?: ProjectRouting
 }
 
 export interface IndicesResolveIndexResolveIndexAliasItem {
@@ -15002,6 +14996,8 @@ export interface IngestFailProcessor extends IngestProcessorBase {
   message: string
 }
 
+export type IngestFieldAccessPattern = 'classic' | 'flexible'
+
 export type IngestFingerprintDigest = 'MD5' | 'SHA-1' | 'SHA-256' | 'SHA-512' | 'MurmurHash3'
 
 export interface IngestFingerprintProcessor extends IngestProcessorBase {
@@ -15183,6 +15179,7 @@ export interface IngestPipeline {
   created_date_millis?: EpochTime<UnitMillis>
   modified_date?: DateTime
   modified_date_millis?: EpochTime<UnitMillis>
+  field_access_pattern?: IngestFieldAccessPattern
 }
 
 export interface IngestPipelineConfig {
@@ -15519,6 +15516,7 @@ export interface IngestPutPipelineRequest extends RequestBase {
     processors?: IngestProcessorContainer[]
     version?: VersionNumber
     deprecated?: boolean
+    field_access_pattern?: IngestFieldAccessPattern
   }
 }
 
@@ -17627,7 +17625,7 @@ export interface MlGetOverallBucketsRequest extends RequestBase {
   bucket_span?: Duration
   end?: DateTime
   exclude_interim?: boolean
-  overall_score?: double | string
+  overall_score?: double
   start?: DateTime
   top_n?: integer
   body?: {
@@ -17635,7 +17633,7 @@ export interface MlGetOverallBucketsRequest extends RequestBase {
     bucket_span?: Duration
     end?: DateTime
     exclude_interim?: boolean
-    overall_score?: double | string
+    overall_score?: double
     start?: DateTime
     top_n?: integer
   }
@@ -21174,8 +21172,8 @@ export type ShutdownType = 'restart' | 'remove' | 'replace'
 
 export interface ShutdownDeleteNodeRequest extends RequestBase {
   node_id: NodeId
-  master_timeout?: TimeUnit
-  timeout?: TimeUnit
+  master_timeout?: Duration
+  timeout?: Duration
 }
 
 export type ShutdownDeleteNodeResponse = AcknowledgedResponseBase
@@ -21201,7 +21199,7 @@ export interface ShutdownGetNodePluginsStatus {
 
 export interface ShutdownGetNodeRequest extends RequestBase {
   node_id?: NodeIds
-  master_timeout?: TimeUnit
+  master_timeout?: Duration
 }
 
 export interface ShutdownGetNodeResponse {
@@ -21218,8 +21216,8 @@ export type ShutdownGetNodeShutdownType = 'remove' | 'restart'
 
 export interface ShutdownPutNodeRequest extends RequestBase {
   node_id: NodeId
-  master_timeout?: TimeUnit
-  timeout?: TimeUnit
+  master_timeout?: Duration
+  timeout?: Duration
   body?: {
     type: ShutdownType
     reason: string
@@ -21982,6 +21980,7 @@ export interface SqlGetAsyncStatusResponse {
 
 export interface SqlQueryRequest extends RequestBase {
   format?: SqlQuerySqlFormat
+  project_routing?: ProjectRouting
   body?: {
     allow_partial_search_results?: boolean
     catalog?: string
@@ -22047,6 +22046,32 @@ export interface SslCertificatesRequest extends RequestBase {
 }
 
 export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
+
+export interface StreamsLogsDisableRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type StreamsLogsDisableResponse = AcknowledgedResponseBase
+
+export interface StreamsLogsEnableRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type StreamsLogsEnableResponse = AcknowledgedResponseBase
+
+export interface StreamsStatusLogsStatus {
+  enabled: boolean
+}
+
+export interface StreamsStatusRequest extends RequestBase {
+  master_timeout?: TimeUnit
+}
+
+export interface StreamsStatusResponse {
+  logs: StreamsStatusLogsStatus
+}
 
 export interface SynonymsSynonymRule {
   id?: Id
@@ -23923,5 +23948,7 @@ export interface SpecUtilsCommonCatQueryParameters {
   format?: string
   help?: boolean
   v?: boolean
+  bytes?: Bytes
+  time?: TimeUnit
 }
 
