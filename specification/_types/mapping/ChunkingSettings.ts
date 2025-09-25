@@ -35,7 +35,9 @@ export class ChunkingSettings implements OverloadOf<InferenceChunkingSettings> {
   sentence_overlap?: integer
 }
 
-export class ChunkRescorerChunkingSettings implements OverloadOf<InferenceChunkingSettings> {
+export class ChunkRescorerChunkingSettings
+  implements OverloadOf<InferenceChunkingSettings>
+{
   strategy?: string
 
   separator_group?: string

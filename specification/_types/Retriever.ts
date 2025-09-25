@@ -23,8 +23,8 @@ import { FieldCollapse } from '@global/search/_types/FieldCollapse'
 import { Rescore } from '@global/search/_types/rescoring'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id, IndexName } from './common'
-import { QueryContainer } from './query_dsl/abstractions'
 import { ChunkRescorerChunkingSettings } from './mapping/ChunkingSettings'
+import { QueryContainer } from './query_dsl/abstractions'
 
 /**
  * @variants container
@@ -155,10 +155,10 @@ export class TextSimilarityReranker extends RetrieverBase {
   inference_text: string
   /** The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text. */
   field: string
-  /** Whether to rescore on only the best matching chunks. 
+  /** Whether to rescore on only the best matching chunks.
    * @availability stack since=9.2.0 stability=beta
    * @availability serverless stability=beta
-  */
+   */
   chunk_rescorer?: ChunkRescorer
 }
 
