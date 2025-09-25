@@ -30,6 +30,7 @@ import { integer, long } from './Numeric'
 import { Result } from './Result'
 import { ShardStatistics } from './Stats'
 import { DateTime } from './Time'
+import { FailureStoreStatus } from '@global/bulk/types'
 
 export class RequestBase implements CommonQueryParameters {}
 
@@ -63,6 +64,10 @@ export class WriteResponseBase {
    * The document version, which is incremented each time the document is updated.
    */
   _version: VersionNumber
+  /**
+   * The role of the failure store in this document response
+   */
+  failure_store?: FailureStoreStatus
   forced_refresh?: boolean
 }
 
