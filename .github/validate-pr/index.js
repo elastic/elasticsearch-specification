@@ -54,11 +54,11 @@ async function run() {
   )
   const reports = new Map()
 
-  cd(tsValidationPath)
 
   // Collect all APIs to validate
   const apisToValidate = new Set()
 
+  cd(path.join(__dirname, '..', '..'))
   for (const file of await glob('specification/**/*.ts')) {
     if (file.startsWith('specification/_types')) continue
     if (file.startsWith('specification/_spec_utils')) continue
@@ -78,6 +78,7 @@ async function run() {
     }
   }
 
+  cd(tsValidationPath)
   console.log(`Validating ${apisToValidate.size} APIs...`)
 
   // Call getReport once with all APIs
