@@ -156,8 +156,8 @@ export class TextSimilarityReranker extends RetrieverBase {
   /** The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text. */
   field: string
   /** Whether to rescore on only the best matching chunks. 
-   * @availability stack since=9.2.0 stability=experimental
-   * @availability serverless stability=experimental
+   * @availability stack since=9.2.0 stability=beta
+   * @availability serverless stability=beta
   */
   chunk_rescorer?: ChunkRescorer
 }
@@ -175,7 +175,7 @@ export class RuleRetriever extends RetrieverBase {
 
 export class ChunkRescorer {
   /** The number of chunks per document to evaluate for reranking. */
-  size?: integer,
+  size?: integer
   /** Chunking settings to apply */
   chunking_settings?: ChunkRescorerChunkingSettings
 }
