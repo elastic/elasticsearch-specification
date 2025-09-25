@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { FailureStoreStatus } from '@global/bulk/types'
 import { CommonQueryParameters } from '@spec_utils/behaviors'
 import {
   Id,
@@ -30,7 +31,6 @@ import { integer, long } from './Numeric'
 import { Result } from './Result'
 import { ShardStatistics } from './Stats'
 import { DateTime } from './Time'
-import { FailureStoreStatus } from '@global/bulk/types'
 
 export class RequestBase implements CommonQueryParameters {}
 
