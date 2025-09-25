@@ -24,6 +24,7 @@ import { Rescore } from '@global/search/_types/rescoring'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id, IndexName } from './common'
 import { QueryContainer } from './query_dsl/abstractions'
+import { ChunkRescorerChunkingSettings } from './mapping/ChunkingSettings'
 
 /**
  * @variants container
@@ -150,10 +151,15 @@ export class TextSimilarityReranker extends RetrieverBase {
   rank_window_size?: integer
   /** Unique identifier of the inference endpoint created using the inference API. */
   inference_id?: string
-  /** The text snippet used as the basis for similarity comparison */
+  /** The text snippet used as the basis for similarity comparison. */
   inference_text: string
-  /** The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text */
+  /** The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text. */
   field: string
+  /** Whether to rescore on only the best matching chunks. 
+   * @availability stack since=9.2.0 stability=experimental
+   * @availability serverless stability=experimental
+  */
+  chunk_rescorer?: ChunkRescorer
 }
 
 export class RuleRetriever extends RetrieverBase {
@@ -165,4 +171,11 @@ export class RuleRetriever extends RetrieverBase {
   retriever: RetrieverContainer
   /** This value determines the size of the individual result set.  */
   rank_window_size?: integer
+}
+
+export class ChunkRescorer {
+  /** The number of chunks per document to evaluate for reranking. */
+  size?: integer,
+  /** Chunking settings to apply */
+  chunking_settings?: ChunkRescorerChunkingSettings
 }
