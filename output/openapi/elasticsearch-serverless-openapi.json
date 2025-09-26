@@ -52613,6 +52613,9 @@
           "_version": {
             "$ref": "#/components/schemas/_types.VersionNumber"
           },
+          "failure_store": {
+            "$ref": "#/components/schemas/_global.bulk.FailureStoreStatus"
+          },
           "forced_refresh": {
             "type": "boolean"
           }
