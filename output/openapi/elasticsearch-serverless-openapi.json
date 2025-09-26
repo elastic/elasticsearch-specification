@@ -61601,6 +61601,14 @@
               }
             ]
           },
+          "failure_store": {
+            "description": "The role of the failure store in this document response",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.bulk.FailureStoreStatus"
+              }
+            ]
+          },
           "forced_refresh": {
             "type": "boolean"
           }
