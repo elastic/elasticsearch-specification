@@ -42,7 +42,7 @@ actions:
             
             This API provides an alternative to relying solely on Kibana UI for connector and sync job management. The API comes with a set of validations and assertions to ensure that the state representation in the internal index remains valid.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/es-connectors-tutorial-api.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/es-connectors-tutorial-api.html
             description: Check out the connector API tutorial
         - name: ccr
           x-displayName: Cross-cluster replication
@@ -51,12 +51,12 @@ actions:
           x-displayName: Data stream
           externalDocs:
             description: Learn more about data streams. 
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/data-streams.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams.html
         - name: document
           x-displayName: Document
           externalDocs:
             description: Learn more about reading and writing documents.
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/docs-replication.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-replication.html
       # E  
         - name: enrich
           x-displayName: Enrich
@@ -65,14 +65,14 @@ actions:
           description: >
             Event Query Language (EQL) is a query language for event-based time series data, such as logs, metrics, and traces.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/eql.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/eql.html
             description: Learn more about EQL search.
         - name: esql
           x-displayName: ES|QL
           description: >
             The Elasticsearch Query Language (ES|QL) provides a powerful way to filter, transform, and analyze data stored in Elasticsearch, and in the future in other runtimes.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/esql.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/esql.html
             description: Learn more about ES|QL.
       # F
         - name: features
@@ -86,7 +86,7 @@ actions:
           description: >
             The graph explore API enables you to extract and summarize information about the documents and terms in an Elasticsearch data stream or index.
           externalDocs:
-            url: https://www.elastic.co/guide/en/kibana/8.x/xpack-graph.html
+            url: https://www.elastic.co/guide/en/kibana/8.19/xpack-graph.html
             description: Get started with Graph.
       # I
         - name: indices
@@ -96,7 +96,7 @@ actions:
         - name: ilm
           x-displayName: Index lifecycle management
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/index-lifecycle-management.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/index-lifecycle-management.html
             description: Learn more about managing the index lifecycle.
         - name: inference
           x-displayName: Inference
@@ -121,7 +121,7 @@ actions:
           description: >
             Logstash APIs enable you to manage pipelines that are used by Logstash Central Management.
           externalDocs:
-            url: https://www.elastic.co/guide/en/logstash/8.x/logstash-centralized-pipeline-management.html
+            url: https://www.elastic.co/guide/en/logstash/8.19/logstash-centralized-pipeline-management.html
             description: Learn more about centralized pipeline management.
       # M
         - name: ml
@@ -130,19 +130,19 @@ actions:
           x-displayName: Machine learning anomaly detection
           # description:
           externalDocs:
-            url: https://www.elastic.co/guide/en/machine-learning/8.x/ml-ad-finding-anomalies.html
+            url: https://www.elastic.co/guide/en/machine-learning/8.19/ml-ad-finding-anomalies.html
             description: Learn more about finding anomalies.
         - name: ml data frame
           x-displayName: Machine learning data frame analytics
           # description:
           externalDocs:
-            url: https://www.elastic.co/guide/en/machine-learning/8.x/ml-dfa-overview.html
+            url: https://www.elastic.co/guide/en/machine-learning/8.19/ml-dfa-overview.html
             description: Learn more about data frame analytics.
         - name: ml trained model
           x-displayName: Machine learning trained model
           # description:
           externalDocs:
-            url: https://www.elastic.co/guide/en/machine-learning/8.x/ml-nlp-overview.html
+            url: https://www.elastic.co/guide/en/machine-learning/8.19/ml-nlp-overview.html
             description: Learn more about natural language processing.
         - name: migration
           x-displayName: Migration
@@ -162,7 +162,7 @@ actions:
             If a query matches one or more rules in the ruleset, the query is re-written to apply the rules before searching.
             This allows pinning documents for only queries that match a specific term.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/query-dsl-rule-query.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/query-dsl-rule-query.html
             description: Learn more about the rule query.
       # R
         - name: rollup
@@ -174,7 +174,7 @@ actions:
             Use the script support APIs to get a list of supported script contexts and languages.
             Use the stored script APIs to manage stored scripts and search templates.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/modules-scripting.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/modules-scripting.html
         - name: search
           x-displayName: Search
         - name: search_application
@@ -188,21 +188,21 @@ actions:
           description: >
             Snapshot and restore APIs enable you to set up snapshot repositories, manage snapshot backups, and restore snapshots to a running cluster.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/snapshot-restore.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/snapshot-restore.html
             description: Learn more about snapshot and restore operations.
         - name: slm
           x-displayName: Snapshot lifecycle management
           description: >
             Snapshot lifecycle management (SLM) APIs enable you to set up policies to automatically take snapshots and control how long they are retained.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/snapshots-take-snapshot.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/snapshots-take-snapshot.html
             description: Learn more about creating a snapshot.
         - name: sql
           x-displayName: SQL
           description: >
             Elasticsearch's SQL APIs enable you to run SQL queries on Elasticsearch indices and data streams.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/xpack-sql.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/xpack-sql.html
             description: Check out the overview and tutorials for the Elasticsearch SQL features.
         - name: synonyms
           x-displayName: Synonyms
@@ -226,7 +226,7 @@ actions:
           description: >
             You can use Watcher to watch for changes or anomalies in your data and perform the necessary actions in response.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/xpack-alerting.html
+            url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/xpack-alerting.html
             description: Learn more about Watcher.
 # Add x-model and/or abbreviate schemas that should point to other references
   - target: "$.components['schemas']['_types.query_dsl.QueryContainer']"
@@ -260,7 +260,7 @@ actions:
       x-model: true
       externalDocs:
         description: Templating a role query
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/field-and-document-access-control.html#templating-role-query
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/field-and-document-access-control.html#templating-role-query
   - target: "$.components['schemas']['_types.query_dsl.DistanceFeatureQuery']"
     description: Add x-model for distance feature query
     update:
@@ -1009,7 +1009,7 @@ actions:
           All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
           By default, this property has the following value: `{"match_all": {"boost": 1}}`.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/query-dsl.html
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/query-dsl.html
           description: Query DSL
   - target: "$.components['schemas']['ml._types.CategorizationAnalyzerDefinition'].properties.tokenizer"
     description: Remove tokenizer object from ML anomaly detection analysis config
@@ -1030,7 +1030,7 @@ actions:
           Additionally, the `ml_classic` tokenizer is available, which tokenizes in the same way as the non-customizable tokenizer in old versions of the product (before 6.2).
           `ml_classic` was the default categorization tokenizer in versions 6.2 to 7.13, so if you need categorization identical to the default for jobs created in these versions, specify `"tokenizer": "ml_classic"` in your `categorization_analyzer`.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/analysis-tokenizers.html
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/analysis-tokenizers.html
           description: Tokenizer reference
   - target: "$.components['schemas']['ml._types.DataframeAnalyticsSource'].properties.query"
     description: Remove query object from data frame analytics source
@@ -1047,7 +1047,7 @@ actions:
           All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
           By default, this property has the following value: `{"match_all": {}}`.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/query-dsl.html
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/query-dsl.html
           description: Query DSL
   - target: "$.components['schemas']['transform._types.Source'].properties.query"
     description: Remove query object from transform source
@@ -1061,21 +1061,21 @@ actions:
         description: >
           A query clause that retrieves a subset of data from the source index.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/query-dsl.html
+          url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/query-dsl.html
           description: Query DSL
   - target: "$.components['schemas']['_global.search._types.FieldCollapse']"
     description: Add x-model and externalDocs
     update:
       x-model: true
       externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/collapse-search-results.html
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/collapse-search-results.html
   - target: "$.components['schemas']['indices._types.IndexSettings']"
     description: Add x-model and externalDocs for IndexSettings component
     update:
       x-model: true
       externalDocs:
         description: Index settings
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/8.x/index-modules.html
+        url: https://www.elastic.co/guide/en/elasticsearch/reference/8.19/index-modules.html
   - target: "$.components['schemas']['indices._types.IndexSettings'].properties"
     description: Remove properties IndexSettings object
     remove: true
