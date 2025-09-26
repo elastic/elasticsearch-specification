@@ -20,7 +20,6 @@
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 
-
 /**
  * @behavior_meta AdditionalProperties fieldname=user_defined_tags description="Additional tags defined by user."
  */
@@ -36,7 +35,7 @@ class ProjectTags {
   linked_projects?: Dictionary<string, Tags>
 }
 
-export class Response  {
+export class Response {
   /**
    * @codegen_name project_tags
    */
