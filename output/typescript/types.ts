@@ -2222,6 +2222,11 @@ export type Bytes = 'b' | 'kb' | 'mb' | 'gb' | 'tb' | 'pb'
 
 export type CategoryId = string
 
+export interface ChunkRescorer {
+  size?: integer
+  chunking_settings?: MappingChunkRescorerChunkingSettings
+}
+
 export type ClusterAlias = string
 
 export interface ClusterDetails {
@@ -3020,6 +3025,7 @@ export interface TextSimilarityReranker extends RetrieverBase {
   inference_id?: string
   inference_text: string
   field: string
+  chunk_rescorer?: ChunkRescorer
 }
 
 export type ThreadType = 'cpu' | 'wait' | 'block' | 'gpu' | 'mem'
@@ -5587,6 +5593,15 @@ export interface MappingBooleanProperty extends MappingDocValuesPropertyBase {
 export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
   type: 'byte'
   null_value?: byte
+}
+
+export interface MappingChunkRescorerChunkingSettings {
+  strategy?: string
+  separator_group?: string
+  separators?: string[]
+  max_chunk_size: integer
+  overlap?: integer
+  sentence_overlap?: integer
 }
 
 export interface MappingChunkingSettings {
