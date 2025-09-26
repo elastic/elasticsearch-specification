@@ -22,10 +22,8 @@
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import 'zx/globals'
-import assert from 'assert'
 import * as core from '@actions/core'
 import { copyFile } from 'fs/promises'
-import * as github from '@actions/github'
 import specification from '../../output/schema/schema.json' with { type: 'json' }
 import baselineValidation from '../../../clients-flight-recorder/recordings/types-validation/types-validation.json' with { type: 'json' }
 import { run as getReport } from '../../../clients-flight-recorder/scripts/types-validator/index.js'
@@ -36,7 +34,6 @@ import {
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-const octokit = github.getOctokit(argv.token)
 
 const privateNames = ['_global']
 const tick = '`'
@@ -55,51 +52,16 @@ async function run() {
     path.join(__dirname, '..', '..', 'output', 'typescript', 'types.ts'),
     path.join(tsValidationPath, 'types.ts')
   )
-  const context = github.context
-  assert(context.payload.pull_request, 'We should be in a PR context')
-  const files = []
-  let page = 1
-  while (true) {
-    const { data } = await octokit.rest.pulls.listFiles({
-      owner: 'elastic',
-      repo: 'elasticsearch-specification',
-      pull_number: context.payload.pull_request.number,
-      page,
-      per_page: 100
-    })
-    if (data.length > 0) {
-      files.push(
-        ...data
-          .filter((entry) => entry.status !== 'deleted')
-          .map((entry) => entry.filename)
-      )
-      page += 1
-    } else {
-      break
-    }
-  }
-
-  const specFiles = files.filter(
-    (file) => file.includes('specification') && !file.includes('compiler/test')
-  )
   const reports = new Map()
 
-  cd(tsValidationPath)
 
   // Collect all APIs to validate
   const apisToValidate = new Set()
 
-  for (const file of specFiles) {
+  cd(path.join(__dirname, '..', '..'))
+  for (const file of await glob('specification/**/*.ts')) {
     if (file.startsWith('specification/_types')) continue
-    if (file.startsWith('specification/_spec_utils')) continue
-    if (file.startsWith('specification/_doc_ids')) continue
-    if (file.startsWith('specification/_json_spec')) continue
     if (file.startsWith('specification/node_modules')) continue
-    if (file.endsWith('tsconfig.json')) continue
-    if (file.endsWith('eslint.config.js')) continue
-    if (file.endsWith('package.json')) continue
-    if (file.endsWith('package-lock.json')) continue
-    if (file.endsWith('.md')) continue
     if (getApi(file).endsWith('_types')) {
       const apis = specification.endpoints
         .filter(endpoint => endpoint.name.split('.').filter(s => !privateNames.includes(s))[0] === getApi(file).split('.')[0])
@@ -113,26 +75,27 @@ async function run() {
     }
   }
 
-  // Call getReport once with all APIs
-  if (apisToValidate.size > 0) {
-    const allApis = Array.from(apisToValidate).join(',')
-    const report = await getReport({
-      api: allApis,
-      'generate-report': false,
-      request: true,
-      response: true,
-      ci: false,
-      verbose: false
-    })
+  cd(tsValidationPath)
+  console.log(`Validating ${apisToValidate.size} APIs...`)
 
-    // Extract individual API reports from the combined result
-    for (const api of apisToValidate) {
-      const namespace = getNamespace(api)
-      if (report.has(namespace)) {
-        const namespaceReport = report.get(namespace).find(r => r.api === getName(api))
-        if (namespaceReport) {
-          reports.set(api, namespaceReport)
-        }
+  // Call getReport once with all APIs
+  const allApis = Array.from(apisToValidate).join(',')
+  const report = await getReport({
+    api: allApis,
+    'generate-report': false,
+    request: true,
+    response: true,
+    ci: false,
+    verbose: false
+  })
+
+  // Extract individual API reports from the combined result
+  for (const api of apisToValidate) {
+    const namespace = getNamespace(api)
+    if (report.has(namespace)) {
+      const namespaceReport = report.get(namespace).find(r => r.api === getName(api))
+      if (namespaceReport) {
+        reports.set(api, namespaceReport)
       }
     }
   }
@@ -170,7 +133,12 @@ function getApi (file) {
 }
 
 function findBaselineReport(apiName, baselineValidation) {
-  const [namespace, method] = apiName.split('.')
+  let namespace, method = [null, null]
+  if (!apiName.includes('.')) {
+    [namespace, method] = ['global', apiName]
+  } else {
+    [namespace, method] = apiName.split('.')
+  }
 
   if (!baselineValidation.namespaces[namespace]) {
     return null
