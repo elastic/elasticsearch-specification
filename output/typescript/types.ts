@@ -3087,6 +3087,7 @@ export interface WriteResponseBase {
   _seq_no?: SequenceNumber
   _shards: ShardStatistics
   _version: VersionNumber
+  failure_store?: BulkFailureStoreStatus
   forced_refresh?: boolean
 }
 
