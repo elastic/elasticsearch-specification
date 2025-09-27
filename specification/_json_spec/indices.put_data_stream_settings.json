@@ -31,7 +31,8 @@
       },
       "timeout": {
         "type": "time",
-        "description": "Period to wait for a response"
+        "description": "Period to wait for a response",
+        "default": "30s"
       },
       "master_timeout": {
         "type": "time",
