@@ -9259,6 +9259,191 @@
         ]
       }
     },
+    "/_data_stream/{name}/_settings": {
+      "get": {
+        "tags": [
+          "data stream"
+        ],
+        "summary": "Get data stream settings",
+        "description": "Get setting information for one or more data streams.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
+        "operationId": "indices-get-data-stream-settings",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "A comma-separated list of data streams or data stream patterns. Supports wildcards (`*`).",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Indices"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for a connection to the master node. If no response is\nreceived before the timeout expires, the request fails and returns an\nerror.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data_streams": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_data_stream_settings.DataStreamSettings"
+                      }
+                    }
+                  },
+                  "required": [
+                    "data_streams"
+                  ]
+                },
+                "examples": {
+                  "IndicesGetDataStreamSettingsResponseExample1": {
+                    "summary": "Get data stream settings on a data stream",
+                    "description": "This is a response to `GET /_data_stream/my-data-stream/_settings` where my-data-stream that has two settings set. The `effective_settings` field shows additional settings that are pulled from its template.\n",
+                    "value": "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream\",\n      \"settings\": {\n        \"index\": {\n          \"lifecycle\": {\n            \"name\": \"new-test-policy\"\n          },\n          \"number_of_shards\": \"11\"\n        }\n      },\n      \"effective_settings\": {\n        \"index\": {\n          \"lifecycle\": {\n            \"name\": \"new-test-policy\"\n          },\n          \"mode\": \"standard\",\n          \"number_of_shards\": \"11\",\n          \"number_of_replicas\": \"0\"\n        }\n      }\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data stream"
+        ],
+        "summary": "Update data stream settings",
+        "description": "This API can be used to override settings on specific data streams. These overrides will take precedence over what\nis specified in the template that the data stream matches. To prevent your data stream from getting into an invalid state,\nonly certain settings are allowed. If possible, the setting change is applied to all\nbacking indices. Otherwise, it will be applied when the data stream is next rolled over.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "operationId": "indices-put-data-stream-settings",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "A comma-separated list of data streams or data stream patterns.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Indices"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "dry_run",
+            "description": "If `true`, the request does not actually change the settings on any data streams or indices. Instead, it\nsimulates changing the settings and reports back to the user what would have happened had these settings\nactually been applied.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for a connection to the master node. If no response is\nreceived before the timeout expires, the request fails and returns an\nerror.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The period to wait for a response. If no response is received before the\n timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              },
+              "examples": {
+                "IndicesPutDataStreamSettingsRequestExample1": {
+                  "summary": "Change a data stream setting",
+                  "description": "This is a request to change two settings on a data stream.\n",
+                  "value": "{\n  \"index.lifecycle.name\" : \"new-test-policy\",\n  \"index.number_of_shards\": 11\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data_streams": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.put_data_stream_settings.UpdatedDataStreamSettings"
+                      }
+                    }
+                  },
+                  "required": [
+                    "data_streams"
+                  ]
+                },
+                "examples": {
+                  "IndicesPutDataStreamSettingsResponseExample1": {
+                    "summary": "Change data stream settings on a data stream",
+                    "description": "This shows a response to `PUT /_data_stream/my-data-stream/_settings` when two settings are successfully updated on the data stream. In this case, `index.number_of_shards` is only applied to the data stream -- it will be applied to the write index on rollover. The setting `index.lifecycle.name` is applied to the data stream and all backing indices.\n",
+                    "value": "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream\",\n      \"applied_to_data_stream\": true,\n      \"settings\": {\n        \"index\": {\n          \"lifecycle\": {\n            \"name\": \"new-test-policy\"\n          },\n          \"number_of_shards\": \"11\"\n        }\n      },\n      \"effective_settings\": {\n        \"index\": {\n          \"lifecycle\": {\n            \"name\": \"new-test-policy\"\n          },\n          \"mode\": \"standard\",\n          \"number_of_shards\": \"11\",\n          \"number_of_replicas\": \"0\"\n        }\n      },\n      \"index_settings_results\": {\n        \"applied_to_data_stream_only\": [\n          \"index.number_of_shards\"\n        ],\n        \"applied_to_data_stream_and_backing_indices\": [\n          \"index.lifecycle.name\"\n        ]\n      }\n    }\n  ]\n}"
+                  },
+                  "IndicesPutDataStreamSettingsResponseExample2": {
+                    "summary": "Change data stream settings on a data stream that has an index with a metadata block",
+                    "description": "This shows a response to `PUT /_data_stream/my-data-stream/_settings` when a setting is successfully applied to the data stream, but one of the backing indices, `.ds-my-data-stream-2025.05.28-000001`, has a write block. The response reports that the setting was not successfully applied to that index.\n",
+                    "value": "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream\",\n      \"applied_to_data_stream\": true,\n      \"settings\": {\n        \"index\": {\n          \"lifecycle\": {\n            \"name\": \"new-test-policy\"\n          },\n          \"number_of_shards\": \"11\"\n        }\n      },\n      \"effective_settings\": {\n        \"index\": {\n          \"lifecycle\": {\n            \"name\": \"new-test-policy\"\n          },\n          \"mode\": \"standard\",\n          \"number_of_shards\": \"11\",\n          \"number_of_replicas\": \"0\"\n        }\n      },\n      \"index_settings_results\": {\n        \"applied_to_data_stream_only\": [\n          \"index.number_of_shards\"\n        ],\n        \"applied_to_data_stream_and_backing_indices\": [\n          \"index.lifecycle.name\"\n        ],\n        \"errors\": [\n          {\n            \"index\": \".ds-my-data-stream-2025.05.28-000001\",\n            \"error\": \"index [.ds-my-data-stream-2025.05.28-000001] blocked by: [FORBIDDEN/9/index metadata (api)];\"\n          }\n        ]\n      }\n    }\n  ]\n}"
+                  },
+                  "IndicesPutDataStreamSettingsResponseExample3": {
+                    "summary": "Attempt to change a data stream setting that is not allowed",
+                    "description": "This shows a response to `PUT /_data_stream/my-data-stream/_settings` when a user attempts to set a setting that is not allowed on a data stream. As a result, no change was applied to the data stream.\n",
+                    "value": "{\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream\",\n      \"applied_to_data_stream\": false,\n      \"error\": \"Cannot set the following settings on a data stream: [index.number_of_replicas]\",\n      \"settings\": {},\n      \"effective_settings\": {},\n      \"index_settings_results\": {\n        \"applied_to_data_stream_only\": [],\n        \"applied_to_data_stream_and_backing_indices\": []\n      }\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_index_template": {
       "get": {
         "tags": [
@@ -60852,6 +61037,14 @@
             "description": "If `true`, the next write to this data stream will trigger a rollover first and the document will be indexed in the new backing index. If the rollover fails the indexing request will fail too.",
             "type": "boolean"
           },
+          "settings": {
+            "description": "The settings specific to this data stream that will take precedence over the settings in the matching index\ntemplate.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
           "status": {
             "description": "Health status of the data stream.\nThis health status is based on the state of the primary and replica shards of the stream’s backing indices.",
             "allOf": [
@@ -60890,6 +61083,7 @@
           "indices",
           "name",
           "rollover_on_write",
+          "settings",
           "status",
           "template",
           "timestamp_field"
@@ -60984,6 +61178,36 @@
         },
         "required": [
           "name"
+        ]
+      },
+      "indices.get_data_stream_settings.DataStreamSettings": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name of the data stream.",
+            "type": "string"
+          },
+          "settings": {
+            "description": "The settings specific to this data stream",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
+          "effective_settings": {
+            "description": "The settings specific to this data stream merged with the settings from its template. These `effective_settings`\nare the settings that will be used when a new index is created for this data stream.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "settings",
+          "effective_settings"
         ]
       },
       "indices.get_index_template.IndexTemplateItem": {
@@ -61205,6 +61429,107 @@
         "required": [
           "data_stream",
           "index"
+        ]
+      },
+      "indices.put_data_stream_settings.UpdatedDataStreamSettings": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The data stream name.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.IndexName"
+              }
+            ]
+          },
+          "applied_to_data_stream": {
+            "description": "If the settings were successfully applied to the data stream (or would have been, if running in `dry_run`\nmode), it is `true`. If an error occurred, it is `false`.",
+            "type": "boolean"
+          },
+          "error": {
+            "description": "A message explaining why the settings could not be applied to the data stream.",
+            "type": "string"
+          },
+          "settings": {
+            "description": "The settings that are specfic to this data stream that will override any settings from the matching index template.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
+          "effective_settings": {
+            "description": "The settings that are effective on this data stream, taking into account the settings from the matching index\ntemplate and the settings specific to this data stream.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
+          "index_settings_results": {
+            "description": "Information about whether and where each setting was applied.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices.put_data_stream_settings.IndexSettingResults"
+              }
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "applied_to_data_stream",
+          "settings",
+          "effective_settings",
+          "index_settings_results"
+        ]
+      },
+      "indices.put_data_stream_settings.IndexSettingResults": {
+        "type": "object",
+        "properties": {
+          "applied_to_data_stream_only": {
+            "description": "The list of settings that were applied to the data stream but not to backing indices. These will be applied to\nthe write index the next time the data stream is rolled over.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "applied_to_data_stream_and_backing_indices": {
+            "description": "The list of settings that were applied to the data stream and to all of its backing indices. These settings will\nalso be applied to the write index the next time the data stream is rolled over.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/indices.put_data_stream_settings.DataStreamSettingsError"
+            }
+          }
+        },
+        "required": [
+          "applied_to_data_stream_only",
+          "applied_to_data_stream_and_backing_indices"
+        ]
+      },
+      "indices.put_data_stream_settings.DataStreamSettingsError": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.IndexName"
+              }
+            ]
+          },
+          "error": {
+            "description": "A message explaining why the settings could not be applied to specific indices.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "index",
+          "error"
         ]
       },
       "indices.put_index_template.IndexTemplateMapping": {
