@@ -6487,7 +6487,7 @@
                     "description": "To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.",
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/_types.FieldValue"
+                      "$ref": "#/components/schemas/esql._types.ESQLParam"
                     }
                   },
                   "profile": {
@@ -62052,6 +62052,19 @@
           "cbor",
           "smile",
           "arrow"
+        ]
+      },
+      "esql._types.ESQLParam": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.FieldValue"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.FieldValue"
+            }
+          }
         ]
       },
       "esql._types.TableValuesContainer": {

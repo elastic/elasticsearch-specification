@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { FieldValue } from "@_types/common";
+import { FieldValue } from '@_types/common'
 
 export type ESQLParam = FieldValue | FieldValue[]

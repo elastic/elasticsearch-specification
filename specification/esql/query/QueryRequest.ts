@@ -19,9 +19,9 @@
 
 import { RequestBase } from '@_types/Base'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { ESQLParam } from '@esql/_types/types'
 import { EsqlFormat } from '@esql/_types/QueryParameters'
 import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
+import { ESQLParam } from '@esql/_types/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
