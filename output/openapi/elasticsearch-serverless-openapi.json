@@ -39396,6 +39396,9 @@
               "script_heuristic": {
                 "$ref": "#/components/schemas/_types.aggregations.ScriptedHeuristic"
               },
+              "p_value": {
+                "$ref": "#/components/schemas/_types.aggregations.PValueHeuristic"
+              },
               "shard_min_doc_count": {
                 "description": "Regulates the certainty a shard has if the term should actually be added to the candidate list or not with respect to the `min_doc_count`.\nTerms will only be considered if their local shard frequency within the set is higher than the `shard_min_doc_count`.",
                 "type": "number"
@@ -39473,6 +39476,19 @@
         "required": [
           "script"
         ]
+      },
+      "_types.aggregations.PValueHeuristic": {
+        "type": "object",
+        "properties": {
+          "background_is_superset": {
+            "type": "boolean"
+          },
+          "normalize_above": {
+            "description": "Should the results be normalized when above the given value.\nAllows for consistent significance results at various scales.\nNote: `0` is a special value which means no normalization",
+            "default": 0.0,
+            "type": "number"
+          }
+        }
       },
       "_types.aggregations.SignificantTextAggregation": {
         "allOf": [
