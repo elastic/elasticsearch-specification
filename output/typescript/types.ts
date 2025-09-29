@@ -11053,6 +11053,8 @@ export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
   is_running: boolean
 }
 
+export type EsqlESQLParam = FieldValue | FieldValue[]
+
 export interface EsqlEsqlClusterDetails {
   status: EsqlEsqlClusterStatus
   indices: string
@@ -11203,7 +11205,7 @@ export interface EsqlQueryRequest extends RequestBase {
     columnar?: boolean
     filter?: QueryDslQueryContainer
     locale?: string
-    params?: FieldValue[]
+    params?: EsqlESQLParam[]
     profile?: boolean
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
