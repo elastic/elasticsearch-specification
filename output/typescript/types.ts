@@ -16225,7 +16225,7 @@ export interface MlFillMaskInferenceOptions {
   num_top_classes?: integer
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
-  vocabulary: MlVocabulary
+  vocabulary?: MlVocabulary
 }
 
 export interface MlFillMaskInferenceUpdateOptions {
@@ -16644,7 +16644,7 @@ export interface MlTextEmbeddingInferenceOptions {
   embedding_size?: integer
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
-  vocabulary: MlVocabulary
+  vocabulary?: MlVocabulary
 }
 
 export interface MlTextEmbeddingInferenceUpdateOptions {
@@ -16655,7 +16655,7 @@ export interface MlTextEmbeddingInferenceUpdateOptions {
 export interface MlTextExpansionInferenceOptions {
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
-  vocabulary: MlVocabulary
+  vocabulary?: MlVocabulary
 }
 
 export interface MlTextExpansionInferenceUpdateOptions {
