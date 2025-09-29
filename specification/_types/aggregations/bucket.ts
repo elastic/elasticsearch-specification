@@ -814,6 +814,22 @@ export class ScriptedHeuristic {
   script: Script
 }
 
+export class PValueHeuristic {
+  /*
+   * Set to false to indicate that the background set does
+   * not contain the counts of the foreground set as they are filtered out.
+   * @server_default true
+   */
+  background_is_superset?: boolean
+  /**
+   * Should the results be normalized when above the given value.
+   * Allows for consistent significance results at various scales.
+   * Note: `0` is a special value which means no normalization
+   * @server_default 0
+   */
+  normalize_above?: long
+}
+
 /**
  * @ext_doc_id search-aggregations-bucket-significanttext-aggregation
  */
@@ -867,6 +883,16 @@ export class SignificantTermsAggregation extends BucketAggregationBase {
    * Customized score, implemented via a script.
    */
   script_heuristic?: ScriptedHeuristic
+  /**
+   * Significant terms heuristic that calculates the p-value between the term existing in foreground and background sets.
+   *
+   * The p-value is the probability of obtaining test results at least as extreme as
+   * the results actually observed, under the assumption that the null hypothesis is
+   * correct. The p-value is calculated assuming that the foreground set and the
+   * background set are independent https://en.wikipedia.org/wiki/Bernoulli_trial, with the null
+   * hypothesis that the probabilities are the same.
+   */
+  p_value?: PValueHeuristic
   /**
    * Regulates the certainty a shard has if the term should actually be added to the candidate list or not with respect to the `min_doc_count`.
    * Terms will only be considered if their local shard frequency within the set is higher than the `shard_min_doc_count`.

@@ -4026,6 +4026,11 @@ export interface AggregationsNormalizeAggregation extends AggregationsPipelineAg
 
 export type AggregationsNormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'z-score' | 'softmax'
 
+export interface AggregationsPValueHeuristic {
+  background_is_superset?: boolean
+  normalize_above?: long
+}
+
 export interface AggregationsParentAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsParentAggregate = AggregationsParentAggregateKeys
@@ -4198,6 +4203,7 @@ export interface AggregationsSignificantTermsAggregation extends AggregationsBuc
   mutual_information?: AggregationsMutualInformationHeuristic
   percentage?: AggregationsPercentageScoreHeuristic
   script_heuristic?: AggregationsScriptedHeuristic
+  p_value?: AggregationsPValueHeuristic
   shard_min_doc_count?: long
   shard_size?: integer
   size?: integer
