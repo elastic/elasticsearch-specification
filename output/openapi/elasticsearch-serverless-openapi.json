@@ -45664,6 +45664,14 @@
                   }
                 ]
               },
+              "p_value": {
+                "description": "Significant terms heuristic that calculates the p-value between the term existing in foreground and background sets.\n\nThe p-value is the probability of obtaining test results at least as extreme as\nthe results actually observed, under the assumption that the null hypothesis is\ncorrect. The p-value is calculated assuming that the foreground set and the\nbackground set are independent https://en.wikipedia.org/wiki/Bernoulli_trial, with the null\nhypothesis that the probabilities are the same.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.PValueHeuristic"
+                  }
+                ]
+              },
               "shard_min_doc_count": {
                 "description": "Regulates the certainty a shard has if the term should actually be added to the candidate list or not with respect to the `min_doc_count`.\nTerms will only be considered if their local shard frequency within the set is higher than the `shard_min_doc_count`.",
                 "type": "number"
@@ -45745,6 +45753,19 @@
         "required": [
           "script"
         ]
+      },
+      "_types.aggregations.PValueHeuristic": {
+        "type": "object",
+        "properties": {
+          "background_is_superset": {
+            "type": "boolean"
+          },
+          "normalize_above": {
+            "description": "Should the results be normalized when above the given value.\nAllows for consistent significance results at various scales.\nNote: `0` is a special value which means no normalization",
+            "default": 0.0,
+            "type": "number"
+          }
+        }
       },
       "_types.aggregations.SignificantTextAggregation": {
         "allOf": [
