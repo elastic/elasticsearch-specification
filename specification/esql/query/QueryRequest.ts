@@ -18,8 +18,8 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { FieldValue } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { ESQLParam } from '@esql/_types/types'
 import { EsqlFormat } from '@esql/_types/QueryParameters'
 import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -87,7 +87,7 @@ export interface Request extends RequestBase {
      * To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.
      * @doc_id esql-query-params
      */
-    params?: Array<FieldValue>
+    params?: Array<ESQLParam>
     /**
      * If provided and `true` the response will include an extra `profile` object
      * with information on how the query was executed. This information is for human debugging
