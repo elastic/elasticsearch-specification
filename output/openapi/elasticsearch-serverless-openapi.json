@@ -74404,10 +74404,7 @@
               }
             ]
           }
-        },
-        "required": [
-          "vocabulary"
-        ]
+        }
       },
       "ml._types.LearningToRankConfig": {
         "type": "object",
@@ -74548,10 +74545,7 @@
               }
             ]
           }
-        },
-        "required": [
-          "vocabulary"
-        ]
+        }
       },
       "ml._types.TextExpansionInferenceOptions": {
         "description": "Text expansion inference options",
@@ -74576,10 +74570,7 @@
               }
             ]
           }
-        },
-        "required": [
-          "vocabulary"
-        ]
+        }
       },
       "ml._types.QuestionAnsweringInferenceOptions": {
         "description": "Question answering inference options",
