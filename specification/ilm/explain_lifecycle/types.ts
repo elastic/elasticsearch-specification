@@ -38,7 +38,6 @@ export class LifecycleExplainManaged {
   age?: Duration
   /**
    * @availability stack since=9.2.0 stability=stable
-   * @availability serverless stability=stable
    */
   age_in_millis?: DurationValue<UnitMillis>
   failed_step?: Name
