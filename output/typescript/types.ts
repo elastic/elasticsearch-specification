@@ -11981,6 +11981,7 @@ export interface IndicesIndexState {
   settings?: IndicesIndexSettings
   defaults?: IndicesIndexSettings
   data_stream?: DataStreamName
+  data_stream_options?: IndicesDataStreamOptionsTemplate
   lifecycle?: IndicesDataStreamLifecycle
 }
 
