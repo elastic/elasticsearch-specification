@@ -19,7 +19,13 @@
 
 import { IndexName, Name, VersionNumber } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
+import {
+  DateTime,
+  Duration,
+  DurationValue,
+  EpochTime,
+  UnitMillis
+} from '@_types/Time'
 import { Phase } from '@ilm/_types/Phase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -30,6 +36,11 @@ export class LifecycleExplainManaged {
   action_time_millis?: EpochTime<UnitMillis>
   /* `lifecycle_date` as a duration */
   age?: Duration
+  /**
+   * @availability stack since=9.2.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  age_in_millis?: DurationValue<UnitMillis>
   failed_step?: Name
   failed_step_retry_count?: integer
   index: IndexName
