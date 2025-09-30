@@ -258,6 +258,12 @@ export class SemanticTextProperty {
    * they will not be applied to existing documents until they are reindexed.
    */
   chunking_settings?: ChunkingSettings
+  /**
+   * Multi-fields allow the same string value to be indexed in multiple ways for different purposes, such as one
+   * field for search and a multi-field for sorting and aggregations, or the same string value analyzed by different analyzers.
+   * @doc_id multi-fields
+   */
+  fields?: Dictionary<PropertyName, Property>
 }
 
 export class SearchAsYouTypeProperty extends CorePropertyBase {

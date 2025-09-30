@@ -6026,6 +6026,7 @@ export interface MappingSemanticTextProperty {
   inference_id?: Id
   search_inference_id?: Id
   chunking_settings?: MappingChunkingSettings
+  fields?: Record<PropertyName, MappingProperty>
 }
 
 export interface MappingShapeProperty extends MappingDocValuesPropertyBase {
