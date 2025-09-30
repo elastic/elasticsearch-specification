@@ -20598,6 +20598,21 @@ export interface SecurityGetSettingsResponse {
   'security-tokens': SecuritySecuritySettings
 }
 
+export interface SecurityGetStatsNodeSecurityStats {
+  roles: SecurityGetStatsRolesStats
+}
+
+export interface SecurityGetStatsRequest extends RequestBase {
+}
+
+export interface SecurityGetStatsResponse {
+  nodes: Record<string, SecurityGetStatsNodeSecurityStats>
+}
+
+export interface SecurityGetStatsRolesStats {
+  dls: XpackUsageSecurityRolesDls
+}
+
 export type SecurityGetTokenAccessTokenGrantType = 'password' | 'client_credentials' | '_kerberos' | 'refresh_token'
 
 export interface SecurityGetTokenAuthenticatedUser extends SecurityUser {
