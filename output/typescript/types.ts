@@ -23898,6 +23898,11 @@ export interface XpackUsageSecurityRolesDlsBitSetCache {
   count: integer
   memory?: ByteSize
   memory_in_bytes: ulong
+  hits: ulong
+  misses: ulong
+  evictions: ulong
+  hits_time_in_millis: ulong
+  misses_time_in_millis: ulong
 }
 
 export interface XpackUsageSecurityRolesFile {
