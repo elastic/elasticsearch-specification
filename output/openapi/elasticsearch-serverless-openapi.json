@@ -60504,14 +60504,6 @@
               }
             ]
           },
-          "data_stream_options": {
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
-              }
-            ]
-          },
           "lifecycle": {
             "description": "Data stream lifecycle applicable if this is a data stream.",
             "x-state": "Generally available",
