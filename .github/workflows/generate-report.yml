@@ -45,7 +45,14 @@ jobs:
           make contrib
 
       - name: Generate report
-        working-directory: ./clients-flight-recorder
+        working-directory: ./clients-flight-recorder/scripts/types-validator
         env:
           BRANCH: ${{ github.ref_name }}
-        run: node scripts/type-validator/index.js --generate-report --ci --branch $BRANCH
+        run: node index.js --generate-report --ci --branch $BRANCH
+
+      - name: Cache JSON report
+        id: cache-json-report
+        uses: actions/cache/save@v4
+        with:
+          path: ./clients-flight-recorder/recordings/types-validation/types-validation.json
+          key: ${{ steps.restore-json-report.outputs.cache-primary-key }}
