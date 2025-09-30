@@ -1,11 +1,10 @@
 name: Cache API validation report
 
 on:
-  pull_request
-  # push:
-  #   branches:
-  #     - main
-  #     - '[0-9]+.[0-9]+'
+  push:
+    branches:
+      - main
+      - '[0-9]+.[0-9]+'
 
 jobs:
   generate-report:
@@ -48,7 +47,7 @@ jobs:
         working-directory: ./clients-flight-recorder/scripts/types-validator
         env:
           BRANCH: ${{ github.ref_name }}
-        run: node index.js --generate-report --ci --branch main
+        run: node index.js --generate-report --ci --branch $BRANCH
 
       - name: Cache JSON report
         id: cache-json-report
