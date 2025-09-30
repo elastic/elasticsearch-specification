@@ -32,6 +32,14 @@ jobs:
         with:
           node-version: 22
 
+      - name: Restore JSON report
+        id: restore-json-report
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ./clients-flight-recorder/recordings/types-validation/types-validation.json
+          key: types-validation-json-${{ github.event.pull_request.base.sha }}
+
       - name: Install deps 1/2
         working-directory: ./clients-flight-recorder
         run: |

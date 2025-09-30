@@ -55,4 +55,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: ./clients-flight-recorder/recordings/types-validation/types-validation.json
-          key: ${{ steps.restore-json-report.outputs.cache-primary-key }}
+          key: types-validation-json-${{ github.sha }}
