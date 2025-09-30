@@ -48,7 +48,7 @@ jobs:
         working-directory: ./clients-flight-recorder/scripts/types-validator
         env:
           BRANCH: ${{ github.ref_name }}
-        run: node index.js --generate-report --ci --branch $BRANCH
+        run: node index.js --generate-report --ci --branch main
 
       - name: Cache JSON report
         id: cache-json-report
