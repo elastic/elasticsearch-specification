@@ -29,7 +29,6 @@ import {
   StoreStats
 } from '@_types/Stats'
 import { DateFormat, Duration, DurationValue, UnitMillis } from '@_types/Time'
-import { ContentObject } from '@inference/_types/CommonTypes'
 import { IndexingPressureMemory } from '@nodes/_types/Stats'
 import { Dictionary } from '@spec_utils/Dictionary'
 
