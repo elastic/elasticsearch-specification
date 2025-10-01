@@ -10106,6 +10106,10 @@ export interface ClusterStatsDenseVectorStats {
   off_heap?: ClusterStatsDenseVectorOffHeapStats
 }
 
+export interface ClusterStatsExtendedSearchUsage {
+  retrievers?: Record<Name, Record<Name, long>>
+}
+
 export interface ClusterStatsFieldTypes {
   name: Name
   count: integer
@@ -10233,6 +10237,7 @@ export interface ClusterStatsSearchUsageStats {
   rescorers: Record<Name, long>
   sections: Record<Name, long>
   retrievers: Record<Name, long>
+  extended: Record<Name, ClusterStatsExtendedSearchUsage>
 }
 
 export type ClusterStatsShardState = 'INIT' | 'SUCCESS' | 'FAILED' | 'ABORTED' | 'MISSING' | 'WAITING' | 'QUEUED' | 'PAUSED_FOR_NODE_REMOVAL'

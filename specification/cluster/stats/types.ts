@@ -29,6 +29,7 @@ import {
   StoreStats
 } from '@_types/Stats'
 import { DateFormat, Duration, DurationValue, UnitMillis } from '@_types/Time'
+import { ContentObject } from '@inference/_types/CommonTypes'
 import { IndexingPressureMemory } from '@nodes/_types/Stats'
 import { Dictionary } from '@spec_utils/Dictionary'
 
@@ -152,6 +153,12 @@ export class SearchUsageStats {
   rescorers: Dictionary<Name, long>
   sections: Dictionary<Name, long>
   retrievers: Dictionary<Name, long>
+  /* @availability stack since=9.2.0 */
+  extended: Dictionary<Name, ExtendedSearchUsage>
+}
+
+export class ExtendedSearchUsage {
+  retrievers?: Dictionary<Name, Dictionary<Name, long>>
 }
 
 export class DenseVectorStats {
