@@ -29,6 +29,7 @@ import {
   TaskTypeAzureAIStudio,
   TaskTypeAzureOpenAI,
   TaskTypeCohere,
+  TaskTypeContextualAI, 
   TaskTypeCustom,
   TaskTypeDeepSeek,
   TaskTypeElasticsearch,
@@ -166,6 +167,17 @@ export class InferenceEndpointInfoCohere extends InferenceEndpoint {
    * The task type
    */
   task_type: TaskTypeCohere
+}
+
+export class InferenceEndpointInfoContextualAi extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeContextualAI
 }
 
 export class InferenceEndpointInfoCustom extends InferenceEndpoint {
@@ -389,6 +401,7 @@ export class RateLimitSetting {
    * * `azureopenai` service and task type `text_embedding`: `1440`
    * * `azureopenai` service and task type `completion`: `120`
    * * `cohere` service: `10000`
+   * * `contextualai` service: `1000`
    * * `elastic` service and task type `chat_completion`: `240`
    * * `googleaistudio` service: `360`
    * * `googlevertexai` service: `30000`
