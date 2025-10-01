@@ -58670,6 +58670,32 @@
                 "$ref": "#/components/schemas/_types.mapping.DenseVectorIndexOptions"
               }
             ]
+          },
+          "sparse_vector": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.SparseVectorIndexOptions"
+              }
+            ]
+          }
+        }
+      },
+      "_types.mapping.SparseVectorIndexOptions": {
+        "type": "object",
+        "properties": {
+          "prune": {
+            "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
+            "x-state": "Generally available",
+            "type": "boolean"
+          },
+          "pruning_config": {
+            "description": "Optional pruning configuration.\nIf enabled, this will omit non-significant tokens from the query in order to improve query performance.\nThis is only used if prune is set to true.\nIf prune is set to true but pruning_config is not specified, default values will be used.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.TokenPruningConfig"
+              }
+            ]
           }
         }
       },
@@ -58748,25 +58774,6 @@
             ]
           }
         ]
-      },
-      "_types.mapping.SparseVectorIndexOptions": {
-        "type": "object",
-        "properties": {
-          "prune": {
-            "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
-            "x-state": "Generally available",
-            "type": "boolean"
-          },
-          "pruning_config": {
-            "description": "Optional pruning configuration.\nIf enabled, this will omit non-significant tokens from the query in order to improve query performance.\nThis is only used if prune is set to true.\nIf prune is set to true but pruning_config is not specified, default values will be used.",
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.TokenPruningConfig"
-              }
-            ]
-          }
-        }
       },
       "_types.mapping.CompletionProperty": {
         "allOf": [
