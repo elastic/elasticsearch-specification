@@ -46,9 +46,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ./clients-flight-recorder/recordings/types-validation/types-validation.json
-          key: types-validation-json-${{ github.event_name == 'pull_request' && format('{0}-{1}', github.head_ref, github.event.pull_request.base.sha) || format('{0}-{1}', github.ref_name, github.sha) }}
+          key: types-validation-json-${{ github.event_name == 'pull_request' && format('{0}-{1}', github.base_ref, github.event.pull_request.base.sha) || format('{0}-{1}', github.ref_name, github.sha) }}
           restore-keys: |
-            types-validation-json-${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}-
+            types-validation-json-${{ github.event_name == 'pull_request' && github.base_ref || github.ref_name }}-
 
       - name: Install deps 1/2
         working-directory: ./clients-flight-recorder
