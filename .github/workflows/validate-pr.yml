@@ -74,7 +74,7 @@ jobs:
           if [[ -n "${GITHUB_BASE_REF+x}" ]]; then
             branch=$GITHUB_BASE_REF
           else
-            branch=$GITHUB_REF_NAME
+            branch=$GITHUB_REF
           fi
           node scripts/upload-recording/download.js --branch $branch --git
           node scripts/clone-elasticsearch/index.js --branch $branch
