@@ -66434,6 +66434,13 @@
           "service_account_json": {
             "description": "A valid service account in JSON format for the Google Vertex AI API.",
             "type": "string"
+          },
+          "dimensions": {
+            "externalDocs": {
+              "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings"
+            },
+            "description": "For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.\nBy default, the model's standard output dimension is used.\nRefer to the Google documentation for more information.",
+            "type": "number"
           }
         },
         "required": [

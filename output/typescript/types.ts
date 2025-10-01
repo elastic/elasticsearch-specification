@@ -14100,6 +14100,7 @@ export interface InferenceGoogleVertexAIServiceSettings {
   project_id: string
   rate_limit?: InferenceRateLimitSetting
   service_account_json: string
+  dimensions?: integer
 }
 
 export type InferenceGoogleVertexAIServiceType = 'googlevertexai'
