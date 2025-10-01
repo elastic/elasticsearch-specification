@@ -56308,6 +56308,13 @@
                 "$ref": "#/components/schemas/_types.mapping.ChunkingSettings"
               }
             ]
+          },
+          "fields": {
+            "description": "Multi-fields allow the same string value to be indexed in multiple ways for different purposes, such as one\nfield for search and a multi-field for sorting and aggregations, or the same string value analyzed by different analyzers.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.mapping.Property"
+            }
           }
         },
         "required": [
