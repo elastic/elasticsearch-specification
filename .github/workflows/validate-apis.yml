@@ -4,22 +4,29 @@ on:
   pull_request:
     branches:
       - main
-      - 8.x
+      - '[0-9]+.[0-9]+'
+  push:
+    branches:
+      - main
       - '[0-9]+.[0-9]+'
 
+permissions:
+  pull-requests: write    # To create/update PR comments
+
 jobs:
-  validate-pr:
+  validate-apis:
     name: build
     runs-on: ubuntu-latest
 
     steps:
       - name: Check pull request was opened from branch
-        if: github.event.pull_request.head.repo.full_name != 'elastic/elasticsearch-specification'
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != 'elastic/elasticsearch-specification'
         run: echo "Validation is not supported from forks"; exit 1
         
       - uses: actions/checkout@v4
         with:
           path: ./elasticsearch-specification
+          persist-credentials: false
 
       - uses: actions/checkout@v4
         with:
@@ -27,11 +34,21 @@ jobs:
           path: ./clients-flight-recorder
           token: ${{ secrets.PAT }}
           ref: ${{ github.base_ref }}
+          persist-credentials: false
 
       - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Cache JSON report
+        id: cache-json-report
+        uses: actions/cache@v4
+        with:
+          path: ./clients-flight-recorder/recordings/types-validation/types-validation.json
+          key: types-validation-json-${{ github.event_name == 'pull_request' && format('{0}-{1}', github.base_ref, github.event.pull_request.base.sha) || format('{0}-{1}', github.ref_name, github.sha) }}
+          restore-keys: |
+            types-validation-json-${{ github.event_name == 'pull_request' && github.base_ref || github.ref_name }}-
 
       - name: Install deps 1/2
         working-directory: ./clients-flight-recorder
@@ -54,22 +71,30 @@ jobs:
       - name: Download artifacts
         working-directory: ./clients-flight-recorder
         run: |
-          if [[ -n "${GITHUB_BASE_REF+x}" ]]; then
+          if [[ -n "${GITHUB_BASE_REF:-}" ]]; then
             branch=$GITHUB_BASE_REF
           else
             branch=$GITHUB_REF_NAME
           fi
+          echo "Using branch: $branch"
           node scripts/upload-recording/download.js --branch $branch --git
           node scripts/clone-elasticsearch/index.js --branch $branch
-        env:
-          GCS_CREDENTIALS: ${{ secrets.GCS_CREDENTIALS }}
 
-      - name: Run validation
+      - name: Run validation (Push)
+        if: github.event_name == 'push'
+        working-directory: ./clients-flight-recorder/scripts/types-validator
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: node index.js --generate-report --ci --branch $BRANCH
+
+      - name: Run validation (PR)
+        if: github.event_name == 'pull_request'
         id: validation
         working-directory: ./elasticsearch-specification
         run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }}
 
       - name: Find existing comment
+        if: github.event_name == 'pull_request'
         uses: peter-evans/find-comment@3eae4d37986fb5a8592848f6a574fdf654e61f9e # v3.1.0
         id: find-comment
         with:
@@ -78,6 +103,7 @@ jobs:
           body-includes: 'Following you can find the validation changes'
 
       - name: Create or update comment
+        if: github.event_name == 'pull_request'
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
