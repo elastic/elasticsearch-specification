@@ -1,0 +1,87 @@
+name: Generate Output
+
+on:
+  push:
+    branches:
+      - 'main'
+      - '7.17'
+      - '8.[0-9]+'
+      - '9.[0-9]+'
+
+  # For debugging purposes:
+  # pull_request:
+  #   types: [opened, synchronize, reopened]
+  #   branches:
+  #     - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # The actor check currently does not work. The `secrets.PAT` belongs to `delvedor` and not
+    # `elasticmachine`. We should make sure to change this in the future.
+    if: github.repository_owner == 'elastic' && github.actor != 'elasticmachine'
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.PAT }}
+        persist-credentials: true
+
+    - name: Setup Node 22
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: npm
+        cache-dependency-path: '**/package-lock.json'
+
+    - name: Setup Dependencies
+      run: |
+        make setup
+
+    - name: Generate Output
+      run: |
+        make compile
+        make generate
+        make transform-to-openapi
+        make filter-for-serverless
+
+    - name: Check for Changed Files
+      id: changes
+      run: |
+        if [ -n "$(git status --porcelain ./output)" ]; then
+          echo "has-changes=1" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Set Git Identity
+      if: steps.changes.outputs.has-changes == '1'
+      run: |-
+        git config --global user.email "elasticmachine@users.noreply.github.com"
+        git config --global user.name "Elastic Machine"
+
+    - name: Push Output
+      if: steps.changes.outputs.has-changes == '1'
+      run: |
+        git add -A ./output
+        git commit -m "Update specification output"
+        git push
+
+    # For debugging purposes:
+    # - name: Push Output
+    #   if: steps.changes.outputs.has-changes == '1'
+    #   env:
+    #     BRANCH_NAME: output_${{ github.run_id }}_${{ github.run_attempt }}
+    #   run: |
+    #     git fetch
+    #     git switch main
+
+    #     git add -A ./output
+    #     git commit -m "Update specification output"
+    #     git push origin HEAD:refs/heads/${{ env.BRANCH_NAME }}
