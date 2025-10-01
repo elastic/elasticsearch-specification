@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id alias-update
+ * @ext_doc_id aliases
  */
 export interface Request extends RequestBase {
   urls: [

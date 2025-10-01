@@ -6487,7 +6487,7 @@
                     "description": "To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.",
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/_types.FieldValue"
+                      "$ref": "#/components/schemas/esql._types.ESQLParam"
                     }
                   },
                   "profile": {
@@ -7168,84 +7168,6 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/field_caps-200"
-          }
-        },
-        "x-state": "Generally available",
-        "x-metaTags": [
-          {
-            "content": "Elasticsearch",
-            "name": "product_name"
-          }
-        ]
-      }
-    },
-    "/{index}/_graph/explore": {
-      "get": {
-        "tags": [
-          "graph"
-        ],
-        "summary": "Explore graph analytics",
-        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/docs/explore-analyze/visualize/graph",
-          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/graph-explore-api.html"
-        },
-        "operationId": "graph-explore",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/graph.explore-index"
-          },
-          {
-            "$ref": "#/components/parameters/graph.explore-routing"
-          },
-          {
-            "$ref": "#/components/parameters/graph.explore-timeout"
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/graph.explore"
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/graph.explore-200"
-          }
-        },
-        "x-state": "Generally available",
-        "x-metaTags": [
-          {
-            "content": "Elasticsearch",
-            "name": "product_name"
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "graph"
-        ],
-        "summary": "Explore graph analytics",
-        "description": "Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.\nThe easiest way to understand the behavior of this API is to use the Graph UI to explore connections.\nAn initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.\nSubsequent requests enable you to spider out from one more vertices of interest.\nYou can exclude vertices that have already been returned.",
-        "externalDocs": {
-          "url": "https://www.elastic.co/docs/explore-analyze/visualize/graph",
-          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/graph-explore-api.html"
-        },
-        "operationId": "graph-explore-1",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/graph.explore-index"
-          },
-          {
-            "$ref": "#/components/parameters/graph.explore-routing"
-          },
-          {
-            "$ref": "#/components/parameters/graph.explore-timeout"
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/graph.explore"
-        },
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/graph.explore-200"
           }
         },
         "x-state": "Generally available",
@@ -8441,6 +8363,11 @@
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
+        "externalDocs": {
+          "description": "Aliases",
+          "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-add-alias.html"
+        },
         "operationId": "indices-put-alias",
         "parameters": [
           {
@@ -8478,6 +8405,11 @@
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
+        "externalDocs": {
+          "description": "Aliases",
+          "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-add-alias.html"
+        },
         "operationId": "indices-put-alias-1",
         "parameters": [
           {
@@ -8591,6 +8523,11 @@
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
+        "externalDocs": {
+          "description": "Aliases",
+          "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-add-alias.html"
+        },
         "operationId": "indices-put-alias-2",
         "parameters": [
           {
@@ -8628,6 +8565,11 @@
         ],
         "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
+        "externalDocs": {
+          "description": "Aliases",
+          "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-add-alias.html"
+        },
         "operationId": "indices-put-alias-3",
         "parameters": [
           {
@@ -10595,7 +10537,7 @@
           "indices"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
         "operationId": "indices-refresh-1",
         "parameters": [
           {
@@ -10626,7 +10568,7 @@
           "indices"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
         "operationId": "indices-refresh",
         "parameters": [
           {
@@ -10659,7 +10601,7 @@
           "indices"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
         "operationId": "indices-refresh-3",
         "parameters": [
           {
@@ -10693,7 +10635,7 @@
           "indices"
         ],
         "summary": "Refresh an index",
-        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
+        "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
         "operationId": "indices-refresh-2",
         "parameters": [
           {
@@ -15506,7 +15448,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "An identifier for the pipeline.",
+            "description": "An identifier for the pipeline.\nPipeline IDs must begin with a letter or underscore and contain only letters, underscores, dashes, hyphens and numbers.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -22333,6 +22275,42 @@
           }
         },
         "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_project/tags": {
+      "get": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Return tags defined for the project",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "operationId": "project-tags",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/project.tags.ProjectTags"
+                },
+                "examples": {
+                  "ProjectTagsResponseExample1": {
+                    "summary": "Project tags",
+                    "description": "A successful response from `GET /_project/tags`",
+                    "value": "{\n  \"origin\": {\n    \"c56c4f8849c64cc6ae59c261f40bd195\": {\n      \"_id\": \"c56c4f8849c64cc6ae59c261f40bd195\"\n      \"_type\": \"elasticsearch\",\n      \"_alias\": \"project-1\",\n      \"_csp\": \"aws\",\n      \"_region\": \"us-east-1\"\n      \"mytag1\": \"foo\",\n      \"mytag2\": \"bar\"\n    }\n  },\n  \"linked_projects\": {\n    \"a3b88ea3f195a336ae59c261f40bd195\": {\n      \"_id\": \"a3b88ea3f195a336ae59c261f40bd195\"\n      \"_type\": \"security\",\n      \"_alias\": \"project-2\",\n      \"_csp\": \"aws\",\n      \"_region\": \"us-east-1\"\n      \"mytag1\": \"foo\",\n      \"mytag2\": \"bar\"\n    },\n    \"f40bd195389s3761023ca7aa8a3r0932\": {\n      \"_id\": \"f40bd195389s3761023ca7aa8a3r0932\"\n      \"_type\": \"observability\",\n      \"_alias\": \"project-3\",\n      \"_csp\": \"aws\",\n      \"_region\": \"us-east-1\"\n      \"mytag1\": \"foo\",\n      \"mytag2\": \"bar\"\n    }\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -39173,12 +39151,21 @@
                 "type": "string"
               },
               "inference_text": {
-                "description": "The text snippet used as the basis for similarity comparison",
+                "description": "The text snippet used as the basis for similarity comparison.",
                 "type": "string"
               },
               "field": {
-                "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text",
+                "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text.",
                 "type": "string"
+              },
+              "chunk_rescorer": {
+                "description": "Whether to rescore on only the best matching chunks.",
+                "x-state": "Beta",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.ChunkRescorer"
+                  }
+                ]
               }
             },
             "required": [
@@ -39187,6 +39174,65 @@
               "field"
             ]
           }
+        ]
+      },
+      "_types.ChunkRescorer": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "description": "The number of chunks per document to evaluate for reranking.",
+            "type": "number"
+          },
+          "chunking_settings": {
+            "description": "Chunking settings to apply",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.ChunkRescorerChunkingSettings"
+              }
+            ]
+          }
+        }
+      },
+      "_types.mapping.ChunkRescorerChunkingSettings": {
+        "type": "object",
+        "properties": {
+          "strategy": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#chunking-strategies"
+            },
+            "description": "The chunking strategy: `sentence`, `word`, `none` or `recursive`.\n\n * If `strategy` is set to `recursive`, you must also specify:\n\n- `max_chunk_size`\n- either `separators` or`separator_group`\n\nLearn more about different chunking strategies in the linked documentation.",
+            "default": "sentence",
+            "type": "string"
+          },
+          "separator_group": {
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
+            "type": "string"
+          },
+          "separators": {
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nA list of strings used as possible split points when chunking text.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "max_chunk_size": {
+            "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
+            "default": 250.0,
+            "type": "number"
+          },
+          "overlap": {
+            "description": "The number of overlapping words for chunks.\nIt is applicable only to a `word` chunking strategy.\nThis value cannot be higher than half the `max_chunk_size` value.",
+            "default": 100.0,
+            "type": "number"
+          },
+          "sentence_overlap": {
+            "description": "The number of overlapping sentences for chunks.\nIt is applicable only for a `sentence` chunking strategy.\nIt can be either `1` or `0`.",
+            "default": 1.0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "max_chunk_size"
         ]
       },
       "_types.RuleRetriever": {
@@ -43730,7 +43776,9 @@
                   "type": "object",
                   "additionalProperties": {
                     "$ref": "#/components/schemas/_types.aggregations.CompositeAggregationSource"
-                  }
+                  },
+                  "minProperties": 1,
+                  "maxProperties": 1
                 }
               }
             }
@@ -43772,7 +43820,9 @@
               }
             ]
           }
-        }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
       },
       "_types.aggregations.CompositeTermsAggregation": {
         "allOf": [
@@ -46219,6 +46269,14 @@
                   }
                 ]
               },
+              "p_value": {
+                "description": "Significant terms heuristic that calculates the p-value between the term existing in foreground and background sets.\n\nThe p-value is the probability of obtaining test results at least as extreme as\nthe results actually observed, under the assumption that the null hypothesis is\ncorrect. The p-value is calculated assuming that the foreground set and the\nbackground set are independent https://en.wikipedia.org/wiki/Bernoulli_trial, with the null\nhypothesis that the probabilities are the same.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.PValueHeuristic"
+                  }
+                ]
+              },
               "shard_min_doc_count": {
                 "description": "Regulates the certainty a shard has if the term should actually be added to the candidate list or not with respect to the `min_doc_count`.\nTerms will only be considered if their local shard frequency within the set is higher than the `shard_min_doc_count`.",
                 "type": "number"
@@ -46300,6 +46358,19 @@
         "required": [
           "script"
         ]
+      },
+      "_types.aggregations.PValueHeuristic": {
+        "type": "object",
+        "properties": {
+          "background_is_superset": {
+            "type": "boolean"
+          },
+          "normalize_above": {
+            "description": "Should the results be normalized when above the given value.\nAllows for consistent significance results at various scales.\nNote: `0` is a special value which means no normalization",
+            "default": 0.0,
+            "type": "number"
+          }
+        }
       },
       "_types.aggregations.SignificantTextAggregation": {
         "allOf": [
@@ -58577,6 +58648,13 @@
                 "$ref": "#/components/schemas/_types.mapping.ChunkingSettings"
               }
             ]
+          },
+          "fields": {
+            "description": "Multi-fields allow the same string value to be indexed in multiple ways for different purposes, such as one\nfield for search and a multi-field for sorting and aggregations, or the same string value analyzed by different analyzers.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.mapping.Property"
+            }
           }
         },
         "required": [
@@ -61655,6 +61733,14 @@
               }
             ]
           },
+          "failure_store": {
+            "description": "The role of the failure store in this document response",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.bulk.FailureStoreStatus"
+              }
+            ]
+          },
           "forced_refresh": {
             "type": "boolean"
           }
@@ -62030,6 +62116,19 @@
           "cbor",
           "smile",
           "arrow"
+        ]
+      },
+      "esql._types.ESQLParam": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.FieldValue"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.FieldValue"
+            }
+          }
         ]
       },
       "esql._types.TableValuesContainer": {
@@ -62551,198 +62650,6 @@
         "required": [
           "lang",
           "source"
-        ]
-      },
-      "graph._types.Hop": {
-        "type": "object",
-        "properties": {
-          "connections": {
-            "description": "Specifies one or more fields from which you want to extract terms that are associated with the specified vertices.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/graph._types.Hop"
-              }
-            ]
-          },
-          "query": {
-            "description": "An optional guiding query that constrains the Graph API as it explores connected terms.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-              }
-            ]
-          },
-          "vertices": {
-            "description": "Contains the fields you are interested in.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/graph._types.VertexDefinition"
-            }
-          }
-        },
-        "required": [
-          "vertices"
-        ]
-      },
-      "graph._types.VertexDefinition": {
-        "type": "object",
-        "properties": {
-          "exclude": {
-            "description": "Prevents the specified terms from being included in the results.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "field": {
-            "description": "Identifies a field in the documents of interest.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Field"
-              }
-            ]
-          },
-          "include": {
-            "description": "Identifies the terms of interest that form the starting points from which you want to spider out.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/graph._types.VertexInclude"
-            }
-          },
-          "min_doc_count": {
-            "description": "Specifies how many documents must contain a pair of terms before it is considered to be a useful connection.\nThis setting acts as a certainty threshold.",
-            "default": 3.0,
-            "type": "number"
-          },
-          "shard_min_doc_count": {
-            "description": "Controls how many documents on a particular shard have to contain a pair of terms before the connection is returned for global consideration.",
-            "default": 2.0,
-            "type": "number"
-          },
-          "size": {
-            "description": "Specifies the maximum number of vertex terms returned for each field.",
-            "default": 5.0,
-            "type": "number"
-          }
-        },
-        "required": [
-          "field"
-        ]
-      },
-      "graph._types.VertexInclude": {
-        "type": "object",
-        "properties": {
-          "boost": {
-            "type": "number"
-          },
-          "term": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "term"
-        ]
-      },
-      "graph._types.ExploreControls": {
-        "type": "object",
-        "properties": {
-          "sample_diversity": {
-            "description": "To avoid the top-matching documents sample being dominated by a single source of results, it is sometimes necessary to request diversity in the sample.\nYou can do this by selecting a single-value field and setting a maximum number of documents per value for that field.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/graph._types.SampleDiversity"
-              }
-            ]
-          },
-          "sample_size": {
-            "description": "Each hop considers a sample of the best-matching documents on each shard.\nUsing samples improves the speed of execution and keeps exploration focused on meaningfully-connected terms.\nVery small values (less than 50) might not provide sufficient weight-of-evidence to identify significant connections between terms.\nVery large sample sizes can dilute the quality of the results and increase execution times.",
-            "default": 100.0,
-            "type": "number"
-          },
-          "timeout": {
-            "description": "The length of time in milliseconds after which exploration will be halted and the results gathered so far are returned.\nThis timeout is honored on a best-effort basis.\nExecution might overrun this timeout if, for example, a long pause is encountered while FieldData is loaded for a field.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "use_significance": {
-            "description": "Filters associated terms so only those that are significantly associated with your query are included.",
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "use_significance"
-        ]
-      },
-      "graph._types.SampleDiversity": {
-        "type": "object",
-        "properties": {
-          "field": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Field"
-              }
-            ]
-          },
-          "max_docs_per_value": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "field",
-          "max_docs_per_value"
-        ]
-      },
-      "graph._types.Connection": {
-        "type": "object",
-        "properties": {
-          "doc_count": {
-            "type": "number"
-          },
-          "source": {
-            "type": "number"
-          },
-          "target": {
-            "type": "number"
-          },
-          "weight": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "doc_count",
-          "source",
-          "target",
-          "weight"
-        ]
-      },
-      "graph._types.Vertex": {
-        "type": "object",
-        "properties": {
-          "depth": {
-            "type": "number"
-          },
-          "field": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Field"
-              }
-            ]
-          },
-          "term": {
-            "type": "string"
-          },
-          "weight": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "depth",
-          "field",
-          "term",
-          "weight"
         ]
       },
       "_types.OpType": {
@@ -66527,6 +66434,13 @@
           "service_account_json": {
             "description": "A valid service account in JSON format for the Google Vertex AI API.",
             "type": "string"
+          },
+          "dimensions": {
+            "externalDocs": {
+              "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings"
+            },
+            "description": "For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.\nBy default, the model's standard output dimension is used.\nRefer to the Google documentation for more information.",
+            "type": "number"
           }
         },
         "required": [
@@ -74561,10 +74475,7 @@
               }
             ]
           }
-        },
-        "required": [
-          "vocabulary"
-        ]
+        }
       },
       "ml._types.LearningToRankConfig": {
         "type": "object",
@@ -74705,10 +74616,7 @@
               }
             ]
           }
-        },
-        "required": [
-          "vocabulary"
-        ]
+        }
       },
       "ml._types.TextExpansionInferenceOptions": {
         "description": "Text expansion inference options",
@@ -74733,10 +74641,7 @@
               }
             ]
           }
-        },
-        "required": [
-          "vocabulary"
-        ]
+        }
       },
       "ml._types.QuestionAnsweringInferenceOptions": {
         "description": "Question answering inference options",
@@ -77414,6 +77319,51 @@
           "position"
         ]
       },
+      "project.tags.ProjectTags": {
+        "type": "object",
+        "properties": {
+          "origin": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/project.tags.Tags"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "linked_projects": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/project.tags.Tags"
+            }
+          }
+        },
+        "required": [
+          "origin"
+        ]
+      },
+      "project.tags.Tags": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "_alias": {
+            "type": "string"
+          },
+          "_type": {
+            "type": "string"
+          },
+          "_organisation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "_id",
+          "_alias",
+          "_type",
+          "_organisation"
+        ]
+      },
       "query_rules._types.QueryRule": {
         "type": "object",
         "properties": {
@@ -78391,8 +78341,7 @@
         },
         "required": [
           "id",
-          "managed_by",
-          "internal"
+          "managed_by"
         ]
       },
       "security._types.ApiKeyManagedBy": {
@@ -81135,49 +81084,6 @@
           }
         }
       },
-      "graph.explore-200": {
-        "description": "",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "connections": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/graph._types.Connection"
-                  }
-                },
-                "failures": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/_types.ShardFailure"
-                  }
-                },
-                "timed_out": {
-                  "type": "boolean"
-                },
-                "took": {
-                  "type": "number"
-                },
-                "vertices": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/graph._types.Vertex"
-                  }
-                }
-              },
-              "required": [
-                "connections",
-                "failures",
-                "timed_out",
-                "took",
-                "vertices"
-              ]
-            }
-          }
-        }
-      },
       "index-200": {
         "description": "",
         "content": {
@@ -82648,6 +82554,13 @@
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Sort"
+                    }
+                  ]
+                },
+                "track_total_hits": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.search._types.TrackHits"
                     }
                   ]
                 }
@@ -84643,37 +84556,6 @@
           "type": "boolean"
         },
         "x-state": "Generally available",
-        "style": "form"
-      },
-      "graph.explore-index": {
-        "in": "path",
-        "name": "index",
-        "description": "Name of the index.",
-        "required": true,
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.Indices"
-        },
-        "style": "simple"
-      },
-      "graph.explore-routing": {
-        "in": "query",
-        "name": "routing",
-        "description": "Custom value used to route operations to a specific shard.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.Routing"
-        },
-        "style": "form"
-      },
-      "graph.explore-timeout": {
-        "in": "query",
-        "name": "timeout",
-        "description": "Specifies the period of time to wait for a response from each shard.\nIf no response is received before the timeout expires, the request fails and returns an error.\nDefaults to no timeout.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.Duration"
-        },
         "style": "form"
       },
       "index-id": {
@@ -88898,54 +88780,6 @@
           }
         }
       },
-      "graph.explore": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "connections": {
-                  "description": "Specifies or more fields from which you want to extract terms that are associated with the specified vertices.",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/graph._types.Hop"
-                    }
-                  ]
-                },
-                "controls": {
-                  "description": "Direct the Graph API how to build the graph.",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/graph._types.ExploreControls"
-                    }
-                  ]
-                },
-                "query": {
-                  "description": "A seed query that identifies the documents of interest. Can be any valid Elasticsearch query.",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-                    }
-                  ]
-                },
-                "vertices": {
-                  "description": "Specifies one or more fields that contain the terms you want to include in the graph as vertices.",
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/graph._types.VertexDefinition"
-                  }
-                }
-              }
-            },
-            "examples": {
-              "GraphExploreRequestExample1": {
-                "description": "Run `POST clicklogs/_graph/explore` for a basic exploration An initial graph explore query typically begins with a query to identify strongly related terms. Seed the exploration with a query. This example is searching `clicklogs` for people who searched for the term `midi`.Identify the vertices to include in the graph. This example is looking for product codes that are significantly associated with searches for `midi`. Find the connections. This example is looking for other search terms that led people to click on the products that are associated with searches for `midi`.\n",
-                "value": "{\n  \"query\": {\n    \"match\": {\n      \"query.raw\": \"midi\"\n    }\n  },\n  \"vertices\": [\n    {\n      \"field\": \"product\"\n    }\n  ],\n  \"connections\": {\n    \"vertices\": [\n      {\n        \"field\": \"query.raw\"\n      }\n    ]\n  }\n}"
-              }
-            }
-          }
-        }
-      },
       "index": {
         "content": {
           "application/json": {
@@ -89129,7 +88963,19 @@
             },
             "examples": {
               "indicesPutAliasRequestExample1": {
-                "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"my-data-stream\",\n        \"alias\": \"my-alias\"\n      }\n    }\n  ]\n}"
+                "summary": "Filter an alias",
+                "description": "The filter option uses Query DSL to limit the documents an alias can access.",
+                "value": "{\n  \"filter\": {\n    \"bool\": {\n      \"filter\": [\n        {\n          \"range\": {\n            \"@timestamp\": {\n              \"gte\": \"now-1d/d\",\n              \"lt\": \"now/d\"\n            }\n          }\n        },\n        {\n          \"term\": {\n            \"user.id\": \"kimchy\"\n          }\n        }\n      ]\n    }\n  }\n}"
+              },
+              "indicesPutAliasRequestExample2": {
+                "summary": "Write index",
+                "description": "You can use is_write_index to specify a write index or data stream for an alias. Elasticsearch routes any write requests for the alias to this index or data stream.",
+                "value": "{\n  \"is_write_index\": true\n}"
+              },
+              "indicesPutAliasRequestExample3": {
+                "summary": "Routing",
+                "description": "Use the routing option to route requests for an alias to a specific shard.",
+                "value": "{\n  \"routing\": \"1\"\n}"
               }
             }
           }

@@ -2222,6 +2222,11 @@ export type Bytes = 'b' | 'kb' | 'mb' | 'gb' | 'tb' | 'pb'
 
 export type CategoryId = string
 
+export interface ChunkRescorer {
+  size?: integer
+  chunking_settings?: MappingChunkRescorerChunkingSettings
+}
+
 export type ClusterAlias = string
 
 export interface ClusterDetails {
@@ -3020,6 +3025,7 @@ export interface TextSimilarityReranker extends RetrieverBase {
   inference_id?: string
   inference_text: string
   field: string
+  chunk_rescorer?: ChunkRescorer
 }
 
 export type ThreadType = 'cpu' | 'wait' | 'block' | 'gpu' | 'mem'
@@ -3107,6 +3113,7 @@ export interface WriteResponseBase {
   _seq_no?: SequenceNumber
   _shards: ShardStatistics
   _version: VersionNumber
+  failure_store?: BulkFailureStoreStatus
   forced_refresh?: boolean
 }
 
@@ -3401,7 +3408,7 @@ export type AggregationsCompositeAggregateKey = Record<Field, FieldValue>
 export interface AggregationsCompositeAggregation extends AggregationsBucketAggregationBase {
   after?: AggregationsCompositeAggregateKey
   size?: integer
-  sources?: Record<string, AggregationsCompositeAggregationSource>[]
+  sources?: Partial<Record<string, AggregationsCompositeAggregationSource>>[]
 }
 
 export interface AggregationsCompositeAggregationBase {
@@ -4062,6 +4069,11 @@ export interface AggregationsNormalizeAggregation extends AggregationsPipelineAg
 
 export type AggregationsNormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'z-score' | 'softmax'
 
+export interface AggregationsPValueHeuristic {
+  background_is_superset?: boolean
+  normalize_above?: long
+}
+
 export interface AggregationsParentAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsParentAggregate = AggregationsParentAggregateKeys
@@ -4234,6 +4246,7 @@ export interface AggregationsSignificantTermsAggregation extends AggregationsBuc
   mutual_information?: AggregationsMutualInformationHeuristic
   percentage?: AggregationsPercentageScoreHeuristic
   script_heuristic?: AggregationsScriptedHeuristic
+  p_value?: AggregationsPValueHeuristic
   shard_min_doc_count?: long
   shard_size?: integer
   size?: integer
@@ -5588,6 +5601,15 @@ export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
   null_value?: byte
 }
 
+export interface MappingChunkRescorerChunkingSettings {
+  strategy?: string
+  separator_group?: string
+  separators?: string[]
+  max_chunk_size: integer
+  overlap?: integer
+  sentence_overlap?: integer
+}
+
 export interface MappingChunkingSettings {
   strategy: string
   separator_group?: string
@@ -6044,6 +6066,7 @@ export interface MappingSemanticTextProperty {
   search_inference_id?: Id
   index_options?: MappingSemanticTextIndexOptions
   chunking_settings?: MappingChunkingSettings
+  fields?: Record<PropertyName, MappingProperty>
 }
 
 export interface MappingShapeProperty extends MappingDocValuesPropertyBase {
@@ -11037,6 +11060,8 @@ export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
   is_running: boolean
 }
 
+export type EsqlESQLParam = FieldValue | FieldValue[]
+
 export interface EsqlEsqlClusterDetails {
   status: EsqlEsqlClusterStatus
   indices: string
@@ -11187,7 +11212,7 @@ export interface EsqlQueryRequest extends RequestBase {
     columnar?: boolean
     filter?: QueryDslQueryContainer
     locale?: string
-    params?: FieldValue[]
+    params?: EsqlESQLParam[]
     profile?: boolean
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
@@ -11527,6 +11552,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   action_time?: DateTime
   action_time_millis?: EpochTime<UnitMillis>
   age?: Duration
+  age_in_millis?: DurationValue<UnitMillis>
   failed_step?: Name
   failed_step_retry_count?: integer
   index: IndexName
@@ -14074,6 +14100,7 @@ export interface InferenceGoogleVertexAIServiceSettings {
   project_id: string
   rate_limit?: InferenceRateLimitSetting
   service_account_json: string
+  dimensions?: integer
 }
 
 export type InferenceGoogleVertexAIServiceType = 'googlevertexai'
@@ -16384,7 +16411,7 @@ export interface MlFillMaskInferenceOptions {
   num_top_classes?: integer
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
-  vocabulary: MlVocabulary
+  vocabulary?: MlVocabulary
 }
 
 export interface MlFillMaskInferenceUpdateOptions {
@@ -16803,7 +16830,7 @@ export interface MlTextEmbeddingInferenceOptions {
   embedding_size?: integer
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
-  vocabulary: MlVocabulary
+  vocabulary?: MlVocabulary
 }
 
 export interface MlTextEmbeddingInferenceUpdateOptions {
@@ -16814,7 +16841,7 @@ export interface MlTextEmbeddingInferenceUpdateOptions {
 export interface MlTextExpansionInferenceOptions {
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
-  vocabulary: MlVocabulary
+  vocabulary?: MlVocabulary
 }
 
 export interface MlTextExpansionInferenceUpdateOptions {
@@ -19388,6 +19415,25 @@ export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   nodes: Record<string, NodesUsageNodeUsage>
 }
 
+export interface ProjectTagsProjectTags {
+  origin: Partial<Record<string, ProjectTagsTags>>
+  linked_projects?: Record<string, ProjectTagsTags>
+}
+
+export interface ProjectTagsRequest extends RequestBase {
+}
+
+export type ProjectTagsResponse = ProjectTagsProjectTags
+
+export interface ProjectTagsTagsKeys {
+  _id: string
+  _alias: string
+  _type: string
+  _organisation: string
+}
+export type ProjectTagsTags = ProjectTagsTagsKeys
+  & { [property: string]: string }
+
 export interface QueryRulesQueryRule {
   rule_id: Id
   type: QueryRulesQueryRuleType
@@ -20133,7 +20179,7 @@ export interface SecurityAuthenticateAuthenticateApiKey {
   id: Id
   name?: Name
   managed_by: SecurityApiKeyManagedBy
-  internal: boolean
+  internal?: boolean
 }
 
 export interface SecurityAuthenticateRequest extends RequestBase {
@@ -22010,6 +22056,7 @@ export interface SqlTranslateResponse {
   fields?: (QueryDslFieldAndFormat | Field)[]
   query?: QueryDslQueryContainer
   sort?: Sort
+  track_total_hits?: SearchTrackHits
 }
 
 export interface SslCertificatesCertificateInformation {
