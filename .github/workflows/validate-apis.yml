@@ -4,7 +4,6 @@ on:
   pull_request:
     branches:
       - main
-      - 8.x
       - '[0-9]+.[0-9]+'
   push:
     branches:
@@ -47,9 +46,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ./clients-flight-recorder/recordings/types-validation/types-validation.json
-          key: types-validation-json-${{ github.event_name == 'pull_request' && format('{0}-{1}', github.head_ref, github.event.pull_request.base.sha) || format('{0}-{1}', github.ref_name, github.sha) }}
+          key: types-validation-json-${{ github.event_name == 'pull_request' && format('{0}-{1}', github.base_ref, github.event.pull_request.base.sha) || format('{0}-{1}', github.ref_name, github.sha) }}
           restore-keys: |
-            types-validation-json-${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}-
+            types-validation-json-${{ github.event_name == 'pull_request' && github.base_ref || github.ref_name }}-
 
       - name: Install deps 1/2
         working-directory: ./clients-flight-recorder
@@ -72,15 +71,14 @@ jobs:
       - name: Download artifacts
         working-directory: ./clients-flight-recorder
         run: |
-          if [[ -n "${GITHUB_BASE_REF+x}" ]]; then
+          if [[ -n "${GITHUB_BASE_REF:-}" ]]; then
             branch=$GITHUB_BASE_REF
           else
             branch=$GITHUB_REF_NAME
           fi
+          echo "Using branch: $branch"
           node scripts/upload-recording/download.js --branch $branch --git
           node scripts/clone-elasticsearch/index.js --branch $branch
-        env:
-          GCS_CREDENTIALS: ${{ secrets.GCS_CREDENTIALS }}
 
       - name: Run validation (Push)
         if: github.event_name == 'push'
