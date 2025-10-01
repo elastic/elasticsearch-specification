@@ -82557,6 +82557,13 @@
                       "$ref": "#/components/schemas/_types.Sort"
                     }
                   ]
+                },
+                "track_total_hits": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.search._types.TrackHits"
+                    }
+                  ]
                 }
               }
             }
