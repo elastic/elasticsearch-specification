@@ -78341,8 +78341,7 @@
         },
         "required": [
           "id",
-          "managed_by",
-          "internal"
+          "managed_by"
         ]
       },
       "security._types.ApiKeyManagedBy": {
