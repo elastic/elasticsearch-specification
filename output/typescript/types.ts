@@ -21719,6 +21719,7 @@ export interface SqlTranslateResponse {
   fields?: (QueryDslFieldAndFormat | Field)[]
   query?: QueryDslQueryContainer
   sort?: Sort
+  track_total_hits?: SearchTrackHits
 }
 
 export interface SslCertificatesCertificateInformation {
