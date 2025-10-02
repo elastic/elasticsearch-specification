@@ -18,7 +18,7 @@
  */
 
 import { ByteSize, Field, Name } from '@_types/common'
-import { double, integer, long, uint } from '@_types/Numeric'
+import { double, integer, long, uint, ulong } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { JobStatistics } from '@ml/_types/Job'
 import { Statistics } from '@slm/_types/SnapshotLifecycle'
@@ -325,7 +325,7 @@ export class SecurityRolesDlsBitSetCache {
   /** Human-readable amount of memory taken up by the cache. */
   memory?: ByteSize
   /** Memory taken up by the cache in bytes. */
-  memory_in_bytes: long
+  memory_in_bytes: ulong
   /**
    * Total number of cache hits.
    * @availability stack since=9.2.0

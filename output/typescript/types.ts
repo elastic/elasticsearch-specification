@@ -23897,7 +23897,7 @@ export interface XpackUsageSecurityRolesDls {
 export interface XpackUsageSecurityRolesDlsBitSetCache {
   count: integer
   memory?: ByteSize
-  memory_in_bytes: long
+  memory_in_bytes: ulong
   hits: long
   misses: long
   evictions: long
