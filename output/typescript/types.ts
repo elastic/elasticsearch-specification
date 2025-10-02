@@ -19999,6 +19999,10 @@ export interface SecurityManageUserPrivileges {
   applications: string[]
 }
 
+export interface SecurityNodeSecurityStats {
+  roles: SecurityRolesStats
+}
+
 export interface SecurityRealmInfo {
   name: Name
   type: string
@@ -20102,6 +20106,10 @@ export interface SecurityRoleTemplateScript {
   params?: Record<string, any>
   lang?: ScriptLanguage
   options?: Record<string, string>
+}
+
+export interface SecurityRolesStats {
+  dls: XpackUsageSecurityRolesDls
 }
 
 export interface SecuritySearchAccess {
@@ -20598,6 +20606,13 @@ export interface SecurityGetSettingsResponse {
   security: SecuritySecuritySettings
   'security-profile': SecuritySecuritySettings
   'security-tokens': SecuritySecuritySettings
+}
+
+export interface SecurityGetStatsRequest extends RequestBase {
+}
+
+export interface SecurityGetStatsResponse {
+  nodes: Record<string, SecurityNodeSecurityStats>
 }
 
 export type SecurityGetTokenAccessTokenGrantType = 'password' | 'client_credentials' | '_kerberos' | 'refresh_token'
@@ -23886,6 +23901,11 @@ export interface XpackUsageSecurityRolesDlsBitSetCache {
   count: integer
   memory?: ByteSize
   memory_in_bytes: ulong
+  hits: long
+  misses: long
+  evictions: long
+  hits_time_in_millis: DurationValue<UnitMillis>
+  misses_time_in_millis: DurationValue<UnitMillis>
 }
 
 export interface XpackUsageSecurityRolesFile {
