@@ -6057,6 +6057,7 @@ export interface MappingSearchAsYouTypeProperty extends MappingCorePropertyBase 
 
 export interface MappingSemanticTextIndexOptions {
   dense_vector?: MappingDenseVectorIndexOptions
+  sparse_vector?: MappingSparseVectorIndexOptions
 }
 
 export interface MappingSemanticTextProperty {
