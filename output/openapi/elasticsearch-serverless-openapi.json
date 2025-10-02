@@ -12872,6 +12872,126 @@
         ]
       }
     },
+    "/_inference/{task_type}/{contextualai_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Contextual AI inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `contexualai` service.\n\nTo review the available `rerank` models, refer to <https://docs.contextual.ai/api-reference/rerank/rerank#body-model>.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-contextualai",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.TaskTypeContextualAI"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "contextualai_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
+                    },
+                    "description": "The chunking configuration object.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
+                      }
+                    ]
+                  },
+                  "service": {
+                    "description": "The type of service supported for the specified task type. In this case, `contextualai`.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.ContextualAIServiceType"
+                      }
+                    ]
+                  },
+                  "service_settings": {
+                    "description": "Settings used to install the inference model. These settings are specific to the `contextualai` service.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.ContextualAIServiceSettings"
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Settings to configure the inference task.\nThese settings are specific to the task type you specified.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.ContextualAITaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutContextualAiRequestExample1": {
+                  "summary": "A rerank task",
+                  "description": "Run `PUT _inference/rerank/contextualai-rerank` to create an inference endpoint for rerank tasks using the Contextual AI service.",
+                  "value": "{\n    \"service\": \"contextualai\",\n    \"service_settings\": {\n        \"api_key\": \"ContextualAI-Api-key\",\n        \"model_id\": \"ctxl-rerank-v2-instruct-multilingual-mini\"\n    },\n    \"task_settings\": {\n        \"instruction\": \"Rerank the following documents based on their relevance to the query.\",\n        \"top_k\": 3\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoContextualAi"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_inference/{task_type}/{custom_inference_id}": {
       "put": {
         "tags": [
@@ -65016,7 +65136,7 @@
         "type": "object",
         "properties": {
           "requests_per_minute": {
-            "description": "The number of requests allowed per minute.\nBy default, the number of requests allowed per minute is set by each service as follows:\n\n* `alibabacloud-ai-search` service: `1000`\n* `anthropic` service: `50`\n* `azureaistudio` service: `240`\n* `azureopenai` service and task type `text_embedding`: `1440`\n* `azureopenai` service and task type `completion`: `120`\n* `cohere` service: `10000`\n* `elastic` service and task type `chat_completion`: `240`\n* `googleaistudio` service: `360`\n* `googlevertexai` service: `30000`\n* `hugging_face` service: `3000`\n* `jinaai` service: `2000`\n* `llama` service: `3000`\n* `mistral` service: `240`\n* `openai` service and task type `text_embedding`: `3000`\n* `openai` service and task type `completion`: `500`\n* `voyageai` service: `2000`\n* `watsonxai` service: `120`",
+            "description": "The number of requests allowed per minute.\nBy default, the number of requests allowed per minute is set by each service as follows:\n\n* `alibabacloud-ai-search` service: `1000`\n* `anthropic` service: `50`\n* `azureaistudio` service: `240`\n* `azureopenai` service and task type `text_embedding`: `1440`\n* `azureopenai` service and task type `completion`: `120`\n* `cohere` service: `10000`\n* `contextualai` service: `1000`\n* `elastic` service and task type `chat_completion`: `240`\n* `googleaistudio` service: `360`\n* `googlevertexai` service: `30000`\n* `hugging_face` service: `3000`\n* `jinaai` service: `2000`\n* `llama` service: `3000`\n* `mistral` service: `240`\n* `openai` service and task type `text_embedding`: `3000`\n* `openai` service and task type `completion`: `500`\n* `voyageai` service: `2000`\n* `watsonxai` service: `120`",
             "type": "number"
           }
         }
@@ -65936,6 +66056,89 @@
           "text_embedding",
           "rerank",
           "completion"
+        ]
+      },
+      "inference._types.TaskTypeContextualAI": {
+        "type": "string",
+        "enum": [
+          "rerank"
+        ]
+      },
+      "inference._types.ContextualAIServiceType": {
+        "type": "string",
+        "enum": [
+          "contextualai"
+        ]
+      },
+      "inference._types.ContextualAIServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "description": "A valid API key for your Contexutual AI account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "model_id": {
+            "description": "The name of the model to use for the inference task.\nRefer to the Contextual AI documentation for the list of available rerank models.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "description": "This setting helps to minimize the number of rate limit errors returned from Contextual AI.\nThe `contextualai` service sets a default number of requests allowed per minute depending on the task type.\nFor `rerank`, it is set to `1000`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.RateLimitSetting"
+              }
+            ]
+          }
+        },
+        "required": [
+          "api_key",
+          "model_id"
+        ]
+      },
+      "inference._types.ContextualAITaskSettings": {
+        "type": "object",
+        "properties": {
+          "instruction": {
+            "description": "Instructions for the reranking model. Refer to <https://docs.contextual.ai/api-reference/rerank/rerank#body-instruction>\nOnly for the `rerank` task type.",
+            "type": "string"
+          },
+          "return_documents": {
+            "description": "Whether to return the source documents in the response.\nOnly for the `rerank` task type.",
+            "default": false,
+            "type": "boolean"
+          },
+          "top_k": {
+            "description": "The number of most relevant documents to return.\nIf not specified, the reranking results of all documents will be returned.\nOnly for the `rerank` task type.",
+            "type": "number"
+          }
+        }
+      },
+      "inference._types.InferenceEndpointInfoContextualAi": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "description": "The task type",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/inference._types.TaskTypeContextualAI"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
         ]
       },
       "inference._types.CustomTaskType": {

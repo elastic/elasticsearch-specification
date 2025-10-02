@@ -1195,6 +1195,55 @@ export class CustomTaskSettings {
   parameters?: UserDefinedValue
 }
 
+export enum ContextualAIServiceType {
+  contextualai
+}
+
+export class ContextualAIServiceSettings {
+  /**
+   * A valid API key for your Contexutual AI account.
+   *
+   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
+   * The get inference endpoint API does not retrieve your API key.
+   * After creating the inference model, you cannot change the associated API key.
+   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
+   * @ext_doc_id contextualai-api-keys
+   */
+  api_key: string
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the Contextual AI documentation for the list of available rerank models.
+   * @ext_doc_id contextualai-rerank
+   */
+  model_id: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from Contextual AI.
+   * The `contextualai` service sets a default number of requests allowed per minute depending on the task type.
+   * For `rerank`, it is set to `1000`.
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export class ContextualAITaskSettings {
+  /**
+   * Instructions for the reranking model. Refer to <https://docs.contextual.ai/api-reference/rerank/rerank#body-instruction>
+   * Only for the `rerank` task type.
+   */
+  instruction?: string
+  /**
+   * Whether to return the source documents in the response.
+   * Only for the `rerank` task type.
+   * @server_default false
+   */
+  return_documents?: boolean
+  /**
+   * The number of most relevant documents to return.
+   * If not specified, the reranking results of all documents will be returned.
+   * Only for the `rerank` task type.
+   */
+  top_k?: integer
+}
+
 export class DeepSeekServiceSettings {
   /**
    * A valid API key for your DeepSeek account.

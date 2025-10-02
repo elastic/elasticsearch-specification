@@ -14017,6 +14017,20 @@ export interface InferenceContentObject {
   type: string
 }
 
+export interface InferenceContextualAIServiceSettings {
+  api_key: string
+  model_id: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceContextualAIServiceType = 'contextualai'
+
+export interface InferenceContextualAITaskSettings {
+  instruction?: string
+  return_documents?: boolean
+  top_k?: integer
+}
+
 export interface InferenceCustomRequestParams {
   content: string
 }
@@ -14189,6 +14203,11 @@ export interface InferenceInferenceEndpointInfoAzureOpenAI extends InferenceInfe
 export interface InferenceInferenceEndpointInfoCohere extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeCohere
+}
+
+export interface InferenceInferenceEndpointInfoContextualAi extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeContextualAI
 }
 
 export interface InferenceInferenceEndpointInfoCustom extends InferenceInferenceEndpoint {
@@ -14393,6 +14412,8 @@ export type InferenceTaskTypeAzureAIStudio = 'text_embedding' | 'completion' | '
 export type InferenceTaskTypeAzureOpenAI = 'text_embedding' | 'completion'
 
 export type InferenceTaskTypeCohere = 'text_embedding' | 'rerank' | 'completion'
+
+export type InferenceTaskTypeContextualAI = 'rerank'
 
 export type InferenceTaskTypeCustom = 'text_embedding' | 'sparse_embedding' | 'rerank' | 'completion'
 
@@ -14649,6 +14670,20 @@ export interface InferencePutCohereRequest extends RequestBase {
 }
 
 export type InferencePutCohereResponse = InferenceInferenceEndpointInfoCohere
+
+export interface InferencePutContextualaiRequest extends RequestBase {
+  task_type: InferenceTaskTypeContextualAI
+  contextualai_inference_id: Id
+  timeout?: Duration
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferenceContextualAIServiceType
+    service_settings: InferenceContextualAIServiceSettings
+    task_settings?: InferenceContextualAITaskSettings
+  }
+}
+
+export type InferencePutContextualaiResponse = InferenceInferenceEndpointInfoContextualAi
 
 export interface InferencePutCustomRequest extends RequestBase {
   task_type: InferenceCustomTaskType

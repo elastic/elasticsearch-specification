@@ -79,6 +79,10 @@ export enum TaskTypeCohere {
   completion
 }
 
+export enum TaskTypeContextualAI {
+  rerank
+}
+
 export enum TaskTypeCustom {
   text_embedding,
   sparse_embedding,
