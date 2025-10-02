@@ -92,6 +92,12 @@ export interface QueryVectorBuilder {
 }
 
 export interface TextEmbedding {
-  model_id: string
+  /**
+   * Model ID is required for all dense_vector fields but
+   * may be inferred for semantic_text fields
+   * @availability stack since=8.18.0
+   * @availability serverless
+   */
+  model_id?: string
   model_text: string
 }
