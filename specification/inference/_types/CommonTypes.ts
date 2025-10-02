@@ -1209,7 +1209,7 @@ export class ContextualAIServiceSettings {
    * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
    * @ext_doc_id contextualai-api-keys
    */
-  api_key: string  
+  api_key: string
   /**
    * The name of the model to use for the inference task.
    * Refer to the Contextual AI documentation for the list of available rerank models.

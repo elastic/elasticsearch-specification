@@ -20,13 +20,13 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
-import { TaskTypeContextualAI } from '@inference/_types/TaskType'
 import {
   ContextualAIServiceSettings,
   ContextualAIServiceType,
-  ContextualAITaskSettings,
+  ContextualAITaskSettings
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
+import { TaskTypeContextualAI } from '@inference/_types/TaskType'
 
 /**
  * Create an Contextual AI inference endpoint.

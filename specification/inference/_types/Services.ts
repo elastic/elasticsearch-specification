@@ -29,7 +29,7 @@ import {
   TaskTypeAzureAIStudio,
   TaskTypeAzureOpenAI,
   TaskTypeCohere,
-  TaskTypeContextualAI, 
+  TaskTypeContextualAI,
   TaskTypeCustom,
   TaskTypeDeepSeek,
   TaskTypeElasticsearch,
