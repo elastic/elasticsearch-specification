@@ -18,7 +18,9 @@
  */
 
 import { DenseVectorIndexOptions } from './DenseVectorProperty'
+import { SparseVectorIndexOptions } from './SparseVectorIndexOptions'
 
 export class SemanticTextIndexOptions {
   dense_vector?: DenseVectorIndexOptions
+  sparse_vector?: SparseVectorIndexOptions
 }

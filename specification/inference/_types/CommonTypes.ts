@@ -1415,6 +1415,13 @@ export class GoogleVertexAIServiceSettings {
    * A valid service account in JSON format for the Google Vertex AI API.
    */
   service_account_json: string
+  /**
+   * For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.
+   * By default, the model's standard output dimension is used.
+   * Refer to the Google documentation for more information.
+   * @ext_doc_id googlevertexai-output-dimensionality
+   */
+  dimensions?: integer
 }
 
 export class GoogleVertexAITaskSettings {

@@ -3015,7 +3015,7 @@ export interface TaskFailure {
 export type TaskId = string
 
 export interface TextEmbedding {
-  model_id: string
+  model_id?: string
   model_text: string
 }
 
@@ -6057,6 +6057,7 @@ export interface MappingSearchAsYouTypeProperty extends MappingCorePropertyBase 
 
 export interface MappingSemanticTextIndexOptions {
   dense_vector?: MappingDenseVectorIndexOptions
+  sparse_vector?: MappingSparseVectorIndexOptions
 }
 
 export interface MappingSemanticTextProperty {
@@ -6066,6 +6067,7 @@ export interface MappingSemanticTextProperty {
   search_inference_id?: Id
   index_options?: MappingSemanticTextIndexOptions
   chunking_settings?: MappingChunkingSettings
+  fields?: Record<PropertyName, MappingProperty>
 }
 
 export interface MappingShapeProperty extends MappingDocValuesPropertyBase {
@@ -11551,6 +11553,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   action_time?: DateTime
   action_time_millis?: EpochTime<UnitMillis>
   age?: Duration
+  age_in_millis?: DurationValue<UnitMillis>
   failed_step?: Name
   failed_step_retry_count?: integer
   index: IndexName
@@ -14112,6 +14115,7 @@ export interface InferenceGoogleVertexAIServiceSettings {
   project_id: string
   rate_limit?: InferenceRateLimitSetting
   service_account_json: string
+  dimensions?: integer
 }
 
 export type InferenceGoogleVertexAIServiceType = 'googlevertexai'
@@ -20211,7 +20215,7 @@ export interface SecurityAuthenticateAuthenticateApiKey {
   id: Id
   name?: Name
   managed_by: SecurityApiKeyManagedBy
-  internal: boolean
+  internal?: boolean
 }
 
 export interface SecurityAuthenticateRequest extends RequestBase {
@@ -22088,6 +22092,7 @@ export interface SqlTranslateResponse {
   fields?: (QueryDslFieldAndFormat | Field)[]
   query?: QueryDslQueryContainer
   sort?: Sort
+  track_total_hits?: SearchTrackHits
 }
 
 export interface SslCertificatesCertificateInformation {

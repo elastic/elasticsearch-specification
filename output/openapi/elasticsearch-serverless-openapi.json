@@ -38861,6 +38861,8 @@
         "type": "object",
         "properties": {
           "model_id": {
+            "description": "Model ID is required for all dense_vector fields but\nmay be inferred for semantic_text fields",
+            "x-state": "Generally available",
             "type": "string"
           },
           "model_text": {
@@ -38868,7 +38870,6 @@
           }
         },
         "required": [
-          "model_id",
           "model_text"
         ]
       },
@@ -58768,6 +58769,13 @@
                 "$ref": "#/components/schemas/_types.mapping.ChunkingSettings"
               }
             ]
+          },
+          "fields": {
+            "description": "Multi-fields allow the same string value to be indexed in multiple ways for different purposes, such as one\nfield for search and a multi-field for sorting and aggregations, or the same string value analyzed by different analyzers.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.mapping.Property"
+            }
           }
         },
         "required": [
@@ -58781,6 +58789,32 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.DenseVectorIndexOptions"
+              }
+            ]
+          },
+          "sparse_vector": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.SparseVectorIndexOptions"
+              }
+            ]
+          }
+        }
+      },
+      "_types.mapping.SparseVectorIndexOptions": {
+        "type": "object",
+        "properties": {
+          "prune": {
+            "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
+            "x-state": "Generally available",
+            "type": "boolean"
+          },
+          "pruning_config": {
+            "description": "Optional pruning configuration.\nIf enabled, this will omit non-significant tokens from the query in order to improve query performance.\nThis is only used if prune is set to true.\nIf prune is set to true but pruning_config is not specified, default values will be used.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.TokenPruningConfig"
               }
             ]
           }
@@ -58861,25 +58895,6 @@
             ]
           }
         ]
-      },
-      "_types.mapping.SparseVectorIndexOptions": {
-        "type": "object",
-        "properties": {
-          "prune": {
-            "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
-            "x-state": "Generally available",
-            "type": "boolean"
-          },
-          "pruning_config": {
-            "description": "Optional pruning configuration.\nIf enabled, this will omit non-significant tokens from the query in order to improve query performance.\nThis is only used if prune is set to true.\nIf prune is set to true but pruning_config is not specified, default values will be used.",
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.TokenPruningConfig"
-              }
-            ]
-          }
-        }
       },
       "_types.mapping.CompletionProperty": {
         "allOf": [
@@ -66630,6 +66645,13 @@
           "service_account_json": {
             "description": "A valid service account in JSON format for the Google Vertex AI API.",
             "type": "string"
+          },
+          "dimensions": {
+            "externalDocs": {
+              "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings"
+            },
+            "description": "For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.\nBy default, the model's standard output dimension is used.\nRefer to the Google documentation for more information.",
+            "type": "number"
           }
         },
         "required": [
@@ -78530,8 +78552,7 @@
         },
         "required": [
           "id",
-          "managed_by",
-          "internal"
+          "managed_by"
         ]
       },
       "security._types.ApiKeyManagedBy": {
@@ -82744,6 +82765,13 @@
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Sort"
+                    }
+                  ]
+                },
+                "track_total_hits": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.search._types.TrackHits"
                     }
                   ]
                 }
