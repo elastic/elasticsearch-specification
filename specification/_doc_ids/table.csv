@@ -807,6 +807,7 @@ security-api-get-role,https://www.elastic.co/docs/api/doc/elasticsearch/operatio
 security-api-get-service-accounts,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-service-accounts,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/security-api-get-service-accounts.html,
 security-api-get-service-credentials,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-service-credentials,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/security-api-get-service-credentials.html,
 security-api-get-settings,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-settings,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/security-api-get-settings.html,
+security-api-get-stats,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-stats,,
 security-api-get-token,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/security-api-get-token.html,
 security-api-get-user-privileges,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/security-api-get-user-privileges.html,
 security-api-get-user-profile,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/security-api-get-user-profile.html,
