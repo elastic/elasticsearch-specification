@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 
-import { NodeSecurityStats } from './types'
+import { NodeSecurityStats } from '@security/_types/NodeSecurityStats'
 
 export class Response {
   body: {

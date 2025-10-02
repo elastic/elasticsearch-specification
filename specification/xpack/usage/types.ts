@@ -18,7 +18,7 @@
  */
 
 import { ByteSize, Field, Name } from '@_types/common'
-import { double, integer, long, uint, ulong } from '@_types/Numeric'
+import { double, integer, long, uint } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { JobStatistics } from '@ml/_types/Job'
 import { Statistics } from '@slm/_types/SnapshotLifecycle'
@@ -325,37 +325,37 @@ export class SecurityRolesDlsBitSetCache {
   /** Human-readable amount of memory taken up by the cache. */
   memory?: ByteSize
   /** Memory taken up by the cache in bytes. */
-  memory_in_bytes: ulong
+  memory_in_bytes: long
   /**
    * Total number of cache hits.
    * @availability stack since=9.2.0
    * @availability serverless
    */
-  hits: ulong
+  hits: long
   /**
    * Total number of cache misses.
    * @availability stack since=9.2.0
    * @availability serverless
    */
-  misses: ulong
+  misses: long
   /**
    * Total number of cache evictions.
    * @availability stack since=9.2.0
    * @availability serverless
    */
-  evictions: ulong
+  evictions: long
   /**
    * Total combined time spent in cache for hits in milliseconds.
    * @availability stack since=9.2.0
    * @availability serverless
    */
-  hits_time_in_millis: ulong
+  hits_time_in_millis: DurationValue<UnitMillis>
   /**
    * Total combined time spent in cache for misses in milliseconds.
    * @availability stack since=9.2.0
    * @availability serverless
    */
-  misses_time_in_millis: ulong
+  misses_time_in_millis: DurationValue<UnitMillis>
 }
 
 export class SecurityRolesFile {
