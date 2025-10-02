@@ -38230,6 +38230,8 @@
         "type": "object",
         "properties": {
           "model_id": {
+            "description": "Model ID is required for all dense_vector fields but\nmay be inferred for semantic_text fields",
+            "x-state": "Generally available",
             "type": "string"
           },
           "model_text": {
@@ -38237,7 +38239,6 @@
           }
         },
         "required": [
-          "model_id",
           "model_text"
         ]
       },
