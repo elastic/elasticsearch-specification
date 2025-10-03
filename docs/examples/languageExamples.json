@@ -3016,23 +3016,23 @@
   "specification/indices/put_alias/examples/request/indicesPutAliasRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.indices.put_alias(\n    index=\"my-index-2099.05.06-000001\",\n    name=\"my-alias\",\n    filter={\n        \"bool\": {\n            \"filter\": [\n                {\n                    \"range\": {\n                        \"@timestamp\": {\n                            \"gte\": \"now-1d/d\",\n                            \"lt\": \"now/d\"\n                        }\n                    }\n                },\n                {\n                    \"term\": {\n                        \"user.id\": \"kimchy\"\n                    }\n                }\n            ]\n        }\n    },\n)"
+      "code": "resp = client.indices.update_aliases(\n    actions=[\n        {\n            \"add\": {\n                \"index\": \"my-data-stream\",\n                \"alias\": \"my-alias\"\n            }\n        }\n    ],\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.indices.putAlias({\n  index: \"my-index-2099.05.06-000001\",\n  name: \"my-alias\",\n  filter: {\n    bool: {\n      filter: [\n        {\n          range: {\n            \"@timestamp\": {\n              gte: \"now-1d/d\",\n              lt: \"now/d\",\n            },\n          },\n        },\n        {\n          term: {\n            \"user.id\": \"kimchy\",\n          },\n        },\n      ],\n    },\n  },\n});"
+      "code": "const response = await client.indices.updateAliases({\n  actions: [\n    {\n      add: {\n        index: \"my-data-stream\",\n        alias: \"my-alias\",\n      },\n    },\n  ],\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.indices.put_alias(\n  index: \"my-index-2099.05.06-000001\",\n  name: \"my-alias\",\n  body: {\n    \"filter\": {\n      \"bool\": {\n        \"filter\": [\n          {\n            \"range\": {\n              \"@timestamp\": {\n                \"gte\": \"now-1d/d\",\n                \"lt\": \"now/d\"\n              }\n            }\n          },\n          {\n            \"term\": {\n              \"user.id\": \"kimchy\"\n            }\n          }\n        ]\n      }\n    }\n  }\n)"
+      "code": "response = client.indices.update_aliases(\n  body: {\n    \"actions\": [\n      {\n        \"add\": {\n          \"index\": \"my-data-stream\",\n          \"alias\": \"my-alias\"\n        }\n      }\n    ]\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->indices()->putAlias([\n    \"index\" => \"my-index-2099.05.06-000001\",\n    \"name\" => \"my-alias\",\n    \"body\" => [\n        \"filter\" => [\n            \"bool\" => [\n                \"filter\" => array(\n                    [\n                        \"range\" => [\n                            \"@timestamp\" => [\n                                \"gte\" => \"now-1d/d\",\n                                \"lt\" => \"now/d\",\n                            ],\n                        ],\n                    ],\n                    [\n                        \"term\" => [\n                            \"user.id\" => \"kimchy\",\n                        ],\n                    ],\n                ),\n            ],\n        ],\n    ],\n]);"
+      "code": "$resp = $client->indices()->updateAliases([\n    \"body\" => [\n        \"actions\" => array(\n            [\n                \"add\" => [\n                    \"index\" => \"my-data-stream\",\n                    \"alias\" => \"my-alias\",\n                ],\n            ],\n        ),\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"filter\":{\"bool\":{\"filter\":[{\"range\":{\"@timestamp\":{\"gte\":\"now-1d/d\",\"lt\":\"now/d\"}}},{\"term\":{\"user.id\":\"kimchy\"}}]}}}' \"$ELASTICSEARCH_URL/my-index-2099.05.06-000001/_alias/my-alias\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"actions\":[{\"add\":{\"index\":\"my-data-stream\",\"alias\":\"my-alias\"}}]}' \"$ELASTICSEARCH_URL/_aliases\""
     }
   ],
   "specification/indices/put_data_stream_settings/examples/request/IndicesPutDataStreamSettingsRequestExample1.yaml": [
@@ -11552,23 +11552,23 @@
   "specification/inference/text_embedding/examples/request/TextEmbeddingRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.inference.text_embedding(\n    inference_id=\"my-cohere-endpoint\",\n    input=\"The sky above the port was the color of television tuned to a dead channel.\",\n    input_type=\"ingest\",\n)"
+      "code": "resp = client.inference.text_embedding(\n    inference_id=\"my-cohere-endpoint\",\n    input=\"The sky above the port was the color of television tuned to a dead channel.\",\n    task_settings={\n        \"input_type\": \"ingest\"\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.inference.textEmbedding({\n  inference_id: \"my-cohere-endpoint\",\n  input:\n    \"The sky above the port was the color of television tuned to a dead channel.\",\n  input_type: \"ingest\",\n});"
+      "code": "const response = await client.inference.textEmbedding({\n  inference_id: \"my-cohere-endpoint\",\n  input:\n    \"The sky above the port was the color of television tuned to a dead channel.\",\n  task_settings: {\n    input_type: \"ingest\",\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.inference.text_embedding(\n  inference_id: \"my-cohere-endpoint\",\n  body: {\n    \"input\": \"The sky above the port was the color of television tuned to a dead channel.\",\n    \"input_type\": \"ingest\"\n  }\n)"
+      "code": "response = client.inference.text_embedding(\n  inference_id: \"my-cohere-endpoint\",\n  body: {\n    \"input\": \"The sky above the port was the color of television tuned to a dead channel.\",\n    \"task_settings\": {\n      \"input_type\": \"ingest\"\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->inference()->textEmbedding([\n    \"inference_id\" => \"my-cohere-endpoint\",\n    \"body\" => [\n        \"input\" => \"The sky above the port was the color of television tuned to a dead channel.\",\n        \"input_type\" => \"ingest\",\n    ],\n]);"
+      "code": "$resp = $client->inference()->textEmbedding([\n    \"inference_id\" => \"my-cohere-endpoint\",\n    \"body\" => [\n        \"input\" => \"The sky above the port was the color of television tuned to a dead channel.\",\n        \"task_settings\" => [\n            \"input_type\" => \"ingest\",\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":\"The sky above the port was the color of television tuned to a dead channel.\",\"input_type\":\"ingest\"}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-cohere-endpoint\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":\"The sky above the port was the color of television tuned to a dead channel.\",\"task_settings\":{\"input_type\":\"ingest\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-cohere-endpoint\""
     }
   ],
   "specification/inference/put_jinaai/examples/request/PutJinaAiRequestExample1.yaml": [
@@ -14847,160 +14847,6 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":\"SELECT * FROM library ORDER BY page_count DESC LIMIT 5\"}' \"$ELASTICSEARCH_URL/_sql?format=txt\""
-    }
-  ],
-  "specification/indices/put_alias/examples/request/indicesPutAliasRequestExample3.yaml": [
-    {
-      "language": "Python",
-      "code": "resp = client.indices.put_alias(\n    index=\"my-index-2099.05.06-000001\",\n    name=\"my-alias\",\n    routing=\"1\",\n)"
-    },
-    {
-      "language": "JavaScript",
-      "code": "const response = await client.indices.putAlias({\n  index: \"my-index-2099.05.06-000001\",\n  name: \"my-alias\",\n  routing: 1,\n});"
-    },
-    {
-      "language": "Ruby",
-      "code": "response = client.indices.put_alias(\n  index: \"my-index-2099.05.06-000001\",\n  name: \"my-alias\",\n  body: {\n    \"routing\": \"1\"\n  }\n)"
-    },
-    {
-      "language": "PHP",
-      "code": "$resp = $client->indices()->putAlias([\n    \"index\" => \"my-index-2099.05.06-000001\",\n    \"name\" => \"my-alias\",\n    \"body\" => [\n        \"routing\" => \"1\",\n    ],\n]);"
-    },
-    {
-      "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"routing\":\"1\"}' \"$ELASTICSEARCH_URL/my-index-2099.05.06-000001/_alias/my-alias\""
-    }
-  ],
-  "specification/indices/put_alias/examples/request/indicesPutAliasRequestExample2.yaml": [
-    {
-      "language": "Python",
-      "code": "resp = client.indices.put_alias(\n    index=\"logs-my_app-default\",\n    name=\"logs\",\n    is_write_index=True,\n)"
-    },
-    {
-      "language": "JavaScript",
-      "code": "const response = await client.indices.putAlias({\n  index: \"logs-my_app-default\",\n  name: \"logs\",\n  is_write_index: true,\n});"
-    },
-    {
-      "language": "Ruby",
-      "code": "response = client.indices.put_alias(\n  index: \"logs-my_app-default\",\n  name: \"logs\",\n  body: {\n    \"is_write_index\": true\n  }\n)"
-    },
-    {
-      "language": "PHP",
-      "code": "$resp = $client->indices()->putAlias([\n    \"index\" => \"logs-my_app-default\",\n    \"name\" => \"logs\",\n    \"body\" => [\n        \"is_write_index\" => true,\n    ],\n]);"
-    },
-    {
-      "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"is_write_index\":true}' \"$ELASTICSEARCH_URL/logs-my_app-default/_alias/logs\""
-    }
-  ],
-  "specification/streams/logs_disable/examples/request/PostStreamsDisableRequestExample1.yaml": [
-    {
-      "language": "Python",
-      "code": "resp = client.streams.logs_disable()"
-    },
-    {
-      "language": "JavaScript",
-      "code": "const response = await client.streams.logsDisable();"
-    },
-    {
-      "language": "Ruby",
-      "code": "response = client.streams.logs_disable"
-    },
-    {
-      "language": "PHP",
-      "code": "$resp = $client->streams()->logsDisable();"
-    },
-    {
-      "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_streams/logs/_disable\""
-    }
-  ],
-  "specification/streams/status/examples/request/GetStreamsStatusRequestExample1.yaml": [
-    {
-      "language": "Python",
-      "code": "resp = client.streams.status()"
-    },
-    {
-      "language": "JavaScript",
-      "code": "const response = await client.streams.status();"
-    },
-    {
-      "language": "Ruby",
-      "code": "response = client.streams.status"
-    },
-    {
-      "language": "PHP",
-      "code": "$resp = $client->streams()->status();"
-    },
-    {
-      "language": "curl",
-      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_streams/status\""
-    }
-  ],
-  "specification/streams/logs_enable/examples/request/PostStreamsEnableRequestExample1.yaml": [
-    {
-      "language": "Python",
-      "code": "resp = client.streams.logs_enable()"
-    },
-    {
-      "language": "JavaScript",
-      "code": "const response = await client.streams.logsEnable();"
-    },
-    {
-      "language": "Ruby",
-      "code": "response = client.streams.logs_enable"
-    },
-    {
-      "language": "PHP",
-      "code": "$resp = $client->streams()->logsEnable();"
-    },
-    {
-      "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_streams/logs/_enable\""
-    }
-  ],
-  "specification/project/tags/examples/request/ProjectTagsRequestExample1.yaml": [
-    {
-      "language": "Python",
-      "code": "resp = client.project.tags()"
-    },
-    {
-      "language": "JavaScript",
-      "code": "const response = await client.project.tags();"
-    },
-    {
-      "language": "Ruby",
-      "code": "response = client.project.tags"
-    },
-    {
-      "language": "PHP",
-      "code": "$resp = $client->project()->tags();"
-    },
-    {
-      "language": "curl",
-      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_project/tags\""
-    }
-  ],
-  "specification/inference/put_contextualai/examples/request/PutContextualAiRequestExample1.yaml": [
-    {
-      "language": "Python",
-      "code": "resp = client.inference.put(\n    task_type=\"rerank\",\n    inference_id=\"contextualai-rerank\",\n    inference_config={\n        \"service\": \"contextualai\",\n        \"service_settings\": {\n            \"api_key\": \"ContextualAI-Api-key\",\n            \"model_id\": \"ctxl-rerank-v2-instruct-multilingual-mini\"\n        },\n        \"task_settings\": {\n            \"instruction\": \"Rerank the following documents based on their relevance to the query.\",\n            \"top_k\": 3\n        }\n    },\n)"
-    },
-    {
-      "language": "JavaScript",
-      "code": "const response = await client.inference.put({\n  task_type: \"rerank\",\n  inference_id: \"contextualai-rerank\",\n  inference_config: {\n    service: \"contextualai\",\n    service_settings: {\n      api_key: \"ContextualAI-Api-key\",\n      model_id: \"ctxl-rerank-v2-instruct-multilingual-mini\",\n    },\n    task_settings: {\n      instruction:\n        \"Rerank the following documents based on their relevance to the query.\",\n      top_k: 3,\n    },\n  },\n});"
-    },
-    {
-      "language": "Ruby",
-      "code": "response = client.inference.put(\n  task_type: \"rerank\",\n  inference_id: \"contextualai-rerank\",\n  body: {\n    \"service\": \"contextualai\",\n    \"service_settings\": {\n      \"api_key\": \"ContextualAI-Api-key\",\n      \"model_id\": \"ctxl-rerank-v2-instruct-multilingual-mini\"\n    },\n    \"task_settings\": {\n      \"instruction\": \"Rerank the following documents based on their relevance to the query.\",\n      \"top_k\": 3\n    }\n  }\n)"
-    },
-    {
-      "language": "PHP",
-      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"contextualai-rerank\",\n    \"body\" => [\n        \"service\" => \"contextualai\",\n        \"service_settings\" => [\n            \"api_key\" => \"ContextualAI-Api-key\",\n            \"model_id\" => \"ctxl-rerank-v2-instruct-multilingual-mini\",\n        ],\n        \"task_settings\" => [\n            \"instruction\" => \"Rerank the following documents based on their relevance to the query.\",\n            \"top_k\" => 3,\n        ],\n    ],\n]);"
-    },
-    {
-      "language": "curl",
-      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"contextualai\",\"service_settings\":{\"api_key\":\"ContextualAI-Api-key\",\"model_id\":\"ctxl-rerank-v2-instruct-multilingual-mini\"},\"task_settings\":{\"instruction\":\"Rerank the following documents based on their relevance to the query.\",\"top_k\":3}}' \"$ELASTICSEARCH_URL/_inference/rerank/contextualai-rerank\""
     }
   ]
 }
