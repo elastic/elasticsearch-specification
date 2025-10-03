@@ -38838,10 +38838,20 @@
         ]
       },
       "_types.QueryVector": {
-        "type": "array",
-        "items": {
-          "type": "number"
-        }
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "_types.QueryVectorBuilder": {
         "type": "object",

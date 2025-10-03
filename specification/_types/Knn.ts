@@ -22,7 +22,8 @@ import { float, integer } from '@_types/Numeric'
 import { InnerHits } from '@global/search/_types/hits'
 import { QueryBase, QueryContainer } from './query_dsl/abstractions'
 
-export type QueryVector = float[]
+/* Byte vectors can be hex-encoded strings */
+export type QueryVector = float[] | string[]
 
 /* KnnSearch (used in kNN search) and KnnQuery (ued in kNN queries) are close
  * but different enough to require different classes */
