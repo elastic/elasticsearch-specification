@@ -64203,6 +64203,8 @@
             "type": "number"
           },
           "max_size": {
+            "deprecated": true,
+            "description": "The `max_size` condition has been deprecated in 9.3.0 and `max_primary_shard_size` should be used instead",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.ByteSize"
