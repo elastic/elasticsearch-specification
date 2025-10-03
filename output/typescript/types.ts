@@ -6066,7 +6066,7 @@ export interface MappingSemanticTextProperty {
   inference_id?: Id
   search_inference_id?: Id
   index_options?: MappingSemanticTextIndexOptions
-  chunking_settings?: MappingChunkingSettings
+  chunking_settings?: MappingChunkingSettings | null
   fields?: Record<PropertyName, MappingProperty>
 }
 
