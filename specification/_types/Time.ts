@@ -53,6 +53,7 @@ export type DateFormat = string
  * A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and
  * `d` (days). Also accepts "0" without a unit and "-1" to indicate an unspecified value.
  * @doc_id time-value
+ * @ext_doc_id time-units
  */
 // Used to be Time, see ES TimeValue
 export type Duration = string | -1 | 0
