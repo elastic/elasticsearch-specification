@@ -10106,8 +10106,16 @@ export interface ClusterStatsDenseVectorStats {
   off_heap?: ClusterStatsDenseVectorOffHeapStats
 }
 
+export interface ClusterStatsExtendedRetrieversSearchUsage {
+  text_similarity_reranker?: ClusterStatsExtendedTextSimilarityRetrieverUsage
+}
+
 export interface ClusterStatsExtendedSearchUsage {
-  retrievers?: Record<Name, Record<Name, long>>
+  retrievers?: ClusterStatsExtendedRetrieversSearchUsage
+}
+
+export interface ClusterStatsExtendedTextSimilarityRetrieverUsage {
+  chunk_rescorer?: long
 }
 
 export interface ClusterStatsFieldTypes {

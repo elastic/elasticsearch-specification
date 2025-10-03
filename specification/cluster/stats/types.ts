@@ -157,7 +157,15 @@ export class SearchUsageStats {
 }
 
 export class ExtendedSearchUsage {
-  retrievers?: Dictionary<Name, Dictionary<Name, long>>
+  retrievers?: ExtendedRetrieversSearchUsage
+}
+
+export class ExtendedRetrieversSearchUsage {
+  text_similarity_reranker?: ExtendedTextSimilarityRetrieverUsage
+}
+
+export class ExtendedTextSimilarityRetrieverUsage {
+  chunk_rescorer?: long
 }
 
 export class DenseVectorStats {
