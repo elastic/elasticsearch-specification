@@ -888,6 +888,7 @@ tasks,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/tasks.htm
 templating-role-query,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/field-and-document-access-control.html#templating-role-query,,
 terminate-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/terminate-processor.html,,
 test-grok-pattern,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/test-grok-pattern.html,,
+time-units,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/api-conventions.html#time-units,,Time units
 time-value,https://github.com/elastic/elasticsearch/blob/{branch}/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java,,
 time-zone-id,https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html,,
 transform-set-upgrade-mode,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-set-upgrade-mode,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/transform-set-upgrade-mode.html,

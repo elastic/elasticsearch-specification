@@ -28440,6 +28440,9 @@
         ]
       },
       "_types.Duration": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units"
+        },
         "description": "A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and\n`d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.",
         "oneOf": [
           {
