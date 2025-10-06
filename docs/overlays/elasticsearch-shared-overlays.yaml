@@ -187,6 +187,10 @@ actions:
           x-displayName: Node lifecycle
           description: >
             The node lifecycle APIs enable you to prepare nodes for temporary or permanent shutdown, monitor the shutdown status, and enable a previously shut-down node to resume normal operations.
+      # P
+        - name: project
+          x-displayName: Project
+          # description: 
       # Q
         - name: query_rules
           x-displayName: Query rules
