@@ -20,12 +20,14 @@
 import { CompositeAggregateKey } from '@_types/aggregations/bucket'
 import { AggregateName, Field, FieldValue, Metadata } from '@_types/common'
 import {
+  CartesianPoint,
   GeoBounds,
   GeoHash,
   GeoHexCell,
   GeoLine,
   GeoLocation,
-  GeoTile
+  GeoTile,
+  TopLeftBottomRightGeoBounds
 } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { DurationLarge, EpochTime, UnitMillis } from '@_types/Time'
@@ -59,11 +61,14 @@ export type Aggregate =
   | SimpleValueAggregate
   | DerivativeAggregate
   | BucketMetricValueAggregate
+  | ChangePointAggregate
   // Multi value
   | StatsAggregate
   | StatsBucketAggregate
   | ExtendedStatsAggregate
   | ExtendedStatsBucketAggregate
+  | CartesianBoundsAggregate
+  | CartesianCentroidAggregate
   // Geo
   | GeoBoundsAggregate
   | GeoCentroidAggregate
@@ -322,6 +327,17 @@ export class ExtendedStatsAggregate extends StatsAggregate {
 /** @variant name=extended_stats_bucket */
 export class ExtendedStatsBucketAggregate extends ExtendedStatsAggregate {}
 
+/** @variant name=cartesian_bounds */
+export class CartesianBoundsAggregate extends AggregateBase {
+  bounds?: TopLeftBottomRightGeoBounds
+}
+
+/** @variant name=cartesian_centroid */
+export class CartesianCentroidAggregate extends AggregateBase {
+  count: long
+  location?: CartesianPoint
+}
+
 //----- Geo
 
 /**
@@ -367,6 +383,65 @@ export class MultiBucketBase
   implements AdditionalProperties<AggregateName, Aggregate>
 {
   doc_count: long
+}
+
+/** @variant name=change_point */
+export class ChangePointAggregate extends MultiBucketAggregateBase<ChangePointBucket> {
+  type: ChangeType
+  bucket?: ChangePointBucket
+}
+
+export class ChangePointBucket extends MultiBucketBase {
+  key: FieldValue
+}
+
+export type ChangeType =
+  | Dip
+  | DistributionChange
+  | Indeterminable
+  | NonStationary
+  | Spike
+  | Stationary
+  | StepChange
+  | TrendChange
+
+export class AbstractChangePoint {
+  p_value: double
+  change_point: integer
+}
+
+/** @variant name=dip */
+export class Dip extends AbstractChangePoint {}
+
+/** @variant name=distribution_change */
+export class DistributionChange extends AbstractChangePoint {}
+
+/** @variant name=spike */
+export class Spike extends AbstractChangePoint {}
+
+/** @variant name=step_change */
+export class StepChange extends AbstractChangePoint {}
+
+/** @variant name=indeterminable */
+export class Indeterminable {
+  reason: string
+}
+
+/** @variant name=non_stationary */
+export class NonStationary {
+  p_value: double
+  r_value: double
+  trend: string
+}
+
+/** @variant name=stationary */
+export class Stationary {}
+
+/** @variant name=trend_change */
+export class TrendChange {
+  p_value: double
+  r_value: double
+  change_point: integer
 }
 
 /**
