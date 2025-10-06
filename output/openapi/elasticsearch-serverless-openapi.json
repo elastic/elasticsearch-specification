@@ -58764,9 +58764,13 @@
           },
           "chunking_settings": {
             "description": "Settings for chunking text into smaller passages. If specified, these will override the\nchunking settings sent in the inference endpoint associated with inference_id. If chunking settings are updated,\nthey will not be applied to existing documents until they are reindexed.",
-            "allOf": [
+            "oneOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.ChunkingSettings"
+              },
+              {
+                "nullable": true,
+                "type": "string"
               }
             ]
           },
