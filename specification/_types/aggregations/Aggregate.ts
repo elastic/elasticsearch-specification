@@ -395,6 +395,9 @@ export class ChangePointBucket extends MultiBucketBase {
   key: FieldValue
 }
 
+/**
+ * @variants typed_keys_quirk
+ */
 export type ChangeType =
   | Dip
   | DistributionChange
