@@ -14122,10 +14122,15 @@ export interface InferenceGoogleAiStudioServiceSettings {
 
 export type InferenceGoogleAiStudioTaskType = 'completion' | 'text_embedding'
 
+export type InferenceGoogleModelGardenProvider = 'google' | 'anthropic' | 'meta' | 'hugging_face' | 'mistral' | 'ai21'
+
 export interface InferenceGoogleVertexAIServiceSettings {
-  location: string
-  model_id: string
-  project_id: string
+  provider?: InferenceGoogleModelGardenProvider
+  url?: string
+  streaming_url?: string
+  location?: string
+  model_id?: string
+  project_id?: string
   rate_limit?: InferenceRateLimitSetting
   service_account_json: string
   dimensions?: integer
@@ -14137,6 +14142,7 @@ export interface InferenceGoogleVertexAITaskSettings {
   auto_truncate?: boolean
   top_n?: integer
   thinking_config?: InferenceThinkingConfig
+  max_tokens?: integer
 }
 
 export type InferenceGoogleVertexAITaskType = 'rerank' | 'text_embedding' | 'completion' | 'chat_completion'
@@ -14438,7 +14444,7 @@ export type InferenceTaskTypeElasticsearch = 'sparse_embedding' | 'text_embeddin
 
 export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
-export type InferenceTaskTypeGoogleVertexAI = 'text_embedding' | 'rerank'
+export type InferenceTaskTypeGoogleVertexAI = 'chat_completion' | 'completion' | 'text_embedding' | 'rerank'
 
 export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
