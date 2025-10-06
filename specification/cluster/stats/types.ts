@@ -152,6 +152,20 @@ export class SearchUsageStats {
   rescorers: Dictionary<Name, long>
   sections: Dictionary<Name, long>
   retrievers: Dictionary<Name, long>
+  /* @availability stack since=9.2.0 */
+  extended: Dictionary<Name, ExtendedSearchUsage>
+}
+
+export class ExtendedSearchUsage {
+  retrievers?: ExtendedRetrieversSearchUsage
+}
+
+export class ExtendedRetrieversSearchUsage {
+  text_similarity_reranker?: ExtendedTextSimilarityRetrieverUsage
+}
+
+export class ExtendedTextSimilarityRetrieverUsage {
+  chunk_rescorer?: long
 }
 
 export class DenseVectorStats {

@@ -10107,6 +10107,18 @@ export interface ClusterStatsDenseVectorStats {
   off_heap?: ClusterStatsDenseVectorOffHeapStats
 }
 
+export interface ClusterStatsExtendedRetrieversSearchUsage {
+  text_similarity_reranker?: ClusterStatsExtendedTextSimilarityRetrieverUsage
+}
+
+export interface ClusterStatsExtendedSearchUsage {
+  retrievers?: ClusterStatsExtendedRetrieversSearchUsage
+}
+
+export interface ClusterStatsExtendedTextSimilarityRetrieverUsage {
+  chunk_rescorer?: long
+}
+
 export interface ClusterStatsFieldTypes {
   name: Name
   count: integer
@@ -10234,6 +10246,7 @@ export interface ClusterStatsSearchUsageStats {
   rescorers: Record<Name, long>
   sections: Record<Name, long>
   retrievers: Record<Name, long>
+  extended: Record<Name, ClusterStatsExtendedSearchUsage>
 }
 
 export type ClusterStatsShardState = 'INIT' | 'SUCCESS' | 'FAILED' | 'ABORTED' | 'MISSING' | 'WAITING' | 'QUEUED' | 'PAUSED_FOR_NODE_REMOVAL'
