@@ -1,15 +1,12 @@
 summary: A completion task
-description: Run `PUT _inference/completion/amazon_bedrock_completion` to create an inference endpoint to perform a completion task.
-method_request: 'PUT _inference/completion/amazon_bedrock_completion'
+description: Run `PUT _inference/completion/openai-completion` to create an inference endpoint to perform a `completion` task type.
+method_request: 'PUT _inference/completion/openai-completion'
 # type: "request"
 value: |-
   {
-      "service": "amazonbedrock",
+      "service": "openai",
       "service_settings": {
-          "access_key": "AWS-access-key",
-          "secret_key": "AWS-secret-key",
-          "region": "us-east-1",
-          "provider": "amazontitan",
-          "model": "amazon.titan-text-premier-v1:0"
+          "api_key": "OpenAI-API-Key",
+          "model_id": "gpt-3.5-turbo"
       }
   }
