@@ -76,5 +76,11 @@ export interface Request extends RequestBase {
     metadata?: Metadata
     /** Specifies the name for this API key. */
     name: Name
+    /**
+     * The certificate identity to associate with this API key.
+     * This field is used to restrict the API key to connections authenticated by a specific TLS certificate.
+     * The value should match the certificate's distinguished name (DN) pattern.
+     */
+    certificate_identity?: string
   }
 }
