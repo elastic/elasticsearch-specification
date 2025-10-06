@@ -58,6 +58,24 @@ import {
 
 const jsonSpec = buildJsonSpec()
 
+export function reAddAvailability (model: model.Model): model.Model {
+  for (const [api, spec] of jsonSpec.entries()) {
+    for (const endpoint of model.endpoints) {
+      if (endpoint.name === api) {
+        if ((spec.stability != null || spec.visibility != null) && (endpoint.availability.stack === undefined && endpoint.availability.serverless === undefined)) {
+          endpoint.availability = {
+            stack: {
+              stability: spec.stability,
+              visibility: spec.visibility
+            }
+          }
+        }
+      }
+    }
+  }
+  return model
+}
+
 export function compileEndpoints (): Record<string, model.Endpoint> {
   // Create endpoints and merge them with
   // the recorded mappings if present.
@@ -72,12 +90,7 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
       // Setting these values by default should be removed
       // when we no longer use rest-api-spec stubs as the
       // source of truth for stability/visibility.
-      availability: {
-        stack: {
-          stability: spec.stability,
-          visibility: spec.visibility
-        }
-      },
+      availability: {},
       request: null,
       requestBodyRequired: Boolean(spec.body?.required),
       response: null,
@@ -97,7 +110,7 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
     }
 
     if (typeof spec.feature_flag === 'string') {
-      map[api].availability.stack.featureFlag = spec.feature_flag
+      map[api].availability.stack = { featureFlag: spec.feature_flag }
     }
   }
   return map
