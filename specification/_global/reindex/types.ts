@@ -125,13 +125,21 @@ export class RemoteSource {
    */
   host: Host
   /**
-   * The username to use for authentication with the remote host.
+   * The username to use for authentication with the remote host (required when using basic auth).
    */
   username?: Username
   /**
-   * The password to use for authentication with the remote host.
+   * The password to use for authentication with the remote host (required when using basic auth).
    */
   password?: Password
+  /**
+   * The API key to use for authentication with the remote host (as an alternative to basic auth when the remote cluster is in Elastic Cloud).
+   * (It is not permitted to set this and also to set an Authorization header via {@link headers}.)
+   *
+   * @availability stack since=9.3.0
+   * @availability serverless
+   */
+  api_key?: string
   /**
    * The remote socket read timeout.
    * @server_default 30s

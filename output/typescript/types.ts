@@ -996,6 +996,7 @@ export interface ReindexRemoteSource {
   host: Host
   username?: Username
   password?: Password
+  api_key?: string
   socket_timeout?: Duration
 }
 
