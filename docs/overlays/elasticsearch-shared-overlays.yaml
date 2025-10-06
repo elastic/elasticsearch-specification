@@ -1152,3 +1152,11 @@ actions:
   - target: "$.components['schemas']['cat._types.CatTransformColumn'].enum"
     description: Remove enum array from cat transforms
     remove: true
+# Simplify duration type
+  - target: "$.components['schemas']['_types.Duration'].oneOf"
+    description: Remove existing oneOf definition for Duration
+    remove: true
+  - target: "$.components['schemas']['_types.Duration']"
+    description: Re-add a simple string type for Duration
+    update:
+      type: string
