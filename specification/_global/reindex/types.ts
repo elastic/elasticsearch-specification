@@ -18,7 +18,6 @@
  */
 
 import {
-  Fields,
   IndexName,
   Indices,
   OpType,
@@ -34,6 +33,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort } from '@_types/sort'
 import { Duration } from '@_types/Time'
+import { SourceConfig } from '@global/search/_types/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Destination {
@@ -105,7 +105,7 @@ export class Source {
    * Set it to a list to reindex select fields.
    * @server_default true
    * @codegen_name source_fields */
-  _source?: Fields
+  _source?: SourceConfig
   runtime_mappings?: RuntimeFields
 }
 
