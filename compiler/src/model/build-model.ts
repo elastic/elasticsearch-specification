@@ -62,7 +62,7 @@ export function reAddAvailability (model: model.Model): model.Model {
   for (const [api, spec] of jsonSpec.entries()) {
     for (const endpoint of model.endpoints) {
       if (endpoint.name === api) {
-        if ((spec.stability || spec.visibility) && (endpoint.availability.stack === undefined && endpoint.availability.serverless === undefined)) {
+        if ((spec.stability != null || spec.visibility != null) && (endpoint.availability.stack === undefined && endpoint.availability.serverless === undefined)) {
           endpoint.availability = {
             stack: {
               stability: spec.stability,
@@ -103,7 +103,7 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
       })
     }
     if (typeof spec.feature_flag === 'string') {
-      map[api].availability.stack = {featureFlag: spec.feature_flag}
+      map[api].availability.stack = { featureFlag: spec.feature_flag }
     }
   }
   return map
