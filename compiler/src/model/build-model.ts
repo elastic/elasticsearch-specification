@@ -92,7 +92,7 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
 
     // temporary workaround for APIs that are serverless-only
     // until we can stop depending on rest-api-spec for availability
-    if (api === "project.tags") {
+    if (api === 'project.tags') {
       delete map[api].availability.stack
     }
 
