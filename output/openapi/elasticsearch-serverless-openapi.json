@@ -13713,11 +13713,6 @@
                   "summary": "A rerank task",
                   "description": "Run `PUT _inference/rerank/google_vertex_ai_rerank` to create an inference endpoint to perform a `rerank` task type.",
                   "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"service_account_json\": \"service-account-json\",\n        \"project_id\": \"project-id\"\n    }\n}"
-                },
-                "PutGoogleVertexAiRequestExample3": {
-                  "summary": "A completion task",
-                  "description": "Run `PUT _inference/completion/google_model_garden` to create an inference endpoint to perform a `completion` task.",
-                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"anthropic\",\n        \"url\": \"url\",\n        \"streaming_url\": \"streaming_url\",\n        \"service_account_json\": \"service-account-json\"\n    }\n}"
                 }
               }
             }
