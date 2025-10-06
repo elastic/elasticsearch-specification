@@ -160,7 +160,7 @@ export class DenseVectorIndexOptions {
    */
   type: DenseVectorIndexOptionsType
   /**
-   * The rescore vector options. This is only applicable to `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.
+   * The rescore vector options. This is only applicable to `bbq_disk`, `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.
    */
   rescore_vector?: DenseVectorIndexOptionsRescoreVector
 }
@@ -178,6 +178,15 @@ export enum DenseVectorIndexOptionsType {
    * This can reduce the memory footprint by nearly 32x at the cost of some accuracy.
    */
   bbq_hnsw,
+  /**
+   * This utilizes the DiskBBQ algorithm, a version of Inverted Vector File (IVF) that uses BBQ to quantize vectors.
+   * Only supports `element_type` of `float`.
+   *
+   * This not only significantly reduces memory usage, but also allows for indexing and searching of very large datasets that do not fit in memory.
+   * Unlike HNSW, this index type loses performance gracefully as the index grows larger than memory.
+   * @availability stack since=9.2.0 stability=stable
+   */
+  bbq_disk,
   /**
    * This utilizes a brute-force search algorithm for exact kNN search. This supports all `element_type` values.
    */
