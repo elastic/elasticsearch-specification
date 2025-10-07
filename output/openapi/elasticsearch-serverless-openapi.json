@@ -78247,7 +78247,7 @@
             "default": "true",
             "allOf": [
               {
-                "$ref": "#/components/schemas/_types.Fields"
+                "$ref": "#/components/schemas/_global.search._types.SourceConfig"
               }
             ]
           },
