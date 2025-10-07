@@ -153,7 +153,7 @@ export class SearchUsageStats {
   sections: Dictionary<Name, long>
   retrievers: Dictionary<Name, long>
   /* @availability stack since=9.2.0 */
-  extended: Dictionary<Name, ExtendedSearchUsage>
+  extended: ExtendedSearchUsage
 }
 
 export class ExtendedSearchUsage {
