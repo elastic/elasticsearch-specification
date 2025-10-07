@@ -26580,6 +26580,9 @@
             "$ref": "#/components/schemas/_types.aggregations.BucketMetricValueAggregate"
           },
           {
+            "$ref": "#/components/schemas/_types.aggregations.ChangePointAggregate"
+          },
+          {
             "$ref": "#/components/schemas/_types.aggregations.StatsAggregate"
           },
           {
@@ -26590,6 +26593,12 @@
           },
           {
             "$ref": "#/components/schemas/_types.aggregations.ExtendedStatsBucketAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations.CartesianBoundsAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations.CartesianCentroidAggregate"
           },
           {
             "$ref": "#/components/schemas/_types.aggregations.GeoBoundsAggregate"
@@ -27051,6 +27060,248 @@
           }
         ]
       },
+      "_types.aggregations.ChangePointAggregate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.MultiBucketAggregateBaseChangePointBucket"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/_types.aggregations.ChangeType"
+              },
+              "bucket": {
+                "$ref": "#/components/schemas/_types.aggregations.ChangePointBucket"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.aggregations.ChangeType": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.Dip"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations.DistributionChange"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations.Indeterminable"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations.NonStationary"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations.Spike"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations.Stationary"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations.StepChange"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations.TrendChange"
+          }
+        ]
+      },
+      "_types.aggregations.Dip": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AbstractChangePoint"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.AbstractChangePoint": {
+        "type": "object",
+        "properties": {
+          "p_value": {
+            "type": "number"
+          },
+          "change_point": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "p_value",
+          "change_point"
+        ]
+      },
+      "_types.aggregations.DistributionChange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AbstractChangePoint"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.Indeterminable": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "reason"
+        ]
+      },
+      "_types.aggregations.NonStationary": {
+        "type": "object",
+        "properties": {
+          "p_value": {
+            "type": "number"
+          },
+          "r_value": {
+            "type": "number"
+          },
+          "trend": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "p_value",
+          "r_value",
+          "trend"
+        ]
+      },
+      "_types.aggregations.Spike": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AbstractChangePoint"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.Stationary": {
+        "type": "object"
+      },
+      "_types.aggregations.StepChange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AbstractChangePoint"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.TrendChange": {
+        "type": "object",
+        "properties": {
+          "p_value": {
+            "type": "number"
+          },
+          "r_value": {
+            "type": "number"
+          },
+          "change_point": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "p_value",
+          "r_value",
+          "change_point"
+        ]
+      },
+      "_types.aggregations.ChangePointBucket": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.MultiBucketBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "$ref": "#/components/schemas/_types.FieldValue"
+              }
+            },
+            "required": [
+              "key"
+            ]
+          }
+        ]
+      },
+      "_types.FieldValue": {
+        "description": "A field value.",
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "nullable": true,
+            "type": "string"
+          }
+        ]
+      },
+      "_types.aggregations.MultiBucketBase": {
+        "description": "Base type for multi-bucket aggregation results that can hold sub-aggregations results.",
+        "type": "object",
+        "properties": {
+          "doc_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "doc_count"
+        ]
+      },
+      "_types.aggregations.MultiBucketAggregateBaseChangePointBucket": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "buckets": {
+                "$ref": "#/components/schemas/_types.aggregations.BucketsChangePointBucket"
+              }
+            },
+            "required": [
+              "buckets"
+            ]
+          }
+        ]
+      },
+      "_types.aggregations.BucketsChangePointBucket": {
+        "description": "Aggregation buckets. By default they are returned as an array, but if the aggregation has keys configured for\nthe different buckets, the result is a dictionary.",
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.aggregations.ChangePointBucket"
+            }
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.aggregations.ChangePointBucket"
+            }
+          }
+        ]
+      },
       "_types.aggregations.StatsAggregate": {
         "description": "Statistics aggregation result. `min`, `max` and `avg` are missing if there were no values to process\n(`count` is zero).",
         "allOf": [
@@ -27371,7 +27622,7 @@
           }
         ]
       },
-      "_types.aggregations.GeoBoundsAggregate": {
+      "_types.aggregations.CartesianBoundsAggregate": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
@@ -27380,50 +27631,10 @@
             "type": "object",
             "properties": {
               "bounds": {
-                "$ref": "#/components/schemas/_types.GeoBounds"
+                "$ref": "#/components/schemas/_types.TopLeftBottomRightGeoBounds"
               }
             }
           }
-        ]
-      },
-      "_types.GeoBounds": {
-        "description": "A geo bounding box. It can be represented in various ways:\n- as 4 top/bottom/left/right coordinates\n- as 2 top_left / bottom_right points\n- as 2 top_right / bottom_left points\n- as a WKT bounding box",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types.CoordsGeoBounds"
-          },
-          {
-            "$ref": "#/components/schemas/_types.TopLeftBottomRightGeoBounds"
-          },
-          {
-            "$ref": "#/components/schemas/_types.TopRightBottomLeftGeoBounds"
-          },
-          {
-            "$ref": "#/components/schemas/_types.WktGeoBounds"
-          }
-        ]
-      },
-      "_types.CoordsGeoBounds": {
-        "type": "object",
-        "properties": {
-          "top": {
-            "type": "number"
-          },
-          "bottom": {
-            "type": "number"
-          },
-          "left": {
-            "type": "number"
-          },
-          "right": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "top",
-          "bottom",
-          "left",
-          "right"
         ]
       },
       "_types.TopLeftBottomRightGeoBounds": {
@@ -27491,6 +27702,97 @@
       },
       "_types.GeoHash": {
         "type": "string"
+      },
+      "_types.aggregations.CartesianCentroidAggregate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "number"
+              },
+              "location": {
+                "$ref": "#/components/schemas/_types.CartesianPoint"
+              }
+            },
+            "required": [
+              "count"
+            ]
+          }
+        ]
+      },
+      "_types.CartesianPoint": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ]
+      },
+      "_types.aggregations.GeoBoundsAggregate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "bounds": {
+                "$ref": "#/components/schemas/_types.GeoBounds"
+              }
+            }
+          }
+        ]
+      },
+      "_types.GeoBounds": {
+        "description": "A geo bounding box. It can be represented in various ways:\n- as 4 top/bottom/left/right coordinates\n- as 2 top_left / bottom_right points\n- as 2 top_right / bottom_left points\n- as a WKT bounding box",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.CoordsGeoBounds"
+          },
+          {
+            "$ref": "#/components/schemas/_types.TopLeftBottomRightGeoBounds"
+          },
+          {
+            "$ref": "#/components/schemas/_types.TopRightBottomLeftGeoBounds"
+          },
+          {
+            "$ref": "#/components/schemas/_types.WktGeoBounds"
+          }
+        ]
+      },
+      "_types.CoordsGeoBounds": {
+        "type": "object",
+        "properties": {
+          "top": {
+            "type": "number"
+          },
+          "bottom": {
+            "type": "number"
+          },
+          "left": {
+            "type": "number"
+          },
+          "right": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "top",
+          "bottom",
+          "left",
+          "right"
+        ]
       },
       "_types.TopRightBottomLeftGeoBounds": {
         "type": "object",
@@ -27603,18 +27905,6 @@
               "key"
             ]
           }
-        ]
-      },
-      "_types.aggregations.MultiBucketBase": {
-        "description": "Base type for multi-bucket aggregation results that can hold sub-aggregations results.",
-        "type": "object",
-        "properties": {
-          "doc_count": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "doc_count"
         ]
       },
       "_types.aggregations.DateHistogramAggregate": {
@@ -27875,27 +28165,6 @@
             "required": [
               "key"
             ]
-          }
-        ]
-      },
-      "_types.FieldValue": {
-        "description": "A field value.",
-        "oneOf": [
-          {
-            "type": "number"
-          },
-          {
-            "type": "number"
-          },
-          {
-            "type": "string"
-          },
-          {
-            "type": "boolean"
-          },
-          {
-            "nullable": true,
-            "type": "string"
           }
         ]
       },
@@ -31690,8 +31959,17 @@
               "cardinality": {
                 "$ref": "#/components/schemas/_types.aggregations.CardinalityAggregation"
               },
+              "cartesian_bounds": {
+                "$ref": "#/components/schemas/_types.aggregations.CartesianBoundsAggregation"
+              },
+              "cartesian_centroid": {
+                "$ref": "#/components/schemas/_types.aggregations.CartesianCentroidAggregation"
+              },
               "categorize_text": {
                 "$ref": "#/components/schemas/_types.aggregations.CategorizeTextAggregation"
+              },
+              "change_point": {
+                "$ref": "#/components/schemas/_types.aggregations.ChangePointAggregation"
               },
               "children": {
                 "$ref": "#/components/schemas/_types.aggregations.ChildrenAggregation"
@@ -37365,6 +37643,26 @@
           "save_time_heuristic"
         ]
       },
+      "_types.aggregations.CartesianBoundsAggregation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.MetricAggregationBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.CartesianCentroidAggregation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.MetricAggregationBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
       "_types.aggregations.CategorizeTextAggregation": {
         "description": "A multi-bucket aggregation that groups semi-structured text into buckets. Each text\nfield is re-analyzed using a custom analyzer. The resulting tokens are then categorized\ncreating buckets of similarly formatted text values. This aggregation works best with machine\ngenerated text like system logs. Only the first 100 analyzed tokens are used to categorize the text.",
         "allOf": [
@@ -37455,6 +37753,16 @@
             }
           }
         }
+      },
+      "_types.aggregations.ChangePointAggregation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.PipelineAggregationBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
       },
       "_types.aggregations.ChildrenAggregation": {
         "allOf": [
