@@ -95,12 +95,6 @@ export type GeoTile = string
 
 /** A map hex cell (H3) reference */
 export type GeoHexCell = string
-
-export class LatLon {
-  lat: double
-  lon: double
-}
-
 /**
  * A latitude/longitude as a 2 dimensional point. It can be represented in various ways:
  * - as a `{lat, long}` object
@@ -126,6 +120,11 @@ export class LatLonGeoLocation {
    * Longitude
    */
   lon: double
+}
+
+export class CartesianPoint {
+  x: double
+  y: double
 }
 
 export class GeoHashLocation {
