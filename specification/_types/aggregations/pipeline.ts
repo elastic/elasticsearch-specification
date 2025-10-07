@@ -203,6 +203,8 @@ export class BucketSortAggregation extends Aggregation {
   sort?: Sort
 }
 
+export class ChangePointAggregation extends PipelineAggregationBase {}
+
 /**
  * @ext_doc_id search-aggregations-pipeline-cumulative-cardinality-aggregation
  */
