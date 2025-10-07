@@ -3372,7 +3372,7 @@ export interface AggregationsCategorizeTextAggregation {
 
 export type AggregationsCategorizeTextAnalyzer = string | AggregationsCustomCategorizeTextAnalyzer
 
-export interface AggregationsChangePointAggregate extends AggregationsMultiBucketAggregateBase<AggregationsChangePointBucket> {
+export interface AggregationsChangePointAggregate extends AggregationsAggregateBase {
   type: AggregationsChangeType
   bucket?: AggregationsChangePointBucket
 }
@@ -3386,7 +3386,16 @@ export interface AggregationsChangePointBucketKeys extends AggregationsMultiBuck
 export type AggregationsChangePointBucket = AggregationsChangePointBucketKeys
   & { [property: string]: AggregationsAggregate | FieldValue | long }
 
-export type AggregationsChangeType = AggregationsDip | AggregationsDistributionChange | AggregationsIndeterminable | AggregationsNonStationary | AggregationsSpike | AggregationsStationary | AggregationsStepChange | AggregationsTrendChange
+export interface AggregationsChangeType {
+  dip?: AggregationsDip
+  distribution_change?: AggregationsDistributionChange
+  indeterminable?: AggregationsIndeterminable
+  non_stationary?: AggregationsNonStationary
+  spike?: AggregationsSpike
+  stationary?: AggregationsStationary
+  step_change?: AggregationsStepChange
+  trend_change?: AggregationsTrendChange
+}
 
 export interface AggregationsChiSquareHeuristic {
   background_is_superset: boolean
