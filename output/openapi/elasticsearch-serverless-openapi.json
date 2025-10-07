@@ -78073,7 +78073,7 @@
             ]
           },
           "api_key": {
-            "description": "The API key to use for authentication with the remote host (as an alternative to basic auth when the remote cluster is in Elastic Cloud).\n(It is not permitted to set this and also to set an Authorization header via {@link headers}.)",
+            "description": "The API key to use for authentication with the remote host (as an alternative to basic auth when the remote cluster is in Elastic Cloud).\n(It is not permitted to set this and also to set an `Authorization` header via `headers`.)",
             "x-state": "Generally available",
             "type": "string"
           },
