@@ -60,6 +60,8 @@ import {
   AverageAggregation,
   BoxplotAggregation,
   CardinalityAggregation,
+  CartesianBoundsAggregation,
+  CartesianCentroidAggregation,
   ExtendedStatsAggregation,
   GeoBoundsAggregation,
   GeoCentroidAggregation,
@@ -87,6 +89,7 @@ import {
   BucketScriptAggregation,
   BucketSelectorAggregation,
   BucketSortAggregation,
+  ChangePointAggregation,
   CumulativeCardinalityAggregation,
   CumulativeSumAggregation,
   DerivativeAggregation,
@@ -184,12 +187,31 @@ export class AggregationContainer {
    */
   cardinality?: CardinalityAggregation
   /**
+   * A metric aggregation that computes the spatial bounding box containing all values for a Point or Shape field.
+   * @ext_doc_id search-aggregations-metrics-cartesian-bounds-aggregation
+   */
+  cartesian_bounds?: CartesianBoundsAggregation
+  /**
+   * A metric aggregation that computes the weighted centroid from all coordinate values for point and shape fields.
+   * @ext_doc_id search-aggregations-metrics-cartesian-centroid-aggregation
+   */
+  cartesian_centroid?: CartesianCentroidAggregation
+  /**
    * A multi-bucket aggregation that groups semi-structured text into buckets.
    * @ext_doc_id search-aggregations-bucket-categorize-text-aggregation
    * @availability stack stability=experimental
    * @availability serverless stability=experimental
    */
   categorize_text?: CategorizeTextAggregation
+  /**
+   * A sibling pipeline that detects, spikes, dips, and change points in a metric.
+   * Given a distribution of values provided by the sibling multi-bucket aggregation,
+   * this aggregation indicates the bucket of any spike or dip and/or the bucket at which
+   * the largest change in the distribution of values, if they are statistically significant.
+   * There must be at least 22 bucketed values. Fewer than 1,000 is preferred.
+   * @ext_doc_id search-aggregations-change-point-aggregation
+   */
+  change_point?: ChangePointAggregation
   /**
    * A single bucket aggregation that selects child documents that have the specified type, as defined in a `join` field.
    * @ext_doc_id search-aggregations-bucket-children-aggregation
@@ -245,6 +267,7 @@ export class AggregationContainer {
   /**
    * A bucket aggregation which finds frequent item sets, a form of association rules mining that identifies items that often occur together.
    * @ext_doc_id search-aggregations-bucket-frequent-item-sets-aggregation
+   * @aliases frequent_items
    */
   frequent_item_sets?: FrequentItemSetsAggregation
   /**
