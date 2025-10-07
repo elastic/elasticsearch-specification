@@ -134,7 +134,7 @@ export class RemoteSource {
   password?: Password
   /**
    * The API key to use for authentication with the remote host (as an alternative to basic auth when the remote cluster is in Elastic Cloud).
-   * (It is not permitted to set this and also to set an Authorization header via `headers`.)
+   * (It is not permitted to set this and also to set an `Authorization` header via `headers`.)
    *
    * @availability stack since=9.3.0
    * @availability serverless
