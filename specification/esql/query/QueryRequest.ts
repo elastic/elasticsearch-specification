@@ -18,10 +18,10 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { FieldValue } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { EsqlFormat } from '@esql/_types/QueryParameters'
 import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
+import { ESQLParam } from '@esql/_types/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
@@ -87,7 +87,7 @@ export interface Request extends RequestBase {
      * To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.
      * @doc_id esql-query-params
      */
-    params?: Array<FieldValue>
+    params?: Array<ESQLParam>
     /**
      * If provided and `true` the response will include an extra `profile` object
      * with information on how the query was executed. This information is for human debugging
@@ -105,10 +105,11 @@ export interface Request extends RequestBase {
      */
     tables?: Dictionary<string, Dictionary<string, TableValuesContainer>>
     /**
-     * When set to `true` and performing a cross-cluster query, the response will include an extra `_clusters`
+     * When set to `true` and performing a cross-cluster/cross-project query, the response will include an extra `_clusters`
      * object with information about the clusters that participated in the search along with info such as shards
      * count.
      * @server_default false
+     * @aliases include_execution_metadata
      */
     include_ccs_metadata?: boolean
   }

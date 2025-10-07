@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Routing, SearchType } from '@_types/common'
+import {
+  ExpandWildcards,
+  Indices,
+  ProjectRouting,
+  Routing,
+  SearchType
+} from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { RequestItem } from './types'
 
@@ -117,6 +123,17 @@ export interface Request extends RequestBase {
      * Defines a threshold that enforces a pre-filter roundtrip to prefilter search shards based on query rewriting if the number of shards the search request expands to exceeds the threshold. This filter roundtrip can limit the number of shards significantly if for instance a shard can not match any documents based on its rewrite method i.e., if date filters are mandatory to match but the shard bounds and the query are disjoint.
      */
     pre_filter_shard_size?: long
+    /**
+     * Specifies a subset of projects to target for a search using project metadata
+     * tags in a subset Lucene syntax. Allowed Lucene queries: the _alias tag
+     * and a single value (possible wildcarded). Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
     /**
      * If true, hits.total are returned as an integer in the response. Defaults to false, which returns an object.
      * @server_default false

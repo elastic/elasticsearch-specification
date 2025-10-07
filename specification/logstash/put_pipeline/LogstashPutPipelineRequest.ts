@@ -43,6 +43,7 @@ export interface Request extends RequestBase {
   path_parts: {
     /**
      * An identifier for the pipeline.
+     * Pipeline IDs must begin with a letter or underscore and contain only letters, underscores, dashes, hyphens and numbers.
      */
     id: Id
   }

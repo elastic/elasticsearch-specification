@@ -128,9 +128,10 @@ export interface Request extends RequestBase {
     max_concurrent_shard_requests?: integer
     preference?: string
     /**
-     * Specifies a subset of projects to target for a search using project metadata
-     * tags in a subset Lucene syntax. Allowed Lucene queries: the _alias tag
-     * and a single value (possible wildcarded). Examples:
+     * Specifies a subset of projects to target for the search using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
      *  _alias:my-project
      *  _alias:_origin
      *  _alias:*pr*

@@ -143,6 +143,7 @@ export interface CountRequest extends RequestBase {
   lenient?: boolean
   min_score?: double
   preference?: string
+  project_routing?: ProjectRouting
   routing?: Routing
   terminate_after?: long
   q?: string
@@ -360,6 +361,7 @@ export interface FieldCapsRequest extends RequestBase {
   filters?: string
   types?: string[]
   include_empty_fields?: boolean
+  project_routing?: ProjectRouting
   body?: {
     fields?: Fields
     index_filter?: QueryDslQueryContainer
@@ -742,6 +744,7 @@ export interface MsearchMultisearchHeader {
   ignore_unavailable?: boolean
   index?: Indices
   preference?: string
+  project_routing?: ProjectRouting
   request_cache?: boolean
   routing?: Routing
   search_type?: SearchType
@@ -761,6 +764,7 @@ export interface MsearchRequest extends RequestBase {
   max_concurrent_searches?: integer
   max_concurrent_shard_requests?: integer
   pre_filter_shard_size?: long
+  project_routing?: ProjectRouting
   rest_total_hits_as_int?: boolean
   routing?: Routing
   search_type?: SearchType
@@ -778,6 +782,7 @@ export interface MsearchTemplateRequest extends RequestBase {
   index?: Indices
   ccs_minimize_roundtrips?: boolean
   max_concurrent_searches?: long
+  project_routing?: ProjectRouting
   search_type?: SearchType
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
@@ -851,6 +856,7 @@ export interface OpenPointInTimeRequest extends RequestBase {
   keep_alive: Duration
   ignore_unavailable?: boolean
   preference?: string
+  project_routing?: ProjectRouting
   routing?: Routing
   expand_wildcards?: ExpandWildcards
   allow_partial_search_results?: boolean
@@ -1857,6 +1863,7 @@ export interface SearchMvtRequest extends RequestBase {
   grid_agg?: SearchMvtGridAggregationType
   grid_precision?: integer
   grid_type?: SearchMvtGridType
+  project_routing?: ProjectRouting
   size?: integer
   track_total_hits?: SearchTrackHits
   with_labels?: boolean
@@ -1932,6 +1939,7 @@ export interface SearchTemplateRequest extends RequestBase {
   ignore_unavailable?: boolean
   preference?: string
   profile?: boolean
+  project_routing?: ProjectRouting
   routing?: Routing
   scroll?: Duration
   search_type?: SearchType
@@ -2213,6 +2221,11 @@ export type ByteSize = long | string
 export type Bytes = 'b' | 'kb' | 'mb' | 'gb' | 'tb' | 'pb'
 
 export type CategoryId = string
+
+export interface ChunkRescorer {
+  size?: integer
+  chunking_settings?: MappingChunkRescorerChunkingSettings
+}
 
 export type ClusterAlias = string
 
@@ -3002,7 +3015,7 @@ export interface TaskFailure {
 export type TaskId = string
 
 export interface TextEmbedding {
-  model_id: string
+  model_id?: string
   model_text: string
 }
 
@@ -3012,6 +3025,7 @@ export interface TextSimilarityReranker extends RetrieverBase {
   inference_id?: string
   inference_text: string
   field: string
+  chunk_rescorer?: ChunkRescorer
 }
 
 export type ThreadType = 'cpu' | 'wait' | 'block' | 'gpu' | 'mem'
@@ -3099,6 +3113,7 @@ export interface WriteResponseBase {
   _seq_no?: SequenceNumber
   _shards: ShardStatistics
   _version: VersionNumber
+  failure_store?: BulkFailureStoreStatus
   forced_refresh?: boolean
 }
 
@@ -3393,7 +3408,7 @@ export type AggregationsCompositeAggregateKey = Record<Field, FieldValue>
 export interface AggregationsCompositeAggregation extends AggregationsBucketAggregationBase {
   after?: AggregationsCompositeAggregateKey
   size?: integer
-  sources?: Record<string, AggregationsCompositeAggregationSource>[]
+  sources?: Partial<Record<string, AggregationsCompositeAggregationSource>>[]
 }
 
 export interface AggregationsCompositeAggregationBase {
@@ -4054,6 +4069,11 @@ export interface AggregationsNormalizeAggregation extends AggregationsPipelineAg
 
 export type AggregationsNormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'z-score' | 'softmax'
 
+export interface AggregationsPValueHeuristic {
+  background_is_superset?: boolean
+  normalize_above?: long
+}
+
 export interface AggregationsParentAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
 export type AggregationsParentAggregate = AggregationsParentAggregateKeys
@@ -4226,6 +4246,7 @@ export interface AggregationsSignificantTermsAggregation extends AggregationsBuc
   mutual_information?: AggregationsMutualInformationHeuristic
   percentage?: AggregationsPercentageScoreHeuristic
   script_heuristic?: AggregationsScriptedHeuristic
+  p_value?: AggregationsPValueHeuristic
   shard_min_doc_count?: long
   shard_size?: integer
   size?: integer
@@ -5580,6 +5601,15 @@ export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
   null_value?: byte
 }
 
+export interface MappingChunkRescorerChunkingSettings {
+  strategy?: string
+  separator_group?: string
+  separators?: string[]
+  max_chunk_size: integer
+  overlap?: integer
+  sentence_overlap?: integer
+}
+
 export interface MappingChunkingSettings {
   strategy: string
   separator_group?: string
@@ -5667,7 +5697,7 @@ export interface MappingDenseVectorIndexOptionsRescoreVector {
   oversample: float
 }
 
-export type MappingDenseVectorIndexOptionsType = 'bbq_flat' | 'bbq_hnsw' | 'flat' | 'hnsw' | 'int4_flat' | 'int4_hnsw' | 'int8_flat' | 'int8_hnsw'
+export type MappingDenseVectorIndexOptionsType = 'bbq_flat' | 'bbq_hnsw' | 'bbq_disk' | 'flat' | 'hnsw' | 'int4_flat' | 'int4_hnsw' | 'int8_flat' | 'int8_hnsw'
 
 export interface MappingDenseVectorProperty extends MappingPropertyBase {
   type: 'dense_vector'
@@ -6027,6 +6057,7 @@ export interface MappingSearchAsYouTypeProperty extends MappingCorePropertyBase 
 
 export interface MappingSemanticTextIndexOptions {
   dense_vector?: MappingDenseVectorIndexOptions
+  sparse_vector?: MappingSparseVectorIndexOptions
 }
 
 export interface MappingSemanticTextProperty {
@@ -6035,7 +6066,8 @@ export interface MappingSemanticTextProperty {
   inference_id?: Id
   search_inference_id?: Id
   index_options?: MappingSemanticTextIndexOptions
-  chunking_settings?: MappingChunkingSettings
+  chunking_settings?: MappingChunkingSettings | null
+  fields?: Record<PropertyName, MappingProperty>
 }
 
 export interface MappingShapeProperty extends MappingDocValuesPropertyBase {
@@ -7402,6 +7434,7 @@ export interface CatCountCountRecord {
 export interface CatCountRequest extends CatCatRequestBase {
   index?: Indices
   h?: CatCatCountColumns
+  project_routing?: ProjectRouting
   s?: Names
 }
 
@@ -8452,7 +8485,7 @@ export interface CatNodesNodesRecord {
 }
 
 export interface CatNodesRequest extends CatCatRequestBase {
-  full_id?: boolean | string
+  full_id?: boolean
   include_unloaded_segments?: boolean
   h?: CatCatNodeColumns
   s?: Names
@@ -10074,6 +10107,18 @@ export interface ClusterStatsDenseVectorStats {
   off_heap?: ClusterStatsDenseVectorOffHeapStats
 }
 
+export interface ClusterStatsExtendedRetrieversSearchUsage {
+  text_similarity_reranker?: ClusterStatsExtendedTextSimilarityRetrieverUsage
+}
+
+export interface ClusterStatsExtendedSearchUsage {
+  retrievers?: ClusterStatsExtendedRetrieversSearchUsage
+}
+
+export interface ClusterStatsExtendedTextSimilarityRetrieverUsage {
+  chunk_rescorer?: long
+}
+
 export interface ClusterStatsFieldTypes {
   name: Name
   count: integer
@@ -10201,6 +10246,7 @@ export interface ClusterStatsSearchUsageStats {
   rescorers: Record<Name, long>
   sections: Record<Name, long>
   retrievers: Record<Name, long>
+  extended: Record<Name, ClusterStatsExtendedSearchUsage>
 }
 
 export type ClusterStatsShardState = 'INIT' | 'SUCCESS' | 'FAILED' | 'ABORTED' | 'MISSING' | 'WAITING' | 'QUEUED' | 'PAUSED_FOR_NODE_REMOVAL'
@@ -10996,6 +11042,7 @@ export interface EqlSearchRequest extends RequestBase {
   ignore_unavailable?: boolean
   keep_alive?: Duration
   keep_on_completion?: boolean
+  project_routing?: ProjectRouting
   wait_for_completion_timeout?: Duration
   body?: {
     query: string
@@ -11026,6 +11073,8 @@ export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
   id?: string
   is_running: boolean
 }
+
+export type EsqlESQLParam = FieldValue | FieldValue[]
 
 export interface EsqlEsqlClusterDetails {
   status: EsqlEsqlClusterStatus
@@ -11107,6 +11156,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
     include_ccs_metadata?: boolean
+    include_execution_metadata?: boolean
     wait_for_completion_timeout?: Duration
     keep_alive?: Duration
     keep_on_completion?: boolean
@@ -11176,11 +11226,12 @@ export interface EsqlQueryRequest extends RequestBase {
     columnar?: boolean
     filter?: QueryDslQueryContainer
     locale?: string
-    params?: FieldValue[]
+    params?: EsqlESQLParam[]
     profile?: boolean
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
     include_ccs_metadata?: boolean
+    include_execution_metadata?: boolean
   }
 }
 
@@ -11515,6 +11566,7 @@ export interface IlmExplainLifecycleLifecycleExplainManaged {
   action_time?: DateTime
   action_time_millis?: EpochTime<UnitMillis>
   age?: Duration
+  age_in_millis?: DurationValue<UnitMillis>
   failed_step?: Name
   failed_step_retry_count?: integer
   index: IndexName
@@ -13307,6 +13359,7 @@ export interface IndicesResolveIndexRequest extends RequestBase {
   ignore_unavailable?: boolean
   allow_no_indices?: boolean
   mode?: IndicesIndexMode | IndicesIndexMode[]
+  project_routing?: ProjectRouting
 }
 
 export interface IndicesResolveIndexResolveIndexAliasItem {
@@ -13977,6 +14030,20 @@ export interface InferenceContentObject {
   type: string
 }
 
+export interface InferenceContextualAIServiceSettings {
+  api_key: string
+  model_id: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceContextualAIServiceType = 'contextualai'
+
+export interface InferenceContextualAITaskSettings {
+  instruction?: string
+  return_documents?: boolean
+  top_k?: integer
+}
+
 export interface InferenceCustomRequestParams {
   content: string
 }
@@ -14061,6 +14128,7 @@ export interface InferenceGoogleVertexAIServiceSettings {
   project_id: string
   rate_limit?: InferenceRateLimitSetting
   service_account_json: string
+  dimensions?: integer
 }
 
 export type InferenceGoogleVertexAIServiceType = 'googlevertexai'
@@ -14148,6 +14216,11 @@ export interface InferenceInferenceEndpointInfoAzureOpenAI extends InferenceInfe
 export interface InferenceInferenceEndpointInfoCohere extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeCohere
+}
+
+export interface InferenceInferenceEndpointInfoContextualAi extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeContextualAI
 }
 
 export interface InferenceInferenceEndpointInfoCustom extends InferenceInferenceEndpoint {
@@ -14352,6 +14425,8 @@ export type InferenceTaskTypeAzureAIStudio = 'text_embedding' | 'completion' | '
 export type InferenceTaskTypeAzureOpenAI = 'text_embedding' | 'completion'
 
 export type InferenceTaskTypeCohere = 'text_embedding' | 'rerank' | 'completion'
+
+export type InferenceTaskTypeContextualAI = 'rerank'
 
 export type InferenceTaskTypeCustom = 'text_embedding' | 'sparse_embedding' | 'rerank' | 'completion'
 
@@ -14608,6 +14683,20 @@ export interface InferencePutCohereRequest extends RequestBase {
 }
 
 export type InferencePutCohereResponse = InferenceInferenceEndpointInfoCohere
+
+export interface InferencePutContextualaiRequest extends RequestBase {
+  task_type: InferenceTaskTypeContextualAI
+  contextualai_inference_id: Id
+  timeout?: Duration
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferenceContextualAIServiceType
+    service_settings: InferenceContextualAIServiceSettings
+    task_settings?: InferenceContextualAITaskSettings
+  }
+}
+
+export type InferencePutContextualaiResponse = InferenceInferenceEndpointInfoContextualAi
 
 export interface InferencePutCustomRequest extends RequestBase {
   task_type: InferenceCustomTaskType
@@ -14983,6 +15072,8 @@ export interface IngestFailProcessor extends IngestProcessorBase {
   message: string
 }
 
+export type IngestFieldAccessPattern = 'classic' | 'flexible'
+
 export type IngestFingerprintDigest = 'MD5' | 'SHA-1' | 'SHA-256' | 'SHA-512' | 'MurmurHash3'
 
 export interface IngestFingerprintProcessor extends IngestProcessorBase {
@@ -15164,6 +15255,7 @@ export interface IngestPipeline {
   created_date_millis?: EpochTime<UnitMillis>
   modified_date?: DateTime
   modified_date_millis?: EpochTime<UnitMillis>
+  field_access_pattern?: IngestFieldAccessPattern
 }
 
 export interface IngestPipelineConfig {
@@ -15500,6 +15592,7 @@ export interface IngestPutPipelineRequest extends RequestBase {
     processors?: IngestProcessorContainer[]
     version?: VersionNumber
     deprecated?: boolean
+    field_access_pattern?: IngestFieldAccessPattern
   }
 }
 
@@ -16367,7 +16460,7 @@ export interface MlFillMaskInferenceOptions {
   num_top_classes?: integer
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
-  vocabulary: MlVocabulary
+  vocabulary?: MlVocabulary
 }
 
 export interface MlFillMaskInferenceUpdateOptions {
@@ -16786,7 +16879,7 @@ export interface MlTextEmbeddingInferenceOptions {
   embedding_size?: integer
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
-  vocabulary: MlVocabulary
+  vocabulary?: MlVocabulary
 }
 
 export interface MlTextEmbeddingInferenceUpdateOptions {
@@ -16797,7 +16890,7 @@ export interface MlTextEmbeddingInferenceUpdateOptions {
 export interface MlTextExpansionInferenceOptions {
   tokenization?: MlTokenizationConfigContainer
   results_field?: string
-  vocabulary: MlVocabulary
+  vocabulary?: MlVocabulary
 }
 
 export interface MlTextExpansionInferenceUpdateOptions {
@@ -17608,7 +17701,7 @@ export interface MlGetOverallBucketsRequest extends RequestBase {
   bucket_span?: Duration
   end?: DateTime
   exclude_interim?: boolean
-  overall_score?: double | string
+  overall_score?: double
   start?: DateTime
   top_n?: integer
   body?: {
@@ -17616,7 +17709,7 @@ export interface MlGetOverallBucketsRequest extends RequestBase {
     bucket_span?: Duration
     end?: DateTime
     exclude_interim?: boolean
-    overall_score?: double | string
+    overall_score?: double
     start?: DateTime
     top_n?: integer
   }
@@ -19371,6 +19464,25 @@ export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   nodes: Record<string, NodesUsageNodeUsage>
 }
 
+export interface ProjectTagsProjectTags {
+  origin: Partial<Record<string, ProjectTagsTags>>
+  linked_projects?: Record<string, ProjectTagsTags>
+}
+
+export interface ProjectTagsRequest extends RequestBase {
+}
+
+export type ProjectTagsResponse = ProjectTagsProjectTags
+
+export interface ProjectTagsTagsKeys {
+  _id: string
+  _alias: string
+  _type: string
+  _organisation: string
+}
+export type ProjectTagsTags = ProjectTagsTagsKeys
+  & { [property: string]: string }
+
 export interface QueryRulesQueryRule {
   rule_id: Id
   type: QueryRulesQueryRuleType
@@ -19936,6 +20048,10 @@ export interface SecurityManageUserPrivileges {
   applications: string[]
 }
 
+export interface SecurityNodeSecurityStats {
+  roles: SecurityRolesStats
+}
+
 export interface SecurityRealmInfo {
   name: Name
   type: string
@@ -20041,6 +20157,10 @@ export interface SecurityRoleTemplateScript {
   options?: Record<string, string>
 }
 
+export interface SecurityRolesStats {
+  dls: XpackUsageSecurityRolesDls
+}
+
 export interface SecuritySearchAccess {
   field_security?: SecurityFieldSecurity
   names: IndexName | IndexName[]
@@ -20116,7 +20236,7 @@ export interface SecurityAuthenticateAuthenticateApiKey {
   id: Id
   name?: Name
   managed_by: SecurityApiKeyManagedBy
-  internal: boolean
+  internal?: boolean
 }
 
 export interface SecurityAuthenticateRequest extends RequestBase {
@@ -20535,6 +20655,13 @@ export interface SecurityGetSettingsResponse {
   security: SecuritySecuritySettings
   'security-profile': SecuritySecuritySettings
   'security-tokens': SecuritySecuritySettings
+}
+
+export interface SecurityGetStatsRequest extends RequestBase {
+}
+
+export interface SecurityGetStatsResponse {
+  nodes: Record<string, SecurityNodeSecurityStats>
 }
 
 export type SecurityGetTokenAccessTokenGrantType = 'password' | 'client_credentials' | '_kerberos' | 'refresh_token'
@@ -21944,6 +22071,7 @@ export interface SqlGetAsyncStatusResponse {
 
 export interface SqlQueryRequest extends RequestBase {
   format?: SqlQuerySqlFormat
+  project_routing?: ProjectRouting
   body?: {
     allow_partial_search_results?: boolean
     catalog?: string
@@ -21992,6 +22120,7 @@ export interface SqlTranslateResponse {
   fields?: (QueryDslFieldAndFormat | Field)[]
   query?: QueryDslQueryContainer
   sort?: Sort
+  track_total_hits?: SearchTrackHits
 }
 
 export interface SslCertificatesCertificateInformation {
@@ -23821,6 +23950,11 @@ export interface XpackUsageSecurityRolesDlsBitSetCache {
   count: integer
   memory?: ByteSize
   memory_in_bytes: ulong
+  hits: long
+  misses: long
+  evictions: long
+  hits_time_in_millis: DurationValue<UnitMillis>
+  misses_time_in_millis: DurationValue<UnitMillis>
 }
 
 export interface XpackUsageSecurityRolesFile {
