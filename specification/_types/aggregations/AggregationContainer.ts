@@ -208,6 +208,7 @@ export class AggregationContainer {
    * Given a distribution of values provided by the sibling multi-bucket aggregation,
    * this aggregation indicates the bucket of any spike or dip and/or the bucket at which
    * the largest change in the distribution of values, if they are statistically significant.
+   * There must be at least 22 bucketed values. Fewer than 1,000 is preferred.
    * @ext_doc_id search-aggregations-change-point-aggregation
    */
   change_point?: ChangePointAggregation
