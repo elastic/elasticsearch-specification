@@ -29696,7 +29696,7 @@
       "_types.aggregations.ChangePointAggregate": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.aggregations.MultiBucketAggregateBaseChangePointBucket"
+            "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
           },
           {
             "type": "object",
@@ -29723,32 +29723,67 @@
         ]
       },
       "_types.aggregations.ChangeType": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types.aggregations.Dip"
+        "type": "object",
+        "properties": {
+          "dip": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Dip"
+              }
+            ]
           },
-          {
-            "$ref": "#/components/schemas/_types.aggregations.DistributionChange"
+          "distribution_change": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.DistributionChange"
+              }
+            ]
           },
-          {
-            "$ref": "#/components/schemas/_types.aggregations.Indeterminable"
+          "indeterminable": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Indeterminable"
+              }
+            ]
           },
-          {
-            "$ref": "#/components/schemas/_types.aggregations.NonStationary"
+          "non_stationary": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.NonStationary"
+              }
+            ]
           },
-          {
-            "$ref": "#/components/schemas/_types.aggregations.Spike"
+          "spike": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Spike"
+              }
+            ]
           },
-          {
-            "$ref": "#/components/schemas/_types.aggregations.Stationary"
+          "stationary": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Stationary"
+              }
+            ]
           },
-          {
-            "$ref": "#/components/schemas/_types.aggregations.StepChange"
+          "step_change": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.StepChange"
+              }
+            ]
           },
-          {
-            "$ref": "#/components/schemas/_types.aggregations.TrendChange"
+          "trend_change": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.TrendChange"
+              }
+            ]
           }
-        ]
+        },
+        "minProperties": 1,
+        "maxProperties": 1
       },
       "_types.aggregations.Dip": {
         "allOf": [
@@ -29910,45 +29945,6 @@
         },
         "required": [
           "doc_count"
-        ]
-      },
-      "_types.aggregations.MultiBucketAggregateBaseChangePointBucket": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "buckets": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.aggregations.BucketsChangePointBucket"
-                  }
-                ]
-              }
-            },
-            "required": [
-              "buckets"
-            ]
-          }
-        ]
-      },
-      "_types.aggregations.BucketsChangePointBucket": {
-        "description": "Aggregation buckets. By default they are returned as an array, but if the aggregation has keys configured for\nthe different buckets, the result is a dictionary.",
-        "oneOf": [
-          {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/_types.aggregations.ChangePointBucket"
-            }
-          },
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.aggregations.ChangePointBucket"
-            }
-          }
         ]
       },
       "_types.aggregations.StatsAggregate": {
