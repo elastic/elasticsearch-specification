@@ -386,7 +386,7 @@ export class MultiBucketBase
 }
 
 /** @variant name=change_point */
-export class ChangePointAggregate extends MultiBucketAggregateBase<ChangePointBucket> {
+export class ChangePointAggregate extends AggregateBase {
   type: ChangeType
   bucket?: ChangePointBucket
 }
@@ -396,51 +396,44 @@ export class ChangePointBucket extends MultiBucketBase {
 }
 
 /**
- * @variants typed_keys_quirk
+ * @variants container
  */
-export type ChangeType =
-  | Dip
-  | DistributionChange
-  | Indeterminable
-  | NonStationary
-  | Spike
-  | Stationary
-  | StepChange
-  | TrendChange
+export class ChangeType {
+  dip?: Dip
+  distribution_change?: DistributionChange
+  indeterminable?: Indeterminable
+  non_stationary?: NonStationary
+  spike?: Spike
+  stationary?: Stationary
+  step_change?: StepChange
+  trend_change?: TrendChange
+}
 
 export class AbstractChangePoint {
   p_value: double
   change_point: integer
 }
 
-/** @variant name=dip */
 export class Dip extends AbstractChangePoint {}
 
-/** @variant name=distribution_change */
 export class DistributionChange extends AbstractChangePoint {}
 
-/** @variant name=spike */
 export class Spike extends AbstractChangePoint {}
 
-/** @variant name=step_change */
 export class StepChange extends AbstractChangePoint {}
 
-/** @variant name=indeterminable */
 export class Indeterminable {
   reason: string
 }
 
-/** @variant name=non_stationary */
 export class NonStationary {
   p_value: double
   r_value: double
   trend: string
 }
 
-/** @variant name=stationary */
 export class Stationary {}
 
-/** @variant name=trend_change */
 export class TrendChange {
   p_value: double
   r_value: double
