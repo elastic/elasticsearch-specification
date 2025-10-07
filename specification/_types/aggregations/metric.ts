@@ -105,6 +105,10 @@ export class ExtendedStatsAggregation extends FormatMetricAggregationBase {
   sigma?: double
 }
 
+export class CartesianBoundsAggregation extends MetricAggregationBase {}
+
+export class CartesianCentroidAggregation extends MetricAggregationBase {}
+
 /**
  * @ext_doc_id search-aggregations-metrics-geobounds-aggregation
  */
