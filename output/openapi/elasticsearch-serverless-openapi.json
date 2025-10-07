@@ -58489,7 +58489,7 @@
             ]
           },
           "rescore_vector": {
-            "description": "The rescore vector options. This is only applicable to `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.",
+            "description": "The rescore vector options. This is only applicable to `bbq_disk`, `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.DenseVectorIndexOptionsRescoreVector"
