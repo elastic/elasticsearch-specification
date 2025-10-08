@@ -756,6 +756,7 @@ export enum CatNodeColumn {
   load_15m,
   /**
    * The number of available processors (logical CPU cores available to the JVM).
+   * @aliases ap
    */
   available_processors,
   /**
