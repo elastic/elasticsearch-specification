@@ -81,5 +81,14 @@ export interface Request extends RequestBase {
      * When specified, this information fully replaces metadata previously associated with the API key.
      */
     metadata?: Metadata
+    /**
+     * The certificate identity to associate with this API key.
+     * This field is used to restrict the API key to connections authenticated by a specific TLS certificate.
+     * The value should match the certificate's distinguished name (DN) pattern.
+     * When specified, this fully replaces any previously assigned certificate identity.
+     * To clear an existing certificate identity, explicitly set this field to `null`.
+     * When omitted, the existing certificate identity remains unchanged.
+     */
+    certificate_identity?: string
   }
 }
