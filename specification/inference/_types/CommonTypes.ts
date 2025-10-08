@@ -1392,7 +1392,7 @@ export enum GoogleAiServiceType {
 export class GoogleVertexAIServiceSettings {
   /**
    * The name of the Google Model Garden Provider for `completion` and `chat_completion` tasks.
-   * In order for Google Model Garden endpoint to be used `provider` must be defined and be other than `google`.
+   * In order for a Google Model Garden endpoint to be used `provider` must be defined and be other than `google`.
    * Modes:
    * - Google Model Garden (third-party models): set `provider` to a supported non-`google` value and provide `url` and/or `streaming_url`.
    * - Google Vertex AI: omit `provider` or set it to `google`. In this mode, do not set `url` or `streaming_url` and Elastic will construct the endpoint url from `location`, `model_id`, and `project_id` parameters.
@@ -1456,11 +1456,7 @@ export class GoogleVertexAIServiceSettings {
 
 export enum GoogleModelGardenProvider {
   google,
-  anthropic,
-  meta,
-  hugging_face,
-  mistral,
-  ai21
+  anthropic
 }
 
 export class GoogleVertexAITaskSettings {
@@ -1479,8 +1475,11 @@ export class GoogleVertexAITaskSettings {
    */
   thinking_config?: ThinkingConfig
   /**
-   * For a `completion` or `chat_completion` task, allows setting up the `max_tokens` field for request to the Google Model Garden's Anthropic provider.
-   * If `max_tokens` is specified - it must be a positive integer.
+   * For `completion` and `chat_completion` tasks, specifies the `max_tokens` value for requests sent to the Google Model Garden `anthropic` provider.
+   * If `provider` is not set to `anthropic`, this field is ignored.
+   * If `max_tokens` is specified - it must be a positive integer. If not specified, the default value of 1024 is used.
+   * Anthropic models require `max_tokens` to be set for each request. Please refer to the Anthropic documentation for more information.
+   * @ext_doc_id anthropic-max-tokens
    */
   max_tokens?: integer
 }

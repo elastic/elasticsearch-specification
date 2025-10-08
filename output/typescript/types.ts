@@ -14122,7 +14122,7 @@ export interface InferenceGoogleAiStudioServiceSettings {
 
 export type InferenceGoogleAiStudioTaskType = 'completion' | 'text_embedding'
 
-export type InferenceGoogleModelGardenProvider = 'google' | 'anthropic' | 'meta' | 'hugging_face' | 'mistral' | 'ai21'
+export type InferenceGoogleModelGardenProvider = 'google' | 'anthropic'
 
 export interface InferenceGoogleVertexAIServiceSettings {
   provider?: InferenceGoogleModelGardenProvider

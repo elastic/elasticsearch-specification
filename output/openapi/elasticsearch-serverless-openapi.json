@@ -13723,16 +13723,6 @@
                   "summary": "A chat_completion task for Google Model Garden Anthropic endpoint",
                   "description": "Run `PUT _inference/chat_completion/google_model_garden_anthropic_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Anthropic's model hosted on Google Model Garden.",
                   "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"anthropic\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://url:rawPredict\",\n        \"streaming_url\": \"https://streaming_url:streamRawPredict\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 128\n    }\n}"
-                },
-                "PutGoogleVertexAiRequestExample5": {
-                  "summary": "A completion task for Google Model Garden Meta endpoint with single URL provided",
-                  "description": "Run `PUT _inference/completion/google_model_garden_meta_completion` to create an inference endpoint to perform a `completion` task using Meta's model hosted on Google Model Garden with single URL provided.",
-                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"meta\",\n        \"model_id\": \"meta/llama-3.3-70b-instruct-maas\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://url/openapi/chat/completions\"\n    }\n}"
-                },
-                "PutGoogleVertexAiRequestExample6": {
-                  "summary": "A chat_completion task for Google Model Garden Meta endpoint with single streaming URL provided",
-                  "description": "Run `PUT _inference/chat_completion/google_model_garden_meta_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Meta's model hosted on Google Model Garden with single streaming URL provided.",
-                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"meta\",\n        \"model_id\": \"meta/llama-3.3-70b-instruct-maas\",\n        \"service_account_json\": \"service-account-json\",\n        \"streaming_url\": \"https://url/openapi/chat/completions\"\n    }\n}"
                 }
               }
             }
@@ -66639,7 +66629,7 @@
         "type": "object",
         "properties": {
           "provider": {
-            "description": "The name of the Google Model Garden Provider for `completion` and `chat_completion` tasks.\nIn order for Google Model Garden endpoint to be used `provider` must be defined and be other than `google`.\nModes:\n- Google Model Garden (third-party models): set `provider` to a supported non-`google` value and provide `url` and/or `streaming_url`.\n- Google Vertex AI: omit `provider` or set it to `google`. In this mode, do not set `url` or `streaming_url` and Elastic will construct the endpoint url from `location`, `model_id`, and `project_id` parameters.",
+            "description": "The name of the Google Model Garden Provider for `completion` and `chat_completion` tasks.\nIn order for a Google Model Garden endpoint to be used `provider` must be defined and be other than `google`.\nModes:\n- Google Model Garden (third-party models): set `provider` to a supported non-`google` value and provide `url` and/or `streaming_url`.\n- Google Vertex AI: omit `provider` or set it to `google`. In this mode, do not set `url` or `streaming_url` and Elastic will construct the endpoint url from `location`, `model_id`, and `project_id` parameters.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.GoogleModelGardenProvider"
@@ -66700,11 +66690,7 @@
         "type": "string",
         "enum": [
           "google",
-          "anthropic",
-          "meta",
-          "hugging_face",
-          "mistral",
-          "ai21"
+          "anthropic"
         ]
       },
       "inference._types.GoogleVertexAITaskSettings": {
@@ -66730,7 +66716,10 @@
             ]
           },
           "max_tokens": {
-            "description": "For a `completion` or `chat_completion` task, allows setting up the `max_tokens` field for request to the Google Model Garden's Anthropic provider.\nIf `max_tokens` is specified - it must be a positive integer.",
+            "externalDocs": {
+              "url": "https://docs.claude.com/en/api/messages#body-max-tokens"
+            },
+            "description": "For `completion` and `chat_completion` tasks, specifies the `max_tokens` value for requests sent to the Google Model Garden `anthropic` provider.\nIf `provider` is not set to `anthropic`, this field is ignored.\nIf `max_tokens` is specified - it must be a positive integer. If not specified, the default value of 1024 is used.\nAnthropic models require `max_tokens` to be set for each request. Please refer to the Anthropic documentation for more information.",
             "type": "number"
           }
         }
