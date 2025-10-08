@@ -58847,6 +58847,11 @@
                 "$ref": "#/components/schemas/_types.mapping.DenseVectorIndexOptionsRescoreVector"
               }
             ]
+          },
+          "on_disk_rescore": {
+            "description": "`true` if vector rescoring should be done on-disk\n\nOnly applicable to `bbq_hnsw`",
+            "default": false,
+            "type": "boolean"
           }
         },
         "required": [

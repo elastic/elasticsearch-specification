@@ -5778,6 +5778,7 @@ export interface MappingDenseVectorIndexOptions {
   m?: integer
   type: MappingDenseVectorIndexOptionsType
   rescore_vector?: MappingDenseVectorIndexOptionsRescoreVector
+  on_disk_rescore?: boolean
 }
 
 export interface MappingDenseVectorIndexOptionsRescoreVector {
