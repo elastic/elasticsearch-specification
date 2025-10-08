@@ -20075,6 +20075,7 @@ export interface SecurityApiKey {
   role_descriptors?: Record<string, SecurityRoleDescriptor>
   limited_by?: Record<string, SecurityRoleDescriptor>[]
   access?: SecurityAccess
+  certificate_identity?: string
   profile_uid?: string
   _sort?: SortResults
 }
@@ -20479,6 +20480,7 @@ export interface SecurityCreateCrossClusterApiKeyRequest extends RequestBase {
     expiration?: Duration
     metadata?: Metadata
     name: Name
+    certificate_identity?: string
   }
 }
 
@@ -21312,6 +21314,7 @@ export interface SecurityUpdateCrossClusterApiKeyRequest extends RequestBase {
     access: SecurityAccess
     expiration?: Duration
     metadata?: Metadata
+    certificate_identity?: string
   }
 }
 
