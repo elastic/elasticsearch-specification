@@ -50,6 +50,11 @@ export interface Request extends CatRequestBase {
     id?: Id
   }
   query_parameters: {
+    /**
+     * Whether to ignore if a wildcard expression matches no configs.
+     * (This includes `_all` string or when no configs have been specified.)
+     * @server_default false
+     */
     allow_no_match?: boolean
     /**
      * Comma-separated list of column names to display.

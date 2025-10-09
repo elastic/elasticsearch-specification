@@ -53,6 +53,7 @@ export interface Request extends RequestBase {
     /**
      * Use to forcefully delete an opened job; this method is quicker than
      * closing and deleting the job.
+     * @server_default false
      */
     force?: boolean
     /**

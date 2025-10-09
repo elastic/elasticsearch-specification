@@ -43,6 +43,7 @@ export interface Request extends RequestBase {
     from?: integer
     /**
      * The maximum number of results to retrieve.
+     * @server_default 100
      */
     size?: integer
   }

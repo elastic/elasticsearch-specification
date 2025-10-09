@@ -58,6 +58,7 @@ export interface Request extends RequestBase {
      * validations.
      * @availability stack since=8.0.0
      * @availability serverless
+     * @server_default false
      */
     defer_definition_decompression?: boolean
 
@@ -66,6 +67,7 @@ export interface Request extends RequestBase {
      * to complete.
      * @availability stack since=8.8.0
      * @availability serverless
+     * @server_default false
      */
     wait_for_completion?: boolean
   }

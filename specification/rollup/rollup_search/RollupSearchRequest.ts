@@ -86,6 +86,9 @@ export interface Request extends RequestBase {
     index: Indices
   }
   query_parameters: {
+    /**
+     * @server_default false
+     */
     rest_total_hits_as_int?: boolean
     typed_keys?: boolean
   }

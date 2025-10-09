@@ -106,7 +106,8 @@ export interface Request extends RequestBase {
      */
     include_unloaded_segments?: boolean
     /**
-     * Indicates whether statistics are aggregated at the cluster, index, or shard level.
+     * Indicates whether statistics are aggregated at the cluster, indices, or shards level.
+     * @server_default indices
      */
     level?: Level
   }
