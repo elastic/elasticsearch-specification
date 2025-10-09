@@ -103,6 +103,9 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     max_num_segments?: long
     only_expunge_deletes?: boolean
+    /**
+     * @server_default true
+     */
     wait_for_completion?: boolean
   }
 }

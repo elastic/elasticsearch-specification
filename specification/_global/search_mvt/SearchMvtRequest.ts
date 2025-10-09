@@ -177,6 +177,7 @@ export interface Request extends RequestBase {
     extent?: integer
     /**
      * Aggregation used to create a grid for `field`.
+     * @server_default geotile
      */
     grid_agg?: GridAggregationType
     /**
@@ -218,6 +219,7 @@ export interface Request extends RequestBase {
      *
      * All attributes from the original features will also be copied to the new label features.
      * In addition, the new features will be distinguishable using the tag `_mvt_label_position`.
+     * @server_default false
      */
     with_labels?: boolean
   }

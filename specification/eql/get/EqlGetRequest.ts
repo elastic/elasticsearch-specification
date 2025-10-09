@@ -46,6 +46,7 @@ export interface Request extends RequestBase {
     /**
      * Period for which the search and its results are stored on the cluster.
      * Defaults to the keep_alive value set by the search’s EQL search API request.
+     * @server_default 5d
      */
     keep_alive?: Duration
     /**
