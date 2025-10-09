@@ -49,6 +49,7 @@ export interface Request extends RequestBase {
     format?: EsqlFormat
     /**
      * The character to use between values within a CSV row. Only valid for the CSV format.
+     * @server_default ,
      */
     delimiter?: string
     /**
