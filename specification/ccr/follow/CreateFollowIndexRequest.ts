@@ -55,6 +55,7 @@ export interface Request extends RequestBase {
      * active.
      * A shard must be restored from the leader index before being active. Restoring a follower shard requires transferring all the
      * remote Lucene segment files to the follower index.
+     * @server_default 0
      */
     wait_for_active_shards?: WaitForActiveShards
   }
