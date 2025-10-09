@@ -102,6 +102,7 @@ export interface Request extends RequestBase {
     requests_per_second?: float
     /**
      * The period of time that a consistent view of the index should be maintained for scrolled search.
+     * @server_default 5m
      */
     scroll?: Duration
     /**
