@@ -84,7 +84,7 @@ export interface Request extends RequestBase {
     /**
      * Indicates whether statistics are aggregated at the node, indices, or shards level.
      * @server_default node
-    */
+     */
     level?: NodeStatsLevel
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
