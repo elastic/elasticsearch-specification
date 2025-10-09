@@ -1,0 +1,25 @@
+# summary:
+description: A successful response from `GET /_security/stats`.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "nodes": {
+      "CLeCBfYETO2mQ1R2Il5-SA": {
+        "roles": {
+          "dls": {
+            "bit_set_cache": {
+              "count": 1,
+              "memory": "16b",
+              "memory_in_bytes": 16,
+              "hits": 212,
+              "misses": 1,
+              "evictions": 0,
+              "hits_time_in_millis": 5,
+              "misses_time_in_millis": 0
+            }
+          }
+        }
+      }
+    }
+  }

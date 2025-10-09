@@ -2294,7 +2294,7 @@
           {
             "in": "query",
             "name": "delete_sync_jobs",
-            "description": "A flag indicating if associated sync jobs should be also removed. Defaults to false.",
+            "description": "A flag indicating if associated sync jobs should be also removed.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -2350,7 +2350,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset (default: 0)",
+            "description": "Starting offset",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -2708,7 +2708,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset (default: 0)",
+            "description": "Starting offset",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -12200,8 +12200,8 @@
                 },
                 "PutAmazonBedrockRequestExample2": {
                   "summary": "A completion task",
-                  "description": "Run `PUT _inference/completion/openai-completion` to create an inference endpoint to perform a completion task type.",
-                  "value": "{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"gpt-3.5-turbo\"\n    }\n}"
+                  "description": "Run `PUT _inference/completion/amazon_bedrock_completion` to create an inference endpoint to perform a completion task.",
+                  "value": "{\n    \"service\": \"amazonbedrock\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"provider\": \"amazontitan\",\n        \"model\": \"amazon.titan-text-premier-v1:0\"\n    }\n}"
                 }
               }
             }
@@ -12858,6 +12858,126 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoCohere"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/{task_type}/{contextualai_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Contextual AI inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `contexualai` service.\n\nTo review the available `rerank` models, refer to <https://docs.contextual.ai/api-reference/rerank/rerank#body-model>.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-contextualai",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.TaskTypeContextualAI"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "contextualai_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
+                    },
+                    "description": "The chunking configuration object.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
+                      }
+                    ]
+                  },
+                  "service": {
+                    "description": "The type of service supported for the specified task type. In this case, `contextualai`.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.ContextualAIServiceType"
+                      }
+                    ]
+                  },
+                  "service_settings": {
+                    "description": "Settings used to install the inference model. These settings are specific to the `contextualai` service.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.ContextualAIServiceSettings"
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Settings to configure the inference task.\nThese settings are specific to the task type you specified.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.ContextualAITaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutContextualAiRequestExample1": {
+                  "summary": "A rerank task",
+                  "description": "Run `PUT _inference/rerank/contextualai-rerank` to create an inference endpoint for rerank tasks using the Contextual AI service.",
+                  "value": "{\n    \"service\": \"contextualai\",\n    \"service_settings\": {\n        \"api_key\": \"ContextualAI-Api-key\",\n        \"model_id\": \"ctxl-rerank-v2-instruct-multilingual-mini\"\n    },\n    \"task_settings\": {\n        \"instruction\": \"Rerank the following documents based on their relevance to the query.\",\n        \"top_k\": 3\n    }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoContextualAi"
                 }
               }
             }
@@ -14196,8 +14316,8 @@
                 },
                 "PutOpenAiRequestExample2": {
                   "summary": "A completion task",
-                  "description": "Run `PUT _inference/completion/amazon_bedrock_completion` to create an inference endpoint to perform a completion task.",
-                  "value": "{\n    \"service\": \"amazonbedrock\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"provider\": \"amazontitan\",\n        \"model\": \"amazon.titan-text-premier-v1:0\"\n    }\n}"
+                  "description": "Run `PUT _inference/completion/openai-completion` to create an inference endpoint to perform a `completion` task type.",
+                  "value": "{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"gpt-3.5-turbo\"\n    }\n}"
                 }
               }
             }
@@ -29526,6 +29646,9 @@
         ]
       },
       "_types.Duration": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#time-units"
+        },
         "description": "A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and\n`d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.",
         "oneOf": [
           {
@@ -29713,6 +29836,9 @@
             "$ref": "#/components/schemas/_types.aggregations.BucketMetricValueAggregate"
           },
           {
+            "$ref": "#/components/schemas/_types.aggregations.ChangePointAggregate"
+          },
+          {
             "$ref": "#/components/schemas/_types.aggregations.StatsAggregate"
           },
           {
@@ -29723,6 +29849,12 @@
           },
           {
             "$ref": "#/components/schemas/_types.aggregations.ExtendedStatsBucketAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations.CartesianBoundsAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations.CartesianCentroidAggregate"
           },
           {
             "$ref": "#/components/schemas/_types.aggregations.GeoBoundsAggregate"
@@ -30192,6 +30324,260 @@
           }
         ]
       },
+      "_types.aggregations.ChangePointAggregate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.ChangeType"
+                  }
+                ]
+              },
+              "bucket": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.ChangePointBucket"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.aggregations.ChangeType": {
+        "type": "object",
+        "properties": {
+          "dip": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Dip"
+              }
+            ]
+          },
+          "distribution_change": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.DistributionChange"
+              }
+            ]
+          },
+          "indeterminable": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Indeterminable"
+              }
+            ]
+          },
+          "non_stationary": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.NonStationary"
+              }
+            ]
+          },
+          "spike": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Spike"
+              }
+            ]
+          },
+          "stationary": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Stationary"
+              }
+            ]
+          },
+          "step_change": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.StepChange"
+              }
+            ]
+          },
+          "trend_change": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.TrendChange"
+              }
+            ]
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "_types.aggregations.Dip": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AbstractChangePoint"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.AbstractChangePoint": {
+        "type": "object",
+        "properties": {
+          "p_value": {
+            "type": "number"
+          },
+          "change_point": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "p_value",
+          "change_point"
+        ]
+      },
+      "_types.aggregations.DistributionChange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AbstractChangePoint"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.Indeterminable": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "reason"
+        ]
+      },
+      "_types.aggregations.NonStationary": {
+        "type": "object",
+        "properties": {
+          "p_value": {
+            "type": "number"
+          },
+          "r_value": {
+            "type": "number"
+          },
+          "trend": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "p_value",
+          "r_value",
+          "trend"
+        ]
+      },
+      "_types.aggregations.Spike": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AbstractChangePoint"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.Stationary": {
+        "type": "object"
+      },
+      "_types.aggregations.StepChange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AbstractChangePoint"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.TrendChange": {
+        "type": "object",
+        "properties": {
+          "p_value": {
+            "type": "number"
+          },
+          "r_value": {
+            "type": "number"
+          },
+          "change_point": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "p_value",
+          "r_value",
+          "change_point"
+        ]
+      },
+      "_types.aggregations.ChangePointBucket": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.MultiBucketBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.FieldValue"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "key"
+            ]
+          }
+        ]
+      },
+      "_types.FieldValue": {
+        "description": "A field value.",
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "nullable": true,
+            "type": "string"
+          }
+        ]
+      },
+      "_types.aggregations.MultiBucketBase": {
+        "description": "Base type for multi-bucket aggregation results that can hold sub-aggregations results.",
+        "type": "object",
+        "properties": {
+          "doc_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "doc_count"
+        ]
+      },
       "_types.aggregations.StatsAggregate": {
         "description": "Statistics aggregation result. `min`, `max` and `avg` are missing if there were no values to process\n(`count` is zero).",
         "allOf": [
@@ -30520,7 +30906,7 @@
           }
         ]
       },
-      "_types.aggregations.GeoBoundsAggregate": {
+      "_types.aggregations.CartesianBoundsAggregate": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
@@ -30531,52 +30917,12 @@
               "bounds": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/_types.GeoBounds"
+                    "$ref": "#/components/schemas/_types.TopLeftBottomRightGeoBounds"
                   }
                 ]
               }
             }
           }
-        ]
-      },
-      "_types.GeoBounds": {
-        "description": "A geo bounding box. It can be represented in various ways:\n- as 4 top/bottom/left/right coordinates\n- as 2 top_left / bottom_right points\n- as 2 top_right / bottom_left points\n- as a WKT bounding box",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types.CoordsGeoBounds"
-          },
-          {
-            "$ref": "#/components/schemas/_types.TopLeftBottomRightGeoBounds"
-          },
-          {
-            "$ref": "#/components/schemas/_types.TopRightBottomLeftGeoBounds"
-          },
-          {
-            "$ref": "#/components/schemas/_types.WktGeoBounds"
-          }
-        ]
-      },
-      "_types.CoordsGeoBounds": {
-        "type": "object",
-        "properties": {
-          "top": {
-            "type": "number"
-          },
-          "bottom": {
-            "type": "number"
-          },
-          "left": {
-            "type": "number"
-          },
-          "right": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "top",
-          "bottom",
-          "left",
-          "right"
         ]
       },
       "_types.TopLeftBottomRightGeoBounds": {
@@ -30656,6 +31002,105 @@
       },
       "_types.GeoHash": {
         "type": "string"
+      },
+      "_types.aggregations.CartesianCentroidAggregate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "number"
+              },
+              "location": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.CartesianPoint"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "count"
+            ]
+          }
+        ]
+      },
+      "_types.CartesianPoint": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ]
+      },
+      "_types.aggregations.GeoBoundsAggregate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "bounds": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.GeoBounds"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "_types.GeoBounds": {
+        "description": "A geo bounding box. It can be represented in various ways:\n- as 4 top/bottom/left/right coordinates\n- as 2 top_left / bottom_right points\n- as 2 top_right / bottom_left points\n- as a WKT bounding box",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.CoordsGeoBounds"
+          },
+          {
+            "$ref": "#/components/schemas/_types.TopLeftBottomRightGeoBounds"
+          },
+          {
+            "$ref": "#/components/schemas/_types.TopRightBottomLeftGeoBounds"
+          },
+          {
+            "$ref": "#/components/schemas/_types.WktGeoBounds"
+          }
+        ]
+      },
+      "_types.CoordsGeoBounds": {
+        "type": "object",
+        "properties": {
+          "top": {
+            "type": "number"
+          },
+          "bottom": {
+            "type": "number"
+          },
+          "left": {
+            "type": "number"
+          },
+          "right": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "top",
+          "bottom",
+          "left",
+          "right"
+        ]
       },
       "_types.TopRightBottomLeftGeoBounds": {
         "type": "object",
@@ -30784,18 +31229,6 @@
               "key"
             ]
           }
-        ]
-      },
-      "_types.aggregations.MultiBucketBase": {
-        "description": "Base type for multi-bucket aggregation results that can hold sub-aggregations results.",
-        "type": "object",
-        "properties": {
-          "doc_count": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "doc_count"
         ]
       },
       "_types.aggregations.DateHistogramAggregate": {
@@ -31080,27 +31513,6 @@
             "required": [
               "key"
             ]
-          }
-        ]
-      },
-      "_types.FieldValue": {
-        "description": "A field value.",
-        "oneOf": [
-          {
-            "type": "number"
-          },
-          {
-            "type": "number"
-          },
-          {
-            "type": "string"
-          },
-          {
-            "type": "boolean"
-          },
-          {
-            "nullable": true,
-            "type": "string"
           }
         ]
       },
@@ -35332,6 +35744,28 @@
                   }
                 ]
               },
+              "cartesian_bounds": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-metrics-cartesian-bounds-aggregation"
+                },
+                "description": "A metric aggregation that computes the spatial bounding box containing all values for a Point or Shape field.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.CartesianBoundsAggregation"
+                  }
+                ]
+              },
+              "cartesian_centroid": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-metrics-cartesian-centroid-aggregation"
+                },
+                "description": "A metric aggregation that computes the weighted centroid from all coordinate values for point and shape fields.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.CartesianCentroidAggregation"
+                  }
+                ]
+              },
               "categorize_text": {
                 "externalDocs": {
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-categorize-text-aggregation"
@@ -35341,6 +35775,17 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.CategorizeTextAggregation"
+                  }
+                ]
+              },
+              "change_point": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-change-point-aggregation"
+                },
+                "description": "A sibling pipeline that detects, spikes, dips, and change points in a metric.\nGiven a distribution of values provided by the sibling multi-bucket aggregation,\nthis aggregation indicates the bucket of any spike or dip and/or the bucket at which\nthe largest change in the distribution of values, if they are statistically significant.\nThere must be at least 22 bucketed values. Fewer than 1,000 is preferred.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.ChangePointAggregation"
                   }
                 ]
               },
@@ -38741,6 +39186,8 @@
         "type": "object",
         "properties": {
           "model_id": {
+            "description": "Model ID is required for all dense_vector fields but\nmay be inferred for semantic_text fields",
+            "x-state": "Generally available",
             "type": "string"
           },
           "model_text": {
@@ -38748,7 +39195,6 @@
           }
         },
         "required": [
-          "model_id",
           "model_text"
         ]
       },
@@ -43624,6 +44070,26 @@
           "save_time_heuristic"
         ]
       },
+      "_types.aggregations.CartesianBoundsAggregation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.MetricAggregationBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.CartesianCentroidAggregation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.MetricAggregationBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
       "_types.aggregations.CategorizeTextAggregation": {
         "description": "A multi-bucket aggregation that groups semi-structured text into buckets. Each text\nfield is re-analyzed using a custom analyzer. The resulting tokens are then categorized\ncreating buckets of similarly formatted text values. This aggregation works best with machine\ngenerated text like system logs. Only the first 100 analyzed tokens are used to categorize the text.",
         "allOf": [
@@ -43727,6 +44193,16 @@
             }
           }
         }
+      },
+      "_types.aggregations.ChangePointAggregation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.PipelineAggregationBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
       },
       "_types.aggregations.ChildrenAggregation": {
         "allOf": [
@@ -58365,12 +58841,17 @@
             ]
           },
           "rescore_vector": {
-            "description": "The rescore vector options. This is only applicable to `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.",
+            "description": "The rescore vector options. This is only applicable to `bbq_disk`, `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.DenseVectorIndexOptionsRescoreVector"
               }
             ]
+          },
+          "on_disk_rescore": {
+            "description": "`true` if vector rescoring should be done on-disk\n\nOnly applicable to `bbq_hnsw`",
+            "default": false,
+            "type": "boolean"
           }
         },
         "required": [
@@ -58643,9 +59124,13 @@
           },
           "chunking_settings": {
             "description": "Settings for chunking text into smaller passages. If specified, these will override the\nchunking settings sent in the inference endpoint associated with inference_id. If chunking settings are updated,\nthey will not be applied to existing documents until they are reindexed.",
-            "allOf": [
+            "oneOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.ChunkingSettings"
+              },
+              {
+                "nullable": true,
+                "type": "string"
               }
             ]
           },
@@ -58668,6 +59153,32 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.DenseVectorIndexOptions"
+              }
+            ]
+          },
+          "sparse_vector": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.SparseVectorIndexOptions"
+              }
+            ]
+          }
+        }
+      },
+      "_types.mapping.SparseVectorIndexOptions": {
+        "type": "object",
+        "properties": {
+          "prune": {
+            "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
+            "x-state": "Generally available",
+            "type": "boolean"
+          },
+          "pruning_config": {
+            "description": "Optional pruning configuration.\nIf enabled, this will omit non-significant tokens from the query in order to improve query performance.\nThis is only used if prune is set to true.\nIf prune is set to true but pruning_config is not specified, default values will be used.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.TokenPruningConfig"
               }
             ]
           }
@@ -58748,25 +59259,6 @@
             ]
           }
         ]
-      },
-      "_types.mapping.SparseVectorIndexOptions": {
-        "type": "object",
-        "properties": {
-          "prune": {
-            "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
-            "x-state": "Generally available",
-            "type": "boolean"
-          },
-          "pruning_config": {
-            "description": "Optional pruning configuration.\nIf enabled, this will omit non-significant tokens from the query in order to improve query performance.\nThis is only used if prune is set to true.\nIf prune is set to true but pruning_config is not specified, default values will be used.",
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.TokenPruningConfig"
-              }
-            ]
-          }
-        }
       },
       "_types.mapping.CompletionProperty": {
         "allOf": [
@@ -64075,6 +64567,8 @@
             "type": "number"
           },
           "max_size": {
+            "deprecated": true,
+            "description": "The `max_size` condition has been deprecated in 9.3.0 and `max_primary_shard_size` should be used instead",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.ByteSize"
@@ -65008,7 +65502,7 @@
         "type": "object",
         "properties": {
           "requests_per_minute": {
-            "description": "The number of requests allowed per minute.\nBy default, the number of requests allowed per minute is set by each service as follows:\n\n* `alibabacloud-ai-search` service: `1000`\n* `anthropic` service: `50`\n* `azureaistudio` service: `240`\n* `azureopenai` service and task type `text_embedding`: `1440`\n* `azureopenai` service and task type `completion`: `120`\n* `cohere` service: `10000`\n* `elastic` service and task type `chat_completion`: `240`\n* `googleaistudio` service: `360`\n* `googlevertexai` service: `30000`\n* `hugging_face` service: `3000`\n* `jinaai` service: `2000`\n* `llama` service: `3000`\n* `mistral` service: `240`\n* `openai` service and task type `text_embedding`: `3000`\n* `openai` service and task type `completion`: `500`\n* `voyageai` service: `2000`\n* `watsonxai` service: `120`",
+            "description": "The number of requests allowed per minute.\nBy default, the number of requests allowed per minute is set by each service as follows:\n\n* `alibabacloud-ai-search` service: `1000`\n* `anthropic` service: `50`\n* `azureaistudio` service: `240`\n* `azureopenai` service and task type `text_embedding`: `1440`\n* `azureopenai` service and task type `completion`: `120`\n* `cohere` service: `10000`\n* `contextualai` service: `1000`\n* `elastic` service and task type `chat_completion`: `240`\n* `googleaistudio` service: `360`\n* `googlevertexai` service: `30000`\n* `hugging_face` service: `3000`\n* `jinaai` service: `2000`\n* `llama` service: `3000`\n* `mistral` service: `240`\n* `openai` service and task type `text_embedding`: `3000`\n* `openai` service and task type `completion`: `500`\n* `voyageai` service: `2000`\n* `watsonxai` service: `120`",
             "type": "number"
           }
         }
@@ -65928,6 +66422,89 @@
           "text_embedding",
           "rerank",
           "completion"
+        ]
+      },
+      "inference._types.TaskTypeContextualAI": {
+        "type": "string",
+        "enum": [
+          "rerank"
+        ]
+      },
+      "inference._types.ContextualAIServiceType": {
+        "type": "string",
+        "enum": [
+          "contextualai"
+        ]
+      },
+      "inference._types.ContextualAIServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "description": "A valid API key for your Contexutual AI account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "model_id": {
+            "description": "The name of the model to use for the inference task.\nRefer to the Contextual AI documentation for the list of available rerank models.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "description": "This setting helps to minimize the number of rate limit errors returned from Contextual AI.\nThe `contextualai` service sets a default number of requests allowed per minute depending on the task type.\nFor `rerank`, it is set to `1000`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.RateLimitSetting"
+              }
+            ]
+          }
+        },
+        "required": [
+          "api_key",
+          "model_id"
+        ]
+      },
+      "inference._types.ContextualAITaskSettings": {
+        "type": "object",
+        "properties": {
+          "instruction": {
+            "description": "Instructions for the reranking model. Refer to <https://docs.contextual.ai/api-reference/rerank/rerank#body-instruction>\nOnly for the `rerank` task type.",
+            "type": "string"
+          },
+          "return_documents": {
+            "description": "Whether to return the source documents in the response.\nOnly for the `rerank` task type.",
+            "default": false,
+            "type": "boolean"
+          },
+          "top_k": {
+            "description": "The number of most relevant documents to return.\nIf not specified, the reranking results of all documents will be returned.\nOnly for the `rerank` task type.",
+            "type": "number"
+          }
+        }
+      },
+      "inference._types.InferenceEndpointInfoContextualAi": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "description": "The task type",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/inference._types.TaskTypeContextualAI"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
         ]
       },
       "inference._types.CustomTaskType": {
@@ -78027,7 +78604,7 @@
             "default": "true",
             "allOf": [
               {
-                "$ref": "#/components/schemas/_types.Fields"
+                "$ref": "#/components/schemas/_global.search._types.SourceConfig"
               }
             ]
           },
@@ -78071,7 +78648,7 @@
             ]
           },
           "username": {
-            "description": "The username to use for authentication with the remote host.",
+            "description": "The username to use for authentication with the remote host (required when using basic auth).",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Username"
@@ -78079,12 +78656,17 @@
             ]
           },
           "password": {
-            "description": "The password to use for authentication with the remote host.",
+            "description": "The password to use for authentication with the remote host (required when using basic auth).",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Password"
               }
             ]
+          },
+          "api_key": {
+            "description": "The API key to use for authentication with the remote host (as an alternative to basic auth when the remote cluster is in Elastic Cloud).\n(It is not permitted to set this and also to set an `Authorization` header via `headers`.)",
+            "x-state": "Generally available",
+            "type": "string"
           },
           "socket_timeout": {
             "description": "The remote socket read timeout.",
@@ -83558,7 +84140,7 @@
       "cat.ml_data_frame_analytics-allow_no_match": {
         "in": "query",
         "name": "allow_no_match",
-        "description": "Whether to ignore if a wildcard expression matches no configs. (This includes `_all` string or when no configs have been specified)",
+        "description": "Whether to ignore if a wildcard expression matches no configs.\n(This includes `_all` string or when no configs have been specified.)",
         "deprecated": false,
         "schema": {
           "type": "boolean"

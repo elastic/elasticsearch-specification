@@ -23,12 +23,12 @@ jobs:
         if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != 'elastic/elasticsearch-specification'
         run: echo "Validation is not supported from forks"; exit 1
         
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           path: ./elasticsearch-specification
           persist-credentials: false
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           repository: elastic/clients-flight-recorder
           path: ./clients-flight-recorder
@@ -37,7 +37,7 @@ jobs:
           persist-credentials: false
 
       - name: Use Node.js 22
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
 
@@ -91,7 +91,7 @@ jobs:
         if: github.event_name == 'pull_request'
         id: validation
         working-directory: ./elasticsearch-specification
-        run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/validate-pr
 
       - name: Find existing comment
         if: github.event_name == 'pull_request'
