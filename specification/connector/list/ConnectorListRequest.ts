@@ -38,11 +38,13 @@ export interface Request extends RequestBase {
   ]
   query_parameters: {
     /**
-     * Starting offset (default: 0)
+     * Starting offset
+     * @server_default 0
      */
     from?: integer
     /**
      * Specifies a max number of results to get
+     * @server_default 100
      */
     size?: integer
     /**

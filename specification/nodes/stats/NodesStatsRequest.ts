@@ -81,7 +81,10 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     include_segment_file_sizes?: boolean
-    /** Indicates whether statistics are aggregated at the cluster, index, or shard level. */
+    /**
+     * Indicates whether statistics are aggregated at the node, indices, or shards level.
+     * @server_default node
+    */
     level?: NodeStatsLevel
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
