@@ -91,7 +91,7 @@ jobs:
         if: github.event_name == 'pull_request'
         id: validation
         working-directory: ./elasticsearch-specification
-        run: node .github/validate-pr --token ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/validate-pr
 
       - name: Find existing comment
         if: github.event_name == 'pull_request'
