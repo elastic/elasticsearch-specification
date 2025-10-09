@@ -65,9 +65,15 @@ export interface Request extends CatRequestBase {
     h?: CatTrainedModelsColumns
     /** A comma-separated list of column names or aliases used to sort the response. */
     s?: CatTrainedModelsColumns
-    /** Skips the specified number of transforms. */
+    /**
+     * Skips the specified number of transforms.
+     * @server_default 0
+     */
     from?: integer
-    /** The maximum number of transforms to display. */
+    /**
+     * The maximum number of transforms to display.
+     * @server_default 100
+     */
     size?: integer
   }
 }

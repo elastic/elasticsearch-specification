@@ -42,6 +42,9 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     expand_wildcards?: ExpandWildcards
+    /**
+     * @server_default 30s
+     */
     master_timeout?: Duration
     timeout?: Duration
   }

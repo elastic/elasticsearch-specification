@@ -49,6 +49,9 @@ export interface Request extends RequestBase {
      * This parameter must be set to true to acknowledge that it will no longer be possible to recove data from the dangling index.
      */
     accept_data_loss: boolean
+    /**
+     * @server_default 30s
+     */
     master_timeout?: Duration
     timeout?: Duration
   }
