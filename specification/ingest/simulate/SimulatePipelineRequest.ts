@@ -54,6 +54,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * If `true`, the response includes output data for each processor in the executed pipeline.
+     * @server_default false
      */
     verbose?: boolean
   }

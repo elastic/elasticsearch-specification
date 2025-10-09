@@ -51,6 +51,9 @@ export interface Request extends RequestBase {
      * Because Elasticsearch cannot know where the dangling index data came from or determine which shard copies are fresh and which are stale, it cannot guarantee that the imported data represents the latest state of the index when it was last in the cluster.
      */
     accept_data_loss: boolean
+    /**
+     * @server_default 30s
+     */
     master_timeout?: Duration
     timeout?: Duration
   }
