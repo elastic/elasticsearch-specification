@@ -22441,8 +22441,8 @@
         "tags": [
           "project"
         ],
-        "summary": "Return tags defined for the project",
-        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "summary": "Get tags",
+        "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "project-tags",
         "responses": {
           "200": {
