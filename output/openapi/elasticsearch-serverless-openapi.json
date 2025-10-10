@@ -1718,7 +1718,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -7691,7 +7692,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -8637,7 +8639,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -11180,7 +11183,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -11591,7 +11595,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -11716,7 +11721,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -11856,7 +11862,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -11975,7 +11982,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12100,7 +12108,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12225,7 +12234,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12355,7 +12365,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12485,7 +12496,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12590,7 +12602,8 @@
                 ]
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12735,7 +12748,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12858,7 +12872,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12977,7 +12992,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13102,7 +13118,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13227,7 +13244,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13352,7 +13370,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13463,7 +13482,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13588,7 +13608,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13713,7 +13734,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13813,7 +13835,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13923,7 +13946,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14034,7 +14058,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14139,7 +14164,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -17742,7 +17768,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -19360,7 +19387,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -21566,7 +21594,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -28304,7 +28333,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -86538,7 +86568,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "cluster.put_component_template": {
         "content": {
@@ -86658,7 +86689,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "create": {
         "content": {
@@ -86851,7 +86883,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "field_caps": {
         "content": {
@@ -86894,7 +86927,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "graph.explore": {
         "content": {
@@ -86942,7 +86976,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "index": {
         "content": {
@@ -87070,7 +87105,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "indices.put_alias": {
         "content": {
@@ -87476,7 +87512,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "indices.simulate_template": {
         "content": {
@@ -87578,7 +87615,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "inference.inference": {
         "content": {
@@ -87622,7 +87660,8 @@
               ]
             }
           }
-        }
+        },
+        "required": true
       },
       "inference.put": {
         "content": {
@@ -87743,7 +87782,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "ml.get_overall_buckets": {
         "content": {
@@ -87810,7 +87850,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "ml.infer_trained_model": {
         "content": {
@@ -88091,7 +88132,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "scripts_painless_execute": {
         "content": {
@@ -88144,7 +88186,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "scroll": {
         "content": {
@@ -88181,7 +88224,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "search": {
         "content": {
@@ -88480,7 +88524,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "search_application.search": {
         "content": {
@@ -89085,7 +89130,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "termvectors": {
         "content": {
