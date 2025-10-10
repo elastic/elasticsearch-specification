@@ -114,10 +114,6 @@ export enum VersionType {
    * If used incorrectly, it can result in loss of data.
    */
   external_gte,
-  /**
-   * This option is deprecated because it can cause primary and replica shards to diverge.
-   */
-  force
 }
 
 // TODO: replace all uuid's with this type
