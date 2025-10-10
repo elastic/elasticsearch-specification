@@ -80685,6 +80685,14 @@
             "default": 500.0,
             "type": "number"
           },
+          "use_point_in_time": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time"
+            },
+            "description": "Specifies whether the transform checkpoint will use the Point In Time API while searching over the source index.\nIn general, Point In Time is an optimization that will reduce pressure on the source index by reducing the amount\nof refreshes and merges, but it can be expensive if a large number of Point In Times are opened and closed for a\ngiven index. The benefits and impact depend on the data being searched, the ingest rate into the source index, and\nthe amount of other consumers searching the same source index.",
+            "default": true,
+            "type": "boolean"
+          },
           "unattended": {
             "description": "If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case\nof an error which means the transform never fails. Setting the number of retries other than infinite fails in\nvalidation.",
             "default": false,
