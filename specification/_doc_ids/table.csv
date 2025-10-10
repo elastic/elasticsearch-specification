@@ -499,7 +499,7 @@ painless-contexts,https://www.elastic.co/guide/en/elasticsearch/painless/{branch
 painless-execute-api,https://www.elastic.co/guide/en/elasticsearch/painless/{branch}/painless-execute-api.html,,
 pipeline-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/pipeline-processor.html,,
 pki-realm,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/pki-realm.html,,
-point-in-time-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/point-in-time-api.html,,
+point-in-time-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/point-in-time-api.html,,Open a point in time API
 prevalidate-node-removal,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/prevalidate-node-removal-api.html,,
 preview-dfanalytics,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/preview-dfanalytics.html,,
 preview-transform,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/preview-transform.html,,
