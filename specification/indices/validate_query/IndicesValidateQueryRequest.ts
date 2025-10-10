@@ -72,8 +72,8 @@ export interface Request extends RequestBase {
      */
     analyze_wildcard?: boolean
     /**
-     * The default operator for query string query: `AND` or `OR`.
-     * @server_default OR
+     * The default operator for query string query: `and` or `or`.
+     * @server_default or
      */
     default_operator?: Operator
     /**
