@@ -261,6 +261,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
 
       // validate body
       if (bodyMember != null) {
+        mapping.requestBodyRequired = !(bodyMember as PropertySignature).hasQuestionToken()
         assert(
           bodyMember,
           methods.some(method => ['POST', 'PUT', 'DELETE'].includes(method)),
