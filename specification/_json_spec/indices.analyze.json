@@ -35,7 +35,8 @@
       }
     },
     "body": {
-      "description": "Define analyzer/tokenizer parameters and the text on which the analysis should be performed"
+      "description": "Define analyzer/tokenizer parameters and the text on which the analysis should be performed",
+      "required": true
     }
   }
 }
