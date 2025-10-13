@@ -71,6 +71,7 @@ pub struct Body {
 #[derive(Debug, Serialize)]
 pub struct Deprecation {
     pub version: String,
+    #[serde(skip_serializing_if = "String::is_empty")]
     pub description: String,
 }
 
