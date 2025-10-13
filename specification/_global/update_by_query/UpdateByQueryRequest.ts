@@ -312,7 +312,7 @@ export interface Request extends RequestBase {
      */
     wait_for_completion?: boolean
   }
-  body: {
+  body?: {
     /**
      * The maximum number of documents to update.
      */

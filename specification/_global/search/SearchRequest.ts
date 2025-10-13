@@ -390,7 +390,7 @@ export interface Request extends RequestBase {
     force_synthetic_source?: boolean
   }
   // We should keep this in sync with the multi search request body.
-  body: {
+  body?: {
     /**
      * Defines the aggregations that are run as part of the search request.
      * @aliases aggs */ // ES uses "aggregations" in serialization
