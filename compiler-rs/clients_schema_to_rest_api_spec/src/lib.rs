@@ -229,7 +229,7 @@ const BUILTIN_MAPPINGS: &[((&str, &str), &str)] = &[
     (("_global.search._types", "TrackHits"), "boolean|long"),
 ];
 
-fn is_list_enum(union: &UnionOf) -> bool {
+fn is_list_enum(union: &UnionOf) -> Option<String> {
     // if union of X and X[]
     if union.items.len() == 2 {
         // check if first item is InstanceOf and second is ArrayOf
@@ -240,12 +240,15 @@ fn is_list_enum(union: &UnionOf) -> bool {
                     _ => panic!("Expected InstanceOf inside ArrayOf in union type"),
                 };
                 if instance.typ.name == array_instance.typ.name {
-                    return true;
+                    if instance.typ.name == "string" {
+                        return Some("string".to_string());
+                    }
+                    return Some("enum".to_string());
                 }
             }
         }
     }
-    return false;
+    return None;
 }
 
 fn is_literal(instance: &InstanceOf) -> Option<String> {
@@ -261,7 +264,7 @@ fn is_literal(instance: &InstanceOf) -> Option<String> {
 fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>) -> String {
     match value_of {
         ValueOf::ArrayOf(_) => "list".to_string(),
-        ValueOf::UnionOf(union) => if is_list_enum(union) { "enum" } else { tracing::warn!("{:?}", union); todo!() }.to_string(),
+        ValueOf::UnionOf(union) => if let Some(union_type) = is_list_enum(union) { union_type } else { tracing::warn!("{:?}", union); todo!() }.to_string(),
         ValueOf::LiteralValue(_) => "string".to_string(),
         ValueOf::InstanceOf(instance) => {
             let type_name = &instance.typ;
@@ -277,7 +280,7 @@ fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>)
                 match full_type {
                     TypeDefinition::TypeAlias(ref alias) => match &alias.typ {
                         ValueOf::UnionOf(ref union) => {
-                            if is_list_enum(union) {
+                            if let Some(_) = is_list_enum(union) {
                                 return "list".to_string();
                             }
                         }
