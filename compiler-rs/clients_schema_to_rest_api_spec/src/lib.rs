@@ -212,6 +212,7 @@ const BUILTIN_MAPPINGS: &[((&str, &str), &str)] = &[
     (("_builtins", "boolean"), "boolean"),
     (("_builtins", "number"), "number"),
     (("_types", "integer"), "int"),
+    (("_types", "uint"), "int"),
     (("_types", "long"), "long"),
     (("_types", "float"), "number"),
     (("_types", "double"), "double"),
