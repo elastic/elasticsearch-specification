@@ -404,7 +404,7 @@ export interface Request extends RequestBase {
     force_synthetic_source?: boolean
   }
   // Keep this in sync with global/search/_types/SearchRequestBody.ts
-  body: {
+  body?: {
     /**
      * Defines the aggregations that are run as part of the search request.
      * @aliases aggs
