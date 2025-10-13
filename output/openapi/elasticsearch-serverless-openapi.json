@@ -22594,9 +22594,6 @@
                       }
                     ]
                   },
-                  "size": {
-                    "type": "number"
-                  },
                   "source": {
                     "description": "The source you are copying from.",
                     "allOf": [
