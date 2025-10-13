@@ -144,7 +144,7 @@ export interface Request extends RequestBase {
      */
     q?: string
   }
-  body: {
+  body?: {
     /**
      * Defines the search query using Query DSL. A request body query cannot be used
      * with the `q` query string parameter.

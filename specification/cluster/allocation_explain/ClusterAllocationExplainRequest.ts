@@ -58,7 +58,7 @@ export interface Request extends RequestBase {
      */
     master_timeout?: Duration
   }
-  body: {
+  body?: {
     /**
      * Specifies the node ID or the name of the node to only explain a shard that is currently located on the specified node.
      */

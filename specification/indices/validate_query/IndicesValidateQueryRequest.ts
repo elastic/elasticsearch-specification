@@ -113,7 +113,7 @@ export interface Request extends RequestBase {
      */
     q?: string
   }
-  body: {
+  body?: {
     /**
      * Query in the Lucene query string syntax.
      */
