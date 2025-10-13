@@ -67,7 +67,8 @@
       }
     },
     "body": {
-      "description": "Record selection criteria"
+      "description": "Record selection criteria",
+      "required": false
     }
   }
 }

@@ -83,7 +83,8 @@
       }
     },
     "body": {
-      "description": "The query definition using the Query DSL"
+      "description": "The query definition using the Query DSL",
+      "required": false
     }
   }
 }

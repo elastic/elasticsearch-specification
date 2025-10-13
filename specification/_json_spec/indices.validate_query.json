@@ -90,7 +90,8 @@
       }
     },
     "body": {
-      "description": "The query definition specified with the Query DSL"
+      "description": "The query definition specified with the Query DSL",
+      "required": false
     }
   }
 }
