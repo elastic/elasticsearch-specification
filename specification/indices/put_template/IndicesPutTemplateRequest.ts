@@ -85,7 +85,9 @@ export interface Request extends RequestBase {
      * 'order' values are merged later, overriding templates with lower values.
      */
     order?: integer
-
+    /**
+     * @server_default
+     */
     cause?: string
   }
   body: {

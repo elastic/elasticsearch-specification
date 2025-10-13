@@ -996,6 +996,7 @@ export interface ReindexRemoteSource {
   host: Host
   username?: Username
   password?: Password
+  api_key?: string
   socket_timeout?: Duration
 }
 
@@ -1045,7 +1046,7 @@ export interface ReindexSource {
   size?: integer
   slice?: SlicedScroll
   sort?: Sort
-  _source?: Fields
+  _source?: SearchSourceConfig
   runtime_mappings?: MappingRuntimeFields
 }
 
@@ -2220,6 +2221,11 @@ export type ByteSize = long | string
 
 export type Bytes = 'b' | 'kb' | 'mb' | 'gb' | 'tb' | 'pb'
 
+export interface CartesianPoint {
+  x: double
+  y: double
+}
+
 export type CategoryId = string
 
 export interface ChunkRescorer {
@@ -3133,6 +3139,11 @@ export type uint = number
 
 export type ulong = number
 
+export interface AggregationsAbstractChangePoint {
+  p_value: double
+  change_point: integer
+}
+
 export interface AggregationsAdjacencyMatrixAggregate extends AggregationsMultiBucketAggregateBase<AggregationsAdjacencyMatrixBucket> {
 }
 
@@ -3147,7 +3158,7 @@ export interface AggregationsAdjacencyMatrixBucketKeys extends AggregationsMulti
 export type AggregationsAdjacencyMatrixBucket = AggregationsAdjacencyMatrixBucketKeys
   & { [property: string]: AggregationsAggregate | string | long }
 
-export type AggregationsAggregate = AggregationsCardinalityAggregate | AggregationsHdrPercentilesAggregate | AggregationsHdrPercentileRanksAggregate | AggregationsTDigestPercentilesAggregate | AggregationsTDigestPercentileRanksAggregate | AggregationsPercentilesBucketAggregate | AggregationsMedianAbsoluteDeviationAggregate | AggregationsMinAggregate | AggregationsMaxAggregate | AggregationsSumAggregate | AggregationsAvgAggregate | AggregationsWeightedAvgAggregate | AggregationsValueCountAggregate | AggregationsSimpleValueAggregate | AggregationsDerivativeAggregate | AggregationsBucketMetricValueAggregate | AggregationsStatsAggregate | AggregationsStatsBucketAggregate | AggregationsExtendedStatsAggregate | AggregationsExtendedStatsBucketAggregate | AggregationsGeoBoundsAggregate | AggregationsGeoCentroidAggregate | AggregationsHistogramAggregate | AggregationsDateHistogramAggregate | AggregationsAutoDateHistogramAggregate | AggregationsVariableWidthHistogramAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsLongRareTermsAggregate | AggregationsStringRareTermsAggregate | AggregationsUnmappedRareTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsNestedAggregate | AggregationsReverseNestedAggregate | AggregationsGlobalAggregate | AggregationsFilterAggregate | AggregationsChildrenAggregate | AggregationsParentAggregate | AggregationsSamplerAggregate | AggregationsUnmappedSamplerAggregate | AggregationsGeoHashGridAggregate | AggregationsGeoTileGridAggregate | AggregationsGeoHexGridAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsGeoDistanceAggregate | AggregationsIpRangeAggregate | AggregationsIpPrefixAggregate | AggregationsFiltersAggregate | AggregationsAdjacencyMatrixAggregate | AggregationsSignificantLongTermsAggregate | AggregationsSignificantStringTermsAggregate | AggregationsUnmappedSignificantTermsAggregate | AggregationsCompositeAggregate | AggregationsFrequentItemSetsAggregate | AggregationsTimeSeriesAggregate | AggregationsScriptedMetricAggregate | AggregationsTopHitsAggregate | AggregationsInferenceAggregate | AggregationsStringStatsAggregate | AggregationsBoxPlotAggregate | AggregationsTopMetricsAggregate | AggregationsTTestAggregate | AggregationsRateAggregate | AggregationsCumulativeCardinalityAggregate | AggregationsMatrixStatsAggregate | AggregationsGeoLineAggregate
+export type AggregationsAggregate = AggregationsCardinalityAggregate | AggregationsHdrPercentilesAggregate | AggregationsHdrPercentileRanksAggregate | AggregationsTDigestPercentilesAggregate | AggregationsTDigestPercentileRanksAggregate | AggregationsPercentilesBucketAggregate | AggregationsMedianAbsoluteDeviationAggregate | AggregationsMinAggregate | AggregationsMaxAggregate | AggregationsSumAggregate | AggregationsAvgAggregate | AggregationsWeightedAvgAggregate | AggregationsValueCountAggregate | AggregationsSimpleValueAggregate | AggregationsDerivativeAggregate | AggregationsBucketMetricValueAggregate | AggregationsChangePointAggregate | AggregationsStatsAggregate | AggregationsStatsBucketAggregate | AggregationsExtendedStatsAggregate | AggregationsExtendedStatsBucketAggregate | AggregationsCartesianBoundsAggregate | AggregationsCartesianCentroidAggregate | AggregationsGeoBoundsAggregate | AggregationsGeoCentroidAggregate | AggregationsHistogramAggregate | AggregationsDateHistogramAggregate | AggregationsAutoDateHistogramAggregate | AggregationsVariableWidthHistogramAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsLongRareTermsAggregate | AggregationsStringRareTermsAggregate | AggregationsUnmappedRareTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsNestedAggregate | AggregationsReverseNestedAggregate | AggregationsGlobalAggregate | AggregationsFilterAggregate | AggregationsChildrenAggregate | AggregationsParentAggregate | AggregationsSamplerAggregate | AggregationsUnmappedSamplerAggregate | AggregationsGeoHashGridAggregate | AggregationsGeoTileGridAggregate | AggregationsGeoHexGridAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsGeoDistanceAggregate | AggregationsIpRangeAggregate | AggregationsIpPrefixAggregate | AggregationsFiltersAggregate | AggregationsAdjacencyMatrixAggregate | AggregationsSignificantLongTermsAggregate | AggregationsSignificantStringTermsAggregate | AggregationsUnmappedSignificantTermsAggregate | AggregationsCompositeAggregate | AggregationsFrequentItemSetsAggregate | AggregationsTimeSeriesAggregate | AggregationsScriptedMetricAggregate | AggregationsTopHitsAggregate | AggregationsInferenceAggregate | AggregationsStringStatsAggregate | AggregationsBoxPlotAggregate | AggregationsTopMetricsAggregate | AggregationsTTestAggregate | AggregationsRateAggregate | AggregationsCumulativeCardinalityAggregate | AggregationsMatrixStatsAggregate | AggregationsGeoLineAggregate
 
 export interface AggregationsAggregateBase {
   meta?: Metadata
@@ -3174,7 +3185,10 @@ export interface AggregationsAggregationContainer {
   bucket_count_ks_test?: AggregationsBucketKsAggregation
   bucket_correlation?: AggregationsBucketCorrelationAggregation
   cardinality?: AggregationsCardinalityAggregation
+  cartesian_bounds?: AggregationsCartesianBoundsAggregation
+  cartesian_centroid?: AggregationsCartesianCentroidAggregation
   categorize_text?: AggregationsCategorizeTextAggregation
+  change_point?: AggregationsChangePointAggregation
   children?: AggregationsChildrenAggregation
   composite?: AggregationsCompositeAggregation
   cumulative_cardinality?: AggregationsCumulativeCardinalityAggregation
@@ -3186,6 +3200,7 @@ export interface AggregationsAggregationContainer {
   extended_stats?: AggregationsExtendedStatsAggregation
   extended_stats_bucket?: AggregationsExtendedStatsBucketAggregation
   frequent_item_sets?: AggregationsFrequentItemSetsAggregation
+  frequent_items?: AggregationsFrequentItemSetsAggregation
   filter?: QueryDslQueryContainer
   filters?: AggregationsFiltersAggregation
   geo_bounds?: AggregationsGeoBoundsAggregation
@@ -3370,6 +3385,21 @@ export interface AggregationsCardinalityAggregation extends AggregationsMetricAg
 
 export type AggregationsCardinalityExecutionMode = 'global_ordinals' | 'segment_ordinals' | 'direct' | 'save_memory_heuristic' | 'save_time_heuristic'
 
+export interface AggregationsCartesianBoundsAggregate extends AggregationsAggregateBase {
+  bounds?: TopLeftBottomRightGeoBounds
+}
+
+export interface AggregationsCartesianBoundsAggregation extends AggregationsMetricAggregationBase {
+}
+
+export interface AggregationsCartesianCentroidAggregate extends AggregationsAggregateBase {
+  count: long
+  location?: CartesianPoint
+}
+
+export interface AggregationsCartesianCentroidAggregation extends AggregationsMetricAggregationBase {
+}
+
 export interface AggregationsCategorizeTextAggregation {
   field: Field
   max_unique_tokens?: integer
@@ -3384,6 +3414,31 @@ export interface AggregationsCategorizeTextAggregation {
 }
 
 export type AggregationsCategorizeTextAnalyzer = string | AggregationsCustomCategorizeTextAnalyzer
+
+export interface AggregationsChangePointAggregate extends AggregationsAggregateBase {
+  type: AggregationsChangeType
+  bucket?: AggregationsChangePointBucket
+}
+
+export interface AggregationsChangePointAggregation extends AggregationsPipelineAggregationBase {
+}
+
+export interface AggregationsChangePointBucketKeys extends AggregationsMultiBucketBase {
+  key: FieldValue
+}
+export type AggregationsChangePointBucket = AggregationsChangePointBucketKeys
+  & { [property: string]: AggregationsAggregate | FieldValue | long }
+
+export interface AggregationsChangeType {
+  dip?: AggregationsDip
+  distribution_change?: AggregationsDistributionChange
+  indeterminable?: AggregationsIndeterminable
+  non_stationary?: AggregationsNonStationary
+  spike?: AggregationsSpike
+  stationary?: AggregationsStationary
+  step_change?: AggregationsStepChange
+  trend_change?: AggregationsTrendChange
+}
 
 export interface AggregationsChiSquareHeuristic {
   background_is_superset: boolean
@@ -3522,6 +3577,12 @@ export interface AggregationsDerivativeAggregate extends AggregationsSingleMetri
 }
 
 export interface AggregationsDerivativeAggregation extends AggregationsPipelineAggregationBase {
+}
+
+export interface AggregationsDip extends AggregationsAbstractChangePoint {
+}
+
+export interface AggregationsDistributionChange extends AggregationsAbstractChangePoint {
 }
 
 export interface AggregationsDiversifiedSamplerAggregation extends AggregationsBucketAggregationBase {
@@ -3815,6 +3876,10 @@ export interface AggregationsHoltWintersMovingAverageAggregation extends Aggrega
 
 export type AggregationsHoltWintersType = 'add' | 'mult'
 
+export interface AggregationsIndeterminable {
+  reason: string
+}
+
 export interface AggregationsInferenceAggregateKeys extends AggregationsAggregateBase {
   value?: FieldValue
   feature_importance?: AggregationsInferenceFeatureImportance[]
@@ -4063,6 +4128,12 @@ export interface AggregationsNestedAggregation extends AggregationsBucketAggrega
   path?: Field
 }
 
+export interface AggregationsNonStationary {
+  p_value: double
+  r_value: double
+  trend: string
+}
+
 export interface AggregationsNormalizeAggregation extends AggregationsPipelineAggregationBase {
   method?: AggregationsNormalizeMethod
 }
@@ -4294,6 +4365,9 @@ export interface AggregationsSingleMetricAggregateBase extends AggregationsAggre
   value_as_string?: string
 }
 
+export interface AggregationsSpike extends AggregationsAbstractChangePoint {
+}
+
 export interface AggregationsStandardDeviationBounds {
   upper: double | null
   lower: double | null
@@ -4310,6 +4384,10 @@ export interface AggregationsStandardDeviationBoundsAsString {
   lower_population: string
   upper_sampling: string
   lower_sampling: string
+}
+
+export interface AggregationsStationary {
+  [key: string]: never
 }
 
 export interface AggregationsStatsAggregate extends AggregationsAggregateBase {
@@ -4331,6 +4409,9 @@ export interface AggregationsStatsBucketAggregate extends AggregationsStatsAggre
 }
 
 export interface AggregationsStatsBucketAggregation extends AggregationsPipelineAggregationBase {
+}
+
+export interface AggregationsStepChange extends AggregationsAbstractChangePoint {
 }
 
 export interface AggregationsStringRareTermsAggregate extends AggregationsMultiBucketAggregateBase<AggregationsStringRareTermsBucket> {
@@ -4501,6 +4582,12 @@ export interface AggregationsTopMetricsAggregation extends AggregationsMetricAgg
 
 export interface AggregationsTopMetricsValue {
   field: Field
+}
+
+export interface AggregationsTrendChange {
+  p_value: double
+  r_value: double
+  change_point: integer
 }
 
 export interface AggregationsUnmappedRareTermsAggregate extends AggregationsMultiBucketAggregateBase<SpecUtilsVoid> {
@@ -5691,13 +5778,14 @@ export interface MappingDenseVectorIndexOptions {
   m?: integer
   type: MappingDenseVectorIndexOptionsType
   rescore_vector?: MappingDenseVectorIndexOptionsRescoreVector
+  on_disk_rescore?: boolean
 }
 
 export interface MappingDenseVectorIndexOptionsRescoreVector {
   oversample: float
 }
 
-export type MappingDenseVectorIndexOptionsType = 'bbq_flat' | 'bbq_hnsw' | 'flat' | 'hnsw' | 'int4_flat' | 'int4_hnsw' | 'int8_flat' | 'int8_hnsw'
+export type MappingDenseVectorIndexOptionsType = 'bbq_flat' | 'bbq_hnsw' | 'bbq_disk' | 'flat' | 'hnsw' | 'int4_flat' | 'int4_hnsw' | 'int8_flat' | 'int8_hnsw'
 
 export interface MappingDenseVectorProperty extends MappingPropertyBase {
   type: 'dense_vector'
@@ -6066,7 +6154,7 @@ export interface MappingSemanticTextProperty {
   inference_id?: Id
   search_inference_id?: Id
   index_options?: MappingSemanticTextIndexOptions
-  chunking_settings?: MappingChunkingSettings
+  chunking_settings?: MappingChunkingSettings | null
   fields?: Record<PropertyName, MappingProperty>
 }
 
@@ -7266,7 +7354,7 @@ export type CatCatMasterColumn = 'id' | 'host' | 'h' | 'ip' | 'node' | 'n'| stri
 
 export type CatCatMasterColumns = CatCatMasterColumn | CatCatMasterColumn[]
 
-export type CatCatNodeColumn = 'build' | 'b' | 'completion.size' | 'cs' | 'completionSize' | 'cpu' | 'disk.avail' | 'd' | 'disk' | 'diskAvail' | 'disk.total' | 'dt' | 'diskTotal' | 'disk.used' | 'du' | 'diskUsed' | 'disk.used_percent' | 'dup' | 'diskUsedPercent' | 'fielddata.evictions' | 'fe' | 'fielddataEvictions' | 'fielddata.memory_size' | 'fm' | 'fielddataMemory' | 'file_desc.current' | 'fdc' | 'fileDescriptorCurrent' | 'file_desc.max' | 'fdm' | 'fileDescriptorMax' | 'file_desc.percent' | 'fdp' | 'fileDescriptorPercent' | 'flush.total' | 'ft' | 'flushTotal' | 'flush.total_time' | 'ftt' | 'flushTotalTime' | 'get.current' | 'gc' | 'getCurrent' | 'get.exists_time' | 'geti' | 'getExistsTime' | 'get.exists_total' | 'geto' | 'getExistsTotal' | 'get.missing_time' | 'gmti' | 'getMissingTime' | 'get.missing_total' | 'gmto' | 'getMissingTotal' | 'get.time' | 'gti' | 'getTime' | 'get.total' | 'gto' | 'getTotal' | 'heap.current' | 'hc' | 'heapCurrent' | 'heap.max' | 'hm' | 'heapMax' | 'heap.percent' | 'hp' | 'heapPercent' | 'http_address' | 'http' | 'id' | 'nodeId' | 'indexing.delete_current' | 'idc' | 'indexingDeleteCurrent' | 'indexing.delete_time' | 'idti' | 'indexingDeleteTime' | 'indexing.delete_total' | 'idto' | 'indexingDeleteTotal' | 'indexing.index_current' | 'iic' | 'indexingIndexCurrent' | 'indexing.index_failed' | 'iif' | 'indexingIndexFailed' | 'indexing.index_failed_due_to_version_conflict' | 'iifvc' | 'indexingIndexFailedDueToVersionConflict' | 'indexing.index_time' | 'iiti' | 'indexingIndexTime' | 'indexing.index_total' | 'iito' | 'indexingIndexTotal' | 'ip' | 'i' | 'jdk' | 'j' | 'load_1m' | 'l' | 'load_5m' | 'l' | 'load_15m' | 'l' | 'mappings.total_count' | 'mtc' | 'mappingsTotalCount' | 'mappings.total_estimated_overhead_in_bytes' | 'mteo' | 'mappingsTotalEstimatedOverheadInBytes' | 'master' | 'm' | 'merges.current' | 'mc' | 'mergesCurrent' | 'merges.current_docs' | 'mcd' | 'mergesCurrentDocs' | 'merges.current_size' | 'mcs' | 'mergesCurrentSize' | 'merges.total' | 'mt' | 'mergesTotal' | 'merges.total_docs' | 'mtd' | 'mergesTotalDocs' | 'merges.total_size' | 'mts' | 'mergesTotalSize' | 'merges.total_time' | 'mtt' | 'mergesTotalTime' | 'name' | 'n' | 'node.role' | 'r' | 'role' | 'nodeRole' | 'pid' | 'p' | 'port' | 'po' | 'query_cache.memory_size' | 'qcm' | 'queryCacheMemory' | 'query_cache.evictions' | 'qce' | 'queryCacheEvictions' | 'query_cache.hit_count' | 'qchc' | 'queryCacheHitCount' | 'query_cache.miss_count' | 'qcmc' | 'queryCacheMissCount' | 'ram.current' | 'rc' | 'ramCurrent' | 'ram.max' | 'rm' | 'ramMax' | 'ram.percent' | 'rp' | 'ramPercent' | 'refresh.total' | 'rto' | 'refreshTotal' | 'refresh.time' | 'rti' | 'refreshTime' | 'request_cache.memory_size' | 'rcm' | 'requestCacheMemory' | 'request_cache.evictions' | 'rce' | 'requestCacheEvictions' | 'request_cache.hit_count' | 'rchc' | 'requestCacheHitCount' | 'request_cache.miss_count' | 'rcmc' | 'requestCacheMissCount' | 'script.compilations' | 'scrcc' | 'scriptCompilations' | 'script.cache_evictions' | 'scrce' | 'scriptCacheEvictions' | 'search.fetch_current' | 'sfc' | 'searchFetchCurrent' | 'search.fetch_time' | 'sfti' | 'searchFetchTime' | 'search.fetch_total' | 'sfto' | 'searchFetchTotal' | 'search.open_contexts' | 'so' | 'searchOpenContexts' | 'search.query_current' | 'sqc' | 'searchQueryCurrent' | 'search.query_time' | 'sqti' | 'searchQueryTime' | 'search.query_total' | 'sqto' | 'searchQueryTotal' | 'search.scroll_current' | 'scc' | 'searchScrollCurrent' | 'search.scroll_time' | 'scti' | 'searchScrollTime' | 'search.scroll_total' | 'scto' | 'searchScrollTotal' | 'segments.count' | 'sc' | 'segmentsCount' | 'segments.fixed_bitset_memory' | 'sfbm' | 'fixedBitsetMemory' | 'segments.index_writer_memory' | 'siwm' | 'segmentsIndexWriterMemory' | 'segments.memory' | 'sm' | 'segmentsMemory' | 'segments.version_map_memory' | 'svmm' | 'segmentsVersionMapMemory' | 'shard_stats.total_count' | 'sstc' | 'shards' | 'shardStatsTotalCount' | 'suggest.current' | 'suc' | 'suggestCurrent' | 'suggest.time' | 'suti' | 'suggestTime' | 'suggest.total' | 'suto' | 'suggestTotal' | 'uptime' | 'u' | 'version' | 'v'| string
+export type CatCatNodeColumn = 'build' | 'b' | 'completion.size' | 'cs' | 'completionSize' | 'cpu' | 'disk.avail' | 'd' | 'disk' | 'diskAvail' | 'disk.total' | 'dt' | 'diskTotal' | 'disk.used' | 'du' | 'diskUsed' | 'disk.used_percent' | 'dup' | 'diskUsedPercent' | 'fielddata.evictions' | 'fe' | 'fielddataEvictions' | 'fielddata.memory_size' | 'fm' | 'fielddataMemory' | 'file_desc.current' | 'fdc' | 'fileDescriptorCurrent' | 'file_desc.max' | 'fdm' | 'fileDescriptorMax' | 'file_desc.percent' | 'fdp' | 'fileDescriptorPercent' | 'flush.total' | 'ft' | 'flushTotal' | 'flush.total_time' | 'ftt' | 'flushTotalTime' | 'get.current' | 'gc' | 'getCurrent' | 'get.exists_time' | 'geti' | 'getExistsTime' | 'get.exists_total' | 'geto' | 'getExistsTotal' | 'get.missing_time' | 'gmti' | 'getMissingTime' | 'get.missing_total' | 'gmto' | 'getMissingTotal' | 'get.time' | 'gti' | 'getTime' | 'get.total' | 'gto' | 'getTotal' | 'heap.current' | 'hc' | 'heapCurrent' | 'heap.max' | 'hm' | 'heapMax' | 'heap.percent' | 'hp' | 'heapPercent' | 'http_address' | 'http' | 'id' | 'nodeId' | 'indexing.delete_current' | 'idc' | 'indexingDeleteCurrent' | 'indexing.delete_time' | 'idti' | 'indexingDeleteTime' | 'indexing.delete_total' | 'idto' | 'indexingDeleteTotal' | 'indexing.index_current' | 'iic' | 'indexingIndexCurrent' | 'indexing.index_failed' | 'iif' | 'indexingIndexFailed' | 'indexing.index_failed_due_to_version_conflict' | 'iifvc' | 'indexingIndexFailedDueToVersionConflict' | 'indexing.index_time' | 'iiti' | 'indexingIndexTime' | 'indexing.index_total' | 'iito' | 'indexingIndexTotal' | 'ip' | 'i' | 'jdk' | 'j' | 'load_1m' | 'l' | 'load_5m' | 'l' | 'load_15m' | 'l' | 'available_processors' | 'ap' | 'mappings.total_count' | 'mtc' | 'mappingsTotalCount' | 'mappings.total_estimated_overhead_in_bytes' | 'mteo' | 'mappingsTotalEstimatedOverheadInBytes' | 'master' | 'm' | 'merges.current' | 'mc' | 'mergesCurrent' | 'merges.current_docs' | 'mcd' | 'mergesCurrentDocs' | 'merges.current_size' | 'mcs' | 'mergesCurrentSize' | 'merges.total' | 'mt' | 'mergesTotal' | 'merges.total_docs' | 'mtd' | 'mergesTotalDocs' | 'merges.total_size' | 'mts' | 'mergesTotalSize' | 'merges.total_time' | 'mtt' | 'mergesTotalTime' | 'name' | 'n' | 'node.role' | 'r' | 'role' | 'nodeRole' | 'pid' | 'p' | 'port' | 'po' | 'query_cache.memory_size' | 'qcm' | 'queryCacheMemory' | 'query_cache.evictions' | 'qce' | 'queryCacheEvictions' | 'query_cache.hit_count' | 'qchc' | 'queryCacheHitCount' | 'query_cache.miss_count' | 'qcmc' | 'queryCacheMissCount' | 'ram.current' | 'rc' | 'ramCurrent' | 'ram.max' | 'rm' | 'ramMax' | 'ram.percent' | 'rp' | 'ramPercent' | 'refresh.total' | 'rto' | 'refreshTotal' | 'refresh.time' | 'rti' | 'refreshTime' | 'request_cache.memory_size' | 'rcm' | 'requestCacheMemory' | 'request_cache.evictions' | 'rce' | 'requestCacheEvictions' | 'request_cache.hit_count' | 'rchc' | 'requestCacheHitCount' | 'request_cache.miss_count' | 'rcmc' | 'requestCacheMissCount' | 'script.compilations' | 'scrcc' | 'scriptCompilations' | 'script.cache_evictions' | 'scrce' | 'scriptCacheEvictions' | 'search.fetch_current' | 'sfc' | 'searchFetchCurrent' | 'search.fetch_time' | 'sfti' | 'searchFetchTime' | 'search.fetch_total' | 'sfto' | 'searchFetchTotal' | 'search.open_contexts' | 'so' | 'searchOpenContexts' | 'search.query_current' | 'sqc' | 'searchQueryCurrent' | 'search.query_time' | 'sqti' | 'searchQueryTime' | 'search.query_total' | 'sqto' | 'searchQueryTotal' | 'search.scroll_current' | 'scc' | 'searchScrollCurrent' | 'search.scroll_time' | 'scti' | 'searchScrollTime' | 'search.scroll_total' | 'scto' | 'searchScrollTotal' | 'segments.count' | 'sc' | 'segmentsCount' | 'segments.fixed_bitset_memory' | 'sfbm' | 'fixedBitsetMemory' | 'segments.index_writer_memory' | 'siwm' | 'segmentsIndexWriterMemory' | 'segments.memory' | 'sm' | 'segmentsMemory' | 'segments.version_map_memory' | 'svmm' | 'segmentsVersionMapMemory' | 'shard_stats.total_count' | 'sstc' | 'shards' | 'shardStatsTotalCount' | 'suggest.current' | 'suc' | 'suggestCurrent' | 'suggest.time' | 'suti' | 'suggestTime' | 'suggest.total' | 'suto' | 'suggestTotal' | 'uptime' | 'u' | 'version' | 'v'| string
 
 export type CatCatNodeColumns = CatCatNodeColumn | CatCatNodeColumn[]
 
@@ -8281,6 +8369,8 @@ export interface CatNodesNodesRecord {
   load_5m?: string
   load_15m?: string
   l?: string
+  available_processors?: string
+  ap?: string
   uptime?: string
   u?: string
   'node.role'?: string
@@ -10246,7 +10336,7 @@ export interface ClusterStatsSearchUsageStats {
   rescorers: Record<Name, long>
   sections: Record<Name, long>
   retrievers: Record<Name, long>
-  extended: Record<Name, ClusterStatsExtendedSearchUsage>
+  extended: ClusterStatsExtendedSearchUsage
 }
 
 export type ClusterStatsShardState = 'INIT' | 'SUCCESS' | 'FAILED' | 'ABORTED' | 'MISSING' | 'WAITING' | 'QUEUED' | 'PAUSED_FOR_NODE_REMOVAL'
@@ -19990,6 +20080,7 @@ export interface SecurityApiKey {
   role_descriptors?: Record<string, SecurityRoleDescriptor>
   limited_by?: Record<string, SecurityRoleDescriptor>[]
   access?: SecurityAccess
+  certificate_identity?: string
   profile_uid?: string
   _sort?: SortResults
 }
@@ -20394,6 +20485,7 @@ export interface SecurityCreateCrossClusterApiKeyRequest extends RequestBase {
     expiration?: Duration
     metadata?: Metadata
     name: Name
+    certificate_identity?: string
   }
 }
 
@@ -21227,6 +21319,7 @@ export interface SecurityUpdateCrossClusterApiKeyRequest extends RequestBase {
     access: SecurityAccess
     expiration?: Duration
     metadata?: Metadata
+    certificate_identity?: string
   }
 }
 
@@ -22527,6 +22620,7 @@ export interface TransformSettings {
   deduce_mappings?: boolean
   docs_per_second?: float
   max_page_search_size?: integer
+  use_point_in_time?: boolean
   unattended?: boolean
 }
 

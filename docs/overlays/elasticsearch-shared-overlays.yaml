@@ -187,6 +187,10 @@ actions:
           x-displayName: Node lifecycle
           description: >
             The node lifecycle APIs enable you to prepare nodes for temporary or permanent shutdown, monitor the shutdown status, and enable a previously shut-down node to resume normal operations.
+      # P
+        - name: project
+          x-displayName: Project
+          # description: 
       # Q
         - name: query_rules
           x-displayName: Query rules
@@ -1152,3 +1156,11 @@ actions:
   - target: "$.components['schemas']['cat._types.CatTransformColumn'].enum"
     description: Remove enum array from cat transforms
     remove: true
+# Simplify duration type
+  - target: "$.components['schemas']['_types.Duration'].oneOf"
+    description: Remove existing oneOf definition for Duration
+    remove: true
+  - target: "$.components['schemas']['_types.Duration']"
+    description: Re-add a simple string type for Duration
+    update:
+      type: string

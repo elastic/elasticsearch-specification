@@ -46,7 +46,8 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * A flag indicating if associated sync jobs should be also removed. Defaults to false.
+     * A flag indicating if associated sync jobs should be also removed.
+     * @server_default false
      */
     delete_sync_jobs?: boolean
     /**

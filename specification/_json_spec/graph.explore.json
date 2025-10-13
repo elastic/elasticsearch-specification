@@ -35,7 +35,8 @@
       }
     },
     "body": {
-      "description": "Graph Query DSL"
+      "description": "Graph Query DSL",
+      "required": true
     }
   }
 }
