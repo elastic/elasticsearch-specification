@@ -5042,7 +5042,7 @@
           {
             "in": "query",
             "name": "default_operator",
-            "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+            "description": "The default operator for query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -29197,7 +29197,7 @@
           {
             "in": "query",
             "name": "default_operator",
-            "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+            "description": "The default operator for query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -41576,8 +41576,7 @@
         "enum": [
           "internal",
           "external",
-          "external_gte",
-          "force"
+          "external_gte"
         ]
       },
       "_types.analysis.StopWords": {
@@ -84587,7 +84586,7 @@
       "count-default_operator": {
         "in": "query",
         "name": "default_operator",
-        "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+        "description": "The default operator for query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -84983,7 +84982,7 @@
       "explain-default_operator": {
         "in": "query",
         "name": "default_operator",
-        "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+        "description": "The default operator for query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -86259,7 +86258,7 @@
       "indices.validate_query-default_operator": {
         "in": "query",
         "name": "default_operator",
-        "description": "The default operator for query string query: `AND` or `OR`.",
+        "description": "The default operator for query string query: `and` or `or`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -87716,7 +87715,7 @@
       "search-default_operator": {
         "in": "query",
         "name": "default_operator",
-        "description": "The default operator for the query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+        "description": "The default operator for the query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl.Operator"
