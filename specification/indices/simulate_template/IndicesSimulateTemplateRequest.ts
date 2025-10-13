@@ -59,6 +59,7 @@ export interface Request extends RequestBase {
     create?: boolean
     /**
      * User defined reason for dry-run creating the new template for simulation purposes
+     * @server_default false
      */
     cause?: string
     /**

@@ -1740,7 +1740,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -2294,7 +2295,7 @@
           {
             "in": "query",
             "name": "delete_sync_jobs",
-            "description": "A flag indicating if associated sync jobs should be also removed. Defaults to false.",
+            "description": "A flag indicating if associated sync jobs should be also removed.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -2350,7 +2351,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset (default: 0)",
+            "description": "Starting offset",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -2708,7 +2709,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset (default: 0)",
+            "description": "Starting offset",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -7864,7 +7865,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -9302,7 +9304,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -9686,7 +9689,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -11565,7 +11569,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -11945,7 +11950,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12080,7 +12086,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12205,7 +12212,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12345,7 +12353,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12464,7 +12473,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12594,7 +12604,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12719,7 +12730,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12849,7 +12861,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12969,7 +12982,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13099,7 +13113,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13204,7 +13219,8 @@
                 ]
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13349,7 +13365,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13472,7 +13489,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13591,7 +13609,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13716,7 +13735,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13841,7 +13861,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13966,7 +13987,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14085,7 +14107,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14196,7 +14219,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14321,7 +14345,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14446,7 +14471,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14546,7 +14572,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14656,7 +14683,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14767,7 +14795,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14872,7 +14901,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -18489,7 +18519,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -20142,7 +20173,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -22353,7 +22385,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -22408,8 +22441,8 @@
         "tags": [
           "project"
         ],
-        "summary": "Return tags defined for the project",
-        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "summary": "Get tags",
+        "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "project-tags",
         "responses": {
           "200": {
@@ -29510,7 +29543,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -80701,6 +80735,14 @@
             "default": 500.0,
             "type": "number"
           },
+          "use_point_in_time": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time"
+            },
+            "description": "Specifies whether the transform checkpoint will use the Point In Time API while searching over the source index.\nIn general, Point In Time is an optimization that will reduce pressure on the source index by reducing the amount\nof refreshes and merges, but it can be expensive if a large number of Point In Times are opened and closed for a\ngiven index. The benefits and impact depend on the data being searched, the ingest rate into the source index, and\nthe amount of other consumers searching the same source index.",
+            "default": true,
+            "type": "boolean"
+          },
           "unattended": {
             "description": "If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case\nof an error which means the transform never fails. Setting the number of retries other than infinite fails in\nvalidation.",
             "default": false,
@@ -84140,7 +84182,7 @@
       "cat.ml_data_frame_analytics-allow_no_match": {
         "in": "query",
         "name": "allow_no_match",
-        "description": "Whether to ignore if a wildcard expression matches no configs. (This includes `_all` string or when no configs have been specified)",
+        "description": "Whether to ignore if a wildcard expression matches no configs.\n(This includes `_all` string or when no configs have been specified.)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -89004,7 +89046,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "cluster.put_component_template": {
         "content": {
@@ -89124,7 +89167,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "create": {
         "content": {
@@ -89317,7 +89361,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "field_caps": {
         "content": {
@@ -89360,7 +89405,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "index": {
         "content": {
@@ -89488,7 +89534,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "indices.create_from": {
         "content": {
@@ -89831,7 +89878,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "indices.simulate_template": {
         "content": {
@@ -89933,7 +89981,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "inference.inference": {
         "content": {
@@ -89977,7 +90026,8 @@
               ]
             }
           }
-        }
+        },
+        "required": true
       },
       "inference.put": {
         "content": {
@@ -90098,7 +90148,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "ml.get_overall_buckets": {
         "content": {
@@ -90158,7 +90209,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "ml.preview_data_frame_analytics": {
         "content": {
@@ -90404,7 +90456,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "scripts_painless_execute": {
         "content": {
@@ -90457,7 +90510,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "scroll": {
         "content": {
@@ -90494,7 +90548,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "search": {
         "content": {
@@ -90802,7 +90857,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "search_application.search": {
         "content": {
@@ -91550,7 +91606,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "termvectors": {
         "content": {
