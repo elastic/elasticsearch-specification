@@ -1306,6 +1306,23 @@ export class ElasticsearchServiceSettings {
    * The maximum value is 32.
    */
   num_threads: integer
+  /**
+   * Only for the `rerank` task type.
+   * Controls the strategy used for processing long documents during inference.
+   *
+   * Possible values:
+   * - `truncate` (default): Processes only the beginning of each document.
+   * - `chunk`: Splits long documents into smaller parts (chunks) before inference.
+   *
+   * To enable chunking, set this value to `chunk`.
+   */
+  long_document_strategy?: string
+  /**
+   * Only for the `rerank` task type.
+   * Limits the number of chunks per document that are sent for inference when chunking is enabled.
+   * If not set, all chunks generated for the document are processed.
+   */
+  max_chunks_per_doc?: integer
 }
 
 export class ElasticsearchTaskSettings {
