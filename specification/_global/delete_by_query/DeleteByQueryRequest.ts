@@ -162,9 +162,9 @@ export interface Request extends RequestBase {
      */
     conflicts?: Conflicts
     /**
-     * The default operator for query string query: `AND` or `OR`.
+     * The default operator for query string query: `and` or `or`.
      * This parameter can be used only when the `q` query string parameter is specified.
-     * @server_default OR
+     * @server_default or
      */
     default_operator?: Operator
     /**
