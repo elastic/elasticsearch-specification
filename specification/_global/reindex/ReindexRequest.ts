@@ -176,7 +176,6 @@ export interface Request extends RequestBase {
      * The script to run to update the document source or metadata when reindexing.
      */
     script?: Script
-    size?: long
     /**
      * The source you are copying from.
      */

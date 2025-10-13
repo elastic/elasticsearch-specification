@@ -1014,7 +1014,6 @@ export interface ReindexRequest extends RequestBase {
     dest: ReindexDestination
     max_docs?: long
     script?: Script | ScriptSource
-    size?: long
     source: ReindexSource
   }
 }
