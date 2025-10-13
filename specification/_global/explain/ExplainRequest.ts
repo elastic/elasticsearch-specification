@@ -116,7 +116,7 @@ export interface Request extends RequestBase {
      */
     q?: string
   }
-  body: {
+  body?: {
     /**
      * Defines the search definition using the Query DSL.
      */

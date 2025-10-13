@@ -51,7 +51,7 @@ export interface Request extends RequestBase {
      */
     scroll_id?: ScrollIds
   }
-  body: {
+  body?: {
     /**
      * The scroll IDs to clear.
      * To clear all scroll IDs, use `_all`.
