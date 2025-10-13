@@ -70,7 +70,7 @@ export interface Request extends RequestBase {
      */
     delete_intervening_results?: boolean
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `delete_intervening_results` query parameter.
      * @server_default false

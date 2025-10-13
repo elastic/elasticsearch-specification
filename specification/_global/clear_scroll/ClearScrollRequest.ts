@@ -54,7 +54,7 @@ export interface Request extends RequestBase {
   }
   request_media_type: MediaType.Text | MediaType.Json
   response_media_type: MediaType.Json
-  body: {
+  body?: {
     /**
      * The scroll IDs to clear.
      * To clear all scroll IDs, use `_all`.

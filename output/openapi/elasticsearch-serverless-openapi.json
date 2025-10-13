@@ -7932,8 +7932,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -17933,8 +17932,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -19615,8 +19613,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -21894,8 +21891,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -29006,8 +29002,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -88254,8 +88249,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "cluster.put_component_template": {
         "content": {
@@ -88375,8 +88369,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "create": {
         "content": {
@@ -88570,8 +88563,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "field_caps": {
         "content": {
@@ -88614,8 +88606,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "graph.explore": {
         "content": {
@@ -89127,8 +89118,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "indices.simulate_template": {
         "content": {
@@ -89230,8 +89220,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "inference.inference": {
         "content": {
@@ -89397,8 +89386,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "ml.get_overall_buckets": {
         "content": {
@@ -89465,8 +89453,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "ml.preview_data_frame_analytics": {
         "content": {
@@ -89804,8 +89791,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "search": {
         "content": {
@@ -90113,8 +90099,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "search_application.search": {
         "content": {

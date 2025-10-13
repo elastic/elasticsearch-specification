@@ -107,7 +107,7 @@ export interface Request extends RequestBase {
      */
     start?: DateTime
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `anomaly_score` query parameter.
      * @server_default 0.0

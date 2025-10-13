@@ -97,7 +97,7 @@ export interface Request extends RequestBase {
      */
     wait_for_active_shards?: WaitForActiveShards
   }
-  body: {
+  body?: {
     /**
      * Aliases for the index.
      */

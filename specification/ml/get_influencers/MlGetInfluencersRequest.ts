@@ -98,7 +98,7 @@ export interface Request extends RequestBase {
      */
     start?: DateTime
   }
-  body: {
+  body?: {
     /**
      * Configures pagination.
      * This parameter has the `from` and `size` properties.

@@ -83,7 +83,7 @@ export interface Request extends RequestBase {
      */
     rest_total_hits_as_int?: boolean
   }
-  body: {
+  body?: {
     /**
      * The period to retain the search context for scrolling.
      * @doc_id scroll-search-results
