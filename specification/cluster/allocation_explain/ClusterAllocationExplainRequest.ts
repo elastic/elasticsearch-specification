@@ -77,7 +77,7 @@ export interface Request extends RequestBase {
      */
     master_timeout?: Duration
   }
-  body: {
+  body?: {
     /**
      * The name of the index that you would like an explanation for.
      */

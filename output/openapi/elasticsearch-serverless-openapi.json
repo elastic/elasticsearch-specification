@@ -5042,7 +5042,7 @@
           {
             "in": "query",
             "name": "default_operator",
-            "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+            "description": "The default operator for query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -7865,8 +7865,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -18519,8 +18518,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -20173,8 +20171,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -22385,8 +22382,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -23459,9 +23455,6 @@
                         "$ref": "#/components/schemas/_types.Script"
                       }
                     ]
-                  },
-                  "size": {
-                    "type": "number"
                   },
                   "source": {
                     "description": "The source you are copying from.",
@@ -29201,7 +29194,7 @@
           {
             "in": "query",
             "name": "default_operator",
-            "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+            "description": "The default operator for query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -29543,8 +29536,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -41581,8 +41573,7 @@
         "enum": [
           "internal",
           "external",
-          "external_gte",
-          "force"
+          "external_gte"
         ]
       },
       "_types.analysis.StopWords": {
@@ -84592,7 +84583,7 @@
       "count-default_operator": {
         "in": "query",
         "name": "default_operator",
-        "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+        "description": "The default operator for query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -84988,7 +84979,7 @@
       "explain-default_operator": {
         "in": "query",
         "name": "default_operator",
-        "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+        "description": "The default operator for query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -86264,7 +86255,7 @@
       "indices.validate_query-default_operator": {
         "in": "query",
         "name": "default_operator",
-        "description": "The default operator for query string query: `AND` or `OR`.",
+        "description": "The default operator for query string query: `and` or `or`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -87721,7 +87712,7 @@
       "search-default_operator": {
         "in": "query",
         "name": "default_operator",
-        "description": "The default operator for the query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+        "description": "The default operator for the query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -89046,8 +89037,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "cluster.put_component_template": {
         "content": {
@@ -89167,8 +89157,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "create": {
         "content": {
@@ -89361,8 +89350,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "field_caps": {
         "content": {
@@ -89405,8 +89393,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "index": {
         "content": {
@@ -89878,8 +89865,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "indices.simulate_template": {
         "content": {
@@ -89981,8 +89967,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "inference.inference": {
         "content": {
@@ -90148,8 +90133,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "ml.get_overall_buckets": {
         "content": {
@@ -90209,8 +90193,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "ml.preview_data_frame_analytics": {
         "content": {
@@ -90548,8 +90531,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "search": {
         "content": {
@@ -90857,8 +90839,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "search_application.search": {
         "content": {

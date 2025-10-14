@@ -82,7 +82,7 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  body: {
+  body?: {
     /**
      * Defines the commands to perform.
      */
