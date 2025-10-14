@@ -57,7 +57,7 @@ export class IndicesRecord {
   /**
    * The number of documents in the index, including hidden nested documents.
    * For indices with `semantic_text` fields or other nested field types, this count
-   * includes the internal nested documents used for storing chunks and embeddings.
+   * includes the internal nested documents.
    * To get the logical document count (excluding nested documents), use the `_count`
    * API or `_cat/count` API instead.
    * @aliases dc,docsCount
