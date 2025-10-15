@@ -125,7 +125,7 @@ export interface Request extends RequestBase {
      */
     lazy?: boolean
   }
-  body: {
+  body?: {
     /**
      * Aliases for the target index.
      * Data streams do not support this parameter.

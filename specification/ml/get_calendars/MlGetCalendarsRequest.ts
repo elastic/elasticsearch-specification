@@ -56,7 +56,7 @@ export interface Request extends RequestBase {
      */
     size?: integer
   }
-  body: {
+  body?: {
     /** This object is supported only when you omit the calendar identifier. */
     page?: Page
   }

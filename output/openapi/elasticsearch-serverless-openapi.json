@@ -1740,7 +1740,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -2294,7 +2295,7 @@
           {
             "in": "query",
             "name": "delete_sync_jobs",
-            "description": "A flag indicating if associated sync jobs should be also removed. Defaults to false.",
+            "description": "A flag indicating if associated sync jobs should be also removed.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -2350,7 +2351,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset (default: 0)",
+            "description": "Starting offset",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -2708,7 +2709,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "Starting offset (default: 0)",
+            "description": "Starting offset",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -5041,7 +5042,7 @@
           {
             "in": "query",
             "name": "default_operator",
-            "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+            "description": "The default operator for query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -9302,7 +9303,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -9686,7 +9688,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -11565,7 +11568,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -11945,7 +11949,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12080,7 +12085,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12200,12 +12206,13 @@
                 },
                 "PutAmazonBedrockRequestExample2": {
                   "summary": "A completion task",
-                  "description": "Run `PUT _inference/completion/openai-completion` to create an inference endpoint to perform a completion task type.",
-                  "value": "{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"gpt-3.5-turbo\"\n    }\n}"
+                  "description": "Run `PUT _inference/completion/amazon_bedrock_completion` to create an inference endpoint to perform a completion task.",
+                  "value": "{\n    \"service\": \"amazonbedrock\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"provider\": \"amazontitan\",\n        \"model\": \"amazon.titan-text-premier-v1:0\"\n    }\n}"
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12345,7 +12352,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12464,7 +12472,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12594,7 +12603,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12719,7 +12729,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12849,7 +12860,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -12969,7 +12981,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13099,7 +13112,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13204,7 +13218,8 @@
                 ]
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13349,7 +13364,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13472,7 +13488,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13591,7 +13608,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13716,7 +13734,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13841,7 +13860,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -13966,7 +13986,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14085,7 +14106,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14196,7 +14218,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14316,12 +14339,13 @@
                 },
                 "PutOpenAiRequestExample2": {
                   "summary": "A completion task",
-                  "description": "Run `PUT _inference/completion/amazon_bedrock_completion` to create an inference endpoint to perform a completion task.",
-                  "value": "{\n    \"service\": \"amazonbedrock\",\n    \"service_settings\": {\n        \"access_key\": \"AWS-access-key\",\n        \"secret_key\": \"AWS-secret-key\",\n        \"region\": \"us-east-1\",\n        \"provider\": \"amazontitan\",\n        \"model\": \"amazon.titan-text-premier-v1:0\"\n    }\n}"
+                  "description": "Run `PUT _inference/completion/openai-completion` to create an inference endpoint to perform a `completion` task type.",
+                  "value": "{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"gpt-3.5-turbo\"\n    }\n}"
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14446,7 +14470,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14546,7 +14571,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14656,7 +14682,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14767,7 +14794,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -14872,7 +14900,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -22408,8 +22437,8 @@
         "tags": [
           "project"
         ],
-        "summary": "Return tags defined for the project",
-        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "summary": "Get tags",
+        "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "project-tags",
         "responses": {
           "200": {
@@ -23426,9 +23455,6 @@
                         "$ref": "#/components/schemas/_types.Script"
                       }
                     ]
-                  },
-                  "size": {
-                    "type": "number"
                   },
                   "source": {
                     "description": "The source you are copying from.",
@@ -29168,7 +29194,7 @@
           {
             "in": "query",
             "name": "default_operator",
-            "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+            "description": "The default operator for query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -29646,6 +29672,9 @@
         ]
       },
       "_types.Duration": {
+        "externalDocs": {
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#time-units"
+        },
         "description": "A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and\n`d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.",
         "oneOf": [
           {
@@ -29833,6 +29862,9 @@
             "$ref": "#/components/schemas/_types.aggregations.BucketMetricValueAggregate"
           },
           {
+            "$ref": "#/components/schemas/_types.aggregations.ChangePointAggregate"
+          },
+          {
             "$ref": "#/components/schemas/_types.aggregations.StatsAggregate"
           },
           {
@@ -29843,6 +29875,12 @@
           },
           {
             "$ref": "#/components/schemas/_types.aggregations.ExtendedStatsBucketAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations.CartesianBoundsAggregate"
+          },
+          {
+            "$ref": "#/components/schemas/_types.aggregations.CartesianCentroidAggregate"
           },
           {
             "$ref": "#/components/schemas/_types.aggregations.GeoBoundsAggregate"
@@ -30312,6 +30350,260 @@
           }
         ]
       },
+      "_types.aggregations.ChangePointAggregate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.ChangeType"
+                  }
+                ]
+              },
+              "bucket": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.ChangePointBucket"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.aggregations.ChangeType": {
+        "type": "object",
+        "properties": {
+          "dip": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Dip"
+              }
+            ]
+          },
+          "distribution_change": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.DistributionChange"
+              }
+            ]
+          },
+          "indeterminable": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Indeterminable"
+              }
+            ]
+          },
+          "non_stationary": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.NonStationary"
+              }
+            ]
+          },
+          "spike": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Spike"
+              }
+            ]
+          },
+          "stationary": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Stationary"
+              }
+            ]
+          },
+          "step_change": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.StepChange"
+              }
+            ]
+          },
+          "trend_change": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.TrendChange"
+              }
+            ]
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "_types.aggregations.Dip": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AbstractChangePoint"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.AbstractChangePoint": {
+        "type": "object",
+        "properties": {
+          "p_value": {
+            "type": "number"
+          },
+          "change_point": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "p_value",
+          "change_point"
+        ]
+      },
+      "_types.aggregations.DistributionChange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AbstractChangePoint"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.Indeterminable": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "reason"
+        ]
+      },
+      "_types.aggregations.NonStationary": {
+        "type": "object",
+        "properties": {
+          "p_value": {
+            "type": "number"
+          },
+          "r_value": {
+            "type": "number"
+          },
+          "trend": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "p_value",
+          "r_value",
+          "trend"
+        ]
+      },
+      "_types.aggregations.Spike": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AbstractChangePoint"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.Stationary": {
+        "type": "object"
+      },
+      "_types.aggregations.StepChange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AbstractChangePoint"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.TrendChange": {
+        "type": "object",
+        "properties": {
+          "p_value": {
+            "type": "number"
+          },
+          "r_value": {
+            "type": "number"
+          },
+          "change_point": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "p_value",
+          "r_value",
+          "change_point"
+        ]
+      },
+      "_types.aggregations.ChangePointBucket": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.MultiBucketBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "key": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.FieldValue"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "key"
+            ]
+          }
+        ]
+      },
+      "_types.FieldValue": {
+        "description": "A field value.",
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "nullable": true,
+            "type": "string"
+          }
+        ]
+      },
+      "_types.aggregations.MultiBucketBase": {
+        "description": "Base type for multi-bucket aggregation results that can hold sub-aggregations results.",
+        "type": "object",
+        "properties": {
+          "doc_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "doc_count"
+        ]
+      },
       "_types.aggregations.StatsAggregate": {
         "description": "Statistics aggregation result. `min`, `max` and `avg` are missing if there were no values to process\n(`count` is zero).",
         "allOf": [
@@ -30640,7 +30932,7 @@
           }
         ]
       },
-      "_types.aggregations.GeoBoundsAggregate": {
+      "_types.aggregations.CartesianBoundsAggregate": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
@@ -30651,52 +30943,12 @@
               "bounds": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/_types.GeoBounds"
+                    "$ref": "#/components/schemas/_types.TopLeftBottomRightGeoBounds"
                   }
                 ]
               }
             }
           }
-        ]
-      },
-      "_types.GeoBounds": {
-        "description": "A geo bounding box. It can be represented in various ways:\n- as 4 top/bottom/left/right coordinates\n- as 2 top_left / bottom_right points\n- as 2 top_right / bottom_left points\n- as a WKT bounding box",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types.CoordsGeoBounds"
-          },
-          {
-            "$ref": "#/components/schemas/_types.TopLeftBottomRightGeoBounds"
-          },
-          {
-            "$ref": "#/components/schemas/_types.TopRightBottomLeftGeoBounds"
-          },
-          {
-            "$ref": "#/components/schemas/_types.WktGeoBounds"
-          }
-        ]
-      },
-      "_types.CoordsGeoBounds": {
-        "type": "object",
-        "properties": {
-          "top": {
-            "type": "number"
-          },
-          "bottom": {
-            "type": "number"
-          },
-          "left": {
-            "type": "number"
-          },
-          "right": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "top",
-          "bottom",
-          "left",
-          "right"
         ]
       },
       "_types.TopLeftBottomRightGeoBounds": {
@@ -30776,6 +31028,105 @@
       },
       "_types.GeoHash": {
         "type": "string"
+      },
+      "_types.aggregations.CartesianCentroidAggregate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "number"
+              },
+              "location": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.CartesianPoint"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "count"
+            ]
+          }
+        ]
+      },
+      "_types.CartesianPoint": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ]
+      },
+      "_types.aggregations.GeoBoundsAggregate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "bounds": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.GeoBounds"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "_types.GeoBounds": {
+        "description": "A geo bounding box. It can be represented in various ways:\n- as 4 top/bottom/left/right coordinates\n- as 2 top_left / bottom_right points\n- as 2 top_right / bottom_left points\n- as a WKT bounding box",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.CoordsGeoBounds"
+          },
+          {
+            "$ref": "#/components/schemas/_types.TopLeftBottomRightGeoBounds"
+          },
+          {
+            "$ref": "#/components/schemas/_types.TopRightBottomLeftGeoBounds"
+          },
+          {
+            "$ref": "#/components/schemas/_types.WktGeoBounds"
+          }
+        ]
+      },
+      "_types.CoordsGeoBounds": {
+        "type": "object",
+        "properties": {
+          "top": {
+            "type": "number"
+          },
+          "bottom": {
+            "type": "number"
+          },
+          "left": {
+            "type": "number"
+          },
+          "right": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "top",
+          "bottom",
+          "left",
+          "right"
+        ]
       },
       "_types.TopRightBottomLeftGeoBounds": {
         "type": "object",
@@ -30904,18 +31255,6 @@
               "key"
             ]
           }
-        ]
-      },
-      "_types.aggregations.MultiBucketBase": {
-        "description": "Base type for multi-bucket aggregation results that can hold sub-aggregations results.",
-        "type": "object",
-        "properties": {
-          "doc_count": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "doc_count"
         ]
       },
       "_types.aggregations.DateHistogramAggregate": {
@@ -31200,27 +31539,6 @@
             "required": [
               "key"
             ]
-          }
-        ]
-      },
-      "_types.FieldValue": {
-        "description": "A field value.",
-        "oneOf": [
-          {
-            "type": "number"
-          },
-          {
-            "type": "number"
-          },
-          {
-            "type": "string"
-          },
-          {
-            "type": "boolean"
-          },
-          {
-            "nullable": true,
-            "type": "string"
           }
         ]
       },
@@ -35452,6 +35770,28 @@
                   }
                 ]
               },
+              "cartesian_bounds": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-metrics-cartesian-bounds-aggregation"
+                },
+                "description": "A metric aggregation that computes the spatial bounding box containing all values for a Point or Shape field.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.CartesianBoundsAggregation"
+                  }
+                ]
+              },
+              "cartesian_centroid": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-metrics-cartesian-centroid-aggregation"
+                },
+                "description": "A metric aggregation that computes the weighted centroid from all coordinate values for point and shape fields.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.CartesianCentroidAggregation"
+                  }
+                ]
+              },
               "categorize_text": {
                 "externalDocs": {
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-categorize-text-aggregation"
@@ -35461,6 +35801,17 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.CategorizeTextAggregation"
+                  }
+                ]
+              },
+              "change_point": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-change-point-aggregation"
+                },
+                "description": "A sibling pipeline that detects, spikes, dips, and change points in a metric.\nGiven a distribution of values provided by the sibling multi-bucket aggregation,\nthis aggregation indicates the bucket of any spike or dip and/or the bucket at which\nthe largest change in the distribution of values, if they are statistically significant.\nThere must be at least 22 bucketed values. Fewer than 1,000 is preferred.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.ChangePointAggregation"
                   }
                 ]
               },
@@ -41222,8 +41573,7 @@
         "enum": [
           "internal",
           "external",
-          "external_gte",
-          "force"
+          "external_gte"
         ]
       },
       "_types.analysis.StopWords": {
@@ -43745,6 +44095,26 @@
           "save_time_heuristic"
         ]
       },
+      "_types.aggregations.CartesianBoundsAggregation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.MetricAggregationBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.aggregations.CartesianCentroidAggregation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.MetricAggregationBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
       "_types.aggregations.CategorizeTextAggregation": {
         "description": "A multi-bucket aggregation that groups semi-structured text into buckets. Each text\nfield is re-analyzed using a custom analyzer. The resulting tokens are then categorized\ncreating buckets of similarly formatted text values. This aggregation works best with machine\ngenerated text like system logs. Only the first 100 analyzed tokens are used to categorize the text.",
         "allOf": [
@@ -43848,6 +44218,16 @@
             }
           }
         }
+      },
+      "_types.aggregations.ChangePointAggregation": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.PipelineAggregationBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
       },
       "_types.aggregations.ChildrenAggregation": {
         "allOf": [
@@ -58486,12 +58866,17 @@
             ]
           },
           "rescore_vector": {
-            "description": "The rescore vector options. This is only applicable to `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.",
+            "description": "The rescore vector options. This is only applicable to `bbq_disk`, `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.DenseVectorIndexOptionsRescoreVector"
               }
             ]
+          },
+          "on_disk_rescore": {
+            "description": "`true` if vector rescoring should be done on-disk\n\nOnly applicable to `bbq_hnsw`",
+            "default": false,
+            "type": "boolean"
           }
         },
         "required": [
@@ -58764,9 +59149,13 @@
           },
           "chunking_settings": {
             "description": "Settings for chunking text into smaller passages. If specified, these will override the\nchunking settings sent in the inference endpoint associated with inference_id. If chunking settings are updated,\nthey will not be applied to existing documents until they are reindexed.",
-            "allOf": [
+            "oneOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.ChunkingSettings"
+              },
+              {
+                "nullable": true,
+                "type": "string"
               }
             ]
           },
@@ -64203,6 +64592,8 @@
             "type": "number"
           },
           "max_size": {
+            "deprecated": true,
+            "description": "The `max_size` condition has been deprecated in 9.3.0 and `max_primary_shard_size` should be used instead",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.ByteSize"
@@ -78238,7 +78629,7 @@
             "default": "true",
             "allOf": [
               {
-                "$ref": "#/components/schemas/_types.Fields"
+                "$ref": "#/components/schemas/_global.search._types.SourceConfig"
               }
             ]
           },
@@ -78282,7 +78673,7 @@
             ]
           },
           "username": {
-            "description": "The username to use for authentication with the remote host.",
+            "description": "The username to use for authentication with the remote host (required when using basic auth).",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Username"
@@ -78290,12 +78681,17 @@
             ]
           },
           "password": {
-            "description": "The password to use for authentication with the remote host.",
+            "description": "The password to use for authentication with the remote host (required when using basic auth).",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Password"
               }
             ]
+          },
+          "api_key": {
+            "description": "The API key to use for authentication with the remote host (as an alternative to basic auth when the remote cluster is in Elastic Cloud).\n(It is not permitted to set this and also to set an `Authorization` header via `headers`.)",
+            "x-state": "Generally available",
+            "type": "string"
           },
           "socket_timeout": {
             "description": "The remote socket read timeout.",
@@ -80329,6 +80725,14 @@
             "description": "Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker\nexceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is `10` and the\nmaximum is `65,536`.",
             "default": 500.0,
             "type": "number"
+          },
+          "use_point_in_time": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time"
+            },
+            "description": "Specifies whether the transform checkpoint will use the Point In Time API while searching over the source index.\nIn general, Point In Time is an optimization that will reduce pressure on the source index by reducing the amount\nof refreshes and merges, but it can be expensive if a large number of Point In Times are opened and closed for a\ngiven index. The benefits and impact depend on the data being searched, the ingest rate into the source index, and\nthe amount of other consumers searching the same source index.",
+            "default": true,
+            "type": "boolean"
           },
           "unattended": {
             "description": "If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case\nof an error which means the transform never fails. Setting the number of retries other than infinite fails in\nvalidation.",
@@ -83769,7 +84173,7 @@
       "cat.ml_data_frame_analytics-allow_no_match": {
         "in": "query",
         "name": "allow_no_match",
-        "description": "Whether to ignore if a wildcard expression matches no configs. (This includes `_all` string or when no configs have been specified)",
+        "description": "Whether to ignore if a wildcard expression matches no configs.\n(This includes `_all` string or when no configs have been specified.)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84179,7 +84583,7 @@
       "count-default_operator": {
         "in": "query",
         "name": "default_operator",
-        "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+        "description": "The default operator for query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -84575,7 +84979,7 @@
       "explain-default_operator": {
         "in": "query",
         "name": "default_operator",
-        "description": "The default operator for query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+        "description": "The default operator for query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -85851,7 +86255,7 @@
       "indices.validate_query-default_operator": {
         "in": "query",
         "name": "default_operator",
-        "description": "The default operator for query string query: `AND` or `OR`.",
+        "description": "The default operator for query string query: `and` or `or`.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -87308,7 +87712,7 @@
       "search-default_operator": {
         "in": "query",
         "name": "default_operator",
-        "description": "The default operator for the query string query: `AND` or `OR`.\nThis parameter can be used only when the `q` query string parameter is specified.",
+        "description": "The default operator for the query string query: `and` or `or`.\nThis parameter can be used only when the `q` query string parameter is specified.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -89117,7 +89521,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "indices.create_from": {
         "content": {
@@ -89606,7 +90011,8 @@
               ]
             }
           }
-        }
+        },
+        "required": true
       },
       "inference.put": {
         "content": {
@@ -90033,7 +90439,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "scripts_painless_execute": {
         "content": {
@@ -90086,7 +90493,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "scroll": {
         "content": {
@@ -91179,7 +91587,8 @@
               }
             }
           }
-        }
+        },
+        "required": true
       },
       "termvectors": {
         "content": {

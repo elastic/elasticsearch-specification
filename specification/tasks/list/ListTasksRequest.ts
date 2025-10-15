@@ -110,6 +110,7 @@ export interface Request extends RequestBase {
     /**
      * A key that is used to group tasks in the response.
      * The task lists can be grouped either by nodes or by parent tasks.
+     * @server_default nodes
      */
     group_by?: GroupBy
     /**
