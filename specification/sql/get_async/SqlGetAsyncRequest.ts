@@ -60,6 +60,7 @@ export interface Request extends RequestBase {
     /**
      * The retention period for the search and its results.
      * It defaults to the `keep_alive` period for the original SQL search.
+     * @server_default 5d
      */
     keep_alive?: Duration
     /**

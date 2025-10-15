@@ -70,7 +70,7 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  body: {
+  body?: {
     /**
      * The desired requests per second for the deletion processes. The default
      * behavior is no throttling.

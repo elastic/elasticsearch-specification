@@ -129,6 +129,9 @@ actions:
             Inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio or Hugging Face.
             For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.
             However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
+          externalDocs:
+            url: https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api
+            description: Learn about default inference endpoints, adaptive allocations, and chunking.
         - name: info
           x-displayName: Info
           description: >
@@ -187,6 +190,10 @@ actions:
           x-displayName: Node lifecycle
           description: >
             The node lifecycle APIs enable you to prepare nodes for temporary or permanent shutdown, monitor the shutdown status, and enable a previously shut-down node to resume normal operations.
+      # P
+        - name: project
+          x-displayName: Project
+          # description: 
       # Q
         - name: query_rules
           x-displayName: Query rules
@@ -1152,3 +1159,11 @@ actions:
   - target: "$.components['schemas']['cat._types.CatTransformColumn'].enum"
     description: Remove enum array from cat transforms
     remove: true
+# Simplify duration type
+  - target: "$.components['schemas']['_types.Duration'].oneOf"
+    description: Remove existing oneOf definition for Duration
+    remove: true
+  - target: "$.components['schemas']['_types.Duration']"
+    description: Re-add a simple string type for Duration
+    update:
+      type: string
