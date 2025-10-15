@@ -1014,7 +1014,6 @@ export interface ReindexRequest extends RequestBase {
     dest: ReindexDestination
     max_docs?: long
     script?: Script | ScriptSource
-    size?: long
     source: ReindexSource
   }
 }
@@ -3091,7 +3090,7 @@ export type VersionNumber = long
 
 export type VersionString = string
 
-export type VersionType = 'internal' | 'external' | 'external_gte' | 'force'
+export type VersionType = 'internal' | 'external' | 'external_gte'
 
 export type WaitForActiveShardOptions = 'all' | 'index-setting'
 
@@ -22231,7 +22230,7 @@ export interface StreamsStatusLogsStatus {
 }
 
 export interface StreamsStatusRequest extends RequestBase {
-  master_timeout?: TimeUnit
+  master_timeout?: Duration
 }
 
 export interface StreamsStatusResponse {
