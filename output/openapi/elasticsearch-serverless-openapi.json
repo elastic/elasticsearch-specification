@@ -39144,10 +39144,6 @@
             "description": "The number of nearest neighbor candidates to consider per shard",
             "type": "number"
           },
-          "visit_percentage": {
-            "description": "The percentage of vectors to explore per shard while doing knn search with bbq_disk",
-            "type": "number"
-          },
           "boost": {
             "description": "Boost value to apply to kNN scores",
             "type": "number"
@@ -39539,10 +39535,6 @@
               },
               "num_candidates": {
                 "description": "Number of nearest neighbor candidates to consider per shard.",
-                "type": "number"
-              },
-              "visit_percentage": {
-                "description": "The percentage of vectors to explore per shard while doing knn search with bbq_disk",
                 "type": "number"
               },
               "similarity": {
@@ -41045,10 +41037,6 @@
               },
               "num_candidates": {
                 "description": "The number of nearest neighbor candidates to consider per shard",
-                "type": "number"
-              },
-              "visit_percentage": {
-                "description": "The percentage of vectors to explore per shard while doing knn search with bbq_disk",
                 "type": "number"
               },
               "k": {

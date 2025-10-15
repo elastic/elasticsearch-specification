@@ -2543,7 +2543,6 @@ export interface KnnQuery extends QueryDslQueryBase {
   query_vector?: QueryVector
   query_vector_builder?: QueryVectorBuilder
   num_candidates?: integer
-  visit_percentage?: float
   k?: integer
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
@@ -2556,7 +2555,6 @@ export interface KnnRetriever extends RetrieverBase {
   query_vector_builder?: QueryVectorBuilder
   k: integer
   num_candidates: integer
-  visit_percentage?: float
   similarity?: float
   rescore_vector?: RescoreVector
 }
@@ -2567,7 +2565,6 @@ export interface KnnSearch {
   query_vector_builder?: QueryVectorBuilder
   k?: integer
   num_candidates?: integer
-  visit_percentage?: float
   boost?: float
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
