@@ -21,7 +21,7 @@
               "description": "the history id"
             },
             "version": {
-              "type": "integer",
+              "type": "int",
               "description": "the version number"
             }
           }

@@ -47,7 +47,8 @@
       }
     },
     "body": {
-      "description": "Flush parameters"
+      "description": "Flush parameters",
+      "required": false
     }
   }
 }
