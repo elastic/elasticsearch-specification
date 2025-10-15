@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { TimeUnit } from '@_types/Time'
+import { Duration } from '@_types/Time'
 
 /**
  * Get the status of streams.
@@ -42,6 +42,6 @@ export interface Request extends RequestBase {
      *
      * @server_default 30s
      */
-    master_timeout?: TimeUnit
+    master_timeout?: Duration
   }
 }
