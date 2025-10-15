@@ -26,7 +26,8 @@
     },
     "params": {},
     "body": {
-      "description": "The new lifecycle step to move to"
+      "description": "The new lifecycle step to move to",
+      "required": true
     }
   }
 }

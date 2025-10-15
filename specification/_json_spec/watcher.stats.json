@@ -46,6 +46,7 @@
       },
       "emit_stacktraces": {
         "type": "boolean",
+        "default": false,
         "description": "Emits stack traces of currently running watches"
       }
     }
