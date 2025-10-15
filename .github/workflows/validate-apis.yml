@@ -41,14 +41,14 @@ jobs:
         with:
           node-version: 22
 
-      - name: Cache JSON report
-        id: cache-json-report
-        uses: actions/cache@v4
+      - name: Restore JSON report
+        if: github.event_name == 'pull_request'
+        uses: actions/cache/restore@v4
         with:
           path: ./clients-flight-recorder/recordings/types-validation/types-validation.json
-          key: types-validation-json-${{ github.event_name == 'pull_request' && format('{0}-{1}', github.base_ref, github.event.pull_request.base.sha) || format('{0}-{1}', github.ref_name, github.sha) }}
+          key: types-validation-json-${{ format('{0}-{1}', github.base_ref, github.event.pull_request.base.sha) }}
           restore-keys: |
-            types-validation-json-${{ github.event_name == 'pull_request' && github.base_ref || github.ref_name }}-
+            types-validation-json-${{ github.base_ref }}-
 
       - name: Install deps 1/2
         working-directory: ./clients-flight-recorder
@@ -86,6 +86,15 @@ jobs:
         env:
           BRANCH: ${{ github.ref_name }}
         run: node index.js --generate-report --ci --branch $BRANCH
+
+      - name: Save JSON report
+        if: github.event_name == 'push'
+        uses: actions/cache/save@v4
+        with:
+          path: ./clients-flight-recorder/recordings/types-validation/types-validation.json
+          key: types-validation-json-${{ format('{0}-{1}', github.ref_name, github.sha) }}
+          restore-keys: |
+            types-validation-json-${{ github.ref_name }}-
 
       - name: Run validation (PR)
         if: github.event_name == 'pull_request'
