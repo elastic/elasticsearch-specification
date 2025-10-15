@@ -43,6 +43,8 @@ export interface KnnSearch {
   k?: integer
   /** The number of nearest neighbor candidates to consider per shard */
   num_candidates?: integer
+  /** The percentage of vectors to explore per shard while doing knn search with bbq_disk */
+  visit_percentage?: float
   /** Boost value to apply to kNN scores */
   boost?: float
   /** Filters for the kNN search query */
@@ -73,6 +75,8 @@ export interface KnnQuery extends QueryBase {
   query_vector_builder?: QueryVectorBuilder
   /** The number of nearest neighbor candidates to consider per shard */
   num_candidates?: integer
+  /** The percentage of vectors to explore per shard while doing knn search with bbq_disk */
+  visit_percentage?: float
   /** The final number of nearest neighbors to return as top hits */
   k?: integer
   /** Filters for the kNN search query */
