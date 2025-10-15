@@ -60600,10 +60600,25 @@
                 "$ref": "#/components/schemas/_types.DurationLarge"
               }
             ]
+          },
+          "sampling_method": {
+            "description": "The sampling method used to reduce the documents; it can be either `aggregate` or `last_value`. Defaults to `aggregate`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.SamplingMethod"
+              }
+            ]
           }
         },
         "required": [
           "fixed_interval"
+        ]
+      },
+      "indices._types.SamplingMethod": {
+        "type": "string",
+        "enum": [
+          "aggregate",
+          "last_value"
         ]
       },
       "indices._types.DataStreamOptionsTemplate": {

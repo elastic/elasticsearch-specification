@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { RequestBase } from "@_types/Base";
-import { IndexName } from "@_types/common";
-import { DownsampleConfig } from "@indices/_types/Downsample";
+import { RequestBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
+import { DownsampleConfig } from '@indices/_types/Downsample'
 
 /**
  * Downsample an index.
@@ -44,20 +44,20 @@ import { DownsampleConfig } from "@indices/_types/Downsample";
 export interface Request extends RequestBase {
   urls: [
     {
-      path: "/{index}/_downsample/{target_index}";
-      methods: ["POST"];
-    },
-  ];
+      path: '/{index}/_downsample/{target_index}'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * Name of the time series index to downsample.
      */
-    index: IndexName;
+    index: IndexName
     /**
      * Name of the index to create.
      */
-    target_index: IndexName;
-  };
+    target_index: IndexName
+  }
   /** @codegen_name config */
-  body: DownsampleConfig;
+  body: DownsampleConfig
 }
