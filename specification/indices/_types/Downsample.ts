@@ -24,4 +24,13 @@ export class DownsampleConfig {
    * The interval at which to aggregate the original time series index.
    */
   fixed_interval: DurationLarge
+  /**
+   * The sampling method used to reduce the documents; it can be either `aggregate` or `last_value`. Defaults to `aggregate`.
+   */
+  sampling_method?: SamplingMethod
+}
+
+enum SamplingMethod {
+  aggregate,
+  last_value
 }
