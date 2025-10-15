@@ -1,5 +1,16 @@
 {
-  "endpointErrors": {},
+  "endpointErrors": {
+    "cat.segments": {
+      "request": [
+        "Request: missing json spec query parameter 'ignore_unavailable'",
+        "Request: missing json spec query parameter 'ignore_throttled'",
+        "Request: missing json spec query parameter 'allow_no_indices'",
+        "Request: missing json spec query parameter 'expand_wildcards'",
+        "Request: missing json spec query parameter 'allow_closed'"
+      ],
+      "response": []
+    }
+  },
   "generalErrors": [
     "Dangling type '_global.scripts_painless_execute:PainlessExecutionPosition'",
     "Dangling type '_global.scripts_painless_execute:PainlessScript'",
@@ -14,7 +25,6 @@
     "Dangling type '_types:ElasticsearchUrlFormatter'",
     "Dangling type '_types:HttpMethod'",
     "Dangling type '_types:IndexMetrics'",
-    "Dangling type '_types:LatLon'",
     "Dangling type '_types:LogLevel'",
     "Dangling type '_types:LongId'",
     "Dangling type '_types:Transform'",

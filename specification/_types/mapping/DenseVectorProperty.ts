@@ -163,6 +163,13 @@ export class DenseVectorIndexOptions {
    * The rescore vector options. This is only applicable to `bbq_disk`, `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.
    */
   rescore_vector?: DenseVectorIndexOptionsRescoreVector
+  /**
+   * `true` if vector rescoring should be done on-disk
+   *
+   * Only applicable to `bbq_hnsw`
+   * @server_default false
+   */
+  on_disk_rescore?: boolean
 }
 
 export enum DenseVectorIndexOptionsType {

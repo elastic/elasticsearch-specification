@@ -138,9 +138,9 @@ export interface Request extends RequestBase {
      */
     ccs_minimize_roundtrips?: boolean
     /**
-     * The default operator for the query string query: `AND` or `OR`.
+     * The default operator for the query string query: `and` or `or`.
      * This parameter can be used only when the `q` query string parameter is specified.
-     * @server_default OR
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -404,7 +404,7 @@ export interface Request extends RequestBase {
     force_synthetic_source?: boolean
   }
   // Keep this in sync with global/search/_types/SearchRequestBody.ts
-  body: {
+  body?: {
     /**
      * Defines the aggregations that are run as part of the search request.
      * @aliases aggs

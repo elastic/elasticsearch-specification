@@ -72,7 +72,7 @@ export interface Request extends RequestBase {
      */
     size?: integer
   }
-  body: {
+  body?: {
     /**
      * Configures pagination.
      * This parameter has the `from` and `size` properties.

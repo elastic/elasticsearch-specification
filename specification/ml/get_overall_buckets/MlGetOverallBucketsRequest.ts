@@ -117,7 +117,7 @@ export interface Request extends RequestBase {
      */
     top_n?: integer
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `allow_no_match` query parameter.
      * @server_default true

@@ -35,11 +35,13 @@
       },
       "timeout": {
         "type": "time",
+        "default": "20s",
         "description": "Controls the time to wait until a datafeed has started. Default to 20 seconds"
       }
     },
     "body": {
-      "description": "The start datafeed parameters"
+      "description": "The start datafeed parameters",
+      "required": false
     }
   }
 }

@@ -102,6 +102,7 @@ export interface Request extends RequestBase {
     requests_per_second?: float
     /**
      * The period of time that a consistent view of the index should be maintained for scrolled search.
+     * @server_default 5m
      */
     scroll?: Duration
     /**
@@ -175,7 +176,6 @@ export interface Request extends RequestBase {
      * The script to run to update the document source or metadata when reindexing.
      */
     script?: Script
-    size?: long
     /**
      * The source you are copying from.
      */

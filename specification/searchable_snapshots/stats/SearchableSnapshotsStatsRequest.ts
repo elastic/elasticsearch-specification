@@ -47,6 +47,9 @@ export interface Request extends RequestBase {
     index?: Indices
   }
   query_parameters: {
+    /**
+     * @server_default indices
+     */
     level?: StatsLevel
   }
 }
