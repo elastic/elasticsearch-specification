@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
-import { DownsampleConfig } from '@indices/_types/Downsample'
+import { RequestBase } from "@_types/Base";
+import { IndexName } from "@_types/common";
+import { DownsampleConfig } from "@indices/_types/Downsample";
 
 /**
  * Downsample an index.
@@ -28,7 +28,7 @@ import { DownsampleConfig } from '@indices/_types/Downsample'
  * - When running in `aggregate` mode, it pre-calculates and stores statistical summaries (`min`, `max`, `sum`, `value_count` and `avg`)
  * for each metric field grouped by a configured time interval and their dimensions.
  * - When running in `last_value` mode, it keeps the last value for each metric in the configured interval and their dimensions.
- * 
+ *
  * For example, a TSDS index that contains metrics sampled every 10 seconds can be downsampled to an hourly index.
  * All documents within an hour interval are summarized and stored as a single document in the downsample index.
  *
@@ -44,20 +44,20 @@ import { DownsampleConfig } from '@indices/_types/Downsample'
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '/{index}/_downsample/{target_index}'
-      methods: ['POST']
-    }
-  ]
+      path: "/{index}/_downsample/{target_index}";
+      methods: ["POST"];
+    },
+  ];
   path_parts: {
     /**
      * Name of the time series index to downsample.
      */
-    index: IndexName
+    index: IndexName;
     /**
      * Name of the index to create.
      */
-    target_index: IndexName
-  }
+    target_index: IndexName;
+  };
   /** @codegen_name config */
-  body: DownsampleConfig
+  body: DownsampleConfig;
 }
