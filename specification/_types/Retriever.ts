@@ -134,14 +134,23 @@ export class KnnRetriever extends RetrieverBase {
 }
 
 export class RRFRetriever extends RetrieverBase {
-  /** A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.  */
-  retrievers: RetrieverContainer[]
+  /** A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them. Each retriever can optionally include a weight parameter. */
+  retrievers: RRFRetrieverContainer[]
   /** This value determines how much influence documents in individual result sets per query have over the final ranked result set. */
   rank_constant?: integer
   /** This value determines the size of the individual result sets per query.  */
   rank_window_size?: integer
   query?: string
   fields?: string[]
+}
+
+/**
+ * RRF retriever container supporting both direct and weighted formats.
+ * @variants container
+ */
+export class RRFRetrieverContainer extends RetrieverContainer {
+  /** Weight multiplier for this retriever's contribution to the RRF score. Higher values increase influence. Defaults to 1.0 if not specified. Must be non-negative. */
+  weight?: float
 }
 
 export class TextSimilarityReranker extends RetrieverBase {
