@@ -35,6 +35,7 @@
       },
       "timeout": {
         "type": "time",
+        "default": "8h",
         "description": "How long can the underlying delete processes run until they are canceled"
       }
     },

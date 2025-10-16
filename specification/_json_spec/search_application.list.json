@@ -24,6 +24,7 @@
       },
       "from": {
         "type": "int",
+        "default": 0,
         "description": "Starting offset (default: 0)"
       },
       "size": {
