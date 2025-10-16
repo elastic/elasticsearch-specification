@@ -48542,7 +48542,7 @@
             "type": "string"
           },
           "docs.count": {
-            "description": "available docs",
+            "description": "The number of documents in the index, including hidden nested documents.\nFor indices with `semantic_text` fields or other nested field types,\nthis count includes the internal nested documents.\nTo get the logical document count (excluding nested documents), use\nthe `_count` API or `_cat/count` API instead.",
             "oneOf": [
               {
                 "type": "string"
