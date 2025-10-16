@@ -50,7 +50,9 @@ import {
  */
 export class InferenceEndpoint {
   /**
-   * Chunking configuration object
+   * The chunking configuration object.
+   * Applies only to the `sparse_embedding` and `text_embedding` task types.
+   * Not applicable to the `rerank`, `completion`, or `chat_completion` task types.
    */
   chunking_settings?: InferenceChunkingSettings
   /**
