@@ -14744,7 +14744,9 @@ export interface InferenceRerankRequest extends RequestBase {
   timeout?: Duration
   body?: {
     query: string
-    input: string | string[]
+    input: string[]
+    return_documents?: boolean
+    top_n?: integer
     task_settings?: InferenceTaskSettings
   }
 }
