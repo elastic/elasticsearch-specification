@@ -25,7 +25,7 @@ import { TokenizerBase } from './tokenizers'
 
 export class KuromojiAnalyzer {
   type: 'kuromoji'
-  mode: KuromojiTokenizationMode
+  mode?: KuromojiTokenizationMode
   user_dictionary?: string
 }
 
