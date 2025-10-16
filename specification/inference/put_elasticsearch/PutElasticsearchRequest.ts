@@ -26,7 +26,7 @@ import {
   ElasticsearchTaskSettings,
   ElasticsearchTaskType
 } from '@inference/_types/CommonTypes'
-import { ElasticsearchInferenceChunkingSettings } from '@inference/_types/Services'
+import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**
  * Create an Elasticsearch inference endpoint.
@@ -78,10 +78,12 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * The chunking configuration object. For the `rerank` task type, you can enable chunking by setting the `long_document_strategy` parameter to `chunk` in the `service_settings` object.
+     * The chunking configuration object.
+     * Applies only to the `sparse_embedding` and `text_embedding` task types.
+     * Not applicable to the `rerank`, `completion`, or `chat_completion` task types.
      * @ext_doc_id inference-chunking
      */
-    chunking_settings?: ElasticsearchInferenceChunkingSettings
+    chunking_settings?: InferenceChunkingSettings
     /**
      * The type of service supported for the specified task type. In this case, `elasticsearch`.
      */

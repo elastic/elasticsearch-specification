@@ -1307,14 +1307,15 @@ export class ElasticsearchServiceSettings {
    */
   num_threads: integer
   /**
-   * Only for the `rerank` task type.
+   * Available only for the `rerank` task type using the Elastic reranker model.
    * Controls the strategy used for processing long documents during inference.
    *
    * Possible values:
    * - `truncate` (default): Processes only the beginning of each document.
    * - `chunk`: Splits long documents into smaller parts (chunks) before inference.
    *
-   * To enable chunking, set this value to `chunk`.
+   * When `long_document_strategy` is set to `chunk`, Elasticsearch splits each document into smaller parts but still returns a single score per document.
+   * That score reflects the highest relevance score among all chunks.
    */
   long_document_strategy?: string
   /**
