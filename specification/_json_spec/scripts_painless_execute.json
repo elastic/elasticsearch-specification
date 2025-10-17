@@ -18,7 +18,6 @@
         }
       ]
     },
-    "params": {},
     "body": {
       "description": "The script to execute",
       "required": true
