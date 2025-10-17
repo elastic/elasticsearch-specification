@@ -63,7 +63,8 @@ export interface Request extends RequestBase {
     from?: integer
     /**
      * The sort definition.
-     * You can sort on `username`, `roles`, or `enabled`.
+     * You can sort on `name`, `description`, `metadata`, `applications.application`, `applications.privileges`,
+     * and `applications.resources`.
      * In addition, sort can also be applied to the `_doc` field to sort by index order.
      * @doc_id sort-search-results
      */
