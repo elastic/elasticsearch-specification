@@ -12994,6 +12994,19 @@ export interface IndicesGetMigrateReindexStatusStatusInProgress {
   reindexed_doc_count: long
 }
 
+export interface IndicesGetSampleRequest extends RequestBase {
+  index: IndexName
+}
+
+export interface IndicesGetSampleResponse {
+  sample: IndicesGetSampleRawDocument[]
+}
+
+export interface IndicesGetSampleRawDocument {
+  index: string
+  source: Record<PropertyName, MappingProperty>
+}
+
 export interface IndicesGetSampleStatsRequest extends RequestBase {
   index: IndexName
 }
