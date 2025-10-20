@@ -9,6 +9,12 @@
         "Request: missing json spec query parameter 'allow_closed'"
       ],
       "response": []
+    },
+    "indices.get_sample": {
+      "request": [
+        "Request: url path '{index}/_data_stream' not found in the json spec"
+      ],
+      "response": []
     }
   },
   "generalErrors": [
