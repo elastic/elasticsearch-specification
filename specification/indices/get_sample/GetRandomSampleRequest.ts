@@ -30,7 +30,7 @@ import { RequestBase } from '@_types/Base'
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '{index}/_data_stream'
+      path: '{index}/_sample'
       methods: ['GET']
     }
   ]
