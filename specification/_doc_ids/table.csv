@@ -827,6 +827,7 @@ security-saml-guide,https://www.elastic.co/docs/deploy-manage/users-roles/cluste
 security-settings-api-keys,https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/security-settings#api-key-service-settings,,
 security-settings-hashing,https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/security-settings#hashing-settings,,
 security-user-cache,https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-user-cache,,
+sematic-text-chunking,https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#auto-text-chunking,,
 service-accounts,https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts,,
 set-processor,https://www.elastic.co/docs/reference/enrich-processor/set-processor,,
 shape,https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/shape,,
