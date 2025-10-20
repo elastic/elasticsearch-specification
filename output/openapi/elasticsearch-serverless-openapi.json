@@ -13295,7 +13295,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` and `text_embedding` task types.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -65273,7 +65273,7 @@
         "type": "object",
         "properties": {
           "chunking_settings": {
-            "description": "Chunking configuration object",
+            "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` and `text_embedding` task types.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -66771,6 +66771,14 @@
           },
           "num_threads": {
             "description": "The number of threads used by each model allocation during inference.\nThis setting generally increases the speed per inference request.\nThe inference process is a compute-bound process; `threads_per_allocations` must not exceed the number of available allocated processors per node.\nThe value must be a power of 2.\nThe maximum value is 32.",
+            "type": "number"
+          },
+          "long_document_strategy": {
+            "description": "Available only for the `rerank` task type using the Elastic reranker model.\nControls the strategy used for processing long documents during inference.\n\nPossible values:\n- `truncate` (default): Processes only the beginning of each document.\n- `chunk`: Splits long documents into smaller parts (chunks) before inference.\n\nWhen `long_document_strategy` is set to `chunk`, Elasticsearch splits each document into smaller parts but still returns a single score per document.\nThat score reflects the highest relevance score among all chunks.",
+            "type": "string"
+          },
+          "max_chunks_per_doc": {
+            "description": "Only for the `rerank` task type.\nLimits the number of chunks per document that are sent for inference when chunking is enabled.\nIf not set, all chunks generated for the document are processed.",
             "type": "number"
           }
         },
