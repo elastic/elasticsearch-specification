@@ -948,6 +948,9 @@ export class CohereTaskSettings {
 export class CustomServiceSettings {
   /**
    * Specifies the batch size used for the semantic_text field. If the field is not provided, the default is 10.
+   * The batch size is the maximum number of inputs in a single request to the upstream service.
+   * The chunk within the batch are controlled by the selected chunking strategy for the semantic_text field.
+   * @ext_doc_id sematic-text-chunking
    */
   batch_size?: integer
   /**
