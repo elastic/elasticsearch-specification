@@ -12,7 +12,7 @@
     },
     "indices.get_sample": {
       "request": [
-        "Request: url path '{index}/_data_stream' not found in the json spec"
+        "Request: url path '{index}/_sample' not found in the json spec"
       ],
       "response": []
     }
@@ -71,6 +71,10 @@
     "Dangling type 'indices._types:OverlappingIndexTemplate'",
     "Dangling type 'indices._types:StringFielddata'",
     "Dangling type 'indices._types:StringFielddataFormat'",
+    "Dangling type 'indices.get_sample:Request'",
+    "Dangling type 'indices.get_sample:Response'",
+    "Dangling type 'indices.get_sample._types:Index'",
+    "Dangling type 'indices.get_sample._types:RawDocument'",
     "Dangling type 'indices.stats:ShardFielddata'",
     "Dangling type 'inference._types:AmazonSageMakerElasticServiceSettings'",
     "Dangling type 'inference._types:AmazonSageMakerElasticTaskSettings'",

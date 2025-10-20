@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
 
 /**
  * Request for a random sample of raw documents ingested into the given index or data stream.
@@ -38,6 +39,6 @@ export interface Request extends RequestBase {
     /**
      * Single index or data stream name. Wildcards are not supported.
      */
-    index: string
+    index: IndexName
   }
 }
