@@ -802,6 +802,7 @@ security-saml-guide,https://www.elastic.co/guide/en/elasticsearch/reference/{bra
 security-settings-api-keys,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-settings.html#api-key-service-settings,,
 security-settings-hashing,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/security-settings.html#hashing-settings,,
 security-user-cache,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/controlling-user-cache.html,,
+sematic-text-chunking,https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#auto-text-chunking,,
 service-accounts,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/service-accounts.html,,
 set-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/set-processor.html,,
 shape,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/shape.html,,
