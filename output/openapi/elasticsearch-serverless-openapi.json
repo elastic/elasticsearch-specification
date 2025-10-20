@@ -66552,7 +66552,7 @@
         "type": "object",
         "properties": {
           "headers": {
-            "description": "Specifies the HTTPS header parameters – such as `Authentication` or `Contet-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\":{\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
+            "description": "Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\":{\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
             "type": "object"
           },
           "input_type": {
@@ -67600,6 +67600,10 @@
           "user": {
             "description": "For a `completion` or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
             "type": "string"
+          },
+          "headers": {
+            "description": "Specifies custom HTTP header parameters.\nFor example:\n```\n\"headers\":{\n  \"Custom-Header\": \"Some-Value\",\n  \"Another-Custom-Header\": \"Another-Value\"\n}\n```",
+            "type": "object"
           }
         }
       },
