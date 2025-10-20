@@ -63884,8 +63884,15 @@
       "inference._types.CustomServiceSettings": {
         "type": "object",
         "properties": {
+          "batch_size": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#auto-text-chunking"
+            },
+            "description": "Specifies the batch size used for the semantic_text field. If the field is not provided, the default is 10.\nThe batch size is the maximum number of inputs in a single request to the upstream service.\nThe chunk within the batch are controlled by the selected chunking strategy for the semantic_text field.",
+            "type": "number"
+          },
           "headers": {
-            "description": "Specifies the HTTPS header parameters – such as `Authentication` or `Contet-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\":{\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
+            "description": "Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\":{\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
             "type": "object"
           },
           "input_type": {
