@@ -17,7 +17,9 @@
  * under the License.
  */
 
-import { Indices } from '@_types/common'
+import { PropertyName } from '@_types/common'
+import { Property } from '@_types/mapping/Property'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class RawDocument {
   /**
@@ -27,9 +29,5 @@ export class RawDocument {
   /**
    * The original raw source.
    */
-  source: Index
-}
-
-export class Index {
-  index: Indices
+  source: Dictionary<PropertyName, Property>
 }

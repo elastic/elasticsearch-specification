@@ -73,7 +73,6 @@
     "Dangling type 'indices._types:StringFielddataFormat'",
     "Dangling type 'indices.get_sample:Request'",
     "Dangling type 'indices.get_sample:Response'",
-    "Dangling type 'indices.get_sample._types:Index'",
     "Dangling type 'indices.get_sample._types:RawDocument'",
     "Dangling type 'indices.stats:ShardFielddata'",
     "Dangling type 'inference._types:AmazonSageMakerElasticServiceSettings'",
