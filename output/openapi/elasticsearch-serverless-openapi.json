@@ -52075,8 +52075,7 @@
           }
         },
         "required": [
-          "type",
-          "mode"
+          "type"
         ]
       },
       "_types.analysis.KuromojiTokenizationMode": {
