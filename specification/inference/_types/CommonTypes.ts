@@ -1079,7 +1079,7 @@ export class CustomResponseParams {
    * }
    *
    * If `embedding_type` is not specified, it defaults to `float`.
-   * 
+   *
    * # sparse_embedding
    * # For a response like this:
    *
