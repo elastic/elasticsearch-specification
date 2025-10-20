@@ -1069,7 +1069,8 @@ export class CustomResponseParams {
    * * byte
    * * bit (or binary)
    *
-   * To specify the embedding type for the response, the `embedding_type` field should be added in the `json_parser` object. Here's an example:
+   * To specify the embedding type for the response, the `embedding_type`
+   * field should be added in the `json_parser` object. Here's an example:
    * "response":{
    *   "json_parser":{
    *     "text_embeddings":"$.data[*].embedding[*]",
