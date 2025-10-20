@@ -11417,7 +11417,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Perform chat completion inference\n",
+        "summary": "Perform chat completion inference on the service\n",
         "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.\nIt only works with the `chat_completion` task type for `openai` and `elastic` inference services.\n\nNOTE: The `chat_completion` task type is only available within the _stream API and only supports streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nIf you use the `openai`, `hugging_face` or the `elastic` service, use the Chat completion inference API.",
         "operationId": "inference-chat-completion-unified",
         "parameters": [
@@ -11502,7 +11502,8 @@
         "tags": [
           "inference"
         ],
-        "summary": "Perform completion inference on the service",
+        "summary": "Perform completion inference on the service\n",
+        "description": "Get responses for completion tasks.\nThis API works only with the completion task type.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThis API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-completion",
         "parameters": [
           {
@@ -11563,7 +11564,7 @@
               "examples": {
                 "CompletionRequestExample1": {
                   "summary": "Completion task",
-                  "description": "Run `POST _inference/completion/openai_chat_completions` to perform a completion on the example question.",
+                  "description": "Run `POST _inference/completion/openai_completions` to perform a completion on the example question.",
                   "value": "{\n  \"input\": \"What is Elastic?\"\n}"
                 }
               }
@@ -11582,7 +11583,7 @@
                 "examples": {
                   "CompletionResponseExample1": {
                     "summary": "Completion task",
-                    "description": "A successful response from `POST _inference/completion/openai_chat_completions`.\n",
+                    "description": "A successful response from `POST _inference/completion/openai_completions`.\n",
                     "value": "{\n  \"completion\": [\n    {\n      \"result\": \"Elastic is a company that provides a range of software solutions for search, logging, security, and analytics. Their flagship product is Elasticsearch, an open-source, distributed search engine that allows users to search, analyze, and visualize large volumes of data in real-time. Elastic also offers products such as Kibana, a data visualization tool, and Logstash, a log management and pipeline tool, as well as various other tools and solutions for data analysis and management.\"\n    }\n  ]\n}"
                   }
                 }
@@ -13294,7 +13295,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` and `text_embedding` task types.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -14637,18 +14638,19 @@
                     "type": "string"
                   },
                   "input": {
-                    "description": "The text on which you want to perform the inference task.\nIt can be a single string or an array.\n\n> info\n> Inference endpoints for the `completion` task type currently only support a single string as input.",
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      }
-                    ]
+                    "description": "The documents to rank.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "return_documents": {
+                    "description": "Include the document text in the response.",
+                    "type": "boolean"
+                  },
+                  "top_n": {
+                    "description": "Limit the response to the top N documents.",
+                    "type": "number"
                   },
                   "task_settings": {
                     "description": "Task settings for the individual inference request.\nThese settings are specific to the task type you specified and override the task settings specified when initializing the service.",
@@ -52075,8 +52077,7 @@
           }
         },
         "required": [
-          "type",
-          "mode"
+          "type"
         ]
       },
       "_types.analysis.KuromojiTokenizationMode": {
@@ -65287,7 +65288,7 @@
         "type": "object",
         "properties": {
           "chunking_settings": {
-            "description": "Chunking configuration object",
+            "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` and `text_embedding` task types.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -66785,6 +66786,14 @@
           },
           "num_threads": {
             "description": "The number of threads used by each model allocation during inference.\nThis setting generally increases the speed per inference request.\nThe inference process is a compute-bound process; `threads_per_allocations` must not exceed the number of available allocated processors per node.\nThe value must be a power of 2.\nThe maximum value is 32.",
+            "type": "number"
+          },
+          "long_document_strategy": {
+            "description": "Available only for the `rerank` task type using the Elastic reranker model.\nControls the strategy used for processing long documents during inference.\n\nPossible values:\n- `truncate` (default): Processes only the beginning of each document.\n- `chunk`: Splits long documents into smaller parts (chunks) before inference.\n\nWhen `long_document_strategy` is set to `chunk`, Elasticsearch splits each document into smaller parts but still returns a single score per document.\nThat score reflects the highest relevance score among all chunks.",
+            "type": "string"
+          },
+          "max_chunks_per_doc": {
+            "description": "Only for the `rerank` task type.\nLimits the number of chunks per document that are sent for inference when chunking is enabled.\nIf not set, all chunks generated for the document are processed.",
             "type": "number"
           }
         },
@@ -90038,7 +90047,7 @@
             "examples": {
               "InferencePutExample1": {
                 "description": "An example body for a `PUT _inference/rerank/my-rerank-model` request.",
-                "value": "{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n },\n \"chunking_settings\": {\n   \"strategy\": \"recursive\",\n   \"max_chunk_size\": 200,\n   \"separator_group\": \"markdown\"\n }\n}"
+                "value": "{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n }\n}"
               }
             }
           }
