@@ -947,6 +947,10 @@ export class CohereTaskSettings {
 
 export class CustomServiceSettings {
   /**
+   * Specifies the batch size used for the semantic_text field. If the field is not provided, the default is 10.
+   */
+  batch_size?: integer
+  /**
    * Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.
    * For example:
    * ```
