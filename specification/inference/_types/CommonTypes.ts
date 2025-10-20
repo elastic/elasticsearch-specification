@@ -947,7 +947,7 @@ export class CohereTaskSettings {
 
 export class CustomServiceSettings {
   /**
-   * Specifies the HTTP header parameters – such as `Authentication` or `Contet-Type` – that are required to access the custom service.
+   * Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.
    * For example:
    * ```
    * "headers":{
