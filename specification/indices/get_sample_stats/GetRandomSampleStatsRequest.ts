@@ -31,7 +31,7 @@ import { IndexName } from '@_types/common'
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '{index}/_sample/stats'
+      path: '/{index}/_sample/stats'
       methods: ['GET']
     }
   ]
