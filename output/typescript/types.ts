@@ -14437,6 +14437,7 @@ export type InferenceOpenAIServiceType = 'openai'
 
 export interface InferenceOpenAITaskSettings {
   user?: string
+  headers?: any
 }
 
 export type InferenceOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
