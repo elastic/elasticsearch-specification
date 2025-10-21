@@ -1064,6 +1064,22 @@ export class CustomResponseParams {
    *   }
    * }
    *
+   * # Elasticsearch supports the following embedding types:
+   * * float
+   * * byte
+   * * bit (or binary)
+   *
+   * To specify the embedding type for the response, the `embedding_type`
+   * field should be added in the `json_parser` object. Here's an example:
+   * "response":{
+   *   "json_parser":{
+   *     "text_embeddings":"$.data[*].embedding[*]",
+   *     "embedding_type":"bit"
+   *   }
+   * }
+   *
+   * If `embedding_type` is not specified, it defaults to `float`.
+   *
    * # sparse_embedding
    * # For a response like this:
    *
