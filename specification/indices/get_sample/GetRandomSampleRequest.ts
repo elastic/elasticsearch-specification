@@ -24,7 +24,7 @@ import { IndexName } from '@_types/common'
  * Request for a random sample of raw documents ingested into the given index or data stream.
  *
  * @rest_spec_name indices.get_sample
- * @availability serverless visibility=feature_flag feature_flag=random_sampling since=9.3.0 stability=experimental
+ * @availability stack visibility=feature_flag feature_flag=random_sampling since=9.3.0 stability=experimental
  * @doc_id random_sample
  * @doc_tag random_sample
  */
