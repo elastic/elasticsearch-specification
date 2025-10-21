@@ -12994,6 +12994,40 @@ export interface IndicesGetMigrateReindexStatusStatusInProgress {
   reindexed_doc_count: long
 }
 
+export interface IndicesGetSampleRequest extends RequestBase {
+  index: IndexName
+}
+
+export interface IndicesGetSampleResponse {
+  sample: IndicesGetSampleRawDocument[]
+}
+
+export interface IndicesGetSampleRawDocument {
+  index: string
+  source: Record<PropertyName, MappingProperty>
+}
+
+export interface IndicesGetSampleStatsRequest extends RequestBase {
+  index: IndexName
+}
+
+export interface IndicesGetSampleStatsResponse {
+  potential_samples: long
+  samples_rejected_for_max_samples_exceeded: long
+  samples_rejected_for_condition: long
+  samples_rejected_for_rate: long
+  samples_rejected_for_exception: long
+  samples_rejected_for_size: long
+  samples_accepted: long
+  time_sampling?: Duration
+  time_sampling_millis: DurationValue<UnitMillis>
+  time_evaluating_condition?: Duration
+  time_evaluating_condition_millis: DurationValue<UnitMillis>
+  time_compiling_condition?: Duration
+  time_compiling_condition_millis: DurationValue<UnitMillis>
+  last_exception?: string
+}
+
 export interface IndicesGetSettingsRequest extends RequestBase {
   index?: Indices
   name?: Names
