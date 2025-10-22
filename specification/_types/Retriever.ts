@@ -160,8 +160,6 @@ export class RRFRetriever extends RetrieverBase {
   fields?: string[]
 }
 
-
-
 export class TextSimilarityReranker extends RetrieverBase {
   /** The nested retriever which will produce the first-level results, that will later be used for reranking. */
   retriever: RetrieverContainer
