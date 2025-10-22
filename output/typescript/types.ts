@@ -5133,7 +5133,7 @@ export interface AnalysisKeywordTokenizer extends AnalysisTokenizerBase {
 
 export interface AnalysisKuromojiAnalyzer {
   type: 'kuromoji'
-  mode: AnalysisKuromojiTokenizationMode
+  mode?: AnalysisKuromojiTokenizationMode
   user_dictionary?: string
 }
 
@@ -12994,6 +12994,40 @@ export interface IndicesGetMigrateReindexStatusStatusInProgress {
   reindexed_doc_count: long
 }
 
+export interface IndicesGetSampleRequest extends RequestBase {
+  index: IndexName
+}
+
+export interface IndicesGetSampleResponse {
+  sample: IndicesGetSampleRawDocument[]
+}
+
+export interface IndicesGetSampleRawDocument {
+  index: string
+  source: Record<PropertyName, MappingProperty>
+}
+
+export interface IndicesGetSampleStatsRequest extends RequestBase {
+  index: IndexName
+}
+
+export interface IndicesGetSampleStatsResponse {
+  potential_samples: long
+  samples_rejected_for_max_samples_exceeded: long
+  samples_rejected_for_condition: long
+  samples_rejected_for_rate: long
+  samples_rejected_for_exception: long
+  samples_rejected_for_size: long
+  samples_accepted: long
+  time_sampling?: Duration
+  time_sampling_millis: DurationValue<UnitMillis>
+  time_evaluating_condition?: Duration
+  time_evaluating_condition_millis: DurationValue<UnitMillis>
+  time_compiling_condition?: Duration
+  time_compiling_condition_millis: DurationValue<UnitMillis>
+  last_exception?: string
+}
+
 export interface IndicesGetSettingsRequest extends RequestBase {
   index?: Indices
   name?: Names
@@ -14142,6 +14176,7 @@ export interface InferenceCustomResponseParams {
 }
 
 export interface InferenceCustomServiceSettings {
+  batch_size?: integer
   headers?: any
   input_type?: any
   query_parameters?: any
@@ -14181,6 +14216,8 @@ export interface InferenceElasticsearchServiceSettings {
   model_id: string
   num_allocations?: integer
   num_threads: integer
+  long_document_strategy?: string
+  max_chunks_per_doc?: integer
 }
 
 export type InferenceElasticsearchServiceType = 'elasticsearch'
@@ -14454,6 +14491,7 @@ export type InferenceOpenAIServiceType = 'openai'
 
 export interface InferenceOpenAITaskSettings {
   user?: string
+  headers?: any
 }
 
 export type InferenceOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
