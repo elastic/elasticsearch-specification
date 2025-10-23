@@ -13732,6 +13732,16 @@
                   "summary": "A rerank task",
                   "description": "Run `PUT _inference/rerank/google_vertex_ai_rerank` to create an inference endpoint to perform a `rerank` task type.",
                   "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"service_account_json\": \"service-account-json\",\n        \"project_id\": \"project-id\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample3": {
+                  "summary": "A completion task for Google Model Garden Anthropic endpoint",
+                  "description": "Run `PUT _inference/completion/google_model_garden_anthropic_completion` to create an inference endpoint to perform a `completion` task using Anthropic's model hosted on Google Model Garden.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"anthropic\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://url:rawPredict\",\n        \"streaming_url\": \"https://streaming_url:streamRawPredict\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 128\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample4": {
+                  "summary": "A chat_completion task for Google Model Garden Anthropic endpoint",
+                  "description": "Run `PUT _inference/chat_completion/google_model_garden_anthropic_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Anthropic's model hosted on Google Model Garden.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"anthropic\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://url:rawPredict\",\n        \"streaming_url\": \"https://streaming_url:streamRawPredict\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 128\n    }\n}"
                 }
               }
             }
@@ -67023,22 +67033,38 @@
       "inference._types.GoogleVertexAIServiceSettings": {
         "type": "object",
         "properties": {
+          "provider": {
+            "description": "The name of the Google Model Garden Provider for `completion` and `chat_completion` tasks.\nIn order for a Google Model Garden endpoint to be used `provider` must be defined and be other than `google`.\nModes:\n- Google Model Garden (third-party models): set `provider` to a supported non-`google` value and provide `url` and/or `streaming_url`.\n- Google Vertex AI: omit `provider` or set it to `google`. In this mode, do not set `url` or `streaming_url` and Elastic will construct the endpoint url from `location`, `model_id`, and `project_id` parameters.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.GoogleModelGardenProvider"
+              }
+            ]
+          },
+          "url": {
+            "description": "The URL for non-streaming `completion` requests to a Google Model Garden provider endpoint.\nIf both `url` and `streaming_url` are provided, each is used for its respective mode.\nIf `streaming_url` is not provided, `url` is also used for streaming `completion` and `chat_completion`.\nIf `provider` is not provided or set to `google` (Google Vertex AI), do not set `url` (or `streaming_url`).\nAt least one of `url` or `streaming_url` must be provided for Google Model Garden endpoint usage.",
+            "type": "string"
+          },
+          "streaming_url": {
+            "description": "The URL for streaming `completion` and `chat_completion` requests to a Google Model Garden provider endpoint.\nIf both `streaming_url` and `url` are provided, each is used for its respective mode.\nIf `url` is not provided, `streaming_url` is also used for non-streaming `completion` requests.\nIf `provider` is not provided or set to `google` (Google Vertex AI), do not set `streaming_url` (or `url`).\nAt least one of `streaming_url` or `url` must be provided for Google Model Garden endpoint usage.",
+            "type": "string"
+          },
           "location": {
             "externalDocs": {
               "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/locations"
             },
-            "description": "The name of the location to use for the inference task.\nRefer to the Google documentation for the list of supported locations.",
+            "description": "The name of the location to use for the inference task for the Google Vertex AI inference task.\nFor Google Vertex AI, when `provider` is omitted or `google` `location` is mandatory.\nFor Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `location` is ignored.\nRefer to the Google documentation for the list of supported locations.",
             "type": "string"
           },
           "model_id": {
             "externalDocs": {
               "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/text-embeddings-api"
             },
-            "description": "The name of the model to use for the inference task.\nRefer to the Google documentation for the list of supported models.",
+            "description": "The name of the model to use for the inference task.\nFor Google Vertex AI `model_id` is mandatory.\nFor Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `model_id` will be used for some providers that require it, otherwise - ignored.\nRefer to the Google documentation for the list of supported models for Google Vertex AI.",
             "type": "string"
           },
           "project_id": {
-            "description": "The name of the project to use for the inference task.",
+            "description": "The name of the project to use for the Google Vertex AI inference task.\nFor Google Vertex AI `project_id` is mandatory.\nFor Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `project_id` is ignored.",
             "type": "string"
           },
           "rate_limit": {
@@ -67062,10 +67088,14 @@
           }
         },
         "required": [
-          "location",
-          "model_id",
-          "project_id",
           "service_account_json"
+        ]
+      },
+      "inference._types.GoogleModelGardenProvider": {
+        "type": "string",
+        "enum": [
+          "google",
+          "anthropic"
         ]
       },
       "inference._types.GoogleVertexAITaskSettings": {
@@ -67089,6 +67119,13 @@
                 "$ref": "#/components/schemas/inference._types.ThinkingConfig"
               }
             ]
+          },
+          "max_tokens": {
+            "externalDocs": {
+              "url": "https://docs.claude.com/en/api/messages#body-max-tokens"
+            },
+            "description": "For `completion` and `chat_completion` tasks, specifies the `max_tokens` value for requests sent to the Google Model Garden `anthropic` provider.\nIf `provider` is not set to `anthropic`, this field is ignored.\nIf `max_tokens` is specified - it must be a positive integer. If not specified, the default value of 1024 is used.\nAnthropic models require `max_tokens` to be set for each request. Please refer to the Anthropic documentation for more information.",
+            "type": "number"
           }
         }
       },
@@ -67132,6 +67169,8 @@
       "inference._types.TaskTypeGoogleVertexAI": {
         "type": "string",
         "enum": [
+          "chat_completion",
+          "completion",
           "text_embedding",
           "rerank"
         ]
