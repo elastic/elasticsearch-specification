@@ -39,7 +39,8 @@
       ]
     },
     "body": {
-      "description": "The inference payload"
+      "description": "The inference payload",
+      "required": true
     }
   }
 }

@@ -1015,7 +1015,6 @@ export interface ReindexRequest extends RequestBase {
     dest: ReindexDestination
     max_docs?: long
     script?: Script | ScriptSource
-    size?: long
     source: ReindexSource
   }
 }
@@ -3092,7 +3091,7 @@ export type VersionNumber = long
 
 export type VersionString = string
 
-export type VersionType = 'internal' | 'external' | 'external_gte' | 'force'
+export type VersionType = 'internal' | 'external' | 'external_gte'
 
 export type WaitForActiveShardOptions = 'all' | 'index-setting'
 
@@ -5134,7 +5133,7 @@ export interface AnalysisKeywordTokenizer extends AnalysisTokenizerBase {
 
 export interface AnalysisKuromojiAnalyzer {
   type: 'kuromoji'
-  mode: AnalysisKuromojiTokenizationMode
+  mode?: AnalysisKuromojiTokenizationMode
   user_dictionary?: string
 }
 
@@ -5778,6 +5777,7 @@ export interface MappingDenseVectorIndexOptions {
   m?: integer
   type: MappingDenseVectorIndexOptionsType
   rescore_vector?: MappingDenseVectorIndexOptionsRescoreVector
+  on_disk_rescore?: boolean
 }
 
 export interface MappingDenseVectorIndexOptionsRescoreVector {
@@ -7353,7 +7353,7 @@ export type CatCatMasterColumn = 'id' | 'host' | 'h' | 'ip' | 'node' | 'n'| stri
 
 export type CatCatMasterColumns = CatCatMasterColumn | CatCatMasterColumn[]
 
-export type CatCatNodeColumn = 'build' | 'b' | 'completion.size' | 'cs' | 'completionSize' | 'cpu' | 'disk.avail' | 'd' | 'disk' | 'diskAvail' | 'disk.total' | 'dt' | 'diskTotal' | 'disk.used' | 'du' | 'diskUsed' | 'disk.used_percent' | 'dup' | 'diskUsedPercent' | 'fielddata.evictions' | 'fe' | 'fielddataEvictions' | 'fielddata.memory_size' | 'fm' | 'fielddataMemory' | 'file_desc.current' | 'fdc' | 'fileDescriptorCurrent' | 'file_desc.max' | 'fdm' | 'fileDescriptorMax' | 'file_desc.percent' | 'fdp' | 'fileDescriptorPercent' | 'flush.total' | 'ft' | 'flushTotal' | 'flush.total_time' | 'ftt' | 'flushTotalTime' | 'get.current' | 'gc' | 'getCurrent' | 'get.exists_time' | 'geti' | 'getExistsTime' | 'get.exists_total' | 'geto' | 'getExistsTotal' | 'get.missing_time' | 'gmti' | 'getMissingTime' | 'get.missing_total' | 'gmto' | 'getMissingTotal' | 'get.time' | 'gti' | 'getTime' | 'get.total' | 'gto' | 'getTotal' | 'heap.current' | 'hc' | 'heapCurrent' | 'heap.max' | 'hm' | 'heapMax' | 'heap.percent' | 'hp' | 'heapPercent' | 'http_address' | 'http' | 'id' | 'nodeId' | 'indexing.delete_current' | 'idc' | 'indexingDeleteCurrent' | 'indexing.delete_time' | 'idti' | 'indexingDeleteTime' | 'indexing.delete_total' | 'idto' | 'indexingDeleteTotal' | 'indexing.index_current' | 'iic' | 'indexingIndexCurrent' | 'indexing.index_failed' | 'iif' | 'indexingIndexFailed' | 'indexing.index_failed_due_to_version_conflict' | 'iifvc' | 'indexingIndexFailedDueToVersionConflict' | 'indexing.index_time' | 'iiti' | 'indexingIndexTime' | 'indexing.index_total' | 'iito' | 'indexingIndexTotal' | 'ip' | 'i' | 'jdk' | 'j' | 'load_1m' | 'l' | 'load_5m' | 'l' | 'load_15m' | 'l' | 'mappings.total_count' | 'mtc' | 'mappingsTotalCount' | 'mappings.total_estimated_overhead_in_bytes' | 'mteo' | 'mappingsTotalEstimatedOverheadInBytes' | 'master' | 'm' | 'merges.current' | 'mc' | 'mergesCurrent' | 'merges.current_docs' | 'mcd' | 'mergesCurrentDocs' | 'merges.current_size' | 'mcs' | 'mergesCurrentSize' | 'merges.total' | 'mt' | 'mergesTotal' | 'merges.total_docs' | 'mtd' | 'mergesTotalDocs' | 'merges.total_size' | 'mts' | 'mergesTotalSize' | 'merges.total_time' | 'mtt' | 'mergesTotalTime' | 'name' | 'n' | 'node.role' | 'r' | 'role' | 'nodeRole' | 'pid' | 'p' | 'port' | 'po' | 'query_cache.memory_size' | 'qcm' | 'queryCacheMemory' | 'query_cache.evictions' | 'qce' | 'queryCacheEvictions' | 'query_cache.hit_count' | 'qchc' | 'queryCacheHitCount' | 'query_cache.miss_count' | 'qcmc' | 'queryCacheMissCount' | 'ram.current' | 'rc' | 'ramCurrent' | 'ram.max' | 'rm' | 'ramMax' | 'ram.percent' | 'rp' | 'ramPercent' | 'refresh.total' | 'rto' | 'refreshTotal' | 'refresh.time' | 'rti' | 'refreshTime' | 'request_cache.memory_size' | 'rcm' | 'requestCacheMemory' | 'request_cache.evictions' | 'rce' | 'requestCacheEvictions' | 'request_cache.hit_count' | 'rchc' | 'requestCacheHitCount' | 'request_cache.miss_count' | 'rcmc' | 'requestCacheMissCount' | 'script.compilations' | 'scrcc' | 'scriptCompilations' | 'script.cache_evictions' | 'scrce' | 'scriptCacheEvictions' | 'search.fetch_current' | 'sfc' | 'searchFetchCurrent' | 'search.fetch_time' | 'sfti' | 'searchFetchTime' | 'search.fetch_total' | 'sfto' | 'searchFetchTotal' | 'search.open_contexts' | 'so' | 'searchOpenContexts' | 'search.query_current' | 'sqc' | 'searchQueryCurrent' | 'search.query_time' | 'sqti' | 'searchQueryTime' | 'search.query_total' | 'sqto' | 'searchQueryTotal' | 'search.scroll_current' | 'scc' | 'searchScrollCurrent' | 'search.scroll_time' | 'scti' | 'searchScrollTime' | 'search.scroll_total' | 'scto' | 'searchScrollTotal' | 'segments.count' | 'sc' | 'segmentsCount' | 'segments.fixed_bitset_memory' | 'sfbm' | 'fixedBitsetMemory' | 'segments.index_writer_memory' | 'siwm' | 'segmentsIndexWriterMemory' | 'segments.memory' | 'sm' | 'segmentsMemory' | 'segments.version_map_memory' | 'svmm' | 'segmentsVersionMapMemory' | 'shard_stats.total_count' | 'sstc' | 'shards' | 'shardStatsTotalCount' | 'suggest.current' | 'suc' | 'suggestCurrent' | 'suggest.time' | 'suti' | 'suggestTime' | 'suggest.total' | 'suto' | 'suggestTotal' | 'uptime' | 'u' | 'version' | 'v'| string
+export type CatCatNodeColumn = 'build' | 'b' | 'completion.size' | 'cs' | 'completionSize' | 'cpu' | 'disk.avail' | 'd' | 'disk' | 'diskAvail' | 'disk.total' | 'dt' | 'diskTotal' | 'disk.used' | 'du' | 'diskUsed' | 'disk.used_percent' | 'dup' | 'diskUsedPercent' | 'fielddata.evictions' | 'fe' | 'fielddataEvictions' | 'fielddata.memory_size' | 'fm' | 'fielddataMemory' | 'file_desc.current' | 'fdc' | 'fileDescriptorCurrent' | 'file_desc.max' | 'fdm' | 'fileDescriptorMax' | 'file_desc.percent' | 'fdp' | 'fileDescriptorPercent' | 'flush.total' | 'ft' | 'flushTotal' | 'flush.total_time' | 'ftt' | 'flushTotalTime' | 'get.current' | 'gc' | 'getCurrent' | 'get.exists_time' | 'geti' | 'getExistsTime' | 'get.exists_total' | 'geto' | 'getExistsTotal' | 'get.missing_time' | 'gmti' | 'getMissingTime' | 'get.missing_total' | 'gmto' | 'getMissingTotal' | 'get.time' | 'gti' | 'getTime' | 'get.total' | 'gto' | 'getTotal' | 'heap.current' | 'hc' | 'heapCurrent' | 'heap.max' | 'hm' | 'heapMax' | 'heap.percent' | 'hp' | 'heapPercent' | 'http_address' | 'http' | 'id' | 'nodeId' | 'indexing.delete_current' | 'idc' | 'indexingDeleteCurrent' | 'indexing.delete_time' | 'idti' | 'indexingDeleteTime' | 'indexing.delete_total' | 'idto' | 'indexingDeleteTotal' | 'indexing.index_current' | 'iic' | 'indexingIndexCurrent' | 'indexing.index_failed' | 'iif' | 'indexingIndexFailed' | 'indexing.index_failed_due_to_version_conflict' | 'iifvc' | 'indexingIndexFailedDueToVersionConflict' | 'indexing.index_time' | 'iiti' | 'indexingIndexTime' | 'indexing.index_total' | 'iito' | 'indexingIndexTotal' | 'ip' | 'i' | 'jdk' | 'j' | 'load_1m' | 'l' | 'load_5m' | 'l' | 'load_15m' | 'l' | 'available_processors' | 'ap' | 'mappings.total_count' | 'mtc' | 'mappingsTotalCount' | 'mappings.total_estimated_overhead_in_bytes' | 'mteo' | 'mappingsTotalEstimatedOverheadInBytes' | 'master' | 'm' | 'merges.current' | 'mc' | 'mergesCurrent' | 'merges.current_docs' | 'mcd' | 'mergesCurrentDocs' | 'merges.current_size' | 'mcs' | 'mergesCurrentSize' | 'merges.total' | 'mt' | 'mergesTotal' | 'merges.total_docs' | 'mtd' | 'mergesTotalDocs' | 'merges.total_size' | 'mts' | 'mergesTotalSize' | 'merges.total_time' | 'mtt' | 'mergesTotalTime' | 'name' | 'n' | 'node.role' | 'r' | 'role' | 'nodeRole' | 'pid' | 'p' | 'port' | 'po' | 'query_cache.memory_size' | 'qcm' | 'queryCacheMemory' | 'query_cache.evictions' | 'qce' | 'queryCacheEvictions' | 'query_cache.hit_count' | 'qchc' | 'queryCacheHitCount' | 'query_cache.miss_count' | 'qcmc' | 'queryCacheMissCount' | 'ram.current' | 'rc' | 'ramCurrent' | 'ram.max' | 'rm' | 'ramMax' | 'ram.percent' | 'rp' | 'ramPercent' | 'refresh.total' | 'rto' | 'refreshTotal' | 'refresh.time' | 'rti' | 'refreshTime' | 'request_cache.memory_size' | 'rcm' | 'requestCacheMemory' | 'request_cache.evictions' | 'rce' | 'requestCacheEvictions' | 'request_cache.hit_count' | 'rchc' | 'requestCacheHitCount' | 'request_cache.miss_count' | 'rcmc' | 'requestCacheMissCount' | 'script.compilations' | 'scrcc' | 'scriptCompilations' | 'script.cache_evictions' | 'scrce' | 'scriptCacheEvictions' | 'search.fetch_current' | 'sfc' | 'searchFetchCurrent' | 'search.fetch_time' | 'sfti' | 'searchFetchTime' | 'search.fetch_total' | 'sfto' | 'searchFetchTotal' | 'search.open_contexts' | 'so' | 'searchOpenContexts' | 'search.query_current' | 'sqc' | 'searchQueryCurrent' | 'search.query_time' | 'sqti' | 'searchQueryTime' | 'search.query_total' | 'sqto' | 'searchQueryTotal' | 'search.scroll_current' | 'scc' | 'searchScrollCurrent' | 'search.scroll_time' | 'scti' | 'searchScrollTime' | 'search.scroll_total' | 'scto' | 'searchScrollTotal' | 'segments.count' | 'sc' | 'segmentsCount' | 'segments.fixed_bitset_memory' | 'sfbm' | 'fixedBitsetMemory' | 'segments.index_writer_memory' | 'siwm' | 'segmentsIndexWriterMemory' | 'segments.memory' | 'sm' | 'segmentsMemory' | 'segments.version_map_memory' | 'svmm' | 'segmentsVersionMapMemory' | 'shard_stats.total_count' | 'sstc' | 'shards' | 'shardStatsTotalCount' | 'suggest.current' | 'suc' | 'suggestCurrent' | 'suggest.time' | 'suti' | 'suggestTime' | 'suggest.total' | 'suto' | 'suggestTotal' | 'uptime' | 'u' | 'version' | 'v'| string
 
 export type CatCatNodeColumns = CatCatNodeColumn | CatCatNodeColumn[]
 
@@ -8368,6 +8368,8 @@ export interface CatNodesNodesRecord {
   load_5m?: string
   load_15m?: string
   l?: string
+  available_processors?: string
+  ap?: string
   uptime?: string
   u?: string
   'node.role'?: string
@@ -12992,6 +12994,40 @@ export interface IndicesGetMigrateReindexStatusStatusInProgress {
   reindexed_doc_count: long
 }
 
+export interface IndicesGetSampleRequest extends RequestBase {
+  index: IndexName
+}
+
+export interface IndicesGetSampleResponse {
+  sample: IndicesGetSampleRawDocument[]
+}
+
+export interface IndicesGetSampleRawDocument {
+  index: string
+  source: Record<PropertyName, MappingProperty>
+}
+
+export interface IndicesGetSampleStatsRequest extends RequestBase {
+  index: IndexName
+}
+
+export interface IndicesGetSampleStatsResponse {
+  potential_samples: long
+  samples_rejected_for_max_samples_exceeded: long
+  samples_rejected_for_condition: long
+  samples_rejected_for_rate: long
+  samples_rejected_for_exception: long
+  samples_rejected_for_size: long
+  samples_accepted: long
+  time_sampling?: Duration
+  time_sampling_millis: DurationValue<UnitMillis>
+  time_evaluating_condition?: Duration
+  time_evaluating_condition_millis: DurationValue<UnitMillis>
+  time_compiling_condition?: Duration
+  time_compiling_condition_millis: DurationValue<UnitMillis>
+  last_exception?: string
+}
+
 export interface IndicesGetSettingsRequest extends RequestBase {
   index?: Indices
   name?: Names
@@ -14140,6 +14176,7 @@ export interface InferenceCustomResponseParams {
 }
 
 export interface InferenceCustomServiceSettings {
+  batch_size?: integer
   headers?: any
   input_type?: any
   query_parameters?: any
@@ -14179,6 +14216,8 @@ export interface InferenceElasticsearchServiceSettings {
   model_id: string
   num_allocations?: integer
   num_threads: integer
+  long_document_strategy?: string
+  max_chunks_per_doc?: integer
 }
 
 export type InferenceElasticsearchServiceType = 'elasticsearch'
@@ -14458,6 +14497,7 @@ export type InferenceOpenAIServiceType = 'openai'
 
 export interface InferenceOpenAITaskSettings {
   user?: string
+  headers?: any
 }
 
 export type InferenceOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
@@ -14970,7 +15010,9 @@ export interface InferenceRerankRequest extends RequestBase {
   timeout?: Duration
   body?: {
     query: string
-    input: string | string[]
+    input: string[]
+    return_documents?: boolean
+    top_n?: integer
     task_settings?: InferenceTaskSettings
   }
 }
@@ -22254,7 +22296,7 @@ export interface StreamsStatusLogsStatus {
 }
 
 export interface StreamsStatusRequest extends RequestBase {
-  master_timeout?: TimeUnit
+  master_timeout?: Duration
 }
 
 export interface StreamsStatusResponse {
@@ -22621,6 +22663,7 @@ export interface TransformSettings {
   deduce_mappings?: boolean
   docs_per_second?: float
   max_page_search_size?: integer
+  use_point_in_time?: boolean
   unattended?: boolean
 }
 

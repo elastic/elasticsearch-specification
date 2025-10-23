@@ -135,7 +135,7 @@ export interface Request extends RequestBase {
      */
     max_concurrent_shard_requests?: integer
   }
-  body: {
+  body?: {
     /**
      * Filter indices if the provided query rewrites to `match_none` on every shard.
      */

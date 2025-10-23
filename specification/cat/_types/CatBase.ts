@@ -755,6 +755,11 @@ export enum CatNodeColumn {
    */
   load_15m,
   /**
+   * The number of available processors (logical CPU cores available to the JVM).
+   * @aliases ap
+   */
+  available_processors,
+  /**
    * The number of mappings, including runtime and object fields.
    * @aliases mtc, mappingsTotalCount
    */

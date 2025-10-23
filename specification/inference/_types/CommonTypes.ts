@@ -947,7 +947,14 @@ export class CohereTaskSettings {
 
 export class CustomServiceSettings {
   /**
-   * Specifies the HTTPS header parameters – such as `Authentication` or `Contet-Type` – that are required to access the custom service.
+   * Specifies the batch size used for the semantic_text field. If the field is not provided, the default is 10.
+   * The batch size is the maximum number of inputs in a single request to the upstream service.
+   * The chunk within the batch are controlled by the selected chunking strategy for the semantic_text field.
+   * @ext_doc_id sematic-text-chunking
+   */
+  batch_size?: integer
+  /**
+   * Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.
    * For example:
    * ```
    * "headers":{
@@ -1063,6 +1070,22 @@ export class CustomResponseParams {
    *     "text_embeddings":"$.data[*].embedding[*]"
    *   }
    * }
+   *
+   * # Elasticsearch supports the following embedding types:
+   * * float
+   * * byte
+   * * bit (or binary)
+   *
+   * To specify the embedding type for the response, the `embedding_type`
+   * field should be added in the `json_parser` object. Here's an example:
+   * "response":{
+   *   "json_parser":{
+   *     "text_embeddings":"$.data[*].embedding[*]",
+   *     "embedding_type":"bit"
+   *   }
+   * }
+   *
+   * If `embedding_type` is not specified, it defaults to `float`.
    *
    * # sparse_embedding
    * # For a response like this:
@@ -1306,6 +1329,24 @@ export class ElasticsearchServiceSettings {
    * The maximum value is 32.
    */
   num_threads: integer
+  /**
+   * Available only for the `rerank` task type using the Elastic reranker model.
+   * Controls the strategy used for processing long documents during inference.
+   *
+   * Possible values:
+   * - `truncate` (default): Processes only the beginning of each document.
+   * - `chunk`: Splits long documents into smaller parts (chunks) before inference.
+   *
+   * When `long_document_strategy` is set to `chunk`, Elasticsearch splits each document into smaller parts but still returns a single score per document.
+   * That score reflects the highest relevance score among all chunks.
+   */
+  long_document_strategy?: string
+  /**
+   * Only for the `rerank` task type.
+   * Limits the number of chunks per document that are sent for inference when chunking is enabled.
+   * If not set, all chunks generated for the document are processed.
+   */
+  max_chunks_per_doc?: integer
 }
 
 export class ElasticsearchTaskSettings {
@@ -1772,6 +1813,17 @@ export class OpenAITaskSettings {
    * This information can be used for abuse detection.
    */
   user?: string
+  /**
+   * Specifies custom HTTP header parameters.
+   * For example:
+   * ```
+   * "headers":{
+   *   "Custom-Header": "Some-Value",
+   *   "Another-Custom-Header": "Another-Value"
+   * }
+   * ```
+   */
+  headers?: UserDefinedValue
 }
 
 export enum OpenAITaskType {
