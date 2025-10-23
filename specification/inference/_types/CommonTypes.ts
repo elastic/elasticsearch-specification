@@ -1497,7 +1497,11 @@ export class GoogleVertexAIServiceSettings {
 
 export enum GoogleModelGardenProvider {
   google,
-  anthropic
+  anthropic,
+  meta,
+  hugging_face,
+  mistral,
+  ai21
 }
 
 export class GoogleVertexAITaskSettings {
