@@ -124,6 +124,11 @@ export class KnnRetriever extends RetrieverBase {
   k: integer
   /** Number of nearest neighbor candidates to consider per shard. */
   num_candidates: integer
+  /** The percentage of vectors to explore per shard while doing knn search with bbq_disk
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  visit_percentage?: float
   /** The minimum similarity required for a document to be considered a match.  */
   similarity?: float
   /** Apply oversampling and rescoring to quantized vectors
