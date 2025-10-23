@@ -111,6 +111,8 @@ export enum TaskTypeGoogleAIStudio {
 }
 
 export enum TaskTypeGoogleVertexAI {
+  chat_completion,
+  completion,
   text_embedding,
   rerank
 }

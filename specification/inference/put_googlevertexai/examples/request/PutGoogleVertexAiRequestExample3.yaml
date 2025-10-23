@@ -1,0 +1,17 @@
+summary: A completion task for Google Model Garden Anthropic endpoint
+description: Run `PUT _inference/completion/google_model_garden_anthropic_completion` to create an inference endpoint to perform a `completion` task using Anthropic's model hosted on Google Model Garden.
+method_request: 'PUT _inference/completion/google_model_garden_anthropic_completion'
+# type: "request"
+value: |-
+  {
+      "service": "googlevertexai",
+      "service_settings": {
+          "provider": "anthropic",
+          "service_account_json": "service-account-json",
+          "url": "https://url:rawPredict",
+          "streaming_url": "https://streaming_url:streamRawPredict"
+      },
+      "task_settings": {
+          "max_tokens": 128
+      }
+  }
