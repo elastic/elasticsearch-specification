@@ -18,7 +18,6 @@
         }
       ]
     },
-    "params": {},
     "body": {
       "description": "The job config",
       "required": true
