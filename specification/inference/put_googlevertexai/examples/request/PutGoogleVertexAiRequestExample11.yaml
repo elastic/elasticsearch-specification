@@ -1,0 +1,14 @@
+summary: A completion task for Google Model Garden AI21 endpoint with separate URLs for streaming and non-streaming tasks
+description: Run `PUT _inference/completion/google_model_garden_ai21_completion` to create an inference endpoint to perform a `completion` task using AI21's model hosted on Google Model Garden with separate URLs for streaming and non-streaming tasks.
+method_request: 'PUT _inference/completion/google_model_garden_ai21_completion'
+# type: "request"
+value: |-
+  {
+      "service": "googlevertexai",
+      "service_settings": {
+          "provider": "ai21",
+          "service_account_json": "service-account-json",
+          "url": "https://url:rawPredict",
+          "streaming_url": "https://url:streamRawPredict"
+      }
+  }

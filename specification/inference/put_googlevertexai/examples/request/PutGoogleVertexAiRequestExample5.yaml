@@ -1,5 +1,5 @@
-summary: A completion task for Google Model Garden Meta endpoint with single URL provided
-description: Run `PUT _inference/completion/google_model_garden_meta_completion` to create an inference endpoint to perform a `completion` task using Meta's model hosted on Google Model Garden with single URL provided.
+summary: A completion task for Google Model Garden Meta endpoint with single URL provided for both streaming and non-streaming tasks
+description: Run `PUT _inference/completion/google_model_garden_meta_completion` to create an inference endpoint to perform a `completion` task using Meta's model hosted on Google Model Garden with single URL provided for both streaming and non-streaming tasks.
 method_request: 'PUT _inference/completion/google_model_garden_meta_completion'
 # type: "request"
 value: |-
