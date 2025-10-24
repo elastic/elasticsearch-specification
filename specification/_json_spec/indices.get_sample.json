@@ -5,8 +5,7 @@
       "description": "Get random sample of ingested data"
     },
     "stability": "experimental",
-    "visibility": "feature_flag",
-    "feature_flag": "random_sampling",
+    "visibility": "public",
     "headers": {
       "accept": ["application/json"]
     },
