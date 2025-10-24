@@ -18,11 +18,9 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, UserDefinedObject } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { InferenceConfigUpdateContainer } from '@ml/_types/inference'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Evaluate a trained model.
@@ -58,7 +56,7 @@ export interface Request extends RequestBase {
      * configured trained model input. Typically, for NLP models, the field name is `text_field`.
      * Currently, for NLP models, only a single value is allowed.
      */
-    docs: Dictionary<string, UserDefinedValue>[]
+    docs: UserDefinedObject[]
     /**
      * The inference configuration updates to apply on the API call
      */
