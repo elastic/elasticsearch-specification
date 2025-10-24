@@ -22,8 +22,8 @@ mod utils;
 pub mod cli;
 
 use indexmap::IndexMap;
-
-use clients_schema::{Availabilities, Availability, Flavor, IndexedModel, Stability, Visibility};
+use itertools::Itertools;
+use clients_schema::{Availabilities, Availability, Flavor, IndexedModel, Privileges, Stability, UrlTemplate, Visibility};
 use openapiv3::{Components, OpenAPI};
 use serde_json::{Map,Value};
 use clients_schema::transform::ExpandConfig;
@@ -198,6 +198,52 @@ pub fn product_meta_as_extensions(namespace: &str, product_meta: &IndexMap<Strin
     product_feature.insert("content".to_string(),Value::String(product_str));
     product_feature_list.push(Value::Object(product_feature));
     result.insert("x-metaTags".to_string(), Value::Array(product_feature_list));
+    result
+}
+
+pub fn auths_as_extentions(privileges: &Option<Privileges>) -> IndexMap<String, Value> {
+    let mut result = IndexMap::new();
+    let mut auths_list: Vec<Value> = Vec::new();
+
+    if let Some(privs) = privileges {
+        if !privs.index.is_empty() {
+            let mut index_priv = "Index privileges: ".to_string();
+            index_priv += &privs.index.iter()
+                .map(|a| format!("`{a}`"))
+                .join(",");
+            index_priv += "\n";
+            auths_list.push(Value::String(index_priv));
+        }
+        if !privs.cluster.is_empty() {
+            let mut cluster_priv = "Cluster privileges: ".to_string();
+            cluster_priv += &privs.cluster.iter()
+                .map(|a| format!("`{a}`"))
+                .join(",");
+            cluster_priv += "\n";
+            auths_list.push(Value::String(cluster_priv));
+        }
+        result.insert("x-req-auth".to_string(),Value::Array(auths_list));
+    }
+    result
+}
+
+pub fn paths_as_extentions(urls: Vec<UrlTemplate>) -> IndexMap<String, Value> {
+    let mut result = IndexMap::new();
+    if !urls.is_empty() {
+        let mut paths_list: Vec<Value> = Vec::new();
+        for url in urls {
+            for method in url.methods {
+                let lower_method = method.to_lowercase();
+                let path = &url.path;
+                paths_list.push(Value::String(format!(r#"<div>
+                      <span class="operation-verb {lower_method}">{method}</span>
+                      <span class="operation-path">{path}</span>
+                      </div>
+                    "#)));
+            }
+        }
+        result.insert("x-variations".to_string(), Value::Array(paths_list));
+    }
     result
 }
 
