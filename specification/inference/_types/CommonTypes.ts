@@ -1445,6 +1445,7 @@ export class GoogleVertexAIServiceSettings {
    * If `streaming_url` is not provided, `url` is also used for streaming `completion` and `chat_completion`.
    * If `provider` is not provided or set to `google` (Google Vertex AI), do not set `url` (or `streaming_url`).
    * At least one of `url` or `streaming_url` must be provided for Google Model Garden endpoint usage.
+   * Certain providers require separate URLs for streaming and non-streaming operations (e.g., Anthropic, Mistral, AI21). Others support both operation types through a single URL (e.g., Meta, Hugging Face).
    */
   url?: string
   /**
@@ -1453,6 +1454,7 @@ export class GoogleVertexAIServiceSettings {
    * If `url` is not provided, `streaming_url` is also used for non-streaming `completion` requests.
    * If `provider` is not provided or set to `google` (Google Vertex AI), do not set `streaming_url` (or `url`).
    * At least one of `streaming_url` or `url` must be provided for Google Model Garden endpoint usage.
+   * Certain providers require separate URLs for streaming and non-streaming operations (e.g., Anthropic, Mistral, AI21). Others support both operation types through a single URL (e.g., Meta, Hugging Face).
    */
   streaming_url?: string
   /**
