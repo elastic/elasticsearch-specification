@@ -40,10 +40,12 @@
       },
       "master_timeout": {
         "type": "time",
+        "default": "30s",
         "description": "Explicit operation timeout for connection to master node"
       },
       "h": {
         "type": "list",
+        "default": "ip,hp,rp,r,m,n,cpu,l",
         "description": "Comma-separated list of column names to display"
       },
       "help": {
