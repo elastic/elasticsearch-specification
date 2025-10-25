@@ -14,8 +14,7 @@
       "paths": [
         {
           "path": "/_ml/data_frame/analytics/_explain",
-          "methods": ["GET", "POST"],
-          "parts": {}
+          "methods": ["GET", "POST"]
         },
         {
           "path": "/_ml/data_frame/analytics/{id}/_explain",
