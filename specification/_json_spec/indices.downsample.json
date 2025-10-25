@@ -30,7 +30,6 @@
         }
       ]
     },
-    "params": {},
     "body": {
       "description": "The downsampling configuration",
       "required": true
