@@ -42869,8 +42869,7 @@
           }
         },
         "required": [
-          "point",
-          "sort"
+          "point"
         ]
       },
       "_types.aggregations.GeoLinePoint": {
