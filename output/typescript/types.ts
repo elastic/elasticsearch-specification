@@ -12226,6 +12226,18 @@ export interface IndicesRetentionLease {
   period: Duration
 }
 
+export interface IndicesSamplingConfigurationOutput {
+  rate: double
+  max_samples: integer
+  max_size?: ByteSize
+  max_size_in_bytes: long
+  time_to_live?: Duration
+  time_to_live_in_millis: long
+  if?: string
+  creation_time?: DateTime
+  creation_time_in_millis: long
+}
+
 export interface IndicesSearchIdle {
   after?: Duration
 }
@@ -12633,6 +12645,14 @@ export interface IndicesDeleteIndexTemplateRequest extends RequestBase {
 
 export type IndicesDeleteIndexTemplateResponse = AcknowledgedResponseBase
 
+export interface IndicesDeleteSampleConfigurationRequest extends RequestBase {
+  index: IndexName
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type IndicesDeleteSampleConfigurationResponse = AcknowledgedResponseBase
+
 export interface IndicesDeleteTemplateRequest extends RequestBase {
   name: Name
   master_timeout?: Duration
@@ -12844,6 +12864,19 @@ export interface IndicesGetAliasNotFoundAliasesKeys {
 export type IndicesGetAliasNotFoundAliases = IndicesGetAliasNotFoundAliasesKeys
   & { [property: string]: IndicesGetAliasIndexAliases | string | number }
 
+export interface IndicesGetAllSampleConfigurationRequest extends RequestBase {
+  master_timeout?: Duration
+}
+
+export interface IndicesGetAllSampleConfigurationResponse {
+  configurations: IndicesGetAllSampleConfigurationIndexSamplingConfiguration[]
+}
+
+export interface IndicesGetAllSampleConfigurationIndexSamplingConfiguration {
+  index: IndexName
+  configuration: IndicesSamplingConfigurationOutput
+}
+
 export interface IndicesGetDataLifecycleDataStreamWithLifecycle {
   name: DataStreamName
   lifecycle?: IndicesDataStreamLifecycleWithRollover
@@ -13020,6 +13053,16 @@ export interface IndicesGetSampleResponse {
 export interface IndicesGetSampleRawDocument {
   index: string
   source: Record<PropertyName, MappingProperty>
+}
+
+export interface IndicesGetSampleConfigurationRequest extends RequestBase {
+  index: IndexName
+  master_timeout?: Duration
+}
+
+export interface IndicesGetSampleConfigurationResponse {
+  index: IndexName
+  configuration: IndicesSamplingConfigurationOutput | null
 }
 
 export interface IndicesGetSampleStatsRequest extends RequestBase {
@@ -13277,6 +13320,21 @@ export interface IndicesPutMappingRequest extends RequestBase {
 }
 
 export type IndicesPutMappingResponse = IndicesResponseBase
+
+export interface IndicesPutSampleConfigurationRequest extends RequestBase {
+  index: IndexName
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: {
+    rate: double | string
+    max_samples?: integer
+    max_size?: ByteSize
+    time_to_live?: Duration
+    if?: string
+  }
+}
+
+export type IndicesPutSampleConfigurationResponse = AcknowledgedResponseBase
 
 export interface IndicesPutSettingsRequest extends RequestBase {
   index?: Indices
