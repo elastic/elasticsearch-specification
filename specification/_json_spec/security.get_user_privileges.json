@@ -16,7 +16,6 @@
           "methods": ["GET"]
         }
       ]
-    },
-    "params": {}
+    }
   }
 }

@@ -18,7 +18,6 @@
         }
       ]
     },
-    "params": {},
     "body": {
       "description": "Specify the query in the `query` element.",
       "required": true
