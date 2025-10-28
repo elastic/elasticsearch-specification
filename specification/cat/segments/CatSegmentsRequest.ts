@@ -108,6 +108,6 @@ export interface Request extends CatRequestBase {
      * of throwing an exception if index pattern matches closed indices
      * @server_default false
      */
-    allow_closed ?: boolean
+    allow_closed?: boolean
   }
 }
