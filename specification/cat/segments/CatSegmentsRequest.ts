@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import {ExpandWildcards, Indices, Names} from '@_types/common'
+import { ExpandWildcards, Indices, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { CatRequestBase, CatSegmentsColumns } from '@cat/_types/CatBase'
 
