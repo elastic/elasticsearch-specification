@@ -46410,10 +46410,17 @@
               },
               "percents": {
                 "description": "The percentiles to calculate.",
-                "type": "array",
-                "items": {
-                  "type": "number"
-                }
+                "oneOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                ]
               },
               "hdr": {
                 "description": "Uses the alternative High Dynamic Range Histogram algorithm to calculate percentiles.",
