@@ -2725,12 +2725,19 @@ export interface QueryVectorBuilder {
 }
 
 export interface RRFRetriever extends RetrieverBase {
-  retrievers: RetrieverContainer[]
+  retrievers: RRFRetrieverEntry[]
   rank_constant?: integer
   rank_window_size?: integer
   query?: string
   fields?: string[]
 }
+
+export interface RRFRetrieverComponent {
+  retriever: RetrieverContainer
+  weight?: float
+}
+
+export type RRFRetrieverEntry = RetrieverContainer | RRFRetrieverComponent
 
 export interface RankBase {
 }
