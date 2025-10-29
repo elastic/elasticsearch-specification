@@ -1,13 +1,13 @@
-summary: A chat_completion task for Google Model Garden AI21 endpoint with single streaming URL provided
-description: Run `PUT _inference/chat_completion/google_model_garden_ai21_chat_completion` to create an inference endpoint to perform a `chat_completion` task using AI21's model hosted on Google Model Garden with single streaming URL provided.
-method_request: 'PUT _inference/chat_completion/google_model_garden_ai21_chat_completion'
+summary: A chat_completion task for Google Model Garden Hugging Face dedicated endpoint with single streaming URL provided
+description: Run `PUT _inference/chat_completion/google_model_garden_hugging_face_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Hugging Face's model hosted on Google Model Garden dedicated endpoint with single streaming URL provided. See the endpoint's `Sample request` page for the variable values used in the URL.
+method_request: 'PUT _inference/chat_completion/google_model_garden_hugging_face_chat_completion'
 # type: "request"
 value: |-
   {
       "service": "googlevertexai",
       "service_settings": {
-          "provider": "ai21",
+          "provider": "hugging_face",
           "service_account_json": "service-account-json",
-          "streaming_url": "https://url:streamRawPredict"
+          "streaming_url": "https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions"
       }
   }

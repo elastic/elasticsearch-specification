@@ -1,5 +1,5 @@
-summary: A completion task for Google Model Garden Meta endpoint with single URL provided for both streaming and non-streaming tasks
-description: Run `PUT _inference/completion/google_model_garden_meta_completion` to create an inference endpoint to perform a `completion` task using Meta's model hosted on Google Model Garden with single URL provided for both streaming and non-streaming tasks.
+summary: A completion task for Google Model Garden Meta serverless endpoint with single URL provided for both streaming and non-streaming tasks
+description: Run `PUT _inference/completion/google_model_garden_meta_completion` to create an inference endpoint to perform a `completion` task using Meta's serverless model hosted on Google Model Garden with single URL provided for both streaming and non-streaming tasks. See the Meta model documentation for instructions on how to construct the URL.
 method_request: 'PUT _inference/completion/google_model_garden_meta_completion'
 # type: "request"
 value: |-
@@ -9,6 +9,6 @@ value: |-
           "provider": "meta",
           "model_id": "meta/llama-3.3-70b-instruct-maas",
           "service_account_json": "service-account-json",
-          "url": "https://url/openapi/chat/completions"
+          "url": "https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions"
       }
   }

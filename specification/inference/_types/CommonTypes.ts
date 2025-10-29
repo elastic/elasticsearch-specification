@@ -1446,6 +1446,7 @@ export class GoogleVertexAIServiceSettings {
    * If `provider` is not provided or set to `google` (Google Vertex AI), do not set `url` (or `streaming_url`).
    * At least one of `url` or `streaming_url` must be provided for Google Model Garden endpoint usage.
    * Certain providers require separate URLs for streaming and non-streaming operations (e.g., Anthropic, Mistral, AI21). Others support both operation types through a single URL (e.g., Meta, Hugging Face).
+   * Information on constructing the URL for various providers can be found in the Google Model Garden documentation for the model, or on the endpoint’s `Sample request` page. The request examples also illustrate the proper formatting for the `url`.
    */
   url?: string
   /**
@@ -1455,6 +1456,7 @@ export class GoogleVertexAIServiceSettings {
    * If `provider` is not provided or set to `google` (Google Vertex AI), do not set `streaming_url` (or `url`).
    * At least one of `streaming_url` or `url` must be provided for Google Model Garden endpoint usage.
    * Certain providers require separate URLs for streaming and non-streaming operations (e.g., Anthropic, Mistral, AI21). Others support both operation types through a single URL (e.g., Meta, Hugging Face).
+   * Information on constructing the URL for various providers can be found in the Google Model Garden documentation for the model, or on the endpoint’s `Sample request` page. The request examples also illustrate the proper formatting for the `streaming_url`.
    */
   streaming_url?: string
   /**

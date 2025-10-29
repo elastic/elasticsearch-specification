@@ -1,14 +1,13 @@
-summary: A chat_completion task for Google Model Garden Mistral endpoint with single streaming URL provided
-description: Run `PUT _inference/chat_completion/google_model_garden_mistral_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Mistral's model hosted on Google Model Garden with single streaming URL provided.
-method_request: 'PUT _inference/chat_completion/google_model_garden_mistral_chat_completion'
+summary: A chat_completion task for Google Model Garden Meta shared endpoint with single streaming URL provided
+description: Run `PUT _inference/chat_completion/google_model_garden_meta_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Meta's model hosted on Google Model Garden shared endpoint with single streaming URL provided. See the endpoint's `Sample request` page for the variable values used in the URL.
+method_request: 'PUT _inference/chat_completion/google_model_garden_meta_chat_completion'
 # type: "request"
 value: |-
   {
       "service": "googlevertexai",
       "service_settings": {
-          "provider": "mistral",
-          "model_id": "mistral-small-2503",
+          "provider": "meta",
           "service_account_json": "service-account-json",
-          "streaming_url": "https://url:streamRawPredict"
+          "streaming_url": "https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions"
       }
   }

@@ -1,5 +1,5 @@
-summary: A chat_completion task for Google Model Garden Anthropic endpoint with single streaming URL provided
-description: Run `PUT _inference/chat_completion/google_model_garden_anthropic_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Anthropic's model hosted on Google Model Garden with single streaming URL provided.
+summary: A chat_completion task for Google Model Garden Anthropic serverless endpoint with single streaming URL provided
+description: Run `PUT _inference/chat_completion/google_model_garden_anthropic_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Anthropic's serverless model hosted on Google Model Garden with single streaming URL provided. See the Anthropic model documentation for instructions on how to construct the URL.
 method_request: 'PUT _inference/chat_completion/google_model_garden_anthropic_chat_completion'
 # type: "request"
 value: |-
@@ -8,7 +8,7 @@ value: |-
       "service_settings": {
           "provider": "anthropic",
           "service_account_json": "service-account-json",
-          "streaming_url": "https://streaming_url:streamRawPredict"
+          "streaming_url": "https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict"
       },
       "task_settings": {
           "max_tokens": 128
