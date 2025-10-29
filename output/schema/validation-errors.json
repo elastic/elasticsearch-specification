@@ -1,16 +1,5 @@
 {
-  "endpointErrors": {
-    "cat.segments": {
-      "request": [
-        "Request: query parameter 'expand_wildcards' does not exist in the json spec",
-        "Request: query parameter 'allow_no_indices' does not exist in the json spec",
-        "Request: query parameter 'ignore_throttled' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
-        "Request: query parameter 'allow_closed' does not exist in the json spec"
-      ],
-      "response": []
-    }
-  },
+  "endpointErrors": {},
   "generalErrors": [
     "Dangling type '_global.scripts_painless_execute:PainlessExecutionPosition'",
     "Dangling type '_global.scripts_painless_execute:PainlessScript'",
