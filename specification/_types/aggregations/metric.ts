@@ -140,7 +140,7 @@ export class GeoLineAggregation {
    * The name of the numeric field to use as the sort key for ordering the points.
    * When the `geo_line` aggregation is nested inside a `time_series` aggregation, this field defaults to `@timestamp`, and any other value will result in error.
    */
-  sort: GeoLineSort
+  sort?: GeoLineSort
   /**
    * When `true`, returns an additional array of the sort values in the feature properties.
    */
