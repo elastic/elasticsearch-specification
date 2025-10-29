@@ -139,7 +139,7 @@ export class KnnRetriever extends RetrieverBase {
 export class RRFRetrieverComponent {
   /** The nested retriever configuration. */
   retriever: RetrieverContainer
-  /** Weight multiplier for this retriever's contribution to the RRF score. Higher values increase influence. Defaults to 1.0 if not specified. Must be non-negative. */
+  /** Weight multiplier for this retriever's contribution to the RRF score. Higher values increase influence. Defaults to 1.0 if not specified. Must be non-negative. @server_default 1.0 */
   weight?: float
 }
 
