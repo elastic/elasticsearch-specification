@@ -138,9 +138,25 @@ export class KnnRetriever extends RetrieverBase {
   rescore_vector?: RescoreVector
 }
 
+/**
+ * Wraps a retriever with an optional weight for RRF scoring.
+ */
+export class RRFRetrieverComponent {
+  /** The nested retriever configuration. */
+  retriever: RetrieverContainer
+  /** Weight multiplier for this retriever's contribution to the RRF score. Higher values increase influence. Defaults to 1.0 if not specified. Must be non-negative. @server_default 1.0 */
+  weight?: float
+}
+
+/**
+ * Either a direct RetrieverContainer (backward compatible) or an RRFRetrieverComponent with weight.
+ * @codegen_names retriever, weighted
+ */
+export type RRFRetrieverEntry = RetrieverContainer | RRFRetrieverComponent
+
 export class RRFRetriever extends RetrieverBase {
-  /** A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.  */
-  retrievers: RetrieverContainer[]
+  /** A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them. Each retriever can optionally include a weight parameter. */
+  retrievers: RRFRetrieverEntry[]
   /** This value determines how much influence documents in individual result sets per query have over the final ranked result set. */
   rank_constant?: integer
   /** This value determines the size of the individual result sets per query.  */
