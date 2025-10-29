@@ -12226,7 +12226,7 @@ export interface IndicesRetentionLease {
   period: Duration
 }
 
-export interface IndicesSamplingConfigurationOutput {
+export interface IndicesSamplingConfiguration {
   rate: double
   max_samples: integer
   max_size?: ByteSize
@@ -12874,7 +12874,7 @@ export interface IndicesGetAllSampleConfigurationResponse {
 
 export interface IndicesGetAllSampleConfigurationIndexSamplingConfiguration {
   index: IndexName
-  configuration: IndicesSamplingConfigurationOutput
+  configuration: IndicesSamplingConfiguration
 }
 
 export interface IndicesGetDataLifecycleDataStreamWithLifecycle {
@@ -13062,7 +13062,7 @@ export interface IndicesGetSampleConfigurationRequest extends RequestBase {
 
 export interface IndicesGetSampleConfigurationResponse {
   index: IndexName
-  configuration: IndicesSamplingConfigurationOutput | null
+  configuration: IndicesSamplingConfiguration | null
 }
 
 export interface IndicesGetSampleStatsRequest extends RequestBase {

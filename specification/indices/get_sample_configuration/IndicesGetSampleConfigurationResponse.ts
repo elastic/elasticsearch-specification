@@ -18,11 +18,11 @@
  */
 
 import { IndexName } from '@_types/common'
-import { SamplingConfigurationOutput } from '@indices/_types/SampleConfigurationOutput'
+import { SamplingConfiguration } from '@indices/_types/SampleConfigurationOutput'
 
 export class Response {
   body: {
     index: IndexName
-    configuration: SamplingConfigurationOutput | null
+    configuration: SamplingConfiguration | null
   }
 }

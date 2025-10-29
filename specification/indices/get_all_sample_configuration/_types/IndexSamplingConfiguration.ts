@@ -18,9 +18,9 @@
  */
 
 import { IndexName } from '@_types/common'
-import { SamplingConfigurationOutput } from '@indices/_types/SampleConfigurationOutput'
+import { SamplingConfiguration } from '@indices/_types/SampleConfigurationOutput'
 
 export class IndexSamplingConfiguration {
   index: IndexName
-  configuration: SamplingConfigurationOutput
+  configuration: SamplingConfiguration
 }

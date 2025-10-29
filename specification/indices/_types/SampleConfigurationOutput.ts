@@ -24,7 +24,7 @@ import { DateTime, Duration } from '@_types/Time'
 /**
  * Sampling configuration as returned by the API.
  */
-export class SamplingConfigurationOutput {
+export class SamplingConfiguration {
   /**
    * The fraction of documents to sample.
    */
