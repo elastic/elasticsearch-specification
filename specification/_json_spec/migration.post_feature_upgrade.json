@@ -16,7 +16,6 @@
           "methods": ["POST"]
         }
       ]
-    },
-    "params": {}
+    }
   }
 }

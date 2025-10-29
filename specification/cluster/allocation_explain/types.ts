@@ -101,7 +101,7 @@ export enum Decision {
 }
 
 export class NodeAllocationExplanation {
-  deciders: AllocationDecision[]
+  deciders?: AllocationDecision[]
   node_attributes: Dictionary<string, string>
   node_decision: Decision
   node_id: Id
@@ -113,7 +113,7 @@ export class NodeAllocationExplanation {
   roles: NodeRoles
   store?: AllocationStore
   transport_address: TransportAddress
-  weight_ranking: integer
+  weight_ranking?: integer
 }
 
 export enum StoreCopy {

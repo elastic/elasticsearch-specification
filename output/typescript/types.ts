@@ -2542,6 +2542,7 @@ export interface KnnQuery extends QueryDslQueryBase {
   query_vector?: QueryVector
   query_vector_builder?: QueryVectorBuilder
   num_candidates?: integer
+  visit_percentage?: float
   k?: integer
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
@@ -2554,6 +2555,7 @@ export interface KnnRetriever extends RetrieverBase {
   query_vector_builder?: QueryVectorBuilder
   k: integer
   num_candidates: integer
+  visit_percentage?: float
   similarity?: float
   rescore_vector?: RescoreVector
 }
@@ -2564,6 +2566,7 @@ export interface KnnSearch {
   query_vector_builder?: QueryVectorBuilder
   k?: integer
   num_candidates?: integer
+  visit_percentage?: float
   boost?: float
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
@@ -8713,6 +8716,11 @@ export interface CatSegmentsRequest extends CatCatRequestBase {
   s?: Names
   local?: boolean
   master_timeout?: Duration
+  expand_wildcards?: ExpandWildcards
+  allow_no_indices?: boolean
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
+  allow_closed?: boolean
 }
 
 export type CatSegmentsResponse = CatSegmentsSegmentsRecord[]
@@ -9570,7 +9578,7 @@ export interface ClusterAllocationExplainDiskUsage {
 }
 
 export interface ClusterAllocationExplainNodeAllocationExplanation {
-  deciders: ClusterAllocationExplainAllocationDecision[]
+  deciders?: ClusterAllocationExplainAllocationDecision[]
   node_attributes: Record<string, string>
   node_decision: ClusterAllocationExplainDecision
   node_id: Id
@@ -9578,7 +9586,7 @@ export interface ClusterAllocationExplainNodeAllocationExplanation {
   roles: NodeRoles
   store?: ClusterAllocationExplainAllocationStore
   transport_address: TransportAddress
-  weight_ranking: integer
+  weight_ranking?: integer
 }
 
 export interface ClusterAllocationExplainNodeDiskUsage {
@@ -14194,10 +14202,15 @@ export interface InferenceGoogleAiStudioServiceSettings {
 
 export type InferenceGoogleAiStudioTaskType = 'completion' | 'text_embedding'
 
+export type InferenceGoogleModelGardenProvider = 'google' | 'anthropic'
+
 export interface InferenceGoogleVertexAIServiceSettings {
-  location: string
-  model_id: string
-  project_id: string
+  provider?: InferenceGoogleModelGardenProvider
+  url?: string
+  streaming_url?: string
+  location?: string
+  model_id?: string
+  project_id?: string
   rate_limit?: InferenceRateLimitSetting
   service_account_json: string
   dimensions?: integer
@@ -14209,6 +14222,7 @@ export interface InferenceGoogleVertexAITaskSettings {
   auto_truncate?: boolean
   top_n?: integer
   thinking_config?: InferenceThinkingConfig
+  max_tokens?: integer
 }
 
 export type InferenceGoogleVertexAITaskType = 'rerank' | 'text_embedding' | 'completion' | 'chat_completion'
@@ -14511,7 +14525,7 @@ export type InferenceTaskTypeElasticsearch = 'sparse_embedding' | 'text_embeddin
 
 export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
-export type InferenceTaskTypeGoogleVertexAI = 'text_embedding' | 'rerank'
+export type InferenceTaskTypeGoogleVertexAI = 'chat_completion' | 'completion' | 'text_embedding' | 'rerank'
 
 export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
