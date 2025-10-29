@@ -74,7 +74,7 @@ export interface Request extends RequestBase {
      */
     service: AnthropicServiceType
     /**
-     * Settings used to install the inference model. These settings are specific to the `watsonxai` service.
+     * Settings used to install the inference model. These settings are specific to the `anthropic` service.
      */
     service_settings: AnthropicServiceSettings
     /**
