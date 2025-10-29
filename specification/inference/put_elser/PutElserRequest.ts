@@ -79,6 +79,8 @@ export interface Request extends RequestBase {
   body: {
     /**
      * The chunking configuration object.
+     * Applies only to the `sparse_embedding` and `text_embedding` task types.
+     * Not applicable to the `rerank`, `completion`, or `chat_completion` task types.
      * Note that for ELSER endpoints, the max_chunk_size may not exceed `300`.
      * @ext_doc_id inference-chunking
      */
