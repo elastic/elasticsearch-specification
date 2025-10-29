@@ -62,7 +62,7 @@ export interface Request extends RequestBase {
      */
     input: string | Array<string>
     /**
-     * Optional task settings
+     * Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.
      */
     task_settings?: TaskSettings
   }
