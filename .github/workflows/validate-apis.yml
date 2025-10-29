@@ -93,8 +93,6 @@ jobs:
         with:
           path: ./clients-flight-recorder/recordings/types-validation/types-validation.json
           key: types-validation-json-${{ format('{0}-{1}', github.ref_name, github.sha) }}
-          restore-keys: |
-            types-validation-json-${{ github.ref_name }}-
 
       - name: Run validation (PR)
         if: github.event_name == 'pull_request'
