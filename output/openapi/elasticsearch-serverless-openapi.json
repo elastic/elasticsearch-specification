@@ -39590,10 +39590,10 @@
             "type": "object",
             "properties": {
               "retrievers": {
-                "description": "A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.",
+                "description": "A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them. Each retriever can optionally include a weight parameter.",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/_types.RetrieverContainer"
+                  "$ref": "#/components/schemas/_types.RRFRetrieverEntry"
                 }
               },
               "rank_constant": {
@@ -39618,6 +39618,39 @@
               "retrievers"
             ]
           }
+        ]
+      },
+      "_types.RRFRetrieverEntry": {
+        "description": "Either a direct RetrieverContainer (backward compatible) or an RRFRetrieverComponent with weight.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverContainer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.RRFRetrieverComponent"
+          }
+        ]
+      },
+      "_types.RRFRetrieverComponent": {
+        "description": "Wraps a retriever with an optional weight for RRF scoring.",
+        "type": "object",
+        "properties": {
+          "retriever": {
+            "description": "The nested retriever configuration.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.RetrieverContainer"
+              }
+            ]
+          },
+          "weight": {
+            "description": "Weight multiplier for this retriever's contribution to the RRF score. Higher values increase influence. Defaults to 1.0 if not specified. Must be non-negative.",
+            "default": 1.0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "retriever"
         ]
       },
       "_types.TextSimilarityReranker": {
