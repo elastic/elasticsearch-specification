@@ -14133,6 +14133,7 @@ export interface InferenceCustomResponseParams {
 }
 
 export interface InferenceCustomServiceSettings {
+  batch_size?: integer
   headers?: any
   input_type?: any
   query_parameters?: any
@@ -14172,6 +14173,8 @@ export interface InferenceElasticsearchServiceSettings {
   model_id: string
   num_allocations?: integer
   num_threads: integer
+  long_document_strategy?: string
+  max_chunks_per_doc?: integer
 }
 
 export type InferenceElasticsearchServiceType = 'elasticsearch'
