@@ -91347,7 +91347,7 @@
                   "type": "number"
                 },
                 "sort": {
-                  "description": "The sort definition.\nYou can sort on `username`, `roles`, or `enabled`.\nIn addition, sort can also be applied to the `_doc` field to sort by index order.",
+                  "description": "The sort definition.\nYou can sort on `name`, `description`, `metadata`, `applications.application`, `applications.privileges`, \nand `applications.resources`.\nIn addition, sort can also be applied to the `_doc` field to sort by index order.",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Sort"
