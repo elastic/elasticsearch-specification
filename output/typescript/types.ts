@@ -2725,12 +2725,19 @@ export interface QueryVectorBuilder {
 }
 
 export interface RRFRetriever extends RetrieverBase {
-  retrievers: RetrieverContainer[]
+  retrievers: RRFRetrieverEntry[]
   rank_constant?: integer
   rank_window_size?: integer
   query?: string
   fields?: string[]
 }
+
+export interface RRFRetrieverComponent {
+  retriever: RetrieverContainer
+  weight?: float
+}
+
+export type RRFRetrieverEntry = RetrieverContainer | RRFRetrieverComponent
 
 export interface RankBase {
 }
@@ -3767,7 +3774,7 @@ export interface AggregationsGeoLineAggregate extends AggregationsAggregateBase 
 
 export interface AggregationsGeoLineAggregation {
   point: AggregationsGeoLinePoint
-  sort: AggregationsGeoLineSort
+  sort?: AggregationsGeoLineSort
   include_sort?: boolean
   sort_order?: SortOrder
   size?: integer
@@ -8720,6 +8727,11 @@ export interface CatSegmentsRequest extends CatCatRequestBase {
   s?: Names
   local?: boolean
   master_timeout?: Duration
+  expand_wildcards?: ExpandWildcards
+  allow_no_indices?: boolean
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
+  allow_closed?: boolean
 }
 
 export type CatSegmentsResponse = CatSegmentsSegmentsRecord[]
