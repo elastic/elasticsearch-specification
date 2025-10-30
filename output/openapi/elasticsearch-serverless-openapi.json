@@ -37762,10 +37762,17 @@
               },
               "functions": {
                 "description": "One or more functions that compute a new score for each document returned by the query.",
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.query_dsl.FunctionScoreContainer"
-                }
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.query_dsl.FunctionScoreContainer"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types.query_dsl.FunctionScoreContainer"
+                    }
+                  }
+                ]
               },
               "max_boost": {
                 "description": "Restricts the new score to not exceed the provided limit.",
