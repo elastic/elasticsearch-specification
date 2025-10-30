@@ -227,7 +227,7 @@ export class PercentilesAggregation extends FormatMetricAggregationBase {
   /**
    * The percentiles to calculate.
    */
-  percents?: double[]
+  percents?: double | double[]
   /**
    * Uses the alternative High Dynamic Range Histogram algorithm to calculate percentiles.
    */
