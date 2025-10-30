@@ -17,10 +17,8 @@
  * under the License.
  */
 
-import { Missing } from '@_types/aggregations/AggregationContainer'
 import { Field, FieldValue } from '@_types/common'
 import { DistanceUnit, GeoDistanceType, GeoLocation } from '@_types/Geo'
-import { FieldType } from '@_types/mapping/Property'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
@@ -31,24 +29,6 @@ export class NestedSortValue {
   max_children?: integer
   nested?: NestedSortValue
   path: Field
-}
-
-export enum FieldSortNumericType {
-  long,
-  double,
-  date,
-  date_nanos
-}
-
-/** @shortcut_property order */
-export class FieldSort {
-  missing?: Missing
-  mode?: SortMode
-  nested?: NestedSortValue
-  order?: SortOrder
-  unmapped_type?: FieldType
-  numeric_type?: FieldSortNumericType
-  format?: string
 }
 
 export class ScoreSort {
@@ -88,7 +68,7 @@ export enum ScriptSortType {
  * @variants container
  * @behavior_meta AdditionalProperty key=field value=sort
  */
-export class SortOptions implements AdditionalProperty<Field, FieldSort> {
+export class SortOptions {
   _score?: ScoreSort
   _doc?: ScoreSort
   _geo_distance?: GeoDistanceSort
