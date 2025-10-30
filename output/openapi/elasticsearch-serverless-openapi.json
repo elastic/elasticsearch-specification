@@ -11549,7 +11549,7 @@
                     ]
                   },
                   "task_settings": {
-                    "description": "Optional task settings",
+                    "description": "Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.TaskSettings"
@@ -12445,7 +12445,7 @@
                     ]
                   },
                   "service_settings": {
-                    "description": "Settings used to install the inference model. These settings are specific to the `watsonxai` service.",
+                    "description": "Settings used to install the inference model. These settings are specific to the `anthropic` service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.AnthropicServiceSettings"
@@ -12565,7 +12565,7 @@
                     ]
                   },
                   "service_settings": {
-                    "description": "Settings used to install the inference model. These settings are specific to the `openai` service.",
+                    "description": "Settings used to install the inference model. These settings are specific to the `azureaistudio` service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.AzureAiStudioServiceSettings"
@@ -14786,7 +14786,7 @@
                     ]
                   },
                   "task_settings": {
-                    "description": "Optional task settings",
+                    "description": "Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.TaskSettings"
@@ -14892,7 +14892,7 @@
                     "type": "string"
                   },
                   "task_settings": {
-                    "description": "Optional task settings",
+                    "description": "Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.TaskSettings"
@@ -39590,10 +39590,10 @@
             "type": "object",
             "properties": {
               "retrievers": {
-                "description": "A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.",
+                "description": "A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them. Each retriever can optionally include a weight parameter.",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/_types.RetrieverContainer"
+                  "$ref": "#/components/schemas/_types.RRFRetrieverEntry"
                 }
               },
               "rank_constant": {
@@ -39618,6 +39618,39 @@
               "retrievers"
             ]
           }
+        ]
+      },
+      "_types.RRFRetrieverEntry": {
+        "description": "Either a direct RetrieverContainer (backward compatible) or an RRFRetrieverComponent with weight.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverContainer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.RRFRetrieverComponent"
+          }
+        ]
+      },
+      "_types.RRFRetrieverComponent": {
+        "description": "Wraps a retriever with an optional weight for RRF scoring.",
+        "type": "object",
+        "properties": {
+          "retriever": {
+            "description": "The nested retriever configuration.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.RetrieverContainer"
+              }
+            ]
+          },
+          "weight": {
+            "description": "Weight multiplier for this retriever's contribution to the RRF score. Higher values increase influence. Defaults to 1.0 if not specified. Must be non-negative.",
+            "default": 1.0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "retriever"
         ]
       },
       "_types.TextSimilarityReranker": {
@@ -64932,7 +64965,7 @@
             }
           },
           "model": {
-            "description": "The ID of the model to use.",
+            "description": "The ID of the model to use. By default, the model ID is set to the value included when creating the inference endpoint.",
             "type": "string"
           },
           "max_completion_tokens": {
@@ -86414,7 +86447,7 @@
       "inference.delete-dry_run": {
         "in": "query",
         "name": "dry_run",
-        "description": "When true, the endpoint is not deleted and a list of ingest processors which reference this endpoint is returned.",
+        "description": "When true, checks the semantic_text fields and inference processors that reference the endpoint and returns them in a list, but does not delete the endpoint.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
