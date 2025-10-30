@@ -4157,7 +4157,7 @@ export interface AggregationsPercentilesAggregateBase extends AggregationsAggreg
 
 export interface AggregationsPercentilesAggregation extends AggregationsFormatMetricAggregationBase {
   keyed?: boolean
-  percents?: double[]
+  percents?: double | double[]
   hdr?: AggregationsHdrMethod
   tdigest?: AggregationsTDigest
 }
