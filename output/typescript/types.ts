@@ -6412,7 +6412,7 @@ export type QueryDslFunctionScoreMode = 'multiply' | 'sum' | 'avg' | 'first' | '
 
 export interface QueryDslFunctionScoreQuery extends QueryDslQueryBase {
   boost_mode?: QueryDslFunctionBoostMode
-  functions?: QueryDslFunctionScoreContainer[]
+  functions?: QueryDslFunctionScoreContainer | QueryDslFunctionScoreContainer[]
   max_boost?: double
   min_score?: double
   query?: QueryDslQueryContainer
@@ -6771,7 +6771,7 @@ export interface QueryDslQueryContainer {
   dis_max?: QueryDslDisMaxQuery
   distance_feature?: QueryDslDistanceFeatureQuery
   exists?: QueryDslExistsQuery
-  function_score?: QueryDslFunctionScoreQuery | QueryDslFunctionScoreContainer[]
+  function_score?: QueryDslFunctionScoreQuery | QueryDslFunctionScoreContainer | QueryDslFunctionScoreContainer[]
   fuzzy?: Partial<Record<Field, QueryDslFuzzyQuery | string | double | boolean>>
   geo_bounding_box?: QueryDslGeoBoundingBoxQuery
   geo_distance?: QueryDslGeoDistanceQuery
