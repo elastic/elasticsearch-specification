@@ -20,25 +20,45 @@ import { ESLintUtils } from '@typescript-eslint/utils';
 
 const createRule = ESLintUtils.RuleCreator(name => `https://example.com/rule/${name}`)
 
-const TYPES_TO_AVOID = ['Record', 'Partial', 'Required', 'Pick', 'Omit'];
+const UTILITY_TYPES = ['Record', 'Partial', 'Required', 'Pick', 'Omit'];
+
+const COLLECTION_TYPES = ['Map', 'Set', 'WeakMap', 'WeakSet'];
+
+const TYPES_TO_AVOID = [...UTILITY_TYPES, ...COLLECTION_TYPES];
+
+const TYPE_SUGGESTIONS = {
+  'Record': 'Use Dictionary instead',
+  'Map': 'Use Dictionary instead',
+  'Set': 'Use an array type instead (e.g., string[])',
+  'WeakMap': 'Use Dictionary instead',
+  'WeakSet': 'Use an array type instead',
+};
 
 export default createRule({
   name: 'no-native-types',
   create(context) {
     return {
       TSTypeReference(node) {
-        if (TYPES_TO_AVOID.includes(node.typeName.name)) {
-          context.report({ node, messageId: 'stringKey' })
+        const typeName = node.typeName.name;
+        if (TYPES_TO_AVOID.includes(typeName)) {
+          context.report({ 
+            node, 
+            messageId: 'noNativeType',
+            data: {
+              type: typeName,
+              suggestion: TYPE_SUGGESTIONS[typeName] || 'Use spec-defined aliases instead'
+            }
+          })
         }
       },
     }
   },
   meta: {
     docs: {
-      description: 'Typescript native types not allowed, use aliases',
+      description: 'TypeScript native utility and collection types not allowed, use spec-defined aliases',
     },
     messages: {
-      stringKey: "Typescript native types not allowed, use aliases"
+      noNativeType: 'Native TypeScript type "{{type}}" is not allowed. {{suggestion}}.'
     },
     type: 'suggestion',
   },
