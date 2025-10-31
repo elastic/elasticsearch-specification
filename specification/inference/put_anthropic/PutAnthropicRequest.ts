@@ -26,7 +26,6 @@ import {
   AnthropicTaskSettings,
   AnthropicTaskType
 } from '@inference/_types/CommonTypes'
-import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**
  * Create an Anthropic inference endpoint.
@@ -64,11 +63,6 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
   body: {
-    /**
-     * The chunking configuration object.
-     * @ext_doc_id inference-chunking
-     */
-    chunking_settings?: InferenceChunkingSettings
     /**
      * The type of service supported for the specified task type. In this case, `anthropic`.
      */
