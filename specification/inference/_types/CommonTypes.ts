@@ -30,7 +30,7 @@ export class RequestChatCompletion {
    */
   messages: Array<Message>
   /**
-   * The ID of the model to use.
+   * The ID of the model to use. By default, the model ID is set to the value included when creating the inference endpoint.
    */
   model?: string
   /**
