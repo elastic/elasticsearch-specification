@@ -51,13 +51,6 @@ import { TaskType } from '@inference/_types/TaskType'
  * * OpenAI (`chat_completion`, `completion`, `text_embedding`)
  * * VoyageAI (`rerank`, `text_embedding`)
  * * Watsonx inference integration (`text_embedding`)
- *
- * NOTE: When creating an inference endpoint, the associated machine learning model is automatically deployed if it is not
- * already running. After creating the endpoint, wait for the model deployment to complete before using it. You can verify
- * the deployment status by using the Get trained model statistics API. In the response, look for "state": "fully_allocated"
- * and ensure the "allocation_count" matches the "target_allocation_count". Avoid creating multiple endpoints for the same
- * model unless required, as each endpoint consumes significant resources.
- *
  * @rest_spec_name inference.put
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
