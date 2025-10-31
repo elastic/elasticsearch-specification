@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { DataStreamNames, ExpandWildcards } from '@_types/common'
 import { Duration } from '@_types/Time'
-import { DataStreamLifecycleDownsampling } from '@indices/_types/DataStreamLifecycleDownsampling'
+import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
 
 /**
  * Update data stream lifecycles.
@@ -82,7 +82,7 @@ export interface Request extends RequestBase {
     /**
      * The downsampling configuration to execute for the managed backing index after rollover.
      */
-    downsampling?: DataStreamLifecycleDownsampling
+    downsampling?: DownsamplingRound[]
     /**
      * If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle
      * that's disabled (enabled: `false`) will have no effect on the data stream.
