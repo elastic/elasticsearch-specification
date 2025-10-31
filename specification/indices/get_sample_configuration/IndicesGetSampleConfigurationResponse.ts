@@ -18,7 +18,7 @@
  */
 
 import { IndexName } from '@_types/common'
-import { SamplingConfiguration } from '@indices/_types/SampleConfigurationOutput'
+import { SamplingConfiguration } from '@indices/_types/SampleConfiguration'
 
 export class Response {
   body: {

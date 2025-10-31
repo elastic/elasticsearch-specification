@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { ByteSize, IndexName } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { Stringified } from '@spec_utils/Stringified'
 
 /**
  * Create or update sampling configuration.
@@ -39,7 +40,7 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * The name of the index.
+     * The name of the index or data stream.
      */
     index: IndexName
   }
@@ -63,7 +64,7 @@ export interface Request extends RequestBase {
      * The fraction of documents to sample. Must be greater than 0 and less than or equal to 1.
      * Can be specified as a number or a string.
      */
-    rate: double | string
+    rate: Stringified<double>
     /**
      * The maximum number of documents to sample. Must be greater than 0 and less than or equal to 10,000.
      * @server_default 100

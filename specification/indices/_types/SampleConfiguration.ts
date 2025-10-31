@@ -26,7 +26,7 @@ import { DateTime, Duration } from '@_types/Time'
  */
 export class SamplingConfiguration {
   /**
-   * The fraction of documents to sample.
+   * The fraction of documents to sample between 0 and 1.
    */
   rate: double
   /**

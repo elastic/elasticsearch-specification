@@ -13326,7 +13326,7 @@ export interface IndicesPutSampleConfigurationRequest extends RequestBase {
   master_timeout?: Duration
   timeout?: Duration
   body?: {
-    rate: double | string
+    rate: SpecUtilsStringified<double>
     max_samples?: integer
     max_size?: ByteSize
     time_to_live?: Duration
