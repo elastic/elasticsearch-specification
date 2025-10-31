@@ -45,9 +45,9 @@
         "default": 1
       },
       "priority": {
-        "type": "string",
+        "type": "enum",
         "description": "The deployment priority.",
-        "default": "normal"
+        "options": ["normal", "low"]
       },
       "queue_capacity": {
         "type": "int",
@@ -60,9 +60,9 @@
         "default": "20s"
       },
       "wait_for": {
-        "type": "string",
-        "description": "The allocation status for which to wait",
-        "options": ["starting", "started", "fully_allocated"],
+        "type": "enum",
+        "description": "Specifies the allocation status to wait for before returning.",
+        "options": ["started", "starting", "fully_allocated"],
         "default": "started"
       }
     },
