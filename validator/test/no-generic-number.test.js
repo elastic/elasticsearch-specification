@@ -32,7 +32,6 @@ const ruleTester = new RuleTester({
 
 ruleTester.run('no-generic-number', rule, {
   valid: [
-    // Using concrete numeric types is valid
     `type MyType = { count: integer }`,
     `type MyType = { amount: long }`,
     `type MyType = { price: float }`,
@@ -43,13 +42,10 @@ ruleTester.run('no-generic-number', rule, {
     `type MyType = { bigUnsigned: ulong }`,
     `class MyClass { score: float; count: integer; }`,
     `interface MyInterface { id: long; ratio: double; }`,
-    // Union types with concrete types
     `type MyType = { value: integer | string }`,
     `type MyType = { id: long | float }`,
-    // Arrays and generics with concrete types
     `type MyType = { numbers: integer[] }`,
     `type MyType = { values: Array<long> }`,
-    // Dictionary with concrete types
     `type MyType = Dictionary<string, integer>`,
   ],
   invalid: [
