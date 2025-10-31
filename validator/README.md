@@ -9,7 +9,7 @@ It is configured [in the specification directory](../specification/eslint.config
 |---------------------------------------| - |
 | `single-key-dictionary-key-is-string` | `SingleKeyDictionary` keys must be strings. |
 | `dictionary-key-is-string`            | `Dictionary` keys must be strings. |
-| `no-native-types`                     | `Typescript native types not allowed, use aliases. |
+| `no-native-types`                     | TypeScript native utility types (`Record`, `Partial`, etc.) and collection types (`Map`, `Set`, etc.) are not allowed. Use spec-defined aliases like `Dictionary` instead. |
 | `invalid-node-types`                  | The spec uses a subset of TypeScript, so some types, clauses and expressions are not allowed. |
 
 ## Usage
