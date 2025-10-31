@@ -11882,7 +11882,8 @@ export interface IndicesDataStreamIndex {
 
 export interface IndicesDataStreamLifecycle {
   data_retention?: Duration
-  downsampling: IndicesDownsamplingRound[]
+  downsampling?: IndicesDownsamplingRound[]
+  downsampling_method?: IndicesSamplingMethod
   enabled?: boolean
 }
 
@@ -13154,6 +13155,7 @@ export interface IndicesPutDataLifecycleRequest extends RequestBase {
   body?: {
     data_retention?: Duration
     downsampling?: IndicesDownsamplingRound[]
+    downsampling_method?: IndicesSamplingMethod
     enabled?: boolean
   }
 }

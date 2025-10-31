@@ -20,6 +20,7 @@
 import { ByteSize } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { SamplingMethod } from '@indices/_types/Downsample'
 import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
 
 /**
@@ -35,7 +36,12 @@ export class DataStreamLifecycle {
   /**
    * The list of downsampling rounds to execute as part of this downsampling configuration
    */
-  downsampling: DownsamplingRound[]
+  downsampling?: DownsamplingRound[]
+  /**
+   * The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires
+   * `downsampling` to be defined. Defaults to `aggregate`.
+   */
+  downsampling_method?: SamplingMethod
   /**
    * If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle
    * that's disabled (enabled: `false`) will have no effect on the data stream.
