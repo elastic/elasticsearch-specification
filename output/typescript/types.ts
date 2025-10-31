@@ -11926,11 +11926,12 @@ export interface IndicesDataStreamVisibility {
 
 export interface IndicesDownsampleConfig {
   fixed_interval: DurationLarge
+  sampling_method?: IndicesSamplingMethod
 }
 
 export interface IndicesDownsamplingRound {
   after: Duration
-  config: IndicesDownsampleConfig
+  fixed_interval: DurationLarge
 }
 
 export interface IndicesFailureStore {
@@ -12225,6 +12226,8 @@ export interface IndicesQueries {
 export interface IndicesRetentionLease {
   period: Duration
 }
+
+export type IndicesSamplingMethod = 'aggregate' | 'last_value'
 
 export interface IndicesSearchIdle {
   after?: Duration

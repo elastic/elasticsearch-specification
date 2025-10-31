@@ -60647,25 +60647,8 @@
               }
             ]
           },
-          "config": {
-            "description": "The downsample configuration to execute.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DownsampleConfig"
-              }
-            ]
-          }
-        },
-        "required": [
-          "after",
-          "config"
-        ]
-      },
-      "indices._types.DownsampleConfig": {
-        "type": "object",
-        "properties": {
           "fixed_interval": {
-            "description": "The interval at which to aggregate the original time series index.",
+            "description": "The downsample interval.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DurationLarge"
@@ -60674,6 +60657,7 @@
           }
         },
         "required": [
+          "after",
           "fixed_interval"
         ]
       },
