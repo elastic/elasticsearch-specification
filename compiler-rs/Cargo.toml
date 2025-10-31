@@ -4,6 +4,7 @@ members = [
     "clients_schema",
     "openapi_to_clients_schema",
     "clients_schema_to_openapi",
+    "clients_schema_to_rest_api_spec",
     "compiler-wasm-lib",
 ]
 
