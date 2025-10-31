@@ -1,6 +1,6 @@
 summary: Completion task
 description: >
-  A successful response from `POST _inference/completion/openai_chat_completions`.
+  A successful response from `POST _inference/completion/openai_completions`.
 # type: "response"
 # response_code:
 value: |-
