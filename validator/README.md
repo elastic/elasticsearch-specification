@@ -11,6 +11,7 @@ It is configured [in the specification directory](../specification/eslint.config
 | `dictionary-key-is-string`            | `Dictionary` keys must be strings. |
 | `no-native-types`                     | `Typescript native types not allowed, use aliases. |
 | `invalid-node-types`                  | The spec uses a subset of TypeScript, so some types, clauses and expressions are not allowed. |
+| `no-generic-number`                   | Generic `number` type is not allowed outside of `_types/Numeric.ts`. Use concrete numeric types like `integer`, `long`, `float`, `double`, etc. |
 
 ## Usage
 

@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { integer } from '@_types/Numeric'
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -32,5 +33,5 @@ export class NotFoundAliases
   implements AdditionalProperties<string, IndexAliases>
 {
   error: string
-  status: number
+  status: integer
 }
