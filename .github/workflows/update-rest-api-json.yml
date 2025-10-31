@@ -50,5 +50,5 @@ jobs:
           commit-message: 'Update rest-api-spec'
           labels: specification,skip-backport
           delete-branch: true
-          reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo,pquentin,swallez,technige
+          reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo,pquentin,technige
           branch: automated/rest-api-spec-update-${{ matrix.branch }}

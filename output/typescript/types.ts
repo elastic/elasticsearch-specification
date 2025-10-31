@@ -2543,6 +2543,7 @@ export interface KnnQuery extends QueryDslQueryBase {
   query_vector?: QueryVector
   query_vector_builder?: QueryVectorBuilder
   num_candidates?: integer
+  visit_percentage?: float
   k?: integer
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
@@ -2555,6 +2556,7 @@ export interface KnnRetriever extends RetrieverBase {
   query_vector_builder?: QueryVectorBuilder
   k: integer
   num_candidates: integer
+  visit_percentage?: float
   similarity?: float
   rescore_vector?: RescoreVector
 }
@@ -2565,6 +2567,7 @@ export interface KnnSearch {
   query_vector_builder?: QueryVectorBuilder
   k?: integer
   num_candidates?: integer
+  visit_percentage?: float
   boost?: float
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
@@ -2722,12 +2725,19 @@ export interface QueryVectorBuilder {
 }
 
 export interface RRFRetriever extends RetrieverBase {
-  retrievers: RetrieverContainer[]
+  retrievers: RRFRetrieverEntry[]
   rank_constant?: integer
   rank_window_size?: integer
   query?: string
   fields?: string[]
 }
+
+export interface RRFRetrieverComponent {
+  retriever: RetrieverContainer
+  weight?: float
+}
+
+export type RRFRetrieverEntry = RetrieverContainer | RRFRetrieverComponent
 
 export interface RankBase {
 }
@@ -3764,7 +3774,7 @@ export interface AggregationsGeoLineAggregate extends AggregationsAggregateBase 
 
 export interface AggregationsGeoLineAggregation {
   point: AggregationsGeoLinePoint
-  sort: AggregationsGeoLineSort
+  sort?: AggregationsGeoLineSort
   include_sort?: boolean
   sort_order?: SortOrder
   size?: integer
@@ -4172,7 +4182,7 @@ export interface AggregationsPercentilesAggregateBase extends AggregationsAggreg
 
 export interface AggregationsPercentilesAggregation extends AggregationsFormatMetricAggregationBase {
   keyed?: boolean
-  percents?: double[]
+  percents?: double | double[]
   hdr?: AggregationsHdrMethod
   tdigest?: AggregationsTDigest
 }
@@ -5133,7 +5143,7 @@ export interface AnalysisKeywordTokenizer extends AnalysisTokenizerBase {
 
 export interface AnalysisKuromojiAnalyzer {
   type: 'kuromoji'
-  mode: AnalysisKuromojiTokenizationMode
+  mode?: AnalysisKuromojiTokenizationMode
   user_dictionary?: string
 }
 
@@ -6402,7 +6412,7 @@ export type QueryDslFunctionScoreMode = 'multiply' | 'sum' | 'avg' | 'first' | '
 
 export interface QueryDslFunctionScoreQuery extends QueryDslQueryBase {
   boost_mode?: QueryDslFunctionBoostMode
-  functions?: QueryDslFunctionScoreContainer[]
+  functions?: QueryDslFunctionScoreContainer | QueryDslFunctionScoreContainer[]
   max_boost?: double
   min_score?: double
   query?: QueryDslQueryContainer
@@ -6761,7 +6771,7 @@ export interface QueryDslQueryContainer {
   dis_max?: QueryDslDisMaxQuery
   distance_feature?: QueryDslDistanceFeatureQuery
   exists?: QueryDslExistsQuery
-  function_score?: QueryDslFunctionScoreQuery | QueryDslFunctionScoreContainer[]
+  function_score?: QueryDslFunctionScoreQuery | QueryDslFunctionScoreContainer | QueryDslFunctionScoreContainer[]
   fuzzy?: Partial<Record<Field, QueryDslFuzzyQuery | string | double | boolean>>
   geo_bounding_box?: QueryDslGeoBoundingBoxQuery
   geo_distance?: QueryDslGeoDistanceQuery
@@ -8717,6 +8727,11 @@ export interface CatSegmentsRequest extends CatCatRequestBase {
   s?: Names
   local?: boolean
   master_timeout?: Duration
+  expand_wildcards?: ExpandWildcards
+  allow_no_indices?: boolean
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
+  allow_closed?: boolean
 }
 
 export type CatSegmentsResponse = CatSegmentsSegmentsRecord[]
@@ -9574,7 +9589,7 @@ export interface ClusterAllocationExplainDiskUsage {
 }
 
 export interface ClusterAllocationExplainNodeAllocationExplanation {
-  deciders: ClusterAllocationExplainAllocationDecision[]
+  deciders?: ClusterAllocationExplainAllocationDecision[]
   node_attributes: Record<string, string>
   node_decision: ClusterAllocationExplainDecision
   node_id: Id
@@ -9582,7 +9597,7 @@ export interface ClusterAllocationExplainNodeAllocationExplanation {
   roles: NodeRoles
   store?: ClusterAllocationExplainAllocationStore
   transport_address: TransportAddress
-  weight_ranking: integer
+  weight_ranking?: integer
 }
 
 export interface ClusterAllocationExplainNodeDiskUsage {
@@ -11911,11 +11926,12 @@ export interface IndicesDataStreamVisibility {
 
 export interface IndicesDownsampleConfig {
   fixed_interval: DurationLarge
+  sampling_method?: IndicesSamplingMethod
 }
 
 export interface IndicesDownsamplingRound {
   after: Duration
-  config: IndicesDownsampleConfig
+  fixed_interval: DurationLarge
 }
 
 export interface IndicesFailureStore {
@@ -12210,6 +12226,8 @@ export interface IndicesQueries {
 export interface IndicesRetentionLease {
   period: Duration
 }
+
+export type IndicesSamplingMethod = 'aggregate' | 'last_value'
 
 export interface IndicesSearchIdle {
   after?: Duration
@@ -12994,6 +13012,40 @@ export interface IndicesGetMigrateReindexStatusStatusInProgress {
   reindexed_doc_count: long
 }
 
+export interface IndicesGetSampleRequest extends RequestBase {
+  index: IndexName
+}
+
+export interface IndicesGetSampleResponse {
+  sample: IndicesGetSampleRawDocument[]
+}
+
+export interface IndicesGetSampleRawDocument {
+  index: string
+  source: Record<PropertyName, MappingProperty>
+}
+
+export interface IndicesGetSampleStatsRequest extends RequestBase {
+  index: IndexName
+}
+
+export interface IndicesGetSampleStatsResponse {
+  potential_samples: long
+  samples_rejected_for_max_samples_exceeded: long
+  samples_rejected_for_condition: long
+  samples_rejected_for_rate: long
+  samples_rejected_for_exception: long
+  samples_rejected_for_size: long
+  samples_accepted: long
+  time_sampling?: Duration
+  time_sampling_millis: DurationValue<UnitMillis>
+  time_evaluating_condition?: Duration
+  time_evaluating_condition_millis: DurationValue<UnitMillis>
+  time_compiling_condition?: Duration
+  time_compiling_condition_millis: DurationValue<UnitMillis>
+  last_exception?: string
+}
+
 export interface IndicesGetSettingsRequest extends RequestBase {
   index?: Indices
   name?: Names
@@ -13105,7 +13157,7 @@ export interface IndicesPutDataLifecycleRequest extends RequestBase {
   timeout?: Duration
   body?: {
     data_retention?: Duration
-    downsampling?: IndicesDataStreamLifecycleDownsampling
+    downsampling?: IndicesDownsamplingRound[]
     enabled?: boolean
   }
 }
@@ -14142,6 +14194,7 @@ export interface InferenceCustomResponseParams {
 }
 
 export interface InferenceCustomServiceSettings {
+  batch_size?: integer
   headers?: any
   input_type?: any
   query_parameters?: any
@@ -14181,6 +14234,8 @@ export interface InferenceElasticsearchServiceSettings {
   model_id: string
   num_allocations?: integer
   num_threads: integer
+  long_document_strategy?: string
+  max_chunks_per_doc?: integer
 }
 
 export type InferenceElasticsearchServiceType = 'elasticsearch'
@@ -14211,10 +14266,15 @@ export interface InferenceGoogleAiStudioServiceSettings {
 
 export type InferenceGoogleAiStudioTaskType = 'completion' | 'text_embedding'
 
+export type InferenceGoogleModelGardenProvider = 'google' | 'anthropic'
+
 export interface InferenceGoogleVertexAIServiceSettings {
-  location: string
-  model_id: string
-  project_id: string
+  provider?: InferenceGoogleModelGardenProvider
+  url?: string
+  streaming_url?: string
+  location?: string
+  model_id?: string
+  project_id?: string
   rate_limit?: InferenceRateLimitSetting
   service_account_json: string
   dimensions?: integer
@@ -14226,6 +14286,7 @@ export interface InferenceGoogleVertexAITaskSettings {
   auto_truncate?: boolean
   top_n?: integer
   thinking_config?: InferenceThinkingConfig
+  max_tokens?: integer
 }
 
 export type InferenceGoogleVertexAITaskType = 'rerank' | 'text_embedding' | 'completion' | 'chat_completion'
@@ -14454,6 +14515,7 @@ export type InferenceOpenAIServiceType = 'openai'
 
 export interface InferenceOpenAITaskSettings {
   user?: string
+  headers?: any
 }
 
 export type InferenceOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
@@ -14527,7 +14589,7 @@ export type InferenceTaskTypeElasticsearch = 'sparse_embedding' | 'text_embeddin
 
 export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
-export type InferenceTaskTypeGoogleVertexAI = 'text_embedding' | 'rerank'
+export type InferenceTaskTypeGoogleVertexAI = 'chat_completion' | 'completion' | 'text_embedding' | 'rerank'
 
 export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
@@ -14966,7 +15028,9 @@ export interface InferenceRerankRequest extends RequestBase {
   timeout?: Duration
   body?: {
     query: string
-    input: string | string[]
+    input: string[]
+    return_documents?: boolean
+    top_n?: integer
     task_settings?: InferenceTaskSettings
   }
 }
