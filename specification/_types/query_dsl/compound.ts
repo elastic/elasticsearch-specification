@@ -115,7 +115,7 @@ export class FunctionScoreQuery extends QueryBase {
   /**
    * One or more functions that compute a new score for each document returned by the query.
    */
-  functions?: FunctionScoreContainer | FunctionScoreContainer[]
+  functions?: FunctionScoreContainer[]
   /**
    * Restricts the new score to not exceed the provided limit.
    */
