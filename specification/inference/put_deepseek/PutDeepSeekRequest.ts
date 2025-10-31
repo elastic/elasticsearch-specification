@@ -24,7 +24,6 @@ import {
   DeepSeekServiceSettings,
   DeepSeekServiceType
 } from '@inference/_types/CommonTypes'
-import { InferenceChunkingSettings } from '@inference/_types/Services'
 import { TaskTypeDeepSeek } from '@inference/_types/TaskType'
 
 /**

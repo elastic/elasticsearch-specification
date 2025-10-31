@@ -25,7 +25,6 @@ import {
   ContextualAIServiceType,
   ContextualAITaskSettings
 } from '@inference/_types/CommonTypes'
-import { InferenceChunkingSettings } from '@inference/_types/Services'
 import { TaskTypeContextualAI } from '@inference/_types/TaskType'
 
 /**

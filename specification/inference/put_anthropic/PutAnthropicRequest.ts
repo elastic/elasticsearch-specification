@@ -26,7 +26,6 @@ import {
   AnthropicTaskSettings,
   AnthropicTaskType
 } from '@inference/_types/CommonTypes'
-import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**
  * Create an Anthropic inference endpoint.
