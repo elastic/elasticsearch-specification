@@ -18,6 +18,7 @@
  */
 
 import { Id } from '@_types/common'
+import { ErrorCause } from '@_types/Errors'
 import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
 import { AsyncSearch } from './AsyncSearch'
 
@@ -48,6 +49,7 @@ export class AsyncSearchResponseBase {
    */
   completion_time?: DateTime
   completion_time_in_millis?: EpochTime<UnitMillis>
+  error?: ErrorCause
 }
 export class AsyncSearchDocumentResponseBase<
   TDocument

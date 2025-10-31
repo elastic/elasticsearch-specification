@@ -17,9 +17,29 @@
  * under the License.
  */
 
+import { ErrorCause } from '@_types/Errors'
+import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
+import { AsyncSearch } from '@async_search/_types/AsyncSearch'
 import { AsyncSearchDocumentResponseBase } from '@async_search/_types/AsyncSearchResponseBase'
 
 export class Response<TDocument> {
   /** @codegen_name result */
   body: AsyncSearchDocumentResponseBase<TDocument>
+  exceptions: [
+    {
+      statusCodes: [404, 400, 500, 429]
+      body: {
+        is_partial: boolean
+        is_running: boolean
+        expiration_time?: DateTime
+        expiration_time_in_millis: EpochTime<UnitMillis>
+        start_time?: DateTime
+        start_time_in_millis: EpochTime<UnitMillis>
+        completion_time?: DateTime
+        completion_time_in_millis?: EpochTime<UnitMillis>
+        error?: ErrorCause
+        response?: AsyncSearch<TDocument>
+      }
+    }
+  ]
 }
