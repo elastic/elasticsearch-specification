@@ -56,3 +56,16 @@ export class AsyncSearchDocumentResponseBase<
 > extends AsyncSearchResponseBase {
   response: AsyncSearch<TDocument>
 }
+
+export class AsyncSearchResponseException<TDocument> {
+  is_partial: boolean
+  is_running: boolean
+  expiration_time?: DateTime
+  expiration_time_in_millis: EpochTime<UnitMillis>
+  start_time?: DateTime
+  start_time_in_millis: EpochTime<UnitMillis>
+  completion_time?: DateTime
+  completion_time_in_millis?: EpochTime<UnitMillis>
+  error?: ErrorCause
+  response?: AsyncSearch<TDocument>
+}
