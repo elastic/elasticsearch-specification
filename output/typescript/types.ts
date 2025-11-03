@@ -12238,6 +12238,7 @@ export interface IndicesSamplingConfiguration {
   creation_time?: DateTime
   creation_time_in_millis: long
 }
+
 export type IndicesSamplingMethod = 'aggregate' | 'last_value'
 
 export interface IndicesSearchIdle {
