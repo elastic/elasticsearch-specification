@@ -125,7 +125,7 @@ export class DelayedDataCheckConfig {
    * It defaults to null, which causes an appropriate `check_window` to be calculated when the real-time datafeed runs.
    * In particular, the default `check_window` span calculation is based on the maximum of `2h` or `8 * bucket_span`.
    */
-  check_window?: Duration // default: null
+  check_window?: Duration
   /**
    * Specifies whether the datafeed periodically checks for delayed data.
    */
