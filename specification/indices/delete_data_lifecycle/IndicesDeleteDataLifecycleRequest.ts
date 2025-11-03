@@ -41,6 +41,9 @@ export interface Request extends RequestBase {
     name: DataStreamNames
   }
   query_parameters: {
+    /**
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
     /**
      * @server_default 30s
