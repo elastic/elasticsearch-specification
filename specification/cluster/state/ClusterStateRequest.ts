@@ -74,6 +74,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /** @server_default true */
     allow_no_indices?: boolean
+    /** @server_default open */
     expand_wildcards?: ExpandWildcards
     /** @server_default false */
     flat_settings?: boolean
