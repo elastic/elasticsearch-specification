@@ -164,9 +164,9 @@ fn convert_url_template(
 /// Convert a Property to a Parameter
 fn convert_parameter(property: &Property, types: &IndexMap<TypeName, TypeDefinition>) -> Result<Parameter> {
     let typ = get_type_name(&property.typ, types).to_string();
-    let mut options = get_enum_options(&property.typ, types);
+    let options = get_enum_options(&property.typ, types);
 
-    let mut default = property.server_default.as_ref().map(|default| match default {
+    let default = property.server_default.as_ref().map(|default| match default {
         clients_schema::ServerDefault::String(s) => serde_json::Value::String(s.clone()),
         clients_schema::ServerDefault::Number(n) => serde_json::Value::from(*n as i64),
         clients_schema::ServerDefault::Boolean(b) => serde_json::Value::Bool(*b),
@@ -178,17 +178,6 @@ fn convert_parameter(property: &Property, types: &IndexMap<TypeName, TypeDefinit
         }
     });
 
-    // Hardcode expand_wildcards parameter
-    if property.name == "expand_wildcards" {
-        options = vec![
-            "open".to_string(),
-            "closed".to_string(),
-            "hidden".to_string(),
-            "none".to_string(),
-            "all".to_string(),
-        ];
-        default = Some(serde_json::Value::String("all".to_string()));
-    }
 
     let deprecated = property.deprecation.as_ref().map(|dep| Deprecation {
         version: dep.version.clone(),
@@ -229,7 +218,7 @@ const BUILTIN_MAPPINGS: &[((&str, &str), &str)] = &[
     (("_global.search._types", "TrackHits"), "boolean|long"),
 ];
 
-fn is_list_enum(union: &UnionOf) -> Option<String> {
+fn is_list_enum(union: &UnionOf) -> Option<TypeName> {
     // if union of X and X[]
     if union.items.len() == 2 {
         // check if first item is InstanceOf and second is ArrayOf
@@ -240,10 +229,7 @@ fn is_list_enum(union: &UnionOf) -> Option<String> {
                     _ => panic!("Expected InstanceOf inside ArrayOf in union type"),
                 };
                 if instance.typ.name == array_instance.typ.name {
-                    if instance.typ.name == "string" {
-                        return Some("string".to_string());
-                    }
-                    return Some("enum".to_string());
+                    return Some(instance.typ.clone());
                 }
             }
         }
@@ -264,7 +250,12 @@ fn is_literal(instance: &InstanceOf) -> Option<String> {
 fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>) -> String {
     match value_of {
         ValueOf::ArrayOf(_) => "list".to_string(),
-        ValueOf::UnionOf(union) => if let Some(union_type) = is_list_enum(union) { union_type } else { tracing::warn!("{:?}", union); todo!() }.to_string(),
+        ValueOf::UnionOf(union) => if let Some(typ) = is_list_enum(union) {
+            if typ.name == "string" { "string" } else { "enum" }
+        } else {
+            tracing::warn!("{:?}", union);
+            todo!()
+        }.to_string(),
         ValueOf::LiteralValue(_) => "string".to_string(),
         ValueOf::InstanceOf(instance) => {
             let type_name = &instance.typ;
@@ -304,10 +295,35 @@ fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>)
 fn get_enum_options(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>) -> Vec<String> {
     match value_of {
         ValueOf::InstanceOf(instance) => {
-            if let Some(TypeDefinition::Enum(enum_def)) = types.get(&instance.typ) {
-                enum_def.members.iter().map(|member| member.name.clone()).collect()
-            } else {
-                vec![]
+            match types.get(&instance.typ) {
+                Some(TypeDefinition::Enum(enum_def)) => {
+                    return enum_def.members.iter().map(|member: &clients_schema::EnumMember| member.name.clone()).collect();
+                }
+                // While ExpandWildcards is ultimately an enum, it is specified, lists are allowed too:
+                // export type ExpandWildcards = ExpandWildcard | ExpandWildcard[]
+                // and in request files this alias is used
+                // expand_wildcards?: ExpandWildcards
+                Some(TypeDefinition::TypeAlias(alias)) => {
+                    if let ValueOf::UnionOf(union) = &alias.typ {
+                        if let Some(union_type) = is_list_enum(union) {
+                            match types.get(&union_type) {
+                                Some(TypeDefinition::Enum(enum_def)) => {
+                                    return enum_def.members.iter().map(|member: &clients_schema::EnumMember| member.name.clone()).collect();
+                                }
+                                _ => {
+                                    tracing::debug!("Expected enum type for union type: {:?}", union_type);
+                                    return vec![];
+                                }
+                            }
+                        }
+                    }
+                    tracing::debug!("Expected union type for type alias: {:?}", alias);
+                    vec![]
+                }
+                _ => {
+                    tracing::debug!("Found union type for instance: {:?}", types.get(&instance.typ));
+                    return vec![]
+                }
             }
         }
         ValueOf::UnionOf(union) => {
