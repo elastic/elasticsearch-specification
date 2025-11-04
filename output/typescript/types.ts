@@ -14063,7 +14063,7 @@ export interface InferenceAlibabaCloudTaskSettings {
   return_token?: boolean
 }
 
-export type InferenceAlibabaCloudTaskType = 'completion' | 'rerank' | 'space_embedding' | 'text_embedding'
+export type InferenceAlibabaCloudTaskType = 'completion' | 'rerank' | 'sparse_embedding' | 'text_embedding'
 
 export interface InferenceAmazonBedrockServiceSettings {
   access_key: string
@@ -14842,7 +14842,6 @@ export interface InferencePutAnthropicRequest extends RequestBase {
   anthropic_inference_id: Id
   timeout?: Duration
   body?: {
-    chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceAnthropicServiceType
     service_settings: InferenceAnthropicServiceSettings
     task_settings?: InferenceAnthropicTaskSettings
@@ -14898,7 +14897,6 @@ export interface InferencePutContextualaiRequest extends RequestBase {
   contextualai_inference_id: Id
   timeout?: Duration
   body?: {
-    chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceContextualAIServiceType
     service_settings: InferenceContextualAIServiceSettings
     task_settings?: InferenceContextualAITaskSettings
@@ -14925,7 +14923,6 @@ export interface InferencePutDeepseekRequest extends RequestBase {
   deepseek_inference_id: Id
   timeout?: Duration
   body?: {
-    chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceDeepSeekServiceType
     service_settings: InferenceDeepSeekServiceSettings
   }
@@ -15074,6 +15071,7 @@ export interface InferencePutWatsonxRequest extends RequestBase {
   watsonx_inference_id: Id
   timeout?: Duration
   body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceWatsonxServiceType
     service_settings: InferenceWatsonxServiceSettings
   }
