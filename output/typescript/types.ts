@@ -358,7 +358,7 @@ export interface FieldCapsRequest extends RequestBase {
   fields?: Fields
   ignore_unavailable?: boolean
   include_unmapped?: boolean
-  filters?: string
+  filters?: string | string[]
   types?: string[]
   include_empty_fields?: boolean
   project_routing?: ProjectRouting
@@ -9693,7 +9693,7 @@ export interface ClusterExistsComponentTemplateRequest extends RequestBase {
 export type ClusterExistsComponentTemplateResponse = boolean
 
 export interface ClusterGetComponentTemplateRequest extends RequestBase {
-  name?: Name
+  name?: Names
   flat_settings?: boolean
   settings_filter?: string | string[]
   include_defaults?: boolean
@@ -12379,7 +12379,7 @@ export interface IndicesAddBlockAddIndicesBlockStatus {
 }
 
 export interface IndicesAddBlockRequest extends RequestBase {
-  index: IndexName
+  index: Indices
   block: IndicesIndicesBlockOptions
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -12577,7 +12577,7 @@ export interface IndicesDataStreamsStatsDataStreamsStatsItem {
 }
 
 export interface IndicesDataStreamsStatsRequest extends RequestBase {
-  name?: IndexName
+  name?: Indices
   expand_wildcards?: ExpandWildcards
 }
 
@@ -13519,7 +13519,7 @@ export interface IndicesRemoveBlockRemoveIndicesBlockStatus {
 }
 
 export interface IndicesRemoveBlockRequest extends RequestBase {
-  index: IndexName
+  index: Indices
   block: IndicesIndicesBlockOptions
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -20538,7 +20538,7 @@ export interface SecurityClearApiKeyCacheResponse {
 }
 
 export interface SecurityClearCachedPrivilegesRequest extends RequestBase {
-  application: Name
+  application: Names
 }
 
 export interface SecurityClearCachedPrivilegesResponse {
@@ -21998,7 +21998,7 @@ export type SnapshotCreateRepositoryResponse = AcknowledgedResponseBase
 
 export interface SnapshotDeleteRequest extends RequestBase {
   repository: Name
-  snapshot: Name
+  snapshot: Names
   master_timeout?: Duration
   wait_for_completion?: boolean
 }
@@ -22565,7 +22565,7 @@ export interface TextStructureTopHit {
 }
 
 export interface TextStructureFindFieldStructureRequest extends RequestBase {
-  column_names?: string
+  column_names?: Names
   delimiter?: string
   documents_to_sample?: uint
   ecs_compatibility?: TextStructureEcsCompatibilityType
@@ -22600,7 +22600,7 @@ export interface TextStructureFindFieldStructureResponse {
 }
 
 export interface TextStructureFindMessageStructureRequest extends RequestBase {
-  column_names?: string
+  column_names?: Names
   delimiter?: string
   ecs_compatibility?: TextStructureEcsCompatibilityType
   explain?: boolean

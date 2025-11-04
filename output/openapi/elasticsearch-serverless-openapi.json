@@ -7269,7 +7269,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types.IndexName"
+              "$ref": "#/components/schemas/_types.Indices"
             },
             "style": "simple"
           },
@@ -7395,7 +7395,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types.IndexName"
+              "$ref": "#/components/schemas/_types.Indices"
             },
             "style": "simple"
           },
@@ -84518,7 +84518,7 @@
         "required": true,
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types.Name"
+          "$ref": "#/components/schemas/_types.Names"
         },
         "style": "simple"
       },
@@ -85239,7 +85239,17 @@
         "description": "A comma-separated list of filters to apply to the response.",
         "deprecated": false,
         "schema": {
-          "type": "string"
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         },
         "x-state": "Generally available",
         "style": "form"

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Field, GrokPattern, IndexName } from '@_types/common'
+import { Field, GrokPattern, IndexName, Names } from '@_types/common'
 import { uint } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { EcsCompatibilityType, FormatType } from '../_types/Structure'
@@ -60,7 +60,7 @@ interface Request extends RequestBase {
      * If this parameter is not specified, the structure finder uses the column names from the header row of the text.
      * If the text does not have a header row, columns are named "column1", "column2", "column3", for example.
      */
-    column_names?: string
+    column_names?: Names
     /**
      * If you have set `format` to `delimited`, you can specify the character used to delimit the values in each row.
      * Only a single character is supported; the delimiter cannot have multiple characters.
