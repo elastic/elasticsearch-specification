@@ -86,8 +86,11 @@ export class ScheduleContainer {
   daily?: DailySchedule
   hourly?: HourlySchedule
   interval?: Duration
+  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   monthly?: TimeOfMonth | TimeOfMonth[]
+  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   weekly?: TimeOfWeek | TimeOfWeek[]
+  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   yearly?: TimeOfYear | TimeOfYear[]
 }
 

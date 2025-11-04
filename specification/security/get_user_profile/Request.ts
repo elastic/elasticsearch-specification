@@ -45,6 +45,7 @@ export interface Request extends RequestBase {
     /**
      * A unique identifier for the user profile.
      */
+    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
     uid: UserProfileId | UserProfileId[]
   }
   query_parameters: {

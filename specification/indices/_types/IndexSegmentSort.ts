@@ -21,8 +21,11 @@ import { Fields } from '@_types/common'
 
 export class IndexSegmentSort {
   field?: Fields
+  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   order?: SegmentSortOrder | SegmentSortOrder[]
+  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   mode?: SegmentSortMode | SegmentSortMode[]
+  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   missing?: SegmentSortMissing | SegmentSortMissing[]
 }
 

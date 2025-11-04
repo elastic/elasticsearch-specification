@@ -494,6 +494,7 @@ export class InferenceResponseResult {
    * For regression models, its a numerical value
    * For classification models, it may be an integer, double, boolean or string depending on prediction type
    */
+  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   predicted_value?: PredictedValue | PredictedValue[]
 
   /**

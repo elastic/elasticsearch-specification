@@ -48,6 +48,7 @@ export class AddAction {
    * Aliases for the action.
    * Index alias names support date math.
    */
+  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   aliases?: IndexAlias | IndexAlias[]
   /**
    * Query used to limit documents the alias can access.
@@ -104,6 +105,7 @@ export class RemoveAction {
    * Aliases for the action.
    * Index alias names support date math.
    */
+  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   aliases?: IndexAlias | IndexAlias[]
   /**
    * Data stream or index for the action.

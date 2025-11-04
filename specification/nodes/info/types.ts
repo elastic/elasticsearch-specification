@@ -143,6 +143,7 @@ export class NodeInfoSettingsCluster {
   name: Name
   routing?: IndexRouting
   election: NodeInfoSettingsClusterElection
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   initial_master_nodes?: string[] | string
   /**
    * @availability stack since=7.16.0
@@ -152,6 +153,7 @@ export class NodeInfoSettingsCluster {
 }
 
 export class DeprecationIndexing {
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   enabled: boolean | string
 }
 
@@ -186,6 +188,7 @@ export class NodeInfoRepositoriesUrl {
 export class NodeInfoDiscover
   implements AdditionalProperties<string, UserDefinedValue>
 {
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   seed_hosts?: string[] | string
   type?: string
   seed_providers?: string[]
@@ -202,7 +205,9 @@ export class NodeInfoClient {
 export class NodeInfoSettingsHttp {
   type: NodeInfoSettingsHttpType
   'type.default'?: string // TODO this clashes with NodeInfoSettingsHttpType
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   compression?: boolean | string
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   port?: integer | string
 }
 
@@ -236,6 +241,7 @@ export class NodeInfoSettingsTransportFeatures {
 }
 
 export class NodeInfoSettingsNetwork {
+  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   host?: Host | Host[]
 }
 
@@ -376,6 +382,7 @@ export class NodeJvmInfo {
   vm_vendor: string
   vm_version: VersionString
   using_bundled_jdk: boolean
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   using_compressed_ordinary_object_pointers?: boolean | string
   input_arguments: string[]
 }

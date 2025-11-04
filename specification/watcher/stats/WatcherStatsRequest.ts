@@ -44,6 +44,7 @@ export interface Request extends RequestBase {
     /**
      * Defines which additional metrics are included in the response.
      */
+    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
     metric?: WatcherMetric | WatcherMetric[]
   }
   query_parameters: {
@@ -55,6 +56,7 @@ export interface Request extends RequestBase {
     /**
      * Defines which additional metrics are included in the response.
      */
+    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
     metric?: WatcherMetric | WatcherMetric[]
   }
 }

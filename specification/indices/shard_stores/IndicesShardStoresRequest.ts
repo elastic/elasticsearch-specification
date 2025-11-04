@@ -77,6 +77,7 @@ export interface Request extends RequestBase {
     /**
      * List of shard health statuses used to limit the request.
      */
+    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
     status?: ShardStoreStatus | ShardStoreStatus[]
   }
 }

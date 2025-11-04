@@ -228,6 +228,7 @@ export interface Request extends RequestBase {
      * @availability stack since=8.4.0
      * @availability serverless
      */
+    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
     knn?: KnnSearch | KnnSearch[]
     /**
      * Minimum _score for matching documents. Documents with a lower _score are
@@ -240,6 +241,7 @@ export interface Request extends RequestBase {
      * Defines the search definition using the Query DSL.
      */
     query?: QueryContainer
+    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
     rescore?: Rescore | Rescore[]
     /**
      * Retrieve a script evaluation (based on different fields) for each hit.

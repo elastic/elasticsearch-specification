@@ -50,15 +50,15 @@ export class SuggestBase {
  * @variant name=completion
  */
 export class CompletionSuggest<TDocument> extends SuggestBase {
-  options:
-    | CompletionSuggestOption<TDocument>
-    | CompletionSuggestOption<TDocument>[]
+  options: // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+  CompletionSuggestOption<TDocument> | CompletionSuggestOption<TDocument>[]
 }
 
 /**
  * @variant name=phrase
  */
 export class PhraseSuggest extends SuggestBase {
+  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   options: PhraseSuggestOption | PhraseSuggestOption[]
 }
 
@@ -66,6 +66,7 @@ export class PhraseSuggest extends SuggestBase {
  * @variant name=term
  */
 export class TermSuggest extends SuggestBase {
+  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   options: TermSuggestOption | TermSuggestOption[]
 }
 
@@ -186,6 +187,7 @@ export class RegexOptions {
    * Optional operators for the regular expression.
    * @doc_id regexp-syntax
    */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   flags?: integer | string
   /**
    * Maximum number of automaton states required for the query.

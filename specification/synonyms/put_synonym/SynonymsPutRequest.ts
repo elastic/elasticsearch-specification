@@ -53,6 +53,7 @@ export interface Request extends RequestBase {
     /**
      * The synonym rules definitions for the synonyms set.
      */
+    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
     synonyms_set: SynonymRule | SynonymRule[]
   }
   query_parameters: {

@@ -54,6 +54,7 @@ export interface Request extends RequestBase {
      * Inference input.
      * Either a string or an array of strings.
      */
+    // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
     input: string | Array<string>
     /**
      * The input data type for the text embedding model. Possible values include:

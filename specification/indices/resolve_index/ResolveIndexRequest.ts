@@ -70,6 +70,7 @@ export interface Request extends RequestBase {
      * @availability stack since=9.2.0 stability=stable
      * @availability serverless stability=stable visibility=public
      */
+    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
     mode?: IndexMode | IndexMode[]
     /**
      * Specifies a subset of projects to target using project

@@ -154,6 +154,7 @@ export interface Request extends RequestBase {
      * @availability stack since=9.1.0
      * @availability serverless
      */
+    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
     state?: SnapshotState | SnapshotState[]
     /**
      * If `true`, returns additional information about each snapshot such as the version of Elasticsearch which took the snapshot, the start and end times of the snapshot, and the number of shards snapshotted.

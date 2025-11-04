@@ -64,6 +64,7 @@ export enum PhoneticRuleType {
 export class PhoneticTokenFilter extends TokenFilterBase {
   type: 'phonetic'
   encoder: PhoneticEncoder
+  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   languageset?: PhoneticLanguage | PhoneticLanguage[]
   max_code_len?: integer
   name_type?: PhoneticNameType

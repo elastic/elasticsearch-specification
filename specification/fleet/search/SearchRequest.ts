@@ -72,6 +72,7 @@ export interface Request extends RequestBase {
     /**
      * A single target to search. If the target is an index alias, it must resolve to a single index.
      */
+    // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
     index: IndexName | IndexAlias
   }
   query_parameters: {
@@ -184,6 +185,7 @@ export interface Request extends RequestBase {
      * Defines the search definition using the Query DSL.
      */
     query?: QueryContainer
+    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
     rescore?: Rescore | Rescore[]
     /**
      * Retrieve a script evaluation (based on different fields) for each hit.

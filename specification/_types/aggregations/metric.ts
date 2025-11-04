@@ -439,6 +439,7 @@ export class TopMetricsAggregation extends MetricAggregationBase {
   /**
    * The fields of the top document to return.
    */
+  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   metrics?: TopMetricsValue | TopMetricsValue[]
   /**
    * The number of top documents from which to return metrics.

@@ -60,6 +60,7 @@ export interface Request extends RequestBase {
     /**
      * A comma-separated list of job types to fetch the sync jobs for
      */
+    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
     job_type?: SyncJobType | SyncJobType[]
   }
 }
