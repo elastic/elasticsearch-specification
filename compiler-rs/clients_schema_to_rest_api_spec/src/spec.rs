@@ -1,5 +1,5 @@
 use indexmap::IndexMap;
-use serde::{Serialize};
+use serde::Serialize;
 use std::collections::HashMap;
 
 #[derive(Debug, Serialize)]
@@ -44,6 +44,8 @@ pub struct Path {
 pub struct PathPart {
     #[serde(rename = "type")]
     pub typ: String,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub options: Vec<String>,
     pub description: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecated: Option<Deprecation>,

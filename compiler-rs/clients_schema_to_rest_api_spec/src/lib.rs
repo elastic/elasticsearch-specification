@@ -1,6 +1,6 @@
 use anyhow::Result;
 use clients_schema::{
-    Body as SchemaBody, Endpoint as SchemaEndpoint, Flavor, IndexedModel, InstanceOf, Property, TypeDefinition,
+    Body as SchemaBody, Endpoint as SchemaEndpoint, Enum, Flavor, IndexedModel, InstanceOf, Property, TypeDefinition,
     TypeName, UnionOf, UrlTemplate, ValueOf, Visibility,
 };
 use indexmap::IndexMap;
@@ -133,7 +133,7 @@ fn convert_url_template(
 ) -> Result<Path> {
     let mut parts = HashMap::new();
 
-    // Extract path parameters from the request type, but only include those referenced in this URL template
+    // Extract path parameters from the request type
     if let Some(request_type_name) = &endpoint.request {
         if let Some(TypeDefinition::Request(request)) = types.get(request_type_name) {
             for path_param in &request.path {
@@ -142,6 +142,7 @@ fn convert_url_template(
                 if url_template.path.contains(&param_pattern) {
                     let part = PathPart {
                         typ: get_type_name(&path_param.typ, types).to_string(),
+                        options: get_enum_options(&path_param.typ, types),
                         description: path_param.description.clone().unwrap_or_default(),
                         deprecated: path_param.deprecation.as_ref().map(|dep| Deprecation {
                             version: dep.version.clone(),
@@ -208,12 +209,11 @@ const BUILTIN_MAPPINGS: &[((&str, &str), &str)] = &[
     (("_types", "time"), "time"),
     (("_types", "Duration"), "time"),
     // special cases
-    (("_types", "ExpandWildcards"), "enum"),
     (("_types", "DateTime"), "time"),
     (("_types", "WaitForActiveShards"), "string"),
+    (("_types", "ByteSize"), "string"),
     // sometimes list in rest-api-spec as comma-separate values are allowed
     // but the Elasticsearch specification always models it as a string.
-    (("_types", "Routing"), "list"),
     (("_global.search._types", "SourceConfigParam"), "list"),
     (("_global.search._types", "TrackHits"), "boolean|long"),
 ];
@@ -251,11 +251,12 @@ fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>)
     match value_of {
         ValueOf::ArrayOf(_) => "list".to_string(),
         ValueOf::UnionOf(union) => if let Some(typ) = is_list_enum(union) {
-            if typ.name == "string" { "string" } else { "enum" }
+            "list"
         } else {
             tracing::warn!("{:?}", union);
             todo!()
-        }.to_string(),
+        }
+        .to_string(),
         ValueOf::LiteralValue(_) => "string".to_string(),
         ValueOf::InstanceOf(instance) => {
             let type_name = &instance.typ;
@@ -296,9 +297,7 @@ fn get_enum_options(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinitio
     match value_of {
         ValueOf::InstanceOf(instance) => {
             match types.get(&instance.typ) {
-                Some(TypeDefinition::Enum(enum_def)) => {
-                    return enum_def.members.iter().map(|member: &clients_schema::EnumMember| member.name.clone()).collect();
-                }
+                Some(TypeDefinition::Enum(enum_def)) => return extract_enum_members(enum_def),
                 // While ExpandWildcards is ultimately an enum, it is specified, lists are allowed too:
                 // export type ExpandWildcards = ExpandWildcard | ExpandWildcard[]
                 // and in request files this alias is used
@@ -308,7 +307,7 @@ fn get_enum_options(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinitio
                         if let Some(union_type) = is_list_enum(union) {
                             match types.get(&union_type) {
                                 Some(TypeDefinition::Enum(enum_def)) => {
-                                    return enum_def.members.iter().map(|member: &clients_schema::EnumMember| member.name.clone()).collect();
+                                    return extract_enum_members(enum_def);
                                 }
                                 _ => {
                                     tracing::debug!("Expected enum type for union type: {:?}", union_type);
@@ -322,11 +321,22 @@ fn get_enum_options(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinitio
                 }
                 _ => {
                     tracing::debug!("Found union type for instance: {:?}", types.get(&instance.typ));
-                    return vec![]
+                    return vec![];
                 }
             }
         }
         ValueOf::UnionOf(union) => {
+            if let Some(union_type) = is_list_enum(union) {
+                match types.get(&union_type) {
+                    Some(TypeDefinition::Enum(enum_def)) => {
+                        return extract_enum_members(enum_def);
+                    }
+                    _ => {
+                        tracing::debug!("Expected enum type for union type: {:?}", union_type);
+                        return vec![];
+                    }
+                }
+            }
             // For union types, collect all literal values as options
             union
                 .items
@@ -339,6 +349,14 @@ fn get_enum_options(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinitio
         }
         _ => vec![],
     }
+}
+
+fn extract_enum_members(enum_def: &Enum) -> Vec<String> {
+    enum_def
+        .members
+        .iter()
+        .map(|member: &clients_schema::EnumMember| member.name.clone())
+        .collect()
 }
 
 /// Add parameters from an attached behavior to the parameters map
