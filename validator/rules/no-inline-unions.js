@@ -35,15 +35,27 @@ export default createRule({
           parent?.type === 'TSTypeAnnotation' &&
           parent.parent?.type === 'TSPropertySignature';
         
-        if (isPropertyAnnotation || isInterfaceProperty) {
-          context.report({ 
-            node, 
-            messageId: 'noInlineUnion',
-            data: {
-              suggestion: 'Define a named type alias (e.g., "export type MyUnion = A | B") and use that type instead'
-            }
-          })
+        if (!isPropertyAnnotation && !isInterfaceProperty) {
+          return;
         }
+        
+        // skip simple nullable patterns (Type | null or Type | undefined)
+        if (node.types.length === 2) {
+          const hasNullOrUndefined = node.types.some(t => 
+            t.type === 'TSNullKeyword' || t.type === 'TSUndefinedKeyword'
+          );
+          if (hasNullOrUndefined) {
+            return;
+          }
+        }
+        
+        context.report({ 
+          node, 
+          messageId: 'noInlineUnion',
+          data: {
+            suggestion: 'Define a named type alias (e.g., "export type MyUnion = A | B") and use that type instead'
+          }
+        })
       },
     }
   },

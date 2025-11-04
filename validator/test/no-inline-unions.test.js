@@ -52,6 +52,12 @@ ruleTester.run('no-inline-unions', rule, {
      class MyClass {
        items: Array<Item>
      }`,
+    `class MyClass {
+       id: string | null
+     }`,
+    `interface Config {
+       value: integer | undefined
+     }`,
   ],
   invalid: [
     {
@@ -81,12 +87,6 @@ ruleTester.run('no-inline-unions', rule, {
     {
       code: `interface Config {
         seed?: long | string
-      }`,
-      errors: [{ messageId: 'noInlineUnion' }]
-    },
-    {
-      code: `class MyClass {
-        data: SamplingConfiguration | null
       }`,
       errors: [{ messageId: 'noInlineUnion' }]
     },
