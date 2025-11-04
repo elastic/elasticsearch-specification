@@ -58,20 +58,14 @@ ruleTester.run('no-inline-unions', rule, {
     `interface Config {
        value: integer | undefined
      }`,
+    `class MyClass {
+      filter: QueryContainer | QueryContainer[]
+    }`,
+    `interface MyInterface {
+      input: string | string[]
+    }`,
   ],
   invalid: [
-    {
-      code: `class MyClass {
-        filter: QueryContainer | QueryContainer[]
-      }`,
-      errors: [{ messageId: 'noInlineUnion' }]
-    },
-    {
-      code: `interface MyInterface {
-        input: string | string[]
-      }`,
-      errors: [{ messageId: 'noInlineUnion' }]
-    },
     {
       code: `export class Request {
         value: string | number | boolean

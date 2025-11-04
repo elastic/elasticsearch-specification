@@ -39,13 +39,30 @@ export default createRule({
           return;
         }
         
-        // skip simple nullable patterns (Type | null or Type | undefined)
         if (node.types.length === 2) {
-          const hasNullOrUndefined = node.types.some(t => 
-            t.type === 'TSNullKeyword' || t.type === 'TSUndefinedKeyword'
-          );
+          const [first, second] = node.types;
+          
+          // skip Type | null or Type | undefined
+          const hasNullOrUndefined = 
+            first.type === 'TSNullKeyword' || first.type === 'TSUndefinedKeyword' ||
+            second.type === 'TSNullKeyword' || second.type === 'TSUndefinedKeyword';
           if (hasNullOrUndefined) {
             return;
+          }
+          
+          // skip Type | Type[] pattern
+          if (second.type === 'TSArrayType') {
+            if (first.type === second.elementType?.type) {
+              if (first.type === 'TSTypeReference' && second.elementType.type === 'TSTypeReference') {
+                // for reference types, check names match
+                if (first.typeName?.name === second.elementType.typeName?.name) {
+                  return;
+                }
+              } else if (first.type === second.elementType.type) {
+                // for primitive types (string, number, etc.), types already match
+                return;
+              }
+            }
           }
         }
         
