@@ -80,7 +80,7 @@ export interface Request extends RequestBase {
     /**
      * The chunking configuration object.
      * Applies only to the `sparse_embedding` and `text_embedding` task types.
-     * Not applicable to the `rerank`, `completion`, or `chat_completion` task types.
+     * Not applicable to the `rerank` task type.
      * @ext_doc_id inference-chunking
      */
     chunking_settings?: InferenceChunkingSettings

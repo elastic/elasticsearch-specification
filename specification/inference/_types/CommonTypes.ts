@@ -391,7 +391,7 @@ export class AlibabaCloudTaskSettings {
 export enum AlibabaCloudTaskType {
   completion,
   rerank,
-  space_embedding,
+  sparse_embedding,
   text_embedding
 }
 
