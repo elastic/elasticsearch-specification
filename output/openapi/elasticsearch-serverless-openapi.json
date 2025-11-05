@@ -84518,7 +84518,7 @@
         "required": true,
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types.Names"
+          "$ref": "#/components/schemas/_types.Name"
         },
         "style": "simple"
       },

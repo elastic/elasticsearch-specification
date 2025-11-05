@@ -9693,7 +9693,7 @@ export interface ClusterExistsComponentTemplateRequest extends RequestBase {
 export type ClusterExistsComponentTemplateResponse = boolean
 
 export interface ClusterGetComponentTemplateRequest extends RequestBase {
-  name?: Names
+  name?: Name
   flat_settings?: boolean
   settings_filter?: string | string[]
   include_defaults?: boolean
