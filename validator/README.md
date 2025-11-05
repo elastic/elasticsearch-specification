@@ -12,6 +12,8 @@ It is configured [in the specification directory](../specification/eslint.config
 | `no-native-types`                     | `Typescript native types not allowed, use aliases. |
 | `invalid-node-types`                  | The spec uses a subset of TypeScript, so some types, clauses and expressions are not allowed. |
 | `no-generic-number`                   | Generic `number` type is not allowed outside of `_types/Numeric.ts`. Use concrete numeric types like `integer`, `long`, `float`, `double`, etc. |
+| `no-inline-unions`                    | Inline union types (e.g., `field: A \| B`) are not allowed in properties/fields. Define a named type alias instead to improve code generation for statically-typed languages. |
+| `prefer-tagged-variants`              | Union of class types should use tagged variants (`@variants internal` or `@variants container`) instead of inline unions for better deserialization support in statically-typed languages. |
 
 ## Usage
 
