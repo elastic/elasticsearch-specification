@@ -45,6 +45,9 @@ export interface Request extends RequestBase {
      * For example, `build,license,features`.
      */
     categories?: XPackCategory[]
+    /**
+     * @deprecated 8.0.0
+     */
     accept_enterprise?: boolean
     /**
      * Defines whether additional human-readable information is included in the response.
