@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -47,7 +47,7 @@ export interface Request extends RequestBase {
      * Comma-separated list of component template names used to limit the request.
      * Wildcard (`*`) expressions are supported.
      */
-    name?: Names
+    name?: Name
   }
   query_parameters: {
     /**
