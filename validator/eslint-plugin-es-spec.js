@@ -21,6 +21,7 @@ import dict from './rules/dictionary-key-is-string.js'
 import noNativeTypes from './rules/no-native-types.js'
 import invalidNodeTypes from './rules/invalid-node-types.js'
 import noGenericNumber from './rules/no-generic-number.js'
+import noVariantsOnResponses from './rules/no-variants-on-responses.js'
 
 export default {
   rules: {
@@ -29,5 +30,6 @@ export default {
     'no-native-types': noNativeTypes,
     'invalid-node-types': invalidNodeTypes,
     'no-generic-number': noGenericNumber,
+    'no-variants-on-responses': noVariantsOnResponses,
   }
 }
