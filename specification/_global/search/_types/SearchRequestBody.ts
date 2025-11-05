@@ -98,7 +98,7 @@ export class SearchRequestBody {
    * @availability serverless
    * @ext_doc_id knn-approximate
    */
-  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
   knn?: KnnSearch | KnnSearch[]
   /**
    * The Reciprocal Rank Fusion (RRF) to use.
@@ -130,7 +130,7 @@ export class SearchRequestBody {
   /**
    * Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.
    */
-  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
   rescore?: Rescore | Rescore[]
   /**
    * A retriever is a specification to describe top documents returned from a search.

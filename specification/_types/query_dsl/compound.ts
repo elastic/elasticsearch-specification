@@ -34,7 +34,7 @@ export class BoolQuery extends QueryBase {
    * The clause (query) must appear in matching documents.
    * However, unlike `must`, the score of the query will be ignored.
    */
-  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
   filter?: QueryContainer | QueryContainer[]
   /**
    * Specifies the number or percentage of `should` clauses returned documents must match.
@@ -44,18 +44,18 @@ export class BoolQuery extends QueryBase {
   /**
    * The clause (query) must appear in matching documents and will contribute to the score.
    */
-  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
   must?: QueryContainer | QueryContainer[]
   /**
    * The clause (query) must not appear in the matching documents.
    * Because scoring is ignored, a score of `0` is returned for all documents.
    */
-  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
   must_not?: QueryContainer | QueryContainer[]
   /**
    * The clause (query) should appear in the matching document.
    */
-  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
   should?: QueryContainer | QueryContainer[]
 }
 

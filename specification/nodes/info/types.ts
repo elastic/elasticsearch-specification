@@ -241,7 +241,6 @@ export class NodeInfoSettingsTransportFeatures {
 }
 
 export class NodeInfoSettingsNetwork {
-  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   host?: Host | Host[]
 }
 

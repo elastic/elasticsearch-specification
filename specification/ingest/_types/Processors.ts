@@ -1053,7 +1053,7 @@ export class InferenceProcessor extends ProcessorBase {
    * Input fields for inference and output (destination) fields for the inference results.
    * This option is incompatible with the target_field and field_map options.
    */
-  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
   input_output?: InputConfig | InputConfig[]
 
   /**

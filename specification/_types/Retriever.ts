@@ -53,7 +53,7 @@ export class RetrieverContainer {
 
 export class RetrieverBase {
   /** Query to filter the documents that can match. */
-  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
   filter?: QueryContainer | QueryContainer[]
   /** Minimum _score for matching documents. Documents with a lower _score are not included in the top documents. */
   min_score?: float
@@ -64,7 +64,7 @@ export class RetrieverBase {
 export class RescorerRetriever extends RetrieverBase {
   /** Inner retriever. */
   retriever: RetrieverContainer
-  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
   rescore: Rescore | Rescore[]
 }
 

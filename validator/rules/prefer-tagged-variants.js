@@ -67,6 +67,20 @@ export default createRule({
           return;
         }
         
+        // skip Type | Type[] pattern
+        if (node.types.length === 2) {
+          const [first, second] = node.types;
+          if (second.type === 'TSArrayType' && 
+              first.type === 'TSTypeReference' &&
+              second.elementType?.type === 'TSTypeReference') {
+            const firstName = first.typeName?.name;
+            const secondName = second.elementType.typeName?.name;
+            if (firstName && firstName === secondName) {
+              return;
+            }
+          }
+        }
+        
         const allMembersAreClasses = node.types.every(typeNode => {
           if (typeNode.type === 'TSArrayType') {
             return isLikelyClassType(typeNode.elementType);

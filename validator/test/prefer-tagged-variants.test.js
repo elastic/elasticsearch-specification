@@ -55,6 +55,9 @@ ruleTester.run('prefer-tagged-variants', rule, {
     `interface Status {
       state: 'active' | 'inactive' | 'pending'
     }`,
+    `class SearchRequest {
+      knn?: KnnSearch | KnnSearch[]
+    }`,
   ],
   invalid: [
     {

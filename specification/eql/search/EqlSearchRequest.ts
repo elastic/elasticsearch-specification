@@ -131,7 +131,7 @@ export interface Request extends RequestBase {
     /**
      * Query, written in Query DSL, used to filter the events on which the EQL query runs.
      */
-    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
     filter?: QueryContainer | QueryContainer[]
     keep_alive?: Duration
     keep_on_completion?: boolean
@@ -158,7 +158,7 @@ export interface Request extends RequestBase {
     /**
      * Array of wildcard (*) patterns. The response returns values for field names matching these patterns in the fields property of each hit.
      */
-    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
     fields?: FieldAndFormat | FieldAndFormat[]
     /**
      * @server_default tail

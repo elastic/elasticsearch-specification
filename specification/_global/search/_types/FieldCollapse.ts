@@ -32,7 +32,7 @@ export class FieldCollapse {
   /**
    * The number of inner hits and their sort order
    */
-  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
   inner_hits?: InnerHits | InnerHits[]
   /**
    * The number of concurrent requests allowed to retrieve the inner_hits per group

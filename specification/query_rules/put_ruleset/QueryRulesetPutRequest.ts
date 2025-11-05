@@ -54,7 +54,6 @@ export interface Request extends RequestBase {
    */
   /** @codegen_name query_ruleset */
   body: {
-    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
     rules: QueryRule | QueryRule[]
   }
 }

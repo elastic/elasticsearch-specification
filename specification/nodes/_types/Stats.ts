@@ -55,7 +55,7 @@ export class Stats {
   /**
    * IP address and port for the node.
    */
-  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
   ip?: Ip | Ip[]
   /**
    * JVM stats, memory pool information, garbage collection, buffer pools, number of loaded/unloaded classes.

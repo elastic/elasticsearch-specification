@@ -42,7 +42,7 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /** An identifier for the user. You can specify multiple usernames as a comma-separated list. If you omit this parameter, the API retrieves information about all users. */
-    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
     username?: Username | Username[]
   }
   query_parameters: {

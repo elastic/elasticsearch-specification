@@ -48,7 +48,7 @@ export class QueryRule {
    * The criteria that must be met for the rule to be applied.
    * If multiple criteria are specified for a rule, all criteria must be met for the rule to be applied.
    */
-  // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
   criteria: QueryRuleCriteria | QueryRuleCriteria[]
   /**
    * The actions to take when the rule is matched.

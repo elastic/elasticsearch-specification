@@ -185,7 +185,7 @@ export interface Request extends RequestBase {
      * Defines the search definition using the Query DSL.
      */
     query?: QueryContainer
-    // eslint-disable-next-line es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
+
     rescore?: Rescore | Rescore[]
     /**
      * Retrieve a script evaluation (based on different fields) for each hit.
