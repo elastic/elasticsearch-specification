@@ -82,14 +82,14 @@ jobs:
           node scripts/clone-elasticsearch/index.js --branch $branch
 
       - name: Run validation (Push)
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         working-directory: ./clients-flight-recorder/scripts/types-validator
         env:
           BRANCH: ${{ github.ref_name }}
         run: node index.js --generate-report --ci --branch $BRANCH
 
       - name: Save JSON report
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         uses: actions/cache/save@v4
         with:
           path: ./clients-flight-recorder/recordings/types-validation/types-validation.json
