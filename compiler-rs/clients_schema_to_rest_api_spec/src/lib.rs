@@ -91,6 +91,7 @@ fn convert_endpoint(endpoint: &SchemaEndpoint, types: &IndexMap<TypeName, TypeDe
             if !matches!(request.body, SchemaBody::NoBody(_)) {
                 body = Some(Body {
                     description: "Request body".to_string(),
+                    serialize: body_serialize_value(&endpoint.name),
                     required: endpoint.request_body_required,
                 });
             }
@@ -411,6 +412,21 @@ fn extract_stability_from_availabilities(availabilities: &Option<clients_schema:
     }
     // Default to stable if no stability is explicitly set
     Some("stable".to_string())
+}
+
+fn body_serialize_value(endpoint_name: &str) -> Option<String> {
+    let special_cases: &[&str] = &[
+        "bulk",
+        "msearch",
+        "msearch_template",
+        "fleet.msearch",
+        "ml.post_data",
+        "monitoring.bulk",
+        "text_structure.find_structure",
+    ];
+
+    // Some endpoints contain "serialize": "bulk" in rest-api-spec
+    special_cases.contains(&endpoint_name).then(|| "bulk".to_string())
 }
 
 #[cfg(test)]

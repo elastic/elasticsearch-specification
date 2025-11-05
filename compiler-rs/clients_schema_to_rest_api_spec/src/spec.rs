@@ -67,6 +67,8 @@ pub struct Parameter {
 #[derive(Debug, Serialize)]
 pub struct Body {
     pub description: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub serialize: Option<String>,
     pub required: bool,
 }
 
