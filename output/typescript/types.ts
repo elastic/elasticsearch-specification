@@ -2418,7 +2418,7 @@ export interface GeoHashLocation {
   geohash: GeoHash
 }
 
-export type GeoHashPrecision = number | string
+export type GeoHashPrecision = integer | string
 
 export type GeoHexCell = string
 
@@ -2435,7 +2435,7 @@ export type GeoShapeRelation = 'intersects' | 'disjoint' | 'within' | 'contains'
 
 export type GeoTile = string
 
-export type GeoTilePrecision = number
+export type GeoTilePrecision = integer
 
 export interface GetStats {
   current: long
@@ -12862,10 +12862,10 @@ export interface IndicesGetAliasIndexAliases {
 
 export interface IndicesGetAliasNotFoundAliasesKeys {
   error: string
-  status: number
+  status: integer
 }
 export type IndicesGetAliasNotFoundAliases = IndicesGetAliasNotFoundAliasesKeys
-  & { [property: string]: IndicesGetAliasIndexAliases | string | number }
+  & { [property: string]: IndicesGetAliasIndexAliases | string | integer }
 
 export interface IndicesGetAllSampleConfigurationRequest extends RequestBase {
   master_timeout?: Duration
