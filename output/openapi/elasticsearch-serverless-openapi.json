@@ -7641,6 +7641,48 @@
         ]
       }
     },
+    "/_migration/reindex/{index}/_cancel": {
+      "post": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "Cancel a migration reindex operation",
+        "description": "Cancel a migration reindex attempt for a data stream or index.",
+        "operationId": "indices-cancel-migrate-reindex",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "index",
+            "description": "The index or data stream name",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Indices"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/{index}": {
       "get": {
         "tags": [
@@ -8277,7 +8319,7 @@
             "$ref": "#/components/responses/indices.create_from-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Generally available",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -8308,7 +8350,7 @@
             "$ref": "#/components/responses/indices.create_from-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Generally available",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -10102,6 +10144,104 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/indices.put_mapping-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_migration/reindex/{index}/_status": {
+      "get": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "Get the migration reindexing status",
+        "description": "Get the status of a migration reindex attempt for a data stream or index.",
+        "operationId": "indices-get-migrate-reindex-status",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "index",
+            "description": "The index or data stream name.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Indices"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "start_time": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.DateTime"
+                        }
+                      ]
+                    },
+                    "start_time_millis": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+                        }
+                      ]
+                    },
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "total_indices_in_data_stream": {
+                      "type": "number"
+                    },
+                    "total_indices_requiring_upgrade": {
+                      "type": "number"
+                    },
+                    "successes": {
+                      "type": "number"
+                    },
+                    "in_progress": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_migrate_reindex_status.StatusInProgress"
+                      }
+                    },
+                    "pending": {
+                      "type": "number"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_migrate_reindex_status.StatusError"
+                      }
+                    },
+                    "exception": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "start_time_millis",
+                    "complete",
+                    "total_indices_in_data_stream",
+                    "total_indices_requiring_upgrade",
+                    "successes",
+                    "in_progress",
+                    "pending",
+                    "errors"
+                  ]
+                }
+              }
+            }
           }
         },
         "x-state": "Generally available",
@@ -64217,6 +64357,40 @@
         },
         "required": [
           "mappings"
+        ]
+      },
+      "indices.get_migrate_reindex_status.StatusInProgress": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "string"
+          },
+          "total_doc_count": {
+            "type": "number"
+          },
+          "reindexed_doc_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "index",
+          "total_doc_count",
+          "reindexed_doc_count"
+        ]
+      },
+      "indices.get_migrate_reindex_status.StatusError": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "index",
+          "message"
         ]
       },
       "indices.modify_data_stream.Action": {
