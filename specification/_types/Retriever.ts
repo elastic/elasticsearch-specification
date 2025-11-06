@@ -124,6 +124,11 @@ export class KnnRetriever extends RetrieverBase {
   k: integer
   /** Number of nearest neighbor candidates to consider per shard. */
   num_candidates: integer
+  /** The percentage of vectors to explore per shard while doing knn search with bbq_disk
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  visit_percentage?: float
   /** The minimum similarity required for a document to be considered a match.  */
   similarity?: float
   /** Apply oversampling and rescoring to quantized vectors
@@ -133,9 +138,25 @@ export class KnnRetriever extends RetrieverBase {
   rescore_vector?: RescoreVector
 }
 
+/**
+ * Wraps a retriever with an optional weight for RRF scoring.
+ */
+export class RRFRetrieverComponent {
+  /** The nested retriever configuration. */
+  retriever: RetrieverContainer
+  /** Weight multiplier for this retriever's contribution to the RRF score. Higher values increase influence. Defaults to 1.0 if not specified. Must be non-negative. @server_default 1.0 */
+  weight?: float
+}
+
+/**
+ * Either a direct RetrieverContainer (backward compatible) or an RRFRetrieverComponent with weight.
+ * @codegen_names retriever, weighted
+ */
+export type RRFRetrieverEntry = RetrieverContainer | RRFRetrieverComponent
+
 export class RRFRetriever extends RetrieverBase {
-  /** A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.  */
-  retrievers: RetrieverContainer[]
+  /** A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them. Each retriever can optionally include a weight parameter. */
+  retrievers: RRFRetrieverEntry[]
   /** This value determines how much influence documents in individual result sets per query have over the final ranked result set. */
   rank_constant?: integer
   /** This value determines the size of the individual result sets per query.  */

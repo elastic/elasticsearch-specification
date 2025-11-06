@@ -1,0 +1,35 @@
+# summary: ''
+description: A successful response for retrieving the random sample for an index or data stream.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "sample": [
+      {
+        "index": "logs",
+        "source": {
+          "@timestamp": "2099-11-15T13:12:00",
+          "message": "Node 0 message",
+          "user": {
+            "id": "kimchy"
+          },
+          "network": {
+            "name": "Guest"
+          }
+        }
+      },
+      {
+        "index": "logs",
+        "source": {
+          "@timestamp": "2079-11-15T13:12:00",
+          "message": "Node 1 message",
+          "user": {
+            "id": "kimchy"
+          },
+          "network": {
+            "name": "Guest"
+          }
+        }
+      }
+    ]
+  }

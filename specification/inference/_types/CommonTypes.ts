@@ -30,7 +30,7 @@ export class RequestChatCompletion {
    */
   messages: Array<Message>
   /**
-   * The ID of the model to use.
+   * The ID of the model to use. By default, the model ID is set to the value included when creating the inference endpoint.
    */
   model?: string
   /**
@@ -391,7 +391,7 @@ export class AlibabaCloudTaskSettings {
 export enum AlibabaCloudTaskType {
   completion,
   rerank,
-  space_embedding,
+  sparse_embedding,
   text_embedding
 }
 
@@ -947,7 +947,14 @@ export class CohereTaskSettings {
 
 export class CustomServiceSettings {
   /**
-   * Specifies the HTTPS header parameters – such as `Authentication` or `Contet-Type` – that are required to access the custom service.
+   * Specifies the batch size used for the semantic_text field. If the field is not provided, the default is 10.
+   * The batch size is the maximum number of inputs in a single request to the upstream service.
+   * The chunk within the batch are controlled by the selected chunking strategy for the semantic_text field.
+   * @ext_doc_id sematic-text-chunking
+   */
+  batch_size?: integer
+  /**
+   * Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.
    * For example:
    * ```
    * "headers":{
@@ -1063,6 +1070,22 @@ export class CustomResponseParams {
    *     "text_embeddings":"$.data[*].embedding[*]"
    *   }
    * }
+   *
+   * # Elasticsearch supports the following embedding types:
+   * * float
+   * * byte
+   * * bit (or binary)
+   *
+   * To specify the embedding type for the response, the `embedding_type`
+   * field should be added in the `json_parser` object. Here's an example:
+   * "response":{
+   *   "json_parser":{
+   *     "text_embeddings":"$.data[*].embedding[*]",
+   *     "embedding_type":"bit"
+   *   }
+   * }
+   *
+   * If `embedding_type` is not specified, it defaults to `float`.
    *
    * # sparse_embedding
    * # For a response like this:
@@ -1306,6 +1329,24 @@ export class ElasticsearchServiceSettings {
    * The maximum value is 32.
    */
   num_threads: integer
+  /**
+   * Available only for the `rerank` task type using the Elastic reranker model.
+   * Controls the strategy used for processing long documents during inference.
+   *
+   * Possible values:
+   * - `truncate` (default): Processes only the beginning of each document.
+   * - `chunk`: Splits long documents into smaller parts (chunks) before inference.
+   *
+   * When `long_document_strategy` is set to `chunk`, Elasticsearch splits each document into smaller parts but still returns a single score per document.
+   * That score reflects the highest relevance score among all chunks.
+   */
+  long_document_strategy?: string
+  /**
+   * Only for the `rerank` task type.
+   * Limits the number of chunks per document that are sent for inference when chunking is enabled.
+   * If not set, all chunks generated for the document are processed.
+   */
+  max_chunks_per_doc?: integer
 }
 
 export class ElasticsearchTaskSettings {
@@ -1391,21 +1432,51 @@ export enum GoogleAiServiceType {
 
 export class GoogleVertexAIServiceSettings {
   /**
-   * The name of the location to use for the inference task.
+   * The name of the Google Model Garden Provider for `completion` and `chat_completion` tasks.
+   * In order for a Google Model Garden endpoint to be used `provider` must be defined and be other than `google`.
+   * Modes:
+   * - Google Model Garden (third-party models): set `provider` to a supported non-`google` value and provide `url` and/or `streaming_url`.
+   * - Google Vertex AI: omit `provider` or set it to `google`. In this mode, do not set `url` or `streaming_url` and Elastic will construct the endpoint url from `location`, `model_id`, and `project_id` parameters.
+   */
+  provider?: GoogleModelGardenProvider
+  /**
+   * The URL for non-streaming `completion` requests to a Google Model Garden provider endpoint.
+   * If both `url` and `streaming_url` are provided, each is used for its respective mode.
+   * If `streaming_url` is not provided, `url` is also used for streaming `completion` and `chat_completion`.
+   * If `provider` is not provided or set to `google` (Google Vertex AI), do not set `url` (or `streaming_url`).
+   * At least one of `url` or `streaming_url` must be provided for Google Model Garden endpoint usage.
+   */
+  url?: string
+  /**
+   * The URL for streaming `completion` and `chat_completion` requests to a Google Model Garden provider endpoint.
+   * If both `streaming_url` and `url` are provided, each is used for its respective mode.
+   * If `url` is not provided, `streaming_url` is also used for non-streaming `completion` requests.
+   * If `provider` is not provided or set to `google` (Google Vertex AI), do not set `streaming_url` (or `url`).
+   * At least one of `streaming_url` or `url` must be provided for Google Model Garden endpoint usage.
+   */
+  streaming_url?: string
+  /**
+   * The name of the location to use for the inference task for the Google Vertex AI inference task.
+   * For Google Vertex AI, when `provider` is omitted or `google` `location` is mandatory.
+   * For Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `location` is ignored.
    * Refer to the Google documentation for the list of supported locations.
    * @ext_doc_id googlevertexai-locations
    */
-  location: string
+  location?: string
   /**
    * The name of the model to use for the inference task.
-   * Refer to the Google documentation for the list of supported models.
+   * For Google Vertex AI `model_id` is mandatory.
+   * For Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `model_id` will be used for some providers that require it, otherwise - ignored.
+   * Refer to the Google documentation for the list of supported models for Google Vertex AI.
    * @ext_doc_id googlevertexai-models
    */
-  model_id: string
+  model_id?: string
   /**
-   * The name of the project to use for the inference task.
+   * The name of the project to use for the Google Vertex AI inference task.
+   * For Google Vertex AI `project_id` is mandatory.
+   * For Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `project_id` is ignored.
    */
-  project_id: string
+  project_id?: string
   /**
    * This setting helps to minimize the number of rate limit errors returned from Google Vertex AI.
    * By default, the `googlevertexai` service sets the number of requests allowed per minute to 30.000.
@@ -1424,6 +1495,11 @@ export class GoogleVertexAIServiceSettings {
   dimensions?: integer
 }
 
+export enum GoogleModelGardenProvider {
+  google,
+  anthropic
+}
+
 export class GoogleVertexAITaskSettings {
   /**
    * For a `text_embedding` task, truncate inputs longer than the maximum token length automatically.
@@ -1439,6 +1515,14 @@ export class GoogleVertexAITaskSettings {
    * @ext_doc_id googlevertexai-thinking
    */
   thinking_config?: ThinkingConfig
+  /**
+   * For `completion` and `chat_completion` tasks, specifies the `max_tokens` value for requests sent to the Google Model Garden `anthropic` provider.
+   * If `provider` is not set to `anthropic`, this field is ignored.
+   * If `max_tokens` is specified - it must be a positive integer. If not specified, the default value of 1024 is used.
+   * Anthropic models require `max_tokens` to be set for each request. Please refer to the Anthropic documentation for more information.
+   * @ext_doc_id anthropic-max-tokens
+   */
+  max_tokens?: integer
 }
 
 export class ThinkingConfig {
@@ -1729,6 +1813,17 @@ export class OpenAITaskSettings {
    * This information can be used for abuse detection.
    */
   user?: string
+  /**
+   * Specifies custom HTTP header parameters.
+   * For example:
+   * ```
+   * "headers":{
+   *   "Custom-Header": "Some-Value",
+   *   "Another-Custom-Header": "Another-Value"
+   * }
+   * ```
+   */
+  headers?: UserDefinedValue
 }
 
 export enum OpenAITaskType {

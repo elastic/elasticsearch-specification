@@ -1,0 +1,20 @@
+# summary: ''
+description: A successful response for retrieving the random sample stats for an index or data stream.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "potential_samples": 2,
+    "samples_rejected_for_max_samples_exceeded": 0,
+    "samples_rejected_for_condition": 0,
+    "samples_rejected_for_rate": 0,
+    "samples_rejected_for_exception": 0,
+    "samples_rejected_for_size": 0,
+    "samples_accepted": 2,
+    "time_sampling": "415.7micros",
+    "time_sampling_millis": 0,
+    "time_evaluating_condition": "185.9micros",
+    "time_evaluating_condition_millis": 0,
+    "time_compiling_condition": "98.4micros",
+    "time_compiling_condition_millis": 0
+  }
