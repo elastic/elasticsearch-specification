@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Field, GrokPattern, Names } from '@_types/common'
+import { Field, GrokPattern } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { EcsCompatibilityType, FormatType } from '../_types/Structure'
 
