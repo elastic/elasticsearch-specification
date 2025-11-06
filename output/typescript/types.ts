@@ -2418,7 +2418,7 @@ export interface GeoHashLocation {
   geohash: GeoHash
 }
 
-export type GeoHashPrecision = number | string
+export type GeoHashPrecision = integer | string
 
 export type GeoHexCell = string
 
@@ -2435,7 +2435,7 @@ export type GeoShapeRelation = 'intersects' | 'disjoint' | 'within' | 'contains'
 
 export type GeoTile = string
 
-export type GeoTilePrecision = number
+export type GeoTilePrecision = integer
 
 export interface GetStats {
   current: long
@@ -2543,6 +2543,7 @@ export interface KnnQuery extends QueryDslQueryBase {
   query_vector?: QueryVector
   query_vector_builder?: QueryVectorBuilder
   num_candidates?: integer
+  visit_percentage?: float
   k?: integer
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
@@ -2555,6 +2556,7 @@ export interface KnnRetriever extends RetrieverBase {
   query_vector_builder?: QueryVectorBuilder
   k: integer
   num_candidates: integer
+  visit_percentage?: float
   similarity?: float
   rescore_vector?: RescoreVector
 }
@@ -2565,6 +2567,7 @@ export interface KnnSearch {
   query_vector_builder?: QueryVectorBuilder
   k?: integer
   num_candidates?: integer
+  visit_percentage?: float
   boost?: float
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   similarity?: float
@@ -2722,12 +2725,19 @@ export interface QueryVectorBuilder {
 }
 
 export interface RRFRetriever extends RetrieverBase {
-  retrievers: RetrieverContainer[]
+  retrievers: RRFRetrieverEntry[]
   rank_constant?: integer
   rank_window_size?: integer
   query?: string
   fields?: string[]
 }
+
+export interface RRFRetrieverComponent {
+  retriever: RetrieverContainer
+  weight?: float
+}
+
+export type RRFRetrieverEntry = RetrieverContainer | RRFRetrieverComponent
 
 export interface RankBase {
 }
@@ -3764,7 +3774,7 @@ export interface AggregationsGeoLineAggregate extends AggregationsAggregateBase 
 
 export interface AggregationsGeoLineAggregation {
   point: AggregationsGeoLinePoint
-  sort: AggregationsGeoLineSort
+  sort?: AggregationsGeoLineSort
   include_sort?: boolean
   sort_order?: SortOrder
   size?: integer
@@ -4172,7 +4182,7 @@ export interface AggregationsPercentilesAggregateBase extends AggregationsAggreg
 
 export interface AggregationsPercentilesAggregation extends AggregationsFormatMetricAggregationBase {
   keyed?: boolean
-  percents?: double[]
+  percents?: double | double[]
   hdr?: AggregationsHdrMethod
   tdigest?: AggregationsTDigest
 }
@@ -5133,7 +5143,7 @@ export interface AnalysisKeywordTokenizer extends AnalysisTokenizerBase {
 
 export interface AnalysisKuromojiAnalyzer {
   type: 'kuromoji'
-  mode: AnalysisKuromojiTokenizationMode
+  mode?: AnalysisKuromojiTokenizationMode
   user_dictionary?: string
 }
 
@@ -8717,6 +8727,11 @@ export interface CatSegmentsRequest extends CatCatRequestBase {
   s?: Names
   local?: boolean
   master_timeout?: Duration
+  expand_wildcards?: ExpandWildcards
+  allow_no_indices?: boolean
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
+  allow_closed?: boolean
 }
 
 export type CatSegmentsResponse = CatSegmentsSegmentsRecord[]
@@ -9574,7 +9589,7 @@ export interface ClusterAllocationExplainDiskUsage {
 }
 
 export interface ClusterAllocationExplainNodeAllocationExplanation {
-  deciders: ClusterAllocationExplainAllocationDecision[]
+  deciders?: ClusterAllocationExplainAllocationDecision[]
   node_attributes: Record<string, string>
   node_decision: ClusterAllocationExplainDecision
   node_id: Id
@@ -9582,7 +9597,7 @@ export interface ClusterAllocationExplainNodeAllocationExplanation {
   roles: NodeRoles
   store?: ClusterAllocationExplainAllocationStore
   transport_address: TransportAddress
-  weight_ranking: integer
+  weight_ranking?: integer
 }
 
 export interface ClusterAllocationExplainNodeDiskUsage {
@@ -11911,11 +11926,12 @@ export interface IndicesDataStreamVisibility {
 
 export interface IndicesDownsampleConfig {
   fixed_interval: DurationLarge
+  sampling_method?: IndicesSamplingMethod
 }
 
 export interface IndicesDownsamplingRound {
   after: Duration
-  config: IndicesDownsampleConfig
+  fixed_interval: DurationLarge
 }
 
 export interface IndicesFailureStore {
@@ -12210,6 +12226,20 @@ export interface IndicesQueries {
 export interface IndicesRetentionLease {
   period: Duration
 }
+
+export interface IndicesSamplingConfiguration {
+  rate: double
+  max_samples: integer
+  max_size?: ByteSize
+  max_size_in_bytes: long
+  time_to_live?: Duration
+  time_to_live_in_millis: long
+  if?: string
+  creation_time?: DateTime
+  creation_time_in_millis: long
+}
+
+export type IndicesSamplingMethod = 'aggregate' | 'last_value'
 
 export interface IndicesSearchIdle {
   after?: Duration
@@ -12618,6 +12648,14 @@ export interface IndicesDeleteIndexTemplateRequest extends RequestBase {
 
 export type IndicesDeleteIndexTemplateResponse = AcknowledgedResponseBase
 
+export interface IndicesDeleteSampleConfigurationRequest extends RequestBase {
+  index: IndexName
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type IndicesDeleteSampleConfigurationResponse = AcknowledgedResponseBase
+
 export interface IndicesDeleteTemplateRequest extends RequestBase {
   name: Name
   master_timeout?: Duration
@@ -12824,10 +12862,23 @@ export interface IndicesGetAliasIndexAliases {
 
 export interface IndicesGetAliasNotFoundAliasesKeys {
   error: string
-  status: number
+  status: integer
 }
 export type IndicesGetAliasNotFoundAliases = IndicesGetAliasNotFoundAliasesKeys
-  & { [property: string]: IndicesGetAliasIndexAliases | string | number }
+  & { [property: string]: IndicesGetAliasIndexAliases | string | integer }
+
+export interface IndicesGetAllSampleConfigurationRequest extends RequestBase {
+  master_timeout?: Duration
+}
+
+export interface IndicesGetAllSampleConfigurationResponse {
+  configurations: IndicesGetAllSampleConfigurationIndexSamplingConfiguration[]
+}
+
+export interface IndicesGetAllSampleConfigurationIndexSamplingConfiguration {
+  index: IndexName
+  configuration: IndicesSamplingConfiguration
+}
 
 export interface IndicesGetDataLifecycleDataStreamWithLifecycle {
   name: DataStreamName
@@ -12994,6 +13045,50 @@ export interface IndicesGetMigrateReindexStatusStatusInProgress {
   reindexed_doc_count: long
 }
 
+export interface IndicesGetSampleRequest extends RequestBase {
+  index: IndexName
+}
+
+export interface IndicesGetSampleResponse {
+  sample: IndicesGetSampleRawDocument[]
+}
+
+export interface IndicesGetSampleRawDocument {
+  index: string
+  source: Record<PropertyName, MappingProperty>
+}
+
+export interface IndicesGetSampleConfigurationRequest extends RequestBase {
+  index: IndexName
+  master_timeout?: Duration
+}
+
+export interface IndicesGetSampleConfigurationResponse {
+  index: IndexName
+  configuration: IndicesSamplingConfiguration | null
+}
+
+export interface IndicesGetSampleStatsRequest extends RequestBase {
+  index: IndexName
+}
+
+export interface IndicesGetSampleStatsResponse {
+  potential_samples: long
+  samples_rejected_for_max_samples_exceeded: long
+  samples_rejected_for_condition: long
+  samples_rejected_for_rate: long
+  samples_rejected_for_exception: long
+  samples_rejected_for_size: long
+  samples_accepted: long
+  time_sampling?: Duration
+  time_sampling_millis: DurationValue<UnitMillis>
+  time_evaluating_condition?: Duration
+  time_evaluating_condition_millis: DurationValue<UnitMillis>
+  time_compiling_condition?: Duration
+  time_compiling_condition_millis: DurationValue<UnitMillis>
+  last_exception?: string
+}
+
 export interface IndicesGetSettingsRequest extends RequestBase {
   index?: Indices
   name?: Names
@@ -13105,7 +13200,7 @@ export interface IndicesPutDataLifecycleRequest extends RequestBase {
   timeout?: Duration
   body?: {
     data_retention?: Duration
-    downsampling?: IndicesDataStreamLifecycleDownsampling
+    downsampling?: IndicesDownsamplingRound[]
     enabled?: boolean
   }
 }
@@ -13228,6 +13323,21 @@ export interface IndicesPutMappingRequest extends RequestBase {
 }
 
 export type IndicesPutMappingResponse = IndicesResponseBase
+
+export interface IndicesPutSampleConfigurationRequest extends RequestBase {
+  index: IndexName
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: {
+    rate: SpecUtilsStringified<double>
+    max_samples?: integer
+    max_size?: ByteSize
+    time_to_live?: Duration
+    if?: string
+  }
+}
+
+export type IndicesPutSampleConfigurationResponse = AcknowledgedResponseBase
 
 export interface IndicesPutSettingsRequest extends RequestBase {
   index?: Indices
@@ -13953,7 +14063,7 @@ export interface InferenceAlibabaCloudTaskSettings {
   return_token?: boolean
 }
 
-export type InferenceAlibabaCloudTaskType = 'completion' | 'rerank' | 'space_embedding' | 'text_embedding'
+export type InferenceAlibabaCloudTaskType = 'completion' | 'rerank' | 'sparse_embedding' | 'text_embedding'
 
 export interface InferenceAmazonBedrockServiceSettings {
   access_key: string
@@ -14142,6 +14252,7 @@ export interface InferenceCustomResponseParams {
 }
 
 export interface InferenceCustomServiceSettings {
+  batch_size?: integer
   headers?: any
   input_type?: any
   query_parameters?: any
@@ -14181,6 +14292,8 @@ export interface InferenceElasticsearchServiceSettings {
   model_id: string
   num_allocations?: integer
   num_threads: integer
+  long_document_strategy?: string
+  max_chunks_per_doc?: integer
 }
 
 export type InferenceElasticsearchServiceType = 'elasticsearch'
@@ -14211,10 +14324,15 @@ export interface InferenceGoogleAiStudioServiceSettings {
 
 export type InferenceGoogleAiStudioTaskType = 'completion' | 'text_embedding'
 
+export type InferenceGoogleModelGardenProvider = 'google' | 'anthropic'
+
 export interface InferenceGoogleVertexAIServiceSettings {
-  location: string
-  model_id: string
-  project_id: string
+  provider?: InferenceGoogleModelGardenProvider
+  url?: string
+  streaming_url?: string
+  location?: string
+  model_id?: string
+  project_id?: string
   rate_limit?: InferenceRateLimitSetting
   service_account_json: string
   dimensions?: integer
@@ -14226,6 +14344,7 @@ export interface InferenceGoogleVertexAITaskSettings {
   auto_truncate?: boolean
   top_n?: integer
   thinking_config?: InferenceThinkingConfig
+  max_tokens?: integer
 }
 
 export type InferenceGoogleVertexAITaskType = 'rerank' | 'text_embedding' | 'completion' | 'chat_completion'
@@ -14454,6 +14573,7 @@ export type InferenceOpenAIServiceType = 'openai'
 
 export interface InferenceOpenAITaskSettings {
   user?: string
+  headers?: any
 }
 
 export type InferenceOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
@@ -14527,7 +14647,7 @@ export type InferenceTaskTypeElasticsearch = 'sparse_embedding' | 'text_embeddin
 
 export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
-export type InferenceTaskTypeGoogleVertexAI = 'text_embedding' | 'rerank'
+export type InferenceTaskTypeGoogleVertexAI = 'chat_completion' | 'completion' | 'text_embedding' | 'rerank'
 
 export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
@@ -14722,7 +14842,6 @@ export interface InferencePutAnthropicRequest extends RequestBase {
   anthropic_inference_id: Id
   timeout?: Duration
   body?: {
-    chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceAnthropicServiceType
     service_settings: InferenceAnthropicServiceSettings
     task_settings?: InferenceAnthropicTaskSettings
@@ -14778,7 +14897,6 @@ export interface InferencePutContextualaiRequest extends RequestBase {
   contextualai_inference_id: Id
   timeout?: Duration
   body?: {
-    chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceContextualAIServiceType
     service_settings: InferenceContextualAIServiceSettings
     task_settings?: InferenceContextualAITaskSettings
@@ -14805,7 +14923,6 @@ export interface InferencePutDeepseekRequest extends RequestBase {
   deepseek_inference_id: Id
   timeout?: Duration
   body?: {
-    chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceDeepSeekServiceType
     service_settings: InferenceDeepSeekServiceSettings
   }
@@ -14954,6 +15071,7 @@ export interface InferencePutWatsonxRequest extends RequestBase {
   watsonx_inference_id: Id
   timeout?: Duration
   body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
     service: InferenceWatsonxServiceType
     service_settings: InferenceWatsonxServiceSettings
   }
@@ -14966,7 +15084,9 @@ export interface InferenceRerankRequest extends RequestBase {
   timeout?: Duration
   body?: {
     query: string
-    input: string | string[]
+    input: string[]
+    return_documents?: boolean
+    top_n?: integer
     task_settings?: InferenceTaskSettings
   }
 }

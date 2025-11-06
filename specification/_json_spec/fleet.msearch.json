@@ -28,7 +28,6 @@
         }
       ]
     },
-    "params": {},
     "body": {
       "description": "The request definitions (metadata-fleet search request definition pairs), separated by newlines",
       "required": true,

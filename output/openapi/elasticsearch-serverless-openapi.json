@@ -7641,6 +7641,48 @@
         ]
       }
     },
+    "/_migration/reindex/{index}/_cancel": {
+      "post": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "Cancel a migration reindex operation",
+        "description": "Cancel a migration reindex attempt for a data stream or index.",
+        "operationId": "indices-cancel-migrate-reindex",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "index",
+            "description": "The index or data stream name",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Indices"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/{index}": {
       "get": {
         "tags": [
@@ -8277,7 +8319,7 @@
             "$ref": "#/components/responses/indices.create_from-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Generally available",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -8308,7 +8350,7 @@
             "$ref": "#/components/responses/indices.create_from-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Generally available",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -9278,11 +9320,10 @@
                   },
                   "downsampling": {
                     "description": "The downsampling configuration to execute for the managed backing index after rollover.",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/indices._types.DataStreamLifecycleDownsampling"
-                      }
-                    ]
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/indices._types.DownsamplingRound"
+                    }
                   },
                   "enabled": {
                     "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
@@ -10103,6 +10144,104 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/indices.put_mapping-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_migration/reindex/{index}/_status": {
+      "get": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "Get the migration reindexing status",
+        "description": "Get the status of a migration reindex attempt for a data stream or index.",
+        "operationId": "indices-get-migrate-reindex-status",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "index",
+            "description": "The index or data stream name.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Indices"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "start_time": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.DateTime"
+                        }
+                      ]
+                    },
+                    "start_time_millis": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+                        }
+                      ]
+                    },
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "total_indices_in_data_stream": {
+                      "type": "number"
+                    },
+                    "total_indices_requiring_upgrade": {
+                      "type": "number"
+                    },
+                    "successes": {
+                      "type": "number"
+                    },
+                    "in_progress": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_migrate_reindex_status.StatusInProgress"
+                      }
+                    },
+                    "pending": {
+                      "type": "number"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_migrate_reindex_status.StatusError"
+                      }
+                    },
+                    "exception": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "start_time_millis",
+                    "complete",
+                    "total_indices_in_data_stream",
+                    "total_indices_requiring_upgrade",
+                    "successes",
+                    "in_progress",
+                    "pending",
+                    "errors"
+                  ]
+                }
+              }
+            }
           }
         },
         "x-state": "Generally available",
@@ -11417,7 +11556,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Perform chat completion inference\n",
+        "summary": "Perform chat completion inference on the service\n",
         "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.\nIt only works with the `chat_completion` task type for `openai` and `elastic` inference services.\n\nNOTE: The `chat_completion` task type is only available within the _stream API and only supports streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nIf you use the `openai`, `hugging_face` or the `elastic` service, use the Chat completion inference API.",
         "operationId": "inference-chat-completion-unified",
         "parameters": [
@@ -11502,7 +11641,8 @@
         "tags": [
           "inference"
         ],
-        "summary": "Perform completion inference on the service",
+        "summary": "Perform completion inference on the service\n",
+        "description": "Get responses for completion tasks.\nThis API works only with the completion task type.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThis API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-completion",
         "parameters": [
           {
@@ -11548,7 +11688,7 @@
                     ]
                   },
                   "task_settings": {
-                    "description": "Optional task settings",
+                    "description": "Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.TaskSettings"
@@ -11563,7 +11703,7 @@
               "examples": {
                 "CompletionRequestExample1": {
                   "summary": "Completion task",
-                  "description": "Run `POST _inference/completion/openai_chat_completions` to perform a completion on the example question.",
+                  "description": "Run `POST _inference/completion/openai_completions` to perform a completion on the example question.",
                   "value": "{\n  \"input\": \"What is Elastic?\"\n}"
                 }
               }
@@ -11582,7 +11722,7 @@
                 "examples": {
                   "CompletionResponseExample1": {
                     "summary": "Completion task",
-                    "description": "A successful response from `POST _inference/completion/openai_chat_completions`.\n",
+                    "description": "A successful response from `POST _inference/completion/openai_completions`.\n",
                     "value": "{\n  \"completion\": [\n    {\n      \"result\": \"Elastic is a company that provides a range of software solutions for search, logging, security, and analytics. Their flagship product is Elasticsearch, an open-source, distributed search engine that allows users to search, analyze, and visualize large volumes of data in real-time. Elastic also offers products such as Kibana, a data visualization tool, and Logstash, a log management and pipeline tool, as well as various other tools and solutions for data analysis and management.\"\n    }\n  ]\n}"
                   }
                 }
@@ -11604,7 +11744,8 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint",
+        "summary": "Get an inference endpoint\n",
+        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get-1",
         "parameters": [
           {
@@ -11690,7 +11831,8 @@
         "tags": [
           "inference"
         ],
-        "summary": "Delete an inference endpoint",
+        "summary": "Delete an inference endpoint\n",
+        "description": "This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).",
         "operationId": "inference-delete",
         "parameters": [
           {
@@ -11722,7 +11864,8 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint",
+        "summary": "Get an inference endpoint\n",
+        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get-2",
         "parameters": [
           {
@@ -11817,7 +11960,8 @@
         "tags": [
           "inference"
         ],
-        "summary": "Delete an inference endpoint",
+        "summary": "Delete an inference endpoint\n",
+        "description": "This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).",
         "operationId": "inference-delete-1",
         "parameters": [
           {
@@ -11852,7 +11996,8 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint",
+        "summary": "Get an inference endpoint\n",
+        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get",
         "responses": {
           "200": {
@@ -12025,7 +12170,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` or `text_embedding` task types.\nNot applicable to the `rerank` or `completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -12161,7 +12306,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -12287,7 +12432,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` or `text_embedding` task types.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -12424,17 +12569,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "chunking_settings": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
-                    },
-                    "description": "The chunking configuration object.",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
-                      }
-                    ]
-                  },
                   "service": {
                     "description": "The type of service supported for the specified task type. In this case, `anthropic`.",
                     "allOf": [
@@ -12444,7 +12578,7 @@
                     ]
                   },
                   "service_settings": {
-                    "description": "Settings used to install the inference model. These settings are specific to the `watsonxai` service.",
+                    "description": "Settings used to install the inference model. These settings are specific to the `anthropic` service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.AnthropicServiceSettings"
@@ -12548,7 +12682,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank` or `completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -12564,7 +12698,7 @@
                     ]
                   },
                   "service_settings": {
-                    "description": "Settings used to install the inference model. These settings are specific to the `openai` service.",
+                    "description": "Settings used to install the inference model. These settings are specific to the `azureaistudio` service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.AzureAiStudioServiceSettings"
@@ -12679,7 +12813,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -12805,7 +12939,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank` or `completion` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -12932,17 +13066,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "chunking_settings": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
-                    },
-                    "description": "The chunking configuration object.",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
-                      }
-                    ]
-                  },
                   "service": {
                     "description": "The type of service supported for the specified task type. In this case, `contextualai`.",
                     "allOf": [
@@ -13047,7 +13170,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` or `text_embedding` task types.\nNot applicable to the `rerank` or `completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -13184,17 +13307,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "chunking_settings": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
-                    },
-                    "description": "The chunking configuration object.",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
-                      }
-                    ]
-                  },
                   "service": {
                     "description": "The type of service supported for the specified task type. In this case, `deepseek`.",
                     "allOf": [
@@ -13294,7 +13406,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` and `text_embedding` task types.\nNot applicable to the `rerank` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -13571,7 +13683,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -13684,7 +13796,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -13731,6 +13843,16 @@
                   "summary": "A rerank task",
                   "description": "Run `PUT _inference/rerank/google_vertex_ai_rerank` to create an inference endpoint to perform a `rerank` task type.",
                   "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"service_account_json\": \"service-account-json\",\n        \"project_id\": \"project-id\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample3": {
+                  "summary": "A completion task for Google Model Garden Anthropic endpoint",
+                  "description": "Run `PUT _inference/completion/google_model_garden_anthropic_completion` to create an inference endpoint to perform a `completion` task using Anthropic's model hosted on Google Model Garden.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"anthropic\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://url:rawPredict\",\n        \"streaming_url\": \"https://streaming_url:streamRawPredict\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 128\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample4": {
+                  "summary": "A chat_completion task for Google Model Garden Anthropic endpoint",
+                  "description": "Run `PUT _inference/chat_completion/google_model_garden_anthropic_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Anthropic's model hosted on Google Model Garden.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"anthropic\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://url:rawPredict\",\n        \"streaming_url\": \"https://streaming_url:streamRawPredict\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 128\n    }\n}"
                 }
               }
             }
@@ -13810,7 +13932,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -13936,7 +14058,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -14062,7 +14184,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -14182,7 +14304,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -14294,7 +14416,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -14420,7 +14542,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -14542,6 +14664,17 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "chunking_settings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
+                    },
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` or `chat_completion` task types.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
+                      }
+                    ]
+                  },
                   "service": {
                     "description": "The type of service supported for the specified task type. In this case, `watsonxai`.",
                     "allOf": [
@@ -14637,18 +14770,19 @@
                     "type": "string"
                   },
                   "input": {
-                    "description": "The text on which you want to perform the inference task.\nIt can be a single string or an array.\n\n> info\n> Inference endpoints for the `completion` task type currently only support a single string as input.",
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      }
-                    ]
+                    "description": "The documents to rank.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "return_documents": {
+                    "description": "Include the document text in the response.",
+                    "type": "boolean"
+                  },
+                  "top_n": {
+                    "description": "Limit the response to the top N documents.",
+                    "type": "number"
                   },
                   "task_settings": {
                     "description": "Task settings for the individual inference request.\nThese settings are specific to the task type you specified and override the task settings specified when initializing the service.",
@@ -14774,7 +14908,7 @@
                     ]
                   },
                   "task_settings": {
-                    "description": "Optional task settings",
+                    "description": "Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.TaskSettings"
@@ -14880,7 +15014,7 @@
                     "type": "string"
                   },
                   "task_settings": {
-                    "description": "Optional task settings",
+                    "description": "Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.TaskSettings"
@@ -39144,6 +39278,11 @@
             "description": "The number of nearest neighbor candidates to consider per shard",
             "type": "number"
           },
+          "visit_percentage": {
+            "description": "The percentage of vectors to explore per shard while doing knn search with bbq_disk",
+            "x-state": "Generally available",
+            "type": "number"
+          },
           "boost": {
             "description": "Boost value to apply to kNN scores",
             "type": "number"
@@ -39537,6 +39676,11 @@
                 "description": "Number of nearest neighbor candidates to consider per shard.",
                 "type": "number"
               },
+              "visit_percentage": {
+                "description": "The percentage of vectors to explore per shard while doing knn search with bbq_disk",
+                "x-state": "Generally available",
+                "type": "number"
+              },
               "similarity": {
                 "description": "The minimum similarity required for a document to be considered a match.",
                 "type": "number"
@@ -39568,10 +39712,10 @@
             "type": "object",
             "properties": {
               "retrievers": {
-                "description": "A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them.",
+                "description": "A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them. Each retriever can optionally include a weight parameter.",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/_types.RetrieverContainer"
+                  "$ref": "#/components/schemas/_types.RRFRetrieverEntry"
                 }
               },
               "rank_constant": {
@@ -39596,6 +39740,39 @@
               "retrievers"
             ]
           }
+        ]
+      },
+      "_types.RRFRetrieverEntry": {
+        "description": "Either a direct RetrieverContainer (backward compatible) or an RRFRetrieverComponent with weight.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverContainer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.RRFRetrieverComponent"
+          }
+        ]
+      },
+      "_types.RRFRetrieverComponent": {
+        "description": "Wraps a retriever with an optional weight for RRF scoring.",
+        "type": "object",
+        "properties": {
+          "retriever": {
+            "description": "The nested retriever configuration.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.RetrieverContainer"
+              }
+            ]
+          },
+          "weight": {
+            "description": "Weight multiplier for this retriever's contribution to the RRF score. Higher values increase influence. Defaults to 1.0 if not specified. Must be non-negative.",
+            "default": 1.0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "retriever"
         ]
       },
       "_types.TextSimilarityReranker": {
@@ -41037,6 +41214,11 @@
               },
               "num_candidates": {
                 "description": "The number of nearest neighbor candidates to consider per shard",
+                "type": "number"
+              },
+              "visit_percentage": {
+                "description": "The percentage of vectors to explore per shard while doing knn search with bbq_disk",
+                "x-state": "Generally available",
                 "type": "number"
               },
               "k": {
@@ -45260,8 +45442,7 @@
           }
         },
         "required": [
-          "point",
-          "sort"
+          "point"
         ]
       },
       "_types.aggregations.GeoLinePoint": {
@@ -46383,10 +46564,17 @@
               },
               "percents": {
                 "description": "The percentiles to calculate.",
-                "type": "array",
-                "items": {
-                  "type": "number"
-                }
+                "oneOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                ]
               },
               "hdr": {
                 "description": "Uses the alternative High Dynamic Range Histogram algorithm to calculate percentiles.",
@@ -48540,7 +48728,7 @@
             "type": "string"
           },
           "docs.count": {
-            "description": "available docs",
+            "description": "The number of documents in the index, including hidden nested documents.\nFor indices with `semantic_text` fields or other nested field types,\nthis count includes the internal nested documents.\nTo get the logical document count (excluding nested documents), use\nthe `_count` API or `_cat/count` API instead.",
             "oneOf": [
               {
                 "type": "string"
@@ -52075,8 +52263,7 @@
           }
         },
         "required": [
-          "type",
-          "mode"
+          "type"
         ]
       },
       "_types.analysis.KuromojiTokenizationMode": {
@@ -60576,25 +60763,8 @@
               }
             ]
           },
-          "config": {
-            "description": "The downsample configuration to execute.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DownsampleConfig"
-              }
-            ]
-          }
-        },
-        "required": [
-          "after",
-          "config"
-        ]
-      },
-      "indices._types.DownsampleConfig": {
-        "type": "object",
-        "properties": {
           "fixed_interval": {
-            "description": "The interval at which to aggregate the original time series index.",
+            "description": "The downsample interval.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DurationLarge"
@@ -60603,6 +60773,7 @@
           }
         },
         "required": [
+          "after",
           "fixed_interval"
         ]
       },
@@ -64188,6 +64359,40 @@
           "mappings"
         ]
       },
+      "indices.get_migrate_reindex_status.StatusInProgress": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "string"
+          },
+          "total_doc_count": {
+            "type": "number"
+          },
+          "reindexed_doc_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "index",
+          "total_doc_count",
+          "reindexed_doc_count"
+        ]
+      },
+      "indices.get_migrate_reindex_status.StatusError": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "index",
+          "message"
+        ]
+      },
       "indices.modify_data_stream.Action": {
         "type": "object",
         "properties": {
@@ -64923,7 +65128,7 @@
             }
           },
           "model": {
-            "description": "The ID of the model to use.",
+            "description": "The ID of the model to use. By default, the model ID is set to the value included when creating the inference endpoint.",
             "type": "string"
           },
           "max_completion_tokens": {
@@ -65272,7 +65477,7 @@
         "type": "object",
         "properties": {
           "chunking_settings": {
-            "description": "Chunking configuration object",
+            "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` and `text_embedding` task types.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -65572,7 +65777,7 @@
         "enum": [
           "completion",
           "rerank",
-          "space_embedding",
+          "sparse_embedding",
           "text_embedding"
         ]
       },
@@ -66550,8 +66755,15 @@
       "inference._types.CustomServiceSettings": {
         "type": "object",
         "properties": {
+          "batch_size": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#auto-text-chunking"
+            },
+            "description": "Specifies the batch size used for the semantic_text field. If the field is not provided, the default is 10.\nThe batch size is the maximum number of inputs in a single request to the upstream service.\nThe chunk within the batch are controlled by the selected chunking strategy for the semantic_text field.",
+            "type": "number"
+          },
           "headers": {
-            "description": "Specifies the HTTPS header parameters – such as `Authentication` or `Contet-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\":{\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
+            "description": "Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\":{\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
             "type": "object"
           },
           "input_type": {
@@ -66609,7 +66821,7 @@
         "type": "object",
         "properties": {
           "json_parser": {
-            "description": "Specifies the JSON parser that is used to parse the response from the custom service.\nDifferent task types require different json_parser parameters.\nFor example:\n```\n# text_embedding\n# For a response like this:\n\n{\n \"object\": \"list\",\n \"data\": [\n     {\n       \"object\": \"embedding\",\n       \"index\": 0,\n       \"embedding\": [\n           0.014539449,\n           -0.015288644\n       ]\n     }\n ],\n \"model\": \"text-embedding-ada-002-v2\",\n \"usage\": {\n     \"prompt_tokens\": 8,\n     \"total_tokens\": 8\n }\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"text_embeddings\":\"$.data[*].embedding[*]\"\n  }\n}\n\n# sparse_embedding\n# For a response like this:\n\n{\n  \"request_id\": \"75C50B5B-E79E-4930-****-F48DBB392231\",\n  \"latency\": 22,\n  \"usage\": {\n     \"token_count\": 11\n  },\n  \"result\": {\n     \"sparse_embeddings\": [\n        {\n          \"index\": 0,\n          \"embedding\": [\n            {\n              \"token_id\": 6,\n              \"weight\": 0.101\n            },\n            {\n              \"token_id\": 163040,\n              \"weight\": 0.28417\n            }\n          ]\n        }\n     ]\n  }\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"token_path\":\"$.result.sparse_embeddings[*].embedding[*].token_id\",\n    \"weight_path\":\"$.result.sparse_embeddings[*].embedding[*].weight\"\n  }\n}\n\n# rerank\n# For a response like this:\n\n{\n  \"results\": [\n    {\n      \"index\": 3,\n      \"relevance_score\": 0.999071,\n      \"document\": \"abc\"\n    },\n    {\n      \"index\": 4,\n      \"relevance_score\": 0.7867867,\n      \"document\": \"123\"\n    },\n    {\n      \"index\": 0,\n      \"relevance_score\": 0.32713068,\n      \"document\": \"super\"\n    }\n  ],\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"reranked_index\":\"$.result.scores[*].index\",    // optional\n    \"relevance_score\":\"$.result.scores[*].score\",\n    \"document_text\":\"xxx\"    // optional\n  }\n}\n\n# completion\n# For a response like this:\n\n{\n \"id\": \"chatcmpl-B9MBs8CjcvOU2jLn4n570S5qMJKcT\",\n \"object\": \"chat.completion\",\n \"created\": 1741569952,\n \"model\": \"gpt-4.1-2025-04-14\",\n \"choices\": [\n   {\n    \"index\": 0,\n    \"message\": {\n      \"role\": \"assistant\",\n      \"content\": \"Hello! How can I assist you today?\",\n      \"refusal\": null,\n      \"annotations\": []\n    },\n    \"logprobs\": null,\n    \"finish_reason\": \"stop\"\n  }\n ]\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"completion_result\":\"$.choices[*].message.content\"\n  }\n}",
+            "description": "Specifies the JSON parser that is used to parse the response from the custom service.\nDifferent task types require different json_parser parameters.\nFor example:\n```\n# text_embedding\n# For a response like this:\n\n{\n \"object\": \"list\",\n \"data\": [\n     {\n       \"object\": \"embedding\",\n       \"index\": 0,\n       \"embedding\": [\n           0.014539449,\n           -0.015288644\n       ]\n     }\n ],\n \"model\": \"text-embedding-ada-002-v2\",\n \"usage\": {\n     \"prompt_tokens\": 8,\n     \"total_tokens\": 8\n }\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"text_embeddings\":\"$.data[*].embedding[*]\"\n  }\n}\n\n# Elasticsearch supports the following embedding types:\n* float\n* byte\n* bit (or binary)\n\nTo specify the embedding type for the response, the `embedding_type`\nfield should be added in the `json_parser` object. Here's an example:\n\"response\":{\n  \"json_parser\":{\n    \"text_embeddings\":\"$.data[*].embedding[*]\",\n    \"embedding_type\":\"bit\"\n  }\n}\n\nIf `embedding_type` is not specified, it defaults to `float`.\n\n# sparse_embedding\n# For a response like this:\n\n{\n  \"request_id\": \"75C50B5B-E79E-4930-****-F48DBB392231\",\n  \"latency\": 22,\n  \"usage\": {\n     \"token_count\": 11\n  },\n  \"result\": {\n     \"sparse_embeddings\": [\n        {\n          \"index\": 0,\n          \"embedding\": [\n            {\n              \"token_id\": 6,\n              \"weight\": 0.101\n            },\n            {\n              \"token_id\": 163040,\n              \"weight\": 0.28417\n            }\n          ]\n        }\n     ]\n  }\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"token_path\":\"$.result.sparse_embeddings[*].embedding[*].token_id\",\n    \"weight_path\":\"$.result.sparse_embeddings[*].embedding[*].weight\"\n  }\n}\n\n# rerank\n# For a response like this:\n\n{\n  \"results\": [\n    {\n      \"index\": 3,\n      \"relevance_score\": 0.999071,\n      \"document\": \"abc\"\n    },\n    {\n      \"index\": 4,\n      \"relevance_score\": 0.7867867,\n      \"document\": \"123\"\n    },\n    {\n      \"index\": 0,\n      \"relevance_score\": 0.32713068,\n      \"document\": \"super\"\n    }\n  ],\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"reranked_index\":\"$.result.scores[*].index\",    // optional\n    \"relevance_score\":\"$.result.scores[*].score\",\n    \"document_text\":\"xxx\"    // optional\n  }\n}\n\n# completion\n# For a response like this:\n\n{\n \"id\": \"chatcmpl-B9MBs8CjcvOU2jLn4n570S5qMJKcT\",\n \"object\": \"chat.completion\",\n \"created\": 1741569952,\n \"model\": \"gpt-4.1-2025-04-14\",\n \"choices\": [\n   {\n    \"index\": 0,\n    \"message\": {\n      \"role\": \"assistant\",\n      \"content\": \"Hello! How can I assist you today?\",\n      \"refusal\": null,\n      \"annotations\": []\n    },\n    \"logprobs\": null,\n    \"finish_reason\": \"stop\"\n  }\n ]\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"completion_result\":\"$.choices[*].message.content\"\n  }\n}",
             "type": "object"
           }
         },
@@ -66770,6 +66982,14 @@
           },
           "num_threads": {
             "description": "The number of threads used by each model allocation during inference.\nThis setting generally increases the speed per inference request.\nThe inference process is a compute-bound process; `threads_per_allocations` must not exceed the number of available allocated processors per node.\nThe value must be a power of 2.\nThe maximum value is 32.",
+            "type": "number"
+          },
+          "long_document_strategy": {
+            "description": "Available only for the `rerank` task type using the Elastic reranker model.\nControls the strategy used for processing long documents during inference.\n\nPossible values:\n- `truncate` (default): Processes only the beginning of each document.\n- `chunk`: Splits long documents into smaller parts (chunks) before inference.\n\nWhen `long_document_strategy` is set to `chunk`, Elasticsearch splits each document into smaller parts but still returns a single score per document.\nThat score reflects the highest relevance score among all chunks.",
+            "type": "string"
+          },
+          "max_chunks_per_doc": {
+            "description": "Only for the `rerank` task type.\nLimits the number of chunks per document that are sent for inference when chunking is enabled.\nIf not set, all chunks generated for the document are processed.",
             "type": "number"
           }
         },
@@ -67007,22 +67227,38 @@
       "inference._types.GoogleVertexAIServiceSettings": {
         "type": "object",
         "properties": {
+          "provider": {
+            "description": "The name of the Google Model Garden Provider for `completion` and `chat_completion` tasks.\nIn order for a Google Model Garden endpoint to be used `provider` must be defined and be other than `google`.\nModes:\n- Google Model Garden (third-party models): set `provider` to a supported non-`google` value and provide `url` and/or `streaming_url`.\n- Google Vertex AI: omit `provider` or set it to `google`. In this mode, do not set `url` or `streaming_url` and Elastic will construct the endpoint url from `location`, `model_id`, and `project_id` parameters.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.GoogleModelGardenProvider"
+              }
+            ]
+          },
+          "url": {
+            "description": "The URL for non-streaming `completion` requests to a Google Model Garden provider endpoint.\nIf both `url` and `streaming_url` are provided, each is used for its respective mode.\nIf `streaming_url` is not provided, `url` is also used for streaming `completion` and `chat_completion`.\nIf `provider` is not provided or set to `google` (Google Vertex AI), do not set `url` (or `streaming_url`).\nAt least one of `url` or `streaming_url` must be provided for Google Model Garden endpoint usage.",
+            "type": "string"
+          },
+          "streaming_url": {
+            "description": "The URL for streaming `completion` and `chat_completion` requests to a Google Model Garden provider endpoint.\nIf both `streaming_url` and `url` are provided, each is used for its respective mode.\nIf `url` is not provided, `streaming_url` is also used for non-streaming `completion` requests.\nIf `provider` is not provided or set to `google` (Google Vertex AI), do not set `streaming_url` (or `url`).\nAt least one of `streaming_url` or `url` must be provided for Google Model Garden endpoint usage.",
+            "type": "string"
+          },
           "location": {
             "externalDocs": {
               "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/locations"
             },
-            "description": "The name of the location to use for the inference task.\nRefer to the Google documentation for the list of supported locations.",
+            "description": "The name of the location to use for the inference task for the Google Vertex AI inference task.\nFor Google Vertex AI, when `provider` is omitted or `google` `location` is mandatory.\nFor Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `location` is ignored.\nRefer to the Google documentation for the list of supported locations.",
             "type": "string"
           },
           "model_id": {
             "externalDocs": {
               "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/text-embeddings-api"
             },
-            "description": "The name of the model to use for the inference task.\nRefer to the Google documentation for the list of supported models.",
+            "description": "The name of the model to use for the inference task.\nFor Google Vertex AI `model_id` is mandatory.\nFor Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `model_id` will be used for some providers that require it, otherwise - ignored.\nRefer to the Google documentation for the list of supported models for Google Vertex AI.",
             "type": "string"
           },
           "project_id": {
-            "description": "The name of the project to use for the inference task.",
+            "description": "The name of the project to use for the Google Vertex AI inference task.\nFor Google Vertex AI `project_id` is mandatory.\nFor Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `project_id` is ignored.",
             "type": "string"
           },
           "rate_limit": {
@@ -67046,10 +67282,14 @@
           }
         },
         "required": [
-          "location",
-          "model_id",
-          "project_id",
           "service_account_json"
+        ]
+      },
+      "inference._types.GoogleModelGardenProvider": {
+        "type": "string",
+        "enum": [
+          "google",
+          "anthropic"
         ]
       },
       "inference._types.GoogleVertexAITaskSettings": {
@@ -67073,6 +67313,13 @@
                 "$ref": "#/components/schemas/inference._types.ThinkingConfig"
               }
             ]
+          },
+          "max_tokens": {
+            "externalDocs": {
+              "url": "https://docs.claude.com/en/api/messages#body-max-tokens"
+            },
+            "description": "For `completion` and `chat_completion` tasks, specifies the `max_tokens` value for requests sent to the Google Model Garden `anthropic` provider.\nIf `provider` is not set to `anthropic`, this field is ignored.\nIf `max_tokens` is specified - it must be a positive integer. If not specified, the default value of 1024 is used.\nAnthropic models require `max_tokens` to be set for each request. Please refer to the Anthropic documentation for more information.",
+            "type": "number"
           }
         }
       },
@@ -67116,6 +67363,8 @@
       "inference._types.TaskTypeGoogleVertexAI": {
         "type": "string",
         "enum": [
+          "chat_completion",
+          "completion",
           "text_embedding",
           "rerank"
         ]
@@ -67591,6 +67840,10 @@
           "user": {
             "description": "For a `completion` or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
             "type": "string"
+          },
+          "headers": {
+            "description": "Specifies custom HTTP header parameters.\nFor example:\n```\n\"headers\":{\n  \"Custom-Header\": \"Some-Value\",\n  \"Another-Custom-Header\": \"Another-Value\"\n}\n```",
+            "type": "object"
           }
         }
       },
@@ -86357,7 +86610,7 @@
       "inference.delete-dry_run": {
         "in": "query",
         "name": "dry_run",
-        "description": "When true, the endpoint is not deleted and a list of ingest processors which reference this endpoint is returned.",
+        "description": "When true, checks the semantic_text fields and inference processors that reference the endpoint and returns them in a list, but does not delete the endpoint.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -90023,7 +90276,7 @@
             "examples": {
               "InferencePutExample1": {
                 "description": "An example body for a `PUT _inference/rerank/my-rerank-model` request.",
-                "value": "{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n },\n \"chunking_settings\": {\n   \"strategy\": \"recursive\",\n   \"max_chunk_size\": 200,\n   \"separator_group\": \"markdown\"\n }\n}"
+                "value": "{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n }\n}"
               }
             }
           }
@@ -91291,7 +91544,7 @@
                   "type": "number"
                 },
                 "sort": {
-                  "description": "The sort definition.\nYou can sort on `username`, `roles`, or `enabled`.\nIn addition, sort can also be applied to the `_doc` field to sort by index order.",
+                  "description": "The sort definition.\nYou can sort on `name`, `description`, `metadata`, `applications.application`, `applications.privileges`,\nand `applications.resources`.\nIn addition, sort can also be applied to the `_doc` field to sort by index order.",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Sort"
