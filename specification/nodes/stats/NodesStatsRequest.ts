@@ -18,7 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Fields, CommonStatsFlags, NodeIds, NodeStatsLevel } from '@_types/common'
+import {
+  CommonStatsFlags,
+  Fields,
+  NodeIds,
+  NodeStatsLevel
+} from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**

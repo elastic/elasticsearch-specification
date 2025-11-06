@@ -18,11 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {
-  ExpandWildcards,
-  Indices,
-  VersionNumber
-} from '@_types/common'
+import { ExpandWildcards, Indices, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**

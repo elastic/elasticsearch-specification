@@ -389,7 +389,6 @@ export enum ClusterInfoTarget {
 
 export type ClusterInfoTargets = ClusterInfoTarget | ClusterInfoTarget[]
 
-
 export enum CommonStatsFlag {
   _all,
   store,

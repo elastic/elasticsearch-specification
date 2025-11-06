@@ -63,7 +63,6 @@ export interface Request extends RequestBase {
     /**
      * Limits the information returned to the specified metrics.
      * @deprecated 8.6.0 This parameter has no effect; its use will be forbidden in a future version.
-     * @server_default all
      */
     metric?: string | string[]
     /**

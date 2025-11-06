@@ -13,7 +13,6 @@
     "Dangling type '_types:ElasticsearchResponseBase'",
     "Dangling type '_types:ElasticsearchUrlFormatter'",
     "Dangling type '_types:HttpMethod'",
-    "Dangling type '_types:IndexMetrics'",
     "Dangling type '_types:LogLevel'",
     "Dangling type '_types:LongId'",
     "Dangling type '_types:Transform'",
