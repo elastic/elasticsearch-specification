@@ -213,14 +213,14 @@ const BUILTIN_MAPPINGS: &[((&str, &str), &str)] = &[
     (("_types", "double"), "double"),
     (("_types", "time"), "time"),
     (("_types", "Duration"), "time"),
-    // special cases
-    (("_types", "DateTime"), "time"),
-    (("_types", "WaitForActiveShards"), "string"),
+    (("_types", "DateTime"), "date"),
     (("_types", "ByteSize"), "string"),
+    // hard cases
+    (("_types", "WaitForActiveShards"), "string"),
+    (("_global.search._types", "TrackHits"), "boolean|long"),
     // sometimes list in rest-api-spec as comma-separate values are allowed
     // but the Elasticsearch specification always models it as a string.
     (("_global.search._types", "SourceConfigParam"), "list"),
-    (("_global.search._types", "TrackHits"), "boolean|long"),
 ];
 
 fn is_list_enum(union: &UnionOf) -> Option<TypeName> {
@@ -255,7 +255,7 @@ fn is_literal(instance: &InstanceOf) -> Option<String> {
 fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>) -> String {
     match value_of {
         ValueOf::ArrayOf(_) => "list".to_string(),
-        ValueOf::UnionOf(union) => if let Some(typ) = is_list_enum(union) {
+        ValueOf::UnionOf(union) => if let Some(_) = is_list_enum(union) {
             "list"
         } else {
             tracing::warn!("{:?}", union);
