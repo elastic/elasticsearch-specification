@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Metrics, NodeIds } from '@_types/common'
+import { NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -53,9 +53,9 @@ export interface Request extends RequestBase {
     node_id?: NodeIds
     /**
      * Limits the information returned to the specific metrics.
-     * A comma-separated list of the following options: `_all`, `rest_actions`.
+     * A comma-separated list of the following options: `_all`, `rest_actions`, `aggregations`.
      */
-    metric?: Metrics
+    metric?: NodesUsageMetric | NodesUsageMetric[]
   }
   query_parameters: {
     /**
@@ -65,4 +65,10 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
+}
+
+export enum NodesUsageMetric {
+  _all,
+  rest_actions,
+  aggregations
 }

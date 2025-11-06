@@ -21,7 +21,6 @@ import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
   Indices,
-  Metrics,
   VersionNumber
 } from '@_types/common'
 import { Duration } from '@_types/Time'
@@ -68,7 +67,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    metric?: Metrics
+    metric?: ClusterStateMetric | ClusterStateMetric[]
     index?: Indices
   }
   query_parameters: {
@@ -90,4 +89,15 @@ export interface Request extends RequestBase {
     wait_for_metadata_version?: VersionNumber
     wait_for_timeout?: Duration
   }
+}
+
+export enum ClusterStateMetric {
+  version,
+  master_node,
+  blocks,
+  nodes,
+  metadata,
+  routing_table,
+  routing_nodes,
+  customs
 }
