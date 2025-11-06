@@ -38,6 +38,9 @@ pub struct Path {
     pub methods: Vec<String>,
     #[serde(skip_serializing_if = "HashMap::is_empty")]
     pub parts: HashMap<String, PathPart>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub deprecated: Option<Deprecation>,
+
 }
 
 #[derive(Debug, Serialize)]

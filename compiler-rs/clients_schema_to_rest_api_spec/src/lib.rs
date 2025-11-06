@@ -160,6 +160,10 @@ fn convert_url_template(
         path: url_template.path.clone(),
         methods: url_template.methods.clone(),
         parts,
+        deprecated: url_template.deprecation.as_ref().map(|dep| Deprecation {
+            version: dep.version.clone(),
+            description: dep.description.clone(),
+        }),
     })
 }
 
