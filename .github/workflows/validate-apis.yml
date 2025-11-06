@@ -1,12 +1,7 @@
 name: Validate APIs
 
 on:
-  workflow_dispatch:
   pull_request:
-    branches:
-      - main
-      - '[0-9]+.[0-9]+'
-  push:
     branches:
       - main
       - '[0-9]+.[0-9]+'
@@ -15,21 +10,31 @@ permissions:
   pull-requests: write    # To create/update PR comments
 
 jobs:
-  validate-apis:
-    name: build
+  generate-validation:
+    name: Generate ${{ matrix.type }} validation
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - type: baseline
+            spec_ref: ${{ github.event.pull_request.base.sha }}
+          - type: pr
+            spec_ref: ${{ github.sha }}
 
     steps:
       - name: Check pull request was opened from branch
-        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != 'elastic/elasticsearch-specification'
+        if: github.event.pull_request.head.repo.full_name != 'elastic/elasticsearch-specification'
         run: echo "Validation is not supported from forks"; exit 1
-        
-      - uses: actions/checkout@v5
+
+      - name: Checkout elasticsearch-specification
+        uses: actions/checkout@v5
         with:
           path: ./elasticsearch-specification
+          ref: ${{ matrix.spec_ref }}
           persist-credentials: false
 
-      - uses: actions/checkout@v5
+      - name: Checkout clients-flight-recorder
+        uses: actions/checkout@v5
         with:
           repository: elastic/clients-flight-recorder
           path: ./clients-flight-recorder
@@ -41,15 +46,6 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
-
-      - name: Restore JSON report
-        if: github.event_name == 'pull_request'
-        uses: actions/cache/restore@v4
-        with:
-          path: ./clients-flight-recorder/recordings/types-validation/types-validation.json
-          key: types-validation-json-${{ format('{0}-{1}', github.base_ref, github.event.pull_request.base.sha) }}
-          restore-keys: |
-            types-validation-json-${{ github.base_ref }}-
 
       - name: Install deps 1/2
         working-directory: ./clients-flight-recorder
@@ -64,45 +60,65 @@ jobs:
           npm install --prefix .github/validate-pr
           make setup
 
-      - name: Generate specification and check generated types
+      - name: Generate specification
         working-directory: ./elasticsearch-specification
-        run: |
-          make contrib
+        run: make contrib
 
       - name: Download artifacts
         working-directory: ./clients-flight-recorder
         run: |
-          if [[ -n "${GITHUB_BASE_REF:-}" ]]; then
-            branch=$GITHUB_BASE_REF
-          else
-            branch=$GITHUB_REF_NAME
-          fi
+          branch=${{ github.base_ref }}
           echo "Using branch: $branch"
           node scripts/upload-recording/download.js --branch $branch --git
           node scripts/clone-elasticsearch/index.js --branch $branch
 
-      - name: Run validation (Push)
-        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-        working-directory: ./clients-flight-recorder/scripts/types-validator
-        env:
-          BRANCH: ${{ github.ref_name }}
-        run: node index.js --generate-report --ci --branch $BRANCH
-
-      - name: Save JSON report
-        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-        uses: actions/cache/save@v4
-        with:
-          path: ./clients-flight-recorder/recordings/types-validation/types-validation.json
-          key: types-validation-json-${{ format('{0}-{1}', github.ref_name, github.sha) }}
-
-      - name: Run validation (PR)
-        if: github.event_name == 'pull_request'
-        id: validation
+      - name: Run validation
         working-directory: ./elasticsearch-specification
-        run: node .github/validate-pr
+        run: node .github/validate-pr/run-validation.js
+
+      - name: Upload validation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.type }}-validation-report
+          path: ./elasticsearch-specification/.github/validate-pr/validation-report.json
+          retention-days: 1
+
+  compare-and-comment:
+    name: Compare and comment
+    runs-on: ubuntu-latest
+    needs: generate-validation
+
+    steps:
+      - name: Checkout elasticsearch-specification (for comparison script)
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --prefix .github/validate-pr
+
+      - name: Download baseline validation report
+        uses: actions/download-artifact@v4
+        with:
+          name: baseline-validation-report
+          path: ./reports/baseline
+
+      - name: Download PR validation report
+        uses: actions/download-artifact@v4
+        with:
+          name: pr-validation-report
+          path: ./reports/pr
+
+      - name: Run comparison
+        id: validation
+        run: node .github/validate-pr/compare-reports.js ./reports/baseline/validation-report.json ./reports/pr/validation-report.json
 
       - name: Find existing comment
-        if: github.event_name == 'pull_request'
         uses: peter-evans/find-comment@3eae4d37986fb5a8592848f6a574fdf654e61f9e # v3.1.0
         id: find-comment
         with:
@@ -111,7 +127,6 @@ jobs:
           body-includes: 'Following you can find the validation changes'
 
       - name: Create or update comment
-        if: github.event_name == 'pull_request'
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
