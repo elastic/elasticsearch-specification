@@ -64,6 +64,21 @@ export default createRule({
               }
             }
           }
+          
+          // skip Type[] | Type pattern
+          if (first.type === 'TSArrayType') {
+            if (first.elementType?.type === second.type) {
+              if (first.elementType.type === 'TSTypeReference' && second.type === 'TSTypeReference') {
+                // for reference types, check names match
+                if (first.elementType.typeName?.name === second.typeName?.name) {
+                  return;
+                }
+              } else if (first.elementType.type === second.type) {
+                // for primitive types (string, number, etc.), types already match
+                return;
+              }
+            }
+          }
         }
         
         context.report({ 

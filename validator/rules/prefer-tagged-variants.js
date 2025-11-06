@@ -70,11 +70,24 @@ export default createRule({
         // skip Type | Type[] pattern
         if (node.types.length === 2) {
           const [first, second] = node.types;
+          
+          // check Type | Type[]
           if (second.type === 'TSArrayType' && 
               first.type === 'TSTypeReference' &&
               second.elementType?.type === 'TSTypeReference') {
             const firstName = first.typeName?.name;
             const secondName = second.elementType.typeName?.name;
+            if (firstName && firstName === secondName) {
+              return;
+            }
+          }
+          
+          // check Type[] | Type
+          if (first.type === 'TSArrayType' &&
+              first.elementType?.type === 'TSTypeReference' &&
+              second.type === 'TSTypeReference') {
+            const firstName = first.elementType.typeName?.name;
+            const secondName = second.typeName?.name;
             if (firstName && firstName === secondName) {
               return;
             }

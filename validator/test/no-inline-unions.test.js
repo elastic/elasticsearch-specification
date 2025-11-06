@@ -64,6 +64,12 @@ ruleTester.run('no-inline-unions', rule, {
     `interface MyInterface {
       input: string | string[]
     }`,
+    `class MyClass {
+      items: string[] | string
+    }`,
+    `interface Config {
+      nodes: integer[] | integer
+    }`,
   ],
   invalid: [
     {

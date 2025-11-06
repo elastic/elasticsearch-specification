@@ -55,7 +55,6 @@ export class RoleDescriptor {
    * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
    * @availability stack
    */
-  // eslint-disable-next-line es-spec-validator/no-inline-unions, es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   global?: GlobalPrivilege[] | GlobalPrivilege
   /**
    * A list of application privilege entries
@@ -107,7 +106,6 @@ export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
   /**
    * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
    */
-  // eslint-disable-next-line es-spec-validator/no-inline-unions, es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
   global?: GlobalPrivilege[] | GlobalPrivilege
   /**
    * A list of application privilege entries

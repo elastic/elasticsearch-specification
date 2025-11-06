@@ -58,6 +58,12 @@ ruleTester.run('prefer-tagged-variants', rule, {
     `class SearchRequest {
       knn?: KnnSearch | KnnSearch[]
     }`,
+    `class EqlRequest {
+      filter?: QueryContainer[] | QueryContainer
+    }`,
+    `interface MyInterface {
+      data: MyClass[] | MyClass
+    }`,
   ],
   invalid: [
     {
