@@ -17,26 +17,25 @@
  * under the License.
  */
 
-import { RuleTester } from "@typescript-eslint/rule-tester";
-import rule from "../rules/request-must-have-urls.js";
+import { RuleTester } from '@typescript-eslint/rule-tester';
+import rule from '../rules/request-must-have-urls.js';
 
 const ruleTester = new RuleTester({
   languageOptions: {
     parserOptions: {
       projectService: {
-        allowDefaultProject: ["*.ts*"],
-        defaultProject: "tsconfig.json",
+        allowDefaultProject: ['*.ts*'],
+        defaultProject: 'tsconfig.json',
       },
-      tsconfigRootDir: new URL("../../specification/", import.meta.url)
-        .pathname,
+      tsconfigRootDir: new URL('../../specification/', import.meta.url).pathname,
     },
   },
 });
 
-ruleTester.run("request-must-have-urls", rule, {
+ruleTester.run('request-must-have-urls', rule, {
   valid: [
     {
-      name: "Request with urls property",
+      name: 'Request with urls property',
       code: `
         interface RequestBase {}
         export interface Request extends RequestBase {
@@ -53,7 +52,7 @@ ruleTester.run("request-must-have-urls", rule, {
       `,
     },
     {
-      name: "Request with multiple URL patterns",
+      name: 'Request with multiple URL patterns',
       code: `
         interface RequestBase {}
         export interface Request extends RequestBase {
@@ -77,7 +76,7 @@ ruleTester.run("request-must-have-urls", rule, {
       `,
     },
     {
-      name: "Non-Request interface without urls",
+      name: 'Non-Request interface without urls',
       code: `
         export interface ResponseBody {
           took: number
@@ -86,7 +85,7 @@ ruleTester.run("request-must-have-urls", rule, {
       `,
     },
     {
-      name: "Response interface without urls",
+      name: 'Response interface without urls',
       code: `
         interface RequestBase {}
         export interface Response {
@@ -99,7 +98,7 @@ ruleTester.run("request-must-have-urls", rule, {
   ],
   invalid: [
     {
-      name: "Request without urls property",
+      name: 'Request without urls property',
       code: `
         interface RequestBase {}
         export interface Request extends RequestBase {
@@ -110,15 +109,15 @@ ruleTester.run("request-must-have-urls", rule, {
       `,
       errors: [
         {
-          messageId: "missingUrls",
+          messageId: 'missingUrls',
           data: {
-            interfaceName: "Request",
-          },
+            interfaceName: 'Request'
+          }
         },
       ],
     },
     {
-      name: "Named Request without urls",
+      name: 'Named Request without urls',
       code: `
         export interface Request {
           path_parts: {
@@ -131,15 +130,15 @@ ruleTester.run("request-must-have-urls", rule, {
       `,
       errors: [
         {
-          messageId: "missingUrls",
+          messageId: 'missingUrls',
           data: {
-            interfaceName: "Request",
-          },
+            interfaceName: 'Request'
+          }
         },
       ],
     },
     {
-      name: "Request extending RequestBase without urls",
+      name: 'Request extending RequestBase without urls',
       code: `
         interface RequestBase {}
         export interface SearchRequest extends RequestBase {
@@ -153,10 +152,10 @@ ruleTester.run("request-must-have-urls", rule, {
       `,
       errors: [
         {
-          messageId: "missingUrls",
+          messageId: 'missingUrls',
           data: {
-            interfaceName: "SearchRequest",
-          },
+            interfaceName: 'SearchRequest'
+          }
         },
       ],
     },

@@ -16,24 +16,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { ESLintUtils } from "@typescript-eslint/utils";
+import { ESLintUtils } from '@typescript-eslint/utils';
 
-const createRule = ESLintUtils.RuleCreator(
-  (name) => `https://example.com/rule/${name}`,
-);
+const createRule = ESLintUtils.RuleCreator(name => `https://example.com/rule/${name}`)
 
 export default createRule({
-  name: "request-must-have-urls",
+  name: 'request-must-have-urls',
   create(context) {
     return {
       TSInterfaceDeclaration(node) {
         const extendsRequestBase = node.extends?.some(
           (heritage) =>
-            heritage.expression.type === "Identifier" &&
-            heritage.expression.name === "RequestBase",
+            heritage.expression.type === 'Identifier' &&
+            heritage.expression.name === 'RequestBase'
         );
 
-        const isNamedRequest = node.id.name === "Request";
+        const isNamedRequest = node.id.name === 'Request';
 
         if (!extendsRequestBase && !isNamedRequest) {
           return;
@@ -41,33 +39,31 @@ export default createRule({
 
         const hasUrls = node.body.body.some(
           (member) =>
-            member.type === "TSPropertySignature" &&
-            member.key.type === "Identifier" &&
-            member.key.name === "urls",
+            member.type === 'TSPropertySignature' &&
+            member.key.type === 'Identifier' &&
+            member.key.name === 'urls'
         );
 
         if (!hasUrls) {
           context.report({
             node,
-            messageId: "missingUrls",
+            messageId: 'missingUrls',
             data: {
               interfaceName: node.id.name,
             },
           });
         }
       },
-    };
+    }
   },
   meta: {
     docs: {
-      description:
-        "All Request interfaces must have a urls property defining their endpoints",
+      description: 'All Request interfaces must have a urls property defining their endpoints',
     },
     messages: {
-      missingUrls:
-        'Request interface "{{interfaceName}}" must have a urls property with endpoint paths and methods',
+      missingUrls: 'Request interface "{{interfaceName}}" must have a urls property with endpoint paths and methods'
     },
-    type: "problem",
+    type: 'problem',
   },
-  defaultOptions: [],
-});
+  defaultOptions: []
+})
