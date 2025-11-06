@@ -1,7 +1,6 @@
 name: Validate APIs
 
 on:
-  workflow_dispatch:
   pull_request:
     branches:
       - main

@@ -20,6 +20,7 @@ import singleKeyDict from './rules/single-key-dictionary-key-is-string.js'
 import dict from './rules/dictionary-key-is-string.js'
 import noNativeTypes from './rules/no-native-types.js'
 import invalidNodeTypes from './rules/invalid-node-types.js'
+import noGenericNumber from './rules/no-generic-number.js'
 
 export default {
   rules: {
@@ -27,5 +28,6 @@ export default {
     'dictionary-key-is-string': dict,
     'no-native-types': noNativeTypes,
     'invalid-node-types': invalidNodeTypes,
+    'no-generic-number': noGenericNumber,
   }
 }
