@@ -5,7 +5,7 @@ Script to generate and diff REST API specifications.
 This script:
 1. Runs `make generate` to generate the schema
 2. Runs the Rust compiler to generate REST API output
-3. Diffs JSON files between specification/_json_spec and the generated output
+3. Diffs JSON files between rest-api-spec and the generated output
 """
 
 import os
@@ -25,12 +25,7 @@ def run_command(cmd, cwd=None, description=None):
 
     try:
         result = subprocess.run(
-            cmd,
-            shell=True,
-            cwd=cwd,
-            check=True,
-            capture_output=True,
-            text=True
+            cmd, shell=True, cwd=cwd, check=True, capture_output=True, text=True
         )
         print(f"✓ Success: {description or cmd}")
         if result.stdout.strip():
@@ -49,7 +44,9 @@ def run_command(cmd, cwd=None, description=None):
 def remove_descriptions(key, obj):
     """Recursively remove 'description' fields from JSON object."""
     if isinstance(obj, dict):
-        return {k: remove_descriptions(k, v) for k, v in obj.items() if k != 'description'}
+        return {
+            k: remove_descriptions(k, v) for k, v in obj.items() if k != "description"
+        }
     elif isinstance(obj, list):
         if key == "options":
             return sorted(obj)
@@ -61,7 +58,7 @@ def remove_descriptions(key, obj):
 def compare_json_files(file1, file2):
     """Compare two JSON files and return diff if they differ, ignoring description fields."""
     try:
-        with open(file1, 'r') as f1, open(file2, 'r') as f2:
+        with open(file1, "r") as f1, open(file2, "r") as f2:
             json1 = json.load(f1)
             json2 = json.load(f2)
 
@@ -82,11 +79,11 @@ def compare_json_files(file1, file2):
             json2_str.splitlines(keepends=True),
             fromfile=str(file1),
             tofile=str(file2),
-            lineterm=''
+            lineterm="",
         )
         return list(diff)
     except Exception as e:
-        return f"Error comparing {file1} and {file2}: {str(e)}"
+        return [f"Error comparing {file1} and {file2}: {str(e)}"]
 
 
 def main():
@@ -106,8 +103,10 @@ def main():
     # Step 3: Compare JSON files
     print("\n=== Comparing JSON files ===")
 
-    spec_dir = script_dir / "specification" / "_json_spec"
-    spec_dir = script_dir / "../elasticsearch/rest-api-spec/src/main/resources/rest-api-spec/api"
+    spec_dir = (
+        script_dir
+        / "../elasticsearch/rest-api-spec/src/main/resources/rest-api-spec/api"
+    ).resolve()
     output_dir = compiler_dir / "rest-api-output"
 
     # Get all JSON files from spec directory
@@ -121,8 +120,11 @@ def main():
     for spec_file in sorted(spec_files):
         if spec_file.name == "_common.json":
             continue  # Skip common file
+        if spec_file.name.startswith("fleet"):
+            continue  # Fleet files are deliberately empty in rest-api-spec
+
         api_name = spec_file.stem
-        if "." in api_name:        
+        if "." in api_name:
             namespace, api_name, _ = spec_file.name.split(".")
         else:
             namespace = "_global"
@@ -146,7 +148,8 @@ def main():
         else:
             print(f"✓ No differences in {relative_path}")
 
-    print(f"\nTotal differences found: {total_diffs}")  
+    print(f"\nTotal differences found: {total_diffs}")
+
 
 if __name__ == "__main__":
     main()
