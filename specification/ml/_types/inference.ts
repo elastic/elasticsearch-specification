@@ -494,7 +494,6 @@ export class InferenceResponseResult {
    * For regression models, its a numerical value
    * For classification models, it may be an integer, double, boolean or string depending on prediction type
    */
-
   predicted_value?: PredictedValue | PredictedValue[]
 
   /**

@@ -69,7 +69,6 @@ export interface Request extends RequestBase {
      * The criteria that must be met for the rule to be applied.
      * If multiple criteria are specified for a rule, all criteria must be met for the rule to be applied.
      */
-
     criteria: QueryRuleCriteria | QueryRuleCriteria[]
     /**
      * The actions to take when the rule is matched.

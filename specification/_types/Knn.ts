@@ -51,7 +51,6 @@ export interface KnnSearch {
   /** Boost value to apply to kNN scores */
   boost?: float
   /** Filters for the kNN search query */
-
   filter?: QueryContainer | QueryContainer[]
   /** The minimum similarity for a vector to be considered a match */
   similarity?: float
@@ -87,7 +86,6 @@ export interface KnnQuery extends QueryBase {
   /** The final number of nearest neighbors to return as top hits */
   k?: integer
   /** Filters for the kNN search query */
-
   filter?: QueryContainer | QueryContainer[]
   /** The minimum similarity for a vector to be considered a match */
   similarity?: float

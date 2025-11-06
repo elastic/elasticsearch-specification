@@ -32,7 +32,6 @@ export class FieldCollapse {
   /**
    * The number of inner hits and their sort order
    */
-
   inner_hits?: InnerHits | InnerHits[]
   /**
    * The number of concurrent requests allowed to retrieve the inner_hits per group

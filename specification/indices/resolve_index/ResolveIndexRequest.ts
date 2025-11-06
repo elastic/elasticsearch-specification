@@ -70,7 +70,6 @@ export interface Request extends RequestBase {
      * @availability stack since=9.2.0 stability=stable
      * @availability serverless stability=stable visibility=public
      */
-
     mode?: IndexMode | IndexMode[]
     /**
      * Specifies a subset of projects to target using project

@@ -86,11 +86,8 @@ export class ScheduleContainer {
   daily?: DailySchedule
   hourly?: HourlySchedule
   interval?: Duration
-
   monthly?: TimeOfMonth | TimeOfMonth[]
-
   weekly?: TimeOfWeek | TimeOfWeek[]
-
   yearly?: TimeOfYear | TimeOfYear[]
 }
 

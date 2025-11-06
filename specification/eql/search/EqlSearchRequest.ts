@@ -131,7 +131,6 @@ export interface Request extends RequestBase {
     /**
      * Query, written in Query DSL, used to filter the events on which the EQL query runs.
      */
-
     filter?: QueryContainer | QueryContainer[]
     keep_alive?: Duration
     keep_on_completion?: boolean
@@ -158,7 +157,6 @@ export interface Request extends RequestBase {
     /**
      * Array of wildcard (*) patterns. The response returns values for field names matching these patterns in the fields property of each hit.
      */
-
     fields?: FieldAndFormat | FieldAndFormat[]
     /**
      * @server_default tail

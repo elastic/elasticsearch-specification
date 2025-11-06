@@ -44,7 +44,6 @@ export interface Request extends RequestBase {
     /**
      * Defines which additional metrics are included in the response.
      */
-
     metric?: WatcherMetric | WatcherMetric[]
   }
   query_parameters: {
@@ -56,7 +55,6 @@ export interface Request extends RequestBase {
     /**
      * Defines which additional metrics are included in the response.
      */
-
     metric?: WatcherMetric | WatcherMetric[]
   }
 }

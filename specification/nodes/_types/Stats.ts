@@ -55,7 +55,6 @@ export class Stats {
   /**
    * IP address and port for the node.
    */
-
   ip?: Ip | Ip[]
   /**
    * JVM stats, memory pool information, garbage collection, buffer pools, number of loaded/unloaded classes.

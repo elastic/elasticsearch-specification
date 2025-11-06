@@ -463,7 +463,6 @@ export interface Request extends RequestBase {
      * @availability serverless
      * @ext_doc_id knn-approximate
      */
-
     knn?: KnnSearch | KnnSearch[]
     /**
      * The Reciprocal Rank Fusion (RRF) to use.
@@ -495,7 +494,6 @@ export interface Request extends RequestBase {
     /**
      * Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.
      */
-
     rescore?: Rescore | Rescore[]
     /**
      * A retriever is a specification to describe top documents returned from a search.

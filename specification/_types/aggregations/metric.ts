@@ -439,7 +439,6 @@ export class TopMetricsAggregation extends MetricAggregationBase {
   /**
    * The fields of the top document to return.
    */
-
   metrics?: TopMetricsValue | TopMetricsValue[]
   /**
    * The number of top documents from which to return metrics.

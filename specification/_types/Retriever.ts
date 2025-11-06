@@ -64,7 +64,6 @@ export class RetrieverBase {
 export class RescorerRetriever extends RetrieverBase {
   /** Inner retriever. */
   retriever: RetrieverContainer
-
   rescore: Rescore | Rescore[]
 }
 

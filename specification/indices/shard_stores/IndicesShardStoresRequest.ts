@@ -77,7 +77,6 @@ export interface Request extends RequestBase {
     /**
      * List of shard health statuses used to limit the request.
      */
-
     status?: ShardStoreStatus | ShardStoreStatus[]
   }
 }

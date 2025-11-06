@@ -34,7 +34,6 @@ export class BoolQuery extends QueryBase {
    * The clause (query) must appear in matching documents.
    * However, unlike `must`, the score of the query will be ignored.
    */
-
   filter?: QueryContainer | QueryContainer[]
   /**
    * Specifies the number or percentage of `should` clauses returned documents must match.
@@ -44,18 +43,15 @@ export class BoolQuery extends QueryBase {
   /**
    * The clause (query) must appear in matching documents and will contribute to the score.
    */
-
   must?: QueryContainer | QueryContainer[]
   /**
    * The clause (query) must not appear in the matching documents.
    * Because scoring is ignored, a score of `0` is returned for all documents.
    */
-
   must_not?: QueryContainer | QueryContainer[]
   /**
    * The clause (query) should appear in the matching document.
    */
-
   should?: QueryContainer | QueryContainer[]
 }
 

@@ -228,7 +228,6 @@ export interface Request extends RequestBase {
      * @availability stack since=8.4.0
      * @availability serverless
      */
-
     knn?: KnnSearch | KnnSearch[]
     /**
      * Minimum _score for matching documents. Documents with a lower _score are
@@ -241,7 +240,6 @@ export interface Request extends RequestBase {
      * Defines the search definition using the Query DSL.
      */
     query?: QueryContainer
-
     rescore?: Rescore | Rescore[]
     /**
      * Retrieve a script evaluation (based on different fields) for each hit.

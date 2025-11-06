@@ -119,7 +119,6 @@ export class MoreLikeThisQuery extends QueryBase {
   /**
    * Specifies free form text and/or a single or multiple documents for which you want to find similar documents.
    */
-
   like: Like | Like[]
   /**
    * The maximum document frequency above which the terms are ignored from the input document.
@@ -166,7 +165,6 @@ export class MoreLikeThisQuery extends QueryBase {
   /**
    * Used in combination with `like` to exclude documents that match a set of terms.
    */
-
   unlike?: Like | Like[]
   version?: VersionNumber
   /** @server_default 'internal' */

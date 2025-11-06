@@ -53,7 +53,6 @@ export interface Request extends RequestBase {
     /**
      * The synonym rules definitions for the synonyms set.
      */
-
     synonyms_set: SynonymRule | SynonymRule[]
   }
   query_parameters: {
