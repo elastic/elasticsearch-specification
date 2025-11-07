@@ -35,6 +35,7 @@ export default defineConfig({
     'es-spec-validator/dictionary-key-is-string': 'error',
     'es-spec-validator/no-native-types': 'error',
     'es-spec-validator/invalid-node-types': 'error',
-    'es-spec-validator/no-generic-number': 'error'
+    'es-spec-validator/no-generic-number': 'error',
+    'es-spec-validator/request-must-have-urls': 'error'
   }
 })
