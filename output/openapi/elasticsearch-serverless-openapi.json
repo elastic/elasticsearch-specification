@@ -7269,7 +7269,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types.IndexName"
+              "$ref": "#/components/schemas/_types.Indices"
             },
             "style": "simple"
           },
@@ -7395,7 +7395,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types.IndexName"
+              "$ref": "#/components/schemas/_types.Indices"
             },
             "style": "simple"
           },
@@ -18472,33 +18472,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "classification": {
-                      "description": "Evaluation results for a classification analysis.\nIt outputs a prediction that identifies to which of the classes each document belongs.",
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeClassificationSummary"
-                        }
-                      ]
-                    },
-                    "outlier_detection": {
-                      "description": "Evaluation results for an outlier detection analysis.\nIt outputs the probability that each document is an outlier.",
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeOutlierDetectionSummary"
-                        }
-                      ]
-                    },
-                    "regression": {
-                      "description": "Evaluation results for a regression analysis which outputs a prediction of values.",
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeRegressionSummary"
-                        }
-                      ]
-                    }
-                  }
+                  "$ref": "#/components/schemas/ml.evaluate_data_frame.ResponseBody"
                 },
                 "examples": {
                   "MlEvaluateDataFrameResponseExample1": {
@@ -72160,6 +72134,37 @@
           }
         }
       },
+      "ml.evaluate_data_frame.ResponseBody": {
+        "type": "object",
+        "properties": {
+          "classification": {
+            "description": "Evaluation results for a classification analysis.\nIt outputs a prediction that identifies to which of the classes each document belongs.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeClassificationSummary"
+              }
+            ]
+          },
+          "outlier_detection": {
+            "description": "Evaluation results for an outlier detection analysis.\nIt outputs the probability that each document is an outlier.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeOutlierDetectionSummary"
+              }
+            ]
+          },
+          "regression": {
+            "description": "Evaluation results for a regression analysis which outputs a prediction of values.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeRegressionSummary"
+              }
+            ]
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
       "ml.evaluate_data_frame.DataframeClassificationSummary": {
         "type": "object",
         "properties": {
@@ -85396,7 +85401,17 @@
         "description": "A comma-separated list of filters to apply to the response.",
         "deprecated": false,
         "schema": {
-          "type": "string"
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         },
         "x-state": "Generally available",
         "style": "form"
@@ -88772,7 +88787,7 @@
         "required": true,
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types.IndexName"
+          "$ref": "#/components/schemas/_types.Indices"
         },
         "style": "simple"
       },

@@ -31,6 +31,12 @@ import { Id } from '@_types/common'
  * @ext_doc_id esql
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query/async/{id}/stop'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the query.
