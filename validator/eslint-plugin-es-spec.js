@@ -37,6 +37,5 @@ export default {
     'no-variants-on-responses': noVariantsOnResponses,
     'no-inline-unions': noInlineUnions,
     'prefer-tagged-variants': preferTaggedVariants,
-
   }
 }
