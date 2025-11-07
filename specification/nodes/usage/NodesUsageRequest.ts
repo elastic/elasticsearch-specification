@@ -55,7 +55,7 @@ export interface Request extends RequestBase {
      * Limits the information returned to the specific metrics.
      * A comma-separated list of the following options: `_all`, `rest_actions`, `aggregations`.
      */
-    metric?: NodesUsageMetric | NodesUsageMetric[]
+    metric?: NodesUsageMetrics
   }
   query_parameters: {
     /**
@@ -72,3 +72,5 @@ export enum NodesUsageMetric {
   rest_actions,
   aggregations
 }
+
+export type NodesUsageMetrics = NodesUsageMetric | NodesUsageMetric[]

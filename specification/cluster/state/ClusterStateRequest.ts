@@ -63,7 +63,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    metric?: ClusterStateMetric | ClusterStateMetric[]
+    metric?: ClusterStateMetrics
     index?: Indices
   }
   query_parameters: {
@@ -88,6 +88,7 @@ export interface Request extends RequestBase {
 }
 
 export enum ClusterStateMetric {
+  _all,
   version,
   master_node,
   blocks,
@@ -97,3 +98,5 @@ export enum ClusterStateMetric {
   routing_nodes,
   customs
 }
+
+export type ClusterStateMetrics = ClusterStateMetric | ClusterStateMetric[]

@@ -9957,10 +9957,12 @@ export interface ClusterRerouteResponse {
   state?: any
 }
 
-export type ClusterStateClusterStateMetric = 'version' | 'master_node' | 'blocks' | 'nodes' | 'metadata' | 'routing_table' | 'routing_nodes' | 'customs'
+export type ClusterStateClusterStateMetric = '_all' | 'version' | 'master_node' | 'blocks' | 'nodes' | 'metadata' | 'routing_table' | 'routing_nodes' | 'customs'
+
+export type ClusterStateClusterStateMetrics = ClusterStateClusterStateMetric | ClusterStateClusterStateMetric[]
 
 export interface ClusterStateRequest extends RequestBase {
-  metric?: ClusterStateClusterStateMetric | ClusterStateClusterStateMetric[]
+  metric?: ClusterStateClusterStateMetrics
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -19601,7 +19603,9 @@ export interface NodesInfoNodeThreadPoolInfo {
   type: string
 }
 
-export type NodesInfoNodesInfoMetrics = '_all' | '_none' | 'settings' | 'os' | 'process' | 'jvm' | 'thread_pool' | 'transport' | 'http' | 'remote_cluster_server' | 'plugins' | 'ingest' | 'aggregations' | 'indices'
+export type NodesInfoNodesInfoMetric = '_all' | '_none' | 'settings' | 'os' | 'process' | 'jvm' | 'thread_pool' | 'transport' | 'http' | 'remote_cluster_server' | 'plugins' | 'ingest' | 'aggregations' | 'indices'
+
+export type NodesInfoNodesInfoMetrics = NodesInfoNodesInfoMetric | NodesInfoNodesInfoMetric[]
 
 export interface NodesInfoRemoveClusterServer {
   bound_address: TransportAddress[]
@@ -19610,7 +19614,7 @@ export interface NodesInfoRemoveClusterServer {
 
 export interface NodesInfoRequest extends RequestBase {
   node_id?: NodeIds
-  metric?: NodesInfoNodesInfoMetrics | NodesInfoNodesInfoMetrics[]
+  metric?: NodesInfoNodesInfoMetrics
   flat_settings?: boolean
   timeout?: Duration
 }
@@ -19637,11 +19641,13 @@ export interface NodesReloadSecureSettingsResponseBase extends NodesNodesRespons
   nodes: Record<string, NodesNodeReloadResult>
 }
 
-export type NodesStatsNodeStatsMetrics = '_all' | '_none' | 'os' | 'process' | 'jvm' | 'thread_pool' | 'fs' | 'transport' | 'http' | 'breaker' | 'script' | 'discovery' | 'ingest' | 'adaptive_selection' | 'script_cache' | 'indexing_pressure' | 'repositories' | 'allocations'
+export type NodesStatsNodeStatsMetric = '_all' | '_none' | 'indices' | 'os' | 'process' | 'jvm' | 'thread_pool' | 'fs' | 'transport' | 'http' | 'breaker' | 'script' | 'discovery' | 'ingest' | 'adaptive_selection' | 'script_cache' | 'indexing_pressure' | 'repositories' | 'allocations'
+
+export type NodesStatsNodeStatsMetrics = NodesStatsNodeStatsMetric | NodesStatsNodeStatsMetric[]
 
 export interface NodesStatsRequest extends RequestBase {
   node_id?: NodeIds
-  metric?: NodesStatsNodeStatsMetrics | NodesStatsNodeStatsMetrics[]
+  metric?: NodesStatsNodeStatsMetrics
   index_metric?: CommonStatsFlags
   completion_fields?: Fields
   fielddata_fields?: Fields
@@ -19670,9 +19676,11 @@ export interface NodesUsageNodeUsage {
 
 export type NodesUsageNodesUsageMetric = '_all' | 'rest_actions' | 'aggregations'
 
+export type NodesUsageNodesUsageMetrics = NodesUsageNodesUsageMetric | NodesUsageNodesUsageMetric[]
+
 export interface NodesUsageRequest extends RequestBase {
   node_id?: NodeIds
-  metric?: NodesUsageNodesUsageMetric | NodesUsageNodesUsageMetric[]
+  metric?: NodesUsageNodesUsageMetrics
   timeout?: Duration
 }
 

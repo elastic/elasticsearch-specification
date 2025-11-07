@@ -68,7 +68,7 @@ export interface Request extends RequestBase {
     /** Comma-separated list of node IDs or names used to limit returned information. */
     node_id?: NodeIds
     /*+ Limits the information returned to the specific metrics. */
-    metric?: NodeStatsMetrics | NodeStatsMetrics[]
+    metric?: NodeStatsMetrics
     /** Limit the information returned for indices metric to the specific index metrics. It can be used only if indices (or all) metric is specified.*/
     index_metric?: CommonStatsFlags
   }
@@ -106,9 +106,11 @@ export interface Request extends RequestBase {
   }
 }
 
-export enum NodeStatsMetrics {
+export enum NodeStatsMetric {
   _all,
   _none,
+  indices,
+
   os,
   process,
   jvm,
@@ -126,3 +128,5 @@ export enum NodeStatsMetrics {
   repositories,
   allocations
 }
+
+export type NodeStatsMetrics = NodeStatsMetric | NodeStatsMetric[]

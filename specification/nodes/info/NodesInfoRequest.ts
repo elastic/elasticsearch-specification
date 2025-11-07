@@ -54,7 +54,7 @@ export interface Request extends RequestBase {
     /** Comma-separated list of node IDs or names used to limit returned information. */
     node_id?: NodeIds
     /** Limits the information returned to the specific metrics. Supports a comma-separated list, such as http,ingest. */
-    metric?: NodesInfoMetrics | NodesInfoMetrics[]
+    metric?: NodesInfoMetrics
   }
   query_parameters: {
     /**
@@ -70,7 +70,7 @@ export interface Request extends RequestBase {
   }
 }
 
-export enum NodesInfoMetrics {
+export enum NodesInfoMetric {
   _all,
   _none,
   settings,
@@ -86,3 +86,5 @@ export enum NodesInfoMetrics {
   aggregations,
   indices
 }
+
+export type NodesInfoMetrics = NodesInfoMetric | NodesInfoMetric[]
