@@ -88787,7 +88787,7 @@
         "required": true,
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types.IndexName"
+          "$ref": "#/components/schemas/_types.Indices"
         },
         "style": "simple"
       },

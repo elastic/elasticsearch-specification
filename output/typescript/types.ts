@@ -1972,7 +1972,7 @@ export interface SearchTemplateResponse<TDocument = unknown> {
 }
 
 export interface TermsEnumRequest extends RequestBase {
-  index: IndexName
+  index: Indices
   body?: {
     field: Field
     size?: integer
@@ -22565,7 +22565,7 @@ export interface TextStructureTopHit {
 }
 
 export interface TextStructureFindFieldStructureRequest extends RequestBase {
-  column_names?: Names
+  column_names?: string | string[]
   delimiter?: string
   documents_to_sample?: uint
   ecs_compatibility?: TextStructureEcsCompatibilityType
@@ -22600,7 +22600,7 @@ export interface TextStructureFindFieldStructureResponse {
 }
 
 export interface TextStructureFindMessageStructureRequest extends RequestBase {
-  column_names?: Names
+  column_names?: string | string[]
   delimiter?: string
   ecs_compatibility?: TextStructureEcsCompatibilityType
   explain?: boolean
