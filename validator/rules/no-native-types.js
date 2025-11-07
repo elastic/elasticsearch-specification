@@ -20,18 +20,17 @@ import { ESLintUtils } from '@typescript-eslint/utils';
 
 const createRule = ESLintUtils.RuleCreator(name => `https://example.com/rule/${name}`)
 
-const UTILITY_TYPES = ['Record', 'Partial', 'Required', 'Pick', 'Omit'];
-
-const COLLECTION_TYPES = ['Map', 'Set', 'WeakMap', 'WeakSet'];
-
-const TYPES_TO_AVOID = [...UTILITY_TYPES, ...COLLECTION_TYPES];
-
 const TYPE_SUGGESTIONS = {
   'Record': 'Use Dictionary instead',
+  'Partial': 'Use spec-defined aliases instead',
+  'Required': 'Use spec-defined aliases instead',
+  'Pick': 'Use spec-defined aliases instead',
+  'Omit': 'Use spec-defined aliases instead',
   'Map': 'Use Dictionary instead',
   'Set': 'Use an array type instead (e.g., string[])',
   'WeakMap': 'Use Dictionary instead',
   'WeakSet': 'Use an array type instead',
+  'Array': 'Use array syntax instead (e.g., string[])',
 };
 
 export default createRule({
@@ -40,13 +39,13 @@ export default createRule({
     return {
       TSTypeReference(node) {
         const typeName = node.typeName.name;
-        if (TYPES_TO_AVOID.includes(typeName)) {
+        if (TYPE_SUGGESTIONS[typeName]) {
           context.report({ 
             node, 
             messageId: 'noNativeType',
             data: {
               type: typeName,
-              suggestion: TYPE_SUGGESTIONS[typeName] || 'Use spec-defined aliases instead'
+              suggestion: TYPE_SUGGESTIONS[typeName]
             }
           })
         }
