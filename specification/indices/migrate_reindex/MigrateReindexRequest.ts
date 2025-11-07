@@ -32,6 +32,12 @@ import { IndexName } from '@_types/common'
  * @doc_tag migration
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_migration/reindex'
+      methods: ['POST']
+    }
+  ]
   /** @codegen_name reindex */
   body: MigrateReindex
 }
