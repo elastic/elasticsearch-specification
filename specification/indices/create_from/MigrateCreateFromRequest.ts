@@ -33,6 +33,12 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
  * @doc_tag migration
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_create_from/{source}/{dest}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /** The source index or data stream name */
     source: IndexName
