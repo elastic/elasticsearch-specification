@@ -7641,6 +7641,48 @@
         ]
       }
     },
+    "/_migration/reindex/{index}/_cancel": {
+      "post": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "Cancel a migration reindex operation",
+        "description": "Cancel a migration reindex attempt for a data stream or index.",
+        "operationId": "indices-cancel-migrate-reindex",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "index",
+            "description": "The index or data stream name",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Indices"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/{index}": {
       "get": {
         "tags": [
@@ -8277,7 +8319,7 @@
             "$ref": "#/components/responses/indices.create_from-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Generally available",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -8308,7 +8350,7 @@
             "$ref": "#/components/responses/indices.create_from-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Generally available",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -10113,6 +10155,104 @@
         ]
       }
     },
+    "/_migration/reindex/{index}/_status": {
+      "get": {
+        "tags": [
+          "migration"
+        ],
+        "summary": "Get the migration reindexing status",
+        "description": "Get the status of a migration reindex attempt for a data stream or index.",
+        "operationId": "indices-get-migrate-reindex-status",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "index",
+            "description": "The index or data stream name.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Indices"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "start_time": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.DateTime"
+                        }
+                      ]
+                    },
+                    "start_time_millis": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+                        }
+                      ]
+                    },
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "total_indices_in_data_stream": {
+                      "type": "number"
+                    },
+                    "total_indices_requiring_upgrade": {
+                      "type": "number"
+                    },
+                    "successes": {
+                      "type": "number"
+                    },
+                    "in_progress": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_migrate_reindex_status.StatusInProgress"
+                      }
+                    },
+                    "pending": {
+                      "type": "number"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_migrate_reindex_status.StatusError"
+                      }
+                    },
+                    "exception": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "start_time_millis",
+                    "complete",
+                    "total_indices_in_data_stream",
+                    "total_indices_requiring_upgrade",
+                    "successes",
+                    "in_progress",
+                    "pending",
+                    "errors"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_settings": {
       "get": {
         "tags": [
@@ -11604,7 +11744,8 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint",
+        "summary": "Get an inference endpoint\n",
+        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get-1",
         "parameters": [
           {
@@ -11690,7 +11831,8 @@
         "tags": [
           "inference"
         ],
-        "summary": "Delete an inference endpoint",
+        "summary": "Delete an inference endpoint\n",
+        "description": "This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).",
         "operationId": "inference-delete",
         "parameters": [
           {
@@ -11722,7 +11864,8 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint",
+        "summary": "Get an inference endpoint\n",
+        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get-2",
         "parameters": [
           {
@@ -11817,7 +11960,8 @@
         "tags": [
           "inference"
         ],
-        "summary": "Delete an inference endpoint",
+        "summary": "Delete an inference endpoint\n",
+        "description": "This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).",
         "operationId": "inference-delete-1",
         "parameters": [
           {
@@ -11852,7 +11996,8 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint",
+        "summary": "Get an inference endpoint\n",
+        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get",
         "responses": {
           "200": {
@@ -12025,7 +12170,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` or `text_embedding` task types.\nNot applicable to the `rerank` or `completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -12161,7 +12306,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -12287,7 +12432,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` or `text_embedding` task types.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -12424,17 +12569,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "chunking_settings": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
-                    },
-                    "description": "The chunking configuration object.",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
-                      }
-                    ]
-                  },
                   "service": {
                     "description": "The type of service supported for the specified task type. In this case, `anthropic`.",
                     "allOf": [
@@ -12548,7 +12682,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank` or `completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -12679,7 +12813,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -12805,7 +12939,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank` or `completion` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -12932,17 +13066,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "chunking_settings": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
-                    },
-                    "description": "The chunking configuration object.",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
-                      }
-                    ]
-                  },
                   "service": {
                     "description": "The type of service supported for the specified task type. In this case, `contextualai`.",
                     "allOf": [
@@ -13047,7 +13170,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` or `text_embedding` task types.\nNot applicable to the `rerank` or `completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -13184,17 +13307,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "chunking_settings": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
-                    },
-                    "description": "The chunking configuration object.",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
-                      }
-                    ]
-                  },
                   "service": {
                     "description": "The type of service supported for the specified task type. In this case, `deepseek`.",
                     "allOf": [
@@ -13294,7 +13406,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` and `text_embedding` task types.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
+                    "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` and `text_embedding` task types.\nNot applicable to the `rerank` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -13571,7 +13683,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -13684,7 +13796,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -13820,7 +13932,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -13946,7 +14058,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -14072,7 +14184,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -14192,7 +14304,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -14304,7 +14416,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -14430,7 +14542,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -14552,6 +14664,17 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "chunking_settings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
+                    },
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` or `chat_completion` task types.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
+                      }
+                    ]
+                  },
                   "service": {
                     "description": "The type of service supported for the specified task type. In this case, `watsonxai`.",
                     "allOf": [
@@ -18349,33 +18472,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "classification": {
-                      "description": "Evaluation results for a classification analysis.\nIt outputs a prediction that identifies to which of the classes each document belongs.",
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeClassificationSummary"
-                        }
-                      ]
-                    },
-                    "outlier_detection": {
-                      "description": "Evaluation results for an outlier detection analysis.\nIt outputs the probability that each document is an outlier.",
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeOutlierDetectionSummary"
-                        }
-                      ]
-                    },
-                    "regression": {
-                      "description": "Evaluation results for a regression analysis which outputs a prediction of values.",
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeRegressionSummary"
-                        }
-                      ]
-                    }
-                  }
+                  "$ref": "#/components/schemas/ml.evaluate_data_frame.ResponseBody"
                 },
                 "examples": {
                   "MlEvaluateDataFrameResponseExample1": {
@@ -64236,6 +64333,40 @@
           "mappings"
         ]
       },
+      "indices.get_migrate_reindex_status.StatusInProgress": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "string"
+          },
+          "total_doc_count": {
+            "type": "number"
+          },
+          "reindexed_doc_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "index",
+          "total_doc_count",
+          "reindexed_doc_count"
+        ]
+      },
+      "indices.get_migrate_reindex_status.StatusError": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "index",
+          "message"
+        ]
+      },
       "indices.modify_data_stream.Action": {
         "type": "object",
         "properties": {
@@ -65620,7 +65751,7 @@
         "enum": [
           "completion",
           "rerank",
-          "space_embedding",
+          "sparse_embedding",
           "text_embedding"
         ]
       },
@@ -72002,6 +72133,37 @@
             "type": "number"
           }
         }
+      },
+      "ml.evaluate_data_frame.ResponseBody": {
+        "type": "object",
+        "properties": {
+          "classification": {
+            "description": "Evaluation results for a classification analysis.\nIt outputs a prediction that identifies to which of the classes each document belongs.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeClassificationSummary"
+              }
+            ]
+          },
+          "outlier_detection": {
+            "description": "Evaluation results for an outlier detection analysis.\nIt outputs the probability that each document is an outlier.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeOutlierDetectionSummary"
+              }
+            ]
+          },
+          "regression": {
+            "description": "Evaluation results for a regression analysis which outputs a prediction of values.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeRegressionSummary"
+              }
+            ]
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
       },
       "ml.evaluate_data_frame.DataframeClassificationSummary": {
         "type": "object",

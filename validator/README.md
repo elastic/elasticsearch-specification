@@ -11,6 +11,9 @@ It is configured [in the specification directory](../specification/eslint.config
 | `dictionary-key-is-string`            | `Dictionary` keys must be strings. |
 | `no-native-types`                     | TypeScript native utility types (`Record`, `Partial`, etc.) and collection types (`Map`, `Set`, etc.) are not allowed. Use spec-defined aliases like `Dictionary` instead. |
 | `invalid-node-types`                  | The spec uses a subset of TypeScript, so some types, clauses and expressions are not allowed. |
+| `no-generic-number`                   | Generic `number` type is not allowed outside of `_types/Numeric.ts`. Use concrete numeric types like `integer`, `long`, `float`, `double`, etc. |
+| `request-must-have-urls`              | All Request interfaces extending `RequestBase` must have a `urls` property defining their endpoint paths and HTTP methods. |
+| `no-variants-on-responses`            | `@variants` is only supported on Interface types, not on Request or Response classes. Use value_body pattern with `@codegen_name` instead. |
 
 ## Usage
 
