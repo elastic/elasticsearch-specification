@@ -133,6 +133,12 @@ import { Duration } from '@_types/Time'
  * @doc_id analyze-repository
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot/{repository}/_analyze'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the repository.
