@@ -18,7 +18,7 @@
  */
 
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { double } from './Numeric'
+import { double, integer } from './Numeric'
 
 export class DistanceParsed {
   precision: double
@@ -81,13 +81,13 @@ export enum GeoShapeRelation {
   contains
 }
 
-export type GeoTilePrecision = number
+export type GeoTilePrecision = integer
 
 /**
  * A precision that can be expressed as a geohash length between 1 and 12, or a distance measure like "1km", "10m".
  * @codegen_names geohash_length, distance
  */
-export type GeoHashPrecision = number | string
+export type GeoHashPrecision = integer | string
 export type GeoHash = string
 
 /** A map tile reference, represented as `{zoom}/{x}/{y}` */

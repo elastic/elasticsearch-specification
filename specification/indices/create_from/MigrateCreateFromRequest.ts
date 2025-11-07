@@ -27,12 +27,18 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
  *
  * Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.
  * @rest_spec_name indices.create_from
- * @availability stack since=8.18.0 stability=experimental
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=8.18.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id migration-api-create-from
  * @doc_tag migration
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_create_from/{source}/{dest}'
+      methods: ['PUT', 'POST']
+    }
+  ]
   path_parts: {
     /** The source index or data stream name */
     source: IndexName

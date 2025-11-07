@@ -19,11 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import {
+  CommonStatsFlags,
   ExpandWildcards,
   Fields,
   Indices,
-  Level,
-  Metrics
+  Level
 } from '@_types/common'
 
 /**
@@ -64,7 +64,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    metric?: Metrics
+    metric?: CommonStatsFlags
     index?: Indices
   }
   query_parameters: {

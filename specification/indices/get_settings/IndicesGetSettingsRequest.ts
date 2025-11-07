@@ -97,6 +97,7 @@ export interface Request extends RequestBase {
     /**
      * If `true`, the request retrieves information from the local node only. If
      * `false`, information is retrieved from the master node.
+     * @deprecated 9.1.0 This parameter is a no-op and settings are always retrieved locally.
      * @server_default false
      */
     local?: boolean

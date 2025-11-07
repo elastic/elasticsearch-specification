@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Name, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -45,7 +45,7 @@ export interface Request extends RequestBase {
      * A comma-separated list of snapshot names to delete.
      * It also accepts wildcards (`*`).
      */
-    snapshot: Name
+    snapshot: Names
   }
   query_parameters: {
     /**

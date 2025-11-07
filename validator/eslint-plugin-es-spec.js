@@ -20,6 +20,11 @@ import singleKeyDict from './rules/single-key-dictionary-key-is-string.js'
 import dict from './rules/dictionary-key-is-string.js'
 import noNativeTypes from './rules/no-native-types.js'
 import invalidNodeTypes from './rules/invalid-node-types.js'
+import noGenericNumber from './rules/no-generic-number.js'
+import requestMustHaveUrls from './rules/request-must-have-urls.js'
+import noVariantsOnResponses from './rules/no-variants-on-responses.js'
+import noInlineUnions from './rules/no-inline-unions.js'
+import preferTaggedVariants from './rules/prefer-tagged-variants.js'
 
 export default {
   rules: {
@@ -27,5 +32,10 @@ export default {
     'dictionary-key-is-string': dict,
     'no-native-types': noNativeTypes,
     'invalid-node-types': invalidNodeTypes,
+    'no-generic-number': noGenericNumber,
+    'request-must-have-urls': requestMustHaveUrls,
+    'no-variants-on-responses': noVariantsOnResponses,
+    'no-inline-unions': noInlineUnions,
+    'prefer-tagged-variants': preferTaggedVariants,
   }
 }
