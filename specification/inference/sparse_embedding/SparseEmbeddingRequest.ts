@@ -54,7 +54,7 @@ export interface Request extends RequestBase {
      * Inference input.
      * Either a string or an array of strings.
      */
-    input: string | Array<string>
+    input: string | string[]
     /**
      * Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.
      */

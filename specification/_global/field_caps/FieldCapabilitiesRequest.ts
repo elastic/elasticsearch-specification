@@ -91,7 +91,7 @@ export interface Request extends RequestBase {
      * @availability stack since=8.2.0
      * @availability serverless
      */
-    filters?: string
+    filters?: string | string[]
     /**
      * A comma-separated list of field types to include.
      * Any fields that do not match one of these types will be excluded from the results.

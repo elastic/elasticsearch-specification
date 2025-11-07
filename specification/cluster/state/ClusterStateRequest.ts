@@ -74,11 +74,13 @@ export interface Request extends RequestBase {
     flat_settings?: boolean
     /** @server_default false */
     ignore_unavailable?: boolean
-    /** @server_default false */
+    /**
+     * @deprecated 9.0.0 This parameter has no effect, is now deprecated, and will be removed in a future version.
+     * @server_default false
+     */
     local?: boolean
     /**
      * Timeout for waiting for new cluster state in case it is blocked
-     * @deprecated 9.2.0
      * @server_default 30s
      * */
     master_timeout?: Duration

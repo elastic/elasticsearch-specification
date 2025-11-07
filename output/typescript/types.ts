@@ -358,7 +358,7 @@ export interface FieldCapsRequest extends RequestBase {
   fields?: Fields
   ignore_unavailable?: boolean
   include_unmapped?: boolean
-  filters?: string
+  filters?: string | string[]
   types?: string[]
   include_empty_fields?: boolean
   project_routing?: ProjectRouting
@@ -1972,7 +1972,7 @@ export interface SearchTemplateResponse<TDocument = unknown> {
 }
 
 export interface TermsEnumRequest extends RequestBase {
-  index: IndexName
+  index: Indices
   body?: {
     field: Field
     size?: integer
@@ -12385,7 +12385,7 @@ export interface IndicesAddBlockAddIndicesBlockStatus {
 }
 
 export interface IndicesAddBlockRequest extends RequestBase {
-  index: IndexName
+  index: Indices
   block: IndicesIndicesBlockOptions
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -12583,7 +12583,7 @@ export interface IndicesDataStreamsStatsDataStreamsStatsItem {
 }
 
 export interface IndicesDataStreamsStatsRequest extends RequestBase {
-  name?: IndexName
+  name?: Indices
   expand_wildcards?: ExpandWildcards
 }
 
@@ -13525,7 +13525,7 @@ export interface IndicesRemoveBlockRemoveIndicesBlockStatus {
 }
 
 export interface IndicesRemoveBlockRequest extends RequestBase {
-  index: IndexName
+  index: Indices
   block: IndicesIndicesBlockOptions
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -17583,7 +17583,9 @@ export interface MlEvaluateDataFrameRequest extends RequestBase {
   }
 }
 
-export interface MlEvaluateDataFrameResponse {
+export type MlEvaluateDataFrameResponse = MlEvaluateDataFrameResponseBody
+
+export interface MlEvaluateDataFrameResponseBody {
   classification?: MlEvaluateDataFrameDataframeClassificationSummary
   outlier_detection?: MlEvaluateDataFrameDataframeOutlierDetectionSummary
   regression?: MlEvaluateDataFrameDataframeRegressionSummary
@@ -20554,7 +20556,7 @@ export interface SecurityClearApiKeyCacheResponse {
 }
 
 export interface SecurityClearCachedPrivilegesRequest extends RequestBase {
-  application: Name
+  application: Names
 }
 
 export interface SecurityClearCachedPrivilegesResponse {
@@ -22014,7 +22016,7 @@ export type SnapshotCreateRepositoryResponse = AcknowledgedResponseBase
 
 export interface SnapshotDeleteRequest extends RequestBase {
   repository: Name
-  snapshot: Name
+  snapshot: Names
   master_timeout?: Duration
   wait_for_completion?: boolean
 }
@@ -22581,7 +22583,7 @@ export interface TextStructureTopHit {
 }
 
 export interface TextStructureFindFieldStructureRequest extends RequestBase {
-  column_names?: string
+  column_names?: string | string[]
   delimiter?: string
   documents_to_sample?: uint
   ecs_compatibility?: TextStructureEcsCompatibilityType
@@ -22616,7 +22618,7 @@ export interface TextStructureFindFieldStructureResponse {
 }
 
 export interface TextStructureFindMessageStructureRequest extends RequestBase {
-  column_names?: string
+  column_names?: string | string[]
   delimiter?: string
   ecs_compatibility?: TextStructureEcsCompatibilityType
   explain?: boolean

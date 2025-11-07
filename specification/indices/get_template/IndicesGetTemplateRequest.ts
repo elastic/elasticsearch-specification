@@ -60,6 +60,7 @@ export interface Request extends RequestBase {
     flat_settings?: boolean
     /**
      * If `true`, the request retrieves information from the local node only.
+     * @deprecated 9.0.0 This parameter is a no-op and templates are always retrieved locally.
      * @server_default false
      */
     local?: boolean
