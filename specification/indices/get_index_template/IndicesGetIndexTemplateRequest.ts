@@ -42,7 +42,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /** Comma-separated list of index template names used to limit the request. Wildcard (*) expressions are supported. */
+    /** Name of index template to retrieve. Wildcard (*) expressions are supported. */
     name?: Name
   }
   query_parameters: {
