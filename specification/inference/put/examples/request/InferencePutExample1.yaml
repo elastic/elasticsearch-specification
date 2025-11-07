@@ -6,10 +6,5 @@ value: |-
    "service_settings": {
      "model_id": "rerank-english-v3.0",
      "api_key": "{{COHERE_API_KEY}}"
-   },
-   "chunking_settings": {
-     "strategy": "recursive",
-     "max_chunk_size": 200,
-     "separator_group": "markdown"
    }
   }

@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { TaskSettings } from '@inference/_types/Services'
 
@@ -56,13 +57,17 @@ export interface Request extends RequestBase {
      */
     query: string
     /**
-     * The text on which you want to perform the inference task.
-     * It can be a single string or an array.
-     *
-     * > info
-     * > Inference endpoints for the `completion` task type currently only support a single string as input.
+     * The documents to rank.
      */
-    input: string | Array<string>
+    input: Array<string>
+    /**
+     * Include the document text in the response.
+     */
+    return_documents?: boolean
+    /**
+     * Limit the response to the top N documents.
+     */
+    top_n?: integer
     /**
      * Task settings for the individual inference request.
      * These settings are specific to the task type you specified and override the task settings specified when initializing the service.
