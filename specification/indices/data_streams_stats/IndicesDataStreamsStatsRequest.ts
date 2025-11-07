@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, IndexName } from '@_types/common'
+import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
  * Get data stream stats.
@@ -48,7 +48,7 @@ export interface Request extends RequestBase {
      * Wildcard expressions (`*`) are supported.
      * To target all data streams in a cluster, omit this parameter or use `*`.
      */
-    name?: IndexName
+    name?: Indices
   }
   query_parameters: {
     /**

@@ -19,6 +19,12 @@
 
 import { RequestBase } from '@_types/Base'
 import {Fields, IndexMetrics, Metrics, NodeIds, NodeStatsLevel} from '@_types/common'
+import {
+  CommonStatsFlags,
+  Fields,
+  NodeIds,
+  NodeStatsLevel
+} from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -63,7 +69,7 @@ export interface Request extends RequestBase {
     /** Comma-separated list of node IDs or names used to limit returned information. */
     node_id?: NodeIds
     /*+ Limits the information returned to the specific metrics. */
-    metric?: Metrics
+    metric?: NodeStatsMetrics
     /** Limit the information returned for indices metric to the specific index metrics. It can be used only if indices (or all) metric is specified.*/
     index_metric?: IndexMetrics
   }
@@ -100,3 +106,28 @@ export interface Request extends RequestBase {
     include_unloaded_segments?: boolean
   }
 }
+
+export enum NodeStatsMetric {
+  _all,
+  _none,
+  indices,
+
+  os,
+  process,
+  jvm,
+  thread_pool,
+  fs,
+  transport,
+  http,
+  breaker,
+  script,
+  discovery,
+  ingest,
+  adaptive_selection,
+  script_cache,
+  indexing_pressure,
+  repositories,
+  allocations
+}
+
+export type NodeStatsMetrics = NodeStatsMetric | NodeStatsMetric[]

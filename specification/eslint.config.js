@@ -37,6 +37,8 @@ export default defineConfig({
     'es-spec-validator/invalid-node-types': 'error',
     'es-spec-validator/no-generic-number': 'error',
     'es-spec-validator/request-must-have-urls': 'error',
-    'es-spec-validator/no-variants-on-responses': 'error'
+    'es-spec-validator/no-variants-on-responses': 'error',
+    'es-spec-validator/no-inline-unions': 'error',
+    'es-spec-validator/prefer-tagged-variants': 'error'
   }
 })

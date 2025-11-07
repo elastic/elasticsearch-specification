@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, IndexName } from '@_types/common'
+import { ExpandWildcards, Indices } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { IndicesBlockOptions } from '@indices/_types/IndexSettings'
 
@@ -47,7 +47,7 @@ export interface Request extends RequestBase {
      * To allow the removal of blocks from indices with `_all`, `*`, or other wildcard expressions, change the `action.destructive_requires_name` setting to `false`.
      * You can update this setting in the `elasticsearch.yml` file or by using the cluster update settings API.
      */
-    index: IndexName
+    index: Indices
     /**
      * The block type to remove from the index.
      */

@@ -1992,7 +1992,7 @@
             "in": "query",
             "name": "local",
             "description": "If true, the request retrieves information from the local node only.\nDefaults to false, which means information is retrieved from the master node.",
-            "deprecated": false,
+            "deprecated": true,
             "schema": {
               "type": "boolean"
             },
@@ -7269,7 +7269,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types.IndexName"
+              "$ref": "#/components/schemas/_types.Indices"
             },
             "style": "simple"
           },
@@ -7395,7 +7395,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types.IndexName"
+              "$ref": "#/components/schemas/_types.Indices"
             },
             "style": "simple"
           },
@@ -84729,7 +84729,7 @@
         "in": "query",
         "name": "local",
         "description": "If `true`, the request retrieves information from the local node only.\nIf `false`, information is retrieved from the master node.",
-        "deprecated": false,
+        "deprecated": true,
         "schema": {
           "type": "boolean"
         },
@@ -85401,7 +85401,17 @@
         "description": "A comma-separated list of filters to apply to the response.",
         "deprecated": false,
         "schema": {
-          "type": "string"
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         },
         "x-state": "Generally available",
         "style": "form"
@@ -85859,7 +85869,7 @@
         "in": "query",
         "name": "local",
         "description": "If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.",
-        "deprecated": false,
+        "deprecated": true,
         "schema": {
           "type": "boolean"
         },
@@ -86033,7 +86043,7 @@
         "in": "query",
         "name": "local",
         "description": "If `true`, the request retrieves information from the local node only. If\n`false`, information is retrieved from the master node.",
-        "deprecated": false,
+        "deprecated": true,
         "schema": {
           "type": "boolean"
         },
@@ -87440,7 +87450,7 @@
         "in": "query",
         "name": "ignore_throttled",
         "description": "If true, concrete, expanded or aliased indices are ignored when frozen.",
-        "deprecated": false,
+        "deprecated": true,
         "schema": {
           "type": "boolean"
         },
@@ -88777,7 +88787,7 @@
         "required": true,
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types.IndexName"
+          "$ref": "#/components/schemas/_types.Indices"
         },
         "style": "simple"
       },

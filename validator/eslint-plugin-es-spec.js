@@ -23,6 +23,8 @@ import invalidNodeTypes from './rules/invalid-node-types.js'
 import noGenericNumber from './rules/no-generic-number.js'
 import requestMustHaveUrls from './rules/request-must-have-urls.js'
 import noVariantsOnResponses from './rules/no-variants-on-responses.js'
+import noInlineUnions from './rules/no-inline-unions.js'
+import preferTaggedVariants from './rules/prefer-tagged-variants.js'
 
 export default {
   rules: {
@@ -33,5 +35,7 @@ export default {
     'no-generic-number': noGenericNumber,
     'request-must-have-urls': requestMustHaveUrls,
     'no-variants-on-responses': noVariantsOnResponses,
+    'no-inline-unions': noInlineUnions,
+    'prefer-tagged-variants': preferTaggedVariants,
   }
 }
