@@ -87,7 +87,7 @@ export interface Request extends RequestBase {
     expand_wildcards?: ExpandWildcards
     /**
      * If true, concrete, expanded or aliased indices are ignored when frozen.
-     * @deprecated 7.16.0
+     * @deprecated 7.16.0 This parameter is deprecated because frozen indices have been deprecated.
      * @server_default false
      */
     ignore_throttled?: boolean

@@ -46,7 +46,7 @@ export interface Request extends RequestBase {
      */
     categories?: XPackCategory[]
     /**
-     * @deprecated 8.0.0
+     * @deprecated 8.0.0 Supported for backwards compatibility with 7.x
      */
     accept_enterprise?: boolean
     /**
