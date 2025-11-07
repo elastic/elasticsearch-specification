@@ -85857,7 +85857,7 @@
       "indices.get_index_template-name": {
         "in": "path",
         "name": "name",
-        "description": "Comma-separated list of index template names used to limit the request. Wildcard (*) expressions are supported.",
+        "description": "Name of index template to retrieve. Wildcard (*) expressions are supported.",
         "required": true,
         "deprecated": false,
         "schema": {
