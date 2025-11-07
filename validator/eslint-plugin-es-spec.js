@@ -22,6 +22,7 @@ import noNativeTypes from './rules/no-native-types.js'
 import invalidNodeTypes from './rules/invalid-node-types.js'
 import noGenericNumber from './rules/no-generic-number.js'
 import requestMustHaveUrls from './rules/request-must-have-urls.js'
+import noVariantsOnResponses from './rules/no-variants-on-responses.js'
 
 export default {
   rules: {
@@ -31,5 +32,6 @@ export default {
     'invalid-node-types': invalidNodeTypes,
     'no-generic-number': noGenericNumber,
     'request-must-have-urls': requestMustHaveUrls,
+    'no-variants-on-responses': noVariantsOnResponses,
   }
 }
