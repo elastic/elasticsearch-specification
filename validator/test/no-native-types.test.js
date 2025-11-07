@@ -34,7 +34,6 @@ ruleTester.run('no-native-types', rule, {
   valid: [
     `type MyDict = Dictionary<string, object>`,
     `type MyMapping = Dictionary<string, any>`,
-    `type MyArray = string[]`,
     `type MyType = { field: string }`,
     `class MyClass { prop: integer }`,
   ],
@@ -77,10 +76,6 @@ ruleTester.run('no-native-types', rule, {
     },
     {
       code: `class MyClass { items: Map<string, number> }`,
-      errors: [{ messageId: 'noNativeType' }]
-    },
-    {
-      code: `type MyList = Array<integer>`,
       errors: [{ messageId: 'noNativeType' }]
     },
   ],

@@ -30,7 +30,6 @@ const TYPE_SUGGESTIONS = {
   'Set': 'Use an array type instead (e.g., string[])',
   'WeakMap': 'Use Dictionary instead',
   'WeakSet': 'Use an array type instead',
-  'Array': 'Use array syntax instead (e.g., string[])',
 };
 
 export default createRule({
