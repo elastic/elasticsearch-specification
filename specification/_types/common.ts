@@ -68,8 +68,6 @@ export type ProjectRouting = string
 export type Routing = string
 export type LongId = string
 //TODO encode metrics as API specific enums
-export type IndexMetrics = string
-export type Metrics = string | string[]
 
 export type ClusterAlias = string
 
@@ -254,6 +252,48 @@ export enum NodeStatsLevel {
   node,
   indices,
   shards
+}
+
+export enum Metrics {
+  adaptive_selection,
+  allocations,
+  breaker,
+  discovery,
+  fs,
+  http,
+  indexing_pressure,
+  indices,
+  ingest,
+  jvm,
+  os,
+  process,
+  repositories,
+  thread_pool,
+  transport
+}
+
+export enum IndexMetrics{
+  bulk,
+  completion,
+  docs,
+  fielddata,
+  flush,
+  get,
+  indexing,
+  mappings,
+  merge,
+  query_cache,
+  recovery,
+  refresh,
+  request_cache,
+  search,
+  segments,
+  shard_stats,
+  store,
+  translog,
+  warmer,
+  dense_vector,
+  sparse_vector
 }
 
 export enum OpType {
