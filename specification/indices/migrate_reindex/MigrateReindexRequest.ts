@@ -27,7 +27,7 @@ import { IndexName } from '@_types/common'
  * This operation occurs in a persistent task.
  * The persistent task ID is returned immediately and the reindexing work is completed in that task.
  * @rest_spec_name indices.migrate_reindex
- * @availability stack since=8.18.0 stability=experimental
+ * @availability stack since=8.18.0 stability=stable
  * @doc_id migration-api-reindex
  * @doc_tag migration
  */
