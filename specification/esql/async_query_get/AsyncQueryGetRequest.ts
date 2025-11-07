@@ -32,6 +32,12 @@ import { EsqlFormat } from '@esql/_types/QueryParameters'
  * @ext_doc_id esql
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query/async/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the query.

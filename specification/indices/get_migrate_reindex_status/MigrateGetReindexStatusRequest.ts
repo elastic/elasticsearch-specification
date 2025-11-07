@@ -31,6 +31,12 @@ import { Indices } from '@_types/common'
  * @doc_tag migration
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_migration/reindex/{index}/_status'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /** The index or data stream name. */
     index: Indices
