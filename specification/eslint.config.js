@@ -67,10 +67,7 @@ export default defineConfig({
           Features: ['indices.get', 'xpack.info'],
           Filter: ['_global.termvectors', 'ml._types'],
           IndexingPressure: ['cluster.stats', 'indices._types', 'nodes._types'],
-          IndexingPressureMemory: [
-            'indices._types',
-            'nodes._types'
-          ],
+          IndexingPressureMemory: ['indices._types', 'nodes._types'],
           Ingest: ['ingest._types', 'nodes._types'],
           MigrationFeature: [
             'migration.get_feature_upgrade_status',
