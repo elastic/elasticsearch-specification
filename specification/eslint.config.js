@@ -68,7 +68,6 @@ export default defineConfig({
           Filter: ['_global.termvectors', 'ml._types'],
           IndexingPressure: ['cluster.stats', 'indices._types', 'nodes._types'],
           IndexingPressureMemory: [
-            'cluster.stats',
             'indices._types',
             'nodes._types'
           ],
