@@ -184,11 +184,21 @@ fn convert_parameter(property: &Property, types: &IndexMap<TypeName, TypeDefinit
         }
     });
 
-
     let deprecated = property.deprecation.as_ref().map(|dep| Deprecation {
         version: dep.version.clone(),
         description: dep.description.clone(),
     });
+
+    let mut visibility = None;
+    if let Some(availabilities) = &property.availability {
+        if let Some(stack_availability) = availabilities.get(&Flavor::Stack) {
+            visibility = stack_availability.visibility.as_ref().and_then(|v| match v {
+                Visibility::Public => None,
+                Visibility::FeatureFlag => Some("feature_flag".to_string()),
+                Visibility::Private => Some("private".to_string()),
+            });
+        }
+    }
 
     Ok(Parameter {
         typ,
@@ -196,6 +206,7 @@ fn convert_parameter(property: &Property, types: &IndexMap<TypeName, TypeDefinit
         options,
         default,
         deprecated,
+        visibility,
     })
 }
 

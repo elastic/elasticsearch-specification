@@ -65,6 +65,8 @@ pub struct Parameter {
     pub default: Option<serde_json::Value>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecated: Option<Deprecation>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub visibility: Option<String>,
 }
 
 #[derive(Debug, Serialize)]
