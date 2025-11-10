@@ -205,6 +205,7 @@ fn convert_parameter(property: &Property, types: &IndexMap<TypeName, TypeDefinit
         description: property.description.clone().unwrap_or_default(),
         options,
         default,
+        required: property.required,
         deprecated,
         visibility,
     })

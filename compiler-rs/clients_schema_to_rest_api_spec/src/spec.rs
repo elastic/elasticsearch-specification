@@ -40,7 +40,6 @@ pub struct Path {
     pub parts: HashMap<String, PathPart>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecated: Option<Deprecation>,
-
 }
 
 #[derive(Debug, Serialize)]
@@ -63,10 +62,16 @@ pub struct Parameter {
     pub options: Vec<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub default: Option<serde_json::Value>,
+    #[serde(skip_serializing_if = "is_false")]
+    pub required: bool,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecated: Option<Deprecation>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub visibility: Option<String>,
+}
+
+fn is_false(b: &bool) -> bool {
+    *b == false
 }
 
 #[derive(Debug, Serialize)]
