@@ -17,7 +17,8 @@ It is configured [in the specification directory](../specification/eslint.config
 | `no-inline-unions`                    | Inline union types (e.g., `field: A \| B`) are not allowed in properties/fields. Define a named type alias instead to improve code generation for statically-typed languages.              |
 | `prefer-tagged-variants`              | Union of class types should use tagged variants (`@variants internal` or `@variants container`) instead of inline unions for better deserialization support in statically-typed languages. |
 | `no-duplicate-type-names`             | All types must be unique across class and enum definitions.                                                                                                                                |
-| `no-all-string-literal-unions         | Unions consisting entirely of string literals (e.g., `"green" \| "yellow" \| "red"`) are not allowed, use enums instead.                                                                   |                                                                                                                         |
+| `no-all-string-literal-unions`        | Unions consisting entirely of string literals (e.g., `"green" \| "yellow" \| "red"`) are not allowed, use enums instead.                                                                   |
+| `no-property-overload`                | Properties that shadow or overload properties from a base interface or class are not allowed. All property names must be unique across the inheritance chain.                              |                                                                                                                         |
 
 ## Usage
 

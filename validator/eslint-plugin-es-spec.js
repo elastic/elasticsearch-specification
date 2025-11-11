@@ -27,6 +27,7 @@ import noInlineUnions from './rules/no-inline-unions.js'
 import preferTaggedVariants from './rules/prefer-tagged-variants.js'
 import noDuplicateTypeNames from './rules/no-duplicate-type-names.js'
 import noAllStringLiteralUnions from './rules/no-all-string-literal-unions.js'
+import noPropertyOverload from './rules/no-property-overload.js'
 
 export default {
   rules: {
@@ -40,6 +41,7 @@ export default {
     'no-inline-unions': noInlineUnions,
     'prefer-tagged-variants': preferTaggedVariants,
     'no-duplicate-type-names': noDuplicateTypeNames,
-    'no-all-string-literal-unions': noAllStringLiteralUnions
+    'no-all-string-literal-unions': noAllStringLiteralUnions,
+    'no-property-overload': noPropertyOverload
   }
 }
