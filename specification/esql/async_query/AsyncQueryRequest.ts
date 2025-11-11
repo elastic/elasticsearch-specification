@@ -37,6 +37,12 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * @index_privileges read
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query/async'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * If `true`, partial results will be returned if there are shard failures, but the query can continue to execute on other clusters and shards.

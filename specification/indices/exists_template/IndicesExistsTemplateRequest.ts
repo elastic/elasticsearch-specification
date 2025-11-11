@@ -55,6 +55,7 @@ export interface Request extends RequestBase {
     flat_settings?: boolean
     /**
      * Indicates whether to get information from the local node only.
+     * @deprecated 9.0.0 This parameter has no effect, is now deprecated, and will be removed in a future version.
      * @server_default false
      */
     local?: boolean

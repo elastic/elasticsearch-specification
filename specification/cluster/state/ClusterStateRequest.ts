@@ -18,12 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {
-  ExpandWildcards,
-  Indices,
-  Metrics,
-  VersionNumber
-} from '@_types/common'
+import { ExpandWildcards, Indices, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -68,7 +63,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    metric?: Metrics
+    metric?: ClusterStateMetrics
     index?: Indices
   }
   query_parameters: {
@@ -79,11 +74,13 @@ export interface Request extends RequestBase {
     flat_settings?: boolean
     /** @server_default false */
     ignore_unavailable?: boolean
-    /** @server_default false */
+    /**
+     * @deprecated 9.0.0 This parameter has no effect, is now deprecated, and will be removed in a future version.
+     * @server_default false
+     */
     local?: boolean
     /**
      * Timeout for waiting for new cluster state in case it is blocked
-     * @deprecated 9.2.0
      * @server_default 30s
      * */
     master_timeout?: Duration
@@ -91,3 +88,17 @@ export interface Request extends RequestBase {
     wait_for_timeout?: Duration
   }
 }
+
+export enum ClusterStateMetric {
+  _all,
+  version,
+  master_node,
+  blocks,
+  nodes,
+  metadata,
+  routing_table,
+  routing_nodes,
+  customs
+}
+
+export type ClusterStateMetrics = ClusterStateMetric | ClusterStateMetric[]
