@@ -66,6 +66,9 @@ export interface Request extends RequestBase {
     index?: Indices
   }
   query_parameters: {
+    /**
+     * @server_default all
+     */
     expand_wildcards?: ExpandWildcards
     /**
      * Can be one of cluster, indices or shards. Controls the details level of the health information returned.
