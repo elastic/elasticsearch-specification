@@ -66,6 +66,7 @@ export interface Request extends CatRequestBase {
   query_parameters: {
     /**
      * The type of index that wildcard patterns can match.
+     * @server_default all
      */
     expand_wildcards?: ExpandWildcards
     /** The health status used to limit returned indices. By default, the response includes indices of any health status. */

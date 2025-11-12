@@ -57,6 +57,9 @@ export interface Request extends RequestBase {
      * @server_default true
      */
     allow_no_indices?: boolean
+    /**
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
     /**
      * If `true`, missing or closed indices are not included in the response.

@@ -125,6 +125,9 @@ export interface Request extends RequestBase {
     default_operator?: Operator
     df?: string
     docvalue_fields?: Fields
+    /**
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
     explain?: boolean
     ignore_throttled?: boolean
