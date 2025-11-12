@@ -6513,6 +6513,11 @@
                     "description": "When set to `true` and performing a cross-cluster/cross-project query, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.",
                     "default": false,
                     "type": "boolean"
+                  },
+                  "include_execution_metadata": {
+                    "description": "When set to `true`, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.\nThis is similar to `include_ccs_metadata`, but it also returns metadata when the query is not CCS/CPS",
+                    "default": false,
+                    "type": "boolean"
                   }
                 },
                 "required": [
