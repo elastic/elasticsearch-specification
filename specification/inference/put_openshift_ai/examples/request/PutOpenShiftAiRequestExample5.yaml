@@ -1,5 +1,8 @@
 summary: A rerank task with custom `task_settings` and omitted `model_id`
-description: Run `PUT _inference/rerank/openshift-ai-rerank` to create an inference endpoint that performs a `rerank` task, specifying custom `task_settings` and omitting the `model_id` if deployed model doesn't require it.
+description:
+  Run `PUT _inference/rerank/openshift-ai-rerank` to create an inference endpoint
+  that performs a `rerank` task, specifying custom `task_settings` and omitting the `model_id`
+  if deployed model doesn't require it.
 method_request: 'PUT _inference/rerank/openshift-ai-rerank'
 # type: "request"
 value: |-
