@@ -98,6 +98,9 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     allow_no_indices?: boolean
+    /**
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
     flush?: boolean
     ignore_unavailable?: boolean
