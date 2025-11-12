@@ -1897,7 +1897,7 @@ export enum OpenShiftAiSimilarityType {
 
 export class OpenShiftAiTaskSettings {
   /**
-   * For a `rerank` task, return the doc text within the results.
+   * For a `rerank` task, whether to return the source documents in the response.
    */
   return_documents?: boolean
   /**

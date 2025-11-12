@@ -68172,7 +68172,7 @@
         "type": "object",
         "properties": {
           "return_documents": {
-            "description": "For a `rerank` task, return the doc text within the results.",
+            "description": "For a `rerank` task, whether to return the source documents in the response.",
             "type": "boolean"
           },
           "top_n": {
