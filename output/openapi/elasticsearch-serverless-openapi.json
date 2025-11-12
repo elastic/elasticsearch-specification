@@ -35605,6 +35605,13 @@
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
               }
             ]
+          },
+          "error": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ErrorCause"
+              }
+            ]
           }
         },
         "required": [
