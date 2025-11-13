@@ -9330,6 +9330,14 @@
                       "$ref": "#/components/schemas/indices._types.DownsamplingRound"
                     }
                   },
+                  "downsampling_method": {
+                    "description": "The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires\n`downsampling` to be defined. Defaults to `aggregate`.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/indices._types.SamplingMethod"
+                      }
+                    ]
+                  },
                   "enabled": {
                     "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
                     "default": true,
@@ -60825,10 +60833,17 @@
             ]
           },
           "downsampling": {
-            "description": "The downsampling configuration to execute for the managed backing index after rollover.",
+            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
+            }
+          },
+          "downsampling_method": {
+            "description": "The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires\n`downsampling` to be defined. Defaults to `aggregate`.",
             "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleDownsampling"
+                "$ref": "#/components/schemas/indices._types.SamplingMethod"
               }
             ]
           },
@@ -60838,21 +60853,6 @@
             "type": "boolean"
           }
         }
-      },
-      "indices._types.DataStreamLifecycleDownsampling": {
-        "type": "object",
-        "properties": {
-          "rounds": {
-            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
-            }
-          }
-        },
-        "required": [
-          "rounds"
-        ]
       },
       "indices._types.DownsamplingRound": {
         "type": "object",
@@ -60877,6 +60877,13 @@
         "required": [
           "after",
           "fixed_interval"
+        ]
+      },
+      "indices._types.SamplingMethod": {
+        "type": "string",
+        "enum": [
+          "aggregate",
+          "last_value"
         ]
       },
       "indices._types.DataStreamOptionsTemplate": {

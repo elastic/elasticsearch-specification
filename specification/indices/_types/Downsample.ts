@@ -30,7 +30,7 @@ export class DownsampleConfig {
   sampling_method?: SamplingMethod
 }
 
-enum SamplingMethod {
+export enum SamplingMethod {
   aggregate,
   last_value
 }
