@@ -45,14 +45,10 @@ const privateNamespaces = ['_internal', 'profiling']
  * Any inconsistency is logged as an error.
  *
  * Missing validations:
- * - verify uniqueness of property names in the inheritance chain
  * - verify that request parents don't define properties (would they be path/request/body properties?)
  * - verify that unions can be distinguished in a JSON stream (otherwise they should be inheritance trees)
  */
 export default async function validateModel (apiModel: model.Model, restSpec: Map<string, JsonSpec>, errors: ValidationErrors): Promise<model.Model> {
-  // Fail hard if the FAIL_HARD env var is defined
-  const failHard = process.env.FAIL_HARD != null
-
   const initialTypeCount = apiModel.types.length
 
   // Returns the fully-qualified name of a type name
@@ -87,13 +83,20 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   function modelError (msg: string): void {
     const fullMsg = (context.length === 0) ? msg : context.join(' / ') + ' - ' + msg
 
+    let ignored = false
     if (currentEndpoint != null) {
-      errors.addEndpointError(currentEndpoint, currentPart, fullMsg)
+      ignored = errors.addEndpointError(currentEndpoint, currentPart, fullMsg)
+      if (!ignored) {
+        console.error(currentEndpoint, currentPart, fullMsg)
+      }
     } else {
       errors.addGeneralError(fullMsg)
+      console.error(fullMsg)
     }
 
-    errorCount++
+    if (!ignored) {
+      errorCount++
+    }
   }
 
   // ----- Type definition management
@@ -206,8 +209,8 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   const danglingTypesCount = initialTypeCount - apiModel.types.length
   console.info(`Model validation: ${typesSeen.size} types visited, ${danglingTypesCount} dangling types.`)
 
-  if (errorCount > 0 && failHard) {
-    throw new Error('Model is inconsistent. Check logs for details')
+  if (errorCount > 0) {
+    throw new Error('Model is inconsistent.')
   }
 
   return apiModel
