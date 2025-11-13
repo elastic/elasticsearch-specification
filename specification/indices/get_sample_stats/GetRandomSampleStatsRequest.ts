@@ -25,7 +25,7 @@ import { IndexName } from '@_types/common'
  *
  * @rest_spec_name indices.get_sample_stats
  * @availability stack visibility=feature_flag feature_flag=random_sampling since=9.3.0 stability=experimental
- * @doc_id random_sample
+ * @doc_id indices-get-sample-stats
  * @doc_tag random_sample
  */
 export interface Request extends RequestBase {
