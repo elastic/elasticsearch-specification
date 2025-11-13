@@ -17638,9 +17638,7 @@ export interface MlEvaluateDataFrameRequest extends RequestBase {
   }
 }
 
-export type MlEvaluateDataFrameResponse = MlEvaluateDataFrameResponseBody
-
-export interface MlEvaluateDataFrameResponseBody {
+export interface MlEvaluateDataFrameResponse {
   classification?: MlEvaluateDataFrameDataframeClassificationSummary
   outlier_detection?: MlEvaluateDataFrameDataframeOutlierDetectionSummary
   regression?: MlEvaluateDataFrameDataframeRegressionSummary

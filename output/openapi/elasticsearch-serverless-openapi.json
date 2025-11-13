@@ -18708,7 +18708,33 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ml.evaluate_data_frame.ResponseBody"
+                  "type": "object",
+                  "properties": {
+                    "classification": {
+                      "description": "Evaluation results for a classification analysis.\nIt outputs a prediction that identifies to which of the classes each document belongs.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeClassificationSummary"
+                        }
+                      ]
+                    },
+                    "outlier_detection": {
+                      "description": "Evaluation results for an outlier detection analysis.\nIt outputs the probability that each document is an outlier.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeOutlierDetectionSummary"
+                        }
+                      ]
+                    },
+                    "regression": {
+                      "description": "Evaluation results for a regression analysis which outputs a prediction of values.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeRegressionSummary"
+                        }
+                      ]
+                    }
+                  }
                 },
                 "examples": {
                   "MlEvaluateDataFrameResponseExample1": {
@@ -72494,37 +72520,6 @@
             "type": "number"
           }
         }
-      },
-      "ml.evaluate_data_frame.ResponseBody": {
-        "type": "object",
-        "properties": {
-          "classification": {
-            "description": "Evaluation results for a classification analysis.\nIt outputs a prediction that identifies to which of the classes each document belongs.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeClassificationSummary"
-              }
-            ]
-          },
-          "outlier_detection": {
-            "description": "Evaluation results for an outlier detection analysis.\nIt outputs the probability that each document is an outlier.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeOutlierDetectionSummary"
-              }
-            ]
-          },
-          "regression": {
-            "description": "Evaluation results for a regression analysis which outputs a prediction of values.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeRegressionSummary"
-              }
-            ]
-          }
-        },
-        "minProperties": 1,
-        "maxProperties": 1
       },
       "ml.evaluate_data_frame.DataframeClassificationSummary": {
         "type": "object",

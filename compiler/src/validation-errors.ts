@@ -38,9 +38,9 @@ export class ValidationErrors {
   }
 
   /** Add some error information relative to an endpoint's request or response */
-  addEndpointError (endpoint: string, part: 'request' | 'response', message: string): void {
+  addEndpointError (endpoint: string, part: 'request' | 'response', message: string): boolean {
     if (IGNORED_ERRORS.includes(message)) {
-      return
+      return true
     }
 
     let error = this.endpointErrors[endpoint]
@@ -50,6 +50,7 @@ export class ValidationErrors {
     }
 
     error[part].push(message)
+    return false
   }
 
   /** Add a general error, unrelated to an endpoint */
