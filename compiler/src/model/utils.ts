@@ -878,8 +878,8 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
         property.serverDefault = value
       } else {
         // JSDoc prevents literal @ in values, but the at sign can be escaped
-        if (value.startsWith("\\@")) {
-          value = value.replace("\\@", "@")
+        if (value.startsWith('\\@')) {
+          value = value.replace('\\@', '@')
         }
 
         switch (property.type.type.name) {
