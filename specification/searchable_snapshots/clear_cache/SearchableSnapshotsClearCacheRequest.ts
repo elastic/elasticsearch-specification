@@ -49,6 +49,7 @@ export interface Request extends RequestBase {
     index?: Indices
   }
   query_parameters: {
+    /** @server_default open */
     expand_wildcards?: ExpandWildcards
     allow_no_indices?: boolean
     ignore_unavailable?: boolean
