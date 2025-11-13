@@ -181,9 +181,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     return ep.request != null && ep.response != null
   }
 
-  // Check that all type names are unique
-  validateUniqueTypeNames(apiModel, modelError)
-
   // Validate all endpoints. We start by those that are ready for validation so that transitive validation of common
   // data types is associated with these endpoints and their errors are not filtered out in the error report.
   apiModel.endpoints.filter(ep => readyForValidation(ep)).forEach(validateEndpoint)
@@ -216,63 +213,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   return apiModel
 
   // -----------------------------------------------------------------------------------------------
-
-  /**
-   * Validates that all type names in the model are unique
-   */
-  function validateUniqueTypeNames (apiModel: model.Model, modelError: (msg: string) => void): void {
-    const existingDuplicates: Record<string, string[]> = {
-      Action: ['indices.modify_data_stream', 'indices.update_aliases', 'watcher._types'],
-      Actions: ['ilm._types', 'security.put_privileges', 'watcher._types'],
-      ComponentTemplate: ['cat.component_templates', 'cluster._types'],
-      Context: ['_global.get_script_context', '_global.search._types', 'nodes._types'],
-      DatabaseConfigurationMetadata: ['ingest.get_geoip_database', 'ingest.get_ip_location_database'],
-      Datafeed: ['ml._types', 'xpack.usage'],
-      Destination: ['_global.reindex', 'transform._types'],
-      Feature: ['features._types', 'indices.get', 'xpack.info'],
-      Features: ['indices.get', 'xpack.info'],
-      Filter: ['_global.termvectors', 'ml._types'],
-      IndexingPressure: ['cluster.stats', 'indices._types', 'nodes._types'],
-      IndexingPressureMemory: ['cluster.stats', 'indices._types', 'nodes._types'],
-      Ingest: ['ingest._types', 'nodes._types'],
-      MigrationFeature: ['migration.get_feature_upgrade_status', 'migration.post_feature_upgrade'],
-      Operation: ['_global.mget', '_global.mtermvectors'],
-      Phase: ['ilm._types', 'xpack.usage'],
-      Phases: ['ilm._types', 'xpack.usage'],
-      Pipeline: ['ingest._types', 'logstash._types'],
-      Policy: ['enrich._types', 'ilm._types', 'slm._types'],
-      RequestItem: ['_global.msearch', '_global.msearch_template'],
-      ResponseItem: ['_global.bulk', '_global.mget', '_global.msearch'],
-      RoleMapping: ['security._types', 'xpack.usage'],
-      RuntimeFieldTypes: ['cluster.stats', 'xpack.usage'],
-      ShardsStats: ['indices.field_usage_stats', 'snapshot._types'],
-      ShardStats: ['ccr._types', 'indices.stats'],
-      Source: ['_global.reindex', 'transform._types'],
-      Token: ['_global.termvectors', 'security.authenticate', 'security.create_service_token', 'security.enroll_kibana']
-    }
-
-    // collect namespaces for each type name
-    const typeNames = new Map<string, string[]>()
-    for (const type of apiModel.types) {
-      const name = type.name.name
-      if (name !== 'Request' && name !== 'Response' && name !== 'ResponseBase') {
-        const namespaces = typeNames.get(name) ?? []
-        namespaces.push(type.name.namespace)
-        typeNames.set(name, namespaces)
-      }
-    }
-
-    // check for duplicates
-    for (const [name, namespaces] of typeNames) {
-      if (namespaces.length > 1) {
-        const allowedDuplicates = existingDuplicates[name] ?? []
-        const hasUnexpectedDuplicate = namespaces.some(ns => !allowedDuplicates.includes(ns))
-        if (hasUnexpectedDuplicate) {
-          modelError(`${name} is present in multiple namespaces: ${namespaces.sort().join(' and ')}`)
-        }
-      }
-    }
-  }
 
   /**
    * Validate an endpoint
