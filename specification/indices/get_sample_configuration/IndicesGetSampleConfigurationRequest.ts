@@ -26,7 +26,7 @@ import { Duration } from '@_types/Time'
  * Get the sampling configuration for the specified index.
  * @rest_spec_name indices.get_sample_configuration
  * @availability stack visibility=feature_flag feature_flag=random_sampling since=9.3.0 stability=experimental
- * @doc_id random_sample
+ * @doc_id indices-get-sample-configuration
  * @doc_tag random_sample
  */
 export interface Request extends RequestBase {
