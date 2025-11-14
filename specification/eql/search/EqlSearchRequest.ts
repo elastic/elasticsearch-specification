@@ -108,7 +108,8 @@ export interface Request extends RequestBase {
      */
     tiebreaker_field?: Field
     /**
-     * Field containing event timestamp. Default "@timestamp"
+     * Field containing event timestamp.
+     * @server_default \@timestamp
      */
     timestamp_field?: Field
     /**

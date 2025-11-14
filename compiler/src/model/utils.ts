@@ -877,6 +877,11 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
         assert(jsDocs, Array.isArray(value), 'The default value should be an array')
         property.serverDefault = value
       } else {
+        // JSDoc prevents literal @ in values, but the at sign can be escaped
+        if (value.startsWith('\\@')) {
+          value = value.replace('\\@', '@')
+        }
+
         switch (property.type.type.name) {
           case 'boolean':
             assert(jsDocs, value === 'true' || value === 'false', `The default value for ${property.name} should be a boolean`)
