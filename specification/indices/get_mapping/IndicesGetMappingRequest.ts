@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get mapping definitions.
+ *
  * For data streams, the API retrieves mappings for the stream’s backing indices.
  * @rest_spec_name indices.get_mapping
  * @availability stack stability=stable

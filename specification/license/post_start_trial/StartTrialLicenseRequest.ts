@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Start a trial.
+ *
  * Start a 30-day trial, which gives access to all subscription features.
  *
  * NOTE: You are allowed to start a trial only if your cluster has not already activated a trial for the current major product version.

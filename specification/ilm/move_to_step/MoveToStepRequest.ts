@@ -23,6 +23,7 @@ import { StepKey } from './types'
 
 /**
  * Move to a lifecycle step.
+ *
  * Manually move an index into a specific step in the lifecycle policy and run that step.
  *
  * WARNING: This operation can result in the loss of data. Manually moving an index into a specific step runs that step even if it has already been performed. This is a potentially destructive action and this should be considered an expert level API.

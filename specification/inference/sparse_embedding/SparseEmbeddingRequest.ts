@@ -23,7 +23,8 @@ import { Duration } from '@_types/Time'
 import { TaskSettings } from '@inference/_types/Services'
 
 /**
- * Perform sparse embedding inference on the service
+ * Perform sparse embedding inference on the service.
+ *
  * @rest_spec_name inference.sparse_embedding
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public

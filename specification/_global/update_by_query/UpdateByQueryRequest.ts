@@ -36,6 +36,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Update documents.
+ *
  * Updates documents that match the specified query.
  * If no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.
  *

@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Verify a snapshot repository.
+ *
  * Check for common misconfigurations in a snapshot repository.
  * @rest_spec_name snapshot.verify_repository
  * @availability stack stability=stable

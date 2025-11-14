@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get the snapshot lifecycle management status.
+ *
  * @rest_spec_name slm.get_status
  * @availability stack since=7.6.0 stability=stable
  * @availability serverless stability=stable visibility=private

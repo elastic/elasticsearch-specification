@@ -23,6 +23,7 @@ import { long } from '@_types/Numeric'
 
 /**
  * Clear the archived repositories metering.
+ *
  * Clear the archived repositories metering information in the cluster.
  * @rest_spec_name nodes.clear_repositories_metering_archive
  * @availability stack since=7.16.0 stability=experimental

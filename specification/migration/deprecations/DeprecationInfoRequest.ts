@@ -22,6 +22,7 @@ import { IndexName } from '@_types/common'
 
 /**
  * Get deprecation information.
+ *
  * Get information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.
  *
  * TIP: This APIs is designed for indirect use by the Upgrade Assistant.

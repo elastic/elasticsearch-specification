@@ -25,6 +25,7 @@ import { EcsCompatibilityType, FormatType } from '../_types/Structure'
 
 /**
  * Find the structure of a text field.
+ *
  * Find the structure of a text field in an Elasticsearch index.
  *
  * This API provides a starting point for extracting further information from log messages already ingested into Elasticsearch.

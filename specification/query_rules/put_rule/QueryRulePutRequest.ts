@@ -27,6 +27,7 @@ import {
 
 /**
  * Create or update a query rule.
+ *
  * Create or update a query rule within a query ruleset.
  *
  * IMPORTANT: Due to limitations within pinned queries, you can only pin documents using ids or docs, but cannot use both in single rule.

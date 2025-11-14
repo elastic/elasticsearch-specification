@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Set upgrade_mode for transform indices.
+ *
  * Sets a cluster wide upgrade_mode setting that prepares transform
  * indices for an upgrade.
  * When upgrading your cluster, in some circumstances you must restart your

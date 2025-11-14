@@ -53,6 +53,7 @@ import { Checkpoint } from '../_types/Checkpoints'
 
 /**
  * Run a Fleet search.
+ *
  * The purpose of the Fleet search API is to provide an API where the search will be run only
  * after the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.
  * @rest_spec_name fleet.search

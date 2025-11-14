@@ -23,6 +23,7 @@ import { long } from '@_types/Numeric'
 
 /**
  * Force a merge.
+ *
  * Perform the force merge operation on the shards of one or more indices.
  * For data streams, the API forces a merge on the shards of the stream's backing indices.
  *

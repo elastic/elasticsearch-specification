@@ -23,6 +23,7 @@ import { Command } from './types'
 
 /**
  * Reroute the cluster.
+ *
  * Manually change the allocation of individual shards in the cluster.
  * For example, a shard can be moved from one node to another explicitly, an allocation can be canceled, and an unassigned shard can be explicitly allocated to a specific node.
  *

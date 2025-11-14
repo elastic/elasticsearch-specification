@@ -22,6 +22,7 @@ import { GrokPattern } from '@_types/common'
 
 /**
  * Test a Grok pattern.
+ *
  * Test a Grok pattern on one or more lines of text.
  * The API indicates whether the lines match the pattern together with the offsets and lengths of the matched substrings.
  * @rest_spec_name text_structure.test_grok_pattern
