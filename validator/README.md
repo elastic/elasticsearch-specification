@@ -18,6 +18,7 @@ It is configured [in the specification directory](../specification/eslint.config
 | `prefer-tagged-variants`              | Union of class types should use tagged variants (`@variants internal` or `@variants container`) instead of inline unions for better deserialization support in statically-typed languages. |
 | `no-duplicate-type-names`             | All types must be unique across class and enum definitions.                                                                                                                                |
 | `no-all-string-literal-unions         | Unions consisting entirely of string literals (e.g., `"green" \| "yellow" \| "red"`) are not allowed, use enums instead.                                                                   |                                                                                                                         |
+| `jsdoc-endpoint-check`                | Validates JSDoc on endpoints in the specification. Ensuring consistent formatting. Some errors can be fixed with `--fix`.                                                                  |
 
 ## Usage
 

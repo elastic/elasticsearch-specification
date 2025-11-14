@@ -95,6 +95,19 @@ export default defineConfig({
         }
       }
     ],
-    'es-spec-validator/no-all-string-literal-unions': 'error'
+    'es-spec-validator/no-all-string-literal-unions': 'error',
+    'es-spec-validator/jsdoc-endpoint-check': [
+      'error',
+      {
+        markdownlint: {
+          default: true,
+          'MD041': false, // first-line-heading
+          'MD013': false, // line-length
+          'MD033': false, // no-inline-html
+          'MD034': false, // no-bare-urls
+          'MD047': false  // single-trailing-newline
+        }
+      }
+    ]
   }
 })
