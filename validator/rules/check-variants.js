@@ -1,0 +1,122 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+import { ESLintUtils } from '@typescript-eslint/utils'
+
+export const checkVariants = ESLintUtils.RuleCreator.withoutDocs({
+  name: 'check-variants',
+  meta: {
+    type: 'problem',
+    docs: {
+      description: 'Checks that variants are allowed on a given type.',
+      recommended: 'error'
+    },
+    messages: {
+      variantsOnRequestOrResponse:
+        'Variants are not allowed on {{ className }} classes.',
+      interfaceWithNonContainerVariants:
+        "Interface '{{ interfaceName }}' has '@variants {{ variantValue }}' but only 'container' is allowed for interfaces.",
+      invalidVariantsTag:
+        "Type alias '{{ typeName }}' has invalid '@variants {{ variantValue }}'. Must start with: {{ allowedValues }}."
+    }
+  },
+  defaultOptions: [],
+  create(context) {
+    const sourceCode = context.sourceCode || context.getSourceCode()
+
+    const getJsDocTags = (node) => {
+      const targetNode =
+        node.parent?.type === 'ExportNamedDeclaration' ? node.parent : node
+      const comments = sourceCode.getCommentsBefore(targetNode)
+
+      const jsDocComment = comments
+        ?.filter(
+          (comment) => comment.type === 'Block' && comment.value.startsWith('*')
+        )
+        .pop()
+
+      if (!jsDocComment) return []
+
+      return jsDocComment.value
+        .split('\n')
+        .map((line) => line.trim().match(/^\*?\s*@(\w+)(?:\s+(.*))?$/))
+        .filter(Boolean)
+        .map(([, tag, value]) => ({ tag, value: value?.trim() || '' }))
+    }
+
+    const isRequestOrResponse = (name) =>
+      name === 'Request' || name === 'Response'
+
+    const hasVariantsTag = (tags) => tags.some(({ tag }) => tag === 'variants')
+
+    return {
+      'TSInterfaceDeclaration, ClassDeclaration'(node) {
+        const jsDocTags = getJsDocTags(node)
+        if (isRequestOrResponse(node.id.name)) {
+          if (hasVariantsTag(jsDocTags)) {
+            context.report({
+              node,
+              messageId: 'variantsOnRequestOrResponse',
+              data: { className: node.id.name }
+            })
+          }
+          return
+        }
+
+        const nonContainerVariant = jsDocTags.find(
+          ({ tag, value }) => tag === 'variants' && value !== 'container'
+        )
+        if (nonContainerVariant) {
+          context.report({
+            node,
+            messageId: 'interfaceWithNonContainerVariants',
+            data: {
+              interfaceName: node.id.name,
+              variantValue: nonContainerVariant.value
+            }
+          })
+          return
+        }
+      },
+      TSTypeAliasDeclaration(node) {
+        const jsDocTags = getJsDocTags(node)
+        const allowedVariants = ['internal', 'typed_keys_quirk', 'untagged']
+
+        const invalidVariant = jsDocTags.find(
+          ({ tag, value }) =>
+            tag === 'variants' &&
+            !allowedVariants.some((allowed) => value.startsWith(allowed))
+        )
+
+        if (invalidVariant) {
+          context.report({
+            node,
+            messageId: 'invalidVariantsTag',
+            data: {
+              typeName: node.id.name,
+              variantValue: invalidVariant.value,
+              allowedValues: allowedVariants.join(', ')
+            }
+          })
+        }
+      }
+    }
+  }
+})
+
+export default checkVariants
