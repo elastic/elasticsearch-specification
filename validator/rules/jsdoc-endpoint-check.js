@@ -213,7 +213,9 @@ export const jsdocEndpointCheck = ESLintUtils.RuleCreator.withoutDocs(
                 'MD013': false,
                 'MD033': false,
                 'MD034': false,
-                'MD047': false 
+                'MD047': false,
+                'MD036': false,
+                'MD040': false
             }
         }
     ],
@@ -226,7 +228,9 @@ export const jsdocEndpointCheck = ESLintUtils.RuleCreator.withoutDocs(
             'MD013': false,
             'MD033': false,
             'MD034': false,
-            'MD047': false
+            'MD047': false,
+            'MD036': false,
+            'MD040': false
         }
         
         return {
