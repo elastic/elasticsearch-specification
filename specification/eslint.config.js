@@ -101,11 +101,11 @@ export default defineConfig({
       {
         markdownlint: {
           default: true,
-          'MD041': false, // first-line-heading
-          'MD013': false, // line-length
-          'MD033': false, // no-inline-html
-          'MD034': false, // no-bare-urls
-          'MD047': false  // single-trailing-newline
+          MD041: false, // first-line-heading
+          MD013: false, // line-length
+          MD033: false, // no-inline-html
+          MD034: false, // no-bare-urls
+          MD047: false // single-trailing-newline
         }
       }
     ]
