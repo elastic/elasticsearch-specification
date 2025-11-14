@@ -65,7 +65,7 @@ export type IndexPatterns = IndexPattern[]
 
 export type ProjectRouting = string
 
-export type Routing = string
+export type Routing = string | string[]
 export type LongId = string
 
 export type ClusterAlias = string
