@@ -69266,7 +69266,7 @@
               },
               "target_field": {
                 "description": "The field that will hold the parsed date.",
-                "default": "`@timestamp`",
+                "default": "@timestamp",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.Field"
@@ -89575,7 +89575,8 @@
                   ]
                 },
                 "timestamp_field": {
-                  "description": "Field containing event timestamp. Default \"@timestamp\"",
+                  "description": "Field containing event timestamp.",
+                  "default": "@timestamp",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Field"
