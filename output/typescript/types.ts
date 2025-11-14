@@ -2816,7 +2816,7 @@ export interface RetrieverContainer {
   pinned?: PinnedRetriever
 }
 
-export type Routing = string
+export type Routing = string | string[]
 
 export interface RrfRank {
   rank_constant?: long

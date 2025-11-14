@@ -35518,7 +35518,17 @@
         ]
       },
       "_types.Routing": {
-        "type": "string"
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "_global.search._types.SuggestBase": {
         "type": "object",
