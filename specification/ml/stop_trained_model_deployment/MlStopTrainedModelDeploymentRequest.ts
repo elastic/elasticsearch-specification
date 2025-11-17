@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Stop a trained model deployment.
+ *
  * @rest_spec_name ml.stop_trained_model_deployment
  * @availability stack since=8.0.0 stability=stable
  * @availability serverless stability=stable visibility=public

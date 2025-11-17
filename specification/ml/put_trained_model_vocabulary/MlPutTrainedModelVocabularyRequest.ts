@@ -23,6 +23,7 @@ import { double } from '@_types/Numeric'
 
 /**
  * Create a trained model vocabulary.
+ *
  * This API is supported only for natural language processing (NLP) models.
  * The vocabulary is stored in the index as described in `inference_config.*.vocabulary` of the trained model definition.
  * @rest_spec_name ml.put_trained_model_vocabulary

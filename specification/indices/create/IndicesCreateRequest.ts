@@ -27,6 +27,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Create an index.
+ *
  * You can use the create index API to add a new index to an Elasticsearch cluster.
  * When creating an index, you can specify the following:
  *

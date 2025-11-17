@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Create a snapshot.
+ *
  * Take a snapshot of a cluster or of data streams and indices.
  * @rest_spec_name snapshot.create
  * @availability stack stability=stable

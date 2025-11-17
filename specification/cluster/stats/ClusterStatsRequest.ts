@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get cluster statistics.
+ *
  * Get basic index metrics (shard numbers, store size, memory usage) and information about the current nodes that form the cluster (number, roles, os, jvm versions, memory usage, cpu and installed plugins).
  * @rest_spec_name cluster.stats
  * @availability stack since=1.3.0 stability=stable

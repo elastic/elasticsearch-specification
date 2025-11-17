@@ -22,6 +22,7 @@ import { ExpandWildcards, Fields, Indices } from '@_types/common'
 
 /**
  * Get mapping definitions.
+ *
  * Retrieves mapping definitions for one or more fields.
  * For data streams, the API retrieves field mappings for the stream’s backing indices.
  *

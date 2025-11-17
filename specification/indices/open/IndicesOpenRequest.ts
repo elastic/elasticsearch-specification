@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Open a closed index.
+ *
  * For data streams, the API opens any closed backing indices.
  *
  * A closed index is blocked for read/write operations and does not allow all operations that opened indices allow.

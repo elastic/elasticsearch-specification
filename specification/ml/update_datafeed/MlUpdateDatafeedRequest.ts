@@ -30,6 +30,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Update a datafeed.
+ *
  * You must stop and start the datafeed for the changes to be applied.
  * When Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at
  * the time of the update and runs the query using those same roles. If you provide secondary authorization headers,

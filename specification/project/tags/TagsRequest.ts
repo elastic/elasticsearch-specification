@@ -20,6 +20,9 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Get tags.
+ *
+ * Get the tags that are defined for the project.
  * @doc_id project-tags
  * @rest_spec_name project.tags
  * @availability serverless stability=experimental visibility=public

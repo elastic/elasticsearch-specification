@@ -25,6 +25,7 @@ import { CronExpression } from '@watcher/_types/Schedule'
 
 /**
  * Create or update a policy.
+ *
  * Create or update a snapshot lifecycle policy.
  * If the policy already exists, this request increments the policy version.
  * Only the latest version of a policy is stored.

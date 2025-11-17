@@ -24,6 +24,7 @@ import { TaskSettings } from '@inference/_types/Services'
 
 /**
  * Perform streaming inference.
+ *
  * Get real-time responses for completion tasks by delivering answers incrementally, reducing response times during computation.
  * This API works only with the completion task type.
  *

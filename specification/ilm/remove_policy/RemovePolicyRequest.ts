@@ -22,6 +22,7 @@ import { IndexName } from '@_types/common'
 
 /**
  * Remove policies from an index.
+ *
  * Remove the assigned lifecycle policies from an index or a data stream's backing indices.
  * It also stops managing the indices.
  * @rest_spec_name ilm.remove_policy

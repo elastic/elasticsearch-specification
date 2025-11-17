@@ -22,6 +22,7 @@ import { Ids } from '@_types/common'
 
 /**
  * Get the rollup index capabilities.
+ *
  * Get the rollup capabilities of all jobs inside of a rollup index.
  * A single rollup index may store the data for multiple rollup jobs and may have a variety of capabilities depending on those jobs. This API enables you to determine:
  *

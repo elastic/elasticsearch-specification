@@ -22,6 +22,7 @@ import { SynonymString } from '../_types/SynonymRule'
 
 /**
  * Create or update a synonym rule.
+ *
  * Create or update a synonym rule in a synonym set.
  *
  * If any of the synonym rules included is invalid, the API returns an error.

@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Clean up the snapshot repository.
+ *
  * Trigger the review of the contents of a snapshot repository and delete any stale data not referenced by existing snapshots.
  * @rest_spec_name snapshot.cleanup_repository
  * @availability stack since=7.4.0 stability=stable

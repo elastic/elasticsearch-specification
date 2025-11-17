@@ -30,6 +30,7 @@ import { Checkpoint } from '../_types/Checkpoints'
 
 /**
  * Run multiple Fleet searches.
+ *
  * Run several Fleet searches with a single API request.
  * The API follows the same structure as the multi search API.
  * However, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.

@@ -21,6 +21,7 @@ import { Id } from '@_types/common'
 
 /**
  * Update the connector is_native flag.
+ *
  * @rest_spec_name connector.update_native
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public

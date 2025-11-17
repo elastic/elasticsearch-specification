@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Run an enrich policy.
+ *
  * Create the enrich index for an existing enrich policy.
  * @doc_id execute-enrich-policy-api
  * @rest_spec_name enrich.execute_policy

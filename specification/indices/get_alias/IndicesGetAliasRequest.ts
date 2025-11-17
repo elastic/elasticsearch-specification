@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get aliases.
+ *
  * Retrieves information for one or more data stream or index aliases.
  * @rest_spec_name indices.get_alias
  * @availability stack stability=stable
