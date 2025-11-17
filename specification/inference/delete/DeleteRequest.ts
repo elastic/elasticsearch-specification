@@ -53,7 +53,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * When true, the endpoint is not deleted and a list of ingest processors which reference this endpoint is returned.
+     * When true, checks the semantic_text fields and inference processors that reference the endpoint and returns them in a list, but does not delete the endpoint.
      * @server_default false
      */
     dry_run?: boolean

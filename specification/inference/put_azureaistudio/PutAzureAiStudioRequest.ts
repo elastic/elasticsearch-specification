@@ -75,7 +75,7 @@ export interface Request extends RequestBase {
      */
     service: AzureAiStudioServiceType
     /**
-     * Settings used to install the inference model. These settings are specific to the `openai` service.
+     * Settings used to install the inference model. These settings are specific to the `azureaistudio` service.
      */
     service_settings: AzureAiStudioServiceSettings
     /**
