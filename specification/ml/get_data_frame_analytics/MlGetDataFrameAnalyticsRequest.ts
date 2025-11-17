@@ -23,6 +23,7 @@ import { integer } from '@_types/Numeric'
 
 /**
  * Get data frame analytics job configuration info.
+ *
  * You can get information for multiple data frame analytics jobs in a single
  * API request by using a comma-separated list of data frame analytics jobs or a
  * wildcard expression.

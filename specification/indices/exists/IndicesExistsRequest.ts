@@ -22,6 +22,7 @@ import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
  * Check indices.
+ *
  * Check if one or more indices, index aliases, or data streams exist.
  * @rest_spec_name indices.exists
  * @availability stack stability=stable

@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Clear an SQL search cursor.
+ *
  * @rest_spec_name sql.clear_cursor
  * @availability stack since=6.3.0 stability=stable
  * @availability serverless stability=stable visibility=public

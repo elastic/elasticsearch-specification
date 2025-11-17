@@ -24,6 +24,7 @@ import { IndexState } from '@indices/_types/IndexState'
 
 /**
  * Create or update a component template.
+ *
  * Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.
  *
  * An index template can be composed of multiple component templates.

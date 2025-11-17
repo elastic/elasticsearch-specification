@@ -32,6 +32,7 @@ import {
 
 /**
  * Preview a transform.
+ *
  * Generates a preview of the results that you will get when you create a transform with the same configuration.
  *
  * It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also

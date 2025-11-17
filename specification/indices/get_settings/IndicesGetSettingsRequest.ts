@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get index settings.
+ *
  * Get setting information for one or more indices.
  * For data streams, it returns setting information for the stream's backing indices.
  * @rest_spec_name indices.get_settings

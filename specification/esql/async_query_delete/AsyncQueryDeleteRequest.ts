@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Delete an async ES|QL query.
+ *
  * If the query is still running, it is cancelled.
  * Otherwise, the stored results are deleted.
  *

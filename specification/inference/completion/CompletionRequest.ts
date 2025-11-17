@@ -23,7 +23,8 @@ import { Duration } from '@_types/Time'
 import { TaskSettings } from '@inference/_types/Services'
 
 /**
- * Perform completion inference on the service
+ * Perform completion inference on the service.
+ *
  * Get responses for completion tasks.
  * This API works only with the completion task type.
  *

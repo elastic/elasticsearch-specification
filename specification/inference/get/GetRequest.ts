@@ -22,7 +22,8 @@ import { Id } from '@_types/common'
 import { TaskType } from '@inference/_types/TaskType'
 
 /**
- * Get an inference endpoint
+ * Get an inference endpoint.
+ *
  * This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).
  * @rest_spec_name inference.get
  * @availability stack since=8.11.0 stability=stable visibility=public

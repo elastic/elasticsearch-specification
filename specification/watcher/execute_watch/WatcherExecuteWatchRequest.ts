@@ -27,6 +27,7 @@ import { Watch } from '@watcher/_types/Watch'
 
 /**
  * Run a watch.
+ *
  * This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.
  *
  * For testing and debugging purposes, you also have fine-grained control on how the watch runs.

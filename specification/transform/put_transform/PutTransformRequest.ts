@@ -32,6 +32,7 @@ import {
 
 /**
  * Create a transform.
+ *
  * Creates a transform.
  *
  * A transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as
