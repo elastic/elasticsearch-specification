@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get Watcher index settings.
+ *
  * Get settings for the Watcher internal index (`.watches`).
  * Only a subset of settings are shown, for example `index.auto_expand_replicas` and `index.number_of_replicas`.
  * @rest_spec_name watcher.get_settings

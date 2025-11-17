@@ -22,6 +22,7 @@ import { WatcherMetric } from './types'
 
 /**
  * Get Watcher statistics.
+ *
  * This API always returns basic metrics.
  * You retrieve more metrics by using the metric parameter.
  * @rest_spec_name watcher.stats

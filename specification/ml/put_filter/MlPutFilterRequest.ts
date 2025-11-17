@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Create a filter.
+ *
  * A filter contains a list of strings. It can be used by one or more anomaly detection jobs.
  * Specifically, filters are referenced in the `custom_rules` property of detector configuration objects.
  * @rest_spec_name ml.put_filter

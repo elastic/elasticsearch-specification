@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Stop transforms.
+ *
  * Stops one or more transforms.
  * @rest_spec_name transform.stop_transform
  * @availability stack since=7.5.0 stability=stable

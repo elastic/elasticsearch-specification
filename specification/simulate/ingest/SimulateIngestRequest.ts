@@ -28,6 +28,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Simulate data ingestion.
+ *
  * Run ingest pipelines against a set of provided documents, optionally with substitute pipeline definitions, to simulate ingesting data into an index.
  *
  * This API is meant to be used for troubleshooting or pipeline development, as it does not actually index any data into Elasticsearch.

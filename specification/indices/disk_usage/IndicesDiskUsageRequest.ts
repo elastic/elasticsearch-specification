@@ -22,6 +22,7 @@ import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
  * Analyze the index disk usage.
+ *
  * Analyze the disk usage of each field of an index or data stream.
  * This API might not support indices created in previous Elasticsearch versions.
  * The result of a small index can be inaccurate as some parts of an index might not be analyzed by the API.

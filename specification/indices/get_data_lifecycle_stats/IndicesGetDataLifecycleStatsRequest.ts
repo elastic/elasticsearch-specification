@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Get data stream lifecycle stats.
+ *
  * Get statistics about the data streams that are managed by a data stream lifecycle.
  * @rest_spec_name indices.get_data_lifecycle_stats
  * @availability stack since=8.12.0 stability=stable

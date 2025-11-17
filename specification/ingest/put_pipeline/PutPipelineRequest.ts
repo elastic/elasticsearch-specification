@@ -24,6 +24,7 @@ import { ProcessorContainer } from '@ingest/_types/Processors'
 
 /**
  * Create or update a pipeline.
+ *
  * Changes made using this API take effect immediately.
  * @doc_id ingest
  * @rest_spec_name ingest.put_pipeline

@@ -22,6 +22,7 @@ import { Id, Ids } from '@_types/common'
 
 /**
  * Delete anomaly jobs from a calendar.
+ *
  * @rest_spec_name ml.delete_calendar_job
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public

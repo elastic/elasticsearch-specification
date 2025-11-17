@@ -28,6 +28,7 @@ import {
 
 /**
  * Get index statistics.
+ *
  * For data streams, the API retrieves statistics for the stream's backing indices.
  *
  * By default, the returned statistics are index-level with `primaries` and `total` aggregations.

@@ -24,6 +24,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Explain the shard allocations.
+ *
  * Get explanations for shard allocations in the cluster.
  * For unassigned shards, it provides an explanation for why the shard is unassigned.
  * For assigned shards, it provides an explanation for why the shard is remaining on its current node and has not moved or rebalanced to another node.

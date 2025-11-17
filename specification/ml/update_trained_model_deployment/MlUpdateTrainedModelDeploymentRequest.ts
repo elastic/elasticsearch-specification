@@ -24,6 +24,7 @@ import { AdaptiveAllocationsSettings } from '@ml/_types/TrainedModel'
 
 /**
  * Update a trained model deployment.
+ *
  * @rest_spec_name ml.update_trained_model_deployment
  * @availability stack since=8.6.0 stability=stable
  * @availability serverless stability=beta visibility=public

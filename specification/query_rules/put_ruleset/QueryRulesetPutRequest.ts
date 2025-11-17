@@ -22,6 +22,7 @@ import { QueryRule } from '../_types/QueryRuleset'
 
 /**
  * Create or update a query ruleset.
+ *
  * There is a limit of 100 rules per ruleset.
  * This limit can be increased by using the `xpack.applications.rules.max_rules_per_ruleset` cluster setting.
  *

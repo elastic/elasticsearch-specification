@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Migrate to data tiers routing.
+ *
  * Switch the indices, ILM policies, and legacy, composable, and component templates from using custom node attributes and attribute-based allocation filters to using data tiers.
  * Optionally, delete one legacy index template.
  * Using node roles enables ILM to automatically move the indices between data tiers.

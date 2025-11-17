@@ -24,6 +24,7 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * Update index settings.
+ *
  * Changes dynamic index settings in real time.
  * For data streams, index setting changes are applied to all backing indices by default.
  *
