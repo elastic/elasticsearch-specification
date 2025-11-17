@@ -1340,13 +1340,14 @@ export class ElasticsearchServiceSettings {
    *
    * When `long_document_strategy` is set to `chunk`, Elasticsearch splits each document into smaller parts but still returns a single score per document.
    * That score reflects the highest relevance score among all chunks.
+   * @availability stack stability=experimental visibility=public
    */
   long_document_strategy?: string
   /**
-   * This parameter is in tech preview in 9.2.
    * Only for the `rerank` task type.
    * Limits the number of chunks per document that are sent for inference when chunking is enabled.
    * If not set, all chunks generated for the document are processed.
+   * @availability stack stability=experimental visibility=public
    */
   max_chunks_per_doc?: integer
 }
