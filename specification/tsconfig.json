@@ -42,6 +42,7 @@
       "@ml/*": ["ml/*"],
       "@monitoring/*": ["monitoring/*"],
       "@nodes/*": ["nodes/*"],
+      "@profiling/*": ["profiling/*"],
       "@project/*": ["project/*"],
       "@query_ruleset/*": ["query_ruleset/*"],
       "@rollup/*": ["rollup/*"],
