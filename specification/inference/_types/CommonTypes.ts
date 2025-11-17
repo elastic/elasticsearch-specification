@@ -1330,7 +1330,6 @@ export class ElasticsearchServiceSettings {
    */
   num_threads: integer
   /**
-   * This parameter is in tech preview in 9.2.
    * Available only for the `rerank` task type using the Elastic reranker model.
    * Controls the strategy used for processing long documents during inference.
    *
