@@ -128,7 +128,8 @@ export class FunctionScoreQuery extends QueryBase {
    * A query that determines the documents for which a new score is computed.
    */
   query?: QueryContainer
-  /** Specifies how the computed scores are combined
+  /**
+   * Specifies how the computed scores are combined
    * @server_default multiply
    */
   score_mode?: FunctionScoreMode
