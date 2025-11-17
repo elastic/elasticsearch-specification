@@ -18,8 +18,8 @@
  */
 import parser from '@typescript-eslint/parser'
 import validator from 'eslint-plugin-es-spec'
+import { jsdoc } from 'eslint-plugin-jsdoc'
 import { defineConfig } from 'eslint/config'
-import { jsdoc } from 'eslint-plugin-jsdoc';
 
 export default defineConfig([
   {
@@ -52,7 +52,11 @@ export default defineConfig([
               'indices.update_aliases',
               'watcher._types'
             ],
-            Actions: ['ilm._types', 'security.put_privileges', 'watcher._types'],
+            Actions: [
+              'ilm._types',
+              'security.put_privileges',
+              'watcher._types'
+            ],
             ComponentTemplate: ['cat.component_templates', 'cluster._types'],
             Context: [
               '_global.get_script_context',
@@ -68,7 +72,11 @@ export default defineConfig([
             Feature: ['features._types', 'indices.get', 'xpack.info'],
             Features: ['indices.get', 'xpack.info'],
             Filter: ['_global.termvectors', 'ml._types'],
-            IndexingPressure: ['cluster.stats', 'indices._types', 'nodes._types'],
+            IndexingPressure: [
+              'cluster.stats',
+              'indices._types',
+              'nodes._types'
+            ],
             IndexingPressureMemory: ['indices._types', 'nodes._types'],
             Ingest: ['ingest._types', 'nodes._types'],
             MigrationFeature: [
@@ -125,45 +133,53 @@ export default defineConfig([
     config: 'flat/recommended-typescript-error',
     rules: {
       // Allow custom tags used in Elasticsearch specification
-      'jsdoc/check-tag-names': ['error', {
-        definedTags: [
-          'UpdateForV10',
-          'aliases',
-          'availability',
-          'behavior',
-          'behavior_meta',
-          'class_serializer',
-          'cluster_privileges',
-          'codegen_name',
-          'codegen_names',
-          'doc_id',
-          'doc_tag',
-          'doc_url',
-          'es_quirk',
-          'ext_doc_id',
-          'index_privileges',
-          'non_exhaustive',
-          'prop_serializer',
-          'rest_spec_name',
-          'server_default',
-          'shortcut_property',
-          'variant',
-          'variants'
-        ],
-      }],
+      'jsdoc/check-tag-names': [
+        'error',
+        {
+          definedTags: [
+            'UpdateForV10',
+            'aliases',
+            'availability',
+            'behavior',
+            'behavior_meta',
+            'class_serializer',
+            'cluster_privileges',
+            'codegen_name',
+            'codegen_names',
+            'doc_id',
+            'doc_tag',
+            'doc_url',
+            'es_quirk',
+            'ext_doc_id',
+            'index_privileges',
+            'non_exhaustive',
+            'prop_serializer',
+            'rest_spec_name',
+            'server_default',
+            'shortcut_property',
+            'variant',
+            'variants'
+          ]
+        }
+      ],
       // Require UpdateForV10 tags to have an associated description/name
-      "jsdoc/match-name": ["error", {
-        match: [{
-          "allowName":"/.+/","tags":["UpdateForV10"],
-          "message": "Please provide a reason for the breaking change"
-        }]
-      }],
+      'jsdoc/match-name': [
+        'error',
+        {
+          match: [
+            {
+              allowName: '/.+/',
+              tags: ['UpdateForV10'],
+              message: 'Please provide a reason for the breaking change'
+            }
+          ]
+        }
+      ],
       // Allow Markdown formatting
       'jsdoc/tag-lines': 'off',
       'jsdoc/no-multi-asterisks': 'off',
       // server_default values aren't parsed by jsdoc correctly
-      'jsdoc/valid-types': 'off',
-
-    },
+      'jsdoc/valid-types': 'off'
+    }
   })
 ])

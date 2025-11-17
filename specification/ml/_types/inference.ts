@@ -285,7 +285,7 @@ export class NerInferenceOptions {
 
 /** Fill mask inference options */
 export class FillMaskInferenceOptions {
-  /** 
+  /**
    * The string/token which will be removed from incoming documents and replaced with the inference prediction(s).
    * In a response, this field contains the mask token for the specified model/tokenizer. Each model and tokenizer
    * has a predefined mask token which cannot be changed. Thus, it is recommended not to set this value in requests.
