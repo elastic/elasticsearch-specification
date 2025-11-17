@@ -11687,7 +11687,7 @@
                     ]
                   },
                   "task_settings": {
-                    "description": "Optional task settings",
+                    "description": "Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.TaskSettings"
@@ -12577,7 +12577,7 @@
                     ]
                   },
                   "service_settings": {
-                    "description": "Settings used to install the inference model. These settings are specific to the `watsonxai` service.",
+                    "description": "Settings used to install the inference model. These settings are specific to the `anthropic` service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.AnthropicServiceSettings"
@@ -12697,7 +12697,7 @@
                     ]
                   },
                   "service_settings": {
-                    "description": "Settings used to install the inference model. These settings are specific to the `openai` service.",
+                    "description": "Settings used to install the inference model. These settings are specific to the `azureaistudio` service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.AzureAiStudioServiceSettings"
@@ -14906,7 +14906,7 @@
                     ]
                   },
                   "task_settings": {
-                    "description": "Optional task settings",
+                    "description": "Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.TaskSettings"
@@ -15012,7 +15012,7 @@
                     "type": "string"
                   },
                   "task_settings": {
-                    "description": "Optional task settings",
+                    "description": "Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.TaskSettings"
@@ -65106,7 +65106,7 @@
             }
           },
           "model": {
-            "description": "The ID of the model to use.",
+            "description": "The ID of the model to use. By default, the model ID is set to the value included when creating the inference endpoint.",
             "type": "string"
           },
           "max_completion_tokens": {
@@ -86583,7 +86583,7 @@
       "inference.delete-dry_run": {
         "in": "query",
         "name": "dry_run",
-        "description": "When true, the endpoint is not deleted and a list of ingest processors which reference this endpoint is returned.",
+        "description": "When true, checks the semantic_text fields and inference processors that reference the endpoint and returns them in a list, but does not delete the endpoint.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
