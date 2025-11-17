@@ -22,6 +22,7 @@ import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
  * Reload search analyzers.
+ *
  * Reload an index's search analyzers and their resources.
  * For data streams, the API reloads search analyzers and resources for the stream's backing indices.
  *

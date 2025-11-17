@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Delete an async EQL search.
+ *
  * Delete an async EQL search or a stored synchronous EQL search.
  * The API also deletes results for the search.
  * @rest_spec_name eql.delete

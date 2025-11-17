@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get cache statistics.
+ *
  * Get statistics about the shared cache for partially mounted indices.
  * @rest_spec_name searchable_snapshots.cache_stats
  * @availability stack since=7.13.0 stability=experimental

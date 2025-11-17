@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Get the async SQL search status.
+ *
  * Get the current status of an async SQL search or a stored synchronous SQL search.
  * @rest_spec_name sql.get_async_status
  * @availability stack since=7.15.0 stability=stable

@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Update voting configuration exclusions.
+ *
  * Update the cluster voting config exclusions by node IDs or node names.
  * By default, if there are more than three master-eligible nodes in the cluster and you remove fewer than half of the master-eligible nodes in the cluster at once, the voting configuration automatically shrinks.
  * If you want to shrink the voting configuration to contain fewer than three nodes or to remove half or more of the master-eligible nodes in the cluster at once, use this API to remove departing nodes from the voting configuration manually.

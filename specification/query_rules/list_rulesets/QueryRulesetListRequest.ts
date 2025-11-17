@@ -21,6 +21,7 @@ import { integer } from '@_types/Numeric'
 
 /**
  * Get all query rulesets.
+ *
  * Get summarized information about the query rulesets.
  * @rest_spec_name query_rules.list_rulesets
  * @availability stack since=8.10.0 stability=stable

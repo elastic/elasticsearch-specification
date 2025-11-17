@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Check existence of index templates.
+ *
  * Get information about whether index templates exist.
  * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
  *

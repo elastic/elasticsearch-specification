@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get lifecycle policies.
+ *
  * @rest_spec_name ilm.get_lifecycle
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm, read_ilm

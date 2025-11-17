@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get sampling configuration.
+ *
  * Get the sampling configuration for the specified index.
  * @rest_spec_name indices.get_sample_configuration
  * @availability stack visibility=feature_flag feature_flag=random_sampling since=9.3.0 stability=experimental

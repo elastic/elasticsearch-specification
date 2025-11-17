@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get the pending cluster tasks.
+ *
  * Get information about cluster-level changes (such as create index, update mapping, allocate or fail shard) that have not yet taken effect.
  *
  * NOTE: This API returns a list of any pending updates to the cluster state.

@@ -22,7 +22,8 @@ import { Id } from '@_types/common'
 import { TaskType } from '@inference/_types/TaskType'
 
 /**
- * Delete an inference endpoint
+ * Delete an inference endpoint.
+ *
  * This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).
  * @rest_spec_name inference.delete
  * @availability stack since=8.11.0 stability=stable visibility=public

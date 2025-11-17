@@ -19,6 +19,7 @@ It is configured [in the specification directory](../specification/eslint.config
 | `no-duplicate-type-names`             | All types must be unique across class and enum definitions.                                                                                                                                    |
 | `no-all-string-literal-unions         | Unions consisting entirely of string literals (e.g., `"green" \| "yellow" \| "red"`) are not allowed, use enums instead.                                                                       | 
 | `check-variants`                      | Checks that `@variants` are valid for specific types. `Request` and `Response`, no variants allowed; Type Aliases, `internal`, `typed_keys_quirk` or `untagged`; Interface classes, `container` |
+| `jsdoc-endpoint-check`                | Validates JSDoc on endpoints in the specification. Ensuring consistent formatting. Some errors can be fixed with `--fix`.                                                                  |
 
 ## Usage
 

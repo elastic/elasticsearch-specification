@@ -25,6 +25,7 @@ import { JobConfig } from '@ml/_types/Job'
 
 /**
  * Preview a datafeed.
+ *
  * This API returns the first "page" of search results from a datafeed.
  * You can preview an existing datafeed or provide configuration details for a datafeed
  * and anomaly detection job in the API. The preview shows the structure of the data

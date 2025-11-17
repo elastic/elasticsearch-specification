@@ -28,6 +28,7 @@ import preferTaggedVariants from './rules/prefer-tagged-variants.js'
 import noDuplicateTypeNames from './rules/no-duplicate-type-names.js'
 import noAllStringLiteralUnions from './rules/no-all-string-literal-unions.js'
 import checkVariants from './rules/check-variants.js'
+import jsdocEndpointCheck from './rules/jsdoc-endpoint-check.js'
 
 export default {
   rules: {
@@ -42,6 +43,7 @@ export default {
     'prefer-tagged-variants': preferTaggedVariants,
     'no-duplicate-type-names': noDuplicateTypeNames,
     'no-all-string-literal-unions': noAllStringLiteralUnions,
-    'check-variants': checkVariants
+    'check-variants': checkVariants,
+    'jsdoc-endpoint-check': jsdocEndpointCheck
   }
 }

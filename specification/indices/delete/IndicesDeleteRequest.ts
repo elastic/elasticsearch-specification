@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete indices.
+ *
  * Deleting an index deletes its documents, shards, and metadata.
  * It does not delete related Kibana components, such as data views, visualizations, or dashboards.
  *

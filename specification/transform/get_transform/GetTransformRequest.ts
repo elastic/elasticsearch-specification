@@ -23,6 +23,7 @@ import { integer } from '@_types/Numeric'
 
 /**
  * Get transforms.
+ *
  * Get configuration information for transforms.
  * @rest_spec_name transform.get_transform
  * @availability stack since=7.5.0 stability=stable

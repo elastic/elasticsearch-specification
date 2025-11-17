@@ -22,6 +22,7 @@ import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
  * Get index segments.
+ *
  * Get low-level information about the Lucene segments in index shards.
  * For data streams, the API returns information about the stream's backing indices.
  * @rest_spec_name indices.segments

@@ -23,6 +23,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Test a query ruleset.
+ *
  * Evaluate match criteria against a query ruleset to identify the rules that would match that criteria.
  * @rest_spec_name query_rules.test
  * @availability stack since=8.10.0 stability=stable

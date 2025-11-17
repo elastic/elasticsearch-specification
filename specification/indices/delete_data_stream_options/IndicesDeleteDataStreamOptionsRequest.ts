@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete data stream options.
+ *
  * Removes the data stream options from a data stream.
  * @rest_spec_name indices.delete_data_stream_options
  * @availability stack since=8.19.0 stability=stable

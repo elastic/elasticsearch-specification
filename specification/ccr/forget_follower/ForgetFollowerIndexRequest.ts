@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Forget a follower.
+ *
  * Remove the cross-cluster replication follower retention leases from the leader.
  *
  * A following index takes out retention leases on its leader index.

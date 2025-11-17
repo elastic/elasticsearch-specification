@@ -24,6 +24,7 @@ import { Repository } from '@snapshot/_types/SnapshotRepository'
 
 /**
  * Create or update a snapshot repository.
+ *
  * IMPORTANT: If you are migrating searchable snapshots, the repository name must be identical in the source and destination clusters.
  * To register a snapshot repository, the cluster's global metadata must be writeable.
  * Ensure there are no cluster blocks (for example, `cluster.blocks.read_only` and `clsuter.blocks.read_only_allow_delete` settings) that prevent write access.

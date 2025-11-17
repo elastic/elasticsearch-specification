@@ -26,6 +26,7 @@ import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 
 /**
  * Validate an anomaly detection job.
+ *
  * @rest_spec_name ml.validate
  * @availability stack since=6.3.0 stability=stable visibility=private
  * @availability serverless stability=stable visibility=private
