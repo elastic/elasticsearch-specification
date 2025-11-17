@@ -66,7 +66,7 @@
         "description": "What to do when the update by query hits version conflicts?"
       },
       "expand_wildcards": {
-        "type": "enum",
+        "type": "list",
         "options": ["open", "closed", "hidden", "none", "all"],
         "default": "open",
         "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both."
