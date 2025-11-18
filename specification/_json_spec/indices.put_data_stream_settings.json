@@ -16,8 +16,8 @@
           "methods": ["PUT"],
           "parts": {
             "name": {
-              "type": "string",
-              "description": "Comma-separated list of data streams or data stream patterns"
+              "type": "list",
+              "description": "A comma-separated list of data streams or data stream patterns."
             }
           }
         }
