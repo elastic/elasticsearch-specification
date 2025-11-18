@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Convert an index alias to a data stream.
+ *
  * Converts an index alias to a data stream.
  * You must have a matching index template that is data stream enabled.
  * The alias must meet the following criteria:

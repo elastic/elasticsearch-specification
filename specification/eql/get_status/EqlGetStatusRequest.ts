@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Get the async EQL status.
+ *
  * Get the current status for an async EQL search or a stored synchronous EQL search without returning results.
  * @doc_id eql-async-search-status-api
  * @rest_spec_name eql.get_status

@@ -22,6 +22,7 @@ import { ClusterInfoTargets } from '@_types/common'
 
 /**
  * Get cluster info.
+ *
  * Returns basic information about the cluster.
  * @rest_spec_name cluster.info
  * @availability stack since=8.9.0 stability=stable

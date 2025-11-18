@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Find the structure of a text file.
+ *
  * The text file must contain data that is suitable to be ingested into Elasticsearch.
  *
  * This API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.

@@ -22,6 +22,7 @@ import { Ids } from '@_types/common'
 
 /**
  * Get anomaly detection jobs configuration info.
+ *
  * You can get information for multiple anomaly detection jobs in a single API
  * request by using a group name, a comma-separated list of jobs, or a wildcard
  * expression. You can get information for all anomaly detection jobs by using

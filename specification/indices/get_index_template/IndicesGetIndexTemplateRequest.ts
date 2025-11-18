@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get index templates.
+ *
  * Get information about one or more index templates.
  * @rest_spec_name indices.get_index_template
  * @availability stack since=7.9.0 stability=stable
@@ -42,7 +43,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /** Comma-separated list of index template names used to limit the request. Wildcard (*) expressions are supported. */
+    /** Name of index template to retrieve. Wildcard (*) expressions are supported. */
     name?: Name
   }
   query_parameters: {

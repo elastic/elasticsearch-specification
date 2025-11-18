@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete a data frame analytics job.
+ *
  * @rest_spec_name ml.delete_data_frame_analytics
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public

@@ -6513,6 +6513,11 @@
                     "description": "When set to `true` and performing a cross-cluster/cross-project query, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.",
                     "default": false,
                     "type": "boolean"
+                  },
+                  "include_execution_metadata": {
+                    "description": "When set to `true`, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.\nThis is similar to `include_ccs_metadata`, but it also returns metadata when the query is not CCS/CPS",
+                    "default": false,
+                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -11556,7 +11561,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Perform chat completion inference on the service\n",
+        "summary": "Perform chat completion inference on the service",
         "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.\nIt only works with the `chat_completion` task type for `openai` and `elastic` inference services.\n\nNOTE: The `chat_completion` task type is only available within the _stream API and only supports streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nIf you use the `openai`, `hugging_face` or the `elastic` service, use the Chat completion inference API.",
         "operationId": "inference-chat-completion-unified",
         "parameters": [
@@ -11641,7 +11646,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Perform completion inference on the service\n",
+        "summary": "Perform completion inference on the service",
         "description": "Get responses for completion tasks.\nThis API works only with the completion task type.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThis API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-completion",
         "parameters": [
@@ -11744,7 +11749,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint\n",
+        "summary": "Get an inference endpoint",
         "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get-1",
         "parameters": [
@@ -11831,7 +11836,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Delete an inference endpoint\n",
+        "summary": "Delete an inference endpoint",
         "description": "This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).",
         "operationId": "inference-delete",
         "parameters": [
@@ -11864,7 +11869,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint\n",
+        "summary": "Get an inference endpoint",
         "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get-2",
         "parameters": [
@@ -11960,7 +11965,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Delete an inference endpoint\n",
+        "summary": "Delete an inference endpoint",
         "description": "This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).",
         "operationId": "inference-delete-1",
         "parameters": [
@@ -11996,7 +12001,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint\n",
+        "summary": "Get an inference endpoint",
         "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get",
         "responses": {
@@ -13839,20 +13844,110 @@
                   "description": "Run `PUT _inference/text_embedding/google_vertex_ai_embeddings` to create an inference endpoint to perform a `text_embedding` task type.",
                   "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"service_account_json\": \"service-account-json\",\n        \"model_id\": \"model-id\",\n        \"location\": \"location\",\n        \"project_id\": \"project-id\"\n    }\n}"
                 },
+                "PutGoogleVertexAiRequestExample10": {
+                  "summary": "A chat_completion task for Google Model Garden Meta shared endpoint with single streaming URL provided",
+                  "description": "Run `PUT _inference/chat_completion/google_model_garden_meta_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Meta's model hosted on Google Model Garden shared endpoint with single streaming URL provided. See the endpoint's `Sample request` page for the variable values used in the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"meta\",\n        \"service_account_json\": \"service-account-json\",\n        \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample11": {
+                  "summary": "A completion task for Google Model Garden Hugging Face dedicated endpoint with single URL provided for both streaming and non-streaming tasks",
+                  "description": "Run `PUT _inference/completion/google_model_garden_hugging_face_completion` to create an inference endpoint to perform a `completion` task using Hugging Face's model hosted on Google Model Garden dedicated endpoint with single URL provided for both streaming and non-streaming tasks. See the endpoint's `Sample request` page for the variable values used in the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"hugging_face\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample12": {
+                  "summary": "A chat_completion task for Google Model Garden Hugging Face dedicated endpoint with single streaming URL provided",
+                  "description": "Run `PUT _inference/chat_completion/google_model_garden_hugging_face_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Hugging Face's model hosted on Google Model Garden dedicated endpoint with single streaming URL provided. See the endpoint's `Sample request` page for the variable values used in the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"hugging_face\",\n        \"service_account_json\": \"service-account-json\",\n        \"streaming_url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample13": {
+                  "summary": "A completion task for Google Model Garden Hugging Face shared endpoint with single URL provided for both streaming and non-streaming tasks",
+                  "description": "Run `PUT _inference/completion/google_model_garden_hugging_face_completion` to create an inference endpoint to perform a `completion` task using Hugging Face's model hosted on Google Model Garden shared endpoint with single URL provided for both streaming and non-streaming tasks. See the endpoint's `Sample request` page for the variable values used in the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"hugging_face\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample14": {
+                  "summary": "A chat_completion task for Google Model Garden Hugging Face shared endpoint with single streaming URL provided",
+                  "description": "Run `PUT _inference/chat_completion/google_model_garden_hugging_face_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Hugging Face's model hosted on Google Model Garden shared endpoint with single streaming URL provided. See the endpoint's `Sample request` page for the variable values used in the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"hugging_face\",\n        \"service_account_json\": \"service-account-json\",\n        \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample15": {
+                  "summary": "A completion task for Google Model Garden Mistral serverless endpoint with separate URLs for streaming and non-streaming tasks",
+                  "description": "Run `PUT _inference/completion/google_model_garden_mistral_completion` to create an inference endpoint to perform a `completion` task using Mistral's serverless model hosted on Google Model Garden with separate URLs for streaming and non-streaming tasks. See the Mistral model documentation for instructions on how to construct URLs.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"mistral\",\n        \"model_id\": \"mistral-small-2503\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:rawPredict\",\n        \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample16": {
+                  "summary": "A chat_completion task for Google Model Garden Mistral serverless endpoint with single streaming URL provided",
+                  "description": "Run `PUT _inference/chat_completion/google_model_garden_mistral_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Mistral's serverless model hosted on Google Model Garden with single streaming URL provided. See the Mistral model documentation for instructions on how to construct the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"mistral\",\n        \"model_id\": \"mistral-small-2503\",\n        \"service_account_json\": \"service-account-json\",\n        \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample17": {
+                  "summary": "A completion task for Google Model Garden Mistral dedicated endpoint with single URL provided for both streaming and non-streaming tasks",
+                  "description": "Run `PUT _inference/completion/google_model_garden_mistral_completion` to create an inference endpoint to perform a `completion` task using Mistral's model hosted on Google Model Garden dedicated endpoint with single URL provided for both streaming and non-streaming tasks. See the endpoint's `Sample request` page for the variable values used in the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"mistral\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample18": {
+                  "summary": "A chat_completion task for Google Model Garden Mistral dedicated endpoint with single streaming URL provided",
+                  "description": "Run `PUT _inference/chat_completion/google_model_garden_mistral_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Mistral's model hosted on Google Model Garden dedicated endpoint with single streaming URL provided. See the endpoint's `Sample request` page for the variable values used in the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"mistral\",\n        \"service_account_json\": \"service-account-json\",\n        \"streaming_url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample19": {
+                  "summary": "A completion task for Google Model Garden Mistral shared endpoint with single URL provided for both streaming and non-streaming tasks",
+                  "description": "Run `PUT _inference/completion/google_model_garden_mistral_completion` to create an inference endpoint to perform a `completion` task using Mistral's model hosted on Google Model Garden shared endpoint with single URL provided for both streaming and non-streaming tasks. See the endpoint's `Sample request` page for the variable values used in the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"mistral\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n}"
+                },
                 "PutGoogleVertexAiRequestExample2": {
                   "summary": "A rerank task",
                   "description": "Run `PUT _inference/rerank/google_vertex_ai_rerank` to create an inference endpoint to perform a `rerank` task type.",
                   "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"service_account_json\": \"service-account-json\",\n        \"project_id\": \"project-id\"\n    }\n}"
                 },
+                "PutGoogleVertexAiRequestExample20": {
+                  "summary": "A chat_completion task for Google Model Garden Mistral shared endpoint with single streaming URL provided",
+                  "description": "Run `PUT _inference/chat_completion/google_model_garden_mistral_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Mistral's model hosted on Google Model Garden shared endpoint with single streaming URL provided. See the endpoint's `Sample request` page for the variable values used in the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"mistral\",\n        \"service_account_json\": \"service-account-json\",\n        \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample21": {
+                  "summary": "A completion task for Google Model Garden AI21 serverless endpoint with separate URLs for streaming and non-streaming tasks",
+                  "description": "Run `PUT _inference/completion/google_model_garden_ai21_completion` to create an inference endpoint to perform a `completion` task using AI21's model hosted on Google Model Garden serverless endpoint with separate URLs for streaming and non-streaming tasks. See the AI21 model documentation for instructions on how to construct URLs.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"ai21\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:rawPredict\",\n        \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample22": {
+                  "summary": "A chat_completion task for Google Model Garden AI21 serverless endpoint with single streaming URL provided",
+                  "description": "Run `PUT _inference/chat_completion/google_model_garden_ai21_chat_completion` to create an inference endpoint to perform a `chat_completion` task using AI21's model hosted on Google Model Garden serverless endpoint with single streaming URL provided. See the AI21 model documentation for instructions on how to construct URLs.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"ai21\",\n        \"service_account_json\": \"service-account-json\",\n        \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\"\n    }\n}"
+                },
                 "PutGoogleVertexAiRequestExample3": {
-                  "summary": "A completion task for Google Model Garden Anthropic endpoint",
-                  "description": "Run `PUT _inference/completion/google_model_garden_anthropic_completion` to create an inference endpoint to perform a `completion` task using Anthropic's model hosted on Google Model Garden.",
-                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"anthropic\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://url:rawPredict\",\n        \"streaming_url\": \"https://streaming_url:streamRawPredict\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 128\n    }\n}"
+                  "summary": "A completion task for Google Model Garden Anthropic serverless endpoint with separate URLs for streaming and non-streaming tasks",
+                  "description": "Run `PUT _inference/completion/google_model_garden_anthropic_completion` to create an inference endpoint to perform a `completion` task using Anthropic's serverless model hosted on Google Model Garden with separate URLs for streaming and non-streaming tasks. See the Anthropic model documentation for instructions on how to construct URLs.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"anthropic\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:rawPredict\",\n        \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 128\n    }\n}"
                 },
                 "PutGoogleVertexAiRequestExample4": {
-                  "summary": "A chat_completion task for Google Model Garden Anthropic endpoint",
-                  "description": "Run `PUT _inference/chat_completion/google_model_garden_anthropic_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Anthropic's model hosted on Google Model Garden.",
-                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"anthropic\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://url:rawPredict\",\n        \"streaming_url\": \"https://streaming_url:streamRawPredict\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 128\n    }\n}"
+                  "summary": "A chat_completion task for Google Model Garden Anthropic serverless endpoint with single streaming URL provided",
+                  "description": "Run `PUT _inference/chat_completion/google_model_garden_anthropic_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Anthropic's serverless model hosted on Google Model Garden with single streaming URL provided. See the Anthropic model documentation for instructions on how to construct the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"anthropic\",\n        \"service_account_json\": \"service-account-json\",\n        \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 128\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample5": {
+                  "summary": "A completion task for Google Model Garden Meta serverless endpoint with single URL provided for both streaming and non-streaming tasks",
+                  "description": "Run `PUT _inference/completion/google_model_garden_meta_completion` to create an inference endpoint to perform a `completion` task using Meta's serverless model hosted on Google Model Garden with single URL provided for both streaming and non-streaming tasks. See the Meta model documentation for instructions on how to construct the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"meta\",\n        \"model_id\": \"meta/llama-3.3-70b-instruct-maas\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample6": {
+                  "summary": "A chat_completion task for Google Model Garden Meta serverless endpoint with single streaming URL provided",
+                  "description": "Run `PUT _inference/chat_completion/google_model_garden_meta_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Meta's serverless model hosted on Google Model Garden with single streaming URL provided. See the Meta model documentation for instructions on how to construct the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"meta\",\n        \"model_id\": \"meta/llama-3.3-70b-instruct-maas\",\n        \"service_account_json\": \"service-account-json\",\n        \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample7": {
+                  "summary": "A completion task for Google Model Garden Meta dedicated endpoint with single URL provided for both streaming and non-streaming tasks",
+                  "description": "Run `PUT _inference/completion/google_model_garden_meta_completion` to create an inference endpoint to perform a `completion` task using Meta's model hosted on Google Model Garden dedicated endpoint with single URL provided for both streaming and non-streaming tasks. See the endpoint's `Sample request` page for the variable values used in the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"meta\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample8": {
+                  "summary": "A chat_completion task for Google Model Garden Meta dedicated endpoint with single streaming URL provided",
+                  "description": "Run `PUT _inference/chat_completion/google_model_garden_meta_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Meta's model hosted on Google Model Garden dedicated endpoint with single streaming URL provided. See the endpoint's `Sample request` page for the variable values used in the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"meta\",\n        \"service_account_json\": \"service-account-json\",\n        \"streaming_url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n}"
+                },
+                "PutGoogleVertexAiRequestExample9": {
+                  "summary": "A completion task for Google Model Garden Meta shared endpoint with single URL provided for both streaming and non-streaming tasks",
+                  "description": "Run `PUT _inference/completion/google_model_garden_meta_completion` to create an inference endpoint to perform a `completion` task using Meta's model hosted on Google Model Garden shared endpoint with single URL provided for both streaming and non-streaming tasks. See the endpoint's `Sample request` page for the variable values used in the URL.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"meta\",\n        \"service_account_json\": \"service-account-json\",\n        \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n}"
                 }
               }
             }
@@ -18472,7 +18567,33 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ml.evaluate_data_frame.ResponseBody"
+                  "type": "object",
+                  "properties": {
+                    "classification": {
+                      "description": "Evaluation results for a classification analysis.\nIt outputs a prediction that identifies to which of the classes each document belongs.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeClassificationSummary"
+                        }
+                      ]
+                    },
+                    "outlier_detection": {
+                      "description": "Evaluation results for an outlier detection analysis.\nIt outputs the probability that each document is an outlier.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeOutlierDetectionSummary"
+                        }
+                      ]
+                    },
+                    "regression": {
+                      "description": "Evaluation results for a regression analysis which outputs a prediction of values.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeRegressionSummary"
+                        }
+                      ]
+                    }
+                  }
                 },
                 "examples": {
                   "MlEvaluateDataFrameResponseExample1": {
@@ -35397,7 +35518,17 @@
         ]
       },
       "_types.Routing": {
-        "type": "string"
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "_global.search._types.SuggestBase": {
         "type": "object",
@@ -35579,6 +35710,13 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "error": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ErrorCause"
               }
             ]
           }
@@ -67210,11 +67348,11 @@
             ]
           },
           "url": {
-            "description": "The URL for non-streaming `completion` requests to a Google Model Garden provider endpoint.\nIf both `url` and `streaming_url` are provided, each is used for its respective mode.\nIf `streaming_url` is not provided, `url` is also used for streaming `completion` and `chat_completion`.\nIf `provider` is not provided or set to `google` (Google Vertex AI), do not set `url` (or `streaming_url`).\nAt least one of `url` or `streaming_url` must be provided for Google Model Garden endpoint usage.",
+            "description": "The URL for non-streaming `completion` requests to a Google Model Garden provider endpoint.\nIf both `url` and `streaming_url` are provided, each is used for its respective mode.\nIf `streaming_url` is not provided, `url` is also used for streaming `completion` and `chat_completion`.\nIf `provider` is not provided or set to `google` (Google Vertex AI), do not set `url` (or `streaming_url`).\nAt least one of `url` or `streaming_url` must be provided for Google Model Garden endpoint usage.\nCertain providers require separate URLs for streaming and non-streaming operations (e.g., Anthropic, Mistral, AI21). Others support both operation types through a single URL (e.g., Meta, Hugging Face).\nInformation on constructing the URL for various providers can be found in the Google Model Garden documentation for the model, or on the endpoint’s `Sample request` page. The request examples also illustrate the proper formatting for the `url`.",
             "type": "string"
           },
           "streaming_url": {
-            "description": "The URL for streaming `completion` and `chat_completion` requests to a Google Model Garden provider endpoint.\nIf both `streaming_url` and `url` are provided, each is used for its respective mode.\nIf `url` is not provided, `streaming_url` is also used for non-streaming `completion` requests.\nIf `provider` is not provided or set to `google` (Google Vertex AI), do not set `streaming_url` (or `url`).\nAt least one of `streaming_url` or `url` must be provided for Google Model Garden endpoint usage.",
+            "description": "The URL for streaming `completion` and `chat_completion` requests to a Google Model Garden provider endpoint.\nIf both `streaming_url` and `url` are provided, each is used for its respective mode.\nIf `url` is not provided, `streaming_url` is also used for non-streaming `completion` requests.\nIf `provider` is not provided or set to `google` (Google Vertex AI), do not set `streaming_url` (or `url`).\nAt least one of `streaming_url` or `url` must be provided for Google Model Garden endpoint usage.\nCertain providers require separate URLs for streaming and non-streaming operations (e.g., Anthropic, Mistral, AI21). Others support both operation types through a single URL (e.g., Meta, Hugging Face).\nInformation on constructing the URL for various providers can be found in the Google Model Garden documentation for the model, or on the endpoint’s `Sample request` page. The request examples also illustrate the proper formatting for the `streaming_url`.",
             "type": "string"
           },
           "location": {
@@ -67263,7 +67401,11 @@
         "type": "string",
         "enum": [
           "google",
-          "anthropic"
+          "anthropic",
+          "meta",
+          "hugging_face",
+          "mistral",
+          "ai21"
         ]
       },
       "inference._types.GoogleVertexAITaskSettings": {
@@ -69134,7 +69276,7 @@
               },
               "target_field": {
                 "description": "The field that will hold the parsed date.",
-                "default": "`@timestamp`",
+                "default": "@timestamp",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.Field"
@@ -72133,37 +72275,6 @@
             "type": "number"
           }
         }
-      },
-      "ml.evaluate_data_frame.ResponseBody": {
-        "type": "object",
-        "properties": {
-          "classification": {
-            "description": "Evaluation results for a classification analysis.\nIt outputs a prediction that identifies to which of the classes each document belongs.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeClassificationSummary"
-              }
-            ]
-          },
-          "outlier_detection": {
-            "description": "Evaluation results for an outlier detection analysis.\nIt outputs the probability that each document is an outlier.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeOutlierDetectionSummary"
-              }
-            ]
-          },
-          "regression": {
-            "description": "Evaluation results for a regression analysis which outputs a prediction of values.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeRegressionSummary"
-              }
-            ]
-          }
-        },
-        "minProperties": 1,
-        "maxProperties": 1
       },
       "ml.evaluate_data_frame.DataframeClassificationSummary": {
         "type": "object",
@@ -85857,7 +85968,7 @@
       "indices.get_index_template-name": {
         "in": "path",
         "name": "name",
-        "description": "Comma-separated list of index template names used to limit the request. Wildcard (*) expressions are supported.",
+        "description": "Name of index template to retrieve. Wildcard (*) expressions are supported.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -89474,7 +89585,8 @@
                   ]
                 },
                 "timestamp_field": {
-                  "description": "Field containing event timestamp. Default \"@timestamp\"",
+                  "description": "Field containing event timestamp.",
+                  "default": "@timestamp",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Field"

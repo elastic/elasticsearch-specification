@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Update Watcher index settings.
+ *
  * Update settings for the Watcher internal index (`.watches`).
  * Only a subset of settings can be modified.
  * This includes `index.auto_expand_replicas`, `index.number_of_replicas`, `index.routing.allocation.exclude.*`,

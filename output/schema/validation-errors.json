@@ -1,7 +1,14 @@
 {
-  "endpointErrors": {},
+  "endpointErrors": {
+    "monitoring.bulk": {
+      "request": [
+        "Request: different number of urls in the json spec",
+        "Request: missing json spec path parameter 'type'"
+      ],
+      "response": []
+    }
+  },
   "generalErrors": [
-    "ResponseBody is present in multiple namespaces: _global.search and ml.evaluate_data_frame",
     "Dangling type '_global.scripts_painless_execute:PainlessExecutionPosition'",
     "Dangling type '_global.scripts_painless_execute:PainlessScript'",
     "Dangling type '_global.search._types:HitMetadata'",

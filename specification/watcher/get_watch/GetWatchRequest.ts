@@ -22,6 +22,7 @@ import { Name } from '@_types/common'
 
 /**
  * Get a watch.
+ *
  * @rest_spec_name watcher.get_watch
  * @availability stack since=5.6.0 stability=stable
  * @cluster_privileges monitor_watcher

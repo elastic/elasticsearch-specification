@@ -21,6 +21,7 @@ import { integer } from '@_types/Numeric'
 
 /**
  * Get search applications.
+ *
  * Get information about search applications.
  * @rest_spec_name search_application.list
  * @availability stack since=8.8.0 stability=beta

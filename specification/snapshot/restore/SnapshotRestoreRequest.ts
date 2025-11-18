@@ -24,6 +24,7 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * Restore a snapshot.
+ *
  * Restore a snapshot of a cluster or data streams and indices.
  *
  * You can restore a snapshot only to a running cluster with an elected master node.

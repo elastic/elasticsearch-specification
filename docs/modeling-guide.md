@@ -601,6 +601,18 @@ class Foo {
 }
 ```
 
+If you need an `@` sign, you can escape it:
+
+```ts
+class Foo {
+  /**
+   * Field containing event timestamp.
+   * @server_default \@timestamp
+   */
+  timestamp_field?: Field
+}
+```
+
 #### `@doc_id`
 
 An identifier that can be used for generating the doc url in clients.

@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Ping the cluster.
+ *
  * Get information about whether the cluster is running.
  * @rest_spec_name ping
  * @availability stack stability=stable
