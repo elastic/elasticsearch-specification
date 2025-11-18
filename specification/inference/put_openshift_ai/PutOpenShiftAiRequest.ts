@@ -66,6 +66,8 @@ export interface Request extends RequestBase {
   body: {
     /**
      * The chunking configuration object.
+     * Applies only to the `text_embedding` task type.
+     * Not applicable to the `rerank`, `completion`, or `chat_completion` task types.
      * @ext_doc_id inference-chunking
      */
     chunking_settings?: InferenceChunkingSettings
@@ -79,6 +81,8 @@ export interface Request extends RequestBase {
     service_settings: OpenShiftAiServiceSettings
     /**
      * Settings to configure the inference task.
+     * Applies only to the `rerank` task type.
+     * Not applicable to the `text_embedding`, `completion`, or `chat_completion` task types.
      * These settings are specific to the task type you specified.
      */
     task_settings?: OpenShiftAiTaskSettings

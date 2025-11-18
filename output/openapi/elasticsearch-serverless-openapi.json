@@ -14637,7 +14637,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -14661,7 +14661,7 @@
                     ]
                   },
                   "task_settings": {
-                    "description": "Settings to configure the inference task.\nThese settings are specific to the task type you specified.",
+                    "description": "Settings to configure the inference task.\nApplies only to the `rerank` task type.\nNot applicable to the `text_embedding`, `completion`, or `chat_completion` task types.\nThese settings are specific to the task type you specified.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.OpenShiftAiTaskSettings"
@@ -14712,6 +14712,33 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoOpenShiftAi"
+                },
+                "examples": {
+                  "PutOpenShiftAiResponseExample1": {
+                    "summary": "A text embedding task",
+                    "description": "A successful response when creating an OpenShift AI `text_embedding` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"openshift-ai-text-embedding\",\n  \"task_type\": \"text_embedding\",\n  \"service\": \"openshift_ai\",\n  \"service_settings\": {\n    \"model_id\": \"gritlm-7b\",\n    \"url\": \"openshift-ai-embeddings-url\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    },\n    \"dimensions\": 4096,\n    \"similarity\": \"dot_product\",\n    \"dimensions_set_by_user\": false\n  },\n  \"chunking_settings\": {\n    \"strategy\": \"sentence\",\n    \"max_chunk_size\": 250,\n    \"sentence_overlap\": 1\n  }\n}"
+                  },
+                  "PutOpenShiftAiResponseExample2": {
+                    "summary": "A completion task",
+                    "description": "A successful response when creating an OpenShift AI `completion` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"openshift-ai-completion\",\n  \"task_type\": \"completion\",\n  \"service\": \"openshift_ai\",\n  \"service_settings\": {\n    \"model_id\": \"llama-31-8b-instruct\",\n    \"url\": \"openshift-ai-completion-url\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
+                  },
+                  "PutOpenShiftAiResponseExample3": {
+                    "summary": "A chat completion task",
+                    "description": "A successful response when creating an OpenShift AI `chat_completion` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"openshift-ai-chat-completion\",\n  \"task_type\": \"chat_completion\",\n  \"service\": \"openshift_ai\",\n  \"service_settings\": {\n    \"model_id\": \"llama-31-8b-instruct\",\n    \"url\": \"openshift-ai-chat-completion-url\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
+                  },
+                  "PutOpenShiftAiResponseExample4": {
+                    "summary": "A rerank task",
+                    "description": "A successful response when creating an OpenShift AI `rerank` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"openshift-ai-rerank\",\n  \"task_type\": \"rerank\",\n  \"service\": \"openshift_ai\",\n  \"service_settings\": {\n    \"model_id\": \"bge-reranker-v2-m3\",\n    \"url\": \"openshift-ai-rerank-url\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
+                  },
+                  "PutOpenShiftAiResponseExample5": {
+                    "summary": "A rerank task with custom `task_settings` and omitted `model_id`",
+                    "description": "A successful response when creating an OpenShift AI `rerank` inference endpoint with custom `task_settings` and omitted `model_id`",
+                    "value": "{\n  \"inference_id\": \"openshift-ai-rerank\",\n  \"task_type\": \"rerank\",\n  \"service\": \"openshift_ai\",\n  \"service_settings\": {\n    \"url\": \"openshift-ai-rerank-url\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  },\n  \"task_settings\": {\n    \"return_documents\": true,\n    \"top_n\": 2\n  }\n}"
+                  }
                 }
               }
             }
