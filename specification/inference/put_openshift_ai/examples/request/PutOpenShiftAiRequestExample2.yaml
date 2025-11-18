@@ -1,0 +1,15 @@
+summary: A completion task
+description:
+  Run `PUT _inference/completion/openshift-ai-completion` to create an inference endpoint
+  that performs a `completion` task.
+method_request: 'PUT _inference/completion/openshift-ai-completion'
+# type: "request"
+value: |-
+  {
+      "service": "openshift_ai",
+      "service_settings": {
+          "url": "openshift-ai-completion-url",
+          "api_key": "openshift-ai-completion-token",
+          "model_id": "llama-31-8b-instruct"
+      }
+  }

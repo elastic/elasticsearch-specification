@@ -1,0 +1,22 @@
+summary: A rerank task with custom `task_settings` and omitted `model_id`
+description:
+  A successful response when creating an OpenShift AI `rerank` inference endpoint
+  with custom `task_settings` and omitted `model_id`
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "openshift-ai-rerank",
+    "task_type": "rerank",
+    "service": "openshift_ai",
+    "service_settings": {
+      "url": "openshift-ai-rerank-url",
+      "rate_limit": {
+        "requests_per_minute": 3000
+      }
+    },
+    "task_settings": {
+      "return_documents": true,
+      "top_n": 2
+    }
+  }

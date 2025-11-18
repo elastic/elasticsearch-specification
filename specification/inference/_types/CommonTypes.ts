@@ -1848,6 +1848,68 @@ export enum OpenAIServiceType {
   openai
 }
 
+export class OpenShiftAiServiceSettings {
+  /**
+   * A valid API key for your OpenShift AI endpoint.
+   * Can be found in `Token authentication` section of model related information.
+   */
+  api_key: string
+  /**
+   * The URL of the OpenShift AI hosted model endpoint.
+   */
+  url: string
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the hosted model's documentation for the name if needed.
+   * Service has been tested and confirmed to be working with the following models:
+   * * For `text_embedding` task - `gritlm-7b`.
+   * * For `completion` and `chat_completion` tasks - `llama-31-8b-instruct`.
+   * * For `rerank` task - `bge-reranker-v2-m3`.
+   */
+  model_id?: string
+  /**
+   * For a `text_embedding` task, the maximum number of tokens per input before chunking occurs.
+   */
+  max_input_tokens?: integer
+  /**
+   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
+   */
+  similarity?: OpenShiftAiSimilarityType
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from the OpenShift AI API.
+   * By default, the `openshift_ai` service sets the number of requests allowed per minute to 3000.
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export enum OpenShiftAiTaskType {
+  text_embedding,
+  completion,
+  chat_completion,
+  rerank
+}
+
+export enum OpenShiftAiServiceType {
+  openshift_ai
+}
+
+export enum OpenShiftAiSimilarityType {
+  cosine,
+  dot_product,
+  l2_norm
+}
+
+export class OpenShiftAiTaskSettings {
+  /**
+   * For a `rerank` task, whether to return the source documents in the response.
+   */
+  return_documents?: boolean
+  /**
+   * For a `rerank` task, the number of most relevant documents to return.
+   */
+  top_n?: integer
+}
+
 export class VoyageAIServiceSettings {
   /**
    * The number of dimensions for resulting output embeddings.
