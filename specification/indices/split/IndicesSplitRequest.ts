@@ -26,6 +26,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Split an index.
+ *
  * Split an index into a new index with more primary shards.
  * * Before you can split an index:
  *

@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Get the basic license status.
+ *
  * @rest_spec_name license.get_basic_status
  * @availability stack since=6.3.0 stability=stable
  * @cluster_privileges monitor

@@ -23,6 +23,7 @@ import { CalendarEvent } from '../_types/CalendarEvent'
 
 /**
  * Add scheduled events to the calendar.
+ *
  * @rest_spec_name ml.post_calendar_events
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public

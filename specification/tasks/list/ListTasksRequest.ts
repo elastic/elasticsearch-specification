@@ -24,6 +24,7 @@ import { GroupBy } from '@tasks/_types/GroupBy'
 
 /**
  * Get all tasks.
+ *
  * Get information about the tasks currently running on one or more nodes in the cluster.
  *
  * WARNING: The task management API is new and should still be considered a beta feature.

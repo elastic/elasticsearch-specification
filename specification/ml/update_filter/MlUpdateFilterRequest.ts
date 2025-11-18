@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Update a filter.
+ *
  * Updates the description of a filter, adds items, or removes items from the list.
  * @rest_spec_name ml.update_filter
  * @availability stack since=6.4.0 stability=stable

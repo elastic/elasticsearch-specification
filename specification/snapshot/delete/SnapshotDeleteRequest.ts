@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete snapshots.
+ *
  * @rest_spec_name snapshot.delete
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private

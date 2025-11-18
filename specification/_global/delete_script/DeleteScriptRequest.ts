@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete a script or search template.
+ *
  * Deletes a stored script or search template.
  * @rest_spec_name delete_script
  * @availability stack stability=stable

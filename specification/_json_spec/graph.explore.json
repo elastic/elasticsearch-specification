@@ -26,7 +26,7 @@
     },
     "params": {
       "routing": {
-        "type": "string",
+        "type": "list",
         "description": "Specific routing value"
       },
       "timeout": {

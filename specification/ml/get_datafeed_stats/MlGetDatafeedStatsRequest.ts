@@ -22,6 +22,7 @@ import { Ids } from '@_types/common'
 
 /**
  * Get datafeed stats.
+ *
  * You can get statistics for multiple datafeeds in a single API request by
  * using a comma-separated list of datafeeds or a wildcard expression. You can
  * get statistics for all datafeeds by using `_all`, by specifying `*` as the

@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Get information.
+ *
  * The information provided by the API includes:
  *
  * * Build information including the build number and timestamp.

@@ -24,6 +24,7 @@ import { DataStreamFailureStore } from '@indices/_types/DataStreamFailureStore'
 
 /**
  * Update data stream options.
+ *
  * Update the data stream options of the specified data streams.
  * @rest_spec_name indices.put_data_stream_options
  * @availability stack since=8.19.0 stability=stable

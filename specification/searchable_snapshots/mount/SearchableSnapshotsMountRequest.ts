@@ -25,6 +25,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Mount a snapshot.
+ *
  * Mount a snapshot as a searchable snapshot index.
  * Do not use this API for snapshots managed by index lifecycle management (ILM).
  * Manually mounting ILM-managed snapshots can interfere with ILM processes.

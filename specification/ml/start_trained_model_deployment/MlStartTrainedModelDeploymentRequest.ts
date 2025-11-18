@@ -29,6 +29,7 @@ import {
 
 /**
  * Start a trained model deployment.
+ *
  * It allocates the model to every machine learning node.
  * @rest_spec_name ml.start_trained_model_deployment
  * @availability stack since=8.0.0 stability=stable

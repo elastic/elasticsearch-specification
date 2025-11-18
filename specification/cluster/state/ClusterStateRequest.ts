@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get the cluster state.
+ *
  * Get comprehensive information about the state of the cluster.
  *
  * The cluster state is an internal data structure which keeps track of a variety of information needed by every node, including the identity and attributes of the other nodes in the cluster; cluster-wide settings; index metadata, including the mapping and settings for each index; the location and status of every shard copy in the cluster.

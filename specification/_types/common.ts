@@ -49,7 +49,7 @@ export type Uri = string
 export type ScrollId = string
 export type ScrollIds = ScrollId | ScrollId[]
 
-export type CategoryId = string
+export type CategoryId = long
 export type ActionIds = string // TODO: check if this should be an array of ActionId
 
 export type Id = string
@@ -65,7 +65,7 @@ export type IndexPatterns = IndexPattern[]
 
 export type ProjectRouting = string
 
-export type Routing = string
+export type Routing = string | string[]
 export type LongId = string
 
 export type ClusterAlias = string
