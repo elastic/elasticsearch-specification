@@ -87963,7 +87963,7 @@
         "description": "Search operation type",
         "deprecated": false,
         "schema": {
-          "type": "string"
+          "$ref": "#/components/schemas/_types.SearchType"
         },
         "style": "form"
       },

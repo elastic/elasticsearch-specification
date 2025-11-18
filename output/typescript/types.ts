@@ -964,7 +964,7 @@ export interface RankEvalRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
-  search_type?: string
+  search_type?: SearchType
   body?: {
     requests: RankEvalRankEvalRequestItem[]
     metric?: RankEvalRankEvalMetric
