@@ -2225,7 +2225,7 @@ export interface CartesianPoint {
   y: double
 }
 
-export type CategoryId = string
+export type CategoryId = long
 
 export interface ChunkRescorer {
   size?: integer
@@ -15813,7 +15813,7 @@ export interface IngestPutPipelineRequest extends RequestBase {
   id: Id
   master_timeout?: Duration
   timeout?: Duration
-  if_version?: VersionNumber
+  if_version?: integer
   body?: {
     _meta?: Metadata
     description?: string

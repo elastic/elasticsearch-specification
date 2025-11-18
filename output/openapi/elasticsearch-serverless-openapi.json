@@ -15351,7 +15351,7 @@
             "description": "Required version for optimistic concurrency control for pipeline updates",
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types.VersionNumber"
+              "type": "number"
             },
             "style": "form"
           }
