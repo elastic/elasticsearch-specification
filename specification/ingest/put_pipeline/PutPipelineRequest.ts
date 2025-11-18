@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id, Metadata, VersionNumber } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { FieldAccessPattern } from '@ingest/_types/Pipeline'
 import { ProcessorContainer } from '@ingest/_types/Processors'
@@ -59,7 +60,7 @@ export interface Request extends RequestBase {
     /**
      * Required version for optimistic concurrency control for pipeline updates
      */
-    if_version?: VersionNumber
+    if_version?: integer
   }
   body: {
     /**
