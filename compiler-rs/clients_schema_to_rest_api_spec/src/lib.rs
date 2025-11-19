@@ -264,6 +264,25 @@ fn is_list_enum(union: &UnionOf) -> Option<TypeName> {
     return None;
 }
 
+fn is_index_name_and_alias(union: &UnionOf) -> bool {
+    // Fleet APIs use IndexName | IndexAlias for index in path
+    if union.items.len() == 2 {
+        let mut has_index_name = false;
+        let mut has_index_alias = false;
+        for item in &union.items {
+            if let ValueOf::InstanceOf(instance) = item {
+                if instance.typ == TypeName::new("_types", "IndexName") {
+                    has_index_name = true;
+                } else if instance.typ == TypeName::new("_types", "IndexAlias") {
+                    has_index_alias = true;
+                }
+            }
+        }
+        return has_index_name && has_index_alias;
+    }
+    false
+}
+
 fn is_literal(instance: &InstanceOf) -> Option<String> {
     let key = (instance.typ.namespace.as_str(), instance.typ.name.as_str());
     if let Some(&mapped_type) = BUILTIN_MAPPINGS.iter().find(|&&(k, _)| k == key).map(|(_, v)| v) {
@@ -279,6 +298,8 @@ fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>)
         ValueOf::ArrayOf(_) => "list".to_string(),
         ValueOf::UnionOf(union) => if let Some(_) = is_list_enum(union) {
             "list"
+        } else if is_index_name_and_alias(union) {
+            "string"
         } else {
             tracing::warn!("{:?}", union);
             todo!()
