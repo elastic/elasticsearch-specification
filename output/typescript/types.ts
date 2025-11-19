@@ -22706,7 +22706,7 @@ export interface TextStructureFindMessageStructureResponse {
 
 export interface TextStructureFindStructureRequest<TJsonDocument = unknown> {
   charset?: string
-  column_names?: string
+  column_names?: string | string[]
   delimiter?: string
   ecs_compatibility?: string
   explain?: boolean
