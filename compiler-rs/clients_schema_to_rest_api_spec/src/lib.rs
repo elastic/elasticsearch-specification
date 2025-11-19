@@ -329,11 +329,11 @@ fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>)
                                 return literal;
                             }
                         }
-                        _ => todo!(),
+                        _ => panic!("Expected UnionOf or InstanceOf but got {:?}", alias.typ),
                     },
                     _ => panic!("Expected TypeAlias but got {:?}", full_type),
                 }
-                return "???".to_string();
+                panic!("Unhandled type: {:?}", full_type);
             }
         }
         _ => todo!(),
