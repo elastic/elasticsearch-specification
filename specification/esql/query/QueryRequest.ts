@@ -26,6 +26,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Run an ES|QL query.
+ *
  * Get search results for an ES|QL (Elasticsearch query language) query.
  * @rest_spec_name esql.query
  * @availability stack since=8.11.0

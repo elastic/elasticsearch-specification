@@ -25,6 +25,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Bulk update API keys.
+ *
  * Update the attributes for multiple API keys.
  *
  * IMPORTANT: It is not possible to use an API key as the authentication credential for this API. To update API keys, the owner user's credentials are required.

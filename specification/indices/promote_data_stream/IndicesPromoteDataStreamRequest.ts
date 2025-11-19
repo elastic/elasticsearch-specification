@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Promote a data stream.
+ *
  * Promote a data stream from a replicated data stream managed by cross-cluster replication (CCR) to a regular data stream.
  *
  * With CCR auto following, a data stream from a remote cluster can be replicated to the local cluster.

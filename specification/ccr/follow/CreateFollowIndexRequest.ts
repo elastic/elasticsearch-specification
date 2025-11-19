@@ -25,6 +25,7 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * Create a follower.
+ *
  * Create a cross-cluster replication follower index that follows a specific leader index.
  * When the API returns, the follower index exists and cross-cluster replication starts replicating operations from the leader index to the follower index.
  * @rest_spec_name ccr.follow

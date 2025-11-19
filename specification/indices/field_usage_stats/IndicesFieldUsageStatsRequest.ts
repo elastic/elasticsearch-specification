@@ -22,6 +22,7 @@ import { ExpandWildcards, Fields, Indices } from '@_types/common'
 
 /**
  * Get field usage stats.
+ *
  * Get field usage information for each shard and field of an index.
  * Field usage statistics are automatically captured when queries are running on a cluster.
  * A shard-level search request that accesses a given field, even if multiple times during that request, is counted as a single use.

@@ -23,6 +23,7 @@ import { StatsLevel } from '../_types/stats'
 
 /**
  * Get searchable snapshot statistics.
+ *
  * @rest_spec_name searchable_snapshots.stats
  * @availability stack since=7.10.0 stability=stable
  * @cluster_privileges manage

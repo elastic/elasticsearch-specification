@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get enrich stats.
+ *
  * Returns enrich coordinator statistics and information about enrich policies that are currently executing.
  * @rest_spec_name enrich.stats
  * @availability stack since=7.5.0 stability=stable

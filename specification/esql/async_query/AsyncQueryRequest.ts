@@ -27,6 +27,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Run an async ES|QL query.
+ *
  * Asynchronously run an ES|QL (Elasticsearch query language) query, monitor its progress, and retrieve results when they become available.
  *
  * The API accepts the same parameters and request body as the synchronous query API, along with additional async related properties.

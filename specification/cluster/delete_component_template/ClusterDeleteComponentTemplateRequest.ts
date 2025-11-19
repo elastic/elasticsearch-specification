@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete component templates.
+ *
  * Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.
  * @rest_spec_name cluster.delete_component_template
  * @availability stack since=7.8.0 stability=stable

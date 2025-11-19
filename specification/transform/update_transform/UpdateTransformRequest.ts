@@ -30,6 +30,7 @@ import {
 
 /**
  * Update a transform.
+ *
  * Updates certain properties of a transform.
  *
  * All updated properties except `description` do not take effect until after the transform starts the next checkpoint,

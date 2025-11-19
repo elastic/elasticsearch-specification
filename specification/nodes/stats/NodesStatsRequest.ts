@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get node statistics.
+ *
  * Get statistics for nodes in a cluster.
  * By default, all stats are returned. You can limit the returned information by using metrics.
  * @rest_spec_name nodes.stats

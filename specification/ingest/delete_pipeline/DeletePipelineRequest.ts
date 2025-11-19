@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete pipelines.
+ *
  * Delete one or more ingest pipelines.
  * @rest_spec_name ingest.delete_pipeline
  * @availability stack since=5.0.0 stability=stable

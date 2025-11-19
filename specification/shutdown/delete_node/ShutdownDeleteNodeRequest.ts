@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Cancel node shutdown preparations.
+ *
  * Remove a node from the shutdown list so it can resume normal operations.
  * You must explicitly clear the shutdown request when a node rejoins the cluster or when a node has permanently left the cluster.
  * Shutdown requests are never removed automatically by Elasticsearch.

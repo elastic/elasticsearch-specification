@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get the snapshot status.
+ *
  * Get a detailed description of the current state for each shard participating in the snapshot.
  *
  * Note that this API should be used only to obtain detailed shard-level information for ongoing snapshots.

@@ -26,6 +26,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Clone an index.
+ *
  * Clone an existing index into a new index.
  * Each original primary shard is cloned into a new primary shard in the new index.
  *

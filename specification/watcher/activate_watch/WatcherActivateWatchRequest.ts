@@ -22,6 +22,7 @@ import { Name } from '@_types/common'
 
 /**
  * Activate a watch.
+ *
  * A watch can be either active or inactive.
  * @rest_spec_name watcher.activate_watch
  * @availability stack stability=stable

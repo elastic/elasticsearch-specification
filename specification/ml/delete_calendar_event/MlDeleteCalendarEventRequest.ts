@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Delete events from a calendar.
+ *
  * @rest_spec_name ml.delete_calendar_event
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public

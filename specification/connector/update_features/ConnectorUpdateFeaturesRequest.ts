@@ -22,6 +22,7 @@ import { ConnectorFeatures } from '../_types/Connector'
 
 /**
  * Update the connector features.
+ *
  * Update the connector features in the connector document.
  * This API can be used to control the following aspects of a connector:
  *

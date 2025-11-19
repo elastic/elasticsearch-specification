@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Check component templates.
+ *
  * Returns information about whether a particular component template exists.
  * @rest_spec_name cluster.exists_component_template
  * @availability stack since=7.8.0 stability=stable
