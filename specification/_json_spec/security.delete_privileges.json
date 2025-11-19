@@ -20,8 +20,8 @@
               "description": "Application name"
             },
             "name": {
-              "type": "string",
-              "description": "Privilege name"
+              "type": "list",
+              "description": "Comma-separated list of privilege names."
             }
           }
         }

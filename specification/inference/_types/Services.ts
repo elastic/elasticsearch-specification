@@ -41,6 +41,7 @@ import {
   TaskTypeLlama,
   TaskTypeMistral,
   TaskTypeOpenAI,
+  TaskTypeOpenShiftAi,
   TaskTypeVoyageAI,
   TaskTypeWatsonx
 } from '../_types/TaskType'
@@ -302,6 +303,17 @@ export class InferenceEndpointInfoOpenAI extends InferenceEndpoint {
   task_type: TaskTypeOpenAI
 }
 
+export class InferenceEndpointInfoOpenShiftAi extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeOpenShiftAi
+}
+
 export class InferenceEndpointInfoVoyageAI extends InferenceEndpoint {
   /**
    * The inference Id
@@ -413,6 +425,7 @@ export class RateLimitSetting {
    * * `mistral` service: `240`
    * * `openai` service and task type `text_embedding`: `3000`
    * * `openai` service and task type `completion`: `500`
+   * * `openshift_ai` service: `3000`
    * * `voyageai` service: `2000`
    * * `watsonxai` service: `120`
    */
