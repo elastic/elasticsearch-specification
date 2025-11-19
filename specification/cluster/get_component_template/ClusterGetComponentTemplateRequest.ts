@@ -45,7 +45,7 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * Comma-separated list of component template names used to limit the request.
+     * The name of the component template.
      * Wildcard (`*`) expressions are supported.
      */
     name?: Name
