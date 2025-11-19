@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Explain the lifecycle state.
+ *
  * Get the current lifecycle status for one or more indices.
  * For data streams, the API retrieves the current lifecycle status for the stream's backing indices.
  *

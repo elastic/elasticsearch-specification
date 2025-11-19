@@ -21,6 +21,7 @@ import { Id, IndexName } from '@_types/common'
 
 /**
  * Create or update a connector.
+ *
  * @rest_spec_name connector.put
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public

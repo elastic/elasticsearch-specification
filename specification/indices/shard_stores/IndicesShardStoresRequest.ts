@@ -23,6 +23,7 @@ import { ShardStoreStatus } from './types'
 
 /**
  * Get index shard stores.
+ *
  * Get store information about replica shards in one or more indices.
  * For data streams, the API retrieves store information for the stream's backing indices.
  *

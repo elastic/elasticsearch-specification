@@ -24,6 +24,7 @@ import { Page } from '@ml/_types/Page'
 
 /**
  * Get calendar configuration info.
+ *
  * @rest_spec_name ml.get_calendars
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public

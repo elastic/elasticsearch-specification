@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Start the ILM plugin.
+ *
  * Start the index lifecycle management plugin if it is currently stopped.
  * ILM is started automatically when the cluster is formed.
  * Restarting ILM is necessary only when it has been stopped using the stop ILM API.

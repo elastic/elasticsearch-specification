@@ -23,6 +23,7 @@ import { integer } from '@_types/Numeric'
 
 /**
  * Update a data frame analytics job.
+ *
  * @rest_spec_name ml.update_data_frame_analytics
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public

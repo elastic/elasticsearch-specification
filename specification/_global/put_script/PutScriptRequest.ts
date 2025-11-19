@@ -24,6 +24,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Create or update a script or search template.
+ *
  * Creates or updates a stored script or search template.
  * @rest_spec_name put_script
  * @availability stack stability=stable

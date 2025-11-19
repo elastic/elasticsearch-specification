@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get policy information.
+ *
  * Get snapshot lifecycle policy definitions and information about the latest snapshot attempts.
  * @rest_spec_name slm.get_lifecycle
  * @availability stack since=7.4.0 stability=stable

@@ -24,6 +24,7 @@ import { EcsCompatibilityType, FormatType } from '../_types/Structure'
 
 /**
  * Find the structure of text messages.
+ *
  * Find the structure of a list of text messages.
  * The messages must contain data that is suitable to be ingested into Elasticsearch.
  *

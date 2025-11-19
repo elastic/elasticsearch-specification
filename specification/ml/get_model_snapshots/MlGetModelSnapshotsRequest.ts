@@ -25,6 +25,7 @@ import { Page } from '@ml/_types/Page'
 
 /**
  * Get model snapshots info.
+ *
  * @rest_spec_name ml.get_model_snapshots
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=private

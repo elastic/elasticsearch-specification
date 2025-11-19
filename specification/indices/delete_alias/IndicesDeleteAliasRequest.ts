@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete an alias.
+ *
  * Removes a data stream or index from an alias.
  * @rest_spec_name indices.delete_alias
  * @availability stack stability=stable

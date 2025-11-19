@@ -28,6 +28,7 @@ import { RolloverConditions } from './types'
 
 /**
  * Roll over to a new index.
+ *
  * TIP: It is recommended to use the index lifecycle rollover action to automate rollovers.
  *
  * The rollover API creates a new index for a data stream or index alias.

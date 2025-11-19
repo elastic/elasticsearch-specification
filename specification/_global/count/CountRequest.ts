@@ -25,6 +25,7 @@ import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * Count search results.
+ *
  * Get the number of documents matching a query.
  *
  * The query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.

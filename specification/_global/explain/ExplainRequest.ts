@@ -25,6 +25,7 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * Explain a document match result.
+ *
  * Get information about why a specific document matches, or doesn't match, a query.
  * It computes a score explanation for a query and a specific document.
  * @rest_spec_name explain

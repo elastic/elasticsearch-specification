@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get index templates.
+ *
  * Get information about one or more index templates.
  * @rest_spec_name indices.get_index_template
  * @availability stack since=7.9.0 stability=stable

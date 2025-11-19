@@ -26,6 +26,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Get SQL search results.
+ *
  * Run an SQL request.
  * @rest_spec_name sql.query
  * @availability stack since=6.3.0 stability=stable

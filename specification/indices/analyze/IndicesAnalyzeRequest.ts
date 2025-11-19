@@ -26,6 +26,7 @@ import { TextToAnalyze } from './types'
 
 /**
  * Get tokens from text analysis.
+ *
  * The analyze API performs analysis on a text string and returns the resulting tokens.
  *
  * Generating excessive amount of tokens may cause a node to run out of memory.
