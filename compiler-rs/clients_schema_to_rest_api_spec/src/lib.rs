@@ -44,7 +44,7 @@ pub fn convert_schema_to_individual_files(model: IndexedModel, output_dir: &str)
 fn convert_endpoint(endpoint: &SchemaEndpoint, types: &IndexMap<TypeName, TypeDefinition>) -> Result<Endpoint> {
     // Extract documentation
     let documentation = Documentation {
-        url: endpoint.doc_url.clone().unwrap_or_default(),
+        url: endpoint.doc_url.clone(),
         description: if endpoint.description.is_empty() {
             None
         } else {
