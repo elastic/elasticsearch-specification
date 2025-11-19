@@ -76,4 +76,36 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
+  body?: {
+    /**
+     * If provided, must be the same identifier as in the path.
+     */
+    id?: Id,
+    /**
+     * Specifies what to do when the request:
+     *
+     * 1. Contains wildcard expressions and there are no data frame analytics
+     * jobs that match.
+     * 2. Contains the _all string or no identifiers and there are no matches.
+     * 3. Contains wildcard expressions and there are only partial matches.
+     *
+     * The default value is true, which returns an empty data_frame_analytics
+     * array when there are no matches and the subset of results when there are
+     * partial matches. If this parameter is false, the request returns a 404
+     * status code when there are no matches or only partial matches.
+     * @server_default true
+     */
+    allow_no_match?: boolean
+    /**
+     * If true, the data frame analytics job is stopped forcefully.
+     * @server_default false
+     */
+    force?: boolean
+    /**
+     * Controls the amount of time to wait until the data frame analytics job
+     * stops. Defaults to 20 seconds.
+     * @server_default 20s
+     */
+    timeout?: Duration
+  }
 }
