@@ -45,7 +45,7 @@ def remove_descriptions(key, obj):
     """Recursively remove 'description' fields from JSON object."""
     if isinstance(obj, dict):
         return {
-            k: remove_descriptions(k, v) for k, v in obj.items() if k != "description"
+            k: remove_descriptions(k, v) for k, v in obj.items() if k != "description" and k != "feature_flag"
         }
     elif isinstance(obj, list):
         if key == "options":
@@ -135,18 +135,15 @@ def main():
         relative_path = spec_file.relative_to(spec_dir)
         output_file = output_dir / relative_path
 
-        print(f"Comparing: {relative_path}")
         diff = compare_json_files(spec_file, output_file)
 
         if diff:
             print(f"✗ Differences found in {relative_path}")
             for line in diff:
                 print(line.rstrip("\n"))
-                if line.startswith("+") or line.startswith("-"):
+                if line.startswith("+ ") or line.startswith("- "):
                     total_diffs += 1
             print("-" * 80)
-        else:
-            print(f"✓ No differences in {relative_path}")
 
     print(f"\nTotal differences found: {total_diffs}")
 
