@@ -11556,7 +11556,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Perform chat completion inference\n",
+        "summary": "Perform chat completion inference",
         "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.\nIt only works with the `chat_completion` task type for `openai` and `elastic` inference services.\n\nNOTE: The `chat_completion` task type is only available within the _stream API and only supports streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nIf you use the `openai`, `hugging_face` or the `elastic` service, use the Chat completion inference API.",
         "operationId": "inference-chat-completion-unified",
         "parameters": [
@@ -11743,7 +11743,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint\n",
+        "summary": "Get an inference endpoint",
         "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get-1",
         "parameters": [
@@ -11830,7 +11830,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Delete an inference endpoint\n",
+        "summary": "Delete an inference endpoint",
         "description": "This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).",
         "operationId": "inference-delete",
         "parameters": [
@@ -11863,7 +11863,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint\n",
+        "summary": "Get an inference endpoint",
         "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get-2",
         "parameters": [
@@ -11959,7 +11959,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Delete an inference endpoint\n",
+        "summary": "Delete an inference endpoint",
         "description": "This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).",
         "operationId": "inference-delete-1",
         "parameters": [
@@ -11995,7 +11995,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint\n",
+        "summary": "Get an inference endpoint",
         "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get",
         "responses": {
@@ -22569,8 +22569,8 @@
         "tags": [
           "project"
         ],
-        "summary": "Return tags defined for the project",
-        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "summary": "Get tags",
+        "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "project-tags",
         "responses": {
           "200": {
