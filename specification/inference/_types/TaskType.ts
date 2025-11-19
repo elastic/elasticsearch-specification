@@ -142,6 +142,13 @@ export enum TaskTypeOpenAI {
   completion
 }
 
+export enum TaskTypeOpenShiftAi {
+  text_embedding,
+  chat_completion,
+  completion,
+  rerank
+}
+
 export enum TaskTypeVoyageAI {
   text_embedding,
   rerank
