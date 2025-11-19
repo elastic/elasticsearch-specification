@@ -172,7 +172,7 @@ fn convert_parameter(property: &Property, types: &IndexMap<TypeName, TypeDefinit
     let typ = get_type_name(&property.typ, types).to_string();
     let options = get_enum_options(&property.typ, types);
 
-    let default = property.server_default.as_ref().map(|default| match default {
+    let mut default = property.server_default.as_ref().map(|default| match default {
         clients_schema::ServerDefault::String(s) => serde_json::Value::String(s.clone()),
         clients_schema::ServerDefault::Number(n) => serde_json::Value::from(*n as i64),
         clients_schema::ServerDefault::Boolean(b) => serde_json::Value::Bool(*b),
@@ -183,6 +183,14 @@ fn convert_parameter(property: &Property, types: &IndexMap<TypeName, TypeDefinit
             serde_json::Value::Array(arr.iter().map(|s| serde_json::Value::String(s.clone())).collect())
         }
     });
+
+    if typ == "number|string" {
+        // convert default to integer
+        default = default.and_then(|def| match def {
+            serde_json::Value::String(s) => s.parse::<i64>().ok().map(serde_json::Value::from),
+            _ => Some(def),
+        });
+    }
 
     let deprecated = property.deprecation.as_ref().map(|dep| Deprecation {
         version: dep.version.clone(),
@@ -230,6 +238,8 @@ const BUILTIN_MAPPINGS: &[((&str, &str), &str)] = &[
     // hard cases
     (("_types", "WaitForActiveShards"), "string"),
     (("_global.search._types", "TrackHits"), "boolean|long"),
+    (("_types", "Slices"), "number|string"),
+    (("cluster.health", "WaitForNodes"), "string"),
     // sometimes list in rest-api-spec as comma-separate values are allowed
     // but the Elasticsearch specification always models it as a string.
     (("_global.search._types", "SourceConfigParam"), "list"),
