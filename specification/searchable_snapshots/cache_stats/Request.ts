@@ -48,7 +48,4 @@ export interface Request extends RequestBase {
      */
     node_id?: NodeIds
   }
-  query_parameters: {
-    master_timeout?: Duration
-  }
 }
