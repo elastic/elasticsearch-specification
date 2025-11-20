@@ -41,7 +41,21 @@
       "h": {
         "type": "list",
         "default": "['bc', 'id', 'sc', 's']",
-        "description": "Comma-separated list of column names to display"
+        "description": "Comma-separated list of column names to display",
+        "options": [
+          "ae",
+          "bc",
+          "id",
+          "na",
+          "ne",
+          "ni",
+          "nn",
+          "sba",
+          "sc",
+          "seah",
+          "st",
+          "s"
+        ]
       },
       "help": {
         "type": "boolean",
@@ -50,7 +64,21 @@
       },
       "s": {
         "type": "list",
-        "description": "Comma-separated list of column names or column aliases to sort by"
+        "description": "Comma-separated list of column names or column aliases to sort by",
+        "options": [
+          "ae",
+          "bc",
+          "id",
+          "na",
+          "ne",
+          "ni",
+          "nn",
+          "sba",
+          "sc",
+          "seah",
+          "st",
+          "s"
+        ]
       },
       "time": {
         "type": "enum",
