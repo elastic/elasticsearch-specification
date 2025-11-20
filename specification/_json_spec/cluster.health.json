@@ -81,7 +81,7 @@
       },
       "wait_for_status": {
         "type": "enum",
-        "options": ["green", "yellow", "red"],
+        "options": ["green", "yellow", "red", "unknown", "unavailable"],
         "description": "Wait until cluster is in a specific state"
       }
     }
