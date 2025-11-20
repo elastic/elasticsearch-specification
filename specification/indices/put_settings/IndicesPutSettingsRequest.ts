@@ -159,7 +159,8 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  /** Configuration options for the index.
+  /**
+   * Configuration options for the index.
    * @codegen_name settings
    */
   body: IndexSettings
