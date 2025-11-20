@@ -9010,7 +9010,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "The name of the index to explain",
+            "description": "Comma-separated list of index names to explain",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -85062,7 +85062,7 @@
       "eql.search-index": {
         "in": "path",
         "name": "index",
-        "description": "The name of the index to scope the operation",
+        "description": "Comma-separated list of index names to scope the operation",
         "required": true,
         "deprecated": false,
         "schema": {
