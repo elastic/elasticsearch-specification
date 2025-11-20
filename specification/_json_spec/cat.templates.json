@@ -45,7 +45,8 @@
       },
       "h": {
         "type": "list",
-        "description": "Comma-separated list of column names to display"
+        "description": "Comma-separated list of column names to display",
+        "options": ["name", "index_patterns", "order", "version", "composed_of"]
       },
       "help": {
         "type": "boolean",
