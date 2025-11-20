@@ -50,13 +50,13 @@
       },
       "type": {
         "type": "enum",
-        "options": ["cpu", "wait", "block", "mem"],
+        "options": ["cpu", "wait", "block", "gpu", "mem"],
         "default": "cpu",
         "description": "The type to sample (default: cpu)"
       },
       "sort": {
         "type": "enum",
-        "options": ["cpu", "total"],
+        "options": ["cpu", "wait", "block", "gpu", "mem"],
         "description": "The sort order for 'cpu' type (default: total)"
       },
       "timeout": {
