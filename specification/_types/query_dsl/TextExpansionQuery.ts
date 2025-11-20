@@ -28,7 +28,8 @@ export class TextExpansionQuery extends QueryBase {
   model_id: string
   /** The query text */
   model_text: string
-  /** Token pruning configurations
+  /**
+   * Token pruning configurations
    * @availability stack since=8.13.0 stability=experimental
    * @availability serverless stability=experimental
    */

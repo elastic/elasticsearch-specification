@@ -51,12 +51,16 @@ export class CompoundWordTokenFilterBase extends TokenFilterBase {
   min_word_size?: integer
   /** If `true`, only include the longest matching subword. Defaults to `false`. */
   only_longest_match?: boolean
-  /** A list of subwords to look for in the token stream. If found, the subword is included in the token output.
-   * Either this parameter or `word_list_path` must be specified.*/
+  /**
+   * A list of subwords to look for in the token stream. If found, the subword is included in the token output.
+   * Either this parameter or `word_list_path` must be specified.
+   */
   word_list?: string[]
-  /** Path to a file that contains a list of subwords to find in the token stream. If found, the subword is included in the token output.
+  /**
+   * Path to a file that contains a list of subwords to find in the token stream. If found, the subword is included in the token output.
    * This path must be absolute or relative to the config location, and the file must be UTF-8 encoded. Each token in the file must be separated by a line break.
-   * Either this parameter or `word_list` must be specified. */
+   * Either this parameter or `word_list` must be specified.
+   */
   word_list_path?: string
 }
 
@@ -66,8 +70,10 @@ export class DictionaryDecompounderTokenFilter extends CompoundWordTokenFilterBa
 
 export class HyphenationDecompounderTokenFilter extends CompoundWordTokenFilterBase {
   type: 'hyphenation_decompounder'
-  /** Path to an Apache FOP (Formatting Objects Processor) XML hyphenation pattern file.
-   * This path must be absolute or relative to the `config` location. Only FOP v1.2 compatible files are supported. */
+  /**
+   * Path to an Apache FOP (Formatting Objects Processor) XML hyphenation pattern file.
+   * This path must be absolute or relative to the `config` location. Only FOP v1.2 compatible files are supported.
+   */
   hyphenation_patterns_path: string
   /** If `true`, do not match sub tokens in tokens that are in the word list. Defaults to `false`. */
   no_sub_matches?: boolean
@@ -130,8 +136,10 @@ export class StopTokenFilter extends TokenFilterBase {
   remove_trailing?: boolean
   /** Language value, such as `_arabic_` or `_thai_`. Defaults to `_english_`. */
   stopwords?: StopWords
-  /** Path to a file that contains a list of stop words to remove.
-   * This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each stop word in the file must be separated by a line break. */
+  /**
+   * Path to a file that contains a list of stop words to remove.
+   * This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each stop word in the file must be separated by a line break.
+   */
   stopwords_path?: string
 }
 
@@ -153,7 +161,8 @@ export class SynonymTokenFilterBase extends TokenFilterBase {
   synonyms_path?: string
   /** Provide a synonym set created via Synonyms Management APIs. */
   synonyms_set?: string
-  /** Controls the tokenizers that will be used to tokenize the synonym, this parameter is for backwards compatibility for indices that created before 6.0.
+  /**
+   * Controls the tokenizers that will be used to tokenize the synonym, this parameter is for backwards compatibility for indices that created before 6.0.
    * @deprecated 6.0.0 */
   tokenizer?: string
   /** If `true` allows reloading search analyzers to pick up changes to synonym files. Only to be used for search analyzers. Defaults to `false`. */
@@ -183,8 +192,10 @@ export class WordDelimiterTokenFilterBase extends TokenFilterBase {
   preserve_original?: Stringified<boolean>
   /** Array of tokens the filter won’t split. */
   protected_words?: string[]
-  /** Path to a file that contains a list of tokens the filter won’t split.
-   * This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each token in the file must be separated by a line break. */
+  /**
+   * Path to a file that contains a list of tokens the filter won’t split.
+   * This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each token in the file must be separated by a line break.
+   */
   protected_words_path?: string
   /** If `true`, the filter splits tokens at letter case transitions. For example: camelCase -> [ camel, Case ]. Defaults to `true`. */
   split_on_case_change?: boolean
@@ -218,19 +229,25 @@ export class AsciiFoldingTokenFilter extends TokenFilterBase {
 
 export class CommonGramsTokenFilter extends TokenFilterBase {
   type: 'common_grams'
-  /** A list of tokens. The filter generates bigrams for these tokens.
-   * Either this or the `common_words_path` parameter is required. */
+  /**
+   * A list of tokens. The filter generates bigrams for these tokens.
+   * Either this or the `common_words_path` parameter is required.
+   */
   common_words?: string[]
-  /** Path to a file containing a list of tokens. The filter generates bigrams for these tokens.
+  /**
+   * Path to a file containing a list of tokens. The filter generates bigrams for these tokens.
    * This path must be absolute or relative to the `config` location. The file must be UTF-8 encoded. Each token in the file must be separated by a line break.
-   * Either this or the `common_words` parameter is required. */
+   * Either this or the `common_words` parameter is required.
+   */
   common_words_path?: string
   /** If `true`, matches for common words matching are case-insensitive. Defaults to `false`. */
   ignore_case?: boolean
-  /** If `true`, the filter excludes the following tokens from the output:
+  /**
+   * If `true`, the filter excludes the following tokens from the output:
    * - Unigrams for common words
    * - Unigrams for terms followed by common words
-   * Defaults to `false`. We recommend enabling this parameter for search analyzers. */
+   * Defaults to `false`. We recommend enabling this parameter for search analyzers.
+   */
   query_mode?: boolean
 }
 
@@ -244,14 +261,18 @@ export class ConditionTokenFilter extends TokenFilterBase {
 
 export class ElisionTokenFilter extends TokenFilterBase {
   type: 'elision'
-  /** List of elisions to remove.
+  /**
+   * List of elisions to remove.
    * To be removed, the elision must be at the beginning of a token and be immediately followed by an apostrophe. Both the elision and apostrophe are removed.
-   * For custom `elision` filters, either this parameter or `articles_path` must be specified. */
+   * For custom `elision` filters, either this parameter or `articles_path` must be specified.
+   */
   articles?: string[]
-  /** Path to a file that contains a list of elisions to remove.
+  /**
+   * Path to a file that contains a list of elisions to remove.
    * This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each elision in the file must be separated by a line break.
    * To be removed, the elision must be at the beginning of a token and be immediately followed by an apostrophe. Both the elision and apostrophe are removed.
-   * For custom `elision` filters, either this parameter or `articles` must be specified. */
+   * For custom `elision` filters, either this parameter or `articles` must be specified.
+   */
   articles_path?: string
   /** If `true`, elision matching is case insensitive. If `false`, elision matching is case sensitive. Defaults to `false`. */
   articles_case?: Stringified<boolean>
@@ -269,11 +290,15 @@ export class HunspellTokenFilter extends TokenFilterBase {
   type: 'hunspell'
   /** If `true`, duplicate tokens are removed from the filter’s output. Defaults to `true`. */
   dedup?: boolean
-  /** One or more `.dic` files (e.g, `en_US.dic`, my_custom.dic) to use for the Hunspell dictionary.
-   * By default, the `hunspell` filter uses all `.dic` files in the `<$ES_PATH_CONF>/hunspell/<locale>` directory specified using the `lang`, `language`, or `locale` parameter. */
+  /**
+   * One or more `.dic` files (e.g, `en_US.dic`, my_custom.dic) to use for the Hunspell dictionary.
+   * By default, the `hunspell` filter uses all `.dic` files in the `<$ES_PATH_CONF>/hunspell/<locale>` directory specified using the `lang`, `language`, or `locale` parameter.
+   */
   dictionary?: string
-  /** Locale directory used to specify the `.aff` and `.dic` files for a Hunspell dictionary.
-   * @aliases lang, language */
+  /**
+   * Locale directory used to specify the `.aff` and `.dic` files for a Hunspell dictionary.
+   * @aliases lang, language
+   */
   locale: string
   /** If `true`, only the longest stemmed version of each token is included in the output. If `false`, all stemmed versions of the token are included. Defaults to `false`. */
   longest_only?: boolean
@@ -294,14 +319,18 @@ export class KeepTypesTokenFilter extends TokenFilterBase {
 
 export class KeepWordsTokenFilter extends TokenFilterBase {
   type: 'keep'
-  /** List of words to keep. Only tokens that match words in this list are included in the output.
-   * Either this parameter or `keep_words_path` must be specified. */
+  /**
+   * List of words to keep. Only tokens that match words in this list are included in the output.
+   * Either this parameter or `keep_words_path` must be specified.
+   */
   keep_words?: string[]
   /** If `true`, lowercase all keep words. Defaults to `false`. */
   keep_words_case?: boolean
-  /** Path to a file that contains a list of words to keep. Only tokens that match words in this list are included in the output.
+  /**
+   * Path to a file that contains a list of words to keep. Only tokens that match words in this list are included in the output.
    * This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each word in the file must be separated by a line break.
-   * Either this parameter or `keep_words` must be specified. */
+   * Either this parameter or `keep_words` must be specified.
+   */
   keep_words_path?: string
 }
 
@@ -309,15 +338,21 @@ export class KeywordMarkerTokenFilter extends TokenFilterBase {
   type: 'keyword_marker'
   /** If `true`, matching for the `keywords` and `keywords_path` parameters ignores letter case. Defaults to `false`. */
   ignore_case?: boolean
-  /** Array of keywords. Tokens that match these keywords are not stemmed.
-   * This parameter, `keywords_path`, or `keywords_pattern` must be specified. You cannot specify this parameter and `keywords_pattern`. */
+  /**
+   * Array of keywords. Tokens that match these keywords are not stemmed.
+   * This parameter, `keywords_path`, or `keywords_pattern` must be specified. You cannot specify this parameter and `keywords_pattern`.
+   */
   keywords?: string | string[]
-  /** Path to a file that contains a list of keywords. Tokens that match these keywords are not stemmed.
+  /**
+   * Path to a file that contains a list of keywords. Tokens that match these keywords are not stemmed.
    * This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each word in the file must be separated by a line break.
-   * This parameter, `keywords`, or `keywords_pattern` must be specified. You cannot specify this parameter and `keywords_pattern`. */
+   * This parameter, `keywords`, or `keywords_pattern` must be specified. You cannot specify this parameter and `keywords_pattern`.
+   */
   keywords_path?: string
-  /** Java regular expression used to match tokens. Tokens that match this expression are marked as keywords and not stemmed.
-   * This parameter, `keywords`, or `keywords_path` must be specified. You cannot specify this parameter and `keywords` or `keywords_pattern`. */
+  /**
+   * Java regular expression used to match tokens. Tokens that match this expression are marked as keywords and not stemmed.
+   * This parameter, `keywords`, or `keywords_path` must be specified. You cannot specify this parameter and `keywords` or `keywords_pattern`.
+   */
   keywords_pattern?: string
 }
 
@@ -517,8 +552,10 @@ export class MinHashTokenFilter extends TokenFilterBase {
   bucket_count?: integer
   /** Number of ways to hash each token in the stream. Defaults to `1`. */
   hash_count?: integer
-  /** Number of hashes to keep from each bucket. Defaults to `1`.
-   * Hashes are retained by ascending size, starting with the bucket’s smallest hash first. */
+  /**
+   * Number of hashes to keep from each bucket. Defaults to `1`.
+   * Hashes are retained by ascending size, starting with the bucket’s smallest hash first.
+   */
   hash_set_size?: integer
   /** If `true`, the filter fills empty buckets with the value of the first non-empty bucket to its circular right if the `hash_set_size` is `1`. If the `bucket_count` argument is greater than 1, this parameter defaults to `true`. Otherwise, this parameter defaults to `false`. */
   with_rotation?: boolean
