@@ -67,7 +67,7 @@ export interface Request<TJsonDocument> {
      * If this parameter is not specified, the structure finder uses the column names from the header row of the text.
      * If the text does not have a header role, columns are named "column1", "column2", "column3", for example.
      */
-    column_names?: string
+    column_names?: string | string[]
     /**
      * If you have set `format` to `delimited`, you can specify the character used to delimit the values in each row.
      * Only a single character is supported; the delimiter cannot have multiple characters.
@@ -98,7 +98,7 @@ export interface Request<TJsonDocument> {
      * In this default scenario, all rows must have the same number of fields for a delimited format to be detected.
      * If the format is set to `delimited` and the delimiter is not set, however, the API tolerates up to 5% of rows that have a different number of columns than the first row.
      */
-    format?: string
+    format?: FindStructureFormat
     /**
      * If you have set `format` to `semi_structured_text`, you can specify a Grok pattern that is used to extract fields from every message in the text.
      * The name of the timestamp field in the Grok pattern must match what is specified in the `timestamp_field` parameter.
@@ -206,4 +206,11 @@ export interface Request<TJsonDocument> {
    * The size is limited to the Elasticsearch HTTP receive buffer size, which defaults to 100 Mb.
    * @codegen_name text_files */
   body: Array<TJsonDocument>
+}
+
+export enum FindStructureFormat {
+  ndjson,
+  xml,
+  delimited,
+  semi_structured_text
 }
