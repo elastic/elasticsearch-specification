@@ -2172,6 +2172,55 @@ export interface UpdateByQueryRethrottleUpdateByQueryRethrottleNode extends Spec
   tasks: Record<TaskId, TasksTaskInfo>
 }
 
+export interface InternalDeleteDesiredBalanceRequest extends RequestBase {
+  master_timeout?: Duration
+}
+
+export type InternalDeleteDesiredBalanceResponse = boolean
+
+export interface InternalDeleteDesiredNodesRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type InternalDeleteDesiredNodesResponse = boolean
+
+export interface InternalGetDesiredBalanceRequest extends RequestBase {
+  master_timeout?: Duration
+}
+
+export type InternalGetDesiredBalanceResponse = any
+
+export interface InternalGetDesiredNodesRequest extends RequestBase {
+  master_timeout?: Duration
+}
+
+export type InternalGetDesiredNodesResponse = any
+
+export interface InternalPrevalidateNodeRemovalRequest extends RequestBase {
+  names?: string[]
+  ids?: string[]
+  external_ids?: string[]
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type InternalPrevalidateNodeRemovalResponse = any
+
+export interface InternalUpdateDesiredNodesRequest extends RequestBase {
+  history_id: string
+  version: long
+  dry_run?: boolean
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: any
+}
+
+export interface InternalUpdateDesiredNodesResponse {
+  replaced_existing_history_id: boolean
+  dry_run: boolean
+}
+
 export interface SpecUtilsBaseNode {
   attributes: Record<string, string>
   host: Host
@@ -19205,6 +19254,30 @@ export type NodesUsageResponse = NodesUsageResponseBase
 export interface NodesUsageResponseBase extends NodesNodesResponseBase {
   cluster_name: Name
   nodes: Record<string, NodesUsageNodeUsage>
+}
+
+export interface ProfilingFlamegraphRequest extends RequestBase {
+  body?: any
+}
+
+export type ProfilingFlamegraphResponse = any
+
+export interface ProfilingStacktracesRequest extends RequestBase {
+  body?: any
+}
+
+export type ProfilingStacktracesResponse = any
+
+export type ProfilingStatusProfilingOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
+
+export interface ProfilingStatusRequest extends RequestBase {
+  master_timeout?: Duration
+  timeout?: Duration
+  wait_for_resources_created?: boolean
+}
+
+export interface ProfilingStatusResponse {
+  operation_mode: ProfilingStatusProfilingOperationMode
 }
 
 export interface QueryRulesQueryRule {

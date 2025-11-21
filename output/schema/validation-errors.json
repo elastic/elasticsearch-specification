@@ -1,5 +1,12 @@
 {
   "endpointErrors": {
+    "_internal.update_desired_nodes": {
+      "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec"
+      ],
+      "response": []
+    },
     "monitoring.bulk": {
       "request": [
         "Request: different number of urls in the json spec",

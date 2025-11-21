@@ -897,6 +897,7 @@ time-value,https://github.com/elastic/elasticsearch/blob/{branch}/libs/core/src/
 time-zone-id,https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html,,
 transform-set-upgrade-mode,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-set-upgrade-mode,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/transform-set-upgrade-mode.html,
 trim-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/trim-processor.html,,
+universal-profiling,https://www.elastic.co/guide/en/observability/current/universal-profiling.html,,
 unfreeze-index-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/unfreeze-index-api.html,,
 update-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-ml-update-data-frame-analytics,,
 update-desired-nodes,https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-cluster,,
