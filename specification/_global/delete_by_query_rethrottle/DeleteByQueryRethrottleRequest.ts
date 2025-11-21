@@ -50,6 +50,6 @@ export interface Request extends RequestBase {
      * The throttle for this request in sub-requests per second.
      * To disable throttling, set it to `-1`.
      */
-    requests_per_second?: float
+    requests_per_second: float
   }
 }

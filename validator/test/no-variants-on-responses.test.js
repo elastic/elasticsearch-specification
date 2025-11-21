@@ -23,11 +23,11 @@ const ruleTester = new RuleTester({
   languageOptions: {
     parserOptions: {
       projectService: {
-        allowDefaultProject: ['*.ts*'],
+        allowDefaultProject: ['*.ts*']
       },
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
+      tsconfigRootDir: import.meta.dirname
+    }
+  }
 })
 
 ruleTester.run('no-variants-on-responses', rule, {
@@ -42,7 +42,7 @@ ruleTester.run('no-variants-on-responses', rule, {
       classification?: ClassificationSummary
       regression?: RegressionSummary
     }`,
-    
+
     `export class Request {
       path_parts: {}
       query_parameters: {}
@@ -51,19 +51,31 @@ ruleTester.run('no-variants-on-responses', rule, {
     
     /** @variants internal tag='type' */
     export type RequestBody = TypeA | TypeB`,
-    
+
     `/** @variants container */
     export interface MyContainer {
       option_a?: OptionA
       option_b?: OptionB
     }`,
-    
+
     `export class Response {
       body: {
         count: integer
         results: string[]
       }
     }`,
+    {
+      name: 'not Request or Response',
+      code: `/** @variants container */
+export class MyClass {
+    body: MyContainer
+}`
+    },
+    {
+      name: 'internal tag on type alias',
+      code: `/** @variants internal tag='type' */
+export type MyType = string | number`
+    }
   ],
   invalid: [
     {
@@ -92,6 +104,29 @@ ruleTester.run('no-variants-on-responses', rule, {
       }`,
       errors: [{ messageId: 'noVariantsOnResponses' }]
     },
-  ],
+    {
+      name: 'Request has variants tag',
+      code: `/** @variants container */
+export class Request {}`,
+      errors: [{ messageId: 'noVariantsOnResponses' }]
+    },
+    {
+      name: 'Response has variants tag',
+      code: `/** @variants container */
+export class Response {}`,
+      errors: [{ messageId: 'noVariantsOnResponses' }]
+    },
+    {
+      name: 'Interface has non-container variants tag',
+      code: `/** @variants internal */
+export class RankContainer {}`,
+      errors: [{ messageId: 'interfaceWithNonContainerVariants' }]
+    },
+    {
+      name: 'Type alias has invalid variants tag',
+      code: `/** @variants invalid */
+export type MyType = string | number`,
+      errors: [{ messageId: 'invalidVariantsTag' }]
+    }
+  ]
 })
-

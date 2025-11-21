@@ -250,7 +250,7 @@ export interface DeleteByQueryResponse {
 
 export interface DeleteByQueryRethrottleRequest extends RequestBase {
   task_id: TaskId
-  requests_per_second?: float
+  requests_per_second: float
 }
 
 export type DeleteByQueryRethrottleResponse = TasksTaskListResponseBase
@@ -964,7 +964,7 @@ export interface RankEvalRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
-  search_type?: string
+  search_type?: SearchType
   body?: {
     requests: RankEvalRankEvalRequestItem[]
     metric?: RankEvalRankEvalMetric
@@ -1084,7 +1084,7 @@ export interface ReindexRethrottleReindexTask {
 
 export interface ReindexRethrottleRequest extends RequestBase {
   task_id: Id
-  requests_per_second?: float
+  requests_per_second: float
 }
 
 export interface ReindexRethrottleResponse {
@@ -2161,7 +2161,7 @@ export interface UpdateByQueryResponse {
 
 export interface UpdateByQueryRethrottleRequest extends RequestBase {
   task_id: Id
-  requests_per_second?: float
+  requests_per_second: float
 }
 
 export interface UpdateByQueryRethrottleResponse {
@@ -2274,7 +2274,7 @@ export interface CartesianPoint {
   y: double
 }
 
-export type CategoryId = string
+export type CategoryId = long
 
 export interface ChunkRescorer {
   size?: integer
@@ -11024,7 +11024,7 @@ export interface ConnectorUpdateStatusResponse {
 
 export interface DanglingIndicesDeleteDanglingIndexRequest extends RequestBase {
   index_uuid: Uuid
-  accept_data_loss: boolean
+  accept_data_loss?: boolean
   master_timeout?: Duration
   timeout?: Duration
 }
@@ -11033,7 +11033,7 @@ export type DanglingIndicesDeleteDanglingIndexResponse = AcknowledgedResponseBas
 
 export interface DanglingIndicesImportDanglingIndexRequest extends RequestBase {
   index_uuid: Uuid
-  accept_data_loss: boolean
+  accept_data_loss?: boolean
   master_timeout?: Duration
   timeout?: Duration
 }
@@ -14555,6 +14555,11 @@ export interface InferenceInferenceEndpointInfoOpenAI extends InferenceInference
   task_type: InferenceTaskTypeOpenAI
 }
 
+export interface InferenceInferenceEndpointInfoOpenShiftAi extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeOpenShiftAi
+}
+
 export interface InferenceInferenceEndpointInfoVoyageAI extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeVoyageAI
@@ -14647,6 +14652,26 @@ export interface InferenceOpenAITaskSettings {
 
 export type InferenceOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
 
+export interface InferenceOpenShiftAiServiceSettings {
+  api_key: string
+  url: string
+  model_id?: string
+  max_input_tokens?: integer
+  similarity?: InferenceOpenShiftAiSimilarityType
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceOpenShiftAiServiceType = 'openshift_ai'
+
+export type InferenceOpenShiftAiSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
+
+export interface InferenceOpenShiftAiTaskSettings {
+  return_documents?: boolean
+  top_n?: integer
+}
+
+export type InferenceOpenShiftAiTaskType = 'text_embedding' | 'completion' | 'chat_completion' | 'rerank'
+
 export interface InferenceRankedDocument {
   index: integer
   relevance_score: float
@@ -14727,6 +14752,8 @@ export type InferenceTaskTypeLlama = 'text_embedding' | 'chat_completion' | 'com
 export type InferenceTaskTypeMistral = 'text_embedding' | 'chat_completion' | 'completion'
 
 export type InferenceTaskTypeOpenAI = 'text_embedding' | 'chat_completion' | 'completion'
+
+export type InferenceTaskTypeOpenShiftAi = 'text_embedding' | 'chat_completion' | 'completion' | 'rerank'
 
 export type InferenceTaskTypeVoyageAI = 'text_embedding' | 'rerank'
 
@@ -15120,6 +15147,20 @@ export interface InferencePutOpenaiRequest extends RequestBase {
 }
 
 export type InferencePutOpenaiResponse = InferenceInferenceEndpointInfoOpenAI
+
+export interface InferencePutOpenshiftAiRequest extends RequestBase {
+  task_type: InferenceOpenShiftAiTaskType
+  openshiftai_inference_id: Id
+  timeout?: Duration
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferenceOpenShiftAiServiceType
+    service_settings: InferenceOpenShiftAiServiceSettings
+    task_settings?: InferenceOpenShiftAiTaskSettings
+  }
+}
+
+export type InferencePutOpenshiftAiResponse = InferenceInferenceEndpointInfoOpenShiftAi
 
 export interface InferencePutVoyageaiRequest extends RequestBase {
   task_type: InferenceVoyageAITaskType
@@ -15862,7 +15903,7 @@ export interface IngestPutPipelineRequest extends RequestBase {
   id: Id
   master_timeout?: Duration
   timeout?: Duration
-  if_version?: VersionNumber
+  if_version?: integer
   body?: {
     _meta?: Metadata
     description?: string
@@ -18782,7 +18823,6 @@ export interface MlValidateDetectorRequest extends RequestBase {
 export type MlValidateDetectorResponse = AcknowledgedResponseBase
 
 export interface MonitoringBulkRequest<TDocument = unknown, TPartialDocument = unknown> extends RequestBase {
-  type?: string
   system_id: string
   system_api_version: string
   interval: Duration
@@ -22737,13 +22777,15 @@ export interface TextStructureFindMessageStructureResponse {
   timestamp_field?: Field
 }
 
+export type TextStructureFindStructureFindStructureFormat = 'ndjson' | 'xml' | 'delimited' | 'semi_structured_text'
+
 export interface TextStructureFindStructureRequest<TJsonDocument = unknown> {
   charset?: string
-  column_names?: string
+  column_names?: string | string[]
   delimiter?: string
   ecs_compatibility?: string
   explain?: boolean
-  format?: string
+  format?: TextStructureFindStructureFindStructureFormat
   grok_pattern?: GrokPattern
   has_header_row?: boolean
   line_merge_size_limit?: uint
