@@ -46,7 +46,7 @@ import { Destination, Source } from './types'
  * * If reindexing from a remote cluster, the `source.remote.user` must have the `monitor` cluster privilege and the `read` index privilege for the source data stream, index, or alias.
  *
  * If reindexing from a remote cluster into a cluster using Elastic Stack, you must explicitly allow the remote host using the `reindex.remote.whitelist` node setting on the destination cluster.
- * If reindexing from a remote cluster into an Elastic Cloud Serverless project, only remote hosts from Elastic Cloud Hosted or Elastic Cloud Serverless are allowed.
+ * If reindexing from a remote cluster into an Elastic Cloud Serverless project, only remote hosts from Elastic Cloud Hosted are allowed.
  * Automatic data stream creation requires a matching index template with data stream enabled.
  *
  * The `dest` element can be configured like the index API to control optimistic concurrency control.
