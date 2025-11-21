@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get the snapshot status.
+ *
  * Get a detailed description of the current state for each shard participating in the snapshot.
  *
  * Note that this API should be used only to obtain detailed shard-level information for ongoing snapshots.
@@ -84,7 +85,7 @@ export interface Request extends RequestBase {
      * If `true`, the request ignores snapshots that are unavailable, such as those that are corrupted or temporarily cannot be returned.
      * @server_default false
      */
-    ignore_unavailable?: boolean // default: false
+    ignore_unavailable?: boolean
     /**
      * The period to wait for the master node.
      * If the master node is not available before the timeout expires, the request fails and returns an error.

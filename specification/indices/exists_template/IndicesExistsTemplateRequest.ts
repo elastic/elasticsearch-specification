@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Check existence of index templates.
+ *
  * Get information about whether index templates exist.
  * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
  *
@@ -55,6 +56,7 @@ export interface Request extends RequestBase {
     flat_settings?: boolean
     /**
      * Indicates whether to get information from the local node only.
+     * @deprecated 9.0.0 This parameter has no effect, is now deprecated, and will be removed in a future version.
      * @server_default false
      */
     local?: boolean

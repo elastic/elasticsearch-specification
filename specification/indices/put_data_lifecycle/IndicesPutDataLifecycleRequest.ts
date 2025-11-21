@@ -24,6 +24,7 @@ import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
 
 /**
  * Update data stream lifecycles.
+ *
  * Update the data stream lifecycle of the specified data streams.
  * @rest_spec_name indices.put_data_lifecycle
  * @availability stack since=8.11.0 stability=stable

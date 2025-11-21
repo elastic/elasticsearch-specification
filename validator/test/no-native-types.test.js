@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RuleTester } from '@typescript-eslint/rule-tester'
-import rule from '../rules/dictionary-key-is-string.js'
+import rule from '../rules/no-native-types.js'
 
 const ruleTester = new RuleTester({
   languageOptions: {
@@ -32,32 +32,51 @@ const ruleTester = new RuleTester({
 
 ruleTester.run('no-native-types', rule, {
   valid: [
-    `type MyRecord = Record<string, object>`,
-    `type MyPart = Partial<Record>`,
-    `type MyReq = Required<string>`,
-    `type MyPick Pick<integer,"something">`,
-    `type MyOmit = Omit<Record, "something">`,
+    `type MyDict = Dictionary<string, object>`,
+    `type MyMapping = Dictionary<string, any>`,
+    `type MyType = { field: string }`,
+    `class MyClass { prop: integer }`,
   ],
   invalid: [
     {
       code: `type MyRecord = Record<string, object>`,
-      errors: [{ messageId: 'stringKey' }]
+      errors: [{ messageId: 'noNativeType' }]
     },
     {
-      code: `type MyPart = Partial<Record>`,
-      errors: [{ messageId: 'stringKey' }]
+      code: `type MyPart = Partial<SomeType>`,
+      errors: [{ messageId: 'noNativeType' }]
     },
     {
-      code:  `type MyReq = Required<string>`,
-      errors: [{ messageId: 'stringKey' }]
+      code:  `type MyReq = Required<SomeType>`,
+      errors: [{ messageId: 'noNativeType' }]
     },
     {
-      code: `type MyPick Pick<integer,"something">`,
-      errors: [{ messageId: 'stringKey' }]
+      code: `type MyPick = Pick<SomeType, "field">`,
+      errors: [{ messageId: 'noNativeType' }]
     },
     {
-      code: `type MyOmit = Omit<Record, "something">`,
-      errors: [{ messageId: 'stringKey' }]
-    }
+      code: `type MyOmit = Omit<SomeType, "field">`,
+      errors: [{ messageId: 'noNativeType' }]
+    },
+    {
+      code: `type MyMap = Map<string, object>`,
+      errors: [{ messageId: 'noNativeType' }]
+    },
+    {
+      code: `type MySet = Set<string>`,
+      errors: [{ messageId: 'noNativeType' }]
+    },
+    {
+      code: `type MyWeakMap = WeakMap<object, string>`,
+      errors: [{ messageId: 'noNativeType' }]
+    },
+    {
+      code: `type MyWeakSet = WeakSet<object>`,
+      errors: [{ messageId: 'noNativeType' }]
+    },
+    {
+      code: `class MyClass { items: Map<string, number> }`,
+      errors: [{ messageId: 'noNativeType' }]
+    },
   ],
 })

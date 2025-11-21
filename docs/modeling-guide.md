@@ -601,6 +601,18 @@ class Foo {
 }
 ```
 
+If you need an `@` sign, you can escape it:
+
+```ts
+class Foo {
+  /**
+   * Field containing event timestamp.
+   * @server_default \@timestamp
+   */
+  timestamp_field?: Field
+}
+```
+
 #### `@doc_id`
 
 An identifier that can be used for generating the doc url in clients.
@@ -773,3 +785,12 @@ class Foo {
 #### `@stability` and `@visibility`
 
 These annotations have been removed, use `@availability` instead.
+
+#### `@UpdateForV10`
+
+We sometimes want to make breaking changes but have to wait until the next major version.
+To not forget about those change, you can use the UpdateForV10 JSDoc tag in any commment.
+There are a few benefits of using JSDoc instead of a simple TODO comment:
+
+ * With the allowlist of tags in our eslint config, we can't make typos
+ * We enforce a proper description to explain why the breaking change needs to be made

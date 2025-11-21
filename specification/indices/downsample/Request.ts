@@ -23,6 +23,7 @@ import { DownsampleConfig } from '@indices/_types/Downsample'
 
 /**
  * Downsample an index.
+ *
  * Downsamples a time series (TSDS) index and reduces its size by keeping the last value or by pre-aggregating metrics:
  *
  * - When running in `aggregate` mode, it pre-calculates and stores statistical summaries (`min`, `max`, `sum`, `value_count` and `avg`)

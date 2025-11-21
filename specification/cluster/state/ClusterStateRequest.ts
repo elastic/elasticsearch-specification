@@ -18,16 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {
-  ExpandWildcards,
-  Indices,
-  Metrics,
-  VersionNumber
-} from '@_types/common'
+import { ExpandWildcards, Indices, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get the cluster state.
+ *
  * Get comprehensive information about the state of the cluster.
  *
  * The cluster state is an internal data structure which keeps track of a variety of information needed by every node, including the identity and attributes of the other nodes in the cluster; cluster-wide settings; index metadata, including the mapping and settings for each index; the location and status of every shard copy in the cluster.
@@ -68,22 +64,25 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    metric?: Metrics
+    metric?: ClusterStateMetrics
     index?: Indices
   }
   query_parameters: {
     /** @server_default true */
     allow_no_indices?: boolean
+    /** @server_default open */
     expand_wildcards?: ExpandWildcards
     /** @server_default false */
     flat_settings?: boolean
     /** @server_default false */
     ignore_unavailable?: boolean
-    /** @server_default false */
+    /**
+     * @deprecated 9.0.0 This parameter has no effect, is now deprecated, and will be removed in a future version.
+     * @server_default false
+     */
     local?: boolean
     /**
      * Timeout for waiting for new cluster state in case it is blocked
-     * @deprecated 9.2.0
      * @server_default 30s
      * */
     master_timeout?: Duration
@@ -91,3 +90,17 @@ export interface Request extends RequestBase {
     wait_for_timeout?: Duration
   }
 }
+
+export enum ClusterStateMetric {
+  _all,
+  version,
+  master_node,
+  blocks,
+  nodes,
+  metadata,
+  routing_table,
+  routing_nodes,
+  customs
+}
+
+export type ClusterStateMetrics = ClusterStateMetric | ClusterStateMetric[]

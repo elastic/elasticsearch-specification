@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Stop rollup jobs.
+ *
  * If you try to stop a job that does not exist, an exception occurs.
  * If you try to stop a job that is already stopped, nothing happens.
  *
@@ -39,7 +40,6 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_rollup
  * @deprecated 8.11.0
  * @doc_id rollup-stop-job
- *
  */
 export interface Request extends RequestBase {
   urls: [

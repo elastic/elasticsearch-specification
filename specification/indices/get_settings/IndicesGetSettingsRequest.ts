@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get index settings.
+ *
  * Get setting information for one or more indices.
  * For data streams, it returns setting information for the stream's backing indices.
  * @rest_spec_name indices.get_settings
@@ -97,6 +98,7 @@ export interface Request extends RequestBase {
     /**
      * If `true`, the request retrieves information from the local node only. If
      * `false`, information is retrieved from the master node.
+     * @deprecated 9.1.0 This parameter is a no-op and settings are always retrieved locally.
      * @server_default false
      */
     local?: boolean

@@ -24,6 +24,7 @@ import { Sort, SortResults } from '@_types/sort'
 
 /**
  * Query watches.
+ *
  * Get all registered watches in a paginated manner and optionally filter watches by a query.
  *
  * Note that only the `_id` and `metadata.*` fields are queryable or sortable.

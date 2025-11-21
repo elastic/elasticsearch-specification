@@ -23,6 +23,7 @@ import { integer } from '@_types/Numeric'
 
 /**
  * Get filters.
+ *
  * You can get a single filter or all filters.
  * @rest_spec_name ml.get_filters
  * @availability stack since=5.5.0 stability=stable

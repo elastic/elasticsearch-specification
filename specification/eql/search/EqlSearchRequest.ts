@@ -27,6 +27,7 @@ import { ResultPosition } from './types'
 
 /**
  * Get EQL search results.
+ *
  * Returns search results for an Event Query Language (EQL) query.
  * EQL assumes each document in a data stream or index corresponds to an event.
  * @rest_spec_name eql.search
@@ -120,7 +121,8 @@ export interface Request extends RequestBase {
      */
     tiebreaker_field?: Field
     /**
-     * Field containing event timestamp. Default "@timestamp"
+     * Field containing event timestamp.
+     * @server_default \@timestamp
      */
     timestamp_field?: Field
     /**

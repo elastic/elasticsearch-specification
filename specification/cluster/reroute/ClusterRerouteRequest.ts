@@ -18,12 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Metrics } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { Command } from './types'
 
 /**
  * Reroute the cluster.
+ *
  * Manually change the allocation of individual shards in the cluster.
  * For example, a shard can be moved from one node to another explicitly, an allocation can be canceled, and an unassigned shard can be explicitly allocated to a specific node.
  *
@@ -63,9 +63,9 @@ export interface Request extends RequestBase {
     explain?: boolean
     /**
      * Limits the information returned to the specified metrics.
-     * @server_default all
+     * @deprecated 8.6.0 This parameter has no effect; its use will be forbidden in a future version.
      */
-    metric?: Metrics
+    metric?: string | string[]
     /**
      * If true, then retries allocation of shards that are blocked due to too many subsequent allocation failures.
      * @server_default false

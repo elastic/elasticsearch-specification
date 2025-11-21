@@ -21,6 +21,7 @@ import { Name } from '@_types/common'
 
 /**
  * Delete a behavioral analytics collection.
+ *
  * The associated data stream is also deleted.
  * @rest_spec_name search_application.delete_behavioral_analytics
  * @availability stack since=8.8.0 stability=experimental

@@ -789,7 +789,7 @@ export class DateProcessor extends ProcessorBase {
   locale?: string
   /**
    * The field that will hold the parsed date.
-   * @server_default `@timestamp`
+   * @server_default \@timestamp
    */
   target_field?: Field
   /**

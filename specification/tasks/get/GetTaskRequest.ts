@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get task information.
+ *
  * Get information about a task currently running in the cluster.
  *
  * WARNING: The task management API is new and should still be considered a beta feature.

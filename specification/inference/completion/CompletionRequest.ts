@@ -23,7 +23,8 @@ import { Duration } from '@_types/Time'
 import { TaskSettings } from '@inference/_types/Services'
 
 /**
- * Perform completion inference on the service
+ * Perform completion inference on the service.
+ *
  * Get responses for completion tasks.
  * This API works only with the completion task type.
  *
@@ -60,7 +61,7 @@ export interface Request extends RequestBase {
      * Inference input.
      * Either a string or an array of strings.
      */
-    input: string | Array<string>
+    input: string | string[]
     /**
      * Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.
      */

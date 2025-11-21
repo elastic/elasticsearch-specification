@@ -74,7 +74,8 @@ export class DatafeedConfig {
    * Datafeeds might be required to search over long time periods, for several months or years. This search is split into time chunks in order to ensure the load on Elasticsearch is managed. Chunking configuration controls how the size of these time chunks are calculated and is an advanced configuration option.
    */
   chunking_config?: ChunkingConfig
-  /** A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. The default value is the job identifier.
+  /**
+    A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. The default value is the job identifier.
    */
   datafeed_id?: Id
   /**
@@ -128,7 +129,7 @@ export class DelayedDataCheckConfig {
    * It defaults to null, which causes an appropriate `check_window` to be calculated when the real-time datafeed runs.
    * In particular, the default `check_window` span calculation is based on the maximum of `2h` or `8 * bucket_span`.
    */
-  check_window?: Duration // default: null
+  check_window?: Duration
   /**
    * Specifies whether the datafeed periodically checks for delayed data.
    */

@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete a legacy index template.
+ *
  * IMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.
  * @rest_spec_name indices.delete_template
  * @availability stack stability=stable

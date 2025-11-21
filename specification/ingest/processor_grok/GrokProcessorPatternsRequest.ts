@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Run a grok processor.
+ *
  * Extract structured fields out of a single text field within a document.
  * You must choose which field to extract matched fields from, as well as the grok pattern you expect will match.
  * A grok pattern is like a regular expression that supports aliased expressions that can be reused.

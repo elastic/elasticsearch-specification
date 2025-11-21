@@ -31,6 +31,7 @@ import { OperationContainer, UpdateAction } from './types'
 
 /**
  * Bulk index or delete documents.
+ *
  * Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.
  * This reduces overhead and can greatly increase indexing speed.
  *
@@ -94,6 +95,7 @@ import { OperationContainer, UpdateAction } from './types'
  * * Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`
  * * Python: Check out `elasticsearch.helpers.*`
  * * JavaScript: Check out `client.helpers.*`
+ * * Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`
  * * .NET: Check out `BulkAllObservable`
  * * PHP: Check out bulk indexing.
  * * Ruby: Check out `Elasticsearch::Helpers::BulkHelper`
@@ -150,7 +152,6 @@ import { OperationContainer, UpdateAction } from './types'
  * @doc_id docs-bulk
  * @ext_doc_id indices-refresh-disable
  * @doc_tag document
- *
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
   urls: [

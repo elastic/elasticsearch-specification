@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get snapshot repository information.
+ *
  * @rest_spec_name snapshot.get_repository
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private

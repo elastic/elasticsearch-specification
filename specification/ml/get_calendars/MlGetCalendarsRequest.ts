@@ -24,6 +24,7 @@ import { Page } from '@ml/_types/Page'
 
 /**
  * Get calendar configuration info.
+ *
  * @rest_spec_name ml.get_calendars
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -47,11 +48,13 @@ export interface Request extends RequestBase {
     calendar_id?: Id
   }
   query_parameters: {
-    /** Skips the specified number of calendars. This parameter is supported only when you omit the calendar identifier.
+    /**
+     * Skips the specified number of calendars. This parameter is supported only when you omit the calendar identifier.
      * @server_default 0
      */
     from?: integer
-    /** Specifies the maximum number of calendars to obtain. This parameter is supported only when you omit the calendar identifier.
+    /**
+     * Specifies the maximum number of calendars to obtain. This parameter is supported only when you omit the calendar identifier.
      * @server_default 10000
      */
     size?: integer

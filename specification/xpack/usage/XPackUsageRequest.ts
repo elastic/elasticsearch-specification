@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get usage information.
+ *
  * Get information about the features that are currently enabled and available under the current license.
  * The API also provides some usage statistics.
  * @rest_spec_name xpack.usage
