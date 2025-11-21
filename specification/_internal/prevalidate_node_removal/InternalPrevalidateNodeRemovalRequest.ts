@@ -20,9 +20,8 @@
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
-
 /**
- * Prevalidates node removal from the cluster
+ * Prevalidates node removal from the cluster.
  *
  * @rest_spec_name _internal.prevalidate_node_removal
  * @availability stack stability=experimental visibility=private

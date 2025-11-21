@@ -20,9 +20,8 @@
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
-
 /**
- * Gets the latest desired nodes
+ * Gets the latest desired nodes.
  *
  * @rest_spec_name _internal.get_desired_nodes
  * @availability stack stability=experimental visibility=private

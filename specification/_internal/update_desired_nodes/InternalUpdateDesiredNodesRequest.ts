@@ -22,7 +22,6 @@ import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
-
 /**
  * Designed for indirect use by ECE/ESS and ECK, direct use is not supported.
  *
@@ -44,7 +43,7 @@ export interface Request extends RequestBase {
     /**
      * The version number
      */
-    version?: long
+    version: long
   }
   query_parameters: {
     /**

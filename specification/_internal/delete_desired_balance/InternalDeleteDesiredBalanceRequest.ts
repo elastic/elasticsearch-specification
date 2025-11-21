@@ -20,9 +20,8 @@
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
-
 /**
- * This API is a diagnostics API and the output should not be relied upon for building applications
+ * This API is a diagnostics API and the output should not be relied upon for building applications.
  *
  * @rest_spec_name _internal.delete_desired_balance
  * @availability stack stability=experimental visibility=private

@@ -20,7 +20,6 @@
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
 
-
 /**
  * Designed for indirect use by ECE/ESS and ECK, direct use is not supported.
  *
@@ -45,6 +44,5 @@ export interface Request extends RequestBase {
      * @server_default 30s
      */
     timeout?: Duration
-    
   }
 }
