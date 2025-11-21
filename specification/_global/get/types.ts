@@ -17,10 +17,14 @@
  * under the License.
  */
 
-import { Id, IndexName, SequenceNumber, VersionNumber } from '@_types/common'
+import {
+  Id,
+  IndexName,
+  SequenceNumber,
+  UserDefinedObject,
+  VersionNumber
+} from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class GetResult<TDocument> {
   /**
@@ -30,7 +34,7 @@ export class GetResult<TDocument> {
   /**
    * If the `stored_fields` parameter is set to `true` and `found` is `true`, it contains the document fields stored in the index.
    */
-  fields?: Dictionary<string, UserDefinedValue>
+  fields?: UserDefinedObject
   _ignored?: string[]
   /**
    * Indicates whether the document exists.

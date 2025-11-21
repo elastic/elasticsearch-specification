@@ -18,14 +18,19 @@
  */
 
 import { Aggregate } from '@_types/aggregations/Aggregate'
-import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
+import {
+  AggregateName,
+  Id,
+  ScrollId,
+  SuggestionName,
+  UserDefinedObject
+} from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
 import { HitsMetadata } from '@global/search/_types/hits'
 import { Profile } from '@global/search/_types/profile'
 import { Suggest } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response<TDocument> {
   body: {
@@ -36,7 +41,7 @@ export class Response<TDocument> {
     hits: HitsMetadata<TDocument>
     aggregations?: Dictionary<AggregateName, Aggregate>
     _clusters?: ClusterStatistics
-    fields?: Dictionary<string, UserDefinedValue>
+    fields?: UserDefinedObject
     max_score?: double
     num_reduce_phases?: long
     profile?: Profile

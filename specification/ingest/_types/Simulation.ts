@@ -17,11 +17,17 @@
  * under the License.
  */
 
-import { Id, IndexName, Name, VersionNumber, VersionType } from '@_types/common'
+import {
+  Id,
+  IndexName,
+  Name,
+  UserDefinedObject,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { DateTime } from '@_types/Time'
 import { AdditionalProperties } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Stringified } from '@spec_utils/Stringified'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -106,7 +112,7 @@ export class DocumentSimulation
   /**
    * JSON body for the document.
    */
-  _source: Dictionary<string, UserDefinedValue>
+  _source: UserDefinedObject
   /**
    *
    */
