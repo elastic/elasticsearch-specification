@@ -1,13 +1,5 @@
 {
-  "endpointErrors": {
-    "monitoring.bulk": {
-      "request": [
-        "Request: different number of urls in the json spec",
-        "Request: missing json spec path parameter 'type'"
-      ],
-      "response": []
-    }
-  },
+  "endpointErrors": {},
   "generalErrors": [
     "Dangling type '_global.scripts_painless_execute:PainlessExecutionPosition'",
     "Dangling type '_global.scripts_painless_execute:PainlessScript'",
