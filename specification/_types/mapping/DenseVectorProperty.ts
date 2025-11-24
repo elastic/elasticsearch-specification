@@ -172,7 +172,8 @@ export class DenseVectorIndexOptions {
    * `true` if vector rescoring should be done on-disk
    *
    * Only applicable to `bbq_disk`, `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`
-   * @availability stack since=9.3.0 stability=preview
+   * @server_default false
+   * @availability stack since=9.3.0 stability=experimental
    */
   on_disk_rescore?: boolean
 }
