@@ -33,6 +33,6 @@ export interface Request extends RequestBase {
     }
   ]
   body: {
-    value: string
+    value?: string
   }
 }

@@ -10801,7 +10801,7 @@ export interface ConnectorSecretGetResponse {
 
 export interface ConnectorSecretPostRequest extends RequestBase {
   body?: {
-    value: string
+    value?: string
   }
 }
 
