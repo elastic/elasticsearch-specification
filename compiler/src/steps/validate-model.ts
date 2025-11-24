@@ -37,8 +37,6 @@ enum JsonEvent {
   array = 'array'
 }
 
-const privateNamespaces = ['_internal', 'profiling']
-
 /**
  * Validates the internal consistency of the model (doesn't check the json spec)
  *
@@ -280,11 +278,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
    */
   function validateEndpoint (endpoint: model.Endpoint): void {
     setRootContext(endpoint.name, 'request')
-
-    // Skip validation for internal endpoints
-    if (privateNamespaces.some(ns => endpoint.name.startsWith(ns))) {
-      return
-    }
 
     if (endpoint.request !== null) {
       const reqType = getTypeDef(endpoint.request)
