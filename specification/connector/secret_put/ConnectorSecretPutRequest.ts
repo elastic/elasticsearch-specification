@@ -18,8 +18,6 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-
 
 /**
  * Creates or updates a secret for a Connector.

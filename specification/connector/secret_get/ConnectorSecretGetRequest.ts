@@ -18,8 +18,6 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Duration } from '@_types/Time'
-
 
 /**
  * Retrieves a secret stored by Connectors.

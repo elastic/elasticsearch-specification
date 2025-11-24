@@ -17,7 +17,6 @@
  * under the License.
  */
 
-
 export class Response {
   body: {
     deleted: boolean

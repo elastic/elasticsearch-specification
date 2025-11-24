@@ -19,7 +19,6 @@
 
 import { RequestBase } from '@_types/Base'
 
-
 /**
  * Creates a secret for a Connector.
  *
