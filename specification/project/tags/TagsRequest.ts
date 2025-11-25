@@ -38,7 +38,7 @@ export interface Request extends RequestBase {
   ]
   query_parameters: {
     /**
-     * A Lucene query using project metadata tags to limit which projects to search, such as _alias:_origin or _alias:*pr*.
+     * A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*.
      * @availability serverless stability=experimental visibility=public
      */
     project_routing?: string

@@ -88182,7 +88182,7 @@
       "project.tags-project_routing": {
         "in": "query",
         "name": "project_routing",
-        "description": "A Lucene query using project metadata tags to limit which projects to search, such as _alias:_origin or _alias:*pr*.",
+        "description": "A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*.",
         "deprecated": false,
         "schema": {
           "type": "string"
