@@ -51,6 +51,7 @@ calendar-and-fixed-intervals,https://www.elastic.co/docs/reference/aggregations/
 cat-alias,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-aliases,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/cat-alias.html,
 cat-allocation,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-allocation,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/cat-allocation.html,
 cat-anomaly-detectors,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-ml-jobs,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/cat-anomaly-detectors.html,
+cat-circuit-breaker,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,,
 cat-component-templates,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-component-templates,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/cat-component-templates.html,
 cat-count,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-count,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/cat-count.html,
 cat-datafeeds,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-ml-datafeeds,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/cat-datafeeds.html,
