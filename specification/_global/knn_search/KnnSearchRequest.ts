@@ -28,21 +28,8 @@ import { KnnSearchQuery } from './_types/Knn'
  *
  * NOTE: The kNN search API has been replaced by the `knn` option in the search API.
  *
- * Perform a k-nearest neighbor (kNN) search on a dense_vector field and return the matching documents.
- * Given a query vector, the API finds the k closest vectors and returns those documents as search hits.
+ * @UpdateForV10 Remove this API when it's no longer needed for compatibility mode with Elasticsearch 8 in rest-api-spec.
  *
- * Elasticsearch uses the HNSW algorithm to support efficient kNN search.
- * Like most kNN algorithms, HNSW is an approximate method that sacrifices result accuracy for improved search speed.
- * This means the results returned are not always the true k closest neighbors.
- *
- * The kNN search API supports restricting the search using a filter.
- * The search will return the top k documents that also match the filter query.
- *
- * A kNN search response has the exact same structure as a search API response.
- * However, certain sections have a meaning specific to kNN search:
- *
- * * The document `_score` is determined by the similarity between the query and document vector.
- * * The `hits.total` object contains the total number of nearest neighbor candidates considered, which is `num_candidates * num_shards`. The `hits.total.relation` will always be `eq`, indicating an exact value.
  * @rest_spec_name knn_search
  * @availability stack since=8.0.0 stability=experimental visibility=private
  * @deprecated 8.4.0 The kNN search API has been replaced by the `knn` option in the search API.
