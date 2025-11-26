@@ -690,6 +690,35 @@ export interface InfoResponse {
   version: ElasticsearchVersionInfo
 }
 
+export interface KnnSearchRequest extends RequestBase {
+  index: Indices
+  routing?: Routing
+  body?: {
+    _source?: SearchSourceConfig
+    docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
+    stored_fields?: Fields
+    fields?: Fields
+    filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
+    knn: KnnSearchKnnSearchQuery
+  }
+}
+
+export interface KnnSearchResponse<TDocument = unknown> {
+  took: long
+  timed_out: boolean
+  _shards: ShardStatistics
+  hits: SearchHitsMetadata<TDocument>
+  fields?: Record<string, any>
+  max_score?: double
+}
+
+export interface KnnSearchKnnSearchQuery {
+  field: Field
+  query_vector: QueryVector
+  k: integer
+  num_candidates: integer
+}
+
 export interface MgetMultiGetError {
   error: ErrorCause
   _id: Id
@@ -5830,7 +5859,7 @@ export interface MappingDateRangeProperty extends MappingRangePropertyBase {
   type: 'date_range'
 }
 
-export type MappingDenseVectorElementType = 'bit' | 'byte' | 'float'
+export type MappingDenseVectorElementType = 'bit' | 'byte' | 'float' | 'bfloat16'
 
 export interface MappingDenseVectorIndexOptions {
   confidence_interval?: float
@@ -10272,6 +10301,10 @@ export interface ClusterStatsDenseVectorOffHeapStats {
   total_veq_size?: ByteSize
   total_vex_size_bytes: long
   total_vex_size?: ByteSize
+  total_cenif_size_bytes: long
+  total_cenif_size?: ByteSize
+  total_clivf_size_bytes: long
+  total_clivf_size?: ByteSize
   fielddata?: Record<string, Record<string, long>>
 }
 
@@ -10776,6 +10809,44 @@ export interface ConnectorPutRequest extends RequestBase {
 export interface ConnectorPutResponse {
   result: Result
   id: Id
+}
+
+export interface ConnectorSecretDeleteRequest extends RequestBase {
+  id: string
+}
+
+export interface ConnectorSecretDeleteResponse {
+  deleted: boolean
+}
+
+export interface ConnectorSecretGetRequest extends RequestBase {
+  id: string
+}
+
+export interface ConnectorSecretGetResponse {
+  id: string
+  value: string
+}
+
+export interface ConnectorSecretPostRequest extends RequestBase {
+  body?: {
+    value?: string
+  }
+}
+
+export interface ConnectorSecretPostResponse {
+  id: string
+}
+
+export interface ConnectorSecretPutRequest extends RequestBase {
+  id: string
+  body?: {
+    value: string
+  }
+}
+
+export interface ConnectorSecretPutResponse {
+  result: Result
 }
 
 export interface ConnectorSyncJobCancelRequest extends RequestBase {
@@ -11433,6 +11504,23 @@ export interface FeaturesResetFeaturesResponse {
 
 export type FleetCheckpoint = long
 
+export interface FleetDeleteSecretRequest extends RequestBase {
+  id: string
+}
+
+export interface FleetDeleteSecretResponse {
+  deleted: boolean
+}
+
+export interface FleetGetSecretRequest extends RequestBase {
+  id: string
+}
+
+export interface FleetGetSecretResponse {
+  id: string
+  value: string
+}
+
 export interface FleetGlobalCheckpointsRequest extends RequestBase {
   index: IndexName | IndexAlias
   wait_for_advance?: boolean
@@ -11466,6 +11554,16 @@ export interface FleetMsearchRequest extends RequestBase {
 
 export interface FleetMsearchResponse<TDocument = unknown> {
   docs: MsearchResponseItem<TDocument>[]
+}
+
+export interface FleetPostSecretRequest extends RequestBase {
+  body?: {
+    value: string
+  }
+}
+
+export interface FleetPostSecretResponse {
+  id: string
 }
 
 export interface FleetSearchRequest extends RequestBase {
@@ -19824,6 +19922,7 @@ export interface ProjectTagsProjectTags {
 }
 
 export interface ProjectTagsRequest extends RequestBase {
+  project_routing?: string
 }
 
 export type ProjectTagsResponse = ProjectTagsProjectTags

@@ -22837,23 +22837,39 @@
         "summary": "Get tags",
         "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "project-tags",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/project.tags-project_routing"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/project.tags.ProjectTags"
-                },
-                "examples": {
-                  "ProjectTagsResponseExample1": {
-                    "summary": "Project tags",
-                    "description": "A successful response from `GET /_project/tags`",
-                    "value": "{\n  \"origin\": {\n    \"c56c4f8849c64cc6ae59c261f40bd195\": {\n      \"_id\": \"c56c4f8849c64cc6ae59c261f40bd195\"\n      \"_type\": \"elasticsearch\",\n      \"_alias\": \"project-1\",\n      \"_csp\": \"aws\",\n      \"_region\": \"us-east-1\"\n      \"mytag1\": \"foo\",\n      \"mytag2\": \"bar\"\n    }\n  },\n  \"linked_projects\": {\n    \"a3b88ea3f195a336ae59c261f40bd195\": {\n      \"_id\": \"a3b88ea3f195a336ae59c261f40bd195\"\n      \"_type\": \"security\",\n      \"_alias\": \"project-2\",\n      \"_csp\": \"aws\",\n      \"_region\": \"us-east-1\"\n      \"mytag1\": \"foo\",\n      \"mytag2\": \"bar\"\n    },\n    \"f40bd195389s3761023ca7aa8a3r0932\": {\n      \"_id\": \"f40bd195389s3761023ca7aa8a3r0932\"\n      \"_type\": \"observability\",\n      \"_alias\": \"project-3\",\n      \"_csp\": \"aws\",\n      \"_region\": \"us-east-1\"\n      \"mytag1\": \"foo\",\n      \"mytag2\": \"bar\"\n    }\n  }\n}"
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/project.tags-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Get tags",
+        "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "operationId": "project-tags-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/project.tags-project_routing"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/project.tags-200"
           }
         },
         "x-state": "Technical preview",
@@ -59339,11 +59355,6 @@
                 "$ref": "#/components/schemas/_types.mapping.DenseVectorIndexOptionsRescoreVector"
               }
             ]
-          },
-          "on_disk_rescore": {
-            "description": "`true` if vector rescoring should be done on-disk\n\nOnly applicable to `bbq_hnsw`",
-            "default": false,
-            "type": "boolean"
           }
         },
         "required": [
@@ -83211,6 +83222,23 @@
           }
         }
       },
+      "project.tags-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/project.tags.ProjectTags"
+            },
+            "examples": {
+              "ProjectTagsResponseExample1": {
+                "summary": "Project tags",
+                "description": "A successful response from `GET /_project/tags`",
+                "value": "{\n  \"origin\": {\n    \"c56c4f8849c64cc6ae59c261f40bd195\": {\n      \"_id\": \"c56c4f8849c64cc6ae59c261f40bd195\"\n      \"_type\": \"elasticsearch\",\n      \"_alias\": \"project-1\",\n      \"_csp\": \"aws\",\n      \"_region\": \"us-east-1\"\n      \"mytag1\": \"foo\",\n      \"mytag2\": \"bar\"\n    }\n  },\n  \"linked_projects\": {\n    \"a3b88ea3f195a336ae59c261f40bd195\": {\n      \"_id\": \"a3b88ea3f195a336ae59c261f40bd195\"\n      \"_type\": \"security\",\n      \"_alias\": \"project-2\",\n      \"_csp\": \"aws\",\n      \"_region\": \"us-east-1\"\n      \"mytag1\": \"foo\",\n      \"mytag2\": \"bar\"\n    },\n    \"f40bd195389s3761023ca7aa8a3r0932\": {\n      \"_id\": \"f40bd195389s3761023ca7aa8a3r0932\"\n      \"_type\": \"observability\",\n      \"_alias\": \"project-3\",\n      \"_csp\": \"aws\",\n      \"_region\": \"us-east-1\"\n      \"mytag1\": \"foo\",\n      \"mytag2\": \"bar\"\n    }\n  }\n}"
+              }
+            }
+          }
+        }
+      },
       "put_script-200": {
         "description": "",
         "content": {
@@ -88144,6 +88172,17 @@
         "schema": {
           "$ref": "#/components/schemas/_types.VersionType"
         },
+        "style": "form"
+      },
+      "project.tags-project_routing": {
+        "in": "query",
+        "name": "project_routing",
+        "description": "A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "x-state": "Technical preview",
         "style": "form"
       },
       "put_script-id": {
