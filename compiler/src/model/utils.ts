@@ -1075,7 +1075,7 @@ export function parseJsDocTags (jsDoc: JSDoc[]): Record<string, string> {
       }
     })
   // Ignore UpdateForV10 which is only useful at the eslint level
-  const filteredTags =  tags.filter(tag => tag.name != 'UpdateForV10')
+  const filteredTags = tags.filter(tag => tag.name !== 'UpdateForV10')
   const mapped = filteredTags.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.value }), {})
   return mapped
 }
