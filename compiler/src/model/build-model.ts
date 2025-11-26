@@ -32,7 +32,7 @@ import {
   TypeAliasDeclaration
 } from 'ts-morph'
 import * as model from './metamodel'
-import buildJsonSpec from './json-spec'
+import { JsonSpec } from './json-spec'
 import {
   assert,
   customTypes,
@@ -57,9 +57,7 @@ import {
   mediaTypeToStringArray
 } from './utils'
 
-const jsonSpec = buildJsonSpec()
-
-export function compileEndpoints (): Record<string, model.Endpoint> {
+export function compileEndpoints (jsonSpec: Map<string, JsonSpec>): Record<string, model.Endpoint> {
   // Create endpoints and merge them with
   // the recorded mappings if present.
   const map = {}
@@ -92,7 +90,7 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
   return map
 }
 
-export function compileSpecification (endpointMappings: Record<string, model.Endpoint>, specsFolder: string, outputFolder: string): model.Model {
+export function compileSpecification (jsonSpec: Map<string, JsonSpec>, endpointMappings: Record<string, model.Endpoint>, specsFolder: string, outputFolder: string): model.Model {
   const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
   const project = new Project({ tsConfigFilePath })
 
