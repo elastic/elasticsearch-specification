@@ -56,7 +56,7 @@ export default class Compiler {
   generateModel (): this {
     this.jsonSpec = buildJsonSpec()
     const endpoints = compileEndpoints(this.jsonSpec)
-    this.model = compileSpecification(this.jsonSpec, endpoints, this.specsFolder, this.outputFolder)
+    this.model = compileSpecification(endpoints, this.specsFolder, this.outputFolder)
     return this
   }
 

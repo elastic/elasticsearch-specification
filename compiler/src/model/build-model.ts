@@ -90,7 +90,7 @@ export function compileEndpoints (jsonSpec: Map<string, JsonSpec>): Record<strin
   return map
 }
 
-export function compileSpecification (jsonSpec: Map<string, JsonSpec>, endpointMappings: Record<string, model.Endpoint>, specsFolder: string, outputFolder: string): model.Model {
+export function compileSpecification (endpointMappings: Record<string, model.Endpoint>, specsFolder: string, outputFolder: string): model.Model {
   const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
   const project = new Project({ tsConfigFilePath })
 
@@ -131,8 +131,8 @@ export function compileSpecification (jsonSpec: Map<string, JsonSpec>, endpointM
     definedButNeverUsed.join('\n'),
     { encoding: 'utf8', flag: 'w' }
   )
-  for (const api of jsonSpec.keys()) {
-    model.endpoints.push(endpointMappings[api])
+  for (const endpoint of Object.values(endpointMappings)) {
+    model.endpoints.push(endpoint)
   }
 
   // Visit all class, interface, enum and type alias definitions
