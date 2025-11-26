@@ -2347,6 +2347,18 @@ export type Distance = string
 
 export type DistanceUnit = 'in' | 'ft' | 'yd' | 'mi' | 'nmi' | 'km' | 'm' | 'cm' | 'mm'
 
+export interface DiversifyRetriever extends RetrieverBase {
+  type: DiversifyRetrieverTypes
+  field: string
+  retriever: RetrieverContainer
+  size?: integer
+  rank_window_size?: integer
+  query_vector?: QueryVector
+  lambda?: float
+}
+
+export type DiversifyRetrieverTypes = 'mmr'
+
 export interface DocStats {
   count: long
   deleted?: long
@@ -2863,6 +2875,7 @@ export interface RetrieverContainer {
   rescorer?: RescorerRetriever
   linear?: LinearRetriever
   pinned?: PinnedRetriever
+  diversify?: DiversifyRetriever
 }
 
 export type Routing = string | string[]
