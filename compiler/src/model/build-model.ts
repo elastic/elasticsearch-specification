@@ -59,24 +59,6 @@ import {
 
 const jsonSpec = buildJsonSpec()
 
-export function reAddAvailability (model: model.Model): model.Model {
-  for (const [api, spec] of jsonSpec.entries()) {
-    for (const endpoint of model.endpoints) {
-      if (endpoint.name === api) {
-        if ((spec.stability != null || spec.visibility != null) && (endpoint.availability.stack === undefined && endpoint.availability.serverless === undefined)) {
-          endpoint.availability = {
-            stack: {
-              stability: spec.stability,
-              visibility: spec.visibility
-            }
-          }
-        }
-      }
-    }
-  }
-  return model
-}
-
 export function compileEndpoints (): Record<string, model.Endpoint> {
   // Create endpoints and merge them with
   // the recorded mappings if present.

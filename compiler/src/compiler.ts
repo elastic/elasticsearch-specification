@@ -23,8 +23,7 @@ import stringify from 'safe-stable-stringify'
 import { Model } from './model/metamodel'
 import {
   compileEndpoints,
-  compileSpecification,
-  reAddAvailability
+  compileSpecification
 } from './model/build-model'
 import buildJsonSpec, { JsonSpec } from './model/json-spec'
 import { ValidationErrors } from './validation-errors'
@@ -58,7 +57,6 @@ export default class Compiler {
     this.jsonSpec = buildJsonSpec()
     const endpoints = compileEndpoints()
     this.model = compileSpecification(endpoints, this.specsFolder, this.outputFolder)
-    this.model = reAddAvailability(this.model) // resync availability information based on json spec if typescript has none.
     return this
   }
 
