@@ -366,6 +366,7 @@ export interface FieldCapsRequest extends RequestBase {
     fields?: Fields
     index_filter?: QueryDslQueryContainer
     runtime_mappings?: MappingRuntimeFields
+    project_routing?: ProjectRouting
   }
 }
 
