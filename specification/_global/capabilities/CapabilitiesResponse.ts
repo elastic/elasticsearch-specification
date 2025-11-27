@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Name } from '@_types/common'
+import { Id, Name } from '@_types/common'
 import { NodeStatistics } from '@_types/Node'
 
 export class Response {
@@ -25,5 +25,10 @@ export class Response {
     _nodes: NodeStatistics
     cluster_name: Name
     supported: boolean | null
+    failures?: FailedNodeException[]
   }
+}
+
+export class FailedNodeException {
+  node_id: Id
 }
