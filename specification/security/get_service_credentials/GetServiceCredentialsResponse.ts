@@ -28,7 +28,8 @@ export class Response {
     count: integer
     tokens: Dictionary<string, Metadata>
     /**
-     * Service account credentials collected from all nodes of the cluster. */
+     * Service account credentials collected from all nodes of the cluster.
+     */
     nodes_credentials: NodesCredentials
   }
 }

@@ -1,9 +1,9 @@
 {
   "endpointErrors": {
-    "monitoring.bulk": {
+    "_internal.update_desired_nodes": {
       "request": [
-        "Request: different number of urls in the json spec",
-        "Request: missing json spec path parameter 'type'"
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     }

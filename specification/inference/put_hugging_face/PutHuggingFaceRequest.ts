@@ -36,7 +36,7 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  *
  * To configure the endpoint, first visit the Hugging Face Inference Endpoints page and create a new endpoint.
  * Select a model that supports the task you intend to use.
-
+ *
  * For Elastic's `text_embedding` task:
  * The selected model must support the `Sentence Embeddings` task. On the new endpoint creation page, select the `Sentence Embeddings` task under the `Advanced Configuration` section.
  * After the endpoint has initialized, copy the generated endpoint URL.

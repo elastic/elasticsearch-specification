@@ -79,7 +79,8 @@ export enum CatAnomalyDetectorColumn {
   'data.earliest_record',
   /**
    * The number of buckets which did not contain any data.
-   * @aliases deb, dataEmptyBuckets */
+   * @aliases deb, dataEmptyBuckets
+   */
   'data.empty_buckets',
   /**
    * The number of bytes of input data posted to the anomaly detection job.
@@ -129,7 +130,8 @@ export enum CatAnomalyDetectorColumn {
    * The number of input documents that are missing a field that the anomaly
    * detection job is configured to analyze. Input documents with missing fields
    * are still processed because it is possible that not all fields are missing.
-   * @aliases dmf, dataMissingFields */
+   * @aliases dmf, dataMissingFields
+   */
   'data.missing_fields',
   /**
    * The number of input documents that have a timestamp chronologically
@@ -282,7 +284,8 @@ export enum CatAnomalyDetectorColumn {
   'model.categorization_status',
   /**
    * The number of documents that have had a field categorized.
-   * @aliases mcdc, modelCategorizedDocCount */
+   * @aliases mcdc, modelCategorizedDocCount
+   */
   'model.categorized_doc_count',
   /**
    * The number of categories created by categorization that will never be
@@ -298,7 +301,8 @@ export enum CatAnomalyDetectorColumn {
    * not track which specific categories failed to be created. Therefore, you
    * cannot use this value to determine the number of unique categories that
    * were missed.
-   * @aliases mdcc, modelFailedCategoryCount */
+   * @aliases mdcc, modelFailedCategoryCount
+   */
   'model.failed_category_count',
   /**
    * The number of categories that match more than 1% of categorized documents.
@@ -350,7 +354,8 @@ export enum CatAnomalyDetectorColumn {
   'model.timestamp',
   /**
    * The number of categories created by categorization.
-   * @aliases mtcc, modelTotalCategoryCount */
+   * @aliases mtcc, modelTotalCategoryCount
+   */
   'model.total_category_count',
   /**
    * The network address of the node that runs the job. This information is
@@ -447,7 +452,8 @@ export enum CatDatafeedColumn {
   sba,
   /**
    * The number of searches run by the datafeed.
-   * @aliases search.count, searchCount */
+   * @aliases search.count, searchCount
+   */
   sc,
   /**
    * The exponential average search time per hour, in milliseconds.
@@ -456,7 +462,8 @@ export enum CatDatafeedColumn {
   seah,
   /**
    * The total time the datafeed spent searching, in milliseconds.
-   * @aliases search.time, searchTime */
+   * @aliases search.time, searchTime
+   */
   st,
   /**
    * The status of the datafeed: `starting`, `started`, `stopping`, or `stopped`.
@@ -2127,7 +2134,7 @@ export enum CatNodeattrsColumn {
   id,
   /**
    * The process ID.
-   * * @aliases p
+   * @aliases p
    */
   pid,
   /**
