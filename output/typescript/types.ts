@@ -690,6 +690,35 @@ export interface InfoResponse {
   version: ElasticsearchVersionInfo
 }
 
+export interface KnnSearchRequest extends RequestBase {
+  index: Indices
+  routing?: Routing
+  body?: {
+    _source?: SearchSourceConfig
+    docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
+    stored_fields?: Fields
+    fields?: Fields
+    filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
+    knn: KnnSearchKnnSearchQuery
+  }
+}
+
+export interface KnnSearchResponse<TDocument = unknown> {
+  took: long
+  timed_out: boolean
+  _shards: ShardStatistics
+  hits: SearchHitsMetadata<TDocument>
+  fields?: Record<string, any>
+  max_score?: double
+}
+
+export interface KnnSearchKnnSearchQuery {
+  field: Field
+  query_vector: QueryVector
+  k: integer
+  num_candidates: integer
+}
+
 export interface MgetMultiGetError {
   error: ErrorCause
   _id: Id
@@ -5830,7 +5859,7 @@ export interface MappingDateRangeProperty extends MappingRangePropertyBase {
   type: 'date_range'
 }
 
-export type MappingDenseVectorElementType = 'bit' | 'byte' | 'float'
+export type MappingDenseVectorElementType = 'bit' | 'byte' | 'float' | 'bfloat16'
 
 export interface MappingDenseVectorIndexOptions {
   confidence_interval?: float
@@ -19886,6 +19915,12 @@ export interface ProfilingStatusRequest extends RequestBase {
 export interface ProfilingStatusResponse {
   operation_mode: ProfilingStatusProfilingOperationMode
 }
+
+export interface ProfilingTopnFunctionsRequest extends RequestBase {
+  body?: any
+}
+
+export type ProfilingTopnFunctionsResponse = any
 
 export interface ProjectTagsProjectTags {
   origin: Partial<Record<string, ProjectTagsTags>>
