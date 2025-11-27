@@ -107,6 +107,28 @@ export interface BulkWriteOperation extends BulkOperationBase {
   require_alias?: boolean
 }
 
+export interface CapabilitiesFailedNodeException {
+  node_id: Id
+}
+
+export interface CapabilitiesRequest extends RequestBase {
+  method?: CapabilitiesRestMethod
+  path?: string
+  parameters?: string | string[]
+  capabilities?: string | string[]
+  local_only?: boolean
+  timeout?: Duration
+}
+
+export interface CapabilitiesResponse {
+  _nodes: NodeStatistics
+  cluster_name: Name
+  supported: boolean | null
+  failures?: CapabilitiesFailedNodeException[]
+}
+
+export type CapabilitiesRestMethod = 'GET' | 'HEAD' | 'POST' | 'PUT' | 'DELETE'
+
 export interface ClearScrollRequest extends RequestBase {
   scroll_id?: ScrollIds
   body?: {
