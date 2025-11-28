@@ -34,7 +34,7 @@ pub fn convert_schema_to_individual_files(model: IndexedModel, output_dir: &str)
         let writer = BufWriter::new(output_file);
         serde_json::to_writer_pretty(writer, &wrapped_content)?;
 
-        tracing::debug!("Wrote {} to {}", endpoint.name, file_path.display());
+        tracing::debug!("Wrote {} to {:?}", endpoint.name, file_path);
     }
 
     Ok(())
