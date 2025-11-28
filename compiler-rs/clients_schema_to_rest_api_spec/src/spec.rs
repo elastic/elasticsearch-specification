@@ -71,7 +71,7 @@ pub struct Parameter {
 }
 
 fn is_false(b: &bool) -> bool {
-    *b == false
+    !*b
 }
 
 #[derive(Debug, Serialize)]

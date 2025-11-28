@@ -71,8 +71,8 @@ fn convert_endpoint(endpoint: &SchemaEndpoint, types: &IndexMap<TypeName, TypeDe
     let mut params = IndexMap::new();
     let mut body = None;
 
-    if let Some(request_type_name) = &endpoint.request {
-        if let Some(TypeDefinition::Request(request)) = types.get(request_type_name) {
+    if let Some(request_type_name) = &endpoint.request
+        && let Some(TypeDefinition::Request(request)) = types.get(request_type_name) {
             // Convert query parameters
             for param in &request.query {
                 let converted_param = convert_parameter(param, types)?;
@@ -96,7 +96,6 @@ fn convert_endpoint(endpoint: &SchemaEndpoint, types: &IndexMap<TypeName, TypeDe
                 });
             }
         }
-    }
 
     // Convert deprecation information
     let deprecated = endpoint.deprecation.as_ref().map(|dep| Deprecation {
@@ -135,8 +134,8 @@ fn convert_url_template(
     let mut parts = HashMap::new();
 
     // Extract path parameters from the request type
-    if let Some(request_type_name) = &endpoint.request {
-        if let Some(TypeDefinition::Request(request)) = types.get(request_type_name) {
+    if let Some(request_type_name) = &endpoint.request
+        && let Some(TypeDefinition::Request(request)) = types.get(request_type_name) {
             for path_param in &request.path {
                 // Only include this path parameter if it's referenced in this specific URL template
                 let param_pattern = format!("{{{}}}", path_param.name);
@@ -154,7 +153,6 @@ fn convert_url_template(
                 }
             }
         }
-    }
 
     Ok(Path {
         path: url_template.path.clone(),
@@ -198,15 +196,14 @@ fn convert_parameter(property: &Property, types: &IndexMap<TypeName, TypeDefinit
     });
 
     let mut visibility = None;
-    if let Some(availabilities) = &property.availability {
-        if let Some(stack_availability) = availabilities.get(&Flavor::Stack) {
+    if let Some(availabilities) = &property.availability
+        && let Some(stack_availability) = availabilities.get(&Flavor::Stack) {
             visibility = stack_availability.visibility.as_ref().and_then(|v| match v {
                 Visibility::Public => None,
                 Visibility::FeatureFlag => Some("feature_flag".to_string()),
                 Visibility::Private => Some("private".to_string()),
             });
         }
-    }
 
     Ok(Parameter {
         typ,
@@ -249,8 +246,8 @@ fn is_list_enum(union: &UnionOf) -> Option<TypeName> {
     // if union of X and X[]
     if union.items.len() == 2 {
         // check if first item is InstanceOf and second is ArrayOf
-        if let ValueOf::InstanceOf(instance) = &union.items[0] {
-            if let ValueOf::ArrayOf(array) = &union.items[1] {
+        if let ValueOf::InstanceOf(instance) = &union.items[0]
+            && let ValueOf::ArrayOf(array) = &union.items[1] {
                 let array_instance = match &*array.value {
                     ValueOf::InstanceOf(inst) => inst,
                     _ => panic!("Expected InstanceOf inside ArrayOf in union type"),
@@ -259,9 +256,8 @@ fn is_list_enum(union: &UnionOf) -> Option<TypeName> {
                     return Some(instance.typ.clone());
                 }
             }
-        }
     }
-    return None;
+    None
 }
 
 fn is_index_name_and_alias(union: &UnionOf) -> bool {
@@ -286,9 +282,9 @@ fn is_index_name_and_alias(union: &UnionOf) -> bool {
 fn is_literal(instance: &InstanceOf) -> Option<String> {
     let key = (instance.typ.namespace.as_str(), instance.typ.name.as_str());
     if let Some(&mapped_type) = BUILTIN_MAPPINGS.iter().find(|&&(k, _)| k == key).map(|(_, v)| v) {
-        return Some(mapped_type.to_string());
+        Some(mapped_type.to_string())
     } else {
-        return None;
+        None
     }
 }
 
@@ -318,14 +314,14 @@ fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>)
                 let full_type = types.get(type_name).unwrap();
 
                 match full_type {
-                    TypeDefinition::TypeAlias(ref alias) => match &alias.typ {
-                        ValueOf::UnionOf(ref union) => {
+                    TypeDefinition::TypeAlias(alias) => match &alias.typ {
+                        ValueOf::UnionOf(union) => {
                             if let Some(_) = is_list_enum(union) {
                                 return "list".to_string();
                             }
                         }
                         ValueOf::InstanceOf(instance) => {
-                            if let Some(literal) = is_literal(&instance) {
+                            if let Some(literal) = is_literal(instance) {
                                 return literal;
                             }
                         }
@@ -345,14 +341,14 @@ fn get_enum_options(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinitio
     match value_of {
         ValueOf::InstanceOf(instance) => {
             match types.get(&instance.typ) {
-                Some(TypeDefinition::Enum(enum_def)) => return extract_enum_members(enum_def),
+                Some(TypeDefinition::Enum(enum_def)) => extract_enum_members(enum_def),
                 // While ExpandWildcards is ultimately an enum, it is specified, lists are allowed too:
                 // export type ExpandWildcards = ExpandWildcard | ExpandWildcard[]
                 // and in request files this alias is used
                 // expand_wildcards?: ExpandWildcards
                 Some(TypeDefinition::TypeAlias(alias)) => {
-                    if let ValueOf::UnionOf(union) = &alias.typ {
-                        if let Some(union_type) = is_list_enum(union) {
+                    if let ValueOf::UnionOf(union) = &alias.typ
+                        && let Some(union_type) = is_list_enum(union) {
                             match types.get(&union_type) {
                                 Some(TypeDefinition::Enum(enum_def)) => {
                                     return extract_enum_members(enum_def);
@@ -363,13 +359,12 @@ fn get_enum_options(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinitio
                                 }
                             }
                         }
-                    }
                     tracing::debug!("Expected union type for type alias: {:?}", alias);
                     vec![]
                 }
                 _ => {
                     tracing::debug!("Found union type for instance: {:?}", types.get(&instance.typ));
-                    return vec![];
+                    vec![]
                 }
             }
         }
@@ -446,17 +441,15 @@ fn extract_visibility_from_availabilities(availabilities: &Option<clients_schema
 /// Extract stability information from availabilities
 /// Uses stack flavor stability, defaults to "stable" if not specified
 fn extract_stability_from_availabilities(availabilities: &Option<clients_schema::Availabilities>) -> Option<String> {
-    if let Some(avails) = availabilities {
-        if let Some(stack_availability) = avails.get(&Flavor::Stack) {
-            if let Some(ref stability) = stack_availability.stability {
+    if let Some(avails) = availabilities
+        && let Some(stack_availability) = avails.get(&Flavor::Stack)
+            && let Some(ref stability) = stack_availability.stability {
                 return Some(match stability {
                     clients_schema::Stability::Stable => "stable".to_string(),
                     clients_schema::Stability::Beta => "beta".to_string(),
                     clients_schema::Stability::Experimental => "experimental".to_string(),
                 });
             }
-        }
-    }
     // Default to stable if no stability is explicitly set
     Some("stable".to_string())
 }
@@ -509,6 +502,7 @@ mod tests {
         // Simple test to verify Body struct has required field
         let body = Body {
             description: "Test body".to_string(),
+            serialize: None,
             required: true,
         };
 
@@ -517,6 +511,7 @@ mod tests {
 
         let body_optional = Body {
             description: "Optional body".to_string(),
+            serialize: None,
             required: false,
         };
 

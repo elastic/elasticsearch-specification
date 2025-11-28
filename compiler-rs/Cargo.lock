@@ -260,7 +260,6 @@ dependencies = [
  "argh",
  "clients_schema",
  "indexmap",
- "itertools",
  "serde",
  "serde_json",
  "tracing",
