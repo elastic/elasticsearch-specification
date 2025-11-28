@@ -405,9 +405,38 @@ impl<'a> TypesAndComponents<'a> {
             }
             Some(TypeAliasVariants::InternalTag(tag)) => {
                 // TODO: add tag.default_tag as an extension
+                let mut mapping = IndexMap::new();
+
+                // Extract union members and build mapping
+                if let ValueOf::UnionOf(union) = &alias.typ {
+                    for item in &union.items {
+                        if let ValueOf::InstanceOf(instance) = item {
+                            // Get the variant type definition
+                            if let Ok(TypeDefinition::Interface(variant_itf)) =
+                                self.model.get_type(&instance.typ)
+                            {
+                                // Find the discriminator property in the variant
+                                if let Some(disc_prop) = variant_itf.properties.iter()
+                                    .find(|p| p.name == tag.tag)
+                                {
+                                    // Extract the literal value
+                                    if let ValueOf::LiteralValue(literal) = &disc_prop.typ {
+                                        let discriminator_value = literal.value.to_string();
+                                        let schema_ref = format!(
+                                            "#/components/schemas/{}",
+                                            instance.typ.schema_name()
+                                        );
+                                        mapping.insert(discriminator_value, schema_ref);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
                 schema.schema_data.discriminator = Some(Discriminator {
                     property_name: tag.tag.clone(),
-                    mapping: Default::default(),
+                    mapping,
                     extensions: Default::default(),
                 });
             }
