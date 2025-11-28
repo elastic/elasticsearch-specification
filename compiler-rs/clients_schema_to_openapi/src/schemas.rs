@@ -404,39 +404,53 @@ impl<'a> TypesAndComponents<'a> {
                 // TODO: typed-keys: add an extension to identify it?
             }
             Some(TypeAliasVariants::InternalTag(tag)) => {
-                // TODO: add tag.default_tag as an extension
                 let mut mapping = IndexMap::new();
-
+                let ValueOf::UnionOf(union) = &alias.typ else {
+                    bail!("InternalTag type alias {} does not wrap a union", alias.base.name);
+                };
                 // Extract union members and build mapping
-                if let ValueOf::UnionOf(union) = &alias.typ {
-                    for item in &union.items {
-                        if let ValueOf::InstanceOf(instance) = item {
-                            // Get the variant type definition
-                            if let Ok(TypeDefinition::Interface(variant_itf)) =
-                                self.model.get_type(&instance.typ)
-                            {
-                                // Find the discriminator property in the variant
-                                if let Some(disc_prop) = variant_itf.properties.iter()
-                                    .find(|p| p.name == tag.tag)
-                                {
-                                    // Extract the literal value
-                                    if let ValueOf::LiteralValue(literal) = &disc_prop.typ {
-                                        let discriminator_value = literal.value.to_string();
-                                        let schema_ref = format!(
-                                            "#/components/schemas/{}",
-                                            instance.typ.schema_name()
-                                        );
-                                        mapping.insert(discriminator_value, schema_ref);
-                                    }
-                                }
-                            }
+                for item in &union.items {
+                    let ValueOf::InstanceOf(instance) = item else {
+                        bail!(
+                            "InternalTag union member in type alias {} is not an instance_of",
+                            alias.base.name
+                        );
+                    };
+
+                    match self.model.get_type(&instance.typ) {
+                        Ok(TypeDefinition::Interface(variant_itf)) => {
+                            // Find the discriminator property in the variant
+                            let Some(disc_prop) = variant_itf.properties.iter().find(|p| p.name == tag.tag) else {
+                                bail!(
+                                    "InternalTag union member in type alias {} does not have discriminator property {}",
+                                    alias.base.name,
+                                    tag.tag
+                                );
+                            };
+
+                            // Extract the literal value
+                            let ValueOf::LiteralValue(literal) = &disc_prop.typ else {
+                                bail!(
+                                    "InternalTag union member in type alias {} has non-literal discriminator property {}",
+                                    alias.base.name,
+                                    tag.tag
+                                );
+                            };
+                            let discriminator_value = literal.value.to_string();
+                            let schema_ref = format!("#/components/schemas/{}", instance.typ.schema_name());
+                            mapping.insert(discriminator_value, schema_ref);
                         }
+                        _ => bail!(
+                            "InternalTag union member in type alias {} is not an interface",
+                            alias.base.name
+                        ),
                     }
                 }
 
                 schema.schema_data.discriminator = Some(Discriminator {
                     property_name: tag.tag.clone(),
                     mapping,
+                    // TODO: add tag.default_tag as an extension
                     extensions: Default::default(),
                 });
             }
