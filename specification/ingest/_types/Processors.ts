@@ -533,7 +533,7 @@ export class UserAgentProcessor extends ProcessorBase {
   target_field?: Field
   /**
    * Controls what properties are added to `target_field`.
-   * @server_default ['name', 'major', 'minor', 'patch', 'build', 'os', 'os_name', 'os_major', 'os_minor', 'device']
+   * @server_default ['name', 'os', 'device', 'original', 'version']
    */
   properties?: UserAgentProperty[]
   /**
