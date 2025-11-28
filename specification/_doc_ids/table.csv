@@ -43,6 +43,7 @@ behavioral-analytics-event-reference,https://www.elastic.co/guide/en/elasticsear
 byte-units,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/api-conventions.html#byte-units,,
 bytes-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/bytes-processor.html,,
 calendar-and-fixed-intervals,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/search-aggregations-bucket-datehistogram-aggregation.html#calendar_and_fixed_intervals,,
+capabilities,https://github.com/elastic/elasticsearch/blob/8.19/rest-api-spec/src/yamlRestTest/resources/rest-api-spec/test/README.asciidoc#require-or-skip-api-capabilities,,
 cat-alias,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-alias.html,,
 cat-allocation,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-allocation.html,,
 cat-anomaly-detectors,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cat-anomaly-detectors.html,,
