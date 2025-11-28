@@ -1,7 +1,7 @@
 use argh::FromArgs;
 use clients_schema::IndexedModel;
 use clients_schema_to_rest_api_spec::convert_schema_to_individual_files;
-use std::fs::{create_dir_all, File};
+use std::fs;
 use tracing::Level;
 use tracing_subscriber::fmt::format::FmtSpan;
 use tracing_subscriber::FmtSubscriber;
@@ -36,22 +36,17 @@ fn main() -> anyhow::Result<()> {
     tracing::subscriber::set_global_default(subscriber)?;
 
     tracing::info!("Reading schema from {}", cli.input);
-
-    // Read and parse the input schema
-    let input_file = File::open(&cli.input)?;
+    let input_file = fs::File::open(&cli.input)?;
     let indexed_model: IndexedModel = serde_json::from_reader(input_file)?;
 
     tracing::info!("Converting schema to rest-api-spec format");
 
     // Create output directory if it doesn't exist
-    create_dir_all(&cli.output_dir)?;
-
-    // Convert the schema to individual files
-    convert_schema_to_individual_files(indexed_model, &cli.output_dir)?;
+    fs::create_dir_all(&cli.output_dir)?;
 
     tracing::info!("Writing individual API files to {}", cli.output_dir);
+    convert_schema_to_individual_files(indexed_model, &cli.output_dir)?;
 
     tracing::info!("Conversion completed successfully");
-
     Ok(())
 }
