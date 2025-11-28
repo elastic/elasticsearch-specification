@@ -448,6 +448,7 @@ impl<'a> TypesAndComponents<'a> {
                         ),
                     }
                 }
+                disc_mapping.sort_unstable_keys();
 
                 schema.schema_data.discriminator = Some(Discriminator {
                     property_name: tag.tag.clone(),
