@@ -404,7 +404,9 @@ impl<'a> TypesAndComponents<'a> {
                 // TODO: typed-keys: add an extension to identify it?
             }
             Some(TypeAliasVariants::InternalTag(tag)) => {
-                let mut mapping = IndexMap::new();
+                // outputs a map of discriminator values to schema references
+                // e.g. { "type1": "#/components/schemas/Type1", "type2": "#/components/schemas/Type2" }
+                let mut disc_mapping = IndexMap::new();
                 let ValueOf::UnionOf(union) = &alias.typ else {
                     bail!("InternalTag type alias {} does not wrap a union", alias.base.name);
                 };
@@ -438,7 +440,7 @@ impl<'a> TypesAndComponents<'a> {
                             };
                             let discriminator_value = literal.value.to_string();
                             let schema_ref = format!("#/components/schemas/{}", instance.typ.schema_name());
-                            mapping.insert(discriminator_value, schema_ref);
+                            disc_mapping.insert(discriminator_value, schema_ref);
                         }
                         _ => bail!(
                             "InternalTag union member in type alias {} is not an interface",
@@ -449,7 +451,7 @@ impl<'a> TypesAndComponents<'a> {
 
                 schema.schema_data.discriminator = Some(Discriminator {
                     property_name: tag.tag.clone(),
-                    mapping,
+                    mapping: disc_mapping,
                     // TODO: add tag.default_tag as an extension
                     extensions: Default::default(),
                 });
