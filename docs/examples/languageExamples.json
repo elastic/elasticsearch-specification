@@ -1270,7 +1270,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cluster().putSettings();\n"
+      "code": "client.cluster().putSettings(p -> p);\n"
     }
   ],
   "specification/snapshot/restore/examples/request/SnapshotRestoreRequestExample1.yaml": [
@@ -6390,7 +6390,7 @@
     },
     {
       "language": "Java",
-      "code": "client.watcher().queryWatches();\n"
+      "code": "client.watcher().queryWatches(q -> q);\n"
     }
   ],
   "specification/watcher/stop/examples/request/WatcherStopRequestExample1.yaml": [
@@ -7794,7 +7794,7 @@
     },
     {
       "language": "Java",
-      "code": "client.security().getUserPrivileges(g -> g);\n"
+      "code": "client.security().getUserPrivileges();\n"
     }
   ],
   "specification/security/query_role/examples/request/QueryRolesRequestExample2.yaml": [
@@ -14976,7 +14976,7 @@
     },
     {
       "language": "Java",
-      "code": "client.enrich().stats(s -> s)\n);\n"
+      "code": "client.enrich().stats(s -> s);\n"
     }
   ],
   "specification/async_search/submit/examples/request/AsyncSearchSubmitRequestExample1.yaml": [
@@ -15454,7 +15454,7 @@
     },
     {
       "language": "Java",
-      "code": "client.autoscaling().getAutoscalingCapacity(g -> g)\n);\n"
+      "code": "client.autoscaling().getAutoscalingCapacity(g -> g);\n"
     }
   ],
   "specification/search_application/render_query/examples/request/SearchApplicationsRenderQueryRequestExample1.yaml": [
@@ -15792,7 +15792,7 @@
     },
     {
       "language": "Java",
-      "code": "client.migration().deprecations(d -> d)\n);\n"
+      "code": "client.migration().deprecations(d -> d);\n"
     }
   ],
   "specification/transform/start_transform/examples/request/TransformStartTransformExample1.yaml": [
@@ -15896,7 +15896,7 @@
     },
     {
       "language": "Java",
-      "code": "client.transform().upgradeTransforms(u -> u)\n);\n"
+      "code": "client.transform().upgradeTransforms(u -> u);\n"
     }
   ],
   "specification/transform/preview_transform/examples/request/PreviewTransformRequestExample1.yaml": [
@@ -16416,7 +16416,7 @@
     },
     {
       "language": "Java",
-      "code": "client.ccr().stats(s -> s)\n);\n"
+      "code": "client.ccr().stats(s -> s);\n"
     }
   ],
   "specification/ccr/pause_auto_follow_pattern/examples/request/PauseAutoFollowPatternRequestExample1.yaml": [
@@ -16624,7 +16624,7 @@
     },
     {
       "language": "Java",
-      "code": "client.ilm().start(s -> s)\n);\n"
+      "code": "client.ilm().start(s -> s);\n"
     }
   ],
   "specification/ilm/explain_lifecycle/examples/request/IlmExplainLifecycleExample1.yaml": [
@@ -16676,7 +16676,7 @@
     },
     {
       "language": "Java",
-      "code": "client.ilm().stop(s -> s)\n);\n"
+      "code": "client.ilm().stop(s -> s);\n"
     }
   ],
   "specification/ilm/remove_policy/examples/request/IlmRemovePolicyExample1.yaml": [
@@ -17496,7 +17496,7 @@
     },
     {
       "language": "Java",
-      "code": "client.streams().status(s -> s)\n);\n"
+      "code": "client.streams().status(s -> s);\n"
     }
   ],
   "specification/streams/logs_enable/examples/request/PostStreamsEnableRequestExample1.yaml": [
@@ -17522,7 +17522,7 @@
     },
     {
       "language": "Java",
-      "code": "client.streams().logsEnable(l -> l)\n);\n"
+      "code": "client.streams().logsEnable(l -> l);\n"
     }
   ],
   "specification/streams/logs_disable/examples/request/PostStreamsDisableRequestExample1.yaml": [
@@ -17548,7 +17548,7 @@
     },
     {
       "language": "Java",
-      "code": "client.streams().logsDisable(l -> l)\n);\n"
+      "code": "client.streams().logsDisable(l -> l);\n"
     }
   ],
   "specification/project/tags/examples/request/ProjectTagsRequestExample1.yaml": [
