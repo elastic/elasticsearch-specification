@@ -12,6 +12,12 @@
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
+    },
+    "project.tags": {
+      "request": [
+        "/_project/tags: different http methods in the json spec"
+      ],
+      "response": []
     }
   },
   "generalErrors": [
