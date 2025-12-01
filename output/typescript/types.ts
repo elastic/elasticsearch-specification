@@ -19725,6 +19725,12 @@ export interface ProfilingStatusResponse {
   operation_mode: ProfilingStatusProfilingOperationMode
 }
 
+export interface ProfilingTopnFunctionsRequest extends RequestBase {
+  body?: any
+}
+
+export type ProfilingTopnFunctionsResponse = any
+
 export interface ProjectTagsProjectTags {
   origin: Partial<Record<string, ProjectTagsTags>>
   linked_projects?: Record<string, ProjectTagsTags>
