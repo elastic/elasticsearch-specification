@@ -39980,6 +39980,14 @@
                 "$ref": "#/components/schemas/_types.PinnedRetriever"
               }
             ]
+          },
+          "diversify": {
+            "description": "A retriever that diversifies the results from its child retriever.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DiversifyRetriever"
+              }
+            ]
           }
         },
         "minProperties": 1,
@@ -40519,6 +40527,69 @@
         },
         "required": [
           "id"
+        ]
+      },
+      "_types.DiversifyRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "The diversification strategy to apply.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.DiversifyRetrieverTypes"
+                  }
+                ]
+              },
+              "field": {
+                "description": "The document field on which to diversify results on.",
+                "type": "string"
+              },
+              "retriever": {
+                "description": "The nested retriever whose results will be diversified.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.RetrieverContainer"
+                  }
+                ]
+              },
+              "size": {
+                "description": "The number of top documents to return after diversification.",
+                "type": "number"
+              },
+              "rank_window_size": {
+                "description": "The number of top documents from the nested retriever to consider for diversification.",
+                "type": "number"
+              },
+              "query_vector": {
+                "description": "The query vector used for diversification.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.QueryVector"
+                  }
+                ]
+              },
+              "lambda": {
+                "description": "Controls the trade-off between relevance and diversity for MMR. A value of 0.0 focuses solely on diversity, while a value of 1.0 focuses solely on relevance. Required for MMR",
+                "type": "number"
+              }
+            },
+            "required": [
+              "type",
+              "field",
+              "retriever"
+            ]
+          }
+        ]
+      },
+      "_types.DiversifyRetrieverTypes": {
+        "type": "string",
+        "enum": [
+          "mmr"
         ]
       },
       "_types.SlicedScroll": {
