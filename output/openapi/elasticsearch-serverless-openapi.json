@@ -46313,7 +46313,14 @@
       },
       "_types.aggregations.MovingAverageAggregation": {
         "discriminator": {
-          "propertyName": "model"
+          "propertyName": "model",
+          "mapping": {
+            "linear": "#/components/schemas/_types.aggregations.LinearMovingAverageAggregation",
+            "simple": "#/components/schemas/_types.aggregations.SimpleMovingAverageAggregation",
+            "ewma": "#/components/schemas/_types.aggregations.EwmaMovingAverageAggregation",
+            "holt": "#/components/schemas/_types.aggregations.HoltMovingAverageAggregation",
+            "holt_winters": "#/components/schemas/_types.aggregations.HoltWintersMovingAverageAggregation"
+          }
         },
         "oneOf": [
           {
@@ -52019,7 +52026,58 @@
       },
       "_types.analysis.Analyzer": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "custom": "#/components/schemas/_types.analysis.CustomAnalyzer",
+            "fingerprint": "#/components/schemas/_types.analysis.FingerprintAnalyzer",
+            "keyword": "#/components/schemas/_types.analysis.KeywordAnalyzer",
+            "nori": "#/components/schemas/_types.analysis.NoriAnalyzer",
+            "pattern": "#/components/schemas/_types.analysis.PatternAnalyzer",
+            "simple": "#/components/schemas/_types.analysis.SimpleAnalyzer",
+            "standard": "#/components/schemas/_types.analysis.StandardAnalyzer",
+            "stop": "#/components/schemas/_types.analysis.StopAnalyzer",
+            "whitespace": "#/components/schemas/_types.analysis.WhitespaceAnalyzer",
+            "icu_analyzer": "#/components/schemas/_types.analysis.IcuAnalyzer",
+            "kuromoji": "#/components/schemas/_types.analysis.KuromojiAnalyzer",
+            "snowball": "#/components/schemas/_types.analysis.SnowballAnalyzer",
+            "arabic": "#/components/schemas/_types.analysis.ArabicAnalyzer",
+            "armenian": "#/components/schemas/_types.analysis.ArmenianAnalyzer",
+            "basque": "#/components/schemas/_types.analysis.BasqueAnalyzer",
+            "bengali": "#/components/schemas/_types.analysis.BengaliAnalyzer",
+            "brazilian": "#/components/schemas/_types.analysis.BrazilianAnalyzer",
+            "bulgarian": "#/components/schemas/_types.analysis.BulgarianAnalyzer",
+            "catalan": "#/components/schemas/_types.analysis.CatalanAnalyzer",
+            "chinese": "#/components/schemas/_types.analysis.ChineseAnalyzer",
+            "cjk": "#/components/schemas/_types.analysis.CjkAnalyzer",
+            "czech": "#/components/schemas/_types.analysis.CzechAnalyzer",
+            "danish": "#/components/schemas/_types.analysis.DanishAnalyzer",
+            "dutch": "#/components/schemas/_types.analysis.DutchAnalyzer",
+            "english": "#/components/schemas/_types.analysis.EnglishAnalyzer",
+            "estonian": "#/components/schemas/_types.analysis.EstonianAnalyzer",
+            "finnish": "#/components/schemas/_types.analysis.FinnishAnalyzer",
+            "french": "#/components/schemas/_types.analysis.FrenchAnalyzer",
+            "galician": "#/components/schemas/_types.analysis.GalicianAnalyzer",
+            "german": "#/components/schemas/_types.analysis.GermanAnalyzer",
+            "greek": "#/components/schemas/_types.analysis.GreekAnalyzer",
+            "hindi": "#/components/schemas/_types.analysis.HindiAnalyzer",
+            "hungarian": "#/components/schemas/_types.analysis.HungarianAnalyzer",
+            "indonesian": "#/components/schemas/_types.analysis.IndonesianAnalyzer",
+            "irish": "#/components/schemas/_types.analysis.IrishAnalyzer",
+            "italian": "#/components/schemas/_types.analysis.ItalianAnalyzer",
+            "latvian": "#/components/schemas/_types.analysis.LatvianAnalyzer",
+            "lithuanian": "#/components/schemas/_types.analysis.LithuanianAnalyzer",
+            "norwegian": "#/components/schemas/_types.analysis.NorwegianAnalyzer",
+            "persian": "#/components/schemas/_types.analysis.PersianAnalyzer",
+            "portuguese": "#/components/schemas/_types.analysis.PortugueseAnalyzer",
+            "romanian": "#/components/schemas/_types.analysis.RomanianAnalyzer",
+            "russian": "#/components/schemas/_types.analysis.RussianAnalyzer",
+            "serbian": "#/components/schemas/_types.analysis.SerbianAnalyzer",
+            "sorani": "#/components/schemas/_types.analysis.SoraniAnalyzer",
+            "spanish": "#/components/schemas/_types.analysis.SpanishAnalyzer",
+            "swedish": "#/components/schemas/_types.analysis.SwedishAnalyzer",
+            "turkish": "#/components/schemas/_types.analysis.TurkishAnalyzer",
+            "thai": "#/components/schemas/_types.analysis.ThaiAnalyzer"
+          }
         },
         "oneOf": [
           {
@@ -53716,7 +53774,14 @@
       },
       "_types.analysis.CharFilterDefinition": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "html_strip": "#/components/schemas/_types.analysis.HtmlStripCharFilter",
+            "mapping": "#/components/schemas/_types.analysis.MappingCharFilter",
+            "pattern_replace": "#/components/schemas/_types.analysis.PatternReplaceCharFilter",
+            "icu_normalizer": "#/components/schemas/_types.analysis.IcuNormalizationCharFilter",
+            "kuromoji_iteration_mark": "#/components/schemas/_types.analysis.KuromojiIterationMarkCharFilter"
+          }
         },
         "oneOf": [
           {
@@ -53918,7 +53983,83 @@
       },
       "_types.analysis.TokenFilterDefinition": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "apostrophe": "#/components/schemas/_types.analysis.ApostropheTokenFilter",
+            "arabic_stem": "#/components/schemas/_types.analysis.ArabicStemTokenFilter",
+            "arabic_normalization": "#/components/schemas/_types.analysis.ArabicNormalizationTokenFilter",
+            "asciifolding": "#/components/schemas/_types.analysis.AsciiFoldingTokenFilter",
+            "bengali_normalization": "#/components/schemas/_types.analysis.BengaliNormalizationTokenFilter",
+            "brazilian_stem": "#/components/schemas/_types.analysis.BrazilianStemTokenFilter",
+            "cjk_bigram": "#/components/schemas/_types.analysis.CjkBigramTokenFilter",
+            "cjk_width": "#/components/schemas/_types.analysis.CjkWidthTokenFilter",
+            "classic": "#/components/schemas/_types.analysis.ClassicTokenFilter",
+            "common_grams": "#/components/schemas/_types.analysis.CommonGramsTokenFilter",
+            "condition": "#/components/schemas/_types.analysis.ConditionTokenFilter",
+            "czech_stem": "#/components/schemas/_types.analysis.CzechStemTokenFilter",
+            "decimal_digit": "#/components/schemas/_types.analysis.DecimalDigitTokenFilter",
+            "delimited_payload": "#/components/schemas/_types.analysis.DelimitedPayloadTokenFilter",
+            "dutch_stem": "#/components/schemas/_types.analysis.DutchStemTokenFilter",
+            "edge_ngram": "#/components/schemas/_types.analysis.EdgeNGramTokenFilter",
+            "elision": "#/components/schemas/_types.analysis.ElisionTokenFilter",
+            "fingerprint": "#/components/schemas/_types.analysis.FingerprintTokenFilter",
+            "flatten_graph": "#/components/schemas/_types.analysis.FlattenGraphTokenFilter",
+            "french_stem": "#/components/schemas/_types.analysis.FrenchStemTokenFilter",
+            "german_normalization": "#/components/schemas/_types.analysis.GermanNormalizationTokenFilter",
+            "german_stem": "#/components/schemas/_types.analysis.GermanStemTokenFilter",
+            "hindi_normalization": "#/components/schemas/_types.analysis.HindiNormalizationTokenFilter",
+            "hunspell": "#/components/schemas/_types.analysis.HunspellTokenFilter",
+            "hyphenation_decompounder": "#/components/schemas/_types.analysis.HyphenationDecompounderTokenFilter",
+            "indic_normalization": "#/components/schemas/_types.analysis.IndicNormalizationTokenFilter",
+            "keep_types": "#/components/schemas/_types.analysis.KeepTypesTokenFilter",
+            "keep": "#/components/schemas/_types.analysis.KeepWordsTokenFilter",
+            "keyword_marker": "#/components/schemas/_types.analysis.KeywordMarkerTokenFilter",
+            "keyword_repeat": "#/components/schemas/_types.analysis.KeywordRepeatTokenFilter",
+            "kstem": "#/components/schemas/_types.analysis.KStemTokenFilter",
+            "length": "#/components/schemas/_types.analysis.LengthTokenFilter",
+            "limit": "#/components/schemas/_types.analysis.LimitTokenCountTokenFilter",
+            "lowercase": "#/components/schemas/_types.analysis.LowercaseTokenFilter",
+            "min_hash": "#/components/schemas/_types.analysis.MinHashTokenFilter",
+            "multiplexer": "#/components/schemas/_types.analysis.MultiplexerTokenFilter",
+            "ngram": "#/components/schemas/_types.analysis.NGramTokenFilter",
+            "nori_part_of_speech": "#/components/schemas/_types.analysis.NoriPartOfSpeechTokenFilter",
+            "pattern_capture": "#/components/schemas/_types.analysis.PatternCaptureTokenFilter",
+            "pattern_replace": "#/components/schemas/_types.analysis.PatternReplaceTokenFilter",
+            "persian_normalization": "#/components/schemas/_types.analysis.PersianNormalizationTokenFilter",
+            "persian_stem": "#/components/schemas/_types.analysis.PersianStemTokenFilter",
+            "porter_stem": "#/components/schemas/_types.analysis.PorterStemTokenFilter",
+            "predicate_token_filter": "#/components/schemas/_types.analysis.PredicateTokenFilter",
+            "remove_duplicates": "#/components/schemas/_types.analysis.RemoveDuplicatesTokenFilter",
+            "reverse": "#/components/schemas/_types.analysis.ReverseTokenFilter",
+            "russian_stem": "#/components/schemas/_types.analysis.RussianStemTokenFilter",
+            "scandinavian_folding": "#/components/schemas/_types.analysis.ScandinavianFoldingTokenFilter",
+            "scandinavian_normalization": "#/components/schemas/_types.analysis.ScandinavianNormalizationTokenFilter",
+            "serbian_normalization": "#/components/schemas/_types.analysis.SerbianNormalizationTokenFilter",
+            "shingle": "#/components/schemas/_types.analysis.ShingleTokenFilter",
+            "snowball": "#/components/schemas/_types.analysis.SnowballTokenFilter",
+            "sorani_normalization": "#/components/schemas/_types.analysis.SoraniNormalizationTokenFilter",
+            "stemmer_override": "#/components/schemas/_types.analysis.StemmerOverrideTokenFilter",
+            "stemmer": "#/components/schemas/_types.analysis.StemmerTokenFilter",
+            "stop": "#/components/schemas/_types.analysis.StopTokenFilter",
+            "synonym_graph": "#/components/schemas/_types.analysis.SynonymGraphTokenFilter",
+            "synonym": "#/components/schemas/_types.analysis.SynonymTokenFilter",
+            "trim": "#/components/schemas/_types.analysis.TrimTokenFilter",
+            "truncate": "#/components/schemas/_types.analysis.TruncateTokenFilter",
+            "unique": "#/components/schemas/_types.analysis.UniqueTokenFilter",
+            "uppercase": "#/components/schemas/_types.analysis.UppercaseTokenFilter",
+            "word_delimiter_graph": "#/components/schemas/_types.analysis.WordDelimiterGraphTokenFilter",
+            "word_delimiter": "#/components/schemas/_types.analysis.WordDelimiterTokenFilter",
+            "ja_stop": "#/components/schemas/_types.analysis.JaStopTokenFilter",
+            "kuromoji_stemmer": "#/components/schemas/_types.analysis.KuromojiStemmerTokenFilter",
+            "kuromoji_readingform": "#/components/schemas/_types.analysis.KuromojiReadingFormTokenFilter",
+            "kuromoji_part_of_speech": "#/components/schemas/_types.analysis.KuromojiPartOfSpeechTokenFilter",
+            "icu_collation": "#/components/schemas/_types.analysis.IcuCollationTokenFilter",
+            "icu_folding": "#/components/schemas/_types.analysis.IcuFoldingTokenFilter",
+            "icu_normalizer": "#/components/schemas/_types.analysis.IcuNormalizationTokenFilter",
+            "icu_transform": "#/components/schemas/_types.analysis.IcuTransformTokenFilter",
+            "phonetic": "#/components/schemas/_types.analysis.PhoneticTokenFilter",
+            "dictionary_decompounder": "#/components/schemas/_types.analysis.DictionaryDecompounderTokenFilter"
+          }
         },
         "oneOf": [
           {
@@ -56568,7 +56709,11 @@
       },
       "_types.analysis.Normalizer": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "lowercase": "#/components/schemas/_types.analysis.LowercaseNormalizer",
+            "custom": "#/components/schemas/_types.analysis.CustomNormalizer"
+          }
         },
         "oneOf": [
           {
@@ -56634,7 +56779,27 @@
       },
       "_types.analysis.TokenizerDefinition": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "char_group": "#/components/schemas/_types.analysis.CharGroupTokenizer",
+            "classic": "#/components/schemas/_types.analysis.ClassicTokenizer",
+            "edge_ngram": "#/components/schemas/_types.analysis.EdgeNGramTokenizer",
+            "keyword": "#/components/schemas/_types.analysis.KeywordTokenizer",
+            "letter": "#/components/schemas/_types.analysis.LetterTokenizer",
+            "lowercase": "#/components/schemas/_types.analysis.LowercaseTokenizer",
+            "ngram": "#/components/schemas/_types.analysis.NGramTokenizer",
+            "path_hierarchy": "#/components/schemas/_types.analysis.PathHierarchyTokenizer",
+            "pattern": "#/components/schemas/_types.analysis.PatternTokenizer",
+            "simple_pattern": "#/components/schemas/_types.analysis.SimplePatternTokenizer",
+            "simple_pattern_split": "#/components/schemas/_types.analysis.SimplePatternSplitTokenizer",
+            "standard": "#/components/schemas/_types.analysis.StandardTokenizer",
+            "thai": "#/components/schemas/_types.analysis.ThaiTokenizer",
+            "uax_url_email": "#/components/schemas/_types.analysis.UaxEmailUrlTokenizer",
+            "whitespace": "#/components/schemas/_types.analysis.WhitespaceTokenizer",
+            "icu_tokenizer": "#/components/schemas/_types.analysis.IcuTokenizer",
+            "kuromoji_tokenizer": "#/components/schemas/_types.analysis.KuromojiTokenizer",
+            "nori_tokenizer": "#/components/schemas/_types.analysis.NoriTokenizer"
+          }
         },
         "oneOf": [
           {
@@ -57290,7 +57455,17 @@
       },
       "indices._types.SettingsSimilarity": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "BM25": "#/components/schemas/indices._types.SettingsSimilarityBm25",
+            "boolean": "#/components/schemas/indices._types.SettingsSimilarityBoolean",
+            "DFI": "#/components/schemas/indices._types.SettingsSimilarityDfi",
+            "DFR": "#/components/schemas/indices._types.SettingsSimilarityDfr",
+            "IB": "#/components/schemas/indices._types.SettingsSimilarityIb",
+            "LMDirichlet": "#/components/schemas/indices._types.SettingsSimilarityLmd",
+            "LMJelinekMercer": "#/components/schemas/indices._types.SettingsSimilarityLmj",
+            "scripted": "#/components/schemas/indices._types.SettingsSimilarityScripted"
+          }
         },
         "oneOf": [
           {
@@ -58125,7 +58300,61 @@
       },
       "_types.mapping.Property": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "binary": "#/components/schemas/_types.mapping.BinaryProperty",
+            "boolean": "#/components/schemas/_types.mapping.BooleanProperty",
+            "{dynamic_type}": "#/components/schemas/_types.mapping.DynamicProperty",
+            "join": "#/components/schemas/_types.mapping.JoinProperty",
+            "keyword": "#/components/schemas/_types.mapping.KeywordProperty",
+            "match_only_text": "#/components/schemas/_types.mapping.MatchOnlyTextProperty",
+            "percolator": "#/components/schemas/_types.mapping.PercolatorProperty",
+            "rank_feature": "#/components/schemas/_types.mapping.RankFeatureProperty",
+            "rank_features": "#/components/schemas/_types.mapping.RankFeaturesProperty",
+            "search_as_you_type": "#/components/schemas/_types.mapping.SearchAsYouTypeProperty",
+            "text": "#/components/schemas/_types.mapping.TextProperty",
+            "version": "#/components/schemas/_types.mapping.VersionProperty",
+            "wildcard": "#/components/schemas/_types.mapping.WildcardProperty",
+            "date_nanos": "#/components/schemas/_types.mapping.DateNanosProperty",
+            "date": "#/components/schemas/_types.mapping.DateProperty",
+            "aggregate_metric_double": "#/components/schemas/_types.mapping.AggregateMetricDoubleProperty",
+            "dense_vector": "#/components/schemas/_types.mapping.DenseVectorProperty",
+            "flattened": "#/components/schemas/_types.mapping.FlattenedProperty",
+            "nested": "#/components/schemas/_types.mapping.NestedProperty",
+            "object": "#/components/schemas/_types.mapping.ObjectProperty",
+            "passthrough": "#/components/schemas/_types.mapping.PassthroughObjectProperty",
+            "rank_vectors": "#/components/schemas/_types.mapping.RankVectorProperty",
+            "semantic_text": "#/components/schemas/_types.mapping.SemanticTextProperty",
+            "sparse_vector": "#/components/schemas/_types.mapping.SparseVectorProperty",
+            "completion": "#/components/schemas/_types.mapping.CompletionProperty",
+            "constant_keyword": "#/components/schemas/_types.mapping.ConstantKeywordProperty",
+            "counted_keyword": "#/components/schemas/_types.mapping.CountedKeywordProperty",
+            "alias": "#/components/schemas/_types.mapping.FieldAliasProperty",
+            "histogram": "#/components/schemas/_types.mapping.HistogramProperty",
+            "ip": "#/components/schemas/_types.mapping.IpProperty",
+            "murmur3": "#/components/schemas/_types.mapping.Murmur3HashProperty",
+            "token_count": "#/components/schemas/_types.mapping.TokenCountProperty",
+            "geo_point": "#/components/schemas/_types.mapping.GeoPointProperty",
+            "geo_shape": "#/components/schemas/_types.mapping.GeoShapeProperty",
+            "point": "#/components/schemas/_types.mapping.PointProperty",
+            "shape": "#/components/schemas/_types.mapping.ShapeProperty",
+            "byte": "#/components/schemas/_types.mapping.ByteNumberProperty",
+            "double": "#/components/schemas/_types.mapping.DoubleNumberProperty",
+            "float": "#/components/schemas/_types.mapping.FloatNumberProperty",
+            "half_float": "#/components/schemas/_types.mapping.HalfFloatNumberProperty",
+            "integer": "#/components/schemas/_types.mapping.IntegerNumberProperty",
+            "long": "#/components/schemas/_types.mapping.LongNumberProperty",
+            "scaled_float": "#/components/schemas/_types.mapping.ScaledFloatNumberProperty",
+            "short": "#/components/schemas/_types.mapping.ShortNumberProperty",
+            "unsigned_long": "#/components/schemas/_types.mapping.UnsignedLongNumberProperty",
+            "date_range": "#/components/schemas/_types.mapping.DateRangeProperty",
+            "double_range": "#/components/schemas/_types.mapping.DoubleRangeProperty",
+            "float_range": "#/components/schemas/_types.mapping.FloatRangeProperty",
+            "integer_range": "#/components/schemas/_types.mapping.IntegerRangeProperty",
+            "ip_range": "#/components/schemas/_types.mapping.IpRangeProperty",
+            "long_range": "#/components/schemas/_types.mapping.LongRangeProperty",
+            "icu_collation_keyword": "#/components/schemas/_types.mapping.IcuCollationProperty"
+          }
         },
         "oneOf": [
           {
@@ -61922,7 +62151,14 @@
       },
       "connector._types.Validation": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "less_than": "#/components/schemas/connector._types.LessThanValidation",
+            "greater_than": "#/components/schemas/connector._types.GreaterThanValidation",
+            "list_type": "#/components/schemas/connector._types.ListTypeValidation",
+            "included_in": "#/components/schemas/connector._types.IncludedInValidation",
+            "regex": "#/components/schemas/connector._types.RegexValidation"
+          }
         },
         "oneOf": [
           {
@@ -71357,15 +71593,10 @@
                 "description": "Controls what properties are added to `target_field`.",
                 "default": [
                   "name",
-                  "major",
-                  "minor",
-                  "patch",
-                  "build",
                   "os",
-                  "os_name",
-                  "os_major",
-                  "os_minor",
-                  "device"
+                  "device",
+                  "original",
+                  "version"
                 ],
                 "type": "array",
                 "items": {

@@ -6,6 +6,12 @@
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
+    },
+    "capabilities": {
+      "request": [
+        "Request: query parameter 'timeout' does not exist in the json spec"
+      ],
+      "response": []
     }
   },
   "generalErrors": [
