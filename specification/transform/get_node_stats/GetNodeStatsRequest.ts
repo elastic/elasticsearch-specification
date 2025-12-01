@@ -26,8 +26,6 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name transform.get_node_stats
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
- * @cluster_privileges monitor_transform
- * @index_privileges read, view_index_metadata
  * @doc_id get-node-stats
  */
 export interface Request extends RequestBase {
