@@ -63,7 +63,7 @@ export interface Request extends RequestBase {
     /**
      * If provided, must be the same identifier as in the path.
      */
-    id?: Id,
+    id?: Id
     /**
      * Specifies what to do when the request: contains wildcard expressions and there are no deployments that match;
      * contains the  `_all` string or no identifiers and there are no matches; or contains wildcard expressions and
