@@ -20,9 +20,9 @@
 import { RequestBase } from '@_types/Base'
 
 /**
- * Get transform stats.
+ * Get node stats.
  *
- * Get usage information for transforms.
+ * Get per-node information about transform usage.
  * @rest_spec_name transform.get_node_stats
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
