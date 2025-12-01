@@ -28527,6 +28527,35 @@
         ]
       }
     },
+    "/_transform/_node_stats": {
+      "get": {
+        "tags": [
+          "transform"
+        ],
+        "summary": "Get node stats",
+        "description": "Get per-node information about transform usage.",
+        "operationId": "transform-get-node-stats",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/transform.get_node_stats.TransformNodeStats"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_transform": {
       "get": {
         "tags": [
@@ -81424,6 +81453,50 @@
           "running_time_in_nanos",
           "start_time_in_millis",
           "type"
+        ]
+      },
+      "transform.get_node_stats.TransformNodeStats": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/transform.get_node_stats.Scheduler"
+              }
+            ]
+          }
+        },
+        "required": [
+          "total"
+        ]
+      },
+      "transform.get_node_stats.Scheduler": {
+        "type": "object",
+        "properties": {
+          "scheduler": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/transform.get_node_stats.TransformNodeStatsDetails"
+              }
+            ]
+          }
+        },
+        "required": [
+          "scheduler"
+        ]
+      },
+      "transform.get_node_stats.TransformNodeStatsDetails": {
+        "type": "object",
+        "properties": {
+          "registered_transform_count": {
+            "type": "number"
+          },
+          "peek_transform": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "registered_transform_count"
         ]
       },
       "transform.get_transform.TransformSummary": {

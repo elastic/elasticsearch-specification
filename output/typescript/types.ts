@@ -23089,6 +23089,26 @@ export interface TransformDeleteTransformRequest extends RequestBase {
 
 export type TransformDeleteTransformResponse = AcknowledgedResponseBase
 
+export interface TransformGetNodeStatsRequest extends RequestBase {
+}
+
+export type TransformGetNodeStatsResponse = TransformGetNodeStatsTransformNodeStats
+
+export interface TransformGetNodeStatsScheduler {
+  scheduler: TransformGetNodeStatsTransformNodeStatsDetails
+}
+
+export interface TransformGetNodeStatsTransformNodeStatsKeys {
+  total: TransformGetNodeStatsScheduler
+}
+export type TransformGetNodeStatsTransformNodeStats = TransformGetNodeStatsTransformNodeStatsKeys
+  & { [property: string]: TransformGetNodeStatsScheduler }
+
+export interface TransformGetNodeStatsTransformNodeStatsDetails {
+  registered_transform_count: integer
+  peek_transform?: string
+}
+
 export interface TransformGetTransformRequest extends RequestBase {
   transform_id?: Names
   allow_no_match?: boolean
