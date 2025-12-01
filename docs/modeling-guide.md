@@ -562,6 +562,28 @@ export class Example {
 }
 ```
 
+### Stability property for `@availability`
+
+The `stability` property can be added to an `@availability` annotation to indicate the maturity and expected backwards-compatibility of an API or property.
+
+Syntax:
+```ts
+/** @availability stack since=<version> stability=<value> */
+```
+
+Values and meaning:
+- `stable` => "Generally available"
+- `beta` => "Beta"
+- `experimental` => "Technical Preview"
+
+Examples:
+```ts
+/**
+ * @rest_spec_name indices.create
+ * @availability stack since=1.0.0 stability=experimental
+ */
+```
+
 #### description
 
 You can (and should!) add a description for each type and property. For an in-depth explanation of how to write good descriptions, see [Documenting the API specification](doc-comments-guide.md).
