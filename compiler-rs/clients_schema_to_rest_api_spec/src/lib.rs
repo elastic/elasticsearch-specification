@@ -244,6 +244,7 @@ const BUILTIN_MAPPINGS: &[((&str, &str), &str)] = &[
 
 fn is_list_enum(union: &UnionOf) -> Option<TypeName> {
     // if union of X and X[]
+    // TODO handle X[] | X
     if union.items.len() == 2 {
         // check if first item is InstanceOf and second is ArrayOf
         if let ValueOf::InstanceOf(instance) = &union.items[0]
@@ -281,6 +282,7 @@ fn is_index_name_and_alias(union: &UnionOf) -> bool {
 
 fn is_literal(instance: &InstanceOf) -> Option<String> {
     let key = (instance.typ.namespace.as_str(), instance.typ.name.as_str());
+    // TODO BUILTIN_MAPPINGS could be a type with a get method
     if let Some(&mapped_type) = BUILTIN_MAPPINGS.iter().find(|&&(k, _)| k == key).map(|(_, v)| v) {
         Some(mapped_type.to_string())
     } else {
@@ -441,6 +443,7 @@ fn extract_visibility_from_availabilities(availabilities: &Option<clients_schema
 /// Extract stability information from availabilities
 /// Uses stack flavor stability, defaults to "stable" if not specified
 fn extract_stability_from_availabilities(availabilities: &Option<clients_schema::Availabilities>) -> Option<String> {
+    // Use map() to simplify the nested if let structure
     if let Some(avails) = availabilities
         && let Some(stack_availability) = avails.get(&Flavor::Stack)
             && let Some(ref stability) = stack_availability.stability {
