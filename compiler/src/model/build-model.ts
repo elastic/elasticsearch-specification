@@ -53,7 +53,8 @@ import {
   verifyUniqueness,
   parseJsDocTags,
   deepEqual,
-  sourceLocation, sortTypeDefinitions, parseDeprecation
+  sourceLocation, sortTypeDefinitions, parseDeprecation,
+  mediaTypeToStringArray
 } from './utils'
 
 const jsonSpec = buildJsonSpec()
@@ -247,6 +248,14 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           assert(member, property.properties.length > 0, 'There is no need to declare an empty object path_parts, just remove the path_parts declaration.')
           pathMember = member
           type.path = property.properties
+        } else if (name == 'request_media_type' || name == 'response_media_type') {
+          // add those property to requestMediaType and responseMediaType of the endpoint
+          const mediaType = (member as PropertySignature).getStructure().type as string
+          if (name === 'request_media_type') {
+            mapping.requestMediaType = mediaTypeToStringArray(mediaType)
+          } else if (name === 'response_media_type') {
+            mapping.responseMediaType = mediaTypeToStringArray(mediaType)
+          }
         } else if (name === 'query_parameters') {
           const property = visitRequestOrResponseProperty(member)
           assert(member, property.properties.length > 0, 'There is no need to declare an empty object query_parameters, just remove the query_parameters declaration.')
