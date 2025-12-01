@@ -1074,7 +1074,9 @@ export function parseJsDocTags (jsDoc: JSDoc[]): Record<string, string> {
         value: tag.getComment() ?? ''
       }
     })
-  const mapped = tags.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.value }), {})
+  // Ignore UpdateForV10 which is only useful at the eslint level
+  const filteredTags = tags.filter(tag => tag.name !== 'UpdateForV10')
+  const mapped = filteredTags.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.value }), {})
   return mapped
 }
 
