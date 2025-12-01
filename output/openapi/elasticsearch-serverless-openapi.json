@@ -20439,6 +20439,34 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "If provided, must be the same identifier as in the path.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Id"
+                      }
+                    ]
+                  },
+                  "timeout": {
+                    "description": "Controls the amount of time to wait until the data frame analytics job\nstarts.",
+                    "default": "20s",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -20803,6 +20831,44 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "If provided, must be the same identifier as in the path.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Id"
+                      }
+                    ]
+                  },
+                  "allow_no_match": {
+                    "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no data frame analytics\njobs that match.\n2. Contains the _all string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is true, which returns an empty data_frame_analytics\narray when there are no matches and the subset of results when there are\npartial matches. If this parameter is false, the request returns a 404\nstatus code when there are no matches or only partial matches.",
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "force": {
+                    "description": "If true, the data frame analytics job is stopped forcefully.",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "timeout": {
+                    "description": "Controls the amount of time to wait until the data frame analytics job\nstops. Defaults to 20 seconds.",
+                    "default": "20s",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -20989,6 +21055,35 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "If provided, must be the same identifier as in the path.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Id"
+                      }
+                    ]
+                  },
+                  "allow_no_match": {
+                    "description": "Specifies what to do when the request: contains wildcard expressions and there are no deployments that match;\ncontains the  `_all` string or no identifiers and there are no matches; or contains wildcard expressions and\nthere are only partial matches. By default, it returns an empty array when there are no matches and the subset of results when there are partial matches.\nIf `false`, the request returns a 404 status code when there are no matches or only partial matches.",
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "force": {
+                    "description": "Forcefully stops the deployment, even if it is used by ingest pipelines. You can't use these pipelines until you\nrestart the model deployment.",
+                    "default": false,
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
