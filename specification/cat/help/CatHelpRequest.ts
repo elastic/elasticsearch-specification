@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { MediaType } from "@_types/common"
+import { MediaType } from '@_types/common'
 
 /**
  * Get CAT help.

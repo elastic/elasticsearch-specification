@@ -40,6 +40,6 @@ export interface Request extends RequestBase {
   /**
    * The filter conditions for stacktraces
    * @codegen_name conditions
-  */
+   */
   body: UserDefinedValue
 }
