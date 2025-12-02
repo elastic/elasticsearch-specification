@@ -1380,23 +1380,27 @@
   "specification/cluster/put_component_template/examples/request/ClusterPutComponentTemplateRequestExample2.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.cluster.put_component_template(\n    name=\"template_1\",\n    template=None,\n    settings={\n        \"number_of_shards\": 1\n    },\n    aliases={\n        \"alias1\": {},\n        \"alias2\": {\n            \"filter\": {\n                \"term\": {\n                    \"user.id\": \"kimchy\"\n                }\n            },\n            \"routing\": \"shard-1\"\n        },\n        \"{index}-alias\": {}\n    },\n)"
+      "code": "resp = client.cluster.put_component_template(\n    name=\"template_1\",\n    template={\n        \"settings\": {\n            \"number_of_shards\": 1\n        },\n        \"aliases\": {\n            \"alias1\": {},\n            \"alias2\": {\n                \"filter\": {\n                    \"term\": {\n                        \"user.id\": \"kimchy\"\n                    }\n                },\n                \"routing\": \"shard-1\"\n            },\n            \"{index}-alias\": {}\n        }\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.cluster.putComponentTemplate({\n  name: \"template_1\",\n  template: null,\n  settings: {\n    number_of_shards: 1,\n  },\n  aliases: {\n    alias1: {},\n    alias2: {\n      filter: {\n        term: {\n          \"user.id\": \"kimchy\",\n        },\n      },\n      routing: \"shard-1\",\n    },\n    \"{index}-alias\": {},\n  },\n});"
+      "code": "const response = await client.cluster.putComponentTemplate({\n  name: \"template_1\",\n  template: {\n    settings: {\n      number_of_shards: 1,\n    },\n    aliases: {\n      alias1: {},\n      alias2: {\n        filter: {\n          term: {\n            \"user.id\": \"kimchy\",\n          },\n        },\n        routing: \"shard-1\",\n      },\n      \"{index}-alias\": {},\n    },\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.cluster.put_component_template(\n  name: \"template_1\",\n  body: {\n    \"template\": nil,\n    \"settings\": {\n      \"number_of_shards\": 1\n    },\n    \"aliases\": {\n      \"alias1\": {},\n      \"alias2\": {\n        \"filter\": {\n          \"term\": {\n            \"user.id\": \"kimchy\"\n          }\n        },\n        \"routing\": \"shard-1\"\n      },\n      \"{index}-alias\": {}\n    }\n  }\n)"
+      "code": "response = client.cluster.put_component_template(\n  name: \"template_1\",\n  body: {\n    \"template\": {\n      \"settings\": {\n        \"number_of_shards\": 1\n      },\n      \"aliases\": {\n        \"alias1\": {},\n        \"alias2\": {\n          \"filter\": {\n            \"term\": {\n              \"user.id\": \"kimchy\"\n            }\n          },\n          \"routing\": \"shard-1\"\n        },\n        \"{index}-alias\": {}\n      }\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->cluster()->putComponentTemplate([\n    \"name\" => \"template_1\",\n    \"body\" => [\n        \"template\" => null,\n        \"settings\" => [\n            \"number_of_shards\" => 1,\n        ],\n        \"aliases\" => [\n            \"alias1\" => new ArrayObject([]),\n            \"alias2\" => [\n                \"filter\" => [\n                    \"term\" => [\n                        \"user.id\" => \"kimchy\",\n                    ],\n                ],\n                \"routing\" => \"shard-1\",\n            ],\n            \"{index}-alias\" => new ArrayObject([]),\n        ],\n    ],\n]);"
+      "code": "$resp = $client->cluster()->putComponentTemplate([\n    \"name\" => \"template_1\",\n    \"body\" => [\n        \"template\" => [\n            \"settings\" => [\n                \"number_of_shards\" => 1,\n            ],\n            \"aliases\" => [\n                \"alias1\" => new ArrayObject([]),\n                \"alias2\" => [\n                    \"filter\" => [\n                        \"term\" => [\n                            \"user.id\" => \"kimchy\",\n                        ],\n                    ],\n                    \"routing\" => \"shard-1\",\n                ],\n                \"{index}-alias\" => new ArrayObject([]),\n            ],\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"template\":null,\"settings\":{\"number_of_shards\":1},\"aliases\":{\"alias1\":{},\"alias2\":{\"filter\":{\"term\":{\"user.id\":\"kimchy\"}},\"routing\":\"shard-1\"},\"{index}-alias\":{}}}' \"$ELASTICSEARCH_URL/_component_template/template_1\""
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"template\":{\"settings\":{\"number_of_shards\":1},\"aliases\":{\"alias1\":{},\"alias2\":{\"filter\":{\"term\":{\"user.id\":\"kimchy\"}},\"routing\":\"shard-1\"},\"{index}-alias\":{}}}}' \"$ELASTICSEARCH_URL/_component_template/template_1\""
+    },
+    {
+      "language": "Java",
+      "code": "client.cluster().putComponentTemplate(p -> p\n    .name(\"template_1\")\n    .template(t -> t\n        .aliases(Map.of(\"alias1\", Alias.of(a -> a),\"{index}-alias\", Alias.of(a -> a),\"alias2\", Alias.of(a -> a\n                .filter(f -> f\n                    .term(te -> te\n                        .field(\"user.id\")\n                        .value(FieldValue.of(\"kimchy\"))\n                    )\n                )\n                .routing(\"shard-1\")\n            )))\n        .settings(s -> s\n            .numberOfShards(\"1\")\n        )\n    )\n);\n"
     }
   ],
   "specification/cluster/get_settings/examples/request/ClusterGetSettingsExample1.yaml": [
@@ -1422,7 +1426,7 @@
     },
     {
       "language": "Java",
-      "code": "\n"
+      "code": "client.cluster().getSettings(g -> g);\n"
     }
   ],
   "specification/cluster/reroute/examples/request/ClusterRerouteRequestExample1.yaml": [
@@ -1445,6 +1449,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"commands\":[{\"move\":{\"index\":\"test\",\"shard\":0,\"from_node\":\"node1\",\"to_node\":\"node2\"}},{\"allocate_replica\":{\"index\":\"test\",\"shard\":1,\"node\":\"node3\"}}]}' \"$ELASTICSEARCH_URL/_cluster/reroute?metric=none\""
+    },
+    {
+      "language": "Java",
+      "code": "client.cluster().reroute(r -> r\n    .commands(List.of(Command.of(c -> c\n            .move(m -> m\n                .index(\"test\")\n                .shard(0)\n                .fromNode(\"node1\")\n                .toNode(\"node2\")\n            )\n        ),Command.of(c -> c\n            .allocateReplica(a -> a\n                .index(\"test\")\n                .shard(1)\n                .node(\"node3\")\n            )\n        )))\n    .metric(\"none\")\n);\n"
     }
   ],
   "specification/cluster/allocation_explain/examples/request/ClusterAllocationExplainRequestExample1.yaml": [
@@ -1574,7 +1582,7 @@
     },
     {
       "language": "Java",
-      "code": "\n"
+      "code": "client.cluster().state(s -> s);\n"
     }
   ],
   "specification/cluster/info/examples/request/ClusterInfoExample1.yaml": [
@@ -1652,7 +1660,7 @@
     },
     {
       "language": "Java",
-      "code": "\n"
+      "code": "client.cluster().stats(s -> s);\n"
     }
   ],
   "specification/cluster/get_component_template/examples/request/ClusterGetComponentTemplateExample1.yaml": [
@@ -1753,6 +1761,10 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_tasks?detailed=true&actions=*/delete/byquery\""
+    },
+    {
+      "language": "Java",
+      "code": "client.tasks().list(l -> l\n    .actions(\"*/delete/byquery\")\n    .detailed(true)\n);\n"
     }
   ],
   "specification/tasks/list/examples/request/ListTasksRequestExample1.yaml": [
@@ -1775,6 +1787,10 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_tasks?actions=*search&detailed\""
+    },
+    {
+      "language": "Java",
+      "code": "client.tasks().list(l -> l\n    .actions(\"*search\")\n    .detailed(true)\n);\n"
     }
   ],
   "specification/indices/simulate_template/examples/request/indicesSimulateTemplateRequestExample1.yaml": [
@@ -2213,6 +2229,10 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog\""
+    },
+    {
+      "language": "Java",
+      "code": "client.indices().getSettings(g -> g\n    .expandWildcards(\"all\")\n    .index(\"_all\")\n);\n"
     }
   ],
   "specification/indices/promote_data_stream/examples/request/IndicesPromoteDataStreamExample1.yaml": [
@@ -2339,6 +2359,10 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_resolve/index/f*,remoteCluster1:bar*?expand_wildcards=all\""
+    },
+    {
+      "language": "Java",
+      "code": "client.indices().resolveIndex(r -> r\n    .expandWildcards(\"all\")\n    .name(List.of(\"f*\",\"remoteCluster1:bar*\"))\n);\n"
     }
   ],
   "specification/indices/exists/examples/request/IndicesExistsExample1.yaml": [
@@ -2390,7 +2414,7 @@
     },
     {
       "language": "Java",
-      "code": "\n"
+      "code": "client.indices().recovery(r -> r);\n"
     }
   ],
   "specification/indices/put_settings/examples/request/indicesPutSettingsRequestExample3.yaml": [
@@ -3110,7 +3134,7 @@
     },
     {
       "language": "Java",
-      "code": "\n"
+      "code": "client.indices().getIndexTemplate(g -> g\n    .name(\"*\")\n);\n"
     }
   ],
   "specification/indices/get_data_lifecycle/examples/request/IndicesGetDataLifecycleRequestExample1.yaml": [
@@ -3136,7 +3160,7 @@
     },
     {
       "language": "Java",
-      "code": "\n"
+      "code": "client.indices().getDataLifecycle(g -> g\n    .name(\"{name}\")\n);\n"
     }
   ],
   "specification/indices/get_data_stream/examples/request/IndicesGetDataStreamExample1.yaml": [
@@ -3393,6 +3417,10 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_shard_stores?status=green\""
+    },
+    {
+      "language": "Java",
+      "code": "client.indices().shardStores(s -> s\n    .status(\"green\")\n);\n"
     }
   ],
   "specification/indices/get_data_stream_settings/examples/request/IndicesGetDataStreamSettingsRequestExample1.yaml": [
@@ -3756,7 +3784,7 @@
     },
     {
       "language": "Java",
-      "code": "\n"
+      "code": "client.indices().stats(s -> s\n    .fields(\"my_join_field\")\n    .metric(\"fielddata\")\n);\n"
     }
   ],
   "specification/indices/segments/examples/request/IndicesSegmentsExample1.yaml": [
@@ -4951,6 +4979,10 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"grid_agg\":\"geotile\",\"grid_precision\":2,\"fields\":[\"name\",\"price\"],\"query\":{\"term\":{\"included\":true}},\"aggs\":{\"min_price\":{\"min\":{\"field\":\"price\"}},\"max_price\":{\"max\":{\"field\":\"price\"}},\"avg_price\":{\"avg\":{\"field\":\"price\"}}}}' \"$ELASTICSEARCH_URL/museums/_mvt/location/13/4207/2692\""
+    },
+    {
+      "language": "Java",
+      "code": "client.searchMvt(s -> s\n    .aggs(Map.of(\"max_price\", Aggregation.of(a -> a\n            .max(m -> m\n                .field(\"price\")\n            )\n        ),\"min_price\", Aggregation.of(ag -> ag\n            .min(m -> m\n                .field(\"price\")\n            )\n        ),\"avg_price\", Aggregation.of(agg -> agg\n            .avg(av -> av\n                .field(\"price\")\n            )\n        )))\n    .field(\"location\")\n    .fields(List.of(\"name\",\"price\"))\n    .gridAgg(GridAggregationType.Geotile)\n    .gridPrecision(2)\n    .index(\"museums\")\n    .query(q -> q\n        .term(t -> t\n            .field(\"included\")\n            .value(FieldValue.of(true))\n        )\n    )\n    .x(4207)\n    .y(2692)\n    .zoom(13)\n);\n"
     }
   ],
   "specification/_global/delete_by_query_rethrottle/examples/request/DeleteByQueryRethrottleRequestExample1.yaml": [
@@ -4999,6 +5031,10 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_doc/1?stored_fields=tags,counter\""
+    },
+    {
+      "language": "Java",
+      "code": "client.get(g -> g\n    .id(\"1\")\n    .index(\"my-index-000001\")\n    .storedFields(List.of(\"tags\",\"counter\"))\n);\n"
     }
   ],
   "specification/_global/render_search_template/examples/request/RenderSearchTemplateRequestExample1.yaml": [
@@ -5229,6 +5265,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"index_filter\":{\"range\":{\"@timestamp\":{\"gte\":\"2018\"}}}}' \"$ELASTICSEARCH_URL/my-index-*/_field_caps?fields=rating\""
+    },
+    {
+      "language": "Java",
+      "code": "client.fieldCaps(f -> f\n    .fields(\"rating\")\n    .index(\"my-index-*\")\n    .indexFilter(i -> i\n        .range(r -> r\n            .untyped(u -> u\n                .field(\"@timestamp\")\n                .gte(JsonData.fromJson(\"\\\"2018\\\"\"))\n            )\n        )\n    )\n);\n"
     }
   ],
   "specification/_global/search/examples/request/SearchRequestExample1.yaml": [
@@ -9458,7 +9498,7 @@
     },
     {
       "language": "Java",
-      "code": "\n"
+      "code": "client.nodes().stats(s -> s\n    .metric(\"process\")\n);\n"
     }
   ],
   "specification/ingest/get_pipeline/examples/request/IngestGetPipelineExample1.yaml": [
@@ -9952,7 +9992,7 @@
     },
     {
       "language": "Java",
-      "code": "\n"
+      "code": "client.slm().getLifecycle(g -> g\n    .policyId(\"daily-snapshots\")\n);\n"
     }
   ],
   "specification/slm/put_lifecycle/examples/request/PutSnapshotLifecycleRequestExample1 copy.yaml": [
@@ -10296,23 +10336,23 @@
   "specification/synonyms/put_synonym/examples/request/SynonymsPutRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.synonyms.put_synonym(\n    id=\"my-synonyms-set\",\n)"
+      "code": "resp = client.synonyms.put_synonym(\n    id=\"my-synonyms-set\",\n    synonyms_set=\"hello, hi, howdy\",\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.synonyms.putSynonym({\n  id: \"my-synonyms-set\",\n});"
+      "code": "const response = await client.synonyms.putSynonym({\n  id: \"my-synonyms-set\",\n  synonyms_set: \"hello, hi, howdy\",\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.synonyms.put_synonym(\n  id: \"my-synonyms-set\"\n)"
+      "code": "response = client.synonyms.put_synonym(\n  id: \"my-synonyms-set\",\n  body: {\n    \"synonyms_set\": \"hello, hi, howdy\"\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->synonyms()->putSynonym([\n    \"id\" => \"my-synonyms-set\",\n]);"
+      "code": "$resp = $client->synonyms()->putSynonym([\n    \"id\" => \"my-synonyms-set\",\n    \"body\" => [\n        \"synonyms_set\" => \"hello, hi, howdy\",\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_synonyms/my-synonyms-set\""
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"synonyms_set\":\"hello, hi, howdy\"}' \"$ELASTICSEARCH_URL/_synonyms/my-synonyms-set\""
     }
   ],
   "specification/dangling_indices/list_dangling_indices/examples/request/DanglingIndicesListDanglingIndicesExample1.yaml": [
@@ -10702,7 +10742,7 @@
     },
     {
       "language": "Java",
-      "code": "\n"
+      "code": "client.ml().putDatafeed(p -> p\n    .datafeedId(\"datafeed-test-job\")\n    .indices(\"kibana_sample_data_logs\")\n    .jobId(\"test-job\")\n    .query(q -> q\n        .bool(b -> b\n            .must(m -> m\n                .matchAll(ma -> ma)\n            )\n        )\n    )\n);\n"
     }
   ],
   "specification/ml/update_job/examples/request/MlUpdateJobExample1.yaml": [
@@ -11690,7 +11730,7 @@
     },
     {
       "language": "Java",
-      "code": "\n"
+      "code": "client.ml().getMemoryStats(g -> g);\n"
     }
   ],
   "specification/ml/start_datafeed/examples/request/MlStartDatafeedExample1.yaml": [
@@ -12077,6 +12117,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"definition\":\"...\",\"total_definition_length\":265632637,\"total_parts\":64}' \"$ELASTICSEARCH_URL/_ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/definition/0\""
+    },
+    {
+      "language": "Java",
+      "code": "client.ml().putTrainedModelDefinitionPart(p -> p\n    .definition(\"...\")\n    .modelId(\"elastic__distilbert-base-uncased-finetuned-conll03-english\")\n    .part(0)\n    .totalDefinitionLength(265632637L)\n    .totalParts(64)\n);\n"
     }
   ],
   "specification/ml/put_data_frame_analytics/examples/request/MlPutDataFrameAnalyticsExample1.yaml": [
