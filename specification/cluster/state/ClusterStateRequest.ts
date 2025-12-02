@@ -18,7 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, VersionNumber } from '@_types/common'
+import {
+  ExpandWildcards,
+  Indices,
+  MediaType,
+  VersionNumber
+} from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -67,6 +72,7 @@ export interface Request extends RequestBase {
     metric?: ClusterStateMetrics
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /** @server_default true */
     allow_no_indices?: boolean

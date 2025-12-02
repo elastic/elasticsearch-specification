@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 /**
@@ -97,6 +97,7 @@ export interface Request extends RequestBase {
   path_parts: {
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     allow_no_indices?: boolean
     /**

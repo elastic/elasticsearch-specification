@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Refresh } from '@_types/common'
+import { MediaType, Refresh } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Actions } from './types'
 
@@ -56,6 +56,8 @@ export interface Request extends RequestBase {
       methods: ['PUT', 'POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     refresh?: Refresh
   }

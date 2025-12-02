@@ -240,6 +240,17 @@ export enum HttpMethod {
   HEAD
 }
 
+export enum MediaType {
+  Json,
+  Text,
+  Ndjson,
+  EventStream,
+  MapboxVectorTile,
+  // useful combinations
+  TextAndJson,
+  JsonAndNdjson
+}
+
 // This is the ClusterStatsLevel enum in Elasticsearch
 export enum Level {
   cluster,

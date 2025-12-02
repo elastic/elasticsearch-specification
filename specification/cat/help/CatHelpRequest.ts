@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { MediaType } from "@_types/common"
+
 /**
  * Get CAT help.
  *
@@ -33,4 +35,5 @@ export interface Request {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Text
 }

@@ -23,7 +23,8 @@ import {
   ExpandWildcards,
   Fields,
   Indices,
-  Level
+  Level,
+  MediaType
 } from '@_types/common'
 
 /**
@@ -68,6 +69,7 @@ export interface Request extends RequestBase {
     metric?: CommonStatsFlags
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Comma-separated list or wildcard expressions of fields to include in fielddata and suggest statistics.

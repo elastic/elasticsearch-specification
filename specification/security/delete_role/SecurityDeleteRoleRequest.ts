@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Refresh } from '@_types/common'
+import { MediaType, Name, Refresh } from '@_types/common'
 
 /**
  * Delete roles.
@@ -43,6 +43,7 @@ export interface Request extends RequestBase {
     /** The name of the role. */
     name: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     refresh?: Refresh
   }

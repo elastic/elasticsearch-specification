@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName, Name, VersionNumber } from '@_types/common'
+import { IndexName, MediaType, Name, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
@@ -66,6 +66,8 @@ export interface Request extends RequestBase {
   path_parts: {
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If true, this request cannot replace or update existing index templates.
