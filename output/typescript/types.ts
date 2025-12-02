@@ -107,6 +107,28 @@ export interface BulkWriteOperation extends BulkOperationBase {
   require_alias?: boolean
 }
 
+export interface CapabilitiesFailedNodeException {
+  node_id: Id
+}
+
+export interface CapabilitiesRequest extends RequestBase {
+  method?: CapabilitiesRestMethod
+  path?: string
+  parameters?: string | string[]
+  capabilities?: string | string[]
+  local_only?: boolean
+  timeout?: Duration
+}
+
+export interface CapabilitiesResponse {
+  _nodes: NodeStatistics
+  cluster_name: Name
+  supported: boolean | null
+  failures?: CapabilitiesFailedNodeException[]
+}
+
+export type CapabilitiesRestMethod = 'GET' | 'HEAD' | 'POST' | 'PUT' | 'DELETE'
+
 export interface ClearScrollRequest extends RequestBase {
   scroll_id?: ScrollIds
   body?: {
@@ -366,6 +388,7 @@ export interface FieldCapsRequest extends RequestBase {
     fields?: Fields
     index_filter?: QueryDslQueryContainer
     runtime_mappings?: MappingRuntimeFields
+    project_routing?: ProjectRouting
   }
 }
 
@@ -892,6 +915,7 @@ export interface OpenPointInTimeRequest extends RequestBase {
   max_concurrent_shard_requests?: integer
   body?: {
     index_filter?: QueryDslQueryContainer
+    project_routing?: ProjectRouting
   }
 }
 
@@ -1250,6 +1274,7 @@ export interface SearchRequest extends RequestBase {
     pit?: SearchPointInTimeReference
     runtime_mappings?: MappingRuntimeFields
     stats?: string[]
+    project_routing?: ProjectRouting
   }
 }
 
@@ -2376,6 +2401,18 @@ export type Distance = string
 
 export type DistanceUnit = 'in' | 'ft' | 'yd' | 'mi' | 'nmi' | 'km' | 'm' | 'cm' | 'mm'
 
+export interface DiversifyRetriever extends RetrieverBase {
+  type: DiversifyRetrieverTypes
+  field: string
+  retriever: RetrieverContainer
+  size?: integer
+  rank_window_size?: integer
+  query_vector?: QueryVector
+  lambda?: float
+}
+
+export type DiversifyRetrieverTypes = 'mmr'
+
 export interface DocStats {
   count: long
   deleted?: long
@@ -2892,6 +2929,7 @@ export interface RetrieverContainer {
   rescorer?: RescorerRetriever
   linear?: LinearRetriever
   pinned?: PinnedRetriever
+  diversify?: DiversifyRetriever
 }
 
 export type Routing = string | string[]
@@ -5859,7 +5897,7 @@ export interface MappingDateRangeProperty extends MappingRangePropertyBase {
   type: 'date_range'
 }
 
-export type MappingDenseVectorElementType = 'bit' | 'byte' | 'float'
+export type MappingDenseVectorElementType = 'bit' | 'byte' | 'float' | 'bfloat16'
 
 export interface MappingDenseVectorIndexOptions {
   confidence_interval?: float
@@ -7344,6 +7382,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     pit?: SearchPointInTimeReference
     runtime_mappings?: MappingRuntimeFields
     stats?: string[]
+    project_routing?: ProjectRouting
   }
 }
 
@@ -7424,6 +7463,10 @@ export type CatCatAllocationColumns = CatCatAllocationColumn | CatCatAllocationC
 export type CatCatAnomalyDetectorColumn = 'assignment_explanation' | 'ae' | 'buckets.count' | 'bc' | 'bucketsCount' | 'buckets.time.exp_avg' | 'btea' | 'bucketsTimeExpAvg' | 'buckets.time.exp_avg_hour' | 'bteah' | 'bucketsTimeExpAvgHour' | 'buckets.time.max' | 'btmax' | 'bucketsTimeMax' | 'buckets.time.min' | 'btmin' | 'bucketsTimeMin' | 'buckets.time.total' | 'btt' | 'bucketsTimeTotal' | 'data.buckets' | 'db' | 'dataBuckets' | 'data.earliest_record' | 'der' | 'dataEarliestRecord' | 'data.empty_buckets' | 'deb' | 'dataEmptyBuckets' | 'data.input_bytes' | 'dib' | 'dataInputBytes' | 'data.input_fields' | 'dif' | 'dataInputFields' | 'data.input_records' | 'dir' | 'dataInputRecords' | 'data.invalid_dates' | 'did' | 'dataInvalidDates' | 'data.last' | 'dl' | 'dataLast' | 'data.last_empty_bucket' | 'dleb' | 'dataLastEmptyBucket' | 'data.last_sparse_bucket' | 'dlsb' | 'dataLastSparseBucket' | 'data.latest_record' | 'dlr' | 'dataLatestRecord' | 'data.missing_fields' | 'dmf' | 'dataMissingFields' | 'data.out_of_order_timestamps' | 'doot' | 'dataOutOfOrderTimestamps' | 'data.processed_fields' | 'dpf' | 'dataProcessedFields' | 'data.processed_records' | 'dpr' | 'dataProcessedRecords' | 'data.sparse_buckets' | 'dsb' | 'dataSparseBuckets' | 'forecasts.memory.avg' | 'fmavg' | 'forecastsMemoryAvg' | 'forecasts.memory.max' | 'fmmax' | 'forecastsMemoryMax' | 'forecasts.memory.min' | 'fmmin' | 'forecastsMemoryMin' | 'forecasts.memory.total' | 'fmt' | 'forecastsMemoryTotal' | 'forecasts.records.avg' | 'fravg' | 'forecastsRecordsAvg' | 'forecasts.records.max' | 'frmax' | 'forecastsRecordsMax' | 'forecasts.records.min' | 'frmin' | 'forecastsRecordsMin' | 'forecasts.records.total' | 'frt' | 'forecastsRecordsTotal' | 'forecasts.time.avg' | 'ftavg' | 'forecastsTimeAvg' | 'forecasts.time.max' | 'ftmax' | 'forecastsTimeMax' | 'forecasts.time.min' | 'ftmin' | 'forecastsTimeMin' | 'forecasts.time.total' | 'ftt' | 'forecastsTimeTotal' | 'forecasts.total' | 'ft' | 'forecastsTotal' | 'id' | 'model.bucket_allocation_failures' | 'mbaf' | 'modelBucketAllocationFailures' | 'model.by_fields' | 'mbf' | 'modelByFields' | 'model.bytes' | 'mb' | 'modelBytes' | 'model.bytes_exceeded' | 'mbe' | 'modelBytesExceeded' | 'model.categorization_status' | 'mcs' | 'modelCategorizationStatus' | 'model.categorized_doc_count' | 'mcdc' | 'modelCategorizedDocCount' | 'model.dead_category_count' | 'mdcc' | 'modelDeadCategoryCount' | 'model.failed_category_count' | 'mdcc' | 'modelFailedCategoryCount' | 'model.frequent_category_count' | 'mfcc' | 'modelFrequentCategoryCount' | 'model.log_time' | 'mlt' | 'modelLogTime' | 'model.memory_limit' | 'mml' | 'modelMemoryLimit' | 'model.memory_status' | 'mms' | 'modelMemoryStatus' | 'model.over_fields' | 'mof' | 'modelOverFields' | 'model.partition_fields' | 'mpf' | 'modelPartitionFields' | 'model.rare_category_count' | 'mrcc' | 'modelRareCategoryCount' | 'model.timestamp' | 'mt' | 'modelTimestamp' | 'model.total_category_count' | 'mtcc' | 'modelTotalCategoryCount' | 'node.address' | 'na' | 'nodeAddress' | 'node.ephemeral_id' | 'ne' | 'nodeEphemeralId' | 'node.id' | 'ni' | 'nodeId' | 'node.name' | 'nn' | 'nodeName' | 'opened_time' | 'ot' | 'state' | 's'
 
 export type CatCatAnomalyDetectorColumns = CatCatAnomalyDetectorColumn | CatCatAnomalyDetectorColumn[]
+
+export type CatCatCircuitBreakerColumn = 'node_id' | 'id' | 'node_name' | 'nn' | 'breaker' | 'br' | 'limit' | 'l' | 'limit_bytes' | 'lb' | 'estimated' | 'e' | 'estimated_bytes' | 'eb' | 'tripped' | 't' | 'overhead' | 'o'| string
+
+export type CatCatCircuitBreakerColumns = CatCatCircuitBreakerColumn | CatCatCircuitBreakerColumn[]
 
 export type CatCatComponentColumn = 'name' | 'n' | 'version' | 'v' | 'alias_count' | 'a' | 'mapping_count' | 'm' | 'settings_count' | 's' | 'metadata_count' | 'me' | 'included_in' | 'i'| string
 
@@ -7587,6 +7630,37 @@ export interface CatAllocationRequest extends CatCatRequestBase {
 }
 
 export type CatAllocationResponse = CatAllocationAllocationRecord[]
+
+export interface CatCircuitBreakerCircuitBreakerRecord {
+  node_id?: NodeId
+  id?: NodeId
+  node_name?: string
+  nn?: string
+  breaker?: string
+  br?: string
+  limit?: string
+  l?: string
+  limit_bytes?: ByteSize
+  lb?: ByteSize
+  estimated?: string
+  e?: string
+  estimated_bytes?: ByteSize
+  eb?: ByteSize
+  tripped?: string
+  t?: string
+  overhead?: string
+  o?: string
+}
+
+export interface CatCircuitBreakerRequest extends CatCatRequestBase {
+  circuit_breaker_patterns?: string | string[]
+  h?: CatCatCircuitBreakerColumns
+  s?: Names
+  local?: boolean
+  master_timeout?: Duration
+}
+
+export type CatCircuitBreakerResponse = CatCircuitBreakerCircuitBreakerRecord[]
 
 export interface CatComponentTemplatesComponentTemplate {
   name: string
@@ -18652,6 +18726,10 @@ export type MlSetUpgradeModeResponse = AcknowledgedResponseBase
 export interface MlStartDataFrameAnalyticsRequest extends RequestBase {
   id: Id
   timeout?: Duration
+  body?: {
+    id?: Id
+    timeout?: Duration
+  }
 }
 
 export interface MlStartDataFrameAnalyticsResponse {
@@ -18700,6 +18778,12 @@ export interface MlStopDataFrameAnalyticsRequest extends RequestBase {
   allow_no_match?: boolean
   force?: boolean
   timeout?: Duration
+  body?: {
+    id?: Id
+    allow_no_match?: boolean
+    force?: boolean
+    timeout?: Duration
+  }
 }
 
 export interface MlStopDataFrameAnalyticsResponse {
@@ -18726,6 +18810,11 @@ export interface MlStopTrainedModelDeploymentRequest extends RequestBase {
   model_id: Id
   allow_no_match?: boolean
   force?: boolean
+  body?: {
+    id?: Id
+    allow_no_match?: boolean
+    force?: boolean
+  }
 }
 
 export interface MlStopTrainedModelDeploymentResponse {
@@ -19915,6 +20004,12 @@ export interface ProfilingStatusRequest extends RequestBase {
 export interface ProfilingStatusResponse {
   operation_mode: ProfilingStatusProfilingOperationMode
 }
+
+export interface ProfilingTopnFunctionsRequest extends RequestBase {
+  body?: any
+}
+
+export type ProfilingTopnFunctionsResponse = any
 
 export interface ProjectTagsProjectTags {
   origin: Partial<Record<string, ProjectTagsTags>>
@@ -23010,6 +23105,26 @@ export interface TransformDeleteTransformRequest extends RequestBase {
 }
 
 export type TransformDeleteTransformResponse = AcknowledgedResponseBase
+
+export interface TransformGetNodeStatsRequest extends RequestBase {
+}
+
+export type TransformGetNodeStatsResponse = TransformGetNodeStatsTransformNodeStats
+
+export interface TransformGetNodeStatsScheduler {
+  scheduler: TransformGetNodeStatsTransformNodeStatsDetails
+}
+
+export interface TransformGetNodeStatsTransformNodeStatsKeys {
+  total: TransformGetNodeStatsScheduler
+}
+export type TransformGetNodeStatsTransformNodeStats = TransformGetNodeStatsTransformNodeStatsKeys
+  & { [property: string]: TransformGetNodeStatsScheduler }
+
+export interface TransformGetNodeStatsTransformNodeStatsDetails {
+  registered_transform_count: integer
+  peek_transform?: string
+}
 
 export interface TransformGetTransformRequest extends RequestBase {
   transform_id?: Names
