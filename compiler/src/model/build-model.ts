@@ -248,7 +248,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           assert(member, property.properties.length > 0, 'There is no need to declare an empty object path_parts, just remove the path_parts declaration.')
           pathMember = member
           type.path = property.properties
-        } else if (name == 'request_media_type' || name == 'response_media_type') {
+        } else if (name === 'request_media_type' || name === 'response_media_type') {
           // add those property to requestMediaType and responseMediaType of the endpoint
           const mediaType = (member as PropertySignature).getStructure().type as string
           if (name === 'request_media_type') {
