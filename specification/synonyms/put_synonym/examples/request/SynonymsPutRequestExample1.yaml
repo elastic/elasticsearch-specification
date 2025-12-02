@@ -1,8 +1,10 @@
 method_request: PUT _synonyms/my-synonyms-set
 description: ''
 type: request
-value: "{
+value: |-
 
-  \  \"synonyms_set\": \"hello, hi, howdy\"
-
-  }"
+  {
+    "synonyms_set": {
+    "synonyms" : "hello, hi, howdy"
+    }
+  }

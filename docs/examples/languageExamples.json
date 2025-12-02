@@ -10336,23 +10336,27 @@
   "specification/synonyms/put_synonym/examples/request/SynonymsPutRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.synonyms.put_synonym(\n    id=\"my-synonyms-set\",\n    synonyms_set=\"hello, hi, howdy\",\n)"
+      "code": "resp = client.synonyms.put_synonym(\n    id=\"my-synonyms-set\",\n    synonyms_set={\n        \"synonyms\": \"hello, hi, howdy\"\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.synonyms.putSynonym({\n  id: \"my-synonyms-set\",\n  synonyms_set: \"hello, hi, howdy\",\n});"
+      "code": "const response = await client.synonyms.putSynonym({\n  id: \"my-synonyms-set\",\n  synonyms_set: {\n    synonyms: \"hello, hi, howdy\",\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.synonyms.put_synonym(\n  id: \"my-synonyms-set\",\n  body: {\n    \"synonyms_set\": \"hello, hi, howdy\"\n  }\n)"
+      "code": "response = client.synonyms.put_synonym(\n  id: \"my-synonyms-set\",\n  body: {\n    \"synonyms_set\": {\n      \"synonyms\": \"hello, hi, howdy\"\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->synonyms()->putSynonym([\n    \"id\" => \"my-synonyms-set\",\n    \"body\" => [\n        \"synonyms_set\" => \"hello, hi, howdy\",\n    ],\n]);"
+      "code": "$resp = $client->synonyms()->putSynonym([\n    \"id\" => \"my-synonyms-set\",\n    \"body\" => [\n        \"synonyms_set\" => [\n            \"synonyms\" => \"hello, hi, howdy\",\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"synonyms_set\":\"hello, hi, howdy\"}' \"$ELASTICSEARCH_URL/_synonyms/my-synonyms-set\""
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"synonyms_set\":{\"synonyms\":\"hello, hi, howdy\"}}' \"$ELASTICSEARCH_URL/_synonyms/my-synonyms-set\""
+    },
+    {
+      "language": "Java",
+      "code": "client.synonyms().putSynonym(p -> p\n    .id(\"my-synonyms-set\")\n    .synonymsSet(s -> s\n        .synonyms(\"hello, hi, howdy\")\n    )\n);\n"
     }
   ],
   "specification/dangling_indices/list_dangling_indices/examples/request/DanglingIndicesListDanglingIndicesExample1.yaml": [
