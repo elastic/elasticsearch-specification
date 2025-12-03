@@ -15,6 +15,9 @@ actions:
           description: >
             The autoscaling APIs enable you to create and manage autoscaling policies and retrieve information about autoscaling capacity.
             Autoscaling adjusts resources based on demand. A deployment can use autoscaling to scale resources as needed, ensuring sufficient capacity to meet workload requirements.
+          externalDocs:
+            url: https://www.elastic.co/docs/deploy-manage/autoscaling
+            description: Learn more about autoscaling.
       # B
         - name: analytics
           x-displayName: Behavioral analytics
@@ -35,6 +38,9 @@ actions:
           description: >
             The cluster APIs enable you to retrieve information about your infrastructure on cluster, node, or shard level.
             You can manage cluster settings and voting configuration exceptions, collect node statistics and retrieve node information.
+          externalDocs:
+            url: https://www.elastic.co/docs/deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-state-overview
+            description: Learn more about the cluster state.
         - name: health_report
           x-displayName: Cluster - Health
           description: >
@@ -57,6 +63,9 @@ actions:
           description: >
             The cross-cluster replication (CCR) APIs let you run replication operations, such as creating and managing follower indices or auto-follow patterns.
             Use CCR to replicate indices across clusters to maintain search availability during outages, reduce indexing impact, and lower search latency by serving requests closer to users.
+          externalDocs:
+            description: Learn more about cross-cluster replication.
+            url: https://www.elastic.co/docs/deploy-manage/tools/cross-cluster-replication
       # D
         - name: data stream
           x-displayName: Data stream
@@ -80,6 +89,9 @@ actions:
           description: >
             The enrich APIs enable you to manage enrich policies.
             An enrich policy is a set of configuration options used to add the right enrich data to the right incoming documents.
+          externalDocs:
+            url: https://www.elastic.co/docs/manage-data/ingest/transform-enrich/data-enrichment
+            description: Learn more about data enrichment.
         - name: eql
           x-displayName: EQL
           description: >
@@ -99,10 +111,16 @@ actions:
           x-displayName: Features
           description: >
             The feature APIs enable you to introspect and manage features provided by Elasticsearch and Elasticsearch plugins.
+          externalDocs:
+            url: https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore
+            description: Learn more about feature states.
         - name: fleet
           x-displayName: Fleet
           description: >
             The Fleet APIs support Fleet’s use of Elasticsearch as a data store for internal agent and action data.
+          externalDocs:
+            url: https://www.elastic.co/docs/reference/fleet
+            description: Learn more about Fleet.
       # G
         - name: graph
           x-displayName: Graph explore
@@ -116,6 +134,9 @@ actions:
           x-displayName: Index
           description: >
             Index APIs enable you to manage individual indices, index settings, aliases, mappings, and index templates.
+          externalDocs:
+            url: https://www.elastic.co/docs/manage-data/data-store/index-basics
+            description: Learn more about indices.
         - name: ilm
           x-displayName: Index lifecycle management
           description: >
@@ -139,6 +160,9 @@ actions:
         - name: ingest
           x-displayName: Ingest
           description: Ingest APIs enable you to manage tasks and resources related to ingest pipelines and processors.
+          externalDocs:
+            url: https://www.elastic.co/docs/manage-data/ingest
+            description: Learn more about ingesting data.
       # L  
         - name: license
           x-displayName: Licensing
@@ -158,6 +182,9 @@ actions:
           x-displayName: Machine learning
           description: >
             The machine learning APIs enable you to retrieve information related to the Elastic Stack machine learning features.
+          externalDocs:
+            url: https://www.elastic.co/docs/explore-analyze/machine-learning
+            description: Learn more about machine learning.
         - name: ml anomaly
           x-displayName: Machine learning anomaly detection
           description: >
@@ -183,8 +210,14 @@ actions:
           x-displayName: Migration
           description: >
             The migration APIs power Kibana's Upgrade Assistant feature.
+          externalDocs:
+            url: https://www.elastic.co/docs/deploy-manage/upgrade/prepare-to-upgrade/upgrade-assistant
+            description: Learn more about Kibana's Upgrade Assistant.
         - name: monitoring
           x-displayName: Monitoring
+          externalDocs:
+            url: https://www.elastic.co/docs/deploy-manage/monitor
+            description: Learn more about monitoring.
       # N
         - name: shutdown
           x-displayName: Node lifecycle
@@ -213,6 +246,9 @@ actions:
           x-displayName: Rollup
           description: >
             The rollup APIs enable you to create, manage, and retrieve information about rollup jobs.
+          externalDocs:
+            url: https://www.elastic.co/docs/manage-data/lifecycle/rollup
+            description: Learn more about rollup.
       # S
         - name: script
           x-displayName: Script
@@ -221,23 +257,36 @@ actions:
             Use the stored script APIs to manage stored scripts and search templates.
           externalDocs:
             url: https://www.elastic.co/docs/explore-analyze/scripting
+            description: Learn more about scripting.
         - name: search
           x-displayName: Search
           description: >
             The search APIs enable you to search and aggregate data stored in Elasticsearch indices and data streams.
+          externalDocs:
+            url: https://www.elastic.co/docs/explore-analyze
+            description: Learn more about searching.
         - name: search_application
           x-displayName: Search application
           description: >
             The search application APIs enable you to manage tasks and resources related to Search Applications.
+          externalDocs:
+            url: https://www.elastic.co/docs/solutions/search/search-applications
+            description: Learn more about search applications.
         - name: searchable_snapshots
           x-displayName: Searchable snapshots
           description: >
             The searchable snapshots APIs enable you to perform searchable snapshots operations.
+          externalDocs:
+            url: https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/searchable-snapshots
+            description: Learn more about searchable snapshots.
         - name: security
           x-displayName: Security
           description: >
             The security APIs enable you to perform security activities, and add, update, retrieve, and remove application privileges, role mappings, and roles.
             You can also create and update API keys and create and invalidate bearer tokens.
+          externalDocs:
+            url: https://www.elastic.co/docs/deploy-manage/security
+            description: Learn more about security.
         - name: snapshot
           x-displayName: Snapshot and restore
           description: >
@@ -265,11 +314,17 @@ actions:
             The synonyms management API provides a convenient way to define and manage synonyms in an internal system index.
             Related synonyms can be grouped in a "synonyms set".
             Create as many synonym sets as you need.
+          externalDocs:
+            url: https://www.elastic.co/docs/solutions/search/full-text/search-with-synonyms
+            description: Learn more about synonyms.
       # T  
         - name: tasks
           x-displayName: Task management
           description: >
             The task management APIs enable you to retrieve information about tasks or cancel tasks running in a cluster.
+          externalDocs:
+            url: https://www.elastic.co/docs/troubleshoot/elasticsearch/task-queue-backlog
+            description: Check out the troubleshooting the Task Management API.
         - name: text_structure
           x-displayName: Text structure
           description: >
@@ -278,6 +333,9 @@ actions:
           x-displayName: Transform
           description: >
             The transform APIs enable you to create and manage transforms.
+          externalDocs:
+            url: https://www.elastic.co/docs/explore-analyze/transforms
+            description: Learn more about transforms.
       # U
         - name: xpack
           x-displayName: Usage
