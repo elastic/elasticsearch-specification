@@ -112,7 +112,7 @@ actions:
           description: >
             The feature APIs enable you to introspect and manage features provided by Elasticsearch and Elasticsearch plugins.
           externalDocs:
-            url: https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore
+            url: https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore#feature-state
             description: Learn more about feature states.
         - name: fleet
           x-displayName: Fleet
