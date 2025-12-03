@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Revert to a snapshot.
+ *
  * The machine learning features react quickly to anomalous input, learning new
  * behaviors in data. Highly anomalous input increases the variance in the
  * models whilst the system learns whether this is a new step-change in behavior
@@ -67,7 +68,7 @@ export interface Request extends RequestBase {
      */
     delete_intervening_results?: boolean
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `delete_intervening_results` query parameter.
      * @server_default false

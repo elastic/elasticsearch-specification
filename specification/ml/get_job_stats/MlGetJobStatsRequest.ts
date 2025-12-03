@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Get anomaly detection job stats.
+ *
  * @rest_spec_name ml.get_job_stats
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=public

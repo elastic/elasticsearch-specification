@@ -28,6 +28,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Create or update a legacy index template.
+ *
  * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
  * Elasticsearch applies templates to new indices based on an index pattern that matches the index name.
  *
@@ -85,7 +86,9 @@ export interface Request extends RequestBase {
      * 'order' values are merged later, overriding templates with lower values.
      */
     order?: integer
-
+    /**
+     * @server_default
+     */
     cause?: string
   }
   body: {

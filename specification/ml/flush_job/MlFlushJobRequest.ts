@@ -23,6 +23,7 @@ import { DateTime } from '@_types/Time'
 
 /**
  * Force buffered data to be processed.
+ *
  * The flush jobs API is only applicable when sending data for analysis using
  * the post data API. Depending on the content of the buffer, then it might
  * additionally calculate new results. Both flush and close operations are
@@ -83,7 +84,7 @@ export interface Request extends RequestBase {
     // Also accepts `now` as a value, epoch seconds (< 10 digits) and epoch milliseconds
     start?: DateTime
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `advance_time` query parameter.
      */

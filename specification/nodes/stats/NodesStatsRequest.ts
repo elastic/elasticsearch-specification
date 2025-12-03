@@ -18,11 +18,17 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Fields, Metrics, NodeIds, NodeStatsLevel } from '@_types/common'
+import {
+  CommonStatsFlags,
+  Fields,
+  NodeIds,
+  NodeStatsLevel
+} from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get node statistics.
+ *
  * Get statistics for nodes in a cluster.
  * By default, all stats are returned. You can limit the returned information by using metrics.
  * @rest_spec_name nodes.stats
@@ -63,9 +69,9 @@ export interface Request extends RequestBase {
     /** Comma-separated list of node IDs or names used to limit returned information. */
     node_id?: NodeIds
     /*+ Limits the information returned to the specific metrics. */
-    metric?: Metrics
+    metric?: NodeStatsMetrics
     /** Limit the information returned for indices metric to the specific index metrics. It can be used only if indices (or all) metric is specified.*/
-    index_metric?: Metrics
+    index_metric?: CommonStatsFlags
   }
   query_parameters: {
     /** Comma-separated list or wildcard expressions of fields to include in fielddata and suggest statistics. */
@@ -81,7 +87,10 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     include_segment_file_sizes?: boolean
-    /** Indicates whether statistics are aggregated at the cluster, index, or shard level. */
+    /**
+     * Indicates whether statistics are aggregated at the node, indices, or shards level.
+     * @server_default node
+     */
     level?: NodeStatsLevel
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
@@ -97,3 +106,28 @@ export interface Request extends RequestBase {
     include_unloaded_segments?: boolean
   }
 }
+
+export enum NodeStatsMetric {
+  _all,
+  _none,
+  indices,
+
+  os,
+  process,
+  jvm,
+  thread_pool,
+  fs,
+  transport,
+  http,
+  breaker,
+  script,
+  discovery,
+  ingest,
+  adaptive_selection,
+  script_cache,
+  indexing_pressure,
+  repositories,
+  allocations
+}
+
+export type NodeStatsMetrics = NodeStatsMetric | NodeStatsMetric[]

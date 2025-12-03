@@ -28,6 +28,7 @@ import { RolloverConditions } from './types'
 
 /**
  * Roll over to a new index.
+ *
  * TIP: We recommend using the index lifecycle rollover action to automate rollovers. However, Serverless does not support Index Lifecycle Management (ILM), so don't use this approach in the Serverless context.
  *
  * The rollover API creates a new index for a data stream or index alias.
@@ -125,7 +126,7 @@ export interface Request extends RequestBase {
      */
     lazy?: boolean
   }
-  body: {
+  body?: {
     /**
      * Aliases for the target index.
      * Data streams do not support this parameter.

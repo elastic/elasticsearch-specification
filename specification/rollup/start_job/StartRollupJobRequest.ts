@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Start rollup jobs.
+ *
  * If you try to start a job that does not exist, an exception occurs.
  * If you try to start a job that is already started, nothing happens.
  * @rest_spec_name rollup.start_job

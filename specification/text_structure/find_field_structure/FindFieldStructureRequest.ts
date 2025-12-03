@@ -25,6 +25,7 @@ import { EcsCompatibilityType, FormatType } from '../_types/Structure'
 
 /**
  * Find the structure of a text field.
+ *
  * Find the structure of a text field in an Elasticsearch index.
  *
  * This API provides a starting point for extracting further information from log messages already ingested into Elasticsearch.
@@ -60,7 +61,7 @@ interface Request extends RequestBase {
      * If this parameter is not specified, the structure finder uses the column names from the header row of the text.
      * If the text does not have a header row, columns are named "column1", "column2", "column3", for example.
      */
-    column_names?: string
+    column_names?: string | string[]
     /**
      * If you have set `format` to `delimited`, you can specify the character used to delimit the values in each row.
      * Only a single character is supported; the delimiter cannot have multiple characters.

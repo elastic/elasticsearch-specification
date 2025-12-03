@@ -76,7 +76,12 @@ export enum DenseVectorElementType {
   /**
    * Indexes a 4-byte floating-point value per dimension.
    */
-  float
+  float,
+  /**
+   * Indexes a 2-byte floating-point value per dimension.
+   * @availability stack since=9.3.0
+   */
+  bfloat16
 }
 
 export enum DenseVectorSimilarity {
@@ -160,9 +165,17 @@ export class DenseVectorIndexOptions {
    */
   type: DenseVectorIndexOptionsType
   /**
-   * The rescore vector options. This is only applicable to `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.
+   * The rescore vector options. This is only applicable to `bbq_disk`, `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.
    */
   rescore_vector?: DenseVectorIndexOptionsRescoreVector
+  /**
+   * `true` if vector rescoring should be done on-disk
+   *
+   * Only applicable to `bbq_disk`, `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`
+   * @server_default false
+   * @availability stack since=9.3.0 stability=experimental
+   */
+  on_disk_rescore?: boolean
 }
 
 export enum DenseVectorIndexOptionsType {
@@ -178,6 +191,15 @@ export enum DenseVectorIndexOptionsType {
    * This can reduce the memory footprint by nearly 32x at the cost of some accuracy.
    */
   bbq_hnsw,
+  /**
+   * This utilizes the DiskBBQ algorithm, a version of Inverted Vector File (IVF) that uses BBQ to quantize vectors.
+   * Only supports `element_type` of `float`.
+   *
+   * This not only significantly reduces memory usage, but also allows for indexing and searching of very large datasets that do not fit in memory.
+   * Unlike HNSW, this index type loses performance gracefully as the index grows larger than memory.
+   * @availability stack since=9.2.0 stability=stable
+   */
+  bbq_disk,
   /**
    * This utilizes a brute-force search algorithm for exact kNN search. This supports all `element_type` values.
    */

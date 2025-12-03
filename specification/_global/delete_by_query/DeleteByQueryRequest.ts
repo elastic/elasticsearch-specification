@@ -162,9 +162,9 @@ export interface Request extends RequestBase {
      */
     conflicts?: Conflicts
     /**
-     * The default operator for query string query: `AND` or `OR`.
+     * The default operator for query string query: `and` or `or`.
      * This parameter can be used only when the `q` query string parameter is specified.
-     * @server_default OR
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -258,7 +258,7 @@ export interface Request extends RequestBase {
     slices?: Slices
     /**
      * A comma-separated list of `<field>:<direction>` pairs.
-     * @deprecated 9.0.0 this query parameter is not supported and will be removed
+     * @deprecated 9.0.0 This query parameter is not supported and will be removed in a future version
      */
     sort?: string[]
     /**

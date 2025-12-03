@@ -25,6 +25,7 @@ import { Page } from '@ml/_types/Page'
 
 /**
  * Get anomaly detection job results for influencers.
+ *
  * Influencers are the entities that have contributed to, or are to blame for,
  * the anomalies. Influencer results are available only if an
  * `influencer_field_name` is specified in the job configuration.
@@ -95,7 +96,7 @@ export interface Request extends RequestBase {
      */
     start?: DateTime
   }
-  body: {
+  body?: {
     /**
      * Configures pagination.
      * This parameter has the `from` and `size` properties.

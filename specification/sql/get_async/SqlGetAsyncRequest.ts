@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get async SQL search results.
+ *
  * Get the current status and available results for an async SQL search or stored synchronous SQL search.
  *
  * If the Elasticsearch security features are enabled, only the user who first submitted the SQL search can retrieve the search using this API.
@@ -60,6 +61,7 @@ export interface Request extends RequestBase {
     /**
      * The retention period for the search and its results.
      * It defaults to the `keep_alive` period for the original SQL search.
+     * @server_default 5d
      */
     keep_alive?: Duration
     /**

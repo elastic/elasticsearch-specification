@@ -65,6 +65,8 @@ export interface Request extends RequestBase {
   body: {
     /**
      * The chunking configuration object.
+     * Applies only to the `text_embedding` task type.
+     * Not applicable to the `rerank` or `completion` task types.
      * @ext_doc_id inference-chunking
      */
     chunking_settings?: InferenceChunkingSettings
@@ -73,7 +75,7 @@ export interface Request extends RequestBase {
      */
     service: AzureAiStudioServiceType
     /**
-     * Settings used to install the inference model. These settings are specific to the `openai` service.
+     * Settings used to install the inference model. These settings are specific to the `azureaistudio` service.
      */
     service_settings: AzureAiStudioServiceSettings
     /**

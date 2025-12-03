@@ -1,0 +1,13 @@
+summary: A completion task for Google Model Garden Hugging Face shared endpoint with single URL provided for both streaming and non-streaming tasks
+description: Run `PUT _inference/completion/google_model_garden_hugging_face_completion` to create an inference endpoint to perform a `completion` task using Hugging Face's model hosted on Google Model Garden shared endpoint with single URL provided for both streaming and non-streaming tasks. See the endpoint's `Sample request` page for the variable values used in the URL.
+method_request: 'PUT _inference/completion/google_model_garden_hugging_face_completion'
+# type: "request"
+value: |-
+  {
+      "service": "googlevertexai",
+      "service_settings": {
+          "provider": "hugging_face",
+          "service_account_json": "service-account-json",
+          "url": "https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions"
+      }
+  }

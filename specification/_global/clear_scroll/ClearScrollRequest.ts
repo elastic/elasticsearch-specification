@@ -22,6 +22,7 @@ import { ScrollIds } from '@_types/common'
 
 /**
  * Clear a scrolling search.
+ *
  * Clear the search context and results for a scrolling search.
  * @rest_spec_name clear_scroll
  * @availability stack stability=stable
@@ -51,7 +52,7 @@ export interface Request extends RequestBase {
      */
     scroll_id?: ScrollIds
   }
-  body: {
+  body?: {
     /**
      * The scroll IDs to clear.
      * To clear all scroll IDs, use `_all`.

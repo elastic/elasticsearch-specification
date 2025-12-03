@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get legacy index templates.
+ *
  * Get information about one or more index templates.
  *
  * IMPORTANT: This documentation is about legacy index templates, which are deprecated and will be replaced by the composable templates introduced in Elasticsearch 7.8.
@@ -60,6 +61,7 @@ export interface Request extends RequestBase {
     flat_settings?: boolean
     /**
      * If `true`, the request retrieves information from the local node only.
+     * @deprecated 9.0.0 This parameter is a no-op and templates are always retrieved locally.
      * @server_default false
      */
     local?: boolean

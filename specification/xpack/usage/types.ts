@@ -320,9 +320,42 @@ export class SecurityRolesDls {
 }
 
 export class SecurityRolesDlsBitSetCache {
+  /** Number of entries in the cache. */
   count: integer
+  /** Human-readable amount of memory taken up by the cache. */
   memory?: ByteSize
+  /** Memory taken up by the cache in bytes. */
   memory_in_bytes: ulong
+  /**
+   * Total number of cache hits.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  hits: long
+  /**
+   * Total number of cache misses.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  misses: long
+  /**
+   * Total number of cache evictions.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  evictions: long
+  /**
+   * Total combined time spent in cache for hits in milliseconds.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  hits_time_in_millis: DurationValue<UnitMillis>
+  /**
+   * Total combined time spent in cache for misses in milliseconds.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  misses_time_in_millis: DurationValue<UnitMillis>
 }
 
 export class SecurityRolesFile {

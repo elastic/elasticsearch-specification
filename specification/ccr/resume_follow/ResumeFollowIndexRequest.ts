@@ -24,6 +24,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Resume a follower.
+ *
  * Resume a cross-cluster replication follower index that was paused.
  * The follower index could have been paused with the pause follower API.
  * Alternatively it could be paused due to replication that cannot be retried due to failures during following tasks.

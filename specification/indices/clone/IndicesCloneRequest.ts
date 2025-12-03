@@ -26,6 +26,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Clone an index.
+ *
  * Clone an existing index into a new index.
  * Each original primary shard is cloned into a new primary shard in the new index.
  *
@@ -113,7 +114,7 @@ export interface Request extends RequestBase {
      */
     wait_for_active_shards?: WaitForActiveShards
   }
-  body: {
+  body?: {
     /**
      * Aliases for the resulting index.
      */

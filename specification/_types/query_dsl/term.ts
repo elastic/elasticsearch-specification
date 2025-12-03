@@ -82,6 +82,7 @@ export class FuzzyQuery extends QueryBase {
   // ES is lenient and accepts any primitive type, but ultimately converts it to a string.
   // Changing this field definition from UserDefinedValue to string breaks a recording produced from Nest tests,
   // but Nest is probably also overly flexible here and exposes an option that should not exist.
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   value: string | double | boolean
 }
 

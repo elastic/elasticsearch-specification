@@ -81,7 +81,7 @@ export interface Request extends RequestBase {
      * > info
      * > Inference endpoints for the `completion` task type currently only support a single string as input.
      */
-    input: string | Array<string>
+    input: string | string[]
     /**
      * Specifies the input data type for the text embedding model. The `input_type` parameter only applies to Inference Endpoints with the `text_embedding` task type. Possible values include:
      * * `SEARCH`

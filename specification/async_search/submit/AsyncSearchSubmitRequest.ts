@@ -103,6 +103,9 @@ export interface Request extends RequestBase {
      */
     keep_on_completion?: boolean
     allow_no_indices?: boolean
+    /**
+     * @server_default true
+     */
     allow_partial_search_results?: boolean
     analyzer?: string
     analyze_wildcard?: boolean
@@ -117,14 +120,23 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     ccs_minimize_roundtrips?: boolean
+    /**
+     * @server_default or
+     */
     default_operator?: Operator
     df?: string
     docvalue_fields?: Fields
+    /**
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
     explain?: boolean
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
     lenient?: boolean
+    /**
+     * @server_default 5
+     */
     max_concurrent_shard_requests?: integer
     preference?: string
     /**
@@ -149,6 +161,9 @@ export interface Request extends RequestBase {
      * Specifies which field to use for suggestions.
      */
     suggest_field?: Field
+    /**
+     * @server_default missing
+     */
     suggest_mode?: SuggestMode
     suggest_size?: long
     /**
@@ -160,6 +175,9 @@ export interface Request extends RequestBase {
     track_total_hits?: TrackHits
     track_scores?: boolean
     typed_keys?: boolean
+    /**
+     * @server_default false
+     */
     rest_total_hits_as_int?: boolean
     version?: boolean
     _source?: SourceConfigParam
@@ -303,5 +321,17 @@ export interface Request extends RequestBase {
      * the indices stats API.
      */
     stats?: string[]
+    /**
+     * Specifies a subset of projects to target for the search using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }

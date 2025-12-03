@@ -49,7 +49,7 @@ export type Uri = string
 export type ScrollId = string
 export type ScrollIds = ScrollId | ScrollId[]
 
-export type CategoryId = string
+export type CategoryId = long
 export type ActionIds = string // TODO: check if this should be an array of ActionId
 
 export type Id = string
@@ -65,11 +65,8 @@ export type IndexPatterns = IndexPattern[]
 
 export type ProjectRouting = string
 
-export type Routing = string
+export type Routing = string | string[]
 export type LongId = string
-//TODO encode metrics as API specific enums
-export type IndexMetrics = string
-export type Metrics = string | string[]
 
 export type ClusterAlias = string
 
@@ -113,11 +110,7 @@ export enum VersionType {
    * NOTE: The `external_gte` version type is meant for special use cases and should be used with care.
    * If used incorrectly, it can result in loss of data.
    */
-  external_gte,
-  /**
-   * This option is deprecated because it can cause primary and replica shards to diverge.
-   */
-  force
+  external_gte
 }
 
 // TODO: replace all uuid's with this type
@@ -395,3 +388,30 @@ export enum ClusterInfoTarget {
 }
 
 export type ClusterInfoTargets = ClusterInfoTarget | ClusterInfoTarget[]
+
+export enum CommonStatsFlag {
+  _all,
+  store,
+  indexing,
+  get,
+  search,
+  merge,
+  flush,
+  refresh,
+  query_cache,
+  fielddata,
+  docs,
+  warmer,
+  completion,
+  segments,
+  translog,
+  request_cache,
+  recovery,
+  bulk,
+  shard_stats,
+  mappings,
+  dense_vector,
+  sparse_vector
+}
+
+export type CommonStatsFlags = CommonStatsFlag | CommonStatsFlag[]

@@ -111,6 +111,10 @@ export class ExtendedStatsAggregation extends FormatMetricAggregationBase {
   sigma?: double
 }
 
+export class CartesianBoundsAggregation extends MetricAggregationBase {}
+
+export class CartesianCentroidAggregation extends MetricAggregationBase {}
+
 /**
  * @ext_doc_id search-aggregations-metrics-geobounds-aggregation
  */
@@ -136,7 +140,7 @@ export class GeoLineAggregation {
    * The name of the numeric field to use as the sort key for ordering the points.
    * When the `geo_line` aggregation is nested inside a `time_series` aggregation, this field defaults to `@timestamp`, and any other value will result in error.
    */
-  sort: GeoLineSort
+  sort?: GeoLineSort
   /**
    * When `true`, returns an additional array of the sort values in the feature properties.
    */
@@ -223,7 +227,7 @@ export class PercentilesAggregation extends FormatMetricAggregationBase {
   /**
    * The percentiles to calculate.
    */
-  percents?: double[]
+  percents?: double | double[]
   /**
    * Uses the alternative High Dynamic Range Histogram algorithm to calculate percentiles.
    */

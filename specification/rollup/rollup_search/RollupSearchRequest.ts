@@ -26,6 +26,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Search rolled-up data.
+ *
  * The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.
  * It rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.
  *
@@ -63,6 +64,9 @@ export interface Request extends RequestBase {
     index: Indices
   }
   query_parameters: {
+    /**
+     * @server_default false
+     */
     rest_total_hits_as_int?: boolean
     typed_keys?: boolean
   }

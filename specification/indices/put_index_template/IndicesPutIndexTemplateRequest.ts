@@ -37,6 +37,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Create or update an index template.
+ *
  * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
  *
  * Elasticsearch applies templates to new indices based on an wildcard pattern that matches the index name.
@@ -152,7 +153,9 @@ export interface Request extends RequestBase {
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s */
     master_timeout?: Duration
-
+    /**
+     * @server_default api
+     */
     cause?: string
   }
 }

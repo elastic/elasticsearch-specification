@@ -24,6 +24,7 @@ import { Policy } from '@enrich/_types/Policy'
 
 /**
  * Create an enrich policy.
+ *
  * Creates an enrich policy.
  * @doc_id put-enrich-policy-api
  * @rest_spec_name enrich.put_policy

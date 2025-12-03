@@ -30,6 +30,7 @@ import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * Count search results.
+ *
  * Get the number of documents matching a query.
  *
  * The query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.
@@ -86,9 +87,9 @@ export interface Request extends RequestBase {
      */
     analyze_wildcard?: boolean
     /**
-     * The default operator for query string query: `AND` or `OR`.
+     * The default operator for query string query: `and` or `or`.
      * This parameter can be used only when the `q` query string parameter is specified.
-     * @server_default OR
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -161,7 +162,7 @@ export interface Request extends RequestBase {
      */
     q?: string
   }
-  body: {
+  body?: {
     /**
      * Defines the search query using Query DSL. A request body query cannot be used
      * with the `q` query string parameter.

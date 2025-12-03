@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Update Watcher index settings.
+ *
  * Update settings for the Watcher internal index (`.watches`).
  * Only a subset of settings can be modified.
  * This includes `index.auto_expand_replicas`, `index.number_of_replicas`, `index.routing.allocation.exclude.*`,
@@ -45,6 +46,7 @@ export interface Request extends RequestBase {
     /**
      * The period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
      */
     master_timeout?: Duration
     /**

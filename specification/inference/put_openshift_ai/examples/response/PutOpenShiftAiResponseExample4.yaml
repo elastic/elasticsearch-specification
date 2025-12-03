@@ -1,0 +1,17 @@
+summary: A rerank task
+description: A successful response when creating an OpenShift AI `rerank` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "openshift-ai-rerank",
+    "task_type": "rerank",
+    "service": "openshift_ai",
+    "service_settings": {
+      "model_id": "bge-reranker-v2-m3",
+      "url": "openshift-ai-rerank-url",
+      "rate_limit": {
+        "requests_per_minute": 3000
+      }
+    }
+  }

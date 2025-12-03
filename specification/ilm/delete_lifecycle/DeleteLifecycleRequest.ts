@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete a lifecycle policy.
+ *
  * You cannot delete policies that are currently in use. If the policy is being used to manage any indices, the request fails and returns an error.
  * @rest_spec_name ilm.delete_lifecycle
  * @availability stack since=6.6.0 stability=stable

@@ -26,6 +26,7 @@ import { IndexTemplateMapping } from '@indices/put_index_template/IndicesPutInde
 
 /**
  * Simulate an index template.
+ *
  * Get the index configuration that would be applied by a particular index template.
  * @rest_spec_name indices.simulate_template
  * @availability stack stability=stable
@@ -59,6 +60,7 @@ export interface Request extends RequestBase {
     create?: boolean
     /**
      * User defined reason for dry-run creating the new template for simulation purposes
+     * @server_default false
      */
     cause?: string
     /**

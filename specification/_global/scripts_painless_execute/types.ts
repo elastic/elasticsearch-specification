@@ -97,5 +97,6 @@ export class PainlessScript {
    * * `long`: `emit(long)`
    * * `keyword`: `emit(String)`
    */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   emit: boolean | DateTime | double | string | Ip | long
 }

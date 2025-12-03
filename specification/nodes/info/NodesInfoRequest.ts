@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Metrics, NodeIds } from '@_types/common'
+import { NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -54,7 +54,7 @@ export interface Request extends RequestBase {
     /** Comma-separated list of node IDs or names used to limit returned information. */
     node_id?: NodeIds
     /** Limits the information returned to the specific metrics. Supports a comma-separated list, such as http,ingest. */
-    metric?: Metrics
+    metric?: NodesInfoMetrics
   }
   query_parameters: {
     /**
@@ -69,3 +69,22 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
 }
+
+export enum NodesInfoMetric {
+  _all,
+  _none,
+  settings,
+  os,
+  process,
+  jvm,
+  thread_pool,
+  transport,
+  http,
+  remote_cluster_server,
+  plugins,
+  ingest,
+  aggregations,
+  indices
+}
+
+export type NodesInfoMetrics = NodesInfoMetric | NodesInfoMetric[]

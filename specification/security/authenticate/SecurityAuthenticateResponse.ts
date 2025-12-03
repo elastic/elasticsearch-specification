@@ -46,5 +46,5 @@ export class AuthenticateApiKey {
   id: Id
   name?: Name
   managed_by: ApiKeyManagedBy
-  internal: boolean
+  internal?: boolean
 }

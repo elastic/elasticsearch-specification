@@ -138,9 +138,9 @@ export interface Request extends RequestBase {
      */
     ccs_minimize_roundtrips?: boolean
     /**
-     * The default operator for the query string query: `AND` or `OR`.
+     * The default operator for the query string query: `and` or `or`.
      * This parameter can be used only when the `q` query string parameter is specified.
-     * @server_default OR
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -404,7 +404,7 @@ export interface Request extends RequestBase {
     force_synthetic_source?: boolean
   }
   // Keep this in sync with global/search/_types/SearchRequestBody.ts
-  body: {
+  body?: {
     /**
      * Defines the aggregations that are run as part of the search request.
      * @aliases aggs
@@ -604,5 +604,17 @@ export interface Request extends RequestBase {
      * You can retrieve these stats using the indices stats API.
      */
     stats?: string[]
+    /**
+     * Specifies a subset of projects to target for the search using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }

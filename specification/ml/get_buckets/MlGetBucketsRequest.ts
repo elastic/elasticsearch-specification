@@ -25,6 +25,7 @@ import { Page } from '@ml/_types/Page'
 
 /**
  * Get anomaly detection job results for buckets.
+ *
  * The API presents a chronological view of the records, grouped by bucket.
  * @rest_spec_name ml.get_buckets
  * @availability stack since=5.4.0 stability=stable
@@ -104,7 +105,7 @@ export interface Request extends RequestBase {
      */
     start?: DateTime
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `anomaly_score` query parameter.
      * @server_default 0.0

@@ -36,6 +36,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Update documents.
+ *
  * Updates documents that match the specified query.
  * If no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.
  *
@@ -176,9 +177,9 @@ export interface Request extends RequestBase {
      */
     conflicts?: Conflicts
     /**
-     * The default operator for query string query: `AND` or `OR`.
+     * The default operator for query string query: `and` or `or`.
      * This parameter can be used only when the `q` query string parameter is specified.
-     * @server_default OR
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -190,6 +191,7 @@ export interface Request extends RequestBase {
      * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * It supports comma-separated values, such as `open,hidden`.
+     * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
@@ -322,7 +324,7 @@ export interface Request extends RequestBase {
      */
     wait_for_completion?: boolean
   }
-  body: {
+  body?: {
     /**
      * The maximum number of documents to update.
      */

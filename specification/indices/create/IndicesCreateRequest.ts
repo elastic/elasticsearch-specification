@@ -27,6 +27,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Create an index.
+ *
  * You can use the create index API to add a new index to an Elasticsearch cluster.
  * When creating an index, you can specify the following:
  *
@@ -94,7 +95,7 @@ export interface Request extends RequestBase {
      */
     wait_for_active_shards?: WaitForActiveShards
   }
-  body: {
+  body?: {
     /**
      * Aliases for the index.
      */

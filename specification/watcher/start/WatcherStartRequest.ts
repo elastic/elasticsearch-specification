@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Start the watch service.
+ *
  * Start the Watcher service if it is not already running.
  * @rest_spec_name watcher.start
  * @availability stack stability=stable

@@ -45,7 +45,8 @@ export interface Request extends RequestBase {
     nonce: string
     /**
      * The name of the OpenID Connect realm.
-     * This property is useful in cases where multiple realms are defined. */
+     * This property is useful in cases where multiple realms are defined.
+     */
     realm?: string
     /**
      * The URL to which the OpenID Connect Provider redirected the User Agent in response to an authentication request after a successful authentication.

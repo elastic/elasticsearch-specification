@@ -24,6 +24,7 @@ import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * Validate a query.
+ *
  * Validates a query without running it.
  * @rest_spec_name indices.validate_query
  * @availability stack since=1.3.0 stability=stable
@@ -72,8 +73,8 @@ export interface Request extends RequestBase {
      */
     analyze_wildcard?: boolean
     /**
-     * The default operator for query string query: `AND` or `OR`.
-     * @server_default OR
+     * The default operator for query string query: `and` or `or`.
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -113,7 +114,7 @@ export interface Request extends RequestBase {
      */
     q?: string
   }
-  body: {
+  body?: {
     /**
      * Query in the Lucene query string syntax.
      */

@@ -53,6 +53,7 @@ import { Checkpoint } from '../_types/Checkpoints'
 
 /**
  * Run a Fleet search.
+ *
  * The purpose of the Fleet search API is to provide an API where the search will be run only
  * after the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.
  * @rest_spec_name fleet.search
@@ -72,6 +73,7 @@ export interface Request extends RequestBase {
     /**
      * A single target to search. If the target is an index alias, it must resolve to a single index.
      */
+    // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
     index: IndexName | IndexAlias
   }
   query_parameters: {

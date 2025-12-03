@@ -30,6 +30,7 @@ import { Definition, Input } from './types'
 
 /**
  * Create a trained model.
+ *
  * Enable you to supply a trained model that is not created by data frame analytics.
  * @rest_spec_name ml.put_trained_model
  * @availability stack since=7.10.0 stability=stable
@@ -58,6 +59,7 @@ export interface Request extends RequestBase {
      * validations.
      * @availability stack since=8.0.0
      * @availability serverless
+     * @server_default false
      */
     defer_definition_decompression?: boolean
 
@@ -66,6 +68,7 @@ export interface Request extends RequestBase {
      * to complete.
      * @availability stack since=8.8.0
      * @availability serverless
+     * @server_default false
      */
     wait_for_completion?: boolean
   }

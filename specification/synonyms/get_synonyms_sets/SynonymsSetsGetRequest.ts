@@ -21,6 +21,7 @@ import { integer } from '@_types/Numeric'
 
 /**
  * Get all synonym sets.
+ *
  * Get a summary of all defined synonym sets.
  * @rest_spec_name synonyms.get_synonyms_sets
  * @availability stack since=8.10.0 stability=stable

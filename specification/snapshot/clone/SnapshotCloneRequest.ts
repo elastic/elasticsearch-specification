@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Clone a snapshot.
+ *
  * Clone part of all of a snapshot into another snapshot in the same repository.
  * @rest_spec_name snapshot.clone
  * @availability stack since=7.10.0 stability=stable

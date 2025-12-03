@@ -23,7 +23,8 @@ import { Duration } from '@_types/Time'
 import { TaskSettings } from '@inference/_types/Services'
 
 /**
- * Perform streaming inference.
+ * Perform streaming completion inference on the service.
+ *
  * Get real-time responses for completion tasks by delivering answers incrementally, reducing response times during computation.
  * This API works only with the completion task type.
  *
@@ -64,7 +65,7 @@ export interface Request extends RequestBase {
      */
     input: string | string[]
     /**
-     * Optional task settings
+     * Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.
      */
     task_settings?: TaskSettings
   }

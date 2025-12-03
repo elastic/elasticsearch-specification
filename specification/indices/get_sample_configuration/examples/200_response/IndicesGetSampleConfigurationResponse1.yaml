@@ -1,0 +1,16 @@
+# summary: ''
+description: A successful response for retrieving the sampling configuration for an index.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "index": "my-index",
+    "configuration": {
+      "rate": 0.05,
+      "max_samples": 1000,
+      "max_size_in_bytes": 10485760,
+      "time_to_live_in_millis": 86400000,
+      "if": "ctx?.network?.name == 'Guest'",
+      "creation_time_in_millis": 1761341004982
+    }
+  }

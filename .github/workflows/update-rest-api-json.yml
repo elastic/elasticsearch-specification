@@ -13,15 +13,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: ['main', '9.1', '9.0', '8.19', '8.18']
+        branch: ['main', '9.2', '9.1', '9.0', '8.19']
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ matrix.branch }}
 
       - name: Use Node.js 22
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
 
@@ -50,5 +50,5 @@ jobs:
           commit-message: 'Update rest-api-spec'
           labels: specification,skip-backport
           delete-branch: true
-          reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo,pquentin,swallez,technige
+          reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo,pquentin,technige
           branch: automated/rest-api-spec-update-${{ matrix.branch }}

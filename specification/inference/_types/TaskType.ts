@@ -79,6 +79,10 @@ export enum TaskTypeCohere {
   completion
 }
 
+export enum TaskTypeContextualAI {
+  rerank
+}
+
 export enum TaskTypeCustom {
   text_embedding,
   sparse_embedding,
@@ -107,6 +111,8 @@ export enum TaskTypeGoogleAIStudio {
 }
 
 export enum TaskTypeGoogleVertexAI {
+  chat_completion,
+  completion,
   text_embedding,
   rerank
 }
@@ -134,6 +140,13 @@ export enum TaskTypeOpenAI {
   text_embedding,
   chat_completion,
   completion
+}
+
+export enum TaskTypeOpenShiftAi {
+  text_embedding,
+  chat_completion,
+  completion,
+  rerank
 }
 
 export enum TaskTypeVoyageAI {

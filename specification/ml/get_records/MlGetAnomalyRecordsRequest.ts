@@ -25,6 +25,7 @@ import { Page } from '@ml/_types/Page'
 
 /**
  * Get anomaly records for an anomaly detection job.
+ *
  * Records contain the detailed analytical results. They describe the anomalous
  * activity that has been identified in the input data based on the detector
  * configuration.
@@ -99,7 +100,7 @@ export interface Request extends RequestBase {
      */
     start?: DateTime
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `desc` query parameter.
      * @server_default false

@@ -26,13 +26,14 @@
     },
     "params": {
       "expand_wildcards": {
-        "type": "enum",
+        "type": "list",
         "options": ["open", "closed", "hidden", "none", "all"],
         "default": "open",
         "description": "Whether wildcard expressions should get expanded to open or closed indices (default: open)"
       },
       "timeout": {
         "type": "time",
+        "default": "30s",
         "description": "Explicit timestamp for the document"
       },
       "master_timeout": {
@@ -42,7 +43,8 @@
       }
     },
     "body": {
-      "description": "The data stream options configuration that consist of the failure store configuration"
+      "description": "The data stream options configuration that consist of the failure store configuration",
+      "required": true
     }
   }
 }

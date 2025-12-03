@@ -23,7 +23,8 @@ import { Duration } from '@_types/Time'
 import { TaskSettings } from '@inference/_types/Services'
 
 /**
- * Perform text embedding inference on the service
+ * Perform text embedding inference on the service.
+ *
  * @rest_spec_name inference.text_embedding
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
@@ -54,7 +55,7 @@ export interface Request extends RequestBase {
      * Inference input.
      * Either a string or an array of strings.
      */
-    input: string | Array<string>
+    input: string | string[]
     /**
      * The input data type for the text embedding model. Possible values include:
      * * `SEARCH`
@@ -69,7 +70,7 @@ export interface Request extends RequestBase {
      */
     input_type?: string
     /**
-     * Optional task settings
+     * Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.
      */
     task_settings?: TaskSettings
   }

@@ -37,22 +37,16 @@ enum JsonEvent {
   array = 'array'
 }
 
-const privateNamespaces = ['_internal', 'profiling']
-
 /**
  * Validates the internal consistency of the model (doesn't check the json spec)
  *
  * Any inconsistency is logged as an error.
  *
  * Missing validations:
- * - verify uniqueness of property names in the inheritance chain
  * - verify that request parents don't define properties (would they be path/request/body properties?)
  * - verify that unions can be distinguished in a JSON stream (otherwise they should be inheritance trees)
  */
 export default async function validateModel (apiModel: model.Model, restSpec: Map<string, JsonSpec>, errors: ValidationErrors): Promise<model.Model> {
-  // Fail hard if the FAIL_HARD env var is defined
-  const failHard = process.env.FAIL_HARD != null
-
   const initialTypeCount = apiModel.types.length
 
   // Returns the fully-qualified name of a type name
@@ -87,13 +81,20 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   function modelError (msg: string): void {
     const fullMsg = (context.length === 0) ? msg : context.join(' / ') + ' - ' + msg
 
+    let ignored = false
     if (currentEndpoint != null) {
-      errors.addEndpointError(currentEndpoint, currentPart, fullMsg)
+      ignored = errors.addEndpointError(currentEndpoint, currentPart, fullMsg)
+      if (!ignored) {
+        console.error(currentEndpoint, currentPart, fullMsg)
+      }
     } else {
       errors.addGeneralError(fullMsg)
+      console.error(fullMsg)
     }
 
-    errorCount++
+    if (!ignored) {
+      errorCount++
+    }
   }
 
   // ----- Type definition management
@@ -178,9 +179,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     return ep.request != null && ep.response != null
   }
 
-  // Check that all type names are unique
-  validateUniqueTypeNames(apiModel, modelError)
-
   // Validate all endpoints. We start by those that are ready for validation so that transitive validation of common
   // data types is associated with these endpoints and their errors are not filtered out in the error report.
   apiModel.endpoints.filter(ep => readyForValidation(ep)).forEach(validateEndpoint)
@@ -206,8 +204,8 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   const danglingTypesCount = initialTypeCount - apiModel.types.length
   console.info(`Model validation: ${typesSeen.size} types visited, ${danglingTypesCount} dangling types.`)
 
-  if (errorCount > 0 && failHard) {
-    throw new Error('Model is inconsistent. Check logs for details')
+  if (errorCount > 0) {
+    throw new Error('Model is inconsistent.')
   }
 
   return apiModel
@@ -215,72 +213,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   // -----------------------------------------------------------------------------------------------
 
   /**
-   * Validates that all type names in the model are unique
-   */
-  function validateUniqueTypeNames (apiModel: model.Model, modelError: (msg: string) => void): void {
-    const existingDuplicates: Record<string, string[]> = {
-      Action: ['indices.modify_data_stream', 'indices.update_aliases', 'watcher._types'],
-      Actions: ['ilm._types', 'security.put_privileges', 'watcher._types'],
-      ComponentTemplate: ['cat.component_templates', 'cluster._types'],
-      Context: ['_global.get_script_context', '_global.search._types', 'nodes._types'],
-      DatabaseConfigurationMetadata: ['ingest.get_geoip_database', 'ingest.get_ip_location_database'],
-      Datafeed: ['ml._types', 'xpack.usage'],
-      Destination: ['_global.reindex', 'transform._types'],
-      Feature: ['features._types', 'indices.get', 'xpack.info'],
-      Features: ['indices.get', 'xpack.info'],
-      Filter: ['_global.termvectors', 'ml._types'],
-      IndexingPressure: ['cluster.stats', 'indices._types', 'nodes._types'],
-      IndexingPressureMemory: ['cluster.stats', 'indices._types', 'nodes._types'],
-      Ingest: ['ingest._types', 'nodes._types'],
-      MigrationFeature: ['migration.get_feature_upgrade_status', 'migration.post_feature_upgrade'],
-      Operation: ['_global.mget', '_global.mtermvectors'],
-      Phase: ['ilm._types', 'xpack.usage'],
-      Phases: ['ilm._types', 'xpack.usage'],
-      Pipeline: ['ingest._types', 'logstash._types'],
-      Policy: ['enrich._types', 'ilm._types', 'slm._types'],
-      RequestItem: ['_global.msearch', '_global.msearch_template'],
-      ResponseItem: ['_global.bulk', '_global.mget', '_global.msearch'],
-      RoleMapping: ['security._types', 'xpack.usage'],
-      RuntimeFieldTypes: ['cluster.stats', 'xpack.usage'],
-      ShardsStats: ['indices.field_usage_stats', 'snapshot._types'],
-      ShardStats: ['ccr._types', 'indices.stats'],
-      Source: ['_global.reindex', 'transform._types'],
-      Token: ['_global.termvectors', 'security.authenticate', 'security.create_service_token', 'security.enroll_kibana']
-    }
-
-    // collect namespaces for each type name
-    const typeNames = new Map<string, string[]>()
-    for (const type of apiModel.types) {
-      const name = type.name.name
-      if (name !== 'Request' && name !== 'Response' && name !== 'ResponseBase') {
-        const namespaces = typeNames.get(name) ?? []
-        namespaces.push(type.name.namespace)
-        typeNames.set(name, namespaces)
-      }
-    }
-
-    // check for duplicates
-    for (const [name, namespaces] of typeNames) {
-      if (namespaces.length > 1) {
-        const allowedDuplicates = existingDuplicates[name] ?? []
-        const hasUnexpectedDuplicate = namespaces.some(ns => !allowedDuplicates.includes(ns))
-        if (hasUnexpectedDuplicate) {
-          modelError(`${name} is present in multiple namespaces: ${namespaces.sort().join(' and ')}`)
-        }
-      }
-    }
-  }
-
-  /**
    * Validate an endpoint
    */
   function validateEndpoint (endpoint: model.Endpoint): void {
     setRootContext(endpoint.name, 'request')
-
-    // Skip validation for internal endpoints
-    if (privateNamespaces.some(ns => endpoint.name.startsWith(ns))) {
-      return
-    }
 
     if (endpoint.request !== null) {
       const reqType = getTypeDef(endpoint.request)

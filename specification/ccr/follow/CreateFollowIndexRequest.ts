@@ -25,6 +25,7 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * Create a follower.
+ *
  * Create a cross-cluster replication follower index that follows a specific leader index.
  * When the API returns, the follower index exists and cross-cluster replication starts replicating operations from the leader index to the follower index.
  * @rest_spec_name ccr.follow
@@ -55,6 +56,7 @@ export interface Request extends RequestBase {
      * active.
      * A shard must be restored from the leader index before being active. Restoring a follower shard requires transferring all the
      * remote Lucene segment files to the follower index.
+     * @server_default 0
      */
     wait_for_active_shards?: WaitForActiveShards
   }

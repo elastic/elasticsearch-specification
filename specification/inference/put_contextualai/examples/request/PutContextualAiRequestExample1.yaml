@@ -1,0 +1,16 @@
+summary: A rerank task
+description: Run `PUT _inference/rerank/contextualai-rerank` to create an inference endpoint for rerank tasks using the Contextual AI service.
+method_request: 'PUT _inference/rerank/contextualai-rerank'
+# type: "request"
+value: |-
+  {
+      "service": "contextualai",
+      "service_settings": {
+          "api_key": "ContextualAI-Api-key",
+          "model_id": "ctxl-rerank-v2-instruct-multilingual-mini"
+      },
+      "task_settings": {
+          "instruction": "Rerank the following documents based on their relevance to the query.",
+          "top_k": 3
+      }
+  }

@@ -24,6 +24,7 @@ import { DateTime } from '@_types/Time'
 
 /**
  * Get info about events in calendars.
+ *
  * @rest_spec_name ml.get_calendar_events
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -45,13 +46,15 @@ export interface Request extends RequestBase {
   query_parameters: {
     /** Specifies to get events with timestamps earlier than this time. */
     end?: DateTime
-    /** Skips the specified number of events.
+    /**
+     * Skips the specified number of events.
      * @server_default 0
      */
     from?: integer
     /** Specifies to get events for a specific anomaly detection job identifier or job group. It must be used with a calendar identifier of `_all` or `*`. */
     job_id?: Id
-    /** Specifies the maximum number of events to obtain.
+    /**
+     * Specifies the maximum number of events to obtain.
      * @server_default 100
      */
     size?: integer

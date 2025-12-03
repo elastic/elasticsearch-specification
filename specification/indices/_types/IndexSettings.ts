@@ -84,11 +84,13 @@ export class IndexSettings
    * @server_default 1
    * @availability stack
    * */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   number_of_shards?: integer | string // TODO: should be only int
   /**
    * @server_default 0
    * @availability stack
    * */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   number_of_replicas?: integer | string // TODO: should be only int
   number_of_routing_shards?: integer
   /** @server_default false */
@@ -100,6 +102,7 @@ export class IndexSettings
   /** @server_default true */
   load_fixed_bitset_filters_eagerly?: boolean
   /** @server_default false */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   hidden?: boolean | string // TODO should be bool only
   /** @server_default false */
   auto_expand_replicas?: WithNullValue<string>
@@ -147,11 +150,14 @@ export class IndexSettings
   creation_date_string?: DateTime
   uuid?: Uuid
   version?: IndexVersioning
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   verified_before_close?: boolean | string
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   format?: string | integer
   max_slices_per_scroll?: integer
   translog?: Translog
   query_string?: SettingsQueryString
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   priority?: integer | string
   top_metrics_max_size?: integer
   analysis?: IndexSettingsAnalysis
@@ -332,6 +338,7 @@ export class IndexSettingsLifecycle {
    * applicable for an index).
    * @server_default true
    */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   prefer_ilm?: boolean | string
 }
 
@@ -448,6 +455,7 @@ export class MappingLimitSettings {
   field_name_length?: MappingLimitSettingsFieldNameLength
   dimension_fields?: MappingLimitSettingsDimensionFields
   source?: MappingLimitSettingsSourceFields
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   ignore_malformed?: boolean | string
 }
 
@@ -458,6 +466,7 @@ export class MappingLimitSettingsTotalFields {
    * degradations and memory issues, especially in clusters with a high load or few resources.
    * @server_default 1000
    */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   limit?: long | string
   /**
    * This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set
@@ -467,6 +476,7 @@ export class MappingLimitSettingsTotalFields {
    * The fields that were not added to the mapping will be added to the _ignored field.
    * @server_default false
    */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   ignore_dynamic_beyond_limit?: boolean | string
 }
 

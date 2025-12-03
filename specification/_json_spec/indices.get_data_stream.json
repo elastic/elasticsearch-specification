@@ -29,13 +29,14 @@
     },
     "params": {
       "expand_wildcards": {
-        "type": "enum",
+        "type": "list",
         "options": ["open", "closed", "hidden", "none", "all"],
         "default": "open",
         "description": "Whether wildcard expressions should get expanded to open or closed indices (default: open)"
       },
       "include_defaults": {
         "type": "boolean",
+        "default": false,
         "description": "Return all relevant default configurations for the data stream (default: false)"
       },
       "master_timeout": {
@@ -45,6 +46,7 @@
       },
       "verbose": {
         "type": "boolean",
+        "default": false,
         "description": "Whether the maximum timestamp for each data stream should be calculated and returned (default: false)"
       }
     }

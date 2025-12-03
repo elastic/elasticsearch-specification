@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get the status for a data stream lifecycle.
+ *
  * Get information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.
  * @rest_spec_name indices.explain_data_lifecycle
  * @availability stack since=8.11.0 stability=stable
@@ -43,6 +44,9 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     include_defaults?: boolean
+    /**
+     * @server_default 30s
+     */
     master_timeout?: Duration
   }
 }

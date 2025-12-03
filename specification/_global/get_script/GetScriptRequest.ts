@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get a script or search template.
+ *
  * Retrieves a stored script or search template.
  * @rest_spec_name get_script
  * @availability stack stability=stable
@@ -49,7 +50,7 @@ export interface Request extends RequestBase {
      * The period to wait for the master node.
      * If the master node is not available before the timeout expires, the request fails and returns an error.
      * It can also be set to `-1` to indicate that the request should never timeout.
-     * @server_default
+     * @server_default 30s
      */
     master_timeout?: Duration
   }

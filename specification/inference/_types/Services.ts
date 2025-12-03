@@ -29,6 +29,7 @@ import {
   TaskTypeAzureAIStudio,
   TaskTypeAzureOpenAI,
   TaskTypeCohere,
+  TaskTypeContextualAI,
   TaskTypeCustom,
   TaskTypeDeepSeek,
   TaskTypeElasticsearch,
@@ -40,6 +41,7 @@ import {
   TaskTypeLlama,
   TaskTypeMistral,
   TaskTypeOpenAI,
+  TaskTypeOpenShiftAi,
   TaskTypeVoyageAI,
   TaskTypeWatsonx
 } from '../_types/TaskType'
@@ -49,7 +51,9 @@ import {
  */
 export class InferenceEndpoint {
   /**
-   * Chunking configuration object
+   * The chunking configuration object.
+   * Applies only to the `sparse_embedding` and `text_embedding` task types.
+   * Not applicable to the `rerank`, `completion`, or `chat_completion` task types.
    */
   chunking_settings?: InferenceChunkingSettings
   /**
@@ -166,6 +170,17 @@ export class InferenceEndpointInfoCohere extends InferenceEndpoint {
    * The task type
    */
   task_type: TaskTypeCohere
+}
+
+export class InferenceEndpointInfoContextualAi extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeContextualAI
 }
 
 export class InferenceEndpointInfoCustom extends InferenceEndpoint {
@@ -288,6 +303,17 @@ export class InferenceEndpointInfoOpenAI extends InferenceEndpoint {
   task_type: TaskTypeOpenAI
 }
 
+export class InferenceEndpointInfoOpenShiftAi extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeOpenShiftAi
+}
+
 export class InferenceEndpointInfoVoyageAI extends InferenceEndpoint {
   /**
    * The inference Id
@@ -389,6 +415,7 @@ export class RateLimitSetting {
    * * `azureopenai` service and task type `text_embedding`: `1440`
    * * `azureopenai` service and task type `completion`: `120`
    * * `cohere` service: `10000`
+   * * `contextualai` service: `1000`
    * * `elastic` service and task type `chat_completion`: `240`
    * * `googleaistudio` service: `360`
    * * `googlevertexai` service: `30000`
@@ -398,6 +425,7 @@ export class RateLimitSetting {
    * * `mistral` service: `240`
    * * `openai` service and task type `text_embedding`: `3000`
    * * `openai` service and task type `completion`: `500`
+   * * `openshift_ai` service: `3000`
    * * `voyageai` service: `2000`
    * * `watsonxai` service: `120`
    */

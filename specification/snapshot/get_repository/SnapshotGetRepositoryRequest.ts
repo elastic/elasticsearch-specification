@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get snapshot repository information.
+ *
  * @rest_spec_name snapshot.get_repository
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
@@ -61,7 +62,7 @@ export interface Request extends RequestBase {
      * The period to wait for the master node.
      * If the master node is not available before the timeout expires, the request fails and returns an error.
      * To indicate that the request should never timeout, set it to `-1`.
-     * @server_default to 30s
+     * @server_default 30s
      */
     master_timeout?: Duration
   }

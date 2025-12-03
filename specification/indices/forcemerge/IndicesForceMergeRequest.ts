@@ -23,6 +23,7 @@ import { long } from '@_types/Numeric'
 
 /**
  * Force a merge.
+ *
  * Perform the force merge operation on the shards of one or more indices.
  * For data streams, the API forces a merge on the shards of the stream's backing indices.
  *
@@ -98,11 +99,17 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     allow_no_indices?: boolean
+    /**
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
     flush?: boolean
     ignore_unavailable?: boolean
     max_num_segments?: long
     only_expunge_deletes?: boolean
+    /**
+     * @server_default true
+     */
     wait_for_completion?: boolean
   }
 }

@@ -24,6 +24,7 @@ import { Page } from '@ml/_types/Page'
 
 /**
  * Get anomaly detection job results for categories.
+ *
  * @rest_spec_name ml.get_categories
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
@@ -72,7 +73,7 @@ export interface Request extends RequestBase {
      */
     size?: integer
   }
-  body: {
+  body?: {
     /**
      * Configures pagination.
      * This parameter has the `from` and `size` properties.
