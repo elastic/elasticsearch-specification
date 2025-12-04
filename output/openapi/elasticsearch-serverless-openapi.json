@@ -60916,33 +60916,20 @@
             ]
           },
           "downsampling": {
-            "description": "The downsampling configuration to execute for the managed backing index after rollover.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleDownsampling"
-              }
-            ]
+            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
+            }
           },
           "enabled": {
             "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
             "default": true,
             "type": "boolean"
           }
-        }
-      },
-      "indices._types.DataStreamLifecycleDownsampling": {
-        "type": "object",
-        "properties": {
-          "rounds": {
-            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
-            }
-          }
         },
         "required": [
-          "rounds"
+          "downsampling"
         ]
       },
       "indices._types.DownsamplingRound": {
