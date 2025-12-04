@@ -20,7 +20,7 @@
 import { ByteSize } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
-import { DataStreamLifecycleDownsampling } from '@indices/_types/DataStreamLifecycleDownsampling'
+import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
 
 /**
  * Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.
@@ -33,9 +33,9 @@ export class DataStreamLifecycle {
    */
   data_retention?: Duration
   /**
-   * The downsampling configuration to execute for the managed backing index after rollover.
+   * The list of downsampling rounds to execute as part of this downsampling configuration
    */
-  downsampling?: DataStreamLifecycleDownsampling
+  downsampling?: DownsamplingRound[]
   /**
    * If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle
    * that's disabled (enabled: `false`) will have no effect on the data stream.
