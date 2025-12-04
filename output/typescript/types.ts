@@ -13983,7 +13983,7 @@ export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
   cause?: string
   master_timeout?: Duration
   include_defaults?: boolean
-  body?: IndicesPutIndexTemplateIndexTemplateMapping
+  body?: IndicesIndexTemplate
 }
 
 export interface IndicesSimulateIndexTemplateResponse {
