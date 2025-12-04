@@ -1,0 +1,16 @@
+summary: A rerank task without `url` parameter
+description: A successful response when creating an Nvidia `rerank` inference endpoint without `url` parameter.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "nvidia-rerank",
+    "task_type": "rerank",
+    "service": "nvidia",
+    "service_settings": {
+      "model_id": "nv-rerank-qa-mistral-4b:1",
+      "rate_limit": {
+        "requests_per_minute": 3000
+      }
+    }
+  }
