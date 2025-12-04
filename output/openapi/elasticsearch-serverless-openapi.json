@@ -60927,10 +60927,7 @@
             "default": true,
             "type": "boolean"
           }
-        },
-        "required": [
-          "downsampling"
-        ]
+        }
       },
       "indices._types.DownsamplingRound": {
         "type": "object",
