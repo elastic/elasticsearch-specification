@@ -1520,8 +1520,8 @@ export function mediaTypeToStringArray (mediaType: string, allEnums: EnumDeclara
 
   const mediaTypeList: string[] = []
   for (const enumType of enumTypeList) {
-    let memberName = enumType.split('.').pop()
-    let value = mediaTypeEnum?.getMembers().find(m => m.getName() === memberName)?.getValue() as string
+    const memberName = enumType.split('.').pop()
+    const value = mediaTypeEnum?.getMembers().find(m => m.getName() === memberName)?.getValue() as string
     mediaTypeList.push(value)
   }
   return mediaTypeList
