@@ -13630,23 +13630,27 @@
   "specification/inference/update/examples/request/InferenceUpdateExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.inference.update(\n    inference_id=\"my-inference-endpoint\",\n    inference_config={\n        \"service_settings\": {\n            \"api_key\": \"<API_KEY>\"\n        }\n    },\n)"
+      "code": "resp = client.inference.update(\n    inference_id=\"my-inference-endpoint\",\n    inference_config={\n        \"service_settings\": {\n            \"api_key\": \"<API_KEY>\"\n        },\n        \"service\": \"example-service\"\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.inference.update({\n  inference_id: \"my-inference-endpoint\",\n  inference_config: {\n    service_settings: {\n      api_key: \"<API_KEY>\",\n    },\n  },\n});"
+      "code": "const response = await client.inference.update({\n  inference_id: \"my-inference-endpoint\",\n  inference_config: {\n    service_settings: {\n      api_key: \"<API_KEY>\",\n    },\n    service: \"example-service\",\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.inference.update(\n  inference_id: \"my-inference-endpoint\",\n  body: {\n    \"service_settings\": {\n      \"api_key\": \"<API_KEY>\"\n    }\n  }\n)"
+      "code": "response = client.inference.update(\n  inference_id: \"my-inference-endpoint\",\n  body: {\n    \"service_settings\": {\n      \"api_key\": \"<API_KEY>\"\n    },\n    \"service\": \"example-service\"\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->inference()->update([\n    \"inference_id\" => \"my-inference-endpoint\",\n    \"body\" => [\n        \"service_settings\" => [\n            \"api_key\" => \"<API_KEY>\",\n        ],\n    ],\n]);"
+      "code": "$resp = $client->inference()->update([\n    \"inference_id\" => \"my-inference-endpoint\",\n    \"body\" => [\n        \"service_settings\" => [\n            \"api_key\" => \"<API_KEY>\",\n        ],\n        \"service\" => \"example-service\",\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service_settings\":{\"api_key\":\"<API_KEY>\"}}' \"$ELASTICSEARCH_URL/_inference/my-inference-endpoint/_update\""
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service_settings\":{\"api_key\":\"<API_KEY>\"},\"service\":\"example-service\"}' \"$ELASTICSEARCH_URL/_inference/my-inference-endpoint/_update\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().update(u -> u\n    .inferenceId(\"my-inference-endpoint\")\n    .inferenceConfig(i -> i\n        .service(\"example-service\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"<API_KEY>\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_elser/examples/request/PutElserRequestExample1.yaml": [
@@ -17172,23 +17176,27 @@
   "specification/inference/put_ai21/examples/request/PutAi21RequestExample2.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.inference.put(\n    task_type=\"chat-completion\",\n    inference_id=\"ai21-chat-completion\",\n    inference_config={\n        \"service\": \"ai21\",\n        \"service_settings\": {\n            \"api_key\": \"ai21-api-key\",\n            \"model_id\": \"jamba-mini\"\n        }\n    },\n)"
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"ai21-chat-completion\",\n    inference_config={\n        \"service\": \"ai21\",\n        \"service_settings\": {\n            \"api_key\": \"ai21-api-key\",\n            \"model_id\": \"jamba-mini\"\n        }\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.inference.put({\n  task_type: \"chat-completion\",\n  inference_id: \"ai21-chat-completion\",\n  inference_config: {\n    service: \"ai21\",\n    service_settings: {\n      api_key: \"ai21-api-key\",\n      model_id: \"jamba-mini\",\n    },\n  },\n});"
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"ai21-chat-completion\",\n  inference_config: {\n    service: \"ai21\",\n    service_settings: {\n      api_key: \"ai21-api-key\",\n      model_id: \"jamba-mini\",\n    },\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.inference.put(\n  task_type: \"chat-completion\",\n  inference_id: \"ai21-chat-completion\",\n  body: {\n    \"service\": \"ai21\",\n    \"service_settings\": {\n      \"api_key\": \"ai21-api-key\",\n      \"model_id\": \"jamba-mini\"\n    }\n  }\n)"
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"ai21-chat-completion\",\n  body: {\n    \"service\": \"ai21\",\n    \"service_settings\": {\n      \"api_key\": \"ai21-api-key\",\n      \"model_id\": \"jamba-mini\"\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat-completion\",\n    \"inference_id\" => \"ai21-chat-completion\",\n    \"body\" => [\n        \"service\" => \"ai21\",\n        \"service_settings\" => [\n            \"api_key\" => \"ai21-api-key\",\n            \"model_id\" => \"jamba-mini\",\n        ],\n    ],\n]);"
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"ai21-chat-completion\",\n    \"body\" => [\n        \"service\" => \"ai21\",\n        \"service_settings\" => [\n            \"api_key\" => \"ai21-api-key\",\n            \"model_id\" => \"jamba-mini\",\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"ai21\",\"service_settings\":{\"api_key\":\"ai21-api-key\",\"model_id\":\"jamba-mini\"}}' \"$ELASTICSEARCH_URL/_inference/chat-completion/ai21-chat-completion\""
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"ai21\",\"service_settings\":{\"api_key\":\"ai21-api-key\",\"model_id\":\"jamba-mini\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/ai21-chat-completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"ai21-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"ai21\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"ai21-api-key\\\",\\\"model_id\\\":\\\"jamba-mini\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_custom/examples/request/PutCustomRequestExample1.yaml": [
@@ -18483,6 +18491,28 @@
     {
       "language": "curl",
       "code": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index/_sample/config\""
+    }
+  ],
+  "specification/cat/circuit_breaker/examples/request/CatCircuitBreakerRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.cat.circuit_breaker(\n    v=True,\n    format=\"json\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.cat.circuitBreaker({\n  v: \"true\",\n  format: \"json\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.cat.circuit_breaker(\n  v: \"true\",\n  format: \"json\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->cat()->circuitBreaker([\n    \"v\" => \"true\",\n    \"format\" => \"json\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/circuit_breaker?v=true&format=json\""
     }
   ]
 }
