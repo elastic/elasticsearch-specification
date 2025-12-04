@@ -13517,7 +13517,7 @@ export interface IndicesPutIndexTemplateIndexTemplateMapping {
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
   lifecycle?: IndicesDataStreamLifecycle
-  data_stream_options?: IndicesDataStreamOptionsTemplate
+  data_stream_options?: IndicesDataStreamOptionsTemplate | null
 }
 
 export interface IndicesPutIndexTemplateRequest extends RequestBase {

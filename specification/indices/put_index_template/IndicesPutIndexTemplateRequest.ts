@@ -186,5 +186,5 @@ export class IndexTemplateMapping {
    * @availability stack since=8.19.0 stability=stable
    * @availability serverless stability=stable
    */
-  data_stream_options?: DataStreamOptionsTemplate
+  data_stream_options?: DataStreamOptionsTemplate | null
 }

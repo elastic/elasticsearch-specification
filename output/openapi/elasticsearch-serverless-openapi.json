@@ -61889,9 +61889,13 @@
           },
           "data_stream_options": {
             "x-state": "Generally available",
-            "allOf": [
+            "oneOf": [
               {
                 "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
               }
             ]
           }
