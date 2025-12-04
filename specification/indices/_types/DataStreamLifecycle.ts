@@ -35,7 +35,7 @@ export class DataStreamLifecycle {
   /**
    * The list of downsampling rounds to execute as part of this downsampling configuration
    */
-  downsampling: DownsamplingRound[]
+  downsampling?: DownsamplingRound[]
   /**
    * If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle
    * that's disabled (enabled: `false`) will have no effect on the data stream.
