@@ -64,6 +64,7 @@ export interface Request extends CatRequestBase {
      * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * It supports comma-separated values, such as `open,hidden`.
+     * @server_default all
      */
     expand_wildcards?: ExpandWildcards
     /**

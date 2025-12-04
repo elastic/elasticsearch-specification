@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete an index template.
+ *
  * The provided <index-template> may contain multiple template names separated by a comma. If multiple template
  * names are specified then there is no wildcard support and the provided names should match completely with
  * existing templates.

@@ -30,6 +30,7 @@ import { Definition, Input } from './types'
 
 /**
  * Create a trained model.
+ *
  * Enable you to supply a trained model that is not created by data frame analytics.
  * @rest_spec_name ml.put_trained_model
  * @availability stack since=7.10.0 stability=stable

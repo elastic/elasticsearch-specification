@@ -24,6 +24,7 @@ import { TimeZone } from '@_types/Time'
 
 /**
  * Translate SQL into Elasticsearch queries.
+ *
  * Translate an SQL search into a search API request containing Query DSL.
  * It accepts the same request body parameters as the SQL search API, excluding `cursor`.
  * @rest_spec_name sql.translate

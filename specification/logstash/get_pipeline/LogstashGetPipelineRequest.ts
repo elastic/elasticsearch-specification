@@ -22,6 +22,7 @@ import { Ids } from '@_types/common'
 
 /**
  * Get Logstash pipelines.
+ *
  * Get pipelines that are used for Logstash Central Management.
  * @rest_spec_name logstash.get_pipeline
  * @availability stack since=7.12.0 stability=stable

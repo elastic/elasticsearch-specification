@@ -128,7 +128,8 @@ export class FunctionScoreQuery extends QueryBase {
    * A query that determines the documents for which a new score is computed.
    */
   query?: QueryContainer
-  /** Specifies how the computed scores are combined
+  /**
+   * Specifies how the computed scores are combined
    * @server_default multiply
    */
   score_mode?: FunctionScoreMode
@@ -143,6 +144,7 @@ export class ScriptScoreFunction {
 
 export class RandomScoreFunction {
   field?: Field
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   seed?: long | string
 }
 

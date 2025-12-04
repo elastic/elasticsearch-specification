@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Metrics, NodeIds } from '@_types/common'
+import { NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get feature usage information.
+ *
  * @rest_spec_name nodes.usage
  * @availability stack since=6.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
@@ -53,9 +54,9 @@ export interface Request extends RequestBase {
     node_id?: NodeIds
     /**
      * Limits the information returned to the specific metrics.
-     * A comma-separated list of the following options: `_all`, `rest_actions`.
+     * A comma-separated list of the following options: `_all`, `rest_actions`, `aggregations`.
      */
-    metric?: Metrics
+    metric?: NodesUsageMetrics
   }
   query_parameters: {
     /**
@@ -66,3 +67,11 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
 }
+
+export enum NodesUsageMetric {
+  _all,
+  rest_actions,
+  aggregations
+}
+
+export type NodesUsageMetrics = NodesUsageMetric | NodesUsageMetric[]

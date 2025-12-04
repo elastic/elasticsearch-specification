@@ -26,6 +26,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Shrink an index.
+ *
  * Shrink an index into a new index with fewer primary shards.
  *
  * Before you can shrink an index:

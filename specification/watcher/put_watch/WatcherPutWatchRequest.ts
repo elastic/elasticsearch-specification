@@ -30,6 +30,7 @@ import { TriggerContainer } from '@watcher/_types/Trigger'
 
 /**
  * Create or update a watch.
+ *
  * When a watch is registered, a new document that represents the watch is added to the `.watches` index and its trigger is immediately registered with the relevant trigger engine.
  * Typically for the `schedule` trigger, the scheduler is the trigger engine.
  *

@@ -24,6 +24,7 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * Update index settings.
+ *
  * Changes dynamic index settings in real time.
  * For data streams, index setting changes are applied to all backing indices by default.
  *
@@ -158,7 +159,8 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  /** Configuration options for the index.
+  /**
+   * Configuration options for the index.
    * @codegen_name settings
    */
   body: IndexSettings

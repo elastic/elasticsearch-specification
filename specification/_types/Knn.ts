@@ -43,7 +43,8 @@ export interface KnnSearch {
   k?: integer
   /** The number of nearest neighbor candidates to consider per shard */
   num_candidates?: integer
-  /** The percentage of vectors to explore per shard while doing knn search with bbq_disk
+  /**
+   * The percentage of vectors to explore per shard while doing knn search with bbq_disk
    * @availability stack since=9.2.0
    * @availability serverless
    */
@@ -59,7 +60,8 @@ export interface KnnSearch {
    * @doc_id knn-inner-hits
    */
   inner_hits?: InnerHits
-  /** Apply oversampling and rescoring to quantized vectors
+  /**
+   * Apply oversampling and rescoring to quantized vectors
    * @availability stack since=8.18.0
    * @availability serverless
    */
@@ -78,7 +80,8 @@ export interface KnnQuery extends QueryBase {
   query_vector_builder?: QueryVectorBuilder
   /** The number of nearest neighbor candidates to consider per shard */
   num_candidates?: integer
-  /** The percentage of vectors to explore per shard while doing knn search with bbq_disk
+  /**
+   * The percentage of vectors to explore per shard while doing knn search with bbq_disk
    * @availability stack since=9.2.0
    * @availability serverless
    */
@@ -89,7 +92,8 @@ export interface KnnQuery extends QueryBase {
   filter?: QueryContainer | QueryContainer[]
   /** The minimum similarity for a vector to be considered a match */
   similarity?: float
-  /** Apply oversampling and rescoring to quantized vectors
+  /**
+   * Apply oversampling and rescoring to quantized vectors
    * @availability stack since=8.18.0
    * @availability serverless
    */

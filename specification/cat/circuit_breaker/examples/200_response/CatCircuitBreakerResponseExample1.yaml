@@ -1,0 +1,23 @@
+# summary:
+description: >
+  A successful response from `GET /_cat/circuit_breaker?v=true&format=json`.
+  It shows two circuit breakers are active on one node.
+# type: response
+# response_code: 200
+value: |-
+  [
+    {
+      "breaker": "request",
+      "estimated": "0b",
+      "limit": "614.3mb",
+      "node_id": "ozKxpP9oS3SL0Sp-Mfxc6w",
+      "tripped": "0"
+    },
+    {
+      "breaker": "fielddata",
+      "estimated": "0b",
+      "limit": "409.5mb",
+      "node_id": "ozKxpP9oS3SL0Sp-Mfxc6w",
+      "tripped": "0"
+    }
+  ]

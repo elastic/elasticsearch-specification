@@ -24,6 +24,7 @@ import { EcsCompatibilityType, FormatType } from '../_types/Structure'
 
 /**
  * Find the structure of text messages.
+ *
  * Find the structure of a list of text messages.
  * The messages must contain data that is suitable to be ingested into Elasticsearch.
  *
@@ -55,11 +56,12 @@ interface Request extends RequestBase {
     }
   ]
   query_parameters: {
-    /** If the format is `delimited`, you can specify the column names in a comma-separated list.
+    /**
+     * If the format is `delimited`, you can specify the column names in a comma-separated list.
      * If this parameter is not specified, the structure finder uses the column names from the header row of the text.
      * If the text does not have a header role, columns are named "column1", "column2", "column3", for example.
      */
-    column_names?: string
+    column_names?: string | string[]
     /**
      * If you the format is `delimited`, you can specify the character used to delimit the values in each row.
      * Only a single character is supported; the delimiter cannot have multiple characters.

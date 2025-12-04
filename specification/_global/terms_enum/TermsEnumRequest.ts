@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Field, IndexName } from '@_types/common'
+import { Field, Indices } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
@@ -50,7 +50,7 @@ export interface Request extends RequestBase {
      * Wildcard (`*`) expressions are supported.
      * To search all data streams or indices, omit this parameter or use `*`  or `_all`.
      */
-    index: IndexName
+    index: Indices
   }
   body: {
     /** The string to match at the start of indexed terms. If not provided, all terms in the field are considered. */

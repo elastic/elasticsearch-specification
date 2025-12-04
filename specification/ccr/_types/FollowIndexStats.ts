@@ -87,7 +87,8 @@ export class ShardStats {
   /** The number of bulk write requests run on the follower.*/
   successful_write_requests: long
   time_since_last_read?: Duration
-  /** The number of milliseconds since a read request was sent to the leader.
+  /**
+   * The number of milliseconds since a read request was sent to the leader.
    * When the follower is caught up to the leader, this number will increase up to the configured `read_poll_timeout` at which point another read request will be sent to the leader.
    */
   time_since_last_read_millis: DurationValue<UnitMillis>

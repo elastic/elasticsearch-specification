@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Reset the features.
+ *
  * Clear all of the state information stored in system indices by Elasticsearch features, including the security and machine learning indices.
  *
  * WARNING: Intended for development and testing use only. Do not reset features on a production cluster.

@@ -83,10 +83,12 @@ export interface Request extends RequestBase {
     ccs_minimize_roundtrips?: boolean
     /**
      * Type of index that wildcard expressions can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
      * If true, concrete, expanded or aliased indices are ignored when frozen.
+     * @deprecated 7.16.0 This parameter is deprecated because frozen indices have been deprecated.
      * @server_default false
      */
     ignore_throttled?: boolean

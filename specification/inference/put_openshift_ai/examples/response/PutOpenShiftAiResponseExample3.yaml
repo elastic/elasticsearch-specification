@@ -1,0 +1,17 @@
+summary: A chat completion task
+description: A successful response when creating an OpenShift AI `chat_completion` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "openshift-ai-chat-completion",
+    "task_type": "chat_completion",
+    "service": "openshift_ai",
+    "service_settings": {
+      "model_id": "llama-31-8b-instruct",
+      "url": "openshift-ai-chat-completion-url",
+      "rate_limit": {
+        "requests_per_minute": 3000
+      }
+    }
+  }

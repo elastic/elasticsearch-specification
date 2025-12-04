@@ -22,6 +22,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Claim a connector sync job.
+ *
  * This action updates the job status to `in_progress` and sets the `last_seen` and `started_at` timestamps to the current time.
  * Additionally, it can set the `sync_cursor` property for the sync job.
  *

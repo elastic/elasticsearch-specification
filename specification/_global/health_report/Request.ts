@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get the cluster health.
+ *
  * Get a report with the health status of an Elasticsearch cluster.
  * The report contains a list of indicators that compose Elasticsearch functionality.
  *

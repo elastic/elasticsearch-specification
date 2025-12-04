@@ -21,6 +21,7 @@ import { Id } from '@_types/common'
 
 /**
  * Check in a connector sync job.
+ *
  * Check in a connector sync job and set the `last_seen` field to the current time before updating it in the internal index.
  *
  * To sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.

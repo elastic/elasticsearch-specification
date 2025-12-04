@@ -1,0 +1,25 @@
+summary: A text embedding task
+description: A successful response when creating an OpenShift AI `text_embedding` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "openshift-ai-text-embedding",
+    "task_type": "text_embedding",
+    "service": "openshift_ai",
+    "service_settings": {
+      "model_id": "gritlm-7b",
+      "url": "openshift-ai-embeddings-url",
+      "rate_limit": {
+        "requests_per_minute": 3000
+      },
+      "dimensions": 4096,
+      "similarity": "dot_product",
+      "dimensions_set_by_user": false
+    },
+    "chunking_settings": {
+      "strategy": "sentence",
+      "max_chunk_size": 250,
+      "sentence_overlap": 1
+    }
+  }

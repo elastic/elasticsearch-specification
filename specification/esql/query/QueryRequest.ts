@@ -26,6 +26,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Run an ES|QL query.
+ *
  * Get search results for an ES|QL (Elasticsearch query language) query.
  * @rest_spec_name esql.query
  * @availability stack since=8.11.0
@@ -110,8 +111,15 @@ export interface Request extends RequestBase {
      * object with information about the clusters that participated in the search along with info such as shards
      * count.
      * @server_default false
-     * @aliases include_execution_metadata
      */
     include_ccs_metadata?: boolean
+    /**
+     * When set to `true`, the response will include an extra `_clusters`
+     * object with information about the clusters that participated in the search along with info such as shards
+     * count.
+     * This is similar to `include_ccs_metadata`, but it also returns metadata when the query is not CCS/CPS
+     * @server_default false
+     */
+    include_execution_metadata?: boolean
   }
 }

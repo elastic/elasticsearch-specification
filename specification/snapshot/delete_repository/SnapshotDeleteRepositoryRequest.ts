@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Delete snapshot repositories.
+ *
  * When a repository is unregistered, Elasticsearch removes only the reference to the location where the repository is storing the snapshots.
  * The snapshots themselves are left untouched and in place.
  * @rest_spec_name snapshot.delete_repository

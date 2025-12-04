@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get snapshot lifecycle management statistics.
+ *
  * Get global and policy-level statistics about actions taken by snapshot lifecycle management.
  * @rest_spec_name slm.get_stats
  * @availability stack since=7.5.0 stability=stable

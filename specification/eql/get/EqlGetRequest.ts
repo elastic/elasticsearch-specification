@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get async EQL search results.
+ *
  * Get the current status and available results for an async EQL search or a stored synchronous EQL search.
  * @doc_id eql-async-search-api
  * @rest_spec_name eql.get
