@@ -1507,23 +1507,8 @@ export function sortTypeDefinitions (types: model.TypeDefinition[]): void {
   })
 }
 
-export function mediaTypeToStringArray (mediaType: string): string[] {
-  function mediaTypeToString (enumType: string): string {
-    switch (enumType) {
-      case 'MediaType.Json':
-        return 'application/json'
-      case 'MediaType.Text':
-        return 'text/plain'
-      case 'MediaType.Ndjson':
-        return 'application/x-ndjson'
-      case 'MediaType.EventStream':
-        return 'text/event-stream'
-      case 'MediaType.MapboxVectorTile':
-        return 'application/vnd.mapbox-vector-tile'
-      default:
-        throw new Error(`Unsupported media type: ${enumType}`)
-    }
-  }
+export function mediaTypeToStringArray (mediaType: string, allEnums: EnumDeclaration[]): string[] {
+  const mediaTypeEnum = allEnums.find(e => e.getName() === 'MediaType')
 
   // Handle strings separated by a pipe and return multiple media types
   let enumTypeList: string[]
@@ -1535,7 +1520,9 @@ export function mediaTypeToStringArray (mediaType: string): string[] {
 
   const mediaTypeList: string[] = []
   for (const enumType of enumTypeList) {
-    mediaTypeList.push(mediaTypeToString(enumType))
+    let memberName = enumType.split('.').pop()
+    let value = mediaTypeEnum?.getMembers().find(m => m.getName() === memberName)?.getValue() as string
+    mediaTypeList.push(value)
   }
   return mediaTypeList
 }
