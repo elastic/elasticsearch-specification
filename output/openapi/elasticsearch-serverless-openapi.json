@@ -11095,7 +11095,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/indices._types.IndexTemplate"
+                "$ref": "#/components/schemas/indices.put_index_template.IndexTemplateMapping"
               }
             }
           }
