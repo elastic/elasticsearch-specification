@@ -42,6 +42,7 @@
           {
             "in": "query",
             "name": "typed_keys",
+            "description": "Specify whether aggregation and suggester names should be prefixed by their respective types in the response",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -6296,6 +6297,7 @@
           {
             "in": "path",
             "name": "id",
+            "description": "The query ID",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -9013,6 +9015,7 @@
           {
             "in": "path",
             "name": "index",
+            "description": "Comma-separated list of index names to explain",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -9023,6 +9026,7 @@
           {
             "in": "query",
             "name": "include_defaults",
+            "description": "indicates if the API should return the default values the system uses for the index's lifecycle",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -9032,6 +9036,7 @@
           {
             "in": "query",
             "name": "master_timeout",
+            "description": "Specify timeout for connection to master",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Duration"
@@ -20683,6 +20688,7 @@
           {
             "in": "query",
             "name": "priority",
+            "description": "The deployment priority.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/ml._types.TrainingPriority"
@@ -22779,6 +22785,7 @@
           {
             "in": "path",
             "name": "index",
+            "description": "A comma-separated list of index names to open point in time; use `_all` or empty string to perform the operation on all indices",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -26418,6 +26425,7 @@
           {
             "in": "query",
             "name": "refresh",
+            "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Refresh"
@@ -28645,6 +28653,7 @@
           {
             "in": "query",
             "name": "timeout",
+            "description": "Controls the time to wait for the stats",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Duration"
@@ -29976,6 +29985,7 @@
           {
             "in": "query",
             "name": "version_type",
+            "description": "Should the document increment the version number (internal) on hit or not (reindex)",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -84511,6 +84521,7 @@
       "async_search.submit-index": {
         "in": "path",
         "name": "index",
+        "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -84551,6 +84562,7 @@
       "async_search.submit-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
+        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84560,6 +84572,7 @@
       "async_search.submit-allow_partial_search_results": {
         "in": "query",
         "name": "allow_partial_search_results",
+        "description": "Indicate if an error should be returned if there is a partial search failure or timeout",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84569,6 +84582,7 @@
       "async_search.submit-analyzer": {
         "in": "query",
         "name": "analyzer",
+        "description": "The analyzer to use for the query string",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -84578,6 +84592,7 @@
       "async_search.submit-analyze_wildcard": {
         "in": "query",
         "name": "analyze_wildcard",
+        "description": "Specify whether wildcard and prefix queries should be analyzed (default: false)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84607,6 +84622,7 @@
       "async_search.submit-default_operator": {
         "in": "query",
         "name": "default_operator",
+        "description": "The default operator for query string query (AND or OR)",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -84616,6 +84632,7 @@
       "async_search.submit-df": {
         "in": "query",
         "name": "df",
+        "description": "The field to use as default where no field prefix is given in the query string",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -84625,6 +84642,7 @@
       "async_search.submit-docvalue_fields": {
         "in": "query",
         "name": "docvalue_fields",
+        "description": "A comma-separated list of fields to return as the docvalue representation of a field for each hit",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Fields"
@@ -84634,6 +84652,7 @@
       "async_search.submit-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
+        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -84643,6 +84662,7 @@
       "async_search.submit-explain": {
         "in": "query",
         "name": "explain",
+        "description": "Specify whether to return detailed information about score computation as part of a hit",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84652,6 +84672,7 @@
       "async_search.submit-ignore_throttled": {
         "in": "query",
         "name": "ignore_throttled",
+        "description": "Whether specified concrete, expanded or aliased indices should be ignored when throttled",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84661,6 +84682,7 @@
       "async_search.submit-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
+        "description": "Whether specified concrete indices should be ignored when unavailable (missing or closed)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84670,6 +84692,7 @@
       "async_search.submit-lenient": {
         "in": "query",
         "name": "lenient",
+        "description": "Specify whether format-based query failures (such as providing text to a numeric field) should be ignored",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84679,6 +84702,7 @@
       "async_search.submit-max_concurrent_shard_requests": {
         "in": "query",
         "name": "max_concurrent_shard_requests",
+        "description": "The number of concurrent shard requests per node this search executes concurrently. This value should be used to limit the impact of the search on the cluster in order to limit the number of concurrent shard requests",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84688,6 +84712,7 @@
       "async_search.submit-preference": {
         "in": "query",
         "name": "preference",
+        "description": "Specify the node or shard the operation should be performed on (default: random)",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -84697,6 +84722,7 @@
       "async_search.submit-request_cache": {
         "in": "query",
         "name": "request_cache",
+        "description": "Specify if request cache should be used for this request or not, defaults to true",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84706,6 +84732,7 @@
       "async_search.submit-routing": {
         "in": "query",
         "name": "routing",
+        "description": "A comma-separated list of specific routing values",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -84715,6 +84742,7 @@
       "async_search.submit-search_type": {
         "in": "query",
         "name": "search_type",
+        "description": "Search operation type",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.SearchType"
@@ -84724,6 +84752,7 @@
       "async_search.submit-stats": {
         "in": "query",
         "name": "stats",
+        "description": "Specific 'tag' of the request for logging and statistical purposes",
         "deprecated": false,
         "schema": {
           "type": "array",
@@ -84736,6 +84765,7 @@
       "async_search.submit-stored_fields": {
         "in": "query",
         "name": "stored_fields",
+        "description": "A comma-separated list of stored fields to return as part of a hit",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Fields"
@@ -84755,6 +84785,7 @@
       "async_search.submit-suggest_mode": {
         "in": "query",
         "name": "suggest_mode",
+        "description": "Specify suggest mode",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.SuggestMode"
@@ -84764,6 +84795,7 @@
       "async_search.submit-suggest_size": {
         "in": "query",
         "name": "suggest_size",
+        "description": "How many suggestions to return in response",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84783,6 +84815,7 @@
       "async_search.submit-terminate_after": {
         "in": "query",
         "name": "terminate_after",
+        "description": "The maximum number of documents to collect for each shard, upon reaching which the query execution will terminate early.",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84792,6 +84825,7 @@
       "async_search.submit-timeout": {
         "in": "query",
         "name": "timeout",
+        "description": "Explicit operation timeout",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Duration"
@@ -84801,6 +84835,7 @@
       "async_search.submit-track_total_hits": {
         "in": "query",
         "name": "track_total_hits",
+        "description": "Indicate if the number of documents that match the query should be tracked. A number can also be specified, to accurately track the total hit count up to the number.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_global.search._types.TrackHits"
@@ -84810,6 +84845,7 @@
       "async_search.submit-track_scores": {
         "in": "query",
         "name": "track_scores",
+        "description": "Whether to calculate and return scores even if they are not used for sorting",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84819,6 +84855,7 @@
       "async_search.submit-typed_keys": {
         "in": "query",
         "name": "typed_keys",
+        "description": "Specify whether aggregation and suggester names should be prefixed by their respective types in the response",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84828,6 +84865,7 @@
       "async_search.submit-rest_total_hits_as_int": {
         "in": "query",
         "name": "rest_total_hits_as_int",
+        "description": "Indicates whether hits.total should be rendered as an integer or an object in the rest search response",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84837,6 +84875,7 @@
       "async_search.submit-version": {
         "in": "query",
         "name": "version",
+        "description": "Specify whether to return document version as part of a hit",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84846,6 +84885,7 @@
       "async_search.submit-_source": {
         "in": "query",
         "name": "_source",
+        "description": "True or false to return the _source field or not, or a list of fields to return",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_global.search._types.SourceConfigParam"
@@ -84855,6 +84895,7 @@
       "async_search.submit-_source_excludes": {
         "in": "query",
         "name": "_source_excludes",
+        "description": "A list of fields to exclude from the returned _source field",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Fields"
@@ -84864,6 +84905,7 @@
       "async_search.submit-_source_includes": {
         "in": "query",
         "name": "_source_includes",
+        "description": "A list of fields to extract and return from the _source field",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Fields"
@@ -84873,6 +84915,7 @@
       "async_search.submit-seq_no_primary_term": {
         "in": "query",
         "name": "seq_no_primary_term",
+        "description": "Specify whether to return sequence number and primary term of the last modification of each hit",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84882,6 +84925,7 @@
       "async_search.submit-q": {
         "in": "query",
         "name": "q",
+        "description": "Query in the Lucene query string syntax",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -84891,6 +84935,7 @@
       "async_search.submit-size": {
         "in": "query",
         "name": "size",
+        "description": "Number of hits to return (default: 10)",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84900,6 +84945,7 @@
       "async_search.submit-from": {
         "in": "query",
         "name": "from",
+        "description": "Starting offset (default: 0)",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84909,6 +84955,7 @@
       "async_search.submit-sort": {
         "in": "query",
         "name": "sort",
+        "description": "A comma-separated list of <field>:<direction> pairs",
         "deprecated": false,
         "schema": {
           "oneOf": [
@@ -85273,6 +85320,7 @@
       "cat.ml_data_frame_analytics-id": {
         "in": "path",
         "name": "id",
+        "description": "The ID of the data frame analytics to fetch",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -85569,6 +85617,7 @@
       "cluster.get_component_template-include_defaults": {
         "in": "query",
         "name": "include_defaults",
+        "description": "Return all default configurations for the component template (default: false)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -85945,6 +85994,7 @@
       "eql.search-index": {
         "in": "path",
         "name": "index",
+        "description": "Comma-separated list of index names to scope the operation",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -85955,6 +86005,7 @@
       "eql.search-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
+        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -85984,6 +86035,7 @@
       "eql.search-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
+        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -86983,6 +87035,7 @@
       "indices.put_index_template-cause": {
         "in": "query",
         "name": "cause",
+        "description": "User defined reason for creating/updating the index template",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -86992,6 +87045,7 @@
       "indices.put_mapping-index": {
         "in": "path",
         "name": "index",
+        "description": "A comma-separated list of index names the mapping should be added to (supports wildcards); use `_all` or omit to add the mapping on all indices.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -87598,6 +87652,7 @@
       "ingest.get_pipeline-summary": {
         "in": "query",
         "name": "summary",
+        "description": "Return pipelines without their definitions (default: false)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88233,6 +88288,7 @@
       "ml.preview_datafeed-start": {
         "in": "query",
         "name": "start",
+        "description": "The start time from where the datafeed preview should begin",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.DateTime"
@@ -88242,6 +88298,7 @@
       "ml.preview_datafeed-end": {
         "in": "query",
         "name": "end",
+        "description": "The end time when the datafeed preview should stop",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.DateTime"
@@ -88474,6 +88531,7 @@
       "mtermvectors-ids": {
         "in": "query",
         "name": "ids",
+        "description": "A comma-separated list of documents ids. You must define ids as parameter or set \"ids\" or \"docs\" in the request body",
         "deprecated": false,
         "schema": {
           "type": "array",
@@ -88680,6 +88738,7 @@
       "rank_eval-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
+        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -88699,6 +88758,7 @@
       "rank_eval-search_type": {
         "in": "query",
         "name": "search_type",
+        "description": "Search operation type",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.SearchType"
@@ -88719,6 +88779,7 @@
       "scroll-scroll_id": {
         "in": "path",
         "name": "scroll_id",
+        "description": "The scroll ID",
         "required": true,
         "deprecated": true,
         "schema": {
@@ -88739,6 +88800,7 @@
       "scroll-scroll_id_": {
         "in": "query",
         "name": "scroll_id",
+        "description": "The scroll ID for scrolled search",
         "deprecated": true,
         "schema": {
           "$ref": "#/components/schemas/_types.ScrollId"
@@ -89259,6 +89321,7 @@
       "search_mvt-index": {
         "in": "path",
         "name": "index",
+        "description": "Comma-separated list of data streams, indices, or aliases to search",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -89269,6 +89332,7 @@
       "search_mvt-field": {
         "in": "path",
         "name": "field",
+        "description": "Field containing geospatial data to return",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -89279,6 +89343,7 @@
       "search_mvt-zoom": {
         "in": "path",
         "name": "zoom",
+        "description": "Zoom level for the vector tile to search",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -89289,6 +89354,7 @@
       "search_mvt-x": {
         "in": "path",
         "name": "x",
+        "description": "X coordinate for the vector tile to search",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -89299,6 +89365,7 @@
       "search_mvt-y": {
         "in": "path",
         "name": "y",
+        "description": "Y coordinate for the vector tile to search",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -89531,6 +89598,7 @@
       "security.create_api_key-refresh": {
         "in": "query",
         "name": "refresh",
+        "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Refresh"
@@ -89551,6 +89619,7 @@
       "security.has_privileges-user": {
         "in": "path",
         "name": "user",
+        "description": "Username",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -89572,6 +89641,7 @@
       "security.put_role-refresh": {
         "in": "query",
         "name": "refresh",
+        "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Refresh"
