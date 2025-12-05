@@ -1,0 +1,17 @@
+summary: A chat completion task
+description: A successful response when creating an Nvidia `chat_completion` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "nvidia-chat-completion",
+    "task_type": "chat_completion",
+    "service": "nvidia",
+    "service_settings": {
+      "model_id": "microsoft/phi-3-mini-128k-instruct",
+      "url": "nvidia-chat-completion-url",
+      "rate_limit": {
+        "requests_per_minute": 3000
+      }
+    }
+  }

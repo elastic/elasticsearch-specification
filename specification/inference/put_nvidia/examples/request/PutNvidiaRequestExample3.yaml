@@ -1,0 +1,15 @@
+summary: A completion task
+description:
+  Run `PUT _inference/completion/nvidia-completion` to create an inference endpoint
+  that performs a `completion` task.
+method_request: 'PUT _inference/completion/nvidia-completion'
+# type: "request"
+value: |-
+  {
+      "service": "nvidia",
+      "service_settings": {
+          "url": "nvidia-completion-url",
+          "api_key": "nvidia-completion-token",
+          "model_id": "microsoft/phi-3-mini-128k-instruct"
+      }
+  }
