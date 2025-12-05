@@ -1,7 +1,5 @@
 summary: A rerank task
-description:
-  Run `PUT _inference/rerank/openshift-ai-rerank` to create an inference endpoint
-  that performs a `rerank` task.
+description: Run `PUT _inference/rerank/openshift-ai-rerank` to create an inference endpoint that performs a `rerank` task.
 method_request: 'PUT _inference/rerank/openshift-ai-rerank'
 # type: "request"
 value: |-
