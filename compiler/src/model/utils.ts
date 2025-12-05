@@ -1508,7 +1508,8 @@ export function sortTypeDefinitions (types: model.TypeDefinition[]): void {
 }
 
 export function mediaTypeToStringArray (mediaType: string, allEnums: EnumDeclaration[]): string[] {
-  const mediaTypeEnum = allEnums.find(e => e.getName() === 'MediaType')
+  const mediaTypeEnumName = 'MediaType'
+  const mediaTypeEnum = allEnums.find(e => e.getName() === mediaTypeEnumName)
 
   // Handle strings separated by a pipe and return multiple media types
   let enumTypeList: string[]
