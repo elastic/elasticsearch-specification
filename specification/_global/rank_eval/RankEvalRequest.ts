@@ -58,6 +58,7 @@ export interface Request extends RequestBase {
      */
     allow_no_indices?: boolean
     /**
+     * Whether to expand wildcard expression to concrete indices that are open, closed or both.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -66,6 +67,9 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     ignore_unavailable?: boolean
+    /**
+     * Search operation type
+     */
     search_type?: SearchType
   }
   body: {
