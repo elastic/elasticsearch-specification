@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
+import { Ids, MediaType } from '@_types/common'
 
 /**
  * Clear the API key cache.
@@ -46,4 +46,5 @@ export interface Request extends RequestBase {
      */
     ids: Ids
   }
+  response_media_type: MediaType.Json
 }

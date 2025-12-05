@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { CatCircuitBreakerColumns, CatRequestBase } from '@cat/_types/CatBase'
 
@@ -47,6 +47,7 @@ export interface Request extends CatRequestBase {
     /** A comma-separated list of regular-expressions to filter the circuit breakers in the output */
     circuit_breaker_patterns?: string | string[]
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of columns names to display. It supports simple wildcards.

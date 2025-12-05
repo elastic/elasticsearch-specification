@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
+import { Ids, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
@@ -49,6 +49,7 @@ export interface Request extends RequestBase {
      */
     filter_id?: Ids
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Skips the specified number of filters.

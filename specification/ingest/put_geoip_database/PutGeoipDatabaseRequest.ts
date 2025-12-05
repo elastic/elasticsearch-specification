@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Name } from '@_types/common'
+import { Id, MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { Maxmind } from '@ingest/_types/Database'
 
@@ -44,6 +44,8 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

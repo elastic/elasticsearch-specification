@@ -25,6 +25,7 @@ import {
   Fields,
   IndexName,
   Indices,
+  MediaType,
   ProjectRouting,
   Routing,
   SearchType,
@@ -84,6 +85,8 @@ export interface Request extends RequestBase {
   path_parts: {
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Blocks and waits until the search is completed up to a certain timeout.

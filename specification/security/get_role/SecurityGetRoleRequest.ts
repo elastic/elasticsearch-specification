@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 
 /**
  * Get roles.
@@ -51,4 +51,5 @@ export interface Request extends RequestBase {
      */
     name?: Names
   }
+  response_media_type: MediaType.Json
 }

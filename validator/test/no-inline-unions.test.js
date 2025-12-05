@@ -70,6 +70,11 @@ ruleTester.run('no-inline-unions', rule, {
     `interface Config {
       nodes: integer[] | integer
     }`,
+    `interface Config {
+      request_media_type: MediaType.Json
+      response_media_type: MediaType.Json
+    }`,
+
   ],
   invalid: [
     {

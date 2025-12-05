@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 
 /**
  * Get behavioral analytics collections.
@@ -46,4 +46,5 @@ export interface Request extends RequestBase {
      */
     name?: Name[]
   }
+  response_media_type: MediaType.Json
 }

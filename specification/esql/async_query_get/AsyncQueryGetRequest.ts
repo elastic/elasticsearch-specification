@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { EsqlFormat } from '@esql/_types/QueryParameters'
 
@@ -47,6 +47,7 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Indicates whether columns that are entirely `null` will be removed from the `columns` and `values` portion of the results.

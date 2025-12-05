@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Disable logs stream.
@@ -36,6 +37,7 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

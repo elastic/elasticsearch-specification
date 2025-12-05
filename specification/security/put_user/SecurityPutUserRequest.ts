@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Metadata, Password, Refresh, Username } from '@_types/common'
+import {
+  MediaType,
+  Metadata,
+  Password,
+  Refresh,
+  Username
+} from '@_types/common'
 
 /**
  * Create or update users.
@@ -48,6 +54,8 @@ export interface Request extends RequestBase {
      */
     username: Username
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Valid values are `true`, `false`, and `wait_for`.

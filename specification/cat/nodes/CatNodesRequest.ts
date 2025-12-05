@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { CatNodeColumns, CatRequestBase } from '@cat/_types/CatBase'
 
@@ -39,6 +39,7 @@ export interface Request extends CatRequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * If `true`, return the full node ID. If `false`, return the shortened node ID.

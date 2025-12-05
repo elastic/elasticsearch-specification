@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Fields, Indices } from '@_types/common'
+import { ExpandWildcards, Fields, Indices, MediaType } from '@_types/common'
 
 /**
  * Clear the cache.
@@ -54,6 +54,7 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Comma-separated list of data streams, indices, and aliases used to limit the request.

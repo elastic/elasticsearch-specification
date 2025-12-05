@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName, NodeId } from '@_types/common'
+import { IndexName, MediaType, NodeId } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
@@ -45,6 +45,8 @@ export interface Request extends RequestBase {
       methods: ['GET', 'POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The name of the index that you would like an explanation for.

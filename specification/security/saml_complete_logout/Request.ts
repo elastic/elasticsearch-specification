@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
+import { Ids, MediaType } from '@_types/common'
 
 /**
  * Logout of SAML completely.
@@ -46,6 +46,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /** The name of the SAML realm in Elasticsearch for which the configuration is used to verify the logout response. */
     realm: string

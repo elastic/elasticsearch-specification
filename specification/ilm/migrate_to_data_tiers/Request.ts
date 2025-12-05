@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Migrate to data tiers routing.
@@ -48,6 +49,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If true, simulates the migration from node attributes based allocation filters to data tiers, but does not perform the migration.

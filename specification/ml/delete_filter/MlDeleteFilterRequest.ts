@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Delete a filter.
@@ -45,4 +45,5 @@ export interface Request extends RequestBase {
      */
     filter_id: Id
   }
+  response_media_type: MediaType.Json
 }

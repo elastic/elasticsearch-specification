@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Upgrade all transforms.
@@ -49,6 +50,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * When true, the request checks for updates but does not run them.

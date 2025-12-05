@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { Configuration, Retention } from '@slm/_types/SnapshotLifecycle'
 import { CronExpression } from '@watcher/_types/Schedule'
@@ -49,6 +49,8 @@ export interface Request extends RequestBase {
      */
     policy_id: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

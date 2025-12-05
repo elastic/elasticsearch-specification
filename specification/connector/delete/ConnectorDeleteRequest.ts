@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Delete a connector.
@@ -44,6 +44,7 @@ export interface Request extends RequestBase {
      */
     connector_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A flag indicating if associated sync jobs should be also removed.

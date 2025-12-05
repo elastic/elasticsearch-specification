@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName, Uuid } from '@_types/common'
+import { IndexName, MediaType, Uuid } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -50,6 +50,8 @@ export interface Request extends RequestBase {
   path_parts: {
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.

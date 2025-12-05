@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Name, Username } from '@_types/common'
+import { Id, MediaType, Name, Username } from '@_types/common'
 
 /**
  * Invalidate API keys.
@@ -48,6 +48,8 @@ export interface Request extends RequestBase {
       methods: ['DELETE']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     id?: Id
     /**

@@ -38,6 +38,12 @@ export default createRule({
         if (!isPropertyAnnotation && !isInterfaceProperty) {
           return;
         }
+
+        // allow request_media_type and response_media_type
+        if (parent.parent?.key?.name === 'request_media_type' ||
+            parent.parent?.key?.name === 'response_media_type') {
+          return;
+        }
         
         if (node.types.length === 2) {
           const [first, second] = node.types;

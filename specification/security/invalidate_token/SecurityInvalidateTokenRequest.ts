@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Username } from '@_types/common'
+import { MediaType, Name, Username } from '@_types/common'
 
 /**
  * Invalidate a token.
@@ -46,6 +46,8 @@ export interface Request extends RequestBase {
       methods: ['DELETE']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * An access token.

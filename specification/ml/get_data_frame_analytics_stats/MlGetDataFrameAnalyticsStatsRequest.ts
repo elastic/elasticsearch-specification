@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
@@ -50,6 +50,7 @@ export interface Request extends RequestBase {
      */
     id?: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:

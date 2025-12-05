@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Get the pending cluster tasks.
@@ -41,6 +42,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, the request retrieves information from the local node only.

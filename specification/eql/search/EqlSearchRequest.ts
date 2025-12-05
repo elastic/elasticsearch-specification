@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Field, Indices, ProjectRouting } from '@_types/common'
+import {
+  ExpandWildcards,
+  Field,
+  Indices,
+  MediaType,
+  ProjectRouting
+} from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer, uint } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
@@ -46,6 +52,8 @@ export interface Request extends RequestBase {
   path_parts: {
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * @server_default true

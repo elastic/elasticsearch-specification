@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
+import { Ids, MediaType } from '@_types/common'
 
 /**
  * Authenticate SAML.
@@ -50,6 +50,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /** The SAML response as it was sent by the user's browser, usually a Base64 encoded XML document. */
     content: string

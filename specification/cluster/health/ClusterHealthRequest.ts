@@ -23,6 +23,7 @@ import {
   HealthStatus,
   Indices,
   Level,
+  MediaType,
   WaitForActiveShards,
   WaitForEvents
 } from '@_types/common'
@@ -65,6 +66,7 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * @server_default all

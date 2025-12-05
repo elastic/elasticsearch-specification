@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Metadata, Name, Refresh } from '@_types/common'
+import { MediaType, Metadata, Name, Refresh } from '@_types/common'
 import { RoleMappingRule } from '@security/_types/RoleMappingRule'
 import { RoleTemplate } from '@security/_types/RoleTemplate'
 
@@ -70,6 +70,8 @@ export interface Request extends RequestBase {
      */
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     refresh?: Refresh
   }

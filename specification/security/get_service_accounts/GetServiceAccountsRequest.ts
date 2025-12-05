@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Namespace, Service } from '@_types/common'
+import { MediaType, Namespace, Service } from '@_types/common'
 
 /**
  * Get service accounts.
@@ -61,4 +61,5 @@ export interface Request extends RequestBase {
      */
     service?: Service
   }
+  response_media_type: MediaType.Json
 }

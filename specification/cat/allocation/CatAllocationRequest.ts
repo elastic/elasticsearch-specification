@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Names, NodeIds } from '@_types/common'
+import { MediaType, Names, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { CatAllocationColumns, CatRequestBase } from '@cat/_types/CatBase'
 
@@ -48,6 +48,7 @@ export interface Request extends CatRequestBase {
     /** A comma-separated list of node identifiers or names used to limit the returned information. */
     node_id?: NodeIds
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of columns names to display. It supports simple wildcards.

@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
 import { RoleQueryContainer } from './types'
@@ -43,6 +44,8 @@ export interface Request extends RequestBase {
       methods: ['GET', 'POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body?: {
     /**
      * A query to filter which roles to return.

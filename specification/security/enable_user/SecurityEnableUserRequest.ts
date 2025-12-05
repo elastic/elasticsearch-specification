@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Refresh, Username } from '@_types/common'
+import { MediaType, Refresh, Username } from '@_types/common'
 
 /**
  * Enable users.
@@ -43,6 +43,7 @@ export interface Request extends RequestBase {
      */
     username: Username
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     refresh?: Refresh
   }

@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { SearchApplicationParameters } from '../_types/SearchApplicationParameters'
 
 /**
@@ -43,6 +43,8 @@ export interface Request extends RequestBase {
      */
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, this request cannot replace or update existing Search Applications.

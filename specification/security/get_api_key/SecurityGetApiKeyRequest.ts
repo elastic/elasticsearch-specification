@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Name, Username } from '@_types/common'
+import { Id, MediaType, Name, Username } from '@_types/common'
 
 /**
  * Get API key information.
@@ -39,6 +39,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * An API key id.

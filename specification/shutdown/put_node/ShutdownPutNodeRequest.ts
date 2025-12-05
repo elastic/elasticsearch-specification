@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeId } from '@_types/common'
+import { MediaType, NodeId } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { Type } from '../_types/types'
 
@@ -60,6 +60,8 @@ export interface Request extends RequestBase {
      */
     node_id: NodeId
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

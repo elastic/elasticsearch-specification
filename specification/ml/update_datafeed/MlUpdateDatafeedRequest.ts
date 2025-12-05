@@ -19,7 +19,7 @@
 
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Id, IndicesOptions } from '@_types/common'
+import { ExpandWildcards, Id, IndicesOptions, MediaType } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -57,6 +57,8 @@ export interface Request extends RequestBase {
      */
     datafeed_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the

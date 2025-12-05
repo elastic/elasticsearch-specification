@@ -22,6 +22,7 @@ import {
   Fields,
   Id,
   IndexName,
+  MediaType,
   Routing,
   VersionNumber,
   VersionType
@@ -107,6 +108,7 @@ export interface Request extends RequestBase {
     /** The name of the index that contains the document. */
     index: IndexName
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Indicates whether the request forces synthetic `_source`.

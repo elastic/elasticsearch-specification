@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Field, GrokPattern, IndexName } from '@_types/common'
+import { Field, GrokPattern, IndexName, MediaType } from '@_types/common'
 import { uint } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { EcsCompatibilityType, FormatType } from '../_types/Structure'
@@ -55,6 +55,7 @@ interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `format` is set to `delimited`, you can specify the column names in a comma-separated list.

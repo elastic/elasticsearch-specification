@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Name } from '@_types/common'
+import { Id, MediaType, Name } from '@_types/common'
 
 /**
  * Delete a trained model alias.
@@ -50,4 +50,6 @@ export interface Request extends RequestBase {
      */
     model_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
 }

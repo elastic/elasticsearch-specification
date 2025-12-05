@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -47,6 +48,8 @@ export interface Request extends RequestBase {
       methods: ['GET', 'POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Return the snapshot of the owner user's role descriptors associated with the API key.

@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ByteSize, IndexPattern, IndexPatterns, Name } from '@_types/common'
+import {
+  ByteSize,
+  IndexPattern,
+  IndexPatterns,
+  MediaType,
+  Name
+} from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -51,6 +57,8 @@ export interface Request extends RequestBase {
      */
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

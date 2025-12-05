@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 
 /**
  * Get data stream stats.
@@ -50,6 +50,7 @@ export interface Request extends RequestBase {
      */
     name?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Type of data stream that wildcard patterns can match.

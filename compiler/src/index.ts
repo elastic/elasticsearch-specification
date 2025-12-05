@@ -25,7 +25,6 @@ import validateRestSpec from './steps/validate-rest-spec'
 import addInfo from './steps/add-info'
 import addDescription from './steps/add-description'
 import validateModel from './steps/validate-model'
-import addContentType from './steps/add-content-type'
 import readDefinitionValidation from './steps/read-definition-validation'
 import addDeprecation from './steps/add-deprecation'
 import ExamplesProcessor from './steps/add-examples'
@@ -73,7 +72,6 @@ compiler
   .generateModel()
   .step(addInfo)
   .step(addDeprecation)
-  .step(addContentType)
   .step(readDefinitionValidation)
   .step(validateRestSpec)
   .step(addDescription)

@@ -19,7 +19,7 @@
 // TODO: once the compiler can handle it, the body should use the commented classes in this file
 
 import { RequestBase } from '@_types/Base'
-import { Password, Username } from '@_types/common'
+import { MediaType, Password, Username } from '@_types/common'
 import { AccessTokenGrantType } from './types'
 
 /**
@@ -51,6 +51,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The type of grant.

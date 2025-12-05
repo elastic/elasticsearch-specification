@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Password, Refresh, Username } from '@_types/common'
+import { MediaType, Password, Refresh, Username } from '@_types/common'
 import { ApiKeyGrantType, GrantApiKey } from './types'
 
 /**
@@ -57,6 +57,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If 'true', Elasticsearch refreshes the affected shards to make this operation

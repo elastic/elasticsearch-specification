@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { CatDatafeedColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -55,6 +55,7 @@ export interface Request extends CatRequestBase {
      */
     datafeed_id?: Id
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:

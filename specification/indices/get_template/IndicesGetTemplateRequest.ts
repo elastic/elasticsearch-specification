@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -53,6 +53,7 @@ export interface Request extends RequestBase {
      */
     name?: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, returns settings in flat format.

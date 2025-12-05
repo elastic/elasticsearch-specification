@@ -22,6 +22,7 @@ import {
   Fields,
   Id,
   IndexName,
+  MediaType,
   Routing,
   VersionNumber,
   VersionType
@@ -65,6 +66,7 @@ export interface Request extends RequestBase {
      */
     index: IndexName
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The node or shard the operation should be performed on.

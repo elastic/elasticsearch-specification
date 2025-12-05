@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 import { DownsampleConfig } from '@indices/_types/Downsample'
 
 /**
@@ -59,6 +59,8 @@ export interface Request extends RequestBase {
      */
     target_index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /** @codegen_name config */
   body: DownsampleConfig
 }

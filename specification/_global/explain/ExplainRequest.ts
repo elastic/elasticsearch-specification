@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Fields, Id, IndexName, Routing } from '@_types/common'
+import { Fields, Id, IndexName, MediaType, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
 import { SourceConfigParam } from '@global/search/_types/SourceFilter'
@@ -53,6 +53,8 @@ export interface Request extends RequestBase {
      */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The analyzer to use for the query string.

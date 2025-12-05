@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Id, IndexName } from '@_types/common'
+import { ExpandWildcards, Id, IndexName, MediaType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
@@ -53,6 +53,8 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the

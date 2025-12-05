@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Namespace, Refresh, Service } from '@_types/common'
+import { MediaType, Name, Namespace, Refresh, Service } from '@_types/common'
 
 /**
  * Delete service account tokens.
@@ -52,6 +52,7 @@ export interface Request extends RequestBase {
      */
     name: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     refresh?: Refresh
   }

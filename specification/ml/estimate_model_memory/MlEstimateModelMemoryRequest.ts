@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Field } from '@_types/common'
+import { Field, MediaType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { AnalysisConfig } from '@ml/_types/Analysis'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -43,6 +43,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * For a list of the properties that you can specify in the

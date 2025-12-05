@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Password, Refresh, Username } from '@_types/common'
+import { MediaType, Password, Refresh, Username } from '@_types/common'
 
 /**
  * Change passwords.
@@ -46,6 +46,8 @@ export interface Request extends RequestBase {
      */
     username?: Username
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     refresh?: Refresh
   }

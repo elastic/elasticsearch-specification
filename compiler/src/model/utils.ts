@@ -1506,3 +1506,34 @@ export function sortTypeDefinitions (types: model.TypeDefinition[]): void {
     return 0
   })
 }
+
+export function mediaTypeToStringArray (mediaType: string, allEnums: EnumDeclaration[]): string[] {
+  const mediaTypeEnumName = 'MediaType'
+  const mediaTypeEnum = allEnums.find(e => e.getName() === mediaTypeEnumName)
+
+  // Handle strings separated by a pipe and return multiple media types
+  let enumTypeList: string[]
+  if (mediaType.includes('|')) {
+    enumTypeList = mediaType.split('|').map(mt => mt.trim())
+  } else {
+    enumTypeList = [mediaType.trim()]
+  }
+
+  const mediaTypeList: string[] = []
+  for (const enumType of enumTypeList) {
+    const memberName = enumType.split('.').pop()
+    const value = mediaTypeEnum?.getMembers().find(m => m.getName() === memberName)?.getValue() as string
+    // If value is undefined, it means the member
+    // is an alias to one or more other members
+    // so we need to unpack it recursively
+    if (value === undefined) {
+      const aliasMember = mediaTypeEnum?.getMembers().find(m => m.getName() === memberName)
+      const initializer = aliasMember?.getStructure().initializer as string
+      const unpackedValues = mediaTypeToStringArray(initializer, allEnums)
+      mediaTypeList.push(...unpackedValues)
+    } else {
+      mediaTypeList.push(value)
+    }
+  }
+  return mediaTypeList
+}

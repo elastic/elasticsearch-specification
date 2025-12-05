@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { HttpHeaders, Id, IndexName } from '@_types/common'
+import { HttpHeaders, Id, IndexName, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { Groupings } from '@rollup/_types/Groupings'
@@ -57,6 +57,8 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * A cron string which defines the intervals when the rollup job should be executed. When the interval

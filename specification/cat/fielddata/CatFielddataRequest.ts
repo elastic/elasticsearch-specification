@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Fields, Names } from '@_types/common'
+import { Fields, MediaType, Names } from '@_types/common'
 import { CatFieldDataColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -51,6 +51,7 @@ export interface Request extends CatRequestBase {
      */
     fields?: Fields
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /** Comma-separated list of fields used to limit returned information. */
     fields?: Fields

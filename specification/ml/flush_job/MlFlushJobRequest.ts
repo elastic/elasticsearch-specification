@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { DateTime } from '@_types/Time'
 
 /**
@@ -53,6 +53,8 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies to advance to a particular time value. Results are generated

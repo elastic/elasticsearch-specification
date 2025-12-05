@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices, ProjectRouting, SearchType } from '@_types/common'
+import { Indices, MediaType, ProjectRouting, SearchType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { RequestItem } from './types'
 
@@ -65,6 +65,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Ndjson
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, network round-trips are minimized for cross-cluster search requests.

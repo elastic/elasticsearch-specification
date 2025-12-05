@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
@@ -34,6 +35,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /** @codegen_name conditions */
   body: UserDefinedValue
 }

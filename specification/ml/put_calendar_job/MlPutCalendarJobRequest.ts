@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Ids } from '@_types/common'
+import { Id, Ids, MediaType } from '@_types/common'
 
 /**
  * Add anomaly detection job to calendar.
@@ -43,4 +43,5 @@ export interface Request extends RequestBase {
     /** An identifier for the anomaly detection jobs. It can be a job identifier, a group name, or a comma-separated list of jobs or groups. */
     job_id: Ids
   }
+  response_media_type: MediaType.Json
 }

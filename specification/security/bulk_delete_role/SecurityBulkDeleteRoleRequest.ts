@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Refresh } from '@_types/common'
+import { MediaType, Refresh } from '@_types/common'
 
 /**
  * Bulk delete roles.
@@ -38,6 +38,8 @@ export interface Request extends RequestBase {
       methods: ['DELETE']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     refresh?: Refresh
   }

@@ -24,7 +24,8 @@ import {
   HttpHeaders,
   Id,
   Indices,
-  IndicesOptions
+  IndicesOptions,
+  MediaType
 } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
@@ -71,6 +72,8 @@ export interface Request extends RequestBase {
      */
     datafeed_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If true, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the `_all`

@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Get tags.
@@ -36,6 +37,7 @@ export interface Request extends RequestBase {
       methods: ['GET', 'POST']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*.

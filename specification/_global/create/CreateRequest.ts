@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   Id,
   IndexName,
+  MediaType,
   Refresh,
   Routing,
   VersionNumber,
@@ -130,6 +131,8 @@ export interface Request<TDocument> extends RequestBase {
      */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * True or false if to include the document source in the error message in case of parsing errors.

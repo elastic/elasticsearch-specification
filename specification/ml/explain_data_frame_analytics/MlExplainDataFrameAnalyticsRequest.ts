@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import {
   DataframeAnalysisAnalyzedFields,
@@ -62,6 +62,8 @@ export interface Request extends RequestBase {
      */
     id?: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body?: {
     /**
      * The configuration of how to source the analysis data. It requires an

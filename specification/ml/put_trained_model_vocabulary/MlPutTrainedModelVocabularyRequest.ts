@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { double } from '@_types/Numeric'
 
 /**
@@ -46,6 +46,8 @@ export interface Request extends RequestBase {
      */
     model_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The model vocabulary, which must not be empty.

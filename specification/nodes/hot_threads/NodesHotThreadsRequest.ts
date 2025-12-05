@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeIds, ThreadType } from '@_types/common'
+import { MediaType, NodeIds, ThreadType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
@@ -51,6 +51,7 @@ export interface Request extends RequestBase {
      */
     node_id?: NodeIds
   }
+  response_media_type: MediaType.Text
   query_parameters: {
     /**
      * If true, known idle threads (e.g. waiting in a socket select, or to get

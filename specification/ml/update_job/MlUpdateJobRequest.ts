@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import {
@@ -54,6 +54,8 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * Advanced configuration option. Specifies whether this job can open when

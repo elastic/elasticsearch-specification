@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   Id,
   IndexName,
+  MediaType,
   Refresh,
   Routing,
   SequenceNumber,
@@ -95,6 +96,7 @@ export interface Request extends RequestBase {
      */
     index: IndexName
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Only perform the operation if the document has this primary term.

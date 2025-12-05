@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ByteSize, Name } from '@_types/common'
+import { ByteSize, MediaType, Name } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
@@ -146,6 +146,7 @@ export interface Request extends RequestBase {
      */
     repository: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The total number of blobs to write to the repository during the test.
