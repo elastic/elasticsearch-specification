@@ -27470,7 +27470,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/transform.get_node_stats.TransformNodeStats"
+                  "$ref": "#/components/schemas/transform.get_node_stats.TransformNodeFullStats"
                 }
               }
             }
@@ -79567,13 +79567,13 @@
           "type"
         ]
       },
-      "transform.get_node_stats.TransformNodeStats": {
+      "transform.get_node_stats.TransformNodeFullStats": {
         "type": "object",
         "properties": {
           "total": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/transform.get_node_stats.Scheduler"
+                "$ref": "#/components/schemas/transform.get_node_stats.TransformNodeStats"
               }
             ]
           }
@@ -79582,13 +79582,13 @@
           "total"
         ]
       },
-      "transform.get_node_stats.Scheduler": {
+      "transform.get_node_stats.TransformNodeStats": {
         "type": "object",
         "properties": {
           "scheduler": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/transform.get_node_stats.TransformNodeStatsDetails"
+                "$ref": "#/components/schemas/transform.get_node_stats.TransformSchedulerStats"
               }
             ]
           }
@@ -79597,7 +79597,7 @@
           "scheduler"
         ]
       },
-      "transform.get_node_stats.TransformNodeStatsDetails": {
+      "transform.get_node_stats.TransformSchedulerStats": {
         "type": "object",
         "properties": {
           "registered_transform_count": {
