@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { TransformNodeStats } from './types'
+import { TransformNodeFullStats } from './types'
 
 export class Response {
   /** @codegen_name stats */
-  body: TransformNodeStats
+  body: TransformNodeFullStats
 }
