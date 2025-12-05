@@ -241,11 +241,11 @@ export enum HttpMethod {
 }
 
 export enum MediaType {
-  Json = "application/json",
-  Text = "text/plain",
-  Ndjson = "application/x-ndjson",
-  EventStream = "text/event-stream",
-  MapboxVectorTile = "application/vnd.mapbox-vector-tile",
+  Json = 'application/json',
+  Text = 'text/plain',
+  Ndjson = 'application/x-ndjson',
+  EventStream = 'text/event-stream',
+  MapboxVectorTile = 'application/vnd.mapbox-vector-tile',
 
   TextAndJson = Json | Text,
   JsonAndNdjson = Json | Ndjson
