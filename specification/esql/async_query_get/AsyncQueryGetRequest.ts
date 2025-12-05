@@ -24,6 +24,7 @@ import { EsqlFormat } from '@esql/_types/QueryParameters'
 
 /**
  * Get async ES|QL query results.
+ *
  * Get the current status and available results or stored results for an ES|QL asynchronous query.
  * If the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can retrieve the results using this API.
  * @rest_spec_name esql.async_query_get
@@ -32,6 +33,12 @@ import { EsqlFormat } from '@esql/_types/QueryParameters'
  * @ext_doc_id esql
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query/async/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the query.

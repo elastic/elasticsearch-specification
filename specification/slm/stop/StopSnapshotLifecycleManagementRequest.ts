@@ -22,6 +22,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Stop snapshot lifecycle management.
+ *
  * Stop all snapshot lifecycle management (SLM) operations and the SLM plugin.
  * This API is useful when you are performing maintenance on a cluster and need to prevent SLM from performing any actions on your data streams or indices.
  * Stopping SLM does not stop any snapshots that are in progress.

@@ -29,6 +29,7 @@ import {
 
 /**
  * Create a data frame analytics job.
+ *
  * This API creates a data frame analytics job that performs an analysis on the
  * source indices and stores the outcome in a destination index.
  * By default, the query used in the source configuration is `{"match_all": {}}`.

@@ -20,8 +20,8 @@
 import { ByteSize } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
-import { SamplingMethod } from '@indices/_types/Downsample'
 import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
+import { SamplingMethod } from './Downsample'
 
 /**
  * Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.

@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Stop a trained model deployment.
+ *
  * @rest_spec_name ml.stop_trained_model_deployment
  * @availability stack since=8.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -43,6 +44,26 @@ export interface Request extends RequestBase {
     model_id: Id
   }
   query_parameters: {
+    /**
+     * Specifies what to do when the request: contains wildcard expressions and there are no deployments that match;
+     * contains the  `_all` string or no identifiers and there are no matches; or contains wildcard expressions and
+     * there are only partial matches. By default, it returns an empty array when there are no matches and the subset of results when there are partial matches.
+     * If `false`, the request returns a 404 status code when there are no matches or only partial matches.
+     * @server_default true
+     */
+    allow_no_match?: boolean
+    /**
+     * Forcefully stops the deployment, even if it is used by ingest pipelines. You can't use these pipelines until you
+     * restart the model deployment.
+     * @server_default false
+     */
+    force?: boolean
+  }
+  body?: {
+    /**
+     * If provided, must be the same identifier as in the path.
+     */
+    id?: Id
     /**
      * Specifies what to do when the request: contains wildcard expressions and there are no deployments that match;
      * contains the  `_all` string or no identifiers and there are no matches; or contains wildcard expressions and

@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Delete a Logstash pipeline.
+ *
  * Delete a pipeline that is used for Logstash Central Management.
  * If the request succeeds, you receive an empty response with an appropriate status code.
  * @rest_spec_name logstash.delete_pipeline

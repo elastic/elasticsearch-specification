@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 
 /**
  * Get information.
+ *
  * The information provided by the API includes:
  *
  * * Build information including the build number and timestamp.
@@ -45,6 +46,9 @@ export interface Request extends RequestBase {
      * For example, `build,license,features`.
      */
     categories?: XPackCategory[]
+    /**
+     * @deprecated 8.0.0 Supported for backwards compatibility with 7.x
+     */
     accept_enterprise?: boolean
     /**
      * Defines whether additional human-readable information is included in the response.

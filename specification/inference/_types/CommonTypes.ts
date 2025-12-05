@@ -391,7 +391,7 @@ export class AlibabaCloudTaskSettings {
 export enum AlibabaCloudTaskType {
   completion,
   rerank,
-  space_embedding,
+  sparse_embedding,
   text_embedding
 }
 
@@ -703,7 +703,7 @@ export class AzureAiStudioServiceSettings {
    * Note that some providers may support only certain task types.
    * Supported providers include:
    *
-   * * `cohere` - available for `text_embedding` and `completion` task types
+   * * `cohere` - available for `text_embedding`, `rerank` and `completion` task types
    * * `databricks` - available for `completion` task type only
    * * `meta` - available for `completion` task type only
    * * `microsoft_phi` - available for `completion` task type only
@@ -1339,12 +1339,16 @@ export class ElasticsearchServiceSettings {
    *
    * When `long_document_strategy` is set to `chunk`, Elasticsearch splits each document into smaller parts but still returns a single score per document.
    * That score reflects the highest relevance score among all chunks.
+   * @availability stack stability=experimental visibility=public
+   * @availability serverless stability=experimental visibility=public
    */
   long_document_strategy?: string
   /**
    * Only for the `rerank` task type.
    * Limits the number of chunks per document that are sent for inference when chunking is enabled.
    * If not set, all chunks generated for the document are processed.
+   * @availability stack stability=experimental visibility=public
+   * @availability serverless stability=experimental visibility=public
    */
   max_chunks_per_doc?: integer
 }
@@ -1445,6 +1449,8 @@ export class GoogleVertexAIServiceSettings {
    * If `streaming_url` is not provided, `url` is also used for streaming `completion` and `chat_completion`.
    * If `provider` is not provided or set to `google` (Google Vertex AI), do not set `url` (or `streaming_url`).
    * At least one of `url` or `streaming_url` must be provided for Google Model Garden endpoint usage.
+   * Certain providers require separate URLs for streaming and non-streaming operations (e.g., Anthropic, Mistral, AI21). Others support both operation types through a single URL (e.g., Meta, Hugging Face).
+   * Information on constructing the URL for various providers can be found in the Google Model Garden documentation for the model, or on the endpoint’s `Sample request` page. The request examples also illustrate the proper formatting for the `url`.
    */
   url?: string
   /**
@@ -1453,6 +1459,8 @@ export class GoogleVertexAIServiceSettings {
    * If `url` is not provided, `streaming_url` is also used for non-streaming `completion` requests.
    * If `provider` is not provided or set to `google` (Google Vertex AI), do not set `streaming_url` (or `url`).
    * At least one of `streaming_url` or `url` must be provided for Google Model Garden endpoint usage.
+   * Certain providers require separate URLs for streaming and non-streaming operations (e.g., Anthropic, Mistral, AI21). Others support both operation types through a single URL (e.g., Meta, Hugging Face).
+   * Information on constructing the URL for various providers can be found in the Google Model Garden documentation for the model, or on the endpoint’s `Sample request` page. The request examples also illustrate the proper formatting for the `streaming_url`.
    */
   streaming_url?: string
   /**
@@ -1497,7 +1505,11 @@ export class GoogleVertexAIServiceSettings {
 
 export enum GoogleModelGardenProvider {
   google,
-  anthropic
+  anthropic,
+  meta,
+  hugging_face,
+  mistral,
+  ai21
 }
 
 export class GoogleVertexAITaskSettings {
@@ -1834,6 +1846,68 @@ export enum OpenAITaskType {
 
 export enum OpenAIServiceType {
   openai
+}
+
+export class OpenShiftAiServiceSettings {
+  /**
+   * A valid API key for your OpenShift AI endpoint.
+   * Can be found in `Token authentication` section of model related information.
+   */
+  api_key: string
+  /**
+   * The URL of the OpenShift AI hosted model endpoint.
+   */
+  url: string
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the hosted model's documentation for the name if needed.
+   * Service has been tested and confirmed to be working with the following models:
+   * * For `text_embedding` task - `gritlm-7b`.
+   * * For `completion` and `chat_completion` tasks - `llama-31-8b-instruct`.
+   * * For `rerank` task - `bge-reranker-v2-m3`.
+   */
+  model_id?: string
+  /**
+   * For a `text_embedding` task, the maximum number of tokens per input before chunking occurs.
+   */
+  max_input_tokens?: integer
+  /**
+   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
+   */
+  similarity?: OpenShiftAiSimilarityType
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from the OpenShift AI API.
+   * By default, the `openshift_ai` service sets the number of requests allowed per minute to 3000.
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export enum OpenShiftAiTaskType {
+  text_embedding,
+  completion,
+  chat_completion,
+  rerank
+}
+
+export enum OpenShiftAiServiceType {
+  openshift_ai
+}
+
+export enum OpenShiftAiSimilarityType {
+  cosine,
+  dot_product,
+  l2_norm
+}
+
+export class OpenShiftAiTaskSettings {
+  /**
+   * For a `rerank` task, whether to return the source documents in the response.
+   */
+  return_documents?: boolean
+  /**
+   * For a `rerank` task, the number of most relevant documents to return.
+   */
+  top_n?: integer
 }
 
 export class VoyageAIServiceSettings {

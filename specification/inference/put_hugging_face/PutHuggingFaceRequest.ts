@@ -36,7 +36,7 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  *
  * To configure the endpoint, first visit the Hugging Face Inference Endpoints page and create a new endpoint.
  * Select a model that supports the task you intend to use.
-
+ *
  * For Elastic's `text_embedding` task:
  * The selected model must support the `Sentence Embeddings` task. On the new endpoint creation page, select the `Sentence Embeddings` task under the `Advanced Configuration` section.
  * After the endpoint has initialized, copy the generated endpoint URL.
@@ -101,6 +101,8 @@ export interface Request extends RequestBase {
   body: {
     /**
      * The chunking configuration object.
+     * Applies only to the `text_embedding` task type.
+     * Not applicable to the `rerank`, `completion`, or `chat_completion` task types.
      * @ext_doc_id inference-chunking
      */
     chunking_settings?: InferenceChunkingSettings

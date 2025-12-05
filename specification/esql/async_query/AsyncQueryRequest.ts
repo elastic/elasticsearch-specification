@@ -27,6 +27,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Run an async ES|QL query.
+ *
  * Asynchronously run an ES|QL (Elasticsearch query language) query, monitor its progress, and retrieve results when they become available.
  *
  * The API accepts the same parameters and request body as the synchronous query API, along with additional async related properties.
@@ -37,6 +38,12 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * @index_privileges read
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query/async'
+      methods: ['POST']
+    }
+  ]
   query_parameters: {
     /**
      * If `true`, partial results will be returned if there are shard failures, but the query can continue to execute on other clusters and shards.
@@ -111,9 +118,16 @@ export interface Request extends RequestBase {
      * object with information about the clusters that participated in the search along with info such as shards
      * count.
      * @server_default false
-     * @aliases include_execution_metadata
      */
     include_ccs_metadata?: boolean
+    /**
+     * When set to `true`, the response will include an extra `_clusters`
+     * object with information about the clusters that participated in the search along with info such as shards
+     * count.
+     * This is similar to `include_ccs_metadata`, but it also returns metadata when the query is not CCS/CPS
+     * @server_default false
+     */
+    include_execution_metadata?: boolean
     /**
      * The period to wait for the request to finish.
      * By default, the request waits for 1 second for the query results.

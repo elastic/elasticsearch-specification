@@ -76,7 +76,12 @@ export enum DenseVectorElementType {
   /**
    * Indexes a 4-byte floating-point value per dimension.
    */
-  float
+  float,
+  /**
+   * Indexes a 2-byte floating-point value per dimension.
+   * @availability stack since=9.3.0
+   */
+  bfloat16
 }
 
 export enum DenseVectorSimilarity {
@@ -166,8 +171,9 @@ export class DenseVectorIndexOptions {
   /**
    * `true` if vector rescoring should be done on-disk
    *
-   * Only applicable to `bbq_hnsw`
+   * Only applicable to `bbq_disk`, `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`
    * @server_default false
+   * @availability stack since=9.3.0 stability=experimental
    */
   on_disk_rescore?: boolean
 }

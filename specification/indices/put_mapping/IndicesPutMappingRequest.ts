@@ -40,9 +40,10 @@ import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 /**
  * Update field mappings.
+ *
  * Add new fields to an existing data stream or index.
  * You can use the update mapping API to:
-
+ *
  * - Add a new field to an existing index
  * - Update mappings for multiple indices in a single request
  * - Add new properties to an object field

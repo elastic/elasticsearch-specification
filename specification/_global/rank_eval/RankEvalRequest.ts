@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, SearchType } from '@_types/common'
 import { RankEvalMetric, RankEvalRequestItem } from './types'
 
 /**
@@ -57,13 +57,16 @@ export interface Request extends RequestBase {
      * @server_default true
      */
     allow_no_indices?: boolean
+    /**
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
     /**
      * If `true`, missing or closed indices are not included in the response.
      * @server_default false
      */
     ignore_unavailable?: boolean
-    search_type?: string
+    search_type?: SearchType
   }
   body: {
     /** A set of typical search requests, together with their provided ratings. */

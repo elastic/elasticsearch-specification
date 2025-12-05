@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get index information.
+ *
  * Get information about one or more indices. For data streams, the API returns information about the
  * stream’s backing indices.
  * @rest_spec_name indices.get

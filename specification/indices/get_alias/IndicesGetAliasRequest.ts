@@ -23,6 +23,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get aliases.
+ *
  * Retrieves information for one or more data stream or index aliases.
  * @rest_spec_name indices.get_alias
  * @availability stack stability=stable
@@ -74,7 +75,7 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * @server_default open
+     * @server_default all
      */
     expand_wildcards?: ExpandWildcards
     /**

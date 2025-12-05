@@ -30,8 +30,15 @@
           "methods": ["GET"],
           "parts": {
             "task_type": {
-              "type": "string",
-              "description": "The task type"
+              "type": "enum",
+              "description": "The task type",
+              "options": [
+                "sparse_embedding",
+                "text_embedding",
+                "rerank",
+                "completion",
+                "chat_completion"
+              ]
             },
             "inference_id": {
               "type": "string",

@@ -22,6 +22,7 @@ import { Id } from '@_types/common'
 
 /**
  * Delete an async ES|QL query.
+ *
  * If the query is still running, it is cancelled.
  * Otherwise, the stored results are deleted.
  *
@@ -35,6 +36,12 @@ import { Id } from '@_types/common'
  * @ext_doc_id esql
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query/async/{id}'
+      methods: ['DELETE']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the query.

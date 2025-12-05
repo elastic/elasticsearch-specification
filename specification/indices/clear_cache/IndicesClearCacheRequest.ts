@@ -22,6 +22,7 @@ import { ExpandWildcards, Fields, Indices } from '@_types/common'
 
 /**
  * Clear the cache.
+ *
  * Clear the cache of one or more indices.
  * For data streams, the API clears the caches of the stream's backing indices.
  *

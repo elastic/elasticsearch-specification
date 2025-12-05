@@ -22,6 +22,7 @@ import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
  * Get index recovery information.
+ *
  * Get information about ongoing and completed shard recoveries for one or more indices.
  * For data streams, the API returns information for the stream's backing indices.
  *

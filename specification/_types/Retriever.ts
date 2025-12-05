@@ -49,6 +49,8 @@ export class RetrieverContainer {
    * This retriever will rewrite to a PinnedQueryBuilder.
    */
   pinned?: PinnedRetriever
+  /** A retriever that diversifies the results from its child retriever. */
+  diversify?: DiversifyRetriever
 }
 
 export class RetrieverBase {
@@ -124,14 +126,16 @@ export class KnnRetriever extends RetrieverBase {
   k: integer
   /** Number of nearest neighbor candidates to consider per shard. */
   num_candidates: integer
-  /** The percentage of vectors to explore per shard while doing knn search with bbq_disk
+  /**
+   * The percentage of vectors to explore per shard while doing knn search with bbq_disk
    * @availability stack since=9.2.0
    * @availability serverless
    */
   visit_percentage?: float
   /** The minimum similarity required for a document to be considered a match.  */
   similarity?: float
-  /** Apply oversampling and rescoring to quantized vectors
+  /**
+   * Apply oversampling and rescoring to quantized vectors
    * @availability stack since=8.18.0
    * @availability serverless
    */
@@ -144,7 +148,10 @@ export class KnnRetriever extends RetrieverBase {
 export class RRFRetrieverComponent {
   /** The nested retriever configuration. */
   retriever: RetrieverContainer
-  /** Weight multiplier for this retriever's contribution to the RRF score. Higher values increase influence. Defaults to 1.0 if not specified. Must be non-negative. @server_default 1.0 */
+  /**
+   * Weight multiplier for this retriever's contribution to the RRF score. Higher values increase influence. Defaults to 1.0 if not specified. Must be non-negative.
+   * @server_default 1.0
+   */
   weight?: float
 }
 
@@ -176,7 +183,8 @@ export class TextSimilarityReranker extends RetrieverBase {
   inference_text: string
   /** The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text. */
   field: string
-  /** Whether to rescore on only the best matching chunks.
+  /**
+   * Whether to rescore on only the best matching chunks.
    * @availability stack since=9.2.0 stability=beta
    * @availability serverless stability=beta
    */
@@ -199,4 +207,25 @@ export class ChunkRescorer {
   size?: integer
   /** Chunking settings to apply */
   chunking_settings?: ChunkRescorerChunkingSettings
+}
+
+export enum DiversifyRetrieverTypes {
+  mmr = 'mmr'
+}
+
+export class DiversifyRetriever extends RetrieverBase {
+  /** The diversification strategy to apply. */
+  type: DiversifyRetrieverTypes
+  /** The document field on which to diversify results on. */
+  field: string
+  /** The nested retriever whose results will be diversified. */
+  retriever: RetrieverContainer
+  /** The number of top documents to return after diversification. */
+  size?: integer
+  /** The number of top documents from the nested retriever to consider for diversification. */
+  rank_window_size?: integer
+  /** The query vector used for diversification. */
+  query_vector?: QueryVector
+  /** Controls the trade-off between relevance and diversity for MMR. A value of 0.0 focuses solely on diversity, while a value of 1.0 focuses solely on relevance. Required for MMR */
+  lambda?: float
 }

@@ -562,6 +562,28 @@ export class Example {
 }
 ```
 
+### Stability property for `@availability`
+
+The `stability` property can be added to an `@availability` annotation to indicate the maturity and expected backwards-compatibility of an API or property.
+
+Syntax:
+```ts
+/** @availability stack since=<version> stability=<value> */
+```
+
+Values and meaning:
+- `stable` => "Generally available"
+- `beta` => "Beta"
+- `experimental` => "Technical Preview"
+
+Examples:
+```ts
+/**
+ * @rest_spec_name indices.create
+ * @availability stack since=1.0.0 stability=experimental
+ */
+```
+
 #### description
 
 You can (and should!) add a description for each type and property. For an in-depth explanation of how to write good descriptions, see [Documenting the API specification](doc-comments-guide.md).
@@ -598,6 +620,18 @@ class Foo {
   /** @server_default ['hello'] */
   baz?: string[]
   faz: string
+}
+```
+
+If you need an `@` sign, you can escape it:
+
+```ts
+class Foo {
+  /**
+   * Field containing event timestamp.
+   * @server_default \@timestamp
+   */
+  timestamp_field?: Field
 }
 ```
 
@@ -773,3 +807,12 @@ class Foo {
 #### `@stability` and `@visibility`
 
 These annotations have been removed, use `@availability` instead.
+
+#### `@UpdateForV10`
+
+We sometimes want to make breaking changes but have to wait until the next major version.
+To not forget about those change, you can use the UpdateForV10 JSDoc tag in any commment.
+There are a few benefits of using JSDoc instead of a simple TODO comment:
+
+ * With the allowlist of tags in our eslint config, we can't make typos
+ * We enforce a proper description to explain why the breaking change needs to be made

@@ -23,6 +23,7 @@ import { integer } from '@_types/Numeric'
 
 /**
  * Verify the repository integrity.
+ *
  * Verify the integrity of the contents of a snapshot repository.
  *
  * This API enables you to perform a comprehensive check of the contents of a repository, looking for any anomalies in its data or metadata which might prevent you from restoring snapshots from the repository or which might cause future snapshot create or delete operations to fail.

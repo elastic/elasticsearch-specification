@@ -24,6 +24,7 @@ import { IndexTemplate } from '@indices/_types/IndexTemplate'
 
 /**
  * Simulate an index.
+ *
  * Get the index configuration that would be applied to the specified index from an existing index template.
  * @rest_spec_name indices.simulate_index_template
  * @availability stack since=7.9.0 stability=stable
@@ -48,7 +49,8 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     create?: boolean
-    /** User defined reason for dry-run creating the new template for simulation purposes
+    /**
+     * User defined reason for dry-run creating the new template for simulation purposes
      * @server_default false
      */
     cause?: string

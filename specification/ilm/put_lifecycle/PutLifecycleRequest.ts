@@ -24,6 +24,7 @@ import { Policy } from '@ilm/_types/Policy'
 
 /**
  * Create or update a lifecycle policy.
+ *
  * If the specified policy exists, it is replaced and the policy version is incremented.
  *
  * NOTE: Only the latest version of the policy is stored, you cannot revert to previous versions.
