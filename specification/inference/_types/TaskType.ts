@@ -70,7 +70,8 @@ export enum TaskTypeAzureAIStudio {
 
 export enum TaskTypeAzureOpenAI {
   text_embedding,
-  completion
+  completion,
+  chat_completion
 }
 
 export enum TaskTypeCohere {
