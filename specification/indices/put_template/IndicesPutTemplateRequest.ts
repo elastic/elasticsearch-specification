@@ -64,6 +64,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The name of the template */
     name: Name
   }
   query_parameters: {
@@ -87,6 +88,7 @@ export interface Request extends RequestBase {
      */
     order?: integer
     /**
+     * User defined reason for creating or updating the index template
      * @server_default
      */
     cause?: string

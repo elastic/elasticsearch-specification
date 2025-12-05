@@ -153,6 +153,7 @@ export interface Request extends RequestBase {
      * @server_default 30s */
     master_timeout?: Duration
     /**
+     * User defined reason for creating or updating the index template
      * @server_default api
      */
     cause?: string

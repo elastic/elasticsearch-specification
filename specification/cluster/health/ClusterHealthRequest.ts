@@ -67,6 +67,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
+     * Whether to expand wildcard expression to concrete indices that are open, closed or both.
      * @server_default all
      */
     expand_wildcards?: ExpandWildcards

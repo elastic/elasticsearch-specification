@@ -47,6 +47,7 @@ export interface Request extends CatRequestBase {
     }
   ]
   path_parts: {
+    /** The ID of the data frame analytics to fetch */
     id?: Id
   }
   query_parameters: {

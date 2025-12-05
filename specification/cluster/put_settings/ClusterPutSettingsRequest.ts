@@ -56,10 +56,20 @@ export interface Request extends RequestBase {
     }
   ]
   query_parameters: {
+    /**
+     * Return settings in flat format
+     * @server_default false
+     */
     flat_settings?: boolean
-    /** @server_default 30s */
+    /**
+     * The period to wait for a connection to the master node.
+     * @server_default 30s
+     */
     master_timeout?: Duration
-    /** @server_default 30s */
+    /**
+     * The period to wait for a response.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
   body: {

@@ -82,6 +82,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices */
     index?: Indices
   }
   query_parameters: {
@@ -102,12 +103,24 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     keep_on_completion?: boolean
+    /**
+     * Whether to ignore if a wildcard indices expression resolves into no concrete indices.
+     * (This includes `_all` string or when no indices have been specified)
+     */
     allow_no_indices?: boolean
     /**
+     * Indicate if an error should be returned if there is a partial search failure or timeout
      * @server_default true
      */
     allow_partial_search_results?: boolean
+    /**
+     * The analyzer to use for the query string
+     */
     analyzer?: string
+    /**
+     * Specify whether wildcard and prefix queries should be analyzed
+     * @server_default false
+     */
     analyze_wildcard?: boolean
     /**
      * Affects how often partial results become available, which happens whenever shard results are reduced.
@@ -121,23 +134,49 @@ export interface Request extends RequestBase {
      */
     ccs_minimize_roundtrips?: boolean
     /**
+     * The default operator for query string query (AND or OR)
      * @server_default or
      */
     default_operator?: Operator
+    /**
+     * The field to use as default where no field prefix is given in the query string
+     */
     df?: string
+    /**
+     * A comma-separated list of fields to return as the docvalue representation of a field for each hit
+     */
     docvalue_fields?: Fields
     /**
+     * Whether to expand wildcard expression to concrete indices that are open, closed or both
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
+    /**
+     * Specify whether to return detailed information about score computation as part of a hit
+     */
     explain?: boolean
+    /**
+     * Whether specified concrete, expanded or aliased indices should be ignored when throttled
+     */
     ignore_throttled?: boolean
+    /**
+     * Whether specified concrete indices should be ignored when unavailable (missing or closed)
+     */
     ignore_unavailable?: boolean
+    /**
+     * Specify whether format-based query failures (such as providing text to a numeric field) should be ignored
+     */
     lenient?: boolean
     /**
+     * The number of concurrent shard requests per node this search executes concurrently.
+     * This value should be used to limit the impact of the search on the cluster in order to limit the number of concurrent shard requests
      * @server_default 5
      */
     max_concurrent_shard_requests?: integer
+    /**
+     * Specify the node or shard the operation should be performed on
+     * @server_default random
+     */
     preference?: string
     /**
      * Specifies a subset of projects to target for the search using project
@@ -151,42 +190,107 @@ export interface Request extends RequestBase {
      * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
      */
     project_routing?: ProjectRouting
-    /** @server_default true */
+    /**
+     * Specify if request cache should be used for this request or not, defaults to true
+     * @server_default true
+     */
     request_cache?: boolean
+    /**
+     * A comma-separated list of specific routing values
+     */
     routing?: Routing
+    /**
+     * Search operation type
+     */
     search_type?: SearchType
+    /**
+     * Specific 'tag' of the request for logging and statistical purposes
+     */
     stats?: string[]
+    /**
+     * A comma-separated list of stored fields to return as part of a hit
+     */
     stored_fields?: Fields
     /**
      * Specifies which field to use for suggestions.
      */
     suggest_field?: Field
     /**
+     * Specify suggest mode
      * @server_default missing
      */
     suggest_mode?: SuggestMode
+    /**
+     * How many suggestions to return in response
+     */
     suggest_size?: long
     /**
      * The source text for which the suggestions should be returned.
      */
     suggest_text?: string
+    /**
+     * The maximum number of documents to collect for each shard, upon reaching which the query execution will terminate early
+     */
     terminate_after?: long
+    /**
+     * Explicit operation timeout
+     */
     timeout?: Duration
+    /**
+     * Indicate if the number of documents that match the query should be tracked.
+     * A number can also be specified, to accurately track the total hit count up to the number.
+     */
     track_total_hits?: TrackHits
+    /**
+     * Whether to calculate and return scores even if they are not used for sorting
+     */
     track_scores?: boolean
+    /**
+     * Specify whether aggregation and suggester names should be prefixed by their respective types in the response
+     */
     typed_keys?: boolean
     /**
+     * Indicates whether hits.total should be rendered as an integer or an object in the rest search response
      * @server_default false
      */
     rest_total_hits_as_int?: boolean
+    /**
+     * Specify whether to return document version as part of a hit
+     */
     version?: boolean
+    /**
+     * True or false to return the _source field or not, or a list of fields to return
+     */
     _source?: SourceConfigParam
+    /**
+     * A list of fields to exclude from the returned _source field
+     */
     _source_excludes?: Fields
+    /**
+     * A list of fields to extract and return from the _source field
+     */
     _source_includes?: Fields
+    /**
+     * Specify whether to return sequence number and primary term of the last modification of each hit
+     */
     seq_no_primary_term?: boolean
+    /**
+     * Query in the Lucene query string syntax
+     */
     q?: string
+    /**
+     * Number of hits to return
+     * @server_default 10
+     */
     size?: integer
+    /**
+     * Starting offset
+     * @server_default 0
+     */
     from?: integer
+    /**
+     * A comma-separated list of <field>:<direction> pairs
+     */
     sort?: string | string[]
   }
   body?: {
