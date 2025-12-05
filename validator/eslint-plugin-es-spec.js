@@ -28,6 +28,7 @@ import preferTaggedVariants from './rules/prefer-tagged-variants.js'
 import noDuplicateTypeNames from './rules/no-duplicate-type-names.js'
 import noAllStringLiteralUnions from './rules/no-all-string-literal-unions.js'
 import jsdocEndpointCheck from './rules/jsdoc-endpoint-check.js'
+import codegenExcludeOnRequestOnly from './rules/codegen-exclude-on-request-only.js'
 
 export default {
   rules: {
@@ -42,6 +43,7 @@ export default {
     'prefer-tagged-variants': preferTaggedVariants,
     'no-duplicate-type-names': noDuplicateTypeNames,
     'no-all-string-literal-unions': noAllStringLiteralUnions,
-    'jsdoc-endpoint-check': jsdocEndpointCheck
+    'jsdoc-endpoint-check': jsdocEndpointCheck,
+    'codegen-exclude-on-request-only': codegenExcludeOnRequestOnly
   }
 }
