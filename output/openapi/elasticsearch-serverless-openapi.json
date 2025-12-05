@@ -9330,6 +9330,14 @@
                       "$ref": "#/components/schemas/indices._types.DownsamplingRound"
                     }
                   },
+                  "downsampling_method": {
+                    "description": "The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires\n`downsampling` to be defined. Defaults to `aggregate`.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/indices._types.SamplingMethod"
+                      }
+                    ]
+                  },
                   "enabled": {
                     "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
                     "default": true,
@@ -61444,6 +61452,14 @@
               "$ref": "#/components/schemas/indices._types.DownsamplingRound"
             }
           },
+          "downsampling_method": {
+            "description": "The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires\n`downsampling` to be defined. Defaults to `aggregate`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.SamplingMethod"
+              }
+            ]
+          },
           "enabled": {
             "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
             "default": true,
@@ -61474,6 +61490,13 @@
         "required": [
           "after",
           "fixed_interval"
+        ]
+      },
+      "indices._types.SamplingMethod": {
+        "type": "string",
+        "enum": [
+          "aggregate",
+          "last_value"
         ]
       },
       "indices._types.DataStreamOptionsTemplate": {
