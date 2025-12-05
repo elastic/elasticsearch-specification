@@ -14401,7 +14401,7 @@ export interface InferenceAzureOpenAITaskSettings {
   user?: string
 }
 
-export type InferenceAzureOpenAITaskType = 'completion' | 'text_embedding'
+export type InferenceAzureOpenAITaskType = 'completion' | 'chat_completion' | 'text_embedding'
 
 export type InferenceCohereEmbeddingType = 'binary' | 'bit' | 'byte' | 'float' | 'int8'
 
@@ -14893,7 +14893,7 @@ export type InferenceTaskTypeAnthropic = 'completion'
 
 export type InferenceTaskTypeAzureAIStudio = 'text_embedding' | 'completion' | 'rerank'
 
-export type InferenceTaskTypeAzureOpenAI = 'text_embedding' | 'completion'
+export type InferenceTaskTypeAzureOpenAI = 'text_embedding' | 'completion' | 'chat_completion'
 
 export type InferenceTaskTypeCohere = 'text_embedding' | 'rerank' | 'completion'
 
