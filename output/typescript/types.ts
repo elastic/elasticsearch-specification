@@ -22435,19 +22435,19 @@ export type TransformDeleteTransformResponse = AcknowledgedResponseBase
 export interface TransformGetNodeStatsRequest extends RequestBase {
 }
 
-export type TransformGetNodeStatsResponse = TransformGetNodeStatsTransformNodeStats
+export type TransformGetNodeStatsResponse = TransformGetNodeStatsTransformNodeFullStats
 
-export interface TransformGetNodeStatsScheduler {
-  scheduler: TransformGetNodeStatsTransformNodeStatsDetails
+export interface TransformGetNodeStatsTransformNodeFullStatsKeys {
+  total: TransformGetNodeStatsTransformNodeStats
+}
+export type TransformGetNodeStatsTransformNodeFullStats = TransformGetNodeStatsTransformNodeFullStatsKeys
+  & { [property: string]: TransformGetNodeStatsTransformNodeStats }
+
+export interface TransformGetNodeStatsTransformNodeStats {
+  scheduler: TransformGetNodeStatsTransformSchedulerStats
 }
 
-export interface TransformGetNodeStatsTransformNodeStatsKeys {
-  total: TransformGetNodeStatsScheduler
-}
-export type TransformGetNodeStatsTransformNodeStats = TransformGetNodeStatsTransformNodeStatsKeys
-  & { [property: string]: TransformGetNodeStatsScheduler }
-
-export interface TransformGetNodeStatsTransformNodeStatsDetails {
+export interface TransformGetNodeStatsTransformSchedulerStats {
   registered_transform_count: integer
   peek_transform?: string
 }
