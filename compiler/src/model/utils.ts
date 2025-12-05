@@ -1522,7 +1522,17 @@ export function mediaTypeToStringArray (mediaType: string, allEnums: EnumDeclara
   for (const enumType of enumTypeList) {
     const memberName = enumType.split('.').pop()
     const value = mediaTypeEnum?.getMembers().find(m => m.getName() === memberName)?.getValue() as string
-    mediaTypeList.push(value)
+    // If value is undefined, it means the member
+    // is an alias to one or more other members
+    // so we need to unpack it recursively
+    if (value === undefined) {
+      const aliasMember = mediaTypeEnum?.getMembers().find(m => m.getName() === memberName)
+      const initializer = aliasMember?.getStructure().initializer as string
+      const unpackedValues = mediaTypeToStringArray(initializer, allEnums)
+      mediaTypeList.push(...unpackedValues)
+    } else {
+      mediaTypeList.push(value)
+    }
   }
   return mediaTypeList
 }
