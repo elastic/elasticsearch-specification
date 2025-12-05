@@ -24,17 +24,17 @@ import { AdditionalProperties } from '@spec_utils/behaviors'
 /**
  * @behavior_meta AdditionalProperties fieldname=nodes description="Per node statistics"
  */
-export class TransformNodeStats
-  implements AdditionalProperties<NodeId, Scheduler>
+export class TransformNodeFullStats
+  implements AdditionalProperties<NodeId, TransformNodeStats>
 {
-  total: Scheduler
+  total: TransformNodeStats
 }
 
-export interface Scheduler {
-  scheduler: TransformNodeStatsDetails
+export interface TransformNodeStats {
+  scheduler: TransformSchedulerStats
 }
 
-export interface TransformNodeStatsDetails {
+export interface TransformSchedulerStats {
   registered_transform_count: integer
   peek_transform?: string
 }
