@@ -251,6 +251,7 @@ get-features-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch
 get-global-checkpoints,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-global-checkpoints.html,,
 get-license,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-license.html,,
 get-ml-info,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-ml-info.html,,
+get-node-stats,,,
 get-pipeline-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-pipeline-api.html,,
 get-repositories-metering-api,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-repositories-metering-api.html,,
 get-synonym-rule,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/get-synonym-rule.html,,
