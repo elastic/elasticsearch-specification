@@ -469,6 +469,7 @@ export class Endpoint {
     index?: string[]
     cluster?: string[]
   }
+  codegenExclude?: boolean
 }
 
 export class UrlTemplate {
