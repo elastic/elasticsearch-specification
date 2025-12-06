@@ -12,13 +12,6 @@
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
-    },
-    "monitoring.bulk": {
-      "request": [
-        "Request: different number of urls in the json spec",
-        "Request: missing json spec path parameter 'type'"
-      ],
-      "response": []
     }
   },
   "generalErrors": [
