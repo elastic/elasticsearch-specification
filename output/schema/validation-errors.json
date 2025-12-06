@@ -12,6 +12,18 @@
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
+    },
+    "ml.stop_datafeed": {
+      "request": [
+        "Request: missing json spec query parameter 'close_job'"
+      ],
+      "response": []
+    },
+    "project.tags": {
+      "request": [
+        "/_project/tags: different http methods in the json spec"
+      ],
+      "response": []
     }
   },
   "generalErrors": [
