@@ -42,9 +42,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /*
-    A comma-separate list of snapshot lifecycle policy identifiers.
-    */
+    /** A comma-separated list of snapshot lifecycle policy identifiers. */
     policy_id?: Names
   }
   query_parameters: {

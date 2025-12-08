@@ -46,6 +46,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** Username */
     user?: Name
   }
   body: {

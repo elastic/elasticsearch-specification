@@ -83,6 +83,10 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /**
+     * A comma-separated list of index names the mapping should be added to (supports wildcards).
+     * Use `_all` or omit to add the mapping on all indices.
+     */
     index: Indices
   }
   query_parameters: {

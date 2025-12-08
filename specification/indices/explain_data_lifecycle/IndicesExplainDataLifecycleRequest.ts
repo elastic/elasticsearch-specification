@@ -39,11 +39,17 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** Comma-separated list of index names to explain */
     index: Indices
   }
   query_parameters: {
+    /**
+     * Indicates if the API should return the default values the system uses for the index's lifecycle
+     * @server_default false
+     */
     include_defaults?: boolean
     /**
+     * The period to wait for a connection to the master node.
      * @server_default 30s
      */
     master_timeout?: Duration

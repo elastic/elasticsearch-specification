@@ -62,7 +62,9 @@ export interface Request extends RequestBase {
     datafeed_id?: Id
   }
   query_parameters: {
+    /** The start time from where the datafeed preview should begin */
     start?: DateTime
+    /** The end time when the datafeed preview should stop */
     end?: DateTime
   }
   body?: {

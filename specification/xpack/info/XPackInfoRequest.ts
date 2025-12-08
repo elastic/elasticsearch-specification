@@ -46,6 +46,7 @@ export interface Request extends RequestBase {
      */
     categories?: XPackCategory[]
     /**
+     * If used, this otherwise ignored parameter must be set to true
      * @deprecated 8.0.0 Supported for backwards compatibility with 7.x
      */
     accept_enterprise?: boolean

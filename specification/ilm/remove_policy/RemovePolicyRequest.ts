@@ -37,6 +37,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The name of the index to remove policy on */
     index: IndexName
   }
 }
