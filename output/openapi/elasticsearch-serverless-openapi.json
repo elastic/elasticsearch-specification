@@ -9026,7 +9026,7 @@
           {
             "in": "query",
             "name": "include_defaults",
-            "description": "indicates if the API should return the default values the system uses for the index's lifecycle",
+            "description": "Indicates if the API should return the default values the system uses for the index's lifecycle",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -9036,7 +9036,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Specify timeout for connection to master",
+            "description": "The period to wait for a connection to the master node.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Duration"
@@ -20688,7 +20688,7 @@
           {
             "in": "query",
             "name": "priority",
-            "description": "The deployment priority.",
+            "description": "The deployment priority",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/ml._types.TrainingPriority"
@@ -84562,7 +84562,7 @@
       "async_search.submit-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
+        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices.\n(This includes `_all` string or when no indices have been specified)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84592,7 +84592,7 @@
       "async_search.submit-analyze_wildcard": {
         "in": "query",
         "name": "analyze_wildcard",
-        "description": "Specify whether wildcard and prefix queries should be analyzed (default: false)",
+        "description": "Specify whether wildcard and prefix queries should be analyzed",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84652,7 +84652,7 @@
       "async_search.submit-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
+        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -84702,7 +84702,7 @@
       "async_search.submit-max_concurrent_shard_requests": {
         "in": "query",
         "name": "max_concurrent_shard_requests",
-        "description": "The number of concurrent shard requests per node this search executes concurrently. This value should be used to limit the impact of the search on the cluster in order to limit the number of concurrent shard requests",
+        "description": "The number of concurrent shard requests per node this search executes concurrently.\nThis value should be used to limit the impact of the search on the cluster in order to limit the number of concurrent shard requests",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84712,7 +84712,7 @@
       "async_search.submit-preference": {
         "in": "query",
         "name": "preference",
-        "description": "Specify the node or shard the operation should be performed on (default: random)",
+        "description": "Specify the node or shard the operation should be performed on",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -84815,7 +84815,7 @@
       "async_search.submit-terminate_after": {
         "in": "query",
         "name": "terminate_after",
-        "description": "The maximum number of documents to collect for each shard, upon reaching which the query execution will terminate early.",
+        "description": "The maximum number of documents to collect for each shard, upon reaching which the query execution will terminate early",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84835,7 +84835,7 @@
       "async_search.submit-track_total_hits": {
         "in": "query",
         "name": "track_total_hits",
-        "description": "Indicate if the number of documents that match the query should be tracked. A number can also be specified, to accurately track the total hit count up to the number.",
+        "description": "Indicate if the number of documents that match the query should be tracked.\nA number can also be specified, to accurately track the total hit count up to the number.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_global.search._types.TrackHits"
@@ -84935,7 +84935,7 @@
       "async_search.submit-size": {
         "in": "query",
         "name": "size",
-        "description": "Number of hits to return (default: 10)",
+        "description": "Number of hits to return",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84945,7 +84945,7 @@
       "async_search.submit-from": {
         "in": "query",
         "name": "from",
-        "description": "Starting offset (default: 0)",
+        "description": "Starting offset",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -85617,7 +85617,7 @@
       "cluster.get_component_template-include_defaults": {
         "in": "query",
         "name": "include_defaults",
-        "description": "Return all default configurations for the component template (default: false)",
+        "description": "Return all default configurations for the component template",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -86005,7 +86005,7 @@
       "eql.search-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
+        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices.\n(This includes `_all` string or when no indices have been specified)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -87035,7 +87035,7 @@
       "indices.put_index_template-cause": {
         "in": "query",
         "name": "cause",
-        "description": "User defined reason for creating/updating the index template",
+        "description": "User defined reason for creating or updating the index template",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -87045,7 +87045,7 @@
       "indices.put_mapping-index": {
         "in": "path",
         "name": "index",
-        "description": "A comma-separated list of index names the mapping should be added to (supports wildcards); use `_all` or omit to add the mapping on all indices.",
+        "description": "A comma-separated list of index names the mapping should be added to (supports wildcards).\nUse `_all` or omit to add the mapping on all indices.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -87652,7 +87652,7 @@
       "ingest.get_pipeline-summary": {
         "in": "query",
         "name": "summary",
-        "description": "Return pipelines without their definitions (default: false)",
+        "description": "Return pipelines without their definitions",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88800,7 +88800,7 @@
       "scroll-scroll_id_": {
         "in": "query",
         "name": "scroll_id",
-        "description": "The scroll ID for scrolled search",
+        "description": "The scroll ID",
         "deprecated": true,
         "schema": {
           "$ref": "#/components/schemas/_types.ScrollId"
@@ -89321,7 +89321,7 @@
       "search_mvt-index": {
         "in": "path",
         "name": "index",
-        "description": "Comma-separated list of data streams, indices, or aliases to search",
+        "description": "A list of indices, data streams, or aliases to search.\nIt supports wildcards (`*`).\nTo search all data streams and indices, omit this parameter or use `*` or `_all`.\nTo search a remote cluster, use the `<cluster>:<target>` syntax.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -89332,7 +89332,7 @@
       "search_mvt-field": {
         "in": "path",
         "name": "field",
-        "description": "Field containing geospatial data to return",
+        "description": "A field that contains the geospatial data to return.\nIt must be a `geo_point` or `geo_shape` field.\nThe field must have doc values enabled. It cannot be a nested field.\n\nNOTE: Vector tiles do not natively support geometry collections.\nFor `geometrycollection` values in a `geo_shape` field, the API returns a hits layer feature for each element of the collection.\nThis behavior may change in a future release.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -89343,7 +89343,7 @@
       "search_mvt-zoom": {
         "in": "path",
         "name": "zoom",
-        "description": "Zoom level for the vector tile to search",
+        "description": "The zoom level of the vector tile to search. It accepts `0` to `29`.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -89354,7 +89354,7 @@
       "search_mvt-x": {
         "in": "path",
         "name": "x",
-        "description": "X coordinate for the vector tile to search",
+        "description": "The X coordinate for the vector tile to search.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -89365,7 +89365,7 @@
       "search_mvt-y": {
         "in": "path",
         "name": "y",
-        "description": "Y coordinate for the vector tile to search",
+        "description": "The Y coordinate for the vector tile to search.",
         "required": true,
         "deprecated": false,
         "schema": {
