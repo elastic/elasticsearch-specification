@@ -48364,13 +48364,9 @@
           },
           "data_stream_options": {
             "x-state": "Generally available",
-            "oneOf": [
+            "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
-              },
-              {
-                "nullable": true,
-                "type": "string"
+                "$ref": "#/components/schemas/indices._types.DataStreamOptions"
               }
             ]
           }
@@ -58406,67 +58402,48 @@
           "fixed_interval"
         ]
       },
-      "indices._types.DataStreamOptionsTemplate": {
-        "description": "Data stream options template contains the same information as DataStreamOptions but allows them to be set explicitly to null.",
+      "indices._types.DataStreamOptions": {
+        "description": "Data stream options contain the configuration of data stream level features for a given data stream, for example,\nthe failure store configuration.",
         "type": "object",
         "properties": {
           "failure_store": {
-            "oneOf": [
+            "description": "If defined, it specifies configuration for the failure store of this data stream.",
+            "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.DataStreamFailureStoreTemplate"
-              },
-              {
-                "nullable": true,
-                "type": "string"
+                "$ref": "#/components/schemas/indices._types.DataStreamFailureStore"
               }
             ]
           }
         }
       },
-      "indices._types.DataStreamFailureStoreTemplate": {
-        "description": "Template equivalent of DataStreamFailureStore that allows nullable values.",
+      "indices._types.DataStreamFailureStore": {
+        "description": "Data stream failure store contains the configuration of the failure store for a given data stream.",
         "type": "object",
         "properties": {
           "enabled": {
             "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
-            "default": "true",
-            "oneOf": [
-              {
-                "type": "boolean"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "default": true,
+            "type": "boolean"
           },
           "lifecycle": {
             "description": "If defined, it specifies the lifecycle configuration for the failure store of this data stream.",
-            "oneOf": [
+            "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycleTemplate"
-              },
-              {
-                "nullable": true,
-                "type": "string"
+                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycle"
               }
             ]
           }
         }
       },
-      "indices._types.FailureStoreLifecycleTemplate": {
-        "description": "Template equivalent of FailureStoreLifecycle that allows nullable values.",
+      "indices._types.FailureStoreLifecycle": {
+        "description": "The failure store lifecycle configures the data stream lifecycle configuration for failure indices.",
         "type": "object",
         "properties": {
           "data_retention": {
             "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
-            "oneOf": [
+            "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Duration"
-              },
-              {
-                "nullable": true,
-                "type": "string"
               }
             ]
           },
@@ -58790,16 +58767,18 @@
           }
         }
       },
-      "indices._types.IndexState": {
+      "indices.put_index_template.IndexTemplateMapping": {
         "type": "object",
         "properties": {
           "aliases": {
+            "description": "Aliases to add.\nIf the index template includes a `data_stream` object, these are data stream aliases.\nOtherwise, these are index aliases.\nData stream aliases ignore the `index_routing`, `routing`, and `search_routing` options.",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/indices._types.Alias"
             }
           },
           "mappings": {
+            "description": "Mapping for fields in the index.\nIf specified, this mapping can include field names, field data types, and mapping parameters.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.TypeMapping"
@@ -58807,33 +58786,30 @@
             ]
           },
           "settings": {
+            "description": "Configuration options for the index.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/indices._types.IndexSettings"
-              }
-            ]
-          },
-          "defaults": {
-            "description": "Default settings, included when the request's `include_default` is `true`.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.IndexSettings"
-              }
-            ]
-          },
-          "data_stream": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.DataStreamName"
               }
             ]
           },
           "lifecycle": {
-            "description": "Data stream lifecycle applicable if this is a data stream.",
             "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
+              }
+            ]
+          },
+          "data_stream_options": {
+            "x-state": "Generally available",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
               }
             ]
           }
@@ -58886,8 +58862,76 @@
           }
         }
       },
-      "_types.DataStreamName": {
-        "type": "string"
+      "indices._types.DataStreamOptionsTemplate": {
+        "description": "Data stream options template contains the same information as DataStreamOptions but allows them to be set explicitly to null.",
+        "type": "object",
+        "properties": {
+          "failure_store": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamFailureStoreTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.DataStreamFailureStoreTemplate": {
+        "description": "Template equivalent of DataStreamFailureStore that allows nullable values.",
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
+            "default": "true",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "lifecycle": {
+            "description": "If defined, it specifies the lifecycle configuration for the failure store of this data stream.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycleTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.FailureStoreLifecycleTemplate": {
+        "description": "Template equivalent of FailureStoreLifecycle that allows nullable values.",
+        "type": "object",
+        "properties": {
+          "data_retention": {
+            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "default": true,
+            "type": "boolean"
+          }
+        }
       },
       "_types.Result": {
         "type": "string",
@@ -61513,6 +61557,9 @@
           "type"
         ]
       },
+      "_types.DataStreamName": {
+        "type": "string"
+      },
       "indices.data_streams_stats.DataStreamsStatsItem": {
         "type": "object",
         "properties": {
@@ -61687,6 +61734,55 @@
           "mappings",
           "settings"
         ]
+      },
+      "indices._types.IndexState": {
+        "type": "object",
+        "properties": {
+          "aliases": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/indices._types.Alias"
+            }
+          },
+          "mappings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+              }
+            ]
+          },
+          "settings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
+          "defaults": {
+            "description": "Default settings, included when the request's `include_default` is `true`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
+          "data_stream": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DataStreamName"
+              }
+            ]
+          },
+          "lifecycle": {
+            "description": "Data stream lifecycle applicable if this is a data stream.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
+              }
+            ]
+          }
+        }
       },
       "indices.get_alias._types.IndexAliases": {
         "type": "object",
@@ -61972,58 +62068,6 @@
           "name"
         ]
       },
-      "indices._types.DataStreamOptions": {
-        "description": "Data stream options contain the configuration of data stream level features for a given data stream, for example,\nthe failure store configuration.",
-        "type": "object",
-        "properties": {
-          "failure_store": {
-            "description": "If defined, it specifies configuration for the failure store of this data stream.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamFailureStore"
-              }
-            ]
-          }
-        }
-      },
-      "indices._types.DataStreamFailureStore": {
-        "description": "Data stream failure store contains the configuration of the failure store for a given data stream.",
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
-            "default": true,
-            "type": "boolean"
-          },
-          "lifecycle": {
-            "description": "If defined, it specifies the lifecycle configuration for the failure store of this data stream.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycle"
-              }
-            ]
-          }
-        }
-      },
-      "indices._types.FailureStoreLifecycle": {
-        "description": "The failure store lifecycle configures the data stream lifecycle configuration for failure indices.",
-        "type": "object",
-        "properties": {
-          "data_retention": {
-            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "enabled": {
-            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
-            "default": true,
-            "type": "boolean"
-          }
-        }
-      },
       "indices.get_data_stream_settings.DataStreamSettings": {
         "type": "object",
         "properties": {
@@ -62190,13 +62234,9 @@
           },
           "data_stream_options": {
             "x-state": "Generally available",
-            "oneOf": [
+            "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
-              },
-              {
-                "nullable": true,
-                "type": "string"
+                "$ref": "#/components/schemas/indices._types.DataStreamOptions"
               }
             ]
           }
@@ -62387,42 +62427,6 @@
           "index",
           "error"
         ]
-      },
-      "indices.put_index_template.IndexTemplateMapping": {
-        "type": "object",
-        "properties": {
-          "aliases": {
-            "description": "Aliases to add.\nIf the index template includes a `data_stream` object, these are data stream aliases.\nOtherwise, these are index aliases.\nData stream aliases ignore the `index_routing`, `routing`, and `search_routing` options.",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/indices._types.Alias"
-            }
-          },
-          "mappings": {
-            "description": "Mapping for fields in the index.\nIf specified, this mapping can include field names, field data types, and mapping parameters.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.mapping.TypeMapping"
-              }
-            ]
-          },
-          "settings": {
-            "description": "Configuration options for the index.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.IndexSettings"
-              }
-            ]
-          },
-          "lifecycle": {
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
-              }
-            ]
-          }
-        }
       },
       "indices._types.DataStreamVisibility": {
         "type": "object",
@@ -87068,7 +87072,7 @@
                   "description": "The template to be applied which includes mappings, settings, or aliases configuration.",
                   "allOf": [
                     {
-                      "$ref": "#/components/schemas/indices._types.IndexState"
+                      "$ref": "#/components/schemas/indices.put_index_template.IndexTemplateMapping"
                     }
                   ]
                 },
