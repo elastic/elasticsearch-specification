@@ -45,6 +45,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The node id of node to be removed from the shutdown state */
     node_id: NodeId
   }
   query_parameters: {

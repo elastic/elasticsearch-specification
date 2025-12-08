@@ -47,6 +47,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The name of the data stream to promote */
     name: IndexName
   }
   query_parameters: {
