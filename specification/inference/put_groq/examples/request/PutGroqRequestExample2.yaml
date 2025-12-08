@@ -1,0 +1,14 @@
+# summary:
+description:
+  Run `PUT _inference/chat-completion/groq-chat-completion` to create a Groq inference endpoint that performs a
+  `chat_completion` task.
+method_request: 'PUT _inference/chat-completion/groq-chat-completion'
+# type: "request"
+value: |-
+  {
+    "service": "groq",
+    "service_settings": {
+      "api_key": "groq-api-key",
+      "model_id": "llama-3.3-70b-versatile" 
+    }
+  }
