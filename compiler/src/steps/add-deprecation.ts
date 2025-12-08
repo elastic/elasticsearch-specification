@@ -18,12 +18,11 @@
  */
 
 import * as model from '../model/metamodel'
-import { JsonSpec } from '../model/json-spec'
 
 /**
  * Populates the `deprecation` field for endpoints from the value of the corresponding request definition.
  */
-export default async function addContentType (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
+export default async function addContentType (model: model.Model): Promise<model.Model> {
   for (const endpoint of model.endpoints) {
     if (endpoint.deprecation != null) {
       continue

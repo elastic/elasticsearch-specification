@@ -28,7 +28,7 @@ import {
 import buildJsonSpec, { JsonSpec } from './model/json-spec'
 import { ValidationErrors } from './validation-errors'
 
-type StepFunction = (model: Model, restSpec: Map<string, JsonSpec>, errors: ValidationErrors) => Promise<Model>
+type StepFunction = (model: Model, errors: ValidationErrors) => Promise<Model>
 
 /**
  * The main job of the compiler is to generate the Model and write it on disk.
@@ -62,7 +62,7 @@ export default class Compiler {
 
   async write (): Promise<void> {
     for (const step of this.queue) {
-      this.model = await step(this.model, this.jsonSpec, this.errors)
+      this.model = await step(this.model, this.errors)
     }
 
     const customStringify = stringify.configure(

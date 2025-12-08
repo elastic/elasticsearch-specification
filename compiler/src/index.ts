@@ -21,7 +21,6 @@ import { readFileSync, existsSync, lstatSync } from 'fs'
 import { join, resolve } from 'path'
 import { argv } from 'zx'
 import Compiler from './compiler'
-import validateRestSpec from './steps/validate-rest-spec'
 import addInfo from './steps/add-info'
 import validateModel from './steps/validate-model'
 import readDefinitionValidation from './steps/read-definition-validation'
@@ -72,7 +71,6 @@ compiler
   .step(addInfo)
   .step(addDeprecation)
   .step(readDefinitionValidation)
-  .step(validateRestSpec)
   .step(validateModel)
   .step(addExamples)
   .write()
