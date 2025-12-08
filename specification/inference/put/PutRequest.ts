@@ -44,7 +44,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * * ELSER (`sparse_embedding`)
  * * Google AI Studio (`completion`, `text_embedding`)
  * * Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)
- * * Groq (`chat_completion`)
+ * * Groq (`chat_completion`, `completion`)
  * * Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)
  * * JinaAI (`rerank`, `text_embedding`)
  * * Llama (`chat_completion`, `completion`, `text_embedding`)
