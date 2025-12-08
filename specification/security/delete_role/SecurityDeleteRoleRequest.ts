@@ -44,6 +44,9 @@ export interface Request extends RequestBase {
     name: Name
   }
   query_parameters: {
+    /**
+     * If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.
+     */
     refresh?: Refresh
   }
 }
