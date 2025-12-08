@@ -67,8 +67,13 @@ export interface Request extends RequestBase {
      * @server_default true
      */
     active?: boolean
+    /**
+     * Only update the watch if the last operation that has changed the watch has the specified primary term
+     */
     if_primary_term?: long
+    /** Only update the watch if the last operation that has changed the watch has the specified sequence number */
     if_seq_no?: SequenceNumber
+    /** Explicit version number for concurrency control */
     version?: VersionNumber
   }
   body: {
