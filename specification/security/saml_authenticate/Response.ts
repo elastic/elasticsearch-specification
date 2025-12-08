@@ -41,5 +41,9 @@ export class Response {
      * The name of the realm where the user was authenticated.
      */
     realm: string
+    /**
+     * The id of the request that initiated the authentication process.
+     */
+    in_response_to?: string
   }
 }
