@@ -1,7 +1,7 @@
 {
   "inference.put_groq": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-groq.html",
+      "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-groq",
       "description": "Configure a Groq inference endpoint"
     },
     "stability": "stable",

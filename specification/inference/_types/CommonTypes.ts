@@ -1575,7 +1575,7 @@ export class GroqServiceSettings {
   api_key?: string
   /**
    * This setting helps to minimize the number of rate limit errors returned from the Groq API.
-   * By default, the `groq` service sets the number of requests allowed per minute to 200. Refer to Groq documentation for more details.
+   * By default, the `groq` service sets the number of requests allowed per minute to 1000. Refer to Groq documentation for more details.
    * @ext_doc_id groq-rate-limit
    */
   rate_limit?: RateLimitSetting
