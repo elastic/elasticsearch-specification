@@ -393,6 +393,7 @@ inference-api-put-elasticsearch,https://www.elastic.co/docs/api/doc/elasticsearc
 inference-api-put-elser,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elser,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/infer-service-elser.html,
 inference-api-put-googleaistudio,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-googleaistudio,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/infer-service-google-ai-studio.html,
 inference-api-put-googlevertexai,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-googlevertexai,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/infer-service-google-vertex-ai.html,
+inference-api-put-groq,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-groq,,
 inference-api-put-huggingface,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-hugging-face,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/infer-service-hugging-face.html,
 inference-api-put-jinaai,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-jinaai,,
 inference-api-put-llama,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-llama,,
