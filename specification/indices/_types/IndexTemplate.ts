@@ -22,7 +22,7 @@ import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { long } from '@_types/Numeric'
 import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
 import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
-import { DataStreamOptionsTemplate } from '@indices/_types/DataStreamOptions'
+import { DataStreamOptions } from '@indices/_types/DataStreamOptions'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Alias } from './Alias'
 import { IndexSettings } from './IndexSettings'
@@ -145,5 +145,5 @@ export class IndexTemplateSummary {
    * @availability stack since=8.19.0 stability=stable
    * @availability serverless stability=stable
    */
-  data_stream_options?: DataStreamOptionsTemplate | null
+  data_stream_options?: DataStreamOptions
 }
