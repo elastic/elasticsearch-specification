@@ -23,7 +23,6 @@ import { argv } from 'zx'
 import Compiler from './compiler'
 import validateRestSpec from './steps/validate-rest-spec'
 import addInfo from './steps/add-info'
-import addDescription from './steps/add-description'
 import validateModel from './steps/validate-model'
 import readDefinitionValidation from './steps/read-definition-validation'
 import addDeprecation from './steps/add-deprecation'
@@ -74,7 +73,6 @@ compiler
   .step(addDeprecation)
   .step(readDefinitionValidation)
   .step(validateRestSpec)
-  .step(addDescription)
   .step(validateModel)
   .step(addExamples)
   .write()

@@ -64,18 +64,12 @@ export function compileEndpoints (jsonSpec: Map<string, JsonSpec>): Record<strin
   for (const [api, spec] of jsonSpec.entries()) {
     map[api] = {
       name: api,
-      description: spec.documentation.description,
+      description: null,
       docUrl: null,
       request: null,
       requestBodyRequired: false,
       response: null,
-      urls: spec.url.paths.map(path => {
-        return {
-          path: path.path,
-          methods: path.methods,
-          ...(path.deprecated != null && { deprecation: path.deprecated })
-        }
-      })
+      urls: []
     }
     map[api].availability = {}
   }
@@ -195,6 +189,10 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       const mapping = mappings[namespace.includes('_global') ? namespace.slice(8) : namespace]
       if (mapping == null) {
         throw new Error(`Cannot find url template for ${namespace}, very likely the specification folder does not follow the rest-api-spec`)
+      }
+
+      if (type.description) {
+        mapping.description = type.description || ''
       }
 
       let pathMember: Node | null = null
