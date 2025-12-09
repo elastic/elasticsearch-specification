@@ -109,7 +109,8 @@ export interface Request extends RequestBase {
      */
     scroll?: Duration
     /**
-     * The type of the search operation. */
+     * The type of the search operation.
+     */
     search_type?: SearchType
     /**
      * If `true`, `hits.total` is rendered as an integer in the response.

@@ -29,17 +29,17 @@ import {
 import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**
-   * Create a VoyageAI inference endpoint.
-   *
-   * Create an inference endpoint to perform an inference task with the `voyageai` service.
-
-   * Avoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.
-   * @rest_spec_name inference.put_voyageai
-   * @availability stack since=8.19.0 stability=stable visibility=public
-   * @availability serverless stability=stable visibility=public
-   * @cluster_privileges manage_inference
-   * @doc_id inference-api-put-voyageai
-   */
+ * Create a VoyageAI inference endpoint.
+ *
+ * Create an inference endpoint to perform an inference task with the `voyageai` service.
+ *
+ * Avoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.
+ * @rest_spec_name inference.put_voyageai
+ * @availability stack since=8.19.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
+ * @cluster_privileges manage_inference
+ * @doc_id inference-api-put-voyageai
+ */
 export interface Request extends RequestBase {
   urls: [
     {

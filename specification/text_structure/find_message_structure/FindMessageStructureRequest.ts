@@ -56,7 +56,8 @@ interface Request extends RequestBase {
     }
   ]
   query_parameters: {
-    /** If the format is `delimited`, you can specify the column names in a comma-separated list.
+    /**
+     * If the format is `delimited`, you can specify the column names in a comma-separated list.
      * If this parameter is not specified, the structure finder uses the column names from the header row of the text.
      * If the text does not have a header role, columns are named "column1", "column2", "column3", for example.
      */

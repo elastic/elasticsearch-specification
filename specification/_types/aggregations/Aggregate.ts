@@ -451,7 +451,8 @@ export class HistogramBucket extends MultiBucketBase {
   key: double
 }
 
-/** @variant name=date_histogram
+/**
+ * @variant name=date_histogram
  * @ext_doc_id search-aggregations-bucket-datehistogram-aggregation
  */
 export class DateHistogramAggregate extends MultiBucketAggregateBase<DateHistogramBucket> {}
