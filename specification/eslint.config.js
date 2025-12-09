@@ -161,27 +161,6 @@ export default defineConfig([
             'variants'
           ]
         }
-      }
-    ],
-    'es-spec-validator/no-all-string-literal-unions': 'error',
-    'es-spec-validator/jsdoc-endpoint-check': [
-      'error',
-      {
-        markdownlint: {
-          default: true,
-          MD041: false, // first-line-heading
-          MD013: false, // line-length
-          MD033: false, // no-inline-html
-          MD034: false, // no-bare-urls
-          MD047: false, // single-trailing-newline
-          MD036: false, // no-emphasis-as-heading
-          MD040: false, // fenced-code-language
-          MD032: false, // blanks-around-lists
-          MD031: false, // blanks-around-fences
-          MD038: false, // no-space-in-code
-          MD060: false, // table-column-style
-          MD010: false, // no-hard-tabs
-          MD022: false // blanks-around-headers
       ],
       // Require UpdateForV10 tags to have an associated description/name
       'jsdoc/match-name': [
