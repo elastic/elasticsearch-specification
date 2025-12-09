@@ -63,6 +63,7 @@ export interface Request extends RequestBase {
      * > info
      * > Inference endpoints for the `completion` task type currently only support a single string as input.
      */
+    // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: nothing, is fixed in main
     input: string | Array<string>
     /**
      * Task settings for the individual inference request.
