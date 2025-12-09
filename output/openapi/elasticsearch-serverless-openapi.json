@@ -9260,6 +9260,169 @@
         ]
       }
     },
+    "/_data_stream/{name}/_options": {
+      "get": {
+        "tags": [
+          "data stream"
+        ],
+        "summary": "Get data stream options",
+        "description": "Get the data stream options configuration of one or more data streams.",
+        "operationId": "indices-get-data-stream-options",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "Comma-separated list of data streams to limit the request.\nSupports wildcards (`*`).\nTo target all data streams, omit this parameter or use `*` or `_all`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.DataStreamNames"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "expand_wildcards",
+            "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `open`, `closed`, `hidden`, `none`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.ExpandWildcards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data_streams": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_data_stream_options.DataStreamWithOptions"
+                      }
+                    }
+                  },
+                  "required": [
+                    "data_streams"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "data stream"
+        ],
+        "summary": "Update data stream options",
+        "description": "Update the data stream options of the specified data streams.",
+        "operationId": "indices-put-data-stream-options",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "Comma-separated list of data streams used to limit the request.\nSupports wildcards (`*`).\nTo target all data streams use `*` or `_all`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.DataStreamNames"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "expand_wildcards",
+            "description": "Type of data stream that wildcard patterns can match.\nSupports comma-separated values, such as `open,hidden`.\nValid values are: `all`, `hidden`, `open`, `closed`, `none`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.ExpandWildcards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is\nreceived before the timeout expires, the request fails and returns an\nerror.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "failure_store": {
+                    "description": "If defined, it will update the failure store configuration of every data stream resolved by the name expression.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/indices._types.DataStreamFailureStore"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_data_stream/{name}/_settings": {
       "get": {
         "tags": [
@@ -48198,6 +48361,18 @@
                 "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
               }
             ]
+          },
+          "data_stream_options": {
+            "x-state": "Generally available",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           }
         }
       },
@@ -58231,6 +58406,77 @@
           "fixed_interval"
         ]
       },
+      "indices._types.DataStreamOptionsTemplate": {
+        "description": "Data stream options template contains the same information as DataStreamOptions but allows them to be set explicitly to null.",
+        "type": "object",
+        "properties": {
+          "failure_store": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamFailureStoreTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.DataStreamFailureStoreTemplate": {
+        "description": "Template equivalent of DataStreamFailureStore that allows nullable values.",
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
+            "default": "true",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "lifecycle": {
+            "description": "If defined, it specifies the lifecycle configuration for the failure store of this data stream.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycleTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.FailureStoreLifecycleTemplate": {
+        "description": "Template equivalent of FailureStoreLifecycle that allows nullable values.",
+        "type": "object",
+        "properties": {
+          "data_retention": {
+            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "default": true,
+            "type": "boolean"
+          }
+        }
+      },
       "_types.ClusterInfoTargets": {
         "oneOf": [
           {
@@ -61704,6 +61950,80 @@
           "name"
         ]
       },
+      "indices.get_data_stream_options.DataStreamWithOptions": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DataStreamName"
+              }
+            ]
+          },
+          "options": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamOptions"
+              }
+            ]
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "indices._types.DataStreamOptions": {
+        "description": "Data stream options contain the configuration of data stream level features for a given data stream, for example,\nthe failure store configuration.",
+        "type": "object",
+        "properties": {
+          "failure_store": {
+            "description": "If defined, it specifies configuration for the failure store of this data stream.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamFailureStore"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.DataStreamFailureStore": {
+        "description": "Data stream failure store contains the configuration of the failure store for a given data stream.",
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
+            "default": true,
+            "type": "boolean"
+          },
+          "lifecycle": {
+            "description": "If defined, it specifies the lifecycle configuration for the failure store of this data stream.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycle"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.FailureStoreLifecycle": {
+        "description": "The failure store lifecycle configures the data stream lifecycle configuration for failure indices.",
+        "type": "object",
+        "properties": {
+          "data_retention": {
+            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "default": true,
+            "type": "boolean"
+          }
+        }
+      },
       "indices.get_data_stream_settings.DataStreamSettings": {
         "type": "object",
         "properties": {
@@ -61865,6 +62185,18 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
+              }
+            ]
+          },
+          "data_stream_options": {
+            "x-state": "Generally available",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
               }
             ]
           }
