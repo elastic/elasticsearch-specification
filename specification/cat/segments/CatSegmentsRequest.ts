@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ExpandWildcards, Indices, Names } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { CatRequestBase, CatSegmentsColumns } from '@cat/_types/CatBase'
 
@@ -53,6 +53,7 @@ export interface Request extends CatRequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of columns names to display.

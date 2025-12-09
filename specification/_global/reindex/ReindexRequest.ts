@@ -18,7 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Conflicts, Slices, WaitForActiveShards } from '@_types/common'
+import {
+  Conflicts,
+  MediaType,
+  Slices,
+  WaitForActiveShards
+} from '@_types/common'
 import { float, integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
@@ -89,6 +94,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, the request refreshes affected shards to make this operation visible to search.

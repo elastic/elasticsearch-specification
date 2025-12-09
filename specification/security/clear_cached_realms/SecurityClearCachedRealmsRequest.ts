@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 
 /**
  * Clear the user cache.
@@ -50,6 +50,7 @@ export interface Request extends RequestBase {
      */
     realms: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of the users to clear from the cache.

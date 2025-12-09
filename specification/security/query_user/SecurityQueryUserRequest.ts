@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
 import { UserQueryContainer } from './types'
@@ -81,6 +82,8 @@ export interface Request extends RequestBase {
      */
     search_after?: SortResults
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Determines whether to retrieve the user profile UID, if it exists, for the users.

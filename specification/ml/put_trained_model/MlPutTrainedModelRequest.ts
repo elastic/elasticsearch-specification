@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { InferenceConfigCreateContainer } from '@ml/_types/inference'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -52,6 +52,8 @@ export interface Request extends RequestBase {
      */
     model_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If set to `true` and a `compressed_definition` is provided,

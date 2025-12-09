@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
+import { Indices, MediaType } from '@_types/common'
 import { StatsLevel } from '../_types/stats'
 
 /**
@@ -47,6 +47,7 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Return stats aggregated at cluster, index or shard level

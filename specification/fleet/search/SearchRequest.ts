@@ -25,6 +25,7 @@ import {
   Fields,
   IndexAlias,
   IndexName,
+  MediaType,
   Routing,
   SearchType,
   SuggestMode
@@ -76,6 +77,8 @@ export interface Request extends RequestBase {
     // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
     index: IndexName | IndexAlias
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     allow_no_indices?: boolean
     analyzer?: string
