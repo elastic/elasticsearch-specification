@@ -14,6 +14,8 @@ It is configured [in the specification directory](../specification/eslint.config
 | `no-generic-number`                   | Generic `number` type is not allowed outside of `_types/Numeric.ts`. Use concrete numeric types like `integer`, `long`, `float`, `double`, etc. |
 | `request-must-have-urls`              | All Request interfaces extending `RequestBase` must have a `urls` property defining their endpoint paths and HTTP methods. |
 | `no-variants-on-responses`            | `@variants` is only supported on Interface types, not on Request or Response classes. Use value_body pattern with `@codegen_name` instead. |
+| `no-inline-unions`                    | Inline union types (e.g., `field: A \| B`) are not allowed in properties/fields. Define a named type alias instead to improve code generation for statically-typed languages. |
+| `prefer-tagged-variants`              | Union of class types should use tagged variants (`@variants internal` or `@variants container`) instead of inline unions for better deserialization support in statically-typed languages. |
 | `jsdoc-endpoint-check`                | Validates JSDoc on endpoints in the specification. Ensuring consistent formatting. Some errors can be fixed with `--fix`.                                                                  |
 
 ## Usage

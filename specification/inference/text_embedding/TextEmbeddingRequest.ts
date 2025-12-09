@@ -55,7 +55,7 @@ export interface Request extends RequestBase {
      * Inference input.
      * Either a string or an array of strings.
      */
-    input: string | Array<string>
+    input: string | string[]
     /**
      * The input data type for the text embedding model. Possible values include:
      * * `SEARCH`

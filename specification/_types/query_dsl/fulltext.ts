@@ -395,6 +395,7 @@ export class MatchQuery extends QueryBase {
    */
   // FIXME: docs states "date" as a possible format. Add DateMath, or DurationLarge?
   //        Should also be consistent with MultiMatchQuery.query
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   query: string | float | boolean
   /**
    * Indicates whether no documents are returned if the `analyzer` removes all tokens, such as when using a `stop` filter.
