@@ -25,6 +25,7 @@ import requestMustHaveUrls from './rules/request-must-have-urls.js'
 import noVariantsOnResponses from './rules/no-variants-on-responses.js'
 import noInlineUnions from './rules/no-inline-unions.js'
 import preferTaggedVariants from './rules/prefer-tagged-variants.js'
+import noDuplicateTypeNames from './rules/no-duplicate-type-names.js'
 import jsdocEndpointCheck from './rules/jsdoc-endpoint-check.js'
 
 export default {
@@ -38,6 +39,7 @@ export default {
     'no-variants-on-responses': noVariantsOnResponses,
     'no-inline-unions': noInlineUnions,
     'prefer-tagged-variants': preferTaggedVariants,
+    'no-duplicate-type-names': noDuplicateTypeNames,
     'jsdoc-endpoint-check': jsdocEndpointCheck
   }
 }
