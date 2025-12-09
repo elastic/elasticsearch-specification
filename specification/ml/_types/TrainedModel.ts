@@ -92,7 +92,8 @@ export class TrainedModelDeploymentStats {
    * trained model deployment API.
    */
   rejected_execution_count?: integer
-  /** The reason for the current deployment state. Usually only populated when
+  /**
+   * The reason for the current deployment state. Usually only populated when
    * the model is not deployed to a node.
    */
   reason?: string
