@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id, IndexName } from '@_types/common'
+import { Id, IndexName, MediaType } from '@_types/common'
 
 /**
  * Create or update a connector.
@@ -44,6 +44,8 @@ export interface Request extends RequestBase {
      */
     connector_id?: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /**
    * The connector document to be created
    */

@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Designed for indirect use by ECE/ESS and ECK, direct use is not supported.
@@ -34,6 +35,7 @@ export interface Request extends RequestBase {
       methods: ['DELETE']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

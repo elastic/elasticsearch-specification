@@ -29,6 +29,7 @@
     "Dangling type '_types:HttpMethod'",
     "Dangling type '_types:LogLevel'",
     "Dangling type '_types:LongId'",
+    "Dangling type '_types:MediaType'",
     "Dangling type '_types:Transform'",
     "Dangling type '_types:UnitFloatSeconds'",
     "Dangling type '_types:Uri'",

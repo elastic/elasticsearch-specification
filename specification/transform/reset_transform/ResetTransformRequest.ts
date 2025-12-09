@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -46,6 +46,7 @@ export interface Request extends RequestBase {
      */
     transform_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If this value is `true`, the transform is reset regardless of its current state. If it's `false`, the transform

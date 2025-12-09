@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { TaskId } from '@_types/common'
+import { MediaType, TaskId } from '@_types/common'
 
 /**
  * Cancel a task.
@@ -56,6 +56,7 @@ export interface Request extends RequestBase {
      */
     task_id?: TaskId
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list or wildcard expression of actions that is used to limit the request.

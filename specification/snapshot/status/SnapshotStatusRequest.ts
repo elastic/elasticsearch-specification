@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Names } from '@_types/common'
+import { MediaType, Name, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -79,6 +79,7 @@ export interface Request extends RequestBase {
      */
     snapshot?: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error for any snapshots that are unavailable.

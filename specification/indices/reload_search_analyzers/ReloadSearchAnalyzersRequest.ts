@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 
 /**
  * Reload search analyzers.
@@ -53,6 +53,7 @@ export interface Request extends RequestBase {
     /** A comma-separated list of index names to reload analyzers for */
     index: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Whether to ignore if a wildcard indices expression resolves into no concrete indices.

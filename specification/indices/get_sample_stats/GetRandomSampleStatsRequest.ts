@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 
 /**
  * Request stats for a random sample of raw documents ingested into the given index or data stream.
@@ -41,4 +41,5 @@ export interface Request extends RequestBase {
      */
     index: IndexName
   }
+  response_media_type: MediaType.Json
 }

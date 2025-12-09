@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Delegate PKI authentication.
@@ -44,6 +45,7 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  response_media_type: MediaType.Json
   body: {
     /**
      * The X509Certificate chain, which is represented as an ordered string array.

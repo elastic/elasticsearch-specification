@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
+import { Ids, MediaType } from '@_types/common'
 
 /**
  * Get datafeeds configuration info.
@@ -54,6 +54,7 @@ export interface Request extends RequestBase {
      */
     datafeed_id?: Ids
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:
