@@ -142,14 +142,14 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /*
+    /**
      * A list of indices, data streams, or aliases to search.
      * It supports wildcards (`*`).
      * To search all data streams and indices, omit this parameter or use `*` or `_all`.
      * To search a remote cluster, use the `<cluster>:<target>` syntax.
      */
     index: Indices
-    /*
+    /**
      * A field that contains the geospatial data to return.
      * It must be a `geo_point` or `geo_shape` field.
      * The field must have doc values enabled. It cannot be a nested field.
@@ -159,11 +159,11 @@ export interface Request extends RequestBase {
      * This behavior may change in a future release.
      */
     field: Field
-    /* The zoom level of the vector tile to search. It accepts `0` to `29`. */
+    /** The zoom level of the vector tile to search. It accepts `0` to `29`. */
     zoom: ZoomLevel
-    /* The X coordinate for the vector tile to search. */
+    /** The X coordinate for the vector tile to search. */
     x: Coordinate
-    /* The Y coordinate for the vector tile to search. */
+    /** The Y coordinate for the vector tile to search. */
     y: Coordinate
   }
   request_media_type: MediaType.Json

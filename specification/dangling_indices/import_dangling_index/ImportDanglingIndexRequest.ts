@@ -54,9 +54,14 @@ export interface Request extends RequestBase {
      */
     accept_data_loss?: boolean
     /**
+     * The period to wait for a connection to the master node.
      * @server_default 30s
      */
     master_timeout?: Duration
+    /**
+     * The period to wait for a response.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }

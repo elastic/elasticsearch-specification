@@ -73,6 +73,10 @@ export interface Request extends RequestBase {
      * @server_default 100
      */
     size?: long
+    /**
+     * Controls the time to wait for the stats
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }

@@ -50,13 +50,24 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** A comma-separated list of index names to reload analyzers for */
     index: Indices
   }
   response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * Whether to ignore if a wildcard indices expression resolves into no concrete indices.
+     * (This includes `_all` string or when no indices have been specified)
+     */
     allow_no_indices?: boolean
-    /** @server_default open */
+    /**
+     * Whether to expand wildcard expression to concrete indices that are open, closed or both.
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
+    /**
+     * Whether specified concrete indices should be ignored when unavailable (missing or closed)
+     */
     ignore_unavailable?: boolean
     /**
      * Changed resource to reload analyzers from if applicable

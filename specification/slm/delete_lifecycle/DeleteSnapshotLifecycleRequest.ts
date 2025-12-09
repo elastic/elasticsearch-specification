@@ -40,6 +40,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The id of the snapshot lifecycle policy to remove */
     policy_id: Name
   }
   response_media_type: MediaType.Json

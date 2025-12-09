@@ -47,6 +47,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** Comma-separated list of nodes for which to retrieve the shutdown status */
     node_id?: NodeIds
   }
   request_media_type: MediaType.Json

@@ -59,6 +59,7 @@ export interface Request extends RequestBase {
      * @server_default 30s */
     master_timeout?: Duration
     /**
+     * Return pipelines without their definitions
      * @server_default false */
     summary?: boolean
   }

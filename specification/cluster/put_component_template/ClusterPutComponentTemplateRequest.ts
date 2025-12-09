@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { MediaType, Metadata, Name, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
-import { IndexState } from '@indices/_types/IndexState'
+import { IndexTemplateMapping } from '@indices/put_index_template/IndicesPutIndexTemplateRequest'
 
 /**
  * Create or update a component template.
@@ -90,7 +90,7 @@ export interface Request extends RequestBase {
     /**
      * The template to be applied which includes mappings, settings, or aliases configuration.
      */
-    template: IndexState
+    template: IndexTemplateMapping
     /**
      * Version number used to manage component templates externally.
      * This number isn't automatically generated or incremented by Elasticsearch.

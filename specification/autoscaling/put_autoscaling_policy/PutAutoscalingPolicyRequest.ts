@@ -39,6 +39,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** Name of the autoscaling policy */
     name: Name
   }
   request_media_type: MediaType.Json

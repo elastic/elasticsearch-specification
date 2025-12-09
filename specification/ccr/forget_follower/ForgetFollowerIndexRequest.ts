@@ -48,6 +48,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** Name of the leader index for which specified follower retention leases should be removed */
     index: IndexName
   }
   request_media_type: MediaType.Json

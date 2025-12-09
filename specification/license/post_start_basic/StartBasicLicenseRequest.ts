@@ -46,6 +46,10 @@ export interface Request extends RequestBase {
   ]
   response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * Whether the user has acknowledged acknowledge messages
+     * @server_default false
+     */
     acknowledge?: boolean
     /**
      * Period to wait for a connection to the master node.

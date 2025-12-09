@@ -39,18 +39,28 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /**
+     * A comma-separated list of data streams of which the data stream options will be deleted.
+     * Use `*` to get all data streams
+     */
     name: DataStreamNames
   }
   response_media_type: MediaType.Json
   query_parameters: {
     /**
+     * Whether wildcard expressions should get expanded to open or closed indices
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
+     * The period to wait for a connection to the master node.
      * @server_default 30s
      */
     master_timeout?: Duration
+    /**
+     * The period to wait for a response.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }

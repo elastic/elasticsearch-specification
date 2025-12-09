@@ -85,6 +85,10 @@ export interface Request extends RequestBase {
      * @server_default cpu
      */
     type?: ThreadType
+    /**
+     * The sort order for 'cpu' type
+     * @server_default total
+     */
     sort?: ThreadType
   }
 }

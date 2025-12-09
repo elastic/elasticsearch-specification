@@ -250,7 +250,7 @@ export enum MediaType {
   Ndjson = 'application/x-ndjson',
   Smile = 'application/x-jackson-smile',
   Text = 'text/plain',
-  Yaml = 'application/x-yaml',
+  Yaml = 'application/x-yaml'
 }
 
 // This is the ClusterStatsLevel enum in Elasticsearch

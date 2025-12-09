@@ -50,6 +50,7 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Json
   query_parameters: {
     /**
+     * Return stats aggregated at cluster, index or shard level
      * @server_default indices
      */
     level?: StatsLevel

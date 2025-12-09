@@ -634,7 +634,7 @@ export function hoistRequestAnnotations (
   request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
 ): void {
   const knownRequestAnnotations = [
-    'rest_spec_name', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id', 'availability', 'doc_tag', 'ext_doc_id'
+    'rest_spec_name', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id', 'availability', 'doc_tag', 'ext_doc_id', 'codegen_exclude'
   ]
   // in most of the cases the jsDocs comes in a single block,
   // but it can happen that the user defines multiple single line jsDoc.
@@ -720,6 +720,9 @@ export function hoistRequestAnnotations (
     } else if (tag === 'doc_tag') {
       assert(jsDocs, value.trim() !== '', `Request ${request.name.name}'s @doc_tag cannot be empty`)
       endpoint.docTag = value.trim()
+    } else if (tag === 'codegen_exclude') {
+      // Mark this endpoint to be excluded from client code generation
+      endpoint.codegenExclude = true
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
     }

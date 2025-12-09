@@ -50,6 +50,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The name of the index whose lifecycle step is to change */
     index: IndexName
   }
   request_media_type: MediaType.Json

@@ -65,7 +65,9 @@ export interface Request extends RequestBase {
   request_media_type: MediaType.Json
   response_media_type: MediaType.Json
   query_parameters: {
+    /** The start time from where the datafeed preview should begin */
     start?: DateTime
+    /** The end time when the datafeed preview should stop */
     end?: DateTime
   }
   body?: {

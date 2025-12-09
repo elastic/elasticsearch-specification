@@ -67,9 +67,14 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Json
   query_parameters: {
     /**
+     * Indicates whether hits.total should be rendered as an integer or an object in the rest search response
      * @server_default false
      */
     rest_total_hits_as_int?: boolean
+    /**
+     * Specify whether aggregation and suggester names should be prefixed by their respective types in the response
+     * @server_default false
+     */
     typed_keys?: boolean
   }
   body: {

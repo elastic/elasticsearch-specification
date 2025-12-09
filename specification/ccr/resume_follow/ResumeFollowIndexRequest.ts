@@ -42,6 +42,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** Name of the follow index to resume following */
     index: IndexName
   }
   request_media_type: MediaType.Json

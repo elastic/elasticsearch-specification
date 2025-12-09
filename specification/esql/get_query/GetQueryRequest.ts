@@ -39,6 +39,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The query ID */
     id: Id
   }
   request_media_type: MediaType.Json

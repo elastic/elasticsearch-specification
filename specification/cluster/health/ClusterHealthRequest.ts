@@ -69,6 +69,7 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Json
   query_parameters: {
     /**
+     * Whether to expand wildcard expression to concrete indices that are open, closed or both.
      * @server_default all
      */
     expand_wildcards?: ExpandWildcards

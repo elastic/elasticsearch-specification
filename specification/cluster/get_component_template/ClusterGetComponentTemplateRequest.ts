@@ -62,6 +62,7 @@ export interface Request extends RequestBase {
      */
     settings_filter?: string | string[]
     /**
+     * Return all default configurations for the component template
      * @server_default false
      * @availability stack since=8.11.0 stability=stable
      * @availability serverless stability=stable
