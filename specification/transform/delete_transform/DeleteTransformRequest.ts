@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -42,6 +42,7 @@ export interface Request extends RequestBase {
      */
     transform_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If this value is false, the transform must be stopped before it can be deleted. If true, the transform is

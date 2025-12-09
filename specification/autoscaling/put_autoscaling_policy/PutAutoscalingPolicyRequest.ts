@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { AutoscalingPolicy } from '@autoscaling/_types/AutoscalingPolicy'
 
@@ -42,6 +42,8 @@ export interface Request extends RequestBase {
     /** Name of the autoscaling policy */
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

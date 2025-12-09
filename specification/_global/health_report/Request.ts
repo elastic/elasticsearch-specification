@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Get the cluster health.
@@ -62,6 +63,7 @@ export interface Request extends RequestBase {
      */
     feature?: string | string[]
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Explicit operation timeout.

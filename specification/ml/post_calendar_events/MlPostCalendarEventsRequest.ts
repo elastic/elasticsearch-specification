@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { CalendarEvent } from '../_types/CalendarEvent'
 
 /**
@@ -41,6 +41,8 @@ export interface Request extends RequestBase {
     /** A string that uniquely identifies a calendar. */
     calendar_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /** A list of one of more scheduled events. The event’s start and end times can be specified as integer milliseconds since the epoch or as a string in ISO 8601 format. */
     events: CalendarEvent[]

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field, GrokPattern } from '@_types/common'
+import { Field, GrokPattern, MediaType } from '@_types/common'
 import { uint } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
@@ -52,6 +52,8 @@ export interface Request<TJsonDocument> {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Ndjson
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The text's character set.

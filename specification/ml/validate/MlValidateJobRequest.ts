@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, IndexName } from '@_types/common'
+import { Id, IndexName, MediaType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
 import { DataDescription } from '@ml/_types/Job'
@@ -38,6 +38,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     job_id?: Id
     analysis_config?: AnalysisConfig

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeIds } from '@_types/common'
+import { MediaType, NodeIds } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 /**
@@ -49,4 +49,5 @@ export interface Request extends RequestBase {
      */
     max_archive_version: long
   }
+  response_media_type: MediaType.Json
 }

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
@@ -76,6 +76,7 @@ export interface Request extends RequestBase {
      * @codegen_name name */
     repository: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `verify_blob_contents` is `true`, this parameter specifies how many blobs to verify at once.

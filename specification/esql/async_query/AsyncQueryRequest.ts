@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { FieldValue } from '@_types/common'
+import { FieldValue, MediaType } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
 import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
@@ -37,6 +37,8 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * @index_privileges read
  */
 export interface Request extends RequestBase {
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, partial results will be returned if there are shard failures, but the query can continue to execute on other clusters and shards.

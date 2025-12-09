@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Update Watcher index settings.
@@ -41,6 +42,8 @@ export interface Request extends RequestBase {
       methods: ['PUT']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

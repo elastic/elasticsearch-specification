@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { CatRequestBase, CatThreadPoolColumns } from '@cat/_types/CatBase'
 
@@ -51,6 +51,7 @@ export interface Request extends CatRequestBase {
      */
     thread_pool_patterns?: Names
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * List of columns to appear in the response. Supports simple wildcards.

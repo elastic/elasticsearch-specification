@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Indices, Names } from '@_types/common'
+import { Indices, MediaType, Names } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
@@ -36,6 +36,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Starting offset

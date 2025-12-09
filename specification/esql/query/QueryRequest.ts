@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { FieldValue } from '@_types/common'
+import { FieldValue, MediaType } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
 import { EsqlFormat } from '@esql/query/QueryParameters'
@@ -40,6 +40,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A short version of the Accept header, e.g. json, yaml.

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, IndexName } from '@_types/common'
+import { ExpandWildcards, IndexName, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -44,6 +44,7 @@ export interface Request extends RequestBase {
      */
     index: IndexName
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.

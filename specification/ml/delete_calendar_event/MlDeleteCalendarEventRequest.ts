@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Delete events from a calendar.
@@ -46,4 +46,5 @@ export interface Request extends RequestBase {
      */
     event_id: Id
   }
+  response_media_type: MediaType.Json
 }

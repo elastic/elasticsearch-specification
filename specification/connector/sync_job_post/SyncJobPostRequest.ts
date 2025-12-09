@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { SyncJobTriggerMethod, SyncJobType } from '../_types/SyncJob'
 
 /**
@@ -40,6 +40,8 @@ export interface Request extends RequestBase {
    * The sync job to be created
    */
   /** @codegen_name sync_job */
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The id of the associated connector

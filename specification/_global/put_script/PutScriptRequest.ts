@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Name } from '@_types/common'
+import { Id, MediaType, Name } from '@_types/common'
 import { StoredScript } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
 
@@ -56,6 +56,8 @@ export interface Request extends RequestBase {
      */
     context?: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The context in which the script or search template should run.

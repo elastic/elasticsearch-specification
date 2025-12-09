@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { IndexSettings } from '@indices/_types/IndexSettings'
 
@@ -39,6 +39,8 @@ export interface Request extends RequestBase {
     /** The destination index or data stream name */
     dest: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /** @codegen_name create_from */
   body?: CreateFrom
 }

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { DataframePreviewConfig } from './types'
 
 /**
@@ -48,6 +48,8 @@ export interface Request extends RequestBase {
      */
     id?: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body?: {
     /**
      * A data frame analytics config as described in create data frame analytics

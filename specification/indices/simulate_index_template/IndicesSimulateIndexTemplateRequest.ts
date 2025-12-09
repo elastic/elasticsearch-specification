@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { IndexTemplate } from '@indices/_types/IndexTemplate'
 
@@ -42,6 +42,8 @@ export interface Request extends RequestBase {
     /** Name of the index to simulate */
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Whether the index template we optionally defined in the body should only be dry-run added if new or can also replace an existing one

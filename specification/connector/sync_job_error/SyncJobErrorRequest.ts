@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Set a connector sync job error.
@@ -43,6 +43,8 @@ export interface Request extends RequestBase {
      */
     connector_sync_job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The error for the connector sync job error field.

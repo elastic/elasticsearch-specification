@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { HttpHeaders, Id, Metadata, VersionString } from '@_types/common'
+import {
+  HttpHeaders,
+  Id,
+  MediaType,
+  Metadata,
+  VersionString
+} from '@_types/common'
 import { integer } from '@_types/Numeric'
 import {
   DataframeAnalysisAnalyzedFields,
@@ -59,6 +65,8 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * Specifies whether this job can start when there is insufficient machine

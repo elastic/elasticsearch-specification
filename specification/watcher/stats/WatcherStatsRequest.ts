@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 import { WatcherMetric } from './types'
 
 /**
@@ -46,6 +47,7 @@ export interface Request extends RequestBase {
      */
     metric?: WatcherMetric | WatcherMetric[]
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Defines whether stack traces are generated for each watch that is running.

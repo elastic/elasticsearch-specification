@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -45,6 +45,7 @@ export interface Request extends CatRequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * If true, returns `HH:MM:SS` and Unix epoch timestamps.

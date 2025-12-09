@@ -18,6 +18,7 @@
  */
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
+import { MediaType } from '@_types/common'
 
 /**
  * Get all synonym sets.
@@ -35,6 +36,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The starting offset for synonyms sets to retrieve.

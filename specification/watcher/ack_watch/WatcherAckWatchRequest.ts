@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Names } from '@_types/common'
+import { MediaType, Name, Names } from '@_types/common'
 
 /**
  * Acknowledge a watch.
@@ -58,4 +58,5 @@ export interface Request extends RequestBase {
      */
     action_id?: Names
   }
+  response_media_type: MediaType.Json
 }

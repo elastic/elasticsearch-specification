@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeIds } from '@_types/common'
+import { MediaType, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -45,6 +45,7 @@ export interface Request extends RequestBase {
     /** Comma-separated list of node filters used to limit returned information. Defaults to all nodes in the cluster. */
     node_id?: NodeIds
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Include remote cluster data into the response
