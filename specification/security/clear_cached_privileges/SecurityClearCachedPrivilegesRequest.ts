@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 
 /**
  * Clear the privileges cache.
@@ -46,4 +46,5 @@ export interface Request extends RequestBase {
      */
     application: Name
   }
+  response_media_type: MediaType.Json
 }

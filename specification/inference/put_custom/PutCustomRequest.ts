@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import {
   CustomServiceSettings,
   CustomServiceType,
@@ -93,6 +93,8 @@ export interface Request extends RequestBase {
      */
     custom_inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The chunking configuration object.

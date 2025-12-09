@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Metadata, Name } from '@_types/common'
+import { MediaType, Metadata, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { Access } from '@security/_types/Access'
 
@@ -53,6 +53,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The access to be granted to this API key.
