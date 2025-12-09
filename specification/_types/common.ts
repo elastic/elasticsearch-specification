@@ -245,10 +245,7 @@ export enum MediaType {
   Text = 'text/plain',
   Ndjson = 'application/x-ndjson',
   EventStream = 'text/event-stream',
-  MapboxVectorTile = 'application/vnd.mapbox-vector-tile',
-
-  TextAndJson = Json | Text,
-  JsonAndNdjson = Json | Ndjson
+  MapboxVectorTile = 'application/vnd.mapbox-vector-tile'
 }
 
 // This is the ClusterStatsLevel enum in Elasticsearch
