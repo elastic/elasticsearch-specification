@@ -23,7 +23,8 @@ import {
   Id,
   IndexName,
   Routing,
-  SuggestMode
+  SuggestMode,
+  UserDefinedObject
 } from '@_types/common'
 import { GeoHashPrecision, GeoLocation } from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
@@ -74,7 +75,7 @@ export class TermSuggest extends SuggestBase {
 export class CompletionSuggestOption<TDocument> {
   collate_match?: boolean
   contexts?: Dictionary<string, Context[]>
-  fields?: Dictionary<string, UserDefinedValue>
+  fields?: UserDefinedObject
   _id?: string
   _index?: IndexName
   _routing?: Routing

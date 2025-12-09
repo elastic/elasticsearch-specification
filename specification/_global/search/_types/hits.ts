@@ -24,6 +24,7 @@ import {
   IndexName,
   Name,
   SequenceNumber,
+  UserDefinedObject,
   VersionNumber
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
@@ -49,7 +50,7 @@ export class Hit<TDocument> {
   // See https://github.com/elastic/elasticsearch-specification/pull/5248
   _score?: double | null
   _explanation?: Explanation
-  fields?: Dictionary<string, UserDefinedValue>
+  fields?: UserDefinedObject
   highlight?: Dictionary<string, string[]>
   inner_hits?: Dictionary<string, InnerHitsResult>
   // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias

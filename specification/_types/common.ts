@@ -89,6 +89,7 @@ export type DataStreamNames = DataStreamName | DataStreamName[]
 /** @doc_id byte-units */
 export type ByteSize = long | string
 
+export type UserDefinedObject = Dictionary<string, UserDefinedValue>
 export type Metadata = Dictionary<string, UserDefinedValue>
 
 // Versioning Numbers & Strings
@@ -325,7 +326,7 @@ export enum WaitForEvents {
 export class InlineGet<TDocument>
   implements AdditionalProperties<string, UserDefinedValue>
 {
-  fields?: Dictionary<string, UserDefinedValue>
+  fields?: UserDefinedObject
   found: boolean
   _seq_no?: SequenceNumber
   _primary_term?: long
