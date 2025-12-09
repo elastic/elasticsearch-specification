@@ -118,7 +118,6 @@ export enum TaskTypeGoogleVertexAI {
 }
 
 export enum TaskTypeGroq {
-  completion,
   chat_completion
 }
 

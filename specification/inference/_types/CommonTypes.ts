@@ -1582,7 +1582,6 @@ export class GroqServiceSettings {
 }
 
 export enum GroqTaskType {
-  completion,
   chat_completion
 }
 
