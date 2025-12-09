@@ -41,9 +41,9 @@ export default {
     'no-variants-on-responses': noVariantsOnResponses,
     'no-inline-unions': noInlineUnions,
     'prefer-tagged-variants': preferTaggedVariants,
-    'no-all-string-literal-unions': noAllStringLiteralUnions,
     'no-duplicate-type-names': noDuplicateTypeNames,
-    'jsdoc-endpoint-check': jsdocEndpointCheck
+    'no-all-string-literal-unions': noAllStringLiteralUnions,
+    'jsdoc-endpoint-check': jsdocEndpointCheck,
     'codegen-exclude-on-request-only': codegenExcludeOnRequestOnly
   }
 }
