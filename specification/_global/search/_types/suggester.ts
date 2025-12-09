@@ -186,6 +186,7 @@ export class RegexOptions {
    * Optional operators for the regular expression.
    * @doc_id regexp-syntax
    */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   flags?: integer | string
   /**
    * Maximum number of automaton states required for the query.
