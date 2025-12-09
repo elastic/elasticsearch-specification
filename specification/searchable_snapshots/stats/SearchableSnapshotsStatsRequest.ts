@@ -49,6 +49,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
+     * Return stats aggregated at cluster, index or shard level
      * @server_default indices
      */
     level?: StatsLevel
