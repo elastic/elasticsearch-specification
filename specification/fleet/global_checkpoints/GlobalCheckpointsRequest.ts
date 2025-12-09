@@ -43,6 +43,7 @@ export interface Request extends RequestBase {
     /**
      * A single index or index alias that resolves to a single index.
      */
+    // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
     index: IndexName | IndexAlias
   }
   query_parameters: {
