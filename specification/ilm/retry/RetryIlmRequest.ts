@@ -39,6 +39,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The name of the indices (comma-separated) whose failed lifecycle step is to be retry */
     index: IndexName
   }
 }

@@ -307,6 +307,9 @@ export interface Request extends RequestBase {
      * If `true`, returns the document version as part of a hit.
      */
     version?: boolean
+    /**
+     * Should the document increment the version number (internal) on hit or not (reindex)
+     */
     version_type?: boolean
     /**
      * The number of shard copies that must be active before proceeding with the operation.

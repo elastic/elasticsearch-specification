@@ -9026,7 +9026,7 @@
           {
             "in": "query",
             "name": "include_defaults",
-            "description": "indicates if the API should return the default values the system uses for the index's lifecycle",
+            "description": "Indicates if the API should return the default values the system uses for the index's lifecycle",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -9036,7 +9036,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Specify timeout for connection to master",
+            "description": "The period to wait for a connection to the master node.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Duration"
@@ -9329,6 +9329,14 @@
                     "items": {
                       "$ref": "#/components/schemas/indices._types.DownsamplingRound"
                     }
+                  },
+                  "downsampling_method": {
+                    "description": "The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires\n`downsampling` to be defined. Defaults to `aggregate`.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/indices._types.SamplingMethod"
+                      }
+                    ]
                   },
                   "enabled": {
                     "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
@@ -20439,6 +20447,34 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "If provided, must be the same identifier as in the path.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Id"
+                      }
+                    ]
+                  },
+                  "timeout": {
+                    "description": "Controls the amount of time to wait until the data frame analytics job\nstarts.",
+                    "default": "20s",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -20652,7 +20688,7 @@
           {
             "in": "query",
             "name": "priority",
-            "description": "The deployment priority.",
+            "description": "The deployment priority",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/ml._types.TrainingPriority"
@@ -20803,6 +20839,44 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "If provided, must be the same identifier as in the path.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Id"
+                      }
+                    ]
+                  },
+                  "allow_no_match": {
+                    "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no data frame analytics\njobs that match.\n2. Contains the _all string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is true, which returns an empty data_frame_analytics\narray when there are no matches and the subset of results when there are\npartial matches. If this parameter is false, the request returns a 404\nstatus code when there are no matches or only partial matches.",
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "force": {
+                    "description": "If true, the data frame analytics job is stopped forcefully.",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "timeout": {
+                    "description": "Controls the amount of time to wait until the data frame analytics job\nstops. Defaults to 20 seconds.",
+                    "default": "20s",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -20989,6 +21063,35 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "If provided, must be the same identifier as in the path.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Id"
+                      }
+                    ]
+                  },
+                  "allow_no_match": {
+                    "description": "Specifies what to do when the request: contains wildcard expressions and there are no deployments that match;\ncontains the  `_all` string or no identifiers and there are no matches; or contains wildcard expressions and\nthere are only partial matches. By default, it returns an empty array when there are no matches and the subset of results when there are partial matches.\nIf `false`, the request returns a 404 status code when there are no matches or only partial matches.",
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "force": {
+                    "description": "Forcefully stops the deployment, even if it is used by ingest pipelines. You can't use these pipelines until you\nrestart the model deployment.",
+                    "default": false,
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -28418,6 +28521,35 @@
                     "description": "A successful response when the transform is deleted.",
                     "value": "{\n  \"acknowledged\": true\n}"
                   }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_transform/_node_stats": {
+      "get": {
+        "tags": [
+          "transform"
+        ],
+        "summary": "Get node stats",
+        "description": "Get per-node information about transform usage.",
+        "operationId": "transform-get-node-stats",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/transform.get_node_stats.TransformNodeFullStats"
                 }
               }
             }
@@ -39856,6 +39988,14 @@
                 "$ref": "#/components/schemas/_types.PinnedRetriever"
               }
             ]
+          },
+          "diversify": {
+            "description": "A retriever that diversifies the results from its child retriever.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DiversifyRetriever"
+              }
+            ]
           }
         },
         "minProperties": 1,
@@ -40395,6 +40535,69 @@
         },
         "required": [
           "id"
+        ]
+      },
+      "_types.DiversifyRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "The diversification strategy to apply.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.DiversifyRetrieverTypes"
+                  }
+                ]
+              },
+              "field": {
+                "description": "The document field on which to diversify results on.",
+                "type": "string"
+              },
+              "retriever": {
+                "description": "The nested retriever whose results will be diversified.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.RetrieverContainer"
+                  }
+                ]
+              },
+              "size": {
+                "description": "The number of top documents to return after diversification.",
+                "type": "number"
+              },
+              "rank_window_size": {
+                "description": "The number of top documents from the nested retriever to consider for diversification.",
+                "type": "number"
+              },
+              "query_vector": {
+                "description": "The query vector used for diversification.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.QueryVector"
+                  }
+                ]
+              },
+              "lambda": {
+                "description": "Controls the trade-off between relevance and diversity for MMR. A value of 0.0 focuses solely on diversity, while a value of 1.0 focuses solely on relevance. Required for MMR",
+                "type": "number"
+              }
+            },
+            "required": [
+              "type",
+              "field",
+              "retriever"
+            ]
+          }
+        ]
+      },
+      "_types.DiversifyRetrieverTypes": {
+        "type": "string",
+        "enum": [
+          "mmr"
         ]
       },
       "_types.SlicedScroll": {
@@ -46313,7 +46516,14 @@
       },
       "_types.aggregations.MovingAverageAggregation": {
         "discriminator": {
-          "propertyName": "model"
+          "propertyName": "model",
+          "mapping": {
+            "linear": "#/components/schemas/_types.aggregations.LinearMovingAverageAggregation",
+            "simple": "#/components/schemas/_types.aggregations.SimpleMovingAverageAggregation",
+            "ewma": "#/components/schemas/_types.aggregations.EwmaMovingAverageAggregation",
+            "holt": "#/components/schemas/_types.aggregations.HoltMovingAverageAggregation",
+            "holt_winters": "#/components/schemas/_types.aggregations.HoltWintersMovingAverageAggregation"
+          }
         },
         "oneOf": [
           {
@@ -50949,13 +51159,9 @@
           },
           "data_stream_options": {
             "x-state": "Generally available",
-            "oneOf": [
+            "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
-              },
-              {
-                "nullable": true,
-                "type": "string"
+                "$ref": "#/components/schemas/indices._types.DataStreamOptions"
               }
             ]
           }
@@ -52019,7 +52225,58 @@
       },
       "_types.analysis.Analyzer": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "custom": "#/components/schemas/_types.analysis.CustomAnalyzer",
+            "fingerprint": "#/components/schemas/_types.analysis.FingerprintAnalyzer",
+            "keyword": "#/components/schemas/_types.analysis.KeywordAnalyzer",
+            "nori": "#/components/schemas/_types.analysis.NoriAnalyzer",
+            "pattern": "#/components/schemas/_types.analysis.PatternAnalyzer",
+            "simple": "#/components/schemas/_types.analysis.SimpleAnalyzer",
+            "standard": "#/components/schemas/_types.analysis.StandardAnalyzer",
+            "stop": "#/components/schemas/_types.analysis.StopAnalyzer",
+            "whitespace": "#/components/schemas/_types.analysis.WhitespaceAnalyzer",
+            "icu_analyzer": "#/components/schemas/_types.analysis.IcuAnalyzer",
+            "kuromoji": "#/components/schemas/_types.analysis.KuromojiAnalyzer",
+            "snowball": "#/components/schemas/_types.analysis.SnowballAnalyzer",
+            "arabic": "#/components/schemas/_types.analysis.ArabicAnalyzer",
+            "armenian": "#/components/schemas/_types.analysis.ArmenianAnalyzer",
+            "basque": "#/components/schemas/_types.analysis.BasqueAnalyzer",
+            "bengali": "#/components/schemas/_types.analysis.BengaliAnalyzer",
+            "brazilian": "#/components/schemas/_types.analysis.BrazilianAnalyzer",
+            "bulgarian": "#/components/schemas/_types.analysis.BulgarianAnalyzer",
+            "catalan": "#/components/schemas/_types.analysis.CatalanAnalyzer",
+            "chinese": "#/components/schemas/_types.analysis.ChineseAnalyzer",
+            "cjk": "#/components/schemas/_types.analysis.CjkAnalyzer",
+            "czech": "#/components/schemas/_types.analysis.CzechAnalyzer",
+            "danish": "#/components/schemas/_types.analysis.DanishAnalyzer",
+            "dutch": "#/components/schemas/_types.analysis.DutchAnalyzer",
+            "english": "#/components/schemas/_types.analysis.EnglishAnalyzer",
+            "estonian": "#/components/schemas/_types.analysis.EstonianAnalyzer",
+            "finnish": "#/components/schemas/_types.analysis.FinnishAnalyzer",
+            "french": "#/components/schemas/_types.analysis.FrenchAnalyzer",
+            "galician": "#/components/schemas/_types.analysis.GalicianAnalyzer",
+            "german": "#/components/schemas/_types.analysis.GermanAnalyzer",
+            "greek": "#/components/schemas/_types.analysis.GreekAnalyzer",
+            "hindi": "#/components/schemas/_types.analysis.HindiAnalyzer",
+            "hungarian": "#/components/schemas/_types.analysis.HungarianAnalyzer",
+            "indonesian": "#/components/schemas/_types.analysis.IndonesianAnalyzer",
+            "irish": "#/components/schemas/_types.analysis.IrishAnalyzer",
+            "italian": "#/components/schemas/_types.analysis.ItalianAnalyzer",
+            "latvian": "#/components/schemas/_types.analysis.LatvianAnalyzer",
+            "lithuanian": "#/components/schemas/_types.analysis.LithuanianAnalyzer",
+            "norwegian": "#/components/schemas/_types.analysis.NorwegianAnalyzer",
+            "persian": "#/components/schemas/_types.analysis.PersianAnalyzer",
+            "portuguese": "#/components/schemas/_types.analysis.PortugueseAnalyzer",
+            "romanian": "#/components/schemas/_types.analysis.RomanianAnalyzer",
+            "russian": "#/components/schemas/_types.analysis.RussianAnalyzer",
+            "serbian": "#/components/schemas/_types.analysis.SerbianAnalyzer",
+            "sorani": "#/components/schemas/_types.analysis.SoraniAnalyzer",
+            "spanish": "#/components/schemas/_types.analysis.SpanishAnalyzer",
+            "swedish": "#/components/schemas/_types.analysis.SwedishAnalyzer",
+            "turkish": "#/components/schemas/_types.analysis.TurkishAnalyzer",
+            "thai": "#/components/schemas/_types.analysis.ThaiAnalyzer"
+          }
         },
         "oneOf": [
           {
@@ -53716,7 +53973,14 @@
       },
       "_types.analysis.CharFilterDefinition": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "html_strip": "#/components/schemas/_types.analysis.HtmlStripCharFilter",
+            "mapping": "#/components/schemas/_types.analysis.MappingCharFilter",
+            "pattern_replace": "#/components/schemas/_types.analysis.PatternReplaceCharFilter",
+            "icu_normalizer": "#/components/schemas/_types.analysis.IcuNormalizationCharFilter",
+            "kuromoji_iteration_mark": "#/components/schemas/_types.analysis.KuromojiIterationMarkCharFilter"
+          }
         },
         "oneOf": [
           {
@@ -53918,7 +54182,83 @@
       },
       "_types.analysis.TokenFilterDefinition": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "apostrophe": "#/components/schemas/_types.analysis.ApostropheTokenFilter",
+            "arabic_stem": "#/components/schemas/_types.analysis.ArabicStemTokenFilter",
+            "arabic_normalization": "#/components/schemas/_types.analysis.ArabicNormalizationTokenFilter",
+            "asciifolding": "#/components/schemas/_types.analysis.AsciiFoldingTokenFilter",
+            "bengali_normalization": "#/components/schemas/_types.analysis.BengaliNormalizationTokenFilter",
+            "brazilian_stem": "#/components/schemas/_types.analysis.BrazilianStemTokenFilter",
+            "cjk_bigram": "#/components/schemas/_types.analysis.CjkBigramTokenFilter",
+            "cjk_width": "#/components/schemas/_types.analysis.CjkWidthTokenFilter",
+            "classic": "#/components/schemas/_types.analysis.ClassicTokenFilter",
+            "common_grams": "#/components/schemas/_types.analysis.CommonGramsTokenFilter",
+            "condition": "#/components/schemas/_types.analysis.ConditionTokenFilter",
+            "czech_stem": "#/components/schemas/_types.analysis.CzechStemTokenFilter",
+            "decimal_digit": "#/components/schemas/_types.analysis.DecimalDigitTokenFilter",
+            "delimited_payload": "#/components/schemas/_types.analysis.DelimitedPayloadTokenFilter",
+            "dutch_stem": "#/components/schemas/_types.analysis.DutchStemTokenFilter",
+            "edge_ngram": "#/components/schemas/_types.analysis.EdgeNGramTokenFilter",
+            "elision": "#/components/schemas/_types.analysis.ElisionTokenFilter",
+            "fingerprint": "#/components/schemas/_types.analysis.FingerprintTokenFilter",
+            "flatten_graph": "#/components/schemas/_types.analysis.FlattenGraphTokenFilter",
+            "french_stem": "#/components/schemas/_types.analysis.FrenchStemTokenFilter",
+            "german_normalization": "#/components/schemas/_types.analysis.GermanNormalizationTokenFilter",
+            "german_stem": "#/components/schemas/_types.analysis.GermanStemTokenFilter",
+            "hindi_normalization": "#/components/schemas/_types.analysis.HindiNormalizationTokenFilter",
+            "hunspell": "#/components/schemas/_types.analysis.HunspellTokenFilter",
+            "hyphenation_decompounder": "#/components/schemas/_types.analysis.HyphenationDecompounderTokenFilter",
+            "indic_normalization": "#/components/schemas/_types.analysis.IndicNormalizationTokenFilter",
+            "keep_types": "#/components/schemas/_types.analysis.KeepTypesTokenFilter",
+            "keep": "#/components/schemas/_types.analysis.KeepWordsTokenFilter",
+            "keyword_marker": "#/components/schemas/_types.analysis.KeywordMarkerTokenFilter",
+            "keyword_repeat": "#/components/schemas/_types.analysis.KeywordRepeatTokenFilter",
+            "kstem": "#/components/schemas/_types.analysis.KStemTokenFilter",
+            "length": "#/components/schemas/_types.analysis.LengthTokenFilter",
+            "limit": "#/components/schemas/_types.analysis.LimitTokenCountTokenFilter",
+            "lowercase": "#/components/schemas/_types.analysis.LowercaseTokenFilter",
+            "min_hash": "#/components/schemas/_types.analysis.MinHashTokenFilter",
+            "multiplexer": "#/components/schemas/_types.analysis.MultiplexerTokenFilter",
+            "ngram": "#/components/schemas/_types.analysis.NGramTokenFilter",
+            "nori_part_of_speech": "#/components/schemas/_types.analysis.NoriPartOfSpeechTokenFilter",
+            "pattern_capture": "#/components/schemas/_types.analysis.PatternCaptureTokenFilter",
+            "pattern_replace": "#/components/schemas/_types.analysis.PatternReplaceTokenFilter",
+            "persian_normalization": "#/components/schemas/_types.analysis.PersianNormalizationTokenFilter",
+            "persian_stem": "#/components/schemas/_types.analysis.PersianStemTokenFilter",
+            "porter_stem": "#/components/schemas/_types.analysis.PorterStemTokenFilter",
+            "predicate_token_filter": "#/components/schemas/_types.analysis.PredicateTokenFilter",
+            "remove_duplicates": "#/components/schemas/_types.analysis.RemoveDuplicatesTokenFilter",
+            "reverse": "#/components/schemas/_types.analysis.ReverseTokenFilter",
+            "russian_stem": "#/components/schemas/_types.analysis.RussianStemTokenFilter",
+            "scandinavian_folding": "#/components/schemas/_types.analysis.ScandinavianFoldingTokenFilter",
+            "scandinavian_normalization": "#/components/schemas/_types.analysis.ScandinavianNormalizationTokenFilter",
+            "serbian_normalization": "#/components/schemas/_types.analysis.SerbianNormalizationTokenFilter",
+            "shingle": "#/components/schemas/_types.analysis.ShingleTokenFilter",
+            "snowball": "#/components/schemas/_types.analysis.SnowballTokenFilter",
+            "sorani_normalization": "#/components/schemas/_types.analysis.SoraniNormalizationTokenFilter",
+            "stemmer_override": "#/components/schemas/_types.analysis.StemmerOverrideTokenFilter",
+            "stemmer": "#/components/schemas/_types.analysis.StemmerTokenFilter",
+            "stop": "#/components/schemas/_types.analysis.StopTokenFilter",
+            "synonym_graph": "#/components/schemas/_types.analysis.SynonymGraphTokenFilter",
+            "synonym": "#/components/schemas/_types.analysis.SynonymTokenFilter",
+            "trim": "#/components/schemas/_types.analysis.TrimTokenFilter",
+            "truncate": "#/components/schemas/_types.analysis.TruncateTokenFilter",
+            "unique": "#/components/schemas/_types.analysis.UniqueTokenFilter",
+            "uppercase": "#/components/schemas/_types.analysis.UppercaseTokenFilter",
+            "word_delimiter_graph": "#/components/schemas/_types.analysis.WordDelimiterGraphTokenFilter",
+            "word_delimiter": "#/components/schemas/_types.analysis.WordDelimiterTokenFilter",
+            "ja_stop": "#/components/schemas/_types.analysis.JaStopTokenFilter",
+            "kuromoji_stemmer": "#/components/schemas/_types.analysis.KuromojiStemmerTokenFilter",
+            "kuromoji_readingform": "#/components/schemas/_types.analysis.KuromojiReadingFormTokenFilter",
+            "kuromoji_part_of_speech": "#/components/schemas/_types.analysis.KuromojiPartOfSpeechTokenFilter",
+            "icu_collation": "#/components/schemas/_types.analysis.IcuCollationTokenFilter",
+            "icu_folding": "#/components/schemas/_types.analysis.IcuFoldingTokenFilter",
+            "icu_normalizer": "#/components/schemas/_types.analysis.IcuNormalizationTokenFilter",
+            "icu_transform": "#/components/schemas/_types.analysis.IcuTransformTokenFilter",
+            "phonetic": "#/components/schemas/_types.analysis.PhoneticTokenFilter",
+            "dictionary_decompounder": "#/components/schemas/_types.analysis.DictionaryDecompounderTokenFilter"
+          }
         },
         "oneOf": [
           {
@@ -56568,7 +56908,11 @@
       },
       "_types.analysis.Normalizer": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "lowercase": "#/components/schemas/_types.analysis.LowercaseNormalizer",
+            "custom": "#/components/schemas/_types.analysis.CustomNormalizer"
+          }
         },
         "oneOf": [
           {
@@ -56634,7 +56978,27 @@
       },
       "_types.analysis.TokenizerDefinition": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "char_group": "#/components/schemas/_types.analysis.CharGroupTokenizer",
+            "classic": "#/components/schemas/_types.analysis.ClassicTokenizer",
+            "edge_ngram": "#/components/schemas/_types.analysis.EdgeNGramTokenizer",
+            "keyword": "#/components/schemas/_types.analysis.KeywordTokenizer",
+            "letter": "#/components/schemas/_types.analysis.LetterTokenizer",
+            "lowercase": "#/components/schemas/_types.analysis.LowercaseTokenizer",
+            "ngram": "#/components/schemas/_types.analysis.NGramTokenizer",
+            "path_hierarchy": "#/components/schemas/_types.analysis.PathHierarchyTokenizer",
+            "pattern": "#/components/schemas/_types.analysis.PatternTokenizer",
+            "simple_pattern": "#/components/schemas/_types.analysis.SimplePatternTokenizer",
+            "simple_pattern_split": "#/components/schemas/_types.analysis.SimplePatternSplitTokenizer",
+            "standard": "#/components/schemas/_types.analysis.StandardTokenizer",
+            "thai": "#/components/schemas/_types.analysis.ThaiTokenizer",
+            "uax_url_email": "#/components/schemas/_types.analysis.UaxEmailUrlTokenizer",
+            "whitespace": "#/components/schemas/_types.analysis.WhitespaceTokenizer",
+            "icu_tokenizer": "#/components/schemas/_types.analysis.IcuTokenizer",
+            "kuromoji_tokenizer": "#/components/schemas/_types.analysis.KuromojiTokenizer",
+            "nori_tokenizer": "#/components/schemas/_types.analysis.NoriTokenizer"
+          }
         },
         "oneOf": [
           {
@@ -57290,7 +57654,17 @@
       },
       "indices._types.SettingsSimilarity": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "BM25": "#/components/schemas/indices._types.SettingsSimilarityBm25",
+            "boolean": "#/components/schemas/indices._types.SettingsSimilarityBoolean",
+            "DFI": "#/components/schemas/indices._types.SettingsSimilarityDfi",
+            "DFR": "#/components/schemas/indices._types.SettingsSimilarityDfr",
+            "IB": "#/components/schemas/indices._types.SettingsSimilarityIb",
+            "LMDirichlet": "#/components/schemas/indices._types.SettingsSimilarityLmd",
+            "LMJelinekMercer": "#/components/schemas/indices._types.SettingsSimilarityLmj",
+            "scripted": "#/components/schemas/indices._types.SettingsSimilarityScripted"
+          }
         },
         "oneOf": [
           {
@@ -58125,7 +58499,61 @@
       },
       "_types.mapping.Property": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "binary": "#/components/schemas/_types.mapping.BinaryProperty",
+            "boolean": "#/components/schemas/_types.mapping.BooleanProperty",
+            "{dynamic_type}": "#/components/schemas/_types.mapping.DynamicProperty",
+            "join": "#/components/schemas/_types.mapping.JoinProperty",
+            "keyword": "#/components/schemas/_types.mapping.KeywordProperty",
+            "match_only_text": "#/components/schemas/_types.mapping.MatchOnlyTextProperty",
+            "percolator": "#/components/schemas/_types.mapping.PercolatorProperty",
+            "rank_feature": "#/components/schemas/_types.mapping.RankFeatureProperty",
+            "rank_features": "#/components/schemas/_types.mapping.RankFeaturesProperty",
+            "search_as_you_type": "#/components/schemas/_types.mapping.SearchAsYouTypeProperty",
+            "text": "#/components/schemas/_types.mapping.TextProperty",
+            "version": "#/components/schemas/_types.mapping.VersionProperty",
+            "wildcard": "#/components/schemas/_types.mapping.WildcardProperty",
+            "date_nanos": "#/components/schemas/_types.mapping.DateNanosProperty",
+            "date": "#/components/schemas/_types.mapping.DateProperty",
+            "aggregate_metric_double": "#/components/schemas/_types.mapping.AggregateMetricDoubleProperty",
+            "dense_vector": "#/components/schemas/_types.mapping.DenseVectorProperty",
+            "flattened": "#/components/schemas/_types.mapping.FlattenedProperty",
+            "nested": "#/components/schemas/_types.mapping.NestedProperty",
+            "object": "#/components/schemas/_types.mapping.ObjectProperty",
+            "passthrough": "#/components/schemas/_types.mapping.PassthroughObjectProperty",
+            "rank_vectors": "#/components/schemas/_types.mapping.RankVectorProperty",
+            "semantic_text": "#/components/schemas/_types.mapping.SemanticTextProperty",
+            "sparse_vector": "#/components/schemas/_types.mapping.SparseVectorProperty",
+            "completion": "#/components/schemas/_types.mapping.CompletionProperty",
+            "constant_keyword": "#/components/schemas/_types.mapping.ConstantKeywordProperty",
+            "counted_keyword": "#/components/schemas/_types.mapping.CountedKeywordProperty",
+            "alias": "#/components/schemas/_types.mapping.FieldAliasProperty",
+            "histogram": "#/components/schemas/_types.mapping.HistogramProperty",
+            "ip": "#/components/schemas/_types.mapping.IpProperty",
+            "murmur3": "#/components/schemas/_types.mapping.Murmur3HashProperty",
+            "token_count": "#/components/schemas/_types.mapping.TokenCountProperty",
+            "geo_point": "#/components/schemas/_types.mapping.GeoPointProperty",
+            "geo_shape": "#/components/schemas/_types.mapping.GeoShapeProperty",
+            "point": "#/components/schemas/_types.mapping.PointProperty",
+            "shape": "#/components/schemas/_types.mapping.ShapeProperty",
+            "byte": "#/components/schemas/_types.mapping.ByteNumberProperty",
+            "double": "#/components/schemas/_types.mapping.DoubleNumberProperty",
+            "float": "#/components/schemas/_types.mapping.FloatNumberProperty",
+            "half_float": "#/components/schemas/_types.mapping.HalfFloatNumberProperty",
+            "integer": "#/components/schemas/_types.mapping.IntegerNumberProperty",
+            "long": "#/components/schemas/_types.mapping.LongNumberProperty",
+            "scaled_float": "#/components/schemas/_types.mapping.ScaledFloatNumberProperty",
+            "short": "#/components/schemas/_types.mapping.ShortNumberProperty",
+            "unsigned_long": "#/components/schemas/_types.mapping.UnsignedLongNumberProperty",
+            "date_range": "#/components/schemas/_types.mapping.DateRangeProperty",
+            "double_range": "#/components/schemas/_types.mapping.DoubleRangeProperty",
+            "float_range": "#/components/schemas/_types.mapping.FloatRangeProperty",
+            "integer_range": "#/components/schemas/_types.mapping.IntegerRangeProperty",
+            "ip_range": "#/components/schemas/_types.mapping.IpRangeProperty",
+            "long_range": "#/components/schemas/_types.mapping.LongRangeProperty",
+            "icu_collation_keyword": "#/components/schemas/_types.mapping.IcuCollationProperty"
+          }
         },
         "oneOf": [
           {
@@ -61014,10 +61442,17 @@
             ]
           },
           "downsampling": {
-            "description": "The downsampling configuration to execute for the managed backing index after rollover.",
+            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
+            }
+          },
+          "downsampling_method": {
+            "description": "The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires\n`downsampling` to be defined. Defaults to `aggregate`.",
             "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleDownsampling"
+                "$ref": "#/components/schemas/indices._types.SamplingMethod"
               }
             ]
           },
@@ -61027,21 +61462,6 @@
             "type": "boolean"
           }
         }
-      },
-      "indices._types.DataStreamLifecycleDownsampling": {
-        "type": "object",
-        "properties": {
-          "rounds": {
-            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
-            }
-          }
-        },
-        "required": [
-          "rounds"
-        ]
       },
       "indices._types.DownsamplingRound": {
         "type": "object",
@@ -61068,67 +61488,55 @@
           "fixed_interval"
         ]
       },
-      "indices._types.DataStreamOptionsTemplate": {
-        "description": "Data stream options template contains the same information as DataStreamOptions but allows them to be set explicitly to null.",
+      "indices._types.SamplingMethod": {
+        "type": "string",
+        "enum": [
+          "aggregate",
+          "last_value"
+        ]
+      },
+      "indices._types.DataStreamOptions": {
+        "description": "Data stream options contain the configuration of data stream level features for a given data stream, for example,\nthe failure store configuration.",
         "type": "object",
         "properties": {
           "failure_store": {
-            "oneOf": [
+            "description": "If defined, it specifies configuration for the failure store of this data stream.",
+            "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.DataStreamFailureStoreTemplate"
-              },
-              {
-                "nullable": true,
-                "type": "string"
+                "$ref": "#/components/schemas/indices._types.DataStreamFailureStore"
               }
             ]
           }
         }
       },
-      "indices._types.DataStreamFailureStoreTemplate": {
-        "description": "Template equivalent of DataStreamFailureStore that allows nullable values.",
+      "indices._types.DataStreamFailureStore": {
+        "description": "Data stream failure store contains the configuration of the failure store for a given data stream.",
         "type": "object",
         "properties": {
           "enabled": {
             "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
-            "default": "true",
-            "oneOf": [
-              {
-                "type": "boolean"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "default": true,
+            "type": "boolean"
           },
           "lifecycle": {
             "description": "If defined, it specifies the lifecycle configuration for the failure store of this data stream.",
-            "oneOf": [
+            "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycleTemplate"
-              },
-              {
-                "nullable": true,
-                "type": "string"
+                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycle"
               }
             ]
           }
         }
       },
-      "indices._types.FailureStoreLifecycleTemplate": {
-        "description": "Template equivalent of FailureStoreLifecycle that allows nullable values.",
+      "indices._types.FailureStoreLifecycle": {
+        "description": "The failure store lifecycle configures the data stream lifecycle configuration for failure indices.",
         "type": "object",
         "properties": {
           "data_retention": {
             "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
-            "oneOf": [
+            "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Duration"
-              },
-              {
-                "nullable": true,
-                "type": "string"
               }
             ]
           },
@@ -61452,16 +61860,18 @@
           }
         }
       },
-      "indices._types.IndexState": {
+      "indices.put_index_template.IndexTemplateMapping": {
         "type": "object",
         "properties": {
           "aliases": {
+            "description": "Aliases to add.\nIf the index template includes a `data_stream` object, these are data stream aliases.\nOtherwise, these are index aliases.\nData stream aliases ignore the `index_routing`, `routing`, and `search_routing` options.",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/indices._types.Alias"
             }
           },
           "mappings": {
+            "description": "Mapping for fields in the index.\nIf specified, this mapping can include field names, field data types, and mapping parameters.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.TypeMapping"
@@ -61469,33 +61879,30 @@
             ]
           },
           "settings": {
+            "description": "Configuration options for the index.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/indices._types.IndexSettings"
-              }
-            ]
-          },
-          "defaults": {
-            "description": "Default settings, included when the request's `include_default` is `true`.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.IndexSettings"
-              }
-            ]
-          },
-          "data_stream": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.DataStreamName"
               }
             ]
           },
           "lifecycle": {
-            "description": "Data stream lifecycle applicable if this is a data stream.",
             "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
+              }
+            ]
+          },
+          "data_stream_options": {
+            "x-state": "Generally available",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
               }
             ]
           }
@@ -61548,8 +61955,76 @@
           }
         }
       },
-      "_types.DataStreamName": {
-        "type": "string"
+      "indices._types.DataStreamOptionsTemplate": {
+        "description": "Data stream options template contains the same information as DataStreamOptions but allows them to be set explicitly to null.",
+        "type": "object",
+        "properties": {
+          "failure_store": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamFailureStoreTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.DataStreamFailureStoreTemplate": {
+        "description": "Template equivalent of DataStreamFailureStore that allows nullable values.",
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
+            "default": "true",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "lifecycle": {
+            "description": "If defined, it specifies the lifecycle configuration for the failure store of this data stream.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycleTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.FailureStoreLifecycleTemplate": {
+        "description": "Template equivalent of FailureStoreLifecycle that allows nullable values.",
+        "type": "object",
+        "properties": {
+          "data_retention": {
+            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "default": true,
+            "type": "boolean"
+          }
+        }
       },
       "_types.Result": {
         "type": "string",
@@ -61922,7 +62397,14 @@
       },
       "connector._types.Validation": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "less_than": "#/components/schemas/connector._types.LessThanValidation",
+            "greater_than": "#/components/schemas/connector._types.GreaterThanValidation",
+            "list_type": "#/components/schemas/connector._types.ListTypeValidation",
+            "included_in": "#/components/schemas/connector._types.IncludedInValidation",
+            "regex": "#/components/schemas/connector._types.RegexValidation"
+          }
         },
         "oneOf": [
           {
@@ -63842,6 +64324,9 @@
           "type"
         ]
       },
+      "_types.DataStreamName": {
+        "type": "string"
+      },
       "indices.create_from.CreateFrom": {
         "type": "object",
         "properties": {
@@ -63999,6 +64484,55 @@
           "mappings",
           "settings"
         ]
+      },
+      "indices._types.IndexState": {
+        "type": "object",
+        "properties": {
+          "aliases": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/indices._types.Alias"
+            }
+          },
+          "mappings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+              }
+            ]
+          },
+          "settings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
+          "defaults": {
+            "description": "Default settings, included when the request's `include_default` is `true`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
+          "data_stream": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DataStreamName"
+              }
+            ]
+          },
+          "lifecycle": {
+            "description": "Data stream lifecycle applicable if this is a data stream.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
+              }
+            ]
+          }
+        }
       },
       "indices.get_alias._types.IndexAliases": {
         "type": "object",
@@ -64347,58 +64881,6 @@
           "name"
         ]
       },
-      "indices._types.DataStreamOptions": {
-        "description": "Data stream options contain the configuration of data stream level features for a given data stream, for example,\nthe failure store configuration.",
-        "type": "object",
-        "properties": {
-          "failure_store": {
-            "description": "If defined, it specifies configuration for the failure store of this data stream.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamFailureStore"
-              }
-            ]
-          }
-        }
-      },
-      "indices._types.DataStreamFailureStore": {
-        "description": "Data stream failure store contains the configuration of the failure store for a given data stream.",
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
-            "default": true,
-            "type": "boolean"
-          },
-          "lifecycle": {
-            "description": "If defined, it specifies the lifecycle configuration for the failure store of this data stream.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycle"
-              }
-            ]
-          }
-        }
-      },
-      "indices._types.FailureStoreLifecycle": {
-        "description": "The failure store lifecycle configures the data stream lifecycle configuration for failure indices.",
-        "type": "object",
-        "properties": {
-          "data_retention": {
-            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "enabled": {
-            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
-            "default": true,
-            "type": "boolean"
-          }
-        }
-      },
       "indices.get_data_stream_settings.DataStreamSettings": {
         "type": "object",
         "properties": {
@@ -64601,13 +65083,9 @@
           },
           "data_stream_options": {
             "x-state": "Generally available",
-            "oneOf": [
+            "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
-              },
-              {
-                "nullable": true,
-                "type": "string"
+                "$ref": "#/components/schemas/indices._types.DataStreamOptions"
               }
             ]
           }
@@ -64873,42 +65351,6 @@
           "index",
           "error"
         ]
-      },
-      "indices.put_index_template.IndexTemplateMapping": {
-        "type": "object",
-        "properties": {
-          "aliases": {
-            "description": "Aliases to add.\nIf the index template includes a `data_stream` object, these are data stream aliases.\nOtherwise, these are index aliases.\nData stream aliases ignore the `index_routing`, `routing`, and `search_routing` options.",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/indices._types.Alias"
-            }
-          },
-          "mappings": {
-            "description": "Mapping for fields in the index.\nIf specified, this mapping can include field names, field data types, and mapping parameters.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.mapping.TypeMapping"
-              }
-            ]
-          },
-          "settings": {
-            "description": "Configuration options for the index.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.IndexSettings"
-              }
-            ]
-          },
-          "lifecycle": {
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
-              }
-            ]
-          }
-        }
       },
       "indices._types.DataStreamVisibility": {
         "type": "object",
@@ -66584,7 +67026,7 @@
             "type": "string"
           },
           "provider": {
-            "description": "The model provider for your deployment.\nNote that some providers may support only certain task types.\nSupported providers include:\n\n* `cohere` - available for `text_embedding` and `completion` task types\n* `databricks` - available for `completion` task type only\n* `meta` - available for `completion` task type only\n* `microsoft_phi` - available for `completion` task type only\n* `mistral` - available for `completion` task type only\n* `openai` - available for `text_embedding` and `completion` task types",
+            "description": "The model provider for your deployment.\nNote that some providers may support only certain task types.\nSupported providers include:\n\n* `cohere` - available for `text_embedding`, `rerank` and `completion` task types\n* `databricks` - available for `completion` task type only\n* `meta` - available for `completion` task type only\n* `microsoft_phi` - available for `completion` task type only\n* `mistral` - available for `completion` task type only\n* `openai` - available for `text_embedding` and `completion` task types",
             "type": "string"
           },
           "rate_limit": {
@@ -71357,15 +71799,10 @@
                 "description": "Controls what properties are added to `target_field`.",
                 "default": [
                   "name",
-                  "major",
-                  "minor",
-                  "patch",
-                  "build",
                   "os",
-                  "os_name",
-                  "os_major",
-                  "os_minor",
-                  "device"
+                  "device",
+                  "original",
+                  "version"
                 ],
                 "type": "array",
                 "items": {
@@ -81101,6 +81538,50 @@
           "type"
         ]
       },
+      "transform.get_node_stats.TransformNodeFullStats": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/transform.get_node_stats.TransformNodeStats"
+              }
+            ]
+          }
+        },
+        "required": [
+          "total"
+        ]
+      },
+      "transform.get_node_stats.TransformNodeStats": {
+        "type": "object",
+        "properties": {
+          "scheduler": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/transform.get_node_stats.TransformSchedulerStats"
+              }
+            ]
+          }
+        },
+        "required": [
+          "scheduler"
+        ]
+      },
+      "transform.get_node_stats.TransformSchedulerStats": {
+        "type": "object",
+        "properties": {
+          "registered_transform_count": {
+            "type": "number"
+          },
+          "peek_transform": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "registered_transform_count"
+        ]
+      },
       "transform.get_transform.TransformSummary": {
         "type": "object",
         "properties": {
@@ -84086,7 +84567,7 @@
       "async_search.submit-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
+        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices.\n(This includes `_all` string or when no indices have been specified)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84116,7 +84597,7 @@
       "async_search.submit-analyze_wildcard": {
         "in": "query",
         "name": "analyze_wildcard",
-        "description": "Specify whether wildcard and prefix queries should be analyzed (default: false)",
+        "description": "Specify whether wildcard and prefix queries should be analyzed",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84176,7 +84657,7 @@
       "async_search.submit-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
+        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -84226,7 +84707,7 @@
       "async_search.submit-max_concurrent_shard_requests": {
         "in": "query",
         "name": "max_concurrent_shard_requests",
-        "description": "The number of concurrent shard requests per node this search executes concurrently. This value should be used to limit the impact of the search on the cluster in order to limit the number of concurrent shard requests",
+        "description": "The number of concurrent shard requests per node this search executes concurrently.\nThis value should be used to limit the impact of the search on the cluster in order to limit the number of concurrent shard requests",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84236,7 +84717,7 @@
       "async_search.submit-preference": {
         "in": "query",
         "name": "preference",
-        "description": "Specify the node or shard the operation should be performed on (default: random)",
+        "description": "Specify the node or shard the operation should be performed on",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -84339,7 +84820,7 @@
       "async_search.submit-terminate_after": {
         "in": "query",
         "name": "terminate_after",
-        "description": "The maximum number of documents to collect for each shard, upon reaching which the query execution will terminate early.",
+        "description": "The maximum number of documents to collect for each shard, upon reaching which the query execution will terminate early",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84359,7 +84840,7 @@
       "async_search.submit-track_total_hits": {
         "in": "query",
         "name": "track_total_hits",
-        "description": "Indicate if the number of documents that match the query should be tracked. A number can also be specified, to accurately track the total hit count up to the number.",
+        "description": "Indicate if the number of documents that match the query should be tracked.\nA number can also be specified, to accurately track the total hit count up to the number.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_global.search._types.TrackHits"
@@ -84459,7 +84940,7 @@
       "async_search.submit-size": {
         "in": "query",
         "name": "size",
-        "description": "Number of hits to return (default: 10)",
+        "description": "Number of hits to return",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84469,7 +84950,7 @@
       "async_search.submit-from": {
         "in": "query",
         "name": "from",
-        "description": "Starting offset (default: 0)",
+        "description": "Starting offset",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -85141,7 +85622,7 @@
       "cluster.get_component_template-include_defaults": {
         "in": "query",
         "name": "include_defaults",
-        "description": "Return all default configurations for the component template (default: false)",
+        "description": "Return all default configurations for the component template",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -85529,7 +86010,7 @@
       "eql.search-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
+        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices.\n(This includes `_all` string or when no indices have been specified)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -86559,7 +87040,7 @@
       "indices.put_index_template-cause": {
         "in": "query",
         "name": "cause",
-        "description": "User defined reason for creating/updating the index template",
+        "description": "User defined reason for creating or updating the index template",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -86569,7 +87050,7 @@
       "indices.put_mapping-index": {
         "in": "path",
         "name": "index",
-        "description": "A comma-separated list of index names the mapping should be added to (supports wildcards); use `_all` or omit to add the mapping on all indices.",
+        "description": "A comma-separated list of index names the mapping should be added to (supports wildcards).\nUse `_all` or omit to add the mapping on all indices.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -87176,7 +87657,7 @@
       "ingest.get_pipeline-summary": {
         "in": "query",
         "name": "summary",
-        "description": "Return pipelines without their definitions (default: false)",
+        "description": "Return pipelines without their definitions",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88324,7 +88805,7 @@
       "scroll-scroll_id_": {
         "in": "query",
         "name": "scroll_id",
-        "description": "The scroll ID for scrolled search",
+        "description": "The scroll ID",
         "deprecated": true,
         "schema": {
           "$ref": "#/components/schemas/_types.ScrollId"
@@ -88845,7 +89326,7 @@
       "search_mvt-index": {
         "in": "path",
         "name": "index",
-        "description": "Comma-separated list of data streams, indices, or aliases to search",
+        "description": "A list of indices, data streams, or aliases to search.\nIt supports wildcards (`*`).\nTo search all data streams and indices, omit this parameter or use `*` or `_all`.\nTo search a remote cluster, use the `<cluster>:<target>` syntax.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -88856,7 +89337,7 @@
       "search_mvt-field": {
         "in": "path",
         "name": "field",
-        "description": "Field containing geospatial data to return",
+        "description": "A field that contains the geospatial data to return.\nIt must be a `geo_point` or `geo_shape` field.\nThe field must have doc values enabled. It cannot be a nested field.\n\nNOTE: Vector tiles do not natively support geometry collections.\nFor `geometrycollection` values in a `geo_shape` field, the API returns a hits layer feature for each element of the collection.\nThis behavior may change in a future release.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -88867,7 +89348,7 @@
       "search_mvt-zoom": {
         "in": "path",
         "name": "zoom",
-        "description": "Zoom level for the vector tile to search",
+        "description": "The zoom level of the vector tile to search. It accepts `0` to `29`.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -88878,7 +89359,7 @@
       "search_mvt-x": {
         "in": "path",
         "name": "x",
-        "description": "X coordinate for the vector tile to search",
+        "description": "The X coordinate for the vector tile to search.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -88889,7 +89370,7 @@
       "search_mvt-y": {
         "in": "path",
         "name": "y",
-        "description": "Y coordinate for the vector tile to search",
+        "description": "The Y coordinate for the vector tile to search.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -89752,7 +90233,7 @@
                   "description": "The template to be applied which includes mappings, settings, or aliases configuration.",
                   "allOf": [
                     {
-                      "$ref": "#/components/schemas/indices._types.IndexState"
+                      "$ref": "#/components/schemas/indices.put_index_template.IndexTemplateMapping"
                     }
                   ]
                 },
