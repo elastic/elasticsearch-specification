@@ -41,7 +41,15 @@ export interface Request extends RequestBase {
     }
   ]
   query_parameters: {
+    /**
+     * Whether the user has acknowledged acknowledge messages
+     * @server_default false
+     */
     acknowledge?: boolean
+    /**
+     * The type of trial license to generate
+     * @server_default trial
+     */
     type?: string
     /**
      * Period to wait for a connection to the master node.

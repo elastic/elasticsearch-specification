@@ -39,6 +39,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The id of the snapshot lifecycle policy to be executed */
     policy_id: Name
   }
   query_parameters: {

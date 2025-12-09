@@ -73,6 +73,7 @@ export interface Request extends RequestBase {
      * @server_default 1
      */
     number_of_allocations?: integer
+    /** The deployment priority */
     priority?: TrainingPriority
     /**
      * Specifies the number of inference requests that are allowed in the queue. After the number of requests exceeds

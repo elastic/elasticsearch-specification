@@ -64,7 +64,9 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** Limit the information returned the specific metrics */
     metric?: Metrics
+    /** A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices */
     index?: Indices
   }
   query_parameters: {
