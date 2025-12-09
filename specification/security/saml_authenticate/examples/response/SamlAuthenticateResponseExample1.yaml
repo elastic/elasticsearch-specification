@@ -8,5 +8,6 @@ value: |-
     "username" : "Bearer",
     "expires_in" : 1200,
     "refresh_token": "mJdXLtmvTUSpoLwMvdBt_w",
-    "realm": "saml1"
+    "realm": "saml1",
+    "in_response_to": "4fee3b046395c4e751011e97f8900b5273d56685"
   }
