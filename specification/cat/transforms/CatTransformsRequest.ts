@@ -72,7 +72,8 @@ export interface Request extends CatRequestBase {
      * @server_default changes_last_detection_time,checkpoint,checkpoint_progress,documents_processed,id,last_search_time,state
      */
     h?: CatTransformColumns
-    /** Comma-separated list of column names or column aliases used to sort the response.
+    /**
+      Comma-separated list of column names or column aliases used to sort the response.
      */
     s?: CatTransformColumns
     /**

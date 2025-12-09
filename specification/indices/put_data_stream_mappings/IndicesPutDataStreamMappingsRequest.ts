@@ -19,27 +19,26 @@
 
 import { RequestBase } from '@_types/Base'
 import { Indices } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Duration } from '@_types/Time'
-import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
- * Update data stream settings.
+ * Update data stream mappings.
  *
- * This API can be used to override settings on specific data streams. These overrides will take precedence over what
- * is specified in the template that the data stream matches. To prevent your data stream from getting into an invalid state,
- * only certain settings are allowed. If possible, the setting change is applied to all
- * backing indices. Otherwise, it will be applied when the data stream is next rolled over.
- * @rest_spec_name indices.put_data_stream_settings
- * @availability stack since=9.1.0 stability=stable visibility=public
+ * This API can be used to override mappings on specific data streams. These overrides will take precedence over what
+ * is specified in the template that the data stream matches. The mapping change is only applied to new write indices
+ * that are created during rollover after this API is called. No indices are changed by this API.
+ * @rest_spec_name indices.put_data_stream_mappings
+ * @availability stack since=9.2.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage
- * @doc_id indices-put-data-stream-settings
+ * @doc_id indices-put-data-stream-mappings
  * @doc_tag data stream
  */
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '/_data_stream/{name}/_settings'
+      path: '/_data_stream/{name}/_mappings'
       methods: ['PUT']
     }
   ]
@@ -51,7 +50,7 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * If `true`, the request does not actually change the settings on any data streams or indices. Instead, it
+     * If `true`, the request does not actually change the mappings on any data streams. Instead, it
      * simulates changing the settings and reports back to the user what would have happened had these settings
      * actually been applied.
      * @server_default false
@@ -72,7 +71,7 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
   /**
-   * Settings to be applied to the data stream.
-   * @codegen_name settings */
-  body: IndexSettings
+   * Mappings to be applied to the data stream.
+   * @codegen_name mappings */
+  body: TypeMapping
 }

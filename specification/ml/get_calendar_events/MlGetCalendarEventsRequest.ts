@@ -46,13 +46,15 @@ export interface Request extends RequestBase {
   query_parameters: {
     /** Specifies to get events with timestamps earlier than this time. */
     end?: DateTime
-    /** Skips the specified number of events.
+    /**
+     * Skips the specified number of events.
      * @server_default 0
      */
     from?: integer
     /** Specifies to get events for a specific anomaly detection job identifier or job group. It must be used with a calendar identifier of `_all` or `*`. */
     job_id?: Id
-    /** Specifies the maximum number of events to obtain.
+    /**
+     * Specifies the maximum number of events to obtain.
      * @server_default 100
      */
     size?: integer
