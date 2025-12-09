@@ -26,6 +26,7 @@ import noVariantsOnResponses from './rules/no-variants-on-responses.js'
 import noInlineUnions from './rules/no-inline-unions.js'
 import preferTaggedVariants from './rules/prefer-tagged-variants.js'
 import noDuplicateTypeNames from './rules/no-duplicate-type-names.js'
+import noAllStringLiteralUnions from './rules/no-all-string-literal-unions.js'
 import jsdocEndpointCheck from './rules/jsdoc-endpoint-check.js'
 
 export default {
@@ -39,6 +40,7 @@ export default {
     'no-variants-on-responses': noVariantsOnResponses,
     'no-inline-unions': noInlineUnions,
     'prefer-tagged-variants': preferTaggedVariants,
+    'no-all-string-literal-unions': noAllStringLiteralUnions,
     'no-duplicate-type-names': noDuplicateTypeNames,
     'jsdoc-endpoint-check': jsdocEndpointCheck
   }
