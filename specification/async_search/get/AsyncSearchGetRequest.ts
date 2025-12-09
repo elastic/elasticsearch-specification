@@ -52,6 +52,9 @@ export interface Request extends RequestBase {
      * If the search is completed, its saved results are deleted.
      */
     keep_alive?: Duration
+    /**
+     * Specify whether aggregation and suggester names should be prefixed by their respective types in the response
+     */
     typed_keys?: boolean
     /**
      * Specifies to wait for the search to be completed up until the provided timeout.
