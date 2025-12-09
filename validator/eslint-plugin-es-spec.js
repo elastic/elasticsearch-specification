@@ -39,7 +39,7 @@ export default {
     'no-variants-on-responses': noVariantsOnResponses,
     'no-inline-unions': noInlineUnions,
     'prefer-tagged-variants': preferTaggedVariants,
-      'no-duplicate-type-names': noDuplicateTypeNames
+    'no-duplicate-type-names': noDuplicateTypeNames,
     'jsdoc-endpoint-check': jsdocEndpointCheck
   }
 }
