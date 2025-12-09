@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Delete an anomaly detection job.
@@ -49,6 +49,7 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Use to forcefully delete an opened job; this method is quicker than

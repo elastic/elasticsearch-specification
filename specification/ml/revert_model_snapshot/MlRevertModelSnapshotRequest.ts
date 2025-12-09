@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Revert to a snapshot.
@@ -56,6 +56,8 @@ export interface Request extends RequestBase {
      */
     snapshot_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If true, deletes the results in the time period between the latest

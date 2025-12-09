@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ScrollIds } from '@_types/common'
+import { MediaType, ScrollIds } from '@_types/common'
 
 /**
  * Clear a scrolling search.
@@ -52,6 +52,8 @@ export interface Request extends RequestBase {
      */
     scroll_id?: ScrollIds
   }
+  request_media_type: MediaType.Text | MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The scroll IDs to clear.

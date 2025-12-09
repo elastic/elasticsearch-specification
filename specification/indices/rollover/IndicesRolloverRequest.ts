@@ -18,7 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexAlias, IndexName, WaitForActiveShards } from '@_types/common'
+import {
+  IndexAlias,
+  IndexName,
+  MediaType,
+  WaitForActiveShards
+} from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Duration } from '@_types/Time'
 import { Alias } from '@indices/_types/Alias'
@@ -95,6 +100,8 @@ export interface Request extends RequestBase {
      */
     new_index?: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, checks whether the current index satisfies the specified conditions but does not perform a rollover.

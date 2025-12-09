@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Fields, Level, Metrics, NodeIds } from '@_types/common'
+import { Fields, Level, MediaType, Metrics, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -68,6 +68,7 @@ export interface Request extends RequestBase {
     /** Limit the information returned for indices metric to the specific index metrics. It can be used only if indices (or all) metric is specified.*/
     index_metric?: Metrics
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /** Comma-separated list or wildcard expressions of fields to include in fielddata and suggest statistics. */
     completion_fields?: Fields

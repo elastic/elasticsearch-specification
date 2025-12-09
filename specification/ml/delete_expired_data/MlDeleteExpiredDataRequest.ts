@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { float } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
@@ -58,6 +58,8 @@ export interface Request extends RequestBase {
      */
     job_id?: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The desired requests per second for the deletion processes. The default

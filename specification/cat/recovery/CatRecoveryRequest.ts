@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Indices, Names } from '@_types/common'
+import { Indices, MediaType, Names } from '@_types/common'
 import { CatRecoveryColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -52,6 +52,7 @@ export interface Request extends CatRequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * If `true`, the response only includes ongoing shard recoveries.
