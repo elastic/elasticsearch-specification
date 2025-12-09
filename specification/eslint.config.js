@@ -94,7 +94,7 @@ export default defineConfig({
           ]
         }
       }
-    ]
+    ],
     'es-spec-validator/jsdoc-endpoint-check': [
       'error',
       {
