@@ -1509,3 +1509,24 @@ export function sortTypeDefinitions (types: model.TypeDefinition[]): void {
     return 0
   })
 }
+
+export function mediaTypeToStringArray (mediaType: string, allEnums: EnumDeclaration[]): string[] {
+  const mediaTypeEnumName = 'MediaType'
+  const mediaTypeEnum = allEnums.find(e => e.getName() === mediaTypeEnumName)
+
+  // Handle strings separated by a pipe and return multiple media types
+  let enumTypeList: string[]
+  if (mediaType.includes('|')) {
+    enumTypeList = mediaType.split('|').map(mt => mt.trim())
+  } else {
+    enumTypeList = [mediaType.trim()]
+  }
+
+  const mediaTypeList: string[] = []
+  for (const enumType of enumTypeList) {
+    const memberName = enumType.split('.').pop()
+    const value = mediaTypeEnum?.getMembers().find(m => m.getName() === memberName)?.getValue() as string
+    mediaTypeList.push(value)
+  }
+  return mediaTypeList
+}

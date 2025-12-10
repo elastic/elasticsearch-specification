@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Uuid } from '@_types/common'
+import { MediaType, Uuid } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -45,6 +45,7 @@ export interface Request extends RequestBase {
      */
     index_uuid: Uuid
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * This parameter must be set to true to import a dangling index.

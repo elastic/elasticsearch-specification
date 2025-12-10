@@ -19,7 +19,13 @@
 
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { Field, Fields, Indices, ProjectRouting } from '@_types/common'
+import {
+  Field,
+  Fields,
+  Indices,
+  MediaType,
+  ProjectRouting
+} from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -160,6 +166,8 @@ export interface Request extends RequestBase {
     /** The Y coordinate for the vector tile to search. */
     y: Coordinate
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.MapboxVectorTile
   query_parameters: {
     /**
      * If `false`, the meta layer's feature is the bounding box of the tile.
