@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Metadata, SequenceNumber, VersionNumber } from '@_types/common'
+import {
+  Id,
+  MediaType,
+  Metadata,
+  SequenceNumber,
+  VersionNumber
+} from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
@@ -60,6 +66,8 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The initial state of the watch.
@@ -67,8 +75,13 @@ export interface Request extends RequestBase {
      * @server_default true
      */
     active?: boolean
+    /**
+     * Only update the watch if the last operation that has changed the watch has the specified primary term
+     */
     if_primary_term?: long
+    /** Only update the watch if the last operation that has changed the watch has the specified sequence number */
     if_seq_no?: SequenceNumber
+    /** Explicit version number for concurrency control */
     version?: VersionNumber
   }
   body: {

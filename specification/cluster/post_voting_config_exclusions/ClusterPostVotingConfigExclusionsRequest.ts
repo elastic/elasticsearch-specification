@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids, Names } from '@_types/common'
+import { Ids, MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -53,6 +53,7 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of the names of the nodes to exclude from the

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Namespace } from '@_types/common'
+import { MediaType, Name, Namespace } from '@_types/common'
 
 /**
  * Get service account credentials.
@@ -53,4 +53,5 @@ export interface Request extends RequestBase {
      */
     service: Name
   }
+  response_media_type: MediaType.Json
 }

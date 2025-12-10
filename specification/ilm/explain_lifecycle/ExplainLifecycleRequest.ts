@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -47,6 +47,7 @@ export interface Request extends RequestBase {
      */
     index: IndexName
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Filters the returned indices to only indices that are managed by ILM and are in an error state, either due to an encountering an error while executing the policy, or attempting to use a policy that does not exist.

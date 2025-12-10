@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   IndexName,
   Indices,
+  MediaType,
   Metadata,
   Name,
   VersionNumber
@@ -31,6 +32,7 @@ import { Duration } from '@_types/Time'
 import { Alias } from '@indices/_types/Alias'
 import { DataStreamVisibility } from '@indices/_types/DataStream'
 import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
+import { DataStreamOptionsTemplate } from '@indices/_types/DataStreamOptions'
 import { IndexSettings } from '@indices/_types/IndexSettings'
 import { Dictionary } from '@spec_utils/Dictionary'
 
@@ -81,6 +83,8 @@ export interface Request extends RequestBase {
     /** Index or template name */
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * Name of the index template to create.
@@ -153,6 +157,7 @@ export interface Request extends RequestBase {
      * @server_default 30s */
     master_timeout?: Duration
     /**
+     * User defined reason for creating or updating the index template
      * @server_default api
      */
     cause?: string
@@ -181,4 +186,9 @@ export class IndexTemplateMapping {
    * @availability serverless stability=stable
    */
   lifecycle?: DataStreamLifecycle
+  /**
+   * @availability stack since=8.19.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  data_stream_options?: DataStreamOptionsTemplate | null
 }

@@ -9708,7 +9708,7 @@ export interface ClusterComponentTemplateSummary {
   mappings?: MappingTypeMapping
   aliases?: Record<string, IndicesAliasDefinition>
   lifecycle?: IndicesDataStreamLifecycleWithRollover
-  data_stream_options?: IndicesDataStreamOptionsTemplate | null
+  data_stream_options?: IndicesDataStreamOptions
 }
 
 export interface ClusterAllocationExplainAllocationDecision {
@@ -9995,7 +9995,7 @@ export interface ClusterPutComponentTemplateRequest extends RequestBase {
   cause?: string
   master_timeout?: Duration
   body?: {
-    template: IndicesIndexState
+    template: IndicesPutIndexTemplateIndexTemplateMapping
     version?: VersionNumber
     _meta?: Metadata
     deprecated?: boolean
@@ -12124,6 +12124,7 @@ export interface IndicesDataStreamIndex {
 export interface IndicesDataStreamLifecycle {
   data_retention?: Duration
   downsampling?: IndicesDownsamplingRound[]
+  downsampling_method?: IndicesSamplingMethod
   enabled?: boolean
 }
 
@@ -12369,7 +12370,7 @@ export interface IndicesIndexTemplateSummary {
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
   lifecycle?: IndicesDataStreamLifecycleWithRollover
-  data_stream_options?: IndicesDataStreamOptionsTemplate | null
+  data_stream_options?: IndicesDataStreamOptions
 }
 
 export interface IndicesIndexVersioning {
@@ -13438,6 +13439,7 @@ export interface IndicesPutDataLifecycleRequest extends RequestBase {
   body?: {
     data_retention?: Duration
     downsampling?: IndicesDownsamplingRound[]
+    downsampling_method?: IndicesSamplingMethod
     enabled?: boolean
   }
 }
@@ -13513,6 +13515,7 @@ export interface IndicesPutIndexTemplateIndexTemplateMapping {
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
   lifecycle?: IndicesDataStreamLifecycle
+  data_stream_options?: IndicesDataStreamOptionsTemplate | null
 }
 
 export interface IndicesPutIndexTemplateRequest extends RequestBase {
@@ -21666,6 +21669,7 @@ export interface SecuritySamlAuthenticateResponse {
   expires_in: integer
   refresh_token: string
   realm: string
+  in_response_to?: string
 }
 
 export interface SecuritySamlCompleteLogoutRequest extends RequestBase {
@@ -23105,19 +23109,19 @@ export type TransformDeleteTransformResponse = AcknowledgedResponseBase
 export interface TransformGetNodeStatsRequest extends RequestBase {
 }
 
-export type TransformGetNodeStatsResponse = TransformGetNodeStatsTransformNodeStats
+export type TransformGetNodeStatsResponse = TransformGetNodeStatsTransformNodeFullStats
 
-export interface TransformGetNodeStatsScheduler {
-  scheduler: TransformGetNodeStatsTransformNodeStatsDetails
+export interface TransformGetNodeStatsTransformNodeFullStatsKeys {
+  total: TransformGetNodeStatsTransformNodeStats
+}
+export type TransformGetNodeStatsTransformNodeFullStats = TransformGetNodeStatsTransformNodeFullStatsKeys
+  & { [property: string]: TransformGetNodeStatsTransformNodeStats }
+
+export interface TransformGetNodeStatsTransformNodeStats {
+  scheduler: TransformGetNodeStatsTransformSchedulerStats
 }
 
-export interface TransformGetNodeStatsTransformNodeStatsKeys {
-  total: TransformGetNodeStatsScheduler
-}
-export type TransformGetNodeStatsTransformNodeStats = TransformGetNodeStatsTransformNodeStatsKeys
-  & { [property: string]: TransformGetNodeStatsScheduler }
-
-export interface TransformGetNodeStatsTransformNodeStatsDetails {
+export interface TransformGetNodeStatsTransformSchedulerStats {
   registered_transform_count: integer
   peek_transform?: string
 }

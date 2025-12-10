@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 import { StepKey } from './types'
 
 /**
@@ -50,8 +50,11 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The name of the index whose lifecycle step is to change */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The step that the index is expected to be in.

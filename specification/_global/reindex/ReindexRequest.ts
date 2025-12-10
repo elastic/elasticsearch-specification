@@ -18,7 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Conflicts, Slices, WaitForActiveShards } from '@_types/common'
+import {
+  Conflicts,
+  MediaType,
+  Slices,
+  WaitForActiveShards
+} from '@_types/common'
 import { float, integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
@@ -45,7 +50,8 @@ import { Destination, Source } from './types'
  * * To automatically create a data stream or index with a reindex API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege for the destination data stream, index, or alias.
  * * If reindexing from a remote cluster, the `source.remote.user` must have the `monitor` cluster privilege and the `read` index privilege for the source data stream, index, or alias.
  *
- * If reindexing from a remote cluster, you must explicitly allow the remote host in the `reindex.remote.whitelist` setting.
+ * If reindexing from a remote cluster into a cluster using Elastic Stack, you must explicitly allow the remote host using the `reindex.remote.whitelist` node setting on the destination cluster.
+ * If reindexing from a remote cluster into an Elastic Cloud Serverless project, only remote hosts from Elastic Cloud Hosted are allowed.
  * Automatic data stream creation requires a matching index template with data stream enabled.
  *
  * The `dest` element can be configured like the index API to control optimistic concurrency control.
@@ -88,6 +94,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, the request refreshes affected shards to make this operation visible to search.

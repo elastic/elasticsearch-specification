@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Metadata } from '@_types/common'
+import { Id, MediaType, Metadata } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { RoleDescriptor } from '@security/_types/RoleDescriptor'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -63,6 +63,8 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body?: {
     /**
      * The role descriptors to assign to this API key.

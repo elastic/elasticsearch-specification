@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ClusterInfoTargets } from '@_types/common'
+import { ClusterInfoTargets, MediaType } from '@_types/common'
 
 /**
  * Get cluster info.
@@ -40,4 +40,5 @@ export interface Request extends RequestBase {
     /** Limits the information returned to the specific target. Supports a comma-separated list, such as http,ingest. */
     target: ClusterInfoTargets
   }
+  response_media_type: MediaType.Json
 }

@@ -18,7 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Names, ProjectRouting } from '@_types/common'
+import {
+  ExpandWildcards,
+  MediaType,
+  Names,
+  ProjectRouting
+} from '@_types/common'
 import { IndexMode } from '@indices/_types/DataStream'
 
 /**
@@ -46,6 +51,7 @@ export interface Request extends RequestBase {
      */
     name: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Type of index that wildcard patterns can match.

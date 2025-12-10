@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { TaskType } from '@inference/_types/TaskType'
 
 /**
@@ -52,6 +52,7 @@ export interface Request extends RequestBase {
      */
     inference_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * When true, checks the semantic_text fields and inference processors that reference the endpoint and returns them in a list, but does not delete the endpoint.

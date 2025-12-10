@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { Repository } from '@snapshot/_types/SnapshotRepository'
 
@@ -52,6 +52,8 @@ export interface Request extends RequestBase {
      */
     repository: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for the master node.
