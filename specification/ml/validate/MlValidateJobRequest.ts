@@ -30,6 +30,7 @@ import { ModelPlotConfig } from '@ml/_types/ModelPlot'
  * @rest_spec_name ml.validate
  * @availability stack since=6.3.0 stability=stable visibility=private
  * @availability serverless stability=stable visibility=private
+ * @doc_id ml-jobs
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {

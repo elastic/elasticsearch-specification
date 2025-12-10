@@ -30,8 +30,6 @@ export interface JsonSpec {
     url: string
     description: string
   }
-  stability: model.Stability
-  visibility: model.Visibility
   feature_flag?: string
   headers: {
     accept?: string[]
@@ -60,11 +58,6 @@ export interface JsonSpec {
   body?: {
     description: string
     required?: boolean
-  }
-  docTag?: string
-  externalDocs?: {
-    url: string
-    description?: string
   }
 }
 

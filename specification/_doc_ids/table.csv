@@ -484,7 +484,7 @@ ml-get-memory,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operat
 ml-get-overall-buckets,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-overall-buckets,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/ml-get-overall-buckets.html,
 ml-get-record,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-records,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/ml-get-record.html,
 ml-get-snapshot,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-model-snapshots,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/ml-get-snapshot.html,
-ml-jobs,https://www.elastic.co/docs/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs,,
+ml-jobs,https://www.elastic.co/guide/en/machine-learning/current/ml-jobs.html,,
 ml-model-snapshots,https://www.elastic.co/docs/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs#ml-ad-model-snapshots,,
 ml-open-job,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-open-job,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/ml-open-job.html,
 ml-post-calendar-event,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-post-calendar-events,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/ml-post-calendar-event.html,

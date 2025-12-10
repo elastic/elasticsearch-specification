@@ -65,15 +65,9 @@ export function compileEndpoints (jsonSpec: Map<string, JsonSpec>): Record<strin
     map[api] = {
       name: api,
       description: spec.documentation.description,
-      docUrl: spec.documentation.url,
-      docTag: spec.docTag,
-      extDocUrl: spec.externalDocs?.url,
-      // Setting these values by default should be removed
-      // when we no longer use rest-api-spec stubs as the
-      // source of truth for stability/visibility.
-      availability: {},
+      docUrl: null,
       request: null,
-      requestBodyRequired: Boolean(spec.body?.required),
+      requestBodyRequired: false,
       response: null,
       urls: spec.url.paths.map(path => {
         return {
@@ -83,9 +77,7 @@ export function compileEndpoints (jsonSpec: Map<string, JsonSpec>): Record<strin
         }
       })
     }
-    if (typeof spec.feature_flag === 'string') {
-      map[api].availability.stack = { featureFlag: spec.feature_flag }
-    }
+    map[api].availability = {}
   }
   return map
 }
