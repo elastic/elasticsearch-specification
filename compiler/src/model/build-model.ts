@@ -53,7 +53,8 @@ import {
   verifyUniqueness,
   parseJsDocTags,
   deepEqual,
-  sourceLocation, sortTypeDefinitions, parseDeprecation
+  sourceLocation, sortTypeDefinitions, parseDeprecation,
+  mediaTypeToStringArray
 } from './utils'
 
 const jsonSpec = buildJsonSpec()
@@ -143,11 +144,11 @@ export function compileSpecification (endpointMappings: Record<string, model.End
 
   // Visit all class, interface, enum and type alias definitions
   for (const declaration of declarations.classes) {
-    model.types.push(compileClassOrInterfaceDeclaration(declaration, endpointMappings, declarations.classes))
+    model.types.push(compileClassOrInterfaceDeclaration(declaration, endpointMappings, declarations.classes, declarations.enums))
   }
 
   for (const declaration of declarations.interfaces) {
-    model.types.push(compileClassOrInterfaceDeclaration(declaration, endpointMappings, declarations.classes))
+    model.types.push(compileClassOrInterfaceDeclaration(declaration, endpointMappings, declarations.classes, declarations.enums))
   }
 
   for (const declaration of declarations.enums) {
@@ -164,7 +165,7 @@ export function compileSpecification (endpointMappings: Record<string, model.End
   return model
 }
 
-function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | InterfaceDeclaration, mappings: Record<string, model.Endpoint>, allClasses: ClassDeclaration[]): model.Request | model.Response | model.Interface {
+function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | InterfaceDeclaration, mappings: Record<string, model.Endpoint>, allClasses: ClassDeclaration[], allEnums: EnumDeclaration[]): model.Request | model.Response | model.Interface | model.Enum {
   const name = declaration.getName()
   assert(declaration, name != null, 'Anonymous definitions should not exists')
 
@@ -234,6 +235,14 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           assert(member, property.properties.length > 0, 'There is no need to declare an empty object path_parts, just remove the path_parts declaration.')
           pathMember = member
           type.path = property.properties
+        } else if (name === 'request_media_type' || name === 'response_media_type') {
+          // add those property to requestMediaType and responseMediaType of the endpoint
+          const mediaType = (member as PropertySignature).getStructure().type as string
+          if (name === 'request_media_type') {
+            mapping.requestMediaType = mediaTypeToStringArray(mediaType, allEnums)
+          } else if (name === 'response_media_type') {
+            mapping.responseMediaType = mediaTypeToStringArray(mediaType, allEnums)
+          }
         } else if (name === 'query_parameters') {
           const property = visitRequestOrResponseProperty(member)
           assert(member, property.properties.length > 0, 'There is no need to declare an empty object query_parameters, just remove the query_parameters declaration.')

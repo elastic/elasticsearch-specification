@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Refresh, SequenceNumber } from '@_types/common'
+import { MediaType, Refresh, SequenceNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { UserProfileId } from '@security/_types/UserProfile'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -62,6 +62,8 @@ export interface Request extends RequestBase {
      */
     uid: UserProfileId
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Only perform the operation if the document has this sequence number.

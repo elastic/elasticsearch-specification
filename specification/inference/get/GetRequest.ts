@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { TaskType } from '@inference/_types/TaskType'
 
 /**
@@ -54,4 +54,5 @@ export interface Request extends RequestBase {
      */
     inference_id?: Id
   }
+  response_media_type: MediaType.Json
 }

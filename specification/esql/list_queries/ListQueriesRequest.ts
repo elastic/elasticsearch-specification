@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Get running ES|QL queries information.
@@ -37,4 +38,6 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
 }

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Metadata, Name, VersionNumber } from '@_types/common'
+import { MediaType, Metadata, Name, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { IndexState } from '@indices/_types/IndexState'
 
@@ -68,6 +68,8 @@ export interface Request extends RequestBase {
      */
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      *  If `true`, this request cannot replace or update existing component templates.
