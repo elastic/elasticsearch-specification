@@ -19323,6 +19323,10 @@ export interface NodesNodeBufferPool {
 export interface NodesNodeReloadResult {
   name: Name
   reload_exception?: ErrorCause
+  secure_setting_names?: string[]
+  keystore_path?: string
+  keystore_digest?: string
+  keystore_last_modified_time?: DateTime
 }
 
 export interface NodesNodesResponseBase {
