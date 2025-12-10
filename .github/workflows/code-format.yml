@@ -21,5 +21,6 @@ jobs:
 
     - name: Code style check
       run: |
+        npm run compile:specification --prefix compiler
         npm run format:check --prefix compiler
 
