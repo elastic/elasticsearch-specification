@@ -50,7 +50,8 @@ export interface Request extends CatRequestBase {
     /**
      * The name of the component template.
      * It accepts wildcard expressions.
-     * If it is omitted, all component templates are returned. */
+     * If it is omitted, all component templates are returned.
+     */
     name?: string
   }
   response_media_type: MediaType.Text | MediaType.Json

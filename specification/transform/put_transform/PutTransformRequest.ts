@@ -70,7 +70,8 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /** Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9),
+    /**
+     * Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9),
      * hyphens, and underscores. It has a 64 character limit and must start and end with alphanumeric characters.
      */
     transform_id: Id

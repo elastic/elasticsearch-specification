@@ -26,6 +26,7 @@ import { MediaType } from '@_types/common'
  *
  * @rest_spec_name _internal.prevalidate_node_removal
  * @availability stack stability=experimental visibility=private
+ * @codegen_exclude
  */
 export interface Request extends RequestBase {
   urls: [

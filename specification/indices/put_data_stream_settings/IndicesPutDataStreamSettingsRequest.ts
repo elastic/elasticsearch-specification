@@ -72,7 +72,8 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  /** Settings to be applied to the data stream.
+  /**
+   * Settings to be applied to the data stream.
    * @codegen_name settings */
   body: IndexSettings
 }

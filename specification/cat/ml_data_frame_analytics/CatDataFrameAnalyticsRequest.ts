@@ -63,7 +63,8 @@ export interface Request extends CatRequestBase {
      * @server_default create_time,id,state,type
      */
     h?: CatDfaColumns
-    /** Comma-separated list of column names or column aliases used to sort the
+    /**
+     * Comma-separated list of column names or column aliases used to sort the
      * response.
      */
     s?: CatDfaColumns

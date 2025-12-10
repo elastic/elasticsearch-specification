@@ -71,7 +71,8 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  /** Mappings to be applied to the data stream.
+  /**
+   * Mappings to be applied to the data stream.
    * @codegen_name mappings */
   body: TypeMapping
 }
