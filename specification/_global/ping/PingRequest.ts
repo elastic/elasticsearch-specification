@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Ping the cluster.
@@ -35,4 +36,5 @@ export interface Request extends RequestBase {
       methods: ['HEAD']
     }
   ]
+  response_media_type: MediaType.Json
 }

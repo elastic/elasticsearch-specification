@@ -18,7 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ByteSize, IndexName, WaitForActiveShards } from '@_types/common'
+import {
+  ByteSize,
+  IndexName,
+  MediaType,
+  WaitForActiveShards
+} from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { IndexSettings } from '@indices/_types/IndexSettings'
@@ -44,6 +49,8 @@ export interface Request extends RequestBase {
      */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

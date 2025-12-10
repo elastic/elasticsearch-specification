@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Names } from '@_types/common'
+import { MediaType, Name, Names } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { SortOrder } from '@_types/sort'
 import { Duration } from '@_types/Time'
@@ -58,6 +58,7 @@ export interface Request extends RequestBase {
      */
     snapshot: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * An offset identifier to start pagination from as returned by the next field in the response body.

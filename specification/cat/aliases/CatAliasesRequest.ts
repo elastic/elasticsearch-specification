@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ExpandWildcards, Names } from '@_types/common'
+import { ExpandWildcards, MediaType, Names } from '@_types/common'
 import { CatAliasesColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -48,6 +48,7 @@ export interface Request extends CatRequestBase {
     /** A comma-separated list of aliases to retrieve. Supports wildcards (`*`).  To retrieve all aliases, omit this parameter or use `*` or `_all`. */
     name?: Names
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of columns names to display. It supports simple wildcards.

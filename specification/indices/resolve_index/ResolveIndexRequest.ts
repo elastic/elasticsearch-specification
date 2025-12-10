@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Names } from '@_types/common'
+import { ExpandWildcards, MediaType, Names } from '@_types/common'
 
 /**
  * Resolve indices.
@@ -44,6 +44,7 @@ export interface Request extends RequestBase {
      */
     name: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Type of index that wildcard patterns can match.

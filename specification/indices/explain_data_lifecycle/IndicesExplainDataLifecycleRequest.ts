@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
+import { Indices, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -42,6 +42,7 @@ export interface Request extends RequestBase {
     /** Comma-separated list of index names to explain */
     index: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Indicates if the API should return the default values the system uses for the index's lifecycle

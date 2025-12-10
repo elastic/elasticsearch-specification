@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { SynonymString } from '../_types/SynonymRule'
 
 /**
@@ -50,6 +50,8 @@ export interface Request extends RequestBase {
      */
     rule_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The synonym rule information definition, which must be in Solr format.

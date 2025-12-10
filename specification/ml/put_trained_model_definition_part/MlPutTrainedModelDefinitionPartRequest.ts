@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 
 /**
@@ -48,6 +48,8 @@ export interface Request extends RequestBase {
      */
     part: integer
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The definition part for the model. Must be a base64 encoded string.

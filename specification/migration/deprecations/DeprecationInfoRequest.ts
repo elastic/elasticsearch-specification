@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 
 /**
  * Get deprecation information.
@@ -46,4 +46,5 @@ export interface Request extends RequestBase {
     /** Comma-separate list of data streams or indices to check. Wildcard (*) expressions are supported. */
     index?: IndexName
   }
+  response_media_type: MediaType.Json
 }

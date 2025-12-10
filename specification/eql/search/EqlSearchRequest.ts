@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Field, Indices } from '@_types/common'
+import { ExpandWildcards, Field, Indices, MediaType } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer, uint } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
@@ -46,6 +46,8 @@ export interface Request extends RequestBase {
     /** Comma-separated list of index names to scope the operation */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Whether to ignore if a wildcard indices expression resolves into no concrete indices.

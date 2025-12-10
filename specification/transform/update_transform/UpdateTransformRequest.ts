@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Metadata } from '@_types/common'
+import { Id, MediaType, Metadata } from '@_types/common'
 import { Duration } from '@_types/Time'
 import {
   Destination,
@@ -57,6 +57,8 @@ export interface Request extends RequestBase {
      */
     transform_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * When true, deferrable validations are not run. This behavior may be

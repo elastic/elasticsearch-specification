@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Indices, Names } from '@_types/common'
+import { Indices, MediaType, Names } from '@_types/common'
 import { CatCountColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -53,6 +53,7 @@ export interface Request extends CatRequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of columns names to display. It supports simple wildcards.

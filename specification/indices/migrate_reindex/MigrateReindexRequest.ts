@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 
 /**
  * Reindex legacy backing indices.
@@ -32,6 +32,8 @@ import { IndexName } from '@_types/common'
  * @doc_tag migration
  */
 export interface Request extends RequestBase {
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /** @codegen_name reindex */
   body: MigrateReindex
 }

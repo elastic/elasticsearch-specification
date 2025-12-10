@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
+import { Ids, MediaType } from '@_types/common'
 
 /**
  * Get Logstash pipelines.
@@ -47,4 +47,5 @@ export interface Request extends RequestBase {
      */
     id?: Ids
   }
+  response_media_type: MediaType.Json
 }

@@ -18,7 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, WaitForActiveShards } from '@_types/common'
+import {
+  ExpandWildcards,
+  Indices,
+  MediaType,
+  WaitForActiveShards
+} from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -69,6 +74,7 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.

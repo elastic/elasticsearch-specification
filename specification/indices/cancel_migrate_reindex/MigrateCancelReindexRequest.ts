@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
+import { Indices, MediaType } from '@_types/common'
 
 /**
  * Cancel a migration reindex operation.
@@ -35,4 +35,6 @@ export interface Request extends RequestBase {
     /** The index or data stream name */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
 }

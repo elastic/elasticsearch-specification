@@ -21,7 +21,7 @@ import { CharFilter } from '@_types/analysis/char_filters'
 import { TokenFilter } from '@_types/analysis/token_filters'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import { RequestBase } from '@_types/Base'
-import { Field, IndexName } from '@_types/common'
+import { Field, IndexName, MediaType } from '@_types/common'
 import { TextToAnalyze } from './types'
 
 /**
@@ -59,6 +59,8 @@ export interface Request extends RequestBase {
      */
     index?: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Index used to derive the analyzer.

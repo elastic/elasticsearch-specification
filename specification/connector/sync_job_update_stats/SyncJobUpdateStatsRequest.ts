@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id, Metadata } from '@_types/common'
+import { Id, MediaType, Metadata } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
@@ -49,6 +49,8 @@ export interface Request extends RequestBase {
      */
     connector_sync_job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The number of documents the sync job deleted.

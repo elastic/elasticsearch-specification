@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { OperationContainer, UpdateAction } from '@global/bulk/types'
 
@@ -35,6 +36,8 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
       methods: ['POST', 'PUT']
     }
   ]
+  request_media_type: MediaType.Ndjson
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Identifier of the monitored system

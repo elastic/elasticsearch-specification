@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Ids } from '@_types/common'
+import { Id, Ids, MediaType } from '@_types/common'
 
 /**
  * Delete anomaly jobs from a calendar.
@@ -47,4 +47,5 @@ export interface Request extends RequestBase {
      */
     job_id: Ids
   }
+  response_media_type: MediaType.Json
 }

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName, PipelineName } from '@_types/common'
+import { IndexName, MediaType, PipelineName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { ComponentTemplateNode } from '@cluster/_types/ComponentTemplate'
 import { IndexTemplate } from '@indices/_types/IndexTemplate'
@@ -69,6 +69,8 @@ export interface Request extends RequestBase {
      */
     index?: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The pipeline to use as the default pipeline.

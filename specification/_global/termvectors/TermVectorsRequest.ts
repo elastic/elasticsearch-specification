@@ -23,6 +23,7 @@ import {
   Fields,
   Id,
   IndexName,
+  MediaType,
   Routing,
   VersionNumber,
   VersionType
@@ -100,6 +101,8 @@ export interface Request<TDocument> extends RequestBase {
      */
     id?: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list or wildcard expressions of fields to include in the statistics.

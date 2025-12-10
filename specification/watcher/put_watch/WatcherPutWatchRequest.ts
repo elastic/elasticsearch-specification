@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Metadata, SequenceNumber, VersionNumber } from '@_types/common'
+import {
+  Id,
+  MediaType,
+  Metadata,
+  SequenceNumber,
+  VersionNumber
+} from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
@@ -59,6 +65,8 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The initial state of the watch.

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Get anomaly detection job model snapshot upgrade usage info.
@@ -48,6 +48,7 @@ export interface Request extends RequestBase {
      */
     snapshot_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:

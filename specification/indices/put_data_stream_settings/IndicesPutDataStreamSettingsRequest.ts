@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
+import { Indices, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { IndexSettings } from '@indices/_types/IndexSettings'
 
@@ -49,6 +49,7 @@ export interface Request extends RequestBase {
      */
     name: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, the request does not actually change the settings on any data streams or indices. Instead, it
