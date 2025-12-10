@@ -32,7 +32,6 @@ import {
   TypeAliasDeclaration
 } from 'ts-morph'
 import * as model from './metamodel'
-import { JsonSpec } from './json-spec'
 import {
   assert,
   customTypes,
@@ -57,28 +56,10 @@ import {
   mediaTypeToStringArray
 } from './utils'
 
-export function compileEndpoints (jsonSpec: Map<string, JsonSpec>): Record<string, model.Endpoint> {
-  // Create endpoints and merge them with
-  // the recorded mappings if present.
-  const map = {}
-  for (const [api, spec] of jsonSpec.entries()) {
-    map[api] = {
-      name: api,
-      description: null,
-      docUrl: null,
-      request: null,
-      requestBodyRequired: false,
-      response: null,
-      urls: []
-    }
-    map[api].availability = {}
-  }
-  return map
-}
-
-export function compileSpecification (endpointMappings: Record<string, model.Endpoint>, specsFolder: string, outputFolder: string): model.Model {
+export function compileSpecification (specsFolder: string, outputFolder: string): model.Model {
   const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
   const project = new Project({ tsConfigFilePath })
+  const endpointMappings: Record<string, model.Endpoint> = {}
 
   verifyUniqueness(project)
 
@@ -117,9 +98,6 @@ export function compileSpecification (endpointMappings: Record<string, model.End
     definedButNeverUsed.join('\n'),
     { encoding: 'utf8', flag: 'w' }
   )
-  for (const endpoint of Object.values(endpointMappings)) {
-    model.endpoints.push(endpoint)
-  }
 
   // Visit all class, interface, enum and type alias definitions
   for (const declaration of declarations.classes) {
@@ -140,6 +118,11 @@ export function compileSpecification (endpointMappings: Record<string, model.End
 
   // Sort the types in alphabetical order
   sortTypeDefinitions(model.types)
+
+  const sortedEndpointKeys = Object.keys(endpointMappings).sort()
+  for (const key of sortedEndpointKeys) {
+    model.endpoints.push(endpointMappings[key])
+  }
 
   return model
 }
@@ -191,8 +174,8 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         throw new Error(`Cannot find url template for ${namespace}, very likely the specification folder does not follow the rest-api-spec`)
       }
 
-      if (type.description) {
-        mapping.description = type.description || ''
+      if (type.description !== '' && type.description !== null && type.description !== undefined) {
+        mapping.description = type.description
       }
 
       let pathMember: Node | null = null

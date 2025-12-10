@@ -21,11 +21,7 @@ import { writeFile, mkdir } from 'fs/promises'
 import { join } from 'path'
 import stringify from 'safe-stable-stringify'
 import { Model } from './model/metamodel'
-import {
-  compileEndpoints,
-  compileSpecification
-} from './model/build-model'
-import buildJsonSpec, { JsonSpec } from './model/json-spec'
+import { compileSpecification } from './model/build-model'
 import { ValidationErrors } from './validation-errors'
 
 type StepFunction = (model: Model, errors: ValidationErrors) => Promise<Model>
@@ -41,7 +37,6 @@ type StepFunction = (model: Model, errors: ValidationErrors) => Promise<Model>
 export default class Compiler {
   queue: StepFunction[]
   model: Model
-  jsonSpec: Map<string, JsonSpec>
   errors: ValidationErrors
   specsFolder: string
   outputFolder: string
@@ -54,9 +49,7 @@ export default class Compiler {
   }
 
   generateModel (): this {
-    this.jsonSpec = buildJsonSpec()
-    const endpoints = compileEndpoints(this.jsonSpec)
-    this.model = compileSpecification(endpoints, this.specsFolder, this.outputFolder)
+    this.model = compileSpecification(this.specsFolder, this.outputFolder)
     return this
   }
 
