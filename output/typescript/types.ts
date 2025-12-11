@@ -13792,6 +13792,9 @@ export interface IndicesResolveIndexRequest extends RequestBase {
   ignore_unavailable?: boolean
   allow_no_indices?: boolean
   mode?: IndicesIndexMode | IndicesIndexMode[]
+  body?: {
+    project_routing?: ProjectRouting
+  }
 }
 
 export interface IndicesResolveIndexResolveIndexAliasItem {

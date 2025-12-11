@@ -39,7 +39,9 @@
     },
     "indices.resolve_index": {
       "request": [
-        "Request: missing json spec query parameter 'project_routing'"
+        "/_resolve/index/{name}: different http methods in the json spec",
+        "Request: missing json spec query parameter 'project_routing'",
+        "Request: should not have a body"
       ],
       "response": []
     },
