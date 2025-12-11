@@ -14589,6 +14589,16 @@ export interface InferenceGoogleVertexAITaskSettings {
 
 export type InferenceGoogleVertexAITaskType = 'rerank' | 'text_embedding' | 'completion' | 'chat_completion'
 
+export interface InferenceGroqServiceSettings {
+  model_id: string
+  api_key?: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceGroqServiceType = 'groq'
+
+export type InferenceGroqTaskType = 'chat_completion'
+
 export interface InferenceHuggingFaceServiceSettings {
   api_key: string
   rate_limit?: InferenceRateLimitSetting
@@ -14699,6 +14709,11 @@ export interface InferenceInferenceEndpointInfoGoogleAIStudio extends InferenceI
 export interface InferenceInferenceEndpointInfoGoogleVertexAI extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeGoogleVertexAI
+}
+
+export interface InferenceInferenceEndpointInfoGroq extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeGroq
 }
 
 export interface InferenceInferenceEndpointInfoHuggingFace extends InferenceInferenceEndpoint {
@@ -14913,6 +14928,8 @@ export type InferenceTaskTypeElasticsearch = 'sparse_embedding' | 'text_embeddin
 export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
 export type InferenceTaskTypeGoogleVertexAI = 'chat_completion' | 'completion' | 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeGroq = 'chat_completion'
 
 export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
@@ -15250,6 +15267,18 @@ export interface InferencePutGooglevertexaiRequest extends RequestBase {
 }
 
 export type InferencePutGooglevertexaiResponse = InferenceInferenceEndpointInfoGoogleVertexAI
+
+export interface InferencePutGroqRequest extends RequestBase {
+  task_type: InferenceGroqTaskType
+  groq_inference_id: Id
+  timeout?: Duration
+  body?: {
+    service: InferenceGroqServiceType
+    service_settings: InferenceGroqServiceSettings
+  }
+}
+
+export type InferencePutGroqResponse = InferenceInferenceEndpointInfoGroq
 
 export interface InferencePutHuggingFaceRequest extends RequestBase {
   task_type: InferenceHuggingFaceTaskType
