@@ -106,18 +106,6 @@ export interface Request extends RequestBase {
      */
     preference?: string
     /**
-     * Specifies a subset of projects to target for the PIT request using project
-     * metadata tags in a subset of Lucene query syntax.
-     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
-     * Examples:
-     *  _alias:my-project
-     *  _alias:_origin
-     *  _alias:*pr*
-     * Supported in serverless only.
-     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
-     */
-    project_routing?: ProjectRouting
-    /**
      * A custom value that is used to route operations to a specific shard.
      */
     routing?: Routing

@@ -41,7 +41,7 @@ export interface Request extends RequestBase {
   urls: [
     {
       path: '/_resolve/index/{name}'
-      methods: ['GET']
+      methods: ['GET', 'POST']
     }
   ]
   path_parts: {
@@ -78,6 +78,8 @@ export interface Request extends RequestBase {
      * @availability serverless stability=stable visibility=public
      */
     mode?: IndexMode | IndexMode[]
+  }
+  body?: {
     /**
      * Specifies a subset of projects to target using project
      * metadata tags in a subset of Lucene query syntax.
