@@ -8,20 +8,14 @@
     "visibility": "feature_flag",
     "feature_flag": "esql_views",
     "headers": {
-      "accept": [
-        "application/json"
-      ],
-      "content_type": [
-        "application/json"
-      ]
+      "accept": ["application/json"],
+      "content_type": ["application/json"]
     },
     "url": {
       "paths": [
         {
           "path": "/_query/view/{name}",
-          "methods": [
-            "PUT"
-          ],
+          "methods": ["PUT"],
           "parts": {
             "name": {
               "type": "string",
