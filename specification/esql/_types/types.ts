@@ -20,3 +20,15 @@
 import { FieldValue } from '@_types/common'
 
 export type ESQLParam = FieldValue | FieldValue[]
+
+/**
+ *
+ * A non-materialized ES|QL view.
+ *
+ */
+export class ESQLView {
+  /** The name of the ES|QL view */
+  name: string
+  /** The ES|QL query */
+  query: string
+}
