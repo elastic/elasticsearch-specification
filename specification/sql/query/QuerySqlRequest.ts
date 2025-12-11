@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { MediaType, ProjectRouting } from '@_types/common'
+import { MediaType } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -52,18 +52,6 @@ export interface Request extends RequestBase {
      * @ext_doc_id sql-rest-format
      */
     format?: SqlFormat
-    /**
-     * Specifies a subset of projects to target for the search using project
-     * metadata tags in a subset of Lucene query syntax.
-     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
-     * Examples:
-     *  _alias:my-project
-     *  _alias:_origin
-     *  _alias:*pr*
-     * Supported in serverless only.
-     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
-     */
-    project_routing?: ProjectRouting
   }
   body: {
     /**

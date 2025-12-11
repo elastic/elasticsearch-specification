@@ -165,7 +165,6 @@ export interface CountRequest extends RequestBase {
   lenient?: boolean
   min_score?: double
   preference?: string
-  project_routing?: ProjectRouting
   routing?: Routing
   terminate_after?: long
   q?: string
@@ -383,7 +382,6 @@ export interface FieldCapsRequest extends RequestBase {
   filters?: string | string[]
   types?: string[]
   include_empty_fields?: boolean
-  project_routing?: ProjectRouting
   body?: {
     fields?: Fields
     index_filter?: QueryDslQueryContainer
@@ -908,7 +906,6 @@ export interface OpenPointInTimeRequest extends RequestBase {
   keep_alive: Duration
   ignore_unavailable?: boolean
   preference?: string
-  project_routing?: ProjectRouting
   routing?: Routing
   expand_wildcards?: ExpandWildcards
   allow_partial_search_results?: boolean
@@ -1210,7 +1207,6 @@ export interface SearchRequest extends RequestBase {
   max_concurrent_shard_requests?: integer
   preference?: string
   pre_filter_shard_size?: long
-  project_routing?: ProjectRouting
   request_cache?: boolean
   routing?: Routing
   scroll?: Duration
@@ -7323,7 +7319,6 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   lenient?: boolean
   max_concurrent_shard_requests?: integer
   preference?: string
-  project_routing?: ProjectRouting
   request_cache?: boolean
   routing?: Routing
   search_type?: SearchType
@@ -11360,7 +11355,6 @@ export interface EqlSearchRequest extends RequestBase {
   ignore_unavailable?: boolean
   keep_alive?: Duration
   keep_on_completion?: boolean
-  project_routing?: ProjectRouting
   wait_for_completion_timeout?: Duration
   body?: {
     query: string
@@ -13798,7 +13792,6 @@ export interface IndicesResolveIndexRequest extends RequestBase {
   ignore_unavailable?: boolean
   allow_no_indices?: boolean
   mode?: IndicesIndexMode | IndicesIndexMode[]
-  project_routing?: ProjectRouting
 }
 
 export interface IndicesResolveIndexResolveIndexAliasItem {
@@ -22655,7 +22648,6 @@ export interface SqlGetAsyncStatusResponse {
 
 export interface SqlQueryRequest extends RequestBase {
   format?: SqlQuerySqlFormat
-  project_routing?: ProjectRouting
   body?: {
     allow_partial_search_results?: boolean
     catalog?: string

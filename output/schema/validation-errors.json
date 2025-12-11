@@ -7,9 +7,57 @@
       ],
       "response": []
     },
+    "async_search.submit": {
+      "request": [
+        "Request: missing json spec query parameter 'project_routing'"
+      ],
+      "response": []
+    },
     "capabilities": {
       "request": [
         "Request: query parameter 'timeout' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "count": {
+      "request": [
+        "Request: missing json spec query parameter 'project_routing'"
+      ],
+      "response": []
+    },
+    "eql.search": {
+      "request": [
+        "Request: missing json spec query parameter 'project_routing'"
+      ],
+      "response": []
+    },
+    "field_caps": {
+      "request": [
+        "Request: missing json spec query parameter 'project_routing'"
+      ],
+      "response": []
+    },
+    "indices.resolve_index": {
+      "request": [
+        "Request: missing json spec query parameter 'project_routing'"
+      ],
+      "response": []
+    },
+    "open_point_in_time": {
+      "request": [
+        "Request: missing json spec query parameter 'project_routing'"
+      ],
+      "response": []
+    },
+    "search": {
+      "request": [
+        "Request: missing json spec query parameter 'project_routing'"
+      ],
+      "response": []
+    },
+    "sql.query": {
+      "request": [
+        "Request: missing json spec query parameter 'project_routing'"
       ],
       "response": []
     }
