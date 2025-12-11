@@ -12,6 +12,13 @@
         "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
+    },
+    "esql.get_view": {
+      "request": [
+        "Request: different number of urls in the json spec",
+        "Request: path parameter 'name' is optional in the json spec"
+      ],
+      "response": []
     }
   },
   "generalErrors": [
