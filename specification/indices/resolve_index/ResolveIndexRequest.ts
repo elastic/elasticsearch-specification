@@ -81,7 +81,7 @@ export interface Request extends RequestBase {
   }
   body?: {
     /**
-     * Specifies a subset of projects to target for the search using project
+     * Specifies a subset of projects to target using project
      * metadata tags in a subset of Lucene query syntax.
      * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
      * Examples:
