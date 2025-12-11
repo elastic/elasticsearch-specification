@@ -1556,6 +1556,40 @@ export enum GoogleVertexAIServiceType {
   googlevertexai
 }
 
+export class GroqServiceSettings {
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the Groq model documentation for the list of supported models and versions.
+   * Service has been tested and confirmed to be working for `completion` and `chat_completion` tasks with the following models:
+   * * `llama-3.3-70b-versatile`
+   * @ext_doc_id groq-api-models
+   */
+  model_id: string
+  /**
+   * A valid API key for accessing Groq API.
+   *
+   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
+   * The get inference endpoint API does not retrieve your API key.
+   * After creating the inference model, you cannot change the associated API key.
+   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
+   */
+  api_key?: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from the Groq API.
+   * By default, the `groq` service sets the number of requests allowed per minute to 1000. Refer to Groq documentation for more details.
+   * @ext_doc_id groq-rate-limit
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export enum GroqTaskType {
+  chat_completion
+}
+
+export enum GroqServiceType {
+  groq
+}
+
 export class HuggingFaceServiceSettings {
   /**
    * A valid access token for your HuggingFace account.
