@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Reset an anomaly detection job.
@@ -47,6 +47,7 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Should this request wait until the operation has completed before

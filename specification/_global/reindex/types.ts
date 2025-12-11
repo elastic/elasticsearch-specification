@@ -78,6 +78,9 @@ export class Source {
   query?: QueryContainer
   /**
    * A remote instance of Elasticsearch that you want to index from.
+   *
+   * @availability stack since=5.0.0 stability=stable
+   * @availability serverless stability=experimental visibility=public
    */
   remote?: RemoteSource
   /**

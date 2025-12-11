@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeIds } from '@_types/common'
+import { MediaType, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -51,6 +51,10 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /**
+     * A comma-separated list of node IDs or names to limit the returned information.
+     * Use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes.
+     */
     node_id?: NodeIds
     /**
      * Limits the information returned to the specific metrics.
@@ -58,6 +62,7 @@ export interface Request extends RequestBase {
      */
     metric?: NodesUsageMetrics
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a response.

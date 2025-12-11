@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Creates a secret for a Connector.
@@ -32,6 +33,7 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  response_media_type: MediaType.Json
   body: {
     value?: string
   }

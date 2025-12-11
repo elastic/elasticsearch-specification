@@ -117,6 +117,10 @@ export enum TaskTypeGoogleVertexAI {
   rerank
 }
 
+export enum TaskTypeGroq {
+  chat_completion
+}
+
 export enum TaskTypeHuggingFace {
   chat_completion,
   completion,

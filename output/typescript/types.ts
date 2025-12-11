@@ -9708,7 +9708,7 @@ export interface ClusterComponentTemplateSummary {
   mappings?: MappingTypeMapping
   aliases?: Record<string, IndicesAliasDefinition>
   lifecycle?: IndicesDataStreamLifecycleWithRollover
-  data_stream_options?: IndicesDataStreamOptionsTemplate | null
+  data_stream_options?: IndicesDataStreamOptions
 }
 
 export interface ClusterAllocationExplainAllocationDecision {
@@ -9995,7 +9995,7 @@ export interface ClusterPutComponentTemplateRequest extends RequestBase {
   cause?: string
   master_timeout?: Duration
   body?: {
-    template: IndicesIndexState
+    template: IndicesPutIndexTemplateIndexTemplateMapping
     version?: VersionNumber
     _meta?: Metadata
     deprecated?: boolean
@@ -12124,6 +12124,7 @@ export interface IndicesDataStreamIndex {
 export interface IndicesDataStreamLifecycle {
   data_retention?: Duration
   downsampling?: IndicesDownsamplingRound[]
+  downsampling_method?: IndicesSamplingMethod
   enabled?: boolean
 }
 
@@ -12369,7 +12370,7 @@ export interface IndicesIndexTemplateSummary {
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
   lifecycle?: IndicesDataStreamLifecycleWithRollover
-  data_stream_options?: IndicesDataStreamOptionsTemplate | null
+  data_stream_options?: IndicesDataStreamOptions
 }
 
 export interface IndicesIndexVersioning {
@@ -13438,6 +13439,7 @@ export interface IndicesPutDataLifecycleRequest extends RequestBase {
   body?: {
     data_retention?: Duration
     downsampling?: IndicesDownsamplingRound[]
+    downsampling_method?: IndicesSamplingMethod
     enabled?: boolean
   }
 }
@@ -13513,6 +13515,7 @@ export interface IndicesPutIndexTemplateIndexTemplateMapping {
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
   lifecycle?: IndicesDataStreamLifecycle
+  data_stream_options?: IndicesDataStreamOptionsTemplate | null
 }
 
 export interface IndicesPutIndexTemplateRequest extends RequestBase {
@@ -14586,6 +14589,16 @@ export interface InferenceGoogleVertexAITaskSettings {
 
 export type InferenceGoogleVertexAITaskType = 'rerank' | 'text_embedding' | 'completion' | 'chat_completion'
 
+export interface InferenceGroqServiceSettings {
+  model_id: string
+  api_key?: string
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceGroqServiceType = 'groq'
+
+export type InferenceGroqTaskType = 'chat_completion'
+
 export interface InferenceHuggingFaceServiceSettings {
   api_key: string
   rate_limit?: InferenceRateLimitSetting
@@ -14696,6 +14709,11 @@ export interface InferenceInferenceEndpointInfoGoogleAIStudio extends InferenceI
 export interface InferenceInferenceEndpointInfoGoogleVertexAI extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeGoogleVertexAI
+}
+
+export interface InferenceInferenceEndpointInfoGroq extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeGroq
 }
 
 export interface InferenceInferenceEndpointInfoHuggingFace extends InferenceInferenceEndpoint {
@@ -14937,6 +14955,8 @@ export type InferenceTaskTypeElasticsearch = 'sparse_embedding' | 'text_embeddin
 export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
 export type InferenceTaskTypeGoogleVertexAI = 'chat_completion' | 'completion' | 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeGroq = 'chat_completion'
 
 export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
@@ -15276,6 +15296,18 @@ export interface InferencePutGooglevertexaiRequest extends RequestBase {
 }
 
 export type InferencePutGooglevertexaiResponse = InferenceInferenceEndpointInfoGoogleVertexAI
+
+export interface InferencePutGroqRequest extends RequestBase {
+  task_type: InferenceGroqTaskType
+  groq_inference_id: Id
+  timeout?: Duration
+  body?: {
+    service: InferenceGroqServiceType
+    service_settings: InferenceGroqServiceSettings
+  }
+}
+
+export type InferencePutGroqResponse = InferenceInferenceEndpointInfoGroq
 
 export interface InferencePutHuggingFaceRequest extends RequestBase {
   task_type: InferenceHuggingFaceTaskType
@@ -19363,6 +19395,10 @@ export interface NodesNodeBufferPool {
 export interface NodesNodeReloadResult {
   name: Name
   reload_exception?: ErrorCause
+  secure_setting_names?: string[]
+  keystore_path?: string
+  keystore_digest?: string
+  keystore_last_modified_time?: DateTime
 }
 
 export interface NodesNodesResponseBase {
@@ -21709,6 +21745,7 @@ export interface SecuritySamlAuthenticateResponse {
   expires_in: integer
   refresh_token: string
   realm: string
+  in_response_to?: string
 }
 
 export interface SecuritySamlCompleteLogoutRequest extends RequestBase {
@@ -23148,19 +23185,19 @@ export type TransformDeleteTransformResponse = AcknowledgedResponseBase
 export interface TransformGetNodeStatsRequest extends RequestBase {
 }
 
-export type TransformGetNodeStatsResponse = TransformGetNodeStatsTransformNodeStats
+export type TransformGetNodeStatsResponse = TransformGetNodeStatsTransformNodeFullStats
 
-export interface TransformGetNodeStatsScheduler {
-  scheduler: TransformGetNodeStatsTransformNodeStatsDetails
+export interface TransformGetNodeStatsTransformNodeFullStatsKeys {
+  total: TransformGetNodeStatsTransformNodeStats
+}
+export type TransformGetNodeStatsTransformNodeFullStats = TransformGetNodeStatsTransformNodeFullStatsKeys
+  & { [property: string]: TransformGetNodeStatsTransformNodeStats }
+
+export interface TransformGetNodeStatsTransformNodeStats {
+  scheduler: TransformGetNodeStatsTransformSchedulerStats
 }
 
-export interface TransformGetNodeStatsTransformNodeStatsKeys {
-  total: TransformGetNodeStatsScheduler
-}
-export type TransformGetNodeStatsTransformNodeStats = TransformGetNodeStatsTransformNodeStatsKeys
-  & { [property: string]: TransformGetNodeStatsScheduler }
-
-export interface TransformGetNodeStatsTransformNodeStatsDetails {
+export interface TransformGetNodeStatsTransformSchedulerStats {
   registered_transform_count: integer
   peek_transform?: string
 }

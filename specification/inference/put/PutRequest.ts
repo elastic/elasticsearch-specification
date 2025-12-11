@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { InferenceEndpoint } from '@inference/_types/Services'
 import { TaskType } from '@inference/_types/TaskType'
@@ -36,7 +36,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * * Amazon Bedrock (`completion`, `text_embedding`)
  * * Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)
  * * Anthropic (`completion`)
- * * Azure AI Studio (`completion`, 'rerank', `text_embedding`)
+ * * Azure AI Studio (`completion`, `rerank`, `text_embedding`)
  * * Azure OpenAI (`completion`, `text_embedding`)
  * * Cohere (`completion`, `rerank`, `text_embedding`)
  * * DeepSeek (`chat_completion`, `completion`)
@@ -44,6 +44,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * * ELSER (`sparse_embedding`)
  * * Google AI Studio (`completion`, `text_embedding`)
  * * Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)
+ * * Groq (`chat_completion`)
  * * Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)
  * * JinaAI (`rerank`, `text_embedding`)
  * * Llama (`chat_completion`, `completion`, `text_embedding`)
@@ -80,6 +81,8 @@ export interface Request extends RequestBase {
      */
     inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies the amount of time to wait for the inference endpoint to be created.

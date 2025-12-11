@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -27,6 +28,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  *
  * @rest_spec_name _internal.update_desired_nodes
  * @availability stack stability=experimental visibility=private
+ * @codegen_exclude
  */
 export interface Request extends RequestBase {
   urls: [
@@ -45,6 +47,8 @@ export interface Request extends RequestBase {
      */
     version: long
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Simulate the update

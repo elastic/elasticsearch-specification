@@ -19,12 +19,14 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * This API is a diagnostics API and the output should not be relied upon for building applications.
  *
  * @rest_spec_name _internal.delete_desired_balance
  * @availability stack stability=experimental visibility=private
+ * @codegen_exclude
  */
 export interface Request extends RequestBase {
   urls: [
@@ -33,6 +35,7 @@ export interface Request extends RequestBase {
       methods: ['DELETE']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

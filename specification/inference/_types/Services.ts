@@ -36,6 +36,7 @@ import {
   TaskTypeELSER,
   TaskTypeGoogleAIStudio,
   TaskTypeGoogleVertexAI,
+  TaskTypeGroq,
   TaskTypeHuggingFace,
   TaskTypeJinaAi,
   TaskTypeLlama,
@@ -247,6 +248,17 @@ export class InferenceEndpointInfoGoogleVertexAI extends InferenceEndpoint {
    * The task type
    */
   task_type: TaskTypeGoogleVertexAI
+}
+
+export class InferenceEndpointInfoGroq extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeGroq
 }
 
 export class InferenceEndpointInfoHuggingFace extends InferenceEndpoint {

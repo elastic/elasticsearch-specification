@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { DataStreamNames, ExpandWildcards } from '@_types/common'
+import { DataStreamNames, ExpandWildcards, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -46,6 +46,7 @@ export interface Request extends RequestBase {
      */
     name: DataStreamNames
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Type of data stream that wildcard patterns can match.

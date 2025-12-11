@@ -22,6 +22,7 @@ import {
   Fields,
   Id,
   IndexName,
+  MediaType,
   Routing,
   VersionNumber,
   VersionType
@@ -65,7 +66,12 @@ export interface Request extends RequestBase {
      */
     index?: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * A comma-separated list of documents ids. You must define ids as parameter or set "ids" or "docs" in the request body
+     */
     ids?: Id[]
     /**
      * A comma-separated list or wildcard expressions of fields to include in the statistics.

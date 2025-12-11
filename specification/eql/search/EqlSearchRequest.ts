@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Field, Indices, ProjectRouting } from '@_types/common'
+import {
+  ExpandWildcards,
+  Field,
+  Indices,
+  MediaType,
+  ProjectRouting
+} from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer, uint } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
@@ -44,10 +50,15 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** Comma-separated list of index names to scope the operation */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
+     * Whether to ignore if a wildcard indices expression resolves into no concrete indices.
+     * (This includes `_all` string or when no indices have been specified)
      * @server_default true
      */
     allow_no_indices?: boolean
@@ -63,6 +74,7 @@ export interface Request extends RequestBase {
      */
     allow_partial_sequence_results?: boolean
     /**
+     * Whether to expand wildcard expression to concrete indices that are open, closed or both.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards

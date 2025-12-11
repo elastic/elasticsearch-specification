@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Invalidate SAML.
@@ -44,6 +45,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /** The Assertion Consumer Service URL that matches the one of the SAML realm in Elasticsearch that should be used. You must specify either this parameter or the `realm` parameter. */
     acs?: string

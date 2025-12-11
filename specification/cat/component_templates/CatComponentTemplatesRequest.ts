@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { CatComponentColumns, CatRequestBase } from '@cat/_types/CatBase'
 
@@ -54,6 +54,7 @@ export interface Request extends CatRequestBase {
      */
     name?: string
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of columns names to display. It supports simple wildcards.

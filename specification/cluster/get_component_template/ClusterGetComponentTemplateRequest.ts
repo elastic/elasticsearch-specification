@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -50,6 +50,7 @@ export interface Request extends RequestBase {
      */
     name?: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, returns settings in flat format.
@@ -61,6 +62,7 @@ export interface Request extends RequestBase {
      */
     settings_filter?: string | string[]
     /**
+     * Return all default configurations for the component template
      * @server_default false
      * @availability stack since=8.11.0 stability=stable
      * @availability serverless stability=stable
