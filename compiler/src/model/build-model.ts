@@ -241,7 +241,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         assert(
           pathMember as Node,
           urlTemplateParams.includes(part.name),
-          `The property '${part.name}' does not exist in the rest-api-spec ${namespace} url template`
+          `The property '${part.name}' does not exist in the url template`
         )
         if (type.query.map(p => p.name).includes(part.name)) {
           const queryType = type.query.find(property => property != null && property.name === part.name) as model.Property
@@ -589,7 +589,7 @@ function visitRequestOrResponseProperty (member: PropertyDeclaration | PropertyS
  * ```
  * urls: [
  *   {
- *     /** @deprecated 1.2.3 Use something else
+ *     /** \@deprecated 1.2.3 Use something else
  *     path: '/some/path',
  *     methods: ["GET", "POST"]
  *   }
