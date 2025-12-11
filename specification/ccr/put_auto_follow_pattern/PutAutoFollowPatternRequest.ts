@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ByteSize, IndexPattern, IndexPatterns, Name } from '@_types/common'
+import {
+  ByteSize,
+  IndexPattern,
+  IndexPatterns,
+  MediaType,
+  Name
+} from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -26,6 +32,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Create or update auto-follow patterns.
+ *
  * Create a collection of cross-cluster replication auto-follow patterns for a remote cluster.
  * Newly created indices on the remote cluster that match any of the patterns are automatically configured as follower indices.
  * Indices on the remote cluster that were created before the auto-follow pattern was created will not be auto-followed even if they match the pattern.
@@ -50,6 +57,8 @@ export interface Request extends RequestBase {
      */
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

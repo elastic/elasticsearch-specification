@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Names } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get aliases.
+ *
  * Retrieves information for one or more data stream or index aliases.
  * @rest_spec_name indices.get_alias
  * @availability stack stability=stable
@@ -63,6 +64,7 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.

@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Uuid } from '@_types/common'
+import { MediaType, Uuid } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete a dangling index.
+ *
  * If Elasticsearch encounters index data that is absent from the current cluster state, those indices are considered to be dangling.
  * For example, this can happen if you delete more than `cluster.indices.tombstones.size` indices while an Elasticsearch node is offline.
  * @rest_spec_name dangling_indices.delete_dangling_index
@@ -44,15 +45,22 @@ export interface Request extends RequestBase {
      */
     index_uuid: Uuid
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * This parameter must be set to true to acknowledge that it will no longer be possible to recove data from the dangling index.
+     * @server_default false
      */
-    accept_data_loss: boolean
+    accept_data_loss?: boolean
     /**
+     * The period to wait for a connection to the master node.
      * @server_default 30s
      */
     master_timeout?: Duration
+    /**
+     * The period to wait for a response.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }

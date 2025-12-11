@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Names } from '@_types/common'
+import { MediaType, Name, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get the snapshot status.
+ *
  * Get a detailed description of the current state for each shard participating in the snapshot.
  *
  * Note that this API should be used only to obtain detailed shard-level information for ongoing snapshots.
@@ -78,6 +79,7 @@ export interface Request extends RequestBase {
      */
     snapshot?: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error for any snapshots that are unavailable.

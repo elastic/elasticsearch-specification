@@ -17,10 +17,11 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Get a query rule.
+ *
  * Get details about a query rule within a query ruleset.
  * @rest_spec_name query_rules.get_rule
  * @availability stack since=8.15.0 stability=stable
@@ -47,4 +48,5 @@ export interface Request extends RequestBase {
      */
     rule_id: Id
   }
+  response_media_type: MediaType.Json
 }

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { TaskSettings } from '@inference/_types/Services'
 import { TaskType } from '@inference/_types/TaskType'
@@ -61,6 +61,8 @@ export interface Request extends RequestBase {
      */
     inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The amount of time to wait for the inference request to complete.
@@ -81,7 +83,7 @@ export interface Request extends RequestBase {
      * > info
      * > Inference endpoints for the `completion` task type currently only support a single string as input.
      */
-    input: string | Array<string>
+    input: string | string[]
     /**
      * Specifies the input data type for the text embedding model. The `input_type` parameter only applies to Inference Endpoints with the `text_embedding` task type. Possible values include:
      * * `SEARCH`

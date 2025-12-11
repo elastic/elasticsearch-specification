@@ -17,11 +17,12 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { QueryRule } from '../_types/QueryRuleset'
 
 /**
  * Create or update a query ruleset.
+ *
  * There is a limit of 100 rules per ruleset.
  * This limit can be increased by using the `xpack.applications.rules.max_rules_per_ruleset` cluster setting.
  *
@@ -49,6 +50,8 @@ export interface Request extends RequestBase {
      */
     ruleset_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /**
    * The query rules in this ruleset
    */

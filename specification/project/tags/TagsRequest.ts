@@ -18,8 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
+ * Get tags.
+ *
+ * Get the tags that are defined for the project.
  * @doc_id project-tags
  * @rest_spec_name project.tags
  * @availability serverless stability=experimental visibility=public
@@ -32,4 +36,5 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
 }

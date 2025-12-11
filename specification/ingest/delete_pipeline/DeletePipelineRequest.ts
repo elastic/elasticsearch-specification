@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete pipelines.
+ *
  * Delete one or more ingest pipelines.
  * @rest_spec_name ingest.delete_pipeline
  * @availability stack since=5.0.0 stability=stable
@@ -44,6 +45,7 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

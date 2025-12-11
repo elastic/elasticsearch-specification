@@ -23,11 +23,13 @@ import {
   Fields,
   Indices,
   Level,
+  MediaType,
   Metrics
 } from '@_types/common'
 
 /**
  * Get index statistics.
+ *
  * For data streams, the API retrieves statistics for the stream's backing indices.
  *
  * By default, the returned statistics are index-level with `primaries` and `total` aggregations.
@@ -64,9 +66,12 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** Limit the information returned the specific metrics */
     metric?: Metrics
+    /** A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Comma-separated list or wildcard expressions of fields to include in fielddata and suggest statistics.

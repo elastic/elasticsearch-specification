@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete a policy.
+ *
  * Delete a snapshot lifecycle policy definition.
  * This operation prevents any future snapshots from being taken but does not cancel in-progress snapshots or remove previously-taken snapshots.
  * @rest_spec_name slm.delete_lifecycle
@@ -39,8 +40,10 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The id of the snapshot lifecycle policy to remove */
     policy_id: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Create a calendar.
+ *
  * @rest_spec_name ml.put_calendar
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -40,6 +41,8 @@ export interface Request extends RequestBase {
     /** A string that uniquely identifies a calendar. */
     calendar_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body?: {
     /**
      * An array of anomaly detection job identifiers.

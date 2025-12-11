@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeId } from '@_types/common'
+import { MediaType, NodeId } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Cancel node shutdown preparations.
+ *
  * Remove a node from the shutdown list so it can resume normal operations.
  * You must explicitly clear the shutdown request when a node rejoins the cluster or when a node has permanently left the cluster.
  * Shutdown requests are never removed automatically by Elasticsearch.
@@ -44,8 +45,11 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The node id of node to be removed from the shutdown state */
     node_id: NodeId
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.

@@ -18,12 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { TaskSettings } from '@inference/_types/Services'
 
 /**
- * Perform reranking inference on the service
+ * Perform reranking inference on the service.
+ *
  * @rest_spec_name inference.rerank
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
@@ -43,6 +44,8 @@ export interface Request extends RequestBase {
      */
     inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The amount of time to wait for the inference request to complete.
@@ -62,6 +65,7 @@ export interface Request extends RequestBase {
      * > info
      * > Inference endpoints for the `completion` task type currently only support a single string as input.
      */
+    // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: nothing, is fixed in main
     input: string | Array<string>
     /**
      * Task settings for the individual inference request.

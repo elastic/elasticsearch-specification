@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 import { RankEvalMetric, RankEvalRequestItem } from './types'
 
 /**
@@ -51,6 +51,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
@@ -58,6 +60,7 @@ export interface Request extends RequestBase {
      */
     allow_no_indices?: boolean
     /**
+     * Whether to expand wildcard expression to concrete indices that are open, closed or both.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -66,6 +69,9 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     ignore_unavailable?: boolean
+    /**
+     * Search operation type
+     */
     search_type?: string
   }
   body: {

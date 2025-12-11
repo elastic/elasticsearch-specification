@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
+import { Indices, MediaType } from '@_types/common'
 import { StatsLevel } from '../_types/stats'
 
 /**
  * Get searchable snapshot statistics.
+ *
  * @rest_spec_name searchable_snapshots.stats
  * @availability stack since=7.10.0 stability=stable
  * @cluster_privileges manage
@@ -46,8 +47,10 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
+     * Return stats aggregated at cluster, index or shard level
      * @server_default indices
      */
     level?: StatsLevel

@@ -19,9 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Reset the features.
+ *
  * Clear all of the state information stored in system indices by Elasticsearch features, including the security and machine learning indices.
  *
  * WARNING: Intended for development and testing use only. Do not reset features on a production cluster.
@@ -50,6 +52,7 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

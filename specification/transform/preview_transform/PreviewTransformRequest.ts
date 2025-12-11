@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import {
   Destination,
@@ -32,6 +32,7 @@ import {
 
 /**
  * Preview a transform.
+ *
  * Generates a preview of the results that you will get when you create a transform with the same configuration.
  *
  * It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also
@@ -62,6 +63,8 @@ export interface Request extends RequestBase {
      */
     transform_id?: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a response. If no response is received before the

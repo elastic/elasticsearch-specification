@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ProjectRouting } from '@_types/common'
+import { MediaType, ProjectRouting } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -27,6 +27,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Get SQL search results.
+ *
  * Run an SQL request.
  * @rest_spec_name sql.query
  * @availability stack since=6.3.0 stability=stable
@@ -41,6 +42,8 @@ export interface Request extends RequestBase {
       methods: ['POST', 'GET']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The format for the response.

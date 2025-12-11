@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete snapshots.
+ *
  * @rest_spec_name snapshot.delete
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
@@ -47,6 +48,7 @@ export interface Request extends RequestBase {
      */
     snapshot: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for the master node.

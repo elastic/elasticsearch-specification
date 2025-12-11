@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete indices.
+ *
  * Deleting an index deletes its documents, shards, and metadata.
  * It does not delete related Kibana components, such as data views, visualizations, or dashboards.
  *
@@ -51,6 +52,7 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.

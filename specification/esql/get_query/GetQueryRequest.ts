@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Get a specific running ES|QL query information.
+ *
  * Returns an object extended information about a running ES|QL query.
  *
  * @rest_spec_name esql.get_query
@@ -38,6 +39,9 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The query ID */
     id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
 }

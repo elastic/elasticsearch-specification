@@ -17,12 +17,13 @@
  * under the License.
  */
 
-import { Field, GrokPattern } from '@_types/common'
+import { Field, GrokPattern, MediaType } from '@_types/common'
 import { uint } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
  * Find the structure of a text file.
+ *
  * The text file must contain data that is suitable to be ingested into Elasticsearch.
  *
  * This API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.
@@ -53,6 +54,8 @@ export interface Request<TJsonDocument> {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Ndjson
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The text's character set.
@@ -97,7 +100,7 @@ export interface Request<TJsonDocument> {
      * In this default scenario, all rows must have the same number of fields for a delimited format to be detected.
      * If the format is set to `delimited` and the delimiter is not set, however, the API tolerates up to 5% of rows that have a different number of columns than the first row.
      */
-    format?: string
+    format?: FindStructureFormat
     /**
      * If you have set `format` to `semi_structured_text`, you can specify a Grok pattern that is used to extract fields from every message in the text.
      * The name of the timestamp field in the Grok pattern must match what is specified in the `timestamp_field` parameter.
@@ -205,4 +208,11 @@ export interface Request<TJsonDocument> {
    * The size is limited to the Elasticsearch HTTP receive buffer size, which defaults to 100 Mb.
    * @codegen_name text_files */
   body: Array<TJsonDocument>
+}
+
+export enum FindStructureFormat {
+  ndjson,
+  xml,
+  delimited,
+  semi_structured_text
 }

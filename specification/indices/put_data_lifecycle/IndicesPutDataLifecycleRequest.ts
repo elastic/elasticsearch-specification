@@ -18,12 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { DataStreamNames, ExpandWildcards } from '@_types/common'
+import { DataStreamNames, ExpandWildcards, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
 
 /**
  * Update data stream lifecycles.
+ *
  * Update the data stream lifecycle of the specified data streams.
  * @rest_spec_name indices.put_data_lifecycle
  * @availability stack since=8.11.0 stability=stable
@@ -47,6 +48,8 @@ export interface Request extends RequestBase {
      */
     name: DataStreamNames
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Type of data stream that wildcard patterns can match.

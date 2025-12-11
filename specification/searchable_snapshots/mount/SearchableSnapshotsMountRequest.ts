@@ -18,13 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName, Name } from '@_types/common'
+import { IndexName, MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Mount a snapshot.
+ *
  * Mount a snapshot as a searchable snapshot index.
  * Do not use this API for snapshots managed by index lifecycle management (ILM).
  * Manually mounting ILM-managed snapshots can interfere with ILM processes.
@@ -51,6 +52,8 @@ export interface Request extends RequestBase {
      */
     snapshot: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for the master node.

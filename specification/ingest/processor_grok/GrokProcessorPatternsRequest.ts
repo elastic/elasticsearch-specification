@@ -18,9 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Run a grok processor.
+ *
  * Extract structured fields out of a single text field within a document.
  * You must choose which field to extract matched fields from, as well as the grok pattern you expect will match.
  * A grok pattern is like a regular expression that supports aliased expressions that can be reused.
@@ -37,4 +39,5 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
 }

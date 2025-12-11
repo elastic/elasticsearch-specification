@@ -19,9 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Get the features.
+ *
  * Get a list of features that can be included in snapshots using the `feature_states` field when creating a snapshot.
  * You can use this API to determine which feature states to include when taking a snapshot.
  * By default, all feature states are included in a snapshot if that snapshot includes the global state, or none if it does not.
@@ -43,6 +45,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

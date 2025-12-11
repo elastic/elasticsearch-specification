@@ -18,11 +18,17 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Names, ProjectRouting } from '@_types/common'
+import {
+  ExpandWildcards,
+  MediaType,
+  Names,
+  ProjectRouting
+} from '@_types/common'
 import { IndexMode } from '@indices/_types/DataStream'
 
 /**
  * Resolve indices.
+ *
  * Resolve the names and/or index patterns for indices, aliases, and data streams.
  * Multiple patterns and remote clusters are supported.
  * @rest_spec_name indices.resolve_index
@@ -45,6 +51,7 @@ export interface Request extends RequestBase {
      */
     name: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Type of index that wildcard patterns can match.

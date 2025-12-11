@@ -17,11 +17,8 @@
  * under the License.
  */
 
-import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
+import { ProfilingOperationMode } from './types'
 
-export class DataStreamLifecycleDownsampling {
-  /**
-   * The list of downsampling rounds to execute as part of this downsampling configuration
-   */
-  rounds: DownsamplingRound[]
+export class Response {
+  body: { operation_mode: ProfilingOperationMode }
 }

@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 import { StepKey } from './types'
 
 /**
  * Move to a lifecycle step.
+ *
  * Manually move an index into a specific step in the lifecycle policy and run that step.
  *
  * WARNING: This operation can result in the loss of data. Manually moving an index into a specific step runs that step even if it has already been performed. This is a potentially destructive action and this should be considered an expert level API.
@@ -49,8 +50,11 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The name of the index whose lifecycle step is to change */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The step that the index is expected to be in.

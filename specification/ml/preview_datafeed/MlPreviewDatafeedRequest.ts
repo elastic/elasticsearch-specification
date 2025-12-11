@@ -18,13 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { DateTime } from '@_types/Time'
 import { DatafeedConfig } from '@ml/_types/Datafeed'
 import { JobConfig } from '@ml/_types/Job'
 
 /**
  * Preview a datafeed.
+ *
  * This API returns the first "page" of search results from a datafeed.
  * You can preview an existing datafeed or provide configuration details for a datafeed
  * and anomaly detection job in the API. The preview shows the structure of the data
@@ -61,8 +62,12 @@ export interface Request extends RequestBase {
      */
     datafeed_id?: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
+    /** The start time from where the datafeed preview should begin */
     start?: DateTime
+    /** The end time when the datafeed preview should stop */
     end?: DateTime
   }
   body?: {

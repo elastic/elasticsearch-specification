@@ -18,11 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { RequestChatCompletion } from '@inference/_types/CommonTypes'
 /**
- * Perform chat completion inference
+ * Perform chat completion inference.
  *
  * The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.
  * It only works with the `chat_completion` task type for `openai` and `elastic` inference services.
@@ -49,6 +49,8 @@ export interface Request extends RequestBase {
      */
     inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.EventStream
   query_parameters: {
     /**
      * Specifies the amount of time to wait for the inference request to complete.

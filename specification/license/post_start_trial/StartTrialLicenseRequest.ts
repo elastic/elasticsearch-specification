@@ -19,9 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Start a trial.
+ *
  * Start a 30-day trial, which gives access to all subscription features.
  *
  * NOTE: You are allowed to start a trial only if your cluster has not already activated a trial for the current major product version.
@@ -40,8 +42,17 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * Whether the user has acknowledged acknowledge messages
+     * @server_default false
+     */
     acknowledge?: boolean
+    /**
+     * The type of trial license to generate
+     * @server_default trial
+     */
     type?: string
     /**
      * Period to wait for a connection to the master node.

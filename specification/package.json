@@ -8,6 +8,7 @@
   "dependencies": {
     "@typescript-eslint/parser": "^8.32.1",
     "eslint": "^9.26.0",
-    "eslint-plugin-es-spec": "file:../validator"
+    "eslint-plugin-es-spec": "file:../validator",
+    "eslint-plugin-jsdoc": "^61.2.1"
   }
 }

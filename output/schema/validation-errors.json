@@ -1,5 +1,26 @@
 {
-  "endpointErrors": {},
+  "endpointErrors": {
+    "_internal.update_desired_nodes": {
+      "request": [
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "capabilities": {
+      "request": [
+        "Request: query parameter 'timeout' does not exist in the json spec"
+      ],
+      "response": []
+    },
+    "monitoring.bulk": {
+      "request": [
+        "Request: different number of urls in the json spec",
+        "Request: missing json spec path parameter 'type'"
+      ],
+      "response": []
+    }
+  },
   "generalErrors": [
     "Dangling type '_global.scripts_painless_execute:PainlessExecutionPosition'",
     "Dangling type '_global.scripts_painless_execute:PainlessScript'",
@@ -16,6 +37,7 @@
     "Dangling type '_types:IndexMetrics'",
     "Dangling type '_types:LogLevel'",
     "Dangling type '_types:LongId'",
+    "Dangling type '_types:MediaType'",
     "Dangling type '_types:Transform'",
     "Dangling type '_types:UnitFloatSeconds'",
     "Dangling type '_types:Uri'",

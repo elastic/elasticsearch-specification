@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
+import { Ids, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
  * Get trained models usage info.
+ *
  * You can get usage information for multiple trained
  * models in a single API request by using a comma-separated list of model IDs or a wildcard expression.
  * @rest_spec_name ml.get_trained_models_stats
@@ -50,6 +51,7 @@ export interface Request extends RequestBase {
      */
     model_id?: Ids
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:

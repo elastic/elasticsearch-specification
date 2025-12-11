@@ -17,28 +17,25 @@
  * under the License.
  */
 
-import assert from 'assert'
-import * as model from '../model/metamodel'
-import { JsonSpec } from '../model/json-spec'
+import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
- * Adds the `responseMediaType` (accept in the rest-api-spec)
- * and `responseMediaType` (content_type in the rest api spec)
- * fields to every endpoint from the rest-api-spec if present.
+ * Deletes a connector secret.
+ *
+ * @rest_spec_name connector.secret_delete
+ * @availability stack stability=experimental visibility=private
  */
-export default async function addContentType (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
-  for (const endpoint of model.endpoints) {
-    const spec = jsonSpec.get(endpoint.name)
-    assert(spec, `Can't find the json spec for ${endpoint.name}`)
-
-    if (Array.isArray(spec.headers.accept)) {
-      endpoint.responseMediaType = spec.headers.accept
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_connector/_secret/{id}'
+      methods: ['DELETE']
     }
-
-    if (Array.isArray(spec.headers.content_type)) {
-      endpoint.requestMediaType = spec.headers.content_type
-    }
+  ]
+  path_parts: {
+    /** The ID of the secret */
+    id: string
   }
-
-  return model
+  response_media_type: MediaType.Json
 }

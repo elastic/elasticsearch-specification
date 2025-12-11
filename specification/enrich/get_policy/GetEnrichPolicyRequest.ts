@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get an enrich policy.
+ *
  * Returns information about an enrich policy.
  * @rest_spec_name enrich.get_policy
  * @availability stack since=7.5.0 stability=stable
@@ -47,6 +48,7 @@ export interface Request extends RequestBase {
      */
     name?: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get machine learning memory usage info.
+ *
  * Get information about how machine learning jobs and trained models are using memory,
  * on each node, both within the JVM heap, and natively, outside of the JVM.
  * @rest_spec_name ml.get_memory_stats
@@ -49,6 +50,7 @@ export interface Request extends RequestBase {
      */
     node_id?: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout

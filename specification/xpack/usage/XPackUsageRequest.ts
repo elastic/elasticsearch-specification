@@ -19,9 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Get usage information.
+ *
  * Get information about the features that are currently enabled and available under the current license.
  * The API also provides some usage statistics.
  * @rest_spec_name xpack.usage
@@ -37,6 +39,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

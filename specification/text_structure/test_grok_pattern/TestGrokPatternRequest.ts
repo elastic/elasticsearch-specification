@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { GrokPattern } from '@_types/common'
+import { GrokPattern, MediaType } from '@_types/common'
 
 /**
  * Test a Grok pattern.
+ *
  * Test a Grok pattern on one or more lines of text.
  * The API indicates whether the lines match the pattern together with the offsets and lengths of the matched substrings.
  * @rest_spec_name text_structure.test_grok_pattern
@@ -37,6 +38,8 @@ export interface Request extends RequestBase {
       methods: ['GET', 'POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The mode of compatibility with ECS compliant Grok patterns.

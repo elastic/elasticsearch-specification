@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Names } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get index settings.
+ *
  * Get setting information for one or more indices.
  * For data streams, it returns setting information for the stream's backing indices.
  * @rest_spec_name indices.get_settings
@@ -62,6 +63,7 @@ export interface Request extends RequestBase {
      */
     name?: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index

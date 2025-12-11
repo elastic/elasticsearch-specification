@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get async EQL search results.
+ *
  * Get the current status and available results for an async EQL search or a stored synchronous EQL search.
  * @doc_id eql-async-search-api
  * @rest_spec_name eql.get
@@ -42,6 +43,7 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period for which the search and its results are stored on the cluster.

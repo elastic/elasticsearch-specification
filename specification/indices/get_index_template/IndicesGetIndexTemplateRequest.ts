@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get index templates.
+ *
  * Get information about one or more index templates.
  * @rest_spec_name indices.get_index_template
  * @availability stack since=7.9.0 stability=stable
@@ -45,6 +46,7 @@ export interface Request extends RequestBase {
     /** Name of index template to retrieve. Wildcard (*) expressions are supported. */
     name?: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.

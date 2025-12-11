@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { DateTime } from '@_types/Time'
 
 /**
  * Force buffered data to be processed.
+ *
  * The flush jobs API is only applicable when sending data for analysis using
  * the post data API. Depending on the content of the buffer, then it might
  * additionally calculate new results. Both flush and close operations are
@@ -52,6 +53,8 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies to advance to a particular time value. Results are generated

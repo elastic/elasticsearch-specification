@@ -17,10 +17,11 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Get a connector sync job.
+ *
  * @rest_spec_name connector.sync_job_get
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
@@ -39,4 +40,5 @@ export interface Request extends RequestBase {
      */
     connector_sync_job_id: Id
   }
+  response_media_type: MediaType.Json
 }

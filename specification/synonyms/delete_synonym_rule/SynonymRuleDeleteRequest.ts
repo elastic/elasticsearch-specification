@@ -17,10 +17,11 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Delete a synonym rule.
+ *
  * Delete a synonym rule from a synonym set.
  * @rest_spec_name synonyms.delete_synonym_rule
  * @availability stack since=8.10.0 stability=stable
@@ -45,6 +46,8 @@ export interface Request extends RequestBase {
      */
     rule_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, the request will refresh the analyzers with the deleted synonym rule and wait for the new synonyms to be available before returning.

@@ -17,10 +17,11 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Delete a query ruleset.
+ *
  * Remove a query ruleset and its associated data.
  * This is a destructive action that is not recoverable.
  * @rest_spec_name query_rules.delete_ruleset
@@ -43,4 +44,5 @@ export interface Request extends RequestBase {
      */
     ruleset_id: Id
   }
+  response_media_type: MediaType.Json
 }

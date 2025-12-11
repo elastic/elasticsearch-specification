@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Fields, Indices } from '@_types/common'
+import { ExpandWildcards, Fields, Indices, MediaType } from '@_types/common'
 
 /**
  * Get mapping definitions.
+ *
  * Retrieves mapping definitions for one or more fields.
  * For data streams, the API retrieves field mappings for the stream’s backing indices.
  *
@@ -55,6 +56,7 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.

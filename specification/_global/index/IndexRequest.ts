@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   Id,
   IndexName,
+  MediaType,
   OpType,
   Refresh,
   Routing,
@@ -146,12 +147,14 @@ import { Duration } from '@_types/Time'
  *     "id": "elkbee"
  *   }
  * }
+ * ```
  *
  * In this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1.
  * If the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code).
  *
  * A nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used.
  * Even the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order.
+ *
  * @rest_spec_name index
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
@@ -185,6 +188,8 @@ export interface Request<TDocument> extends RequestBase {
      */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Only perform the operation if the document has this primary term.

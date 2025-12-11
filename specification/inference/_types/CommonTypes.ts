@@ -703,7 +703,7 @@ export class AzureAiStudioServiceSettings {
    * Note that some providers may support only certain task types.
    * Supported providers include:
    *
-   * * `cohere` - available for `text_embedding` and `completion` task types
+   * * `cohere` - available for `text_embedding`, `rerank` and `completion` task types
    * * `databricks` - available for `completion` task type only
    * * `meta` - available for `completion` task type only
    * * `microsoft_phi` - available for `completion` task type only

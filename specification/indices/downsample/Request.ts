@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 import { DownsampleConfig } from '@indices/_types/Downsample'
 
 /**
  * Downsample an index.
+ *
  * Aggregate a time series (TSDS) index and store pre-computed statistical summaries (`min`, `max`, `sum`, `value_count` and `avg`) for each metric field grouped by a configured time interval.
  * For example, a TSDS index that contains metrics sampled every 10 seconds can be downsampled to an hourly index.
  * All documents within an hour interval are summarized and stored as a single document in the downsample index.
@@ -53,6 +54,8 @@ export interface Request extends RequestBase {
      */
     target_index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /** @codegen_name config */
   body: DownsampleConfig
 }

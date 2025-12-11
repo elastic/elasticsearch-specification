@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
+import { Indices, MediaType } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Duration } from '@_types/Time'
 
@@ -48,6 +48,7 @@ export interface Request extends RequestBase {
      */
     name: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, the request does not actually change the mappings on any data streams. Instead, it
@@ -70,7 +71,8 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  /** Mappings to be applied to the data stream.
+  /**
+   * Mappings to be applied to the data stream.
    * @codegen_name mappings */
   body: TypeMapping
 }

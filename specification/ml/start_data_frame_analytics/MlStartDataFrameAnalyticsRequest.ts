@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Start a data frame analytics job.
+ *
  * A data frame analytics job can be started and stopped multiple times
  * throughout its lifecycle.
  * If the destination index does not exist, it is created automatically the
@@ -57,7 +58,21 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * Controls the amount of time to wait until the data frame analytics job
+     * starts.
+     * @server_default 20s
+     */
+    timeout?: Duration
+  }
+  body?: {
+    /**
+     * If provided, must be the same identifier as in the path.
+     */
+    id?: Id
     /**
      * Controls the amount of time to wait until the data frame analytics job
      * starts.

@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Stop transforms.
+ *
  * Stops one or more transforms.
  * @rest_spec_name transform.stop_transform
  * @availability stack since=7.5.0 stability=stable
@@ -44,6 +45,7 @@ export interface Request extends RequestBase {
      */
     transform_id: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request: contains wildcard expressions and there are no transforms that match;

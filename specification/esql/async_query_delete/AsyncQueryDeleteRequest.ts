@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Delete an async ES|QL query.
+ *
  * If the query is still running, it is cancelled.
  * Otherwise, the stored results are deleted.
  *
@@ -49,4 +50,5 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  response_media_type: MediaType.Json
 }

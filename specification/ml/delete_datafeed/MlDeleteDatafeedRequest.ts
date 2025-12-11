@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Delete a datafeed.
+ *
  * @rest_spec_name ml.delete_datafeed
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -45,6 +46,7 @@ export interface Request extends RequestBase {
      */
     datafeed_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Use to forcefully delete a started datafeed; this method is quicker than

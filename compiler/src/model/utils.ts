@@ -634,7 +634,7 @@ export function hoistRequestAnnotations (
   request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
 ): void {
   const knownRequestAnnotations = [
-    'rest_spec_name', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id', 'availability', 'doc_tag', 'ext_doc_id'
+    'rest_spec_name', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id', 'availability', 'doc_tag', 'ext_doc_id', 'codegen_exclude'
   ]
   // in most of the cases the jsDocs comes in a single block,
   // but it can happen that the user defines multiple single line jsDoc.
@@ -720,6 +720,9 @@ export function hoistRequestAnnotations (
     } else if (tag === 'doc_tag') {
       assert(jsDocs, value.trim() !== '', `Request ${request.name.name}'s @doc_tag cannot be empty`)
       endpoint.docTag = value.trim()
+    } else if (tag === 'codegen_exclude') {
+      // Mark this endpoint to be excluded from client code generation
+      endpoint.codegenExclude = true
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
     }
@@ -1074,7 +1077,9 @@ export function parseJsDocTags (jsDoc: JSDoc[]): Record<string, string> {
         value: tag.getComment() ?? ''
       }
     })
-  const mapped = tags.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.value }), {})
+  // Ignore UpdateForV10 which is only useful at the eslint level
+  const filteredTags = tags.filter(tag => tag.name !== 'UpdateForV10')
+  const mapped = filteredTags.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.value }), {})
   return mapped
 }
 
@@ -1503,4 +1508,25 @@ export function sortTypeDefinitions (types: model.TypeDefinition[]): void {
     if (a.name.namespace < b.name.namespace) return -1
     return 0
   })
+}
+
+export function mediaTypeToStringArray (mediaType: string, allEnums: EnumDeclaration[]): string[] {
+  const mediaTypeEnumName = 'MediaType'
+  const mediaTypeEnum = allEnums.find(e => e.getName() === mediaTypeEnumName)
+
+  // Handle strings separated by a pipe and return multiple media types
+  let enumTypeList: string[]
+  if (mediaType.includes('|')) {
+    enumTypeList = mediaType.split('|').map(mt => mt.trim())
+  } else {
+    enumTypeList = [mediaType.trim()]
+  }
+
+  const mediaTypeList: string[] = []
+  for (const enumType of enumTypeList) {
+    const memberName = enumType.split('.').pop()
+    const value = mediaTypeEnum?.getMembers().find(m => m.getName() === memberName)?.getValue() as string
+    mediaTypeList.push(value)
+  }
+  return mediaTypeList
 }

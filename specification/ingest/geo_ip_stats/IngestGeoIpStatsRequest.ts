@@ -18,9 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Get GeoIP statistics.
+ *
  * Get download statistics for GeoIP2 databases that are used with the GeoIP processor.
  * @doc_id geoip-processor
  * @rest_spec_name ingest.geo_ip_stats
@@ -35,4 +37,5 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
 }

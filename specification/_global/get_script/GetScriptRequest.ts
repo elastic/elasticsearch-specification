@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get a script or search template.
+ *
  * Retrieves a stored script or search template.
  * @rest_spec_name get_script
  * @availability stack stability=stable
@@ -44,6 +45,7 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for the master node.

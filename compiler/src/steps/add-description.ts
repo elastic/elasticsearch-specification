@@ -32,28 +32,6 @@ export default async function addDescription (model: model.Model, jsonSpec: Map<
     const spec = jsonSpec.get(endpoint.name)
     assert(spec, `Can't find the json spec for ${endpoint.name}`)
 
-    for (const property of requestDefinition.path) {
-      const definition = spec.url.paths.find(path => {
-        if (path.parts == null) return false
-        return path.parts[property.name] != null
-      })
-      if (definition?.parts != null) {
-        const { description } = definition.parts[property.name]
-        if (typeof description === 'string') {
-          property.description = property.description ?? description
-        }
-      }
-    }
-
-    if (spec.params != null) {
-      for (const property of requestDefinition.query) {
-        const param = spec.params[property.name]
-        if (param != null && typeof param.description === 'string') {
-          property.description = property.description ?? param.description
-        }
-      }
-    }
-
     if (spec.documentation.description != null) {
       requestDefinition.description = requestDefinition.description ?? spec.documentation.description
     }

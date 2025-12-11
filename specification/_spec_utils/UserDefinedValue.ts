@@ -17,6 +17,8 @@
  * under the License.
  */
 
-/** Rather then documenting `object` this specifies places in the response that depend on the mapping and or request
- * e.g the result of a script can be anything from value types to objects  */
+/**
+ * Rather then documenting `object` this specifies places in the response that depend on the mapping and or request
+ * e.g the result of a script can be anything from value types to objects
+ */
 export class UserDefinedValue {}

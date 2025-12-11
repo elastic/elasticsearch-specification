@@ -517,7 +517,7 @@
           "document"
         ],
         "summary": "Bulk index or delete documents",
-        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
+        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-bulk.html"
@@ -582,7 +582,7 @@
           "document"
         ],
         "summary": "Bulk index or delete documents",
-        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
+        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-bulk.html"
@@ -649,7 +649,7 @@
           "document"
         ],
         "summary": "Bulk index or delete documents",
-        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
+        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-bulk.html"
@@ -717,7 +717,7 @@
           "document"
         ],
         "summary": "Bulk index or delete documents",
-        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
+        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Wait for active shards**\n\nWhen making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-bulk.html"
@@ -4551,7 +4551,7 @@
           "document"
         ],
         "summary": "Create or update a document in an index",
-        "description": "Add a JSON document to the specified data stream or index and make it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.\n\nNOTE: You cannot use this API to send update requests for existing documents in a data stream.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege.\n* To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege.\n* To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nNOTE: Replica shards might not all be started when an indexing operation returns successfully.\nBy default, only the primary is required. Set `wait_for_active_shards` to change this default behavior.\n\n**Automatically create data streams and indices**\n\nIf the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream.\n\nIf the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates.\n\nNOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation.\n\nIf no mapping exists, the index operation creates a dynamic mapping.\nBy default, new fields and objects are automatically added to the mapping if needed.\n\nAutomatic index creation is controlled by the `action.auto_create_index` setting.\nIf it is `true`, any index can be created automatically.\nYou can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely.\nSpecify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked.\nWhen a list is specified, the default behaviour is to disallow.\n\nNOTE: The `action.auto_create_index` setting affects the automatic creation of indices only.\nIt does not affect the creation of data streams.\n\n**Optimistic concurrency control**\n\nIndex operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters.\nIf a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`.\n\n**Routing**\n\nBy default, shard placement — or routing — is controlled by using a hash of the document's ID value.\nFor more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter.\n\nWhen setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself.\nThis does come at the (very minimal) cost of an additional document parsing pass.\nIf the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Distributed**\n\nThe index operation is directed to the primary shard based on its route and performed on the actual node containing this shard.\nAfter the primary shard completes the operation, if needed, the update is distributed to applicable replicas.\n\n**Active shards**\n\nTo improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation.\nIf the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs.\nBy default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`).\nThis default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`.\nTo alter this behavior per operation, use the `wait_for_active_shards request` parameter.\n\nValid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1).\nSpecifying a negative value or a number greater than the number of shard copies will throw an error.\n\nFor example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes).\nIf you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding.\nThis means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data.\nIf `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding.\nThis requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard.\nHowever, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index.\nThe operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard.\n\nIt is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts.\nAfter the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary.\nThe `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed.\n\n**No operation (noop) updates**\n\nWhen updating a document by using this API, a new version of the document is always created even if the document hasn't changed.\nIf this isn't acceptable use the `_update` API with `detect_noop` set to `true`.\nThe `detect_noop` option isn't available on this API because it doesn’t fetch the old source and isn't able to compare it against the new source.\n\nThere isn't a definitive rule for when noop updates aren't acceptable.\nIt's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates.\n\n**Versioning**\n\nEach indexed document is given a version number.\nBy default, internal versioning is used that starts at 1 and increments with each update, deletes included.\nOptionally, the version number can be set to an external value (for example, if maintained in a database).\nTo enable this functionality, `version_type` should be set to `external`.\nThe value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`.\n\nNOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations.\nIf no version is provided, the operation runs without any version checks.\n\nWhen using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document.\nIf true, the document will be indexed and the new version number used.\nIf the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example:\n\n```\nPUT my-index-000001/_doc/1?version=2&version_type=external\n{\n  \"user\": {\n    \"id\": \"elkbee\"\n  }\n}\n\nIn this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1.\nIf the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code).\n\nA nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used.\nEven the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order.\n\n## Required authorization\n\n* Index privileges: `index`\n",
+        "description": "Add a JSON document to the specified data stream or index and make it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.\n\nNOTE: You cannot use this API to send update requests for existing documents in a data stream.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege.\n* To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege.\n* To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nNOTE: Replica shards might not all be started when an indexing operation returns successfully.\nBy default, only the primary is required. Set `wait_for_active_shards` to change this default behavior.\n\n**Automatically create data streams and indices**\n\nIf the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream.\n\nIf the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates.\n\nNOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation.\n\nIf no mapping exists, the index operation creates a dynamic mapping.\nBy default, new fields and objects are automatically added to the mapping if needed.\n\nAutomatic index creation is controlled by the `action.auto_create_index` setting.\nIf it is `true`, any index can be created automatically.\nYou can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely.\nSpecify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked.\nWhen a list is specified, the default behaviour is to disallow.\n\nNOTE: The `action.auto_create_index` setting affects the automatic creation of indices only.\nIt does not affect the creation of data streams.\n\n**Optimistic concurrency control**\n\nIndex operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters.\nIf a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`.\n\n**Routing**\n\nBy default, shard placement — or routing — is controlled by using a hash of the document's ID value.\nFor more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter.\n\nWhen setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself.\nThis does come at the (very minimal) cost of an additional document parsing pass.\nIf the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Distributed**\n\nThe index operation is directed to the primary shard based on its route and performed on the actual node containing this shard.\nAfter the primary shard completes the operation, if needed, the update is distributed to applicable replicas.\n\n**Active shards**\n\nTo improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation.\nIf the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs.\nBy default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`).\nThis default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`.\nTo alter this behavior per operation, use the `wait_for_active_shards request` parameter.\n\nValid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1).\nSpecifying a negative value or a number greater than the number of shard copies will throw an error.\n\nFor example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes).\nIf you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding.\nThis means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data.\nIf `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding.\nThis requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard.\nHowever, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index.\nThe operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard.\n\nIt is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts.\nAfter the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary.\nThe `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed.\n\n**No operation (noop) updates**\n\nWhen updating a document by using this API, a new version of the document is always created even if the document hasn't changed.\nIf this isn't acceptable use the `_update` API with `detect_noop` set to `true`.\nThe `detect_noop` option isn't available on this API because it doesn’t fetch the old source and isn't able to compare it against the new source.\n\nThere isn't a definitive rule for when noop updates aren't acceptable.\nIt's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates.\n\n**Versioning**\n\nEach indexed document is given a version number.\nBy default, internal versioning is used that starts at 1 and increments with each update, deletes included.\nOptionally, the version number can be set to an external value (for example, if maintained in a database).\nTo enable this functionality, `version_type` should be set to `external`.\nThe value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`.\n\nNOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations.\nIf no version is provided, the operation runs without any version checks.\n\nWhen using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document.\nIf true, the document will be indexed and the new version number used.\nIf the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example:\n\n```\nPUT my-index-000001/_doc/1?version=2&version_type=external\n{\n  \"user\": {\n    \"id\": \"elkbee\"\n  }\n}\n```\n\nIn this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1.\nIf the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code).\n\nA nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used.\nEven the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order.\n\n## Required authorization\n\n* Index privileges: `index`\n",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/manage-data/data-store/data-streams",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-index_.html"
@@ -4625,7 +4625,7 @@
           "document"
         ],
         "summary": "Create or update a document in an index",
-        "description": "Add a JSON document to the specified data stream or index and make it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.\n\nNOTE: You cannot use this API to send update requests for existing documents in a data stream.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege.\n* To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege.\n* To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nNOTE: Replica shards might not all be started when an indexing operation returns successfully.\nBy default, only the primary is required. Set `wait_for_active_shards` to change this default behavior.\n\n**Automatically create data streams and indices**\n\nIf the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream.\n\nIf the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates.\n\nNOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation.\n\nIf no mapping exists, the index operation creates a dynamic mapping.\nBy default, new fields and objects are automatically added to the mapping if needed.\n\nAutomatic index creation is controlled by the `action.auto_create_index` setting.\nIf it is `true`, any index can be created automatically.\nYou can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely.\nSpecify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked.\nWhen a list is specified, the default behaviour is to disallow.\n\nNOTE: The `action.auto_create_index` setting affects the automatic creation of indices only.\nIt does not affect the creation of data streams.\n\n**Optimistic concurrency control**\n\nIndex operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters.\nIf a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`.\n\n**Routing**\n\nBy default, shard placement — or routing — is controlled by using a hash of the document's ID value.\nFor more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter.\n\nWhen setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself.\nThis does come at the (very minimal) cost of an additional document parsing pass.\nIf the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Distributed**\n\nThe index operation is directed to the primary shard based on its route and performed on the actual node containing this shard.\nAfter the primary shard completes the operation, if needed, the update is distributed to applicable replicas.\n\n**Active shards**\n\nTo improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation.\nIf the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs.\nBy default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`).\nThis default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`.\nTo alter this behavior per operation, use the `wait_for_active_shards request` parameter.\n\nValid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1).\nSpecifying a negative value or a number greater than the number of shard copies will throw an error.\n\nFor example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes).\nIf you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding.\nThis means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data.\nIf `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding.\nThis requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard.\nHowever, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index.\nThe operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard.\n\nIt is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts.\nAfter the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary.\nThe `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed.\n\n**No operation (noop) updates**\n\nWhen updating a document by using this API, a new version of the document is always created even if the document hasn't changed.\nIf this isn't acceptable use the `_update` API with `detect_noop` set to `true`.\nThe `detect_noop` option isn't available on this API because it doesn’t fetch the old source and isn't able to compare it against the new source.\n\nThere isn't a definitive rule for when noop updates aren't acceptable.\nIt's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates.\n\n**Versioning**\n\nEach indexed document is given a version number.\nBy default, internal versioning is used that starts at 1 and increments with each update, deletes included.\nOptionally, the version number can be set to an external value (for example, if maintained in a database).\nTo enable this functionality, `version_type` should be set to `external`.\nThe value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`.\n\nNOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations.\nIf no version is provided, the operation runs without any version checks.\n\nWhen using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document.\nIf true, the document will be indexed and the new version number used.\nIf the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example:\n\n```\nPUT my-index-000001/_doc/1?version=2&version_type=external\n{\n  \"user\": {\n    \"id\": \"elkbee\"\n  }\n}\n\nIn this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1.\nIf the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code).\n\nA nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used.\nEven the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order.\n\n## Required authorization\n\n* Index privileges: `index`\n",
+        "description": "Add a JSON document to the specified data stream or index and make it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.\n\nNOTE: You cannot use this API to send update requests for existing documents in a data stream.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege.\n* To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege.\n* To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nNOTE: Replica shards might not all be started when an indexing operation returns successfully.\nBy default, only the primary is required. Set `wait_for_active_shards` to change this default behavior.\n\n**Automatically create data streams and indices**\n\nIf the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream.\n\nIf the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates.\n\nNOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation.\n\nIf no mapping exists, the index operation creates a dynamic mapping.\nBy default, new fields and objects are automatically added to the mapping if needed.\n\nAutomatic index creation is controlled by the `action.auto_create_index` setting.\nIf it is `true`, any index can be created automatically.\nYou can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely.\nSpecify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked.\nWhen a list is specified, the default behaviour is to disallow.\n\nNOTE: The `action.auto_create_index` setting affects the automatic creation of indices only.\nIt does not affect the creation of data streams.\n\n**Optimistic concurrency control**\n\nIndex operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters.\nIf a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`.\n\n**Routing**\n\nBy default, shard placement — or routing — is controlled by using a hash of the document's ID value.\nFor more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter.\n\nWhen setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself.\nThis does come at the (very minimal) cost of an additional document parsing pass.\nIf the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Distributed**\n\nThe index operation is directed to the primary shard based on its route and performed on the actual node containing this shard.\nAfter the primary shard completes the operation, if needed, the update is distributed to applicable replicas.\n\n**Active shards**\n\nTo improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation.\nIf the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs.\nBy default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`).\nThis default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`.\nTo alter this behavior per operation, use the `wait_for_active_shards request` parameter.\n\nValid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1).\nSpecifying a negative value or a number greater than the number of shard copies will throw an error.\n\nFor example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes).\nIf you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding.\nThis means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data.\nIf `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding.\nThis requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard.\nHowever, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index.\nThe operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard.\n\nIt is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts.\nAfter the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary.\nThe `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed.\n\n**No operation (noop) updates**\n\nWhen updating a document by using this API, a new version of the document is always created even if the document hasn't changed.\nIf this isn't acceptable use the `_update` API with `detect_noop` set to `true`.\nThe `detect_noop` option isn't available on this API because it doesn’t fetch the old source and isn't able to compare it against the new source.\n\nThere isn't a definitive rule for when noop updates aren't acceptable.\nIt's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates.\n\n**Versioning**\n\nEach indexed document is given a version number.\nBy default, internal versioning is used that starts at 1 and increments with each update, deletes included.\nOptionally, the version number can be set to an external value (for example, if maintained in a database).\nTo enable this functionality, `version_type` should be set to `external`.\nThe value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`.\n\nNOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations.\nIf no version is provided, the operation runs without any version checks.\n\nWhen using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document.\nIf true, the document will be indexed and the new version number used.\nIf the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example:\n\n```\nPUT my-index-000001/_doc/1?version=2&version_type=external\n{\n  \"user\": {\n    \"id\": \"elkbee\"\n  }\n}\n```\n\nIn this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1.\nIf the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code).\n\nA nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used.\nEven the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order.\n\n## Required authorization\n\n* Index privileges: `index`\n",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/manage-data/data-store/data-streams",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-index_.html"
@@ -7186,7 +7186,7 @@
           "document"
         ],
         "summary": "Create or update a document in an index",
-        "description": "Add a JSON document to the specified data stream or index and make it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.\n\nNOTE: You cannot use this API to send update requests for existing documents in a data stream.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege.\n* To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege.\n* To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nNOTE: Replica shards might not all be started when an indexing operation returns successfully.\nBy default, only the primary is required. Set `wait_for_active_shards` to change this default behavior.\n\n**Automatically create data streams and indices**\n\nIf the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream.\n\nIf the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates.\n\nNOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation.\n\nIf no mapping exists, the index operation creates a dynamic mapping.\nBy default, new fields and objects are automatically added to the mapping if needed.\n\nAutomatic index creation is controlled by the `action.auto_create_index` setting.\nIf it is `true`, any index can be created automatically.\nYou can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely.\nSpecify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked.\nWhen a list is specified, the default behaviour is to disallow.\n\nNOTE: The `action.auto_create_index` setting affects the automatic creation of indices only.\nIt does not affect the creation of data streams.\n\n**Optimistic concurrency control**\n\nIndex operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters.\nIf a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`.\n\n**Routing**\n\nBy default, shard placement — or routing — is controlled by using a hash of the document's ID value.\nFor more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter.\n\nWhen setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself.\nThis does come at the (very minimal) cost of an additional document parsing pass.\nIf the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Distributed**\n\nThe index operation is directed to the primary shard based on its route and performed on the actual node containing this shard.\nAfter the primary shard completes the operation, if needed, the update is distributed to applicable replicas.\n\n**Active shards**\n\nTo improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation.\nIf the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs.\nBy default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`).\nThis default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`.\nTo alter this behavior per operation, use the `wait_for_active_shards request` parameter.\n\nValid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1).\nSpecifying a negative value or a number greater than the number of shard copies will throw an error.\n\nFor example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes).\nIf you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding.\nThis means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data.\nIf `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding.\nThis requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard.\nHowever, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index.\nThe operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard.\n\nIt is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts.\nAfter the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary.\nThe `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed.\n\n**No operation (noop) updates**\n\nWhen updating a document by using this API, a new version of the document is always created even if the document hasn't changed.\nIf this isn't acceptable use the `_update` API with `detect_noop` set to `true`.\nThe `detect_noop` option isn't available on this API because it doesn’t fetch the old source and isn't able to compare it against the new source.\n\nThere isn't a definitive rule for when noop updates aren't acceptable.\nIt's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates.\n\n**Versioning**\n\nEach indexed document is given a version number.\nBy default, internal versioning is used that starts at 1 and increments with each update, deletes included.\nOptionally, the version number can be set to an external value (for example, if maintained in a database).\nTo enable this functionality, `version_type` should be set to `external`.\nThe value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`.\n\nNOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations.\nIf no version is provided, the operation runs without any version checks.\n\nWhen using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document.\nIf true, the document will be indexed and the new version number used.\nIf the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example:\n\n```\nPUT my-index-000001/_doc/1?version=2&version_type=external\n{\n  \"user\": {\n    \"id\": \"elkbee\"\n  }\n}\n\nIn this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1.\nIf the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code).\n\nA nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used.\nEven the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order.\n\n## Required authorization\n\n* Index privileges: `index`\n",
+        "description": "Add a JSON document to the specified data stream or index and make it searchable.\nIf the target is an index and the document already exists, the request updates the document and increments its version.\n\nNOTE: You cannot use this API to send update requests for existing documents in a data stream.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To add or overwrite a document using the `PUT /<target>/_doc/<_id>` request format, you must have the `create`, `index`, or `write` index privilege.\n* To add a document using the `POST /<target>/_doc/` request format, you must have the `create_doc`, `create`, `index`, or `write` index privilege.\n* To automatically create a data stream or index with this API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nNOTE: Replica shards might not all be started when an indexing operation returns successfully.\nBy default, only the primary is required. Set `wait_for_active_shards` to change this default behavior.\n\n**Automatically create data streams and indices**\n\nIf the request's target doesn't exist and matches an index template with a `data_stream` definition, the index operation automatically creates the data stream.\n\nIf the target doesn't exist and doesn't match a data stream template, the operation automatically creates the index and applies any matching index templates.\n\nNOTE: Elasticsearch includes several built-in index templates. To avoid naming collisions with these templates, refer to index pattern documentation.\n\nIf no mapping exists, the index operation creates a dynamic mapping.\nBy default, new fields and objects are automatically added to the mapping if needed.\n\nAutomatic index creation is controlled by the `action.auto_create_index` setting.\nIf it is `true`, any index can be created automatically.\nYou can modify this setting to explicitly allow or block automatic creation of indices that match specified patterns or set it to `false` to turn off automatic index creation entirely.\nSpecify a comma-separated list of patterns you want to allow or prefix each pattern with `+` or `-` to indicate whether it should be allowed or blocked.\nWhen a list is specified, the default behaviour is to disallow.\n\nNOTE: The `action.auto_create_index` setting affects the automatic creation of indices only.\nIt does not affect the creation of data streams.\n\n**Optimistic concurrency control**\n\nIndex operations can be made conditional and only be performed if the last modification to the document was assigned the sequence number and primary term specified by the `if_seq_no` and `if_primary_term` parameters.\nIf a mismatch is detected, the operation will result in a `VersionConflictException` and a status code of `409`.\n\n**Routing**\n\nBy default, shard placement — or routing — is controlled by using a hash of the document's ID value.\nFor more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the `routing` parameter.\n\nWhen setting up explicit mapping, you can also use the `_routing` field to direct the index operation to extract the routing value from the document itself.\nThis does come at the (very minimal) cost of an additional document parsing pass.\nIf the `_routing` mapping is defined and set to be required, the index operation will fail if no routing value is provided or extracted.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Distributed**\n\nThe index operation is directed to the primary shard based on its route and performed on the actual node containing this shard.\nAfter the primary shard completes the operation, if needed, the update is distributed to applicable replicas.\n\n**Active shards**\n\nTo improve the resiliency of writes to the system, indexing operations can be configured to wait for a certain number of active shard copies before proceeding with the operation.\nIf the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs.\nBy default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`).\nThis default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`.\nTo alter this behavior per operation, use the `wait_for_active_shards request` parameter.\n\nValid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1).\nSpecifying a negative value or a number greater than the number of shard copies will throw an error.\n\nFor example, suppose you have a cluster of three nodes, A, B, and C and you create an index index with the number of replicas set to 3 (resulting in 4 shard copies, one more copy than there are nodes).\nIf you attempt an indexing operation, by default the operation will only ensure the primary copy of each shard is available before proceeding.\nThis means that even if B and C went down and A hosted the primary shard copies, the indexing operation would still proceed with only one copy of the data.\nIf `wait_for_active_shards` is set on the request to `3` (and all three nodes are up), the indexing operation will require 3 active shard copies before proceeding.\nThis requirement should be met because there are 3 active nodes in the cluster, each one holding a copy of the shard.\nHowever, if you set `wait_for_active_shards` to `all` (or to `4`, which is the same in this situation), the indexing operation will not proceed as you do not have all 4 copies of each shard active in the index.\nThe operation will timeout unless a new node is brought up in the cluster to host the fourth copy of the shard.\n\nIt is important to note that this setting greatly reduces the chances of the write operation not writing to the requisite number of shard copies, but it does not completely eliminate the possibility, because this check occurs before the write operation starts.\nAfter the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary.\nThe `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed.\n\n**No operation (noop) updates**\n\nWhen updating a document by using this API, a new version of the document is always created even if the document hasn't changed.\nIf this isn't acceptable use the `_update` API with `detect_noop` set to `true`.\nThe `detect_noop` option isn't available on this API because it doesn’t fetch the old source and isn't able to compare it against the new source.\n\nThere isn't a definitive rule for when noop updates aren't acceptable.\nIt's a combination of lots of factors like how frequently your data source sends updates that are actually noops and how many queries per second Elasticsearch runs on the shard receiving the updates.\n\n**Versioning**\n\nEach indexed document is given a version number.\nBy default, internal versioning is used that starts at 1 and increments with each update, deletes included.\nOptionally, the version number can be set to an external value (for example, if maintained in a database).\nTo enable this functionality, `version_type` should be set to `external`.\nThe value provided must be a numeric, long value greater than or equal to 0, and less than around `9.2e+18`.\n\nNOTE: Versioning is completely real time, and is not affected by the near real time aspects of search operations.\nIf no version is provided, the operation runs without any version checks.\n\nWhen using the external version type, the system checks to see if the version number passed to the index request is greater than the version of the currently stored document.\nIf true, the document will be indexed and the new version number used.\nIf the value provided is less than or equal to the stored document's version number, a version conflict will occur and the index operation will fail. For example:\n\n```\nPUT my-index-000001/_doc/1?version=2&version_type=external\n{\n  \"user\": {\n    \"id\": \"elkbee\"\n  }\n}\n```\n\nIn this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1.\nIf the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code).\n\nA nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used.\nEven the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order.\n\n## Required authorization\n\n* Index privileges: `index`\n",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/manage-data/data-store/data-streams",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-index_.html"
@@ -9010,7 +9010,7 @@
           {
             "in": "path",
             "name": "index",
-            "description": "The name of the index to explain",
+            "description": "Comma-separated list of index names to explain",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -9021,7 +9021,7 @@
           {
             "in": "query",
             "name": "include_defaults",
-            "description": "indicates if the API should return the default values the system uses for the index's lifecycle",
+            "description": "Indicates if the API should return the default values the system uses for the index's lifecycle",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -9031,7 +9031,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Specify timeout for connection to master",
+            "description": "The period to wait for a connection to the master node.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Duration"
@@ -11556,7 +11556,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Perform chat completion inference\n",
+        "summary": "Perform chat completion inference",
         "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.\nIt only works with the `chat_completion` task type for `openai` and `elastic` inference services.\n\nNOTE: The `chat_completion` task type is only available within the _stream API and only supports streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nIf you use the `openai`, `hugging_face` or the `elastic` service, use the Chat completion inference API.",
         "operationId": "inference-chat-completion-unified",
         "parameters": [
@@ -11743,7 +11743,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint\n",
+        "summary": "Get an inference endpoint",
         "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get-1",
         "parameters": [
@@ -11830,7 +11830,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Delete an inference endpoint\n",
+        "summary": "Delete an inference endpoint",
         "description": "This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).",
         "operationId": "inference-delete",
         "parameters": [
@@ -11863,7 +11863,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint\n",
+        "summary": "Get an inference endpoint",
         "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get-2",
         "parameters": [
@@ -11959,7 +11959,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Delete an inference endpoint\n",
+        "summary": "Delete an inference endpoint",
         "description": "This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).",
         "operationId": "inference-delete-1",
         "parameters": [
@@ -11995,7 +11995,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Get an inference endpoint\n",
+        "summary": "Get an inference endpoint",
         "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-get",
         "responses": {
@@ -18470,33 +18470,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "classification": {
-                      "description": "Evaluation results for a classification analysis.\nIt outputs a prediction that identifies to which of the classes each document belongs.",
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeClassificationSummary"
-                        }
-                      ]
-                    },
-                    "outlier_detection": {
-                      "description": "Evaluation results for an outlier detection analysis.\nIt outputs the probability that each document is an outlier.",
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeOutlierDetectionSummary"
-                        }
-                      ]
-                    },
-                    "regression": {
-                      "description": "Evaluation results for a regression analysis which outputs a prediction of values.",
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeRegressionSummary"
-                        }
-                      ]
-                    }
-                  }
+                  "$ref": "#/components/schemas/ml.evaluate_data_frame.ResponseBody"
                 },
                 "examples": {
                   "MlEvaluateDataFrameResponseExample1": {
@@ -20174,6 +20148,34 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "If provided, must be the same identifier as in the path.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Id"
+                      }
+                    ]
+                  },
+                  "timeout": {
+                    "description": "Controls the amount of time to wait until the data frame analytics job\nstarts.",
+                    "default": "20s",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -20387,7 +20389,7 @@
           {
             "in": "query",
             "name": "priority",
-            "description": "The deployment priority.",
+            "description": "The deployment priority",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/ml._types.TrainingPriority"
@@ -20538,6 +20540,44 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "If provided, must be the same identifier as in the path.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Id"
+                      }
+                    ]
+                  },
+                  "allow_no_match": {
+                    "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no data frame analytics\njobs that match.\n2. Contains the _all string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is true, which returns an empty data_frame_analytics\narray when there are no matches and the subset of results when there are\npartial matches. If this parameter is false, the request returns a 404\nstatus code when there are no matches or only partial matches.",
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "force": {
+                    "description": "If true, the data frame analytics job is stopped forcefully.",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "timeout": {
+                    "description": "Controls the amount of time to wait until the data frame analytics job\nstops. Defaults to 20 seconds.",
+                    "default": "20s",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -20724,6 +20764,35 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "If provided, must be the same identifier as in the path.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Id"
+                      }
+                    ]
+                  },
+                  "allow_no_match": {
+                    "description": "Specifies what to do when the request: contains wildcard expressions and there are no deployments that match;\ncontains the  `_all` string or no identifiers and there are no matches; or contains wildcard expressions and\nthere are only partial matches. By default, it returns an empty array when there are no matches and the subset of results when there are partial matches.\nIf `false`, the request returns a 404 status code when there are no matches or only partial matches.",
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "force": {
+                    "description": "Forcefully stops the deployment, even if it is used by ingest pipelines. You can't use these pipelines until you\nrestart the model deployment.",
+                    "default": false,
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -22569,8 +22638,8 @@
         "tags": [
           "project"
         ],
-        "summary": "Return tags defined for the project",
-        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "summary": "Get tags",
+        "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "project-tags",
         "responses": {
           "200": {
@@ -28137,6 +28206,35 @@
                     "description": "A successful response when the transform is deleted.",
                     "value": "{\n  \"acknowledged\": true\n}"
                   }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_transform/_node_stats": {
+      "get": {
+        "tags": [
+          "transform"
+        ],
+        "summary": "Get node stats",
+        "description": "Get per-node information about transform usage.",
+        "operationId": "transform-get-node-stats",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/transform.get_node_stats.TransformNodeFullStats"
                 }
               }
             }
@@ -45990,7 +46088,14 @@
       },
       "_types.aggregations.MovingAverageAggregation": {
         "discriminator": {
-          "propertyName": "model"
+          "propertyName": "model",
+          "mapping": {
+            "linear": "#/components/schemas/_types.aggregations.LinearMovingAverageAggregation",
+            "simple": "#/components/schemas/_types.aggregations.SimpleMovingAverageAggregation",
+            "ewma": "#/components/schemas/_types.aggregations.EwmaMovingAverageAggregation",
+            "holt": "#/components/schemas/_types.aggregations.HoltMovingAverageAggregation",
+            "holt_winters": "#/components/schemas/_types.aggregations.HoltWintersMovingAverageAggregation"
+          }
         },
         "oneOf": [
           {
@@ -51696,7 +51801,58 @@
       },
       "_types.analysis.Analyzer": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "custom": "#/components/schemas/_types.analysis.CustomAnalyzer",
+            "fingerprint": "#/components/schemas/_types.analysis.FingerprintAnalyzer",
+            "keyword": "#/components/schemas/_types.analysis.KeywordAnalyzer",
+            "nori": "#/components/schemas/_types.analysis.NoriAnalyzer",
+            "pattern": "#/components/schemas/_types.analysis.PatternAnalyzer",
+            "simple": "#/components/schemas/_types.analysis.SimpleAnalyzer",
+            "standard": "#/components/schemas/_types.analysis.StandardAnalyzer",
+            "stop": "#/components/schemas/_types.analysis.StopAnalyzer",
+            "whitespace": "#/components/schemas/_types.analysis.WhitespaceAnalyzer",
+            "icu_analyzer": "#/components/schemas/_types.analysis.IcuAnalyzer",
+            "kuromoji": "#/components/schemas/_types.analysis.KuromojiAnalyzer",
+            "snowball": "#/components/schemas/_types.analysis.SnowballAnalyzer",
+            "arabic": "#/components/schemas/_types.analysis.ArabicAnalyzer",
+            "armenian": "#/components/schemas/_types.analysis.ArmenianAnalyzer",
+            "basque": "#/components/schemas/_types.analysis.BasqueAnalyzer",
+            "bengali": "#/components/schemas/_types.analysis.BengaliAnalyzer",
+            "brazilian": "#/components/schemas/_types.analysis.BrazilianAnalyzer",
+            "bulgarian": "#/components/schemas/_types.analysis.BulgarianAnalyzer",
+            "catalan": "#/components/schemas/_types.analysis.CatalanAnalyzer",
+            "chinese": "#/components/schemas/_types.analysis.ChineseAnalyzer",
+            "cjk": "#/components/schemas/_types.analysis.CjkAnalyzer",
+            "czech": "#/components/schemas/_types.analysis.CzechAnalyzer",
+            "danish": "#/components/schemas/_types.analysis.DanishAnalyzer",
+            "dutch": "#/components/schemas/_types.analysis.DutchAnalyzer",
+            "english": "#/components/schemas/_types.analysis.EnglishAnalyzer",
+            "estonian": "#/components/schemas/_types.analysis.EstonianAnalyzer",
+            "finnish": "#/components/schemas/_types.analysis.FinnishAnalyzer",
+            "french": "#/components/schemas/_types.analysis.FrenchAnalyzer",
+            "galician": "#/components/schemas/_types.analysis.GalicianAnalyzer",
+            "german": "#/components/schemas/_types.analysis.GermanAnalyzer",
+            "greek": "#/components/schemas/_types.analysis.GreekAnalyzer",
+            "hindi": "#/components/schemas/_types.analysis.HindiAnalyzer",
+            "hungarian": "#/components/schemas/_types.analysis.HungarianAnalyzer",
+            "indonesian": "#/components/schemas/_types.analysis.IndonesianAnalyzer",
+            "irish": "#/components/schemas/_types.analysis.IrishAnalyzer",
+            "italian": "#/components/schemas/_types.analysis.ItalianAnalyzer",
+            "latvian": "#/components/schemas/_types.analysis.LatvianAnalyzer",
+            "lithuanian": "#/components/schemas/_types.analysis.LithuanianAnalyzer",
+            "norwegian": "#/components/schemas/_types.analysis.NorwegianAnalyzer",
+            "persian": "#/components/schemas/_types.analysis.PersianAnalyzer",
+            "portuguese": "#/components/schemas/_types.analysis.PortugueseAnalyzer",
+            "romanian": "#/components/schemas/_types.analysis.RomanianAnalyzer",
+            "russian": "#/components/schemas/_types.analysis.RussianAnalyzer",
+            "serbian": "#/components/schemas/_types.analysis.SerbianAnalyzer",
+            "sorani": "#/components/schemas/_types.analysis.SoraniAnalyzer",
+            "spanish": "#/components/schemas/_types.analysis.SpanishAnalyzer",
+            "swedish": "#/components/schemas/_types.analysis.SwedishAnalyzer",
+            "turkish": "#/components/schemas/_types.analysis.TurkishAnalyzer",
+            "thai": "#/components/schemas/_types.analysis.ThaiAnalyzer"
+          }
         },
         "oneOf": [
           {
@@ -53393,7 +53549,14 @@
       },
       "_types.analysis.CharFilterDefinition": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "html_strip": "#/components/schemas/_types.analysis.HtmlStripCharFilter",
+            "mapping": "#/components/schemas/_types.analysis.MappingCharFilter",
+            "pattern_replace": "#/components/schemas/_types.analysis.PatternReplaceCharFilter",
+            "icu_normalizer": "#/components/schemas/_types.analysis.IcuNormalizationCharFilter",
+            "kuromoji_iteration_mark": "#/components/schemas/_types.analysis.KuromojiIterationMarkCharFilter"
+          }
         },
         "oneOf": [
           {
@@ -53595,7 +53758,83 @@
       },
       "_types.analysis.TokenFilterDefinition": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "apostrophe": "#/components/schemas/_types.analysis.ApostropheTokenFilter",
+            "arabic_stem": "#/components/schemas/_types.analysis.ArabicStemTokenFilter",
+            "arabic_normalization": "#/components/schemas/_types.analysis.ArabicNormalizationTokenFilter",
+            "asciifolding": "#/components/schemas/_types.analysis.AsciiFoldingTokenFilter",
+            "bengali_normalization": "#/components/schemas/_types.analysis.BengaliNormalizationTokenFilter",
+            "brazilian_stem": "#/components/schemas/_types.analysis.BrazilianStemTokenFilter",
+            "cjk_bigram": "#/components/schemas/_types.analysis.CjkBigramTokenFilter",
+            "cjk_width": "#/components/schemas/_types.analysis.CjkWidthTokenFilter",
+            "classic": "#/components/schemas/_types.analysis.ClassicTokenFilter",
+            "common_grams": "#/components/schemas/_types.analysis.CommonGramsTokenFilter",
+            "condition": "#/components/schemas/_types.analysis.ConditionTokenFilter",
+            "czech_stem": "#/components/schemas/_types.analysis.CzechStemTokenFilter",
+            "decimal_digit": "#/components/schemas/_types.analysis.DecimalDigitTokenFilter",
+            "delimited_payload": "#/components/schemas/_types.analysis.DelimitedPayloadTokenFilter",
+            "dutch_stem": "#/components/schemas/_types.analysis.DutchStemTokenFilter",
+            "edge_ngram": "#/components/schemas/_types.analysis.EdgeNGramTokenFilter",
+            "elision": "#/components/schemas/_types.analysis.ElisionTokenFilter",
+            "fingerprint": "#/components/schemas/_types.analysis.FingerprintTokenFilter",
+            "flatten_graph": "#/components/schemas/_types.analysis.FlattenGraphTokenFilter",
+            "french_stem": "#/components/schemas/_types.analysis.FrenchStemTokenFilter",
+            "german_normalization": "#/components/schemas/_types.analysis.GermanNormalizationTokenFilter",
+            "german_stem": "#/components/schemas/_types.analysis.GermanStemTokenFilter",
+            "hindi_normalization": "#/components/schemas/_types.analysis.HindiNormalizationTokenFilter",
+            "hunspell": "#/components/schemas/_types.analysis.HunspellTokenFilter",
+            "hyphenation_decompounder": "#/components/schemas/_types.analysis.HyphenationDecompounderTokenFilter",
+            "indic_normalization": "#/components/schemas/_types.analysis.IndicNormalizationTokenFilter",
+            "keep_types": "#/components/schemas/_types.analysis.KeepTypesTokenFilter",
+            "keep": "#/components/schemas/_types.analysis.KeepWordsTokenFilter",
+            "keyword_marker": "#/components/schemas/_types.analysis.KeywordMarkerTokenFilter",
+            "keyword_repeat": "#/components/schemas/_types.analysis.KeywordRepeatTokenFilter",
+            "kstem": "#/components/schemas/_types.analysis.KStemTokenFilter",
+            "length": "#/components/schemas/_types.analysis.LengthTokenFilter",
+            "limit": "#/components/schemas/_types.analysis.LimitTokenCountTokenFilter",
+            "lowercase": "#/components/schemas/_types.analysis.LowercaseTokenFilter",
+            "min_hash": "#/components/schemas/_types.analysis.MinHashTokenFilter",
+            "multiplexer": "#/components/schemas/_types.analysis.MultiplexerTokenFilter",
+            "ngram": "#/components/schemas/_types.analysis.NGramTokenFilter",
+            "nori_part_of_speech": "#/components/schemas/_types.analysis.NoriPartOfSpeechTokenFilter",
+            "pattern_capture": "#/components/schemas/_types.analysis.PatternCaptureTokenFilter",
+            "pattern_replace": "#/components/schemas/_types.analysis.PatternReplaceTokenFilter",
+            "persian_normalization": "#/components/schemas/_types.analysis.PersianNormalizationTokenFilter",
+            "persian_stem": "#/components/schemas/_types.analysis.PersianStemTokenFilter",
+            "porter_stem": "#/components/schemas/_types.analysis.PorterStemTokenFilter",
+            "predicate_token_filter": "#/components/schemas/_types.analysis.PredicateTokenFilter",
+            "remove_duplicates": "#/components/schemas/_types.analysis.RemoveDuplicatesTokenFilter",
+            "reverse": "#/components/schemas/_types.analysis.ReverseTokenFilter",
+            "russian_stem": "#/components/schemas/_types.analysis.RussianStemTokenFilter",
+            "scandinavian_folding": "#/components/schemas/_types.analysis.ScandinavianFoldingTokenFilter",
+            "scandinavian_normalization": "#/components/schemas/_types.analysis.ScandinavianNormalizationTokenFilter",
+            "serbian_normalization": "#/components/schemas/_types.analysis.SerbianNormalizationTokenFilter",
+            "shingle": "#/components/schemas/_types.analysis.ShingleTokenFilter",
+            "snowball": "#/components/schemas/_types.analysis.SnowballTokenFilter",
+            "sorani_normalization": "#/components/schemas/_types.analysis.SoraniNormalizationTokenFilter",
+            "stemmer_override": "#/components/schemas/_types.analysis.StemmerOverrideTokenFilter",
+            "stemmer": "#/components/schemas/_types.analysis.StemmerTokenFilter",
+            "stop": "#/components/schemas/_types.analysis.StopTokenFilter",
+            "synonym_graph": "#/components/schemas/_types.analysis.SynonymGraphTokenFilter",
+            "synonym": "#/components/schemas/_types.analysis.SynonymTokenFilter",
+            "trim": "#/components/schemas/_types.analysis.TrimTokenFilter",
+            "truncate": "#/components/schemas/_types.analysis.TruncateTokenFilter",
+            "unique": "#/components/schemas/_types.analysis.UniqueTokenFilter",
+            "uppercase": "#/components/schemas/_types.analysis.UppercaseTokenFilter",
+            "word_delimiter_graph": "#/components/schemas/_types.analysis.WordDelimiterGraphTokenFilter",
+            "word_delimiter": "#/components/schemas/_types.analysis.WordDelimiterTokenFilter",
+            "ja_stop": "#/components/schemas/_types.analysis.JaStopTokenFilter",
+            "kuromoji_stemmer": "#/components/schemas/_types.analysis.KuromojiStemmerTokenFilter",
+            "kuromoji_readingform": "#/components/schemas/_types.analysis.KuromojiReadingFormTokenFilter",
+            "kuromoji_part_of_speech": "#/components/schemas/_types.analysis.KuromojiPartOfSpeechTokenFilter",
+            "icu_collation": "#/components/schemas/_types.analysis.IcuCollationTokenFilter",
+            "icu_folding": "#/components/schemas/_types.analysis.IcuFoldingTokenFilter",
+            "icu_normalizer": "#/components/schemas/_types.analysis.IcuNormalizationTokenFilter",
+            "icu_transform": "#/components/schemas/_types.analysis.IcuTransformTokenFilter",
+            "phonetic": "#/components/schemas/_types.analysis.PhoneticTokenFilter",
+            "dictionary_decompounder": "#/components/schemas/_types.analysis.DictionaryDecompounderTokenFilter"
+          }
         },
         "oneOf": [
           {
@@ -56245,7 +56484,11 @@
       },
       "_types.analysis.Normalizer": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "lowercase": "#/components/schemas/_types.analysis.LowercaseNormalizer",
+            "custom": "#/components/schemas/_types.analysis.CustomNormalizer"
+          }
         },
         "oneOf": [
           {
@@ -56311,7 +56554,27 @@
       },
       "_types.analysis.TokenizerDefinition": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "char_group": "#/components/schemas/_types.analysis.CharGroupTokenizer",
+            "classic": "#/components/schemas/_types.analysis.ClassicTokenizer",
+            "edge_ngram": "#/components/schemas/_types.analysis.EdgeNGramTokenizer",
+            "keyword": "#/components/schemas/_types.analysis.KeywordTokenizer",
+            "letter": "#/components/schemas/_types.analysis.LetterTokenizer",
+            "lowercase": "#/components/schemas/_types.analysis.LowercaseTokenizer",
+            "ngram": "#/components/schemas/_types.analysis.NGramTokenizer",
+            "path_hierarchy": "#/components/schemas/_types.analysis.PathHierarchyTokenizer",
+            "pattern": "#/components/schemas/_types.analysis.PatternTokenizer",
+            "simple_pattern": "#/components/schemas/_types.analysis.SimplePatternTokenizer",
+            "simple_pattern_split": "#/components/schemas/_types.analysis.SimplePatternSplitTokenizer",
+            "standard": "#/components/schemas/_types.analysis.StandardTokenizer",
+            "thai": "#/components/schemas/_types.analysis.ThaiTokenizer",
+            "uax_url_email": "#/components/schemas/_types.analysis.UaxEmailUrlTokenizer",
+            "whitespace": "#/components/schemas/_types.analysis.WhitespaceTokenizer",
+            "icu_tokenizer": "#/components/schemas/_types.analysis.IcuTokenizer",
+            "kuromoji_tokenizer": "#/components/schemas/_types.analysis.KuromojiTokenizer",
+            "nori_tokenizer": "#/components/schemas/_types.analysis.NoriTokenizer"
+          }
         },
         "oneOf": [
           {
@@ -56967,7 +57230,17 @@
       },
       "indices._types.SettingsSimilarity": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "BM25": "#/components/schemas/indices._types.SettingsSimilarityBm25",
+            "boolean": "#/components/schemas/indices._types.SettingsSimilarityBoolean",
+            "DFI": "#/components/schemas/indices._types.SettingsSimilarityDfi",
+            "DFR": "#/components/schemas/indices._types.SettingsSimilarityDfr",
+            "IB": "#/components/schemas/indices._types.SettingsSimilarityIb",
+            "LMDirichlet": "#/components/schemas/indices._types.SettingsSimilarityLmd",
+            "LMJelinekMercer": "#/components/schemas/indices._types.SettingsSimilarityLmj",
+            "scripted": "#/components/schemas/indices._types.SettingsSimilarityScripted"
+          }
         },
         "oneOf": [
           {
@@ -57802,7 +58075,61 @@
       },
       "_types.mapping.Property": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "binary": "#/components/schemas/_types.mapping.BinaryProperty",
+            "boolean": "#/components/schemas/_types.mapping.BooleanProperty",
+            "{dynamic_type}": "#/components/schemas/_types.mapping.DynamicProperty",
+            "join": "#/components/schemas/_types.mapping.JoinProperty",
+            "keyword": "#/components/schemas/_types.mapping.KeywordProperty",
+            "match_only_text": "#/components/schemas/_types.mapping.MatchOnlyTextProperty",
+            "percolator": "#/components/schemas/_types.mapping.PercolatorProperty",
+            "rank_feature": "#/components/schemas/_types.mapping.RankFeatureProperty",
+            "rank_features": "#/components/schemas/_types.mapping.RankFeaturesProperty",
+            "search_as_you_type": "#/components/schemas/_types.mapping.SearchAsYouTypeProperty",
+            "text": "#/components/schemas/_types.mapping.TextProperty",
+            "version": "#/components/schemas/_types.mapping.VersionProperty",
+            "wildcard": "#/components/schemas/_types.mapping.WildcardProperty",
+            "date_nanos": "#/components/schemas/_types.mapping.DateNanosProperty",
+            "date": "#/components/schemas/_types.mapping.DateProperty",
+            "aggregate_metric_double": "#/components/schemas/_types.mapping.AggregateMetricDoubleProperty",
+            "dense_vector": "#/components/schemas/_types.mapping.DenseVectorProperty",
+            "flattened": "#/components/schemas/_types.mapping.FlattenedProperty",
+            "nested": "#/components/schemas/_types.mapping.NestedProperty",
+            "object": "#/components/schemas/_types.mapping.ObjectProperty",
+            "passthrough": "#/components/schemas/_types.mapping.PassthroughObjectProperty",
+            "rank_vectors": "#/components/schemas/_types.mapping.RankVectorProperty",
+            "semantic_text": "#/components/schemas/_types.mapping.SemanticTextProperty",
+            "sparse_vector": "#/components/schemas/_types.mapping.SparseVectorProperty",
+            "completion": "#/components/schemas/_types.mapping.CompletionProperty",
+            "constant_keyword": "#/components/schemas/_types.mapping.ConstantKeywordProperty",
+            "counted_keyword": "#/components/schemas/_types.mapping.CountedKeywordProperty",
+            "alias": "#/components/schemas/_types.mapping.FieldAliasProperty",
+            "histogram": "#/components/schemas/_types.mapping.HistogramProperty",
+            "ip": "#/components/schemas/_types.mapping.IpProperty",
+            "murmur3": "#/components/schemas/_types.mapping.Murmur3HashProperty",
+            "token_count": "#/components/schemas/_types.mapping.TokenCountProperty",
+            "geo_point": "#/components/schemas/_types.mapping.GeoPointProperty",
+            "geo_shape": "#/components/schemas/_types.mapping.GeoShapeProperty",
+            "point": "#/components/schemas/_types.mapping.PointProperty",
+            "shape": "#/components/schemas/_types.mapping.ShapeProperty",
+            "byte": "#/components/schemas/_types.mapping.ByteNumberProperty",
+            "double": "#/components/schemas/_types.mapping.DoubleNumberProperty",
+            "float": "#/components/schemas/_types.mapping.FloatNumberProperty",
+            "half_float": "#/components/schemas/_types.mapping.HalfFloatNumberProperty",
+            "integer": "#/components/schemas/_types.mapping.IntegerNumberProperty",
+            "long": "#/components/schemas/_types.mapping.LongNumberProperty",
+            "scaled_float": "#/components/schemas/_types.mapping.ScaledFloatNumberProperty",
+            "short": "#/components/schemas/_types.mapping.ShortNumberProperty",
+            "unsigned_long": "#/components/schemas/_types.mapping.UnsignedLongNumberProperty",
+            "date_range": "#/components/schemas/_types.mapping.DateRangeProperty",
+            "double_range": "#/components/schemas/_types.mapping.DoubleRangeProperty",
+            "float_range": "#/components/schemas/_types.mapping.FloatRangeProperty",
+            "integer_range": "#/components/schemas/_types.mapping.IntegerRangeProperty",
+            "ip_range": "#/components/schemas/_types.mapping.IpRangeProperty",
+            "long_range": "#/components/schemas/_types.mapping.LongRangeProperty",
+            "icu_collation_keyword": "#/components/schemas/_types.mapping.IcuCollationProperty"
+          }
         },
         "oneOf": [
           {
@@ -60687,12 +61014,11 @@
             ]
           },
           "downsampling": {
-            "description": "The downsampling configuration to execute for the managed backing index after rollover.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleDownsampling"
-              }
-            ]
+            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
+            }
           },
           "enabled": {
             "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
@@ -60700,21 +61026,6 @@
             "type": "boolean"
           }
         }
-      },
-      "indices._types.DataStreamLifecycleDownsampling": {
-        "type": "object",
-        "properties": {
-          "rounds": {
-            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
-            }
-          }
-        },
-        "required": [
-          "rounds"
-        ]
       },
       "indices._types.DownsamplingRound": {
         "type": "object",
@@ -61611,7 +61922,14 @@
       },
       "connector._types.Validation": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "less_than": "#/components/schemas/connector._types.LessThanValidation",
+            "greater_than": "#/components/schemas/connector._types.GreaterThanValidation",
+            "list_type": "#/components/schemas/connector._types.ListTypeValidation",
+            "included_in": "#/components/schemas/connector._types.IncludedInValidation",
+            "regex": "#/components/schemas/connector._types.RegexValidation"
+          }
         },
         "oneOf": [
           {
@@ -66271,7 +66589,7 @@
             "type": "string"
           },
           "provider": {
-            "description": "The model provider for your deployment.\nNote that some providers may support only certain task types.\nSupported providers include:\n\n* `cohere` - available for `text_embedding` and `completion` task types\n* `databricks` - available for `completion` task type only\n* `meta` - available for `completion` task type only\n* `microsoft_phi` - available for `completion` task type only\n* `mistral` - available for `completion` task type only\n* `openai` - available for `text_embedding` and `completion` task types",
+            "description": "The model provider for your deployment.\nNote that some providers may support only certain task types.\nSupported providers include:\n\n* `cohere` - available for `text_embedding`, `rerank` and `completion` task types\n* `databricks` - available for `completion` task type only\n* `meta` - available for `completion` task type only\n* `microsoft_phi` - available for `completion` task type only\n* `mistral` - available for `completion` task type only\n* `openai` - available for `text_embedding` and `completion` task types",
             "type": "string"
           },
           "rate_limit": {
@@ -70924,15 +71242,10 @@
                 "description": "Controls what properties are added to `target_field`.",
                 "default": [
                   "name",
-                  "major",
-                  "minor",
-                  "patch",
-                  "build",
                   "os",
-                  "os_name",
-                  "os_major",
-                  "os_minor",
-                  "device"
+                  "device",
+                  "original",
+                  "version"
                 ],
                 "type": "array",
                 "items": {
@@ -72137,6 +72450,37 @@
             "type": "number"
           }
         }
+      },
+      "ml.evaluate_data_frame.ResponseBody": {
+        "type": "object",
+        "properties": {
+          "classification": {
+            "description": "Evaluation results for a classification analysis.\nIt outputs a prediction that identifies to which of the classes each document belongs.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeClassificationSummary"
+              }
+            ]
+          },
+          "outlier_detection": {
+            "description": "Evaluation results for an outlier detection analysis.\nIt outputs the probability that each document is an outlier.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeOutlierDetectionSummary"
+              }
+            ]
+          },
+          "regression": {
+            "description": "Evaluation results for a regression analysis which outputs a prediction of values.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ml.evaluate_data_frame.DataframeRegressionSummary"
+              }
+            ]
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
       },
       "ml.evaluate_data_frame.DataframeClassificationSummary": {
         "type": "object",
@@ -80662,6 +81006,50 @@
           "type"
         ]
       },
+      "transform.get_node_stats.TransformNodeFullStats": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/transform.get_node_stats.TransformNodeStats"
+              }
+            ]
+          }
+        },
+        "required": [
+          "total"
+        ]
+      },
+      "transform.get_node_stats.TransformNodeStats": {
+        "type": "object",
+        "properties": {
+          "scheduler": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/transform.get_node_stats.TransformSchedulerStats"
+              }
+            ]
+          }
+        },
+        "required": [
+          "scheduler"
+        ]
+      },
+      "transform.get_node_stats.TransformSchedulerStats": {
+        "type": "object",
+        "properties": {
+          "registered_transform_count": {
+            "type": "number"
+          },
+          "peek_transform": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "registered_transform_count"
+        ]
+      },
       "transform.get_transform.TransformSummary": {
         "type": "object",
         "properties": {
@@ -83630,7 +84018,7 @@
       "async_search.submit-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
+        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices.\n(This includes `_all` string or when no indices have been specified)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -83660,7 +84048,7 @@
       "async_search.submit-analyze_wildcard": {
         "in": "query",
         "name": "analyze_wildcard",
-        "description": "Specify whether wildcard and prefix queries should be analyzed (default: false)",
+        "description": "Specify whether wildcard and prefix queries should be analyzed",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -83720,7 +84108,7 @@
       "async_search.submit-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
+        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -83770,7 +84158,7 @@
       "async_search.submit-max_concurrent_shard_requests": {
         "in": "query",
         "name": "max_concurrent_shard_requests",
-        "description": "The number of concurrent shard requests per node this search executes concurrently. This value should be used to limit the impact of the search on the cluster in order to limit the number of concurrent shard requests",
+        "description": "The number of concurrent shard requests per node this search executes concurrently.\nThis value should be used to limit the impact of the search on the cluster in order to limit the number of concurrent shard requests",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -83780,7 +84168,7 @@
       "async_search.submit-preference": {
         "in": "query",
         "name": "preference",
-        "description": "Specify the node or shard the operation should be performed on (default: random)",
+        "description": "Specify the node or shard the operation should be performed on",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -83883,7 +84271,7 @@
       "async_search.submit-terminate_after": {
         "in": "query",
         "name": "terminate_after",
-        "description": "The maximum number of documents to collect for each shard, upon reaching which the query execution will terminate early.",
+        "description": "The maximum number of documents to collect for each shard, upon reaching which the query execution will terminate early",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -83903,7 +84291,7 @@
       "async_search.submit-track_total_hits": {
         "in": "query",
         "name": "track_total_hits",
-        "description": "Indicate if the number of documents that match the query should be tracked. A number can also be specified, to accurately track the total hit count up to the number.",
+        "description": "Indicate if the number of documents that match the query should be tracked.\nA number can also be specified, to accurately track the total hit count up to the number.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_global.search._types.TrackHits"
@@ -84003,7 +84391,7 @@
       "async_search.submit-size": {
         "in": "query",
         "name": "size",
-        "description": "Number of hits to return (default: 10)",
+        "description": "Number of hits to return",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84013,7 +84401,7 @@
       "async_search.submit-from": {
         "in": "query",
         "name": "from",
-        "description": "Starting offset (default: 0)",
+        "description": "Starting offset",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84685,7 +85073,7 @@
       "cluster.get_component_template-include_defaults": {
         "in": "query",
         "name": "include_defaults",
-        "description": "Return all default configurations for the component template (default: false)",
+        "description": "Return all default configurations for the component template",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -85062,7 +85450,7 @@
       "eql.search-index": {
         "in": "path",
         "name": "index",
-        "description": "The name of the index to scope the operation",
+        "description": "Comma-separated list of index names to scope the operation",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -85073,7 +85461,7 @@
       "eql.search-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
+        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices.\n(This includes `_all` string or when no indices have been specified)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -86093,7 +86481,7 @@
       "indices.put_index_template-cause": {
         "in": "query",
         "name": "cause",
-        "description": "User defined reason for creating/updating the index template",
+        "description": "User defined reason for creating or updating the index template",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -86103,7 +86491,7 @@
       "indices.put_mapping-index": {
         "in": "path",
         "name": "index",
-        "description": "A comma-separated list of index names the mapping should be added to (supports wildcards); use `_all` or omit to add the mapping on all indices.",
+        "description": "A comma-separated list of index names the mapping should be added to (supports wildcards).\nUse `_all` or omit to add the mapping on all indices.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -86710,7 +87098,7 @@
       "ingest.get_pipeline-summary": {
         "in": "query",
         "name": "summary",
-        "description": "Return pipelines without their definitions (default: false)",
+        "description": "Return pipelines without their definitions",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -87847,7 +88235,7 @@
       "scroll-scroll_id_": {
         "in": "query",
         "name": "scroll_id",
-        "description": "The scroll ID for scrolled search",
+        "description": "The scroll ID",
         "deprecated": true,
         "schema": {
           "$ref": "#/components/schemas/_types.ScrollId"
@@ -88368,7 +88756,7 @@
       "search_mvt-index": {
         "in": "path",
         "name": "index",
-        "description": "Comma-separated list of data streams, indices, or aliases to search",
+        "description": "A list of indices, data streams, or aliases to search.\nIt supports wildcards (`*`).\nTo search all data streams and indices, omit this parameter or use `*` or `_all`.\nTo search a remote cluster, use the `<cluster>:<target>` syntax.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -88379,7 +88767,7 @@
       "search_mvt-field": {
         "in": "path",
         "name": "field",
-        "description": "Field containing geospatial data to return",
+        "description": "A field that contains the geospatial data to return.\nIt must be a `geo_point` or `geo_shape` field.\nThe field must have doc values enabled. It cannot be a nested field.\n\nNOTE: Vector tiles do not natively support geometry collections.\nFor `geometrycollection` values in a `geo_shape` field, the API returns a hits layer feature for each element of the collection.\nThis behavior may change in a future release.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -88390,7 +88778,7 @@
       "search_mvt-zoom": {
         "in": "path",
         "name": "zoom",
-        "description": "Zoom level for the vector tile to search",
+        "description": "The zoom level of the vector tile to search. It accepts `0` to `29`.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -88401,7 +88789,7 @@
       "search_mvt-x": {
         "in": "path",
         "name": "x",
-        "description": "X coordinate for the vector tile to search",
+        "description": "The X coordinate for the vector tile to search.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -88412,7 +88800,7 @@
       "search_mvt-y": {
         "in": "path",
         "name": "y",
-        "description": "Y coordinate for the vector tile to search",
+        "description": "The Y coordinate for the vector tile to search.",
         "required": true,
         "deprecated": false,
         "schema": {

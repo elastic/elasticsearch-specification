@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Metadata, Name, Refresh } from '@_types/common'
+import { MediaType, Metadata, Name, Refresh } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { RoleDescriptor } from '@security/_types/RoleDescriptor'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -52,7 +52,12 @@ export interface Request extends RequestBase {
       methods: ['PUT', 'POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.
+     */
     refresh?: Refresh
   }
   body: {

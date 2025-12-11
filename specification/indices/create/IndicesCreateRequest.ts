@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName, Name, WaitForActiveShards } from '@_types/common'
+import { IndexName, MediaType, Name, WaitForActiveShards } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Duration } from '@_types/Time'
 import { Alias } from '@indices/_types/Alias'
@@ -27,6 +27,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Create an index.
+ *
  * You can use the create index API to add a new index to an Elasticsearch cluster.
  * When creating an index, you can specify the following:
  *
@@ -74,6 +75,8 @@ export interface Request extends RequestBase {
      */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

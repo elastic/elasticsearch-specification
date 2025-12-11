@@ -18,12 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
  * Resume a follower.
+ *
  * Resume a cross-cluster replication follower index that was paused.
  * The follower index could have been paused with the pause follower API.
  * Alternatively it could be paused due to replication that cannot be retried due to failures during following tasks.
@@ -41,8 +42,11 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** Name of the follow index to resume following */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

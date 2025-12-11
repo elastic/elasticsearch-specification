@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { HttpHeaders, Id, Metadata, VersionString } from '@_types/common'
+import {
+  HttpHeaders,
+  Id,
+  MediaType,
+  Metadata,
+  VersionString
+} from '@_types/common'
 import { integer } from '@_types/Numeric'
 import {
   DataframeAnalysisAnalyzedFields,
@@ -29,6 +35,7 @@ import {
 
 /**
  * Create a data frame analytics job.
+ *
  * This API creates a data frame analytics job that performs an analysis on the
  * source indices and stores the outcome in a destination index.
  * By default, the query used in the source configuration is `{"match_all": {}}`.
@@ -59,6 +66,8 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * Specifies whether this job can start when there is insufficient machine
