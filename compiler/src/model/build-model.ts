@@ -157,12 +157,11 @@ export function compileSpecification (specsFolder: string, outputFolder: string)
   return model
 }
 
-function compileRequest(declaration: InterfaceDeclaration, mappings: Record<string, model.Endpoint>, allEnums: EnumDeclaration[]): model.Request {
+function compileRequest (declaration: InterfaceDeclaration, mappings: Record<string, model.Endpoint>, allEnums: EnumDeclaration[]): model.Request {
   const name = declaration.getName()
 
-  let type: model.Request | model.Response
   const namespace = getNameSpace(declaration)
-  type = {
+  const type: model.Request = {
     specLocation: sourceLocation(declaration),
     kind: 'request',
     name: { name, namespace },
@@ -357,13 +356,11 @@ function compileRequest(declaration: InterfaceDeclaration, mappings: Record<stri
   return type
 }
 
-
-function compileResponse(declaration: ClassDeclaration): model.Response {
+function compileResponse (declaration: ClassDeclaration): model.Response {
   const name = declaration.getName()
   assert(declaration, name != null, 'Anonymous definitions should not exists')
 
-  let type: model.Request | model.Response
-  type = {
+  const type: model.Response = {
     specLocation: sourceLocation(declaration),
     kind: 'response',
     name: { name, namespace: getNameSpace(declaration) },
@@ -460,7 +457,6 @@ function compileResponse(declaration: ClassDeclaration): model.Response {
     'Responses cannot be extended'
   )
 
-
   for (const typeParameter of declaration.getTypeParameters()) {
     type.generics = (type.generics ?? []).concat({
       name: modelGenerics(typeParameter),
@@ -470,7 +466,6 @@ function compileResponse(declaration: ClassDeclaration): model.Response {
 
   return type
 }
-
 
 function compileType (declaration: ClassDeclaration | InterfaceDeclaration): model.Interface | model.Enum {
   const name = declaration.getName()
