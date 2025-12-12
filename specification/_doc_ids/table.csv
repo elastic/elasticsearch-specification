@@ -398,6 +398,7 @@ inference-api-put-huggingface,https://www.elastic.co/docs/api/doc/elasticsearch/
 inference-api-put-jinaai,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-jinaai,,
 inference-api-put-llama,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-llama,,
 inference-api-put-mistral,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-mistral,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/infer-service-mistral.html,
+inference-api-put-nvidia,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-nvidia,,
 inference-api-put-openai,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-openai,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/infer-service-openai.html,
 inference-api-put-openshift-ai,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-openshift-ai,,
 inference-api-put-voyageai,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-voyageai,,

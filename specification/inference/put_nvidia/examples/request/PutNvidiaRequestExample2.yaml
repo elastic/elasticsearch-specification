@@ -1,0 +1,19 @@
+summary: A text embedding task with custom `task_settings` and no `url` parameter
+description:
+  Run `PUT _inference/text_embedding/nvidia-text-embedding` to create an inference endpoint
+  that performs a `text_embedding` task, specifying custom `task_settings` and omitting the `url` parameter
+  if model is accessible via default NVIDIA endpoint.
+method_request: 'PUT _inference/text_embedding/nvidia-text-embedding'
+# type: "request"
+value: |-
+  {
+      "service": "nvidia",
+      "service_settings": {
+          "model_id": "nvidia/llama-3.2-nv-embedqa-1b-v2",
+          "api_key": "nvidia-text-embeddings-token"
+      },
+      "task_settings": {
+          "input_type": "ingest",
+          "truncate": "start"
+      }
+  }
