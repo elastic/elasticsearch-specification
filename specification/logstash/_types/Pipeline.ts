@@ -68,6 +68,7 @@ export class Pipeline {
    * The configuration for the pipeline.
    * @ext_doc_id logstash-configuration-file-structure
    */
+  // eslint-disable-next-line es-spec-validator/no-same-name-as-enclosing-type
   pipeline: string
   /**
    * Optional metadata about the pipeline, which can have any contents.

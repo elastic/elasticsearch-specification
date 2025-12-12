@@ -32,51 +32,27 @@ const ruleTester = new RuleTester({
 
 ruleTester.run('no-same-name-as-enclosing-type', rule, {
   valid: [
-    `type MyDict = Dictionary<string, object>`,
-    `type MyMapping = Dictionary<string, any>`,
-    `type MyType = { field: string }`,
-    `class MyClass { prop: integer }`,
+    `class MyClass { 
+      field: integer
+      anotherfield: string 
+    }`,
   ],
   invalid: [
     {
-      code: `type MyRecord = Record<string, object>`,
-      errors: [{ messageId: 'noNativeType' }]
+      code: `class MyClass { MyClass: integer }`,
+      errors: [{ messageId: 'shouldNotUseClassNameForFieldNames' }]
     },
     {
-      code: `type MyPart = Partial<SomeType>`,
-      errors: [{ messageId: 'noNativeType' }]
+      code: `class MyClass { myclass: integer }`,
+      errors: [{ messageId: 'shouldNotUseClassNameForFieldNames' }]
     },
     {
-      code:  `type MyReq = Required<SomeType>`,
-      errors: [{ messageId: 'noNativeType' }]
-    },
-    {
-      code: `type MyPick = Pick<SomeType, "field">`,
-      errors: [{ messageId: 'noNativeType' }]
-    },
-    {
-      code: `type MyOmit = Omit<SomeType, "field">`,
-      errors: [{ messageId: 'noNativeType' }]
-    },
-    {
-      code: `type MyMap = Map<string, object>`,
-      errors: [{ messageId: 'noNativeType' }]
-    },
-    {
-      code: `type MySet = Set<string>`,
-      errors: [{ messageId: 'noNativeType' }]
-    },
-    {
-      code: `type MyWeakMap = WeakMap<object, string>`,
-      errors: [{ messageId: 'noNativeType' }]
-    },
-    {
-      code: `type MyWeakSet = WeakSet<object>`,
-      errors: [{ messageId: 'noNativeType' }]
-    },
-    {
-      code: `class MyClass { items: Map<string, number> }`,
-      errors: [{ messageId: 'noNativeType' }]
-    },
+      code: `class MyClass { 
+        field: integer
+        anotherfield: string
+        myclass: boolean 
+        }`,
+      errors: [{ messageId: 'shouldNotUseClassNameForFieldNames' }]
+    }
   ],
 })

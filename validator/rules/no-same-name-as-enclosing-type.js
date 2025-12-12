@@ -17,47 +17,51 @@
  * under the License.
  */
 import { ESLintUtils } from '@typescript-eslint/utils';
+import ts from "typescript";
 
 const createRule = ESLintUtils.RuleCreator(name => `https://example.com/rule/${name}`)
-
-const TYPE_SUGGESTIONS = {
-  'Record': 'Use Dictionary instead',
-  'Partial': 'Use spec-defined aliases instead',
-  'Required': 'Use spec-defined aliases instead',
-  'Pick': 'Use spec-defined aliases instead',
-  'Omit': 'Use spec-defined aliases instead',
-  'Map': 'Use Dictionary instead',
-  'Set': 'Use an array type instead (e.g., string[])',
-  'WeakMap': 'Use Dictionary instead',
-  'WeakSet': 'Use an array type instead',
-};
 
 export default createRule({
   name: 'no-same-name-as-enclosing-type',
   create(context) {
     return {
-      TSTypeReference(node) {
-        console.log("BBBBBBBBBBB")
-        const typeName = node.typeName.name;
-        if (TYPE_SUGGESTIONS[typeName]) {
-          context.report({ 
-            node, 
-            messageId: 'noNativeType',
-            data: {
-              type: typeName,
-              suggestion: TYPE_SUGGESTIONS[typeName]
+      ClassDeclaration(node) {
+        if (!node.id || !node.id.name) {
+          return; // anonymous class - nothing to check
+        }
+        const services = ESLintUtils.getParserServices(context)
+        const tsClass = services.esTreeNodeToTSNodeMap.get(node);
+        if (!tsClass || !tsClass.members) {
+          return; // no fields
+        }
+        const className = node.id.name;
+        for (const member of tsClass.members) {
+            // Property declarations on the class (instance or static fields)
+            if (ts.isPropertyDeclaration(member) || ts.isPropertySignature?.(member)) {
+                const name = member.name;
+                if (name && name.kind === ts.SyntaxKind.Identifier) {
+                    if (String(name.escapedText).toUpperCase() === className.toUpperCase()) {
+                        context.report({
+                            node,
+                            messageId: 'shouldNotUseClassNameForFieldNames',
+                            data: {
+                                class: className,
+                                suggestion: 'Fields in a class should not have the same name as the class itself.'
+                            }
+                        })
+                    }
+                }
             }
-          })
         }
       },
     }
   },
   meta: {
     docs: {
-      description: 'TypeScript native utility and collection types not allowed, use spec-defined aliases',
+      description: 'Classes having fields with the same name as the class is breaking for some client libraries.',
     },
     messages: {
-      noNativeType: 'Native TypeScript type "{{type}}" is not allowed. {{suggestion}}.'
+      shouldNotUseClassNameForFieldNames: 'Class "{{class}}" has invalid fields. {{suggestion}}.'
     },
     type: 'suggestion',
   },
