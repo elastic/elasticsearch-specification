@@ -19,8 +19,8 @@
 
 import { Metadata, Name } from '@_types/common'
 
+// eslint-disable-next-line es-spec-validator/no-same-name-as-enclosing-type
 export class Actions {
-  // eslint-disable-next-line es-spec-validator/no-same-name-as-enclosing-type
   actions: string[]
   application?: string
   name?: Name

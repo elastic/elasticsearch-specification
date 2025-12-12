@@ -1072,8 +1072,8 @@ export class Scripting {
   contexts?: Context[]
 }
 
+// eslint-disable-next-line es-spec-validator/no-same-name-as-enclosing-type
 export class Context {
-  // eslint-disable-next-line es-spec-validator/no-same-name-as-enclosing-type
   context?: string
   compilations?: long
   cache_evictions?: long
