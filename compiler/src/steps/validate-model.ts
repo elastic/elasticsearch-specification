@@ -19,7 +19,6 @@
 
 import * as model from '../model/metamodel'
 import { ValidationErrors } from '../validation-errors'
-import { JsonSpec } from '../model/json-spec'
 import assert from 'assert'
 import { TypeName } from '../model/metamodel'
 
@@ -46,7 +45,7 @@ enum JsonEvent {
  * - verify that request parents don't define properties (would they be path/request/body properties?)
  * - verify that unions can be distinguished in a JSON stream (otherwise they should be inheritance trees)
  */
-export default async function validateModel (apiModel: model.Model, restSpec: Map<string, JsonSpec>, errors: ValidationErrors): Promise<model.Model> {
+export default async function validateModel (apiModel: model.Model, errors: ValidationErrors): Promise<model.Model> {
   const initialTypeCount = apiModel.types.length
 
   // Returns the fully-qualified name of a type name

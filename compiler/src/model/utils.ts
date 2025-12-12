@@ -35,7 +35,6 @@ import {
   Node,
   Project
 } from 'ts-morph'
-import { closest } from 'fastest-levenshtein'
 import semver from 'semver'
 import chalk from 'chalk'
 import * as model from './metamodel'
@@ -629,6 +628,23 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
   }
 }
 
+export function updateEndpoints (mappings: Record<string, model.Endpoint>, name: string): model.Endpoint {
+  mappings[name] = {
+    name: name,
+    // @ts-expect-error TODO
+    description: null,
+    // @ts-expect-error TODO
+    docUrl: null,
+    request: null,
+    requestBodyRequired: false,
+    response: null,
+    urls: []
+  }
+  mappings[name].availability = {}
+
+  return mappings[name]
+}
+
 /** Lifts jsDoc type annotations to request properties */
 export function hoistRequestAnnotations (
   request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
@@ -651,9 +667,7 @@ export function hoistRequestAnnotations (
   assert(jsDocs, apiName !== '' && apiName !== null && apiName !== undefined,
     `Request ${request.name.name} does not declare the @rest_spec_name to link back to`)
 
-  const endpoint = mappings[apiName]
-  assert(jsDocs, endpoint != null, `The api '${apiName}' does not exists, did you mean '${closest(apiName, Object.keys(mappings))}'?`)
-
+  const endpoint = updateEndpoints(mappings, apiName)
   endpoint.request = request.name
   endpoint.response = response
 
