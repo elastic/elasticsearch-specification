@@ -5,21 +5,22 @@ It is configured [in the specification directory](../specification/eslint.config
 
 ## Rules
 
-| Name                                  | Description                                                                                                                                                                                    |
-|---------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `single-key-dictionary-key-is-string` | `SingleKeyDictionary` keys must be strings.                                                                                                                                                    |
-| `dictionary-key-is-string`            | `Dictionary` keys must be strings.                                                                                                                                                             |
-| `no-native-types`                     | TypeScript native utility types (`Record`, `Partial`, etc.) and collection types (`Map`, `Set`, etc.) are not allowed. Use spec-defined aliases like `Dictionary` instead.                     |
-| `invalid-node-types`                  | The spec uses a subset of TypeScript, so some types, clauses and expressions are not allowed.                                                                                                  |
-| `no-generic-number`                   | Generic `number` type is not allowed outside of `_types/Numeric.ts`. Use concrete numeric types like `integer`, `long`, `float`, `double`, etc.                                                |
-| `request-must-have-urls`              | All Request interfaces extending `RequestBase` must have a `urls` property defining their endpoint paths and HTTP methods.                                                                     |
-| `no-variants-on-responses`            | `@variants` is only supported on Interface types, not on Request or Response classes. Use value_body pattern with `@codegen_name` instead. Includes additional checks on variant tag use.                             |
-| `no-inline-unions`                    | Inline union types (e.g., `field: A \| B`) are not allowed in properties/fields. Define a named type alias instead to improve code generation for statically-typed languages.                  |
-| `prefer-tagged-variants`              | Union of class types should use tagged variants (`@variants internal` or `@variants container`) instead of inline unions for better deserialization support in statically-typed languages.     |
-| `no-duplicate-type-names`             | All types must be unique across class and enum definitions.                                                                                                                                    |
-| `no-all-string-literal-unions         | Unions consisting entirely of string literals (e.g., `"green" \| "yellow" \| "red"`) are not allowed, use enums instead.                                                                       | 
+| Name                                  | Description                                                                                                                                                                                |
+|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `single-key-dictionary-key-is-string` | `SingleKeyDictionary` keys must be strings.                                                                                                                                                |
+| `dictionary-key-is-string`            | `Dictionary` keys must be strings.                                                                                                                                                         |
+| `no-native-types`                     | TypeScript native utility types (`Record`, `Partial`, etc.) and collection types (`Map`, `Set`, etc.) are not allowed. Use spec-defined aliases like `Dictionary` instead.                 |
+| `no-same-name-as-enclosing-type`      | TODO                                                                                                                                                                                       |
+| `invalid-node-types`                  | The spec uses a subset of TypeScript, so some types, clauses and expressions are not allowed.                                                                                              |
+| `no-generic-number`                   | Generic `number` type is not allowed outside of `_types/Numeric.ts`. Use concrete numeric types like `integer`, `long`, `float`, `double`, etc.                                            |
+| `request-must-have-urls`              | All Request interfaces extending `RequestBase` must have a `urls` property defining their endpoint paths and HTTP methods.                                                                 |
+| `no-variants-on-responses`            | `@variants` is only supported on Interface types, not on Request or Response classes. Use value_body pattern with `@codegen_name` instead. Includes additional checks on variant tag use.  |
+| `no-inline-unions`                    | Inline union types (e.g., `field: A \| B`) are not allowed in properties/fields. Define a named type alias instead to improve code generation for statically-typed languages.              |
+| `prefer-tagged-variants`              | Union of class types should use tagged variants (`@variants internal` or `@variants container`) instead of inline unions for better deserialization support in statically-typed languages. |
+| `no-duplicate-type-names`             | All types must be unique across class and enum definitions.                                                                                                                                |
+| `no-all-string-literal-unions         | Unions consisting entirely of string literals (e.g., `"green" \| "yellow" \| "red"`) are not allowed, use enums instead.                                                                   | 
 | `jsdoc-endpoint-check`                | Validates JSDoc on endpoints in the specification. Ensuring consistent formatting. Some errors can be fixed with `--fix`.                                                                  |
-| `codegen-exclude-on-request-only`     | Ensures `@codegen_exclude` is only used on request definitions located in namespaced `specification/` files (i.e. files.                         |
+| `codegen-exclude-on-request-only`     | Ensures `@codegen_exclude` is only used on request definitions located in namespaced `specification/` files (i.e. files.                                                                   |
 
 ## Usage
 
