@@ -4,5 +4,6 @@ value: |-
   {
    "service_settings": {
      "api_key": "<API_KEY>"
-   }
+   },
+  "service": "example-service"
   }
