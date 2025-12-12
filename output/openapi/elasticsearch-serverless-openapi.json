@@ -2847,8 +2847,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -2978,8 +2977,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -3070,8 +3068,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -3159,8 +3156,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -3257,8 +3253,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -3338,8 +3333,7 @@
                 ]
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -3422,8 +3416,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -3503,8 +3496,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -3579,8 +3571,7 @@
                 ]
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -3660,8 +3651,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -3748,8 +3738,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -3829,8 +3818,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -3914,8 +3902,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -5343,8 +5330,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -5781,8 +5767,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -6514,8 +6499,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -10329,8 +10313,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -10932,8 +10915,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -14610,8 +14592,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -16018,8 +15999,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -16407,8 +16387,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -16670,8 +16649,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -16981,8 +16959,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -17378,8 +17355,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -17633,8 +17609,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -17743,8 +17718,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -18093,8 +18067,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -18787,8 +18760,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -19227,8 +19199,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -19313,8 +19284,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -20159,8 +20129,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -20430,8 +20399,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -20614,8 +20582,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -20788,8 +20755,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -22151,8 +22117,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -22340,8 +22305,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -22534,8 +22498,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -22961,8 +22924,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -25140,8 +25102,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -25826,8 +25787,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -26351,8 +26311,7 @@
                 ]
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -26555,8 +26514,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -27324,8 +27282,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -28133,8 +28090,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -28536,8 +28492,7 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -88276,8 +88231,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "connector.put": {
         "content": {
@@ -88511,8 +88465,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "explain": {
         "content": {
@@ -88908,8 +88861,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "indices.put_mapping": {
         "content": {
@@ -89010,8 +88962,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "indices.put_settings": {
         "content": {
@@ -89288,8 +89239,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "mget": {
         "content": {
@@ -89337,8 +89287,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "ml.get_calendars": {
         "content": {
@@ -89590,8 +89539,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "rank_eval": {
         "content": {
@@ -89626,8 +89574,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "render_search_template": {
         "content": {
@@ -90253,8 +90200,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "security.create_api_key": {
         "content": {
@@ -90306,8 +90252,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "security.has_privileges": {
         "content": {
@@ -90343,8 +90288,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "security.put_role": {
         "content": {
@@ -90422,8 +90366,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "security.query_api_keys": {
         "content": {
@@ -90697,8 +90640,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "sql.translate": {
         "content": {
@@ -90752,8 +90694,7 @@
               }
             }
           }
-        },
-        "required": true
+        }
       },
       "terms_enum": {
         "content": {
