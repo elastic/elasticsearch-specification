@@ -23,6 +23,12 @@
  * @doc_id api-root
  */
 export interface Request {
+  urls: [
+    {
+      path: "/foo"
+      methods: ["GET"]
+    }
+  ]
   body: {
     foo: string
   }

@@ -32,7 +32,6 @@ import {
   TypeAliasDeclaration
 } from 'ts-morph'
 import * as model from './metamodel'
-import buildJsonSpec from './json-spec'
 import {
   assert,
   customTypes,
@@ -57,62 +56,10 @@ import {
   mediaTypeToStringArray
 } from './utils'
 
-const jsonSpec = buildJsonSpec()
-
-export function reAddAvailability (model: model.Model): model.Model {
-  for (const [api, spec] of jsonSpec.entries()) {
-    for (const endpoint of model.endpoints) {
-      if (endpoint.name === api) {
-        if ((spec.stability != null || spec.visibility != null) && (endpoint.availability.stack === undefined && endpoint.availability.serverless === undefined)) {
-          endpoint.availability = {
-            stack: {
-              stability: spec.stability,
-              visibility: spec.visibility
-            }
-          }
-        }
-      }
-    }
-  }
-  return model
-}
-
-export function compileEndpoints (): Record<string, model.Endpoint> {
-  // Create endpoints and merge them with
-  // the recorded mappings if present.
-  const map = {}
-  for (const [api, spec] of jsonSpec.entries()) {
-    map[api] = {
-      name: api,
-      description: spec.documentation.description,
-      docUrl: spec.documentation.url,
-      docTag: spec.docTag,
-      extDocUrl: spec.externalDocs?.url,
-      // Setting these values by default should be removed
-      // when we no longer use rest-api-spec stubs as the
-      // source of truth for stability/visibility.
-      availability: {},
-      request: null,
-      requestBodyRequired: Boolean(spec.body?.required),
-      response: null,
-      urls: spec.url.paths.map(path => {
-        return {
-          path: path.path,
-          methods: path.methods,
-          ...(path.deprecated != null && { deprecation: path.deprecated })
-        }
-      })
-    }
-    if (typeof spec.feature_flag === 'string') {
-      map[api].availability.stack = { featureFlag: spec.feature_flag }
-    }
-  }
-  return map
-}
-
-export function compileSpecification (endpointMappings: Record<string, model.Endpoint>, specsFolder: string, outputFolder: string): model.Model {
+export function compileSpecification (specsFolder: string, outputFolder: string): model.Model {
   const tsConfigFilePath = join(specsFolder, 'tsconfig.json')
   const project = new Project({ tsConfigFilePath })
+  const endpointMappings: Record<string, model.Endpoint> = {}
 
   verifyUniqueness(project)
 
@@ -151,9 +98,6 @@ export function compileSpecification (endpointMappings: Record<string, model.End
     definedButNeverUsed.join('\n'),
     { encoding: 'utf8', flag: 'w' }
   )
-  for (const api of jsonSpec.keys()) {
-    model.endpoints.push(endpointMappings[api])
-  }
 
   // Visit all class, interface, enum and type alias definitions
   for (const declaration of declarations.classes) {
@@ -174,6 +118,11 @@ export function compileSpecification (endpointMappings: Record<string, model.End
 
   // Sort the types in alphabetical order
   sortTypeDefinitions(model.types)
+
+  const sortedEndpointKeys = Object.keys(endpointMappings).sort()
+  for (const key of sortedEndpointKeys) {
+    model.endpoints.push(endpointMappings[key])
+  }
 
   return model
 }
@@ -223,6 +172,10 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       const mapping = mappings[namespace.includes('_global') ? namespace.slice(8) : namespace]
       if (mapping == null) {
         throw new Error(`Cannot find url template for ${namespace}, very likely the specification folder does not follow the rest-api-spec`)
+      }
+
+      if (type.description !== '' && type.description !== null && type.description !== undefined) {
+        mapping.description = type.description
       }
 
       let pathMember: Node | null = null
@@ -288,7 +241,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         assert(
           pathMember as Node,
           urlTemplateParams.includes(part.name),
-          `The property '${part.name}' does not exist in the rest-api-spec ${namespace} url template`
+          `The property '${part.name}' does not exist in the url template`
         )
         if (type.query.map(p => p.name).includes(part.name)) {
           const queryType = type.query.find(property => property != null && property.name === part.name) as model.Property
@@ -635,7 +588,7 @@ function visitRequestOrResponseProperty (member: PropertyDeclaration | PropertyS
  * ```
  * urls: [
  *   {
- *     /** @deprecated 1.2.3 Use something else
+ *     /** \@deprecated 1.2.3 Use something else
  *     path: '/some/path',
  *     methods: ["GET", "POST"]
  *   }
