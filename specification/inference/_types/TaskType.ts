@@ -42,6 +42,7 @@ export enum TaskTypeAlibabaCloudAI {
 
 export enum TaskTypeAmazonBedrock {
   text_embedding,
+  chat_completion,
   completion
 }
 

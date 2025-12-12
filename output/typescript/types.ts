@@ -13766,7 +13766,7 @@ export interface InferenceAmazonBedrockTaskSettings {
   top_p?: float
 }
 
-export type InferenceAmazonBedrockTaskType = 'completion' | 'text_embedding'
+export type InferenceAmazonBedrockTaskType = 'chat_completion' | 'completion' | 'text_embedding'
 
 export interface InferenceAnthropicServiceSettings {
   api_key: string
@@ -14217,7 +14217,7 @@ export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank'
 
 export type InferenceTaskTypeAlibabaCloudAI = 'text_embedding' | 'rerank' | 'completion' | 'sparse_embedding'
 
-export type InferenceTaskTypeAmazonBedrock = 'text_embedding' | 'completion'
+export type InferenceTaskTypeAmazonBedrock = 'text_embedding' | 'chat_completion' | 'completion'
 
 export type InferenceTaskTypeAnthropic = 'completion'
 

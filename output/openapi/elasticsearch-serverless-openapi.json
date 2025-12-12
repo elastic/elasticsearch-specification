@@ -56074,6 +56074,7 @@
       "inference._types.AmazonBedrockTaskType": {
         "type": "string",
         "enum": [
+          "chat_completion",
           "completion",
           "text_embedding"
         ]
@@ -56176,6 +56177,7 @@
         "type": "string",
         "enum": [
           "text_embedding",
+          "chat_completion",
           "completion"
         ]
       },

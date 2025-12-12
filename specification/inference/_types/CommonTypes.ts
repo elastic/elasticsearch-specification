@@ -434,6 +434,7 @@ export class AmazonBedrockTaskSettings {
 }
 
 export enum AmazonBedrockTaskType {
+  chat_completion,
   completion,
   text_embedding
 }
