@@ -3,7 +3,7 @@
     "transform-to-openapi": "npm run transform-to-openapi --prefix compiler --"
   },
   "dependencies": {
-    "@redocly/cli": "^1.34.5"
+    "@redocly/cli": "^1.34.6"
   },
   "version": "overlay"
 }
