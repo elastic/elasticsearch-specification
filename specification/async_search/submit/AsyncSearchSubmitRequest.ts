@@ -294,6 +294,7 @@ export interface Request extends RequestBase {
     from?: integer
     /**
      * A comma-separated list of <field>:<direction> pairs
+     * @ext_doc_id sort-search-results
      */
     sort?: string | string[]
   }
