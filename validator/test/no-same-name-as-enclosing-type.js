@@ -36,6 +36,10 @@ ruleTester.run('no-same-name-as-enclosing-type', rule, {
       field: integer
       anotherfield: string 
     }`,
+    `class MyClass { 
+      /** @codegen_name new_name **/
+      myclass: integer
+    }`
   ],
   invalid: [
     {
@@ -50,6 +54,15 @@ ruleTester.run('no-same-name-as-enclosing-type', rule, {
       code: `class MyClass { 
         field: integer
         anotherfield: string
+        myclass: boolean 
+        }`,
+      errors: [{ messageId: 'shouldNotUseClassNameForFieldNames' }]
+    },
+    {
+      code: `class MyClass {
+        field: integer
+        anotherfield: string
+        /** @codegen_name myclass **/
         myclass: boolean 
         }`,
       errors: [{ messageId: 'shouldNotUseClassNameForFieldNames' }]
