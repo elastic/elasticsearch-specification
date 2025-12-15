@@ -164,6 +164,7 @@ export interface Request<TDocument> extends RequestBase {
     require_data_stream?: boolean
     /**
      * A custom value that is used to route operations to a specific shard.
+     * @ext_doc_id search-shard-routing
      */
     routing?: Routing
     /**
