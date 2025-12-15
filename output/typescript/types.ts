@@ -170,6 +170,7 @@ export interface CountRequest extends RequestBase {
   q?: string
   body?: {
     query?: QueryDslQueryContainer
+    project_routing?: ProjectRouting
   }
 }
 
@@ -7694,8 +7695,10 @@ export interface CatCountCountRecord {
 export interface CatCountRequest extends CatCatRequestBase {
   index?: Indices
   h?: CatCatCountColumns
-  project_routing?: ProjectRouting
   s?: Names
+  body?: {
+    project_routing?: ProjectRouting
+  }
 }
 
 export type CatCountResponse = CatCountCountRecord[]
