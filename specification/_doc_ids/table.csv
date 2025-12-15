@@ -153,7 +153,7 @@ connector-update-scheduling,https://www.elastic.co/docs/api/doc/elasticsearch/op
 connector-update-service-type,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-connector-update-service-type,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/update-connector-service-type-api.html,
 connector-update-status,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-connector-update-status,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/update-connector-status-api.html,
 convert-processor,https://www.elastic.co/docs/reference/enrich-processor/convert-processor,,
-create_index_from_source_index,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source
+create_index_from_source_index,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source,,
 cron-expressions,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#api-cron-expressions,,
 csv-processor,https://www.elastic.co/docs/reference/enrich-processor/csv-processor,,
 dangling-index-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-dangling-indices-delete-dangling-index,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/dangling-index-delete.html,
@@ -232,12 +232,12 @@ esql-returning-localized-results,https://www.elastic.co/docs/explore-analyze/que
 esql-get-query,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-get-query,,
 esql-list-queries,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-list-queries,,
 evaluate-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-evaluate-data-frame,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/evaluate-dfanalytics.html,
-evaluate-ranked-search-results,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-rank-eval
+evaluate-ranked-search-results,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-rank-eval,,
 execute-enrich-policy-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/execute-enrich-policy-api.html,
 execute-watch,https://www.elastic.co/docs/explore-analyze/alerts-cases/watcher/execute-watch,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/watcher-api-execute-watch.html,
 expected-reciprocal,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rank-eval#_expected_reciprocal_rank_err,,
 explain-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-explain-data-frame-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/explain-dfanalytics.html,
-explain-lifecycle-state,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/explain-lifecycle
+explain-lifecycle-state,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/explain-lifecycle,,
 fail-processor,https://www.elastic.co/docs/reference/enrich-processor/fail-processor,,
 features-reset,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-reset-features,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/reset-features-api.html,
 field-and-document-access-control,https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level,,
@@ -783,11 +783,11 @@ search-highlight,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/h
 search-knn,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-knn-search,,
 search-multi-search,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/search-multi-search.html,
 search-multi-search-template,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/multi-search-template.html,
-search-profile,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-profile
+search-profile,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-profile,,
 search-rank-eval,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rank-eval,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/search-rank-eval.html,
 search-search,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/search-search.html,
 search-shards,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-shards,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/search-shards.html,
-search-shard-routing,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing
+search-shard-routing,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing,,
 search-template,https://www.elastic.co/docs/solutions/search/search-templates,,
 search-template-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-template,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/search-template-api.html,
 search-terms-enum,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-terms-enum,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/search-terms-enum.html,
@@ -946,7 +946,7 @@ synonym-set-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation/o
 synonym-set-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-synonyms-get-synonym,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/get-synonyms-set.html,
 synonym-set-list,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-synonyms-get-synonym,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/get-synonyms-set.html,
 synonym-solr,https://www.elastic.co/docs/reference/text-analysis/analysis-synonym-graph-tokenfilter#_solr_format_2,,
-suggester,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-suggesters
+suggester,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-suggesters,,
 supported-flags,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-simple-query-string-query#supported-flags,,
 tasks,https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/tasks.html,
 templating-role-query,https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level#templating-role-query,,
