@@ -119,6 +119,7 @@ export class SearchRequestBody {
    * Set to `true` to return detailed timing information about the execution of individual components in a search request.
    * NOTE: This is a debugging tool and adds significant overhead to search execution.
    * @server_default false
+   * @ext_doc_id search-profile
    */
   profile?: boolean
   /**
