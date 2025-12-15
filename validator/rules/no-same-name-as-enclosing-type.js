@@ -29,8 +29,10 @@ const createRule = ESLintUtils.RuleCreator(name => `https://example.com/rule/${n
 function commentAboveFieldHasCodegenName(comments, field) {
     for (const comment of comments) {
         if (comment.loc.end.line === field.loc.start.line-1) { // checking the comment is one line above the field
-            if (comment.value && comment.value.includes("@codegen_name") && !comment.value.includes(field.name))
-            return true
+            if (comment.value && comment.value.includes("@codegen_name")){
+                const newName = comment.value.replaceAll("*","").trim().split(" ")[1]
+                if (newName !== field.name) return true
+            }
         }
     }
     return false
