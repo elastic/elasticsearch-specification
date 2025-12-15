@@ -105,6 +105,7 @@ export class AggregateOutput {
   exponent?: Weights
 }
 
+// eslint-disable-next-line es-spec-validator/no-same-name-as-enclosing-type
 export class Weights {
   weights: double
 }
