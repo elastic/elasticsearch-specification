@@ -236,6 +236,7 @@ execute-enrich-policy-api,https://www.elastic.co/docs/api/doc/elasticsearch/oper
 execute-watch,https://www.elastic.co/docs/explore-analyze/alerts-cases/watcher/execute-watch,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/watcher-api-execute-watch.html,
 expected-reciprocal,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rank-eval#_expected_reciprocal_rank_err,,
 explain-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-explain-data-frame-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/explain-dfanalytics.html,
+explain-lifecycle-state,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/explain-lifecycle
 fail-processor,https://www.elastic.co/docs/reference/enrich-processor/fail-processor,,
 features-reset,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-reset-features,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/reset-features-api.html,
 field-and-document-access-control,https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level,,

@@ -32,6 +32,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=6.6.0 stability=stable
  * @index_privileges view_index_metadata,manage_ilm
  * @doc_id ilm-explain-lifecycle
+ * @ext_doc_id explain-lifecycle-state
  */
 export interface Request extends RequestBase {
   urls: [
