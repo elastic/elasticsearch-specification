@@ -99,7 +99,13 @@ export interface Request extends RequestBase {
      */
     keep_on_completion?: boolean
     /**
-     * Specifies a subset of projects to target for the search using project
+     * Timeout duration to wait for the request to finish. Defaults to no timeout, meaning the request waits for complete search results.
+     */
+    wait_for_completion_timeout?: Duration
+  }
+  body: {
+    /**
+     * Specifies a subset of projects to target using project
      * metadata tags in a subset of Lucene query syntax.
      * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
      * Examples:
@@ -110,12 +116,6 @@ export interface Request extends RequestBase {
      * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
      */
     project_routing?: ProjectRouting
-    /**
-     * Timeout duration to wait for the request to finish. Defaults to no timeout, meaning the request waits for complete search results.
-     */
-    wait_for_completion_timeout?: Duration
-  }
-  body: {
     /**
      * EQL query you wish to run.
      * @doc_id eql-syntax

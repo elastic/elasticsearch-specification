@@ -947,6 +947,40 @@
             "$ref": "#/components/parameters/cat.count-s"
           }
         ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/cat.count"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/cat.count-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cat"
+        ],
+        "summary": "Get a document count",
+        "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "cat-count-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.count-h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count-s"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/cat.count"
+        },
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.count-200"
@@ -968,7 +1002,7 @@
         ],
         "summary": "Get a document count",
         "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
-        "operationId": "cat-count-1",
+        "operationId": "cat-count-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.count-index"
@@ -980,6 +1014,43 @@
             "$ref": "#/components/parameters/cat.count-s"
           }
         ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/cat.count"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/cat.count-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cat"
+        ],
+        "summary": "Get a document count",
+        "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "cat-count-3",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.count-index"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count-h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count-s"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/cat.count"
+        },
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.count-200"
@@ -10830,109 +10901,67 @@
         "operationId": "indices-resolve-index",
         "parameters": [
           {
-            "in": "path",
-            "name": "name",
-            "description": "Comma-separated name(s) or index pattern(s) of the indices, aliases, and data streams to resolve.\nResources on remote clusters can be specified using the `<cluster>`:`<name>` syntax.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Names"
-            },
-            "style": "simple"
+            "$ref": "#/components/parameters/indices.resolve_index-name"
           },
           {
-            "in": "query",
-            "name": "expand_wildcards",
-            "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.ExpandWildcards"
-            },
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_index-expand_wildcards"
           },
           {
-            "in": "query",
-            "name": "ignore_unavailable",
-            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_index-ignore_unavailable"
           },
           {
-            "in": "query",
-            "name": "allow_no_indices",
-            "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_index-allow_no_indices"
           },
           {
-            "in": "query",
-            "name": "mode",
-            "description": "Filter indices by index mode - standard, lookup, time_series, etc. Comma-separated list of IndexMode. Empty means no filter.",
-            "deprecated": false,
-            "schema": {
-              "oneOf": [
-                {
-                  "$ref": "#/components/schemas/indices._types.IndexMode"
-                },
-                {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/indices._types.IndexMode"
-                  }
-                }
-              ]
-            },
-            "x-state": "Generally available",
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_index-mode"
           }
         ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/indices.resolve_index"
+        },
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "indices": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/indices.resolve_index.ResolveIndexItem"
-                      }
-                    },
-                    "aliases": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/indices.resolve_index.ResolveIndexAliasItem"
-                      }
-                    },
-                    "data_streams": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/indices.resolve_index.ResolveIndexDataStreamsItem"
-                      }
-                    }
-                  },
-                  "required": [
-                    "indices",
-                    "aliases",
-                    "data_streams"
-                  ]
-                },
-                "examples": {
-                  "ResolveIndexResponseExample1": {
-                    "description": "A successful response from `GET /_resolve/index/f*,remoteCluster1:bar*?expand_wildcards=all`.",
-                    "value": "{\n  \"indices\": [\n    {\n      \"name\": \"foo_closed\",\n      \"attributes\": [\n        \"closed\"\n      ],\n      \"mode\": \"standard\"\n    },\n    {\n      \"name\": \"freeze-index\",\n      \"aliases\": [\n        \"f-alias\"\n      ],\n      \"attributes\": [\n        \"open\"\n      ]\n    },\n    {\n      \"name\": \"remoteCluster1:bar-01\",\n      \"attributes\": [\n        \"open\"\n      ]\n    }\n  ],\n  \"aliases\": [\n    {\n      \"name\": \"f-alias\",\n      \"indices\": [\n        \"freeze-index\",\n        \"my-index-000001\"\n      ]\n    }\n  ],\n  \"data_streams\": [\n    {\n      \"name\": \"foo\",\n      \"backing_indices\": [\n        \".ds-foo-2099.03.07-000001\"\n      ],\n      \"timestamp_field\": \"@timestamp\"\n    }\n  ]\n}"
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/indices.resolve_index-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "indices"
+        ],
+        "summary": "Resolve indices",
+        "description": "Resolve the names and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
+        "operationId": "indices-resolve-index-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/indices.resolve_index-name"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_index-expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_index-ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_index-allow_no_indices"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_index-mode"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/indices.resolve_index"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/indices.resolve_index-200"
           }
         },
         "x-state": "Generally available",
@@ -83264,6 +83293,47 @@
           }
         }
       },
+      "indices.resolve_index-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "indices": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/indices.resolve_index.ResolveIndexItem"
+                  }
+                },
+                "aliases": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/indices.resolve_index.ResolveIndexAliasItem"
+                  }
+                },
+                "data_streams": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/indices.resolve_index.ResolveIndexDataStreamsItem"
+                  }
+                }
+              },
+              "required": [
+                "indices",
+                "aliases",
+                "data_streams"
+              ]
+            },
+            "examples": {
+              "ResolveIndexResponseExample1": {
+                "description": "A successful response from `GET /_resolve/index/f*,remoteCluster1:bar*?expand_wildcards=all`.",
+                "value": "{\n  \"indices\": [\n    {\n      \"name\": \"foo_closed\",\n      \"attributes\": [\n        \"closed\"\n      ],\n      \"mode\": \"standard\"\n    },\n    {\n      \"name\": \"freeze-index\",\n      \"aliases\": [\n        \"f-alias\"\n      ],\n      \"attributes\": [\n        \"open\"\n      ]\n    },\n    {\n      \"name\": \"remoteCluster1:bar-01\",\n      \"attributes\": [\n        \"open\"\n      ]\n    }\n  ],\n  \"aliases\": [\n    {\n      \"name\": \"f-alias\",\n      \"indices\": [\n        \"freeze-index\",\n        \"my-index-000001\"\n      ]\n    }\n  ],\n  \"data_streams\": [\n    {\n      \"name\": \"foo\",\n      \"backing_indices\": [\n        \".ds-foo-2099.03.07-000001\"\n      ],\n      \"timestamp_field\": \"@timestamp\"\n    }\n  ]\n}"
+              }
+            }
+          }
+        }
+      },
       "indices.rollover-200": {
         "description": "",
         "content": {
@@ -87427,6 +87497,68 @@
         },
         "style": "form"
       },
+      "indices.resolve_index-name": {
+        "in": "path",
+        "name": "name",
+        "description": "Comma-separated name(s) or index pattern(s) of the indices, aliases, and data streams to resolve.\nResources on remote clusters can be specified using the `<cluster>`:`<name>` syntax.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Names"
+        },
+        "style": "simple"
+      },
+      "indices.resolve_index-expand_wildcards": {
+        "in": "query",
+        "name": "expand_wildcards",
+        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.ExpandWildcards"
+        },
+        "style": "form"
+      },
+      "indices.resolve_index-ignore_unavailable": {
+        "in": "query",
+        "name": "ignore_unavailable",
+        "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.resolve_index-allow_no_indices": {
+        "in": "query",
+        "name": "allow_no_indices",
+        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.resolve_index-mode": {
+        "in": "query",
+        "name": "mode",
+        "description": "Filter indices by index mode - standard, lookup, time_series, etc. Comma-separated list of IndexMode. Empty means no filter.",
+        "deprecated": false,
+        "schema": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/indices._types.IndexMode"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/indices._types.IndexMode"
+              }
+            }
+          ]
+        },
+        "x-state": "Generally available",
+        "style": "form"
+      },
       "indices.rollover-alias": {
         "in": "path",
         "name": "alias",
@@ -90375,6 +90507,15 @@
         },
         "required": true
       },
+      "cat.count": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      },
       "clear_scroll": {
         "content": {
           "application/json": {
@@ -91175,6 +91316,15 @@
           }
         },
         "required": true
+      },
+      "indices.resolve_index": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
       },
       "indices.rollover": {
         "content": {
