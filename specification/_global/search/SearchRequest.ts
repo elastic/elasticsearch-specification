@@ -545,6 +545,7 @@ export interface Request extends RequestBase {
     fields?: Array<FieldAndFormat>
     /**
      * Defines a suggester that provides similar looking terms based on a provided text.
+     * @ext_doc_id suggester
      */
     suggest?: Suggester
     /**
