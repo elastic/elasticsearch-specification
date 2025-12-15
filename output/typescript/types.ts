@@ -11360,6 +11360,7 @@ export interface EqlSearchRequest extends RequestBase {
   keep_on_completion?: boolean
   wait_for_completion_timeout?: Duration
   body?: {
+    project_routing?: ProjectRouting
     query: string
     case_sensitive?: boolean
     event_category_field?: Field
@@ -22668,6 +22669,7 @@ export interface SqlQueryRequest extends RequestBase {
     page_timeout?: Duration
     params?: any[]
     query?: string
+    project_routing?: ProjectRouting
     request_timeout?: Duration
     runtime_mappings?: MappingRuntimeFields
     time_zone?: TimeZone
