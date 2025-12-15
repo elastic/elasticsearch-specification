@@ -637,6 +637,7 @@ regexp-syntax,https://www.elastic.co/docs/reference/query-languages/query-dsl/re
 register-repository,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/self-managed,,
 registered-domain-processor,https://www.elastic.co/docs/reference/enrich-processor/registered-domain-processor,,
 reindex-indices,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reindex-indices,,
+reindex_legacy_backing_indices,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reindex-data-stream,,
 relevance-scores,https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl#relevance-scores,,
 remove-processor,https://www.elastic.co/docs/reference/enrich-processor/remove-processor,,
 remote-clusters-api-key,https://www.elastic.co/docs/deploy-manage/remote-clusters/remote-clusters-api-key,,

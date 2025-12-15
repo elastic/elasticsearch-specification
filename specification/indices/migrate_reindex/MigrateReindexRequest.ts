@@ -30,6 +30,7 @@ import { IndexName, MediaType } from '@_types/common'
  * @availability stack since=8.18.0 stability=stable
  * @doc_id migration-api-reindex
  * @doc_tag migration
+ * @ext_doc_id reindex_legacy_backing_indices
  */
 export interface Request extends RequestBase {
   urls: [
