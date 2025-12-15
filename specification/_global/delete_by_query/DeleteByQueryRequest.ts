@@ -219,6 +219,7 @@ export interface Request extends RequestBase {
     /**
      * If `true`, the request cache is used for this request.
      * Defaults to the index-level setting.
+     * @ext_doc_id shard-request-cache
      */
     request_cache?: boolean
     /**
