@@ -440,6 +440,7 @@ export class Endpoint {
   name: string
   description: string
   docUrl: string
+  docServerlessUrl: string
   docId?: string
   extDocId?: string
   extDocUrl?: string
