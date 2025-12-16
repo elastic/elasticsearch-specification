@@ -226,6 +226,8 @@ export class DiversifyRetriever extends RetrieverBase {
   rank_window_size?: integer
   /** The query vector used for diversification. */
   query_vector?: QueryVector
+  /** a dense vector query vector builder to use instead of a static query_vector */
+  query_vector_builder?: QueryVectorBuilder
   /** Controls the trade-off between relevance and diversity for MMR. A value of 0.0 focuses solely on diversity, while a value of 1.0 focuses solely on relevance. Required for MMR */
   lambda?: float
 }
