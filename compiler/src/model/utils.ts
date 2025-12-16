@@ -628,23 +628,6 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
   }
 }
 
-export function updateEndpoints (mappings: Record<string, model.Endpoint>, name: string): model.Endpoint {
-  mappings[name] = {
-    name: name,
-    // @ts-expect-error TODO
-    description: null,
-    // @ts-expect-error TODO
-    docUrl: null,
-    request: null,
-    requestBodyRequired: false,
-    response: null,
-    urls: []
-  }
-  mappings[name].availability = {}
-
-  return mappings[name]
-}
-
 /** Lifts jsDoc type annotations to request properties */
 export function hoistRequestAnnotations (
   request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
@@ -667,9 +650,19 @@ export function hoistRequestAnnotations (
   assert(jsDocs, apiName !== '' && apiName !== null && apiName !== undefined,
     `Request ${request.name.name} does not declare the @rest_spec_name to link back to`)
 
-  const endpoint = updateEndpoints(mappings, apiName)
-  endpoint.request = request.name
-  endpoint.response = response
+  const endpoint: model.Endpoint = {
+    name: apiName,
+    // @ts-expect-error this will be filled in SetTags below
+    description: null,
+    // @ts-expect-error this will be filled in SetTags below
+    docUrl: null,
+    request: request.name,
+    requestBodyRequired: false,
+    response: response,
+    urls: [],
+    availability: {}
+  }
+  mappings[apiName] = endpoint
 
   // This ensures the tags from request end up on the endpoint
   setTags(jsDocs, request, tags, knownRequestAnnotations, (tags, tag, value) => {
