@@ -20,10 +20,10 @@
               "type": "enum",
               "description": "The task type",
               "options": [
-                "rerank",
-                "text_embedding",
+                "chat_completion",
                 "completion",
-                "chat_completion"
+                "rerank",
+                "text_embedding"
               ]
             },
             "nvidia_inference_id": {

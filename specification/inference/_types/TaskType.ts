@@ -141,10 +141,10 @@ export enum TaskTypeMistral {
 }
 
 export enum TaskTypeNvidia {
-  text_embedding,
   chat_completion,
   completion,
-  rerank
+  rerank,
+  text_embedding
 }
 
 export enum TaskTypeOpenAI {

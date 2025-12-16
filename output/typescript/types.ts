@@ -14845,7 +14845,7 @@ export interface InferenceNvidiaTaskSettings {
   truncate?: InferenceCohereTruncateType
 }
 
-export type InferenceNvidiaTaskType = 'text_embedding' | 'completion' | 'chat_completion' | 'rerank'
+export type InferenceNvidiaTaskType = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export interface InferenceOpenAIServiceSettings {
   api_key: string
@@ -14966,7 +14966,7 @@ export type InferenceTaskTypeLlama = 'text_embedding' | 'chat_completion' | 'com
 
 export type InferenceTaskTypeMistral = 'text_embedding' | 'chat_completion' | 'completion'
 
-export type InferenceTaskTypeNvidia = 'text_embedding' | 'chat_completion' | 'completion' | 'rerank'
+export type InferenceTaskTypeNvidia = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export type InferenceTaskTypeOpenAI = 'text_embedding' | 'chat_completion' | 'completion'
 

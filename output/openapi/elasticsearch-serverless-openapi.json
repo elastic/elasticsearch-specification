@@ -68922,10 +68922,10 @@
       "inference._types.NvidiaTaskType": {
         "type": "string",
         "enum": [
-          "text_embedding",
-          "completion",
           "chat_completion",
-          "rerank"
+          "completion",
+          "rerank",
+          "text_embedding"
         ]
       },
       "inference._types.NvidiaServiceType": {
@@ -68942,7 +68942,7 @@
             "type": "string"
           },
           "url": {
-            "description": "The URL of the Nvidia model endpoint.",
+            "description": "The URL of the Nvidia model endpoint. If not provided, the default endpoint URL is used depending on the task type:\n\n* For `text_embedding` task - `https://integrate.api.nvidia.com/v1/embeddings`.\n* For `completion` and `chat_completion` tasks - `https://integrate.api.nvidia.com/v1/chat/completions`.\n* For `rerank` task - `https://ai.api.nvidia.com/v1/retrieval/nvidia/reranking`.",
             "type": "string"
           },
           "model_id": {
@@ -68950,7 +68950,7 @@
             "type": "string"
           },
           "max_input_tokens": {
-            "description": "For a `text_embedding` task, the maximum number of tokens per input before chunking occurs.",
+            "description": "For a `text_embedding` task, the maximum number of tokens per input. Inputs exceeding this value are truncated prior to sending to the Nvidia API.",
             "type": "number"
           },
           "similarity": {
@@ -68995,7 +68995,7 @@
             ]
           },
           "truncate": {
-            "description": "For a `text_embedding` task, the method to handle inputs longer than the maximum token length.\nValid values are:\n\n* `END`: When the input exceeds the maximum input token length, the end of the input is discarded.\n* `NONE`: When the input exceeds the maximum input token length, an error is returned.\n* `START`: When the input exceeds the maximum input token length, the start of the input is discarded.",
+            "description": "For a `text_embedding` task, the method used by the Nvidia model to handle inputs longer than the maximum token length.\nValid values are:\n\n* `END`: When the input exceeds the maximum input token length, the end of the input is discarded.\n* `NONE`: When the input exceeds the maximum input token length, an error is returned.\n* `START`: When the input exceeds the maximum input token length, the start of the input is discarded.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.CohereTruncateType"
@@ -69042,10 +69042,10 @@
       "inference._types.TaskTypeNvidia": {
         "type": "string",
         "enum": [
-          "text_embedding",
           "chat_completion",
           "completion",
-          "rerank"
+          "rerank",
+          "text_embedding"
         ]
       },
       "inference._types.OpenAITaskType": {

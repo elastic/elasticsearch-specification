@@ -1816,7 +1816,11 @@ export class NvidiaServiceSettings {
    */
   api_key: string
   /**
-   * The URL of the Nvidia model endpoint.
+   * The URL of the Nvidia model endpoint. If not provided, the default endpoint URL is used depending on the task type:
+   *
+   * * For `text_embedding` task - `https://integrate.api.nvidia.com/v1/embeddings`.
+   * * For `completion` and `chat_completion` tasks - `https://integrate.api.nvidia.com/v1/chat/completions`.
+   * * For `rerank` task - `https://ai.api.nvidia.com/v1/retrieval/nvidia/reranking`.
    */
   url?: string
   /**
@@ -1831,7 +1835,7 @@ export class NvidiaServiceSettings {
    */
   model_id: string
   /**
-   * For a `text_embedding` task, the maximum number of tokens per input before chunking occurs.
+   * For a `text_embedding` task, the maximum number of tokens per input. Inputs exceeding this value are truncated prior to sending to the Nvidia API.
    */
   max_input_tokens?: integer
   /**
@@ -1846,10 +1850,10 @@ export class NvidiaServiceSettings {
 }
 
 export enum NvidiaTaskType {
-  text_embedding,
-  completion,
   chat_completion,
-  rerank
+  completion,
+  rerank,
+  text_embedding
 }
 
 export enum NvidiaServiceType {
@@ -1874,7 +1878,7 @@ export class NvidiaTaskSettings {
    */
   input_type?: NvidiaInputType
   /**
-   * For a `text_embedding` task, the method to handle inputs longer than the maximum token length.
+   * For a `text_embedding` task, the method used by the Nvidia model to handle inputs longer than the maximum token length.
    * Valid values are:
    *
    * * `END`: When the input exceeds the maximum input token length, the end of the input is discarded.
