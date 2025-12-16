@@ -18,12 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * Validate a query.
+ *
  * Validates a query without running it.
  * @rest_spec_name indices.validate_query
  * @availability stack since=1.3.0 stability=stable
@@ -49,6 +50,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
@@ -72,8 +75,8 @@ export interface Request extends RequestBase {
      */
     analyze_wildcard?: boolean
     /**
-     * The default operator for query string query: `AND` or `OR`.
-     * @server_default OR
+     * The default operator for query string query: `and` or `or`.
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -85,7 +88,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -114,7 +116,7 @@ export interface Request extends RequestBase {
      */
     q?: string
   }
-  body: {
+  body?: {
     /**
      * Query in the Lucene query string syntax.
      */

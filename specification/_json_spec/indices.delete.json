@@ -1,8 +1,8 @@
 {
   "indices.delete": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-index.html",
-      "description": "Deletes an index."
+      "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete",
+      "description": "Delete indices"
     },
     "stability": "stable",
     "visibility": "public",
@@ -26,22 +26,26 @@
     "params": {
       "timeout": {
         "type": "time",
+        "default": "30s",
         "description": "Explicit operation timeout"
       },
       "master_timeout": {
         "type": "time",
+        "default": "30s",
         "description": "Specify timeout for connection to master"
       },
       "ignore_unavailable": {
         "type": "boolean",
+        "default": false,
         "description": "Ignore unavailable indexes (default: false)"
       },
       "allow_no_indices": {
         "type": "boolean",
+        "default": true,
         "description": "Ignore if a wildcard expression resolves to no concrete indices (default: false)"
       },
       "expand_wildcards": {
-        "type": "enum",
+        "type": "list",
         "options": ["open", "closed", "hidden", "none", "all"],
         "default": "open,closed",
         "description": "Whether wildcard expressions should get expanded to open, closed, or hidden indices"

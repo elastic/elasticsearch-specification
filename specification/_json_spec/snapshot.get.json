@@ -1,8 +1,8 @@
 {
   "snapshot.get": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
-      "description": "Returns information about a snapshot."
+      "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get",
+      "description": "Get snapshot information"
     },
     "stability": "stable",
     "visibility": "public",
@@ -30,22 +30,27 @@
     "params": {
       "master_timeout": {
         "type": "time",
+        "default": "30s",
         "description": "Explicit operation timeout for connection to master node"
       },
       "ignore_unavailable": {
         "type": "boolean",
+        "default": false,
         "description": "Whether to ignore unavailable snapshots, defaults to false which means a SnapshotMissingException is thrown"
       },
       "index_names": {
         "type": "boolean",
+        "default": true,
         "description": "Whether to include the name of each index in the snapshot. Defaults to true."
       },
       "index_details": {
         "type": "boolean",
+        "default": false,
         "description": "Whether to include details of each index in the snapshot, if those details are available. Defaults to false."
       },
       "include_repository": {
         "type": "boolean",
+        "default": true,
         "description": "Whether to include the repository name in the snapshot info. Defaults to true."
       },
       "sort": {
@@ -63,7 +68,8 @@
         "description": "Allows setting a sort order for the result. Defaults to start_time"
       },
       "size": {
-        "type": "integer",
+        "type": "int",
+        "default": 0,
         "description": "Maximum number of snapshots to return. Defaults to 0 which means return all that match without limit."
       },
       "order": {
@@ -81,7 +87,8 @@
         "description": "Offset identifier to start pagination from as returned by the 'next' field in the response body."
       },
       "offset": {
-        "type": "integer",
+        "type": "int",
+        "default": 0,
         "description": "Numeric offset to start pagination based on the snapshots matching the request. Defaults to 0"
       },
       "slm_policy_filter": {
@@ -90,7 +97,19 @@
       },
       "verbose": {
         "type": "boolean",
+        "default": true,
         "description": "Whether to show verbose snapshot info or only show the basic info found in the repository index blob"
+      },
+      "state": {
+        "type": "list",
+        "description": "Filter snapshots by a comma-separated list of states. Valid state values are 'SUCCESS', 'IN_PROGRESS', 'FAILED', 'PARTIAL', or 'INCOMPATIBLE'.",
+        "options": [
+          "IN_PROGRESS",
+          "SUCCESS",
+          "FAILED",
+          "PARTIAL",
+          "INCOMPATIBLE"
+        ]
       }
     }
   }

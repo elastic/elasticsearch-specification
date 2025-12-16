@@ -17,17 +17,18 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { IndexName, MediaType, PipelineName } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { ComponentTemplateNode } from '@cluster/_types/ComponentTemplate'
 import { IndexTemplate } from '@indices/_types/IndexTemplate'
 import { Pipeline } from '@ingest/_types/Pipeline'
 import { Document } from '@ingest/_types/Simulation'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { RequestBase } from '@_types/Base'
-import { IndexName, PipelineName } from '@_types/common'
-import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 /**
  * Simulate data ingestion.
+ *
  * Run ingest pipelines against a set of provided documents, optionally with substitute pipeline definitions, to simulate ingesting data into an index.
  *
  * This API is meant to be used for troubleshooting or pipeline development, as it does not actually index any data into Elasticsearch.
@@ -69,12 +70,22 @@ export interface Request extends RequestBase {
      */
     index?: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The pipeline to use as the default pipeline.
      * This value can be used to override the default pipeline of the index.
      */
     pipeline?: PipelineName
+    /**
+     * The mapping merge type if mapping overrides are being provided in mapping_addition.
+     * The allowed values are one of index or template.
+     * The index option merges mappings the way they would be merged into an existing index.
+     * The template option merges mappings the way they would be merged into a template.
+     * @server_default index
+     */
+    merge_type?: MergeType
   }
   body: {
     /**
@@ -97,4 +108,9 @@ export interface Request extends RequestBase {
      */
     pipeline_substitutions?: Dictionary<string, Pipeline>
   }
+}
+
+enum MergeType {
+  index,
+  template
 }

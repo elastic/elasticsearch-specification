@@ -12,9 +12,18 @@ actions:
       # A
         - name: autoscaling
           x-displayName: Autoscaling
+          description: >
+            The autoscaling APIs enable you to create and manage autoscaling policies and retrieve information about autoscaling capacity.
+            Autoscaling adjusts resources based on demand. A deployment can use autoscaling to scale resources as needed, ensuring sufficient capacity to meet workload requirements.
+          externalDocs:
+            url: https://www.elastic.co/docs/deploy-manage/autoscaling
+            description: Learn more about autoscaling.
       # B
         - name: analytics
           x-displayName: Behavioral analytics
+          description: >
+            The behavioral analytics APIs let you create and manage analytics collections and view their data.
+            Use them to analyze users’ search and click behavior, improve result relevance, and identify content gaps.
       # C 
         - name: cat
           x-displayName: Compact and aligned text (CAT)
@@ -26,8 +35,16 @@ actions:
             All the cat commands accept a query string parameter `help` to see all the headers and info they provide, and the `/_cat` command alone lists all the available commands.
         - name: cluster
           x-displayName: Cluster
+          description: >
+            The cluster APIs enable you to retrieve information about your infrastructure on cluster, node, or shard level.
+            You can manage cluster settings and voting configuration exceptions, collect node statistics and retrieve node information.
+          externalDocs:
+            url: https://www.elastic.co/docs/deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-state-overview
+            description: Learn more about the cluster state.
         - name: health_report
           x-displayName: Cluster - Health
+          description: >
+            The cluster - health API provides you a report with the health status of an Elasticsearch cluster.
         - name: connector
           x-displayName: Connector
           description: >
@@ -39,61 +56,93 @@ actions:
 
             This API requires the `manage_connector` privilege or, for read-only endpoints, the `monitor_connector` privilege.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors-tutorial-api.html
-            description: Check out the connector API tutorial
+            url: https://www.elastic.co/docs/reference/search-connectors/api-tutorial
+            description: Check out the connector API tutorial.
         - name: ccr
           x-displayName: Cross-cluster replication
+          description: >
+            The cross-cluster replication (CCR) APIs let you run replication operations, such as creating and managing follower indices or auto-follow patterns.
+            Use CCR to replicate indices across clusters to maintain search availability during outages, reduce indexing impact, and lower search latency by serving requests closer to users.
+          externalDocs:
+            description: Learn more about cross-cluster replication.
+            url: https://www.elastic.co/docs/deploy-manage/tools/cross-cluster-replication
       # D
         - name: data stream
           x-displayName: Data stream
+          description: >
+            The data stream APIs enable you to create and manage data streams and data stream lifecycles.
+            A data stream lets you store append-only time series data across multiple indices while giving you a single named resource for requests.
+            Data streams are well-suited for logs, events, metrics, and other continuously generated data.
           externalDocs:
             description: Learn more about data streams. 
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html
+            url: https://www.elastic.co/docs/manage-data/data-store/data-streams
         - name: document
           x-displayName: Document
+          description: >
+            The document APIs enable you to create and manage documents in an Elasticsearch index.
           externalDocs:
             description: Learn more about reading and writing documents.
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-replication.html
+            url: https://www.elastic.co/docs/deploy-manage/distributed-architecture/reading-and-writing-documents
       # E  
         - name: enrich
           x-displayName: Enrich
+          description: >
+            The enrich APIs enable you to manage enrich policies.
+            An enrich policy is a set of configuration options used to add the right enrich data to the right incoming documents.
+          externalDocs:
+            url: https://www.elastic.co/docs/manage-data/ingest/transform-enrich/data-enrichment
+            description: Learn more about data enrichment.
         - name: eql
           x-displayName: EQL
           description: >
             Event Query Language (EQL) is a query language for event-based time series data, such as logs, metrics, and traces.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html
+            url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/eql
             description: Learn more about EQL search.
         - name: esql
           x-displayName: ES|QL
           description: >
             The Elasticsearch Query Language (ES|QL) provides a powerful way to filter, transform, and analyze data stored in Elasticsearch, and in the future in other runtimes.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html
+            url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql
             description: Learn more about ES|QL.
       # F
         - name: features
-          description: The feature APIs enable you to introspect and manage features provided by Elasticsearch and Elasticsearch plugins.
           x-displayName: Features
+          description: >
+            The feature APIs enable you to introspect and manage features provided by Elasticsearch and Elasticsearch plugins.
+          externalDocs:
+            url: https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore#feature-state
+            description: Learn more about feature states.
         - name: fleet
           x-displayName: Fleet
+          description: >
+            The Fleet APIs support Fleet’s use of Elasticsearch as a data store for internal agent and action data.
+          externalDocs:
+            url: https://www.elastic.co/docs/reference/fleet
+            description: Learn more about Fleet.
       # G
         - name: graph
           x-displayName: Graph explore
           description: >
             The graph explore API enables you to extract and summarize information about the documents and terms in an Elasticsearch data stream or index.
           externalDocs:
-            url: https://www.elastic.co/guide/en/kibana/current/xpack-graph.html
+            url: https://www.elastic.co/docs/explore-analyze/visualize/graph
             description: Get started with Graph.
       # I
         - name: indices
           x-displayName: Index
           description: >
             Index APIs enable you to manage individual indices, index settings, aliases, mappings, and index templates.
+          externalDocs:
+            url: https://www.elastic.co/docs/manage-data/data-store/index-basics
+            description: Learn more about indices.
         - name: ilm
           x-displayName: Index lifecycle management
+          description: >
+            The index lifecycle management APIs enable you to set up policies to automatically manage the index lifecycle.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html
+            url: https://www.elastic.co/docs/manage-data/lifecycle/index-lifecycle-management
             description: Learn more about managing the index lifecycle.
         - name: inference
           x-displayName: Inference
@@ -101,11 +150,19 @@ actions:
             Inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio or Hugging Face.
             For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.
             However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
+          externalDocs:
+            url: https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api
+            description: Learn about default inference endpoints, adaptive allocations, and chunking.
         - name: info
           x-displayName: Info
+          description: >
+            The info API provides basic build, version, and cluster information.
         - name: ingest
           x-displayName: Ingest
           description: Ingest APIs enable you to manage tasks and resources related to ingest pipelines and processors.
+          externalDocs:
+            url: https://www.elastic.co/docs/manage-data/ingest
+            description: Learn more about ingesting data.
       # L  
         - name: license
           x-displayName: Licensing
@@ -118,36 +175,58 @@ actions:
           description: >
             Logstash APIs enable you to manage pipelines that are used by Logstash Central Management.
           externalDocs:
-            url: https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html
+            url: https://www.elastic.co/docs/reference/logstash/logstash-centralized-pipeline-management
             description: Learn more about centralized pipeline management.
       # M
         - name: ml
           x-displayName: Machine learning
+          description: >
+            The machine learning APIs enable you to retrieve information related to the Elastic Stack machine learning features.
+          externalDocs:
+            url: https://www.elastic.co/docs/explore-analyze/machine-learning
+            description: Learn more about machine learning.
         - name: ml anomaly
           x-displayName: Machine learning anomaly detection
-          # description:
+          description: >
+            The machine learning anomaly detection APIs enable you to perform anomaly detection activities.
           externalDocs:
-            url: https://www.elastic.co/guide/en/machine-learning/current/ml-ad-finding-anomalies.html
+            url: https://www.elastic.co/docs/explore-analyze/machine-learning/anomaly-detection/ml-ad-finding-anomalies
             description: Learn more about finding anomalies.
         - name: ml data frame
           x-displayName: Machine learning data frame analytics
-          # description:
+          description: >
+            The machine learning data frame analytics APIs enable you to perform data frame analytics activities.
           externalDocs:
-            url: https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-overview.html
+            url: https://www.elastic.co/docs/explore-analyze/machine-learning/data-frame-analytics/ml-dfa-overview
             description: Learn more about data frame analytics.
         - name: ml trained model
           x-displayName: Machine learning trained model
-          # description:
+          description: >
+            The machine learning trained models APIs enable you to perform model management operations.
           externalDocs:
-            url: https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-overview.html
+            url: https://www.elastic.co/docs/explore-analyze/machine-learning/nlp/ml-nlp-overview
             description: Learn more about natural language processing.
         - name: migration
           x-displayName: Migration
+          description: >
+            The migration APIs power Kibana's Upgrade Assistant feature.
+          externalDocs:
+            url: https://www.elastic.co/docs/deploy-manage/upgrade/prepare-to-upgrade/upgrade-assistant
+            description: Learn more about Kibana's Upgrade Assistant.
         - name: monitoring
           x-displayName: Monitoring
+          externalDocs:
+            url: https://www.elastic.co/docs/deploy-manage/monitor
+            description: Learn more about monitoring.
       # N
         - name: shutdown
           x-displayName: Node lifecycle
+          description: >
+            The node lifecycle APIs enable you to prepare nodes for temporary or permanent shutdown, monitor the shutdown status, and enable a previously shut-down node to resume normal operations.
+      # P
+        - name: project
+          x-displayName: Project
+          # description: 
       # Q
         - name: query_rules
           x-displayName: Query rules
@@ -158,12 +237,18 @@ actions:
             
             If a query matches one or more rules in the ruleset, the query is re-written to apply the rules before searching.
             This allows pinning documents for only queries that match a specific term.
+            Alternatively, you can use the [Query Rules UI](https://www.elastic.co/docs/solutions/search/query-rules-ui) to manage query rules.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-rule-query.html
-            description: Learn more about the rule query.
+            url: https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules
+            description: Learn more about searching with query rules.
       # R
         - name: rollup
           x-displayName: Rollup
+          description: >
+            The rollup APIs enable you to create, manage, and retrieve information about rollup jobs.
+          externalDocs:
+            url: https://www.elastic.co/docs/manage-data/lifecycle/rollup
+            description: Learn more about rollup.
       # S
         - name: script
           x-displayName: Script
@@ -171,35 +256,57 @@ actions:
             Use the script support APIs to get a list of supported script contexts and languages.
             Use the stored script APIs to manage stored scripts and search templates.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html
+            url: https://www.elastic.co/docs/explore-analyze/scripting
+            description: Learn more about scripting.
         - name: search
           x-displayName: Search
+          description: >
+            The search APIs enable you to search and aggregate data stored in Elasticsearch indices and data streams.
+          externalDocs:
+            url: https://www.elastic.co/docs/explore-analyze
+            description: Learn more about searching.
         - name: search_application
           x-displayName: Search application
+          description: >
+            The search application APIs enable you to manage tasks and resources related to Search Applications.
+          externalDocs:
+            url: https://www.elastic.co/docs/solutions/search/search-applications
+            description: Learn more about search applications.
         - name: searchable_snapshots
           x-displayName: Searchable snapshots
+          description: >
+            The searchable snapshots APIs enable you to perform searchable snapshots operations.
+          externalDocs:
+            url: https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/searchable-snapshots
+            description: Learn more about searchable snapshots.
         - name: security
           x-displayName: Security
+          description: >
+            The security APIs enable you to perform security activities, and add, update, retrieve, and remove application privileges, role mappings, and roles.
+            You can also create and update API keys and create and invalidate bearer tokens.
+          externalDocs:
+            url: https://www.elastic.co/docs/deploy-manage/security
+            description: Learn more about security.
         - name: snapshot
           x-displayName: Snapshot and restore
           description: >
             Snapshot and restore APIs enable you to set up snapshot repositories, manage snapshot backups, and restore snapshots to a running cluster.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html
+            url: https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore
             description: Learn more about snapshot and restore operations.
         - name: slm
           x-displayName: Snapshot lifecycle management
           description: >
             Snapshot lifecycle management (SLM) APIs enable you to set up policies to automatically take snapshots and control how long they are retained.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html
+            url: https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/create-snapshots
             description: Learn more about creating a snapshot.
         - name: sql
           x-displayName: SQL
           description: >
             Elasticsearch's SQL APIs enable you to run SQL queries on Elasticsearch indices and data streams.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-sql.html
+            url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/sql
             description: Check out the overview and tutorials for the Elasticsearch SQL features.
         - name: synonyms
           x-displayName: Synonyms
@@ -207,794 +314,807 @@ actions:
             The synonyms management API provides a convenient way to define and manage synonyms in an internal system index.
             Related synonyms can be grouped in a "synonyms set".
             Create as many synonym sets as you need.
+          externalDocs:
+            url: https://www.elastic.co/docs/solutions/search/full-text/search-with-synonyms
+            description: Learn more about synonyms.
       # T  
         - name: tasks
           x-displayName: Task management
+          description: >
+            The task management APIs enable you to retrieve information about tasks or cancel tasks running in a cluster.
+          externalDocs:
+            url: https://www.elastic.co/docs/troubleshoot/elasticsearch/task-queue-backlog
+            description: Check out the troubleshooting the Task Management API.
         - name: text_structure
           x-displayName: Text structure
+          description: >
+            The text structure APIs enable you to find the structure of a text field in an Elasticsearch index.
         - name: transform
           x-displayName: Transform
+          description: >
+            The transform APIs enable you to create and manage transforms.
+          externalDocs:
+            url: https://www.elastic.co/docs/explore-analyze/transforms
+            description: Learn more about transforms.
       # U
         - name: xpack
           x-displayName: Usage
+          description: >
+            The usage API provides usage information about the installed X-Pack features.
       # W
         - name: watcher
           x-displayName: Watcher
           description: >
             You can use Watcher to watch for changes or anomalies in your data and perform the necessary actions in response.
           externalDocs:
-            url: https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-alerting.html
+            url: https://www.elastic.co/docs/explore-analyze/alerts-cases/watcher
             description: Learn more about Watcher.
 # Add x-model and/or abbreviate schemas that should point to other references
-  - target: "$.components['schemas']['_types.query_dsl:QueryContainer']"
+  - target: "$.components['schemas']['_types.query_dsl.QueryContainer']"
     description: Add x-model for the QueryContainer object
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.analysis:CharFilter'].oneOf"
+  - target: "$.components['schemas']['_types.analysis.CharFilter'].oneOf"
     description: Remove existing oneOf definition for CharFilter
     remove: true
-  - target: "$.components['schemas']['_types.analysis:CharFilter']"
+  - target: "$.components['schemas']['_types.analysis.CharFilter']"
     description: Simplify CharFilter definition
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.analysis:Tokenizer'].oneOf"
+  - target: "$.components['schemas']['_types.analysis.Tokenizer'].oneOf"
     description: Remove existing oneOf definition for tokenizer
     remove: true
-  - target: "$.components['schemas']['_types.analysis:Tokenizer']"
+  - target: "$.components['schemas']['_types.analysis.Tokenizer']"
     description: Simplify tokenizer definition
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.analysis:TokenFilter'].oneOf"
+  - target: "$.components['schemas']['_types.analysis.TokenFilter'].oneOf"
     description: Remove existing oneOf definition for tokenfilter
     remove: true
-  - target: "$.components['schemas']['_types.analysis:TokenFilter']"
+  - target: "$.components['schemas']['_types.analysis.TokenFilter']"
     description: Simplify tokenfilter definition
     update:
       x-model: true
-  - target: "$.components['schemas']['security._types:RoleTemplateScript']"
+  - target: "$.components['schemas']['security._types.RoleTemplateScript']"
     description: Add x-model where recommended by Bump.sh
     update:
       x-model: true
       externalDocs:
         description: Templating a role query
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/field-and-document-access-control.html#templating-role-query
-  - target: "$.components['schemas']['_types.query_dsl:DistanceFeatureQuery']"
+        url: https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level#templating-role-query
+  - target: "$.components['schemas']['_types.query_dsl.DistanceFeatureQuery']"
     description: Add x-model for distance feature query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:GeoShapeQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.GeoShapeQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:GeoPolygonQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.GeoPolygonQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:GeoDistanceQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.GeoDistanceQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DistanceFeatureQueryBase']"
+  - target: "$.components['schemas']['_types.query_dsl.DistanceFeatureQueryBase']"
     description: Add x-model to distance feature query base
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:GeoDistanceFeatureQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.GeoDistanceFeatureQuery']"
     description: Add x-model to geo distance feature query 
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DistanceFeatureQueryBaseGeoLocationDistance']"
+  - target: "$.components['schemas']['_types.query_dsl.DistanceFeatureQueryBaseGeoLocationDistance']"
     description: Add x-model to distance feature query base geolocation distance
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DateDistanceFeatureQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.DateDistanceFeatureQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DistanceFeatureQueryBaseDateMathDuration']"
+  - target: "$.components['schemas']['_types.query_dsl.DistanceFeatureQueryBaseDateMathDuration']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MoreLikeThisQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MoreLikeThisQuery']"
     description: Add x-model for more like this query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:PercolateQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.PercolateQuery']"
     description: Add x-model for percolate query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:RankFeatureQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.RankFeatureQuery']"
     description: Add x-model for rank feature query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:ScriptQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.ScriptQuery']"
     description: Add x-model for script query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:ScriptScoreFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.ScriptScoreFunction']"
     description: Add x-model for script score query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:ScriptScoreQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.ScriptScoreQuery']"
     description: Add x-model for script score query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:WrapperQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.WrapperQuery']"
     description: Add x-model for wrapper query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:PinnedQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.PinnedQuery']"
     description: Add x-model for pinned query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:RuleQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.RuleQuery']"
     description: Add x-model for rule query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:BoolQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.BoolQuery']"
     description: Add x-model for boolean query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:QueryBase']"
+  - target: "$.components['schemas']['_types.query_dsl.QueryBase']"
     description: Add x-model for query base
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:BoostingQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.BoostingQuery']"
     description: Add x-model for query base
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:CommonTermsQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.CommonTermsQuery']"
     description: Add x-model for common terms query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:CombinedFieldsQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.CombinedFieldsQuery']"
     description: Add x-model for combined fields query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:ConstantScoreQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.ConstantScoreQuery']"
     description: Add x-model for constant score query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DisMaxQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.DisMaxQuery']"
     description: Add x-model to Disjunction max query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:UntypedDistanceFeatureQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.UntypedDistanceFeatureQuery']"
     description: Add x-model to untyped distance feature query
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:ExistsQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.ExistsQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:FunctionScoreQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.FunctionScoreQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:FunctionScoreContainer']"
+  - target: "$.components['schemas']['_types.query_dsl.FunctionScoreContainer']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DecayFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.DecayFunction']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:UntypedDecayFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.UntypedDecayFunction']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DecayFunctionBase']"
+  - target: "$.components['schemas']['_types.query_dsl.DecayFunctionBase']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MultiValueMode']"
+  - target: "$.components['schemas']['_types.query_dsl.MultiValueMode']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DateDecayFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.DateDecayFunction']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DecayFunctionBaseDateMathDuration']"
+  - target: "$.components['schemas']['_types.query_dsl.DecayFunctionBaseDateMathDuration']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:NumericDecayFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.NumericDecayFunction']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DecayFunctionBasedoubledouble']"
+  - target: "$.components['schemas']['_types.query_dsl.DecayFunctionBasedoubledouble']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:GeoDecayFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.GeoDecayFunction']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:DecayFunctionBaseGeoLocationDistance']"
+  - target: "$.components['schemas']['_types.query_dsl.DecayFunctionBaseGeoLocationDistance']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:FieldValueFactorScoreFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.FieldValueFactorScoreFunction']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:RandomScoreFunction']"
+  - target: "$.components['schemas']['_types.query_dsl.RandomScoreFunction']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:FuzzyQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.FuzzyQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:GeoBoundingBoxQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.GeoBoundingBoxQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:HasChildQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.HasChildQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:HasParentQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.HasParentQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:ParentIdQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.ParentIdQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsAllOf']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsAllOf']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsContainer']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsContainer']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsAnyOf']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsAnyOf']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsFilter']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsFilter']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsFuzzy']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsFuzzy']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsMatch']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsMatch']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsPrefix']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsPrefix']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IntervalsWildcard']"
+  - target: "$.components['schemas']['_types.query_dsl.IntervalsWildcard']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MatchQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MatchQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MatchBoolPrefixQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MatchBoolPrefixQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MatchPhraseQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MatchPhraseQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MatchPhrasePrefixQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MatchPhrasePrefixQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MultiMatchQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MultiMatchQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:QueryStringQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.QueryStringQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SimpleQueryStringQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SimpleQueryStringQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:ShapeQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.ShapeQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:NestedQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.NestedQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MatchAllQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MatchAllQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:MatchNoneQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.MatchNoneQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanContainingQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanContainingQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanFieldMaskingQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanFieldMaskingQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanFirstQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanFirstQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanMultiTermQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanMultiTermQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanNearQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanNearQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanNotQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanNotQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanOrQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanOrQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanTermQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanTermQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SpanWithinQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SpanWithinQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types:KnnQuery']"
+  - target: "$.components['schemas']['_types.KnnQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SparseVectorQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SparseVectorQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:SemanticQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.SemanticQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:TextExpansionQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.TextExpansionQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:WeightedTokensQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.WeightedTokensQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:IdsQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.IdsQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:PrefixQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.PrefixQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:RangeQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.RangeQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:RegexpQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.RegexpQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:TermQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.TermQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:TermsQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.TermsQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:TermsSetQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.TermsSetQuery']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.query_dsl:WildcardQuery']"
+  - target: "$.components['schemas']['_types.query_dsl.WildcardQuery']"
     description: Add x-model
     update:
       x-model: true
 # Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
-  - target: "$.components['schemas']['_types.aggregations:Aggregate']"
+  - target: "$.components['schemas']['_types.aggregations.Aggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:CardinalityAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.CardinalityAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:HdrPercentilesAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.HdrPercentilesAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:HdrPercentileRanksAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.HdrPercentileRanksAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:PercentileRanksAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.PercentileRanksAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:TDigestPercentilesAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.TDigestPercentilesAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:TDigestPercentileRanksAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.TDigestPercentileRanksAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:PercentilesBucketAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.PercentilesBucketAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MedianAbsoluteDeviationAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.MedianAbsoluteDeviationAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MinAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.MinAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MaxAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.MaxAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SumAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.SumAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:AvgAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.AvgAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:WeightedAvgAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.WeightedAvgAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:ValueCountAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.ValueCountAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SimpleValueAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.SimpleValueAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:DerivativeAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.DerivativeAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:BucketMetricValueAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.BucketMetricValueAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:StatsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.StatsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:StatsBucketAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.StatsBucketAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:ExtendedStatsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.ExtendedStatsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:ExtendedStatsBucketAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.ExtendedStatsBucketAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GeoBoundsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GeoBoundsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GeoCentroidAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GeoCentroidAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:HistogramAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.HistogramAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:DateHistogramAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.DateHistogramAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:AutoDateHistogramAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.AutoDateHistogramAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:VariableWidthHistogramAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.VariableWidthHistogramAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:StringTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.StringTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:LongTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.LongTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:DoubleTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.DoubleTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:UnmappedTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.UnmappedTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:LongRareTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.LongRareTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:StringRareTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.StringRareTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:UnmappedRareTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.UnmappedRareTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MultiTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.MultiTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MissingAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.MissingAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:NestedAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.NestedAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:ReverseNestedAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.ReverseNestedAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GlobalAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GlobalAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:FilterAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.FilterAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:ChildrenAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.ChildrenAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:ParentAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.ParentAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SamplerAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.SamplerAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:UnmappedSamplerAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.UnmappedSamplerAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GeoHashGridAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GeoHashGridAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GeoTileGridAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GeoTileGridAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GeoHexGridAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GeoHexGridAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:RangeAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.RangeAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:DateRangeAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.DateRangeAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GeoDistanceAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GeoDistanceAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:IpRangeAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.IpRangeAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:IpPrefixAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.IpPrefixAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:FiltersAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.FiltersAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:AdjacencyMatrixAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.AdjacencyMatrixAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SignificantLongTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.SignificantLongTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SignificantStringTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.SignificantStringTermsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:UnmappedSignificantTermsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.UnmappedSignificantTermsAggregate']"
     description: Add x-model
     update:
       x-model: true 
-  - target: "$.components['schemas']['_types.aggregations:SignificantTermsAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.SignificantTermsAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:CompositeAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.CompositeAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:FrequentItemSetsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.FrequentItemSetsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:TimeSeriesAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.TimeSeriesAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:ScriptedMetricAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.ScriptedMetricAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:TopHitsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.TopHitsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:InferenceAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.InferenceAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:StringStatsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.StringStatsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:BoxPlotAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.BoxPlotAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:TopMetricsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.TopMetricsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:TTestAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.TTestAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:RateAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.RateAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:CumulativeCardinalityAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.CumulativeCardinalityAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MatrixStatsAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.MatrixStatsAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:GeoLineAggregate']"
+  - target: "$.components['schemas']['_types.aggregations.GeoLineAggregate']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:AutoDateHistogramAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.AutoDateHistogramAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:CategorizeTextAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.CategorizeTextAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:DiversifiedSamplerAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.DiversifiedSamplerAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:RandomSamplerAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.RareTermsAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:RareTermsAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.SignificantTextAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SignificantTextAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.TermsAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:TermsAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.AverageBucketAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:AverageBucketAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.BucketScriptAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:BucketScriptAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.BucketKsAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:BucketKsAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.BucketCorrelationAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:BucketCorrelationAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.BucketSelectorAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:BucketSelectorAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.BucketSortAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:BucketSortAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.CumulativeSumAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:CumulativeSumAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.MaxBucketAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MaxBucketAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.MinBucketAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MinBucketAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.MovingFunctionAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MovingFunctionAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.MovingPercentilesAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:MovingPercentilesAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.NormalizeAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:NormalizeAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.SerialDifferencingAggregation']"
     description: Add x-model
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SerialDifferencingAggregation']"
-    description: Add x-model
-    update:
-      x-model: true
-  - target: "$.components['schemas']['_types.aggregations:SumBucketAggregation']"
+  - target: "$.components['schemas']['_types.aggregations.SumBucketAggregation']"
     description: Add x-model
     update:
       x-model: true 
-  - target: "$.components['schemas']['_types.query_dsl:LikeDocument']"
+  - target: "$.components['schemas']['_types.query_dsl.LikeDocument']"
     description: Add x-model to LikeDocument schema
     update:
       x-model: true
-  - target: "$.components['schemas']['ml._types:Datafeed'].properties.query"
+  - target: "$.components['schemas']['ml._types.Datafeed'].properties.query"
     description: Remove query object from anomaly detection datafeed
     remove: true
-  - target: "$.components['schemas']['ml._types:Datafeed'].properties"
+  - target: "$.components['schemas']['ml._types.Datafeed'].properties"
     description: Re-add a simplified query object in anomaly detection datafeed
     update:
       query:
@@ -1006,12 +1126,12 @@ actions:
           All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
           By default, this property has the following value: `{"match_all": {"boost": 1}}`.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl
           description: Query DSL
-  - target: "$.components['schemas']['ml._types:CategorizationAnalyzerDefinition'].properties.tokenizer"
+  - target: "$.components['schemas']['ml._types.CategorizationAnalyzerDefinition'].properties.tokenizer"
     description: Remove tokenizer object from ML anomaly detection analysis config
     remove: true
-  - target: "$.components['schemas']['ml._types:CategorizationAnalyzerDefinition'].properties"
+  - target: "$.components['schemas']['ml._types.CategorizationAnalyzerDefinition'].properties"
     description: Re-add a simplified tokenizer object in anomaly detection analysis config
     update:
       tokenizer:
@@ -1027,12 +1147,12 @@ actions:
           Additionally, the `ml_classic` tokenizer is available, which tokenizes in the same way as the non-customizable tokenizer in old versions of the product (before 6.2).
           `ml_classic` was the default categorization tokenizer in versions 6.2 to 7.13, so if you need categorization identical to the default for jobs created in these versions, specify `"tokenizer": "ml_classic"` in your `categorization_analyzer`.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html
+          url: https://www.elastic.co/docs/reference/text-analysis/tokenizer-reference
           description: Tokenizer reference
-  - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties.query"
+  - target: "$.components['schemas']['ml._types.DataframeAnalyticsSource'].properties.query"
     description: Remove query object from data frame analytics source
     remove: true
-  - target: "$.components['schemas']['ml._types:DataframeAnalyticsSource'].properties"
+  - target: "$.components['schemas']['ml._types.DataframeAnalyticsSource'].properties"
     description: Re-add a simplified query object in data frame analytics source
     update:
       query:
@@ -1044,12 +1164,12 @@ actions:
           All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
           By default, this property has the following value: `{"match_all": {}}`.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl
           description: Query DSL
-  - target: "$.components['schemas']['transform._types:Source'].properties.query"
+  - target: "$.components['schemas']['transform._types.Source'].properties.query"
     description: Remove query object from transform source
     remove: true
-  - target: "$.components['schemas']['transform._types:Source'].properties"
+  - target: "$.components['schemas']['transform._types.Source'].properties"
     description: Re-add a simplified query object in transform source
     update:
       query:
@@ -1058,27 +1178,50 @@ actions:
         description: >
           A query clause that retrieves a subset of data from the source index.
         externalDocs:
-          url: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+          url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl
           description: Query DSL
-  - target: "$.components['schemas']['_global.search._types:FieldCollapse']"
+  - target: "$.components['schemas']['_global.search._types.FieldCollapse']"
     description: Add x-model and externalDocs
     update:
       x-model: true
       externalDocs:
-        url: https://www.elastic.co/guide/en/elasticsearch/reference/current/collapse-search-results.html
-  - target: "$.components['schemas']['_global.msearch:MultisearchBody'].properties"
-    description: Add x-model
+        url: https://www.elastic.co/docs/reference/elasticsearch/rest-apis/collapse-search-results
+  - target: "$.components['schemas']['indices._types.IndexSettings']"
+    description: Add x-model and externalDocs for IndexSettings component
     update:
-      aggregations:
-        x-model: true
-# Examples
-## xCodeSamples
-  - target: "$.paths['/{index}/_doc/{id}']['head']"
-    description: "Add xCodeSamples for check document operation"
-    update: 
-      x-codeSamples:
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsConsoleExample1.yaml"
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsCurlExample1.yaml"
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsJavaScriptExample1.yaml"
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsPythonExample1.yaml"
-        - $ref: "../../specification/_global/exists/examples/xCodeSamples/DocumentExistsRubyExample1.yaml"
+      x-model: true
+      externalDocs:
+        description: Index settings
+        url: https://www.elastic.co/docs/reference/elasticsearch/index-settings/
+  - target: "$.components['schemas']['indices._types.IndexSettings'].properties"
+    description: Remove properties IndexSettings object
+    remove: true
+  # - target: "$.components['schemas']['_global.msearch.MultisearchBody'].properties"
+  #   description: Add x-model
+  #   update:
+  #     aggregations:
+  #       x-model: true
+# Remove long lists of enum values
+  - target: "$.components['schemas']['cat._types.CatAnomalyDetectorColumn'].enum"
+    description: Remove enum array from cat detectors
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatDfaColumn'].enum"
+    description: Remove enum array from cat data frame analytics
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatDatafeedColumn'].enum"
+    description: Remove enum array from cat datafeeds
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatTrainedModelsColumn'].enum"
+    description: Remove enum array from cat trained models
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatTransformColumn'].enum"
+    description: Remove enum array from cat transforms
+    remove: true
+# Simplify duration type
+  - target: "$.components['schemas']['_types.Duration'].oneOf"
+    description: Remove existing oneOf definition for Duration
+    remove: true
+  - target: "$.components['schemas']['_types.Duration']"
+    description: Re-add a simple string type for Duration
+    update:
+      type: string

@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids, Names } from '@_types/common'
+import { Ids, MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Update voting configuration exclusions.
+ *
  * Update the cluster voting config exclusions by node IDs or node names.
  * By default, if there are more than three master-eligible nodes in the cluster and you remove fewer than half of the master-eligible nodes in the cluster at once, the voting configuration automatically shrinks.
  * If you want to shrink the voting configuration to contain fewer than three nodes or to remove half or more of the master-eligible nodes in the cluster at once, use this API to remove departing nodes from the voting configuration manually.
@@ -52,6 +53,7 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of the names of the nodes to exclude from the

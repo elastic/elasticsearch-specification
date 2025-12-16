@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ValueType } from '@_types/aggregations/metric'
 import {
   EmptyObject,
@@ -46,6 +44,8 @@ import {
   DurationLarge,
   TimeZone
 } from '@_types/Time'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Buckets } from './Aggregate'
 import { Aggregation } from './Aggregation'
 import { Missing, MissingOrder } from './AggregationContainer'
@@ -145,9 +145,12 @@ export class CompositeAggregation extends BucketAggregationBase {
    * The value sources used to build composite buckets.
    * Keys are returned in the order of the `sources` definition.
    */
-  sources?: Array<Dictionary<string, CompositeAggregationSource>>
+  sources?: Array<SingleKeyDictionary<string, CompositeAggregationSource>>
 }
 
+/**
+ * @variants container
+ */
 export class CompositeAggregationSource {
   /**
    * A terms aggregation.
@@ -814,6 +817,22 @@ export class ScriptedHeuristic {
   script: Script
 }
 
+export class PValueHeuristic {
+  /*
+   * Set to false to indicate that the background set does
+   * not contain the counts of the foreground set as they are filtered out.
+   * @server_default true
+   */
+  background_is_superset?: boolean
+  /**
+   * Should the results be normalized when above the given value.
+   * Allows for consistent significance results at various scales.
+   * Note: `0` is a special value which means no normalization
+   * @server_default 0
+   */
+  normalize_above?: long
+}
+
 /**
  * @ext_doc_id search-aggregations-bucket-significanttext-aggregation
  */
@@ -867,6 +886,16 @@ export class SignificantTermsAggregation extends BucketAggregationBase {
    * Customized score, implemented via a script.
    */
   script_heuristic?: ScriptedHeuristic
+  /**
+   * Significant terms heuristic that calculates the p-value between the term existing in foreground and background sets.
+   *
+   * The p-value is the probability of obtaining test results at least as extreme as
+   * the results actually observed, under the assumption that the null hypothesis is
+   * correct. The p-value is calculated assuming that the foreground set and the
+   * background set are independent https://en.wikipedia.org/wiki/Bernoulli_trial, with the null
+   * hypothesis that the probabilities are the same.
+   */
+  p_value?: PValueHeuristic
   /**
    * Regulates the certainty a shard has if the term should actually be added to the candidate list or not with respect to the `min_doc_count`.
    * Terms will only be considered if their local shard frequency within the set is higher than the `shard_min_doc_count`.
@@ -1158,8 +1187,9 @@ export class CategorizeTextAggregation extends Aggregation {
   categorization_filters?: string[]
   /**
    * The categorization analyzer specifies how the text is analyzed and tokenized before being categorized.
-   * The syntax is very similar to that used to define the analyzer in the [Analyze endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/8.0/indices-analyze.html). This property
-   * cannot be used at the same time as categorization_filters.
+   * The syntax is very similar to that used to define the analyzer in the analyze API. This property
+   * cannot be used at the same time as `categorization_filters`.
+   * @ext_doc_id indices-analyze
    */
   categorization_analyzer?: CategorizeTextAnalyzer
   /**

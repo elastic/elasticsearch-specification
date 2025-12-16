@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices, SearchType } from '@_types/common'
+import { Indices, MediaType, ProjectRouting, SearchType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { RequestItem } from './types'
 
@@ -65,6 +65,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Ndjson
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, network round-trips are minimized for cross-cluster search requests.
@@ -75,6 +77,18 @@ export interface Request extends RequestBase {
      * The maximum number of concurrent searches the API can run.
      */
     max_concurrent_searches?: long
+    /**
+     * Specifies a subset of projects to target for the search using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
     /**
      * The type of the search operation.
      */

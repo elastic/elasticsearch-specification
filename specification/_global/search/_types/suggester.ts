@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { AdditionalProperties } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   Fuzziness,
@@ -30,9 +27,13 @@ import {
 } from '@_types/common'
 import { GeoHashPrecision, GeoLocation } from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
+import { ScriptSource } from '@_types/Scripting'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
- * @variants external
+ * @variants typed_keys_quirk
  */
 export type Suggest<TDocument> =
   | CompletionSuggest<TDocument>
@@ -185,6 +186,7 @@ export class RegexOptions {
    * Optional operators for the regular expression.
    * @doc_id regexp-syntax
    */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   flags?: integer | string
   /**
    * Maximum number of automaton states required for the query.
@@ -353,7 +355,7 @@ export class PhraseSuggestCollateQuery {
   /**
    * The query source.
    */
-  source?: string
+  source?: ScriptSource
 }
 
 export class PhraseSuggester extends SuggesterBase {

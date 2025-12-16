@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Names } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Definition {
   /** Collection of preprocessors */
@@ -105,6 +105,7 @@ export class AggregateOutput {
   exponent?: Weights
 }
 
+// eslint-disable-next-line es-spec-validator/no-same-name-as-enclosing-type
 export class Weights {
   weights: double
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-import { Names } from '@_types/common'
-import { Duration, TimeUnit } from '@_types/Time'
+import { MediaType, Names } from '@_types/common'
+import { Duration } from '@_types/Time'
+import { CatRequestBase, CatTasksColumns } from '@cat/_types/CatBase'
 
 /**
  * Get task information.
@@ -39,6 +39,7 @@ export interface Request extends CatRequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * The task action names, which are used to limit the response.
@@ -54,19 +55,15 @@ export interface Request extends CatRequestBase {
     /** The parent task identifier, which is used to limit the response. */
     parent_task_id?: string
     /**
-     * List of columns to appear in the response. Supports simple wildcards.
+     * A comma-separated list of columns names to display. It supports simple wildcards.
      */
-    h?: Names
+    h?: CatTasksColumns
     /**
      * List of columns that determine how the table should be sorted.
      * Sorting defaults to ascending and can be changed by setting `:asc`
      * or `:desc` as a suffix to the column name.
      */
     s?: Names
-    /**
-     * Unit used to display time values.
-     */
-    time?: TimeUnit
     /**
      * Period to wait for a response.
      * If no response is received before the timeout expires, the request fails and returns an error.

@@ -1,0 +1,43 @@
+summary: A chat completion task with tools and tool_calls
+description:
+  Run `POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion  using a User message with
+  `tools` and `tool_choice`.
+method_request: 'POST _inference/chat_completion/openai-completion/_stream'
+# type: "request"
+value: |-
+  {
+    "messages": [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "What's the price of a scarf?"
+                }
+            ]
+        }
+    ],
+    "tools": [
+        {
+            "type": "function",
+            "function": {
+                "name": "get_current_price",
+                "description": "Get the current price of a item",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "item": {
+                            "id": "123"
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "tool_choice": {
+        "type": "function",
+        "function": {
+            "name": "get_current_price"
+        }
+    }
+  }

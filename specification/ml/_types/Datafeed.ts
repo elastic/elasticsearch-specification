@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { DatafeedAuthorization } from '@ml/_types/Authorization'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { Id, Indices, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
@@ -32,6 +30,8 @@ import {
   UnitFloatMillis,
   UnitMillis
 } from '@_types/Time'
+import { DatafeedAuthorization } from '@ml/_types/Authorization'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { DiscoveryNodeCompact } from './DiscoveryNode'
 
 export class Datafeed {
@@ -43,6 +43,9 @@ export class Datafeed {
   authorization?: DatafeedAuthorization
   chunking_config?: ChunkingConfig
   datafeed_id: Id
+  /**
+   * The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.
+   */
   frequency?: Duration
   indices: string[]
   indexes?: string[]
@@ -71,7 +74,8 @@ export class DatafeedConfig {
    * Datafeeds might be required to search over long time periods, for several months or years. This search is split into time chunks in order to ensure the load on Elasticsearch is managed. Chunking configuration controls how the size of these time chunks are calculated and is an advanced configuration option.
    */
   chunking_config?: ChunkingConfig
-  /** A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. The default value is the job identifier.
+  /**
+    A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. The default value is the job identifier.
    */
   datafeed_id?: Id
   /**
@@ -125,7 +129,7 @@ export class DelayedDataCheckConfig {
    * It defaults to null, which causes an appropriate `check_window` to be calculated when the real-time datafeed runs.
    * In particular, the default `check_window` span calculation is based on the maximum of `2h` or `8 * bucket_span`.
    */
-  check_window?: Duration // default: null
+  check_window?: Duration
   /**
    * Specifies whether the datafeed periodically checks for delayed data.
    */

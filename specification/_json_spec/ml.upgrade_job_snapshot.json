@@ -1,8 +1,8 @@
 {
   "ml.upgrade_job_snapshot": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-upgrade-job-model-snapshot.html",
-      "description": "Upgrades a given job snapshot to the current major version."
+      "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-upgrade-job-snapshot",
+      "description": "Upgrade a snapshot"
     },
     "stability": "stable",
     "visibility": "public",
@@ -30,12 +30,12 @@
     "params": {
       "timeout": {
         "type": "time",
-        "required": false,
+        "default": "30m",
         "description": "How long should the API wait for the job to be opened and the old snapshot to be loaded."
       },
       "wait_for_completion": {
         "type": "boolean",
-        "required": false,
+        "default": false,
         "description": "Should the request wait until the task is complete before responding to the caller. Default is false."
       }
     }

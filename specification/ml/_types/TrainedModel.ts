@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   ByteSize,
   Field,
@@ -36,6 +34,8 @@ import {
   UnitFloatMillis,
   UnitMillis
 } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { DiscoveryNode } from './DiscoveryNode'
 import { InferenceConfigCreateContainer } from './inference'
 
@@ -92,7 +92,8 @@ export class TrainedModelDeploymentStats {
    * trained model deployment API.
    */
   rejected_execution_count?: integer
-  /** The reason for the current deployment state. Usually only populated when
+  /**
+   * The reason for the current deployment state. Usually only populated when
    * the model is not deployed to a node.
    */
   reason?: string

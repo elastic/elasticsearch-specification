@@ -17,15 +17,17 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { EsqlFormat } from '@esql/_types/QueryParameters'
 import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
+import { ESQLParam } from '@esql/_types/types'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { RequestBase } from '@_types/Base'
-import { FieldValue } from '@_types/common'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
  * Run an ES|QL query.
+ *
  * Get search results for an ES|QL (Elasticsearch query language) query.
  * @rest_spec_name esql.query
  * @availability stack since=8.11.0
@@ -40,13 +42,18 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A short version of the Accept header, e.g. json, yaml.
+     *
+     * `csv`, `tsv`, and `txt` formats will return results in a tabular format, excluding other metadata fields from the response.
      */
     format?: EsqlFormat
     /**
      * The character to use between values within a CSV row. Only valid for the CSV format.
+     * @server_default ,
      */
     delimiter?: string
     /**
@@ -57,7 +64,10 @@ export interface Request extends RequestBase {
     drop_null_columns?: boolean
     /**
      * If `true`, partial results will be returned if there are shard failures, but the query can continue to execute on other clusters and shards.
-     * @server_default false
+     * If `false`, the query will fail if there are any failures.
+     *
+     * To override the default behavior, you can set the `esql.query.allow_partial_results` cluster setting to `false`.
+     * @server_default true
      */
     allow_partial_results?: boolean
   }
@@ -82,7 +92,7 @@ export interface Request extends RequestBase {
      * To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.
      * @doc_id esql-query-params
      */
-    params?: Array<FieldValue>
+    params?: Array<ESQLParam>
     /**
      * If provided and `true` the response will include an extra `profile` object
      * with information on how the query was executed. This information is for human debugging
@@ -100,11 +110,19 @@ export interface Request extends RequestBase {
      */
     tables?: Dictionary<string, Dictionary<string, TableValuesContainer>>
     /**
-     * When set to `true` and performing a cross-cluster query, the response will include an extra `_clusters`
+     * When set to `true` and performing a cross-cluster/cross-project query, the response will include an extra `_clusters`
      * object with information about the clusters that participated in the search along with info such as shards
      * count.
      * @server_default false
      */
     include_ccs_metadata?: boolean
+    /**
+     * When set to `true`, the response will include an extra `_clusters`
+     * object with information about the clusters that participated in the search along with info such as shards
+     * count.
+     * This is similar to `include_ccs_metadata`, but it also returns metadata when the query is not CCS/CPS
+     * @server_default false
+     */
+    include_execution_metadata?: boolean
   }
 }

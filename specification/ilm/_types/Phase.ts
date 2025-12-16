@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { RolloverConditions } from '@indices/rollover/types'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, EmptyObject } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Duration, DurationLarge } from '@_types/Time'
+import { RolloverConditions } from '@indices/rollover/types'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Phase {
   actions?: Actions
@@ -97,6 +97,9 @@ export class SetPriorityAction {
 }
 
 export class RolloverAction {
+  /**
+   * The `max_size` condition has been deprecated in 9.3.0 and `max_primary_shard_size` should be used instead
+   * @deprecated 9.3.0 */
   max_size?: ByteSize
   max_primary_shard_size?: ByteSize
   max_age?: Duration

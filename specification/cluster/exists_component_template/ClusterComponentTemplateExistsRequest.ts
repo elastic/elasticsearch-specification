@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Check component templates.
+ *
  * Returns information about whether a particular component template exists.
  * @rest_spec_name cluster.exists_component_template
  * @availability stack since=7.8.0 stability=stable
@@ -44,6 +45,7 @@ export interface Request extends RequestBase {
      */
     name: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is
@@ -55,6 +57,7 @@ export interface Request extends RequestBase {
     /**
      * If true, the request retrieves information from the local node only.
      * Defaults to false, which means information is retrieved from the master node.
+     * @deprecated 9.0.0 This parameter has no effect, is now deprecated, and will be removed in a future version.
      * @server_default false
      */
     local?: boolean

@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   IcuCollationAlternate,
   IcuCollationCaseFirst,
@@ -27,6 +26,7 @@ import {
 import { Field, Name } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { DocValuesPropertyBase, IndexOptions, OnScriptError } from './core'
 import { PropertyBase } from './Property'
 
@@ -44,6 +44,7 @@ export class SuggestContext {
   name: Name
   path?: Field
   type: string
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   precision?: integer | string
 }
 

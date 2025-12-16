@@ -1,8 +1,8 @@
 summary: Query roles by description
-# method_request: POST /_security/_query/role
+method_request: POST /_security/_query/role
 description: >
-  Run `POST /_security/_query/role` to query only the user access role, given its description.
-  It returns only the best matching role because `size` is set to `1`.
+  Run `POST /_security/_query/role` to query only the user access role, given its description. It returns only the best matching
+  role because `size` is set to `1`.
 # type: request
 value: |-
   {

@@ -17,19 +17,22 @@
  * under the License.
  */
 
-import { DataStreamLifecycleDownsampling } from '@indices/_types/DataStreamLifecycleDownsampling'
 import { RequestBase } from '@_types/Base'
-import { DataStreamNames, ExpandWildcards } from '@_types/common'
+import { DataStreamNames, ExpandWildcards, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { SamplingMethod } from '@indices/_types/Downsample'
+import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
 
 /**
  * Update data stream lifecycles.
+ *
  * Update the data stream lifecycle of the specified data streams.
  * @rest_spec_name indices.put_data_lifecycle
  * @availability stack since=8.11.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag data stream
  * @doc_id data-stream-put-lifecycle
+ * @ext_doc_id data-stream-lifecycle
  */
 export interface Request extends RequestBase {
   urls: [
@@ -46,11 +49,12 @@ export interface Request extends RequestBase {
      */
     name: DataStreamNames
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Type of data stream that wildcard patterns can match.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `hidden`, `open`, `closed`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -70,7 +74,7 @@ export interface Request extends RequestBase {
   }
   /*
    * This is DataStreamLifecycle from @indices/_types/DataStreamLifecycle.ts,
-   * but kept as a properties body to avoid a breaking change
+   * but kept as separate properties to avoid a breaking change
    */
   body: {
     /**
@@ -82,7 +86,12 @@ export interface Request extends RequestBase {
     /**
      * The downsampling configuration to execute for the managed backing index after rollover.
      */
-    downsampling?: DataStreamLifecycleDownsampling
+    downsampling?: DownsamplingRound[]
+    /**
+     * The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires
+     * `downsampling` to be defined. Defaults to `aggregate`.
+     */
+    downsampling_method?: SamplingMethod
     /**
      * If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle
      * that's disabled (enabled: `false`) will have no effect on the data stream.

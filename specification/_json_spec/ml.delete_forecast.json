@@ -1,8 +1,8 @@
 {
   "ml.delete_forecast": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-forecast.html",
-      "description": "Deletes forecasts from a machine learning job."
+      "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-delete-forecast",
+      "description": "Delete forecasts from a job"
     },
     "stability": "stable",
     "visibility": "public",
@@ -40,12 +40,12 @@
     "params": {
       "allow_no_forecasts": {
         "type": "boolean",
-        "required": false,
+        "default": true,
         "description": "Whether to ignore if `_all` matches no forecasts"
       },
       "timeout": {
         "type": "time",
-        "required": false,
+        "default": "30s",
         "description": "Controls the time to wait until the forecast(s) are deleted. Default to 30 seconds"
       }
     }

@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ApiKeyAggregationContainer, ApiKeyQueryContainer } from './types'
 
 /**
@@ -32,10 +33,12 @@ import { ApiKeyAggregationContainer, ApiKeyQueryContainer } from './types'
  * To use this API, you must have at least the `manage_own_api_key` or the `read_security` cluster privileges.
  * If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.
  * If you have the `read_security`, `manage_api_key`, or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.
+ * Refer to the linked documentation for examples of how to find API keys:
  * @rest_spec_name security.query_api_keys
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_own_api_key, read_security
+ * @ext_doc_id security-query-api-keys
  * @doc_id security-api-query-api-key
  */
 export interface Request extends RequestBase {
@@ -45,11 +48,14 @@ export interface Request extends RequestBase {
       methods: ['GET', 'POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Return the snapshot of the owner user's role descriptors associated with the API key.
      * An API key's actual permission is the intersection of its assigned role descriptors and the owner user's role descriptors (effectively limited by it).
      * An API key cannot retrieve any API key’s limited-by role descriptors (including itself) unless it has `manage_api_key` or higher privileges.
+     * @server_default false
      * @availability stack since=8.5.0
      * @availability serverless
      */
@@ -70,7 +76,7 @@ export interface Request extends RequestBase {
      */
     typed_keys?: boolean
   }
-  body: {
+  body?: {
     /**
      * Any aggregations to run over the corpus of returned API keys.
      * Aggregations and queries work together. Aggregations are computed only on the API keys that match the query.

@@ -17,13 +17,20 @@
  * under the License.
  */
 
-import { TaskSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { TaskSettings } from '@inference/_types/Services'
 
 /**
- * Perform completion inference on the service
+ * Perform completion inference on the service.
+ *
+ * Get responses for completion tasks.
+ * This API works only with the completion task type.
+ *
+ * IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
+ *
+ * This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).
  * @rest_spec_name inference.completion
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
@@ -42,6 +49,8 @@ export interface Request extends RequestBase {
      */
     inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies the amount of time to wait for the inference request to complete.
@@ -54,9 +63,9 @@ export interface Request extends RequestBase {
      * Inference input.
      * Either a string or an array of strings.
      */
-    input: string | Array<string>
+    input: string | string[]
     /**
-     * Optional task settings
+     * Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.
      */
     task_settings?: TaskSettings
   }

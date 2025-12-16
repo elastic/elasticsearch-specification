@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { AsyncSearchResponseBase } from '@async_search/_types/AsyncSearchResponseBase'
 import { integer } from '@_types/Numeric'
 import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
+import { AsyncSearchResponseBase } from '@async_search/_types/AsyncSearchResponseBase'
 
 export class StatusResponseBase extends AsyncSearchResponseBase {
   /** The number of shards that have run the query so far. */
@@ -37,5 +37,6 @@ export class StatusResponseBase extends AsyncSearchResponseBase {
   completion_status?: integer
 }
 export class Response {
+  /** @codegen_name status */
   body: StatusResponseBase
 }

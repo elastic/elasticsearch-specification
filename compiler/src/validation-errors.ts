@@ -17,6 +17,10 @@
  * under the License.
  */
 
+const IGNORED_ERRORS = [
+  "request definition xpack.info:Request / query - Property 'human' is already defined in an ancestor class"
+]
+
 /** Errors for an endpoint */
 export class EndpointError {
   request: string[]
@@ -34,7 +38,11 @@ export class ValidationErrors {
   }
 
   /** Add some error information relative to an endpoint's request or response */
-  addEndpointError (endpoint: string, part: 'request' | 'response', message: string): void {
+  addEndpointError (endpoint: string, part: 'request' | 'response', message: string): boolean {
+    if (IGNORED_ERRORS.includes(message)) {
+      return true
+    }
+
     let error = this.endpointErrors[endpoint]
     if (error == null) {
       error = { request: [], response: [] }
@@ -42,6 +50,7 @@ export class ValidationErrors {
     }
 
     error[part].push(message)
+    return false
   }
 
   /** Add a general error, unrelated to an endpoint */
@@ -54,10 +63,8 @@ export class ValidationErrors {
     let count = 0
     const logArray = function (errs: string[], prefix = ''): void {
       for (const err of errs) {
-        if (err !== 'Missing request & response') {
-          console.error(`${prefix}${err}`)
-          count++
-        }
+        console.error(`${prefix}${err}`)
+        count++
       }
     }
 

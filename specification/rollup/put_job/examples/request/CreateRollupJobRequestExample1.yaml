@@ -1,17 +1,59 @@
 # summary:
-# method_request: PUT _rollup/job/sensor
+method_request: PUT _rollup/job/sensor
 description: >
-  Run `PUT _rollup/job/sensor` to create a rollup job that targets the `sensor-*` index pattern.
-  This configuration enables date histograms to be used on the `timestamp` field and terms aggregations to be used on the `node` field.
-  This configuration defines metrics over two fields: `temperature` and `voltage`.
-  For the `temperature` field, it collects the `min`, `max`, and `sum` of the temperature.
-  For `voltage`, it collects the `average`.
+  Run `PUT _rollup/job/sensor` to create a rollup job that targets the `sensor-*` index pattern. This configuration enables date
+  histograms to be used on the `timestamp` field and terms aggregations to be used on the `node` field. This configuration defines
+  metrics over two fields: `temperature` and `voltage`. For the `temperature` field, it collects the `min`, `max`, and `sum` of the
+  temperature. For `voltage`, it collects the `average`.
 # type: request
-value:
-  "{\n  \"index_pattern\": \"sensor-*\",\n  \"rollup_index\": \"sensor_rollup\"\
-  ,\n  \"cron\": \"*/30 * * * * ?\",\n  \"page_size\": 1000,\n  \"groups\": {\n  \
-  \  \"date_histogram\": {\n      \"field\": \"timestamp\",\n      \"fixed_interval\"\
-  : \"1h\",\n      \"delay\": \"7d\"\n    },\n    \"terms\": {\n      \"fields\":\
-  \ [ \"node\" ]\n    }\n  },\n  \"metrics\": [\n      {\n      \"field\": \"temperature\"\
-  ,\n      \"metrics\": [ \"min\", \"max\", \"sum\" ]\n    },\n    {\n      \"field\"\
-  : \"voltage\",\n      \"metrics\": [ \"avg\" ]\n    }\n  ]\n}"
+value: "{
+
+  \  \"index_pattern\": \"sensor-*\",
+
+  \  \"rollup_index\": \"sensor_rollup\",
+
+  \  \"cron\": \"*/30 * * * * ?\",
+
+  \  \"page_size\": 1000,
+
+  \  \"groups\": {
+
+  \    \"date_histogram\": {
+
+  \      \"field\": \"timestamp\",
+
+  \      \"fixed_interval\": \"1h\",
+
+  \      \"delay\": \"7d\"
+
+  \    },
+
+  \    \"terms\": {
+
+  \      \"fields\": [ \"node\" ]
+
+  \    }
+
+  \  },
+
+  \  \"metrics\": [
+
+  \      {
+
+  \      \"field\": \"temperature\",
+
+  \      \"metrics\": [ \"min\", \"max\", \"sum\" ]
+
+  \    },
+
+  \    {
+
+  \      \"field\": \"voltage\",
+
+  \      \"metrics\": [ \"avg\" ]
+
+  \    }
+
+  \  ]
+
+  }"

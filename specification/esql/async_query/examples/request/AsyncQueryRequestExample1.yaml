@@ -1,5 +1,5 @@
 # summary: Get results for an async ES|QL query.
-# method_request: "POST /_query/async"
+method_request: 'POST /_query/async'
 # description:
 # type: request
 value: |-

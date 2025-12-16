@@ -20,5 +20,6 @@
 import { QueryRuleset } from '../_types/QueryRuleset'
 
 export class Response {
+  /** @codegen_name ruleset */
   body: QueryRuleset
 }

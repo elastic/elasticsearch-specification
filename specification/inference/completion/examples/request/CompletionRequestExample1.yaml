@@ -1,6 +1,6 @@
 summary: Completion task
-description: Run `POST _inference/completion/openai_chat_completions` to perform a completion on the example question.
-# method_request: "POST _inference/completion/openai_chat_completions"
+description: Run `POST _inference/completion/openai_completions` to perform a completion on the example question.
+method_request: 'POST _inference/completion/openai_completions'
 # type: "request"
 value: |-
   {

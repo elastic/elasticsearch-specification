@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-import { Indices, Names } from '@_types/common'
+import { Indices, MediaType, Names, ProjectRouting } from '@_types/common'
+import { CatCountColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get a document count.
@@ -38,11 +38,11 @@ export interface Request extends CatRequestBase {
   urls: [
     {
       path: '/_cat/count'
-      methods: ['GET']
+      methods: ['GET', 'POST']
     },
     {
       path: '/_cat/count/{index}'
-      methods: ['GET']
+      methods: ['GET', 'POST']
     }
   ]
   path_parts: {
@@ -53,16 +53,31 @@ export interface Request extends CatRequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
-     * List of columns to appear in the response. Supports simple wildcards.
+     * A comma-separated list of columns names to display. It supports simple wildcards.
      */
-    h?: Names
+    h?: CatCountColumns
     /**
      * List of columns that determine how the table should be sorted.
      * Sorting defaults to ascending and can be changed by setting `:asc`
      * or `:desc` as a suffix to the column name.
      */
     s?: Names
+  }
+  body?: {
+    /**
+     * Specifies a subset of projects to target using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }

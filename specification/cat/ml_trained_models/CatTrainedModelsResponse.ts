@@ -20,5 +20,6 @@
 import { TrainedModelsRecord } from './types'
 
 export class Response {
+  /** @codegen_name trained_models */
   body: Array<TrainedModelsRecord>
 }

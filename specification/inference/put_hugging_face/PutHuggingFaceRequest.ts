@@ -17,23 +17,30 @@
  * under the License.
  */
 
-import {
-  InferenceChunkingSettings,
-  RateLimitSetting
-} from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
+import { Duration } from '@_types/Time'
+import {
+  HuggingFaceServiceSettings,
+  HuggingFaceServiceType,
+  HuggingFaceTaskSettings,
+  HuggingFaceTaskType
+} from '@inference/_types/CommonTypes'
+import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**
  * Create a Hugging Face inference endpoint.
  *
  * Create an inference endpoint to perform an inference task with the `hugging_face` service.
+ * Supported tasks include: `text_embedding`, `completion`, and `chat_completion`.
  *
- * You must first create an inference endpoint on the Hugging Face endpoint page to get an endpoint URL.
- * Select the model you want to use on the new endpoint creation page (for example `intfloat/e5-small-v2`), then select the sentence embeddings task under the advanced configuration section.
- * Create the endpoint and copy the URL after the endpoint initialization has been finished.
+ * To configure the endpoint, first visit the Hugging Face Inference Endpoints page and create a new endpoint.
+ * Select a model that supports the task you intend to use.
  *
- * The following models are recommended for the Hugging Face service:
+ * For Elastic's `text_embedding` task:
+ * The selected model must support the `Sentence Embeddings` task. On the new endpoint creation page, select the `Sentence Embeddings` task under the `Advanced Configuration` section.
+ * After the endpoint has initialized, copy the generated endpoint URL.
+ * Recommended models for `text_embedding` task:
  *
  * * `all-MiniLM-L6-v2`
  * * `all-MiniLM-L12-v2`
@@ -43,11 +50,24 @@ import { Id } from '@_types/common'
  * * `multilingual-e5-base`
  * * `multilingual-e5-small`
  *
- * When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.
- * After creating the endpoint, wait for the model deployment to complete before using it.
- * To verify the deployment status, use the get trained model statistics API.
- * Look for `"state": "fully_allocated"` in the response and ensure that the `"allocation_count"` matches the `"target_allocation_count"`.
- * Avoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.
+ * For Elastic's `chat_completion` and `completion` tasks:
+ * The selected model must support the `Text Generation` task and expose OpenAI API. HuggingFace supports both serverless and dedicated endpoints for `Text Generation`. When creating dedicated endpoint select the `Text Generation` task.
+ * After the endpoint is initialized (for dedicated) or ready (for serverless), ensure it supports the OpenAI API and includes `/v1/chat/completions` part in URL. Then, copy the full endpoint URL for use.
+ * Recommended models for `chat_completion` and `completion` tasks:
+ *
+ * * `Mistral-7B-Instruct-v0.2`
+ * * `QwQ-32B`
+ * * `Phi-3-mini-128k-instruct`
+ *
+ * For Elastic's `rerank` task:
+ * The selected model must support the `sentence-ranking` task and expose OpenAI API.
+ * HuggingFace supports only dedicated (not serverless) endpoints for `Rerank` so far.
+ * After the endpoint is initialized, copy the full endpoint URL for use.
+ * Tested models for `rerank` task:
+ *
+ * * `bge-reranker-base`
+ * * `jina-reranker-v1-turbo-en-GGUF`
+ *
  * @rest_spec_name inference.put_hugging_face
  * @availability stack since=8.12.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
@@ -71,50 +91,35 @@ export interface Request extends RequestBase {
      */
     huggingface_inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
+  query_parameters: {
+    /**
+     * Specifies the amount of time to wait for the inference endpoint to be created.
+     * @server_default 30s
+     */
+    timeout?: Duration
+  }
   body: {
     /**
      * The chunking configuration object.
+     * Applies only to the `text_embedding` task type.
+     * Not applicable to the `rerank`, `completion`, or `chat_completion` task types.
      * @ext_doc_id inference-chunking
      */
     chunking_settings?: InferenceChunkingSettings
     /**
      * The type of service supported for the specified task type. In this case, `hugging_face`.
      */
-    service: ServiceType
+    service: HuggingFaceServiceType
     /**
      * Settings used to install the inference model. These settings are specific to the `hugging_face` service.
      */
     service_settings: HuggingFaceServiceSettings
+    /**
+     * Settings to configure the inference task.
+     * These settings are specific to the task type you specified.
+     */
+    task_settings?: HuggingFaceTaskSettings
   }
-}
-
-export enum HuggingFaceTaskType {
-  text_embedding
-}
-
-export enum ServiceType {
-  hugging_face
-}
-
-export class HuggingFaceServiceSettings {
-  /**
-   * A valid access token for your HuggingFace account.
-   * You can create or find your access tokens on the HuggingFace settings page.
-   *
-   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
-   * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
-   * @ext_doc_id huggingface-tokens
-   */
-  api_key: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from Hugging Face.
-   * By default, the `hugging_face` service sets the number of requests allowed per minute to 3000.
-   */
-  rate_limit?: RateLimitSetting
-  /**
-   * The URL endpoint to use for the requests.
-   */
-  url: string
 }

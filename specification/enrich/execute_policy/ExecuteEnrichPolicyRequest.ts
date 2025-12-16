@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Run an enrich policy.
+ *
  * Create the enrich index for an existing enrich policy.
  * @doc_id execute-enrich-policy-api
  * @rest_spec_name enrich.execute_policy
@@ -42,6 +43,7 @@ export interface Request extends RequestBase {
      */
     name: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

@@ -18,10 +18,17 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Names } from '@_types/common'
+import {
+  ExpandWildcards,
+  MediaType,
+  Names,
+  ProjectRouting
+} from '@_types/common'
+import { IndexMode } from '@indices/_types/DataStream'
 
 /**
  * Resolve indices.
+ *
  * Resolve the names and/or index patterns for indices, aliases, and data streams.
  * Multiple patterns and remote clusters are supported.
  * @rest_spec_name indices.resolve_index
@@ -34,7 +41,7 @@ export interface Request extends RequestBase {
   urls: [
     {
       path: '/_resolve/index/{name}'
-      methods: ['GET']
+      methods: ['GET', 'POST']
     }
   ]
   path_parts: {
@@ -44,12 +51,12 @@ export interface Request extends RequestBase {
      */
     name: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -65,5 +72,25 @@ export interface Request extends RequestBase {
      * @server_default true
      */
     allow_no_indices?: boolean
+    /**
+     * Filter indices by index mode - standard, lookup, time_series, etc. Comma-separated list of IndexMode. Empty means no filter.
+     * @availability stack since=9.2.0 stability=stable
+     * @availability serverless stability=stable visibility=public
+     */
+    mode?: IndexMode | IndexMode[]
+  }
+  body?: {
+    /**
+     * Specifies a subset of projects to target using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }

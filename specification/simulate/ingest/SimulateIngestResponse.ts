@@ -17,12 +17,13 @@
  * under the License.
  */
 
+import { Id, IndexName, VersionNumber } from '@_types/common'
+import { ErrorCause } from '@_types/Errors'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Stringified } from '@spec_utils/Stringified'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, IndexName, VersionNumber } from '@_types/common'
-import { ErrorCause } from '@_types/Errors'
 
 export class Response {
   body: { docs: SimulateIngestDocumentResult[] }
@@ -75,4 +76,5 @@ export class IngestDocumentSimulation
    * doc.
    */
   error?: ErrorCause
+  effective_mapping?: TypeMapping
 }

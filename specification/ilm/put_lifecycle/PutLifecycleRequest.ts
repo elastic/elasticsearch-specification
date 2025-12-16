@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { Policy } from '@ilm/_types/Policy'
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Policy } from '@ilm/_types/Policy'
 
 /**
  * Create or update a lifecycle policy.
+ *
  * If the specified policy exists, it is replaced and the policy version is incremented.
  *
  * NOTE: Only the latest version of the policy is stored, you cannot revert to previous versions.
@@ -48,6 +49,8 @@ export interface Request extends RequestBase {
      */
     policy: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.

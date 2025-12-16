@@ -1,8 +1,19 @@
-summary: Create a new index for a data stream.
-# method_request: POST my-data-stream/_rollover
-# description: ''
+summary: Stack request
+method_request: POST my-data-stream/_rollover
+description: 'Create a new index for a data stream'
 # type: request
-value:
-  "{\n  \"conditions\": {\n    \"max_age\": \"7d\",\n    \"max_docs\": 1000,\n\
-  \    \"max_primary_shard_size\": \"50gb\",\n    \"max_primary_shard_docs\": \"2000\"\
-  \n  }\n}"
+value: "{
+
+  \  \"conditions\": {
+
+  \    \"max_age\": \"7d\",
+
+  \    \"max_docs\": 1000,
+
+  \    \"max_primary_shard_size\": \"50gb\",
+
+  \    \"max_primary_shard_docs\": \"2000\"
+
+  \  }
+
+  }"

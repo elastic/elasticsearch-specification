@@ -17,19 +17,58 @@
  * under the License.
  */
 
-import { IndexSettings } from '@indices/_types/IndexSettings'
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * Update index settings.
+ *
  * Changes dynamic index settings in real time.
  * For data streams, index setting changes are applied to all backing indices by default.
  *
  * To revert a setting to the default value, use a null value.
- * The list of per-index settings that can be updated dynamically on live indices can be found in index module documentation.
+ * The list of per-index settings that can be updated dynamically on live indices can be found in index settings documentation.
  * To preserve existing settings from being updated, set the `preserve_existing` parameter to `true`.
+ *
+ * For performance optimization during bulk indexing, you can disable the refresh interval.
+ * Refer to [disable refresh interval](https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval) for an example.
+ * There are multiple valid ways to represent index settings in the request body. You can specify only the setting, for example:
+ *
+ * ```
+ * {
+ *   "number_of_replicas": 1
+ * }
+ * ```
+ *
+ * Or you can use an `index` setting object:
+ * ```
+ * {
+ *   "index": {
+ *     "number_of_replicas": 1
+ *   }
+ * }
+ * ```
+ *
+ * Or you can use dot annotation:
+ * ```
+ * {
+ *   "index.number_of_replicas": 1
+ * }
+ * ```
+ *
+ * Or you can embed any of the aforementioned options in a `settings` object. For example:
+ *
+ * ```
+ * {
+ *   "settings": {
+ *     "index": {
+ *       "number_of_replicas": 1
+ *     }
+ *   }
+ * }
+ * ```
  *
  * NOTE: You can only define new analyzers on closed indices.
  * To add an analyzer, you must close the index, define the analyzer, and reopen the index.
@@ -39,12 +78,13 @@ import { Duration } from '@_types/Time'
  * This affects searches and any new data added to the stream after the rollover.
  * However, it does not affect the data stream's backing indices or their existing data.
  * To change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.
+ * Refer to [updating analyzers on existing indices](https://www.elastic.co/docs/manage-data/data-store/text-analysis/specify-an-analyzer#update-analyzers-on-existing-indices) for step-by-step examples.
  * @rest_spec_name indices.put_settings
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage
  * @doc_id indices-update-settings
- * @ext_doc_id index-modules
+ * @ext_doc_id index-settings
  */
 export interface Request extends RequestBase {
   urls: [
@@ -65,6 +105,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index
@@ -119,7 +161,9 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  /** Configuration options for the index.
-   * @codegen_name settings */
+  /**
+   * Configuration options for the index.
+   * @codegen_name settings
+   */
   body: IndexSettings
 }

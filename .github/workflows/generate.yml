@@ -6,6 +6,7 @@ on:
       - 'main'
       - '7.17'
       - '8.[0-9]+'
+      - '9.[0-9]+'
 
   # For debugging purposes:
   # pull_request:
@@ -29,15 +30,15 @@ jobs:
     if: github.repository_owner == 'elastic' && github.actor != 'elasticmachine'
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v5
       with:
         token: ${{ secrets.PAT }}
         persist-credentials: true
 
-    - name: Setup Node 20
-      uses: actions/setup-node@v4
+    - name: Setup Node 22
+      uses: actions/setup-node@v5
       with:
-        node-version: 20
+        node-version: 22
         cache: npm
         cache-dependency-path: '**/package-lock.json'
 

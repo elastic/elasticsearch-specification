@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { BucketSummary } from '@ml/_types/Bucket'
 import { long } from '@_types/Numeric'
+import { BucketSummary } from '@ml/_types/Bucket'
 
 export class Response {
   body: {

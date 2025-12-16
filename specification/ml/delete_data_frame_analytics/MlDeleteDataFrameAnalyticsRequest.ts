@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete a data frame analytics job.
+ *
  * @rest_spec_name ml.delete_data_frame_analytics
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -43,6 +44,7 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, it deletes a job that is not stopped; this method is quicker than stopping and deleting the job.

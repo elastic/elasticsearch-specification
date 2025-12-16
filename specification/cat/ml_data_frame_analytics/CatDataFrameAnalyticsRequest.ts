@@ -17,9 +17,8 @@
  * under the License.
  */
 
+import { Id, MediaType } from '@_types/common'
 import { CatDfaColumns, CatRequestBase } from '@cat/_types/CatBase'
-import { Bytes, Id } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
 
 /**
  * Get data frame analytics jobs.
@@ -48,23 +47,26 @@ export interface Request extends CatRequestBase {
     }
   ]
   path_parts: {
+    /** The ID of the data frame analytics to fetch */
     id?: Id
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
+    /**
+     * Whether to ignore if a wildcard expression matches no configs.
+     * (This includes `_all` string or when no configs have been specified.)
+     * @server_default false
+     */
     allow_no_match?: boolean
-    bytes?: Bytes
     /**
      * Comma-separated list of column names to display.
      * @server_default create_time,id,state,type
      */
     h?: CatDfaColumns
-    /** Comma-separated list of column names or column aliases used to sort the
+    /**
+     * Comma-separated list of column names or column aliases used to sort the
      * response.
      */
     s?: CatDfaColumns
-    /**
-     * Unit used to display time values.
-     */
-    time?: TimeUnit
   }
 }

@@ -20,5 +20,6 @@
 import { DatafeedsRecord } from './types'
 
 export class Response {
+  /** @codegen_name datafeeds */
   body: Array<DatafeedsRecord>
 }

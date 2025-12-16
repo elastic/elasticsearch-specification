@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-import { Bytes, Indices, Names } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { CatRequestBase, CatSegmentsColumns } from '@cat/_types/CatBase'
 
 /**
  * Get segment information.
@@ -53,17 +53,16 @@ export interface Request extends CatRequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
-     * The unit used to display byte values.
+     * A comma-separated list of columns names to display.
+     * It supports simple wildcards.
+     * @server_default ip,hp,rp,r,m,n,cpu,l
      */
-    bytes?: Bytes
+    h?: CatSegmentsColumns
     /**
-     * List of columns to appear in the response. Supports simple wildcards.
-     */
-    h?: Names
-    /**
-     * List of columns that determine how the table should be sorted.
+     * A comma-separated list of column names or aliases that determines the sort order.
      * Sorting defaults to ascending and can be changed by setting `:asc`
      * or `:desc` as a suffix to the column name.
      */
@@ -81,5 +80,35 @@ export interface Request extends CatRequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
+    /**
+     * Type of index that wildcard expressions can match. If the request can target data streams, this argument
+     * determines whether wildcard expressions match hidden data streams. Supports comma-separated values,
+     * such as open,hidden.
+     * @server_default open
+     */
+    expand_wildcards?: ExpandWildcards
+    /**
+     * If false, the request returns an error if any wildcard expression, index alias, or _all value targets only
+     * missing or closed indices. This behavior applies even if the request targets other open indices. For example,
+     * a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.
+     * @server_default true
+     */
+    allow_no_indices?: boolean
+    /**
+     * If true, concrete, expanded or aliased indices are ignored when frozen.
+     * @server_default false
+     */
+    ignore_throttled?: boolean
+    /**
+     * If true, missing or closed indices are not included in the response.
+     * @server_default false
+     */
+    ignore_unavailable?: boolean
+    /**
+     * If true, allow closed indices to be returned in the response otherwise if false, keep the legacy behaviour
+     * of throwing an exception if index pattern matches closed indices
+     * @server_default false
+     */
+    allow_closed?: boolean
   }
 }

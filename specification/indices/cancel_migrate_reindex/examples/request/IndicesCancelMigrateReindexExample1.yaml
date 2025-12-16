@@ -1,0 +1,1 @@
+method_request: POST /_migration/reindex/my-data-stream/_cancel

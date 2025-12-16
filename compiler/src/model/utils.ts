@@ -35,7 +35,6 @@ import {
   Node,
   Project
 } from 'ts-morph'
-import { closest } from 'fastest-levenshtein'
 import semver from 'semver'
 import chalk from 'chalk'
 import * as model from './metamodel'
@@ -634,7 +633,7 @@ export function hoistRequestAnnotations (
   request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
 ): void {
   const knownRequestAnnotations = [
-    'rest_spec_name', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id', 'availability', 'doc_tag', 'ext_doc_id'
+    'rest_spec_name', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id', 'availability', 'doc_tag', 'ext_doc_id', 'codegen_exclude'
   ]
   // in most of the cases the jsDocs comes in a single block,
   // but it can happen that the user defines multiple single line jsDoc.
@@ -651,11 +650,19 @@ export function hoistRequestAnnotations (
   assert(jsDocs, apiName !== '' && apiName !== null && apiName !== undefined,
     `Request ${request.name.name} does not declare the @rest_spec_name to link back to`)
 
-  const endpoint = mappings[apiName]
-  assert(jsDocs, endpoint != null, `The api '${apiName}' does not exists, did you mean '${closest(apiName, Object.keys(mappings))}'?`)
-
-  endpoint.request = request.name
-  endpoint.response = response
+  const endpoint: model.Endpoint = {
+    name: apiName,
+    // @ts-expect-error this will be filled in SetTags below
+    description: null,
+    // @ts-expect-error this will be filled in SetTags below
+    docUrl: null,
+    request: request.name,
+    requestBodyRequired: false,
+    response: response,
+    urls: [],
+    availability: {}
+  }
+  mappings[apiName] = endpoint
 
   // This ensures the tags from request end up on the endpoint
   setTags(jsDocs, request, tags, knownRequestAnnotations, (tags, tag, value) => {
@@ -679,7 +686,7 @@ export function hoistRequestAnnotations (
         'manage_enrich', 'manage_ilm', 'manage_index_templates', 'manage_inference', 'manage_ingest_pipelines', 'manage_logstash_pipelines',
         'manage_ml', 'manage_oidc', 'manage_own_api_key', 'manage_pipeline', 'manage_rollup', 'manage_saml', 'manage_search_application', 'manage_search_query_rules', 'manage_search_synonyms',
         'manage_security', 'manage_service_account', 'manage_slm', 'manage_token', 'manage_transform', 'manage_user_profile',
-        'manage_watcher', 'monitor', 'monitor_inference', 'monitor_ml', 'monitor_rollup', 'monitor_snapshot', 'monitor_text_structure',
+        'manage_watcher', 'monitor', 'monitor_esql', 'monitor_inference', 'monitor_ml', 'monitor_rollup', 'monitor_snapshot', 'monitor_text_structure',
         'monitor_transform', 'monitor_watcher', 'read_ccr', 'read_ilm', 'read_pipeline', 'read_security', 'read_slm', 'transport_client'
       ]
       const values = parseCommaSeparated(value)
@@ -694,12 +701,18 @@ export function hoistRequestAnnotations (
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
       endpoint.docUrl = docUrl[1].replace(/\r/g, '')
+      if (docUrl[2].replace(/\r/g, '') !== '') {
+        endpoint.extPreviousVersionDocUrl = docUrl[2].replace(/\r/g, '')
+      }
     } else if (tag === 'ext_doc_id') {
       assert(jsDocs, value.trim() !== '', `Request ${request.name.name}'s @ext_doc_id cannot be empty`)
       endpoint.extDocId = value.trim()
       const docUrl = docIds.find(entry => entry[0] === value.trim())
       assert(jsDocs, docUrl != null, `The @ext_doc_id '${value.trim()}' is not present in _doc_ids/table.csv`)
       endpoint.extDocUrl = docUrl[1].replace(/\r/g, '')
+      if (docUrl[3].replace(/\r/g, '') !== '') {
+        endpoint.extDocDescription = docUrl[3].replace(/\r/g, '')
+      }
     } else if (tag === 'availability') {
       // The @availability jsTag is different than most because it allows
       // multiple values within the same docstring, hence needing to parse
@@ -714,10 +727,18 @@ export function hoistRequestAnnotations (
     } else if (tag === 'doc_tag') {
       assert(jsDocs, value.trim() !== '', `Request ${request.name.name}'s @doc_tag cannot be empty`)
       endpoint.docTag = value.trim()
+    } else if (tag === 'codegen_exclude') {
+      // Mark this endpoint to be excluded from client code generation
+      endpoint.codegenExclude = true
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
     }
   })
+
+  if (endpoint.availability.stack?.visibility !== 'private') {
+    assert(jsDocs, tags.doc_id !== '' && tags.doc_id !== null && tags.doc_id !== undefined,
+      `Request ${request.name.name} needs a @doc_id annotation`)
+  }
 }
 
 /** Lifts jsDoc type annotations to fixed properties on Type */
@@ -866,6 +887,11 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
         assert(jsDocs, Array.isArray(value), 'The default value should be an array')
         property.serverDefault = value
       } else {
+        // JSDoc prevents literal @ in values, but the at sign can be escaped
+        if (value.startsWith('\\@')) {
+          value = value.replace('\\@', '@')
+        }
+
         switch (property.type.type.name) {
           case 'boolean':
             assert(jsDocs, value === 'true' || value === 'false', `The default value for ${property.name} should be a boolean`)
@@ -1058,7 +1084,9 @@ export function parseJsDocTags (jsDoc: JSDoc[]): Record<string, string> {
         value: tag.getComment() ?? ''
       }
     })
-  const mapped = tags.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.value }), {})
+  // Ignore UpdateForV10 which is only useful at the eslint level
+  const filteredTags = tags.filter(tag => tag.name !== 'UpdateForV10')
+  const mapped = filteredTags.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.value }), {})
   return mapped
 }
 
@@ -1094,7 +1122,7 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
   const nonExhaustive = (typeof tags.non_exhaustive === 'string') ? true : undefined
 
   const [type, ...values] = tags.variants.split(' ')
-  if (type === 'external') {
+  if (type === 'typed_keys_quirk') {
     return {
       kind: 'external_tag',
       nonExhaustive: nonExhaustive
@@ -1487,4 +1515,25 @@ export function sortTypeDefinitions (types: model.TypeDefinition[]): void {
     if (a.name.namespace < b.name.namespace) return -1
     return 0
   })
+}
+
+export function mediaTypeToStringArray (mediaType: string, allEnums: EnumDeclaration[]): string[] {
+  const mediaTypeEnumName = 'MediaType'
+  const mediaTypeEnum = allEnums.find(e => e.getName() === mediaTypeEnumName)
+
+  // Handle strings separated by a pipe and return multiple media types
+  let enumTypeList: string[]
+  if (mediaType.includes('|')) {
+    enumTypeList = mediaType.split('|').map(mt => mt.trim())
+  } else {
+    enumTypeList = [mediaType.trim()]
+  }
+
+  const mediaTypeList: string[] = []
+  for (const enumType of enumTypeList) {
+    const memberName = enumType.split('.').pop()
+    const value = mediaTypeEnum?.getMembers().find(m => m.getName() === memberName)?.getValue() as string
+    mediaTypeList.push(value)
+  }
+  return mediaTypeList
 }

@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get component templates.
+ *
  * Get information about component templates.
  * @rest_spec_name cluster.get_component_template
  * @availability stack since=7.8.0 stability=stable
@@ -49,6 +50,7 @@ export interface Request extends RequestBase {
      */
     name?: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, returns settings in flat format.
@@ -56,6 +58,11 @@ export interface Request extends RequestBase {
      */
     flat_settings?: boolean
     /**
+     * Filter out results, for example to filter out sensitive information. Supports wildcards or full settings keys
+     */
+    settings_filter?: string | string[]
+    /**
+     * Return all default configurations for the component template
      * @server_default false
      * @availability stack since=8.11.0 stability=stable
      * @availability serverless stability=stable
@@ -64,6 +71,7 @@ export interface Request extends RequestBase {
     /**
      * If `true`, the request retrieves information from the local node only.
      * If `false`, information is retrieved from the master node.
+     * @deprecated 9.0.0 This parameter has no effect, is now deprecated, and will be removed in a future version.
      * @server_default false
      */
     local?: boolean

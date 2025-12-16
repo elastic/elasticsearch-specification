@@ -19,15 +19,17 @@
 
 import { RequestBase } from '@_types/Base'
 import {
+  CommonStatsFlags,
   ExpandWildcards,
   Fields,
   Indices,
   Level,
-  Metrics
+  MediaType
 } from '@_types/common'
 
 /**
  * Get index statistics.
+ *
  * For data streams, the API retrieves statistics for the stream's backing indices.
  *
  * By default, the returned statistics are index-level with `primaries` and `total` aggregations.
@@ -64,9 +66,12 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    metric?: Metrics
+    /** Limit the information returned the specific metrics */
+    metric?: CommonStatsFlags
+    /** A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Comma-separated list or wildcard expressions of fields to include in fielddata and suggest statistics.
@@ -76,6 +81,7 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match. If the request can target data streams, this argument
      * determines whether wildcard expressions match hidden data streams. Supports comma-separated values,
      * such as `open,hidden`.
+     * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
@@ -106,7 +112,8 @@ export interface Request extends RequestBase {
      */
     include_unloaded_segments?: boolean
     /**
-     * Indicates whether statistics are aggregated at the cluster, index, or shard level.
+     * Indicates whether statistics are aggregated at the cluster, indices, or shards level.
+     * @server_default indices
      */
     level?: Level
   }

@@ -17,20 +17,24 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
   Id,
   Indices,
+  MediaType,
+  ProjectRouting,
   Routing,
   SearchType
 } from '@_types/common'
+import { ScriptSource } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Run a search with a search template.
+ *
  * @rest_spec_name search_template
  * @availability stack since=2.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -57,6 +61,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
@@ -73,7 +79,7 @@ export interface Request extends RequestBase {
      * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
+     * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
@@ -99,6 +105,18 @@ export interface Request extends RequestBase {
      * If `true`, the query execution is profiled.
      * @server_default false */
     profile?: boolean
+    /**
+     * Specifies a subset of projects to target for the search using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
     /**  A custom value used to route operations to a specific shard. */
     routing?: Routing
     /**
@@ -107,7 +125,8 @@ export interface Request extends RequestBase {
      */
     scroll?: Duration
     /**
-     * The type of the search operation. */
+     * The type of the search operation.
+     */
     search_type?: SearchType
     /**
      * If `true`, `hits.total` is rendered as an integer in the response.
@@ -148,6 +167,6 @@ export interface Request extends RequestBase {
      * request body. It also supports Mustache variables. If no `id` is specified, this
      * parameter is required.
      */
-    source?: string
+    source?: ScriptSource
   }
 }

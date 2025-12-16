@@ -18,15 +18,18 @@
  */
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
+import { MediaType } from '@_types/common'
 
 /**
  * Get all query rulesets.
+ *
  * Get summarized information about the query rulesets.
  * @rest_spec_name query_rules.list_rulesets
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_query_rules
  * @doc_id query-ruleset-list
+ * @ext_doc_id list-query-rules-in-ui
  */
 export interface Request extends RequestBase {
   urls: [
@@ -35,6 +38,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The offset from the first result to fetch.
@@ -43,6 +47,7 @@ export interface Request extends RequestBase {
     from?: integer
     /**
      * The maximum number of results to retrieve.
+     * @server_default 100
      */
     size?: integer
   }

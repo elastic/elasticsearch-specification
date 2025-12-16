@@ -17,17 +17,18 @@
  * under the License.
  */
 
-import { Alias } from '@indices/_types/Alias'
-import { IndexSettings } from '@indices/_types/IndexSettings'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
-import { IndexName, Name, VersionNumber } from '@_types/common'
+import { IndexName, MediaType, Name, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { Alias } from '@indices/_types/Alias'
+import { IndexSettings } from '@indices/_types/IndexSettings'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
- * Create or update an index template.
+ * Create or update a legacy index template.
+ *
  * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
  * Elasticsearch applies templates to new indices based on an index pattern that matches the index name.
  *
@@ -53,6 +54,7 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage_index_templates, manage
  * @doc_id index-templates-v1
  * @ext_doc_id index-templates
+ * @deprecated 7.8.0
  */
 export interface Request extends RequestBase {
   urls: [
@@ -62,8 +64,11 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The name of the template */
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If true, this request cannot replace or update existing index templates.
@@ -84,7 +89,10 @@ export interface Request extends RequestBase {
      * 'order' values are merged later, overriding templates with lower values.
      */
     order?: integer
-
+    /**
+     * User defined reason for creating or updating the index template
+     * @server_default
+     */
     cause?: string
   }
   body: {

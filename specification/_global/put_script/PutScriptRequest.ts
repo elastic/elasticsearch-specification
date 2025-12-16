@@ -18,12 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Name } from '@_types/common'
+import { Id, MediaType, Name } from '@_types/common'
 import { StoredScript } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
 
 /**
  * Create or update a script or search template.
+ *
  * Creates or updates a stored script or search template.
  * @rest_spec_name put_script
  * @availability stack stability=stable
@@ -56,6 +57,8 @@ export interface Request extends RequestBase {
      */
     context?: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The context in which the script or search template should run.

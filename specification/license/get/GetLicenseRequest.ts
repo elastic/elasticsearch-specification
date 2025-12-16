@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Get license information.
@@ -39,6 +40,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, this parameter returns enterprise for Enterprise license types. If `false`, this parameter returns platinum for both platinum and enterprise license types. This behavior is maintained for backwards compatibility.
@@ -48,8 +50,10 @@ export interface Request extends RequestBase {
      */
     accept_enterprise?: boolean
     /**
-     * Specifies whether to retrieve local information. The default value is `false`, which means the information is retrieved from the master node.
-     * @server_default false
+     * Specifies whether to retrieve local information.
+     * From 9.2 onwards the default value is `true`, which means the information is retrieved from the responding node.
+     * In earlier versions the default is `false`, which means the information is retrieved from the elected master node.
+     * @server_default true
      */
     local?: boolean
   }

@@ -18,15 +18,18 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 
 /**
  * Refresh an index.
+ *
  * A refresh makes recent operations performed on one or more indices available for search.
  * For data streams, the API runs the refresh operation on the stream’s backing indices.
  *
  * By default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.
  * You can change this default interval with the `index.refresh_interval` setting.
+ *
+ * In Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.
  *
  * Refresh requests are synchronous and do not return a response until the refresh operation completes.
  *
@@ -60,6 +63,7 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
@@ -71,7 +75,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards

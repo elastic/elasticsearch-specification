@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id, MediaType } from '@_types/common'
+import { long } from '@_types/Numeric'
 import { InferenceConfigCreateContainer } from '@ml/_types/inference'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { long } from '@_types/Numeric'
 import {
   TrainedModelPrefixStrings,
   TrainedModelType
@@ -30,6 +30,7 @@ import { Definition, Input } from './types'
 
 /**
  * Create a trained model.
+ *
  * Enable you to supply a trained model that is not created by data frame analytics.
  * @rest_spec_name ml.put_trained_model
  * @availability stack since=7.10.0 stability=stable
@@ -51,6 +52,8 @@ export interface Request extends RequestBase {
      */
     model_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If set to `true` and a `compressed_definition` is provided,
@@ -58,6 +61,7 @@ export interface Request extends RequestBase {
      * validations.
      * @availability stack since=8.0.0
      * @availability serverless
+     * @server_default false
      */
     defer_definition_decompression?: boolean
 
@@ -66,6 +70,7 @@ export interface Request extends RequestBase {
      * to complete.
      * @availability stack since=8.8.0
      * @availability serverless
+     * @server_default false
      */
     wait_for_completion?: boolean
   }

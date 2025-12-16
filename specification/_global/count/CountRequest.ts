@@ -18,13 +18,20 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Routing } from '@_types/common'
+import {
+  ExpandWildcards,
+  Indices,
+  MediaType,
+  ProjectRouting,
+  Routing
+} from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * Count search results.
+ *
  * Get the number of documents matching a query.
  *
  * The query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.
@@ -61,6 +68,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
@@ -81,9 +90,9 @@ export interface Request extends RequestBase {
      */
     analyze_wildcard?: boolean
     /**
-     * The default operator for query string query: `AND` or `OR`.
+     * The default operator for query string query: `and` or `or`.
      * This parameter can be used only when the `q` query string parameter is specified.
-     * @server_default OR
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -144,11 +153,23 @@ export interface Request extends RequestBase {
      */
     q?: string
   }
-  body: {
+  body?: {
     /**
      * Defines the search query using Query DSL. A request body query cannot be used
      * with the `q` query string parameter.
      */
     query?: QueryContainer
+    /**
+     * Specifies a subset of projects to target using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }

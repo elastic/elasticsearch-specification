@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { UserProfile } from '@security/_types/UserProfile'
 import { RelationName } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { UserProfile } from '@security/_types/UserProfile'
 
 export class TotalUserProfiles {
   value: long

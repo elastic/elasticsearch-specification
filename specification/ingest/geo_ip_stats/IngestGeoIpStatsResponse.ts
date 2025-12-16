@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Id } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { GeoIpDownloadStatistics, GeoIpNodeDatabases } from './types'
 
 export class Response {

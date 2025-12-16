@@ -1,7 +1,23 @@
 # summary:
-# method_request: GET /sensor_rollup/_rollup_search
+method_request: GET /sensor_rollup/_rollup_search
 description: Search rolled up data stored in `sensor_rollup` with `GET /sensor_rollup/_rollup_search`
 # type: request
-value:
-  "{\n  \"size\": 0,\n  \"aggregations\": {\n    \"max_temperature\": {\n   \
-  \   \"max\": {\n        \"field\": \"temperature\"\n      }\n    }\n  }\n}"
+value: "{
+
+  \  \"size\": 0,
+
+  \  \"aggregations\": {
+
+  \    \"max_temperature\": {
+
+  \      \"max\": {
+
+  \        \"field\": \"temperature\"
+
+  \      }
+
+  \    }
+
+  \  }
+
+  }"

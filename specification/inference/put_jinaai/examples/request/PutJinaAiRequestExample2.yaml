@@ -1,6 +1,6 @@
 summary: A rerank task
 description: Run `PUT _inference/rerank/jinaai-rerank` to create an inference endpoint for rerank tasks using the JinaAI service.
-# method_request: "PUT _inference/rerank/jinaai-rerank"
+method_request: 'PUT _inference/rerank/jinaai-rerank'
 # type: "request"
 value: |-
   {

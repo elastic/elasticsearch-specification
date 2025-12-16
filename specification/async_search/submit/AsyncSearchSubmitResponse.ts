@@ -17,8 +17,18 @@
  * under the License.
  */
 
-import { AsyncSearchDocumentResponseBase } from '@async_search/_types/AsyncSearchResponseBase'
+import {
+  AsyncSearchDocumentResponseBase,
+  AsyncSearchResponseException
+} from '@async_search/_types/AsyncSearchResponseBase'
 
 export class Response<TDocument> {
+  /** @codegen_name result */
   body: AsyncSearchDocumentResponseBase<TDocument>
+  exceptions: [
+    {
+      statusCodes: [404, 400, 500, 429]
+      body: AsyncSearchResponseException<TDocument>
+    }
+  ]
 }

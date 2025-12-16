@@ -17,6 +17,10 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id, MediaType } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 import {
   AnalysisMemoryLimit,
   PerPartitionCategorization
@@ -25,13 +29,10 @@ import { DetectorUpdate } from '@ml/_types/Detector'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { long } from '@_types/Numeric'
-import { Duration } from '@_types/Time'
 
 /**
  * Update an anomaly detection job.
+ *
  * Updates certain properties of an anomaly detection job.
  * @rest_spec_name ml.update_job
  * @availability stack since=5.5.0 stability=stable
@@ -53,6 +54,8 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * Advanced configuration option. Specifies whether this job can open when

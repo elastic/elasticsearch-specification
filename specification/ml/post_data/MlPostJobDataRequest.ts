@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { DateTime } from '@_types/Time'
 
 /**
@@ -46,6 +46,8 @@ export interface Request<TData> extends RequestBase {
      */
     job_id: Id
   }
+  request_media_type: MediaType.Json | MediaType.Ndjson
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies the end of the bucket resetting range.
@@ -70,6 +72,7 @@ export interface Request<TData> extends RequestBase {
    * If your data is larger, split it into multiple chunks and upload each one separately in sequential time order.
    * When running in real time, it is generally recommended that you perform many small uploads,
    * rather than queueing data to upload larger files.
+   *
    * @codegen_name data
    * */
   body: Array<TData>

@@ -78,8 +78,11 @@ async function run () {
     process.exit(1)
   }
 
-  if (!apis.includes(options.api)) {
-    spinner.fail(`The api '${options.api}' does not exists, did you mean '${closest(options.api, apis)}'?`)
+  const apiList = options.api.split(',').map(api => api.trim())
+  const invalidApis = apiList.filter(api => !apis.includes(api))
+  if (invalidApis.length > 0) {
+    const suggestions = invalidApis.map(api => `'${api}' (did you mean '${closest(api, apis)}'?)`).join(', ')
+    spinner.fail(`The following APIs do not exist: ${suggestions}`)
     process.exit(1)
   }
   // if the empty string it's because the make target wasn't configured with a type argument
@@ -124,18 +127,6 @@ async function run () {
     await $`npm install --prefix ${tsValidationPath}`
   }
 
-  const isCompilerBuilt = await $`[[ -d ${path.join(compilerPath, 'lib')} ]]`.exitCode === 0
-  if (noCache || isStale || !isCompilerBuilt) {
-    spinner.text = 'Optimizing the compiler'
-    await $`npm run build --prefix ${compilerPath}`
-  }
-
-  const isTsGeneratorBuilt = await $`[[ -d ${path.join(tsGeneratorPath, 'lib')} ]]`.exitCode === 0
-  if (noCache || isStale || !isTsGeneratorBuilt) {
-    spinner.text = 'Optimizing the ts generator'
-    await $`npm run build --prefix ${tsGeneratorPath}`
-  }
-
   {
     spinner.text = 'Compiling specification'
     const Process = await nothrow($`npm run compile:specification --prefix ${compilerPath}`)
@@ -147,7 +138,7 @@ async function run () {
 
   {
     spinner.text = 'Generating schema'
-    const Process = await nothrow($`node ${path.join(compilerPath, 'lib', 'index.js')} --spec ${specPath} --output ${outputPath}`)
+    const Process = await nothrow($`npm run generate-schema --prefix ${compilerPath} -- --spec ${specPath} --output ${outputPath}`)
     if (Process.exitCode !== 0) {
       spinner.fail(removeHeader(Process.stdout))
       console.log(Process.stderr)
@@ -157,7 +148,7 @@ async function run () {
 
   {
     spinner.text = 'Generating typescript view'
-    const Process = await nothrow($`node ${path.join(tsGeneratorPath, 'lib', 'index.js')}`)
+    const Process = await nothrow($`npm run start --prefix ${tsGeneratorPath}`)
     if (Process.exitCode !== 0) {
       spinner.fail(removeHeader(Process.toString()))
       process.exit(1)

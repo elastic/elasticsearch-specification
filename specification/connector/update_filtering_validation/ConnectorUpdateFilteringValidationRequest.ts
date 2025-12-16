@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { FilteringRulesValidation } from '@connector/_types/Connector'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
+import { FilteringRulesValidation } from '@connector/_types/Connector'
 
 /**
  * Update the connector draft filtering validation.
@@ -42,6 +42,8 @@ export interface Request extends RequestBase {
      */
     connector_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     validation: FilteringRulesValidation
   }

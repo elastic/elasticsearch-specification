@@ -20,8 +20,5 @@
 // Vector tile response
 export type MapboxVectorTiles = ArrayBuffer
 
-// ES|QL generic response
-export type EsqlResult = ArrayBuffer
-
 // Streaming endpoints response
 export type StreamResult = ArrayBuffer

@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { DataframePreviewConfig } from './types'
 
 /**
  * Preview features used by data frame analytics.
+ *
  * Preview the extracted features used by a data frame analytics config.
  * @rest_spec_name ml.preview_data_frame_analytics
  * @availability stack since=7.13.0 stability=stable
@@ -48,7 +49,9 @@ export interface Request extends RequestBase {
      */
     id?: Id
   }
-  body: {
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
+  body?: {
     /**
      * A data frame analytics config as described in create data frame analytics
      * jobs. Note that `id` and `dest` don’t need to be provided in the context of

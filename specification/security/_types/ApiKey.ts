@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, Metadata, Name, Username } from '@_types/common'
 import { SortResults } from '@_types/sort'
 import { EpochTime, UnitMillis } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Access } from './Access'
 import { RoleDescriptor } from './RoleDescriptor'
 
@@ -101,6 +101,13 @@ export class ApiKey {
    */
   access?: Access
   /**
+   * The certificate identity associated with a cross-cluster API key.
+   * Restricts the API key to connections authenticated by a specific TLS certificate.
+   * Only applicable to cross-cluster API keys.
+   * @availability stack since=9.3.0
+   */
+  certificate_identity?: string
+  /**
    * The profile uid for the API key owner principal, if requested and if it exists
    * @availability stack since=8.14.0
    * @availability serverless
@@ -115,4 +122,9 @@ export class ApiKey {
 export enum ApiKeyType {
   rest,
   cross_cluster
+}
+
+export enum ApiKeyManagedBy {
+  cloud,
+  elasticsearch
 }

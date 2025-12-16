@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields, GrokPattern, Id, Name } from '@_types/common'
 import { GeoShapeRelation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
-import { Script } from '@_types/Scripting'
+import { Script, ScriptLanguage, ScriptSource } from '@_types/Scripting'
 import { SortOrder } from '@_types/sort'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @variants container
@@ -338,9 +338,13 @@ export class AppendProcessor extends ProcessorBase {
    */
   field: Field
   /**
-   * The value to be appended. Supports template snippets.
+   * The value to be appended. Supports template snippets. May specify only one of `value` or `copy_from`.
    */
-  value: UserDefinedValue | UserDefinedValue[]
+  value?: UserDefinedValue | UserDefinedValue[]
+  /**
+   * The origin field which will be appended to `field`, cannot set `value` simultaneously.
+   */
+  copy_from?: Field
   /**
    * If `false`, the processor does not append values already present in the field.
    * @server_default true
@@ -538,7 +542,7 @@ export class UserAgentProcessor extends ProcessorBase {
   target_field?: Field
   /**
    * Controls what properties are added to `target_field`.
-   * @server_default ['name', 'major', 'minor', 'patch', 'build', 'os', 'os_name', 'os_major', 'os_minor', 'device']
+   * @server_default ['name', 'os', 'device', 'original', 'version']
    */
   properties?: UserAgentProperty[]
   /**
@@ -818,7 +822,7 @@ export class DateProcessor extends ProcessorBase {
   locale?: string
   /**
    * The field that will hold the parsed date.
-   * @server_default `@timestamp`
+   * @server_default \@timestamp
    */
   target_field?: Field
   /**
@@ -1077,6 +1081,24 @@ export class InferenceProcessor extends ProcessorBase {
    * Contains the inference type and its options.
    */
   inference_config?: InferenceConfig
+
+  /**
+   * Input fields for inference and output (destination) fields for the inference results.
+   * This option is incompatible with the target_field and field_map options.
+   */
+  input_output?: InputConfig | InputConfig[]
+
+  /**
+   * If true and any of the input fields defined in input_ouput are missing
+   * then those missing fields are quietly ignored, otherwise a missing field causes a failure.
+   * Only applies when using input_output configurations to explicitly list the input fields.
+   */
+  ignore_missing?: boolean
+}
+
+export class InputConfig {
+  input_field: string
+  output_field: string
 }
 
 /**
@@ -1445,7 +1467,7 @@ export class ScriptProcessor extends ProcessorBase {
    * Script language.
    * @server_default painless
    */
-  lang?: string
+  lang?: ScriptLanguage
   /**
    * Object containing parameters for the script.
    */
@@ -1454,7 +1476,7 @@ export class ScriptProcessor extends ProcessorBase {
    * Inline script.
    * If no `id` is specified, this parameter is required.
    */
-  source?: string
+  source?: ScriptSource
 }
 
 export class SetProcessor extends ProcessorBase {

@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { IndexState } from '@indices/_types/IndexState'
 import { RequestBase } from '@_types/Base'
-import { Metadata, Name, VersionNumber } from '@_types/common'
+import { MediaType, Metadata, Name, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { IndexTemplateMapping } from '@indices/put_index_template/IndicesPutIndexTemplateRequest'
 
 /**
  * Create or update a component template.
+ *
  * Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.
  *
  * An index template can be composed of multiple component templates.
@@ -67,11 +68,18 @@ export interface Request extends RequestBase {
      */
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      *  If `true`, this request cannot replace or update existing component templates.
      * @server_default false */
     create?: boolean
+    /**
+     * User defined reason for create the component template.
+     * @server_default api
+     */
+    cause?: string
     /**
      * Period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
@@ -82,7 +90,7 @@ export interface Request extends RequestBase {
     /**
      * The template to be applied which includes mappings, settings, or aliases configuration.
      */
-    template: IndexState
+    template: IndexTemplateMapping
     /**
      * Version number used to manage component templates externally.
      * This number isn't automatically generated or incremented by Elasticsearch.

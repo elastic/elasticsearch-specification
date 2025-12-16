@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-import { ExpandWildcards, Names } from '@_types/common'
+import { ExpandWildcards, MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { CatAliasesColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get aliases.
@@ -49,11 +49,12 @@ export interface Request extends CatRequestBase {
     /** A comma-separated list of aliases to retrieve. Supports wildcards (`*`).  To retrieve all aliases, omit this parameter or use `*` or `_all`. */
     name?: Names
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
-     * List of columns to appear in the response. Supports simple wildcards.
+     * A comma-separated list of columns names to display. It supports simple wildcards.
      */
-    h?: Names
+    h?: CatAliasesColumns
     /**
      * List of columns that determine how the table should be sorted.
      * Sorting defaults to ascending and can be changed by setting `:asc`
@@ -64,6 +65,7 @@ export interface Request extends CatRequestBase {
      * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * It supports comma-separated values, such as `open,hidden`.
+     * @server_default all
      */
     expand_wildcards?: ExpandWildcards
     /**

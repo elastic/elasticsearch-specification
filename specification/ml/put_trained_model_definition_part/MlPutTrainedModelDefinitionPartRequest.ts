@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 
 /**
  * Create part of a trained model definition.
+ *
  * @rest_spec_name ml.put_trained_model_definition_part
  * @availability stack since=8.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -48,6 +49,8 @@ export interface Request extends RequestBase {
      */
     part: integer
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The definition part for the model. Must be a base64 encoded string.

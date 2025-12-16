@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ErrorCause } from '@_types/Errors'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { TaskInfo } from '../_types/TaskInfo'
 
 export class Response {

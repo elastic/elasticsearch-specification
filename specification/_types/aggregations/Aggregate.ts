@@ -17,26 +17,28 @@
  * under the License.
  */
 
-import { HitsMetadata } from '@global/search/_types/hits'
-import { AdditionalProperties } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Void } from '@spec_utils/VoidValue'
 import { CompositeAggregateKey } from '@_types/aggregations/bucket'
 import { AggregateName, Field, FieldValue, Metadata } from '@_types/common'
 import {
+  CartesianPoint,
   GeoBounds,
   GeoHash,
   GeoHexCell,
   GeoLine,
   GeoLocation,
-  GeoTile
+  GeoTile,
+  TopLeftBottomRightGeoBounds
 } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { DurationLarge, EpochTime, UnitMillis } from '@_types/Time'
+import { HitsMetadata } from '@global/search/_types/hits'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Void } from '@spec_utils/VoidValue'
 
 /**
- * @variants external
+ * @variants typed_keys_quirk
  * @non_exhaustive
  * @ext_doc_id search-aggregations
  */
@@ -59,11 +61,14 @@ export type Aggregate =
   | SimpleValueAggregate
   | DerivativeAggregate
   | BucketMetricValueAggregate
+  | ChangePointAggregate
   // Multi value
   | StatsAggregate
   | StatsBucketAggregate
   | ExtendedStatsAggregate
   | ExtendedStatsBucketAggregate
+  | CartesianBoundsAggregate
+  | CartesianCentroidAggregate
   // Geo
   | GeoBoundsAggregate
   | GeoCentroidAggregate
@@ -157,10 +162,10 @@ type Percentiles = KeyedPercentiles | Array<ArrayPercentilesItem>
 // <key_name>_as_string? string - present if a format was provided
 //
 // Note: defined as type alias and not inline, as some clients may want to implement it in a more usable way.
-type KeyedPercentiles = Dictionary<string, string | long | null>
+type KeyedPercentiles = Dictionary<string, string | double | null>
 
 export class ArrayPercentilesItem {
-  key: string
+  key: double
   value: double | null
   value_as_string?: string
 }
@@ -322,6 +327,17 @@ export class ExtendedStatsAggregate extends StatsAggregate {
 /** @variant name=extended_stats_bucket */
 export class ExtendedStatsBucketAggregate extends ExtendedStatsAggregate {}
 
+/** @variant name=cartesian_bounds */
+export class CartesianBoundsAggregate extends AggregateBase {
+  bounds?: TopLeftBottomRightGeoBounds
+}
+
+/** @variant name=cartesian_centroid */
+export class CartesianCentroidAggregate extends AggregateBase {
+  count: long
+  location?: CartesianPoint
+}
+
 //----- Geo
 
 /**
@@ -369,6 +385,61 @@ export class MultiBucketBase
   doc_count: long
 }
 
+/** @variant name=change_point */
+export class ChangePointAggregate extends AggregateBase {
+  type: ChangeType
+  bucket?: ChangePointBucket
+}
+
+export class ChangePointBucket extends MultiBucketBase {
+  key: FieldValue
+}
+
+/**
+ * @variants container
+ */
+export class ChangeType {
+  dip?: Dip
+  distribution_change?: DistributionChange
+  indeterminable?: Indeterminable
+  non_stationary?: NonStationary
+  spike?: Spike
+  stationary?: Stationary
+  step_change?: StepChange
+  trend_change?: TrendChange
+}
+
+export class AbstractChangePoint {
+  p_value: double
+  change_point: integer
+}
+
+export class Dip extends AbstractChangePoint {}
+
+export class DistributionChange extends AbstractChangePoint {}
+
+export class Spike extends AbstractChangePoint {}
+
+export class StepChange extends AbstractChangePoint {}
+
+export class Indeterminable {
+  reason: string
+}
+
+export class NonStationary {
+  p_value: double
+  r_value: double
+  trend: string
+}
+
+export class Stationary {}
+
+export class TrendChange {
+  p_value: double
+  r_value: double
+  change_point: integer
+}
+
 /**
  * @variant name=histogram
  * @ext_doc_id search-aggregations-bucket-histogram-aggregation
@@ -380,7 +451,8 @@ export class HistogramBucket extends MultiBucketBase {
   key: double
 }
 
-/** @variant name=date_histogram
+/**
+ * @variant name=date_histogram
  * @ext_doc_id search-aggregations-bucket-datehistogram-aggregation
  */
 export class DateHistogramAggregate extends MultiBucketAggregateBase<DateHistogramBucket> {}
@@ -642,7 +714,9 @@ export class IpRangeBucket extends MultiBucketBase {
  */
 export class FiltersAggregate extends MultiBucketAggregateBase<FiltersBucket> {}
 
-export class FiltersBucket extends MultiBucketBase {}
+export class FiltersBucket extends MultiBucketBase {
+  key?: string
+}
 
 /**
  * @variant name=adjacency_matrix

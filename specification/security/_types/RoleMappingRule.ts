@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { Field, FieldValue } from '@_types/common'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 /**
  * @variants container

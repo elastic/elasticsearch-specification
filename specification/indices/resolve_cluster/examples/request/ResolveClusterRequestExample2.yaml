@@ -1,0 +1,1 @@
+method_request: GET /_resolve/cluster/not-present,clust*:my-index*,oldcluster:*?ignore_unavailable=false&timeout=5s

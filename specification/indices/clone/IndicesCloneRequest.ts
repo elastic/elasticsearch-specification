@@ -17,15 +17,16 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { IndexName, MediaType, Name, WaitForActiveShards } from '@_types/common'
+import { Duration } from '@_types/Time'
 import { Alias } from '@indices/_types/Alias'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RequestBase } from '@_types/Base'
-import { IndexName, Name, WaitForActiveShards } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Clone an index.
+ *
  * Clone an existing index into a new index.
  * Each original primary shard is cloned into a new primary shard in the new index.
  *
@@ -93,6 +94,8 @@ export interface Request extends RequestBase {
      */
     target: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.
@@ -113,7 +116,7 @@ export interface Request extends RequestBase {
      */
     wait_for_active_shards?: WaitForActiveShards
   }
-  body: {
+  body?: {
     /**
      * Aliases for the resulting index.
      */

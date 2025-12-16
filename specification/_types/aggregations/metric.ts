@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { Highlight } from '@global/search/_types/highlighting'
-import { SourceConfig } from '@global/search/_types/SourceFilter'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields } from '@_types/common'
 import { GeoLocation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script, ScriptField } from '@_types/Scripting'
 import { Sort, SortOrder } from '@_types/sort'
+import { Highlight } from '@global/search/_types/highlighting'
+import { SourceConfig } from '@global/search/_types/SourceFilter'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Aggregation } from './Aggregation'
 import { Missing } from './AggregationContainer'
 import { CalendarInterval } from './bucket'
@@ -59,6 +59,12 @@ export class BoxplotAggregation extends MetricAggregationBase {
    * Limits the maximum number of nodes used by the underlying TDigest algorithm to `20 * compression`, enabling control of memory usage and approximation error.
    */
   compression?: double
+  /**
+   * The default implementation of TDigest is optimized for performance, scaling to millions or even billions of sample values while maintaining acceptable accuracy levels (close to 1% relative error for millions of samples in some cases).
+   * To use an implementation optimized for accuracy, set this parameter to high_accuracy instead.
+   * @server_default default
+   */
+  execution_hint?: TDigestExecutionHint
 }
 
 export enum CardinalityExecutionMode {
@@ -105,6 +111,10 @@ export class ExtendedStatsAggregation extends FormatMetricAggregationBase {
   sigma?: double
 }
 
+export class CartesianBoundsAggregation extends MetricAggregationBase {}
+
+export class CartesianCentroidAggregation extends MetricAggregationBase {}
+
 /**
  * @ext_doc_id search-aggregations-metrics-geobounds-aggregation
  */
@@ -130,7 +140,7 @@ export class GeoLineAggregation {
    * The name of the numeric field to use as the sort key for ordering the points.
    * When the `geo_line` aggregation is nested inside a `time_series` aggregation, this field defaults to `@timestamp`, and any other value will result in error.
    */
-  sort: GeoLineSort
+  sort?: GeoLineSort
   /**
    * When `true`, returns an additional array of the sort values in the feature properties.
    */
@@ -173,6 +183,12 @@ export class MedianAbsoluteDeviationAggregation extends FormatMetricAggregationB
    * @server_default 1000
    */
   compression?: double
+  /**
+   * The default implementation of TDigest is optimized for performance, scaling to millions or even billions of sample values while maintaining acceptable accuracy levels (close to 1% relative error for millions of samples in some cases).
+   * To use an implementation optimized for accuracy, set this parameter to high_accuracy instead.
+   * @server_default default
+   */
+  execution_hint?: TDigestExecutionHint
 }
 
 export class MinAggregation extends FormatMetricAggregationBase {}
@@ -211,7 +227,7 @@ export class PercentilesAggregation extends FormatMetricAggregationBase {
   /**
    * The percentiles to calculate.
    */
-  percents?: double[]
+  percents?: double | double[]
   /**
    * Uses the alternative High Dynamic Range Histogram algorithm to calculate percentiles.
    */
@@ -234,6 +250,17 @@ export class TDigest {
    * Limits the maximum number of nodes used by the underlying TDigest algorithm to `20 * compression`, enabling control of memory usage and approximation error.
    */
   compression?: integer
+  /**
+   * The default implementation of TDigest is optimized for performance, scaling to millions or even billions of sample values while maintaining acceptable accuracy levels (close to 1% relative error for millions of samples in some cases).
+   * To use an implementation optimized for accuracy, set this parameter to high_accuracy instead.
+   * @server_default default
+   */
+  execution_hint?: TDigestExecutionHint
+}
+
+export enum TDigestExecutionHint {
+  default,
+  high_accuracy
 }
 
 export class RateAggregation extends FormatMetricAggregationBase {

@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 
 /**
  * Analyze the index disk usage.
+ *
  * Analyze the disk usage of each field of an index or data stream.
  * This API might not support indices created in previous Elasticsearch versions.
  * The result of a small index can be inaccurate as some parts of an index might not be analyzed by the API.
@@ -29,6 +30,9 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * NOTE: The total size of fields of the analyzed shards of the index in the response is usually smaller than the index `store_size` value because some small metadata files are ignored and some parts of data files might not be scanned by the API.
  * Since stored fields are stored together in a compressed format, the sizes of stored fields are also estimates and can be inaccurate.
  * The stored size of the `_id` field is likely underestimated while the `_source` field is overestimated.
+ *
+ * For usage examples see the External documentation or refer to [Analyze the index disk usage example](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/index-disk-usage) for an example.
+ * @ext_doc_id indices-disk-usage
  * @doc_id indices-disk-usage
  * @rest_spec_name indices.disk_usage
  * @availability stack since=7.15.0 stability=experimental
@@ -48,6 +52,7 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters?: {
     /**
      * If false, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.

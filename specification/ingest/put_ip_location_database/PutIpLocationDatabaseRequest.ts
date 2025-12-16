@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { DatabaseConfiguration } from '@ingest/_types/Database'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { DatabaseConfiguration } from '@ingest/_types/Database'
 
 /**
  * Create or update an IP geolocation database configuration.
+ *
  * @rest_spec_name ingest.put_ip_location_database
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
@@ -43,6 +44,8 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

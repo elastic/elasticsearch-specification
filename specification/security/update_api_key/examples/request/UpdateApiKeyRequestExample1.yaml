@@ -1,5 +1,5 @@
 summary: Update role and metadata
-# method_request: PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx
+method_request: PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx
 description: >
   Run `PUT /_security/api_key/VuaCfGcBCdbkQm-e5aOx` to assign new role descriptors and metadata to an API key.
 # type: request

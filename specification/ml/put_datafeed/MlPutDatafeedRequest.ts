@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
@@ -26,16 +24,20 @@ import {
   HttpHeaders,
   Id,
   Indices,
-  IndicesOptions
+  IndicesOptions,
+  MediaType
 } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
+import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Create a datafeed.
+ *
  * Datafeeds retrieve data from Elasticsearch for analysis by an anomaly detection job.
  * You can associate only one datafeed with each anomaly detection job.
  * The datafeed contains a query that runs at a defined interval (`frequency`).
@@ -70,6 +72,8 @@ export interface Request extends RequestBase {
      */
     datafeed_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If true, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the `_all`

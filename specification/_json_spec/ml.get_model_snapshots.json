@@ -1,8 +1,8 @@
 {
   "ml.get_model_snapshots": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-snapshot.html",
-      "description": "Retrieves information about model snapshots."
+      "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-model-snapshots",
+      "description": "Get model snapshots info"
     },
     "stability": "stable",
     "visibility": "public",
@@ -41,10 +41,12 @@
     "params": {
       "from": {
         "type": "int",
+        "default": 0,
         "description": "Skips a number of documents"
       },
       "size": {
         "type": "int",
+        "default": 100,
         "description": "The default number of documents returned in queries as a string."
       },
       "start": {
@@ -61,11 +63,13 @@
       },
       "desc": {
         "type": "boolean",
+        "default": false,
         "description": "True if the results should be sorted in descending order"
       }
     },
     "body": {
-      "description": "Model snapshot selection criteria"
+      "description": "Model snapshot selection criteria",
+      "required": false
     }
   }
 }

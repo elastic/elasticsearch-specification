@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import {
   Field,
   Id,
@@ -27,6 +26,7 @@ import {
 } from '@_types/common'
 import { KnnQuery } from '@_types/Knn'
 import { float } from '@_types/Numeric'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import {
   BoolQuery,
   BoostingQuery,

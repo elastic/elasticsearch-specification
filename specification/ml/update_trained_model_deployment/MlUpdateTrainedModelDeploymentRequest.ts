@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { AdaptiveAllocationsSettings } from '@ml/_types/TrainedModel'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { AdaptiveAllocationsSettings } from '@ml/_types/TrainedModel'
 
 /**
  * Update a trained model deployment.
+ *
  * @rest_spec_name ml.update_trained_model_deployment
  * @availability stack since=8.6.0 stability=stable
  * @availability serverless stability=beta visibility=public
@@ -44,6 +45,8 @@ export interface Request extends RequestBase {
      */
     model_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The number of model allocations on each node where the model is deployed.
@@ -56,7 +59,7 @@ export interface Request extends RequestBase {
      */
     number_of_allocations?: integer
   }
-  body: {
+  body?: {
     /**
      * The number of model allocations on each node where the model is deployed.
      * All allocations on a node share the same copy of the model in memory but use

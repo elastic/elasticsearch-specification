@@ -17,12 +17,14 @@
  * under the License.
  */
 
-import { TaskSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
+import { Duration } from '@_types/Time'
+import { TaskSettings } from '@inference/_types/Services'
 
 /**
- * Perform streaming inference.
+ * Perform streaming completion inference on the service.
+ *
  * Get real-time responses for completion tasks by delivering answers incrementally, reducing response times during computation.
  * This API works only with the completion task type.
  *
@@ -47,6 +49,15 @@ export interface Request extends RequestBase {
      */
     inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.EventStream
+  query_parameters: {
+    /**
+     * The amount of time to wait for the inference request to complete.
+     * @server_default 30s
+     */
+    timeout?: Duration
+  }
   body: {
     /**
      * The text on which you want to perform the inference task.
@@ -56,7 +67,7 @@ export interface Request extends RequestBase {
      */
     input: string | string[]
     /**
-     * Optional task settings
+     * Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.
      */
     task_settings?: TaskSettings
   }

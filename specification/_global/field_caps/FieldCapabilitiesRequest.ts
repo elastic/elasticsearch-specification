@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Fields, Indices } from '@_types/common'
+import {
+  ExpandWildcards,
+  Fields,
+  Indices,
+  MediaType,
+  ProjectRouting
+} from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
@@ -54,6 +60,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If false, the request returns an error if any wildcard expression, index alias,
@@ -86,7 +94,7 @@ export interface Request extends RequestBase {
      * @availability stack since=8.2.0
      * @availability serverless
      */
-    filters?: string
+    filters?: string | string[]
     /**
      * A comma-separated list of field types to include.
      * Any fields that do not match one of these types will be excluded from the results.
@@ -103,7 +111,7 @@ export interface Request extends RequestBase {
      */
     include_empty_fields?: boolean
   }
-  body: {
+  body?: {
     /**
      * A list of fields to retrieve capabilities for. Wildcard (`*`) expressions are supported.
      * @availability stack since=8.5.0
@@ -126,5 +134,17 @@ export interface Request extends RequestBase {
      * @availability serverless
      */
     runtime_mappings?: RuntimeFields
+    /**
+     * Specifies a subset of projects to target for the field-caps query using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }

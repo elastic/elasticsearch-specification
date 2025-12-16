@@ -1,8 +1,8 @@
 summary: Automate document IDs
-# method_request: POST my-index-000001/_doc/
+method_request: POST my-index-000001/_doc/
 description: >
-  Run `POST my-index-000001/_doc/` to index a document.
-  When you use the `POST /<target>/_doc/` request format, the `op_type` is automatically set to `create` and the index operation generates a unique ID for the document.
+  Run `POST my-index-000001/_doc/` to index a document. When you use the `POST /<target>/_doc/` request format, the `op_type` is
+  automatically set to `create` and the index operation generates a unique ID for the document.
 # type: request
 value: |-
   {

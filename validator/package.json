@@ -1,0 +1,23 @@
+{
+  "name": "eslint-plugin-es-spec",
+  "version": "0.1.0",
+  "description": "Elasticsearch specification validation",
+  "main": "eslint-plugin-es-spec.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --import ./test/_setup.js --test"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0"
+  },
+  "author": "Elastic Developer Tools",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@typescript-eslint/utils": "^8.32.1",
+    "markdownlint": "^0.39.0",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/rule-tester": "^8.32.1"
+  }
+}

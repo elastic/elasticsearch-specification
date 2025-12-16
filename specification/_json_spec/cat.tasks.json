@@ -1,8 +1,8 @@
 {
   "cat.tasks": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html",
-      "description": "Returns information about the tasks currently executing on one or more nodes in the cluster."
+      "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-tasks",
+      "description": "Get task information"
     },
     "stability": "experimental",
     "visibility": "public",
@@ -20,6 +20,7 @@
     "params": {
       "format": {
         "type": "string",
+        "default": "text",
         "description": "a short version of the Accept header, e.g. json, yaml"
       },
       "nodes": {
@@ -32,6 +33,7 @@
       },
       "detailed": {
         "type": "boolean",
+        "default": false,
         "description": "Return detailed task information (default: false)"
       },
       "parent_task_id": {
@@ -40,7 +42,24 @@
       },
       "h": {
         "type": "list",
-        "description": "Comma-separated list of column names to display"
+        "description": "Comma-separated list of column names to display",
+        "options": [
+          "id",
+          "action",
+          "task_id",
+          "parent_task_id",
+          "type",
+          "start_time",
+          "timestamp",
+          "running_time_ns",
+          "running_time",
+          "node_id",
+          "ip",
+          "port",
+          "node",
+          "version",
+          "x_opaque_id"
+        ]
       },
       "help": {
         "type": "boolean",
@@ -70,6 +89,11 @@
         "type": "boolean",
         "default": false,
         "description": "If `true`, the request blocks until the task has completed."
+      },
+      "bytes": {
+        "type": "enum",
+        "description": "The unit in which to display byte values",
+        "options": ["b", "kb", "mb", "gb", "tb", "pb"]
       }
     }
   }

@@ -17,11 +17,13 @@
  * under the License.
  */
 
-import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Metadata, Name, Names, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { long } from '@_types/Numeric'
+import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
+import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
+import { DataStreamOptions } from '@indices/_types/DataStreamOptions'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Alias } from './Alias'
 import { IndexSettings } from './IndexSettings'
 
@@ -78,6 +80,30 @@ export class IndexTemplate {
    * @availability serverless
    */
   ignore_missing_component_templates?: Names
+  /**
+   * Date and time when the index template was created. Only returned if the `human` query parameter is `true`.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  created_date?: DateTime
+  /**
+   * Date and time when the index template was created, in milliseconds since the epoch.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  created_date_millis?: EpochTime<UnitMillis>
+  /**
+   * Date and time when the index template was last modified. Only returned if the `human` query parameter is `true`.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  modified_date?: DateTime
+  /**
+   * Date and time when the index template was last modified, in milliseconds since the epoch.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  modified_date_millis?: EpochTime<UnitMillis>
 }
 
 export class IndexTemplateDataStreamConfiguration {
@@ -115,4 +141,9 @@ export class IndexTemplateSummary {
    * @availability serverless stability=stable
    */
   lifecycle?: DataStreamLifecycleWithRollover
+  /**
+   * @availability stack since=8.19.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  data_stream_options?: DataStreamOptions
 }

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { ShardStats } from '@indices/stats/types'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, Field, Name } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { NodeRoles } from '@_types/Node'
 import { double, float, integer, long } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis, UnitNanos } from '@_types/Time'
+import { ShardStats } from '@indices/stats/types'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 // The node stats response can be filtered both by `metric` and `filter_path`,
 // every property needs to be optional to be compliant with the API behavior.
@@ -196,6 +196,8 @@ export interface PressureMemory {
    * Number of indexing requests rejected in the replica stage.
    */
   replica_rejections?: long
+  primary_document_rejections?: long
+  large_operation_rejections?: long
 }
 
 export class Discovery {
@@ -933,6 +935,11 @@ export class JvmMemoryStats {
    */
   heap_max_in_bytes?: long
   /**
+   * Maximum amount of memory, available for use by the heap.
+   */
+  heap_max?: ByteSize
+
+  /**
    * Non-heap memory used, in bytes.
    */
   non_heap_used_in_bytes?: long
@@ -1065,6 +1072,7 @@ export class Scripting {
   contexts?: Context[]
 }
 
+// eslint-disable-next-line es-spec-validator/no-same-name-as-enclosing-type
 export class Context {
   context?: string
   compilations?: long

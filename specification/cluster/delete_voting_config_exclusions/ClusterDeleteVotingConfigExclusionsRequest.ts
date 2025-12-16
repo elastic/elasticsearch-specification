@@ -19,9 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Clear cluster voting config exclusions.
+ *
  * Remove master-eligible nodes from the voting configuration exclusion list.
  * @rest_spec_name cluster.delete_voting_config_exclusions
  * @availability stack since=7.0.0 stability=stable
@@ -35,6 +37,7 @@ export interface Request extends RequestBase {
       methods: ['DELETE']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

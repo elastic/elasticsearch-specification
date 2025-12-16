@@ -17,10 +17,16 @@
  * under the License.
  */
 
-import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { HealthStatus, Name, Uuid } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { ClusterIndices, ClusterNodes } from './types'
+import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
+import { Dictionary } from '@spec_utils/Dictionary'
+import {
+  CCSStats,
+  ClusterIndices,
+  ClusterNodes,
+  ClusterSnapshotStats
+} from './types'
 
 export class StatsResponseBase extends NodesResponseBase {
   /**
@@ -41,15 +47,28 @@ export class StatsResponseBase extends NodesResponseBase {
    */
   nodes: ClusterNodes
   /**
+   * Contains stats on repository feature usage exposed in cluster stats for telemetry.
+   */
+  repositories: Dictionary<Name, Dictionary<Name, long>>
+  /**
+   * Contains stats cluster snapshots.
+   */
+  snapshots: ClusterSnapshotStats
+  /**
    * Health status of the cluster, based on the state of its primary and replica shards.
    */
-  status: HealthStatus
+  status?: HealthStatus
   /**
    * Unix timestamp, in milliseconds, for the last time the cluster statistics were refreshed.
    */
   timestamp: long
+  /**
+   * Cross-cluster stats
+   */
+  ccs: CCSStats
 }
 
 export class Response {
+  /** @codegen_name stats */
   body: StatsResponseBase
 }

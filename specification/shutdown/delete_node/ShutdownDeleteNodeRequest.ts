@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeId } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
+import { MediaType, NodeId } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Cancel node shutdown preparations.
+ *
  * Remove a node from the shutdown list so it can resume normal operations.
  * You must explicitly clear the shutdown request when a node rejoins the cluster or when a node has permanently left the cluster.
  * Shutdown requests are never removed automatically by Elasticsearch.
@@ -32,7 +33,7 @@ import { TimeUnit } from '@_types/Time'
  *
  * If the operator privileges feature is enabled, you must be an operator to use this API.
  * @rest_spec_name shutdown.delete_node
- * @availability stack since=7.13.0 stability=stable
+ * @availability stack since=7.13.0 stability=stable visibility=private
  * @cluster_privileges manage
  * @doc_id nodes-api-shutdown-delete
  */
@@ -44,18 +45,21 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The node id of node to be removed from the shutdown state */
     node_id: NodeId
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: TimeUnit
+    master_timeout?: Duration
     /**
      * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    timeout?: TimeUnit
+    timeout?: Duration
   }
 }

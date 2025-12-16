@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -50,6 +50,8 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Controls the time to wait until a job has opened.
@@ -57,7 +59,7 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `timeout` query parameter.
      * @server_default 30m

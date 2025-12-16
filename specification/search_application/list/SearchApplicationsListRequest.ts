@@ -18,9 +18,11 @@
  */
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
+import { MediaType } from '@_types/common'
 
 /**
  * Get search applications.
+ *
  * Get information about search applications.
  * @rest_spec_name search_application.list
  * @availability stack since=8.8.0 stability=beta
@@ -35,6 +37,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Query in the Lucene query string syntax.

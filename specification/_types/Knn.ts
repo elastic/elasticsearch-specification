@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { InnerHits } from '@global/search/_types/hits'
 import { Field } from '@_types/common'
 import { float, integer } from '@_types/Numeric'
+import { InnerHits } from '@global/search/_types/hits'
 import { QueryBase, QueryContainer } from './query_dsl/abstractions'
 
 export type QueryVector = float[]
@@ -43,6 +43,12 @@ export interface KnnSearch {
   k?: integer
   /** The number of nearest neighbor candidates to consider per shard */
   num_candidates?: integer
+  /**
+   * The percentage of vectors to explore per shard while doing knn search with bbq_disk
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  visit_percentage?: float
   /** Boost value to apply to kNN scores */
   boost?: float
   /** Filters for the kNN search query */
@@ -54,9 +60,10 @@ export interface KnnSearch {
    * @doc_id knn-inner-hits
    */
   inner_hits?: InnerHits
-  /** Apply oversampling and rescoring to quantized vectors *
-   * @availability stack since=8.18.0 stability=experimental
-   * @availability serverless stability=experimental
+  /**
+   * Apply oversampling and rescoring to quantized vectors
+   * @availability stack since=8.18.0
+   * @availability serverless
    */
   rescore_vector?: RescoreVector
 }
@@ -73,15 +80,22 @@ export interface KnnQuery extends QueryBase {
   query_vector_builder?: QueryVectorBuilder
   /** The number of nearest neighbor candidates to consider per shard */
   num_candidates?: integer
+  /**
+   * The percentage of vectors to explore per shard while doing knn search with bbq_disk
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  visit_percentage?: float
   /** The final number of nearest neighbors to return as top hits */
   k?: integer
   /** Filters for the kNN search query */
   filter?: QueryContainer | QueryContainer[]
   /** The minimum similarity for a vector to be considered a match */
   similarity?: float
-  /** Apply oversampling and rescoring to quantized vectors *
-   * @availability stack since=8.18.0 stability=experimental
-   * @availability serverless stability=experimental
+  /**
+   * Apply oversampling and rescoring to quantized vectors
+   * @availability stack since=8.18.0
+   * @availability serverless
    */
   rescore_vector?: RescoreVector
 }
@@ -92,6 +106,12 @@ export interface QueryVectorBuilder {
 }
 
 export interface TextEmbedding {
-  model_id: string
+  /**
+   * Model ID is required for all dense_vector fields but
+   * may be inferred for semantic_text fields
+   * @availability stack since=8.18.0
+   * @availability serverless
+   */
+  model_id?: string
   model_text: string
 }

@@ -20,5 +20,6 @@
 import { StreamResult } from '@_types/Binary'
 
 export class Response {
+  /** @codegen_name data */
   body: StreamResult
 }

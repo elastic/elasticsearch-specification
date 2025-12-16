@@ -16,12 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Claim a connector sync job.
+ *
  * This action updates the job status to `in_progress` and sets the `last_seen` and `started_at` timestamps to the current time.
  * Additionally, it can set the `sync_cursor` property for the sync job.
  *
@@ -47,6 +48,8 @@ export interface Request extends RequestBase {
      */
     connector_sync_job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The cursor object from the last incremental sync job.

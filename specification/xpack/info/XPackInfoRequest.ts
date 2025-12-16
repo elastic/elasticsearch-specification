@@ -18,9 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Get information.
+ *
  * The information provided by the API includes:
  *
  * * Build information including the build number and timestamp.
@@ -39,12 +41,17 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of the information categories to include in the response.
      * For example, `build,license,features`.
      */
     categories?: XPackCategory[]
+    /**
+     * If used, this otherwise ignored parameter must be set to true
+     * @deprecated 8.0.0 Supported for backwards compatibility with 7.x
+     */
     accept_enterprise?: boolean
     /**
      * Defines whether additional human-readable information is included in the response.

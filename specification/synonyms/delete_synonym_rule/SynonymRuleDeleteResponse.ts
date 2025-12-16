@@ -20,5 +20,6 @@
 import { SynonymsUpdateResult } from '../_types/SynonymsUpdateResult'
 
 export class Response {
+  /** @codegen_name update_result */
   body: SynonymsUpdateResult
 }

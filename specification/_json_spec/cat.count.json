@@ -1,8 +1,8 @@
 {
   "cat.count": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-count.html",
-      "description": "Provides quick access to the document count of the entire cluster, or individual indices."
+      "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-count",
+      "description": "Get a document count"
     },
     "stability": "stable",
     "visibility": "public",
@@ -30,16 +30,22 @@
     "params": {
       "format": {
         "type": "string",
+        "default": "text",
         "description": "a short version of the Accept header, e.g. json, yaml"
       },
       "h": {
         "type": "list",
-        "description": "Comma-separated list of column names to display"
+        "description": "Comma-separated list of column names to display",
+        "options": ["epoch", "timestamp", "count"]
       },
       "help": {
         "type": "boolean",
         "description": "Return help information",
         "default": false
+      },
+      "project_routing": {
+        "type": "string",
+        "description": "A Lucene query using project metadata tags to limit which projects to search, such as _alias:_origin or _alias:*pr*. Only supported in serverless."
       },
       "s": {
         "type": "list",
@@ -49,6 +55,16 @@
         "type": "boolean",
         "description": "Verbose mode. Display column headers",
         "default": false
+      },
+      "bytes": {
+        "type": "enum",
+        "description": "The unit in which to display byte values",
+        "options": ["b", "kb", "mb", "gb", "tb", "pb"]
+      },
+      "time": {
+        "type": "enum",
+        "description": "The unit in which to display time values",
+        "options": ["d", "h", "m", "s", "ms", "micros", "nanos"]
       }
     }
   }

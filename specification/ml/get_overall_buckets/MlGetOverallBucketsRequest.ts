@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { DateTime, Duration } from '@_types/Time'
 
@@ -67,6 +67,8 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:
@@ -105,7 +107,7 @@ export interface Request extends RequestBase {
      * Returns overall buckets with overall scores greater than or equal to this
      * value.
      */
-    overall_score?: double | string
+    overall_score?: double
     /**
      * Returns overall buckets with timestamps after this time.
      */
@@ -117,7 +119,7 @@ export interface Request extends RequestBase {
      */
     top_n?: integer
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `allow_no_match` query parameter.
      * @server_default true
@@ -139,7 +141,7 @@ export interface Request extends RequestBase {
     /**
      * Refer to the description for the `overall_score` query parameter.
      */
-    overall_score?: double | string
+    overall_score?: double
     /**
      * Refer to the description for the `start` query parameter.
      */

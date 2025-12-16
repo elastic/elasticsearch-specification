@@ -20,6 +20,7 @@
 /**
  * @rest_spec_name index
  * @availability stack stability=stable since=0.0.0
+ * @doc_id docs-index
  */
 export interface Request<TDocument> {
   path_parts: {

@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Names } from '@_types/common'
+import { MediaType, Name, Names } from '@_types/common'
 
 /**
  * Acknowledge a watch.
+ *
  * Acknowledging a watch enables you to manually throttle the execution of the watch's actions.
  *
  * The acknowledgement state of an action is stored in the `status.actions.<id>.ack.state` structure.
@@ -31,10 +32,12 @@ import { Name, Names } from '@_types/common'
  *
  * Acknowledging an action throttles further executions of that action until its `ack.state` is reset to `awaits_successful_execution`.
  * This happens when the condition of the watch is not met (the condition evaluates to false).
+ * To demonstrate how throttling works in practice and how it can be configured for individual actions within a watch, refer to External documentation.
  * @rest_spec_name watcher.ack_watch
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
  * @doc_id watcher-api-ack-watch
+ * @ext_doc_id ack-watch
  */
 export interface Request extends RequestBase {
   urls: [
@@ -58,4 +61,5 @@ export interface Request extends RequestBase {
      */
     action_id?: Names
   }
+  response_media_type: MediaType.Json
 }

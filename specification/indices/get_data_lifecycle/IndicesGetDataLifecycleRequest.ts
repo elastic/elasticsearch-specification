@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { DataStreamNames, ExpandWildcards } from '@_types/common'
+import { DataStreamNames, ExpandWildcards, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -30,6 +30,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @doc_tag data stream
  * @doc_id data-stream-get-lifecycle
+ * @ext_doc_id data-stream-lifecycle
  */
 export interface Request extends RequestBase {
   urls: [
@@ -46,11 +47,11 @@ export interface Request extends RequestBase {
      */
     name: DataStreamNames
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Type of data stream that wildcard patterns can match.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards

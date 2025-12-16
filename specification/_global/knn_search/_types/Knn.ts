@@ -21,7 +21,7 @@ import { Field } from '@_types/common'
 import { QueryVector } from '@_types/Knn'
 import { integer } from '@_types/Numeric'
 
-export interface Query {
+export interface KnnSearchQuery {
   /** The name of the vector field to search against */
   field: Field
   /** The query vector */

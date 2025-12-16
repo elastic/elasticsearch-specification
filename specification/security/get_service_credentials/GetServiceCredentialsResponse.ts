@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { NodesCredentials } from './types'
 
 export class Response {
@@ -28,7 +28,8 @@ export class Response {
     count: integer
     tokens: Dictionary<string, Metadata>
     /**
-     * Service account credentials collected from all nodes of the cluster. */
+     * Service account credentials collected from all nodes of the cluster.
+     */
     nodes_credentials: NodesCredentials
   }
 }

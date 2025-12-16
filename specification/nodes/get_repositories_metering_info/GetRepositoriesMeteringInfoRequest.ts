@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeIds } from '@_types/common'
+import { MediaType, NodeIds } from '@_types/common'
 
 /**
  * Get cluster repositories metering.
+ *
  * Get repositories metering information for a cluster.
  * This API exposes monotonically non-decreasing counters and it is expected that clients would durably store the information needed to compute aggregations over a period of time.
  * Additionally, the information exposed by this API is volatile, meaning that it will not be present after node restarts.
@@ -42,8 +43,9 @@ export interface Request extends RequestBase {
   path_parts: {
     /**
      * Comma-separated list of node IDs or names used to limit returned information.
-     * All the nodes selective options are explained [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes).
+     * @ext_doc_id cluster-nodes
      */
     node_id: NodeIds
   }
+  response_media_type: MediaType.Json
 }

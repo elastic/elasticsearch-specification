@@ -19,7 +19,6 @@
 
 import * as model from '../model/metamodel'
 import { ValidationErrors } from '../validation-errors'
-import { JsonSpec } from '../model/json-spec'
 import assert from 'assert'
 import { TypeName } from '../model/metamodel'
 
@@ -37,22 +36,16 @@ enum JsonEvent {
   array = 'array'
 }
 
-const privateNamespaces = ['_internal', 'profiling']
-
 /**
  * Validates the internal consistency of the model (doesn't check the json spec)
  *
  * Any inconsistency is logged as an error.
  *
  * Missing validations:
- * - verify uniqueness of property names in the inheritance chain
  * - verify that request parents don't define properties (would they be path/request/body properties?)
  * - verify that unions can be distinguished in a JSON stream (otherwise they should be inheritance trees)
  */
-export default async function validateModel (apiModel: model.Model, restSpec: Map<string, JsonSpec>, errors: ValidationErrors): Promise<model.Model> {
-  // Fail hard if the FAIL_HARD env var is defined
-  const failHard = process.env.FAIL_HARD != null
-
+export default async function validateModel (apiModel: model.Model, errors: ValidationErrors): Promise<model.Model> {
   const initialTypeCount = apiModel.types.length
 
   // Returns the fully-qualified name of a type name
@@ -87,13 +80,20 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   function modelError (msg: string): void {
     const fullMsg = (context.length === 0) ? msg : context.join(' / ') + ' - ' + msg
 
+    let ignored = false
     if (currentEndpoint != null) {
-      errors.addEndpointError(currentEndpoint, currentPart, fullMsg)
+      ignored = errors.addEndpointError(currentEndpoint, currentPart, fullMsg)
+      if (!ignored) {
+        console.error(currentEndpoint, currentPart, fullMsg)
+      }
     } else {
       errors.addGeneralError(fullMsg)
+      console.error(fullMsg)
     }
 
-    errorCount++
+    if (!ignored) {
+      errorCount++
+    }
   }
 
   // ----- Type definition management
@@ -183,6 +183,13 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   apiModel.endpoints.filter(ep => readyForValidation(ep)).forEach(validateEndpoint)
   apiModel.endpoints.filter(ep => !readyForValidation(ep)).forEach(validateEndpoint)
 
+  // Check types are used
+  for (const type of apiModel.types) {
+    if (!typesSeen.has(fqn(type.name))) {
+      errors.addGeneralError(`Dangling type '${fqn(type.name)}'`)
+    }
+  }
+
   // Removes types that we've not seen
   apiModel.types = apiModel.types.filter(type => typesSeen.has(fqn(type.name)))
 
@@ -196,8 +203,8 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   const danglingTypesCount = initialTypeCount - apiModel.types.length
   console.info(`Model validation: ${typesSeen.size} types visited, ${danglingTypesCount} dangling types.`)
 
-  if (errorCount > 0 && failHard) {
-    throw new Error('Model is inconsistent. Check logs for details')
+  if (errorCount > 0) {
+    throw new Error('Model is inconsistent.')
   }
 
   return apiModel
@@ -209,11 +216,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
    */
   function validateEndpoint (endpoint: model.Endpoint): void {
     setRootContext(endpoint.name, 'request')
-
-    // Skip validation for internal endpoints
-    if (privateNamespaces.some(ns => endpoint.name.startsWith(ns))) {
-      return
-    }
 
     if (endpoint.request !== null) {
       const reqType = getTypeDef(endpoint.request)
@@ -437,6 +439,23 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         throw new Error(`Unknown kind: ${typeDef.body.kind}`)
     }
+
+    if (typeDef.exceptions != null) {
+      for (const ex of typeDef.exceptions) {
+        switch (ex.body.kind) {
+          case 'properties':
+            validateProperties(ex.body.properties, openGenerics, new Set<string>())
+            break
+          case 'value':
+            validateValueOf(ex.body.value, openGenerics)
+            break
+          case 'no_body':
+            // Nothing to validate
+            break
+        }
+      }
+    }
+
     context.pop()
   }
 
@@ -502,17 +521,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
     if (typeDef.variants?.kind === 'container') {
       const variants = typeDef.properties.filter(prop => !(prop.containerProperty ?? false))
-      if (variants.length === 1) {
-        // Single-variant containers must have a required property
-        if (!variants[0].required) {
-          modelError(`Property ${variants[0].name} is a single-variant and must be required`)
-        }
-      } else {
-        // Multiple variants must all be optional
-        for (const v of variants) {
-          if (v.required) {
-            modelError(`Variant ${variants[0].name} must be optional`)
-          }
+      // Variants must all be optional
+      for (const v of variants) {
+        if (v.required) {
+          modelError(`Variant ${variants[0].name} must be optional`)
         }
       }
     }

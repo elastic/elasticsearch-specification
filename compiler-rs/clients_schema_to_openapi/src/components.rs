@@ -15,19 +15,37 @@
 // specific language governing permissions and limitations
 // under the License.
 
+use std::collections::BTreeMap;
 use clients_schema::TypeName;
 use openapiv3::{Components, Parameter, ReferenceOr, RequestBody, Response, Schema, StatusCode};
-
+use crate::Configuration;
 use crate::utils::SchemaName;
 
+// Separator used to combine parts of a component path.
+// OpenAPI says `$ref` must comply with RFC 3968 (escaping reserved chars),
+// but also restricts the keys in `components` to match `^[a-zA-Z0-9\.\-_]+$`.
+//
+// See https://spec.openapis.org/oas/v3.1.1.html#reference-object
+// and https://spec.openapis.org/oas/v3.1.1.html#fixed-fields-5
+pub const SEPARATOR: char = '-';
+
 pub struct TypesAndComponents<'a> {
+    pub config: &'a Configuration,
     pub model: &'a clients_schema::IndexedModel,
     pub components: &'a mut Components,
+    // Redirections (if paths multipaths endpoints are merged)
+    pub redirects: Option<BTreeMap<String, String>>,
 }
 
 impl<'a> TypesAndComponents<'a> {
-    pub fn new(model: &'a clients_schema::IndexedModel, components: &'a mut Components) -> TypesAndComponents<'a> {
-        TypesAndComponents { model, components }
+    pub fn new(config: &'a Configuration, model: &'a clients_schema::IndexedModel, components: &'a mut Components) -> TypesAndComponents<'a> {
+        let redirects = if config.merge_multipath_endpoints && config.multipath_redirects {
+            Some(BTreeMap::new())
+        } else {
+            None
+        };
+
+        TypesAndComponents { config, model, components, redirects }
     }
 
     pub fn add_request_body(&mut self, endpoint: &str, body: RequestBody) -> ReferenceOr<RequestBody> {
@@ -43,14 +61,14 @@ impl<'a> TypesAndComponents<'a> {
         let suffix = if duplicate { "_" } else { "" };
         let result = ReferenceOr::Reference {
             reference: format!(
-                "#/components/parameters/{}#{}{}",
+                "#/components/parameters/{}{SEPARATOR}{}{}",
                 endpoint,
                 &param.parameter_data_ref().name,
                 suffix
             ),
         };
         self.components.parameters.insert(
-            format!("{}#{}{}", endpoint, &param.parameter_data_ref().name, suffix),
+            format!("{}{SEPARATOR}{}{}", endpoint, &param.parameter_data_ref().name, suffix),
             ReferenceOr::Item(param),
         );
         result
@@ -59,9 +77,9 @@ impl<'a> TypesAndComponents<'a> {
     pub fn add_response(&mut self, endpoint: &str, status: StatusCode, response: Response) -> ReferenceOr<Response> {
         self.components
             .responses
-            .insert(format!("{}#{}", endpoint, status), ReferenceOr::Item(response));
+            .insert(format!("{}{SEPARATOR}{}", endpoint, status), ReferenceOr::Item(response));
         ReferenceOr::Reference {
-            reference: format!("#/components/responses/{}#{}", endpoint, status),
+            reference: format!("#/components/responses/{}{SEPARATOR}{}", endpoint, status),
         }
     }
 

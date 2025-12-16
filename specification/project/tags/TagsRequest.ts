@@ -1,0 +1,48 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
+
+/**
+ * Get tags.
+ *
+ * Get the tags that are defined for the project.
+ * @doc_id project-tags
+ * @rest_spec_name project.tags
+ * @availability serverless stability=experimental visibility=public
+ * @cluster_privileges monitor
+ * @doc_tag project
+ */
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_project/tags'
+      methods: ['GET', 'POST']
+    }
+  ]
+  response_media_type: MediaType.Json
+  query_parameters: {
+    /**
+     * A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*.
+     * @availability serverless stability=experimental visibility=public
+     */
+    project_routing?: string
+  }
+}

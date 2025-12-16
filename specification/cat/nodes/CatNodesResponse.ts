@@ -20,5 +20,6 @@
 import { NodesRecord } from './types'
 
 export class Response {
+  /** @codegen_name nodes */
   body: Array<NodesRecord>
 }

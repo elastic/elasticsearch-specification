@@ -18,10 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Get cluster info.
+ *
  * Get basic build, version, and cluster information.
+ * ::: In Serverless, this API is retained for backward compatibility only. Some response fields, such as the version number, should be ignored.
  * @rest_spec_name info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
@@ -36,4 +39,5 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
 }

@@ -1,6 +1,6 @@
 # summary:
+method_request: POST /_ml/anomaly_detectors/job-01/_open
 description: >
-  A request to open anomaly detection jobs.
-  The timeout specifies to wait 35 minutes for the job to open.
+  A request to open anomaly detection jobs. The timeout specifies to wait 35 minutes for the job to open.
 value:
   timeout: 35m

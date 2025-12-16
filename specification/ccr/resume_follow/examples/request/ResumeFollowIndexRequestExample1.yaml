@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST /follower_index/_ccr/resume_follow
+method_request: POST /follower_index/_ccr/resume_follow
 description: Run `POST /follower_index/_ccr/resume_follow` to resume the follower index.
 # type: request
 value: |-

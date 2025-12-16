@@ -17,20 +17,22 @@
  * under the License.
  */
 
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
   IndexName,
+  MediaType,
   Refresh,
   Routing,
   WaitForActiveShards
 } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { OperationContainer, UpdateAction } from './types'
 
 /**
  * Bulk index or delete documents.
+ *
  * Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.
  * This reduces overhead and can greatly increase indexing speed.
  *
@@ -94,8 +96,10 @@ import { OperationContainer, UpdateAction } from './types'
  * * Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`
  * * Python: Check out `elasticsearch.helpers.*`
  * * JavaScript: Check out `client.helpers.*`
+ * * Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`
  * * .NET: Check out `BulkAllObservable`
  * * PHP: Check out bulk indexing.
+ * * Ruby: Check out `Elasticsearch::Helpers::BulkHelper`
  *
  * **Submitting bulk requests with cURL**
  *
@@ -140,12 +144,15 @@ import { OperationContainer, UpdateAction } from './types'
  * Imagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.
  * The request will only wait for those three shards to refresh.
  * The other two shards that make up the index do not participate in the `_bulk` request at all.
+ *
+ * You might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.
+ * Refer to the linked documentation for step-by-step instructions using the index settings API.
  * @rest_spec_name bulk
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id docs-bulk
+ * @ext_doc_id indices-refresh-disable
  * @doc_tag document
- *
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
   urls: [
@@ -164,6 +171,8 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      */
     index?: IndexName
   }
+  request_media_type: MediaType.Ndjson
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * True or false if to include the document source in the error message in case of parsing errors.

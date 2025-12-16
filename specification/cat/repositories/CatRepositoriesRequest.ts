@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get snapshot repository information.
@@ -39,6 +39,7 @@ export interface Request extends CatRequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * List of columns to appear in the response. Supports simple wildcards.

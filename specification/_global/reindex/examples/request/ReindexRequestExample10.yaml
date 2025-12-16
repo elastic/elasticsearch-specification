@@ -1,12 +1,30 @@
 summary: Reindex with Painless
-# method_request: POST _reindex
+method_request: POST _reindex
 description: >
-  You can use Painless to reindex daily indices to apply a new template to the existing documents.
-  The script extracts the date from the index name and creates a new index with `-1` appended.
-  For example, all data from `metricbeat-2016.05.31` will be reindexed into `metricbeat-2016.05.31-1`.
+  You can use Painless to reindex daily indices to apply a new template to the existing documents. The script extracts the date from
+  the index name and creates a new index with `-1` appended. For example, all data from `metricbeat-2016.05.31` will be reindexed
+  into `metricbeat-2016.05.31-1`.
 # type: request
-value:
-  "{\n  \"source\": {\n    \"index\": \"metricbeat-*\"\n  },\n  \"dest\": {\n\
-  \    \"index\": \"metricbeat\"\n  },\n  \"script\": {\n    \"lang\": \"painless\"\
-  ,\n    \"source\": \"ctx._index = 'metricbeat-' + (ctx._index.substring('metricbeat-'.length(),\
-  \ ctx._index.length())) + '-1'\"\n  }\n}"
+value: "{
+
+  \  \"source\": {
+
+  \    \"index\": \"metricbeat-*\"
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"metricbeat\"
+
+  \  },
+
+  \  \"script\": {
+
+  \    \"lang\": \"painless\",
+
+  \    \"source\": \"ctx._index = 'metricbeat-' + (ctx._index.substring('metricbeat-'.length(), ctx._index.length())) + '-1'\"
+
+  \  }
+
+  }"

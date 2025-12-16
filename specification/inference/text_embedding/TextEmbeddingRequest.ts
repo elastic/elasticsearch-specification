@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { TaskSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { TaskSettings } from '@inference/_types/Services'
 
 /**
- * Perform text embedding inference on the service
+ * Perform text embedding inference on the service.
+ *
  * @rest_spec_name inference.text_embedding
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
@@ -42,6 +43,8 @@ export interface Request extends RequestBase {
      */
     inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies the amount of time to wait for the inference request to complete.
@@ -54,9 +57,22 @@ export interface Request extends RequestBase {
      * Inference input.
      * Either a string or an array of strings.
      */
-    input: string | Array<string>
+    input: string | string[]
     /**
-     * Optional task settings
+     * The input data type for the text embedding model. Possible values include:
+     * * `SEARCH`
+     * * `INGEST`
+     * * `CLASSIFICATION`
+     * * `CLUSTERING`
+     * Not all services support all values. Unsupported values will trigger a validation exception.
+     * Accepted values depend on the configured inference service, refer to the relevant service-specific documentation for more info.
+     *
+     * > info
+     * > The `input_type` parameter specified on the root level of the request body will take precedence over the `input_type` parameter specified in `task_settings`.
+     */
+    input_type?: string
+    /**
+     * Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.
      */
     task_settings?: TaskSettings
   }

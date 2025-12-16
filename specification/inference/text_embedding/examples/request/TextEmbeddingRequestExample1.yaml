@@ -1,11 +1,11 @@
 summary: Text embedding task
-description: Run `POST _inference/text_embedding/my-cohere-endpoint` to perform text embedding on the example sentence using the Cohere integration,
-# method_request: "POST _inference/text_embedding/my-cohere-endpoint"
+description:
+  Run `POST _inference/text_embedding/my-cohere-endpoint` to perform text embedding on the example sentence using the
+  Cohere integration,
+method_request: 'POST _inference/text_embedding/my-cohere-endpoint'
 # type: "request"
 value: |-
   {
     "input": "The sky above the port was the color of television tuned to a dead channel.",
-    "task_settings": {
-      "input_type": "ingest"
-    }
+    "input_type": "ingest"
   }

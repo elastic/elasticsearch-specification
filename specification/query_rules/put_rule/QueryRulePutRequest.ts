@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import {
   QueryRuleActions,
@@ -27,6 +27,7 @@ import {
 
 /**
  * Create or update a query rule.
+ *
  * Create or update a query rule within a query ruleset.
  *
  * IMPORTANT: Due to limitations within pinned queries, you can only pin documents using ids or docs, but cannot use both in single rule.
@@ -38,6 +39,7 @@ import {
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_query_rules
  * @doc_id query-rule-put
+ * @ext_doc_id edit-query-rule-from-ui
  */
 export interface Request extends RequestBase {
   urls: [
@@ -57,6 +59,8 @@ export interface Request extends RequestBase {
      */
     rule_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /**
    * The query rule information.
    */

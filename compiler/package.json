@@ -8,6 +8,7 @@
     "lint:fix": "ts-standard --fix src",
     "format:check": "prettier --config .prettierrc.json --loglevel warn --check ../specification/",
     "format:fix": "prettier --config .prettierrc.json --loglevel warn --write ../specification/",
+    "format:fix-examples": "prettier --config .prettierrc.json --loglevel warn --write ../specification/**/*.yaml",
     "generate-schema": "ts-node src/index.ts",
     "transform-expand-generics": "ts-node src/transform/expand-generics.ts",
     "transform-to-openapi": "ts-node src/transform/schema-to-openapi.ts",
@@ -23,14 +24,14 @@
   "author": "Elastic",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@types/node": "^17.0.12",
-    "ava": "^4.1.0",
-    "c8": "^7.11.0",
+    "@types/node": "^22",
+    "ava": "^6",
+    "c8": "^10",
     "prettier": "2.5.1",
     "prettier-plugin-organize-imports": "^4.0.0",
     "ts-node": "^10.4.0",
     "ts-standard": "^11.0.0",
-    "typescript": "^4.5.5"
+    "typescript": "^5"
   },
   "dependencies": {
     "chalk": "^4.1.2",
@@ -39,8 +40,8 @@
     "ora": "^5.4.1",
     "safe-stable-stringify": "^2.5.0",
     "semver": "^7.5.2",
-    "ts-morph": "^13.0.3",
-    "zx": "^4.3.0",
+    "ts-morph": "^26",
+    "zx": "^8.8.5",
     "minimist": "^1.2.6"
   },
   "engines": {

@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { DownsampleConfig } from '@indices/_types/Downsample'
-import { Duration } from '@_types/Time'
+import { Duration, DurationLarge } from '@_types/Time'
 
 export class DownsamplingRound {
   /**
@@ -26,7 +25,7 @@ export class DownsamplingRound {
    */
   after: Duration
   /**
-   * The downsample configuration to execute.
+   * The downsample interval.
    */
-  config: DownsampleConfig
+  fixed_interval: DurationLarge
 }

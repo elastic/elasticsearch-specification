@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Get the autoscaling capacity.
@@ -36,7 +37,7 @@ import { Duration } from '@_types/Time'
  * This information is provided for diagnosis only.
  * Do not use this information to make autoscaling decisions.
  * @rest_spec_name autoscaling.get_autoscaling_capacity
- * @availability stack since=7.11.0 stability=stable
+ * @availability stack since=7.11.0 stability=stable visibility=private
  * @doc_id autoscaling-get-autoscaling-capacity
  * @ext_doc_id autoscaling
  */
@@ -47,6 +48,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

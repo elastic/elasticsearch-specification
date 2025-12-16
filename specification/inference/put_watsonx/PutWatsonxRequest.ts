@@ -17,9 +17,15 @@
  * under the License.
  */
 
-import { RateLimitSetting } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
+import { Duration } from '@_types/Time'
+import {
+  WatsonxServiceSettings,
+  WatsonxServiceType,
+  WatsonxTaskType
+} from '@inference/_types/CommonTypes'
+import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**
  * Create a Watsonx inference endpoint.
@@ -27,12 +33,6 @@ import { Id } from '@_types/common'
  * Create an inference endpoint to perform an inference task with the `watsonxai` service.
  * You need an IBM Cloud Databases for Elasticsearch deployment to use the `watsonxai` inference service.
  * You can provision one through the IBM catalog, the Cloud Databases CLI plug-in, the Cloud Databases API, or Terraform.
- *
- * When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.
- * After creating the endpoint, wait for the model deployment to complete before using it.
- * To verify the deployment status, use the get trained model statistics API.
- * Look for `"state": "fully_allocated"` in the response and ensure that the `"allocation_count"` matches the `"target_allocation_count"`.
- * Avoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.
  * @rest_spec_name inference.put_watsonx
  * @availability stack since=8.16.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
@@ -48,8 +48,7 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * The task type.
-     * The only valid task type for the model to perform is `text_embedding`.
+     * The type of the inference task that the model will perform.
      */
     task_type: WatsonxTaskType
     /**
@@ -57,61 +56,30 @@ export interface Request extends RequestBase {
      */
     watsonx_inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
+  query_parameters: {
+    /**
+     * Specifies the amount of time to wait for the inference endpoint to be created.
+     * @server_default 30s
+     */
+    timeout?: Duration
+  }
   body: {
+    /**
+     * The chunking configuration object.
+     * Applies only to the `text_embedding` task type.
+     * Not applicable to the `completion` or `chat_completion` task types.
+     * @ext_doc_id inference-chunking
+     */
+    chunking_settings?: InferenceChunkingSettings
     /**
      * The type of service supported for the specified task type. In this case, `watsonxai`.
      */
-    service: ServiceType
+    service: WatsonxServiceType
     /**
      * Settings used to install the inference model. These settings are specific to the `watsonxai` service.
      */
     service_settings: WatsonxServiceSettings
   }
-}
-
-export enum WatsonxTaskType {
-  text_embedding
-}
-
-export enum ServiceType {
-  watsonxai
-}
-
-export class WatsonxServiceSettings {
-  /**
-   * A valid API key of your Watsonx account.
-   * You can find your Watsonx API keys or you can create a new one on the API keys page.
-   *
-   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
-   * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
-   * @ext_doc_id watsonx-api-keys
-   */
-  api_key: string
-  /**
-   * A version parameter that takes a version date in the format of `YYYY-MM-DD`.
-   * For the active version data parameters, refer to the Wastonx documentation.
-   * @ext_doc_id watsonx-api-version
-   */
-  api_version: string
-  /**
-   * The name of the model to use for the inference task.
-   * Refer to the IBM Embedding Models section in the Watsonx documentation for the list of available text embedding models.
-   * @ext_doc_id watsonx-api-models
-   */
-  model_id: string
-  /**
-   * The identifier of the IBM Cloud project to use for the inference task.
-   */
-  project_id: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from Watsonx.
-   * By default, the `watsonxai` service sets the number of requests allowed per minute to 120.
-   */
-  rate_limit?: RateLimitSetting
-  /**
-   * The URL of the inference endpoint that you created on Watsonx.
-   */
-  url: string
 }

@@ -18,9 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Ping the cluster.
+ *
  * Get information about whether the cluster is running.
  * @rest_spec_name ping
  * @availability stack stability=stable
@@ -35,4 +37,5 @@ export interface Request extends RequestBase {
       methods: ['HEAD']
     }
   ]
+  response_media_type: MediaType.Json
 }

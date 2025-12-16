@@ -1,0 +1,11 @@
+summary: Rerank task
+description: Run `POST _inference/rerank/bge-reranker-base-mkn` to perform reranking on the example input via Hugging Face
+method_request: 'POST _inference/rerank/bge-reranker-base-mkn'
+# type: "request"
+value: |-
+  {
+    "input": ["luke", "like", "leia", "chewy","r2d2", "star", "wars"],
+    "query": "star wars main character",
+    "return_documents": false,
+    "top_n": 2
+  }

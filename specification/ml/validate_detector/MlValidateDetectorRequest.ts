@@ -17,11 +17,13 @@
  * under the License.
  */
 
-import { Detector } from '@ml/_types/Detector'
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
+import { Detector } from '@ml/_types/Detector'
 
 /**
  * Validate an anomaly detection job.
+ *
  * @rest_spec_name ml.validate_detector
  * @availability stack since=5.4.0 stability=stable visibility=private
  * @availability serverless stability=stable visibility=private
@@ -35,6 +37,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /** @codegen_name detector */
   body: Detector
 }

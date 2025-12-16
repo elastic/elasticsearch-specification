@@ -20,5 +20,6 @@
 import { PluginsRecord } from './types'
 
 export class Response {
+  /** @codegen_name plugins */
   body: Array<PluginsRecord>
 }

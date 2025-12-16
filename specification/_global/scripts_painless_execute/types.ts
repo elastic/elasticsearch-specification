@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { IndexName } from '@_types/common'
 import { Ip } from '@_types/Networking'
 import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { DateTime } from '@_types/Time'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class PainlessContextSetup {
   /**
@@ -97,5 +97,6 @@ export class PainlessScript {
    * * `long`: `emit(long)`
    * * `keyword`: `emit(String)`
    */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   emit: boolean | DateTime | double | string | Ip | long
 }

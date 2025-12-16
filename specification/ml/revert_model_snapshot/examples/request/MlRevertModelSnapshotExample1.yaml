@@ -1,0 +1,6 @@
+method_request: POST _ml/anomaly_detectors/low_request_rate/model_snapshots/1637092688/_revert
+description: An example body for a `POST _ml/anomaly_detectors/low_request_rate/model_snapshots/1637092688/_revert` request.
+value: |-
+  {
+    "delete_intervening_results": true
+  }

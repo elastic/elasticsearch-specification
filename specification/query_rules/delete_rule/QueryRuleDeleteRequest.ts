@@ -17,10 +17,11 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Delete a query rule.
+ *
  * Delete a query rule within a query ruleset.
  * This is a destructive action that is only recoverable by re-adding the same rule with the create or update query rule API.
  * @rest_spec_name query_rules.delete_rule
@@ -28,6 +29,7 @@ import { Id } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_query_rules
  * @doc_id query-rule-delete
+ * @ext_doc_id delete-query-rule-from-ui
  */
 export interface Request extends RequestBase {
   urls: [
@@ -47,4 +49,5 @@ export interface Request extends RequestBase {
      */
     rule_id: Id
   }
+  response_media_type: MediaType.Json
 }

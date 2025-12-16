@@ -22,6 +22,7 @@ import {
   Conflicts,
   ExpandWildcards,
   Indices,
+  MediaType,
   Routing,
   SearchType,
   Slices,
@@ -36,6 +37,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Update documents.
+ *
  * Updates documents that match the specified query.
  * If no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.
  *
@@ -58,6 +60,30 @@ import { Duration } from '@_types/Time'
  * A bulk update request is performed for each batch of matching documents.
  * Any query or update failures cause the update by query request to fail and the failures are shown in the response.
  * Any update requests that completed successfully still stick, they are not rolled back.
+ *
+ * **Refreshing shards**
+ *
+ * Specifying the `refresh` parameter refreshes all shards once the request completes.
+ * This is different to the update API's `refresh` parameter, which causes only the shard
+ * that received the request to be refreshed. Unlike the update API, it does not support
+ * `wait_for`.
+ *
+ * **Running update by query asynchronously**
+ *
+ * If the request contains `wait_for_completion=false`, Elasticsearch
+ * performs some preflight checks, launches the request, and returns a
+ * [task](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks) you can use to cancel or get the status of the task.
+ * Elasticsearch creates a record of this task as a document at `.tasks/task/${taskId}`.
+ *
+ * **Waiting for active shards**
+ *
+ * `wait_for_active_shards` controls how many copies of a shard must be active
+ * before proceeding with the request. See [`wait_for_active_shards`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create#operation-create-wait_for_active_shards)
+ * for details. `timeout` controls how long each write request waits for unavailable
+ * shards to become available. Both work exactly the way they work in the
+ * [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk). Update by query uses scrolled searches, so you can also
+ * specify the `scroll` parameter to control how long it keeps the search context
+ * alive, for example `?scroll=10m`. The default is 5 minutes.
  *
  * **Throttling update requests**
  *
@@ -103,28 +129,14 @@ import { Duration } from '@_types/Time'
  * * Update performance scales linearly across available resources with the number of slices.
  *
  * Whether query or update performance dominates the runtime depends on the documents being reindexed and cluster resources.
- *
- * **Update the document source**
- *
- * Update by query supports scripts to update the document source.
- * As with the update API, you can set `ctx.op` to change the operation that is performed.
- *
- * Set `ctx.op = "noop"` if your script decides that it doesn't have to make any changes.
- * The update by query operation skips updating the document and increments the `noop` counter.
- *
- * Set `ctx.op = "delete"` if your script decides that the document should be deleted.
- * The update by query operation deletes the document and increments the `deleted` counter.
- *
- * Update by query supports only `index`, `noop`, and `delete`.
- * Setting `ctx.op` to anything else is an error.
- * Setting any other field in `ctx` is an error.
- * This API enables you to only modify the source of matching documents; you cannot move them.
+ * Refer to the linked documentation for examples of how to update documents using the `_update_by_query` API:
  * @rest_spec_name update_by_query
  * @availability stack since=2.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read,write
  * @doc_tag document
  * @doc_id docs-update-by-query
+ * @ext_doc_id update-by-query
  */
 export interface Request extends RequestBase {
   urls: [
@@ -141,6 +153,8 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
@@ -166,9 +180,9 @@ export interface Request extends RequestBase {
      */
     conflicts?: Conflicts
     /**
-     * The default operator for query string query: `AND` or `OR`.
+     * The default operator for query string query: `and` or `or`.
      * This parameter can be used only when the `q` query string parameter is specified.
-     * @server_default OR
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -180,7 +194,7 @@ export interface Request extends RequestBase {
      * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * It supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
+     * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
@@ -296,6 +310,9 @@ export interface Request extends RequestBase {
      * If `true`, returns the document version as part of a hit.
      */
     version?: boolean
+    /**
+     * Should the document increment the version number (internal) on hit or not (reindex)
+     */
     version_type?: boolean
     /**
      * The number of shard copies that must be active before proceeding with the operation.
@@ -313,7 +330,7 @@ export interface Request extends RequestBase {
      */
     wait_for_completion?: boolean
   }
-  body: {
+  body?: {
     /**
      * The maximum number of documents to update.
      */

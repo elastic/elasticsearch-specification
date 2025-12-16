@@ -1,8 +1,8 @@
 summary: Query users by role prefix
-# method_request: POST /_security/_query/user?with_profile_uid=true
+method_request: POST /_security/_query/user?with_profile_uid=true
 description: >
-  Run `POST /_security/_query/user?with_profile_uid=true` to get users that have roles that are prefixed with `other`.
-  It will also include the user `profile_uid` in the response.
+  Run `POST /_security/_query/user?with_profile_uid=true` to get users that have roles that are prefixed with `other`. It will also
+  include the user `profile_uid` in the response.
 # type: request
 value: |-
   {

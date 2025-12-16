@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { IndexName } from '@_types/common'
 import { IndexState } from '@indices/_types/IndexState'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { IndexName } from '@_types/common'
 
 export class Response {
   /** @codegen_name settings */

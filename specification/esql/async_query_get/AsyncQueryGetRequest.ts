@@ -18,11 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { EsqlFormat } from '@esql/_types/QueryParameters'
 
 /**
  * Get async ES|QL query results.
+ *
  * Get the current status and available results or stored results for an ES|QL asynchronous query.
  * If the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can retrieve the results using this API.
  * @rest_spec_name esql.async_query_get
@@ -31,6 +33,12 @@ import { Duration } from '@_types/Time'
  * @ext_doc_id esql
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query/async/{id}'
+      methods: ['GET']
+    }
+  ]
   path_parts: {
     /**
      * The unique identifier of the query.
@@ -39,6 +47,7 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Indicates whether columns that are entirely `null` will be removed from the `columns` and `values` portion of the results.
@@ -46,6 +55,10 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     drop_null_columns?: boolean
+    /**
+     * A short version of the Accept header, for example `json` or `yaml`.
+     */
+    format?: EsqlFormat
     /**
      * The period for which the query and its results are stored in the cluster.
      * When this period expires, the query and its results are deleted, even if the query is still ongoing.

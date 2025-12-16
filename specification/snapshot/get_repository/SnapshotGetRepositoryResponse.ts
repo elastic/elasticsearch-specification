@@ -21,5 +21,6 @@ import { Repository } from '@snapshot/_types/SnapshotRepository'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
+  /** @codegen_name repositories */
   body: Dictionary<string, Repository>
 }

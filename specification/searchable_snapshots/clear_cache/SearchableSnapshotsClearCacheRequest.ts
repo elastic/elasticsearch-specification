@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 
 /**
  * Clear the cache.
+ *
  * Clear indices and data streams from the shared cache for partially mounted indices.
  * @rest_spec_name searchable_snapshots.clear_cache
  * @availability stack since=7.10.0 stability=experimental
@@ -48,9 +49,21 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * Whether to expand wildcard expression to concrete indices that are open, closed or both
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
+    /**
+     * Whether to ignore if a wildcard indices expression resolves into no concrete indices.
+     * (This includes `_all` string or when no indices have been specified)
+     */
     allow_no_indices?: boolean
+    /**
+     * Whether specified concrete indices should be ignored when unavailable (missing or closed)
+     */
     ignore_unavailable?: boolean
   }
 }

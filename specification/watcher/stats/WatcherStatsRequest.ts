@@ -18,10 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 import { WatcherMetric } from './types'
 
 /**
  * Get Watcher statistics.
+ *
  * This API always returns basic metrics.
  * You retrieve more metrics by using the metric parameter.
  * @rest_spec_name watcher.stats
@@ -46,6 +48,7 @@ export interface Request extends RequestBase {
      */
     metric?: WatcherMetric | WatcherMetric[]
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Defines whether stack traces are generated for each watch that is running.

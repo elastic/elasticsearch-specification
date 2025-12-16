@@ -1,10 +1,10 @@
 {
   "_internal.prevalidate_node_removal": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/prevalidate-node-removal-api.html",
+      "url": null,
       "description": "Prevalidates node removal from the cluster"
     },
-    "stability": "stable",
+    "stability": "experimental",
     "visibility": "private",
     "headers": {
       "accept": ["application/json"]
@@ -32,6 +32,7 @@
       },
       "master_timeout": {
         "type": "time",
+        "default": "30s",
         "description": "Explicit operation timeout for connection to master node"
       },
       "timeout": {

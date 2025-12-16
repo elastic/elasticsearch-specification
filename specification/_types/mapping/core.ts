@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
-import { NumericFielddata } from '@indices/_types/NumericFielddata'
-import { Dictionary } from '@spec_utils/Dictionary'
 import {
   Fields,
   FieldValue,
@@ -38,7 +35,13 @@ import {
 } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateTime } from '@_types/Time'
+import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
+import { NumericFielddata } from '@indices/_types/NumericFielddata'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { ChunkingSettings } from './ChunkingSettings'
 import { Property, PropertyBase } from './Property'
+import { SemanticTextIndexOptions } from './SemanticTextIndexOptions'
+import { SparseVectorIndexOptions } from './SparseVectorIndexOptions'
 import { TermVectorOption } from './TermVectorOption'
 import { TimeSeriesMetricType } from './TimeSeriesMetricType'
 
@@ -60,6 +63,15 @@ export class BooleanProperty extends DocValuesPropertyBase {
   fielddata?: NumericFielddata
   index?: boolean
   null_value?: boolean
+  ignore_malformed?: boolean
+  script?: Script
+  on_script_error?: OnScriptError
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
+   */
+  time_series_dimension?: boolean
   type: 'boolean'
 }
 
@@ -203,8 +215,25 @@ export class RankFeaturesProperty extends PropertyBase {
   type: 'rank_features'
 }
 
+/**
+ * Technical preview
+ */
+export class RankVectorProperty extends PropertyBase {
+  type: 'rank_vectors'
+  element_type?: RankVectorElementType
+  dims?: integer
+}
+
 export class SparseVectorProperty extends PropertyBase {
+  store?: boolean
   type: 'sparse_vector'
+  /**
+   * Additional index options for the sparse vector field that controls the
+   * token pruning behavior of the sparse vector field.
+   * @availability stack since=8.19.0
+   * @availability serverless
+   */
+  index_options?: SparseVectorIndexOptions
 }
 
 export class SemanticTextProperty {
@@ -223,6 +252,25 @@ export class SemanticTextProperty {
    * If not specified, the inference endpoint defined by inference_id will be used at both index and query time.
    */
   search_inference_id?: Id
+
+  /**
+   * Settings for index_options that override any defaults used by semantic_text, for example
+   * specific quantization settings.
+   */
+  index_options?: SemanticTextIndexOptions
+
+  /**
+   * Settings for chunking text into smaller passages. If specified, these will override the
+   * chunking settings sent in the inference endpoint associated with inference_id. If chunking settings are updated,
+   * they will not be applied to existing documents until they are reindexed.
+   */
+  chunking_settings?: ChunkingSettings | null
+  /**
+   * Multi-fields allow the same string value to be indexed in multiple ways for different purposes, such as one
+   * field for search and a multi-field for sorting and aggregations, or the same string value analyzed by different analyzers.
+   * @doc_id multi-fields
+   */
+  fields?: Dictionary<PropertyName, Property>
 }
 
 export class SearchAsYouTypeProperty extends CorePropertyBase {
@@ -346,4 +394,10 @@ export class DynamicProperty extends DocValuesPropertyBase {
   format?: string
   precision_step?: integer
   locale?: string
+}
+
+export enum RankVectorElementType {
+  byte,
+  float,
+  bit
 }

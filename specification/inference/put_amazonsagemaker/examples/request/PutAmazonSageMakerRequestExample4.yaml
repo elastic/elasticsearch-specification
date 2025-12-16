@@ -1,0 +1,17 @@
+summary: A sparse embedding task
+description:
+  Run `PUT _inference/sparse_embedding/amazon_sagemaker_sparse_embedding` to create an inference endpoint that performs a
+  sparse embedding task.
+method_request: 'PUT _inference/sparse_embedding/amazon_sagemaker_sparse_embedding'
+# type: "request"
+value: |-
+  {
+      "service": "amazon_sagemaker",
+      "service_settings": {
+          "access_key": "AWS-access-key",
+          "secret_key": "AWS-secret-key",
+          "region": "us-east-1",
+          "api": "elastic",
+          "endpoint_name": "my-endpoint"
+      }
+  }

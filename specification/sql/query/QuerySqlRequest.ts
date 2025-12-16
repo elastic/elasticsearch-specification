@@ -17,16 +17,17 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
+import { MediaType, ProjectRouting } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration, TimeZone } from '@_types/Time'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Get SQL search results.
+ *
  * Run an SQL request.
  * @rest_spec_name sql.query
  * @availability stack since=6.3.0 stability=stable
@@ -41,6 +42,8 @@ export interface Request extends RequestBase {
       methods: ['POST', 'GET']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The format for the response.
@@ -118,12 +121,24 @@ export interface Request extends RequestBase {
     /**
      * The values for parameters in the query.
      */
-    params?: Dictionary<string, UserDefinedValue>
+    params?: UserDefinedValue[]
     /**
      * The SQL query to run.
      * @ext_doc_id sql-spec
      */
     query?: string
+    /**
+     * Specifies a subset of projects to target using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
     /**
      * The timeout before the request fails.
      * @server_default 90s

@@ -17,16 +17,17 @@
  * under the License.
  */
 
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
   Id,
   IndexName,
+  MediaType,
   Routing,
   VersionNumber,
   VersionType
 } from '@_types/common'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * Check for a document source.
@@ -65,6 +66,7 @@ export interface Request extends RequestBase {
      */
     index: IndexName
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The node or shard the operation should be performed on.

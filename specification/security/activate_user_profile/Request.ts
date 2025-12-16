@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { GrantType } from '@security/_types/GrantType'
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
+import { GrantType } from '@security/_types/GrantType'
 
 /**
  * Activate a user profile.
@@ -48,6 +49,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The user's Elasticsearch access token or JWT.

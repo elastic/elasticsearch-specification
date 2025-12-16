@@ -53,7 +53,7 @@ actions:
             type: http
             description: |
               Elasticsearch APIs support the use of bearer tokens in the `Authorization` HTTP header to authenticate with the API.
-              For examples, refer to [Token-based authentication services](https://www.elastic.co/guide/en/elasticsearch/reference/current/token-authentication-services.html)
+              For examples, refer to [Token-based authentication services](https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/token-based-authentication-services)
   - target: '$'
     description: Add document security
     update:
@@ -61,3 +61,16 @@ actions:
         - apiKeyAuth: []
         - basicAuth: []
         - bearerAuth: []
+# Abbreviate and annotate items that are not shown in Bump.sh due to depth limits
+  - target: "$.components['schemas']['_types.aggregations.RandomSamplerAggregation']"
+    description: Add x-model
+    update:
+      x-model: true
+# Remove long lists of enum values
+  - target: "$.components['schemas']['cat._types.CatNodeColumn'].anyOf"
+    description: Remove anyOf from cat nodes
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatNodeColumn']"
+    description: Add basic string data type for cat node columns
+    update:
+      type: string

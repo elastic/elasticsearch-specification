@@ -1,0 +1,12 @@
+summary: A chat completion task
+description: Run `PUT _inference/chat_completion/deepseek-chat-completion` to create an inference endpoint that performs a chat completion task.
+method_request: 'PUT _inference/chat_completion/deepseek-chat-completion'
+# type: "request"
+value: |-
+  {
+      "service": "deepseek",
+      "service_settings": {
+          "api_key": "DeepSeek-Api-key",
+          "model_id": "deepseek-chat"
+      }
+  }

@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { RealmInfo } from '@security/_types/RealmInfo'
 import { Id, Metadata, Name, Username } from '@_types/common'
+import { ApiKeyManagedBy } from '@security/_types/ApiKey'
+import { RealmInfo } from '@security/_types/RealmInfo'
 import { Token } from './types'
 
 export class Response {
@@ -44,4 +45,6 @@ export class Response {
 export class AuthenticateApiKey {
   id: Id
   name?: Name
+  managed_by: ApiKeyManagedBy
+  internal?: boolean
 }

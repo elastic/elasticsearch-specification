@@ -17,11 +17,15 @@
  * under the License.
  */
 
-import { AdaptiveAllocations } from '@inference/_types/CommonTypes'
-import { InferenceChunkingSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { Id, MediaType } from '@_types/common'
+import { Duration } from '@_types/Time'
+import {
+  ElserServiceSettings,
+  ElserServiceType,
+  ElserTaskType
+} from '@inference/_types/CommonTypes'
+import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**
  * Create an ELSER inference endpoint.
@@ -65,55 +69,29 @@ export interface Request extends RequestBase {
      */
     elser_inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
+  query_parameters: {
+    /**
+     * Specifies the amount of time to wait for the inference endpoint to be created.
+     * @server_default 30s
+     */
+    timeout?: Duration
+  }
   body: {
     /**
      * The chunking configuration object.
+     * Note that for ELSER endpoints, the max_chunk_size may not exceed `300`.
      * @ext_doc_id inference-chunking
      */
     chunking_settings?: InferenceChunkingSettings
     /**
      * The type of service supported for the specified task type. In this case, `elser`.
      */
-    service: ServiceType
+    service: ElserServiceType
     /**
      * Settings used to install the inference model. These settings are specific to the `elser` service.
      */
     service_settings: ElserServiceSettings
   }
-}
-
-export enum ElserTaskType {
-  sparse_embedding
-}
-
-export enum ServiceType {
-  elser
-}
-
-export class ElserServiceSettings {
-  /**
-   * Adaptive allocations configuration details.
-   * If `enabled` is true, the number of allocations of the model is set based on the current load the process gets.
-   * When the load is high, a new model allocation is automatically created, respecting the value of `max_number_of_allocations` if it's set.
-   * When the load is low, a model allocation is automatically removed, respecting the value of `min_number_of_allocations` if it's set.
-   * If `enabled` is true, do not set the number of allocations manually.
-   */
-  adaptive_allocations?: AdaptiveAllocations
-  /**
-   * The total number of allocations this model is assigned across machine learning nodes.
-   * Increasing this value generally increases the throughput.
-   * If adaptive allocations is enabled, do not set this value because it's automatically set.
-   */
-  num_allocations: integer
-  /**
-   * The number of threads used by each model allocation during inference.
-   * Increasing this value generally increases the speed per inference request.
-   * The inference process is a compute-bound process; `threads_per_allocations` must not exceed the number of available allocated processors per node.
-   * The value must be a power of 2.
-   * The maximum value is 32.
-   *
-   * > info
-   * > If you want to optimize your ELSER endpoint for ingest, set the number of threads to 1. If you want to optimize your ELSER endpoint for search, set the number of threads to greater than 1.
-   */
-  num_threads: integer
 }

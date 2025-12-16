@@ -1,8 +1,8 @@
 {
   "indices.get_index_template": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-template.html",
-      "description": "Returns an index template."
+      "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-index-template",
+      "description": "Get index templates"
     },
     "stability": "stable",
     "visibility": "public",
@@ -30,19 +30,26 @@
     "params": {
       "flat_settings": {
         "type": "boolean",
+        "default": false,
         "description": "Return settings in flat format (default: false)"
       },
       "master_timeout": {
         "type": "time",
+        "default": "30s",
         "description": "Timeout for waiting for new cluster state in case it is blocked"
       },
       "local": {
-        "deprecated": true,
+        "deprecated": {
+          "version": "9.0.0",
+          "description": "This parameter has no effect, is now deprecated, and will be removed in a future version."
+        },
         "type": "boolean",
+        "default": false,
         "description": "Return local information, do not retrieve the state from master node (default: false)"
       },
       "include_defaults": {
         "type": "boolean",
+        "default": false,
         "description": "Return all relevant default configurations for the index template (default: false)"
       }
     }

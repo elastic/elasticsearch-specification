@@ -17,17 +17,11 @@
  * under the License.
  */
 
-import { IndexRouting } from '@indices/_types/IndexRouting'
-import { AdditionalProperties } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Stringified } from '@spec_utils/Stringified'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { WithNullValue } from '@spec_utils/utils'
 import { Analyzer } from '@_types/analysis/analyzers'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Normalizer } from '@_types/analysis/normalizers'
-import { Tokenizer } from '@_types/analysis/tokenizers'
 import { TokenFilter } from '@_types/analysis/token_filters'
+import { Tokenizer } from '@_types/analysis/tokenizers'
 import {
   ByteSize,
   Name,
@@ -46,6 +40,12 @@ import {
   Normalization
 } from '@_types/Similarity'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
+import { IndexRouting } from '@indices/_types/IndexRouting'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Stringified } from '@spec_utils/Stringified'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { WithNullValue } from '@spec_utils/utils'
 import { IndexSegmentSort } from './IndexSegmentSort'
 
 export class SoftDeletes {
@@ -69,7 +69,7 @@ export class RetentionLease {
 
 /**
  * @doc_id index-modules-settings
- *
+ * @ext_doc_id index-settings
  * @behavior_meta AdditionalProperties fieldname=other_settings description="Additional settings not covered in this type."
  */
 export class IndexSettings
@@ -84,11 +84,13 @@ export class IndexSettings
    * @server_default 1
    * @availability stack
    * */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   number_of_shards?: integer | string // TODO: should be only int
   /**
    * @server_default 0
    * @availability stack
    * */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   number_of_replicas?: integer | string // TODO: should be only int
   number_of_routing_shards?: integer
   /** @server_default false */
@@ -100,6 +102,7 @@ export class IndexSettings
   /** @server_default true */
   load_fixed_bitset_filters_eagerly?: boolean
   /** @server_default false */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   hidden?: boolean | string // TODO should be bool only
   /** @server_default false */
   auto_expand_replicas?: WithNullValue<string>
@@ -125,6 +128,8 @@ export class IndexSettings
   max_refresh_listeners?: integer
   /**
    * Settings to define analyzers, tokenizers, token filters and character filters.
+   * Refer to the linked documentation for step-by-step examples of updating analyzers on existing indices.
+   * @ext_doc_id analyzer-update-existing
    */
   analyze?: SettingsAnalyze
   highlight?: SettingsHighlight
@@ -145,11 +150,14 @@ export class IndexSettings
   creation_date_string?: DateTime
   uuid?: Uuid
   version?: IndexVersioning
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   verified_before_close?: boolean | string
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   format?: string | integer
   max_slices_per_scroll?: integer
   translog?: Translog
   query_string?: SettingsQueryString
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   priority?: integer | string
   top_metrics_max_size?: integer
   analysis?: IndexSettingsAnalysis
@@ -267,6 +275,17 @@ export class IndexSettingBlocks {
   metadata?: Stringified<boolean>
 }
 
+export enum IndicesBlockOptions {
+  /** Disable metadata changes, such as closing the index. */
+  metadata,
+  /** Disable read operations. */
+  read,
+  /** Disable write operations and metadata changes. */
+  read_only,
+  /** Disable write operations. However, metadata changes are still allowed. */
+  write
+}
+
 /**
  * @es_quirk This is a boolean that evolved into an enum. ES also accepts plain booleans for true and false.
  */
@@ -319,6 +338,7 @@ export class IndexSettingsLifecycle {
    * applicable for an index).
    * @server_default true
    */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   prefer_ilm?: boolean | string
 }
 
@@ -435,6 +455,7 @@ export class MappingLimitSettings {
   field_name_length?: MappingLimitSettingsFieldNameLength
   dimension_fields?: MappingLimitSettingsDimensionFields
   source?: MappingLimitSettingsSourceFields
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   ignore_malformed?: boolean | string
 }
 
@@ -445,6 +466,7 @@ export class MappingLimitSettingsTotalFields {
    * degradations and memory issues, especially in clusters with a high load or few resources.
    * @server_default 1000
    */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   limit?: long | string
   /**
    * This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set
@@ -454,6 +476,7 @@ export class MappingLimitSettingsTotalFields {
    * The fields that were not added to the mapping will be added to the _ignored field.
    * @server_default false
    */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   ignore_dynamic_beyond_limit?: boolean | string
 }
 
@@ -540,6 +563,8 @@ export class Storage {
    * of memory maps so you need disable the ability to use memory-mapping.
    */
   allow_mmap?: boolean
+  /** How often store statistics are refreshed */
+  stats_refresh_interval?: Duration
 }
 
 /**

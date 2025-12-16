@@ -18,8 +18,15 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Routing, SearchType } from '@_types/common'
-import { long } from '@_types/Numeric'
+import {
+  ExpandWildcards,
+  Indices,
+  MediaType,
+  ProjectRouting,
+  Routing,
+  SearchType
+} from '@_types/common'
+import { integer, long } from '@_types/Numeric'
 import { RequestItem } from './types'
 
 /**
@@ -64,6 +71,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Ndjson
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.
@@ -77,10 +86,12 @@ export interface Request extends RequestBase {
     ccs_minimize_roundtrips?: boolean
     /**
      * Type of index that wildcard expressions can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
      * If true, concrete, expanded or aliased indices are ignored when frozen.
+     * @deprecated 7.16.0 This parameter is deprecated because frozen indices have been deprecated.
      * @server_default false
      */
     ignore_throttled?: boolean
@@ -100,18 +111,34 @@ export interface Request extends RequestBase {
      */
     include_named_queries_score?: boolean
     /**
-     * Maximum number of concurrent searches the multi search API can execute.
+     * Comma-separated list of data streams, indices, and index aliases to use as default
      */
-    max_concurrent_searches?: long
+    index?: Indices
+    /**
+     * Maximum number of concurrent searches the multi search API can execute.
+     * Defaults to `max(1, (# of data nodes * min(search thread pool size, 10)))`.
+     */
+    max_concurrent_searches?: integer
     /**
      * Maximum number of concurrent shard requests that each sub-search request executes per node.
      * @server_default 5
      */
-    max_concurrent_shard_requests?: long
+    max_concurrent_shard_requests?: integer
     /**
      * Defines a threshold that enforces a pre-filter roundtrip to prefilter search shards based on query rewriting if the number of shards the search request expands to exceeds the threshold. This filter roundtrip can limit the number of shards significantly if for instance a shard can not match any documents based on its rewrite method i.e., if date filters are mandatory to match but the shard bounds and the query are disjoint.
      */
     pre_filter_shard_size?: long
+    /**
+     * Specifies a subset of projects to target for a search using project metadata
+     * tags in a subset Lucene syntax. Allowed Lucene queries: the _alias tag
+     * and a single value (possible wildcarded). Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
     /**
      * If true, hits.total are returned as an integer in the response. Defaults to false, which returns an object.
      * @server_default false

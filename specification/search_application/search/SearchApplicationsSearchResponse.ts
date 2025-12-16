@@ -20,5 +20,6 @@
 import { ResponseBody } from '@global/search/SearchResponse'
 
 export class Response<TDocument> {
+  /** @codegen_name result */
   body: ResponseBody<TDocument>
 }

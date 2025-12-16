@@ -17,15 +17,12 @@
  * under the License.
  */
 
-import {
-  SourceConfig,
-  SourceConfigParam
-} from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
   Id,
   IndexName,
+  MediaType,
   Refresh,
   Routing,
   SequenceNumber,
@@ -34,6 +31,10 @@ import {
 import { integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
+import {
+  SourceConfig,
+  SourceConfigParam
+} from '@global/search/_types/SourceFilter'
 
 /**
  * Update a document.
@@ -55,11 +56,13 @@ import { Duration } from '@_types/Time'
  *
  * The `_source` field must be enabled to use this API.
  * In addition to `_source`, you can access the following variables through the `ctx` map: `_index`, `_type`, `_id`, `_version`, `_routing`, and `_now` (the current timestamp).
+ * For usage examples such as partial updates, upserts, and scripted updates, see the External documentation.
  * @rest_spec_name update
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges write
  * @doc_tag document
+ * @ext_doc_id update-document
  * @doc_id docs-update
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
@@ -80,6 +83,8 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Only perform the operation if the document has this primary term.

@@ -1,9 +1,8 @@
 # summary:
-# method_request: POST /_security/api_key
+method_request: POST /_security/api_key
 description: >
-  Run `POST /_security/api_key` to create an API key.
-  If `expiration` is not provided, the API keys do not expire.
-  If `role_descriptors` is not provided, the permissions of the authenticated user are applied.
+  Run `POST /_security/api_key` to create an API key. If `expiration` is not provided, the API keys do not expire. If
+  `role_descriptors` is not provided, the permissions of the authenticated user are applied.
 # type: request
 value: |-
   {

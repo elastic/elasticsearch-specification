@@ -17,18 +17,6 @@
  * under the License.
  */
 
-import { FieldCollapse } from '@global/search/_types/FieldCollapse'
-import { Highlight } from '@global/search/_types/highlighting'
-import { TrackHits } from '@global/search/_types/hits'
-import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
-import { Rescore } from '@global/search/_types/rescoring'
-import {
-  SourceConfig,
-  SourceConfigParam
-} from '@global/search/_types/SourceFilter'
-import { Suggester } from '@global/search/_types/suggester'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
@@ -37,6 +25,7 @@ import {
   Fields,
   IndexAlias,
   IndexName,
+  MediaType,
   Routing,
   SearchType,
   SuggestMode
@@ -49,10 +38,23 @@ import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort, SortResults } from '@_types/sort'
 import { Duration } from '@_types/Time'
+import { FieldCollapse } from '@global/search/_types/FieldCollapse'
+import { Highlight } from '@global/search/_types/highlighting'
+import { TrackHits } from '@global/search/_types/hits'
+import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
+import { Rescore } from '@global/search/_types/rescoring'
+import {
+  SourceConfig,
+  SourceConfigParam
+} from '@global/search/_types/SourceFilter'
+import { Suggester } from '@global/search/_types/suggester'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Checkpoint } from '../_types/Checkpoints'
 
 /**
  * Run a Fleet search.
+ *
  * The purpose of the Fleet search API is to provide an API where the search will be run only
  * after the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.
  * @rest_spec_name fleet.search
@@ -72,8 +74,11 @@ export interface Request extends RequestBase {
     /**
      * A single target to search. If the target is an index alias, it must resolve to a single index.
      */
+    // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
     index: IndexName | IndexAlias
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     allow_no_indices?: boolean
     analyzer?: string
@@ -88,7 +93,7 @@ export interface Request extends RequestBase {
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
     lenient?: boolean
-    max_concurrent_shard_requests?: long
+    max_concurrent_shard_requests?: integer
     preference?: string
     pre_filter_shard_size?: long
     request_cache?: boolean
@@ -130,9 +135,9 @@ export interface Request extends RequestBase {
      */
     wait_for_checkpoints?: Checkpoint[]
     /**
-     * If true, returns partial results if there are shard request timeouts or [shard failures](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-replication.html#shard-failures). If false, returns
-     * an error with no partial results. Defaults to the configured cluster setting `search.default_allow_partial_results`
-     * which is true by default.
+     * If true, returns partial results if there are shard request timeouts or shard failures.
+     * If false, returns an error with no partial results.
+     * Defaults to the configured cluster setting `search.default_allow_partial_results`, which is true by default.
      */
     allow_partial_search_results?: boolean
   }
@@ -167,7 +172,7 @@ export interface Request extends RequestBase {
     /**
      * Boosts the _score of documents from specified indices.
      */
-    indices_boost?: Array<Dictionary<IndexName, double>>
+    indices_boost?: Array<SingleKeyDictionary<IndexName, double>>
     /**
      * Array of wildcard (*) patterns. The request returns doc values for field
      * names matching these patterns in the hits.fields property of the response.
@@ -175,7 +180,7 @@ export interface Request extends RequestBase {
     docvalue_fields?: FieldAndFormat[]
     /**
      * Minimum _score for matching documents. Documents with a lower _score are
-     * not included in the search results.
+     * not included in search results and results collected by aggregations.
      */
     min_score?: double
     post_filter?: QueryContainer

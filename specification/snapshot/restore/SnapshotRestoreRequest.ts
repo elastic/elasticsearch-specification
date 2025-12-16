@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { IndexSettings } from '@indices/_types/IndexSettings'
 import { RequestBase } from '@_types/Base'
-import { Indices, Name } from '@_types/common'
+import { Indices, MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * Restore a snapshot.
+ *
  * Restore a snapshot of a cluster or data streams and indices.
  *
  * You can restore a snapshot only to a running cluster with an elected master node.
@@ -42,7 +43,7 @@ import { Duration } from '@_types/Time'
  *
  * If your snapshot contains data from App Search or Workplace Search, you must restore the Enterprise Search encryption key before you restore the snapshot.
  * @rest_spec_name snapshot.restore
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage
  * @doc_id snapshot-restore-api
@@ -65,6 +66,8 @@ export interface Request extends RequestBase {
      */
     snapshot: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for the master node.
@@ -83,7 +86,7 @@ export interface Request extends RequestBase {
      */
     wait_for_completion?: boolean
   }
-  body: {
+  body?: {
     /**
      * The feature states to restore.
      * If `include_global_state` is `true`, the request restores all feature states in the snapshot by default.

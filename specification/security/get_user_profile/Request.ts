@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { UserProfileId } from '@security/_types/UserProfile'
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
+import { UserProfileId } from '@security/_types/UserProfile'
 
 /**
  * Get a user profile.
@@ -47,6 +48,7 @@ export interface Request extends RequestBase {
      */
     uid: UserProfileId | UserProfileId[]
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of filters for the `data` field of the profile document.

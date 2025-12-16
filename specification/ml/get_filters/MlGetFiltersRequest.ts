@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
+import { Ids, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
  * Get filters.
+ *
  * You can get a single filter or all filters.
  * @rest_spec_name ml.get_filters
  * @availability stack since=5.5.0 stability=stable
@@ -48,6 +49,7 @@ export interface Request extends RequestBase {
      */
     filter_id?: Ids
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Skips the specified number of filters.

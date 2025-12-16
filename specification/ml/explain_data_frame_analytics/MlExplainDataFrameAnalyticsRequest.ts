@@ -17,15 +17,15 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id, MediaType } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import {
   DataframeAnalysisAnalyzedFields,
   DataframeAnalysisContainer,
   DataframeAnalyticsDestination,
   DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { integer } from '@_types/Numeric'
 
 /**
  * Explain data frame analytics config.
@@ -62,7 +62,9 @@ export interface Request extends RequestBase {
      */
     id?: Id
   }
-  body: {
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
+  body?: {
     /**
      * The configuration of how to source the analysis data. It requires an
      * index. Optionally, query and _source may be specified.

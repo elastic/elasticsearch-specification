@@ -1,8 +1,8 @@
 summary: Prepare by realm
-# method_request: POST /_security/oidc/prepare
+method_request: POST /_security/oidc/prepare
 description: >
-  Run `POST /_security/oidc/prepare` to generate an authentication request for a third party initiated single sign on.
-  Specify the issuer that should be used for matching the appropriate OpenID Connect Authentication realm.
+  Run `POST /_security/oidc/prepare` to generate an authentication request for a third party initiated single sign on. Specify the
+  issuer that should be used for matching the appropriate OpenID Connect Authentication realm.
 # type: request
 value: |-
   {

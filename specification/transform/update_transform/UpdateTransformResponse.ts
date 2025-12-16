@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { Id, Metadata, VersionString } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 import { Destination, Source } from '@global/reindex/types'
 import { TransformAuthorization } from '@ml/_types/Authorization'
 import {
@@ -26,9 +29,6 @@ import {
   Settings,
   SyncContainer
 } from '@transform/_types/Transform'
-import { Id, Metadata, VersionString } from '@_types/common'
-import { long } from '@_types/Numeric'
-import { Duration } from '@_types/Time'
 
 export class Response {
   body: {

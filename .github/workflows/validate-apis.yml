@@ -1,0 +1,136 @@
+name: Validate APIs
+
+on:
+  pull_request:
+    branches:
+      - main
+      - '[0-9]+.[0-9]+'
+
+permissions:
+  pull-requests: write    # To create/update PR comments
+
+jobs:
+  generate-validation:
+    name: Generate ${{ matrix.type }} validation
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - type: baseline
+            spec_ref: ${{ github.event.pull_request.base.sha }}
+          - type: pr
+            spec_ref: ${{ github.sha }}
+
+    steps:
+      - name: Check pull request was opened from branch
+        if: github.event.pull_request.head.repo.full_name != 'elastic/elasticsearch-specification'
+        run: echo "Validation is not supported from forks"; exit 1
+
+      - name: Checkout elasticsearch-specification
+        uses: actions/checkout@v5
+        with:
+          path: ./elasticsearch-specification
+          ref: ${{ matrix.spec_ref }}
+          persist-credentials: false
+
+      - name: Checkout clients-flight-recorder
+        uses: actions/checkout@v5
+        with:
+          repository: elastic/clients-flight-recorder
+          path: ./clients-flight-recorder
+          token: ${{ secrets.PAT }}
+          ref: ${{ github.base_ref }}
+          persist-credentials: false
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install deps 1/2
+        working-directory: ./clients-flight-recorder
+        run: |
+          npm install --prefix scripts/clone-elasticsearch
+          npm install --prefix scripts/upload-recording
+          npm install --prefix scripts/types-validator
+
+      - name: Install deps 2/2
+        working-directory: ./elasticsearch-specification
+        run: |
+          npm install --prefix .github/validate-pr
+          make setup
+
+      - name: Generate specification
+        working-directory: ./elasticsearch-specification
+        run: make contrib
+
+      - name: Download artifacts
+        working-directory: ./clients-flight-recorder
+        run: |
+          branch=${{ github.base_ref }}
+          echo "Using branch: $branch"
+          node scripts/upload-recording/download.js --branch $branch --git
+          node scripts/clone-elasticsearch/index.js --branch $branch
+
+      - name: Run validation
+        working-directory: ./elasticsearch-specification
+        run: node .github/validate-pr/run-validation.js
+
+      - name: Upload validation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.type }}-validation-report
+          path: ./elasticsearch-specification/.github/validate-pr/validation-report.json
+          retention-days: 1
+
+  compare-and-comment:
+    name: Compare and comment
+    runs-on: ubuntu-latest
+    needs: generate-validation
+
+    steps:
+      - name: Checkout elasticsearch-specification (for comparison script)
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --prefix .github/validate-pr
+
+      - name: Download baseline validation report
+        uses: actions/download-artifact@v4
+        with:
+          name: baseline-validation-report
+          path: ./reports/baseline
+
+      - name: Download PR validation report
+        uses: actions/download-artifact@v4
+        with:
+          name: pr-validation-report
+          path: ./reports/pr
+
+      - name: Run comparison
+        id: validation
+        run: node .github/validate-pr/compare-reports.js ./reports/baseline/validation-report.json ./reports/pr/validation-report.json
+
+      - name: Find existing comment
+        uses: peter-evans/find-comment@3eae4d37986fb5a8592848f6a574fdf654e61f9e # v3.1.0
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: 'Following you can find the validation changes'
+
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: ${{ steps.validation.outputs.comment_body }}
+          edit-mode: replace

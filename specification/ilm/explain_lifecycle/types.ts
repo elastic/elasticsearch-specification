@@ -17,12 +17,18 @@
  * under the License.
  */
 
+import { IndexName, Name, VersionNumber } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import {
+  DateTime,
+  Duration,
+  DurationValue,
+  EpochTime,
+  UnitMillis
+} from '@_types/Time'
 import { Phase } from '@ilm/_types/Phase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { IndexName, Name, VersionNumber } from '@_types/common'
-import { integer } from '@_types/Numeric'
-import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class LifecycleExplainManaged {
   action?: Name
@@ -30,6 +36,10 @@ export class LifecycleExplainManaged {
   action_time_millis?: EpochTime<UnitMillis>
   /* `lifecycle_date` as a duration */
   age?: Duration
+  /**
+   * @availability stack since=9.2.0 stability=stable
+   */
+  age_in_millis?: DurationValue<UnitMillis>
   failed_step?: Name
   failed_step_retry_count?: integer
   index: IndexName
@@ -39,7 +49,7 @@ export class LifecycleExplainManaged {
   lifecycle_date?: DateTime
   lifecycle_date_millis?: EpochTime<UnitMillis>
   managed: true
-  phase: Name
+  phase?: Name
   phase_time?: DateTime
   phase_time_millis?: EpochTime<UnitMillis>
   policy?: Name
@@ -54,6 +64,7 @@ export class LifecycleExplainManaged {
   phase_execution?: LifecycleExplainPhaseExecution
   /* `index_creation_date` as a duration */
   time_since_index_creation?: Duration
+  skip: boolean
 }
 
 export class LifecycleExplainUnmanaged {

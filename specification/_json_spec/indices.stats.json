@@ -1,8 +1,8 @@
 {
   "indices.stats": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-stats.html",
-      "description": "Provides statistics on operations happening in an index."
+      "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats",
+      "description": "Get index statistics"
     },
     "stability": "stable",
     "visibility": "public",
@@ -30,14 +30,20 @@
                 "flush",
                 "get",
                 "indexing",
+                "mappings",
                 "merge",
+                "recovery",
                 "request_cache",
                 "refresh",
                 "search",
                 "segments",
+                "shard_stats",
                 "store",
+                "translog",
                 "warmer",
-                "bulk"
+                "bulk",
+                "dense_vector",
+                "sparse_vector"
               ],
               "description": "Limit the information returned the specific metrics."
             }
@@ -72,14 +78,20 @@
                 "flush",
                 "get",
                 "indexing",
+                "mappings",
                 "merge",
+                "recovery",
                 "request_cache",
                 "refresh",
                 "search",
                 "segments",
+                "shard_stats",
                 "store",
+                "translog",
                 "warmer",
-                "bulk"
+                "bulk",
+                "dense_vector",
+                "sparse_vector"
               ],
               "description": "Limit the information returned the specific metrics."
             }
@@ -121,7 +133,7 @@
         "default": false
       },
       "expand_wildcards": {
-        "type": "enum",
+        "type": "list",
         "options": ["open", "closed", "hidden", "none", "all"],
         "default": "open",
         "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both."

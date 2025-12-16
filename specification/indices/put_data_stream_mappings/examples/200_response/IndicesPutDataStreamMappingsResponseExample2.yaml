@@ -1,0 +1,22 @@
+summary: Attempt to change a data stream setting that is not allowed
+description: >
+  This shows a response to `PUT /_data_stream/my-data-stream/_settings` when a user attempts to set a setting that is
+  not allowed on a data stream. As a result, no change was applied to the data stream.
+type: response
+response_code: 200
+value: |-
+  {
+    "data_streams": [
+      {
+        "name": "my-data-stream",
+        "applied_to_data_stream": false,
+        "error": "Failed to parse mapping: The mapper type [txt] declared on field [field1] does not exist. It might have been created within a future version or requires a plugin to be installed. Check the documentation.",
+        "mappings": {
+          "_doc": {}
+        },
+        "effective_mappings": {
+          "_doc": {}
+        }
+      }
+    ]
+  }

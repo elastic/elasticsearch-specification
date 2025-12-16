@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Update a snapshot.
+ *
  * Updates certain properties of a snapshot.
  * @rest_spec_name ml.update_model_snapshot
  * @availability stack since=5.4.0 stability=stable
@@ -47,6 +48,8 @@ export interface Request extends RequestBase {
      */
     snapshot_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * A description of the model snapshot.

@@ -92,7 +92,7 @@ test('type_alias', t => {
 test('request', t => {
   const definition = model.types.find(t => t.kind === 'request') as Model.Request
   t.assert(definition)
-  t.true(definition?.specLocation.endsWith('test/types/specification/_global/info/request.ts#L20-L24'))
+  t.true(definition?.specLocation.endsWith('test/types/specification/_global/info/request.ts#L20-L25'))
   t.deepEqual(definition?.name, {
     name: 'Request',
     namespace: '_global.info'

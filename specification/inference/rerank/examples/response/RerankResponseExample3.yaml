@@ -1,0 +1,25 @@
+summary: Rerank task
+description: >
+  A successful response from `POST _inference/rerank/bge-reranker-base-mkn`.
+# type: "response"
+# response_code:
+value: |-
+  {
+    "rerank": [
+      {
+        "index": 6,
+        "relevance_score": 0.50955844,
+        "text": "wars"
+      },
+      {
+        "index": 5,
+        "relevance_score": 0.084341794,
+        "text": "star"
+      },
+      {
+        "index": 3,
+        "relevance_score": 0.004520818,
+        "text": "chewy"
+      }
+    ]
+  }

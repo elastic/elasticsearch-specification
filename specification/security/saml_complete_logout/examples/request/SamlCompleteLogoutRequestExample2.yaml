@@ -1,5 +1,5 @@
 summary: HTTP-Post binding
-# method_request: POST /_security/saml/complete_logout
+method_request: POST /_security/saml/complete_logout
 description: >
   Run `POST /_security/saml/complete_logout` to verify the logout response sent by the SAML IdP using the HTTP-Post binding.
 # type: request

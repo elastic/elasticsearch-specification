@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ClusterPrivilege } from '@security/_types/Privileges'
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
+import { ClusterPrivilege } from '@security/_types/Privileges'
 import { ApplicationPrivilegesCheck, IndexPrivilegesCheck } from './types'
 
 /**
@@ -46,8 +46,11 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** Username */
     user?: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     application?: ApplicationPrivilegesCheck[]
     /**

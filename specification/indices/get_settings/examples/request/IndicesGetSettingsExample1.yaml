@@ -1,0 +1,1 @@
+method_request: GET _all/_settings?expand_wildcards=all&filter_path=*.settings.index.*.slowlog

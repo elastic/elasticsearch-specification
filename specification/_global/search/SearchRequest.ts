@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { TrackHits } from '@global/search/_types/hits'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
@@ -28,6 +25,8 @@ import {
   Fields,
   IndexName,
   Indices,
+  MediaType,
+  ProjectRouting,
   Routing,
   SearchType,
   SuggestMode
@@ -43,12 +42,15 @@ import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort, SortResults } from '@_types/sort'
 import { Duration } from '@_types/Time'
-import { FieldCollapse } from './_types/FieldCollapse'
-import { Highlight } from './_types/highlighting'
-import { PointInTimeReference } from './_types/PointInTimeReference'
-import { Rescore } from './_types/rescoring'
+import { FieldCollapse } from '@global/search/_types/FieldCollapse'
+import { Highlight } from '@global/search/_types/highlighting'
+import { TrackHits } from '@global/search/_types/hits'
+import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
+import { Rescore } from '@global/search/_types/rescoring'
+import { Suggester } from '@global/search/_types/suggester'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { SourceConfig, SourceConfigParam } from './_types/SourceFilter'
-import { Suggester } from './_types/suggester'
 
 /**
  * Run a search.
@@ -97,6 +99,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
@@ -137,9 +141,9 @@ export interface Request extends RequestBase {
      */
     ccs_minimize_roundtrips?: boolean
     /**
-     * The default operator for the query string query: `AND` or `OR`.
+     * The default operator for the query string query: `and` or `or`.
      * This parameter can be used only when the `q` query string parameter is specified.
-     * @server_default OR
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -195,7 +199,7 @@ export interface Request extends RequestBase {
      * This value should be used to limit the impact of the search on the cluster in order to limit the number of concurrent shard requests.
      * @server_default 5
      */
-    max_concurrent_shard_requests?: long
+    max_concurrent_shard_requests?: integer
     /**
      * The nodes and shards used for the search.
      * By default, Elasticsearch selects from eligible nodes and shards using adaptive replica selection, accounting for allocation awareness.
@@ -205,8 +209,8 @@ export interface Request extends RequestBase {
      * * `_local` to, if possible, run the search on shards on the local node, or if not, select shards using the default method.
      * * `_only_nodes:<node-id>,<node-id>` to run the search on only the specified nodes IDs. If suitable shards exist on more than one selected node, use shards on those nodes using the default method. If none of the specified nodes are available, select shards from any available node using the default method.
      * * `_prefer_nodes:<node-id>,<node-id>` to if possible, run the search on the specified nodes IDs. If not, select shards using the default method.
-     * `_shards:<shard>,<shard>` to run the search only on the specified shards. You can combine this value with other `preference` values. However, the `_shards` value must come first. For example: `_shards:2,3|_local`.
-     * `<custom-string>` (any string that does not start with `_`) to route searches with the same `<custom-string>` to the same shards in the same order.
+     * * `_shards:<shard>,<shard>` to run the search only on the specified shards. You can combine this value with other `preference` values. However, the `_shards` value must come first. For example: `_shards:2,3|_local`.
+     * * `<custom-string>` (any string that does not start with `_`) to route searches with the same `<custom-string>` to the same shards in the same order.
      */
     preference?: string
     /**
@@ -337,6 +341,13 @@ export interface Request extends RequestBase {
      */
     _source_excludes?: Fields
     /**
+     * Whether vectors should be excluded from _source
+     * @availability stack since=9.2.0
+     * @availability serverless
+     * @server_default false
+     */
+    _source_exclude_vectors?: boolean
+    /**
      * A comma-separated list of source fields to include in the response.
      * If this parameter is specified, only these source fields are returned.
      * You can exclude fields from this subset using the `_source_excludes` query parameter.
@@ -383,11 +394,13 @@ export interface Request extends RequestBase {
      */
     force_synthetic_source?: boolean
   }
-  // We should keep this in sync with the multi search request body.
-  body: {
+  // Keep this in sync with global/search/_types/SearchRequestBody.ts
+  body?: {
     /**
      * Defines the aggregations that are run as part of the search request.
-     * @aliases aggs */ // ES uses "aggregations" in serialization
+     * @aliases aggs
+     * @ext_doc_id search-aggregations
+     */ // ES uses "aggregations" in serialization
     aggregations?: Dictionary<string, AggregationContainer>
     /**
      * Collapses search results the values of the specified field.
@@ -411,6 +424,7 @@ export interface Request extends RequestBase {
     from?: integer
     /**
      * Specifies the highlighter to use for retrieving highlighted snippets from one or more fields in your search results.
+     * @ext_doc_id search-highlight
      */
     highlight?: Highlight
     /**
@@ -427,7 +441,7 @@ export interface Request extends RequestBase {
      * A boost value between `0` and `1.0` decreases the score.
      * @ext_doc_id relevance-scores
      */
-    indices_boost?: Array<Dictionary<IndexName, double>>
+    indices_boost?: Array<SingleKeyDictionary<IndexName, double>>
     /**
      * An array of wildcard (`*`) field patterns.
      * The request returns doc values for field names matching these patterns in the `hits.fields` property of the response.
@@ -448,7 +462,7 @@ export interface Request extends RequestBase {
     rank?: RankContainer
     /**
      * The minimum `_score` for matching documents.
-     * Documents with a lower `_score` are not included in the search results.
+     * Documents with a lower `_score` are not included in search results and results collected by aggregations.
      */
     min_score?: double
     /**
@@ -477,6 +491,7 @@ export interface Request extends RequestBase {
      * A retriever replaces other elements of the search API that also return top documents such as `query` and `knn`.
      * @availability stack since=8.14.0 stability=stable
      * @availability serverless stability=stable
+     * @ext_doc_id search-retrievers
      */
     retriever?: RetrieverContainer
     /**
@@ -580,5 +595,17 @@ export interface Request extends RequestBase {
      * You can retrieve these stats using the indices stats API.
      */
     stats?: string[]
+    /**
+     * Specifies a subset of projects to target for the search using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }

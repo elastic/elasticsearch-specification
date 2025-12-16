@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { CatAnonalyDetectorColumns, CatRequestBase } from '@cat/_types/CatBase'
-import { Bytes, Id } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
+import { Id, MediaType } from '@_types/common'
+import { CatAnomalyDetectorColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get anomaly detection jobs.
@@ -56,6 +55,7 @@ export interface Request extends CatRequestBase {
      */
     job_id?: Id
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:
@@ -71,19 +71,11 @@ export interface Request extends CatRequestBase {
      */
     allow_no_match?: boolean
     /**
-     * The unit used to display byte values.
-     */
-    bytes?: Bytes
-    /**
      * Comma-separated list of column names to display.
      * @server_default buckets.count,data.processed_records,forecasts.total,id,model.bytes,model.memory_status,state
      */
-    h?: CatAnonalyDetectorColumns
+    h?: CatAnomalyDetectorColumns
     /** Comma-separated list of column names or column aliases used to sort the response. */
-    s?: CatAnonalyDetectorColumns
-    /**
-     * The unit used to display time values.
-     */
-    time?: TimeUnit
+    s?: CatAnomalyDetectorColumns
   }
 }

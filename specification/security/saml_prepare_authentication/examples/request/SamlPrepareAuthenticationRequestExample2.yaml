@@ -1,7 +1,8 @@
 summary: Prepare with an ACS
-# method_request: POST /_security/saml/prepare
+method_request: POST /_security/saml/prepare
 description: >
-  Run `POST /_security/saml/prepare` to generate a SAML authentication request for the SAML realm with an Assertion Consuming Service (ACS) URL.
+  Run `POST /_security/saml/prepare` to generate a SAML authentication request for the SAML realm with an Assertion Consuming
+  Service (ACS) URL.
 # type: request
 value: |-
   {

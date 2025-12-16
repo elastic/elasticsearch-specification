@@ -1,8 +1,21 @@
 # summary: connector/apis/update-connector-configuration-api.asciidoc:308
-# method_request: PUT _connector/my-spo-connector/_configuration
+method_request: PUT _connector/my-spo-connector/_configuration
 # description: ''
 # type: request
-value:
-  "{\n    \"values\": {\n        \"tenant_id\": \"my-tenant-id\",\n        \"\
-  tenant_name\": \"my-sharepoint-site\",\n        \"client_id\": \"foo\",\n      \
-  \  \"secret_value\": \"bar\",\n        \"site_collections\": \"*\"\n    }\n}"
+value: "{
+
+  \    \"values\": {
+
+  \        \"tenant_id\": \"my-tenant-id\",
+
+  \        \"tenant_name\": \"my-sharepoint-site\",
+
+  \        \"client_id\": \"foo\",
+
+  \        \"secret_value\": \"bar\",
+
+  \        \"site_collections\": \"*\"
+
+  \    }
+
+  }"

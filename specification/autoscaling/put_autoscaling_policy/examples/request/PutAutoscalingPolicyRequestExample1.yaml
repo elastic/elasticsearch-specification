@@ -1,5 +1,17 @@
 summary: 'Creates or updates an autoscaling policy.'
-# method_request: "PUT /_autoscaling/policy/<name>"
+method_request: 'PUT /_autoscaling/policy/<name>'
 # description: ""
 # type: "request"
-value: "{\n  \"roles\": [],\n  \"deciders\": {\n    \"fixed\": {\n    }\n  }\n}"
+value: "{
+
+  \  \"roles\": [],
+
+  \  \"deciders\": {
+
+  \    \"fixed\": {
+
+  \    }
+
+  \  }
+
+  }"

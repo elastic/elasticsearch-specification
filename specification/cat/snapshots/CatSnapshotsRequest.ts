@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-import { Names } from '@_types/common'
-import { Duration, TimeUnit } from '@_types/Time'
+import { MediaType, Names } from '@_types/common'
+import { Duration } from '@_types/Time'
+import { CatRequestBase, CatSnapshotsColumns } from '@cat/_types/CatBase'
 
 /**
  * Get snapshot information.
@@ -53,6 +53,7 @@ export interface Request extends CatRequestBase {
      */
     repository?: Names
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * If `true`, the response does not include information from unavailable snapshots.
@@ -60,9 +61,11 @@ export interface Request extends CatRequestBase {
      */
     ignore_unavailable?: boolean
     /**
-     * List of columns to appear in the response. Supports simple wildcards.
+     * A comma-separated list of columns names to display.
+     * It supports simple wildcards.
+     * @server_default ip,hp,rp,r,m,n,cpu,l
      */
-    h?: Names
+    h?: CatSnapshotsColumns
     /**
      * List of columns that determine how the table should be sorted.
      * Sorting defaults to ascending and can be changed by setting `:asc`
@@ -74,9 +77,5 @@ export interface Request extends CatRequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
-    /**
-     * Unit used to display time values.
-     */
-    time?: TimeUnit
   }
 }

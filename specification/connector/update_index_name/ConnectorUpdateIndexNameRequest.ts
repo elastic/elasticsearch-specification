@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { WithNullValue } from '@spec_utils/utils'
 import { RequestBase } from '@_types/Base'
-import { Id, IndexName } from '@_types/common'
+import { Id, IndexName, MediaType } from '@_types/common'
+import { WithNullValue } from '@spec_utils/utils'
 
 /**
  * Update the connector index name.
@@ -42,6 +42,8 @@ export interface Request extends RequestBase {
      */
     connector_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /**
    * The connector index name
    */

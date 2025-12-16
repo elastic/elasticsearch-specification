@@ -1,5 +1,5 @@
 summary: Return stored term vectors
-# method_request: GET /my-index-000001/_termvectors/1
+method_request: GET /my-index-000001/_termvectors/1
 description: >
   Run `GET /my-index-000001/_termvectors/1` to return all information and statistics for field `text` in document 1.
 # type: request

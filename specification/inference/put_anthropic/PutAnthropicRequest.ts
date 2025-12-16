@@ -17,24 +17,20 @@
  * under the License.
  */
 
-import {
-  InferenceChunkingSettings,
-  RateLimitSetting
-} from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { float, integer } from '@_types/Numeric'
+import { Id, MediaType } from '@_types/common'
+import { Duration } from '@_types/Time'
+import {
+  AnthropicServiceSettings,
+  AnthropicServiceType,
+  AnthropicTaskSettings,
+  AnthropicTaskType
+} from '@inference/_types/CommonTypes'
 
 /**
  * Create an Anthropic inference endpoint.
  *
  * Create an inference endpoint to perform an inference task with the `anthropic` service.
- *
- * When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.
- * After creating the endpoint, wait for the model deployment to complete before using it.
- * To verify the deployment status, use the get trained model statistics API.
- * Look for `"state": "fully_allocated"` in the response and ensure that the `"allocation_count"` matches the `"target_allocation_count"`.
- * Avoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.
  * @rest_spec_name inference.put_anthropic
  * @availability stack since=8.16.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
@@ -59,18 +55,22 @@ export interface Request extends RequestBase {
      */
     anthropic_inference_id: Id
   }
-  body: {
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
+  query_parameters: {
     /**
-     * The chunking configuration object.
-     * @ext_doc_id inference-chunking
+     * Specifies the amount of time to wait for the inference endpoint to be created.
+     * @server_default 30s
      */
-    chunking_settings?: InferenceChunkingSettings
+    timeout?: Duration
+  }
+  body: {
     /**
      * The type of service supported for the specified task type. In this case, `anthropic`.
      */
-    service: ServiceType
+    service: AnthropicServiceType
     /**
-     * Settings used to install the inference model. These settings are specific to the `watsonxai` service.
+     * Settings used to install the inference model. These settings are specific to the `anthropic` service.
      */
     service_settings: AnthropicServiceSettings
     /**
@@ -79,57 +79,4 @@ export interface Request extends RequestBase {
      */
     task_settings?: AnthropicTaskSettings
   }
-}
-
-export enum AnthropicTaskType {
-  completion
-}
-
-export enum ServiceType {
-  anthropic
-}
-
-export class AnthropicServiceSettings {
-  /**
-   * A valid API key for the Anthropic API.
-   */
-  api_key: string
-  /**
-   * The name of the model to use for the inference task.
-   * Refer to the Anthropic documentation for the list of supported models.
-   * @ext_doc_id anothropic-models
-   */
-  model_id: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from Anthropic.
-   * By default, the `anthropic` service sets the number of requests allowed per minute to 50.
-   */
-  rate_limit?: RateLimitSetting
-}
-
-export class AnthropicTaskSettings {
-  /**
-   * For a `completion` task, it is the maximum number of tokens to generate before stopping.
-   */
-  max_tokens: integer
-  /**
-   * For a `completion` task, it is the amount of randomness injected into the response.
-   * For more details about the supported range, refer to Anthropic documentation.
-   * @ext_doc_id anthropic-messages
-   */
-  temperature?: float
-  /**
-   * For a `completion` task, it specifies to only sample from the top K options for each subsequent token.
-   * It is recommended for advanced use cases only.
-   * You usually only need to use `temperature`.
-   */
-  top_k?: integer
-  /**
-   * For a `completion` task, it specifies to use Anthropic's nucleus sampling.
-   * In nucleus sampling, Anthropic computes the cumulative distribution over all the options for each subsequent token in decreasing probability order and cuts it off once it reaches the specified probability.
-   * You should either alter `temperature` or `top_p`, but not both.
-   * It is recommended for advanced use cases only.
-   * You usually only need to use `temperature`.
-   */
-  top_p?: float
 }

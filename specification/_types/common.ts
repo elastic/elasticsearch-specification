@@ -49,7 +49,7 @@ export type Uri = string
 export type ScrollId = string
 export type ScrollIds = ScrollId | ScrollId[]
 
-export type CategoryId = string
+export type CategoryId = long
 export type ActionIds = string // TODO: check if this should be an array of ActionId
 
 export type Id = string
@@ -63,11 +63,10 @@ export type IndexAlias = string
 export type IndexPattern = string
 export type IndexPatterns = IndexPattern[]
 
-export type Routing = string
+export type ProjectRouting = string
+
+export type Routing = string | string[]
 export type LongId = string
-//TODO encode metrics as API specific enums
-export type IndexMetrics = string
-export type Metrics = string | string[]
 
 export type ClusterAlias = string
 
@@ -111,11 +110,7 @@ export enum VersionType {
    * NOTE: The `external_gte` version type is meant for special use cases and should be used with care.
    * If used incorrectly, it can result in loss of data.
    */
-  external_gte,
-  /**
-   * This option is deprecated because it can cause primary and replica shards to diverge.
-   */
-  force
+  external_gte
 }
 
 // TODO: replace all uuid's with this type
@@ -126,7 +121,7 @@ export type SequenceNumber = long
 
 export type PropertyName = string
 export type RelationName = string
-export type TaskId = string | integer
+export type TaskId = string
 /** @doc_id fuzziness */
 export type Fuzziness = string | integer
 /** @doc_id query-dsl-multi-term-rewrite */
@@ -232,7 +227,9 @@ export enum HealthStatus {
    * One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.
    * @aliases RED
    */
-  red
+  red,
+  unknown,
+  unavailable
 }
 
 export enum HttpMethod {
@@ -243,8 +240,28 @@ export enum HttpMethod {
   HEAD
 }
 
+export enum MediaType {
+  Arrow = 'application/vnd.apache.arrow.stream',
+  Cbor = 'application/cbor',
+  Csv = 'text/csv',
+  EventStream = 'text/event-stream',
+  Json = 'application/json',
+  MapboxVectorTile = 'application/vnd.mapbox-vector-tile',
+  Ndjson = 'application/x-ndjson',
+  Smile = 'application/x-jackson-smile',
+  Text = 'text/plain',
+  Yaml = 'application/x-yaml'
+}
+
+// This is the ClusterStatsLevel enum in Elasticsearch
 export enum Level {
   cluster,
+  indices,
+  shards
+}
+
+export enum NodeStatsLevel {
+  node,
   indices,
   shards
 }
@@ -384,3 +401,30 @@ export enum ClusterInfoTarget {
 }
 
 export type ClusterInfoTargets = ClusterInfoTarget | ClusterInfoTarget[]
+
+export enum CommonStatsFlag {
+  _all,
+  store,
+  indexing,
+  get,
+  search,
+  merge,
+  flush,
+  refresh,
+  query_cache,
+  fielddata,
+  docs,
+  warmer,
+  completion,
+  segments,
+  translog,
+  request_cache,
+  recovery,
+  bulk,
+  shard_stats,
+  mappings,
+  dense_vector,
+  sparse_vector
+}
+
+export type CommonStatsFlags = CommonStatsFlag | CommonStatsFlag[]

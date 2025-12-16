@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Aggregate } from '@_types/aggregations/Aggregate'
 import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { HitsMetadata } from './_types/hits'
 import { Profile } from './_types/profile'
 import { Suggest } from './_types/suggester'
@@ -32,6 +32,7 @@ import { Suggest } from './_types/suggester'
 // - fleet.search
 // - scroll
 export class Response<TDocument> {
+  /** @codegen_name result */
   body: ResponseBody<TDocument>
 }
 

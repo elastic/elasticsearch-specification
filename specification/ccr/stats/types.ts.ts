@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { FollowIndexStats } from '@ccr/_types/FollowIndexStats'
 import { Name, VersionNumber } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { long } from '@_types/Numeric'
 import { DurationValue, UnitMillis } from '@_types/Time'
+import { FollowIndexStats } from '@ccr/_types/FollowIndexStats'
 
 export class AutoFollowedCluster {
   cluster_name: Name

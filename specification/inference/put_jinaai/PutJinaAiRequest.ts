@@ -17,13 +17,16 @@
  * under the License.
  */
 
-import {
-  InferenceChunkingSettings,
-  RateLimitSetting
-} from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { Id, MediaType } from '@_types/common'
+import { Duration } from '@_types/Time'
+import {
+  JinaAIServiceSettings,
+  JinaAIServiceType,
+  JinaAITaskSettings,
+  JinaAITaskType
+} from '@inference/_types/CommonTypes'
+import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**
  * Create an JinaAI inference endpoint.
@@ -32,12 +35,6 @@ import { integer } from '@_types/Numeric'
  *
  * To review the available `rerank` models, refer to <https://jina.ai/reranker>.
  * To review the available `text_embedding` models, refer to the <https://jina.ai/embeddings/>.
- *
- * When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.
- * After creating the endpoint, wait for the model deployment to complete before using it.
- * To verify the deployment status, use the get trained model statistics API.
- * Look for `"state": "fully_allocated"` in the response and ensure that the `"allocation_count"` matches the `"target_allocation_count"`.
- * Avoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.
  * @rest_spec_name inference.put_jinaai
  * @availability stack since=8.18.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
@@ -61,16 +58,27 @@ export interface Request extends RequestBase {
      */
     jinaai_inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
+  query_parameters: {
+    /**
+     * Specifies the amount of time to wait for the inference endpoint to be created.
+     * @server_default 30s
+     */
+    timeout?: Duration
+  }
   body: {
     /**
      * The chunking configuration object.
+     * Applies only to the `text_embedding` task type.
+     * Not applicable to the `rerank` task type.
      * @ext_doc_id inference-chunking
      */
     chunking_settings?: InferenceChunkingSettings
     /**
      * The type of service supported for the specified task type. In this case, `jinaai`.
      */
-    service: ServiceType
+    service: JinaAIServiceType
     /**
      * Settings used to install the inference model. These settings are specific to the `jinaai` service.
      */
@@ -81,80 +89,4 @@ export interface Request extends RequestBase {
      */
     task_settings?: JinaAITaskSettings
   }
-}
-
-export enum JinaAITaskType {
-  rerank,
-  text_embedding
-}
-
-export enum ServiceType {
-  jinaai
-}
-
-export enum SimilarityType {
-  cosine,
-  dot_product,
-  l2_norm
-}
-
-export enum TextEmbeddingTask {
-  classification,
-  clustering,
-  ingest,
-  search
-}
-
-export class JinaAIServiceSettings {
-  /**
-   * A valid API key of your JinaAI account.
-   *
-   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
-   * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
-   * @ext_doc_id jinaAi-embeddings
-   */
-  api_key: string
-  /**
-   * The name of the model to use for the inference task.
-   * For a `rerank` task, it is required.
-   * For a `text_embedding` task, it is optional.
-   */
-  model_id?: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from JinaAI.
-   * By default, the `jinaai` service sets the number of requests allowed per minute to 2000 for all task types.
-   * @ext_doc_id jinaAi-rate-limit
-   */
-  rate_limit?: RateLimitSetting
-  /**
-   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
-   * The default values varies with the embedding type.
-   * For example, a float embedding type uses a `dot_product` similarity measure by default.
-   */
-  similarity?: SimilarityType
-}
-
-export class JinaAITaskSettings {
-  /**
-   * For a `rerank` task, return the doc text within the results.
-   */
-  return_documents?: boolean
-  /**
-   * For a `text_embedding` task, the task passed to the model.
-   * Valid values are:
-   *
-   * * `classification`: Use it for embeddings passed through a text classifier.
-   * * `clustering`: Use it for the embeddings run through a clustering algorithm.
-   * * `ingest`: Use it for storing document embeddings in a vector database.
-   * * `search`: Use it for storing embeddings of search queries run against a vector database to find relevant documents.
-   */
-  task?: TextEmbeddingTask
-  /**
-   * For a `rerank` task, the number of most relevant documents to return.
-   * It defaults to the number of the documents.
-   * If this inference endpoint is used in a `text_similarity_reranker` retriever query and `top_n` is set, it must be greater than or equal to `rank_window_size` in the query.
-   */
-  top_n?: integer
 }

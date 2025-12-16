@@ -1,0 +1,7 @@
+method_request: PUT _ml/filters/safe_domains
+description: An example body for a `PUT _ml/filters/safe_domains` request.
+value: |-
+  {
+    "description": "A list of safe domains",
+    "items": ["*.google.com", "wikipedia.org"]
+  }

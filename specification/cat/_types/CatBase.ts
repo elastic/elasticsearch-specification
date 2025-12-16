@@ -22,8 +22,8 @@
 // Cat*Request APIs will inherit the CommonQueryParameters behavior
 // as well, as CatRequestBase extends RequestBase.
 
-import { CommonCatQueryParameters } from '@spec_utils/behaviors'
 import { RequestBase } from '@_types/Base'
+import { CommonCatQueryParameters } from '@spec_utils/behaviors'
 
 export class CatRequestBase
   extends RequestBase
@@ -79,7 +79,8 @@ export enum CatAnomalyDetectorColumn {
   'data.earliest_record',
   /**
    * The number of buckets which did not contain any data.
-   * @aliases deb, dataEmptyBuckets */
+   * @aliases deb, dataEmptyBuckets
+   */
   'data.empty_buckets',
   /**
    * The number of bytes of input data posted to the anomaly detection job.
@@ -129,7 +130,8 @@ export enum CatAnomalyDetectorColumn {
    * The number of input documents that are missing a field that the anomaly
    * detection job is configured to analyze. Input documents with missing fields
    * are still processed because it is possible that not all fields are missing.
-   * @aliases dmf, dataMissingFields */
+   * @aliases dmf, dataMissingFields
+   */
   'data.missing_fields',
   /**
    * The number of input documents that have a timestamp chronologically
@@ -282,7 +284,8 @@ export enum CatAnomalyDetectorColumn {
   'model.categorization_status',
   /**
    * The number of documents that have had a field categorized.
-   * @aliases mcdc, modelCategorizedDocCount */
+   * @aliases mcdc, modelCategorizedDocCount
+   */
   'model.categorized_doc_count',
   /**
    * The number of categories created by categorization that will never be
@@ -298,7 +301,8 @@ export enum CatAnomalyDetectorColumn {
    * not track which specific categories failed to be created. Therefore, you
    * cannot use this value to determine the number of unique categories that
    * were missed.
-   * @aliases mdcc, modelFailedCategoryCount */
+   * @aliases mdcc, modelFailedCategoryCount
+   */
   'model.failed_category_count',
   /**
    * The number of categories that match more than 1% of categorized documents.
@@ -350,7 +354,8 @@ export enum CatAnomalyDetectorColumn {
   'model.timestamp',
   /**
    * The number of categories created by categorization.
-   * @aliases mtcc, modelTotalCategoryCount */
+   * @aliases mtcc, modelTotalCategoryCount
+   */
   'model.total_category_count',
   /**
    * The network address of the node that runs the job. This information is
@@ -399,7 +404,7 @@ export enum CatAnomalyDetectorColumn {
    */
   state
 }
-export type CatAnonalyDetectorColumns =
+export type CatAnomalyDetectorColumns =
   | CatAnomalyDetectorColumn
   | CatAnomalyDetectorColumn[]
 export enum CatDatafeedColumn {
@@ -447,7 +452,8 @@ export enum CatDatafeedColumn {
   sba,
   /**
    * The number of searches run by the datafeed.
-   * @aliases search.count, searchCount */
+   * @aliases search.count, searchCount
+   */
   sc,
   /**
    * The exponential average search time per hour, in milliseconds.
@@ -456,7 +462,8 @@ export enum CatDatafeedColumn {
   seah,
   /**
    * The total time the datafeed spent searching, in milliseconds.
-   * @aliases search.time, searchTime */
+   * @aliases search.time, searchTime
+   */
   st,
   /**
    * The status of the datafeed: `starting`, `started`, `stopping`, or `stopped`.
@@ -469,6 +476,7 @@ export enum CatDatafeedColumn {
    */
   s
 }
+
 export enum CatDfaColumn {
   /**
    * Contains messages relating to the selection of a node.
@@ -555,8 +563,1987 @@ export enum CatDfaColumn {
    */
   version
 }
+
+/** @non_exhaustive */
+export enum CatNodeColumn {
+  /**
+   * The Elasticsearch build hash. For example: `5c03844`.
+   * @aliases b
+   */
+  build,
+  /**
+   * The size of completion. For example: `0b`.
+   * @aliases cs, completionSize
+   */
+  'completion.size',
+  /**
+   * The percentage of recent system CPU used.
+   */
+  cpu,
+  /**
+   * The available disk space. For example: `198.4gb`.
+   * @aliases d, disk, diskAvail
+   */
+  'disk.avail',
+  /**
+   * The total disk space. For example: `458.3gb`.
+   * @aliases dt, diskTotal
+   */
+  'disk.total',
+  /**
+   * The used disk space. For example: `259.8gb`.
+   * @aliases du, diskUsed
+   */
+  'disk.used',
+  /**
+   * The percentage of disk space used.
+   * @aliases dup, diskUsedPercent
+   */
+  'disk.used_percent',
+  /**
+   * The number of fielddata cache evictions.
+   * @aliases fe, fielddataEvictions
+   */
+  'fielddata.evictions',
+  /**
+   * The fielddata cache memory used. For example: `0b`.
+   * @aliases fm, fielddataMemory
+   */
+  'fielddata.memory_size',
+  /**
+   * The number of file descriptors used.
+   * @aliases fdc, fileDescriptorCurrent
+   */
+  'file_desc.current',
+  /**
+   * The maximum number of file descriptors.
+   * @aliases  fdm, fileDescriptorMax
+   */
+  'file_desc.max',
+  /**
+   * The percentage of file descriptors used.
+   * @aliases fdp, fileDescriptorPercent
+   */
+  'file_desc.percent',
+  /**
+   * The number of flushes.
+   * @aliases ft, flushTotal
+   */
+  'flush.total',
+  /**
+   * The amount of time spent in flush.
+   * @aliases ftt, flushTotalTime
+   */
+  'flush.total_time',
+  /**
+   * The number of current get operations.
+   * @aliases gc, getCurrent
+   */
+  'get.current',
+  /**
+   * The time spent in successful get operations. For example: `14ms`.
+   * @aliases geti, getExistsTime
+   */
+  'get.exists_time',
+  /**
+   * The number of successful get operations.
+   * @aliases geto, getExistsTotal
+   */
+  'get.exists_total',
+  /**
+   * The time spent in failed get operations. For example: `0s`.
+   * @aliases gmti, getMissingTime
+   */
+  'get.missing_time',
+  /**
+   * The number of failed get operations.
+   * @aliases gmto, getMissingTotal
+   */
+  'get.missing_total',
+  /**
+   * The amount of time spent in get operations. For example: `14ms`.
+   * @aliases gti, getTime
+   */
+  'get.time',
+  /**
+   * The number of get operations.
+   * @aliases gto, getTotal
+   */
+  'get.total',
+  /**
+   * The used heap size. For example: `311.2mb`.
+   * @aliases hc, heapCurrent
+   */
+  'heap.current',
+  /**
+   * The total heap size. For example: `4gb`.
+   * @aliases hm, heapMax
+   */
+  'heap.max',
+  /**
+   * The used percentage of total allocated Elasticsearch JVM heap.
+   * This value reflects only the Elasticsearch process running within the operating system and is the most direct indicator of its JVM, heap, or memory resource performance.
+   * @aliases hp, heapPercent
+   */
+  'heap.percent',
+  /**
+   * The bound HTTP address.
+   * @aliases http
+   */
+  http_address,
+  /**
+   * The identifier for the node.
+   * @aliases nodeId
+   */
+  id,
+  /**
+   * The number of current deletion operations.
+   * @aliases idc, indexingDeleteCurrent
+   */
+  'indexing.delete_current',
+  /**
+   * The time spent in deletion operations. For example: `2ms`.
+   * @aliases idti, indexingDeleteTime
+   */
+  'indexing.delete_time',
+  /**
+   * The number of deletion operations.
+   * @aliases idto, indexingDeleteTotal
+   */
+  'indexing.delete_total',
+  /**
+   * The number of current indexing operations.
+   * @aliases iic, indexingIndexCurrent
+   */
+  'indexing.index_current',
+  /**
+   * The number of failed indexing operations.
+   * @aliases iif, indexingIndexFailed
+   */
+  'indexing.index_failed',
+  /**
+   * The number of indexing operations that failed due to version conflict.
+   * @aliases iifvc, indexingIndexFailedDueToVersionConflict
+   */
+  'indexing.index_failed_due_to_version_conflict',
+  /**
+   * The time spent in indexing operations. For example: `134ms`.
+   * @aliases iiti, indexingIndexTime
+   */
+  'indexing.index_time',
+  /**
+   * The number of indexing operations.
+   * @aliases iito, indexingIndexTotal
+   */
+  'indexing.index_total',
+  /**
+   * The IP address.
+   * @aliases i
+   */
+  ip,
+  /**
+   * The Java version. For example: `1.8.0`.
+   * @aliases j
+   */
+  jdk,
+  /**
+   * The most recent load average. For example: `0.22`.
+   * @aliases l
+   */
+  load_1m,
+  /**
+   * The load average for the last five minutes. For example: `0.78`.
+   * @aliases l
+   */
+  load_5m,
+  /**
+   * The load average for the last fifteen minutes. For example: `1.24`.
+   * @aliases l
+   */
+  load_15m,
+  /**
+   * The number of available processors (logical CPU cores available to the JVM).
+   * @aliases ap
+   */
+  available_processors,
+  /**
+   * The number of mappings, including runtime and object fields.
+   * @aliases mtc, mappingsTotalCount
+   */
+  'mappings.total_count',
+  /**
+   * The estimated heap overhead, in bytes, of mappings on this node, which allows for 1KiB of heap for every mapped field.
+   * @aliases mteo, mappingsTotalEstimatedOverheadInBytes
+   */
+  'mappings.total_estimated_overhead_in_bytes',
+  /**
+   * Indicates whether the node is the elected master node.
+   * Returned values include `*` (elected master) and `-` (not elected master).
+   * @aliases m
+   */
+  master,
+  /**
+   * The number of current merge operations.
+   * @aliases mc, mergesCurrent
+   */
+  'merges.current',
+  /**
+   * The number of current merging documents.
+   * @aliases mcd, mergesCurrentDocs
+   */
+  'merges.current_docs',
+  /**
+   * The size of current merges. For example: `0b`.
+   * @aliases mcs, mergesCurrentSize
+   */
+  'merges.current_size',
+  /**
+   * The number of completed merge operations.
+   * @aliases mt, mergesTotal
+   */
+  'merges.total',
+  /**
+   * The number of merged documents.
+   * @aliases  mtd, mergesTotalDocs
+   */
+  'merges.total_docs',
+  /**
+   * The total size of merges. For example: `0b`.
+   * @aliases mts, mergesTotalSize
+   */
+  'merges.total_size',
+  /**
+   * The time spent merging documents. For example: `0s`.
+   * @aliases mtt, mergesTotalTime
+   */
+  'merges.total_time',
+  /**
+   * The node name.
+   * @aliases n
+   */
+  name,
+  /**
+   * The roles of the node.
+   * Returned values include `c` (cold node), `d` (data node), `f` (frozen node), `h` (hot node), `i` (ingest node), `l` (machine learning node), `m` (master-eligible node), `r` (remote cluster client node), `s` (content node), `t` (transform node), `v` (voting-only node), `w` (warm node), and `-` (coordinating node only).
+   * For example, `dim` indicates a master-eligible data and ingest node.
+   * @aliases r, role, nodeRole
+   */
+  'node.role',
+  /**
+   * The process identifier.
+   * @aliases p
+   */
+  pid,
+  /**
+   * The bound transport port number.
+   * @aliases po
+   */
+  port,
+  /**
+   * The used query cache memory. For example: `0b`.
+   * @aliases qcm, queryCacheMemory
+   */
+  'query_cache.memory_size',
+  /**
+   * The number of query cache evictions.
+   * @aliases qce, queryCacheEvictions
+   */
+  'query_cache.evictions',
+  /**
+   * The query cache hit count.
+   * @aliases qchc, queryCacheHitCount
+   */
+  'query_cache.hit_count',
+  /**
+   * The query cache miss count.
+   * @aliases qcmc, queryCacheMissCount
+   */
+  'query_cache.miss_count',
+  /**
+   * The used total memory. For example: `513.4mb`.
+   * @aliases rc, ramCurrent
+   */
+  'ram.current',
+  /**
+   * The total memory. For example: `2.9gb`.
+   * @aliases rm, ramMax
+   */
+  'ram.max',
+  /**
+   * The used percentage of the total operating system memory.
+   * This reflects all processes running on the operating system instead of only Elasticsearch and is not guaranteed to correlate to its performance.
+   * @aliases rp, ramPercent
+   */
+  'ram.percent',
+  /**
+   * The number of refresh operations.
+   * @aliases rto, refreshTotal
+   */
+  'refresh.total',
+  /**
+   * The time spent in refresh operations. For example: `91ms`.
+   * @aliases rti, refreshTime
+   */
+  'refresh.time',
+  /**
+   * The used request cache memory. For example: `0b`.
+   * @aliases rcm, requestCacheMemory
+   */
+  'request_cache.memory_size',
+  /**
+   * The number of request cache evictions.
+   * @aliases rce, requestCacheEvictions
+   */
+  'request_cache.evictions',
+  /**
+   * The request cache hit count.
+   * @aliases rchc, requestCacheHitCount
+   */
+  'request_cache.hit_count',
+  /**
+   * The request cache miss count.
+   * @aliases rcmc, requestCacheMissCount
+   */
+  'request_cache.miss_count',
+  /**
+   * The number of total script compilations.
+   * @aliases scrcc, scriptCompilations
+   */
+  'script.compilations',
+  /**
+   * The number of total compiled scripts evicted from cache.
+   * @aliases scrce, scriptCacheEvictions
+   */
+  'script.cache_evictions',
+  /**
+   * The number of current fetch phase operations.
+   * @aliases sfc, searchFetchCurrent
+   */
+  'search.fetch_current',
+  /**
+   * The time spent in fetch phase. For example: `37ms`.
+   * @aliases sfti, searchFetchTime
+   */
+  'search.fetch_time',
+  /**
+   * The number of fetch operations.
+   * @aliases sfto, searchFetchTotal
+   */
+  'search.fetch_total',
+  /**
+   * The number of open search contexts.
+   * @aliases so, searchOpenContexts
+   */
+  'search.open_contexts',
+  /**
+   * The number of current query phase operations.
+   * @aliases sqc, searchQueryCurrent
+   */
+  'search.query_current',
+  /**
+   * The time spent in query phase. For example: `43ms`.
+   * @aliases sqti, searchQueryTime
+   */
+  'search.query_time',
+  /**
+   * The number of query operations.
+   * @aliases  sqto, searchQueryTotal
+   */
+  'search.query_total',
+  /**
+   * The number of open scroll contexts.
+   * @aliases scc, searchScrollCurrent
+   */
+  'search.scroll_current',
+  /**
+   * The amount of time scroll contexts were held open. For example: `2m`.
+   * @aliases scti, searchScrollTime
+   */
+  'search.scroll_time',
+  /**
+   * The number of completed scroll contexts.
+   * @aliases scto, searchScrollTotal
+   */
+  'search.scroll_total',
+  /**
+   * The number of segments.
+   * @aliases sc, segmentsCount
+   */
+  'segments.count',
+  /**
+   * The memory used by fixed bit sets for nested object field types and type filters for types referred in join fields.
+   * For example: `1.0kb`.
+   * @aliases sfbm, fixedBitsetMemory
+   */
+  'segments.fixed_bitset_memory',
+  /**
+   * The memory used by the index writer. For example: `18mb`.
+   * @aliases siwm, segmentsIndexWriterMemory
+   */
+  'segments.index_writer_memory',
+  /**
+   * The memory used by segments. For example: `1.4kb`.
+   * @aliases sm, segmentsMemory
+   */
+  'segments.memory',
+  /**
+   * The memory used by the version map. For example: `1.0kb`.
+   * @aliases svmm, segmentsVersionMapMemory
+   */
+  'segments.version_map_memory',
+  /**
+   * The number of shards assigned.
+   * @aliases sstc, shards, shardStatsTotalCount
+   */
+  'shard_stats.total_count',
+  /**
+   * The number of current suggest operations.
+   * @aliases  suc, suggestCurrent
+   */
+  'suggest.current',
+  /**
+   * The time spent in suggest operations.
+   * @aliases suti, suggestTime
+   */
+  'suggest.time',
+  /**
+   * The number of suggest operations.
+   * @aliases suto, suggestTotal
+   */
+  'suggest.total',
+  /**
+   * The amount of node uptime. For example: `17.3m`.
+   * @aliases u
+   */
+  uptime,
+  /**
+   * The Elasticsearch version. For example: `9.0.0`.
+   * @aliases v
+   */
+  version
+}
+
+/** @non_exhaustive */
+export enum CatSegmentsColumn {
+  /**
+   * The name of the index.
+   * @aliases i, idx
+   */
+  index,
+  /**
+   * The name of the shard.
+   * @aliases s, sh
+   */
+  shard,
+  /**
+   * The shard type. Returned values are 'primary' or 'replica'.
+   * @aliases p, pr, primaryOrReplica
+   */
+  prirep,
+  /**
+   * IP address of the segment’s shard, such as '127.0.1.1'.
+   */
+  ip,
+  /**
+   * The name of the segment, such as '_0'. The segment name is derived from the segment generation and used internally to create file names in the directory of the shard.
+   */
+  segment,
+  /**
+   * Generation number, such as '0'. Elasticsearch increments this generation number for each segment written. Elasticsearch then uses this number to derive the segment name.
+   */
+  generation,
+  /**
+   * The number of documents as reported by Lucene. This excludes deleted documents and counts any [nested documents](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/nested) separately from their parents. It also excludes documents which were indexed recently and do not yet belong to a segment.
+   */
+  'docs.count',
+  /**
+   * The number of deleted documents as reported by Lucene, which may be higher or lower than the number of delete operations you have performed. This number excludes deletes that were performed recently and do not yet belong to a segment. Deleted documents are cleaned up by the [automatic merge process](https://www.elastic.co/docs/reference/elasticsearch/index-settings/merge) if it makes sense to do so. Also, Elasticsearch creates extra deleted documents to internally track the recent history of operations on a shard.
+   */
+  'docs.deleted',
+  /**
+   * The disk space used by the segment, such as '50kb'.
+   */
+  size,
+  /**
+   * The bytes of segment data stored in memory for efficient search, such as '1264'. A value of '-1' indicates Elasticsearch was unable to compute this number.
+   */
+  'size.memory',
+  /**
+   * If 'true', the segments is synced to disk. Segments that are synced can survive a hard reboot. If 'false', the data from uncommitted segments is also stored in the transaction log so that Elasticsearch is able to replay changes on the next start.
+   */
+  committed,
+  /**
+   * If 'true', the segment is searchable. If 'false', the segment has most likely been written to disk but needs a [refresh](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) to be searchable.
+   */
+  searchable,
+  /**
+   * The version of Lucene used to write the segment.
+   */
+  version,
+  /**
+   * If 'true', the segment is stored in a compound file. This means Lucene merged all files from the segment in a single file to save file descriptors.
+   */
+  compound,
+  /**
+   * The ID of the node, such as 'k0zy'.
+   */
+  id
+}
+
+/** @non_exhaustive */
+export enum CatSnapshotsColumn {
+  /**
+   * The ID of the snapshot, such as 'snap1'.
+   * @aliases snapshot
+   */
+  id,
+  /**
+   * The name of the repository, such as 'repo1'.
+   * @aliases re, repo
+   */
+  repository,
+  /**
+   * State of the snapshot process. Returned values are: 'FAILED': The snapshot process failed. 'INCOMPATIBLE': The snapshot process is incompatible with the current cluster version. 'IN_PROGRESS': The snapshot process started but has not completed. 'PARTIAL': The snapshot process completed with a partial success. 'SUCCESS': The snapshot process completed with a full success.
+   * @aliases s
+   */
+  status,
+  /**
+   * The [unix epoch time](https://en.wikipedia.org/wiki/Unix_time) at which the snapshot process started.
+   * @aliases ste, startEpoch
+   */
+  start_epoch,
+  /**
+   * 'HH:MM:SS' time at which the snapshot process started.
+   * @aliases sti, startTime
+   */
+  start_time,
+  /**
+   * The [unix epoch time](https://en.wikipedia.org/wiki/Unix_time) at which the snapshot process ended.
+   * @aliases ete, endEpoch
+   */
+  end_epoch,
+  /**
+   * 'HH:MM:SS' time at which the snapshot process ended.
+   * @aliases eti, endTime
+   */
+  end_time,
+  /**
+   * The time it took the snapshot process to complete in [time units](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#time-units).
+   * @aliases dur
+   */
+  duration,
+  /**
+   * The number of indices in the snapshot.
+   * @aliases i
+   */
+  indices,
+  /**
+   * The number of successful shards in the snapshot.
+   * @aliases ss
+   */
+  successful_shards,
+  /**
+   * The number of failed shards in the snapshot.
+   * @aliases fs
+   */
+  failed_shards,
+  /**
+   * The total number of shards in the snapshot.
+   * @aliases ts
+   */
+  total_shards,
+  /**
+   * The reason for any snapshot failures.
+   * @aliases r
+   */
+  reason
+}
+
+/** @non_exhaustive */
+export enum CatAliasesColumn {
+  /**
+   * The name of the alias.
+   * @aliases a
+   */
+  alias,
+  /**
+   * The name of the index the alias points to.
+   * @aliases i, idx
+   */
+  index,
+  /**
+   * The filter applied to the alias.
+   * @aliases f, fi
+   */
+  filter,
+  /**
+   * Index routing value for the alias.
+   * @aliases ri, routingIndex
+   */
+  'routing.index',
+  /**
+   * Search routing value for the alias.
+   * @aliases rs, routingSearch
+   */
+  'routing.search',
+  /**
+   * Indicates if the index is the write index for the alias.
+   * @aliases w, isWriteIndex
+   */
+  is_write_index
+}
+
+/** @non_exhaustive */
+export enum CatAllocationColumn {
+  /**
+   * The number of shards on the node.
+   * @aliases s
+   */
+  shards,
+  /**
+   * The number of shards scheduled to be moved elsewhere in the cluster.
+   */
+  'shards.undesired',
+  /**
+   * The sum of index write load forecasts.
+   * @aliases wlf, writeLoadForecast
+   */
+  'write_load.forecast',
+  /**
+   * The sum of shard size forecasts.
+   * @aliases dif, diskIndicesForecast
+   */
+  'disk.indices.forecast',
+  /**
+   * The disk space used by Elasticsearch indices.
+   * @aliases di, diskIndices
+   */
+  'disk.indices',
+  /**
+   * The total disk space used on the node.
+   * @aliases du,diskUsed
+   */
+  'disk.used',
+  /**
+   * The available disk space on the node.
+   * @aliases da, diskAvail
+   */
+  'disk.avail',
+  /**
+   * The total disk capacity of all volumes on the node.
+   * @aliases dt, diskTotal
+   */
+  'disk.total',
+  /**
+   * The percentage of disk space used on the node.
+   * @aliases dp, diskPercent
+   */
+  'disk.percent',
+  /**
+   * IThe host of the node.
+   * @aliases h
+   */
+  host,
+  /**
+   * The IP address of the node.
+   */
+  ip,
+  /**
+   * The name of the node.
+   * @aliases n
+   */
+  node,
+  /**
+   * The roles assigned to the node.
+   * @aliases r, role, nodeRole
+   */
+  'node.role'
+}
+
+/** @non_exhaustive */
+export enum CatCircuitBreakerColumn {
+  /**
+   * Persistent node ID
+   * @aliases id
+   */
+  node_id,
+  /**
+   * Node name
+   * @aliases nn
+   */
+  node_name,
+  /**
+   * Breaker name
+   * @aliases br
+   */
+  breaker,
+  /**
+   * Limit size
+   * @aliases l
+   */
+  limit,
+  /**
+   * Limit size in bytes
+   * @aliases lb
+   */
+  limit_bytes,
+  /**
+   * Estimated size
+   * @aliases e
+   */
+  estimated,
+  /**
+   * Estimated size in bytes
+   * @aliases eb
+   */
+  estimated_bytes,
+  /**
+   * Tripped count
+   * @aliases t
+   */
+  tripped,
+  /**
+   * Overhead
+   * @aliases o
+   */
+  overhead
+}
+
+/** @non_exhaustive */
+export enum CatComponentColumn {
+  /**
+   * The name of the component template.
+   * @aliases n
+   */
+  name,
+  /**
+   * The version number of the component template.
+   * @aliases v
+   */
+  version,
+  /**
+   * The number of aliases in the component template.
+   * @aliases a
+   */
+  alias_count,
+  /**
+   * The number of mappings in the component template.
+   * @aliases m
+   */
+  mapping_count,
+  /**
+   * The number of settings in the component template.
+   * @aliases s
+   */
+  settings_count,
+  /**
+   * The number of metadata entries in the component template.
+   * @aliases me
+   */
+  metadata_count,
+  /**
+   * The index templates that include this component template.
+   * @aliases i
+   */
+  included_in
+}
+
+/** @non_exhaustive */
+export enum CatCountColumn {
+  /**
+   * The Unix epoch time in seconds since 1970-01-01 00:00:00.
+   * @aliases t,time
+   */
+  epoch,
+  /**
+   * The current time in HH:MM:SS format.
+   * @aliases ts,hms,hhmmss
+   */
+  timestamp,
+  /**
+   * The document count in the cluster or index.
+   * @aliases dc,docs.count,docsCount
+   */
+  count
+}
+
+/** @non_exhaustive */
+export enum CatFieldDataColumn {
+  /**
+   * The node ID.
+   */
+  id,
+  /**
+   * The host name of the node.
+   * @aliases h
+   */
+  host,
+  /**
+   * The IP address of the node.
+   */
+  ip,
+  /**
+   * The node name.
+   * @aliases n
+   */
+  node,
+  /**
+   * The field name.
+   * @aliases f
+   */
+  field,
+  /**
+   * The field data usage.
+   * @aliases s
+   */
+  size
+}
+
+/** @non_exhaustive */
+export enum CatHealthColumn {
+  /**
+   * The number of seconds since 1970-01-01 00:00:00.
+   * @aliases t, time
+   */
+  epoch,
+  /**
+   * The time in HH:MM:SS format.
+   * @aliases ts, hms, hhmmss
+   */
+  timestamp,
+  /**
+   * The cluster name.
+   * @aliases cl
+   */
+  cluster,
+  /**
+   * The health status.
+   * @aliases st
+   */
+  status,
+  /**
+   * The total number of nodes that can store data.
+   * @aliases nt, nodeTotal
+   */
+  'node.total',
+  /**
+   * The number of nodes that can store data.
+   * @aliases nd, nodeData
+   */
+  'node.data',
+  /**
+   * The total number of shards.
+   * @aliases t, sh, shards.total, shardsTotal
+   */
+  shards,
+  /**
+   * The number of primary shards.
+   * @aliases p, shards.primary, shardsPrimary
+   */
+  pri,
+  /**
+   * The number of relocating nodes.
+   * @aliases r, shards.relocating, shardsRelocating
+   */
+  relo,
+  /**
+   * The number of initializing nodes.
+   * @aliases i, shards.initializing, shardsInitializing
+   */
+  init,
+  /**
+   * The number of unassigned shards.
+   * @aliases u, shards.unassigned, shardsUnassigned
+   */
+  unassign,
+  /**
+   * The number of unassigned primary shards.
+   * @aliases up, shards.unassigned.primary, shardsUnassignedPrimary
+   */
+  'unassign.pri',
+  /**
+   * The number of pending tasks.
+   * @aliases pt, pendingTasks
+   */
+  pending_tasks,
+  /**
+   * The wait time of the longest pending task.
+   * @aliases mtwt, maxTaskWaitTime
+   */
+  max_task_wait_time,
+  /**
+   * The percentage of active shards.
+   * @aliases asp, activeShardsPercent
+   */
+  active_shards_percent
+}
+
+/** @non_exhaustive */
+export enum CatIndicesColumn {
+  /**
+   * The current health status.
+   * @aliases h
+   */
+  health,
+  /**
+   * The open/close status.
+   * @aliases s
+   */
+  status,
+  /**
+   * The index name.
+   * @aliases i, idx
+   */
+  index,
+  /**
+   * The index UUID.
+   * @aliases id, uuid
+   */
+  uuid,
+  /**
+   * The number of primary shards.
+   * @aliases p, shards.primary, shardsPrimary
+   */
+  pri,
+  /**
+   * The number of replica shards.
+   * @aliases r, shards.replica, shardsReplica
+   */
+  rep,
+  /**
+   * The number of available documents.
+   * @aliases dc, docsCount
+   */
+  'docs.count',
+  /**
+   * The number of deleted documents.
+   * @aliases dd, docsDeleted
+   */
+  'docs.deleted',
+  /**
+   * The index creation date (millisecond value).
+   * @aliases cd
+   */
+  'creation.date',
+  /**
+   * The index creation date (as string).
+   * @aliases cds
+   */
+  'creation.date.string',
+  /**
+   * The store size of primaries and replicas.
+   * @aliases ss, storeSize
+   */
+  'store.size',
+  /**
+   * The store size of primaries.
+   */
+  'pri.store.size',
+  /**
+   * The total size of the dataset.
+   */
+  'dataset.size',
+  /**
+   * The size of completion for primaries and replicas.
+   * @aliases cs, completionSize
+   */
+  'completion.size',
+  /**
+   * The size of completion for primaries.
+   */
+  'pri.completion.size',
+  /**
+   * The used fielddata cache for primaries and replicas.
+   * @aliases fm, fielddataMemory
+   */
+  'fielddata.memory_size',
+  /**
+   * The used fielddata cache for primaries.
+   */
+  'pri.fielddata.memory_size',
+  /**
+   * The number of fielddata evictions for primaries and replicas.
+   * @aliases fe, fielddataEvictions
+   */
+  'fielddata.evictions',
+  /**
+   * The number of fielddata evictions for primaries.
+   */
+  'pri.fielddata.evictions',
+  /**
+   * The used query cache for primaries and replicas.
+   * @aliases qcm, queryCacheMemory
+   */
+  'query_cache.memory_size',
+  /**
+   * The used query cache for primaries.
+   */
+  'pri.query_cache.memory_size',
+  /**
+   * The number of query cache evictions for primaries and replicas.
+   * @aliases qce, queryCacheEvictions
+   */
+  'query_cache.evictions',
+  /**
+   * The number of query cache evictions for primaries.
+   */
+  'pri.query_cache.evictions',
+  /**
+   * The used request cache for primaries and replicas.
+   * @aliases rcm, requestCacheMemory
+   */
+  'request_cache.memory_size',
+  /**
+   * The used request cache for primaries.
+   */
+  'pri.request_cache.memory_size',
+  /**
+   * The number of request cache evictions for primaries and replicas.
+   * @aliases rce, requestCacheEvictions
+   */
+  'request_cache.evictions',
+  /**
+   * The number of request cache evictions for primaries.
+   */
+  'pri.request_cache.evictions',
+  /**
+   * The request cache hit count for primaries and replicas.
+   * @aliases rchc, requestCacheHitCount
+   */
+  'request_cache.hit_count',
+  /**
+   * The request cache hit count for primaries.
+   */
+  'pri.request_cache.hit_count',
+  /**
+   * The request cache miss count for primaries and replicas.
+   * @aliases rcmc, requestCacheMissCount
+   */
+  'request_cache.miss_count',
+  /**
+   * The request cache miss count for primaries.
+   */
+  'pri.request_cache.miss_count',
+  /**
+   * The number of flushes for primaries and replicas.
+   * @aliases ft, flushTotal
+   */
+  'flush.total',
+  /**
+   * The number of flushes for primaries.
+   */
+  'pri.flush.total',
+  /**
+   * The time spent in flush for primaries and replicas.
+   * @aliases ftt, flushTotalTime
+   */
+  'flush.total_time',
+  /**
+   * The time spent in flush for primaries.
+   */
+  'pri.flush.total_time',
+  /**
+   * The number of current get operations for primaries and replicas.
+   * @aliases gc, getCurrent
+   */
+  'get.current',
+  /**
+   * The number of current get operations for primaries.
+   */
+  'pri.get.current',
+  /**
+   * The time spent in get for primaries and replicas.
+   * @aliases gti, getTime
+   */
+  'get.time',
+  /**
+   * The time spent in get for primaries.
+   */
+  'pri.get.time',
+  /**
+   * The number of get operations for primaries and replicas.
+   * @aliases gto, getTotal
+   */
+  'get.total',
+  /**
+   * The number of get operations for primaries.
+   */
+  'pri.get.total',
+  /**
+   * The time spent in successful gets for primaries and replicas.
+   * @aliases geti, getExistsTime
+   */
+  'get.exists_time',
+  /**
+   * The time spent in successful gets for primaries.
+   */
+  'pri.get.exists_time',
+  /**
+   * The number of successful gets for primaries and replicas.
+   * @aliases geto, getExistsTotal
+   */
+  'get.exists_total',
+  /**
+   * The number of successful gets for primaries.
+   */
+  'pri.get.exists_total',
+  /**
+   * The time spent in failed gets for primaries and replicas.
+   * @aliases gmti, getMissingTime
+   */
+  'get.missing_time',
+  /**
+   * The time spent in failed gets for primaries.
+   */
+  'pri.get.missing_time',
+  /**
+   * The number of failed gets for primaries and replicas.
+   * @aliases gmto, getMissingTotal
+   */
+  'get.missing_total',
+  /**
+   * The number of failed gets for primaries.
+   */
+  'pri.get.missing_total',
+  /**
+   * The number of current deletions for primaries and replicas.
+   * @aliases idc, indexingDeleteCurrent
+   */
+  'indexing.delete_current',
+  /**
+   * The number of current deletions for primaries.
+   */
+  'pri.indexing.delete_current',
+  /**
+   * The time spent in deletions for primaries and replicas.
+   * @aliases idti, indexingDeleteTime
+   */
+  'indexing.delete_time',
+  /**
+   * The time spent in deletions for primaries.
+   */
+  'pri.indexing.delete_time',
+  /**
+   * The number of delete operations for primaries and replicas.
+   * @aliases idto, indexingDeleteTotal
+   */
+  'indexing.delete_total',
+  /**
+   * The number of delete operations for primaries.
+   */
+  'pri.indexing.delete_total',
+  /**
+   * The number of current indexing operations for primaries and replicas.
+   * @aliases iic, indexingIndexCurrent
+   */
+  'indexing.index_current',
+  /**
+   * The number of current indexing operations for primaries.
+   */
+  'pri.indexing.index_current',
+  /**
+   * The time spent in indexing for primaries and replicas.
+   * @aliases iiti, indexingIndexTime
+   */
+  'indexing.index_time',
+  /**
+   * The time spent in indexing for primaries.
+   */
+  'pri.indexing.index_time',
+  /**
+   * The number of indexing operations for primaries and replicas.
+   * @aliases iito, indexingIndexTotal
+   */
+  'indexing.index_total',
+  /**
+   * The number of indexing operations for primaries.
+   */
+  'pri.indexing.index_total',
+  /**
+   * The number of failed indexing operations for primaries and replicas.
+   * @aliases iif, indexingIndexFailed
+   */
+  'indexing.index_failed',
+  /**
+   * The number of failed indexing operations for primaries.
+   */
+  'pri.indexing.index_failed',
+  /**
+   * The number of failed indexing operations due to version conflict for primaries and replicas.
+   * @aliases iifvc, indexingIndexFailedDueToVersionConflict
+   */
+  'indexing.index_failed_due_to_version_conflict',
+  /**
+   * The number of failed indexing operations due to version conflict for primaries.
+   */
+  'pri.indexing.index_failed_due_to_version_conflict',
+  /**
+   * The number of current merges for primaries and replicas.
+   * @aliases mc, mergesCurrent
+   */
+  'merges.current',
+  /**
+   * The number of current merges for primaries.
+   */
+  'pri.merges.current',
+  /**
+   * The number of current merging documents for primaries and replicas.
+   * @aliases mcd, mergesCurrentDocs
+   */
+  'merges.current_docs',
+  /**
+   * The number of current merging documents for primaries.
+   */
+  'pri.merges.current_docs',
+  /**
+   * The size of current merges for primaries and replicas.
+   * @aliases mcs, mergesCurrentSize
+   */
+  'merges.current_size',
+  /**
+   * The size of current merges for primaries.
+   */
+  'pri.merges.current_size',
+  /**
+   * The number of completed merge operations for primaries and replicas.
+   * @aliases mt, mergesTotal
+   */
+  'merges.total',
+  /**
+   * The number of completed merge operations for primaries.
+   */
+  'pri.merges.total',
+  /**
+   * The number of merged documents for primaries and replicas.
+   * @aliases mtd, mergesTotalDocs
+   */
+  'merges.total_docs',
+  /**
+   * The number of merged documents for primaries.
+   */
+  'pri.merges.total_docs',
+  /**
+   * The merged size for primaries and replicas.
+   * @aliases mts, mergesTotalSize
+   */
+  'merges.total_size',
+  /**
+   * The merged size for primaries.
+   */
+  'pri.merges.total_size',
+  /**
+   * The time spent in merges for primaries and replicas.
+   * @aliases mtt, mergesTotalTime
+   */
+  'merges.total_time',
+  /**
+   * The time spent in merges for primaries.
+   */
+  'pri.merges.total_time',
+  /**
+   * The total refreshes for primaries and replicas.
+   * @aliases rto, refreshTotal
+   */
+  'refresh.total',
+  /**
+   * The total refreshes for primaries.
+   */
+  'pri.refresh.total',
+  /**
+   * The time spent in refreshes for primaries and replicas.
+   * @aliases rti, refreshTime
+   */
+  'refresh.time',
+  /**
+   * The time spent in refreshes for primaries.
+   */
+  'pri.refresh.time',
+  /**
+   * The total external refreshes for primaries and replicas.
+   * @aliases rto, refreshTotal
+   */
+  'refresh.external_total',
+  /**
+   * The total external refreshes for primaries.
+   */
+  'pri.refresh.external_total',
+  /**
+   * The time spent in external refreshes for primaries and replicas.
+   * @aliases rti, refreshTime
+   */
+  'refresh.external_time',
+  /**
+   * The time spent in external refreshes for primaries.
+   */
+  'pri.refresh.external_time',
+  /**
+   * The number of pending refresh listeners for primaries and replicas.
+   * @aliases rli, refreshListeners
+   */
+  'refresh.listeners',
+  /**
+   * The number of pending refresh listeners for primaries.
+   */
+  'pri.refresh.listeners',
+  /**
+   * The current fetch phase operations for primaries and replicas.
+   * @aliases sfc, searchFetchCurrent
+   */
+  'search.fetch_current',
+  /**
+   * The current fetch phase operations for primaries.
+   */
+  'pri.search.fetch_current',
+  /**
+   * The time spent in fetch phase for primaries and replicas.
+   * @aliases sfti, searchFetchTime
+   */
+  'search.fetch_time',
+  /**
+   * The time spent in fetch phase for primaries.
+   */
+  'pri.search.fetch_time',
+  /**
+   * The total fetch operations for primaries and replicas.
+   * @aliases sfto, searchFetchTotal
+   */
+  'search.fetch_total',
+  /**
+   * The total fetch operations for primaries.
+   */
+  'pri.search.fetch_total',
+  /**
+   * The open search contexts for primaries and replicas.
+   * @aliases so, searchOpenContexts
+   */
+  'search.open_contexts',
+  /**
+   * The open search contexts for primaries.
+   */
+  'pri.search.open_contexts',
+  /**
+   * The current query phase operations for primaries and replicas.
+   * @aliases sqc, searchQueryCurrent
+   */
+  'search.query_current',
+  /**
+   * The current query phase operations for primaries.
+   */
+  'pri.search.query_current',
+  /**
+   * The time spent in query phase for primaries and replicas.
+   * @aliases sqti, searchQueryTime
+   */
+  'search.query_time',
+  /**
+   * The time spent in query phase for primaries.
+   */
+  'pri.search.query_time',
+  /**
+   * The total query phase operations for primaries and replicas.
+   * @aliases sqto, searchQueryTotal
+   */
+  'search.query_total',
+  /**
+   * The total query phase operations for primaries.
+   */
+  'pri.search.query_total',
+  /**
+   * The open scroll contexts for primaries and replicas.
+   * @aliases scc, searchScrollCurrent
+   */
+  'search.scroll_current',
+  /**
+   * The open scroll contexts for primaries.
+   */
+  'pri.search.scroll_current',
+  /**
+   * The time scroll contexts held open for primaries and replicas.
+   * @aliases scti, searchScrollTime
+   */
+  'search.scroll_time',
+  /**
+   * The time scroll contexts held open for primaries.
+   */
+  'pri.search.scroll_time',
+  /**
+   * The completed scroll contexts for primaries and replicas.
+   * @aliases scto, searchScrollTotal
+   */
+  'search.scroll_total',
+  /**
+   * The completed scroll contexts for primaries.
+   */
+  'pri.search.scroll_total',
+  /**
+   * The number of segments for primaries and replicas.
+   * @aliases sc, segmentsCount
+   */
+  'segments.count',
+  /**
+   * The number of segments for primaries.
+   */
+  'pri.segments.count',
+  /**
+   * The memory used by segments for primaries and replicas.
+   * @aliases sm, segmentsMemory
+   */
+  'segments.memory',
+  /**
+   * The memory used by segments for primaries.
+   */
+  'pri.segments.memory',
+  /**
+   * The memory used by index writer for primaries and replicas.
+   * @aliases siwm, segmentsIndexWriterMemory
+   */
+  'segments.index_writer_memory',
+  /**
+   * The memory used by index writer for primaries.
+   */
+  'pri.segments.index_writer_memory',
+  /**
+   * The memory used by version map for primaries and replicas.
+   * @aliases svmm, segmentsVersionMapMemory
+   */
+  'segments.version_map_memory',
+  /**
+   * The memory used by version map for primaries.
+   */
+  'pri.segments.version_map_memory',
+  /**
+   * The memory used by fixed bit sets for nested object field types and type filters for types referred in _parent fields. Applicable for primaries and replicas.
+   * @aliases sfbm, fixedBitsetMemory
+   */
+  'segments.fixed_bitset_memory',
+  /**
+   * The memory used by fixed bit sets for nested object field types and type filters for types referred in _parent fields. Applicable for primaries.
+   */
+  'pri.segments.fixed_bitset_memory',
+  /**
+   * The current warmer operations for primaries and replicas.
+   * @aliases wc, warmerCurrent
+   */
+  'warmer.current',
+  /**
+   * The current warmer operations for primaries.
+   */
+  'pri.warmer.current',
+  /**
+   * The total warmer operations for primaries and replicas.
+   * @aliases wto, warmerTotal
+   */
+  'warmer.total',
+  /**
+   * The total warmer operations for primaries.
+   */
+  'pri.warmer.total',
+  /**
+   * The time spent in warmers for primaries and replicas.
+   * @aliases wtt, warmerTotalTime
+   */
+  'warmer.total_time',
+  /**
+   * The time spent in warmers for primaries.
+   */
+  'pri.warmer.total_time',
+  /**
+   * The current suggest operations for primaries and replicas.
+   * @aliases suc, suggestCurrent
+   */
+  'suggest.current',
+  /**
+   * The current suggest operations for primaries.
+   */
+  'pri.suggest.current',
+  /**
+   * The time spent in suggest for primaries and replicas.
+   * @aliases suti, suggestTime
+   */
+  'suggest.time',
+  /**
+   * The time spent in suggest for primaries.
+   */
+  'pri.suggest.time',
+  /**
+   * The number of suggest operations for primaries and replicas.
+   * @aliases suto, suggestTotal
+   */
+  'suggest.total',
+  /**
+   * The number of suggest operations for primaries.
+   */
+  'pri.suggest.total',
+  /**
+   * The total used memory for primaries and replicas.
+   * @aliases tm, memoryTotal
+   */
+  'memory.total',
+  /**
+   * The total used memory for primaries.
+   */
+  'pri.memory.total',
+  /**
+   * The number of bulk shard operations for primaries and replicas.
+   * @aliases bto, bulkTotalOperation
+   */
+  'bulk.total_operations',
+  /**
+   * The number of bulk shard operations for primaries.
+   */
+  'pri.bulk.total_operations',
+  /**
+   * The time spent in shard bulk for primaries and replicas.
+   * @aliases btti, bulkTotalTime
+   */
+  'bulk.total_time',
+  /**
+   * The time spent in shard bulk for primaries.
+   */
+  'pri.bulk.total_time',
+  /**
+   * The total size in bytes of shard bulk for primaries and replicas.
+   * @aliases btsi, bulkTotalSizeInBytes
+   */
+  'bulk.total_size_in_bytes',
+  /**
+   * The total size in bytes of shard bulk for primaries.
+   */
+  'pri.bulk.total_size_in_bytes',
+  /**
+   * The average time spent in shard bulk for primaries and replicas.
+   * @aliases bati, bulkAvgTime
+   */
+  'bulk.avg_time',
+  /**
+   * The average time spent in shard bulk for primaries.
+   */
+  'pri.bulk.avg_time',
+  /**
+   * The average size in bytes of shard bulk for primaries and replicas.
+   * @aliases basi, bulkAvgSizeInBytes
+   */
+  'bulk.avg_size_in_bytes',
+  /**
+   * The average size in bytes of shard bulk for primaries.
+   */
+  'pri.bulk.avg_size_in_bytes',
+  /**
+   * The total count of indexed dense vectors for primaries and replicas.
+   * @aliases dvc, denseVectorCount
+   */
+  'dense_vector.value_count',
+  /**
+   * The total count of indexed dense vectors for primaries.
+   */
+  'pri.dense_vector.value_count',
+  /**
+   * The total count of indexed sparse vectors for primaries and replicas.
+   * @aliases svc, sparseVectorCount
+   */
+  'sparse_vector.value_count',
+  /**
+   * The total count of indexed sparse vectors for primaries.
+   */
+  'pri.sparse_vector.value_count'
+}
+
+/** @non_exhaustive */
+export enum CatMasterColumn {
+  /**
+   * The node ID.
+   */
+  id,
+  /**
+   * The host name of the node.
+   * @aliases h
+   */
+  host,
+  /**
+   * The IP address of the node.
+   */
+  ip,
+  /**
+   * The node name.
+   * @aliases n
+   */
+  node
+}
+
+/** @non_exhaustive */
+export enum CatNodeattrsColumn {
+  /**
+   * The node name.
+   */
+  node,
+  /**
+   * The unique node ID.
+   * @aliases id, nodeId
+   */
+  id,
+  /**
+   * The process ID.
+   * @aliases p
+   */
+  pid,
+  /**
+   * The host name.
+   * @aliases h
+   */
+  host,
+  /**
+   * The IP address.
+   * @aliases i
+   */
+  ip,
+  /**
+   * The bound transport port.
+   * @aliases po
+   */
+  port,
+  /**
+   * The attribute description.
+   * @aliases attr.name
+   */
+  attr,
+  /**
+   * The attribute value.
+   * @aliases attr.value
+   */
+  value
+}
+
+/** @non_exhaustive */
+export enum CatTasksColumn {
+  /**
+   * The ID of the task with the node.
+   */
+  id,
+  /**
+   * The task action.
+   * @aliases ac
+   */
+  action,
+  /**
+   * The unique task ID.
+   * @aliases ti
+   */
+  task_id,
+  /**
+   * The parent task ID.
+   * @aliases pti
+   */
+  parent_task_id,
+  /**
+   * The task type.
+   * @aliases ty
+   */
+  type,
+  /**
+   * The start time in milliseconds.
+   * @aliases start
+   */
+  start_time,
+  /**
+   * The start time in HH:MM:SS.
+   * @aliases ts, hms, hhmmss
+   */
+  timestamp,
+  /**
+   * The running time in nanoseconds.
+   * @aliases time
+   */
+  running_time_ns,
+  /**
+   * The running time.
+   * @aliases time
+   */
+  running_time,
+  /**
+   * The unique node ID.
+   * @aliases ni
+   */
+  node_id,
+  /**
+   * The IP address.
+   * @aliases i
+   */
+  ip,
+  /**
+   * The bound transport port.
+   * @aliases po
+   */
+  port,
+  /**
+   * The node name.
+   * @aliases n
+   */
+  node,
+  /**
+   * The Elasticsearch version.
+   * @aliases v
+   */
+  version,
+  /**
+   * The X-Opaque-ID header.
+   * @aliases x
+   */
+  x_opaque_id
+}
+
+/** @non_exhaustive */
+export enum CatPluginsColumn {
+  /**
+   * The unique node ID.
+   */
+  id,
+  /**
+   * The node name.
+   * @aliases n
+   */
+  name,
+  /**
+   * The component.
+   * @aliases c
+   */
+  component,
+  /**
+   * The component version.
+   * @aliases v
+   */
+  version,
+  /**
+   * The plugin details.
+   * @aliases d
+   */
+  description
+}
+
+/** @non_exhaustive */
+export enum CatRecoveryColumn {
+  /**
+   * The index name.
+   * @aliases i, idx
+   */
+  index,
+  /**
+   * The shard name.
+   * @aliases s, sh
+   */
+  shard,
+  /**
+   * The recovery start time.
+   * @aliases start
+   */
+  start_time,
+  /**
+   * The recovery start time in epoch milliseconds.
+   * @aliases start_millis
+   */
+  start_time_millis,
+  /**
+   * The recovery stop time.
+   * @aliases stop
+   */
+  stop_time,
+  /**
+   * The recovery stop time in epoch milliseconds.
+   * @aliases stop_millis
+   */
+  stop_time_millis,
+  /**
+   * The recovery time.
+   * @aliases t, ti
+   */
+  time,
+  /**
+   * The recovery type.
+   * @aliases ty
+   */
+  type,
+  /**
+   * The recovery stage.
+   * @aliases st
+   */
+  stage,
+  /**
+   * The source host.
+   * @aliases shost
+   */
+  source_host,
+  /**
+   * The source node name.
+   * @aliases snode
+   */
+  source_node,
+  /**
+   * The target host.
+   * @aliases thost
+   */
+  target_host,
+  /**
+   * The target node name.
+   * @aliases tnode
+   */
+  target_node,
+  /**
+   * The repository.
+   * @aliases rep
+   */
+  repository,
+  /**
+   * The snapshot.
+   * @aliases snap
+   */
+  snapshot,
+  /**
+   * The number of files to recover.
+   * @aliases f
+   */
+  files,
+  /**
+   * The files recovered.
+   * @aliases fr
+   */
+  files_recovered,
+  /**
+   * The percent of files recovered.
+   * @aliases fp
+   */
+  files_percent,
+  /**
+   * The total number of files.
+   * @aliases tf
+   */
+  files_total,
+  /**
+   * The number of bytes to recover.
+   * @aliases b
+   */
+  bytes,
+  /**
+   * The bytes recovered.
+   * @aliases br
+   */
+  bytes_recovered,
+  /**
+   * The percent of bytes recovered.
+   * @aliases bp
+   */
+  bytes_percent,
+  /**
+   * The total number of bytes.
+   * @aliases tb
+   */
+  bytes_total,
+  /**
+   * The number of translog ops to recover.
+   * @aliases to
+   */
+  translog_ops,
+  /**
+   * The translog ops recovered.
+   * @aliases tor
+   */
+  translog_ops_recovered,
+  /**
+   * The percent of translog ops recovered.
+   * @aliases top
+   */
+  translog_ops_percent
+}
+
+/** @non_exhaustive */
+export enum CatRepositoriesColumn {
+  /**
+   * The unique repository ID.
+   * @aliases id,repoId
+   */
+  id,
+  /**
+   * The repository type.
+   * @aliases t, type
+   */
+  type
+}
+
+/** @non_exhaustive */
+export enum CatTemplatesColumn {
+  /**
+   * The template name.
+   * @aliases n
+   */
+  name,
+  /**
+   * The template index patterns.
+   * @aliases t
+   */
+  index_patterns,
+  /**
+   * The template application order or priority number.
+   * @aliases o, p
+   */
+  order,
+  /**
+   * The version.
+   * @aliases v
+   */
+  version,
+  /**
+   * The component templates comprising the index template.
+   * @aliases c
+   */
+  composed_of
+}
+
+/** @non_exhaustive */
+export enum CatPendingTasksColumn {
+  /**
+   * The task insertion order.
+   * @aliases o
+   */
+  insertOrder,
+  /**
+   * How long the task has been in the queue.
+   * @aliases t
+   */
+  timeInQueue,
+  /**
+   * The task priority.
+   * @aliases p
+   */
+  priority,
+  /**
+   * The task source.
+   * @aliases s
+   */
+  source
+}
+
 export type CatDfaColumns = CatDfaColumn | CatDfaColumn[]
 export type CatDatafeedColumns = CatDatafeedColumn | CatDatafeedColumn[]
+export type CatNodeColumns = CatNodeColumn | CatNodeColumn[]
+export type CatRecoveryColumns = CatRecoveryColumn | CatRecoveryColumn[]
+export type CatSegmentsColumns = CatSegmentsColumn | CatSegmentsColumn[]
+export type CatSnapshotsColumns = CatSnapshotsColumn | CatSnapshotsColumn[]
+export type CatAliasesColumns = CatAliasesColumn | CatAliasesColumn[]
+export type CatAllocationColumns = CatAllocationColumn | CatAllocationColumn[]
+export type CatCircuitBreakerColumns =
+  | CatCircuitBreakerColumn
+  | CatCircuitBreakerColumn[]
+export type CatComponentColumns = CatComponentColumn | CatComponentColumn[]
+export type CatCountColumns = CatCountColumn | CatCountColumn[]
+export type CatFieldDataColumns = CatFieldDataColumn | CatFieldDataColumn[]
+export type CatHealthColumns = CatHealthColumn | CatHealthColumn[]
+export type CatIndicesColumns = CatIndicesColumn | CatIndicesColumn[]
+export type CatMasterColumns = CatMasterColumn | CatMasterColumn[]
+export type CatNodeattrsColumns = CatNodeattrsColumn | CatNodeattrsColumn[]
+export type CatPendingTasksColumns =
+  | CatPendingTasksColumn
+  | CatPendingTasksColumn[]
+export type CatPluginsColumns = CatPluginsColumn | CatPluginsColumn[]
+export type CatTasksColumns = CatTasksColumn | CatTasksColumn[]
+export type CatTemplatesColumns = CatTemplatesColumn | CatTemplatesColumn[]
 
 export enum CatTrainedModelsColumn {
   /**
@@ -843,3 +2830,482 @@ export enum CatTransformColumn {
   version
 }
 export type CatTransformColumns = CatTransformColumn | CatTransformColumn[]
+
+/** @non_exhaustive */
+export enum CatShardColumn {
+  /**
+   * Size of completion. For example: `0b`.
+   * @aliases cs, completionSize
+   */
+  'completion.size',
+  /**
+   * Disk space used by the shard’s dataset, which may or may not be the size on
+   * disk, but includes space used by the shard on object storage. Reported as a size value for example: `5kb`.
+   */
+  'dataset.size',
+  /**
+   * Number of indexed dense vectors.
+   * @aliases dvc, denseVectorCount
+   */
+  'dense_vector.value_count',
+  /**
+   * Number of documents in shard, for example: `25`.
+   * @aliases d, dc
+   */
+  docs,
+  /**
+   * Fielddata cache evictions, for example: `0`.
+   * @aliases fe, fielddataEvictions
+   */
+  'fielddata.evictions',
+  /**
+   * Used fielddata cache memory, for example: `0b`.
+   * @aliases fm, fielddataMemory
+   */
+  'fielddata.memory_size',
+  /**
+   * Number of flushes, for example: `1`.
+   * @aliases ft, flushTotal
+   */
+  'flush.total',
+  /**
+   * Time spent in flush, for example: `1`.
+   * @aliases ftt, flushTotalTime
+   */
+  'flush.total_time',
+  /**
+   * Number of current get operations, for example: `0`.
+   * @aliases gc, getCurrent
+   */
+  'get.current',
+  /**
+   * Time spent in successful gets, for example: `14ms`.
+   * @aliases geti, getExistsTime
+   */
+  'get.exists_time',
+  /**
+   * Number of successful get operations, for example: `2`.
+   * @aliases geto, getExistsTotal
+   */
+  'get.exists_total',
+  /**
+   * Time spent in failed gets, for example: `0s`.
+   * @aliases gmti, getMissingTime
+   */
+  'get.missing_time',
+  /**
+   * Number of failed get operations, for example: `1`.
+   * @aliases gmto, getMissingTotal
+   */
+  'get.missing_total',
+  /**
+   * Time spent in get, for example: `14ms`.
+   * @aliases gti, getTime
+   */
+  'get.time',
+  /**
+   * Number of get operations, for example: `2`.
+   * @aliases gto, getTotal
+   */
+  'get.total',
+  /**
+   * ID of the node, for example: `k0zy`.
+   */
+  id,
+  /**
+   * Name of the index.
+   * @aliases i, idx
+   */
+  index,
+  /**
+   * Number of current deletion operations, for example: `0`.
+   * @aliases idc, indexingDeleteCurrent
+   */
+  'indexing.delete_current',
+  /**
+   * Time spent in deletions, for example: `2ms`.
+   * @aliases idti, indexingDeleteTime
+   */
+  'indexing.delete_time',
+  /**
+   * Number of deletion operations, for example: `2`.
+   * @aliases idto, indexingDeleteTotal
+   */
+  'indexing.delete_total',
+  /**
+   * Number of current indexing operations, for example: `0`.
+   * @aliases iic, indexingIndexCurrent
+   */
+  'indexing.index_current',
+  /**
+   * Number of failed indexing operations due to version conflict, for example: `0`.
+   * @aliases iifvc, indexingIndexFailedDueToVersionConflict
+   */
+  'indexing.index_failed_due_to_version_conflict',
+  /**
+   * Number of failed indexing operations, for example: `0`.
+   * @aliases iif, indexingIndexFailed
+   */
+  'indexing.index_failed',
+  /**
+   * Time spent in indexing, such as for example: `134ms`.
+   * @aliases iiti, indexingIndexTime
+   */
+  'indexing.index_time',
+  /**
+   * Number of indexing operations, for example: `1`.
+   * @aliases iito, indexingIndexTotal
+   */
+  'indexing.index_total',
+  /**
+   * IP address of the node, for example: `127.0.1.1`.
+   */
+  ip,
+  /**
+   * Number of current merge operations, for example: `0`.
+   * @aliases mc, mergesCurrent
+   */
+  'merges.current',
+  /**
+   * Number of current merging documents, for example: `0`.
+   * @aliases mcd, mergesCurrentDocs
+   */
+  'merges.current_docs',
+  /**
+   * Size of current merges, for example: `0b`.
+   * @aliases mcs, mergesCurrentSize
+   */
+  'merges.current_size',
+  /**
+   * Number of completed merge operations, for example: `0`.
+   * @aliases mt, mergesTotal
+   */
+  'merges.total',
+  /**
+   * Number of merged documents, for example: `0`.
+   * @aliases mtd, mergesTotalDocs
+   */
+  'merges.total_docs',
+  /**
+   * Size of current merges, for example: `0b`.
+   * @aliases mts, mergesTotalSize
+   */
+  'merges.total_size',
+  /**
+   * Time spent merging documents, for example: `0s`.
+   * @aliases mtt, mergesTotalTime
+   */
+  'merges.total_time',
+  /**
+   * Node name, for example: `I8hydUG`.
+   * @aliases n
+   */
+  node,
+  /**
+   * Shard type. Returned values are `primary` or `replica`.
+   * @aliases p, pr, primaryOrReplica
+   */
+  prirep,
+  /**
+   * Query cache evictions, for example: `0`.
+   * @aliases qce, queryCacheEvictions
+   */
+  'query_cache.evictions',
+  /**
+   * Used query cache memory, for example: `0b`.
+   * @aliases qcm, queryCacheMemory
+   */
+  'query_cache.memory_size',
+  /**
+   * Type of recovery source.
+   * @aliases rs
+   */
+  'recoverysource.type',
+  /**
+   * Time spent in refreshes, for example: `91ms`.
+   * @aliases rti, refreshTime
+   */
+  'refresh.time',
+  /**
+   * Number of refreshes, for example: `16`.
+   * @aliases rto, refreshTotal
+   */
+  'refresh.total',
+  /**
+   * Current fetch phase operations, for example: `0`.
+   * @aliases sfc, searchFetchCurrent
+   */
+  'search.fetch_current',
+  /**
+   * Time spent in fetch phase, for example: `37ms`.
+   * @aliases sfti, searchFetchTime
+   */
+  'search.fetch_time',
+  /**
+   * Number of fetch operations, for example: `7`.
+   * @aliases sfto, searchFetchTotal
+   */
+  'search.fetch_total',
+  /**
+   * Open search contexts, for example: `0`.
+   * @aliases so, searchOpenContexts
+   */
+  'search.open_contexts',
+  /**
+   * Current query phase operations, for example: `0`.
+   * @aliases sqc, searchQueryCurrent
+   */
+  'search.query_current',
+  /**
+   * Time spent in query phase, for example: `43ms`.
+   * @aliases sqti, searchQueryTime
+   */
+  'search.query_time',
+  /**
+   * Number of query operations, for example: `9`.
+   * @aliases sqto, searchQueryTotal
+   */
+  'search.query_total',
+  /**
+   * Open scroll contexts, for example: `2`.
+   * @aliases scc, searchScrollCurrent
+   */
+  'search.scroll_current',
+  /**
+   * Time scroll contexts held open, for example: `2m`.
+   * @aliases scti, searchScrollTime
+   */
+  'search.scroll_time',
+  /**
+   * Completed scroll contexts, for example: `1`.
+   * @aliases scto, searchScrollTotal
+   */
+  'search.scroll_total',
+  /**
+   * Number of segments, for example: `4`.
+   * @aliases sc, segmentsCount
+   */
+  'segments.count',
+  /**
+   * Memory used by fixed bit sets for nested object field types and type filters for types referred in join fields, for example: `1.0kb`.
+   * @aliases sfbm, fixedBitsetMemory
+   */
+  'segments.fixed_bitset_memory',
+  /**
+   * Memory used by index writer, for example: `18mb`.
+   * @aliases siwm, segmentsIndexWriterMemory
+   */
+  'segments.index_writer_memory',
+  /**
+   * Memory used by segments, for example: `1.4kb`.
+   * @aliases sm, segmentsMemory
+   */
+  'segments.memory',
+  /**
+   * Memory used by version map, for example: `1.0kb`.
+   * @aliases svmm, segmentsVersionMapMemory
+   */
+  'segments.version_map_memory',
+  /**
+   * Global checkpoint.
+   * @aliases sqg, globalCheckpoint
+   */
+  'seq_no.global_checkpoint',
+  /**
+   * Local checkpoint.
+   * @aliases sql, localCheckpoint
+   */
+  'seq_no.local_checkpoint',
+  /**
+   * Maximum sequence number.
+   * @aliases sqm, maxSeqNo
+   */
+  'seq_no.max',
+  /**
+   * Name of the shard.
+   * @aliases s, sh
+   */
+  shard,
+  /**
+   * Number of indexed [sparse vectors](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/sparse-vector).
+   * @aliases svc, sparseVectorCount
+   */
+  'dsparse_vector.value_count',
+  /**
+   * State of the shard. Returned values are:
+   * * `INITIALIZING`: The shard is recovering from a peer shard or gateway.
+   * * `RELOCATING`: The shard is relocating.
+   * * `STARTED`: The shard has started.
+   * * `UNASSIGNED`: The shard is not assigned to any node.
+   * @aliases st
+   */
+  state,
+  /**
+   * Disk space used by the shard, for example: `5kb`.
+   * @aliases sto
+   */
+  store,
+  /**
+   * Number of current suggest operations, for example: `0`.
+   * @aliases suc, suggestCurrent
+   */
+  'suggest.current',
+  /**
+   * Time spent in suggest, for example: `0`.
+   * @aliases suti, suggestTime
+   */
+  'suggest.time',
+  /**
+   * Number of suggest operations, for example: `0`.
+   * @aliases suto, suggestTotal
+   */
+  'suggest.total',
+  /**
+   * Sync ID of the shard.
+   */
+  sync_id,
+  /**
+   * Time at which the shard became unassigned in [Coordinated Universal Time (UTC)](https://en.wikipedia.org/wiki/List_of_UTC_offsets).
+   * @aliases ua
+   */
+  'unassigned.at',
+  /**
+   * Details about why the shard became unassigned. This does not explain why the shard is currently unassigned. To understand why a shard
+   * is not assigned, use the [Cluster allocation explain](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) API.
+   * @aliases ud
+   */
+  'unassigned.details',
+  /**
+   * Time at which the shard was requested to be unassigned in [Coordinated Universal Time (UTC)](https://en.wikipedia.org/wiki/List_of_UTC_offsets).
+   * @aliases uf
+   */
+  'unassigned.for',
+  /**
+   * Indicates the reason for the last change to the state of this unassigned shard. This does not explain why the shard is currently unassigned.
+   * To understand why a shard is not assigned, use the [Cluster allocation explain](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) API. Returned values include:
+   *
+   * * `ALLOCATION_FAILED`: Unassigned as a result of a failed allocation of the shard.
+   * * `CLUSTER_RECOVERED`: Unassigned as a result of a full cluster recovery.
+   * * `DANGLING_INDEX_IMPORTED`: Unassigned as a result of importing a dangling index.
+   * * `EXISTING_INDEX_RESTORED`: Unassigned as a result of restoring into a closed index.
+   * * `FORCED_EMPTY_PRIMARY`: The shard’s allocation was last modified by forcing an empty primary using the Cluster reroute API.
+   * * `INDEX_CLOSED`: Unassigned because the index was closed.
+   * * `INDEX_CREATED`: Unassigned as a result of an API creation of an index.
+   * * `INDEX_REOPENED`: Unassigned as a result of opening a closed index.
+   * * `MANUAL_ALLOCATION`: The shard’s allocation was last modified by the Cluster reroute API.
+   * * `NEW_INDEX_RESTORED`: Unassigned as a result of restoring into a new index.
+   * * `NODE_LEFT`: Unassigned as a result of the node hosting it leaving the cluster.
+   * * `NODE_RESTARTING`: Similar to `NODE_LEFT`, except that the node was registered as restarting using the Node shutdown API.
+   * * `PRIMARY_FAILED`: The shard was initializing as a replica, but the primary shard failed before the initialization completed.
+   * * `REALLOCATED_REPLICA`: A better replica location is identified and causes the existing replica allocation to be cancelled.
+   * * `REINITIALIZED`: When a shard moves from started back to initializing.
+   * * `REPLICA_ADDED`: Unassigned as a result of explicit addition of a replica.
+   * * `REROUTE_CANCELLED`: Unassigned as a result of explicit cancel reroute command.
+   * @aliases ur
+   */
+  'unassigned.reason'
+}
+export type CatShardColumns = CatShardColumn | CatShardColumn[]
+
+/** @non_exhaustive */
+export enum CatThreadPoolColumn {
+  /**
+   * Number of active threads in the current thread pool.
+   * @aliases a
+   */
+  active,
+  /**
+   * Number of tasks completed by the thread pool executor.
+   * @aliases c
+   */
+  completed,
+  /**
+   * Configured core number of active threads allowed in the current thread pool.
+   * @aliases cr
+   */
+  core,
+  /**
+   * Ephemeral node ID.
+   * @aliases eid
+   */
+  ephemeral_id,
+  /**
+   * Hostname for the current node.
+   * @aliases h
+   */
+  host,
+  /**
+   * IP address for the current node.
+   * @aliases i
+   */
+  ip,
+  /**
+   * Configured keep alive time for threads.
+   * @aliases k
+   */
+  keep_alive,
+  /**
+   * Highest number of active threads in the current thread pool.
+   * @aliases l
+   */
+  largest,
+  /**
+   * Configured maximum number of active threads allowed in the current thread pool.
+   * @aliases mx
+   */
+  max,
+  /**
+   * Name of the thread pool, such as `analyze` or `generic`.
+   */
+  name,
+  /**
+   * ID of the node, such as `k0zy`.
+   * @aliases id
+   */
+  node_id,
+  /**
+   * Node name, such as `I8hydUG`.
+   */
+  node_name,
+  /**
+   * Process ID of the running node.
+   * @aliases p
+   */
+  pid,
+  /**
+   * Number of threads in the current thread pool.
+   * @aliases psz
+   */
+  pool_size,
+  /**
+   * Bound transport port for the current node.
+   * @aliases po
+   */
+  port,
+  /**
+   * Number of tasks in the queue for the current thread pool.
+   * @aliases q
+   */
+  queue,
+  /**
+   * Maximum number of tasks permitted in the queue for the current thread pool.
+   * @aliases qs
+   */
+  queue_size,
+  /**
+   * Number of tasks rejected by the thread pool executor.
+   * @aliases r
+   */
+  rejected,
+  /**
+   * Configured fixed number of active threads allowed in the current thread pool.
+   * @aliases sz
+   */
+  size,
+  /**
+   * Type of thread pool. Returned values are `fixed`, `fixed_auto_queue_size`, `direct`, or `scaling`.
+   * @aliases t
+   */
+  type
+}
+export type CatThreadPoolColumns = CatThreadPoolColumn | CatThreadPoolColumn[]

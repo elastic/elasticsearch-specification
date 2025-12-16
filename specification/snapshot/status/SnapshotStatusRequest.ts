@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Names } from '@_types/common'
+import { MediaType, Name, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get the snapshot status.
+ *
  * Get a detailed description of the current state for each shard participating in the snapshot.
  *
  * Note that this API should be used only to obtain detailed shard-level information for ongoing snapshots.
@@ -31,6 +32,12 @@ import { Duration } from '@_types/Time'
  * If you omit the `<snapshot>` request path parameter, the request retrieves information only for currently running snapshots.
  * This usage is preferred.
  * If needed, you can specify `<repository>` and `<snapshot>` to retrieve information for specific snapshots, even if they're not currently running.
+ *
+ * Note that the stats will not be available for any shard snapshots in an ongoing snapshot completed by a node that (even momentarily) left the cluster.
+ * Loading the stats from the repository is an expensive operation (see the WARNING below).
+ * Therefore the stats values for such shards will be -1 even though the "stage" value will be "DONE", in order to minimize latency.
+ * A "description" field will be present for a shard snapshot completed by a departed node explaining why the shard snapshot's stats results are invalid.
+ * Consequently, the total stats for the index will be less than expected due to the missing values from these shards.
  *
  * WARNING: Using the API to return the status of any snapshots other than currently running snapshots can be expensive.
  * The API requires a read from the repository for each shard in each snapshot.
@@ -72,13 +79,14 @@ export interface Request extends RequestBase {
      */
     snapshot?: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error for any snapshots that are unavailable.
      * If `true`, the request ignores snapshots that are unavailable, such as those that are corrupted or temporarily cannot be returned.
      * @server_default false
      */
-    ignore_unavailable?: boolean // default: false
+    ignore_unavailable?: boolean
     /**
      * The period to wait for the master node.
      * If the master node is not available before the timeout expires, the request fails and returns an error.

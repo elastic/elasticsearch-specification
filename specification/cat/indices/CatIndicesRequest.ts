@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
 import {
-  Bytes,
   ExpandWildcards,
   HealthStatus,
   Indices,
+  MediaType,
   Names
 } from '@_types/common'
-import { Duration, TimeUnit } from '@_types/Time'
+import { Duration } from '@_types/Time'
+import { CatIndicesColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get index information.
@@ -69,11 +69,11 @@ export interface Request extends CatRequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
-    /** The unit used to display byte values. */
-    bytes?: Bytes
     /**
      * The type of index that wildcard patterns can match.
+     * @server_default all
      */
     expand_wildcards?: ExpandWildcards
     /** The health status used to limit returned indices. By default, the response includes indices of any health status. */
@@ -88,17 +88,15 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     pri?: boolean
-    /** The unit used to display time values. */
-    time?: TimeUnit
     /**
      * Period to wait for a connection to the master node.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * List of columns to appear in the response. Supports simple wildcards.
+     * A comma-separated list of columns names to display. It supports simple wildcards.
      */
-    h?: Names
+    h?: CatIndicesColumns
     /**
      * List of columns that determine how the table should be sorted.
      * Sorting defaults to ascending and can be changed by setting `:asc`

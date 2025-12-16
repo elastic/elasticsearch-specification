@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { AdditionalProperties } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   HttpHeaders,
@@ -33,6 +30,9 @@ import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { Result } from '@_types/Result'
 import { DateTime, Duration, EpochTime, UnitSeconds } from '@_types/Time'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { HttpInputRequestDefinition } from './Input'
 
 // PagerDuty ----------------------------- //

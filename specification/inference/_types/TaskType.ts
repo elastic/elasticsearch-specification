@@ -27,3 +27,139 @@ export enum TaskType {
   completion,
   chat_completion
 }
+
+export enum TaskTypeJinaAi {
+  text_embedding,
+  rerank
+}
+
+export enum TaskTypeAi21 {
+  completion,
+  chat_completion
+}
+
+export enum TaskTypeAlibabaCloudAI {
+  text_embedding,
+  rerank,
+  completion,
+  sparse_embedding
+}
+
+export enum TaskTypeAmazonBedrock {
+  text_embedding,
+  completion
+}
+
+export enum TaskTypeAmazonSageMaker {
+  text_embedding,
+  completion,
+  chat_completion,
+  sparse_embedding,
+  rerank
+}
+
+export enum TaskTypeAnthropic {
+  completion
+}
+
+export enum TaskTypeAzureAIStudio {
+  text_embedding,
+  completion,
+  rerank
+}
+
+export enum TaskTypeAzureOpenAI {
+  text_embedding,
+  completion
+}
+
+export enum TaskTypeCohere {
+  text_embedding,
+  rerank,
+  completion
+}
+
+export enum TaskTypeContextualAI {
+  rerank
+}
+
+export enum TaskTypeCustom {
+  text_embedding,
+  sparse_embedding,
+  rerank,
+  completion
+}
+
+export enum TaskTypeDeepSeek {
+  completion,
+  chat_completion
+}
+
+export enum TaskTypeElasticsearch {
+  sparse_embedding,
+  text_embedding,
+  rerank
+}
+
+export enum TaskTypeELSER {
+  sparse_embedding
+}
+
+export enum TaskTypeGoogleAIStudio {
+  text_embedding,
+  completion
+}
+
+export enum TaskTypeGoogleVertexAI {
+  chat_completion,
+  completion,
+  text_embedding,
+  rerank
+}
+
+export enum TaskTypeGroq {
+  chat_completion
+}
+
+export enum TaskTypeHuggingFace {
+  chat_completion,
+  completion,
+  rerank,
+  text_embedding
+}
+
+export enum TaskTypeLlama {
+  text_embedding,
+  chat_completion,
+  completion
+}
+
+export enum TaskTypeMistral {
+  text_embedding,
+  chat_completion,
+  completion
+}
+
+export enum TaskTypeOpenAI {
+  text_embedding,
+  chat_completion,
+  completion
+}
+
+export enum TaskTypeOpenShiftAi {
+  text_embedding,
+  chat_completion,
+  completion,
+  rerank
+}
+
+export enum TaskTypeVoyageAI {
+  text_embedding,
+  rerank
+}
+
+export enum TaskTypeWatsonx {
+  text_embedding,
+  chat_completion,
+  completion
+}

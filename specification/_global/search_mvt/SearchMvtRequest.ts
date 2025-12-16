@@ -17,15 +17,21 @@
  * under the License.
  */
 
-import { TrackHits } from '@global/search/_types/hits'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { Field, Fields, Indices } from '@_types/common'
+import {
+  Field,
+  Fields,
+  Indices,
+  MediaType,
+  ProjectRouting
+} from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Sort } from '@_types/sort'
+import { TrackHits } from '@global/search/_types/hits'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Coordinate } from './_types/Coordinate'
 import { GridAggregationType, GridType } from './_types/GridType'
 import { ZoomLevel } from './_types/ZoomLevel'
@@ -43,54 +49,6 @@ import { ZoomLevel } from './_types/ZoomLevel'
  * * A `geotile_grid` or `geohex_grid` aggregation on the `<field>`. The `grid_agg` parameter determines the aggregation type. The aggregation uses the `<zoom>/<x>/<y>` tile as a bounding box.
  * * Optionally, a `geo_bounds` aggregation on the `<field>`. The search only includes this aggregation if the `exact_bounds` parameter is `true`.
  * * If the optional parameter `with_labels` is `true`, the internal search will include a dynamic runtime field that calls the `getLabelPosition` function of the geometry doc value. This enables the generation of new point features containing suggested geometry labels, so that, for example, multi-polygons will have only one label.
- *
- * For example, Elasticsearch may translate a vector tile search API request with a `grid_agg` argument of `geotile` and an `exact_bounds` argument of `true` into the following search
- *
- * ```
- * GET my-index/_search
- * {
- *   "size": 10000,
- *   "query": {
- *     "geo_bounding_box": {
- *       "my-geo-field": {
- *         "top_left": {
- *           "lat": -40.979898069620134,
- *           "lon": -45
- *         },
- *         "bottom_right": {
- *           "lat": -66.51326044311186,
- *           "lon": 0
- *         }
- *       }
- *     }
- *   },
- *   "aggregations": {
- *     "grid": {
- *       "geotile_grid": {
- *         "field": "my-geo-field",
- *         "precision": 11,
- *         "size": 65536,
- *         "bounds": {
- *           "top_left": {
- *             "lat": -40.979898069620134,
- *             "lon": -45
- *           },
- *           "bottom_right": {
- *             "lat": -66.51326044311186,
- *             "lon": 0
- *           }
- *         }
- *       }
- *     },
- *     "bounds": {
- *       "geo_bounds": {
- *         "field": "my-geo-field",
- *         "wrap_longitude": false
- *       }
- *     }
- *   }
- * }
- * ```
  *
  * The API returns results as a binary Mapbox vector tile.
  * Mapbox vector tiles are encoded as Google Protobufs (PBF). By default, the tile contains three layers:
@@ -166,6 +124,8 @@ import { ZoomLevel } from './_types/ZoomLevel'
  * Some cells may intersect more than one vector tile.
  * To compute the H3 resolution for each precision, Elasticsearch compares the average density of hexagonal bins at each resolution with the average density of tile bins at each zoom level.
  * Elasticsearch uses the H3 resolution that is closest to the corresponding geotile density.
+ *
+ * Learn how to use the vector tile search API with practical examples in the [Vector tile search examples](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/vector-tile-search) guide.
  * @rest_spec_name search_mvt
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -182,14 +142,14 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /*
+    /**
      * A list of indices, data streams, or aliases to search.
      * It supports wildcards (`*`).
      * To search all data streams and indices, omit this parameter or use `*` or `_all`.
      * To search a remote cluster, use the `<cluster>:<target>` syntax.
      */
     index: Indices
-    /*
+    /**
      * A field that contains the geospatial data to return.
      * It must be a `geo_point` or `geo_shape` field.
      * The field must have doc values enabled. It cannot be a nested field.
@@ -199,13 +159,15 @@ export interface Request extends RequestBase {
      * This behavior may change in a future release.
      */
     field: Field
-    /* The zoom level of the vector tile to search. It accepts `0` to `29`. */
+    /** The zoom level of the vector tile to search. It accepts `0` to `29`. */
     zoom: ZoomLevel
-    /* The X coordinate for the vector tile to search. */
+    /** The X coordinate for the vector tile to search. */
     x: Coordinate
-    /* The Y coordinate for the vector tile to search. */
+    /** The Y coordinate for the vector tile to search. */
     y: Coordinate
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.MapboxVectorTile
   query_parameters: {
     /**
      * If `false`, the meta layer's feature is the bounding box of the tile.
@@ -223,6 +185,7 @@ export interface Request extends RequestBase {
     extent?: integer
     /**
      * Aggregation used to create a grid for `field`.
+     * @server_default geotile
      */
     grid_agg?: GridAggregationType
     /**
@@ -241,11 +204,30 @@ export interface Request extends RequestBase {
      */
     grid_type?: GridType
     /**
+     * Specifies a subset of projects to target for the search using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
+    /**
      * Maximum number of features to return in the hits layer. Accepts 0-10000.
      * If 0, results don't include the hits layer.
      * @server_default 10000
      */
     size?: integer
+    /**
+     * The number of hits matching the query to count accurately.
+     * If `true`, the exact number of hits is returned at the cost of some performance.
+     * If `false`, the response does not include the total number of hits matching the query.
+     * @server_default 10000
+     */
+    track_total_hits?: TrackHits
     /**
      * If `true`, the hits and aggs layers will contain additional point features representing
      * suggested label positions for the original features.
@@ -257,10 +239,11 @@ export interface Request extends RequestBase {
      *
      * All attributes from the original features will also be copied to the new label features.
      * In addition, the new features will be distinguishable using the tag `_mvt_label_position`.
+     * @server_default false
      */
     with_labels?: boolean
   }
-  body: {
+  body?: {
     /**
      * Sub-aggregations for the geotile_grid.
      *

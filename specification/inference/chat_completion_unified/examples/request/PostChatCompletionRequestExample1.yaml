@@ -1,0 +1,16 @@
+summary: A chat completion task
+description:
+  Run `POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion on the example question
+  with streaming.
+method_request: 'POST _inference/chat_completion/openai-completion/_stream'
+# type: "request"
+value: |-
+  {
+    "model": "gpt-4o",
+    "messages": [
+        {
+            "role": "user",
+            "content": "What is Elastic?"
+        }
+    ]
+  }

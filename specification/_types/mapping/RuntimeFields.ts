@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, IndexName } from '@_types/common'
 import { Script } from '@_types/Scripting'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export type RuntimeFields = Dictionary<Field, RuntimeField>
 

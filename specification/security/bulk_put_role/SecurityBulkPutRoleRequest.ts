@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { MediaType, Refresh } from '@_types/common'
 import { RoleDescriptor } from '@security/_types/RoleDescriptor'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { RequestBase } from '@_types/Base'
-import { Refresh } from '@_types/common'
 
 /**
  * Bulk create or update roles.
@@ -40,7 +40,12 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.
+     */
     refresh?: Refresh
   }
   body: {

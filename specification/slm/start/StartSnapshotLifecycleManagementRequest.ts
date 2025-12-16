@@ -19,9 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Start snapshot lifecycle management.
+ *
  * Snapshot lifecycle management (SLM) starts automatically when a cluster is formed.
  * Manually starting SLM is necessary only if it has been stopped using the stop SLM API.
  * @rest_spec_name slm.start
@@ -37,6 +39,7 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

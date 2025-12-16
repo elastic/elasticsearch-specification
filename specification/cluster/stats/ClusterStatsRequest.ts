@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeIds } from '@_types/common'
+import { MediaType, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get cluster statistics.
+ *
  * Get basic index metrics (shard numbers, store size, memory usage) and information about the current nodes that form the cluster (number, roles, os, jvm versions, memory usage, cpu and installed plugins).
  * @rest_spec_name cluster.stats
  * @availability stack since=1.3.0 stability=stable
@@ -45,6 +46,7 @@ export interface Request extends RequestBase {
     /** Comma-separated list of node filters used to limit returned information. Defaults to all nodes in the cluster. */
     node_id?: NodeIds
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Include remote cluster data into the response
@@ -54,7 +56,8 @@ export interface Request extends RequestBase {
     /**
      * Period to wait for each node to respond.
      * If a node does not respond before its timeout expires, the response does not include its stats.
-     * However, timed out nodes are included in the response’s `_nodes.failed` property. Defaults to no timeout. */
+     * However, timed out nodes are included in the response’s `_nodes.failed` property. Defaults to no timeout.
+     */
     timeout?: Duration
   }
 }

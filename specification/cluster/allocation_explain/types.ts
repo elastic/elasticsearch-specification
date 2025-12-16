@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, Name } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
 import { NodeRoles } from '@_types/Node'
 import { double, integer, long } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class AllocationDecision {
   decider: string
@@ -101,7 +101,7 @@ export enum Decision {
 }
 
 export class NodeAllocationExplanation {
-  deciders: AllocationDecision[]
+  deciders?: AllocationDecision[]
   node_attributes: Dictionary<string, string>
   node_decision: Decision
   node_id: Id
@@ -113,7 +113,7 @@ export class NodeAllocationExplanation {
   roles: NodeRoles
   store?: AllocationStore
   transport_address: TransportAddress
-  weight_ranking: integer
+  weight_ranking?: integer
 }
 
 export enum StoreCopy {

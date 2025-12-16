@@ -17,11 +17,13 @@
  * under the License.
  */
 
-import { AliasDefinition } from '@indices/_types/AliasDefinition'
-import { AdditionalProperties } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { ErrorResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
+import {
+  IndexAliases,
+  NotFoundAliases
+} from '@indices/get_alias/_types/response'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   /** @codegen_name aliases */
@@ -29,16 +31,8 @@ export class Response {
   exceptions: [
     {
       statusCodes: [404]
+      // eslint-disable-next-line es-spec-validator/no-inline-unions, es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
       body: NotFoundAliases | ErrorResponseBase
     }
   ]
-}
-
-export class IndexAliases {
-  aliases: Dictionary<string, AliasDefinition>
-}
-
-class NotFoundAliases implements AdditionalProperties<string, IndexAliases> {
-  error: string
-  status: number
 }

@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { SecuritySettings } from '@security/_types/SecuritySettings'
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { SecuritySettings } from '@security/_types/SecuritySettings'
 
 /**
  * Update security index settings.
@@ -42,10 +43,13 @@ export interface Request extends RequestBase {
       methods: ['PUT']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
      */
     master_timeout?: Duration
     /**

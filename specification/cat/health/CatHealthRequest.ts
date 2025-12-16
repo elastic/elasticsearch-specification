@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-import { Names } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
+import { MediaType, Names } from '@_types/common'
+import { CatHealthColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get the cluster health status.
@@ -46,20 +45,17 @@ export interface Request extends CatRequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
-    /**
-     * The unit used to display time values.
-     */
-    time?: TimeUnit
     /**
      * If true, returns `HH:MM:SS` and Unix epoch timestamps.
      * @server_default true
      */
     ts?: boolean
     /**
-     * List of columns to appear in the response. Supports simple wildcards.
+     * A comma-separated list of columns names to display. It supports simple wildcards.
      */
-    h?: Names
+    h?: CatHealthColumns
     /**
      * List of columns that determine how the table should be sorted.
      * Sorting defaults to ascending and can be changed by setting `:asc`

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Names } from '@_types/common'
+import { ExpandWildcards, MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -94,6 +94,7 @@ export interface Request extends RequestBase {
      */
     name?: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If false, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing
@@ -108,7 +109,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * NOTE: This option is only supported when specifying an index expression. You will get an error if you specify index
      * options to the `_resolve/cluster` API endpoint that takes no index expression.
      * @server_default open

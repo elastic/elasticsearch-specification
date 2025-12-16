@@ -1,8 +1,8 @@
 {
   "nodes.stats": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-nodes-stats.html",
-      "description": "Returns statistical information about nodes in the cluster."
+      "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats",
+      "description": "Get node statistics"
     },
     "stability": "stable",
     "visibility": "public",
@@ -33,18 +33,24 @@
               "type": "list",
               "options": [
                 "_all",
+                "_none",
+                "adaptive_selection",
+                "allocations",
                 "breaker",
+                "discovery",
                 "fs",
                 "http",
+                "indexing_pressure",
                 "indices",
                 "ingest",
                 "jvm",
                 "os",
                 "process",
+                "repositories",
+                "script",
+                "script_cache",
                 "thread_pool",
-                "transport",
-                "discovery",
-                "indexing_pressure"
+                "transport"
               ],
               "description": "Limit the information returned to the specified metrics"
             }
@@ -58,18 +64,24 @@
               "type": "list",
               "options": [
                 "_all",
+                "_none",
+                "adaptive_selection",
+                "allocations",
                 "breaker",
+                "discovery",
                 "fs",
                 "http",
+                "indexing_pressure",
                 "indices",
                 "ingest",
                 "jvm",
                 "os",
                 "process",
+                "repositories",
+                "script",
+                "script_cache",
                 "thread_pool",
-                "transport",
-                "discovery",
-                "indexing_pressure"
+                "transport"
               ],
               "description": "Limit the information returned to the specified metrics"
             },
@@ -87,17 +99,24 @@
               "type": "list",
               "options": [
                 "_all",
+                "_none",
+                "adaptive_selection",
+                "allocations",
                 "breaker",
+                "discovery",
                 "fs",
                 "http",
+                "indexing_pressure",
                 "indices",
+                "ingest",
                 "jvm",
                 "os",
                 "process",
+                "repositories",
+                "script",
+                "script_cache",
                 "thread_pool",
-                "transport",
-                "discovery",
-                "indexing_pressure"
+                "transport"
               ],
               "description": "Limit the information returned to the specified metrics"
             },
@@ -112,15 +131,20 @@
                 "flush",
                 "get",
                 "indexing",
+                "mappings",
                 "merge",
                 "request_cache",
+                "recovery",
                 "refresh",
                 "search",
                 "segments",
                 "store",
                 "warmer",
                 "bulk",
-                "shard_stats"
+                "shard_stats",
+                "translog",
+                "dense_vector",
+                "sparse_vector"
               ],
               "description": "Limit the information returned for `indices` metric to the specific index metrics. Isn't used if `indices` (or `all`) metric isn't specified."
             }
@@ -134,17 +158,24 @@
               "type": "list",
               "options": [
                 "_all",
+                "_none",
+                "adaptive_selection",
+                "allocations",
                 "breaker",
+                "discovery",
                 "fs",
                 "http",
+                "indexing_pressure",
                 "indices",
+                "ingest",
                 "jvm",
                 "os",
                 "process",
+                "repositories",
+                "script",
+                "script_cache",
                 "thread_pool",
-                "transport",
-                "discovery",
-                "indexing_pressure"
+                "transport"
               ],
               "description": "Limit the information returned to the specified metrics"
             },
@@ -159,15 +190,20 @@
                 "flush",
                 "get",
                 "indexing",
+                "mappings",
                 "merge",
                 "request_cache",
+                "recovery",
                 "refresh",
                 "search",
                 "segments",
                 "store",
                 "warmer",
                 "bulk",
-                "shard_stats"
+                "shard_stats",
+                "translog",
+                "dense_vector",
+                "sparse_vector"
               ],
               "description": "Limit the information returned for `indices` metric to the specific index metrics. Isn't used if `indices` (or `all`) metric isn't specified."
             },
@@ -208,6 +244,7 @@
       },
       "timeout": {
         "type": "time",
+        "default": "30s",
         "description": "Explicit operation timeout"
       },
       "include_segment_file_sizes": {

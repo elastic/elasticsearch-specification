@@ -18,9 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Start the feature migration.
+ *
  * Version upgrades sometimes require changes to how features store configuration information and data in system indices.
  * This API starts the automatic migration process.
  *
@@ -40,4 +42,5 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  response_media_type: MediaType.Json
 }

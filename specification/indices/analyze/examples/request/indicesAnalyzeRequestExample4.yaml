@@ -1,5 +1,5 @@
 summary: Custom analyzer example 2
-# method_request: GET /_analyze
+method_request: GET /_analyze
 description: Custom tokenizers, token filters, and character filters can be specified in the request body.
 # type: request
 value:

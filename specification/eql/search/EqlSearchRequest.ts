@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Field, Indices } from '@_types/common'
+import {
+  ExpandWildcards,
+  Field,
+  Indices,
+  MediaType,
+  ProjectRouting
+} from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer, uint } from '@_types/Numeric'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
@@ -27,6 +33,7 @@ import { ResultPosition } from './types'
 
 /**
  * Get EQL search results.
+ *
  * Returns search results for an Event Query Language (EQL) query.
  * EQL assumes each document in a data stream or index corresponds to an event.
  * @rest_spec_name eql.search
@@ -43,10 +50,15 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** Comma-separated list of index names to scope the operation */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
+     * Whether to ignore if a wildcard indices expression resolves into no concrete indices.
+     * (This includes `_all` string or when no indices have been specified)
      * @server_default true
      */
     allow_no_indices?: boolean
@@ -62,9 +74,15 @@ export interface Request extends RequestBase {
      */
     allow_partial_sequence_results?: boolean
     /**
+     * Whether to expand wildcard expression to concrete indices that are open, closed or both.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
+    /**
+     * Indicates whether network round-trips should be minimized as part of cross-cluster search requests execution
+     * @server_default true
+     */
+    ccs_minimize_roundtrips?: boolean
     /**
      * If true, missing or closed indices are not included in the response.
      * @server_default true
@@ -87,6 +105,18 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
+     * Specifies a subset of projects to target using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
+    /**
      * EQL query you wish to run.
      * @doc_id eql-syntax
      */
@@ -103,7 +133,8 @@ export interface Request extends RequestBase {
      */
     tiebreaker_field?: Field
     /**
-     * Field containing event timestamp. Default "@timestamp"
+     * Field containing event timestamp.
+     * @server_default \@timestamp
      */
     timestamp_field?: Field
     /**

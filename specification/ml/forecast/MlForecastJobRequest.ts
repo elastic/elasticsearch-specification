@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -50,6 +50,8 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A period of time that indicates how far into the future to forecast. For
@@ -75,7 +77,7 @@ export interface Request extends RequestBase {
      */
     max_model_memory?: string
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `duration` query parameter.
      * @server_default 1d

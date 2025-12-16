@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ReloadResult } from '@indices/reload_search_analyzers/types'
 import { Result } from '@_types/Result'
+import { ReloadResult } from '@indices/reload_search_analyzers/types'
 
 export class SynonymsUpdateResult {
   /**
@@ -27,8 +27,8 @@ export class SynonymsUpdateResult {
   result: Result
 
   /**
-   * Updating synonyms in a synonym set reloads the associated analyzers.
+   * Updating synonyms in a synonym set can reload the associated analyzers in case refresh is set to true.
    * This information is the analyzers reloading result.
    */
-  reload_analyzers_details: ReloadResult
+  reload_analyzers_details?: ReloadResult
 }

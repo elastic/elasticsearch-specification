@@ -17,15 +17,22 @@
  * under the License.
  */
 
-import { IndexTemplateMapping } from '@indices/put_index_template/IndicesPutIndexTemplateRequest'
-import { DataStreamVisibility } from '@indices/_types/DataStream'
 import { RequestBase } from '@_types/Base'
-import { Indices, Metadata, Name, VersionNumber } from '@_types/common'
+import {
+  Indices,
+  MediaType,
+  Metadata,
+  Name,
+  VersionNumber
+} from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { DataStreamVisibility } from '@indices/_types/DataStream'
+import { IndexTemplateMapping } from '@indices/put_index_template/IndicesPutIndexTemplateRequest'
 
 /**
  * Simulate an index template.
+ *
  * Get the index configuration that would be applied by a particular index template.
  * @rest_spec_name indices.simulate_template
  * @availability stack stability=stable
@@ -51,6 +58,8 @@ export interface Request extends RequestBase {
      */
     name?: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If true, the template passed in the body is only used if no existing templates match the same index patterns. If false, the simulation uses the template with the highest priority. Note that the template is not permanently added or updated in either case; it is only used for the simulation.
@@ -59,6 +68,7 @@ export interface Request extends RequestBase {
     create?: boolean
     /**
      * User defined reason for dry-run creating the new template for simulation purposes
+     * @server_default false
      */
     cause?: string
     /**
@@ -74,7 +84,7 @@ export interface Request extends RequestBase {
      */
     include_defaults?: boolean
   }
-  body: {
+  body?: {
     /**
      * This setting overrides the value of the `action.auto_create_index` cluster setting.
      * If set to `true` in a template, then indices can be automatically created using that template even if auto-creation of indices is disabled via `actions.auto_create_index`.

@@ -17,11 +17,12 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
  * Get a synonym set.
+ *
  * @rest_spec_name synonyms.get_synonym
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -41,6 +42,7 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The starting offset for query rules to retrieve.

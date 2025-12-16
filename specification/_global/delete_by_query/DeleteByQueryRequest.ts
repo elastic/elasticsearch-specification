@@ -22,6 +22,7 @@ import {
   Conflicts,
   ExpandWildcards,
   Indices,
+  MediaType,
   Routing,
   SearchType,
   Slices,
@@ -31,6 +32,7 @@ import { float, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
 import { SlicedScroll } from '@_types/SlicedScroll'
+import { Sort } from '@_types/sort'
 import { Duration } from '@_types/Time'
 
 /**
@@ -136,6 +138,8 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
@@ -161,9 +165,9 @@ export interface Request extends RequestBase {
      */
     conflicts?: Conflicts
     /**
-     * The default operator for query string query: `AND` or `OR`.
+     * The default operator for query string query: `and` or `or`.
      * This parameter can be used only when the `q` query string parameter is specified.
-     * @server_default OR
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -257,6 +261,7 @@ export interface Request extends RequestBase {
     slices?: Slices
     /**
      * A comma-separated list of `<field>:<direction>` pairs.
+     * @deprecated 9.0.0 This query parameter is not supported and will be removed in a future version
      */
     sort?: string[]
     /**
@@ -310,5 +315,9 @@ export interface Request extends RequestBase {
      * Slice the request manually using the provided slice ID and total number of slices.
      */
     slice?: SlicedScroll
+    /**
+     * A sort object that specifies the order of deleted documents.
+     */
+    sort?: Sort
   }
 }

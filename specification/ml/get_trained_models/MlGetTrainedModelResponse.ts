@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TrainedModelConfig } from '@ml/_types/TrainedModel'
 import { integer } from '@_types/Numeric'
+import { TrainedModelConfig } from '@ml/_types/TrainedModel'
 
 /**
  * Response codes

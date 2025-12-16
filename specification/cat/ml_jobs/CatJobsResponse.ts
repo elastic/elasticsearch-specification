@@ -20,5 +20,6 @@
 import { JobsRecord } from './types'
 
 export class Response {
+  /** @codegen_name jobs */
   body: Array<JobsRecord>
 }

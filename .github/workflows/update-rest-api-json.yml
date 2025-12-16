@@ -13,23 +13,22 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: ['main', '9.0', '8.x', '8.18', '8.17', '8.16', '7.17']
+        branch: ['main', '9.2', '9.1', '9.0', '8.19']
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ matrix.branch }}
 
-      - name: Use Node.js 20
-        uses: actions/setup-node@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install deps
         run: |
           npm install --prefix .github/download-artifacts
-          npm install --prefix compiler
-          npm install --prefix typescript-generator
+          make setup
 
       - name: Download artifacts
         run: |
@@ -51,14 +50,5 @@ jobs:
           commit-message: 'Update rest-api-spec'
           labels: specification,skip-backport
           delete-branch: true
-          reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo,pquentin,swallez,technige
+          reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo,pquentin,technige
           branch: automated/rest-api-spec-update-${{ matrix.branch }}
-
-      - name: Open an issue if the action fails
-        if: ${{ failure() }}
-        uses: nashmaniac/create-issue-action@v1.2
-        with:
-          title: rest-api-spec update failed
-          token: ${{ secrets.GITHUB_TOKEN }}
-          labels: bug
-          body: The rest-api-spec action is currently failing, see [here](https://github.com/elastic/elasticsearch-specification/actions/workflows/update-rest-api-json.yml).

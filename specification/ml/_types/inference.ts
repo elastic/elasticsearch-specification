@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, IndexName, ScalarValue } from '@_types/common'
 import { double, float, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Inference configuration provided when storing the model config
@@ -91,7 +91,7 @@ export class LearningToRankConfig {
 }
 
 /**
- * @variants external
+ * @variants typed_keys_quirk
  */
 export type FeatureExtractor = QueryFeatureExtractor
 
@@ -217,7 +217,8 @@ export class TextClassificationInferenceOptions {
 export class ZeroShotClassificationInferenceOptions {
   /** The tokenization options to update when inferring */
   tokenization?: TokenizationConfigContainer
-  /** Hypothesis template used when tokenizing labels for prediction
+  /**
+   * Hypothesis template used when tokenizing labels for prediction
    * @server_default "This example is {}."
    */
   hypothesis_template?: string
@@ -228,7 +229,8 @@ export class ZeroShotClassificationInferenceOptions {
   classification_labels: string[]
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
-  /** Indicates if more than one true label exists.
+  /**
+   * Indicates if more than one true label exists.
    * @server_default false
    **/
   multi_label?: boolean
@@ -258,7 +260,7 @@ export class TextEmbeddingInferenceOptions {
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
 
-  vocabulary: Vocabulary
+  vocabulary?: Vocabulary
 }
 
 /** Text expansion inference options */
@@ -267,7 +269,7 @@ export class TextExpansionInferenceOptions {
   tokenization?: TokenizationConfigContainer
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
-  vocabulary: Vocabulary
+  vocabulary?: Vocabulary
 }
 
 /** Named entity recognition options */
@@ -283,11 +285,13 @@ export class NerInferenceOptions {
 
 /** Fill mask inference options */
 export class FillMaskInferenceOptions {
-  /** The string/token which will be removed from incoming documents and replaced with the inference prediction(s).
+  /**
+   * The string/token which will be removed from incoming documents and replaced with the inference prediction(s).
    * In a response, this field contains the mask token for the specified model/tokenizer. Each model and tokenizer
    * has a predefined mask token which cannot be changed. Thus, it is recommended not to set this value in requests.
    * However, if this field is present in a request, its value must match the predefined value for that model/tokenizer,
-   * otherwise the request will fail. */
+   * otherwise the request will fail.
+   */
   mask_token?: string
   /** Specifies the number of top class predictions to return. Defaults to 0. */
   num_top_classes?: integer
@@ -295,7 +299,7 @@ export class FillMaskInferenceOptions {
   tokenization?: TokenizationConfigContainer
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field?: string
-  vocabulary: Vocabulary
+  vocabulary?: Vocabulary
 }
 
 /** Question answering inference options */

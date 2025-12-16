@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { Explanation } from '@global/explain/types'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   Fields,
@@ -33,6 +30,9 @@ import { double, integer, long } from '@_types/Numeric'
 import { FieldAndFormat } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { Sort, SortResults } from '@_types/sort'
+import { Explanation } from '@global/explain/types'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { FieldCollapse } from './FieldCollapse'
 import { Highlight } from './highlighting'
 import { SourceConfig } from './SourceFilter'
@@ -44,11 +44,15 @@ export class Hit<TDocument> {
    * on a search request. Otherwise the field is always present on hits.
    */
   _id?: Id
+  // While _score is always returned by Elasticsearch, making it required
+  // breaks downstream JavaScript users for little added benefit
+  // See https://github.com/elastic/elasticsearch-specification/pull/5248
   _score?: double | null
   _explanation?: Explanation
   fields?: Dictionary<string, UserDefinedValue>
   highlight?: Dictionary<string, string[]>
   inner_hits?: Dictionary<string, InnerHitsResult>
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   matched_queries?: string[] | Dictionary<string, double>
   _nested?: NestedIdentity
   _ignored?: string[]
@@ -66,9 +70,13 @@ export class Hit<TDocument> {
 
 export class HitsMetadata<T> {
   /** Total hit count information, present only if `track_total_hits` wasn't `false` in the search request. */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   total?: TotalHits | long
   hits: Hit<T>[]
 
+  // While max_score is always returned by Elasticsearch, making it required
+  // breaks downstream JavaScript users for little added benefit
+  // See https://github.com/elastic/elasticsearch-specification/pull/5248
   max_score?: double | null
 }
 
@@ -127,7 +135,7 @@ export class InnerHits {
   ignore_unmapped?: boolean
   script_fields?: Dictionary<Field, ScriptField>
   seq_no_primary_term?: boolean
-  fields?: Fields
+  fields?: Field[]
   /**
    * How the inner hits should be sorted per `inner_hits`.
    * By default, inner hits are sorted by score.

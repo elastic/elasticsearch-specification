@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { PipeSeparatedFlags } from '@spec_utils/PipeSeparatedFlags'
 import {
   Field,
   Fields,
@@ -28,6 +27,7 @@ import {
 import { double, float, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { TimeZone } from '@_types/Time'
+import { PipeSeparatedFlags } from '@spec_utils/PipeSeparatedFlags'
 import { QueryBase } from './abstractions'
 import { Operator } from './Operator'
 
@@ -103,6 +103,8 @@ export class IntervalsContainer {
    * Matches terms that start with a specified set of characters.
    */
   prefix?: IntervalsPrefix
+  range?: IntervalsRange
+  regexp?: IntervalsRegexp
   /**
    * Matches terms using a wildcard pattern.
    */
@@ -232,6 +234,52 @@ export class IntervalsPrefix {
   use_field?: Field
 }
 
+export class IntervalsRange {
+  /**
+   * Analyzer used to analyze the `prefix`.
+   * @doc_id analysis
+   */
+  analyzer?: string
+  /**
+   * Lower term, either gte or gt must be provided.
+   */
+  gte?: string
+  /**
+   * Lower term, either gte or gt must be provided.
+   */
+  gt?: string
+  /**
+   * Upper term, either lte or lt must be provided.
+   */
+  lte?: string
+  /**
+   * Upper term, either lte or lt must be provided.
+   */
+  lt?: string
+  /**
+   * If specified, match intervals from this field rather than the top-level field.
+   * The `prefix` is normalized using the search analyzer from this field, unless `analyzer` is specified separately.
+   */
+  use_field?: Field
+}
+
+export class IntervalsRegexp {
+  /**
+   * Analyzer used to analyze the `prefix`.
+   * @doc_id analysis
+   */
+  analyzer?: string
+  /**
+   * Regex pattern.
+   */
+  pattern: string
+  /**
+   * If specified, match intervals from this field rather than the top-level field.
+   * The `prefix` is normalized using the search analyzer from this field, unless `analyzer` is specified separately.
+   */
+  use_field?: Field
+}
+
 /**
  * @variants container
  * @ext_doc_id query-dsl-intervals-query
@@ -259,6 +307,9 @@ export class IntervalsQuery extends QueryBase {
    * Matches terms that start with a specified set of characters.
    */
   prefix?: IntervalsPrefix
+  range?: IntervalsRange
+  regexp?: IntervalsRegexp
+
   /**
    * Matches terms using a wildcard pattern.
    */
@@ -344,6 +395,7 @@ export class MatchQuery extends QueryBase {
    */
   // FIXME: docs states "date" as a possible format. Add DateMath, or DurationLarge?
   //        Should also be consistent with MultiMatchQuery.query
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   query: string | float | boolean
   /**
    * Indicates whether no documents are returned if the `analyzer` removes all tokens, such as when using a `stop` filter.

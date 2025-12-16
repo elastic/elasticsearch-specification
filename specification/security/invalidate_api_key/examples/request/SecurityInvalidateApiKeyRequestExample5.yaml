@@ -1,5 +1,5 @@
 summary: API keys by ID and owner
-# method_request: DELETE /_security/api_key
+method_request: DELETE /_security/api_key
 description: Run `DELETE /_security/api_key` to invalidate the API keys identified by ID if they are owned by the currently authenticated user.
 # type: request
 value: |-

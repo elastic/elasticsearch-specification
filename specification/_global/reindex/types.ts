@@ -17,9 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import {
-  Fields,
   IndexName,
   Indices,
   OpType,
@@ -35,6 +33,8 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort } from '@_types/sort'
 import { Duration } from '@_types/Time'
+import { SourceConfig } from '@global/search/_types/SourceFilter'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Destination {
   /**
@@ -78,6 +78,9 @@ export class Source {
   query?: QueryContainer
   /**
    * A remote instance of Elasticsearch that you want to index from.
+   *
+   * @availability stack since=5.0.0 stability=stable
+   * @availability serverless stability=experimental visibility=public
    */
   remote?: RemoteSource
   /**
@@ -105,7 +108,7 @@ export class Source {
    * Set it to a list to reindex select fields.
    * @server_default true
    * @codegen_name source_fields */
-  _source?: Fields
+  _source?: SourceConfig
   runtime_mappings?: RuntimeFields
 }
 
@@ -125,13 +128,21 @@ export class RemoteSource {
    */
   host: Host
   /**
-   * The username to use for authentication with the remote host.
+   * The username to use for authentication with the remote host (required when using basic auth).
    */
   username?: Username
   /**
-   * The password to use for authentication with the remote host.
+   * The password to use for authentication with the remote host (required when using basic auth).
    */
   password?: Password
+  /**
+   * The API key to use for authentication with the remote host (as an alternative to basic auth when the remote cluster is in Elastic Cloud).
+   * (It is not permitted to set this and also to set an `Authorization` header via `headers`.)
+   *
+   * @availability stack since=9.3.0
+   * @availability serverless
+   */
+  api_key?: string
   /**
    * The remote socket read timeout.
    * @server_default 30s

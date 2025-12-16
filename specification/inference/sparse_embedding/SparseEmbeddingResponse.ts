@@ -20,5 +20,6 @@
 import { SparseEmbeddingInferenceResult } from '@inference/_types/Results'
 
 export class Response {
+  /** @codegen_name inference_result */
   body: SparseEmbeddingInferenceResult
 }

@@ -17,13 +17,15 @@
  * under the License.
  */
 
-import { TaskSettings } from '@inference/_types/Services'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { TaskSettings } from '@inference/_types/Services'
 
 /**
- * Perform rereanking inference on the service
+ * Perform reranking inference on the service.
+ *
  * @rest_spec_name inference.rerank
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
@@ -43,6 +45,8 @@ export interface Request extends RequestBase {
      */
     inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The amount of time to wait for the inference request to complete.
@@ -56,13 +60,17 @@ export interface Request extends RequestBase {
      */
     query: string
     /**
-     * The text on which you want to perform the inference task.
-     * It can be a single string or an array.
-     *
-     * > info
-     * > Inference endpoints for the `completion` task type currently only support a single string as input.
+     * The documents to rank.
      */
-    input: string | Array<string>
+    input: Array<string>
+    /**
+     * Include the document text in the response.
+     */
+    return_documents?: boolean
+    /**
+     * Limit the response to the top N documents.
+     */
+    top_n?: integer
     /**
      * Task settings for the individual inference request.
      * These settings are specific to the task type you specified and override the task settings specified when initializing the service.

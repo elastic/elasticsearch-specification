@@ -18,11 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { IndexTemplate } from '@indices/_types/IndexTemplate'
 
 /**
  * Simulate an index.
+ *
  * Get the index configuration that would be applied to the specified index from an existing index template.
  * @rest_spec_name indices.simulate_index_template
  * @availability stack since=7.9.0 stability=stable
@@ -41,13 +43,16 @@ export interface Request extends RequestBase {
     /** Name of the index to simulate */
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Whether the index template we optionally defined in the body should only be dry-run added if new or can also replace an existing one
      * @server_default false
      */
     create?: boolean
-    /** User defined reason for dry-run creating the new template for simulation purposes
+    /**
+     * User defined reason for dry-run creating the new template for simulation purposes
      * @server_default false
      */
     cause?: string
@@ -64,4 +69,6 @@ export interface Request extends RequestBase {
      */
     include_defaults?: boolean
   }
+  /** @codegen_name index_template */
+  body?: IndexTemplate
 }

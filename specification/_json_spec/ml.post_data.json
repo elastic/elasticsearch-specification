@@ -1,11 +1,15 @@
 {
   "ml.post_data": {
     "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-data.html",
-      "description": "Sends data to an anomaly detection job for analysis."
+      "url": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-post-data",
+      "description": "Send data to an anomaly detection job for analysis"
     },
     "stability": "stable",
     "visibility": "public",
+    "deprecated": {
+      "version": "7.11.0",
+      "description": "Posting data directly to anomaly detection jobs is deprecated, in a future major version a datafeed will be required."
+    },
     "headers": {
       "accept": ["application/json"],
       "content_type": ["application/x-ndjson", "application/json"]
@@ -26,11 +30,11 @@
     },
     "params": {
       "reset_start": {
-        "type": "string",
+        "type": "date",
         "description": "Optional parameter to specify the start of the bucket resetting range"
       },
       "reset_end": {
-        "type": "string",
+        "type": "date",
         "description": "Optional parameter to specify the end of the bucket resetting range"
       }
     },

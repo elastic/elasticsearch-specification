@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 
 /**
  * Clear the privileges cache.
@@ -44,6 +44,7 @@ export interface Request extends RequestBase {
      * To clear all applications, use an asterism (`*`).
      * It does not support other wildcard patterns.
      */
-    application: Name
+    application: Names
   }
+  response_media_type: MediaType.Json
 }

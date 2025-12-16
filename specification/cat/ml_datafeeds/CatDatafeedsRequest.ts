@@ -17,9 +17,8 @@
  * under the License.
  */
 
+import { Id, MediaType } from '@_types/common'
 import { CatDatafeedColumns, CatRequestBase } from '@cat/_types/CatBase'
-import { Id } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
 
 /**
  * Get datafeeds.
@@ -56,6 +55,7 @@ export interface Request extends CatRequestBase {
      */
     datafeed_id?: Id
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:
@@ -77,9 +77,5 @@ export interface Request extends CatRequestBase {
     h?: CatDatafeedColumns
     /** Comma-separated list of column names or column aliases used to sort the response. */
     s?: CatDatafeedColumns
-    /**
-     * The unit used to display time values.
-     */
-    time?: TimeUnit
   }
 }

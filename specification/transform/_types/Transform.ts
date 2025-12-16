@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import {
   DateHistogramAggregation,
@@ -30,6 +29,7 @@ import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { float, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Destination {
   /**
@@ -130,6 +130,16 @@ export class Settings {
    * @server_default 500
    */
   max_page_search_size?: integer
+  /**
+   * Specifies whether the transform checkpoint will use the Point In Time API while searching over the source index.
+   * In general, Point In Time is an optimization that will reduce pressure on the source index by reducing the amount
+   * of refreshes and merges, but it can be expensive if a large number of Point In Times are opened and closed for a
+   * given index. The benefits and impact depend on the data being searched, the ingest rate into the source index, and
+   * the amount of other consumers searching the same source index.
+   * @ext_doc_id point-in-time-api
+   * @server_default true
+   */
+  use_point_in_time?: boolean
 
   /**
    * If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case

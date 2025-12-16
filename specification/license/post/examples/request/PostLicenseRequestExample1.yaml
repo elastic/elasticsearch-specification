@@ -1,11 +1,33 @@
 # summary: licensing/update-license.asciidoc:63
-# method_request: PUT _license
+method_request: PUT _license
 description: >
-  Run `PUT _license` to update to a basic license. NOTE: These values are invalid; you must substitute the appropriate contents from your license file.
+  Run `PUT _license` to update to a basic license. NOTE: These values are invalid; you must substitute the appropriate contents from
+  your license file.
 # type: request
-value:
-  "{\n  \"licenses\": [\n    {\n      \"uid\":\"893361dc-9749-4997-93cb-802e3d7fa4xx\"\
-  ,\n      \"type\":\"basic\",\n      \"issue_date_in_millis\":1411948800000,\n  \
-  \    \"expiry_date_in_millis\":1914278399999,\n      \"max_nodes\":1,\n      \"\
-  issued_to\":\"issuedTo\",\n      \"issuer\":\"issuer\",\n      \"signature\":\"\
-  xx\"\n    }\n    ]\n}"
+value: "{
+
+  \  \"licenses\": [
+
+  \    {
+
+  \      \"uid\":\"893361dc-9749-4997-93cb-802e3d7fa4xx\",
+
+  \      \"type\":\"basic\",
+
+  \      \"issue_date_in_millis\":1411948800000,
+
+  \      \"expiry_date_in_millis\":1914278399999,
+
+  \      \"max_nodes\":1,
+
+  \      \"issued_to\":\"issuedTo\",
+
+  \      \"issuer\":\"issuer\",
+
+  \      \"signature\":\"xx\"
+
+  \    }
+
+  \    ]
+
+  }"

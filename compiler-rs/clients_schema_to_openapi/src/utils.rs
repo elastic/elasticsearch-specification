@@ -43,13 +43,15 @@ pub trait SchemaName {
 }
 
 impl SchemaName for TypeName {
+    // Use '.' as the separator: names and paths must be RFC 3986 compliant,
+    // and ':' output by `TypeName.toString()` is a reserved character.
     fn schema_name(&self) -> String {
-        format!("{}", self)
+        format!("{}.{}", self.namespace, self.name)
     }
 
     fn schema_ref(&self) -> ReferenceOr<Schema> {
         ReferenceOr::Reference {
-            reference: format!("#/components/schemas/{}", self),
+            reference: format!("#/components/schemas/{}.{}", self.namespace, self.name),
         }
     }
 }

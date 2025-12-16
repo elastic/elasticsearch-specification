@@ -17,12 +17,13 @@
  * under the License.
  */
 
-import { SnapshotSort } from '@snapshot/_types/SnapshotInfo'
 import { RequestBase } from '@_types/Base'
-import { Name, Names } from '@_types/common'
+import { MediaType, Name, Names } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { SortOrder } from '@_types/sort'
 import { Duration } from '@_types/Time'
+import { SnapshotSort } from '@snapshot/_types/SnapshotInfo'
+import { SnapshotState } from '@snapshot/_types/SnapshotState'
 
 /**
  * Get snapshot information.
@@ -31,7 +32,7 @@ import { Duration } from '@_types/Time'
  * It is guaranteed that any snapshot that exists at the beginning of the iteration and is not concurrently deleted will be seen during the iteration.
  * Snapshots concurrently created may be seen during an iteration.
  * @rest_spec_name snapshot.get
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_snapshot
  * @doc_id snapshot-get
@@ -58,6 +59,7 @@ export interface Request extends RequestBase {
      */
     snapshot: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * An offset identifier to start pagination from as returned by the next field in the response body.
@@ -147,6 +149,13 @@ export interface Request extends RequestBase {
      * @availability serverless
      */
     sort?: SnapshotSort
+    /**
+     * Only return snapshots with a state found in the given comma-separated list of snapshot states.
+     * The default is all snapshot states.
+     * @availability stack since=9.1.0
+     * @availability serverless
+     */
+    state?: SnapshotState | SnapshotState[]
     /**
      * If `true`, returns additional information about each snapshot such as the version of Elasticsearch which took the snapshot, the start and end times of the snapshot, and the number of shards snapshotted.
      *

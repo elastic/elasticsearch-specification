@@ -38,7 +38,7 @@ export class ErrorCause
   /**
    * A human-readable explanation of the error, in English.
    */
-  reason?: string
+  reason?: string | null
   /**
    * The server stack trace. Present only if the `error_trace=true` parameter was sent with the request.
    */
@@ -50,11 +50,15 @@ export class ErrorCause
 }
 
 export class ShardFailure {
+  /** @aliases _index */
   index?: IndexName
+  /** @aliases _node */
   node?: string
   reason: ErrorCause
-  shard: integer
+  /** @aliases _shard */
+  shard?: integer
   status?: string
+  primary?: boolean
 }
 
 export class BulkIndexByScrollFailure {

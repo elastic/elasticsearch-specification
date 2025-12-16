@@ -18,6 +18,8 @@ The repository has the following structure:
 This JSON representation is formally defined by [a set of TypeScript definitions (a meta-model)](./compiler/src/model/metamodel.ts)
 that also explains the various properties and their values.
 
+> [!TIP]
+> To learn more about how to write docs specifically for our [API references](https://www.elastic.co/docs/api/), refer to the [Contribute to Elastic API docs](https://www.elastic.co/docs/extend/contribute/api-docs/).
 
 ## Prepare the environment
 
@@ -60,12 +62,32 @@ Follow the steps to generate the JSON representation, then:
 ```
 # Generate the OpenAPI representation
 $ make transform-to-openapi
+```
+
+To generate the JSON representation that is used for documentation purposes, the commands are different:
+
+```
+# Generate the OpenAPI files
+$ make transform-to-openapi-for-docs
 
 # Apply fixes
 $ make overlay-docs
 
 # The generated output can be found in ./output/openapi/
 ```
+
+## Specification Viewer
+
+An interactive viewer for the Elasticsearch specification is available
+[here](https://elastic.github.io/specification-viewer/).
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md)
+
+Refer to the
+[Contribute to Elastic API docs](https://www.elastic.co/docs/extend/contribute/api-docs/)
+for more details about the API documentation guidelines.
 
 ## Make Targets
 
@@ -223,6 +245,9 @@ make validate api=xpack.info type=request branch=main
 
 # this will validate the xpack.info request and response types against the 8.15 branch
 make validate api=xpack.info branch=8.15
+
+# this will validate the xpack.info and search request and response types against the 8.15 branch
+make validate api=xpack.info,search branch=8.15
 ```
 
 The last command above will install all the dependencies and run, download
@@ -231,7 +256,7 @@ If you need to download the recordings again, run `make validate-no-cache api=xp
 
 Once you see the errors, you can fix the original definition in `/specification`
 and then run the command again until the types validator does not trigger any new error.
-Finally open a pull request with your changes.
+Finally open a pull request with your changes. Please open it from a branch in the repository, and not from a fork.
 
 ## Documentation
 

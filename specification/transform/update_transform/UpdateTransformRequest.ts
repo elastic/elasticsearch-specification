@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id, MediaType, Metadata } from '@_types/common'
+import { Duration } from '@_types/Time'
 import {
   Destination,
   RetentionPolicyContainer,
@@ -24,12 +27,10 @@ import {
   Source,
   SyncContainer
 } from '@transform/_types/Transform'
-import { RequestBase } from '@_types/Base'
-import { Id, Metadata } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Update a transform.
+ *
  * Updates certain properties of a transform.
  *
  * All updated properties except `description` do not take effect until after the transform starts the next checkpoint,
@@ -57,6 +58,8 @@ export interface Request extends RequestBase {
      */
     transform_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * When true, deferrable validations are not run. This behavior may be

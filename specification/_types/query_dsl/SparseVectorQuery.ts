@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Id } from '@_types/common'
 import { float } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { TokenPruningConfig } from '../TokenPruningConfig'
 import { QueryBase } from './abstractions'
-import { TokenPruningConfig } from './TokenPruningConfig'
 
 /**
  * @variants container
@@ -61,8 +61,8 @@ export class SparseVectorQuery extends QueryBase {
    * Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.
    * If prune is true but the pruning_config is not specified, pruning will occur but default values will be used.
    * Default: false
-   * @availability stack since=8.15.0 stability=experimental
-   * @availability serverless stability=experimental
+   * @availability stack since=8.15.0
+   * @availability serverless
    * @variant container_property
    */
   prune?: boolean
@@ -72,8 +72,8 @@ export class SparseVectorQuery extends QueryBase {
    * If enabled, this will omit non-significant tokens from the query in order to improve query performance.
    * This is only used if prune is set to true.
    * If prune is set to true but pruning_config is not specified, default values will be used.
-   * @availability stack since=8.15.0 stability=experimental
-   * @availability serverless stability=experimental
+   * @availability stack since=8.15.0
+   * @availability serverless
    * @variant container_property
    */
   pruning_config?: TokenPruningConfig
