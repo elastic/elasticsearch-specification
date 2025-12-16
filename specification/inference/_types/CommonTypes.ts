@@ -816,7 +816,7 @@ export class AzureOpenAIServiceSettings {
 
 export class AzureOpenAITaskSettings {
   /**
-   * For a `completion` or `text_embedding` task, specify the user issuing the request.
+   * For a `completion`, `chat_completion` or `text_embedding` task, specify the user issuing the request.
    * This information can be used for abuse detection.
    */
   user?: string

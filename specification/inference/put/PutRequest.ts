@@ -37,7 +37,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * * Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)
  * * Anthropic (`completion`)
  * * Azure AI Studio (`completion`, `rerank`, `text_embedding`)
- * * Azure OpenAI (`completion`, `chat_completion`, `text_embedding`)
+ * * Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)
  * * Cohere (`completion`, `rerank`, `text_embedding`)
  * * DeepSeek (`chat_completion`, `completion`)
  * * Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)

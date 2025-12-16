@@ -19,7 +19,7 @@
             "task_type": {
               "type": "enum",
               "description": "The task type",
-              "options": ["completion", "chat_completion", "text_embedding"]
+              "options": ["chat_completion", "completion", "text_embedding"]
             },
             "azureopenai_inference_id": {
               "type": "string",
