@@ -76,7 +76,7 @@ export interface Request extends RequestBase {
     /**
      * The chunking configuration object.
      * Applies only to the `text_embedding` task type.
-     * Not applicable to the `completion` task type.
+     * Not applicable to the `completion` and `chat_completion` task types.
      * @ext_doc_id inference-chunking
      */
     chunking_settings?: InferenceChunkingSettings

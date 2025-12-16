@@ -1,0 +1,18 @@
+summary: A completion task
+description: A successful response when creating an Azure OpenAI `completion` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "azure_openai_completion",
+    "task_type": "completion",
+    "service": "azureopenai",
+    "service_settings": {
+      "resource_name": "Resource-name",
+      "deployment_id": "Deployment-id",
+      "api_version": "2024-02-01",
+      "rate_limit": {
+        "requests_per_minute": 120
+      }
+    }
+  }
