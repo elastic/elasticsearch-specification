@@ -24,6 +24,12 @@
  * @doc_id docs-index
  */
 export interface Request<TDocument> {
+  urls: [
+    {
+      path: '/{index}/_doc/{id}'
+      methods: ['POST', 'PUT']
+    }
+  ]
   path_parts: {
     id?: string
     index: string
