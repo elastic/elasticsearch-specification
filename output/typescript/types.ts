@@ -2405,6 +2405,7 @@ export interface DiversifyRetriever extends RetrieverBase {
   size?: integer
   rank_window_size?: integer
   query_vector?: QueryVector
+  query_vector_builder?: QueryVectorBuilder
   lambda?: float
 }
 
