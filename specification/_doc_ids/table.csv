@@ -82,6 +82,7 @@ ccr-put-follow,https://www.elastic.co/docs/api/doc/elasticsearch/operation/opera
 ccr-resume-auto-follow-pattern,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-resume-auto-follow-pattern
 ccs-network-delays,https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html#ccs-network-delays
 ccs-privileges,https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-cert.html#remote-clusters-privileges-ccs
+cef-processor,https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/cef-processor.html
 clean-up-snapshot-repo,https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-repository-cleanup
 clear-repositories-metering-archive-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-clear-repositories-metering-archive
 clear-scroll-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-clear-scroll
