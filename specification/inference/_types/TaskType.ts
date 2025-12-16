@@ -141,6 +141,13 @@ export enum TaskTypeMistral {
   completion
 }
 
+export enum TaskTypeNvidia {
+  chat_completion,
+  completion,
+  rerank,
+  text_embedding
+}
+
 export enum TaskTypeOpenAI {
   text_embedding,
   chat_completion,

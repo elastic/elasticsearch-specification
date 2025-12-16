@@ -14736,6 +14736,11 @@ export interface InferenceInferenceEndpointInfoMistral extends InferenceInferenc
   task_type: InferenceTaskTypeMistral
 }
 
+export interface InferenceInferenceEndpointInfoNvidia extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeNvidia
+}
+
 export interface InferenceInferenceEndpointInfoOpenAI extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeOpenAI
@@ -14819,6 +14824,28 @@ export interface InferenceMistralServiceSettings {
 export type InferenceMistralServiceType = 'mistral'
 
 export type InferenceMistralTaskType = 'text_embedding' | 'completion' | 'chat_completion'
+
+export type InferenceNvidiaInputType = 'ingest' | 'search'
+
+export interface InferenceNvidiaServiceSettings {
+  api_key: string
+  url?: string
+  model_id: string
+  max_input_tokens?: integer
+  similarity?: InferenceNvidiaSimilarityType
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceNvidiaServiceType = 'nvidia'
+
+export type InferenceNvidiaSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
+
+export interface InferenceNvidiaTaskSettings {
+  input_type?: InferenceNvidiaInputType
+  truncate?: InferenceCohereTruncateType
+}
+
+export type InferenceNvidiaTaskType = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export interface InferenceOpenAIServiceSettings {
   api_key: string
@@ -14938,6 +14965,8 @@ export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
 export type InferenceTaskTypeLlama = 'text_embedding' | 'chat_completion' | 'completion'
 
 export type InferenceTaskTypeMistral = 'text_embedding' | 'chat_completion' | 'completion'
+
+export type InferenceTaskTypeNvidia = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export type InferenceTaskTypeOpenAI = 'text_embedding' | 'chat_completion' | 'completion'
 
@@ -15333,6 +15362,20 @@ export interface InferencePutMistralRequest extends RequestBase {
 }
 
 export type InferencePutMistralResponse = InferenceInferenceEndpointInfoMistral
+
+export interface InferencePutNvidiaRequest extends RequestBase {
+  task_type: InferenceNvidiaTaskType
+  nvidia_inference_id: Id
+  timeout?: Duration
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferenceNvidiaServiceType
+    service_settings: InferenceNvidiaServiceSettings
+    task_settings?: InferenceNvidiaTaskSettings
+  }
+}
+
+export type InferencePutNvidiaResponse = InferenceInferenceEndpointInfoNvidia
 
 export interface InferencePutOpenaiRequest extends RequestBase {
   task_type: InferenceOpenAITaskType
