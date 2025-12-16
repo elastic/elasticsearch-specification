@@ -1874,7 +1874,7 @@ export class NvidiaTaskSettings {
    * * `ingest`: Mapped to Nvidia's `passage` value in request. Used when generating embeddings during indexing.
    * * `search`: Mapped to Nvidia's `query` value in request. Used when generating embeddings during querying.
    *
-   * IMPORTANT: If not specified `input_type` field in request to Nvidia endpoint is set as `query` by default.
+   * IMPORTANT: For Nvidia endpoints, if the `input_type` field is not specified, it defaults to `query`.
    */
   input_type?: NvidiaInputType
   /**
@@ -1991,6 +1991,7 @@ export class OpenShiftAiServiceSettings {
   max_input_tokens?: integer
   /**
    * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
+   * If not specified, the default dot_product value is used.
    */
   similarity?: OpenShiftAiSimilarityType
   /**

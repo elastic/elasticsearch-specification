@@ -68987,7 +68987,7 @@
         "type": "object",
         "properties": {
           "input_type": {
-            "description": "For a `text_embedding` task, type of input sent to the Nvidia endpoint.\nValid values are:\n\n* `ingest`: Mapped to Nvidia's `passage` value in request. Used when generating embeddings during indexing.\n* `search`: Mapped to Nvidia's `query` value in request. Used when generating embeddings during querying.\n\nIMPORTANT: If not specified `input_type` field in request to Nvidia endpoint is set as `query` by default.",
+            "description": "For a `text_embedding` task, type of input sent to the Nvidia endpoint.\nValid values are:\n\n* `ingest`: Mapped to Nvidia's `passage` value in request. Used when generating embeddings during indexing.\n* `search`: Mapped to Nvidia's `query` value in request. Used when generating embeddings during querying.\n\nIMPORTANT: For Nvidia endpoints, if the `input_type` field is not specified, it defaults to `query`.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.NvidiaInputType"
@@ -69190,7 +69190,7 @@
             "type": "number"
           },
           "similarity": {
-            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.",
+            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.\nIf not specified, the default dot_product value is used.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.OpenShiftAiSimilarityType"
