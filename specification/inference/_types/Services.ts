@@ -437,7 +437,7 @@ export class RateLimitSetting {
    * * `anthropic` service: `50`
    * * `azureaistudio` service: `240`
    * * `azureopenai` service and task type `text_embedding`: `1440`
-   * * `azureopenai` service and task type `completion`: `120`
+   * * `azureopenai` service and task types `completion` or `chat_completion`: `120`
    * * `cohere` service: `10000`
    * * `contextualai` service: `1000`
    * * `elastic` service and task type `chat_completion`: `240`

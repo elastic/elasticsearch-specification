@@ -802,7 +802,7 @@ export class AzureOpenAIServiceSettings {
    * This setting helps to minimize the number of rate limit errors returned from Azure.
    * The `azureopenai` service sets a default number of requests allowed per minute depending on the task type.
    * For `text_embedding`, it is set to `1440`.
-   * For `completion`, it is set to `120`.
+   * For `completion` and `chat_completion`, it is set to `120`.
    * @ext_doc_id azureopenai-quota-limits
    */
   rate_limit?: RateLimitSetting
@@ -816,7 +816,7 @@ export class AzureOpenAIServiceSettings {
 
 export class AzureOpenAITaskSettings {
   /**
-   * For a `completion` or `text_embedding` task, specify the user issuing the request.
+   * For a `completion`, `chat_completion` or `text_embedding` task, specify the user issuing the request.
    * This information can be used for abuse detection.
    */
   user?: string
@@ -824,6 +824,7 @@ export class AzureOpenAITaskSettings {
 
 export enum AzureOpenAITaskType {
   completion,
+  chat_completion,
   text_embedding
 }
 

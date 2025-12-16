@@ -11812,7 +11812,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx inference integration (`text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx inference integration (`text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -11935,7 +11935,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx inference integration (`text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx inference integration (`text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -12855,7 +12855,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` task type.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` and `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -12902,6 +12902,11 @@
                   "summary": "A completion task",
                   "description": "Run `PUT _inference/completion/azure_openai_completion` to create an inference endpoint that performs a `completion` task.",
                   "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_key\": \"Api-Key\",\n        \"resource_name\": \"Resource-name\",\n        \"deployment_id\": \"Deployment-id\",\n        \"api_version\": \"2024-02-01\"\n    }\n}"
+                },
+                "PutAzureOpenAiRequestExample3": {
+                  "summary": "A chat completion task",
+                  "description": "Run `PUT _inference/chat_completion/azure_openai_chat_completion` to create an inference endpoint that performs a `chat_completion` task.",
+                  "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_key\": \"Api-Key\",\n        \"resource_name\": \"Resource-name\",\n        \"deployment_id\": \"Deployment-id\",\n        \"api_version\": \"2024-02-01\"\n    }\n}"
                 }
               }
             }
@@ -12915,6 +12920,23 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAzureOpenAI"
+                },
+                "examples": {
+                  "PutAzureOpenAiResponseExample1": {
+                    "summary": "A text embedding task",
+                    "description": "A successful response when creating an Azure OpenAI `text_embedding` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"azure_openai_embeddings\",\n  \"task_type\": \"text_embedding\",\n  \"service\": \"azureopenai\",\n  \"service_settings\": {\n    \"resource_name\": \"Resource-name\",\n    \"deployment_id\": \"Deployment-id\",\n    \"api_version\": \"2024-02-01\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 1140\n    },\n    \"dimensions\": 1536,\n    \"similarity\": \"dot_product\"\n  },\n  \"chunking_settings\": {\n    \"strategy\": \"sentence\",\n    \"max_chunk_size\": 250,\n    \"sentence_overlap\": 1\n  }\n}"
+                  },
+                  "PutAzureOpenAiResponseExample2": {
+                    "summary": "A completion task",
+                    "description": "A successful response when creating an Azure OpenAI `completion` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"azure_openai_completion\",\n  \"task_type\": \"completion\",\n  \"service\": \"azureopenai\",\n  \"service_settings\": {\n    \"resource_name\": \"Resource-name\",\n    \"deployment_id\": \"Deployment-id\",\n    \"api_version\": \"2024-02-01\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 120\n    }\n  }\n}"
+                  },
+                  "PutAzureOpenAiResponseExample3": {
+                    "summary": "A chat completion task",
+                    "description": "A successful response when creating an Azure OpenAI `chat_completion` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"azure_openai_chat_completion\",\n  \"task_type\": \"chat_completion\",\n  \"service\": \"azureopenai\",\n  \"service_settings\": {\n    \"resource_name\": \"Resource-name\",\n    \"deployment_id\": \"Deployment-id\",\n    \"api_version\": \"2024-02-01\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 120\n    }\n  }\n}"
+                  }
                 }
               }
             }
@@ -14583,204 +14605,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoMistral"
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Generally available",
-        "x-metaTags": [
-          {
-            "content": "Elasticsearch, Machine Learning",
-            "name": "product_name"
-          }
-        ]
-      }
-    },
-    "/_inference/{task_type}/{nvidia_inference_id}": {
-      "put": {
-        "tags": [
-          "inference"
-        ],
-        "summary": "Create an Nvidia inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `nvidia` service.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
-        "operationId": "inference-put-nvidia",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "task_type",
-            "description": "The type of the inference task that the model will perform.\nNOTE: The `chat_completion` task type only supports streaming and only through the _stream API.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/inference._types.NvidiaTaskType"
-            },
-            "style": "simple"
-          },
-          {
-            "in": "path",
-            "name": "nvidia_inference_id",
-            "description": "The unique identifier of the inference endpoint.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Id"
-            },
-            "style": "simple"
-          },
-          {
-            "in": "query",
-            "name": "timeout",
-            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Duration"
-            },
-            "style": "form"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "chunking_settings": {
-                    "externalDocs": {
-                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
-                    },
-                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
-                      }
-                    ]
-                  },
-                  "service": {
-                    "description": "The type of service supported for the specified task type. In this case, `nvidia`.",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/inference._types.NvidiaServiceType"
-                      }
-                    ]
-                  },
-                  "service_settings": {
-                    "description": "Settings used to install the inference model. These settings are specific to the `nvidia` service.",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/inference._types.NvidiaServiceSettings"
-                      }
-                    ]
-                  },
-                  "task_settings": {
-                    "description": "Settings to configure the inference task.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.\nThese settings are specific to the task type you specified.",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/inference._types.NvidiaTaskSettings"
-                      }
-                    ]
-                  }
-                },
-                "required": [
-                  "service",
-                  "service_settings"
-                ]
-              },
-              "examples": {
-                "PutNvidiaRequestExample1": {
-                  "summary": "A text embedding task",
-                  "description": "Run `PUT _inference/text_embedding/nvidia-text-embedding` to create an inference endpoint that performs a `text_embedding` task.",
-                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"url\": \"nvidia-embeddings-url\",\n        \"api_key\": \"nvidia-embeddings-token\",\n        \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\"\n    }\n}"
-                },
-                "PutNvidiaRequestExample2": {
-                  "summary": "A text embedding task with custom `task_settings` and no `url` parameter",
-                  "description": "Run `PUT _inference/text_embedding/nvidia-text-embedding` to create an inference endpoint that performs a `text_embedding` task, specifying custom `task_settings` and omitting the `url` parameter if model is accessible via default NVIDIA endpoint.",
-                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n        \"api_key\": \"nvidia-text-embeddings-token\"\n    },\n    \"task_settings\": {\n        \"input_type\": \"ingest\",\n        \"truncate\": \"start\"\n    }\n}"
-                },
-                "PutNvidiaRequestExample3": {
-                  "summary": "A completion task",
-                  "description": "Run `PUT _inference/completion/nvidia-completion` to create an inference endpoint that performs a `completion` task.",
-                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"url\": \"nvidia-completion-url\",\n        \"api_key\": \"nvidia-completion-token\",\n        \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n}"
-                },
-                "PutNvidiaRequestExample4": {
-                  "summary": "A completion task without `url` parameter",
-                  "description": "Run `PUT _inference/completion/nvidia-completion` to create an inference endpoint that performs a `completion` task, omitting the `url` parameter if model is accessible via default NVIDIA endpoint.",
-                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"api_key\": \"nvidia-completion-token\",\n        \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n}"
-                },
-                "PutNvidiaRequestExample5": {
-                  "summary": "A chat completion task",
-                  "description": "Run `PUT _inference/chat_completion/nvidia-chat-completion` to create an inference endpoint that performs a `chat_completion` task.",
-                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"url\": \"nvidia-chat-completion-url\",\n        \"api_key\": \"nvidia-chat-completion-token\",\n        \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n}"
-                },
-                "PutNvidiaRequestExample6": {
-                  "summary": "A chat completion task without `url` parameter",
-                  "description": "Run `PUT _inference/chat_completion/nvidia-chat-completion` to create an inference endpoint that performs a `chat_completion` task, omitting the `url` parameter if model is accessible via default NVIDIA endpoint.",
-                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"api_key\": \"nvidia-chat-completion-token\",\n        \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n}"
-                },
-                "PutNvidiaRequestExample7": {
-                  "summary": "A rerank task",
-                  "description": "Run `PUT _inference/rerank/nvidia-rerank` to create an inference endpoint that performs a `rerank` task.",
-                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"url\": \"nvidia-rerank-url\",\n        \"api_key\": \"nvidia-rerank-token\",\n        \"model_id\": \"nv-rerank-qa-mistral-4b:1\"\n    }\n}"
-                },
-                "PutNvidiaRequestExample8": {
-                  "summary": "A rerank task without `url` parameter",
-                  "description": "Run `PUT _inference/rerank/nvidia-rerank` to create an inference endpoint that performs a `rerank` task, omitting the `url` parameter if model is accessible via default NVIDIA endpoint.",
-                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"api_key\": \"nvidia-rerank-token\",\n        \"model_id\": \"nv-rerank-qa-mistral-4b:1\"\n    }\n}"
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoNvidia"
-                },
-                "examples": {
-                  "PutNvidiaResponseExample1": {
-                    "summary": "A text embedding task",
-                    "description": "A successful response when creating an Nvidia `text_embedding` inference endpoint.",
-                    "value": "{\n  \"inference_id\": \"nvidia-text-embedding\",\n  \"task_type\": \"text_embedding\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n    \"url\": \"nvidia-embeddings-url\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    },\n    \"dimensions\": 2048,\n    \"similarity\": \"dot_product\"\n  },\n  \"chunking_settings\": {\n    \"strategy\": \"sentence\",\n    \"max_chunk_size\": 250,\n    \"sentence_overlap\": 1\n  }\n}"
-                  },
-                  "PutNvidiaResponseExample2": {
-                    "summary": "A text embedding task with custom `task_settings` and no `url` parameter",
-                    "description": "A successful response when creating an Nvidia `text_embedding` inference endpoint with custom `task_settings` and no `url` parameter.",
-                    "value": "{\n  \"inference_id\": \"nvidia-text-embedding\",\n  \"task_type\": \"text_embedding\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    },\n    \"dimensions\": 2048,\n    \"similarity\": \"dot_product\"\n  },\n  \"task_settings\": {\n    \"input_type\": \"ingest\",\n    \"truncate\": \"start\"\n  },\n  \"chunking_settings\": {\n    \"strategy\": \"sentence\",\n    \"max_chunk_size\": 250,\n    \"sentence_overlap\": 1\n  }\n}"
-                  },
-                  "PutNvidiaResponseExample3": {
-                    "summary": "A completion task",
-                    "description": "A successful response when creating an Nvidia `completion` inference endpoint.",
-                    "value": "{\n  \"inference_id\": \"nvidia-completion\",\n  \"task_type\": \"completion\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"microsoft/phi-3-mini-128k-instruct\",\n    \"url\": \"nvidia-completion-url\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
-                  },
-                  "PutNvidiaResponseExample4": {
-                    "summary": "A completion task without `url` parameter",
-                    "description": "A successful response when creating an Nvidia `completion` inference endpoint without `url` parameter.",
-                    "value": "{\n  \"inference_id\": \"nvidia-completion\",\n  \"task_type\": \"completion\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"microsoft/phi-3-mini-128k-instruct\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
-                  },
-                  "PutNvidiaResponseExample5": {
-                    "summary": "A chat completion task",
-                    "description": "A successful response when creating an Nvidia `chat_completion` inference endpoint.",
-                    "value": "{\n  \"inference_id\": \"nvidia-chat-completion\",\n  \"task_type\": \"chat_completion\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"microsoft/phi-3-mini-128k-instruct\",\n    \"url\": \"nvidia-chat-completion-url\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
-                  },
-                  "PutNvidiaResponseExample6": {
-                    "summary": "A chat completion task without `url` parameter",
-                    "description": "A successful response when creating an Nvidia `chat_completion` inference endpoint without `url` parameter.",
-                    "value": "{\n  \"inference_id\": \"nvidia-chat-completion\",\n  \"task_type\": \"chat_completion\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"microsoft/phi-3-mini-128k-instruct\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
-                  },
-                  "PutNvidiaResponseExample7": {
-                    "summary": "A rerank task",
-                    "description": "A successful response when creating an Nvidia `rerank` inference endpoint.",
-                    "value": "{\n  \"inference_id\": \"nvidia-rerank\",\n  \"task_type\": \"rerank\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"nv-rerank-qa-mistral-4b:1\",\n    \"url\": \"nvidia-rerank-url\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
-                  },
-                  "PutNvidiaResponseExample8": {
-                    "summary": "A rerank task without `url` parameter",
-                    "description": "A successful response when creating an Nvidia `rerank` inference endpoint without `url` parameter.",
-                    "value": "{\n  \"inference_id\": \"nvidia-rerank\",\n  \"task_type\": \"rerank\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"nv-rerank-qa-mistral-4b:1\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
-                  }
                 }
               }
             }
@@ -66793,7 +66617,7 @@
         "type": "object",
         "properties": {
           "requests_per_minute": {
-            "description": "The number of requests allowed per minute.\nBy default, the number of requests allowed per minute is set by each service as follows:\n\n* `alibabacloud-ai-search` service: `1000`\n* `anthropic` service: `50`\n* `azureaistudio` service: `240`\n* `azureopenai` service and task type `text_embedding`: `1440`\n* `azureopenai` service and task type `completion`: `120`\n* `cohere` service: `10000`\n* `contextualai` service: `1000`\n* `elastic` service and task type `chat_completion`: `240`\n* `googleaistudio` service: `360`\n* `googlevertexai` service: `30000`\n* `hugging_face` service: `3000`\n* `jinaai` service: `2000`\n* `llama` service: `3000`\n* `mistral` service: `240`\n* `openai` service and task type `text_embedding`: `3000`\n* `openai` service and task type `completion`: `500`\n* `openshift_ai` service: `3000`\n* `voyageai` service: `2000`\n* `watsonxai` service: `120`",
+            "description": "The number of requests allowed per minute.\nBy default, the number of requests allowed per minute is set by each service as follows:\n\n* `alibabacloud-ai-search` service: `1000`\n* `anthropic` service: `50`\n* `azureaistudio` service: `240`\n* `azureopenai` service and task type `text_embedding`: `1440`\n* `azureopenai` service and task types `completion` or `chat_completion`: `120`\n* `cohere` service: `10000`\n* `contextualai` service: `1000`\n* `elastic` service and task type `chat_completion`: `240`\n* `googleaistudio` service: `360`\n* `googlevertexai` service: `30000`\n* `hugging_face` service: `3000`\n* `jinaai` service: `2000`\n* `llama` service: `3000`\n* `mistral` service: `240`\n* `openai` service and task type `text_embedding`: `3000`\n* `openai` service and task type `completion`: `500`\n* `openshift_ai` service: `3000`\n* `voyageai` service: `2000`\n* `watsonxai` service: `120`",
             "type": "number"
           }
         }
@@ -67447,6 +67271,7 @@
         "type": "string",
         "enum": [
           "completion",
+          "chat_completion",
           "text_embedding"
         ]
       },
@@ -67488,7 +67313,7 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/quotas-limits"
             },
-            "description": "This setting helps to minimize the number of rate limit errors returned from Azure.\nThe `azureopenai` service sets a default number of requests allowed per minute depending on the task type.\nFor `text_embedding`, it is set to `1440`.\nFor `completion`, it is set to `120`.",
+            "description": "This setting helps to minimize the number of rate limit errors returned from Azure.\nThe `azureopenai` service sets a default number of requests allowed per minute depending on the task type.\nFor `text_embedding`, it is set to `1440`.\nFor `completion` and `chat_completion`, it is set to `120`.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.RateLimitSetting"
@@ -67513,7 +67338,7 @@
         "type": "object",
         "properties": {
           "user": {
-            "description": "For a `completion` or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
+            "description": "For a `completion`, `chat_completion` or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
             "type": "string"
           }
         }
@@ -67550,7 +67375,8 @@
         "type": "string",
         "enum": [
           "text_embedding",
-          "completion"
+          "completion",
+          "chat_completion"
         ]
       },
       "inference._types.CohereTaskType": {
@@ -68919,135 +68745,6 @@
           "completion"
         ]
       },
-      "inference._types.NvidiaTaskType": {
-        "type": "string",
-        "enum": [
-          "chat_completion",
-          "completion",
-          "rerank",
-          "text_embedding"
-        ]
-      },
-      "inference._types.NvidiaServiceType": {
-        "type": "string",
-        "enum": [
-          "nvidia"
-        ]
-      },
-      "inference._types.NvidiaServiceSettings": {
-        "type": "object",
-        "properties": {
-          "api_key": {
-            "description": "A valid API key for your Nvidia endpoint.\nCan be found in `API Keys` section of Nvidia account settings.",
-            "type": "string"
-          },
-          "url": {
-            "description": "The URL of the Nvidia model endpoint. If not provided, the default endpoint URL is used depending on the task type:\n\n* For `text_embedding` task - `https://integrate.api.nvidia.com/v1/embeddings`.\n* For `completion` and `chat_completion` tasks - `https://integrate.api.nvidia.com/v1/chat/completions`.\n* For `rerank` task - `https://ai.api.nvidia.com/v1/retrieval/nvidia/reranking`.",
-            "type": "string"
-          },
-          "model_id": {
-            "description": "The name of the model to use for the inference task.\nRefer to the model's documentation for the name if needed.\nService has been tested and confirmed to be working with the following models:\n\n* For `text_embedding` task - `nvidia/llama-3.2-nv-embedqa-1b-v2`.\n* For `completion` and `chat_completion` tasks - `microsoft/phi-3-mini-128k-instruct`.\n* For `rerank` task - `nv-rerank-qa-mistral-4b:1`.\nService doesn't support `text_embedding` task `baai/bge-m3` and `nvidia/nvclip` models due to them not recognizing the `input_type` parameter.",
-            "type": "string"
-          },
-          "max_input_tokens": {
-            "description": "For a `text_embedding` task, the maximum number of tokens per input. Inputs exceeding this value are truncated prior to sending to the Nvidia API.",
-            "type": "number"
-          },
-          "similarity": {
-            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.NvidiaSimilarityType"
-              }
-            ]
-          },
-          "rate_limit": {
-            "description": "This setting helps to minimize the number of rate limit errors returned from the Nvidia API.\nBy default, the `nvidia` service sets the number of requests allowed per minute to 3000.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.RateLimitSetting"
-              }
-            ]
-          }
-        },
-        "required": [
-          "api_key",
-          "model_id"
-        ]
-      },
-      "inference._types.NvidiaSimilarityType": {
-        "type": "string",
-        "enum": [
-          "cosine",
-          "dot_product",
-          "l2_norm"
-        ]
-      },
-      "inference._types.NvidiaTaskSettings": {
-        "type": "object",
-        "properties": {
-          "input_type": {
-            "description": "For a `text_embedding` task, type of input sent to the Nvidia endpoint.\nValid values are:\n\n* `ingest`: Mapped to Nvidia's `passage` value in request. Used when generating embeddings during indexing.\n* `search`: Mapped to Nvidia's `query` value in request. Used when generating embeddings during querying.\n\nIMPORTANT: For Nvidia endpoints, if the `input_type` field is not specified, it defaults to `query`.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.NvidiaInputType"
-              }
-            ]
-          },
-          "truncate": {
-            "description": "For a `text_embedding` task, the method used by the Nvidia model to handle inputs longer than the maximum token length.\nValid values are:\n\n* `END`: When the input exceeds the maximum input token length, the end of the input is discarded.\n* `NONE`: When the input exceeds the maximum input token length, an error is returned.\n* `START`: When the input exceeds the maximum input token length, the start of the input is discarded.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.CohereTruncateType"
-              }
-            ]
-          }
-        }
-      },
-      "inference._types.NvidiaInputType": {
-        "type": "string",
-        "enum": [
-          "ingest",
-          "search"
-        ]
-      },
-      "inference._types.InferenceEndpointInfoNvidia": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "inference_id": {
-                "description": "The inference ID",
-                "type": "string"
-              },
-              "task_type": {
-                "description": "The task type",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/inference._types.TaskTypeNvidia"
-                  }
-                ]
-              }
-            },
-            "required": [
-              "inference_id",
-              "task_type"
-            ]
-          }
-        ]
-      },
-      "inference._types.TaskTypeNvidia": {
-        "type": "string",
-        "enum": [
-          "chat_completion",
-          "completion",
-          "rerank",
-          "text_embedding"
-        ]
-      },
       "inference._types.OpenAITaskType": {
         "type": "string",
         "enum": [
@@ -69190,7 +68887,7 @@
             "type": "number"
           },
           "similarity": {
-            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.\nIf not specified, the default dot_product value is used.",
+            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.OpenShiftAiSimilarityType"
