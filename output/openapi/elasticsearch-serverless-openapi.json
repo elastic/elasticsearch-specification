@@ -69749,6 +69749,14 @@
               }
             ]
           },
+          "cef": {
+            "description": "Converts a CEF message into a structured format.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ingest._types.CefProcessor"
+              }
+            ]
+          },
           "circle": {
             "description": "Converts circle definitions of shapes to regular polygons which approximate them.",
             "allOf": [
@@ -70267,6 +70275,53 @@
                     "$ref": "#/components/schemas/_types.Field"
                   }
                 ]
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
+      "ingest._types.CefProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types.ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The field containing the CEF message.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "default": false,
+                "type": "boolean"
+              },
+              "target_field": {
+                "description": "The field to assign the converted value to.\nBy default, the `target_field` is 'cef'",
+                "default": "'cef'",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "ignore_empty_values": {
+                "description": "If `true` and `value` is a template snippet that evaluates to `null` or the empty string, the processor quietly exits without modifying the document.",
+                "default": false,
+                "type": "boolean"
+              },
+              "timezone": {
+                "description": "The timezone to use when parsing the date and when date math index supports resolves expressions into concrete index names.",
+                "default": "UTC",
+                "type": "string"
               }
             },
             "required": [
