@@ -55,7 +55,7 @@ export class ProcessorContainer {
    * Converts a CEF message into a structured format.
    * @doc_id cef-processor
    */
-    cef?: CefProcessor
+  cef?: CefProcessor
   /**
    * Converts circle definitions of shapes to regular polygons which approximate them.
    * @doc_id ingest-circle-processor
