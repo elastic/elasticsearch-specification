@@ -15492,6 +15492,7 @@ export type InferenceUpdateResponse = InferenceInferenceEndpointInfo
 export interface IngestAppendProcessor extends IngestProcessorBase {
   field: Field
   value?: any | any[]
+  media_type?: string
   copy_from?: Field
   allow_duplicates?: boolean
 }

@@ -70119,6 +70119,11 @@
                   }
                 ]
               },
+              "media_type": {
+                "description": "The media type for encoding `value`.\nApplies only when value is a template snippet.\nMust be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.",
+                "default": "\"application/json\"",
+                "type": "string"
+              },
               "copy_from": {
                 "description": "The origin field which will be appended to `field`, cannot set `value` simultaneously.",
                 "allOf": [
@@ -72023,6 +72028,7 @@
               },
               "media_type": {
                 "description": "The media type for encoding `value`.\nApplies only when value is a template snippet.\nMust be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.",
+                "default": "\"application/json\"",
                 "type": "string"
               },
               "override": {
