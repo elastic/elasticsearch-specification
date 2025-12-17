@@ -1466,6 +1466,7 @@ export class SetProcessor extends ProcessorBase {
    * The media type for encoding `value`.
    * Applies only when value is a template snippet.
    * Must be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.
+   * @server_default "application/json"
    */
   media_type?: string
   /**
