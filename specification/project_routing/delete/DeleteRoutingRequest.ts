@@ -20,7 +20,6 @@
 import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
 
-
 /**
  * Delete named project routing expressions.
  *

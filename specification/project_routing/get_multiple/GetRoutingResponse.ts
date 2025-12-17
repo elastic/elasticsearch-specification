@@ -20,7 +20,6 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ProjectRoutingExpression } from '../_types/RoutingExpression'
 
-
 export class Response {
   /** @codegen_name result */
   body: Dictionary<string, ProjectRoutingExpression>

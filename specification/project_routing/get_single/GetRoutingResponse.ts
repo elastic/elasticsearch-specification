@@ -19,7 +19,6 @@
 
 import { ProjectRoutingExpression } from '../_types/RoutingExpression'
 
-
 export class Response {
   /** @codegen_name result */
   body: ProjectRoutingExpression

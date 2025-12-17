@@ -22,7 +22,6 @@ import { MediaType } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ProjectRoutingExpression } from '../_types/RoutingExpression'
 
-
 /**
  * Create of update named project routing expressions.
  *

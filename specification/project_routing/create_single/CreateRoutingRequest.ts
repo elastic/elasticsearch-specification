@@ -21,7 +21,6 @@ import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
 import { ProjectRoutingExpression } from '../_types/RoutingExpression'
 
-
 /**
  * Create of update a single named project routing expression.
  *

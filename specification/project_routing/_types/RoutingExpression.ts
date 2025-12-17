@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-
 export class ProjectRoutingExpression {
   expression: string
 }
