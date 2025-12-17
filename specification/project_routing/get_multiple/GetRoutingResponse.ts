@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ProjectRoutingExpression } from '../_types/RoutingExpression
+import { ProjectRoutingExpression } from '../_types/RoutingExpression'
 
 
 export class Response {

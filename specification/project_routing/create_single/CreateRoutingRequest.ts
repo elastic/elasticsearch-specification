@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
-import { ProjectRoutingExpression } from '../_types/RoutingExpression
+import { ProjectRoutingExpression } from '../_types/RoutingExpression'
 
 
 /**
