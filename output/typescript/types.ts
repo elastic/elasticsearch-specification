@@ -20063,6 +20063,40 @@ export interface ProjectTagsTagsKeys {
 export type ProjectTagsTags = ProjectTagsTagsKeys
   & { [property: string]: string }
 
+export interface ProjectRoutingProjectRoutingExpression {
+  expression: string
+}
+
+export interface ProjectRoutingCreateMultipleRequest extends RequestBase {
+  body?: Record<string, ProjectRoutingProjectRoutingExpression>
+}
+
+export type ProjectRoutingCreateMultipleResponse = AcknowledgedResponseBase
+
+export interface ProjectRoutingCreateSingleRequest extends RequestBase {
+  name: string
+  body?: ProjectRoutingProjectRoutingExpression
+}
+
+export type ProjectRoutingCreateSingleResponse = AcknowledgedResponseBase
+
+export interface ProjectRoutingDeleteRequest extends RequestBase {
+  name: string
+}
+
+export type ProjectRoutingDeleteResponse = AcknowledgedResponseBase
+
+export interface ProjectRoutingGetMultipleRequest extends RequestBase {
+}
+
+export type ProjectRoutingGetMultipleResponse = Record<string, ProjectRoutingProjectRoutingExpression>
+
+export interface ProjectRoutingGetSingleRequest extends RequestBase {
+  name: string
+}
+
+export type ProjectRoutingGetSingleResponse = ProjectRoutingProjectRoutingExpression
+
 export interface QueryRulesQueryRule {
   rule_id: Id
   type: QueryRulesQueryRuleType
