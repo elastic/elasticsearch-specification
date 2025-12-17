@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ProjectRoutingExpression } from '../_types/RoutingExpression'
 
 

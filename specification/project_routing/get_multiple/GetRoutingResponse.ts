@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ProjectRoutingExpression } from '../_types/RoutingExpression'
 
 
