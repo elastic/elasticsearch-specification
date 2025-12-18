@@ -113,6 +113,7 @@ export class SearchRequestBody {
    * Use the `post_filter` parameter to filter search results.
    * The search hits are filtered after the aggregations are calculated.
    * A post filter has no impact on the aggregation results.
+   * @ext_doc_id filter-search-results
    */
   post_filter?: QueryContainer
   /**
