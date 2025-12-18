@@ -20107,22 +20107,26 @@ export interface ProjectTagsTagsKeys {
 export type ProjectTagsTags = ProjectTagsTagsKeys
   & { [property: string]: string }
 
+export type ProjectRoutingNamedProjectRoutingExpressions = Record<string, ProjectRoutingProjectRoutingExpression>
+
 export interface ProjectRoutingProjectRoutingExpression {
-  expression: string
+  expression: ProjectRoutingRoutingExpression
 }
 
-export interface ProjectRoutingCreateMultipleRequest extends RequestBase {
-  body?: Record<string, ProjectRoutingProjectRoutingExpression>
-}
+export type ProjectRoutingRoutingExpression = string
 
-export type ProjectRoutingCreateMultipleResponse = AcknowledgedResponseBase
-
-export interface ProjectRoutingCreateSingleRequest extends RequestBase {
+export interface ProjectRoutingCreateRequest extends RequestBase {
   name: string
   body?: ProjectRoutingProjectRoutingExpression
 }
 
-export type ProjectRoutingCreateSingleResponse = AcknowledgedResponseBase
+export type ProjectRoutingCreateResponse = AcknowledgedResponseBase
+
+export interface ProjectRoutingCreateManyRequest extends RequestBase {
+  body?: ProjectRoutingNamedProjectRoutingExpressions
+}
+
+export type ProjectRoutingCreateManyResponse = AcknowledgedResponseBase
 
 export interface ProjectRoutingDeleteRequest extends RequestBase {
   name: string
@@ -20130,16 +20134,16 @@ export interface ProjectRoutingDeleteRequest extends RequestBase {
 
 export type ProjectRoutingDeleteResponse = AcknowledgedResponseBase
 
-export interface ProjectRoutingGetMultipleRequest extends RequestBase {
-}
-
-export type ProjectRoutingGetMultipleResponse = Record<string, ProjectRoutingProjectRoutingExpression>
-
-export interface ProjectRoutingGetSingleRequest extends RequestBase {
+export interface ProjectRoutingGetRequest extends RequestBase {
   name: string
 }
 
-export type ProjectRoutingGetSingleResponse = ProjectRoutingProjectRoutingExpression
+export type ProjectRoutingGetResponse = ProjectRoutingProjectRoutingExpression
+
+export interface ProjectRoutingGetManyRequest extends RequestBase {
+}
+
+export type ProjectRoutingGetManyResponse = ProjectRoutingNamedProjectRoutingExpressions
 
 export interface QueryRulesQueryRule {
   rule_id: Id

@@ -19,29 +19,23 @@
 
 import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { ProjectRoutingExpression } from '../_types/RoutingExpression'
 
 /**
- * Create of update named project routing expressions.
+ * Get named project routing expressions.
  *
- * Create or update named project routing expressions.
+ * Get named project routing expressions.
  * @doc_id project-routing
- * @rest_spec_name project_routing.create_multiple
+ * @rest_spec_name project_routing.get_many
  * @availability serverless stability=experimental visibility=public
- * @cluster_privileges manage
+ * @cluster_privileges monitor
  * @doc_tag project-routing
  */
 export interface Request extends RequestBase {
   urls: [
     {
       path: '/_project_routing'
-      methods: ['PUT']
+      methods: ['GET']
     }
   ]
   response_media_type: MediaType.Json
-  /**
-   * @codegen_name expressions
-   */
-  body: Dictionary<string, ProjectRoutingExpression>
 }

@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { ProjectRoutingExpression } from '../_types/RoutingExpression'
+import { NamedProjectRoutingExpressions } from '../_types/RoutingExpression'
 
 export class Response {
   /** @codegen_name result */
-  body: Dictionary<string, ProjectRoutingExpression>
+  body: NamedProjectRoutingExpressions
 }

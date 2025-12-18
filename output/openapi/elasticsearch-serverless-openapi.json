@@ -23334,96 +23334,6 @@
         ]
       }
     },
-    "/_project_routing": {
-      "get": {
-        "tags": [
-          "project-routing"
-        ],
-        "summary": "Get named project routing expressions",
-        "description": "Get named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
-        "operationId": "project-routing-get-multiple",
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
-                  }
-                },
-                "examples": {
-                  "GetProjectResponseExample1": {
-                    "summary": "Multiple expressions",
-                    "value": "{\n \"aws-us-only\": { \"expression\": \"_csp:aws AND _region:us*\" },\n \"aws-eu-only\": { \"expression\": \"_csp:aws AND _region:eu*\" }\n}"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Technical preview",
-        "x-metaTags": [
-          {
-            "content": "Elasticsearch",
-            "name": "product_name"
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "project-routing"
-        ],
-        "summary": "Create of update named project routing expressions",
-        "description": "Create or update named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
-        "operationId": "project-routing-create-multiple",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
-                }
-              },
-              "examples": {
-                "CreateProjectRoutingRequestExample1": {
-                  "summary": "Multiple expressions",
-                  "value": "{\n \"aws-us-only\": { \"expression\": \"_csp:aws AND _region:us*\" },\n \"aws-eu-only\": { \"expression\": \"_csp:aws AND _region:eu*\" }\n}"
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
-                },
-                "examples": {
-                  "CreateProjectResponseExample1": {
-                    "summary": "Multiple expressions",
-                    "value": "{\n  \"acknowledged\": true\n}"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Technical preview",
-        "x-metaTags": [
-          {
-            "content": "Elasticsearch",
-            "name": "product_name"
-          }
-        ]
-      }
-    },
     "/_project_routing/{name}": {
       "get": {
         "tags": [
@@ -23431,7 +23341,7 @@
         ],
         "summary": "Get named project routing expressions",
         "description": "Get named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
-        "operationId": "project-routing-get-single",
+        "operationId": "project-routing-get",
         "parameters": [
           {
             "in": "path",
@@ -23477,7 +23387,7 @@
         ],
         "summary": "Create of update a single named project routing expression",
         "description": "Create of update a single named project routing expression.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
-        "operationId": "project-routing-create-single",
+        "operationId": "project-routing-create",
         "parameters": [
           {
             "in": "path",
@@ -23563,6 +23473,90 @@
                 },
                 "examples": {
                   "DeleteProjectResponseExample1": {
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_project_routing": {
+      "get": {
+        "tags": [
+          "project-routing"
+        ],
+        "summary": "Get named project routing expressions",
+        "description": "Get named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "operationId": "project-routing-get-many",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/project_routing._types.NamedProjectRoutingExpressions"
+                },
+                "examples": {
+                  "GetProjectResponseExample1": {
+                    "summary": "Multiple expressions",
+                    "value": "{\n \"aws-us-only\": { \"expression\": \"_csp:aws AND _region:us*\" },\n \"aws-eu-only\": { \"expression\": \"_csp:aws AND _region:eu*\" }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "project-routing"
+        ],
+        "summary": "Create of update named project routing expressions",
+        "description": "Create or update named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "project-routing-create-many",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/project_routing._types.NamedProjectRoutingExpressions"
+              },
+              "examples": {
+                "CreateProjectRoutingRequestExample1": {
+                  "summary": "Multiple expressions",
+                  "value": "{\n \"aws-us-only\": { \"expression\": \"_csp:aws AND _region:us*\" },\n \"aws-eu-only\": { \"expression\": \"_csp:aws AND _region:eu*\" }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "CreateProjectResponseExample1": {
+                    "summary": "Multiple expressions",
                     "value": "{\n  \"acknowledged\": true\n}"
                   }
                 }
@@ -79881,12 +79875,25 @@
         "type": "object",
         "properties": {
           "expression": {
-            "type": "string"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/project_routing._types.RoutingExpression"
+              }
+            ]
           }
         },
         "required": [
           "expression"
         ]
+      },
+      "project_routing._types.RoutingExpression": {
+        "type": "string"
+      },
+      "project_routing._types.NamedProjectRoutingExpressions": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
+        }
       },
       "query_rules._types.QueryRule": {
         "type": "object",

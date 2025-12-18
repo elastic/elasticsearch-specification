@@ -17,6 +17,15 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+
+export type RoutingExpression = string
+
 export class ProjectRoutingExpression {
-  expression: string
+  expression: RoutingExpression
 }
+
+export type NamedProjectRoutingExpressions = Dictionary<
+  string,
+  ProjectRoutingExpression
+>

@@ -25,7 +25,7 @@ import { MediaType } from '@_types/common'
  *
  * Get named project routing expressions.
  * @doc_id project-routing
- * @rest_spec_name project_routing.get_multiple
+ * @rest_spec_name project_routing.get
  * @availability serverless stability=experimental visibility=public
  * @cluster_privileges monitor
  * @doc_tag project-routing
@@ -33,9 +33,15 @@ import { MediaType } from '@_types/common'
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '/_project_routing'
+      path: '/_project_routing/{name}'
       methods: ['GET']
     }
   ]
   response_media_type: MediaType.Json
+  path_parts: {
+    /**
+     * The name of project routing expression
+     */
+    name: string
+  }
 }
