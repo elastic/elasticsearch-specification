@@ -63,7 +63,7 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  body: {
+  body?: {
     license?: License
     /**
      * A sequence of one or more JSON documents containing the license information.

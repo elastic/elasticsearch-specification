@@ -88,7 +88,7 @@ export interface Request extends RequestBase {
      * @server_default 20s */
     timeout?: Duration
   }
-  body: {
+  body?: {
     /** Refer to the description for the `end` query parameter. */
     end?: DateTime // default ""
     /** Refer to the description for the `start` query parameter.  */

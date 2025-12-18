@@ -105,7 +105,7 @@ export interface Request extends RequestBase {
      */
     include_empty_fields?: boolean
   }
-  body: {
+  body?: {
     /**
      * A list of fields to retrieve capabilities for. Wildcard (`*`) expressions are supported.
      * @availability stack since=8.5.0

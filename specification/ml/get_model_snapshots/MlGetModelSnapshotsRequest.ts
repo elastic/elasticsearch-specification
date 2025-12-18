@@ -88,7 +88,7 @@ export interface Request extends RequestBase {
      */
     start?: DateTime
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `desc` query parameter.
      * @server_default false

@@ -86,7 +86,7 @@ export interface Request extends RequestBase {
     // Also accepts `now` as a value, epoch seconds (< 10 digits) and epoch milliseconds
     start?: DateTime
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `advance_time` query parameter.
      */
