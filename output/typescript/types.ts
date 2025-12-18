@@ -20135,6 +20135,44 @@ export interface ProjectTagsTagsKeys {
 export type ProjectTagsTags = ProjectTagsTagsKeys
   & { [property: string]: string }
 
+export type ProjectRoutingNamedProjectRoutingExpressions = Record<string, ProjectRoutingProjectRoutingExpression>
+
+export interface ProjectRoutingProjectRoutingExpression {
+  expression: ProjectRoutingRoutingExpression
+}
+
+export type ProjectRoutingRoutingExpression = string
+
+export interface ProjectRoutingCreateRequest extends RequestBase {
+  name: string
+  body?: ProjectRoutingProjectRoutingExpression
+}
+
+export type ProjectRoutingCreateResponse = AcknowledgedResponseBase
+
+export interface ProjectRoutingCreateManyRequest extends RequestBase {
+  body?: ProjectRoutingNamedProjectRoutingExpressions
+}
+
+export type ProjectRoutingCreateManyResponse = AcknowledgedResponseBase
+
+export interface ProjectRoutingDeleteRequest extends RequestBase {
+  name: string
+}
+
+export type ProjectRoutingDeleteResponse = AcknowledgedResponseBase
+
+export interface ProjectRoutingGetRequest extends RequestBase {
+  name: string
+}
+
+export type ProjectRoutingGetResponse = ProjectRoutingProjectRoutingExpression
+
+export interface ProjectRoutingGetManyRequest extends RequestBase {
+}
+
+export type ProjectRoutingGetManyResponse = ProjectRoutingNamedProjectRoutingExpressions
+
 export interface QueryRulesQueryRule {
   rule_id: Id
   type: QueryRulesQueryRuleType

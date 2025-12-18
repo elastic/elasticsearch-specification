@@ -23334,6 +23334,245 @@
         ]
       }
     },
+    "/_project_routing/{name}": {
+      "get": {
+        "tags": [
+          "project-routing"
+        ],
+        "summary": "Get named project routing expressions",
+        "description": "Get named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "operationId": "project-routing-get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The name of project routing expression",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
+                },
+                "examples": {
+                  "GetProjectResponseExample1": {
+                    "summary": "A single expressions",
+                    "value": "{\n  \"expression\" : \"_csp:aws AND _region:us*\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "project-routing"
+        ],
+        "summary": "Create of update a single named project routing expression",
+        "description": "Create of update a single named project routing expression.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "project-routing-create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The name of project routing expression",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
+              },
+              "examples": {
+                "CreateProjectRoutingRequestExample1": {
+                  "summary": "A single expression",
+                  "value": "{\n  \"expression\" : \"_csp:aws AND _region:us*\"\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "CreateProjectResponseExample1": {
+                    "summary": "A single expressions",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "project-routing"
+        ],
+        "summary": "Delete named project routing expressions",
+        "description": "Delete named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "project-routing-delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The name of project routing expression",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "DeleteProjectResponseExample1": {
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_project_routing": {
+      "get": {
+        "tags": [
+          "project-routing"
+        ],
+        "summary": "Get named project routing expressions",
+        "description": "Get named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "operationId": "project-routing-get-many",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/project_routing._types.NamedProjectRoutingExpressions"
+                },
+                "examples": {
+                  "GetProjectResponseExample1": {
+                    "summary": "Multiple expressions",
+                    "value": "{\n \"aws-us-only\": { \"expression\": \"_csp:aws AND _region:us*\" },\n \"aws-eu-only\": { \"expression\": \"_csp:aws AND _region:eu*\" }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "project-routing"
+        ],
+        "summary": "Create of update named project routing expressions",
+        "description": "Create or update named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "project-routing-create-many",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/project_routing._types.NamedProjectRoutingExpressions"
+              },
+              "examples": {
+                "CreateProjectRoutingRequestExample1": {
+                  "summary": "Multiple expressions",
+                  "value": "{\n \"aws-us-only\": { \"expression\": \"_csp:aws AND _region:us*\" },\n \"aws-eu-only\": { \"expression\": \"_csp:aws AND _region:eu*\" }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "CreateProjectResponseExample1": {
+                    "summary": "Multiple expressions",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_scripts/{id}/{context}": {
       "put": {
         "tags": [
@@ -79631,6 +79870,30 @@
           "_type",
           "_organisation"
         ]
+      },
+      "project_routing._types.ProjectRoutingExpression": {
+        "type": "object",
+        "properties": {
+          "expression": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/project_routing._types.RoutingExpression"
+              }
+            ]
+          }
+        },
+        "required": [
+          "expression"
+        ]
+      },
+      "project_routing._types.RoutingExpression": {
+        "type": "string"
+      },
+      "project_routing._types.NamedProjectRoutingExpressions": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
+        }
       },
       "query_rules._types.QueryRule": {
         "type": "object",
