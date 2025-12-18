@@ -656,6 +656,7 @@ repository-shared-fs,https://www.elastic.co/docs/deploy-manage/tools/snapshot-an
 repository-source-only,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/source-only-repository,,
 reroute-processor,https://www.elastic.co/docs/reference/enrich-processor/reroute-processor,,
 render-search-template-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-render-search-template,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/render-search-template-api.html,
+rescore-search-results,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/rescore-search-results,,
 reset-transform,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-reset-transform,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/reset-transform.html,
 restore-snapshot,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/restore-snapshot,,
 retrieve-stored-fields,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-stored-fields,

@@ -498,6 +498,7 @@ export interface Request extends RequestBase {
     query?: QueryContainer
     /**
      * Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.
+     * @ext_doc_id rescore-search-results
      */
     rescore?: Rescore | Rescore[]
     /**
