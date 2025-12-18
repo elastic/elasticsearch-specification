@@ -528,6 +528,7 @@ export interface Request extends RequestBase {
     size?: integer
     /**
      * Split a scrolled search into multiple slices that can be consumed independently.
+     * @ext_doc_id slice-scroll
      */
     slice?: SlicedScroll
     /**
