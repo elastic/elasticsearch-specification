@@ -11393,6 +11393,11 @@ export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
 
 export type EsqlESQLParam = FieldValue | FieldValue[]
 
+export interface EsqlESQLView {
+  name: string
+  query: string
+}
+
 export interface EsqlEsqlClusterDetails {
   status: EsqlEsqlClusterStatus
   indices: string
@@ -11505,6 +11510,12 @@ export interface EsqlAsyncQueryStopRequest extends RequestBase {
 
 export type EsqlAsyncQueryStopResponse = EsqlEsqlResult
 
+export interface EsqlDeleteViewRequest extends RequestBase {
+  name: Id
+}
+
+export type EsqlDeleteViewResponse = AcknowledgedResponseBase
+
 export interface EsqlGetQueryRequest extends RequestBase {
   id: Id
 }
@@ -11517,6 +11528,14 @@ export interface EsqlGetQueryResponse {
   query: string
   coordinating_node: NodeId
   data_nodes: NodeId[]
+}
+
+export interface EsqlGetViewRequest extends RequestBase {
+  name?: Id
+}
+
+export interface EsqlGetViewResponse {
+  views: EsqlESQLView[]
 }
 
 export interface EsqlListQueriesBody {
@@ -11533,6 +11552,15 @@ export interface EsqlListQueriesRequest extends RequestBase {
 export interface EsqlListQueriesResponse {
   queries: Record<TaskId, EsqlListQueriesBody>
 }
+
+export interface EsqlPutViewRequest extends RequestBase {
+  name: Id
+  body?: {
+    query: string
+  }
+}
+
+export type EsqlPutViewResponse = AcknowledgedResponseBase
 
 export interface EsqlQueryRequest extends RequestBase {
   format?: EsqlEsqlFormat
