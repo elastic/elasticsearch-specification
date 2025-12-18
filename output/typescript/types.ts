@@ -11532,7 +11532,7 @@ export interface EsqlGetQueryResponse {
 }
 
 export interface EsqlGetViewRequest extends RequestBase {
-  name: Id
+  name?: Id
 }
 
 export interface EsqlGetViewResponse {

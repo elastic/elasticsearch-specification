@@ -34,8 +34,8 @@ import { Id, MediaType } from '@_types/common'
 export interface Request extends RequestBase {
   urls: [
     {
-      "path": "/_query/view",
-      "methods": ["GET"]
+      path: '/_query/view'
+      methods: ['GET']
     },
     {
       path: '/_query/view/{name}'
@@ -44,7 +44,7 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /** The comma-separated view names to retrieve. */
-    name: Id
+    name?: Id
   }
   request_media_type: MediaType.Json
   response_media_type: MediaType.Json
