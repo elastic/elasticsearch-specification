@@ -147,6 +147,7 @@ export class SearchRequestBody {
   script_fields?: Dictionary<string, ScriptField>
   /**
    * Used to retrieve the next page of hits using a set of sort values from the previous page.
+   * @ext_doc_id search-after
    */
   search_after?: SortResults
   /**
