@@ -70,7 +70,7 @@ export interface Request extends RequestBase {
     /**
      * If provided, must be the same identifier as in the path.
      */
-    id?: Id,
+    id?: Id
     /**
      * Controls the amount of time to wait until the data frame analytics job
      * starts.

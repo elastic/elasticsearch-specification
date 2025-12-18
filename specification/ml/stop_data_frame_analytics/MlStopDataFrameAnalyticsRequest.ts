@@ -80,7 +80,7 @@ export interface Request extends RequestBase {
     /**
      * If provided, must be the same identifier as in the path.
      */
-    id?: Id,
+    id?: Id
     /**
      * Specifies what to do when the request:
      *

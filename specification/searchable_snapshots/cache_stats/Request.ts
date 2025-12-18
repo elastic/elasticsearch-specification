@@ -19,7 +19,6 @@
 
 import { RequestBase } from '@_types/Base'
 import { NodeIds } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Get cache statistics.
