@@ -34,6 +34,10 @@ import { Id, MediaType } from '@_types/common'
 export interface Request extends RequestBase {
   urls: [
     {
+      "path": "/_query/view",
+      "methods": ["GET"]
+    },
+    {
       path: '/_query/view/{name}'
       methods: ['GET']
     }
