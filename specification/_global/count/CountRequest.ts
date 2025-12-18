@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
   Indices,
+  MediaType,
   ProjectRouting,
   Routing
 } from '@_types/common'
@@ -67,6 +68,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
@@ -131,18 +134,6 @@ export interface Request extends RequestBase {
      */
     preference?: string
     /**
-     * Specifies a subset of projects to target for the search using project
-     * metadata tags in a subset of Lucene query syntax.
-     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
-     * Examples:
-     *  _alias:my-project
-     *  _alias:_origin
-     *  _alias:*pr*
-     * Supported in serverless only.
-     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
-     */
-    project_routing?: ProjectRouting
-    /**
      * A custom value used to route operations to a specific shard.
      */
     routing?: Routing
@@ -168,5 +159,17 @@ export interface Request extends RequestBase {
      * with the `q` query string parameter.
      */
     query?: QueryContainer
+    /**
+     * Specifies a subset of projects to target using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }

@@ -22,6 +22,7 @@ import {
   Conflicts,
   ExpandWildcards,
   Indices,
+  MediaType,
   Routing,
   SearchType,
   Slices,
@@ -152,6 +153,8 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
@@ -307,6 +310,9 @@ export interface Request extends RequestBase {
      * If `true`, returns the document version as part of a hit.
      */
     version?: boolean
+    /**
+     * Should the document increment the version number (internal) on hit or not (reindex)
+     */
     version_type?: boolean
     /**
      * The number of shard copies that must be active before proceeding with the operation.

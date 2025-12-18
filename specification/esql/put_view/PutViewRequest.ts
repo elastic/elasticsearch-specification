@@ -17,28 +17,33 @@
  * under the License.
  */
 
-import assert from 'assert'
-import * as model from '../model/metamodel'
-import { JsonSpec } from '../model/json-spec'
+import { RequestBase } from '@_types/Base'
+import { Id, MediaType } from '@_types/common'
 
 /**
- * Adds the `responseMediaType` (accept in the rest-api-spec)
- * and `responseMediaType` (content_type in the rest api spec)
- * fields to every endpoint from the rest-api-spec if present.
+ * Create or update an ES|QL view.
+ *
+ * @rest_spec_name esql.put_view
+ * @cluster_privileges monitor_esql
+ * @availability stack since=9.3.0 stability=experimental visibility=feature_flag feature_flag=esql_views
+ * @availability serverless stability=experimental visibility=feature_flag feature_flag=esql_views
+ * @doc_id esql-put-view
  */
-export default async function addContentType (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
-  for (const endpoint of model.endpoints) {
-    const spec = jsonSpec.get(endpoint.name)
-    assert(spec, `Can't find the json spec for ${endpoint.name}`)
-
-    if (Array.isArray(spec.headers.accept)) {
-      endpoint.responseMediaType = spec.headers.accept
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query/view/{name}'
+      methods: ['PUT']
     }
-
-    if (Array.isArray(spec.headers.content_type)) {
-      endpoint.requestMediaType = spec.headers.content_type
-    }
+  ]
+  path_parts: {
+    /** The view name to create or update. */
+    name: Id
   }
-
-  return model
+  body: {
+    /** The ES|QL query string from which to create a view. */
+    query: string
+  }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
 }

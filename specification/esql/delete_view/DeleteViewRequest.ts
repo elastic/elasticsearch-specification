@@ -17,8 +17,31 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id, MediaType } from '@_types/common'
+
 /**
- * @rest_spec_name foobar
- * @availability stack since=0.0.0 stability=stable
+ * Delete an ES|QL view.
+ *
+ * Deletes a stored ES|QL view.
+ *
+ * @rest_spec_name esql.delete_view
+ * @cluster_privileges monitor_esql
+ * @availability stack since=9.3.0 stability=experimental visibility=feature_flag feature_flag=esql_views
+ * @availability serverless stability=experimental visibility=feature_flag feature_flag=esql_views
+ * @doc_id esql-delete-view
  */
-export interface Request {}
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query/view/{name}'
+      methods: ['DELETE']
+    }
+  ]
+  path_parts: {
+    /** The view name to remove. */
+    name: Id
+  }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
+}

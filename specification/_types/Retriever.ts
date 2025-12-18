@@ -49,6 +49,8 @@ export class RetrieverContainer {
    * This retriever will rewrite to a PinnedQueryBuilder.
    */
   pinned?: PinnedRetriever
+  /** A retriever that diversifies the results from its child retriever. */
+  diversify?: DiversifyRetriever
 }
 
 export class RetrieverBase {
@@ -205,4 +207,27 @@ export class ChunkRescorer {
   size?: integer
   /** Chunking settings to apply */
   chunking_settings?: ChunkRescorerChunkingSettings
+}
+
+export enum DiversifyRetrieverTypes {
+  mmr = 'mmr'
+}
+
+export class DiversifyRetriever extends RetrieverBase {
+  /** The diversification strategy to apply. */
+  type: DiversifyRetrieverTypes
+  /** The document field on which to diversify results on. */
+  field: string
+  /** The nested retriever whose results will be diversified. */
+  retriever: RetrieverContainer
+  /** The number of top documents to return after diversification. */
+  size?: integer
+  /** The number of top documents from the nested retriever to consider for diversification. */
+  rank_window_size?: integer
+  /** The query vector used for diversification. */
+  query_vector?: QueryVector
+  /** a dense vector query vector builder to use instead of a static query_vector */
+  query_vector_builder?: QueryVectorBuilder
+  /** Controls the trade-off between relevance and diversity for MMR. A value of 0.0 focuses solely on diversity, while a value of 1.0 focuses solely on relevance. Required for MMR */
+  lambda?: float
 }

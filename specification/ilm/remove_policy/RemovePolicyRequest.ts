@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 
 /**
  * Remove policies from an index.
@@ -38,6 +38,8 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The name of the index to remove policy on */
     index: IndexName
   }
+  response_media_type: MediaType.Json
 }

@@ -1261,6 +1261,55 @@ export enum CatAllocationColumn {
 }
 
 /** @non_exhaustive */
+export enum CatCircuitBreakerColumn {
+  /**
+   * Persistent node ID
+   * @aliases id
+   */
+  node_id,
+  /**
+   * Node name
+   * @aliases nn
+   */
+  node_name,
+  /**
+   * Breaker name
+   * @aliases br
+   */
+  breaker,
+  /**
+   * Limit size
+   * @aliases l
+   */
+  limit,
+  /**
+   * Limit size in bytes
+   * @aliases lb
+   */
+  limit_bytes,
+  /**
+   * Estimated size
+   * @aliases e
+   */
+  estimated,
+  /**
+   * Estimated size in bytes
+   * @aliases eb
+   */
+  estimated_bytes,
+  /**
+   * Tripped count
+   * @aliases t
+   */
+  tripped,
+  /**
+   * Overhead
+   * @aliases o
+   */
+  overhead
+}
+
+/** @non_exhaustive */
 export enum CatComponentColumn {
   /**
    * The name of the component template.
@@ -2479,6 +2528,9 @@ export type CatSegmentsColumns = CatSegmentsColumn | CatSegmentsColumn[]
 export type CatSnapshotsColumns = CatSnapshotsColumn | CatSnapshotsColumn[]
 export type CatAliasesColumns = CatAliasesColumn | CatAliasesColumn[]
 export type CatAllocationColumns = CatAllocationColumn | CatAllocationColumn[]
+export type CatCircuitBreakerColumns =
+  | CatCircuitBreakerColumn
+  | CatCircuitBreakerColumn[]
 export type CatComponentColumns = CatComponentColumn | CatComponentColumn[]
 export type CatCountColumns = CatCountColumn | CatCountColumn[]
 export type CatFieldDataColumns = CatFieldDataColumn | CatFieldDataColumn[]

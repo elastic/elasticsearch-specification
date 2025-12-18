@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { CatDfaColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -47,8 +47,10 @@ export interface Request extends CatRequestBase {
     }
   ]
   path_parts: {
+    /** The ID of the data frame analytics to fetch */
     id?: Id
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * Whether to ignore if a wildcard expression matches no configs.

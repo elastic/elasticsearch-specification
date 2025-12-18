@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Start a basic license.
@@ -43,7 +44,12 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * Whether the user has acknowledged acknowledge messages
+     * @server_default false
+     */
     acknowledge?: boolean
     /**
      * Period to wait for a connection to the master node.

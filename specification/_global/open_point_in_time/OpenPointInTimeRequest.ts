@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
   Indices,
+  MediaType,
   ProjectRouting,
   Routing
 } from '@_types/common'
@@ -82,8 +83,13 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /**
+     * A comma-separated list of index names to open point in time; use `_all` or empty string to perform the operation on all indices
+     */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Extend the length of time that the point in time persists.
@@ -99,18 +105,6 @@ export interface Request extends RequestBase {
      * By default, it is random.
      */
     preference?: string
-    /**
-     * Specifies a subset of projects to target for the PIT request using project
-     * metadata tags in a subset of Lucene query syntax.
-     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
-     * Examples:
-     *  _alias:my-project
-     *  _alias:_origin
-     *  _alias:*pr*
-     * Supported in serverless only.
-     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
-     */
-    project_routing?: ProjectRouting
     /**
      * A custom value that is used to route operations to a specific shard.
      */
@@ -140,5 +134,17 @@ export interface Request extends RequestBase {
      * Filter indices if the provided query rewrites to `match_none` on every shard.
      */
     index_filter?: QueryContainer
+    /**
+     * Specifies a subset of projects to target for the PIT request using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }

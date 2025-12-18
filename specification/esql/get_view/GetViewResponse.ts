@@ -17,11 +17,10 @@
  * under the License.
  */
 
-import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
+import { ESQLView } from '@esql/_types/types'
 
-export class DataStreamLifecycleDownsampling {
-  /**
-   * The list of downsampling rounds to execute as part of this downsampling configuration
-   */
-  rounds: DownsamplingRound[]
+export class Response {
+  body: {
+    views: ESQLView[]
+  }
 }

@@ -19,6 +19,7 @@
 import singleKeyDict from './rules/single-key-dictionary-key-is-string.js'
 import dict from './rules/dictionary-key-is-string.js'
 import noNativeTypes from './rules/no-native-types.js'
+import noSameNameAsEnclosingType from './rules/no-same-name-as-enclosing-type.js'
 import invalidNodeTypes from './rules/invalid-node-types.js'
 import noGenericNumber from './rules/no-generic-number.js'
 import requestMustHaveUrls from './rules/request-must-have-urls.js'
@@ -28,12 +29,14 @@ import preferTaggedVariants from './rules/prefer-tagged-variants.js'
 import noDuplicateTypeNames from './rules/no-duplicate-type-names.js'
 import noAllStringLiteralUnions from './rules/no-all-string-literal-unions.js'
 import jsdocEndpointCheck from './rules/jsdoc-endpoint-check.js'
+import codegenExcludeOnRequestOnly from './rules/codegen-exclude-on-request-only.js'
 
 export default {
   rules: {
     'single-key-dictionary-key-is-string': singleKeyDict,
     'dictionary-key-is-string': dict,
     'no-native-types': noNativeTypes,
+    'no-same-name-as-enclosing-type': noSameNameAsEnclosingType,
     'invalid-node-types': invalidNodeTypes,
     'no-generic-number': noGenericNumber,
     'request-must-have-urls': requestMustHaveUrls,
@@ -42,6 +45,7 @@ export default {
     'prefer-tagged-variants': preferTaggedVariants,
     'no-duplicate-type-names': noDuplicateTypeNames,
     'no-all-string-literal-unions': noAllStringLiteralUnions,
-    'jsdoc-endpoint-check': jsdocEndpointCheck
+    'jsdoc-endpoint-check': jsdocEndpointCheck,
+    'codegen-exclude-on-request-only': codegenExcludeOnRequestOnly
   }
 }

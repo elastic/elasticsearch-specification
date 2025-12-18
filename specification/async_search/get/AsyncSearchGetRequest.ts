@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -43,6 +43,7 @@ export interface Request extends RequestBase {
     /** A unique identifier for the async search. */
     id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The length of time that the async search should be available in the cluster.
@@ -52,6 +53,9 @@ export interface Request extends RequestBase {
      * If the search is completed, its saved results are deleted.
      */
     keep_alive?: Duration
+    /**
+     * Specify whether aggregation and suggester names should be prefixed by their respective types in the response
+     */
     typed_keys?: boolean
     /**
      * Specifies to wait for the search to be completed up until the provided timeout.

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Fields, Indices, Routing } from '@_types/common'
+import { Fields, Indices, MediaType, Routing } from '@_types/common'
 import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { SourceConfig } from '@global/search/_types/SourceFilter'
 import { KnnSearchQuery } from './_types/Knn'
@@ -49,6 +49,8 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of specific routing values.

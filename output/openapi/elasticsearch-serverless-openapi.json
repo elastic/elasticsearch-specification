@@ -947,6 +947,40 @@
             "$ref": "#/components/parameters/cat.count-s"
           }
         ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/cat.count"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/cat.count-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cat"
+        ],
+        "summary": "Get a document count",
+        "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "cat-count-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.count-h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count-s"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/cat.count"
+        },
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.count-200"
@@ -968,7 +1002,7 @@
         ],
         "summary": "Get a document count",
         "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
-        "operationId": "cat-count-1",
+        "operationId": "cat-count-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.count-index"
@@ -980,6 +1014,43 @@
             "$ref": "#/components/parameters/cat.count-s"
           }
         ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/cat.count"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/cat.count-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cat"
+        ],
+        "summary": "Get a document count",
+        "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "cat-count-3",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cat.count-index"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count-h"
+          },
+          {
+            "$ref": "#/components/parameters/cat.count-s"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/cat.count"
+        },
         "responses": {
           "200": {
             "$ref": "#/components/responses/cat.count-200"
@@ -9026,7 +9097,7 @@
           {
             "in": "query",
             "name": "include_defaults",
-            "description": "indicates if the API should return the default values the system uses for the index's lifecycle",
+            "description": "Indicates if the API should return the default values the system uses for the index's lifecycle",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -9036,7 +9107,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "Specify timeout for connection to master",
+            "description": "The period to wait for a connection to the master node.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Duration"
@@ -9329,6 +9400,14 @@
                     "items": {
                       "$ref": "#/components/schemas/indices._types.DownsamplingRound"
                     }
+                  },
+                  "downsampling_method": {
+                    "description": "The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires\n`downsampling` to be defined. Defaults to `aggregate`.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/indices._types.SamplingMethod"
+                      }
+                    ]
                   },
                   "enabled": {
                     "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
@@ -10822,109 +10901,67 @@
         "operationId": "indices-resolve-index",
         "parameters": [
           {
-            "in": "path",
-            "name": "name",
-            "description": "Comma-separated name(s) or index pattern(s) of the indices, aliases, and data streams to resolve.\nResources on remote clusters can be specified using the `<cluster>`:`<name>` syntax.",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Names"
-            },
-            "style": "simple"
+            "$ref": "#/components/parameters/indices.resolve_index-name"
           },
           {
-            "in": "query",
-            "name": "expand_wildcards",
-            "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.ExpandWildcards"
-            },
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_index-expand_wildcards"
           },
           {
-            "in": "query",
-            "name": "ignore_unavailable",
-            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_index-ignore_unavailable"
           },
           {
-            "in": "query",
-            "name": "allow_no_indices",
-            "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_index-allow_no_indices"
           },
           {
-            "in": "query",
-            "name": "mode",
-            "description": "Filter indices by index mode - standard, lookup, time_series, etc. Comma-separated list of IndexMode. Empty means no filter.",
-            "deprecated": false,
-            "schema": {
-              "oneOf": [
-                {
-                  "$ref": "#/components/schemas/indices._types.IndexMode"
-                },
-                {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/indices._types.IndexMode"
-                  }
-                }
-              ]
-            },
-            "x-state": "Generally available",
-            "style": "form"
+            "$ref": "#/components/parameters/indices.resolve_index-mode"
           }
         ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/indices.resolve_index"
+        },
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "indices": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/indices.resolve_index.ResolveIndexItem"
-                      }
-                    },
-                    "aliases": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/indices.resolve_index.ResolveIndexAliasItem"
-                      }
-                    },
-                    "data_streams": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/indices.resolve_index.ResolveIndexDataStreamsItem"
-                      }
-                    }
-                  },
-                  "required": [
-                    "indices",
-                    "aliases",
-                    "data_streams"
-                  ]
-                },
-                "examples": {
-                  "ResolveIndexResponseExample1": {
-                    "description": "A successful response from `GET /_resolve/index/f*,remoteCluster1:bar*?expand_wildcards=all`.",
-                    "value": "{\n  \"indices\": [\n    {\n      \"name\": \"foo_closed\",\n      \"attributes\": [\n        \"closed\"\n      ],\n      \"mode\": \"standard\"\n    },\n    {\n      \"name\": \"freeze-index\",\n      \"aliases\": [\n        \"f-alias\"\n      ],\n      \"attributes\": [\n        \"open\"\n      ]\n    },\n    {\n      \"name\": \"remoteCluster1:bar-01\",\n      \"attributes\": [\n        \"open\"\n      ]\n    }\n  ],\n  \"aliases\": [\n    {\n      \"name\": \"f-alias\",\n      \"indices\": [\n        \"freeze-index\",\n        \"my-index-000001\"\n      ]\n    }\n  ],\n  \"data_streams\": [\n    {\n      \"name\": \"foo\",\n      \"backing_indices\": [\n        \".ds-foo-2099.03.07-000001\"\n      ],\n      \"timestamp_field\": \"@timestamp\"\n    }\n  ]\n}"
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/indices.resolve_index-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "indices"
+        ],
+        "summary": "Resolve indices",
+        "description": "Resolve the names and/or index patterns for indices, aliases, and data streams.\nMultiple patterns and remote clusters are supported.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
+        "operationId": "indices-resolve-index-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/indices.resolve_index-name"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_index-expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_index-ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_index-allow_no_indices"
+          },
+          {
+            "$ref": "#/components/parameters/indices.resolve_index-mode"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/indices.resolve_index"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/indices.resolve_index-200"
           }
         },
         "x-state": "Generally available",
@@ -11562,7 +11599,7 @@
           "inference"
         ],
         "summary": "Perform chat completion inference on the service",
-        "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.\nIt only works with the `chat_completion` task type for `openai` and `elastic` inference services.\n\nNOTE: The `chat_completion` task type is only available within the _stream API and only supports streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nIf you use the `openai`, `hugging_face` or the `elastic` service, use the Chat completion inference API.",
+        "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.\nIt only works with the `chat_completion` task type.\n\nNOTE: The `chat_completion` task type is only available within the _stream API and only supports streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nTo determine whether a given inference service supports this task type, please see the page for that service.",
         "operationId": "inference-chat-completion-unified",
         "parameters": [
           {
@@ -11775,7 +11812,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, 'rerank', `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx inference integration (`text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx inference integration (`text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -11898,7 +11935,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, 'rerank', `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx inference integration (`text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx inference integration (`text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -12818,7 +12855,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` task type.",
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` and `chat_completion` task types.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -12865,6 +12902,11 @@
                   "summary": "A completion task",
                   "description": "Run `PUT _inference/completion/azure_openai_completion` to create an inference endpoint that performs a `completion` task.",
                   "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_key\": \"Api-Key\",\n        \"resource_name\": \"Resource-name\",\n        \"deployment_id\": \"Deployment-id\",\n        \"api_version\": \"2024-02-01\"\n    }\n}"
+                },
+                "PutAzureOpenAiRequestExample3": {
+                  "summary": "A chat completion task",
+                  "description": "Run `PUT _inference/chat_completion/azure_openai_chat_completion` to create an inference endpoint that performs a `chat_completion` task.",
+                  "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_key\": \"Api-Key\",\n        \"resource_name\": \"Resource-name\",\n        \"deployment_id\": \"Deployment-id\",\n        \"api_version\": \"2024-02-01\"\n    }\n}"
                 }
               }
             }
@@ -12878,6 +12920,23 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoAzureOpenAI"
+                },
+                "examples": {
+                  "PutAzureOpenAiResponseExample1": {
+                    "summary": "A text embedding task",
+                    "description": "A successful response when creating an Azure OpenAI `text_embedding` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"azure_openai_embeddings\",\n  \"task_type\": \"text_embedding\",\n  \"service\": \"azureopenai\",\n  \"service_settings\": {\n    \"resource_name\": \"Resource-name\",\n    \"deployment_id\": \"Deployment-id\",\n    \"api_version\": \"2024-02-01\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 1140\n    },\n    \"dimensions\": 1536,\n    \"similarity\": \"dot_product\"\n  },\n  \"chunking_settings\": {\n    \"strategy\": \"sentence\",\n    \"max_chunk_size\": 250,\n    \"sentence_overlap\": 1\n  }\n}"
+                  },
+                  "PutAzureOpenAiResponseExample2": {
+                    "summary": "A completion task",
+                    "description": "A successful response when creating an Azure OpenAI `completion` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"azure_openai_completion\",\n  \"task_type\": \"completion\",\n  \"service\": \"azureopenai\",\n  \"service_settings\": {\n    \"resource_name\": \"Resource-name\",\n    \"deployment_id\": \"Deployment-id\",\n    \"api_version\": \"2024-02-01\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 120\n    }\n  }\n}"
+                  },
+                  "PutAzureOpenAiResponseExample3": {
+                    "summary": "A chat completion task",
+                    "description": "A successful response when creating an Azure OpenAI `chat_completion` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"azure_openai_chat_completion\",\n  \"task_type\": \"chat_completion\",\n  \"service\": \"azureopenai\",\n  \"service_settings\": {\n    \"resource_name\": \"Resource-name\",\n    \"deployment_id\": \"Deployment-id\",\n    \"api_version\": \"2024-02-01\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 120\n    }\n  }\n}"
+                  }
                 }
               }
             }
@@ -13975,6 +14034,107 @@
         ]
       }
     },
+    "/_inference/{task_type}/{groq_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create a Groq inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `groq` service.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-groq",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.GroqTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "groq_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "service": {
+                    "description": "The type of service supported for the specified task type. In this case, `groq`.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.GroqServiceType"
+                      }
+                    ]
+                  },
+                  "service_settings": {
+                    "description": "Settings used to install the inference model. These settings are specific to the `groq` service.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.GroqServiceSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutGroqRequestExample1": {
+                  "description": "Run `PUT _inference/chat_completion/groq-chat-completion` to create a Groq inference endpoint that performs a `chat_completion` task.",
+                  "value": "{\n  \"service\": \"groq\",\n  \"service_settings\": {\n    \"api_key\": \"groq-api-key\",\n    \"model_id\": \"llama-3.3-70b-versatile\" \n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoGroq"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_inference/{task_type}/{huggingface_inference_id}": {
       "put": {
         "tags": [
@@ -14445,6 +14605,204 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoMistral"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/{task_type}/{nvidia_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Nvidia inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `nvidia` service.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-nvidia",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.\nNOTE: The `chat_completion` task type only supports streaming and only through the _stream API.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.NvidiaTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "nvidia_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
+                    },
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
+                      }
+                    ]
+                  },
+                  "service": {
+                    "description": "The type of service supported for the specified task type. In this case, `nvidia`.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.NvidiaServiceType"
+                      }
+                    ]
+                  },
+                  "service_settings": {
+                    "description": "Settings used to install the inference model. These settings are specific to the `nvidia` service.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.NvidiaServiceSettings"
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Settings to configure the inference task.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.\nThese settings are specific to the task type you specified.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.NvidiaTaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutNvidiaRequestExample1": {
+                  "summary": "A text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/nvidia-text-embedding` to create an inference endpoint that performs a `text_embedding` task.",
+                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"url\": \"nvidia-embeddings-url\",\n        \"api_key\": \"nvidia-embeddings-token\",\n        \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\"\n    }\n}"
+                },
+                "PutNvidiaRequestExample2": {
+                  "summary": "A text embedding task with custom `task_settings` and no `url` parameter",
+                  "description": "Run `PUT _inference/text_embedding/nvidia-text-embedding` to create an inference endpoint that performs a `text_embedding` task, specifying custom `task_settings` and omitting the `url` parameter if model is accessible via default NVIDIA endpoint.",
+                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n        \"api_key\": \"nvidia-text-embeddings-token\"\n    },\n    \"task_settings\": {\n        \"input_type\": \"ingest\",\n        \"truncate\": \"start\"\n    }\n}"
+                },
+                "PutNvidiaRequestExample3": {
+                  "summary": "A completion task",
+                  "description": "Run `PUT _inference/completion/nvidia-completion` to create an inference endpoint that performs a `completion` task.",
+                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"url\": \"nvidia-completion-url\",\n        \"api_key\": \"nvidia-completion-token\",\n        \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n}"
+                },
+                "PutNvidiaRequestExample4": {
+                  "summary": "A completion task without `url` parameter",
+                  "description": "Run `PUT _inference/completion/nvidia-completion` to create an inference endpoint that performs a `completion` task, omitting the `url` parameter if model is accessible via default NVIDIA endpoint.",
+                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"api_key\": \"nvidia-completion-token\",\n        \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n}"
+                },
+                "PutNvidiaRequestExample5": {
+                  "summary": "A chat completion task",
+                  "description": "Run `PUT _inference/chat_completion/nvidia-chat-completion` to create an inference endpoint that performs a `chat_completion` task.",
+                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"url\": \"nvidia-chat-completion-url\",\n        \"api_key\": \"nvidia-chat-completion-token\",\n        \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n}"
+                },
+                "PutNvidiaRequestExample6": {
+                  "summary": "A chat completion task without `url` parameter",
+                  "description": "Run `PUT _inference/chat_completion/nvidia-chat-completion` to create an inference endpoint that performs a `chat_completion` task, omitting the `url` parameter if model is accessible via default NVIDIA endpoint.",
+                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"api_key\": \"nvidia-chat-completion-token\",\n        \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n}"
+                },
+                "PutNvidiaRequestExample7": {
+                  "summary": "A rerank task",
+                  "description": "Run `PUT _inference/rerank/nvidia-rerank` to create an inference endpoint that performs a `rerank` task.",
+                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"url\": \"nvidia-rerank-url\",\n        \"api_key\": \"nvidia-rerank-token\",\n        \"model_id\": \"nv-rerank-qa-mistral-4b:1\"\n    }\n}"
+                },
+                "PutNvidiaRequestExample8": {
+                  "summary": "A rerank task without `url` parameter",
+                  "description": "Run `PUT _inference/rerank/nvidia-rerank` to create an inference endpoint that performs a `rerank` task, omitting the `url` parameter if model is accessible via default NVIDIA endpoint.",
+                  "value": "{\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n        \"api_key\": \"nvidia-rerank-token\",\n        \"model_id\": \"nv-rerank-qa-mistral-4b:1\"\n    }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoNvidia"
+                },
+                "examples": {
+                  "PutNvidiaResponseExample1": {
+                    "summary": "A text embedding task",
+                    "description": "A successful response when creating an Nvidia `text_embedding` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"nvidia-text-embedding\",\n  \"task_type\": \"text_embedding\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n    \"url\": \"nvidia-embeddings-url\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    },\n    \"dimensions\": 2048,\n    \"similarity\": \"dot_product\"\n  },\n  \"chunking_settings\": {\n    \"strategy\": \"sentence\",\n    \"max_chunk_size\": 250,\n    \"sentence_overlap\": 1\n  }\n}"
+                  },
+                  "PutNvidiaResponseExample2": {
+                    "summary": "A text embedding task with custom `task_settings` and no `url` parameter",
+                    "description": "A successful response when creating an Nvidia `text_embedding` inference endpoint with custom `task_settings` and no `url` parameter.",
+                    "value": "{\n  \"inference_id\": \"nvidia-text-embedding\",\n  \"task_type\": \"text_embedding\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    },\n    \"dimensions\": 2048,\n    \"similarity\": \"dot_product\"\n  },\n  \"task_settings\": {\n    \"input_type\": \"ingest\",\n    \"truncate\": \"start\"\n  },\n  \"chunking_settings\": {\n    \"strategy\": \"sentence\",\n    \"max_chunk_size\": 250,\n    \"sentence_overlap\": 1\n  }\n}"
+                  },
+                  "PutNvidiaResponseExample3": {
+                    "summary": "A completion task",
+                    "description": "A successful response when creating an Nvidia `completion` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"nvidia-completion\",\n  \"task_type\": \"completion\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"microsoft/phi-3-mini-128k-instruct\",\n    \"url\": \"nvidia-completion-url\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
+                  },
+                  "PutNvidiaResponseExample4": {
+                    "summary": "A completion task without `url` parameter",
+                    "description": "A successful response when creating an Nvidia `completion` inference endpoint without `url` parameter.",
+                    "value": "{\n  \"inference_id\": \"nvidia-completion\",\n  \"task_type\": \"completion\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"microsoft/phi-3-mini-128k-instruct\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
+                  },
+                  "PutNvidiaResponseExample5": {
+                    "summary": "A chat completion task",
+                    "description": "A successful response when creating an Nvidia `chat_completion` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"nvidia-chat-completion\",\n  \"task_type\": \"chat_completion\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"microsoft/phi-3-mini-128k-instruct\",\n    \"url\": \"nvidia-chat-completion-url\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
+                  },
+                  "PutNvidiaResponseExample6": {
+                    "summary": "A chat completion task without `url` parameter",
+                    "description": "A successful response when creating an Nvidia `chat_completion` inference endpoint without `url` parameter.",
+                    "value": "{\n  \"inference_id\": \"nvidia-chat-completion\",\n  \"task_type\": \"chat_completion\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"microsoft/phi-3-mini-128k-instruct\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
+                  },
+                  "PutNvidiaResponseExample7": {
+                    "summary": "A rerank task",
+                    "description": "A successful response when creating an Nvidia `rerank` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"nvidia-rerank\",\n  \"task_type\": \"rerank\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"nv-rerank-qa-mistral-4b:1\",\n    \"url\": \"nvidia-rerank-url\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
+                  },
+                  "PutNvidiaResponseExample8": {
+                    "summary": "A rerank task without `url` parameter",
+                    "description": "A successful response when creating an Nvidia `rerank` inference endpoint without `url` parameter.",
+                    "value": "{\n  \"inference_id\": \"nvidia-rerank\",\n  \"task_type\": \"rerank\",\n  \"service\": \"nvidia\",\n  \"service_settings\": {\n    \"model_id\": \"nv-rerank-qa-mistral-4b:1\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 3000\n    }\n  }\n}"
+                  }
                 }
               }
             }
@@ -20439,6 +20797,34 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "If provided, must be the same identifier as in the path.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Id"
+                      }
+                    ]
+                  },
+                  "timeout": {
+                    "description": "Controls the amount of time to wait until the data frame analytics job\nstarts.",
+                    "default": "20s",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -20652,7 +21038,7 @@
           {
             "in": "query",
             "name": "priority",
-            "description": "The deployment priority.",
+            "description": "The deployment priority",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/ml._types.TrainingPriority"
@@ -20803,6 +21189,44 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "If provided, must be the same identifier as in the path.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Id"
+                      }
+                    ]
+                  },
+                  "allow_no_match": {
+                    "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no data frame analytics\njobs that match.\n2. Contains the _all string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is true, which returns an empty data_frame_analytics\narray when there are no matches and the subset of results when there are\npartial matches. If this parameter is false, the request returns a 404\nstatus code when there are no matches or only partial matches.",
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "force": {
+                    "description": "If true, the data frame analytics job is stopped forcefully.",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "timeout": {
+                    "description": "Controls the amount of time to wait until the data frame analytics job\nstops. Defaults to 20 seconds.",
+                    "default": "20s",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -20989,6 +21413,35 @@
             "style": "form"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "If provided, must be the same identifier as in the path.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Id"
+                      }
+                    ]
+                  },
+                  "allow_no_match": {
+                    "description": "Specifies what to do when the request: contains wildcard expressions and there are no deployments that match;\ncontains the  `_all` string or no identifiers and there are no matches; or contains wildcard expressions and\nthere are only partial matches. By default, it returns an empty array when there are no matches and the subset of results when there are partial matches.\nIf `false`, the request returns a 404 status code when there are no matches or only partial matches.",
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "force": {
+                    "description": "Forcefully stops the deployment, even if it is used by ingest pipelines. You can't use these pipelines until you\nrestart the model deployment.",
+                    "default": false,
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "",
@@ -23736,7 +24189,7 @@
           "document"
         ],
         "summary": "Reindex documents",
-        "description": "Copy documents from a source to a destination.\nYou can copy all documents to the destination index or reindex a subset of the documents.\nThe source can be any existing index, alias, or data stream.\nThe destination must differ from the source.\nFor example, you cannot reindex a data stream into itself.\n\nIMPORTANT: Reindex requires `_source` to be enabled for all documents in the source.\nThe destination should be configured as wanted before calling the reindex API.\nReindex does not copy the settings from the source or its associated template.\nMappings, shard counts, and replicas, for example, must be configured ahead of time.\n\nIf the Elasticsearch security features are enabled, you must have the following security privileges:\n\n* The `read` index privilege for the source data stream, index, or alias.\n* The `write` index privilege for the destination data stream, index, or index alias.\n* To automatically create a data stream or index with a reindex API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege for the destination data stream, index, or alias.\n* If reindexing from a remote cluster, the `source.remote.user` must have the `monitor` cluster privilege and the `read` index privilege for the source data stream, index, or alias.\n\nIf reindexing from a remote cluster, you must explicitly allow the remote host in the `reindex.remote.whitelist` setting.\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe `dest` element can be configured like the index API to control optimistic concurrency control.\nOmitting `version_type` or setting it to `internal` causes Elasticsearch to blindly dump documents into the destination, overwriting any that happen to have the same ID.\n\nSetting `version_type` to `external` causes Elasticsearch to preserve the `version` from the source, create any documents that are missing, and update any documents that have an older version in the destination than they do in the source.\n\nSetting `op_type` to `create` causes the reindex API to create only missing documents in the destination.\nAll existing documents will cause a version conflict.\n\nIMPORTANT: Because data streams are append-only, any reindex request to a destination data stream must have an `op_type` of `create`.\nA reindex can only add new documents to a destination data stream.\nIt cannot update existing documents in a destination data stream.\n\nBy default, version conflicts abort the reindex process.\nTo continue reindexing if there are conflicts, set the `conflicts` request body property to `proceed`.\nIn this case, the response includes a count of the version conflicts that were encountered.\nNote that the handling of other error types is unaffected by the `conflicts` property.\nAdditionally, if you opt to count version conflicts, the operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.\n\nIt's recommended to reindex on indices with a green status. Reindexing can fail when a node shuts down or crashes.\n* When requested with `wait_for_completion=true` (default), the request fails if the node shuts down.\n* When requested with `wait_for_completion=false`, a task id is returned, for use with the task management APIs. The task may disappear or fail if the node shuts down.\nWhen retrying a failed reindex operation, it might be necessary to set `conflicts=proceed` or to first delete the partial destination index.\nAdditionally, dry runs, checking disk space, and fetching index recovery information can help address the root cause.\n\nRefer to the linked documentation for examples of how to reindex documents.\n\n## Required authorization\n\n* Index privileges: `read`,`write`\n",
+        "description": "Copy documents from a source to a destination.\nYou can copy all documents to the destination index or reindex a subset of the documents.\nThe source can be any existing index, alias, or data stream.\nThe destination must differ from the source.\nFor example, you cannot reindex a data stream into itself.\n\nIMPORTANT: Reindex requires `_source` to be enabled for all documents in the source.\nThe destination should be configured as wanted before calling the reindex API.\nReindex does not copy the settings from the source or its associated template.\nMappings, shard counts, and replicas, for example, must be configured ahead of time.\n\nIf the Elasticsearch security features are enabled, you must have the following security privileges:\n\n* The `read` index privilege for the source data stream, index, or alias.\n* The `write` index privilege for the destination data stream, index, or index alias.\n* To automatically create a data stream or index with a reindex API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege for the destination data stream, index, or alias.\n* If reindexing from a remote cluster, the `source.remote.user` must have the `monitor` cluster privilege and the `read` index privilege for the source data stream, index, or alias.\n\nIf reindexing from a remote cluster into a cluster using Elastic Stack, you must explicitly allow the remote host using the `reindex.remote.whitelist` node setting on the destination cluster.\nIf reindexing from a remote cluster into an Elastic Cloud Serverless project, only remote hosts from Elastic Cloud Hosted are allowed.\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe `dest` element can be configured like the index API to control optimistic concurrency control.\nOmitting `version_type` or setting it to `internal` causes Elasticsearch to blindly dump documents into the destination, overwriting any that happen to have the same ID.\n\nSetting `version_type` to `external` causes Elasticsearch to preserve the `version` from the source, create any documents that are missing, and update any documents that have an older version in the destination than they do in the source.\n\nSetting `op_type` to `create` causes the reindex API to create only missing documents in the destination.\nAll existing documents will cause a version conflict.\n\nIMPORTANT: Because data streams are append-only, any reindex request to a destination data stream must have an `op_type` of `create`.\nA reindex can only add new documents to a destination data stream.\nIt cannot update existing documents in a destination data stream.\n\nBy default, version conflicts abort the reindex process.\nTo continue reindexing if there are conflicts, set the `conflicts` request body property to `proceed`.\nIn this case, the response includes a count of the version conflicts that were encountered.\nNote that the handling of other error types is unaffected by the `conflicts` property.\nAdditionally, if you opt to count version conflicts, the operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.\n\nIt's recommended to reindex on indices with a green status. Reindexing can fail when a node shuts down or crashes.\n* When requested with `wait_for_completion=true` (default), the request fails if the node shuts down.\n* When requested with `wait_for_completion=false`, a task id is returned, for use with the task management APIs. The task may disappear or fail if the node shuts down.\nWhen retrying a failed reindex operation, it might be necessary to set `conflicts=proceed` or to first delete the partial destination index.\nAdditionally, dry runs, checking disk space, and fetching index recovery information can help address the root cause.\n\nRefer to the linked documentation for examples of how to reindex documents.\n\n## Required authorization\n\n* Index privileges: `read`,`write`\n",
         "externalDocs": {
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reindex-indices",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-reindex.html"
@@ -28418,6 +28871,35 @@
                     "description": "A successful response when the transform is deleted.",
                     "value": "{\n  \"acknowledged\": true\n}"
                   }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_transform/_node_stats": {
+      "get": {
+        "tags": [
+          "transform"
+        ],
+        "summary": "Get node stats",
+        "description": "Get per-node information about transform usage.",
+        "operationId": "transform-get-node-stats",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/transform.get_node_stats.TransformNodeFullStats"
                 }
               }
             }
@@ -39856,6 +40338,14 @@
                 "$ref": "#/components/schemas/_types.PinnedRetriever"
               }
             ]
+          },
+          "diversify": {
+            "description": "A retriever that diversifies the results from its child retriever.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DiversifyRetriever"
+              }
+            ]
           }
         },
         "minProperties": 1,
@@ -40395,6 +40885,77 @@
         },
         "required": [
           "id"
+        ]
+      },
+      "_types.DiversifyRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "The diversification strategy to apply.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.DiversifyRetrieverTypes"
+                  }
+                ]
+              },
+              "field": {
+                "description": "The document field on which to diversify results on.",
+                "type": "string"
+              },
+              "retriever": {
+                "description": "The nested retriever whose results will be diversified.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.RetrieverContainer"
+                  }
+                ]
+              },
+              "size": {
+                "description": "The number of top documents to return after diversification.",
+                "type": "number"
+              },
+              "rank_window_size": {
+                "description": "The number of top documents from the nested retriever to consider for diversification.",
+                "type": "number"
+              },
+              "query_vector": {
+                "description": "The query vector used for diversification.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.QueryVector"
+                  }
+                ]
+              },
+              "query_vector_builder": {
+                "description": "a dense vector query vector builder to use instead of a static query_vector",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.QueryVectorBuilder"
+                  }
+                ]
+              },
+              "lambda": {
+                "description": "Controls the trade-off between relevance and diversity for MMR. A value of 0.0 focuses solely on diversity, while a value of 1.0 focuses solely on relevance. Required for MMR",
+                "type": "number"
+              }
+            },
+            "required": [
+              "type",
+              "field",
+              "retriever"
+            ]
+          }
+        ]
+      },
+      "_types.DiversifyRetrieverTypes": {
+        "type": "string",
+        "enum": [
+          "mmr"
         ]
       },
       "_types.SlicedScroll": {
@@ -46313,7 +46874,14 @@
       },
       "_types.aggregations.MovingAverageAggregation": {
         "discriminator": {
-          "propertyName": "model"
+          "propertyName": "model",
+          "mapping": {
+            "linear": "#/components/schemas/_types.aggregations.LinearMovingAverageAggregation",
+            "simple": "#/components/schemas/_types.aggregations.SimpleMovingAverageAggregation",
+            "ewma": "#/components/schemas/_types.aggregations.EwmaMovingAverageAggregation",
+            "holt": "#/components/schemas/_types.aggregations.HoltMovingAverageAggregation",
+            "holt_winters": "#/components/schemas/_types.aggregations.HoltWintersMovingAverageAggregation"
+          }
         },
         "oneOf": [
           {
@@ -50949,13 +51517,9 @@
           },
           "data_stream_options": {
             "x-state": "Generally available",
-            "oneOf": [
+            "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
-              },
-              {
-                "nullable": true,
-                "type": "string"
+                "$ref": "#/components/schemas/indices._types.DataStreamOptions"
               }
             ]
           }
@@ -52019,7 +52583,58 @@
       },
       "_types.analysis.Analyzer": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "custom": "#/components/schemas/_types.analysis.CustomAnalyzer",
+            "fingerprint": "#/components/schemas/_types.analysis.FingerprintAnalyzer",
+            "keyword": "#/components/schemas/_types.analysis.KeywordAnalyzer",
+            "nori": "#/components/schemas/_types.analysis.NoriAnalyzer",
+            "pattern": "#/components/schemas/_types.analysis.PatternAnalyzer",
+            "simple": "#/components/schemas/_types.analysis.SimpleAnalyzer",
+            "standard": "#/components/schemas/_types.analysis.StandardAnalyzer",
+            "stop": "#/components/schemas/_types.analysis.StopAnalyzer",
+            "whitespace": "#/components/schemas/_types.analysis.WhitespaceAnalyzer",
+            "icu_analyzer": "#/components/schemas/_types.analysis.IcuAnalyzer",
+            "kuromoji": "#/components/schemas/_types.analysis.KuromojiAnalyzer",
+            "snowball": "#/components/schemas/_types.analysis.SnowballAnalyzer",
+            "arabic": "#/components/schemas/_types.analysis.ArabicAnalyzer",
+            "armenian": "#/components/schemas/_types.analysis.ArmenianAnalyzer",
+            "basque": "#/components/schemas/_types.analysis.BasqueAnalyzer",
+            "bengali": "#/components/schemas/_types.analysis.BengaliAnalyzer",
+            "brazilian": "#/components/schemas/_types.analysis.BrazilianAnalyzer",
+            "bulgarian": "#/components/schemas/_types.analysis.BulgarianAnalyzer",
+            "catalan": "#/components/schemas/_types.analysis.CatalanAnalyzer",
+            "chinese": "#/components/schemas/_types.analysis.ChineseAnalyzer",
+            "cjk": "#/components/schemas/_types.analysis.CjkAnalyzer",
+            "czech": "#/components/schemas/_types.analysis.CzechAnalyzer",
+            "danish": "#/components/schemas/_types.analysis.DanishAnalyzer",
+            "dutch": "#/components/schemas/_types.analysis.DutchAnalyzer",
+            "english": "#/components/schemas/_types.analysis.EnglishAnalyzer",
+            "estonian": "#/components/schemas/_types.analysis.EstonianAnalyzer",
+            "finnish": "#/components/schemas/_types.analysis.FinnishAnalyzer",
+            "french": "#/components/schemas/_types.analysis.FrenchAnalyzer",
+            "galician": "#/components/schemas/_types.analysis.GalicianAnalyzer",
+            "german": "#/components/schemas/_types.analysis.GermanAnalyzer",
+            "greek": "#/components/schemas/_types.analysis.GreekAnalyzer",
+            "hindi": "#/components/schemas/_types.analysis.HindiAnalyzer",
+            "hungarian": "#/components/schemas/_types.analysis.HungarianAnalyzer",
+            "indonesian": "#/components/schemas/_types.analysis.IndonesianAnalyzer",
+            "irish": "#/components/schemas/_types.analysis.IrishAnalyzer",
+            "italian": "#/components/schemas/_types.analysis.ItalianAnalyzer",
+            "latvian": "#/components/schemas/_types.analysis.LatvianAnalyzer",
+            "lithuanian": "#/components/schemas/_types.analysis.LithuanianAnalyzer",
+            "norwegian": "#/components/schemas/_types.analysis.NorwegianAnalyzer",
+            "persian": "#/components/schemas/_types.analysis.PersianAnalyzer",
+            "portuguese": "#/components/schemas/_types.analysis.PortugueseAnalyzer",
+            "romanian": "#/components/schemas/_types.analysis.RomanianAnalyzer",
+            "russian": "#/components/schemas/_types.analysis.RussianAnalyzer",
+            "serbian": "#/components/schemas/_types.analysis.SerbianAnalyzer",
+            "sorani": "#/components/schemas/_types.analysis.SoraniAnalyzer",
+            "spanish": "#/components/schemas/_types.analysis.SpanishAnalyzer",
+            "swedish": "#/components/schemas/_types.analysis.SwedishAnalyzer",
+            "turkish": "#/components/schemas/_types.analysis.TurkishAnalyzer",
+            "thai": "#/components/schemas/_types.analysis.ThaiAnalyzer"
+          }
         },
         "oneOf": [
           {
@@ -53716,7 +54331,14 @@
       },
       "_types.analysis.CharFilterDefinition": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "html_strip": "#/components/schemas/_types.analysis.HtmlStripCharFilter",
+            "mapping": "#/components/schemas/_types.analysis.MappingCharFilter",
+            "pattern_replace": "#/components/schemas/_types.analysis.PatternReplaceCharFilter",
+            "icu_normalizer": "#/components/schemas/_types.analysis.IcuNormalizationCharFilter",
+            "kuromoji_iteration_mark": "#/components/schemas/_types.analysis.KuromojiIterationMarkCharFilter"
+          }
         },
         "oneOf": [
           {
@@ -53918,7 +54540,83 @@
       },
       "_types.analysis.TokenFilterDefinition": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "apostrophe": "#/components/schemas/_types.analysis.ApostropheTokenFilter",
+            "arabic_stem": "#/components/schemas/_types.analysis.ArabicStemTokenFilter",
+            "arabic_normalization": "#/components/schemas/_types.analysis.ArabicNormalizationTokenFilter",
+            "asciifolding": "#/components/schemas/_types.analysis.AsciiFoldingTokenFilter",
+            "bengali_normalization": "#/components/schemas/_types.analysis.BengaliNormalizationTokenFilter",
+            "brazilian_stem": "#/components/schemas/_types.analysis.BrazilianStemTokenFilter",
+            "cjk_bigram": "#/components/schemas/_types.analysis.CjkBigramTokenFilter",
+            "cjk_width": "#/components/schemas/_types.analysis.CjkWidthTokenFilter",
+            "classic": "#/components/schemas/_types.analysis.ClassicTokenFilter",
+            "common_grams": "#/components/schemas/_types.analysis.CommonGramsTokenFilter",
+            "condition": "#/components/schemas/_types.analysis.ConditionTokenFilter",
+            "czech_stem": "#/components/schemas/_types.analysis.CzechStemTokenFilter",
+            "decimal_digit": "#/components/schemas/_types.analysis.DecimalDigitTokenFilter",
+            "delimited_payload": "#/components/schemas/_types.analysis.DelimitedPayloadTokenFilter",
+            "dutch_stem": "#/components/schemas/_types.analysis.DutchStemTokenFilter",
+            "edge_ngram": "#/components/schemas/_types.analysis.EdgeNGramTokenFilter",
+            "elision": "#/components/schemas/_types.analysis.ElisionTokenFilter",
+            "fingerprint": "#/components/schemas/_types.analysis.FingerprintTokenFilter",
+            "flatten_graph": "#/components/schemas/_types.analysis.FlattenGraphTokenFilter",
+            "french_stem": "#/components/schemas/_types.analysis.FrenchStemTokenFilter",
+            "german_normalization": "#/components/schemas/_types.analysis.GermanNormalizationTokenFilter",
+            "german_stem": "#/components/schemas/_types.analysis.GermanStemTokenFilter",
+            "hindi_normalization": "#/components/schemas/_types.analysis.HindiNormalizationTokenFilter",
+            "hunspell": "#/components/schemas/_types.analysis.HunspellTokenFilter",
+            "hyphenation_decompounder": "#/components/schemas/_types.analysis.HyphenationDecompounderTokenFilter",
+            "indic_normalization": "#/components/schemas/_types.analysis.IndicNormalizationTokenFilter",
+            "keep_types": "#/components/schemas/_types.analysis.KeepTypesTokenFilter",
+            "keep": "#/components/schemas/_types.analysis.KeepWordsTokenFilter",
+            "keyword_marker": "#/components/schemas/_types.analysis.KeywordMarkerTokenFilter",
+            "keyword_repeat": "#/components/schemas/_types.analysis.KeywordRepeatTokenFilter",
+            "kstem": "#/components/schemas/_types.analysis.KStemTokenFilter",
+            "length": "#/components/schemas/_types.analysis.LengthTokenFilter",
+            "limit": "#/components/schemas/_types.analysis.LimitTokenCountTokenFilter",
+            "lowercase": "#/components/schemas/_types.analysis.LowercaseTokenFilter",
+            "min_hash": "#/components/schemas/_types.analysis.MinHashTokenFilter",
+            "multiplexer": "#/components/schemas/_types.analysis.MultiplexerTokenFilter",
+            "ngram": "#/components/schemas/_types.analysis.NGramTokenFilter",
+            "nori_part_of_speech": "#/components/schemas/_types.analysis.NoriPartOfSpeechTokenFilter",
+            "pattern_capture": "#/components/schemas/_types.analysis.PatternCaptureTokenFilter",
+            "pattern_replace": "#/components/schemas/_types.analysis.PatternReplaceTokenFilter",
+            "persian_normalization": "#/components/schemas/_types.analysis.PersianNormalizationTokenFilter",
+            "persian_stem": "#/components/schemas/_types.analysis.PersianStemTokenFilter",
+            "porter_stem": "#/components/schemas/_types.analysis.PorterStemTokenFilter",
+            "predicate_token_filter": "#/components/schemas/_types.analysis.PredicateTokenFilter",
+            "remove_duplicates": "#/components/schemas/_types.analysis.RemoveDuplicatesTokenFilter",
+            "reverse": "#/components/schemas/_types.analysis.ReverseTokenFilter",
+            "russian_stem": "#/components/schemas/_types.analysis.RussianStemTokenFilter",
+            "scandinavian_folding": "#/components/schemas/_types.analysis.ScandinavianFoldingTokenFilter",
+            "scandinavian_normalization": "#/components/schemas/_types.analysis.ScandinavianNormalizationTokenFilter",
+            "serbian_normalization": "#/components/schemas/_types.analysis.SerbianNormalizationTokenFilter",
+            "shingle": "#/components/schemas/_types.analysis.ShingleTokenFilter",
+            "snowball": "#/components/schemas/_types.analysis.SnowballTokenFilter",
+            "sorani_normalization": "#/components/schemas/_types.analysis.SoraniNormalizationTokenFilter",
+            "stemmer_override": "#/components/schemas/_types.analysis.StemmerOverrideTokenFilter",
+            "stemmer": "#/components/schemas/_types.analysis.StemmerTokenFilter",
+            "stop": "#/components/schemas/_types.analysis.StopTokenFilter",
+            "synonym_graph": "#/components/schemas/_types.analysis.SynonymGraphTokenFilter",
+            "synonym": "#/components/schemas/_types.analysis.SynonymTokenFilter",
+            "trim": "#/components/schemas/_types.analysis.TrimTokenFilter",
+            "truncate": "#/components/schemas/_types.analysis.TruncateTokenFilter",
+            "unique": "#/components/schemas/_types.analysis.UniqueTokenFilter",
+            "uppercase": "#/components/schemas/_types.analysis.UppercaseTokenFilter",
+            "word_delimiter_graph": "#/components/schemas/_types.analysis.WordDelimiterGraphTokenFilter",
+            "word_delimiter": "#/components/schemas/_types.analysis.WordDelimiterTokenFilter",
+            "ja_stop": "#/components/schemas/_types.analysis.JaStopTokenFilter",
+            "kuromoji_stemmer": "#/components/schemas/_types.analysis.KuromojiStemmerTokenFilter",
+            "kuromoji_readingform": "#/components/schemas/_types.analysis.KuromojiReadingFormTokenFilter",
+            "kuromoji_part_of_speech": "#/components/schemas/_types.analysis.KuromojiPartOfSpeechTokenFilter",
+            "icu_collation": "#/components/schemas/_types.analysis.IcuCollationTokenFilter",
+            "icu_folding": "#/components/schemas/_types.analysis.IcuFoldingTokenFilter",
+            "icu_normalizer": "#/components/schemas/_types.analysis.IcuNormalizationTokenFilter",
+            "icu_transform": "#/components/schemas/_types.analysis.IcuTransformTokenFilter",
+            "phonetic": "#/components/schemas/_types.analysis.PhoneticTokenFilter",
+            "dictionary_decompounder": "#/components/schemas/_types.analysis.DictionaryDecompounderTokenFilter"
+          }
         },
         "oneOf": [
           {
@@ -56568,7 +57266,11 @@
       },
       "_types.analysis.Normalizer": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "lowercase": "#/components/schemas/_types.analysis.LowercaseNormalizer",
+            "custom": "#/components/schemas/_types.analysis.CustomNormalizer"
+          }
         },
         "oneOf": [
           {
@@ -56634,7 +57336,27 @@
       },
       "_types.analysis.TokenizerDefinition": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "char_group": "#/components/schemas/_types.analysis.CharGroupTokenizer",
+            "classic": "#/components/schemas/_types.analysis.ClassicTokenizer",
+            "edge_ngram": "#/components/schemas/_types.analysis.EdgeNGramTokenizer",
+            "keyword": "#/components/schemas/_types.analysis.KeywordTokenizer",
+            "letter": "#/components/schemas/_types.analysis.LetterTokenizer",
+            "lowercase": "#/components/schemas/_types.analysis.LowercaseTokenizer",
+            "ngram": "#/components/schemas/_types.analysis.NGramTokenizer",
+            "path_hierarchy": "#/components/schemas/_types.analysis.PathHierarchyTokenizer",
+            "pattern": "#/components/schemas/_types.analysis.PatternTokenizer",
+            "simple_pattern": "#/components/schemas/_types.analysis.SimplePatternTokenizer",
+            "simple_pattern_split": "#/components/schemas/_types.analysis.SimplePatternSplitTokenizer",
+            "standard": "#/components/schemas/_types.analysis.StandardTokenizer",
+            "thai": "#/components/schemas/_types.analysis.ThaiTokenizer",
+            "uax_url_email": "#/components/schemas/_types.analysis.UaxEmailUrlTokenizer",
+            "whitespace": "#/components/schemas/_types.analysis.WhitespaceTokenizer",
+            "icu_tokenizer": "#/components/schemas/_types.analysis.IcuTokenizer",
+            "kuromoji_tokenizer": "#/components/schemas/_types.analysis.KuromojiTokenizer",
+            "nori_tokenizer": "#/components/schemas/_types.analysis.NoriTokenizer"
+          }
         },
         "oneOf": [
           {
@@ -57290,7 +58012,17 @@
       },
       "indices._types.SettingsSimilarity": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "BM25": "#/components/schemas/indices._types.SettingsSimilarityBm25",
+            "boolean": "#/components/schemas/indices._types.SettingsSimilarityBoolean",
+            "DFI": "#/components/schemas/indices._types.SettingsSimilarityDfi",
+            "DFR": "#/components/schemas/indices._types.SettingsSimilarityDfr",
+            "IB": "#/components/schemas/indices._types.SettingsSimilarityIb",
+            "LMDirichlet": "#/components/schemas/indices._types.SettingsSimilarityLmd",
+            "LMJelinekMercer": "#/components/schemas/indices._types.SettingsSimilarityLmj",
+            "scripted": "#/components/schemas/indices._types.SettingsSimilarityScripted"
+          }
         },
         "oneOf": [
           {
@@ -58125,7 +58857,61 @@
       },
       "_types.mapping.Property": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "binary": "#/components/schemas/_types.mapping.BinaryProperty",
+            "boolean": "#/components/schemas/_types.mapping.BooleanProperty",
+            "{dynamic_type}": "#/components/schemas/_types.mapping.DynamicProperty",
+            "join": "#/components/schemas/_types.mapping.JoinProperty",
+            "keyword": "#/components/schemas/_types.mapping.KeywordProperty",
+            "match_only_text": "#/components/schemas/_types.mapping.MatchOnlyTextProperty",
+            "percolator": "#/components/schemas/_types.mapping.PercolatorProperty",
+            "rank_feature": "#/components/schemas/_types.mapping.RankFeatureProperty",
+            "rank_features": "#/components/schemas/_types.mapping.RankFeaturesProperty",
+            "search_as_you_type": "#/components/schemas/_types.mapping.SearchAsYouTypeProperty",
+            "text": "#/components/schemas/_types.mapping.TextProperty",
+            "version": "#/components/schemas/_types.mapping.VersionProperty",
+            "wildcard": "#/components/schemas/_types.mapping.WildcardProperty",
+            "date_nanos": "#/components/schemas/_types.mapping.DateNanosProperty",
+            "date": "#/components/schemas/_types.mapping.DateProperty",
+            "aggregate_metric_double": "#/components/schemas/_types.mapping.AggregateMetricDoubleProperty",
+            "dense_vector": "#/components/schemas/_types.mapping.DenseVectorProperty",
+            "flattened": "#/components/schemas/_types.mapping.FlattenedProperty",
+            "nested": "#/components/schemas/_types.mapping.NestedProperty",
+            "object": "#/components/schemas/_types.mapping.ObjectProperty",
+            "passthrough": "#/components/schemas/_types.mapping.PassthroughObjectProperty",
+            "rank_vectors": "#/components/schemas/_types.mapping.RankVectorProperty",
+            "semantic_text": "#/components/schemas/_types.mapping.SemanticTextProperty",
+            "sparse_vector": "#/components/schemas/_types.mapping.SparseVectorProperty",
+            "completion": "#/components/schemas/_types.mapping.CompletionProperty",
+            "constant_keyword": "#/components/schemas/_types.mapping.ConstantKeywordProperty",
+            "counted_keyword": "#/components/schemas/_types.mapping.CountedKeywordProperty",
+            "alias": "#/components/schemas/_types.mapping.FieldAliasProperty",
+            "histogram": "#/components/schemas/_types.mapping.HistogramProperty",
+            "ip": "#/components/schemas/_types.mapping.IpProperty",
+            "murmur3": "#/components/schemas/_types.mapping.Murmur3HashProperty",
+            "token_count": "#/components/schemas/_types.mapping.TokenCountProperty",
+            "geo_point": "#/components/schemas/_types.mapping.GeoPointProperty",
+            "geo_shape": "#/components/schemas/_types.mapping.GeoShapeProperty",
+            "point": "#/components/schemas/_types.mapping.PointProperty",
+            "shape": "#/components/schemas/_types.mapping.ShapeProperty",
+            "byte": "#/components/schemas/_types.mapping.ByteNumberProperty",
+            "double": "#/components/schemas/_types.mapping.DoubleNumberProperty",
+            "float": "#/components/schemas/_types.mapping.FloatNumberProperty",
+            "half_float": "#/components/schemas/_types.mapping.HalfFloatNumberProperty",
+            "integer": "#/components/schemas/_types.mapping.IntegerNumberProperty",
+            "long": "#/components/schemas/_types.mapping.LongNumberProperty",
+            "scaled_float": "#/components/schemas/_types.mapping.ScaledFloatNumberProperty",
+            "short": "#/components/schemas/_types.mapping.ShortNumberProperty",
+            "unsigned_long": "#/components/schemas/_types.mapping.UnsignedLongNumberProperty",
+            "date_range": "#/components/schemas/_types.mapping.DateRangeProperty",
+            "double_range": "#/components/schemas/_types.mapping.DoubleRangeProperty",
+            "float_range": "#/components/schemas/_types.mapping.FloatRangeProperty",
+            "integer_range": "#/components/schemas/_types.mapping.IntegerRangeProperty",
+            "ip_range": "#/components/schemas/_types.mapping.IpRangeProperty",
+            "long_range": "#/components/schemas/_types.mapping.LongRangeProperty",
+            "icu_collation_keyword": "#/components/schemas/_types.mapping.IcuCollationProperty"
+          }
         },
         "oneOf": [
           {
@@ -61014,10 +61800,17 @@
             ]
           },
           "downsampling": {
-            "description": "The downsampling configuration to execute for the managed backing index after rollover.",
+            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
+            }
+          },
+          "downsampling_method": {
+            "description": "The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires\n`downsampling` to be defined. Defaults to `aggregate`.",
             "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleDownsampling"
+                "$ref": "#/components/schemas/indices._types.SamplingMethod"
               }
             ]
           },
@@ -61027,21 +61820,6 @@
             "type": "boolean"
           }
         }
-      },
-      "indices._types.DataStreamLifecycleDownsampling": {
-        "type": "object",
-        "properties": {
-          "rounds": {
-            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
-            }
-          }
-        },
-        "required": [
-          "rounds"
-        ]
       },
       "indices._types.DownsamplingRound": {
         "type": "object",
@@ -61068,67 +61846,55 @@
           "fixed_interval"
         ]
       },
-      "indices._types.DataStreamOptionsTemplate": {
-        "description": "Data stream options template contains the same information as DataStreamOptions but allows them to be set explicitly to null.",
+      "indices._types.SamplingMethod": {
+        "type": "string",
+        "enum": [
+          "aggregate",
+          "last_value"
+        ]
+      },
+      "indices._types.DataStreamOptions": {
+        "description": "Data stream options contain the configuration of data stream level features for a given data stream, for example,\nthe failure store configuration.",
         "type": "object",
         "properties": {
           "failure_store": {
-            "oneOf": [
+            "description": "If defined, it specifies configuration for the failure store of this data stream.",
+            "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.DataStreamFailureStoreTemplate"
-              },
-              {
-                "nullable": true,
-                "type": "string"
+                "$ref": "#/components/schemas/indices._types.DataStreamFailureStore"
               }
             ]
           }
         }
       },
-      "indices._types.DataStreamFailureStoreTemplate": {
-        "description": "Template equivalent of DataStreamFailureStore that allows nullable values.",
+      "indices._types.DataStreamFailureStore": {
+        "description": "Data stream failure store contains the configuration of the failure store for a given data stream.",
         "type": "object",
         "properties": {
           "enabled": {
             "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
-            "default": "true",
-            "oneOf": [
-              {
-                "type": "boolean"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
+            "default": true,
+            "type": "boolean"
           },
           "lifecycle": {
             "description": "If defined, it specifies the lifecycle configuration for the failure store of this data stream.",
-            "oneOf": [
+            "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycleTemplate"
-              },
-              {
-                "nullable": true,
-                "type": "string"
+                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycle"
               }
             ]
           }
         }
       },
-      "indices._types.FailureStoreLifecycleTemplate": {
-        "description": "Template equivalent of FailureStoreLifecycle that allows nullable values.",
+      "indices._types.FailureStoreLifecycle": {
+        "description": "The failure store lifecycle configures the data stream lifecycle configuration for failure indices.",
         "type": "object",
         "properties": {
           "data_retention": {
             "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
-            "oneOf": [
+            "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Duration"
-              },
-              {
-                "nullable": true,
-                "type": "string"
               }
             ]
           },
@@ -61452,16 +62218,18 @@
           }
         }
       },
-      "indices._types.IndexState": {
+      "indices.put_index_template.IndexTemplateMapping": {
         "type": "object",
         "properties": {
           "aliases": {
+            "description": "Aliases to add.\nIf the index template includes a `data_stream` object, these are data stream aliases.\nOtherwise, these are index aliases.\nData stream aliases ignore the `index_routing`, `routing`, and `search_routing` options.",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/indices._types.Alias"
             }
           },
           "mappings": {
+            "description": "Mapping for fields in the index.\nIf specified, this mapping can include field names, field data types, and mapping parameters.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.TypeMapping"
@@ -61469,33 +62237,30 @@
             ]
           },
           "settings": {
+            "description": "Configuration options for the index.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/indices._types.IndexSettings"
-              }
-            ]
-          },
-          "defaults": {
-            "description": "Default settings, included when the request's `include_default` is `true`.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.IndexSettings"
-              }
-            ]
-          },
-          "data_stream": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.DataStreamName"
               }
             ]
           },
           "lifecycle": {
-            "description": "Data stream lifecycle applicable if this is a data stream.",
             "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
+              }
+            ]
+          },
+          "data_stream_options": {
+            "x-state": "Generally available",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
               }
             ]
           }
@@ -61548,8 +62313,76 @@
           }
         }
       },
-      "_types.DataStreamName": {
-        "type": "string"
+      "indices._types.DataStreamOptionsTemplate": {
+        "description": "Data stream options template contains the same information as DataStreamOptions but allows them to be set explicitly to null.",
+        "type": "object",
+        "properties": {
+          "failure_store": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamFailureStoreTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.DataStreamFailureStoreTemplate": {
+        "description": "Template equivalent of DataStreamFailureStore that allows nullable values.",
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
+            "default": "true",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "lifecycle": {
+            "description": "If defined, it specifies the lifecycle configuration for the failure store of this data stream.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycleTemplate"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.FailureStoreLifecycleTemplate": {
+        "description": "Template equivalent of FailureStoreLifecycle that allows nullable values.",
+        "type": "object",
+        "properties": {
+          "data_retention": {
+            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "default": true,
+            "type": "boolean"
+          }
+        }
       },
       "_types.Result": {
         "type": "string",
@@ -61922,7 +62755,14 @@
       },
       "connector._types.Validation": {
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "less_than": "#/components/schemas/connector._types.LessThanValidation",
+            "greater_than": "#/components/schemas/connector._types.GreaterThanValidation",
+            "list_type": "#/components/schemas/connector._types.ListTypeValidation",
+            "included_in": "#/components/schemas/connector._types.IncludedInValidation",
+            "regex": "#/components/schemas/connector._types.RegexValidation"
+          }
         },
         "oneOf": [
           {
@@ -63842,6 +64682,9 @@
           "type"
         ]
       },
+      "_types.DataStreamName": {
+        "type": "string"
+      },
       "indices.create_from.CreateFrom": {
         "type": "object",
         "properties": {
@@ -63999,6 +64842,55 @@
           "mappings",
           "settings"
         ]
+      },
+      "indices._types.IndexState": {
+        "type": "object",
+        "properties": {
+          "aliases": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/indices._types.Alias"
+            }
+          },
+          "mappings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+              }
+            ]
+          },
+          "settings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
+          "defaults": {
+            "description": "Default settings, included when the request's `include_default` is `true`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
+          "data_stream": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DataStreamName"
+              }
+            ]
+          },
+          "lifecycle": {
+            "description": "Data stream lifecycle applicable if this is a data stream.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
+              }
+            ]
+          }
+        }
       },
       "indices.get_alias._types.IndexAliases": {
         "type": "object",
@@ -64347,58 +65239,6 @@
           "name"
         ]
       },
-      "indices._types.DataStreamOptions": {
-        "description": "Data stream options contain the configuration of data stream level features for a given data stream, for example,\nthe failure store configuration.",
-        "type": "object",
-        "properties": {
-          "failure_store": {
-            "description": "If defined, it specifies configuration for the failure store of this data stream.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamFailureStore"
-              }
-            ]
-          }
-        }
-      },
-      "indices._types.DataStreamFailureStore": {
-        "description": "Data stream failure store contains the configuration of the failure store for a given data stream.",
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
-            "default": true,
-            "type": "boolean"
-          },
-          "lifecycle": {
-            "description": "If defined, it specifies the lifecycle configuration for the failure store of this data stream.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.FailureStoreLifecycle"
-              }
-            ]
-          }
-        }
-      },
-      "indices._types.FailureStoreLifecycle": {
-        "description": "The failure store lifecycle configures the data stream lifecycle configuration for failure indices.",
-        "type": "object",
-        "properties": {
-          "data_retention": {
-            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "enabled": {
-            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
-            "default": true,
-            "type": "boolean"
-          }
-        }
-      },
       "indices.get_data_stream_settings.DataStreamSettings": {
         "type": "object",
         "properties": {
@@ -64601,13 +65441,9 @@
           },
           "data_stream_options": {
             "x-state": "Generally available",
-            "oneOf": [
+            "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.DataStreamOptionsTemplate"
-              },
-              {
-                "nullable": true,
-                "type": "string"
+                "$ref": "#/components/schemas/indices._types.DataStreamOptions"
               }
             ]
           }
@@ -64873,42 +65709,6 @@
           "index",
           "error"
         ]
-      },
-      "indices.put_index_template.IndexTemplateMapping": {
-        "type": "object",
-        "properties": {
-          "aliases": {
-            "description": "Aliases to add.\nIf the index template includes a `data_stream` object, these are data stream aliases.\nOtherwise, these are index aliases.\nData stream aliases ignore the `index_routing`, `routing`, and `search_routing` options.",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/indices._types.Alias"
-            }
-          },
-          "mappings": {
-            "description": "Mapping for fields in the index.\nIf specified, this mapping can include field names, field data types, and mapping parameters.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.mapping.TypeMapping"
-              }
-            ]
-          },
-          "settings": {
-            "description": "Configuration options for the index.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.IndexSettings"
-              }
-            ]
-          },
-          "lifecycle": {
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
-              }
-            ]
-          }
-        }
       },
       "indices._types.DataStreamVisibility": {
         "type": "object",
@@ -66023,7 +66823,7 @@
         "type": "object",
         "properties": {
           "requests_per_minute": {
-            "description": "The number of requests allowed per minute.\nBy default, the number of requests allowed per minute is set by each service as follows:\n\n* `alibabacloud-ai-search` service: `1000`\n* `anthropic` service: `50`\n* `azureaistudio` service: `240`\n* `azureopenai` service and task type `text_embedding`: `1440`\n* `azureopenai` service and task type `completion`: `120`\n* `cohere` service: `10000`\n* `contextualai` service: `1000`\n* `elastic` service and task type `chat_completion`: `240`\n* `googleaistudio` service: `360`\n* `googlevertexai` service: `30000`\n* `hugging_face` service: `3000`\n* `jinaai` service: `2000`\n* `llama` service: `3000`\n* `mistral` service: `240`\n* `openai` service and task type `text_embedding`: `3000`\n* `openai` service and task type `completion`: `500`\n* `openshift_ai` service: `3000`\n* `voyageai` service: `2000`\n* `watsonxai` service: `120`",
+            "description": "The number of requests allowed per minute.\nBy default, the number of requests allowed per minute is set by each service as follows:\n\n* `alibabacloud-ai-search` service: `1000`\n* `anthropic` service: `50`\n* `azureaistudio` service: `240`\n* `azureopenai` service and task type `text_embedding`: `1440`\n* `azureopenai` service and task types `completion` or `chat_completion`: `120`\n* `cohere` service: `10000`\n* `contextualai` service: `1000`\n* `elastic` service and task type `chat_completion`: `240`\n* `googleaistudio` service: `360`\n* `googlevertexai` service: `30000`\n* `hugging_face` service: `3000`\n* `jinaai` service: `2000`\n* `llama` service: `3000`\n* `mistral` service: `240`\n* `openai` service and task type `text_embedding`: `3000`\n* `openai` service and task type `completion`: `500`\n* `openshift_ai` service: `3000`\n* `voyageai` service: `2000`\n* `watsonxai` service: `120`",
             "type": "number"
           }
         }
@@ -66584,7 +67384,7 @@
             "type": "string"
           },
           "provider": {
-            "description": "The model provider for your deployment.\nNote that some providers may support only certain task types.\nSupported providers include:\n\n* `cohere` - available for `text_embedding` and `completion` task types\n* `databricks` - available for `completion` task type only\n* `meta` - available for `completion` task type only\n* `microsoft_phi` - available for `completion` task type only\n* `mistral` - available for `completion` task type only\n* `openai` - available for `text_embedding` and `completion` task types",
+            "description": "The model provider for your deployment.\nNote that some providers may support only certain task types.\nSupported providers include:\n\n* `cohere` - available for `text_embedding`, `rerank` and `completion` task types\n* `databricks` - available for `completion` task type only\n* `meta` - available for `completion` task type only\n* `microsoft_phi` - available for `completion` task type only\n* `mistral` - available for `completion` task type only\n* `openai` - available for `text_embedding` and `completion` task types",
             "type": "string"
           },
           "rate_limit": {
@@ -66677,6 +67477,7 @@
         "type": "string",
         "enum": [
           "completion",
+          "chat_completion",
           "text_embedding"
         ]
       },
@@ -66718,7 +67519,7 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/quotas-limits"
             },
-            "description": "This setting helps to minimize the number of rate limit errors returned from Azure.\nThe `azureopenai` service sets a default number of requests allowed per minute depending on the task type.\nFor `text_embedding`, it is set to `1440`.\nFor `completion`, it is set to `120`.",
+            "description": "This setting helps to minimize the number of rate limit errors returned from Azure.\nThe `azureopenai` service sets a default number of requests allowed per minute depending on the task type.\nFor `text_embedding`, it is set to `1440`.\nFor `completion` and `chat_completion`, it is set to `120`.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.RateLimitSetting"
@@ -66743,7 +67544,7 @@
         "type": "object",
         "properties": {
           "user": {
-            "description": "For a `completion` or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
+            "description": "For a `completion`, `chat_completion` or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
             "type": "string"
           }
         }
@@ -66780,7 +67581,8 @@
         "type": "string",
         "enum": [
           "text_embedding",
-          "completion"
+          "completion",
+          "chat_completion"
         ]
       },
       "inference._types.CohereTaskType": {
@@ -67666,6 +68468,82 @@
           "rerank"
         ]
       },
+      "inference._types.GroqTaskType": {
+        "type": "string",
+        "enum": [
+          "chat_completion"
+        ]
+      },
+      "inference._types.GroqServiceType": {
+        "type": "string",
+        "enum": [
+          "groq"
+        ]
+      },
+      "inference._types.GroqServiceSettings": {
+        "type": "object",
+        "properties": {
+          "model_id": {
+            "externalDocs": {
+              "url": "https://console.groq.com/docs/models"
+            },
+            "description": "The name of the model to use for the inference task.\nRefer to the Groq model documentation for the list of supported models and versions.\nService has been tested and confirmed to be working for `completion` and `chat_completion` tasks with the following models:\n* `llama-3.3-70b-versatile`",
+            "type": "string"
+          },
+          "api_key": {
+            "description": "A valid API key for accessing Groq API.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "type": "string"
+          },
+          "rate_limit": {
+            "externalDocs": {
+              "url": "https://console.groq.com/docs/rate-limits"
+            },
+            "description": "This setting helps to minimize the number of rate limit errors returned from the Groq API.\nBy default, the `groq` service sets the number of requests allowed per minute to 1000. Refer to Groq documentation for more details.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.RateLimitSetting"
+              }
+            ]
+          }
+        },
+        "required": [
+          "model_id"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoGroq": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "description": "The task type",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/inference._types.TaskTypeGroq"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeGroq": {
+        "type": "string",
+        "enum": [
+          "chat_completion"
+        ]
+      },
       "inference._types.HuggingFaceTaskType": {
         "type": "string",
         "enum": [
@@ -68073,6 +68951,135 @@
           "completion"
         ]
       },
+      "inference._types.NvidiaTaskType": {
+        "type": "string",
+        "enum": [
+          "chat_completion",
+          "completion",
+          "rerank",
+          "text_embedding"
+        ]
+      },
+      "inference._types.NvidiaServiceType": {
+        "type": "string",
+        "enum": [
+          "nvidia"
+        ]
+      },
+      "inference._types.NvidiaServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "description": "A valid API key for your Nvidia endpoint.\nCan be found in `API Keys` section of Nvidia account settings.",
+            "type": "string"
+          },
+          "url": {
+            "description": "The URL of the Nvidia model endpoint. If not provided, the default endpoint URL is used depending on the task type:\n\n* For `text_embedding` task - `https://integrate.api.nvidia.com/v1/embeddings`.\n* For `completion` and `chat_completion` tasks - `https://integrate.api.nvidia.com/v1/chat/completions`.\n* For `rerank` task - `https://ai.api.nvidia.com/v1/retrieval/nvidia/reranking`.",
+            "type": "string"
+          },
+          "model_id": {
+            "description": "The name of the model to use for the inference task.\nRefer to the model's documentation for the name if needed.\nService has been tested and confirmed to be working with the following models:\n\n* For `text_embedding` task - `nvidia/llama-3.2-nv-embedqa-1b-v2`.\n* For `completion` and `chat_completion` tasks - `microsoft/phi-3-mini-128k-instruct`.\n* For `rerank` task - `nv-rerank-qa-mistral-4b:1`.\nService doesn't support `text_embedding` task `baai/bge-m3` and `nvidia/nvclip` models due to them not recognizing the `input_type` parameter.",
+            "type": "string"
+          },
+          "max_input_tokens": {
+            "description": "For a `text_embedding` task, the maximum number of tokens per input. Inputs exceeding this value are truncated prior to sending to the Nvidia API.",
+            "type": "number"
+          },
+          "similarity": {
+            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.NvidiaSimilarityType"
+              }
+            ]
+          },
+          "rate_limit": {
+            "description": "This setting helps to minimize the number of rate limit errors returned from the Nvidia API.\nBy default, the `nvidia` service sets the number of requests allowed per minute to 3000.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.RateLimitSetting"
+              }
+            ]
+          }
+        },
+        "required": [
+          "api_key",
+          "model_id"
+        ]
+      },
+      "inference._types.NvidiaSimilarityType": {
+        "type": "string",
+        "enum": [
+          "cosine",
+          "dot_product",
+          "l2_norm"
+        ]
+      },
+      "inference._types.NvidiaTaskSettings": {
+        "type": "object",
+        "properties": {
+          "input_type": {
+            "description": "For a `text_embedding` task, type of input sent to the Nvidia endpoint.\nValid values are:\n\n* `ingest`: Mapped to Nvidia's `passage` value in request. Used when generating embeddings during indexing.\n* `search`: Mapped to Nvidia's `query` value in request. Used when generating embeddings during querying.\n\nIMPORTANT: For Nvidia endpoints, if the `input_type` field is not specified, it defaults to `query`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.NvidiaInputType"
+              }
+            ]
+          },
+          "truncate": {
+            "description": "For a `text_embedding` task, the method used by the Nvidia model to handle inputs longer than the maximum token length.\nValid values are:\n\n* `END`: When the input exceeds the maximum input token length, the end of the input is discarded.\n* `NONE`: When the input exceeds the maximum input token length, an error is returned.\n* `START`: When the input exceeds the maximum input token length, the start of the input is discarded.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.CohereTruncateType"
+              }
+            ]
+          }
+        }
+      },
+      "inference._types.NvidiaInputType": {
+        "type": "string",
+        "enum": [
+          "ingest",
+          "search"
+        ]
+      },
+      "inference._types.InferenceEndpointInfoNvidia": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference ID",
+                "type": "string"
+              },
+              "task_type": {
+                "description": "The task type",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/inference._types.TaskTypeNvidia"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeNvidia": {
+        "type": "string",
+        "enum": [
+          "chat_completion",
+          "completion",
+          "rerank",
+          "text_embedding"
+        ]
+      },
       "inference._types.OpenAITaskType": {
         "type": "string",
         "enum": [
@@ -68215,7 +69222,7 @@
             "type": "number"
           },
           "similarity": {
-            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.",
+            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.\nIf not specified, the default dot_product value is used.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.OpenShiftAiSimilarityType"
@@ -71357,15 +72364,10 @@
                 "description": "Controls what properties are added to `target_field`.",
                 "default": [
                   "name",
-                  "major",
-                  "minor",
-                  "patch",
-                  "build",
                   "os",
-                  "os_name",
-                  "os_major",
-                  "os_minor",
-                  "device"
+                  "device",
+                  "original",
+                  "version"
                 ],
                 "type": "array",
                 "items": {
@@ -79260,6 +80262,7 @@
           },
           "remote": {
             "description": "A remote instance of Elasticsearch that you want to index from.",
+            "x-state": "Technical preview",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_global.reindex.RemoteSource"
@@ -81100,6 +82103,50 @@
           "type"
         ]
       },
+      "transform.get_node_stats.TransformNodeFullStats": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/transform.get_node_stats.TransformNodeStats"
+              }
+            ]
+          }
+        },
+        "required": [
+          "total"
+        ]
+      },
+      "transform.get_node_stats.TransformNodeStats": {
+        "type": "object",
+        "properties": {
+          "scheduler": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/transform.get_node_stats.TransformSchedulerStats"
+              }
+            ]
+          }
+        },
+        "required": [
+          "scheduler"
+        ]
+      },
+      "transform.get_node_stats.TransformSchedulerStats": {
+        "type": "object",
+        "properties": {
+          "registered_transform_count": {
+            "type": "number"
+          },
+          "peek_transform": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "registered_transform_count"
+        ]
+      },
       "transform.get_transform.TransformSummary": {
         "type": "object",
         "properties": {
@@ -82605,6 +83652,47 @@
           }
         }
       },
+      "indices.resolve_index-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "indices": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/indices.resolve_index.ResolveIndexItem"
+                  }
+                },
+                "aliases": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/indices.resolve_index.ResolveIndexAliasItem"
+                  }
+                },
+                "data_streams": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/indices.resolve_index.ResolveIndexDataStreamsItem"
+                  }
+                }
+              },
+              "required": [
+                "indices",
+                "aliases",
+                "data_streams"
+              ]
+            },
+            "examples": {
+              "ResolveIndexResponseExample1": {
+                "description": "A successful response from `GET /_resolve/index/f*,remoteCluster1:bar*?expand_wildcards=all`.",
+                "value": "{\n  \"indices\": [\n    {\n      \"name\": \"foo_closed\",\n      \"attributes\": [\n        \"closed\"\n      ],\n      \"mode\": \"standard\"\n    },\n    {\n      \"name\": \"freeze-index\",\n      \"aliases\": [\n        \"f-alias\"\n      ],\n      \"attributes\": [\n        \"open\"\n      ]\n    },\n    {\n      \"name\": \"remoteCluster1:bar-01\",\n      \"attributes\": [\n        \"open\"\n      ]\n    }\n  ],\n  \"aliases\": [\n    {\n      \"name\": \"f-alias\",\n      \"indices\": [\n        \"freeze-index\",\n        \"my-index-000001\"\n      ]\n    }\n  ],\n  \"data_streams\": [\n    {\n      \"name\": \"foo\",\n      \"backing_indices\": [\n        \".ds-foo-2099.03.07-000001\"\n      ],\n      \"timestamp_field\": \"@timestamp\"\n    }\n  ]\n}"
+              }
+            }
+          }
+        }
+      },
       "indices.rollover-200": {
         "description": "",
         "content": {
@@ -84085,7 +85173,7 @@
       "async_search.submit-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
+        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices.\n(This includes `_all` string or when no indices have been specified)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84115,7 +85203,7 @@
       "async_search.submit-analyze_wildcard": {
         "in": "query",
         "name": "analyze_wildcard",
-        "description": "Specify whether wildcard and prefix queries should be analyzed (default: false)",
+        "description": "Specify whether wildcard and prefix queries should be analyzed",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -84175,7 +85263,7 @@
       "async_search.submit-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
+        "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -84225,7 +85313,7 @@
       "async_search.submit-max_concurrent_shard_requests": {
         "in": "query",
         "name": "max_concurrent_shard_requests",
-        "description": "The number of concurrent shard requests per node this search executes concurrently. This value should be used to limit the impact of the search on the cluster in order to limit the number of concurrent shard requests",
+        "description": "The number of concurrent shard requests per node this search executes concurrently.\nThis value should be used to limit the impact of the search on the cluster in order to limit the number of concurrent shard requests",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84235,7 +85323,7 @@
       "async_search.submit-preference": {
         "in": "query",
         "name": "preference",
-        "description": "Specify the node or shard the operation should be performed on (default: random)",
+        "description": "Specify the node or shard the operation should be performed on",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -84338,7 +85426,7 @@
       "async_search.submit-terminate_after": {
         "in": "query",
         "name": "terminate_after",
-        "description": "The maximum number of documents to collect for each shard, upon reaching which the query execution will terminate early.",
+        "description": "The maximum number of documents to collect for each shard, upon reaching which the query execution will terminate early",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84358,7 +85446,7 @@
       "async_search.submit-track_total_hits": {
         "in": "query",
         "name": "track_total_hits",
-        "description": "Indicate if the number of documents that match the query should be tracked. A number can also be specified, to accurately track the total hit count up to the number.",
+        "description": "Indicate if the number of documents that match the query should be tracked.\nA number can also be specified, to accurately track the total hit count up to the number.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_global.search._types.TrackHits"
@@ -84458,7 +85546,7 @@
       "async_search.submit-size": {
         "in": "query",
         "name": "size",
-        "description": "Number of hits to return (default: 10)",
+        "description": "Number of hits to return",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -84468,7 +85556,7 @@
       "async_search.submit-from": {
         "in": "query",
         "name": "from",
-        "description": "Starting offset (default: 0)",
+        "description": "Starting offset",
         "deprecated": false,
         "schema": {
           "type": "number"
@@ -85140,7 +86228,7 @@
       "cluster.get_component_template-include_defaults": {
         "in": "query",
         "name": "include_defaults",
-        "description": "Return all default configurations for the component template (default: false)",
+        "description": "Return all default configurations for the component template",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -85528,7 +86616,7 @@
       "eql.search-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
+        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices.\n(This includes `_all` string or when no indices have been specified)",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -86558,7 +87646,7 @@
       "indices.put_index_template-cause": {
         "in": "query",
         "name": "cause",
-        "description": "User defined reason for creating/updating the index template",
+        "description": "User defined reason for creating or updating the index template",
         "deprecated": false,
         "schema": {
           "type": "string"
@@ -86568,7 +87656,7 @@
       "indices.put_mapping-index": {
         "in": "path",
         "name": "index",
-        "description": "A comma-separated list of index names the mapping should be added to (supports wildcards); use `_all` or omit to add the mapping on all indices.",
+        "description": "A comma-separated list of index names the mapping should be added to (supports wildcards).\nUse `_all` or omit to add the mapping on all indices.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -86766,6 +87854,68 @@
         "schema": {
           "type": "boolean"
         },
+        "style": "form"
+      },
+      "indices.resolve_index-name": {
+        "in": "path",
+        "name": "name",
+        "description": "Comma-separated name(s) or index pattern(s) of the indices, aliases, and data streams to resolve.\nResources on remote clusters can be specified using the `<cluster>`:`<name>` syntax.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Names"
+        },
+        "style": "simple"
+      },
+      "indices.resolve_index-expand_wildcards": {
+        "in": "query",
+        "name": "expand_wildcards",
+        "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.ExpandWildcards"
+        },
+        "style": "form"
+      },
+      "indices.resolve_index-ignore_unavailable": {
+        "in": "query",
+        "name": "ignore_unavailable",
+        "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.resolve_index-allow_no_indices": {
+        "in": "query",
+        "name": "allow_no_indices",
+        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "indices.resolve_index-mode": {
+        "in": "query",
+        "name": "mode",
+        "description": "Filter indices by index mode - standard, lookup, time_series, etc. Comma-separated list of IndexMode. Empty means no filter.",
+        "deprecated": false,
+        "schema": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/indices._types.IndexMode"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/indices._types.IndexMode"
+              }
+            }
+          ]
+        },
+        "x-state": "Generally available",
         "style": "form"
       },
       "indices.rollover-alias": {
@@ -87175,7 +88325,7 @@
       "ingest.get_pipeline-summary": {
         "in": "query",
         "name": "summary",
-        "description": "Return pipelines without their definitions (default: false)",
+        "description": "Return pipelines without their definitions",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88323,7 +89473,7 @@
       "scroll-scroll_id_": {
         "in": "query",
         "name": "scroll_id",
-        "description": "The scroll ID for scrolled search",
+        "description": "The scroll ID",
         "deprecated": true,
         "schema": {
           "$ref": "#/components/schemas/_types.ScrollId"
@@ -88844,7 +89994,7 @@
       "search_mvt-index": {
         "in": "path",
         "name": "index",
-        "description": "Comma-separated list of data streams, indices, or aliases to search",
+        "description": "A list of indices, data streams, or aliases to search.\nIt supports wildcards (`*`).\nTo search all data streams and indices, omit this parameter or use `*` or `_all`.\nTo search a remote cluster, use the `<cluster>:<target>` syntax.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -88855,7 +90005,7 @@
       "search_mvt-field": {
         "in": "path",
         "name": "field",
-        "description": "Field containing geospatial data to return",
+        "description": "A field that contains the geospatial data to return.\nIt must be a `geo_point` or `geo_shape` field.\nThe field must have doc values enabled. It cannot be a nested field.\n\nNOTE: Vector tiles do not natively support geometry collections.\nFor `geometrycollection` values in a `geo_shape` field, the API returns a hits layer feature for each element of the collection.\nThis behavior may change in a future release.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -88866,7 +90016,7 @@
       "search_mvt-zoom": {
         "in": "path",
         "name": "zoom",
-        "description": "Zoom level for the vector tile to search",
+        "description": "The zoom level of the vector tile to search. It accepts `0` to `29`.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -88877,7 +90027,7 @@
       "search_mvt-x": {
         "in": "path",
         "name": "x",
-        "description": "X coordinate for the vector tile to search",
+        "description": "The X coordinate for the vector tile to search.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -88888,7 +90038,7 @@
       "search_mvt-y": {
         "in": "path",
         "name": "y",
-        "description": "Y coordinate for the vector tile to search",
+        "description": "The Y coordinate for the vector tile to search.",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -89716,6 +90866,15 @@
         },
         "required": true
       },
+      "cat.count": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      },
       "clear_scroll": {
         "content": {
           "application/json": {
@@ -89751,7 +90910,7 @@
                   "description": "The template to be applied which includes mappings, settings, or aliases configuration.",
                   "allOf": [
                     {
-                      "$ref": "#/components/schemas/indices._types.IndexState"
+                      "$ref": "#/components/schemas/indices.put_index_template.IndexTemplateMapping"
                     }
                   ]
                 },
@@ -90516,6 +91675,15 @@
           }
         },
         "required": true
+      },
+      "indices.resolve_index": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
       },
       "indices.rollover": {
         "content": {

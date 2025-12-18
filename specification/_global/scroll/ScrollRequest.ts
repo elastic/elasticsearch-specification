@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ScrollId } from '@_types/common'
+import { MediaType, ScrollId } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -57,9 +57,14 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /** @deprecated 7.0.0 */
+    /**
+     * The scroll ID
+     * @deprecated 7.0.0
+     */
     scroll_id?: ScrollId
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to retain the search context for scrolling.
@@ -67,7 +72,10 @@ export interface Request extends RequestBase {
      * @server_default 1d
      */
     scroll?: Duration
-    /** @deprecated 7.0.0 */
+    /**
+     * The scroll ID
+     * @deprecated 7.0.0
+     */
     scroll_id?: ScrollId
     /**
      * If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object.

@@ -36,10 +36,12 @@ import {
   TaskTypeELSER,
   TaskTypeGoogleAIStudio,
   TaskTypeGoogleVertexAI,
+  TaskTypeGroq,
   TaskTypeHuggingFace,
   TaskTypeJinaAi,
   TaskTypeLlama,
   TaskTypeMistral,
+  TaskTypeNvidia,
   TaskTypeOpenAI,
   TaskTypeOpenShiftAi,
   TaskTypeVoyageAI,
@@ -248,6 +250,17 @@ export class InferenceEndpointInfoGoogleVertexAI extends InferenceEndpoint {
   task_type: TaskTypeGoogleVertexAI
 }
 
+export class InferenceEndpointInfoGroq extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeGroq
+}
+
 export class InferenceEndpointInfoHuggingFace extends InferenceEndpoint {
   /**
    * The inference Id
@@ -290,6 +303,17 @@ export class InferenceEndpointInfoMistral extends InferenceEndpoint {
    * The task type
    */
   task_type: TaskTypeMistral
+}
+
+export class InferenceEndpointInfoNvidia extends InferenceEndpoint {
+  /**
+   * The inference ID
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeNvidia
 }
 
 export class InferenceEndpointInfoOpenAI extends InferenceEndpoint {
@@ -413,7 +437,7 @@ export class RateLimitSetting {
    * * `anthropic` service: `50`
    * * `azureaistudio` service: `240`
    * * `azureopenai` service and task type `text_embedding`: `1440`
-   * * `azureopenai` service and task type `completion`: `120`
+   * * `azureopenai` service and task types `completion` or `chat_completion`: `120`
    * * `cohere` service: `10000`
    * * `contextualai` service: `1000`
    * * `elastic` service and task type `chat_completion`: `240`

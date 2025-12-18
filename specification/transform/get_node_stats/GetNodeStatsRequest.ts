@@ -17,16 +17,24 @@
  * under the License.
  */
 
-import { join } from 'path'
-import test from 'ava'
-import Compiler from '../../src/compiler'
-import * as Model from '../../src/model/metamodel'
+import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
-const specsFolder = join(__dirname, 'specification')
-const outputFolder = join(__dirname, 'output')
-
-test('Wrong rest_spec_name for request definition', t => {
-  const compiler = new Compiler(specsFolder, outputFolder)
-  const error = t.throws(() => compiler.generateModel())
-  t.true(error?.message.startsWith("The api 'foobar' does not exists, did you mean"))
-})
+/**
+ * Get node stats.
+ *
+ * Get per-node information about transform usage.
+ * @rest_spec_name transform.get_node_stats
+ * @availability stack since=8.15.0 stability=stable
+ * @availability serverless stability=stable visibility=public
+ * @doc_id get-node-stats
+ */
+export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_transform/_node_stats'
+      methods: ['GET']
+    }
+  ]
+  response_media_type: MediaType.Json
+}

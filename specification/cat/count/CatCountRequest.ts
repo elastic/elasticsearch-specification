@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Indices, Names, ProjectRouting } from '@_types/common'
+import { Indices, MediaType, Names, ProjectRouting } from '@_types/common'
 import { CatCountColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -38,11 +38,11 @@ export interface Request extends CatRequestBase {
   urls: [
     {
       path: '/_cat/count'
-      methods: ['GET']
+      methods: ['GET', 'POST']
     },
     {
       path: '/_cat/count/{index}'
-      methods: ['GET']
+      methods: ['GET', 'POST']
     }
   ]
   path_parts: {
@@ -53,13 +53,22 @@ export interface Request extends CatRequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of columns names to display. It supports simple wildcards.
      */
     h?: CatCountColumns
     /**
-     * Specifies a subset of projects to target for the search using project
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
+  }
+  body?: {
+    /**
+     * Specifies a subset of projects to target using project
      * metadata tags in a subset of Lucene query syntax.
      * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
      * Examples:
@@ -70,11 +79,5 @@ export interface Request extends CatRequestBase {
      * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
      */
     project_routing?: ProjectRouting
-    /**
-     * List of columns that determine how the table should be sorted.
-     * Sorting defaults to ascending and can be changed by setting `:asc`
-     * or `:desc` as a suffix to the column name.
-     */
-    s?: Names
   }
 }

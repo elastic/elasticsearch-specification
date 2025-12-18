@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
@@ -49,6 +49,7 @@ export interface Request extends RequestBase {
      */
     transform_id: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:
@@ -72,6 +73,10 @@ export interface Request extends RequestBase {
      * @server_default 100
      */
     size?: long
+    /**
+     * Controls the time to wait for the stats
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }

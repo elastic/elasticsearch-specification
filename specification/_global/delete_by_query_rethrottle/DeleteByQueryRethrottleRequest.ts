@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { TaskId } from '@_types/common'
+import { MediaType, TaskId } from '@_types/common'
 import { float } from '@_types/Numeric'
 
 /**
@@ -45,6 +45,7 @@ export interface Request extends RequestBase {
      */
     task_id: TaskId
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The throttle for this request in sub-requests per second.

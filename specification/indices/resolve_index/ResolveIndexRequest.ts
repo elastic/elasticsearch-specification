@@ -18,7 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Names, ProjectRouting } from '@_types/common'
+import {
+  ExpandWildcards,
+  MediaType,
+  Names,
+  ProjectRouting
+} from '@_types/common'
 import { IndexMode } from '@indices/_types/DataStream'
 
 /**
@@ -36,7 +41,7 @@ export interface Request extends RequestBase {
   urls: [
     {
       path: '/_resolve/index/{name}'
-      methods: ['GET']
+      methods: ['GET', 'POST']
     }
   ]
   path_parts: {
@@ -46,6 +51,7 @@ export interface Request extends RequestBase {
      */
     name: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Type of index that wildcard patterns can match.
@@ -72,6 +78,8 @@ export interface Request extends RequestBase {
      * @availability serverless stability=stable visibility=public
      */
     mode?: IndexMode | IndexMode[]
+  }
+  body?: {
     /**
      * Specifies a subset of projects to target using project
      * metadata tags in a subset of Lucene query syntax.
