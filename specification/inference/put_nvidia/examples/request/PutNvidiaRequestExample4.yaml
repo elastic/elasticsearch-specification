@@ -1,0 +1,15 @@
+summary: A completion task without `url` parameter
+description:
+  Run `PUT _inference/completion/nvidia-completion` to create an inference endpoint
+  that performs a `completion` task, omitting the `url` parameter
+  if model is accessible via default NVIDIA endpoint.
+method_request: 'PUT _inference/completion/nvidia-completion'
+# type: "request"
+value: |-
+  {
+      "service": "nvidia",
+      "service_settings": {
+          "api_key": "nvidia-completion-token",
+          "model_id": "microsoft/phi-3-mini-128k-instruct"
+      }
+  }

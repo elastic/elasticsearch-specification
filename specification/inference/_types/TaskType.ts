@@ -70,7 +70,8 @@ export enum TaskTypeAzureAIStudio {
 
 export enum TaskTypeAzureOpenAI {
   text_embedding,
-  completion
+  completion,
+  chat_completion
 }
 
 export enum TaskTypeCohere {
@@ -138,6 +139,13 @@ export enum TaskTypeMistral {
   text_embedding,
   chat_completion,
   completion
+}
+
+export enum TaskTypeNvidia {
+  chat_completion,
+  completion,
+  rerank,
+  text_embedding
 }
 
 export enum TaskTypeOpenAI {

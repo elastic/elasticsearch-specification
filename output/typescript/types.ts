@@ -165,12 +165,12 @@ export interface CountRequest extends RequestBase {
   lenient?: boolean
   min_score?: double
   preference?: string
-  project_routing?: ProjectRouting
   routing?: Routing
   terminate_after?: long
   q?: string
   body?: {
     query?: QueryDslQueryContainer
+    project_routing?: ProjectRouting
   }
 }
 
@@ -383,7 +383,6 @@ export interface FieldCapsRequest extends RequestBase {
   filters?: string | string[]
   types?: string[]
   include_empty_fields?: boolean
-  project_routing?: ProjectRouting
   body?: {
     fields?: Fields
     index_filter?: QueryDslQueryContainer
@@ -908,7 +907,6 @@ export interface OpenPointInTimeRequest extends RequestBase {
   keep_alive: Duration
   ignore_unavailable?: boolean
   preference?: string
-  project_routing?: ProjectRouting
   routing?: Routing
   expand_wildcards?: ExpandWildcards
   allow_partial_search_results?: boolean
@@ -1210,7 +1208,6 @@ export interface SearchRequest extends RequestBase {
   max_concurrent_shard_requests?: integer
   preference?: string
   pre_filter_shard_size?: long
-  project_routing?: ProjectRouting
   request_cache?: boolean
   routing?: Routing
   scroll?: Duration
@@ -2408,6 +2405,7 @@ export interface DiversifyRetriever extends RetrieverBase {
   size?: integer
   rank_window_size?: integer
   query_vector?: QueryVector
+  query_vector_builder?: QueryVectorBuilder
   lambda?: float
 }
 
@@ -7323,7 +7321,6 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   lenient?: boolean
   max_concurrent_shard_requests?: integer
   preference?: string
-  project_routing?: ProjectRouting
   request_cache?: boolean
   routing?: Routing
   search_type?: SearchType
@@ -7699,8 +7696,10 @@ export interface CatCountCountRecord {
 export interface CatCountRequest extends CatCatRequestBase {
   index?: Indices
   h?: CatCatCountColumns
-  project_routing?: ProjectRouting
   s?: Names
+  body?: {
+    project_routing?: ProjectRouting
+  }
 }
 
 export type CatCountResponse = CatCountCountRecord[]
@@ -11360,9 +11359,9 @@ export interface EqlSearchRequest extends RequestBase {
   ignore_unavailable?: boolean
   keep_alive?: Duration
   keep_on_completion?: boolean
-  project_routing?: ProjectRouting
   wait_for_completion_timeout?: Duration
   body?: {
+    project_routing?: ProjectRouting
     query: string
     case_sensitive?: boolean
     event_category_field?: Field
@@ -11393,6 +11392,11 @@ export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
 }
 
 export type EsqlESQLParam = FieldValue | FieldValue[]
+
+export interface EsqlESQLView {
+  name: string
+  query: string
+}
 
 export interface EsqlEsqlClusterDetails {
   status: EsqlEsqlClusterStatus
@@ -11506,6 +11510,12 @@ export interface EsqlAsyncQueryStopRequest extends RequestBase {
 
 export type EsqlAsyncQueryStopResponse = EsqlEsqlResult
 
+export interface EsqlDeleteViewRequest extends RequestBase {
+  name: Id
+}
+
+export type EsqlDeleteViewResponse = AcknowledgedResponseBase
+
 export interface EsqlGetQueryRequest extends RequestBase {
   id: Id
 }
@@ -11518,6 +11528,14 @@ export interface EsqlGetQueryResponse {
   query: string
   coordinating_node: NodeId
   data_nodes: NodeId[]
+}
+
+export interface EsqlGetViewRequest extends RequestBase {
+  name?: Id
+}
+
+export interface EsqlGetViewResponse {
+  views: EsqlESQLView[]
 }
 
 export interface EsqlListQueriesBody {
@@ -11534,6 +11552,15 @@ export interface EsqlListQueriesRequest extends RequestBase {
 export interface EsqlListQueriesResponse {
   queries: Record<TaskId, EsqlListQueriesBody>
 }
+
+export interface EsqlPutViewRequest extends RequestBase {
+  name: Id
+  body?: {
+    query: string
+  }
+}
+
+export type EsqlPutViewResponse = AcknowledgedResponseBase
 
 export interface EsqlQueryRequest extends RequestBase {
   format?: EsqlEsqlFormat
@@ -13798,7 +13825,9 @@ export interface IndicesResolveIndexRequest extends RequestBase {
   ignore_unavailable?: boolean
   allow_no_indices?: boolean
   mode?: IndicesIndexMode | IndicesIndexMode[]
-  project_routing?: ProjectRouting
+  body?: {
+    project_routing?: ProjectRouting
+  }
 }
 
 export interface IndicesResolveIndexResolveIndexAliasItem {
@@ -14404,7 +14433,7 @@ export interface InferenceAzureOpenAITaskSettings {
   user?: string
 }
 
-export type InferenceAzureOpenAITaskType = 'completion' | 'text_embedding'
+export type InferenceAzureOpenAITaskType = 'completion' | 'chat_completion' | 'text_embedding'
 
 export type InferenceCohereEmbeddingType = 'binary' | 'bit' | 'byte' | 'float' | 'int8'
 
@@ -14736,6 +14765,11 @@ export interface InferenceInferenceEndpointInfoMistral extends InferenceInferenc
   task_type: InferenceTaskTypeMistral
 }
 
+export interface InferenceInferenceEndpointInfoNvidia extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeNvidia
+}
+
 export interface InferenceInferenceEndpointInfoOpenAI extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeOpenAI
@@ -14819,6 +14853,28 @@ export interface InferenceMistralServiceSettings {
 export type InferenceMistralServiceType = 'mistral'
 
 export type InferenceMistralTaskType = 'text_embedding' | 'completion' | 'chat_completion'
+
+export type InferenceNvidiaInputType = 'ingest' | 'search'
+
+export interface InferenceNvidiaServiceSettings {
+  api_key: string
+  url?: string
+  model_id: string
+  max_input_tokens?: integer
+  similarity?: InferenceNvidiaSimilarityType
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceNvidiaServiceType = 'nvidia'
+
+export type InferenceNvidiaSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
+
+export interface InferenceNvidiaTaskSettings {
+  input_type?: InferenceNvidiaInputType
+  truncate?: InferenceCohereTruncateType
+}
+
+export type InferenceNvidiaTaskType = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export interface InferenceOpenAIServiceSettings {
   api_key: string
@@ -14911,7 +14967,7 @@ export type InferenceTaskTypeAnthropic = 'completion'
 
 export type InferenceTaskTypeAzureAIStudio = 'text_embedding' | 'completion' | 'rerank'
 
-export type InferenceTaskTypeAzureOpenAI = 'text_embedding' | 'completion'
+export type InferenceTaskTypeAzureOpenAI = 'text_embedding' | 'completion' | 'chat_completion'
 
 export type InferenceTaskTypeCohere = 'text_embedding' | 'rerank' | 'completion'
 
@@ -14938,6 +14994,8 @@ export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
 export type InferenceTaskTypeLlama = 'text_embedding' | 'chat_completion' | 'completion'
 
 export type InferenceTaskTypeMistral = 'text_embedding' | 'chat_completion' | 'completion'
+
+export type InferenceTaskTypeNvidia = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export type InferenceTaskTypeOpenAI = 'text_embedding' | 'chat_completion' | 'completion'
 
@@ -15333,6 +15391,20 @@ export interface InferencePutMistralRequest extends RequestBase {
 }
 
 export type InferencePutMistralResponse = InferenceInferenceEndpointInfoMistral
+
+export interface InferencePutNvidiaRequest extends RequestBase {
+  task_type: InferenceNvidiaTaskType
+  nvidia_inference_id: Id
+  timeout?: Duration
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferenceNvidiaServiceType
+    service_settings: InferenceNvidiaServiceSettings
+    task_settings?: InferenceNvidiaTaskSettings
+  }
+}
+
+export type InferencePutNvidiaResponse = InferenceInferenceEndpointInfoNvidia
 
 export interface InferencePutOpenaiRequest extends RequestBase {
   task_type: InferenceOpenAITaskType
@@ -22655,7 +22727,6 @@ export interface SqlGetAsyncStatusResponse {
 
 export interface SqlQueryRequest extends RequestBase {
   format?: SqlQuerySqlFormat
-  project_routing?: ProjectRouting
   body?: {
     allow_partial_search_results?: boolean
     catalog?: string
@@ -22670,6 +22741,7 @@ export interface SqlQueryRequest extends RequestBase {
     page_timeout?: Duration
     params?: any[]
     query?: string
+    project_routing?: ProjectRouting
     request_timeout?: Duration
     runtime_mappings?: MappingRuntimeFields
     time_zone?: TimeZone

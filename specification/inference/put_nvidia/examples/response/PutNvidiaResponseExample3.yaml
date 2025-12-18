@@ -1,0 +1,17 @@
+summary: A completion task
+description: A successful response when creating an Nvidia `completion` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "nvidia-completion",
+    "task_type": "completion",
+    "service": "nvidia",
+    "service_settings": {
+      "model_id": "microsoft/phi-3-mini-128k-instruct",
+      "url": "nvidia-completion-url",
+      "rate_limit": {
+        "requests_per_minute": 3000
+      }
+    }
+  }
