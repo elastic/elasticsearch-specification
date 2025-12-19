@@ -71,6 +71,10 @@ export interface Request extends RequestBase {
      * Specifies the amount of time to wait until a datafeed stops.
      *  @server_default 20s */
     timeout?: Duration
+    /**
+     * If `true` the job associated with the datafeed is closed.
+     * @server_default false */
+    close_job?: boolean
   }
   body?: {
     /**
@@ -85,5 +89,9 @@ export interface Request extends RequestBase {
      * Refer to the description for the `timeout` query parameter.
      *  @server_default 20s */
     timeout?: Duration
+    /**
+     * Refer to the description for the `close_job` query parameter.
+     * @server_default false */
+    close_job?: boolean
   }
 }
