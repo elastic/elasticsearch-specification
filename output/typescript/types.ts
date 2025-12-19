@@ -15547,6 +15547,14 @@ export interface IngestBytesProcessor extends IngestProcessorBase {
   target_field?: Field
 }
 
+export interface IngestCefProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  target_field?: Field
+  ignore_empty_values?: boolean
+  timezone?: string
+}
+
 export interface IngestCircleProcessor extends IngestProcessorBase {
   error_distance: double
   field: Field
@@ -15890,6 +15898,7 @@ export interface IngestProcessorContainer {
   append?: IngestAppendProcessor
   attachment?: IngestAttachmentProcessor
   bytes?: IngestBytesProcessor
+  cef?: IngestCefProcessor
   circle?: IngestCircleProcessor
   community_id?: IngestCommunityIDProcessor
   convert?: IngestConvertProcessor
