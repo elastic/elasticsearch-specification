@@ -185,8 +185,8 @@ export class TextSimilarityReranker extends RetrieverBase {
   field: string
   /**
    * Whether to rescore on only the best matching chunks.
-   * @availability stack since=9.2.0 stability=beta
-   * @availability serverless stability=beta
+   * @availability stack since=9.2.0 stability=stable
+   * @availability serverless stability=stable
    */
   chunk_rescorer?: ChunkRescorer
 }
