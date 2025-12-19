@@ -18895,10 +18895,12 @@ export interface MlStopDatafeedRequest extends RequestBase {
   allow_no_match?: boolean
   force?: boolean
   timeout?: Duration
+  close_job?: boolean
   body?: {
     allow_no_match?: boolean
     force?: boolean
     timeout?: Duration
+    close_job?: boolean
   }
 }
 

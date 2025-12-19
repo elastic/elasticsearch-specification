@@ -21305,6 +21305,16 @@
               "$ref": "#/components/schemas/_types.Duration"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "close_job",
+            "description": "If `true` the job associated with the datafeed is closed.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -21331,6 +21341,11 @@
                         "$ref": "#/components/schemas/_types.Duration"
                       }
                     ]
+                  },
+                  "close_job": {
+                    "description": "Refer to the description for the `close_job` query parameter.",
+                    "default": false,
+                    "type": "boolean"
                   }
                 }
               },
