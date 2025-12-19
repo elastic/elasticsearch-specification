@@ -20,6 +20,7 @@
 import { TaskId } from '@_types/common'
 import { BulkIndexByScrollFailure } from '@_types/Errors'
 import { float, long } from '@_types/Numeric'
+import { ReindexStatus } from '@_types/Reindex'
 import { Retries } from '@_types/Retries'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
@@ -47,6 +48,10 @@ export class Response {
      * `search` is the number of search actions retried.
      */
     retries?: Retries
+    /**
+     * Status of each slice if the update by query was sliced
+     */
+    slices?: ReindexStatus[]
     task?: TaskId
     /** If true, some requests timed out during the update by query. */
     timed_out?: boolean
