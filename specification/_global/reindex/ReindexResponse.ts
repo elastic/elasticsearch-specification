@@ -20,6 +20,7 @@
 import { TaskId } from '@_types/common'
 import { BulkIndexByScrollFailure } from '@_types/Errors'
 import { float, integer, long } from '@_types/Numeric'
+import { ReindexStatus } from '@_types/Reindex'
 import { Retries } from '@_types/Retries'
 import { DurationValue, EpochTime, UnitMillis } from '@_types/Time'
 
@@ -57,6 +58,10 @@ export class Response {
      */
     requests_per_second?: float
     slice_id?: integer
+    /**
+     * Status of each slice if the reindex was sliced
+     */
+    slices?: ReindexStatus[]
     task?: TaskId
     /**
      * The number of milliseconds the request slept to conform to `requests_per_second`.

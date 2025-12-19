@@ -259,6 +259,7 @@ export interface DeleteByQueryResponse {
   requests_per_second?: float
   retries?: Retries
   slice_id?: integer
+  slices?: ReindexStatus[]
   task?: TaskId
   throttled?: Duration
   throttled_millis?: DurationValue<UnitMillis>
@@ -1079,6 +1080,7 @@ export interface ReindexResponse {
   retries?: Retries
   requests_per_second?: float
   slice_id?: integer
+  slices?: ReindexStatus[]
   task?: TaskId
   throttled_millis?: EpochTime<UnitMillis>
   throttled_until_millis?: EpochTime<UnitMillis>
@@ -1104,31 +1106,16 @@ export interface ReindexRethrottleReindexNode extends SpecUtilsBaseNode {
   tasks: Record<TaskId, ReindexRethrottleReindexTask>
 }
 
-export interface ReindexRethrottleReindexStatus {
-  batches: long
-  created: long
-  deleted: long
-  noops: long
-  requests_per_second: float
-  retries: Retries
-  throttled?: Duration
-  throttled_millis: DurationValue<UnitMillis>
-  throttled_until?: Duration
-  throttled_until_millis: DurationValue<UnitMillis>
-  total: long
-  updated: long
-  version_conflicts: long
-}
-
 export interface ReindexRethrottleReindexTask {
   action: string
   cancellable: boolean
+  cancelled: boolean
   description: string
   id: long
   node: Name
   running_time_in_nanos: DurationValue<UnitNanos>
   start_time_in_millis: EpochTime<UnitMillis>
-  status: ReindexRethrottleReindexStatus
+  status: ReindexStatus
   type: string
   headers: HttpHeaders
 }
@@ -2198,6 +2185,7 @@ export interface UpdateByQueryResponse {
   deleted?: long
   requests_per_second?: float
   retries?: Retries
+  slices?: ReindexStatus[]
   task?: TaskId
   timed_out?: boolean
   took?: DurationValue<UnitMillis>
@@ -2877,6 +2865,24 @@ export interface RefreshStats {
   total: long
   total_time?: Duration
   total_time_in_millis: DurationValue<UnitMillis>
+}
+
+export interface ReindexStatus {
+  slice_id?: integer
+  batches: long
+  created?: long
+  deleted: long
+  noops: long
+  requests_per_second: float
+  retries: Retries
+  throttled?: Duration
+  throttled_millis: DurationValue<UnitMillis>
+  throttled_until?: Duration
+  throttled_until_millis: DurationValue<UnitMillis>
+  total: long
+  updated?: long
+  version_conflicts: long
+  cancelled?: string
 }
 
 export type RelationName = string
@@ -10398,6 +10404,11 @@ export interface ClusterStatsExtendedRetrieversSearchUsage {
 
 export interface ClusterStatsExtendedSearchUsage {
   retrievers?: ClusterStatsExtendedRetrieversSearchUsage
+  section?: ClusterStatsExtendedSectionSearchUsage
+}
+
+export interface ClusterStatsExtendedSectionSearchUsage {
+  sort?: Record<string, long>
 }
 
 export interface ClusterStatsExtendedTextSimilarityRetrieverUsage {
