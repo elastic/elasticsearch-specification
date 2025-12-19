@@ -158,6 +158,7 @@ export class SearchUsageStats {
 
 export class ExtendedSearchUsage {
   retrievers?: ExtendedRetrieversSearchUsage
+  section?: ExtendedSectionSearchUsage
 }
 
 export class ExtendedRetrieversSearchUsage {
@@ -166,6 +167,10 @@ export class ExtendedRetrieversSearchUsage {
 
 export class ExtendedTextSimilarityRetrieverUsage {
   chunk_rescorer?: long
+}
+
+export class ExtendedSectionSearchUsage {
+  sort?: Dictionary<string, long>
 }
 
 export class DenseVectorStats {
