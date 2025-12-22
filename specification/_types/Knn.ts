@@ -58,6 +58,7 @@ export interface KnnSearch {
   /**
    * If defined, each search hit will contain inner hits.
    * @doc_id knn-inner-hits
+   * @ext_doc_id inner-hits
    */
   inner_hits?: InnerHits
   /**
