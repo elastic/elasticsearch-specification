@@ -23352,7 +23352,7 @@
     "/_project_routing/{name}": {
       "get": {
         "tags": [
-          "project-routing"
+          "project"
         ],
         "summary": "Get named project routing expressions",
         "description": "Get named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
@@ -23398,7 +23398,7 @@
       },
       "put": {
         "tags": [
-          "project-routing"
+          "project"
         ],
         "summary": "Create of update a single named project routing expression",
         "description": "Create of update a single named project routing expression.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
@@ -23460,7 +23460,7 @@
       },
       "delete": {
         "tags": [
-          "project-routing"
+          "project"
         ],
         "summary": "Delete named project routing expressions",
         "description": "Delete named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
@@ -23507,7 +23507,7 @@
     "/_project_routing": {
       "get": {
         "tags": [
-          "project-routing"
+          "project"
         ],
         "summary": "Get named project routing expressions",
         "description": "Get named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
@@ -23540,7 +23540,7 @@
       },
       "put": {
         "tags": [
-          "project-routing"
+          "project"
         ],
         "summary": "Create of update named project routing expressions",
         "description": "Create or update named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
