@@ -545,11 +545,11 @@ prevalidate-node-removal,https://www.elastic.co/docs/api/doc/elasticsearch/group
 preview-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-preview-data-frame-analytics,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-ml-preview-data-frame-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/preview-dfanalytics.html,
 preview-transform,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-transform-preview-transform,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/preview-transform.html,
 project-tags,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-tags,[use-doc-url],,Get tags
-project-create-many-routing,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,
-project-create-routing,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,
-project-delete-routing,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,
-project-get-many-routing,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,
-project-get-routing,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,
+project-create-many-routing,,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-routing-create-many,,Create or update named project routing expressions
+project-create-routing,,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-routing-create,,Create or update project routing expressions
+project-delete-routing,,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-routing-delete,,Delete project routing expressions
+project-get-many-routing,,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-routing-get-many,,Get named project routing expressions
+project-get-routing,,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-routing-get,,Get project routing expressions
 put-analytics-collection,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put-behavioral-analytics,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-search-application-put-behavioral-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-analytics-collection.html,
 put-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-data-frame-analytics,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-ml-put-data-frame-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-dfanalytics.html,
 put-enrich-policy-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-put-policy,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-enrich-put-policy,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-enrich-policy-api.html,
