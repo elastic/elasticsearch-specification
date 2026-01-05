@@ -121,7 +121,7 @@ export interface Request extends RequestBase {
      */
     ignore_unavailable?: boolean
     /**
-     * The number of segments the index should be merged into (defayult: dynamic)
+     * The number of segments the index should be merged into (default: dynamic)
      */
     max_num_segments?: long
     /**
