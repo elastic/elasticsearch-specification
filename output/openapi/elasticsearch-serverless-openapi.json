@@ -66301,6 +66301,11 @@
                   }
                 ]
               },
+              "media_type": {
+                "description": "The media type for encoding `value`.\nApplies only when value is a template snippet.\nMust be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.",
+                "default": "\"application/json\"",
+                "type": "string"
+              },
               "allow_duplicates": {
                 "description": "If `false`, the processor does not append values already present in the field.",
                 "default": true,
@@ -66308,8 +66313,7 @@
               }
             },
             "required": [
-              "field",
-              "value"
+              "field"
             ]
           }
         ]
@@ -68187,6 +68191,7 @@
               },
               "media_type": {
                 "description": "The media type for encoding `value`.\nApplies only when value is a template snippet.\nMust be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.",
+                "default": "\"application/json\"",
                 "type": "string"
               },
               "override": {
