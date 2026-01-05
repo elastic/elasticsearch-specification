@@ -5976,6 +5976,11 @@ export interface MappingDynamicTemplate {
   match_pattern?: MappingMatchType
 }
 
+export interface MappingExponentialHistogramProperty extends MappingPropertyBase {
+  time_series_metric?: MappingTimeSeriesMetricType
+  type: 'exponential_histogram'
+}
+
 export interface MappingFieldAliasProperty extends MappingPropertyBase {
   path?: Field
   type: 'alias'
@@ -6049,6 +6054,7 @@ export interface MappingHalfFloatNumberProperty extends MappingNumberPropertyBas
 
 export interface MappingHistogramProperty extends MappingPropertyBase {
   ignore_malformed?: boolean
+  time_series_metric?: MappingTimeSeriesMetricType
   type: 'histogram'
 }
 
@@ -6190,7 +6196,7 @@ export interface MappingPointProperty extends MappingDocValuesPropertyBase {
   type: 'point'
 }
 
-export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingPassthroughObjectProperty | MappingRankVectorProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingCountedKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
+export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingPassthroughObjectProperty | MappingRankVectorProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingCountedKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingExponentialHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
 
 export interface MappingPropertyBase {
   meta?: Record<string, string>
@@ -11393,6 +11399,11 @@ export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
 
 export type EsqlESQLParam = FieldValue | FieldValue[]
 
+export interface EsqlESQLView {
+  name: string
+  query: string
+}
+
 export interface EsqlEsqlClusterDetails {
   status: EsqlEsqlClusterStatus
   indices: string
@@ -11505,6 +11516,12 @@ export interface EsqlAsyncQueryStopRequest extends RequestBase {
 
 export type EsqlAsyncQueryStopResponse = EsqlEsqlResult
 
+export interface EsqlDeleteViewRequest extends RequestBase {
+  name: Id
+}
+
+export type EsqlDeleteViewResponse = AcknowledgedResponseBase
+
 export interface EsqlGetQueryRequest extends RequestBase {
   id: Id
 }
@@ -11517,6 +11534,14 @@ export interface EsqlGetQueryResponse {
   query: string
   coordinating_node: NodeId
   data_nodes: NodeId[]
+}
+
+export interface EsqlGetViewRequest extends RequestBase {
+  name?: Id
+}
+
+export interface EsqlGetViewResponse {
+  views: EsqlESQLView[]
 }
 
 export interface EsqlListQueriesBody {
@@ -11533,6 +11558,15 @@ export interface EsqlListQueriesRequest extends RequestBase {
 export interface EsqlListQueriesResponse {
   queries: Record<TaskId, EsqlListQueriesBody>
 }
+
+export interface EsqlPutViewRequest extends RequestBase {
+  name: Id
+  body?: {
+    query: string
+  }
+}
+
+export type EsqlPutViewResponse = AcknowledgedResponseBase
 
 export interface EsqlQueryRequest extends RequestBase {
   format?: EsqlEsqlFormat
@@ -15514,6 +15548,14 @@ export interface IngestBytesProcessor extends IngestProcessorBase {
   target_field?: Field
 }
 
+export interface IngestCefProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  target_field?: Field
+  ignore_empty_values?: boolean
+  timezone?: string
+}
+
 export interface IngestCircleProcessor extends IngestProcessorBase {
   error_distance: double
   field: Field
@@ -15857,6 +15899,7 @@ export interface IngestProcessorContainer {
   append?: IngestAppendProcessor
   attachment?: IngestAttachmentProcessor
   bytes?: IngestBytesProcessor
+  cef?: IngestCefProcessor
   circle?: IngestCircleProcessor
   community_id?: IngestCommunityIDProcessor
   convert?: IngestConvertProcessor
@@ -18868,10 +18911,12 @@ export interface MlStopDatafeedRequest extends RequestBase {
   allow_no_match?: boolean
   force?: boolean
   timeout?: Duration
+  close_job?: boolean
   body?: {
     allow_no_match?: boolean
     force?: boolean
     timeout?: Duration
+    close_job?: boolean
   }
 }
 
@@ -20107,6 +20152,44 @@ export interface ProjectTagsTagsKeys {
 }
 export type ProjectTagsTags = ProjectTagsTagsKeys
   & { [property: string]: string }
+
+export type ProjectRoutingNamedProjectRoutingExpressions = Record<string, ProjectRoutingProjectRoutingExpression>
+
+export interface ProjectRoutingProjectRoutingExpression {
+  expression: ProjectRoutingRoutingExpression
+}
+
+export type ProjectRoutingRoutingExpression = string
+
+export interface ProjectRoutingCreateRequest extends RequestBase {
+  name: string
+  body?: ProjectRoutingProjectRoutingExpression
+}
+
+export type ProjectRoutingCreateResponse = AcknowledgedResponseBase
+
+export interface ProjectRoutingCreateManyRequest extends RequestBase {
+  body?: ProjectRoutingNamedProjectRoutingExpressions
+}
+
+export type ProjectRoutingCreateManyResponse = AcknowledgedResponseBase
+
+export interface ProjectRoutingDeleteRequest extends RequestBase {
+  name: string
+}
+
+export type ProjectRoutingDeleteResponse = AcknowledgedResponseBase
+
+export interface ProjectRoutingGetRequest extends RequestBase {
+  name: string
+}
+
+export type ProjectRoutingGetResponse = ProjectRoutingProjectRoutingExpression
+
+export interface ProjectRoutingGetManyRequest extends RequestBase {
+}
+
+export type ProjectRoutingGetManyResponse = ProjectRoutingNamedProjectRoutingExpressions
 
 export interface QueryRulesQueryRule {
   rule_id: Id

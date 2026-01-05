@@ -21305,6 +21305,16 @@
               "$ref": "#/components/schemas/_types.Duration"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "close_job",
+            "description": "If `true` the job associated with the datafeed is closed.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -21331,6 +21341,11 @@
                         "$ref": "#/components/schemas/_types.Duration"
                       }
                     ]
+                  },
+                  "close_job": {
+                    "description": "Refer to the description for the `close_job` query parameter.",
+                    "default": false,
+                    "type": "boolean"
                   }
                 }
               },
@@ -23323,6 +23338,245 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/project.tags-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_project_routing/{name}": {
+      "get": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Get named project routing expressions",
+        "description": "Get named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "operationId": "project-routing-get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The name of project routing expression",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
+                },
+                "examples": {
+                  "GetProjectResponseExample1": {
+                    "summary": "A single expressions",
+                    "value": "{\n  \"expression\" : \"_csp:aws AND _region:us*\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Create of update a single named project routing expression",
+        "description": "Create of update a single named project routing expression.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "project-routing-create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The name of project routing expression",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
+              },
+              "examples": {
+                "CreateProjectRoutingRequestExample1": {
+                  "summary": "A single expression",
+                  "value": "{\n  \"expression\" : \"_csp:aws AND _region:us*\"\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "CreateProjectResponseExample1": {
+                    "summary": "A single expressions",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Delete named project routing expressions",
+        "description": "Delete named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "project-routing-delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The name of project routing expression",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "DeleteProjectResponseExample1": {
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_project_routing": {
+      "get": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Get named project routing expressions",
+        "description": "Get named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "operationId": "project-routing-get-many",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/project_routing._types.NamedProjectRoutingExpressions"
+                },
+                "examples": {
+                  "GetProjectResponseExample1": {
+                    "summary": "Multiple expressions",
+                    "value": "{\n \"aws-us-only\": { \"expression\": \"_csp:aws AND _region:us*\" },\n \"aws-eu-only\": { \"expression\": \"_csp:aws AND _region:eu*\" }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Create of update named project routing expressions",
+        "description": "Create or update named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "project-routing-create-many",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/project_routing._types.NamedProjectRoutingExpressions"
+              },
+              "examples": {
+                "CreateProjectRoutingRequestExample1": {
+                  "summary": "Multiple expressions",
+                  "value": "{\n \"aws-us-only\": { \"expression\": \"_csp:aws AND _region:us*\" },\n \"aws-eu-only\": { \"expression\": \"_csp:aws AND _region:eu*\" }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "CreateProjectResponseExample1": {
+                    "summary": "Multiple expressions",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
           }
         },
         "x-state": "Technical preview",
@@ -58888,6 +59142,7 @@
             "counted_keyword": "#/components/schemas/_types.mapping.CountedKeywordProperty",
             "alias": "#/components/schemas/_types.mapping.FieldAliasProperty",
             "histogram": "#/components/schemas/_types.mapping.HistogramProperty",
+            "exponential_histogram": "#/components/schemas/_types.mapping.ExponentialHistogramProperty",
             "ip": "#/components/schemas/_types.mapping.IpProperty",
             "murmur3": "#/components/schemas/_types.mapping.Murmur3HashProperty",
             "token_count": "#/components/schemas/_types.mapping.TokenCountProperty",
@@ -59000,6 +59255,9 @@
           },
           {
             "$ref": "#/components/schemas/_types.mapping.HistogramProperty"
+          },
+          {
+            "$ref": "#/components/schemas/_types.mapping.ExponentialHistogramProperty"
           },
           {
             "$ref": "#/components/schemas/_types.mapping.IpProperty"
@@ -60714,10 +60972,45 @@
               "ignore_malformed": {
                 "type": "boolean"
               },
+              "time_series_metric": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping.TimeSeriesMetricType"
+                  }
+                ]
+              },
               "type": {
                 "type": "string",
                 "enum": [
                   "histogram"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.mapping.ExponentialHistogramProperty": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping.PropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "time_series_metric": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping.TimeSeriesMetricType"
+                  }
+                ]
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "exponential_histogram"
                 ]
               }
             },
@@ -69749,6 +70042,14 @@
               }
             ]
           },
+          "cef": {
+            "description": "Converts a CEF message into a structured format.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ingest._types.CefProcessor"
+              }
+            ]
+          },
           "circle": {
             "description": "Converts circle definitions of shapes to regular polygons which approximate them.",
             "allOf": [
@@ -70272,6 +70573,53 @@
                     "$ref": "#/components/schemas/_types.Field"
                   }
                 ]
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
+      "ingest._types.CefProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types.ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The field containing the CEF message.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "default": false,
+                "type": "boolean"
+              },
+              "target_field": {
+                "description": "The field to assign the converted value to.\nBy default, the `target_field` is 'cef'",
+                "default": "'cef'",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "ignore_empty_values": {
+                "description": "If `true` and value is anempty string in extensions, the processor quietly exits without modifying the document.",
+                "default": false,
+                "type": "boolean"
+              },
+              "timezone": {
+                "description": "The timezone to use when parsing the date and when date math index supports resolves expressions into concrete index names.",
+                "default": "UTC",
+                "type": "string"
               }
             },
             "required": [
@@ -79637,6 +79985,30 @@
           "_type",
           "_organisation"
         ]
+      },
+      "project_routing._types.ProjectRoutingExpression": {
+        "type": "object",
+        "properties": {
+          "expression": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/project_routing._types.RoutingExpression"
+              }
+            ]
+          }
+        },
+        "required": [
+          "expression"
+        ]
+      },
+      "project_routing._types.RoutingExpression": {
+        "type": "string"
+      },
+      "project_routing._types.NamedProjectRoutingExpressions": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
+        }
       },
       "query_rules._types.QueryRule": {
         "type": "object",
