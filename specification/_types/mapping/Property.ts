@@ -76,6 +76,7 @@ import {
   CompletionProperty,
   ConstantKeywordProperty,
   CountedKeywordProperty,
+  ExponentialHistogramProperty,
   FieldAliasProperty,
   HistogramProperty,
   IcuCollationProperty,
@@ -158,6 +159,7 @@ export type Property =
   | CountedKeywordProperty
   | FieldAliasProperty
   | HistogramProperty
+  | ExponentialHistogramProperty
   | IpProperty
   | Murmur3HashProperty
   | TokenCountProperty
