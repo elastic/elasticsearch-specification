@@ -10404,11 +10404,6 @@ export interface ClusterStatsExtendedRetrieversSearchUsage {
 
 export interface ClusterStatsExtendedSearchUsage {
   retrievers?: ClusterStatsExtendedRetrieversSearchUsage
-  section?: ClusterStatsExtendedSectionSearchUsage
-}
-
-export interface ClusterStatsExtendedSectionSearchUsage {
-  sort?: Record<string, long>
 }
 
 export interface ClusterStatsExtendedTextSimilarityRetrieverUsage {
