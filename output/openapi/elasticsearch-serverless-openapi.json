@@ -69013,6 +69013,11 @@
                 "description": "If `false`, the processor does not append values already present in the field.",
                 "default": true,
                 "type": "boolean"
+              },
+              "ignore_empty_values": {
+                "description": "If `true`, the processor will skip empty values from the source (e.g. empty strings, and null values),\nrather than appending them to the field..",
+                "default": false,
+                "type": "boolean"
               }
             },
             "required": [

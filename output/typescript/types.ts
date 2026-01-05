@@ -15195,6 +15195,7 @@ export interface IngestAppendProcessor extends IngestProcessorBase {
   value?: any | any[]
   copy_from?: Field
   allow_duplicates?: boolean
+  ignore_empty_values?: boolean
 }
 
 export interface IngestAttachmentProcessor extends IngestProcessorBase {
