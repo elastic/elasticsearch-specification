@@ -337,6 +337,13 @@ export class AppendProcessor extends ProcessorBase {
    */
   value?: UserDefinedValue | UserDefinedValue[]
   /**
+   * The media type for encoding `value`.
+   * Applies only when value is a template snippet.
+   * Must be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.
+   * @server_default "application/json"
+   */
+  media_type?: string
+  /**
    * The origin field which will be appended to `field`, cannot set `value` simultaneously.
    */
   copy_from?: Field
@@ -1472,6 +1479,7 @@ export class SetProcessor extends ProcessorBase {
    * The media type for encoding `value`.
    * Applies only when value is a template snippet.
    * Must be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.
+   * @server_default "application/json"
    */
   media_type?: string
   /**
