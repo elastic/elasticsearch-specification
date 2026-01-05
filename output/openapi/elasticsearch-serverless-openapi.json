@@ -70607,7 +70607,7 @@
                 ]
               },
               "ignore_empty_values": {
-                "description": "If `true` and `value` is a template snippet that evaluates to `null` or the empty string, the processor quietly exits without modifying the document.",
+                "description": "If `true` and value is anempty string in extensions, the processor quietly exits without modifying the document.",
                 "default": false,
                 "type": "boolean"
               },
