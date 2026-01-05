@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName, Name, WaitForActiveShards } from '@_types/common'
+import { IndexName, MediaType, Name, WaitForActiveShards } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Duration } from '@_types/Time'
 import { Alias } from '@indices/_types/Alias'
@@ -75,6 +75,8 @@ export interface Request extends RequestBase {
      */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.
@@ -95,7 +97,7 @@ export interface Request extends RequestBase {
      */
     wait_for_active_shards?: WaitForActiveShards
   }
-  body: {
+  body?: {
     /**
      * Aliases for the index.
      */

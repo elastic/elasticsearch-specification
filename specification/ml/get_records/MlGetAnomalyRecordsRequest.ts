@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Field, Id } from '@_types/common'
+import { Field, Id, MediaType } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
 import { Page } from '@ml/_types/Page'
@@ -56,6 +56,8 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If true, the results are sorted in descending order.
@@ -100,7 +102,7 @@ export interface Request extends RequestBase {
      */
     start?: DateTime
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `desc` query parameter.
      * @server_default false

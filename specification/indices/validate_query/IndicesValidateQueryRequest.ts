@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
 
@@ -50,6 +50,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
@@ -114,7 +116,7 @@ export interface Request extends RequestBase {
      */
     q?: string
   }
-  body: {
+  body?: {
     /**
      * Query in the Lucene query string syntax.
      */

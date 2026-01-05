@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Routing } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType, Routing } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
@@ -82,6 +82,8 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Extend the length of time that the point in time persists.
@@ -121,7 +123,7 @@ export interface Request extends RequestBase {
      */
     max_concurrent_shard_requests?: integer
   }
-  body: {
+  body?: {
     /**
      * Filter indices if the provided query rewrites to `match_none` on every shard.
      */

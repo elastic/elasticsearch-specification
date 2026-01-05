@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { CatDfaColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
@@ -50,6 +50,7 @@ export interface Request extends CatRequestBase {
     /** The ID of the data frame analytics to fetch */
     id?: Id
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * Whether to ignore if a wildcard expression matches no configs.
@@ -62,7 +63,8 @@ export interface Request extends CatRequestBase {
      * @server_default create_time,id,state,type
      */
     h?: CatDfaColumns
-    /** Comma-separated list of column names or column aliases used to sort the
+    /**
+     * Comma-separated list of column names or column aliases used to sort the
      * response.
      */
     s?: CatDfaColumns

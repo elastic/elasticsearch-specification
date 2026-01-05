@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Retrieves a secret stored by Fleet.
@@ -36,4 +37,5 @@ export interface Request extends RequestBase {
     /** The ID of the secret */
     id: string
   }
+  response_media_type: MediaType.Json
 }

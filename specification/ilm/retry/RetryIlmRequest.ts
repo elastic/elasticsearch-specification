@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 
 /**
  * Retry a policy.
@@ -42,4 +42,5 @@ export interface Request extends RequestBase {
     /** The name of the indices (comma-separated) whose failed lifecycle step is to be retry */
     index: IndexName
   }
+  response_media_type: MediaType.Json
 }

@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   Fields,
   IndexName,
+  MediaType,
   Refresh,
   Routing,
   WaitForActiveShards
@@ -169,6 +170,8 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      */
     index?: IndexName
   }
+  request_media_type: MediaType.Ndjson
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * True or false if to include the document source in the error message in case of parsing errors.

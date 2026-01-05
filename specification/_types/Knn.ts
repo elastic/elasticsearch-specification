@@ -54,7 +54,8 @@ export interface KnnSearch {
    * @doc_id knn-inner-hits
    */
   inner_hits?: InnerHits
-  /** Apply oversampling and rescoring to quantized vectors
+  /**
+   * Apply oversampling and rescoring to quantized vectors
    * @availability stack since=8.18.0
    * @availability serverless
    */
@@ -79,7 +80,8 @@ export interface KnnQuery extends QueryBase {
   filter?: QueryContainer | QueryContainer[]
   /** The minimum similarity for a vector to be considered a match */
   similarity?: float
-  /** Apply oversampling and rescoring to quantized vectors
+  /**
+   * Apply oversampling and rescoring to quantized vectors
    * @availability stack since=8.18.0
    * @availability serverless
    */

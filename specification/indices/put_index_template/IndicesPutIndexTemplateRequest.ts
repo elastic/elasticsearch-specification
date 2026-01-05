@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   IndexName,
   Indices,
+  MediaType,
   Metadata,
   Name,
   VersionNumber
@@ -82,6 +83,8 @@ export interface Request extends RequestBase {
     /** Index or template name */
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * Name of the index template to create.

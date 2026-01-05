@@ -457,7 +457,6 @@ export class AggregationContainer {
    * Sampling provides significant speed improvement at the cost of accuracy.
    * @ext_doc_id search-aggregations-random-sampler-aggregation
    * @availability stack since=8.1.0 stability=experimental
-
    */
   random_sampler?: RandomSamplerAggregation
   /**

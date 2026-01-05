@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Fields, Indices } from '@_types/common'
+import { ExpandWildcards, Fields, Indices, MediaType } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
@@ -54,6 +54,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If false, the request returns an error if any wildcard expression, index alias,
@@ -103,7 +105,7 @@ export interface Request extends RequestBase {
      */
     include_empty_fields?: boolean
   }
-  body: {
+  body?: {
     /**
      * A list of fields to retrieve capabilities for. Wildcard (`*`) expressions are supported.
      * @availability stack since=8.5.0

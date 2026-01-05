@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { CategoryId, Id } from '@_types/common'
+import { CategoryId, Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Page } from '@ml/_types/Page'
 
@@ -57,6 +57,8 @@ export interface Request extends RequestBase {
      */
     category_id?: CategoryId
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Skips the specified number of categories.
@@ -73,7 +75,7 @@ export interface Request extends RequestBase {
      */
     size?: integer
   }
-  body: {
+  body?: {
     /**
      * Configures pagination.
      * This parameter has the `from` and `size` properties.

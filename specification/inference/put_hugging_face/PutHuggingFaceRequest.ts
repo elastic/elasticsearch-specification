@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import {
   HuggingFaceServiceSettings,
@@ -36,7 +36,7 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  *
  * To configure the endpoint, first visit the Hugging Face Inference Endpoints page and create a new endpoint.
  * Select a model that supports the task you intend to use.
-
+ *
  * For Elastic's `text_embedding` task:
  * The selected model must support the `Sentence Embeddings` task. On the new endpoint creation page, select the `Sentence Embeddings` task under the `Advanced Configuration` section.
  * After the endpoint has initialized, copy the generated endpoint URL.
@@ -91,6 +91,8 @@ export interface Request extends RequestBase {
      */
     huggingface_inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies the amount of time to wait for the inference endpoint to be created.

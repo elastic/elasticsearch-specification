@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { DateTime, Duration } from '@_types/Time'
 
 /**
@@ -57,6 +57,8 @@ export interface Request extends RequestBase {
      */
     datafeed_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The time that the datafeed should end, which can be specified by using one of the following formats:
@@ -86,7 +88,7 @@ export interface Request extends RequestBase {
      * @server_default 20s */
     timeout?: Duration
   }
-  body: {
+  body?: {
     /** Refer to the description for the `end` query parameter. */
     end?: DateTime // default ""
     /** Refer to the description for the `start` query parameter.  */

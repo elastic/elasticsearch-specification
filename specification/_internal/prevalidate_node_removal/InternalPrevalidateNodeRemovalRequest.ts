@@ -19,12 +19,14 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Prevalidates node removal from the cluster.
  *
  * @rest_spec_name _internal.prevalidate_node_removal
  * @availability stack stability=experimental visibility=private
+ * @codegen_exclude
  */
 export interface Request extends RequestBase {
   urls: [
@@ -33,6 +35,7 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of node names to prevalidate

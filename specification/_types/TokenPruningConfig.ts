@@ -20,15 +20,18 @@
 import { float, integer } from '@_types/Numeric'
 
 export class TokenPruningConfig {
-  /** Tokens whose frequency is more than this threshold times the average frequency of all tokens in the specified field are considered outliers and pruned.
+  /**
+   * Tokens whose frequency is more than this threshold times the average frequency of all tokens in the specified field are considered outliers and pruned.
    * @server_default 5
    */
   tokens_freq_ratio_threshold?: integer
-  /** Tokens whose weight is less than this threshold are considered nonsignificant and pruned.
+  /**
+   * Tokens whose weight is less than this threshold are considered nonsignificant and pruned.
    * @server_default 0.4
    */
   tokens_weight_threshold?: float
-  /** Whether to only score pruned tokens, vs only scoring kept tokens.
+  /**
+   * Whether to only score pruned tokens, vs only scoring kept tokens.
    * @server_default false
    */
   only_score_pruned_tokens?: boolean

@@ -44,6 +44,7 @@ export class SuggestContext {
   name: Name
   path?: Field
   type: string
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   precision?: integer | string
 }
 

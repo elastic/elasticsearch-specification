@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { DateTime } from '@_types/Time'
 
 /**
@@ -46,6 +46,8 @@ export interface Request<TData> extends RequestBase {
      */
     job_id: Id
   }
+  request_media_type: MediaType.Json | MediaType.Ndjson
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies the end of the bucket resetting range.

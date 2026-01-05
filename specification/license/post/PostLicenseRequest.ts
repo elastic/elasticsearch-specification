@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { License } from '@license/_types/License'
 
@@ -43,6 +44,8 @@ export interface Request extends RequestBase {
       methods: ['PUT', 'POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies whether you acknowledge the license changes.
@@ -60,7 +63,7 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  body: {
+  body?: {
     license?: License
     /**
      * A sequence of one or more JSON documents containing the license information.
