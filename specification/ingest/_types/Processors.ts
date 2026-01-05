@@ -52,6 +52,11 @@ export class ProcessorContainer {
    */
   bytes?: BytesProcessor
   /**
+   * Converts a CEF message into a structured format.
+   * @doc_id cef-processor
+   */
+  cef?: CefProcessor
+  /**
    * Converts circle definitions of shapes to regular polygons which approximate them.
    * @doc_id ingest-circle-processor
    */
@@ -337,6 +342,13 @@ export class AppendProcessor extends ProcessorBase {
    */
   value?: UserDefinedValue | UserDefinedValue[]
   /**
+   * The media type for encoding `value`.
+   * Applies only when value is a template snippet.
+   * Must be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.
+   * @server_default "application/json"
+   */
+  media_type?: string
+  /**
    * The origin field which will be appended to `field`, cannot set `value` simultaneously.
    */
   copy_from?: Field
@@ -579,6 +591,34 @@ export class BytesProcessor extends ProcessorBase {
    * @server_default field
    */
   target_field?: Field
+}
+
+export class CefProcessor extends ProcessorBase {
+  /**
+   * The field containing the CEF message.
+   */
+  field: Field
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
+  ignore_missing?: boolean
+  /**
+   * The field to assign the converted value to.
+   * By default, the `target_field` is 'cef'
+   * @server_default 'cef'
+   */
+  target_field?: Field
+  /**
+   * If `true` and value is anempty string in extensions, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
+  ignore_empty_values?: boolean
+  /**
+   * The timezone to use when parsing the date and when date math index supports resolves expressions into concrete index names.
+   * @server_default UTC
+   */
+  timezone?: string
 }
 
 export class CircleProcessor extends ProcessorBase {
@@ -1472,6 +1512,7 @@ export class SetProcessor extends ProcessorBase {
    * The media type for encoding `value`.
    * Applies only when value is a template snippet.
    * Must be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.
+   * @server_default "application/json"
    */
   media_type?: string
   /**

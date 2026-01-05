@@ -29,6 +29,7 @@ import { Script } from '@_types/Scripting'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { DocValuesPropertyBase, IndexOptions, OnScriptError } from './core'
 import { PropertyBase } from './Property'
+import { TimeSeriesMetricType } from './TimeSeriesMetricType'
 
 export class CompletionProperty extends DocValuesPropertyBase {
   analyzer?: string
@@ -69,7 +70,13 @@ export class FieldAliasProperty extends PropertyBase {
 
 export class HistogramProperty extends PropertyBase {
   ignore_malformed?: boolean
+  time_series_metric?: TimeSeriesMetricType
   type: 'histogram'
+}
+
+export class ExponentialHistogramProperty extends PropertyBase {
+  time_series_metric?: TimeSeriesMetricType
+  type: 'exponential_histogram'
 }
 
 export class IpProperty extends DocValuesPropertyBase {
