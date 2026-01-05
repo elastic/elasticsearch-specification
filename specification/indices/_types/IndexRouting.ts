@@ -60,5 +60,6 @@ export class IndexRoutingAllocationInitialRecovery {
 
 // ES: DiskThresholdSettings
 export class IndexRoutingAllocationDisk {
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   threshold_enabled?: boolean | string
 }

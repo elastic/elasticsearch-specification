@@ -124,14 +124,16 @@ export class KnnRetriever extends RetrieverBase {
   k: integer
   /** Number of nearest neighbor candidates to consider per shard. */
   num_candidates: integer
-  /** The percentage of vectors to explore per shard while doing knn search with bbq_disk
+  /**
+   * The percentage of vectors to explore per shard while doing knn search with bbq_disk
    * @availability stack since=9.2.0
    * @availability serverless
    */
   visit_percentage?: float
   /** The minimum similarity required for a document to be considered a match.  */
   similarity?: float
-  /** Apply oversampling and rescoring to quantized vectors
+  /**
+   * Apply oversampling and rescoring to quantized vectors
    * @availability stack since=8.18.0
    * @availability serverless
    */
@@ -160,7 +162,8 @@ export class TextSimilarityReranker extends RetrieverBase {
   inference_text: string
   /** The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text. */
   field: string
-  /** Whether to rescore on only the best matching chunks.
+  /**
+   * Whether to rescore on only the best matching chunks.
    * @availability stack since=9.2.0 stability=beta
    * @availability serverless stability=beta
    */

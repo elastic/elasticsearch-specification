@@ -52,6 +52,7 @@ export class Hit<TDocument> {
   fields?: Dictionary<string, UserDefinedValue>
   highlight?: Dictionary<string, string[]>
   inner_hits?: Dictionary<string, InnerHitsResult>
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   matched_queries?: string[] | Dictionary<string, double>
   _nested?: NestedIdentity
   _ignored?: string[]
@@ -69,6 +70,7 @@ export class Hit<TDocument> {
 
 export class HitsMetadata<T> {
   /** Total hit count information, present only if `track_total_hits` wasn't `false` in the search request. */
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   total?: TotalHits | long
   hits: Hit<T>[]
 

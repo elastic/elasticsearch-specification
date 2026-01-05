@@ -18,7 +18,6 @@
  */
 
 import * as model from '../model/metamodel'
-import { JsonSpec } from '../model/json-spec'
 import * as path from 'path'
 import * as fs from 'fs'
 import * as yaml from 'js-yaml'
@@ -35,9 +34,7 @@ export default class ExamplesProcessor {
   }
 
   // Add request and response examples for all the endpoints in the model.
-  // Note that the 'jsonSpec' is a parameter that is passed to a 'Step'.
-  // We don't need that parameter for the the 'addExamples' functionality.
-  async addExamples (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
+  async addExamples (model: model.Model): Promise<model.Model> {
     const requestExamplesProcessor = new RequestExamplesProcessor(model, this.specsFolder)
     const responseExamplesProcessor = new ResponseExamplesProcessor(model, this.specsFolder)
     for (const endpoint of model.endpoints) {

@@ -22,6 +22,7 @@ import {
   ExpandWildcards,
   IndexAlias,
   IndexName,
+  MediaType,
   SearchType
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
@@ -55,8 +56,11 @@ export interface Request extends RequestBase {
     /**
      * A single target to search. If the target is an index alias, it must resolve to a single index.
      */
+    // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
     index?: IndexName | IndexAlias
   }
+  request_media_type: MediaType.Ndjson
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.

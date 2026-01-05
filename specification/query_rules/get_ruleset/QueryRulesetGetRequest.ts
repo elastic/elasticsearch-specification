@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Get a query ruleset.
@@ -43,4 +43,5 @@ export interface Request extends RequestBase {
      */
     ruleset_id: Id
   }
+  response_media_type: MediaType.Json
 }

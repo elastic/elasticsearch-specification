@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -45,9 +45,11 @@ export interface Request extends RequestBase {
   path_parts: {
     /**
      * The auto-follow pattern collection that you want to retrieve.
-     * If you do not specify a name, the API returns information for all collections. */
+     * If you do not specify a name, the API returns information for all collections.
+     */
     name?: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
   Indices,
+  MediaType,
   Metrics,
   VersionNumber
 } from '@_types/common'
@@ -76,6 +77,7 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Whether to ignore if a wildcard indices expression resolves into no concrete indices.

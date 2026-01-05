@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Page } from '@ml/_types/Page'
 
@@ -47,12 +47,16 @@ export interface Request extends RequestBase {
     /** A string that uniquely identifies a calendar. You can get information for multiple calendars by using a comma-separated list of ids or a wildcard expression. You can get information for all calendars by using `_all` or `*` or by omitting the calendar identifier.*/
     calendar_id?: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
-    /** Skips the specified number of calendars. This parameter is supported only when you omit the calendar identifier.
+    /**
+     * Skips the specified number of calendars. This parameter is supported only when you omit the calendar identifier.
      * @server_default 0
      */
     from?: integer
-    /** Specifies the maximum number of calendars to obtain. This parameter is supported only when you omit the calendar identifier.
+    /**
+     * Specifies the maximum number of calendars to obtain. This parameter is supported only when you omit the calendar identifier.
      * @server_default 10000
      */
     size?: integer

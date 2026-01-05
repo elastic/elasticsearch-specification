@@ -23,6 +23,12 @@
  * @doc_id docs-index
  */
 export interface Request {
+  urls: [
+    {
+      path: '/foo',
+      methods: ['POST']
+    }
+  ]
   body: Foo
 }
 

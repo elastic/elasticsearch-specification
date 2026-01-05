@@ -1,0 +1,71 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+import { RuleTester } from '@typescript-eslint/rule-tester'
+import rule from '../rules/no-same-name-as-enclosing-type.js'
+
+const ruleTester = new RuleTester({
+  languageOptions: {
+    parserOptions: {
+      projectService: {
+        allowDefaultProject: ['*.ts*'],
+      },
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+
+ruleTester.run('no-same-name-as-enclosing-type', rule, {
+  valid: [
+    `class MyClass { 
+      field: integer
+      anotherfield: string 
+    }`,
+    `class MyClass { 
+      /** @codegen_name new_name **/
+      myclass: integer
+    }`
+  ],
+  invalid: [
+    {
+      code: `class MyClass { MyClass: integer }`,
+      errors: [{ messageId: 'shouldNotUseClassNameForFieldNames' }]
+    },
+    {
+      code: `class MyClass { myclass: integer }`,
+      errors: [{ messageId: 'shouldNotUseClassNameForFieldNames' }]
+    },
+    {
+      code: `class MyClass { 
+        field: integer
+        anotherfield: string
+        myclass: boolean 
+        }`,
+      errors: [{ messageId: 'shouldNotUseClassNameForFieldNames' }]
+    },
+    {
+      code: `class MyClass {
+        field: integer
+        anotherfield: string
+        /** @codegen_name myclass **/
+        myclass: boolean 
+        }`,
+      errors: [{ messageId: 'shouldNotUseClassNameForFieldNames' }]
+    }
+  ],
+})
