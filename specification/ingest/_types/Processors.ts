@@ -347,7 +347,7 @@ export class AppendProcessor extends ProcessorBase {
   allow_duplicates?: boolean
   /**
    * If `true`, the processor will skip empty values from the source (e.g. empty strings, and null values),
-   * rather than appending them to the field..
+   * rather than appending them to the field.
    * @server_default false
    */
   ignore_empty_values?: boolean
