@@ -15196,6 +15196,7 @@ export interface IngestAppendProcessor extends IngestProcessorBase {
   media_type?: string
   copy_from?: Field
   allow_duplicates?: boolean
+  ignore_empty_values?: boolean
 }
 
 export interface IngestAttachmentProcessor extends IngestProcessorBase {
