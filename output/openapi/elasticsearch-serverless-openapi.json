@@ -83634,7 +83634,7 @@
       "cluster.get_component_template-name": {
         "in": "path",
         "name": "name",
-        "description": "Comma-separated list of component template names used to limit the request.\nWildcard (`*`) expressions are supported.",
+        "description": "Name of component template to retrieve. Wildcard (`*`) expressions are supported.",
         "required": true,
         "deprecated": false,
         "schema": {
