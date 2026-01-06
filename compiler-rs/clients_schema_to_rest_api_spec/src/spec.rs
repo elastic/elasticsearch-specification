@@ -1,6 +1,37 @@
+use anyhow::anyhow;
 use indexmap::IndexMap;
 use serde::Serialize;
 use std::collections::HashMap;
+use std::str::FromStr;
+
+#[derive(Debug, Clone, Serialize)]
+#[serde(rename_all = "UPPERCASE")]
+pub enum HttpMethod {
+    Get,
+    Post,
+    Put,
+    Delete,
+    Head,
+    Patch,
+    Options,
+}
+
+impl FromStr for HttpMethod {
+    type Err = anyhow::Error;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s.to_uppercase().as_str() {
+            "GET" => Ok(HttpMethod::Get),
+            "POST" => Ok(HttpMethod::Post),
+            "PUT" => Ok(HttpMethod::Put),
+            "DELETE" => Ok(HttpMethod::Delete),
+            "HEAD" => Ok(HttpMethod::Head),
+            "PATCH" => Ok(HttpMethod::Patch),
+            "OPTIONS" => Ok(HttpMethod::Options),
+            _ => Err(anyhow!("Unknown HTTP method: {}", s)),
+        }
+    }
+}
 
 #[derive(Debug, Serialize)]
 pub struct Endpoint {
@@ -35,7 +66,7 @@ pub struct Url {
 #[derive(Debug, Serialize)]
 pub struct Path {
     pub path: String,
-    pub methods: Vec<String>,
+    pub methods: Vec<HttpMethod>,
     #[serde(skip_serializing_if = "HashMap::is_empty")]
     pub parts: HashMap<String, PathPart>,
     #[serde(skip_serializing_if = "Option::is_none")]

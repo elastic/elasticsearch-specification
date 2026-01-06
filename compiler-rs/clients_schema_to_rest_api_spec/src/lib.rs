@@ -156,7 +156,7 @@ fn convert_url_template(
 
     Ok(Path {
         path: url_template.path.clone(),
-        methods: url_template.methods.clone(),
+        methods: url_template.methods.iter().map(|m| m.parse::<HttpMethod>()).collect::<Result<Vec<_>, _>>()?,
         parts,
         deprecated: url_template.deprecation.as_ref().map(|dep| Deprecation {
             version: dep.version.clone(),
