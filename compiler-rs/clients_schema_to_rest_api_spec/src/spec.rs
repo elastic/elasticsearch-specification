@@ -1,35 +1,28 @@
-use anyhow::anyhow;
 use indexmap::IndexMap;
-use serde::Serialize;
+use serde::{Serialize, Serializer};
 use std::collections::HashMap;
-use std::str::FromStr;
 
-#[derive(Debug, Clone, Serialize)]
-#[serde(rename_all = "UPPERCASE")]
-pub enum HttpMethod {
-    Get,
-    Post,
-    Put,
-    Delete,
-    Head,
-    Patch,
-    Options,
+#[derive(Debug, Clone)]
+pub struct HttpMethods(Vec<http::Method>);
+
+impl Serialize for HttpMethods {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        serializer.collect_seq(self.0.iter().map(http::Method::as_str))
+    }
 }
 
-impl FromStr for HttpMethod {
-    type Err = anyhow::Error;
+impl TryFrom<&[String]> for HttpMethods {
+    type Error = http::method::InvalidMethod;
 
-    fn from_str(s: &str) -> Result<Self, Self::Err> {
-        match s.to_uppercase().as_str() {
-            "GET" => Ok(HttpMethod::Get),
-            "POST" => Ok(HttpMethod::Post),
-            "PUT" => Ok(HttpMethod::Put),
-            "DELETE" => Ok(HttpMethod::Delete),
-            "HEAD" => Ok(HttpMethod::Head),
-            "PATCH" => Ok(HttpMethod::Patch),
-            "OPTIONS" => Ok(HttpMethod::Options),
-            _ => Err(anyhow!("Unknown HTTP method: {}", s)),
-        }
+    fn try_from(methods: &[String]) -> Result<Self, Self::Error> {
+        methods
+            .iter()
+            .map(|m| http::Method::from_bytes(m.as_bytes()))
+            .collect::<Result<Vec<_>, _>>()
+            .map(HttpMethods)
     }
 }
 
@@ -66,7 +59,7 @@ pub struct Url {
 #[derive(Debug, Serialize)]
 pub struct Path {
     pub path: String,
-    pub methods: Vec<HttpMethod>,
+    pub methods: HttpMethods,
     #[serde(skip_serializing_if = "HashMap::is_empty")]
     pub parts: HashMap<String, PathPart>,
     #[serde(skip_serializing_if = "Option::is_none")]
