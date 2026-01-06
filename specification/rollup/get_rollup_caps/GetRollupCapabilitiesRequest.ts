@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Get the rollup job capabilities.
+ *
  * Get the capabilities of any rollup jobs that have been configured for a specific index or index pattern.
  *
  * This API is useful because a rollup job is often configured to rollup only a subset of fields from the source index.
@@ -54,4 +55,5 @@ export interface Request extends RequestBase {
      */
     id?: Id
   }
+  response_media_type: MediaType.Json
 }

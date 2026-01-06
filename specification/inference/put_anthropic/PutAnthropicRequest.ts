@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import {
   AnthropicServiceSettings,
@@ -26,7 +26,6 @@ import {
   AnthropicTaskSettings,
   AnthropicTaskType
 } from '@inference/_types/CommonTypes'
-import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**
  * Create an Anthropic inference endpoint.
@@ -56,6 +55,8 @@ export interface Request extends RequestBase {
      */
     anthropic_inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies the amount of time to wait for the inference endpoint to be created.
@@ -65,16 +66,11 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * The chunking configuration object.
-     * @ext_doc_id inference-chunking
-     */
-    chunking_settings?: InferenceChunkingSettings
-    /**
      * The type of service supported for the specified task type. In this case, `anthropic`.
      */
     service: AnthropicServiceType
     /**
-     * Settings used to install the inference model. These settings are specific to the `watsonxai` service.
+     * Settings used to install the inference model. These settings are specific to the `anthropic` service.
      */
     service_settings: AnthropicServiceSettings
     /**

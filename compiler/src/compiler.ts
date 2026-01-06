@@ -21,11 +21,10 @@ import { writeFile, mkdir } from 'fs/promises'
 import { join } from 'path'
 import stringify from 'safe-stable-stringify'
 import { Model } from './model/metamodel'
-import { compileEndpoints, compileSpecification } from './model/build-model'
-import buildJsonSpec, { JsonSpec } from './model/json-spec'
+import { compileSpecification } from './model/build-model'
 import { ValidationErrors } from './validation-errors'
 
-type StepFunction = (model: Model, restSpec: Map<string, JsonSpec>, errors: ValidationErrors) => Promise<Model>
+type StepFunction = (model: Model, errors: ValidationErrors) => Promise<Model>
 
 /**
  * The main job of the compiler is to generate the Model and write it on disk.
@@ -38,7 +37,6 @@ type StepFunction = (model: Model, restSpec: Map<string, JsonSpec>, errors: Vali
 export default class Compiler {
   queue: StepFunction[]
   model: Model
-  jsonSpec: Map<string, JsonSpec>
   errors: ValidationErrors
   specsFolder: string
   outputFolder: string
@@ -51,15 +49,13 @@ export default class Compiler {
   }
 
   generateModel (): this {
-    this.jsonSpec = buildJsonSpec()
-    const endpoints = compileEndpoints()
-    this.model = compileSpecification(endpoints, this.specsFolder, this.outputFolder)
+    this.model = compileSpecification(this.specsFolder, this.outputFolder)
     return this
   }
 
   async write (): Promise<void> {
     for (const step of this.queue) {
-      this.model = await step(this.model, this.jsonSpec, this.errors)
+      this.model = await step(this.model, this.errors)
     }
 
     const customStringify = stringify.configure(

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import {
   MistralServiceSettings,
@@ -54,6 +54,8 @@ export interface Request extends RequestBase {
      */
     mistral_inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies the amount of time to wait for the inference endpoint to be created.
@@ -64,6 +66,8 @@ export interface Request extends RequestBase {
   body: {
     /**
      * The chunking configuration object.
+     * Applies only to the `text_embedding` task type.
+     * Not applicable to the `completion` or `chat_completion` task types.
      * @ext_doc_id inference-chunking
      */
     chunking_settings?: InferenceChunkingSettings

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, IndexName } from '@_types/common'
+import { ExpandWildcards, IndexName, MediaType } from '@_types/common'
 
 /**
  * Get data stream stats.
@@ -50,11 +50,12 @@ export interface Request extends RequestBase {
      */
     name?: IndexName
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Type of data stream that wildcard patterns can match.
      * Supports comma-separated values, such as `open,hidden`.
-     * @server_default open
+     * @server_default open,closed
      */
     expand_wildcards?: ExpandWildcards
   }

@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get async SQL search results.
+ *
  * Get the current status and available results for an async SQL search or stored synchronous SQL search.
  *
  * If the Elasticsearch security features are enabled, only the user who first submitted the SQL search can retrieve the search using this API.
@@ -44,6 +45,7 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The separator for CSV results.

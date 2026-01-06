@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ByteSize, Name } from '@_types/common'
+import { ByteSize, MediaType, Name } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
@@ -133,6 +133,12 @@ import { Duration } from '@_types/Time'
  * @doc_id analyze-repository
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_snapshot/{repository}/_analyze'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /**
      * The name of the repository.
@@ -140,6 +146,7 @@ export interface Request extends RequestBase {
      */
     repository: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The total number of blobs to write to the repository during the test.

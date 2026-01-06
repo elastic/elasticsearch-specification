@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 
 /**
  * Get index recovery information.
+ *
  * Get information about ongoing and completed shard recoveries for one or more indices.
  * For data streams, the API returns information for the stream's backing indices.
  *
@@ -69,6 +70,7 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, the response only includes ongoing shard recoveries.

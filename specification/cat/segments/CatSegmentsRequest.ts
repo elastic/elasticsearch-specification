@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Indices, Names } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { CatRequestBase, CatSegmentsColumns } from '@cat/_types/CatBase'
 
@@ -53,6 +53,7 @@ export interface Request extends CatRequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of columns names to display.
@@ -79,5 +80,35 @@ export interface Request extends CatRequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
+    /**
+     * Type of index that wildcard expressions can match. If the request can target data streams, this argument
+     * determines whether wildcard expressions match hidden data streams. Supports comma-separated values,
+     * such as open,hidden.
+     * @server_default open
+     */
+    expand_wildcards?: ExpandWildcards
+    /**
+     * If false, the request returns an error if any wildcard expression, index alias, or _all value targets only
+     * missing or closed indices. This behavior applies even if the request targets other open indices. For example,
+     * a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.
+     * @server_default true
+     */
+    allow_no_indices?: boolean
+    /**
+     * If true, concrete, expanded or aliased indices are ignored when frozen.
+     * @server_default false
+     */
+    ignore_throttled?: boolean
+    /**
+     * If true, missing or closed indices are not included in the response.
+     * @server_default false
+     */
+    ignore_unavailable?: boolean
+    /**
+     * If true, allow closed indices to be returned in the response otherwise if false, keep the legacy behaviour
+     * of throwing an exception if index pattern matches closed indices
+     * @server_default false
+     */
+    allow_closed?: boolean
   }
 }

@@ -20,9 +20,11 @@
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Update Watcher index settings.
+ *
  * Update settings for the Watcher internal index (`.watches`).
  * Only a subset of settings can be modified.
  * This includes `index.auto_expand_replicas`, `index.number_of_replicas`, `index.routing.allocation.exclude.*`,
@@ -41,6 +43,8 @@ export interface Request extends RequestBase {
       methods: ['PUT']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

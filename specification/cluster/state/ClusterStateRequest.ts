@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
   Indices,
+  MediaType,
   Metrics,
   VersionNumber
 } from '@_types/common'
@@ -28,6 +29,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Get the cluster state.
+ *
  * Get comprehensive information about the state of the cluster.
  *
  * The cluster state is an internal data structure which keeps track of a variety of information needed by every node, including the identity and attributes of the other nodes in the cluster; cluster-wide settings; index metadata, including the mapping and settings for each index; the location and status of every shard copy in the cluster.
@@ -68,26 +70,53 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** Limit the information returned to the specified metrics. */
     metric?: Metrics
+    /**
+     * A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices
+     */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
-    /** @server_default true */
+    /**
+     * Whether to ignore if a wildcard indices expression resolves into no concrete indices.
+     * (This includes `_all` string or when no indices have been specified)
+     * @server_default true */
     allow_no_indices?: boolean
+    /**
+     * Whether to expand wildcard expression to concrete indices that are open, closed or both
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
-    /** @server_default false */
+    /**
+     * Return settings in flat format
+     * @server_default false
+     */
     flat_settings?: boolean
-    /** @server_default false */
+    /**
+     * Whether specified concrete indices should be ignored when unavailable (missing or closed)
+     * @server_default false
+     */
     ignore_unavailable?: boolean
-    /** @server_default false */
+    /**
+     * Return local information, do not retrieve the state from master node
+     * @deprecated 9.0.0 This parameter has no effect, is now deprecated, and will be removed in a future version.
+     * @server_default false
+     */
     local?: boolean
     /**
      * Timeout for waiting for new cluster state in case it is blocked
-     * @deprecated 9.2.0
      * @server_default 30s
      * */
     master_timeout?: Duration
+    /**
+     * Wait for the metadata version to be equal or greater than the specified metadata version
+     */
     wait_for_metadata_version?: VersionNumber
+    /**
+     * The maximum time to wait for wait_for_metadata_version before timing out
+     */
     wait_for_timeout?: Duration
   }
 }

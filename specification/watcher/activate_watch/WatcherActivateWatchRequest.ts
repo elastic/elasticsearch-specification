@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 
 /**
  * Activate a watch.
+ *
  * A watch can be either active or inactive.
  * @rest_spec_name watcher.activate_watch
  * @availability stack stability=stable
@@ -42,4 +43,5 @@ export interface Request extends RequestBase {
      */
     watch_id: Name
   }
+  response_media_type: MediaType.Json
 }

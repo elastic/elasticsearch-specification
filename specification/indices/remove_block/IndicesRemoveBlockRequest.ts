@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, IndexName } from '@_types/common'
+import { ExpandWildcards, IndexName, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { IndicesBlockOptions } from '@indices/_types/IndexSettings'
 
@@ -53,6 +53,7 @@ export interface Request extends RequestBase {
      */
     block: IndicesBlockOptions
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
@@ -60,32 +61,32 @@ export interface Request extends RequestBase {
      * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
      * @server_default true
      */
-    allow_no_indices?: boolean // default: true
+    allow_no_indices?: boolean
     /**
      * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * It supports comma-separated values, such as `open,hidden`.
      * @server_default open
      */
-    expand_wildcards?: ExpandWildcards // default: open
+    expand_wildcards?: ExpandWildcards
     /**
      * If `false`, the request returns an error if it targets a missing or closed index.
      * @server_default false
      */
-    ignore_unavailable?: boolean // default: false
+    ignore_unavailable?: boolean
     /**
      * The period to wait for the master node.
      * If the master node is not available before the timeout expires, the request fails and returns an error.
      * It can also be set to `-1` to indicate that the request should never timeout.
      * @server_default 30s
      */
-    master_timeout?: Duration // default: 30s
+    master_timeout?: Duration
     /**
      * The period to wait for a response from all relevant nodes in the cluster after updating the cluster metadata.
      * If no response is received before the timeout expires, the cluster metadata update still applies but the response will indicate that it was not completely acknowledged.
      * It can also be set to `-1` to indicate that the request should never timeout.
      * @server_default 30s
      */
-    timeout?: Duration // default: 30s
+    timeout?: Duration
   }
 }

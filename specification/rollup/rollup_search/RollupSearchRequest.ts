@@ -19,13 +19,14 @@
 
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
+import { Indices, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Search rolled-up data.
+ *
  * The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.
  * It rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.
  *
@@ -62,11 +63,18 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
+     * Indicates whether hits.total should be rendered as an integer or an object in the rest search response
      * @server_default false
      */
     rest_total_hits_as_int?: boolean
+    /**
+     * Specify whether aggregation and suggester names should be prefixed by their respective types in the response
+     * @server_default false
+     */
     typed_keys?: boolean
   }
   body: {

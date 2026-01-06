@@ -17,11 +17,12 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { SynonymString } from '../_types/SynonymRule'
 
 /**
  * Create or update a synonym rule.
+ *
  * Create or update a synonym rule in a synonym set.
  *
  * If any of the synonym rules included is invalid, the API returns an error.
@@ -50,6 +51,8 @@ export interface Request extends RequestBase {
      */
     rule_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The synonym rule information definition, which must be in Solr format.

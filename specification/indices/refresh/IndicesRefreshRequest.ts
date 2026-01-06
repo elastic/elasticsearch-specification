@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 
 /**
  * Refresh an index.
+ *
  * A refresh makes recent operations performed on one or more indices available for search.
  * For data streams, the API runs the refresh operation on the stream’s backing indices.
  *
@@ -62,6 +63,7 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.

@@ -18,9 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Get data stream lifecycle stats.
+ *
  * Get statistics about the data streams that are managed by a data stream lifecycle.
  * @rest_spec_name indices.get_data_lifecycle_stats
  * @availability stack since=8.12.0 stability=stable
@@ -36,4 +38,5 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
 }

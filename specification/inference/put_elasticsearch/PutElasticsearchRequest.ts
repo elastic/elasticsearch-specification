@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import {
   ElasticsearchServiceSettings,
@@ -69,6 +69,8 @@ export interface Request extends RequestBase {
      */
     elasticsearch_inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies the amount of time to wait for the inference endpoint to be created.
@@ -79,6 +81,8 @@ export interface Request extends RequestBase {
   body: {
     /**
      * The chunking configuration object.
+     * Applies only to the `sparse_embedding` and `text_embedding` task types.
+     * Not applicable to the `rerank` task type.
      * @ext_doc_id inference-chunking
      */
     chunking_settings?: InferenceChunkingSettings

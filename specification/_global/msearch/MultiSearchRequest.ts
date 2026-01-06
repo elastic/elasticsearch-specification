@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
   Indices,
+  MediaType,
   ProjectRouting,
   Routing,
   SearchType
@@ -70,6 +71,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Ndjson
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.
@@ -83,10 +86,12 @@ export interface Request extends RequestBase {
     ccs_minimize_roundtrips?: boolean
     /**
      * Type of index that wildcard expressions can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
      * If true, concrete, expanded or aliased indices are ignored when frozen.
+     * @deprecated 7.16.0 This parameter is deprecated because frozen indices have been deprecated.
      * @server_default false
      */
     ignore_throttled?: boolean

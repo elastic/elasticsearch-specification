@@ -19,9 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Get the snapshot lifecycle management status.
+ *
  * @rest_spec_name slm.get_status
  * @availability stack since=7.6.0 stability=stable
  * @availability serverless stability=stable visibility=private
@@ -35,6 +37,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

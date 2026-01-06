@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Fields, Indices } from '@_types/common'
+import { ExpandWildcards, Fields, Indices, MediaType } from '@_types/common'
 
 /**
  * Get field usage stats.
+ *
  * Get field usage information for each shard and field of an index.
  * Field usage statistics are automatically captured when queries are running on a cluster.
  * A shard-level search request that accesses a given field, even if multiple times during that request, is counted as a single use.
@@ -47,6 +48,7 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
@@ -58,6 +60,7 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
+     * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**

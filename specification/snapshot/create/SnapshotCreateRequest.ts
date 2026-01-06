@@ -18,11 +18,18 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Metadata, Name } from '@_types/common'
+import {
+  ExpandWildcards,
+  Indices,
+  MediaType,
+  Metadata,
+  Name
+} from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Create a snapshot.
+ *
  * Take a snapshot of a cluster or of data streams and indices.
  * @rest_spec_name snapshot.create
  * @availability stack stability=stable
@@ -50,6 +57,8 @@ export interface Request extends RequestBase {
      */
     snapshot: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

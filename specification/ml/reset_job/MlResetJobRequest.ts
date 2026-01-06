@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Reset an anomaly detection job.
+ *
  * All model state and results are deleted. The job is ready to start over as if
  * it had just been created.
  * It is not currently possible to reset multiple jobs using wildcards or a
@@ -46,6 +47,7 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Should this request wait until the operation has completed before

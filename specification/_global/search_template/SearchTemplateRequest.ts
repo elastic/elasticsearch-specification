@@ -22,6 +22,7 @@ import {
   ExpandWildcards,
   Id,
   Indices,
+  MediaType,
   ProjectRouting,
   Routing,
   SearchType
@@ -33,6 +34,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Run a search with a search template.
+ *
  * @rest_spec_name search_template
  * @availability stack since=2.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -59,6 +61,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
@@ -75,6 +79,7 @@ export interface Request extends RequestBase {
      * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
+     * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
@@ -120,7 +125,8 @@ export interface Request extends RequestBase {
      */
     scroll?: Duration
     /**
-     * The type of the search operation. */
+     * The type of the search operation.
+     */
     search_type?: SearchType
     /**
      * If `true`, `hits.total` is rendered as an integer in the response.

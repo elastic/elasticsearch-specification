@@ -18,21 +18,29 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
+import { Indices, MediaType } from '@_types/common'
 
 /**
  * Cancel a migration reindex operation.
  *
  * Cancel a migration reindex attempt for a data stream or index.
  * @rest_spec_name indices.cancel_migrate_reindex
- * @availability stack since=8.18.0 stability=experimental
- * @availability serverless stability=experimental visibility=private
+ * @availability stack since=8.18.0 stability=stable
+ * @availability serverless stability=stable visibility=public
  * @doc_id migration-api-cancel
  * @doc_tag migration
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_migration/reindex/{index}/_cancel'
+      methods: ['POST']
+    }
+  ]
   path_parts: {
     /** The index or data stream name */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
 }

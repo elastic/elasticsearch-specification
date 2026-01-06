@@ -18,13 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Field, Id } from '@_types/common'
+import { Field, Id, MediaType } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
 import { Page } from '@ml/_types/Page'
 
 /**
  * Get anomaly detection job results for buckets.
+ *
  * The API presents a chronological view of the records, grouped by bucket.
  * @rest_spec_name ml.get_buckets
  * @availability stack since=5.4.0 stability=stable
@@ -55,6 +56,8 @@ export interface Request extends RequestBase {
      */
     timestamp?: DateTime
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Returns buckets with anomaly scores greater or equal than this value.

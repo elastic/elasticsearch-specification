@@ -19,9 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Stop the ILM plugin.
+ *
  * Halt all lifecycle management operations and stop the index lifecycle management plugin.
  * This is useful when you are performing maintenance on the cluster and need to prevent ILM from performing any actions on your indices.
  *
@@ -39,6 +41,7 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.

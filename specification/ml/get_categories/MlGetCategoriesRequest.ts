@@ -18,12 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { CategoryId, Id } from '@_types/common'
+import { CategoryId, Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Page } from '@ml/_types/Page'
 
 /**
  * Get anomaly detection job results for categories.
+ *
  * @rest_spec_name ml.get_categories
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
@@ -56,6 +57,8 @@ export interface Request extends RequestBase {
      */
     category_id?: CategoryId
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Skips the specified number of categories.

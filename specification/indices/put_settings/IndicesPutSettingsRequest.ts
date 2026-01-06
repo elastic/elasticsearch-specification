@@ -18,12 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * Update index settings.
+ *
  * Changes dynamic index settings in real time.
  * For data streams, index setting changes are applied to all backing indices by default.
  *
@@ -104,6 +105,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index
@@ -158,7 +161,8 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  /** Configuration options for the index.
+  /**
+   * Configuration options for the index.
    * @codegen_name settings
    */
   body: IndexSettings

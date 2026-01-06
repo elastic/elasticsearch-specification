@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
   Indices,
+  MediaType,
   ProjectRouting,
   Routing
 } from '@_types/common'
@@ -30,6 +31,7 @@ import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * Count search results.
+ *
  * Get the number of documents matching a query.
  *
  * The query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.
@@ -66,6 +68,8 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.

@@ -18,11 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Get running ES|QL queries information.
+ *
  * Returns an object containing IDs and other information about the running ES|QL queries.
-
+ *
  * @rest_spec_name esql.list_queries
  * @cluster_privileges monitor_esql
  * @availability stack since=9.1.0 stability=experimental visibility=public
@@ -36,4 +38,6 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
 }

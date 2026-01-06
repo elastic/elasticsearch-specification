@@ -18,13 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import {
   WatsonxServiceSettings,
   WatsonxServiceType,
   WatsonxTaskType
 } from '@inference/_types/CommonTypes'
+import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**
  * Create a Watsonx inference endpoint.
@@ -55,6 +56,8 @@ export interface Request extends RequestBase {
      */
     watsonx_inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies the amount of time to wait for the inference endpoint to be created.
@@ -63,6 +66,13 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
   body: {
+    /**
+     * The chunking configuration object.
+     * Applies only to the `text_embedding` task type.
+     * Not applicable to the `completion` or `chat_completion` task types.
+     * @ext_doc_id inference-chunking
+     */
+    chunking_settings?: InferenceChunkingSettings
     /**
      * The type of service supported for the specified task type. In this case, `watsonxai`.
      */

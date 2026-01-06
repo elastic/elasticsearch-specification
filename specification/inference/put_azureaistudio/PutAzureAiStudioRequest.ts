@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import {
   AzureAiStudioServiceSettings,
@@ -55,6 +55,8 @@ export interface Request extends RequestBase {
      */
     azureaistudio_inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies the amount of time to wait for the inference endpoint to be created.
@@ -65,6 +67,8 @@ export interface Request extends RequestBase {
   body: {
     /**
      * The chunking configuration object.
+     * Applies only to the `text_embedding` task type.
+     * Not applicable to the `rerank` or `completion` task types.
      * @ext_doc_id inference-chunking
      */
     chunking_settings?: InferenceChunkingSettings
@@ -73,7 +77,7 @@ export interface Request extends RequestBase {
      */
     service: AzureAiStudioServiceType
     /**
-     * Settings used to install the inference model. These settings are specific to the `openai` service.
+     * Settings used to install the inference model. These settings are specific to the `azureaistudio` service.
      */
     service_settings: AzureAiStudioServiceSettings
     /**

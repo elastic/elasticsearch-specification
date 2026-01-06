@@ -18,13 +18,19 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ByteSize, IndexName, WaitForActiveShards } from '@_types/common'
+import {
+  ByteSize,
+  IndexName,
+  MediaType,
+  WaitForActiveShards
+} from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { IndexSettings } from '@indices/_types/IndexSettings'
 
 /**
  * Create a follower.
+ *
  * Create a cross-cluster replication follower index that follows a specific leader index.
  * When the API returns, the follower index exists and cross-cluster replication starts replicating operations from the leader index to the follower index.
  * @rest_spec_name ccr.follow
@@ -44,6 +50,8 @@ export interface Request extends RequestBase {
      */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

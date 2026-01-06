@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get snapshot repository information.
+ *
  * @rest_spec_name snapshot.get_repository
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
@@ -50,6 +51,7 @@ export interface Request extends RequestBase {
      */
     repository?: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, the request gets information from the local node only.

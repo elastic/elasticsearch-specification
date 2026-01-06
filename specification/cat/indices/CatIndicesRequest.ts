@@ -17,7 +17,13 @@
  * under the License.
  */
 
-import { ExpandWildcards, HealthStatus, Indices, Names } from '@_types/common'
+import {
+  ExpandWildcards,
+  HealthStatus,
+  Indices,
+  MediaType,
+  Names
+} from '@_types/common'
 import { Duration } from '@_types/Time'
 import { CatIndicesColumns, CatRequestBase } from '@cat/_types/CatBase'
 
@@ -63,9 +69,11 @@ export interface Request extends CatRequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * The type of index that wildcard patterns can match.
+     * @server_default all
      */
     expand_wildcards?: ExpandWildcards
     /** The health status used to limit returned indices. By default, the response includes indices of any health status. */

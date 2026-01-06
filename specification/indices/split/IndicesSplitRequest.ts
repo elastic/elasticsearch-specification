@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName, WaitForActiveShards } from '@_types/common'
+import { IndexName, MediaType, WaitForActiveShards } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { Alias } from '@indices/_types/Alias'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -26,6 +26,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Split an index.
+ *
  * Split an index into a new index with more primary shards.
  * * Before you can split an index:
  *
@@ -80,6 +81,8 @@ export interface Request extends RequestBase {
      */
     target: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

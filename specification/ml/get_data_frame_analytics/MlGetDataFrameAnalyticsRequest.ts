@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
  * Get data frame analytics job configuration info.
+ *
  * You can get information for multiple data frame analytics jobs in a single
  * API request by using a comma-separated list of data frame analytics jobs or a
  * wildcard expression.
@@ -52,6 +53,7 @@ export interface Request extends RequestBase {
      */
     id?: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:

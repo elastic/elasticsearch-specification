@@ -19,9 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Get Watcher index settings.
+ *
  * Get settings for the Watcher internal index (`.watches`).
  * Only a subset of settings are shown, for example `index.auto_expand_replicas` and `index.number_of_replicas`.
  * @rest_spec_name watcher.get_settings
@@ -35,6 +37,8 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

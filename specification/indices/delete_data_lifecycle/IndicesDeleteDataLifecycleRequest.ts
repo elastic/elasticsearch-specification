@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { DataStreamNames, ExpandWildcards } from '@_types/common'
+import { DataStreamNames, ExpandWildcards, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete data stream lifecycles.
+ *
  * Removes the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.
  * @rest_spec_name indices.delete_data_lifecycle
  * @availability stack since=8.11.0 stability=stable
@@ -38,14 +39,28 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /**
+     * A comma-separated list of data streams of which the data stream lifecycle will be deleted.
+     * Use `*` to get all data streams
+     */
     name: DataStreamNames
   }
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * Whether wildcard expressions should get expanded to open or closed indices (default: open)
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
     /**
+     * The period to wait for a connection to the master node.
      * @server_default 30s
      */
     master_timeout?: Duration
+    /**
+     * The period to wait for a response.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }

@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Promote a data stream.
+ *
  * Promote a data stream from a replicated data stream managed by cross-cluster replication (CCR) to a regular data stream.
  *
  * With CCR auto following, a data stream from a remote cluster can be replicated to the local cluster.
@@ -46,8 +47,10 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The name of the data stream to promote */
     name: IndexName
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.

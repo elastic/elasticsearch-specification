@@ -18,11 +18,18 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Fields, Metrics, NodeIds, NodeStatsLevel } from '@_types/common'
+import {
+  Fields,
+  MediaType,
+  Metrics,
+  NodeIds,
+  NodeStatsLevel
+} from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get node statistics.
+ *
  * Get statistics for nodes in a cluster.
  * By default, all stats are returned. You can limit the returned information by using metrics.
  * @rest_spec_name nodes.stats
@@ -62,11 +69,12 @@ export interface Request extends RequestBase {
   path_parts: {
     /** Comma-separated list of node IDs or names used to limit returned information. */
     node_id?: NodeIds
-    /*+ Limits the information returned to the specific metrics. */
+    /** Limits the information returned to the specific metrics. */
     metric?: Metrics
-    /** Limit the information returned for indices metric to the specific index metrics. It can be used only if indices (or all) metric is specified.*/
+    /** Limit the information returned for indices metric to the specific index metrics. It can be used only if indices (or all) metric is specified. */
     index_metric?: Metrics
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /** Comma-separated list or wildcard expressions of fields to include in fielddata and suggest statistics. */
     completion_fields?: Fields

@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
   Indices,
+  MediaType,
   Metadata,
   PropertyName
 } from '@_types/common'
@@ -40,9 +41,10 @@ import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 /**
  * Update field mappings.
+ *
  * Add new fields to an existing data stream or index.
  * You can use the update mapping API to:
-
+ *
  * - Add a new field to an existing index
  * - Update mappings for multiple indices in a single request
  * - Add new properties to an object field
@@ -67,8 +69,14 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /**
+     * A comma-separated list of index names the mapping should be added to (supports wildcards).
+     * Use `_all` or omit to add the mapping on all indices.
+     */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.

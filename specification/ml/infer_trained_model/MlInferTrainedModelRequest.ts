@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { InferenceConfigUpdateContainer } from '@ml/_types/inference'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -26,6 +26,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Evaluate a trained model.
+ *
  * @rest_spec_name ml.infer_trained_model
  * @availability stack since=8.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -45,6 +46,8 @@ export interface Request extends RequestBase {
      */
     model_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Controls the amount of time to wait for inference results.

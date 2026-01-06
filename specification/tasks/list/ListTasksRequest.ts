@@ -18,12 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, NodeIds } from '@_types/common'
+import { Id, MediaType, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { GroupBy } from '@tasks/_types/GroupBy'
 
 /**
  * Get all tasks.
+ *
  * Get information about the tasks currently running on one or more nodes in the cluster.
  *
  * WARNING: The task management API is new and should still be considered a beta feature.
@@ -95,6 +96,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list or wildcard expression of actions used to limit the request.

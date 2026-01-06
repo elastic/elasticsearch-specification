@@ -18,13 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { TaskSettings } from '@inference/_types/Services'
 
 /**
- * Perform reranking inference on the service
+ * Perform reranking inference on the service.
+ *
  * @rest_spec_name inference.rerank
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
@@ -44,6 +45,8 @@ export interface Request extends RequestBase {
      */
     inference_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The amount of time to wait for the inference request to complete.
@@ -59,7 +62,8 @@ export interface Request extends RequestBase {
     /**
      * The documents to rank.
      */
-    input: Array<string>
+    // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: nothing, is fixed in main
+    input: string | Array<string>
     /**
      * Include the document text in the response.
      */

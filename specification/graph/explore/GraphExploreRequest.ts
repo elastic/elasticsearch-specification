@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices, Routing } from '@_types/common'
+import { Indices, MediaType, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
 import { VertexDefinition } from '@graph/_types/Vertex'
@@ -27,6 +27,7 @@ import { Hop } from '../_types/Hop'
 
 /**
  * Explore graph analytics.
+ *
  * Extract and summarize information about the documents and terms in an Elasticsearch data stream or index.
  * The easiest way to understand the behavior of this API is to use the Graph UI to explore connections.
  * An initial request to the `_explore` API contains a seed query that identifies the documents of interest and specifies the fields that define the vertices and connections you want to include in the graph.
@@ -51,6 +52,8 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Custom value used to route operations to a specific shard.

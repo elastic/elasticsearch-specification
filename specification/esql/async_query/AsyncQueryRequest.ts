@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { FieldValue } from '@_types/common'
+import { FieldValue, MediaType } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
 import { EsqlFormat } from '@esql/_types/QueryParameters'
@@ -27,6 +27,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Run an async ES|QL query.
+ *
  * Asynchronously run an ES|QL (Elasticsearch query language) query, monitor its progress, and retrieve results when they become available.
  *
  * The API accepts the same parameters and request body as the synchronous query API, along with additional async related properties.
@@ -37,6 +38,14 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * @index_privileges read
  */
 export interface Request extends RequestBase {
+  urls: [
+    {
+      path: '/_query/async'
+      methods: ['POST']
+    }
+  ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, partial results will be returned if there are shard failures, but the query can continue to execute on other clusters and shards.

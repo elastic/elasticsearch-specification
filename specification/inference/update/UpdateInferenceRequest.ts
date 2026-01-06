@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { InferenceEndpoint } from '@inference/_types/Services'
 import { TaskType } from '@inference/_types/TaskType'
 
@@ -56,6 +56,8 @@ export interface Request extends RequestBase {
      */
     task_type?: TaskType
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /** @codegen_name inference_config */
   body: InferenceEndpoint
 }

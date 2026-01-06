@@ -17,10 +17,11 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 
 /**
  * Create a behavioral analytics collection.
+ *
  * @rest_spec_name search_application.put_behavioral_analytics
  * @availability stack since=8.8.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
@@ -41,4 +42,5 @@ export interface Request extends RequestBase {
      */
     name: Name
   }
+  response_media_type: MediaType.Json
 }

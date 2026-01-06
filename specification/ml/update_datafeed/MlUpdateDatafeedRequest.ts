@@ -19,7 +19,7 @@
 
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Id, IndicesOptions } from '@_types/common'
+import { ExpandWildcards, Id, IndicesOptions, MediaType } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -30,6 +30,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Update a datafeed.
+ *
  * You must stop and start the datafeed for the changes to be applied.
  * When Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at
  * the time of the update and runs the query using those same roles. If you provide secondary authorization headers,
@@ -56,6 +57,8 @@ export interface Request extends RequestBase {
      */
     datafeed_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the

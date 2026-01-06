@@ -22,6 +22,7 @@ import {
   Conflicts,
   ExpandWildcards,
   Indices,
+  MediaType,
   Routing,
   SearchType,
   Slices,
@@ -137,6 +138,8 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
@@ -258,7 +261,7 @@ export interface Request extends RequestBase {
     slices?: Slices
     /**
      * A comma-separated list of `<field>:<direction>` pairs.
-     * @deprecated 9.0.0 this query parameter is not supported and will be removed
+     * @deprecated 9.0.0 This query parameter is not supported and will be removed in a future version
      */
     sort?: string[]
     /**

@@ -19,7 +19,6 @@
 
 import assert from 'assert'
 import * as model from '../model/metamodel'
-import { JsonSpec } from '../model/json-spec'
 import chalk from 'chalk'
 
 /**
@@ -27,7 +26,7 @@ import chalk from 'chalk'
  * contains the same properties of their "write" version.
  * Then, it copies every model.Property from write to read but 'required'.
  */
-export default async function readDefinitionValidation (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
+export default async function readDefinitionValidation (model: model.Model): Promise<model.Model> {
   for (const type of model.types) {
     if (type.kind !== 'interface') continue
     const readBehavior = type.behaviors?.find(behavior => behavior.type.name === 'OverloadOf')

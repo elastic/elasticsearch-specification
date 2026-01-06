@@ -18,13 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Field, Id } from '@_types/common'
+import { Field, Id, MediaType } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
 import { Page } from '@ml/_types/Page'
 
 /**
  * Get anomaly detection job results for influencers.
+ *
  * Influencers are the entities that have contributed to, or are to blame for,
  * the anomalies. Influencer results are available only if an
  * `influencer_field_name` is specified in the job configuration.
@@ -48,6 +49,8 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If true, the results are sorted in descending order.

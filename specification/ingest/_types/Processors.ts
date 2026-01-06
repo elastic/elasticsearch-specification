@@ -337,6 +337,13 @@ export class AppendProcessor extends ProcessorBase {
    */
   value?: UserDefinedValue | UserDefinedValue[]
   /**
+   * The media type for encoding `value`.
+   * Applies only when value is a template snippet.
+   * Must be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.
+   * @server_default "application/json"
+   */
+  media_type?: string
+  /**
    * The origin field which will be appended to `field`, cannot set `value` simultaneously.
    */
   copy_from?: Field
@@ -345,6 +352,12 @@ export class AppendProcessor extends ProcessorBase {
    * @server_default true
    */
   allow_duplicates?: boolean
+  /**
+   * If `true`, the processor will skip empty values from the source (e.g. empty strings, and null values),
+   * rather than appending them to the field.
+   * @server_default false
+   */
+  ignore_empty_values?: boolean
 }
 
 export class AttachmentProcessor extends ProcessorBase {
@@ -537,7 +550,7 @@ export class UserAgentProcessor extends ProcessorBase {
   target_field?: Field
   /**
    * Controls what properties are added to `target_field`.
-   * @server_default ['name', 'major', 'minor', 'patch', 'build', 'os', 'os_name', 'os_major', 'os_minor', 'device']
+   * @server_default ['name', 'os', 'device', 'original', 'version']
    */
   properties?: UserAgentProperty[]
   /**
@@ -789,7 +802,7 @@ export class DateProcessor extends ProcessorBase {
   locale?: string
   /**
    * The field that will hold the parsed date.
-   * @server_default `@timestamp`
+   * @server_default \@timestamp
    */
   target_field?: Field
   /**
@@ -1466,6 +1479,7 @@ export class SetProcessor extends ProcessorBase {
    * The media type for encoding `value`.
    * Applies only when value is a template snippet.
    * Must be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.
+   * @server_default "application/json"
    */
   media_type?: string
   /**

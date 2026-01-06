@@ -17,12 +17,13 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { EventType } from '../_types/AnalyticsEvent'
 
 /**
  * Create a behavioral analytics collection event.
+ *
  * @rest_spec_name search_application.post_behavioral_analytics_event
  * @availability stack stability=experimental visibility=public
  * @doc_tag analytics
@@ -47,6 +48,8 @@ export interface Request extends RequestBase {
      */
     event_type: EventType
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Whether the response type has to include more details

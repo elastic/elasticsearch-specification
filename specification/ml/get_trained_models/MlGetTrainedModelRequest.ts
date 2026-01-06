@@ -18,12 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
+import { Ids, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Include } from '@ml/_types/Include'
 
 /**
  * Get trained model configuration info.
+ *
  * @rest_spec_name ml.get_trained_models
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -52,6 +53,7 @@ export interface Request extends RequestBase {
      */
     model_id?: Ids
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:

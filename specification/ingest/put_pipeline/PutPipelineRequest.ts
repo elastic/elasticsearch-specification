@@ -18,13 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Metadata, VersionNumber } from '@_types/common'
+import { Id, MediaType, Metadata, VersionNumber } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { FieldAccessPattern } from '@ingest/_types/Pipeline'
 import { ProcessorContainer } from '@ingest/_types/Processors'
 
 /**
  * Create or update a pipeline.
+ *
  * Changes made using this API take effect immediately.
  * @doc_id ingest
  * @rest_spec_name ingest.put_pipeline
@@ -45,6 +46,8 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.

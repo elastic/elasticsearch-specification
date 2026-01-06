@@ -17,10 +17,11 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 
 /**
  * Delete a behavioral analytics collection.
+ *
  * The associated data stream is also deleted.
  * @rest_spec_name search_application.delete_behavioral_analytics
  * @availability stack since=8.8.0 stability=experimental
@@ -42,4 +43,5 @@ export interface Request extends RequestBase {
      */
     name: Name
   }
+  response_media_type: MediaType.Json
 }

@@ -19,9 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Set upgrade_mode for transform indices.
+ *
  * Sets a cluster wide upgrade_mode setting that prepares transform
  * indices for an upgrade.
  * When upgrading your cluster, in some circumstances you must restart your
@@ -47,6 +49,7 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * When `true`, it enables `upgrade_mode` which temporarily halts all

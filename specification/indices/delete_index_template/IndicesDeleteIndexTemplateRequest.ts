@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete an index template.
+ *
  * The provided <index-template> may contain multiple template names separated by a comma. If multiple template
  * names are specified then there is no wildcard support and the provided names should match completely with
  * existing templates.
@@ -45,6 +46,7 @@ export interface Request extends RequestBase {
      */
     name: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
