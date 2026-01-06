@@ -1,7 +1,7 @@
 use anyhow::Result;
 use clients_schema::{
-    Body as SchemaBody, Endpoint as SchemaEndpoint, Enum, Flavor, IndexedModel, InstanceOf, Property, TypeDefinition,
-    TypeName, UnionOf, UrlTemplate, ValueOf, Visibility,
+    Body as SchemaBody, Endpoint as SchemaEndpoint, Enum, Flavor, IndexedModel, InstanceOf, Property, Stability,
+    TypeDefinition, TypeName, UnionOf, UrlTemplate, ValueOf, Visibility,
 };
 use indexmap::IndexMap;
 use std::collections::HashMap;
@@ -197,13 +197,13 @@ fn convert_parameter(property: &Property, types: &IndexMap<TypeName, TypeDefinit
 
     let mut visibility = None;
     if let Some(availabilities) = &property.availability
-        && let Some(stack_availability) = availabilities.get(&Flavor::Stack) {
-            visibility = stack_availability.visibility.as_ref().and_then(|v| match v {
-                Visibility::Public => None,
-                Visibility::FeatureFlag => Some("feature_flag".to_string()),
-                Visibility::Private => Some("private".to_string()),
-            });
-        }
+        && let Some(stack_availability) = availabilities.get(&Flavor::Stack)
+    {
+        visibility = stack_availability.visibility.as_ref().and_then(|v| match v {
+            Visibility::Public => None,
+            _ => Some(v.clone()),
+        });
+    }
 
     Ok(Parameter {
         typ,
@@ -425,36 +425,28 @@ fn add_behavior_parameters(
 }
 
 /// Extract visibility information from availabilities
-/// Defaults to "public" if no specific visibility is set
-fn extract_visibility_from_availabilities(availabilities: &Option<clients_schema::Availabilities>) -> Option<String> {
+/// Defaults to Public if no specific visibility is set
+fn extract_visibility_from_availabilities(availabilities: &Option<clients_schema::Availabilities>) -> Option<Visibility> {
     let flavor = Flavor::Stack;
     if let Some(visibility) = flavor.visibility(availabilities) {
-        return Some(match visibility {
-            Visibility::Public => "public".to_string(),
-            Visibility::FeatureFlag => "feature_flag".to_string(),
-            Visibility::Private => "private".to_string(),
-        });
+        return Some(visibility.clone());
     }
 
     // No availability restrictions means public
-    Some("public".to_string())
+    Some(Visibility::Public)
 }
 
 /// Extract stability information from availabilities
-/// Uses stack flavor stability, defaults to "stable" if not specified
-fn extract_stability_from_availabilities(availabilities: &Option<clients_schema::Availabilities>) -> Option<String> {
-    // Use map() to simplify the nested if let structure
+/// Uses stack flavor stability, defaults to Stable if not specified
+fn extract_stability_from_availabilities(availabilities: &Option<clients_schema::Availabilities>) -> Option<Stability> {
     if let Some(avails) = availabilities
         && let Some(stack_availability) = avails.get(&Flavor::Stack)
-            && let Some(ref stability) = stack_availability.stability {
-                return Some(match stability {
-                    clients_schema::Stability::Stable => "stable".to_string(),
-                    clients_schema::Stability::Beta => "beta".to_string(),
-                    clients_schema::Stability::Experimental => "experimental".to_string(),
-                });
-            }
+        && let Some(ref stability) = stack_availability.stability
+    {
+        return Some(stability.clone());
+    }
     // Default to stable if no stability is explicitly set
-    Some("stable".to_string())
+    Some(Stability::Stable)
 }
 
 fn body_serialize_value(endpoint_name: &str) -> Option<String> {

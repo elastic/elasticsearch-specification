@@ -1,3 +1,4 @@
+use clients_schema::{Stability, Visibility};
 use indexmap::IndexMap;
 use serde::{Serialize, Serializer};
 use std::collections::HashMap;
@@ -30,9 +31,9 @@ impl TryFrom<&[String]> for HttpMethods {
 pub struct Endpoint {
     pub documentation: Documentation,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub stability: Option<String>,
+    pub stability: Option<Stability>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub visibility: Option<String>,
+    pub visibility: Option<Visibility>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub headers: Option<Headers>,
     pub url: Url,
@@ -91,7 +92,7 @@ pub struct Parameter {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub deprecated: Option<Deprecation>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub visibility: Option<String>,
+    pub visibility: Option<Visibility>,
 }
 
 fn is_false(b: &bool) -> bool {
