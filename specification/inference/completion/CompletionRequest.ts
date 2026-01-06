@@ -24,7 +24,7 @@ import { TaskSettings } from '@inference/_types/Services'
 
 /**
  * Perform completion inference on the service.
- * 
+ *
  * Get responses for completion tasks.
  * This API works only with the completion task type.
  *
