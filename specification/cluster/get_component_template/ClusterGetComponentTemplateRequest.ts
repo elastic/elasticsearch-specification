@@ -43,10 +43,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /**
-     * Comma-separated list of component template names used to limit the request.
-     * Wildcard (`*`) expressions are supported.
-     */
+    /** Name of component template to retrieve. Wildcard (`*`) expressions are supported. */
     name?: Name
   }
   response_media_type: MediaType.Json
