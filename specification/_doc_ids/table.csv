@@ -93,6 +93,7 @@ ccr-put-follow,https://www.elastic.co/docs/api/doc/elasticsearch/operation/opera
 ccr-resume-auto-follow-pattern,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-resume-auto-follow-pattern,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/ccr-resume-auto-follow-pattern.html,
 ccs-network-delays,https://www.elastic.co/docs/solutions/search/cross-cluster-search#ccs-network-delays,,
 ccs-privileges,https://www.elastic.co/docs/deploy-manage/remote-clusters/remote-clusters-cert#remote-clusters-privileges-ccs,,
+cef-processor,https://www.elastic.co/docs/reference/enrich-processor/cef-processor,,
 chunking-strategies,https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#chunking-strategies,
 clean-up-snapshot-repo,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/self-managed#snapshots-repository-cleanup,,
 clear-repositories-metering-archive-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-clear-repositories-metering-archive,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/clear-repositories-metering-archive-api.html,
@@ -544,6 +545,7 @@ prevalidate-node-removal,https://www.elastic.co/docs/api/doc/elasticsearch/group
 preview-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-preview-data-frame-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/preview-dfanalytics.html,
 preview-transform,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/preview-transform.html,
 project-tags,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-tags,,Get tags
+project-routing,,,Project routing
 put-analytics-collection,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put-behavioral-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-analytics-collection.html,
 put-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-data-frame-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-dfanalytics.html,
 put-enrich-policy-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-put-policy,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-enrich-policy-api.html,

@@ -44,10 +44,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /**
-     * The name of the component template.
-     * Wildcard (`*`) expressions are supported.
-     */
+    /** Name of component template to retrieve. Wildcard (`*`) expressions are supported. */
     name?: Name
   }
   response_media_type: MediaType.Json

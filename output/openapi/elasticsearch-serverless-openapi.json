@@ -5471,6 +5471,13 @@
                     "slice_id": {
                       "type": "number"
                     },
+                    "slices": {
+                      "description": "Status of each slice if the delete by query was sliced",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/_types.ReindexStatus"
+                      }
+                    },
                     "task": {
                       "allOf": [
                         {
@@ -21305,6 +21312,16 @@
               "$ref": "#/components/schemas/_types.Duration"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "close_job",
+            "description": "If `true` the job associated with the datafeed is closed.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -21331,6 +21348,11 @@
                         "$ref": "#/components/schemas/_types.Duration"
                       }
                     ]
+                  },
+                  "close_job": {
+                    "description": "Refer to the description for the `close_job` query parameter.",
+                    "default": false,
+                    "type": "boolean"
                   }
                 }
               },
@@ -23334,6 +23356,245 @@
         ]
       }
     },
+    "/_project_routing/{name}": {
+      "get": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Get named project routing expressions",
+        "description": "Get named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "operationId": "project-routing-get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The name of project routing expression",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
+                },
+                "examples": {
+                  "GetProjectResponseExample1": {
+                    "summary": "A single expressions",
+                    "value": "{\n  \"expression\" : \"_csp:aws AND _region:us*\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Create of update a single named project routing expression",
+        "description": "Create of update a single named project routing expression.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "project-routing-create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The name of project routing expression",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
+              },
+              "examples": {
+                "CreateProjectRoutingRequestExample1": {
+                  "summary": "A single expression",
+                  "value": "{\n  \"expression\" : \"_csp:aws AND _region:us*\"\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "CreateProjectResponseExample1": {
+                    "summary": "A single expressions",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Delete named project routing expressions",
+        "description": "Delete named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "project-routing-delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The name of project routing expression",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "DeleteProjectResponseExample1": {
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_project_routing": {
+      "get": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Get named project routing expressions",
+        "description": "Get named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "operationId": "project-routing-get-many",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/project_routing._types.NamedProjectRoutingExpressions"
+                },
+                "examples": {
+                  "GetProjectResponseExample1": {
+                    "summary": "Multiple expressions",
+                    "value": "{\n \"aws-us-only\": { \"expression\": \"_csp:aws AND _region:us*\" },\n \"aws-eu-only\": { \"expression\": \"_csp:aws AND _region:eu*\" }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Create of update named project routing expressions",
+        "description": "Create or update named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "project-routing-create-many",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/project_routing._types.NamedProjectRoutingExpressions"
+              },
+              "examples": {
+                "CreateProjectRoutingRequestExample1": {
+                  "summary": "Multiple expressions",
+                  "value": "{\n \"aws-us-only\": { \"expression\": \"_csp:aws AND _region:us*\" },\n \"aws-eu-only\": { \"expression\": \"_csp:aws AND _region:eu*\" }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "CreateProjectResponseExample1": {
+                    "summary": "Multiple expressions",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_scripts/{id}/{context}": {
       "put": {
         "tags": [
@@ -24452,6 +24713,13 @@
                     },
                     "slice_id": {
                       "type": "number"
+                    },
+                    "slices": {
+                      "description": "Status of each slice if the reindex was sliced",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/_types.ReindexStatus"
+                      }
                     },
                     "task": {
                       "allOf": [
@@ -30471,6 +30739,13 @@
                           "$ref": "#/components/schemas/_types.Retries"
                         }
                       ]
+                    },
+                    "slices": {
+                      "description": "Status of each slice if the update by query was sliced",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/_types.ReindexStatus"
+                      }
                     },
                     "task": {
                       "allOf": [
@@ -40595,7 +40870,7 @@
               },
               "chunk_rescorer": {
                 "description": "Whether to rescore on only the best matching chunks.",
-                "x-state": "Beta",
+                "x-state": "Generally available",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.ChunkRescorer"
@@ -58888,6 +59163,7 @@
             "counted_keyword": "#/components/schemas/_types.mapping.CountedKeywordProperty",
             "alias": "#/components/schemas/_types.mapping.FieldAliasProperty",
             "histogram": "#/components/schemas/_types.mapping.HistogramProperty",
+            "exponential_histogram": "#/components/schemas/_types.mapping.ExponentialHistogramProperty",
             "ip": "#/components/schemas/_types.mapping.IpProperty",
             "murmur3": "#/components/schemas/_types.mapping.Murmur3HashProperty",
             "token_count": "#/components/schemas/_types.mapping.TokenCountProperty",
@@ -59000,6 +59276,9 @@
           },
           {
             "$ref": "#/components/schemas/_types.mapping.HistogramProperty"
+          },
+          {
+            "$ref": "#/components/schemas/_types.mapping.ExponentialHistogramProperty"
           },
           {
             "$ref": "#/components/schemas/_types.mapping.IpProperty"
@@ -60714,10 +60993,45 @@
               "ignore_malformed": {
                 "type": "boolean"
               },
+              "time_series_metric": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping.TimeSeriesMetricType"
+                  }
+                ]
+              },
               "type": {
                 "type": "string",
                 "enum": [
                   "histogram"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "_types.mapping.ExponentialHistogramProperty": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.mapping.PropertyBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "time_series_metric": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping.TimeSeriesMetricType"
+                  }
+                ]
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "exponential_histogram"
                 ]
               }
             },
@@ -63646,6 +63960,100 @@
         "required": [
           "bulk",
           "search"
+        ]
+      },
+      "_types.ReindexStatus": {
+        "type": "object",
+        "properties": {
+          "slice_id": {
+            "description": "The slice ID",
+            "type": "number"
+          },
+          "batches": {
+            "description": "The number of scroll responses pulled back by the reindex.",
+            "type": "number"
+          },
+          "created": {
+            "description": "The number of documents that were successfully created.",
+            "type": "number"
+          },
+          "deleted": {
+            "description": "The number of documents that were successfully deleted.",
+            "type": "number"
+          },
+          "noops": {
+            "description": "The number of documents that were ignored because the script used for the reindex returned a `noop` value for `ctx.op`.",
+            "type": "number"
+          },
+          "requests_per_second": {
+            "description": "The number of requests per second effectively executed during the reindex.",
+            "type": "number"
+          },
+          "retries": {
+            "description": "The number of retries attempted by reindex. `bulk` is the number of bulk actions retried and `search` is the number of search actions retried.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Retries"
+              }
+            ]
+          },
+          "throttled": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "throttled_millis": {
+            "description": "Number of milliseconds the request slept to conform to `requests_per_second`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+              }
+            ]
+          },
+          "throttled_until": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "throttled_until_millis": {
+            "description": "This field should always be equal to zero in a `_reindex` response.\nIt only has meaning when using the Task API, where it indicates the next time (in milliseconds since epoch) a throttled request will be executed again in order to conform to `requests_per_second`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+              }
+            ]
+          },
+          "total": {
+            "description": "The number of documents that were successfully processed.",
+            "type": "number"
+          },
+          "updated": {
+            "description": "The number of documents that were successfully updated, for example, a document with same ID already existed prior to reindex updating it.",
+            "type": "number"
+          },
+          "version_conflicts": {
+            "description": "The number of version conflicts that reindex hits.",
+            "type": "number"
+          },
+          "cancelled": {
+            "description": "The reason for cancellation if the slice was canceled",
+            "type": "string"
+          }
+        },
+        "required": [
+          "batches",
+          "deleted",
+          "noops",
+          "requests_per_second",
+          "retries",
+          "throttled_millis",
+          "throttled_until_millis",
+          "total",
+          "version_conflicts"
         ]
       },
       "_types.TaskId": {
@@ -69749,6 +70157,14 @@
               }
             ]
           },
+          "cef": {
+            "description": "Converts a CEF message into a structured format.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ingest._types.CefProcessor"
+              }
+            ]
+          },
           "circle": {
             "description": "Converts circle definitions of shapes to regular polygons which approximate them.",
             "allOf": [
@@ -70119,6 +70535,11 @@
                   }
                 ]
               },
+              "media_type": {
+                "description": "The media type for encoding `value`.\nApplies only when value is a template snippet.\nMust be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.",
+                "default": "\"application/json\"",
+                "type": "string"
+              },
               "copy_from": {
                 "description": "The origin field which will be appended to `field`, cannot set `value` simultaneously.",
                 "allOf": [
@@ -70130,6 +70551,11 @@
               "allow_duplicates": {
                 "description": "If `false`, the processor does not append values already present in the field.",
                 "default": true,
+                "type": "boolean"
+              },
+              "ignore_empty_values": {
+                "description": "If `true`, the processor will skip empty values from the source (e.g. empty strings, and null values),\nrather than appending them to the field.",
+                "default": false,
                 "type": "boolean"
               }
             },
@@ -70267,6 +70693,53 @@
                     "$ref": "#/components/schemas/_types.Field"
                   }
                 ]
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
+      "ingest._types.CefProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types.ProcessorBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The field containing the CEF message.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "ignore_missing": {
+                "description": "If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.",
+                "default": false,
+                "type": "boolean"
+              },
+              "target_field": {
+                "description": "The field to assign the converted value to.\nBy default, the `target_field` is 'cef'",
+                "default": "'cef'",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "ignore_empty_values": {
+                "description": "If `true` and value is anempty string in extensions, the processor quietly exits without modifying the document.",
+                "default": false,
+                "type": "boolean"
+              },
+              "timezone": {
+                "description": "The timezone to use when parsing the date and when date math index supports resolves expressions into concrete index names.",
+                "default": "UTC",
+                "type": "string"
               }
             },
             "required": [
@@ -72023,6 +72496,7 @@
               },
               "media_type": {
                 "description": "The media type for encoding `value`.\nApplies only when value is a template snippet.\nMust be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.",
+                "default": "\"application/json\"",
                 "type": "string"
               },
               "override": {
@@ -79632,6 +80106,30 @@
           "_organisation"
         ]
       },
+      "project_routing._types.ProjectRoutingExpression": {
+        "type": "object",
+        "properties": {
+          "expression": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/project_routing._types.RoutingExpression"
+              }
+            ]
+          }
+        },
+        "required": [
+          "expression"
+        ]
+      },
+      "project_routing._types.RoutingExpression": {
+        "type": "string"
+      },
+      "project_routing._types.NamedProjectRoutingExpressions": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
+        }
+      },
       "query_rules._types.QueryRule": {
         "type": "object",
         "properties": {
@@ -86187,7 +86685,7 @@
       "cluster.get_component_template-name": {
         "in": "path",
         "name": "name",
-        "description": "Comma-separated list of component template names used to limit the request.\nWildcard (`*`) expressions are supported.",
+        "description": "Name of component template to retrieve. Wildcard (`*`) expressions are supported.",
         "required": true,
         "deprecated": false,
         "schema": {
