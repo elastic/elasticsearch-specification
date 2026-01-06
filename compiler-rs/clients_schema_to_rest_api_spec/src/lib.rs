@@ -219,28 +219,41 @@ fn convert_parameter(property: &Property, types: &IndexMap<TypeName, TypeDefinit
 // rest-api-spec types:
 // list|date|time|string|enum|int|double|long|boolean|number
 
-const BUILTIN_MAPPINGS: &[((&str, &str), ParamType)] = &[
-    (("_builtins", "string"), ParamType::String),
-    (("_builtins", "boolean"), ParamType::Boolean),
-    (("_builtins", "number"), ParamType::Number),
-    (("_types", "integer"), ParamType::Int),
-    (("_types", "uint"), ParamType::Int),
-    (("_types", "long"), ParamType::Long),
-    (("_types", "float"), ParamType::Number),
-    (("_types", "double"), ParamType::Double),
-    (("_types", "time"), ParamType::Time),
-    (("_types", "Duration"), ParamType::Time),
-    (("_types", "DateTime"), ParamType::Date),
-    (("_types", "ByteSize"), ParamType::String),
-    // hard cases
-    (("_types", "WaitForActiveShards"), ParamType::String),
-    (("_global.search._types", "TrackHits"), ParamType::BooleanOrLong),
-    (("_types", "Slices"), ParamType::NumberOrString),
-    (("cluster.health", "WaitForNodes"), ParamType::String),
-    // sometimes list in rest-api-spec as comma-separate values are allowed
-    // but the Elasticsearch specification always models it as a string.
-    (("_global.search._types", "SourceConfigParam"), ParamType::List),
-];
+struct BuiltinMappings;
+
+impl BuiltinMappings {
+    const MAPPINGS: &[(&str, &str, ParamType)] = &[
+        ("_builtins", "string", ParamType::String),
+        ("_builtins", "boolean", ParamType::Boolean),
+        ("_builtins", "number", ParamType::Number),
+        ("_types", "integer", ParamType::Int),
+        ("_types", "uint", ParamType::Int),
+        ("_types", "long", ParamType::Long),
+        ("_types", "float", ParamType::Number),
+        ("_types", "double", ParamType::Double),
+        ("_types", "time", ParamType::Time),
+        ("_types", "Duration", ParamType::Time),
+        ("_types", "DateTime", ParamType::Date),
+        ("_types", "ByteSize", ParamType::String),
+        // hard cases
+        ("_types", "WaitForActiveShards", ParamType::String),
+        ("_global.search._types", "TrackHits", ParamType::BooleanOrLong),
+        ("_types", "Slices", ParamType::NumberOrString),
+        ("cluster.health", "WaitForNodes", ParamType::String),
+        // sometimes list in rest-api-spec as comma-separate values are allowed
+        // but the Elasticsearch specification always models it as a string.
+        ("_global.search._types", "SourceConfigParam", ParamType::List),
+    ];
+
+    fn get(namespace: &str, name: &str) -> Option<ParamType> {
+        for (ns, n, param_type) in Self::MAPPINGS {
+            if *ns == namespace && *n == name {
+                return Some(*param_type);
+            }
+        }
+        None
+    }
+}
 
 fn is_list_enum(union: &UnionOf) -> Option<TypeName> {
     // if union of X and X[]
@@ -281,12 +294,7 @@ fn is_index_name_and_alias(union: &UnionOf) -> bool {
 }
 
 fn is_literal(instance: &InstanceOf) -> Option<ParamType> {
-    let key = (instance.typ.namespace.as_str(), instance.typ.name.as_str());
-    // TODO BUILTIN_MAPPINGS could be a type with a get method
-    BUILTIN_MAPPINGS
-        .iter()
-        .find(|&&(k, _)| k == key)
-        .map(|(_, v)| *v)
+    BuiltinMappings::get(&instance.typ.namespace, &instance.typ.name)
 }
 
 /// Convert a ValueOf type to a ParamType
@@ -306,9 +314,8 @@ fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>)
         ValueOf::LiteralValue(_) => ParamType::String,
         ValueOf::InstanceOf(instance) => {
             let type_name = &instance.typ;
-            let key = (type_name.namespace.as_str(), type_name.name.as_str());
 
-            if let Some(&mapped_type) = BUILTIN_MAPPINGS.iter().find(|&&(k, _)| k == key).map(|(_, v)| v) {
+            if let Some(mapped_type) = BuiltinMappings::get(&type_name.namespace, &type_name.name) {
                 mapped_type
             } else if let Some(TypeDefinition::Enum(_)) = types.get(type_name) {
                 ParamType::Enum
