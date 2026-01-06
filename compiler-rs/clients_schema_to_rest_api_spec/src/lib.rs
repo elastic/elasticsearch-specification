@@ -141,7 +141,7 @@ fn convert_url_template(
                 let param_pattern = format!("{{{}}}", path_param.name);
                 if url_template.path.contains(&param_pattern) {
                     let part = PathPart {
-                        typ: get_type_name(&path_param.typ, types).to_string(),
+                        typ: get_type_name(&path_param.typ, types),
                         options: get_enum_options(&path_param.typ, types),
                         description: path_param.description.clone().unwrap_or_default(),
                         deprecated: path_param.deprecation.as_ref().map(|dep| Deprecation {
@@ -167,7 +167,7 @@ fn convert_url_template(
 
 /// Convert a Property to a Parameter
 fn convert_parameter(property: &Property, types: &IndexMap<TypeName, TypeDefinition>) -> Result<Parameter> {
-    let typ = get_type_name(&property.typ, types).to_string();
+    let typ = get_type_name(&property.typ, types);
     let options = get_enum_options(&property.typ, types);
 
     let mut default = property.server_default.as_ref().map(|default| match default {
@@ -182,7 +182,7 @@ fn convert_parameter(property: &Property, types: &IndexMap<TypeName, TypeDefinit
         }
     });
 
-    if typ == "number|string" {
+    if typ == ParamType::NumberOrString {
         // convert default to integer
         default = default.and_then(|def| match def {
             serde_json::Value::String(s) => s.parse::<i64>().ok().map(serde_json::Value::from),
@@ -219,27 +219,27 @@ fn convert_parameter(property: &Property, types: &IndexMap<TypeName, TypeDefinit
 // rest-api-spec types:
 // list|date|time|string|enum|int|double|long|boolean|number
 
-const BUILTIN_MAPPINGS: &[((&str, &str), &str)] = &[
-    (("_builtins", "string"), "string"),
-    (("_builtins", "boolean"), "boolean"),
-    (("_builtins", "number"), "number"),
-    (("_types", "integer"), "int"),
-    (("_types", "uint"), "int"),
-    (("_types", "long"), "long"),
-    (("_types", "float"), "number"),
-    (("_types", "double"), "double"),
-    (("_types", "time"), "time"),
-    (("_types", "Duration"), "time"),
-    (("_types", "DateTime"), "date"),
-    (("_types", "ByteSize"), "string"),
+const BUILTIN_MAPPINGS: &[((&str, &str), ParamType)] = &[
+    (("_builtins", "string"), ParamType::String),
+    (("_builtins", "boolean"), ParamType::Boolean),
+    (("_builtins", "number"), ParamType::Number),
+    (("_types", "integer"), ParamType::Int),
+    (("_types", "uint"), ParamType::Int),
+    (("_types", "long"), ParamType::Long),
+    (("_types", "float"), ParamType::Number),
+    (("_types", "double"), ParamType::Double),
+    (("_types", "time"), ParamType::Time),
+    (("_types", "Duration"), ParamType::Time),
+    (("_types", "DateTime"), ParamType::Date),
+    (("_types", "ByteSize"), ParamType::String),
     // hard cases
-    (("_types", "WaitForActiveShards"), "string"),
-    (("_global.search._types", "TrackHits"), "boolean|long"),
-    (("_types", "Slices"), "number|string"),
-    (("cluster.health", "WaitForNodes"), "string"),
+    (("_types", "WaitForActiveShards"), ParamType::String),
+    (("_global.search._types", "TrackHits"), ParamType::BooleanOrLong),
+    (("_types", "Slices"), ParamType::NumberOrString),
+    (("cluster.health", "WaitForNodes"), ParamType::String),
     // sometimes list in rest-api-spec as comma-separate values are allowed
     // but the Elasticsearch specification always models it as a string.
-    (("_global.search._types", "SourceConfigParam"), "list"),
+    (("_global.search._types", "SourceConfigParam"), ParamType::List),
 ];
 
 fn is_list_enum(union: &UnionOf) -> Option<TypeName> {
@@ -280,46 +280,46 @@ fn is_index_name_and_alias(union: &UnionOf) -> bool {
     false
 }
 
-fn is_literal(instance: &InstanceOf) -> Option<String> {
+fn is_literal(instance: &InstanceOf) -> Option<ParamType> {
     let key = (instance.typ.namespace.as_str(), instance.typ.name.as_str());
     // TODO BUILTIN_MAPPINGS could be a type with a get method
-    if let Some(&mapped_type) = BUILTIN_MAPPINGS.iter().find(|&&(k, _)| k == key).map(|(_, v)| v) {
-        Some(mapped_type.to_string())
-    } else {
-        None
-    }
+    BUILTIN_MAPPINGS
+        .iter()
+        .find(|&&(k, _)| k == key)
+        .map(|(_, v)| *v)
 }
 
-/// Convert a ValueOf type to a simple string representation
-fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>) -> String {
+/// Convert a ValueOf type to a ParamType
+fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>) -> ParamType {
     match value_of {
-        ValueOf::ArrayOf(_) => "list".to_string(),
-        ValueOf::UnionOf(union) => if let Some(_) = is_list_enum(union) {
-            "list"
-        } else if is_index_name_and_alias(union) {
-            "string"
-        } else {
-            tracing::warn!("{:?}", union);
-            todo!()
+        ValueOf::ArrayOf(_) => ParamType::List,
+        ValueOf::UnionOf(union) => {
+            if is_list_enum(union).is_some() {
+                ParamType::List
+            } else if is_index_name_and_alias(union) {
+                ParamType::String
+            } else {
+                tracing::warn!("{:?}", union);
+                todo!()
+            }
         }
-        .to_string(),
-        ValueOf::LiteralValue(_) => "string".to_string(),
+        ValueOf::LiteralValue(_) => ParamType::String,
         ValueOf::InstanceOf(instance) => {
             let type_name = &instance.typ;
             let key = (type_name.namespace.as_str(), type_name.name.as_str());
 
             if let Some(&mapped_type) = BUILTIN_MAPPINGS.iter().find(|&&(k, _)| k == key).map(|(_, v)| v) {
-                mapped_type.to_string()
+                mapped_type
             } else if let Some(TypeDefinition::Enum(_)) = types.get(type_name) {
-                "enum".to_string()
+                ParamType::Enum
             } else {
                 let full_type = types.get(type_name).unwrap();
 
                 match full_type {
                     TypeDefinition::TypeAlias(alias) => match &alias.typ {
                         ValueOf::UnionOf(union) => {
-                            if let Some(_) = is_list_enum(union) {
-                                return "list".to_string();
+                            if is_list_enum(union).is_some() {
+                                return ParamType::List;
                             }
                         }
                         ValueOf::InstanceOf(instance) => {
@@ -481,13 +481,13 @@ mod tests {
             },
             generics: vec![],
         });
-        assert_eq!(get_type_name(&string_type, &types), "string");
+        assert_eq!(get_type_name(&string_type, &types), ParamType::String);
 
         // Test array type
         let array_type = ValueOf::ArrayOf(ArrayOf {
             value: Box::new(string_type),
         });
-        assert_eq!(get_type_name(&array_type, &types), "list");
+        assert_eq!(get_type_name(&array_type, &types), ParamType::List);
     }
 
     #[test]

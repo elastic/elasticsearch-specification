@@ -3,6 +3,46 @@ use indexmap::IndexMap;
 use serde::{Serialize, Serializer};
 use std::collections::HashMap;
 
+/// Type of a path part or query parameter in the REST API spec
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ParamType {
+    List,
+    Date,
+    Time,
+    String,
+    Enum,
+    Int,
+    Double,
+    Long,
+    Boolean,
+    Number,
+    BooleanOrLong,  // "boolean|long"
+    NumberOrString, // "number|string"
+}
+
+impl Serialize for ParamType {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let s = match self {
+            ParamType::List => "list",
+            ParamType::Date => "date",
+            ParamType::Time => "time",
+            ParamType::String => "string",
+            ParamType::Enum => "enum",
+            ParamType::Int => "int",
+            ParamType::Double => "double",
+            ParamType::Long => "long",
+            ParamType::Boolean => "boolean",
+            ParamType::Number => "number",
+            ParamType::BooleanOrLong => "boolean|long",
+            ParamType::NumberOrString => "number|string",
+        };
+        serializer.serialize_str(s)
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct HttpMethods(Vec<http::Method>);
 
@@ -70,7 +110,7 @@ pub struct Path {
 #[derive(Debug, Serialize)]
 pub struct PathPart {
     #[serde(rename = "type")]
-    pub typ: String,
+    pub typ: ParamType,
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub options: Vec<String>,
     pub description: String,
@@ -81,7 +121,7 @@ pub struct PathPart {
 #[derive(Debug, Serialize)]
 pub struct Parameter {
     #[serde(rename = "type")]
-    pub typ: String,
+    pub typ: ParamType,
     pub description: String,
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub options: Vec<String>,
