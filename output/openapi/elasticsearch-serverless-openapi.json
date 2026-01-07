@@ -40870,7 +40870,7 @@
               },
               "chunk_rescorer": {
                 "description": "Whether to rescore on only the best matching chunks.",
-                "x-state": "Generally available",
+                "x-state": "Beta",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.ChunkRescorer"
