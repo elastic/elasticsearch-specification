@@ -14485,7 +14485,7 @@
                   "value": "{\n  \"service\": \"llama\",\n  \"service_settings\": {\n    \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\",\n    \"model_id\": \"llama3.2:3b\" \n  }\n}"
                 },
                 "PutLlamaRequestExample3": {
-                  "description": "Run `PUT _inference/chat-completion/llama-chat-completion` to create a Llama inference endpoint that performs a `chat_completion` task.",
+                  "description": "Run `PUT _inference/chat_completion/llama-chat-completion` to create a Llama inference endpoint that performs a `chat_completion` task.",
                   "value": "{\n  \"service\": \"llama\",\n  \"service_settings\": {\n    \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\",\n    \"model_id\": \"llama3.2:3b\" \n  }\n}"
                 }
               }
@@ -28072,6 +28072,12 @@
                 "required": [
                   "synonyms_set"
                 ]
+              },
+              "examples": {
+                "SynonymsPutRequestExample1": {
+                  "description": "",
+                  "value": "\n{\n  \"synonyms_set\": {\n  \"synonyms\" : \"hello, hi, howdy\"\n  }\n}"
+                }
               }
             }
           },
@@ -91445,7 +91451,7 @@
               "ClusterPutComponentTemplateRequestExample2": {
                 "summary": "Create a template with aliases",
                 "description": "You can include index aliases in a component template. During index creation, the `{index}` placeholder in the alias name will be replaced with the actual index name that the template gets applied to.\n",
-                "value": "{\n  \"template\": null,\n  \"settings\": {\n    \"number_of_shards\": 1\n  },\n  \"aliases\": {\n    \"alias1\": {},\n    \"alias2\": {\n      \"filter\": {\n        \"term\": {\n          \"user.id\": \"kimchy\"\n        }\n      },\n      \"routing\": \"shard-1\"\n    },\n    \"{index}-alias\": {}\n  }\n}"
+                "value": "{\n  \"template\": {\n    \"settings\": {\n      \"number_of_shards\": 1\n    },\n    \"aliases\": {\n      \"alias1\": {},\n      \"alias2\": {\n        \"filter\": {\n          \"term\": {\n            \"user.id\": \"kimchy\"\n          }\n        },\n        \"routing\": \"shard-1\"\n      },\n      \"{index}-alias\": {}\n    }\n  }\n}"
               }
             }
           }
