@@ -11641,7 +11641,7 @@
         "tags": [
           "inference"
         ],
-        "summary": "Perform completion inference on the service\n",
+        "summary": "Perform completion inference on the service",
         "description": "Get responses for completion tasks.\nThis API works only with the completion task type.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThis API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
         "operationId": "inference-completion",
         "parameters": [
@@ -14771,10 +14771,17 @@
                   },
                   "input": {
                     "description": "The documents to rank.",
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    ]
                   },
                   "return_documents": {
                     "description": "Include the document text in the response.",
