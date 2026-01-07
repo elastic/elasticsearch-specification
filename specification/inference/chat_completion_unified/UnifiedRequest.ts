@@ -22,7 +22,7 @@ import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { RequestChatCompletion } from '@inference/_types/CommonTypes'
 /**
- * Perform chat completion inference.
+ * Perform chat completion inference on the service.
  *
  * The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.
  * It only works with the `chat_completion` task type.

@@ -15142,6 +15142,8 @@ export interface InferenceRerankRequest extends RequestBase {
   body?: {
     query: string
     input: string | string[]
+    return_documents?: boolean
+    top_n?: integer
     task_settings?: InferenceTaskSettings
   }
 }
