@@ -1712,6 +1712,16 @@ export class JinaAITaskSettings {
    */
   task?: JinaAITextEmbeddingTask
   /**
+   * For a `text_embedding` task, controls when text is split into chunks.
+   *
+   * When set to `true`, Elasticsearch sends each document individually to Jina AI and embeds the full document before splitting it into chunks. This allows chunk embeddings to retain context from the entire document, improving semantic quality.
+   *
+   * If a document exceeds the model's context limits, late chunking is automatically disabled for that document only and standard chunking is used instead.
+   *
+   * If not specified, defaults to `false`.
+   */
+  late_chunking?: boolean
+  /**
    * For a `rerank` task, the number of most relevant documents to return.
    * It defaults to the number of the documents.
    * If this inference endpoint is used in a `text_similarity_reranker` retriever query and `top_n` is set, it must be greater than or equal to `rank_window_size` in the query.
