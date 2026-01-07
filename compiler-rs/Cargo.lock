@@ -259,6 +259,7 @@ dependencies = [
  "anyhow",
  "argh",
  "clients_schema",
+ "http",
  "indexmap",
  "serde",
  "serde_json",
@@ -500,6 +501,16 @@ dependencies = [
  "cfg-if",
  "libc",
  "windows-link",
+]
+
+[[package]]
+name = "http"
+version = "1.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e3ba2a386d7f85a81f119ad7498ebe444d2e22c2af0b86b069416ace48b3311a"
+dependencies = [
+ "bytes",
+ "itoa",
 ]
 
 [[package]]
