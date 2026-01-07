@@ -68788,6 +68788,11 @@
             },
             "description": "For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.\nBy default, the model's standard output dimension is used.\nRefer to the Google documentation for more information.",
             "type": "number"
+          },
+          "max_batch_size": {
+            "description": "Only applicable for the `text_embedding` task type.\nControls the batch size of chunked inference requests sent to Google Vertex AI.\n\nSetting this parameter lower reduces the risk of exceeding token limits but may result in more API calls. Setting it higher increases throughput but may risk hitting token limits.\n\nTo estimate a safe `max_batch_size` value, you can use it together with the `max_chunk_size` parameter using the following formula:\n`max_batch_size ≈ max_chunk_size × 1.3 × 512 ÷ 20000`\n\nWhere:\n- `1.3` is an approximate tokens-per-word ratio\n- `512` is the maximum number of chunks that can be generated per document\n- `20000` is the Google Vertex AI token limit per request\n\nThis estimate assumes the worst-case scenario with a document generating the maximum 512 chunks.",
+            "default": 250.0,
+            "type": "number"
           }
         },
         "required": [
