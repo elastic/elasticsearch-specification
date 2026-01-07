@@ -1,7 +1,0 @@
-summary: A single expression
-method_request: PUT /_project_routing/aws-us-only
-# type: request
-value: |-
-  {
-    "expression" : "_csp:aws AND _region:us*"
-  }

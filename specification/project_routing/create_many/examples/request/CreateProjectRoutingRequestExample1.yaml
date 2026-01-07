@@ -1,8 +1,0 @@
-summary: Multiple expressions
-method_request: PUT /_project_routing/
-# type: request
-value: |-
-  {
-   "aws-us-only": { "expression": "_csp:aws AND _region:us*" },
-   "aws-eu-only": { "expression": "_csp:aws AND _region:eu*" }
-  }
