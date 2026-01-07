@@ -1506,7 +1506,7 @@ export class GoogleVertexAIServiceSettings {
    * Only applicable for the `text_embedding` task type.
    * Controls the batch size of chunked inference requests sent to Google Vertex AI.
    *
-   * Setting this parameter lower reduces the risk of exceeding token limits but may result in more API calls, while setting it higher increases throughput but may risk hitting token limits.
+   * Setting this parameter lower reduces the risk of exceeding token limits but may result in more API calls. Setting it higher increases throughput but may risk hitting token limits.
    *
    * To estimate a safe `max_batch_size` value, you can use it together with the `max_chunk_size` parameter using the following formula:
    * `batch_size ≈ max_chunk_size × 1.3 × 512 ÷ 20000`
