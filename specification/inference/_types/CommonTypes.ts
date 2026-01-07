@@ -1516,7 +1516,7 @@ export class GoogleVertexAIServiceSettings {
    * - `512` is the maximum number of chunks that can be generated per document
    * - `20000` is the Google Vertex AI token limit per request
    *
-   * This calculation represents a worst-case scenario where a document generates the maximum number of chunks (512) and is only an approximation.
+   * This estimate assumes the worst-case scenario with a document generating the maximum 512 chunks.
    * @server_default 250
    */
   max_batch_size?: integer
