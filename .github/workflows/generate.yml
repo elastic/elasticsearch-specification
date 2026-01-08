@@ -28,6 +28,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Avoid running on forks and prevent infinite loop
+    if: github.repository_owner == 'elastic' && github.actor != 'elasticmachine'
     steps:
     - name: Fetch ephemeral GitHub token
       id: fetch-ephemeral-token
