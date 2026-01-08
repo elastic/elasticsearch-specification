@@ -49,6 +49,7 @@ jobs:
           repository: elastic/clients-flight-recorder
           path: ./clients-flight-recorder
           ref: ${{ github.base_ref }}
+          token: ${{ steps.fetch-ephemeral-token.outputs.token }}
           persist-credentials: false
 
       - name: Use Node.js 22
