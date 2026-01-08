@@ -259,6 +259,7 @@ export interface DeleteByQueryResponse {
   requests_per_second?: float
   retries?: Retries
   slice_id?: integer
+  slices?: ReindexStatus[]
   task?: TaskId
   throttled?: Duration
   throttled_millis?: DurationValue<UnitMillis>
@@ -1079,6 +1080,7 @@ export interface ReindexResponse {
   retries?: Retries
   requests_per_second?: float
   slice_id?: integer
+  slices?: ReindexStatus[]
   task?: TaskId
   throttled_millis?: EpochTime<UnitMillis>
   throttled_until_millis?: EpochTime<UnitMillis>
@@ -1104,31 +1106,16 @@ export interface ReindexRethrottleReindexNode extends SpecUtilsBaseNode {
   tasks: Record<TaskId, ReindexRethrottleReindexTask>
 }
 
-export interface ReindexRethrottleReindexStatus {
-  batches: long
-  created: long
-  deleted: long
-  noops: long
-  requests_per_second: float
-  retries: Retries
-  throttled?: Duration
-  throttled_millis: DurationValue<UnitMillis>
-  throttled_until?: Duration
-  throttled_until_millis: DurationValue<UnitMillis>
-  total: long
-  updated: long
-  version_conflicts: long
-}
-
 export interface ReindexRethrottleReindexTask {
   action: string
   cancellable: boolean
+  cancelled: boolean
   description: string
   id: long
   node: Name
   running_time_in_nanos: DurationValue<UnitNanos>
   start_time_in_millis: EpochTime<UnitMillis>
-  status: ReindexRethrottleReindexStatus
+  status: ReindexStatus
   type: string
   headers: HttpHeaders
 }
@@ -2198,6 +2185,7 @@ export interface UpdateByQueryResponse {
   deleted?: long
   requests_per_second?: float
   retries?: Retries
+  slices?: ReindexStatus[]
   task?: TaskId
   timed_out?: boolean
   took?: DurationValue<UnitMillis>
@@ -2877,6 +2865,24 @@ export interface RefreshStats {
   total: long
   total_time?: Duration
   total_time_in_millis: DurationValue<UnitMillis>
+}
+
+export interface ReindexStatus {
+  slice_id?: integer
+  batches: long
+  created?: long
+  deleted: long
+  noops: long
+  requests_per_second: float
+  retries: Retries
+  throttled?: Duration
+  throttled_millis: DurationValue<UnitMillis>
+  throttled_until?: Duration
+  throttled_until_millis: DurationValue<UnitMillis>
+  total: long
+  updated?: long
+  version_conflicts: long
+  cancelled?: string
 }
 
 export type RelationName = string
@@ -5976,6 +5982,11 @@ export interface MappingDynamicTemplate {
   match_pattern?: MappingMatchType
 }
 
+export interface MappingExponentialHistogramProperty extends MappingPropertyBase {
+  time_series_metric?: MappingTimeSeriesMetricType
+  type: 'exponential_histogram'
+}
+
 export interface MappingFieldAliasProperty extends MappingPropertyBase {
   path?: Field
   type: 'alias'
@@ -6049,6 +6060,7 @@ export interface MappingHalfFloatNumberProperty extends MappingNumberPropertyBas
 
 export interface MappingHistogramProperty extends MappingPropertyBase {
   ignore_malformed?: boolean
+  time_series_metric?: MappingTimeSeriesMetricType
   type: 'histogram'
 }
 
@@ -6190,7 +6202,7 @@ export interface MappingPointProperty extends MappingDocValuesPropertyBase {
   type: 'point'
 }
 
-export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingPassthroughObjectProperty | MappingRankVectorProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingCountedKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
+export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingPassthroughObjectProperty | MappingRankVectorProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingCountedKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingExponentialHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
 
 export interface MappingPropertyBase {
   meta?: Record<string, string>
@@ -14605,6 +14617,7 @@ export interface InferenceGoogleVertexAIServiceSettings {
   rate_limit?: InferenceRateLimitSetting
   service_account_json: string
   dimensions?: integer
+  max_batch_size?: integer
 }
 
 export type InferenceGoogleVertexAIServiceType = 'googlevertexai'
@@ -15520,8 +15533,10 @@ export type InferenceUpdateResponse = InferenceInferenceEndpointInfo
 export interface IngestAppendProcessor extends IngestProcessorBase {
   field: Field
   value?: any | any[]
+  media_type?: string
   copy_from?: Field
   allow_duplicates?: boolean
+  ignore_empty_values?: boolean
 }
 
 export interface IngestAttachmentProcessor extends IngestProcessorBase {
@@ -15539,6 +15554,14 @@ export interface IngestBytesProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
   target_field?: Field
+}
+
+export interface IngestCefProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  target_field?: Field
+  ignore_empty_values?: boolean
+  timezone?: string
 }
 
 export interface IngestCircleProcessor extends IngestProcessorBase {
@@ -15884,6 +15907,7 @@ export interface IngestProcessorContainer {
   append?: IngestAppendProcessor
   attachment?: IngestAttachmentProcessor
   bytes?: IngestBytesProcessor
+  cef?: IngestCefProcessor
   circle?: IngestCircleProcessor
   community_id?: IngestCommunityIDProcessor
   convert?: IngestConvertProcessor
@@ -18895,10 +18919,12 @@ export interface MlStopDatafeedRequest extends RequestBase {
   allow_no_match?: boolean
   force?: boolean
   timeout?: Duration
+  close_job?: boolean
   body?: {
     allow_no_match?: boolean
     force?: boolean
     timeout?: Duration
+    close_job?: boolean
   }
 }
 
@@ -20134,6 +20160,44 @@ export interface ProjectTagsTagsKeys {
 }
 export type ProjectTagsTags = ProjectTagsTagsKeys
   & { [property: string]: string }
+
+export type ProjectRoutingNamedProjectRoutingExpressions = Record<string, ProjectRoutingProjectRoutingExpression>
+
+export interface ProjectRoutingProjectRoutingExpression {
+  expression: ProjectRoutingRoutingExpression
+}
+
+export type ProjectRoutingRoutingExpression = string
+
+export interface ProjectRoutingCreateRequest extends RequestBase {
+  name: string
+  body?: ProjectRoutingProjectRoutingExpression
+}
+
+export type ProjectRoutingCreateResponse = AcknowledgedResponseBase
+
+export interface ProjectRoutingCreateManyRequest extends RequestBase {
+  body?: ProjectRoutingNamedProjectRoutingExpressions
+}
+
+export type ProjectRoutingCreateManyResponse = AcknowledgedResponseBase
+
+export interface ProjectRoutingDeleteRequest extends RequestBase {
+  name: string
+}
+
+export type ProjectRoutingDeleteResponse = AcknowledgedResponseBase
+
+export interface ProjectRoutingGetRequest extends RequestBase {
+  name: string
+}
+
+export type ProjectRoutingGetResponse = ProjectRoutingProjectRoutingExpression
+
+export interface ProjectRoutingGetManyRequest extends RequestBase {
+}
+
+export type ProjectRoutingGetManyResponse = ProjectRoutingNamedProjectRoutingExpressions
 
 export interface QueryRulesQueryRule {
   rule_id: Id
