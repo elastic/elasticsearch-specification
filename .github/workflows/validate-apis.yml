@@ -26,8 +26,17 @@ jobs:
         if: github.event.pull_request.head.repo.full_name != 'elastic/elasticsearch-specification'
         run: echo "Validation is not supported from forks"; exit 1
 
+      - name: Fetch ephemeral GitHub token
+        id: fetch-ephemeral-token
+        uses: elastic/ci-gh-actions/fetch-github-token@v1.0.0
+        with:
+          vault-instance: "ci-prod"
+          vault-role: "token-policy-6a6580bb0e7d"
+
       - name: Checkout elasticsearch-specification
         uses: actions/checkout@v5
+        env:
+          GITHUB_TOKEN: ${{ steps.fetch-ephemeral-token.outputs.token }}
         with:
           path: ./elasticsearch-specification
           ref: ${{ matrix.spec_ref }}
