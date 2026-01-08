@@ -28,7 +28,7 @@ import { MediaType } from '@_types/common'
  * @rest_spec_name project_routing.delete
  * @availability serverless stability=experimental visibility=public
  * @cluster_privileges manage
- * @doc_tag project-routing
+ * @doc_tag project
  */
 export interface Request extends RequestBase {
   urls: [

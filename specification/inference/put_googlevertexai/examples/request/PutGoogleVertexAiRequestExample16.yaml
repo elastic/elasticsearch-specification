@@ -1,5 +1,8 @@
 summary: A chat_completion task for Google Model Garden Mistral serverless endpoint with single streaming URL provided
-description: Run `PUT _inference/chat_completion/google_model_garden_mistral_chat_completion` to create an inference endpoint to perform a `chat_completion` task using Mistral's serverless model hosted on Google Model Garden with single streaming URL provided. See the Mistral model documentation for instructions on how to construct the URL.
+description:
+  Run `PUT _inference/chat_completion/google_model_garden_mistral_chat_completion` to create an inference endpoint to
+  perform a `chat_completion` task using Mistral's serverless model hosted on Google Model Garden with single streaming URL
+  provided. See the Mistral model documentation for instructions on how to construct the URL.
 method_request: 'PUT _inference/chat_completion/google_model_garden_mistral_chat_completion'
 # type: "request"
 value: |-

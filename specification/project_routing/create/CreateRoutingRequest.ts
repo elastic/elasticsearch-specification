@@ -29,7 +29,7 @@ import { ProjectRoutingExpression } from '../_types/RoutingExpression'
  * @rest_spec_name project_routing.create
  * @availability serverless stability=experimental visibility=public
  * @cluster_privileges manage
- * @doc_tag project-routing
+ * @doc_tag project
  */
 export interface Request extends RequestBase {
   urls: [
