@@ -41,14 +41,6 @@ jobs:
           ref: ${{ matrix.spec_ref }}
           persist-credentials: false
 
-      - name: Use ephemeral GitHub token
-        env:
-          GITHUB_TOKEN: ${{ steps.fetch-ephemeral-token.outputs.token }}
-        run: |
-          # Example: list workflow runs using the ephemeral GitHub token
-          curl -H "Authorization: token $GITHUB_TOKEN" \
-            https://api.github.com/repos/elastic/clients-flight-recorder/contents/README.md
-
       - name: Checkout clients-flight-recorder
         uses: actions/checkout@v5
         with:
