@@ -36,8 +36,6 @@ jobs:
 
       - name: Checkout elasticsearch-specification
         uses: actions/checkout@v5
-        env:
-          GITHUB_TOKEN: ${{ steps.fetch-ephemeral-token.outputs.token }}
         with:
           path: ./elasticsearch-specification
           ref: ${{ matrix.spec_ref }}
@@ -48,8 +46,8 @@ jobs:
         with:
           repository: elastic/clients-flight-recorder
           path: ./clients-flight-recorder
-          token: ${{ secrets.PAT }}
           ref: ${{ github.base_ref }}
+          token: ${{ steps.fetch-ephemeral-token.outputs.token }}
           persist-credentials: false
 
       - name: Use Node.js 22
