@@ -41,7 +41,7 @@ jobs:
       uses: elastic/ci-gh-actions/fetch-github-token@v1.0.0
       with:
         vault-instance: "ci-prod"
-        vault-role: "token-policy-6a6580bb0e7d"
+        vault-role: "token-policy-e2dddb9634d8"
 
     - name: Checkout
       uses: actions/checkout@v5
