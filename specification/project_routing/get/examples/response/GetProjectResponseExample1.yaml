@@ -1,7 +1,0 @@
-summary: A single expressions
-# type: response
-# response_code: 201
-value: |-
-  {
-    "expression" : "_csp:aws AND _region:us*"
-  }

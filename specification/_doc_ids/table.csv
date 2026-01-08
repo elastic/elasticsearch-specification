@@ -545,7 +545,6 @@ prevalidate-node-removal,https://www.elastic.co/docs/api/doc/elasticsearch/group
 preview-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-preview-data-frame-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/preview-dfanalytics.html,
 preview-transform,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/preview-transform.html,
 project-tags,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-tags,,Get tags
-project-routing,,,Project routing
 put-analytics-collection,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put-behavioral-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-analytics-collection.html,
 put-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-data-frame-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-dfanalytics.html,
 put-enrich-policy-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-put-policy,https://www.elastic.co/guide/en/elasticsearch/reference/8.18/put-enrich-policy-api.html,

@@ -1,7 +1,0 @@
-summary: Multiple expressions
-# type: response
-# response_code: 201
-value: |-
-  {
-    "acknowledged": true
-  }

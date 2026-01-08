@@ -1,6 +1,0 @@
-# type: response
-# response_code: 200
-value: |-
-  {
-    "acknowledged": true
-  }
