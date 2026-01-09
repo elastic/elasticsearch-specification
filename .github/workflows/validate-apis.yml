@@ -7,7 +7,8 @@ on:
       - '[0-9]+.[0-9]+'
 
 permissions:
-  pull-requests: write    # To create/update PR comments
+  pull-requests: write  # To create/update PR comments
+  id-token: write  # To use the ephemeral token
 
 jobs:
   generate-validation:
@@ -26,6 +27,13 @@ jobs:
         if: github.event.pull_request.head.repo.full_name != 'elastic/elasticsearch-specification'
         run: echo "Validation is not supported from forks"; exit 1
 
+      - name: Fetch ephemeral GitHub token
+        id: fetch-ephemeral-token
+        uses: elastic/ci-gh-actions/fetch-github-token@v1.0.0
+        with:
+          vault-instance: "ci-prod"
+          vault-role: "token-policy-6a6580bb0e7d"
+
       - name: Checkout elasticsearch-specification
         uses: actions/checkout@v5
         with:
@@ -38,7 +46,7 @@ jobs:
         with:
           repository: elastic/clients-flight-recorder
           path: ./clients-flight-recorder
-          token: ${{ secrets.PAT }}
+          token: ${{ steps.fetch-ephemeral-token.outputs.token }}
           ref: ${{ github.base_ref }}
           persist-credentials: false
 
