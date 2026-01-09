@@ -1695,7 +1695,8 @@ export class WatsonxServiceSettings {
 }
 
 export enum WatsonxTaskType {
-  text_embedding
+  text_embedding,
+  rerank
 }
 
 export enum WatsonxServiceType {
