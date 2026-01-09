@@ -24,7 +24,7 @@
   "author": "Elastic",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@types/node": "^22",
+    "@types/node": "^24",
     "ava": "^6",
     "c8": "^10",
     "prettier": "2.5.1",
@@ -45,7 +45,7 @@
     "minimist": "^1.2.6"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=24"
   },
   "ava": {
     "extensions": [

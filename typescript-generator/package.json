@@ -15,13 +15,13 @@
     "build": "rm -rf lib && tsc"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=24"
   },
   "keywords": [],
   "author": "",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@types/node": "^22",
+    "@types/node": "^24",
     "ts-node": "^10",
     "ts-standard": "^12"
   },
