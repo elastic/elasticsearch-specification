@@ -86,7 +86,7 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Json
   body: {
     /**
-     * Name of the index template to create.
+     * Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.
      */
     index_patterns?: Indices
     /**
