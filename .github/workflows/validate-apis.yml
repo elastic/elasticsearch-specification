@@ -42,10 +42,10 @@ jobs:
           ref: ${{ github.base_ref }}
           persist-credentials: false
 
-      - name: Use Node.js 22
-        uses: actions/setup-node@v5
+      - name: Use Node.js 24
+        uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Install deps 1/2
         working-directory: ./clients-flight-recorder
@@ -94,10 +94,10 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Use Node.js 22
-        uses: actions/setup-node@v5
+      - name: Use Node.js 24
+        uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Install dependencies
         run: npm install --prefix .github/validate-pr
