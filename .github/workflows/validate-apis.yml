@@ -7,7 +7,8 @@ on:
       - '[0-9]+.[0-9]+'
 
 permissions:
-  pull-requests: write    # To create/update PR comments
+  pull-requests: write  # To create/update PR comments
+  id-token: write  # To use the ephemeral token
 
 jobs:
   generate-validation:
@@ -35,8 +36,6 @@ jobs:
 
       - name: Checkout elasticsearch-specification
         uses: actions/checkout@v5
-        env:
-          GITHUB_TOKEN: ${{ steps.fetch-ephemeral-token.outputs.token }}
         with:
           path: ./elasticsearch-specification
           ref: ${{ matrix.spec_ref }}
@@ -47,7 +46,7 @@ jobs:
         with:
           repository: elastic/clients-flight-recorder
           path: ./clients-flight-recorder
-          token: ${{ secrets.PAT }}
+          token: ${{ steps.fetch-ephemeral-token.outputs.token }}
           ref: ${{ github.base_ref }}
           persist-credentials: false
 
