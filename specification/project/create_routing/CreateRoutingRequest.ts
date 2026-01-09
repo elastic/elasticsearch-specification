@@ -22,16 +22,10 @@ import { MediaType } from '@_types/common'
 import { ProjectRoutingExpression } from '../_types/RoutingExpression'
 
 /**
-<<<<<<< HEAD:specification/project/create_routing/CreateRoutingRequest.ts
- * Create or update a named project routing expression.
+ * Create or update a project routing expression.
  *
  * @doc_id project-create-routing
  * @rest_spec_name project.create_routing
-=======
- * Create or update project routing expressions.
- * @doc_id project-routing-create-many
- * @rest_spec_name project_routing.create_many
->>>>>>> ca0d1690b (Add more URLS):specification/project_routing/create_many/CreateRoutingRequest.ts
  * @availability serverless stability=experimental visibility=public
  * @cluster_privileges manage
  * @doc_tag project
