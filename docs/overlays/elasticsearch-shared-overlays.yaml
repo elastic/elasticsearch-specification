@@ -226,7 +226,11 @@ actions:
       # P
         - name: project
           x-displayName: Project
-          # description: 
+          description: >
+            The project APIs enable you to get project tags and manage your project routing expressions.
+          # externalDocs:
+            # url: 
+            # description:
       # Q
         - name: query_rules
           x-displayName: Query rules
