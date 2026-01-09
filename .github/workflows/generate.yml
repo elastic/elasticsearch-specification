@@ -49,10 +49,10 @@ jobs:
         token: ${{ steps.fetch-ephemeral-token.outputs.token }}
         persist-credentials: true
 
-    - name: Setup Node 22
-      uses: actions/setup-node@v5
+    - name: Setup Node 24
+      uses: actions/setup-node@v6
       with:
-        node-version: 22
+        node-version: 24
         cache: npm
         cache-dependency-path: '**/package-lock.json'
 
