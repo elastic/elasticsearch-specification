@@ -113,12 +113,14 @@ export class SearchRequestBody {
    * Use the `post_filter` parameter to filter search results.
    * The search hits are filtered after the aggregations are calculated.
    * A post filter has no impact on the aggregation results.
+   * @ext_doc_id filter-search-results
    */
   post_filter?: QueryContainer
   /**
    * Set to `true` to return detailed timing information about the execution of individual components in a search request.
    * NOTE: This is a debugging tool and adds significant overhead to search execution.
    * @server_default false
+   * @ext_doc_id search-profile
    */
   profile?: boolean
   /**
@@ -128,6 +130,7 @@ export class SearchRequestBody {
   query?: QueryContainer
   /**
    * Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.
+   * @ext_doc_id rescore-search-results
    */
   rescore?: Rescore | Rescore[]
   /**
@@ -144,6 +147,7 @@ export class SearchRequestBody {
   script_fields?: Dictionary<string, ScriptField>
   /**
    * Used to retrieve the next page of hits using a set of sort values from the previous page.
+   * @ext_doc_id search-after
    */
   search_after?: SortResults
   /**
@@ -155,6 +159,7 @@ export class SearchRequestBody {
   size?: integer
   /**
    * Split a scrolled search into multiple slices that can be consumed independently.
+   * @ext_doc_id slice-scroll
    */
   slice?: SlicedScroll
   /**
@@ -177,6 +182,7 @@ export class SearchRequestBody {
   fields?: Array<FieldAndFormat>
   /**
    * Defines a suggester that provides similar looking terms based on a provided text.
+   * @ext_doc_id suggester
    */
   suggest?: Suggester
   /**

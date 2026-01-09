@@ -31,6 +31,7 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
  * @availability serverless stability=stable visibility=public
  * @doc_id migration-api-create-from
  * @doc_tag migration
+ * @ext_doc_id create_index_from_source_index
  */
 export interface Request extends RequestBase {
   urls: [
