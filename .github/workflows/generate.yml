@@ -22,17 +22,31 @@ defaults:
   run:
     shell: bash
 
+permissions:
+  id-token: write # To use the ephemeral token
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    # The actor check currently does not work. The `secrets.PAT` belongs to `delvedor` and not
-    # `elasticmachine`. We should make sure to change this in the future.
+    # Avoid running on forks and prevent infinite loop
     if: github.repository_owner == 'elastic' && github.actor != 'elasticmachine'
     steps:
+
+    - name: Print GitHub Actor
+      run: |
+         echo "GitHub Actor: ${{ github.actor }}"
+
+    - name: Fetch ephemeral GitHub token
+      id: fetch-ephemeral-token
+      uses: elastic/ci-gh-actions/fetch-github-token@v1.0.0
+      with:
+        vault-instance: "ci-prod"
+        vault-role: "token-policy-e2dddb9634d8"
+
     - name: Checkout
       uses: actions/checkout@v5
       with:
-        token: ${{ secrets.PAT }}
+        token: ${{ steps.fetch-ephemeral-token.outputs.token }}
         persist-credentials: true
 
     - name: Setup Node 22
