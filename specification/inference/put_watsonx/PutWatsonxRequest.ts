@@ -25,6 +25,7 @@ import {
   WatsonxServiceType,
   WatsonxTaskType
 } from '@inference/_types/CommonTypes'
+import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**
  * Create a Watsonx inference endpoint.
@@ -65,6 +66,13 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
   body: {
+    /**
+     * The chunking configuration object.
+     * Applies only to the `text_embedding` task type.
+     * Not applicable to the `rerank`, `completion` or `chat_completion` task types.
+     * @ext_doc_id inference-chunking
+     */
+    chunking_settings?: InferenceChunkingSettings
     /**
      * The type of service supported for the specified task type. In this case, `watsonxai`.
      */
