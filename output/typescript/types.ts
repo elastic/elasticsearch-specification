@@ -14505,7 +14505,7 @@ export interface InferenceWatsonxServiceSettings {
 
 export type InferenceWatsonxServiceType = 'watsonxai'
 
-export type InferenceWatsonxTaskType = 'text_embedding'
+export type InferenceWatsonxTaskType = 'text_embedding' | 'rerank'
 
 export interface InferenceChatCompletionUnifiedRequest extends RequestBase {
   inference_id: Id
