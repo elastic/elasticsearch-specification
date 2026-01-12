@@ -7,7 +7,8 @@ on:
       - '[0-9]+.[0-9]+'
 
 permissions:
-  pull-requests: write    # To create/update PR comments
+  pull-requests: write  # To create/update PR comments
+  id-token: write  # To use the ephemeral token
 
 jobs:
   generate-validation:
@@ -35,8 +36,6 @@ jobs:
 
       - name: Checkout elasticsearch-specification
         uses: actions/checkout@v5
-        env:
-          GITHUB_TOKEN: ${{ steps.fetch-ephemeral-token.outputs.token }}
         with:
           path: ./elasticsearch-specification
           ref: ${{ matrix.spec_ref }}
@@ -47,14 +46,14 @@ jobs:
         with:
           repository: elastic/clients-flight-recorder
           path: ./clients-flight-recorder
-          token: ${{ secrets.PAT }}
           ref: ${{ github.base_ref }}
+          token: ${{ steps.fetch-ephemeral-token.outputs.token }}
           persist-credentials: false
 
-      - name: Use Node.js 22
-        uses: actions/setup-node@v5
+      - name: Use Node.js 24
+        uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Install deps 1/2
         working-directory: ./clients-flight-recorder
@@ -103,10 +102,10 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Use Node.js 22
-        uses: actions/setup-node@v5
+      - name: Use Node.js 24
+        uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Install dependencies
         run: npm install --prefix .github/validate-pr

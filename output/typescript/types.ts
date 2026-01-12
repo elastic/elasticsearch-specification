@@ -1901,7 +1901,6 @@ export interface SearchMvtRequest extends RequestBase {
   grid_agg?: SearchMvtGridAggregationType
   grid_precision?: integer
   grid_type?: SearchMvtGridType
-  project_routing?: ProjectRouting
   size?: integer
   track_total_hits?: SearchTrackHits
   with_labels?: boolean
@@ -1920,6 +1919,7 @@ export interface SearchMvtRequest extends RequestBase {
     sort?: Sort
     track_total_hits?: SearchTrackHits
     with_labels?: boolean
+    project_routing?: ProjectRouting
   }
 }
 
@@ -1977,7 +1977,6 @@ export interface SearchTemplateRequest extends RequestBase {
   ignore_unavailable?: boolean
   preference?: string
   profile?: boolean
-  project_routing?: ProjectRouting
   routing?: Routing
   scroll?: Duration
   search_type?: SearchType
@@ -1989,6 +1988,7 @@ export interface SearchTemplateRequest extends RequestBase {
     params?: Record<string, any>
     profile?: boolean
     source?: ScriptSource
+    project_routing?: ProjectRouting
   }
 }
 
@@ -15076,7 +15076,7 @@ export interface InferenceWatsonxServiceSettings {
 
 export type InferenceWatsonxServiceType = 'watsonxai'
 
-export type InferenceWatsonxTaskType = 'text_embedding' | 'chat_completion' | 'completion'
+export type InferenceWatsonxTaskType = 'text_embedding' | 'rerank' | 'chat_completion' | 'completion'
 
 export interface InferenceChatCompletionUnifiedRequest extends RequestBase {
   inference_id: Id
