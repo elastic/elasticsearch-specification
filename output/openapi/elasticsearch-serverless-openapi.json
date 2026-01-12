@@ -62361,7 +62361,7 @@
         "type": "object",
         "properties": {
           "index_patterns": {
-            "description": "Name of the index template.",
+            "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Names"
@@ -87909,7 +87909,7 @@
               "type": "object",
               "properties": {
                 "index_patterns": {
-                  "description": "Name of the index template to create.",
+                  "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Indices"
