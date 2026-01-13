@@ -170,7 +170,15 @@ export class ExtendedTextSimilarityRetrieverUsage {
 }
 
 export class ExtendedSectionSearchUsage {
-  sort?: Dictionary<string, long>
+  sort?: Dictionary<SortType, long>
+}
+
+export enum SortType {
+  _doc,
+  _geo_distance,
+  _score,
+  _script,
+  field_sort
 }
 
 export class DenseVectorStats {
