@@ -21,10 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
 
 /**
- * Get named project routing expressions.
+ * Get a project routing expression.
  *
- * Get named project routing expressions.
- * @doc_id project-routing
+ * @doc_id project-routing-get
  * @rest_spec_name project_routing.get
  * @availability serverless stability=experimental visibility=public
  * @cluster_privileges monitor

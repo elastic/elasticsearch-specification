@@ -22,10 +22,9 @@ import { MediaType } from '@_types/common'
 import { ProjectRoutingExpression } from '../_types/RoutingExpression'
 
 /**
- * Create of update a single named project routing expression.
+ * Create or update a named project routing expression.
  *
- * Create of update a single named project routing expression.
- * @doc_id project-routing
+ * @doc_id project-routing-create
  * @rest_spec_name project_routing.create
  * @availability serverless stability=experimental visibility=public
  * @cluster_privileges manage
