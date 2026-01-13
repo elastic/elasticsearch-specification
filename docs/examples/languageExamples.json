@@ -18645,6 +18645,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"url\":\"nvidia-completion-url\",\"api_key\":\"nvidia-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}}' \"$ELASTICSEARCH_URL/_inference/completion/nvidia-completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"nvidia-completion-url\\\",\\\"api_key\\\":\\\"nvidia-completion-token\\\",\\\"model_id\\\":\\\"microsoft/phi-3-mini-128k-instruct\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample2.yaml": [
@@ -18667,6 +18671,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"model_id\":\"nvidia/llama-3.2-nv-embedqa-1b-v2\",\"api_key\":\"nvidia-text-embeddings-token\"},\"task_settings\":{\"input_type\":\"ingest\",\"truncate\":\"start\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/nvidia-text-embedding\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-text-embedding\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"model_id\\\":\\\"nvidia/llama-3.2-nv-embedqa-1b-v2\\\",\\\"api_key\\\":\\\"nvidia-text-embeddings-token\\\"}\"))\n        .taskSettings(JsonData.fromJson(\"{\\\"input_type\\\":\\\"ingest\\\",\\\"truncate\\\":\\\"start\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample5.yaml": [
@@ -18689,6 +18697,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"url\":\"nvidia-chat-completion-url\",\"api_key\":\"nvidia-chat-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/nvidia-chat-completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"nvidia-chat-completion-url\\\",\\\"api_key\\\":\\\"nvidia-chat-completion-token\\\",\\\"model_id\\\":\\\"microsoft/phi-3-mini-128k-instruct\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample4.yaml": [
@@ -18711,6 +18723,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"api_key\":\"nvidia-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}}' \"$ELASTICSEARCH_URL/_inference/completion/nvidia-completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"nvidia-completion-token\\\",\\\"model_id\\\":\\\"microsoft/phi-3-mini-128k-instruct\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample8.yaml": [
@@ -18733,6 +18749,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"api_key\":\"nvidia-rerank-token\",\"model_id\":\"nv-rerank-qa-mistral-4b:1\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/nvidia-rerank\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"nvidia-rerank-token\\\",\\\"model_id\\\":\\\"nv-rerank-qa-mistral-4b:1\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample7.yaml": [
@@ -18755,6 +18775,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"url\":\"nvidia-rerank-url\",\"api_key\":\"nvidia-rerank-token\",\"model_id\":\"nv-rerank-qa-mistral-4b:1\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/nvidia-rerank\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"nvidia-rerank-url\\\",\\\"api_key\\\":\\\"nvidia-rerank-token\\\",\\\"model_id\\\":\\\"nv-rerank-qa-mistral-4b:1\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample6.yaml": [
@@ -18777,6 +18801,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"api_key\":\"nvidia-chat-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/nvidia-chat-completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"nvidia-chat-completion-token\\\",\\\"model_id\\\":\\\"microsoft/phi-3-mini-128k-instruct\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample1.yaml": [
@@ -18799,6 +18827,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"url\":\"nvidia-embeddings-url\",\"api_key\":\"nvidia-embeddings-token\",\"model_id\":\"nvidia/llama-3.2-nv-embedqa-1b-v2\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/nvidia-text-embedding\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-text-embedding\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"nvidia-embeddings-url\\\",\\\"api_key\\\":\\\"nvidia-embeddings-token\\\",\\\"model_id\\\":\\\"nvidia/llama-3.2-nv-embedqa-1b-v2\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_groq/examples/request/PutGroqRequestExample1.yaml": [
@@ -18821,6 +18853,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"groq\",\"service_settings\":{\"api_key\":\"groq-api-key\",\"model_id\":\"llama-3.3-70b-versatile\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/groq-chat-completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"groq-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"groq\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"groq-api-key\\\",\\\"model_id\\\":\\\"llama-3.3-70b-versatile\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_azureopenai/examples/request/PutAzureOpenAiRequestExample3.yaml": [
@@ -18843,6 +18879,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"azureopenai\",\"service_settings\":{\"api_key\":\"Api-Key\",\"resource_name\":\"Resource-name\",\"deployment_id\":\"Deployment-id\",\"api_version\":\"2024-02-01\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/azure_openai_chat_completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_openai_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"azureopenai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Api-Key\\\",\\\"resource_name\\\":\\\"Resource-name\\\",\\\"deployment_id\\\":\\\"Deployment-id\\\",\\\"api_version\\\":\\\"2024-02-01\\\"}\"))\n    )\n);\n"
     }
   ]
 }
