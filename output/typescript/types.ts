@@ -10404,6 +10404,11 @@ export interface ClusterStatsExtendedRetrieversSearchUsage {
 
 export interface ClusterStatsExtendedSearchUsage {
   retrievers?: ClusterStatsExtendedRetrieversSearchUsage
+  section?: ClusterStatsExtendedSectionSearchUsage
+}
+
+export interface ClusterStatsExtendedSectionSearchUsage {
+  sort?: Partial<Record<ClusterStatsSortType, long>>
 }
 
 export interface ClusterStatsExtendedTextSimilarityRetrieverUsage {
@@ -10503,7 +10508,7 @@ export interface ClusterStatsRepositoryStatsShards {
   total: integer
   complete: integer
   incomplete: integer
-  states: Record<ClusterStatsShardState, integer>
+  states: Partial<Record<ClusterStatsShardState, integer>>
 }
 
 export interface ClusterStatsRequest extends RequestBase {
@@ -10549,6 +10554,8 @@ export interface ClusterStatsSnapshotCurrentCounts {
   concurrent_operations: integer
   cleanups: integer
 }
+
+export type ClusterStatsSortType = '_doc' | '_geo_distance' | '_score' | '_script' | 'field_sort'
 
 export interface ClusterStatsSparseVectorStats {
   value_count: long
