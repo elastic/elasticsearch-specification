@@ -1969,7 +1969,7 @@ export class OpenAIServiceSettings {
   url?: string
 }
 
-export enum OpenAiSimilarityType {
+export enum OpenAISimilarityType {
   cosine,
   dot_product,
   l2_norm
