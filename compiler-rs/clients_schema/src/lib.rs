@@ -927,6 +927,9 @@ pub struct Endpoint {
     pub doc_url: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub doc_url_serverless: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub doc_id: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
