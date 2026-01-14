@@ -21,21 +21,26 @@ import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
 
 /**
- * Get named project routing expressions.
+ * Delete named project routing expressions.
  *
- * Get named project routing expressions.
  * @doc_id project-routing
- * @rest_spec_name project_routing.get_many
+ * @rest_spec_name project.delete_routing
  * @availability serverless stability=experimental visibility=public
- * @cluster_privileges monitor
+ * @cluster_privileges manage
  * @doc_tag project
  */
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '/_project_routing'
-      methods: ['GET']
+      path: '/_project_routing/{name}'
+      methods: ['DELETE']
     }
   ]
   response_media_type: MediaType.Json
+  path_parts: {
+    /**
+     * The name of project routing expression
+     */
+    name: string
+  }
 }
