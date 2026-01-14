@@ -1,0 +1,8 @@
+summary: Text-only embedding task
+description: Run `POST _inference/embedding/my-text-only-endpoint` to generate embeddings from the example text
+method_request: 'POST _inference/embedding/my-text-only-endpoint'
+# type: "request"
+value: |-
+  {
+    "input": ["The first text", "The second text"]
+  }

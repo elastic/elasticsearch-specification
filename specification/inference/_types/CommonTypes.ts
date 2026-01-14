@@ -19,7 +19,7 @@
 
 import { Id } from '@_types/common'
 import { float, integer, long } from '@_types/Numeric'
-import { RateLimitSetting } from '@inference/_types/Services'
+import { RateLimitSetting, TaskSettings } from '@inference/_types/Services'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class RequestChatCompletion {
@@ -287,6 +287,116 @@ export interface CompletionTool {
    * The function definition.
    */
   function: CompletionToolFunction
+}
+
+export class RequestEmbedding {
+  /**
+   * Inference input.
+   * Either a string, an array of strings, a `content` object, or an array of `content` objects.
+   *
+   * string example:
+   * ```
+   * "input": "Some text"
+   * ```
+   * string array example:
+   * ```
+   * "input": ["Some text", "Some more text"]
+   * ```
+   * `content` object example:
+   * ```
+   * "input": {
+   *     "content": {
+   *       "type": "image",
+   *       "format": "base64",
+   *       "value": "data:image/jpg;base64,..."
+   *     }
+   *   }
+   * ```
+   * `content` object array example:
+   * ```
+   * "input": [
+   *   {
+   *     "content": {
+   *       "type": "text",
+   *       "format": "text",
+   *       "value": "Some text to generate an embedding"
+   *     }
+   *   },
+   *   {
+   *     "content": {
+   *       "type": "image",
+   *       "format": "base64",
+   *       "value": "data:image/jpg;base64,..."
+   *     }
+   *   }
+   * ]
+   * ```
+   */
+  input: EmbeddingInput
+  /**
+   * The input data type for the embedding model. Possible values include:
+   * * `SEARCH`
+   * * `INGEST`
+   * * `CLASSIFICATION`
+   * * `CLUSTERING`
+   *
+   * Not all models support all values. Unsupported values will trigger a validation exception.
+   * Accepted values depend on the configured inference service, refer to the relevant service-specific documentation for more info.
+   *
+   * > info
+   * > The `input_type` parameter specified on the root level of the request body will take precedence over the `input_type` parameter specified in `task_settings`.
+   */
+  input_type?: string
+  /**
+   * Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.
+   */
+  task_settings?: TaskSettings
+}
+
+/**
+ * Inference input.
+ * Either a string, an array of strings, a `content` object, or an array of `content` objects.
+ */
+type EmbeddingInput = EmbeddingStringInput | EmbeddingContentInput
+
+/**
+ * Allows specifying text-only inputs for the `embedding` task.
+ */
+type EmbeddingStringInput = string | Array<string>
+
+/**
+ * Allows specifying multimodal inputs for the `embedding` task.
+ */
+type EmbeddingContentInput =
+  | EmbeddingContentObject
+  | Array<EmbeddingContentObject>
+
+/**
+ *  An object containing the input data for the model to embed.
+ */
+export class EmbeddingContentObject {
+  /**
+   * The type of input to embed.
+   */
+  type: EmbeddingContentType
+  /**
+   * The format of the input. For the `text` type this defaults to `text`. For the `image` type, this defaults to `base64`.
+   */
+  format?: EmbeddingContentFormat
+  /**
+   * The value of the input to embed.
+   */
+  value: string
+}
+
+export enum EmbeddingContentType {
+  text,
+  image
+}
+
+export enum EmbeddingContentFormat {
+  text,
+  base64
 }
 
 export class Ai21ServiceSettings {
@@ -1689,11 +1799,19 @@ export class JinaAIServiceSettings {
    */
   rate_limit?: RateLimitSetting
   /**
-   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
+   * For an `embedding` or `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
    * The default values varies with the embedding type.
    * For example, a float embedding type uses a `dot_product` similarity measure by default.
    */
   similarity?: JinaAISimilarityType
+  /**
+   * For the `embedding` task, whether the model supports multimodal inputs. If true, requests sent to the Jina model
+   * will use the multimodal request format (a list of objects). If false, requests sent to the model will use the same
+   * format as the `text_embedding` task (a list of strings). Setting this to `false` allows the `embedding` task to be
+   * used with models that do not support multimodal requests.
+   * @server_default true
+   */
+  multimodal_model?: boolean
 }
 
 export class JinaAITaskSettings {
@@ -1702,20 +1820,20 @@ export class JinaAITaskSettings {
    */
   return_documents?: boolean
   /**
-   * For a `text_embedding` task, the task passed to the model.
+   * For an `embedding` or `text_embedding` task, the task passed to the model.
    * Valid values are:
    *
-   * * `classification`: Use it for embeddings passed through a text classifier.
+   * * `classification`: Use it for embeddings passed through a classifier.
    * * `clustering`: Use it for the embeddings run through a clustering algorithm.
    * * `ingest`: Use it for storing document embeddings in a vector database.
    * * `search`: Use it for storing embeddings of search queries run against a vector database to find relevant documents.
    */
-  task?: JinaAITextEmbeddingTask
+  input_type?: JinaAITextEmbeddingTask
   /**
-   * For a `text_embedding` task, controls when text is split into chunks.
+   * For an `embedding` or `text_embedding` task, controls when text is split into chunks.
    * When set to `true`, a request from Elasticsearch contains only chunks related to a single document. Instead of batching chunks across documents, Elasticsearch sends them in separate requests. This ensures that chunk embeddings retain context from the entire document, improving semantic quality.
    *
-   * If a document exceeds the model's context limits, late chunking is automatically disabled for that document only and standard chunking is used instead.
+   * If a document exceeds the model's context limits, or if the document contains non-text inputs (relevant when using the multimodal `embedding` task), late chunking is automatically disabled for that document only and standard chunking is used instead.
    *
    * If not specified, defaults to `false`.
    */
@@ -1729,6 +1847,7 @@ export class JinaAITaskSettings {
 }
 
 export enum JinaAITaskType {
+  embedding,
   rerank,
   text_embedding
 }
@@ -1748,6 +1867,12 @@ export enum JinaAITextEmbeddingTask {
   clustering,
   ingest,
   search
+}
+
+export enum JinaAIElementType {
+  binary,
+  bit,
+  float
 }
 
 export class LlamaServiceSettings {

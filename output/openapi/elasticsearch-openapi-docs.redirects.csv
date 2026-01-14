@@ -2,6 +2,7 @@ async-search-submit-1,async-search-submit
 bulk-1,bulk
 cat-aliases-1,cat-aliases
 cat-allocation-1,cat-allocation
+cat-circuit-breaker-1,cat-circuit-breaker
 cat-component-templates-1,cat-component-templates
 cat-count-1,cat-count
 cat-fielddata-1,cat-fielddata

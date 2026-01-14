@@ -1,0 +1,15 @@
+summary: An embedding task using a non-multimodal model
+description:
+  Run `PUT _inference/embedding/jinaai-embeddings-text-only` to create an inference endpoint for embedding tasks using an
+  embedding model that does not support multimodal inputs (e.g. `jina-embeddings-v3`) via the JinaAI service.
+method_request: 'PUT _inference/embedding/jinaai-embeddings-text-only'
+# type: "request"
+value: |-
+  {
+      "service": "jinaai",
+      "service_settings": {
+          "model_id": "jina-embeddings-v3",
+          "api_key": "JinaAi-Api-key",
+          "multimodal_model": false
+      }
+  }

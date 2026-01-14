@@ -18625,6 +18625,94 @@
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"expression\":\"_csp:aws AND _region:us*\"}' \"$ELASTICSEARCH_URL/_project_routing/aws-us-only\""
     }
   ],
+  "specification/inference/put_jinaai/examples/request/PutJinaAiRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"embedding\",\n    inference_id=\"jinaai-embeddings-multimodal\",\n    inference_config={\n        \"service\": \"jinaai\",\n        \"service_settings\": {\n            \"model_id\": \"jina-embeddings-v4\",\n            \"api_key\": \"JinaAi-Api-key\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"embedding\",\n  inference_id: \"jinaai-embeddings-multimodal\",\n  inference_config: {\n    service: \"jinaai\",\n    service_settings: {\n      model_id: \"jina-embeddings-v4\",\n      api_key: \"JinaAi-Api-key\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"embedding\",\n  inference_id: \"jinaai-embeddings-multimodal\",\n  body: {\n    \"service\": \"jinaai\",\n    \"service_settings\": {\n      \"model_id\": \"jina-embeddings-v4\",\n      \"api_key\": \"JinaAi-Api-key\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"embedding\",\n    \"inference_id\" => \"jinaai-embeddings-multimodal\",\n    \"body\" => [\n        \"service\" => \"jinaai\",\n        \"service_settings\" => [\n            \"model_id\" => \"jina-embeddings-v4\",\n            \"api_key\" => \"JinaAi-Api-key\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"jinaai\",\"service_settings\":{\"model_id\":\"jina-embeddings-v4\",\"api_key\":\"JinaAi-Api-key\"}}' \"$ELASTICSEARCH_URL/_inference/embedding/jinaai-embeddings-multimodal\""
+    }
+  ],
+  "specification/inference/put_jinaai/examples/request/PutJinaAiRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"embedding\",\n    inference_id=\"jinaai-embeddings-text-only\",\n    inference_config={\n        \"service\": \"jinaai\",\n        \"service_settings\": {\n            \"model_id\": \"jina-embeddings-v3\",\n            \"api_key\": \"JinaAi-Api-key\",\n            \"multimodal_model\": False\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"embedding\",\n  inference_id: \"jinaai-embeddings-text-only\",\n  inference_config: {\n    service: \"jinaai\",\n    service_settings: {\n      model_id: \"jina-embeddings-v3\",\n      api_key: \"JinaAi-Api-key\",\n      multimodal_model: false,\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"embedding\",\n  inference_id: \"jinaai-embeddings-text-only\",\n  body: {\n    \"service\": \"jinaai\",\n    \"service_settings\": {\n      \"model_id\": \"jina-embeddings-v3\",\n      \"api_key\": \"JinaAi-Api-key\",\n      \"multimodal_model\": false\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"embedding\",\n    \"inference_id\" => \"jinaai-embeddings-text-only\",\n    \"body\" => [\n        \"service\" => \"jinaai\",\n        \"service_settings\" => [\n            \"model_id\" => \"jina-embeddings-v3\",\n            \"api_key\" => \"JinaAi-Api-key\",\n            \"multimodal_model\" => false,\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"jinaai\",\"service_settings\":{\"model_id\":\"jina-embeddings-v3\",\"api_key\":\"JinaAi-Api-key\",\"multimodal_model\":false}}' \"$ELASTICSEARCH_URL/_inference/embedding/jinaai-embeddings-text-only\""
+    }
+  ],
+  "specification/inference/embedding/examples/request/EmbeddingRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.embedding(\n    inference_id=\"my-multimodal-endpoint\",\n    embedding_request={\n        \"input\": [\n            {\n                \"content\": {\n                    \"type\": \"image\",\n                    \"format\": \"base64\",\n                    \"value\": \"data:image/jpg;base64,...\"\n                }\n            },\n            {\n                \"content\": {\n                    \"type\": \"text\",\n                    \"value\": \"Some text to create an embedding\"\n                }\n            }\n        ]\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.embedding({\n  inference_id: \"my-multimodal-endpoint\",\n  embedding_request: {\n    input: [\n      {\n        content: {\n          type: \"image\",\n          format: \"base64\",\n          value: \"data:image/jpg;base64,...\",\n        },\n      },\n      {\n        content: {\n          type: \"text\",\n          value: \"Some text to create an embedding\",\n        },\n      },\n    ],\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.embedding(\n  inference_id: \"my-multimodal-endpoint\",\n  body: {\n    \"input\": [\n      {\n        \"content\": {\n          \"type\": \"image\",\n          \"format\": \"base64\",\n          \"value\": \"data:image/jpg;base64,...\"\n        }\n      },\n      {\n        \"content\": {\n          \"type\": \"text\",\n          \"value\": \"Some text to create an embedding\"\n        }\n      }\n    ]\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->embedding([\n    \"inference_id\" => \"my-multimodal-endpoint\",\n    \"body\" => [\n        \"input\" => array(\n            [\n                \"content\" => [\n                    \"type\" => \"image\",\n                    \"format\" => \"base64\",\n                    \"value\" => \"data:image/jpg;base64,...\",\n                ],\n            ],\n            [\n                \"content\" => [\n                    \"type\" => \"text\",\n                    \"value\" => \"Some text to create an embedding\",\n                ],\n            ],\n        ),\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":[{\"content\":{\"type\":\"image\",\"format\":\"base64\",\"value\":\"data:image/jpg;base64,...\"}},{\"content\":{\"type\":\"text\",\"value\":\"Some text to create an embedding\"}}]}' \"$ELASTICSEARCH_URL/_inference/embedding/my-multimodal-endpoint\""
+    }
+  ],
+  "specification/inference/embedding/examples/request/EmbeddingRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.embedding(\n    inference_id=\"my-text-only-endpoint\",\n    embedding_request={\n        \"input\": [\n            \"The first text\",\n            \"The second text\"\n        ]\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.embedding({\n  inference_id: \"my-text-only-endpoint\",\n  embedding_request: {\n    input: [\"The first text\", \"The second text\"],\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.embedding(\n  inference_id: \"my-text-only-endpoint\",\n  body: {\n    \"input\": [\n      \"The first text\",\n      \"The second text\"\n    ]\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->embedding([\n    \"inference_id\" => \"my-text-only-endpoint\",\n    \"body\" => [\n        \"input\" => array(\n            \"The first text\",\n            \"The second text\",\n        ),\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":[\"The first text\",\"The second text\"]}' \"$ELASTICSEARCH_URL/_inference/embedding/my-text-only-endpoint\""
+    }
+  ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample3.yaml": [
     {
       "language": "Python",
