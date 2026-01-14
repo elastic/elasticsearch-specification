@@ -14833,6 +14833,7 @@ export type InferenceJinaAISimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
 export interface InferenceJinaAITaskSettings {
   return_documents?: boolean
   task?: InferenceJinaAITextEmbeddingTask
+  late_chunking?: boolean
   top_n?: integer
 }
 
