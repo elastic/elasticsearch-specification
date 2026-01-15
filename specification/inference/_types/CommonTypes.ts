@@ -1958,7 +1958,7 @@ export class OpenAIServiceSettings {
    */
   rate_limit?: RateLimitSetting
   /**
-   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
+   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm. Defaults to `dot_product`.
    */
   similarity?: OpenAISimilarityType
   /**
