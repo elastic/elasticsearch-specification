@@ -65465,7 +65465,7 @@
         "type": "object",
         "properties": {
           "index_patterns": {
-            "description": "Name of the index template.",
+            "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Names"
@@ -69296,6 +69296,14 @@
               }
             ]
           },
+          "similarity": {
+            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm. Defaults to `dot_product`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.OpenAISimilarityType"
+              }
+            ]
+          },
           "url": {
             "description": "The URL endpoint to use for the requests.\nIt can be changed for testing purposes.",
             "default": "https://api.openai.com/v1/embeddings.",
@@ -69305,6 +69313,14 @@
         "required": [
           "api_key",
           "model_id"
+        ]
+      },
+      "inference._types.OpenAISimilarityType": {
+        "type": "string",
+        "enum": [
+          "cosine",
+          "dot_product",
+          "l2_norm"
         ]
       },
       "inference._types.OpenAITaskSettings": {
@@ -91701,7 +91717,7 @@
               "type": "object",
               "properties": {
                 "index_patterns": {
-                  "description": "Name of the index template to create.",
+                  "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Indices"
