@@ -44,6 +44,7 @@ export default defineConfig([
       'es-spec-validator/no-variants-on-responses': 'error',
       'es-spec-validator/no-inline-unions': 'error',
       'es-spec-validator/prefer-tagged-variants': 'error',
+      'es-spec-validator/no-deprecated-availability-on-types': 'error',
       'es-spec-validator/no-duplicate-type-names': [
         'error',
         {
