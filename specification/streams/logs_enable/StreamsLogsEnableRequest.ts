@@ -41,7 +41,7 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
-  response_media_type: MediaType.Text | MediaType.Json
+  response_media_type: MediaType.Json | MediaType.Text
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.
