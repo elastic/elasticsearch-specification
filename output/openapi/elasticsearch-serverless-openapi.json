@@ -56444,6 +56444,9 @@
           "rate_limit": {
             "$ref": "#/components/schemas/inference._types.RateLimitSetting"
           },
+          "similarity": {
+            "$ref": "#/components/schemas/inference._types.OpenAISimilarityType"
+          },
           "url": {
             "description": "The URL endpoint to use for the requests.\nIt can be changed for testing purposes.",
             "default": "https://api.openai.com/v1/embeddings.",
@@ -56453,6 +56456,14 @@
         "required": [
           "api_key",
           "model_id"
+        ]
+      },
+      "inference._types.OpenAISimilarityType": {
+        "type": "string",
+        "enum": [
+          "cosine",
+          "dot_product",
+          "l2_norm"
         ]
       },
       "inference._types.OpenAITaskSettings": {
