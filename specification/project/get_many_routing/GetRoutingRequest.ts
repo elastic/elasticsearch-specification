@@ -24,7 +24,7 @@ import { MediaType } from '@_types/common'
  * Get named project routing expressions.
  *
  * @doc_id project-routing
- * @rest_spec_name project.get_many_routings
+ * @rest_spec_name project.get_many_routing
  * @availability serverless stability=experimental visibility=public
  * @cluster_privileges monitor
  * @doc_tag project
