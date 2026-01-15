@@ -14903,10 +14903,13 @@ export interface InferenceOpenAIServiceSettings {
   model_id: string
   organization_id?: string
   rate_limit?: InferenceRateLimitSetting
+  similarity?: InferenceOpenAISimilarityType
   url?: string
 }
 
 export type InferenceOpenAIServiceType = 'openai'
+
+export type InferenceOpenAISimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
 
 export interface InferenceOpenAITaskSettings {
   user?: string
