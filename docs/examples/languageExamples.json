@@ -156,23 +156,23 @@
   "specification/cat/pending_tasks/examples/request/CatPendingTasksRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.cat.pending_tasks(\n    v=\"trueh=insertOrder,timeInQueue,priority,source\",\n    format=\"json\",\n)"
+      "code": "resp = client.cat.pending_tasks(\n    v=\"true&h=insertOrder,timeInQueue,priority,source\",\n    format=\"json\",\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.cat.pendingTasks({\n  v: \"trueh=insertOrder,timeInQueue,priority,source\",\n  format: \"json\",\n});"
+      "code": "const response = await client.cat.pendingTasks({\n  v: \"true&h=insertOrder,timeInQueue,priority,source\",\n  format: \"json\",\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.cat.pending_tasks(\n  v: \"trueh=insertOrder,timeInQueue,priority,source\",\n  format: \"json\"\n)"
+      "code": "response = client.cat.pending_tasks(\n  v: \"true&h=insertOrder,timeInQueue,priority,source\",\n  format: \"json\"\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->cat()->pendingTasks([\n    \"v\" => \"trueh=insertOrder,timeInQueue,priority,source\",\n    \"format\" => \"json\",\n]);"
+      "code": "$resp = $client->cat()->pendingTasks([\n    \"v\" => \"true&h=insertOrder,timeInQueue,priority,source\",\n    \"format\" => \"json\",\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/pending_tasks?v=trueh=insertOrder,timeInQueue,priority,source&format=json\""
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/pending_tasks?v=true&h=insertOrder,timeInQueue,priority,source&format=json\""
     }
   ],
   "specification/cat/nodeattrs/examples/request/CatNodeAttributesRequestExample1.yaml": [
