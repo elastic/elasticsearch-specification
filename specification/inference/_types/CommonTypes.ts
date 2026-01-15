@@ -1931,11 +1931,21 @@ export class OpenAIServiceSettings {
    */
   rate_limit?: RateLimitSetting
   /**
+   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm. Defaults to `dot_product`.
+   */
+  similarity?: OpenAISimilarityType
+  /**
    * The URL endpoint to use for the requests.
    * It can be changed for testing purposes.
    * @server_default https://api.openai.com/v1/embeddings.
    */
   url?: string
+}
+
+export enum OpenAISimilarityType {
+  cosine,
+  dot_product,
+  l2_norm
 }
 
 export class OpenAITaskSettings {
