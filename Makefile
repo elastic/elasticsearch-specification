@@ -41,7 +41,7 @@ setup:	## Install dependencies for contrib target
 	@npm install --prefix typescript-generator
 	@npm install --prefix validator
 	@npm install --prefix specification
-	@npm install @redocly/cli
+	@npm install @redocly/cli bump-cli
 	@npm install --prefix docs/examples
 
 clean-dep:	## Clean npm dependencies
