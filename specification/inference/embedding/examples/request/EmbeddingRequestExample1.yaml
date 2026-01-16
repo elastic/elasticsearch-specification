@@ -1,0 +1,22 @@
+summary: Multimodal embedding task
+description: Run `POST _inference/embedding/my-multimodal-endpoint` to generate embeddings from the example text and image
+method_request: 'POST _inference/embedding/my-multimodal-endpoint'
+# type: "request"
+value: |-
+  {
+    "input": [
+        {
+            "content": {
+                "type": "image",
+                "format": "base64",
+                "value": "data:image/jpg;base64,..."
+            }
+        },
+        {
+            "content": {
+                "type": "text",
+                "value": "Some text to create an embedding"
+            }
+        }
+    ]
+  }
