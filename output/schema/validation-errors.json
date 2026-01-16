@@ -60,7 +60,6 @@
     "Dangling type 'inference._types:AmazonSageMakerElementType'",
     "Dangling type 'inference._types:AmazonSageMakerOpenAiTaskSettings'",
     "Dangling type 'inference._types:AmazonSageMakerSimilarity'",
-    "Dangling type 'inference._types:JinaAIElementType'",
     "Dangling type 'ingest._types:PipelineFailure'",
     "Dangling type 'ml._types:CountFunction'",
     "Dangling type 'ml._types:DistinctCountFunction'",

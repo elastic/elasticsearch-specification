@@ -1869,12 +1869,6 @@ export enum JinaAITextEmbeddingTask {
   search
 }
 
-export enum JinaAIElementType {
-  binary,
-  bit,
-  float
-}
-
 export class LlamaServiceSettings {
   /**
    * The URL endpoint of the Llama stack endpoint.
