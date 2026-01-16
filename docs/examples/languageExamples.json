@@ -184,23 +184,23 @@
   "specification/cat/pending_tasks/examples/request/CatPendingTasksRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.cat.pending_tasks(\n    v=\"trueh=insertOrder,timeInQueue,priority,source\",\n    format=\"json\",\n)"
+      "code": "resp = client.cat.pending_tasks(\n    v=True,\n    h=\"insertOrder,timeInQueue,priority,source\",\n    format=\"json\",\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.cat.pendingTasks({\n  v: \"trueh=insertOrder,timeInQueue,priority,source\",\n  format: \"json\",\n});"
+      "code": "const response = await client.cat.pendingTasks({\n  v: \"true\",\n  h: \"insertOrder,timeInQueue,priority,source\",\n  format: \"json\",\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.cat.pending_tasks(\n  v: \"trueh=insertOrder,timeInQueue,priority,source\",\n  format: \"json\"\n)"
+      "code": "response = client.cat.pending_tasks(\n  v: \"true\",\n  h: \"insertOrder,timeInQueue,priority,source\",\n  format: \"json\"\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->cat()->pendingTasks([\n    \"v\" => \"trueh=insertOrder,timeInQueue,priority,source\",\n    \"format\" => \"json\",\n]);"
+      "code": "$resp = $client->cat()->pendingTasks([\n    \"v\" => \"true\",\n    \"h\" => \"insertOrder,timeInQueue,priority,source\",\n    \"format\" => \"json\",\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/pending_tasks?v=trueh=insertOrder,timeInQueue,priority,source&format=json\""
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/pending_tasks?v=true&h=insertOrder,timeInQueue,priority,source&format=json\""
     },
     {
       "language": "Java",
@@ -18971,6 +18971,116 @@
     {
       "language": "Java",
       "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_openai_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"azureopenai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Api-Key\\\",\\\"resource_name\\\":\\\"Resource-name\\\",\\\"deployment_id\\\":\\\"Deployment-id\\\",\\\"api_version\\\":\\\"2024-02-01\\\"}\"))\n    )\n);\n"
+    }
+  ],
+  "specification/project/get_routing/examples/request/GetProjectRoutingRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.project.get_routing(\n    name=\"aws-us-only\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.project.getRouting({\n  name: \"aws-us-only\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.project.get_routing(\n  name: \"aws-us-only\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->project()->getRouting([\n    \"name\" => \"aws-us-only\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_project_routing/aws-us-only\""
+    }
+  ],
+  "specification/project/delete_routing/examples/request/DeleteProjectRoutingRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.project.delete_routing(\n    name=\"aws-us-only\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.project.deleteRouting({\n  name: \"aws-us-only\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.project.delete_routing(\n  name: \"aws-us-only\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->project()->deleteRouting([\n    \"name\" => \"aws-us-only\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_project_routing/aws-us-only\""
+    }
+  ],
+  "specification/project/create_many_routing/examples/request/CreateProjectRoutingRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.project.create_many_routing(\n    expressions={\n        \"aws-us-only\": {\n            \"expression\": \"_csp:aws AND _region:us*\"\n        },\n        \"aws-eu-only\": {\n            \"expression\": \"_csp:aws AND _region:eu*\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.project.createManyRouting({\n  expressions: {\n    \"aws-us-only\": {\n      expression: \"_csp:aws AND _region:us*\",\n    },\n    \"aws-eu-only\": {\n      expression: \"_csp:aws AND _region:eu*\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.project.create_many_routing(\n  body: {\n    \"aws-us-only\": {\n      \"expression\": \"_csp:aws AND _region:us*\"\n    },\n    \"aws-eu-only\": {\n      \"expression\": \"_csp:aws AND _region:eu*\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->project()->createManyRouting([\n    \"body\" => [\n        \"aws-us-only\" => [\n            \"expression\" => \"_csp:aws AND _region:us*\",\n        ],\n        \"aws-eu-only\" => [\n            \"expression\" => \"_csp:aws AND _region:eu*\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"aws-us-only\":{\"expression\":\"_csp:aws AND _region:us*\"},\"aws-eu-only\":{\"expression\":\"_csp:aws AND _region:eu*\"}}' \"$ELASTICSEARCH_URL/_project_routing/\""
+    }
+  ],
+  "specification/project/get_many_routing/examples/request/GetProjectRoutingRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.project.get_many_routing()"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.project.getManyRouting();"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.project.get_many_routing"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->project()->getManyRouting();"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_project_routing/\""
+    }
+  ],
+  "specification/project/create_routing/examples/request/CreateProjectRoutingRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.project.create_routing(\n    name=\"aws-us-only\",\n    expressions={\n        \"expression\": \"_csp:aws AND _region:us*\"\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.project.createRouting({\n  name: \"aws-us-only\",\n  expressions: {\n    expression: \"_csp:aws AND _region:us*\",\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.project.create_routing(\n  name: \"aws-us-only\",\n  body: {\n    \"expression\": \"_csp:aws AND _region:us*\"\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->project()->createRouting([\n    \"name\" => \"aws-us-only\",\n    \"body\" => [\n        \"expression\" => \"_csp:aws AND _region:us*\",\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"expression\":\"_csp:aws AND _region:us*\"}' \"$ELASTICSEARCH_URL/_project_routing/aws-us-only\""
     }
   ]
 }

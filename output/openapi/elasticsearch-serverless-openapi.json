@@ -23421,22 +23421,30 @@
         ]
       }
     },
-    "/_project/tags": {
+    "/_project_routing": {
       "get": {
         "tags": [
           "project"
         ],
-        "summary": "Get tags",
-        "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
-        "operationId": "project-tags",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/project.tags-project_routing"
-          }
-        ],
+        "summary": "Get named project routing expressions",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "operationId": "project-get-many-routing",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/project.tags-200"
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/project._types.NamedProjectRoutingExpressions"
+                },
+                "examples": {
+                  "GetProjectResponseExample1": {
+                    "summary": "Multiple expressions",
+                    "value": "{\n \"aws-us-only\": { \"expression\": \"_csp:aws AND _region:us*\" },\n \"aws-eu-only\": { \"expression\": \"_csp:aws AND _region:eu*\" }\n}"
+                  }
+                }
+              }
+            }
           }
         },
         "x-state": "Technical preview",
@@ -23447,21 +23455,45 @@
           }
         ]
       },
-      "post": {
+      "put": {
         "tags": [
           "project"
         ],
-        "summary": "Get tags",
-        "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
-        "operationId": "project-tags-1",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/project.tags-project_routing"
-          }
-        ],
+        "summary": "Create of update named project routing expressions",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "project-create-many-routing",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/project._types.NamedProjectRoutingExpressions"
+              },
+              "examples": {
+                "CreateProjectRoutingRequestExample1": {
+                  "summary": "Multiple expressions",
+                  "value": "{\n \"aws-us-only\": { \"expression\": \"_csp:aws AND _region:us*\" },\n \"aws-eu-only\": { \"expression\": \"_csp:aws AND _region:eu*\" }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/project.tags-200"
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "CreateProjectResponseExample1": {
+                    "summary": "Multiple expressions",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
           }
         },
         "x-state": "Technical preview",
@@ -23479,8 +23511,8 @@
           "project"
         ],
         "summary": "Get named project routing expressions",
-        "description": "Get named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
-        "operationId": "project-routing-get",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "operationId": "project-get-routing",
         "parameters": [
           {
             "in": "path",
@@ -23500,7 +23532,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
+                  "$ref": "#/components/schemas/project._types.ProjectRoutingExpression"
                 },
                 "examples": {
                   "GetProjectResponseExample1": {
@@ -23525,8 +23557,8 @@
           "project"
         ],
         "summary": "Create of update a single named project routing expression",
-        "description": "Create of update a single named project routing expression.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
-        "operationId": "project-routing-create",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "project-create-routing",
         "parameters": [
           {
             "in": "path",
@@ -23544,7 +23576,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
+                "$ref": "#/components/schemas/project._types.ProjectRoutingExpression"
               },
               "examples": {
                 "CreateProjectRoutingRequestExample1": {
@@ -23587,8 +23619,8 @@
           "project"
         ],
         "summary": "Delete named project routing expressions",
-        "description": "Delete named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
-        "operationId": "project-routing-delete",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "project-delete-routing",
         "parameters": [
           {
             "in": "path",
@@ -23628,30 +23660,22 @@
         ]
       }
     },
-    "/_project_routing": {
+    "/_project/tags": {
       "get": {
         "tags": [
           "project"
         ],
-        "summary": "Get named project routing expressions",
-        "description": "Get named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
-        "operationId": "project-routing-get-many",
+        "summary": "Get tags",
+        "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "operationId": "project-tags",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/project.tags-project_routing"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/project_routing._types.NamedProjectRoutingExpressions"
-                },
-                "examples": {
-                  "GetProjectResponseExample1": {
-                    "summary": "Multiple expressions",
-                    "value": "{\n \"aws-us-only\": { \"expression\": \"_csp:aws AND _region:us*\" },\n \"aws-eu-only\": { \"expression\": \"_csp:aws AND _region:eu*\" }\n}"
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/project.tags-200"
           }
         },
         "x-state": "Technical preview",
@@ -23662,45 +23686,21 @@
           }
         ]
       },
-      "put": {
+      "post": {
         "tags": [
           "project"
         ],
-        "summary": "Create of update named project routing expressions",
-        "description": "Create or update named project routing expressions.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
-        "operationId": "project-routing-create-many",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/project_routing._types.NamedProjectRoutingExpressions"
-              },
-              "examples": {
-                "CreateProjectRoutingRequestExample1": {
-                  "summary": "Multiple expressions",
-                  "value": "{\n \"aws-us-only\": { \"expression\": \"_csp:aws AND _region:us*\" },\n \"aws-eu-only\": { \"expression\": \"_csp:aws AND _region:eu*\" }\n}"
-                }
-              }
-            }
-          },
-          "required": true
-        },
+        "summary": "Get tags",
+        "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "operationId": "project-tags-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/project.tags-project_routing"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
-                },
-                "examples": {
-                  "CreateProjectResponseExample1": {
-                    "summary": "Multiple expressions",
-                    "value": "{\n  \"acknowledged\": true\n}"
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/project.tags-200"
           }
         },
         "x-state": "Technical preview",
@@ -69835,6 +69835,14 @@
               }
             ]
           },
+          "similarity": {
+            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm. Defaults to `dot_product`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.OpenAISimilarityType"
+              }
+            ]
+          },
           "url": {
             "description": "The URL endpoint to use for the requests.\nIt can be changed for testing purposes.",
             "default": "https://api.openai.com/v1/embeddings.",
@@ -69844,6 +69852,14 @@
         "required": [
           "api_key",
           "model_id"
+        ]
+      },
+      "inference._types.OpenAISimilarityType": {
+        "type": "string",
+        "enum": [
+          "cosine",
+          "dot_product",
+          "l2_norm"
         ]
       },
       "inference._types.OpenAITaskSettings": {
@@ -80362,6 +80378,30 @@
           "position"
         ]
       },
+      "project._types.NamedProjectRoutingExpressions": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/project._types.ProjectRoutingExpression"
+        }
+      },
+      "project._types.ProjectRoutingExpression": {
+        "type": "object",
+        "properties": {
+          "expression": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/project._types.RoutingExpression"
+              }
+            ]
+          }
+        },
+        "required": [
+          "expression"
+        ]
+      },
+      "project._types.RoutingExpression": {
+        "type": "string"
+      },
       "project.tags.ProjectTags": {
         "type": "object",
         "properties": {
@@ -80406,30 +80446,6 @@
           "_type",
           "_organisation"
         ]
-      },
-      "project_routing._types.ProjectRoutingExpression": {
-        "type": "object",
-        "properties": {
-          "expression": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/project_routing._types.RoutingExpression"
-              }
-            ]
-          }
-        },
-        "required": [
-          "expression"
-        ]
-      },
-      "project_routing._types.RoutingExpression": {
-        "type": "string"
-      },
-      "project_routing._types.NamedProjectRoutingExpressions": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/project_routing._types.ProjectRoutingExpression"
-        }
       },
       "query_rules._types.QueryRule": {
         "type": "object",

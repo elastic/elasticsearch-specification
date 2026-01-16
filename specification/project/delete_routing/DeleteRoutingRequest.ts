@@ -19,14 +19,12 @@
 
 import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
-import { NamedProjectRoutingExpressions } from '../_types/RoutingExpression'
 
 /**
- * Create of update named project routing expressions.
+ * Delete named project routing expressions.
  *
- * Create or update named project routing expressions.
- * @doc_id project-routing
- * @rest_spec_name project_routing.create_many
+ * @doc_id project-delete-routing
+ * @rest_spec_name project.delete_routing
  * @availability serverless stability=experimental visibility=public
  * @cluster_privileges manage
  * @doc_tag project
@@ -34,13 +32,15 @@ import { NamedProjectRoutingExpressions } from '../_types/RoutingExpression'
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '/_project_routing'
-      methods: ['PUT']
+      path: '/_project_routing/{name}'
+      methods: ['DELETE']
     }
   ]
   response_media_type: MediaType.Json
-  /**
-   * @codegen_name expressions
-   */
-  body: NamedProjectRoutingExpressions
+  path_parts: {
+    /**
+     * The name of project routing expression
+     */
+    name: string
+  }
 }
