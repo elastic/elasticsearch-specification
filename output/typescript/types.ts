@@ -15010,7 +15010,6 @@ export interface InferenceSparseEmbeddingInferenceResult {
 }
 
 export interface InferenceSparseEmbeddingResult {
-  is_truncated: boolean
   embedding: InferenceSparseVector
 }
 

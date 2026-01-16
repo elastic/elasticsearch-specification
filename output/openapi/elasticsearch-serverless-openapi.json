@@ -15688,7 +15688,7 @@
                   "SparseEmbeddingResponseExample1": {
                     "summary": "Sparse embedding task",
                     "description": "An abbreviated response from `POST _inference/sparse_embedding/my-elser-model`.\n",
-                    "value": "{\n  \"sparse_embedding\": [\n    {\n      \"is_truncated\": false,\n      \"embedding\": {\n        \"port\": 2.1259406,\n        \"sky\": 1.7073475,\n        \"color\": 1.6922266,\n        \"dead\": 1.6247464,\n        \"television\": 1.3525393,\n        \"above\": 1.2425821,\n        \"tuned\": 1.1440028,\n        \"colors\": 1.1218185,\n        \"tv\": 1.0111054,\n        \"ports\": 1.0067928,\n        \"poem\": 1.0042328,\n        \"channel\": 0.99471164,\n        \"tune\": 0.96235967,\n        \"scene\": 0.9020516\n      }\n    }\n  ]\n}"
+                    "value": "{\n  \"sparse_embedding\": [\n    {\n      \"port\": 2.1259406,\n      \"sky\": 1.7073475,\n      \"color\": 1.6922266,\n      \"dead\": 1.6247464,\n      \"television\": 1.3525393,\n      \"above\": 1.2425821,\n      \"tuned\": 1.1440028,\n      \"colors\": 1.1218185,\n      \"tv\": 1.0111054,\n      \"ports\": 1.0067928,\n      \"poem\": 1.0042328,\n      \"channel\": 0.99471164,\n      \"tune\": 0.96235967,\n      \"scene\": 0.9020516\n    }\n  ]\n}"
                   }
                 }
               }
@@ -67424,10 +67424,6 @@
       "inference._types.SparseEmbeddingResult": {
         "type": "object",
         "properties": {
-          "is_truncated": {
-            "description": "Indicates if the text input was truncated in the request sent to the service",
-            "type": "boolean"
-          },
           "embedding": {
             "allOf": [
               {
@@ -67437,7 +67433,6 @@
           }
         },
         "required": [
-          "is_truncated",
           "embedding"
         ]
       },
