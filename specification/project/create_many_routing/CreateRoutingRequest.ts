@@ -24,7 +24,7 @@ import { NamedProjectRoutingExpressions } from '../_types/RoutingExpression'
 /**
  * Create of update named project routing expressions.
  *
- * @doc_id project-routing
+ * @doc_id project-create-many-routing
  * @rest_spec_name project.create_many_routing
  * @availability serverless stability=experimental visibility=public
  * @cluster_privileges manage

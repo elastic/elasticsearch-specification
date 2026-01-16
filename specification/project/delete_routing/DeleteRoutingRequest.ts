@@ -23,7 +23,7 @@ import { MediaType } from '@_types/common'
 /**
  * Delete named project routing expressions.
  *
- * @doc_id project-routing
+ * @doc_id project-delete-routing
  * @rest_spec_name project.delete_routing
  * @availability serverless stability=experimental visibility=public
  * @cluster_privileges manage
