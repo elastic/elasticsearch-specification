@@ -184,23 +184,23 @@
   "specification/cat/pending_tasks/examples/request/CatPendingTasksRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.cat.pending_tasks(\n    v=\"trueh=insertOrder,timeInQueue,priority,source\",\n    format=\"json\",\n)"
+      "code": "resp = client.cat.pending_tasks(\n    v=\"true&h=insertOrder,timeInQueue,priority,source\",\n    format=\"json\",\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.cat.pendingTasks({\n  v: \"trueh=insertOrder,timeInQueue,priority,source\",\n  format: \"json\",\n});"
+      "code": "const response = await client.cat.pendingTasks({\n  v: \"true&h=insertOrder,timeInQueue,priority,source\",\n  format: \"json\",\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.cat.pending_tasks(\n  v: \"trueh=insertOrder,timeInQueue,priority,source\",\n  format: \"json\"\n)"
+      "code": "response = client.cat.pending_tasks(\n  v: \"true&h=insertOrder,timeInQueue,priority,source\",\n  format: \"json\"\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->cat()->pendingTasks([\n    \"v\" => \"trueh=insertOrder,timeInQueue,priority,source\",\n    \"format\" => \"json\",\n]);"
+      "code": "$resp = $client->cat()->pendingTasks([\n    \"v\" => \"true&h=insertOrder,timeInQueue,priority,source\",\n    \"format\" => \"json\",\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/pending_tasks?v=trueh=insertOrder,timeInQueue,priority,source&format=json\""
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/pending_tasks?v=true&h=insertOrder,timeInQueue,priority,source&format=json\""
     },
     {
       "language": "Java",
@@ -4066,7 +4066,7 @@
     },
     {
       "language": "curl",
-      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{},{\"id\":\"my-search-template\",\"params\":{\"query_string\":\"hello world\",\"from\":0,\"size\":10}},{},{\"id\":\"my-other-search-template\",\"params\":{\"query_type\":\"match_all\"}}]' \"$ELASTICSEARCH_URL/my-index/_msearch/template\""
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/x-ndjson\" -d $'{}\\n{\"id\":\"my-search-template\",\"params\":{\"query_string\":\"hello world\",\"from\":0,\"size\":10}}\\n{}\\n{\"id\":\"my-other-search-template\",\"params\":{\"query_type\":\"match_all\"}}\\n' \"$ELASTICSEARCH_URL/my-index/_msearch/template\""
     }
   ],
   "specification/_global/terms_enum/examples/request/TermsEnumRequestExample1.yaml": [
@@ -4114,7 +4114,7 @@
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{\"index\":{\"_index\":\"my_index\",\"_id\":\"1\",\"dynamic_templates\":{\"work_location\":\"geo_point\"}}},{\"field\":\"value1\",\"work_location\":\"41.12,-71.34\",\"raw_location\":\"41.12,-71.34\"},{\"create\":{\"_index\":\"my_index\",\"_id\":\"2\",\"dynamic_templates\":{\"home_location\":\"geo_point\"}}},{\"field\":\"value2\",\"home_location\":\"41.12,-71.34\"}]' \"$ELASTICSEARCH_URL/_bulk\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/x-ndjson\" -d $'{\"index\":{\"_index\":\"my_index\",\"_id\":\"1\",\"dynamic_templates\":{\"work_location\":\"geo_point\"}}}\\n{\"field\":\"value1\",\"work_location\":\"41.12,-71.34\",\"raw_location\":\"41.12,-71.34\"}\\n{\"create\":{\"_index\":\"my_index\",\"_id\":\"2\",\"dynamic_templates\":{\"home_location\":\"geo_point\"}}}\\n{\"field\":\"value2\",\"home_location\":\"41.12,-71.34\"}\\n' \"$ELASTICSEARCH_URL/_bulk\""
     }
   ],
   "specification/_global/bulk/examples/request/BulkRequestExample3.yaml": [
@@ -4136,7 +4136,7 @@
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{\"update\":{\"_id\":\"5\",\"_index\":\"index1\"}},{\"doc\":{\"my_field\":\"foo\"}},{\"update\":{\"_id\":\"6\",\"_index\":\"index1\"}},{\"doc\":{\"my_field\":\"foo\"}},{\"create\":{\"_id\":\"7\",\"_index\":\"index1\"}},{\"my_field\":\"foo\"}]' \"$ELASTICSEARCH_URL/_bulk\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/x-ndjson\" -d $'{\"update\":{\"_id\":\"5\",\"_index\":\"index1\"}}\\n{\"doc\":{\"my_field\":\"foo\"}}\\n{\"update\":{\"_id\":\"6\",\"_index\":\"index1\"}}\\n{\"doc\":{\"my_field\":\"foo\"}}\\n{\"create\":{\"_id\":\"7\",\"_index\":\"index1\"}}\\n{\"my_field\":\"foo\"}\\n' \"$ELASTICSEARCH_URL/_bulk\""
     }
   ],
   "specification/_global/bulk/examples/request/BulkRequestExample2.yaml": [
@@ -4158,7 +4158,7 @@
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{\"update\":{\"_id\":\"1\",\"_index\":\"index1\",\"retry_on_conflict\":3}},{\"doc\":{\"field\":\"value\"}},{\"update\":{\"_id\":\"0\",\"_index\":\"index1\",\"retry_on_conflict\":3}},{\"script\":{\"source\":\"ctx._source.counter += params.param1\",\"lang\":\"painless\",\"params\":{\"param1\":1}},\"upsert\":{\"counter\":1}},{\"update\":{\"_id\":\"2\",\"_index\":\"index1\",\"retry_on_conflict\":3}},{\"doc\":{\"field\":\"value\"},\"doc_as_upsert\":true},{\"update\":{\"_id\":\"3\",\"_index\":\"index1\",\"_source\":true}},{\"doc\":{\"field\":\"value\"}},{\"update\":{\"_id\":\"4\",\"_index\":\"index1\"}},{\"doc\":{\"field\":\"value\"},\"_source\":true}]' \"$ELASTICSEARCH_URL/_bulk\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/x-ndjson\" -d $'{\"update\":{\"_id\":\"1\",\"_index\":\"index1\",\"retry_on_conflict\":3}}\\n{\"doc\":{\"field\":\"value\"}}\\n{\"update\":{\"_id\":\"0\",\"_index\":\"index1\",\"retry_on_conflict\":3}}\\n{\"script\":{\"source\":\"ctx._source.counter += params.param1\",\"lang\":\"painless\",\"params\":{\"param1\":1}},\"upsert\":{\"counter\":1}}\\n{\"update\":{\"_id\":\"2\",\"_index\":\"index1\",\"retry_on_conflict\":3}}\\n{\"doc\":{\"field\":\"value\"},\"doc_as_upsert\":true}\\n{\"update\":{\"_id\":\"3\",\"_index\":\"index1\",\"_source\":true}}\\n{\"doc\":{\"field\":\"value\"}}\\n{\"update\":{\"_id\":\"4\",\"_index\":\"index1\"}}\\n{\"doc\":{\"field\":\"value\"},\"_source\":true}\\n' \"$ELASTICSEARCH_URL/_bulk\""
     }
   ],
   "specification/_global/bulk/examples/request/BulkRequestExample1.yaml": [
@@ -4180,7 +4180,7 @@
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{\"index\":{\"_index\":\"test\",\"_id\":\"1\"}},{\"field1\":\"value1\"},{\"delete\":{\"_index\":\"test\",\"_id\":\"2\"}},{\"create\":{\"_index\":\"test\",\"_id\":\"3\"}},{\"field1\":\"value3\"},{\"update\":{\"_id\":\"1\",\"_index\":\"test\"}},{\"doc\":{\"field2\":\"value2\"}}]' \"$ELASTICSEARCH_URL/_bulk\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/x-ndjson\" -d $'{\"index\":{\"_index\":\"test\",\"_id\":\"1\"}}\\n{\"field1\":\"value1\"}\\n{\"delete\":{\"_index\":\"test\",\"_id\":\"2\"}}\\n{\"create\":{\"_index\":\"test\",\"_id\":\"3\"}}\\n{\"field1\":\"value3\"}\\n{\"update\":{\"_id\":\"1\",\"_index\":\"test\"}}\\n{\"doc\":{\"field2\":\"value2\"}}\\n' \"$ELASTICSEARCH_URL/_bulk\""
     }
   ],
   "specification/_global/explain/examples/request/ExplainRequestExample1.yaml": [
@@ -5888,7 +5888,7 @@
     },
     {
       "language": "curl",
-      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{},{\"query\":{\"match\":{\"message\":\"this is a test\"}}},{\"index\":\"my-index-000002\"},{\"query\":{\"match_all\":{}}}]' \"$ELASTICSEARCH_URL/my-index-000001/_msearch\""
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/x-ndjson\" -d $'{}\\n{\"query\":{\"match\":{\"message\":\"this is a test\"}}}\\n{\"index\":\"my-index-000002\"}\\n{\"query\":{\"match_all\":{}}}\\n' \"$ELASTICSEARCH_URL/my-index-000001/_msearch\""
     }
   ],
   "specification/_global/delete_script/examples/request/DeleteScriptRequestExample1.yaml": [
@@ -12380,7 +12380,7 @@
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '[{\"name\":\"Leviathan Wakes\",\"author\":\"James S.A. Corey\",\"release_date\":\"2011-06-02\",\"page_count\":561},{\"name\":\"Hyperion\",\"author\":\"Dan Simmons\",\"release_date\":\"1989-05-26\",\"page_count\":482},{\"name\":\"Dune\",\"author\":\"Frank Herbert\",\"release_date\":\"1965-06-01\",\"page_count\":604},{\"name\":\"Dune Messiah\",\"author\":\"Frank Herbert\",\"release_date\":\"1969-10-15\",\"page_count\":331},{\"name\":\"Children of Dune\",\"author\":\"Frank Herbert\",\"release_date\":\"1976-04-21\",\"page_count\":408},{\"name\":\"God Emperor of Dune\",\"author\":\"Frank Herbert\",\"release_date\":\"1981-05-28\",\"page_count\":454},{\"name\":\"Consider Phlebas\",\"author\":\"Iain M. Banks\",\"release_date\":\"1987-04-23\",\"page_count\":471},{\"name\":\"Pandora'\"'\"'s Star\",\"author\":\"Peter F. Hamilton\",\"release_date\":\"2004-03-02\",\"page_count\":768},{\"name\":\"Revelation Space\",\"author\":\"Alastair Reynolds\",\"release_date\":\"2000-03-15\",\"page_count\":585},{\"name\":\"A Fire Upon the Deep\",\"author\":\"Vernor Vinge\",\"release_date\":\"1992-06-01\",\"page_count\":613},{\"name\":\"Ender'\"'\"'s Game\",\"author\":\"Orson Scott Card\",\"release_date\":\"1985-06-01\",\"page_count\":324},{\"name\":\"1984\",\"author\":\"George Orwell\",\"release_date\":\"1985-06-01\",\"page_count\":328},{\"name\":\"Fahrenheit 451\",\"author\":\"Ray Bradbury\",\"release_date\":\"1953-10-15\",\"page_count\":227},{\"name\":\"Brave New World\",\"author\":\"Aldous Huxley\",\"release_date\":\"1932-06-01\",\"page_count\":268},{\"name\":\"Foundation\",\"author\":\"Isaac Asimov\",\"release_date\":\"1951-06-01\",\"page_count\":224},{\"name\":\"The Giver\",\"author\":\"Lois Lowry\",\"release_date\":\"1993-04-26\",\"page_count\":208},{\"name\":\"Slaughterhouse-Five\",\"author\":\"Kurt Vonnegut\",\"release_date\":\"1969-06-01\",\"page_count\":275},{\"name\":\"The Hitchhiker'\"'\"'s Guide to the Galaxy\",\"author\":\"Douglas Adams\",\"release_date\":\"1979-10-12\",\"page_count\":180},{\"name\":\"Snow Crash\",\"author\":\"Neal Stephenson\",\"release_date\":\"1992-06-01\",\"page_count\":470},{\"name\":\"Neuromancer\",\"author\":\"William Gibson\",\"release_date\":\"1984-07-01\",\"page_count\":271},{\"name\":\"The Handmaid'\"'\"'s Tale\",\"author\":\"Margaret Atwood\",\"release_date\":\"1985-06-01\",\"page_count\":311},{\"name\":\"Starship Troopers\",\"author\":\"Robert A. Heinlein\",\"release_date\":\"1959-12-01\",\"page_count\":335},{\"name\":\"The Left Hand of Darkness\",\"author\":\"Ursula K. Le Guin\",\"release_date\":\"1969-06-01\",\"page_count\":304},{\"name\":\"The Moon is a Harsh Mistress\",\"author\":\"Robert A. Heinlein\",\"release_date\":\"1966-04-01\",\"page_count\":288}]' \"$ELASTICSEARCH_URL/_text_structure/find_structure\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/x-ndjson\" -d $'{\"name\":\"Leviathan Wakes\",\"author\":\"James S.A. Corey\",\"release_date\":\"2011-06-02\",\"page_count\":561}\\n{\"name\":\"Hyperion\",\"author\":\"Dan Simmons\",\"release_date\":\"1989-05-26\",\"page_count\":482}\\n{\"name\":\"Dune\",\"author\":\"Frank Herbert\",\"release_date\":\"1965-06-01\",\"page_count\":604}\\n{\"name\":\"Dune Messiah\",\"author\":\"Frank Herbert\",\"release_date\":\"1969-10-15\",\"page_count\":331}\\n{\"name\":\"Children of Dune\",\"author\":\"Frank Herbert\",\"release_date\":\"1976-04-21\",\"page_count\":408}\\n{\"name\":\"God Emperor of Dune\",\"author\":\"Frank Herbert\",\"release_date\":\"1981-05-28\",\"page_count\":454}\\n{\"name\":\"Consider Phlebas\",\"author\":\"Iain M. Banks\",\"release_date\":\"1987-04-23\",\"page_count\":471}\\n{\"name\":\"Pandora'\"'\"$'s Star\",\"author\":\"Peter F. Hamilton\",\"release_date\":\"2004-03-02\",\"page_count\":768}\\n{\"name\":\"Revelation Space\",\"author\":\"Alastair Reynolds\",\"release_date\":\"2000-03-15\",\"page_count\":585}\\n{\"name\":\"A Fire Upon the Deep\",\"author\":\"Vernor Vinge\",\"release_date\":\"1992-06-01\",\"page_count\":613}\\n{\"name\":\"Ender'\"'\"$'s Game\",\"author\":\"Orson Scott Card\",\"release_date\":\"1985-06-01\",\"page_count\":324}\\n{\"name\":\"1984\",\"author\":\"George Orwell\",\"release_date\":\"1985-06-01\",\"page_count\":328}\\n{\"name\":\"Fahrenheit 451\",\"author\":\"Ray Bradbury\",\"release_date\":\"1953-10-15\",\"page_count\":227}\\n{\"name\":\"Brave New World\",\"author\":\"Aldous Huxley\",\"release_date\":\"1932-06-01\",\"page_count\":268}\\n{\"name\":\"Foundation\",\"author\":\"Isaac Asimov\",\"release_date\":\"1951-06-01\",\"page_count\":224}\\n{\"name\":\"The Giver\",\"author\":\"Lois Lowry\",\"release_date\":\"1993-04-26\",\"page_count\":208}\\n{\"name\":\"Slaughterhouse-Five\",\"author\":\"Kurt Vonnegut\",\"release_date\":\"1969-06-01\",\"page_count\":275}\\n{\"name\":\"The Hitchhiker'\"'\"$'s Guide to the Galaxy\",\"author\":\"Douglas Adams\",\"release_date\":\"1979-10-12\",\"page_count\":180}\\n{\"name\":\"Snow Crash\",\"author\":\"Neal Stephenson\",\"release_date\":\"1992-06-01\",\"page_count\":470}\\n{\"name\":\"Neuromancer\",\"author\":\"William Gibson\",\"release_date\":\"1984-07-01\",\"page_count\":271}\\n{\"name\":\"The Handmaid'\"'\"$'s Tale\",\"author\":\"Margaret Atwood\",\"release_date\":\"1985-06-01\",\"page_count\":311}\\n{\"name\":\"Starship Troopers\",\"author\":\"Robert A. Heinlein\",\"release_date\":\"1959-12-01\",\"page_count\":335}\\n{\"name\":\"The Left Hand of Darkness\",\"author\":\"Ursula K. Le Guin\",\"release_date\":\"1969-06-01\",\"page_count\":304}\\n{\"name\":\"The Moon is a Harsh Mistress\",\"author\":\"Robert A. Heinlein\",\"release_date\":\"1966-04-01\",\"page_count\":288}\\n' \"$ELASTICSEARCH_URL/_text_structure/find_structure\""
     }
   ],
   "specification/text_structure/find_field_structure/examples/request/FindFieldStructureRequestExample1.yaml": [
@@ -17214,7 +17214,7 @@
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"custom-embeddings\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"https://api.openai.com/v1/embeddings\",\n            \"headers\" => [\n                \"Authorization\" => \"Bearer ${api_key}\",\n                \"Content-Type\" => \"application/json;charset=utf-8\",\n            ],\n            \"request\" => \"{\\\"input\\\": ${input}, \\\"model\\\": \\\"text-embedding-3-small\\\"}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"text_embeddings\" => \"$.data[*].embedding[*]\",\n                ],\n            ],\n        ],\n    ],\n]);"
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"custom-embeddings\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"https://api.openai.com/v1/embeddings\",\n            \"headers\" => [\n                \"Authorization\" => \"Bearer \\${api_key}\",\n                \"Content-Type\" => \"application/json;charset=utf-8\",\n            ],\n            \"request\" => \"{\\\"input\\\": \\${input}, \\\"model\\\": \\\"text-embedding-3-small\\\"}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"text_embeddings\" => \"$.data[*].embedding[*]\",\n                ],\n            ],\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
@@ -17240,7 +17240,7 @@
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"custom-text-embedding\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"https://api.cohere.com/v2/embed\",\n            \"headers\" => [\n                \"Authorization\" => \"bearer ${api_key}\",\n                \"Content-Type\" => \"application/json\",\n            ],\n            \"request\" => \"{\\\"texts\\\": ${input}, \\\"model\\\": \\\"embed-v4.0\\\", \\\"input_type\\\": ${input_type}}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"text_embeddings\" => \"$.embeddings.float[*]\",\n                ],\n            ],\n            \"input_type\" => [\n                \"translation\" => [\n                    \"ingest\" => \"search_document\",\n                    \"search\" => \"search_query\",\n                ],\n                \"default\" => \"search_document\",\n            ],\n        ],\n    ],\n]);"
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"custom-text-embedding\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"https://api.cohere.com/v2/embed\",\n            \"headers\" => [\n                \"Authorization\" => \"bearer \\${api_key}\",\n                \"Content-Type\" => \"application/json\",\n            ],\n            \"request\" => \"{\\\"texts\\\": \\${input}, \\\"model\\\": \\\"embed-v4.0\\\", \\\"input_type\\\": \\${input_type}}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"text_embeddings\" => \"$.embeddings.float[*]\",\n                ],\n            ],\n            \"input_type\" => [\n                \"translation\" => [\n                    \"ingest\" => \"search_document\",\n                    \"search\" => \"search_query\",\n                ],\n                \"default\" => \"search_document\",\n            ],\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
@@ -17266,7 +17266,7 @@
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"custom-rerank\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"https://api.cohere.com/v2/rerank\",\n            \"headers\" => [\n                \"Authorization\" => \"bearer ${api_key}\",\n                \"Content-Type\" => \"application/json\",\n            ],\n            \"request\" => \"{\\\"documents\\\": ${input}, \\\"query\\\": ${query}, \\\"model\\\": \\\"rerank-v3.5\\\"}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"reranked_index\" => \"$.results[*].index\",\n                    \"relevance_score\" => \"$.results[*].relevance_score\",\n                ],\n            ],\n        ],\n    ],\n]);"
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"custom-rerank\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"https://api.cohere.com/v2/rerank\",\n            \"headers\" => [\n                \"Authorization\" => \"bearer \\${api_key}\",\n                \"Content-Type\" => \"application/json\",\n            ],\n            \"request\" => \"{\\\"documents\\\": \\${input}, \\\"query\\\": \\${query}, \\\"model\\\": \\\"rerank-v3.5\\\"}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"reranked_index\" => \"$.results[*].index\",\n                    \"relevance_score\" => \"$.results[*].relevance_score\",\n                ],\n            ],\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
@@ -17292,7 +17292,7 @@
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"custom-text-embedding-hf\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"<dedicated inference endpoint on HF>/v1/embeddings\",\n            \"headers\" => [\n                \"Authorization\" => \"Bearer ${api_key}\",\n                \"Content-Type\" => \"application/json\",\n            ],\n            \"request\" => \"{\\\"input\\\": ${input}}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"text_embeddings\" => \"$.data[*].embedding[*]\",\n                ],\n            ],\n        ],\n    ],\n]);"
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"custom-text-embedding-hf\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"<dedicated inference endpoint on HF>/v1/embeddings\",\n            \"headers\" => [\n                \"Authorization\" => \"Bearer \\${api_key}\",\n                \"Content-Type\" => \"application/json\",\n            ],\n            \"request\" => \"{\\\"input\\\": \\${input}}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"text_embeddings\" => \"$.data[*].embedding[*]\",\n                ],\n            ],\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
@@ -17318,7 +17318,7 @@
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"custom-rerank-jina\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"https://api.jina.ai/v1/rerank\",\n            \"headers\" => [\n                \"Content-Type\" => \"application/json\",\n                \"Authorization\" => \"Bearer ${api_key}\",\n            ],\n            \"request\" => \"{\\\"model\\\": \\\"jina-reranker-v2-base-multilingual\\\",\\\"query\\\": ${query},\\\"documents\\\":${input}}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"relevance_score\" => \"$.results[*].relevance_score\",\n                    \"reranked_index\" => \"$.results[*].index\",\n                ],\n            ],\n        ],\n    ],\n]);"
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"custom-rerank-jina\",\n    \"body\" => [\n        \"service\" => \"custom\",\n        \"service_settings\" => [\n            \"secret_parameters\" => [\n                \"api_key\" => \"<api key>\",\n            ],\n            \"url\" => \"https://api.jina.ai/v1/rerank\",\n            \"headers\" => [\n                \"Content-Type\" => \"application/json\",\n                \"Authorization\" => \"Bearer \\${api_key}\",\n            ],\n            \"request\" => \"{\\\"model\\\": \\\"jina-reranker-v2-base-multilingual\\\",\\\"query\\\": \\${query},\\\"documents\\\":\\${input}}\",\n            \"response\" => [\n                \"json_parser\" => [\n                    \"relevance_score\" => \"$.results[*].relevance_score\",\n                    \"reranked_index\" => \"$.results[*].index\",\n                ],\n            ],\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
@@ -18513,6 +18513,376 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/circuit_breaker?v=true&format=json\""
+    }
+  ],
+  "specification/project_routing/delete/examples/request/DeleteProjectRoutingRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.project_routing.delete(\n    name=\"aws-us-only\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.projectRouting.delete({\n  name: \"aws-us-only\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.project_routing.delete(\n  name: \"aws-us-only\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->projectRouting()->delete([\n    \"name\" => \"aws-us-only\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_project_routing/aws-us-only\""
+    }
+  ],
+  "specification/project_routing/create_many/examples/request/CreateProjectRoutingRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.project_routing.create_many(\n    expressions={\n        \"aws-us-only\": {\n            \"expression\": \"_csp:aws AND _region:us*\"\n        },\n        \"aws-eu-only\": {\n            \"expression\": \"_csp:aws AND _region:eu*\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.projectRouting.createMany({\n  expressions: {\n    \"aws-us-only\": {\n      expression: \"_csp:aws AND _region:us*\",\n    },\n    \"aws-eu-only\": {\n      expression: \"_csp:aws AND _region:eu*\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.project_routing.create_many(\n  body: {\n    \"aws-us-only\": {\n      \"expression\": \"_csp:aws AND _region:us*\"\n    },\n    \"aws-eu-only\": {\n      \"expression\": \"_csp:aws AND _region:eu*\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->projectRouting()->createMany([\n    \"body\" => [\n        \"aws-us-only\" => [\n            \"expression\" => \"_csp:aws AND _region:us*\",\n        ],\n        \"aws-eu-only\" => [\n            \"expression\" => \"_csp:aws AND _region:eu*\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"aws-us-only\":{\"expression\":\"_csp:aws AND _region:us*\"},\"aws-eu-only\":{\"expression\":\"_csp:aws AND _region:eu*\"}}' \"$ELASTICSEARCH_URL/_project_routing/\""
+    }
+  ],
+  "specification/project_routing/get/examples/request/GetProjectRoutingRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.project_routing.get(\n    name=\"aws-us-only\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.projectRouting.get({\n  name: \"aws-us-only\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.project_routing.get(\n  name: \"aws-us-only\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->projectRouting()->get([\n    \"name\" => \"aws-us-only\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_project_routing/aws-us-only\""
+    }
+  ],
+  "specification/project_routing/get_many/examples/request/GetProjectRoutingRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.project_routing.get_many()"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.projectRouting.getMany();"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.project_routing.get_many"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->projectRouting()->getMany();"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_project_routing/\""
+    }
+  ],
+  "specification/project_routing/create/examples/request/CreateProjectRoutingRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.project_routing.create(\n    name=\"aws-us-only\",\n    expressions={\n        \"expression\": \"_csp:aws AND _region:us*\"\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.projectRouting.create({\n  name: \"aws-us-only\",\n  expressions: {\n    expression: \"_csp:aws AND _region:us*\",\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.project_routing.create(\n  name: \"aws-us-only\",\n  body: {\n    \"expression\": \"_csp:aws AND _region:us*\"\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->projectRouting()->create([\n    \"name\" => \"aws-us-only\",\n    \"body\" => [\n        \"expression\" => \"_csp:aws AND _region:us*\",\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"expression\":\"_csp:aws AND _region:us*\"}' \"$ELASTICSEARCH_URL/_project_routing/aws-us-only\""
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"nvidia-completion\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"url\": \"nvidia-completion-url\",\n            \"api_key\": \"nvidia-completion-token\",\n            \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"nvidia-completion\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      url: \"nvidia-completion-url\",\n      api_key: \"nvidia-completion-token\",\n      model_id: \"microsoft/phi-3-mini-128k-instruct\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"nvidia-completion\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"url\": \"nvidia-completion-url\",\n      \"api_key\": \"nvidia-completion-token\",\n      \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"nvidia-completion\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"url\" => \"nvidia-completion-url\",\n            \"api_key\" => \"nvidia-completion-token\",\n            \"model_id\" => \"microsoft/phi-3-mini-128k-instruct\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"url\":\"nvidia-completion-url\",\"api_key\":\"nvidia-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}}' \"$ELASTICSEARCH_URL/_inference/completion/nvidia-completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"nvidia-completion-url\\\",\\\"api_key\\\":\\\"nvidia-completion-token\\\",\\\"model_id\\\":\\\"microsoft/phi-3-mini-128k-instruct\\\"}\"))\n    )\n);\n"
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"nvidia-text-embedding\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n            \"api_key\": \"nvidia-text-embeddings-token\"\n        },\n        \"task_settings\": {\n            \"input_type\": \"ingest\",\n            \"truncate\": \"start\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"nvidia-text-embedding\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      model_id: \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n      api_key: \"nvidia-text-embeddings-token\",\n    },\n    task_settings: {\n      input_type: \"ingest\",\n      truncate: \"start\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"nvidia-text-embedding\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n      \"api_key\": \"nvidia-text-embeddings-token\"\n    },\n    \"task_settings\": {\n      \"input_type\": \"ingest\",\n      \"truncate\": \"start\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"nvidia-text-embedding\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"model_id\" => \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n            \"api_key\" => \"nvidia-text-embeddings-token\",\n        ],\n        \"task_settings\" => [\n            \"input_type\" => \"ingest\",\n            \"truncate\" => \"start\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"model_id\":\"nvidia/llama-3.2-nv-embedqa-1b-v2\",\"api_key\":\"nvidia-text-embeddings-token\"},\"task_settings\":{\"input_type\":\"ingest\",\"truncate\":\"start\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/nvidia-text-embedding\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-text-embedding\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"model_id\\\":\\\"nvidia/llama-3.2-nv-embedqa-1b-v2\\\",\\\"api_key\\\":\\\"nvidia-text-embeddings-token\\\"}\"))\n        .taskSettings(JsonData.fromJson(\"{\\\"input_type\\\":\\\"ingest\\\",\\\"truncate\\\":\\\"start\\\"}\"))\n    )\n);\n"
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample5.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"nvidia-chat-completion\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"url\": \"nvidia-chat-completion-url\",\n            \"api_key\": \"nvidia-chat-completion-token\",\n            \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"nvidia-chat-completion\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      url: \"nvidia-chat-completion-url\",\n      api_key: \"nvidia-chat-completion-token\",\n      model_id: \"microsoft/phi-3-mini-128k-instruct\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"nvidia-chat-completion\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"url\": \"nvidia-chat-completion-url\",\n      \"api_key\": \"nvidia-chat-completion-token\",\n      \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"nvidia-chat-completion\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"url\" => \"nvidia-chat-completion-url\",\n            \"api_key\" => \"nvidia-chat-completion-token\",\n            \"model_id\" => \"microsoft/phi-3-mini-128k-instruct\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"url\":\"nvidia-chat-completion-url\",\"api_key\":\"nvidia-chat-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/nvidia-chat-completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"nvidia-chat-completion-url\\\",\\\"api_key\\\":\\\"nvidia-chat-completion-token\\\",\\\"model_id\\\":\\\"microsoft/phi-3-mini-128k-instruct\\\"}\"))\n    )\n);\n"
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"nvidia-completion\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"api_key\": \"nvidia-completion-token\",\n            \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"nvidia-completion\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      api_key: \"nvidia-completion-token\",\n      model_id: \"microsoft/phi-3-mini-128k-instruct\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"nvidia-completion\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"api_key\": \"nvidia-completion-token\",\n      \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"nvidia-completion\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"api_key\" => \"nvidia-completion-token\",\n            \"model_id\" => \"microsoft/phi-3-mini-128k-instruct\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"api_key\":\"nvidia-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}}' \"$ELASTICSEARCH_URL/_inference/completion/nvidia-completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"nvidia-completion-token\\\",\\\"model_id\\\":\\\"microsoft/phi-3-mini-128k-instruct\\\"}\"))\n    )\n);\n"
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample8.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"rerank\",\n    inference_id=\"nvidia-rerank\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"api_key\": \"nvidia-rerank-token\",\n            \"model_id\": \"nv-rerank-qa-mistral-4b:1\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"rerank\",\n  inference_id: \"nvidia-rerank\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      api_key: \"nvidia-rerank-token\",\n      model_id: \"nv-rerank-qa-mistral-4b:1\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"rerank\",\n  inference_id: \"nvidia-rerank\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"api_key\": \"nvidia-rerank-token\",\n      \"model_id\": \"nv-rerank-qa-mistral-4b:1\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"nvidia-rerank\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"api_key\" => \"nvidia-rerank-token\",\n            \"model_id\" => \"nv-rerank-qa-mistral-4b:1\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"api_key\":\"nvidia-rerank-token\",\"model_id\":\"nv-rerank-qa-mistral-4b:1\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/nvidia-rerank\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"nvidia-rerank-token\\\",\\\"model_id\\\":\\\"nv-rerank-qa-mistral-4b:1\\\"}\"))\n    )\n);\n"
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample7.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"rerank\",\n    inference_id=\"nvidia-rerank\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"url\": \"nvidia-rerank-url\",\n            \"api_key\": \"nvidia-rerank-token\",\n            \"model_id\": \"nv-rerank-qa-mistral-4b:1\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"rerank\",\n  inference_id: \"nvidia-rerank\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      url: \"nvidia-rerank-url\",\n      api_key: \"nvidia-rerank-token\",\n      model_id: \"nv-rerank-qa-mistral-4b:1\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"rerank\",\n  inference_id: \"nvidia-rerank\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"url\": \"nvidia-rerank-url\",\n      \"api_key\": \"nvidia-rerank-token\",\n      \"model_id\": \"nv-rerank-qa-mistral-4b:1\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"nvidia-rerank\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"url\" => \"nvidia-rerank-url\",\n            \"api_key\" => \"nvidia-rerank-token\",\n            \"model_id\" => \"nv-rerank-qa-mistral-4b:1\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"url\":\"nvidia-rerank-url\",\"api_key\":\"nvidia-rerank-token\",\"model_id\":\"nv-rerank-qa-mistral-4b:1\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/nvidia-rerank\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"nvidia-rerank-url\\\",\\\"api_key\\\":\\\"nvidia-rerank-token\\\",\\\"model_id\\\":\\\"nv-rerank-qa-mistral-4b:1\\\"}\"))\n    )\n);\n"
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample6.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"nvidia-chat-completion\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"api_key\": \"nvidia-chat-completion-token\",\n            \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"nvidia-chat-completion\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      api_key: \"nvidia-chat-completion-token\",\n      model_id: \"microsoft/phi-3-mini-128k-instruct\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"nvidia-chat-completion\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"api_key\": \"nvidia-chat-completion-token\",\n      \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"nvidia-chat-completion\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"api_key\" => \"nvidia-chat-completion-token\",\n            \"model_id\" => \"microsoft/phi-3-mini-128k-instruct\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"api_key\":\"nvidia-chat-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/nvidia-chat-completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"nvidia-chat-completion-token\\\",\\\"model_id\\\":\\\"microsoft/phi-3-mini-128k-instruct\\\"}\"))\n    )\n);\n"
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"nvidia-text-embedding\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"url\": \"nvidia-embeddings-url\",\n            \"api_key\": \"nvidia-embeddings-token\",\n            \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"nvidia-text-embedding\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      url: \"nvidia-embeddings-url\",\n      api_key: \"nvidia-embeddings-token\",\n      model_id: \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"nvidia-text-embedding\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"url\": \"nvidia-embeddings-url\",\n      \"api_key\": \"nvidia-embeddings-token\",\n      \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"nvidia-text-embedding\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"url\" => \"nvidia-embeddings-url\",\n            \"api_key\" => \"nvidia-embeddings-token\",\n            \"model_id\" => \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"url\":\"nvidia-embeddings-url\",\"api_key\":\"nvidia-embeddings-token\",\"model_id\":\"nvidia/llama-3.2-nv-embedqa-1b-v2\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/nvidia-text-embedding\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-text-embedding\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"nvidia-embeddings-url\\\",\\\"api_key\\\":\\\"nvidia-embeddings-token\\\",\\\"model_id\\\":\\\"nvidia/llama-3.2-nv-embedqa-1b-v2\\\"}\"))\n    )\n);\n"
+    }
+  ],
+  "specification/inference/put_groq/examples/request/PutGroqRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"groq-chat-completion\",\n    inference_config={\n        \"service\": \"groq\",\n        \"service_settings\": {\n            \"api_key\": \"groq-api-key\",\n            \"model_id\": \"llama-3.3-70b-versatile\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"groq-chat-completion\",\n  inference_config: {\n    service: \"groq\",\n    service_settings: {\n      api_key: \"groq-api-key\",\n      model_id: \"llama-3.3-70b-versatile\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"groq-chat-completion\",\n  body: {\n    \"service\": \"groq\",\n    \"service_settings\": {\n      \"api_key\": \"groq-api-key\",\n      \"model_id\": \"llama-3.3-70b-versatile\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"groq-chat-completion\",\n    \"body\" => [\n        \"service\" => \"groq\",\n        \"service_settings\" => [\n            \"api_key\" => \"groq-api-key\",\n            \"model_id\" => \"llama-3.3-70b-versatile\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"groq\",\"service_settings\":{\"api_key\":\"groq-api-key\",\"model_id\":\"llama-3.3-70b-versatile\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/groq-chat-completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"groq-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"groq\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"groq-api-key\\\",\\\"model_id\\\":\\\"llama-3.3-70b-versatile\\\"}\"))\n    )\n);\n"
+    }
+  ],
+  "specification/inference/put_azureopenai/examples/request/PutAzureOpenAiRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"azure_openai_chat_completion\",\n    inference_config={\n        \"service\": \"azureopenai\",\n        \"service_settings\": {\n            \"api_key\": \"Api-Key\",\n            \"resource_name\": \"Resource-name\",\n            \"deployment_id\": \"Deployment-id\",\n            \"api_version\": \"2024-02-01\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"azure_openai_chat_completion\",\n  inference_config: {\n    service: \"azureopenai\",\n    service_settings: {\n      api_key: \"Api-Key\",\n      resource_name: \"Resource-name\",\n      deployment_id: \"Deployment-id\",\n      api_version: \"2024-02-01\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"azure_openai_chat_completion\",\n  body: {\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n      \"api_key\": \"Api-Key\",\n      \"resource_name\": \"Resource-name\",\n      \"deployment_id\": \"Deployment-id\",\n      \"api_version\": \"2024-02-01\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"azure_openai_chat_completion\",\n    \"body\" => [\n        \"service\" => \"azureopenai\",\n        \"service_settings\" => [\n            \"api_key\" => \"Api-Key\",\n            \"resource_name\" => \"Resource-name\",\n            \"deployment_id\" => \"Deployment-id\",\n            \"api_version\" => \"2024-02-01\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"azureopenai\",\"service_settings\":{\"api_key\":\"Api-Key\",\"resource_name\":\"Resource-name\",\"deployment_id\":\"Deployment-id\",\"api_version\":\"2024-02-01\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/azure_openai_chat_completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_openai_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"azureopenai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Api-Key\\\",\\\"resource_name\\\":\\\"Resource-name\\\",\\\"deployment_id\\\":\\\"Deployment-id\\\",\\\"api_version\\\":\\\"2024-02-01\\\"}\"))\n    )\n);\n"
     }
   ]
 }

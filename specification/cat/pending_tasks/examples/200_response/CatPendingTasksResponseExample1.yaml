@@ -1,6 +1,6 @@
 # summary:
 description: >
-  A successful response from `GET /_cat/pending_tasks?v=trueh=insertOrder,timeInQueue,priority,source&format=json`.
+  A successful response from `GET /_cat/pending_tasks?v=true&h=insertOrder,timeInQueue,priority,source&format=json`.
 # type: response
 # response_code: 200
 value: |-
