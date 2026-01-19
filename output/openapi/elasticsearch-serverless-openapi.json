@@ -23309,7 +23309,7 @@
         "tags": [
           "project"
         ],
-        "summary": "Get named project routing expressions",
+        "summary": "Get project routing expressions",
         "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "project-get-many-routing",
         "responses": {
@@ -23342,7 +23342,7 @@
         "tags": [
           "project"
         ],
-        "summary": "Create of update named project routing expressions",
+        "summary": "Create or update project routing expressions",
         "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
         "operationId": "project-create-many-routing",
         "requestBody": {
@@ -23393,7 +23393,7 @@
         "tags": [
           "project"
         ],
-        "summary": "Get named project routing expressions",
+        "summary": "Get a project routing expression",
         "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "project-get-routing",
         "parameters": [
@@ -23439,7 +23439,7 @@
         "tags": [
           "project"
         ],
-        "summary": "Create of update a single named project routing expression",
+        "summary": "Create or update a project routing expression",
         "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
         "operationId": "project-create-routing",
         "parameters": [
@@ -23501,7 +23501,7 @@
         "tags": [
           "project"
         ],
-        "summary": "Delete named project routing expressions",
+        "summary": "Delete a project routing expression",
         "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
         "operationId": "project-delete-routing",
         "parameters": [
