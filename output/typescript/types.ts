@@ -10404,6 +10404,11 @@ export interface ClusterStatsExtendedRetrieversSearchUsage {
 
 export interface ClusterStatsExtendedSearchUsage {
   retrievers?: ClusterStatsExtendedRetrieversSearchUsage
+  section?: ClusterStatsExtendedSectionSearchUsage
+}
+
+export interface ClusterStatsExtendedSectionSearchUsage {
+  sort?: Partial<Record<ClusterStatsSortType, long>>
 }
 
 export interface ClusterStatsExtendedTextSimilarityRetrieverUsage {
@@ -10503,7 +10508,7 @@ export interface ClusterStatsRepositoryStatsShards {
   total: integer
   complete: integer
   incomplete: integer
-  states: Record<ClusterStatsShardState, integer>
+  states: Partial<Record<ClusterStatsShardState, integer>>
 }
 
 export interface ClusterStatsRequest extends RequestBase {
@@ -10549,6 +10554,8 @@ export interface ClusterStatsSnapshotCurrentCounts {
   concurrent_operations: integer
   cleanups: integer
 }
+
+export type ClusterStatsSortType = '_doc' | '_geo_distance' | '_score' | '_script' | 'field_sort'
 
 export interface ClusterStatsSparseVectorStats {
   value_count: long
@@ -14896,10 +14903,13 @@ export interface InferenceOpenAIServiceSettings {
   model_id: string
   organization_id?: string
   rate_limit?: InferenceRateLimitSetting
+  similarity?: InferenceOpenAISimilarityType
   url?: string
 }
 
 export type InferenceOpenAIServiceType = 'openai'
+
+export type InferenceOpenAISimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
 
 export interface InferenceOpenAITaskSettings {
   user?: string
@@ -20142,6 +20152,44 @@ export interface ProfilingTopnFunctionsRequest extends RequestBase {
 
 export type ProfilingTopnFunctionsResponse = any
 
+export type ProjectNamedProjectRoutingExpressions = Record<string, ProjectProjectRoutingExpression>
+
+export interface ProjectProjectRoutingExpression {
+  expression: ProjectRoutingExpression
+}
+
+export type ProjectRoutingExpression = string
+
+export interface ProjectCreateManyRoutingRequest extends RequestBase {
+  body?: ProjectNamedProjectRoutingExpressions
+}
+
+export type ProjectCreateManyRoutingResponse = AcknowledgedResponseBase
+
+export interface ProjectCreateRoutingRequest extends RequestBase {
+  name: string
+  body?: ProjectProjectRoutingExpression
+}
+
+export type ProjectCreateRoutingResponse = AcknowledgedResponseBase
+
+export interface ProjectDeleteRoutingRequest extends RequestBase {
+  name: string
+}
+
+export type ProjectDeleteRoutingResponse = AcknowledgedResponseBase
+
+export interface ProjectGetManyRoutingRequest extends RequestBase {
+}
+
+export type ProjectGetManyRoutingResponse = ProjectNamedProjectRoutingExpressions
+
+export interface ProjectGetRoutingRequest extends RequestBase {
+  name: string
+}
+
+export type ProjectGetRoutingResponse = ProjectProjectRoutingExpression
+
 export interface ProjectTagsProjectTags {
   origin: Partial<Record<string, ProjectTagsTags>>
   linked_projects?: Record<string, ProjectTagsTags>
@@ -20161,44 +20209,6 @@ export interface ProjectTagsTagsKeys {
 }
 export type ProjectTagsTags = ProjectTagsTagsKeys
   & { [property: string]: string }
-
-export type ProjectRoutingNamedProjectRoutingExpressions = Record<string, ProjectRoutingProjectRoutingExpression>
-
-export interface ProjectRoutingProjectRoutingExpression {
-  expression: ProjectRoutingRoutingExpression
-}
-
-export type ProjectRoutingRoutingExpression = string
-
-export interface ProjectRoutingCreateRequest extends RequestBase {
-  name: string
-  body?: ProjectRoutingProjectRoutingExpression
-}
-
-export type ProjectRoutingCreateResponse = AcknowledgedResponseBase
-
-export interface ProjectRoutingCreateManyRequest extends RequestBase {
-  body?: ProjectRoutingNamedProjectRoutingExpressions
-}
-
-export type ProjectRoutingCreateManyResponse = AcknowledgedResponseBase
-
-export interface ProjectRoutingDeleteRequest extends RequestBase {
-  name: string
-}
-
-export type ProjectRoutingDeleteResponse = AcknowledgedResponseBase
-
-export interface ProjectRoutingGetRequest extends RequestBase {
-  name: string
-}
-
-export type ProjectRoutingGetResponse = ProjectRoutingProjectRoutingExpression
-
-export interface ProjectRoutingGetManyRequest extends RequestBase {
-}
-
-export type ProjectRoutingGetManyResponse = ProjectRoutingNamedProjectRoutingExpressions
 
 export interface QueryRulesQueryRule {
   rule_id: Id
