@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
 
 /**
- * Get named project routing expressions.
+ * Get project routing expressions.
  *
  * @doc_id project-get-many-routing
  * @rest_spec_name project.get_many_routing

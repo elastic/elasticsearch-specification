@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
 
 /**
- * Delete named project routing expressions.
+ * Delete a project routing expression.
  *
  * @doc_id project-delete-routing
  * @rest_spec_name project.delete_routing
