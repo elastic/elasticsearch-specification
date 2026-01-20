@@ -89,7 +89,7 @@ export interface Request extends RequestBase {
      * Specify a Query DSL query in the filter parameter to filter the set of documents that an ES|QL query runs on.
      */
     filter?: QueryContainer
-    /*
+    /**
      * Returns results (especially dates) formatted per the conventions of the locale.
      * @doc_id esql-returning-localized-results
      */
