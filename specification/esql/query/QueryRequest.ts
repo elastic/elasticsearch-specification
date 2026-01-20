@@ -84,6 +84,11 @@ export interface Request extends RequestBase {
      */
     filter?: QueryContainer
     /**
+     * Sets the default timezone of the query.
+     * @doc_id esql-timezones
+     */
+    time_zone?: string
+    /**
      * Returns results (especially dates) formatted per the conventions of the locale.
      * @doc_id esql-returning-localized-results
      */
