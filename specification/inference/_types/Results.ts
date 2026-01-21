@@ -34,6 +34,10 @@ export type SparseVector = Dictionary<string, float>
 export type DenseVector = Array<float>
 
 export class SparseEmbeddingResult {
+  /**
+   * Indicates if the text input was truncated in the request sent to the service
+   */
+  is_truncated: boolean
   embedding: SparseVector
 }
 
