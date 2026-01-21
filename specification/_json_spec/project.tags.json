@@ -7,21 +7,24 @@
     "stability": "stable",
     "visibility": "public",
     "headers": {
-      "accept": ["application/json"]
+      "accept": [
+        "application/json"
+      ]
     },
     "url": {
       "paths": [
         {
           "path": "/_project/tags",
-          "methods": ["GET", "POST"]
+          "methods": [
+            "GET",
+            "POST"
+          ]
         }
       ]
     },
-    "params": {
-      "project_routing": {
-        "type": "string",
-        "description": "A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*."
-      }
+    "body": {
+      "required": false,
+      "description": "A query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*."
     }
   }
 }
