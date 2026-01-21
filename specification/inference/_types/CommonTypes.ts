@@ -645,8 +645,6 @@ export class AzureAiStudioServiceSettings {
    *
    * IMPORTANT: You need to provide the API key only once, during the inference model creation.
    * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
    * @ext_doc_id azureaistudio-api-keys
    */
   api_key: string
@@ -729,8 +727,6 @@ export class AzureOpenAIServiceSettings {
    *
    * IMPORTANT: You need to provide the API key only once, during the inference model creation.
    * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
    * @ext_doc_id azureopenai-auth
    */
   api_key?: string
@@ -792,8 +788,6 @@ export class CohereServiceSettings {
    *
    * IMPORTANT: You need to provide the API key only once, during the inference model creation.
    * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
    * @ext_doc_id cohere-api-keys
    */
   api_key: string
@@ -1163,8 +1157,6 @@ export class DeepSeekServiceSettings {
    *
    * IMPORTANT: You need to provide the API key only once, during the inference model creation.
    * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
    * @ext_doc_id deepseek-api-keys
    */
   api_key: string
@@ -1358,8 +1350,6 @@ export class HuggingFaceServiceSettings {
    *
    * IMPORTANT: You need to provide the API key only once, during the inference model creation.
    * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
    * @ext_doc_id huggingface-tokens
    */
   api_key: string
@@ -1414,17 +1404,13 @@ export class JinaAIServiceSettings {
    *
    * IMPORTANT: You need to provide the API key only once, during the inference model creation.
    * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
    * @ext_doc_id jinaAi-embeddings
    */
   api_key: string
   /**
    * The name of the model to use for the inference task.
-   * For a `rerank` task, it is required.
-   * For a `text_embedding` task, it is optional.
    */
-  model_id?: string
+  model_id: string
   /**
    * This setting helps to minimize the number of rate limit errors returned from JinaAI.
    * By default, the `jinaai` service sets the number of requests allowed per minute to 2000 for all task types.
@@ -1437,6 +1423,21 @@ export class JinaAIServiceSettings {
    * For example, a float embedding type uses a `dot_product` similarity measure by default.
    */
   similarity?: JinaAISimilarityType
+  /**
+   * For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.
+   * By default, the model's standard output dimension is used.
+   * Refer to the Jina documentation for more information.
+   * @ext_doc_id jinaAi-embeddings
+   */
+  dimensions?: integer
+  /**
+   * For a `text_embedding` task, the data type returned by the model.
+   * Use `bit` for binary embeddings, which are encoded as bytes with signed int8 precision.
+   * Use `binary` for binary embeddings, which are encoded as bytes with signed int8 precision (this is a synonym of `bit`).
+   * Use `float` for the default float embeddings.
+   * @server_default float
+   */
+  element_type?: JinaAIElementType
 }
 
 export class JinaAITaskSettings {
@@ -1484,6 +1485,12 @@ export enum JinaAITextEmbeddingTask {
   search
 }
 
+export enum JinaAIElementType {
+  binary,
+  bit,
+  float
+}
+
 export class MistralServiceSettings {
   /**
    * A valid API key of your Mistral account.
@@ -1491,8 +1498,6 @@ export class MistralServiceSettings {
    *
    * IMPORTANT: You need to provide the API key only once, during the inference model creation.
    * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
    * @ext_doc_id mistral-api-keys
    */
   api_key: string
@@ -1530,8 +1535,6 @@ export class OpenAIServiceSettings {
    *
    * IMPORTANT: You need to provide the API key only once, during the inference model creation.
    * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
    * @ext_doc_id openai-api-keys
    */
   api_key: string
@@ -1670,8 +1673,6 @@ export class WatsonxServiceSettings {
    *
    * IMPORTANT: You need to provide the API key only once, during the inference model creation.
    * The get inference endpoint API does not retrieve your API key.
-   * After creating the inference model, you cannot change the associated API key.
-   * If you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.
    * @ext_doc_id watsonx-api-keys
    */
   api_key: string
