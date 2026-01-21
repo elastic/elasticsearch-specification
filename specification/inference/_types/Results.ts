@@ -28,7 +28,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 export type SparseVector = Dictionary<string, float>
 
 /**
- * Text Embedding results are represented as Dense Vectors
+ * Dense Embedding results are represented as Dense Vectors
  * of floats.
  */
 export type DenseVector = Array<float>
@@ -49,22 +49,22 @@ export class SparseEmbeddingInferenceResult {
 }
 
 /**
- * Text Embedding results containing bytes are represented as Dense
+ * Dense Embedding results containing bytes are represented as Dense
  * Vectors of bytes.
  */
 export type DenseByteVector = Array<byte>
 
 /**
- * The text embedding result object for byte representation
+ * The dense embedding result object for byte representation
  */
-export class TextEmbeddingByteResult {
+export class DenseEmbeddingByteResult {
   embedding: DenseByteVector
 }
 
 /**
- * The text embedding result object
+ * The dense embedding result object for float representation
  */
-export class TextEmbeddingResult {
+export class DenseEmbeddingResult {
   embedding: DenseVector
 }
 
@@ -73,9 +73,19 @@ export class TextEmbeddingResult {
  * @variants container
  */
 export class TextEmbeddingInferenceResult {
-  text_embedding_bytes?: Array<TextEmbeddingByteResult>
-  text_embedding_bits?: Array<TextEmbeddingByteResult>
-  text_embedding?: Array<TextEmbeddingResult>
+  text_embedding_bytes?: Array<DenseEmbeddingByteResult>
+  text_embedding_bits?: Array<DenseEmbeddingByteResult>
+  text_embedding?: Array<DenseEmbeddingResult>
+}
+
+/**
+ * EmbeddingInferenceResult is an aggregation of mutually exclusive embeddings variants
+ * @variants container
+ */
+export class EmbeddingInferenceResult {
+  embeddings_bytes?: Array<DenseEmbeddingByteResult>
+  embeddings_bits?: Array<DenseEmbeddingByteResult>
+  embeddings?: Array<DenseEmbeddingResult>
 }
 
 /**
@@ -123,9 +133,12 @@ export class DeleteInferenceEndpointResult extends AcknowledgedResponseBase {
  * @variants container
  */
 export class InferenceResult {
-  text_embedding_bytes?: Array<TextEmbeddingByteResult>
-  text_embedding_bits?: Array<TextEmbeddingByteResult>
-  text_embedding?: Array<TextEmbeddingResult>
+  embeddings_bytes?: Array<DenseEmbeddingByteResult>
+  embeddings_bits?: Array<DenseEmbeddingByteResult>
+  embeddings?: Array<DenseEmbeddingResult>
+  text_embedding_bytes?: Array<DenseEmbeddingByteResult>
+  text_embedding_bits?: Array<DenseEmbeddingByteResult>
+  text_embedding?: Array<DenseEmbeddingResult>
   sparse_embedding?: Array<SparseEmbeddingResult>
   completion?: Array<CompletionResult>
   rerank?: Array<RankedDocument>
