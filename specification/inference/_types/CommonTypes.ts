@@ -1657,14 +1657,14 @@ export class JinaAIServiceSettings {
    */
   similarity?: JinaAISimilarityType
   /**
-   * For an `embedding` or `text_embedding` task, the number of dimensions the resulting output embeddings should have.
+   * For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.
    * By default, the model's standard output dimension is used.
    * Refer to the Jina documentation for more information.
    * @ext_doc_id jinaAi-embeddings
    */
   dimensions?: integer
   /**
-   * For an `embedding` or `text_embedding` task, the data type returned by the model.
+   * For a `text_embedding` task, the data type returned by the model.
    * Use `bit` for binary embeddings, which are encoded as bytes with signed int8 precision.
    * Use `binary` for binary embeddings, which are encoded as bytes with signed int8 precision (this is a synonym of `bit`).
    * Use `float` for the default float embeddings.
