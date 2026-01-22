@@ -67682,7 +67682,7 @@
             "type": "string"
           },
           "provider": {
-            "description": "The model provider for your deployment.\nNote that some providers may support only certain task types.\nSupported providers include:\n\n* `amazontitan` - available for `text_embedding` and `completion` task types\n* `anthropic` - available for `completion` task type only\n* `ai21labs` - available for `completion` task type only\n* `cohere` - available for `text_embedding` and `completion` task types\n* `meta` - available for `completion` task type only\n* `mistral` - available for `completion` task type only",
+            "description": "The model provider for your deployment.\nNote that some providers may support only certain task types.\nSupported providers include:\n\n* `amazontitan` - available for `text_embedding` and `completion` task types\n* `anthropic` - available for `chat_completion` and `completion` task types\n* `ai21labs` - available for `chat_completion` and `completion` task types\n* `cohere` - available for `chat_completion`, `completion` and `text_embedding` task types\n* `meta` - available for `chat_completion` and `completion` task types\n* `mistral` - available for `chat_completion` and `completion` task types",
             "type": "string"
           },
           "region": {

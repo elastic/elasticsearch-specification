@@ -525,11 +525,11 @@ export class AmazonBedrockServiceSettings {
    * Supported providers include:
    *
    * * `amazontitan` - available for `text_embedding` and `completion` task types
-   * * `anthropic` - available for `completion` task type only
-   * * `ai21labs` - available for `completion` task type only
-   * * `cohere` - available for `text_embedding` and `completion` task types
-   * * `meta` - available for `completion` task type only
-   * * `mistral` - available for `completion` task type only
+   * * `anthropic` - available for `chat_completion` and `completion` task types
+   * * `ai21labs` - available for `chat_completion` and `completion` task types
+   * * `cohere` - available for `chat_completion`, `completion` and `text_embedding` task types
+   * * `meta` - available for `chat_completion` and `completion` task types
+   * * `mistral` - available for `chat_completion` and `completion` task types
    */
   provider?: string
   /**
