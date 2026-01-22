@@ -20241,6 +20241,9 @@ export interface ProjectTagsProjectTags {
 }
 
 export interface ProjectTagsRequest extends RequestBase {
+  body?: {
+    project_routing?: string
+  }
 }
 
 export type ProjectTagsResponse = ProjectTagsProjectTags

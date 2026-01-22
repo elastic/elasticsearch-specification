@@ -23668,6 +23668,9 @@
         "summary": "Get tags",
         "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "project-tags",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/project.tags"
+        },
         "responses": {
           "200": {
             "$ref": "#/components/responses/project.tags-200"
@@ -23688,6 +23691,9 @@
         "summary": "Get tags",
         "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "project-tags-1",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/project.tags"
+        },
         "responses": {
           "200": {
             "$ref": "#/components/responses/project.tags-200"
@@ -93012,6 +93018,21 @@
                 "summary": "Artificial documents",
                 "description": "Run `POST /_mtermvectors` to generate term vectors for artificial documents provided in the body of the request. The mapping used is determined by the specified `_index`.\n",
                 "value": "{\n  \"docs\": [\n      {\n        \"_index\": \"my-index-000001\",\n        \"doc\" : {\n            \"message\" : \"test test test\"\n        }\n      },\n      {\n        \"_index\": \"my-index-000001\",\n        \"doc\" : {\n          \"message\" : \"Another test ...\"\n        }\n      }\n  ]\n}"
+              }
+            }
+          }
+        }
+      },
+      "project.tags": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "project_routing": {
+                  "description": "A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*.",
+                  "type": "string"
+                }
               }
             }
           }
