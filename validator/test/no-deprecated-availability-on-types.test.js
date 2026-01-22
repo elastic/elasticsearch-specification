@@ -32,7 +32,7 @@ const ruleTester = new RuleTester({
 
 ruleTester.run('no-deprecated-availability-on-types', rule, {
     valid: [
-        `
+    `
     export class Response {
       /** @codegen_name result */
       body: ResponseBody
@@ -42,98 +42,43 @@ ruleTester.run('no-deprecated-availability-on-types', rule, {
    * @deprecated 9.0.0
    */
     export interface Request {
-    }`
+    }`,
+    `/**
+     * @deprecated 7.12.0
+     * @availability
+     */
+    export interface Something{}    
+    
+    export class SomethingElse{}`
     ],
     invalid: [
         {
             code: `
-/**
- * @deprecated 7.12.0 Use geo-shape instead.
- * @behavior_meta AdditionalProperty key=field value=polygon
- * @ext_doc_id query-dsl-geo-polygon-query
- */
-export class GeoPolygonQuery
-  extends QueryBase
-  implements AdditionalProperty<Field, GeoPolygonPoints>
-{
-  /** @server_default 'strict' */
-  validation_method?: GeoValidationMethod
-  ignore_unmapped?: boolean
-}`,
-            errors: [{messageId: 'noVariantsOnResponses'}]
+     /**
+     * @deprecated 7.12.0
+     * @availability
+     */
+    export class Something{} 
+        `,
+            errors: [{messageId: 'noDeprecatedOnTypes'},{messageId: 'noAvailabilityOnTypes'}]
         },
         {
             code: `
-/**
- * A scalar value.
- * @codegen_names long, double, string, boolean, null
- * @deprecated 9.0.0
- */
-export type ScalarValue = long | double | string | boolean | null`,
-            errors: [{messageId: 'noVariantsOnResponses'}]
+     /**
+     * @deprecated 7.12.0
+     */
+    export enum Something{} 
+        `,
+            errors: [{messageId: 'noDeprecatedOnTypes'}]
         },
         {
             code: `
-/**
- * Byte size units. These units use powers of 1024, so 1 kB means 1024 bytes.
- * @deprecated 9.0.0
- * @doc_id byte-units
- */
-export enum Bytes {
-  bytes = 'b',
-  kilo_bytes = 'kb',
-  mega_bytes = 'mb',
-  giga_bytes = 'gb',
-  tera_bytes = 'tb',
-  peta_bytes = 'pb'
-}`,
-
-            errors: [{messageId: 'noVariantsOnResponses'}]
-        },
-        {
-            code: `
-/**
- * @availability stack stability=stable
- * @behavior_meta AdditionalProperty key=field value=polygon
- * @ext_doc_id query-dsl-geo-polygon-query
- */
-export class GeoPolygonQuery
-  extends QueryBase
-  implements AdditionalProperty<Field, GeoPolygonPoints>
-{
-  /** @server_default 'strict' */
-  validation_method?: GeoValidationMethod
-  ignore_unmapped?: boolean
-}`,
-            errors: [{messageId: 'noVariantsOnResponses'}]
-        },
-        {
-            code: `
-/**
- * A scalar value.
- * @codegen_names long, double, string, boolean, null
- * @availability stack stability=stable
- */
-export type ScalarValue = long | double | string | boolean | null`,
-            errors: [{messageId: 'noVariantsOnResponses'}]
-        },
-        {
-            code: `
-/**
- * Byte size units. These units use powers of 1024, so 1 kB means 1024 bytes.
- * @availability stack stability=stable
- * @doc_id byte-units
- */
-export enum Bytes {
-  bytes = 'b',
-  kilo_bytes = 'kb',
-  mega_bytes = 'mb',
-  giga_bytes = 'gb',
-  tera_bytes = 'tb',
-  peta_bytes = 'pb'
-}`,
-
-            errors: [{messageId: 'noVariantsOnResponses'}]
+     /**
+     * @availability
+     */
+    export enum Something{} 
+        `,
+            errors: [{messageId: 'noAvailabilityOnTypes'}]
         }
     ]
 })

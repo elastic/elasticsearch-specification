@@ -30,47 +30,51 @@ export default createRule({
     return {
       'TSEnumDeclaration, TSTypeAliasDeclaration, ClassDeclaration'(node) {
         const className = node.id?.name
-        const fullText = sourceCode.text
+        const targetNode =
+            node.parent?.type === 'ExportNamedDeclaration' ? node.parent : node
+        const comments = sourceCode.getCommentsBefore(targetNode)
+        const jsdoc = comments
+            ?.filter(comment => comment.type === 'Block' && comment.value.startsWith('*'))
+            .pop()
 
-        const nodeStart = node.range[0]
-        const textBefore = fullText.substring(
-            Math.max(0, nodeStart - 200),
-            nodeStart
-        )
+        if (jsdoc === undefined) return
 
-        console.log(textBefore)
+        const blockComment = jsdoc.value
+
+        console.log("START_LOG");
+        console.log(blockComment)
+        console.log("END_LOG");
 
         const hasDeprecatedTag =
             /@deprecated\s/.test(
-                textBefore
+                blockComment
             )
 
         if (hasDeprecatedTag) {
           context.report({
             node,
-            messageId: 'noVariantsOnResponses',
+            messageId: 'noDeprecatedOnTypes',
             data: {
               className,
               suggestion:
-                  'Move @variants to a separate body class and use value_body pattern with @codegen_name. See SearchResponse for an example.'
+                  '@deprecated is only allowed on Request definitions.'
             }
           })
-          return
         }
 
         const hasAvailabilityTag =
             /@availability\s/.test(
-                textBefore
+                blockComment
             )
 
         if (hasAvailabilityTag) {
           context.report({
             node,
-            messageId: 'noVariantsOnResponses',
+            messageId: 'noAvailabilityOnTypes',
             data: {
               className,
               suggestion:
-                  'Move @variants to a separate body class and use value_body pattern with @codegen_name. See SearchResponse for an example.'
+                  '@availability is only allowed on Request definitions.'
             }
           })
         }
@@ -83,12 +87,10 @@ export default createRule({
         'AAAA'
     },
     messages: {
-      noVariantsOnResponses:
-        '@variants on {{className}} is not supported in metamodel. {{suggestion}}',
-      interfaceWithNonContainerVariants:
-        "Interface '{{ interfaceName }}' has '@variants {{ variantValue }}' but only 'container' is allowed for interfaces.",
-      invalidVariantsTag:
-        "Type alias '{{ typeName }}' has invalid '@variants {{ variantValue }}'. Must start with: {{ allowedValues }}."
+      noAvailabilityOnTypes:
+        '@availability on {{className}} is not supported. {{suggestion}}',
+      noDeprecatedOnTypes:
+        '@deprecated on {{className}} is not supported. {{suggestion}}'
     },
     type: 'problem',
     schema: []
