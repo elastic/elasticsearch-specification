@@ -11410,7 +11410,7 @@ export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
   is_running: boolean
 }
 
-export type EsqlESQLParam = FieldValue | FieldValue[]
+export type EsqlESQLParam = FieldValue | FieldValue[] | EsqlNamedValue
 
 export interface EsqlESQLView {
   name: string
@@ -11467,6 +11467,10 @@ export interface EsqlEsqlShardInfo {
   skipped?: integer
   failed?: integer
 }
+
+export type EsqlNamedValue = Record<string, EsqlSingleOrMultiValue>
+
+export type EsqlSingleOrMultiValue = FieldValue | FieldValue[]
 
 export interface EsqlTableValuesContainer {
   integer?: EsqlTableValuesIntegerValue[]
