@@ -6564,10 +6564,11 @@
                   },
                   "params": {
                     "description": "To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.",
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/esql._types.ESQLParam"
-                    }
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/esql._types.ESQLParams"
+                      }
+                    ]
                   },
                   "profile": {
                     "description": "If provided and `true` the response will include an extra `profile` object\nwith information on how the query was executed. This information is for human debugging\nand its format can change at any time but it can give some insight into the performance\nof each part of the query.",
@@ -64458,13 +64459,19 @@
           "arrow"
         ]
       },
-      "esql._types.ESQLParam": {
+      "esql._types.ESQLParams": {
         "oneOf": [
           {
-            "$ref": "#/components/schemas/esql._types.SingleOrMultiValue"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types.SingleOrMultiValue"
+            }
           },
           {
-            "$ref": "#/components/schemas/esql._types.NamedValue"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types.NamedValue"
+            }
           }
         ]
       },
@@ -64485,7 +64492,9 @@
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/esql._types.SingleOrMultiValue"
-        }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
       },
       "esql._types.TableValuesContainer": {
         "type": "object",
