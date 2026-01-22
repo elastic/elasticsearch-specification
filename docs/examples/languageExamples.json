@@ -18672,11 +18672,11 @@
   "specification/inference/embedding/examples/request/EmbeddingRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.inference.embedding(\n    inference_id=\"my-multimodal-endpoint\",\n    embedding_request={\n        \"input\": [\n            {\n                \"content\": {\n                    \"type\": \"image\",\n                    \"format\": \"base64\",\n                    \"value\": \"data:image/jpg;base64,...\"\n                }\n            },\n            {\n                \"content\": {\n                    \"type\": \"text\",\n                    \"value\": \"Some text to create an embedding\"\n                }\n            }\n        ]\n    },\n)"
+      "code": "resp = client.inference.embedding(\n    inference_id=\"my-multimodal-endpoint\",\n    embedding={\n        \"input\": [\n            {\n                \"content\": {\n                    \"type\": \"image\",\n                    \"format\": \"base64\",\n                    \"value\": \"data:image/jpg;base64,...\"\n                }\n            },\n            {\n                \"content\": {\n                    \"type\": \"text\",\n                    \"value\": \"Some text to create an embedding\"\n                }\n            }\n        ]\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.inference.embedding({\n  inference_id: \"my-multimodal-endpoint\",\n  embedding_request: {\n    input: [\n      {\n        content: {\n          type: \"image\",\n          format: \"base64\",\n          value: \"data:image/jpg;base64,...\",\n        },\n      },\n      {\n        content: {\n          type: \"text\",\n          value: \"Some text to create an embedding\",\n        },\n      },\n    ],\n  },\n});"
+      "code": "const response = await client.inference.embedding({\n  inference_id: \"my-multimodal-endpoint\",\n  embedding: {\n    input: [\n      {\n        content: {\n          type: \"image\",\n          format: \"base64\",\n          value: \"data:image/jpg;base64,...\",\n        },\n      },\n      {\n        content: {\n          type: \"text\",\n          value: \"Some text to create an embedding\",\n        },\n      },\n    ],\n  },\n});"
     },
     {
       "language": "Ruby",
@@ -18694,11 +18694,11 @@
   "specification/inference/embedding/examples/request/EmbeddingRequestExample2.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.inference.embedding(\n    inference_id=\"my-text-only-endpoint\",\n    embedding_request={\n        \"input\": [\n            \"The first text\",\n            \"The second text\"\n        ]\n    },\n)"
+      "code": "resp = client.inference.embedding(\n    inference_id=\"my-text-only-endpoint\",\n    embedding={\n        \"input\": [\n            \"The first text\",\n            \"The second text\"\n        ]\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.inference.embedding({\n  inference_id: \"my-text-only-endpoint\",\n  embedding_request: {\n    input: [\"The first text\", \"The second text\"],\n  },\n});"
+      "code": "const response = await client.inference.embedding({\n  inference_id: \"my-text-only-endpoint\",\n  embedding: {\n    input: [\"The first text\", \"The second text\"],\n  },\n});"
     },
     {
       "language": "Ruby",
@@ -19081,6 +19081,28 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"expression\":\"_csp:aws AND _region:us*\"}' \"$ELASTICSEARCH_URL/_project_routing/aws-us-only\""
+    }
+  ],
+  "specification/inference/put_amazonbedrock/examples/request/PutAmazonBedrockRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"amazon_bedrock_chat_completion\",\n    inference_config={\n        \"service\": \"amazonbedrock\",\n        \"service_settings\": {\n            \"access_key\": \"AWS-access-key\",\n            \"secret_key\": \"AWS-secret-key\",\n            \"region\": \"us-east-1\",\n            \"provider\": \"amazontitan\",\n            \"model\": \"amazon.titan-text-premier-v1:0\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"amazon_bedrock_chat_completion\",\n  inference_config: {\n    service: \"amazonbedrock\",\n    service_settings: {\n      access_key: \"AWS-access-key\",\n      secret_key: \"AWS-secret-key\",\n      region: \"us-east-1\",\n      provider: \"amazontitan\",\n      model: \"amazon.titan-text-premier-v1:0\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"amazon_bedrock_chat_completion\",\n  body: {\n    \"service\": \"amazonbedrock\",\n    \"service_settings\": {\n      \"access_key\": \"AWS-access-key\",\n      \"secret_key\": \"AWS-secret-key\",\n      \"region\": \"us-east-1\",\n      \"provider\": \"amazontitan\",\n      \"model\": \"amazon.titan-text-premier-v1:0\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"amazon_bedrock_chat_completion\",\n    \"body\" => [\n        \"service\" => \"amazonbedrock\",\n        \"service_settings\" => [\n            \"access_key\" => \"AWS-access-key\",\n            \"secret_key\" => \"AWS-secret-key\",\n            \"region\" => \"us-east-1\",\n            \"provider\" => \"amazontitan\",\n            \"model\" => \"amazon.titan-text-premier-v1:0\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"amazonbedrock\",\"service_settings\":{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"provider\":\"amazontitan\",\"model\":\"amazon.titan-text-premier-v1:0\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/amazon_bedrock_chat_completion\""
     }
   ]
 }

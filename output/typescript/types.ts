@@ -14371,7 +14371,7 @@ export interface InferenceAmazonBedrockTaskSettings {
   top_p?: float
 }
 
-export type InferenceAmazonBedrockTaskType = 'completion' | 'text_embedding'
+export type InferenceAmazonBedrockTaskType = 'chat_completion' | 'completion' | 'text_embedding'
 
 export type InferenceAmazonSageMakerApi = 'openai' | 'elastic'
 
@@ -15028,7 +15028,7 @@ export type InferenceTaskTypeAi21 = 'completion' | 'chat_completion'
 
 export type InferenceTaskTypeAlibabaCloudAI = 'text_embedding' | 'rerank' | 'completion' | 'sparse_embedding'
 
-export type InferenceTaskTypeAmazonBedrock = 'text_embedding' | 'completion'
+export type InferenceTaskTypeAmazonBedrock = 'chat_completion' | 'completion' | 'text_embedding'
 
 export type InferenceTaskTypeAmazonSageMaker = 'text_embedding' | 'completion' | 'chat_completion' | 'sparse_embedding' | 'rerank'
 
