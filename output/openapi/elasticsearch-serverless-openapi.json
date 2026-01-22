@@ -23668,11 +23668,6 @@
         "summary": "Get tags",
         "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "project-tags",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/project.tags-project_routing"
-          }
-        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/project.tags-200"
@@ -23693,11 +23688,6 @@
         "summary": "Get tags",
         "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "project-tags-1",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/project.tags-project_routing"
-          }
-        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/project.tags-200"
@@ -90162,17 +90152,6 @@
         "schema": {
           "$ref": "#/components/schemas/_types.VersionType"
         },
-        "style": "form"
-      },
-      "project.tags-project_routing": {
-        "in": "query",
-        "name": "project_routing",
-        "description": "A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*.",
-        "deprecated": false,
-        "schema": {
-          "type": "string"
-        },
-        "x-state": "Technical preview",
         "style": "form"
       },
       "put_script-id": {
