@@ -52,6 +52,6 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  /** @codegen_name embedding_request */
+  /** @codegen_name embedding */
   body: RequestEmbedding
 }
