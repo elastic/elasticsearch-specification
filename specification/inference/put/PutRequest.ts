@@ -46,7 +46,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * * Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)
  * * Groq (`chat_completion`)
  * * Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)
- * * JinaAI (`rerank`, `text_embedding`)
+ * * JinaAI (`embedding`, `rerank`, `text_embedding`)
  * * Llama (`chat_completion`, `completion`, `text_embedding`)
  * * Mistral (`chat_completion`, `completion`, `text_embedding`)
  * * Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)

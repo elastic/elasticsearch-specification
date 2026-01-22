@@ -38,18 +38,4 @@ export interface Request extends RequestBase {
     }
   ]
   response_media_type: MediaType.Json
-  query_parameters: {
-    /**
-     * A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*.
-     * @availability serverless stability=experimental visibility=public
-     */
-    project_routing?: string
-  }
-  body?: {
-    /**
-     * A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*.
-     * @availability serverless stability=experimental visibility=public
-     */
-    project_routing?: string
-  }
 }

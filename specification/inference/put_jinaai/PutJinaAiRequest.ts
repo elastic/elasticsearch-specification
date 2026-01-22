@@ -34,7 +34,7 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  * Create an inference endpoint to perform an inference task with the `jinaai` service.
  *
  * To review the available `rerank` models, refer to <https://jina.ai/reranker>.
- * To review the available `text_embedding` models, refer to the <https://jina.ai/embeddings/>.
+ * To review the available `embedding` and `text_embedding` models, refer to <https://jina.ai/embeddings/>.
  * @rest_spec_name inference.put_jinaai
  * @availability stack since=8.18.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
@@ -70,7 +70,7 @@ export interface Request extends RequestBase {
   body: {
     /**
      * The chunking configuration object.
-     * Applies only to the `text_embedding` task type.
+     * Applies only to the `embedding` and text_embedding` task types.
      * Not applicable to the `rerank` task type.
      * @ext_doc_id inference-chunking
      */

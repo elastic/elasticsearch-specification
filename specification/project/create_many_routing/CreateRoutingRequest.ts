@@ -22,7 +22,7 @@ import { MediaType } from '@_types/common'
 import { NamedProjectRoutingExpressions } from '../_types/RoutingExpression'
 
 /**
- * Create of update named project routing expressions.
+ * Create or update project routing expressions.
  *
  * @doc_id project-create-many-routing
  * @rest_spec_name project.create_many_routing

@@ -1,0 +1,20 @@
+summary: A rerank task
+description: A successful response when creating a JinaAI `rerank` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "jinaai-rerank",
+    "task_type": "rerank",
+    "service": "jinaai",
+    "service_settings": {
+      "model_id": "jina-reranker-v2-base-multilingual",
+      "rate_limit": {
+        "requests_per_minute": 2000
+      }
+    },
+    "task_settings": {
+      "top_n": 10,
+      "return_documents": true
+    }
+  }
