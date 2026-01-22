@@ -20,7 +20,7 @@
 import { FieldValue } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 
-export type ESQLParam = FieldValue | FieldValue[] | NamedValue
+export type ESQLParam = SingleOrMultiValue | NamedValue
 export type NamedValue = Dictionary<string, SingleOrMultiValue>
 export type SingleOrMultiValue = FieldValue | FieldValue[]
 

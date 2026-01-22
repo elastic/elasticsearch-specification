@@ -64461,24 +64461,12 @@
       "esql._types.ESQLParam": {
         "oneOf": [
           {
-            "$ref": "#/components/schemas/_types.FieldValue"
-          },
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.FieldValue"
-            }
+            "$ref": "#/components/schemas/esql._types.SingleOrMultiValue"
           },
           {
             "$ref": "#/components/schemas/esql._types.NamedValue"
           }
         ]
-      },
-      "esql._types.NamedValue": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/esql._types.SingleOrMultiValue"
-        }
       },
       "esql._types.SingleOrMultiValue": {
         "oneOf": [
@@ -64492,6 +64480,12 @@
             }
           }
         ]
+      },
+      "esql._types.NamedValue": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/esql._types.SingleOrMultiValue"
+        }
       },
       "esql._types.TableValuesContainer": {
         "type": "object",

@@ -11410,7 +11410,7 @@ export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
   is_running: boolean
 }
 
-export type EsqlESQLParam = FieldValue | FieldValue[] | EsqlNamedValue
+export type EsqlESQLParam = EsqlSingleOrMultiValue | EsqlNamedValue
 
 export interface EsqlESQLView {
   name: string
