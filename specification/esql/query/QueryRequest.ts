@@ -85,6 +85,8 @@ export interface Request extends RequestBase {
     filter?: QueryContainer
     /**
      * Sets the default timezone of the query.
+     * @availability stack since=9.4.0 stability=experimental
+     * @availability serverless stability=experimental
      * @doc_id esql-timezones
      */
     time_zone?: string
