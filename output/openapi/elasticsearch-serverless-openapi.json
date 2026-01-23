@@ -63837,7 +63837,7 @@
             "type": "string"
           },
           "rate_limit": {
-            "description": "This setting helps to minimize the number of rate limit errors returned from Watsonx.\nBy default, the `watsonxai` service sets the number of requests allowed per minute to 120.",
+            "description": "This setting helps to minimize the number of rate limit errors returned from Amazon Bedrock.\nBy default, the `amazonbedrock` service sets the number of requests allowed per minute to 240.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.RateLimitSetting"
