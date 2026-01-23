@@ -429,8 +429,8 @@ export class AmazonBedrockServiceSettings {
    */
   region: string
   /**
-   * This setting helps to minimize the number of rate limit errors returned from Watsonx.
-   * By default, the `watsonxai` service sets the number of requests allowed per minute to 120.
+   * This setting helps to minimize the number of rate limit errors returned from Amazon Bedrock.
+   * By default, the `amazonbedrock` service sets the number of requests allowed per minute to 240.
    */
   rate_limit?: RateLimitSetting
   /**
