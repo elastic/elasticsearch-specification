@@ -11410,7 +11410,7 @@ export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
   is_running: boolean
 }
 
-export type EsqlESQLParam = FieldValue | FieldValue[]
+export type EsqlESQLParams = EsqlSingleOrMultiValue[] | EsqlNamedValue[]
 
 export interface EsqlESQLView {
   name: string
@@ -11467,6 +11467,10 @@ export interface EsqlEsqlShardInfo {
   skipped?: integer
   failed?: integer
 }
+
+export type EsqlNamedValue = Partial<Record<string, EsqlSingleOrMultiValue>>
+
+export type EsqlSingleOrMultiValue = FieldValue | FieldValue[]
 
 export interface EsqlTableValuesContainer {
   integer?: EsqlTableValuesIntegerValue[]
@@ -11592,7 +11596,7 @@ export interface EsqlQueryRequest extends RequestBase {
     filter?: QueryDslQueryContainer
     time_zone?: string
     locale?: string
-    params?: EsqlESQLParam[]
+    params?: EsqlESQLParams
     profile?: boolean
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
@@ -14574,6 +14578,14 @@ export interface InferenceDeleteInferenceEndpointResult extends AcknowledgedResp
 
 export type InferenceDenseByteVector = byte[]
 
+export interface InferenceDenseEmbeddingByteResult {
+  embedding: InferenceDenseByteVector
+}
+
+export interface InferenceDenseEmbeddingResult {
+  embedding: InferenceDenseVector
+}
+
 export type InferenceDenseVector = float[]
 
 export interface InferenceElasticsearchServiceSettings {
@@ -14603,6 +14615,28 @@ export interface InferenceElserServiceSettings {
 export type InferenceElserServiceType = 'elser'
 
 export type InferenceElserTaskType = 'sparse_embedding'
+
+export type InferenceEmbeddingContentFormat = 'text' | 'base64'
+
+export type InferenceEmbeddingContentInput = InferenceEmbeddingContentObject | InferenceEmbeddingContentObject[]
+
+export interface InferenceEmbeddingContentObject {
+  type: InferenceEmbeddingContentType
+  format?: InferenceEmbeddingContentFormat
+  value: string
+}
+
+export type InferenceEmbeddingContentType = 'text' | 'image'
+
+export interface InferenceEmbeddingInferenceResult {
+  embeddings_bytes?: InferenceDenseEmbeddingByteResult[]
+  embeddings_bits?: InferenceDenseEmbeddingByteResult[]
+  embeddings?: InferenceDenseEmbeddingResult[]
+}
+
+export type InferenceEmbeddingInput = InferenceEmbeddingStringInput | InferenceEmbeddingContentInput
+
+export type InferenceEmbeddingStringInput = string | string[]
 
 export type InferenceGoogleAiServiceType = 'googleaistudio'
 
@@ -14813,19 +14847,27 @@ export interface InferenceInferenceEndpointInfoWatsonx extends InferenceInferenc
 }
 
 export interface InferenceInferenceResult {
-  text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
-  text_embedding_bits?: InferenceTextEmbeddingByteResult[]
-  text_embedding?: InferenceTextEmbeddingResult[]
+  embeddings_bytes?: InferenceDenseEmbeddingByteResult[]
+  embeddings_bits?: InferenceDenseEmbeddingByteResult[]
+  embeddings?: InferenceDenseEmbeddingResult[]
+  text_embedding_bytes?: InferenceDenseEmbeddingByteResult[]
+  text_embedding_bits?: InferenceDenseEmbeddingByteResult[]
+  text_embedding?: InferenceDenseEmbeddingResult[]
   sparse_embedding?: InferenceSparseEmbeddingResult[]
   completion?: InferenceCompletionResult[]
   rerank?: InferenceRankedDocument[]
 }
 
+export type InferenceJinaAIElementType = 'binary' | 'bit' | 'float'
+
 export interface InferenceJinaAIServiceSettings {
   api_key: string
-  model_id?: string
+  model_id: string
   rate_limit?: InferenceRateLimitSetting
   similarity?: InferenceJinaAISimilarityType
+  dimensions?: integer
+  element_type?: InferenceJinaAIElementType
+  multimodal_model?: boolean
 }
 
 export type InferenceJinaAIServiceType = 'jinaai'
@@ -14834,12 +14876,12 @@ export type InferenceJinaAISimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
 
 export interface InferenceJinaAITaskSettings {
   return_documents?: boolean
-  task?: InferenceJinaAITextEmbeddingTask
+  input_type?: InferenceJinaAITextEmbeddingTask
   late_chunking?: boolean
   top_n?: integer
 }
 
-export type InferenceJinaAITaskType = 'rerank' | 'text_embedding'
+export type InferenceJinaAITaskType = 'embedding' | 'rerank' | 'text_embedding'
 
 export type InferenceJinaAITextEmbeddingTask = 'classification' | 'clustering' | 'ingest' | 'search'
 
@@ -14961,6 +15003,12 @@ export interface InferenceRequestChatCompletion {
   top_p?: float
 }
 
+export interface InferenceRequestEmbedding {
+  input: InferenceEmbeddingInput
+  input_type?: string
+  task_settings?: InferenceTaskSettings
+}
+
 export interface InferenceRerankedInferenceResult {
   rerank: InferenceRankedDocument[]
 }
@@ -14972,6 +15020,7 @@ export interface InferenceSparseEmbeddingInferenceResult {
 }
 
 export interface InferenceSparseEmbeddingResult {
+  is_truncated: boolean
   embedding: InferenceSparseVector
 }
 
@@ -14979,7 +15028,7 @@ export type InferenceSparseVector = Record<string, float>
 
 export type InferenceTaskSettings = any
 
-export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion'
+export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion' | 'embedding'
 
 export type InferenceTaskTypeAi21 = 'completion' | 'chat_completion'
 
@@ -15015,7 +15064,7 @@ export type InferenceTaskTypeGroq = 'chat_completion'
 
 export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
-export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
+export type InferenceTaskTypeJinaAi = 'embedding' | 'text_embedding' | 'rerank'
 
 export type InferenceTaskTypeLlama = 'text_embedding' | 'chat_completion' | 'completion'
 
@@ -15031,18 +15080,10 @@ export type InferenceTaskTypeVoyageAI = 'text_embedding' | 'rerank'
 
 export type InferenceTaskTypeWatsonx = 'text_embedding' | 'chat_completion' | 'completion'
 
-export interface InferenceTextEmbeddingByteResult {
-  embedding: InferenceDenseByteVector
-}
-
 export interface InferenceTextEmbeddingInferenceResult {
-  text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
-  text_embedding_bits?: InferenceTextEmbeddingByteResult[]
-  text_embedding?: InferenceTextEmbeddingResult[]
-}
-
-export interface InferenceTextEmbeddingResult {
-  embedding: InferenceDenseVector
+  text_embedding_bytes?: InferenceDenseEmbeddingByteResult[]
+  text_embedding_bits?: InferenceDenseEmbeddingByteResult[]
+  text_embedding?: InferenceDenseEmbeddingResult[]
 }
 
 export interface InferenceThinkingConfig {
@@ -15118,6 +15159,14 @@ export interface InferenceDeleteRequest extends RequestBase {
 }
 
 export type InferenceDeleteResponse = InferenceDeleteInferenceEndpointResult
+
+export interface InferenceEmbeddingRequest extends RequestBase {
+  inference_id: Id
+  timeout?: Duration
+  body?: InferenceRequestEmbedding
+}
+
+export type InferenceEmbeddingResponse = InferenceEmbeddingInferenceResult
 
 export interface InferenceGetRequest extends RequestBase {
   task_type?: InferenceTaskType
@@ -20198,7 +20247,6 @@ export interface ProjectTagsProjectTags {
 }
 
 export interface ProjectTagsRequest extends RequestBase {
-  project_routing?: string
 }
 
 export type ProjectTagsResponse = ProjectTagsProjectTags

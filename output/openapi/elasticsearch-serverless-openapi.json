@@ -6570,10 +6570,11 @@
                   },
                   "params": {
                     "description": "To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.",
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/esql._types.ESQLParam"
-                    }
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/esql._types.ESQLParams"
+                      }
+                    ]
                   },
                   "profile": {
                     "description": "If provided and `true` the response will include an extra `profile` object\nwith information on how the query was executed. This information is for human debugging\nand its format can change at any time but it can give some insight into the performance\nof each part of the query.",
@@ -11825,7 +11826,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -11948,7 +11949,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -12038,6 +12039,91 @@
           }
         },
         "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/embedding/{inference_id}": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Perform dense embedding inference on the service",
+        "operationId": "inference-embedding",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "inference_id",
+            "description": "The inference Id",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference request to complete.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/inference._types.RequestEmbedding"
+              },
+              "examples": {
+                "EmbeddingRequestExample1": {
+                  "summary": "Multimodal embedding task",
+                  "description": "Run `POST _inference/embedding/my-multimodal-endpoint` to generate embeddings from the example text and image",
+                  "value": "{\n  \"input\": [\n      {\n          \"content\": {\n              \"type\": \"image\",\n              \"format\": \"base64\",\n              \"value\": \"data:image/jpg;base64,...\"\n          }\n      },\n      {\n          \"content\": {\n              \"type\": \"text\",\n              \"value\": \"Some text to create an embedding\"\n          }\n      }\n  ]\n}"
+                },
+                "EmbeddingRequestExample2": {
+                  "summary": "Text-only embedding task",
+                  "description": "Run `POST _inference/embedding/my-text-only-endpoint` to generate embeddings from the example text",
+                  "value": "{\n  \"input\": [\"The first text\", \"The second text\"]\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.EmbeddingInferenceResult"
+                },
+                "examples": {
+                  "EmbeddingResponseExample1": {
+                    "summary": "Multimodal embedding task",
+                    "description": "An abbreviated response from `POST _inference/embedding/my-multimodal-endpoint`.\n",
+                    "value": "{\n  \"embeddings\": [\n    {\n      \"embedding\": [\n        -0.0189209,\n        -0.04174805,\n        0.00854492,\n        0.01556396,\n        0.01928711,\n        -0.00616455,\n        -0.00460815,\n        0.01477051,\n        -0.00656128,\n        0.05419922\n      ]\n    },\n    {\n      \"embedding\": [\n        -0.01379395,\n        -0.02368164,\n        0.01068115,\n        0.0279541,\n        0.01043701,\n        -7.7057E-4,\n        0.04150391,\n        0.00836182,\n        -0.01135254,\n        0.0246582\n      ]\n    }\n  ]\n}"
+                  },
+                  "EmbeddingResponseExample2": {
+                    "summary": "Text-only embedding task",
+                    "description": "An abbreviated response from `POST _inference/embedding/my-text-only-endpoint`.\n",
+                    "value": "{\n  \"embeddings\": [\n    {\n      \"embedding\": [\n        0.00854492,\n        -0.00616455,\n        -0.0189209,\n        0.01556396,\n        -0.00460815,\n        0.01477051,\n        -0.04174805,\n        0.01928711,\n        -0.00656128,\n        0.05419922\n      ]\n    },\n    {\n      \"embedding\": [\n        -0.01135254,\n        0.0279541,\n        -0.02368164,\n        0.01068115,\n        0.01043701,\n        0.04150391,\n        0.00836182,\n        -7.7057E-4,\n        -0.01379395,\n        0.0246582\n      ]\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
         "x-metaTags": [
           {
             "content": "Elasticsearch, Machine Learning",
@@ -14280,7 +14366,7 @@
           "inference"
         ],
         "summary": "Create an JinaAI inference endpoint",
-        "description": "Create an inference endpoint to perform an inference task with the `jinaai` service.\n\nTo review the available `rerank` models, refer to <https://jina.ai/reranker>.\nTo review the available `text_embedding` models, refer to the <https://jina.ai/embeddings/>.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "Create an inference endpoint to perform an inference task with the `jinaai` service.\n\nTo review the available `rerank` models, refer to <https://jina.ai/reranker>.\nTo review the available `embedding` and `text_embedding` models, refer to <https://jina.ai/embeddings/>.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-jinaai",
         "parameters": [
           {
@@ -14326,7 +14412,7 @@
                     "externalDocs": {
                       "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
                     },
-                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank` task type.",
+                    "description": "The chunking configuration object.\nApplies only to the `embedding` and text_embedding` task types.\nNot applicable to the `rerank` task type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -14373,6 +14459,16 @@
                   "summary": "A rerank task",
                   "description": "Run `PUT _inference/rerank/jinaai-rerank` to create an inference endpoint for rerank tasks using the JinaAI service.",
                   "value": "{\n    \"service\": \"jinaai\",\n    \"service_settings\": {\n        \"api_key\": \"JinaAI-Api-key\",\n        \"model_id\": \"jina-reranker-v2-base-multilingual\"\n    },\n    \"task_settings\": {\n        \"top_n\": 10,\n        \"return_documents\": true\n    }\n}"
+                },
+                "PutJinaAiRequestExample3": {
+                  "summary": "An embedding task using a multimodal model",
+                  "description": "Run `PUT _inference/embedding/jinaai-embeddings-multimodal` to create an inference endpoint for embedding tasks using an embedding model that supports multimodal inputs (e.g. `jina-embeddings-v4`) via the JinaAI service.",
+                  "value": "{\n    \"service\": \"jinaai\",\n    \"service_settings\": {\n        \"model_id\": \"jina-embeddings-v4\",\n        \"api_key\": \"JinaAi-Api-key\"\n    }\n}"
+                },
+                "PutJinaAiRequestExample4": {
+                  "summary": "An embedding task using a non-multimodal model",
+                  "description": "Run `PUT _inference/embedding/jinaai-embeddings-text-only` to create an inference endpoint for embedding tasks using an embedding model that does not support multimodal inputs (e.g. `jina-embeddings-v3`) via the JinaAI service.",
+                  "value": "{\n    \"service\": \"jinaai\",\n    \"service_settings\": {\n        \"model_id\": \"jina-embeddings-v3\",\n        \"api_key\": \"JinaAi-Api-key\",\n        \"multimodal_model\": false\n    }\n}"
                 }
               }
             }
@@ -14386,6 +14482,28 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoJinaAi"
+                },
+                "examples": {
+                  "PutJinaAiResponseExample1": {
+                    "summary": "A text embedding task",
+                    "description": "A successful response when creating a JinaAI `text_embedding` inference endpoint.",
+                    "value": "{\n   \"inference_id\": \"jinaai-embeddings\",\n   \"task_type\": \"text_embedding\",\n   \"service\": \"jinaai\",\n   \"service_settings\": {\n       \"model_id\": \"jina-embeddings-v3\",\n       \"rate_limit\": {\n           \"requests_per_minute\": 2000\n       },\n       \"dimensions\": 1024,\n       \"embedding_type\": \"float\",\n       \"similarity\": \"dot_product\"\n   },\n   \"chunking_settings\": {\n       \"strategy\": \"sentence\",\n       \"max_chunk_size\": 250,\n       \"sentence_overlap\": 1\n   }\n}"
+                  },
+                  "PutJinaAiResponseExample2": {
+                    "summary": "A rerank task",
+                    "description": "A successful response when creating a JinaAI `rerank` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"jinaai-rerank\",\n  \"task_type\": \"rerank\",\n  \"service\": \"jinaai\",\n  \"service_settings\": {\n    \"model_id\": \"jina-reranker-v2-base-multilingual\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 2000\n    }\n  },\n  \"task_settings\": {\n    \"top_n\": 10,\n    \"return_documents\": true\n  }\n}"
+                  },
+                  "PutJinaAiResponseExample3": {
+                    "summary": "An embedding task using a multimodal model",
+                    "description": "A successful response when creating a JinaAI `embedding` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"jinaai-embeddings-multimodal\",\n  \"task_type\": \"embedding\",\n  \"service\": \"jinaai\",\n  \"service_settings\": {\n    \"model_id\": \"jina-embeddings-v4\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 2000\n    },\n    \"dimensions\": 2048,\n    \"embedding_type\": \"float\",\n    \"similarity\": \"dot_product\",\n    \"multimodal_model\": true\n  },\n  \"chunking_settings\": {\n    \"strategy\": \"sentence\",\n    \"max_chunk_size\": 250,\n    \"sentence_overlap\": 1\n  }\n}"
+                  },
+                  "PutJinaAiResponseExample4": {
+                    "summary": "An embedding task using a non-multimodal model",
+                    "description": "A successful response when creating a JinaAI `embedding` inference endpoint with a model that does not support multimodal inputs.",
+                    "value": "{\n  \"inference_id\": \"jinaai-embeddings-text-only\",\n  \"task_type\": \"embedding\",\n  \"service\": \"jinaai\",\n  \"service_settings\": {\n    \"model_id\": \"jina-embeddings-v3\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 2000\n    },\n    \"dimensions\": 1024,\n    \"embedding_type\": \"float\",\n    \"similarity\": \"dot_product\",\n    \"multimodal_model\": false\n  },\n  \"chunking_settings\": {\n    \"strategy\": \"sentence\",\n    \"max_chunk_size\": 250,\n    \"sentence_overlap\": 1\n  }\n}"
+                  }
                 }
               }
             }
@@ -15577,7 +15695,7 @@
                   "SparseEmbeddingResponseExample1": {
                     "summary": "Sparse embedding task",
                     "description": "An abbreviated response from `POST _inference/sparse_embedding/my-elser-model`.\n",
-                    "value": "{\n  \"sparse_embedding\": [\n    {\n      \"port\": 2.1259406,\n      \"sky\": 1.7073475,\n      \"color\": 1.6922266,\n      \"dead\": 1.6247464,\n      \"television\": 1.3525393,\n      \"above\": 1.2425821,\n      \"tuned\": 1.1440028,\n      \"colors\": 1.1218185,\n      \"tv\": 1.0111054,\n      \"ports\": 1.0067928,\n      \"poem\": 1.0042328,\n      \"channel\": 0.99471164,\n      \"tune\": 0.96235967,\n      \"scene\": 0.9020516\n    }\n  ]\n}"
+                    "value": "{\n  \"sparse_embedding\": [\n    {\n      \"is_truncated\": false,\n      \"embedding\": {\n        \"port\": 2.1259406,\n        \"sky\": 1.7073475,\n        \"color\": 1.6922266,\n        \"dead\": 1.6247464,\n        \"television\": 1.3525393,\n        \"above\": 1.2425821,\n        \"tuned\": 1.1440028,\n        \"colors\": 1.1218185,\n        \"tv\": 1.0111054,\n        \"ports\": 1.0067928,\n        \"poem\": 1.0042328,\n        \"channel\": 0.99471164,\n        \"tune\": 0.96235967,\n        \"scene\": 0.9020516\n      }\n    }\n  ]\n}"
                   }
                 }
               }
@@ -15682,8 +15800,8 @@
                 "examples": {
                   "TextEmbeddingResponseExample1": {
                     "summary": "Text embedding task",
-                    "description": "An abbreviated response from `POST _inference/text_embedding/my-cohere-endpoint`.\n",
-                    "value": "{\n  \"text_embedding\": [\n    {\n      \"embedding\": [\n        {\n          0.018569946,\n          -0.036895752,\n          0.01486969,\n          -0.0045204163,\n          -0.04385376,\n          0.0075950623,\n          0.04260254,\n          -0.004005432,\n          0.007865906,\n          0.030792236,\n          -0.050476074,\n          0.011795044,\n          -0.011642456,\n          -0.010070801\n        }\n      ]\n    }\n  ]\n}"
+                    "description": "An abbreviated response from `POST _inference/text_embedding/my-text-embedding-endpoint`.\n",
+                    "value": "{\n  \"text_embedding\": [\n    {\n      \"embedding\": [\n        0.018569946,\n        -0.036895752,\n        0.01486969,\n        -0.0045204163,\n        -0.04385376,\n        0.0075950623,\n        0.04260254,\n        -0.004005432,\n        0.007865906,\n        0.030792236,\n        -0.050476074,\n        0.011795044,\n        -0.011642456,\n        -0.010070801\n      ]\n    }\n  ]\n}"
                   }
                 }
               }
@@ -23557,11 +23675,6 @@
         "summary": "Get tags",
         "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "project-tags",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/project.tags-project_routing"
-          }
-        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/project.tags-200"
@@ -23582,11 +23695,6 @@
         "summary": "Get tags",
         "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "project-tags-1",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/project.tags-project_routing"
-          }
-        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/project.tags-200"
@@ -64357,7 +64465,23 @@
           "arrow"
         ]
       },
-      "esql._types.ESQLParam": {
+      "esql._types.ESQLParams": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types.SingleOrMultiValue"
+            }
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/esql._types.NamedValue"
+            }
+          }
+        ]
+      },
+      "esql._types.SingleOrMultiValue": {
         "oneOf": [
           {
             "$ref": "#/components/schemas/_types.FieldValue"
@@ -64369,6 +64493,14 @@
             }
           }
         ]
+      },
+      "esql._types.NamedValue": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/esql._types.SingleOrMultiValue"
+        },
+        "minProperties": 1,
+        "maxProperties": 1
       },
       "esql._types.TableValuesContainer": {
         "type": "object",
@@ -66929,7 +67061,8 @@
           "text_embedding",
           "rerank",
           "completion",
-          "chat_completion"
+          "chat_completion",
+          "embedding"
         ]
       },
       "inference._types.DeleteInferenceEndpointResult": {
@@ -66953,6 +67086,189 @@
             ]
           }
         ]
+      },
+      "inference._types.RequestEmbedding": {
+        "type": "object",
+        "properties": {
+          "input": {
+            "description": "Inference input.\nEither a string, an array of strings, a `content` object, or an array of `content` objects.\n\nstring example:\n```\n\"input\": \"Some text\"\n```\nstring array example:\n```\n\"input\": [\"Some text\", \"Some more text\"]\n```\n`content` object example:\n```\n\"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpg;base64,...\"\n    }\n  }\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"text\",\n      \"format\": \"text\",\n      \"value\": \"Some text to generate an embedding\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpg;base64,...\"\n    }\n  }\n]\n```",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingInput"
+              }
+            ]
+          },
+          "input_type": {
+            "description": "The input data type for the embedding model. Possible values include:\n* `SEARCH`\n* `INGEST`\n* `CLASSIFICATION`\n* `CLUSTERING`\n\nNot all models support all values. Unsupported values will trigger a validation exception.\nAccepted values depend on the configured inference service, refer to the relevant service-specific documentation for more info.\n\n> info\n> The `input_type` parameter specified on the root level of the request body will take precedence over the `input_type` parameter specified in `task_settings`.",
+            "type": "string"
+          },
+          "task_settings": {
+            "description": "Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.TaskSettings"
+              }
+            ]
+          }
+        },
+        "required": [
+          "input"
+        ]
+      },
+      "inference._types.EmbeddingInput": {
+        "description": "Inference input.\nEither a string, an array of strings, a `content` object, or an array of `content` objects.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.EmbeddingStringInput"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types.EmbeddingContentInput"
+          }
+        ]
+      },
+      "inference._types.EmbeddingStringInput": {
+        "description": "Allows specifying text-only inputs for the `embedding` task.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "inference._types.EmbeddingContentInput": {
+        "description": "Allows specifying multimodal inputs for the `embedding` task.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.EmbeddingContentObject"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.EmbeddingContentObject"
+            }
+          }
+        ]
+      },
+      "inference._types.EmbeddingContentObject": {
+        "description": "An object containing the input data for the model to embed.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of input to embed.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentType"
+              }
+            ]
+          },
+          "format": {
+            "description": "The format of the input. For the `text` type this defaults to `text`. For the `image` type, this defaults to `base64`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
+              }
+            ]
+          },
+          "value": {
+            "description": "The value of the input to embed.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "inference._types.EmbeddingContentType": {
+        "type": "string",
+        "enum": [
+          "text",
+          "image"
+        ]
+      },
+      "inference._types.EmbeddingContentFormat": {
+        "type": "string",
+        "enum": [
+          "text",
+          "base64"
+        ]
+      },
+      "inference._types.EmbeddingInferenceResult": {
+        "description": "EmbeddingInferenceResult is an aggregation of mutually exclusive embeddings variants",
+        "type": "object",
+        "properties": {
+          "embeddings_bytes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.DenseEmbeddingByteResult"
+            }
+          },
+          "embeddings_bits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.DenseEmbeddingByteResult"
+            }
+          },
+          "embeddings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.DenseEmbeddingResult"
+            }
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "inference._types.DenseEmbeddingByteResult": {
+        "description": "The dense embedding result object for byte representation",
+        "type": "object",
+        "properties": {
+          "embedding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.DenseByteVector"
+              }
+            ]
+          }
+        },
+        "required": [
+          "embedding"
+        ]
+      },
+      "inference._types.DenseByteVector": {
+        "description": "Dense Embedding results containing bytes are represented as Dense\nVectors of bytes.",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/_types.byte"
+        }
+      },
+      "inference._types.DenseEmbeddingResult": {
+        "description": "The dense embedding result object for float representation",
+        "type": "object",
+        "properties": {
+          "embedding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.DenseVector"
+              }
+            ]
+          }
+        },
+        "required": [
+          "embedding"
+        ]
+      },
+      "inference._types.DenseVector": {
+        "description": "Dense Embedding results are represented as Dense Vectors\nof floats.",
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
       },
       "inference._types.InferenceEndpointInfo": {
         "description": "Represents an inference endpoint as returned by the GET API",
@@ -66988,7 +67304,7 @@
         "type": "object",
         "properties": {
           "chunking_settings": {
-            "description": "The chunking configuration object.\nApplies only to the `sparse_embedding` and `text_embedding` task types.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
+            "description": "The chunking configuration object.\nApplies only to the `embedding`, `sparse_embedding` and `text_embedding` task types.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
@@ -67068,22 +67384,40 @@
         "description": "InferenceResult is an aggregation of mutually exclusive variants",
         "type": "object",
         "properties": {
+          "embeddings_bytes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.DenseEmbeddingByteResult"
+            }
+          },
+          "embeddings_bits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.DenseEmbeddingByteResult"
+            }
+          },
+          "embeddings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.DenseEmbeddingResult"
+            }
+          },
           "text_embedding_bytes": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/inference._types.TextEmbeddingByteResult"
+              "$ref": "#/components/schemas/inference._types.DenseEmbeddingByteResult"
             }
           },
           "text_embedding_bits": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/inference._types.TextEmbeddingByteResult"
+              "$ref": "#/components/schemas/inference._types.DenseEmbeddingByteResult"
             }
           },
           "text_embedding": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/inference._types.TextEmbeddingResult"
+              "$ref": "#/components/schemas/inference._types.DenseEmbeddingResult"
             }
           },
           "sparse_embedding": {
@@ -67108,55 +67442,13 @@
         "minProperties": 1,
         "maxProperties": 1
       },
-      "inference._types.TextEmbeddingByteResult": {
-        "description": "The text embedding result object for byte representation",
-        "type": "object",
-        "properties": {
-          "embedding": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.DenseByteVector"
-              }
-            ]
-          }
-        },
-        "required": [
-          "embedding"
-        ]
-      },
-      "inference._types.DenseByteVector": {
-        "description": "Text Embedding results containing bytes are represented as Dense\nVectors of bytes.",
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/_types.byte"
-        }
-      },
-      "inference._types.TextEmbeddingResult": {
-        "description": "The text embedding result object",
-        "type": "object",
-        "properties": {
-          "embedding": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.DenseVector"
-              }
-            ]
-          }
-        },
-        "required": [
-          "embedding"
-        ]
-      },
-      "inference._types.DenseVector": {
-        "description": "Text Embedding results are represented as Dense Vectors\nof floats.",
-        "type": "array",
-        "items": {
-          "type": "number"
-        }
-      },
       "inference._types.SparseEmbeddingResult": {
         "type": "object",
         "properties": {
+          "is_truncated": {
+            "description": "Indicates if the text input was truncated in the request sent to the service",
+            "type": "boolean"
+          },
           "embedding": {
             "allOf": [
               {
@@ -67166,6 +67458,7 @@
           }
         },
         "required": [
+          "is_truncated",
           "embedding"
         ]
       },
@@ -67219,7 +67512,7 @@
             "type": "string"
           },
           "api_key": {
-            "description": "A valid API key for accessing AI21 API.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key for accessing AI21 API.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "rate_limit": {
@@ -67789,7 +68082,7 @@
             "externalDocs": {
               "url": "https://ai.azure.com/"
             },
-            "description": "A valid API key of your Azure AI Studio model deployment.\nThis key can be found on the overview page for your deployment in the management section of your Azure AI Studio account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key of your Azure AI Studio model deployment.\nThis key can be found on the overview page for your deployment in the management section of your Azure AI Studio account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "endpoint_type": {
@@ -67914,7 +68207,7 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#authentication"
             },
-            "description": "A valid API key for your Azure OpenAI account.\nYou must specify either `api_key` or `entra_id`.\nIf you do not provide either or you provide both, you will receive an error when you try to create your model.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key for your Azure OpenAI account.\nYou must specify either `api_key` or `entra_id`.\nIf you do not provide either or you provide both, you will receive an error when you try to create your model.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "api_version": {
@@ -68026,7 +68319,7 @@
             "externalDocs": {
               "url": "https://dashboard.cohere.com/api-keys"
             },
-            "description": "A valid API key for your Cohere account.\nYou can find or create your Cohere API keys on the Cohere API key settings page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key for your Cohere account.\nYou can find or create your Cohere API keys on the Cohere API key settings page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "embedding_type": {
@@ -68183,7 +68476,7 @@
         "type": "object",
         "properties": {
           "api_key": {
-            "description": "A valid API key for your Contexutual AI account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key for your Contexutual AI account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "model_id": {
@@ -68408,7 +68701,7 @@
             "externalDocs": {
               "url": "https://api-docs.deepseek.com/"
             },
-            "description": "A valid API key for your DeepSeek account.\nYou can find or create your DeepSeek API keys on the DeepSeek API key page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key for your DeepSeek account.\nYou can find or create your DeepSeek API keys on the DeepSeek API key page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "model_id": {
@@ -68916,7 +69209,7 @@
             "type": "string"
           },
           "api_key": {
-            "description": "A valid API key for accessing Groq API.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key for accessing Groq API.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "rate_limit": {
@@ -68991,7 +69284,7 @@
             "externalDocs": {
               "url": "https://huggingface.co/settings/tokens"
             },
-            "description": "A valid access token for your HuggingFace account.\nYou can create or find your access tokens on the HuggingFace settings page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid access token for your HuggingFace account.\nYou can create or find your access tokens on the HuggingFace settings page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "rate_limit": {
@@ -69072,6 +69365,7 @@
       "inference._types.JinaAITaskType": {
         "type": "string",
         "enum": [
+          "embedding",
           "rerank",
           "text_embedding"
         ]
@@ -69089,11 +69383,11 @@
             "externalDocs": {
               "url": "https://jina.ai/embeddings/"
             },
-            "description": "A valid API key of your JinaAI account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key of your JinaAI account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "model_id": {
-            "description": "The name of the model to use for the inference task.\nFor a `rerank` task, it is required.\nFor a `text_embedding` task, it is optional.",
+            "description": "The name of the model to use for the inference task.",
             "type": "string"
           },
           "rate_limit": {
@@ -69108,16 +69402,38 @@
             ]
           },
           "similarity": {
-            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.\nThe default values varies with the embedding type.\nFor example, a float embedding type uses a `dot_product` similarity measure by default.",
+            "description": "For an `embedding` or `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.\nThe default values varies with the embedding type.\nFor example, a float embedding type uses a `dot_product` similarity measure by default.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.JinaAISimilarityType"
               }
             ]
+          },
+          "dimensions": {
+            "externalDocs": {
+              "url": "https://jina.ai/embeddings/"
+            },
+            "description": "For an `embedding` or `text_embedding` task, the number of dimensions the resulting output embeddings should have.\nBy default, the model's standard output dimension is used.\nRefer to the Jina documentation for more information.",
+            "type": "number"
+          },
+          "element_type": {
+            "description": "For an `embedding` or `text_embedding` task, the data type returned by the model.\nUse `bit` for binary embeddings, which are encoded as bytes with signed int8 precision.\nUse `binary` for binary embeddings, which are encoded as bytes with signed int8 precision (this is a synonym of `bit`).\nUse `float` for the default float embeddings.",
+            "default": "float",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.JinaAIElementType"
+              }
+            ]
+          },
+          "multimodal_model": {
+            "description": "For the `embedding` task, whether the model supports multimodal inputs. If true, requests sent to the Jina model\nwill use the multimodal request format (a list of objects). If false, requests sent to the model will use the same\nformat as the `text_embedding` task (a list of strings). Setting this to `false` allows the `embedding` task to be\nused with models that do not support multimodal requests.",
+            "default": true,
+            "type": "boolean"
           }
         },
         "required": [
-          "api_key"
+          "api_key",
+          "model_id"
         ]
       },
       "inference._types.JinaAISimilarityType": {
@@ -69128,6 +69444,14 @@
           "l2_norm"
         ]
       },
+      "inference._types.JinaAIElementType": {
+        "type": "string",
+        "enum": [
+          "binary",
+          "bit",
+          "float"
+        ]
+      },
       "inference._types.JinaAITaskSettings": {
         "type": "object",
         "properties": {
@@ -69135,8 +69459,8 @@
             "description": "For a `rerank` task, return the doc text within the results.",
             "type": "boolean"
           },
-          "task": {
-            "description": "For a `text_embedding` task, the task passed to the model.\nValid values are:\n\n* `classification`: Use it for embeddings passed through a text classifier.\n* `clustering`: Use it for the embeddings run through a clustering algorithm.\n* `ingest`: Use it for storing document embeddings in a vector database.\n* `search`: Use it for storing embeddings of search queries run against a vector database to find relevant documents.",
+          "input_type": {
+            "description": "For an `embedding` or `text_embedding` task, the task passed to the model.\nValid values are:\n\n* `classification`: Use it for embeddings passed through a classifier.\n* `clustering`: Use it for the embeddings run through a clustering algorithm.\n* `ingest`: Use it for storing document embeddings in a vector database.\n* `search`: Use it for storing embeddings of search queries run against a vector database to find relevant documents.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.JinaAITextEmbeddingTask"
@@ -69144,7 +69468,7 @@
             ]
           },
           "late_chunking": {
-            "description": "For a `text_embedding` task, controls when text is split into chunks.\nWhen set to `true`, a request from Elasticsearch contains only chunks related to a single document. Instead of batching chunks across documents, Elasticsearch sends them in separate requests. This ensures that chunk embeddings retain context from the entire document, improving semantic quality.\n\nIf a document exceeds the model's context limits, late chunking is automatically disabled for that document only and standard chunking is used instead.\n\nIf not specified, defaults to `false`.",
+            "description": "For an `embedding` or `text_embedding` task, controls when text is split into chunks.\nWhen set to `true`, a request from Elasticsearch contains only chunks related to a single document. Instead of batching chunks across documents, Elasticsearch sends them in separate requests. This ensures that chunk embeddings retain context from the entire document, improving semantic quality.\n\nIf a document exceeds the model's context limits, or if the document contains non-text inputs (relevant when using the multimodal `embedding` task), late chunking is automatically disabled for that document only and standard chunking is used instead.\n\nIf not specified, defaults to `false`.",
             "type": "boolean"
           },
           "top_n": {
@@ -69193,6 +69517,7 @@
       "inference._types.TaskTypeJinaAi": {
         "type": "string",
         "enum": [
+          "embedding",
           "text_embedding",
           "rerank"
         ]
@@ -69316,7 +69641,7 @@
             "externalDocs": {
               "url": "https://console.mistral.ai/api-keys/"
             },
-            "description": "A valid API key of your Mistral account.\nYou can find your Mistral API keys or you can create a new one on the API Keys page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key of your Mistral account.\nYou can find your Mistral API keys or you can create a new one on the API Keys page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "max_input_tokens": {
@@ -69530,7 +69855,7 @@
             "externalDocs": {
               "url": "https://platform.openai.com/api-keys"
             },
-            "description": "A valid API key of your OpenAI account.\nYou can find your OpenAI API keys in your OpenAI account under the API keys section.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key of your OpenAI account.\nYou can find your OpenAI API keys in your OpenAI account under the API keys section.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "dimensions": {
@@ -69876,7 +70201,7 @@
             "externalDocs": {
               "url": "https://cloud.ibm.com/iam/apikeys"
             },
-            "description": "A valid API key of your Watsonx account.\nYou can find your Watsonx API keys or you can create a new one on the API keys page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key of your Watsonx account.\nYou can find your Watsonx API keys or you can create a new one on the API keys page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "api_version": {
@@ -69991,19 +70316,19 @@
           "text_embedding_bytes": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/inference._types.TextEmbeddingByteResult"
+              "$ref": "#/components/schemas/inference._types.DenseEmbeddingByteResult"
             }
           },
           "text_embedding_bits": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/inference._types.TextEmbeddingByteResult"
+              "$ref": "#/components/schemas/inference._types.DenseEmbeddingByteResult"
             }
           },
           "text_embedding": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/inference._types.TextEmbeddingResult"
+              "$ref": "#/components/schemas/inference._types.DenseEmbeddingResult"
             }
           }
         },
@@ -89860,17 +90185,6 @@
         },
         "style": "form"
       },
-      "project.tags-project_routing": {
-        "in": "query",
-        "name": "project_routing",
-        "description": "A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*.",
-        "deprecated": false,
-        "schema": {
-          "type": "string"
-        },
-        "x-state": "Technical preview",
-        "style": "form"
-      },
       "put_script-id": {
         "in": "path",
         "name": "id",
@@ -92401,7 +92715,7 @@
                   ]
                 },
                 "input_type": {
-                  "description": "Specifies the input data type for the text embedding model. The `input_type` parameter only applies to Inference Endpoints with the `text_embedding` task type. Possible values include:\n* `SEARCH`\n* `INGEST`\n* `CLASSIFICATION`\n* `CLUSTERING`\nNot all services support all values. Unsupported values will trigger a validation exception.\nAccepted values depend on the configured inference service, refer to the relevant service-specific documentation for more info.\n\n> info\n> The `input_type` parameter specified on the root level of the request body will take precedence over the `input_type` parameter specified in `task_settings`.",
+                  "description": "Specifies the input data type for the embedding model. The `input_type` parameter only applies to Inference Endpoints with the `embedding` or `text_embedding` task type. Possible values include:\n* `SEARCH`\n* `INGEST`\n* `CLASSIFICATION`\n* `CLUSTERING`\nNot all services support all values. Unsupported values will trigger a validation exception.\nAccepted values depend on the configured inference service, refer to the relevant service-specific documentation for more info.\n\n> info\n> The `input_type` parameter specified on the root level of the request body will take precedence over the `input_type` parameter specified in `task_settings`.",
                   "type": "string"
                 },
                 "task_settings": {
