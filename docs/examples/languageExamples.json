@@ -15904,23 +15904,23 @@
   "specification/transform/update_transform/examples/request/UpdateTransformRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.transform.update_transform(\n    transform_id=\"simple-kibana-ecomm-pivot\",\n    source={\n        \"index\": \"kibana_sample_data_ecommerce\",\n        \"query\": {\n            \"term\": {\n                \"geoip.continent_name\": {\n                    \"value\": \"Asia\"\n                }\n            }\n        }\n    },\n    pivot={\n        \"group_by\": {\n            \"customer_id\": {\n                \"terms\": {\n                    \"field\": \"customer_id\",\n                    \"missing_bucket\": True\n                }\n            }\n        },\n        \"aggregations\": {\n            \"max_price\": {\n                \"max\": {\n                    \"field\": \"taxful_total_price\"\n                }\n            }\n        }\n    },\n    description=\"Maximum priced ecommerce data by customer_id in Asia\",\n    dest={\n        \"index\": \"kibana_sample_data_ecommerce_transform1\",\n        \"pipeline\": \"add_timestamp_pipeline\"\n    },\n    frequency=\"5m\",\n    sync={\n        \"time\": {\n            \"field\": \"order_date\",\n            \"delay\": \"60s\"\n        }\n    },\n    retention_policy={\n        \"time\": {\n            \"field\": \"order_date\",\n            \"max_age\": \"30d\"\n        }\n    },\n)"
+      "code": "resp = client.transform.update_transform(\n    transform_id=\"simple-kibana-ecomm-pivot\",\n    source={\n        \"index\": \"kibana_sample_data_ecommerce\",\n        \"query\": {\n            \"term\": {\n                \"geoip.continent_name\": {\n                    \"value\": \"Asia\"\n                }\n            }\n        }\n    },\n    description=\"Maximum priced ecommerce data by customer_id in Asia\",\n    dest={\n        \"index\": \"kibana_sample_data_ecommerce_transform_v2\",\n        \"pipeline\": \"add_timestamp_pipeline\"\n    },\n    frequency=\"15m\",\n    sync={\n        \"time\": {\n            \"field\": \"order_date\",\n            \"delay\": \"120s\"\n        }\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.transform.updateTransform({\n  transform_id: \"simple-kibana-ecomm-pivot\",\n  source: {\n    index: \"kibana_sample_data_ecommerce\",\n    query: {\n      term: {\n        \"geoip.continent_name\": {\n          value: \"Asia\",\n        },\n      },\n    },\n  },\n  pivot: {\n    group_by: {\n      customer_id: {\n        terms: {\n          field: \"customer_id\",\n          missing_bucket: true,\n        },\n      },\n    },\n    aggregations: {\n      max_price: {\n        max: {\n          field: \"taxful_total_price\",\n        },\n      },\n    },\n  },\n  description: \"Maximum priced ecommerce data by customer_id in Asia\",\n  dest: {\n    index: \"kibana_sample_data_ecommerce_transform1\",\n    pipeline: \"add_timestamp_pipeline\",\n  },\n  frequency: \"5m\",\n  sync: {\n    time: {\n      field: \"order_date\",\n      delay: \"60s\",\n    },\n  },\n  retention_policy: {\n    time: {\n      field: \"order_date\",\n      max_age: \"30d\",\n    },\n  },\n});"
+      "code": "const response = await client.transform.updateTransform({\n  transform_id: \"simple-kibana-ecomm-pivot\",\n  source: {\n    index: \"kibana_sample_data_ecommerce\",\n    query: {\n      term: {\n        \"geoip.continent_name\": {\n          value: \"Asia\",\n        },\n      },\n    },\n  },\n  description: \"Maximum priced ecommerce data by customer_id in Asia\",\n  dest: {\n    index: \"kibana_sample_data_ecommerce_transform_v2\",\n    pipeline: \"add_timestamp_pipeline\",\n  },\n  frequency: \"15m\",\n  sync: {\n    time: {\n      field: \"order_date\",\n      delay: \"120s\",\n    },\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.transform.update_transform(\n  transform_id: \"simple-kibana-ecomm-pivot\",\n  body: {\n    \"source\": {\n      \"index\": \"kibana_sample_data_ecommerce\",\n      \"query\": {\n        \"term\": {\n          \"geoip.continent_name\": {\n            \"value\": \"Asia\"\n          }\n        }\n      }\n    },\n    \"pivot\": {\n      \"group_by\": {\n        \"customer_id\": {\n          \"terms\": {\n            \"field\": \"customer_id\",\n            \"missing_bucket\": true\n          }\n        }\n      },\n      \"aggregations\": {\n        \"max_price\": {\n          \"max\": {\n            \"field\": \"taxful_total_price\"\n          }\n        }\n      }\n    },\n    \"description\": \"Maximum priced ecommerce data by customer_id in Asia\",\n    \"dest\": {\n      \"index\": \"kibana_sample_data_ecommerce_transform1\",\n      \"pipeline\": \"add_timestamp_pipeline\"\n    },\n    \"frequency\": \"5m\",\n    \"sync\": {\n      \"time\": {\n        \"field\": \"order_date\",\n        \"delay\": \"60s\"\n      }\n    },\n    \"retention_policy\": {\n      \"time\": {\n        \"field\": \"order_date\",\n        \"max_age\": \"30d\"\n      }\n    }\n  }\n)"
+      "code": "response = client.transform.update_transform(\n  transform_id: \"simple-kibana-ecomm-pivot\",\n  body: {\n    \"source\": {\n      \"index\": \"kibana_sample_data_ecommerce\",\n      \"query\": {\n        \"term\": {\n          \"geoip.continent_name\": {\n            \"value\": \"Asia\"\n          }\n        }\n      }\n    },\n    \"description\": \"Maximum priced ecommerce data by customer_id in Asia\",\n    \"dest\": {\n      \"index\": \"kibana_sample_data_ecommerce_transform_v2\",\n      \"pipeline\": \"add_timestamp_pipeline\"\n    },\n    \"frequency\": \"15m\",\n    \"sync\": {\n      \"time\": {\n        \"field\": \"order_date\",\n        \"delay\": \"120s\"\n      }\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->transform()->updateTransform([\n    \"transform_id\" => \"simple-kibana-ecomm-pivot\",\n    \"body\" => [\n        \"source\" => [\n            \"index\" => \"kibana_sample_data_ecommerce\",\n            \"query\" => [\n                \"term\" => [\n                    \"geoip.continent_name\" => [\n                        \"value\" => \"Asia\",\n                    ],\n                ],\n            ],\n        ],\n        \"pivot\" => [\n            \"group_by\" => [\n                \"customer_id\" => [\n                    \"terms\" => [\n                        \"field\" => \"customer_id\",\n                        \"missing_bucket\" => true,\n                    ],\n                ],\n            ],\n            \"aggregations\" => [\n                \"max_price\" => [\n                    \"max\" => [\n                        \"field\" => \"taxful_total_price\",\n                    ],\n                ],\n            ],\n        ],\n        \"description\" => \"Maximum priced ecommerce data by customer_id in Asia\",\n        \"dest\" => [\n            \"index\" => \"kibana_sample_data_ecommerce_transform1\",\n            \"pipeline\" => \"add_timestamp_pipeline\",\n        ],\n        \"frequency\" => \"5m\",\n        \"sync\" => [\n            \"time\" => [\n                \"field\" => \"order_date\",\n                \"delay\" => \"60s\",\n            ],\n        ],\n        \"retention_policy\" => [\n            \"time\" => [\n                \"field\" => \"order_date\",\n                \"max_age\" => \"30d\",\n            ],\n        ],\n    ],\n]);"
+      "code": "$resp = $client->transform()->updateTransform([\n    \"transform_id\" => \"simple-kibana-ecomm-pivot\",\n    \"body\" => [\n        \"source\" => [\n            \"index\" => \"kibana_sample_data_ecommerce\",\n            \"query\" => [\n                \"term\" => [\n                    \"geoip.continent_name\" => [\n                        \"value\" => \"Asia\",\n                    ],\n                ],\n            ],\n        ],\n        \"description\" => \"Maximum priced ecommerce data by customer_id in Asia\",\n        \"dest\" => [\n            \"index\" => \"kibana_sample_data_ecommerce_transform_v2\",\n            \"pipeline\" => \"add_timestamp_pipeline\",\n        ],\n        \"frequency\" => \"15m\",\n        \"sync\" => [\n            \"time\" => [\n                \"field\" => \"order_date\",\n                \"delay\" => \"120s\",\n            ],\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"kibana_sample_data_ecommerce\",\"query\":{\"term\":{\"geoip.continent_name\":{\"value\":\"Asia\"}}}},\"pivot\":{\"group_by\":{\"customer_id\":{\"terms\":{\"field\":\"customer_id\",\"missing_bucket\":true}}},\"aggregations\":{\"max_price\":{\"max\":{\"field\":\"taxful_total_price\"}}}},\"description\":\"Maximum priced ecommerce data by customer_id in Asia\",\"dest\":{\"index\":\"kibana_sample_data_ecommerce_transform1\",\"pipeline\":\"add_timestamp_pipeline\"},\"frequency\":\"5m\",\"sync\":{\"time\":{\"field\":\"order_date\",\"delay\":\"60s\"}},\"retention_policy\":{\"time\":{\"field\":\"order_date\",\"max_age\":\"30d\"}}}' \"$ELASTICSEARCH_URL/_transform/simple-kibana-ecomm-pivot/_update\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"source\":{\"index\":\"kibana_sample_data_ecommerce\",\"query\":{\"term\":{\"geoip.continent_name\":{\"value\":\"Asia\"}}}},\"description\":\"Maximum priced ecommerce data by customer_id in Asia\",\"dest\":{\"index\":\"kibana_sample_data_ecommerce_transform_v2\",\"pipeline\":\"add_timestamp_pipeline\"},\"frequency\":\"15m\",\"sync\":{\"time\":{\"field\":\"order_date\",\"delay\":\"120s\"}}}' \"$ELASTICSEARCH_URL/_transform/simple-kibana-ecomm-pivot/_update\""
     },
     {
       "language": "Java",
@@ -16835,6 +16835,72 @@
     {
       "language": "Java",
       "code": "client.sql().query(q -> q\n    .format(SqlFormat.Txt)\n    .query(\"SELECT * FROM library ORDER BY page_count DESC LIMIT 5\")\n);\n"
+    }
+  ],
+  "specification/indices/rollover/examples/request/indicesRolloverRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.indices.rollover(\n    alias=\"my-data-stream\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.indices.rollover({\n  alias: \"my-data-stream\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.indices.rollover(\n  alias: \"my-data-stream\",\n  body: {}\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->indices()->rollover([\n    \"alias\" => \"my-data-stream\",\n    \"body\" => new ArrayObject([]),\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{}' \"$ELASTICSEARCH_URL/my-data-stream/_rollover\""
+    }
+  ],
+  "specification/inference/put_cohere/examples/request/PutCohereRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"cohere-completion\",\n    inference_config={\n        \"service\": \"cohere\",\n        \"service_settings\": {\n            \"api_key\": \"Cohere-API-key\",\n            \"model_id\": \"command-a-03-2025\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"cohere-completion\",\n  inference_config: {\n    service: \"cohere\",\n    service_settings: {\n      api_key: \"Cohere-API-key\",\n      model_id: \"command-a-03-2025\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"cohere-completion\",\n  body: {\n    \"service\": \"cohere\",\n    \"service_settings\": {\n      \"api_key\": \"Cohere-API-key\",\n      \"model_id\": \"command-a-03-2025\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"cohere-completion\",\n    \"body\" => [\n        \"service\" => \"cohere\",\n        \"service_settings\" => [\n            \"api_key\" => \"Cohere-API-key\",\n            \"model_id\" => \"command-a-03-2025\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"cohere\",\"service_settings\":{\"api_key\":\"Cohere-API-key\",\"model_id\":\"command-a-03-2025\"}}' \"$ELASTICSEARCH_URL/_inference/completion/cohere-completion\""
+    }
+  ],
+  "specification/transform/set_upgrade_mode/examples/request/TransformSetUpgradeModeExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.transform.set_upgrade_mode(\n    enabled=True,\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.transform.setUpgradeMode({\n  enabled: \"true\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.transform.set_upgrade_mode(\n  enabled: \"true\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->transform()->setUpgradeMode([\n    \"enabled\" => \"true\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_transform/set_upgrade_mode?enabled=true\""
     }
   ]
 }
