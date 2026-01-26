@@ -14619,6 +14619,10 @@ export type InferenceEmbeddingContentFormat = 'text' | 'base64'
 export type InferenceEmbeddingContentInput = InferenceEmbeddingContentObject | InferenceEmbeddingContentObject[]
 
 export interface InferenceEmbeddingContentObject {
+  content: InferenceEmbeddingContentObjectContents
+}
+
+export interface InferenceEmbeddingContentObjectContents {
   type: InferenceEmbeddingContentType
   format?: InferenceEmbeddingContentFormat
   value: string

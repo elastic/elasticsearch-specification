@@ -67160,6 +67160,23 @@
         ]
       },
       "inference._types.EmbeddingContentObject": {
+        "description": "A wrapper object which contains the fields required to specify multimodal inputs",
+        "type": "object",
+        "properties": {
+          "content": {
+            "description": "An object containing the input data for the model to embed",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentObjectContents"
+              }
+            ]
+          }
+        },
+        "required": [
+          "content"
+        ]
+      },
+      "inference._types.EmbeddingContentObjectContents": {
         "description": "An object containing the input data for the model to embed.",
         "type": "object",
         "properties": {

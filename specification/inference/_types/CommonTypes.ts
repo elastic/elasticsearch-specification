@@ -373,9 +373,19 @@ type EmbeddingContentInput =
   | Array<EmbeddingContentObject>
 
 /**
- *  An object containing the input data for the model to embed.
+ * A wrapper object which contains the fields required to specify multimodal inputs
  */
 export class EmbeddingContentObject {
+  /**
+   * An object containing the input data for the model to embed
+   */
+  content: EmbeddingContentObjectContents
+}
+
+/**
+ *  An object containing the input data for the model to embed.
+ */
+export class EmbeddingContentObjectContents {
   /**
    * The type of input to embed.
    */
