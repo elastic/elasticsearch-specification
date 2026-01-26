@@ -41,10 +41,6 @@ export default createRule({
 
         const blockComment = jsdoc.value
 
-        console.log("START_LOG");
-        console.log(blockComment)
-        console.log("END_LOG");
-
         const hasDeprecatedTag =
             /@deprecated\s/.test(
                 blockComment
