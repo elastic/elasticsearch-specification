@@ -356,6 +356,7 @@ export class RequestEmbedding {
 /**
  * Inference input.
  * Either a string, an array of strings, a `content` object, or an array of `content` objects.
+ * @codegen_names string, content
  */
 type EmbeddingInput = EmbeddingStringInput | EmbeddingContentInput
 
