@@ -53,7 +53,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * * OpenAI (`chat_completion`, `completion`, `text_embedding`)
  * * OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)
  * * VoyageAI (`rerank`, `text_embedding`)
- * * Watsonx inference integration (`text_embedding`)
+ * * Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)
  * @rest_spec_name inference.put
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public

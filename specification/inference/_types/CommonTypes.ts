@@ -2145,6 +2145,7 @@ export class WatsonxServiceSettings {
 
 export enum WatsonxTaskType {
   text_embedding,
+  rerank,
   chat_completion,
   completion
 }
