@@ -89,7 +89,14 @@ export interface Request extends RequestBase {
      * Specify a Query DSL query in the filter parameter to filter the set of documents that an ES|QL query runs on.
      */
     filter?: QueryContainer
-    /*
+    /**
+     * Sets the default timezone of the query.
+     * @availability stack since=9.4.0 stability=experimental
+     * @availability serverless stability=experimental
+     * @doc_id esql-timezones
+     */
+    time_zone?: string
+    /**
      * Returns results (especially dates) formatted per the conventions of the locale.
      * @doc_id esql-returning-localized-results
      */

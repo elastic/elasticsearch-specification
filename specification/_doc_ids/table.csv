@@ -229,6 +229,7 @@ esql-async-query-stop,https://www.elastic.co/docs/api/doc/elasticsearch/operatio
 esql-query,https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql-rest,[use-doc-url],,
 esql-query-params,https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql-rest#esql-rest-params,[use-doc-url],,
 esql-returning-localized-results,https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql-rest#esql-locale-param,[use-doc-url],,
+esql-timezones,https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql-rest#esql-timezones,[use-doc-url],,
 esql-get-query,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-get-query,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-get-query,,
 esql-list-queries,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-list-queries,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-list-queries,,
 esql-get-view,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,

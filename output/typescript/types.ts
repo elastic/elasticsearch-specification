@@ -11495,6 +11495,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
   body?: {
     columnar?: boolean
     filter?: QueryDslQueryContainer
+    time_zone?: string
     locale?: string
     params?: FieldValue[]
     profile?: boolean
@@ -11593,6 +11594,7 @@ export interface EsqlQueryRequest extends RequestBase {
   body?: {
     columnar?: boolean
     filter?: QueryDslQueryContainer
+    time_zone?: string
     locale?: string
     params?: EsqlESQLParams
     profile?: boolean
