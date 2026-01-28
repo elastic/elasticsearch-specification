@@ -21,7 +21,7 @@
               "description": "the history id"
             },
             "version": {
-              "type": "int",
+              "type": "long",
               "description": "the version number"
             }
           }
@@ -32,6 +32,16 @@
       "dry_run": {
         "type": "boolean",
         "description": "Simulate the update"
+      },
+      "master_timeout": {
+        "type": "time",
+        "description": "Period to wait for a connection to the master node.",
+        "default": "30s"
+      },
+      "timeout": {
+        "type": "time",
+        "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+        "default": "30s"
       }
     },
     "body": {
