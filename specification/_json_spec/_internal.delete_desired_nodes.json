@@ -25,6 +25,7 @@
       },
       "timeout": {
         "type": "time",
+        "default": "30s",
         "description": "Timeout for acknowledgements from all nodes"
       }
     }
