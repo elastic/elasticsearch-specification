@@ -14377,7 +14377,7 @@ export interface InferenceAmazonBedrockTaskSettings {
   top_p?: float
 }
 
-export type InferenceAmazonBedrockTaskType = 'completion' | 'text_embedding'
+export type InferenceAmazonBedrockTaskType = 'chat_completion' | 'completion' | 'text_embedding'
 
 export type InferenceAmazonSageMakerApi = 'openai' | 'elastic'
 
@@ -14621,6 +14621,10 @@ export type InferenceEmbeddingContentFormat = 'text' | 'base64'
 export type InferenceEmbeddingContentInput = InferenceEmbeddingContentObject | InferenceEmbeddingContentObject[]
 
 export interface InferenceEmbeddingContentObject {
+  content: InferenceEmbeddingContentObjectContents
+}
+
+export interface InferenceEmbeddingContentObjectContents {
   type: InferenceEmbeddingContentType
   format?: InferenceEmbeddingContentFormat
   value: string
@@ -15034,7 +15038,7 @@ export type InferenceTaskTypeAi21 = 'completion' | 'chat_completion'
 
 export type InferenceTaskTypeAlibabaCloudAI = 'text_embedding' | 'rerank' | 'completion' | 'sparse_embedding'
 
-export type InferenceTaskTypeAmazonBedrock = 'text_embedding' | 'completion'
+export type InferenceTaskTypeAmazonBedrock = 'chat_completion' | 'completion' | 'text_embedding'
 
 export type InferenceTaskTypeAmazonSageMaker = 'text_embedding' | 'completion' | 'chat_completion' | 'sparse_embedding' | 'rerank'
 
@@ -20247,6 +20251,9 @@ export interface ProjectTagsProjectTags {
 }
 
 export interface ProjectTagsRequest extends RequestBase {
+  body?: {
+    project_routing?: string
+  }
 }
 
 export type ProjectTagsResponse = ProjectTagsProjectTags
