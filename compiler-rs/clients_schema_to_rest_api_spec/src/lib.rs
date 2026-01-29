@@ -40,6 +40,21 @@ pub fn convert_schema_to_individual_files(model: IndexedModel, output_dir: &str)
     Ok(())
 }
 
+pub fn convert_schema_to_individual_files_in_memory(model: IndexedModel) -> Result<HashMap<String, String>> {
+    let expanded_model =
+        clients_schema::transform::expand_generics(model, clients_schema::transform::ExpandConfig::default())?;
+    let mut out: HashMap<String, String> = HashMap::new();
+
+    for endpoint in expanded_model.endpoints {
+        let converted_endpoint = convert_endpoint(&endpoint, &expanded_model.types)?;
+        let wrapped_content = HashMap::from([(endpoint.name.clone(), converted_endpoint)]);
+        let filename = format!("{}.json", endpoint.name);
+        let json = serde_json::to_string_pretty(&wrapped_content)?;
+        out.insert(filename, json);
+    }
+    Ok(out)
+}
+
 /// Convert a single endpoint from clients_schema to rest-api-spec format
 fn convert_endpoint(endpoint: &SchemaEndpoint, types: &IndexMap<TypeName, TypeDefinition>) -> Result<Endpoint> {
     // Extract documentation
@@ -599,6 +614,7 @@ mod tests {
             response: None,
             urls: vec![],
             doc_url: None,
+            doc_url_serverless: None,
             description: "".to_string(),
             request_body_required: false,
             request_media_type: vec![],

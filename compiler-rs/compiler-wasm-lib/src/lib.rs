@@ -15,12 +15,13 @@
 // specific language governing permissions and limitations
 // under the License.
 
-use std::path::{PathBuf};
+use std::path::PathBuf;
+
 use argh::FromArgs;
-use clients_schema::{IndexedModel};
-use wasm_bindgen::prelude::*;
 use clients_schema::indexmap::IndexMap;
+use clients_schema::IndexedModel;
 use clients_schema_to_openapi::cli::Cli;
+use wasm_bindgen::prelude::*;
 
 /// Minimal bindings to Node's `fs` module.
 mod node_fs {
@@ -64,13 +65,14 @@ pub fn convert0(cli: Cli, cwd: Option<String>) -> anyhow::Result<()> {
 
     let json = node_fs::read_file_sync_to_string(&input.to_string_lossy(), "utf8");
     let schema = IndexedModel::from_reader(json.as_bytes())?;
-    
+
     let product_meta_path = match cwd {
         Some(ref cwd) => format!("{cwd}/specification/_doc_ids/product-meta.json"),
         None => "specification/_doc_ids/product-meta.json".to_string(),
     };
     let json_product_map = node_fs::read_file_sync_to_string(&product_meta_path, "utf8");
-    let product_meta: IndexMap<String, String> = serde_json::from_str(&json_product_map).expect("Cannot parse product metadata file");
+    let product_meta: IndexMap<String, String> =
+        serde_json::from_str(&json_product_map).expect("Cannot parse product metadata file");
 
     let openapi = clients_schema_to_openapi::convert_schema(schema, cli.into(), product_meta)?;
 
@@ -80,6 +82,37 @@ pub fn convert0(cli: Cli, cwd: Option<String>) -> anyhow::Result<()> {
     if let Some(redirects) = openapi.redirects {
         let path = redirect_path.unwrap();
         node_fs::write_file_sync(&path, &redirects);
+    }
+
+    Ok(())
+}
+
+#[wasm_bindgen]
+pub fn convert_schema_to_individual_rest_api_spec_files(args: Vec<String>, cwd: Option<String>) -> Result<(), String> {
+    setup_hooks();
+
+    let args = args.iter().map(String::as_str).collect::<Vec<_>>();
+    let cli = Cli::from_args(&["schema-to-individual-files"], &args).map_err(|err| err.output)?;
+    convert1(cli, cwd).map_err(|err| err.to_string())
+}
+
+pub fn convert1(cli: Cli, cwd: Option<String>) -> anyhow::Result<()> {
+    let input = match cwd {
+        Some(ref cwd) => PathBuf::from(cwd).join(&cli.schema),
+        None => cli.schema.clone(),
+    };
+    let output = match cwd {
+        Some(ref cwd) => PathBuf::from(cwd).join(&cli.output),
+        None => cli.output.clone(),
+    };
+    let json = node_fs::read_file_sync_to_string(&input.to_string_lossy(), "utf8");
+    let schema = IndexedModel::from_reader(json.as_bytes())?;
+    let rest_spec_files = clients_schema_to_rest_api_spec::convert_schema_to_individual_files_in_memory(schema)?;
+
+    // for each entry in rest_spec_files, write to output directory
+    for (file_name, content) in rest_spec_files {
+        let file_path = output.join(file_name);
+        node_fs::write_file_sync(&file_path.to_string_lossy(), &content);
     }
 
     Ok(())
