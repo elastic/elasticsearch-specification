@@ -19,7 +19,7 @@
 
 import { convert_schema_to_individual_rest_api_spec_files } from 'compiler-wasm-lib'
 
-// Remove the 2 first args ("ts-node", "schema-to-openapi.ts")
+// Remove the 2 first args ("ts-node", "schema-to-rest-api-spec.ts")
 const realArgs = process.argv.slice(2)
 
 try {
