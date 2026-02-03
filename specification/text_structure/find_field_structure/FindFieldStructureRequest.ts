@@ -127,11 +127,13 @@ interface Request extends RequestBase {
      */
     should_trim_fields?: boolean
     /**
-     * If the format is `ndjosn`, you can specify whether to parse nested JSON objects recursively.
+     * If the format is `ndjson`, you can specify whether to parse nested JSON objects recursively.
+     * The nested objects are parsed to a maximum depth equal to the default value of the `index.mapping.depth.limit` setting.
+     * Anything beyond that depth is parsed as an `object` type field.
      * If this parameter is not specified, the default value is `false`.
      * For formats other than `ndjson`, this parameter is ignored.
      */
-    parse_recursively?: boolean
+    should_parse_recursively?: boolean
     /**
      * The maximum amount of time that the structure analysis can take.
      * If the analysis is still running when the timeout expires, it will be stopped.
