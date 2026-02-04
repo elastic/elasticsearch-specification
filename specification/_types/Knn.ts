@@ -103,8 +103,8 @@ export interface KnnQuery extends QueryBase {
 /** @variants container */
 export interface QueryVectorBuilder {
   text_embedding?: TextEmbedding
-  /** 
-   * Lookup a vector from an existing document. 
+  /**
+   * Lookup a vector from an existing document.
    * Must reference a dense_vector field and a single value.
    * @availability stack since=9.4.0
    * @availability serverless
