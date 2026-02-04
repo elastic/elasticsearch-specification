@@ -40505,6 +40505,9 @@
                 "$ref": "#/components/schemas/_types.RescoreVector"
               }
             ]
+          },
+          "_name": {
+            "type": "string"
           }
         },
         "required": [
