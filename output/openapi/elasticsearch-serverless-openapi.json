@@ -67303,10 +67303,12 @@
           },
           "long_document_strategy": {
             "description": "Available only for the `rerank` task type using the Elastic reranker model.\nControls the strategy used for processing long documents during inference.\n\nPossible values:\n- `truncate` (default): Processes only the beginning of each document.\n- `chunk`: Splits long documents into smaller parts (chunks) before inference.\n\nWhen `long_document_strategy` is set to `chunk`, Elasticsearch splits each document into smaller parts but still returns a single score per document.\nThat score reflects the highest relevance score among all chunks.",
+            "x-state": "Technical preview",
             "type": "string"
           },
           "max_chunks_per_doc": {
             "description": "Only for the `rerank` task type.\nLimits the number of chunks per document that are sent for inference when chunking is enabled.\nIf not set, all chunks generated for the document are processed.",
+            "x-state": "Technical preview",
             "type": "number"
           }
         },
