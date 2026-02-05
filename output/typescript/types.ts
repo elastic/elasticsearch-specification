@@ -6534,6 +6534,7 @@ export interface QueryDslFunctionScoreContainer {
   script_score?: QueryDslScriptScoreFunction
   filter?: QueryDslQueryContainer
   weight?: double
+  _name?: string
 }
 
 export type QueryDslFunctionScoreMode = 'multiply' | 'sum' | 'avg' | 'first' | 'max' | 'min'
