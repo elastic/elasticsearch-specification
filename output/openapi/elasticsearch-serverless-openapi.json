@@ -70730,7 +70730,7 @@
             ]
           },
           "json": {
-            "description": "Converts a JSON string into a structured JSON object.",
+            "description": "Parses a string containing JSON data into a structured object, string, or other value.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ingest._types.JsonProcessor"
