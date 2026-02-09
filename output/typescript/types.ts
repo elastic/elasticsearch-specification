@@ -23151,6 +23151,7 @@ export interface TextStructureFindFieldStructureRequest extends RequestBase {
   index: IndexName
   quote?: string
   should_trim_fields?: boolean
+  should_parse_recursively?: boolean
   timeout?: Duration
   timestamp_field?: Field
   timestamp_format?: string
@@ -23183,6 +23184,7 @@ export interface TextStructureFindMessageStructureRequest extends RequestBase {
   grok_pattern?: GrokPattern
   quote?: string
   should_trim_fields?: boolean
+  should_parse_recursively?: boolean
   timeout?: Duration
   timestamp_field?: Field
   timestamp_format?: string
@@ -23224,6 +23226,7 @@ export interface TextStructureFindStructureRequest<TJsonDocument = unknown> {
   lines_to_sample?: uint
   quote?: string
   should_trim_fields?: boolean
+  should_parse_recursively?: boolean
   timeout?: Duration
   timestamp_field?: Field
   timestamp_format?: string
