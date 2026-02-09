@@ -73,7 +73,7 @@ pub fn convert0(cli: Cli, cwd: Option<String>) -> anyhow::Result<()> {
 
     let openapi = clients_schema_to_openapi::convert_schema(schema, cli.into(), product_meta)?;
 
-    let result = serde_json::to_string_pretty(&openapi.openapi)?;
+    let result = serde_json::to_string_pretty(&openapi)?;
     node_fs::write_file_sync(&output.to_string_lossy(), &result);
     Ok(())
 }
