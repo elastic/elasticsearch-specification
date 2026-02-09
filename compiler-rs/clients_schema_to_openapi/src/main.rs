@@ -36,15 +36,9 @@ fn main() -> anyhow::Result<()> {
     let product_meta: IndexMap<String, String> = serde_json::from_reader(File::open("../../specification/_doc_ids/product-meta.json")?)?;
     let schema = IndexedModel::from_reader(File::open(&cli.schema)?)?;
     let output = cli.output.clone();
-    let redirect_path = cli.redirect_path(&cli.output);
     let openapi = clients_schema_to_openapi::convert_schema(schema, cli.into(), product_meta)?;
-    serde_json::to_writer_pretty(File::create(&output)?, &openapi.openapi)?;
-    serde_json::to_writer_pretty(File::create(&output)?, &openapi.openapi)?;
-
-    if let Some(redirects) = openapi.redirects {
-        let path = redirect_path.unwrap();
-        std::fs::write(path, &redirects)?;
-    }
+    serde_json::to_writer_pretty(File::create(&output)?, &openapi)?;
+    serde_json::to_writer_pretty(File::create(&output)?, &openapi)?;
 
     Ok(())
 }
