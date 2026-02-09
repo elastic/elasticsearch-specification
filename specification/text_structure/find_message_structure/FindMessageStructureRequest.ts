@@ -116,8 +116,8 @@ interface Request extends RequestBase {
      * If the format is `ndjson`, you can specify whether to parse nested JSON objects recursively.
      * The nested objects are parsed to a maximum depth equal to the default value of the `index.mapping.depth.limit` setting.
      * Anything beyond that depth is parsed as an `object` type field.
-     * If this parameter is not specified, the default value is `false`.
      * For formats other than `ndjson`, this parameter is ignored.
+     * @server_default false
      */
     should_parse_recursively?: boolean
     /**
