@@ -200,23 +200,19 @@ pub fn auths_as_extentions(privileges: &Option<Privileges>) -> IndexMap<String, 
     result
 }
 
-pub fn paths_as_extentions(urls: Vec<UrlTemplate>) -> IndexMap<String, Value> {
+pub fn paths_as_extentions(url: &UrlTemplate) -> IndexMap<String, Value> {
     let mut result = IndexMap::new();
-    if !urls.is_empty() {
-        let mut paths_list: Vec<Value> = Vec::new();
-        for url in urls {
-            for method in url.methods {
-                let lower_method = method.to_lowercase();
-                let path = &url.path;
-                paths_list.push(Value::String(format!(r#"<div>
-                      <span class="operation-verb {lower_method}">{method}</span>
-                      <span class="operation-path">{path}</span>
-                      </div>
-                    "#)));
-            }
-        }
-        result.insert("x-variations".to_string(), Value::Array(paths_list));
+    let mut paths_list: Vec<Value> = Vec::new();
+    for method in url.methods {
+        let lower_method = method.to_lowercase();
+        let path = &url.path;
+        paths_list.push(Value::String(format!(r#"<div>
+              <span class="operation-verb {lower_method}">{method}</span>
+              <span class="operation-path">{path}</span>
+              </div>
+            "#)));
     }
+    result.insert("x-variations".to_string(), Value::Array(paths_list));
     result
 }
 

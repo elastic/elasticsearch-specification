@@ -238,7 +238,7 @@ pub fn add_endpoint(
         let mut extensions = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
 
         // add the x-variations extension for paths
-        extensions.append(&mut paths_as_extentions(longest_urls.clone()));
+        extensions.append(&mut paths_as_extentions(url_template));
         
         // add the x-req-auth extension for auth privileges
         extensions.append(&mut auths_as_extentions(&endpoint.privileges));
