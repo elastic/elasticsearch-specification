@@ -203,7 +203,7 @@ pub fn auths_as_extentions(privileges: &Option<Privileges>) -> IndexMap<String, 
 pub fn paths_as_extentions(url: &UrlTemplate) -> IndexMap<String, Value> {
     let mut result = IndexMap::new();
     let mut paths_list: Vec<Value> = Vec::new();
-    for method in url.methods {
+    for method in url.methods.clone() {
         let lower_method = method.to_lowercase();
         let path = &url.path;
         paths_list.push(Value::String(format!(r#"<div>
