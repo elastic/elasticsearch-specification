@@ -19,11 +19,10 @@ use std::collections::HashMap;
 use std::fmt::Write;
 
 use anyhow::{anyhow, bail};
-use clients_schema::{Privileges, Property};
+use clients_schema::{Property};
 use indexmap::IndexMap;
 use indexmap::indexmap;
 use icu_segmenter::SentenceSegmenter;
-use itertools::Itertools;
 use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
     RequestBody, Response, Responses, StatusCode, Example
@@ -31,7 +30,7 @@ use openapiv3::{
 use serde_json::Value;
 use clients_schema::SchemaExample;
 use crate::components::TypesAndComponents;
-use crate::convert_availabilities;
+use crate::{auths_as_extentions, convert_availabilities, paths_as_extentions};
 
 /// Add an endpoint to the OpenAPI schema. This will result in the addition of a number of elements to the
 /// openapi schema's `paths` and `components` sections.
@@ -235,17 +234,14 @@ pub fn add_endpoint(
 
         parameters.append(&mut query_params.clone());
 
-        let sum_desc = split_summary_desc(&endpoint.description);
-
-        let privilege_desc = add_privileges(&endpoint.privileges);
-
-        let full_desc = match (sum_desc.description, privilege_desc) {
-            (Some(a), Some(b)) => Some(a+ &b),
-            (opt_a, opt_b) => opt_a.or(opt_b)
-        };
-
         // add the x-state extension for availability
         let mut extensions = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
+
+        // add the x-variations extension for paths
+        extensions.append(&mut paths_as_extentions(longest_urls.clone()));
+        
+        // add the x-req-auth extension for auth privileges
+        extensions.append(&mut auths_as_extentions(&endpoint.privileges));
 
         if tac.config.include_language_examples {
             // add the x-codeSamples extension
@@ -275,7 +271,11 @@ pub fn add_endpoint(
             }
         }
 
+        // add the x-metaTags extension for product name
         extensions.append(&mut crate::product_meta_as_extensions(namespace, product_meta));
+
+        // split summary from description
+        let sum_desc = split_summary_desc(&endpoint.description);
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
@@ -285,7 +285,7 @@ pub fn add_endpoint(
                 vec![namespace.to_string()]
             },
             summary: sum_desc.summary,
-            description: full_desc,
+            description: sum_desc.description,
             external_docs: tac.convert_external_docs(endpoint),
             // external_docs: None, // Need values that differ from client purposes
             operation_id: None, // set in clone_operation below with operation_counter
@@ -429,28 +429,6 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
         summary:  Some(String::from(first_line.trim().strip_suffix('.').unwrap_or(first_line))),
         description: if !rest.is_empty() {Some(String::from(rest.trim()))} else {None}
     }
-}
-
-fn add_privileges(privileges: &Option<Privileges>) -> Option<String>{
-    if let Some(privs) = privileges {
-        let mut result = "\n\n## Required authorization\n\n".to_string();
-        if !privs.index.is_empty() {
-            result += "* Index privileges: ";
-            result += &privs.index.iter()
-                .map(|a| format!("`{a}`"))
-                .join(",");
-            result += "\n";
-        }
-        if !privs.cluster.is_empty() {
-            result += "* Cluster privileges: ";
-            result += &privs.cluster.iter()
-                .map(|a| format!("`{a}`"))
-                .join(",");
-            result += "\n";
-        }
-        return Some(result)
-    }
-    None
 }
 
 #[derive(PartialEq,Debug)]
