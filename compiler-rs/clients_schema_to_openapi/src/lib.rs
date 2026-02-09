@@ -38,25 +38,12 @@ pub struct Configuration {
     /// property's description (also works for arrays of enums).
     pub lift_enum_descriptions: bool,
 
-    /// Will output endpoints having multiple paths into a single operation. The operation's path will
-    /// be the longest one (with values for all optional parameters), and the other paths will be added
-    /// at the beginning of the operation's description.
-    pub merge_multipath_endpoints: bool,
-
-    /// Should we output a redirect map when merging multipath endpoints?
-    pub multipath_redirects: bool,
-
     /// include the x-codeSamples extension with language examples for all endpoints
     pub include_language_examples: bool,
 }
 
-pub struct OpenApiConversion {
-    pub openapi: OpenAPI,
-    pub redirects: Option<String>,
-}
-
 /// Convert an API model into an OpenAPI v3 schema, optionally filtered for a given flavor
-pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_meta: IndexMap<String,String>) -> anyhow::Result<OpenApiConversion> {
+pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_meta: IndexMap<String,String>) -> anyhow::Result<OpenAPI> {
     // Expand generics
     schema = clients_schema::transform::expand_generics(schema, ExpandConfig::default())?;
 
@@ -86,7 +73,7 @@ pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_m
 /// Note: there are ways to represent [generics in JSON Schema], but its unlikely that tooling will understand it.
 ///
 /// [generics in JSON Schema]: https://json-schema.org/blog/posts/dynamicref-and-generics
-pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, product_meta: &IndexMap<String,String>) -> anyhow::Result<OpenApiConversion> {
+pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, product_meta: &IndexMap<String,String>) -> anyhow::Result<OpenAPI> {
     let mut openapi = OpenAPI {
         openapi: "3.0.3".into(),
         info: info(model),
@@ -142,21 +129,7 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, pro
     //     comp.security_schemes.sort_keys();
     // }
 
-    let redirects = if let Some(redirects) = tac.redirects {
-        use std::fmt::Write;
-        let mut result = String::new();
-        for (source, target) in redirects.iter() {
-            writeln!(&mut result, "{},{}", source, target)?;
-        }
-        Some(result)
-    } else {
-        None
-    };
-
-    Ok(OpenApiConversion {
-        openapi,
-        redirects,
-    })
+    Ok(openapi)
 }
 
 fn info(model: &IndexedModel) -> openapiv3::Info {

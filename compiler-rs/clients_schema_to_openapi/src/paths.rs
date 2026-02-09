@@ -57,9 +57,6 @@ pub fn add_endpoint(
        None => &endpoint.name,
     };
 
-    // Will we produce multiple paths? If true, we will register components for reuse across paths
-    let is_multipath = endpoint.urls.len() > 1 || endpoint.urls.iter().any(|u| u.methods.len() > 1);
-
     let request = tac.model.get_request(endpoint.request.as_ref().unwrap())?;
 
     fn parameter_data(prop: &Property, in_path: bool, tac: &mut TypesAndComponents) -> anyhow::Result<ParameterData> {
@@ -92,11 +89,7 @@ pub fn add_endpoint(
         // Reuse reference if multiple paths, and inline otherwise
         path_params.insert(
             prop.name.clone(),
-            if is_multipath {
-                tac.add_parameter(&endpoint.name, parameter, false)
-            } else {
-                ReferenceOr::Item(parameter)
-            },
+            ReferenceOr::Item(parameter),
         );
     }
 
@@ -111,14 +104,7 @@ pub fn add_endpoint(
             allow_empty_value: None,
         };
 
-        // Does this also exist as a path parameter? (e.g fields in _cat/fielddata)
-        let duplicate = path_params.contains_key(&prop.name);
-
-        query_params.push(if is_multipath {
-            tac.add_parameter(&endpoint.name, parameter, duplicate)
-        } else {
-            ReferenceOr::Item(parameter)
-        });
+        query_params.push(ReferenceOr::Item(parameter));
     }
 
     //---- Prepare request body
@@ -189,11 +175,7 @@ pub fn add_endpoint(
             extensions: Default::default(),
         };
 
-        if is_multipath {
-            tac.add_request_body(&endpoint.name, body)
-        } else {
-            ReferenceOr::Item(body)
-        }
+        ReferenceOr::Item(body)
     });
 
     //---- Prepare request responses
@@ -224,94 +206,12 @@ pub fn add_endpoint(
         links: Default::default(),
         extensions: Default::default(),
     };
-    let response = if is_multipath {
-        tac.add_response(&endpoint.name, StatusCode::Code(200), response)
-    } else {
-        ReferenceOr::Item(response)
-    };
+    let response = ReferenceOr::Item(response);
+
 
     let responses = indexmap! {
         StatusCode::Code(200) => response
         // TODO: add error responses
-    };
-
-    //---- Merge multipath endpoints if asked for
-
-    let operation_id: String = endpoint
-        .name
-        .chars()
-        .map(|x| match x {
-            '_' | '.' => '-',
-            _ => x,
-        })
-        .collect();
-
-    let mut new_endpoint: clients_schema::Endpoint;
-
-    let endpoint = if is_multipath && tac.config.merge_multipath_endpoints {
-
-        // Add redirects for operations that would have been generated otherwise
-        if let Some(ref mut map) = &mut tac.redirects {
-            for i in 1..endpoint.urls.len() {
-                map.insert(format!("{operation_id}-{i}"), operation_id.clone());
-            }
-        }
-
-        new_endpoint = endpoint.clone();
-        let endpoint = &mut new_endpoint;
-
-        // Sort paths from smallest to longest
-        endpoint.urls.sort_by_key(|x| x.path.len());
-
-        // Keep the longest and its last method so that the operation's path+method are the same as the last one
-        // (avoids the perception that it may have been chosen randomly).
-        let mut longest_path = endpoint.urls.last().unwrap().clone();
-        while longest_path.methods.len() > 1 {
-            longest_path.methods.remove(0);
-        }
-
-        // Replace endpoint urls with the longest path
-        let mut urls = vec![longest_path];
-        std::mem::swap(&mut endpoint.urls, &mut urls);
-
-        let split_desc = split_summary_desc(&endpoint.description);
-
-        // Make sure the description is stays at the top
-        let mut description = match split_desc.summary {
-            Some(summary) => format!("{summary}\n\n"),
-            None => String::new(),
-        };
-
-        // Convert removed paths to descriptions
-        write!(description, "**All methods and paths for this operation:**\n\n")?;
-
-        for url in urls {
-            for method in url.methods {
-                let lower_method = method.to_lowercase();
-                let path = &url.path;
-                write!(
-                    description,
-                    r#"<div>
-                      <span class="operation-verb {lower_method}">{method}</span>
-                      <span class="operation-path">{path}</span>
-                      </div>
-                    "#
-                )?;
-            }
-        }
-
-        if let Some(desc) = &split_desc.description {
-            write!(description, "\n\n{}", desc)?;
-        }
-
-        // Replace description
-        endpoint.description = description;
-
-        // Done
-        endpoint
-    } else {
-        // Not multipath or not asked to merge multipath
-        endpoint
     };
 
     //---- Build a path for each url + method
@@ -467,6 +367,15 @@ pub fn add_endpoint(
                 _ => bail!("Unsupported method: {}", method),
             };
 
+            let operation_id: String = endpoint
+                .name
+                .chars()
+                .map(|x| match x {
+                    '_' | '.' => '-',
+                    _ => x,
+                })
+                .collect();
+            
             let mut operation = operation.clone();
             let mut operation_id = operation_id.clone();
             if operation_counter != 0 {
