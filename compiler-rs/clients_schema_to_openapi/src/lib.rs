@@ -216,6 +216,21 @@ pub fn paths_as_extentions(url: &UrlTemplate) -> IndexMap<String, Value> {
     result
 }
 
+pub fn api_name_as_extensions(name: &String) -> IndexMap<String, Value> {
+    let mut result = IndexMap::new();
+    if !name.is_empty() {
+        match name.split_once('.') {
+            Some((ns, nm)) => {
+                result.insert("x-api".to_string(), Value::String(nm.to_string() + "." + ns));
+                return result
+            },
+            _ => ()
+        };
+        result.insert("x-api".to_string(), Value::String(name.to_string()));
+    }
+    result
+}
+
 pub fn availability_as_extensions(availabilities: &Option<Availabilities>, flavor: &Option<Flavor>) -> IndexMap<String, Value> {
     let mut result = IndexMap::new();
     convert_availabilities(availabilities, flavor, &mut result);

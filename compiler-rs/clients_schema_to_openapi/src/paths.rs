@@ -30,7 +30,7 @@ use openapiv3::{
 use serde_json::Value;
 use clients_schema::SchemaExample;
 use crate::components::TypesAndComponents;
-use crate::{auths_as_extentions, convert_availabilities, paths_as_extentions};
+use crate::{auths_as_extentions, convert_availabilities, paths_as_extentions, availability_as_extensions, api_name_as_extensions};
 
 /// Add an endpoint to the OpenAPI schema. This will result in the addition of a number of elements to the
 /// openapi schema's `paths` and `components` sections.
@@ -233,15 +233,21 @@ pub fn add_endpoint(
         }
 
         parameters.append(&mut query_params.clone());
+        
+        // empty extensions map
+        let mut extensions = IndexMap::new();
 
         // add the x-state extension for availability
-        let mut extensions = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
+        extensions.append(&mut availability_as_extensions(&endpoint.availability, &tac.config.flavor));
 
         // add the x-variations extension for paths
         extensions.append(&mut paths_as_extentions(url_template));
         
         // add the x-req-auth extension for auth privileges
         extensions.append(&mut auths_as_extentions(&endpoint.privileges));
+
+        // add the x-api extension for api name and namespace
+        extensions.append(&mut api_name_as_extensions(&endpoint.name));
 
         if tac.config.include_language_examples {
             // add the x-codeSamples extension
