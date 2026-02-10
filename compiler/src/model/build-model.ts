@@ -179,7 +179,7 @@ function compileRequest (declaration: InterfaceDeclaration, mappings: Record<str
 
   const mapping = mappings[namespace.includes('_global') ? namespace.slice(8) : namespace]
   if (mapping == null) {
-    throw new Error(`Cannot find url template for ${namespace}, very likely the specification folder does not follow the rest-api-spec`)
+    throw new Error(`Cannot find url template for ${namespace}`)
   }
 
   if (type.description !== '' && type.description !== null && type.description !== undefined) {

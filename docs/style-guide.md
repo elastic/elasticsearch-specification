@@ -55,9 +55,9 @@ represented in the specification.
 
 ## Where to store files
 
-The content of [`/specification`](../specification) follows the rest-api-spec structure.
-Every folder represents the namespace, while every subfolder represent the API name.
-For top level APIs, you must use the `_global` namespace.
+In [`/specification`](../specification), every folder represents the namespace,
+while every subfolder represent the API name.  For top level APIs, you must use
+the `_global` namespace.
 
 ## Using unions
 
