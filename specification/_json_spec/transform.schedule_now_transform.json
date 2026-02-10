@@ -18,7 +18,6 @@
           "parts": {
             "transform_id": {
               "type": "string",
-              "required": true,
               "description": "The id of the transform."
             }
           }

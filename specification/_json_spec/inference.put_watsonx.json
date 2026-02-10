@@ -19,7 +19,12 @@
             "task_type": {
               "type": "enum",
               "description": "The task type",
-              "options": ["text_embedding", "chat_completion", "completion"]
+              "options": [
+                "text_embedding",
+                "chat_completion",
+                "completion",
+                "rerank"
+              ]
             },
             "watsonx_inference_id": {
               "type": "string",
