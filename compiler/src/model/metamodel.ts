@@ -449,6 +449,7 @@ export class Endpoint {
   deprecation?: Deprecation
   availability: Availabilities
   docTag?: string
+  category?: string
   /**
    * If the request value is `null` it means that there is not yet a
    * request type definition for this endpoint.
