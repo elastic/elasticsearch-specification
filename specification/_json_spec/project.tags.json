@@ -13,15 +13,9 @@
       "paths": [
         {
           "path": "/_project/tags",
-          "methods": ["GET", "POST"]
+          "methods": ["GET"]
         }
       ]
-    },
-    "params": {
-      "project_routing": {
-        "type": "string",
-        "description": "A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*."
-      }
     }
   }
 }
