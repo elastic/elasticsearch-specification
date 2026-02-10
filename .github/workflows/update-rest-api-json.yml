@@ -1,0 +1,49 @@
+name: Update 8.19 rest-api-spec
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * *' # At 04:00.
+
+jobs:
+  update-rest-api:
+    name: Update rest-api-spec
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: 8.19
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Install deps
+        run: |
+          npm install --prefix .github/download-artifacts
+          make setup
+
+      - name: Download artifacts
+        run: |
+          node .github/download-artifacts/index.js --branch 8.19
+
+      - name: Generate output
+        run: |
+          make contrib
+
+      - name: Debug git status
+        run: |
+          git status --porcelain
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: Update rest-api-spec ${{ matrix.branch }}
+          body: 'As titled.'
+          commit-message: 'Update rest-api-spec'
+          labels: specification,skip-backport
+          delete-branch: true
+          reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo,pquentin,technige
+          branch: automated/rest-api-spec-update-${{ matrix.branch }}
