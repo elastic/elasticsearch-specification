@@ -13,8 +13,14 @@
     "url": {
       "paths": [
         {
-          "path": "/_streams/logs/_disable",
-          "methods": ["POST"]
+          "path": "/_streams/{name}/_disable",
+          "methods": ["POST"],
+          "parts": {
+            "name": {
+              "type": "string",
+              "description": "Stream name to disable"
+            }
+          }
         }
       ]
     },
