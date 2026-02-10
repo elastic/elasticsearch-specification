@@ -1,4 +1,4 @@
-name: Update rest-api-spec
+name: Update 8.19 rest-api-spec
 
 on:
   workflow_dispatch:
@@ -10,15 +10,10 @@ jobs:
     name: Update rest-api-spec
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        branch: ['main', '9.2', '9.1', '9.0', '8.19']
-
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ matrix.branch }}
+          ref: 8.19
 
       - name: Use Node.js 24
         uses: actions/setup-node@v6
@@ -32,7 +27,7 @@ jobs:
 
       - name: Download artifacts
         run: |
-          node .github/download-artifacts/index.js --branch ${{ matrix.branch }}
+          node .github/download-artifacts/index.js --branch 8.19
 
       - name: Generate output
         run: |
