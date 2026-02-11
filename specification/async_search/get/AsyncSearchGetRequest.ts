@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * Retrieve the results of a previously submitted asynchronous search request.
  * If the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.
  * @rest_spec_name async_search.get
+ * @category search
  * @availability stack since=7.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id async-search

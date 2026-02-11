@@ -28,6 +28,7 @@ import { MediaType } from '@_types/common'
  * To check the privileges of other users, you must use the run as feature.
  * To check whether a user has a specific list of privileges, use the has privileges API.
  * @rest_spec_name security.get_user_privileges
+ * @category security
  * @availability stack since=6.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id security-api-get-user-privileges

@@ -30,6 +30,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * Do not use this API for snapshots managed by index lifecycle management (ILM).
  * Manually mounting ILM-managed snapshots can interfere with ILM processes.
  * @rest_spec_name searchable_snapshots.mount
+ * @category management
  * @availability stack since=7.10.0 stability=stable
  * @cluster_privileges manage
  * @index_privileges manage

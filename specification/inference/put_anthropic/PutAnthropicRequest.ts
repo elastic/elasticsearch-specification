@@ -32,6 +32,7 @@ import {
  *
  * Create an inference endpoint to perform an inference task with the `anthropic` service.
  * @rest_spec_name inference.put_anthropic
+ * @category ai/ml
  * @availability stack since=8.16.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference

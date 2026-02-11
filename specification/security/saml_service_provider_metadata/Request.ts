@@ -28,6 +28,7 @@ import { MediaType, Name } from '@_types/common'
  * The SAML 2.0 specification provides a mechanism for Service Providers to describe their capabilities and configuration using a metadata file.
  * This API generates Service Provider metadata based on the configuration of a SAML realm in Elasticsearch.
  * @rest_spec_name security.saml_service_provider_metadata
+ * @category security
  * @availability stack since=7.11.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id security-api-saml-sp-metadata

@@ -31,6 +31,7 @@ import { MediaType } from '@_types/common'
  *
  * To check the status of your trial, use the get trial status API.
  * @rest_spec_name license.post_start_trial
+ * @category info
  * @availability stack since=6.1.0 stability=stable
  * @cluster_privileges manage
  * @doc_id start-trial

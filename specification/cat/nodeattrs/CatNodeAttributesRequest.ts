@@ -27,6 +27,7 @@ import { CatNodeattrsColumns, CatRequestBase } from '@cat/_types/CatBase'
  * Get information about custom node attributes.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.
  * @rest_spec_name cat.nodeattrs
+ * @category info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cat-nodeattrs

@@ -25,6 +25,7 @@ import { MediaType } from '@_types/common'
  *
  * Get a summary of all defined synonym sets.
  * @rest_spec_name synonyms.get_synonyms_sets
+ * @category ingest
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_synonyms

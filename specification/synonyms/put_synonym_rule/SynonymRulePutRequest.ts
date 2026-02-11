@@ -29,6 +29,7 @@ import { SynonymString } from '../_types/SynonymRule'
  *
  * When you update a synonym rule, all analyzers using the synonyms set will be reloaded automatically to reflect the new rule.
  * @rest_spec_name synonyms.put_synonym_rule
+ * @category ingest
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_synonyms

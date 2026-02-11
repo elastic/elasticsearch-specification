@@ -26,6 +26,7 @@ import { DatabaseConfiguration } from '@ingest/_types/Database'
  * Create or update an IP geolocation database configuration.
  *
  * @rest_spec_name ingest.put_ip_location_database
+ * @category ingest
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
  * @cluster_privileges manage

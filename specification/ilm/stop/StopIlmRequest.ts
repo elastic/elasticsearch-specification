@@ -30,6 +30,7 @@ import { MediaType } from '@_types/common'
  * The API returns as soon as the stop request has been acknowledged, but the plugin might continue to run until in-progress operations complete and the plugin can be safely stopped.
  * Use the get ILM status API to check whether ILM is running.
  * @rest_spec_name ilm.stop
+ * @category management
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm
  * @doc_id ilm-stop

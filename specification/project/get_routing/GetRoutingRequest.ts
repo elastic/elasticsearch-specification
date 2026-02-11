@@ -25,6 +25,7 @@ import { MediaType } from '@_types/common'
  *
  * @doc_id project-get-routing
  * @rest_spec_name project.get_routing
+ * @category unknown
  * @availability serverless stability=experimental visibility=public
  * @cluster_privileges monitor
  * @doc_tag project

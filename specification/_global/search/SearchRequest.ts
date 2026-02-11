@@ -74,6 +74,7 @@ import { SourceConfig, SourceConfigParam } from './_types/SourceFilter'
  * If different PIT IDs are used, slices can overlap and miss documents.
  * This situation can occur because the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.
  * @rest_spec_name search
+ * @category search
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

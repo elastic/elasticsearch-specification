@@ -31,6 +31,7 @@ import { MediaType, Name } from '@_types/common'
  * Do not delete the watch directly from the `.watches` index using the Elasticsearch delete document API
  * When Elasticsearch security features are enabled, make sure no write privileges are granted to anyone for the `.watches` index.
  * @rest_spec_name watcher.delete_watch
+ * @category info
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
  * @doc_id watcher-api-delete-watch

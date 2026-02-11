@@ -43,6 +43,7 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
  *
  * If your snapshot contains data from App Search or Workplace Search, you must restore the Enterprise Search encryption key before you restore the snapshot.
  * @rest_spec_name snapshot.restore
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage

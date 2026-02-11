@@ -30,6 +30,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * The estimate is based on analysis configuration details for the job and cardinality
  * estimates for the fields it references.
  * @rest_spec_name ml.estimate_model_memory
+ * @category ai/ml
  * @availability stack since=7.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

@@ -24,6 +24,7 @@ import { MediaType, Name } from '@_types/common'
  * Get a watch.
  *
  * @rest_spec_name watcher.get_watch
+ * @category info
  * @availability stack since=5.6.0 stability=stable
  * @cluster_privileges monitor_watcher
  * @doc_id watcher-api-get-watch

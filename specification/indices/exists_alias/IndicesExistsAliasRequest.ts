@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Check if one or more data stream or index aliases exist.
  * @rest_spec_name indices.exists_alias
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-aliases-exist

@@ -30,6 +30,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  *
  * Run an SQL request.
  * @rest_spec_name sql.query
+ * @category common
  * @availability stack since=6.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

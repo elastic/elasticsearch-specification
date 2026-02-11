@@ -49,6 +49,7 @@ import { TriggerContainer } from '@watcher/_types/Trigger'
  * When Elasticsearch security features are enabled, your watch can index or search only on indices for which the user that stored the watch has privileges.
  * If the user is able to read index `a`, but not index `b`, the same will apply when the watch runs.
  * @rest_spec_name watcher.put_watch
+ * @category info
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
  * @doc_id watcher-api-put-watch

@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Retrieves information for one or more data stream or index aliases.
  * @rest_spec_name indices.get_alias
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-get-alias

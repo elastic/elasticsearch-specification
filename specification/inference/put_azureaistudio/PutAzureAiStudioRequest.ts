@@ -33,6 +33,7 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  *
  * Create an inference endpoint to perform an inference task with the `azureaistudio` service.
  * @rest_spec_name inference.put_azureaistudio
+ * @category ai/ml
  * @availability stack since=8.14.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference

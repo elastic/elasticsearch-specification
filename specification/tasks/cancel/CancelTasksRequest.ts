@@ -34,6 +34,7 @@ import { MediaType, TaskId } from '@_types/common'
  * To troubleshoot why a cancelled task does not complete promptly, use the get task information API with the `?detailed` parameter to identify the other tasks the system is running.
  * You can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.
  * @rest_spec_name tasks.cancel
+ * @category info
  * @availability stack since=2.3.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @cluster_privileges manage

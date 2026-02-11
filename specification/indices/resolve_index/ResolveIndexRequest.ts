@@ -32,6 +32,7 @@ import { IndexMode } from '@indices/_types/DataStream'
  * Resolve the names and/or index patterns for indices, aliases, and data streams.
  * Multiple patterns and remote clusters are supported.
  * @rest_spec_name indices.resolve_index
+ * @category management
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-resolve-index-api

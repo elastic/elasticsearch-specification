@@ -46,6 +46,7 @@ import { Id, MediaType } from '@_types/common'
  * }
  * ```
  * @rest_spec_name rollup.delete_job
+ * @category management
  * @availability stack since=6.3.0 stability=experimental
  * @deprecated 8.11.0
  * @cluster_privileges manage_rollup

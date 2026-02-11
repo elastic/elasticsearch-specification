@@ -37,6 +37,7 @@ import { MediaType } from '@_types/common'
  * You can see the current value for the upgrade_mode setting by using the get
  * transform info API.
  * @rest_spec_name transform.set_upgrade_mode
+ * @category ingest
  * @availability stack since=8.18.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_transform

@@ -45,6 +45,7 @@ import { CatIndicesColumns, CatRequestBase } from '@cat/_types/CatBase'
  * CAT APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use an index endpoint.
  * @rest_spec_name cat.indices
+ * @category info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat-indices

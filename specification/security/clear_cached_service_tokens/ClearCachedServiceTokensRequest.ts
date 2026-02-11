@@ -30,6 +30,7 @@ import { MediaType, Names, Namespace, Service } from '@_types/common'
  * The cache for service account tokens backed by the `.security` index is cleared automatically on state changes of the security index.
  * The cache for tokens backed by the `service_tokens` file is cleared automatically on file changes.
  * @rest_spec_name security.clear_cached_service_tokens
+ * @category security
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security

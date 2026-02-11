@@ -104,6 +104,7 @@ import { Duration } from '@_types/Time'
  * After the write operation is underway, it is still possible for replication to fail on any number of shard copies but still succeed on the primary.
  * The `_shards` section of the API response reveals the number of shard copies on which replication succeeded and failed.
  * @rest_spec_name create
+ * @category document management
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges create

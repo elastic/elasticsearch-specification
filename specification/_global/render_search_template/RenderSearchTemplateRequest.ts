@@ -28,6 +28,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  *
  * Render a search template as a search request body.
  * @rest_spec_name render_search_template
+ * @category search
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

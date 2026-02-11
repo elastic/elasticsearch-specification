@@ -27,6 +27,7 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
  *
  * Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.
  * @rest_spec_name indices.create_from
+ * @category management
  * @availability stack since=8.18.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id migration-api-create-from

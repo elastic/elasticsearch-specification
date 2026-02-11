@@ -29,6 +29,7 @@ import { MediaType } from '@_types/common'
  * TIP: This API is designed for indirect use by the Upgrade Assistant.
  * You are strongly recommended to use the Upgrade Assistant.
  * @rest_spec_name migration.get_feature_upgrade_status
+ * @category info
  * @availability stack since=7.16.0 stability=stable
  * @index_privileges manage
  * @cluster_privileges manage

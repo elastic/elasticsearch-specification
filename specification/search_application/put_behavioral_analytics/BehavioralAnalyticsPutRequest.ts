@@ -23,6 +23,7 @@ import { MediaType, Name } from '@_types/common'
  * Create a behavioral analytics collection.
  *
  * @rest_spec_name search_application.put_behavioral_analytics
+ * @category management
  * @availability stack since=8.8.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  * @doc_tag analytics

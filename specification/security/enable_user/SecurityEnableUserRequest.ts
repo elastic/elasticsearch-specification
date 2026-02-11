@@ -26,6 +26,7 @@ import { MediaType, Refresh, Username } from '@_types/common'
  * Enable users in the native realm.
  * By default, when you create users, they are enabled.
  * @rest_spec_name security.enable_user
+ * @category security
  * @availability stack stability=stable
  * @cluster_privileges manage_security
  * @doc_id security-api-enable-user

@@ -39,6 +39,7 @@ import { Duration } from '@_types/Time'
  * time of creation and uses those same roles. If those roles do not have the required privileges on the source and
  * destination indices, the transform fails when it attempts unauthorized operations.
  * @rest_spec_name transform.start_transform
+ * @category ingest
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform

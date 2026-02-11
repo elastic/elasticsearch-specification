@@ -44,6 +44,7 @@ import {
  *
  * If you supply only a subset of the regression or classification parameters, hyperparameter optimization occurs. It determines a value for each of the undefined parameters.
  * @rest_spec_name ml.put_data_frame_analytics
+ * @category ai/ml
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

@@ -28,6 +28,7 @@ import { Ids, MediaType } from '@_types/common'
  * expression. You can get information for all anomaly detection jobs by using
  * `_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.
  * @rest_spec_name ml.get_jobs
+ * @category ai/ml
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml

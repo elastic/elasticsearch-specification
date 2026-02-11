@@ -26,6 +26,7 @@ import { MediaType } from '@_types/common'
  *
  * Get the current status for all types of streams.
  * @rest_spec_name streams.status
+ * @category unknown
  * @availability stack since=9.1.0 stability=experimental visibility=feature_flag feature_flag=logs_stream
  * @cluster_privileges monitor
  * @doc_id streams-status

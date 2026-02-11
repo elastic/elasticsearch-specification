@@ -33,6 +33,7 @@ import { MediaType } from '@_types/common'
  * After successful validation of the request, Elasticsearch invalidates the access token and refresh token that corresponds to that specific SAML principal and provides a URL that contains a SAML LogoutResponse message.
  * Thus the user can be redirected back to their IdP.
  * @rest_spec_name security.saml_invalidate
+ * @category security
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id security-api-saml-invalidate

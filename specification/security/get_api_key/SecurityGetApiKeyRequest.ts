@@ -27,6 +27,7 @@ import { Id, MediaType, Name, Username } from '@_types/common'
  * NOTE: If you have only the `manage_own_api_key` privilege, this API returns only the API keys that you own.
  * If you have `read_security`, `manage_api_key` or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.
  * @rest_spec_name security.get_api_key
+ * @category security
  * @availability stack since=6.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_own_api_key, read_security

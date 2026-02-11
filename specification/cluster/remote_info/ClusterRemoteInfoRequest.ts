@@ -32,6 +32,7 @@ import { MediaType } from '@_types/common'
  * > Elasticsearch does not spontaneously try to reconnect to a disconnected remote cluster.
  * > To trigger a reconnection, attempt a cross-cluster search, ES|QL cross-cluster search, or try the [resolve cluster endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-cluster).
  * @rest_spec_name cluster.remote_info
+ * @category management
  * @availability stack since=6.1.0 stability=stable
  * @cluster_privileges monitor
  * @doc_id cluster-remote-info

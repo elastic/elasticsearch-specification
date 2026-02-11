@@ -30,6 +30,7 @@ import { CronExpression } from '@watcher/_types/Schedule'
  * If the policy already exists, this request increments the policy version.
  * Only the latest version of a policy is stored.
  * @rest_spec_name slm.put_lifecycle
+ * @category management
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_slm

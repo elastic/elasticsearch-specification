@@ -45,6 +45,7 @@ import { IndexTemplateMapping } from '@indices/put_index_template/IndicesPutInde
  * You cannot directly apply a component template to a data stream or index.
  * To be applied, a component template must be included in an index template's `composed_of` list.
  * @rest_spec_name cluster.put_component_template
+ * @category management
  * @availability stack since=7.8.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_index_templates

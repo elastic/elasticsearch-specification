@@ -24,6 +24,7 @@ import { MediaType } from '@_types/common'
  * Get the trial status.
  *
  * @rest_spec_name license.get_trial_status
+ * @category info
  * @availability stack since=6.1.0 stability=stable
  * @cluster_privileges monitor
  * @doc_id get-trial-status

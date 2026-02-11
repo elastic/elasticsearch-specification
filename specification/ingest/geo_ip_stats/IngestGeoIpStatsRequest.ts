@@ -26,6 +26,7 @@ import { MediaType } from '@_types/common'
  * Get download statistics for GeoIP2 databases that are used with the GeoIP processor.
  * @doc_id geoip-processor
  * @rest_spec_name ingest.geo_ip_stats
+ * @category ingest
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @ext_doc_id geoip-processor

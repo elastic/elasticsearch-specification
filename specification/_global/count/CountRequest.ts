@@ -43,6 +43,7 @@ import { Operator } from '@_types/query_dsl/Operator'
  * For each shard ID group, a replica is chosen and the search is run against it.
  * This means that replicas increase the scalability of the count.
  * @rest_spec_name count
+ * @category search
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag search

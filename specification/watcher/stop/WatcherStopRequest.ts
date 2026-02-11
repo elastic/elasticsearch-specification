@@ -26,6 +26,7 @@ import { MediaType } from '@_types/common'
  *
  * Stop the Watcher service if it is running.
  * @rest_spec_name watcher.stop
+ * @category info
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
  * @doc_id watcher-api-stop

@@ -28,6 +28,7 @@ import { Policy } from '@enrich/_types/Policy'
  * Creates an enrich policy.
  * @doc_id put-enrich-policy-api
  * @rest_spec_name enrich.put_policy
+ * @category ingest
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */

@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Removes the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.
  * @rest_spec_name indices.delete_data_lifecycle
+ * @category management
  * @availability stack since=8.11.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id data-stream-delete-lifecycle

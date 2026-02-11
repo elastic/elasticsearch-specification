@@ -27,6 +27,7 @@ import { Id, MediaType } from '@_types/common'
  * NOTE: This action doesn’t delete any API keys, ingest pipelines, or data indices associated with the connector.
  * These need to be removed manually.
  * @rest_spec_name connector.delete
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-delete

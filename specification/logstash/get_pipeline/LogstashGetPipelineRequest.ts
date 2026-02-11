@@ -25,6 +25,7 @@ import { Ids, MediaType } from '@_types/common'
  *
  * Get pipelines that are used for Logstash Central Management.
  * @rest_spec_name logstash.get_pipeline
+ * @category ingest
  * @availability stack since=7.12.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_logstash_pipelines

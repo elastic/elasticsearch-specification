@@ -27,6 +27,7 @@ import { Action } from './types'
  *
  * Adds a data stream or index to an alias.
  * @rest_spec_name indices.update_aliases
+ * @category management
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id aliases-update

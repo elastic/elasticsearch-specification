@@ -28,6 +28,7 @@ import { MediaType, Name, Namespace, Refresh, Service } from '@_types/common'
  * NOTE: Service account tokens never expire.
  * You must actively delete them if they are no longer needed.
  * @rest_spec_name security.create_service_token
+ * @category security
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_service_account

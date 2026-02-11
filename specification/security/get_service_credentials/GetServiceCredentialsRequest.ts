@@ -30,6 +30,7 @@ import { MediaType, Name, Namespace } from '@_types/common'
  * NOTE: For tokens backed by the `service_tokens` file, the API collects them from all nodes of the cluster.
  * Tokens with the same name from different nodes are assumed to be the same token and are only counted once towards the total number of service tokens.
  * @rest_spec_name security.get_service_credentials
+ * @category security
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges read_security

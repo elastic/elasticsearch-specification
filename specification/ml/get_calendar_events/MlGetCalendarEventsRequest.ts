@@ -26,6 +26,7 @@ import { DateTime } from '@_types/Time'
  * Get info about events in calendars.
  *
  * @rest_spec_name ml.get_calendar_events
+ * @category ai/ml
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml

@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  * is specified in the template that the data stream matches. The mapping change is only applied to new write indices
  * that are created during rollover after this API is called. No indices are changed by this API.
  * @rest_spec_name indices.put_data_stream_mappings
+ * @category management
  * @availability stack since=9.2.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage

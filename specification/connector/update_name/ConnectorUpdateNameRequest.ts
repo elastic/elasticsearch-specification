@@ -23,6 +23,7 @@ import { Id, MediaType } from '@_types/common'
  * Update the connector name and description.
  *
  * @rest_spec_name connector.update_name
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-update-name

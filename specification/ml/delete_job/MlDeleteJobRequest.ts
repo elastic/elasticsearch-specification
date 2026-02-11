@@ -30,6 +30,7 @@ import { Id, MediaType } from '@_types/common'
  * the delete datafeed API with the same timeout and force parameters as the
  * delete job request.
  * @rest_spec_name ml.delete_job
+ * @category ai/ml
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

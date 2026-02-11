@@ -35,6 +35,7 @@ import { Duration } from '@_types/Time'
  * The indices for the alias become hidden backing indices for the stream.
  * The write index for the alias becomes the write index for the stream.
  * @rest_spec_name indices.migrate_to_data_stream
+ * @category management
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage

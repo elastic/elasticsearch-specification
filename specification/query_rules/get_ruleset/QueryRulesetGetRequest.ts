@@ -24,6 +24,7 @@ import { Id, MediaType } from '@_types/common'
  *
  * Get details about a query ruleset.
  * @rest_spec_name query_rules.get_ruleset
+ * @category ai/ml
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_query_rules

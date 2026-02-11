@@ -58,6 +58,7 @@ import {
  * In addition to `_source`, you can access the following variables through the `ctx` map: `_index`, `_type`, `_id`, `_version`, `_routing`, and `_now` (the current timestamp).
  * For usage examples such as partial updates, upserts, and scripted updates, see the External documentation.
  * @rest_spec_name update
+ * @category document management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges write

@@ -23,6 +23,7 @@ import { Id, MediaType } from '@_types/common'
  * Update the connector service type.
  *
  * @rest_spec_name connector.update_service_type
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-update-service-type

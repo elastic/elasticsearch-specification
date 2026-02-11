@@ -27,6 +27,7 @@ import { MediaType, Names } from '@_types/common'
  * The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.
  * The get roles API cannot retrieve roles that are defined in roles files.
  * @rest_spec_name security.get_role
+ * @category security
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges read_security

@@ -25,6 +25,7 @@ import { MediaType, Names } from '@_types/common'
  *
  * Evict roles from the native role cache.
  * @rest_spec_name security.clear_cached_roles
+ * @category security
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security

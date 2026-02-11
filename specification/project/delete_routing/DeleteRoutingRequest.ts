@@ -25,6 +25,7 @@ import { MediaType } from '@_types/common'
  *
  * @doc_id project-delete-routing
  * @rest_spec_name project.delete_routing
+ * @category unknown
  * @availability serverless stability=experimental visibility=public
  * @cluster_privileges manage
  * @doc_tag project

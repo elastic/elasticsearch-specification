@@ -36,6 +36,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * The create or update roles API cannot update roles that are defined in roles files.
  * File-based role management is not available in Elastic Serverless.
  * @rest_spec_name security.put_role
+ * @category security
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_security

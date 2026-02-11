@@ -25,6 +25,7 @@ import { integer, long } from '@_types/Numeric'
  * Create part of a trained model definition.
  *
  * @rest_spec_name ml.put_trained_model_definition_part
+ * @category ai/ml
  * @availability stack since=8.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

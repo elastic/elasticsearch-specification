@@ -26,6 +26,7 @@ import { long } from '@_types/Numeric'
  *
  * Clear the archived repositories metering information in the cluster.
  * @rest_spec_name nodes.clear_repositories_metering_archive
+ * @category unknown
  * @availability stack since=7.16.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @cluster_privileges monitor, manage

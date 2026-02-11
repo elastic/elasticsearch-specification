@@ -37,6 +37,7 @@ import { Duration } from '@_types/Time'
  *
  * IMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.
  * @rest_spec_name scroll
+ * @category search
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

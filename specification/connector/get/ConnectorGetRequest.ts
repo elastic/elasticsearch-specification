@@ -24,6 +24,7 @@ import { Id, MediaType } from '@_types/common'
  *
  * Get the details about a connector.
  * @rest_spec_name connector.get
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-get

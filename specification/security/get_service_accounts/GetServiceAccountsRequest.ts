@@ -27,6 +27,7 @@ import { MediaType, Namespace, Service } from '@_types/common'
  *
  * NOTE: Currently, only the `elastic/fleet-server` service account is available.
  * @rest_spec_name security.get_service_accounts
+ * @category security
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_service_account

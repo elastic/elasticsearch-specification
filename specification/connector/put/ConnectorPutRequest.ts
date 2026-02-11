@@ -23,6 +23,7 @@ import { Id, IndexName, MediaType } from '@_types/common'
  * Create or update a connector.
  *
  * @rest_spec_name connector.put
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-put

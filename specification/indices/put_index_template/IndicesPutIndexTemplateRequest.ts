@@ -67,6 +67,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * If an earlier component contains a `dynamic_templates` block, then by default new `dynamic_templates` entries are appended onto the end.
  * If an entry already exists with the same key, then it is overwritten by the new definition.
  * @rest_spec_name indices.put_index_template
+ * @category management
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_index_templates

@@ -25,6 +25,7 @@ import { ClusterInfoTargets, MediaType } from '@_types/common'
  *
  * Returns basic information about the cluster.
  * @rest_spec_name cluster.info
+ * @category management
  * @availability stack since=8.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cluster-info

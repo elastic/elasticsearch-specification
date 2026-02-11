@@ -24,6 +24,7 @@ import { MediaType } from '@_types/common'
  *
  * Get help for the CAT APIs.
  * @rest_spec_name cat.help
+ * @category info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat

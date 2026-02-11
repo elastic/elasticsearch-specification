@@ -28,6 +28,7 @@ import { IndicesBlockOptions } from '@indices/_types/IndexSettings'
  * Add an index block to an index.
  * Index blocks limit the operations allowed on an index by blocking specific operation types.
  * @rest_spec_name indices.add_block
+ * @category management
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id index-block-add

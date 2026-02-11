@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Trigger the review of the contents of a snapshot repository and delete any stale data not referenced by existing snapshots.
  * @rest_spec_name snapshot.cleanup_repository
+ * @category management
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage

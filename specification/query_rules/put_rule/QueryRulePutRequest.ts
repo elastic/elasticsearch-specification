@@ -35,6 +35,7 @@ import {
  * Additionally, pinned queries have a maximum limit of 100 pinned hits.
  * If multiple matching rules pin more than 100 documents, only the first 100 documents are pinned in the order they are specified in the ruleset.
  * @rest_spec_name query_rules.put_rule
+ * @category ai/ml
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_query_rules

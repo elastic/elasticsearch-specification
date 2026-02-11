@@ -26,6 +26,7 @@ import { Id, MediaType } from '@_types/common'
  * Returns an object extended information about a running ES|QL query.
  *
  * @rest_spec_name esql.get_query
+ * @category common
  * @cluster_privileges monitor_esql
  * @availability stack since=9.1.0 stability=experimental visibility=public
  * @availability serverless stability=experimental visibility=public

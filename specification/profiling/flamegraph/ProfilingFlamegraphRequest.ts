@@ -25,6 +25,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * Returns basic information about the status of Universal Profiling.
  *
  * @rest_spec_name profiling.flamegraph
+ * @category unknown
  * @availability stack stability=stable visibility=private
  * @doc_id universal-profiling
  */

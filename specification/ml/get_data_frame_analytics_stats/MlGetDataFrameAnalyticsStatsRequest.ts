@@ -25,6 +25,7 @@ import { integer } from '@_types/Numeric'
  * Get data frame analytics job stats.
  *
  * @rest_spec_name ml.get_data_frame_analytics_stats
+ * @category ai/ml
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml

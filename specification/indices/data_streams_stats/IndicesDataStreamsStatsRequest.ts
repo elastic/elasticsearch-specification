@@ -25,6 +25,7 @@ import { ExpandWildcards, Indices, MediaType } from '@_types/common'
  *
  * Get statistics for one or more data streams.
  * @rest_spec_name indices.data_streams_stats
+ * @category management
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @index_privileges monitor

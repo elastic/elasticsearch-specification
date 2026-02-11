@@ -25,6 +25,7 @@ import { MediaType, Name } from '@_types/common'
  *
  * A watch can be either active or inactive.
  * @rest_spec_name watcher.deactivate_watch
+ * @category info
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
  * @doc_id watcher-api-deactivate-watch

@@ -27,6 +27,7 @@ import { MediaType, Name, Refresh } from '@_types/common'
  * The role management APIs are generally the preferred way to manage roles, rather than using file-based role management.
  * The delete roles API cannot remove roles that are defined in roles files.
  * @rest_spec_name security.delete_role
+ * @category security
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_security

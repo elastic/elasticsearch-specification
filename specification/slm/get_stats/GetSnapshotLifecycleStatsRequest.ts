@@ -26,6 +26,7 @@ import { MediaType } from '@_types/common'
  *
  * Get global and policy-level statistics about actions taken by snapshot lifecycle management.
  * @rest_spec_name slm.get_stats
+ * @category management
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_slm

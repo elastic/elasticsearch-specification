@@ -31,6 +31,7 @@ import { CatRequestBase, CatTrainedModelsColumns } from '@cat/_types/CatBase'
  * application consumption, use the get trained models statistics API.
  *
  * @rest_spec_name cat.ml_trained_models
+ * @category info
  * @availability stack since=7.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat-trained-model

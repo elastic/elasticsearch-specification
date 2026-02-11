@@ -28,6 +28,7 @@ import { MediaType, Name, Names, Refresh } from '@_types/common'
  * * The `manage_security` cluster privilege (or a greater privilege such as `all`).
  * * The "Manage Application Privileges" global privilege for the application being referenced in the request.
  * @rest_spec_name security.delete_privileges
+ * @category security
  * @availability stack since=6.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security

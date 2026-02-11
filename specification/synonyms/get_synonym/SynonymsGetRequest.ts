@@ -24,6 +24,7 @@ import { integer } from '@_types/Numeric'
  * Get a synonym set.
  *
  * @rest_spec_name synonyms.get_synonym
+ * @category ingest
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_synonyms

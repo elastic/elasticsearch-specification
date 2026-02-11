@@ -37,6 +37,7 @@ import {
  * * how much memory is estimated to be required. The estimate can be used when deciding the appropriate value for model_memory_limit setting later on.
  * If you have object fields or fields that are excluded via source filtering, they are not included in the explanation.
  * @rest_spec_name ml.explain_data_frame_analytics
+ * @category ai/ml
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml

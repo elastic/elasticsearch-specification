@@ -25,6 +25,7 @@ import { Id, MediaType } from '@_types/common'
  * Cancel a connector sync job, which sets the status to cancelling and updates `cancellation_requested_at` to the current time.
  * The connector service is then responsible for setting the status of connector sync jobs to cancelled.
  * @rest_spec_name connector.sync_job_cancel
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-sync-job-cancel

@@ -29,6 +29,7 @@ import { Id, MediaType } from '@_types/common'
  * If a job was created, ran for a while, then was deleted, the API does not return any details about it.
  * For details about a historical rollup job, the rollup capabilities API may be more useful.
  * @rest_spec_name rollup.get_jobs
+ * @category management
  * @availability stack since=6.3.0 stability=experimental
  * @cluster_privileges monitor_rollup
  * @deprecated 8.11.0

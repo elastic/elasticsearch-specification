@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  * If you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.
  * When a datafeed that has a specified end date stops, it automatically closes its associated job.
  * @rest_spec_name ml.close_job
+ * @category ai/ml
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

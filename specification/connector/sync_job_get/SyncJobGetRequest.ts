@@ -23,6 +23,7 @@ import { Id, MediaType } from '@_types/common'
  * Get a connector sync job.
  *
  * @rest_spec_name connector.sync_job_get
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-sync-job-get

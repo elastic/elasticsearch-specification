@@ -26,6 +26,7 @@ import { MediaType } from '@_types/common'
  *
  * Turn off the logs stream feature for this cluster.
  * @rest_spec_name streams.logs_disable
+ * @category unknown
  * @availability stack since=9.1.0 stability=experimental visibility=feature_flag feature_flag=logs_stream
  * @cluster_privileges manage
  * @doc_id streams-logs-disable

@@ -35,6 +35,7 @@ import { Duration } from '@_types/Time'
  * If this is missing, the data stream will not be able to roll over until a matching index template is created.
  * This will affect the lifecycle management of the data stream and interfere with the data stream size and retention.
  * @rest_spec_name indices.promote_data_stream
+ * @category management
  * @availability stack since=7.9.0 stability=stable
  * @doc_tag data stream
  * @doc_id data-stream-promote

@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Get statistics about the shared cache for partially mounted indices.
  * @rest_spec_name searchable_snapshots.cache_stats
+ * @category management
  * @availability stack since=7.13.0 stability=experimental
  * @cluster_privileges manage
  * @doc_id searchable-snapshots-api-cache-stats

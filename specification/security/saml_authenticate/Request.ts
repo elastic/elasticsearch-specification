@@ -38,6 +38,7 @@ import { Ids, MediaType } from '@_types/common'
  * After successful validation, Elasticsearch responds with an Elasticsearch internal access token and refresh token that can be subsequently used for authentication.
  * This API endpoint essentially exchanges SAML responses that indicate successful authentication in the IdP for Elasticsearch access and refresh tokens, which can be used for authentication against Elasticsearch.
  * @rest_spec_name security.saml_authenticate
+ * @category security
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id security-api-saml-authenticate

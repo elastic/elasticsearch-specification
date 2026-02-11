@@ -26,6 +26,7 @@ import { MediaType } from '@_types/common'
  *
  * Remove master-eligible nodes from the voting configuration exclusion list.
  * @rest_spec_name cluster.delete_voting_config_exclusions
+ * @category management
  * @availability stack since=7.0.0 stability=stable
  * @doc_id voting-config-exclusions
  * @ext_doc_id add-nodes

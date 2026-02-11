@@ -30,6 +30,7 @@ import { Duration } from '@_types/Time'
  * * The user or API key that submitted the original async search request.
  * * Users that have the `monitor` cluster privilege or greater privileges.
  * @rest_spec_name async_search.status
+ * @category search
  * @availability stack since=7.11.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor

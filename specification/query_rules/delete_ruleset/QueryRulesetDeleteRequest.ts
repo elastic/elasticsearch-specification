@@ -25,6 +25,7 @@ import { Id, MediaType } from '@_types/common'
  * Remove a query ruleset and its associated data.
  * This is a destructive action that is not recoverable.
  * @rest_spec_name query_rules.delete_ruleset
+ * @category ai/ml
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_query_rules

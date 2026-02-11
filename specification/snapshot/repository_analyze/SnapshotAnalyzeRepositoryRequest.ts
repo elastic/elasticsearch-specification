@@ -128,6 +128,7 @@ import { Duration } from '@_types/Time'
  * Most of the compare-and-exchange operations performed by repository analysis atomically increment a counter which is represented as an 8-byte blob.
  * Some operations also verify the behavior on small blobs with sizes other than 8 bytes.
  * @rest_spec_name snapshot.repository_analyze
+ * @category management
  * @availability stack since=7.12.0 stability=stable visibility=public
  * @cluster_privileges manage
  * @doc_id analyze-repository

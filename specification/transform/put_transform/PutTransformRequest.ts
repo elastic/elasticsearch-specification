@@ -56,6 +56,7 @@ import {
  * give users any privileges on `.data-frame-internal*` indices.
  *
  * @rest_spec_name transform.put_transform
+ * @category ingest
  * @availability stack since=7.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_transform

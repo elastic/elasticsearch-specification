@@ -27,6 +27,7 @@ import { Operator } from '@_types/query_dsl/Operator'
  *
  * Validates a query without running it.
  * @rest_spec_name indices.validate_query
+ * @category management
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id search-validate

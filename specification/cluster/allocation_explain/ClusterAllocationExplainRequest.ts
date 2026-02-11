@@ -32,6 +32,7 @@ import { Duration } from '@_types/Time'
  * This API can be very useful when attempting to diagnose why a shard is unassigned or why a shard continues to remain on its current node when you might expect otherwise.
  * Refer to the linked documentation for examples of how to troubleshoot allocation issues using this API.
  * @rest_spec_name cluster.allocation_explain
+ * @category management
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-allocation-explain

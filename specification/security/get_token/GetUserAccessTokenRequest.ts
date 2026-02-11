@@ -38,6 +38,7 @@ import { AccessTokenGrantType } from './types'
  * That time period is defined by the `xpack.security.authc.token.timeout` setting.
  * If you want to invalidate a token immediately, you can do so by using the invalidate token API.
  * @rest_spec_name security.get_token
+ * @category security
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_token

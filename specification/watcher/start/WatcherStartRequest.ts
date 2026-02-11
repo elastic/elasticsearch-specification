@@ -26,6 +26,7 @@ import { MediaType } from '@_types/common'
  *
  * Start the Watcher service if it is not already running.
  * @rest_spec_name watcher.start
+ * @category info
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
  * @doc_id watcher-api-start

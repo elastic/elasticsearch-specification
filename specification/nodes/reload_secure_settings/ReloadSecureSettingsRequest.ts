@@ -32,6 +32,7 @@ import { Duration } from '@_types/Time'
  * Reloading the settings for the whole cluster assumes that the keystores for all nodes are protected with the same password; this method is allowed only when inter-node communications are encrypted.
  * Alternatively, you can reload the secure settings on each node by locally accessing the API and passing the node-specific Elasticsearch keystore password.
  * @rest_spec_name nodes.reload_secure_settings
+ * @category unknown
  * @availability stack since=6.5.0 stability=stable
  * @doc_tag cluster
  * @doc_id cluster-nodes-reload-secure-settings

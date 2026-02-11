@@ -27,6 +27,7 @@ import { OperationContainer, UpdateAction } from '@global/bulk/types'
  *
  * This API is used by the monitoring features to send monitoring data.
  * @rest_spec_name monitoring.bulk
+ * @category unknown
  * @availability stack since=6.3.0 stability=stable visibility=private
  * @doc_id apis
  */

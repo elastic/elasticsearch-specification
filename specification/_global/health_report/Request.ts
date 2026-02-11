@@ -43,6 +43,7 @@ import { MediaType } from '@_types/common'
  * NOTE: The health indicators perform root cause analysis of non-green health statuses. This can be computationally expensive when called frequently.
  * When setting up automated polling of the API for health status, set verbose to false to disable the more expensive analysis logic.
  * @rest_spec_name health_report
+ * @category info
  * @availability stack since=8.7.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id health-api

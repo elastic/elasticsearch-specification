@@ -27,6 +27,7 @@ import { CatCircuitBreakerColumns, CatRequestBase } from '@cat/_types/CatBase'
  *
  * IMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications.
  * @rest_spec_name cat.circuit_breaker
+ * @category info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cat-circuit-breaker

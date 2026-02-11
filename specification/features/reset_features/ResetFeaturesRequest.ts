@@ -41,6 +41,7 @@ import { MediaType } from '@_types/common'
  *
  * IMPORTANT: The features installed on the node you submit this request to are the features that will be reset. Run on the master node if you have any doubts about which plugins are installed on individual nodes.
  * @rest_spec_name features.reset_features
+ * @category info
  * @availability stack since=7.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @doc_id features-reset

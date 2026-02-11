@@ -26,6 +26,7 @@ import { Id, MediaType } from '@_types/common'
  * If an anomaly detection job references the filter, you cannot delete the
  * filter. You must update or delete the job before you can delete the filter.
  * @rest_spec_name ml.delete_filter
+ * @category ai/ml
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

@@ -32,6 +32,7 @@ import {
  *
  * It allocates the model to every machine learning node.
  * @rest_spec_name ml.start_trained_model_deployment
+ * @category ai/ml
  * @availability stack since=8.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

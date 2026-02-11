@@ -44,6 +44,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * WARNING: Transient cluster settings are no longer recommended. Use persistent cluster settings instead.
  * If a cluster becomes unstable, transient settings can clear unexpectedly, resulting in a potentially undesired cluster configuration.
  * @rest_spec_name cluster.put_settings
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-update-settings

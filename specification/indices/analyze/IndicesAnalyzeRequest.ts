@@ -36,6 +36,7 @@ import { TextToAnalyze } from './types'
  * @doc_id indices-analyze
  * @ext_doc_id analysis
  * @rest_spec_name indices.analyze
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges index

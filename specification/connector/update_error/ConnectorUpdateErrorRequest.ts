@@ -27,6 +27,7 @@ import { WithNullValue } from '@spec_utils/utils'
  * If the error provided in the request body is non-null, the connector’s status is updated to error.
  * Otherwise, if the error is reset to null, the connector status is updated to connected.
  * @rest_spec_name connector.update_error
+ * @category management
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  * @doc_id connector-update-error

@@ -25,6 +25,7 @@ import { MediaType } from '@_types/common'
  * Get the snapshot lifecycle management status.
  *
  * @rest_spec_name slm.get_status
+ * @category management
  * @availability stack since=7.6.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges read_slm

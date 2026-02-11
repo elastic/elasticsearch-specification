@@ -25,6 +25,7 @@ import { Id, MediaType } from '@_types/common'
  *
  * Remove all scheduled events from a calendar, then delete it.
  * @rest_spec_name ml.delete_calendar
+ * @category ai/ml
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

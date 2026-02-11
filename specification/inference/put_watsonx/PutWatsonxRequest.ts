@@ -34,6 +34,7 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  * You need an IBM Cloud Databases for Elasticsearch deployment to use the `watsonxai` inference service.
  * You can provision one through the IBM catalog, the Cloud Databases CLI plug-in, the Cloud Databases API, or Terraform.
  * @rest_spec_name inference.put_watsonx
+ * @category ai/ml
  * @availability stack since=8.16.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference

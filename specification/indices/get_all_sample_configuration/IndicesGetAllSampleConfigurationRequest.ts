@@ -26,6 +26,7 @@ import { MediaType } from '@_types/common'
  *
  * Get the sampling configurations for all indices.
  * @rest_spec_name indices.get_all_sample_configuration
+ * @category management
  * @availability stack visibility=feature_flag feature_flag=random_sampling since=9.3.0 stability=experimental
  * @doc_id indices-get-all-sample-configuration
  * @doc_tag random_sample

@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * Get information about one or more ingest pipelines.
  * This API returns a local reference of the pipeline.
  * @rest_spec_name ingest.get_pipeline
+ * @category ingest
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id get-pipeline-api

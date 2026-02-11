@@ -34,6 +34,7 @@ import { MediaType, Name, Names } from '@_types/common'
  * This happens when the condition of the watch is not met (the condition evaluates to false).
  * To demonstrate how throttling works in practice and how it can be configured for individual actions within a watch, refer to External documentation.
  * @rest_spec_name watcher.ack_watch
+ * @category info
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
  * @doc_id watcher-api-ack-watch

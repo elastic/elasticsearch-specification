@@ -48,6 +48,7 @@ import { RequestItem } from './types'
  * Each newline character may be preceded by a carriage return `\r`.
  * When sending requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.
  * @rest_spec_name msearch
+ * @category search
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

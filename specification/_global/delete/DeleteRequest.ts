@@ -73,6 +73,7 @@ import { Duration } from '@_types/Time'
  * The delete operation gets hashed into a specific shard ID.
  * It then gets redirected into the primary shard within that ID group and replicated (if needed) to shard replicas within that ID group.
  * @rest_spec_name delete
+ * @category document management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges delete

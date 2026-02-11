@@ -26,6 +26,7 @@ import { MediaType, Names } from '@_types/common'
  * Evict privileges from the native application privilege cache.
  * The cache is also automatically cleared for applications that have their privileges updated.
  * @rest_spec_name security.clear_cached_privileges
+ * @category security
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security

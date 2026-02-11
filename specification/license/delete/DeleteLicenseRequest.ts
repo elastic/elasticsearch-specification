@@ -28,6 +28,7 @@ import { MediaType } from '@_types/common'
  *
  * If the operator privileges feature is enabled, only operator users can use this API.
  * @rest_spec_name license.delete
+ * @category info
  * @availability stack stability=stable
  * @cluster_privileges manage
  * @doc_id delete-license

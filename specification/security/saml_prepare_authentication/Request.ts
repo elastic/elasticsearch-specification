@@ -36,6 +36,7 @@ import { MediaType } from '@_types/common'
  * It also returns a random string that uniquely identifies this SAML Authentication request.
  * The caller of this API needs to store this identifier as it needs to be used in a following step of the authentication process.
  * @rest_spec_name security.saml_prepare_authentication
+ * @category security
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id security-api-saml-prepare-authentication

@@ -25,6 +25,7 @@ import { MediaType } from '@_types/common'
  *
  * Get the list of cluster privileges and index privileges that are available in this version of Elasticsearch.
  * @rest_spec_name security.get_builtin_privileges
+ * @category security
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_security

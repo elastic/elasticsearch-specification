@@ -30,6 +30,7 @@ import { ExpandWildcards, Fields, Indices, MediaType } from '@_types/common'
  * The response body reports the per-shard usage count of the data structures that back the fields in the index.
  * A given request will increment each count by a maximum value of 1, even if the request accesses the same field multiple times.
  * @rest_spec_name indices.field_usage_stats
+ * @category management
  * @availability stack since=7.15.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @index_privileges manage

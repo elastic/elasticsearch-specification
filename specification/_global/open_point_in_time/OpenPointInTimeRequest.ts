@@ -68,6 +68,7 @@ import { Duration } from '@_types/Time'
  * Note that a point-in-time doesn't prevent its associated indices from being deleted.
  * You can check how many point-in-times (that is, search contexts) are open with the nodes stats API.
  * @rest_spec_name open_point_in_time
+ * @category search
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id point-in-time-api

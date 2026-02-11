@@ -26,6 +26,7 @@ import { MediaType } from '@_types/common'
  * Gather security usage statistics from all node(s) within the cluster.
  *
  * @rest_spec_name security.get_stats
+ * @category security
  * @availability stack since=9.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor

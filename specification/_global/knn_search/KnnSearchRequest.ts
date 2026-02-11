@@ -31,6 +31,7 @@ import { KnnSearchQuery } from './_types/Knn'
  * @UpdateForV10 Remove this API when it's no longer needed for compatibility mode with Elasticsearch 8 in rest-api-spec.
  *
  * @rest_spec_name knn_search
+ * @category search
  * @availability stack since=8.0.0 stability=experimental visibility=private
  * @deprecated 8.4.0 The kNN search API has been replaced by the `knn` option in the search API.
  * @doc_tag search

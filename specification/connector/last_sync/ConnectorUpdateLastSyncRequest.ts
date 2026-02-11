@@ -29,6 +29,7 @@ import { SyncStatus } from '../_types/Connector'
  * Update the fields related to the last sync of a connector.
  * This action is used for analytics and monitoring.
  * @rest_spec_name connector.last_sync
+ * @category management
  * @availability stack since=8.12.0 stability=experimental visibility=private
  * @availability serverless stability=experimental visibility=private
  * @doc_id connector-last-sync

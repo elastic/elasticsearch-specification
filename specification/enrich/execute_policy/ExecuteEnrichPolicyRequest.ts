@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * Create the enrich index for an existing enrich policy.
  * @doc_id execute-enrich-policy-api
  * @rest_spec_name enrich.execute_policy
+ * @category ingest
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */

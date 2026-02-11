@@ -127,6 +127,7 @@ import { ZoomLevel } from './_types/ZoomLevel'
  *
  * Learn how to use the vector tile search API with practical examples in the [Vector tile search examples](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/vector-tile-search) guide.
  * @rest_spec_name search_mvt
+ * @category search
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

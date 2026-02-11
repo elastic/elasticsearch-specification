@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Deletes one or more data streams and their backing indices.
  * @rest_spec_name indices.delete_data_stream
+ * @category management
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges delete_index

@@ -37,6 +37,7 @@ import { Page } from '@ml/_types/Page'
  * bucket, which relates to the number of time series being modeled and the
  * number of detectors.
  * @rest_spec_name ml.get_records
+ * @category ai/ml
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_ml

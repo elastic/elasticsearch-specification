@@ -28,6 +28,7 @@ import { Checkpoint } from '../_types/Checkpoints'
  * Get the current global checkpoints for an index.
  * This API is designed for internal use by the Fleet server project.
  * @rest_spec_name fleet.global_checkpoints
+ * @category ingest
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id get-global-checkpoints

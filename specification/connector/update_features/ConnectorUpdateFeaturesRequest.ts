@@ -37,6 +37,7 @@ import { ConnectorFeatures } from '../_types/Connector'
  * To sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.
  * This service runs automatically on Elastic Cloud for Elastic managed connectors.
  * @rest_spec_name connector.update_features
+ * @category management
  * @availability stack stability=experimental visibility=public
  * @doc_id connector-features
  */

@@ -25,6 +25,7 @@ import { MediaType } from '@_types/common'
  *
  * Get information about whether the cluster is running.
  * @rest_spec_name ping
+ * @category unknown
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag cluster

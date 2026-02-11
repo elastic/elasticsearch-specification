@@ -35,6 +35,7 @@ import { FieldMetric } from '@rollup/_types/Metric'
  *
  * Jobs are created in a `STOPPED` state. You can start them with the start rollup jobs API.
  * @rest_spec_name rollup.put_job
+ * @category management
  * @availability stack since=6.3.0 stability=experimental
  * @cluster_privileges manage, manage_rollup
  * @deprecated 8.11.0

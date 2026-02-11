@@ -38,6 +38,7 @@ import { MediaType } from '@_types/common'
  * ILM must be stopped before performing the migration.
  * Use the stop ILM and get ILM status APIs to wait until the reported operation mode is `STOPPED`.
  * @rest_spec_name ilm.migrate_to_data_tiers
+ * @category management
  * @availability stack since=7.14.0 stability=stable
  * @doc_id ilm-migrate-to-data-tiers
  * @ext_doc_id migrate-index-allocation-filters

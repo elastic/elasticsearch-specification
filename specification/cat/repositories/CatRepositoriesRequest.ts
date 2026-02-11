@@ -27,6 +27,7 @@ import { CatRequestBase } from '@cat/_types/CatBase'
  * Get a list of snapshot repositories for a cluster.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.
  * @rest_spec_name cat.repositories
+ * @category info
  * @availability stack since=2.1.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cat-repositories

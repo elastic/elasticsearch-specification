@@ -50,6 +50,7 @@ import { RoleTemplate } from '@security/_types/RoleTemplate'
  * By default a template is evaluated to produce a single string that is the name of the role which should be assigned to the user.
  * If the format of the template is set to "json" then the template is expected to produce a JSON string or an array of JSON strings for the role names.
  * @rest_spec_name security.put_role_mapping
+ * @category security
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security

@@ -29,6 +29,7 @@ import { Policy } from '@ilm/_types/Policy'
  *
  * NOTE: Only the latest version of the policy is stored, you cannot revert to previous versions.
  * @rest_spec_name ilm.put_lifecycle
+ * @category management
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm
  * @index_privileges manage

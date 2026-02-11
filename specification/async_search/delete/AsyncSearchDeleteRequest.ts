@@ -27,6 +27,7 @@ import { Id, MediaType } from '@_types/common'
  * Otherwise, the saved search results are deleted.
  * If the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.
  * @rest_spec_name async_search.delete
+ * @category search
  * @availability stack since=7.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id async-search

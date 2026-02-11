@@ -24,6 +24,7 @@ import { MediaType } from '@_types/common'
  * Creates a secret for a Connector.
  *
  * @rest_spec_name connector.secret_post
+ * @category management
  * @availability stack stability=experimental visibility=private
  */
 export interface Request extends RequestBase {

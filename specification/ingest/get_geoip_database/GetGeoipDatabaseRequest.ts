@@ -25,6 +25,7 @@ import { Ids, MediaType } from '@_types/common'
  *
  * Get information about one or more IP geolocation database configurations.
  * @rest_spec_name ingest.get_geoip_database
+ * @category ingest
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
  * @doc_id geoip-get-database

@@ -26,6 +26,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  *
  * Evaluate match criteria against a query ruleset to identify the rules that would match that criteria.
  * @rest_spec_name query_rules.test
+ * @category ai/ml
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_query_rules

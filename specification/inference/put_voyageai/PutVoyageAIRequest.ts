@@ -35,6 +35,7 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  *
  * Avoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.
  * @rest_spec_name inference.put_voyageai
+ * @category ai/ml
  * @availability stack since=8.19.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference

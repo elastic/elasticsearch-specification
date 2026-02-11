@@ -30,6 +30,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
  *
  * Get search results for an ES|QL (Elasticsearch query language) query.
  * @rest_spec_name esql.query
+ * @category common
  * @availability stack since=8.11.0
  * @availability serverless
  * @doc_id esql-query

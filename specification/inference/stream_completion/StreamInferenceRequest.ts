@@ -32,6 +32,7 @@ import { TaskSettings } from '@inference/_types/Services'
  *
  * This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege). You must use a client that supports streaming.
  * @rest_spec_name inference.stream_completion
+ * @category ai/ml
  * @availability stack since=8.16.0 stability=stable visibility=public
  * @cluster_privileges monitor_inference
  * @doc_id inference-api-stream

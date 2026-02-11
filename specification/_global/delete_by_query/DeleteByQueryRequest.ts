@@ -117,6 +117,7 @@ import { Duration } from '@_types/Time'
  * Cancellation should happen quickly but might take a few seconds.
  * The get task status API will continue to list the delete by query task until this task checks that it has been cancelled and terminates itself.
  * @rest_spec_name delete_by_query
+ * @category document management
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read,delete

@@ -27,6 +27,7 @@ import { MediaType, NodeIds } from '@_types/common'
  * This API exposes monotonically non-decreasing counters and it is expected that clients would durably store the information needed to compute aggregations over a period of time.
  * Additionally, the information exposed by this API is volatile, meaning that it will not be present after node restarts.
  * @rest_spec_name nodes.get_repositories_metering_info
+ * @category unknown
  * @availability stack since=7.16.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @cluster_privileges monitor, manage

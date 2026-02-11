@@ -52,6 +52,7 @@ import { Duration } from '@_types/Time'
  *
  * Because opening or closing an index allocates its shards, the `wait_for_active_shards` setting on index creation applies to the `_open` and `_close` index actions as well.
  * @rest_spec_name indices.open
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id indices-open-close

@@ -77,6 +77,7 @@ import { long } from '@_types/Numeric'
  * POST /.ds-my-data-stream-2099.03.07-000001/_forcemerge?max_num_segments=1
  * ```
  * @rest_spec_name indices.forcemerge
+ * @category management
  * @availability stack since=2.1.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id indices-forcemerge

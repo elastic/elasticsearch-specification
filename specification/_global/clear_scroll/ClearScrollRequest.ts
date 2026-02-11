@@ -25,6 +25,7 @@ import { MediaType, ScrollIds } from '@_types/common'
  *
  * Clear the search context and results for a scrolling search.
  * @rest_spec_name clear_scroll
+ * @category search
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id clear-scroll-api

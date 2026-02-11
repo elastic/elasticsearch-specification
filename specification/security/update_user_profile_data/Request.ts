@@ -44,6 +44,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * For both labels and data, content is namespaced by the top-level fields.
  * The `update_profile_data` global privilege grants privileges for updating only the allowed namespaces.
  * @rest_spec_name security.update_user_profile_data
+ * @category security
  * @availability stack since=8.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_user_profile

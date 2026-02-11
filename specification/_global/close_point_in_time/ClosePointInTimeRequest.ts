@@ -28,6 +28,7 @@ import { Id, MediaType } from '@_types/common'
  * A point in time is automatically closed when the `keep_alive` period has elapsed.
  * However, keeping points in time has a cost; close them as soon as they are no longer required for search requests.
  * @rest_spec_name close_point_in_time
+ * @category search
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id point-in-time-api

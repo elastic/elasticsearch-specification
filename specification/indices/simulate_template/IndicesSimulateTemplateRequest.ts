@@ -35,6 +35,7 @@ import { IndexTemplateMapping } from '@indices/put_index_template/IndicesPutInde
  *
  * Get the index configuration that would be applied by a particular index template.
  * @rest_spec_name indices.simulate_template
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_index_templates

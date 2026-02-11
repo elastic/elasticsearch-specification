@@ -27,6 +27,7 @@ import { IndexTemplate } from '@indices/_types/IndexTemplate'
  *
  * Get the index configuration that would be applied to the specified index from an existing index template.
  * @rest_spec_name indices.simulate_index_template
+ * @category management
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-simulate

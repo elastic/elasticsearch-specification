@@ -31,6 +31,7 @@ import { Duration } from '@_types/Time'
  * To delete the index, you must roll over the data stream so a new write index is created.
  * You can then use the delete index API to delete the previous write index.
  * @rest_spec_name indices.delete
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-delete-index

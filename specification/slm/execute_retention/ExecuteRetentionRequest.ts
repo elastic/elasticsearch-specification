@@ -27,6 +27,7 @@ import { MediaType } from '@_types/common'
  * Manually apply the retention policy to force immediate removal of snapshots that are expired according to the snapshot lifecycle policy retention rules.
  * The retention policy is normally applied according to its schedule.
  * @rest_spec_name slm.execute_retention
+ * @category management
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_slm

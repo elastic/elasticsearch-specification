@@ -43,6 +43,7 @@ import { Actions } from './types'
  *
  * Action names can contain any number of printable ASCII characters and must contain at least one of the following characters: `/`, `*`, `:`.
  * @rest_spec_name security.put_privileges
+ * @category security
  * @availability stack since=6.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security

@@ -24,6 +24,7 @@ import { MediaType, Name } from '@_types/common'
  *
  * Remove a search application and its associated alias. Indices attached to the search application are not removed.
  * @rest_spec_name search_application.delete
+ * @category management
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @cluster_privileges manage_search_application

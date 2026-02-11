@@ -30,6 +30,7 @@ import { Duration } from '@_types/Time'
  *
  * If the Elasticsearch security features are enabled, you must have the `view_index_metadata` or `manage` index privilege for the target data stream, index, or alias.
  * @rest_spec_name search_shards
+ * @category search
  * @availability stack stability=stable
  * @index_privileges view_index_metadata
  * @doc_tag search

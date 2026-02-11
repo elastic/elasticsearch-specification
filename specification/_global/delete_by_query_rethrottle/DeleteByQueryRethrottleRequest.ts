@@ -27,6 +27,7 @@ import { float } from '@_types/Numeric'
  * Change the number of requests per second for a particular delete by query operation.
  * Rethrottling that speeds up the query takes effect immediately but rethrotting that slows down the query takes effect after completing the current batch to prevent scroll timeouts.
  * @rest_spec_name delete_by_query_rethrottle
+ * @category document management
  * @availability stack since=6.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_tag document

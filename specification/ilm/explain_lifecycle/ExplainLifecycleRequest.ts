@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  *
  * The response indicates when the index entered each lifecycle state, provides the definition of the running phase, and information about any failures.
  * @rest_spec_name ilm.explain_lifecycle
+ * @category management
  * @availability stack since=6.6.0 stability=stable
  * @index_privileges view_index_metadata,manage_ilm
  * @doc_id ilm-explain-lifecycle

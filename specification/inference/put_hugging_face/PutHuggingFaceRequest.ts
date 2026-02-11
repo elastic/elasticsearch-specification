@@ -69,6 +69,7 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  * * `jina-reranker-v1-turbo-en-GGUF`
  *
  * @rest_spec_name inference.put_hugging_face
+ * @category ai/ml
  * @availability stack since=8.12.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference

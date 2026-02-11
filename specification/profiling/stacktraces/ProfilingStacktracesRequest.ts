@@ -25,6 +25,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * Extracts raw stacktrace information from Universal Profiling.
  *
  * @rest_spec_name profiling.stacktraces
+ * @category unknown
  * @availability stack stability=stable visibility=private
  * @doc_id universal-profiling
  */

@@ -36,6 +36,7 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  * To review the available `rerank` models, refer to <https://jina.ai/reranker>.
  * To review the available `embedding` and `text_embedding` models, refer to <https://jina.ai/embeddings/>.
  * @rest_spec_name inference.put_jinaai
+ * @category ai/ml
  * @availability stack since=8.18.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference

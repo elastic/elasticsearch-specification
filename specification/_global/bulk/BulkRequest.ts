@@ -148,6 +148,7 @@ import { OperationContainer, UpdateAction } from './types'
  * You might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.
  * Refer to the linked documentation for step-by-step instructions using the index settings API.
  * @rest_spec_name bulk
+ * @category document management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id docs-bulk

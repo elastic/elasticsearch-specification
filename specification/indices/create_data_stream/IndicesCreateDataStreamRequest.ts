@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * You must have a matching index template with data stream enabled.
  * @rest_spec_name indices.create_data_stream
+ * @category management
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges create_index

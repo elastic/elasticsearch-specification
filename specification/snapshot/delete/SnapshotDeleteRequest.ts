@@ -25,6 +25,7 @@ import { Duration } from '@_types/Time'
  * Delete snapshots.
  *
  * @rest_spec_name snapshot.delete
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage

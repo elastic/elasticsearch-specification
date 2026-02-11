@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Delete one or more ingest pipelines.
  * @rest_spec_name ingest.delete_pipeline
+ * @category ingest
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id delete-pipeline-api

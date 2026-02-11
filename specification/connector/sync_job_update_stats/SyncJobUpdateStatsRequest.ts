@@ -31,6 +31,7 @@ import { Duration } from '@_types/Time'
  * To sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.
  * This service runs automatically on Elastic Cloud for Elastic managed connectors.
  * @rest_spec_name connector.sync_job_update_stats
+ * @category management
  * @availability stack stability=experimental visibility=public
  * @doc_id connector-sync-job-stats
  */

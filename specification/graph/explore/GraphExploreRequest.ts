@@ -35,6 +35,7 @@ import { Hop } from '../_types/Hop'
  * You can exclude vertices that have already been returned.
  * @doc_id graph-explore-api
  * @rest_spec_name graph.explore
+ * @category ai/ml
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @ext_doc_id graph

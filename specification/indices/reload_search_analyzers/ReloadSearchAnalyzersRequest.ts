@@ -37,6 +37,7 @@ import { ExpandWildcards, Indices, MediaType } from '@_types/common'
  * Because reloading affects every node with an index shard, it is important to update the synonym file on every data node in the cluster--including nodes that don't contain a shard replica--before using this API.
  * This ensures the synonym file is updated everywhere in the cluster in case shards are relocated in the future.
  * @rest_spec_name indices.reload_search_analyzers
+ * @category management
  * @availability stack since=7.3.0 stability=stable
  * @index_privileges manage
  * @doc_id indices-reload-analyzers

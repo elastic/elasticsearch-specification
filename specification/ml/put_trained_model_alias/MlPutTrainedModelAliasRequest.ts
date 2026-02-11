@@ -40,6 +40,7 @@ import { Id, MediaType, Name } from '@_types/common'
  * common between the old and new trained models for the model alias, the API
  * returns a warning.
  * @rest_spec_name ml.put_trained_model_alias
+ * @category ai/ml
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

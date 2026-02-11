@@ -41,6 +41,7 @@ import { Access } from '@security/_types/Access'
  * Cross-cluster API keys can only be updated with the update cross-cluster API key API.
  * Attempting to update them with the update REST API key API or the bulk update REST API keys API will result in an error.
  * @rest_spec_name security.create_cross_cluster_api_key
+ * @category security
  * @availability stack stability=stable
  * @cluster_privileges manage_security
  * @doc_id security-api-cross-cluster-key

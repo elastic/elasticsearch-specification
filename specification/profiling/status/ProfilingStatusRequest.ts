@@ -25,6 +25,7 @@ import { MediaType } from '@_types/common'
  * Returns basic information about the status of Universal Profiling.
  *
  * @rest_spec_name profiling.status
+ * @category unknown
  * @availability stack stability=stable visibility=private
  * @doc_id universal-profiling
  */

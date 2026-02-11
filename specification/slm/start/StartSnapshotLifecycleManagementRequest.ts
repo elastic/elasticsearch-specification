@@ -27,6 +27,7 @@ import { MediaType } from '@_types/common'
  * Snapshot lifecycle management (SLM) starts automatically when a cluster is formed.
  * Manually starting SLM is necessary only if it has been stopped using the stop SLM API.
  * @rest_spec_name slm.start
+ * @category management
  * @availability stack since=7.6.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_slm

@@ -32,6 +32,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * To sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.
  * This service runs automatically on Elastic Cloud for Elastic managed connectors.
  * @rest_spec_name connector.sync_job_claim
+ * @category management
  * @availability stack stability=experimental visibility=public
  * @doc_id connector-sync-job-claim
  */

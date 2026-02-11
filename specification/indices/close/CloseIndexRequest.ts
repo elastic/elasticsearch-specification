@@ -48,6 +48,7 @@ import { Duration } from '@_types/Time'
  * Closing indices can be turned off with the cluster settings API by setting `cluster.indices.close.enable` to `false`.
  * @doc_id indices-close
  * @rest_spec_name indices.close
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @index_privileges manage

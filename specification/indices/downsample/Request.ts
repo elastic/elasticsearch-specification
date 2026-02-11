@@ -38,6 +38,7 @@ import { DownsampleConfig } from '@indices/_types/Downsample'
  * The source index must be read-only (`index.blocks.write: true`).
  * @doc_id indices-downsample-data-stream
  * @rest_spec_name indices.downsample
+ * @category management
  * @availability stack since=8.5.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @doc_tag data stream

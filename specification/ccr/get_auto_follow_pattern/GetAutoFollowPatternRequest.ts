@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Get cross-cluster replication auto-follow patterns.
  * @rest_spec_name ccr.get_auto_follow_pattern
+ * @category management
  * @availability stack since=6.5.0 stability=stable
  * @cluster_privileges manage_ccr
  * @doc_id ccr-get-auto-follow-pattern

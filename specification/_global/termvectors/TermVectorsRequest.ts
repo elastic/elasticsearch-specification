@@ -75,6 +75,7 @@ import { Filter } from './types'
  * Use `routing` only to hit a particular shard.
  * Refer to the linked documentation for detailed examples of how to use this API.
  * @rest_spec_name termvectors
+ * @category document management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

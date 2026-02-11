@@ -31,6 +31,7 @@ import { Hint } from './types'
  * Individual users and external applications should not call this API directly.
  * Elastic reserves the right to change or remove this feature in future releases without prior notice.
  * @rest_spec_name security.suggest_user_profiles
+ * @category security
  * @availability stack since=8.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges read_security

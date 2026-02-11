@@ -32,6 +32,7 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
  * only certain settings are allowed. If possible, the setting change is applied to all
  * backing indices. Otherwise, it will be applied when the data stream is next rolled over.
  * @rest_spec_name indices.put_data_stream_settings
+ * @category management
  * @availability stack since=9.1.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage

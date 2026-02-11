@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * Delete a snapshot lifecycle policy definition.
  * This operation prevents any future snapshots from being taken but does not cancel in-progress snapshots or remove previously-taken snapshots.
  * @rest_spec_name slm.delete_lifecycle
+ * @category management
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_slm

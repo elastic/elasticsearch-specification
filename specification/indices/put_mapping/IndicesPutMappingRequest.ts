@@ -55,6 +55,7 @@ import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
  *
  * Learn how to use the update mapping API with practical examples in the [Update mapping API examples](https://www.elastic.co/docs/manage-data/data-store/mapping/update-mappings-examples) guide.
  * @rest_spec_name indices.put_mapping
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-put-mapping

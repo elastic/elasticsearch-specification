@@ -26,6 +26,7 @@ import { Include } from '@ml/_types/Include'
  * Get trained model configuration info.
  *
  * @rest_spec_name ml.get_trained_models
+ * @category ai/ml
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml

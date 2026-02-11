@@ -60,6 +60,7 @@ import { integer } from '@_types/Numeric'
  * The response exposes implementation details of the analysis which may change from version to version.
  * The response body format is therefore not considered stable and may be different in newer versions.
  * @rest_spec_name snapshot.repository_verify_integrity
+ * @category management
  * @availability stack since=8.16.0 stability=experimental visibility=public
  * @cluster_privileges manage
  * @doc_id snapshot-repo-verify-integrity

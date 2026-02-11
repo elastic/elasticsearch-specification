@@ -48,6 +48,7 @@ import { Duration } from '@_types/Time'
  * Do not query this API using external monitoring tools.
  * Instead, obtain the information you require using other more stable cluster APIs.
  * @rest_spec_name cluster.state
+ * @category management
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor, manage

@@ -29,6 +29,7 @@ import { MediaType } from '@_types/common'
  * * License information about the currently installed license.
  * * Feature information for the features that are currently enabled and available under the current license.
  * @rest_spec_name xpack.info
+ * @category info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor

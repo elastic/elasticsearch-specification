@@ -24,6 +24,7 @@ import { SearchApplicationParameters } from '../_types/SearchApplicationParamete
  * Create or update a search application.
  *
  * @rest_spec_name search_application.put
+ * @category management
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @cluster_privileges manage_search_application

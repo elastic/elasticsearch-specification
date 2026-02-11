@@ -32,6 +32,7 @@ import { Id, MediaType } from '@_types/common'
  * 1. Does this index have associated rollup data somewhere in the cluster?
  * 2. If yes to the first question, what fields were rolled up, what aggregations can be performed, and where does the data live?
  * @rest_spec_name rollup.get_rollup_caps
+ * @category management
  * @availability stack since=6.3.0 stability=experimental
  * @cluster_privileges monitor_rollup
  * @deprecated 8.11.0

@@ -27,6 +27,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * Generate and run an Elasticsearch query that uses the specified query parameteter and the search template associated with the search application or default template.
  * Unspecified template parameters are assigned their default values if applicable.
  * @rest_spec_name search_application.search
+ * @category management
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id search-application-search

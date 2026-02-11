@@ -44,6 +44,7 @@ import { EcsCompatibilityType, FormatType } from '../_types/Structure'
  * If the structure finder produces unexpected results, specify the `explain` query parameter and an explanation will appear in the response.
  * It helps determine why the returned structure was chosen.
  * @rest_spec_name text_structure.find_field_structure
+ * @category ai/ml
  * @availability stack stability=stable visibility=public
  * @cluster_privileges monitor_text_structure
  * @doc_id find-field-structure

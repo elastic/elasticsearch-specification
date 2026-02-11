@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * A data frame analytics job can be started and stopped multiple times
  * throughout its lifecycle.
  * @rest_spec_name ml.stop_data_frame_analytics
+ * @category ai/ml
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

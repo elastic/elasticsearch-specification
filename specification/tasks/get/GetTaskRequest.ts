@@ -31,6 +31,7 @@ import { Duration } from '@_types/Time'
  *
  * If the task identifier is not found, a 404 response code indicates that there are no resources that match the request.
  * @rest_spec_name tasks.get
+ * @category info
  * @availability stack since=5.0.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  * @cluster_privileges monitor

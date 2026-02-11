@@ -25,6 +25,7 @@ import { Duration } from '@_types/Time'
  * Delete IP geolocation database configurations.
  *
  * @rest_spec_name ingest.delete_ip_location_database
+ * @category ingest
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
  * @cluster_privileges manage

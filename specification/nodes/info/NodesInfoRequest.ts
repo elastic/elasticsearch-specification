@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * By default, the API returns all attributes and core settings for cluster nodes.
  * @rest_spec_name nodes.info
+ * @category unknown
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-nodes-info

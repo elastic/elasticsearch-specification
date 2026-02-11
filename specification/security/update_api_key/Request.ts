@@ -45,6 +45,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * IMPORTANT: If you don't specify `role_descriptors` in the request, a call to this API might still change the API key's access scope.
  * This change can occur if the owner user's permissions have changed since the API key was created or last modified.
  * @rest_spec_name security.update_api_key
+ * @category security
  * @availability stack since=8.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_own_api_key

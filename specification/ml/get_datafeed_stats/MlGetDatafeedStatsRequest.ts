@@ -30,6 +30,7 @@ import { Ids, MediaType } from '@_types/common'
  * only information you receive is the `datafeed_id` and the `state`.
  * This API returns a maximum of 10,000 datafeeds.
  * @rest_spec_name ml.get_datafeed_stats
+ * @category ai/ml
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml

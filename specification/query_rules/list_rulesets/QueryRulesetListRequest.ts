@@ -25,6 +25,7 @@ import { MediaType } from '@_types/common'
  *
  * Get summarized information about the query rulesets.
  * @rest_spec_name query_rules.list_rulesets
+ * @category ai/ml
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_query_rules

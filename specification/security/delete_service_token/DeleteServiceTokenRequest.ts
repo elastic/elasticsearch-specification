@@ -25,6 +25,7 @@ import { MediaType, Name, Namespace, Refresh, Service } from '@_types/common'
  *
  * Delete service account tokens for a service in a specified namespace.
  * @rest_spec_name security.delete_service_token
+ * @category security
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_service_account

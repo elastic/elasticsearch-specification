@@ -25,6 +25,7 @@ import { Id, MediaType } from '@_types/common'
  *
  * Updates certain properties of a snapshot.
  * @rest_spec_name ml.update_model_snapshot
+ * @category ai/ml
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml

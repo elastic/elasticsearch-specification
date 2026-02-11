@@ -28,6 +28,7 @@ import { CatRequestBase, CatTemplatesColumns } from '@cat/_types/CatBase'
  * You can use index templates to apply index settings and field mappings to new indices at creation.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get index template API.
  * @rest_spec_name cat.templates
+ * @category info
  * @availability stack since=5.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cat-templates

@@ -26,6 +26,7 @@ import { MediaType } from '@_types/common'
  *
  * This API returns stats about auto-following and the same shard-level stats as the get follower stats API.
  * @rest_spec_name ccr.stats
+ * @category management
  * @availability stack since=6.5.0 stability=stable
  * @cluster_privileges monitor
  * @doc_id ccr-get-stats

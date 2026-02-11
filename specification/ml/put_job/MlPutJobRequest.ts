@@ -33,6 +33,7 @@ import { CustomSettings } from '@ml/_types/Settings'
  * If you include a `datafeed_config`, you must have read index privileges on the source index.
  * If you include a `datafeed_config` but do not provide a query, the datafeed uses `{"match_all": {"boost": 1}}`.
  * @rest_spec_name ml.put_job
+ * @category ai/ml
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

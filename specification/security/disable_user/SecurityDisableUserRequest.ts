@@ -27,6 +27,7 @@ import { MediaType, Refresh, Username } from '@_types/common'
  * By default, when you create users, they are enabled.
  * You can use this API to revoke a user's access to Elasticsearch.
  * @rest_spec_name security.disable_user
+ * @category security
  * @availability stack stability=stable
  * @cluster_privileges manage_security
  * @doc_id security-api-disable-user

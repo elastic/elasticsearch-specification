@@ -29,6 +29,7 @@ import { MediaType } from '@_types/common'
  * > If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.
  * > If you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.
  * @rest_spec_name license.get
+ * @category info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id get-license

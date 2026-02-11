@@ -27,6 +27,7 @@ import { TaskSettings } from '@inference/_types/Services'
  * Perform reranking inference on the service.
  *
  * @rest_spec_name inference.rerank
+ * @category ai/ml
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_inference

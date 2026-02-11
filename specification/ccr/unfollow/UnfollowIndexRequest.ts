@@ -31,6 +31,7 @@ import { Duration } from '@_types/Time'
  * > info
  * > Currently cross-cluster replication does not support converting an existing regular index to a follower index. Converting a follower index to a regular index is an irreversible operation.
  * @rest_spec_name ccr.unfollow
+ * @category management
  * @availability stack since=6.5.0 stability=stable
  * @index_privileges manage_follow_index
  * @doc_id ccr-post-unfollow
