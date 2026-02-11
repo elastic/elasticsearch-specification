@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "isolatedModules": false,
+    "jsx": "react",
+    "outDir": "lib",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictNullChecks": true,
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "preserveConstEnums": true,
+    "sourceMap": false,
+    "strictPropertyInitialization": false
+  },
+  "compileOnSave": true,
+  "buildOnSave": true,
+  "exclude": [
+    "specification",
+    "lib"
+  ],
+  "include": [
+    "./src"
+  ]
+}
