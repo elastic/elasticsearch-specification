@@ -4,7 +4,7 @@
   },
   "dependencies": {
     "@redocly/cli": "^1.34.6",
-    "bump-cli": "^2.9.10"
+    "bump-cli": "^2.9.11"
   },
   "version": "overlay"
 }

@@ -265,6 +265,12 @@ export class FunctionScoreContainer {
   filter?: QueryContainer
   /** @variant container_property */
   weight?: double
+  /**
+   * A name to identify which function matched and influenced the score.
+   * @availability stack since=9.4.0
+   * @variant container_property
+   */
+  _name?: string
 }
 
 export enum FunctionScoreMode {
