@@ -646,8 +646,13 @@ export class MultiTermsAggregation extends BucketAggregationBase {
 export class MultiTermLookup {
   /**
    * A field from which to retrieve terms.
+   * It is required if `script` is not provided.
    */
   field?: Field
+  /**
+   * A script to calculate terms to aggregate on.
+   * It is required if `field` is not provided.
+   */
   script?: Script
   /**
    * The value to apply to documents that do not have a value.
