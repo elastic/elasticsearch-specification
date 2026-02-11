@@ -953,6 +953,9 @@ pub struct Endpoint {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub doc_tag: Option<String>,
 
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub category: Option<String>,
+
     /// If missing, there is not yet a request definition for this endpoint.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub request: Option<TypeName>,
