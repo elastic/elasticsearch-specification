@@ -38,11 +38,11 @@ export interface Request extends CatRequestBase {
   urls: [
     {
       path: '/_cat/count'
-      methods: ['GET', 'POST']
+      methods: ['POST', 'GET']
     },
     {
       path: '/_cat/count/{index}'
-      methods: ['GET', 'POST']
+      methods: ['POST', 'GET']
     }
   ]
   path_parts: {
