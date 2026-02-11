@@ -216,6 +216,14 @@ pub fn paths_as_extentions(url: &UrlTemplate) -> IndexMap<String, Value> {
     result
 }
 
+pub fn category_as_extensions(category: &Option<String>) -> IndexMap<String, Value> {
+    let mut result = IndexMap::new();
+    if let Some(category) = category {
+        result.insert("x-category".to_string(), Value::String(category.to_string()));
+    }
+    result
+}
+
 pub fn api_name_as_extensions(name: &String) -> IndexMap<String, Value> {
     let mut result = IndexMap::new();
     if !name.is_empty() {
