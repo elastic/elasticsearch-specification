@@ -19,15 +19,18 @@
 
 export enum StreamType {
   /**
-   * The logs stream type, deprecated in 9.4.0, use the 'logs.otel' and 'logs.ecs' types instead.
+   * The logs stream type.
+   * @deprecated 9.4.0 Use the 'logs.otel' and 'logs.ecs' types instead
    */
-  Logs = 'logs',
+  logs,
   /**
    * The logs.otel stream type, meant for OTel-formatted data.
+   * @codegen_name logs_otel
    */
-  LogsOTel = 'logs.otel',
+  'logs.otel',
   /**
    * The logs.ecs stream type, meant for ECS-formatted data.
+   * @codegen_name logs_ecs
    */
-  LogsECS = 'logs.ecs'
+  'logs.ecs',
 }
