@@ -44107,27 +44107,43 @@
         ]
       },
       "_types.aggregations.MultiTermLookup": {
-        "type": "object",
-        "properties": {
-          "field": {
-            "description": "A fields from which to retrieve terms.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Field"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "missing": {
+                "description": "The value to apply to documents that do not have a value.\nBy default, documents without a value are ignored.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.Missing"
+                  }
+                ]
               }
-            ]
+            }
           },
-          "missing": {
-            "description": "The value to apply to documents that do not have a value.\nBy default, documents without a value are ignored.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.aggregations.Missing"
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "A field from which to retrieve terms.\nIt is required if `script` is not provided.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "script": {
+                "description": "A script to calculate terms to aggregate on.\nIt is required if `field` is not provided.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Script"
+                  }
+                ]
               }
-            ]
+            },
+            "minProperties": 1,
+            "maxProperties": 1
           }
-        },
-        "required": [
-          "field"
         ]
       },
       "_types.aggregations.NestedAggregation": {

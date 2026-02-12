@@ -4144,7 +4144,8 @@ export interface AggregationsMultiBucketBase {
 }
 
 export interface AggregationsMultiTermLookup {
-  field: Field
+  field?: Field
+  script?: Script | string
   missing?: AggregationsMissing
 }
 
