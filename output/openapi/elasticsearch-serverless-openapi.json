@@ -937,8 +937,8 @@
           "cat"
         ],
         "summary": "Get a document count",
-        "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
-        "operationId": "cat-count",
+        "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.\n\nNOTE: Starting in Elasticsearch 9.3.0, this endpoint also supports the `POST` method. This is primarily intended for project routing in serverless environments.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "cat-count-1",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.count-h"
@@ -968,8 +968,8 @@
           "cat"
         ],
         "summary": "Get a document count",
-        "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
-        "operationId": "cat-count-1",
+        "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.\n\nNOTE: Starting in Elasticsearch 9.3.0, this endpoint also supports the `POST` method. This is primarily intended for project routing in serverless environments.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "cat-count",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.count-h"
@@ -1001,8 +1001,8 @@
           "cat"
         ],
         "summary": "Get a document count",
-        "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
-        "operationId": "cat-count-2",
+        "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.\n\nNOTE: Starting in Elasticsearch 9.3.0, this endpoint also supports the `POST` method. This is primarily intended for project routing in serverless environments.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "cat-count-3",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.count-index"
@@ -1035,8 +1035,8 @@
           "cat"
         ],
         "summary": "Get a document count",
-        "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
-        "operationId": "cat-count-3",
+        "description": "Get quick access to a document count for a data stream, an index, or an entire cluster.\nThe document count only includes live documents, not deleted documents which have not yet been removed by the merge process.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the count API.\n\nNOTE: Starting in Elasticsearch 9.3.0, this endpoint also supports the `POST` method. This is primarily intended for project routing in serverless environments.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "cat-count-2",
         "parameters": [
           {
             "$ref": "#/components/parameters/cat.count-index"
