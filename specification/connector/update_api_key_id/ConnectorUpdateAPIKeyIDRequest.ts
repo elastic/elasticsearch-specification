@@ -26,6 +26,7 @@ import { Id, MediaType } from '@_types/common'
  * The connector secret ID is required only for Elastic managed (native) connectors.
  * Self-managed connectors (connector clients) do not use this field.
  * @rest_spec_name connector.update_api_key_id
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-update-api-key-id

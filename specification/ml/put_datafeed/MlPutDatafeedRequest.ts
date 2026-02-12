@@ -50,6 +50,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * You must use Kibana, this API, or the create anomaly detection jobs API to create a datafeed. Do not add a datafeed
  * directly to the `.ml-config` index. Do not give users `write` privileges on the `.ml-config` index.
  * @rest_spec_name ml.put_datafeed
+ * @category ai/ml
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

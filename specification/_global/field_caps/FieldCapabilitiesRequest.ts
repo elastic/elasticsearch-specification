@@ -37,6 +37,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * It returns runtime fields like any other field.
  * For example, a runtime field with a type of keyword is returned the same as any other field that belongs to the `keyword` family.
  * @rest_spec_name field_caps
+ * @category unknown
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges view_index_metadata,read

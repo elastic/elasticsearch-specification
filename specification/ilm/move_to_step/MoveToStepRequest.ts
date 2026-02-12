@@ -38,6 +38,7 @@ import { StepKey } from './types'
  * Only actions specified in the ILM policy are considered valid.
  * An index cannot move to a step that is not part of its policy.
  * @rest_spec_name ilm.move_to_step
+ * @category management
  * @availability stack since=6.6.0 stability=stable
  * @index_privileges manage_ilm
  * @doc_id ilm-move-to-step

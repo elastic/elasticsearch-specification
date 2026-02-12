@@ -37,6 +37,7 @@ import { MediaType } from '@_types/common'
  * You can see the current value for the upgrade_mode setting by using the get
  * machine learning info API.
  * @rest_spec_name ml.set_upgrade_mode
+ * @category ai/ml
  * @availability stack since=6.7.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml

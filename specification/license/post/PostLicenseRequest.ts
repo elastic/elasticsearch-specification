@@ -33,6 +33,7 @@ import { License } from '@license/_types/License'
  * NOTE: If Elasticsearch security features are enabled and you are installing a gold or higher license, you must enable TLS on the transport networking layer before you install the license.
  * If the operator privileges feature is enabled, only operator users can use this API.
  * @rest_spec_name license.post
+ * @category info
  * @availability stack stability=stable
  * @cluster_privileges manage
  * @doc_id update-license

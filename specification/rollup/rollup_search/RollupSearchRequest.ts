@@ -39,6 +39,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * For more detailed examples of using the rollup search API, including querying rolled-up data only or combining rolled-up and live data, refer to the External documentation.
  *
  * @rest_spec_name rollup.rollup_search
+ * @category management
  * @availability stack since=6.3.0 stability=experimental
  * @deprecated 8.11.0
  * @doc_id rollup-search

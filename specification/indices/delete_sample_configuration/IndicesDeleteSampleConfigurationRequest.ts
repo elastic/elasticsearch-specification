@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Delete the sampling configuration for the specified index.
  * @rest_spec_name indices.delete_sample_configuration
+ * @category management
  * @availability stack visibility=feature_flag feature_flag=random_sampling since=9.3.0 stability=experimental
  * @doc_id indices-delete-sample-configuration
  * @doc_tag random_sample

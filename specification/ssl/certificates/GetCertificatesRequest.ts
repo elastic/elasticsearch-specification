@@ -39,6 +39,7 @@ import { MediaType } from '@_types/common'
  *
  * If Elasticsearch is configured to use a keystore or truststore, the API output includes all certificates in that store, even though some of the certificates might not be in active use within the cluster.
  * @rest_spec_name ssl.certificates
+ * @category unknown
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor

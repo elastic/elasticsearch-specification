@@ -26,6 +26,7 @@ import { Ids, MediaType } from '@_types/common'
  * Evict a subset of all entries from the API key cache.
  * The cache is also automatically cleared on state changes of the security index.
  * @rest_spec_name security.clear_api_key_cache
+ * @category security
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_security

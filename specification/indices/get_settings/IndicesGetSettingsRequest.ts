@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * Get setting information for one or more indices.
  * For data streams, it returns setting information for the stream's backing indices.
  * @rest_spec_name indices.get_settings
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges view_index_metadata

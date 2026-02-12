@@ -27,6 +27,7 @@ import { CatRequestBase, CatTasksColumns } from '@cat/_types/CatBase'
  * Get information about tasks currently running in the cluster.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.
  * @rest_spec_name cat.tasks
+ * @category info
  * @availability stack since=5.0.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @doc_id cat-tasks

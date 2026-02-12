@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  *
  * Adds a data stream or index to an alias.
  * @rest_spec_name indices.put_alias
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id alias-update

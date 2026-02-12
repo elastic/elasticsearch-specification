@@ -28,6 +28,7 @@ import { IndicesBlockOptions } from '@indices/_types/IndexSettings'
  * Remove an index block from an index.
  * Index blocks limit the operations allowed on an index by blocking specific operation types.
  * @rest_spec_name indices.remove_block
+ * @category management
  * @availability stack since=9.1.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id index-block-remove

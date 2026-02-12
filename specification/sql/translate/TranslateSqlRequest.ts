@@ -29,6 +29,7 @@ import { TimeZone } from '@_types/Time'
  * Translate an SQL search into a search API request containing Query DSL.
  * It accepts the same request body parameters as the SQL search API, excluding `cursor`.
  * @rest_spec_name sql.translate
+ * @category common
  * @availability stack since=6.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

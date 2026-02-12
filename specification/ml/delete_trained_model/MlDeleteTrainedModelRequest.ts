@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * The request deletes a trained inference model that is not referenced by an ingest pipeline.
  * @rest_spec_name ml.delete_trained_model
+ * @category ai/ml
  * @availability stack since=7.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

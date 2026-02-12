@@ -33,6 +33,7 @@ import { CatHealthColumns, CatRequestBase } from '@cat/_types/CatBase'
  * You can use the cat health API to verify cluster health across multiple nodes.
  * You also can use the API to track the recovery of a large cluster over a longer period of time.
  * @rest_spec_name cat.health
+ * @category info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cat-health

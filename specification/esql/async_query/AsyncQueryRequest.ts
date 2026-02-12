@@ -32,6 +32,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
  *
  * The API accepts the same parameters and request body as the synchronous query API, along with additional async related properties.
  * @rest_spec_name esql.async_query
+ * @category common
  * @availability stack since=8.13.0 stability=stable visibility=public
  * @doc_id esql-async-query
  * @ext_doc_id esql

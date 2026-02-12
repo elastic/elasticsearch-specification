@@ -30,6 +30,7 @@ import { DataframeEvaluationContainer } from '@ml/_types/DataframeEvaluation'
  * created by data frame analytics. Evaluation requires both a ground truth
  * field and an analytics result field to be present.
  * @rest_spec_name ml.evaluate_data_frame
+ * @category ai/ml
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml

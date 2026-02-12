@@ -30,6 +30,7 @@ import { MediaType } from '@_types/common'
  * Elasticsearch exposes all the necessary OpenID Connect related functionality with the OpenID Connect APIs.
  * These APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.
  * @rest_spec_name security.oidc_prepare_authentication
+ * @category security
  * @availability stack stability=stable visibility=public
  * @doc_id security-api-oidc-prepare
  */

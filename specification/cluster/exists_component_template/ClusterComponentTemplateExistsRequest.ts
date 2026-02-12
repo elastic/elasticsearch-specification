@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Returns information about whether a particular component template exists.
  * @rest_spec_name cluster.exists_component_template
+ * @category management
  * @availability stack since=7.8.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-component-template

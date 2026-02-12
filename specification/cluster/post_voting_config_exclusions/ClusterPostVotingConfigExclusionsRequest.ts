@@ -42,6 +42,7 @@ import { Duration } from '@_types/Time'
  * NOTE: Voting exclusions are required only when you remove at least half of the master-eligible nodes from a cluster in a short time period.
  * They are not required when removing master-ineligible nodes or when removing fewer than half of the master-eligible nodes.
  * @rest_spec_name cluster.post_voting_config_exclusions
+ * @category management
  * @availability stack since=7.0.0 stability=stable
  * @doc_id voting-config-exclusions
  * @ext_doc_id add-nodes

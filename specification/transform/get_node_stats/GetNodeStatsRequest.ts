@@ -25,6 +25,7 @@ import { MediaType } from '@_types/common'
  *
  * Get per-node information about transform usage.
  * @rest_spec_name transform.get_node_stats
+ * @category ingest
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id get-node-stats

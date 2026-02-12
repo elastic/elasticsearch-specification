@@ -27,6 +27,7 @@ import { MediaType } from '@_types/common'
  * Get information about the features that are currently enabled and available under the current license.
  * The API also provides some usage statistics.
  * @rest_spec_name xpack.usage
+ * @category info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor

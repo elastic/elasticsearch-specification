@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * Get the current status and available results for an async EQL search or a stored synchronous EQL search.
  * @doc_id eql-async-search-api
  * @rest_spec_name eql.get
+ * @category common
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  */

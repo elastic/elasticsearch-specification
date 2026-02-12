@@ -36,6 +36,7 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  * >info
  * > You need to provide the access and secret keys only once, during the inference model creation. The get inference API does not retrieve your access or secret keys. After creating the inference model, you cannot change the associated key pairs. If you want to use a different access and secret key pair, delete the inference model and recreate it with the same name and the updated keys.
  * @rest_spec_name inference.put_amazonbedrock
+ * @category ai/ml
  * @availability stack since=8.12.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference

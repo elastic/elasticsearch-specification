@@ -27,6 +27,7 @@ import { SyncJobType } from '../_types/SyncJob'
  *
  * Get information about all stored connector sync jobs listed by their creation date in ascending order.
  * @rest_spec_name connector.sync_job_list
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-sync-job-list

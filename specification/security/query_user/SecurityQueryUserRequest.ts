@@ -32,6 +32,7 @@ import { UserQueryContainer } from './types'
  * NOTE: As opposed to the get user API, built-in users are excluded from the result.
  * This API is only for native users.
  * @rest_spec_name security.query_user
+ * @category security
  * @availability stack since=8.14.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges read_security

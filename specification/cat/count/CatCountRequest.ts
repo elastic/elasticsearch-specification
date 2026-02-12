@@ -31,6 +31,7 @@ import { CatCountColumns, CatRequestBase } from '@cat/_types/CatBase'
  *
  * NOTE: Starting in Elasticsearch 9.3.0, this endpoint also supports the `POST` method. This is primarily intended for project routing in serverless environments.
  * @rest_spec_name cat.count
+ * @category info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat-count

@@ -29,6 +29,7 @@ import { ApplicationPrivilegesCheck, IndexPrivilegesCheck } from './types'
  * All users can use this API, but only to determine their own privileges.
  * To check the privileges of other users, you must use the run as feature.
  * @rest_spec_name security.has_privileges
+ * @category security
  * @availability stack since=6.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id security-api-has-privileges

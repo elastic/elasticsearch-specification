@@ -46,6 +46,7 @@ import { ExpandWildcards, Indices, MediaType } from '@_types/common'
  * It only reports the last recovery for each shard copy and does not report historical information about earlier recoveries, nor does it report information about the recoveries of shard copies that no longer exist.
  * This means that if a shard copy completes a recovery and then Elasticsearch relocates it onto a different node then the information about the original recovery will not be shown in the recovery API.
  * @rest_spec_name indices.recovery
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @index_privileges monitor

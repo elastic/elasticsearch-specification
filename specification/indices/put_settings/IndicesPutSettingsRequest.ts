@@ -80,6 +80,7 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
  * To change the analyzer for existing backing indices, you must create a new data stream and reindex your data into it.
  * Refer to [updating analyzers on existing indices](https://www.elastic.co/docs/manage-data/data-store/text-analysis/specify-an-analyzer#update-analyzers-on-existing-indices) for step-by-step examples.
  * @rest_spec_name indices.put_settings
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage

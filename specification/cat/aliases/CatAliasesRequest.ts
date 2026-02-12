@@ -29,6 +29,7 @@ import { CatAliasesColumns, CatRequestBase } from '@cat/_types/CatBase'
  *
  * IMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.
  * @rest_spec_name cat.aliases
+ * @category info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat-alias

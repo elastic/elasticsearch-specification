@@ -33,6 +33,7 @@ import { MediaType } from '@_types/common'
  * This is part of the TLS authentication process and it is delegated to the proxy that calls this API.
  * The proxy is trusted to have performed the TLS authentication and this API translates that authentication into an Elasticsearch access token.
  * @rest_spec_name security.delegate_pki
+ * @category security
  * @availability stack since=7.4.0 stability=stable
  * @cluster_privileges all
  * @doc_id security-api-delegate-pki

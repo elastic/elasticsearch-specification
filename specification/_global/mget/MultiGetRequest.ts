@@ -41,6 +41,7 @@ import { Operation } from './types'
  * Any requested fields that are not stored are ignored.
  * You can include the `stored_fields` query parameter in the request URI to specify the defaults to use when there are no per-document instructions.
  * @rest_spec_name mget
+ * @category document management
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

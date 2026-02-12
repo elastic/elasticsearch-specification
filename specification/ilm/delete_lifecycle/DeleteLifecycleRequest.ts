@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * You cannot delete policies that are currently in use. If the policy is being used to manage any indices, the request fails and returns an error.
  * @rest_spec_name ilm.delete_lifecycle
+ * @category management
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm
  * @doc_id ilm-delete-lifecycle

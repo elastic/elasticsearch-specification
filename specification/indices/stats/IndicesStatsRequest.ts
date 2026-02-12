@@ -41,6 +41,7 @@ import {
  * NOTE: When moving to another node, the shard-level statistics for a shard are cleared.
  * Although the shard is no longer part of the node, that node retains any node-level statistics to which the shard contributed.
  * @rest_spec_name indices.stats
+ * @category management
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @index_privileges monitor

@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * Get cross-cluster replication follower stats.
  * The API returns shard-level stats about the "following tasks" associated with each shard for the specified indices.
  * @rest_spec_name ccr.follow_stats
+ * @category management
  * @availability stack since=6.5.0 stability=stable
  * @cluster_privileges monitor
  * @doc_id ccr-get-follow-stats

@@ -25,6 +25,7 @@ import { Duration } from '@_types/Time'
  * Get feature usage information.
  *
  * @rest_spec_name nodes.usage
+ * @category unknown
  * @availability stack since=6.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-nodes-usage

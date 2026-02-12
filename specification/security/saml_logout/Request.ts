@@ -31,6 +31,7 @@ import { MediaType } from '@_types/common'
  * This API invalidates the tokens that were generated for a user by the SAML authenticate API.
  * If the SAML realm in Elasticsearch is configured accordingly and the SAML IdP supports this, the Elasticsearch response contains a URL to redirect the user to the IdP that contains a SAML logout request (starting an SP-initiated SAML Single Logout).
  * @rest_spec_name security.saml_logout
+ * @category security
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id security-api-saml-logout

@@ -23,6 +23,7 @@ import { MediaType, Name } from '@_types/common'
  * Get behavioral analytics collections.
  *
  * @rest_spec_name search_application.get_behavioral_analytics
+ * @category management
  * @availability stack since=8.8.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  * @doc_tag analytics

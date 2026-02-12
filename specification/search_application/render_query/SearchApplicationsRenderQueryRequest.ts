@@ -30,6 +30,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  *
  * You must have `read` privileges on the backing alias of the search application.
  * @rest_spec_name search_application.render_query
+ * @category management
  * @availability stack since=8.9.0 stability=experimental visibility=public
  * @doc_id search-render-query
  */

@@ -29,6 +29,7 @@ import { Ids, MediaType } from '@_types/common'
  * * What jobs are stored in an index (or indices specified via a pattern)?
  * * What target indices were rolled up, what fields were used in those rollups, and what aggregations can be performed on each job?
  * @rest_spec_name rollup.get_rollup_index_caps
+ * @category management
  * @availability stack since=6.4.0 stability=experimental
  * @index_privileges read
  * @deprecated 8.11.0

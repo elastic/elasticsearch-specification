@@ -36,6 +36,7 @@ import { Duration } from '@_types/Time'
  * The parameter blocks the API call from returning until either the job has moved to STOPPED or the specified time has elapsed.
  * If the specified time elapses without the job moving to STOPPED, a timeout exception occurs.
  * @rest_spec_name rollup.stop_job
+ * @category management
  * @availability stack since=6.3.0 stability=experimental
  * @cluster_privileges manage_rollup
  * @deprecated 8.11.0

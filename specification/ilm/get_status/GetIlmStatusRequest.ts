@@ -25,6 +25,7 @@ import { MediaType } from '@_types/common'
  *
  * Get the current index lifecycle management status.
  * @rest_spec_name ilm.get_status
+ * @category management
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges read_ilm
  * @doc_id ilm-get-status

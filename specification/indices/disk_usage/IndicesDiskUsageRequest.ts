@@ -35,6 +35,7 @@ import { ExpandWildcards, Indices, MediaType } from '@_types/common'
  * @ext_doc_id indices-disk-usage
  * @doc_id indices-disk-usage
  * @rest_spec_name indices.disk_usage
+ * @category management
  * @availability stack since=7.15.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  */

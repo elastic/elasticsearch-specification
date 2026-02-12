@@ -156,6 +156,7 @@ import { Duration } from '@_types/Time'
  * Even the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order.
  *
  * @rest_spec_name index
+ * @category document management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges index

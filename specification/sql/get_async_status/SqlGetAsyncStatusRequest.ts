@@ -25,6 +25,7 @@ import { Id, MediaType } from '@_types/common'
  *
  * Get the current status of an async SQL search or a stored synchronous SQL search.
  * @rest_spec_name sql.get_async_status
+ * @category common
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor

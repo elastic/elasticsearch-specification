@@ -25,6 +25,7 @@ import { MediaType } from '@_types/common'
  *
  * Get information about search applications.
  * @rest_spec_name search_application.list
+ * @category management
  * @availability stack since=8.8.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @cluster_privileges manage_search_application

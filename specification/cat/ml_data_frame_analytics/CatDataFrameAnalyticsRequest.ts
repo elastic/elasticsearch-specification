@@ -30,6 +30,7 @@ import { CatDfaColumns, CatRequestBase } from '@cat/_types/CatBase'
  * application consumption, use the get data frame analytics jobs statistics API.
  *
  * @rest_spec_name cat.ml_data_frame_analytics
+ * @category info
  * @availability stack since=7.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat-dfanalytics

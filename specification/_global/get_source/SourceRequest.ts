@@ -45,6 +45,7 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
  * GET my-index-000001/_source/1/?_source_includes=*.id&_source_excludes=entities
  * ```
  * @rest_spec_name get_source
+ * @category document management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

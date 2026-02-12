@@ -30,6 +30,7 @@ import { Sort, SortResults } from '@_types/sort'
  *
  * Note that only the `_id` and `metadata.*` fields are queryable or sortable.
  * @rest_spec_name watcher.query_watches
+ * @category info
  * @availability stack since=7.11.0 stability=stable
  * @cluster_privileges monitor_watcher
  * @doc_id watcher-api-query-watches

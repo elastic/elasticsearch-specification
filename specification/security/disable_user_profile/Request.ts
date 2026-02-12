@@ -33,6 +33,7 @@ import { UserProfileId } from '@security/_types/UserProfile'
  * When you activate a user profile, its automatically enabled and visible in user profile searches. You can use the disable user profile API to disable a user profile so it’s not visible in these searches.
  * To re-enable a disabled user profile, use the enable user profile API .
  * @rest_spec_name security.disable_user_profile
+ * @category security
  * @availability stack since=8.2.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_user_profile

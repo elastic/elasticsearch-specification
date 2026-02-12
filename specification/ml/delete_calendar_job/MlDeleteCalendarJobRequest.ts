@@ -24,6 +24,7 @@ import { Id, Ids, MediaType } from '@_types/common'
  * Delete anomaly jobs from a calendar.
  *
  * @rest_spec_name ml.delete_calendar_job
+ * @category ai/ml
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

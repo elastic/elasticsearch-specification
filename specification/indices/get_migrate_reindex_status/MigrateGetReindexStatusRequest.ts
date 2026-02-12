@@ -25,6 +25,7 @@ import { Indices, MediaType } from '@_types/common'
  *
  * Get the status of a migration reindex attempt for a data stream or index.
  * @rest_spec_name indices.get_migrate_reindex_status
+ * @category management
  * @availability stack since=8.18.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id migrate

@@ -25,6 +25,7 @@ import { FilteringRulesValidation } from '@connector/_types/Connector'
  *
  * Update the draft filtering validation info for a connector.
  * @rest_spec_name connector.update_filtering_validation
+ * @category management
  * @availability stack since=8.12.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  * @doc_id connector-update-filtering-validation

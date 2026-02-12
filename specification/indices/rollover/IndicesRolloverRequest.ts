@@ -73,6 +73,7 @@ import { RolloverConditions } from './types'
  * If you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.
  * @doc_id indices-rollover-index
  * @rest_spec_name indices.rollover
+ * @category management
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage

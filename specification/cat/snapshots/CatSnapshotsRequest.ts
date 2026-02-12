@@ -28,6 +28,7 @@ import { CatRequestBase, CatSnapshotsColumns } from '@cat/_types/CatBase'
  * A snapshot is a backup of an index or running Elasticsearch cluster.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.
  * @rest_spec_name cat.snapshots
+ * @category info
  * @availability stack since=2.1.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cat-snapshots

@@ -30,6 +30,7 @@ import { Duration } from '@_types/Time'
  * Alternatively it could be paused due to replication that cannot be retried due to failures during following tasks.
  * When this API returns, the follower index will resume fetching operations from the leader index.
  * @rest_spec_name ccr.resume_follow
+ * @category management
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-post-resume-follow
  * @ext_doc_id ccr

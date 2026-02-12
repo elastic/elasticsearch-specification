@@ -31,6 +31,7 @@ import {
  *
  * Create an inference endpoint to perform an inference task with the `groq` service.
  * @rest_spec_name inference.put_groq
+ * @category ai/ml
  * @availability stack since=9.3.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference

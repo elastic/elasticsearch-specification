@@ -50,6 +50,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * The order of the merging can be controlled using the order parameter, with lower order being applied first, and higher orders overriding them.
  * NOTE: Multiple matching templates with the same order value will result in a non-deterministic merging order.
  * @rest_spec_name indices.put_template
+ * @category management
  * @availability stack stability=stable
  * @cluster_privileges manage_index_templates, manage
  * @doc_id index-templates-v1

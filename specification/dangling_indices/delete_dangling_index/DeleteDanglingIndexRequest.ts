@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * If Elasticsearch encounters index data that is absent from the current cluster state, those indices are considered to be dangling.
  * For example, this can happen if you delete more than `cluster.indices.tombstones.size` indices while an Elasticsearch node is offline.
  * @rest_spec_name dangling_indices.delete_dangling_index
+ * @category unknown
  * @availability stack since=7.9.0 stability=stable
  * @doc_tag indices
  * @doc_id dangling-index-delete

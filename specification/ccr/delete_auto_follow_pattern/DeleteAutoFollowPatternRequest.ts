@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Delete a collection of cross-cluster replication auto-follow patterns.
  * @rest_spec_name ccr.delete_auto_follow_pattern
+ * @category management
  * @availability stack since=6.5.0 stability=stable
  * @cluster_privileges manage_ccr
  * @doc_id ccr-delete-auto-follow-pattern

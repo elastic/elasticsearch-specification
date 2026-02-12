@@ -32,6 +32,7 @@ import { Duration } from '@_types/Time'
  *
  * Take a snapshot of a cluster or of data streams and indices.
  * @rest_spec_name snapshot.create
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges create_snapshot

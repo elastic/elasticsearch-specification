@@ -31,6 +31,7 @@ import { SynonymRule } from '../_types/SynonymRule'
  *
  * For practical examples of how to create or update a synonyms set, refer to the External documentation.
  * @rest_spec_name synonyms.put_synonym
+ * @category ingest
  * @availability stack since=8.10.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_synonyms

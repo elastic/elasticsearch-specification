@@ -63,6 +63,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * By default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.
  * The maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.
  * @rest_spec_name async_search.submit
+ * @category search
  * @availability stack since=7.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id async-search

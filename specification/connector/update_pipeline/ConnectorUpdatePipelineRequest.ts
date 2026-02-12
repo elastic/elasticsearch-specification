@@ -25,6 +25,7 @@ import { IngestPipelineParams } from '../_types/Connector'
  *
  * When you create a new connector, the configuration of an ingest pipeline is populated with default settings.
  * @rest_spec_name connector.update_pipeline
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-update-pipeline

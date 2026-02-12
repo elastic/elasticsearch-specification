@@ -26,6 +26,7 @@ import { Id, MediaType } from '@_types/common'
  * A filter contains a list of strings. It can be used by one or more anomaly detection jobs.
  * Specifically, filters are referenced in the `custom_rules` property of detector configuration objects.
  * @rest_spec_name ml.put_filter
+ * @category ai/ml
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

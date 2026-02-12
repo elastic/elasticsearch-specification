@@ -42,6 +42,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
  *
  * A successful request returns a JSON structure that contains the IDs of all updated API keys, the IDs of API keys that already had the requested changes and did not require an update, and error details for any failed update.
  * @rest_spec_name security.bulk_update_api_keys
+ * @category security
  * @availability stack since=8.5.0 stability=stable visibility=public
  * @doc_id security-api-bulk-update-key
  * @cluster_privileges manage_own_api_key

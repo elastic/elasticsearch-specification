@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Get information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.
  * @rest_spec_name indices.explain_data_lifecycle
+ * @category management
  * @availability stack since=8.11.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag data stream

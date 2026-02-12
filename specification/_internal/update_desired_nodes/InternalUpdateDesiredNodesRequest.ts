@@ -27,6 +27,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * Designed for indirect use by ECE/ESS and ECK, direct use is not supported.
  *
  * @rest_spec_name _internal.update_desired_nodes
+ * @category unknown
  * @availability stack stability=experimental visibility=private
  * @codegen_exclude
  */

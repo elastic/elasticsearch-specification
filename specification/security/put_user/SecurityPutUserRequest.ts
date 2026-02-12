@@ -33,6 +33,7 @@ import {
  * A password is required for adding a new user but is optional when updating an existing user.
  * To change a user's password without updating any other fields, use the change password API.
  * @rest_spec_name security.put_user
+ * @category security
  * @availability stack stability=stable
  * @cluster_privileges manage_security
  * @doc_id security-api-put-user

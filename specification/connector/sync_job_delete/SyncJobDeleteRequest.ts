@@ -25,6 +25,7 @@ import { Id, MediaType } from '@_types/common'
  * Remove a connector sync job and its associated data.
  * This is a destructive action that is not recoverable.
  * @rest_spec_name connector.sync_job_delete
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-sync-job-delete

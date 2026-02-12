@@ -28,6 +28,7 @@ import { Duration } from '@_types/Time'
  *
  * If the Elasticsearch security features are enabled, only the user who first submitted the SQL search can retrieve the search using this API.
  * @rest_spec_name sql.get_async
+ * @category common
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id sql-async-search-api

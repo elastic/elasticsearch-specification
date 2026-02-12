@@ -26,6 +26,7 @@ import { MediaType } from '@_types/common'
  * Get the tags that are defined for the project.
  * @doc_id project-tags
  * @rest_spec_name project.tags
+ * @category unknown
  * @availability serverless stability=experimental visibility=public
  * @cluster_privileges monitor
  * @doc_tag project

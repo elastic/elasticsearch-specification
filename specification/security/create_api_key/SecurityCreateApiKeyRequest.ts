@@ -39,6 +39,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * The API keys are created by the Elasticsearch API key service, which is automatically enabled.
  * To configure or turn off the API key service, refer to API key service setting documentation.
  * @rest_spec_name security.create_api_key
+ * @category security
  * @availability stack since=6.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_own_api_key

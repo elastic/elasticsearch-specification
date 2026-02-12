@@ -28,6 +28,7 @@ import { MediaType } from '@_types/common'
  * A grok pattern is like a regular expression that supports aliased expressions that can be reused.
  * @doc_id grok-processor
  * @rest_spec_name ingest.processor_grok
+ * @category ingest
  * @availability stack since=6.1.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @ext_doc_id grok-processor

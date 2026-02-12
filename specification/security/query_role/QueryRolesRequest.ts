@@ -32,6 +32,7 @@ import { RoleQueryContainer } from './types'
  * You can optionally filter the results with a query.
  * Also, the results can be paginated and sorted.
  * @rest_spec_name security.query_role
+ * @category security
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges read_security

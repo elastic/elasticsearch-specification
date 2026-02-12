@@ -144,6 +144,7 @@ export default defineConfig([
             'availability',
             'behavior',
             'behavior_meta',
+            'category',
             'class_serializer',
             'cluster_privileges',
             'codegen_exclude',

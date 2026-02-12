@@ -34,6 +34,7 @@ import { Ids, MediaType } from '@_types/common'
  * The response can be sent by the IdP with either the HTTP-Redirect or the HTTP-Post binding.
  * The caller of this API must prepare the request accordingly so that this API can handle either of them.
  * @rest_spec_name security.saml_complete_logout
+ * @category security
  * @availability stack since=7.14.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id security-api-saml-complete-logout

@@ -46,6 +46,7 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  * Look for `"state": "fully_allocated"` in the response and ensure that the `"allocation_count"` matches the `"target_allocation_count"`.
  * Avoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.
  * @rest_spec_name inference.put_elasticsearch
+ * @category ai/ml
  * @availability stack since=8.13.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference

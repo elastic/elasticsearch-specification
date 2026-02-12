@@ -25,6 +25,7 @@ import { WithNullValue } from '@spec_utils/utils'
  *
  * Update the `index_name` field of a connector, specifying the index where the data ingested by the connector is stored.
  * @rest_spec_name connector.update_index_name
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-update-index-name

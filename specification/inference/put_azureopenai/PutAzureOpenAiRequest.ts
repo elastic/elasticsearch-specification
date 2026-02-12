@@ -40,6 +40,7 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  *
  * The list of embeddings models that you can choose from in your deployment can be found in the [Azure models documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=global-standard%2Cstandard-chat-completions#embeddings).
  * @rest_spec_name inference.put_azureopenai
+ * @category ai/ml
  * @availability stack since=8.14.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference

@@ -31,6 +31,7 @@ import { MediaType } from '@_types/common'
  * * `index.auto_expand_replicas`
  * * `index.number_of_replicas`
  * @rest_spec_name security.get_settings
+ * @category security
  * @availability stack stability=stable visibility=public
  * @doc_id security-api-get-settings
  * @cluster_privileges read_security

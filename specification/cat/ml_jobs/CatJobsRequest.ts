@@ -33,6 +33,7 @@ import { CatAnomalyDetectorColumns, CatRequestBase } from '@cat/_types/CatBase'
  * application consumption, use the get anomaly detection job statistics API.
  *
  * @rest_spec_name cat.ml_jobs
+ * @category info
  * @availability stack since=7.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml

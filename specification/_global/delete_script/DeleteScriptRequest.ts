@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Deletes a stored script or search template.
  * @rest_spec_name delete_script
+ * @category search
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage

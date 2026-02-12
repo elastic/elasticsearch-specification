@@ -36,6 +36,7 @@ import { Id, MediaType, Name, Username } from '@_types/common'
  * - Or, set both `username` and `realm_name` to match the user's identity.
  * - Or, if the request is issued by an API key, that is to say an API key invalidates itself, specify its ID in the `ids` field.
  * @rest_spec_name security.invalidate_api_key
+ * @category security
  * @availability stack since=6.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_api_key, manage_own_api_key

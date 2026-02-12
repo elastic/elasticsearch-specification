@@ -19,11 +19,10 @@ use std::collections::HashMap;
 use std::fmt::Write;
 
 use anyhow::{anyhow, bail};
-use clients_schema::{Privileges, Property};
+use clients_schema::{Property};
 use indexmap::IndexMap;
 use indexmap::indexmap;
 use icu_segmenter::SentenceSegmenter;
-use itertools::Itertools;
 use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
     RequestBody, Response, Responses, StatusCode, Example
@@ -31,7 +30,7 @@ use openapiv3::{
 use serde_json::Value;
 use clients_schema::SchemaExample;
 use crate::components::TypesAndComponents;
-use crate::convert_availabilities;
+use crate::{auths_as_extentions, convert_availabilities, paths_as_extentions, availability_as_extensions, api_name_as_extensions, category_as_extensions};
 
 /// Add an endpoint to the OpenAPI schema. This will result in the addition of a number of elements to the
 /// openapi schema's `paths` and `components` sections.
@@ -56,9 +55,6 @@ pub fn add_endpoint(
        Some((ns, _)) => ns,
        None => &endpoint.name,
     };
-
-    // Will we produce multiple paths? If true, we will register components for reuse across paths
-    let is_multipath = endpoint.urls.len() > 1 || endpoint.urls.iter().any(|u| u.methods.len() > 1);
 
     let request = tac.model.get_request(endpoint.request.as_ref().unwrap())?;
 
@@ -92,11 +88,7 @@ pub fn add_endpoint(
         // Reuse reference if multiple paths, and inline otherwise
         path_params.insert(
             prop.name.clone(),
-            if is_multipath {
-                tac.add_parameter(&endpoint.name, parameter, false)
-            } else {
-                ReferenceOr::Item(parameter)
-            },
+            ReferenceOr::Item(parameter),
         );
     }
 
@@ -111,14 +103,7 @@ pub fn add_endpoint(
             allow_empty_value: None,
         };
 
-        // Does this also exist as a path parameter? (e.g fields in _cat/fielddata)
-        let duplicate = path_params.contains_key(&prop.name);
-
-        query_params.push(if is_multipath {
-            tac.add_parameter(&endpoint.name, parameter, duplicate)
-        } else {
-            ReferenceOr::Item(parameter)
-        });
+        query_params.push(ReferenceOr::Item(parameter));
     }
 
     //---- Prepare request body
@@ -189,11 +174,7 @@ pub fn add_endpoint(
             extensions: Default::default(),
         };
 
-        if is_multipath {
-            tac.add_request_body(&endpoint.name, body)
-        } else {
-            ReferenceOr::Item(body)
-        }
+        ReferenceOr::Item(body)
     });
 
     //---- Prepare request responses
@@ -224,94 +205,12 @@ pub fn add_endpoint(
         links: Default::default(),
         extensions: Default::default(),
     };
-    let response = if is_multipath {
-        tac.add_response(&endpoint.name, StatusCode::Code(200), response)
-    } else {
-        ReferenceOr::Item(response)
-    };
+    let response = ReferenceOr::Item(response);
+
 
     let responses = indexmap! {
         StatusCode::Code(200) => response
         // TODO: add error responses
-    };
-
-    //---- Merge multipath endpoints if asked for
-
-    let operation_id: String = endpoint
-        .name
-        .chars()
-        .map(|x| match x {
-            '_' | '.' => '-',
-            _ => x,
-        })
-        .collect();
-
-    let mut new_endpoint: clients_schema::Endpoint;
-
-    let endpoint = if is_multipath && tac.config.merge_multipath_endpoints {
-
-        // Add redirects for operations that would have been generated otherwise
-        if let Some(ref mut map) = &mut tac.redirects {
-            for i in 1..endpoint.urls.len() {
-                map.insert(format!("{operation_id}-{i}"), operation_id.clone());
-            }
-        }
-
-        new_endpoint = endpoint.clone();
-        let endpoint = &mut new_endpoint;
-
-        // Sort paths from smallest to longest
-        endpoint.urls.sort_by_key(|x| x.path.len());
-
-        // Keep the longest and its last method so that the operation's path+method are the same as the last one
-        // (avoids the perception that it may have been chosen randomly).
-        let mut longest_path = endpoint.urls.last().unwrap().clone();
-        while longest_path.methods.len() > 1 {
-            longest_path.methods.remove(0);
-        }
-
-        // Replace endpoint urls with the longest path
-        let mut urls = vec![longest_path];
-        std::mem::swap(&mut endpoint.urls, &mut urls);
-
-        let split_desc = split_summary_desc(&endpoint.description);
-
-        // Make sure the description is stays at the top
-        let mut description = match split_desc.summary {
-            Some(summary) => format!("{summary}\n\n"),
-            None => String::new(),
-        };
-
-        // Convert removed paths to descriptions
-        write!(description, "**All methods and paths for this operation:**\n\n")?;
-
-        for url in urls {
-            for method in url.methods {
-                let lower_method = method.to_lowercase();
-                let path = &url.path;
-                write!(
-                    description,
-                    r#"<div>
-                      <span class="operation-verb {lower_method}">{method}</span>
-                      <span class="operation-path">{path}</span>
-                      </div>
-                    "#
-                )?;
-            }
-        }
-
-        if let Some(desc) = &split_desc.description {
-            write!(description, "\n\n{}", desc)?;
-        }
-
-        // Replace description
-        endpoint.description = description;
-
-        // Done
-        endpoint
-    } else {
-        // Not multipath or not asked to merge multipath
-        endpoint
     };
 
     //---- Build a path for each url + method
@@ -334,18 +233,24 @@ pub fn add_endpoint(
         }
 
         parameters.append(&mut query_params.clone());
-
-        let sum_desc = split_summary_desc(&endpoint.description);
-
-        let privilege_desc = add_privileges(&endpoint.privileges);
-
-        let full_desc = match (sum_desc.description, privilege_desc) {
-            (Some(a), Some(b)) => Some(a+ &b),
-            (opt_a, opt_b) => opt_a.or(opt_b)
-        };
+        
+        // empty extensions map
+        let mut extensions = IndexMap::new();
 
         // add the x-state extension for availability
-        let mut extensions = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
+        extensions.append(&mut availability_as_extensions(&endpoint.availability, &tac.config.flavor));
+
+        // add the x-variations extension for paths
+        extensions.append(&mut paths_as_extentions(url_template));
+        
+        // add the x-req-auth extension for auth privileges
+        extensions.append(&mut auths_as_extentions(&endpoint.privileges));
+
+        // add the x-api extension for api name and namespace
+        extensions.append(&mut api_name_as_extensions(&endpoint.name));
+
+        // add the x-category extension for api category
+        extensions.append(&mut category_as_extensions(&endpoint.category));
 
         if tac.config.include_language_examples {
             // add the x-codeSamples extension
@@ -375,7 +280,11 @@ pub fn add_endpoint(
             }
         }
 
+        // add the x-metaTags extension for product name
         extensions.append(&mut crate::product_meta_as_extensions(namespace, product_meta));
+
+        // split summary from description
+        let sum_desc = split_summary_desc(&endpoint.description);
 
         // Create the operation, it will be repeated if we have several methods
         let operation = openapiv3::Operation {
@@ -385,7 +294,7 @@ pub fn add_endpoint(
                 vec![namespace.to_string()]
             },
             summary: sum_desc.summary,
-            description: full_desc,
+            description: sum_desc.description,
             external_docs: tac.convert_external_docs(endpoint),
             // external_docs: None, // Need values that differ from client purposes
             operation_id: None, // set in clone_operation below with operation_counter
@@ -467,6 +376,15 @@ pub fn add_endpoint(
                 _ => bail!("Unsupported method: {}", method),
             };
 
+            let operation_id: String = endpoint
+                .name
+                .chars()
+                .map(|x| match x {
+                    '_' | '.' => '-',
+                    _ => x,
+                })
+                .collect();
+            
             let mut operation = operation.clone();
             let mut operation_id = operation_id.clone();
             if operation_counter != 0 {
@@ -520,28 +438,6 @@ fn split_summary_desc(desc: &str) -> SplitDesc{
         summary:  Some(String::from(first_line.trim().strip_suffix('.').unwrap_or(first_line))),
         description: if !rest.is_empty() {Some(String::from(rest.trim()))} else {None}
     }
-}
-
-fn add_privileges(privileges: &Option<Privileges>) -> Option<String>{
-    if let Some(privs) = privileges {
-        let mut result = "\n\n## Required authorization\n\n".to_string();
-        if !privs.index.is_empty() {
-            result += "* Index privileges: ";
-            result += &privs.index.iter()
-                .map(|a| format!("`{a}`"))
-                .join(",");
-            result += "\n";
-        }
-        if !privs.cluster.is_empty() {
-            result += "* Cluster privileges: ";
-            result += &privs.cluster.iter()
-                .map(|a| format!("`{a}`"))
-                .join(",");
-            result += "\n";
-        }
-        return Some(result)
-    }
-    None
 }
 
 #[derive(PartialEq,Debug)]

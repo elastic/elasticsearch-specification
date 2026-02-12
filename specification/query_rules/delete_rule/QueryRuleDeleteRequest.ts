@@ -25,6 +25,7 @@ import { Id, MediaType } from '@_types/common'
  * Delete a query rule within a query ruleset.
  * This is a destructive action that is only recoverable by re-adding the same rule with the create or update query rule API.
  * @rest_spec_name query_rules.delete_rule
+ * @category ai/ml
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_search_query_rules

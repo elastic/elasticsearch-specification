@@ -24,6 +24,7 @@ import { MediaType } from '@_types/common'
  * Clear an SQL search cursor.
  *
  * @rest_spec_name sql.clear_cursor
+ * @category common
  * @availability stack since=6.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id sql-clear-cursor-api

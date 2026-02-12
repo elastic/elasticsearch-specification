@@ -25,6 +25,7 @@ import { Detector } from '@ml/_types/Detector'
  * Validate an anomaly detection job.
  *
  * @rest_spec_name ml.validate_detector
+ * @category ai/ml
  * @availability stack since=5.4.0 stability=stable visibility=private
  * @availability serverless stability=stable visibility=private
  * @doc_tag ml anomaly

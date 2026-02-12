@@ -36,6 +36,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * the time of the update and runs the query using those same roles. If you provide secondary authorization headers,
  * those credentials are used instead.
  * @rest_spec_name ml.update_datafeed
+ * @category ai/ml
  * @availability stack since=6.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

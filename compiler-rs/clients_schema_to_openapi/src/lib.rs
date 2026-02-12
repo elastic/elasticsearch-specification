@@ -22,8 +22,8 @@ mod utils;
 pub mod cli;
 
 use indexmap::IndexMap;
-
-use clients_schema::{Availabilities, Availability, Flavor, IndexedModel, Stability, Visibility};
+use itertools::Itertools;
+use clients_schema::{Availabilities, Availability, Flavor, IndexedModel, Privileges, Stability, UrlTemplate, Visibility};
 use openapiv3::{Components, OpenAPI};
 use serde_json::{Map,Value};
 use clients_schema::transform::ExpandConfig;
@@ -38,25 +38,12 @@ pub struct Configuration {
     /// property's description (also works for arrays of enums).
     pub lift_enum_descriptions: bool,
 
-    /// Will output endpoints having multiple paths into a single operation. The operation's path will
-    /// be the longest one (with values for all optional parameters), and the other paths will be added
-    /// at the beginning of the operation's description.
-    pub merge_multipath_endpoints: bool,
-
-    /// Should we output a redirect map when merging multipath endpoints?
-    pub multipath_redirects: bool,
-
     /// include the x-codeSamples extension with language examples for all endpoints
     pub include_language_examples: bool,
 }
 
-pub struct OpenApiConversion {
-    pub openapi: OpenAPI,
-    pub redirects: Option<String>,
-}
-
 /// Convert an API model into an OpenAPI v3 schema, optionally filtered for a given flavor
-pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_meta: IndexMap<String,String>) -> anyhow::Result<OpenApiConversion> {
+pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_meta: IndexMap<String,String>) -> anyhow::Result<OpenAPI> {
     // Expand generics
     schema = clients_schema::transform::expand_generics(schema, ExpandConfig::default())?;
 
@@ -86,7 +73,7 @@ pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_m
 /// Note: there are ways to represent [generics in JSON Schema], but its unlikely that tooling will understand it.
 ///
 /// [generics in JSON Schema]: https://json-schema.org/blog/posts/dynamicref-and-generics
-pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, product_meta: &IndexMap<String,String>) -> anyhow::Result<OpenApiConversion> {
+pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, product_meta: &IndexMap<String,String>) -> anyhow::Result<OpenAPI> {
     let mut openapi = OpenAPI {
         openapi: "3.0.3".into(),
         info: info(model),
@@ -142,21 +129,7 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, pro
     //     comp.security_schemes.sort_keys();
     // }
 
-    let redirects = if let Some(redirects) = tac.redirects {
-        use std::fmt::Write;
-        let mut result = String::new();
-        for (source, target) in redirects.iter() {
-            writeln!(&mut result, "{},{}", source, target)?;
-        }
-        Some(result)
-    } else {
-        None
-    };
-
-    Ok(OpenApiConversion {
-        openapi,
-        redirects,
-    })
+    Ok(openapi)
 }
 
 fn info(model: &IndexedModel) -> openapiv3::Info {
@@ -198,6 +171,71 @@ pub fn product_meta_as_extensions(namespace: &str, product_meta: &IndexMap<Strin
     product_feature.insert("content".to_string(),Value::String(product_str));
     product_feature_list.push(Value::Object(product_feature));
     result.insert("x-metaTags".to_string(), Value::Array(product_feature_list));
+    result
+}
+
+pub fn auths_as_extentions(privileges: &Option<Privileges>) -> IndexMap<String, Value> {
+    let mut result = IndexMap::new();
+    let mut auths_list: Vec<Value> = Vec::new();
+
+    if let Some(privs) = privileges {
+        if !privs.index.is_empty() {
+            let mut index_priv = "Index privileges: ".to_string();
+            index_priv += &privs.index.iter()
+                .map(|a| format!("`{a}`"))
+                .join(",");
+            index_priv += "\n";
+            auths_list.push(Value::String(index_priv));
+        }
+        if !privs.cluster.is_empty() {
+            let mut cluster_priv = "Cluster privileges: ".to_string();
+            cluster_priv += &privs.cluster.iter()
+                .map(|a| format!("`{a}`"))
+                .join(",");
+            cluster_priv += "\n";
+            auths_list.push(Value::String(cluster_priv));
+        }
+        result.insert("x-req-auth".to_string(),Value::Array(auths_list));
+    }
+    result
+}
+
+pub fn paths_as_extentions(url: &UrlTemplate) -> IndexMap<String, Value> {
+    let mut result = IndexMap::new();
+    let mut paths_list: Vec<Value> = Vec::new();
+    for method in url.methods.clone() {
+        let lower_method = method.to_lowercase();
+        let path = &url.path;
+        paths_list.push(Value::String(format!(r#"<div>
+              <span class="operation-verb {lower_method}">{method}</span>
+              <span class="operation-path">{path}</span>
+              </div>
+            "#)));
+    }
+    result.insert("x-variations".to_string(), Value::Array(paths_list));
+    result
+}
+
+pub fn category_as_extensions(category: &Option<String>) -> IndexMap<String, Value> {
+    let mut result = IndexMap::new();
+    if let Some(category) = category {
+        result.insert("x-category".to_string(), Value::String(category.to_string()));
+    }
+    result
+}
+
+pub fn api_name_as_extensions(name: &String) -> IndexMap<String, Value> {
+    let mut result = IndexMap::new();
+    if !name.is_empty() {
+        match name.split_once('.') {
+            Some((ns, nm)) => {
+                result.insert("x-api".to_string(), Value::String(nm.to_string() + "." + ns));
+                return result
+            },
+            _ => ()
+        };
+        result.insert("x-api".to_string(), Value::String(name.to_string()));
+    }
     result
 }
 

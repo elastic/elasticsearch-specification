@@ -27,6 +27,7 @@ import { IndexName, MediaType } from '@_types/common'
  * The API sets the policy back to the step where the error occurred and runs the step.
  * Use the explain lifecycle state API to determine whether an index is in the ERROR step.
  * @rest_spec_name ilm.retry
+ * @category management
  * @availability stack since=6.6.0 stability=stable
  * @index_privileges manage_ilm
  * @doc_id ilm-retry-policy

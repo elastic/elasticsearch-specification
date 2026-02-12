@@ -28,6 +28,7 @@ import { IndexName, MediaType } from '@_types/common'
  * TIP: This APIs is designed for indirect use by the Upgrade Assistant.
  * You are strongly recommended to use the Upgrade Assistant.
  * @rest_spec_name migration.deprecations
+ * @category info
  * @availability stack since=6.1.0 stability=stable
  * @cluster_privileges manage
  * @doc_id migration-api-deprecation

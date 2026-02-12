@@ -55,6 +55,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * * VoyageAI (`rerank`, `text_embedding`)
  * * Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)
  * @rest_spec_name inference.put
+ * @category ai/ml
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference

@@ -39,6 +39,7 @@ import { RequestItem } from './types'
  * $ curl -H "Content-Type: application/x-ndjson" -XGET localhost:9200/_msearch/template --data-binary "@requests"; echo
  * ```
  * @rest_spec_name msearch_template
+ * @category search
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

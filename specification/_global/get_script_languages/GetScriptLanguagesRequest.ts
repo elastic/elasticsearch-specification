@@ -25,6 +25,7 @@ import { MediaType } from '@_types/common'
  *
  * Get a list of available script types, languages, and contexts.
  * @rest_spec_name get_script_languages
+ * @category search
  * @availability stack stability=stable
  * @cluster_privileges manage
  * @doc_tag script

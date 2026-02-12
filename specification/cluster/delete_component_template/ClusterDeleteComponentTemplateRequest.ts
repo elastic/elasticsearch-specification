@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.
  * @rest_spec_name cluster.delete_component_template
+ * @category management
  * @availability stack since=7.8.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-component-template

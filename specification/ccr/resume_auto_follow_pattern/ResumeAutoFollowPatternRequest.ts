@@ -28,6 +28,7 @@ import { Duration } from '@_types/Time'
  * The auto-follow pattern will resume configuring following indices for newly created indices that match its patterns on the remote cluster.
  * Remote indices created while the pattern was paused will also be followed unless they have been deleted or closed in the interim.
  * @rest_spec_name ccr.resume_auto_follow_pattern
+ * @category management
  * @availability stack since=7.5.0 stability=stable
  * @cluster_privileges manage_ccr
  * @doc_id ccr-resume-auto-follow-pattern

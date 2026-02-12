@@ -31,6 +31,7 @@ import { CatRequestBase, CatTransformColumns } from '@cat/_types/CatBase'
  * application consumption, use the get transform statistics API.
  *
  * @rest_spec_name cat.transforms
+ * @category info
  * @availability stack since=7.7.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cat-transforms

@@ -40,6 +40,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * This API can also be used to update auto-follow patterns.
  * NOTE: Follower indices that were configured automatically before updating an auto-follow pattern will remain unchanged even if they do not match against the new patterns.
  * @rest_spec_name ccr.put_auto_follow_pattern
+ * @category management
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-put-auto-follow-pattern
  * @ext_doc_id ccr-auto-follow

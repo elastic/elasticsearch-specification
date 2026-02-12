@@ -34,6 +34,7 @@ import { MediaType } from '@_types/common'
  * The features listed by this API are a combination of built-in features and features defined by plugins.
  * In order for a feature state to be listed in this API and recognized as a valid feature state by the create snapshot API, the plugin that defines that feature must be installed on the master node.
  * @rest_spec_name features.get_features
+ * @category info
  * @availability stack since=7.12.0 stability=stable
  * @doc_id get-features-api
  * @ext_doc_id snapshot-create

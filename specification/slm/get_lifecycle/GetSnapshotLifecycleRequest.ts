@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Get snapshot lifecycle policy definitions and information about the latest snapshot attempts.
  * @rest_spec_name slm.get_lifecycle
+ * @category management
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_slm

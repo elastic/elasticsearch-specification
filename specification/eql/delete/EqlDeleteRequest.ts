@@ -26,6 +26,7 @@ import { Id, MediaType } from '@_types/common'
  * Delete an async EQL search or a stored synchronous EQL search.
  * The API also deletes results for the search.
  * @rest_spec_name eql.delete
+ * @category common
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id eql-async-search-delete

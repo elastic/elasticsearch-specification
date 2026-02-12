@@ -35,6 +35,7 @@ import { ApiKeyAggregationContainer, ApiKeyQueryContainer } from './types'
  * If you have the `read_security`, `manage_api_key`, or greater privileges (including `manage_security`), this API returns all API keys regardless of ownership.
  * Refer to the linked documentation for examples of how to find API keys:
  * @rest_spec_name security.query_api_keys
+ * @category security
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_own_api_key, read_security

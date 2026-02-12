@@ -36,6 +36,7 @@ import { Checkpoint } from '../_types/Checkpoints'
  * The API follows the same structure as the multi search API.
  * However, similar to the Fleet search API, it supports the `wait_for_checkpoints` parameter.
  * @rest_spec_name fleet.msearch
+ * @category ingest
  * @availability stack since=7.16.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @index_privileges read

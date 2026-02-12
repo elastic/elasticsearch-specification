@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * Immediately create a snapshot according to the snapshot lifecycle policy without waiting for the scheduled time.
  * The snapshot policy is normally applied according to its schedule, but you might want to manually run a policy before performing an upgrade or other maintenance.
  * @rest_spec_name slm.execute_lifecycle
+ * @category management
  * @availability stack since=7.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_slm

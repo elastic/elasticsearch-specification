@@ -34,6 +34,7 @@ import { Duration } from '@_types/Time'
  * jobs by using `_all`, by specifying `*` as the `<job_id>`, or by omitting the
  * `<job_id>`.
  * @rest_spec_name ml.delete_expired_data
+ * @category ai/ml
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml

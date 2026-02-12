@@ -49,6 +49,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * Note that changing this setting will also affect the `wait_for_active_shards` value on all subsequent write operations.
  * @doc_id indices-create-index
  * @rest_spec_name indices.create
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges create_index, manage

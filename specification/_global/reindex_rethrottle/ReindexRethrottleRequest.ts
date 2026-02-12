@@ -35,6 +35,7 @@ import { float } from '@_types/Numeric'
  * Rethrottling that slows down the query will take effect after completing the current batch.
  * This behavior prevents scroll timeouts.
  * @rest_spec_name reindex_rethrottle
+ * @category document management
  * @availability stack since=2.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_tag document

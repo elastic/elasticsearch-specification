@@ -43,6 +43,7 @@ import { Operation } from './types'
  * You can also use `mtermvectors` to generate term vectors for artificial documents provided in the body of the request.
  * The mapping used is determined by the specified `_index`.
  * @rest_spec_name mtermvectors
+ * @category document management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

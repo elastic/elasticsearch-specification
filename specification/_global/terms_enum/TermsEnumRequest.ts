@@ -32,6 +32,7 @@ import { Duration } from '@_types/Time'
  * > info
  * > The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.
  * @rest_spec_name terms_enum
+ * @category search
  * @availability stack since=7.14.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag search

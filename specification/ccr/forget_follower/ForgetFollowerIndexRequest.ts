@@ -36,6 +36,7 @@ import { Duration } from '@_types/Time'
  * NOTE: This API does not stop replication by a following index. If you use this API with a follower index that is still actively following, the following index will add back retention leases on the leader.
  * The only purpose of this API is to handle the case of failure to remove the following retention leases after the unfollow API is invoked.
  * @rest_spec_name ccr.forget_follower
+ * @category management
  * @availability stack since=6.7.0 stability=stable
  * @doc_id ccr-post-forget-follower
  * @ext_doc_id ccr

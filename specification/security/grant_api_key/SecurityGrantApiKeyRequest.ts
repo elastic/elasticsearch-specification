@@ -45,6 +45,7 @@ import { ApiKeyGrantType, GrantApiKey } from './types'
  *
  * By default, API keys never expire. You can specify expiration information when you create the API keys.
  * @rest_spec_name security.grant_api_key
+ * @category security
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges grant_api_key

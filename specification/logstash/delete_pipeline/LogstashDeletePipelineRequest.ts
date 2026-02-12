@@ -26,6 +26,7 @@ import { Id, MediaType } from '@_types/common'
  * Delete a pipeline that is used for Logstash Central Management.
  * If the request succeeds, you receive an empty response with an appropriate status code.
  * @rest_spec_name logstash.delete_pipeline
+ * @category ingest
  * @availability stack since=7.12.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_logstash_pipelines

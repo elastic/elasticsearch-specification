@@ -61,6 +61,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * * The node handling the split process must have sufficient free disk space to accommodate a second copy of the existing index.
  * @doc_id indices-split-index
  * @rest_spec_name indices.split
+ * @category management
  * @availability stack since=6.1.0 stability=stable
  * @index_privileges manage
  */

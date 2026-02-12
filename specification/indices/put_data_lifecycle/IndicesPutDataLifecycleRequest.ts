@@ -28,6 +28,7 @@ import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
  *
  * Update the data stream lifecycle of the specified data streams.
  * @rest_spec_name indices.put_data_lifecycle
+ * @category management
  * @availability stack since=8.11.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag data stream

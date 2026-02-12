@@ -26,6 +26,7 @@ import { ExpandWildcards, Indices, MediaType } from '@_types/common'
  * Get low-level information about the Lucene segments in index shards.
  * For data streams, the API returns information about the stream's backing indices.
  * @rest_spec_name indices.segments
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id indices-segments

@@ -25,6 +25,7 @@ import { EventType } from '../_types/AnalyticsEvent'
  * Create a behavioral analytics collection event.
  *
  * @rest_spec_name search_application.post_behavioral_analytics_event
+ * @category management
  * @availability stack stability=experimental visibility=public
  * @doc_tag analytics
  * @doc_id behavioral-analytics-collection-event

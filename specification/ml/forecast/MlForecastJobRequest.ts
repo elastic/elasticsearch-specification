@@ -30,6 +30,7 @@ import { Duration } from '@_types/Time'
  * based on historical data.
  *
  * @rest_spec_name ml.forecast
+ * @category ai/ml
  * @availability stack since=6.1.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml

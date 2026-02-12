@@ -31,6 +31,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.
  * However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
  * @rest_spec_name inference.update
+ * @category ai/ml
  * @availability stack since=8.17.0 stability=stable visibility=public
  * @cluster_privileges manage_inference
  * @doc_id inference-api-update

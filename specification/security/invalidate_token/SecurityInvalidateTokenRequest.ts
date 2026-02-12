@@ -35,6 +35,7 @@ import { MediaType, Name, Username } from '@_types/common'
  * More specifically, either one of `token` or `refresh_token` parameters is required.
  * If none of these two are specified, then `realm_name` and/or `username` need to be specified.
  * @rest_spec_name security.invalidate_token
+ * @category security
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id security-api-invalidate-token

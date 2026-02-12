@@ -43,6 +43,7 @@ import { DateTime, Duration } from '@_types/Time'
  * `overall_score` of the overall buckets that have a span equal to the
  * jobs' largest bucket span.
  * @rest_spec_name ml.get_overall_buckets
+ * @category ai/ml
  * @availability stack since=6.1.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor_ml

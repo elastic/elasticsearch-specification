@@ -25,6 +25,7 @@ import { MediaType } from '@_types/common'
  * Gets the latest desired nodes.
  *
  * @rest_spec_name _internal.get_desired_nodes
+ * @category unknown
  * @availability stack stability=experimental visibility=private
  * @codegen_exclude
  */

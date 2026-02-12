@@ -33,6 +33,7 @@ import { PainlessContext, PainlessContextSetup } from './types'
  *
  * Each context requires a script, but additional parameters depend on the context you're using for that script.
  * @rest_spec_name scripts_painless_execute
+ * @category unknown
  * @availability stack since=6.3.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
  * @doc_tag script

@@ -32,6 +32,7 @@ import { MediaType } from '@_types/common'
  * The API returns a response as soon as the request is acknowledged, but the plugin might continue to run until in-progress operations complete and it can be safely stopped.
  * Use the get snapshot lifecycle management status API to see if SLM is running.
  * @rest_spec_name slm.stop
+ * @category management
  * @availability stack since=7.6.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id slm-api-stop

@@ -32,6 +32,7 @@ import { SecuritySettings } from '@security/_types/SecuritySettings'
  * If a specific index is not in use on the system and settings are provided for it, the request will be rejected.
  * This API does not yet support configuring the settings for indices before they are in use.
  * @rest_spec_name security.update_settings
+ * @category security
  * @availability stack stability=stable visibility=public
  * @cluster_privileges manage_security
  * @doc_id security-api-update-settings

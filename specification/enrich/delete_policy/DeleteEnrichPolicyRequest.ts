@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Deletes an existing enrich policy and its enrich index.
  * @rest_spec_name enrich.delete_policy
+ * @category ingest
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id delete-enrich-policy-api

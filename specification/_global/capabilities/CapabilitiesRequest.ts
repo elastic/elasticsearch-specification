@@ -25,6 +25,7 @@ import { MediaType } from '@_types/common'
  * Checks if the specified combination of method, API, parameters, and arbitrary capabilities are supported.
  *
  * @rest_spec_name capabilities
+ * @category unknown
  * @availability stack stability=experimental visibility=private
  * @doc_id capabilities
  */

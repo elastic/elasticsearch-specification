@@ -26,6 +26,7 @@ import { RankEvalMetric, RankEvalRequestItem } from './types'
  *
  * Evaluate the quality of ranked search results over a set of typical search queries.
  * @rest_spec_name rank_eval
+ * @category search
  * @availability stack since=6.2.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

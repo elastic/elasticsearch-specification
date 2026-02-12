@@ -28,6 +28,7 @@ import { Duration } from '@_types/Time'
  * Get a breakdown of the hot threads on each selected node in the cluster.
  * The output is plain text with a breakdown of the top hot threads for each node.
  * @rest_spec_name nodes.hot_threads
+ * @category unknown
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor,manage

@@ -30,6 +30,7 @@ import { ExpandWildcards, Fields, Indices, MediaType } from '@_types/common'
  * To clear only specific caches, use the `fielddata`, `query`, or `request` parameters.
  * To clear the cache only of specific fields, use the `fields` parameter.
  * @rest_spec_name indices.clear_cache
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @index_privileges manage

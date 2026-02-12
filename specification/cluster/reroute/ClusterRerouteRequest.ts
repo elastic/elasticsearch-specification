@@ -39,6 +39,7 @@ import { Command } from './types'
  *
  * Once the problem has been corrected, allocation can be manually retried by calling the reroute API with the `?retry_failed` URI query parameter, which will attempt a single retry round for these shards.
  * @rest_spec_name cluster.reroute
+ * @category management
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-reroute

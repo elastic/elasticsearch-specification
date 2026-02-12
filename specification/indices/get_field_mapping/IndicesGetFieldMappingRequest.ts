@@ -28,6 +28,7 @@ import { ExpandWildcards, Fields, Indices, MediaType } from '@_types/common'
  *
  * This API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields.
  * @rest_spec_name indices.get_field_mapping
+ * @category management
  * @availability stack stability=stable
  * @index_privileges view_index_metadata
  * @doc_id indices-get-field-mapping

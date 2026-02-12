@@ -26,6 +26,7 @@ import { RequestEmbedding } from '@inference/_types/CommonTypes'
  * Perform dense embedding inference on the service.
  *
  * @rest_spec_name inference.embedding
+ * @category ai/ml
  * @availability stack since=9.4.0 stability=experimental visibility=public
  * @availability serverless stability=experimental visibility=public
  * @doc_id inference-api-post

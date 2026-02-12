@@ -31,6 +31,7 @@ import { Id, MediaType } from '@_types/common'
  * * Users with the `cancel_task` cluster privilege.
  * * The user who first submitted the search.
  * @rest_spec_name sql.delete_async
+ * @category common
  * @availability stack since=7.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges cancel_task

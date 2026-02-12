@@ -24,6 +24,7 @@ import { SchedulingConfiguration } from '../_types/Connector'
  * Update the connector scheduling.
  *
  * @rest_spec_name connector.update_scheduling
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-update-scheduling

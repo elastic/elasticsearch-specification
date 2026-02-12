@@ -32,6 +32,7 @@ import { MediaType } from '@_types/common'
  * Modification of `index.routing.allocation.include._tier_preference` is an exception and is not allowed as the
  * Watcher shards must always be in the `data_content` tier.
  * @rest_spec_name watcher.update_settings
+ * @category info
  * @availability stack stability=stable visibility=public
  * @cluster_privileges manage_watcher
  * @doc_id watcher-api-update-settings

@@ -31,6 +31,7 @@ import {
  * The filtering draft is activated once validated by the running Elastic connector service.
  * The filtering property is used to configure sync rules (both basic and advanced) for a connector.
  * @rest_spec_name connector.update_filtering
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-update-filtering

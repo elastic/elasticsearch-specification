@@ -41,6 +41,7 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
  *
  * A document's source is not available if it is disabled in the mapping.
  * @rest_spec_name exists_source
+ * @category search
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_tag document

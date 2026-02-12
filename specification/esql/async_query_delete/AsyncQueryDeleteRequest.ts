@@ -31,6 +31,7 @@ import { Id, MediaType } from '@_types/common'
  * * The authenticated user that submitted the original query request
  * * Users with the `cancel_task` cluster privilege
  * @rest_spec_name esql.async_query_delete
+ * @category common
  * @availability stack since=8.13.0 stability=stable visibility=public
  * @doc_id esql-async-query-delete
  * @ext_doc_id esql

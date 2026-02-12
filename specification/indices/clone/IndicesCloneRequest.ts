@@ -72,6 +72,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  *
  * Because the clone operation creates a new index to clone the shards to, the wait for active shards setting on index creation applies to the clone index action as well.
  * @rest_spec_name indices.clone
+ * @category management
  * @availability stack since=7.4.0 stability=stable
  * @index_privileges manage
  * @doc_id indices-clone-index

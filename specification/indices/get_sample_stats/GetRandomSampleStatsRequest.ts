@@ -24,6 +24,7 @@ import { IndexName, MediaType } from '@_types/common'
  * Request stats for a random sample of raw documents ingested into the given index or data stream.
  *
  * @rest_spec_name indices.get_sample_stats
+ * @category management
  * @availability stack visibility=feature_flag feature_flag=random_sampling since=9.3.0 stability=experimental
  * @doc_id indices-get-sample-stats
  * @doc_tag random_sample

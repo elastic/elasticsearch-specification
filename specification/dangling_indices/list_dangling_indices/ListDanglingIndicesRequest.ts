@@ -28,6 +28,7 @@ import { MediaType } from '@_types/common'
  *
  * Use this API to list dangling indices, which you can then import or delete.
  * @rest_spec_name dangling_indices.list_dangling_indices
+ * @category unknown
  * @availability stack since=7.9.0 stability=stable
  * @doc_tag indices
  * @doc_id dangling-indices-list

@@ -24,6 +24,7 @@ import { Id, MediaType } from '@_types/common'
  * Stop a trained model deployment.
  *
  * @rest_spec_name ml.stop_trained_model_deployment
+ * @category ai/ml
  * @availability stack since=8.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml

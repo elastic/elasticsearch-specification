@@ -41,6 +41,7 @@ import { Duration } from '@_types/Time'
  * All this information can be calculated by the structure finder with no guidance.
  * However, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.
  * @rest_spec_name text_structure.find_structure
+ * @category ai/ml
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_text_structure

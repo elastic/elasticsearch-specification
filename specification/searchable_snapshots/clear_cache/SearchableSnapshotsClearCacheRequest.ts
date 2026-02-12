@@ -25,6 +25,7 @@ import { ExpandWildcards, Indices, MediaType } from '@_types/common'
  *
  * Clear indices and data streams from the shared cache for partially mounted indices.
  * @rest_spec_name searchable_snapshots.clear_cache
+ * @category management
  * @availability stack since=7.10.0 stability=experimental
  * @cluster_privileges manage
  * @index_privileges manage

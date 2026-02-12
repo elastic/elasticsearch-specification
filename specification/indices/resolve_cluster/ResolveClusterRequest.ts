@@ -69,6 +69,7 @@ import { Duration } from '@_types/Time'
  * The `connected` field in the response will indicate whether it was successful.
  * If a connection was (re-)established, this will also cause the `remote/info` endpoint to now indicate a connected status.
  * @rest_spec_name indices.resolve_cluster
+ * @category management
  * @availability stack since=8.13.0 stability=stable
  * @doc_id indices-resolve-cluster-api
  * @index_privileges view_index_metadata

@@ -34,6 +34,7 @@ import { TaskTypeContextualAI } from '@inference/_types/TaskType'
  *
  * To review the available `rerank` models, refer to <https://docs.contextual.ai/api-reference/rerank/rerank#body-model>.
  * @rest_spec_name inference.put_contextualai
+ * @category ai/ml
  * @availability stack since=9.2.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference

@@ -26,6 +26,7 @@ import { Id, MediaType } from '@_types/common'
  * If you try to start a job that does not exist, an exception occurs.
  * If you try to start a job that is already started, nothing happens.
  * @rest_spec_name rollup.start_job
+ * @category management
  * @availability stack since=6.3.0 stability=experimental
  * @cluster_privileges manage_rollup
  * @deprecated 8.11.0

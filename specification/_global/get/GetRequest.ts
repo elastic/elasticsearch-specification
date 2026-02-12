@@ -89,6 +89,7 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
  * The old version of the document doesn't disappear immediately, although you won't be able to access it.
  * Elasticsearch cleans up deleted documents in the background as you continue to index more data.
  * @rest_spec_name get
+ * @category document management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read

@@ -25,6 +25,7 @@ import { integer } from '@_types/Numeric'
  *
  * Get information about all connectors.
  * @rest_spec_name connector.list
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-list

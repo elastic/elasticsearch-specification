@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * Get information about all cross-cluster replication follower indices.
  * For example, the results include follower index names, leader index names, replication options, and whether the follower indices are active or paused.
  * @rest_spec_name ccr.follow_info
+ * @category management
  * @availability stack since=6.7.0 stability=stable
  * @cluster_privileges monitor
  * @doc_id ccr-get-follow-info

@@ -80,6 +80,7 @@ import { Destination, Source } from './types'
  *
  * Refer to the linked documentation for examples of how to reindex documents.
  * @rest_spec_name reindex
+ * @category document management
  * @availability stack since=2.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read, write

@@ -25,6 +25,7 @@ import { ExpandWildcards, Indices, MediaType } from '@_types/common'
  *
  * Check if one or more indices, index aliases, or data streams exist.
  * @rest_spec_name indices.exists
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-exists

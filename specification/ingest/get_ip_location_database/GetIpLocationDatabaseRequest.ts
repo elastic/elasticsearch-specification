@@ -24,6 +24,7 @@ import { Ids, MediaType } from '@_types/common'
  * Get IP geolocation database configurations.
  *
  * @rest_spec_name ingest.get_ip_location_database
+ * @category ingest
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
  * @cluster_privileges manage

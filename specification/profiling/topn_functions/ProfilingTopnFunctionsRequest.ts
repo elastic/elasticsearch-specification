@@ -25,6 +25,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * Extracts a list of topN functions from Universal Profiling.
  *
  * @rest_spec_name profiling.topn_functions
+ * @category unknown
  * @availability stack stability=stable visibility=private
  * @doc_id universal-profiling
  */

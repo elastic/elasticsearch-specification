@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  * You can resume following with the resume follower API.
  * You can pause and resume a follower index to change the configuration of the following task.
  * @rest_spec_name ccr.pause_follow
+ * @category management
  * @availability stack since=6.5.0 stability=stable
  * @cluster_privileges manage_ccr
  * @doc_id ccr-post-pause-follow

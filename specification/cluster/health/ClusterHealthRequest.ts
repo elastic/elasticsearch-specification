@@ -43,6 +43,7 @@ import { WaitForNodes } from './types'
  * One of the main benefits of the API is the ability to wait until the cluster reaches a certain high watermark health level.
  * The cluster status is controlled by the worst index status.
  * @rest_spec_name cluster.health
+ * @category management
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor, manage

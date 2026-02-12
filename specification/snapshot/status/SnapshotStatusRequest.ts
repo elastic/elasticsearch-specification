@@ -46,6 +46,7 @@ import { Duration } from '@_types/Time'
  * Depending on the latency of your storage, such requests can take an extremely long time to return results.
  * These requests can also tax machine resources and, when using cloud storage, incur high processing costs.
  * @rest_spec_name snapshot.status
+ * @category management
  * @availability stack since=7.8.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_snapshot

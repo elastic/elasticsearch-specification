@@ -15,11 +15,10 @@
 // specific language governing permissions and limitations
 // under the License.
 
-use std::collections::BTreeMap;
+use crate::utils::SchemaName;
+use crate::Configuration;
 use clients_schema::TypeName;
 use openapiv3::{Components, Parameter, ReferenceOr, RequestBody, Response, Schema, StatusCode};
-use crate::Configuration;
-use crate::utils::SchemaName;
 
 // Separator used to combine parts of a component path.
 // OpenAPI says `$ref` must comply with RFC 3968 (escaping reserved chars),
@@ -33,19 +32,11 @@ pub struct TypesAndComponents<'a> {
     pub config: &'a Configuration,
     pub model: &'a clients_schema::IndexedModel,
     pub components: &'a mut Components,
-    // Redirections (if paths multipaths endpoints are merged)
-    pub redirects: Option<BTreeMap<String, String>>,
 }
 
 impl<'a> TypesAndComponents<'a> {
     pub fn new(config: &'a Configuration, model: &'a clients_schema::IndexedModel, components: &'a mut Components) -> TypesAndComponents<'a> {
-        let redirects = if config.merge_multipath_endpoints && config.multipath_redirects {
-            Some(BTreeMap::new())
-        } else {
-            None
-        };
-
-        TypesAndComponents { config, model, components, redirects }
+        TypesAndComponents { config, model, components }
     }
 
     pub fn add_request_body(&mut self, endpoint: &str, body: RequestBody) -> ReferenceOr<RequestBody> {

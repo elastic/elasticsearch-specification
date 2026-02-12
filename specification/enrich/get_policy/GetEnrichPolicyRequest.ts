@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Returns information about an enrich policy.
  * @rest_spec_name enrich.get_policy
+ * @category ingest
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id get-enrich-policy-api

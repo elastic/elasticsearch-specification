@@ -28,6 +28,7 @@ import { MediaType } from '@_types/common'
  * NOTE: This API is currently intended for internal use only by Kibana.
  * Kibana uses this API internally to configure itself for communications with an Elasticsearch cluster that already has security features enabled.
  * @rest_spec_name security.enroll_kibana
+ * @category security
  * @availability stack since=8.0.0 stability=stable
  * @doc_id security-api-kibana-enrollment
  */

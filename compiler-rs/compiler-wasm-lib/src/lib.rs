@@ -60,7 +60,6 @@ pub fn convert0(cli: Cli, cwd: Option<String>) -> anyhow::Result<()> {
         Some(ref cwd) => PathBuf::from(cwd).join(&cli.output),
         None => cli.output.clone(),
     };
-    let redirect_path = cli.redirect_path(&output);
 
     let json = node_fs::read_file_sync_to_string(&input.to_string_lossy(), "utf8");
     let schema = IndexedModel::from_reader(json.as_bytes())?;
@@ -74,14 +73,8 @@ pub fn convert0(cli: Cli, cwd: Option<String>) -> anyhow::Result<()> {
 
     let openapi = clients_schema_to_openapi::convert_schema(schema, cli.into(), product_meta)?;
 
-    let result = serde_json::to_string_pretty(&openapi.openapi)?;
+    let result = serde_json::to_string_pretty(&openapi)?;
     node_fs::write_file_sync(&output.to_string_lossy(), &result);
-
-    if let Some(redirects) = openapi.redirects {
-        let path = redirect_path.unwrap();
-        node_fs::write_file_sync(&path, &redirects);
-    }
-
     Ok(())
 }
 

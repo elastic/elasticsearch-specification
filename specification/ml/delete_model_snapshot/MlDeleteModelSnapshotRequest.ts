@@ -27,6 +27,7 @@ import { Id, MediaType } from '@_types/common'
  * revert to a different one. To identify the active model snapshot, refer to
  * the `model_snapshot_id` in the results from the get jobs API.
  * @rest_spec_name ml.delete_model_snapshot
+ * @category ai/ml
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml

@@ -24,6 +24,7 @@ import { MediaType } from '@_types/common'
  * Deletes a secret stored by Fleet.
  *
  * @rest_spec_name fleet.delete_secret
+ * @category ingest
  * @availability stack stability=experimental visibility=private
  */
 export interface Request extends RequestBase {

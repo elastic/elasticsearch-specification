@@ -31,6 +31,7 @@ import { Id, MediaType } from '@_types/common'
  * before this event. For example, you might consider reverting to a saved
  * snapshot after Black Friday or a critical system failure.
  * @rest_spec_name ml.revert_model_snapshot
+ * @category ai/ml
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_ml

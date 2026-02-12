@@ -27,6 +27,7 @@ import { CatPendingTasksColumns, CatRequestBase } from '@cat/_types/CatBase'
  * Get information about cluster-level changes that have not yet taken effect.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the pending cluster tasks API.
  * @rest_spec_name cat.pending_tasks
+ * @category info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cat-pending-tasks

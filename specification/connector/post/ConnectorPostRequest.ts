@@ -26,6 +26,7 @@ import { IndexName, MediaType } from '@_types/common'
  * Elastic managed connectors (Native connectors) are a managed service on Elastic Cloud.
  * Self-managed connectors (Connector clients) are self-managed on your infrastructure.
  * @rest_spec_name connector.post
+ * @category management
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
  * @doc_id connector-post

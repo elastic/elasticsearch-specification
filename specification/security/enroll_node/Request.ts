@@ -28,6 +28,7 @@ import { MediaType } from '@_types/common'
  * The response contains all the necessary information for the joining node to bootstrap discovery and security related settings so that it can successfully join the cluster.
  * The response contains key and certificate material that allows the caller to generate valid signed certificates for the HTTP layer of all nodes in the cluster.
  * @rest_spec_name security.enroll_node
+ * @category security
  * @availability stack since=8.0.0 stability=stable
  * @doc_id security-api-node-enrollment
  */

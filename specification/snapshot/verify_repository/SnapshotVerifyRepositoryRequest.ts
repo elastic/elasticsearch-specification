@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * Check for common misconfigurations in a snapshot repository.
  * @rest_spec_name snapshot.verify_repository
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage

@@ -60,6 +60,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * * The node handling the shrink process must have sufficient free disk space to accommodate a second copy of the existing index.
  * @doc_id indices-shrink-index
  * @rest_spec_name indices.shrink
+ * @category management
  * @availability stack since=5.0.0 stability=stable
  * @index_privileges manage
  */

@@ -24,6 +24,7 @@ import { MediaType } from '@_types/common'
  * Get the basic license status.
  *
  * @rest_spec_name license.get_basic_status
+ * @category info
  * @availability stack since=6.3.0 stability=stable
  * @cluster_privileges monitor
  * @doc_id get-basic-status

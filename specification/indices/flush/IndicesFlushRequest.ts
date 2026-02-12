@@ -35,6 +35,7 @@ import { ExpandWildcards, Indices, MediaType } from '@_types/common'
  * If you call the flush API after indexing some documents then a successful response indicates that Elasticsearch has flushed all the documents that were indexed before the flush API was called.
  * @doc_id indices-flush
  * @rest_spec_name indices.flush
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @index_privileges maintenance

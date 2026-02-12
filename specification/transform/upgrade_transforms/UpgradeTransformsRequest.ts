@@ -38,6 +38,7 @@ import { MediaType } from '@_types/common'
  * To ensure continuous transforms remain running during a major version upgrade of the cluster – for example, from 7.16 to 8.0 – it is recommended to upgrade transforms before upgrading the cluster.
  * You may want to perform a recent cluster backup prior to the upgrade.
  * @rest_spec_name transform.upgrade_transforms
+ * @category ingest
  * @availability stack since=7.16.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage_transform

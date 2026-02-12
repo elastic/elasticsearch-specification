@@ -30,6 +30,7 @@ import { MediaType } from '@_types/common'
  * cluster does not have existing indices or data streams that match the pattern `logs|logs.*`.
  * If those indices or data streams exist, a `409 - Conflict` response and error is returned.
  * @rest_spec_name streams.logs_enable
+ * @category unknown
  * @availability stack since=9.1.0 stability=experimental visibility=feature_flag feature_flag=logs_stream
  * @cluster_privileges manage
  * @doc_id streams-logs-enable

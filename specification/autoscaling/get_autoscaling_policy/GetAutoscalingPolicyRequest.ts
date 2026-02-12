@@ -26,6 +26,7 @@ import { Duration } from '@_types/Time'
  *
  * NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.
  * @rest_spec_name autoscaling.get_autoscaling_policy
+ * @category management
  * @availability stack since=7.11.0 stability=stable visibility=private
  * @doc_id autoscaling-get-autoscaling-capacity
  * @ext_doc_id autoscaling

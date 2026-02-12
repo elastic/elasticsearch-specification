@@ -30,6 +30,7 @@ import { MediaType, Names } from '@_types/common'
  * There are realm settings that you can use to configure the user cache.
  * For more information, refer to the documentation about controlling the user cache.
  * @rest_spec_name security.clear_cached_realms
+ * @category security
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id security-api-clear-cache

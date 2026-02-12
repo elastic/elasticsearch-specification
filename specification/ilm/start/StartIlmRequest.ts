@@ -28,6 +28,7 @@ import { MediaType } from '@_types/common'
  * ILM is started automatically when the cluster is formed.
  * Restarting ILM is necessary only when it has been stopped using the stop ILM API.
  * @rest_spec_name ilm.start
+ * @category management
  * @availability stack since=6.6.0 stability=stable
  * @cluster_privileges manage_ilm
  * @doc_id ilm-start

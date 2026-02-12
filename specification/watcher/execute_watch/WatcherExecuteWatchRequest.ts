@@ -43,6 +43,7 @@ import { Watch } from '@watcher/_types/Watch'
  * When using the run watch API, the authorization data of the user that called the API will be used as a base, instead of the information who stored the watch.
  * Refer to the external documentation for examples of watch execution requests, including existing, customized, and inline watches.
  * @rest_spec_name watcher.execute_watch
+ * @category info
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
  * @doc_id watcher-api-execute-watch

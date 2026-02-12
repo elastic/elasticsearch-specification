@@ -26,6 +26,7 @@ import { MediaType } from '@_types/common'
  *
  * By default, it returns only settings that have been explicitly defined.
  * @rest_spec_name cluster.get_settings
+ * @category management
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor
