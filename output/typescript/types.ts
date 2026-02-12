@@ -22951,9 +22951,9 @@ export interface StreamsStatusRequest extends RequestBase {
 }
 
 export interface StreamsStatusResponse {
-  '"logs"': StreamsStatusStreamStatus
-  '"logs.otel"': StreamsStatusStreamStatus
-  '"logs.ecs"': StreamsStatusStreamStatus
+  logs: StreamsStatusStreamStatus
+  'logs.otel': StreamsStatusStreamStatus
+  'logs.ecs': StreamsStatusStreamStatus
 }
 
 export interface StreamsStatusStreamStatus {

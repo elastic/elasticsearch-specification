@@ -32,5 +32,5 @@ export enum StreamType {
    * The logs.ecs stream type, meant for ECS-formatted data.
    * @codegen_name logs_ecs
    */
-  'logs.ecs',
+  'logs.ecs'
 }
