@@ -19,7 +19,6 @@
 
 import { RequestBase } from '@_types/Base'
 import { MediaType, NodeIds } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Get cache statistics.
@@ -49,7 +48,4 @@ export interface Request extends RequestBase {
     node_id?: NodeIds
   }
   response_media_type: MediaType.Json
-  query_parameters: {
-    master_timeout?: Duration
-  }
 }

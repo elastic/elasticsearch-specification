@@ -4,6 +4,7 @@ members = [
     "clients_schema",
     "openapi_to_clients_schema",
     "clients_schema_to_openapi",
+    "clients_schema_to_rest_api_spec",
     "compiler-wasm-lib",
 ]
 
@@ -16,6 +17,7 @@ console_error_panic_hook = "0.1"
 convert_case = "0.6"
 derive_more = "1.0.0-beta.6"
 either_n = "0.2"
+http = "1"
 icu_segmenter = "1"
 indexmap = "2"
 itertools = "0.14"
