@@ -643,6 +643,9 @@ export class MultiTermsAggregation extends BucketAggregationBase {
   terms: MultiTermLookup[]
 }
 
+/**
+ * @variants container
+ */
 export class MultiTermLookup {
   /**
    * A field from which to retrieve terms.
@@ -657,6 +660,7 @@ export class MultiTermLookup {
   /**
    * The value to apply to documents that do not have a value.
    * By default, documents without a value are ignored.
+   * @variant container_property
    */
   missing?: Missing
 }
