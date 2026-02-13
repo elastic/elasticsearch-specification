@@ -49,6 +49,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * * JinaAI (`embedding`, `rerank`, `text_embedding`)
  * * Llama (`chat_completion`, `completion`, `text_embedding`)
  * * Mistral (`chat_completion`, `completion`, `text_embedding`)
+ * * Mixedbread (`text_embedding`, `rerank`)
  * * Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)
  * * OpenAI (`chat_completion`, `completion`, `text_embedding`)
  * * OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)

@@ -1,0 +1,20 @@
+summary: A text embedding task
+description: Run `PUT _inference/text_embedding/mixedbread-text-embedding` to create an inference endpoint that performs a `text_embedding` task.
+method_request: 'PUT _inference/text_embedding/mixedbread-text-embedding'
+# type: "request"
+value: |-
+  {
+      "service": "mixedbread",
+      "service_settings": {
+          "api_key": "mixedbread-embeddings-token",
+          "url": "mixedbread-embeddings-url",
+          "model_id": "mixedbread-ai/mxbai-embed-large-v1",
+          "dimensions": 3,
+          "max_input_tokens": 2,
+          "similarity": "dot_product"
+      },
+      "task_settings": {
+          "prompt": "prompt",
+          "normalized": true
+      }
+  }

@@ -1967,6 +1967,78 @@ export enum MistralServiceType {
   mistral
 }
 
+export class MixedbreadServiceSettings {
+  /**
+   * A valid API key for your Mixedbread endpoint.
+   * Can be found in `API Keys` section of Mixedbread account settings.
+   */
+  api_key: string
+  /**
+   * The URL of the Mixedbread model endpoint. If not provided, the default endpoint URL is used depending on the task type:
+   *
+   * * For `text_embedding` task - `https://api.mixedbread.com/v1/embeddings`.
+   * * For `rerank` task - `"https://api.mixedbread.com/v1/reranking"`.
+   */
+  url?: string
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the model's documentation for the name if needed.
+   * Service has been tested and confirmed to be working with the following models:
+   *
+   * * For `text_embedding` task -
+   * `mixedbread-ai/mxbai-embed-large-v1`,
+   * `mixedbread-ai/mixedbread-ai/mxbai-embed-2d-large-v1`,
+   * `mixedbread-ai/deepset-mxbai-embed-de-large-v1`.
+   *
+   * * For `rerank` task -
+   * `mixedbread-ai/mxbai-rerank-xsmall-v1`,
+   * `mixedbread-ai/mxbai-rerank-base-v1`,
+   * `mixedbread-ai/mxbai-rerank-large-v1`,
+   * `mixedbread-ai/mxbai-rerank-base-v2`,
+   * `mixedbread-ai/mxbai-rerank-large-v2`.
+   */
+  model_id: string
+  /**
+   * For a `text_embedding` task, the maximum number of tokens per input. Inputs exceeding this value are truncated prior to sending to the Mixedbread API.
+   */
+  max_input_tokens?: integer
+  /**
+   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
+   */
+  similarity?: MixedbreadSimilarityType
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from the Mixedbread API.
+   * Free tire for the `mixedbread` service sets the number of requests allowed per minute to 100.
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export enum MixedbreadTaskType {
+  rerank,
+  text_embedding
+}
+
+export enum MixedbreadServiceType {
+  mixedbread
+}
+
+export enum MixedbreadSimilarityType {
+  cosine,
+  dot_product,
+  l2_norm
+}
+
+export class MixedbreadTaskSettings {
+  /**
+   * used by the model for embedding generation.
+   */
+  prompt?: string
+  /**
+   * Specifies whether to normalize the embeddings.
+   */
+  normalized?: boolean
+}
+
 export class NvidiaServiceSettings {
   /**
    * A valid API key for your Nvidia endpoint.
