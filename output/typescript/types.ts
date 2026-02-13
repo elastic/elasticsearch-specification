@@ -22930,7 +22930,10 @@ export interface SslCertificatesRequest extends RequestBase {
 
 export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
 
+export type StreamsStreamType = 'logs' | 'logs.otel' | 'logs.ecs'
+
 export interface StreamsLogsDisableRequest extends RequestBase {
+  name: StreamsStreamType
   master_timeout?: Duration
   timeout?: Duration
 }
@@ -22938,22 +22941,25 @@ export interface StreamsLogsDisableRequest extends RequestBase {
 export type StreamsLogsDisableResponse = AcknowledgedResponseBase
 
 export interface StreamsLogsEnableRequest extends RequestBase {
+  name: StreamsStreamType
   master_timeout?: Duration
   timeout?: Duration
 }
 
 export type StreamsLogsEnableResponse = AcknowledgedResponseBase
 
-export interface StreamsStatusLogsStatus {
-  enabled: boolean
-}
-
 export interface StreamsStatusRequest extends RequestBase {
   master_timeout?: Duration
 }
 
 export interface StreamsStatusResponse {
-  logs: StreamsStatusLogsStatus
+  logs: StreamsStatusStreamStatus
+  'logs.otel': StreamsStatusStreamStatus
+  'logs.ecs': StreamsStatusStreamStatus
+}
+
+export interface StreamsStatusStreamStatus {
+  enabled: boolean
 }
 
 export interface SynonymsSynonymRule {

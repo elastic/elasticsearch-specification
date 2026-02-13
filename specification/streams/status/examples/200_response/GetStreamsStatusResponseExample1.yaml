@@ -4,6 +4,12 @@ summary: Get Streams Status
 value: |-
   {
     "logs": {
+      "enabled": false
+    }
+    "logs.ecs": {
+      "enabled": true
+    }
+    "logs.otel": {
       "enabled": true
     }
   }
