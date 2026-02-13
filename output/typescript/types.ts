@@ -14828,6 +14828,11 @@ export interface InferenceInferenceEndpointInfoMistral extends InferenceInferenc
   task_type: InferenceTaskTypeMistral
 }
 
+export interface InferenceInferenceEndpointInfoMixedbread extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeMixedbread
+}
+
 export interface InferenceInferenceEndpointInfoNvidia extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeNvidia
@@ -14925,6 +14930,28 @@ export interface InferenceMistralServiceSettings {
 export type InferenceMistralServiceType = 'mistral'
 
 export type InferenceMistralTaskType = 'text_embedding' | 'completion' | 'chat_completion'
+
+export interface InferenceMixedbreadServiceSettings {
+  api_key: string
+  url?: string
+  model_id: string
+  dimensions?: integer
+  max_input_tokens?: integer
+  similarity?: InferenceMixedbreadSimilarityType
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceMixedbreadServiceType = 'mixedbread'
+
+export type InferenceMixedbreadSimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
+
+export interface InferenceMixedbreadTaskSettings {
+  prompt?: string
+  normalized?: boolean
+}
+
+export type InferenceMixedbreadTaskType = 'rerank' | 'text_embedding'
+
 
 export type InferenceNvidiaInputType = 'ingest' | 'search'
 
@@ -15076,6 +15103,8 @@ export type InferenceTaskTypeJinaAi = 'embedding' | 'text_embedding' | 'rerank'
 export type InferenceTaskTypeLlama = 'text_embedding' | 'chat_completion' | 'completion'
 
 export type InferenceTaskTypeMistral = 'text_embedding' | 'chat_completion' | 'completion'
+
+export type InferenceTaskTypeMixedbread = 'rerank' | 'text_embedding'
 
 export type InferenceTaskTypeNvidia = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
@@ -15473,6 +15502,20 @@ export interface InferencePutMistralRequest extends RequestBase {
 }
 
 export type InferencePutMistralResponse = InferenceInferenceEndpointInfoMistral
+
+export interface InferencePutMixedbreadRequest extends RequestBase {
+  task_type: InferenceMixedbreadTaskType
+  nvidia_inference_id: Id
+  timeout?: Duration
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferenceMixedbreadServiceType
+    service_settings: InferenceMixedbreadServiceSettings
+    task_settings?: InferenceMixedbreadTaskSettings
+  }
+}
+
+export type InferencePutMixedbreadResponse = InferenceInferenceEndpointInfoMixedbread
 
 export interface InferencePutNvidiaRequest extends RequestBase {
   task_type: InferenceNvidiaTaskType
