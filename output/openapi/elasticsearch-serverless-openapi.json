@@ -11826,7 +11826,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Mixedbread (`text_embedding`, `rerank`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -11949,7 +11949,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Mixedbread (`text_embedding`, `rerank`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -14741,6 +14741,144 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoMistral"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/{task_type}/{mixedbread_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create an Mixedbread inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `mixedbread` service.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-mixedbread",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.MixedbreadTaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "mixedbread_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
+                    },
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank`, `completion`, or `chat_completion` task types.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
+                      }
+                    ]
+                  },
+                  "service": {
+                    "description": "The type of service supported for the specified task type. In this case, `mixedbread`.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.MixedbreadServiceType"
+                      }
+                    ]
+                  },
+                  "service_settings": {
+                    "description": "Settings used to install the inference model. These settings are specific to the `mixedbread` service.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.MixedbreadServiceSettings"
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Settings to configure the inference task.\nApplies only to the `text_embedding` task type.\nNot applicable to the `rerank` task type.\nThese settings are specific to the task type you specified.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.MixedbreadTaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutMixedbreadRequestExample1": {
+                  "summary": "A text embedding task",
+                  "description": "Run `PUT _inference/text_embedding/mixedbread-text-embedding` to create an inference endpoint that performs a `text_embedding` task.",
+                  "value": "{\n    \"service\": \"mixedbread\",\n    \"service_settings\": {\n        \"api_key\": \"mixedbread-embeddings-token\",\n        \"url\": \"mixedbread-embeddings-url\",\n        \"model_id\": \"mixedbread-ai/mxbai-embed-large-v1\",\n        \"dimensions\": 3,\n        \"max_input_tokens\": 2,\n        \"similarity\": \"dot_product\"\n    },\n    \"task_settings\": {\n        \"prompt\": \"prompt\",\n        \"normalized\": true\n    }\n}"
+                },
+                "PutMixedbreadRequestExample2": {
+                  "summary": "A rerank task",
+                  "description": "Run `PUT _inference/rerank/mixedbread-rerank` to create an inference endpoint that performs a `rerank` task.",
+                  "value": "{\n    \"service\": \"mixedbread\",\n    \"service_settings\": {\n        \"api_key\": \"mixedbread-rerank-token\",\n        \"model_id\": \"mixedbread-ai/mxbai-rerank-large-v2\"\n    },\n    \"task_settings\": {\n        \"return_documents\": true,\n        \"top_n\": 2\n    }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoMixedbread"
+                },
+                "examples": {
+                  "PutMixedbreadResponseExample1": {
+                    "summary": "A text embedding task",
+                    "description": "A successful response when creating a Mixedbread `text_embedding` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"mixedbreaddd\",\n  \"task_type\": \"text_embedding\",\n  \"service\": \"mixedbread\",\n  \"service_settings\": {\n    \"model_id\": \"mixedbread-ai/mxbai-embed-large-v1\",\n    \"url\": \"https://api.mixedbread.com/v1/embeddings\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 100\n    },\n    \"dimensions\": 3,\n    \"similarity\": \"dot_product\",\n    \"max_input_tokens\": 2\n  },\n  \"task_settings\": {\n    \"prompt\": \"prompt\",\n    \"normalized\": true\n  },\n  \"chunking_settings\": {\n    \"strategy\": \"sentence\",\n    \"max_chunk_size\": 250,\n    \"sentence_overlap\": 1\n  }\n}"
+                  },
+                  "PutMixedbreadResponseExample2": {
+                    "summary": "A rerank task",
+                    "description": "A successful response when creating a Mixedbread `rerank` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"mixedbread\",\n  \"task_type\": \"rerank\",\n  \"service\": \"mixedbread\",\n  \"service_settings\": {\n      \"model_id\": \"mixedbread-ai/mxbai-rerank-large-v2\",\n      \"url\": \"https://api.mixedbread.com/v1/reranking\",\n      \"rate_limit\": {\n          \"requests_per_minute\": 100\n      }\n  },\n  \"task_settings\": {\n      \"top_n\": 2,\n      \"return_documents\": true\n  }\n}"
+                  }
                 }
               }
             }
@@ -69752,6 +69890,116 @@
           "text_embedding",
           "chat_completion",
           "completion"
+        ]
+      },
+      "inference._types.MixedbreadTaskType": {
+        "type": "string",
+        "enum": [
+          "rerank",
+          "text_embedding"
+        ]
+      },
+      "inference._types.MixedbreadServiceType": {
+        "type": "string",
+        "enum": [
+          "mixedbread"
+        ]
+      },
+      "inference._types.MixedbreadServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "description": "A valid API key for your Mixedbread endpoint.\nCan be found in `API Keys` section of Mixedbread account settings.",
+            "type": "string"
+          },
+          "url": {
+            "description": "The URL of the Mixedbread model endpoint. If not provided, the default endpoint URL is used depending on the task type:\n\n* For `text_embedding` task - `https://api.mixedbread.com/v1/embeddings`.\n* For `rerank` task - `\"https://api.mixedbread.com/v1/reranking\"`.",
+            "type": "string"
+          },
+          "model_id": {
+            "description": "The name of the model to use for the inference task.\nRefer to the model's documentation for the name if needed.\nService has been tested and confirmed to be working with the following models:\n\n* For `text_embedding` task -\n`mixedbread-ai/mxbai-embed-large-v1`,\n`mixedbread-ai/mixedbread-ai/mxbai-embed-2d-large-v1`,\n`mixedbread-ai/deepset-mxbai-embed-de-large-v1`.\n\n* For `rerank` task -\n`mixedbread-ai/mxbai-rerank-xsmall-v1`,\n`mixedbread-ai/mxbai-rerank-base-v1`,\n`mixedbread-ai/mxbai-rerank-large-v1`,\n`mixedbread-ai/mxbai-rerank-base-v2`,\n`mixedbread-ai/mxbai-rerank-large-v2`.",
+            "type": "string"
+          },
+          "max_input_tokens": {
+            "description": "For a `text_embedding` task, the maximum number of tokens per input. Inputs exceeding this value are truncated prior to sending to the Mixedbread API.",
+            "type": "number"
+          },
+          "similarity": {
+            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.MixedbreadSimilarityType"
+              }
+            ]
+          },
+          "rate_limit": {
+            "description": "This setting helps to minimize the number of rate limit errors returned from the Mixedbread API.\nFree tire for the `mixedbread` service sets the number of requests allowed per minute to 100.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.RateLimitSetting"
+              }
+            ]
+          }
+        },
+        "required": [
+          "api_key",
+          "model_id"
+        ]
+      },
+      "inference._types.MixedbreadSimilarityType": {
+        "type": "string",
+        "enum": [
+          "cosine",
+          "dot_product",
+          "l2_norm"
+        ]
+      },
+      "inference._types.MixedbreadTaskSettings": {
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "description": "used by the model for embedding generation.",
+            "type": "string"
+          },
+          "normalized": {
+            "description": "Specifies whether to normalize the embeddings.",
+            "type": "boolean"
+          }
+        }
+      },
+      "inference._types.InferenceEndpointInfoMixedbread": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference ID",
+                "type": "string"
+              },
+              "task_type": {
+                "description": "The task type",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/inference._types.TaskTypeMixedbread"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeMixedbread": {
+        "type": "string",
+        "enum": [
+          "rerank",
+          "text_embedding"
         ]
       },
       "inference._types.NvidiaTaskType": {

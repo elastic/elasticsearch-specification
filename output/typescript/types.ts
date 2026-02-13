@@ -14935,7 +14935,6 @@ export interface InferenceMixedbreadServiceSettings {
   api_key: string
   url?: string
   model_id: string
-  dimensions?: integer
   max_input_tokens?: integer
   similarity?: InferenceMixedbreadSimilarityType
   rate_limit?: InferenceRateLimitSetting
@@ -14951,7 +14950,6 @@ export interface InferenceMixedbreadTaskSettings {
 }
 
 export type InferenceMixedbreadTaskType = 'rerank' | 'text_embedding'
-
 
 export type InferenceNvidiaInputType = 'ingest' | 'search'
 
@@ -15505,7 +15503,7 @@ export type InferencePutMistralResponse = InferenceInferenceEndpointInfoMistral
 
 export interface InferencePutMixedbreadRequest extends RequestBase {
   task_type: InferenceMixedbreadTaskType
-  nvidia_inference_id: Id
+  mixedbread_inference_id: Id
   timeout?: Duration
   body?: {
     chunking_settings?: InferenceInferenceChunkingSettings

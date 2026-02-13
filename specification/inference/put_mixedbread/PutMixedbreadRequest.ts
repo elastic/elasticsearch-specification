@@ -21,10 +21,10 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { Duration } from '@_types/Time'
 import {
-    MixedbreadServiceSettings,
-    MixedbreadServiceType,
-    MixedbreadTaskSettings,
-    MixedbreadTaskType
+  MixedbreadServiceSettings,
+  MixedbreadServiceType,
+  MixedbreadTaskSettings,
+  MixedbreadTaskType
 } from '@inference/_types/CommonTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
 
@@ -39,51 +39,51 @@ import { InferenceChunkingSettings } from '@inference/_types/Services'
  * @doc_id inference-api-put-mixedbread
  */
 export interface Request extends RequestBase {
-    urls: [
-        {
-            path: '/_inference/{task_type}/{mixedbread_inference_id}'
-            methods: ['PUT']
-        }
-    ]
-    path_parts: {
-        /**
-         * The type of the inference task that the model will perform.
-         */
-        task_type: MixedbreadTaskType
-        /**
-         * The unique identifier of the inference endpoint.
-         */
-        mixedbread_inference_id: Id
+  urls: [
+    {
+      path: '/_inference/{task_type}/{mixedbread_inference_id}'
+      methods: ['PUT']
     }
-    query_parameters: {
-        /**
-         * Specifies the amount of time to wait for the inference endpoint to be created.
-         * @server_default 30s
-         */
-        timeout?: Duration
-    }
-    body: {
-        /**
-         * The chunking configuration object.
-         * Applies only to the `text_embedding` task type.
-         * Not applicable to the `rerank`, `completion`, or `chat_completion` task types.
-         * @ext_doc_id inference-chunking
-         */
-        chunking_settings?: InferenceChunkingSettings
-        /**
-         * The type of service supported for the specified task type. In this case, `mixedbread`.
-         */
-        service: MixedbreadServiceType
-        /**
-         * Settings used to install the inference model. These settings are specific to the `mixedbread` service.
-         */
-        service_settings: MixedbreadServiceSettings
-        /**
-         * Settings to configure the inference task.
-         * Applies only to the `text_embedding` task type.
-         * Not applicable to the `rerank` task type.
-         * These settings are specific to the task type you specified.
-         */
-        task_settings?: MixedbreadTaskSettings
-    }
+  ]
+  path_parts: {
+    /**
+     * The type of the inference task that the model will perform.
+     */
+    task_type: MixedbreadTaskType
+    /**
+     * The unique identifier of the inference endpoint.
+     */
+    mixedbread_inference_id: Id
+  }
+  query_parameters: {
+    /**
+     * Specifies the amount of time to wait for the inference endpoint to be created.
+     * @server_default 30s
+     */
+    timeout?: Duration
+  }
+  body: {
+    /**
+     * The chunking configuration object.
+     * Applies only to the `text_embedding` task type.
+     * Not applicable to the `rerank`, `completion`, or `chat_completion` task types.
+     * @ext_doc_id inference-chunking
+     */
+    chunking_settings?: InferenceChunkingSettings
+    /**
+     * The type of service supported for the specified task type. In this case, `mixedbread`.
+     */
+    service: MixedbreadServiceType
+    /**
+     * Settings used to install the inference model. These settings are specific to the `mixedbread` service.
+     */
+    service_settings: MixedbreadServiceSettings
+    /**
+     * Settings to configure the inference task.
+     * Applies only to the `text_embedding` task type.
+     * Not applicable to the `rerank` task type.
+     * These settings are specific to the task type you specified.
+     */
+    task_settings?: MixedbreadTaskSettings
+  }
 }

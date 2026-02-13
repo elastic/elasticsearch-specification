@@ -20,6 +20,6 @@
 import { InferenceEndpointInfoMixedbread } from '@inference/_types/Services'
 
 export class Response {
-    /** @codegen_name endpoint_info */
-    body: InferenceEndpointInfoMixedbread
+  /** @codegen_name endpoint_info */
+  body: InferenceEndpointInfoMixedbread
 }
