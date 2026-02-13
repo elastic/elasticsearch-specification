@@ -29,7 +29,7 @@ export class Alias {
    * Value used to route indexing operations to a specific shard.
    * If specified, this overwrites the `routing` value for indexing operations.
    */
-  index_routing?: Routing
+  index_routing?: string
   /**
    * If `true`, the alias is hidden.
    * All indices for the alias must have the same `is_hidden` value.
@@ -44,10 +44,10 @@ export class Alias {
   /**
    * Value used to route indexing and search operations to a specific shard.
    */
-  routing?: Routing
+  routing?: string
   /**
    * Value used to route search operations to a specific shard.
    * If specified, this overwrites the `routing` value for search operations.
    */
-  search_routing?: Routing
+  search_routing?: string
 }

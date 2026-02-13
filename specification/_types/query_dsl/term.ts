@@ -268,7 +268,7 @@ export class TermsLookup {
   index: IndexName
   id: Id
   path: Field
-  routing?: Routing
+  routing?: string
 }
 
 /**

@@ -68,7 +68,7 @@ export class AddAction {
    * If specified, this overwrites the `routing` value for indexing operations.
    * Data stream aliases don’t support this parameter.
    */
-  index_routing?: Routing
+  index_routing?: string
   /**
    * If `true`, the alias is hidden.
    * @server_default false */
@@ -81,13 +81,13 @@ export class AddAction {
    * Value used to route indexing and search operations to a specific shard.
    * Data stream aliases don’t support this parameter.
    */
-  routing?: Routing
+  routing?: string
   /**
    * Value used to route search operations to a specific shard.
    * If specified, this overwrites the `routing` value for search operations.
    * Data stream aliases don’t support this parameter.
    */
-  search_routing?: Routing
+  search_routing?: string
   /**
    * If `true`, the alias must exist to perform the action.
    * @server_default false */

@@ -158,6 +158,19 @@ class Response<Generic> {
 
 And the generic will be used somewhere inside the definition.
 
+#### Path/Query parameters csv
+
+In case the server accepts either a string or comma separated values for path or query parameters, they can be mapped as:
+```ts
+path_parts: {
+    param_name?: string | string[]
+}
+query_parameters: {
+    param_name?: string | string[]
+}
+```
+This is just an example, it's better to create an alias and use that instead of the unnamed union. Even better, the right alias might exist already, so always check [common.ts](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts) first.  
+
 #### Exceptions
 
 Normally, every API returns the exact same structure in case of error, which is defined

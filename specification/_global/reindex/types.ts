@@ -59,7 +59,7 @@ export class Destination {
    * If it is `=value`, the routing on the bulk request sent for each match is set to all value specified after the equals sign (`=`).
    * @server_default keep
    */
-  routing?: Routing
+  routing?: string
   /**
    *  The versioning to use for the indexing operation.
    */

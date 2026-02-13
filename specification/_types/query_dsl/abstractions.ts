@@ -449,7 +449,7 @@ export class FieldLookup {
   /**
    * Custom routing value.
    */
-  routing?: Routing
+  routing?: string
 }
 
 export class FieldNameQuery {

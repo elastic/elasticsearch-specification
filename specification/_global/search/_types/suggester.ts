@@ -77,7 +77,7 @@ export class CompletionSuggestOption<TDocument> {
   fields?: Dictionary<string, UserDefinedValue>
   _id?: string
   _index?: IndexName
-  _routing?: Routing
+  _routing?: string
   _score?: double
   _source?: TDocument
   text: string
