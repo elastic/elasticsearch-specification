@@ -22,7 +22,6 @@ import {
   Indices,
   OpType,
   Password,
-  Routing,
   Username,
   VersionType
 } from '@_types/common'

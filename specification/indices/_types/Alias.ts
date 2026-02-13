@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 export class Alias {

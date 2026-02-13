@@ -21,7 +21,6 @@ import {
   Id,
   IndexName,
   InlineGet,
-  Routing,
   SequenceNumber,
   VersionNumber,
   VersionType

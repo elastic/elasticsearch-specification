@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexAlias, IndexName, Indices, Routing } from '@_types/common'
+import { IndexAlias, IndexName, Indices } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /** @variants container */

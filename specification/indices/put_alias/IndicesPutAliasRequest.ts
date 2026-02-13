@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices, MediaType, Name, Routing } from '@_types/common'
+import { Indices, MediaType, Name } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
 

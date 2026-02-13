@@ -17,14 +17,7 @@
  * under the License.
  */
 
-import {
-  Field,
-  Fuzziness,
-  Id,
-  IndexName,
-  Routing,
-  SuggestMode
-} from '@_types/common'
+import { Field, Fuzziness, Id, IndexName, SuggestMode } from '@_types/common'
 import { GeoHashPrecision, GeoLocation } from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
 import { ScriptSource } from '@_types/Scripting'
