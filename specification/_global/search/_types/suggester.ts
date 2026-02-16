@@ -17,14 +17,7 @@
  * under the License.
  */
 
-import {
-  Field,
-  Fuzziness,
-  Id,
-  IndexName,
-  Routing,
-  SuggestMode
-} from '@_types/common'
+import { Field, Fuzziness, Id, IndexName, SuggestMode } from '@_types/common'
 import { GeoHashPrecision, GeoLocation } from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
 import { ScriptSource } from '@_types/Scripting'
@@ -77,7 +70,7 @@ export class CompletionSuggestOption<TDocument> {
   fields?: Dictionary<string, UserDefinedValue>
   _id?: string
   _index?: IndexName
-  _routing?: Routing
+  _routing?: string
   _score?: double
   _source?: TDocument
   text: string

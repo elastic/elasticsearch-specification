@@ -158,6 +158,28 @@ class Response<Generic> {
 
 And the generic will be used somewhere inside the definition.
 
+#### Path/Query parameters csv
+
+In case the server accepts either a string or comma separated values for path or query parameters, they can be mapped as:
+
+```ts
+export type MyAlias = string | string[]
+
+path_parts: {
+    param_name?: MyAlias
+}
+query_parameters: {
+    param_name?: MyAlias
+}
+```
+
+The statically typed clients will take care of proper serialization.
+
+The right alias might exist already, so always check [common.ts](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts) first.
+
+> [!WARNING]
+> If the same `string | string[]` construct (or alias) is also used in body/interface properties, clients will serialize these values to a standard JSON array instead - which might or might not be desired.
+
 #### Exceptions
 
 Normally, every API returns the exact same structure in case of error, which is defined
