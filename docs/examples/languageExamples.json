@@ -17558,23 +17558,23 @@
   "specification/streams/logs_enable/examples/request/PostStreamsEnableRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.streams.logs_enable()"
+      "code": "resp = client.streams.logs_enable(\n    name=\"logs.otel\",\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.streams.logsEnable();"
+      "code": "const response = await client.streams.logsEnable({\n  name: \"logs.otel\",\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.streams.logs_enable"
+      "code": "response = client.streams.logs_enable(\n  name: \"logs.otel\"\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->streams()->logsEnable();"
+      "code": "$resp = $client->streams()->logsEnable([\n    \"name\" => \"logs.otel\",\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_streams/logs/_enable\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_streams/logs.otel/_enable\""
     },
     {
       "language": "Java",
@@ -17584,23 +17584,23 @@
   "specification/streams/logs_disable/examples/request/PostStreamsDisableRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.streams.logs_disable()"
+      "code": "resp = client.streams.logs_disable(\n    name=\"logs.otel\",\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.streams.logsDisable();"
+      "code": "const response = await client.streams.logsDisable({\n  name: \"logs.otel\",\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.streams.logs_disable"
+      "code": "response = client.streams.logs_disable(\n  name: \"logs.otel\"\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->streams()->logsDisable();"
+      "code": "$resp = $client->streams()->logsDisable([\n    \"name\" => \"logs.otel\",\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_streams/logs/_disable\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_streams/logs.otel/_disable\""
     },
     {
       "language": "Java",

@@ -25,3 +25,8 @@ export class MountedSnapshot {
   indices: Indices
   shards: ShardStatistics
 }
+
+export enum StorageOption {
+  full_copy = 0,
+  shared_cache = 1
+}
