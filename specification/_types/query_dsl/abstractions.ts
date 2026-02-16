@@ -17,13 +17,7 @@
  * under the License.
  */
 
-import {
-  Field,
-  Id,
-  IndexName,
-  MinimumShouldMatch,
-  Routing
-} from '@_types/common'
+import { Field, Id, IndexName, MinimumShouldMatch } from '@_types/common'
 import { KnnQuery } from '@_types/Knn'
 import { float } from '@_types/Numeric'
 import { SingleKeyDictionary } from '@spec_utils/Dictionary'
@@ -449,7 +443,7 @@ export class FieldLookup {
   /**
    * Custom routing value.
    */
-  routing?: Routing
+  routing?: string
 }
 
 export class FieldNameQuery {
