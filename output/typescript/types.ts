@@ -20732,7 +20732,7 @@ export interface SearchableSnapshotsMountRequest extends RequestBase {
   snapshot: Name
   master_timeout?: Duration
   wait_for_completion?: boolean
-  storage?: string
+  storage?: SearchableSnapshotsMountStorageOption
   body?: {
     index: IndexName
     renamed_index?: IndexName
@@ -20744,6 +20744,8 @@ export interface SearchableSnapshotsMountRequest extends RequestBase {
 export interface SearchableSnapshotsMountResponse {
   snapshot: SearchableSnapshotsMountMountedSnapshot
 }
+
+export type SearchableSnapshotsMountStorageOption = 'full_copy' | 'shared_cache'
 
 export interface SearchableSnapshotsStatsRequest extends RequestBase {
   index?: Indices

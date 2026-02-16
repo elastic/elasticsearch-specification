@@ -22,6 +22,7 @@ import { IndexName, MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { StorageOption } from './types'
 
 /**
  * Mount a snapshot.
@@ -71,7 +72,7 @@ export interface Request extends RequestBase {
      * The mount option for the searchable snapshot index.
      * @server_default full_copy
      */
-    storage?: string
+    storage?: StorageOption
   }
   body: {
     /**
