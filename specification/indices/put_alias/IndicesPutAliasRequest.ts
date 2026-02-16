@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices, MediaType, Name, Routing } from '@_types/common'
+import { Indices, MediaType, Name } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
 
@@ -84,7 +84,7 @@ export interface Request extends RequestBase {
      * If specified, this overwrites the `routing` value for indexing operations.
      * Data stream aliases don’t support this parameter.
      */
-    index_routing?: Routing
+    index_routing?: string
     /**
      * If `true`, sets the write index or data stream for the alias.
      * If an alias points to multiple indices or data streams and `is_write_index` isn’t set, the alias rejects write requests.
@@ -96,12 +96,12 @@ export interface Request extends RequestBase {
      * Value used to route indexing and search operations to a specific shard.
      * Data stream aliases don’t support this parameter.
      */
-    routing?: Routing
+    routing?: string
     /**
      * Value used to route search operations to a specific shard.
      * If specified, this overwrites the `routing` value for search operations.
      * Data stream aliases don’t support this parameter.
      */
-    search_routing?: Routing
+    search_routing?: string
   }
 }

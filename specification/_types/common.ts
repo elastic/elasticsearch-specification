@@ -65,6 +65,9 @@ export type IndexPatterns = IndexPattern[]
 
 export type ProjectRouting = string
 
+/**
+ * Only to be used in query and path parameters, as the array form is actually a csv
+ */
 export type Routing = string | string[]
 export type LongId = string
 
