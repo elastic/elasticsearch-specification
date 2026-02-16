@@ -36555,11 +36555,7 @@
             ]
           },
           "_routing": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "type": "string"
           },
           "_score": {
             "type": "number"
@@ -36586,19 +36582,6 @@
           },
           {
             "$ref": "#/components/schemas/_types.GeoLocation"
-          }
-        ]
-      },
-      "_types.Routing": {
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           }
         ]
       },
@@ -36902,6 +36885,20 @@
           "closed",
           "hidden",
           "none"
+        ]
+      },
+      "_types.Routing": {
+        "description": "Only to be used in query and path parameters, as the array form is actually a csv",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         ]
       },
       "_types.SearchType": {
@@ -42895,11 +42892,7 @@
                 "type": "number"
               },
               "routing": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.Routing"
-                  }
-                ]
+                "type": "string"
               },
               "stop_words": {
                 "description": "An array of stop words.\nAny word in this set is ignored.",
@@ -43352,11 +43345,7 @@
               },
               "routing": {
                 "description": "Routing used to fetch document to percolate.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.Routing"
-                  }
-                ]
+                "type": "string"
               },
               "version": {
                 "description": "The expected version of a stored document to percolate.",
@@ -49139,12 +49128,8 @@
             ]
           },
           "routing": {
-            "description": "A custom value used to route operations to a specific shard.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "description": "A custom value used to route operations to a specific shard, or multiple comma separated values.",
+            "type": "string"
           },
           "if_primary_term": {
             "type": "number"
@@ -62743,11 +62728,7 @@
           },
           "index_routing": {
             "description": "Value used to route indexing operations to a specific shard.\nIf specified, this overwrites the `routing` value for indexing operations.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "type": "string"
           },
           "is_hidden": {
             "description": "If `true`, the alias is hidden.\nAll indices for the alias must have the same `is_hidden` value.",
@@ -62761,19 +62742,11 @@
           },
           "routing": {
             "description": "Value used to route indexing and search operations to a specific shard.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "type": "string"
           },
           "search_routing": {
             "description": "Value used to route search operations to a specific shard.\nIf specified, this overwrites the `routing` value for search operations.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "type": "string"
           }
         }
       },
@@ -66653,11 +66626,7 @@
           },
           "index_routing": {
             "description": "Value used to route indexing operations to a specific shard.\nIf specified, this overwrites the `routing` value for indexing operations.\nData stream aliases don’t support this parameter.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "type": "string"
           },
           "is_hidden": {
             "description": "If `true`, the alias is hidden.",
@@ -66670,19 +66639,11 @@
           },
           "routing": {
             "description": "Value used to route indexing and search operations to a specific shard.\nData stream aliases don’t support this parameter.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "type": "string"
           },
           "search_routing": {
             "description": "Value used to route search operations to a specific shard.\nIf specified, this overwrites the `routing` value for search operations.\nData stream aliases don’t support this parameter.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "type": "string"
           },
           "must_exist": {
             "description": "If `true`, the alias must exist to perform the action.",
@@ -81132,11 +81093,7 @@
           "routing": {
             "description": "By default, a document's routing is preserved unless it's changed by the script.\nIf it is `keep`, the routing on the bulk request sent for each match is set to the routing on the match.\nIf it is `discard`, the routing on the bulk request sent for each match is set to `null`.\nIf it is `=value`, the routing on the bulk request sent for each match is set to all value specified after the equals sign (`=`).",
             "default": "keep",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "type": "string"
           },
           "version_type": {
             "description": "The versioning to use for the indexing operation.",
@@ -92310,11 +92267,7 @@
                 },
                 "index_routing": {
                   "description": "Value used to route indexing operations to a specific shard.\nIf specified, this overwrites the `routing` value for indexing operations.\nData stream aliases don’t support this parameter.",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/_types.Routing"
-                    }
-                  ]
+                  "type": "string"
                 },
                 "is_write_index": {
                   "description": "If `true`, sets the write index or data stream for the alias.\nIf an alias points to multiple indices or data streams and `is_write_index` isn’t set, the alias rejects write requests.\nIf an index alias points to one index and `is_write_index` isn’t set, the index automatically acts as the write index.\nData stream aliases don’t automatically set a write data stream, even if the alias points to one data stream.",
@@ -92322,19 +92275,11 @@
                 },
                 "routing": {
                   "description": "Value used to route indexing and search operations to a specific shard.\nData stream aliases don’t support this parameter.",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/_types.Routing"
-                    }
-                  ]
+                  "type": "string"
                 },
                 "search_routing": {
                   "description": "Value used to route search operations to a specific shard.\nIf specified, this overwrites the `routing` value for search operations.\nData stream aliases don’t support this parameter.",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/_types.Routing"
-                    }
-                  ]
+                  "type": "string"
                 }
               }
             },
