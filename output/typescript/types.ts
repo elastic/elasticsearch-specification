@@ -31,7 +31,7 @@ export interface BulkIndexOperation extends BulkWriteOperation {
 export interface BulkOperationBase {
   _id?: Id
   _index?: IndexName
-  routing?: Routing
+  routing?: string
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   version?: VersionNumber
@@ -1038,7 +1038,7 @@ export interface ReindexDestination {
   index: IndexName
   op_type?: OpType
   pipeline?: string
-  routing?: Routing
+  routing?: string
   version_type?: VersionType
 }
 
@@ -1374,7 +1374,7 @@ export interface SearchCompletionSuggestOption<TDocument = unknown> {
   fields?: Record<string, any>
   _id?: string
   _index?: IndexName
-  _routing?: Routing
+  _routing?: string
   _score?: double
   _source?: TDocument
   text: string
@@ -6513,7 +6513,7 @@ export interface QueryDslFieldLookup {
   id: Id
   index?: IndexName
   path?: Field
-  routing?: Routing
+  routing?: string
 }
 
 export type QueryDslFieldValueFactorModifier = 'none' | 'log' | 'log1p' | 'log2p' | 'ln' | 'ln1p' | 'ln2p' | 'square' | 'sqrt' | 'reciprocal'
@@ -6805,7 +6805,7 @@ export interface QueryDslMoreLikeThisQuery extends QueryDslQueryBase {
   minimum_should_match?: MinimumShouldMatch
   min_term_freq?: integer
   min_word_length?: integer
-  routing?: Routing
+  routing?: string
   stop_words?: AnalysisStopWords
   unlike?: QueryDslLike | QueryDslLike[]
   version?: VersionNumber
@@ -6866,7 +6866,7 @@ export interface QueryDslPercolateQuery extends QueryDslQueryBase {
   index?: IndexName
   name?: string
   preference?: string
-  routing?: Routing
+  routing?: string
   version?: VersionNumber
 }
 
@@ -7179,7 +7179,7 @@ export interface QueryDslTermsLookup {
   index: IndexName
   id: Id
   path: Field
-  routing?: Routing
+  routing?: string
 }
 
 export interface QueryDslTermsQueryKeys extends QueryDslQueryBase {
@@ -12100,11 +12100,11 @@ export type IlmStopResponse = AcknowledgedResponseBase
 
 export interface IndicesAlias {
   filter?: QueryDslQueryContainer
-  index_routing?: Routing
+  index_routing?: string
   is_hidden?: boolean
   is_write_index?: boolean
-  routing?: Routing
-  search_routing?: Routing
+  routing?: string
+  search_routing?: string
 }
 
 export interface IndicesAliasDefinition {
@@ -13463,10 +13463,10 @@ export interface IndicesPutAliasRequest extends RequestBase {
   timeout?: Duration
   body?: {
     filter?: QueryDslQueryContainer
-    index_routing?: Routing
+    index_routing?: string
     is_write_index?: boolean
-    routing?: Routing
-    search_routing?: Routing
+    routing?: string
+    search_routing?: string
   }
 }
 
@@ -14250,11 +14250,11 @@ export interface IndicesUpdateAliasesAddAction {
   filter?: QueryDslQueryContainer
   index?: IndexName
   indices?: Indices
-  index_routing?: Routing
+  index_routing?: string
   is_hidden?: boolean
   is_write_index?: boolean
-  routing?: Routing
-  search_routing?: Routing
+  routing?: string
+  search_routing?: string
   must_exist?: boolean
 }
 
