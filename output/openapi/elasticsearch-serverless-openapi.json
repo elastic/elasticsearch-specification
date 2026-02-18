@@ -6561,7 +6561,7 @@
                   },
                   "time_zone": {
                     "description": "Sets the default timezone of the query.",
-                    "x-state": "Technical preview",
+                    "x-state": "Generally available",
                     "type": "string"
                   },
                   "locale": {
