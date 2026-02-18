@@ -15,24 +15,25 @@ pub use spec::*;
 
 /// Convert a clients_schema IndexedModel to individual rest-api-spec files
 pub fn convert_schema_to_individual_files(model: IndexedModel, output_dir: &str) -> Result<()> {
-    // Expand generics in the model first
     let expanded_model =
         clients_schema::transform::expand_generics(model, clients_schema::transform::ExpandConfig::default())?;
 
+    // Generate _common.json from CommonQueryParameters behavior
+    let common = build_common_params(&expanded_model.types)?;
+    let common_path = StdPath::new(output_dir).join("_common.json");
+    let common_file = File::create(&common_path)?;
+    serde_json::to_writer_pretty(BufWriter::new(common_file), &common)?;
+    tracing::debug!("Wrote _common.json to {:?}", common_path);
+
     for endpoint in expanded_model.endpoints {
         let converted_endpoint = convert_endpoint(&endpoint, &expanded_model.types)?;
-
-        // Wrap the JSON content with the API name
         let wrapped_content = HashMap::from([(endpoint.name.clone(), converted_endpoint)]);
 
-        // Create filename from endpoint name
         let filename = format!("{}.json", endpoint.name);
         let file_path = StdPath::new(output_dir).join(&filename);
 
-        // Write individual endpoint file
         let output_file = File::create(&file_path)?;
-        let writer = BufWriter::new(output_file);
-        serde_json::to_writer_pretty(writer, &wrapped_content)?;
+        serde_json::to_writer_pretty(BufWriter::new(output_file), &wrapped_content)?;
 
         tracing::debug!("Wrote {} to {:?}", endpoint.name, file_path);
     }
@@ -45,6 +46,9 @@ pub fn convert_schema_to_individual_files_in_memory(model: IndexedModel) -> Resu
         clients_schema::transform::expand_generics(model, clients_schema::transform::ExpandConfig::default())?;
     let mut out: HashMap<String, String> = HashMap::new();
 
+    let common = build_common_params(&expanded_model.types)?;
+    out.insert("_common.json".to_string(), serde_json::to_string_pretty(&common)?);
+
     for endpoint in expanded_model.endpoints {
         let converted_endpoint = convert_endpoint(&endpoint, &expanded_model.types)?;
         let wrapped_content = HashMap::from([(endpoint.name.clone(), converted_endpoint)]);
@@ -53,6 +57,29 @@ pub fn convert_schema_to_individual_files_in_memory(model: IndexedModel) -> Resu
         out.insert(filename, json);
     }
     Ok(out)
+}
+
+/// Build the _common.json content from the CommonQueryParameters behavior
+fn build_common_params(types: &IndexMap<TypeName, TypeDefinition>) -> Result<CommonSpec> {
+    let behavior_type_name = TypeName::new("_spec_utils", "CommonQueryParameters");
+    let mut params = IndexMap::new();
+
+    if let Some(TypeDefinition::Interface(interface)) = types.get(&behavior_type_name) {
+        for property in &interface.properties {
+            let converted = convert_parameter(property, types)?;
+            params.insert(property.name.clone(), converted);
+        }
+    } else {
+        tracing::warn!("CommonQueryParameters behavior not found in schema");
+    }
+
+    Ok(CommonSpec {
+        documentation: Documentation {
+            url: Some("https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html".to_string()),
+            description: Some("Parameters that are accepted by all API endpoints.".to_string()),
+        },
+        params,
+    })
 }
 
 /// Convert a single endpoint from clients_schema to rest-api-spec format
@@ -156,7 +183,7 @@ fn convert_url_template(
                 let param_pattern = format!("{{{}}}", path_param.name);
                 if url_template.path.contains(&param_pattern) {
                     let part = PathPart {
-                        typ: get_type_name(&path_param.typ, types),
+                        typ: get_type_name(&path_param.typ, types)?,
                         options: get_enum_options(&path_param.typ, types),
                         description: path_param.description.clone().unwrap_or_default(),
                         deprecated: path_param.deprecation.as_ref().map(|dep| Deprecation {
@@ -182,7 +209,7 @@ fn convert_url_template(
 
 /// Convert a Property to a Parameter
 fn convert_parameter(property: &Property, types: &IndexMap<TypeName, TypeDefinition>) -> Result<Parameter> {
-    let typ = get_type_name(&property.typ, types);
+    let typ = get_type_name(&property.typ, types)?;
     let options = get_enum_options(&property.typ, types);
 
     let mut default = property.server_default.as_ref().map(|default| match default {
@@ -270,22 +297,36 @@ impl BuiltinMappings {
     }
 }
 
-fn is_list_enum(union: &UnionOf) -> Option<TypeName> {
-    // if union of X and X[]
-    // TODO handle X[] | X
-    if union.items.len() == 2 {
-        // check if first item is InstanceOf and second is ArrayOf
-        if let ValueOf::InstanceOf(instance) = &union.items[0]
-            && let ValueOf::ArrayOf(array) = &union.items[1] {
-                let array_instance = match &*array.value {
-                    ValueOf::InstanceOf(inst) => inst,
-                    _ => panic!("Expected InstanceOf inside ArrayOf in union type"),
-                };
-                if instance.typ.name == array_instance.typ.name {
-                    return Some(instance.typ.clone());
-                }
-            }
+fn array_item_type(array: &clients_schema::ArrayOf) -> Option<&TypeName> {
+    match &*array.value {
+        ValueOf::InstanceOf(inst) => Some(&inst.typ),
+        _ => None,
     }
+}
+
+fn is_list_enum(union: &UnionOf) -> Option<TypeName> {
+    if union.items.len() != 2 {
+        return None;
+    }
+
+    // X | X[]
+    if let ValueOf::InstanceOf(instance) = &union.items[0]
+        && let ValueOf::ArrayOf(array) = &union.items[1]
+        && let Some(array_type) = array_item_type(array)
+        && instance.typ.name == array_type.name
+    {
+        return Some(instance.typ.clone());
+    }
+
+    // X[] | X
+    if let ValueOf::ArrayOf(array) = &union.items[0]
+        && let ValueOf::InstanceOf(instance) = &union.items[1]
+        && let Some(array_type) = array_item_type(array)
+        && instance.typ.name == array_type.name
+    {
+        return Some(instance.typ.clone());
+    }
+
     None
 }
 
@@ -313,50 +354,61 @@ fn is_literal(instance: &InstanceOf) -> Option<ParamType> {
 }
 
 /// Convert a ValueOf type to a ParamType
-fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>) -> ParamType {
+fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>) -> Result<ParamType> {
     match value_of {
-        ValueOf::ArrayOf(_) => ParamType::List,
+        ValueOf::ArrayOf(_) => Ok(ParamType::List),
         ValueOf::UnionOf(union) => {
             if is_list_enum(union).is_some() {
-                ParamType::List
+                Ok(ParamType::List)
             } else if is_index_name_and_alias(union) {
-                ParamType::String
+                Ok(ParamType::String)
             } else {
-                tracing::warn!("{:?}", union);
-                todo!()
+                anyhow::bail!("Unhandled union type: {:?}", union)
             }
         }
-        ValueOf::LiteralValue(_) => ParamType::String,
+        ValueOf::LiteralValue(_) => Ok(ParamType::String),
         ValueOf::InstanceOf(instance) => {
             let type_name = &instance.typ;
 
             if let Some(mapped_type) = BuiltinMappings::get(&type_name.namespace, &type_name.name) {
-                mapped_type
-            } else if let Some(TypeDefinition::Enum(_)) = types.get(type_name) {
-                ParamType::Enum
-            } else {
-                let full_type = types.get(type_name).unwrap();
+                return Ok(mapped_type);
+            }
 
-                match full_type {
-                    TypeDefinition::TypeAlias(alias) => match &alias.typ {
-                        ValueOf::UnionOf(union) => {
-                            if is_list_enum(union).is_some() {
-                                return ParamType::List;
-                            }
-                        }
-                        ValueOf::InstanceOf(instance) => {
-                            if let Some(literal) = is_literal(instance) {
-                                return literal;
-                            }
-                        }
-                        _ => panic!("Expected UnionOf or InstanceOf but got {:?}", alias.typ),
-                    },
-                    _ => panic!("Expected TypeAlias but got {:?}", full_type),
-                }
-                panic!("Unhandled type: {:?}", full_type);
+            if let Some(TypeDefinition::Enum(_)) = types.get(type_name) {
+                return Ok(ParamType::Enum);
+            }
+
+            let full_type = types
+                .get(type_name)
+                .ok_or_else(|| anyhow::anyhow!("Type not found: {}:{}", type_name.namespace, type_name.name))?;
+
+            match full_type {
+                TypeDefinition::TypeAlias(alias) => match &alias.typ {
+                    ValueOf::UnionOf(union) if is_list_enum(union).is_some() => Ok(ParamType::List),
+                    ValueOf::InstanceOf(inst) => is_literal(inst).ok_or_else(|| {
+                        anyhow::anyhow!(
+                            "Unhandled type alias for {}:{}: {:?}",
+                            type_name.namespace,
+                            type_name.name,
+                            alias.typ
+                        )
+                    }),
+                    _ => anyhow::bail!(
+                        "Unhandled type alias for {}:{}: {:?}",
+                        type_name.namespace,
+                        type_name.name,
+                        alias.typ
+                    ),
+                },
+                _ => anyhow::bail!(
+                    "Expected TypeAlias for {}:{}, got {:?}",
+                    type_name.namespace,
+                    type_name.name,
+                    full_type
+                ),
             }
         }
-        _ => todo!(),
+        other => anyhow::bail!("Unhandled ValueOf variant: {:?}", other),
     }
 }
 
@@ -492,6 +544,22 @@ mod tests {
     use clients_schema::*;
 
     #[test]
+    fn test_full_schema_conversion() {
+        let json = std::fs::read_to_string("../../output/schema/schema.json").unwrap();
+        let model: IndexedModel = serde_json::from_str(&json).unwrap();
+        let result = convert_schema_to_individual_files_in_memory(model).unwrap();
+
+        assert!(result.contains_key("_common.json"), "_common.json should be generated");
+        assert!(result.len() > 100, "Expected at least 100 endpoint files, got {}", result.len());
+
+        for (filename, json_str) in &result {
+            let parsed: serde_json::Value = serde_json::from_str(json_str)
+                .unwrap_or_else(|e| panic!("Invalid JSON in {}: {}", filename, e));
+            assert!(parsed.is_object(), "{} should be a JSON object", filename);
+        }
+    }
+
+    #[test]
     fn test_get_type_name_builtin_types() {
         let types = IndexMap::new();
 
@@ -503,13 +571,13 @@ mod tests {
             },
             generics: vec![],
         });
-        assert_eq!(get_type_name(&string_type, &types), ParamType::String);
+        assert_eq!(get_type_name(&string_type, &types).unwrap(), ParamType::String);
 
         // Test array type
         let array_type = ValueOf::ArrayOf(ArrayOf {
             value: Box::new(string_type),
         });
-        assert_eq!(get_type_name(&array_type, &types), ParamType::List);
+        assert_eq!(get_type_name(&array_type, &types).unwrap(), ParamType::List);
     }
 
     #[test]

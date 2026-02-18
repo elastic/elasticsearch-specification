@@ -161,3 +161,9 @@ pub struct Headers {
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub content_type: Vec<String>,
 }
+
+#[derive(Debug, Serialize)]
+pub struct CommonSpec {
+    pub documentation: Documentation,
+    pub params: IndexMap<String, Parameter>,
+}
