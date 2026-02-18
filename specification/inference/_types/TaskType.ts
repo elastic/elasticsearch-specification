@@ -144,6 +144,11 @@ export enum TaskTypeMistral {
   completion
 }
 
+export enum TaskTypeMixedbread {
+  rerank,
+  text_embedding
+}
+
 export enum TaskTypeNvidia {
   chat_completion,
   completion,

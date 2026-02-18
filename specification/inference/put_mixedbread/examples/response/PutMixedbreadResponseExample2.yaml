@@ -1,0 +1,21 @@
+summary: A rerank task
+description: A successful response when creating a Mixedbread `rerank` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "mixedbread",
+    "task_type": "rerank",
+    "service": "mixedbread",
+    "service_settings": {
+        "model_id": "mixedbread-ai/mxbai-rerank-large-v2",
+        "url": "https://api.mixedbread.com/v1/reranking",
+        "rate_limit": {
+            "requests_per_minute": 100
+        }
+    },
+    "task_settings": {
+        "top_n": 2,
+        "return_documents": true
+    }
+  }

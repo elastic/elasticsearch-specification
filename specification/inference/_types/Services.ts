@@ -41,6 +41,7 @@ import {
   TaskTypeJinaAi,
   TaskTypeLlama,
   TaskTypeMistral,
+  TaskTypeMixedbread,
   TaskTypeNvidia,
   TaskTypeOpenAI,
   TaskTypeOpenShiftAi,
@@ -303,6 +304,17 @@ export class InferenceEndpointInfoMistral extends InferenceEndpoint {
    * The task type
    */
   task_type: TaskTypeMistral
+}
+
+export class InferenceEndpointInfoMixedbread extends InferenceEndpoint {
+  /**
+   * The inference ID
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeMixedbread
 }
 
 export class InferenceEndpointInfoNvidia extends InferenceEndpoint {

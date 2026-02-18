@@ -1,0 +1,16 @@
+summary: A rerank task
+description: Run `PUT _inference/rerank/mixedbread-rerank` to create an inference endpoint that performs a `rerank` task.
+method_request: 'PUT _inference/rerank/nvidia-rerank'
+# type: "request"
+value: |-
+  {
+      "service": "mixedbread",
+      "service_settings": {
+          "api_key": "mixedbread-rerank-token",
+          "model_id": "mixedbread-ai/mxbai-rerank-large-v2"
+      },
+      "task_settings": {
+          "return_documents": true,
+          "top_n": 2
+      }
+  }
