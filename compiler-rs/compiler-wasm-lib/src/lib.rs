@@ -131,6 +131,9 @@ pub fn setup_hooks() {
     use std::sync::Once;
     static SET_TRACING: Once = Once::new();
     SET_TRACING.call_once(|| {
-        tracing_wasm::set_as_global_default();
+        let config = tracing_wasm::WASMLayerConfigBuilder::default()
+            .set_max_level(tracing::Level::INFO)
+            .build();
+        tracing_wasm::set_as_global_default_with_config(config);
     });
 }
