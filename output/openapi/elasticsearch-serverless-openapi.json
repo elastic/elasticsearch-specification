@@ -12154,6 +12154,33 @@
         ]
       }
     },
+    "/_inference/{task_type}/_all": {
+      "get": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Get an inference endpoint",
+        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
+        "operationId": "inference-get-3",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/inference.get-task_type"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.get-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_inference/{task_type}/{ai21_inference_id}": {
       "put": {
         "tags": [
@@ -89085,7 +89112,7 @@
       "inference.get-task_type": {
         "in": "path",
         "name": "task_type",
-        "description": "The task type",
+        "description": "The task type of the endpoint to return",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -89096,7 +89123,7 @@
       "inference.get-inference_id": {
         "in": "path",
         "name": "inference_id",
-        "description": "The inference Id",
+        "description": "The inference Id of the endpoint to return. Using `_all` or `*` will return all endpoints with the specified\n`task_type` if one is specified, or all endpoints for all task types if no `task_type` is specified",
         "required": true,
         "deprecated": false,
         "schema": {
