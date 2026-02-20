@@ -216,7 +216,7 @@ export interface Request extends RequestBase {
     /**
      * The maximum number of documents to process.
      * It defaults to all documents.
-     * When set to a value less then or equal to `scroll_size` then a scroll will not be used to retrieve the results for the operation.
+     * When set to a value less then or equal to `scroll_size` and `conflicts` is set to `abort`, a scroll will not be used to retrieve the results for the operation.
      */
     max_docs?: long
     /**
