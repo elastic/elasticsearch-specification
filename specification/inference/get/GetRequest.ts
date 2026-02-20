@@ -41,15 +41,20 @@ export interface Request extends RequestBase {
     {
       path: '/_inference/{task_type}/{inference_id}'
       methods: ['GET']
+    },
+    {
+      path: '/_inference/{task_type}/_all'
+      methods: ['GET']
     }
   ]
   path_parts: {
     /**
-     * The task type
+     * The task type of the endpoint to return
      */
     task_type?: TaskType
     /**
-     * The inference Id
+     * The inference Id of the endpoint to return. Using `_all` or `*` will return all endpoints with the specified
+     * `task_type` if one is specified, or all endpoints for all task types if no `task_type` is specified
      */
     inference_id?: Id
   }
