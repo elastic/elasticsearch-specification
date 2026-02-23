@@ -28,6 +28,8 @@ import { CatCountColumns, CatRequestBase } from '@cat/_types/CatBase'
  *
  * IMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use the count API.
+ *
+ * NOTE: Starting in Elasticsearch 9.3.0, this endpoint also supports the `POST` method. This is primarily intended for project routing in serverless environments.
  * @rest_spec_name cat.count
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
@@ -38,11 +40,11 @@ export interface Request extends CatRequestBase {
   urls: [
     {
       path: '/_cat/count'
-      methods: ['GET', 'POST']
+      methods: ['POST', 'GET']
     },
     {
       path: '/_cat/count/{index}'
-      methods: ['GET', 'POST']
+      methods: ['POST', 'GET']
     }
   ]
   path_parts: {

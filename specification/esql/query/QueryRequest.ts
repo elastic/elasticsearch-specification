@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { MediaType } from '@_types/common'
+import { MediaType, ProjectRouting } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { EsqlFormat } from '@esql/_types/QueryParameters'
 import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
@@ -85,8 +85,8 @@ export interface Request extends RequestBase {
     filter?: QueryContainer
     /**
      * Sets the default timezone of the query.
-     * @availability stack since=9.4.0 stability=experimental
-     * @availability serverless stability=experimental
+     * @availability stack since=9.4.0 stability=stable
+     * @availability serverless stability=stable
      * @doc_id esql-timezones
      */
     time_zone?: string
@@ -131,5 +131,17 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     include_execution_metadata?: boolean
+    /**
+     * Specifies a subset of projects to target using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }
