@@ -7298,6 +7298,7 @@ export interface AsyncSearchGetRequest extends RequestBase {
   keep_alive?: Duration
   typed_keys?: boolean
   wait_for_completion_timeout?: Duration
+  return_intermediate_results?: boolean
 }
 
 export type AsyncSearchGetResponse<TDocument = unknown> = AsyncSearchAsyncSearchDocumentResponseBase<TDocument>
