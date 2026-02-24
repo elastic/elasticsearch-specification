@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { ESLintUtils, TSESTree } from '@typescript-eslint/utils';
+import { ESLintUtils } from '@typescript-eslint/utils';
 
 const createRule = ESLintUtils.RuleCreator(name => `https://example.com/rule/${name}`)
 
@@ -118,11 +118,14 @@ export default createRule({
               node,
               messageId: 'preferTaggedVariants',
               data: {
-                suggestion: 'USE tagged variants with @variants internal or @variants container (external). See modeling guide: https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#variants'
+                suggestion: 'Use tagged variants with @variants internal or @variants container (external), or any other variant option. See modeling guide: https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#variants'
               }
             })
             return
           }
+
+          console.log(node)
+          console.log(comments)
 
           const blockComment = jsdoc.value
 
@@ -136,14 +139,13 @@ export default createRule({
                   blockComment
               )
 
-          // TODO 2 different errors
           if (!hasCodegenNamesTag && !hasVariantsTag) {
 
             context.report({
               node,
               messageId: 'preferTaggedVariants',
               data: {
-                suggestion: 'Use tagged variants with @variants internal or @variants container (external). See modeling guide: https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#variants'
+                suggestion: 'Use tagged variants with @variants internal or @variants container (external), or any other variant option. See modeling guide: https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#variants'
               }
             })
           }
@@ -153,7 +155,7 @@ export default createRule({
   },
   meta: {
     docs: {
-      description: 'Union of class types should use tagged variants (internal or external) instead of inline unions for better code generation in statically-typed languages.',
+      description: 'Union of class types should use tagged variants instead of inline unions for better code generation in statically-typed languages.',
     },
     messages: {
       preferTaggedVariants: 'Union of class types is not allowed. {{suggestion}}.'
