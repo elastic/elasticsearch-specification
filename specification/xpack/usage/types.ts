@@ -509,7 +509,6 @@ export class WatcherWatchTriggerSchedule extends Counter {
 
 /**
  * Per-node GPU statistics for vector indexing.
- * @availability stack since=9.3.2
  */
 export class GpuNodeStats {
   /** GPU device type (e.g., "NVIDIA L4", "NVIDIA A100"). */
