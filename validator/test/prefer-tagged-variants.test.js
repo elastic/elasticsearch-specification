@@ -83,6 +83,10 @@ type Validation =
   | IncludedInValidation
   | RegexValidation
 `,
+    `
+/** @codegen_names a,b */
+export type ResponseItem<TDocument> = GetResult<TDocument> | MultiGetError
+  `,
 `/** @codegen_names a,b */
 type NewCorrectType = Atype | Btype`
   ],

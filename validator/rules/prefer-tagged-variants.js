@@ -108,7 +108,10 @@ export default createRule({
           // last check, is there a @variant or @codegen_names tag in the comment above
           const sourceCode = context.sourceCode || context.getSourceCode()
 
-          const declarationNode = isTypeAlias ? node.parent : node.parent.parent
+          let declarationNode = isTypeAlias ? node.parent : node.parent.parent
+          if (declarationNode.parent?.type === 'ExportNamedDeclaration') {
+            declarationNode = declarationNode.parent
+          }
           const comments = sourceCode.getCommentsBefore(declarationNode)
           const jsdoc = comments
               ?.filter(comment => comment.type === 'Block' && comment.value.startsWith('*'))
@@ -119,7 +122,7 @@ export default createRule({
               node,
               messageId: 'preferTaggedVariants',
               data: {
-                suggestion: 'Use tagged variants with @variants internal or @variants container (external), or any other variant option. See modeling guide: https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#variants'
+                suggestion: 'Missing comment: use tagged variants with @variants internal or @variants container (external), or any other variant option. See modeling guide: https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#variants'
               }
             })
             return
@@ -153,10 +156,10 @@ export default createRule({
   },
   meta: {
     docs: {
-      description: 'Union of class types should use tagged variants instead of inline unions for better code generation in statically-typed languages.',
+      description: 'Unhandled union of class types should use tagged variants instead of inline unions for better code generation in statically-typed languages.',
     },
     messages: {
-      preferTaggedVariants: 'Union of class types is not allowed. {{suggestion}}.'
+      preferTaggedVariants: 'Unhandled union of class types is not allowed. {{suggestion}}.'
     },
     type: 'problem',
     schema: []
