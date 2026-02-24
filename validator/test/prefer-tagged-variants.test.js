@@ -32,99 +32,99 @@ const ruleTester = new RuleTester({
 
 ruleTester.run('prefer-tagged-variants', rule, {
   valid: [
-//     `class MyClass {
-//       seed: long | string
-//     }`,
-//     `interface Config {
-//       value: string | number
-//     }`,
-//     `class Container {
-//       query: BoolQuery
-//     }`,
-//     `class MyClass {
-//       items: QueryContainer[]
-//     }`,
-//     `type QueryOrArray = QueryContainer | QueryContainer[]
-//      class MyClass {
-//        filter: QueryOrArray
-//      }`,
-//     `class MyClass {
-//       config: SamplingConfiguration | null
-//     }`,
-//     `interface Status {
-//       state: 'active' | 'inactive' | 'pending'
-//     }`,
-//     `class SearchRequest {
-//       knn?: KnnSearch | KnnSearch[]
-//     }`,
-//     `class EqlRequest {
-//       filter?: QueryContainer[] | QueryContainer
-//     }`,
-//     `interface MyInterface {
-//       data: MyClass[] | MyClass
-//     }`,
-//     `/**
-//    * @variants internal tag='type'
-//    * @non_exhaustive
-//   */
-// type Repository =
-//   | AzureRepository
-//   | GcsRepository
-//   | S3Repository
-//   | SharedFileSystemRepository
-//   | ReadOnlyUrlRepository
-//   | SourceOnlyRepository`,
-// `
-// /** @variants internal tag='type' */
-// type Validation =
-//   | LessThanValidation
-//   | GreaterThanValidation
-//   | ListTypeValidation
-//   | IncludedInValidation
-//   | RegexValidation
-// `,
-// `/** @codegen_names a,b */
-// type NewCorrectType = Atype | Btype`
+    `class MyClass {
+      seed: long | string
+    }`,
+    `interface Config {
+      value: string | number
+    }`,
+    `class Container {
+      query: BoolQuery
+    }`,
+    `class MyClass {
+      items: QueryContainer[]
+    }`,
+    `type QueryOrArray = QueryContainer | QueryContainer[]
+     class MyClass {
+       filter: QueryOrArray
+     }`,
+    `class MyClass {
+      config: SamplingConfiguration | null
+    }`,
+    `interface Status {
+      state: 'active' | 'inactive' | 'pending'
+    }`,
+    `class SearchRequest {
+      knn?: KnnSearch | KnnSearch[]
+    }`,
+    `class EqlRequest {
+      filter?: QueryContainer[] | QueryContainer
+    }`,
+    `interface MyInterface {
+      data: MyClass[] | MyClass
+    }`,
+    `/**
+   * @variants internal tag='type'
+   * @non_exhaustive
+  */
+type Repository =
+  | AzureRepository
+  | GcsRepository
+  | S3Repository
+  | SharedFileSystemRepository
+  | ReadOnlyUrlRepository
+  | SourceOnlyRepository`,
+`
+/** @variants internal tag='type' */
+type Validation =
+  | LessThanValidation
+  | GreaterThanValidation
+  | ListTypeValidation
+  | IncludedInValidation
+  | RegexValidation
+`,
+`/** @codegen_names a,b */
+type NewCorrectType = Atype | Btype`
   ],
   invalid: [
-    // {
-    //   code: `export type QueryType = BoolQuery | TermQuery | RangeQuery`,
-    //   errors: [{ messageId: 'preferTaggedVariants' }]
-    // },
-    // {
-    //   code: `class Container {
-    //     query: BoolQuery | TermQuery | RangeQuery
-    //   }`,
-    //   errors: [{ messageId: 'preferTaggedVariants' }]
-    // },
-    // {
-    //   code: `interface Response {
-    //     result: SuccessResult | ErrorResult
-    //   }`,
-    //   errors: [{ messageId: 'preferTaggedVariants' }]
-    // },
-    // {
-    //   code: `class MyClass {
-    //     content: TextContent | ImageContent | VideoContent
-    //   }`,
-    //   errors: [{ messageId: 'preferTaggedVariants' }]
-    // },
-    // {
-    //   code: `interface Config {
-    //     processor?: SetProcessor | RemoveProcessor | AppendProcessor
-    //   }`,
-    //   errors: [{ messageId: 'preferTaggedVariants' }]
-    // },
-    // {
-    //   code: `export class SearchRequest {
-    //     query: MatchQuery | TermQuery | BoolQuery | RangeQuery
-    //   }`,
-    //   errors: [{ messageId: 'preferTaggedVariants' }]
-    // },
-    // {
-    //   code: `type NewType = Atype | Btype`,
-    //   errors: [{ messageId: 'preferTaggedVariants' }]
-    // },
+    {
+      code: `export type QueryType = BoolQuery | TermQuery | RangeQuery`,
+      errors: [{ messageId: 'preferTaggedVariants' }]
+    },
+    {
+      code: `class Container {
+        query: BoolQuery | TermQuery | RangeQuery
+      }`,
+      errors: [{ messageId: 'preferTaggedVariants' }]
+    },
+    {
+      code: `interface Response {
+        result: SuccessResult | ErrorResult
+      }`,
+      errors: [{ messageId: 'preferTaggedVariants' }]
+    },
+    {
+      code: `class MyClass {
+        content: TextContent | ImageContent | VideoContent
+      }`,
+      errors: [{ messageId: 'preferTaggedVariants' }]
+    },
+    {
+      code: `interface Config {
+        processor?: SetProcessor | RemoveProcessor | AppendProcessor
+      }`,
+      errors: [{ messageId: 'preferTaggedVariants' }]
+    },
+    {
+      code: `export class SearchRequest {
+        query: MatchQuery | TermQuery | BoolQuery | RangeQuery
+      }`,
+      errors: [{ messageId: 'preferTaggedVariants' }]
+    },
+    {
+      code: `type NewType = Atype | Btype`,
+      errors: [{ messageId: 'preferTaggedVariants' }]
+    },
     {
       code: `
       /** @codegen_names a,b */

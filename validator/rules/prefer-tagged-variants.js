@@ -108,7 +108,8 @@ export default createRule({
           // last check, is there a @variant or @codegen_names tag in the comment above
           const sourceCode = context.sourceCode || context.getSourceCode()
 
-          const comments = sourceCode.getCommentsBefore(node.parent.parent)
+          const declarationNode = isTypeAlias ? node.parent : node.parent.parent
+          const comments = sourceCode.getCommentsBefore(declarationNode)
           const jsdoc = comments
               ?.filter(comment => comment.type === 'Block' && comment.value.startsWith('*'))
               .pop()
@@ -123,9 +124,6 @@ export default createRule({
             })
             return
           }
-
-          console.log(node)
-          console.log(comments)
 
           const blockComment = jsdoc.value
 
