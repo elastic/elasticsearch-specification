@@ -58,6 +58,16 @@
               "$ref": "#/components/schemas/_types.Duration"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "return_intermediate_results",
+            "description": "Specifies whether the response should contain intermediate results if the query is still running when the wait_for_completion_timeout\nexpires or if no wait_for_completion_timeout is specified.\nIf true and the search is still running, the search response\nwill include any hits and partial aggregations that are available.\nIf false and the search is still running, the search response will not include any hits (but possibly include\ntotal hits) nor will include any partial aggregations.\nWhen not specified, the intermediate results are returned for running queries.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
           }
         ],
         "responses": {
