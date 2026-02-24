@@ -1,0 +1,25 @@
+summary: An embedding task using a multimodal model
+description: A successful response when creating a JinaAI `embedding` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "jinaai-embeddings-multimodal",
+    "task_type": "embedding",
+    "service": "jinaai",
+    "service_settings": {
+      "model_id": "jina-embeddings-v4",
+      "rate_limit": {
+        "requests_per_minute": 2000
+      },
+      "dimensions": 2048,
+      "embedding_type": "float",
+      "similarity": "dot_product",
+      "multimodal_model": true
+    },
+    "chunking_settings": {
+      "strategy": "sentence",
+      "max_chunk_size": 250,
+      "sentence_overlap": 1
+    }
+  }

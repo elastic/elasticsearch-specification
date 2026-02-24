@@ -67,6 +67,8 @@ export interface KnnSearch {
    * @availability serverless
    */
   rescore_vector?: RescoreVector
+  /** @codegen_name query_name */
+  _name?: string
 }
 
 /**

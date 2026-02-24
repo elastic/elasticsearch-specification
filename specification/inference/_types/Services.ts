@@ -54,7 +54,7 @@ import {
 export class InferenceEndpoint {
   /**
    * The chunking configuration object.
-   * Applies only to the `sparse_embedding` and `text_embedding` task types.
+   * Applies only to the `embedding`, `sparse_embedding` and `text_embedding` task types.
    * Not applicable to the `rerank`, `completion`, or `chat_completion` task types.
    */
   chunking_settings?: InferenceChunkingSettings
@@ -434,6 +434,7 @@ export class RateLimitSetting {
    * By default, the number of requests allowed per minute is set by each service as follows:
    *
    * * `alibabacloud-ai-search` service: `1000`
+   * * `amazonbedrock` service: `240`
    * * `anthropic` service: `50`
    * * `azureaistudio` service: `240`
    * * `azureopenai` service and task type `text_embedding`: `1440`

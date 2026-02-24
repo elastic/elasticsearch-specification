@@ -29,7 +29,7 @@ import { IndexSettings } from './IndexSettings'
 
 export class IndexTemplate {
   /**
-   * Name of the index template.
+   * Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.
    */
   index_patterns: Names
   /**

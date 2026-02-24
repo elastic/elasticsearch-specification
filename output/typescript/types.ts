@@ -31,7 +31,7 @@ export interface BulkIndexOperation extends BulkWriteOperation {
 export interface BulkOperationBase {
   _id?: Id
   _index?: IndexName
-  routing?: Routing
+  routing?: string
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   version?: VersionNumber
@@ -1038,7 +1038,7 @@ export interface ReindexDestination {
   index: IndexName
   op_type?: OpType
   pipeline?: string
-  routing?: Routing
+  routing?: string
   version_type?: VersionType
 }
 
@@ -1374,7 +1374,7 @@ export interface SearchCompletionSuggestOption<TDocument = unknown> {
   fields?: Record<string, any>
   _id?: string
   _index?: IndexName
-  _routing?: Routing
+  _routing?: string
   _score?: double
   _source?: TDocument
   text: string
@@ -1901,7 +1901,6 @@ export interface SearchMvtRequest extends RequestBase {
   grid_agg?: SearchMvtGridAggregationType
   grid_precision?: integer
   grid_type?: SearchMvtGridType
-  project_routing?: ProjectRouting
   size?: integer
   track_total_hits?: SearchTrackHits
   with_labels?: boolean
@@ -1920,6 +1919,7 @@ export interface SearchMvtRequest extends RequestBase {
     sort?: Sort
     track_total_hits?: SearchTrackHits
     with_labels?: boolean
+    project_routing?: ProjectRouting
   }
 }
 
@@ -1977,7 +1977,6 @@ export interface SearchTemplateRequest extends RequestBase {
   ignore_unavailable?: boolean
   preference?: string
   profile?: boolean
-  project_routing?: ProjectRouting
   routing?: Routing
   scroll?: Duration
   search_type?: SearchType
@@ -1989,6 +1988,7 @@ export interface SearchTemplateRequest extends RequestBase {
     params?: Record<string, any>
     profile?: boolean
     source?: ScriptSource
+    project_routing?: ProjectRouting
   }
 }
 
@@ -2678,6 +2678,7 @@ export interface KnnSearch {
   similarity?: float
   inner_hits?: SearchInnerHits
   rescore_vector?: RescoreVector
+  _name?: string
 }
 
 export interface LatLonGeoLocation {
@@ -4219,7 +4220,8 @@ export interface AggregationsMultiBucketBase {
 }
 
 export interface AggregationsMultiTermLookup {
-  field: Field
+  field?: Field
+  script?: Script | ScriptSource
   missing?: AggregationsMissing
 }
 
@@ -6511,7 +6513,7 @@ export interface QueryDslFieldLookup {
   id: Id
   index?: IndexName
   path?: Field
-  routing?: Routing
+  routing?: string
 }
 
 export type QueryDslFieldValueFactorModifier = 'none' | 'log' | 'log1p' | 'log2p' | 'ln' | 'ln1p' | 'ln2p' | 'square' | 'sqrt' | 'reciprocal'
@@ -6534,6 +6536,7 @@ export interface QueryDslFunctionScoreContainer {
   script_score?: QueryDslScriptScoreFunction
   filter?: QueryDslQueryContainer
   weight?: double
+  _name?: string
 }
 
 export type QueryDslFunctionScoreMode = 'multiply' | 'sum' | 'avg' | 'first' | 'max' | 'min'
@@ -6803,7 +6806,7 @@ export interface QueryDslMoreLikeThisQuery extends QueryDslQueryBase {
   minimum_should_match?: MinimumShouldMatch
   min_term_freq?: integer
   min_word_length?: integer
-  routing?: Routing
+  routing?: string
   stop_words?: AnalysisStopWords
   unlike?: QueryDslLike | QueryDslLike[]
   version?: VersionNumber
@@ -6864,7 +6867,7 @@ export interface QueryDslPercolateQuery extends QueryDslQueryBase {
   index?: IndexName
   name?: string
   preference?: string
-  routing?: Routing
+  routing?: string
   version?: VersionNumber
 }
 
@@ -7177,7 +7180,7 @@ export interface QueryDslTermsLookup {
   index: IndexName
   id: Id
   path: Field
-  routing?: Routing
+  routing?: string
 }
 
 export interface QueryDslTermsQueryKeys extends QueryDslQueryBase {
@@ -10404,6 +10407,11 @@ export interface ClusterStatsExtendedRetrieversSearchUsage {
 
 export interface ClusterStatsExtendedSearchUsage {
   retrievers?: ClusterStatsExtendedRetrieversSearchUsage
+  section?: ClusterStatsExtendedSectionSearchUsage
+}
+
+export interface ClusterStatsExtendedSectionSearchUsage {
+  sort?: Partial<Record<ClusterStatsSortType, long>>
 }
 
 export interface ClusterStatsExtendedTextSimilarityRetrieverUsage {
@@ -10503,7 +10511,7 @@ export interface ClusterStatsRepositoryStatsShards {
   total: integer
   complete: integer
   incomplete: integer
-  states: Record<ClusterStatsShardState, integer>
+  states: Partial<Record<ClusterStatsShardState, integer>>
 }
 
 export interface ClusterStatsRequest extends RequestBase {
@@ -10549,6 +10557,8 @@ export interface ClusterStatsSnapshotCurrentCounts {
   concurrent_operations: integer
   cleanups: integer
 }
+
+export type ClusterStatsSortType = '_doc' | '_geo_distance' | '_score' | '_script' | 'field_sort'
 
 export interface ClusterStatsSparseVectorStats {
   value_count: long
@@ -11403,7 +11413,7 @@ export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
   is_running: boolean
 }
 
-export type EsqlESQLParam = FieldValue | FieldValue[]
+export type EsqlESQLParams = EsqlSingleOrMultiValue[] | EsqlNamedValue[]
 
 export interface EsqlESQLView {
   name: string
@@ -11461,6 +11471,10 @@ export interface EsqlEsqlShardInfo {
   failed?: integer
 }
 
+export type EsqlNamedValue = Partial<Record<string, EsqlSingleOrMultiValue>>
+
+export type EsqlSingleOrMultiValue = FieldValue | FieldValue[]
+
 export interface EsqlTableValuesContainer {
   integer?: EsqlTableValuesIntegerValue[]
   keyword?: EsqlTableValuesKeywordValue[]
@@ -11484,6 +11498,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
   body?: {
     columnar?: boolean
     filter?: QueryDslQueryContainer
+    time_zone?: string
     locale?: string
     params?: FieldValue[]
     profile?: boolean
@@ -11494,6 +11509,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     wait_for_completion_timeout?: Duration
     keep_alive?: Duration
     keep_on_completion?: boolean
+    project_routing?: ProjectRouting
   }
 }
 
@@ -11582,13 +11598,15 @@ export interface EsqlQueryRequest extends RequestBase {
   body?: {
     columnar?: boolean
     filter?: QueryDslQueryContainer
+    time_zone?: string
     locale?: string
-    params?: EsqlESQLParam[]
+    params?: EsqlESQLParams
     profile?: boolean
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
     include_ccs_metadata?: boolean
     include_execution_metadata?: boolean
+    project_routing?: ProjectRouting
   }
 }
 
@@ -12098,11 +12116,11 @@ export type IlmStopResponse = AcknowledgedResponseBase
 
 export interface IndicesAlias {
   filter?: QueryDslQueryContainer
-  index_routing?: Routing
+  index_routing?: string
   is_hidden?: boolean
   is_write_index?: boolean
-  routing?: Routing
-  search_routing?: Routing
+  routing?: string
+  search_routing?: string
 }
 
 export interface IndicesAliasDefinition {
@@ -13461,10 +13479,10 @@ export interface IndicesPutAliasRequest extends RequestBase {
   timeout?: Duration
   body?: {
     filter?: QueryDslQueryContainer
-    index_routing?: Routing
+    index_routing?: string
     is_write_index?: boolean
-    routing?: Routing
-    search_routing?: Routing
+    routing?: string
+    search_routing?: string
   }
 }
 
@@ -14248,11 +14266,11 @@ export interface IndicesUpdateAliasesAddAction {
   filter?: QueryDslQueryContainer
   index?: IndexName
   indices?: Indices
-  index_routing?: Routing
+  index_routing?: string
   is_hidden?: boolean
   is_write_index?: boolean
-  routing?: Routing
-  search_routing?: Routing
+  routing?: string
+  search_routing?: string
   must_exist?: boolean
 }
 
@@ -14364,7 +14382,7 @@ export interface InferenceAmazonBedrockTaskSettings {
   top_p?: float
 }
 
-export type InferenceAmazonBedrockTaskType = 'completion' | 'text_embedding'
+export type InferenceAmazonBedrockTaskType = 'chat_completion' | 'completion' | 'text_embedding'
 
 export type InferenceAmazonSageMakerApi = 'openai' | 'elastic'
 
@@ -14565,6 +14583,14 @@ export interface InferenceDeleteInferenceEndpointResult extends AcknowledgedResp
 
 export type InferenceDenseByteVector = byte[]
 
+export interface InferenceDenseEmbeddingByteResult {
+  embedding: InferenceDenseByteVector
+}
+
+export interface InferenceDenseEmbeddingResult {
+  embedding: InferenceDenseVector
+}
+
 export type InferenceDenseVector = float[]
 
 export interface InferenceElasticsearchServiceSettings {
@@ -14594,6 +14620,32 @@ export interface InferenceElserServiceSettings {
 export type InferenceElserServiceType = 'elser'
 
 export type InferenceElserTaskType = 'sparse_embedding'
+
+export type InferenceEmbeddingContentFormat = 'text' | 'base64'
+
+export type InferenceEmbeddingContentInput = InferenceEmbeddingContentObject | InferenceEmbeddingContentObject[]
+
+export interface InferenceEmbeddingContentObject {
+  content: InferenceEmbeddingContentObjectContents
+}
+
+export interface InferenceEmbeddingContentObjectContents {
+  type: InferenceEmbeddingContentType
+  format?: InferenceEmbeddingContentFormat
+  value: string
+}
+
+export type InferenceEmbeddingContentType = 'text' | 'image'
+
+export interface InferenceEmbeddingInferenceResult {
+  embeddings_bytes?: InferenceDenseEmbeddingByteResult[]
+  embeddings_bits?: InferenceDenseEmbeddingByteResult[]
+  embeddings?: InferenceDenseEmbeddingResult[]
+}
+
+export type InferenceEmbeddingInput = InferenceEmbeddingStringInput | InferenceEmbeddingContentInput
+
+export type InferenceEmbeddingStringInput = string | string[]
 
 export type InferenceGoogleAiServiceType = 'googleaistudio'
 
@@ -14804,19 +14856,27 @@ export interface InferenceInferenceEndpointInfoWatsonx extends InferenceInferenc
 }
 
 export interface InferenceInferenceResult {
-  text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
-  text_embedding_bits?: InferenceTextEmbeddingByteResult[]
-  text_embedding?: InferenceTextEmbeddingResult[]
+  embeddings_bytes?: InferenceDenseEmbeddingByteResult[]
+  embeddings_bits?: InferenceDenseEmbeddingByteResult[]
+  embeddings?: InferenceDenseEmbeddingResult[]
+  text_embedding_bytes?: InferenceDenseEmbeddingByteResult[]
+  text_embedding_bits?: InferenceDenseEmbeddingByteResult[]
+  text_embedding?: InferenceDenseEmbeddingResult[]
   sparse_embedding?: InferenceSparseEmbeddingResult[]
   completion?: InferenceCompletionResult[]
   rerank?: InferenceRankedDocument[]
 }
 
+export type InferenceJinaAIElementType = 'binary' | 'bit' | 'float'
+
 export interface InferenceJinaAIServiceSettings {
   api_key: string
-  model_id?: string
+  model_id: string
   rate_limit?: InferenceRateLimitSetting
   similarity?: InferenceJinaAISimilarityType
+  dimensions?: integer
+  element_type?: InferenceJinaAIElementType
+  multimodal_model?: boolean
 }
 
 export type InferenceJinaAIServiceType = 'jinaai'
@@ -14825,11 +14885,12 @@ export type InferenceJinaAISimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
 
 export interface InferenceJinaAITaskSettings {
   return_documents?: boolean
-  task?: InferenceJinaAITextEmbeddingTask
+  input_type?: InferenceJinaAITextEmbeddingTask
+  late_chunking?: boolean
   top_n?: integer
 }
 
-export type InferenceJinaAITaskType = 'rerank' | 'text_embedding'
+export type InferenceJinaAITaskType = 'embedding' | 'rerank' | 'text_embedding'
 
 export type InferenceJinaAITextEmbeddingTask = 'classification' | 'clustering' | 'ingest' | 'search'
 
@@ -14895,10 +14956,13 @@ export interface InferenceOpenAIServiceSettings {
   model_id: string
   organization_id?: string
   rate_limit?: InferenceRateLimitSetting
+  similarity?: InferenceOpenAISimilarityType
   url?: string
 }
 
 export type InferenceOpenAIServiceType = 'openai'
+
+export type InferenceOpenAISimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
 
 export interface InferenceOpenAITaskSettings {
   user?: string
@@ -14948,6 +15012,12 @@ export interface InferenceRequestChatCompletion {
   top_p?: float
 }
 
+export interface InferenceRequestEmbedding {
+  input: InferenceEmbeddingInput
+  input_type?: string
+  task_settings?: InferenceTaskSettings
+}
+
 export interface InferenceRerankedInferenceResult {
   rerank: InferenceRankedDocument[]
 }
@@ -14959,6 +15029,7 @@ export interface InferenceSparseEmbeddingInferenceResult {
 }
 
 export interface InferenceSparseEmbeddingResult {
+  is_truncated: boolean
   embedding: InferenceSparseVector
 }
 
@@ -14966,13 +15037,13 @@ export type InferenceSparseVector = Record<string, float>
 
 export type InferenceTaskSettings = any
 
-export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion'
+export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion' | 'embedding'
 
 export type InferenceTaskTypeAi21 = 'completion' | 'chat_completion'
 
 export type InferenceTaskTypeAlibabaCloudAI = 'text_embedding' | 'rerank' | 'completion' | 'sparse_embedding'
 
-export type InferenceTaskTypeAmazonBedrock = 'text_embedding' | 'completion'
+export type InferenceTaskTypeAmazonBedrock = 'chat_completion' | 'completion' | 'text_embedding'
 
 export type InferenceTaskTypeAmazonSageMaker = 'text_embedding' | 'completion' | 'chat_completion' | 'sparse_embedding' | 'rerank'
 
@@ -15002,7 +15073,7 @@ export type InferenceTaskTypeGroq = 'chat_completion'
 
 export type InferenceTaskTypeHuggingFace = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
-export type InferenceTaskTypeJinaAi = 'text_embedding' | 'rerank'
+export type InferenceTaskTypeJinaAi = 'embedding' | 'text_embedding' | 'rerank'
 
 export type InferenceTaskTypeLlama = 'text_embedding' | 'chat_completion' | 'completion'
 
@@ -15018,18 +15089,10 @@ export type InferenceTaskTypeVoyageAI = 'text_embedding' | 'rerank'
 
 export type InferenceTaskTypeWatsonx = 'text_embedding' | 'chat_completion' | 'completion'
 
-export interface InferenceTextEmbeddingByteResult {
-  embedding: InferenceDenseByteVector
-}
-
 export interface InferenceTextEmbeddingInferenceResult {
-  text_embedding_bytes?: InferenceTextEmbeddingByteResult[]
-  text_embedding_bits?: InferenceTextEmbeddingByteResult[]
-  text_embedding?: InferenceTextEmbeddingResult[]
-}
-
-export interface InferenceTextEmbeddingResult {
-  embedding: InferenceDenseVector
+  text_embedding_bytes?: InferenceDenseEmbeddingByteResult[]
+  text_embedding_bits?: InferenceDenseEmbeddingByteResult[]
+  text_embedding?: InferenceDenseEmbeddingResult[]
 }
 
 export interface InferenceThinkingConfig {
@@ -15076,7 +15139,7 @@ export interface InferenceWatsonxServiceSettings {
 
 export type InferenceWatsonxServiceType = 'watsonxai'
 
-export type InferenceWatsonxTaskType = 'text_embedding' | 'chat_completion' | 'completion'
+export type InferenceWatsonxTaskType = 'text_embedding' | 'rerank' | 'chat_completion' | 'completion'
 
 export interface InferenceChatCompletionUnifiedRequest extends RequestBase {
   inference_id: Id
@@ -15105,6 +15168,14 @@ export interface InferenceDeleteRequest extends RequestBase {
 }
 
 export type InferenceDeleteResponse = InferenceDeleteInferenceEndpointResult
+
+export interface InferenceEmbeddingRequest extends RequestBase {
+  inference_id: Id
+  timeout?: Duration
+  body?: InferenceRequestEmbedding
+}
+
+export type InferenceEmbeddingResponse = InferenceEmbeddingInferenceResult
 
 export interface InferenceGetRequest extends RequestBase {
   task_type?: InferenceTaskType
@@ -20141,13 +20212,53 @@ export interface ProfilingTopnFunctionsRequest extends RequestBase {
 
 export type ProfilingTopnFunctionsResponse = any
 
+export type ProjectNamedProjectRoutingExpressions = Record<string, ProjectProjectRoutingExpression>
+
+export interface ProjectProjectRoutingExpression {
+  expression: ProjectRoutingExpression
+}
+
+export type ProjectRoutingExpression = string
+
+export interface ProjectCreateManyRoutingRequest extends RequestBase {
+  body?: ProjectNamedProjectRoutingExpressions
+}
+
+export type ProjectCreateManyRoutingResponse = AcknowledgedResponseBase
+
+export interface ProjectCreateRoutingRequest extends RequestBase {
+  name: string
+  body?: ProjectProjectRoutingExpression
+}
+
+export type ProjectCreateRoutingResponse = AcknowledgedResponseBase
+
+export interface ProjectDeleteRoutingRequest extends RequestBase {
+  name: string
+}
+
+export type ProjectDeleteRoutingResponse = AcknowledgedResponseBase
+
+export interface ProjectGetManyRoutingRequest extends RequestBase {
+}
+
+export type ProjectGetManyRoutingResponse = ProjectNamedProjectRoutingExpressions
+
+export interface ProjectGetRoutingRequest extends RequestBase {
+  name: string
+}
+
+export type ProjectGetRoutingResponse = ProjectProjectRoutingExpression
+
 export interface ProjectTagsProjectTags {
   origin: Partial<Record<string, ProjectTagsTags>>
   linked_projects?: Record<string, ProjectTagsTags>
 }
 
 export interface ProjectTagsRequest extends RequestBase {
-  project_routing?: string
+  body?: {
+    project_routing?: string
+  }
 }
 
 export type ProjectTagsResponse = ProjectTagsProjectTags
@@ -20160,44 +20271,6 @@ export interface ProjectTagsTagsKeys {
 }
 export type ProjectTagsTags = ProjectTagsTagsKeys
   & { [property: string]: string }
-
-export type ProjectRoutingNamedProjectRoutingExpressions = Record<string, ProjectRoutingProjectRoutingExpression>
-
-export interface ProjectRoutingProjectRoutingExpression {
-  expression: ProjectRoutingRoutingExpression
-}
-
-export type ProjectRoutingRoutingExpression = string
-
-export interface ProjectRoutingCreateRequest extends RequestBase {
-  name: string
-  body?: ProjectRoutingProjectRoutingExpression
-}
-
-export type ProjectRoutingCreateResponse = AcknowledgedResponseBase
-
-export interface ProjectRoutingCreateManyRequest extends RequestBase {
-  body?: ProjectRoutingNamedProjectRoutingExpressions
-}
-
-export type ProjectRoutingCreateManyResponse = AcknowledgedResponseBase
-
-export interface ProjectRoutingDeleteRequest extends RequestBase {
-  name: string
-}
-
-export type ProjectRoutingDeleteResponse = AcknowledgedResponseBase
-
-export interface ProjectRoutingGetRequest extends RequestBase {
-  name: string
-}
-
-export type ProjectRoutingGetResponse = ProjectRoutingProjectRoutingExpression
-
-export interface ProjectRoutingGetManyRequest extends RequestBase {
-}
-
-export type ProjectRoutingGetManyResponse = ProjectRoutingNamedProjectRoutingExpressions
 
 export interface QueryRulesQueryRule {
   rule_id: Id
@@ -22859,7 +22932,10 @@ export interface SslCertificatesRequest extends RequestBase {
 
 export type SslCertificatesResponse = SslCertificatesCertificateInformation[]
 
+export type StreamsStreamType = 'logs' | 'logs.otel' | 'logs.ecs'
+
 export interface StreamsLogsDisableRequest extends RequestBase {
+  name: StreamsStreamType
   master_timeout?: Duration
   timeout?: Duration
 }
@@ -22867,22 +22943,25 @@ export interface StreamsLogsDisableRequest extends RequestBase {
 export type StreamsLogsDisableResponse = AcknowledgedResponseBase
 
 export interface StreamsLogsEnableRequest extends RequestBase {
+  name: StreamsStreamType
   master_timeout?: Duration
   timeout?: Duration
 }
 
 export type StreamsLogsEnableResponse = AcknowledgedResponseBase
 
-export interface StreamsStatusLogsStatus {
-  enabled: boolean
-}
-
 export interface StreamsStatusRequest extends RequestBase {
   master_timeout?: Duration
 }
 
 export interface StreamsStatusResponse {
-  logs: StreamsStatusLogsStatus
+  logs: StreamsStatusStreamStatus
+  'logs.otel': StreamsStatusStreamStatus
+  'logs.ecs': StreamsStatusStreamStatus
+}
+
+export interface StreamsStatusStreamStatus {
+  enabled: boolean
 }
 
 export interface SynonymsSynonymRule {
@@ -23082,6 +23161,7 @@ export interface TextStructureFindFieldStructureRequest extends RequestBase {
   index: IndexName
   quote?: string
   should_trim_fields?: boolean
+  should_parse_recursively?: boolean
   timeout?: Duration
   timestamp_field?: Field
   timestamp_format?: string
@@ -23114,6 +23194,7 @@ export interface TextStructureFindMessageStructureRequest extends RequestBase {
   grok_pattern?: GrokPattern
   quote?: string
   should_trim_fields?: boolean
+  should_parse_recursively?: boolean
   timeout?: Duration
   timestamp_field?: Field
   timestamp_format?: string
@@ -23155,6 +23236,7 @@ export interface TextStructureFindStructureRequest<TJsonDocument = unknown> {
   lines_to_sample?: uint
   quote?: string
   should_trim_fields?: boolean
+  should_parse_recursively?: boolean
   timeout?: Duration
   timestamp_field?: Field
   timestamp_format?: string

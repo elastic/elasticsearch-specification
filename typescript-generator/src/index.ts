@@ -127,8 +127,17 @@ function buildValue (type: M.ValueOf, openGenerics?: string[], origin?: M.TypeNa
     case 'union_of':
       return type.items.map(t => buildValue(t, openGenerics, origin)).join(' | ')
     case 'dictionary_of': {
+      // In some cluster.stats responses, the dictionary key is an enum and some keys are missing
+      // To pass validation, we allow partial keys for enum keys
+      let isEnumKey = false
+      const key = type.key
+      if (key.kind === 'instance_of') {
+        const keyType = model.types.find(t => equalTypeNames(key.type, t.name))
+        isEnumKey = keyType?.kind === 'enum'
+      }
       const result = `Record<${buildValue(type.key, openGenerics)}, ${buildValue(type.value, openGenerics)}>`
-      return type.singleKey ? `Partial<${result}>` : result
+      // Allow partial keys only for single-key dictionaries and enum keys
+      return type.singleKey || isEnumKey ? `Partial<${result}>` : result
     }
     case 'user_defined_value':
       return 'any'

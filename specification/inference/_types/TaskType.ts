@@ -25,10 +25,12 @@ export enum TaskType {
   text_embedding,
   rerank,
   completion,
-  chat_completion
+  chat_completion,
+  embedding
 }
 
 export enum TaskTypeJinaAi {
+  embedding,
   text_embedding,
   rerank
 }
@@ -46,8 +48,9 @@ export enum TaskTypeAlibabaCloudAI {
 }
 
 export enum TaskTypeAmazonBedrock {
-  text_embedding,
-  completion
+  chat_completion,
+  completion,
+  text_embedding
 }
 
 export enum TaskTypeAmazonSageMaker {

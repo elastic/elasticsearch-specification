@@ -41,7 +41,7 @@ setup:	## Install dependencies for contrib target
 	@npm install --prefix typescript-generator
 	@npm install --prefix validator
 	@npm install --prefix specification
-	@npm install @redocly/cli
+	@npm install @redocly/cli bump-cli
 	@npm install --prefix docs/examples
 
 clean-dep:	## Clean npm dependencies
@@ -78,6 +78,7 @@ overlay-docs: ## Apply overlays to OpenAPI documents
 	rm output/openapi/elasticsearch-openapi-docs.tmp*.json
 
 generate-language-examples:
+	@npm update --prefix docs/examples @elastic/request-converter
 	@node docs/examples/generate-language-examples.js
 	@npm run format:fix-examples --prefix compiler
 

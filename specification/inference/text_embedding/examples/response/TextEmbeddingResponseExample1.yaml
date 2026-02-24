@@ -1,6 +1,6 @@
 summary: Text embedding task
 description: >
-  An abbreviated response from `POST _inference/text_embedding/my-cohere-endpoint`.
+  An abbreviated response from `POST _inference/text_embedding/my-text-embedding-endpoint`.
 # type: "response"
 # response_code:
 value: |-
@@ -8,22 +8,20 @@ value: |-
     "text_embedding": [
       {
         "embedding": [
-          {
-            0.018569946,
-            -0.036895752,
-            0.01486969,
-            -0.0045204163,
-            -0.04385376,
-            0.0075950623,
-            0.04260254,
-            -0.004005432,
-            0.007865906,
-            0.030792236,
-            -0.050476074,
-            0.011795044,
-            -0.011642456,
-            -0.010070801
-          }
+          0.018569946,
+          -0.036895752,
+          0.01486969,
+          -0.0045204163,
+          -0.04385376,
+          0.0075950623,
+          0.04260254,
+          -0.004005432,
+          0.007865906,
+          0.030792236,
+          -0.050476074,
+          0.011795044,
+          -0.011642456,
+          -0.010070801
         ]
       }
     ]

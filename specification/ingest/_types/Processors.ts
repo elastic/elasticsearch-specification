@@ -177,7 +177,7 @@ export class ProcessorContainer {
    */
   join?: JoinProcessor
   /**
-   * Converts a JSON string into a structured JSON object.
+   * Parses a string containing JSON data into a structured object, string, or other value.
    * @doc_id json-processor
    */
   json?: JsonProcessor

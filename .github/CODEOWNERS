@@ -6,5 +6,4 @@
 /compiler/                  @elastic/devtools-team
 /compiler-rs/               @elastic/devtools-team
 /typescript-generator/      @elastic/devtools-team
-/specification/_json_spec/  @elastic/devtools-team
 /specification/_spec_utils/ @elastic/devtools-team

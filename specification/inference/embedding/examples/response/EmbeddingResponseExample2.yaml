@@ -1,0 +1,38 @@
+summary: Text-only embedding task
+description: >
+  An abbreviated response from `POST _inference/embedding/my-text-only-endpoint`.
+# type: "response"
+# response_code:
+value: |-
+  {
+    "embeddings": [
+      {
+        "embedding": [
+          0.00854492,
+          -0.00616455,
+          -0.0189209,
+          0.01556396,
+          -0.00460815,
+          0.01477051,
+          -0.04174805,
+          0.01928711,
+          -0.00656128,
+          0.05419922
+        ]
+      },
+      {
+        "embedding": [
+          -0.01135254,
+          0.0279541,
+          -0.02368164,
+          0.01068115,
+          0.01043701,
+          0.04150391,
+          0.00836182,
+          -7.7057E-4,
+          -0.01379395,
+          0.0246582
+        ]
+      }
+    ]
+  }

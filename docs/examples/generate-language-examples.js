@@ -58,7 +58,7 @@ async function generateLanguages(example) {
     const partialRequest = await parseRequest(request);
     const java = new JavaCaller({
       minimumJavaVersion: 21,
-      jar: "path/to/converter/jar/java-es-request-converter-1.0-SNAPSHOT.jar",
+      jar: process.env.JAVA_ES_REQUEST_CONVERTER_JAR,
     });
 
     let correctParams = getCodeGenParamNames(partialRequest.params, partialRequest.request);

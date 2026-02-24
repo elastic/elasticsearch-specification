@@ -204,18 +204,6 @@ export interface Request extends RequestBase {
      */
     grid_type?: GridType
     /**
-     * Specifies a subset of projects to target for the search using project
-     * metadata tags in a subset of Lucene query syntax.
-     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
-     * Examples:
-     *  _alias:my-project
-     *  _alias:_origin
-     *  _alias:*pr*
-     * Supported in serverless only.
-     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
-     */
-    project_routing?: ProjectRouting
-    /**
      * Maximum number of features to return in the hits layer. Accepts 0-10000.
      * If 0, results don't include the hits layer.
      * @server_default 10000
@@ -352,5 +340,17 @@ export interface Request extends RequestBase {
      * In addition, the new features will be distinguishable using the tag `_mvt_label_position`.
      */
     with_labels?: boolean
+    /**
+     * Specifies a subset of projects to target for the search using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }
