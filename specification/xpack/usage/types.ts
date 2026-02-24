@@ -523,7 +523,6 @@ export class GpuNodeStats {
 
 /**
  * GPU vector indexing usage statistics.
- * @availability stack since=9.3.2
  */
 export class GpuVectorIndexing extends Base {
   /** Total GPU index builds across the cluster. */
