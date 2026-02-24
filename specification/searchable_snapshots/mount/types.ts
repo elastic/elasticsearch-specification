@@ -26,7 +26,17 @@ export class MountedSnapshot {
   shards: ShardStatistics
 }
 
+/**
+ * @doc_id searchable-snapshots-api-mount-snapshot
+ * @ext_doc_id searchable-snapshots-api-mount-snapshot
+ */
 export enum StorageOption {
+  /**
+   * Fully caches the snapshotted index’s shards in the Elasticsearch cluster.
+   */
   full_copy = 0,
+  /**
+   * Uses a local cache containing only recently searched parts of the snapshotted index’s data.
+   */
   shared_cache = 1
 }

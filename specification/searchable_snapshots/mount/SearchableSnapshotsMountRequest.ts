@@ -70,6 +70,7 @@ export interface Request extends RequestBase {
     wait_for_completion?: boolean
     /**
      * The mount option for the searchable snapshot index.
+     * For further information on mount options, refer to: [Mount options](https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/searchable-snapshots#searchable-snapshot-mount-storage-options)
      * @server_default full_copy
      */
     storage?: StorageOption
