@@ -32,7 +32,7 @@ export class MountedSnapshot {
  */
 export enum StorageOption {
   /**
-   * **(Default)** Fully caches the snapshotted index’s shards in the Elasticsearch cluster.
+   * Fully caches the snapshotted index’s shards in the Elasticsearch cluster.
    */
   full_copy = 0,
   /**
