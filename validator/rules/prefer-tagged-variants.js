@@ -62,15 +62,18 @@ export default createRule({
         const isInterfaceProperty =
           parent?.type === 'TSTypeAnnotation' &&
           parent.parent?.type === 'TSPropertySignature';
-        
-        if (!isPropertyAnnotation && !isInterfaceProperty) {
+
+        const isTypeAlias =
+            parent?.type === 'TSTypeAliasDeclaration'
+
+        if (!isPropertyAnnotation && !isInterfaceProperty && !isTypeAlias) {
           return;
         }
         
         // skip Type | Type[] pattern
         if (node.types.length === 2) {
           const [first, second] = node.types;
-          
+
           // check Type | Type[]
           if (second.type === 'TSArrayType' && 
               first.type === 'TSTypeReference' &&
@@ -102,13 +105,48 @@ export default createRule({
         });
         
         if (allMembersAreClasses && node.types.length >= 2) {
-          context.report({ 
-            node, 
-            messageId: 'preferTaggedVariants',
-            data: {
-              suggestion: 'Use tagged variants with @variants internal or @variants container (external). See modeling guide: https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#variants'
-            }
-          })
+          // last check, is there a @variant or @codegen_names tag in the comment above
+          const sourceCode = context.sourceCode || context.getSourceCode()
+
+          const comments = sourceCode.getCommentsBefore(node.parent.parent)
+          const jsdoc = comments
+              ?.filter(comment => comment.type === 'Block' && comment.value.startsWith('*'))
+              .pop()
+
+          if (jsdoc === undefined) {
+            context.report({
+              node,
+              messageId: 'preferTaggedVariants',
+              data: {
+                suggestion: 'USE tagged variants with @variants internal or @variants container (external). See modeling guide: https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#variants'
+              }
+            })
+            return
+          }
+
+          const blockComment = jsdoc.value
+
+          const hasCodegenNamesTag =
+              /@codegen_names\s/.test(
+                  blockComment
+              )
+
+          const hasVariantsTag =
+              /@variants\s/.test(
+                  blockComment
+              )
+
+          // TODO 2 different errors
+          if (!hasCodegenNamesTag && !hasVariantsTag) {
+
+            context.report({
+              node,
+              messageId: 'preferTaggedVariants',
+              data: {
+                suggestion: 'Use tagged variants with @variants internal or @variants container (external). See modeling guide: https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#variants'
+              }
+            })
+          }
         }
       },
     }
