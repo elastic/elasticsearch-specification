@@ -23476,7 +23476,7 @@
           "project"
         ],
         "summary": "Get project routing expressions",
-        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `read_project_routing`,`monitor`\n",
         "operationId": "project-get-many-routing",
         "responses": {
           "200": {
@@ -23509,7 +23509,7 @@
           "project"
         ],
         "summary": "Create or update project routing expressions",
-        "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage_project_routing`,`manage`\n",
         "operationId": "project-create-many-routing",
         "requestBody": {
           "content": {
@@ -23560,7 +23560,7 @@
           "project"
         ],
         "summary": "Get a project routing expression",
-        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `read_project_routing`,`monitor`\n",
         "operationId": "project-get-routing",
         "parameters": [
           {
@@ -23606,7 +23606,7 @@
           "project"
         ],
         "summary": "Create or update a project routing expression",
-        "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage_project_routing`,`manage`\n",
         "operationId": "project-create-routing",
         "parameters": [
           {
@@ -23668,7 +23668,7 @@
           "project"
         ],
         "summary": "Delete a project routing expression",
-        "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage_project_routing`,`manage`\n",
         "operationId": "project-delete-routing",
         "parameters": [
           {
@@ -23715,7 +23715,7 @@
           "project"
         ],
         "summary": "Get tags",
-        "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `read_project_routing`,`monitor`\n",
         "operationId": "project-tags",
         "requestBody": {
           "$ref": "#/components/requestBodies/project.tags"
@@ -23738,7 +23738,7 @@
           "project"
         ],
         "summary": "Get tags",
-        "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "description": "Get the tags that are defined for the project.\n\n## Required authorization\n\n* Cluster privileges: `read_project_routing`,`monitor`\n",
         "operationId": "project-tags-1",
         "requestBody": {
           "$ref": "#/components/requestBodies/project.tags"
@@ -81662,7 +81662,9 @@
               "none",
               "post_behavioral_analytics_event",
               "read_pipeline",
-              "read_security"
+              "read_security",
+              "read_project_routing",
+              "manage_project_routing"
             ]
           },
           {
