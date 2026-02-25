@@ -56,6 +56,10 @@ export class Features {
    */
   esql: Feature
   graph: Feature
+  /**
+   * @availability stack since=9.3.2
+   */
+  gpu_vector_indexing: Feature
   ilm: Feature
   logstash: Feature
   logsdb: Feature
