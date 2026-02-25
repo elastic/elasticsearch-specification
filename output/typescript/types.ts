@@ -24243,6 +24243,7 @@ export interface XpackInfoFeatures {
   eql: XpackInfoFeature
   esql: XpackInfoFeature
   graph: XpackInfoFeature
+  gpu_vector_indexing: XpackInfoFeature
   ilm: XpackInfoFeature
   logstash: XpackInfoFeature
   logsdb: XpackInfoFeature
@@ -24410,6 +24411,19 @@ export interface XpackUsageFeatureToggle {
 
 export interface XpackUsageFlattened extends XpackUsageBase {
   field_count: integer
+}
+
+export interface XpackUsageGpuNodeStats {
+  type: string
+  memory_in_bytes: long
+  enabled: boolean
+  index_build_count: long
+}
+
+export interface XpackUsageGpuVectorIndexing extends XpackUsageBase {
+  index_build_count: long
+  nodes_with_gpu: integer
+  nodes: XpackUsageGpuNodeStats[]
 }
 
 export interface XpackUsageHealthStatistics extends XpackUsageBase {
@@ -24588,6 +24602,7 @@ export interface XpackUsageResponse {
   eql: XpackUsageEql
   flattened?: XpackUsageFlattened
   graph: XpackUsageBase
+  gpu_vector_indexing?: XpackUsageGpuVectorIndexing
   health_api?: XpackUsageHealthStatistics
   ilm: XpackUsageIlm
   logstash: XpackUsageBase
