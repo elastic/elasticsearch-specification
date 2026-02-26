@@ -1,22 +1,8 @@
 {
   "endpointErrors": {
-    "_internal.update_desired_nodes": {
+    "inference.get": {
       "request": [
-        "Request: query parameter 'master_timeout' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "capabilities": {
-      "request": [
-        "Request: query parameter 'timeout' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "monitoring.bulk": {
-      "request": [
-        "Request: different number of urls in the json spec",
-        "Request: missing json spec path parameter 'type'"
+        "Request: different number of urls in the json spec"
       ],
       "response": []
     }

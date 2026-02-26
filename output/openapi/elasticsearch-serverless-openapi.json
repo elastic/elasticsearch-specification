@@ -11405,7 +11405,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx inference integration (`text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -11526,7 +11526,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx inference integration (`text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `text_embedding`)\n* Azure OpenAI (`completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -11630,6 +11630,32 @@
         ],
         "summary": "Get an inference endpoint",
         "operationId": "inference-get",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.get-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/{task_type}/_all": {
+      "get": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Get an inference endpoint",
+        "operationId": "inference-get-3",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/inference.get-task_type"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/inference.get-200"
@@ -14234,7 +14260,7 @@
                   "SparseEmbeddingResponseExample1": {
                     "summary": "Sparse embedding task",
                     "description": "An abbreviated response from `POST _inference/sparse_embedding/my-elser-model`.\n",
-                    "value": "{\n  \"sparse_embedding\": [\n    {\n      \"port\": 2.1259406,\n      \"sky\": 1.7073475,\n      \"color\": 1.6922266,\n      \"dead\": 1.6247464,\n      \"television\": 1.3525393,\n      \"above\": 1.2425821,\n      \"tuned\": 1.1440028,\n      \"colors\": 1.1218185,\n      \"tv\": 1.0111054,\n      \"ports\": 1.0067928,\n      \"poem\": 1.0042328,\n      \"channel\": 0.99471164,\n      \"tune\": 0.96235967,\n      \"scene\": 0.9020516\n    }\n  ]\n}"
+                    "value": "{\n  \"sparse_embedding\": [\n    {\n      \"is_truncated\": false,\n      \"embedding\": {\n        \"port\": 2.1259406,\n        \"sky\": 1.7073475,\n        \"color\": 1.6922266,\n        \"dead\": 1.6247464,\n        \"television\": 1.3525393,\n        \"above\": 1.2425821,\n        \"tuned\": 1.1440028,\n        \"colors\": 1.1218185,\n        \"tv\": 1.0111054,\n        \"ports\": 1.0067928,\n        \"poem\": 1.0042328,\n        \"channel\": 0.99471164,\n        \"tune\": 0.96235967,\n        \"scene\": 0.9020516\n      }\n    }\n  ]\n}"
                   }
                 }
               }
@@ -14339,8 +14365,8 @@
                 "examples": {
                   "TextEmbeddingResponseExample1": {
                     "summary": "Text embedding task",
-                    "description": "An abbreviated response from `POST _inference/text_embedding/my-cohere-endpoint`.\n",
-                    "value": "{\n  \"text_embedding\": [\n    {\n      \"embedding\": [\n        {\n          0.018569946,\n          -0.036895752,\n          0.01486969,\n          -0.0045204163,\n          -0.04385376,\n          0.0075950623,\n          0.04260254,\n          -0.004005432,\n          0.007865906,\n          0.030792236,\n          -0.050476074,\n          0.011795044,\n          -0.011642456,\n          -0.010070801\n        }\n      ]\n    }\n  ]\n}"
+                    "description": "An abbreviated response from `POST _inference/text_embedding/my-text-embedding-endpoint`.\n",
+                    "value": "{\n  \"text_embedding\": [\n    {\n      \"embedding\": [\n        0.018569946,\n        -0.036895752,\n        0.01486969,\n        -0.0045204163,\n        -0.04385376,\n        0.0075950623,\n        0.04260254,\n        -0.004005432,\n        0.007865906,\n        0.030792236,\n        -0.050476074,\n        0.011795044,\n        -0.011642456,\n        -0.010070801\n      ]\n    }\n  ]\n}"
                   }
                 }
               }
@@ -44107,27 +44133,43 @@
         ]
       },
       "_types.aggregations.MultiTermLookup": {
-        "type": "object",
-        "properties": {
-          "field": {
-            "description": "A fields from which to retrieve terms.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Field"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "missing": {
+                "description": "The value to apply to documents that do not have a value.\nBy default, documents without a value are ignored.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.Missing"
+                  }
+                ]
               }
-            ]
+            }
           },
-          "missing": {
-            "description": "The value to apply to documents that do not have a value.\nBy default, documents without a value are ignored.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.aggregations.Missing"
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "A field from which to retrieve terms.\nIt is required if `script` is not provided.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "script": {
+                "description": "A script to calculate terms to aggregate on.\nIt is required if `field` is not provided.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Script"
+                  }
+                ]
               }
-            ]
+            },
+            "minProperties": 1,
+            "maxProperties": 1
           }
-        },
-        "required": [
-          "field"
         ]
       },
       "_types.aggregations.NestedAggregation": {
@@ -45528,6 +45570,9 @@
                 "$ref": "#/components/schemas/_types.RescoreVector"
               }
             ]
+          },
+          "_name": {
+            "type": "string"
           }
         },
         "required": [
@@ -62361,7 +62406,7 @@
         "type": "object",
         "properties": {
           "index_patterns": {
-            "description": "Name of the index template.",
+            "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Names"
@@ -63643,6 +63688,10 @@
       "inference._types.SparseEmbeddingResult": {
         "type": "object",
         "properties": {
+          "is_truncated": {
+            "description": "Indicates if the text input was truncated in the request sent to the service",
+            "type": "boolean"
+          },
           "embedding": {
             "allOf": [
               {
@@ -63652,6 +63701,7 @@
           }
         },
         "required": [
+          "is_truncated",
           "embedding"
         ]
       },
@@ -63832,7 +63882,7 @@
             "type": "string"
           },
           "rate_limit": {
-            "description": "This setting helps to minimize the number of rate limit errors returned from Watsonx.\nBy default, the `watsonxai` service sets the number of requests allowed per minute to 120.",
+            "description": "This setting helps to minimize the number of rate limit errors returned from Amazon Bedrock.\nBy default, the `amazonbedrock` service sets the number of requests allowed per minute to 240.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.RateLimitSetting"
@@ -64195,7 +64245,7 @@
             "externalDocs": {
               "url": "https://ai.azure.com/"
             },
-            "description": "A valid API key of your Azure AI Studio model deployment.\nThis key can be found on the overview page for your deployment in the management section of your Azure AI Studio account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key of your Azure AI Studio model deployment.\nThis key can be found on the overview page for your deployment in the management section of your Azure AI Studio account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "endpoint_type": {
@@ -64310,7 +64360,7 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#authentication"
             },
-            "description": "A valid API key for your Azure OpenAI account.\nYou must specify either `api_key` or `entra_id`.\nIf you do not provide either or you provide both, you will receive an error when you try to create your model.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key for your Azure OpenAI account.\nYou must specify either `api_key` or `entra_id`.\nIf you do not provide either or you provide both, you will receive an error when you try to create your model.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "api_version": {
@@ -64421,7 +64471,7 @@
             "externalDocs": {
               "url": "https://dashboard.cohere.com/api-keys"
             },
-            "description": "A valid API key for your Cohere account.\nYou can find or create your Cohere API keys on the Cohere API key settings page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key for your Cohere account.\nYou can find or create your Cohere API keys on the Cohere API key settings page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "embedding_type": {
@@ -64716,7 +64766,7 @@
             "externalDocs": {
               "url": "https://api-docs.deepseek.com/"
             },
-            "description": "A valid API key for your DeepSeek account.\nYou can find or create your DeepSeek API keys on the DeepSeek API key page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key for your DeepSeek account.\nYou can find or create your DeepSeek API keys on the DeepSeek API key page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "model_id": {
@@ -65148,7 +65198,7 @@
             "externalDocs": {
               "url": "https://huggingface.co/settings/tokens"
             },
-            "description": "A valid access token for your HuggingFace account.\nYou can create or find your access tokens on the HuggingFace settings page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid access token for your HuggingFace account.\nYou can create or find your access tokens on the HuggingFace settings page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "rate_limit": {
@@ -65243,11 +65293,11 @@
             "externalDocs": {
               "url": "https://jina.ai/embeddings/"
             },
-            "description": "A valid API key of your JinaAI account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key of your JinaAI account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "model_id": {
-            "description": "The name of the model to use for the inference task.\nFor a `rerank` task, it is required.\nFor a `text_embedding` task, it is optional.",
+            "description": "The name of the model to use for the inference task.",
             "type": "string"
           },
           "rate_limit": {
@@ -65268,10 +65318,27 @@
                 "$ref": "#/components/schemas/inference._types.JinaAISimilarityType"
               }
             ]
+          },
+          "dimensions": {
+            "externalDocs": {
+              "url": "https://jina.ai/embeddings/"
+            },
+            "description": "For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.\nBy default, the model's standard output dimension is used.\nRefer to the Jina documentation for more information.",
+            "type": "number"
+          },
+          "element_type": {
+            "description": "For a `text_embedding` task, the data type returned by the model.\nUse `bit` for binary embeddings, which are encoded as bytes with signed int8 precision.\nUse `binary` for binary embeddings, which are encoded as bytes with signed int8 precision (this is a synonym of `bit`).\nUse `float` for the default float embeddings.",
+            "default": "float",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.JinaAIElementType"
+              }
+            ]
           }
         },
         "required": [
-          "api_key"
+          "api_key",
+          "model_id"
         ]
       },
       "inference._types.JinaAISimilarityType": {
@@ -65280,6 +65347,14 @@
           "cosine",
           "dot_product",
           "l2_norm"
+        ]
+      },
+      "inference._types.JinaAIElementType": {
+        "type": "string",
+        "enum": [
+          "binary",
+          "bit",
+          "float"
         ]
       },
       "inference._types.JinaAITaskSettings": {
@@ -65368,7 +65443,7 @@
             "externalDocs": {
               "url": "https://console.mistral.ai/api-keys/"
             },
-            "description": "A valid API key of your Mistral account.\nYou can find your Mistral API keys or you can create a new one on the API Keys page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key of your Mistral account.\nYou can find your Mistral API keys or you can create a new one on the API Keys page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "max_input_tokens": {
@@ -65451,7 +65526,7 @@
             "externalDocs": {
               "url": "https://platform.openai.com/api-keys"
             },
-            "description": "A valid API key of your OpenAI account.\nYou can find your OpenAI API keys in your OpenAI account under the API keys section.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key of your OpenAI account.\nYou can find your OpenAI API keys in your OpenAI account under the API keys section.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "dimensions": {
@@ -65477,6 +65552,14 @@
               }
             ]
           },
+          "similarity": {
+            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm. Defaults to `dot_product`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.OpenAISimilarityType"
+              }
+            ]
+          },
           "url": {
             "description": "The URL endpoint to use for the requests.\nIt can be changed for testing purposes.",
             "default": "https://api.openai.com/v1/embeddings.",
@@ -65486,6 +65569,14 @@
         "required": [
           "api_key",
           "model_id"
+        ]
+      },
+      "inference._types.OpenAISimilarityType": {
+        "type": "string",
+        "enum": [
+          "cosine",
+          "dot_product",
+          "l2_norm"
         ]
       },
       "inference._types.OpenAITaskSettings": {
@@ -65644,7 +65735,8 @@
       "inference._types.WatsonxTaskType": {
         "type": "string",
         "enum": [
-          "text_embedding"
+          "text_embedding",
+          "rerank"
         ]
       },
       "inference._types.WatsonxServiceType": {
@@ -65660,7 +65752,7 @@
             "externalDocs": {
               "url": "https://cloud.ibm.com/iam/apikeys"
             },
-            "description": "A valid API key of your Watsonx account.\nYou can find your Watsonx API keys or you can create a new one on the API keys page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.\nAfter creating the inference model, you cannot change the associated API key.\nIf you want to use a different API key, delete the inference model and recreate it with the same name and the updated API key.",
+            "description": "A valid API key of your Watsonx account.\nYou can find your Watsonx API keys or you can create a new one on the API keys page.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "api_version": {
@@ -66100,7 +66192,7 @@
             ]
           },
           "json": {
-            "description": "Converts a JSON string into a structured JSON object.",
+            "description": "Parses a string containing JSON data into a structured object, string, or other value.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ingest._types.JsonProcessor"
@@ -84636,7 +84728,7 @@
       "inference.get-task_type": {
         "in": "path",
         "name": "task_type",
-        "description": "The task type",
+        "description": "The task type of the endpoint to return",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -84647,7 +84739,7 @@
       "inference.get-inference_id": {
         "in": "path",
         "name": "inference_id",
-        "description": "The inference Id",
+        "description": "The inference Id of the endpoint to return. Using `_all` or `*` will return all endpoints with the specified\n`task_type` if one is specified, or all endpoints for all task types if no `task_type` is specified",
         "required": true,
         "deprecated": false,
         "schema": {
@@ -87909,7 +88001,7 @@
               "type": "object",
               "properties": {
                 "index_patterns": {
-                  "description": "Name of the index template to create.",
+                  "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Indices"
