@@ -30205,7 +30205,7 @@
           {
             "in": "query",
             "name": "max_docs",
-            "description": "The maximum number of documents to process.\nIt defaults to all documents.\nWhen set to a value less then or equal to `scroll_size` then a scroll will not be used to retrieve the results for the operation.",
+            "description": "The maximum number of documents to process.\nIt defaults to all documents.\nWhen set to a value less than or equal to `scroll_size` and `conflicts` is set to `abort`, a scroll will not be used to retrieve the results for the operation.",
             "deprecated": false,
             "schema": {
               "type": "number"
