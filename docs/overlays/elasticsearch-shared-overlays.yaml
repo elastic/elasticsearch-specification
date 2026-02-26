@@ -316,9 +316,9 @@ actions:
           x-displayName: Streams
           # description: >
           #   The streams APIs enable you to manage streams.
-          externalDocs:
-            url: https://www.elastic.co/docs/solutions/observability/streams/streams
-            description: Learn more about streams.
+          # externalDocs:
+          #   url: https://www.elastic.co/docs/solutions/observability/streams/streams
+          #   description: Learn more about streams.
         - name: synonyms
           x-displayName: Synonyms
           description: >
