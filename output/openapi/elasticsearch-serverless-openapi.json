@@ -9497,7 +9497,7 @@
           "data stream"
         ],
         "summary": "Update data stream settings",
-        "description": "This API can be used to override settings on specific data streams. These overrides will take precedence over what\nis specified in the template that the data stream matches. To prevent your data stream from getting into an invalid state,\nonly certain settings are allowed. If possible, the setting change is applied to all\nbacking indices. Otherwise, it will be applied when the data stream is next rolled over.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "description": "NOTE: Available in 8.19. Not available in earlier versions.\n\nThis API can be used to override settings on specific data streams. These overrides will take precedence over what\nis specified in the template that the data stream matches. To prevent your data stream from getting into an invalid state,\nonly certain settings are allowed. If possible, the setting change is applied to all\nbacking indices. Otherwise, it will be applied when the data stream is next rolled over.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "operationId": "indices-put-data-stream-settings",
         "parameters": [
           {
