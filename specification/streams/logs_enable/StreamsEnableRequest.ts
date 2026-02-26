@@ -35,6 +35,7 @@ import { StreamType } from '@streams/_types/StreamType'
  * @availability stack since=9.1.0 stability=experimental visibility=public
  * @cluster_privileges manage
  * @doc_id streams-logs-enable
+ * @doc_tag streams
  */
 export interface Request extends RequestBase {
   urls: [
