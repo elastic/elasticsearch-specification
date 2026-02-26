@@ -31,7 +31,7 @@ export interface BulkIndexOperation extends BulkWriteOperation {
 export interface BulkOperationBase {
   _id?: Id
   _index?: IndexName
-  routing?: Routing
+  routing?: string
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   version?: VersionNumber
@@ -1038,7 +1038,7 @@ export interface ReindexDestination {
   index: IndexName
   op_type?: OpType
   pipeline?: string
-  routing?: Routing
+  routing?: string
   version_type?: VersionType
 }
 
@@ -1374,7 +1374,7 @@ export interface SearchCompletionSuggestOption<TDocument = unknown> {
   fields?: Record<string, any>
   _id?: string
   _index?: IndexName
-  _routing?: Routing
+  _routing?: string
   _score?: double
   _source?: TDocument
   text: string
@@ -2678,6 +2678,7 @@ export interface KnnSearch {
   similarity?: float
   inner_hits?: SearchInnerHits
   rescore_vector?: RescoreVector
+  _name?: string
 }
 
 export interface LatLonGeoLocation {
@@ -4219,7 +4220,8 @@ export interface AggregationsMultiBucketBase {
 }
 
 export interface AggregationsMultiTermLookup {
-  field: Field
+  field?: Field
+  script?: Script | ScriptSource
   missing?: AggregationsMissing
 }
 
@@ -6511,7 +6513,7 @@ export interface QueryDslFieldLookup {
   id: Id
   index?: IndexName
   path?: Field
-  routing?: Routing
+  routing?: string
 }
 
 export type QueryDslFieldValueFactorModifier = 'none' | 'log' | 'log1p' | 'log2p' | 'ln' | 'ln1p' | 'ln2p' | 'square' | 'sqrt' | 'reciprocal'
@@ -6803,7 +6805,7 @@ export interface QueryDslMoreLikeThisQuery extends QueryDslQueryBase {
   minimum_should_match?: MinimumShouldMatch
   min_term_freq?: integer
   min_word_length?: integer
-  routing?: Routing
+  routing?: string
   stop_words?: AnalysisStopWords
   unlike?: QueryDslLike | QueryDslLike[]
   version?: VersionNumber
@@ -6864,7 +6866,7 @@ export interface QueryDslPercolateQuery extends QueryDslQueryBase {
   index?: IndexName
   name?: string
   preference?: string
-  routing?: Routing
+  routing?: string
   version?: VersionNumber
 }
 
@@ -7177,7 +7179,7 @@ export interface QueryDslTermsLookup {
   index: IndexName
   id: Id
   path: Field
-  routing?: Routing
+  routing?: string
 }
 
 export interface QueryDslTermsQueryKeys extends QueryDslQueryBase {
@@ -11494,6 +11496,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     wait_for_completion_timeout?: Duration
     keep_alive?: Duration
     keep_on_completion?: boolean
+    project_routing?: ProjectRouting
   }
 }
 
@@ -11589,6 +11592,7 @@ export interface EsqlQueryRequest extends RequestBase {
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
     include_ccs_metadata?: boolean
     include_execution_metadata?: boolean
+    project_routing?: ProjectRouting
   }
 }
 
@@ -12098,11 +12102,11 @@ export type IlmStopResponse = AcknowledgedResponseBase
 
 export interface IndicesAlias {
   filter?: QueryDslQueryContainer
-  index_routing?: Routing
+  index_routing?: string
   is_hidden?: boolean
   is_write_index?: boolean
-  routing?: Routing
-  search_routing?: Routing
+  routing?: string
+  search_routing?: string
 }
 
 export interface IndicesAliasDefinition {
@@ -13461,10 +13465,10 @@ export interface IndicesPutAliasRequest extends RequestBase {
   timeout?: Duration
   body?: {
     filter?: QueryDslQueryContainer
-    index_routing?: Routing
+    index_routing?: string
     is_write_index?: boolean
-    routing?: Routing
-    search_routing?: Routing
+    routing?: string
+    search_routing?: string
   }
 }
 
@@ -14248,11 +14252,11 @@ export interface IndicesUpdateAliasesAddAction {
   filter?: QueryDslQueryContainer
   index?: IndexName
   indices?: Indices
-  index_routing?: Routing
+  index_routing?: string
   is_hidden?: boolean
   is_write_index?: boolean
-  routing?: Routing
-  search_routing?: Routing
+  routing?: string
+  search_routing?: string
   must_exist?: boolean
 }
 
@@ -14811,11 +14815,15 @@ export interface InferenceInferenceResult {
   rerank?: InferenceRankedDocument[]
 }
 
+export type InferenceJinaAIElementType = 'binary' | 'bit' | 'float'
+
 export interface InferenceJinaAIServiceSettings {
   api_key: string
-  model_id?: string
+  model_id: string
   rate_limit?: InferenceRateLimitSetting
   similarity?: InferenceJinaAISimilarityType
+  dimensions?: integer
+  element_type?: InferenceJinaAIElementType
 }
 
 export type InferenceJinaAIServiceType = 'jinaai'
@@ -14894,10 +14902,13 @@ export interface InferenceOpenAIServiceSettings {
   model_id: string
   organization_id?: string
   rate_limit?: InferenceRateLimitSetting
+  similarity?: InferenceOpenAISimilarityType
   url?: string
 }
 
 export type InferenceOpenAIServiceType = 'openai'
+
+export type InferenceOpenAISimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
 
 export interface InferenceOpenAITaskSettings {
   user?: string
@@ -14958,6 +14969,7 @@ export interface InferenceSparseEmbeddingInferenceResult {
 }
 
 export interface InferenceSparseEmbeddingResult {
+  is_truncated: boolean
   embedding: InferenceSparseVector
 }
 
@@ -24231,6 +24243,7 @@ export interface XpackInfoFeatures {
   eql: XpackInfoFeature
   esql: XpackInfoFeature
   graph: XpackInfoFeature
+  gpu_vector_indexing: XpackInfoFeature
   ilm: XpackInfoFeature
   logstash: XpackInfoFeature
   logsdb: XpackInfoFeature
@@ -24398,6 +24411,19 @@ export interface XpackUsageFeatureToggle {
 
 export interface XpackUsageFlattened extends XpackUsageBase {
   field_count: integer
+}
+
+export interface XpackUsageGpuNodeStats {
+  type: string
+  memory_in_bytes: long
+  enabled: boolean
+  index_build_count: long
+}
+
+export interface XpackUsageGpuVectorIndexing extends XpackUsageBase {
+  index_build_count: long
+  nodes_with_gpu: integer
+  nodes: XpackUsageGpuNodeStats[]
 }
 
 export interface XpackUsageHealthStatistics extends XpackUsageBase {
@@ -24576,6 +24602,7 @@ export interface XpackUsageResponse {
   eql: XpackUsageEql
   flattened?: XpackUsageFlattened
   graph: XpackUsageBase
+  gpu_vector_indexing?: XpackUsageGpuVectorIndexing
   health_api?: XpackUsageHealthStatistics
   ilm: XpackUsageIlm
   logstash: XpackUsageBase
