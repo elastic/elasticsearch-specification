@@ -26,7 +26,6 @@ import { IndexName, MediaType } from '@_types/common'
  * Get information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.
  * > important
  * > The deprecation API should only be used _before_ planning an upgrade to a major version.
- *
  * > info
  * > This API is designed for indirect use by the Upgrade Assistant. You are strongly recommended to use the Upgrade Assistant.
  * @rest_spec_name migration.deprecations
