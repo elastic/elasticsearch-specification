@@ -137,6 +137,11 @@ type NewCorrectType = Atype | Btype`
       type NewWrongType = Ctype | Dtype
       `,
       errors: [{ messageId: 'preferTaggedVariants' }]
+    },
+    {
+      code: `/** @codegen_names */
+      type IncompleteCodegen = Atype | Btype`,
+      errors: [{ messageId: 'preferTaggedVariants' }]
     }
   ],
 })

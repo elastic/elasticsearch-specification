@@ -131,12 +131,12 @@ export default createRule({
           const blockComment = jsdoc.value
 
           const hasCodegenNamesTag =
-              /@codegen_names\s/.test(
+              /@codegen_names\s+\S/.test(
                   blockComment
               )
 
           const hasVariantsTag =
-              /@variants\s/.test(
+              /@variants\s+\S/.test(
                   blockComment
               )
 
