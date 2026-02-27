@@ -25,9 +25,11 @@ import { IndexName, MediaType } from '@_types/common'
  *
  * Get information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.
  *
- * > important
- * > - The deprecation API should only be used _before_ planning an upgrade to a major version.
- * > - This API is designed for indirect use by the Upgrade Assistant. Using the [Upgrade Assistant](https://www.elastic.co/docs/deploy-manage/upgrade/prepare-to-upgrade/upgrade-assistant) is strongly recommended.
+ * Deprecated features are fully supported and continue to work throughout the current major version. However, they will be removed or changed in the next major version.
+ * Use this API to review your usage of these features and migrate away from them at your own pace, before upgrading to a new major version.
+ *
+ * > info
+ * > This API is designed for indirect use by the Upgrade Assistant. Using the [Upgrade Assistant](https://www.elastic.co/docs/deploy-manage/upgrade/prepare-to-upgrade/upgrade-assistant) is strongly recommended.
  * @rest_spec_name migration.deprecations
  * @availability stack since=6.1.0 stability=stable
  * @cluster_privileges manage
