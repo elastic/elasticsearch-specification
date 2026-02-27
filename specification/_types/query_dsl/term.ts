@@ -25,8 +25,7 @@ import {
   Ids,
   IndexName,
   MinimumShouldMatch,
-  MultiTermQueryRewrite,
-  Routing
+  MultiTermQueryRewrite
 } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
@@ -268,7 +267,7 @@ export class TermsLookup {
   index: IndexName
   id: Id
   path: Field
-  routing?: Routing
+  routing?: string
 }
 
 /**

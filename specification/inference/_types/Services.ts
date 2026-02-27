@@ -434,6 +434,7 @@ export class RateLimitSetting {
    * By default, the number of requests allowed per minute is set by each service as follows:
    *
    * * `alibabacloud-ai-search` service: `1000`
+   * * `amazonbedrock` service: `240`
    * * `anthropic` service: `50`
    * * `azureaistudio` service: `240`
    * * `azureopenai` service and task type `text_embedding`: `1440`

@@ -56,4 +56,5 @@ Then, follow those steps:
   - If the API is unusable without the change -> every supported version
   - If the API is usable, but fix is on the response side -> every supported version
   - If the API is usable, but fix is on the request side -> no backport, unless the API is _partially_ usable and the fix unlocks a missing feature that has no workaround
+- Also note the 8.19 branch contains a copy of `elasticsearch-specification/rest-api-spec` in `specification/_json_spec` which needs to be kept up-to-date.
 - Send the pull request from a branch, **not a fork**

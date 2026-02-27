@@ -33,7 +33,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * The following integrations are available through the inference API. You can find the available task types next to the integration name:
  * * AI21 (`chat_completion`, `completion`)
  * * AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)
- * * Amazon Bedrock (`completion`, `text_embedding`)
+ * * Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)
  * * Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)
  * * Anthropic (`completion`)
  * * Azure AI Studio (`completion`, `rerank`, `text_embedding`)

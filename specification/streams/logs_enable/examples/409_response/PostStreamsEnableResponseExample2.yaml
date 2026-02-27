@@ -1,0 +1,19 @@
+summary: Enable logs streams - Failure due to conflicting index
+description: >
+  An error response from the `POST _streams/logs.otel/_enable` endpoint caused by attempting to enable logs.otel streams
+  when an existing index with the name `logs.otel` already exists
+# type: response
+value: |-
+  {
+    "error": {
+      "root_cause": [
+        {
+          "type": "status_exception",
+          "reason": "Cannot enable logs.otel streams: indices named 'logs.otel' or starting with 'logs.otel.' already exist."
+        }
+      ],
+      "type": "status_exception",
+      "reason": "Cannot enable logs streams: indices named 'logs.otel' or starting with 'logs.otel.' already exist."
+    },
+    "status": 409
+  }

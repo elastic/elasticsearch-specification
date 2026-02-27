@@ -521,7 +521,6 @@ impl<'a> TypesAndComponents<'a> {
         // }
 
         data.external_docs = self.convert_external_docs(base);
-        data.deprecated = base.deprecation.is_some();
         data.description = base.description.clone();
         // TODO: base.deprecation as extension
         // TODO: base.spec_location as extension?

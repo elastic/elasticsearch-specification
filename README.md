@@ -301,12 +301,6 @@ you can find above how to run the validation of the spec.
 
 See [here](./docs/add-new-api.md).
 
-### An endpoint definition is not correct, how do I fix it?
-
-All the endpoint definitons are inside `/specification/_json_spec` folder, which contains a series of
-JSON files taken directly from the Elasticsearch rest-api-spec.
-You should copy from there the updated endpoint defintion and change it here.
-
 ### The validation in broken on GitHub but works on my machine!
 
 Very likely the recordings on your machine are stale, rerun the validation with the `validate-no-cache` make target.

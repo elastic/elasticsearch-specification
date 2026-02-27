@@ -48,8 +48,9 @@ export enum TaskTypeAlibabaCloudAI {
 }
 
 export enum TaskTypeAmazonBedrock {
-  text_embedding,
-  completion
+  chat_completion,
+  completion,
+  text_embedding
 }
 
 export enum TaskTypeAmazonSageMaker {

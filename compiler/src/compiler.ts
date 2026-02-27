@@ -31,7 +31,7 @@ type StepFunction = (model: Model, errors: ValidationErrors) => Promise<Model>
  * If needed you can add one or more intermediate steps between the
  * model generation and the disk write. This can be done by using
  * the `step` method.
- * Each steps takes as input the model and the rest-api-spec,
+ * Each steps takes as input the model
  * and must return the model, even if it wasn't changed.
  */
 export default class Compiler {

@@ -1,3 +1,3 @@
-summary: 'Enable the logs streams on this cluster'
-method_request: POST _streams/logs/_enable
+summary: 'Enable the logs.otel streams on this cluster'
+method_request: POST _streams/logs.otel/_enable
 # type: request
