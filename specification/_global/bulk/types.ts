@@ -60,7 +60,7 @@ export class ResponseItem {
   _primary_term?: long
   /**
    * The result of the operation.
-   * Successful values are `created`, `updated`, `deleted`, `noop`, and `not_found`.
+   * Possible values are `created`, `updated`, `deleted`, `noop`, and `not_found`.
    */
   result?: string
   /**
