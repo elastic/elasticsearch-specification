@@ -7298,6 +7298,7 @@ export interface AsyncSearchGetRequest extends RequestBase {
   keep_alive?: Duration
   typed_keys?: boolean
   wait_for_completion_timeout?: Duration
+  return_intermediate_results?: boolean
 }
 
 export type AsyncSearchGetResponse<TDocument = unknown> = AsyncSearchAsyncSearchDocumentResponseBase<TDocument>
@@ -20734,7 +20735,7 @@ export interface SearchableSnapshotsMountRequest extends RequestBase {
   snapshot: Name
   master_timeout?: Duration
   wait_for_completion?: boolean
-  storage?: string
+  storage?: SearchableSnapshotsMountStorageOption
   body?: {
     index: IndexName
     renamed_index?: IndexName
@@ -20746,6 +20747,8 @@ export interface SearchableSnapshotsMountRequest extends RequestBase {
 export interface SearchableSnapshotsMountResponse {
   snapshot: SearchableSnapshotsMountMountedSnapshot
 }
+
+export type SearchableSnapshotsMountStorageOption = 'full_copy' | 'shared_cache'
 
 export interface SearchableSnapshotsStatsRequest extends RequestBase {
   index?: Indices
@@ -24352,6 +24355,7 @@ export interface XpackInfoFeatures {
   eql: XpackInfoFeature
   esql: XpackInfoFeature
   graph: XpackInfoFeature
+  gpu_vector_indexing: XpackInfoFeature
   ilm: XpackInfoFeature
   logstash: XpackInfoFeature
   logsdb: XpackInfoFeature
@@ -24519,6 +24523,19 @@ export interface XpackUsageFeatureToggle {
 
 export interface XpackUsageFlattened extends XpackUsageBase {
   field_count: integer
+}
+
+export interface XpackUsageGpuNodeStats {
+  type: string
+  memory_in_bytes: long
+  enabled: boolean
+  index_build_count: long
+}
+
+export interface XpackUsageGpuVectorIndexing extends XpackUsageBase {
+  index_build_count: long
+  nodes_with_gpu: integer
+  nodes: XpackUsageGpuNodeStats[]
 }
 
 export interface XpackUsageHealthStatistics extends XpackUsageBase {
@@ -24697,6 +24714,7 @@ export interface XpackUsageResponse {
   eql: XpackUsageEql
   flattened?: XpackUsageFlattened
   graph: XpackUsageBase
+  gpu_vector_indexing?: XpackUsageGpuVectorIndexing
   health_api?: XpackUsageHealthStatistics
   ilm: XpackUsageIlm
   logstash: XpackUsageBase
