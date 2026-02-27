@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { ESLintUtils, TSESTree } from '@typescript-eslint/utils';
+import { ESLintUtils } from '@typescript-eslint/utils';
 
 const createRule = ESLintUtils.RuleCreator(name => `https://example.com/rule/${name}`)
 
@@ -62,15 +62,18 @@ export default createRule({
         const isInterfaceProperty =
           parent?.type === 'TSTypeAnnotation' &&
           parent.parent?.type === 'TSPropertySignature';
-        
-        if (!isPropertyAnnotation && !isInterfaceProperty) {
+
+        const isTypeAlias =
+            parent?.type === 'TSTypeAliasDeclaration'
+
+        if (!isPropertyAnnotation && !isInterfaceProperty && !isTypeAlias) {
           return;
         }
         
         // skip Type | Type[] pattern
         if (node.types.length === 2) {
           const [first, second] = node.types;
-          
+
           // check Type | Type[]
           if (second.type === 'TSArrayType' && 
               first.type === 'TSTypeReference' &&
@@ -102,23 +105,61 @@ export default createRule({
         });
         
         if (allMembersAreClasses && node.types.length >= 2) {
-          context.report({ 
-            node, 
-            messageId: 'preferTaggedVariants',
-            data: {
-              suggestion: 'Use tagged variants with @variants internal or @variants container (external). See modeling guide: https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#variants'
-            }
-          })
+          // last check, is there a @variant or @codegen_names tag in the comment above
+          const sourceCode = context.sourceCode || context.getSourceCode()
+
+          let declarationNode = isTypeAlias ? node.parent : node.parent.parent
+          if (declarationNode.parent?.type === 'ExportNamedDeclaration') {
+            declarationNode = declarationNode.parent
+          }
+          const comments = sourceCode.getCommentsBefore(declarationNode)
+          const jsdoc = comments
+              ?.filter(comment => comment.type === 'Block' && comment.value.startsWith('*'))
+              .pop()
+
+          if (jsdoc === undefined) {
+            context.report({
+              node,
+              messageId: 'preferTaggedVariants',
+              data: {
+                suggestion: 'Missing comment: use tagged variants with @variants internal or @variants container (external), or any other variant option. See modeling guide: https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#variants'
+              }
+            })
+            return
+          }
+
+          const blockComment = jsdoc.value
+
+          const hasCodegenNamesTag =
+              /@codegen_names\s+\S/.test(
+                  blockComment
+              )
+
+          const hasVariantsTag =
+              /@variants\s+\S/.test(
+                  blockComment
+              )
+
+          if (!hasCodegenNamesTag && !hasVariantsTag) {
+
+            context.report({
+              node,
+              messageId: 'preferTaggedVariants',
+              data: {
+                suggestion: 'Use tagged variants with @variants internal or @variants container (external), or any other variant option. See modeling guide: https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#variants'
+              }
+            })
+          }
         }
       },
     }
   },
   meta: {
     docs: {
-      description: 'Union of class types should use tagged variants (internal or external) instead of inline unions for better code generation in statically-typed languages.',
+      description: 'Unhandled union of class types should use tagged variants instead of inline unions for better code generation in statically-typed languages.',
     },
     messages: {
-      preferTaggedVariants: 'Union of class types is not allowed. {{suggestion}}.'
+      preferTaggedVariants: 'Unhandled union of class types is not allowed. {{suggestion}}.'
     },
     type: 'problem',
     schema: []
