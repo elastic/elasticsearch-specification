@@ -23,7 +23,7 @@ const createRule = ESLintUtils.RuleCreator(
 )
 
 export default createRule({
-  name: 'no-deprecated-availability-on-types.js',
+  name: 'no-deprecated-availability-on-types',
   create(context) {
     const sourceCode = context.sourceCode || context.getSourceCode()
 
