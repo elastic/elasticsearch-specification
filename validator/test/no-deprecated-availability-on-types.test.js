@@ -32,7 +32,7 @@ const ruleTester = new RuleTester({
 
 ruleTester.run('no-deprecated-availability-on-types', rule, {
     valid: [
-    `
+        `
     export class Response {
       /** @codegen_name result */
       body: ResponseBody
@@ -43,11 +43,17 @@ ruleTester.run('no-deprecated-availability-on-types', rule, {
    */
     export interface Request {
     }`,
-    `/**
+        `
+   /**
+   * @deprecated 9.0.0
+   */
+    export interface A extends RequestBase {
+    }`,
+        `/**
      * @deprecated 7.12.0
      * @availability
      */
-    export interface Something{}    
+    export interface Something extends RequestBase {}    
     
     export class SomethingElse{}`
     ],
@@ -60,7 +66,7 @@ ruleTester.run('no-deprecated-availability-on-types', rule, {
      */
     export class Something{} 
         `,
-            errors: [{messageId: 'noDeprecatedOnTypes'},{messageId: 'noAvailabilityOnTypes'}]
+            errors: [{messageId: 'noDeprecatedOnTypes'}, {messageId: 'noAvailabilityOnTypes'}]
         },
         {
             code: `
@@ -79,6 +85,16 @@ ruleTester.run('no-deprecated-availability-on-types', rule, {
     export enum Something{} 
         `,
             errors: [{messageId: 'noAvailabilityOnTypes'}]
+        },
+        {
+            code:
+                `
+           /**
+           * @deprecated 9.0.0
+           */
+            export interface NotARequest {
+            }`,
+            errors: [{messageId: 'noDeprecatedOnTypes'}]
         }
     ]
 })

@@ -28,8 +28,17 @@ export default createRule({
     const sourceCode = context.sourceCode || context.getSourceCode()
 
     return {
-      'TSEnumDeclaration, TSTypeAliasDeclaration, ClassDeclaration'(node) {
+      'TSInterfaceDeclaration, TSEnumDeclaration, TSTypeAliasDeclaration, ClassDeclaration'(node) {
         const className = node.id?.name
+
+        if (node.type === 'TSInterfaceDeclaration') {
+          if (className === 'Request') return
+          const extendsRequestBase = node.extends?.some(
+            (e) => e.expression?.type === 'Identifier' && e.expression.name === 'RequestBase'
+          )
+          if (extendsRequestBase) return
+        }
+
         const targetNode =
             node.parent?.type === 'ExportNamedDeclaration' ? node.parent : node
         const comments = sourceCode.getCommentsBefore(targetNode)
@@ -80,7 +89,7 @@ export default createRule({
   meta: {
     docs: {
       description:
-        'AAAA'
+        '@availability is only allowed on Request definitions.'
     },
     messages: {
       noAvailabilityOnTypes:
