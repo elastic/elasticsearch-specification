@@ -155,7 +155,7 @@ export function compileSpecification (specsFolder: string, outputFolder: string)
   }
 
   // Remove deprecation from everything other than request
-  for (var type of model.types) {
+  for (const type of model.types) {
     if (type.kind !== 'request') {
       type.deprecation = undefined
     }
