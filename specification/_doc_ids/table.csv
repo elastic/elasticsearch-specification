@@ -154,7 +154,7 @@ connector-update-scheduling,https://www.elastic.co/docs/api/doc/elasticsearch/op
 connector-update-service-type,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-connector-update-service-type,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-connector-update-service-type,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/update-connector-service-type-api.html,
 connector-update-status,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-connector-update-status,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-connector-update-status,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/update-connector-status-api.html,
 convert-processor,https://www.elastic.co/docs/reference/enrich-processor/convert-processor,[use-doc-url],,
-create_index_from_source_index,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source,[use-doc-url],,
+create_index_from_source_index,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source,[use-doc-url],,Create index from source API docs
 cron-expressions,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#api-cron-expressions,[use-doc-url],,
 csv-processor,https://www.elastic.co/docs/reference/enrich-processor/csv-processor,[use-doc-url],,
 dangling-index-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-dangling-indices-delete-dangling-index,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/dangling-index-delete.html,
@@ -241,13 +241,13 @@ execute-enrich-policy-api,https://www.elastic.co/docs/api/doc/elasticsearch/oper
 execute-watch,https://www.elastic.co/docs/explore-analyze/alerts-cases/watcher/execute-watch,[use-doc-url],https://www.elastic.co/guide/en/elasticsearch/reference/8.19/watcher-api-execute-watch.html,
 expected-reciprocal,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rank-eval#_expected_reciprocal_rank_err,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-rank-eval#_expected_reciprocal_rank_err,,
 explain-dfanalytics,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-explain-data-frame-analytics,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/explain-dfanalytics.html,
-explain-lifecycle-state,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/explain-lifecycle,[use-doc-url],,
-evaluate-ranked-search-results,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-rank-eval,[use-doc-url],,
+explain-lifecycle-state,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/explain-lifecycle,[use-doc-url],,Explain lifecycle API docs
+evaluate-ranked-search-results,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-rank-eval,[use-doc-url],,Ranking evaluation API docs
 fail-processor,https://www.elastic.co/docs/reference/enrich-processor/fail-processor,[use-doc-url],,
 features-reset,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-reset-features,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/reset-features-api.html,
 field-and-document-access-control,https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level,[use-doc-url],,
 field-usage-stats,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-field-usage-stats,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/field-usage-stats.html,
-filter-search-results,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/filter-search-results,[use-doc-url],,
+filter-search-results,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/filter-search-results,[use-doc-url],,Filter search results docs
 find-field-structure,https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-text_structure,[use-doc-url],https://www.elastic.co/guide/en/elasticsearch/reference/8.19/text-structure-apis.html,
 find-message-structure,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-text-structure-find-message-structure,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/find-message-structure.html,
 find-structure,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-text-structure-find-structure,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/find-structure.html,
@@ -645,12 +645,12 @@ delete-query-ruleset-from-ui,https://www.elastic.co/docs/solutions/search/query-
 random_sample,https://www.elastic.co/docs/api/doc/elasticsearch/group/ingest-random-sampling,[use-doc-url],,
 realtime,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-get,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-get.html,
 redact-processor,https://www.elastic.co/docs/reference/enrich-processor/redact-processor,[use-doc-url],,
-refresh_an_index,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/refresh-parameter,[use-doc-url],,
+refresh_an_index,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/refresh-parameter,[use-doc-url],,Refresh API docs
 regexp-syntax,https://www.elastic.co/docs/reference/query-languages/query-dsl/regexp-syntax,[use-doc-url],,
 register-repository,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/self-managed,[use-doc-url],,
 registered-domain-processor,https://www.elastic.co/docs/reference/enrich-processor/registered-domain-processor,[use-doc-url],,
 reindex-indices,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reindex-indices,[use-doc-url],,
-reindex_legacy_backing_indices,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reindex-data-stream,[use-doc-url],,
+reindex_legacy_backing_indices,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reindex-data-stream,[use-doc-url],,Reindex data stream API docs
 relevance-scores,https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl#relevance-scores,[use-doc-url],,
 remove-processor,https://www.elastic.co/docs/reference/enrich-processor/remove-processor,[use-doc-url],,
 remote-clusters-api-key,https://www.elastic.co/docs/deploy-manage/remote-clusters/remote-clusters-api-key,[use-doc-url],,
@@ -668,7 +668,7 @@ repository-shared-fs,https://www.elastic.co/docs/deploy-manage/tools/snapshot-an
 repository-source-only,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/source-only-repository,[use-doc-url],,
 reroute-processor,https://www.elastic.co/docs/reference/enrich-processor/reroute-processor,[use-doc-url],,
 render-search-template-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-render-search-template,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-render-search-template,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/render-search-template-api.html,
-rescore-search-results,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/rescore-search-results,[use-doc-url],,
+rescore-search-results,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/rescore-search-results,[use-doc-url],,Rescore search results docs
 reset-transform,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-reset-transform,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-transform-reset-transform,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/reset-transform.html,
 restore-snapshot,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/restore-snapshot,[use-doc-url],,
 retrieve-stored-fields,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-stored-fields,[use-doc-url],
@@ -685,7 +685,7 @@ rollup-search-limitations,https://www.elastic.co/docs/manage-data/lifecycle/roll
 rollup-start-job,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-start-job,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/rollup-start-job.html,
 rollup-stop-job,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-stop-job,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/rollup-stop-job.html,
 routing,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get#get-routing,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-get#get-routing,,
-rrf,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion,[use-doc-url],,
+rrf,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion,[use-doc-url],,Reciprocal rank fusion docs
 run-as-privilege,https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users,[use-doc-url],,
 runtime-search-request,https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request,[use-doc-url],,
 schedule-now-transform,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-schedule-now-transform,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-transform-schedule-now-transform,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/schedule-now-transform.html,
@@ -796,12 +796,12 @@ search-highlight,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/h
 search-knn,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-knn-search,,,
 search-multi-search,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-msearch,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-multi-search.html,
 search-multi-search-template,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-msearch-template,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/multi-search-template.html,
-search-multiple-indices,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-multiple-data-streams-indices,[use-doc-url],,
-search-profile,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-profile,[use-doc-url],,
+search-multiple-indices,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-multiple-data-streams-indices,[use-doc-url],,Search multiple data streams docs
+search-profile,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-profile,[use-doc-url],,Profile search requests docs
 search-rank-eval,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rank-eval,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-rank-eval,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-rank-eval.html,
 search-search,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-search,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-search.html,
 search-shards,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-shards,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-shards.html,
-search-shard-routing,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing,[use-doc-url],,
+search-shard-routing,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing,[use-doc-url],,Search shard routing docs
 search-template,https://www.elastic.co/docs/solutions/search/search-templates,[use-doc-url],,
 search-template-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-template,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-search-template,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-template-api.html,
 search-terms-enum,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-terms-enum,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-terms-enum,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-terms-enum.html,
@@ -960,7 +960,7 @@ synonym-set-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation/o
 synonym-set-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-synonyms-get-synonym,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-synonyms-get-synonym,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-synonyms-set.html,
 synonym-set-list,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-synonyms-get-synonym,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-synonyms-get-synonym,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-synonyms-set.html,
 synonym-solr,https://www.elastic.co/docs/reference/text-analysis/analysis-synonym-graph-tokenfilter#_solr_format_2,[use-doc-url],,
-suggester,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-suggesters,[use-doc-url],,
+suggester,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-suggesters,[use-doc-url],,Search suggesters docs
 supported-flags,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-simple-query-string-query#supported-flags,[use-doc-url],,
 tasks,https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks,[use-doc-url],https://www.elastic.co/guide/en/elasticsearch/reference/8.19/tasks.html,
 templating-role-query,https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level#templating-role-query,[use-doc-url],,
