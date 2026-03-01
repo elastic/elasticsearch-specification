@@ -105,6 +105,13 @@ export interface KnnQuery extends QueryBase {
 /** @variants container */
 export interface QueryVectorBuilder {
   text_embedding?: TextEmbedding
+  /**
+   * Lookup a vector from an existing document.
+   * Must reference a dense_vector field and a single value.
+   * @availability stack since=9.4.0
+   * @availability serverless
+   */
+  lookup?: LookupQueryVectorBuilder
 }
 
 export interface TextEmbedding {
@@ -115,5 +122,17 @@ export interface TextEmbedding {
    * @availability serverless
    */
   model_id?: string
+  /** The text to be converted into a vector by the specified model */
   model_text: string
+}
+
+export interface LookupQueryVectorBuilder {
+  /** The ID of the document to fetch the vector from */
+  id: string
+  /** The name of the index to fetch the document from */
+  index: string
+  /** The name of the field containing the vector */
+  path: string
+  /** The routing value to use when fetching the document */
+  routing?: string
 }
