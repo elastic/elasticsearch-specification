@@ -65463,12 +65463,14 @@
               }
             ]
           },
+          "shard": {
+            "type": "number"
+          },
           "valid": {
             "type": "boolean"
           }
         },
         "required": [
-          "index",
           "valid"
         ]
       },
