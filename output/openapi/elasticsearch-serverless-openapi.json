@@ -8403,7 +8403,7 @@
         "summary": "Create an index from a source index",
         "description": "Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.",
         "externalDocs": {
-          "description": "Create index from source API docs",
+          "description": "Learn more about creating an index from a source",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source"
         },
         "operationId": "indices-create-from",
@@ -8438,7 +8438,7 @@
         "summary": "Create an index from a source index",
         "description": "Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.",
         "externalDocs": {
-          "description": "Create index from source API docs",
+          "description": "Learn more about creating an index from a source",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source"
         },
         "operationId": "indices-create-from-1",
@@ -10797,7 +10797,7 @@
         "summary": "Refresh an index",
         "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
         "externalDocs": {
-          "description": "Refresh API docs",
+          "description": "Learn more about the refresh parameter",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/refresh-parameter",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-refresh.html"
         },
@@ -10833,7 +10833,7 @@
         "summary": "Refresh an index",
         "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
         "externalDocs": {
-          "description": "Refresh API docs",
+          "description": "Learn more about the refresh parameter",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/refresh-parameter",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-refresh.html"
         },
@@ -10871,7 +10871,7 @@
         "summary": "Refresh an index",
         "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
         "externalDocs": {
-          "description": "Refresh API docs",
+          "description": "Learn more about the refresh parameter",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/refresh-parameter",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-refresh.html"
         },
@@ -10910,7 +10910,7 @@
         "summary": "Refresh an index",
         "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
         "externalDocs": {
-          "description": "Refresh API docs",
+          "description": "Learn more about the refresh parameter",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/refresh-parameter",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-refresh.html"
         },
@@ -24484,7 +24484,7 @@
         "summary": "Evaluate ranked search results",
         "description": "Evaluate the quality of ranked search results over a set of typical search queries.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
-          "description": "Ranking evaluation API docs",
+          "description": "Learn more about ranking evaluation",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-rank-eval",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-rank-eval.html"
         },
@@ -24526,7 +24526,7 @@
         "summary": "Evaluate ranked search results",
         "description": "Evaluate the quality of ranked search results over a set of typical search queries.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
-          "description": "Ranking evaluation API docs",
+          "description": "Learn more about ranking evaluation",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-rank-eval",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-rank-eval.html"
         },
@@ -24570,7 +24570,7 @@
         "summary": "Evaluate ranked search results",
         "description": "Evaluate the quality of ranked search results over a set of typical search queries.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
-          "description": "Ranking evaluation API docs",
+          "description": "Learn more about ranking evaluation",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-rank-eval",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-rank-eval.html"
         },
@@ -24615,7 +24615,7 @@
         "summary": "Evaluate ranked search results",
         "description": "Evaluate the quality of ranked search results over a set of typical search queries.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
-          "description": "Ranking evaluation API docs",
+          "description": "Learn more about ranking evaluation",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-rank-eval",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-rank-eval.html"
         },
