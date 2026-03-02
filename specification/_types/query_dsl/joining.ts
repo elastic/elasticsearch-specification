@@ -50,6 +50,7 @@ export class HasChildQuery extends QueryBase {
   /**
    * If defined, each search hit will contain inner hits.
    * @doc_id inner-hits
+   * @ext_doc_id inner-hits
    */
   inner_hits?: InnerHits
   /**
@@ -91,6 +92,7 @@ export class HasParentQuery extends QueryBase {
   /**
    * If defined, each search hit will contain inner hits.
    * @doc_id inner-hits
+   * @ext_doc_id inner-hits
    */
   inner_hits?: InnerHits
   /**
@@ -121,6 +123,7 @@ export class NestedQuery extends QueryBase {
   /**
    * If defined, each search hit will contain inner hits.
    * @doc_id inner-hits
+   * @ext_doc_id inner-hits
    */
   inner_hits?: InnerHits
   /**
