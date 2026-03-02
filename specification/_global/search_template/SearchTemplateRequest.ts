@@ -58,6 +58,7 @@ export interface Request extends RequestBase {
     /**
      * A comma-separated list of data streams, indices, and aliases to search.
      * It supports wildcards (`*`).
+     * @ext_doc_id search-multiple-indices
      */
     index?: Indices
   }

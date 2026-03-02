@@ -23,7 +23,10 @@ import { long } from '@_types/Numeric'
  * @variants container
  */
 export class RankContainer {
-  /** The reciprocal rank fusion parameters */
+  /**
+   * The reciprocal rank fusion parameters
+   * @ext_doc_id rrf
+   */
   rrf?: RrfRank
 }
 
