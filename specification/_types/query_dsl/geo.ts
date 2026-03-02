@@ -107,7 +107,6 @@ export class GeoPolygonPoints {
 }
 
 /**
- * @deprecated 7.12.0 Use geo-shape instead.
  * @behavior_meta AdditionalProperty key=field value=polygon
  * @ext_doc_id query-dsl-geo-polygon-query
  */
