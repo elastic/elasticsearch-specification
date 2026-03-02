@@ -184,19 +184,19 @@
   "specification/cat/pending_tasks/examples/request/CatPendingTasksRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.cat.pending_tasks(\n    v=\"true&h=insertOrder,timeInQueue,priority,source\",\n    format=\"json\",\n)"
+      "code": "resp = client.cat.pending_tasks(\n    v=True,\n    h=\"insertOrder,timeInQueue,priority,source\",\n    format=\"json\",\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.cat.pendingTasks({\n  v: \"true&h=insertOrder,timeInQueue,priority,source\",\n  format: \"json\",\n});"
+      "code": "const response = await client.cat.pendingTasks({\n  v: \"true\",\n  h: \"insertOrder,timeInQueue,priority,source\",\n  format: \"json\",\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.cat.pending_tasks(\n  v: \"true&h=insertOrder,timeInQueue,priority,source\",\n  format: \"json\"\n)"
+      "code": "response = client.cat.pending_tasks(\n  v: \"true\",\n  h: \"insertOrder,timeInQueue,priority,source\",\n  format: \"json\"\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->cat()->pendingTasks([\n    \"v\" => \"true&h=insertOrder,timeInQueue,priority,source\",\n    \"format\" => \"json\",\n]);"
+      "code": "$resp = $client->cat()->pendingTasks([\n    \"v\" => \"true\",\n    \"h\" => \"insertOrder,timeInQueue,priority,source\",\n    \"format\" => \"json\",\n]);"
     },
     {
       "language": "curl",
@@ -17580,23 +17580,23 @@
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample4.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"google_model_garden_anthropic_chat_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"anthropic\",\n            \"service_account_json\": \"service-account-json\",\n            \"url\": \"https://url:rawPredict\",\n            \"streaming_url\": \"https://streaming_url:streamRawPredict\"\n        },\n        \"task_settings\": {\n            \"max_tokens\": 128\n        }\n    },\n)"
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"google_model_garden_anthropic_chat_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"anthropic\",\n            \"service_account_json\": \"service-account-json\",\n            \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\"\n        },\n        \"task_settings\": {\n            \"max_tokens\": 128\n        }\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_anthropic_chat_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"anthropic\",\n      service_account_json: \"service-account-json\",\n      url: \"https://url:rawPredict\",\n      streaming_url: \"https://streaming_url:streamRawPredict\",\n    },\n    task_settings: {\n      max_tokens: 128,\n    },\n  },\n});"
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_anthropic_chat_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"anthropic\",\n      service_account_json: \"service-account-json\",\n      streaming_url:\n        \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\",\n    },\n    task_settings: {\n      max_tokens: 128,\n    },\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_anthropic_chat_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"anthropic\",\n      \"service_account_json\": \"service-account-json\",\n      \"url\": \"https://url:rawPredict\",\n      \"streaming_url\": \"https://streaming_url:streamRawPredict\"\n    },\n    \"task_settings\": {\n      \"max_tokens\": 128\n    }\n  }\n)"
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_anthropic_chat_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"anthropic\",\n      \"service_account_json\": \"service-account-json\",\n      \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\"\n    },\n    \"task_settings\": {\n      \"max_tokens\": 128\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"google_model_garden_anthropic_chat_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"anthropic\",\n            \"service_account_json\" => \"service-account-json\",\n            \"url\" => \"https://url:rawPredict\",\n            \"streaming_url\" => \"https://streaming_url:streamRawPredict\",\n        ],\n        \"task_settings\" => [\n            \"max_tokens\" => 128,\n        ],\n    ],\n]);"
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"google_model_garden_anthropic_chat_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"anthropic\",\n            \"service_account_json\" => \"service-account-json\",\n            \"streaming_url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\",\n        ],\n        \"task_settings\" => [\n            \"max_tokens\" => 128,\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"anthropic\",\"service_account_json\":\"service-account-json\",\"url\":\"https://url:rawPredict\",\"streaming_url\":\"https://streaming_url:streamRawPredict\"},\"task_settings\":{\"max_tokens\":128}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/google_model_garden_anthropic_chat_completion\""
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"anthropic\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\"},\"task_settings\":{\"max_tokens\":128}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/google_model_garden_anthropic_chat_completion\""
     },
     {
       "language": "Java",
@@ -17606,23 +17606,23 @@
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample3.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"google_model_garden_anthropic_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"anthropic\",\n            \"service_account_json\": \"service-account-json\",\n            \"url\": \"https://url:rawPredict\",\n            \"streaming_url\": \"https://streaming_url:streamRawPredict\"\n        },\n        \"task_settings\": {\n            \"max_tokens\": 128\n        }\n    },\n)"
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"google_model_garden_anthropic_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"anthropic\",\n            \"service_account_json\": \"service-account-json\",\n            \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:rawPredict\",\n            \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\"\n        },\n        \"task_settings\": {\n            \"max_tokens\": 128\n        }\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_anthropic_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"anthropic\",\n      service_account_json: \"service-account-json\",\n      url: \"https://url:rawPredict\",\n      streaming_url: \"https://streaming_url:streamRawPredict\",\n    },\n    task_settings: {\n      max_tokens: 128,\n    },\n  },\n});"
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_anthropic_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"anthropic\",\n      service_account_json: \"service-account-json\",\n      url: \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:rawPredict\",\n      streaming_url:\n        \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\",\n    },\n    task_settings: {\n      max_tokens: 128,\n    },\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_anthropic_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"anthropic\",\n      \"service_account_json\": \"service-account-json\",\n      \"url\": \"https://url:rawPredict\",\n      \"streaming_url\": \"https://streaming_url:streamRawPredict\"\n    },\n    \"task_settings\": {\n      \"max_tokens\": 128\n    }\n  }\n)"
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_anthropic_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"anthropic\",\n      \"service_account_json\": \"service-account-json\",\n      \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:rawPredict\",\n      \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\"\n    },\n    \"task_settings\": {\n      \"max_tokens\": 128\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"google_model_garden_anthropic_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"anthropic\",\n            \"service_account_json\" => \"service-account-json\",\n            \"url\" => \"https://url:rawPredict\",\n            \"streaming_url\" => \"https://streaming_url:streamRawPredict\",\n        ],\n        \"task_settings\" => [\n            \"max_tokens\" => 128,\n        ],\n    ],\n]);"
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"google_model_garden_anthropic_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"anthropic\",\n            \"service_account_json\" => \"service-account-json\",\n            \"url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:rawPredict\",\n            \"streaming_url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\",\n        ],\n        \"task_settings\" => [\n            \"max_tokens\" => 128,\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"anthropic\",\"service_account_json\":\"service-account-json\",\"url\":\"https://url:rawPredict\",\"streaming_url\":\"https://streaming_url:streamRawPredict\"},\"task_settings\":{\"max_tokens\":128}}' \"$ELASTICSEARCH_URL/_inference/completion/google_model_garden_anthropic_completion\""
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"anthropic\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:rawPredict\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\"},\"task_settings\":{\"max_tokens\":128}}' \"$ELASTICSEARCH_URL/_inference/completion/google_model_garden_anthropic_completion\""
     },
     {
       "language": "Java",
@@ -17749,6 +17749,842 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index-000001/_sample/stats\""
+    }
+  ],
+  "specification/cat/circuit_breaker/examples/request/CatCircuitBreakerRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.cat.circuit_breaker(\n    v=True,\n    format=\"json\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.cat.circuitBreaker({\n  v: \"true\",\n  format: \"json\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.cat.circuit_breaker(\n  v: \"true\",\n  format: \"json\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->cat()->circuitBreaker([\n    \"v\" => \"true\",\n    \"format\" => \"json\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_cat/circuit_breaker?v=true&format=json\""
+    }
+  ],
+  "specification/indices/get_sample_configuration/examples/request/IndicesGetSampleConfigurationRequest1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.indices.get_sample_configuration(\n    index=\"my-index\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.indices.getSampleConfiguration({\n  index: \"my-index\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.indices.get_sample_configuration(\n  index: \"my-index\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->indices()->getSampleConfiguration([\n    \"index\" => \"my-index\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index/_sample/config\""
+    }
+  ],
+  "specification/indices/delete_sample_configuration/examples/request/IndicesDeleteSampleConfigurationRequest1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.indices.delete_sample_configuration(\n    index=\"my-index\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.indices.deleteSampleConfiguration({\n  index: \"my-index\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.indices.delete_sample_configuration(\n  index: \"my-index\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->indices()->deleteSampleConfiguration([\n    \"index\" => \"my-index\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/my-index/_sample/config\""
+    }
+  ],
+  "specification/indices/get_all_sample_configuration/examples/request/IndicesGetAllSampleConfigurationRequest1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.indices.get_all_sample_configuration()"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.indices.getAllSampleConfiguration();"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.indices.get_all_sample_configuration"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->indices()->getAllSampleConfiguration();"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_sample/config\""
+    }
+  ],
+  "specification/indices/put_sample_configuration/examples/request/IndicesPutSampleConfigurationRequest1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.indices.put_sample_configuration(\n    index=\"my-index\",\n    rate=0.05,\n    max_samples=1000,\n    max_size=\"10mb\",\n    time_to_live=\"1d\",\n    if=\"ctx?.network?.name == 'Guest'\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.indices.putSampleConfiguration({\n  index: \"my-index\",\n  rate: 0.05,\n  max_samples: 1000,\n  max_size: \"10mb\",\n  time_to_live: \"1d\",\n  if: \"ctx?.network?.name == 'Guest'\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.indices.put_sample_configuration(\n  index: \"my-index\",\n  body: {\n    \"rate\": 0.05,\n    \"max_samples\": 1000,\n    \"max_size\": \"10mb\",\n    \"time_to_live\": \"1d\",\n    \"if\": \"ctx?.network?.name == 'Guest'\"\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->indices()->putSampleConfiguration([\n    \"index\" => \"my-index\",\n    \"body\" => [\n        \"rate\" => 0.05,\n        \"max_samples\" => 1000,\n        \"max_size\" => \"10mb\",\n        \"time_to_live\" => \"1d\",\n        \"if\" => \"ctx?.network?.name == 'Guest'\",\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"rate\":0.05,\"max_samples\":1000,\"max_size\":\"10mb\",\"time_to_live\":\"1d\",\"if\":\"ctx?.network?.name == '\"'\"'Guest'\"'\"'\"}' \"$ELASTICSEARCH_URL/my-index/_sample/config\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample19.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"google_model_garden_mistral_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"mistral\",\n            \"service_account_json\": \"service-account-json\",\n            \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_mistral_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"mistral\",\n      service_account_json: \"service-account-json\",\n      url: \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_mistral_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"mistral\",\n      \"service_account_json\": \"service-account-json\",\n      \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"google_model_garden_mistral_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"mistral\",\n            \"service_account_json\" => \"service-account-json\",\n            \"url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"mistral\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}}' \"$ELASTICSEARCH_URL/_inference/completion/google_model_garden_mistral_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample15.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"google_model_garden_mistral_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"mistral\",\n            \"model_id\": \"mistral-small-2503\",\n            \"service_account_json\": \"service-account-json\",\n            \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:rawPredict\",\n            \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_mistral_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"mistral\",\n      model_id: \"mistral-small-2503\",\n      service_account_json: \"service-account-json\",\n      url: \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:rawPredict\",\n      streaming_url:\n        \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_mistral_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"mistral\",\n      \"model_id\": \"mistral-small-2503\",\n      \"service_account_json\": \"service-account-json\",\n      \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:rawPredict\",\n      \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"google_model_garden_mistral_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"mistral\",\n            \"model_id\" => \"mistral-small-2503\",\n            \"service_account_json\" => \"service-account-json\",\n            \"url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:rawPredict\",\n            \"streaming_url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"mistral\",\"model_id\":\"mistral-small-2503\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:rawPredict\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\"}}' \"$ELASTICSEARCH_URL/_inference/completion/google_model_garden_mistral_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample14.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"google_model_garden_hugging_face_chat_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"hugging_face\",\n            \"service_account_json\": \"service-account-json\",\n            \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_hugging_face_chat_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"hugging_face\",\n      service_account_json: \"service-account-json\",\n      streaming_url:\n        \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_hugging_face_chat_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"hugging_face\",\n      \"service_account_json\": \"service-account-json\",\n      \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"google_model_garden_hugging_face_chat_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"hugging_face\",\n            \"service_account_json\" => \"service-account-json\",\n            \"streaming_url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"hugging_face\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/google_model_garden_hugging_face_chat_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample22.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"google_model_garden_ai21_chat_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"ai21\",\n            \"service_account_json\": \"service-account-json\",\n            \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_ai21_chat_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"ai21\",\n      service_account_json: \"service-account-json\",\n      streaming_url:\n        \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_ai21_chat_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"ai21\",\n      \"service_account_json\": \"service-account-json\",\n      \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"google_model_garden_ai21_chat_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"ai21\",\n            \"service_account_json\" => \"service-account-json\",\n            \"streaming_url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"ai21\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/google_model_garden_ai21_chat_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample18.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"google_model_garden_mistral_chat_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"mistral\",\n            \"service_account_json\": \"service-account-json\",\n            \"streaming_url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_mistral_chat_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"mistral\",\n      service_account_json: \"service-account-json\",\n      streaming_url:\n        \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_mistral_chat_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"mistral\",\n      \"service_account_json\": \"service-account-json\",\n      \"streaming_url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"google_model_garden_mistral_chat_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"mistral\",\n            \"service_account_json\" => \"service-account-json\",\n            \"streaming_url\" => \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"mistral\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/google_model_garden_mistral_chat_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample8.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"google_model_garden_meta_chat_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"meta\",\n            \"service_account_json\": \"service-account-json\",\n            \"streaming_url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_meta_chat_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"meta\",\n      service_account_json: \"service-account-json\",\n      streaming_url:\n        \"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_meta_chat_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"meta\",\n      \"service_account_json\": \"service-account-json\",\n      \"streaming_url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"google_model_garden_meta_chat_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"meta\",\n            \"service_account_json\" => \"service-account-json\",\n            \"streaming_url\" => \"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"meta\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/google_model_garden_meta_chat_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample13.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"google_model_garden_hugging_face_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"hugging_face\",\n            \"service_account_json\": \"service-account-json\",\n            \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_hugging_face_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"hugging_face\",\n      service_account_json: \"service-account-json\",\n      url: \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_hugging_face_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"hugging_face\",\n      \"service_account_json\": \"service-account-json\",\n      \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"google_model_garden_hugging_face_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"hugging_face\",\n            \"service_account_json\" => \"service-account-json\",\n            \"url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"hugging_face\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}}' \"$ELASTICSEARCH_URL/_inference/completion/google_model_garden_hugging_face_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample5.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"google_model_garden_meta_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"meta\",\n            \"model_id\": \"meta/llama-3.3-70b-instruct-maas\",\n            \"service_account_json\": \"service-account-json\",\n            \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_meta_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"meta\",\n      model_id: \"meta/llama-3.3-70b-instruct-maas\",\n      service_account_json: \"service-account-json\",\n      url: \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_meta_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"meta\",\n      \"model_id\": \"meta/llama-3.3-70b-instruct-maas\",\n      \"service_account_json\": \"service-account-json\",\n      \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"google_model_garden_meta_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"meta\",\n            \"model_id\" => \"meta/llama-3.3-70b-instruct-maas\",\n            \"service_account_json\" => \"service-account-json\",\n            \"url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"meta\",\"model_id\":\"meta/llama-3.3-70b-instruct-maas\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\"}}' \"$ELASTICSEARCH_URL/_inference/completion/google_model_garden_meta_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample12.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"google_model_garden_hugging_face_chat_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"hugging_face\",\n            \"service_account_json\": \"service-account-json\",\n            \"streaming_url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_hugging_face_chat_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"hugging_face\",\n      service_account_json: \"service-account-json\",\n      streaming_url:\n        \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_hugging_face_chat_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"hugging_face\",\n      \"service_account_json\": \"service-account-json\",\n      \"streaming_url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"google_model_garden_hugging_face_chat_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"hugging_face\",\n            \"service_account_json\" => \"service-account-json\",\n            \"streaming_url\" => \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"hugging_face\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/google_model_garden_hugging_face_chat_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample9.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"google_model_garden_meta_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"meta\",\n            \"service_account_json\": \"service-account-json\",\n            \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_meta_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"meta\",\n      service_account_json: \"service-account-json\",\n      url: \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_meta_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"meta\",\n      \"service_account_json\": \"service-account-json\",\n      \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"google_model_garden_meta_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"meta\",\n            \"service_account_json\" => \"service-account-json\",\n            \"url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"meta\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}}' \"$ELASTICSEARCH_URL/_inference/completion/google_model_garden_meta_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample11.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"google_model_garden_hugging_face_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"hugging_face\",\n            \"service_account_json\": \"service-account-json\",\n            \"url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_hugging_face_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"hugging_face\",\n      service_account_json: \"service-account-json\",\n      url: \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_hugging_face_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"hugging_face\",\n      \"service_account_json\": \"service-account-json\",\n      \"url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"google_model_garden_hugging_face_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"hugging_face\",\n            \"service_account_json\" => \"service-account-json\",\n            \"url\" => \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"hugging_face\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}}' \"$ELASTICSEARCH_URL/_inference/completion/google_model_garden_hugging_face_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample6.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"google_model_garden_meta_chat_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"meta\",\n            \"model_id\": \"meta/llama-3.3-70b-instruct-maas\",\n            \"service_account_json\": \"service-account-json\",\n            \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_meta_chat_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"meta\",\n      model_id: \"meta/llama-3.3-70b-instruct-maas\",\n      service_account_json: \"service-account-json\",\n      streaming_url:\n        \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_meta_chat_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"meta\",\n      \"model_id\": \"meta/llama-3.3-70b-instruct-maas\",\n      \"service_account_json\": \"service-account-json\",\n      \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"google_model_garden_meta_chat_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"meta\",\n            \"model_id\" => \"meta/llama-3.3-70b-instruct-maas\",\n            \"service_account_json\" => \"service-account-json\",\n            \"streaming_url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"meta\",\"model_id\":\"meta/llama-3.3-70b-instruct-maas\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/google_model_garden_meta_chat_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample7.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"google_model_garden_meta_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"meta\",\n            \"service_account_json\": \"service-account-json\",\n            \"url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_meta_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"meta\",\n      service_account_json: \"service-account-json\",\n      url: \"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_meta_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"meta\",\n      \"service_account_json\": \"service-account-json\",\n      \"url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"google_model_garden_meta_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"meta\",\n            \"service_account_json\" => \"service-account-json\",\n            \"url\" => \"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"meta\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}}' \"$ELASTICSEARCH_URL/_inference/completion/google_model_garden_meta_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample10.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"google_model_garden_meta_chat_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"meta\",\n            \"service_account_json\": \"service-account-json\",\n            \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_meta_chat_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"meta\",\n      service_account_json: \"service-account-json\",\n      streaming_url:\n        \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_meta_chat_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"meta\",\n      \"service_account_json\": \"service-account-json\",\n      \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"google_model_garden_meta_chat_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"meta\",\n            \"service_account_json\" => \"service-account-json\",\n            \"streaming_url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"meta\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/google_model_garden_meta_chat_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample21.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"google_model_garden_ai21_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"ai21\",\n            \"service_account_json\": \"service-account-json\",\n            \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:rawPredict\",\n            \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_ai21_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"ai21\",\n      service_account_json: \"service-account-json\",\n      url: \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:rawPredict\",\n      streaming_url:\n        \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_ai21_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"ai21\",\n      \"service_account_json\": \"service-account-json\",\n      \"url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:rawPredict\",\n      \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"google_model_garden_ai21_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"ai21\",\n            \"service_account_json\" => \"service-account-json\",\n            \"url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:rawPredict\",\n            \"streaming_url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"ai21\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:rawPredict\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\"}}' \"$ELASTICSEARCH_URL/_inference/completion/google_model_garden_ai21_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample17.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"google_model_garden_mistral_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"mistral\",\n            \"service_account_json\": \"service-account-json\",\n            \"url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_mistral_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"mistral\",\n      service_account_json: \"service-account-json\",\n      url: \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"google_model_garden_mistral_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"mistral\",\n      \"service_account_json\": \"service-account-json\",\n      \"url\": \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"google_model_garden_mistral_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"mistral\",\n            \"service_account_json\" => \"service-account-json\",\n            \"url\" => \"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"mistral\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}}' \"$ELASTICSEARCH_URL/_inference/completion/google_model_garden_mistral_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample16.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"google_model_garden_mistral_chat_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"mistral\",\n            \"model_id\": \"mistral-small-2503\",\n            \"service_account_json\": \"service-account-json\",\n            \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_mistral_chat_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"mistral\",\n      model_id: \"mistral-small-2503\",\n      service_account_json: \"service-account-json\",\n      streaming_url:\n        \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_mistral_chat_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"mistral\",\n      \"model_id\": \"mistral-small-2503\",\n      \"service_account_json\": \"service-account-json\",\n      \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"google_model_garden_mistral_chat_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"mistral\",\n            \"model_id\" => \"mistral-small-2503\",\n            \"service_account_json\" => \"service-account-json\",\n            \"streaming_url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"mistral\",\"model_id\":\"mistral-small-2503\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/google_model_garden_mistral_chat_completion\""
+    }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample20.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"google_model_garden_mistral_chat_completion\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"provider\": \"mistral\",\n            \"service_account_json\": \"service-account-json\",\n            \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_mistral_chat_completion\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      provider: \"mistral\",\n      service_account_json: \"service-account-json\",\n      streaming_url:\n        \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"google_model_garden_mistral_chat_completion\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"provider\": \"mistral\",\n      \"service_account_json\": \"service-account-json\",\n      \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"google_model_garden_mistral_chat_completion\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"provider\" => \"mistral\",\n            \"service_account_json\" => \"service-account-json\",\n            \"streaming_url\" => \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"provider\":\"mistral\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/google_model_garden_mistral_chat_completion\""
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"nvidia-completion\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"url\": \"nvidia-completion-url\",\n            \"api_key\": \"nvidia-completion-token\",\n            \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"nvidia-completion\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      url: \"nvidia-completion-url\",\n      api_key: \"nvidia-completion-token\",\n      model_id: \"microsoft/phi-3-mini-128k-instruct\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"nvidia-completion\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"url\": \"nvidia-completion-url\",\n      \"api_key\": \"nvidia-completion-token\",\n      \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"nvidia-completion\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"url\" => \"nvidia-completion-url\",\n            \"api_key\" => \"nvidia-completion-token\",\n            \"model_id\" => \"microsoft/phi-3-mini-128k-instruct\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"url\":\"nvidia-completion-url\",\"api_key\":\"nvidia-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}}' \"$ELASTICSEARCH_URL/_inference/completion/nvidia-completion\""
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"nvidia-text-embedding\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n            \"api_key\": \"nvidia-text-embeddings-token\"\n        },\n        \"task_settings\": {\n            \"input_type\": \"ingest\",\n            \"truncate\": \"start\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"nvidia-text-embedding\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      model_id: \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n      api_key: \"nvidia-text-embeddings-token\",\n    },\n    task_settings: {\n      input_type: \"ingest\",\n      truncate: \"start\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"nvidia-text-embedding\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n      \"api_key\": \"nvidia-text-embeddings-token\"\n    },\n    \"task_settings\": {\n      \"input_type\": \"ingest\",\n      \"truncate\": \"start\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"nvidia-text-embedding\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"model_id\" => \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n            \"api_key\" => \"nvidia-text-embeddings-token\",\n        ],\n        \"task_settings\" => [\n            \"input_type\" => \"ingest\",\n            \"truncate\" => \"start\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"model_id\":\"nvidia/llama-3.2-nv-embedqa-1b-v2\",\"api_key\":\"nvidia-text-embeddings-token\"},\"task_settings\":{\"input_type\":\"ingest\",\"truncate\":\"start\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/nvidia-text-embedding\""
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample5.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"nvidia-chat-completion\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"url\": \"nvidia-chat-completion-url\",\n            \"api_key\": \"nvidia-chat-completion-token\",\n            \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"nvidia-chat-completion\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      url: \"nvidia-chat-completion-url\",\n      api_key: \"nvidia-chat-completion-token\",\n      model_id: \"microsoft/phi-3-mini-128k-instruct\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"nvidia-chat-completion\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"url\": \"nvidia-chat-completion-url\",\n      \"api_key\": \"nvidia-chat-completion-token\",\n      \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"nvidia-chat-completion\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"url\" => \"nvidia-chat-completion-url\",\n            \"api_key\" => \"nvidia-chat-completion-token\",\n            \"model_id\" => \"microsoft/phi-3-mini-128k-instruct\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"url\":\"nvidia-chat-completion-url\",\"api_key\":\"nvidia-chat-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/nvidia-chat-completion\""
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"nvidia-completion\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"api_key\": \"nvidia-completion-token\",\n            \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"nvidia-completion\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      api_key: \"nvidia-completion-token\",\n      model_id: \"microsoft/phi-3-mini-128k-instruct\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"nvidia-completion\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"api_key\": \"nvidia-completion-token\",\n      \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"nvidia-completion\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"api_key\" => \"nvidia-completion-token\",\n            \"model_id\" => \"microsoft/phi-3-mini-128k-instruct\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"api_key\":\"nvidia-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}}' \"$ELASTICSEARCH_URL/_inference/completion/nvidia-completion\""
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample8.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"rerank\",\n    inference_id=\"nvidia-rerank\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"api_key\": \"nvidia-rerank-token\",\n            \"model_id\": \"nv-rerank-qa-mistral-4b:1\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"rerank\",\n  inference_id: \"nvidia-rerank\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      api_key: \"nvidia-rerank-token\",\n      model_id: \"nv-rerank-qa-mistral-4b:1\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"rerank\",\n  inference_id: \"nvidia-rerank\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"api_key\": \"nvidia-rerank-token\",\n      \"model_id\": \"nv-rerank-qa-mistral-4b:1\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"nvidia-rerank\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"api_key\" => \"nvidia-rerank-token\",\n            \"model_id\" => \"nv-rerank-qa-mistral-4b:1\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"api_key\":\"nvidia-rerank-token\",\"model_id\":\"nv-rerank-qa-mistral-4b:1\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/nvidia-rerank\""
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample7.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"rerank\",\n    inference_id=\"nvidia-rerank\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"url\": \"nvidia-rerank-url\",\n            \"api_key\": \"nvidia-rerank-token\",\n            \"model_id\": \"nv-rerank-qa-mistral-4b:1\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"rerank\",\n  inference_id: \"nvidia-rerank\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      url: \"nvidia-rerank-url\",\n      api_key: \"nvidia-rerank-token\",\n      model_id: \"nv-rerank-qa-mistral-4b:1\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"rerank\",\n  inference_id: \"nvidia-rerank\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"url\": \"nvidia-rerank-url\",\n      \"api_key\": \"nvidia-rerank-token\",\n      \"model_id\": \"nv-rerank-qa-mistral-4b:1\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"nvidia-rerank\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"url\" => \"nvidia-rerank-url\",\n            \"api_key\" => \"nvidia-rerank-token\",\n            \"model_id\" => \"nv-rerank-qa-mistral-4b:1\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"url\":\"nvidia-rerank-url\",\"api_key\":\"nvidia-rerank-token\",\"model_id\":\"nv-rerank-qa-mistral-4b:1\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/nvidia-rerank\""
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample6.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"nvidia-chat-completion\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"api_key\": \"nvidia-chat-completion-token\",\n            \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"nvidia-chat-completion\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      api_key: \"nvidia-chat-completion-token\",\n      model_id: \"microsoft/phi-3-mini-128k-instruct\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"nvidia-chat-completion\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"api_key\": \"nvidia-chat-completion-token\",\n      \"model_id\": \"microsoft/phi-3-mini-128k-instruct\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"nvidia-chat-completion\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"api_key\" => \"nvidia-chat-completion-token\",\n            \"model_id\" => \"microsoft/phi-3-mini-128k-instruct\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"api_key\":\"nvidia-chat-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/nvidia-chat-completion\""
+    }
+  ],
+  "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"nvidia-text-embedding\",\n    inference_config={\n        \"service\": \"nvidia\",\n        \"service_settings\": {\n            \"url\": \"nvidia-embeddings-url\",\n            \"api_key\": \"nvidia-embeddings-token\",\n            \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"nvidia-text-embedding\",\n  inference_config: {\n    service: \"nvidia\",\n    service_settings: {\n      url: \"nvidia-embeddings-url\",\n      api_key: \"nvidia-embeddings-token\",\n      model_id: \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"nvidia-text-embedding\",\n  body: {\n    \"service\": \"nvidia\",\n    \"service_settings\": {\n      \"url\": \"nvidia-embeddings-url\",\n      \"api_key\": \"nvidia-embeddings-token\",\n      \"model_id\": \"nvidia/llama-3.2-nv-embedqa-1b-v2\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"nvidia-text-embedding\",\n    \"body\" => [\n        \"service\" => \"nvidia\",\n        \"service_settings\" => [\n            \"url\" => \"nvidia-embeddings-url\",\n            \"api_key\" => \"nvidia-embeddings-token\",\n            \"model_id\" => \"nvidia/llama-3.2-nv-embedqa-1b-v2\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"nvidia\",\"service_settings\":{\"url\":\"nvidia-embeddings-url\",\"api_key\":\"nvidia-embeddings-token\",\"model_id\":\"nvidia/llama-3.2-nv-embedqa-1b-v2\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/nvidia-text-embedding\""
+    }
+  ],
+  "specification/inference/put_groq/examples/request/PutGroqRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"groq-chat-completion\",\n    inference_config={\n        \"service\": \"groq\",\n        \"service_settings\": {\n            \"api_key\": \"groq-api-key\",\n            \"model_id\": \"llama-3.3-70b-versatile\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"groq-chat-completion\",\n  inference_config: {\n    service: \"groq\",\n    service_settings: {\n      api_key: \"groq-api-key\",\n      model_id: \"llama-3.3-70b-versatile\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"groq-chat-completion\",\n  body: {\n    \"service\": \"groq\",\n    \"service_settings\": {\n      \"api_key\": \"groq-api-key\",\n      \"model_id\": \"llama-3.3-70b-versatile\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"groq-chat-completion\",\n    \"body\" => [\n        \"service\" => \"groq\",\n        \"service_settings\" => [\n            \"api_key\" => \"groq-api-key\",\n            \"model_id\" => \"llama-3.3-70b-versatile\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"groq\",\"service_settings\":{\"api_key\":\"groq-api-key\",\"model_id\":\"llama-3.3-70b-versatile\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/groq-chat-completion\""
+    }
+  ],
+  "specification/inference/put_azureopenai/examples/request/PutAzureOpenAiRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"azure_openai_chat_completion\",\n    inference_config={\n        \"service\": \"azureopenai\",\n        \"service_settings\": {\n            \"api_key\": \"Api-Key\",\n            \"resource_name\": \"Resource-name\",\n            \"deployment_id\": \"Deployment-id\",\n            \"api_version\": \"2024-02-01\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"azure_openai_chat_completion\",\n  inference_config: {\n    service: \"azureopenai\",\n    service_settings: {\n      api_key: \"Api-Key\",\n      resource_name: \"Resource-name\",\n      deployment_id: \"Deployment-id\",\n      api_version: \"2024-02-01\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"azure_openai_chat_completion\",\n  body: {\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n      \"api_key\": \"Api-Key\",\n      \"resource_name\": \"Resource-name\",\n      \"deployment_id\": \"Deployment-id\",\n      \"api_version\": \"2024-02-01\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"azure_openai_chat_completion\",\n    \"body\" => [\n        \"service\" => \"azureopenai\",\n        \"service_settings\" => [\n            \"api_key\" => \"Api-Key\",\n            \"resource_name\" => \"Resource-name\",\n            \"deployment_id\" => \"Deployment-id\",\n            \"api_version\" => \"2024-02-01\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"azureopenai\",\"service_settings\":{\"api_key\":\"Api-Key\",\"resource_name\":\"Resource-name\",\"deployment_id\":\"Deployment-id\",\"api_version\":\"2024-02-01\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/azure_openai_chat_completion\""
+    }
+  ],
+  "specification/inference/put_openshift_ai/examples/request/PutOpenShiftAiRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"openshift-ai-text-embedding\",\n    inference_config={\n        \"service\": \"openshift_ai\",\n        \"service_settings\": {\n            \"url\": \"openshift-ai-embeddings-url\",\n            \"api_key\": \"openshift-ai-embeddings-token\",\n            \"model_id\": \"gritlm-7b\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"openshift-ai-text-embedding\",\n  inference_config: {\n    service: \"openshift_ai\",\n    service_settings: {\n      url: \"openshift-ai-embeddings-url\",\n      api_key: \"openshift-ai-embeddings-token\",\n      model_id: \"gritlm-7b\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"openshift-ai-text-embedding\",\n  body: {\n    \"service\": \"openshift_ai\",\n    \"service_settings\": {\n      \"url\": \"openshift-ai-embeddings-url\",\n      \"api_key\": \"openshift-ai-embeddings-token\",\n      \"model_id\": \"gritlm-7b\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"openshift-ai-text-embedding\",\n    \"body\" => [\n        \"service\" => \"openshift_ai\",\n        \"service_settings\" => [\n            \"url\" => \"openshift-ai-embeddings-url\",\n            \"api_key\" => \"openshift-ai-embeddings-token\",\n            \"model_id\" => \"gritlm-7b\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"openshift_ai\",\"service_settings\":{\"url\":\"openshift-ai-embeddings-url\",\"api_key\":\"openshift-ai-embeddings-token\",\"model_id\":\"gritlm-7b\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/openshift-ai-text-embedding\""
+    }
+  ],
+  "specification/inference/put_openshift_ai/examples/request/PutOpenShiftAiRequestExample5.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"rerank\",\n    inference_id=\"openshift-ai-rerank\",\n    inference_config={\n        \"service\": \"openshift_ai\",\n        \"service_settings\": {\n            \"url\": \"openshift-ai-rerank-url\",\n            \"api_key\": \"openshift-ai-rerank-token\"\n        },\n        \"task_settings\": {\n            \"return_documents\": True,\n            \"top_n\": 2\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"rerank\",\n  inference_id: \"openshift-ai-rerank\",\n  inference_config: {\n    service: \"openshift_ai\",\n    service_settings: {\n      url: \"openshift-ai-rerank-url\",\n      api_key: \"openshift-ai-rerank-token\",\n    },\n    task_settings: {\n      return_documents: true,\n      top_n: 2,\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"rerank\",\n  inference_id: \"openshift-ai-rerank\",\n  body: {\n    \"service\": \"openshift_ai\",\n    \"service_settings\": {\n      \"url\": \"openshift-ai-rerank-url\",\n      \"api_key\": \"openshift-ai-rerank-token\"\n    },\n    \"task_settings\": {\n      \"return_documents\": true,\n      \"top_n\": 2\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"openshift-ai-rerank\",\n    \"body\" => [\n        \"service\" => \"openshift_ai\",\n        \"service_settings\" => [\n            \"url\" => \"openshift-ai-rerank-url\",\n            \"api_key\" => \"openshift-ai-rerank-token\",\n        ],\n        \"task_settings\" => [\n            \"return_documents\" => true,\n            \"top_n\" => 2,\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"openshift_ai\",\"service_settings\":{\"url\":\"openshift-ai-rerank-url\",\"api_key\":\"openshift-ai-rerank-token\"},\"task_settings\":{\"return_documents\":true,\"top_n\":2}}' \"$ELASTICSEARCH_URL/_inference/rerank/openshift-ai-rerank\""
+    }
+  ],
+  "specification/inference/put_openshift_ai/examples/request/PutOpenShiftAiRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"rerank\",\n    inference_id=\"openshift-ai-rerank\",\n    inference_config={\n        \"service\": \"openshift_ai\",\n        \"service_settings\": {\n            \"url\": \"openshift-ai-rerank-url\",\n            \"api_key\": \"openshift-ai-rerank-token\",\n            \"model_id\": \"bge-reranker-v2-m3\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"rerank\",\n  inference_id: \"openshift-ai-rerank\",\n  inference_config: {\n    service: \"openshift_ai\",\n    service_settings: {\n      url: \"openshift-ai-rerank-url\",\n      api_key: \"openshift-ai-rerank-token\",\n      model_id: \"bge-reranker-v2-m3\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"rerank\",\n  inference_id: \"openshift-ai-rerank\",\n  body: {\n    \"service\": \"openshift_ai\",\n    \"service_settings\": {\n      \"url\": \"openshift-ai-rerank-url\",\n      \"api_key\": \"openshift-ai-rerank-token\",\n      \"model_id\": \"bge-reranker-v2-m3\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"rerank\",\n    \"inference_id\" => \"openshift-ai-rerank\",\n    \"body\" => [\n        \"service\" => \"openshift_ai\",\n        \"service_settings\" => [\n            \"url\" => \"openshift-ai-rerank-url\",\n            \"api_key\" => \"openshift-ai-rerank-token\",\n            \"model_id\" => \"bge-reranker-v2-m3\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"openshift_ai\",\"service_settings\":{\"url\":\"openshift-ai-rerank-url\",\"api_key\":\"openshift-ai-rerank-token\",\"model_id\":\"bge-reranker-v2-m3\"}}' \"$ELASTICSEARCH_URL/_inference/rerank/openshift-ai-rerank\""
+    }
+  ],
+  "specification/inference/put_openshift_ai/examples/request/PutOpenShiftAiRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"openshift-ai-chat-completion\",\n    inference_config={\n        \"service\": \"openshift_ai\",\n        \"service_settings\": {\n            \"url\": \"openshift-ai-chat-completion-url\",\n            \"api_key\": \"openshift-ai-chat-completion-token\",\n            \"model_id\": \"llama-31-8b-instruct\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"openshift-ai-chat-completion\",\n  inference_config: {\n    service: \"openshift_ai\",\n    service_settings: {\n      url: \"openshift-ai-chat-completion-url\",\n      api_key: \"openshift-ai-chat-completion-token\",\n      model_id: \"llama-31-8b-instruct\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"openshift-ai-chat-completion\",\n  body: {\n    \"service\": \"openshift_ai\",\n    \"service_settings\": {\n      \"url\": \"openshift-ai-chat-completion-url\",\n      \"api_key\": \"openshift-ai-chat-completion-token\",\n      \"model_id\": \"llama-31-8b-instruct\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"openshift-ai-chat-completion\",\n    \"body\" => [\n        \"service\" => \"openshift_ai\",\n        \"service_settings\" => [\n            \"url\" => \"openshift-ai-chat-completion-url\",\n            \"api_key\" => \"openshift-ai-chat-completion-token\",\n            \"model_id\" => \"llama-31-8b-instruct\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"openshift_ai\",\"service_settings\":{\"url\":\"openshift-ai-chat-completion-url\",\"api_key\":\"openshift-ai-chat-completion-token\",\"model_id\":\"llama-31-8b-instruct\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/openshift-ai-chat-completion\""
+    }
+  ],
+  "specification/inference/put_openshift_ai/examples/request/PutOpenShiftAiRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"openshift-ai-completion\",\n    inference_config={\n        \"service\": \"openshift_ai\",\n        \"service_settings\": {\n            \"url\": \"openshift-ai-completion-url\",\n            \"api_key\": \"openshift-ai-completion-token\",\n            \"model_id\": \"llama-31-8b-instruct\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"openshift-ai-completion\",\n  inference_config: {\n    service: \"openshift_ai\",\n    service_settings: {\n      url: \"openshift-ai-completion-url\",\n      api_key: \"openshift-ai-completion-token\",\n      model_id: \"llama-31-8b-instruct\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"openshift-ai-completion\",\n  body: {\n    \"service\": \"openshift_ai\",\n    \"service_settings\": {\n      \"url\": \"openshift-ai-completion-url\",\n      \"api_key\": \"openshift-ai-completion-token\",\n      \"model_id\": \"llama-31-8b-instruct\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"openshift-ai-completion\",\n    \"body\" => [\n        \"service\" => \"openshift_ai\",\n        \"service_settings\" => [\n            \"url\" => \"openshift-ai-completion-url\",\n            \"api_key\" => \"openshift-ai-completion-token\",\n            \"model_id\" => \"llama-31-8b-instruct\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"openshift_ai\",\"service_settings\":{\"url\":\"openshift-ai-completion-url\",\"api_key\":\"openshift-ai-completion-token\",\"model_id\":\"llama-31-8b-instruct\"}}' \"$ELASTICSEARCH_URL/_inference/completion/openshift-ai-completion\""
     }
   ]
 }

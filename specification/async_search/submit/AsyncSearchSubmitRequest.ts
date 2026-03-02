@@ -184,6 +184,7 @@ export interface Request extends RequestBase {
     /**
      * Specify if request cache should be used for this request or not, defaults to true
      * @server_default true
+     * @ext_doc_id shard-request-cache
      */
     request_cache?: boolean
     /**
@@ -281,6 +282,7 @@ export interface Request extends RequestBase {
     from?: integer
     /**
      * A comma-separated list of <field>:<direction> pairs
+     * @ext_doc_id sort-search-results
      */
     sort?: string | string[]
   }

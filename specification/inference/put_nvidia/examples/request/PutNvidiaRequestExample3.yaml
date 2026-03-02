@@ -1,7 +1,5 @@
 summary: A completion task
-description:
-  Run `PUT _inference/completion/nvidia-completion` to create an inference endpoint
-  that performs a `completion` task.
+description: Run `PUT _inference/completion/nvidia-completion` to create an inference endpoint that performs a `completion` task.
 method_request: 'PUT _inference/completion/nvidia-completion'
 # type: "request"
 value: |-
