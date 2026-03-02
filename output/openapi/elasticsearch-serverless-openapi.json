@@ -40632,6 +40632,15 @@
                 "$ref": "#/components/schemas/_types.TextEmbedding"
               }
             ]
+          },
+          "lookup": {
+            "description": "Lookup a vector from an existing document.\nMust reference a dense_vector field and a single value.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.LookupQueryVectorBuilder"
+              }
+            ]
           }
         },
         "minProperties": 1,
@@ -40646,11 +40655,38 @@
             "type": "string"
           },
           "model_text": {
+            "description": "The text to be converted into a vector by the specified model",
             "type": "string"
           }
         },
         "required": [
           "model_text"
+        ]
+      },
+      "_types.LookupQueryVectorBuilder": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The ID of the document to fetch the vector from",
+            "type": "string"
+          },
+          "index": {
+            "description": "The name of the index to fetch the document from",
+            "type": "string"
+          },
+          "path": {
+            "description": "The name of the field containing the vector",
+            "type": "string"
+          },
+          "routing": {
+            "description": "The routing value to use when fetching the document",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "index",
+          "path"
         ]
       },
       "_types.RescoreVector": {
