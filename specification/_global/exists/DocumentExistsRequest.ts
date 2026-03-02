@@ -123,6 +123,7 @@ export interface Request extends RequestBase {
      * A comma-separated list of stored fields to return as part of a hit.
      * If no fields are specified, no stored fields are included in the response.
      * If this field is specified, the `_source` parameter defaults to `false`.
+     * @ext_doc_id retrieve-stored-fields
      */
     stored_fields?: Fields
     /**

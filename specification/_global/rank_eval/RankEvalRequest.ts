@@ -31,6 +31,7 @@ import { RankEvalMetric, RankEvalRequestItem } from './types'
  * @index_privileges read
  * @doc_tag search
  * @doc_id search-rank-eval
+ * @ext_doc_id evaluate-ranked-search-results
  */
 export interface Request extends RequestBase {
   urls: [

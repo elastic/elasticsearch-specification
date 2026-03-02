@@ -67,6 +67,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * Only perform the operation if the document has this sequence number.
+     * @ext_doc_id optimistic-concurrency
      */
     if_seq_no?: SequenceNumber
     /**
