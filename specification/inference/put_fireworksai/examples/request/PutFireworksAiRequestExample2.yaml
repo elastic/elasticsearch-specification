@@ -1,0 +1,17 @@
+summary: A text embedding task with optional settings
+description: Create a Fireworks AI text embedding endpoint with custom dimensions, similarity, and rate limit.
+method_request: 'PUT _inference/text_embedding/my-fireworks-embeddings'
+# type: "request"
+value: |-
+  {
+      "service": "fireworksai",
+      "service_settings": {
+          "api_key": "your-api-key",
+          "model_id": "fireworks/qwen3-embedding-8b",
+          "dimensions": 1024,
+          "similarity": "cosine",
+          "rate_limit": {
+              "requests_per_minute": 6000
+          }
+      }
+  }

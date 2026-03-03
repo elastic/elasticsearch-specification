@@ -1,0 +1,23 @@
+summary: A text embedding task with dimensions
+description: A successful response when creating a Fireworks AI `text_embedding` endpoint with custom dimensions.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "my-fireworks-embeddings",
+    "task_type": "text_embedding",
+    "service": "fireworksai",
+    "service_settings": {
+      "model_id": "fireworks/qwen3-embedding-8b",
+      "dimensions": 1024,
+      "rate_limit": {
+        "requests_per_minute": 6000
+      },
+      "similarity": "cosine"
+    },
+    "chunking_settings": {
+      "strategy": "sentence",
+      "max_chunk_size": 250,
+      "sentence_overlap": 1
+    }
+  }
