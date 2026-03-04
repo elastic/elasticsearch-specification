@@ -197,7 +197,15 @@ export enum ClusterPrivilege {
   /**
    * @availability stack
    */
-  write_fleet_secrets
+  write_fleet_secrets,
+  /**
+   * @availability serverless
+   */
+  read_project_routing,
+  /**
+   * @availability serverless
+   */
+  manage_project_routing
 }
 
 /**

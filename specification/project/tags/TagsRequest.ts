@@ -27,7 +27,7 @@ import { MediaType } from '@_types/common'
  * @doc_id project-tags
  * @rest_spec_name project.tags
  * @availability serverless stability=experimental visibility=public
- * @cluster_privileges monitor
+ * @cluster_privileges read_project_routing,monitor
  * @doc_tag project
  */
 export interface Request extends RequestBase {

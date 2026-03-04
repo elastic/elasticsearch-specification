@@ -19,13 +19,15 @@
 
 export class Response {
   body: {
-    logs: LogsStatus
+    logs: StreamStatus
+    'logs.otel': StreamStatus
+    'logs.ecs': StreamStatus
   }
 }
 
-export class LogsStatus {
+export class StreamStatus {
   /**
-   * If true, the logs stream feature is enabled.
+   * If true, the stream feature is enabled.
    */
   enabled: boolean
 }

@@ -156,7 +156,7 @@ export class MoreLikeThisQuery extends QueryBase {
    */
   min_word_length?: integer
 
-  routing?: Routing
+  routing?: string
   /**
    * An array of stop words.
    * Any word in this set is ignored.
@@ -237,7 +237,7 @@ export class PercolateQuery extends QueryBase {
   /**
    * Routing used to fetch document to percolate.
    */
-  routing?: Routing
+  routing?: string
   /**
    * The expected version of a stored document to percolate.
    */

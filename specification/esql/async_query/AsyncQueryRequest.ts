@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { FieldValue, MediaType } from '@_types/common'
+import { FieldValue, MediaType, ProjectRouting } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
 import { EsqlFormat } from '@esql/_types/QueryParameters'
@@ -89,7 +89,14 @@ export interface Request extends RequestBase {
      * Specify a Query DSL query in the filter parameter to filter the set of documents that an ES|QL query runs on.
      */
     filter?: QueryContainer
-    /*
+    /**
+     * Sets the default timezone of the query.
+     * @availability stack since=9.4.0 stability=stable
+     * @availability serverless stability=stable
+     * @doc_id esql-timezones
+     */
+    time_zone?: string
+    /**
      * Returns results (especially dates) formatted per the conventions of the locale.
      * @doc_id esql-returning-localized-results
      */
@@ -152,5 +159,17 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     keep_on_completion?: boolean
+    /**
+     * Specifies a subset of projects to target using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }

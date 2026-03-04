@@ -1,21 +1,21 @@
 # How to add a new API
 
 It might happen that a new API in Elasticsearch is not yet defined
-in this repository, or we do have an endpoint definition in [`/specification/_json_spec`](../specification/_json_spec),
-but we don't have a type definition for it.
+in this repository.
 This document explains how to add a new endpoint and how to add a new endpoint definition.
 
 > [!TIP]
 > To learn more about how to write docs specifically for our [API references](https://www.elastic.co/docs/api/), refer to the [Contribute to Elastic API docs](https://www.elastic.co/docs/extend/contribute/api-docs/).
 
-## How to add a new endpoint
+## rest-api-spec
 
-Adding a new endpoint is straightforward, you only need to copy-paste the json rest-api-spec definition
-from the Elasticsearch repository inside [`/specification/_json_spec`](../specification/_json_spec)
-and you are good to go.
+Note that you currently need to define endpoints twice:
 
-You can find the rest-api-spec definitions [here](https://github.com/elastic/elasticsearch/tree/7.x/rest-api-spec/src/main/resources/rest-api-spec/api)
-or [here](https://github.com/elastic/elasticsearch/tree/7.x/x-pack/plugin/src/test/resources/rest-api-spec/api).
+ 1. [elasticsearch/rest-api-spec](https://github.com/elastic/elasticsearch/tree/main/rest-api-spec/src/main/resources/rest-api-spec/api)
+ 2. elasticsearch-specification/specification (Elasticsearch specification as defined in this repository)
+
+Now that the rest-api-spec endpoints are a strict subset of the Elasticsearch
+specification endpoints, we are working to remove this limitation.
 
 ## How to add the definition of an endpoint
 
@@ -157,6 +157,28 @@ class Response<Generic> {
 ```
 
 And the generic will be used somewhere inside the definition.
+
+#### Path/Query parameters csv
+
+In case the server accepts either a string or comma separated values for path or query parameters, they can be mapped as:
+
+```ts
+export type MyAlias = string | string[]
+
+path_parts: {
+    param_name?: MyAlias
+}
+query_parameters: {
+    param_name?: MyAlias
+}
+```
+
+The statically typed clients will take care of proper serialization.
+
+The right alias might exist already, so always check [common.ts](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts) first.
+
+> [!WARNING]
+> If the same `string | string[]` construct (or alias) is also used in body/interface properties, clients will serialize these values to a standard JSON array instead - which might or might not be desired.
 
 #### Exceptions
 

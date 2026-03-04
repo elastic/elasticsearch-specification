@@ -23,8 +23,21 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class NodeUsage {
+  /**
+   *  The total number of times each REST endpoint has been called on this node since the last restart.
+   *  Note that the REST endpoint names are not considered stable.
+   */
   rest_actions: Dictionary<string, integer>
+  /**
+   * The timestamp for when the collection of these statistics started.
+   */
   since: EpochTime<UnitMillis>
+  /**
+   * The timestamp for when these statistics were collected.
+   */
   timestamp: EpochTime<UnitMillis>
+  /**
+   * The total number of times search aggregations have been called on this node since the last restart.
+   */
   aggregations: Dictionary<string, UserDefinedValue>
 }

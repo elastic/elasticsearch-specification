@@ -67,6 +67,7 @@ indices-validate-query-1,indices-validate-query
 inference-delete-1,inference-delete
 inference-get-1,inference-get
 inference-get-2,inference-get
+inference-get-3,inference-get
 inference-inference-1,inference-inference
 inference-put-1,inference-put
 inference-update-1,inference-update
