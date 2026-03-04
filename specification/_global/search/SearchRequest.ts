@@ -66,13 +66,12 @@ import { SourceConfig, SourceConfigParam } from './_types/SourceFilter'
  *
  * When paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.
  * By default the splitting is done first on the shards, then locally on each shard.
- * The local splitting partitions the shard into contiguous ranges based on Lucene document IDs.
  *
  * For instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.
  *
  * IMPORTANT: The same point-in-time ID should be used for all slices.
  * If different PIT IDs are used, slices can overlap and miss documents.
- * This situation can occur because the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.
+ * This situation can occur because, by default, the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.
  * @rest_spec_name search
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
