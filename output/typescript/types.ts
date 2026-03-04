@@ -1095,6 +1095,7 @@ export interface ReindexSource {
   index: Indices
   query?: QueryDslQueryContainer
   remote?: ReindexRemoteSource
+  project_routing?: ProjectRouting
   size?: integer
   slice?: SlicedScroll
   sort?: Sort
@@ -20267,7 +20268,7 @@ export interface ProjectTagsProjectTags {
 
 export interface ProjectTagsRequest extends RequestBase {
   body?: {
-    project_routing?: string
+    project_routing?: ProjectRouting
   }
 }
 
