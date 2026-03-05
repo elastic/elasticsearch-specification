@@ -2698,6 +2698,13 @@ export interface LinearRetriever extends RetrieverBase {
   normalizer?: ScoreNormalizer
 }
 
+export interface LookupQueryVectorBuilder {
+  id: string
+  index: string
+  path: string
+  routing?: string
+}
+
 export type MapboxVectorTiles = ArrayBuffer
 
 export interface MergesStats {
@@ -2826,6 +2833,7 @@ export type QueryVector = float[]
 
 export interface QueryVectorBuilder {
   text_embedding?: TextEmbedding
+  lookup?: LookupQueryVectorBuilder
 }
 
 export interface RRFRetriever extends RetrieverBase {
@@ -14302,7 +14310,8 @@ export type IndicesUpdateAliasesResponse = AcknowledgedResponseBase
 export interface IndicesValidateQueryIndicesValidationExplanation {
   error?: string
   explanation?: string
-  index: IndexName
+  index?: IndexName
+  shard?: integer
   valid: boolean
 }
 

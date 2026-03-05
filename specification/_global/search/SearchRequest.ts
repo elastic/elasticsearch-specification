@@ -96,6 +96,7 @@ export interface Request extends RequestBase {
      * A comma-separated list of data streams, indices, and aliases to search.
      * It supports wildcards (`*`).
      * To search all data streams and indices, omit this parameter or use `*` or `_all`.
+     * @ext_doc_id search-multiple-indices
      */
     index?: Indices
   }
@@ -231,6 +232,7 @@ export interface Request extends RequestBase {
     request_cache?: boolean
     /**
      * A custom value that is used to route operations to a specific shard.
+     * @ext_doc_id search-shard-routing
      */
     routing?: Routing
     /**
@@ -469,12 +471,14 @@ export interface Request extends RequestBase {
      * Use the `post_filter` parameter to filter search results.
      * The search hits are filtered after the aggregations are calculated.
      * A post filter has no impact on the aggregation results.
+     * @ext_doc_id filter-search-results
      */
     post_filter?: QueryContainer
     /**
      * Set to `true` to return detailed timing information about the execution of individual components in a search request.
      * NOTE: This is a debugging tool and adds significant overhead to search execution.
      * @server_default false
+     * @ext_doc_id search-profile
      */
     profile?: boolean
     /**
@@ -484,6 +488,7 @@ export interface Request extends RequestBase {
     query?: QueryContainer
     /**
      * Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.
+     * @ext_doc_id rescore-search-results
      */
     rescore?: Rescore | Rescore[]
     /**
@@ -500,6 +505,7 @@ export interface Request extends RequestBase {
     script_fields?: Dictionary<string, ScriptField>
     /**
      * Used to retrieve the next page of hits using a set of sort values from the previous page.
+     * @ext_doc_id search-after
      */
     search_after?: SortResults
     /**
@@ -511,6 +517,7 @@ export interface Request extends RequestBase {
     size?: integer
     /**
      * Split a scrolled search into multiple slices that can be consumed independently.
+     * @ext_doc_id slice-scroll
      */
     slice?: SlicedScroll
     /**
@@ -533,6 +540,7 @@ export interface Request extends RequestBase {
     fields?: Array<FieldAndFormat>
     /**
      * Defines a suggester that provides similar looking terms based on a provided text.
+     * @ext_doc_id suggester
      */
     suggest?: Suggester
     /**

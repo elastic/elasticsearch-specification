@@ -8402,6 +8402,10 @@
         ],
         "summary": "Create an index from a source index",
         "description": "Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.",
+        "externalDocs": {
+          "description": "Learn more about creating an index from a source",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source"
+        },
         "operationId": "indices-create-from",
         "parameters": [
           {
@@ -8433,6 +8437,10 @@
         ],
         "summary": "Create an index from a source index",
         "description": "Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.",
+        "externalDocs": {
+          "description": "Learn more about creating an index from a source",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source"
+        },
         "operationId": "indices-create-from-1",
         "parameters": [
           {
@@ -10788,6 +10796,11 @@
         ],
         "summary": "Refresh an index",
         "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
+        "externalDocs": {
+          "description": "Learn more about the refresh parameter",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/refresh-parameter",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-refresh.html"
+        },
         "operationId": "indices-refresh-1",
         "parameters": [
           {
@@ -10819,6 +10832,11 @@
         ],
         "summary": "Refresh an index",
         "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
+        "externalDocs": {
+          "description": "Learn more about the refresh parameter",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/refresh-parameter",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-refresh.html"
+        },
         "operationId": "indices-refresh",
         "parameters": [
           {
@@ -10852,6 +10870,11 @@
         ],
         "summary": "Refresh an index",
         "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
+        "externalDocs": {
+          "description": "Learn more about the refresh parameter",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/refresh-parameter",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-refresh.html"
+        },
         "operationId": "indices-refresh-3",
         "parameters": [
           {
@@ -10886,6 +10909,11 @@
         ],
         "summary": "Refresh an index",
         "description": "A refresh makes recent operations performed on one or more indices available for search.\nFor data streams, the API runs the refresh operation on the stream’s backing indices.\n\nBy default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.\nYou can change this default interval with the `index.refresh_interval` setting.\n\nIn Elastic Cloud Serverless, the default refresh interval is 5 seconds across all indices.\n\nRefresh requests are synchronous and do not return a response until the refresh operation completes.\n\nRefreshes are resource-intensive.\nTo ensure good cluster performance, it's recommended to wait for Elasticsearch's periodic refresh rather than performing an explicit refresh when possible.\n\nIf your application workflow indexes documents and then runs a search to retrieve the indexed document, it's recommended to use the index API's `refresh=wait_for` query parameter option.\nThis option ensures the indexing operation waits for a periodic refresh before running the search.\n\n## Required authorization\n\n* Index privileges: `maintenance`\n",
+        "externalDocs": {
+          "description": "Learn more about the refresh parameter",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/refresh-parameter",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-refresh.html"
+        },
         "operationId": "indices-refresh-2",
         "parameters": [
           {
@@ -24455,6 +24483,11 @@
         ],
         "summary": "Evaluate ranked search results",
         "description": "Evaluate the quality of ranked search results over a set of typical search queries.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "externalDocs": {
+          "description": "Learn more about ranking evaluation",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-rank-eval",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-rank-eval.html"
+        },
         "operationId": "rank-eval",
         "parameters": [
           {
@@ -24492,6 +24525,11 @@
         ],
         "summary": "Evaluate ranked search results",
         "description": "Evaluate the quality of ranked search results over a set of typical search queries.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "externalDocs": {
+          "description": "Learn more about ranking evaluation",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-rank-eval",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-rank-eval.html"
+        },
         "operationId": "rank-eval-1",
         "parameters": [
           {
@@ -24531,6 +24569,11 @@
         ],
         "summary": "Evaluate ranked search results",
         "description": "Evaluate the quality of ranked search results over a set of typical search queries.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "externalDocs": {
+          "description": "Learn more about ranking evaluation",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-rank-eval",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-rank-eval.html"
+        },
         "operationId": "rank-eval-2",
         "parameters": [
           {
@@ -24571,6 +24614,11 @@
         ],
         "summary": "Evaluate ranked search results",
         "description": "Evaluate the quality of ranked search results over a set of typical search queries.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "externalDocs": {
+          "description": "Learn more about ranking evaluation",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-rank-eval",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-rank-eval.html"
+        },
         "operationId": "rank-eval-3",
         "parameters": [
           {
@@ -39589,6 +39637,9 @@
             "type": "number"
           },
           "post_filter": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/filter-search-results"
+            },
             "description": "Use the `post_filter` parameter to filter search results.\nThe search hits are filtered after the aggregations are calculated.\nA post filter has no impact on the aggregation results.",
             "allOf": [
               {
@@ -39597,6 +39648,9 @@
             ]
           },
           "profile": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-profile"
+            },
             "description": "Set to `true` to return detailed timing information about the execution of individual components in a search request.\nNOTE: This is a debugging tool and adds significant overhead to search execution.",
             "default": false,
             "type": "boolean"
@@ -39613,6 +39667,9 @@
             ]
           },
           "rescore": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/rescore-search-results"
+            },
             "description": "Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.",
             "oneOf": [
               {
@@ -39646,6 +39703,9 @@
             }
           },
           "search_after": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#search-after"
+            },
             "description": "Used to retrieve the next page of hits using a set of sort values from the previous page.",
             "allOf": [
               {
@@ -39659,6 +39719,9 @@
             "type": "number"
           },
           "slice": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#slice-scroll"
+            },
             "description": "Split a scrolled search into multiple slices that can be consumed independently.",
             "allOf": [
               {
@@ -39696,6 +39759,9 @@
             }
           },
           "suggest": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-suggesters"
+            },
             "description": "Defines a suggester that provides similar looking terms based on a provided text.",
             "allOf": [
               {
@@ -40524,6 +40590,9 @@
             "type": "number"
           },
           "inner_hits": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-inner-hits"
+            },
             "description": "If defined, each search hit will contain inner hits.",
             "allOf": [
               {
@@ -40563,6 +40632,15 @@
                 "$ref": "#/components/schemas/_types.TextEmbedding"
               }
             ]
+          },
+          "lookup": {
+            "description": "Lookup a vector from an existing document.\nMust reference a dense_vector field and a single value.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.LookupQueryVectorBuilder"
+              }
+            ]
           }
         },
         "minProperties": 1,
@@ -40577,11 +40655,38 @@
             "type": "string"
           },
           "model_text": {
+            "description": "The text to be converted into a vector by the specified model",
             "type": "string"
           }
         },
         "required": [
           "model_text"
+        ]
+      },
+      "_types.LookupQueryVectorBuilder": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The ID of the document to fetch the vector from",
+            "type": "string"
+          },
+          "index": {
+            "description": "The name of the index to fetch the document from",
+            "type": "string"
+          },
+          "path": {
+            "description": "The name of the field containing the vector",
+            "type": "string"
+          },
+          "routing": {
+            "description": "The routing value to use when fetching the document",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "index",
+          "path"
         ]
       },
       "_types.RescoreVector": {
@@ -41863,6 +41968,9 @@
                 "type": "boolean"
               },
               "inner_hits": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-inner-hits"
+                },
                 "description": "If defined, each search hit will contain inner hits.",
                 "allOf": [
                   {
@@ -41938,6 +42046,9 @@
                 "type": "boolean"
               },
               "inner_hits": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-inner-hits"
+                },
                 "description": "If defined, each search hit will contain inner hits.",
                 "allOf": [
                   {
@@ -43256,6 +43367,9 @@
                 "type": "boolean"
               },
               "inner_hits": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-inner-hits"
+                },
                 "description": "If defined, each search hit will contain inner hits.",
                 "allOf": [
                   {
@@ -66779,12 +66893,14 @@
               }
             ]
           },
+          "shard": {
+            "type": "number"
+          },
           "valid": {
             "type": "boolean"
           }
         },
         "required": [
-          "index",
           "valid"
         ]
       },
@@ -93411,6 +93527,9 @@
                   "type": "number"
                 },
                 "post_filter": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/filter-search-results"
+                  },
                   "description": "Use the `post_filter` parameter to filter search results.\nThe search hits are filtered after the aggregations are calculated.\nA post filter has no impact on the aggregation results.",
                   "allOf": [
                     {
@@ -93419,6 +93538,9 @@
                   ]
                 },
                 "profile": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-profile"
+                  },
                   "description": "Set to `true` to return detailed timing information about the execution of individual components in a search request.\nNOTE: This is a debugging tool and adds significant overhead to search execution.",
                   "default": false,
                   "type": "boolean"
@@ -93435,6 +93557,9 @@
                   ]
                 },
                 "rescore": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/rescore-search-results"
+                  },
                   "description": "Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.",
                   "oneOf": [
                     {
@@ -93468,6 +93593,9 @@
                   }
                 },
                 "search_after": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#search-after"
+                  },
                   "description": "Used to retrieve the next page of hits using a set of sort values from the previous page.",
                   "allOf": [
                     {
@@ -93481,6 +93609,9 @@
                   "type": "number"
                 },
                 "slice": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#slice-scroll"
+                  },
                   "description": "Split a scrolled search into multiple slices that can be consumed independently.",
                   "allOf": [
                     {
@@ -93518,6 +93649,9 @@
                   }
                 },
                 "suggest": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-suggesters"
+                  },
                   "description": "Defines a suggester that provides similar looking terms based on a provided text.",
                   "allOf": [
                     {
@@ -94420,6 +94554,9 @@
                   "type": "boolean"
                 },
                 "routing": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing"
+                  },
                   "description": "A custom value that is used to route operations to a specific shard.",
                   "allOf": [
                     {
