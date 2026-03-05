@@ -19104,5 +19104,93 @@
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"amazonbedrock\",\"service_settings\":{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"provider\":\"amazontitan\",\"model\":\"amazon.titan-text-premier-v1:0\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/amazon_bedrock_chat_completion\""
     }
+  ],
+  "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"my-fireworks-embeddings\",\n    inference_config={\n        \"service\": \"fireworksai\",\n        \"service_settings\": {\n            \"api_key\": \"your-api-key\",\n            \"model_id\": \"fireworks/qwen3-embedding-8b\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"my-fireworks-embeddings\",\n  inference_config: {\n    service: \"fireworksai\",\n    service_settings: {\n      api_key: \"your-api-key\",\n      model_id: \"fireworks/qwen3-embedding-8b\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"my-fireworks-embeddings\",\n  body: {\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n      \"api_key\": \"your-api-key\",\n      \"model_id\": \"fireworks/qwen3-embedding-8b\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"my-fireworks-embeddings\",\n    \"body\" => [\n        \"service\" => \"fireworksai\",\n        \"service_settings\" => [\n            \"api_key\" => \"your-api-key\",\n            \"model_id\" => \"fireworks/qwen3-embedding-8b\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"fireworksai\",\"service_settings\":{\"api_key\":\"your-api-key\",\"model_id\":\"fireworks/qwen3-embedding-8b\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-fireworks-embeddings\""
+    }
+  ],
+  "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"my-fireworks-chat\",\n    inference_config={\n        \"service\": \"fireworksai\",\n        \"service_settings\": {\n            \"api_key\": \"your-api-key\",\n            \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"my-fireworks-chat\",\n  inference_config: {\n    service: \"fireworksai\",\n    service_settings: {\n      api_key: \"your-api-key\",\n      model_id: \"accounts/fireworks/models/deepseek-v3p1\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"my-fireworks-chat\",\n  body: {\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n      \"api_key\": \"your-api-key\",\n      \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"my-fireworks-chat\",\n    \"body\" => [\n        \"service\" => \"fireworksai\",\n        \"service_settings\" => [\n            \"api_key\" => \"your-api-key\",\n            \"model_id\" => \"accounts/fireworks/models/deepseek-v3p1\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"fireworksai\",\"service_settings\":{\"api_key\":\"your-api-key\",\"model_id\":\"accounts/fireworks/models/deepseek-v3p1\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/my-fireworks-chat\""
+    }
+  ],
+  "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"my-fireworks-embeddings\",\n    inference_config={\n        \"service\": \"fireworksai\",\n        \"service_settings\": {\n            \"api_key\": \"your-api-key\",\n            \"model_id\": \"fireworks/qwen3-embedding-8b\",\n            \"dimensions\": 1024,\n            \"similarity\": \"cosine\",\n            \"rate_limit\": {\n                \"requests_per_minute\": 6000\n            }\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"my-fireworks-embeddings\",\n  inference_config: {\n    service: \"fireworksai\",\n    service_settings: {\n      api_key: \"your-api-key\",\n      model_id: \"fireworks/qwen3-embedding-8b\",\n      dimensions: 1024,\n      similarity: \"cosine\",\n      rate_limit: {\n        requests_per_minute: 6000,\n      },\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"my-fireworks-embeddings\",\n  body: {\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n      \"api_key\": \"your-api-key\",\n      \"model_id\": \"fireworks/qwen3-embedding-8b\",\n      \"dimensions\": 1024,\n      \"similarity\": \"cosine\",\n      \"rate_limit\": {\n        \"requests_per_minute\": 6000\n      }\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"my-fireworks-embeddings\",\n    \"body\" => [\n        \"service\" => \"fireworksai\",\n        \"service_settings\" => [\n            \"api_key\" => \"your-api-key\",\n            \"model_id\" => \"fireworks/qwen3-embedding-8b\",\n            \"dimensions\" => 1024,\n            \"similarity\" => \"cosine\",\n            \"rate_limit\" => [\n                \"requests_per_minute\" => 6000,\n            ],\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"fireworksai\",\"service_settings\":{\"api_key\":\"your-api-key\",\"model_id\":\"fireworks/qwen3-embedding-8b\",\"dimensions\":1024,\"similarity\":\"cosine\",\"rate_limit\":{\"requests_per_minute\":6000}}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-fireworks-embeddings\""
+    }
+  ],
+  "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"my-fireworks-completion\",\n    inference_config={\n        \"service\": \"fireworksai\",\n        \"service_settings\": {\n            \"api_key\": \"your-api-key\",\n            \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"my-fireworks-completion\",\n  inference_config: {\n    service: \"fireworksai\",\n    service_settings: {\n      api_key: \"your-api-key\",\n      model_id: \"accounts/fireworks/models/deepseek-v3p1\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"my-fireworks-completion\",\n  body: {\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n      \"api_key\": \"your-api-key\",\n      \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"my-fireworks-completion\",\n    \"body\" => [\n        \"service\" => \"fireworksai\",\n        \"service_settings\" => [\n            \"api_key\" => \"your-api-key\",\n            \"model_id\" => \"accounts/fireworks/models/deepseek-v3p1\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"fireworksai\",\"service_settings\":{\"api_key\":\"your-api-key\",\"model_id\":\"accounts/fireworks/models/deepseek-v3p1\"}}' \"$ELASTICSEARCH_URL/_inference/completion/my-fireworks-completion\""
+    }
   ]
 }

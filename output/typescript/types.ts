@@ -14657,6 +14657,26 @@ export type InferenceEmbeddingInput = InferenceEmbeddingStringInput | InferenceE
 
 export type InferenceEmbeddingStringInput = string | string[]
 
+export interface InferenceFireworksAIServiceSettings {
+  api_key: string
+  model_id: string
+  url?: string
+  dimensions?: integer
+  similarity?: InferenceFireworksAISimilarityType
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceFireworksAIServiceType = 'fireworksai'
+
+export type InferenceFireworksAISimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
+
+export interface InferenceFireworksAITaskSettings {
+  user?: string
+  headers?: any
+}
+
+export type InferenceFireworksAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
+
 export type InferenceGoogleAiServiceType = 'googleaistudio'
 
 export interface InferenceGoogleAiStudioServiceSettings {
@@ -14803,6 +14823,11 @@ export interface InferenceInferenceEndpointInfoELSER extends InferenceInferenceE
 export interface InferenceInferenceEndpointInfoElasticsearch extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeElasticsearch
+}
+
+export interface InferenceInferenceEndpointInfoFireworksAI extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeFireworksAI
 }
 
 export interface InferenceInferenceEndpointInfoGoogleAIStudio extends InferenceInferenceEndpoint {
@@ -15074,6 +15099,8 @@ export type InferenceTaskTypeDeepSeek = 'completion' | 'chat_completion'
 export type InferenceTaskTypeELSER = 'sparse_embedding'
 
 export type InferenceTaskTypeElasticsearch = 'sparse_embedding' | 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeFireworksAI = 'chat_completion' | 'completion' | 'text_embedding'
 
 export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
@@ -15392,6 +15419,20 @@ export interface InferencePutElserRequest extends RequestBase {
 }
 
 export type InferencePutElserResponse = InferenceInferenceEndpointInfoELSER
+
+export interface InferencePutFireworksaiRequest extends RequestBase {
+  task_type: InferenceFireworksAITaskType
+  fireworksai_inference_id: Id
+  timeout?: Duration
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferenceFireworksAIServiceType
+    service_settings: InferenceFireworksAIServiceSettings
+    task_settings?: InferenceFireworksAITaskSettings
+  }
+}
+
+export type InferencePutFireworksaiResponse = InferenceInferenceEndpointInfoFireworksAI
 
 export interface InferencePutGoogleaistudioRequest extends RequestBase {
   task_type: InferenceGoogleAiStudioTaskType

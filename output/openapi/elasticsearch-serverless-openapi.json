@@ -11864,7 +11864,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Fireworks AI (`chat_completion`, `completion`, `text_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -11987,7 +11987,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Fireworks AI (`chat_completion`, `completion`, `text_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -13855,6 +13855,154 @@
           }
         },
         "deprecated": true,
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/{task_type}/{fireworksai_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create a Fireworks AI inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `fireworksai` service.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-fireworksai",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.FireworksAITaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "fireworksai_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
+                    },
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` or `chat_completion` task types.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
+                      }
+                    ]
+                  },
+                  "service": {
+                    "description": "The type of service supported for the specified task type. In this case, `fireworksai`.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.FireworksAIServiceType"
+                      }
+                    ]
+                  },
+                  "service_settings": {
+                    "description": "Settings used to install the inference model. These settings are specific to the `fireworksai` service.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.FireworksAIServiceSettings"
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Settings to configure the inference task.\nApplies only to the `completion` or `chat_completion` task types.\nNot applicable to the `text_embedding` task type.\nThese settings are specific to the task type you specified.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.FireworksAITaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutFireworksAiRequestExample1": {
+                  "summary": "Create an endpoint for text embedding tasks",
+                  "description": "Run `PUT _inference/text_embedding/my-fireworks-embeddings` to create an inference endpoint that performs a `text_embedding` task.",
+                  "value": "{\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"api_key\": \"your-api-key\",\n        \"model_id\": \"fireworks/qwen3-embedding-8b\"\n    }\n}"
+                },
+                "PutFireworksAiRequestExample2": {
+                  "summary": "Create an endpoint for text embedding tasks with optional settings",
+                  "description": "Create a Fireworks AI text embedding endpoint with custom dimensions, similarity, and rate limit.",
+                  "value": "{\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"api_key\": \"your-api-key\",\n        \"model_id\": \"fireworks/qwen3-embedding-8b\",\n        \"dimensions\": 1024,\n        \"similarity\": \"cosine\",\n        \"rate_limit\": {\n            \"requests_per_minute\": 6000\n        }\n    }\n}"
+                },
+                "PutFireworksAiRequestExample3": {
+                  "summary": "Create an endpoint for chat completion tasks",
+                  "description": "Run `PUT _inference/chat_completion/my-fireworks-chat` to create an inference endpoint that performs a `chat_completion` task.",
+                  "value": "{\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"api_key\": \"your-api-key\",\n        \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\"\n    }\n}"
+                },
+                "PutFireworksAiRequestExample4": {
+                  "summary": "Create an endpoint for completion tasks",
+                  "description": "Run `PUT _inference/completion/my-fireworks-completion` to create an inference endpoint that performs a `completion` task.",
+                  "value": "{\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"api_key\": \"your-api-key\",\n        \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\"\n    }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoFireworksAI"
+                },
+                "examples": {
+                  "PutFireworksAiResponseExample1": {
+                    "summary": "Response for created text embedding endpoint",
+                    "description": "A successful response when creating a Fireworks AI `text_embedding` inference endpoint.",
+                    "value": "{\n    \"inference_id\": \"my-fireworks-embeddings\",\n    \"task_type\": \"text_embedding\",\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"model_id\": \"fireworks/qwen3-embedding-8b\",\n        \"url\": \"https://api.fireworks.ai/inference/v1/embeddings\",\n        \"similarity\": \"cosine\",\n        \"dimensions\": 4096,\n        \"rate_limit\": {\n            \"requests_per_minute\": 6000\n        }\n    },\n    \"chunking_settings\": {\n        \"strategy\": \"sentence\",\n        \"max_chunk_size\": 250,\n        \"sentence_overlap\": 1\n    }\n}"
+                  },
+                  "PutFireworksAiResponseExample2": {
+                    "summary": "Response for created completion endpoint",
+                    "description": "A successful response when creating a Fireworks AI `chat_completion` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"my-fireworks-chat\",\n  \"task_type\": \"chat_completion\",\n  \"service\": \"fireworksai\",\n  \"service_settings\": {\n    \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 6000\n    }\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
         "x-state": "Generally available",
         "x-metaTags": [
           {
@@ -67697,7 +67845,7 @@
         "type": "object",
         "properties": {
           "requests_per_minute": {
-            "description": "The number of requests allowed per minute.\nBy default, the number of requests allowed per minute is set by each service as follows:\n\n* `alibabacloud-ai-search` service: `1000`\n* `amazonbedrock` service: `240`\n* `anthropic` service: `50`\n* `azureaistudio` service: `240`\n* `azureopenai` service and task type `text_embedding`: `1440`\n* `azureopenai` service and task types `completion` or `chat_completion`: `120`\n* `cohere` service: `10000`\n* `contextualai` service: `1000`\n* `elastic` service and task type `chat_completion`: `240`\n* `googleaistudio` service: `360`\n* `googlevertexai` service: `30000`\n* `hugging_face` service: `3000`\n* `jinaai` service: `2000`\n* `llama` service: `3000`\n* `mistral` service: `240`\n* `openai` service and task type `text_embedding`: `3000`\n* `openai` service and task type `completion`: `500`\n* `openshift_ai` service: `3000`\n* `voyageai` service: `2000`\n* `watsonxai` service: `120`",
+            "description": "The number of requests allowed per minute.\nBy default, the number of requests allowed per minute is set by each service as follows:\n\n* `alibabacloud-ai-search` service: `1000`\n* `amazonbedrock` service: `240`\n* `anthropic` service: `50`\n* `azureaistudio` service: `240`\n* `azureopenai` service and task type `text_embedding`: `1440`\n* `azureopenai` service and task types `completion` or `chat_completion`: `120`\n* `cohere` service: `10000`\n* `contextualai` service: `1000`\n* `elastic` service and task type `chat_completion`: `240`\n* `fireworksai` service: `6000`\n* `googleaistudio` service: `360`\n* `googlevertexai` service: `30000`\n* `hugging_face` service: `3000`\n* `jinaai` service: `2000`\n* `llama` service: `3000`\n* `mistral` service: `240`\n* `openai` service and task type `text_embedding`: `3000`\n* `openai` service and task type `completion`: `500`\n* `openshift_ai` service: `3000`\n* `voyageai` service: `2000`\n* `watsonxai` service: `120`",
             "type": "number"
           }
         }
@@ -69104,6 +69252,131 @@
           "sparse_embedding"
         ]
       },
+      "inference._types.FireworksAITaskType": {
+        "type": "string",
+        "enum": [
+          "chat_completion",
+          "completion",
+          "text_embedding"
+        ]
+      },
+      "inference._types.FireworksAIServiceType": {
+        "type": "string",
+        "enum": [
+          "fireworksai"
+        ]
+      },
+      "inference._types.FireworksAIServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "externalDocs": {
+              "url": "https://docs.fireworks.ai/"
+            },
+            "description": "A valid API key for your Fireworks AI account.\nYou can find or create your API keys in the Fireworks AI dashboard.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
+            "type": "string"
+          },
+          "model_id": {
+            "externalDocs": {
+              "url": "https://docs.fireworks.ai/guides/recommended-models"
+            },
+            "description": "The name of the model to use for the inference task.\nRefer to the Fireworks AI documentation for the list of available models for chat completion, completion, and text embedding.\nFor text embedding, supported models include the Qwen3 embedding family (e.g. `fireworks/qwen3-embedding-8b`) and other models in the Fireworks model library.",
+            "type": "string"
+          },
+          "url": {
+            "description": "The URL endpoint to use for the requests.\nIf not provided, the default Fireworks AI API endpoint is used.",
+            "type": "string"
+          },
+          "dimensions": {
+            "description": "For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.\nVariable-length embeddings are supported via this parameter.",
+            "type": "number"
+          },
+          "similarity": {
+            "externalDocs": {
+              "url": "https://docs.fireworks.ai/guides/querying-embeddings-models"
+            },
+            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.",
+            "default": "cosine",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.FireworksAISimilarityType"
+              }
+            ]
+          },
+          "rate_limit": {
+            "externalDocs": {
+              "url": "https://docs.fireworks.ai/guides/quotas_usage/rate-limits"
+            },
+            "description": "This setting helps to minimize the number of rate limit errors returned from the Fireworks AI API.\nRate limit grouping is per API key only.\nBy default, the `fireworksai` service sets the number of requests allowed per minute to 6000.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.RateLimitSetting"
+              }
+            ]
+          }
+        },
+        "required": [
+          "api_key",
+          "model_id"
+        ]
+      },
+      "inference._types.FireworksAISimilarityType": {
+        "type": "string",
+        "enum": [
+          "cosine",
+          "dot_product",
+          "l2_norm"
+        ]
+      },
+      "inference._types.FireworksAITaskSettings": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "description": "For a `completion` or`chat_completion` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
+            "type": "string"
+          },
+          "headers": {
+            "description": "For a `completion` or`chat_completion` task. Specifies custom HTTP header parameters.\nFor example:\n```\n\"headers\":{\n  \"Custom-Header\": \"Some-Value\",\n  \"Another-Custom-Header\": \"Another-Value\"\n}\n```",
+            "type": "object"
+          }
+        }
+      },
+      "inference._types.InferenceEndpointInfoFireworksAI": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "description": "The task type",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/inference._types.TaskTypeFireworksAI"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeFireworksAI": {
+        "type": "string",
+        "enum": [
+          "chat_completion",
+          "completion",
+          "text_embedding"
+        ]
+      },
       "inference._types.GoogleAiStudioTaskType": {
         "type": "string",
         "enum": [
@@ -70075,7 +70348,7 @@
         "type": "object",
         "properties": {
           "user": {
-            "description": "For a `completion` or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
+            "description": "For a `completion`, `chat_completion`, or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
             "type": "string"
           },
           "headers": {
