@@ -1,7 +1,6 @@
-summary: A completion task
+summary: Create an endpoint for completion tasks
 description: Run `PUT _inference/completion/my-fireworks-completion` to create an inference endpoint that performs a `completion` task.
 method_request: 'PUT _inference/completion/my-fireworks-completion'
-# type: "request"
 value: |-
   {
       "service": "fireworksai",

@@ -1,7 +1,6 @@
-summary: A text embedding task with optional settings
+summary: Create an endpoint for text embedding tasks with optional settings
 description: Create a Fireworks AI text embedding endpoint with custom dimensions, similarity, and rate limit.
 method_request: 'PUT _inference/text_embedding/my-fireworks-embeddings'
-# type: "request"
 value: |-
   {
       "service": "fireworksai",

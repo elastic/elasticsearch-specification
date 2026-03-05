@@ -13955,22 +13955,22 @@
               },
               "examples": {
                 "PutFireworksAiRequestExample1": {
-                  "summary": "A text embedding task",
+                  "summary": "Create an endpoint for text embedding tasks",
                   "description": "Run `PUT _inference/text_embedding/my-fireworks-embeddings` to create an inference endpoint that performs a `text_embedding` task.",
                   "value": "{\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"api_key\": \"your-api-key\",\n        \"model_id\": \"fireworks/qwen3-embedding-8b\"\n    }\n}"
                 },
                 "PutFireworksAiRequestExample2": {
-                  "summary": "A text embedding task with optional settings",
+                  "summary": "Create an endpoint for text embedding tasks with optional settings",
                   "description": "Create a Fireworks AI text embedding endpoint with custom dimensions, similarity, and rate limit.",
                   "value": "{\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"api_key\": \"your-api-key\",\n        \"model_id\": \"fireworks/qwen3-embedding-8b\",\n        \"dimensions\": 1024,\n        \"similarity\": \"cosine\",\n        \"rate_limit\": {\n            \"requests_per_minute\": 6000\n        }\n    }\n}"
                 },
                 "PutFireworksAiRequestExample3": {
-                  "summary": "A chat completion task",
+                  "summary": "Create an endpoint for chat completion tasks",
                   "description": "Run `PUT _inference/chat_completion/my-fireworks-chat` to create an inference endpoint that performs a `chat_completion` task.",
                   "value": "{\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"api_key\": \"your-api-key\",\n        \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\"\n    }\n}"
                 },
                 "PutFireworksAiRequestExample4": {
-                  "summary": "A completion task",
+                  "summary": "Create an endpoint for completion tasks",
                   "description": "Run `PUT _inference/completion/my-fireworks-completion` to create an inference endpoint that performs a `completion` task.",
                   "value": "{\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"api_key\": \"your-api-key\",\n        \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\"\n    }\n}"
                 }
@@ -13989,17 +13989,12 @@
                 },
                 "examples": {
                   "PutFireworksAiResponseExample1": {
-                    "summary": "A text embedding task",
+                    "summary": "Response for created text embedding endpoint",
                     "description": "A successful response when creating a Fireworks AI `text_embedding` inference endpoint.",
-                    "value": "{\n  \"inference_id\": \"my-fireworks-embeddings\",\n  \"task_type\": \"text_embedding\",\n  \"service\": \"fireworksai\",\n  \"service_settings\": {\n    \"model_id\": \"fireworks/qwen3-embedding-8b\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 6000\n    },\n    \"similarity\": \"cosine\"\n  },\n  \"chunking_settings\": {\n    \"strategy\": \"sentence\",\n    \"max_chunk_size\": 250,\n    \"sentence_overlap\": 1\n  }\n}"
+                    "value": "{\n    \"inference_id\": \"my-fireworks-embeddings\",\n    \"task_type\": \"text_embedding\",\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"model_id\": \"fireworks/qwen3-embedding-8b\",\n        \"url\": \"https://api.fireworks.ai/inference/v1/embeddings\",\n        \"similarity\": \"cosine\",\n        \"dimensions\": 4096,\n        \"rate_limit\": {\n            \"requests_per_minute\": 6000\n        }\n    },\n    \"chunking_settings\": {\n        \"strategy\": \"sentence\",\n        \"max_chunk_size\": 250,\n        \"sentence_overlap\": 1\n    }\n}"
                   },
                   "PutFireworksAiResponseExample2": {
-                    "summary": "A text embedding task with dimensions",
-                    "description": "A successful response when creating a Fireworks AI `text_embedding` endpoint with custom dimensions.",
-                    "value": "{\n  \"inference_id\": \"my-fireworks-embeddings\",\n  \"task_type\": \"text_embedding\",\n  \"service\": \"fireworksai\",\n  \"service_settings\": {\n    \"model_id\": \"fireworks/qwen3-embedding-8b\",\n    \"dimensions\": 1024,\n    \"rate_limit\": {\n      \"requests_per_minute\": 6000\n    },\n    \"similarity\": \"cosine\"\n  },\n  \"chunking_settings\": {\n    \"strategy\": \"sentence\",\n    \"max_chunk_size\": 250,\n    \"sentence_overlap\": 1\n  }\n}"
-                  },
-                  "PutFireworksAiResponseExample3": {
-                    "summary": "A chat completion task",
+                    "summary": "Response for created completion endpoint",
                     "description": "A successful response when creating a Fireworks AI `chat_completion` inference endpoint.",
                     "value": "{\n  \"inference_id\": \"my-fireworks-chat\",\n  \"task_type\": \"chat_completion\",\n  \"service\": \"fireworksai\",\n  \"service_settings\": {\n    \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 6000\n    }\n  }\n}"
                   }
@@ -69283,7 +69278,7 @@
           },
           "model_id": {
             "externalDocs": {
-              "url": "https://docs.fireworks.ai/guides/querying-embeddings-models"
+              "url": "https://docs.fireworks.ai/guides/recommended-models"
             },
             "description": "The name of the model to use for the inference task.\nRefer to the Fireworks AI documentation for the list of available models for chat completion, completion, and text embedding.\nFor text embedding, supported models include the Qwen3 embedding family (e.g. `fireworks/qwen3-embedding-8b`) and other models in the Fireworks model library.",
             "type": "string"

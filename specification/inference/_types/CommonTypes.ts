@@ -2065,7 +2065,7 @@ export class FireworksAIServiceSettings {
    * The name of the model to use for the inference task.
    * Refer to the Fireworks AI documentation for the list of available models for chat completion, completion, and text embedding.
    * For text embedding, supported models include the Qwen3 embedding family (e.g. `fireworks/qwen3-embedding-8b`) and other models in the Fireworks model library.
-   * @ext_doc_id fireworksai-embeddings
+   * @ext_doc_id fireworksai-recommended-models
    */
   model_id: string
   /**
