@@ -36,7 +36,7 @@ export default async function addInfo (model: model.Model): Promise<model.Model>
       },
       serverless: {
         title: 'Elasticsearch Serverless API',
-        description: 'Elasticsearch Serverless provides REST APIs that are used by the UI components and can be called directly to configure and access Elasticsearch features.\n## Documentation source and versions\nThis documentation is derived from the {branch} branch of the [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification) repository. It is provided under license [Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/).\nThis documentation contains work-in-progress information for future Elastic Stack releases.'
+        description: '## Documentation source and versions\nThis documentation is derived from the {branch} branch of the [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification) repository. It is provided under license [Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/).'
       }
     }
   }
