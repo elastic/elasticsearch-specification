@@ -1,5 +1,4 @@
 SHELL := /bin/bash
-branch ?= $(shell git rev-parse --abbrev-ref HEAD)
 
 validate: lint ## Validate a given endpoint request or response
 	@node compiler/run-validations.js --api $(api) --type $(type) --branch $(branch)
@@ -53,8 +52,8 @@ transform-expand-generics: ## Create a new schema with all generics expanded
 	@npm run transform-expand-generics --prefix compiler
 
 transform-to-openapi: ## Generate the OpenAPI definition from the compiled schema
-	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor stack --branch $(branch) --output output/openapi/elasticsearch-openapi.json
-	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor serverless --branch $(branch) --output output/openapi/elasticsearch-serverless-openapi.json
+	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor stack --output output/openapi/elasticsearch-openapi.json --branch main
+	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor serverless --output output/openapi/elasticsearch-serverless-openapi.json --branch main
 
 transform-to-openapi-for-docs: ## Generate the OpenAPI definition tailored for API docs generation
 	@make generate-language-examples
@@ -79,7 +78,7 @@ overlay-docs: ## Apply overlays to OpenAPI documents
 	rm output/openapi/elasticsearch-openapi-docs.tmp*.json
 
 generate-language-examples:
-	@npm update --prefix docs/examples @elastic/request-converter
+	@npm update --prefix docs/examples @elastic/request-converter || echo "Warning: could not update @elastic/request-converter, using existing version"
 	@node docs/examples/generate-language-examples.js
 	@npm run format:fix-examples --prefix compiler
 
