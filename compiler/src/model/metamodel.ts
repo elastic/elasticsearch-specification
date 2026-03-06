@@ -489,6 +489,12 @@ export class Model {
       name: string
       url: string
     }
+    flavors?: {
+      [flavor: string]: {
+        title?: string
+        description?: string
+      }
+    }
   }
 
   types: TypeDefinition[]
