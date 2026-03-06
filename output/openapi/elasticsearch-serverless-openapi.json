@@ -83740,6 +83740,11 @@
             "default": true,
             "type": "boolean"
           },
+          "num_failure_retries": {
+            "description": "Defines the number of retries on a recoverable failure before the transform task is marked as `failed`.\nThe minimum value is `0` and the maximum is `100`, where `-1` indicates that the transform retries indefinitely.\nIf unset, the cluster-level setting `num_transform_failure_retries` is used.\n\nThis setting cannot be specified when `unattended` is `true`, because unattended transforms always retry\nindefinitely.",
+            "x-state": "Generally available",
+            "type": "number"
+          },
           "unattended": {
             "description": "If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case\nof an error which means the transform never fails. Setting the number of retries other than infinite fails in\nvalidation.",
             "default": false,
