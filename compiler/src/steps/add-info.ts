@@ -25,6 +25,7 @@ import * as model from '../model/metamodel'
 export default async function addInfo (model: model.Model): Promise<model.Model> {
   model._info = {
     title: 'Elasticsearch Request & Response Specification',
+    description: '## Documentation source and versions\nThis documentation is derived from the `main` branch of the [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification) repository. It is provided under license [Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/).',
     license: {
       name: 'Apache 2.0',
       url: 'https://github.com/elastic/elasticsearch-specification/blob/main/LICENSE'
