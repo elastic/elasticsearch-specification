@@ -142,6 +142,18 @@ export class Settings {
   use_point_in_time?: boolean
 
   /**
+   * Defines the number of retries on a recoverable failure before the transform task is marked as `failed`.
+   * The minimum value is `0` and the maximum is `100`, where `-1` indicates that the transform retries indefinitely.
+   * If unset, the cluster-level setting `num_transform_failure_retries` is used.
+   *
+   * This setting cannot be specified when `unattended` is `true`, because unattended transforms always retry
+   * indefinitely.
+   * @availability stack since=8.4.0
+   * @availability serverless
+   */
+  num_failure_retries?: integer
+
+  /**
    * If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case
    * of an error which means the transform never fails. Setting the number of retries other than infinite fails in
    * validation.
