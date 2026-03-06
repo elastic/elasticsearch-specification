@@ -1,4 +1,5 @@
 SHELL := /bin/bash
+branch ?= $(shell git rev-parse --abbrev-ref HEAD)
 
 validate: lint ## Validate a given endpoint request or response
 	@node compiler/run-validations.js --api $(api) --type $(type) --branch $(branch)
