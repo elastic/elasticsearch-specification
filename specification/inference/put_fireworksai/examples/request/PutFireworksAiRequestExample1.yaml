@@ -1,0 +1,11 @@
+summary: Create an endpoint for text embedding tasks
+description: Run `PUT _inference/text_embedding/my-fireworks-embeddings` to create an inference endpoint that performs a `text_embedding` task.
+method_request: 'PUT _inference/text_embedding/my-fireworks-embeddings'
+value: |-
+  {
+      "service": "fireworksai",
+      "service_settings": {
+          "api_key": "your-api-key",
+          "model_id": "fireworks/qwen3-embedding-8b"
+      }
+  }

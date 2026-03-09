@@ -34,6 +34,7 @@ import {
   TaskTypeDeepSeek,
   TaskTypeElasticsearch,
   TaskTypeELSER,
+  TaskTypeFireworksAI,
   TaskTypeGoogleAIStudio,
   TaskTypeGoogleVertexAI,
   TaskTypeGroq,
@@ -316,6 +317,17 @@ export class InferenceEndpointInfoNvidia extends InferenceEndpoint {
   task_type: TaskTypeNvidia
 }
 
+export class InferenceEndpointInfoFireworksAI extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeFireworksAI
+}
+
 export class InferenceEndpointInfoOpenAI extends InferenceEndpoint {
   /**
    * The inference Id
@@ -442,6 +454,7 @@ export class RateLimitSetting {
    * * `cohere` service: `10000`
    * * `contextualai` service: `1000`
    * * `elastic` service and task type `chat_completion`: `240`
+   * * `fireworksai` service: `6000`
    * * `googleaistudio` service: `360`
    * * `googlevertexai` service: `30000`
    * * `hugging_face` service: `3000`

@@ -12531,18 +12531,6 @@ export interface IndicesRetentionLease {
   period: Duration
 }
 
-export interface IndicesSamplingConfiguration {
-  rate: double
-  max_samples: integer
-  max_size?: ByteSize
-  max_size_in_bytes: long
-  time_to_live?: Duration
-  time_to_live_in_millis: long
-  if?: string
-  creation_time?: DateTime
-  creation_time_in_millis: long
-}
-
 export type IndicesSamplingMethod = 'aggregate' | 'last_value'
 
 export interface IndicesSearchIdle {
@@ -12952,14 +12940,6 @@ export interface IndicesDeleteIndexTemplateRequest extends RequestBase {
 
 export type IndicesDeleteIndexTemplateResponse = AcknowledgedResponseBase
 
-export interface IndicesDeleteSampleConfigurationRequest extends RequestBase {
-  index: IndexName
-  master_timeout?: Duration
-  timeout?: Duration
-}
-
-export type IndicesDeleteSampleConfigurationResponse = AcknowledgedResponseBase
-
 export interface IndicesDeleteTemplateRequest extends RequestBase {
   name: Name
   master_timeout?: Duration
@@ -13171,19 +13151,6 @@ export interface IndicesGetAliasNotFoundAliasesKeys {
 export type IndicesGetAliasNotFoundAliases = IndicesGetAliasNotFoundAliasesKeys
   & { [property: string]: IndicesGetAliasIndexAliases | string | integer }
 
-export interface IndicesGetAllSampleConfigurationRequest extends RequestBase {
-  master_timeout?: Duration
-}
-
-export interface IndicesGetAllSampleConfigurationResponse {
-  configurations: IndicesGetAllSampleConfigurationIndexSamplingConfiguration[]
-}
-
-export interface IndicesGetAllSampleConfigurationIndexSamplingConfiguration {
-  index: IndexName
-  configuration: IndicesSamplingConfiguration
-}
-
 export interface IndicesGetDataLifecycleDataStreamWithLifecycle {
   name: DataStreamName
   lifecycle?: IndicesDataStreamLifecycleWithRollover
@@ -13347,50 +13314,6 @@ export interface IndicesGetMigrateReindexStatusStatusInProgress {
   index: string
   total_doc_count: long
   reindexed_doc_count: long
-}
-
-export interface IndicesGetSampleRequest extends RequestBase {
-  index: IndexName
-}
-
-export interface IndicesGetSampleResponse {
-  sample: IndicesGetSampleRawDocument[]
-}
-
-export interface IndicesGetSampleRawDocument {
-  index: string
-  source: Record<PropertyName, MappingProperty>
-}
-
-export interface IndicesGetSampleConfigurationRequest extends RequestBase {
-  index: IndexName
-  master_timeout?: Duration
-}
-
-export interface IndicesGetSampleConfigurationResponse {
-  index: IndexName
-  configuration: IndicesSamplingConfiguration | null
-}
-
-export interface IndicesGetSampleStatsRequest extends RequestBase {
-  index: IndexName
-}
-
-export interface IndicesGetSampleStatsResponse {
-  potential_samples: long
-  samples_rejected_for_max_samples_exceeded: long
-  samples_rejected_for_condition: long
-  samples_rejected_for_rate: long
-  samples_rejected_for_exception: long
-  samples_rejected_for_size: long
-  samples_accepted: long
-  time_sampling?: Duration
-  time_sampling_millis: DurationValue<UnitMillis>
-  time_evaluating_condition?: Duration
-  time_evaluating_condition_millis: DurationValue<UnitMillis>
-  time_compiling_condition?: Duration
-  time_compiling_condition_millis: DurationValue<UnitMillis>
-  last_exception?: string
 }
 
 export interface IndicesGetSettingsRequest extends RequestBase {
@@ -13629,21 +13552,6 @@ export interface IndicesPutMappingRequest extends RequestBase {
 }
 
 export type IndicesPutMappingResponse = IndicesResponseBase
-
-export interface IndicesPutSampleConfigurationRequest extends RequestBase {
-  index: IndexName
-  master_timeout?: Duration
-  timeout?: Duration
-  body?: {
-    rate: SpecUtilsStringified<double>
-    max_samples?: integer
-    max_size?: ByteSize
-    time_to_live?: Duration
-    if?: string
-  }
-}
-
-export type IndicesPutSampleConfigurationResponse = AcknowledgedResponseBase
 
 export interface IndicesPutSettingsRequest extends RequestBase {
   index?: Indices
@@ -14657,6 +14565,26 @@ export type InferenceEmbeddingInput = InferenceEmbeddingStringInput | InferenceE
 
 export type InferenceEmbeddingStringInput = string | string[]
 
+export interface InferenceFireworksAIServiceSettings {
+  api_key: string
+  model_id: string
+  url?: string
+  dimensions?: integer
+  similarity?: InferenceFireworksAISimilarityType
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceFireworksAIServiceType = 'fireworksai'
+
+export type InferenceFireworksAISimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
+
+export interface InferenceFireworksAITaskSettings {
+  user?: string
+  headers?: any
+}
+
+export type InferenceFireworksAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
+
 export type InferenceGoogleAiServiceType = 'googleaistudio'
 
 export interface InferenceGoogleAiStudioServiceSettings {
@@ -14803,6 +14731,11 @@ export interface InferenceInferenceEndpointInfoELSER extends InferenceInferenceE
 export interface InferenceInferenceEndpointInfoElasticsearch extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeElasticsearch
+}
+
+export interface InferenceInferenceEndpointInfoFireworksAI extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeFireworksAI
 }
 
 export interface InferenceInferenceEndpointInfoGoogleAIStudio extends InferenceInferenceEndpoint {
@@ -15074,6 +15007,8 @@ export type InferenceTaskTypeDeepSeek = 'completion' | 'chat_completion'
 export type InferenceTaskTypeELSER = 'sparse_embedding'
 
 export type InferenceTaskTypeElasticsearch = 'sparse_embedding' | 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeFireworksAI = 'chat_completion' | 'completion' | 'text_embedding'
 
 export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
@@ -15392,6 +15327,20 @@ export interface InferencePutElserRequest extends RequestBase {
 }
 
 export type InferencePutElserResponse = InferenceInferenceEndpointInfoELSER
+
+export interface InferencePutFireworksaiRequest extends RequestBase {
+  task_type: InferenceFireworksAITaskType
+  fireworksai_inference_id: Id
+  timeout?: Duration
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferenceFireworksAIServiceType
+    service_settings: InferenceFireworksAIServiceSettings
+    task_settings?: InferenceFireworksAITaskSettings
+  }
+}
+
+export type InferencePutFireworksaiResponse = InferenceInferenceEndpointInfoFireworksAI
 
 export interface InferencePutGoogleaistudioRequest extends RequestBase {
   task_type: InferenceGoogleAiStudioTaskType
@@ -20301,7 +20250,7 @@ export interface QueryRulesQueryRuleCriteria {
   values?: any[]
 }
 
-export type QueryRulesQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
+export type QueryRulesQueryRuleCriteriaType = 'global' | 'exact' | 'fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
 
 export type QueryRulesQueryRuleType = 'pinned' | 'exclude'
 
