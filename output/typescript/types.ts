@@ -23297,6 +23297,7 @@ export interface TransformSource {
   index: Indices
   query?: QueryDslQueryContainer
   runtime_mappings?: MappingRuntimeFields
+  project_routing?: ProjectRouting
 }
 
 export interface TransformSyncContainer {
