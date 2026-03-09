@@ -17,9 +17,15 @@
  * under the License.
  */
 
+import { ErrorCause, TaskFailure } from '@_types/Errors'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ReindexNode } from './types'
+import { ReindexNode, ReindexTasks } from './types'
 
 export class Response {
-  body: { nodes: Dictionary<string, ReindexNode> }
+  body: {
+    node_failures?: ErrorCause[]
+    task_failures?: TaskFailure[]
+    nodes?: Dictionary<string, ReindexNode>
+    tasks?: ReindexTasks
+  }
 }
