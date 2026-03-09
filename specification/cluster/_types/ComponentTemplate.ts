@@ -21,14 +21,17 @@ import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
-import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
+import {
+  DataStreamLifecycle,
+  DataStreamLifecycleWithRollover
+} from '@indices/_types/DataStreamLifecycle'
 import { DataStreamOptions } from '@indices/_types/DataStreamOptions'
 import { IndexSettings } from '@indices/_types/IndexSettings'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class ComponentTemplate {
   name: Name
-  component_template: ComponentTemplateNode
+  component_template: ComponentTemplateNodeRes
 }
 
 export class ComponentTemplateNode {
@@ -67,6 +70,70 @@ export class ComponentTemplateNode {
 }
 
 export class ComponentTemplateSummary {
+  /** @doc_id mapping-meta-field */
+  _meta?: Metadata
+  version?: VersionNumber
+  settings?: Dictionary<IndexName, IndexSettings>
+  mappings?: TypeMapping
+  aliases?: Dictionary<string, AliasDefinition>
+  /**
+   * @availability stack since=8.11.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  lifecycle?: DataStreamLifecycle
+  /**
+   * @availability stack since=8.19.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  data_stream_options?: DataStreamOptions
+}
+
+/**
+ * This is the same as ComponentTemplateNode and must be kept in sync with it,
+ * the only difference being that "template.lifecycle" supports the "rollover" field
+ * in this case (when used as part of get component template response)
+ */
+export class ComponentTemplateNodeRes {
+  template: ComponentTemplateSummaryRes
+  version?: VersionNumber
+  /** @doc_id mapping-meta-field */
+  _meta?: Metadata
+  /*
+   * @server_default false
+   */
+  deprecated?: boolean
+  /**
+   * Date and time when the component template was created. Only returned if the `human` query parameter is `true`.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  created_date?: DateTime
+  /**
+   * Date and time when the component template was created, in milliseconds since the epoch.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  created_date_millis?: EpochTime<UnitMillis>
+  /**
+   * Date and time when the component template was last modified. Only returned if the `human` query parameter is `true`.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  modified_date?: DateTime
+  /**
+   * Date and time when the component template was last modified, in milliseconds since the epoch.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  modified_date_millis?: EpochTime<UnitMillis>
+}
+
+/**
+ * This is the same as ComponentTemplateSummary and must be kept in sync with it,
+ * the only difference being that "lifecycle" supports the "rollover" field
+ * in this case (when used as part of get component template response)
+ */
+export class ComponentTemplateSummaryRes {
   /** @doc_id mapping-meta-field */
   _meta?: Metadata
   version?: VersionNumber
