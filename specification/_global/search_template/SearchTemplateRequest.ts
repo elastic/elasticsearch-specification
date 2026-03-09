@@ -58,6 +58,7 @@ export interface Request extends RequestBase {
     /**
      * A comma-separated list of data streams, indices, and aliases to search.
      * It supports wildcards (`*`).
+     * @ext_doc_id search-multiple-indices
      */
     index?: Indices
   }
@@ -72,8 +73,8 @@ export interface Request extends RequestBase {
      */
     allow_no_indices?: boolean
     /**
-     * If `true`, network round-trips are minimized for cross-cluster search requests.
-     * @server_default false */
+     * Indicates whether network round-trips should be minimized as part of cross-cluster search requests execution.
+     * @server_default true */
     ccs_minimize_roundtrips?: boolean
     /**
      * The type of index that wildcard patterns can match.

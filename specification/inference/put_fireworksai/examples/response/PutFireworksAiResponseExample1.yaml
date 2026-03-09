@@ -1,0 +1,22 @@
+summary: Response for created text embedding endpoint
+description: A successful response when creating a Fireworks AI `text_embedding` inference endpoint.
+value: |-
+  {
+      "inference_id": "my-fireworks-embeddings",
+      "task_type": "text_embedding",
+      "service": "fireworksai",
+      "service_settings": {
+          "model_id": "fireworks/qwen3-embedding-8b",
+          "url": "https://api.fireworks.ai/inference/v1/embeddings",
+          "similarity": "cosine",
+          "dimensions": 4096,
+          "rate_limit": {
+              "requests_per_minute": 6000
+          }
+      },
+      "chunking_settings": {
+          "strategy": "sentence",
+          "max_chunk_size": 250,
+          "sentence_overlap": 1
+      }
+  }

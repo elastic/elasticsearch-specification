@@ -46,7 +46,7 @@ export interface Request<TData> extends RequestBase {
      */
     job_id: Id
   }
-  request_media_type: MediaType.Json | MediaType.Ndjson
+  request_media_type: MediaType.Ndjson | MediaType.Json
   response_media_type: MediaType.Json
   query_parameters: {
     /**

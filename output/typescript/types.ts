@@ -2698,6 +2698,13 @@ export interface LinearRetriever extends RetrieverBase {
   normalizer?: ScoreNormalizer
 }
 
+export interface LookupQueryVectorBuilder {
+  id: string
+  index: string
+  path: string
+  routing?: string
+}
+
 export type MapboxVectorTiles = ArrayBuffer
 
 export interface MergesStats {
@@ -2826,6 +2833,7 @@ export type QueryVector = float[]
 
 export interface QueryVectorBuilder {
   text_embedding?: TextEmbedding
+  lookup?: LookupQueryVectorBuilder
 }
 
 export interface RRFRetriever extends RetrieverBase {
@@ -7298,6 +7306,7 @@ export interface AsyncSearchGetRequest extends RequestBase {
   keep_alive?: Duration
   typed_keys?: boolean
   wait_for_completion_timeout?: Duration
+  return_intermediate_results?: boolean
 }
 
 export type AsyncSearchGetResponse<TDocument = unknown> = AsyncSearchAsyncSearchDocumentResponseBase<TDocument>
@@ -11509,6 +11518,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     wait_for_completion_timeout?: Duration
     keep_alive?: Duration
     keep_on_completion?: boolean
+    project_routing?: ProjectRouting
   }
 }
 
@@ -11605,6 +11615,7 @@ export interface EsqlQueryRequest extends RequestBase {
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
     include_ccs_metadata?: boolean
     include_execution_metadata?: boolean
+    project_routing?: ProjectRouting
   }
 }
 
@@ -12520,18 +12531,6 @@ export interface IndicesRetentionLease {
   period: Duration
 }
 
-export interface IndicesSamplingConfiguration {
-  rate: double
-  max_samples: integer
-  max_size?: ByteSize
-  max_size_in_bytes: long
-  time_to_live?: Duration
-  time_to_live_in_millis: long
-  if?: string
-  creation_time?: DateTime
-  creation_time_in_millis: long
-}
-
 export type IndicesSamplingMethod = 'aggregate' | 'last_value'
 
 export interface IndicesSearchIdle {
@@ -12941,14 +12940,6 @@ export interface IndicesDeleteIndexTemplateRequest extends RequestBase {
 
 export type IndicesDeleteIndexTemplateResponse = AcknowledgedResponseBase
 
-export interface IndicesDeleteSampleConfigurationRequest extends RequestBase {
-  index: IndexName
-  master_timeout?: Duration
-  timeout?: Duration
-}
-
-export type IndicesDeleteSampleConfigurationResponse = AcknowledgedResponseBase
-
 export interface IndicesDeleteTemplateRequest extends RequestBase {
   name: Name
   master_timeout?: Duration
@@ -13160,19 +13151,6 @@ export interface IndicesGetAliasNotFoundAliasesKeys {
 export type IndicesGetAliasNotFoundAliases = IndicesGetAliasNotFoundAliasesKeys
   & { [property: string]: IndicesGetAliasIndexAliases | string | integer }
 
-export interface IndicesGetAllSampleConfigurationRequest extends RequestBase {
-  master_timeout?: Duration
-}
-
-export interface IndicesGetAllSampleConfigurationResponse {
-  configurations: IndicesGetAllSampleConfigurationIndexSamplingConfiguration[]
-}
-
-export interface IndicesGetAllSampleConfigurationIndexSamplingConfiguration {
-  index: IndexName
-  configuration: IndicesSamplingConfiguration
-}
-
 export interface IndicesGetDataLifecycleDataStreamWithLifecycle {
   name: DataStreamName
   lifecycle?: IndicesDataStreamLifecycleWithRollover
@@ -13336,50 +13314,6 @@ export interface IndicesGetMigrateReindexStatusStatusInProgress {
   index: string
   total_doc_count: long
   reindexed_doc_count: long
-}
-
-export interface IndicesGetSampleRequest extends RequestBase {
-  index: IndexName
-}
-
-export interface IndicesGetSampleResponse {
-  sample: IndicesGetSampleRawDocument[]
-}
-
-export interface IndicesGetSampleRawDocument {
-  index: string
-  source: Record<PropertyName, MappingProperty>
-}
-
-export interface IndicesGetSampleConfigurationRequest extends RequestBase {
-  index: IndexName
-  master_timeout?: Duration
-}
-
-export interface IndicesGetSampleConfigurationResponse {
-  index: IndexName
-  configuration: IndicesSamplingConfiguration | null
-}
-
-export interface IndicesGetSampleStatsRequest extends RequestBase {
-  index: IndexName
-}
-
-export interface IndicesGetSampleStatsResponse {
-  potential_samples: long
-  samples_rejected_for_max_samples_exceeded: long
-  samples_rejected_for_condition: long
-  samples_rejected_for_rate: long
-  samples_rejected_for_exception: long
-  samples_rejected_for_size: long
-  samples_accepted: long
-  time_sampling?: Duration
-  time_sampling_millis: DurationValue<UnitMillis>
-  time_evaluating_condition?: Duration
-  time_evaluating_condition_millis: DurationValue<UnitMillis>
-  time_compiling_condition?: Duration
-  time_compiling_condition_millis: DurationValue<UnitMillis>
-  last_exception?: string
 }
 
 export interface IndicesGetSettingsRequest extends RequestBase {
@@ -13618,21 +13552,6 @@ export interface IndicesPutMappingRequest extends RequestBase {
 }
 
 export type IndicesPutMappingResponse = IndicesResponseBase
-
-export interface IndicesPutSampleConfigurationRequest extends RequestBase {
-  index: IndexName
-  master_timeout?: Duration
-  timeout?: Duration
-  body?: {
-    rate: SpecUtilsStringified<double>
-    max_samples?: integer
-    max_size?: ByteSize
-    time_to_live?: Duration
-    if?: string
-  }
-}
-
-export type IndicesPutSampleConfigurationResponse = AcknowledgedResponseBase
 
 export interface IndicesPutSettingsRequest extends RequestBase {
   index?: Indices
@@ -14299,7 +14218,8 @@ export type IndicesUpdateAliasesResponse = AcknowledgedResponseBase
 export interface IndicesValidateQueryIndicesValidationExplanation {
   error?: string
   explanation?: string
-  index: IndexName
+  index?: IndexName
+  shard?: integer
   valid: boolean
 }
 
@@ -14645,6 +14565,26 @@ export type InferenceEmbeddingInput = InferenceEmbeddingStringInput | InferenceE
 
 export type InferenceEmbeddingStringInput = string | string[]
 
+export interface InferenceFireworksAIServiceSettings {
+  api_key: string
+  model_id: string
+  url?: string
+  dimensions?: integer
+  similarity?: InferenceFireworksAISimilarityType
+  rate_limit?: InferenceRateLimitSetting
+}
+
+export type InferenceFireworksAIServiceType = 'fireworksai'
+
+export type InferenceFireworksAISimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
+
+export interface InferenceFireworksAITaskSettings {
+  user?: string
+  headers?: any
+}
+
+export type InferenceFireworksAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
+
 export type InferenceGoogleAiServiceType = 'googleaistudio'
 
 export interface InferenceGoogleAiStudioServiceSettings {
@@ -14791,6 +14731,11 @@ export interface InferenceInferenceEndpointInfoELSER extends InferenceInferenceE
 export interface InferenceInferenceEndpointInfoElasticsearch extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskTypeElasticsearch
+}
+
+export interface InferenceInferenceEndpointInfoFireworksAI extends InferenceInferenceEndpoint {
+  inference_id: string
+  task_type: InferenceTaskTypeFireworksAI
 }
 
 export interface InferenceInferenceEndpointInfoGoogleAIStudio extends InferenceInferenceEndpoint {
@@ -15062,6 +15007,8 @@ export type InferenceTaskTypeDeepSeek = 'completion' | 'chat_completion'
 export type InferenceTaskTypeELSER = 'sparse_embedding'
 
 export type InferenceTaskTypeElasticsearch = 'sparse_embedding' | 'text_embedding' | 'rerank'
+
+export type InferenceTaskTypeFireworksAI = 'chat_completion' | 'completion' | 'text_embedding'
 
 export type InferenceTaskTypeGoogleAIStudio = 'text_embedding' | 'completion'
 
@@ -15380,6 +15327,20 @@ export interface InferencePutElserRequest extends RequestBase {
 }
 
 export type InferencePutElserResponse = InferenceInferenceEndpointInfoELSER
+
+export interface InferencePutFireworksaiRequest extends RequestBase {
+  task_type: InferenceFireworksAITaskType
+  fireworksai_inference_id: Id
+  timeout?: Duration
+  body?: {
+    chunking_settings?: InferenceInferenceChunkingSettings
+    service: InferenceFireworksAIServiceType
+    service_settings: InferenceFireworksAIServiceSettings
+    task_settings?: InferenceFireworksAITaskSettings
+  }
+}
+
+export type InferencePutFireworksaiResponse = InferenceInferenceEndpointInfoFireworksAI
 
 export interface InferencePutGoogleaistudioRequest extends RequestBase {
   task_type: InferenceGoogleAiStudioTaskType
@@ -20289,7 +20250,7 @@ export interface QueryRulesQueryRuleCriteria {
   values?: any[]
 }
 
-export type QueryRulesQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
+export type QueryRulesQueryRuleCriteriaType = 'global' | 'exact' | 'fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
 
 export type QueryRulesQueryRuleType = 'pinned' | 'exclude'
 
@@ -20694,7 +20655,6 @@ export interface SearchableSnapshotsCacheStatsNode {
 
 export interface SearchableSnapshotsCacheStatsRequest extends RequestBase {
   node_id?: NodeIds
-  master_timeout?: Duration
 }
 
 export interface SearchableSnapshotsCacheStatsResponse {
@@ -20732,7 +20692,7 @@ export interface SearchableSnapshotsMountRequest extends RequestBase {
   snapshot: Name
   master_timeout?: Duration
   wait_for_completion?: boolean
-  storage?: string
+  storage?: SearchableSnapshotsMountStorageOption
   body?: {
     index: IndexName
     renamed_index?: IndexName
@@ -20744,6 +20704,8 @@ export interface SearchableSnapshotsMountRequest extends RequestBase {
 export interface SearchableSnapshotsMountResponse {
   snapshot: SearchableSnapshotsMountMountedSnapshot
 }
+
+export type SearchableSnapshotsMountStorageOption = 'full_copy' | 'shared_cache'
 
 export interface SearchableSnapshotsStatsRequest extends RequestBase {
   index?: Indices
@@ -20803,7 +20765,7 @@ export interface SecurityClusterNode {
   name: Name
 }
 
-export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'cross_cluster_replication' | 'cross_cluster_search' | 'delegate_pki' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_autoscaling' | 'manage_behavioral_analytics' | 'manage_ccr' | 'manage_data_frame_transforms' | 'manage_data_stream_global_retention' | 'manage_enrich' | 'manage_esql' | 'manage_ilm' | 'manage_index_templates' | 'manage_inference' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_search_application' | 'manage_search_query_rules' | 'manage_search_synonyms' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_user_profile' | 'manage_watcher' | 'monitor' | 'monitor_data_frame_transforms' | 'monitor_data_stream_global_retention' | 'monitor_enrich' | 'monitor_esql' | 'monitor_inference' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_stats' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'none' | 'post_behavioral_analytics_event' | 'read_ccr' | 'read_fleet_secrets' | 'read_ilm' | 'read_pipeline' | 'read_security' | 'read_slm' | 'transport_client' | 'write_connector_secrets' | 'write_fleet_secrets'| string
+export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'cross_cluster_replication' | 'cross_cluster_search' | 'delegate_pki' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_autoscaling' | 'manage_behavioral_analytics' | 'manage_ccr' | 'manage_data_frame_transforms' | 'manage_data_stream_global_retention' | 'manage_enrich' | 'manage_esql' | 'manage_ilm' | 'manage_index_templates' | 'manage_inference' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_search_application' | 'manage_search_query_rules' | 'manage_search_synonyms' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_user_profile' | 'manage_watcher' | 'monitor' | 'monitor_data_frame_transforms' | 'monitor_data_stream_global_retention' | 'monitor_enrich' | 'monitor_esql' | 'monitor_inference' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_stats' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'none' | 'post_behavioral_analytics_event' | 'read_ccr' | 'read_fleet_secrets' | 'read_ilm' | 'read_pipeline' | 'read_security' | 'read_slm' | 'transport_client' | 'write_connector_secrets' | 'write_fleet_secrets' | 'read_project_routing' | 'manage_project_routing'| string
 
 export interface SecurityCreatedStatus {
   created: boolean
@@ -23335,6 +23297,7 @@ export interface TransformSource {
   index: Indices
   query?: QueryDslQueryContainer
   runtime_mappings?: MappingRuntimeFields
+  project_routing?: ProjectRouting
 }
 
 export interface TransformSyncContainer {
@@ -24350,6 +24313,7 @@ export interface XpackInfoFeatures {
   eql: XpackInfoFeature
   esql: XpackInfoFeature
   graph: XpackInfoFeature
+  gpu_vector_indexing: XpackInfoFeature
   ilm: XpackInfoFeature
   logstash: XpackInfoFeature
   logsdb: XpackInfoFeature
@@ -24517,6 +24481,19 @@ export interface XpackUsageFeatureToggle {
 
 export interface XpackUsageFlattened extends XpackUsageBase {
   field_count: integer
+}
+
+export interface XpackUsageGpuNodeStats {
+  type: string
+  memory_in_bytes: long
+  enabled: boolean
+  index_build_count: long
+}
+
+export interface XpackUsageGpuVectorIndexing extends XpackUsageBase {
+  index_build_count: long
+  nodes_with_gpu: integer
+  nodes: XpackUsageGpuNodeStats[]
 }
 
 export interface XpackUsageHealthStatistics extends XpackUsageBase {
@@ -24695,6 +24672,7 @@ export interface XpackUsageResponse {
   eql: XpackUsageEql
   flattened?: XpackUsageFlattened
   graph: XpackUsageBase
+  gpu_vector_indexing?: XpackUsageGpuVectorIndexing
   health_api?: XpackUsageHealthStatistics
   ilm: XpackUsageIlm
   logstash: XpackUsageBase

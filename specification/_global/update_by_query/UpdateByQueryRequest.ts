@@ -150,6 +150,7 @@ export interface Request extends RequestBase {
      * A comma-separated list of data streams, indices, and aliases to search.
      * It supports wildcards (`*`).
      * To search all data streams or indices, omit this parameter or use `*` or `_all`.
+     * @ext_doc_id search-multiple-indices
      */
     index: Indices
   }
@@ -216,7 +217,7 @@ export interface Request extends RequestBase {
     /**
      * The maximum number of documents to process.
      * It defaults to all documents.
-     * When set to a value less then or equal to `scroll_size` then a scroll will not be used to retrieve the results for the operation.
+     * When set to a value less than or equal to `scroll_size` and `conflicts` is set to `abort`, a scroll will not be used to retrieve the results for the operation.
      */
     max_docs?: long
     /**
@@ -243,6 +244,7 @@ export interface Request extends RequestBase {
     /**
      * If `true`, the request cache is used for this request.
      * It defaults to the index-level setting.
+     * @ext_doc_id shard-request-cache
      */
     request_cache?: boolean
     /**

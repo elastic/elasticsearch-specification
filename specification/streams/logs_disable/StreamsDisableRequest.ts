@@ -30,6 +30,7 @@ import { StreamType } from '@streams/_types/StreamType'
  * @availability stack since=9.1.0 stability=experimental visibility=public
  * @cluster_privileges manage
  * @doc_id streams-logs-disable
+ * @doc_tag streams
  */
 export interface Request extends RequestBase {
   urls: [
@@ -42,7 +43,7 @@ export interface Request extends RequestBase {
     /** The stream type to disable. */
     name: StreamType
   }
-  response_media_type: MediaType.Text | MediaType.Json
+  response_media_type: MediaType.Json | MediaType.Text
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

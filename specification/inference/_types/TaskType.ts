@@ -169,6 +169,12 @@ export enum TaskTypeVoyageAI {
   rerank
 }
 
+export enum TaskTypeFireworksAI {
+  chat_completion,
+  completion,
+  text_embedding
+}
+
 export enum TaskTypeWatsonx {
   text_embedding,
   chat_completion,

@@ -26,6 +26,7 @@ import {
   DataTiers,
   Eql,
   Flattened,
+  GpuVectorIndexing,
   HealthStatistics,
   Ilm,
   MachineLearning,
@@ -58,6 +59,10 @@ export class Response {
     eql: Eql
     flattened?: Flattened
     graph: Base
+    /**
+     * @availability stack since=9.3.2
+     */
+    gpu_vector_indexing?: GpuVectorIndexing
     health_api?: HealthStatistics
     ilm: Ilm
     logstash: Base

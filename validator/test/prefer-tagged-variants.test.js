@@ -32,7 +32,6 @@ const ruleTester = new RuleTester({
 
 ruleTester.run('prefer-tagged-variants', rule, {
   valid: [
-    `export type QueryType = BoolQuery | TermQuery | RangeQuery`,
     `class MyClass {
       seed: long | string
     }`,
@@ -64,8 +63,38 @@ ruleTester.run('prefer-tagged-variants', rule, {
     `interface MyInterface {
       data: MyClass[] | MyClass
     }`,
+    `/**
+   * @variants internal tag='type'
+   * @non_exhaustive
+  */
+type Repository =
+  | AzureRepository
+  | GcsRepository
+  | S3Repository
+  | SharedFileSystemRepository
+  | ReadOnlyUrlRepository
+  | SourceOnlyRepository`,
+`
+/** @variants internal tag='type' */
+type Validation =
+  | LessThanValidation
+  | GreaterThanValidation
+  | ListTypeValidation
+  | IncludedInValidation
+  | RegexValidation
+`,
+    `
+/** @codegen_names a,b */
+export type ResponseItem<TDocument> = GetResult<TDocument> | MultiGetError
+  `,
+`/** @codegen_names a,b */
+type NewCorrectType = Atype | Btype`
   ],
   invalid: [
+    {
+      code: `export type QueryType = BoolQuery | TermQuery | RangeQuery`,
+      errors: [{ messageId: 'preferTaggedVariants' }]
+    },
     {
       code: `class Container {
         query: BoolQuery | TermQuery | RangeQuery
@@ -96,6 +125,24 @@ ruleTester.run('prefer-tagged-variants', rule, {
       }`,
       errors: [{ messageId: 'preferTaggedVariants' }]
     },
+    {
+      code: `type NewType = Atype | Btype`,
+      errors: [{ messageId: 'preferTaggedVariants' }]
+    },
+    {
+      code: `
+      /** @codegen_names a,b */
+      type NewCorrectType = Atype | Btype
+      
+      type NewWrongType = Ctype | Dtype
+      `,
+      errors: [{ messageId: 'preferTaggedVariants' }]
+    },
+    {
+      code: `/** @codegen_names */
+      type IncompleteCodegen = Atype | Btype`,
+      errors: [{ messageId: 'preferTaggedVariants' }]
+    }
   ],
 })
 

@@ -95,7 +95,6 @@ export class QueryRuleCriteria {
 export enum QueryRuleCriteriaType {
   global,
   exact,
-  exact_fuzzy,
   fuzzy,
   prefix,
   suffix,

@@ -43,6 +43,7 @@ import { ExpandWildcards, Indices, MediaType } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-refresh
  * @index_privileges maintenance
+ * @ext_doc_id refresh_an_index
  */
 export interface Request extends RequestBase {
   urls: [
