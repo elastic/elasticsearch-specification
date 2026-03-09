@@ -143,7 +143,7 @@ export class IndexTemplateSummary {
    * @availability stack since=8.11.0 stability=stable
    * @availability serverless stability=stable
    */
-  lifecycle?: DataStreamLifecycleWithRollover
+  lifecycle?: DataStreamLifecycle
   /**
    * @availability stack since=8.19.0 stability=stable
    * @availability serverless stability=stable
@@ -177,7 +177,7 @@ export class IndexTemplateSummaryRes {
    * @availability stack since=8.11.0 stability=stable
    * @availability serverless stability=stable
    */
-  lifecycle?: DataStreamLifecycle
+  lifecycle?: DataStreamLifecycleWithRollover
   /**
    * @availability stack since=8.19.0 stability=stable
    * @availability serverless stability=stable
