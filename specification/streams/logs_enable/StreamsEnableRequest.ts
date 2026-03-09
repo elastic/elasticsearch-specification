@@ -48,7 +48,7 @@ export interface Request extends RequestBase {
     /** The stream type to enable. */
     name: StreamType
   }
-  response_media_type: MediaType.Text | MediaType.Json
+  response_media_type: MediaType.Json | MediaType.Text
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.
