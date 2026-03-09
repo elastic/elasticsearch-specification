@@ -349,7 +349,7 @@ fn is_index_name_and_alias(union: &UnionOf) -> bool {
     false
 }
 
-fn is_literal(instance: &InstanceOf) -> Option<ParamType> {
+fn get_literal(instance: &InstanceOf) -> Option<ParamType> {
     BuiltinMappings::get(&instance.typ.namespace, &instance.typ.name)
 }
 
@@ -385,7 +385,7 @@ fn get_type_name(value_of: &ValueOf, types: &IndexMap<TypeName, TypeDefinition>)
             match full_type {
                 TypeDefinition::TypeAlias(alias) => match &alias.typ {
                     ValueOf::UnionOf(union) if is_list_enum(union).is_some() => Ok(ParamType::List),
-                    ValueOf::InstanceOf(inst) => is_literal(inst).ok_or_else(|| {
+                    ValueOf::InstanceOf(inst) => get_literal(inst).ok_or_else(|| {
                         anyhow::anyhow!(
                             "Unhandled type alias for {}:{}: {:?}",
                             type_name.namespace,
