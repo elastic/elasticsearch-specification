@@ -51,7 +51,7 @@ export interface Request extends RequestBase {
      */
     scroll_id?: ScrollIds
   }
-  request_media_type: MediaType.Text | MediaType.Json
+  request_media_type: MediaType.Json | MediaType.Text
   response_media_type: MediaType.Json
   body?: {
     /**
