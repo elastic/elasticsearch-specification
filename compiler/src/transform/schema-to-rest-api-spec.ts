@@ -17,27 +17,13 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { MediaType } from '@_types/common'
-import { Detector } from '@ml/_types/Detector'
+import { convert_schema_to_individual_rest_api_spec_files } from 'compiler-wasm-lib'
 
-/**
- * Validate an anomaly detection job.
- *
- * @rest_spec_name ml.validate_detector
- * @availability stack since=5.4.0 stability=stable visibility=private
- * @availability serverless stability=stable visibility=private
- * @doc_tag ml anomaly
- */
-export interface Request extends RequestBase {
-  urls: [
-    {
-      path: '/_ml/anomaly_detectors/_validate/detector'
-      methods: ['POST']
-    }
-  ]
-  request_media_type: MediaType.Json
-  response_media_type: MediaType.Json
-  /** @codegen_name detector */
-  body: Detector
+// Remove the 2 first args ("ts-node", "schema-to-rest-api-spec.ts")
+const realArgs = process.argv.slice(2)
+
+try {
+  convert_schema_to_individual_rest_api_spec_files(realArgs, '..')
+} catch (e) {
+  console.log(e)
 }
