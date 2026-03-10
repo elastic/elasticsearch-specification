@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { MediaType } from '@_types/common'
+import { MediaType, ProjectRouting } from '@_types/common'
 
 /**
  * Get tags.
@@ -40,8 +40,14 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Json
   body?: {
     /**
-     * A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*.
+     * A Lucene query using project metadata tags used to filter which projects are returned in the response.
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=experimental visibility=feature_flag feature_flag=serverless.cross_project.enabled
      */
-    project_routing?: string
+    project_routing?: ProjectRouting
   }
 }
