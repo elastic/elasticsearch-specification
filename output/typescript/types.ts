@@ -1102,6 +1102,10 @@ export interface ReindexSource {
   runtime_mappings?: MappingRuntimeFields
 }
 
+export interface ReindexRethrottleParentReindexTask extends ReindexRethrottleReindexTask {
+  children?: ReindexRethrottleReindexTask[]
+}
+
 export interface ReindexRethrottleReindexNode extends SpecUtilsBaseNode {
   tasks: Record<TaskId, ReindexRethrottleReindexTask>
 }
@@ -1120,13 +1124,19 @@ export interface ReindexRethrottleReindexTask {
   headers: HttpHeaders
 }
 
+export type ReindexRethrottleReindexTasks = ReindexRethrottleReindexTask[] | Record<string, ReindexRethrottleParentReindexTask>
+
 export interface ReindexRethrottleRequest extends RequestBase {
   task_id: Id
   requests_per_second: float
+  group_by?: TasksGroupBy
 }
 
 export interface ReindexRethrottleResponse {
-  nodes: Record<string, ReindexRethrottleReindexNode>
+  node_failures?: ErrorCause[]
+  task_failures?: TaskFailure[]
+  nodes?: Record<string, ReindexRethrottleReindexNode>
+  tasks?: ReindexRethrottleReindexTasks
 }
 
 export interface RenderSearchTemplateRequest extends RequestBase {
