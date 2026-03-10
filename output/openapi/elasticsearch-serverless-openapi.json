@@ -93473,13 +93473,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "project_routing": {
-                  "description": "A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*.",
-                  "type": "string"
-                }
-              }
+              "type": "object"
             }
           }
         }
