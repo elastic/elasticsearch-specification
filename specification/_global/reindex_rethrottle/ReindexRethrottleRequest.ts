@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Id, MediaType } from '@_types/common'
 import { float } from '@_types/Numeric'
+import { GroupBy } from '@tasks/_types/GroupBy'
 
 /**
  * Throttle a reindex operation.
@@ -60,5 +61,9 @@ export interface Request extends RequestBase {
      * It can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.
      */
     requests_per_second: float
+    /**
+     * @availability stack stability=stable
+     */
+    group_by?: GroupBy
   }
 }
