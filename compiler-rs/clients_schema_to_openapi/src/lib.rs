@@ -76,7 +76,7 @@ pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_m
 pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, product_meta: &IndexMap<String,String>) -> anyhow::Result<OpenAPI> {
     let mut openapi = OpenAPI {
         openapi: "3.0.3".into(),
-        info: info(model),
+        info: info(model, config),
         servers: vec![],
         paths: Default::default(),
         components: Some(Components {
@@ -132,23 +132,36 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, pro
     Ok(openapi)
 }
 
-fn info(model: &IndexedModel) -> openapiv3::Info {
-    let (title, license) = if let Some(info) = &model.info {
-        (
-            info.title.clone(),
-            Some(openapiv3::License {
-                name: info.license.name.clone(),
-                url: Some(info.license.url.clone()),
-                extensions: Default::default(),
-            }),
-        )
+fn info(model: &IndexedModel, config: &Configuration) -> openapiv3::Info {
+    let branch = config.branch.as_deref().unwrap_or("current");
+
+    let (title, description, license) = if let Some(info) = &model.info {
+        let title = config.flavor
+            .as_ref()
+            .and_then(|f| info.flavors.as_ref()?.get(f)?.title.clone())
+            .unwrap_or_else(|| info.title.clone())
+            .replace("{branch}", branch);
+
+        let description = config.flavor
+            .as_ref()
+            .and_then(|f| info.flavors.as_ref()?.get(f)?.description.clone())
+            .or_else(|| info.description.clone())
+            .map(|d| d.replace("{branch}", branch));
+
+        let license = Some(openapiv3::License {
+            name: info.license.name.clone(),
+            url: Some(info.license.url.clone()),
+            extensions: Default::default(),
+        });
+
+        (title, description, license)
     } else {
-        ("".to_string(), None)
+        ("".to_string(), None, None)
     };
 
     openapiv3::Info {
         title,
-        description: None,
+        description,
         terms_of_service: None,
         contact: None,
         license,

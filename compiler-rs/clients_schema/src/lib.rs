@@ -1031,11 +1031,24 @@ pub struct UrlTemplate {
     pub deprecation: Option<Deprecation>,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+#[serde(rename_all = "camelCase")]
+pub struct FlavorInfo {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub title: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ModelInfo {
     pub title: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
     pub license: License,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub flavors: Option<std::collections::HashMap<Flavor, FlavorInfo>>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

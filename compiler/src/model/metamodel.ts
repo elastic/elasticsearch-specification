@@ -484,9 +484,16 @@ export class UrlTemplate {
 export class Model {
   _info?: {
     title: string
+    description?: string
     license: {
       name: string
       url: string
+    }
+    flavors?: {
+      [flavor: string]: {
+        title?: string
+        description?: string
+      }
     }
   }
 
