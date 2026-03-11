@@ -136,18 +136,15 @@ fn info(model: &IndexedModel, config: &Configuration) -> openapiv3::Info {
     let branch = config.branch.as_deref().unwrap_or("current");
 
     let (title, description, license) = if let Some(info) = &model.info {
-        let flavor_key = config.flavor.as_ref().map(|f| match f {
-            Flavor::Stack => "stack",
-            Flavor::Serverless => "serverless",
-        });
-
-        let title = flavor_key
-            .and_then(|k| info.flavors.as_ref()?.get(k)?.title.clone())
+        let title = config.flavor
+            .as_ref()
+            .and_then(|f| info.flavors.as_ref()?.get(f)?.title.clone())
             .unwrap_or_else(|| info.title.clone())
             .replace("{branch}", branch);
 
-        let description = flavor_key
-            .and_then(|k| info.flavors.as_ref()?.get(k)?.description.clone())
+        let description = config.flavor
+            .as_ref()
+            .and_then(|f| info.flavors.as_ref()?.get(f)?.description.clone())
             .or_else(|| info.description.clone())
             .map(|d| d.replace("{branch}", branch));
 

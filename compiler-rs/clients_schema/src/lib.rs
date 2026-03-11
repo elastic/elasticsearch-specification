@@ -1048,7 +1048,7 @@ pub struct ModelInfo {
     pub description: Option<String>,
     pub license: License,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub flavors: Option<std::collections::HashMap<String, FlavorInfo>>,
+    pub flavors: Option<std::collections::HashMap<Flavor, FlavorInfo>>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

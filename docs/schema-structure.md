@@ -21,11 +21,22 @@ The schema is structured as follows:
 ```jsonc
 {
   "_info": {
+    "title": "",
+    "description": "...",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/main/LICENSE"
     },
-    "title": "Elasticsearch Request & Response Specification"
+    "flavors": {
+      "stack": {
+        "title": "Elasticsearch API",
+        "description": "..."
+      },
+      "serverless": {
+        "title": "Elasticsearch Serverless API",
+        "description": "..."
+      }
+    }
   },
   "endpoints": [...],
   "types": [...]
