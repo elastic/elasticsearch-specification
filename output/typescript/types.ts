@@ -20597,7 +20597,6 @@ export interface SearchableSnapshotsCacheStatsNode {
 
 export interface SearchableSnapshotsCacheStatsRequest extends RequestBase {
   node_id?: NodeIds
-  master_timeout?: Duration
 }
 
 export interface SearchableSnapshotsCacheStatsResponse {
