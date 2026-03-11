@@ -47,6 +47,7 @@ import { Query } from './_types/Knn'
  * @availability stack since=8.0.0 stability=experimental
  * @deprecated 8.4.0 The kNN search API has been replaced by the `knn` option in the search API.
  * @doc_tag search
+ * @doc_id search-knn
  */
 export interface Request extends RequestBase {
   urls: [
