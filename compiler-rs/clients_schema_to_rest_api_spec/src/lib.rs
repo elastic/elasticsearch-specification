@@ -682,7 +682,6 @@ mod tests {
             response: None,
             urls: vec![],
             doc_url: None,
-            doc_url_serverless: None,
             description: "".to_string(),
             request_body_required: false,
             request_media_type: vec![],
