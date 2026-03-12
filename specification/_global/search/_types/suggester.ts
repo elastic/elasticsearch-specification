@@ -409,10 +409,6 @@ export class PhraseSuggester extends SuggesterBase {
    * The default model is Stupid Backoff.
    */
   smoothing?: SmoothingModelContainer
-  /**
-   * The text/query to provide suggestions for.
-   */
-  text?: string
   token_limit?: integer
 }
 
@@ -560,9 +556,4 @@ export class TermSuggester extends SuggesterBase {
    * Controls what suggestions are included or controls for what suggest text terms, suggestions should be suggested.
    */
   suggest_mode?: SuggestMode
-  /**
-   * The suggest text.
-   * Needs to be set globally or per suggestion.
-   */
-  text?: string
 }
