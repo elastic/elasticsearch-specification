@@ -1704,7 +1704,6 @@ export interface SearchPhraseSuggester extends SearchSuggesterBase {
   separator?: string
   shard_size?: integer
   smoothing?: SearchSmoothingModelContainer
-  text?: string
   token_limit?: integer
 }
 
@@ -1864,7 +1863,6 @@ export interface SearchTermSuggester extends SearchSuggesterBase {
   sort?: SearchSuggestSort
   string_distance?: SearchStringDistance
   suggest_mode?: SuggestMode
-  text?: string
 }
 
 export interface SearchTotalHits {
