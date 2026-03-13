@@ -125,13 +125,50 @@ export type CompletionToolType = string | CompletionToolChoice
  */
 export interface ContentObject {
   /**
-   * The text content.
+   * The type of content. Must be one of "text", "image_url" or "file". Not all services/models support content
+   * types other than "text"
+   */
+  type: string
+  /**
+   * The text content. Only applicable for the "text" type
    */
   text: string
   /**
-   * The type of content.
+   * The image content. Only applicable for the "image_url" type
    */
-  type: string
+  image_url: ImageUrl
+  /**
+   * The file content. Only applicable for the "file" type
+   */
+  file: FileContent
+}
+
+export interface ImageUrl {
+  /**
+   * The base64 encoded image data as a data URI
+   */
+  url: string
+  /**
+   * Specifies the detail level of the image
+   */
+  detail?: ImageUrlDetail
+}
+
+export enum ImageUrlDetail {
+  auto,
+  low,
+  high
+}
+
+export interface FileContent {
+  /**
+   * The base64 encoded file data
+   */
+  file_data: string
+  /**
+   * The name of the file
+   */
+  filename: string
 }
 
 /**
@@ -185,13 +222,42 @@ export interface Message {
    * }
    * ```
    *
-   * Object example:
+   * Text example:
    * ```
    * {
    *   "content": [
    *       {
    *        "text": "Some text",
    *        "type": "text"
+   *       }
+   *    ]
+   * }
+   * ```
+   *
+   * Image example:
+   * ```
+   * {
+   *   "content": [
+   *       {
+   *        "image_url": {
+   *          "url": "data:image/jpg;base64,..."
+   *        },
+   *        "type": "image_url"
+   *       }
+   *    ]
+   * }
+   * ```
+   *
+   * File example:
+   * ```
+   * {
+   *   "content": [
+   *       {
+   *        "file": {
+   *          "file_data": "data:application/pdf;base64,...",
+   *          "filename": "somePDF"
+   *        },
+   *        "type": "file"
    *       }
    *    ]
    * }
