@@ -125,20 +125,20 @@ export type CompletionToolType = string | CompletionToolChoice
  */
 export interface ContentObject {
   /**
-   * The type of content. Must be one of "text", "image_url" or "file". Not all services/models support content
+   * The type of content. Must be one of `text`, `image_url` or `file`. Not all services/models support content
    * types other than "text"
    */
   type: string
   /**
-   * The text content. Only applicable for the "text" type
+   * The text content. Only applicable for the `text` type
    */
   text: string
   /**
-   * The image content. Only applicable for the "image_url" type
+   * The image content. Only applicable for the `image_url` type
    */
   image_url: ImageUrl
   /**
-   * The file content. Only applicable for the "file" type
+   * The file content. Only applicable for the `file` type
    */
   file: FileContent
 }
