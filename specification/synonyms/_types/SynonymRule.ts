@@ -36,7 +36,6 @@ export class SynonymRule {
   synonyms: SynonymString
 }
 
-// Synonym Rule with mandatory ID, used for responses (which always include it)
 export class SynonymRuleRead implements OverloadOf<SynonymRule> {
   id: Id
 }
