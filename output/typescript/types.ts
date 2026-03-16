@@ -14392,6 +14392,12 @@ export interface InferenceAzureOpenAITaskSettings {
 
 export type InferenceAzureOpenAITaskType = 'completion' | 'chat_completion' | 'text_embedding'
 
+export interface InferenceBaseReasoningDetail {
+  format?: string
+  id?: string
+  index?: integer
+}
+
 export type InferenceCohereEmbeddingType = 'binary' | 'bit' | 'byte' | 'float' | 'int8'
 
 export type InferenceCohereInputType = 'classification' | 'clustering' | 'ingest' | 'search'
@@ -14573,6 +14579,11 @@ export interface InferenceEmbeddingInferenceResult {
 export type InferenceEmbeddingInput = InferenceEmbeddingStringInput | InferenceEmbeddingContentInput
 
 export type InferenceEmbeddingStringInput = string | string[]
+
+export interface InferenceEncryptedReasoningDetail extends InferenceBaseReasoningDetail {
+  type: 'reasoning.encrypted'
+  data: string
+}
 
 export interface InferenceFireworksAIServiceSettings {
   api_key: string
@@ -14865,6 +14876,8 @@ export interface InferenceMessage {
   role: string
   tool_call_id?: Id
   tool_calls?: InferenceToolCall[]
+  reasoning?: string
+  reasoning_details?: InferenceReasoningDetail[]
 }
 
 export type InferenceMessageContent = string | InferenceContentObject[]
@@ -14953,10 +14966,25 @@ export interface InferenceRateLimitSetting {
   requests_per_minute?: integer
 }
 
+export interface InferenceReasoning {
+  effort?: InferenceReasoningEffort
+  enabled?: boolean
+  exclude?: boolean
+  max_tokens?: integer
+  summary?: InferenceReasoningSummary
+}
+
+export type InferenceReasoningDetail = InferenceEncryptedReasoningDetail | InferenceSummaryReasoningDetail | InferenceTextReasoningDetail
+
+export type InferenceReasoningEffort = 'xhigh' | 'high' | 'medium' | 'low' | 'minimal' | 'none'
+
+export type InferenceReasoningSummary = 'auto' | 'concise' | 'detailed'
+
 export interface InferenceRequestChatCompletion {
   messages: InferenceMessage[]
   model?: string
   max_completion_tokens?: long
+  reasoning?: InferenceReasoning
   stop?: string[]
   temperature?: float
   tool_choice?: InferenceCompletionToolType
@@ -14986,6 +15014,11 @@ export interface InferenceSparseEmbeddingResult {
 }
 
 export type InferenceSparseVector = Record<string, float>
+
+export interface InferenceSummaryReasoningDetail extends InferenceBaseReasoningDetail {
+  type: 'reasoning.summary'
+  summary: string
+}
 
 export type InferenceTaskSettings = any
 
@@ -15047,6 +15080,12 @@ export interface InferenceTextEmbeddingInferenceResult {
   text_embedding_bytes?: InferenceDenseEmbeddingByteResult[]
   text_embedding_bits?: InferenceDenseEmbeddingByteResult[]
   text_embedding?: InferenceDenseEmbeddingResult[]
+}
+
+export interface InferenceTextReasoningDetail extends InferenceBaseReasoningDetail {
+  type: 'reasoning.text'
+  signature?: string
+  text?: string
 }
 
 export interface InferenceThinkingConfig {
