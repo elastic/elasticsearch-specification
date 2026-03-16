@@ -18,7 +18,7 @@
  */
 
 import { Name } from '@_types/common'
-import { IndexTemplateRes } from '@indices/_types/IndexTemplate'
+import { IndexTemplateWithRollover } from '@indices/_types/IndexTemplate'
 
 export class Response {
   body: {
@@ -28,5 +28,5 @@ export class Response {
 
 export class IndexTemplateItem {
   name: Name
-  index_template: IndexTemplateRes
+  index_template: IndexTemplateWithRollover
 }

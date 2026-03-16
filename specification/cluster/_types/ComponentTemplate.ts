@@ -27,8 +27,8 @@ import {
 } from '@indices/_types/DataStreamLifecycle'
 import { DataStreamOptions } from '@indices/_types/DataStreamOptions'
 import { IndexSettings } from '@indices/_types/IndexSettings'
+import { OverloadOf } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
-import {OverloadOf} from "@spec_utils/behaviors";
 
 export class ComponentTemplate {
   name: Name
@@ -89,10 +89,14 @@ export class ComponentTemplateSummary {
   data_stream_options?: DataStreamOptions
 }
 
-export class ComponentTemplateNodeWithRollover implements OverloadOf<ComponentTemplateNode>{
+export class ComponentTemplateNodeWithRollover
+  implements OverloadOf<ComponentTemplateNode>
+{
   template: ComponentTemplateSummaryRes
 }
 
-export class ComponentTemplateSummaryRes implements OverloadOf<ComponentTemplateSummary>{
+export class ComponentTemplateSummaryRes
+  implements OverloadOf<ComponentTemplateSummary>
+{
   lifecycle?: DataStreamLifecycleWithRollover
 }
