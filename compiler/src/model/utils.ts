@@ -670,9 +670,9 @@ export function hoistRequestAnnotations (
     } else if (tag === 'rest_spec_name') {
     } else if (tag === 'index_privileges') {
       const privileges = [
-        'all', 'auto_configure', 'create', 'create_doc', 'create_index', 'delete', 'delete_index', 'index',
-        'maintenance', 'manage', 'manage_follow_index', 'manage_ilm', 'manage_leader_index', 'monitor',
-        'read', 'read_cross_cluster', 'view_index_metadata', 'write'
+        'all', 'auto_configure', 'create', 'create_doc', 'create_index', 'create_view', 'delete', 'delete_index', 'delete_view', 'index',
+        'maintenance', 'manage', 'manage_follow_index', 'manage_ilm', 'manage_leader_index', 'manage_view', 'monitor',
+        'read', 'read_cross_cluster', 'read_view_metadata', 'view_index_metadata', 'write'
       ]
       const values = parseCommaSeparated(value)
       for (const v of values) {

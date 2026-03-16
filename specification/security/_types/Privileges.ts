@@ -400,6 +400,7 @@ export enum IndexPrivilege {
   create,
   create_doc,
   create_index,
+  create_view,
   /**
    * @availability stack
    */
@@ -410,6 +411,7 @@ export enum IndexPrivilege {
   cross_cluster_replication_internal,
   delete,
   delete_index,
+  delete_view,
   index,
   maintenance,
   manage,
@@ -426,6 +428,7 @@ export enum IndexPrivilege {
    * @availability stack
    */
   manage_leader_index,
+  manage_view,
   monitor,
   none,
   read,
@@ -433,6 +436,7 @@ export enum IndexPrivilege {
    * @availability stack
    */
   read_cross_cluster,
+  read_view_metadata,
   view_index_metadata,
   write
 }

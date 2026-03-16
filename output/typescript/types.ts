@@ -20791,7 +20791,7 @@ export interface SecurityGlobalPrivilege {
 
 export type SecurityGrantType = 'password' | 'access_token'
 
-export type SecurityIndexPrivilege = 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'cross_cluster_replication' | 'cross_cluster_replication_internal' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_data_stream_lifecycle' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'none' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'| string
+export type SecurityIndexPrivilege = 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'create_view' | 'cross_cluster_replication' | 'cross_cluster_replication_internal' | 'delete' | 'delete_index' | 'delete_view' | 'index' | 'maintenance' | 'manage' | 'manage_data_stream_lifecycle' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'manage_view' | 'monitor' | 'none' | 'read' | 'read_cross_cluster' | 'read_view_metadata' | 'view_index_metadata' | 'write'| string
 
 export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity
