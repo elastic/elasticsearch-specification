@@ -25,9 +25,3 @@ export class ChunkingSettings implements OverloadOf<InferenceChunkingSettings> {
   strategy: string
   max_chunk_size: integer
 }
-
-export class ChunkRescorerChunkingSettings
-  implements OverloadOf<InferenceChunkingSettings>
-{
-  max_chunk_size: integer
-}
