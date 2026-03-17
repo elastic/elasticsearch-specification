@@ -158,6 +158,6 @@ export class IndexTemplateSummaryWithRollover
   lifecycle?: DataStreamLifecycleWithRollover
 }
 
-export class IndexTemplateWithRollover {
+export class IndexTemplateWithRollover implements OverloadOf<IndexTemplate> {
   template?: IndexTemplateSummaryWithRollover
 }
