@@ -41346,25 +41346,6 @@
       "_types.mapping.ChunkRescorerChunkingSettings": {
         "type": "object",
         "properties": {
-          "strategy": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#chunking-strategies"
-            },
-            "description": "The chunking strategy: `sentence`, `word`, `none` or `recursive`.\n\n * If `strategy` is set to `recursive`, you must also specify:\n\n- `max_chunk_size`\n- either `separators` or`separator_group`\n\nLearn more about different chunking strategies in the linked documentation.",
-            "default": "sentence",
-            "type": "string"
-          },
-          "separator_group": {
-            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
-            "type": "string"
-          },
-          "separators": {
-            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nA list of strings used as possible split points when chunking text.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "max_chunk_size": {
             "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
             "default": 250.0,
@@ -41379,6 +41360,25 @@
             "description": "The number of overlapping sentences for chunks.\nIt is applicable only for a `sentence` chunking strategy.\nIt can be either `1` or `0`.",
             "default": 1.0,
             "type": "number"
+          },
+          "separator_group": {
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
+            "type": "string"
+          },
+          "separators": {
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nA list of strings used as possible split points when chunking text.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "strategy": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#chunking-strategies"
+            },
+            "description": "The chunking strategy: `sentence`, `word`, `none` or `recursive`.\n\n * If `strategy` is set to `recursive`, you must also specify:\n\n- `max_chunk_size`\n- either `separators` or`separator_group`\n\nLearn more about different chunking strategies in the linked documentation.",
+            "default": "sentence",
+            "type": "string"
           }
         },
         "required": [
@@ -52121,7 +52121,7 @@
           "component_template": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/cluster._types.ComponentTemplateNode"
+                "$ref": "#/components/schemas/cluster._types.ComponentTemplateNodeWithRollover"
               }
             ]
           }
@@ -52131,13 +52131,13 @@
           "component_template"
         ]
       },
-      "cluster._types.ComponentTemplateNode": {
+      "cluster._types.ComponentTemplateNodeWithRollover": {
         "type": "object",
         "properties": {
           "template": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/cluster._types.ComponentTemplateSummary"
+                "$ref": "#/components/schemas/cluster._types.ComponentTemplateSummaryRes"
               }
             ]
           },
@@ -52199,9 +52199,17 @@
           "template"
         ]
       },
-      "cluster._types.ComponentTemplateSummary": {
+      "cluster._types.ComponentTemplateSummaryRes": {
         "type": "object",
         "properties": {
+          "lifecycle": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
+              }
+            ]
+          },
           "_meta": {
             "allOf": [
               {
@@ -52235,14 +52243,6 @@
               "$ref": "#/components/schemas/indices._types.AliasDefinition"
             }
           },
-          "lifecycle": {
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
-              }
-            ]
-          },
           "data_stream_options": {
             "x-state": "Generally available",
             "allOf": [
@@ -52252,6 +52252,156 @@
             ]
           }
         }
+      },
+      "indices._types.DataStreamLifecycleWithRollover": {
+        "description": "Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,\nif asked.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "rollover": {
+                "description": "The conditions which will trigger the rollover of a backing index as configured by the cluster setting `cluster.lifecycle.default.rollover`.\nThis property is an implementation detail and it will only be retrieved when the query param `include_defaults` is set to true.\nThe contents of this field are subject to change.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/indices._types.DataStreamLifecycleRolloverConditions"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "indices._types.DataStreamLifecycleRolloverConditions": {
+        "type": "object",
+        "properties": {
+          "min_age": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "max_age": {
+            "type": "string"
+          },
+          "min_docs": {
+            "type": "number"
+          },
+          "max_docs": {
+            "type": "number"
+          },
+          "min_size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "max_size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "min_primary_shard_size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "max_primary_shard_size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "min_primary_shard_docs": {
+            "type": "number"
+          },
+          "max_primary_shard_docs": {
+            "type": "number"
+          }
+        }
+      },
+      "indices._types.DataStreamLifecycle": {
+        "description": "Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
+        "type": "object",
+        "properties": {
+          "data_retention": {
+            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "downsampling": {
+            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
+            }
+          },
+          "downsampling_method": {
+            "description": "The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires\n`downsampling` to be defined. Defaults to `aggregate`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.SamplingMethod"
+              }
+            ]
+          },
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "default": true,
+            "type": "boolean"
+          },
+          "frozen_after": {
+            "description": "Only available with feature flag dlm_searchable_snapshots.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.DownsamplingRound": {
+        "type": "object",
+        "properties": {
+          "after": {
+            "description": "The duration since rollover when this downsampling round should execute",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "fixed_interval": {
+            "description": "The downsample interval.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationLarge"
+              }
+            ]
+          }
+        },
+        "required": [
+          "after",
+          "fixed_interval"
+        ]
+      },
+      "indices._types.SamplingMethod": {
+        "type": "string",
+        "enum": [
+          "aggregate",
+          "last_value"
+        ]
       },
       "indices._types.IndexSettings": {
         "type": "object",
@@ -61216,17 +61366,6 @@
             "default": "sentence",
             "type": "string"
           },
-          "separator_group": {
-            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
-            "type": "string"
-          },
-          "separators": {
-            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nA list of strings used as possible split points when chunking text.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "max_chunk_size": {
             "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
             "default": 250.0,
@@ -61241,6 +61380,17 @@
             "description": "The number of overlapping sentences for chunks.\nIt is applicable only for a `sentence` chunking strategy.\nIt can be either `1` or `0`.",
             "default": 1.0,
             "type": "number"
+          },
+          "separator_group": {
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
+            "type": "string"
+          },
+          "separators": {
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nA list of strings used as possible split points when chunking text.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -62477,148 +62627,6 @@
             "type": "boolean"
           }
         }
-      },
-      "indices._types.DataStreamLifecycleWithRollover": {
-        "description": "Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,\nif asked.",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "rollover": {
-                "description": "The conditions which will trigger the rollover of a backing index as configured by the cluster setting `cluster.lifecycle.default.rollover`.\nThis property is an implementation detail and it will only be retrieved when the query param `include_defaults` is set to true.\nThe contents of this field are subject to change.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/indices._types.DataStreamLifecycleRolloverConditions"
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      },
-      "indices._types.DataStreamLifecycleRolloverConditions": {
-        "type": "object",
-        "properties": {
-          "min_age": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "max_age": {
-            "type": "string"
-          },
-          "min_docs": {
-            "type": "number"
-          },
-          "max_docs": {
-            "type": "number"
-          },
-          "min_size": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ByteSize"
-              }
-            ]
-          },
-          "max_size": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ByteSize"
-              }
-            ]
-          },
-          "min_primary_shard_size": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ByteSize"
-              }
-            ]
-          },
-          "max_primary_shard_size": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ByteSize"
-              }
-            ]
-          },
-          "min_primary_shard_docs": {
-            "type": "number"
-          },
-          "max_primary_shard_docs": {
-            "type": "number"
-          }
-        }
-      },
-      "indices._types.DataStreamLifecycle": {
-        "description": "Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
-        "type": "object",
-        "properties": {
-          "data_retention": {
-            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "downsampling": {
-            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
-            }
-          },
-          "downsampling_method": {
-            "description": "The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires\n`downsampling` to be defined. Defaults to `aggregate`.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.SamplingMethod"
-              }
-            ]
-          },
-          "enabled": {
-            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
-            "default": true,
-            "type": "boolean"
-          }
-        }
-      },
-      "indices._types.DownsamplingRound": {
-        "type": "object",
-        "properties": {
-          "after": {
-            "description": "The duration since rollover when this downsampling round should execute",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "fixed_interval": {
-            "description": "The downsample interval.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.DurationLarge"
-              }
-            ]
-          }
-        },
-        "required": [
-          "after",
-          "fixed_interval"
-        ]
-      },
-      "indices._types.SamplingMethod": {
-        "type": "string",
-        "enum": [
-          "aggregate",
-          "last_value"
-        ]
       },
       "indices._types.DataStreamOptions": {
         "description": "Data stream options contain the configuration of data stream level features for a given data stream, for example,\nthe failure store configuration.",
@@ -66155,7 +66163,7 @@
           "index_template": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.IndexTemplate"
+                "$ref": "#/components/schemas/indices._types.IndexTemplateWithRollover"
               }
             ]
           }
@@ -66165,9 +66173,17 @@
           "index_template"
         ]
       },
-      "indices._types.IndexTemplate": {
+      "indices._types.IndexTemplateWithRollover": {
         "type": "object",
         "properties": {
+          "template": {
+            "description": "Template to be applied.\nIt may optionally include an `aliases`, `mappings`, or `settings` configuration.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexTemplateSummaryWithRollover"
+              }
+            ]
+          },
           "index_patterns": {
             "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
             "allOf": [
@@ -66182,14 +66198,6 @@
             "items": {
               "$ref": "#/components/schemas/_types.Name"
             }
-          },
-          "template": {
-            "description": "Template to be applied.\nIt may optionally include an `aliases`, `mappings`, or `settings` configuration.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.IndexTemplateSummary"
-              }
-            ]
           },
           "version": {
             "description": "Version number used to manage index templates externally.\nThis number is not automatically generated by Elasticsearch.",
@@ -66278,9 +66286,17 @@
           "composed_of"
         ]
       },
-      "indices._types.IndexTemplateSummary": {
+      "indices._types.IndexTemplateSummaryWithRollover": {
         "type": "object",
         "properties": {
+          "lifecycle": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
+              }
+            ]
+          },
           "aliases": {
             "description": "Aliases to add.\nIf the index template includes a `data_stream` object, these are data stream aliases.\nOtherwise, these are index aliases.\nData stream aliases ignore the `index_routing`, `routing`, and `search_routing` options.",
             "type": "object",
@@ -66301,14 +66317,6 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/indices._types.IndexSettings"
-              }
-            ]
-          },
-          "lifecycle": {
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
               }
             ]
           },
@@ -66591,6 +66599,9 @@
           },
           "allow_custom_routing": {
             "type": "boolean"
+          },
+          "failure_store": {
+            "type": "boolean"
           }
         }
       },
@@ -66807,6 +66818,163 @@
           },
           "min_primary_shard_docs": {
             "type": "number"
+          }
+        }
+      },
+      "indices._types.IndexTemplate": {
+        "type": "object",
+        "properties": {
+          "index_patterns": {
+            "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Names"
+              }
+            ]
+          },
+          "composed_of": {
+            "description": "An ordered list of component template names.\nComponent templates are merged in the order specified, meaning that the last component template specified has the highest precedence.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.Name"
+            }
+          },
+          "template": {
+            "description": "Template to be applied.\nIt may optionally include an `aliases`, `mappings`, or `settings` configuration.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexTemplateSummary"
+              }
+            ]
+          },
+          "version": {
+            "description": "Version number used to manage index templates externally.\nThis number is not automatically generated by Elasticsearch.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.VersionNumber"
+              }
+            ]
+          },
+          "priority": {
+            "description": "Priority to determine index template precedence when a new data stream or index is created.\nThe index template with the highest priority is chosen.\nIf no priority is specified the template is treated as though it is of priority 0 (lowest priority).\nThis number is not automatically generated by Elasticsearch.",
+            "type": "number"
+          },
+          "_meta": {
+            "description": "Optional user metadata about the index template. May have any contents.\nThis map is not automatically generated by Elasticsearch.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Metadata"
+              }
+            ]
+          },
+          "allow_auto_create": {
+            "type": "boolean"
+          },
+          "data_stream": {
+            "description": "If this object is included, the template is used to create data streams and their backing indices.\nSupports an empty object.\nData streams require a matching index template with a `data_stream` object.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexTemplateDataStreamConfiguration"
+              }
+            ]
+          },
+          "deprecated": {
+            "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
+            "x-state": "Generally available",
+            "type": "boolean"
+          },
+          "ignore_missing_component_templates": {
+            "description": "A list of component template names that are allowed to be absent.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Names"
+              }
+            ]
+          },
+          "created_date": {
+            "description": "Date and time when the index template was created. Only returned if the `human` query parameter is `true`.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "created_date_millis": {
+            "description": "Date and time when the index template was created, in milliseconds since the epoch.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "modified_date": {
+            "description": "Date and time when the index template was last modified. Only returned if the `human` query parameter is `true`.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "modified_date_millis": {
+            "description": "Date and time when the index template was last modified, in milliseconds since the epoch.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          }
+        },
+        "required": [
+          "index_patterns",
+          "composed_of"
+        ]
+      },
+      "indices._types.IndexTemplateSummary": {
+        "type": "object",
+        "properties": {
+          "aliases": {
+            "description": "Aliases to add.\nIf the index template includes a `data_stream` object, these are data stream aliases.\nOtherwise, these are index aliases.\nData stream aliases ignore the `index_routing`, `routing`, and `search_routing` options.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/indices._types.Alias"
+            }
+          },
+          "mappings": {
+            "description": "Mapping for fields in the index.\nIf specified, this mapping can include field names, field data types, and mapping parameters.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+              }
+            ]
+          },
+          "settings": {
+            "description": "Configuration options for the index.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
+          "lifecycle": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
+              }
+            ]
+          },
+          "data_stream_options": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamOptions"
+              }
+            ]
           }
         }
       },
@@ -67137,7 +67305,7 @@
         "type": "object",
         "properties": {
           "content": {
-            "description": "The content of the message.\n\nString example:\n```\n{\n   \"content\": \"Some string\"\n}\n```\n\nObject example:\n```\n{\n  \"content\": [\n      {\n       \"text\": \"Some text\",\n       \"type\": \"text\"\n      }\n   ]\n}\n```",
+            "description": "The content of the message.\n\nString example:\n```\n{\n   \"content\": \"Some string\"\n}\n```\n\nText example:\n```\n{\n  \"content\": [\n      {\n       \"text\": \"Some text\",\n       \"type\": \"text\"\n      }\n   ]\n}\n```\n\nImage example:\n```\n{\n  \"content\": [\n      {\n       \"image_url\": {\n         \"url\": \"data:image/jpg;base64,...\"\n       },\n       \"type\": \"image_url\"\n      }\n   ]\n}\n```\n\nFile example:\n```\n{\n  \"content\": [\n      {\n       \"file\": {\n         \"file_data\": \"data:application/pdf;base64,...\",\n         \"filename\": \"somePDF\"\n       },\n       \"type\": \"file\"\n      }\n   ]\n}\n```",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.MessageContent"
@@ -67196,18 +67364,93 @@
         "description": "An object style representation of a single portion of a conversation.",
         "type": "object",
         "properties": {
+          "type": {
+            "description": "The type of content. Must be one of `text`, `image_url` or `file`. Not all services/models support content\ntypes other than \"text\"",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ContentType"
+              }
+            ]
+          },
           "text": {
-            "description": "The text content.",
+            "description": "The text content. Only applicable for the `text` type",
             "type": "string"
           },
-          "type": {
-            "description": "The type of content.",
+          "image_url": {
+            "description": "The image content. Only applicable for the `image_url` type",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ImageUrl"
+              }
+            ]
+          },
+          "file": {
+            "description": "The file content. Only applicable for the `file` type",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.FileContent"
+              }
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "text",
+          "image_url",
+          "file"
+        ]
+      },
+      "inference._types.ContentType": {
+        "type": "string",
+        "enum": [
+          "text",
+          "image_url",
+          "file"
+        ]
+      },
+      "inference._types.ImageUrl": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "description": "The base64 encoded image data as a data URI",
+            "type": "string"
+          },
+          "detail": {
+            "description": "Specifies the detail level of the image",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ImageUrlDetail"
+              }
+            ]
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "inference._types.ImageUrlDetail": {
+        "type": "string",
+        "enum": [
+          "auto",
+          "low",
+          "high"
+        ]
+      },
+      "inference._types.FileContent": {
+        "type": "object",
+        "properties": {
+          "file_data": {
+            "description": "The base64 encoded file data",
+            "type": "string"
+          },
+          "filename": {
+            "description": "The name of the file",
             "type": "string"
           }
         },
         "required": [
-          "text",
-          "type"
+          "file_data",
+          "filename"
         ]
       },
       "inference._types.ToolCall": {
@@ -74115,6 +74358,7 @@
         "type": "object",
         "properties": {
           "expiry_date": {
+            "description": "The date and time the license expires in ISO 8601 format.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -74122,6 +74366,7 @@
             ]
           },
           "expiry_date_in_millis": {
+            "description": "The date and time the license expires in milliseconds since the Unix epoch.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -74129,6 +74374,7 @@
             ]
           },
           "issue_date": {
+            "description": "The date and time the license was issued in ISO 8601 format.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -74136,6 +74382,7 @@
             ]
           },
           "issue_date_in_millis": {
+            "description": "The date and time the license was issued in milliseconds since the Unix epoch.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -74143,12 +74390,15 @@
             ]
           },
           "issued_to": {
+            "description": "The name of the customer or organization that received the license.",
             "type": "string"
           },
           "issuer": {
+            "description": "The name of the organization that issued the license.",
             "type": "string"
           },
           "max_nodes": {
+            "description": "The maximum number of nodes the license allows.",
             "oneOf": [
               {
                 "type": "number"
@@ -74160,6 +74410,7 @@
             ]
           },
           "max_resource_units": {
+            "description": "The maximum number of resource units the license allows (for enterprise licenses only).",
             "oneOf": [
               {
                 "type": "number"
@@ -74171,6 +74422,7 @@
             ]
           },
           "status": {
+            "description": "The status of the license. For example,active, valid, invalid, or expired.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/license._types.LicenseStatus"
@@ -74178,6 +74430,7 @@
             ]
           },
           "type": {
+            "description": "The type of the license. For example, trial, basic, gold, platinum, or enterprise.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/license._types.LicenseType"
@@ -74185,6 +74438,7 @@
             ]
           },
           "uid": {
+            "description": "The unique identifier of the license.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Uuid"
@@ -74192,6 +74446,7 @@
             ]
           },
           "start_date_in_millis": {
+            "description": "The date and time the license was started in milliseconds since the Unix epoch.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -79845,7 +80100,7 @@
         "type": "object",
         "properties": {
           "bucket_span": {
-            "description": "The size of the interval that the analysis is aggregated into, typically between `5m` and `1h`.",
+            "description": "The size of the interval that the analysis is aggregated into, typically between `5m` and `1h`. This value should be either a whole number of days or equate to a\nwhole number of buckets in one day. If the anomaly detection job uses a datafeed with aggregations, this value must also be divisible by the interval of the date histogram aggregation.",
             "default": "5m",
             "allOf": [
               {
@@ -79853,8 +80108,22 @@
               }
             ]
           },
+          "detectors": {
+            "description": "Detector configuration objects specify which data fields a job analyzes. They also specify which analytical functions are used. You can specify multiple detectors for a job. If the detectors array does not contain at least one detector, no analysis can occur and an error is returned.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ml._types.DetectorRead"
+            }
+          },
+          "influencers": {
+            "description": "A comma separated list of influencer field names. Typically these can be the by, over, or partition fields that are used in the detector configuration. You might also want to use a field name that is not specifically named in a detector, but is available as part of the input data. When you use multiple detectors, the use of influencers is recommended as it aggregates results for each influencer entity.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.Field"
+            }
+          },
           "categorization_analyzer": {
-            "description": "If `categorization_field_name` is specified, you can also define the analyzer that is used to interpret the categorization field.\nThis property cannot be used at the same time as `categorization_filters`.\nThe categorization analyzer specifies how the `categorization_field` is interpreted by the categorization process.",
+            "description": "If `categorization_field_name` is specified, you can also define the analyzer that is used to interpret the categorization field. This property cannot be used at the same time as `categorization_filters`. The categorization analyzer specifies how the `categorization_field` is interpreted by the categorization process. The `categorization_analyzer` field can be specified either as a string or as an object. If it is a string, it must refer to a built-in analyzer or one added by another plugin.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.CategorizationAnalyzer"
@@ -79862,7 +80131,7 @@
             ]
           },
           "categorization_field_name": {
-            "description": "If this property is specified, the values of the specified field will be categorized.\nThe resulting categories must be used in a detector by setting `by_field_name`, `over_field_name`, or `partition_field_name` to the keyword `mlcategory`.",
+            "description": "If this property is specified, the values of the specified field will be categorized. The resulting categories must be used in a detector by setting `by_field_name`, `over_field_name`, or `partition_field_name` to the keyword `mlcategory`.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
@@ -79870,36 +80139,14 @@
             ]
           },
           "categorization_filters": {
-            "description": "If `categorization_field_name` is specified, you can also define optional filters.\nThis property expects an array of regular expressions.\nThe expressions are used to filter out matching sequences from the categorization field values.",
+            "description": "If `categorization_field_name` is specified, you can also define optional filters. This property expects an array of regular expressions. The expressions are used to filter out matching sequences from the categorization field values. You can use this functionality to fine tune the categorization by excluding sequences from consideration when categories are defined. For example, you can exclude SQL statements that appear in your log files. This property cannot be used at the same time as `categorization_analyzer`. If you only want to define simple regular expression filters that are applied prior to tokenization, setting this property is the easiest method. If you also want to customize the tokenizer or post-tokenization filtering, use the `categorization_analyzer` property instead and include the filters as pattern_replace character filters. The effect is exactly the same.",
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          "detectors": {
-            "description": "An array of detector configuration objects.\nDetector configuration objects specify which data fields a job analyzes.\nThey also specify which analytical functions are used.\nYou can specify multiple detectors for a job.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ml._types.DetectorRead"
-            }
-          },
-          "influencers": {
-            "description": "A comma separated list of influencer field names.\nTypically these can be the by, over, or partition fields that are used in the detector configuration.\nYou might also want to use a field name that is not specifically named in a detector, but is available as part of the input data.\nWhen you use multiple detectors, the use of influencers is recommended as it aggregates results for each influencer entity.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.Field"
-            }
-          },
-          "model_prune_window": {
-            "description": "Advanced configuration option.\nAffects the pruning of models that have not been updated for the given time duration.\nThe value must be set to a multiple of the `bucket_span`.\nIf set too low, important information may be removed from the model.\nTypically, set to `30d` or longer.\nIf not set, model pruning only occurs if the model memory status reaches the soft limit or the hard limit.\nFor jobs created in 8.1 and later, the default value is the greater of `30d` or 20 times `bucket_span`.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
           "latency": {
-            "description": "The size of the window in which to expect data that is out of time order.\nDefaults to no latency.\nIf you specify a non-zero value, it must be greater than or equal to one second.",
+            "description": "The size of the window in which to expect data that is out of time order. If you specify a non-zero value, it must be greater than or equal to one second. NOTE: Latency is applicable only when you send data by using the post data API.",
             "default": "0",
             "allOf": [
               {
@@ -79907,8 +80154,16 @@
               }
             ]
           },
+          "model_prune_window": {
+            "description": "Advanced configuration option. Affects the pruning of models that have not been updated for the given time duration. The value must be set to a multiple of the `bucket_span`. If set too low, important information may be removed from the model. For jobs created in 8.1 and later, the default value is the greater of `30d` or 20 times `bucket_span`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
           "multivariate_by_fields": {
-            "description": "This functionality is reserved for internal use.\nIt is not supported for use in customer environments and is not subject to the support SLA of official GA features.\nIf set to `true`, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold.",
+            "description": "This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to `true`, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you’ll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector.",
             "type": "boolean"
           },
           "per_partition_categorization": {
@@ -79920,7 +80175,7 @@
             ]
           },
           "summary_count_field_name": {
-            "description": "If this property is specified, the data that is fed to the job is expected to be pre-summarized.\nThis property value is the name of the field that contains the count of raw data points that have been summarized.\nThe same `summary_count_field_name` applies to all detectors in the job.",
+            "description": "If this property is specified, the data that is fed to the job is expected to be pre-summarized. This property value is the name of the field that contains the count of raw data points that have been summarized. The same `summary_count_field_name` applies to all detectors in the job. NOTE: The `summary_count_field_name` property cannot be used with the `metric` function.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
@@ -79937,8 +80192,12 @@
       "ml._types.DetectorRead": {
         "type": "object",
         "properties": {
+          "function": {
+            "description": "The analysis function that is used. For example, `count`, `rare`, `mean`, `min`, `max`, or `sum`.",
+            "type": "string"
+          },
           "by_field_name": {
-            "description": "The field used to split the data.\nIn particular, this property is used for analyzing the splits with respect to their own history.\nIt is used for finding unusual values in the context of the split.",
+            "description": "The field used to split the data. In particular, this property is used for analyzing the splits with respect to their own history. It is used for finding unusual values in the context of the split.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
@@ -79946,7 +80205,7 @@
             ]
           },
           "custom_rules": {
-            "description": "An array of custom rule objects, which enable you to customize the way detectors operate.\nFor example, a rule may dictate to the detector conditions under which results should be skipped.\nKibana refers to custom rules as job rules.",
+            "description": "Custom rules enable you to customize the way detectors operate. For example, a rule may dictate conditions under which results should be skipped. Kibana refers to custom rules as job rules.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ml._types.DetectionRule"
@@ -79957,11 +80216,11 @@
             "type": "string"
           },
           "detector_index": {
-            "description": "A unique identifier for the detector.\nThis identifier is based on the order of the detectors in the `analysis_config`, starting at zero.",
+            "description": "A unique identifier for the detector. This identifier is based on the order of the detectors in the `analysis_config`, starting at zero. If you specify a value for this property, it is ignored.",
             "type": "number"
           },
           "exclude_frequent": {
-            "description": "Contains one of the following values: `all`, `none`, `by`, or `over`.\nIf set, frequent entities are excluded from influencing the anomaly results.\nEntities can be considered frequent over time or frequent in a population.\nIf you are working with both over and by fields, then you can set `exclude_frequent` to all for both fields, or to `by` or `over` for those specific fields.",
+            "description": "If set, frequent entities are excluded from influencing the anomaly results. Entities can be considered frequent over time or frequent in a population. If you are working with both over and by fields, you can set `exclude_frequent` to `all` for both fields, or to `by` or `over` for those specific fields.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.ExcludeFrequent"
@@ -79969,19 +80228,15 @@
             ]
           },
           "field_name": {
-            "description": "The field that the detector uses in the function.\nIf you use an event rate function such as `count` or `rare`, do not specify this field.",
+            "description": "The field that the detector uses in the function. If you use an event rate function such as count or rare, do not specify this field. The `field_name` cannot contain double quotes or backslashes.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
               }
             ]
           },
-          "function": {
-            "description": "The analysis function that is used.\nFor example, `count`, `rare`, `mean`, `min`, `max`, and `sum`.",
-            "type": "string"
-          },
           "over_field_name": {
-            "description": "The field used to split the data.\nIn particular, this property is used for analyzing the splits with respect to the history of all splits.\nIt is used for finding unusual values in the population of all splits.",
+            "description": "The field used to split the data. In particular, this property is used for analyzing the splits with respect to the history of all splits. It is used for finding unusual values in the population of all splits.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
@@ -79989,7 +80244,7 @@
             ]
           },
           "partition_field_name": {
-            "description": "The field used to segment the analysis.\nWhen you use this property, you have completely independent baselines for each value of this field.",
+            "description": "The field used to segment the analysis. When you use this property, you have completely independent baselines for each value of this field.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
@@ -83458,7 +83713,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Synonym Rule identifier",
+            "description": "The identifier for the synonym rule.\nIf you do not specify a synonym rule ID when you create a rule, an identifier is created automatically by Elasticsearch.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Id"
@@ -83467,9 +83722,9 @@
           },
           "synonyms": {
             "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/text-analysis/analysis-synonym-graph-tokenfilter#_solr_format_2"
+              "url": "https://www.elastic.co/docs/reference/text-analysis/analysis-synonym-graph-tokenfilter#analysis-synonym-graph-define-synonyms"
             },
-            "description": "Synonyms, in Solr format, that conform the synonym rule.",
+            "description": "The synonyms that conform the synonym rule in Solr format.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/synonyms._types.SynonymString"

@@ -5839,21 +5839,21 @@ export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
 }
 
 export interface MappingChunkRescorerChunkingSettings {
-  strategy?: string
-  separator_group?: string
-  separators?: string[]
   max_chunk_size: integer
   overlap?: integer
   sentence_overlap?: integer
+  separator_group?: string
+  separators?: string[]
+  strategy?: string
 }
 
 export interface MappingChunkingSettings {
   strategy: string
-  separator_group?: string
-  separators?: string[]
   max_chunk_size: integer
   overlap?: integer
   sentence_overlap?: integer
+  separator_group?: string
+  separators?: string[]
 }
 
 export interface MappingCompletionProperty extends MappingDocValuesPropertyBase {
@@ -9719,11 +9719,22 @@ export type CcrUnfollowResponse = AcknowledgedResponseBase
 
 export interface ClusterComponentTemplate {
   name: Name
-  component_template: ClusterComponentTemplateNode
+  component_template: ClusterComponentTemplateNodeWithRollover
 }
 
 export interface ClusterComponentTemplateNode {
   template: ClusterComponentTemplateSummary
+  version?: VersionNumber
+  _meta?: Metadata
+  deprecated?: boolean
+  created_date?: DateTime
+  created_date_millis?: EpochTime<UnitMillis>
+  modified_date?: DateTime
+  modified_date_millis?: EpochTime<UnitMillis>
+}
+
+export interface ClusterComponentTemplateNodeWithRollover {
+  template: ClusterComponentTemplateSummaryRes
   version?: VersionNumber
   _meta?: Metadata
   deprecated?: boolean
@@ -9739,7 +9750,17 @@ export interface ClusterComponentTemplateSummary {
   settings?: Record<IndexName, IndicesIndexSettings>
   mappings?: MappingTypeMapping
   aliases?: Record<string, IndicesAliasDefinition>
+  lifecycle?: IndicesDataStreamLifecycle
+  data_stream_options?: IndicesDataStreamOptions
+}
+
+export interface ClusterComponentTemplateSummaryRes {
   lifecycle?: IndicesDataStreamLifecycleWithRollover
+  _meta?: Metadata
+  version?: VersionNumber
+  settings?: Record<IndexName, IndicesIndexSettings>
+  mappings?: MappingTypeMapping
+  aliases?: Record<string, IndicesAliasDefinition>
   data_stream_options?: IndicesDataStreamOptions
 }
 
@@ -12201,6 +12222,7 @@ export interface IndicesDataStreamLifecycle {
   downsampling?: IndicesDownsamplingRound[]
   downsampling_method?: IndicesSamplingMethod
   enabled?: boolean
+  frozen_after?: Duration
 }
 
 export interface IndicesDataStreamLifecycleRolloverConditions {
@@ -12235,6 +12257,7 @@ export interface IndicesDataStreamTimestampField {
 export interface IndicesDataStreamVisibility {
   hidden?: boolean
   allow_custom_routing?: boolean
+  failure_store?: boolean
 }
 
 export interface IndicesDownsampleConfig {
@@ -12444,8 +12467,33 @@ export interface IndicesIndexTemplateSummary {
   aliases?: Record<IndexName, IndicesAlias>
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
-  lifecycle?: IndicesDataStreamLifecycleWithRollover
+  lifecycle?: IndicesDataStreamLifecycle
   data_stream_options?: IndicesDataStreamOptions
+}
+
+export interface IndicesIndexTemplateSummaryWithRollover {
+  lifecycle?: IndicesDataStreamLifecycleWithRollover
+  aliases?: Record<IndexName, IndicesAlias>
+  mappings?: MappingTypeMapping
+  settings?: IndicesIndexSettings
+  data_stream_options?: IndicesDataStreamOptions
+}
+
+export interface IndicesIndexTemplateWithRollover {
+  template?: IndicesIndexTemplateSummaryWithRollover
+  index_patterns: Names
+  composed_of: Name[]
+  version?: VersionNumber
+  priority?: long
+  _meta?: Metadata
+  allow_auto_create?: boolean
+  data_stream?: IndicesIndexTemplateDataStreamConfiguration
+  deprecated?: boolean
+  ignore_missing_component_templates?: Names
+  created_date?: DateTime
+  created_date_millis?: EpochTime<UnitMillis>
+  modified_date?: DateTime
+  modified_date_millis?: EpochTime<UnitMillis>
 }
 
 export interface IndicesIndexVersioning {
@@ -13266,7 +13314,7 @@ export interface IndicesGetFieldMappingTypeFieldMappings {
 
 export interface IndicesGetIndexTemplateIndexTemplateItem {
   name: Name
-  index_template: IndicesIndexTemplate
+  index_template: IndicesIndexTemplateWithRollover
 }
 
 export interface IndicesGetIndexTemplateRequest extends RequestBase {
@@ -14392,12 +14440,6 @@ export interface InferenceAzureOpenAITaskSettings {
 
 export type InferenceAzureOpenAITaskType = 'completion' | 'chat_completion' | 'text_embedding'
 
-export interface InferenceBaseReasoningDetail {
-  format?: string
-  id?: string
-  index?: integer
-}
-
 export type InferenceCohereEmbeddingType = 'binary' | 'bit' | 'byte' | 'float' | 'int8'
 
 export type InferenceCohereInputType = 'classification' | 'clustering' | 'ingest' | 'search'
@@ -14457,9 +14499,13 @@ export interface InferenceCompletionToolFunction {
 export type InferenceCompletionToolType = string | InferenceCompletionToolChoice
 
 export interface InferenceContentObject {
+  type: InferenceContentType
   text: string
-  type: string
+  image_url: InferenceImageUrl
+  file: InferenceFileContent
 }
+
+export type InferenceContentType = 'text' | 'image_url' | 'file'
 
 export interface InferenceContextualAIServiceSettings {
   api_key: string
@@ -14580,9 +14626,9 @@ export type InferenceEmbeddingInput = InferenceEmbeddingStringInput | InferenceE
 
 export type InferenceEmbeddingStringInput = string | string[]
 
-export interface InferenceEncryptedReasoningDetail extends InferenceBaseReasoningDetail {
-  type: 'reasoning.encrypted'
-  data: string
+export interface InferenceFileContent {
+  file_data: string
+  filename: string
 }
 
 export interface InferenceFireworksAIServiceSettings {
@@ -14666,6 +14712,13 @@ export interface InferenceHuggingFaceTaskSettings {
 }
 
 export type InferenceHuggingFaceTaskType = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
+
+export interface InferenceImageUrl {
+  url: string
+  detail?: InferenceImageUrlDetail
+}
+
+export type InferenceImageUrlDetail = 'auto' | 'low' | 'high'
 
 export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
@@ -14876,8 +14929,6 @@ export interface InferenceMessage {
   role: string
   tool_call_id?: Id
   tool_calls?: InferenceToolCall[]
-  reasoning?: string
-  reasoning_details?: InferenceReasoningDetail[]
 }
 
 export type InferenceMessageContent = string | InferenceContentObject[]
@@ -14966,25 +15017,10 @@ export interface InferenceRateLimitSetting {
   requests_per_minute?: integer
 }
 
-export interface InferenceReasoning {
-  effort?: InferenceReasoningEffort
-  enabled?: boolean
-  exclude?: boolean
-  max_tokens?: integer
-  summary?: InferenceReasoningSummary
-}
-
-export type InferenceReasoningDetail = InferenceEncryptedReasoningDetail | InferenceSummaryReasoningDetail | InferenceTextReasoningDetail
-
-export type InferenceReasoningEffort = 'xhigh' | 'high' | 'medium' | 'low' | 'minimal' | 'none'
-
-export type InferenceReasoningSummary = 'auto' | 'concise' | 'detailed'
-
 export interface InferenceRequestChatCompletion {
   messages: InferenceMessage[]
   model?: string
   max_completion_tokens?: long
-  reasoning?: InferenceReasoning
   stop?: string[]
   temperature?: float
   tool_choice?: InferenceCompletionToolType
@@ -15014,11 +15050,6 @@ export interface InferenceSparseEmbeddingResult {
 }
 
 export type InferenceSparseVector = Record<string, float>
-
-export interface InferenceSummaryReasoningDetail extends InferenceBaseReasoningDetail {
-  type: 'reasoning.summary'
-  summary: string
-}
 
 export type InferenceTaskSettings = any
 
@@ -15080,12 +15111,6 @@ export interface InferenceTextEmbeddingInferenceResult {
   text_embedding_bytes?: InferenceDenseEmbeddingByteResult[]
   text_embedding_bits?: InferenceDenseEmbeddingByteResult[]
   text_embedding?: InferenceDenseEmbeddingResult[]
-}
-
-export interface InferenceTextReasoningDetail extends InferenceBaseReasoningDetail {
-  type: 'reasoning.text'
-  signature?: string
-  text?: string
 }
 
 export interface InferenceThinkingConfig {
@@ -16539,13 +16564,13 @@ export interface MlAnalysisConfig {
 
 export interface MlAnalysisConfigRead {
   bucket_span: Duration
+  detectors: MlDetectorRead[]
+  influencers: Field[]
   categorization_analyzer?: MlCategorizationAnalyzer
   categorization_field_name?: Field
   categorization_filters?: string[]
-  detectors: MlDetectorRead[]
-  influencers: Field[]
-  model_prune_window?: Duration
   latency?: Duration
+  model_prune_window?: Duration
   multivariate_by_fields?: boolean
   per_partition_categorization?: MlPerPartitionCategorization
   summary_count_field_name?: Field
@@ -17098,13 +17123,13 @@ export interface MlDetector {
 }
 
 export interface MlDetectorRead {
+  function: string
   by_field_name?: Field
   custom_rules?: MlDetectionRule[]
   detector_description?: string
   detector_index?: integer
   exclude_frequent?: MlExcludeFrequent
   field_name?: Field
-  function: string
   over_field_name?: Field
   partition_field_name?: Field
   use_null?: boolean
