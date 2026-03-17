@@ -67278,7 +67278,7 @@
         "type": "object",
         "properties": {
           "content": {
-            "description": "The content of the message.\n\nString example:\n```\n{\n   \"content\": \"Some string\"\n}\n```\n\nObject example:\n```\n{\n  \"content\": [\n      {\n       \"text\": \"Some text\",\n       \"type\": \"text\"\n      }\n   ]\n}\n```",
+            "description": "The content of the message.\n\nString example:\n```\n{\n   \"content\": \"Some string\"\n}\n```\n\nText example:\n```\n{\n  \"content\": [\n      {\n       \"text\": \"Some text\",\n       \"type\": \"text\"\n      }\n   ]\n}\n```\n\nImage example:\n```\n{\n  \"content\": [\n      {\n       \"image_url\": {\n         \"url\": \"data:image/jpg;base64,...\"\n       },\n       \"type\": \"image_url\"\n      }\n   ]\n}\n```\n\nFile example:\n```\n{\n  \"content\": [\n      {\n       \"file\": {\n         \"file_data\": \"data:application/pdf;base64,...\",\n         \"filename\": \"somePDF\"\n       },\n       \"type\": \"file\"\n      }\n   ]\n}\n```",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.MessageContent"
@@ -67326,18 +67326,93 @@
         "description": "An object style representation of a single portion of a conversation.",
         "type": "object",
         "properties": {
+          "type": {
+            "description": "The type of content. Must be one of `text`, `image_url` or `file`. Not all services/models support content\ntypes other than \"text\"",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ContentType"
+              }
+            ]
+          },
           "text": {
-            "description": "The text content.",
+            "description": "The text content. Only applicable for the `text` type",
             "type": "string"
           },
-          "type": {
-            "description": "The type of content.",
+          "image_url": {
+            "description": "The image content. Only applicable for the `image_url` type",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ImageUrl"
+              }
+            ]
+          },
+          "file": {
+            "description": "The file content. Only applicable for the `file` type",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.FileContent"
+              }
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "text",
+          "image_url",
+          "file"
+        ]
+      },
+      "inference._types.ContentType": {
+        "type": "string",
+        "enum": [
+          "text",
+          "image_url",
+          "file"
+        ]
+      },
+      "inference._types.ImageUrl": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "description": "The base64 encoded image data as a data URI",
+            "type": "string"
+          },
+          "detail": {
+            "description": "Specifies the detail level of the image",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ImageUrlDetail"
+              }
+            ]
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "inference._types.ImageUrlDetail": {
+        "type": "string",
+        "enum": [
+          "auto",
+          "low",
+          "high"
+        ]
+      },
+      "inference._types.FileContent": {
+        "type": "object",
+        "properties": {
+          "file_data": {
+            "description": "The base64 encoded file data",
+            "type": "string"
+          },
+          "filename": {
+            "description": "The name of the file",
             "type": "string"
           }
         },
         "required": [
-          "text",
-          "type"
+          "file_data",
+          "filename"
         ]
       },
       "inference._types.ToolCall": {

@@ -14499,9 +14499,13 @@ export interface InferenceCompletionToolFunction {
 export type InferenceCompletionToolType = string | InferenceCompletionToolChoice
 
 export interface InferenceContentObject {
+  type: InferenceContentType
   text: string
-  type: string
+  image_url: InferenceImageUrl
+  file: InferenceFileContent
 }
+
+export type InferenceContentType = 'text' | 'image_url' | 'file'
 
 export interface InferenceContextualAIServiceSettings {
   api_key: string
@@ -14622,6 +14626,11 @@ export type InferenceEmbeddingInput = InferenceEmbeddingStringInput | InferenceE
 
 export type InferenceEmbeddingStringInput = string | string[]
 
+export interface InferenceFileContent {
+  file_data: string
+  filename: string
+}
+
 export interface InferenceFireworksAIServiceSettings {
   api_key: string
   model_id: string
@@ -14703,6 +14712,13 @@ export interface InferenceHuggingFaceTaskSettings {
 }
 
 export type InferenceHuggingFaceTaskType = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
+
+export interface InferenceImageUrl {
+  url: string
+  detail?: InferenceImageUrlDetail
+}
+
+export type InferenceImageUrlDetail = 'auto' | 'low' | 'high'
 
 export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
