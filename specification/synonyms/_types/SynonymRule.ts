@@ -38,13 +38,5 @@ export class SynonymRule {
 
 // Synonym Rule with mandatory ID, used for responses (which always include it)
 export class SynonymRuleRead implements OverloadOf<SynonymRule> {
-  /**
-   * Synonym Rule identifier
-   */
   id: Id
-  /**
-   * Synonyms, in Solr format, that conform the synonym rule.
-   * @ext_doc_id synonym-solr
-   */
-  synonyms: SynonymString
 }
