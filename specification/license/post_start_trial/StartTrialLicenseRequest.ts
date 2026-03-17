@@ -45,7 +45,7 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * Whether the user has acknowledged acknowledge messages
+     * To start a trial, you must accept the acknowledge messages and set this parameter to `true`.
      * @server_default false
      */
     acknowledge?: boolean
