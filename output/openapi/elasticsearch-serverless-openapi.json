@@ -52102,7 +52102,7 @@
           "component_template": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/cluster._types.ComponentTemplateNode"
+                "$ref": "#/components/schemas/cluster._types.ComponentTemplateNodeWithRollover"
               }
             ]
           }
@@ -52112,13 +52112,13 @@
           "component_template"
         ]
       },
-      "cluster._types.ComponentTemplateNode": {
+      "cluster._types.ComponentTemplateNodeWithRollover": {
         "type": "object",
         "properties": {
           "template": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/cluster._types.ComponentTemplateSummary"
+                "$ref": "#/components/schemas/cluster._types.ComponentTemplateSummaryRes"
               }
             ]
           },
@@ -52180,9 +52180,17 @@
           "template"
         ]
       },
-      "cluster._types.ComponentTemplateSummary": {
+      "cluster._types.ComponentTemplateSummaryRes": {
         "type": "object",
         "properties": {
+          "lifecycle": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
+              }
+            ]
+          },
           "_meta": {
             "allOf": [
               {
@@ -52216,14 +52224,6 @@
               "$ref": "#/components/schemas/indices._types.AliasDefinition"
             }
           },
-          "lifecycle": {
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
-              }
-            ]
-          },
           "data_stream_options": {
             "x-state": "Generally available",
             "allOf": [
@@ -52233,6 +52233,156 @@
             ]
           }
         }
+      },
+      "indices._types.DataStreamLifecycleWithRollover": {
+        "description": "Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,\nif asked.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "rollover": {
+                "description": "The conditions which will trigger the rollover of a backing index as configured by the cluster setting `cluster.lifecycle.default.rollover`.\nThis property is an implementation detail and it will only be retrieved when the query param `include_defaults` is set to true.\nThe contents of this field are subject to change.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/indices._types.DataStreamLifecycleRolloverConditions"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "indices._types.DataStreamLifecycleRolloverConditions": {
+        "type": "object",
+        "properties": {
+          "min_age": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "max_age": {
+            "type": "string"
+          },
+          "min_docs": {
+            "type": "number"
+          },
+          "max_docs": {
+            "type": "number"
+          },
+          "min_size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "max_size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "min_primary_shard_size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "max_primary_shard_size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "min_primary_shard_docs": {
+            "type": "number"
+          },
+          "max_primary_shard_docs": {
+            "type": "number"
+          }
+        }
+      },
+      "indices._types.DataStreamLifecycle": {
+        "description": "Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
+        "type": "object",
+        "properties": {
+          "data_retention": {
+            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "downsampling": {
+            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
+            }
+          },
+          "downsampling_method": {
+            "description": "The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires\n`downsampling` to be defined. Defaults to `aggregate`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.SamplingMethod"
+              }
+            ]
+          },
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "default": true,
+            "type": "boolean"
+          },
+          "frozen_after": {
+            "description": "Only available with feature flag dlm_searchable_snapshots.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.DownsamplingRound": {
+        "type": "object",
+        "properties": {
+          "after": {
+            "description": "The duration since rollover when this downsampling round should execute",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "fixed_interval": {
+            "description": "The downsample interval.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationLarge"
+              }
+            ]
+          }
+        },
+        "required": [
+          "after",
+          "fixed_interval"
+        ]
+      },
+      "indices._types.SamplingMethod": {
+        "type": "string",
+        "enum": [
+          "aggregate",
+          "last_value"
+        ]
       },
       "indices._types.IndexSettings": {
         "type": "object",
@@ -62459,148 +62609,6 @@
           }
         }
       },
-      "indices._types.DataStreamLifecycleWithRollover": {
-        "description": "Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,\nif asked.",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "rollover": {
-                "description": "The conditions which will trigger the rollover of a backing index as configured by the cluster setting `cluster.lifecycle.default.rollover`.\nThis property is an implementation detail and it will only be retrieved when the query param `include_defaults` is set to true.\nThe contents of this field are subject to change.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/indices._types.DataStreamLifecycleRolloverConditions"
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      },
-      "indices._types.DataStreamLifecycleRolloverConditions": {
-        "type": "object",
-        "properties": {
-          "min_age": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "max_age": {
-            "type": "string"
-          },
-          "min_docs": {
-            "type": "number"
-          },
-          "max_docs": {
-            "type": "number"
-          },
-          "min_size": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ByteSize"
-              }
-            ]
-          },
-          "max_size": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ByteSize"
-              }
-            ]
-          },
-          "min_primary_shard_size": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ByteSize"
-              }
-            ]
-          },
-          "max_primary_shard_size": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ByteSize"
-              }
-            ]
-          },
-          "min_primary_shard_docs": {
-            "type": "number"
-          },
-          "max_primary_shard_docs": {
-            "type": "number"
-          }
-        }
-      },
-      "indices._types.DataStreamLifecycle": {
-        "description": "Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
-        "type": "object",
-        "properties": {
-          "data_retention": {
-            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "downsampling": {
-            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
-            }
-          },
-          "downsampling_method": {
-            "description": "The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires\n`downsampling` to be defined. Defaults to `aggregate`.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.SamplingMethod"
-              }
-            ]
-          },
-          "enabled": {
-            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
-            "default": true,
-            "type": "boolean"
-          }
-        }
-      },
-      "indices._types.DownsamplingRound": {
-        "type": "object",
-        "properties": {
-          "after": {
-            "description": "The duration since rollover when this downsampling round should execute",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "fixed_interval": {
-            "description": "The downsample interval.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.DurationLarge"
-              }
-            ]
-          }
-        },
-        "required": [
-          "after",
-          "fixed_interval"
-        ]
-      },
-      "indices._types.SamplingMethod": {
-        "type": "string",
-        "enum": [
-          "aggregate",
-          "last_value"
-        ]
-      },
       "indices._types.DataStreamOptions": {
         "description": "Data stream options contain the configuration of data stream level features for a given data stream, for example,\nthe failure store configuration.",
         "type": "object",
@@ -66136,7 +66144,7 @@
           "index_template": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.IndexTemplate"
+                "$ref": "#/components/schemas/indices._types.IndexTemplateWithRollover"
               }
             ]
           }
@@ -66146,9 +66154,17 @@
           "index_template"
         ]
       },
-      "indices._types.IndexTemplate": {
+      "indices._types.IndexTemplateWithRollover": {
         "type": "object",
         "properties": {
+          "template": {
+            "description": "Template to be applied.\nIt may optionally include an `aliases`, `mappings`, or `settings` configuration.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexTemplateSummaryWithRollover"
+              }
+            ]
+          },
           "index_patterns": {
             "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
             "allOf": [
@@ -66163,14 +66179,6 @@
             "items": {
               "$ref": "#/components/schemas/_types.Name"
             }
-          },
-          "template": {
-            "description": "Template to be applied.\nIt may optionally include an `aliases`, `mappings`, or `settings` configuration.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.IndexTemplateSummary"
-              }
-            ]
           },
           "version": {
             "description": "Version number used to manage index templates externally.\nThis number is not automatically generated by Elasticsearch.",
@@ -66259,9 +66267,17 @@
           "composed_of"
         ]
       },
-      "indices._types.IndexTemplateSummary": {
+      "indices._types.IndexTemplateSummaryWithRollover": {
         "type": "object",
         "properties": {
+          "lifecycle": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
+              }
+            ]
+          },
           "aliases": {
             "description": "Aliases to add.\nIf the index template includes a `data_stream` object, these are data stream aliases.\nOtherwise, these are index aliases.\nData stream aliases ignore the `index_routing`, `routing`, and `search_routing` options.",
             "type": "object",
@@ -66282,14 +66298,6 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/indices._types.IndexSettings"
-              }
-            ]
-          },
-          "lifecycle": {
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
               }
             ]
           },
@@ -66572,6 +66580,9 @@
           },
           "allow_custom_routing": {
             "type": "boolean"
+          },
+          "failure_store": {
+            "type": "boolean"
           }
         }
       },
@@ -66788,6 +66799,163 @@
           },
           "min_primary_shard_docs": {
             "type": "number"
+          }
+        }
+      },
+      "indices._types.IndexTemplate": {
+        "type": "object",
+        "properties": {
+          "index_patterns": {
+            "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Names"
+              }
+            ]
+          },
+          "composed_of": {
+            "description": "An ordered list of component template names.\nComponent templates are merged in the order specified, meaning that the last component template specified has the highest precedence.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.Name"
+            }
+          },
+          "template": {
+            "description": "Template to be applied.\nIt may optionally include an `aliases`, `mappings`, or `settings` configuration.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexTemplateSummary"
+              }
+            ]
+          },
+          "version": {
+            "description": "Version number used to manage index templates externally.\nThis number is not automatically generated by Elasticsearch.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.VersionNumber"
+              }
+            ]
+          },
+          "priority": {
+            "description": "Priority to determine index template precedence when a new data stream or index is created.\nThe index template with the highest priority is chosen.\nIf no priority is specified the template is treated as though it is of priority 0 (lowest priority).\nThis number is not automatically generated by Elasticsearch.",
+            "type": "number"
+          },
+          "_meta": {
+            "description": "Optional user metadata about the index template. May have any contents.\nThis map is not automatically generated by Elasticsearch.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Metadata"
+              }
+            ]
+          },
+          "allow_auto_create": {
+            "type": "boolean"
+          },
+          "data_stream": {
+            "description": "If this object is included, the template is used to create data streams and their backing indices.\nSupports an empty object.\nData streams require a matching index template with a `data_stream` object.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexTemplateDataStreamConfiguration"
+              }
+            ]
+          },
+          "deprecated": {
+            "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
+            "x-state": "Generally available",
+            "type": "boolean"
+          },
+          "ignore_missing_component_templates": {
+            "description": "A list of component template names that are allowed to be absent.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Names"
+              }
+            ]
+          },
+          "created_date": {
+            "description": "Date and time when the index template was created. Only returned if the `human` query parameter is `true`.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "created_date_millis": {
+            "description": "Date and time when the index template was created, in milliseconds since the epoch.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "modified_date": {
+            "description": "Date and time when the index template was last modified. Only returned if the `human` query parameter is `true`.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "modified_date_millis": {
+            "description": "Date and time when the index template was last modified, in milliseconds since the epoch.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          }
+        },
+        "required": [
+          "index_patterns",
+          "composed_of"
+        ]
+      },
+      "indices._types.IndexTemplateSummary": {
+        "type": "object",
+        "properties": {
+          "aliases": {
+            "description": "Aliases to add.\nIf the index template includes a `data_stream` object, these are data stream aliases.\nOtherwise, these are index aliases.\nData stream aliases ignore the `index_routing`, `routing`, and `search_routing` options.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/indices._types.Alias"
+            }
+          },
+          "mappings": {
+            "description": "Mapping for fields in the index.\nIf specified, this mapping can include field names, field data types, and mapping parameters.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+              }
+            ]
+          },
+          "settings": {
+            "description": "Configuration options for the index.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
+          "lifecycle": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
+              }
+            ]
+          },
+          "data_stream_options": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamOptions"
+              }
+            ]
           }
         }
       },

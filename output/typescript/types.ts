@@ -9719,11 +9719,22 @@ export type CcrUnfollowResponse = AcknowledgedResponseBase
 
 export interface ClusterComponentTemplate {
   name: Name
-  component_template: ClusterComponentTemplateNode
+  component_template: ClusterComponentTemplateNodeWithRollover
 }
 
 export interface ClusterComponentTemplateNode {
   template: ClusterComponentTemplateSummary
+  version?: VersionNumber
+  _meta?: Metadata
+  deprecated?: boolean
+  created_date?: DateTime
+  created_date_millis?: EpochTime<UnitMillis>
+  modified_date?: DateTime
+  modified_date_millis?: EpochTime<UnitMillis>
+}
+
+export interface ClusterComponentTemplateNodeWithRollover {
+  template: ClusterComponentTemplateSummaryRes
   version?: VersionNumber
   _meta?: Metadata
   deprecated?: boolean
@@ -9739,7 +9750,17 @@ export interface ClusterComponentTemplateSummary {
   settings?: Record<IndexName, IndicesIndexSettings>
   mappings?: MappingTypeMapping
   aliases?: Record<string, IndicesAliasDefinition>
+  lifecycle?: IndicesDataStreamLifecycle
+  data_stream_options?: IndicesDataStreamOptions
+}
+
+export interface ClusterComponentTemplateSummaryRes {
   lifecycle?: IndicesDataStreamLifecycleWithRollover
+  _meta?: Metadata
+  version?: VersionNumber
+  settings?: Record<IndexName, IndicesIndexSettings>
+  mappings?: MappingTypeMapping
+  aliases?: Record<string, IndicesAliasDefinition>
   data_stream_options?: IndicesDataStreamOptions
 }
 
@@ -12201,6 +12222,7 @@ export interface IndicesDataStreamLifecycle {
   downsampling?: IndicesDownsamplingRound[]
   downsampling_method?: IndicesSamplingMethod
   enabled?: boolean
+  frozen_after?: Duration
 }
 
 export interface IndicesDataStreamLifecycleRolloverConditions {
@@ -12235,6 +12257,7 @@ export interface IndicesDataStreamTimestampField {
 export interface IndicesDataStreamVisibility {
   hidden?: boolean
   allow_custom_routing?: boolean
+  failure_store?: boolean
 }
 
 export interface IndicesDownsampleConfig {
@@ -12444,8 +12467,33 @@ export interface IndicesIndexTemplateSummary {
   aliases?: Record<IndexName, IndicesAlias>
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
-  lifecycle?: IndicesDataStreamLifecycleWithRollover
+  lifecycle?: IndicesDataStreamLifecycle
   data_stream_options?: IndicesDataStreamOptions
+}
+
+export interface IndicesIndexTemplateSummaryWithRollover {
+  lifecycle?: IndicesDataStreamLifecycleWithRollover
+  aliases?: Record<IndexName, IndicesAlias>
+  mappings?: MappingTypeMapping
+  settings?: IndicesIndexSettings
+  data_stream_options?: IndicesDataStreamOptions
+}
+
+export interface IndicesIndexTemplateWithRollover {
+  template?: IndicesIndexTemplateSummaryWithRollover
+  index_patterns: Names
+  composed_of: Name[]
+  version?: VersionNumber
+  priority?: long
+  _meta?: Metadata
+  allow_auto_create?: boolean
+  data_stream?: IndicesIndexTemplateDataStreamConfiguration
+  deprecated?: boolean
+  ignore_missing_component_templates?: Names
+  created_date?: DateTime
+  created_date_millis?: EpochTime<UnitMillis>
+  modified_date?: DateTime
+  modified_date_millis?: EpochTime<UnitMillis>
 }
 
 export interface IndicesIndexVersioning {
@@ -13266,7 +13314,7 @@ export interface IndicesGetFieldMappingTypeFieldMappings {
 
 export interface IndicesGetIndexTemplateIndexTemplateItem {
   name: Name
-  index_template: IndicesIndexTemplate
+  index_template: IndicesIndexTemplateWithRollover
 }
 
 export interface IndicesGetIndexTemplateRequest extends RequestBase {
