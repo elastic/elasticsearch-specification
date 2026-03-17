@@ -128,7 +128,7 @@ export interface ContentObject {
    * The type of content. Must be one of `text`, `image_url` or `file`. Not all services/models support content
    * types other than "text"
    */
-  type: string
+  type: ContentType
   /**
    * The text content. Only applicable for the `text` type
    */
@@ -141,6 +141,12 @@ export interface ContentObject {
    * The file content. Only applicable for the `file` type
    */
   file: FileContent
+}
+
+export enum ContentType {
+  text,
+  image_url,
+  file
 }
 
 export interface ImageUrl {
