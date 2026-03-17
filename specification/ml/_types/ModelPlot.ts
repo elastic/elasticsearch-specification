@@ -42,7 +42,5 @@ export class ModelPlotConfig {
 }
 
 export class ModelPlotConfigEnabled implements OverloadOf<ModelPlotConfig> {
-  annotations_enabled?: boolean
   enabled: boolean
-  terms?: Field
 }
