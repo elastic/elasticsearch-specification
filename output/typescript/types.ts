@@ -20903,6 +20903,14 @@ export interface SecurityIndicesPrivileges {
   allow_restricted_indices?: boolean
 }
 
+export interface SecurityIndicesPrivilegesBase {
+  field_security?: SecurityFieldSecurity
+  names: IndexName | IndexName[]
+  privileges: SecurityIndexPrivilege[]
+  query?: SecurityIndicesPrivilegesQuery
+  allow_restricted_indices?: boolean
+}
+
 export type SecurityIndicesPrivilegesQuery = string | QueryDslQueryContainer | SecurityRoleTemplateQuery
 
 export interface SecurityManageUserPrivileges {
@@ -20935,12 +20943,12 @@ export interface SecurityRemoteIndicesPrivileges {
 }
 
 export interface SecurityRemoteUserIndicesPrivileges {
+  clusters: string[]
   field_security?: SecurityFieldSecurity[]
   names: IndexName | IndexName[]
   privileges: SecurityIndexPrivilege[]
   query?: SecurityIndicesPrivilegesQuery[]
   allow_restricted_indices: boolean
-  clusters: string[]
 }
 
 export interface SecurityReplicationAccess {
@@ -21046,6 +21054,14 @@ export interface SecurityUser {
 }
 
 export interface SecurityUserIndicesPrivileges {
+  field_security?: SecurityFieldSecurity[]
+  names: IndexName | IndexName[]
+  privileges: SecurityIndexPrivilege[]
+  query?: SecurityIndicesPrivilegesQuery[]
+  allow_restricted_indices: boolean
+}
+
+export interface SecurityUserIndicesPrivilegesBase {
   field_security?: SecurityFieldSecurity[]
   names: IndexName | IndexName[]
   privileges: SecurityIndexPrivilege[]
